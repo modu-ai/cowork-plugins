@@ -297,8 +297,8 @@ Context Depth:
 ```
 .moai/
 ├── harness-contexts/
-│   ├── content_generator.md
-│   ├── email_harness.md
+│   ├── copywriting.md
+│   ├── email-crafter.md
 │   └── ...
 ├── evolution/
 │   └── self-refine-log.md

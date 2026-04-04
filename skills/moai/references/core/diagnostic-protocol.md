@@ -154,7 +154,7 @@ MoAI 현황 ({user_name})
 
 ```bash
 /moai status --detailed
-/moai status --harness=content_generator
+/moai status --harness=copywriting
 /moai status --evolution
 /moai status --export=json
 ```

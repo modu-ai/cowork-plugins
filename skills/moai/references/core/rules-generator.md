@@ -118,7 +118,7 @@ save_file(".claude/rules/00-moai-core.md", content)
 # 01-copywriting.md — 콘텐츠 생성 하네스 규칙
 
 ## 적용 범위
-content_generator 하네스 실행 시만 적용됩니다.
+copywriting 하네스 실행 시만 적용됩니다.
 
 ## 1. 콘텐츠 유형별 가이드
 ### 블로그 글
@@ -162,10 +162,10 @@ content_generator 하네스 실행 시만 적용됩니다.
 
 **예시 2: 01-sop-writer.md**
 ```markdown
-# 01-sop-writer.md — 자동화 하네스 규칙
+# 01-sop-writer.md — SOP 작성 하네스 규칙
 
 ## 적용 범위
-automation_harness 실행 시만 적용됩니다.
+sop-writer 하네스 실행 시만 적용됩니다.
 
 ## 1. 자동화 감지 규칙
 자동화 가능한 업무:

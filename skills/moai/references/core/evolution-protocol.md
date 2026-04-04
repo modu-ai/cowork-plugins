@@ -78,9 +78,9 @@ IF 문제_유형 == "지역 규제 무지":
 한 하네스에서의 학습을 다른 하네스에 적용:
 
 Example:
-content_generator에서 "사용자는 짧은 문단 선호" 발견
-→ email_harness에도 동일 규칙 적용
-→ automation_harness 결과 설명도 간결화
+copywriting에서 "사용자는 짧은 문단 선호" 발견
+→ email-crafter에도 동일 규칙 적용
+→ sop-writer 결과 설명도 간결화
 
 학습 전파:
 00-moai-core.md (기본) → 모든 하네스에 적용
@@ -215,7 +215,7 @@ IF 규칙_변경_후_평가_점수 < 규칙_변경_전_평가_점수 - 2점:
 ### 3-2. 롤백 프로세스
 ```bash
 # 이전 규칙 버전으로 복원
-/moai evolution --rollback --file=01-content_generator.md --version=v1.2
+/moai evolution --rollback --file=01-copywriting.md --version=v1.2
 
 # 또는 특정 커밋으로 복원
 /moai evolution --rollback --commit=abc123def456
@@ -226,7 +226,7 @@ IF 규칙_변경_후_평가_점수 < 규칙_변경_전_평가_점수 - 2점:
 .moai/evolution/rollback-log.md:
 
 2026-04-10 10:30 Rollback 1
-- 파일: 01-content_generator.md
+- 파일: 01-copywriting.md
 - 이유: "실행 스텝" 추가 후 형식 오류
 - 복원 버전: v1.2
 - 담당: Auto-Rollback
@@ -267,9 +267,9 @@ IF Day 30 평가 < Day 7 평가:
 .moai/evolution/metrics.csv:
 
 date,harness,feedback_score,completion_time,quality_score,problem_type
-2026-04-04,content_generator,8,12,85,实行性不足
-2026-04-04,automation_harness,9,8,90,none
-2026-04-05,content_generator,8.5,14,88,实行性不足 (개선중)
+2026-04-04,copywriting,8,12,85,실행성不足
+2026-04-04,sop-writer,9,8,90,none
+2026-04-05,copywriting,8.5,14,88,실행성不足 (개선중)
 ...
 ```
 
@@ -308,7 +308,7 @@ date,harness,feedback_score,completion_time,quality_score,problem_type
 /moai evolution --suggest
 
 자동 제안 예:
-"Rule 01-content_generator.md의 '실행성' 강화를 제안합니다.
+"Rule 01-copywriting.md의 '실행성' 강화를 제안합니다.
 최근 5개 작업 평가 점수 平均 8.2점이지만,
 피드백 키워드 '실행 아이템'이 3회 반복되었습니다."
 
