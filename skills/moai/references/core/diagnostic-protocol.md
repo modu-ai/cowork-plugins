@@ -36,13 +36,14 @@ MoAI 환경과 프로필 상태를 진단하고 문제를 식별하는 프로토
 │ ├─ copywriting: ✓ (설치됨)
 │ ├─ email-crafter: ✓ (설치됨)
 │ ├─ sop-writer: ✗ (미설치)
-│ │  └─ 설치 권장: /moai init --harness sop-writer
+│ │  └─ 설치 권장: /moai init --harness=sop-writer
 │ └─ 설치된 하네스: 2/5
 │
 │ [Phase 4] 규칙 파일 검사
 │ ├─ 00-moai-core.md: ✓
 │ ├─ 01-copywriting.md: ✓
 │ ├─ 01-email-crafter.md: ✓
+│ ├─ 01-ad-campaign.md: ✓
 │ ├─ 02-locale-kr.md: ✓
 │ └─ 규칙 로드 성공: ✓
 │

@@ -68,12 +68,12 @@ role_industry:
 ### 3-2. 역할 카테고리 매핑
 | 역할 | 카테고리 | 핵심 하네스 |
 |-----|---------|----------|
-| PM/Product Manager | pm | strategy_planner |
-| 마케팅/CMO | marketing | marketing_strategist |
-| 경영/CEO/COO | strategy | strategy_planner |
-| 재무/CFO | finance | financial_analyzer |
-| 기술/CTO | tech | tech_advisor |
-| HR/CHRO | hr | meeting_facilitator |
+| PM/Product Manager | pm | product-roadmap |
+| 마케팅/CMO | marketing | ad-campaign |
+| 경영/CEO/COO | strategy | product-roadmap |
+| 재무/CFO | finance | financial-model |
+| 기술/CTO | tech | technical-writer |
+| HR/CHRO | hr | meeting-strategist |
 
 ---
 
@@ -145,8 +145,8 @@ context_depth:
   evolution_count: 2                 # 자기학습 횟수
   feedback_average: 8.2              # 평가 평균 (0~10)
   harness_usage: {                   # 하네스별 사용
-    content_generator: 5,
-    email_harness: 3
+    copywriting: 5,
+    email-crafter: 3
   }
   locale_customization_level: 3      # 현지화 수준 (1~5)
 ```

@@ -176,9 +176,17 @@ ELSE
   [3] meeting-strategist (회의 전략)
   [4] market-research (시장 조사)
   [5] 이전 (← 페이지 1)
-```
 
-**선택 저장**: `.moai/harness-selection.json`
+**저장 파일 예**: `.moai/harness-contexts/{harness-id}.md`
+예시:
+  - copywriting.md
+  - email-crafter.md
+  - ad-campaign.md
+  - financial-model.md
+  - sop-writer.md
+  - compliance.md
+  - meeting-strategist.md
+  - market-research.md
 
 ---
 

@@ -24,25 +24,25 @@
 ### B등급 — 핵심 (80% 이상 충족 권장)
 하네스별 도메인 맥락:
 
-**content_generator**:
+**copywriting**:
 - 주요 콘텐츠 형식 (블로그/이메일/SNS/광고)
 - 타겟 독자/청중
 - 톤&스타일 (공식/캐주얼/기술적)
 - 발행 채널 (웹/이메일/SNS)
 
-**financial_analyzer**:
+**financial-model**:
 - 분석 범위 (회사 전체/부서/프로젝트)
 - 주요 KPI (수익/비용/ROI/현금흐름)
 - 시간 단위 (월/분기/연)
 - 비교 기준 (이전 기간/목표/경쟁사)
 
-**automation_harness**:
+**sop-writer**:
 - 자동화 대상 프로세스
 - 현재 반복 주기 (일/주/월)
 - 예상 효율 개선도
 - 우선 영역
 
-**marketing_strategist**:
+**ad-campaign**:
 - 캠페인 목표 (인식/전환/유지)
 - 타겟 고객 세그먼트
 - 예산 규모
@@ -209,8 +209,8 @@ IF mobo_resolution_attempts >= 2:
 │   └── evaluation_after_exec: 8/10
 │
 └── harness-contexts/
-    ├── content_generator.md (B등급 메타데이터)
-    ├── financial_analyzer.md
+    ├── copywriting.md (B등급 메타데이터)
+    ├── financial-model.md
     └── ...
 ```
 

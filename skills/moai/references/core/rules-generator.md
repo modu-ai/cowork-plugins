@@ -113,9 +113,9 @@ save_file(".claude/rules/00-moai-core.md", content)
 ### 3-1. 파일 구조
 각 하네스마다 개별 규칙 파일:
 
-**예시 1: 01-content_generator.md**
+**예시 1: 01-copywriting.md**
 ```markdown
-# 01-content_generator.md — 콘텐츠 생성 하네스 규칙
+# 01-copywriting.md — 콘텐츠 생성 하네스 규칙
 
 ## 적용 범위
 content_generator 하네스 실행 시만 적용됩니다.
@@ -160,9 +160,9 @@ content_generator 하네스 실행 시만 적용됩니다.
 - [ ] 톤&스타일 일관성
 ```
 
-**예시 2: 01-automation_harness.md**
+**예시 2: 01-sop-writer.md**
 ```markdown
-# 01-automation_harness.md — 자동화 하네스 규칙
+# 01-sop-writer.md — 자동화 하네스 규칙
 
 ## 적용 범위
 automation_harness 실행 시만 적용됩니다.

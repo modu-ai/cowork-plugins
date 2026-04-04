@@ -171,7 +171,7 @@ outputs/
 생성된 파일을 사용자가 접근할 수 있도록 링크 제공:
 
 "결과물이 준비되었습니다:
-computer:///.moai/projects/proj-2026-04-04-001/outputs/content_generator_2026-04-04_digital-marketing-trends.md
+computer:///.moai/projects/proj-2026-04-04-001/outputs/copywriting_2026-04-04_digital-marketing-trends.md
 
 [컴퓨터에서 열기] [수정하기] [공유하기]"
 ```

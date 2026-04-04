@@ -98,7 +98,7 @@ content_generator에서 "사용자는 짧은 문단 선호" 발견
 
 ## 2026-04-04 (Day 1)
 
-### 작업 1: content_generator — 블로그 글 작성
+### 작업 1: copywriting — 블로그 글 작성
 - **결과물**: "디지털 마케팅 트렌드 2026"
 - **소요 시간**: 12분
 - **사용자 평가**: 8점 ⭐⭐⭐⭐☆
@@ -107,9 +107,9 @@ content_generator에서 "사용자는 짧은 문단 선호" 발견
 - **문제점**:
   1. 전략적 조언은 있지만 "실행 스텝"이 구체적이지 않음
   2. 내부 사례 부재 (귀사 사례 추가 필요)
-- **패턴**: content_generator에서 "실행성" 약함
+- **패턴**: copywriting에서 "실행성" 약함
 
-### 작업 2: automation_harness — 이메일 발송 자동화
+### 작업 2: sop-writer — 이메일 발송 자동화
 - **결과물**: Zapier + Gmail 자동화 설정안
 - **소요 시간**: 8분
 - **사용자 평가**: 9점 ⭐⭐⭐⭐⭐
@@ -119,11 +119,11 @@ content_generator에서 "사용자는 짧은 문단 선호" 발견
   1. 단계별 설명이 명확
   2. 도구 선택 근거가 명시
   3. 비용 예상치 제공
-- **패턴**: automation_harness에서 "구체성" 강함
+- **패턴**: sop-writer에서 "구체성" 강함
 
 ## 진화 전략
-→ content_generator에 "실행 스텝" 템플릿 추가
-→ automation_harness의 "구체성" 방식을 content_generator에 적용
+→ copywriting에 "실행 스텝" 템플릿 추가
+→ sop-writer의 "구체성" 방식을 copywriting에 적용
 ```
 
 ### 2-2. rule-updates.md
@@ -133,7 +133,7 @@ content_generator에서 "사용자는 짧은 문단 선호" 발견
 
 ## 2026-04-05 (Update 1)
 
-### 변경 파일: .claude/rules/01-content_generator.md
+### 변경 파일: .claude/rules/01-copywriting.md
 - **변경 이유**: 사용자 피드백 "실행 아이템 필요"
 - **변경 전**: "솔루션 3가지 제시"
 - **변경 후**: "솔루션 3가지 + 각 솔루션별 실행 스텝 3-5개"
@@ -157,7 +157,7 @@ content_generator에서 "사용자는 짧은 문단 선호" 발견
 
 ### Pattern 1: 구체적 실행 스텝
 ```
-조건: 자동화/프로세스 설명
+조건: 자동화/프로세스 설명 (sop-writer)
 성공률: 95% (평가 점수 > 8)
 
 템플릿:
@@ -183,7 +183,7 @@ content_generator에서 "사용자는 짧은 문단 선호" 발견
 
 ## Bad Patterns (제거할 패턴)
 
-### Anti-Pattern 1: 과도하게 이론적
+### Anti-Pattern 1: 과도하게 이론적 (copywriting)
 ```
 증상: 사용자 피드백 "너무 학술적"
 빈도: 5회/월

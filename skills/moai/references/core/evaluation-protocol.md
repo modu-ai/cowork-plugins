@@ -286,7 +286,7 @@ D등급:
 ```json
 {
   "evaluation_date": "2026-04-04T10:45:00+09:00",
-  "harness": "content_generator",
+  "harness": "copywriting",
   "dimensions": {
     "accuracy": 92,
     "completeness": 88,

@@ -101,10 +101,10 @@ claude_md_content = template.render(
 
 ### 원칙 2: 하네스 체계 준수
 선택된 하네스만 작동하며, 각 하네스는 고유의 워크플로우를 따릅니다.
-- content_generator: 콘텐츠 생성 전문
-- email_harness: 이메일 마케팅 전문
-- marketing_strategist: 전략 수립 전문
-- automation_harness: 프로세스 자동화 전문
+- copywriting: 콘텐츠 생성 전문
+- email-crafter: 이메일 마케팅 전문
+- ad-campaign: 전략 수립 전문
+- sop-writer: 프로세스 자동화 전문
 
 ### 원칙 3: 컨텍스트 학습
 매 프로젝트 후 컨텍스트를 학습하고 진화 로그(.moai/evolution/)에 기록합니다.
@@ -132,18 +132,18 @@ MoAI 작업 구조:
   ├─ CLAUDE.md                # 본 파일
   └─ rules/
       ├─ 00-moai-core.md      # 코어 규칙 (항상)
-      ├─ 01-content_generator.md  # 콘텐츠 하네스 규칙
-      ├─ 01-email_harness.md  # 이메일 하네스 규칙
-      ├─ 01-marketing_strategist.md # 마케팅 하네스 규칙
-      ├─ 01-automation_harness.md # 자동화 하네스 규칙
+      ├─ 01-copywriting.md  # 콘텐츠 하네스 규칙
+      ├─ 01-email-crafter.md  # 이메일 하네스 규칙
+      ├─ 01-ad-campaign.md # 마케팅 하네스 규칙
+      ├─ 01-sop-writer.md # 자동화 하네스 규칙
       └─ 02-locale-kr.md      # 한국 로케일 규칙
 
 .moai/
   ├─ harness-contexts/        # 하네스별 수집 컨텍스트
-  │   ├─ content_generator.md
-  │   ├─ email_harness.md
-  │   ├─ marketing_strategist.md
-  │   └─ automation_harness.md
+  │   ├─ copywriting.md
+  │   ├─ email-crafter.md
+  │   ├─ ad-campaign.md
+  │   └─ sop-writer.md
   ├─ evolution/               # 자기학습 로그
   │   ├─ self-refine-log.md
   │   └─ rule-updates.md
@@ -265,7 +265,7 @@ template = load_template(template_file)
 
 생성된 CLAUDE.md에 포함될 규칙 목록:
 
-### content_generator 규칙 예
+### copywriting 규칙 예
 ```
 - 마크다운 형식으로 구조화된 콘텐츠 생성
 - SEO 최적화 고려 (메타 디스크립션, 키워드 밀도)
@@ -273,7 +273,7 @@ template = load_template(template_file)
 - 길이: 블로그 2,000~3,000자, SNS 100~280자
 ```
 
-### automation_harness 규칙 예
+### sop-writer 규칙 예
 ```
 - 반복 주기 감지 (일/주/월)
 - 예상 효율 개선도 계산 (시간 절약)
@@ -312,7 +312,7 @@ CLAUDE.md 재생성 필요 시:
 
 | 상황 | 트리거 |
 |-----|--------|
-| 하네스 추가/제거 | `/moai install/uninstall` |
+| 하네스 추가/제거 | `/moai init/uninstall` |
 | 프로필 변경 (역할/회사) | `/moai profile --update` |
 | 로케일 변경 | `/moai init --reset-locale` |
 | 규칙 업데이트 | 자동 (1주일마다) |
