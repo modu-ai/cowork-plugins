@@ -116,15 +116,21 @@ moai-cowork/
 │       ├── SKILL.md                   # Single-Skill 라우터 (진입점)
 │       └── references/
 │           ├── core/                  # 코어 프로토콜 (11개)
+│           │   └── INDEX.md           # 프로토콜 인덱스
 │           ├── catalog/               # 하네스 카탈로그 (12개)
+│           │   └── index.md           # 카탈로그 인덱스
 │           ├── harness-100/           # 100개 하네스 레퍼런스
 │           │   ├── ko/               # 한국어 (100개 .md)
 │           │   └── en/               # 영어 (100개 .md)
-│           └── locale/                # 로캘 데이터 (한국 내장 + 전세계 웹검색)
+│           └── locale/                # 로캘 데이터
+│               ├── kr/index.md        # 한국 내장 데이터
+│               └── cultural-adaptation-guide.md
 │
 ├── README.md                          # 한국어 (이 문서)
 ├── README-en.md ~ README-he.md        # 16개 언어 README
-└── LICENSE                            # MIT
+├── CONTRIBUTING.md                    # 기여 가이드
+├── LICENSE                            # MIT
+└── .gitignore
 ```
 
 ### 코어 프로토콜 (11개)
@@ -299,18 +305,18 @@ moai-cowork/
 
 ### ⑩ 로캘 규제 & 신흥 전문 (10개)
 
-| # | ID | 이름 | 설명 | 지원 국가 |
-|---|-----|------|------|----------|
-| 91 | `accounting-tax` | 회계 & 세무 | 회계 기준, 세무 신고, 장부, 세금 최적화 | KR, JP, US, UK, DE, FR |
-| 92 | `finance-compliance` | 금융 컴플라이언스 | 금융 규제, AML/KYC, 핀테크 규제, 보고 의무 | KR, JP, US, UK |
-| 93 | `government-affairs` | 공공 행정 | 정책 분석, 민원 서류, 보조금 신청 | KR, JP, US, UK |
-| 94 | `vendor-management` | 거래처 관리 | 거래처 관계, 평가, 계약 갱신, 성과 추적 | 전체 |
-| 95 | `labor-hr` | 노동·인사 규제 | 노동법 준수, 인사 규정, 취업규칙, 급여 | KR, JP, US, UK, DE, FR |
-| 96 | `import-export` | 수출입 | 수출입 절차, 관세, 원산지, 통관 서류 | KR, JP, US, UK, DE |
-| 97 | `tax-optimization` | 세금 최적화 | 합법적 절세, 세액공제, 감면 제도 활용 | KR, JP, US, UK, DE, FR |
-| 98 | `corporate-governance` | 기업 지배구조 | 이사회 운영, 내부 통제, 주주 관계 | KR, JP, US, UK |
-| 99 | `education-tech` | 교육 기술 | 에듀테크 전략, LMS, 학습 분석, 디지털 교육 | 전체 |
-| 100 | `elderly-care-planning` | 시니어 케어 플래닝 | 요양, 건강관리, 재정, 법적 대리 | 전체 |
+| # | ID | 이름 | 설명 | 로케일 |
+|---|-----|------|------|--------|
+| 91 | `accounting-tax` | 회계 & 세무 | 회계 기준, 세무 신고, 장부, 세금 최적화 | KR 내장 / 기타 웹검색 |
+| 92 | `finance-compliance` | 금융 컴플라이언스 | 금융 규제, AML/KYC, 핀테크 규제, 보고 의무 | KR 내장 / 기타 웹검색 |
+| 93 | `government-affairs` | 공공 행정 | 정책 분석, 민원 서류, 보조금 신청 | KR 내장 / 기타 웹검색 |
+| 94 | `vendor-management` | 거래처 관리 | 거래처 관계, 평가, 계약 갱신, 성과 추적 | 전세계 |
+| 95 | `labor-hr` | 노동·인사 규제 | 노동법 준수, 인사 규정, 취업규칙, 급여 | KR 내장 / 기타 웹검색 |
+| 96 | `import-export` | 수출입 | 수출입 절차, 관세, 원산지, 통관 서류 | KR 내장 / 기타 웹검색 |
+| 97 | `tax-optimization` | 세금 최적화 | 합법적 절세, 세액공제, 감면 제도 활용 | KR 내장 / 기타 웹검색 |
+| 98 | `corporate-governance` | 기업 지배구조 | 이사회 운영, 내부 통제, 주주 관계 | KR 내장 / 기타 웹검색 |
+| 99 | `education-tech` | 교육 기술 | 에듀테크 전략, LMS, 학습 분석, 디지털 교육 | 전세계 |
+| 100 | `elderly-care-planning` | 시니어 케어 플래닝 | 요양, 건강관리, 재정, 법적 대리 | 전세계 |
 
 ---
 
