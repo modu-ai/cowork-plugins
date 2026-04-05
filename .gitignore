@@ -1,27 +1,2 @@
-# OS
 .DS_Store
-Thumbs.db
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# MoAI runtime (generated per-project)
-.moai/
-.claude/
-
-# Auto-memory (user-specific)
-.auto-memory/
-
-# Node
 node_modules/
-
-# Python
-__pycache__/
-*.pyc
-.env
-
-# Logs
-*.log

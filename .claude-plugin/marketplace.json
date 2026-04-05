@@ -5,12 +5,13 @@
     "email": "namgoos@gmail.com"
   },
   "metadata": {
-    "description": "MoAI 플러그인 마켓플레이스"
+    "description": "MoAI 플러그인 마켓플레이스",
+    "version": "0.1.0"
   },
   "plugins": [
     {
       "name": "moai-cowork",
-      "source": ".",
+      "source": "./plugins/moai-cowork",
       "description": "MoAI — 100 self-evolving domain harnesses for Cowork"
     }
   ]
