@@ -2,7 +2,7 @@
 
 ## 개요
 하네스 실행에 필요한 사용자 맥락을 체계적으로 수집하는 프로토콜입니다.
-맥락 충분성 등급, 모호성 감지, 반복 제한을 통해 효율적인 수집을 구현합니다.
+맥락 충분성 등급, 심화 인터뷰, 모호성 감지, 반복 제한을 통해 효율적인 수집을 구현합니다.
 
 ---
 
@@ -22,35 +22,39 @@
 ---
 
 ### B등급 — 핵심 (80% 이상 충족 권장)
-하네스별 도메인 맥락:
+하네스별 도메인 맥락. **반드시 해당 하네스 레퍼런스의 "맥락 수집 질문" 섹션 참조**.
 
-**copywriting**:
-- 주요 콘텐츠 형식 (블로그/이메일/SNS/광고)
-- 타겟 독자/청중
-- 톤&스타일 (공식/캐주얼/기술적)
-- 발행 채널 (웹/이메일/SNS)
+**질문 생성 규칙 (중요!)**:
+```
+1. 하네스 레퍼런스 로딩: Read("references/harness-100/{lang}/{harness-id}.md")
+2. "맥락 수집 질문 (AskUserQuestion)" 섹션의 필수 질문(Q1~Q4) 그대로 사용
+3. 임의로 질문을 만들지 않는다
+4. 옵션 예시도 레퍼런스 원본 그대로
+```
 
-**financial-model**:
-- 분석 범위 (회사 전체/부서/프로젝트)
-- 주요 KPI (수익/비용/ROI/현금흐름)
-- 시간 단위 (월/분기/연)
-- 비교 기준 (이전 기간/목표/경쟁사)
+**예시** (레퍼런스 기반):
 
-**sop-writer**:
-- 자동화 대상 프로세스
-- 현재 반복 주기 (일/주/월)
-- 예상 효율 개선도
-- 우선 영역
+**copywriting** (references/harness-100/ko/copywriting.md):
+- Q1. 콘텐츠 목적은? → 브랜드 인지 / 리드 생성 / 전환 유도 / 고객 유지
+- Q2. 타겟 독자는? → B2B 의사결정자 / B2C 소비자 / 내부 직원 / 투자자
+- Q3. 긴급도는? → 즉시 / 1주일 내 / 2주+ / 미정
+- Q4. 선호 톤은? → 전문적 / 캐주얼 / 스토리텔링 / 데이터 중심
 
-**ad-campaign**:
-- 캠페인 목표 (인식/전환/유지)
-- 타겟 고객 세그먼트
-- 예산 규모
-- 경쟁 환경
+**market-research** (references/harness-100/ko/market-research.md):
+- Q1. 조사 대상은? → 특정 산업명/제품군
+- Q2. 조사 목적은? → 신규 진입 / 경쟁 대응 / 투자 판단 / 전략 수립
+- Q3. 지리 범위는? → 한국 / 아시아 / 글로벌
+- Q4. 초점은? → 시장 규모 / 경쟁사 / 소비자 니즈 / 트렌드
+
+**technical-writer** (references/harness-100/ko/technical-writer.md):
+- Q1. 문서 유형은? → API 가이드 / 사용자 매뉴얼 / 운영 가이드 / 제품 가이드
+- Q2. 타깃 독자는? → 개발자 / 관리자 / 최종 사용자 / 조합
+- Q3. 기술 스택은? → 웹 / 모바일 / 클라우드 / 데이터베이스 / 기타
+- Q4. 문서 현황은? → 신규 / 기존 개선 / 마이그레이션 / 유지보수
 
 ---
 
-### C등급 — 보강 (완성도 향상용)
+### C등급 — 보강 (심화 인터뷰로 수집)
 추가 컨텍스트:
 - 팀 규모
 - 업무 일정/마감
@@ -65,25 +69,26 @@
 
 ### 2-1. 초기 평가
 ```
-harn_contexts = load_harness_contexts(selected_harness)
+harness_ref = Read("references/harness-100/{lang}/{harness-id}.md")
 current_context = collect_user_context_from_profile()
 missing_context = A등급 + 필수_B등급 - current_context
 
 IF missing_context.empty():
   → 즉시 실행 (프로필 완전)
 ELSE:
-  → 질문 프롬프트 생성
+  → 질문 프롬프트 생성 (harness_ref의 맥락 수집 질문 사용)
 ```
 
 ### 2-2. 질문 생성 (AskUserQuestion)
 ```
-Q_count = min(len(missing_context), 4)
-질문들 = generate_questions(missing_context, Q_count)
+# 하네스 레퍼런스에서 질문 추출
+questions = extract_questions_from_harness_ref(harness_ref, section="맥락 수집 질문")
+Q_count = min(len(questions), 4)
 
-FOR each 질문 in 질문들:
-  options = generate_options(질문, default_3_to_4)
-  user_response = AskUserQuestion(질문, options)
-  context_store[질문_id] = user_response
+FOR each 질문 in questions[:Q_count]:
+  options = 질문.options  # 레퍼런스에 정의된 옵션 그대로 사용
+  user_response = AskUserQuestion(질문.text, options)
+  context_store[질문.id] = user_response
 ```
 
 ### 2-3. 모호성 감지
@@ -96,14 +101,14 @@ IF response == "기타" OR response_confidence < 0.7:
   → context_store[질문_id] = [response, follow_up_response]
 ```
 
-### 2-4. 소크라테스식 심화 질문 (Socratic Deepening)
+### 2-4. 심화 인터뷰 (Deep Interview)
 
 AskUserQuestion 옵션 선택 이후, 맥락 깊이를 B→C등급으로 향상시키기 위해
 **텍스트 대화 기반** 열린 질문을 1-2개 수행한다.
 
 ```
 IF sufficiency_score >= 60% AND sufficiency_score < 80%:
-  → 소크라테스식 심화 질문 수행 (텍스트 대화)
+  → 심화 인터뷰 수행 (텍스트 대화)
 
 목적별 질문 패턴:
 
@@ -119,6 +124,12 @@ IF sufficiency_score >= 60% AND sufficiency_score < 80%:
   - 답변을 요약하여 확인: "정리하면 ~이라는 뜻이 맞으시죠?"
   - 사용자가 "빨리 진행해" 또는 간단히 답하면 즉시 실행으로 전환
   - 응답 내용을 context_store에 저장
+
+하네스별 심화 질문 우선순위:
+  - 전략/규제 하네스 (market-research, compliance 등): 동기 탐색 + 전제 확인
+  - 콘텐츠 하네스 (copywriting, newsletter 등): 영향 범위 + 제약 발견
+  - 기술 하네스 (technical-writer, feature-spec 등): 대안 탐색 + 제약 발견
+  - 또는 하네스 레퍼런스의 "선택적 심화 질문" 섹션에서 택 2
 ```
 
 ### 2-5. 충분성 재평가
@@ -151,12 +162,12 @@ LOOP for round in 1..7:
   remaining_context = identify_missing_context()
   IF remaining_context.empty():
     break  (충족)
-  
+
   questions = generate_questions(remaining_context, max_4)
   FOR q in questions:
     response = AskUserQuestion(q)
     store_context(q, response)
-  
+
   sufficiency = evaluate()
   IF sufficiency >= 80% or round >= 7:
     break
@@ -205,12 +216,12 @@ ELSE:
 ```
 IF signal_count <= 1:
   → 단순 follow_up (1질문)
-  
+
 ELSE IF signal_count >= 2:
   → 다중 follow_up (최대 2질문)
   → 또는 수동 입력 제안
 
-IF mobo_resolution_attempts >= 2:
+IF resolution_attempts >= 2:
   → "일부 정보 불명확하지만 진행 가능합니다."
   → [계속] [저장 후 나중에]
 ```
@@ -219,36 +230,60 @@ IF mobo_resolution_attempts >= 2:
 
 ## 5. 저장 및 추적
 
-### 5-1. 저장 구조
+### 5-1. harness-contexts 파일 구조 (핵심!)
+
+**기존 문제**: 15줄짜리 축약본만 생성됨
+**개선**: 사용자 맥락 + 풀 하네스 레퍼런스 복사
+
+```markdown
+# {사용자 언어 하네스명} ({harness-id}) — 하네스 컨텍스트
+
+## 사용자 맥락 (수집 결과)
+- **하네스 ID**: {harness-id}
+- **표시명**: {사용자 언어 하네스명}
+- **카테고리**: {category}
+- **설치일**: {YYYY-MM-DD}
+- **충분성 등급**: {A/B/C}
+
+### 수집된 답변
+- **Q1**: {질문} → {답변}
+- **Q2**: {질문} → {답변}
+- **Q3**: {질문} → {답변}
+- **Q4**: {질문} → {답변}
+
+### 심화 맥락 (심화 인터뷰 결과)
+- {열린 질문 1}: {사용자 답변 요약}
+- {열린 질문 2}: {사용자 답변 요약}
+
+### 활용 시나리오
+- {구체적 시나리오 1}
+- {구체적 시나리오 2}
+- {구체적 시나리오 3}
+
+---
+
+## 하네스 레퍼런스 (원본)
+
+{references/harness-100/{lang}/{harness-id}.md 전체 내용 복사}
+{축약 금지! 페르소나, 전문가 역할, 워크플로우, 산출물 형식 등 모두 포함}
 ```
-.moai/
-├── context-log.md
-│   ├── collection_date: YYYY-MM-DD HH:MM
-│   ├── harness_id: {harness}
-│   ├── rounds_taken: 3
-│   ├── sufficiency_score: 85%
-│   ├── contexts_collected:
-│   │   ├── q1: {answer}
-│   │   ├── q2: {answer}
-│   │   └── ...
-│   └── evaluation_after_exec: 8/10
-│
-└── harness-contexts/
-    ├── copywriting.md (B등급 메타데이터)
-    ├── financial-model.md
-    └── ...
-```
+
+**파일 최소 크기**: 80줄 이상
+- 사용자 맥락 섹션: ~25줄
+- 하네스 레퍼런스 원본: ~55줄 이상 (하네스별 상이)
+- 15줄 축약본은 부적합 → 재생성 필요
 
 ### 5-2. 메타데이터 추적
 ```
 context_metadata = {
   collected_date: timestamp,
-  source: "profile" | "user_input",
+  source: "profile" | "user_input" | "document_upload",
   confidence: 0.0 ~ 1.0,
   ttl_days: 30,
   last_used: timestamp,
   feedback_score: 0 ~ 10,
-  refresh_needed: boolean
+  refresh_needed: boolean,
+  interview_depth: "step1_only" | "step1_step2" | "full_step123"
 }
 ```
 
@@ -288,4 +323,4 @@ IF context_missing():
 - **재질문율**: 평균 재질문 횟수
 - **만족도**: 사용자 평가 평균
 - **캐시 히트율**: 프로필 재사용 %
-
+- **심화 인터뷰 깊이**: 평균 심화 질문 수

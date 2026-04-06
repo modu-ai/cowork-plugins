@@ -4,6 +4,12 @@
 사용자의 선택사항과 프로필을 기반으로 .claude/rules/ 디렉토리의 규칙 파일들을 자동 생성합니다.
 규칙은 MoAI의 행동과 결정을 제어하는 핵심 요소입니다.
 
+**핵심 원칙:**
+- **하네스 레퍼런스 기반 생성**: 규칙은 하네스 레퍼런스의 내용을 반영하여 상세하게 작성
+- **최소 줄 수 보장**: 00-moai-core.md는 50줄+, 01-{harness}.md는 30줄+
+- **언어 일관성**: 모든 규칙 파일은 사용자가 선택한 언어(target_language)로 작성
+- **하네스 ID 정합성**: references/harness-100/{lang}/ 에 실제 존재하는 파일명만 사용
+
 ---
 
 ## 1. 규칙 파일 구조
@@ -11,24 +17,23 @@
 ### 1-1. 파일 명명 규칙
 ```
 .claude/rules/
-├─ 00-moai-core.md              # 항상 로드 (MoAI 기본)
-├─ 01-{harness-id}.md           # 선택된 각 하네스마다 1개
-├─ 02-locale-{country}.md       # 현지 규제/문화 (필요시)
-└─ README.md                    # 규칙 설명서
+├─ 00-moai-core.md              # 항상 로드 (MoAI 기본) — 최소 50줄
+├─ 01-{harness-id}.md           # 선택된 각 하네스마다 1개 — 최소 30줄
+└─ 02-locale-{country}.md       # 현지 규제/문화 (항상 생성) — 최소 25줄
 ```
 
 ### 1-2. 우선순위
 ```
 1순위: 00-moai-core.md (항상)
 2순위: 01-{harness-id}.md (선택된 하네스별)
-3순위: 02-locale-{country}.md (현지화 필요시)
+3순위: 02-locale-{country}.md (현지화)
 ```
 
 ---
 
-## 2. 00-moai-core.md — MoAI 코어 규칙
+## 2. 00-moai-core.md — MoAI 코어 규칙 (최소 50줄!)
 
-### 2-1. 파일 구조
+### 2-1. 파일 구조 (10개 섹션 모두 포함)
 ```markdown
 # 00-moai-core.md — MoAI 코어 행동 규칙
 
@@ -37,7 +42,7 @@ MoAI의 모든 하네스와 상호작용에 적용되는 기본 규칙입니다.
 
 ## 1. 프로필 우선 규칙
 - 모든 작업 시작 전 /mnt/.auto-memory/moai-profile.md 확인
-- 사용자 이름, 역할, 회사명 자동 참조
+- 사용자 이름({user_name}), 역할({role}), 회사({company_name}) 자동 참조
 - 프로필에 없는 정보는 Context Collector로 수집
 
 ## 2. 언어&로케일 규칙
@@ -54,8 +59,9 @@ MoAI의 모든 하네스와 상호작용에 적용되는 기본 규칙입니다.
 - 사용자 호칭: {user_name}님
 
 ## 4. 하네스 라우팅 규칙
-- 사용자 요청 → router.md로 자동 분류
-- 선택되지 않은 하네스는 작동하지 않음
+- 사용자 요청 → 자동 분류하여 해당 하네스 실행
+- 설치된 하네스: {installed_harness_display_list}
+  (예: "시장 조사, 강의 빌더, 카피라이팅" — 사용자 언어로 표기)
 - 복합 요청 → 해당 하네스들을 순차/병렬 실행
 
 ## 5. 컨텍스트 관리 규칙
@@ -91,6 +97,9 @@ MoAI의 모든 하네스와 상호작용에 적용되는 기본 규칙입니다.
 - 캐싱 활용 (반복 쿼리 최적화)
 ```
 
+**절대 축약 금지**: 위 10개 섹션을 모두 포함해야 한다.
+5줄짜리 코어 규칙은 품질 부적합.
+
 ### 2-2. 자동 생성 로직
 ```python
 template_moai_core = load_template("moai-core-template.md")
@@ -101,121 +110,132 @@ content = template_moai_core.render(
   honorific_style=profile.preferences.honorific_style,
   date_format=profile.preferences.date_format,
   currency=profile.preferences.currency,
-  timezone=profile.timezone
+  timezone=profile.timezone,
+  installed_harness_list=", ".join([h.display_name for h in selected_harnesses])
 )
 save_file(".claude/rules/00-moai-core.md", content)
 ```
 
 ---
 
-## 3. 01-{harness-id}.md — 하네스별 규칙
+## 3. 01-{harness-id}.md — 하네스별 규칙 (최소 30줄!)
 
-### 3-1. 파일 구조
-각 하네스마다 개별 규칙 파일:
+### 3-0. 하네스 ID 정합성 규칙
 
-**예시 1: 01-copywriting.md**
-```markdown
-# 01-copywriting.md — 콘텐츠 생성 하네스 규칙
+```
+하네스 ID는 반드시 references/harness-100/{lang}/ 에 실제 존재하는 파일명과 일치해야 한다.
 
-## 적용 범위
-copywriting 하네스 실행 시만 적용됩니다.
-
-## 1. 콘텐츠 유형별 가이드
-### 블로그 글
-- 길이: 2,000~3,000자
-- 구조: 제목 → 소개 → 본문 3-4섹션 → 결론
-- SEO: 메인 키워드 5회, 서브키워드 3회
-- 이미지: 섹션당 1장 권장
-
-### 이메일 뉴스레터
-- 길이: 500~800자
-- 구조: 제목(30자 이내) → 소개 → 핵심 3항목 → CTA
-- 톤: 친근하면서 전문적
-
-### SNS 게시물
-- 길이: 트위터 280자, 인스타그램 2,200자
-- 해시태그: 인스타그램 15~30개
-- 이모지: 맥락에 맞게 (과다 사용 금지)
-
-## 2. 톤&스타일 규칙
-- 사용자 톤: {tone_from_profile}
-- 일인칭: "{company_name}는", "우리는" (기사체)
-- 대상 독자: {target_audience}
-
-## 3. SEO 규칙
-- 메타 디스크립션 제공 (160자 이내)
-- 서문 150자 내 메인키워드 포함
-- 헤더 계층 구조 준수 (H1 1개, H2/H3 다중)
-
-## 4. 산출물 포맷
-- 마크다운 형식
-- 저장 위치: .moai/projects/{project_id}/content/
-- 파일명: {content_type}_{date}_{title-slug}.md
-
-## 5. 품질 체크리스트
-- [ ] 문법 및 철자 확인
-- [ ] 사실 검증
-- [ ] 이미지 삽입 가능 여부 확인
-- [ ] 링크 유효성 확인 (외부 링크 있을 시)
-- [ ] 톤&스타일 일관성
+올바른: copywriting, market-research, technical-writer, course-builder,
+       ai-strategy, proposal-writer, email-crafter, financial-model
+잘못된: content_generator, documentation, course-development, business-writing, ai-integration
 ```
 
-**예시 2: 01-sop-writer.md**
-```markdown
-# 01-sop-writer.md — SOP 작성 하네스 규칙
+### 3-1. 생성 절차
 
-## 적용 범위
-sop-writer 하네스 실행 시만 적용됩니다.
-
-## 1. 자동화 감지 규칙
-자동화 가능한 업무:
-- 반복 주기 >= 1주일
-- 규칙 기반 의사결정
-- 정형화된 데이터 처리
-- 다단계 동일 워크플로우
-
-## 2. 효율성 평가 규칙
-```
-효율 점수 = (현재_시간 - 자동화_후_시간) / 현재_시간 * 100
-
-AS-IS: 월 40시간 소비
-TO-BE: 월 5시간 소비
-효율 개선: 87.5%
-```
-
-## 3. 구현 난이도 평가
-- 낮음(쉬움): API 통합, 스케줄링
-- 중간: 조건부 로직, 데이터 변환
-- 높음(어려움): 이미지 처리, 자연어 처리
-
-## 4. 위험 평가
-- 데이터 손실 위험
-- 보안 노출 위험
-- 의존성 변경 위험
-
-## 5. 검증 체크리스트
-- [ ] 테스트 환경에서 시뮬레이션
-- [ ] 예외 케이스 처리
-- [ ] 롤백 계획 수립
-- [ ] 모니터링 설정
-```
-
-### 3-2. 자동 생성 로직
 ```python
 for harness_id in selected_harnesses:
-  harness_spec = load_harness_specification(harness_id)
-  template = load_template(f"harness-rule-template-{harness_id}.md")
-  
-  context = {
-    harness_name: harness_spec.name,
-    harness_description: harness_spec.description,
-    user_tone: profile.preferences.response_tone,
-    user_language: profile.language,
-    company_info: profile.company_profile
-  }
-  
-  content = template.render(context)
+  # 1. 하네스 레퍼런스 로딩 (필수!)
+  harness_ref = Read(f"references/harness-100/{lang}/{harness_id}.md")
+
+  # 2. 레퍼런스에서 핵심 정보 추출
+  persona = extract_section(harness_ref, "페르소나")
+  expert_roles = extract_section(harness_ref, "전문가 역할")
+  core_skills = extract_section(harness_ref, "핵심 스킬")
+  workflow_phases = extract_section(harness_ref, "워크플로우")
+  deliverables = extract_section(harness_ref, "산출물 형식")
+
+  # 3. 사용자 프로필 결합
+  user_context = load_harness_context(f".moai/harness-contexts/{harness_id}.md")
+
+  # 4. 규칙 파일 생성 (30줄+ 보장)
+  content = generate_harness_rule(harness_ref, user_context, profile)
   save_file(f".claude/rules/01-{harness_id}.md", content)
+```
+
+### 3-2. 규칙 파일 필수 포함 섹션
+
+```markdown
+# 01-{harness-id}.md — {사용자 언어 하네스명} 하네스 규칙
+
+## 활성화 조건
+{하네스 레퍼런스의 개요와 관련 키워드로 구성}
+예: "시장 분석, 경쟁사 조사, 트렌드 리서치, 산업 동향 요청 시"
+
+## 페르소나
+{레퍼런스의 페르소나 섹션 반영}
+- 전문가 역할 목록 (5개)
+- 각 역할의 구체적 기능
+
+## 행동 규칙
+{레퍼런스의 워크플로우 Phase를 규칙으로 변환}
+- Phase 1: {초기 분석/수집 규칙}
+- Phase 2: {핵심 실행 규칙}
+- Phase 3: {최종화/검증 규칙}
+- Phase 4: {반성/진화 규칙}
+
+## 핵심 스킬 활용
+{레퍼런스의 핵심 스킬 섹션 반영}
+- 스킬 1: 적용 조건 및 방법
+- 스킬 2: 적용 조건 및 방법
+
+## 산출물 규칙
+{레퍼런스의 산출물 형식 반영}
+- 주요 산출물 형식 (.md, .docx, .xlsx 등)
+- 저장 위치 및 파일명 규칙
+
+## 품질 체크리스트
+{하네스 특화 검증 항목}
+- [ ] 항목 1
+- [ ] 항목 2
+- [ ] 항목 3
+- [ ] 항목 4
+- [ ] 항목 5
+```
+
+### 3-3. 예시: 01-market-research.md (30줄+)
+
+```markdown
+# 01-market-research.md — 시장 조사 하네스 규칙
+
+## 활성화 조건
+시장 분석, 경쟁사 조사, 트렌드 리서치, 산업 동향, TAM/SAM/SOM, Porter's 5 Forces 요청 시
+
+## 페르소나
+시장 조사 전문가로서 다음 역할을 수행한다:
+- **industry-analyst**: 시장 규모 산정, 산업 구조 분석, 밸류체인 분석
+- **competitor-analyst**: 경쟁사 매핑, 전략 그룹 분석, 개별 경쟁사 프로파일
+- **consumer-analyst**: 세그먼테이션, 구매 여정 매핑, 니즈 분석
+- **trend-analyst**: PESTLE 분석, 기술 트렌드, 소비자 트렌드
+- **research-reviewer**: 산업↔경쟁↔소비자↔트렌드 정합성 검증
+
+## 행동 규칙
+- 데이터 출처 명시 (웹검색 시 URL 포함)
+- 정량/정성 분석 병행
+- SWOT, Porter's 5 Forces, PESTLE 등 프레임워크 활용
+- TAM/SAM/SOM 계산 시 근거 데이터 명시
+- 시장 규모는 반드시 출처 + 연도 표기
+- AI/테크 산업 특화 관점 유지 (사용자 프로필 기반)
+- 경쟁사 최소 5개 직접/2개 간접 분석
+- 미래 시나리오 3개 제시 (Best/Base/Worst)
+- 시각화(차트, 표) 적극 활용
+
+## 핵심 스킬
+- **Porter's 5 Forces**: 신규 진입 위협, 공급자/구매자 교섭력, 대체재 위협, 경쟁 강도
+- **TAM/SAM/SOM Calculator**: 총 시장 → 접근 가능 시장 → 실현 가능 시장
+
+## 산출물 규칙
+- 전략 문서: .md (전략 브리프, 분석 보고서)
+- 실행 문서: .md / .docx (종합 리포트)
+- 데이터: .xlsx / .csv (시장 규모, 경쟁사 비교표)
+- 발표 자료: .pptx (필요 시)
+
+## 품질 체크리스트
+- [ ] 모든 수치에 출처 표기
+- [ ] TAM/SAM/SOM 계산 근거 명시
+- [ ] 경쟁사 5개+ 프로파일 완성
+- [ ] PESTLE 6개 차원 모두 분석
+- [ ] Executive Summary 포함
+- [ ] 3가지 시나리오(Best/Base/Worst) 제시
 ```
 
 ---
@@ -223,127 +243,90 @@ for harness_id in selected_harnesses:
 ## 4. 02-locale-{country}.md — 로케일 규칙
 
 ### 4-1. 생성 조건
-카테고리 10 (웹검색) 또는 규제 관련 하네스가 선택된 경우에만 생성합니다.
+**항상 생성한다.** (기존 조건부 생성에서 변경)
+사용자의 근무 국가에 따른 형식, 톤, 법률/규제 규칙을 포함.
 
-### 4-2. 파일 예시: 02-locale-kr.md
+### 4-2. 파일 예시: 02-locale-kr.md (25줄+)
 ```markdown
-# 02-locale-kr.md — 한국 로케일 규칙
+# 02-locale-kr.md — 한국 현지화 규칙
 
 ## 적용 범위
-사용자가 한국 기반일 때 적용됩니다.
+한국 로캘 관련 모든 산출물에 적용됩니다.
 
-## 1. 법률&규제 사항
-### 개인정보보호법
-- GDPR 준수 대신 PIPA(개인정보보호법) 준수
-- 데이터 처리 목적 명시 필수
-- 개인정보 3년 보유 제한
+## 1. 형식 규칙
+- 날짜: YYYY-MM-DD (예: 2026-04-06)
+- 시간: 24시간제 (예: 14:30)
+- 통화: ₩1,234,567 또는 1,234,567원
+- 주소: 시→구→동→번지 순서
+- 전화번호: 02-XXXX-XXXX 또는 010-XXXX-XXXX
+- 숫자: 1,000,000 (쉼표 구분, 소수점 미사용)
 
-### 전자상거래법
-- 온라인 판매 시 통신판매신고 필수
-- 반품 규정: 7일 이내
-- 환불 기간: 3일 이내
+## 2. 비즈니스 톤 규칙
+- 존댓말 기본 사용
+- 직급/직함 존중
+- 합의 중심 제안
+- 업무 시간: 09:00~18:00 (월~금)
+- 명절: 설(3일), 추석(3일) 고려
 
-### 통신판매법
-- 광고 메일: 수신동의 필수
-- 스팸 전송 금지
-- 송신자 표시 의무
+## 3. 법률/규제 참조
+- 개인정보보호법(PIPA) 준수 확인
+- 세법 관련 산출물 시 부가세(10%)/법인세(10-22%) 기본 반영
+- 노동법 관련 시 근로기준법 기준 참조 (주 40시간, 연차 15일)
+- 전자상거래 시 통신판매신고 의무 확인
+- 광고/마케팅 시 수신동의 필수 (정보통신망법)
 
-## 2. 비즈니스 관행
-- 업무 시간: 09:00 ~ 18:00 (월~금)
-- 주말: 토요일 또는 일요일
-- 공휴일: 정부 공식 휴일 + 기업별 관행
-- 명절: 설(3일), 추석(3일)
-
-## 3. 금융&통화
-- 통화: KRW (원)
-- 숫자 형식: 1,000,000 (쉼표)
-- 소수점: 두 자리 (₩1,000.00 형식 미사용)
-
-## 4. 날짜&시간
-- 형식: YYYY-MM-DD (ISO 8601)
-- 시간대: Asia/Seoul (UTC+09:00)
-- 요일 시작: 월요일
-
-## 5. 웹검색 로컬라이제이션
+## 4. 웹검색 현지화
 - 검색 언어: 한국어
-- 로컬 도메인: .kr
-- 한국 언론 우선: 조중동, 경제지 등
-- 한국 규제 정보: 정부24, ISMS 등
+- 한국 규제 정보: 정부24, ISMS, 국세청
+- 한국 언론: 주요 경제지, 산업 리포트 우선
 ```
 
 ### 4-3. 자동 생성 로직
 ```python
-IF (harness_uses_web_search OR harness_deals_with_regulations):
-  country = profile.country
-  locale_spec = load_locale_specification(country)
-  template = load_template(f"locale-rule-template.md")
-  
-  content = template.render(
-    country=country,
-    language=profile.language,
-    laws=locale_spec.laws,
-    business_practices=locale_spec.business_practices,
-    currency=profile.preferences.currency,
-    timezone=profile.timezone
-  )
-  
-  save_file(f".claude/rules/02-locale-{country}.md", content)
+country = profile.country
+locale_data = load_locale_data(country)  # locale/kr/index.md 또는 locale-context.md
+
+content = generate_locale_rule(
+  country=country,
+  language=profile.language,
+  locale_data=locale_data,
+  min_lines=25
+)
+
+save_file(f".claude/rules/02-locale-{country.lower()}.md", content)
 ```
 
 ---
 
-## 5. README.md — 규칙 설명서
-
-```markdown
-# .claude/rules/ — 규칙 설명서
-
-이 디렉토리는 MoAI의 행동을 제어하는 규칙 파일들을 포함합니다.
-
-## 파일 구조
-- **00-moai-core.md**: MoAI 기본 규칙 (항상 로드)
-- **01-*.md**: 각 하네스의 전문화된 규칙
-- **02-locale-*.md**: 국가별 규제/문화 규칙
-
-## 규칙 우선순위
-1. 00-moai-core.md (기본)
-2. 01-{harness-id}.md (하네스 특화)
-3. 02-locale-*.md (현지화)
-
-## 규칙 편집 가이드
-- 직접 편집은 권장하지 않습니다
-- 변경 필요시: `/moai profile --update` 사용
-- 자동 생성 후: .moai/evolution/ 에서 변경 이력 확인
-
-## 문의
-규칙에 대한 질문: `/moai doctor`
-```
-
----
-
-## 6. 생성 후 검증
+## 5. 생성 후 검증
 
 ```python
 def validate_rules():
   required_files = {
-    "00-moai-core.md": True,  # 필수
-    f"01-{harness_ids}": True,  # 선택된 각 하네스
-    f"02-locale-{country}": conditional  # 조건부
+    "00-moai-core.md": {"required": True, "min_lines": 50},
+    "01-{harness_id}.md": {"required": True, "min_lines": 30},  # 각 하네스별
+    "02-locale-{country}.md": {"required": True, "min_lines": 25}
   }
-  
+
   checks = {
     "파일 존재": all_files_exist(required_files),
+    "최소 줄 수": check_min_lines(required_files),
     "마크다운 유효": check_markdown_validity(),
-    "링크 유효": check_all_links(),
+    "하네스 ID 정합": check_harness_ids_match_references(),
     "인코딩": check_utf8_encoding(),
-    "길이": check_file_sizes()  # 너무 크지 않은지
+    "언어 일관성": check_language_matches_target()
   }
-  
+
+  IF not checks["최소 줄 수"]:
+    warn("규칙 파일이 최소 줄 수 미달. 재생성 필요.")
+    regenerate_insufficient_rules()
+
   return all(checks.values())
 ```
 
 ---
 
-## 7. 규칙 갱신 트리거
+## 6. 규칙 갱신 트리거
 
 | 상황 | 갱신 필요 |
 |-----|----------|
@@ -352,4 +335,3 @@ def validate_rules():
 | 프로필 변경 (톤/언어) | YES (00-moai-core.md 갱신) |
 | 로케일 변경 | YES (02-locale-{new}.md 생성/수정) |
 | 자동 학습 | YES (.moai/evolution/ 참조) |
-
