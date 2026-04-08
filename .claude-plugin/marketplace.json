@@ -1,18 +1,18 @@
 {
-  "name": "cowork-plugins",
+  "name": "k-harness",
   "owner": {
-    "name": "GOOS (modu-ai)",
-    "email": "namgoos@gmail.com"
+    "name": "모두의AI(modu-ai) by Goos Kim",
+    "email": "email@mo.ai.kr"
   },
   "metadata": {
-    "description": "MoAI 플러그인 마켓플레이스",
+    "description": "K-Harness Marketplace — AI Harness Plugins",
     "version": "0.1.1"
   },
   "plugins": [
     {
       "name": "moai-cowork",
       "source": "./plugins/moai-cowork",
-      "description": "MoAI — 100 self-evolving domain harnesses for Cowork"
+      "description": "MoAI — 100 self-evolving domain harnesses for Claude Cowork"
     }
   ]
 }
