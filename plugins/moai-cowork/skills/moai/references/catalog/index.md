@@ -1,180 +1,123 @@
-# MoAI 100 하네스 카탈로그
+# MoAI 100 Harness Catalog
 
 > MoAI-Cowork V.0.1.3
 
-## 카테고리 구성
+## Categories
 
-| # | 카테고리 | 파일 | 개수 |
-|---|---------|------|------|
-| 1 | 콘텐츠 & 크리에이티브 | content-creative.md | 10 |
-| 2 | 비즈니스 & 전략 | business-strategy.md | 10 |
-| 3 | 제품 & 데이터 | product-data.md | 10 |
-| 4 | 교육 & 연구 | education-research.md | 10 |
-| 5 | 라이프스타일 | lifestyle.md | 10 |
-| 6 | 커뮤니케이션 & 문서 | communication-docs.md | 10 |
-| 7 | 법률 & 컴플라이언스 | legal-compliance.md | 10 |
-| 8 | 운영 & 인사 | operations-hr.md | 10 |
-| 9 | 국제화 & 신흥기술 | locale-regulation.md | 10 |
-| 10 | 신흥 & 전문 | emerging-professional.md | 10 |
-| | **합계** | | **100** |
+| # | Category | Count | File |
+|---|----------|-------|------|
+| 1 | 콘텐츠 & 크리에이티브 | 10 | content-creative.md |
+| 2 | 비즈니스 & 전략 | 10 | business-strategy.md |
+| 3 | 마케팅 & 성장 | 10 | marketing-growth.md |
+| 4 | 교육 & 연구 | 10 | education-research.md |
+| 5 | 법률 & 컴플라이언스 | 10 | legal-compliance.md |
+| 6 | 라이프스타일 | 10 | lifestyle.md |
+| 7 | 커뮤니케이션 & 문서 | 10 | communication-docs.md |
+| 8 | 운영 & HR | 10 | operations-hr.md |
+| 9 | 재무 & 무역 | 10 | finance-trade.md |
+| 10 | 제품 & 혁신 | 10 | product-innovation.md |
 
----
+## Full Harness List (100)
 
-## 전체 하네스 목록
-
-### 카테고리 1: 콘텐츠 & 크리에이티브
-
-| # | ID | 이름 |
-|---|-----|------|
-| 1 | youtube-production | 유튜브 프로덕션 |
-| 2 | podcast-studio | 팟캐스트 스튜디오 |
-| 3 | newsletter-engine | 뉴스레터 엔진 |
-| 4 | content-repurposer | 콘텐츠 재활용 |
-| 5 | game-narrative | 게임 나러티브 |
-| 6 | brand-identity | 브랜드 아이덴티티 |
-| 7 | comic-creator | 만화/웹툰 크리에이터 |
-| 8 | visual-storytelling | 비주얼 스토리텔링 |
-| 9 | book-publishing | 책 출판 |
-| 10 | advertising-campaign | 광고 캠페인 |
-
-### 카테고리 2: 비즈니스 & 전략
-
-| # | ID | 이름 |
-|---|-----|------|
-| 11 | startup-launcher | 스타트업 런처 |
-| 12 | market-research | 시장 조사 |
-| 13 | strategy-framework | 전략 프레임워크 |
-| 14 | pricing-strategy | 가격 전략 |
-| 15 | investor-report | 투자자 보고서 |
-| 16 | scenario-planner | 시나리오 플래너 |
-| 17 | financial-modeler | 재무 모델링 |
-| 18 | sales-enablement | 영업 인에이블먼트 |
-| 19 | product-manager | 제품 매니저 |
-| 20 | gov-funding-plan | 정부지원금 계획 |
-
-### 카테고리 3: 제품 & 데이터
-
-| # | ID | 이름 |
-|---|-----|------|
-| 21 | fullstack-webapp | 풀스택 웹앱 |
-| 22 | mobile-app-builder | 모바일 앱 빌더 |
-| 23 | api-designer | API 디자이너 |
-| 24 | database-architect | 데이터베이스 아키텍트 |
-| 25 | data-analysis | 데이터 분석 |
-| 26 | data-pipeline | 데이터 파이프라인 |
-| 27 | ml-experiment | ML 실험 |
-| 28 | bi-dashboard | BI 대시보드 |
-| 29 | llm-app-builder | LLM 앱 빌더 |
-| 30 | design-system | 디자인 시스템 |
-
-### 카테고리 4: 교육 & 연구
-
-| # | ID | 이름 |
-|---|-----|------|
-| 31 | course-builder | 코스 빌더 |
-| 32 | language-tutor | 언어 튜터 |
-| 33 | exam-prep | 시험 준비 |
-| 34 | thesis-advisor | 논문 지도교수 |
-| 35 | coding-bootcamp | 코딩 부트캠프 |
-| 36 | debate-simulator | 토론 시뮬레이터 |
-| 37 | research-assistant | 연구 보조 |
-| 38 | competency-modeler | 역량 모델러 |
-| 39 | documentary-research | 다큐멘터리 연구 |
-| 40 | academic-paper | 학술 논문 |
-
-### 카테고리 5: 라이프스타일
-
-| # | ID | 이름 |
-|---|-----|------|
-| 41 | meal-planner | 식단 계획 |
-| 42 | fitness-program | 피트니스 프로그램 |
-| 43 | travel-planner | 여행 계획 |
-| 44 | personal-finance | 개인재정 |
-| 45 | wedding-planner | 결혼식 계획 |
-| 46 | space-concept-board | 공간 컨셉 보드 |
-| 47 | side-project-launcher | 사이드 프로젝트 |
-| 48 | personal-branding | 개인 브랜딩 |
-| 49 | ecommerce-launcher | 이커머스 런처 |
-| 50 | real-estate-analyst | 부동산 분석 |
-
-### 카테고리 6: 커뮤니케이션 & 문서
-
-| # | ID | 이름 |
-|---|-----|------|
-| 51 | technical-writer | 기술 문서 작성자 |
-| 52 | report-generator | 보고서 생성기 |
-| 53 | sop-writer | SOP 작성자 |
-| 54 | adr-writer | ADR 작성자 |
-| 55 | public-speaking | 공개 연설 |
-| 56 | proposal-writer | 제안서 작성자 |
-| 57 | knowledge-base-builder | 지식베이스 구축 |
-| 58 | changelog-generator | 변경사항 로그 |
-| 59 | text-processor | 텍스트 프로세서 |
-| 60 | presentation-designer | 프레젠테이션 디자이너 |
-
-### 카테고리 7: 법률 & 컴플라이언스
-
-| # | ID | 이름 |
-|---|-----|------|
-| 61 | contract-analyzer | 계약 분석기 |
-| 62 | compliance-checker | 컴플라이언스 검토자 |
-| 63 | patent-drafter | 특허 명세서 작성자 |
-| 64 | privacy-engineer | 개인정보보호 엔지니어 |
-| 65 | legal-research | 법률 조사 |
-| 66 | service-legal-docs | 서비스 법률 문서 |
-| 67 | regulatory-filing | 규제 신청 |
-| 68 | ip-portfolio | IP 포트폴리오 |
-| 69 | audit-report | 감사 보고서 |
-| 70 | grant-writer | 보조금 신청자 |
-
-### 카테고리 8: 운영 & 인사
-
-| # | ID | 이름 |
-|---|-----|------|
-| 71 | hiring-pipeline | 채용 파이프라인 |
-| 72 | onboarding-system | 온보딩 시스템 |
-| 73 | operations-manual | 운영 매뉴얼 |
-| 74 | feedback-analyzer | 피드백 분석기 |
-| 75 | meeting-strategist | 회의 전략가 |
-| 76 | event-organizer | 이벤트 조직자 |
-| 77 | customer-support | 고객 지원 |
-| 78 | procurement-docs | 구매 문서 |
-| 79 | risk-register | 위험 레지스터 |
-| 80 | crisis-communication | 위기 커뮤니케이션 |
-
-### 카테고리 9: 국제화 & 신흥기술
-
-| # | ID | 이름 |
-|---|-----|------|
-| 81 | tax-calculator | 세금 계산기 |
-| 82 | rfp-responder | RFP 대응자 |
-| 83 | chatbot-builder | 챗봇 빌더 |
-| 84 | web-scraper | 웹 스크래퍼 |
-| 85 | api-client-generator | API 클라이언트 생성기 |
-| 86 | data-migration | 데이터 마이그레이션 |
-| 87 | cli-tool-builder | CLI 도구 빌더 |
-| 88 | social-media-manager | 소셜 미디어 매니저 |
-| 89 | sustainability-audit | 지속가능성 감사 |
-| 90 | cicd-pipeline | CI/CD 파이프라인 |
-
-### 카테고리 10: 신흥 & 전문
-
-| # | ID | 이름 |
-|---|-----|------|
-| 91 | code-reviewer | 코드 리뷰어 |
-| 92 | legacy-modernizer | 레거시 현대화 |
-| 93 | microservice-designer | 마이크로서비스 디자이너 |
-| 94 | test-automation | 테스트 자동화 |
-| 95 | incident-postmortem | 인시던트 포스트모템 |
-| 96 | infra-as-code | 코드형 인프라 |
-| 97 | security-audit | 보안 감사 |
-| 98 | performance-optimizer | 성능 최적화 |
-| 99 | open-source-launcher | 오픈소스 런처 |
-| 100 | translation-localization | 번역 & 현지화 |
-
----
-
-**마지막 업데이트**: 2026-04-08  
-**카탈로그 버전**: 2.0  
-**총 하네스 수**: 100개  
-**총 카테고리**: 10개
+| # | ID | Category |
+|---|-----|----------|
+| 1 | ab-testing | 마케팅 & 성장 |
+| 2 | academic-paper | 교육 & 연구 |
+| 3 | accounting-tax | 재무 & 무역 |
+| 4 | advertising-campaign | 콘텐츠 & 크리에이티브 |
+| 5 | ai-strategy | 제품 & 혁신 |
+| 6 | audit-report | 법률 & 컴플라이언스 |
+| 7 | book-publishing | 콘텐츠 & 크리에이티브 |
+| 8 | brand-identity | 마케팅 & 성장 |
+| 9 | brand-voice-guide | 마케팅 & 성장 |
+| 10 | business-model-canvas | 비즈니스 & 전략 |
+| 11 | comic-creator | 콘텐츠 & 크리에이티브 |
+| 12 | competency-modeler | 교육 & 연구 |
+| 13 | competitive-analysis | 비즈니스 & 전략 |
+| 14 | compliance-checker | 법률 & 컴플라이언스 |
+| 15 | content-calendar | 콘텐츠 & 크리에이티브 |
+| 16 | content-repurposer | 콘텐츠 & 크리에이티브 |
+| 17 | contract-analyzer | 법률 & 컴플라이언스 |
+| 18 | copywriting | 콘텐츠 & 크리에이티브 |
+| 19 | course-builder | 교육 & 연구 |
+| 20 | crisis-communication | 운영 & HR |
+| 21 | crm-strategy | 마케팅 & 성장 |
+| 22 | customer-journey-map | 마케팅 & 성장 |
+| 23 | customer-support | 운영 & HR |
+| 24 | data-analysis | 커뮤니케이션 & 문서 |
+| 25 | data-visualization | 커뮤니케이션 & 문서 |
+| 26 | debate-simulator | 교육 & 연구 |
+| 27 | diversity-inclusion | 제품 & 혁신 |
+| 28 | documentary-research | 교육 & 연구 |
+| 29 | ecommerce-launcher | 재무 & 무역 |
+| 30 | elderly-care-planning | 라이프스타일 |
+| 31 | email-crafter | 마케팅 & 성장 |
+| 32 | esg-reporting | 법률 & 컴플라이언스 |
+| 33 | event-organizer | 운영 & HR |
+| 34 | exam-prep | 교육 & 연구 |
+| 35 | feedback-analyzer | 운영 & HR |
+| 36 | financial-modeler | 비즈니스 & 전략 |
+| 37 | fitness-program | 라이프스타일 |
+| 38 | game-narrative | 라이프스타일 |
+| 39 | gov-funding-plan | 제품 & 혁신 |
+| 40 | grant-writer | 재무 & 무역 |
+| 41 | growth-hacking | 마케팅 & 성장 |
+| 42 | hiring-pipeline | 운영 & HR |
+| 43 | import-export | 재무 & 무역 |
+| 44 | influencer-strategy | 마케팅 & 성장 |
+| 45 | investor-report | 비즈니스 & 전략 |
+| 46 | invoice-mgmt | 재무 & 무역 |
+| 47 | ip-portfolio | 법률 & 컴플라이언스 |
+| 48 | knowledge-base-builder | 교육 & 연구 |
+| 49 | language-tutor | 교육 & 연구 |
+| 50 | legal-research | 법률 & 컴플라이언스 |
+| 51 | market-entry-strategy | 비즈니스 & 전략 |
+| 52 | market-research | 비즈니스 & 전략 |
+| 53 | meal-planner | 라이프스타일 |
+| 54 | meeting-strategist | 커뮤니케이션 & 문서 |
+| 55 | newsletter-engine | 콘텐츠 & 크리에이티브 |
+| 56 | nonprofit-management | 재무 & 무역 |
+| 57 | onboarding-system | 운영 & HR |
+| 58 | operations-manual | 운영 & HR |
+| 59 | parenting-guide | 라이프스타일 |
+| 60 | partnership-development | 제품 & 혁신 |
+| 61 | patent-drafter | 법률 & 컴플라이언스 |
+| 62 | personal-branding | 마케팅 & 성장 |
+| 63 | personal-finance | 라이프스타일 |
+| 64 | podcast-studio | 콘텐츠 & 크리에이티브 |
+| 65 | presentation-designer | 커뮤니케이션 & 문서 |
+| 66 | pricing-strategy | 비즈니스 & 전략 |
+| 67 | privacy-engineer | 법률 & 컴플라이언스 |
+| 68 | procurement-docs | 운영 & HR |
+| 69 | product-manager | 제품 & 혁신 |
+| 70 | project-tracker | 제품 & 혁신 |
+| 71 | proposal-writer | 커뮤니케이션 & 문서 |
+| 72 | public-speaking | 커뮤니케이션 & 문서 |
+| 73 | real-estate-analyst | 재무 & 무역 |
+| 74 | regulatory-filing | 법률 & 컴플라이언스 |
+| 75 | remote-work-ops | 운영 & HR |
+| 76 | report-generator | 커뮤니케이션 & 문서 |
+| 77 | research-assistant | 교육 & 연구 |
+| 78 | rfp-responder | 재무 & 무역 |
+| 79 | risk-register | 운영 & HR |
+| 80 | sales-enablement | 제품 & 혁신 |
+| 81 | scenario-planner | 비즈니스 & 전략 |
+| 82 | service-legal-docs | 법률 & 컴플라이언스 |
+| 83 | side-project-launcher | 라이프스타일 |
+| 84 | social-media-manager | 마케팅 & 성장 |
+| 85 | sop-writer | 커뮤니케이션 & 문서 |
+| 86 | space-concept-board | 라이프스타일 |
+| 87 | startup-launcher | 비즈니스 & 전략 |
+| 88 | strategy-framework | 비즈니스 & 전략 |
+| 89 | supply-chain | 재무 & 무역 |
+| 90 | sustainability-audit | 제품 & 혁신 |
+| 91 | tax-calculator | 재무 & 무역 |
+| 92 | technical-writer | 커뮤니케이션 & 문서 |
+| 93 | thesis-advisor | 교육 & 연구 |
+| 94 | translation-localization | 커뮤니케이션 & 문서 |
+| 95 | travel-planner | 라이프스타일 |
+| 96 | user-feedback-analysis | 제품 & 혁신 |
+| 97 | ux-research | 제품 & 혁신 |
+| 98 | visual-storytelling | 콘텐츠 & 크리에이티브 |
+| 99 | wedding-planner | 라이프스타일 |
+| 100 | youtube-production | 콘텐츠 & 크리에이티브 |

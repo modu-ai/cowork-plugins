@@ -2,15 +2,15 @@
 
 > MoAI-Cowork V.0.1.3 Catalog
 
-| # | ID | 이름 | 설명 |
-|---|-----|------|------|
-| 1 | youtube-production | 유튜브 프로덕션 | 유튜브 영상 제작부터 업로드, SEO 최적화까지 완전한 워크플로우 |
-| 2 | podcast-studio | 팟캐스트 스튜디오 | 팟캐스트 기획부터 녹음, 편집, 배포까지 전체 프로세스 |
-| 3 | newsletter-engine | 뉴스레터 엔진 | 뉴스레터 기획, 작성, 구독자 관리 및 성과 분석 |
-| 4 | content-repurposer | 콘텐츠 재활용 | 원본 콘텐츠를 여러 채널과 형식으로 변환하여 활용 |
-| 5 | game-narrative | 게임 나러티브 | 게임 스토리, 스크립트, 캐릭터 아크 개발 및 플롯 설계 |
-| 6 | brand-identity | 브랜드 아이덴티티 | 브랜드 이름, 로고, 컬러, 톤앤매너의 통합적 정의 |
-| 7 | comic-creator | 만화/웹툰 크리에이터 | 만화 스크립트, 스토리보드, 컬러링 및 웹툰 연재 전략 |
-| 8 | visual-storytelling | 비주얼 스토리텔링 | 이미지, 그래픽, 비주얼 요소를 통한 스토리 전달 |
-| 9 | book-publishing | 책 출판 | 도서 기획부터 원고 작성, 출판, 마케팅까지 |
-| 10 | advertising-campaign | 광고 캠페인 | 광고 전략 수립, 광고문 작성, A/B 테스트 및 최적화 |
+| # | ID | Name | Description |
+|---|-----|------|-------------|
+| 1 | youtube-production | YouTube 영상 제작 | 유튜브 채널 전략, 시나리오 작성, 편집 가이드 제공 |
+| 2 | podcast-studio | 팟캐스트 스튜디오 | 팟캐스트 기획, 녹음 및 편집 워크플로우 지원 |
+| 3 | newsletter-engine | 뉴스레터 엔진 | 뉴스레터 콘텐츠 작성, 배포 계획, 구독자 관리 |
+| 4 | content-repurposer | 콘텐츠 재활용 | 한 개의 콘텐츠를 다양한 포맷으로 변환 |
+| 5 | book-publishing | 도서 출판 | 도서 기획, 집필, 출판 프로세스 관리 |
+| 6 | advertising-campaign | 광고 캠페인 | 광고 전략, 크리에이티브 개발, 캠페인 최적화 |
+| 7 | comic-creator | 만화 제작 | 만화 스토리보드, 캐릭터 설정, 제작 파이프라인 |
+| 8 | visual-storytelling | 시각 스토리텔링 | 인포그래픽, 데이터 시각화, 비주얼 내러티브 |
+| 9 | copywriting | 카피라이팅 | 광고 문구, 마케팅 메시지, 설득력 있는 텍스트 |
+| 10 | content-calendar | 콘텐츠 캘린더 | 콘텐츠 계획, 일정 관리, 멀티채널 배포 |
