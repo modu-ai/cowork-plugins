@@ -166,15 +166,31 @@ metadata:
 - 직장인 대상: 화·수·목요일 저녁 8~10시 최고
 - 주말: 오전 10시~오후 2시 (여유 시간대)
 
-## MCP 도구 활용 (post-bridge, typefully, wordpress)
+## 발행 자동화
 
-MCP 서버가 연결되어 있으면 블로그 퍼블리싱을 자동화합니다:
-- **post-bridge**: 네이버 블로그, 티스토리 등 국내 플랫폼 직접 발행
-- **typefully**: 스레드/X 연동 콘텐츠 발행 (블로그 요약 → 소셜 배포)
-- **wordpress**: WordPress 사이트 직접 발행 (카테고리, 태그, 특성 이미지 자동 설정)
-- **활용 순서**: 블로그 카피 생성 → 플랫폼별 포맷 최적화 → MCP로 직접 발행 → 발행 URL 전달
+### MCP 연동 (wordpress)
+WordPress MCP 서버가 연결되어 있으면 WordPress 사이트에 직접 발행합니다:
+- 카테고리, 태그, 특성 이미지 자동 설정
+- 블로그 카피 생성 → 포맷 최적화 → MCP로 발행 → URL 전달
 
-MCP 미연결 시: 마크다운 카피만 생성. 수동 복사-붙여넣기로 발행.
+### 브라우저 자동화 (네이버/티스토리/브런치)
+WordPress 외 플랫폼은 Computer Use 또는 Browser MCP(Playwright/claude-in-chrome)로 직접 게시합니다:
+
+1. 브라우저에서 해당 플랫폼 글쓰기 페이지 열기
+2. 제목, 본문, 카테고리, 태그를 자동 입력
+3. 이미지가 있으면 업로드
+4. 미리보기 확인 후 발행
+
+**지원 플랫폼별 접속 경로**:
+- 네이버 블로그: `blog.naver.com/{id}/postwrite`
+- 티스토리: `{id}.tistory.com/manage/newpost`
+- 브런치: `brunch.co.kr/write`
+- X/LinkedIn/인스타: 각 플랫폼 웹 인터페이스
+
+**사전 조건**: 해당 플랫폼에 로그인된 브라우저 세션 필요. Computer Use 또는 claude-in-chrome MCP가 활성화되어 있어야 합니다.
+
+### 수동 발행 (폴백)
+MCP/브라우저 자동화가 불가한 경우 마크다운 카피만 생성합니다. 사용자가 직접 복사-붙여넣기로 발행합니다.
 
 ## 문제 해결
 

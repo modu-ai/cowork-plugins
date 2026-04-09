@@ -20,9 +20,9 @@
 
 | 서버 | 용도 |
 |------|------|
-| post-bridge | 블로그/SNS 멀티채널 게시 자동화 |
-| typefully | 트위터/X 스레드 예약 발행 |
 | wordpress | WordPress REST API 직접 게시 |
+
+네이버/티스토리/브런치/X/인스타 등은 Computer Use 또는 Browser MCP(Playwright/claude-in-chrome)로 브라우저 자동화 게시합니다.
 
 ## 스크립트
 
