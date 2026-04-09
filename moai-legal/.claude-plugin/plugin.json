@@ -1,0 +1,12 @@
+{
+  "name": "moai-legal",
+  "version": "1.0.0",
+  "description": "법률 — 계약서 검토(민법/상법), 개인정보보호법 컴플라이언스, NDA",
+  "author": {
+    "name": "GOOS"
+  },
+  "keywords": [
+    "법률", "계약서", "개인정보보호법", "컴플라이언스", "NDA"
+  ],
+  "license": "MIT"
+}

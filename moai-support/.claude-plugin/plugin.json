@@ -1,0 +1,12 @@
+{
+  "name": "moai-support",
+  "version": "1.0.0",
+  "description": "고객 지원 — 티켓 분류, 응답 초안, KB 문서, 에스컬레이션",
+  "author": {
+    "name": "GOOS"
+  },
+  "keywords": [
+    "고객지원", "CS", "티켓", "KB", "에스컬레이션"
+  ],
+  "license": "MIT"
+}

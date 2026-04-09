@@ -1,0 +1,12 @@
+{
+  "name": "moai-lifestyle",
+  "version": "1.0.0",
+  "description": "라이프스타일 — 여행 플래닝, 건강/식단, 웨딩/이벤트",
+  "author": {
+    "name": "GOOS"
+  },
+  "keywords": [
+    "라이프스타일", "여행", "건강", "식단", "웨딩", "이벤트"
+  ],
+  "license": "MIT"
+}

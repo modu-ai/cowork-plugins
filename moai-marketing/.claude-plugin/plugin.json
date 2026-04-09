@@ -1,0 +1,12 @@
+{
+  "name": "moai-marketing",
+  "version": "1.0.0",
+  "description": "마케팅 — 네이버/카카오 SEO, SNS 콘텐츠, 캠페인, 이메일 시퀀스",
+  "author": {
+    "name": "GOOS"
+  },
+  "keywords": [
+    "마케팅", "SEO", "네이버", "카카오", "SNS", "캠페인", "이메일"
+  ],
+  "license": "MIT"
+}

@@ -1,0 +1,12 @@
+{
+  "name": "moai-business",
+  "version": "1.0.0",
+  "description": "비즈니스 전략 — 사업계획서, 시장조사, 재무모델, 투자제안서",
+  "author": {
+    "name": "GOOS"
+  },
+  "keywords": [
+    "비즈니스", "전략", "사업계획서", "시장조사", "투자", "IR"
+  ],
+  "license": "MIT"
+}

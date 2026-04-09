@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "cwd": "${CLAUDE_PLUGIN_ROOT}"
+    }
+  }
+}

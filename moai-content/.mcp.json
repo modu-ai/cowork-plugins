@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "post-bridge": {
+      "type": "http",
+      "url": "https://app.post-bridge.com/mcp"
+    },
+    "typefully": {
+      "type": "http",
+      "url": "https://api.typefully.com/mcp"
+    },
+    "wordpress": {
+      "type": "http",
+      "url": "https://mcp.wordpress.com/mcp"
+    }
+  }
+}

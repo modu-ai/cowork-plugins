@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "dart": {
+      "type": "http",
+      "url": "https://opendart.fss.or.kr/api/",
+      "env": {
+        "DART_API_KEY": "${DART_API_KEY}"
+      }
+    }
+  }
+}

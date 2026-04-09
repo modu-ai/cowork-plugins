@@ -1,0 +1,12 @@
+{
+  "name": "moai-schedules",
+  "version": "1.0.0",
+  "description": "스케줄 관리 — 다른 moai-* 스킬을 정해진 시간에 자동 실행",
+  "author": {
+    "name": "GOOS"
+  },
+  "keywords": [
+    "스케줄", "자동실행", "예약", "반복업무", "크론"
+  ],
+  "license": "MIT"
+}

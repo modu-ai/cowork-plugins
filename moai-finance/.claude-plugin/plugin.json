@@ -1,0 +1,12 @@
+{
+  "name": "moai-finance",
+  "version": "1.0.0",
+  "description": "재무/세무 — 3.3% 원천징수, 부가세, 홈택스, K-IFRS, 연말정산",
+  "author": {
+    "name": "GOOS"
+  },
+  "keywords": [
+    "재무", "세무", "부가세", "원천징수", "홈택스", "K-IFRS", "연말정산"
+  ],
+  "license": "MIT"
+}

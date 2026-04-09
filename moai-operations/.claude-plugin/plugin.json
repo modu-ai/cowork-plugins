@@ -1,0 +1,12 @@
+{
+  "name": "moai-operations",
+  "version": "1.0.0",
+  "description": "운영 — 결재 프로세스, 정부조달, SOP, 벤더 관리",
+  "author": {
+    "name": "GOOS"
+  },
+  "keywords": [
+    "운영", "결재", "조달", "SOP", "벤더", "나라장터"
+  ],
+  "license": "MIT"
+}

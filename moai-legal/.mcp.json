@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "korean-law": {
+      "type": "http",
+      "url": "https://korean-law-mcp.fly.dev/mcp?oc=${KOREAN_LAW_OC}"
+    }
+  }
+}
