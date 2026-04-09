@@ -22,14 +22,15 @@ Claude Cowork 도메인 전문가 AI 마켓플레이스.
 | [moai-support](./moai-support/) | 티켓 분류, KB 문서, 에스컬레이션 | 4 |
 | [moai-office](./moai-office/) | PPT, DOCX, XLSX, HWPX 문서 생성 | 4 |
 | [moai-schedules](./moai-schedules/) | 반복 업무 자동 실행 | 3 |
+| [moai-career](./moai-career/) | 커리어 준비 — 자기소개서, 이력서, 면접 코칭, 채용공고 분석 | 4 |
 
 ## 총 산출물
 
 | 항목 | 수량 |
 |------|:----:|
-| 플러그인 | 14 |
-| 스킬 | 52 |
-| 레퍼런스 파일 | 143 |
+| 플러그인 | 15 |
+| 스킬 | 56 |
+| 레퍼런스 파일 | 149 |
 | 에이전트 | 7 |
 | MCP 서버 | 5 |
 | 스크립트 | 16 |

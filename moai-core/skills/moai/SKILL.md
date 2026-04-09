@@ -42,7 +42,7 @@ MoAI는 실행(How)을 담당하는 에이전트팀이다.
 2. 설치된 하네스가 없으면 → 아래 라우팅 테이블로 자동 감지
 3. 감지된 스킬을 트리거하고 해당 레퍼런스 로드 후 실행
 
-### 3.1 라우팅 테이블 (v1.0 — 14개 플러그인)
+### 3.1 라우팅 테이블 (v1.0 — 15개 플러그인)
 
 | 키워드 | 플러그인 | 대표 스킬 |
 |--------|---------|----------|
@@ -59,6 +59,7 @@ MoAI는 실행(How)을 담당하는 에이전트팀이다.
 | 고객 지원, CS, 티켓, KB 문서, 에스컬레이션 | **moai-support** | ticket-triage, draft-response, kb-article, escalation-manager |
 | PPT, 한글, HWPX, DOCX, XLSX, 보고서, 공문서 | **moai-office** | pptx-designer, hwpx-writer, docx-generator, xlsx-creator |
 | 스케줄, 예약, 자동실행, 반복 업무, 크론 | **moai-schedules** | create-schedule, list-schedules, manage-schedule |
+| 자기소개서, 이력서, CV, 면접, 취업, 포트폴리오, 채용공고, JD 분석 | **moai-career** | resume-builder, interview-coach, job-analyzer, portfolio-guide |
 
 ## 4. 카탈로그 (10개 카테고리, 84개 하네스)
 

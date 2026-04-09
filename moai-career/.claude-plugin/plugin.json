@@ -1,0 +1,12 @@
+{
+  "name": "moai-career",
+  "version": "1.0.0",
+  "description": "커리어 준비 — 자기소개서, 이력서, 면접 코칭, 채용공고 분석, 포트폴리오",
+  "author": {
+    "name": "GOOS"
+  },
+  "keywords": [
+    "자기소개서", "이력서", "면접", "취업", "포트폴리오", "커리어", "취준"
+  ],
+  "license": "MIT"
+}
