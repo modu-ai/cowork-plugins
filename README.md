@@ -48,7 +48,7 @@ Claude Cowork에서 GitHub 레포 주소를 직접 입력하여 전체 마켓플
 3. **마켓플레이스 추가** (Add Marketplace) 클릭
 4. 아래 GitHub 레포 URL 입력:
    ```
-   https://github.com/modu-ai/cowork-plugins
+   https://github.com/modu-ai/moai-cowork-plugins
    ```
 5. **추가** 클릭 → 16개 플러그인 목록 표시
 6. 원하는 플러그인 선택 → **Install** 클릭
@@ -58,7 +58,7 @@ Claude Cowork에서 GitHub 레포 주소를 직접 입력하여 전체 마켓플
 
 특정 플러그인만 설치하려면 `.zip` 파일로 직접 업로드합니다.
 
-1. [Releases](https://github.com/modu-ai/cowork-plugins/releases)에서 원하는 플러그인 `.zip` 다운로드
+1. [Releases](https://github.com/modu-ai/moai-cowork-plugins/releases)에서 원하는 플러그인 `.zip` 다운로드
 2. Cowork > **커스터마이즈** > **Plugins** > **로컬 플러그인 업로드**
 3. `.zip` 파일 선택 → **업로드**
 
