@@ -20,9 +20,16 @@ import argparse
 import sys
 from pathlib import Path
 
-# python-hwpx 의존성 확인
+# python-hwpx 의존성 확인 + lxml 호환 패치
 try:
     from hwpx import HwpxDocument
+    # lxml 호환 패치: ensure_run_style()에서 ET.SubElement 타입 불일치 수정
+    try:
+        import lxml.etree as _lxml_ET
+        import hwpx.oxml.document as _oxdoc
+        _oxdoc.ET = _lxml_ET
+    except ImportError:
+        pass
     HAS_HWPX = True
 except ImportError:
     HAS_HWPX = False
