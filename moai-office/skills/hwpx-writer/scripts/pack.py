@@ -64,10 +64,8 @@ def pack(input_directory: str, output_file: str) -> tuple[bool, str]:
         return False, f"Error: {input_directory}/Contents 디렉토리가 없습니다."
 
     try:
-        # XML 파일 압축 (공백 제거)
-        xml_files = list(input_dir.rglob('*.xml')) + list(input_dir.rglob('*.hpf'))
-        for xml_file in xml_files:
-            condense_xml(xml_file)
+        # 참고: condense_xml은 XML을 재직렬화하여 standalone 속성 등을
+        # 제거하므로 기본적으로 건너뜁니다. 원본 XML을 그대로 패킹합니다.
 
         # ZIP 생성
         output_path.parent.mkdir(parents=True, exist_ok=True)
