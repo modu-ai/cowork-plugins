@@ -231,31 +231,252 @@ IF 실행_중_오류:
   현재 최선본 + 문제점을 사용자에게 보고
 ```
 
-### 검증 도구
-
-```bash
-# 파일 유효성 검증 (Layer 1)
-unzip -t output.hwpx 2>&1 | tail -1    # HWPX
-unzip -t output.docx 2>&1 | tail -1    # DOCX (Word)
-unzip -t output.pptx 2>&1 | tail -1    # PPTX
-unzip -t output.xlsx 2>&1 | tail -1    # XLSX
-wc -c output.md                         # 텍스트
-```
-
 ### 검증 의무 (HARD)
 
 | 산출물 유형 | Layer 1 | Layer 2 | Layer 3 |
 |-----------|---------|---------|---------|
-| 파일 생성 (HWPX/DOCX/PPTX/XLSX) | 필수 | 필수 | 권장 |
+| 파일 생성 (HWPX/DOCX/PPTX/XLSX) | **필수** | **필수** | **필수** |
 | 텍스트 산출물 (보고서, 분석) | 필수 | 필수 | 선택 |
 | 데이터 분석 (차트, 테이블) | 필수 | 필수 | 선택 |
 | 법률/재무/규제 산출물 | 필수 | 필수 | **필수** |
 
+### Office 문서 심층 검증 (moai-office 전용)
+
+moai-office 스킬(hwpx-writer, docx-generator, pptx-designer, xlsx-creator)이
+파일을 생성한 후, **생성된 파일을 다시 열어서 내용을 검증**한다.
+
+```
+생성 완료 → 파일 저장
+    ↓
+[재오픈 검증] 생성된 파일을 python-hwpx/python-docx/openpyxl로 다시 열기
+    ↓
+[구조 검증] 요구사항과 실제 내용 대조
+    ↓ 불일치 → 수정 후 재생성
+    ↓ 일치 → PASS
+```
+
+#### HWPX 재오픈 검증
+
+```python
+from hwpx import HwpxDocument
+
+doc = HwpxDocument.open("output.hwpx")
+
+# 1. 단락 수 검증
+actual_paras = len(doc.paragraphs)
+assert actual_paras >= expected_paras, f"단락 수 부족: {actual_paras}/{expected_paras}"
+
+# 2. 표 구조 검증
+table_map = doc.get_table_map()
+tables = table_map.get("tables", [])
+for i, expected in enumerate(expected_tables):
+    actual = tables[i]
+    assert actual["rows"] == expected["rows"], f"T{i} 행 수 불일치"
+    assert actual["cols"] == expected["cols"], f"T{i} 열 수 불일치"
+
+# 3. 텍스트 내용 검증
+text = doc.export_text()
+for keyword in required_keywords:
+    assert keyword in text, f"필수 키워드 누락: {keyword}"
+
+# 4. 머리글/바닥글 검증
+headers = doc.headers
+# 머리글 내용 확인
+
+doc.close()
+```
+
+#### DOCX (Word) 재오픈 검증
+
+```python
+from docx import Document
+
+doc = Document("output.docx")
+
+# 1. 단락 수 + 내용 검증
+paras = [p.text for p in doc.paragraphs if p.text.strip()]
+assert len(paras) >= expected_count
+
+# 2. 표 구조 검증
+for i, table in enumerate(doc.tables):
+    assert len(table.rows) == expected_rows[i]
+    assert len(table.columns) == expected_cols[i]
+    # 셀 내용 검증
+    for r, row in enumerate(table.rows):
+        for c, cell in enumerate(row.cells):
+            if expected_cells.get((i, r, c)):
+                assert cell.text == expected_cells[(i, r, c)]
+
+# 3. 스타일 검증
+for p in doc.paragraphs:
+    if p.text == title_text:
+        assert p.runs[0].bold == True, "제목 볼드 미적용"
+    if p.text in italic_texts:
+        assert p.runs[0].italic == True, "이탤릭 미적용"
+
+# 4. 머리글/바닥글 검증
+for section in doc.sections:
+    header_text = section.header.paragraphs[0].text
+    footer_text = section.footer.paragraphs[0].text
+```
+
+#### PPTX 재오픈 검증
+
+```python
+from pptx import Presentation
+from pptx.util import Pt, Inches, Emu
+
+prs = Presentation("output.pptx")
+
+# 1. 슬라이드 수
+assert len(prs.slides) >= expected_slides
+
+# 2. 각 슬라이드 제목 + 본문
+for i, slide in enumerate(prs.slides):
+    shapes = [s for s in slide.shapes if s.has_text_frame]
+    texts = [s.text_frame.text for s in shapes]
+    assert any(expected_titles[i] in t for t in texts), f"슬라이드 {i} 제목 누락"
+
+# 3. 폰트 크기 검증
+for slide in prs.slides:
+    for shape in slide.shapes:
+        if shape.has_text_frame:
+            for para in shape.text_frame.paragraphs:
+                for run in para.runs:
+                    if run.font.size:
+                        size_pt = run.font.size.pt
+                        # 제목은 24pt 이상, 본문은 14pt 이상
+                        if para == shape.text_frame.paragraphs[0]:
+                            assert size_pt >= 20, f"제목 폰트 너무 작음: {size_pt}pt"
+
+# 4. 레이아웃 검증 (텍스트 영역 이탈 방지)
+slide_width = prs.slide_width
+slide_height = prs.slide_height
+for slide in prs.slides:
+    for shape in slide.shapes:
+        right = shape.left + shape.width
+        bottom = shape.top + shape.height
+        assert right <= slide_width + Inches(0.5), f"shape 오른쪽 이탈"
+        assert bottom <= slide_height + Inches(0.5), f"shape 아래 이탈"
+
+# 5. 디자인 일관성 검증
+colors_used = set()
+for slide in prs.slides:
+    for shape in slide.shapes:
+        if shape.has_text_frame:
+            for para in shape.text_frame.paragraphs:
+                for run in para.runs:
+                    if run.font.color and run.font.color.rgb:
+                        colors_used.add(str(run.font.color.rgb))
+# 색상 3개 이하 = 일관성 좋음
+assert len(colors_used) <= 5, f"색상 너무 다양: {len(colors_used)}개"
+
+# 6. 빈 슬라이드 검증
+for i, slide in enumerate(prs.slides):
+    has_content = any(
+        s.has_text_frame and s.text_frame.text.strip()
+        for s in slide.shapes
+    )
+    assert has_content, f"슬라이드 {i+1} 내용 없음"
+```
+
+#### XLSX 재오픈 검증
+
+```python
+from openpyxl import load_workbook
+from openpyxl.styles import Font, Border, PatternFill
+
+wb = load_workbook("output.xlsx")
+ws = wb.active
+
+# 1. 행/열 수
+assert ws.max_row >= expected_rows
+assert ws.max_column >= expected_cols
+
+# 2. 헤더 검증 (내용 + 스타일)
+for c, expected in enumerate(expected_headers, 1):
+    cell = ws.cell(1, c)
+    assert cell.value == expected, f"헤더 불일치: {cell.value}"
+    # 헤더 볼드 확인
+    assert cell.font.bold, f"헤더 볼드 미적용: 열 {c}"
+    # 헤더 배경색 확인
+    if cell.fill and cell.fill.start_color:
+        pass  # 배경색 있으면 OK
+
+# 3. 데이터 타입 검증
+for r in range(2, ws.max_row + 1):
+    for c in numeric_columns:
+        val = ws.cell(r, c).value
+        assert isinstance(val, (int, float)), f"({r},{c}) 숫자 아님: {val}"
+
+# 4. 숫자 포맷 검증 (통화, 퍼센트)
+for r in range(2, ws.max_row + 1):
+    for c in currency_columns:
+        fmt = ws.cell(r, c).number_format
+        assert '₩' in fmt or '#,##0' in fmt, f"({r},{c}) 통화 포맷 미적용"
+
+# 5. 테두리 검증
+for r in range(1, ws.max_row + 1):
+    for c in range(1, ws.max_column + 1):
+        cell = ws.cell(r, c)
+        if cell.value is not None:
+            border = cell.border
+            has_border = any([
+                border.left.style, border.right.style,
+                border.top.style, border.bottom.style
+            ])
+            # 데이터 영역은 테두리 있어야 함
+            assert has_border, f"({r},{c}) 테두리 없음"
+
+# 6. 열 너비 검증 (내용 잘림 방지)
+for col in ws.columns:
+    col_letter = col[0].column_letter
+    width = ws.column_dimensions[col_letter].width
+    max_len = max((len(str(cell.value or '')) for cell in col), default=0)
+    if max_len > 0:
+        assert width >= max_len * 1.1, f"열 {col_letter} 너비 부족"
+
+# 7. 수식 검증
+if formula_cells:
+    for cell_ref, expected_type in formula_cells.items():
+        cell = ws[cell_ref]
+        assert cell.value is not None
+
+# 8. 시트명 검증
+assert ws.title != "Sheet1" or len(wb.sheetnames) == 1, "시트명 미설정"
+```
+
+### 검증 체크리스트 요약
+
+| 항목 | HWPX | DOCX | PPTX | XLSX |
+|------|------|------|------|------|
+| **내용** | | | | |
+| 단락/셀 수 | paragraphs | paragraphs | slides | max_row |
+| 표 구조 (행x열) | get_table_map | doc.tables | - | max_column |
+| 텍스트 내용 | export_text | paragraph.text | shape.text | cell.value |
+| 머리글/바닥글 | headers | section.header | - | - |
+| 이미지 | list_images | inline_shapes | slide.shapes | - |
+| 수식 | - | - | - | cell.value |
+| **스타일** | | | | |
+| 볼드/이탤릭 | char_property | run.bold/italic | run.font.bold | cell.font.bold |
+| 폰트 크기 | fontSize | run.font.size | run.font.size | cell.font.size |
+| 색상 | textColor | run.font.color | run.font.color | cell.font.color |
+| **레이아웃** | | | | |
+| 페이지/슬라이드 크기 | secPr.pageSize | section.page_* | slide_width/height | - |
+| 여백 | secPr.pageMar | section.margin | shape 위치 | column_dimensions |
+| 정렬 | paraPr.align | paragraph.alignment | paragraph.alignment | cell.alignment |
+| **디자인** | | | | |
+| 테두리 | borderFill | table cell borders | shape.line | cell.border |
+| 배경색 | - | shading | shape.fill | cell.fill |
+| 색상 일관성 | - | - | colors ≤ 5 | - |
+| 열 너비/잘림 | - | - | shape 이탈 확인 | width ≥ 내용 |
+
 ### 원칙
 
-- **Keep Quality Left**: 기계가 확인 가능한 것은 기계가, AI 판단은 AI가
-- **자동 활성화**: 사용자 명시적 요청 없이도 검증 수행
-- **3회 제한**: 무한 루프 방지, 3회 후 사용자에게 판단 위임
+- **생성 후 반드시 재오픈**: 파일을 저장한 뒤 다시 열어서 내용 확인
+- **요구사항 대조**: 사용자 요청의 모든 항목이 실제 파일에 존재하는지 확인
+- **자동 수정**: 불일치 발견 시 구체적으로 무엇이 틀렸는지 식별 후 재생성
+- **3회 제한**: 최대 3회 재생성 후 사용자에게 보고
 
 ---
 
