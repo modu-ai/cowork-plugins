@@ -1,2 +1,7 @@
 .DS_Store
 node_modules/
+.env
+.env.*
+credentials.env
+*.secret
+*.key

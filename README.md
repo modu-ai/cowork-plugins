@@ -1,8 +1,30 @@
 # cowork-plugins
 
-Claude Cowork 도메인 전문가 AI 마켓플레이스.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
+[![Plugins](https://img.shields.io/badge/Plugins-16-blue)](.claude-plugin/marketplace.json)
+[![Skills](https://img.shields.io/badge/Skills-64-green)](.claude-plugin/marketplace.json)
 
-16개 독립 플러그인 64개 스킬로 비즈니스 전략, 마케팅, 법률, 재무, 인사, 콘텐츠, 운영, 교육, 라이프스타일, 제품, 고객지원, 문서생성, 데이터 분석, 연구/특허를 지원합니다.
+**Claude Cowork 도메인 전문가 AI 마켓플레이스**
+
+자연어 한 줄이면 사업계획서, 계약서 검토, 세금 계산, PPT 제작, 데이터 분석, 특허 검색까지 — 16개 독립 플러그인과 64개 전문 스킬이 업무를 대신합니다.
+
+> *Domain expert AI marketplace for [Claude Cowork](https://claude.ai). 16 plugins · 64 skills covering business strategy, marketing, legal, finance, HR, content, operations, education, lifestyle, product, support, document generation, data analysis, and research/patents.*
+
+---
+
+## 목차
+
+- [플러그인 카탈로그](#플러그인-카탈로그)
+- [총 산출물](#총-산출물)
+- [설치 방법](#설치-방법)
+- [플러그인 상세 소개](#플러그인-상세-소개)
+- [스킬 간 공유 기능](#스킬-간-공유-기능)
+- [기술 특징](#기술-특징)
+- [오픈소스 및 참고자료](#오픈소스-및-참고자료)
+- [기여 가이드](#기여-가이드)
+- [문의 및 지원](#문의-및-지원)
+- [라이선스](#라이선스)
 
 ## 플러그인 카탈로그
 
@@ -376,6 +398,17 @@ Airtable/Google Sheets 커넥터로 데이터를 직접 분석합니다.
 | [OOXML (ISO/IEC 29500)](https://www.iso.org/standard/71691.html) | Office Open XML (DOCX/PPTX/XLSX 기반) |
 | [ODF](https://www.oasis-open.org/) | Open Document Format (HWPX manifest 기반) |
 
+## 기여 가이드
+
+새 플러그인이나 스킬 추가에 관심이 있다면 [CONTRIBUTING.md](CONTRIBUTING.md)를 참고해 주세요.
+
+버그 리포트나 기능 제안은 [GitHub Issues](https://github.com/modu-ai/cowork-plugins/issues)에 등록해 주세요.
+
+## 문의 및 지원
+
+- GitHub Issues: [modu-ai/cowork-plugins/issues](https://github.com/modu-ai/cowork-plugins/issues)
+- Email: email@mo.ai.kr
+
 ## 라이선스
 
-MIT
+[MIT](LICENSE)
