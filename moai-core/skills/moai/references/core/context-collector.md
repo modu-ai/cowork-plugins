@@ -17,7 +17,7 @@
 - 산업
 - 타임존
 
-**충족 조건**: ${CLAUDE_PLUGIN_DATA}/moai-profile.md 로드 (CLAUDE.md 시스템 지침 참조)
+**충족 조건**: Claude 메모리의 moai-profile.md 로드 (CLAUDE.md 시스템 지침 참조)
 
 ---
 

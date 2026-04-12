@@ -113,7 +113,7 @@ Claude가 단계별 심층 분석을 수행합니다.
 **자동 트리거**: 다단계 분석, 법률/세무 판단, 2개+ 스킬 복합 작업
 
 ## 참조 경로
-- 프로필: ${CLAUDE_PLUGIN_DATA}/moai-profile.md
+- 프로필: Claude 메모리의 moai-profile.md
 - 설정: .moai/config.json
 - 맥락: .moai/context.md
 - 진화: .moai/evolution/
@@ -239,7 +239,7 @@ CLAUDE.md에 포함할 하네스 요약:
 복잡한 채널 전략이나 --deepthink 시 Claude가 단계별 심층 분석을 수행합니다.
 
 ## 참조 경로
-- 프로필: ${CLAUDE_PLUGIN_DATA}/moai-profile.md
+- 프로필: Claude 메모리의 moai-profile.md
 - 설정: .moai/config.json
 - 맥락: .moai/context.md
 

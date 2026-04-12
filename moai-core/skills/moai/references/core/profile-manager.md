@@ -1,7 +1,7 @@
 # profile-manager.md — 글로벌 프로필 관리
 
 ## 개요
-${CLAUDE_PLUGIN_DATA}/moai-profile.md를 중심으로 사용자 글로벌 프로필을 관리하는 프로토콜입니다.
+Claude 메모리의 moai-profile.md를 중심으로 사용자 글로벌 프로필을 관리하는 프로토콜입니다.
 CRUD 작업, 스키마 관리, 버전 관리를 포함합니다.
 
 > **참고**: auto-memory가 프로필 관리를 대체할 수 있음. Claude가 대화 중 파악한 사용자 정보를 auto-memory에 자율 저장하며, 이는 명시적 프로필 관리보다 자연스럽게 동작한다. 명시적 프로필 관리(`/moai profile`)는 선택사항이며, 구조화된 정보가 필요한 경우에 활용한다.
@@ -159,7 +159,7 @@ POST /moai profile --create
   --role="marketing"
   --industry="IT"
 
-→ ${CLAUDE_PLUGIN_DATA}/moai-profile.md 생성
+→ Claude 메모리의 moai-profile.md 생성
 → MEMORY.md에 인덱스 추가
 ```
 

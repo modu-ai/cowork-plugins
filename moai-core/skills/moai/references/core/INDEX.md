@@ -25,7 +25,7 @@ setup-cowork + claude-code-setup 패턴 융합. 맥락 수집은 Lazy Collection
 맥락 충분성 등급 (A/B/C), 모호성 감지, AskUserQuestion 전략.
 
 ### 4. profile-manager.md — 글로벌 프로필 관리
-${CLAUDE_PLUGIN_DATA}/moai-profile.md 중심. 개인 + 회사 프로필 CRUD.
+Claude 메모리의 moai-profile.md 중심. 개인 + 회사 프로필 CRUD.
 
 ### 5. claudemd-generator.md — CLAUDE.md 생성 프로토콜
 하네스 레퍼런스 기반 맞춤형 CLAUDE.md 자동 생성. 200라인 이내 맞춤형 CLAUDE.md 생성.
@@ -93,7 +93,7 @@ evolution-protocol.md ← diagnostic-protocol.md
 계층 2: ./CLAUDE.md (자동 로딩, R/W) — 맞춤형 페르소나 + 워크플로우
 계층 3: 프로젝트 데이터 (R/W)
   ├── .moai/ — 도메인 맥락, 진화 데이터, 설정
-  └── ${CLAUDE_PLUGIN_DATA} — 글로벌 프로필, API 키, 교차 프로젝트 데이터
+  └── Claude 메모리 (memory/) — 글로벌 프로필, API 키, 교차 프로젝트 데이터
 
 + auto-memory: Claude 자율 저장 (세션 간 학습 누적)
 ```

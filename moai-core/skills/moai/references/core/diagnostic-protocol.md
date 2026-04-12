@@ -26,7 +26,7 @@ MoAI 환경과 프로필 상태를 진단하고 문제를 식별하는 프로토
 │ └─ 16개 플러그인 설치 상태: ✓
 │
 │ [Phase 2] 글로벌 프로필 검사
-│ ├─ ${CLAUDE_PLUGIN_DATA}/moai-profile.md: ✓
+│ ├─ Claude 메모리의 moai-profile.md: ✓
 │ ├─ 프로필 유효성: ✓ (schema v1.0 호환)
 │ ├─ 필수 필드 완성도: 100% (A등급)
 │ ├─ 권장 필드 완성도: 85% (B등급)
