@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "데이터 분석 — CSV/Excel 탐색, 공공데이터 조회, 시각화, 대시보드",
   "author": {
-    "name": "GOOS"
+    "name": "모두의AI"
   },
   "keywords": ["데이터", "분석", "시각화", "공공데이터", "통계", "차트", "CSV", "Excel"],
   "license": "MIT"

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "문서 생성 — PPT 디자인, Word(DOCX), Excel(XLSX), 한글(HWPX)",
   "author": {
-    "name": "GOOS"
+    "name": "모두의AI"
   },
   "keywords": [
     "문서", "PPT", "DOCX", "XLSX", "HWPX", "한글", "프레젠테이션"
