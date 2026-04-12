@@ -105,6 +105,196 @@ modu-ai/cowork-plugins
 "특허 찾아줘"            → moai-research
 ```
 
+## 플러그인 상세 소개
+
+### moai-core — 오케스트레이터
+
+자연어 요청을 분석하여 16개 도메인 플러그인 중 적합한 스킬로 자동 라우팅합니다. `/moai init`으로 프로젝트를 초기화하고, `/moai catalog`으로 설치된 스킬 목록을 조회합니다.
+
+- 소크라테스 인터뷰로 사용자 의도를 정확히 파악한 뒤 계획을 수립하고 실행합니다
+- 산출물 품질 검증 루프(파일 유효성 → 내용 완전성 → AI 슬롭 검수)를 자동 수행합니다
+- 공유 에이전트: `quality-evaluator` (전 플러그인에서 호출 가능)
+
+---
+
+### moai-business — 비즈니스 전략
+
+| 스킬 | 기능 |
+|------|------|
+| strategy-planner | 사업계획서, 스타트업 런처, 비즈니스 모델 캔버스, SWOT/Porter 분석 |
+| market-analyst | 시장조사(TAM/SAM/SOM), 경쟁사 분석, 가격 전략 |
+| investor-relations | 투자 제안서(IR), 재무모델, 매출 예측 |
+| daily-briefing | 일일 비즈니스 브리핑, 시장 동향 요약 |
+
+DART MCP 서버로 기업 공시/재무제표를 실시간 조회합니다.
+
+---
+
+### moai-marketing — 마케팅
+
+| 스킬 | 기능 |
+|------|------|
+| brand-identity | 기업 브랜딩 풀 파이프라인 — 네이밍, 슬로건, 톤앤매너, 비주얼 가이드 |
+| personal-branding | 개인 브랜딩 — 자기 분석, 포지셔닝, 채널별 콘텐츠 전략 |
+| sns-content | 네이버 블로그, 인스타그램, 카카오 채널 최적화 콘텐츠 |
+| campaign-planner | A/B 테스트, 그로스 해킹, 인플루언서 전략, CRM |
+| seo-audit | 네이버/구글/AI검색(GEO) 통합 SEO 감사, C-Rank 개선 |
+| email-sequence | 정보통신망법 준수 이메일 시퀀스, 드립 캠페인 |
+| performance-report | 마케팅 성과 대시보드, KPI 리포트 |
+
+---
+
+### moai-legal — 법률
+
+| 스킬 | 기능 |
+|------|------|
+| contract-review | 계약서 위험 조항 검토 (민법/상법 기반) |
+| compliance-check | 개인정보보호법, ESG, 규제 컴플라이언스 점검 |
+| legal-risk | 법적 리스크 분석, 쟁점 정리 |
+| nda-triage | NDA/비밀유지계약서 초안 및 검토 |
+
+korean-law MCP로 법령/판례를 실시간 검색합니다.
+
+---
+
+### moai-finance — 재무/세무
+
+| 스킬 | 기능 |
+|------|------|
+| tax-helper | 3.3% 원천징수, 부가세, 종합소득세, 홈택스 신고 안내 |
+| financial-statements | K-IFRS 재무제표 분석, 재무비율 계산 |
+| close-management | 월/분기/연 결산 체크리스트, 마감 관리 |
+| variance-analysis | 예산 대비 실적 분석, 차이 원인 진단 |
+
+---
+
+### moai-hr — 인사/노무
+
+| 스킬 | 기능 |
+|------|------|
+| employment-manager | 근로계약서, 4대보험, 연차/퇴직금 계산 |
+| people-operations | 온보딩 프로세스, 조직 관리, 인사 규정 |
+| draft-offer | 오퍼 레터, 채용 공고(JD) 작성 |
+| performance-review | 성과 평가 양식, MBO/OKR 설계 |
+
+---
+
+### moai-content — 콘텐츠
+
+| 스킬 | 기능 |
+|------|------|
+| card-news | AI 이미지(Nano Banana) 기반 인스타 캐러셀 제작 |
+| product-detail | 전환율 극대화 상세페이지 — 네이버/쿠팡/카카오 규격 |
+| landing-page | 고전환율 랜딩 페이지 설계, CTA 최적화 |
+| copywriting | 마케팅 카피, 헤드라인, 광고 문구, 비주얼 스토리텔링 |
+| newsletter | 뉴스레터 기획~발행, 구독자 확보, 오픈율 최적화 |
+| media-production | 유튜브 스크립트, Remotion 영상, 팟캐스트 기획 |
+| blog | SEO 블로그 글 작성, 시리즈 기획, 내부 링크 전략 |
+| social-media | 멀티 채널 소셜 콘텐츠, 캘린더, 해시태그 전략 |
+
+WordPress/Canva 커넥터로 직접 발행 가능합니다.
+
+---
+
+### moai-operations — 운영
+
+| 스킬 | 기능 |
+|------|------|
+| process-manager | 결재 프로세스 설계, 나라장터 조달, SOP 작성 |
+| vendor-manager | 벤더 평가, 발주/구매 관리, 계약 조건 검토 |
+| status-reporter | KPI 보고서, 주간/월간 상태 보고 |
+
+---
+
+### moai-education — 교육/연구
+
+| 스킬 | 기능 |
+|------|------|
+| curriculum-designer | 온라인/오프라인 강의 설계, 커리큘럼 개발 |
+| research-assistant | 문헌 검토, 리서치 보고서, 데이터 수집/분석 |
+| assessment-creator | 시험 문제 출제, 자격증 대비, 평가 루브릭 |
+
+---
+
+### moai-lifestyle — 라이프스타일
+
+| 스킬 | 기능 |
+|------|------|
+| travel-planner | 여행 일정 설계, 맛집/숙소 추천, 예산 계획 |
+| wellness-coach | 식단 설계, 운동 프로그램, 건강 관리 |
+| event-planner | 웨딩/세미나/이벤트 기획, 체크리스트, 타임라인 |
+
+---
+
+### moai-product — 제품/혁신
+
+| 스킬 | 기능 |
+|------|------|
+| spec-writer | PRD/기능명세서 작성, 스프린트 플래닝 |
+| roadmap-manager | 제품 로드맵, 마일스톤 관리, 릴리스 계획 |
+| ux-researcher | UX 리서치, 페르소나 설계, 사용성 테스트 |
+
+---
+
+### moai-support — 고객지원
+
+| 스킬 | 기능 |
+|------|------|
+| ticket-triage | CS 티켓 자동 분류, 우선순위 지정 |
+| draft-response | 고객 응대 초안 작성 (격식/캐주얼 톤) |
+| kb-article | Knowledge Base 문서 작성, FAQ 정리 |
+| escalation-manager | 에스컬레이션 판단, 상위 레벨 보고서 |
+
+---
+
+### moai-office — 문서 생성
+
+| 스킬 | 기능 |
+|------|------|
+| hwpx-writer | 한글(HWPX) 공문서/보고서 생성, 양식 채우기 (python-hwpx) |
+| docx-generator | Word(DOCX) 보고서/계약서/제안서 생성 |
+| pptx-designer | PPT 발표자료 디자인 (pptxgenjs, Pretendard 폰트) |
+| xlsx-creator | Excel 데이터 표/차트/수식/조건부 서식 (openpyxl) |
+
+Word/PPT/Excel/한글 생성 요청 시 Claude 기본 도구 대신 이 플러그인을 우선 사용합니다.
+
+---
+
+### moai-career — 커리어
+
+| 스킬 | 기능 |
+|------|------|
+| resume-builder | 자기소개서/이력서/CV 작성, 산업별 맞춤 |
+| interview-coach | 면접 예상 질문, 모의면접, STAR 기법 코칭 |
+| job-analyzer | 채용공고(JD) 분석, 역량 매칭, 지원 전략 |
+| portfolio-guide | 포트폴리오 구성, 프로젝트 어필 포인트 정리 |
+
+---
+
+### moai-data — 데이터 분석
+
+| 스킬 | 기능 |
+|------|------|
+| data-explorer | CSV/Excel 프로파일링, 이상값 탐지, 상관 분석 |
+| data-visualizer | Mermaid/Chart.js 차트, HTML 대시보드, PPT/Word 변환 |
+| public-data | 공공데이터포털/KOSIS 통계 실시간 조회 |
+
+Airtable/Google Sheets 커넥터로 데이터를 직접 분석합니다.
+
+---
+
+### moai-research — 연구/특허
+
+| 스킬 | 기능 |
+|------|------|
+| paper-search | RISS/KCI/DBpia/Google Scholar 논문 통합 검색 |
+| paper-writer | 학술 논문 구조화 작성 (APA/KCI/IEEE 포맷) |
+| patent-search | KIPRIS Plus 특허/실용신안/디자인/상표 검색 |
+| patent-analyzer | 특허 맵, 선행기술 조사, FTO 분석, 출원서 초안 |
+| grant-writer | NRF/IITP/KIAT 연구비 신청서 작성 |
+
+---
+
 ## 에이전트 공유 호출
 
 플러그인 간 에이전트를 공유 호출할 수 있습니다:
