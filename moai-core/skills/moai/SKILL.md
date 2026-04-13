@@ -6,7 +6,7 @@ description: >
   '/moai init', '/moai catalog'으로 시작하세요.
 user-invocable: true
 metadata:
-  version: "1.0.0"
+  version: "1.0.3"
   status: "active"
   updated: "2026-04-14"
   tags: "moai,router,init,catalog,status,business,marketing,legal,tax,hr,content,patent,research,data"
@@ -14,7 +14,7 @@ metadata:
 
 # MoAI — 도메인 전문가 AI 팀
 
-> v1.0.0 | 16개 플러그인 | 64개 스킬
+> v1.0.3 | 16개 플러그인 | 64개 스킬
 
 사용자는 방향(What & Why)을 설정하고, MoAI는 실행(How)을 담당합니다.
 
