@@ -2,22 +2,26 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
-[![Version](https://img.shields.io/badge/Version-1.3.0-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-1.4.0-blue)](CHANGELOG.md)
 [![Plugins](https://img.shields.io/badge/Plugins-17-blue)](.claude-plugin/marketplace.json)
 [![Skills](https://img.shields.io/badge/Skills-71-green)](.claude-plugin/marketplace.json)
+[![shadcn/ui](https://img.shields.io/badge/UI-shadcn/ui-black)](https://ui.shadcn.com/)
 
 **Claude Cowork 도메인 전문가 AI 마켓플레이스**
 
-자연어 한 줄이면 사업계획서, 계약서 검토, 세금 계산, PPT 제작, 데이터 분석, 특허 검색, **AI 이미지·영상·음성 생성**까지 — 17개 독립 플러그인과 71개 전문 스킬이 업무를 대신합니다. 모든 텍스트 산출물은 **`ai-slop-reviewer`가 AI 패턴을 검수**하여 사람이 쓴 것처럼 자연스럽게 다듬어 드립니다.
+자연어 한 줄이면 사업계획서, 계약서 검토, 세금 계산, PPT 제작, 데이터 분석, 특허 검색, **AI 이미지·영상·음성 생성**, **shadcn/ui 기반 랜딩·상세 페이지 제작**까지 — 17개 독립 플러그인과 71개 전문 스킬이 업무를 대신합니다. 모든 텍스트 산출물은 **`ai-slop-reviewer`가 AI 패턴을 검수**하여 사람이 쓴 것처럼 자연스럽게 다듬어 드립니다.
 
-> *Domain expert AI marketplace for [Claude Cowork](https://claude.ai). 17 plugins · 71 skills covering business strategy, marketing, legal, finance, HR, content, operations, education, lifestyle, product, support, document generation, data analysis, research/patents, **AI media production (image/video/voice)**, and automatic AI-slop detection for every text deliverable.*
+> *Domain expert AI marketplace for [Claude Cowork](https://claude.ai). 17 plugins · 71 skills covering business strategy, marketing, legal, finance, HR, content, operations, education, lifestyle, product, support, document generation, data analysis, research/patents, **AI media production (image/video/voice)**, **shadcn/ui-based web landing/detail pages**, and automatic AI-slop detection for every text deliverable.*
 
-**🆕 v1.3.0 하이라이트**
-- `/moai` → **`/project`** 커맨드 전환 (Claude Code 내부 스킬과의 shadowing 충돌 해소, Tab 자동완성 복구)
-- **`ai-slop-reviewer` 스킬 신규** — 모든 텍스트 산출물 체인의 필수 마지막 단계. AI 특유의 기계적 패턴 진단 → 인간적인 톤으로 수정
-- **스킬 체이닝 기반 `/project init`** — 업무 인터뷰 → 산출물별 스킬 체인 설계(40+ 프리셋) → 확인 → CLAUDE.md 자동 생성
-- **글로벌 프로필 시스템 제거** — 프로젝트마다 이름·회사·역할 재질문하지 않음
-- **SKILL.md 포맷 정리** — `metadata` 블록 전면 삭제, 버전은 `plugin.json` 단일 소스
+**🆕 v1.4.0 하이라이트**
+- **shadcn/ui가 HTML/웹 산출물 기본 스택** — Next.js 15 + Tailwind CSS v4 + shadcn/ui + Lucide + (옵션) Framer Motion. 별도 지정이 없으면 자동 적용
+- **소크라테스식 테마 인터뷰 공통 프로토콜** — 랜딩·상세·대시보드 생성 전에 `AskUserQuestion`으로 베이스 팔레트(Neutral/Zinc/Stone/Slate) · 컬러 모드(Light/Dark/System+Toggle) · 모서리 반경(Sharp~Pill) · 효과(Fade-up·Scroll Reveal·Parallax·Chart)를 질문
+- **OKLCH CSS 변수 기본 출력** — Light/Dark 동시 산출, shadcn 공식 `:root` + `.dark` 구조 준수
+- **Recharts/Chart.js/Tremor/ECharts 4택 1** — 차트 섹션 선택 시 라이브러리를 사용자가 직접 결정
+- 단일 HTML 파일 모드(스마트스토어·쿠팡 업로드용)에도 shadcn CSS 변수 인라인 주입
+
+**이전 릴리스 하이라이트**
+- **v1.3.0** — `/moai` → `/project` 커맨드 전환, `ai-slop-reviewer` 도입, 스킬 체이닝 기반 `/project init`, SKILL.md `metadata` 블록 제거
 
 ---
 
@@ -369,6 +373,12 @@ Airtable/Google Sheets 커넥터로 데이터를 직접 분석합니다.
 - JSON 카피 계약 기반 자동화된 페이지 생성
 - 디자인 시스템 스펙과 브랜드 컨텍스트 템플릿
 - 평가 체크리스트와 A/B 테스트 가이드
+
+**shadcn/ui 기본 스택 (v1.4.0 신규)**
+- `landing-page` / `product-detail` / `data-visualizer` 3개 스킬이 shadcn/ui + Tailwind CSS v4 + OKLCH 토큰을 기본 채택
+- 코드 생성 직전 소크라테스식 4문항 인터뷰로 테마·효과·차트 라이브러리 자동 선택
+- Light/Dark 모드 동시 산출, 단일 HTML 모드에서도 CSS 변수 인라인 주입
+- 공용 레퍼런스: [`moai-content/skills/landing-page/references/landing-page/shadcn-theme-interview.md`](./moai-content/skills/landing-page/references/landing-page/shadcn-theme-interview.md)
 
 **2026년 최신 법규/시장 데이터 반영**
 - 개정 개인정보보호법, 근로기준법, 세법 변경사항

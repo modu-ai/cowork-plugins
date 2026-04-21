@@ -1,21 +1,39 @@
 # moai-content
 
-크리에이티브 콘텐츠 플러그인 — 카드뉴스, 랜딩페이지, 상세페이지, 뉴스레터, 카피라이팅, 블로그, 소셜미디어, 미디어 프로덕션.
+크리에이티브 콘텐츠 플러그인 — 카드뉴스, **shadcn/ui 랜딩페이지**, **shadcn/ui 상세페이지**, 뉴스레터, 카피라이팅, 블로그, 소셜미디어, 미디어 프로덕션.
 
-8개 스킬로 텍스트부터 영상까지 콘텐츠 제작 전 과정을 커버합니다. Agency 패턴(JSON 카피 계약, 디자인 시스템 스펙, 평가 체크리스트)이 적용된 landing-page 스킬을 포함합니다. Post-Bridge, Typefully, WordPress MCP 연동으로 멀티채널 발행을 자동화합니다.
+8개 스킬로 텍스트부터 영상까지 콘텐츠 제작 전 과정을 커버합니다. v1.4.0부터 `landing-page`·`product-detail` 두 스킬이 **shadcn/ui + Tailwind CSS v4 + OKLCH 토큰**을 기본 스택으로 사용하고, 코드 생성 전 **소크라테스식 테마 인터뷰**(베이스 팔레트·컬러 모드·모서리 반경·효과)를 자동으로 실행합니다. Post-Bridge, Typefully, WordPress MCP 연동으로 멀티채널 발행을 자동화합니다.
 
 ## 스킬
 
 | 스킬 | 설명 | 레퍼런스 | 상태 |
 |------|------|:--------:|:----:|
 | [card-news](./skills/card-news/) | AI 이미지 생성 기반 인스타 캐러셀 제작. 잡지 SOP, AI 글쓰기 방지 기법 | 4 | ✅ |
-| [product-detail](./skills/product-detail/) | 전환율 극대화 상세페이지 빌더. 네이버/쿠팡/카카오 규격 대응 | 4 | ✅ |
-| [landing-page](./skills/landing-page/) | 고전환율 랜딩 페이지 설계. CTA 최적화, Agency 디자인 원칙 적용 | 6 | ✅ |
+| [product-detail](./skills/product-detail/) | **shadcn/ui** 기반 전환율 극대화 상세페이지 빌더. 네이버/쿠팡/카카오 규격 + Next.js 자사몰 | 4 | ✅ |
+| [landing-page](./skills/landing-page/) | **shadcn/ui** 기반 고전환율 랜딩 페이지. CTA 최적화, 소크라테스식 테마 인터뷰, Framer Motion | 7 | ✅ |
 | [copywriting](./skills/copywriting/) | 마케팅 카피, 헤드라인, CTA, 광고 캠페인, 비주얼 스토리텔링 | 3 | ✅ |
 | [newsletter](./skills/newsletter/) | 뉴스레터 기획~발행, 구독자 확보 전략, 오픈율 최적화 | 1 | ✅ |
 | [media-production](./skills/media-production/) | Remotion 영상, 유튜브 프로덕션, 팟캐스트, 전자책 출판 | 9 | ✅ |
 | [blog](./skills/blog/) | 네이버/티스토리/브런치/WordPress/Ghost 6개 플랫폼 최적화 포스팅 | 6 | ✅ |
 | [social-media](./skills/social-media/) | 인스타/스레드/X/링크드인/유튜브쇼츠/카카오 7개 플랫폼 콘텐츠 | 7 | ✅ |
+
+## shadcn/ui 기본 스택 (v1.4.0 신규)
+
+`landing-page`와 `product-detail` 스킬은 별도 지정이 없으면 다음 스택으로 산출합니다:
+
+| 레이어 | 기본값 |
+|--------|-------|
+| 프레임워크 | Next.js 15 App Router + React 19 |
+| 스타일 | Tailwind CSS v4 (CSS Variables 모드) |
+| UI 컴포넌트 | **shadcn/ui** (Radix 기반) |
+| 아이콘 | Lucide React |
+| 애니메이션 | Framer Motion (선택 시) |
+| 폰트 | Pretendard (KR) + Inter (EN) |
+| 차트 | Recharts (선택 시) |
+
+코드 생성 직전 `AskUserQuestion` 4문항 인터뷰 — (1) 베이스 팔레트(Neutral/Zinc/Stone/Slate) · (2) 컬러 모드(Light/Dark/System+Toggle/Auto) · (3) 모서리 반경(Sharp~Pill) · (4) 효과(Fade-up·Scroll Reveal·Parallax·Chart) — 를 실행합니다.
+
+공용 레퍼런스: [`skills/landing-page/references/landing-page/shadcn-theme-interview.md`](./skills/landing-page/references/landing-page/shadcn-theme-interview.md)
 
 ## Cowork 커넥터
 

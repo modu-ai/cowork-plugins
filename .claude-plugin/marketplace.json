@@ -5,18 +5,18 @@
     "email": "email@mo.ai.kr"
   },
   "metadata": {
-    "description": "모두의 AI's Claude Cowork 플러그인 마켓플레이스 — 17 플러그인, 71 스킬. /project init으로 워크플로우 기반 CLAUDE.md 자동 생성, 모든 텍스트 산출물은 ai-slop-reviewer로 검수",
-    "version": "1.3.0",
+    "description": "모두의 AI's Claude Cowork 플러그인 마켓플레이스 — 17 플러그인, 73 스킬. /project init으로 워크플로우 기반 CLAUDE.md 자동 생성, 모든 텍스트 산출물은 ai-slop-reviewer로 검수. v1.5.0부터 소상공인365 상권분석(sbiz365-analyst)과 정부지원사업 통합(kr-gov-grant) 스킬이 moai-business에 포함되었습니다",
+    "version": "1.5.0",
     "language": "ko"
   },
   "plugins": [
     {"name": "moai", "source": "./moai-core", "description": "MoAI 코어 — /project 프로젝트 초기화, 스킬 체이닝 워크플로우 설계, 도메인 라우터, AI 슬롭 검수(ai-slop-reviewer), 피드백 허브"},
-    {"name": "moai-business", "source": "./moai-business", "description": "비즈니스 전략 — 사업계획서, 시장조사, 재무모델, 투자제안서"},
+    {"name": "moai-business", "source": "./moai-business", "description": "비즈니스 전략 — 사업계획서, 시장조사, 재무모델, IR, 소상공인365 상권분석, 정부지원사업 통합"},
     {"name": "moai-marketing", "source": "./moai-marketing", "description": "마케팅 — 네이버/카카오 SEO, SNS 콘텐츠, 캠페인, 이메일 시퀀스"},
     {"name": "moai-legal", "source": "./moai-legal", "description": "법률 — 계약서 검토(민법/상법), 개인정보보호법 컴플라이언스, NDA"},
     {"name": "moai-finance", "source": "./moai-finance", "description": "재무/세무 — 3.3% 원천징수, 부가세, 홈택스, K-IFRS, 연말정산"},
     {"name": "moai-hr", "source": "./moai-hr", "description": "인사/노무 — 근로계약서, 4대보험, 채용, 성과평가, 연차/퇴직금"},
-    {"name": "moai-content", "source": "./moai-content", "description": "크리에이티브 콘텐츠 — 카드뉴스, 랜딩페이지(HTML), 상세페이지, 뉴스레터, 카피라이팅, 블로그, 소셜미디어, 미디어 프로덕션"},
+    {"name": "moai-content", "source": "./moai-content", "description": "크리에이티브 콘텐츠 — 카드뉴스, shadcn/ui 기반 랜딩페이지, shadcn/ui 상세페이지, 뉴스레터, 카피라이팅, 블로그, 소셜미디어, 미디어 프로덕션"},
     {"name": "moai-operations", "source": "./moai-operations", "description": "운영 — 결재 프로세스, 정부조달, SOP, 벤더 관리"},
     {"name": "moai-education", "source": "./moai-education", "description": "교육/연구 — 강의설계, 논문 리서치, 교육과정 개발"},
     {"name": "moai-lifestyle", "source": "./moai-lifestyle", "description": "라이프스타일 — 여행 플래닝, 건강/식단, 웨딩/이벤트"},
@@ -24,7 +24,7 @@
     {"name": "moai-support", "source": "./moai-support", "description": "고객 지원 — 티켓 분류, 응답 초안, KB 문서, 에스컬레이션"},
     {"name": "moai-office", "source": "./moai-office", "description": "문서 생성 — PPT 디자인, Word(DOCX), Excel(XLSX), 한글(HWPX)"},
     {"name": "moai-career", "source": "./moai-career", "description": "커리어 준비 — 자기소개서, 이력서, 면접 코칭, 채용공고 분석, 포트폴리오"},
-    {"name": "moai-data", "source": "./moai-data", "description": "데이터 분석 — CSV/Excel 탐색, 공공데이터 조회, 시각화, 대시보드"},
+    {"name": "moai-data", "source": "./moai-data", "description": "데이터 분석 — CSV/Excel 탐색, 공공데이터 조회, shadcn/ui 대시보드 + Recharts/Chart.js/Tremor/ECharts 차트"},
     {"name": "moai-research", "source": "./moai-research", "description": "연구/특허 — 논문 검색, 학술 논문 작성, 특허 분석/출원, 연구비 신청"},
     {"name": "moai-media", "source": "./moai-media", "description": "AI 미디어 스튜디오 — Nano Banana 이미지(Gemini 3), Kling 영상, Ideogram 한국어 타이포, ElevenLabs 음성, fal.ai 게이트웨이"}
   ]

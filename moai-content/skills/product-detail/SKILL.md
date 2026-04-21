@@ -1,17 +1,19 @@
 ---
 name: product-detail
 description: >
-  제품/서비스 상세 페이지를 전환율 극대화 전략으로 설계하고 코드를 생성하는 스킬입니다.
+  shadcn/ui 기반 제품·서비스 상세 페이지를 전환율 극대화 전략으로 설계·생성하는 스킬입니다.
   "상세페이지 만들어줘", "제품 페이지 기획", "쇼핑몰 상세 설계", "상세페이지 디자인" 등
   전자상거래 및 SaaS 제품의 상세 페이지 제작 요청 시 사용합니다.
-  네이버 스마트스토어, 쿠팡, 카카오 커머스 등 국내 플랫폼 규격을 지원합니다.
+  코드 생성 전에 소크라테스식 테마 인터뷰(베이스 팔레트·컬러 모드·모서리 반경·효과)를
+  먼저 묻고, 네이버 스마트스토어/쿠팡/카카오 커머스 규격에 맞춰 HTML 또는
+  Next.js+shadcn/ui React 컴포넌트를 산출합니다.
   블로그 글, SNS 포스팅, 랜딩 페이지(단독 전환 목적)에는 이 스킬을 사용하지 마세요.
 user-invocable: true
 ---
 
 # 상세 페이지 (Product Detail)
 
-> moai-content | 제품/서비스 상세 페이지 전문 스킬
+> moai-content | shadcn/ui 기반 제품/서비스 상세 페이지 전문 스킬 · v1.4.0에서 shadcn/ui 기본 스택 전환
 
 ## 지원 영역
 
@@ -20,9 +22,20 @@ user-invocable: true
 - 서비스 소개 페이지 (컨설팅, 교육, 구독 서비스)
 - 모바일 퍼스트 상세 페이지 (375px 기준 숏폼 스타일)
 - 전환율 최적화 카피 + 디자인 시스템 + HTML/React 코드 생성
+- shadcn/ui 컴포넌트 기반 테마 일관성 (Light/Dark 동시 산출)
+
+## 기본 스택 (v1.4.0)
+
+| 레이어 | 기본값 | 비고 |
+|--------|-------|------|
+| 자사몰·SaaS | Next.js 15 + Tailwind v4 + shadcn/ui | Radix 접근성 자동 확보 |
+| 스마트스토어·쿠팡 | 단일 HTML + Tailwind CDN + shadcn CSS 변수 | 플랫폼 업로드 규격 준수 |
+| 아이콘 | Lucide React | 또는 SVG inline |
+| 차트(가격 비교 등) | Recharts | 인터뷰 Q5에서 선택 시 |
 
 ## 레퍼런스 가이드
 
+- `../landing-page/references/landing-page/shadcn-theme-interview.md` — **[v1.4.0 신규] shadcn 테마 인터뷰 프로토콜 (공용 레퍼런스)**
 - `references/product-detail/structure-guide.md` -- 페이지 구조 및 디자인 시스템 가이드
 - `references/product-detail/conversion-formulas.md` -- 전환율 극대화 공식 및 체크리스트
 - `references/product-detail/platform-specs.md` -- 플랫폼별 규격 (스마트스토어, 쿠팡, 카카오)
@@ -45,6 +58,25 @@ user-invocable: true
 ## 독립 실행 워크플로우
 
 참조 가이드(`references/`)를 사용할 수 없는 경우 다음 단계로 실행한다.
+
+### [HARD] 0단계: shadcn 테마 인터뷰
+
+코드·디자인 스펙 산출 **직전에 반드시 수행**한다. MoAI 오케스트레이터가 `AskUserQuestion`으로 다음 4개 질문을 한 번에 제시한다.
+
+1. **Q1 베이스 팔레트** — Neutral(기본) / Zinc / Stone / Slate
+2. **Q2 컬러 모드** — System+Toggle(기본) / Light / Dark / Auto
+3. **Q3 모서리 반경** — Balanced 0.5rem(기본) / Sharp / Soft / Pill
+4. **Q4 효과(multiSelect)** — Fade-up / Scroll Reveal / Parallax / Chart
+
+Q4에서 `Chart`가 선택되면(가격 비교 차트·스펙 비교 등) Q5(Recharts/Chart.js/Tremor/ECharts)를 추가 호출한다.
+
+상세 설계·예외 처리는 `../landing-page/references/landing-page/shadcn-theme-interview.md` 참조.
+
+Fallback(인터뷰 생략) 기본값: `Neutral + System+Toggle + 0.5rem + Fade-up`. 적용 시 응답 상단에 고지한다.
+
+플랫폼별 기본값 조정:
+- 네이버 스마트스토어·쿠팡: 단일 HTML 모드로 산출하되 shadcn CSS 변수는 인라인으로 주입
+- 자사몰·SaaS: Next.js + shadcn/ui 전체 스택 기본 적용
 
 ### 사전 수집: 제품 정보 체크리스트
 
@@ -122,36 +154,45 @@ FAB 공식 적용:
 
 상세 공식: `references/product-detail/conversion-formulas.md`
 
-### 4단계: 디자인 시스템 정의
+### 4단계: 디자인 시스템 정의 (shadcn 토큰 기반)
 
-색상:
-- Primary: 브랜드 메인 색상 (CTA 버튼)
-- Accent: 할인/배지 강조색 (빨강 계열 권장)
-- Neutral: 배경 및 텍스트 (#FAFAFA, #333333)
-- Success/Warning: 재고/배송 상태 표시
+색상 (shadcn OKLCH 변수 매핑):
+- `--primary` → CTA 버튼, 구매 유도 지점 (0단계 Q1 선택 base 기반)
+- `--destructive` → 할인율·한정수량 배지 (빨강 계열 oklch)
+- `--muted-foreground` → 보조 정보 (평점 텍스트, 배송 안내)
+- `--background` / `--card` → 섹션 배경 위계
+- 브랜드 컬러 오버라이드 시 `--primary`, `--accent`, `--ring`만 교체
 
 폰트:
 - 본문: Pretendard 400 (16px/1.6)
 - 제목: Pretendard 700 (24~32px)
-- 가격: Pretendard 800 (28~36px, Primary 색상)
-- 할인가: line-through + 회색 처리
+- 가격: Pretendard 800 (28~36px, `--primary` 색상)
+- 할인가: `line-through` + `text-muted-foreground`
 
 레이아웃:
 - 모바일: 1컬럼, 좌우 패딩 16px
 - 태블릿(768px~): 2컬럼 그리드
 - 데스크톱(1024px~): 최대 860px 콘텐츠 영역 (스마트스토어 기준)
 
+컴포넌트 매핑:
+- 옵션 선택 → shadcn `Select` 또는 `ToggleGroup`
+- 탭 메뉴 → shadcn `Tabs`
+- 후기 카드 → shadcn `Card` + `Avatar` + `StarRating`
+- FAQ → shadcn `Accordion`
+- 장바구니/바로구매 → shadcn `Button` (variant: default / secondary)
+- 배지 → shadcn `Badge` (variant: destructive for 할인)
+
 ### 5단계: 코드 생성
 
 출력 형식 선택:
-- HTML 패키지: index.html + style.css + script.js (스마트스토어/쿠팡 업로드용)
-- React/Next.js: 컴포넌트 분리 (ProductImage, ProductInfo, TabMenu, Reviews, FAQ)
+- **HTML 패키지**(스마트스토어/쿠팡 업로드용): `index.html` + `style.css`(shadcn CSS 변수 인라인) + `script.js`
+- **React/Next.js**(자사몰/SaaS): 컴포넌트 분리 (ProductImage, ProductInfo, TabMenu, Reviews, FAQ) + `components.json` + `app/globals.css`
 
 플랫폼별 규격 적용:
-- 스마트스토어: 860px 폭, 이미지 기반 상세
-- 쿠팡: 780px 폭, 최대 9장 이미지
+- 스마트스토어: 860px 폭, 이미지 기반 상세 (HTML 모드)
+- 쿠팡: 780px 폭, 최대 9장 이미지 (HTML 모드)
 - 카카오: 모바일 최적화, 375px 기준
-- 자사몰: 반응형 자유 설계
+- 자사몰: 반응형 자유 설계 (Next.js + shadcn 모드)
 
 상세 규격: `references/product-detail/platform-specs.md`
 코드 템플릿: `references/product-detail/section-templates.md`
@@ -200,12 +241,20 @@ FAB 공식 적용:
 
 ## 카피 출력 형식 (JSON 구조)
 
-카피 작성 결과는 구조화된 형식으로 산출한다:
+카피 작성 결과는 구조화된 형식으로 산출한다. 0단계 인터뷰 결과는 `theme` 블록에 포함한다.
 
 ```json
 {
   "page_type": "product-detail",
   "platform": "smartstore|coupang|kakao|custom",
+  "theme": {
+    "system": "shadcn/ui",
+    "base": "neutral",
+    "mode": "system+toggle",
+    "radius": "0.5rem",
+    "effects": ["fade-up"],
+    "chart_lib": null
+  },
   "sections": [
     {
       "id": "hero",
@@ -280,9 +329,11 @@ FAB 공식 적용:
 1. 사용자 요청 수신 -- 상세 페이지 요청 확인
 2. `references/product-detail/` 존재 시 로드 -- 가이드에 따라 실행
 3. 판매 플랫폼 미지정 시 사용자에게 확인 (스마트스토어/쿠팡/카카오/자사몰)
-4. 제품 정보 체크리스트 확인 -- 필수 항목 미제공 시 질문
-5. `--deepthink` 또는 복잡 작업 -- `mcp__sequential-thinking__sequentialthinking` 호출
-6. 결과물 생성 후 사용자 검토 요청
+4. **shadcn 테마 인터뷰 실행** (0단계, HARD) -- 코드 산출 직전
+5. 제품 정보 체크리스트 확인 -- 필수 항목 미제공 시 질문
+6. `--deepthink` 또는 복잡 작업 -- `mcp__sequential-thinking__sequentialthinking` 호출
+7. 결과물 생성 후 `ai-slop-reviewer`로 카피 검수 (텍스트 산출물 한정)
+8. 사용자 검토 요청
 
 주의: AI가 생성한 상세 페이지 카피에 포함된 판매량, 평점, 고객 후기 등 실증적 주장은 반드시 실제 데이터로 교체한다. 허위 수치를 그대로 사용하면 전자상거래법 및 표시광고법 위반에 해당한다.
 

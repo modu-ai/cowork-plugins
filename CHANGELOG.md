@@ -13,6 +13,86 @@
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
 
+## [1.5.0] - 2026-04-21
+
+공식 MINOR 릴리스. **moai-business 플러그인에 소상공인·창업자 실무 지원 스킬 2종을 추가**하여 총 스킬 개수가 71 → 73으로 확장됩니다. 두 스킬 모두 Category A(`user-invocable: true`)로 슬래시 명령 자동완성을 지원하고, 사용자 언어의 트리거가 풍부해 자연어로도 자동 호출됩니다.
+
+### Highlights
+
+- **소상공인365 상권분석 자동화** — `bigdata.sbiz.or.kr` PDF 한 장을 첨부하면 4문 인터뷰 후 창업 타당성 100점 평가 + 9섹션 DOCX 보고서를 자동 생성합니다.
+- **정부지원사업 통합 도우미** — K-Startup, BIZINFO, 중기부, 창진원, 문체부, 농식품부 등 주요 공고를 한 번에 탐색하고 사업계획서 초안까지 작성합니다.
+- **Anthropic 공식 스킬 우선순위 반영** — 두 스킬 모두 DOCX/XLSX 생성 시 `anthropic-skills:docx` · `anthropic-skills:xlsx` 우선, AI 슬롭 검수도 `anthropic-skills:ai-slop-reviewer` 우선 정책을 내장했습니다.
+
+### Added
+
+- **`moai-business/skills/sbiz365-analyst/`** 신규 스킬 (Category A) — 소상공인365 PDF 기반 상권 트렌드 분석 + 창업 타당성 종합 보고서.
+  - Step 0~5 워크플로우: PDF 확인 → 4문 AskUserQuestion(업종·목적·예산·중점) → PDF 데이터 추출 → 5대 분석(유동인구·매출·경쟁·입지·타당성) → 9섹션 DOCX → AI 슬롭 검수.
+  - 4축 100점 평가 체계: 성장성(30) + 경쟁 적합도(25) + 수요 매칭도(25) + 재무 타당성(20).
+  - `references/{analysis-guide, data-fields, feasibility-scoring, report-template}.md` 4종 레퍼런스 포함.
+- **`moai-business/skills/kr-gov-grant/`** 신규 스킬 (Category A) — 대한민국 정부·공공기관 지원사업 통합 분석 및 신청서 작성.
+  - 4 MODE 구조: ① 탐색·추천 / ② 신청서 초안 작성 / ③ 서류 검토 / ④ 일정 관리.
+  - 8개 신청자 유형 × 7개 지원 카테고리(창업/소상공인/R&D/문화관광/농식품/사회적경제/지자체 등) 매핑 데이터베이스.
+  - 예비창업패키지·TIPS·전통시장 활성화·중소기업 R&D·관광벤처 등 사업별 항목 구조 템플릿 탑재.
+  - `references/programs.md` 상세 프로그램 카탈로그.
+
+### Changed
+
+- `moai-business/.claude-plugin/plugin.json`
+  - `description` 갱신: "사업계획서, 시장조사, 재무모델, IR, 상권분석, 정부지원사업"으로 확장.
+  - `keywords` 확장: 상권분석·창업타당성·소상공인365·정부지원사업·K-Startup·BIZINFO·창업지원·지원금 추가.
+- `.claude-plugin/marketplace.json`
+  - `metadata.description` 갱신: "71 스킬" → "73 스킬", v1.5.0 하이라이트 추가.
+  - `moai-business` 엔트리 설명 갱신: 신규 스킬 범위 반영.
+- `kr-gov-grant` vs `moai-research:grant-writer` 스코프 분리 명시 — 전자는 범용 지원사업 전반, 후자는 학술·연구 중심 NRF/IITP 과제.
+
+### Notes
+
+- 두 스킬 모두 `user-invocable: true` 플래그를 포함하여 `/sbiz365-analyst`, `/kr-gov-grant` 슬래시 자동완성이 활성화됩니다.
+- 두 스킬의 텍스트 산출물(보고서·사업계획서·검토 피드백)은 모두 AI 슬롭 검수로 종료되며, Anthropic 공식 스킬이 있으면 우선 사용합니다.
+- 사용자는 릴리스 후 `/plugin marketplace update cowork-plugins` 실행이 필요합니다.
+
+---
+
+## [1.4.0] - 2026-04-16
+
+공식 MINOR 릴리스. **HTML·웹 산출물의 shadcn/ui 기본 스택 전환 + 소크라테스식 테마 인터뷰 도입**. 사용자가 코드 한 줄도 쓰지 않고도 자신의 브랜드·취향에 맞는 shadcn 베이스 팔레트·컬러 모드·모서리 반경·효과를 선택할 수 있도록 `AskUserQuestion` 흐름을 표준화.
+
+### Highlights
+
+- **shadcn/ui가 HTML/웹 산출물 기본 스택** — Next.js 15 + Tailwind v4 + shadcn/ui + Lucide + Framer Motion 조합이 기본.
+- **소크라테스식 테마 인터뷰 공통 프로토콜** — 랜딩·상세·대시보드 3개 스킬이 동일한 4문항 질문 패턴 공유.
+- **OKLCH CSS 변수 기본 출력** — Light/Dark 모드 동시 산출, shadcn 공식 `:root` + `.dark` 구조 준수.
+- **Recharts/Chart.js/Tremor/ECharts 4택 1** — 차트·대시보드 산출 시 사용자가 직접 선택.
+
+### Added
+
+- **`moai-content/skills/landing-page/references/landing-page/shadcn-theme-interview.md`** 신규 레퍼런스 — shadcn 테마 인터뷰 프로토콜, AskUserQuestion payload 설계, OKLCH CSS 변수 템플릿, Fallback 기본값, 브랜드 컬러 오버라이드 가이드, 스킬별 적용 포인트 수록.
+- `landing-page` 스킬: 실행 워크플로우에 **0단계 shadcn 테마 인터뷰(HARD)** 추가 — Q1 베이스 팔레트 / Q2 컬러 모드 / Q3 모서리 반경 / Q4 효과(multiSelect) / Q5 차트 라이브러리(조건부).
+- `landing-page` 스킬: 섹션 구성을 shadcn 공식 블록(Hero / Features / Pricing / FAQ / Testimonial)에 매핑.
+- `product-detail` 스킬: 0단계 shadcn 테마 인터뷰(HARD) 추가 — 플랫폼별 분기(스마트스토어·쿠팡은 단일 HTML 인라인, 자사몰·SaaS는 Next.js+shadcn) 명시.
+- `product-detail` 스킬: shadcn 컴포넌트 매핑 섹션 신설 — Select/ToggleGroup/Tabs/Accordion/Badge/Button/Card 연결.
+- `data-visualizer` 스킬: HTML·React 대시보드 산출 시 shadcn 테마 인터뷰(HARD) + 차트 라이브러리 선택 가이드 추가.
+- 모든 카피 JSON 출력에 `theme` 블록 추가 (system, base, mode, radius, effects, chart_lib).
+
+### Changed
+
+- **기본 스타일 스택**: 3개 HTML/웹 스킬(`landing-page`, `product-detail`, `data-visualizer`) 모두 shadcn/ui를 기본값으로 채택. 별도 지정이 없으면 Next.js 15 + Tailwind v4 + shadcn/ui로 산출.
+- `landing-page` description에 "shadcn/ui 기반"과 "소크라테스식 테마 인터뷰" 트리거 문구 명시.
+- `product-detail` description에 동일한 shadcn 인터뷰 언급 추가.
+- `data-visualizer` description에 Recharts/Chart.js/Tremor/ECharts 4택 1 문구 명시.
+- `product-detail` 실행 규칙에 shadcn 테마 인터뷰 단계 삽입 (기존 6단계 → 8단계).
+- `landing-page` 색상·타이포·컴포넌트 정의를 shadcn OKLCH 토큰(`--primary`, `--accent`, `--muted-foreground` 등)으로 표준화.
+- 마켓플레이스 `description`에 v1.4.0 하이라이트 문구 추가.
+
+### Migration
+
+1. `/plugin marketplace update cowork-plugins`로 v1.4.0 갱신.
+2. 기존 랜딩/상세/대시보드 프로젝트를 재생성하고 싶으면 다시 "랜딩 페이지 만들어줘" 등으로 호출 — 새 테마 인터뷰가 먼저 실행됨.
+3. 인터뷰를 건너뛰고 기본값으로 빠르게 생성하려면 `--quick` 또는 "그냥 기본으로" 플래그를 사용.
+4. 기존 Framer/Webflow/Wix 요청은 사용자가 명시적으로 지정하면 shadcn이 아닌 해당 플랫폼 스펙으로 자동 전환됨(동작 동일).
+5. 브랜드 컬러가 이미 있는 경우: shadcn 베이스 팔레트를 뉴트럴 스캐폴드로 사용하고 `--primary`·`--accent`·`--ring` 세 토큰만 오버라이드 — 인터뷰 중 사용자가 브랜드 컨텍스트를 제시하면 자동 적용.
+
+
 ## [1.3.0] - 2026-04-14
 
 ### Added
