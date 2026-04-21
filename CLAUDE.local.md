@@ -256,37 +256,88 @@ grep -n "하이라이트" README.md
 
 ## 8. GitHub Release 정책 (HARD)
 
-태그를 푸시할 때마다 **반드시 같은 태그 이름의 GitHub Release를 생성**합니다. 릴리스 노트는 CHANGELOG.md의 해당 버전 섹션을 그대로 사용합니다.
+태그를 푸시할 때마다 **반드시 같은 태그 이름의 GitHub Release를 생성**합니다. 릴리스 노트는 **CHANGELOG 섹션 + 사용자 친화 확장 블록**을 합친 풀 버전으로, 초보자도 "이번에 뭐가 바뀌었고 내가 뭘 해야 하는지"를 그 한 페이지에서 이해할 수 있어야 합니다.
 
-### 실행 절차 (태그 푸시 직후)
+### 8-1. 릴리스 노트 필수 섹션 (HARD)
+
+모든 공식 Release 본문은 아래 **7개 섹션을 이 순서대로** 포함합니다. 섹션이 해당 없는 경우에도 "해당 없음" 한 줄로 명시해 누락을 방지합니다.
+
+1. **Highlights** — 한 줄 요약 + 이번 릴리스가 사용자에게 왜 중요한지 2~4문장. 초보자가 2초 안에 성격을 파악할 수 있게.
+2. **What's New (추가)** — 신규 스킬·플러그인·기능. 각 항목마다:
+   - 스킬 전체 경로(예: `moai-business:kr-gov-grant`)
+   - 한 줄 기능 요약
+   - 주요 입출력·MODE·지원 범위
+   - **관련 링크 3종**: (a) SKILL.md 파일 GitHub URL, (b) 온라인 문서 URL, (c) 공식 외부 참고 URL(해당 시)
+3. **Changed (변경)** — 기존 스킬·메타데이터·버전 변경. 변경 전/후 대비가 드러나야 함. marketplace.json description 변경, 버전 동기화 범위(18지점), 파일 수 등.
+4. **Fixed (수정)** — 버그·정합성 수정. 해당 없으면 "해당 없음".
+5. **Removed (제거)** — 제거된 스킬·필드·규칙. 해당 없으면 "해당 없음".
+6. **업그레이드 방법** — Cowork/Claude Code 사용자 기준 단계별 명령. 반드시 포함:
+   - `/plugin marketplace update cowork-plugins`
+   - 플러그인 상세 재진입 필요성 안내
+   - API 키 재등록이 필요한 경우 명시
+   - 이전 버전과의 호환성(Breaking change 여부)
+7. **관련 문서 & 출처** — 온라인 문서 사이트 플러그인 페이지, CHANGELOG 전체 링크, 공식 기관·커넥터 URL, 참고 이슈/PR 번호.
+
+### 8-2. 사용자 이해 장치 (HARD)
+
+- **사용 예시 문장 최소 2개**: "이렇게 입력하면 됩니다" 형태의 복사·붙여넣기 가능한 자연어 프롬프트.
+- **비교표 권장**: 기존 스킬과 겹치는 범위가 있으면 "언제 어떤 걸 쓰나" 표로 명시(예: `kr-gov-grant` vs `moai-research:grant-writer`).
+- **Mermaid 다이어그램 권장**: 신규 스킬의 워크플로우가 3단계 이상이면 Mermaid로 시각화. GitHub Release 페이지는 Mermaid를 렌더합니다.
+- **초보자 안심 문구**: Breaking change가 없으면 "기존 워크플로우 그대로 동작합니다"를, Breaking이면 구체 대응 방법을 명시.
+
+### 8-3. CHANGELOG → 릴리스 노트 생성 절차
+
+CHANGELOG.md에는 구조화된 diff만 남기고, 릴리스 노트 본문은 CHANGELOG 섹션을 기본 소스로 삼되 8-1 필수 섹션을 맞추도록 확장·재구성합니다.
 
 ```bash
-NEW="1.3.1"
+NEW="1.5.0"
+REPO="modu-ai/cowork-plugins"
+NOTES="/tmp/release-notes-v${NEW}.md"
 
-# CHANGELOG에서 해당 버전 섹션만 추출 (다음 ## 직전까지)
+# 1단계: CHANGELOG에서 해당 버전 섹션 추출 (초안)
 awk -v v="$NEW" '
   $0 ~ "^## \\[" v "\\]" {flag=1; next}
   /^## \[/{flag=0}
   flag
-' CHANGELOG.md > /tmp/release-notes.md
+' CHANGELOG.md > "$NOTES"
 
-# Release 생성 (태그는 사전 푸시되어 있어야 함)
-gh release create "v$NEW" \
-  --repo modu-ai/cowork-plugins \
-  --title "v$NEW" \
-  --notes-file /tmp/release-notes.md \
-  --latest
+# 2단계: 필수 7개 섹션 확장 (에디터로 직접 작성) — 8-1·8-2 규칙 적용
+#   - Highlights, What's New(링크 3종 포함), Changed, Fixed, Removed,
+#     업그레이드 방법, 관련 문서 & 출처
+
+# 3단계: 본문 유효성 검사 — 100 바이트 미만이면 중단
+[ $(wc -c < "$NOTES") -lt 100 ] && echo "❌ 릴리스 노트 미작성" && exit 1
+
+# 4단계: Release 생성 또는 업데이트
+if gh release view "v$NEW" --repo "$REPO" >/dev/null 2>&1; then
+  gh release edit "v$NEW" --repo "$REPO" --notes-file "$NOTES"
+else
+  gh release create "v$NEW" --repo "$REPO" \
+    --title "v$NEW — <한줄_핵심_요약>" \
+    --notes-file "$NOTES" \
+    --latest  # MINOR 이상일 때
+fi
+
+# 5단계: body 비어있음 회귀 검증 (가장 중요 — CI 대체)
+BODY_LEN=$(gh release view "v$NEW" --repo "$REPO" --json body -q '.body' | wc -c)
+[ "$BODY_LEN" -lt 500 ] && echo "❌ 릴리스 본문이 500자 미만입니다" && exit 1
+echo "✅ 릴리스 본문 ${BODY_LEN}자"
 ```
 
-### [HARD] 규칙
+### 8-4. [HARD] 규칙
 
 - [HARD] 모든 공식 태그(`vX.Y.Z`)는 **GitHub Release**가 반드시 존재해야 함
-- [HARD] Release 노트는 CHANGELOG.md 해당 섹션을 **그대로** 사용 (수작업 요약 금지)
-- [HARD] Release 제목은 **`vX.Y.Z`** 형식 (CHANGELOG 헤더와 동일)
+- [HARD] Release 본문은 **8-1의 7개 섹션을 모두 포함**해야 함 — "CHANGELOG 그대로 복붙" 금지
+- [HARD] Release 본문은 **최소 500자 이상** — 생성 직후 `--json body` 로 검증 (8-3 5단계)
+- [HARD] 신규 스킬은 반드시 **링크 3종**(SKILL.md GitHub URL + 온라인 문서 URL + 공식 외부 URL) 포함
+- [HARD] Release 제목은 **`vX.Y.Z — <한줄 요약>`** 형식 (예: `v1.5.0 — sbiz365-analyst + kr-gov-grant`)
+- [HARD] `do shell script` 다중라인 `\` 연결 금지 — 단일 라인 또는 `--notes-file` 절대경로 사용
 - [HARD] MINOR 이상 릴리스는 `--latest` 플래그 적용 (PATCH도 최신이면 적용)
 - [HARD] Pre-release (alpha/beta/rc)는 `--prerelease` 플래그 적용
+- [HARD] 사용 예시 프롬프트 **최소 2개** 포함 (신규 스킬이 있으면 각 스킬당 1개 이상)
 - [HARD] 내부 이터레이션(점진 PATCH)이 MINOR에 집약되는 경우, **중간 PATCH 태그의 Release는 Draft 또는 생략 가능**하되 집약 대상 MINOR Release 노트에 이력 요약 포함
 - [HARD] Draft 상태로 방치된 과거 Release는 분기별로 정리 (삭제 또는 정식 발행)
+- [HARD] 기존 Release 본문이 비었거나 500자 미만으로 발견되면 즉시 `gh release edit`로 보강 (과거 누적분 포함)
 
 ---
 
