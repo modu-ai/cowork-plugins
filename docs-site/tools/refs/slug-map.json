@@ -1,0 +1,61 @@
+{
+  "cowork": [
+    {"slug": "intro", "title": "Cowork 소개", "weight": 10},
+    {"slug": "install", "title": "설치와 요금제 요건", "weight": 20},
+    {"slug": "first-task", "title": "첫 작업 실행하기", "weight": 30},
+    {"slug": "glossary", "title": "용어집", "weight": 40},
+    {"slug": "safety", "title": "안전하게 사용하기", "weight": 50},
+    {"slug": "projects-memory", "title": "프로젝트와 메모리", "weight": 60},
+    {"slug": "skills", "title": "스킬 사용법", "weight": 70},
+    {"slug": "plugins", "title": "플러그인 사용", "weight": 80},
+    {"slug": "connectors-mcp", "title": "커넥터와 MCP", "weight": 90},
+    {"slug": "schedule", "title": "예약 작업", "weight": 100},
+    {"slug": "computer-use", "title": "컴퓨터 사용", "weight": 110},
+    {"slug": "faq", "title": "자주 묻는 질문", "weight": 120},
+    {"slug": "enterprise", "title": "Team·Enterprise 관리", "weight": 130}
+  ],
+  "plugins": [
+    {"slug": "_index", "title": "플러그인 카탈로그", "weight": 1, "from": "index.mdx"},
+    {"slug": "quick-start", "title": "빠른 시작", "weight": 10},
+    {"slug": "moai-core", "title": "moai-core — 프로젝트·라우터·AI 슬롭", "weight": 20},
+    {"slug": "moai-content", "title": "moai-content — 블로그·카드뉴스·랜딩", "weight": 30},
+    {"slug": "moai-office", "title": "moai-office — PPT·Word·Excel·한글", "weight": 40},
+    {"slug": "moai-media", "title": "moai-media — 이미지·영상·음성", "weight": 50},
+    {"slug": "moai-business", "title": "moai-business — 사업계획·IR·시장조사", "weight": 60},
+    {"slug": "moai-marketing", "title": "moai-marketing — 브랜딩·SEO·캠페인", "weight": 70},
+    {"slug": "moai-product", "title": "moai-product — PRD·로드맵·UX", "weight": 80},
+    {"slug": "moai-operations", "title": "moai-operations — SOP·조달·벤더", "weight": 90},
+    {"slug": "moai-support", "title": "moai-support — 고객지원", "weight": 100},
+    {"slug": "moai-hr", "title": "moai-hr — 채용·근로·평가", "weight": 110},
+    {"slug": "moai-legal", "title": "moai-legal — 계약·NDA·컴플라이언스", "weight": 120},
+    {"slug": "moai-finance", "title": "moai-finance — 세무·결산·K-IFRS", "weight": 130},
+    {"slug": "moai-data", "title": "moai-data — 데이터·공공데이터", "weight": 140},
+    {"slug": "moai-research", "title": "moai-research — 논문·특허·연구비", "weight": 150},
+    {"slug": "moai-education", "title": "moai-education — 커리큘럼·출제", "weight": 160},
+    {"slug": "moai-career", "title": "moai-career — 이력서·면접·포트폴리오", "weight": 170},
+    {"slug": "moai-lifestyle", "title": "moai-lifestyle — 여행·웨딩·건강", "weight": 180}
+  ],
+  "cookbook": [
+    {"slug": "_index", "title": "쿡북 홈", "weight": 1, "from": "index.mdx"},
+    {"slug": "skill-chaining", "title": "스킬 체이닝 가이드", "weight": 10},
+    {"slug": "best-practices", "title": "베스트 프랙티스", "weight": 20, "v02_added": true},
+    {"slug": "automation-recipes", "title": "자동화 레시피", "weight": 30, "v02_added": true},
+    {"slug": "blog-pipeline", "title": "블로그 파이프라인", "weight": 40},
+    {"slug": "report-automation", "title": "주간 보고서 자동화", "weight": 50},
+    {"slug": "track-marketing", "title": "마케팅 트랙", "weight": 60, "v02_added": true},
+    {"slug": "track-documents", "title": "문서 트랙", "weight": 70, "v02_added": true},
+    {"slug": "track-data", "title": "데이터 트랙", "weight": 80, "v02_added": true},
+    {"slug": "business-plan", "title": "사업계획서 자동화", "weight": 90},
+    {"slug": "ir-deck", "title": "IR 덱 제작", "weight": 100},
+    {"slug": "contract-review", "title": "계약서 검토 리포트", "weight": 110},
+    {"slug": "ai-employee-design", "title": "AI 사원 설계", "weight": 120, "v02_added": true},
+    {"slug": "ai-employee-lab-1", "title": "AI 사원 실습 1", "weight": 130, "v02_added": true},
+    {"slug": "ai-employee-lab-2", "title": "AI 사원 실습 2", "weight": 140, "v02_added": true},
+    {"slug": "troubleshooting", "title": "트러블슈팅", "weight": 150},
+    {"slug": "final-project", "title": "최종 프로젝트", "weight": 160}
+  ],
+  "root": [
+    {"slug": "_index", "title": "Claude Cowork 한국어 문서", "weight": 1, "from": "index.mdx"},
+    {"slug": "about", "title": "소개", "weight": 999, "from": "about.mdx"}
+  ]
+}

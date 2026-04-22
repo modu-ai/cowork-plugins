@@ -1,0 +1,16 @@
+header:
+  - name: "GitHub"
+    ref: "https://github.com/modu-ai/cowork-plugins"
+    icon: "gdoc_github"
+    external: true
+
+more:
+  - name: "GitHub Issues"
+    ref: "https://github.com/modu-ai/cowork-plugins/issues"
+    external: true
+  - name: "Cowork 공식 문서"
+    ref: "https://docs.claude.com"
+    external: true
+  - name: "Anthropic Blog"
+    ref: "https://claude.com/blog"
+    external: true

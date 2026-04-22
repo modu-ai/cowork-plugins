@@ -1,0 +1,73 @@
+baseURL = "https://cowork.mo.ai.kr/"
+title = "Claude Cowork 한국어 문서"
+languageCode = "ko-KR"
+defaultContentLanguage = "ko"
+hasCJKLanguage = true
+enableGitInfo = true
+enableRobotsTXT = true
+
+# Geekdoc 권장 설정
+pluralizeListTitles = false
+disablePathToLower = true
+
+# 코드 하이라이팅
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.tableOfContents]
+    startLevel = 1
+    endLevel = 9
+  [markup.highlight]
+    style = "tokyonight-night"
+    lineNos = false
+    noClasses = false
+
+# Hugo Modules: Geekdoc 테마
+[module]
+  [[module.imports]]
+    path = "github.com/thegeeklab/hugo-geekdoc"
+
+# Geekdoc 권장 미디어 타입
+[outputs]
+  home = ["HTML", "RSS", "SEARCH", "SITEMAP"]
+  page = ["HTML"]
+  section = ["HTML", "RSS"]
+
+[outputFormats]
+  [outputFormats.SEARCH]
+    baseName = "search"
+    isPlainText = true
+    mediaType = "application/json"
+    notAlternative = true
+  [outputFormats.SITEMAP]
+    baseName = "sitemap"
+    isPlainText = true
+    mediaType = "application/xml"
+    notAlternative = true
+
+[mediaTypes]
+  [mediaTypes."application/xml"]
+    suffixes = ["xml"]
+
+# Geekdoc 사이트 파라미터
+[params]
+  geekdocRepo = "https://github.com/modu-ai/cowork-plugins"
+  geekdocEditPath = "edit/main/docs-site/content"
+  geekdocSearch = true
+  geekdocSearchShowParent = true
+  geekdocLegalNotice = "https://github.com/modu-ai/cowork-plugins"
+  geekdocPrivacyPolicy = "/about/"
+  geekdocToC = 3
+  geekdocBreadcrumb = true
+  geekdocNextPrev = true
+  geekdocTagsToMenu = true
+  geekdocFileTreeSortBy = "weight"
+  geekdocCollapseSection = false
+
+  # 사이트 메타
+  description = "Claude Cowork와 cowork-plugins 17종의 한국어 사용자 가이드 · 베스트 프랙티스 · 쿡북"
+  author = "modu-ai"
+
+  # 다크 모드 기본
+  geekdocDarkModeDefault = false
+  geekdocDarkModeToggle = true

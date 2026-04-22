@@ -1,0 +1,9 @@
+{{ if ne .Kind "home" }}
+<div class="gdoc-page__header" style="background: var(--code-background); padding: 0.6em 1em; border-radius: 4px; margin-bottom: 1em; font-size: 0.9em;">
+  Cowork가 처음이라면
+  <a href="{{ "cowork/intro/" | relURL }}">소개</a> →
+  <a href="{{ "cowork/install/" | relURL }}">설치</a> →
+  <a href="{{ "cowork/first-task/" | relURL }}">첫 작업</a>
+  순서로 읽는 것을 권장합니다.
+</div>
+{{ end }}
