@@ -2,9 +2,10 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
-[![Version](https://img.shields.io/badge/Version-1.5.0-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-1.5.1-blue)](CHANGELOG.md)
 [![Plugins](https://img.shields.io/badge/Plugins-17-blue)](.claude-plugin/marketplace.json)
 [![Skills](https://img.shields.io/badge/Skills-73-green)](.claude-plugin/marketplace.json)
+[![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)
 [![shadcn/ui](https://img.shields.io/badge/UI-shadcn/ui-black)](https://ui.shadcn.com/)
 
 **Claude Cowork 도메인 전문가 AI 마켓플레이스**
@@ -13,7 +14,13 @@
 
 > *Domain expert AI marketplace for [Claude Cowork](https://claude.ai). 17 plugins · 73 skills covering business strategy, marketing, legal, finance, HR, content, operations, education, lifestyle, product, support, document generation, data analysis, research/patents, **AI media production (image/video/voice)**, **shadcn/ui-based web landing/detail pages**, **small-business commercial-area analysis & Korean government grant applications**, and automatic AI-slop detection for every text deliverable.*
 
-**🆕 v1.5.0 하이라이트**
+**🆕 v1.5.1 하이라이트**
+- **한국어 문서 사이트 정식 오픈** — [cowork.mo.ai.kr](https://cowork.mo.ai.kr/) (Hugo + Geekdoc). Cookbook 28편(블로그 파이프라인, 사업계획서, 계약서 검토, IR 덱, 리포트 자동화, 스킬 체이닝, 트랙별 가이드 등) + Cowork 입문/FAQ/용어집 수록
+- **저장소 위생 강화** — `.gitignore`에 maintainer workspace(`CLAUDE.md`, `CLAUDE.local.md`, `.mcp.json`, `.claude/`, `.moai/`) 차단 블록 추가. 정비자 개인 환경의 의도치 않은 공개 유출 방지
+- 스킬·플러그인 수 변경 없음 (73 스킬 / 17 플러그인 그대로). Breaking change 없음
+- [릴리스 노트](https://github.com/modu-ai/cowork-plugins/releases/tag/v1.5.1) · [한국어 문서 사이트](https://cowork.mo.ai.kr/)
+
+**v1.5.0 하이라이트**
 - **`moai-business`에 소상공인·창업자용 스킬 2종 추가** — 스킬 수 71 → **73**, Breaking change 없음
 - **`sbiz365-analyst`** — [소상공인365 빅데이터 포털](https://bigdata.sbiz.or.kr) PDF를 분석해 **4축 100점 창업타당성 평가(성장성 30·경쟁도 25·수요 적합도 25·재무 타당성 20)** 와 9섹션 Word(.docx) 보고서 자동 생성
 - **`kr-gov-grant`** — K-Startup · BIZINFO · 중기부 · IITP · 문체부 · 농식품부 공고를 **4 MODE(탐색·작성·검토·일정)** 로 통합. 8 신청자 유형 × 7 지원 목적 = 56개 매칭 조합 제공

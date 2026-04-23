@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "모두의 AI's Claude Cowork 플러그인 마켓플레이스 — 17 플러그인, 73 스킬. /project init으로 워크플로우 기반 CLAUDE.md 자동 생성, 모든 텍스트 산출물은 ai-slop-reviewer로 검수. v1.5.0부터 소상공인365 상권분석(sbiz365-analyst)과 정부지원사업 통합(kr-gov-grant) 스킬이 moai-business에 포함되었습니다",
-    "version": "1.5.0",
+    "version": "1.5.1",
     "language": "ko"
   },
   "plugins": [

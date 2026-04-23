@@ -13,6 +13,36 @@
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
 
+## [1.5.1] - 2026-04-23
+
+PATCH 릴리스. **저장소 위생 강화 + 한국어 문서 사이트 정식 안내**가 핵심입니다. 스킬·플러그인 수 변경 없음 (73 / 17 그대로), Breaking change 없음.
+
+### Highlights
+
+- **한국어 문서 사이트 [`cowork.mo.ai.kr`](https://cowork.mo.ai.kr/) 정식 오픈 안내** — Hugo + Geekdoc로 구축된 한국어 문서 사이트가 v1.5.0 코드와 함께 배포되어 정식 운영 중. 루트 README에 배지·하이라이트 링크를 추가했습니다. Cookbook 28편(블로그 파이프라인, 사업계획서, 계약서 검토, IR 덱, 리포트 자동화, 스킬 체이닝, 트랙별 가이드 등) + Cowork 입문/FAQ/용어집 수록.
+- **저장소 위생 강화 (CRITICAL)** — `.gitignore`에 maintainer workspace 차단 블록을 추가했습니다. 정비자(maintainer)의 개인 작업 환경(`CLAUDE.md`, `CLAUDE.local.md`, `.mcp.json`, `.claude/`, `.moai/`)이 의도치 않게 공개 마켓플레이스에 유출되는 사고를 원천 차단합니다. 특히 `CLAUDE.local.md`에는 정비자 이메일과 GitHub Release 자동화 스크립트가 포함되어 있어 단 한 번의 `git add -A` 사고로 유출될 수 있었습니다.
+
+### Changed
+
+- `README.md` — Version 배지 1.5.0 → 1.5.1, 신규 `Docs` 배지(`cowork.mo.ai.kr`) 추가, v1.5.1 하이라이트 섹션 신설.
+- `.gitignore` — 최하단에 "Maintainer Workspace (NOT distributed)" 블록 추가 (5개 패턴: `CLAUDE.md`, `CLAUDE.local.md`, `.mcp.json`, `.claude/`, `.moai/`).
+- 18지점 버전 동시 bump: `marketplace.json` × 1 + `plugin.json` × 17 모두 1.5.0 → **1.5.1**.
+
+### Fixed
+
+- `git status`에 영구 노출되던 untracked 4건(`.claude/`, `.moai/`, `CLAUDE.md`, `.mcp.json`)을 ignore 처리하여 워크플로우 노이즈 제거.
+- `.gitignore`에 `CLAUDE.local.md` 패턴 누락으로 인한 잠재적 개인정보 유출 위험 해소.
+
+### Removed
+
+해당 없음.
+
+### Migration
+
+- 기존 v1.5.0 사용자는 별도 마이그레이션 불필요.
+- 사용자 측 캐시 갱신: `/plugin marketplace update cowork-plugins` 후 플러그인 상세 재진입.
+- 본 저장소를 fork·clone하여 기여하는 분은 `git pull` 후 워킹 트리의 `.claude/`·`.moai/`·`CLAUDE.md`·`.mcp.json`·`CLAUDE.local.md`가 자동으로 ignore됩니다(이미 commit된 적 없으므로 손실 없음).
+
 ## [1.5.0] - 2026-04-21
 
 공식 MINOR 릴리스. **moai-business 플러그인에 소상공인·창업자 실무 지원 스킬 2종을 추가**하여 총 스킬 개수가 71 → 73으로 확장됩니다. 두 스킬 모두 Category A(`user-invocable: true`)로 슬래시 명령 자동완성을 지원하고, 사용자 언어의 트리거가 풍부해 자연어로도 자동 호출됩니다.
