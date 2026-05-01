@@ -1,17 +1,17 @@
 ---
 title: "플러그인 카탈로그"
 weight: 1
-description: "modu-ai/cowork-plugins 마켓플레이스의 17개 플러그인·84개 스킬을 도메인별로 정리한 카탈로그입니다."
+description: "modu-ai/cowork-plugins 마켓플레이스의 17개 플러그인·85개 스킬을 도메인별로 정리한 카탈로그입니다."
 geekdocBreadcrumb: true
 geekdocCollapseSection: false
 ---
 
 # `cowork-plugins` 카탈로그
 
-[`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins)는 한국 업무 환경에 맞춰 설계된 **17개 플러그인 · 84개 스킬**의 커뮤니티 마켓플레이스입니다. 사업계획·IR·마케팅·법무·세무·HR·카드뉴스·PPT·이미지 생성 등 도메인별로 묶여 있습니다.
+[`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins)는 한국 업무 환경에 맞춰 설계된 **17개 플러그인 · 85개 스킬**의 커뮤니티 마켓플레이스입니다. 사업계획·IR·마케팅·법무·세무·HR·카드뉴스·PPT·이미지 생성 등 도메인별로 묶여 있습니다.
 
 {{< hint type="note" >}}
-**v1.5.1 업데이트 (2026-05-01)**: 전체 스킬 수가 73개에서 **84개로 증가**했습니다. `moai-core`에 AI 진단·스킬 관리 스킬 4종, `moai-media`에 음성·영상 생성 스킬 5종, `moai-business`에 컨설팅·영업·창업 스킬 3종 등이 새로 추가되었습니다. 자세한 내용은 각 플러그인 페이지를 확인하세요.
+**v1.6.0 업데이트 (2026-05-01)**: `skill-forge` → `skill-builder` 리네임 + `skill-tester` self-contained 화 + `moai-office:pdf-writer` 신규(한·중·일·영 다국어 PDF, PyMuPDF + Noto Sans CJK 자동 다운로드). 전체 스킬 수 84 → **85**개. 18지점 버전 동시 bump: 1.5.1 → 1.6.0.
 {{< /hint >}}
 
 ## 전제 조건
@@ -60,7 +60,7 @@ geekdocCollapseSection: false
 - [`moai-career`](./moai-career/) — 자기소개서, 이력서, 면접 코칭, 포트폴리오
 - [`moai-lifestyle`](./moai-lifestyle/) — 여행, 웰니스, 이벤트·웨딩 기획
 
-## 한 눈에 보는 스킬 수 (v1.5.1)
+## 한 눈에 보는 스킬 수 (v1.6.0)
 
 "대표 스킬 (일부)"는 각 플러그인에서 가장 자주 호출되는 스킬을 발췌한 것입니다. 전체 스킬 목록은 플러그인 이름을 클릭해 상세 페이지에서 확인하세요.
 
@@ -68,7 +68,7 @@ geekdocCollapseSection: false
 |---|---|---|
 | [moai-core](./moai-core/) | 7 | project, ai-slop-reviewer, feedback, ai-diagnostic, skill-builder, skill-template, skill-tester |
 | [moai-content](./moai-content/) | 8 | blog, card-news, landing-page, copywriting +4종 |
-| [moai-office](./moai-office/) | 4 | pptx-designer, docx-generator, xlsx-creator, hwpx-writer |
+| [moai-office](./moai-office/) | 5 | pptx-designer, docx-generator, xlsx-creator, hwpx-writer, pdf-writer |
 | [moai-media](./moai-media/) | 7 | nano-banana, audio-gen, character-mgmt, image-gen, speech-video, video-gen, fal-gateway |
 | [moai-business](./moai-business/) | 9 | strategy-planner, investor-relations, sbiz365-analyst, kr-gov-grant, consulting-brief, sales-playbook, startup-launchpad +2종 |
 | [moai-marketing](./moai-marketing/) | 8 | brand-identity, seo-audit, campaign-planner, sns-content, target-script +3종 |
@@ -84,7 +84,7 @@ geekdocCollapseSection: false
 | [moai-career](./moai-career/) | 4 | resume-builder, job-analyzer, interview-coach, portfolio-guide |
 | [moai-lifestyle](./moai-lifestyle/) | 3 | travel-planner, event-planner, wellness-coach |
 
-전체 **84개** 스킬 (v1.5.1 기준, v1.5.1에서 전체 스킬 수 73개→84개로 대규모 확장).
+전체 **85개** 스킬 (v1.6.0 기준, v1.6.0에서 `moai-office:pdf-writer` 추가로 84 → 85).
 
 ## 다음 단계
 

@@ -1,9 +1,18 @@
-{{ if ne .Kind "home" }}
-<div class="gdoc-page__header" style="background: var(--code-background); padding: 0.6em 1em; border-radius: 4px; margin-bottom: 1em; font-size: 0.9em;">
-  Cowork가 처음이라면
-  <a href="{{ "cowork/intro/" | relURL }}">소개</a> →
-  <a href="{{ "cowork/install/" | relURL }}">설치</a> →
-  <a href="{{ "cowork/first-task/" | relURL }}">첫 작업</a>
-  순서로 읽는 것을 권장합니다.
-</div>
-{{ end }}
+<header class="gdoc-header" role="banner">
+  <div class="cw-header-inner">
+    <a class="gdoc-brand cw-brand" href="/">
+      <img src="{{ "moai-logo.png" | relURL }}" alt="MoAI" />
+      <span>Cowork Docs</span>
+      <span class="cw-brand-ver">v{{ site.Params.version | default "1.6.0" }}</span>
+    </a>
+    <nav role="navigation" aria-label="사이트 내비게이션">
+      <ul class="cw-header-nav">
+        <li><a href="/getting-started/">시작하기</a></li>
+        <li><a href="/plugins/">플러그인</a></li>
+        <li><a href="/cookbook/">쿡북</a></li>
+        <li><a href="/cowork/">Cowork</a></li>
+        <li><a class="cw-nav-ext" href="https://github.com/modu-ai/cowork-plugins" target="_blank" rel="noopener">GitHub ↗</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
