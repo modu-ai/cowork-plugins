@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "scripts": {
+    "test": "echo no-unit-tests-configured-e2e-via-playwright",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "typescript": "^6.0.3"
+  }
+}

@@ -13,6 +13,36 @@
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
 
+## [1.6.0] - 2026-05-01
+
+MINOR 사전 작업 커밋(태그 미부여). **`skill-forge` → `skill-builder` 스킬 이름 변경 + `skill-tester` self-contained 화**가 핵심입니다. 정식 v1.6.0 태그 발행 전 추가 스킬이 누적될 예정이며 본 커밋은 인프라 변경(rename + skill-tester 본문 흡수 + README 배지 73→84 보정 + 18지점 버전 동기화)에 한정합니다. 외부 사용자 영향 최소.
+
+### Highlights
+
+- **`skill-forge` → `skill-builder` 이름 변경 (Breaking for direct skill-name references)** — 의미 불명확한 forge 어휘를 표준 builder로 전환. 별칭은 유지되지 않으며 모든 트리거·문서 참조가 `skill-builder`로 즉시 대체되었습니다. 외부 사용자가 `skill-forge`를 슬래시 커맨드로 직접 호출하던 경우 `skill-builder`로 변경 필요.
+- **`skill-tester` 단독 self-contained 화** — 4차원 스코어링 루브릭(Correctness 30 / Completeness 25 / Clarity 25 / Efficiency 20)과 체인 검증 프로토콜을 `skill-tester` SKILL.md 본문에 직접 흡수. 이제 `skill-tester` 한 번 로드로 모든 평가 기준이 즉시 가용 — single source of truth 선언.
+
+### Added
+
+- `moai-core/skills/skill-builder/SKILL.md` — `skill-forge`에서 이름 변경된 6-Phase 생성 스킬. 트리거 키워드 `skill-builder`, `harness 워크플로우` 추가.
+- `moai-core/skills/skill-tester/SKILL.md` § 스코어링 루브릭 (4차원 anchor 점수표, Tier별 통과 기준, anti-pattern audit 체크리스트) + § Mode 3 체인 테스트 (Chain Definition Format, 4가지 Test Design Rule, Known Chains 매핑) 본문 직접 포함.
+
+### Changed
+
+- 18지점 버전 동시 bump: `marketplace.json` × 1 + `plugin.json` × 17 모두 1.5.1 → **1.6.0**.
+- `moai-core/skills/skill-forge/` 디렉토리 삭제, `moai-core/skills/skill-builder/`로 대체.
+- `docs-site/content/releases/v1.5.md`, `docs-site/content/plugins/moai-core.md`, `docs-site/content/plugins/_index.md` — `skill-forge` → `skill-builder` 표기 일괄 갱신.
+- `README.md` — Skills 배지 73 → 84(실측) 보정, v1.6.0 하이라이트 섹션 신설.
+
+### Removed
+
+- `moai-core/skills/skill-forge/` 전체 (디렉토리 rename으로 대체).
+
+### Migration
+
+- `skill-forge`를 직접 호출하던 사용자/에이전트 → `skill-builder`로 변경 필요.
+- 외부 사용자는 `/plugin marketplace update cowork-plugins` 후 플러그인 상세 재진입.
+
 ## [1.5.1] - 2026-04-23
 
 PATCH 릴리스. **저장소 위생 강화 + 한국어 문서 사이트 정식 안내**가 핵심입니다. 스킬·플러그인 수 변경 없음 (73 / 17 그대로), Breaking change 없음.
@@ -566,3 +596,7 @@ v1.1.0에서 방금 설치한 사용자도 즉시 업데이트 필요:
 - 도메인 플러그인 15종:
   business, marketing, legal, finance, hr, content, operations,
   education, lifestyle, product, support, office, career, data, research
+
+---
+
+[이전 버전 없음 — v1.0.0이 최초 공개 릴리스입니다.]

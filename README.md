@@ -2,22 +2,27 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
-[![Version](https://img.shields.io/badge/Version-1.5.1-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-1.6.0-blue)](CHANGELOG.md)
 [![Plugins](https://img.shields.io/badge/Plugins-17-blue)](.claude-plugin/marketplace.json)
-[![Skills](https://img.shields.io/badge/Skills-73-green)](.claude-plugin/marketplace.json)
+[![Skills](https://img.shields.io/badge/Skills-84-green)](.claude-plugin/marketplace.json)
 [![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)
 [![shadcn/ui](https://img.shields.io/badge/UI-shadcn/ui-black)](https://ui.shadcn.com/)
 
 **Claude Cowork 도메인 전문가 AI 마켓플레이스**
 
-자연어 한 줄이면 사업계획서, 계약서 검토, 세금 계산, PPT 제작, 데이터 분석, 특허 검색, **AI 이미지·영상·음성 생성**, **shadcn/ui 기반 랜딩·상세 페이지 제작**, **소상공인 상권분석·정부지원사업 신청**까지 — 17개 독립 플러그인과 73개 전문 스킬이 업무를 대신합니다. 모든 텍스트 산출물은 **`ai-slop-reviewer`가 AI 패턴을 검수**하여 사람이 쓴 것처럼 자연스럽게 다듬어 드립니다.
+자연어 한 줄이면 사업계획서, 계약서 검토, 세금 계산, PPT 제작, 데이터 분석, 특허 검색, **AI 이미지·영상·음성 생성**, **shadcn/ui 기반 랜딩·상세 페이지 제작**, **소상공인 상권분석·정부지원사업 신청**까지 — 17개 독립 플러그인과 84개 전문 스킬이 업무를 대신합니다. 모든 텍스트 산출물은 **`ai-slop-reviewer`가 AI 패턴을 검수**하여 사람이 쓴 것처럼 자연스럽게 다듬어 드립니다.
 
-> *Domain expert AI marketplace for [Claude Cowork](https://claude.ai). 17 plugins · 73 skills covering business strategy, marketing, legal, finance, HR, content, operations, education, lifestyle, product, support, document generation, data analysis, research/patents, **AI media production (image/video/voice)**, **shadcn/ui-based web landing/detail pages**, **small-business commercial-area analysis & Korean government grant applications**, and automatic AI-slop detection for every text deliverable.*
+> *Domain expert AI marketplace for [Claude Cowork](https://claude.ai). 17 plugins · 84 skills covering business strategy, marketing, legal, finance, HR, content, operations, education, lifestyle, product, support, document generation, data analysis, research/patents, **AI media production (image/video/voice)**, **shadcn/ui-based web landing/detail pages**, **small-business commercial-area analysis & Korean government grant applications**, and automatic AI-slop detection for every text deliverable.*
 
-**🆕 v1.5.1 하이라이트**
-- **한국어 문서 사이트 정식 오픈** — [cowork.mo.ai.kr](https://cowork.mo.ai.kr/) (Hugo + Geekdoc). Cookbook 28편(블로그 파이프라인, 사업계획서, 계약서 검토, IR 덱, 리포트 자동화, 스킬 체이닝, 트랙별 가이드 등) + Cowork 입문/FAQ/용어집 수록
-- **저장소 위생 강화** — `.gitignore`에 maintainer workspace(`CLAUDE.md`, `CLAUDE.local.md`, `.mcp.json`, `.claude/`, `.moai/`) 차단 블록 추가. 정비자 개인 환경의 의도치 않은 공개 유출 방지
-- 스킬·플러그인 수 변경 없음 (73 스킬 / 17 플러그인 그대로). Breaking change 없음
+**🆕 v1.6.0 하이라이트**
+- **`skill-forge` → `skill-builder` 이름 변경** — 의미 명확화. 별칭 없이 즉시 대체. 외부에서 `skill-forge`를 직접 호출하던 경우 `skill-builder`로 변경 필요
+- **`skill-tester` self-contained 화** — 4차원 스코어링 루브릭(Correctness/Completeness/Clarity/Efficiency) + 체인 검증 프로토콜을 SKILL.md 본문에 흡수. 한 번 로드로 모든 평가 기준 즉시 가용
+- README Skills 배지 73 → 84 (실측 카운트 보정), 외부 사용자 영향 최소
+- [릴리스 노트](https://github.com/modu-ai/cowork-plugins/releases/tag/v1.6.0) · [한국어 문서 사이트](https://cowork.mo.ai.kr/)
+
+**v1.5.1 하이라이트**
+- **한국어 문서 사이트 정식 오픈** — [cowork.mo.ai.kr](https://cowork.mo.ai.kr/) (Hugo + Geekdoc). Cookbook 28편 + Cowork 입문/FAQ/용어집 수록
+- **저장소 위생 강화** — `.gitignore`에 maintainer workspace 차단 블록 추가
 - [릴리스 노트](https://github.com/modu-ai/cowork-plugins/releases/tag/v1.5.1) · [한국어 문서 사이트](https://cowork.mo.ai.kr/)
 
 **v1.5.0 하이라이트**
@@ -73,7 +78,7 @@
 | 항목 | 수량 |
 |------|:----:|
 | 플러그인 | 17 |
-| 스킬 | 73 |
+| 스킬 | 84 |
 | 레퍼런스 파일 | 180 |
 | 에이전트 | 0 |
 | MCP 서버 | 7 (`fal-ai`, `elevenlabs` 추가) |
@@ -86,9 +91,9 @@
 
 Claude Cowork에서 GitHub 레포 주소를 입력하여 플러그인 마켓플레이스를 추가합니다.
 
-1. Claude Cowork 좌측 메뉴 > **사용자 지정** 클릭
-2. 개인 플러그인 영역에서 **+** 버튼 클릭
-3. **플러그인 생성** > **마켓플레이스 추가** 선택
+1. Claude Cowork **좌측 사이드바 > 사용자 지정(Customize)** 클릭
+2. **개인 플러그인** 영역에서 **+** 버튼 클릭
+3. **플러그인 추가 > 마켓플레이스 추가** 선택
 4. URL 입력란에 아래 주소 입력 후 **동기화** 클릭:
 
 ```
@@ -375,7 +380,7 @@ Airtable/Google Sheets 커넥터로 데이터를 직접 분석합니다.
 ## 기술 특징
 
 **Anthropic 공식 스킬 가이드 준수**
-- 모든 71개 스킬에 [What]+[When]+[Triggers] 구조의 description 적용
+- 모든 84개 스킬에 [What]+[When]+[Triggers] 구조의 description 적용
 - Negative triggers로 불필요한 스킬 로딩 방지
 - 인라인 폴백과 에러 핸들링 내장
 
@@ -430,7 +435,7 @@ Airtable/Google Sheets 커넥터로 데이터를 직접 분석합니다.
 | KIPRIS Plus | [plus.kipris.or.kr](https://plus.kipris.or.kr/) | 특허 검색 | moai-research |
 | KCI | [kci.go.kr](https://www.kci.go.kr/) | 논문 검색 | moai-research |
 | 국가법령정보 | [law.go.kr](https://www.law.go.kr/) | 법령/판례 | moai-legal |
-| Nano Banana | [ai.google.dev](https://ai.google.dev/) | AI 이미지 생성 | moai-content |
+| Nano Banana | [ai.google.dev/gemini-api/docs/image-generation](https://ai.google.dev/gemini-api/docs/image-generation) | AI 이미지 생성 | moai-content |
 
 ### 영감 및 원작
 
@@ -439,7 +444,7 @@ Airtable/Google Sheets 커넥터로 데이터를 직접 분석합니다.
 | 프로젝트 | 작성자 | 설명 |
 |---------|--------|------|
 | [harness-100](https://github.com/revfactory/harness-100) | 황민호(Minho Hwang) | Claude Cowork용 하네스 100개 오픈소스. 본 프로젝트의 하네스 설계 패턴과 구조에 핵심 참고자료로 활용 |
-| [knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins) | Anthropic | 공식 15개 지식 노동 플러그인. 플러그인 구조와 스킬 포맷 표준 참고 |
+| [knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins) | Anthropic | 공식 11개 지식 노동 플러그인 (Productivity·Sales·Customer Support·PM·Marketing·Legal·Finance·Data·Enterprise Search·Bio Research·Cowork Plugin Management). 플러그인 구조와 스킬 포맷 표준 참고 |
 
 ### 표준 및 규격
 | 표준 | 설명 |

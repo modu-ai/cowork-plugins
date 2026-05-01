@@ -1,7 +1,7 @@
 ---
 title: "moai-core — 프로젝트·라우터·AI 슬롭"
 weight: 20
-description: "moai-core는 cowork-plugins의 기반 플러그인으로 프로젝트 초기화, AI 슬롭 검수, 피드백 허브를 제공합니다."
+description: "moai-core는 cowork-plugins의 기반 플러그인으로 프로젝트 초기화, AI 슬롭 검수, 피드백 허브를 포함한 7개 핵심 스킬을 제공합니다."
 geekdocBreadcrumb: true
 tags: ["moai-core"]
 ---
@@ -12,7 +12,7 @@ tags: ["moai-core"]
 
 ## 무엇을 하는 플러그인인가
 
-`moai-core` (v1.5.0)는 `cowork-plugins` 마켓플레이스의 모든 도메인 플러그인이 공유하는 인프라를 제공합니다. 프로젝트별 작업 지침(`CLAUDE.md`)을 자동 생성하는 `/project init` 마법사, 모든 텍스트 산출물의 마지막 단계에서 AI 패턴을 다듬어주는 `ai-slop-reviewer`, 그리고 버그·기능 요청을 GitHub Issues로 바로 등록하는 `feedback` 스킬이 포함되어 있습니다.
+`moai-core` (v1.5.1)는 `cowork-plugins` 마켓플레이스의 모든 도메인 플러그인이 공유하는 인프라를 제공합니다. 프로젝트별 작업 지침(`CLAUDE.md`)을 자동 생성하는 `/project init` 마법사, 모든 텍스트 산출물의 마지막 단계에서 AI 패턴을 다듬어주는 `ai-slop-reviewer`, 그리고 버그·기능 요청을 GitHub Issues로 바로 등록하는 `feedback` 스킬을 포함한 **총 7개 스킬**이 포함되어 있습니다.
 
 `ai-slop-reviewer`는 모든 한국어 텍스트 산출물(블로그·뉴스레터·계약서·사업계획서·이메일 등)의 체인 마지막 단계에서 호출되어, 과장된 수식어·기계적 접속어·모호한 일반화 같은 AI 글쓰기 패턴을 진단하고 사람 톤으로 다듬어줍니다.
 
@@ -30,13 +30,17 @@ tags: ["moai-core"]
 {{< /tab >}}
 {{< /tabs >}}
 
-## 핵심 스킬
+## 핵심 스킬 (7개)
 
 | 스킬 | 용도 | 자동 호출 트리거 |
 |---|---|---|
 | `project` | 프로젝트 초기화·상태·API 키·카탈로그 관리 (`/project init`, `/project status`, `/project apikey`, `/project catalog`) | "프로젝트 초기화", "CLAUDE.md 만들어줘" |
 | `ai-slop-reviewer` | 텍스트 산출물의 AI 패턴 진단·수정 | "AI 티 나는 부분 고쳐줘", "사람이 쓴 것처럼 수정해줘" |
 | `feedback` | 버그 리포트·기능 요청을 GitHub Issues로 자동 등록 | "/project feedback", "버그 신고", "기능 요청" |
+| `ai-diagnostic` | AI 시스템 진단, 성능 모니터링, 오류 분석 | "AI 동작이 이상해", "성능 체크해줘" |
+| `skill-builder` | 새 스킬 생성, 기존 스킬 수정, 스킬 템플릿 관리 (v1.5.x: skill-forge 후속) | "새 스킬 만들어줘", "스킬 템플릿 제공해줘", "/harness" |
+| `skill-template` | 스킬 구조 템플릿, 프롬프트 엔지니어링 가이드 | "스킬 구조 알려줘", "템플릿 참고할게" |
+| `skill-tester` | 스킬 테스트, 검증, 품질 보증 | "이 스킬 테스트해줘", "검증 프로세스 설계해줘" |
 
 ## `/project init` 흐름 (3분)
 
