@@ -4,7 +4,7 @@
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
 [![Version](https://img.shields.io/badge/Version-1.6.0-blue)](CHANGELOG.md)
 [![Plugins](https://img.shields.io/badge/Plugins-17-blue)](.claude-plugin/marketplace.json)
-[![Skills](https://img.shields.io/badge/Skills-84-green)](.claude-plugin/marketplace.json)
+[![Skills](https://img.shields.io/badge/Skills-85-green)](.claude-plugin/marketplace.json)
 [![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)
 [![shadcn/ui](https://img.shields.io/badge/UI-shadcn/ui-black)](https://ui.shadcn.com/)
 
@@ -12,12 +12,13 @@
 
 자연어 한 줄이면 사업계획서, 계약서 검토, 세금 계산, PPT 제작, 데이터 분석, 특허 검색, **AI 이미지·영상·음성 생성**, **shadcn/ui 기반 랜딩·상세 페이지 제작**, **소상공인 상권분석·정부지원사업 신청**까지 — 17개 독립 플러그인과 84개 전문 스킬이 업무를 대신합니다. 모든 텍스트 산출물은 **`ai-slop-reviewer`가 AI 패턴을 검수**하여 사람이 쓴 것처럼 자연스럽게 다듬어 드립니다.
 
-> *Domain expert AI marketplace for [Claude Cowork](https://claude.ai). 17 plugins · 84 skills covering business strategy, marketing, legal, finance, HR, content, operations, education, lifestyle, product, support, document generation, data analysis, research/patents, **AI media production (image/video/voice)**, **shadcn/ui-based web landing/detail pages**, **small-business commercial-area analysis & Korean government grant applications**, and automatic AI-slop detection for every text deliverable.*
+> *Domain expert AI marketplace for [Claude Cowork](https://claude.ai). 17 plugins · 85 skills covering business strategy, marketing, legal, finance, HR, content, operations, education, lifestyle, product, support, document generation (DOCX/PPTX/XLSX/HWPX/**multilingual PDF**), data analysis, research/patents, **AI media production (image/video/voice)**, **shadcn/ui-based web landing/detail pages**, **small-business commercial-area analysis & Korean government grant applications**, and automatic AI-slop detection for every text deliverable.*
 
 **🆕 v1.6.0 하이라이트**
+- **`moai-office:pdf-writer` 신규 스킬** — PyMuPDF + Noto Sans CJK로 **한·중·일·영 4개 언어 PDF**를 깨짐 없이 생성. Markdown / 구조화 JSON / HTML / 일반 텍스트 4종 입력 지원. 폰트 64MB는 저장소 미포함, 최초 실행 시 `notofonts/noto-cjk` 공식 저장소에서 자동 다운로드(SIL OFL 1.1)
 - **`skill-forge` → `skill-builder` 이름 변경** — 의미 명확화. 별칭 없이 즉시 대체. 외부에서 `skill-forge`를 직접 호출하던 경우 `skill-builder`로 변경 필요
 - **`skill-tester` self-contained 화** — 4차원 스코어링 루브릭(Correctness/Completeness/Clarity/Efficiency) + 체인 검증 프로토콜을 SKILL.md 본문에 흡수. 한 번 로드로 모든 평가 기준 즉시 가용
-- README Skills 배지 73 → 84 (실측 카운트 보정), 외부 사용자 영향 최소
+- README Skills 배지 73 → **85** (skill-builder + pdf-writer 반영)
 - [릴리스 노트](https://github.com/modu-ai/cowork-plugins/releases/tag/v1.6.0) · [한국어 문서 사이트](https://cowork.mo.ai.kr/)
 
 **v1.5.1 하이라이트**
@@ -67,7 +68,7 @@
 | [moai-lifestyle](./moai-lifestyle/) | 여행, 건강, 웨딩/이벤트 | 3 |
 | [moai-product](./moai-product/) | PM 로드맵, UX 리서치, 스펙, AI 전략 | 3 |
 | [moai-support](./moai-support/) | 티켓 분류, KB 문서, 에스컬레이션 | 4 |
-| [moai-office](./moai-office/) | PPT, DOCX, XLSX, HWPX 문서 생성 | 4 |
+| [moai-office](./moai-office/) | PPT, DOCX, XLSX, HWPX, PDF 문서 생성 | 5 |
 | [moai-career](./moai-career/) | 커리어 준비 — 자기소개서, 이력서, 면접 코칭, 채용공고 분석 | 4 |
 | [moai-data](./moai-data/) | 데이터 분석 — CSV/Excel 탐색, 공공데이터, 시각화 | 3 |
 | [moai-research](./moai-research/) | 연구/특허 — 논문 검색, 특허 분석/출원, 연구비 신청 | 5 |
@@ -311,8 +312,9 @@ WordPress/Canva 커넥터로 직접 발행 가능합니다.
 | docx-generator | 워드 문서 | Word(DOCX) 보고서/계약서/제안서 생성 |
 | pptx-designer | PPT 디자인 | PPT 발표자료 디자인 (pptxgenjs, Pretendard 폰트) |
 | xlsx-creator | 엑셀 생성 | Excel 데이터 표/차트/수식/조건부 서식 (openpyxl) |
+| pdf-writer | PDF 생성 | 한·중·일·영 다국어 PDF 생성 (PyMuPDF + Noto Sans CJK 자동 다운로드) |
 
-Word/PPT/Excel/한글 생성 요청 시 Claude 기본 도구 대신 이 플러그인을 우선 사용합니다.
+Word/PPT/Excel/한글/PDF 생성 요청 시 Claude 기본 도구 대신 이 플러그인을 우선 사용합니다.
 
 ---
 

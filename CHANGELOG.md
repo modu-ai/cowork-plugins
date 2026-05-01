@@ -15,24 +15,31 @@
 
 ## [1.6.0] - 2026-05-01
 
-MINOR 사전 작업 커밋(태그 미부여). **`skill-forge` → `skill-builder` 스킬 이름 변경 + `skill-tester` self-contained 화**가 핵심입니다. 정식 v1.6.0 태그 발행 전 추가 스킬이 누적될 예정이며 본 커밋은 인프라 변경(rename + skill-tester 본문 흡수 + README 배지 73→84 보정 + 18지점 버전 동기화)에 한정합니다. 외부 사용자 영향 최소.
+MINOR. **`skill-forge` → `skill-builder` 이름 변경 + `skill-tester` self-contained 화 + `moai-office`에 `pdf-writer` 신규 스킬 추가**가 핵심입니다. PDF 생성 시 한·중·일·영 다국어 글리프 깨짐 문제를 PyMuPDF + Noto Sans CJK 자동 다운로드 조합으로 근본 해결합니다.
 
 ### Highlights
 
 - **`skill-forge` → `skill-builder` 이름 변경 (Breaking for direct skill-name references)** — 의미 불명확한 forge 어휘를 표준 builder로 전환. 별칭은 유지되지 않으며 모든 트리거·문서 참조가 `skill-builder`로 즉시 대체되었습니다. 외부 사용자가 `skill-forge`를 슬래시 커맨드로 직접 호출하던 경우 `skill-builder`로 변경 필요.
 - **`skill-tester` 단독 self-contained 화** — 4차원 스코어링 루브릭(Correctness 30 / Completeness 25 / Clarity 25 / Efficiency 20)과 체인 검증 프로토콜을 `skill-tester` SKILL.md 본문에 직접 흡수. 이제 `skill-tester` 한 번 로드로 모든 평가 기준이 즉시 가용 — single source of truth 선언.
+- **`moai-office:pdf-writer` 신규 스킬** — PyMuPDF + Noto Sans CJK(KR 변형) 조합으로 한·중·일·영 다국어 PDF를 깨짐 없이 생성. Markdown / 구조화 JSON / HTML / 일반 텍스트 4종 입력 지원, A4 규격 + 서브셋 임베딩. 폰트 64MB는 저장소에 포함하지 않고 최초 실행 시 `scripts/download_fonts.py`가 `notofonts/noto-cjk` 공식 저장소에서 자동 다운로드(SIL OFL 1.1).
 
 ### Added
 
 - `moai-core/skills/skill-builder/SKILL.md` — `skill-forge`에서 이름 변경된 6-Phase 생성 스킬. 트리거 키워드 `skill-builder`, `harness 워크플로우` 추가.
 - `moai-core/skills/skill-tester/SKILL.md` § 스코어링 루브릭 (4차원 anchor 점수표, Tier별 통과 기준, anti-pattern audit 체크리스트) + § Mode 3 체인 테스트 (Chain Definition Format, 4가지 Test Design Rule, Known Chains 매핑) 본문 직접 포함.
+- `moai-office/skills/pdf-writer/SKILL.md` — 한·중·일·영 다국어 PDF 생성 스킬. 트리거 키워드: `한글 PDF`, `한국어 PDF`, `일본어 PDF`, `중국어 PDF`, `다국어 PDF`, `CJK PDF`, `Markdown PDF`, `PyMuPDF`, `Noto Sans CJK` 등 13종.
+- `moai-office/skills/pdf-writer/scripts/download_fonts.py` — 표준 라이브러리만 사용하는 폰트 자동 다운로드 스크립트. `--check` / 기본 / `--force` 3가지 모드, OTF 매직바이트 무결성 검증.
+- `moai-office/skills/pdf-writer/tests/test-cases.yaml` — 5건 테스트 케이스(happy path / JSON+표 / 한영 혼용 / 일반 텍스트 / **한·중·일·영 4언어 혼용**).
+- `moai-office/skills/pdf-writer/assets/fonts/{LICENSE.txt, README.md, .gitignore}` — SIL OFL 1.1 라이선스 전문 + 출처·갱신 절차 문서화 + .otf/.ttf/.ttc 제외 규칙.
 
 ### Changed
 
 - 18지점 버전 동시 bump: `marketplace.json` × 1 + `plugin.json` × 17 모두 1.5.1 → **1.6.0**.
 - `moai-core/skills/skill-forge/` 디렉토리 삭제, `moai-core/skills/skill-builder/`로 대체.
 - `docs-site/content/releases/v1.5.md`, `docs-site/content/plugins/moai-core.md`, `docs-site/content/plugins/_index.md` — `skill-forge` → `skill-builder` 표기 일괄 갱신.
-- `README.md` — Skills 배지 73 → 84(실측) 보정, v1.6.0 하이라이트 섹션 신설.
+- `README.md` — Skills 배지 73 → **85** (skill-builder rename + pdf-writer 추가 반영), v1.6.0 하이라이트 섹션 갱신.
+- `.claude-plugin/marketplace.json` — `moai-office` description에 PDF 추가.
+- `moai-office/README.md` — 헤더 설명 갱신(+PDF), 스킬 테이블에 `pdf-writer` 행 추가, 의존성 표에 PyMuPDF + Noto Sans CJK 추가.
 
 ### Removed
 
@@ -42,6 +49,7 @@ MINOR 사전 작업 커밋(태그 미부여). **`skill-forge` → `skill-builder
 
 - `skill-forge`를 직접 호출하던 사용자/에이전트 → `skill-builder`로 변경 필요.
 - 외부 사용자는 `/plugin marketplace update cowork-plugins` 후 플러그인 상세 재진입.
+- `pdf-writer` 최초 사용 시 64MB(Noto Sans CJK 4 weight) 자동 다운로드가 1회 발생합니다. 네트워크 미연결 환경은 사전에 `python3 moai-office/skills/pdf-writer/scripts/download_fonts.py` 수동 실행으로 캐싱 가능.
 
 ## [1.5.1] - 2026-04-23
 

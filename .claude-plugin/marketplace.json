@@ -22,7 +22,7 @@
     {"name": "moai-lifestyle", "source": "./moai-lifestyle", "description": "라이프스타일 — 여행 플래닝, 건강/식단, 웨딩/이벤트"},
     {"name": "moai-product", "source": "./moai-product", "description": "제품 혁신 — PM 로드맵, UX 리서치, 스프린트 플래닝, 제품 스펙"},
     {"name": "moai-support", "source": "./moai-support", "description": "고객 지원 — 티켓 분류, 응답 초안, KB 문서, 에스컬레이션"},
-    {"name": "moai-office", "source": "./moai-office", "description": "문서 생성 — PPT 디자인, Word(DOCX), Excel(XLSX), 한글(HWPX)"},
+    {"name": "moai-office", "source": "./moai-office", "description": "문서 생성 — PPT 디자인, Word(DOCX), Excel(XLSX), 한글(HWPX), 다국어 PDF(한중일영)"},
     {"name": "moai-career", "source": "./moai-career", "description": "커리어 준비 — 자기소개서, 이력서, 면접 코칭, 채용공고 분석, 포트폴리오"},
     {"name": "moai-data", "source": "./moai-data", "description": "데이터 분석 — CSV/Excel 탐색, 공공데이터 조회, shadcn/ui 대시보드 + Recharts/Chart.js/Tremor/ECharts 차트"},
     {"name": "moai-research", "source": "./moai-research", "description": "연구/특허 — 논문 검색, 학술 논문 작성, 특허 분석/출원, 연구비 신청"},

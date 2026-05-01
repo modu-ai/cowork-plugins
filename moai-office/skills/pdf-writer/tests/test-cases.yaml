@@ -1,0 +1,203 @@
+skill: pdf-writer
+version: 1.1.0
+test_cases:
+
+  - id: TC-001
+    name: happy-path-markdown
+    description: "Markdown 입력으로 한글 본문 + 표 포함 PDF 생성"
+    prompt: |
+      다음 Markdown 내용을 한글 깨짐 없는 PDF로 만들어줘.
+      Noto Sans CJK 폰트를 사용하고 A4 규격으로 출력해.
+
+      # 2024년 4분기 업무 보고서
+
+      ## 1. 주요 성과
+      이번 분기에는 총 3개의 프로젝트를 완료하였으며, 목표 달성률 97%를 기록했습니다.
+
+      ## 2. 수치 요약
+      | 항목 | 목표 | 실적 |
+      |------|------|------|
+      | 매출 | 1억 원 | 9,700만 원 |
+      | 완료 프로젝트 | 3건 | 3건 |
+      | 고객 만족도 | 90% | 93% |
+
+      ## 3. 다음 분기 계획
+      신규 고객사 2곳과 계약 예정이며, 팀 인원을 2명 충원할 예정입니다.
+    assertions:
+      - type: file_created
+        value: "*.pdf"
+      - type: contains_metadata
+        key: fonts_embedded
+        value: true
+      - type: not_contains_glyph
+        description: "토푸 글리프(□, ?) 미발생"
+        patterns: ["□", "▯", "?????"]
+      - type: page_count
+        min: 1
+    expected_output:
+      format: pdf
+      page_size: A4
+      fonts_embedded: ["NotoSansCJK"]
+      contains: ["2024년 4분기 업무 보고서", "주요 성과", "수치 요약"]
+      not_contains: ["□", "?????", "tofu glyph"]
+
+  - id: TC-002
+    name: structured-json-with-table-and-image
+    description: "구조화 JSON 입력 — 섹션 다수 + 표 포함 PDF 생성"
+    prompt: |
+      아래 JSON 구조로 사업 제안서 PDF를 생성해줘. Noto Sans CJK 폰트 임베딩 필수.
+
+      {
+        "title": "클라우드 전환 제안서",
+        "subtitle": "비용 절감 및 확장성 강화 방안",
+        "author": "솔루션팀",
+        "date": "2024-05-01",
+        "sections": [
+          {
+            "heading": "현황 분석",
+            "level": 1,
+            "body": "현재 온프레미스 인프라는 노후화 문제와 확장 한계에 직면해 있습니다."
+          },
+          {
+            "heading": "비용 비교",
+            "level": 2,
+            "table": {
+              "headers": ["항목", "현재 비용", "클라우드 전환 비용"],
+              "rows": [
+                ["서버 유지비", "월 500만 원", "월 180만 원"],
+                ["운영 인력", "2명 전담", "0.5명"],
+                ["장애 복구", "4시간", "15분"]
+              ]
+            }
+          },
+          {
+            "heading": "추진 일정",
+            "level": 2,
+            "body": "1단계: 인프라 분석 (1개월) → 2단계: 파일럿 이전 (2개월) → 3단계: 전체 이전 (3개월)"
+          }
+        ]
+      }
+    assertions:
+      - type: file_created
+        value: "*.pdf"
+      - type: section_count
+        min: 3
+      - type: table_rendered
+        description: "비용 비교 표가 PDF에 렌더링됨"
+      - type: not_contains_glyph
+        patterns: ["□", "▯"]
+    expected_output:
+      format: pdf
+      contains: ["클라우드 전환 제안서", "현황 분석", "비용 비교", "추진 일정"]
+      completeness: "표·제목·본문 모두 렌더링됨"
+      not_contains: ["□", "?????"]
+
+  - id: TC-003
+    name: edge-case-mixed-script-korean-english
+    description: "한영 혼용 입력 — 한글/영문/숫자/특수문자 동시 렌더링"
+    prompt: |
+      아래 내용을 PDF로 만들어줘. 한글과 영어가 섞여 있어도 깨지지 않게 Noto Sans CJK 폰트로 출력해.
+
+      제목: API 연동 가이드 v2.0
+
+      본문:
+      본 문서는 REST API (HTTP/1.1) 연동 방법을 설명합니다.
+      엔드포인트: https://api.example.com/v2/users
+      인증 방식: Bearer Token (JWT)
+      응답 형식: JSON { "status": "ok", "data": [...] }
+      한글 오류 메시지: "인증 토큰이 만료되었습니다."
+    assertions:
+      - type: file_created
+        value: "*.pdf"
+      - type: not_contains_glyph
+        patterns: ["□", "▯", "?????"]
+      - type: contains_text
+        values: ["API 연동 가이드", "인증 방식", "Bearer Token", "인증 토큰이 만료되었습니다"]
+    expected_output:
+      format: pdf
+      handles_gracefully: true
+      fallback_behavior: "한영 혼용 시 Noto Sans CJK가 양쪽 스크립트 모두 렌더링"
+      not_contains: ["□", "?????"]
+
+  - id: TC-004
+    name: plain-text-input
+    description: "일반 텍스트 입력 — 단락 분리 후 PDF 생성"
+    prompt: |
+      아래 텍스트를 그대로 PDF 파일로 저장해줘. 한글 폰트 임베딩 포함.
+
+      팀 회의록
+
+      일시: 2024년 5월 15일 오후 2시
+      참석자: 김철수, 이영희, 박민준
+
+      안건 1. 신규 프로젝트 일정 협의
+      다음 분기 프로젝트 착수 일정을 5월 말에서 6월 초로 연기하기로 결정하였습니다.
+      담당자: 이영희
+
+      안건 2. 팀 워크숍 계획
+      6월 중순 1박 2일 일정으로 팀 워크숍을 진행합니다.
+      장소는 추후 공지 예정입니다.
+    assertions:
+      - type: file_created
+        value: "*.pdf"
+      - type: not_contains_glyph
+        patterns: ["□", "▯", "?????"]
+      - type: contains_text
+        values: ["팀 회의록", "신규 프로젝트 일정", "팀 워크숍"]
+    expected_output:
+      format: pdf
+      contains: ["팀 회의록", "안건 1", "안건 2"]
+      not_contains: ["□", "?????"]
+      paragraph_separation: true
+
+  - id: TC-005
+    name: multilingual-cjk-korean-japanese-chinese-english
+    description: "한·중·일·영 4개 언어 혼용 — Noto Sans CJK 다국어 커버리지 검증"
+    prompt: |
+      아래 다국어 매뉴얼 발췌본을 PDF로 만들어줘. 한국어, 일본어, 중국어 간체, 영어가 섞여 있고
+      Noto Sans CJK 폰트로 모든 글자가 깨지지 않게 출력해.
+
+      # Multi-language Quick Reference / 다국어 빠른 참조
+
+      ## English
+      This document demonstrates CJK + Latin rendering in a single PDF.
+
+      ## 한국어
+      본 문서는 한국어, 일본어, 중국어 간체, 영문을 한 폰트로 처리하는 예시입니다.
+      한자 예: 産業, 経済, 政治
+
+      ## 日本語 (にほんご)
+      この文書は日本語のレンダリングを確認するための例です。
+      ひらがな・カタカナ・漢字すべて表示されます。
+      例：株式会社、東京、新幹線
+
+      ## 中文 (简体)
+      本文档用于验证简体中文字符渲染。
+      示例汉字：人工智能、互联网、数据库、计算机科学
+
+      ## 数字·기호·Numbers
+      0123456789  ①②③④⑤  ★☆◇◆  ←→↑↓
+    assertions:
+      - type: file_created
+        value: "*.pdf"
+      - type: not_contains_glyph
+        description: "한·중·일 글자 모두 정상 렌더 (토푸 미발생)"
+        patterns: ["□", "▯", "?????"]
+      - type: contains_text
+        values:
+          - "한국어"
+          - "日本語"
+          - "ひらがな"
+          - "中文"
+          - "简体"
+          - "人工智能"
+          - "新幹線"
+          - "English"
+      - type: fonts_embedded_includes
+        value: ["NotoSansCJK"]
+    expected_output:
+      format: pdf
+      handles_gracefully: true
+      multilingual_coverage: ["ko", "ja", "zh-CN", "en"]
+      fallback_behavior: "단일 Noto Sans CJK 폰트로 4개 스크립트 모두 렌더"
+      not_contains: ["□", "▯", "?????", "tofu glyph"]
