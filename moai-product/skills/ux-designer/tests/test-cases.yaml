@@ -1,0 +1,194 @@
+test_suite: ux-designer
+version: "1.0.0"
+description: "UX 디자인 분석 및 권고안 생성 스킬 테스트 케이스"
+
+test_cases:
+  - id: TC-001
+    name: happy-path
+    description: "모바일 앱 온보딩 플로우에 대한 다차원 UX 분석 (Fan-out/Fan-in 패턴 완전 활용)"
+    input:
+      product_type: "Mobile App (iOS/Android)"
+      target_users: "20-40대, 모바일 네이티브, 기술적 친숙도 중간"
+      design_goals:
+        - "온보딩 이탈률 감소 (현재 55% → 30%)"
+        - "첫 주 달성률 개선 (현재 40% → 70%)"
+      existing_screens:
+        - "회원가입 (이메일/소셜)"
+        - "프로필 설정 (이름, 사진, 관심사)"
+        - "앱 소개 (5개 슬라이드)"
+        - "첫 번째 작업 안내"
+      key_metrics:
+        onboarding_drop_rate: "55%"
+        first_week_completion: "40%"
+        user_complaints: "온보딩이 너무 길고 복잡함"
+    expected_output:
+      contains_sections:
+        - "제품 컨텍스트"
+        - "Fan-out: 차원별 분석 결과"
+        - "차원 1: 휴리스틱 평가"
+        - "차원 2: 접근성 검토"
+        - "차원 3: 사용자 플로우 분석"
+        - "Fan-in: 통합 분석"
+        - "통합 UX 권고안"
+        - "개선 로드맵"
+      contains_keywords:
+        - "온보딩"
+        - "휴리스틱"
+        - "접근성"
+        - "사용자 플로우"
+        - "Nielsen"
+        - "WCAG"
+        - "우선순위"
+        - "RICE"
+      contains_heuristics:
+        - "시스템 상태 가시성"
+        - "일관성과 표준"
+        - "오류 예방"
+        - "도움말과 문서"
+      contains_accessibility:
+        - "색상 대비"
+        - "키보드 접근"
+        - "포커스 표시"
+      contains_user_flow:
+        - "진입 경로"
+        - "핵심 경로"
+        - "장벽 식별"
+        - "이탈 경로"
+      has_prioritized_recommendations: true
+      has_2week_1month_3month_roadmap: true
+      fan_out_fan_in_pattern_evident: true
+
+  - id: TC-002
+    name: edge-case
+    description: "최소 정보로 기본 UX 분석 수행 (Wireframe 없이 설명만으로 분석)"
+    input:
+      product_type: "Web App"
+      target_users: "일반 사용자"
+      design_goals:
+        - "사용성 개선"
+      existing_screens: []
+      key_metrics: {}
+    expected_output:
+      contains_sections:
+        - "제품 컨텍스트"
+        - "Fan-out: 차원별 분석 결과"
+        - "통합 UX 권고안"
+      contains_keywords:
+        - "휴리스틱"
+        - "접근성"
+        - "사용자 플로우"
+      has_initial_heuristic_evaluation: true
+      has_basic_accessibility_review: true
+      has_generic_recommendations: true
+      has_information_request: true  # 추가 정보(스크린샷, 와이어프레임) 요청
+
+  - id: TC-003
+    name: complex-input
+    description: "복잡한 B2B SaaS 다단계 폼에 대한 심층 UX 분석 (3차원 완전 분석 + A/B 테스트 계획)"
+    input:
+      product_type: "B2B SaaS Web App"
+      target_users: |
+        - 기업 구매 담당자 (35-55세)
+        - 기술적 친숙도 낮음
+        - 영어/한국어 이중 언어 사용자
+      design_goals:
+        - "폼 완료율 개선 (현재 45% → 80%)"
+        - "폼 입력 시간 단축 (현재 12분 → 6분)"
+        - "입력 오류율 감소 (현재 25% → 5%)"
+        - "접근성 준수 (WCAG 2.1 Level AA)"
+      existing_screens:
+        - "회사 정보 입력 (7필드)"
+        - "결제 정보 입력 (10필드)"
+        - "팀원 초대 (이메일 5개 필수)"
+        - "약관 동의 (3개 항목)"
+        - "계약 검토 및 서명"
+      key_metrics:
+        form_completion_rate: "45%"
+        avg_completion_time: "12분"
+        error_rate: "25%"
+        drop_off_by_step:
+          - "회사 정보: 15% 이탈"
+          - "결제 정보: 30% 이탈"
+          - "팀원 초대: 20% 이탈"
+          - "약관 동의: 10% 이탈"
+          - "계약 서명: 5% 이탈"
+      additional_context:
+        - "결제 정보는 PCI DSS 준수 필요"
+        - "영어/한국어 이중 언어 지원"
+        - "모바일 웹에서도 사용해야 함"
+        - "접근성 법적 요구사항 (EU, 미국)"
+        - "A/B 테스트 인프라 있음 (Optimizely)"
+    expected_output:
+      contains_sections:
+        - "제품 컨텍스트"
+        - "Fan-out: 차원별 분석 결과"
+        - "차원 1: 휴리스틱 평가"
+        - "차원 2: 접근성 검토"
+        - "차원 3: 사용자 플로우 분석"
+        - "Fan-in: 통합 분석"
+        - "상관관계 분석"
+        - "우선순위 산정"
+        - "통합 UX 권고안"
+        - "개선 로드맵"
+        - "A/B 테스트 계획"
+        - "기대 효과"
+        - "모니터링 지표"
+      contains_keywords:
+        - "휴리스틱"
+        - "접근성"
+        - "사용자 플로우"
+        - "Nielsen's 10 Heuristics"
+        - "WCAG 2.1 Level AA"
+        - "PCI DSS"
+        - "이중 언어"
+        - "모바일 웹"
+        - "RICE"
+        - "MoSCoW"
+        - "A/B 테스트"
+        - "상관관계"
+      contains_heuristics_all_10:
+        - "시스템 상태 가시성"
+        - "시스템与现实 세계의 일치"
+        - "사용자 통제권과 자유"
+        - "일관성과 표준"
+        - "오류 예방"
+        - "인식보다 기억"
+        - "사용의 유연성과 효율성"
+        - "미적·최소화 디자인"
+        - "오류 진단·회복·정정"
+        - "도움말과 문서"
+      contains_accessibility_comprehensive:
+        - "색상 대비 (4.5:1)"
+        - "키보드 접근"
+        - "폼 레이블"
+        - "오류 메시지"
+        - "언어 전환"
+        - "모바일 반응형"
+      contains_user_flow_detailed:
+        - "진입 경로 분석"
+        - "핵심 경로 (5단계)"
+        - "장벽 식별 (결제 정보 30% 이탈)"
+        - "예외 경로 (입력 오류, 네트워크 오류)"
+        - "이탈 경로 분석"
+      has_rice_scoring: true
+      has_moscow_prioritization: true
+      has_correlation_analysis: true  # 차원 간 상관관게 분석
+      has_ab_test_plan: true  # A/B 테스트 계획 포함
+      has_quantitative_impact: true  # 정량적 효과 (45% → 80%)
+      has_comprehensive_roadmap: true
+      fan_out_fan_in_pattern_fully_exploited: true  # 3차원 완전 활용
+
+# TC-003의 복잡성 특성:
+# - 5단계 복잡한 폼 (회사 정보 → 결제 → 팀원 → 약관 → 계약)
+# - 다양한 타겟 사용자 (35-55세, 기술적 친숙도 낮음, 이중 언어)
+# - 4개 디자인 목표 (완료율, 시간, 오류율, 접근성)
+# - 정량적 메트릭 (단계별 이탈률, 완료 시간, 오류율)
+# - 추가 제약 조건 (PCI DSS, 이중 언어, 모바일 웹, 접근성 법적 요구)
+# - A/B 테스트 인프라 활용 가능
+# - Fan-out/Fan-in 패턴의 완전한 활용 필요:
+#   - 휴리스틱: Nielsen's 10개 전체 평가
+#   - 접근성: WCAG 2.1 Level AA 완전 검토
+#   - 사용자 플로우: 진입/핵심/장벽/예외/이탈 경로 상세 분석
+# - 상관관계 분석: 3차원 간 상호 의존성과 시너지 도출
+# - 우선순위 산정: RICE와 MoSCoW 병행
+# - A/B 테스트 계획: 개선안 검증 방법 포함

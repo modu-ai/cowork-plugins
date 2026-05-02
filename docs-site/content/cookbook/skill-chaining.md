@@ -59,7 +59,7 @@ strategy-planner → docx-generator → ai-slop-reviewer
 | 계약서 리뷰 | `contract-review → legal-risk → docx-generator` | moai-legal, moai-office |
 | 주간 보고서 | `status-reporter → xlsx-creator → docx-generator → ai-slop-reviewer` | moai-operations, moai-office, moai-core |
 | 카드뉴스 | `card-news → nano-banana(이미지) → pptx-designer` | moai-content, moai-media, moai-office |
-| 쇼츠 영상 | `social-media(스크립트) → elevenlabs(TTS) → kling(영상)` | moai-content, moai-media |
+| 쇼츠 영상 | `social-media(스크립트) → audio-gen(TTS) → video-gen(영상)` | moai-content, moai-media |
 | 연구 논문 | `paper-search → paper-writer → docx-generator → ai-slop-reviewer` | moai-research, moai-office, moai-core |
 | 면접 준비 | `job-analyzer → interview-coach → interview-coach(모의)` | moai-career |
 

@@ -1,0 +1,36 @@
+name: marketplace-crowdfunding
+version: 1.8.0
+test_cases:
+  - id: happy_wadiz_tech
+    description: 신상 가전 와디즈 펀딩 기획
+    input:
+      product: "무선 이어폰"
+      category: "테크·가전"
+      list_price: 149000
+    expected:
+      channel_recommended: wadiz
+      rewards_count: 5
+      rewards_includes: ["슈퍼얼리버드", "얼리버드", "일반", "번들", "VIP"]
+      video_synopsis_provided: true
+
+  - id: happy_tumblbug_book
+    description: 일러스트북 텀블벅 펀딩
+    input:
+      product: "독립 일러스트북"
+      category: "출판·창작"
+    expected:
+      channel_recommended: tumblbug
+      rewards_count: 5
+      rewards_includes: ["단순 응원", "기본 굿즈", "번들", "한정판", "컬렉터"]
+      page_focus: "스토리텔링"
+
+  - id: failure_unsafe_claim
+    description: 안전 미인증 가전 + 과장 표현
+    input:
+      kc_certified: false
+      copy_excerpt: "세계 최초의 완벽한 무선이어폰"
+    expected:
+      blockers:
+        - "KC 인증 미통과 — 와디즈 안전 검수 거절"
+        - "과장 표현 - 콘텐츠 심사 거절 가능"
+      action_required: ["KC 인증 신청", "카피 재작성"]

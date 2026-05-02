@@ -1,0 +1,37 @@
+name: marketplace-curation
+version: 1.8.0
+test_cases:
+  - id: happy_29cm_lifestyle
+    description: 라이프스타일 브랜드 29CM 추천
+    input:
+      brand_concept: "미니멀 디자인 도자기"
+      target: "20~30대 라이프스타일"
+      self_mall_revenue_monthly: 30000000
+      instagram_followers: 25000
+    expected:
+      recommended_channel: 29cm
+      fit_score: ">= 0.80"
+      proposal_package_fields: ["brand_intro_pdf", "product_catalog", "sales_history", "differentiator"]
+
+  - id: happy_kakao_makers_limited
+    description: 한정 주문생산형 카카오 메이커스 추천
+    input:
+      product: "수제 한과 김장 키트"
+      production_model: "주문생산"
+      season: "11월 한정"
+    expected:
+      recommended_channel: kakao-makers
+      concept_includes: ["한정성", "스토리"]
+
+  - id: failure_low_brand_recognition
+    description: 인지도 낮은 브랜드 무신사 입점 시도 시 사전 보강 안내
+    input:
+      brand_age_months: 3
+      instagram_followers: 800
+      monthly_revenue: 5000000
+    expected:
+      blocker: "브랜드 인지도 부족 — 무신사 1차 심사 통과 어려움"
+      action_recommended:
+        - "자사몰 6개월 이상 운영"
+        - "인스타 팔로워 1만+"
+        - "미디어·인플루언서 노출 확보"

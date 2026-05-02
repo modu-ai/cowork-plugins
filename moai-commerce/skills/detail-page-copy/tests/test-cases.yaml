@@ -1,0 +1,42 @@
+name: detail-page-copy
+version: 1.7.0
+test_cases:
+  - id: happy_electronics
+    description: 전자제품 카테고리 정상 카피 생성
+    input:
+      product_name: "X200 무선이어폰"
+      category: electronics
+      usp: "30시간 배터리, ANC, IPX5 방수"
+      target: "20~40대 직장인"
+      price: "12만 9천원"
+    expected:
+      sections_count: 13
+      output_format: json
+      ai_slop_review: passed
+      checks:
+        - "헤드라인이 15자 이내"
+        - "Pain 섹션에 상품 노출 없음"
+        - "Proof 섹션에 통계 3개 + 리뷰 3개"
+        - "CTA 섹션에 정가 취소선 + 할인가"
+
+  - id: edge_minimal_input
+    description: 최소 정보(상품명만)로 호출 시 상품 DNA 추정 동작
+    input:
+      product_name: "수제 도자기 머그"
+    expected:
+      ask_user_clarification: true
+      questions_about: ["category", "usp", "target", "tone"]
+      proceed_only_after_answers: true
+
+  - id: failure_forbidden_claim
+    description: "100% 천연 효과 검증" 같은 식약처 위반 표현 입력 시 자동 정제
+    input:
+      product_name: "비타민D 영양제"
+      category: supplement
+      usp: "100% 자연유래, 모든 질병 예방"
+    expected:
+      ai_slop_review: revised
+      revised_phrases:
+        - "100% 자연유래 → 자연유래 원료 사용"
+        - "모든 질병 예방 → 일일 섭취 시 도움"
+      compliance_warning_emitted: true

@@ -26,6 +26,39 @@
 50명 규모 사내 워크샵 기획해줘. 팀빌딩 액티비티 포함.
 ```
 
+## 주요 워크플로우 체인
+
+```
+여행 풀 패키지
+  travel-planner(일정·맛집·숙소·예산) → docx-generator(여행 가이드 PDF/Word)
+
+다이어트·건강 8주 프로그램
+  wellness-coach(식단·운동) → xlsx-creator(주차별 식단표) → docx-generator(가이드)
+
+웨딩 준비 체크리스트
+  event-planner(스드메·예산·타임라인) → xlsx-creator(예산 트래커) → docx-generator
+
+사내 워크샵·세미나 기획
+  event-planner(프로그램·예산) → pptx-designer(세미나 자료) → ai-slop-reviewer
+```
+
+## 다른 플러그인과의 경계
+
+| 비슷해 보이지만 다른 영역 | 사용해야 할 스킬 |
+|---|---|
+| 사내 교육 커리큘럼·강의 | `moai-education/curriculum-designer` |
+| 비즈니스 컨퍼런스 마케팅 | `moai-marketing/campaign-planner` |
+| 부동산·재테크 (정량 분석) | `moai-data/data-explorer` |
+| 헬스케어 의료 자문 | (전문가 상담 권장) |
+
+## 한국 라이프스타일 환경 특화
+
+- **국내 여행**: 한국관광공사 데이터, 지역별 맛집·축제 캘린더 반영
+- **건강검진**: 국민건강보험공단 무료 검진 일정 자동 안내
+- **결혼 표준**: 한국 결혼식 평균 비용·스드메 패키지·웨딩홀 가격대 가이드
+- **아이 발달**: 영유아 검진 시기, 유치원·어린이집 등록 절차
+- **시니어 케어**: 노인장기요양보험·노인복지관 서비스 안내
+
 ## 설치
 
 Settings > Plugins > cowork-plugins에서 `moai-lifestyle` 선택

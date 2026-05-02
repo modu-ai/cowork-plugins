@@ -6,12 +6,153 @@
 
 ## 버전 통일 원칙 (HARD)
 
-아래 18개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v1.3.0부터):
+아래 22개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v1.8.1부터, bi/pm/sales 포함):
 - `.claude-plugin/marketplace.json` (`metadata.version`) × 1
-- `<plugin>/.claude-plugin/plugin.json` (`version`) × 17
+- `<plugin>/.claude-plugin/plugin.json` (`version`) × 21
 - ~~`<plugin>/skills/<skill>/SKILL.md`~~ — **v1.3.0에서 제거** (metadata 블록 삭제, plugin.json 단일 소스)
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
+
+## [1.8.1] - 2026-05-02
+
+PATCH. 정합성 동기화 릴리스 — 신규 플러그인 `moai-bi`·`moai-pm`·`moai-sales` 3종을 marketplace에 정식 등록하고, 온라인 문서·SKILL 내부 stale 참조를 일괄 정리했습니다. 신규 스킬 추가는 없습니다(다음 MINOR에서 추가 예정).
+
+### Added
+
+- **마켓플레이스 등록 +3** — `moai-bi`(BI 대시보드·경영진 1pager), `moai-pm`(주간보고·OKR), `moai-sales`(B2B 영업·제안서) 3개 플러그인이 marketplace.json `plugins[]`에 정식 추가됨. 마켓플레이스 카운트 18 → **21 플러그인**.
+- **신규 docs 페이지 3종** — `docs-site/content/plugins/{moai-bi,moai-pm,moai-sales}.md` 작성. 카탈로그에서 클릭 시 더 이상 404가 발생하지 않음.
+- **`docs-site/content/cowork/constraints.md` 신설** — 요금제·세션·플러그인·커넥터·Team/Enterprise 거버넌스 시스템 한도 한 페이지(Cowork 사용자 관점, 개발자용 Claude Code 개념 분리).
+- **`docs-site/content/cowork/troubleshooting.md` 전면 확장** — 6 섹션 → 10 섹션, 빠른 진단표 + 설치/폴더/스킬 호출/플러그인 설치/커넥터/세션/권한/프록시 종합.
+- **`docs-site/content/cookbook/legal-nda-batch.md` 신설** — NDA 일괄 검토 파이프라인 레시피(영업비밀보호법 §2 적용 명시).
+- **`docs-site/content/plugins/moai-commerce.md` 신설** — v1.8.0의 11스킬·8채널 풀세트 카탈로그 페이지.
+
+### Changed
+
+- **README** — Plugins 배지 18 → **21**, 한국어/영문 intro 문장 동기화.
+- **marketplace.json metadata.description** — "18 플러그인, 100 스킬" → **"21 플러그인, 100 스킬"**, bi/pm/sales 추가 안내.
+- **`moai-media` plugin.json description** — Kling/Ideogram/ElevenLabs stale 표기 제거 → 실제 7스킬 기준 갱신.
+- **`moai-media/README.md` 전면 재작성** — 5스킬 카탈로그(kling/ideogram/elevenlabs/nano-banana/fal-gateway) → **7스킬 카탈로그**(nano-banana/image-gen/video-gen/audio-gen/speech-video/character-mgmt/fal-gateway), 마이그레이션 안내 추가.
+- **`moai-core/skills/project/SKILL.md`·`init-protocol.md`** — 미디어 스킬 매핑·API 키 안내를 7스킬 기준으로 갱신, kling→video-gen·elevenlabs→audio-gen 워크플로우 매핑.
+- **`moai-commerce/skills/{detail-page-image,live-commerce}/SKILL.md`** — `moai-media:ideogram`/`moai-media:kling` 호출 안내를 `nano-banana`(한국어 타이포 SOTA)·`video-gen`·`fal-gateway`로 재정렬.
+- **`moai-content/skills/landing-page/SKILL.md`** — 이미지 생성 스킬 안내에서 `ideogram` 제거.
+- **`moai-media/skills/{nano-banana,image-gen}/SKILL.md`** — 관련 스킬 목록을 실재하는 7스킬 기준으로 갱신.
+- **`docs-site/content/cowork/faq.md` Q9** — 1M 컨텍스트 사실 추가, Claude Code CLI 명령(`/clear`) 표현을 Cowork 자연어 안내로 교체.
+- **여러 cookbook/plugins 페이지** — 제거된 스킬 `kling`·`ideogram`·`elevenlabs` 직접 호출 표기를 실제 스킬명으로 일괄 정정 (skill-chaining, blog-pipeline, track-marketing, plugins/moai-content, plugins/moai-media).
+
+### Fixed
+
+- **Claude Cowork ↔ Claude Code 개념 혼재 제거** — 사용자 문서 `cowork/constraints.md`·`troubleshooting.md`에 `SLASH_COMMAND_TOOL_CHAR_BUDGET`·`run_in_background`·`/clear`·`.mcp.json` JSON 편집 등 개발자 CLI 개념이 다수 섞여 있던 것을 발견·전면 재작성. 향후 재발 방지를 위한 19개 금지 토큰 자동 검사 메모리 등록.
+
+### Migration
+
+사용자 측 갱신:
+
+```text
+/plugin marketplace update cowork-plugins
+```
+
+이후 좌측 사이드바 → 사용자 지정 → 마켓플레이스 → cowork-plugins에서 `moai-bi`·`moai-pm`·`moai-sales` 신규 항목 확인 후 필요한 것만 설치하세요. 기존 17개 플러그인은 그대로 동작합니다 (Breaking change 없음).
+
+### 동기화 지점 (22)
+
+- `.claude-plugin/marketplace.json` × 1
+- `moai-{bi,business,career,commerce,content,core,data,education,finance,hr,legal,lifestyle,marketing,media,office,operations,pm,product,research,sales,support}/.claude-plugin/plugin.json` × 21
+
+## [1.8.0] - 2026-05-01
+
+MINOR. **`moai-commerce` 5 → 11 스킬 대폭 확장** — 한국 이커머스 풀세트로 진화. 자사몰(D2C) + 크라우드펀딩 + 큐레이션 + 라이브 커머스 + 통합 마케팅 전략·카피까지 한 플러그인에서 처리합니다. 큐텐 사태로 사실상 폐업한 티몬·위메프는 가이드에서 제외되었습니다.
+
+### Highlights
+
+- **`moai-commerce` 6 신규 스킬**:
+  - **`marketplace-d2c`** — 카페24·아임웹·메이크샵 자사몰 빌더 통합 가이드(도메인·결제·배송·SEO·광고 채널 연동·D2C 운영 전략).
+  - **`marketplace-crowdfunding`** — 와디즈·텀블벅 크라우드펀딩 프로젝트 기획·심사·운영(영상 시놉시스, 리워드 5단계 가격 구성, 메이커 등록).
+  - **`marketplace-curation`** — 카카오 메이커스·무신사·29CM 큐레이션 채널 입점 제안(브랜드 소개서, 시너지 평가, MD 협업).
+  - **`commerce-strategy`** — 통합 마케팅 전략(채널 믹스, 3단계 가격 구조, 시즌 프로모션 캘린더, 리텐션 자동화, KPI 대시보드).
+  - **`commerce-copywriting`** — 이커머스 특화 광고·톡톡·푸시·이메일 카피(채널별 길이 제약, A/B 옵션 3개, ai-slop 자동 체이닝).
+  - **`live-commerce`** — 네이버·카카오·그립·쿠팡 라이브 커머스 채널 가이드 + 30/60분 진행 스크립트(오프닝→상품→채팅→마감 카운트다운).
+- **`marketplace-naver` 정정** — 티몬·위메프 가이드 제거(큐텐 인수 후 2024년 미정산 사태로 회생절차 진입). 미정산 피해 셀러를 위한 archive 안내 표기.
+- 마켓플레이스 카운트 18 플러그인, 94 → **100 스킬**.
+
+### Added
+
+- `moai-commerce/skills/marketplace-d2c/SKILL.md` + `references/{cafe24.md, imweb.md, d2c-strategy.md}` + `tests/test-cases.yaml`.
+- `moai-commerce/skills/marketplace-crowdfunding/SKILL.md` + `references/{wadiz.md, tumblbug.md}` + `tests/test-cases.yaml`.
+- `moai-commerce/skills/marketplace-curation/SKILL.md` + `references/{kakao-makers.md, musinsa.md, 29cm.md}` + `tests/test-cases.yaml`.
+- `moai-commerce/skills/commerce-strategy/SKILL.md` + `references/{channel-mix.md, pricing.md, promotion.md, retention.md, kpi.md}` + `tests/test-cases.yaml`.
+- `moai-commerce/skills/commerce-copywriting/SKILL.md` + `references/{ad-copy.md, talk-copy.md, push-copy.md, email-sequence.md}` + `tests/test-cases.yaml`.
+- `moai-commerce/skills/live-commerce/SKILL.md` + `references/{naver-shoppinglive.md, kakao-shoppinglive.md, grip.md, coupang-live.md, live-script.md}` + `tests/test-cases.yaml`.
+
+### Changed
+
+- `moai-commerce/skills/marketplace-naver/SKILL.md` — 티몬·위메프 언급 제거, archive 안내 추가.
+- `moai-commerce/skills/marketplace-naver/references/openmarket-common.md` — 티몬·위메프 표·정산·후기·시즌 칸 모두 제거. 큐텐 사태 archive 표기.
+- `moai-commerce/README.md` — 11 스킬 카탈로그(상세페이지 3 / 채널 가이드 5 / 마케팅 3) + 표준 워크플로우 확장 + 채널 분류 표.
+- `.claude-plugin/marketplace.json` — `metadata.version` 1.7.0 → 1.8.0, `metadata.description` "94 스킬" → "100 스킬", moai-commerce description 11 스킬 반영.
+- 모든 `<plugin>/.claude-plugin/plugin.json` (21개) — `version` 1.7.0 → 1.8.0 일괄 동기화.
+- `README.md` (루트) — Version 배지 1.7.0→1.8.0, Skills 94→100, v1.8.0 하이라이트 섹션 신설, moai-commerce 카탈로그 행 11 스킬로 갱신.
+
+### Removed
+
+- `marketplace-naver` 가이드에서 티몬·위메프 모든 운영 항목(이미지 규격·상품명·후기·시즌·정산) 제거. 본 채널은 큐텐 인수 후 2024년 미정산 사태로 사실상 폐업·회생절차에 진입했습니다.
+
+### Migration
+
+- 사용자 측 캐시 갱신: `/plugin marketplace update cowork-plugins` 실행 후 신규 스킬 활성화.
+- 기존 워크플로우 영향 없음. Breaking change 없음. 기존 5개 스킬은 그대로 동작합니다.
+- 티몬·위메프 운영 가이드를 참고하던 사용자: 채널 폐업으로 인해 가이드를 갱신하지 않습니다. 미정산 피해 셀러는 [중소벤처기업부 피해 지원](https://www.mss.go.kr) 또는 회생법원 공지 참조.
+
+## [1.7.0] - 2026-05-01
+
+MINOR. **신규 플러그인 `moai-commerce` 추가 — 한국 이커머스 상세페이지(상폐) 자동화**가 핵심입니다. 13섹션 감정여정 카피 생성, 1080×12720 단일 PNG 자동 합성, 쿠팡·네이버·오픈마켓 가이드를 한 번의 자연어 호출로 완성합니다.
+
+### Highlights
+
+- **`moai-commerce` 신규 플러그인 신설** — 한국 이커머스 상세페이지 자동화 도메인 진입. 5개 스킬 + Pillow 자체 합성 스크립트 + 채널별 마켓 가이드 + 사진 촬영 브리프 풀세트 제공.
+- **`detail-page-copy`** — 13섹션 감정여정(Hero→Pain→Problem→Story→Solution→How→Proof→Authority→Benefits→Risk→Compare→Filter→CTA) 카피 생성. 10개 카테고리(electronics/fashion/food/beauty/home/supplement/pet/kids/handmade/general) 어조 가이드. **출력 직전 ai-slop-reviewer 자동 체이닝** (HARD 규칙 준수).
+- **`detail-page-image`** — 13섹션 이미지 프롬프트 생성 → `moai-media:nano-banana` 호출 → **Pillow 단일 의존성으로 1080×12720 세로 합성 PNG 산출**. 외부 패키지 설치 불필요. 부분 실패 시 다크 플레이스홀더 자동 대체(exit code 5).
+- **`marketplace-coupang` / `marketplace-naver`** — 쿠팡 + 네이버 스마트스토어 + 11번가/G마켓/옥션/티몬/위메프 채널별 정책·검색 키워드·금지문구·우수상품 기준 적용.
+- **`product-photo-brief`** — 상품 사진 1~14장 분석 → ProductDNA(physical/positioning/palette) 추출 → 13섹션별 사용 가능 컷 매핑 → 부족한 컷 우선순위별 추가 촬영 브리프 자동 생성.
+- 마켓플레이스 카운트 17 → **18 플러그인**, 89 → **94 스킬**.
+
+### Added
+
+- `moai-commerce/.claude-plugin/plugin.json` — 신규 플러그인 매니페스트.
+- `moai-commerce/README.md` — 5개 스킬 카탈로그 + 표준 워크플로우 + 13섹션 구조 표.
+- `moai-commerce/skills/detail-page-copy/SKILL.md` — 13섹션 카피 + ai-slop 체이닝 스킬.
+- `moai-commerce/skills/detail-page-copy/references/13-sections.md` — 섹션별 카피 가이드 (헤드라인 길이·금지 표현·예시 포함).
+- `moai-commerce/skills/detail-page-copy/references/category-briefs.md` — 10개 카테고리 어조·키워드·금지 표현표.
+- `moai-commerce/skills/detail-page-copy/tests/test-cases.yaml` — happy/edge/failure 3건.
+- `moai-commerce/skills/detail-page-image/SKILL.md` — 이미지 프롬프트 + Pillow 합성 워크플로우 스킬.
+- `moai-commerce/skills/detail-page-image/scripts/compose.py` — 13섹션 → 1080×12720 세로 합성 (Pillow 단일 의존성).
+- `moai-commerce/skills/detail-page-image/scripts/slice_bundle.py` — 큰 번들 PNG → Y좌표 슬라이싱.
+- `moai-commerce/skills/detail-page-image/scripts/README.md` — 스크립트 사용법.
+- `moai-commerce/skills/detail-page-image/references/sections-spec.md` — 13섹션 높이 스펙 표 + 마켓별 권장 크기 비교.
+- `moai-commerce/skills/detail-page-image/references/image-prompts.md` — 섹션별 비주얼 언어 + nano-banana 프롬프트 패턴.
+- `moai-commerce/skills/detail-page-image/tests/test-cases.yaml` — happy/edge/failure 3건.
+- `moai-commerce/skills/marketplace-coupang/SKILL.md` — 쿠팡 정책·SEO 가이드 스킬.
+- `moai-commerce/skills/marketplace-coupang/references/coupang-guidelines.md` — 이미지 규격·금지문구·우수상품 기준·로켓배송 vs 판매자배송·정산.
+- `moai-commerce/skills/marketplace-coupang/tests/test-cases.yaml` — happy/edge/failure 3건.
+- `moai-commerce/skills/marketplace-naver/SKILL.md` — 네이버 스마트스토어 + 오픈마켓 통합 가이드 스킬.
+- `moai-commerce/skills/marketplace-naver/references/naver-smartstore.md` — 스마트스토어 SEO·톡톡 운영·후기 정책.
+- `moai-commerce/skills/marketplace-naver/references/openmarket-common.md` — 11번가/G마켓/옥션/티몬/위메프 채널별 정책 비교.
+- `moai-commerce/skills/marketplace-naver/tests/test-cases.yaml` — happy/edge/failure 3건.
+- `moai-commerce/skills/product-photo-brief/SKILL.md` — 사진 분석 + 추가 촬영 브리프 스킬.
+- `moai-commerce/skills/product-photo-brief/references/photo-checklist.md` — 13섹션 컷 우선순위 + 카테고리별 필수 컷.
+- `moai-commerce/skills/product-photo-brief/tests/test-cases.yaml` — happy/edge/failure 3건.
+
+### Changed
+
+- `.claude-plugin/marketplace.json` — `metadata.version` 1.6.0 → 1.7.0, `metadata.description` "17 플러그인 86 스킬" → "18 플러그인 94 스킬", `plugins[]` 배열에 `moai-commerce` 항목 추가.
+- 모든 `<plugin>/.claude-plugin/plugin.json` (21개) — `version` 1.6.0 → 1.7.0 일괄 동기화.
+- `README.md` (루트) — Version 배지 1.6.0→1.7.0, Plugins 17→18, Skills 85→94, v1.7.0 하이라이트 섹션 신설, 카탈로그 테이블에 `moai-commerce` 행 추가, "총 산출물" 표 갱신.
+- `CHANGELOG.md` 버전 통일 원칙 — 18 → **19개 지점** (plugin.json 17 → 18로 확장).
+
+### Migration
+
+- 사용자 측 캐시 갱신: Claude Cowork에서 `/plugin marketplace update cowork-plugins` 실행 후 `moai-commerce` 활성화.
+- `detail-page-image` 스킬 사용 시: `pip install Pillow` (또는 `uv pip install Pillow`) 한 번 실행 필요. 다른 의존성 없음.
+- 기존 워크플로우 영향 없음. Breaking change 없음.
 
 ## [1.6.0] - 2026-05-01
 

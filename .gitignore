@@ -183,6 +183,13 @@ secret-*.*
 .moai/worktrees/
 
 # ===========================================
+# Plan Audit Reports (local artifacts)
+# See SPEC-WF-AUDIT-GATE-001
+# ===========================================
+.moai/reports/plan-audit/*.md
+!.moai/reports/plan-audit/.gitkeep
+
+# ===========================================
 # Evolution Telemetry (local-only usage data)
 # Learnings and new-skills are git-tracked for team sharing.
 # ===========================================
@@ -216,17 +223,6 @@ dist-ssr/
 credentials.env
 *.secret
 *.key
-
-# ===========================================
-# Maintainer Workspace (NOT distributed)
-# ===========================================
-# These files are local-only working artifacts of the cowork-plugins
-# maintainer. They are NOT part of the public marketplace distribution.
-# Contributors who clone this repo do not need them — Claude Cowork
-# users only consume the moai-* plugin directories + marketplace.json.
-#
-# CRITICAL: CLAUDE.local.md contains maintainer email and personal
-# release-automation scripts; never commit it.
 CLAUDE.md
 CLAUDE.local.md
 .mcp.json

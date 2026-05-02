@@ -21,6 +21,40 @@
 | KIPRIS Plus | KIPRIS_API_KEY | [plus.kipris.or.kr](https://plus.kipris.or.kr/) |
 | KCI 논문 | KCI_API_KEY | [data.go.kr](https://www.data.go.kr/data/3049042/openapi.do) |
 
+## 주요 워크플로우 체인
+
+```
+학술 논문 풀 사이클
+  paper-search(통합 검색) → paper-writer(KCI/IEEE 포맷) → docx-generator → ai-slop-reviewer
+
+특허 출원 준비
+  patent-search(KIPRIS 선행기술) → patent-analyzer(FTO·특허맵) → docx-generator(출원 문서)
+
+연구비 신청서
+  grant-writer(NRF/IITP/KIAT 양식) → docx-generator → ai-slop-reviewer
+
+논문 + 특허 통합 R&D 보고
+  paper-search → patent-search → grant-writer → docx-generator
+```
+
+## 다른 플러그인과의 경계
+
+| 비슷해 보이지만 다른 영역 | 사용해야 할 스킬 |
+|---|---|
+| 강의 커리큘럼 설계 | `moai-education/curriculum-designer` |
+| 데이터 분석·시각화 | `moai-data/data-explorer` |
+| 정부 지원사업(창업·중기부) | `moai-business/kr-gov-grant` |
+| PRD·R&D 기획 | `moai-product/spec-writer` |
+| 법률 IP 포트폴리오 전략 | `moai-legal/legal-risk` |
+
+## 한국 연구·특허 환경 특화
+
+- **KIPRIS Plus API**: 특허·실용신안·디자인·상표 통합 검색 (`KIPRIS_API_KEY` 필요)
+- **KCI·RISS·DBpia**: 한국 학술지·학위논문 통합 검색
+- **NRF/IITP/KIAT/KISA** 4대 R&D 기관 양식 호환
+- **APA·KCI·IEEE 한국형** 인용 스타일 자동 적용
+- **특허 한국 분류**: IPC·CPC·F-Term·KIPRIS 분류 통합
+
 ## 설치
 
 Settings > Plugins > cowork-plugins에서 `moai-research` 선택

@@ -2,19 +2,35 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
-[![Version](https://img.shields.io/badge/Version-1.6.0-blue)](CHANGELOG.md)
-[![Plugins](https://img.shields.io/badge/Plugins-17-blue)](.claude-plugin/marketplace.json)
-[![Skills](https://img.shields.io/badge/Skills-85-green)](.claude-plugin/marketplace.json)
+[![Version](https://img.shields.io/badge/Version-1.8.1-blue)](CHANGELOG.md)
+[![Plugins](https://img.shields.io/badge/Plugins-21-blue)](.claude-plugin/marketplace.json)
+[![Skills](https://img.shields.io/badge/Skills-100-green)](.claude-plugin/marketplace.json)
 [![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)
 [![shadcn/ui](https://img.shields.io/badge/UI-shadcn/ui-black)](https://ui.shadcn.com/)
 
 **Claude Cowork 도메인 전문가 AI 마켓플레이스**
 
-자연어 한 줄이면 사업계획서, 계약서 검토, 세금 계산, PPT 제작, 데이터 분석, 특허 검색, **AI 이미지·영상·음성 생성**, **shadcn/ui 기반 랜딩·상세 페이지 제작**, **소상공인 상권분석·정부지원사업 신청**까지 — 17개 독립 플러그인과 84개 전문 스킬이 업무를 대신합니다. 모든 텍스트 산출물은 **`ai-slop-reviewer`가 AI 패턴을 검수**하여 사람이 쓴 것처럼 자연스럽게 다듬어 드립니다.
+자연어 한 줄이면 사업계획서, 계약서 검토, 세금 계산, PPT 제작, 데이터 분석, 특허 검색, **AI 이미지·영상·음성 생성**, **shadcn/ui 기반 랜딩·상세 페이지 제작**, **소상공인 상권분석·정부지원사업 신청**, **한국 이커머스 풀세트 — 13섹션 상세페이지 + 8개 채널 가이드(쿠팡·네이버·자사몰·크라우드펀딩·큐레이션·라이브) + 통합 마케팅 전략·카피**, **BI 대시보드·경영진 1pager**, **프로젝트 관리·주간보고·OKR·회고**, **B2B 영업·제안서·콜드메일**까지 — 21개 독립 플러그인과 100개 전문 스킬이 업무를 대신합니다. 모든 텍스트 산출물은 **`ai-slop-reviewer`가 AI 패턴을 검수**하여 사람이 쓴 것처럼 자연스럽게 다듬어 드립니다.
 
-> *Domain expert AI marketplace for [Claude Cowork](https://claude.ai). 17 plugins · 85 skills covering business strategy, marketing, legal, finance, HR, content, operations, education, lifestyle, product, support, document generation (DOCX/PPTX/XLSX/HWPX/**multilingual PDF**), data analysis, research/patents, **AI media production (image/video/voice)**, **shadcn/ui-based web landing/detail pages**, **small-business commercial-area analysis & Korean government grant applications**, and automatic AI-slop detection for every text deliverable.*
+> *Domain expert AI marketplace for [Claude Cowork](https://claude.ai). 21 plugins · 100 skills covering business strategy, marketing, legal, finance, HR, content, operations, education, lifestyle, product, support, document generation (DOCX/PPTX/XLSX/HWPX/**multilingual PDF**), data analysis, research/patents, **AI media production (image/video/voice)**, **shadcn/ui-based web landing/detail pages**, **small-business commercial-area analysis & Korean government grant applications**, **Korean e-commerce full-cycle (13-section detail page + 8 channel guides — Coupang, Naver Smartstore, Cafe24/Imweb D2C, Wadiz/Tumblbug crowdfunding, Kakao Makers/Musinsa/29CM curation, live commerce + integrated marketing strategy & copy)**, and automatic AI-slop detection for every text deliverable.*
 
-**🆕 v1.6.0 하이라이트**
+**🆕 v1.8.0 하이라이트**
+- **`moai-commerce` 5 → 11 스킬 대폭 확장** — 한국 이커머스 풀세트로 진화
+- **신규 6 스킬**: `marketplace-d2c`(카페24·아임웹·메이크샵 자사몰), `marketplace-crowdfunding`(와디즈·텀블벅), `marketplace-curation`(카카오 메이커스·무신사·29CM), `commerce-strategy`(채널 믹스·가격·프로모션·리텐션·KPI), `commerce-copywriting`(광고·톡톡·푸시·이메일 — ai-slop 자동 체이닝), `live-commerce`(네이버 쇼핑라이브·카카오·그립·쿠팡 라이브 + 30/60분 스크립트)
+- **티몬·위메프 가이드 제외** — 큐텐(Qoo10) 인수 후 2024년 미정산 사태로 회생절차 진입. archive 표기로 안내
+- README Skills 배지 94 → **100**, marketplace.json description 갱신
+- [한국어 문서 사이트](https://cowork.mo.ai.kr/)
+
+**v1.7.0 하이라이트**
+- **`moai-commerce` 신규 플러그인** — 한국 이커머스 상세페이지(상폐) 자동화. **13섹션 감정여정 카피**(Hero→Pain→…→CTA) + **1080×12720 단일 PNG 합성**(Pillow 자체 구현) + **쿠팡·네이버 스마트스토어·11번가/G마켓/옥션 가이드** + **상품 사진 촬영 브리프** 5종 스킬
+- **`detail-page-copy`** — 13섹션 카피 + ai-slop-reviewer 자동 체이닝, 10개 카테고리(electronics/fashion/food/beauty/home/supplement/pet/kids/handmade/general) 어조 가이드
+- **`detail-page-image`** — 섹션별 이미지 프롬프트 → `moai-media:nano-banana` 호출 → Pillow 세로 합성. 외부 패키지 설치 불필요
+- **`marketplace-coupang` / `marketplace-naver`** — 채널별 정책·검색 키워드·금지문구·우수상품 기준 적용
+- **`product-photo-brief`** — ProductDNA 추출 + 13섹션 컷 매핑 + 추가 촬영 브리프 자동 생성
+- README Skills 배지 85 → **94** (moai-commerce 5개 + 누적 보정 4개)
+- [한국어 문서 사이트](https://cowork.mo.ai.kr/)
+
+**v1.6.0 하이라이트**
 - **`moai-office:pdf-writer` 신규 스킬** — PyMuPDF + Noto Sans CJK로 **한·중·일·영 4개 언어 PDF**를 깨짐 없이 생성. Markdown / 구조화 JSON / HTML / 일반 텍스트 4종 입력 지원. 폰트 64MB는 저장소 미포함, 최초 실행 시 `notofonts/noto-cjk` 공식 저장소에서 자동 다운로드(SIL OFL 1.1)
 - **`skill-forge` → `skill-builder` 이름 변경** — 의미 명확화. 별칭 없이 즉시 대체. 외부에서 `skill-forge`를 직접 호출하던 경우 `skill-builder`로 변경 필요
 - **`skill-tester` self-contained 화** — 4차원 스코어링 루브릭(Correctness/Completeness/Clarity/Efficiency) + 체인 검증 프로토콜을 SKILL.md 본문에 흡수. 한 번 로드로 모든 평가 기준 즉시 가용
@@ -72,14 +88,15 @@
 | [moai-career](./moai-career/) | 커리어 준비 — 자기소개서, 이력서, 면접 코칭, 채용공고 분석 | 4 |
 | [moai-data](./moai-data/) | 데이터 분석 — CSV/Excel 탐색, 공공데이터, 시각화 | 3 |
 | [moai-research](./moai-research/) | 연구/특허 — 논문 검색, 특허 분석/출원, 연구비 신청 | 5 |
-| [moai-media](./moai-media/) 🆕 | AI 미디어 스튜디오 — Nano Banana 이미지, Kling 영상, ElevenLabs 음성, fal.ai 게이트웨이 | 5 |
+| [moai-media](./moai-media/) | AI 미디어 스튜디오 — Nano Banana 이미지, Kling 영상, ElevenLabs 음성, fal.ai 게이트웨이 | 5 |
+| [moai-commerce](./moai-commerce/) 🆕 | 한국 이커머스 풀세트 — 상세페이지(카피·이미지·사진 브리프) + 채널 가이드 5종(쿠팡·네이버·자사몰·크라우드펀딩·큐레이션) + 통합 마케팅(전략·카피·라이브 커머스) | 11 |
 
 ## 총 산출물
 
 | 항목 | 수량 |
 |------|:----:|
-| 플러그인 | 17 |
-| 스킬 | 84 |
+| 플러그인 | 18 |
+| 스킬 | 100 |
 | 레퍼런스 파일 | 180 |
 | 에이전트 | 0 |
 | MCP 서버 | 7 (`fal-ai`, `elevenlabs` 추가) |
@@ -106,7 +123,7 @@ modu-ai/cowork-plugins
 
 ### Step 2: 플러그인 설치
 
-동기화가 완료되면 17개 플러그인 목록이 표시됩니다.
+동기화가 완료되면 18개 플러그인 목록이 표시됩니다.
 
 1. **개인** 탭 선택 → **cowork-plugins** 마켓플레이스 확인
 2. 원하는 플러그인 옆의 **+** 버튼으로 설치

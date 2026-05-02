@@ -1,40 +1,41 @@
 ---
 name: feedback
-description: >
-  버그 리포트, 기능 요청을 수집하여 GitHub Issues에 자동 등록합니다.
-  '버그 신고', '기능 요청', '피드백', '/project feedback'으로 트리거됩니다.
-  단순 불만 표출이나 일반 대화에는 사용하지 마세요.
+description: |
+  버그 리포트와 기능 요청을 수집하여 GitHub Issues에 자동 등록합니다.
+
+  다음과 같은 요청 시 이 스킬을 사용하세요:
+  - "버그 신고", "기능 요청", "피드백", "개선 제안"
+  - "/project feedback" 커맨드 실행
+  - "이슈 등록", "문제 신고", "bug report", "feature request"
+  - 특정 플러그인/스킬의 문제점 보고
+
+  단순 불만 표출이나 일반 대화, 플러그인 사용법 질문에는 사용하지 마세요.
 user-invocable: true
 ---
 
-# Feedback — 버그/기능 요청 GitHub Issues 등록
-
-> moai-core | 피드백 수집 및 이슈 자동 등록
+# Feedback — 피드백 수집 및 GitHub Issues 등록
 
 ## 개요
 
-사용자의 버그 리포트 또는 기능 요청을 구조화하여 GitHub Issues에 자동 등록합니다.
-대상 레포지토리: `modu-ai/cowork-plugins`
+사용자의 버그 리포트 또는 기능 요청을 구조화된 인터뷰를 통해 수집하고, GitHub Issues에 자동 등록합니다. cowork-plugins 저장소(`modu-ai/cowork-plugins`)의 이슈를 관리하며, 명확한 문제 정의와 재현 가능한 정보를 수집하는 데 중점을 둡니다.
 
 ## 트리거 키워드
 
-버그 신고 피드백 기능 요청 feature request bug report 개선 요청 이슈 등록 문제 신고
+버그 신고, 기능 요청, 피드백, 개선 요청, 이슈 등록, 문제 신고, bug report, feature request, /project feedback
 
 ## 워크플로우
 
 ```
-1. [분류] 버그 vs 기능 요청 판별
-2. [수집] 구조화 인터뷰로 필수 정보 수집
-3. [확인] 이슈 미리보기 → 사용자 승인
-4. [등록] gh issue create로 GitHub Issues 등록
-5. [완료] 이슈 URL 전달
+1단계: 분류 — 버그 vs 기능 요청 판별
+2단계: 수집 — AskUserQuestion으로 필수 정보 수집
+3단계: 확인 — 이슈 미리보기 → 사용자 승인
+4단계: 등록 — gh issue create로 GitHub Issues 등록
+5단계: 완료 — 이슈 URL 전달
 ```
-
-## 실행 규칙
 
 ### 1단계: 분류
 
-사용자 메시지에서 유형을 판별한다:
+사용자 메시지에서 유형을 판별합니다:
 
 | 유형 | 판별 기준 | 레이블 |
 |------|----------|--------|
@@ -44,7 +45,7 @@ user-invocable: true
 
 ### 2단계: 정보 수집
 
-AskUserQuestion으로 필수 정보를 수집한다.
+AskUserQuestion으로 필수 정보를 수집합니다. 자연어 메시지에 충분한 정보가 포함되어 있으면 인터뷰를 생략합니다.
 
 **버그 리포트 수집 항목:**
 
@@ -62,8 +63,6 @@ AskUserQuestion으로 필수 정보를 수집한다.
 | 관련 플러그인/스킬 | O | 어떤 플러그인에 추가할지 |
 | 요청 내용 | O | 어떤 기능이 필요한지 |
 | 사용 시나리오 | - | 어떤 상황에서 필요한지 |
-
-자연어 메시지에 충분한 정보가 포함되어 있으면 인터뷰를 생략한다.
 
 ### 3단계: 이슈 미리보기
 
@@ -97,12 +96,11 @@ AskUserQuestion으로 필수 정보를 수집한다.
 - [플러그인명]
 ```
 
-AskUserQuestion으로 "등록하시겠습니까?" 확인.
-선택지: "등록" / "수정 후 등록" / "취소"
+AskUserQuestion으로 "등록하시겠습니까?" 확인합니다. 선택지: "등록" / "수정 후 등록" / "취소"
 
 ### 4단계: GitHub Issues 등록
 
-gh CLI로 이슈를 생성한다:
+gh CLI로 이슈를 생성합니다:
 
 ```bash
 gh issue create \
@@ -120,14 +118,13 @@ gh issue create \
 
 ### 5단계: 완료 보고
 
-이슈 생성 결과를 사용자에게 전달:
+이슈 생성 결과를 사용자에게 전달합니다:
 - 이슈 번호와 URL
 - "감사합니다. 피드백이 등록되었습니다." 메시지
 
 ## gh CLI 인증 실패 시
 
 gh CLI가 없거나 인증되지 않은 환경에서는:
-
 1. 이슈 본문을 마크다운으로 출력
 2. GitHub Issues 페이지 직접 링크 제공: `https://github.com/modu-ai/cowork-plugins/issues/new`
 3. "복사하여 직접 등록해 주세요" 안내
@@ -146,8 +143,41 @@ gh CLI가 없거나 인증되지 않은 환경에서는:
 /project feedback 세금 계산 결과가 이상해요
 ```
 
-## 이 스킬을 사용하지 말아야 할 때
+```
+이슈 등록: moai-content 블로그 스킬에서 이미지 업로드가 안 돼요
+```
 
-- 플러그인 사용법 질문 → `/project catalog` 또는 해당 플러그인 직접 호출
-- 일반적인 불만이나 감상 → 별도 스킬 없이 직접 대화
-- 긴급 보안 이슈 → email@mo.ai.kr 으로 직접 연락
+## 출력 형식
+
+**성공 시:**
+```
+✅ 피드백이 등록되었습니다.
+
+이슈 #123: [bug] moai-office 한글 폰트 깨짐
+https://github.com/modu-ai/cowork-plugins/issues/123
+
+감사합니다. 빠른 시일 내에 검토하겠습니다.
+```
+
+**gh CLI 미설치 시:**
+```
+⚠️ GitHub CLI가 설치되지 않았습니다.
+
+아래 내용을 복사하여 직접 등록해 주세요:
+[이슈 본문 마크다운]
+
+GitHub Issues: https://github.com/modu-ai/cowork-plugins/issues/new
+```
+
+## 주의사항
+
+- **단순 불만 표출에는 사용하지 마세요**: 구체적인 문제 설명이 없는 "별로예요", "안 좋아요" 같은 메시지는 이 스킬이 아닌 일반 대화로 처리하세요.
+- **플러그인 사용법 질문은 별도 스킬로**: 사용법이나 설정 방법 질문은 `/project catalog`로 확인하거나 해당 플러그인을 직접 호출하세요.
+- **긴급 보안 이슈는 직접 연락**: 보안 취약점은 이슈 트래커가 아닌 email@mo.ai.kr 로 직접 알려주세요.
+- **중복 이슈 확인**: 유사한 문제가 이미 보고되었는지 검색한 후 등록하세요.
+
+## 관련 스킬
+
+- **moai:project** — 프로젝트 문서 생성 및 카탈로그 관리
+- **moai-core:ai-slop-reviewer** — 텍스트 산출물 품질 검수
+- **moai-foundation-cc** — 스킬 제작 가이드라인

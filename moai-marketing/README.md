@@ -15,6 +15,7 @@
 | [seo-audit](./skills/seo-audit/) | 네이버/구글/AI 검색(GEO) 통합 SEO 감사, 키워드 분석, C-Rank 개선 | 0 | ✅ |
 | [email-sequence](./skills/email-sequence/) | 정보통신망법 준수 이메일 시퀀스, 드립 캠페인, 온보딩/재활성화 | 0 | ✅ |
 | [performance-report](./skills/performance-report/) | GA4/메타/네이버/카카오모먼트 채널별 ROAS 분석, KPI 대시보드 | 0 | ✅ |
+| [target-script](./skills/target-script/) | 타겟 오디언스 분석 + 채널별 메시징 스크립트 자동 생성 (인스타·블로그·이메일·LinkedIn) | 1 | ✅ |
 
 ## 사용 예시
 

@@ -1,0 +1,35 @@
+name: detail-page-image
+version: 1.7.0
+test_cases:
+  - id: happy_full_pipeline
+    description: 13섹션 모두 정상 생성 + 합성
+    input:
+      copy_json_path: "./test-fixtures/copy_electronics.json"
+      product_images: ["./test-fixtures/earbuds_1.jpg", "./test-fixtures/earbuds_2.jpg"]
+      category: electronics
+      output_dir: "./test-output/abc"
+    expected:
+      sections_generated: 13
+      combined_size: "1080x12720"
+      failed_sections: []
+      exit_code: 0
+
+  - id: edge_partial_failure
+    description: 일부 섹션 생성 실패 시 다크 플레이스홀더로 합성 진행
+    input:
+      copy_json_path: "./test-fixtures/copy_general.json"
+      simulate_failure: ["07_proof", "11_compare"]
+    expected:
+      sections_generated: 11
+      combined_size: "1080x12720"
+      failed_sections: ["07_proof", "11_compare"]
+      exit_code: 5
+      placeholder_used: true
+
+  - id: failure_missing_pillow
+    description: Pillow 미설치 환경에서 명확한 에러 메시지
+    input:
+      simulate_pillow_missing: true
+    expected:
+      stderr_contains: "Pillow가 필요합니다"
+      exit_code: 1

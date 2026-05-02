@@ -1,0 +1,38 @@
+name: commerce-strategy
+version: 1.8.0
+test_cases:
+  - id: happy_launch_stage
+    description: 런칭기 신생 브랜드 채널 믹스 + 가격 + 프로모션 통합 전략
+    input:
+      stage: 런칭
+      monthly_revenue: 0
+      category: beauty
+      ad_budget_monthly: 5000000
+    expected:
+      channel_mix:
+        마켓플레이스: ">= 60%"
+        자사몰: ">= 20%"
+      pricing_3tier_provided: true
+      retention_flow_count: ">= 4"
+      kpi_targets_includes: ["ROAS", "전환율", "재구매율"]
+
+  - id: happy_growth_stage
+    description: 성장기 채널 다각화 전략
+    input:
+      stage: 성장
+      monthly_revenue: 100000000
+      category: lifestyle
+    expected:
+      channel_mix:
+        자사몰: ">= 40%"
+      promotion_calendar_count: ">= 6"
+      ad_budget_allocation_provided: true
+
+  - id: failure_unrealistic_target
+    description: 비현실적 KPI 목표 입력 시 경고
+    input:
+      stage: 런칭
+      target_first_month_revenue: 1000000000
+    expected:
+      warning: "런칭기 첫 달 매출 10억 목표는 비현실적 — 현실적 목표 1천만~1억 권장"
+      counter_proposal: provided

@@ -1,0 +1,102 @@
+# proposal-writer test cases — skill-tester 4 차원 루브릭 호환
+# Pass threshold: 가중 평균 ≥ 0.70, 모든 차원 ≥ 0.50
+
+skill: proposal-writer
+plugin: moai-sales
+version: 1.6.0
+
+rubric:
+  correctness: 0.30
+  completeness: 0.25
+  clarity: 0.25
+  efficiency: 0.20
+pass_threshold: 0.70
+
+cases:
+  - id: T01
+    name: "한국 SaaS RFP 답변 — 12섹션 모두 포함"
+    input: |
+      고객사: ABC물류 (3PL, 매출 500억)
+      RFP: 창고관리 시스템 도입, 예산 5000만원/년, ISO 27001 인증 필수, 30페이지 이내, 마감 2주 후
+      자사: AcmeAI WMS, 클라우드 SaaS, 도입 사례 5건
+    assertions:
+      - has_section: "Executive Summary"
+      - has_section: "솔루션 개요"
+      - has_section: "가격·라이선스 모델"
+      - has_section: "위험·완화 방안"
+      - has_compliance_checklist: true
+      - vat_explicitly_mentioned: true
+      - includes_quantitative_roi: true
+      - korean_formal_tone: true
+      - flags_iso27001_required: true
+
+  - id: T02
+    name: "RFP 컴플라이언스 누락 자동 감지"
+    input: |
+      RFP: 보안 감사 보고서, ISMS 인증, 매출 100억 이상 필수
+      자사: 매출 50억, ISO 27001만 보유 (ISMS 미보유)
+    assertions:
+      - flags_compliance_missing: ["ISMS", "매출 100억"]
+      - missing_marker_present: "❌"
+      - suggests_remediation: true
+
+  - id: T03
+    name: "RFP 없이 자유 제안 (12섹션 표준 적용)"
+    input: |
+      스타트업 XYZ에 우리 데이터 분석 SaaS 제안. 가격 월 200만원. 무료 도입 컨설팅 1주.
+    assertions:
+      - has_all_12_sections: true
+      - executive_summary_word_count: { max: 500 }
+      - vat_excluded_or_included_specified: true
+      - placeholder_for_missing_info: "[추가 정보 필요"
+
+  - id: T04
+    name: "한국 격식체·직급 호칭 자동 적용"
+    input: |
+      고객사 ABC, 의사결정자 김철수 부장
+      자사 담당 박지원 과장
+    assertions:
+      - includes_honorific: ["부장님", "과장"]
+      - sentence_endings_formal: ["~합니다", "~드립니다"]
+      - no_sentence_endings_casual: ["~해요", "~야"]
+      - approval_line_section: true
+
+  - id: T05
+    name: "정량 수치 출처/추정 태그 강제"
+    input: |
+      자사 WMS 도입 효과를 강조하는 제안서 작성
+    assertions:
+      - all_numbers_have_source_or_tag: true
+      - estimated_marker_present_when_no_source: "[추정]"
+
+  - id: T06
+    name: "트리거 키워드 충돌 회피 (B2B 영업 한정)"
+    input: |
+      정부 지원사업 신청서 작성해줘
+    assertions:
+      - delegates_to: "kr-gov-grant"
+      - explains_domain_boundary: true
+
+  - id: T07
+    name: "후처리 체이닝 가이드 출력"
+    input: |
+      RFP 답변 초안 작성 완료
+    assertions:
+      - suggests_chain: ["ai-slop-reviewer", "docx-generator"]
+      - mentions_human_review: true
+
+chain_tests:
+  - id: C01
+    name: "Happy path: market-analyst → proposal-writer → ai-slop-reviewer → docx-generator"
+    expected: "최종 docx 파일 + 컴플라이언스 체크리스트 + AI slop APPROVE"
+
+  - id: C02
+    name: "Failure propagation: ai-slop-reviewer NEEDS revision → 사용자 결정 대기"
+    expected: "체인 일시 정지 + AskUserQuestion으로 수정 적용 여부 확인"
+
+anti_patterns:
+  - "Sentence endings mixed (격식체와 구어체 혼용)"
+  - "Time estimates ('2-3주 내', '1개월 후')"
+  - "Numbers without source or [추정] tag"
+  - "Auto-recommend without RFP compliance check"
+  - "Missing VAT specification in pricing section"

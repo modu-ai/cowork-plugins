@@ -1,0 +1,36 @@
+name: live-commerce
+version: 1.8.0
+test_cases:
+  - id: happy_naver_60min_3sku
+    description: 네이버 쇼핑라이브 60분 + 3개 상품 스크립트
+    input:
+      channel: naver-shoppinglive
+      duration_min: 60
+      products: ["X200", "X200 케이스", "X300"]
+      audience: "30~40대 직장인"
+    expected:
+      script_segments_count: ">= 8"
+      includes: ["오프닝", "상품 소개", "채팅 응대", "재안내(중간)", "마감 카운트다운"]
+      countdown_cues_count: ">= 3"
+
+  - id: happy_grip_influencer
+    description: 그립 인플루언서 매칭 30분 라이브
+    input:
+      channel: grip
+      duration_min: 30
+      audience: "10~20대 여성"
+      host_type: influencer
+    expected:
+      tone: "엔터·재미"
+      cost_estimate_includes: "인플루언서 비용"
+      kpi_targets.commission: "12~15%"
+
+  - id: failure_no_live_setup
+    description: 송출 장비·셋업 미준비 시 사전 점검 안내
+    input:
+      live_date: "2026-05-02"
+      camera: null
+      lighting: null
+    expected:
+      blocker: "라이브 셋업 미준비 — 카메라·조명·마이크·송출 도구 확인 필요"
+      preparation_checklist_provided: true

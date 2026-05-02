@@ -9,8 +9,12 @@ MoAI 코어 플러그인 — 프로젝트 초기화, 도메인 라우터, AI 슬
 | 스킬 | 설명 | 레퍼런스 | 상태 |
 |------|------|:--------:|:----:|
 | [project](./skills/project/) | Cowork 프로젝트 초기화 — 워크플로우 인터뷰, 스킬 체인 설계, CLAUDE.md 자동 생성, 도메인 라우팅, API 키 관리 | 9 + 1 템플릿 | ✅ |
-| [ai-slop-reviewer](./skills/ai-slop-reviewer/) | AI 슬롭 검수 — Claude가 생성한 텍스트의 기계적 패턴을 진단하고 인간적인 톤으로 수정. 모든 텍스트 산출물 체인의 필수 마지막 단계 | 0 | ✅ |
+| [ai-slop-reviewer](./skills/ai-slop-reviewer/) | AI 슬롭 검수 — 기계적 패턴(과장 형용사·뻔한 결론·반복 구조)을 진단하고 인간적인 톤으로 수정. 모든 텍스트 산출물 체인의 필수 마지막 단계 | 0 | ✅ |
 | [feedback](./skills/feedback/) | 버그/기능 요청 → GitHub Issues 자동 등록 (`/project feedback`) | 0 | ✅ |
+| [ai-diagnostic](./skills/ai-diagnostic/) | 4차원 병렬 진단(기술·프로세스·사람·비즈니스) → 근본 원인 식별 + 우선순위별 해결책 | 1 | ✅ |
+| [skill-builder](./skills/skill-builder/) | 6-Phase 스킬 생성 워크플로우 (revfactory/harness 방법론). 새 SKILL.md 자동 작성·검증 | 5 | ✅ |
+| [skill-template](./skills/skill-template/) | SKILL.md 표준 템플릿. skill-builder가 기반으로 사용 | 0 | ✅ |
+| [skill-tester](./skills/skill-tester/) | 스킬 품질 자동 검증 — 4차원 루브릭(Correctness/Completeness/Clarity/Efficiency) + 체인 회귀 테스트 | 4 | ✅ |
 
 ## 사용 예시
 

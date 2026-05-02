@@ -1,7 +1,7 @@
 ---
 title: "moai-media — 이미지·영상·음성"
 weight: 50
-description: "Nano Banana, Ideogram, Kling, ElevenLabs, fal.ai Gateway를 묶은 AI 미디어 통합 생성 플러그인입니다."
+description: "Nano Banana, fal.ai Gateway, Gemini Audio/Video Gen을 포함한 7개 AI 미디어 생성 스킬을 묶은 통합 플러그인입니다."
 geekdocBreadcrumb: true
 tags: ["moai-media"]
 ---
@@ -12,11 +12,11 @@ tags: ["moai-media"]
 
 ## 무엇을 하는 플러그인인가
 
-`moai-media` (v1.5.0)는 이미지·영상·음성을 모두 한 플러그인 안에서 생성할 수 있도록 묶은 AI 미디어 스튜디오입니다. Google Gemini의 Nano Banana 계열, fal.ai의 Ideogram·Kling 모델, ElevenLabs TTS, 그리고 fal.ai Gateway를 통한 1000+ 모델 라우팅을 지원합니다.
+`moai-media` (v1.6.0)는 이미지·영상·음성을 모두 한 플러그인 안에서 생성할 수 있도록 묶은 AI 미디어 스튜디오입니다. Google Gemini의 Nano Banana·Audio Gen·Video Gen 계열, 그리고 fal.ai Gateway를 통한 1000+ 모델 라우팅을 지원하며, **총 7개 스킬**이 통합되어 있습니다.
 
 카드뉴스 슬라이드 이미지 일괄 생성, 한국어 타이포 포스터, 15초 숏폼 영상, 팟캐스트 내레이션까지 콘텐츠 제작에 필요한 멀티미디어를 한 번의 체인으로 처리할 수 있습니다.
 
-본 플러그인은 MCP 서버를 번들합니다 (`fal-ai` hosted, `elevenlabs` local stdio via uvx). API 키 등록 절차는 플러그인 루트의 `CONNECTORS.md`를 참고하세요.
+본 플러그인은 MCP 서버를 번들합니다 (`fal-ai` hosted). API 키 등록 절차는 플러그인 루트의 `CONNECTORS.md`를 참고하세요.
 
 ## 설치
 
@@ -30,14 +30,16 @@ tags: ["moai-media"]
 {{< /tab >}}
 {{< /tabs >}}
 
-## 핵심 스킬
+## 핵심 스킬 (7개)
 
 | 스킬 | 모델·서비스 | 특화 |
 |---|---|---|
 | `nano-banana` | Google Gemini (nano-banana pro/flash) | 카드뉴스·인스타 이미지, 한국어 텍스트 렌더링 SOTA |
-| `ideogram` | fal.ai (Ideogram 3.0) | **한국어 타이포** 포스터·썸네일 |
-| `kling` | fal.ai (Kling 3.0) | 숏폼 영상(릴스·쇼츠·틱톡), 립싱크 최대 15초 |
-| `elevenlabs` | ElevenLabs | TTS·음성 복제·32개 언어 더빙·사운드 이펙트 |
+| `audio-gen` | Google Gemini (Audio-Gen) | 음성 생성, 배경음악, 효과음 제작 |
+| `character-mgmt` | Gemini Vision + fal.ai | 캐릭터 디자인, 일관된 캐릭터 이미지 시리즈 |
+| `image-gen` | Google Gemini (Image Gen) | 다양한 스타일 이미지 생성, 한국어 프롬프트 최적화 |
+| `speech-video` | Gemini Audio + Video Gen | 음성 합성 + 영상 생성, 팟캐스트/강의용 |
+| `video-gen` | Google Gemini (Video Gen) | 단순 영상 생성, 애니메이션, 제품 데모 |
 | `fal-gateway` | fal.ai 통합 | Flux 1.1 Pro, Recraft V3, MiniMax 등 1000+ 모델 |
 
 ## 필수 API 키
@@ -48,16 +50,14 @@ tags: ["moai-media"]
 
 ```bash
 # .moai/credentials.env
-GEMINI_API_KEY=...           # nano-banana
-FAL_KEY=...                  # ideogram, kling, fal-gateway
-ELEVENLABS_API_KEY=...       # elevenlabs
+GEMINI_API_KEY=...           # nano-banana, audio-gen, video-gen, speech-video, image-gen
+FAL_KEY=...                  # fal-gateway
 ```
 
 | 변수 | 용도 | 발급처 |
 |---|---|---|
-| `GEMINI_API_KEY` | Nano Banana | [Google AI Studio](https://aistudio.google.com/) |
-| `FAL_KEY` | Ideogram·Kling·fal Gateway | [fal.ai](https://fal.ai) |
-| `ELEVENLABS_API_KEY` | TTS·음성 복제 | [ElevenLabs](https://elevenlabs.io) |
+| `GEMINI_API_KEY` | Nano Banana·Audio Gen·Image Gen·Video Gen·Speech Video | [Google AI Studio](https://aistudio.google.com/) |
+| `FAL_KEY` | fal Gateway (Flux 1.1, Recraft V3 등 1000+ 모델) | [fal.ai](https://fal.ai) |
 
 ## 대표 체인
 
@@ -67,28 +67,28 @@ ELEVENLABS_API_KEY=...       # elevenlabs
 moai-content:card-news → nano-banana → ai-slop-reviewer
 ```
 
-**쇼핑몰 상세페이지 타이포 썸네일**
+**쇼핑몰 상세페이지 이미지**
 
 ```text
-moai-content:product-detail → ideogram → ai-slop-reviewer
+moai-content:product-detail → image-gen → ai-slop-reviewer
 ```
 
-**숏폼 광고 영상**
+**캐릭터 기반 영상 콘텐츠**
 
 ```text
-moai-content:copywriting → nano-banana → kling
+moai-content:copywriting → character-mgmt → speech-video
 ```
 
-**팟캐스트 내레이션**
+**팟캐스트 전체 제작**
 
 ```text
-moai-content:media-production → elevenlabs
+moai-content:media-production → audio-gen → speech-video → ai-slop-reviewer
 ```
 
 ## 비용 관리
 
 - `nano-banana`는 비교적 저렴하며 반복 생성에 적합합니다.
-- `kling`은 영상당 비용이 상대적으로 큽니다 — 스토리보드를 먼저 확정한 뒤 최종 생성을 권장합니다.
+- `video-gen`은 영상당 비용이 상대적으로 큽니다 — 스토리보드를 먼저 확정한 뒤 최종 생성을 권장합니다.
 - `fal-gateway`는 단일 `FAL_KEY`로 다양한 모델을 사용할 수 있어 테스트 단계에서 유용합니다.
 
 ## 빠른 사용 예

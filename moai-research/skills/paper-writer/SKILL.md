@@ -9,30 +9,129 @@ user-invocable: true
 
 # 학술 논문 작성 (Paper Writer)
 
-## 역할
-학술 논문을 체계적으로 구조화하고 작성하는 전문가. APA, KCI, IEEE 등 주요 인용 포맷을 지원합니다.
+## 개요
 
-## 논문 구조 (표준)
+학술 논문의 표준 구조(IMRaD: Introduction, Methods, Results, and Discussion)를 따라 체계적으로 논문을 작성하는 전문 스킬입니다. APA 7th, KCI, IEEE 등 주요 인용 포맷을 지원하고, 참고문헌을 자동 생성합니다.
 
-1. 제목 / Title
-2. 초록 / Abstract (한국어 + 영어)
-3. 키워드 / Keywords (5-7개)
-4. 서론 / Introduction
-5. 이론적 배경 / Literature Review
-6. 연구 방법 / Methodology
-7. 결과 / Results
-8. 논의 / Discussion
-9. 결론 / Conclusion
-10. 참고문헌 / References
+## 트리거 키워드
 
-## 참고문헌 포맷
+- 논문 작성, 논문 써줘, 논문 초안
+- 초록 작성, abstract 작성
+- 참고문헌 정리, 인용 포맷
+- APA 포맷, KCI 포맷, IEEE 포맷
+- 학술지 원고, 학위논문, 연구 논문
 
-| 포맷 | 사용처 | 예시 |
-|------|--------|------|
-| APA 7th | 사회과학, 교육학 | Author, A. A. (Year). Title. *Journal*, *Vol*(Issue), pp. |
-| KCI | 한국연구재단 | 저자 (연도). 제목. 학술지명, 권(호), 쪽. |
-| IEEE | 공학, IT | [1] A. Author, "Title," *Journal*, vol. X, no. Y, pp. Z, Year. |
+## 워크플로우
 
-## 이 스킬을 사용하지 말아야 할 때
-- **논문 검색** → moai-research:paper-search 사용
-- **특허 명세서** → moai-research:patent-analyzer 사용
+### 1단계: 논문 기본 정보 수집
+
+AskUserQuestion으로 다음 정보를 수집합니다:
+- 논문 제목 (국문 + 영문)
+- 연구 분야 및 학술지 타겟
+- 인용 포맷 (APA 7th / KCI / IEEE)
+- 연구 데이터 및 주요 결과
+
+### 2단계: 논문 구조 설계
+
+표준 학술 논문 구조를 생성합니다:
+
+1. **제목 / Title** (국문 + 영문)
+2. **초록 / Abstract** (200-250단어, 국문 + 영문)
+3. **키워드 / Keywords** (5-7개)
+4. **서론 / Introduction** (연구 배경, 문제 제기, 연구 목적)
+5. **이론적 배경 / Literature Review** (선행연구 고찰)
+6. **연구 방법 / Methodology** (연구 설계, 데이터 수집, 분석 방법)
+7. **결과 / Results** (통계 분석, 주요 발견)
+8. **논의 / Discussion** (결과 해석, 시사점, 한계)
+9. **결론 / Conclusion** (요약, 제언)
+10. **참고문헌 / References** (인용 포맷 자동 생성)
+
+### 3단계: 섹션별 작성
+
+**서론 (Introduction)**
+- 연구 배경 및 문제 제기
+- 연구 목적 및 연구 문제(Research Questions)
+- 연구의 필요성 및 기여 예상 부분
+
+**이론적 배경 (Literature Review)**
+- 선행연구 검토 (선행연조사 필요시 paper-search 스킬 연계)
+- 이론적 틀 (Theoretical Framework)
+- 연구 가설 (Hypotheses)
+
+**연구 방법 (Methodology)**
+- 연구 설계 (연구 유형, 샘플링 방법)
+- 데이터 수집 (데이터 출처, 수집 기간, 변수 정의)
+- 분석 방법 (통계 기법, 소프트웨어)
+
+**결과 (Results)**
+- 기술 통계 (Descriptive Statistics)
+- 가설 검증 결과 (통계 분석 테이블)
+- 주요 발견 요약
+
+**논의 (Discussion)**
+- 결과 해석 및 선행연구와의 비교
+- 이론적·실무적 시사점
+- 연구의 한계 및 향후 연구 방향
+
+**결론 (Conclusion)**
+- 연구 요약
+- 정책적·실무적 제언
+
+### 4단계: 참고문헌 생성
+
+선택한 인용 포맷에 맞춰 참고문헌을 자동 생성합니다:
+
+| 포맷 | 주요 사용 분야 | 예시 |
+|------|---------------|------|
+| APA 7th | 사회과학, 교육학, 심리학 | Author, A. A. (Year). Title. *Journal*, *Vol*(Issue), pp. |
+| KCI | 한국연구재단 등재 학술지 | 저자 (연도). 제목. 학술지명, 권(호), 쪽. |
+| IEEE | 공학, IT, 컴퓨터 과학 | [1] A. Author, "Title," *Journal*, vol. X, no. Y, pp. Z, Year. |
+
+### 5단계: 검토 및 수정
+
+- 학술지 가이드라인 대비 자체 점검
+- 논리적 흐름 검토
+- 인용 일관성 확인
+
+## 사용 예시
+
+```
+"딥러닝 기반 이미지 분류 논문을 작성해줘. APA 7th 포맷으로."
+"초록을 작성해줘. 연구 주제는 '트랜스포머를 활용한 감성 분석'이야."
+"참고문헌을 정리해줘. KCI 포맷으로 변환해줘."
+"학위논문 구조를 잡아줘. 연구 분야는 자연어处理야."
+```
+
+## 출력 형식
+
+- 학술 논문 초안 (Markdown)
+- 초록 (국문 + 영문, 200-250단어)
+- 논문 전체 섹션 구조화
+- 참고문헌 리스트 (선택한 포맷)
+
+## 주의사항
+
+- 본 스킬은 논문 초안을 생성합니다. 실제 학술지 투고 전 반드시 해당 학술지의 가이드라인을 확인해야 합니다.
+- 선행연구 조사가 필요한 경우 paper-search 스킬을 먼저 실행하여 관련 논문을 수집한 뒤 연계 작성하는 것을 권장합니다.
+- 참고문헌 인용 정보가 부정확할 수 있으므로, 반드시 원문을 확인하여 정확성을 검증해야 합니다.
+- 데이터 분석 결과가 있는 경우, 해당 결과를 바탕으로 Results 섹션을 작성합니다.
+
+## 관련 스킬
+
+- **moai-research:paper-search** - 선행연조사 및 논문 검색
+- **moai-core:ai-slop-reviewer** - 작성된 논문 AI 패턴 검수 및 후처리
+- **moai-data:data-visualizer** - 결과 섹션 차트 및 테이블 시각화
+
+## 인용 포맷 참조
+
+**APA 7th (American Psychological Association)**
+- 저자. (연도). 제목. *학술지명*, 권(호), 쪽.
+- 저자가 7명 이상일 경우: 저자 등 (Year). ...
+- DOI 포함 시: https://doi.org/xxx
+
+**KCI (한국연구재단 인용색인)**
+- 저자 (연도). "논문 제목". *학술지명*, 권호, 쪽.
+- 학위논문: 저자 (연도). *학위논문 제목*. 학위수여기관.
+
+**IEEE (Institute of Electrical and Electronics Engineers)**
+- [번호] 저자, "논문 제목," *학술지명*, vol. X, no. Y, pp. 쪽, 월 약자. 연도.

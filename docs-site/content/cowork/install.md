@@ -12,7 +12,7 @@ geekdocBreadcrumb: true
 ## 요금제 요건
 
 {{< hint type="note" >}}
-Cowork는 현재 리서치 프리뷰 단계입니다. 플랜별 기능 범위는 공식 문서에서 최신본을 확인하세요.
+Cowork는 2026-01-30 리서치 프리뷰로 공개된 뒤 **2026-02 macOS/Windows에서 정식 출시(GA)** 되었습니다. 유료 플랜(Pro·Max·Team·Enterprise)에서 제공되며, Free 플랜 가용 여부는 공식 문서에서 최신본을 확인하세요.
 {{< /hint >}}
 
 - **개인 Pro·Max**: 개인용 Cowork 기능 사용 가능

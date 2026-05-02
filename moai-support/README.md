@@ -36,6 +36,39 @@
 이번 주 CS 요약 보고서 만들어줘. 불만 유형별 분류 포함.
 ```
 
+## 주요 워크플로우 체인
+
+```
+티켓 자동 분류·배정
+  ticket-triage(유형·긴급도) → draft-response(응답 초안) → ai-slop-reviewer
+
+지식베이스 운영
+  kb-article(FAQ·가이드) → docx-generator(헬프센터 아티클) → ai-slop-reviewer
+
+VIP·불만 에스컬레이션
+  ticket-triage(P1 긴급) → escalation-manager(VIP 응대 + VOC 분석) → docx-generator
+
+주간 CS 보고
+  escalation-manager(VOC 분석) → moai-bi/executive-summary → pptx-designer
+```
+
+## 다른 플러그인과의 경계
+
+| 비슷해 보이지만 다른 영역 | 사용해야 할 스킬 |
+|---|---|
+| B2B 영업 메일·후속 시퀀스 | `moai-sales/proposal-writer` (예정 sales-followup) |
+| 마케팅 이메일 시퀀스 | `moai-marketing/email-sequence` |
+| 카카오 채널 마케팅 콘텐츠 | `moai-marketing/sns-content` |
+| KB 문서를 한글(.hwpx)·PDF로 | `moai-office/hwpx-writer`, `moai-office/pdf-writer` |
+
+## 한국 CS 환경 특화
+
+- **카카오비즈니스·네이버 톡톡** 응답 형식 호환
+- **개인정보보호법** 준수 자동 점검 (고객 식별 정보 마스킹)
+- **경어 표준**: 직급·연령에 따른 자연스러운 한국어 어조
+- **Zendesk·Freshdesk·자체 CRM** export 형식 지원
+- **VOC 분석**: 불만·문의·칭찬 분류 + 카테고리별 트렌드
+
 ## 설치
 
 Settings > Plugins > cowork-plugins에서 `moai-support` 선택

@@ -1,0 +1,71 @@
+# weekly-report test cases
+skill: weekly-report
+plugin: moai-pm
+version: 1.6.0  # release target (synced bump)
+
+rubric:
+  correctness: 0.30
+  completeness: 0.25
+  clarity: 0.25
+  efficiency: 0.20
+pass_threshold: 0.70
+
+cases:
+  - id: T01
+    name: "6섹션 표준 구조 (KPI/Done/InProgress/Plan/Risks/Decisions)"
+    input: "이번 주 결제 v2 머지, 로그인 버그 잡았어, 알림 70% 진행중. KPI MAU 12k(+3.8%)."
+    assertions:
+      - has_section: "이번 주 핵심"
+      - has_section: "완료"
+      - has_section: "진행 중"
+      - has_section: "차주 계획"
+      - has_section: "이슈·리스크"
+      - has_section: "의사결정 요청"
+
+  - id: T02
+    name: "임원 1pager 별도 생성 (≤250 단어)"
+    input: "주간 보고를 임원용으로도 만들어줘"
+    assertions:
+      - has_executive_brief: true
+      - executive_word_count: { max: 250 }
+
+  - id: T03
+    name: "톤 자동 매핑 (임원=격식체, 팀=해요체)"
+    input: "팀 슬랙용으로 정리해줘"
+    assertions:
+      - sentence_endings: ["~했어요", "~할 예정이에요"]
+      - no_formal_endings_in_team_version: true
+
+  - id: T04
+    name: "시간 추정 자동 변환 (priority labels)"
+    input: "다음 주 화요일까지 결제 모듈 보안 감사 대응"
+    assertions:
+      - converts_time_to_priority: true
+      - uses_p0_p1_p2: true
+      - no_explicit_dates_in_plan: true
+
+  - id: T05
+    name: "수치 출처 또는 [추정] 태그 강제"
+    input: "MAU 12,450, 가입 320 (Notion DB 인용)"
+    assertions:
+      - cites_source_inline: true
+      - estimated_tag_when_no_source: "[추정]"
+
+  - id: T06
+    name: "데이터 소스 3-tier fallback"
+    input: "이번 주 한 일 정리해줘 (자유 텍스트만 있음)"
+    assertions:
+      - parses_free_text: true
+      - no_mcp_fetch_required: true
+
+chain_tests:
+  - id: C01
+    name: "Happy: standup-summarizer → weekly-report → executive-summary"
+    expected: "스탠드업 누적 → 주간 6섹션 → C-level 1pager"
+
+anti_patterns:
+  - "Time estimates ('1주 후', '3일 내')"
+  - "Mixed formal/casual tone"
+  - "Personal blame in body"
+  - "Numbers without source or [추정] tag"
+  - "Skipping Decisions section"

@@ -1,0 +1,32 @@
+name: marketplace-naver
+version: 1.7.0
+test_cases:
+  - id: happy_smartstore_only
+    description: 스마트스토어 단독 등록 정상 가이드
+    input:
+      product_name: "비건 비누"
+      category: "생활/건강 > 화장품/미용 > 바디"
+      channel: naver_smartstore
+    expected:
+      title_optimized_under_50: true
+      tags_count: 18
+      talk_talk_template_provided: true
+      category_path_validated: true
+
+  - id: edge_multi_channel
+    description: 스마트스토어 + 11번가 + G마켓 동시 등록 시 채널별 차이 안내
+    input:
+      channels: ["naver_smartstore", "11st", "gmarket"]
+    expected:
+      channel_specific_warnings_count: ">=3"
+      image_specs_per_channel: 3
+      title_variants_per_channel: 3
+
+  - id: failure_review_manipulation_warning
+    description: 후기 조작 의심 표현 입력 시 강한 경고
+    input:
+      copy_excerpt: "후기 작성 시 추가 5천원 할인쿠폰 지급, 5점 후기 작성 의무"
+    expected:
+      forbidden_phrases_found:
+        - reason: "5점 후기 작성 의무 — 후기 조작 유도, 영구 정지 사유"
+      compliance_warning: critical

@@ -5,8 +5,8 @@
     "email": "email@mo.ai.kr"
   },
   "metadata": {
-    "description": "모두의 AI's Claude Cowork 플러그인 마켓플레이스 — 17 플러그인, 73 스킬. /project init으로 워크플로우 기반 CLAUDE.md 자동 생성, 모든 텍스트 산출물은 ai-slop-reviewer로 검수. v1.5.0부터 소상공인365 상권분석(sbiz365-analyst)과 정부지원사업 통합(kr-gov-grant) 스킬이 moai-business에 포함되었습니다",
-    "version": "1.6.0",
+    "description": "모두의 AI's Claude Cowork 플러그인 마켓플레이스 — 21 플러그인, 100 스킬. /project init으로 워크플로우 기반 CLAUDE.md 자동 생성, 모든 텍스트 산출물은 ai-slop-reviewer로 검수. v1.8.0부터 moai-commerce가 11스킬로 확장되었습니다(자사몰 cafe24·imweb·메이크샵, 와디즈·텀블벅 크라우드펀딩, 카카오 메이커스·무신사·29CM 큐레이션, 통합 마케팅 전략, 이커머스 카피, 라이브 커머스). 큐텐 사태 후 티몬·위메프는 가이드에서 제외되었습니다. moai-bi(BI 대시보드·경영진 1pager), moai-pm(주간보고·OKR·회고), moai-sales(B2B 영업·제안서·콜드메일)도 함께 등록되었습니다",
+    "version": "1.8.1",
     "language": "ko"
   },
   "plugins": [
@@ -26,6 +26,10 @@
     {"name": "moai-career", "source": "./moai-career", "description": "커리어 준비 — 자기소개서, 이력서, 면접 코칭, 채용공고 분석, 포트폴리오"},
     {"name": "moai-data", "source": "./moai-data", "description": "데이터 분석 — CSV/Excel 탐색, 공공데이터 조회, shadcn/ui 대시보드 + Recharts/Chart.js/Tremor/ECharts 차트"},
     {"name": "moai-research", "source": "./moai-research", "description": "연구/특허 — 논문 검색, 학술 논문 작성, 특허 분석/출원, 연구비 신청"},
-    {"name": "moai-media", "source": "./moai-media", "description": "AI 미디어 스튜디오 — Nano Banana 이미지(Gemini 3), Kling 영상, Ideogram 한국어 타이포, ElevenLabs 음성, fal.ai 게이트웨이"}
+    {"name": "moai-media", "source": "./moai-media", "description": "AI 미디어 스튜디오 — Nano Banana(Gemini 3) 한국어 타이포 이미지, Gemini Image/Video/Audio Gen, Speech Video 음성합성, Character 일관성 관리, fal.ai 게이트웨이(Flux·Recraft 등 1000+ 모델)"},
+    {"name": "moai-commerce", "source": "./moai-commerce", "description": "한국 이커머스 풀세트 — 13섹션 상세페이지 카피·이미지 합성·상품 사진 브리프 + 쿠팡·네이버 스마트스토어·11번가/G마켓/옥션 + 카페24·아임웹·메이크샵 자사몰 + 와디즈·텀블벅 크라우드펀딩 + 카카오 메이커스·무신사·29CM 큐레이션 + 네이버·카카오·그립·쿠팡 라이브 + 통합 마케팅 전략·광고/톡톡/푸시/이메일 카피"},
+    {"name": "moai-bi", "source": "./moai-bi", "description": "BI 대시보드 — 데이터 분석, 경영진 1pager 보고서, KPI 트리, 코호트·퍼널 분석. K-IFRS·KOSIS·DART 한국 통계 친화, moai-finance와 직접 체이닝"},
+    {"name": "moai-pm", "source": "./moai-pm", "description": "프로젝트 관리 — 한국 팀 주간보고·OKR·회고·스탠드업 자동화. Notion·Linear·Asana·Slack MCP 활용, 격식체/구어체 톤 스위치"},
+    {"name": "moai-sales", "source": "./moai-sales", "description": "B2B 영업 — 한국 B2B 워크플로우, 제안서, 견적서, 콜드메일, 후속 시퀀스. 국세청 표준 양식 호환"}
   ]
 }

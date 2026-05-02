@@ -1,0 +1,34 @@
+name: marketplace-coupang
+version: 1.7.0
+test_cases:
+  - id: happy_electronics_rocket
+    description: 전자제품 로켓배송 등록 정상 가이드
+    input:
+      product_name: "X200 무선이어폰"
+      category: "디지털/가전"
+      delivery_type: rocket
+      detail_image_path: "./combined.png"
+    expected:
+      title_optimized_under_50: true
+      forbidden_phrases_count: 0
+      search_tags_count: 20
+      checklist_all_passed: true
+
+  - id: edge_food_compliance_warning
+    description: 식품 카테고리에서 의학적 표현 발견 시 경고
+    input:
+      copy_excerpt: "이 비타민제는 면역력을 증강시켜 감기를 예방합니다."
+      category: "식품/건기식"
+    expected:
+      forbidden_phrases_found:
+        - phrase: "예방합니다"
+          reason: "건강기능식품법 위반 가능 — 질병 예방 단정 표현"
+      compliance_warning: true
+
+  - id: failure_oversize_image
+    description: 메인 이미지가 5MB 초과 시 실패
+    input:
+      main_image_size_mb: 7.5
+    expected:
+      image_check.file_size_check: "OVER_5MB"
+      action: "이미지 압축 후 재업로드 필요"

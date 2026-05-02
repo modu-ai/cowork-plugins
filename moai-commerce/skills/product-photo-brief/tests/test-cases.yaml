@@ -1,0 +1,33 @@
+name: product-photo-brief
+version: 1.7.0
+test_cases:
+  - id: happy_5_photos_electronics
+    description: 전자제품 5장 분석 → ProductDNA 추출 + 부족 컷 식별
+    input:
+      photos: ["./fixtures/x200_1.jpg", "./fixtures/x200_2.jpg", "./fixtures/x200_3.jpg", "./fixtures/x200_4.jpg", "./fixtures/x200_5.jpg"]
+      category: electronics
+    expected:
+      product_dna_extracted: true
+      tier_estimated: ["mass", "premium_indie"]
+      available_cuts_count: ">= 3"
+      additional_shots_required_count: ">= 2"
+
+  - id: edge_minimum_1_photo
+    description: 사진 1장만 있을 때 부족 컷 명확히 안내
+    input:
+      photos: ["./fixtures/single.jpg"]
+    expected:
+      additional_shots_required:
+        - priority: "필수"
+          section: "05_solution"
+        - priority: "권장"
+          section: "07_proof"
+      shoot_recommendation_summary_contains: "최소 2컷 추가 필요"
+
+  - id: failure_unsupported_format
+    description: PSD나 RAW 포맷 입력 시 변환 안내
+    input:
+      photos: ["./fixtures/raw.cr2"]
+    expected:
+      error: "지원하지 않는 포맷 — JPG/PNG로 변환 후 재시도"
+      action_required: true

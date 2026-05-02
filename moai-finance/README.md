@@ -27,6 +27,39 @@ K-IFRS 기준으로 분기 재무제표 만들어줘
 2분기 영업이익이 목표 대비 15% 미달했어. 원인 분석 보고서 써줘.
 ```
 
+## 주요 워크플로우 체인
+
+```
+월말 결산 풀 사이클
+  close-management(결산 일정·체크리스트) → financial-statements(K-IFRS 재무제표) → docx-generator
+
+분기 변동분석 + 임원 1pager
+  variance-analysis(예산 vs 실적) → moai-bi/executive-summary → pptx-designer
+
+세무 신고 가이드
+  tax-helper(원천징수·VAT·종소세) → docx-generator(신고 가이드)
+
+연말정산 풀 패키지
+  tax-helper(연말정산 가이드) → moai-hr/draft-offer(원천징수 영수증) → xlsx-creator
+```
+
+## 다른 플러그인과의 경계
+
+| 비슷해 보이지만 다른 영역 | 사용해야 할 스킬 |
+|---|---|
+| BI 대시보드·임원 1pager | `moai-bi/executive-summary` |
+| K-IFRS 공시 자료(DART) 분석 | `moai-business/market-analyst` |
+| 4대보험 가입·계산 | `moai-hr/draft-offer` |
+| 견적서·세금계산서 | `moai-sales/proposal-writer` (예정 quote-generator) |
+
+## 한국 세무·재무 환경 특화
+
+- **2026년 4대보험 요율** 자동 적용 (국민연금 9% / 건강보험 7.09% / 고용보험 1.8% / 산재보험 업종별)
+- **K-IFRS 1019(Lease)·1115(Revenue)** 신규 기준 반영
+- **홈택스 신고 절차** 화면 단계별 가이드
+- **3.3% 원천징수 자동 계산** + 사업소득·기타소득 구분
+- **연말정산 13월의 월급** 자동 시뮬레이션
+
 ## 설치
 
 Settings > Plugins > cowork-plugins에서 `moai-finance` 선택

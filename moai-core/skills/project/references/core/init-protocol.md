@@ -174,8 +174,9 @@ Phase 1-2 결과를 바탕으로 **산출물별 실행 체인**을 설계한다.
 | SEO 감사 | `seo-audit` → `ai-slop-reviewer` |
 | 성과 리포트 | `performance-report` → `xlsx-creator` or `pptx-designer` |
 | 일일 브리핑 | `daily-briefing` → `ai-slop-reviewer` |
-| 영상 제작 | `kling` → (선택) `elevenlabs` |
-| TTS 더빙 | `elevenlabs` (음성 — ai-slop 생략) |
+| 영상 제작 | `video-gen` → (선택) `audio-gen` |
+| TTS 더빙 | `audio-gen` (elevenlabs MCP — ai-slop 생략) |
+| 립싱크 영상 | `speech-video` (음성+영상 결합) |
 
 설치되지 않은 스킬은 체인에서 제외한다.
 
@@ -260,8 +261,8 @@ Phase 2에서 선택된 플러그인이 API 키를 요구하면 등록 안내.
 | 2 | KIPRIS Plus | `KIPRIS_API_KEY` | 특허 검색 | plus.kipris.or.kr |
 | 3 | 국가법령정보 | `KOREAN_LAW_OC` | 법령/판례 | law.go.kr |
 | 4 | Google Gemini | `GEMINI_API_KEY` | Nano Banana 이미지 | ai.google.dev |
-| 5 | fal.ai | `FAL_KEY` | Ideogram/Kling 등 | fal.ai |
-| 6 | ElevenLabs | `ELEVENLABS_API_KEY` | TTS/음성 | elevenlabs.io |
+| 5 | fal.ai | `FAL_KEY` | fal-gateway (Flux·Recraft·Hailuo·Luma·Pika·MiniMax 등 1000+ 모델) | fal.ai |
+| 6 | ElevenLabs | `ELEVENLABS_API_KEY` | audio-gen·speech-video (TTS/음성 합성, ElevenLabs MCP 사용) | elevenlabs.io |
 
 선택된 플러그인과 무관한 키는 물어보지 않는다.
 **저장 위치**: `./.moai/credentials.env` (프로젝트 격리).

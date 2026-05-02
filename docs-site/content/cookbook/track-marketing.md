@@ -96,7 +96,7 @@ AI 이미지 생성 기반 캐러셀 10장.
 - 플랫폼: 인스타그램 (1080x1350 비율)
 - 스타일: 미니멀, 흰 배경, 포인트 컬러 네이비
 - 각 장은 핵심 한 줄 + 보조 설명
-- 이미지 생성은 moai-media:ideogram (한글 타이포 렌더링 우수)
+- 이미지 생성은 moai-media:nano-banana (한글 타이포 렌더링 SOTA)
 - 마지막 장은 CTA — "블로그 풀버전 → 링크"
 - 저장: 90_Output/card-news/card-01.png ~ card-10.png
 ```

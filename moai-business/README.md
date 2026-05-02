@@ -12,8 +12,11 @@
 | [market-analyst](./skills/market-analyst/) | TAM/SAM/SOM 산출, 경쟁사 분석, 고객 세그멘테이션, 가격 전략 | 3 | ✅ |
 | [investor-relations](./skills/investor-relations/) | IR 덱, 피칭 자료, 매출 예측, 손익분석, 현금흐름 모델 | 2 | ✅ |
 | [daily-briefing](./skills/daily-briefing/) | 업계 뉴스, 시장 동향, 경쟁사 모니터링, KPI 대시보드 브리핑 | 0 | ✅ |
-| [sbiz365-analyst](./skills/sbiz365-analyst/) 🆕 | 소상공인365 PDF 분석 → 4축 100점 창업타당성 평가 + 9섹션 DOCX 보고서 | 4 | ✅ |
-| [kr-gov-grant](./skills/kr-gov-grant/) 🆕 | K-Startup·BIZINFO·중기부·IITP·문체부·농식품부 정부지원사업 통합 (탐색·작성·검토·일정 4 MODE) | 1 | ✅ |
+| [sbiz365-analyst](./skills/sbiz365-analyst/) | 소상공인365 PDF 분석 → 4축 100점 창업타당성 평가 + 9섹션 DOCX 보고서 | 4 | ✅ |
+| [kr-gov-grant](./skills/kr-gov-grant/) | K-Startup·BIZINFO·중기부·IITP·문체부·농식품부 정부지원사업 통합 (탐색·작성·검토·일정 4 MODE) | 1 | ✅ |
+| [consulting-brief](./skills/consulting-brief/) | McKinsey/BCG/Bain Major 3 컨설팅 펌 표준 인게이지먼트 브리프 (목표·범위·산출물·일정·리스크) | 1 | ✅ |
+| [sales-playbook](./skills/sales-playbook/) | 영업 플레이북 자동 생성 (타겟 산업·ICP·콜드 콘택트·반론 대응·후속 시퀀스) | 1 | ✅ |
+| [startup-launchpad](./skills/startup-launchpad/) | 스타트업 종합 패키지 — 아이디어→사업계획서→피치덱→재무 모델→3년 예산까지 한 번에 | 1 | ✅ |
 
 ## MCP 커넥터
 

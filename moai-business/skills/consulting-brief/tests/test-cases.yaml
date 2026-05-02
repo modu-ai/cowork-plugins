@@ -1,0 +1,107 @@
+test_suite: consulting-brief
+version: "1.0.0"
+description: "컨설팅 인게이지먼트 브리프 생성 스킬 테스트 케이스"
+
+test_cases:
+  - id: TC-001
+    name: happy-path
+    description: "정상 입력으로 완전한 컨설팅 브리프 생성"
+    input:
+      industry: "핀테크 (뱅킹 앱)"
+      problem_definition: |
+        최근 1년 동안 신규 가입자는 증가했지만 월간 활성 사용자(MAU)는 정체.
+        특히 20대 사용자의 이탈률이 높음(45%). 리텐션 전략 필요.
+      project_scope:
+        - 고객 코호트 분석
+        - 이탈 원인 규명
+        - 리텐션 전략 수립
+        - 실행 로드맵 작성
+      budget: "3억 원"
+      timeline: "4개월 (2026년 Q3)"
+    expected_output:
+      contains_sections:
+        - "Executive Summary"
+        - "현황 분석"
+        - "문제 정의"
+        - "분석 프레임워크"
+        - "권고사항"
+        - "실행 계획"
+      contains_keywords:
+        - "리텐션"
+        - "코호트 분석"
+        - "이탈률"
+        - "MAU"
+        - "고객 생애 가치"
+      frameworks_used:
+        - "AARRR"
+        - "Cohort Analysis"
+      has_recommendations_priority: true
+      has_quantitative_kpi: true
+
+  - id: TC-002
+    name: edge-case
+    description: "최소 입력으로 기본 브리프 생성"
+    input:
+      industry: "식음료 (프랜차이즈 카페)"
+      problem_definition: "매출이 3개월 연속 하락 중. 원인 파악과 대책 필요."
+      project_scope: []
+      budget: "미정"
+      timeline: "미정"
+    expected_output:
+      contains_sections:
+        - "Executive Summary"
+        - "현황 분석"
+        - "문제 정의"
+        - "권고사항"
+      contains_keywords:
+        - "매출 하락"
+        - "원인 분석"
+      frameworks_used:
+        - "SWOT"  # 일반적인 상황에 적용 가능한 기본 프레임워크
+      has_recommendations_priority: true
+      budget_guidance_present: true  # 예산이 미정일 때 가이던스 제공
+      timeline_guidance_present: true  # 기간이 미정일 때 가이던스 제공
+
+  - id: TC-003
+    name: complex-input
+    description: "복잡한 다차원 문제 상황에서的高级 브리프 생성"
+    input:
+      industry: "제조업 (반도체 장비)"
+      problem_definition: |
+        (1) 미국 중국 기술 경쟁으로 공급망 리스크 급증
+        (2) 핵심 인력 이탈률 25% (특히 R&D)
+        (3) 신제품 개발 지연으로 시장 점유율 7%→4% 하락
+        (4) 원자재 가격 상승으로 영업이익률 12%→6% 축소
+        (5) ESG 규제 강화로 탄소 배출 저감 필요
+      project_scope:
+        - 공급망 다각화 전략
+        - 인력 리텐션 및 R&D 역량 강화
+        - 신제품 개발 프로세스 최적화
+        - 원가 절감 및 가격 전략
+        - ESG 로드맵 수립
+      budget: "50억 원 (2년)"
+      timeline: "24개월 (2026-2027)"
+    expected_output:
+      contains_sections:
+        - "Executive Summary"
+        - "현황 분석"
+        - "문제 정의"
+        - "분석 프레임워크"
+        - "권고사항"
+        - "실행 계획"
+        - "리스크 분석"  # 복잡한 상황에서 리스크 분석 추가됨
+      contains_keywords:
+        - "공급망"
+        - "R&D"
+        - "ESG"
+        - "원가 절감"
+        - "탄소 배출"
+        - "인력 리텐션"
+      frameworks_used:
+        - "PESTEL"  # 거시 환경 분석
+        - "7S"  # 조직 진단
+        - "Porter's 5 Forces"  # 경쟁 환경
+      has_recommendations_priority: true
+      has_risk_assessment: true
+      has_24_month_roadmap: true
+      cross_dimensional_analysis: true  # 다차원 문제 간 상관관계 분석

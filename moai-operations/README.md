@@ -26,6 +26,39 @@ IT 장비 구매 SOP 작성해줘. 100만원 이상은 팀장 결재, 500만원 
 이번 주 프로젝트 현황 보고서 작성해줘
 ```
 
+## 주요 워크플로우 체인
+
+```
+SOP 표준화
+  process-manager(절차 설계) → docx-generator(매뉴얼) → ai-slop-reviewer
+
+벤더 평가·계약 관리
+  vendor-manager(평가표·리스크 레지스터) → xlsx-creator(평가 매트릭스) → docx-generator
+
+주간/월간 운영 보고
+  status-reporter(KPI·OKR 진행률) → moai-bi/executive-summary → pptx-designer
+
+정부조달(나라장터) 입찰 준비
+  process-manager(입찰 서류) → moai-legal/compliance-check → docx-generator
+```
+
+## 다른 플러그인과의 경계
+
+| 비슷해 보이지만 다른 영역 | 사용해야 할 스킬 |
+|---|---|
+| 주간 비즈니스 리뷰(WBR) | `moai-pm/weekly-report` |
+| 임원 1pager 요약 | `moai-bi/executive-summary` |
+| 결재·세금계산서 양식 | `moai-finance/close-management` |
+| B2B 영업 제안서 | `moai-sales/proposal-writer` |
+
+## 한국 운영 환경 특화
+
+- **나라장터(g2b.go.kr)** 입찰 서류 양식 호환
+- **결재선·전결규정** 한국 기업 표준(대표·임원·팀장 3단계)
+- **회의록 한국식**: 일시·참석자·안건·결정사항·다음 단계
+- **벤더 리스크 레지스터**: ESG·정보보안·재무·납기 4축 평가
+- **KS 인증·ISO 9001** 품질경영 표준 양식
+
 ## 설치
 
 Settings > Plugins > cowork-plugins에서 `moai-operations` 선택

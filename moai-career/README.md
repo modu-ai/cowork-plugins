@@ -34,6 +34,38 @@
 이 채용공고 분석해줘. [공고 텍스트 붙여넣기] 내 경험이랑 매칭도 해줘.
 ```
 
+## 주요 워크플로우 체인
+
+```
+취업 준비 풀 패키지
+  job-analyzer(공고 분석) → resume-builder(자소서·이력서) → ai-slop-reviewer
+
+면접 대비
+  job-analyzer → interview-coach(예상 질문) → interview-coach(모의 면접 루프)
+
+포트폴리오 구축
+  portfolio-guide → docx-generator(이력서 PDF·Word) → ai-slop-reviewer
+
+영문 이력서·CV
+  resume-builder(STAR 기법, ATS 최적화) → ai-slop-reviewer
+```
+
+## 다른 플러그인과의 경계
+
+| 비슷해 보이지만 다른 영역 | 사용해야 할 스킬 |
+|---|---|
+| 채용 담당자(HR) 관점 JD·면접 설계 | `moai-hr/employment-manager` |
+| HR의 이력서 평가(NCS 기반) | `moai-hr/resume-screener` |
+| 정부 지원사업 신청서 (창업) | `moai-business/kr-gov-grant` |
+| B2B 영업 제안서 | `moai-sales/proposal-writer` |
+
+## 한국 채용 환경 특화
+
+- **블라인드 채용 대응**: 학력·나이·출신 정보 자동 마스킹 옵션
+- **NCS 기반 직무 매칭**: 국가직무능력표준 분류로 역량 갭 분석
+- **AI 면접 대응**: HireVue·잡케어 같은 화상 AI 면접 답변 패턴 가이드
+- **자소서 분량 최적화**: 기업별 글자수 한계(500/1000/2000자) 자동 적용
+
 ## 설치
 
 Settings > Plugins > cowork-plugins에서 `moai-career` 선택

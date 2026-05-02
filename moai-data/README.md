@@ -28,6 +28,52 @@
 | 공공데이터포털 | DATA_GO_KR_API_KEY | [data.go.kr](https://www.data.go.kr/) |
 | KOSIS 통계 | KOSIS_API_KEY | [kosis.kr/openapi](https://kosis.kr/openapi/) |
 
+## 주요 워크플로우 체인
+
+```
+CSV → 시각화 보고서
+  data-explorer(프로파일링) → data-visualizer(차트 HTML) → docx-generator → ai-slop-reviewer
+
+공공데이터 → 정책 분석
+  public-data(KOSIS/data.go.kr fetch) → data-explorer → data-visualizer
+
+KPI 대시보드 + 임원 1pager
+  data-explorer → data-visualizer(shadcn/ui 대시보드) → moai-bi/executive-summary
+
+이상값 탐지 + 보고
+  data-explorer(통계·상관) → docx-generator(이슈 보고)
+```
+
+## 다른 플러그인과의 경계
+
+| 비슷해 보이지만 다른 영역 | 사용해야 할 스킬 |
+|---|---|
+| 재무제표 분석(K-IFRS) | `moai-finance/financial-statements` |
+| 변동분석(예산 vs 실적) | `moai-finance/variance-analysis` |
+| 마케팅 ROAS·KPI | `moai-marketing/performance-report` |
+| 임원 1pager 요약 | `moai-bi/executive-summary` |
+| 학술 데이터 검색 | `moai-research/paper-search` |
+
+## 한국 데이터 환경 특화
+
+- **공공데이터포털 + KOSIS** 직접 조회 (API 키 등록 시)
+- **shadcn/ui 차트 스택** — Recharts·Chart.js·Tremor·ECharts 자동 선택
+- **DART 공시 데이터 연동** — `moai-business`와 결합하면 실시간 기업 재무 분석
+- **Pretendard 한국어 폰트** 차트·대시보드 기본 적용
+
+## 사용 예시
+
+```
+이 CSV 첨부했어. 매출 이상 패턴 찾고 시각화 대시보드 만들어줘.
+- 컬럼: 날짜, 지역, 카테고리, 매출액, 객수
+- 결과: shadcn/ui 대시보드 HTML + 이상값 보고 docx
+```
+
+```
+KOSIS에서 최근 5년 한국 가구당 월평균 소비지출 통계 가져와서
+연령대별 추이 차트 만들어줘.
+```
+
 ## 설치
 
 Settings > Plugins > cowork-plugins에서 `moai-data` 선택

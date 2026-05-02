@@ -1,0 +1,30 @@
+name: marketplace-d2c
+version: 1.8.0
+test_cases:
+  - id: happy_imweb_new_brand
+    description: 신생 패션 브랜드 아임웹 가이드
+    input:
+      stage: "신규 런칭"
+      category: fashion
+      team: "1인 운영"
+    expected:
+      channel_recommended: imweb
+      reason_includes: ["디자인 자유도", "노코드"]
+      checklist_count: ">= 6"
+
+  - id: edge_cafe24_vs_imweb
+    description: 카페24 vs 아임웹 결정 비교
+    input:
+      revenue_target: "월 1억+"
+      developer_available: true
+    expected:
+      channel_recommended: cafe24
+      reason_includes: ["커스터마이징", "앱스토어"]
+
+  - id: failure_no_business_registration
+    description: 사업자등록 없이 PG 가입 시도
+    input:
+      business_registered: false
+    expected:
+      blocker: "통신판매업 신고 + 사업자등록 필수"
+      action_required: ["사업자등록", "통신판매업 신고"]

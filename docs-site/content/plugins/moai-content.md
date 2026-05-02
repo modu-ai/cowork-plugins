@@ -60,7 +60,7 @@ blog → ai-slop-reviewer → (선택) moai-media:nano-banana
 **쇼핑몰 상세페이지**
 
 ```text
-product-detail → moai-media:ideogram → ai-slop-reviewer
+product-detail → moai-media:nano-banana → ai-slop-reviewer
 ```
 
 **카드뉴스 시리즈**

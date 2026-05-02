@@ -15,6 +15,14 @@
       "env": {
         "ELEVENLABS_API_KEY": "${ELEVENLABS_API_KEY}"
       }
+    },
+    "higgsfield": {
+      "$comment": "Higgsfield AI MCP - 시네마틱 이미지(Soul), 영상(DOP), 말하는머리영상, 캐릭터관리. HIGGSFIELD_API_KEY + HIGGSFIELD_SECRET 필요.",
+      "command": "higgsfield-mcp",
+      "env": {
+        "HIGGSFIELD_API_KEY": "${HIGGSFIELD_API_KEY}",
+        "HIGGSFIELD_SECRET": "${HIGGSFIELD_SECRET}"
+      }
     }
   }
 }

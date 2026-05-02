@@ -1,0 +1,85 @@
+# executive-summary test cases
+skill: executive-summary
+plugin: moai-bi
+version: 1.6.0  # release target
+
+rubric:
+  correctness: 0.30
+  completeness: 0.25
+  clarity: 0.25
+  efficiency: 0.20
+pass_threshold: 0.70
+
+cases:
+  - id: T01
+    name: "6섹션 1pager 구조 (≤500 단어)"
+    input: "분기 변동분석 보고서 30페이지를 임원 1pager로"
+    assertions:
+      - has_section: "헤드라인"
+      - has_section: "What"
+      - has_section: "So What"
+      - has_section: "Now What"
+      - has_section: "Risks"
+      - has_section: "Next Review"
+      - total_word_count: { max: 500 }
+
+  - id: T02
+    name: "헤드라인 1줄 강제"
+    input: "보고서 요약"
+    assertions:
+      - has_headline_one_line: true
+      - headline_appears_at_top: true
+      - no_output_without_headline: true  # 헤드라인 없으면 출력 차단
+
+  - id: T03
+    name: "Now What — 옵션 + 권고 형식"
+    input: "보안 감사 대응 옵션 정리"
+    assertions:
+      - has_at_least_2_options: true
+      - has_recommendation: true
+      - no_options_without_recommendation: true  # 권고 없는 옵션 나열 금지
+
+  - id: T04
+    name: "K-IFRS 재무 지표 우선 노출"
+    input: "재무 1pager 만들어줘"
+    assertions:
+      - mentions_operating_margin: true
+      - mentions_ebitda: true
+      - mentions_revenue: true
+      - uses_korean_financial_standards: true
+
+  - id: T05
+    name: "정량 수치 출처 또는 [추정] 태그 강제"
+    input: "분기 매출 124억"
+    assertions:
+      - cites_source_or_marks_estimated: true
+
+  - id: T06
+    name: "시간 추정 → priority labels"
+    input: "1개월 내 보안 감사 완료"
+    assertions:
+      - converts_to_priority: true
+      - uses_p0_p1_p2: true
+
+  - id: T07
+    name: "격식체 톤 ('~로 판단됩니다', '~를 권고드립니다')"
+    input: "임원 보고서"
+    assertions:
+      - formal_tone_consistent: true
+      - no_casual_endings: true
+
+chain_tests:
+  - id: C01
+    name: "Happy: variance-analysis → executive-summary → pptx-designer"
+    expected: "재무 분석 → 1pager → 이사회 슬라이드 1매"
+  - id: C02
+    name: "Happy: weekly-report → executive-summary"
+    expected: "팀 주간 → C-level 1pager (압축)"
+
+anti_patterns:
+  - "Word count > 500"
+  - "Headline missing"
+  - "Options without recommendation in Now What"
+  - "Numbers without source or [추정] tag"
+  - "Time estimates instead of priority labels"
+  - "Casual tone in executive output"

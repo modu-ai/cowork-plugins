@@ -30,12 +30,13 @@ harness 오픈소스의 6-Phase 스킬 생성 워크플로우를 MoAI cowork-plu
 ## 워크플로우
 
 ```
-Phase 1: Requirements → 사용자 의도 분석, 트리거 키워드 정의
-Phase 2: Architecture → 에이전트 패턴 선택 (6종 중 매핑)
-Phase 3: Skill Draft  → skill-template 기반 SKILL.md 초안 생성
-Phase 4: Test Gen     → 테스트 프롬프트 2-3개 + 기대 출력 정의
-Phase 5: Validation   → 4차원 루브릭 스코어링 (skill-tester 본문 §스코어링 루브릭)
-Phase 6: Review       → 품질 게이트 통과 확인, 파일 배치
+Phase 1: Requirements   → 사용자 의도 분석, 트리거 키워드 정의
+Phase 1.5: Research     → 공식 자료·베스트 프랙티스 외부 조사 (WebSearch + Context7)  ★ v1.6.0
+Phase 2: Architecture   → 에이전트 패턴 선택 (6종 중 매핑)
+Phase 3: Skill Draft    → skill-template 기반 SKILL.md 초안 + ## 출처 섹션
+Phase 4: Test Gen       → 테스트 프롬프트 2-3개 + 기대 출력 정의
+Phase 5: Validation     → 4차원 루브릭 스코어링 (skill-tester 본문 §스코어링 루브릭)
+Phase 6: Review         → 품질 게이트 통과 확인, 파일 배치
 ```
 
 ## 실행 규칙
@@ -55,6 +56,61 @@ Phase 6: Review       → 품질 게이트 통과 확인, 파일 배치
 | 복잡도 | "스킬이 얼마나 복잡한가?" | Standard (50-150줄) |
 
 **출력물:** 요구사항 문서 (인메모리, AskUserQuestion으로 확인)
+
+### Phase 1.5: Research (외부 자료 조사) ★ v1.6.0 신설
+
+스킬 도메인의 공식 자료·표준 양식·베스트 프랙티스를 조사하여 SKILL.md의 정확성과 권위를 확보합니다.
+
+**조사 트리거 (다음 중 하나라도 해당하면 Phase 1.5 의무):**
+
+- 한국 법규·표준 양식 관련 (세무·노무·계약·채용·의료 등)
+- 외부 라이브러리·SDK·API·CLI 활용
+- 글로벌 베스트 프랙티스 인용이 필요한 도메인 (B2B SaaS·HR·BI·DevOps 등)
+- 정량 수치·통계 데이터·시장 규모 인용
+
+**조사 절차:**
+
+1. **WebSearch 2-4회 (병렬 권장)**
+   - 한국어 쿼리 1-2회: `"<도메인> <핵심 키워드> <연도>"` 형식 (예: "한국 채용절차법 NCS 2026")
+   - 영어 쿼리 1-2회 (글로벌 베스트 프랙티스 인용 시): `"<topic> best practice <year>"` 형식
+   - 검색 결과의 최신성 확인 (2년 이내 자료 우선)
+
+2. **Context7 MCP (라이브러리·SDK·CLI 관련 스킬일 때)**
+   - `resolve-library-id` → `get-library-docs` 순서
+   - 최신 API/CLI 변경사항·deprecation 확인
+   - 학습 데이터 cutoff 보완
+
+3. **도메인별 공식 출처 화이트리스트 (우선 인용):**
+
+   | 도메인 | 1차 권장 출처 |
+   |---|---|
+   | 한국 세무·재무 | 국세청 nts.go.kr, 홈택스 hometax.go.kr, DART dart.fss.or.kr |
+   | 한국 노무·채용 | 고용노동부 moel.go.kr, NCS ncs.go.kr, 한국노동연구원 kli.re.kr |
+   | 한국 의료·건강 | 식약처 mfds.go.kr, 보건복지부 mohw.go.kr, 건강보험공단 nhis.or.kr |
+   | 한국 정부지원 | K-Startup k-startup.go.kr, BIZINFO bizinfo.go.kr |
+   | 한국 통계·시장 | KOSIS kosis.kr, 한국은행 ECOS ecos.bok.or.kr |
+   | 한국 법률 | 국가법령정보센터 law.go.kr, 대법원 종합법률정보 glaw.scourt.go.kr |
+   | 글로벌 회계 표준 | K-IFRS, IFRS Foundation ifrs.org |
+   | 글로벌 채용 규제 | EEOC eeoc.gov, NYC Local Law 144, ISO 42001:2023 |
+   | 글로벌 SaaS BP | 제품 공식 문서(HubSpot·Salesforce·Greenhouse 등) + 업계 리딩 블로그 |
+
+4. **출처 보존:**
+   - 조사 결과의 URL·발행일·핵심 인용 문장을 인메모리에 보존
+   - Phase 3에서 SKILL.md `## 출처` 섹션에 markdown hyperlink 형식으로 인용
+   - 정량 수치는 출처 인라인 표기 또는 `[추정]` 태그 강제
+
+**산출물:** research notes (인메모리, Phase 3 입력으로 전달)
+
+**금지:**
+- 출처 없는 정량 수치 인용 (반드시 출처 명시 또는 `[추정]` 태그)
+- 한국 도메인 스킬에 한국 공식 출처 누락
+- 라이브러리·SDK 관련 스킬에 Context7 MCP 미사용 (가용 시)
+- 구버전 자료 인용 (3년 초과 시 최신 자료 재검색)
+
+**스킵 조건 (Phase 1.5 생략 가능):**
+- 단순 포맷 변환·텍스트 처리 스킬 (도메인 지식 불필요)
+- 사용자가 명시적으로 `--skip-research` 플래그 지정
+- 기존 cowork 스킬의 minor 개선·트리거 키워드 조정만
 
 ### Phase 2: Architecture (아키텍처 선택)
 
@@ -84,6 +140,8 @@ Phase 6: Review       → 품질 게이트 통과 확인, 파일 배치
 3. 트리거 키워드는 기존 73개 스킬과 중복되지 않도록 검사
 4. 사용 예시 최소 2개 포함
 5. 관련 스킬 섹션에 before/after/alternative 관계 명시
+6. **`## 출처` 섹션 의무**: Phase 1.5에서 수집한 URL·인용을 markdown hyperlink로 명시 (Phase 1.5 적용 스킬)
+7. **정량 수치 인용 규칙**: 모든 수치는 출처 인라인 표기 또는 `[추정]` 태그
 
 **참조:** `moai-core/skills/skill-tester/SKILL.md` §스코어링 루브릭 (품질 기준 single source)
 **참조:** `moai-core/skills/skill-template/SKILL.md` (템플릿)
@@ -149,6 +207,8 @@ tests:
 - [ ] 스킬 체인 관계가 CLAUDE.local.md §3-3과 일치 (해당 시)
 - [ ] 테스트 케이스가 생성됨
 - [ ] 루브릭 스코어 0.70 이상 통과
+- [ ] **`## 출처` 섹션 존재** (Phase 1.5 적용 스킬, `--skip-research` 미지정 시)
+- [ ] **정량 수치 모두 출처 또는 `[추정]` 태그** (Phase 1.5 적용 스킬)
 
 **배치:** `<target-plugin>/skills/<skill-name>/SKILL.md` 에 최종 파일을 배치합니다.
 
@@ -191,6 +251,12 @@ tests:
 
 ---
 
-Version: 1.5.x (renamed from skill-forge)
+Version: 1.6.0 (Phase 1.5 Research added)
 Source: revfactory/harness 6-Phase workflow (Apache 2.0) + MoAI adaptation
 Last Updated: 2026-05-01
+
+## Changelog
+
+- **1.6.0** (2026-05-01): Phase 1.5 Research 신설 — 외부 자료 조사(WebSearch·Context7) 의무화, 도메인별 공식 출처 화이트리스트 추가, `## 출처` 섹션 의무화 + 정량 수치 출처/`[추정]` 태그 강제
+- **1.5.x**: skill-forge → skill-builder 이름 변경
+- **이전**: harness 6-Phase 워크플로우 흡수

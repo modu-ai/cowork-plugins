@@ -1,0 +1,36 @@
+name: commerce-copywriting
+version: 1.8.0
+test_cases:
+  - id: happy_meta_ad
+    description: Meta 광고 헤드라인 3개 변형
+    input:
+      channel: meta
+      product: "X200 무선이어폰"
+      audience: "직장인 20~40대"
+      purpose: 전환
+    expected:
+      variants_count: 3
+      char_count_check: {"headline": "<= 40", "body": "<= 125"}
+      ai_slop_review: passed
+
+  - id: happy_email_cart_recovery
+    description: 카트 이탈 회복 이메일 시퀀스 3건
+    input:
+      category: email_sequence
+      scenario: cart_abandonment
+    expected:
+      sequence_count: 3
+      timings: ["+1h", "+24h", "+72h"]
+      escalation_pattern: ["부드러운 안내", "5% 쿠폰", "마지막 안내"]
+
+  - id: failure_forbidden_phrase
+    description: 광고 카피에 절대 표현 입력 시 자동 정제
+    input:
+      channel: naver_search
+      headline: "최저가 무선이어폰 1위"
+    expected:
+      ai_slop_review: revised
+      revised_phrases:
+        - "최저가 → 합리적 가격 또는 한정가"
+        - "1위 → 베스트셀러"
+      compliance_warning_emitted: true

@@ -17,7 +17,7 @@ tags: [cookbook, content]
 ## 사전 준비
 
 - 플러그인: `moai-content`, `moai-core:ai-slop-reviewer`
-- (선택) 이미지 — `moai-media`의 `nano-banana` 또는 `ideogram`
+- (선택) 이미지 — `moai-media`의 `nano-banana` (한국어 타이포 SOTA) 또는 `image-gen`
 - 입력: **타깃 키워드**, **플랫폼**(네이버·티스토리·브런치 등), **대상 독자**
 
 ## 스킬 체인
@@ -68,7 +68,7 @@ Claude가 초안을 보여주면 다음 두 가지를 체크합니다:
 
 ```
 방금 글 제목으로 카드뉴스 썸네일 한 장 만들어줘.
-Ideogram 3.0으로 한글 타이포 들어가게. 3:4 비율.
+nano-banana로 한글 타이포 들어가게. 3:4 비율.
 ```
 
 ### 5. 최종본 저장
