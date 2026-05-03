@@ -44,7 +44,7 @@ travel-planner → xlsx-creator(예산표) → docx-generator(일정표)
 **이벤트 기획**
 
 ```text
-event-planner → docx-generator(기획서) → xlsx-creator(체크리스트)
+> event-planner → docx-generator(기획서) → xlsx-creator(체크리스트)
 ```
 
 **웰니스 플랜**
@@ -60,7 +60,7 @@ wellness-coach → docx-generator(월간 플랜) → ai-slop-reviewer
 ```
 
 ```text
-50명 규모 회사 워크샵 하루 프로그램 기획해줘. 팀빌딩 위주.
+> 50명 규모 회사 워크샵 하루 프로그램 기획해줘. 팀빌딩 위주.
 ```
 
 ## 다음 단계

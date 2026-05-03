@@ -1,6 +1,6 @@
 ---
 title: "용어집"
-weight: 35
+weight: 200
 description: "스킬·플러그인·체인·커넥터·MCP·서브에이전트 등 Cowork 핵심 용어 6종을 정리합니다."
 geekdocBreadcrumb: true
 ---

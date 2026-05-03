@@ -80,12 +80,12 @@ moai-operations:process-manager → hwpx-writer → ai-slop-reviewer
 ## 빠른 사용 예
 
 ```text
-2026년 1분기 영업 실적 보고서 docx로 만들어줘.
+> 2026년 1분기 영업 실적 보고서 docx로 만들어줘.
 KPI는 매출·고객수·재구매율이야.
 ```
 
 ```text
-기업설명회용 IR 덱을 20장 피칭덱으로 pptx 만들어줘.
+> 기업설명회용 IR 덱을 20장 피칭덱으로 pptx 만들어줘.
 ```
 
 ## 다음 단계

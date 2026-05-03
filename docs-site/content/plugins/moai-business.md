@@ -76,6 +76,7 @@ flowchart TD
 | `consulting-brief` (v1.5.1 신규) | 경영진단, 개선안, 리스크 분석, 컨설팅 보고서 | 기업 컨설턴트·경영진 |
 | `sales-playbook` (v1.5.1 신규) | 영업 전략, 프로세스 설계, 툴킷, 스크립트 | 영업 팀장·개인 영업 |
 | `startup-launchpad` (v1.5.1 신규) | 아이템 검증, 비즈니스 모델, 창업 로드맵 | 예비 창업자·스타트업 |
+| `real-estate-search` (v2.0.0 신규) | 국토교통부(MOLIT) 실거래가/전월세 — 아파트·오피스텔·빌라·단독·상업용 | 부동산 투자·시장 분석가 |
 
 ## 신규 스킬 1 — `sbiz365-analyst` (소상공인 상권분석)
 
@@ -263,6 +264,33 @@ flowchart LR
 | 문서 형식 | 사업계획서 중심 | 연구계획서·참고문헌 포함 |
 | 심사 키워드 | 시장성·수익성·성장성 | 학술 기여도·연구방법론 |
 
+## v2.0.0 신규 — `real-estate-search` (국토부 실거래가)
+
+국토교통부(MOLIT) 실거래가 신고 데이터를 기반으로 한국 아파트·오피스텔·연립다세대·단독다가구·상업업무용 부동산의 매매·전월세 시세를 조회합니다. 사업·투자 분석, 입지 검토, 자산 평가에 활용합니다.
+
+### 사용 측 준비
+
+- **사용자 측 API 키 불필요** — NomaDamas의 hosted 프록시(`k-skill-proxy.nomadamas.org`)가 `DATA_GO_KR_API_KEY`를 보유합니다.
+- self-host가 필요하면 `KSKILL_PROXY_BASE_URL` 환경변수로 대체 가능.
+
+### 지원 자산 타입
+
+| 자산 | 매매 | 전월세 |
+|---|:---:|:---:|
+| 아파트 | ✅ | ✅ |
+| 오피스텔 | ✅ | ✅ |
+| 연립다세대 | ✅ | ✅ |
+| 단독/다가구 | ✅ | ✅ |
+| 상업업무용 | ✅ | — |
+
+### 출처 어트리뷰션
+
+본 스킬은 **NomaDamas/k-skill** (MIT) 의 `real-estate-search`를 cowork에 포팅했습니다. 원 저작자 설계 참고는 [`tae0y/real-estate-mcp`](https://github.com/tae0y/real-estate-mcp) 입니다.
+
+- **공식 데이터 출처**: 국토교통부 실거래가 신고 데이터 (공공데이터포털 `DATA_GO_KR_API_KEY` 필요)
+- **데이터 등록 페이지**: [공공데이터포털](https://www.data.go.kr) → 검색창에 "실거래가" 또는 "전월세" 입력 → 국토교통부 제공 endpoint 활용신청
+- **취소된 거래**는 프록시 서버에서 자동 필터링됨 (NomaDamas k-skill 명세)
+
 ## 선택 연동
 
 - **DART MCP** (금융감독원 전자공시) — 상장사 공시·재무 데이터 자동 조회
@@ -305,16 +333,16 @@ daily-briefing → docx-generator
 ## 빠른 사용 예
 
 ```text
-초기 SaaS 스타트업 사업계획서 만들어줘.
+> 초기 SaaS 스타트업 사업계획서 만들어줘.
 타깃은 한국 중소제조업, 조달 목표는 3억.
 ```
 
 ```text
-Series A용 IR 덱 20장 pptx로 만들어줘.
+> Series A용 IR 덱 20장 pptx로 만들어줘.
 ```
 
 ```text
-소상공인365에서 내려받은 홍대 상권 PDF 첨부했어. 카페 창업 타당성 검토해줘.
+> 소상공인365에서 내려받은 홍대 상권 PDF 첨부했어. 카페 창업 타당성 검토해줘.
 ```
 
 ```text
@@ -335,3 +363,6 @@ Series A용 IR 덱 20장 pptx로 만들어줘.
 - [소상공인365 빅데이터 포털](https://bigdata.sbiz.or.kr)
 - [K-Startup 창업지원 포털](https://www.k-startup.go.kr)
 - [BIZINFO 기업지원플러스](https://www.bizinfo.go.kr)
+- [NomaDamas/k-skill](https://github.com/NomaDamas/k-skill) — MIT — `real-estate-search` 원본 (v2.0.0)
+- [tae0y/real-estate-mcp](https://github.com/tae0y/real-estate-mcp) — MIT — 부동산 MCP 설계 참고
+- [공공데이터포털 (국토부 실거래가)](https://www.data.go.kr) — 공식 데이터 출처

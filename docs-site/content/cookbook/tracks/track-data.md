@@ -61,14 +61,14 @@ public-data → data-explorer → data-visualizer → xlsx-creator
 ### 단계별 가이드
 
 #### Step 1: 공공데이터 수집 및 준비
-```bash
+{{< terminal title="claude — cowork" >}}
 # public-data 스킬 호출
 "서울시 상권 분석 데이터 수집해줘
 Target: 서울시 내 100개 주요 상권
 Period: 2023년 1분기 ~ 2024년 4분기
 Data Types: 매출액, 점포 수, 유동인구, 업종별 분포
 API Sources: 서울시 열린데이터광장, 통계청"
-```
+{{< /terminal >}}
 
 **기대 결과**:
 - 주요 상권별 데이터 수집 완료
@@ -77,7 +77,7 @@ API Sources: 서울시 열린데이터광장, 통계청"
 - 기본 통계 정보 생성
 
 #### Step 2: 데이터 심층 분석
-```bash
+{{< terminal title="claude — cowork" >}}
 # data-explorer 스킬 호출
 "서울시 상권 데이터 분석해줘
 Analysis Goals:
@@ -89,7 +89,7 @@ Methods:
 - 통계 분석 (t-test, ANOVA)
 - 시계열 분석 (추세, 변동성)
 - 클러스터링 (상권 유형 분류)"
-```
+{{< /terminal >}}
 
 **분석 결과**:
 - 상권 유형 분류 (상업지구, 주거지구, 혼합지구)
@@ -98,7 +98,7 @@ Methods:
 - 예측 모델 구축
 
 #### Step 3: 시각화 생성
-```bash
+{{< terminal title="claude — cowork" >}}
 # data-visualizer 스킬 호출
 "서울시 상권 분석 시각화 생성해줘
 Chart Types:
@@ -110,7 +110,7 @@ Design:
 - 서울시 지도 기반 시각화
 - 브랜드 색상 적용
 - 대시보드 스타일 레이아웃"
-```
+{{< /terminal >}}
 
 **생성 시각화**:
 - 서울시 상권 히트맵
@@ -119,7 +119,7 @@ Design:
 - 유동인구-매출 상관관계 그래프
 
 #### Step 4: 최종 보고서 생성
-```bash
+{{< terminal title="claude — cowork" >}}
 # xlsx-creator 스킬 호출
 "서울시 상권 분석 보고서 생성해줘
 Report Structure:
@@ -134,7 +134,7 @@ Format:
 - 자동 생성 차트
 - 데이터 피벗 테이블
 - 인터랙티브 필터링"
-```
+{{< /terminal >}}
 
 **보고서 요소**:
 - 실행 요약 (Key Insights)
@@ -144,13 +144,13 @@ Format:
 - 추가 분석 아이디어
 
 #### Step 5: AI 품질 검수
-```bash
+{{< terminal title="claude — cowork" >}}
 # ai-slop-reviewer 스킬 호출
 "데이터 분석 보고서 검수해줘
 Focus: Data accuracy, statistical validity, business insights
 Format: Excel report with charts and tables
 Use Case: Executive decision making"
-```
+{{< /terminal >}}
 
 **검수 항목**:
 - 데이터 정확성 검증
@@ -160,13 +160,13 @@ Use Case: Executive decision making"
 - 보고서 가독성
 
 ### 예시 프롬프트
-```
-"서울시 상권 분석 데이터로 엑셀 리포트 만들어줘
+{{< terminal title="claude — cowork" >}}
+> "서울시 상권 분석 데이터로 엑셀 리포트 만들어줘
 분석 범위: 강남, 명동, 홍대, 여의도 4개 상권
 분석 기간: 2023년 1분기 ~ 2024년 4분기
 핵심 지표: 매출액, 점포 수, 유동인구, 상주인구
 목표: 신규 진출 상권 선정을 위한 데이터 기반 분석"
-```
+{{< /terminal >}}
 
 ## 확장 예시
 

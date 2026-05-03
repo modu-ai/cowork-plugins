@@ -16,6 +16,7 @@
 | [media-production](./skills/media-production/) | Remotion 영상, 유튜브 프로덕션, 팟캐스트, 전자책 출판 | 9 | ✅ |
 | [blog](./skills/blog/) | 네이버/티스토리/브런치/WordPress/Ghost 6개 플랫폼 최적화 포스팅 | 6 | ✅ |
 | [social-media](./skills/social-media/) | 인스타/스레드/X/링크드인/유튜브쇼츠/카카오 7개 플랫폼 콘텐츠 | 7 | ✅ |
+| [korean-spell-check](./skills/korean-spell-check/) | 바른한글(부산대) 한국어 맞춤법·띄어쓰기 최종 검수. ai-slop-reviewer 직후 체인 권장 (v2.0.0+) | 0 | ✅ |
 
 ## shadcn/ui 기본 스택 (v1.4.0 신규)
 

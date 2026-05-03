@@ -5,8 +5,8 @@
     "email": "email@mo.ai.kr"
   },
   "metadata": {
-    "description": "모두의 AI's Claude Cowork 플러그인 마켓플레이스 — 21 플러그인, 100 스킬. /project init으로 워크플로우 기반 CLAUDE.md 자동 생성, 모든 텍스트 산출물은 ai-slop-reviewer로 검수. v1.8.0부터 moai-commerce가 11스킬로 확장되었습니다(자사몰 cafe24·imweb·메이크샵, 와디즈·텀블벅 크라우드펀딩, 카카오 메이커스·무신사·29CM 큐레이션, 통합 마케팅 전략, 이커머스 카피, 라이브 커머스). 큐텐 사태 후 티몬·위메프는 가이드에서 제외되었습니다. moai-bi(BI 대시보드·경영진 1pager), moai-pm(주간보고·OKR·회고), moai-sales(B2B 영업·제안서·콜드메일)도 함께 등록되었습니다",
-    "version": "1.8.1",
+    "description": "모두의 AI's Claude Cowork 플러그인 마켓플레이스 — 21 플러그인, 106 스킬. /project init으로 워크플로우 기반 CLAUDE.md 자동 생성, 모든 텍스트 산출물은 ai-slop-reviewer로 검수. v2.0.0에서 NomaDamas/k-skill 한국 특화 스킬 6종이 추가되었습니다 — 인터넷등기소 등기부등본 일괄 발급(moai-legal), 국토부 실거래가(moai-business), 식약처 의약품·식품 안전(moai-commerce), 법원경매 매각공고(moai-finance), KRX 시세(moai-finance), 바른한글 맞춤법 검수(moai-content). v1.8.0부터 moai-commerce 11스킬(자사몰 cafe24·imweb·메이크샵, 와디즈·텀블벅, 카카오 메이커스·무신사·29CM, 라이브 커머스). moai-bi/pm/sales도 정식 등록되었습니다",
+    "version": "2.0.0",
     "language": "ko"
   },
   "plugins": [

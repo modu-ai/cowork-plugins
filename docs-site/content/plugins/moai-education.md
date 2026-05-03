@@ -60,7 +60,7 @@ research-assistant → paper-search → docx-generator → ai-slop-reviewer
 ```
 
 ```text
-정보처리기사 실기 모의고사 50문항 + 해설 만들어줘.
+> 정보처리기사 실기 모의고사 50문항 + 해설 만들어줘.
 ```
 
 ## 다음 단계

@@ -32,16 +32,16 @@ blog → (이미지가 필요하면 nano-banana) → ai-slop-reviewer
 
 ### 1. 플러그인이 설치되어 있는지 확인
 
-```
+{{< terminal title="claude — cowork" >}}
 /plugin installed
-```
+{{< /terminal >}}
 
 목록에 `moai-content`와 `moai-core:ai-slop-reviewer`가 보여야 합니다. 없다면:
 
-```
+{{< terminal title="claude — cowork" >}}
 /plugin install moai-content
 /plugin install moai
-```
+{{< /terminal >}}
 
 ### 2. 단일 프롬프트로 파이프라인 지시
 
@@ -66,16 +66,16 @@ Claude가 초안을 보여주면 다음 두 가지를 체크합니다:
 
 ### 4. (옵션) 썸네일 이미지 추가
 
-```
-방금 글 제목으로 카드뉴스 썸네일 한 장 만들어줘.
+{{< terminal title="claude — cowork" >}}
+> 방금 글 제목으로 카드뉴스 썸네일 한 장 만들어줘.
 nano-banana로 한글 타이포 들어가게. 3:4 비율.
-```
+{{< /terminal >}}
 
 ### 5. 최종본 저장
 
-```
-완성본을 my-blog-post.md 로 저장해줘.
-```
+{{< terminal title="claude — cowork" >}}
+> 완성본을 my-blog-post.md 로 저장해줘.
+{{< /terminal >}}
 
 ## 자주 겪는 이슈
 

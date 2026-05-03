@@ -56,7 +56,7 @@ contract-review → docx-generator → ai-slop-reviewer
 ### 단계별 가이드
 
 #### Step 1: 계약서 리스크 분석
-```bash
+{{< terminal title="claude — cowork" >}}
 # contract-review 스킬 호출
 "공급 계약서 리뷰해줘
 Contract Type: 공급 계약서 (품질보증/하자보증 조항 포함)
@@ -68,7 +68,7 @@ Key Areas:
 - 하자 보증 및 책임 한계
 - 계약 해지 조항
 - 준거법 및 분쟁 해결"
-```
+{{< /terminal >}}
 
 **분석 결과**:
 - 고위험 조항 식별 (하자보증 책무 과다)
@@ -78,7 +78,7 @@ Key Areas:
 - 법적 리스크 등급 (A: 낮음, B: 보통, C: 높음)
 
 #### Step 2: 개선된 계약서 생성
-```bash
+{{< terminal title="claude — cowork" >}}
 # docx-generator 스킬 호출
 "리뷰 결과를 바탕으로 개선된 계약서 초안 생성해줘
 Template: 공급 계약서 표준 템플릿
@@ -89,7 +89,7 @@ Modifications:
 - 보험 요구사항 명시 추가
 - 준거법: 대한민국 법률 적용
 Format: Word 문서 (docx) with professional formatting"
-```
+{{< /terminal >}}
 
 **생성 문서**:
 - 표준 계약서 구조 적용
@@ -99,13 +99,13 @@ Format: Word 문서 (docx) with professional formatting"
 - 첨부 문서 목록
 
 #### Step 3: 법적 문서 검수
-```bash
+{{< terminal title="claude — cowork" >}}
 # ai-slop-reviewer 스킬 호출
 "생성된 계약서 검수해줘
 Focus: Legal accuracy, terminology, completeness
 Format: Word document with legal clauses
 Use Case: Business contract review"
-```
+{{< /terminal >}}
 
 **검수 항목**:
 - 법적 용어 정확성 검증
@@ -122,28 +122,28 @@ Use Case: Business contract review"
 - 다음 단계 가이드라인
 
 ### 예시 프롬프트
-```
-"IT 서비스 공급 계약서 리뷰해줘
+{{< terminal title="claude — cowork" >}}
+> "IT 서비스 공급 계약서 리뷰해줘
 계약 종류: 월정액 기반 서비스 계약
 계약 기간: 1년 (자동갱신 옵션 포함)
 서비스 내용: 클라우드 인프라 관리, 기술 지원
 금액: 월 1,000만원 (VAT 별도)
 리스크 포인트:
-- 서비스 수준 계약(SLA) 미비
-- 계약 해지 시 전환 계획 누락
-- 지식 이전 조항 약함"
-```
+  - 서비스 수준 계약(SLA) 미비
+  - 계약 해지 시 전환 계획 누락
+  - 지식 이전 조항 약함"
+{{< /terminal >}}
 
 ## 확장 예시
 
 ### NDA 작성
-```bash
-"비밀유지계약서 작성해줘
+{{< terminal title="claude — cowork" >}}
+> "비밀유지계약서 작성해줘
 당사자: A사 (제공자), B사 (수령인)
 비밀 정보: 기술 정보, 영업 정보, 고객 정보
 유효 기간: 계약 종료 후 3년
 적용 범위: 글로벌 (한국/미국/유럽)"
-```
+{{< /terminal >}}
 
 **NDA 요소**:
 - 정의 조항 명확화
@@ -153,16 +153,16 @@ Use Case: Business contract review"
 - 분쟁 해결 방식
 
 ### 컴플라이언스 보고서
-```bash
-"GDPR 준수 보고서 생성해줘
+{{< terminal title="claude — cowork" >}}
+> "GDPR 준수 보고서 생성해줘
 대상: EU 고객 데이터 처리
 검항 목록:
-- 데이터 처리 동의 확인
-- 데이터 주권 보장
-- 데이터 이전 안전성
-- 보존 기간 준수
-- 권리 행 절차"
-```
+  - 데이터 처리 동의 확인
+  - 데이터 주권 보장
+  - 데이터 이전 안전성
+  - 보존 기간 준수
+  - 권리 행 절차"
+{{< /terminal >}}
 
 **컴플라이언스 체크리스트**:
 - 법적 요구사항 충족 여부

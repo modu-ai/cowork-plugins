@@ -72,12 +72,12 @@ investor-relations 로 위 자료를 기반으로 15장 스토리라인과
 
 ### 3. PPT 생성
 
-```
-확정된 스토리라인으로 pptx-designer 스킬을 사용해서 ir-deck.pptx 를 만들어줘.
+{{< terminal title="claude — cowork" >}}
+> 확정된 스토리라인으로 pptx-designer 스킬을 사용해서 ir-deck.pptx 를 만들어줘.
   - 16:9, 한글 Pretendard, 본문 18pt
   - 커버는 풀블리드 이미지
   - 5·12장은 차트 포함 (recharts 스타일)
-```
+{{< /terminal >}}
 
 ### 4. 문장 다듬기
 
@@ -88,10 +88,10 @@ investor-relations 로 위 자료를 기반으로 15장 스토리라인과
 
 ### 5. (옵션) 히어로 이미지
 
-```
-1번 커버용 히어로 이미지 만들어줘. Ideogram 으로 서비스명 타이포 포함,
+{{< terminal title="claude — cowork" >}}
+> 1번 커버용 히어로 이미지 만들어줘. Ideogram 으로 서비스명 타이포 포함,
 16:9, 브랜드 컬러 #2F5BFF 톤.
-```
+{{< /terminal >}}
 
 ### 6. PDF 내보내기
 

@@ -48,14 +48,26 @@ user-invocable: true
 
 사용자는 그냥 자연어로 요청합니다. Cowork가 맥락을 읽고 적합한 스킬을 자동 호출합니다.
 
+{{< hint type="note" >}}
+**문서 표기 규약**: 본 문서 전반에서 **사용자가 Cowork에 입력하는 모든 것**(자연어 지시·슬래시 명령·마켓플레이스 URL 등)은 macOS 터미널 스타일 박스 안에 `> ` prefix와 함께 표기합니다.
+
+| 종류 | 문서 표기 | 실제 입력 |
+|---|---|---|
+| 슬래시 명령 | `> /project init` | `/project init` |
+| 자연어 지시 | `> "블로그 글 써줘"` | `블로그 글 써줘` |
+| 마켓플레이스 URL | `> modu-ai/cowork-plugins` | `modu-ai/cowork-plugins` |
+
+`>`는 문서에서 "이건 사용자 입력"이라는 시각적 표식이며, **실제 대화창에 입력할 때는 `>`를 빼고 본문만** 입력하면 됩니다.
+{{< /hint >}}
+
 ### 2. 슬래시 호출
 
 특정 스킬을 명시적으로 부르고 싶으면 대화창에 `/`를 입력해 나타나는 목록에서 스킬을 선택합니다. 스킬의 frontmatter에 `user-invocable: true`가 설정된 스킬만 Tab 자동완성과 `/skill-name` 호출을 지원합니다.
 
-```text
+{{< terminal title="claude — cowork" >}}
 /blog
 /contract-review
-```
+{{< /terminal >}}
 
 {{< hint type="note" >}}
 자연어 요청이 가장 안정적입니다. 슬래시 호출은 스킬별로 지원 여부가 다르고, 호출 가능 목록은 Cowork의 `/` 자동완성에서 직접 확인하는 게 가장 정확합니다.

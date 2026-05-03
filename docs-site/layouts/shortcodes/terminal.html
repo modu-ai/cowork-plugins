@@ -1,0 +1,51 @@
+{{- /*
+  macOS 터미널 chrome 스타일 코드 블록.
+
+  Usage:
+    {{< terminal title="claude — cowork" >}}
+    /project init
+    "SaaS Series A IR 덱 초안 만들어줘"
+    {{< /terminal >}}
+
+  렌더 결과(자동 처리):
+    > /project init
+    > "SaaS Series A IR 덱 초안 만들어줘"
+
+  Options:
+    title    창 타이틀 (기본: "claude — cowork")
+    lang     언어 라벨 (선택, 우상단 표기)
+    raw      "true"이면 자동 `> ` prefix 비활성 (기본 "false")
+
+  자동 처리 규칙:
+    - 양쪽 공백·줄바꿈 제거 (들여쓰기로 인한 박스 비대 방지)
+    - 각 라인 시작에 `> `를 자동 부여 (이미 `>`/공백+`>`로 시작하면 그대로 유지)
+    - 빈 라인은 prefix 없이 보존
+*/ -}}
+{{- $title := .Get "title" | default "claude — cowork" -}}
+{{- $lang  := .Get "lang"  | default "" -}}
+{{- $raw   := eq (.Get "raw" | default "false") "true" -}}
+{{- $body  := trim .Inner " \n\t\r" -}}
+{{- $out   := "" -}}
+{{- if $raw -}}
+  {{- $out = $body -}}
+{{- else -}}
+  {{- range $idx, $line := split $body "\n" -}}
+    {{- $stripped := trim $line " \t" -}}
+    {{- if eq $stripped "" -}}
+      {{- $out = printf "%s\n" $out -}}
+    {{- else if hasPrefix $stripped ">" -}}
+      {{- $out = printf "%s%s\n" $out $stripped -}}
+    {{- else -}}
+      {{- $out = printf "%s> %s\n" $out $stripped -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $out = trim $out "\n" -}}
+{{- end -}}
+<div class="code-card term-card">
+  <div class="code-chrome">
+    <div class="traffic"><span class="red"></span><span class="yellow"></span><span class="green"></span></div>
+    <div class="code-title">{{ $title }}{{ with $lang }} <span class="lang">{{ . }}</span>{{ end }}</div>
+    <div class="code-spacer"></div>
+  </div>
+  <pre class="code-pre term-pre">{{ $out }}</pre>
+</div>

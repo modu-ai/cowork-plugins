@@ -13,6 +13,42 @@
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
 
+## [2.0.0] - 2026-05-04
+
+MAJOR. 한국 B2B 시장 특화 강화 릴리스 — `NomaDamas/k-skill` (MIT) 한국 특화 스킬 6종을 cowork에 포팅했습니다. 인터넷등기소 등기부등본 일괄 발급, 국토부 실거래가, 식약처 의약품·식품 안전, 법원경매 매각공고, KRX 시세, 바른한글 맞춤법 검수까지 — 한국 시장에서 즉시 ROI가 발생하는 도메인 특화 스킬을 한꺼번에 도입했습니다. 마켓플레이스 카운트 100 → **106 스킬**, 플러그인은 그대로 21개.
+
+### Added
+
+- **`moai-legal:iros-registry-automation`** — 대법원 인터넷등기소(IROS) 법인·부동산 등기부등본 일괄 발급 보조. 로그인·결제는 사용자가 브라우저에서 직접 처리하고, 본 스킬은 장바구니 담기·결제 후 열람·저장·종합 리포트 생성을 보조합니다. 원 저작자 `challengekim/iros-registry-automation` (MIT) 참고. 실사·법무 검토·법인 일괄 관리에 핵심.
+- **`moai-business:real-estate-search`** — 국토교통부(MOLIT) 실거래가/전월세 조회. 아파트·오피스텔·연립다세대·단독다가구·상업업무용 매매·전월세 시세를 NomaDamas k-skill-proxy 경유로 조회. 사용자 측 API 키 불필요. 원 저작자 참고: `tae0y/real-estate-mcp`.
+- **`moai-commerce:mfds-safety`** — 식품의약품안전처(MFDS) 의약품·식품 안전 통합 체크. e약은요·안전상비의약품·건강기능식품 원료 인정현황·개별인정형·품목제조 신고·검사부적합·회수·판매중지를 통합 조회. 증상·복용/섭취 상황 인터뷰 우선, red flag 시 119·응급실 안내. 헬스/F&B 커머스 상품 검수 핵심.
+- **`moai-finance:court-auction-search`** — 대법원 법원경매정보(`courtauction.go.kr`) 매각공고 조회. 매각기일·법원·기일/기간 입찰 기준 조회 + 사건번호 단건 조회. read-only, IP 차단 방지를 위해 호출당 약 2초 지연. 자산 처분·경매 투자·실사에 활용.
+- **`moai-finance:korean-stock-search`** — KRX(한국거래소) 상장 종목 검색·기본정보·일별 시세. NomaDamas k-skill-proxy 경유로 사용자 KRX_API_KEY 발급 불필요. moai-business의 DART(공시)를 보완하는 시세 데이터.
+- **`moai-content:korean-spell-check`** — 바른한글(구 부산대 맞춤법/문법 검사기) 표면을 이용한 한국어 최종 검수. 국립국어원 계열 규칙 반영. AI 패턴 검수(`ai-slop-reviewer`) 직후의 마지막 단계로 권장. 비상업·저빈도 사용 정책 명시.
+- **NOTICE.md** — `.claude/rules/moai/NOTICE.md`에 NomaDamas/k-skill MIT attribution 섹션 추가. 6개 포팅 스킬과 원 저작자 링크 보존.
+- **CONNECTORS.md 신규/확장** — `moai-commerce/CONNECTORS.md` 신규(MFDS), `moai-finance/CONNECTORS.md` 신규(법원경매·KRX), `moai-business/CONNECTORS.md`에 MOLIT 실거래가 섹션 추가, `moai-legal/CONNECTORS.md`에 IROS 섹션 추가.
+
+### Changed
+
+- **마켓플레이스 description 갱신** — v2.0.0 한국 특화 6종 도입 사실을 marketplace.json에 반영. 스킬 카운트 100 → 106.
+- **버전 통일 22지점** — marketplace.json + 21개 plugin.json 모두 `2.0.0`으로 동기화.
+
+### Migration
+
+- **사용자 측 영향 없음 (Breaking change 아님)** — 신규 스킬 6종 추가일 뿐 기존 스킬·체인은 그대로 동작합니다.
+- **MAJOR bump 사유**: 한국 B2B 시장 특화 도메인 도입은 cowork 정체성의 단계적 변화이므로 1.x → 2.x로 표기. 기능 호환성 손실은 없습니다.
+- **k-skill-proxy 의존 명시** — `real-estate-search`, `mfds-safety`, `korean-stock-search`는 NomaDamas 운영 hosted 프록시 경유. self-host가 필요하면 `KSKILL_PROXY_BASE_URL` 환경변수로 대체 가능.
+- **사용자 측 시크릿** — 신규 6종 모두 사용자 측 API 키 발급 불필요. self-host 시에만 운영 측에서 `DATA_GO_KR_API_KEY`, `FOODSAFETYKOREA_API_KEY`, `KRX_API_KEY` 발급.
+
+### 출처 및 어트리뷰션
+
+- 소스 리포지토리: [`NomaDamas/k-skill`](https://github.com/NomaDamas/k-skill) (MIT)
+- 통합 어트리뷰션: `.claude/rules/moai/NOTICE.md` § NomaDamas k-skill (MIT)
+- 원 저작자 보존:
+  - `challengekim/iros-registry-automation` (iros)
+  - `tae0y/real-estate-mcp` (real-estate)
+  - `jjlabsio/korea-stock-mcp` (korean-stock)
+
 ## [1.8.1] - 2026-05-02
 
 PATCH. 정합성 동기화 릴리스 — 신규 플러그인 `moai-bi`·`moai-pm`·`moai-sales` 3종을 marketplace에 정식 등록하고, 온라인 문서·SKILL 내부 stale 참조를 일괄 정리했습니다. 신규 스킬 추가는 없습니다(다음 MINOR에서 추가 예정).

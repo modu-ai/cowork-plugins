@@ -118,13 +118,13 @@ Use Case: Investor presentation"
 - 프레젠테이션 효과성
 
 ### 예시 프롬프트
-```
-"SaaS Series A IR 덱 만들어줘. 타깃 고객은 한국 중소제조업체
+{{< terminal title="claude — cowork" >}}
+> "SaaS Series A IR 덱 만들어줘. 타깃 고객은 한국 중소제조업체
 핵심 가치: AI 기반 자동 견적 생성 시스템
 경쟁 우위: 70% 비용 절감, 3배 빠른 처리 속도
 목표 투자금: 50억 (20% 지분)
 적용 시장: 제조업 IT 전용 솔루션"
-```
+{{< /terminal >}}
 
 ## 확장 예시
 

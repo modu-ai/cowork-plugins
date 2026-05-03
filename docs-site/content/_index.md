@@ -1,31 +1,31 @@
 ---
 title: "Claude Cowork 한국어 문서"
 description: "Claude Cowork 한국어 가이드 — 지식 근로자를 위한 설치·스킬·플러그인·쿡북 완전판. cowork-plugins 17종 카탈로그 포함."
-geekdocNav: false
-geekdocAlign: center
 geekdocAnchor: false
 geekdocBreadcrumb: false
 ---
 
 <div class="cw-hero">
-  <div class="eyebrow"><span class="dot"></span>v1.6.0 · 2026.05.01 · cowork.mo.ai.kr</div>
-  <h1>업무에 바로 쓰는<br/><span class="accent">AI 협업 스킬</span> 85종.</h1>
+  <div class="eyebrow"><span class="dot"></span>v2.0.0 · 2026.05.04 · cowork.mo.ai.kr</div>
+  <h1>업무에 바로 쓰는<br/><span class="accent">AI 협업 스킬</span> 106종.</h1>
   <p class="lead-p">
-    17개 분야에 걸친 MoAI-Cowork 플러그인 모음. Claude Code에서 슬래시 한 번으로 사업계획서·IR 덱·계약서·블로그·정부지원사업 신청서까지 — 한국어로, 끝까지.
+    21개 분야에 걸친 MoAI-Cowork 플러그인 모음. Claude Code에서 슬래시 한 번으로 사업계획서·IR 덱·계약서·블로그·정부지원사업 신청서까지 — 한국어로, 끝까지.
   </p>
   <div class="cw-hero-ctas">
     <a class="btn btn--primary" href="/getting-started/quick-start/">5분 만에 시작 →</a>
     <a class="btn btn--ghost" href="/plugins/">플러그인 둘러보기</a>
   </div>
   <div class="cw-hero-meta">
-    <div class="item"><div class="num">85</div><div class="lbl">총 스킬</div></div>
-    <div class="item"><div class="num">17</div><div class="lbl">분야 플러그인</div></div>
+    <div class="item"><div class="num">106</div><div class="lbl">총 스킬</div></div>
+    <div class="item"><div class="num">21</div><div class="lbl">분야 플러그인</div></div>
     <div class="item"><div class="num">77</div><div class="lbl">문서 페이지</div></div>
-    <div class="item"><div class="num">v1.6.0</div><div class="lbl">최신 릴리스</div></div>
+    <div class="item"><div class="num">v2.0.0</div><div class="lbl">최신 릴리스</div></div>
   </div>
 </div>
 
-## <span class="cw-sect-head"><span class="num">START</span>5분 빠른 시작</span>
+<div class="cw-sect-head">
+  <h2 id="quickstart" style="margin:0"><span class="num">START</span>5분 빠른 시작</h2>
+</div>
 
 Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰는 플러그인 한두 개만 활성화하면 끝. 슬래시 명령으로 자연어처럼 호출됩니다.
 
@@ -38,7 +38,7 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
   <a class="cw-qs-card" href="/plugins/">
     <div class="step">02 · 선택</div>
     <div class="ttl">분야별 플러그인 활성화</div>
-    <div class="desc">콘텐츠·비즈니스·법무 등 17개 분야 중 필요한 것만 켭니다.</div>
+    <div class="desc">콘텐츠·비즈니스·법무 등 21개 분야 중 필요한 것만 켭니다.</div>
   </a>
   <a class="cw-qs-card" href="/getting-started/first-task/">
     <div class="step">03 · 첫 작업</div>
@@ -53,19 +53,19 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
 </div>
 
 <div class="cw-sect-head">
-  <h2 id="plugins-grid" style="margin:0"><span class="num">17</span>분야별 플러그인</h2>
-  <span class="meta">총 84개 스킬 · 17개 도메인</span>
+  <h2 id="plugins-grid" style="margin:0"><span class="num">21</span>분야별 플러그인</h2>
+  <span class="meta">총 106개 스킬 · 21개 도메인</span>
 </div>
 
 <div class="cw-grid">
   <a class="cw-card" href="/plugins/moai-business/">
-    <div class="head"><div class="icon">비</div><span class="count-pill">9개 스킬</span></div>
+    <div class="head"><div class="icon">비</div><span class="count-pill">10개 스킬</span></div>
     <div><div class="title">비즈니스<span class="new-tag">v1.5</span></div><div class="slug">moai-business</div></div>
     <div class="desc">사업계획서·IR·시장조사·정부지원사업</div>
     <div class="foot"><span>IR</span><span>사업계획</span><span>정부지원</span></div>
   </a>
   <a class="cw-card" href="/plugins/moai-content/">
-    <div class="head"><div class="icon">콘</div><span class="count-pill">8개 스킬</span></div>
+    <div class="head"><div class="icon">콘</div><span class="count-pill">9개 스킬</span></div>
     <div><div class="title">콘텐츠</div><div class="slug">moai-content</div></div>
     <div class="desc">블로그·뉴스레터·SNS·카피라이팅·SEO 자동화 스킬</div>
     <div class="foot"><span>블로그</span><span>SNS</span><span>SEO</span></div>
@@ -83,7 +83,7 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
     <div class="foot"><span>영상</span><span>이미지</span><span>오디오</span></div>
   </a>
   <a class="cw-card" href="/plugins/moai-office/">
-    <div class="head"><div class="icon">오</div><span class="count-pill">4개 스킬</span></div>
+    <div class="head"><div class="icon">오</div><span class="count-pill">5개 스킬</span></div>
     <div><div class="title">오피스</div><div class="slug">moai-office</div></div>
     <div class="desc">DOCX·XLSX·PPTX·HWPX 자동 생성</div>
     <div class="foot"><span>DOCX</span><span>XLSX</span><span>PPTX</span></div>
@@ -107,19 +107,19 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
     <div class="foot"><span>공공데이터</span><span>SQL</span></div>
   </a>
   <a class="cw-card" href="/plugins/moai-finance/">
-    <div class="head"><div class="icon">재</div><span class="count-pill">4개 스킬</span></div>
+    <div class="head"><div class="icon">재</div><span class="count-pill">6개 스킬</span></div>
     <div><div class="title">재무</div><div class="slug">moai-finance</div></div>
     <div class="desc">세무·결산·예실·재무제표</div>
     <div class="foot"><span>세무</span><span>결산</span><span>예실</span></div>
   </a>
   <a class="cw-card" href="/plugins/moai-legal/">
-    <div class="head"><div class="icon">법</div><span class="count-pill">4개 스킬</span></div>
+    <div class="head"><div class="icon">법</div><span class="count-pill">5개 스킬</span></div>
     <div><div class="title">법무</div><div class="slug">moai-legal</div></div>
     <div class="desc">계약서·NDA·약관·컴플라이언스</div>
     <div class="foot"><span>계약서</span><span>NDA</span><span>GDPR</span></div>
   </a>
   <a class="cw-card" href="/plugins/moai-hr/">
-    <div class="head"><div class="icon">인</div><span class="count-pill">4개 스킬</span></div>
+    <div class="head"><div class="icon">인</div><span class="count-pill">5개 스킬</span></div>
     <div><div class="title">인사</div><div class="slug">moai-hr</div></div>
     <div class="desc">채용공고·평가·1:1·온보딩·HR 정책</div>
     <div class="foot"><span>채용</span><span>평가</span><span>온보딩</span></div>
@@ -197,24 +197,25 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
 </div>
 
 <div class="cw-sect-head">
-  <h2 id="release-summary" style="margin:0"><span class="num">v1.6</span>최근 릴리스</h2>
+  <h2 id="release-summary" style="margin:0"><span class="num">v2.0</span>최근 릴리스</h2>
   <span class="meta">CHANGELOG.md 기반</span>
 </div>
 
 <div class="cw-timeline">
   <div class="cw-rel latest">
     <div class="ver-row">
-      <span class="ver">v1.6.0</span>
-      <span class="date">2026-05-01</span>
-      <span class="badge">MINOR</span>
+      <span class="ver">v2.0.0</span>
+      <span class="date">2026-05-04</span>
+      <span class="badge">MAJOR</span>
     </div>
-    <div class="ttl">skill-builder 리네임 + skill-tester self-contained + pdf-writer 신규</div>
-    <div class="desc">skill-forge → skill-builder 리네임, skill-tester가 4차원 루브릭·체인 검증을 본문 흡수. moai-office에 한·중·일·영 다국어 PDF 생성 스킬 추가.</div>
+    <div class="ttl">디자인 시스템 정식 통합 + 한국어 문서 사이트 전면 리뉴얼</div>
+    <div class="desc">Pretendard 브랜드 폰트, 13섹션 cw-* 컴포넌트 시스템, 3컬럼 docs 레이아웃 (사이드바·main·TOC), Claude Design 정합 100% 도달. 18 플러그인 100 스킬 카탈로그.</div>
     <ul>
-      <li><code>moai-office:pdf-writer</code> 신규 — PyMuPDF + Noto Sans CJK 자동 다운로드</li>
-      <li><code>skill-builder</code> (구 <code>skill-forge</code>) 6-Phase 스킬 생성 워크플로우</li>
-      <li><code>skill-tester</code> single source of truth — 루브릭·체인 프로토콜 본문 흡수</li>
-      <li>18지점 버전 동시 bump: 1.5.1 → 1.6.0</li>
+      <li>Pretendard 브랜드 폰트 + Inter latin + JetBrains Mono code 통합</li>
+      <li>21종 cw-* 컴포넌트 (hero, qs, grid, card, track, timeline, rel, toc, side-*) 디자인 시스템 정합</li>
+      <li>좌사이드바 SVG 아이콘 + count pill + NEW/badge + active 흰배경 그림자</li>
+      <li>우측 TOC 240px sticky + scroll spy</li>
+      <li>22지점 버전 동시 bump: 1.8.1 → 2.0.0</li>
     </ul>
   </div>
   <div class="cw-rel">

@@ -22,7 +22,7 @@ flowchart TB
 
     Emp -->|산출물| Delivery[Slack·Gmail·Notion·파일]
     style Emp fill:#d4edda,stroke:#155724
-```
+{{< terminal title="claude — cowork" >}}
 
 | 부품 | 비유 | Cowork 구현 |
 |---|---|---|
@@ -96,7 +96,7 @@ finance-assistant/
 │   └── weekly-cashflow/
 │       └── SKILL.md
 └── CONNECTORS.md
-```
+{{< /terminal >}}
 
 ### `plugin.json` 최소 스펙
 
@@ -148,7 +148,7 @@ description: >
 
 플러그인 안에 직접 스케줄을 박아두지 말고, **사용자 PC별 등록을 권장**합니다. PC마다 시간대·휴일이 다르므로.
 
-```text
+{{< terminal title="claude — cowork" >}}
 (사용자가 처음 설치한 날 한 번 실행)
 /schedule
 
@@ -156,7 +156,7 @@ description: >
 weekly-cashflow 스킬을 실행해줘.
 결과는 90_Output 폴더에 PPT로 저장하고
 Notion "주간 현금흐름" 페이지에도 동기화해줘.
-```
+{{< /terminal >}}
 
 ## MCP 커넥터 — 권한 최소 원칙
 

@@ -54,14 +54,14 @@ strategy-planner 와 market-analyst 를 순서대로 써.
 
 ### 3. 심사 양식에 맞춰 DOCX로
 
-```
-방금 뼈대를 2026 예비창업패키지 양식에 맞게 DOCX로 만들어줘.
+{{< terminal title="claude — cowork" >}}
+> 방금 뼈대를 2026 예비창업패키지 양식에 맞게 DOCX로 만들어줘.
   - 표지, 목차, 문제 인식, 실현가능성, 성장전략, 팀 구성, 재무계획
   - 표·그림 포함
   - 폰트는 맑은고딕, 본문 10pt
 
 docx-generator 스킬로 실제 파일 만들어줘.
-```
+{{< /terminal >}}
 
 ### 4. AI 슬롭 검수
 
@@ -72,18 +72,18 @@ docx-generator 스킬로 실제 파일 만들어줘.
 
 ### 5. (선택) 시장 통계 보강
 
-```
+{{< terminal title="claude — cowork" >}}
 1인 가구 통계가 필요해. moai-data 의 public-data 로 KOSIS에서
 최근 5년 서울 1인 가구 추이 가져와서 5장 "시장 분석" 에 표와 그래프로 추가해줘.
-```
+{{< /terminal >}}
 
 ### 6. 재무 추정표 별도 엑셀
 
-```
-3년 매출·비용 추정 엑셀 만들어줘. xlsx-creator 로.
+{{< terminal title="claude — cowork" >}}
+> 3년 매출·비용 추정 엑셀 만들어줘. xlsx-creator 로.
   - 가정: 월 500명 출발, 월 10% 성장, CAC 4만원, LTV 36만원
   - 손익계산서·월별 현금흐름·BEP 시트 포함
-```
+{{< /terminal >}}
 
 ## 자주 겪는 이슈
 

@@ -24,7 +24,7 @@ geekdocBreadcrumb: true
    modu-ai/cowork-plugins
    ```
 
-   동기화가 끝나면 17개 플러그인·84개 스킬 목록이 표시됩니다.
+   동기화가 끝나면 21개 플러그인·106개 스킬 목록이 표시됩니다.
 
 2. **`moai-core` 설치**
 
@@ -43,7 +43,7 @@ geekdocBreadcrumb: true
    - 계약서 검토 → `moai-legal`, `moai-office`
    - 이미지 생성 → `moai-media` (+ `GEMINI_API_KEY` 필요)
 
-   17개 모두를 한 번에 설치할 필요는 없습니다.
+   21개 모두를 한 번에 설치할 필요는 없습니다.
 
 4. **프로젝트 생성 및 `/project init`**
 

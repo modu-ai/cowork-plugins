@@ -32,9 +32,9 @@ geekdocBreadcrumb: true
 
 `/project init` 명령어로 프로젝트를 초기화합니다:
 
-```bash
+{{< terminal title="claude — cowork" >}}
 /project init
-```
+{{< /terminal >}}
 
 **7단계 인터뷰 진행**:
 1. 프로젝트 이름 입력: "SaaS IR Deck Project"
@@ -51,11 +51,11 @@ geekdocBreadcrumb: true
 
 ### 3단계: 첫 작업 요청
 
-자연어로 Series A IR 덱 생성을 요청합니다:
+자연어로 Series A IR 덱 생성을 요청합니다. **본 문서의 모든 사용자 입력은 `> ` prefix와 함께 표기**합니다(실제 대화창에는 `>` 없이 본문만 입력하면 됩니다 — [표기 규약 자세히](../../cowork/skills/#스킬-호출-방식)).
 
-```
-"SaaS Series A IR 덱 초안 만들어줘"
-```
+{{< terminal title="claude — cowork" >}}
+> "SaaS Series A IR 덱 초안 만들어줘"
+{{< /terminal >}}
 
 **요청 상세 내용**:
 - 비즈니스 모델: SaaS 플랫폼

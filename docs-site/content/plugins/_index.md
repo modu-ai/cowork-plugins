@@ -1,14 +1,14 @@
 ---
 title: "플러그인 카탈로그"
 weight: 1
-description: "modu-ai/cowork-plugins 마켓플레이스의 17개 플러그인·85개 스킬을 도메인별로 정리한 카탈로그입니다."
+description: "modu-ai/cowork-plugins 마켓플레이스의 21개 플러그인·106개 스킬을 도메인별로 정리한 카탈로그입니다."
 geekdocBreadcrumb: true
 geekdocCollapseSection: false
 ---
 
 # `cowork-plugins` 카탈로그
 
-[`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins)는 한국 업무 환경에 맞춰 설계된 **17개 플러그인 · 85개 스킬**의 커뮤니티 마켓플레이스입니다. 사업계획·IR·마케팅·법무·세무·HR·카드뉴스·PPT·이미지 생성 등 도메인별로 묶여 있습니다.
+[`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins)는 한국 업무 환경에 맞춰 설계된 **21개 플러그인 · 106개 스킬**의 커뮤니티 마켓플레이스입니다. 사업계획·IR·마케팅·법무·세무·HR·카드뉴스·PPT·이미지 생성 등 도메인별로 묶여 있습니다.
 
 {{< hint type="note" >}}
 **v1.6.0 업데이트 (2026-05-01)**: `skill-forge` → `skill-builder` 리네임 + `skill-tester` self-contained 화 + `moai-office:pdf-writer` 신규(한·중·일·영 다국어 PDF, PyMuPDF + Noto Sans CJK 자동 다운로드). 전체 스킬 수 84 → **85**개. 18지점 버전 동시 bump: 1.5.1 → 1.6.0.
@@ -60,31 +60,35 @@ geekdocCollapseSection: false
 - [`moai-career`](./moai-career/) — 자기소개서, 이력서, 면접 코칭, 포트폴리오
 - [`moai-lifestyle`](./moai-lifestyle/) — 여행, 웰니스, 이벤트·웨딩 기획
 
-## 한 눈에 보는 스킬 수 (v1.6.0)
+## 한 눈에 보는 스킬 수 (v2.0.0)
 
 "대표 스킬 (일부)"는 각 플러그인에서 가장 자주 호출되는 스킬을 발췌한 것입니다. 전체 스킬 목록은 플러그인 이름을 클릭해 상세 페이지에서 확인하세요.
 
 | 플러그인 | 스킬 수 | 대표 스킬 (일부) |
 |---|---|---|
 | [moai-core](./moai-core/) | 7 | project, ai-slop-reviewer, feedback, ai-diagnostic, skill-builder, skill-template, skill-tester |
-| [moai-content](./moai-content/) | 8 | blog, card-news, landing-page, copywriting +4종 |
+| [moai-content](./moai-content/) | 9 | blog, card-news, landing-page, copywriting +5종 |
 | [moai-office](./moai-office/) | 5 | pptx-designer, docx-generator, xlsx-creator, hwpx-writer, pdf-writer |
 | [moai-media](./moai-media/) | 7 | nano-banana, audio-gen, character-mgmt, image-gen, speech-video, video-gen, fal-gateway |
-| [moai-business](./moai-business/) | 9 | strategy-planner, investor-relations, sbiz365-analyst, kr-gov-grant, consulting-brief, sales-playbook, startup-launchpad +2종 |
+| [moai-business](./moai-business/) | 10 | strategy-planner, investor-relations, sbiz365-analyst, kr-gov-grant, consulting-brief, sales-playbook, startup-launchpad +3종 |
 | [moai-marketing](./moai-marketing/) | 8 | brand-identity, seo-audit, campaign-planner, sns-content, target-script +3종 |
+| [moai-commerce](./moai-commerce/) | 12 | mfds-safety, real-estate-search +10종 |
 | [moai-product](./moai-product/) | 4 | spec-writer, ux-designer +2종 |
 | [moai-operations](./moai-operations/) | 3 | status-reporter +2종 |
 | [moai-support](./moai-support/) | 4 | ticket-triage +3종 |
-| [moai-hr](./moai-hr/) | 4 | employment-manager, draft-offer, performance-review, people-operations |
-| [moai-legal](./moai-legal/) | 4 | contract-review, nda-triage, compliance-check, legal-risk |
-| [moai-finance](./moai-finance/) | 4 | tax-helper, financial-statements, close-management, variance-analysis |
+| [moai-hr](./moai-hr/) | 5 | employment-manager, draft-offer, performance-review, people-operations +1종 |
+| [moai-legal](./moai-legal/) | 5 | contract-review, nda-triage, compliance-check, legal-risk, iros-registry-automation |
+| [moai-finance](./moai-finance/) | 6 | tax-helper, financial-statements, close-management, variance-analysis, court-auction-search, korean-stock-search |
 | [moai-data](./moai-data/) | 3 | data-explorer, public-data, data-visualizer |
 | [moai-research](./moai-research/) | 5 | paper-search, paper-writer, grant-writer +2종 |
 | [moai-education](./moai-education/) | 3 | curriculum-designer, assessment-creator, research-assistant |
 | [moai-career](./moai-career/) | 4 | resume-builder, job-analyzer, interview-coach, portfolio-guide |
 | [moai-lifestyle](./moai-lifestyle/) | 3 | travel-planner, event-planner, wellness-coach |
+| [moai-bi](./moai-bi/) | 1 | dashboard-builder |
+| [moai-pm](./moai-pm/) | 1 | project-manager |
+| [moai-sales](./moai-sales/) | 1 | sales-prospecting |
 
-전체 **85개** 스킬 (v1.6.0 기준, v1.6.0에서 `moai-office:pdf-writer` 추가로 84 → 85).
+전체 **106개** 스킬 (v2.0.0 기준, 21개 플러그인). 합계 검산: 7+9+5+7+10+8+12+4+3+4+5+5+6+3+5+3+4+3+1+1+1 = **106**.
 
 ## 다음 단계
 

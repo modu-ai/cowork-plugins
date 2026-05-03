@@ -1,6 +1,6 @@
 ---
 title: "Team·Enterprise 관리"
-weight: 110
+weight: 140
 description: "조직에서 Cowork를 도입할 때 관리자가 챙겨야 할 거버넌스, 모니터링, 데이터 흐름 정리."
 geekdocBreadcrumb: true
 ---

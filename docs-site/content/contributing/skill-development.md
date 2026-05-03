@@ -178,13 +178,13 @@ moai-*/skills/skill-name/
 
 ### 기본 사용
 ```text
-"투자자용 IR 덱 만들어줘"
+> "투자자용 IR 덱 만들어줘"
 → 스킬 실행 → IR 덱 생성 완료
 ```
 
 ### 상세한 사용
 ```text
-"우리 SaaS의 Series A용 IR 덱 작성해줘.
+> "우리 SaaS의 Series A용 IR 덱 작성해줘.
 타깃 고객은 한국 중소제조업체야.
 주요 경쟁사는 A, B, C 회사야.
 ```
@@ -203,7 +203,7 @@ moai-*/skills/skill-name/
 다른 스킬과 조합하여 사용할 수 있습니다:
 
 ```
-"사업계획서 작성해줘"
+> "사업계획서 작성해줘"
 → strategy-planner → pptx-designer → ai-slop-reviewer
 ```
 

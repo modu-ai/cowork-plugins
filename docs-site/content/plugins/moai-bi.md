@@ -79,7 +79,7 @@ moai-business:market-analyst → executive-summary → docx-generator → ai-slo
 ```
 
 ```text
-DART 공시한 우리 회사 분기 보고서를 이사회용 1페이지 자료로 만들어줘.
+> DART 공시한 우리 회사 분기 보고서를 이사회용 1페이지 자료로 만들어줘.
 K-IFRS 기준 매출·영업이익률·운전자본 변동 강조.
 ```
 

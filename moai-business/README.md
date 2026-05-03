@@ -17,6 +17,7 @@
 | [consulting-brief](./skills/consulting-brief/) | McKinsey/BCG/Bain Major 3 컨설팅 펌 표준 인게이지먼트 브리프 (목표·범위·산출물·일정·리스크) | 1 | ✅ |
 | [sales-playbook](./skills/sales-playbook/) | 영업 플레이북 자동 생성 (타겟 산업·ICP·콜드 콘택트·반론 대응·후속 시퀀스) | 1 | ✅ |
 | [startup-launchpad](./skills/startup-launchpad/) | 스타트업 종합 패키지 — 아이디어→사업계획서→피치덱→재무 모델→3년 예산까지 한 번에 | 1 | ✅ |
+| [real-estate-search](./skills/real-estate-search/) | 국토교통부(MOLIT) 실거래가/전월세 — 아파트·오피스텔·빌라·단독·상업용 (k-skill-proxy 경유, v2.0.0+) | 0 | ✅ |
 
 ## MCP 커넥터
 

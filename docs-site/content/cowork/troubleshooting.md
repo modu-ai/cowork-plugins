@@ -1,6 +1,6 @@
 ---
 title: "트러블슈팅"
-weight: 105
+weight: 120
 description: "Claude Cowork 사용 중 자주 마주치는 문제(앱·로그인·폴더·플러그인·커넥터·세션·산출물)를 한 페이지로 정리합니다."
 geekdocBreadcrumb: true
 ---
@@ -92,9 +92,9 @@ Windows는 기본 경로 길이 한계가 260자입니다. 한글 폴더명·긴
 
 체인 마지막에 `moai-core:ai-slop-reviewer`가 호출되지 않은 경우입니다. 후속 메시지로 명시합니다.
 
-```text
-방금 결과물을 ai-slop-reviewer로 한 번 더 다듬어줘.
-```
+{{< terminal title="claude — cowork" >}}
+"방금 결과물을 ai-slop-reviewer로 한 번 더 다듬어줘."
+{{< /terminal >}}
 
 ### 4-3. 한글 폰트가 깨진 PPT/Word
 
@@ -154,9 +154,9 @@ Windows는 기본 경로 길이 한계가 260자입니다. 한글 폴더명·긴
 
 cowork-plugins는 커뮤니티 마켓플레이스이므로 자동 업데이트가 OFF입니다. 사용자 측에서 직접 갱신해야 합니다.
 
-```text
+{{< terminal title="claude — cowork" raw="true" >}}
 사용자 지정 → 마켓플레이스 → cowork-plugins → 갱신
-```
+{{< /terminal >}}
 
 그래도 신규 스킬이 안 나타나면 해당 플러그인을 **삭제 후 재설치**합니다.
 

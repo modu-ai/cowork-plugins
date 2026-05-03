@@ -12,6 +12,8 @@
 | [financial-statements](./skills/financial-statements/) | K-IFRS 기준 재무상태표/손익계산서/현금흐름표, 주석 공시, 재무비율 분석 | 3 | ✅ |
 | [close-management](./skills/close-management/) | 월말/분기/연간 결산, 급여 정산, 4대보험 정산, 세무 일정 관리 | 4 | ✅ |
 | [variance-analysis](./skills/variance-analysis/) | 예산 대비 실적 분산 분석, 매출/비용/이익 항목별 원인 분석, KPI 추적 | 0 | ✅ |
+| [court-auction-search](./skills/court-auction-search/) | 대법원 법원경매정보 매각공고·사건번호 단건 조회 (read-only, 2초 throttle, v2.0.0+) | 0 | ✅ |
+| [korean-stock-search](./skills/korean-stock-search/) | KRX 상장 종목 검색·기본정보·일별 시세 (k-skill-proxy 경유, v2.0.0+) | 0 | ✅ |
 
 ## 사용 예시
 

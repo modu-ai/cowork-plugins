@@ -47,8 +47,8 @@ disablePathToLower = true
 
 # Geekdoc 사이트 파라미터
 [params]
-  version = "1.6.0"
-  releaseDate = "2026-05-01"
+  version = "2.0.0"
+  releaseDate = "2026-05-04"
   geekdocRepo = "https://github.com/modu-ai/cowork-plugins"
   geekdocEditPath = "edit/main/docs-site/content"
   geekdocSearch = true
@@ -61,6 +61,10 @@ disablePathToLower = true
   geekdocTagsToMenu = true
   geekdocFileTreeSortBy = "weight"
   geekdocCollapseSection = false
+  # 디자인 standalone 사이드바와 매칭: data/menu/main.yaml 기반 메뉴 사용
+  geekdocMenuBundle = true
+  # Mermaid 다이어그램 활성화 (flowchart, sequence, etc.)
+  geekdocMermaid = true
 
   # 사이트 메타
   description = "Claude Cowork와 cowork-plugins 17종의 한국어 사용자 가이드 · 베스트 프랙티스 · 쿡북"

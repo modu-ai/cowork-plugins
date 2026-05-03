@@ -36,6 +36,7 @@
 | [commerce-strategy](./skills/commerce-strategy/SKILL.md) | 통합 전략 — 채널 믹스, 가격, 프로모션 캘린더, 리텐션, KPI |
 | [commerce-copywriting](./skills/commerce-copywriting/SKILL.md) | 광고·톡톡·푸시·이메일 카피 (ai-slop 자동 체이닝) |
 | [live-commerce](./skills/live-commerce/SKILL.md) | 네이버·카카오·그립·쿠팡 라이브 커머스 가이드 + 30/60분 스크립트 |
+| [mfds-safety](./skills/mfds-safety/SKILL.md) | 식약처(MFDS) 의약품·식품 안전 통합 — e약은요·건강기능식품 인정현황·검사부적합·회수. red flag 시 응급 안내 우선 (v2.0.0+) |
 
 ## 표준 워크플로우
 

@@ -38,3 +38,36 @@ DART_API_KEY=발급받은_인증키
 - `strategy-planner`: 경쟁사 재무 분석, 시장 규모 추정
 - `market-analyst`: 산업 동향, 기업 비교 분석
 - `investor-relations`: IR 자료의 재무 데이터 검증
+
+---
+
+## MOLIT 실거래가 (k-skill-proxy 경유, v2.0.0+)
+
+국토교통부 부동산 실거래가/전월세 신고 데이터를 NomaDamas의 hosted 프록시(`k-skill-proxy.nomadamas.org`) 경유로 조회합니다.
+
+### 사용 측 준비
+
+- **사용자 측 시크릿 불필요** (프록시가 키를 보유)
+- 인터넷 연결만 있으면 동작
+
+### 환경변수 (선택)
+
+```
+KSKILL_PROXY_BASE_URL=https://k-skill-proxy.nomadamas.org   # 기본값. self-host 시 변경
+```
+
+### Self-host 시 추가 설정 (운영 측)
+
+self-host 프록시를 운영하려면 프록시 서버 환경에 다음 키를 등록합니다.
+
+```
+DATA_GO_KR_API_KEY=발급받은_공공데이터포털_키
+```
+
+발급: [공공데이터포털](https://www.data.go.kr) 회원가입 → 활용신청 → 자동승인. 일 1,000회(개발계정).
+
+### 활용 스킬
+
+- `real-estate-search`: 아파트·오피스텔·빌라·단독·상업용 매매·전월세 시세
+- `market-analyst`: 부동산 시세 데이터 기반 시장 분석
+- `investor-relations`: 부동산 자산 실거래가 IR 자료

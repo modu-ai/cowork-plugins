@@ -14,6 +14,7 @@
 | [compliance-check](./skills/compliance-check/) | 규제 준수 갭 분석, ESG 보고, 내부 감사, 인허가 서류 | 4 | ✅ |
 | [legal-risk](./skills/legal-risk/) | 판례/법령 리서치, 특허/상표/저작권 IP 포트폴리오, 법령 변화 영향 분석 | 2 | ✅ |
 | [nda-triage](./skills/nda-triage/) | 비밀유지계약서 신속 검토, 영업비밀보호법 기준 위험도 평가, 수정 권고 | 0 | ✅ |
+| [iros-registry-automation](./skills/iros-registry-automation/) | 인터넷등기소(IROS) 법인·부동산 등기부등본 일괄 발급 보조. 로그인·결제 사용자 직접, 장바구니·열람·저장 자동화 (v2.0.0+) | 0 | ✅ |
 
 ## MCP 커넥터
 

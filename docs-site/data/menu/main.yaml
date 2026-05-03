@@ -1,0 +1,233 @@
+main:
+  - name: 시작하기
+    icon: home
+    defaultOpen: true
+    sub:
+      - name: MoAI-Cowork 소개
+        ref: /
+      - name: 설치 및 등록
+        ref: /getting-started/install
+      - name: 첫 작업
+        ref: /getting-started/first-task
+        isNew: true
+      - name: 빠른 시작
+        ref: /getting-started/quick-start
+      - name: 자주 묻는 질문
+        ref: /cowork/faq
+      - name: 이 문서에 대하여
+        ref: /about
+
+  - name: 코워크
+    icon: book
+    defaultOpen: true
+    sub:
+      - name: 개요
+        ref: /cowork
+      - name: Cowork 소개
+        ref: /cowork/intro
+      - name: 설치와 요금제
+        ref: /cowork/install
+      - name: 첫 작업 실행
+        ref: /cowork/first-task
+      - name: 안전하게 사용
+        ref: /cowork/safety
+      - name: 프로젝트와 메모리
+        ref: /cowork/projects-memory
+      - name: 스킬 사용법
+        ref: /cowork/skills
+      - name: 플러그인 사용
+        ref: /cowork/plugins
+      - name: 커넥터·MCP
+        ref: /cowork/connectors-mcp
+      - name: 예약 작업
+        ref: /cowork/schedule
+      - name: 컴퓨터 사용
+        ref: /cowork/computer-use
+        isNew: true
+      - name: 자주 묻는 질문
+        ref: /cowork/faq
+      - name: 트러블슈팅
+        ref: /cowork/troubleshooting
+      - name: 시스템 한도
+        ref: /cowork/constraints
+      - name: Team·Enterprise
+        ref: /cowork/enterprise
+      - name: 용어집
+        ref: /cowork/glossary
+
+  - name: 플러그인
+    icon: plug
+    defaultOpen: true
+    sub:
+      - name: 전체 보기
+        ref: /plugins
+        count: 106
+      - name: 빠른 시작
+        ref: /plugins/quick-start
+      - name: 코어-필수
+        ref: /plugins/moai-core
+        count: 7
+      - name: 콘텐츠
+        ref: /plugins/moai-content
+        count: 9
+      - name: 오피스
+        ref: /plugins/moai-office
+        count: 5
+      - name: 미디어
+        ref: /plugins/moai-media
+        count: 7
+      - name: 비즈니스
+        ref: /plugins/moai-business
+        count: 10
+        badge: v1.5
+      - name: 마케팅
+        ref: /plugins/moai-marketing
+        count: 8
+      - name: 커머스
+        ref: /plugins/moai-commerce
+        count: 12
+        isNew: true
+      - name: 프로덕트
+        ref: /plugins/moai-product
+        count: 4
+      - name: 운영
+        ref: /plugins/moai-operations
+        count: 3
+      - name: 고객지원
+        ref: /plugins/moai-support
+        count: 4
+      - name: 인사
+        ref: /plugins/moai-hr
+        count: 5
+      - name: 법무
+        ref: /plugins/moai-legal
+        count: 5
+      - name: 재무
+        ref: /plugins/moai-finance
+        count: 6
+      - name: 데이터
+        ref: /plugins/moai-data
+        count: 3
+      - name: 연구
+        ref: /plugins/moai-research
+        count: 5
+      - name: 교육
+        ref: /plugins/moai-education
+        count: 3
+      - name: 커리어
+        ref: /plugins/moai-career
+        count: 4
+      - name: 라이프스타일
+        ref: /plugins/moai-lifestyle
+        count: 3
+      - name: BI 대시보드
+        ref: /plugins/moai-bi
+        count: 1
+        isNew: true
+      - name: 프로젝트 관리
+        ref: /plugins/moai-pm
+        count: 1
+        isNew: true
+      - name: 영업
+        ref: /plugins/moai-sales
+        count: 1
+        isNew: true
+
+  - name: 쿡북
+    icon: chef
+    sub:
+      - name: 쿡북 홈
+        ref: /cookbook
+      - name: 스킬 체이닝
+        ref: /cookbook/skill-chaining
+      - name: 베스트 프랙티스
+        ref: /cookbook/best-practices
+      - name: 자동화 레시피
+        ref: /cookbook/automation-recipes
+      - name: 블로그 파이프라인
+        ref: /cookbook/blog-pipeline
+      - name: 보고서 자동화
+        ref: /cookbook/report-automation
+      - name: 마케팅 트랙
+        ref: /cookbook/track-marketing
+      - name: 문서 트랙
+        ref: /cookbook/track-documents
+      - name: 데이터 트랙
+        ref: /cookbook/track-data
+      - name: 사업계획서
+        ref: /cookbook/business-plan
+      - name: NDA 일괄 검토
+        ref: /cookbook/legal-nda-batch
+      - name: IR 덱 제작
+        ref: /cookbook/ir-deck
+      - name: 계약서 검토
+        ref: /cookbook/contract-review
+      - name: AI 사원 설계
+        ref: /cookbook/ai-employee-design
+      - name: AI 사원 실습 1
+        ref: /cookbook/ai-employee-lab-1
+      - name: AI 사원 실습 2
+        ref: /cookbook/ai-employee-lab-2
+      - name: 트러블슈팅
+        ref: /cookbook/troubleshooting
+      - name: 최종 프로젝트
+        ref: /cookbook/final-project
+
+  - name: 실전 트랙
+    icon: tag
+    sub:
+      - name: 트랙 홈
+        ref: /cookbook/tracks
+      - name: 데이터 트랙
+        ref: /cookbook/tracks/track-data
+      - name: 문서 트랙
+        ref: /cookbook/tracks/track-documents
+      - name: 재무 트랙
+        ref: /cookbook/tracks/track-finance
+      - name: 법무 트랙
+        ref: /cookbook/tracks/track-legal
+      - name: 마케팅 트랙
+        ref: /cookbook/tracks/track-marketing
+      - name: 제품 트랙
+        ref: /cookbook/tracks/track-product
+
+  - name: 커리큘럼
+    icon: book
+    sub:
+      - name: 커리큘럼 홈
+        ref: /cookbook/curriculum
+      - name: 실습 1
+        ref: /cookbook/curriculum/lab-1
+      - name: 실습 2
+        ref: /cookbook/curriculum/lab-2
+      - name: 최종 프로젝트
+        ref: /cookbook/curriculum/final-project
+
+  - name: 기여하기
+    icon: star
+    sub:
+      - name: 기여 홈
+        ref: /contributing
+      - name: 스킬 개발 가이드
+        ref: /contributing/skill-development
+      - name: 플러그인 개발 가이드
+        ref: /contributing/plugin-development
+
+  - name: 릴리스
+    icon: tag
+    sub:
+      - name: 릴리스 홈
+        ref: /releases
+      - name: v2.0.x
+        ref: /releases/v2.0
+        isNew: true
+      - name: v1.6.x
+        ref: /releases/v1.6
+      - name: v1.5.x
+        ref: /releases/v1.5
+      - name: v1.3.x
+        ref: /releases/v1.3
+      - name: v1.2.x
+        ref: /releases/v1.2
+      - name: v1.0.x
+        ref: /releases/v1.0

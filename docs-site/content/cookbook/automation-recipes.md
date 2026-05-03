@@ -91,7 +91,7 @@ flowchart TB
 
 ### 재무 — 매일 아침 환율·미결 메일
 
-```text
+{{< terminal title="claude — cowork" >}}
 /schedule
 
 매일 08:50에 다음을 실행해줘:
@@ -99,11 +99,11 @@ flowchart TB
 2. Gmail에서 어제 이후 안 읽은 이메일 중 "결제·인보이스·정산" 키워드 포함 메일 분류
 3. Slack #finance-daily 채널에 환율 + 미결 메일 목록 전송
 4. 전날 대비 환율 변동이 ±1% 이상이면 "경고" 표시
-```
+{{< /terminal >}}
 
 ### 품질 — 불량 대시보드
 
-```text
+{{< terminal title="claude — cowork" >}}
 /schedule
 
 매일 07:00에 다음을 실행해줘:
@@ -111,11 +111,11 @@ flowchart TB
 2. 생산라인별 불량률 집계, 임계치(2%) 초과 라인 강조
 3. HTML 리포트를 90_Output/YYYY-MM-DD-quality.html로 저장
 4. 공장장(factory@company.com) Gmail로 HTML 첨부 발송
-```
+{{< /terminal >}}
 
 ### 해외영업 — 조기 뉴스 브리핑
 
-```text
+{{< terminal title="claude — cowork" >}}
 /schedule
 
 매일 06:00에 다음을 실행해줘:
@@ -123,7 +123,7 @@ flowchart TB
 2. 주요 기사 5개 선별하여 한국어로 3줄 요약
 3. 요약을 Notion "일일 해외 브리핑" 페이지에 오늘 날짜로 추가
 4. 카카오톡 나에게 보내기로 Notion URL 푸시
-```
+{{< /terminal >}}
 
 ## Dispatch 활용 패턴
 
@@ -149,12 +149,12 @@ D:/Sales/Q1_report.xlsx를 분석해서 임원 요약 PPT 5장을 만들어
 
 ### 패턴 C — 지연 실행
 
-```text
+{{< terminal title="claude — cowork" >}}
 (모바일 앱에서)
 사무실 PC에서 오늘 밤 10시에 실행:
 Downloads 폴더의 어제 이후 파일을 Project_YYYY-MM 폴더로 분류하고
 30일 이상 안 쓴 파일은 Archive로 이동해줘.
-```
+{{< /terminal >}}
 
 ## 운영 체크리스트
 

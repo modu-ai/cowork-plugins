@@ -72,7 +72,7 @@ grant-writer → docx-generator → ai-slop-reviewer
 ```
 
 ```text
-2026년 NRF 중견연구자지원사업 신청서 초안 만들어줘. 주제는 ○○, 팀 구성은 …
+> 2026년 NRF 중견연구자지원사업 신청서 초안 만들어줘. 주제는 ○○, 팀 구성은 …
 ```
 
 ## 다음 단계

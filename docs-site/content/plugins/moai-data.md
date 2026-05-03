@@ -66,11 +66,11 @@ data-visualizer  (HTML + Chart.js 단독)
 ## 빠른 사용 예
 
 ```text
-KOSIS에서 최근 10년 서울 1인 가구 추이 가져와서 라인차트 만들어줘.
+> KOSIS에서 최근 10년 서울 1인 가구 추이 가져와서 라인차트 만들어줘.
 ```
 
 ```text
-customers.csv에서 이상값 찾고 데이터 품질 보고서 만들어줘.
+> customers.csv에서 이상값 찾고 데이터 품질 보고서 만들어줘.
 ```
 
 ## 다음 단계

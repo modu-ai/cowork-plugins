@@ -22,7 +22,7 @@ flowchart LR
 
     Public[공공데이터 API] --> PublicData[③ public-data]
     PublicData --> Explore
-```
+{{< terminal title="claude — cowork" >}}
 
 ## Part 1 — data-explorer
 
@@ -36,15 +36,15 @@ flowchart LR
 ### 기본 프롬프트
 
 ```text
-D:/Input/customer-transactions-2026.csv를 분석해줘.
+> D:/Input/customer-transactions-2026.csv를 분석해줘.
 
-- 총 행수·결측률·중복 건수
-- 수치형 컬럼 요약 통계 (평균·중앙값·표준편차·분위수)
-- 범주형 컬럼 Top 10 빈도
-- 이상값 탐지 (IQR 기준)
-- 주요 상관관계 (Pearson > 0.5)
-- 결과는 Markdown 리포트로, 90_Output/data-quality.md에 저장
-```
+  - 총 행수·결측률·중복 건수
+  - 수치형 컬럼 요약 통계 (평균·중앙값·표준편차·분위수)
+  - 범주형 컬럼 Top 10 빈도
+  - 이상값 탐지 (IQR 기준)
+  - 주요 상관관계 (Pearson > 0.5)
+  - 결과는 Markdown 리포트로, 90_Output/data-quality.md에 저장
+{{< /terminal >}}
 
 ### 실전 팁
 
@@ -65,15 +65,15 @@ D:/Input/customer-transactions-2026.csv를 분석해줘.
 
 ### 기본 프롬프트
 
-```text
-방금 생성한 data-quality.md 분석 결과를 시각화해줘.
+{{< terminal title="claude — cowork" >}}
+> 방금 생성한 data-quality.md 분석 결과를 시각화해줘.
 
-- 월별 매출 추이: 선 그래프 (Chart.js HTML)
-- 카테고리별 매출 비중: 도넛 차트
-- 지역별 고객 분포: 막대 그래프
-- 모든 차트는 반응형, 다크 모드 지원
-- 저장: 90_Output/dashboards/YYYY-MM-DD.html
-```
+  - 월별 매출 추이: 선 그래프 (Chart.js HTML)
+  - 카테고리별 매출 비중: 도넛 차트
+  - 지역별 고객 분포: 막대 그래프
+  - 모든 차트는 반응형, 다크 모드 지원
+  - 저장: 90_Output/dashboards/YYYY-MM-DD.html
+{{< /terminal >}}
 
 ### 차트 종류별 추천 표
 
@@ -119,7 +119,7 @@ D:/Input/customer-transactions-2026.csv를 분석해줘.
 
 ### 기본 프롬프트
 
-```text
+{{< terminal title="claude — cowork" >}}
 KOSIS에서 "소비자물가지수 최근 24개월"을 조회해서
 내 회사 매출 데이터(Q1-sales.xlsx)와 함께 분석해줘.
 
@@ -128,7 +128,7 @@ KOSIS에서 "소비자물가지수 최근 24개월"을 조회해서
 - 실질 매출 그래프 + 명목 매출 그래프 비교
 - 인플레이션 효과 제거 후 진짜 성장률 계산
 - Word 보고서로 정리, 90_Output/real-growth.docx
-```
+{{< /terminal >}}
 
 ### API 키 관리
 

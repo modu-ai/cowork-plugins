@@ -36,26 +36,26 @@ nda-triage → contract-review → legal-risk → docx-generator → ai-slop-rev
 
 ## 단일 프롬프트 실행
 
-```text
-./nda_inbox/ 폴더의 NDA PDF 12개를 분류·검토해줘.
+{{< terminal title="claude — cowork" >}}
+> ./nda_inbox/ 폴더의 NDA PDF 12개를 분류·검토해줘.
 
 회사 정보:
-- 회사명: SmartFlow Inc.
-- 핵심 영업비밀: 고객 거래 데이터, 알고리즘 가중치, 고객사 명단
+  - 회사명: SmartFlow Inc.
+  - 핵심 영업비밀: 고객 거래 데이터, 알고리즘 가중치, 고객사 명단
 
 요청:
 1. 각 NDA를 nda-triage로 분류 (상호/일방, 기간, 손해배상 캡, 준거법, 분쟁관할)
 2. contract-review로 조항별 검토, 트랙체인지 형식의 수정 제안
 3. legal-risk로 위험도(상/중/하) 평가 + 우선순위 부여
 4. 종합 위험 보고서를 docx로 만들어줘
-   - 1페이지 경영진 요약 (위험도 분포 차트, Top 3 위험 NDA)
-   - NDA별 상세 (1건당 1~2페이지)
-   - 부록: 표준 NDA 템플릿 비교표
+  - 1페이지 경영진 요약 (위험도 분포 차트, Top 3 위험 NDA)
+  - NDA별 상세 (1건당 1~2페이지)
+  - 부록: 표준 NDA 템플릿 비교표
 5. 마지막에 ai-slop-reviewer로 어투 정리
 
 저장: 90_Output/nda-report/2026-Q2-nda-review.docx
 면책 문구: "본 보고서는 1차 검토 가이드이며 최종 법률자문은 변호사 검토를 거쳐야 합니다"를 자동 삽입
-```
+{{< /terminal >}}
 
 ## 자주 겪는 이슈
 

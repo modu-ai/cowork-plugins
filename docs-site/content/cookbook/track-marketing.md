@@ -71,7 +71,7 @@ CEO·임원·전문가 개인의 전문성을 브랜드화합니다.
 
 네이버·티스토리·브런치·WordPress·Ghost 6개 플랫폼 맞춤 SEO 최적화.
 
-```text
+{{< terminal title="claude — cowork" >}}
 (예시)
 블로그 포스팅 1편 작성해줘.
 
@@ -83,13 +83,13 @@ CEO·임원·전문가 개인의 전문성을 브랜드화합니다.
 - 헤드라인 SEO 키워드: "중소기업 세액공제", "2026 세법 개정", "연말정산 절세"
 - 본문 구조: 도입(문제 제기) → 7가지 변화 상세 → 요약 체크리스트 → 실무 팁
 - 저장: 90_Output/blog-tax-2026.md (MD 파일, 이미지 자리는 [IMG-1] 형식으로 표시)
-```
+{{< /terminal >}}
 
 ### card-news — 인스타 카드뉴스
 
 AI 이미지 생성 기반 캐러셀 10장.
 
-```text
+{{< terminal title="claude — cowork" >}}
 (예시)
 방금 만든 블로그 포스트를 카드뉴스 10장으로 변환해줘.
 
@@ -99,13 +99,13 @@ AI 이미지 생성 기반 캐러셀 10장.
 - 이미지 생성은 moai-media:nano-banana (한글 타이포 렌더링 SOTA)
 - 마지막 장은 CTA — "블로그 풀버전 → 링크"
 - 저장: 90_Output/card-news/card-01.png ~ card-10.png
-```
+{{< /terminal >}}
 
 ### newsletter — 뉴스레터
 
 구독자 확보·오픈율 최적화 포함.
 
-```text
+{{< terminal title="claude — cowork" >}}
 (예시)
 매주 금요일 발행 뉴스레터 1회분을 만들어줘.
 
@@ -121,13 +121,13 @@ AI 이미지 생성 기반 캐러셀 10장.
   - CTA 버튼 문구 2개 안
   - 푸터 (수신거부 안내 포함)
 - 저장: 90_Output/newsletter/YYYY-WW.md
-```
+{{< /terminal >}}
 
 ### social-media — SNS 콘텐츠
 
 인스타·스레드·X·링크드인·유튜브쇼츠·카카오·네이버 7개 플랫폼 개별 최적화.
 
-```text
+{{< terminal title="claude — cowork" >}}
 (예시)
 이번 주 블로그 포스트를 7개 플랫폼에 맞게 변환해줘.
 
@@ -140,13 +140,13 @@ AI 이미지 생성 기반 캐러셀 10장.
 - 네이버 블로그: 별도 파일 (track-content-blog 참고)
 
 저장: 90_Output/social/<platform>.md 각각
-```
+{{< /terminal >}}
 
 ### product-detail — 상세페이지
 
 네이버 스마트스토어·쿠팡·카카오 커머스 규격.
 
-```text
+{{< terminal title="claude — cowork" >}}
 (예시)
 새 제품 "WorkBook Pro" 상세페이지를 만들어줘.
 
@@ -163,13 +163,13 @@ AI 이미지 생성 기반 캐러셀 10장.
   - FAQ 5개
 - 이미지 플레이스홀더는 [PRODUCT-HERO], [USP-1] 형식으로 표시
 - 저장: 90_Output/detail/workbook-pro.html
-```
+{{< /terminal >}}
 
 ### landing-page — 단독 랜딩
 
 고전환율 원페이지 설계.
 
-```text
+{{< terminal title="claude — cowork" >}}
 (예시)
 다가오는 웨비나 "2026 세무 변화 완전정복" 랜딩 페이지를 만들어줘.
 
@@ -187,7 +187,7 @@ AI 이미지 생성 기반 캐러셀 10장.
   - CTA 3차 (마지막)
 - HTML 단일 파일, CSS는 인라인
 - 저장: 90_Output/landing/webinar-2026-tax.html
-```
+{{< /terminal >}}
 
 ## Part 3 — 캠페인·성과
 
@@ -195,7 +195,7 @@ AI 이미지 생성 기반 캐러셀 10장.
 
 A/B 테스트 설계·인플루언서 전략·CRM 자동화.
 
-```text
+{{< terminal title="claude — cowork" >}}
 (예시)
 신제품 런칭 캠페인을 8주 간으로 기획해줘.
 
@@ -207,13 +207,13 @@ A/B 테스트 설계·인플루언서 전략·CRM 자동화.
 - 인플루언서 Top 15 섭외 기준
 - 전환 퍼널 설계 (방문 → 이메일 가입 → 예약)
 - 저장: 90_Output/campaign/launch-plan.docx
-```
+{{< /terminal >}}
 
 ### performance-report — 성과 보고서
 
 GA4·네이버 광고·메타 광고·카카오모먼트 데이터 통합 분석.
 
-```text
+{{< terminal title="claude — cowork" >}}
 (예시)
 지난 달 마케팅 성과 보고서 만들어줘.
 
@@ -225,13 +225,13 @@ GA4·네이버 광고·메타 광고·카카오모먼트 데이터 통합 분석
 - 경영진 요약 (1페이지) + 실무팀 상세 (5페이지)
 - 액션 플랜 — 다음 달 채널 예산 재분배 제안
 - 저장: 90_Output/report/mkt-monthly-YYYY-MM.pptx
-```
+{{< /terminal >}}
 
 ### seo-audit — 네이버·구글·GEO 통합 감사
 
 AI 검색(GEO) 최적화까지 포함.
 
-```text
+{{< terminal title="claude — cowork" >}}
 (예시)
 blog.smartflow.co.kr 사이트의 SEO를 종합 감사해줘.
 
@@ -243,13 +243,13 @@ blog.smartflow.co.kr 사이트의 SEO를 종합 감사해줘.
 - 경쟁사 3개와 키워드 갭 분석
 - 우선순위 높은 개선 항목 Top 10
 - 저장: 90_Output/seo-audit-smartflow.docx
-```
+{{< /terminal >}}
 
 ### email-sequence — 이메일 드립
 
 정보통신망법 준수 기반 자동화 시퀀스.
 
-```text
+{{< terminal title="claude — cowork" >}}
 (예시)
 신규 가입자 온보딩 이메일 시퀀스 7편을 만들어줘.
 
@@ -262,7 +262,7 @@ blog.smartflow.co.kr 사이트의 SEO를 종합 감사해줘.
 - Day 30: 만족도 조사 요청
 - 법적 준수: 수신거부 링크·광고 표시·발신자 정보 포함
 - 저장: 90_Output/email-sequence/
-```
+{{< /terminal >}}
 
 ## 자주 걸리는 지점
 

@@ -45,24 +45,24 @@ status-reporter → data-explorer → xlsx-creator → docx-generator → ai-slo
 
 ### 2. 수동 실행으로 검증
 
-```
-이번 주 주간 보고서 만들어줘.
+{{< terminal title="claude — cowork" >}}
+> 이번 주 주간 보고서 만들어줘.
   - KPI 데이터: /weekly/kpi-20260417.csv
   - 이슈: Slack #ops-weekly 이번 주
   - 할 일: Notion 팀 업무 DB 이번 주
 
 체인: status-reporter → data-explorer → xlsx-creator → docx-generator → ai-slop-reviewer
 출력: /weekly/주간보고-20260417.docx
-```
+{{< /terminal >}}
 
 ### 3. 스케줄로 등록
 
-```
+{{< terminal title="claude — cowork" >}}
 /schedule create
 이름: 주간 보고서
 주기: 매주 금요일 17:00
 프롬프트: (2번의 프롬프트를 그대로, 날짜만 {{date}} 로 치환)
-```
+{{< /terminal >}}
 
 ### 4. 첫 2주는 수동 검수
 

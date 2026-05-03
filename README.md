@@ -2,19 +2,31 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
-[![Version](https://img.shields.io/badge/Version-1.8.1-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-2.0.0-blue)](CHANGELOG.md)
 [![Plugins](https://img.shields.io/badge/Plugins-21-blue)](.claude-plugin/marketplace.json)
-[![Skills](https://img.shields.io/badge/Skills-100-green)](.claude-plugin/marketplace.json)
+[![Skills](https://img.shields.io/badge/Skills-106-green)](.claude-plugin/marketplace.json)
 [![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)
 [![shadcn/ui](https://img.shields.io/badge/UI-shadcn/ui-black)](https://ui.shadcn.com/)
 
 **Claude Cowork 도메인 전문가 AI 마켓플레이스**
 
-자연어 한 줄이면 사업계획서, 계약서 검토, 세금 계산, PPT 제작, 데이터 분석, 특허 검색, **AI 이미지·영상·음성 생성**, **shadcn/ui 기반 랜딩·상세 페이지 제작**, **소상공인 상권분석·정부지원사업 신청**, **한국 이커머스 풀세트 — 13섹션 상세페이지 + 8개 채널 가이드(쿠팡·네이버·자사몰·크라우드펀딩·큐레이션·라이브) + 통합 마케팅 전략·카피**, **BI 대시보드·경영진 1pager**, **프로젝트 관리·주간보고·OKR·회고**, **B2B 영업·제안서·콜드메일**까지 — 21개 독립 플러그인과 100개 전문 스킬이 업무를 대신합니다. 모든 텍스트 산출물은 **`ai-slop-reviewer`가 AI 패턴을 검수**하여 사람이 쓴 것처럼 자연스럽게 다듬어 드립니다.
+자연어 한 줄이면 사업계획서, 계약서 검토, 세금 계산, PPT 제작, 데이터 분석, 특허 검색, **AI 이미지·영상·음성 생성**, **shadcn/ui 기반 랜딩·상세 페이지 제작**, **소상공인 상권분석·정부지원사업 신청**, **한국 이커머스 풀세트 — 13섹션 상세페이지 + 8개 채널 가이드(쿠팡·네이버·자사몰·크라우드펀딩·큐레이션·라이브) + 통합 마케팅 전략·카피**, **BI 대시보드·경영진 1pager**, **프로젝트 관리·주간보고·OKR·회고**, **B2B 영업·제안서·콜드메일**, **v2.0.0 한국 B2B 특화 6스킬 — 인터넷등기소 등기부등본 일괄 발급·국토부 실거래가·식약처 안전·법원경매·KRX 시세·바른한글 맞춤법**까지 — 21개 독립 플러그인과 106개 전문 스킬이 업무를 대신합니다. 모든 텍스트 산출물은 **`ai-slop-reviewer`가 AI 패턴을 검수**하여 사람이 쓴 것처럼 자연스럽게 다듬어 드립니다.
 
 > *Domain expert AI marketplace for [Claude Cowork](https://claude.ai). 21 plugins · 100 skills covering business strategy, marketing, legal, finance, HR, content, operations, education, lifestyle, product, support, document generation (DOCX/PPTX/XLSX/HWPX/**multilingual PDF**), data analysis, research/patents, **AI media production (image/video/voice)**, **shadcn/ui-based web landing/detail pages**, **small-business commercial-area analysis & Korean government grant applications**, **Korean e-commerce full-cycle (13-section detail page + 8 channel guides — Coupang, Naver Smartstore, Cafe24/Imweb D2C, Wadiz/Tumblbug crowdfunding, Kakao Makers/Musinsa/29CM curation, live commerce + integrated marketing strategy & copy)**, and automatic AI-slop detection for every text deliverable.*
 
-**🆕 v1.8.0 하이라이트**
+**🆕 v2.0.0 하이라이트** (2026-05-04)
+- **한국 B2B 시장 특화 6스킬 도입** — `NomaDamas/k-skill` (MIT) 포팅. 마켓플레이스 100 → **106 스킬**, 플러그인 21개 유지
+- **`moai-legal:iros-registry-automation`** — 대법원 인터넷등기소(IROS) 법인·부동산 등기부등본 **일괄 발급 보조**. 로그인·결제는 사용자 직접, 장바구니·열람·저장만 자동화. TouchEn nxKey + 페이지당 10건 결제 제약 안내
+- **`moai-business:real-estate-search`** — 국토교통부(MOLIT) 실거래가/전월세 — 아파트·오피스텔·연립다세대·단독·상업용 매매·전월세. **사용자 측 API 키 불필요** (NomaDamas hosted proxy 경유)
+- **`moai-commerce:mfds-safety`** — 식약처(MFDS) 의약품·식품 안전 통합 (e약은요·건강기능식품 인정현황·검사부적합·회수). **red flag 인터뷰 우선** + 헬스/F&B 커머스 상품 검수
+- **`moai-finance:court-auction-search`** — 대법원 법원경매정보 매각공고·사건번호 단건 조회. **read-only, 2초 throttle, IP 차단 방지**. 공식 OpenAPI 없음을 명시
+- **`moai-finance:korean-stock-search`** — KRX 상장 종목 검색·기본정보·일별 시세. **사용자 KRX_API_KEY 발급 불필요**, 일 1회 갱신
+- **`moai-content:korean-spell-check`** — 부산대 AI연구실 + ㈜나라인포테크 공동 개발 **바른한글**(2024-10 리브랜딩) 한국어 맞춤법·띄어쓰기 검수. `ai-slop-reviewer` 직후 체인 권장
+- **NOTICE.md 어트리뷰션 추가** — `NomaDamas/k-skill` (MIT) + 원 저작자(`challengekim`/`tae0y`/`jjlabsio`) 보존
+- **MAJOR bump 사유**: 한국 B2B 시장 특화 도메인 도입은 cowork 정체성의 단계적 변화이며, **기능 호환성 손실은 없습니다**(기존 워크플로우 그대로 동작)
+- [릴리스 노트](https://github.com/modu-ai/cowork-plugins/releases/tag/v2.0.0) · [한국어 문서 사이트](https://cowork.mo.ai.kr/releases/v2.0/)
+
+**v1.8.0 하이라이트**
 - **`moai-commerce` 5 → 11 스킬 대폭 확장** — 한국 이커머스 풀세트로 진화
 - **신규 6 스킬**: `marketplace-d2c`(카페24·아임웹·메이크샵 자사몰), `marketplace-crowdfunding`(와디즈·텀블벅), `marketplace-curation`(카카오 메이커스·무신사·29CM), `commerce-strategy`(채널 믹스·가격·프로모션·리텐션·KPI), `commerce-copywriting`(광고·톡톡·푸시·이메일 — ai-slop 자동 체이닝), `live-commerce`(네이버 쇼핑라이브·카카오·그립·쿠팡 라이브 + 30/60분 스크립트)
 - **티몬·위메프 가이드 제외** — 큐텐(Qoo10) 인수 후 2024년 미정산 사태로 회생절차 진입. archive 표기로 안내
@@ -72,24 +84,27 @@
 
 | 플러그인 | 설명 | 스킬 수 |
 |---------|------|:-------:|
-| [moai-core](./moai-core/) | 프로젝트 초기화(`/project init`) + 스킬 체이닝 라우터 + AI 슬롭 검수 + 피드백 | 3 |
-| [moai-business](./moai-business/) | 사업계획서, 시장조사, 재무모델, 투자제안서, **소상공인 상권분석**, **정부지원사업 통합** | 6 |
-| [moai-marketing](./moai-marketing/) | 기업/개인 브랜딩, SEO, SNS, 캠페인, 이메일 시퀀스, 퍼포먼스 | 7 |
-| [moai-legal](./moai-legal/) | 계약서 검토, 컴플라이언스, NDA, 지적재산권 | 4 |
-| [moai-finance](./moai-finance/) | 원천징수, 부가세, K-IFRS, 결산, 예산 분석 | 4 |
-| [moai-hr](./moai-hr/) | 근로계약서, 4대보험, 채용, 성과평가 | 4 |
-| [moai-content](./moai-content/) | 카드뉴스, 상세페이지, 랜딩페이지, 뉴스레터, 카피라이팅, 블로그, 소셜미디어 | 8 |
+| [moai-core](./moai-core/) | 프로젝트 초기화(`/project init`) + 스킬 체이닝 라우터 + AI 슬롭 검수 + 피드백 + **AI 진단** + **스킬 빌더/테스터/템플릿** | 7 |
+| [moai-business](./moai-business/) | 사업계획서, 시장조사, 재무모델, 투자제안서, **소상공인 상권분석**, **정부지원사업 통합**, **국토부 실거래가** 🆕 | 10 |
+| [moai-marketing](./moai-marketing/) | 기업/개인 브랜딩, SEO, SNS, 캠페인, 이메일 시퀀스, 퍼포먼스, **타깃 스크립트** | 8 |
+| [moai-legal](./moai-legal/) | 계약서 검토, 컴플라이언스, NDA, 지적재산권, **인터넷등기소 자동화** 🆕 | 5 |
+| [moai-finance](./moai-finance/) | 원천징수, 부가세, K-IFRS, 결산, 예산 분석, **법원경매 매각공고**, **KRX 시세** 🆕 | 6 |
+| [moai-hr](./moai-hr/) | 근로계약서, 4대보험, 채용, 성과평가, **이력서 스크리닝** | 5 |
+| [moai-content](./moai-content/) | 카드뉴스, 상세페이지, 랜딩페이지, 뉴스레터, 카피라이팅, 블로그, 소셜미디어, **바른한글 맞춤법** 🆕 | 9 |
 | [moai-operations](./moai-operations/) | 결재, 조달, SOP, 벤더 관리, 상태 보고 | 3 |
 | [moai-education](./moai-education/) | 강의설계, 논문, 교육과정, 시험 출제 | 3 |
 | [moai-lifestyle](./moai-lifestyle/) | 여행, 건강, 웨딩/이벤트 | 3 |
-| [moai-product](./moai-product/) | PM 로드맵, UX 리서치, 스펙, AI 전략 | 3 |
+| [moai-product](./moai-product/) | PM 로드맵, UX 리서치, 스펙, **UX 디자이너** | 4 |
 | [moai-support](./moai-support/) | 티켓 분류, KB 문서, 에스컬레이션 | 4 |
 | [moai-office](./moai-office/) | PPT, DOCX, XLSX, HWPX, PDF 문서 생성 | 5 |
 | [moai-career](./moai-career/) | 커리어 준비 — 자기소개서, 이력서, 면접 코칭, 채용공고 분석 | 4 |
 | [moai-data](./moai-data/) | 데이터 분석 — CSV/Excel 탐색, 공공데이터, 시각화 | 3 |
 | [moai-research](./moai-research/) | 연구/특허 — 논문 검색, 특허 분석/출원, 연구비 신청 | 5 |
-| [moai-media](./moai-media/) | AI 미디어 스튜디오 — Nano Banana 이미지, Kling 영상, ElevenLabs 음성, fal.ai 게이트웨이 | 5 |
-| [moai-commerce](./moai-commerce/) 🆕 | 한국 이커머스 풀세트 — 상세페이지(카피·이미지·사진 브리프) + 채널 가이드 5종(쿠팡·네이버·자사몰·크라우드펀딩·큐레이션) + 통합 마케팅(전략·카피·라이브 커머스) | 11 |
+| [moai-media](./moai-media/) | AI 미디어 스튜디오 — Nano Banana 이미지·**범용 image-gen**·**video-gen**·**audio-gen**·**speech-video** + Kling 영상·ElevenLabs 음성·fal.ai 게이트웨이·**character-mgmt** | 7 |
+| [moai-commerce](./moai-commerce/) | 한국 이커머스 풀세트 — 상세페이지(카피·이미지·사진 브리프) + 채널 가이드 5종(쿠팡·네이버·자사몰·크라우드펀딩·큐레이션) + 통합 마케팅(전략·카피·라이브 커머스) + **식약처 안전(MFDS)** 🆕 | 12 |
+| [moai-bi](./moai-bi/) | BI·경영진 1pager — `executive-summary` (KPI 대시보드 + 경영진 보고서) | 1 |
+| [moai-pm](./moai-pm/) | 프로젝트 관리·주간보고·OKR — `weekly-report` (회고·KPI 추적) | 1 |
+| [moai-sales](./moai-sales/) | B2B 영업·제안서·콜드메일 — `proposal-writer` (RFP 대응) | 1 |
 
 ## 총 산출물
 

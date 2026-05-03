@@ -25,7 +25,7 @@ flowchart LR
     Pptx --> Review
     Hwpx --> Review
     Review --> Out[최종 산출물]
-```
+{{< terminal title="claude — cowork" >}}
 
 ## Word (DOCX) — 가장 많이 쓰는 포맷
 
@@ -53,7 +53,7 @@ Q2 매출 보고서를 Word로 작성해줘.
 - 각 섹션에 전년 동기 대비 그래프 삽입
 - 부록: 원본 데이터 테이블
 - 저장 경로: 90_Output/Q2-sales-report.docx
-```
+{{< /terminal >}}
 
 ### 자주 걸리는 지점
 
@@ -79,7 +79,7 @@ Q2 매출 보고서를 Word로 작성해줘.
 
 ### 실무 흐름
 
-```text
+{{< terminal title="claude — cowork" >}}
 (예시)
 Q2 매출 데이터를 분석해서 임원 대상 PPT 7장을 만들어줘.
 
@@ -90,7 +90,7 @@ Q2 매출 데이터를 분석해서 임원 대상 PPT 7장을 만들어줘.
 - 7장: 다음 분기 전망 + 제언
 - 테마: 화이트 배경, 포인트 컬러 코랄
 - 저장: 90_Output/Q2-review.pptx
-```
+{{< /terminal >}}
 
 ### 자주 걸리는 지점
 
@@ -116,7 +116,7 @@ Q2 매출 데이터를 분석해서 임원 대상 PPT 7장을 만들어줘.
 
 ### 실무 흐름
 
-```text
+{{< terminal title="claude — cowork" >}}
 (예시)
 D:/Input/raw-transactions.csv(5만건)를 분석해서
 월별·카테고리별 피벗을 만들어줘.
@@ -126,7 +126,7 @@ D:/Input/raw-transactions.csv(5만건)를 분석해서
 - 시트 3: 카테고리별 Top 10
 - 시트 4: 조건부 서식 (상위 10% 녹색, 하위 10% 빨강)
 - 저장: 90_Output/finance-pivot.xlsx
-```
+{{< /terminal >}}
 
 ### 자주 걸리는 지점
 
@@ -151,7 +151,7 @@ D:/Input/raw-transactions.csv(5만건)를 분석해서
 
 ### 실무 흐름
 
-```text
+{{< terminal title="claude — cowork" >}}
 (예시)
 중소기업청 지원사업 신청서 초안을 한글 문서로 만들어줘.
 
@@ -160,7 +160,7 @@ D:/Input/raw-transactions.csv(5만건)를 분석해서
 - 2~3페이지: 사업 계획 (추진 배경·목표·예산)
 - 4페이지: 기대 효과 (정량·정성 지표)
 - 저장: 90_Output/grant-application.hwpx
-```
+{{< /terminal >}}
 
 ### 자주 걸리는 지점
 

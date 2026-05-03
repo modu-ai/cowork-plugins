@@ -56,14 +56,14 @@ blog → ai-slop-reviewer → (optional) nano-banana
 ### 단계별 가이드
 
 #### Step 1: 콘텐츠 기획 및 생성
-```bash
+{{< terminal title="claude — cowork" >}}
 # blog 스킬 호출
 "AI 도입 가이드 블로그 포스트 작성해줘
 Target: 중소기업 경영자/담당자
 Length: 1500-2000자
 Format: 가이드 스타일 (문제 → 해결책 → 사례)
 Key Points: 예산, 시간, 기술적 어려움, 성공 사례"
-```
+{{< /terminal >}}
 
 **기대 결과**:
 - 블로그 구조 완성 (서론-본론-결론)
@@ -110,13 +110,13 @@ Mood: Modern, clean, corporate"
 - SNS 공용 버전 생성
 
 ### 예시 프롬프트
-```
-"AI 도입 가이드 블로그 포스트 작성해줘
+{{< terminal title="claude — cowork" >}}
+> "AI 도입 가이드 블로그 포스트 작성해줘
 타깃: 중소기업 경영자 (IT 문외한)
 주제: 5000만원 이하 예산으로 AI 도입하기
 필수 포함: 예산 분배, 시간 계획, 기술 파트너 선정
 어조: 친절한 전문가, 지견주의 경험담 포함"
-```
+{{< /terminal >}}
 
 ## 확장 예시
 

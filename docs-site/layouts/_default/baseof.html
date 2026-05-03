@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html
+  lang="{{ .Site.Language.Lang }}"
+  class="color-toggle-hidden"
+  {{ if default false .Site.Params.geekdocDarkModeCode }}code-theme="dark"{{ end }}
+>
+  <head>
+    {{ partial "head/meta" . }}
+    <title>
+      {{- if eq .Kind "home" -}}
+        {{ .Site.Title }}
+      {{- else -}}
+        {{ printf "%s | %s" (partial "utils/title" .) .Site.Title }}
+      {{- end -}}
+    </title>
+
+    {{ partial "head/favicons" . }}
+    {{ partial "head/rel-me" . }}
+    {{ partial "head/microformats" . }}
+    {{ partial "head/others" . }}
+    {{ partial "head/custom" . }}
+  </head>
+
+  <body itemscope itemtype="https://schema.org/WebPage">
+    <div class="w-full flex justify-center">
+      <a href="#main-content" id="gdoc-to-main" class="gdoc-markdown__link">Skip to main content</a>
+    </div>
+
+    {{ partial "svg-icon-symbols" . }}
+
+
+    <div
+      class="wrapper {{ if default false .Site.Params.geekdocDarkModeDim }}dark-mode-dim{{ end }}"
+    >
+      {{ $navEnabled := default true .Page.Params.geekdocNav }}
+      {{ partial "site-header" (dict "Root" . "MenuEnabled" $navEnabled) }}
+
+
+      <main class="container flex flex-even">
+        {{ if $navEnabled }}
+          <aside class="gdoc-nav">
+            {{ partial "menu" . }}
+          </aside>
+        {{ end }}
+
+
+        <div class="gdoc-page">
+          {{ template "main" . }}
+
+          {{- /* 디자인 .pg-nav prev/next 2-card 푸터 (cowork-pages.jsx) */ -}}
+          {{- $prev := false -}}{{- $next := false -}}
+          {{- if eq .Kind "home" -}}
+            {{- with .Site.GetPage "/about" }}{{- $prev = dict "title" "이 문서에 대하여" "lbl" "← 소개" "url" .RelPermalink -}}{{- end -}}
+            {{- with .Site.GetPage "/getting-started/install" }}{{- $next = dict "title" "설치 및 등록" "lbl" "다음 →" "url" .RelPermalink -}}{{- end -}}
+            {{- if not $next -}}{{- with .Site.GetPage "/getting-started" }}{{- $next = dict "title" "시작하기" "lbl" "다음 →" "url" .RelPermalink -}}{{- end -}}{{- end -}}
+          {{- else -}}
+            {{- /* Hugo .PrevInSection은 의미상 "더 높은 weight" 페이지를 반환 (Hugo 디자인).
+                   사용자 직관(이전=낮은 weight, 다음=높은 weight)과 반대이므로 swap. */ -}}
+            {{- if .NextInSection -}}{{- $prev = dict "title" .NextInSection.Title "lbl" "← 이전" "url" .NextInSection.RelPermalink -}}{{- end -}}
+            {{- if .PrevInSection -}}{{- $next = dict "title" .PrevInSection.Title "lbl" "다음 →" "url" .PrevInSection.RelPermalink -}}{{- end -}}
+          {{- end -}}
+          {{- if or $prev $next -}}
+          <nav class="cw-pg-nav" aria-label="페이지 이동">
+            {{- if $prev -}}
+            <a class="cw-pg-card cw-pg-prev" href="{{ $prev.url }}">
+              <div class="lbl">{{ $prev.lbl }}</div>
+              <div class="ttl">{{ $prev.title }}</div>
+            </a>
+            {{- else -}}
+            <span class="cw-pg-card cw-pg-empty"></span>
+            {{- end -}}
+            {{- if $next -}}
+            <a class="cw-pg-card cw-pg-next" href="{{ $next.url }}">
+              <div class="lbl">{{ $next.lbl }}</div>
+              <div class="ttl">{{ $next.title }}</div>
+            </a>
+            {{- else -}}
+            <span class="cw-pg-card cw-pg-empty"></span>
+            {{- end -}}
+          </nav>
+          {{- end -}}
+        </div>
+
+        {{- /* 우측 TOC rail (디자인 240px) */ -}}
+        {{- if eq .Kind "home" -}}
+        <aside class="cw-toc" aria-label="이 페이지에서">
+          <h6>이 페이지에서</h6>
+          <ul>
+            <li><a href="#quickstart" class="active" data-toc>5분 빠른 시작</a></li>
+            <li><a href="#plugins-grid" data-toc>분야별 플러그인</a></li>
+            <li><a href="#cookbook-tracks" data-toc>실전 트랙</a></li>
+            <li><a href="#release-summary" data-toc>최근 릴리스</a></li>
+          </ul>
+        </aside>
+        <script>
+        // 간단한 scroll spy — 가장 가까운 헤딩에 active 부여
+        (function(){
+          const links = document.querySelectorAll('.cw-toc a[data-toc]');
+          if (!links.length) return;
+          const sections = Array.from(links).map(a => document.getElementById(a.hash.slice(1))).filter(Boolean);
+          if (!sections.length) return;
+          const setActive = () => {
+            const y = window.scrollY + 120;
+            let i = 0;
+            for (let k = 0; k < sections.length; k++) if (sections[k].offsetTop <= y) i = k;
+            links.forEach((a, k) => a.classList.toggle('active', k === i));
+          };
+          window.addEventListener('scroll', setActive, { passive: true });
+          setActive();
+        })();
+        </script>
+        {{- else if .TableOfContents -}}
+        {{- $hasHeadings := gt (len (findRE "<h[23]" .Content)) 0 -}}
+        {{- if $hasHeadings -}}
+        <aside class="cw-toc" aria-label="이 페이지에서">
+          <h6>이 페이지에서</h6>
+          {{ .TableOfContents }}
+        </aside>
+        {{- end -}}
+        {{- end -}}
+      </main>
+
+      {{ partial "site-footer" . }}
+    </div>
+
+    {{ partial "foot" . }}
+
+    <script>
+    // Cowork 지시 코드블록 자동 분류 — 첫 줄이 '>'로 시작하면 macOS chrome 적용
+    (function(){
+      document.querySelectorAll('.gdoc-markdown .highlight').forEach(function(el){
+        var pre = el.querySelector('pre');
+        if (!pre) return;
+        var firstLine = pre.textContent.replace(/^\s+/, '').split('\n')[0];
+        if (firstLine.startsWith('>')) el.classList.add('cw-instruction');
+      });
+    })();
+
+    // Geekdoc colortheme.js는 color-theme 속성만 사용 — 우리 CSS [data-theme="dark"]와 매치되도록 sync
+    // + auto 모드 제거 (3가지 테마 → dark/light 2가지로 단순화). auto 진입 시 즉시 dark로 전환.
+    (function(){
+      var html = document.documentElement;
+      var STORE_KEY = 'hugo-geekdoc.color-theme';
+
+      // localStorage에 auto 또는 미설정인 경우 dark 강제 (사용자 명시 light 토글한 경우만 light 유지)
+      var migrate = function(){
+        try {
+          var v = JSON.parse(localStorage.getItem(STORE_KEY) || '"auto"');
+          if (v !== 'dark' && v !== 'light') {
+            localStorage.setItem(STORE_KEY, JSON.stringify('dark'));
+          }
+        } catch(e) {
+          try { localStorage.setItem(STORE_KEY, JSON.stringify('dark')); } catch(_){}
+        }
+      };
+      migrate();
+
+      var sync = function(){
+        var t = html.getAttribute('color-theme');
+        // auto 또는 null인 경우 dark로 강제 보정
+        if (t !== 'dark' && t !== 'light') {
+          html.setAttribute('color-theme', 'dark');
+          try { localStorage.setItem(STORE_KEY, JSON.stringify('dark')); } catch(e){}
+          return; // MutationObserver가 다시 sync 호출
+        }
+        if (t === 'dark') {
+          html.setAttribute('data-theme', 'dark');
+          html.setAttribute('class', 'color-toggle-dark');
+        } else {
+          html.removeAttribute('data-theme');
+          html.setAttribute('class', 'color-toggle-light');
+        }
+      };
+      sync();
+      new MutationObserver(sync).observe(html, { attributes: true, attributeFilter: ['color-theme'] });
+
+      // 토글 클릭 핸들러를 dark <-> light 2-state cycle로 교체
+      document.addEventListener('DOMContentLoaded', function(){
+        var btn = document.getElementById('gdoc-color-theme');
+        if (!btn) return;
+        // Geekdoc이 등록한 onclick 무력화 후 우리 로직으로 교체
+        btn.onclick = null;
+        var newClick = function(){
+          var current = html.getAttribute('color-theme') || 'dark';
+          var next = current === 'dark' ? 'light' : 'dark';
+          html.setAttribute('color-theme', next);
+          try { localStorage.setItem(STORE_KEY, JSON.stringify(next)); } catch(e){}
+        };
+        btn.addEventListener('click', newClick);
+        btn.addEventListener('keydown', function(e){
+          if (e.key === 'Enter') { newClick(); e.preventDefault(); }
+        });
+      });
+    })();
+    </script>
+  </body>
+</html>
