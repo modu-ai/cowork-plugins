@@ -11,10 +11,6 @@
 | 스킬 | 설명 | 출시 |
 |---|---|---|
 | [weekly-report](./skills/weekly-report/SKILL.md) | 한국 WBR 6섹션 주간보고 + 임원 1pager | ✅ v2.0.0 |
-| standup-summarizer | 일일 스탠드업 노트 → 5줄 요약 | ⏸️ v2.1+ |
-| task-decomposer | Goal → Epic → Story → Task 4단 분해 | ⏸️ v2.1+ |
-| okr-tracker | OKR 진행률 + 분기 회고 자료 | ⏸️ v2.1+ |
-| retro-facilitator | KPT/4Ls 회고 자동화 | ⏸️ v2.1+ |
 
 ## 시작하기
 
