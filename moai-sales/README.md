@@ -10,11 +10,11 @@
 
 | 스킬 | 설명 | 첫 출시 |
 |---|---|---|
-| [proposal-writer](./skills/proposal-writer/SKILL.md) | 한국 B2B 제안서 본문 자동 생성 (12섹션 + Three C's) | ✅ v1.6.0 |
-| quote-generator | 국세청 표준 견적서·VAT 자동 계산 | 🟡 v1.9+ 예정 |
-| cold-email-kr | 한국 비즈니스 톤 1:1 영업 첫 콘택트 메일 | 🟡 v1.9+ 예정 |
-| sales-followup | 미팅·제안 후속 4-touch 시퀀스 | ⏸️ v1.9+ |
-| lead-qualifier | BANT/MEDDIC 리드 자격 평가 | ⏸️ v1.9+ |
+| [proposal-writer](./skills/proposal-writer/SKILL.md) | 한국 B2B 제안서 본문 자동 생성 (12섹션 + Three C's) | ✅ v2.0.0 |
+| quote-generator | 국세청 표준 견적서·VAT 자동 계산 | 🟡 v2.1+ 예정 |
+| cold-email-kr | 한국 비즈니스 톤 1:1 영업 첫 콘택트 메일 | 🟡 v2.1+ 예정 |
+| sales-followup | 미팅·제안 후속 4-touch 시퀀스 | ⏸️ v2.1+ |
+| lead-qualifier | BANT/MEDDIC 리드 자격 평가 | ⏸️ v2.1+ |
 
 ## 시작하기
 
