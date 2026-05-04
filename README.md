@@ -12,7 +12,7 @@
 
 자연어 한 줄이면 사업계획서, 계약서 검토, 세금 계산, PPT 제작, 데이터 분석, 특허 검색, **AI 이미지·영상·음성 생성**, **shadcn/ui 기반 랜딩·상세 페이지 제작**, **소상공인 상권분석·정부지원사업 신청**, **한국 이커머스 풀세트 — 13섹션 상세페이지 + 8개 채널 가이드(쿠팡·네이버·자사몰·크라우드펀딩·큐레이션·라이브) + 통합 마케팅 전략·카피**, **BI 대시보드·경영진 1pager**, **프로젝트 관리·주간보고·OKR·회고**, **B2B 영업·제안서·콜드메일**, **v2.0.0 한국 B2B 특화 6스킬 — 인터넷등기소 등기부등본 일괄 발급·국토부 실거래가·식약처 안전·법원경매·KRX 시세·바른한글 맞춤법**까지 — 21개 독립 플러그인과 106개 전문 스킬이 업무를 대신합니다. 모든 텍스트 산출물은 **`ai-slop-reviewer`가 AI 패턴을 검수**하여 사람이 쓴 것처럼 자연스럽게 다듬어 드립니다.
 
-> *Domain expert AI marketplace for [Claude Cowork](https://claude.ai). 21 plugins · 100 skills covering business strategy, marketing, legal, finance, HR, content, operations, education, lifestyle, product, support, document generation (DOCX/PPTX/XLSX/HWPX/**multilingual PDF**), data analysis, research/patents, **AI media production (image/video/voice)**, **shadcn/ui-based web landing/detail pages**, **small-business commercial-area analysis & Korean government grant applications**, **Korean e-commerce full-cycle (13-section detail page + 8 channel guides — Coupang, Naver Smartstore, Cafe24/Imweb D2C, Wadiz/Tumblbug crowdfunding, Kakao Makers/Musinsa/29CM curation, live commerce + integrated marketing strategy & copy)**, and automatic AI-slop detection for every text deliverable.*
+> *Domain expert AI marketplace for [Claude Cowork](https://claude.ai). 21 plugins · 106 skills covering business strategy, marketing, legal, finance, HR, content, operations, education, lifestyle, product, support, document generation (DOCX/PPTX/XLSX/HWPX/**multilingual PDF**), data analysis, research/patents, **AI media production (image/video/voice)**, **shadcn/ui-based web landing/detail pages**, **small-business commercial-area analysis & Korean government grant applications**, **Korean e-commerce full-cycle**, **BI dashboard / executive 1-pager**, **PM weekly report / OKR**, **B2B sales / proposal / cold email**, **v2.0.0 Korean B2B specialty 6 skills (IROS registry automation, MOLIT real-estate transactions, MFDS drug/food safety, court-auction notices, KRX market quotes, Korean spell-check)**, and automatic AI-slop detection for every text deliverable.*
 
 **🆕 v2.0.0 하이라이트** (2026-05-04)
 - **한국 B2B 시장 특화 6스킬 도입** — `NomaDamas/k-skill` (MIT) 포팅. 마켓플레이스 100 → **106 스킬**, 플러그인 21개 유지
@@ -108,15 +108,16 @@
 
 ## 총 산출물
 
-| 항목 | 수량 |
-|------|:----:|
-| 플러그인 | 18 |
-| 스킬 | 100 |
-| 레퍼런스 파일 | 180 |
-| 에이전트 | 0 |
-| MCP 서버 | 7 (`fal-ai`, `elevenlabs` 추가) |
-| 스크립트 | 16 |
-| 템플릿 | 8 |
+| 항목 | 수량 | 비고 |
+|------|:----:|------|
+| 플러그인 | **21** | moai-core + 20 도메인 플러그인 |
+| 스킬 | **106** | 전 SKILL.md `version: 2.0.0` 동기화 (Cowork 자동 업데이트 지원) |
+| 레퍼런스 파일 | **210** | 각 스킬의 `references/` 안 상세 가이드 |
+| 스크립트 | **13** | helper(`scripts/`) — Python·Node·Shell |
+| 템플릿 | **1** | CLAUDE.md.tmpl 외 |
+| 에이전트 | **47** | `.claude/agents/` 서브에이전트 정의 |
+| MCP 서버 | **8** | 플러그인 번들: dart(business), korean-law(legal), post-bridge·typefully·wordpress(content), fal-ai·elevenlabs·higgsfield(media) |
+| 도메인 | 21 | business/marketing/legal/finance/hr/content/operations/education/lifestyle/product/support/office/career/data/research/media/commerce/bi/pm/sales + core |
 
 ## 설치 방법
 
@@ -138,7 +139,7 @@ modu-ai/cowork-plugins
 
 ### Step 2: 플러그인 설치
 
-동기화가 완료되면 18개 플러그인 목록이 표시됩니다.
+동기화가 완료되면 **21개 플러그인** 목록이 표시됩니다.
 
 1. **개인** 탭 선택 → **cowork-plugins** 마켓플레이스 확인
 2. 원하는 플러그인 옆의 **+** 버튼으로 설치
@@ -190,13 +191,17 @@ modu-ai/cowork-plugins
 
 ### moai-core — 오케스트레이터 + 검수 엔진
 
-자연어 요청을 분석하여 16개 도메인 플러그인 중 적합한 스킬로 자동 라우팅합니다. `/project init`으로 워크플로우를 인터뷰하여 **스킬 체인 기반 CLAUDE.md**를 생성하고, `/project catalog`로 설치된 스킬 목록을 조회합니다.
+자연어 요청을 분석하여 20개 도메인 플러그인 중 적합한 스킬로 자동 라우팅합니다. `/project init`으로 워크플로우를 인터뷰하여 **스킬 체인 기반 CLAUDE.md**를 생성하고, `/project catalog`로 설치된 스킬 목록을 조회합니다.
 
 | 스킬 | 한글명 | 기능 |
 |------|--------|------|
 | project | 프로젝트 초기화 | `/project init` — 워크플로우 인터뷰 → 스킬 체인 설계 → CLAUDE.md 생성, `/project catalog/status/apikey/feedback` |
 | ai-slop-reviewer | AI 슬롭 검수 | Claude가 생성한 텍스트의 기계적 패턴(금지어, 획일적 문장 길이, AI식 도입/결말, 수동태 남용)을 진단·수정. **모든 텍스트 산출물 체인의 필수 마지막 단계** |
+| ai-diagnostic | AI 진단 | 사용 환경·플러그인·커넥터 상태 점검, 문제 진단, 권장 조치 |
 | feedback | 피드백 | 버그/기능 요청을 GitHub Issues에 자동 등록 (`/project feedback`) |
+| skill-builder | 스킬 빌더 | 6-Phase 워크플로우로 신규 SKILL.md 생성 (Requirements → Trigger → Body → Tests → Review → Polish) |
+| skill-template | 스킬 템플릿 | 카테고리 A(슬래시 호출) / B(자동 호출) 템플릿 라이브러리 |
+| skill-tester | 스킬 테스터 | A/B 비교, 회귀, 체인 테스트 + 4차원 루브릭(Correctness/Completeness/Clarity/Efficiency) |
 
 - 소크라테스 인터뷰로 사용자 의도를 정확히 파악한 뒤 스킬 체인 계획을 수립·확인·실행합니다
 - 산출물 품질 검증 루프(파일 유효성 → 내용 완전성 → **AI 슬롭 검수**)를 자동 수행합니다
@@ -212,10 +217,14 @@ modu-ai/cowork-plugins
 | market-analyst | 시장 분석가 | 시장조사(TAM/SAM/SOM), 경쟁사 분석, 가격 전략 |
 | investor-relations | 투자자 관계 | 투자 제안서(IR), 재무모델, 매출 예측 |
 | daily-briefing | 일일 브리핑 | 일일 비즈니스 브리핑, 시장 동향 요약 |
-| sbiz365-analyst 🆕 | 소상공인 상권분석 | 소상공인365 PDF → 4축 100점 평가 + 9섹션 창업타당성 DOCX 보고서 |
-| kr-gov-grant 🆕 | 정부지원사업 통합 | K-Startup·BIZINFO·중기부 등 공고 탐색·신청서 작성·검토·마감 관리 (4 MODE) |
+| sbiz365-analyst | 소상공인 상권분석 | 소상공인365 PDF → 4축 100점 평가 + 9섹션 창업타당성 DOCX 보고서 |
+| kr-gov-grant | 정부지원사업 통합 | K-Startup·BIZINFO·중기부 등 공고 탐색·신청서 작성·검토·마감 관리 (4 MODE) |
+| consulting-brief | 컨설팅 브리프 | McKinsey/BCG/Bain 표준 인게이지먼트 브리프 (목표·범위·산출물·일정·리스크) |
+| sales-playbook | 영업 플레이북 | 영업 플레이북 자동 생성 — 타겟·ICP·콜드콘택트·반론 대응·후속 시퀀스 |
+| startup-launchpad | 스타트업 런치패드 | 아이디어 → 사업계획서 → 피치덱 → 재무 모델 → 3년 예산 통합 패키지 |
+| real-estate-search 🆕 v2.0.0 | 국토부 실거래가 | 아파트·오피스텔·연립·단독·상업용 매매·전월세 (k-skill-proxy 경유, API 키 불필요) |
 
-DART MCP 서버로 기업 공시/재무제표를 실시간 조회합니다. `kr-gov-grant`는 창업·사업화·수출·시설 지원사업 전담 — 학술·R&D 연구과제는 `moai-research:grant-writer`를 사용하세요.
+DART MCP 서버로 기업 공시/재무제표를 실시간 조회합니다. `kr-gov-grant`는 창업·사업화·수출·시설 지원사업 전담 — 학술·R&D 연구과제는 `moai-research:grant-writer`를 사용하세요. `real-estate-search`는 NomaDamas k-skill (MIT) 포팅 스킬입니다.
 
 ---
 
@@ -230,6 +239,7 @@ DART MCP 서버로 기업 공시/재무제표를 실시간 조회합니다. `kr-
 | seo-audit | SEO 감사 | 네이버/구글/AI검색(GEO) 통합 SEO 감사, C-Rank 개선 |
 | email-sequence | 이메일 시퀀스 | 정보통신망법 준수 이메일 시퀀스, 드립 캠페인 |
 | performance-report | 성과 리포트 | 마케팅 성과 대시보드, KPI 리포트 |
+| target-script | 타겟 스크립트 | 타겟 고객군별 영업·CS·프레젠테이션 맞춤 스크립트 |
 
 ---
 
@@ -241,8 +251,9 @@ DART MCP 서버로 기업 공시/재무제표를 실시간 조회합니다. `kr-
 | compliance-check | 컴플라이언스 점검 | 개인정보보호법, ESG, 규제 컴플라이언스 점검 |
 | legal-risk | 법적 리스크 | 법적 리스크 분석, 쟁점 정리 |
 | nda-triage | NDA 검토 | NDA/비밀유지계약서 초안 및 검토 |
+| iros-registry-automation 🆕 v2.0.0 | 인터넷등기소 자동화 | 대법원 IROS 법인·부동산 등기부등본 일괄 발급 보조 (로그인·결제 사용자 직접) |
 
-korean-law MCP로 법령/판례를 실시간 검색합니다.
+korean-law MCP로 법령/판례를 실시간 검색합니다. `iros-registry-automation`은 NomaDamas k-skill 원본 + `challengekim/iros-registry-automation`(MIT) 참고 구현 기반입니다.
 
 ---
 
@@ -254,6 +265,8 @@ korean-law MCP로 법령/판례를 실시간 검색합니다.
 | financial-statements | 재무제표 분석 | K-IFRS 재무제표 분석, 재무비율 계산 |
 | close-management | 결산 관리 | 월/분기/연 결산 체크리스트, 마감 관리 |
 | variance-analysis | 차이 분석 | 예산 대비 실적 분석, 차이 원인 진단 |
+| court-auction-search 🆕 v2.0.0 | 법원경매 매각공고 | 대법원 법원경매정보 매각공고·사건번호 단건 조회 (read-only, 2초 throttle) |
+| korean-stock-search 🆕 v2.0.0 | KRX 시세 | 한국거래소 상장 종목 검색·기본정보·일별 시세 (k-skill-proxy 경유, KRX_API_KEY 불필요) |
 
 ---
 
@@ -265,6 +278,7 @@ korean-law MCP로 법령/판례를 실시간 검색합니다.
 | people-operations | 인사 운영 | 온보딩 프로세스, 조직 관리, 인사 규정 |
 | draft-offer | 채용 공고 | 오퍼 레터, 채용 공고(JD) 작성 |
 | performance-review | 성과 평가 | 성과 평가 양식, MBO/OKR 설계 |
+| resume-screener | 이력서 스크리닝 | 채용 이력서 자동 스크리닝, JD 매칭 점수, 면접 질문 추천 |
 
 ---
 
@@ -280,8 +294,9 @@ korean-law MCP로 법령/판례를 실시간 검색합니다.
 | media-production | 미디어 제작 | 유튜브 스크립트, Remotion 영상, 팟캐스트 기획 |
 | blog | 블로그 | SEO 블로그 글 작성, 시리즈 기획, 내부 링크 전략 |
 | social-media | 소셜미디어 | 멀티 채널 소셜 콘텐츠, 캘린더, 해시태그 전략 |
+| korean-spell-check 🆕 v2.0.0 | 바른한글 맞춤법 | 부산대 AI연구실 + ㈜나라인포테크 공동 개발 바른한글(2024-10 리브랜딩) 한국어 맞춤법·띄어쓰기 — `ai-slop-reviewer` 직후 체인 권장 |
 
-WordPress/Canva 커넥터로 직접 발행 가능합니다.
+WordPress·Post-Bridge·Typefully MCP 커넥터로 직접 발행 가능합니다. `korean-spell-check`는 NomaDamas k-skill (MIT) 포팅 스킬입니다.
 
 ---
 
@@ -322,6 +337,7 @@ WordPress/Canva 커넥터로 직접 발행 가능합니다.
 | spec-writer | 스펙 작성 | PRD/기능명세서 작성, 스프린트 플래닝 |
 | roadmap-manager | 로드맵 관리 | 제품 로드맵, 마일스톤 관리, 릴리스 계획 |
 | ux-researcher | UX 리서치 | UX 리서치, 페르소나 설계, 사용성 테스트 |
+| ux-designer | UX 디자이너 | UX 디자인 시스템, 와이어프레임, 인터랙션 설계 |
 
 ---
 
@@ -383,20 +399,73 @@ Airtable/Google Sheets 커넥터로 데이터를 직접 분석합니다.
 | patent-analyzer | 특허 분석 | 특허 맵, 선행기술 조사, FTO 분석, 출원서 초안 |
 | grant-writer | 연구비 신청 | NRF/IITP/KIAT 연구비 신청서 작성 |
 
-### moai-media 🆕 — AI 미디어 스튜디오
+### moai-media — AI 미디어 스튜디오
 
 | 스킬 | 한글명 | 기능 |
 |------|--------|------|
 | nano-banana | 나노바나나 | Google Gemini Nano Banana Pro + 2 이미지 생성 (한국어 텍스트 SOTA) |
-| ideogram | 아이디오그램 | Ideogram 3.0 한국어 타이포그래피 특화 이미지 (fal.ai) |
-| kling | 클링 | Kling 3.0 숏폼 영상 (릴스·쇼츠·틱톡·립싱크, fal.ai) |
-| elevenlabs | 일레븐랩스 | AI 음성·TTS·32개 언어 더빙 (공식 MCP) |
+| image-gen | 범용 이미지 | 모델 추상화 인터페이스 — Nano Banana / Flux / Recraft / Imagen 자동 선택 |
+| video-gen | 범용 영상 | Kling·Hailuo·Luma·Pika·Veo 통합 — 숏폼/롱폼·립싱크·립트랙·스타일 |
+| audio-gen | 음성/TTS | ElevenLabs·Suno·MiniMax Music — 32개 언어 더빙·BGM·효과음 |
+| speech-video | 토킹 헤드 | Higgsfield·Hedra·Sync — 정지 이미지 + 음성 → 입모양 동기화 영상 |
+| character-mgmt | 캐릭터 관리 | Higgsfield Character·LoRA — 일관된 캐릭터·아바타 시리즈 생성 |
 | fal-gateway | 팔게이트웨이 | Flux·Recraft·Hailuo·Luma·Pika·MiniMax Music 1000+ 모델 통합 (fal.ai) |
 
-**사용 API 키 3종**: `GEMINI_API_KEY`(Nano Banana), `FAL_KEY`(fal.ai), `ELEVENLABS_API_KEY`.
-**번들 MCP 2종**: `fal-ai`(hosted HTTP), `elevenlabs`(local stdio via `uvx`).
+**사용 API 키 3종**: `GEMINI_API_KEY`(Nano Banana), `FAL_KEY`(fal.ai), `ELEVENLABS_API_KEY`, `HIGGSFIELD_API_KEY`+`HIGGSFIELD_SECRET`(Higgsfield).
+**번들 MCP 3종**: `fal-ai`(hosted HTTP), `elevenlabs`(local stdio via `uvx`), `higgsfield`(local stdio).
+
+> **변경 이력**: v1.6.0부터 `ideogram`/`kling`/`elevenlabs` 독립 SKILL은 **MCP·모델 ID로 통합**되었습니다. 사용자 측 호출은 `audio-gen`/`video-gen`/`nano-banana` + `fal-gateway`로 라우팅됩니다.
 
 ---
+
+### moai-commerce — 한국 이커머스 풀세트
+
+| 스킬 | 한글명 | 기능 |
+|------|--------|------|
+| detail-page-copy | 상세페이지 카피 | 13섹션 감정여정(Hero→Pain→…→CTA) + ai-slop-reviewer 자동 체이닝, 10개 카테고리 어조 가이드 |
+| detail-page-image | 상세페이지 이미지 | 섹션별 프롬프트 → nano-banana → Pillow 1080×12720 단일 PNG 합성 |
+| product-photo-brief | 상품 사진 브리프 | ProductDNA 추출 + 13섹션 컷 매핑 + 추가 촬영 브리프 |
+| marketplace-coupang | 쿠팡 가이드 | 정책·검색 키워드·금지문구·우수상품·로켓배송 |
+| marketplace-naver | 네이버 가이드 | 스마트스토어 + 11번가/G마켓/옥션 4개 오픈마켓 통합 |
+| marketplace-d2c | 자사몰(D2C) | 카페24·아임웹·메이크샵 자사몰 운영 가이드 |
+| marketplace-crowdfunding | 크라우드펀딩 | 와디즈·텀블벅 프로젝트 기획·심사·운영 |
+| marketplace-curation | 큐레이션 | 카카오 메이커스·무신사·29CM 입점 제안 |
+| commerce-strategy | 통합 전략 | 채널 믹스·가격·프로모션 캘린더·리텐션·KPI |
+| commerce-copywriting | 마케팅 카피 | 광고·톡톡·푸시·이메일·카트이탈 카피 (ai-slop 자동 체이닝) |
+| live-commerce | 라이브 커머스 | 네이버·카카오·그립·쿠팡 라이브 가이드 + 30/60분 진행 스크립트 |
+| mfds-safety 🆕 v2.0.0 | 식약처 안전 | 의약품·식품 안전 통합 (e약은요·건강기능식품·검사부적합·회수). red flag 인터뷰 우선 |
+
+티몬·위메프는 큐텐 인수 후 미정산 사태로 archive 처리(가이드 제외). `mfds-safety`는 NomaDamas k-skill (MIT) 포팅 스킬입니다.
+
+---
+
+### moai-bi — BI · 경영진 1pager
+
+| 스킬 | 한글명 | 기능 |
+|------|--------|------|
+| executive-summary | 경영진 요약 | C-level 1pager (≤500단어, What/So What/Now What 3축 구조). KPI 대시보드 + 의사결정 옵션 + 권고안 |
+
+K-IFRS·KOSIS·DART 친화적 한국 통계 환경에서 5분 안에 의사결정할 수 있는 1페이지 보고를 만듭니다. moai-finance와 직접 체이닝하여 재무 데이터를 임원 관점으로 재구성합니다.
+
+---
+
+### moai-pm — 프로젝트 관리·주간보고·OKR
+
+| 스킬 | 한글명 | 기능 |
+|------|--------|------|
+| weekly-report | 주간보고 | 한국 WBR 6섹션 주간보고 + 임원 1pager (지난주 결과·이번주 계획·이슈·KPI·리스크·요청) |
+
+월요 WBR·금요 마무리·분기 OKR·KPT 회고 등 한국 직장 문화 정착 의례를 자동화합니다. Notion·Linear·Asana·Slack MCP가 가용하면 자동 활용, 없어도 자유 텍스트 입력으로 동작합니다.
+
+---
+
+### moai-sales — B2B 영업·제안서·콜드메일
+
+| 스킬 | 한글명 | 기능 |
+|------|--------|------|
+| proposal-writer | 제안서 작성 | 한국 B2B 제안서 본문 자동 생성 (12섹션 + Three C's 분석). 국세청 표준 양식·격식체·결재선·VAT 명시 기본값 |
+
+한국 B2B SaaS·중소기업 영업 환경에 특화. 견적서·콜드메일·후속 시퀀스는 차기 minor에서 추가 예정.
 
 ## 스킬 간 공유 기능
 
@@ -414,7 +483,8 @@ Airtable/Google Sheets 커넥터로 데이터를 직접 분석합니다.
 ## 기술 특징
 
 **Anthropic 공식 스킬 가이드 준수**
-- 모든 84개 스킬에 [What]+[When]+[Triggers] 구조의 description 적용
+- 모든 **106개** 스킬에 [What]+[When]+[Triggers] 구조의 description 적용
+- 모든 SKILL.md frontmatter에 `version: 2.0.0` 동기화 (Cowork 자동 업데이트 감지)
 - Negative triggers로 불필요한 스킬 로딩 방지
 - 인라인 폴백과 에러 핸들링 내장
 
@@ -453,12 +523,17 @@ Airtable/Google Sheets 커넥터로 데이터를 직접 분석합니다.
 | [Remotion](https://www.remotion.dev/) | 영상 제작 프레임워크 | Business Source | moai-content |
 | [Deno](https://deno.land/) | TypeScript 런타임 | MIT | moai-office |
 
-### MCP 서버 (커스텀)
-| 서버 | 소스 | 용도 | 플러그인 |
-|------|------|------|---------|
-| [DART-mcp-server](https://github.com/snaiws/DART-mcp-server) | 오픈소스 | 기업 공시 조회 | moai-business |
-| [korean-law-mcp](https://korean-law-mcp.fly.dev/) | 커뮤니티 | 법령/판례 검색 | moai-legal |
-| [WordPress MCP](https://mcp.wordpress.com/) | 공식 | 블로그 발행 | moai-content |
+### MCP 서버 (플러그인 번들 8종)
+| 서버 | 소스 | 용도 | 플러그인 | 인증 |
+|------|------|------|---------|------|
+| [dart](https://github.com/snaiws/DART-mcp-server) | 커뮤니티 (Python stdio) | 기업 공시·재무제표 조회 | moai-business | `DART_API_KEY` |
+| [korean-law](https://korean-law-mcp.fly.dev/) | 커뮤니티 (HTTP) | 국가법령정보센터 법령·판례 검색 | moai-legal | `KOREAN_LAW_OC` |
+| [wordpress](https://mcp.wordpress.com/) | 공식 (HTTP) | WordPress.com 블로그 발행 | moai-content | OAuth |
+| [post-bridge](https://app.post-bridge.com/mcp) | 공식 (HTTP) | 멀티채널 SNS 발행 | moai-content | OAuth |
+| [typefully](https://api.typefully.com/mcp) | 공식 (HTTP) | X(Twitter)·Threads 발행 | moai-content | API Key |
+| [fal-ai](https://mcp.fal.ai/mcp) | 공식 (HTTP) | Flux·Ideogram·Recraft·Kling·Hailuo·Luma·Pika·MiniMax Music 1000+ 모델 | moai-media | `FAL_KEY` |
+| [elevenlabs](https://github.com/elevenlabs/elevenlabs-mcp) | 공식 (local stdio via uvx) | TTS·음성복제·다국어 더빙 | moai-media | `ELEVENLABS_API_KEY` |
+| [higgsfield](https://higgsfield.ai/) | 공식 (local stdio) | 시네마틱 이미지(Soul)·영상(DOP)·말하는머리·캐릭터 관리 | moai-media | `HIGGSFIELD_API_KEY`+`HIGGSFIELD_SECRET` |
 
 ### 공공 API
 | API | URL | 용도 | 플러그인 |
@@ -469,7 +544,17 @@ Airtable/Google Sheets 커넥터로 데이터를 직접 분석합니다.
 | KIPRIS Plus | [plus.kipris.or.kr](https://plus.kipris.or.kr/) | 특허 검색 | moai-research |
 | KCI | [kci.go.kr](https://www.kci.go.kr/) | 논문 검색 | moai-research |
 | 국가법령정보 | [law.go.kr](https://www.law.go.kr/) | 법령/판례 | moai-legal |
-| Nano Banana | [ai.google.dev/gemini-api/docs/image-generation](https://ai.google.dev/gemini-api/docs/image-generation) | AI 이미지 생성 | moai-content |
+| 식품안전나라 | [foodsafetykorea.go.kr](https://www.foodsafetykorea.go.kr/apiMain.do) | 건강기능식품·검사부적합·회수 (I-0040/I-0050/I0030/I2620/I0490) | moai-commerce |
+| 식의약 데이터 포털 | [data.mfds.go.kr](https://data.mfds.go.kr/) | 식약처 통합 OpenAPI | moai-commerce |
+| KRX Open API | [openapi.krx.co.kr](https://openapi.krx.co.kr/) | 한국거래소 상장종목·시세 | moai-finance |
+| 법원경매정보 | [courtauction.go.kr](https://www.courtauction.go.kr/) | 부동산 매각공고·사건정보 (공식 API 없음, 사이트 endpoint 직접 호출) | moai-finance |
+| 인터넷등기소 | [iros.go.kr](https://www.iros.go.kr/) | 법인·부동산 등기부등본 발급 (사용자 직접 로그인·결제) | moai-legal |
+
+### AI 모델 / API
+| 모델·API | URL | 용도 | 플러그인 |
+|----------|-----|------|---------|
+| Gemini Nano Banana Pro+2 | [ai.google.dev/gemini-api/docs/image-generation](https://ai.google.dev/gemini-api/docs/image-generation) | AI 이미지 생성 (한국어 텍스트 SOTA) | moai-media |
+| OpenAI / Anthropic / xAI 등 | (각 공식) | 고급 기능 — 사용자 측 API 키 등록 시 활용 | 전 플러그인 |
 
 ### 영감 및 원작
 
