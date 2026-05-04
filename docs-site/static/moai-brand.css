@@ -1826,3 +1826,164 @@ main a:hover {
   .cw-stats { grid-template-columns: repeat(2, 1fr); }
   .cw-header-nav { display: none !important; }
 }
+
+/* ── Mermaid diagrams ── */
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+.gdoc-mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ── Mermaid dark mode ── */
+[data-theme="dark"] .mermaid,
+[data-theme="dark"] .gdoc-mermaid {
+  color: var(--fg-2);
+}
+[data-theme="dark"] .mermaid svg,
+[data-theme="dark"] .gdoc-mermaid svg {
+  background: transparent;
+}
+[data-theme="dark"] .mermaid .nodeLabel,
+[data-theme="dark"] .mermaid .node label,
+[data-theme="dark"] .mermaid .node rect + text,
+[data-theme="dark"] .mermaid .edgeLabel,
+[data-theme="dark"] .gdoc-mermaid .nodeLabel,
+[data-theme="dark"] .gdoc-mermaid .node label,
+[data-theme="dark"] .gdoc-mermaid .edgeLabel {
+  color: #e8eae9 !important;
+  fill: #e8eae9 !important;
+}
+[data-theme="dark"] .mermaid .node rect,
+[data-theme="dark"] .mermaid .node circle,
+[data-theme="dark"] .mermaid .node polygon,
+[data-theme="dark"] .mermaid .node .label-container,
+[data-theme="dark"] .gdoc-mermaid .node rect,
+[data-theme="dark"] .gdoc-mermaid .node circle,
+[data-theme="dark"] .gdoc-mermaid .node polygon,
+[data-theme="dark"] .gdoc-mermaid .node .label-container {
+  fill: #1a2a27 !important;
+  stroke: #2d6b63 !important;
+}
+[data-theme="dark"] .mermaid .edgePath .path,
+[data-theme="dark"] .mermaid .edges .path,
+[data-theme="dark"] .gdoc-mermaid .edgePath .path,
+[data-theme="dark"] .gdoc-mermaid .edges .path {
+  stroke: #58c4b9 !important;
+}
+[data-theme="dark"] .mermaid .arrowheadPath,
+[data-theme="dark"] .gdoc-mermaid .arrowheadPath {
+  fill: #58c4b9 !important;
+  stroke: #58c4b9 !important;
+}
+[data-theme="dark"] .mermaid .cluster rect,
+[data-theme="dark"] .mermaid .cluster path,
+[data-theme="dark"] .gdoc-mermaid .cluster rect,
+[data-theme="dark"] .gdoc-mermaid .cluster path {
+  fill: rgba(34, 147, 138, 0.08) !important;
+  stroke: #2d6b63 !important;
+}
+[data-theme="dark"] .mermaid .cluster-label,
+[data-theme="dark"] .mermaid .cluster .nodeLabel,
+[data-theme="dark"] .gdoc-mermaid .cluster-label,
+[data-theme="dark"] .gdoc-mermaid .cluster .nodeLabel {
+  color: #58c4b9 !important;
+  fill: #58c4b9 !important;
+}
+[data-theme="dark"] .mermaid .actor,
+[data-theme="dark"] .mermaid .actor-line,
+[data-theme="dark"] .gdoc-mermaid .actor,
+[data-theme="dark"] .gdoc-mermaid .actor-line {
+  fill: #1a2a27 !important;
+  stroke: #2d6b63 !important;
+}
+[data-theme="dark"] .mermaid .actor > span,
+[data-theme="dark"] .mermaid text.actor,
+[data-theme="dark"] .gdoc-mermaid .actor > span,
+[data-theme="dark"] .gdoc-mermaid text.actor {
+  color: #e8eae9 !important;
+  fill: #e8eae9 !important;
+}
+[data-theme="dark"] .mermaid .messageLine0,
+[data-theme="dark"] .mermaid .messageLine1,
+[data-theme="dark"] .gdoc-mermaid .messageLine0,
+[data-theme="dark"] .gdoc-mermaid .messageLine1 {
+  stroke: #58c4b9 !important;
+}
+[data-theme="dark"] .mermaid .messageText,
+[data-theme="dark"] .mermaid line[class*="messageLine"],
+[data-theme="dark"] .gdoc-mermaid .messageText,
+[data-theme="dark"] .gdoc-mermaid line[class*="messageLine"] {
+  fill: #e8eae9 !important;
+  stroke: #58c4b9 !important;
+}
+[data-theme="dark"] .mermaid .note,
+[data-theme="dark"] .mermaid .noteRect,
+[data-theme="dark"] .gdoc-mermaid .note,
+[data-theme="dark"] .gdoc-mermaid .noteRect {
+  fill: rgba(34, 147, 138, 0.15) !important;
+  stroke: #2d6b63 !important;
+}
+[data-theme="dark"] .mermaid .noteText,
+[data-theme="dark"] .mermaid .note text,
+[data-theme="dark"] .gdoc-mermaid .noteText,
+[data-theme="dark"] .gdoc-mermaid .note text {
+  fill: #c5cbc9 !important;
+}
+[data-theme="dark"] .mermaid .alt-0,
+[data-theme="dark"] .mermaid rect[class*="alt-"],
+[data-theme="dark"] .gdoc-mermaid .alt-0,
+[data-theme="dark"] .gdoc-mermaid rect[class*="alt-"] {
+  fill: rgba(34, 147, 138, 0.06) !important;
+}
+[data-theme="dark"] .mermaid .labelText,
+[data-theme="dark"] .mermaid .loopText,
+[data-theme="dark"] .mermaid .altText,
+[data-theme="dark"] .gdoc-mermaid .labelText,
+[data-theme="dark"] .gdoc-mermaid .loopText,
+[data-theme="dark"] .gdoc-mermaid .altText {
+  fill: #8a908e !important;
+}
+[data-theme="dark"] .mermaid .node.bad rect,
+[data-theme="dark"] .mermaid .node[class*="bad"] rect,
+[data-theme="dark"] .mermaid .node[class*="bad"] .label-container,
+[data-theme="dark"] .gdoc-mermaid .node.bad rect,
+[data-theme="dark"] .gdoc-mermaid .node[class*="bad"] rect {
+  fill: rgba(200, 60, 60, 0.2) !important;
+  stroke: #c44 !important;
+}
+[data-theme="dark"] .mermaid .node.good rect,
+[data-theme="dark"] .mermaid .node[class*="good"] rect,
+[data-theme="dark"] .mermaid .node[class*="good"] .label-container,
+[data-theme="dark"] .gdoc-mermaid .node.good rect,
+[data-theme="dark"] .gdoc-mermaid .node[class*="good"] rect {
+  fill: rgba(58, 138, 58, 0.2) !important;
+  stroke: #3a8a3a !important;
+}
+[data-theme="dark"] .mermaid text,
+[data-theme="dark"] .gdoc-mermaid text {
+  fill: #e8eae9;
+}
+[data-theme="dark"] .mermaid .edgeLabel text,
+[data-theme="dark"] .gdoc-mermaid .edgeLabel text {
+  fill: #c5cbc9 !important;
+}
+[data-theme="dark"] .mermaid .edgeLabel,
+[data-theme="dark"] .gdoc-mermaid .edgeLabel {
+  background-color: transparent;
+}
+[data-theme="dark"] .mermaid .node[style*="fill:#"],
+[data-theme="dark"] .gdoc-mermaid .node[style*="fill:#"] {
+  filter: invert(0.82) hue-rotate(150deg) saturate(0.9);
+}
+[data-theme="dark"] .mermaid .node[style*="fill:#"] text,
+[data-theme="dark"] .gdoc-mermaid .node[style*="fill:#"] text {
+  filter: invert(1.1) hue-rotate(-150deg);
+  fill: #e8eae9 !important;
+}
+[data-theme="dark"] .mermaid .node[style*="fill:#"] .label-container text,
+[data-theme="dark"] .gdoc-mermaid .node[style*="fill:#"] .label-container text {
+  filter: none;
+}
