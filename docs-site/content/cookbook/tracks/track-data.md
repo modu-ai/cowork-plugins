@@ -222,6 +222,6 @@ Use Case: Executive decision making"
 - 개인정보보호 규정 준수
 
 ### Sources
-- [moai-data: public-data 스킬 문서](../../plugins/moai-data/)
-- [moai-office: xlsx-creator 스킬 문서](../../plugins/moai-office/)
+- [moai-data: public-data 스킬 문서](../../../plugins/moai-data/)
+- [moai-office: xlsx-creator 스킬 문서](../../../plugins/moai-office/)
 - [공공데이터 포털 가이드](https://www.data.go.kr/)

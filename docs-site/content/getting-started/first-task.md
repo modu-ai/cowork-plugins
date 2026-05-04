@@ -158,11 +158,11 @@ geekdocBreadcrumb: true
 첫 작업을 성공적으로 완료했다면 이제 더 깊은 기능을 탐색할 준비가 되었습니다:
 
 - [빠른 시작 가이드](../quick-start/) - 모든 주요 스킬 숙지하기
-- [릴리스 정보](../releases/) - 최신 기능 업데이트 확인하기
-- [기여하기](../contributing/) - 직접 스킬 개발하기
+- [릴리스 정보](../../releases/) - 최신 기능 업데이트 확인하기
+- [기여하기](../../contributing/) - 직접 스킬 개발하기
 
 ### Sources
 - GitHub 저장소: [https://github.com/modu-ai/cowork-plugins](https://github.com/modu-ai/cowork-plugins)
-- investor-relations 스킬: [../plugins/moai-business/](../plugins/moai-business/)
-- pptx-designer 스킬: [../plugins/moai-office/](../plugins/moai-office/)
-- ai-slop-reviewer 스킬: [../plugins/moai-core/](../plugins/moai-core/)
+- investor-relations 스킬: [../../plugins/moai-business/](../../plugins/moai-business/)
+- pptx-designer 스킬: [../../plugins/moai-office/](../../plugins/moai-office/)
+- ai-slop-reviewer 스킬: [../../plugins/moai-core/](../../plugins/moai-core/)

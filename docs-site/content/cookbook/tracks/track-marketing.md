@@ -180,6 +180,6 @@ Sequence:
 - 법적 규정 (광고, 개인정보) 확인
 
 ### Sources
-- [moai-content: blog 스킬 문서](../../plugins/moai-content/)
-- [moai-media: nano-banana 스킬 문서](../../plugins/moai-media/)
+- [moai-content: blog 스킬 문서](../../../plugins/moai-content/)
+- [moai-media: nano-banana 스킬 문서](../../../plugins/moai-media/)
 - [마케팅 콘텐츠 제작 가이드](https://contentmarketinginstitute.com/)

@@ -53,7 +53,7 @@ modu-ai/cowork-plugins
 /project init
    {{< /terminal >}}
 
-   `moai-core:project` 스킬이 실행되어 **7단계 흐름**(Interview → Detect → Chain → Confirm → Generate → APIKey → First Run)을 진행합니다. 자세한 내용은 [moai-core 상세](../plugins/moai-core/)에서 확인할 수 있습니다. 약 3~5분 안에 프로젝트용 `CLAUDE.md`가 루트에 생성됩니다.
+   `moai-core:project` 스킬이 실행되어 **7단계 흐름**(Interview → Detect → Chain → Confirm → Generate → APIKey → First Run)을 진행합니다. 자세한 내용은 [moai-core 상세](../../plugins/moai-core/)에서 확인할 수 있습니다. 약 3~5분 안에 프로젝트용 `CLAUDE.md`가 루트에 생성됩니다.
 
 5. **첫 요청**
 
@@ -155,8 +155,8 @@ modu-ai/cowork-plugins
 
 ## 다음 단계
 
-- [moai-core 상세](../plugins/moai-core/)
-- [moai-content 상세](../plugins/moai-content/)
+- [moai-core 상세](../../plugins/moai-core/)
+- [moai-content 상세](../../plugins/moai-content/)
 - [Cowork 플러그인 사용](../../cowork/plugins/) — Cowork 환경 통합 가이드
 
 ### Sources

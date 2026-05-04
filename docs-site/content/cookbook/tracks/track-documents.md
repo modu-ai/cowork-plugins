@@ -180,6 +180,6 @@ IR 덱은 투자 유치의 핵심 도구입니다. AI 생성 내용은 반드시
 - 시장 예측은 근거 있는 데이터 기반으로 작성
 
 ### Sources
-- [moai-business: strategy-planner 스킬 문서](../../plugins/moai-business/)
-- [moai-office: pptx-designer 스킬 문서](../../plugins/moai-office/)
+- [moai-business: strategy-planner 스킬 문서](../../../plugins/moai-business/)
+- [moai-office: pptx-designer 스킬 문서](../../../plugins/moai-office/)
 - [AI IR 덱 최적화 가이드](https://startup-investor.kr/ir-deck-best-practices/)

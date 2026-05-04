@@ -279,7 +279,7 @@ SKILL.md 본문에 추가:
 
 - [트랙 — 데이터 분석](../../track-data/)
 - [트랙 — 마케팅](../../track-marketing/)
-- [AI 사원 설계](../ai-employee-design/)
+- [AI 사원 설계](../../ai-employee-design/)
 - [최종 프로젝트](../final-project/)
 
 ---

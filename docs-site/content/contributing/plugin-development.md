@@ -469,7 +469,7 @@ moai-test run skill:new-skill
 
 ### 참고 자료
 
-- [스킬 개발 가이드](skill-development/)
+- [스킬 개발 가이드](../skill-development/)
 - [버전 관리 정책](../../releases/)
 - [품질 가이드](../../getting-started/quick-start/)
 - [마켓플레이스 문서](https://claude.com/marketplace)

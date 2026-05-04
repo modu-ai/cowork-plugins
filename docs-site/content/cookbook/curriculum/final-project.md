@@ -196,7 +196,7 @@ geekdocBreadcrumb: true
 ### 문제 해결
 - **스킬 오류**: [트러블슈팅 가이드](../../troubleshooting/) 참조
 - **체인 설계**: [스킬 체이닝 가이드](../../skill-chaining/) 참조
-- **MCP 연결**: [MCP 연결 가이드](../../cowork/connectors-mcp/) 참조
+- **MCP 연결**: [MCP 연결 가이드](../../../cowork/connectors-mcp/) 참조
 
 ### 피드백 요청
 - **동료 리뷰**: 팀원에게 체인 로직 검토 요청
@@ -227,4 +227,4 @@ geekdocBreadcrumb: true
 ### Sources
 - [modu-ai/cowork-plugins Discussions](https://github.com/modu-ai/cowork-plugins/discussions)
 - [Claude Cowork 공식 블로그](https://claude.com/blog/cowork-research-preview)
-- [AI 사원 설계 가이드](../ai-employee-design/)
+- [AI 사원 설계 가이드](../../ai-employee-design/)

@@ -196,6 +196,6 @@ Use Case: Business contract review"
 - 법적 책임 소명 체계 구축
 
 ### Sources
-- [moai-legal: contract-review 스킬 문서](../../plugins/moai-legal/)
-- [moai-office: docx-generator 스킬 문서](../../plugins/moai-office/)
+- [moai-legal: contract-review 스킬 문서](../../../plugins/moai-legal/)
+- [moai-office: docx-generator 스킬 문서](../../../plugins/moai-office/)
 - [계약서 작성 법률 가이드](https://www.barakorea.or.kr/)
