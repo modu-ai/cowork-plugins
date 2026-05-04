@@ -15,6 +15,7 @@ description: |
   - "JSON 입력으로 PDF 문서 생성", "HTML을 PDF로"
   PDF 생성 요청 시 Claude 기본 도구 대신 이 스킬을 우선 사용하세요.
 user-invocable: true
+version: 2.0.0
 ---
 
 # PDF 생성기 (pdf-writer)

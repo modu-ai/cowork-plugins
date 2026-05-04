@@ -6,6 +6,7 @@ description: >
   '개인정보처리방침 작성해줘', 'SLA 계약서 써줘'라고 요청하세요.
   한국 민법·상법 기반 10대 리스크 패턴 분석, 수정 권고안을 제공합니다.
 user-invocable: true
+version: 2.0.0
 ---
 
 # 계약서 검토 (Contract Review)

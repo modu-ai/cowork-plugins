@@ -5,6 +5,7 @@ description: >
   "피드백 면담 스크립트 써줘"처럼 말하면 됩니다. MBO·OKR·KPI 체계 구축,
   360도 평가 설계, 인사 고과 가이드, 피드백 면담 스크립트 작성을 지원합니다.
 user-invocable: true
+version: 2.0.0
 ---
 
 # 성과평가 (Performance Review)

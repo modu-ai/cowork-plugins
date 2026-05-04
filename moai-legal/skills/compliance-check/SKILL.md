@@ -6,6 +6,7 @@ description: >
   '규제 갭 분석해줘', '인허가 서류 준비해줘'라고 요청하세요.
   한국 주요 규제 기준 적용, 갭 분석, 시정 계획, ESG 지표 보고서를 제공합니다.
 user-invocable: true
+version: 2.0.0
 ---
 
 # 컴플라이언스 점검 (Compliance Check)

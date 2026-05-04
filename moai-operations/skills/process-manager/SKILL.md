@@ -3,6 +3,7 @@ name: process-manager
 description: >
   업무 프로세스를 문서화하고 표준화합니다. "SOP 만들어줘", "구매 요청서 써줘", "회의록 정리해줘", "운영 매뉴얼 작성해줘"라고 요청할 때 사용하세요. 운영 매뉴얼, SOP(표준 운영 절차), 조달 문서(구매 요청서·발주서), 회의록 작성 및 안건 관리를 지원합니다.
 user-invocable: true
+version: 2.0.0
 ---
 
 # 프로세스 관리자 (process-manager)

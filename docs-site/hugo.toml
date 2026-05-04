@@ -76,5 +76,7 @@ disablePathToLower = true
 
   # MoAI 브랜드 에셋
   geekdocImage = "moai-logo.png"
+  # og:image 기본값 (1200x630, 페이지 frontmatter의 images 로 오버라이드 가능)
+  images = ["moai-cowork-og.png"]
   [params.geekdocFontAwesome]
     url = "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css"

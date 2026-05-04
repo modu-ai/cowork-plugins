@@ -7,6 +7,7 @@ description: >
   '/moai-media nano-banana'으로 호출하세요.
   **일반 이미지 생성은 image-gen 스킬을 우선 사용하세요.** 본 스킬은 한글 텍스트 렌더링 특화 용도입니다.
 user-invocable: true
+version: 2.0.0
 ---
 
 # Nano Banana — 한글 타이포그래피 특화 이미지 생성

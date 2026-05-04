@@ -5,6 +5,7 @@ description: >
   "CV 작성해줘"처럼 말하면 됩니다. STAR 기법 기반 자소서, ATS 최적화 이력서,
   영문 CV, LinkedIn 프로필 최적화, 글자수별 전략(500/1000/1500자)을 지원합니다.
 user-invocable: true
+version: 2.0.0
 ---
 
 # 이력서/자소서 빌더 (resume-builder)

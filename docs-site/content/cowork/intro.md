@@ -3,9 +3,13 @@ title: "Cowork 소개"
 weight: 10
 description: "Claude Cowork가 무엇이고 누구를 위한 도구인지, Claude Code와의 차이를 한 페이지로 정리합니다."
 geekdocBreadcrumb: true
+images:
+  - /moai-cowork-og.png
 ---
 
 # Cowork 소개
+
+![MoAI Cowork 터미널 로고](/moai-cowork-terminal.png)
 
 > Claude Cowork는 Claude Desktop 앱 안에서 동작하는 비개발자용 작업 자동화 환경입니다.
 

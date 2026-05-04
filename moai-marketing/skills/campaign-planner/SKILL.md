@@ -6,6 +6,7 @@ description: >
   '상세페이지 써줘', '고객 여정 맵 만들어줘', 'CRM 전략 수립해줘'라고 요청하세요.
   쿠팡·스마트스토어 상세페이지, AI 이미지 생성, 퍼포먼스 마케팅 전략을 제공합니다.
 user-invocable: true
+version: 2.0.0
 ---
 
 # 캠페인 플래너 (Campaign Planner)

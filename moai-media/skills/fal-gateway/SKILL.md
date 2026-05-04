@@ -4,6 +4,7 @@ description: |
   fal.ai 1000+ AI 모델 유니버설 게이트웨이. 전용 스킬(image-gen, video-gen, audio-gen)이 없는 모델은 이 스킬을 통해 호출합니다.
   "Flux", "Recraft", "Hailuo", "Luma", "Pika", "MiniMax Music", "fal.ai", "1000개 모델" 요청 시 사용.
 user-invocable: true
+version: 2.0.0
 ---
 
 # fal-gateway

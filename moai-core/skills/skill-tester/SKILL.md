@@ -12,6 +12,7 @@ description: |
   - skill-builder Phase 5 이후 검증이 필요할 때
   - /harness 커맨드의 test 단계로 진입할 때
 user-invocable: true
+version: 2.0.0
 ---
 
 # Skill Tester — 스킬 품질 검증 도구 (루브릭 + 체인 내장)
