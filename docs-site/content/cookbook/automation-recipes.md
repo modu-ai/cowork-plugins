@@ -5,9 +5,6 @@ description: "Schedule(시간 자동화)과 Dispatch(공간 확장)를 결합한
 geekdocBreadcrumb: true
 tags: [cookbook, automation]
 ---
-
-# 자동화 레시피 — Schedule × Dispatch 결합 운영
-
 > Schedule은 **시간의 자동화**, Dispatch는 **공간의 확장**입니다. 둘을 결합하면 "내가 자리에 없어도 내 AI 직원은 계속 일하는" 상태가 만들어집니다.
 
 CTR-AX 현장에서 검증된 레시피를 본부별로 정리합니다.
@@ -92,7 +89,7 @@ flowchart TB
 ### 재무 — 매일 아침 환율·미결 메일
 
 {{< terminal title="claude — cowork" >}}
-/schedule
+> /schedule
 
 매일 08:50에 다음을 실행해줘:
 1. 네이버 금융에서 KRW/USD, KRW/JPY, KRW/EUR 환율 조회
@@ -104,7 +101,7 @@ flowchart TB
 ### 품질 — 불량 대시보드
 
 {{< terminal title="claude — cowork" >}}
-/schedule
+> /schedule
 
 매일 07:00에 다음을 실행해줘:
 1. D:/QMS/daily_inspection.xlsx에서 어제자 불량 데이터 추출
@@ -116,7 +113,7 @@ flowchart TB
 ### 해외영업 — 조기 뉴스 브리핑
 
 {{< terminal title="claude — cowork" >}}
-/schedule
+> /schedule
 
 매일 06:00에 다음을 실행해줘:
 1. WebSearch로 "반도체 산업 어제자 주요 뉴스" 검색 (미국·유럽 소스 우선)
@@ -150,7 +147,7 @@ D:/Sales/Q1_report.xlsx를 분석해서 임원 요약 PPT 5장을 만들어
 ### 패턴 C — 지연 실행
 
 {{< terminal title="claude — cowork" >}}
-(모바일 앱에서)
+> (모바일 앱에서)
 사무실 PC에서 오늘 밤 10시에 실행:
 Downloads 폴더의 어제 이후 파일을 Project_YYYY-MM 폴더로 분류하고
 30일 이상 안 쓴 파일은 Archive로 이동해줘.

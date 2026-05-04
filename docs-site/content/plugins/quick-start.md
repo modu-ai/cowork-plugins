@@ -4,9 +4,6 @@ weight: 10
 description: "modu-ai/cowork-plugins 마켓플레이스 등록부터 첫 스킬 체인 실행까지 약 10분 완성 가이드입니다."
 geekdocBreadcrumb: true
 ---
-
-# `cowork-plugins` 빠른 시작
-
 `modu-ai/cowork-plugins` 마켓플레이스를 Claude Cowork에 등록하고 첫 스킬 체인을 실행하기까지의 전체 흐름을 정리한 페이지입니다. 처음부터 끝까지 약 **10분** 소요됩니다.
 
 ## 사전 체크

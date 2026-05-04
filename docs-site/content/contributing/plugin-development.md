@@ -4,9 +4,6 @@ weight: 20
 description: "새로운 MoAI 플러그인을 개발하고 배포하는 방법 상세 안내"
 geekdocBreadcrumb: true
 ---
-
-# 플러그인 개발 가이드
-
 이 가이드는 MoAI Cowork Plugins용 새로운 플러그인을 개발하고 배포하는 전체 과정을 안내합니다. 기존 플러그인 구조를 따라 일관된 품질의 플러그인을 만들 수 있습니다.
 
 ## 플러그인 기본 구조

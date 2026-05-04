@@ -4,9 +4,6 @@ weight: 30
 description: "데스크톱 폴더의 CSV를 요약해 Word 파일로 저장하는 5분 시나리오로 Cowork 사용법을 익힙니다."
 geekdocBreadcrumb: true
 ---
-
-# 첫 작업 실행하기
-
 > 설치를 마쳤다면 5분 안에 첫 결과물을 만들어 봅니다. 이번 예시는 데스크톱 폴더의 CSV를 간단히 요약해 Word 파일로 저장하는 흐름입니다.
 
 ## 준비물

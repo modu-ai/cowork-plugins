@@ -4,9 +4,6 @@ weight: 20
 description: "Claude Desktop 앱에서 Cowork 모드를 활성화하기 위한 요금제 요건과 설치 절차를 안내합니다."
 geekdocBreadcrumb: true
 ---
-
-# 설치와 요금제 요건
-
 > Cowork는 Claude Desktop 앱의 일부로 제공됩니다. 별도 설치 파일이 없으니 Desktop 앱을 최신 버전으로 유지하면 됩니다.
 
 ## 요금제 요건

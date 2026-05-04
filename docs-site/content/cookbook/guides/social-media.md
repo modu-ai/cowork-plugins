@@ -4,9 +4,6 @@ weight: 70
 description: "인스타·LinkedIn·X·카카오·네이버 등 채널별 톤·해시태그·발행 시점을 moai-content:social-media와 moai-marketing:sns-content로 운영."
 geekdocBreadcrumb: true
 ---
-
-# SNS 최적화 가이드
-
 > 채널마다 사람이 다르고, 사람이 다르면 톤·길이·해시태그도 달라야 합니다. cowork-plugins의 SNS 스킬은 7개 채널의 알고리즘·관습을 미리 알고 있어 동일 메시지를 채널별로 자동 변형합니다.
 
 ## 사용 스킬
@@ -36,7 +33,11 @@ geekdocBreadcrumb: true
 > "이번 주 신제품 출시 메시지를 인스타·LinkedIn·X·카카오·네이버 5개 채널로 변형해줘. 각 채널 톤·해시태그·길이에 맞춰. 인스타는 카드뉴스 5장 슬라이드도 함께."
 ```
 
-체인: `sns-content` (메시지 코어) → `social-media` (채널 변형) → `card-news` (카드 디자인) → `ai-slop-reviewer` (검수)
+체인:
+1. `sns-content` (메시지 코어)
+2. `social-media` (채널 변형)
+3. `card-news` (카드 디자인)
+4. `ai-slop-reviewer` (검수)
 
 ## 콘텐츠 달력
 

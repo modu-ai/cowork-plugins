@@ -4,9 +4,6 @@ weight: 100
 description: "Claude가 마우스·키보드·화면 캡처로 데스크톱 앱과 브라우저를 직접 조작하는 컴퓨터 사용 기능과 안전 수칙입니다."
 geekdocBreadcrumb: true
 ---
-
-# 컴퓨터 사용
-
 > Cowork의 컴퓨터 사용(computer use) 기능은 Claude가 마우스·키보드·화면 캡처로 데스크톱 앱이나 브라우저를 직접 조작할 수 있게 합니다.
 
 ## 언제 쓰나

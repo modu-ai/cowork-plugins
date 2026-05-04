@@ -4,9 +4,6 @@ weight: 40
 description: "Welcome · Drip · Re-engagement 시퀀스를 moai-content:newsletter와 moai-marketing:email-sequence로 운영하는 템플릿."
 geekdocBreadcrumb: true
 ---
-
-# 이메일 마케팅 템플릿
-
 > 이메일은 "죽었다"는 말을 10년째 듣고 있지만, 매출 ROAS 기준으로는 가장 안정적인 채널입니다. cowork-plugins는 한국 정보통신망법을 준수하면서 시퀀스를 자동 설계합니다.
 
 ## 사용 스킬
@@ -64,7 +61,10 @@ geekdocBreadcrumb: true
 > "신규 가입자 Welcome 7일 시퀀스 만들어줘. 우리 제품은 노션 템플릿 SaaS, 타겟은 30대 직장인. 제목·본문·CTA·발송 시점 포함. 정보통신망법 준수 — 광고 표시·수신거부 링크 필수."
 ```
 
-체인: `email-sequence` (뼈대) → `copywriting` (제목·CTA) → `ai-slop-reviewer` (검수)
+체인:
+1. `email-sequence` (뼈대)
+2. `copywriting` (제목·CTA)
+3. `ai-slop-reviewer` (검수)
 
 ## 정보통신망법 준수 체크
 

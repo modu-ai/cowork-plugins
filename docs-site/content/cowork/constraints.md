@@ -4,9 +4,6 @@ weight: 130
 description: "Claude Cowork(Claude Desktop 앱)의 플랜별 한도, 플러그인·커넥터 정책, 파일·세션 제약을 한 페이지로 정리합니다."
 geekdocBreadcrumb: true
 ---
-
-# Cowork 제약과 한도
-
 > Claude Cowork는 Claude Desktop 앱에서 작동하는 사무·연구 협업 모드입니다. 본 페이지는 **앱 사용자 관점**의 한도(요금제·세션·파일·플러그인·커넥터)만 다룹니다. 개발자용 Claude Code(터미널 CLI)와는 별개의 제품군이므로 혼동하지 마세요.
 
 ## 한눈에 보기

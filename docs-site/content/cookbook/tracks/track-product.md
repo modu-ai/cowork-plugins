@@ -1,32 +1,30 @@
 ---
 title: "제품 개발 트랙"
 weight: 70
-description: "PRD · 로드맵 · UX 자동화 — strategy-planner → startup-launchpad → campaign-planner → landing-page → pptx-designer → ai-slop-reviewer"
+description: "PRD · 로드맵 · UX 자동화 — 사용자 정의 product-assistant 플러그인을 직접 빌드하는 튜토리얼"
 geekdocBreadcrumb: true
 ---
-
-# 제품 개발 트랙 — PRD · 로드맵 · UX 자동화
-
 > 제품 매니저, UX 디자이너, 개발 매니저를 위한 트랙입니다. **제품 기획 → 로드맵 설계 → UX 디자인 → 발표 자료 생성** 5단계로 제품 개발 프로세스 전체를 자동화합니다. 기획단계부터 출시 전까지 제품 개발 전 주기를 커버합니다.
 
 {{< hint type="note" >}}
-이 트랙은 현재 **moai-business**(`strategy-planner`·`startup-launchpad`)와 **moai-marketing**(`campaign-planner`)·**moai-content**(`landing-page`)의 인접 스킬로 PRD·로드맵·UX 흐름을 구성합니다. 향후 제품 관리 전용 플러그인이 추가되면 본 페이지가 갱신됩니다.
+이 트랙은 **사용자가 직접 product-assistant 플러그인을 만드는 튜토리얼**입니다. 본문에 등장하는 `product-planner`, `roadmapper`, `ux-researcher`, `ux-designer`, `presenter`, `product-reviewer`는 cowork-plugins에 기본 포함된 스킬이 아니라 *튜토리얼을 따라 직접 작성하는 스킬*입니다. 기본 포함 스킬만 쓰고 싶다면 [트랙 — 문서 작성](../track-documents/) 또는 [투자 유치 가이드](../../guides/funding/)를 참고하세요.
 {{< /hint >}}
 
 ## 트랙 개요
 
 ### 🎯 학습 목표
 
-- 제품 요구사항 문서화(`strategy-planner`) 전문 스킬 활용법
-- 제품 로드맵 관리(`startup-launchpad`) 기술
-- UX 리서치 및 디자인(`campaign-planner`, `landing-page`) 프로세스
-- 제품 발표 자료 생성(`pptx-designer`) 및 품질 관리(`ai-slop-reviewer`)
-- 제품 개발의 완전 자동화 워크플로우
+- 제품 요구사항 문서화 스킬(`product-planner`) 직접 작성
+- 제품 로드맵 관리 스킬(`roadmapper`) 빌드
+- UX 리서치·디자인 스킬(`ux-researcher`, `ux-designer`) 작성
+- 제품 발표 자료 생성 스킬(`presenter`) + 품질 검수(`product-reviewer`)
+- 사용자 정의 플러그인을 직접 빌드해 운영하는 워크플로우 체득
 
 ### 📋 준비물
 
 ```
-[ ] spec-writer, roadmap-manager, ux-researcher, ux-designer, pptx-designer, ai-slop-reviewer 스킬 접근 권한
+[ ] cowork-plugins 기본 스킬 접근 권한 (`pptx-designer`, `ai-slop-reviewer`)
+[ ] 사용자 정의 플러그인 작성 가능 환경 (Cowork 사용자 지정 플러그인 활성)
 [ ] 제품 기획 템플릿 (PRD, 로드맵, UX 리서치 템플릿)
 [ ] 사용자 데이터 및 시장 조사 자료
 [ ] 디자인 가이드라인 (UI/UX 스타일 가이드)
@@ -426,7 +424,7 @@ description: 제품 문서 최종 검수 및 전문성 강화. PRD, 로드맵, U
 ### ⏰ 스케줄링 설정
 
 {{< terminal title="claude — cowork" >}}
-/schedule
+> /schedule
 
 매월 1일 10:00에 product-assistant의 roadmapper 스킬을 실행해줘.
 분기 초 (1/4/7/10월 1일)에 product-planner 자동 실행.

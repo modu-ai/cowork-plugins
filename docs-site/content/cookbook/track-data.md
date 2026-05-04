@@ -24,7 +24,7 @@ flowchart LR
     PublicData --> Explore
 {{< terminal title="claude — cowork" >}}
 
-## Part 1 — data-explorer
+> ## Part 1 — data-explorer
 
 ### 언제 쓰나
 
@@ -36,7 +36,7 @@ flowchart LR
 ### 기본 프롬프트
 
 ```text
-> D:/Input/customer-transactions-2026.csv를 분석해줘.
+D:/Input/customer-transactions-2026.csv를 분석해줘.
 
   - 총 행수·결측률·중복 건수
   - 수치형 컬럼 요약 통계 (평균·중앙값·표준편차·분위수)
@@ -120,7 +120,7 @@ flowchart LR
 ### 기본 프롬프트
 
 {{< terminal title="claude — cowork" >}}
-KOSIS에서 "소비자물가지수 최근 24개월"을 조회해서
+> KOSIS에서 "소비자물가지수 최근 24개월"을 조회해서
 내 회사 매출 데이터(Q1-sales.xlsx)와 함께 분석해줘.
 
 - CPI 원계열 데이터 확보

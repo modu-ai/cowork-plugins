@@ -4,9 +4,6 @@ weight: 80
 description: "내장 커넥터와 사용자 지정 MCP 서버로 외부 서비스를 Cowork에 연결하는 방법과 보안 체크 포인트입니다."
 geekdocBreadcrumb: true
 ---
-
-# 커넥터와 MCP
-
 > Cowork는 내장된 커넥터(connectors)와 사용자 지정 MCP 서버를 통해 외부 서비스와 데이터에 접근합니다.
 
 ## 내장 커넥터

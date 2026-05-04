@@ -5,9 +5,6 @@ description: "사업계획서를 받아 투자자 앞에서 15분 안에 끝낼 
 geekdocBreadcrumb: true
 tags: [cookbook, business]
 ---
-
-# IR 덱 제작
-
 > **목표** — 사업계획서 내용을 받아 투자자 앞에서 15분 안에 끝낼 수 있는 **15장 PPT 피칭 덱**을 만듭니다.
 
 ## 대상 독자

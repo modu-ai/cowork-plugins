@@ -4,9 +4,6 @@ weight: 60
 description: "스킬이 어떻게 자동 트리거되는지, 디렉터리 구조와 호출 방식 3가지를 정리합니다."
 geekdocBreadcrumb: true
 ---
-
-# 스킬 사용법
-
 > 스킬(skill)은 "이런 요청이 오면 이렇게 처리해라"라는 절차적 지침 묶음입니다. 프롬프트 엔지니어링을 파일 하나로 저장해둔 것이라고 생각하면 쉽습니다.
 
 ## 언제 트리거되나
@@ -65,7 +62,7 @@ user-invocable: true
 특정 스킬을 명시적으로 부르고 싶으면 대화창에 `/`를 입력해 나타나는 목록에서 스킬을 선택합니다. 스킬의 frontmatter에 `user-invocable: true`가 설정된 스킬만 Tab 자동완성과 `/skill-name` 호출을 지원합니다.
 
 {{< terminal title="claude — cowork" >}}
-/blog
+> /blog
 /contract-review
 {{< /terminal >}}
 

@@ -5,9 +5,6 @@ description: "스킬·커맨드·플러그인·스케줄·MCP 5개 부품으로 
 geekdocBreadcrumb: true
 tags: [cookbook, ai-employee]
 ---
-
-# AI 사원 설계 — 5개 부품으로 "부서 하나"를 만든다
-
 > "AI 사원"이라는 표현은 마케팅 용어가 아닙니다. Cowork에서는 5개 부품을 조립해 **사람 직원에 대응하는 단위**를 실제로 만들 수 있습니다. CTR-AX 강의에서 제시한 설계 모델을 정리합니다.
 
 ## 구성 5요소
@@ -24,7 +21,7 @@ flowchart TB
     style Emp fill:#d4edda,stroke:#155724
 {{< terminal title="claude — cowork" >}}
 
-| 부품 | 비유 | Cowork 구현 |
+> | 부품 | 비유 | Cowork 구현 |
 |---|---|---|
 | ① 스킬 | 직원의 "머릿속 매뉴얼" | `SKILL.md` + resources |
 | ② 커맨드 | 직원을 부르는 "호출 벨" | `/명령어` 슬래시 또는 자연어 트리거 |
@@ -44,7 +41,7 @@ flowchart TB
 
 ### 1. 역할 정의
 
-> 재무팀 김대리의 반복 업무를 맡는 AI. 환율·미결·월마감 현황을 매일 아침 자동 보고하고, 출장 중 긴급 조회에 응답한다.
+재무팀 김대리의 반복 업무를 맡는 AI. 환율·미결·월마감 현황을 매일 아침 자동 보고하고, 출장 중 긴급 조회에 응답한다.
 
 ### 2. 업무 분해
 
@@ -149,7 +146,7 @@ description: >
 플러그인 안에 직접 스케줄을 박아두지 말고, **사용자 PC별 등록을 권장**합니다. PC마다 시간대·휴일이 다르므로.
 
 {{< terminal title="claude — cowork" >}}
-(사용자가 처음 설치한 날 한 번 실행)
+> (사용자가 처음 설치한 날 한 번 실행)
 /schedule
 
 매주 월요일 09:00에 finance-assistant 플러그인의

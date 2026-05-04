@@ -4,9 +4,6 @@ weight: 20
 description: "5분 만에 완료하는 IR 덱 생성 체험 예제"
 geekdocBreadcrumb: true
 ---
-
-# 첫 작업: IR 덱 생성 체험
-
 이 가이드는 MoAI Cowork Plugins을 사용하여 실제 비즈니스 문제를 해결하는 전체 과정을 5분 만에 체험할 수 있도록 설계되었습니다. Series A IR 덱을 생성하는 전체 워크플로우를 직접 경험해 보세요.
 
 ## 목표
@@ -33,7 +30,7 @@ geekdocBreadcrumb: true
 `/project init` 명령어로 프로젝트를 초기화합니다:
 
 {{< terminal title="claude — cowork" >}}
-/project init
+> /project init
 {{< /terminal >}}
 
 **7단계 인터뷰 진행**:

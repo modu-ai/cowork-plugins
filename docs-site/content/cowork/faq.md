@@ -4,9 +4,6 @@ weight: 110
 description: "Cowork를 2주 써본 사용자가 가장 자주 묻는 10가지 질문과 빠른 해결 단서를 모았습니다."
 geekdocBreadcrumb: true
 ---
-
-# 자주 묻는 질문
-
 > Cowork를 2주 써본 뒤 가장 자주 올라오는 질문 10가지를 모았습니다.
 
 ## 학습 목표

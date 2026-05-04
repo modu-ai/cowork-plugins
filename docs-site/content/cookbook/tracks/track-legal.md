@@ -4,9 +4,6 @@ weight: 50
 description: "계약서 · NDA · 컴플라이언스 문서 자동화"
 geekdocBreadcrumb: true
 ---
-
-# 법률 트랙
-
 **법률 트랙**은 계약서 검토부터 문서 생성, AI 검수까지 완결된 법무 컴플라이언스 워크플로우를 제공합니다. 법무팀, 컴플라이언스 담당자, 기업 컨설턴트의 법무 업무를 AI로 자동화합니다.
 
 ## 트랙 개요
@@ -57,7 +54,7 @@ contract-review → docx-generator → ai-slop-reviewer
 
 #### Step 1: 계약서 리스크 분석
 {{< terminal title="claude — cowork" >}}
-# contract-review 스킬 호출
+> # contract-review 스킬 호출
 "공급 계약서 리뷰해줘
 Contract Type: 공급 계약서 (품질보증/하자보증 조항 포함)
 Parties: 공급자 (A사), 구매자 (B사)
@@ -79,7 +76,7 @@ Key Areas:
 
 #### Step 2: 개선된 계약서 생성
 {{< terminal title="claude — cowork" >}}
-# docx-generator 스킬 호출
+> # docx-generator 스킬 호출
 "리뷰 결과를 바탕으로 개선된 계약서 초안 생성해줘
 Template: 공급 계약서 표준 템플릿
 Modifications:
@@ -100,7 +97,7 @@ Format: Word 문서 (docx) with professional formatting"
 
 #### Step 3: 법적 문서 검수
 {{< terminal title="claude — cowork" >}}
-# ai-slop-reviewer 스킬 호출
+> # ai-slop-reviewer 스킬 호출
 "생성된 계약서 검수해줘
 Focus: Legal accuracy, terminology, completeness
 Format: Word document with legal clauses

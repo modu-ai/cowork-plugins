@@ -4,9 +4,6 @@ weight: 30
 description: "Power Query · 피벗 테이블 · LAMBDA 등 cowork-plugins로 자동화 가능한 엑셀 고급 패턴."
 geekdocBreadcrumb: true
 ---
-
-# 엑셀 고급 기법
-
 > 엑셀의 90%는 SUM·VLOOKUP만으로 풀리지만, 나머지 10%가 사람의 시간을 다 잡아먹습니다. 그 10%를 cowork-plugins로 자동화합니다.
 
 ## 사용 스킬

@@ -4,9 +4,6 @@ weight: 1
 description: "MoAI Cowork Plugins 버전 업데이트 및 릴리스 노트 모음"
 geekdocBreadcrumb: true
 ---
-
-# 릴리스 정보
-
 MoAI Cowork Plugins은 지속적인 개발을 통해 새로운 기능을 추가하고 기존 기능을 개선합니다. 이 페이지에서는 버전 관리 정책과 릴리스 노트에 대한 정보를 제공합니다.
 
 ## 버전 관리 정책

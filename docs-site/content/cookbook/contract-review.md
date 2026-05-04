@@ -5,9 +5,6 @@ description: "상대측 계약서·NDA를 리스크 항목별로 표 정리 → 
 geekdocBreadcrumb: true
 tags: [cookbook, legal]
 ---
-
-# 계약서 검토 리포트
-
 > **목표** — 상대측이 보낸 계약서·NDA를 **리스크 항목별로 표 정리** → 수정본 DOCX → 1페이지 결재용 요약까지 자동으로 만듭니다.
 
 {{< hint type="danger" >}}

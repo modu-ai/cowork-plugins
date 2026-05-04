@@ -27,7 +27,7 @@ flowchart LR
     Review --> Out[최종 산출물]
 {{< terminal title="claude — cowork" >}}
 
-## Word (DOCX) — 가장 많이 쓰는 포맷
+> ## Word (DOCX) — 가장 많이 쓰는 포맷
 
 ### 적합한 업무
 
@@ -80,7 +80,7 @@ Q2 매출 보고서를 Word로 작성해줘.
 ### 실무 흐름
 
 {{< terminal title="claude — cowork" >}}
-(예시)
+> (예시)
 Q2 매출 데이터를 분석해서 임원 대상 PPT 7장을 만들어줘.
 
 - 1장: 타이틀 + 요약 수치 3개
@@ -117,7 +117,7 @@ Q2 매출 데이터를 분석해서 임원 대상 PPT 7장을 만들어줘.
 ### 실무 흐름
 
 {{< terminal title="claude — cowork" >}}
-(예시)
+> (예시)
 D:/Input/raw-transactions.csv(5만건)를 분석해서
 월별·카테고리별 피벗을 만들어줘.
 
@@ -152,7 +152,7 @@ D:/Input/raw-transactions.csv(5만건)를 분석해서
 ### 실무 흐름
 
 {{< terminal title="claude — cowork" >}}
-(예시)
+> (예시)
 중소기업청 지원사업 신청서 초안을 한글 문서로 만들어줘.
 
 - 양식: 2026년 디지털 전환 지원사업 공식 양식

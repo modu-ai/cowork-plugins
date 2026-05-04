@@ -4,9 +4,6 @@ weight: 40
 description: "공공데이터 · 시각화 · 리포트 자동화"
 geekdocBreadcrumb: true
 ---
-
-# 데이터 분석 트랙
-
 **데이터 분석 트랙**은 공공데이터 수집부터 분석, 시각화, 보고서 생성까지 완결된 데이터 워크플로우를 제공합니다. 데이터 분석가, 리서치, 기획자의 데이터 처리 작업을 AI로 자동화합니다.
 
 ## 트랙 개요
@@ -62,7 +59,7 @@ public-data → data-explorer → data-visualizer → xlsx-creator
 
 #### Step 1: 공공데이터 수집 및 준비
 {{< terminal title="claude — cowork" >}}
-# public-data 스킬 호출
+> # public-data 스킬 호출
 "서울시 상권 분석 데이터 수집해줘
 Target: 서울시 내 100개 주요 상권
 Period: 2023년 1분기 ~ 2024년 4분기
@@ -78,7 +75,7 @@ API Sources: 서울시 열린데이터광장, 통계청"
 
 #### Step 2: 데이터 심층 분석
 {{< terminal title="claude — cowork" >}}
-# data-explorer 스킬 호출
+> # data-explorer 스킬 호출
 "서울시 상권 데이터 분석해줘
 Analysis Goals:
 - 상권별 매출 성장률 추이
@@ -99,7 +96,7 @@ Methods:
 
 #### Step 3: 시각화 생성
 {{< terminal title="claude — cowork" >}}
-# data-visualizer 스킬 호출
+> # data-visualizer 스킬 호출
 "서울시 상권 분석 시각화 생성해줘
 Chart Types:
 - 지도 상 매출 분포 히트맵
@@ -120,7 +117,7 @@ Design:
 
 #### Step 4: 최종 보고서 생성
 {{< terminal title="claude — cowork" >}}
-# xlsx-creator 스킬 호출
+> # xlsx-creator 스킬 호출
 "서울시 상권 분석 보고서 생성해줘
 Report Structure:
 1. 실행 요약 (1페이지)
@@ -145,7 +142,7 @@ Format:
 
 #### Step 5: AI 품질 검수
 {{< terminal title="claude — cowork" >}}
-# ai-slop-reviewer 스킬 호출
+> # ai-slop-reviewer 스킬 호출
 "데이터 분석 보고서 검수해줘
 Focus: Data accuracy, statistical validity, business insights
 Format: Excel report with charts and tables

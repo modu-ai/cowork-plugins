@@ -4,9 +4,6 @@ weight: 10
 description: "Claude Desktop에 MoAI Cowork Plugins을 설치하는 전체 과정 단계별 안내"
 geekdocBreadcrumb: true
 ---
-
-# 설치 가이드
-
 이 가이드는 MoAI Cowork Plugins을 Claude Desktop에 설치하는 전체 과정을 단계별로 상세히 안내합니다. 5분 이내에 모든 설치를 완료할 수 있습니다.
 
 ## 전체 설치 절차

@@ -4,9 +4,6 @@ weight: 140
 description: "조직에서 Cowork를 도입할 때 관리자가 챙겨야 할 거버넌스, 모니터링, 데이터 흐름 정리."
 geekdocBreadcrumb: true
 ---
-
-# Team·Enterprise 관리
-
 > 조직에서 Cowork를 도입할 때 관리자가 챙겨야 할 요소들을 정리합니다.
 
 ## 요금제 특징

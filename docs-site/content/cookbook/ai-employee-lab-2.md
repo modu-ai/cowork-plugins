@@ -45,12 +45,12 @@ V-0002,Beta Electronics,전자부품,CN,A
 V-0003,Gamma Chemicals,화학,JP,B
 {{< terminal title="claude — cowork" >}}
 
-## Part 1 — quality-ops 플러그인
+> ## Part 1 — quality-ops 플러그인
 
 ### Step 1-1. 스캐폴드
 
 ```text
-> D:/Projects/quality-ops/quality-ops/ 폴더에 플러그인 스캐폴드를 만들어줘.
+D:/Projects/quality-ops/quality-ops/ 폴더에 플러그인 스캐폴드를 만들어줘.
 plugin.json description: "품질 관제 AI — 일일 불량 대시보드와 이상 탐지"
 {{< /terminal >}}
 
@@ -100,7 +100,7 @@ description: 불량률 급증 조기 경보.
 ### Step 1-4. Schedule 등록
 
 {{< terminal title="claude — cowork" >}}
-/schedule
+> /schedule
 
 매일 07:00에 quality-ops의 defect-dashboard 스킬을 실행해줘.
 실행 후 즉시 anomaly-alert 스킬도 체이닝으로 실행해줘.
@@ -160,7 +160,7 @@ description: 상장 벤더 긴급 공시 실시간 모니터링.
 ### Step 2-4. Schedule 등록
 
 {{< terminal title="claude — cowork" >}}
-/schedule
+> /schedule
 
 매주 월 08:00에 scm-watcher의 vendor-risk-scan 실행해줘.
 매일 17:00에 disclosure-alert 실행해줘.

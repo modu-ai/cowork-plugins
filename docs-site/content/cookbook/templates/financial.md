@@ -4,9 +4,6 @@ weight: 20
 description: "3년 P&L · cash-flow · cohort · funding need 5개 시트 표준 재무 모델 템플릿."
 geekdocBreadcrumb: true
 ---
-
-# 재무 모델링 템플릿
-
 > 투자 검토에서 통하는 재무 모델은 *복잡함이 아니라 검증 가능함*에서 신뢰를 얻습니다. 5개 시트, 가정과 결과의 명확한 분리, 가정을 바꾸면 결과가 자동으로 따라가는 구조 — 이 셋이면 충분합니다.
 
 ## 사용 스킬
@@ -54,7 +51,9 @@ geekdocBreadcrumb: true
 > "시리즈 A 투자 검토용 재무 모델 만들어줘. 36개월, 5개 시트(Assumptions/P&L/Cash/Cohort/Funding). 가정은 다음과 같음 — ARPU 50,000원, 신규 MoM 15%, Churn 5%, CAC 80,000원. xlsx 한 파일로 저장."
 ```
 
-체인: `financial-statements` → `xlsx-creator`
+체인:
+1. `financial-statements`
+2. `xlsx-creator`
 
 ## 가정 변경 테스트
 

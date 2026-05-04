@@ -4,9 +4,6 @@ weight: 10
 description: "새로운 MoAI 스킬을 개발하는 방법과 규격 상세 안내"
 geekdocBreadcrumb: true
 ---
-
-# 스킬 개발 가이드
-
 이 가이드는 MoAI Cowork Plugins용 새로운 스킬을 개발하는 방법을 상세히 안내합니다. v1.3.0 기준의 최신 규격을 따라 고품질의 스킬을 만들 수 있습니다.
 
 ## SKILL.md frontmatter 규격

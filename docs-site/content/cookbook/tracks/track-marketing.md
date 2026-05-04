@@ -4,9 +4,6 @@ weight: 30
 description: "블로그 · SNS · 캠페인 마케팅 콘텐츠 자동화"
 geekdocBreadcrumb: true
 ---
-
-# 마케팅 트랙
-
 **마케팅 트랙**은 콘텐츠 생성부터 AI 검수, 이미지 생성까지 완결된 마케팅 콘텐츠 워크플로우를 제공합니다. 마케터, 콘텐츠 크리에이터, 브랜드 매니저의 반복적인 콘텐츠 제작 작업을 AI로 자동화합니다.
 
 ## 트랙 개요
@@ -57,7 +54,7 @@ blog → ai-slop-reviewer → (optional) nano-banana
 
 #### Step 1: 콘텐츠 기획 및 생성
 {{< terminal title="claude — cowork" >}}
-# blog 스킬 호출
+> # blog 스킬 호출
 "AI 도입 가이드 블로그 포스트 작성해줘
 Target: 중소기업 경영자/담당자
 Length: 1500-2000자

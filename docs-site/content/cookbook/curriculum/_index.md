@@ -4,9 +4,6 @@ weight: 80
 description: "8주 AI Cowork 완성 과정 - 기초부터 실무 자동화까지 단계별 학습 로드맵"
 geekdocBreadcrumb: true
 ---
-
-# 커리큘럼 개요
-
 > Claude Cowork를 실무에 완전히 통합하여 업무 효율성을 극대화하는 종합 과정입니다.
 
 ## 커리큘럼 개요

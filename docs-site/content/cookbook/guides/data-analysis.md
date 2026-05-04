@@ -4,9 +4,6 @@ weight: 40
 description: "EDA · 프로파일링 · 이상값 탐지를 moai-data:data-explorer 스킬로 자동화하는 절차."
 geekdocBreadcrumb: true
 ---
-
-# 데이터 분석 가이드
-
 > "이 데이터로 뭘 할 수 있을까?"라는 질문은 EDA(탐색적 데이터 분석)으로 답합니다. cowork-plugins의 `data-explorer`가 5분 안에 첫 인사이트를 돌려줍니다.
 
 ## 사용 스킬

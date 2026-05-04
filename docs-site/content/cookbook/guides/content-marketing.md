@@ -4,9 +4,6 @@ weight: 60
 description: "블로그 · 캠페인 · 채널 믹스 · KPI를 moai-content와 moai-marketing 스킬로 운영하는 전략."
 geekdocBreadcrumb: true
 ---
-
-# 콘텐츠 마케팅 전략
-
 > 콘텐츠 마케팅은 한 번의 히트가 아니라 *지속 가능한 발행 리듬*에서 효과가 나옵니다. cowork-plugins는 기획·작성·검수·게시 전 단계를 자동화해 그 리듬을 만들 수 있게 합니다.
 
 ## 사용 스킬
@@ -57,7 +54,11 @@ geekdocBreadcrumb: true
 > "노션 활용법 블로그 1편 써줘. 30대 직장인 대상, 2500자, SEO 키워드 '노션 템플릿'. 네이버 블로그 발행 형식. AI 슬롭 검수까지 마쳐서."
 ```
 
-체인: `campaign-planner` (앵글 기획) → `blog` (본문 작성) → `seo-audit` (SEO 점검) → `ai-slop-reviewer` (검수)
+체인:
+1. `campaign-planner` (앵글 기획)
+2. `blog` (본문 작성)
+3. `seo-audit` (SEO 점검)
+4. `ai-slop-reviewer` (검수)
 
 ## 한국 콘텐츠 마케팅 특이점
 

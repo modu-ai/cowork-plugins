@@ -4,9 +4,6 @@ weight: 30
 description: "IR 덱 · 재무 모델 · 정부지원사업까지 자금 조달 전 단계를 cowork-plugins로 자동화하는 절차."
 geekdocBreadcrumb: true
 ---
-
-# 투자 유치 가이드
-
 > 투자자가 보는 것은 "얼마나 큰 시장에서 얼마나 잘 팔 자신이 있는가"의 두 줄 답변입니다. 그 답변을 IR 덱·재무 모델·실적 데이터로 뒷받침하는 일련의 산출물을 cowork-plugins로 작성합니다.
 
 ## 사용 스킬
@@ -37,7 +34,11 @@ geekdocBreadcrumb: true
 > "우리 회사 시리즈 A IR 덱 만들어줘. 회사 정보는 첨부 파일 회사 소개서 참고. 12장 분량으로 — 문제·솔루션·시장(TAM/SAM/SOM)·경쟁우위·트랙션·비즈니스 모델·고객·로드맵·팀·재무·요청 라운드·연락처 순서. 발표 자료 PPT로 저장해줘."
 ```
 
-체인: `market-analyst` → `investor-relations` → `pptx-designer` → `ai-slop-reviewer`
+체인:
+1. `market-analyst`
+2. `investor-relations`
+3. `pptx-designer`
+4. `ai-slop-reviewer`
 
 ## 재무 모델 — 3년 P&L
 

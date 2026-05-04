@@ -5,9 +5,6 @@ description: "본인 업무 1건을 3-스킬 체인으로 자동화하고 산출
 geekdocBreadcrumb: true
 tags: [cookbook, capstone]
 ---
-
-# 최종 프로젝트 — 내 업무 1건 자동화
-
 > 8주 코스의 마지막 단계입니다. 자기 업무 한 가지를 골라 3-스킬 체인으로 자동화하고, 산출물·프롬프트·회고를 한 문서로 정리합니다.
 
 {{< hint type="warning" >}}

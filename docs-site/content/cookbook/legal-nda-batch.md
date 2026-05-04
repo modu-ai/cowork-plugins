@@ -5,9 +5,6 @@ description: "스타트업 법무팀이 인박스에 쌓인 NDA 12건을 한 번
 geekdocBreadcrumb: true
 tags: [cookbook, legal]
 ---
-
-# NDA 일괄 검토 파이프라인
-
 > **목표** — `./nda_inbox/` 폴더의 NDA PDF 12건을 분류·검토하고, 건별 위험도(상/중/하)와 수정 제안이 들어간 위험 보고서를 docx로 생성합니다.
 
 ## 대상 독자

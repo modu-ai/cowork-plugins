@@ -5,9 +5,6 @@ description: "단일 스킬보다 2~4개 체인이 결과 품질을 좌우합니
 geekdocBreadcrumb: true
 tags: [cookbook, skills]
 ---
-
-# 스킬 체이닝 가이드
-
 > Cowork에서 가장 중요한 실무 기술. 단일 스킬보다 2~4개를 엮은 체인이 결과 품질을 10배 좌우합니다.
 
 ## 왜 체인인가
@@ -50,18 +47,18 @@ strategy-planner → docx-generator → ai-slop-reviewer
 
 | 용도 | 체인 | 사용 플러그인 |
 |---|---|---|
-| 블로그 글 | `blog → ai-slop-reviewer` | moai-content, moai-core |
-| 보도자료 | `ctr-pr-team → docx-generator → ai-slop-reviewer` | moai-marketing, moai-office, moai-core |
-| 사업계획서 | `strategy-planner → docx-generator → ai-slop-reviewer` | moai-business, moai-office, moai-core |
-| IR 덱 | `investor-relations → pptx-designer → ai-slop-reviewer` | moai-business, moai-office, moai-core |
-| 월말 결산 | `close-management → xlsx-creator → docx-generator` | moai-finance, moai-office |
-| NDA 검토 | `nda-triage → docx-generator(수정본) → ai-slop-reviewer` | moai-legal, moai-office, moai-core |
-| 계약서 리뷰 | `contract-review → legal-risk → docx-generator` | moai-legal, moai-office |
-| 주간 보고서 | `status-reporter → xlsx-creator → docx-generator → ai-slop-reviewer` | moai-operations, moai-office, moai-core |
-| 카드뉴스 | `card-news → nano-banana(이미지) → pptx-designer` | moai-content, moai-media, moai-office |
-| 쇼츠 영상 | `social-media(스크립트) → audio-gen(TTS) → video-gen(영상)` | moai-content, moai-media |
-| 연구 논문 | `paper-search → paper-writer → docx-generator → ai-slop-reviewer` | moai-research, moai-office, moai-core |
-| 면접 준비 | `job-analyzer → interview-coach → interview-coach(모의)` | moai-career |
+| 블로그 글 | 1. `blog`<br>2. `ai-slop-reviewer` | moai-content, moai-core |
+| 보도자료 | 1. `ctr-pr-team`<br>2. `docx-generator`<br>3. `ai-slop-reviewer` | moai-marketing, moai-office, moai-core |
+| 사업계획서 | 1. `strategy-planner`<br>2. `docx-generator`<br>3. `ai-slop-reviewer` | moai-business, moai-office, moai-core |
+| IR 덱 | 1. `investor-relations`<br>2. `pptx-designer`<br>3. `ai-slop-reviewer` | moai-business, moai-office, moai-core |
+| 월말 결산 | 1. `close-management`<br>2. `xlsx-creator`<br>3. `docx-generator` | moai-finance, moai-office |
+| NDA 검토 | 1. `nda-triage`<br>2. `docx-generator(수정본)`<br>3. `ai-slop-reviewer` | moai-legal, moai-office, moai-core |
+| 계약서 리뷰 | 1. `contract-review`<br>2. `legal-risk`<br>3. `docx-generator` | moai-legal, moai-office |
+| 주간 보고서 | 1. `status-reporter`<br>2. `xlsx-creator`<br>3. `docx-generator`<br>4. `ai-slop-reviewer` | moai-operations, moai-office, moai-core |
+| 카드뉴스 | 1. `card-news`<br>2. `nano-banana(이미지)`<br>3. `pptx-designer` | moai-content, moai-media, moai-office |
+| 쇼츠 영상 | 1. `social-media(스크립트)`<br>2. `audio-gen(TTS)`<br>3. `video-gen(영상)` | moai-content, moai-media |
+| 연구 논문 | 1. `paper-search`<br>2. `paper-writer`<br>3. `docx-generator`<br>4. `ai-slop-reviewer` | moai-research, moai-office, moai-core |
+| 면접 준비 | 1. `job-analyzer`<br>2. `interview-coach`<br>3. `interview-coach(모의)` | moai-career |
 
 ## 체인을 깨뜨리는 흔한 실수
 

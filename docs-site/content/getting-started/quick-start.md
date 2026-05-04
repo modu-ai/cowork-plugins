@@ -4,9 +4,6 @@ weight: 30
 description: "modu-ai/cowork-plugins 마켓플레이스 등록부터 첫 스킬 체인 실행까지 약 10분 완성 가이드"
 geekdocBreadcrumb: true
 ---
-
-# `cowork-plugins` 빠른 시작
-
 `modu-ai/cowork-plugins` 마켓플레이스를 Claude Cowork에 등록하고 첫 스킬 체인을 실행하기까지의 전체 흐름을 정리한 페이지입니다. 처음부터 끝까지 약 **10분** 소요됩니다.
 
 ## 사전 체크
@@ -21,7 +18,7 @@ geekdocBreadcrumb: true
    Cowork **좌측 사이드바 → 사용자 지정(Customize) → 개인 플러그인 → 플러그인 추가 → 마켓플이스 추가**에서 다음 URL을 입력합니다.
 
    {{< terminal title="claude — cowork" >}}
-modu-ai/cowork-plugins
+> modu-ai/cowork-plugins
    {{< /terminal >}}
 
    동기화가 끝나면 21개 플러그인 목록이 표시됩니다.
@@ -50,7 +47,7 @@ modu-ai/cowork-plugins
    Cowork에서 좌측 사이드바 **프로젝트** 섹션의 **+ 새 프로젝트**를 눌러 프로젝트를 만들고, 프로젝트 설정 화면에서 **작업 폴더 연결** 항목에 앞서 준비한 로컬 폴더를 지정합니다. 프로젝트·폴더 개념이 낯설다면 [프로젝트와 메모리](../../cowork/projects-memory/) 페이지를 먼저 참고하세요. 이후 대화창에 다음을 입력합니다.
 
    {{< terminal title="claude — cowork" >}}
-/project init
+> /project init
    {{< /terminal >}}
 
    `moai-core:project` 스킬이 실행되어 **7단계 흐름**(Interview → Detect → Chain → Confirm → Generate → APIKey → First Run)을 진행합니다. 자세한 내용은 [moai-core 상세](../../plugins/moai-core/)에서 확인할 수 있습니다. 약 3~5분 안에 프로젝트용 `CLAUDE.md`가 루트에 생성됩니다.

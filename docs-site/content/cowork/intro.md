@@ -6,9 +6,6 @@ geekdocBreadcrumb: true
 images:
   - /moai-cowork-og.png
 ---
-
-# Cowork 소개
-
 ![MoAI Cowork 터미널 로고](/moai-cowork-terminal.png)
 
 > Claude Cowork는 Claude Desktop 앱 안에서 동작하는 비개발자용 작업 자동화 환경입니다.

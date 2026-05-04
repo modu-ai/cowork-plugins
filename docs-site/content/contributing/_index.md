@@ -4,9 +4,6 @@ weight: 1
 description: "MoAI Cowork Plugins에 기여하는 방법과 저장소 구조"
 geekdocBreadcrumb: true
 ---
-
-# 기여하기
-
 MoAI Cowork Plugins 오픈소스 프로젝트에 기여하는 방법을 안내합니다. 새로운 스킬 개발, 기존 기능 개선, 문서 개선 등 다양한 방식으로 프로젝트에 기여할 수 있습니다.
 
 ## 기여 방법

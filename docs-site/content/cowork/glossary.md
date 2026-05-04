@@ -4,9 +4,6 @@ weight: 200
 description: "스킬·플러그인·체인·커넥터·MCP·서브에이전트 등 Cowork 핵심 용어 6종을 정리합니다."
 geekdocBreadcrumb: true
 ---
-
-# 용어집
-
 > Cowork를 처음 쓸 때 가장 자주 혼동되는 6개 용어를 한 자리에 모았습니다.
 
 {{< hint type="warning" >}}
