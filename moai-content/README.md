@@ -1,8 +1,8 @@
 # moai-content
 
-크리에이티브 콘텐츠 플러그인 — 카드뉴스, **shadcn/ui 랜딩페이지**, **shadcn/ui 상세페이지**, 뉴스레터, 카피라이팅, 블로그, 소셜미디어, 미디어 프로덕션.
+크리에이티브 콘텐츠 플러그인 — 카드뉴스, **shadcn/ui 랜딩페이지**, **shadcn/ui 상세페이지**, 뉴스레터, 카피라이팅, 블로그, 소셜미디어, 미디어 프로덕션, **바른한글 맞춤법 검수** (v2.0.0 신규).
 
-8개 스킬로 텍스트부터 영상까지 콘텐츠 제작 전 과정을 커버합니다. v1.4.0부터 `landing-page`·`product-detail` 두 스킬이 **shadcn/ui + Tailwind CSS v4 + OKLCH 토큰**을 기본 스택으로 사용하고, 코드 생성 전 **소크라테스식 테마 인터뷰**(베이스 팔레트·컬러 모드·모서리 반경·효과)를 자동으로 실행합니다. Post-Bridge, Typefully, WordPress MCP 연동으로 멀티채널 발행을 자동화합니다.
+9개 스킬로 텍스트부터 영상까지 콘텐츠 제작 전 과정을 커버합니다. v1.4.0부터 `landing-page`·`product-detail` 두 스킬이 **shadcn/ui + Tailwind CSS v4 + OKLCH 토큰**을 기본 스택으로 사용하고, 코드 생성 전 **소크라테스식 테마 인터뷰**(베이스 팔레트·컬러 모드·모서리 반경·효과)를 자동으로 실행합니다. **v2.0.0부터** `korean-spell-check`(부산대 AI연구실 + ㈜나라인포테크 공동 개발 **바른한글** 표면)으로 한국어 맞춤법·띄어쓰기를 최종 검수합니다 — `ai-slop-reviewer` 직후 체인 권장. Post-Bridge, Typefully, WordPress MCP 연동으로 멀티채널 발행을 자동화합니다.
 
 ## 스킬
 

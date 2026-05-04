@@ -2,7 +2,7 @@
 
 > AI 미디어 스튜디오 — 이미지·영상·음성 통합 생성 플러그인
 
-[![버전](https://img.shields.io/badge/version-1.8.0-blue)](../CHANGELOG.md)
+[![버전](https://img.shields.io/badge/version-2.0.0-blue)](../CHANGELOG.md)
 [![라이선스](https://img.shields.io/badge/license-MIT-green)](../LICENSE)
 
 ## 개요
@@ -94,6 +94,7 @@
 
 ## 변경 이력
 
+- **v2.0.0** (2026-05-04): cowork v2.0.0 — moai-media는 Breaking change 없음(스킬 7종 그대로). 마켓플레이스 전체 100 → 106 스킬로 확장
 - **v1.8.0** (2026-05-02): README 7스킬 카탈로그로 갱신, kling/ideogram/elevenlabs 스킬 표기 정리
 - **v1.6.0**: ElevenLabs·Kling·Ideogram 독립 SKILL 제거 → MCP·모델 ID로 통합 (`audio-gen`/`video-gen`/`nano-banana` + `fal-gateway`)
 - **v1.5.0**: `image-gen`·`speech-video`·`character-mgmt` 추가

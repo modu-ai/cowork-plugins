@@ -1,13 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "hugo --gc --minify",
+  "buildCommand": "hugo --gc --minify --enableGitInfo=false",
   "outputDirectory": "public",
   "framework": "hugo",
   "build": {
     "env": {
       "HUGO_VERSION": "0.160.1",
       "HUGO_ENV": "production",
-      "HUGO_ENABLEGITINFO": "true"
+      "HUGO_ENABLEGITINFO": "false"
     }
   },
   "redirects": [

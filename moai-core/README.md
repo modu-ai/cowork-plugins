@@ -56,8 +56,14 @@ MoAI 코어 플러그인 — 프로젝트 초기화, 도메인 라우터, AI 슬
 2. **AI 슬롭 후처리** — 모든 텍스트 산출물 체인의 마지막 단계에 `ai-slop-reviewer` 호출(코드·데이터·숫자는 제외).
 3. **스킬 체이닝** — 산출물별 체인이 CLAUDE.md "워크플로우" 섹션에 기록됨.
 
-## v1.3.0 주요 변경
+## 변경 이력 주요 발췌
 
+### v2.0.0 (2026-05-04)
+- 마켓플레이스 100 → **106 스킬** 확장 (NomaDamas/k-skill 한국 특화 6스킬 도입)
+- moai-core 자체는 Breaking change 없음 (스킬 7종 그대로: `project`, `ai-slop-reviewer`, `feedback`, `ai-diagnostic`, `skill-builder`, `skill-template`, `skill-tester`)
+- 자세한 내용: [v2.0 릴리스 노트](https://cowork.mo.ai.kr/releases/v2.0/)
+
+### v1.3.0
 - `/moai` → `/project` 커맨드 리네임 (Claude Code 내부 스킬과의 shadowing 충돌 해소)
 - `ai-slop-reviewer` 스킬 신규 도입
 - 스킬 체이닝 기반 CLAUDE.md 자동 생성

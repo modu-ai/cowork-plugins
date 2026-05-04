@@ -2,11 +2,11 @@
 
 > 데이터 분석·BI 대시보드 설계·경영진 1pager 자동화
 
-[![Version](https://img.shields.io/badge/Version-1.8.1-blue.svg)]() [![Skills](https://img.shields.io/badge/Skills-1-green.svg)]() [![License](https://img.shields.io/badge/License-MIT-orange.svg)]()
+[![Version](https://img.shields.io/badge/Version-2.0.0-blue.svg)]() [![Skills](https://img.shields.io/badge/Skills-1-green.svg)]() [![License](https://img.shields.io/badge/License-MIT-orange.svg)]()
 
 K-IFRS·KOSIS·DART 친화적 한국 통계 환경에서 경영진이 5분 안에 의사결정할 수 있는 1페이지 보고를 만듭니다. moai-finance와 직접 체이닝하여 재무 데이터를 임원 관점으로 재구성합니다.
 
-## 스킬 카탈로그 (v1.8.1 기준)
+## 스킬 카탈로그 (v2.0.0 기준)
 
 | 스킬 | 설명 | 출시 |
 |---|---|---|

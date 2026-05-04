@@ -2,11 +2,11 @@
 
 > 한국 B2B 영업 워크플로우 자동화 — 제안서·견적서·콜드메일·후속 시퀀스
 
-[![Version](https://img.shields.io/badge/Version-1.8.1-blue.svg)]() [![Skills](https://img.shields.io/badge/Skills-1-green.svg)]() [![License](https://img.shields.io/badge/License-MIT-orange.svg)]()
+[![Version](https://img.shields.io/badge/Version-2.0.0-blue.svg)]() [![Skills](https://img.shields.io/badge/Skills-1-green.svg)]() [![License](https://img.shields.io/badge/License-MIT-orange.svg)]()
 
 한국 B2B SaaS·중소기업 영업 환경에 특화된 cowork 플러그인입니다. 국세청 표준 양식·한국 비즈니스 관행(격식체, 결재선, VAT 명시)을 기본값으로 반영합니다.
 
-## 스킬 카탈로그 (v1.8.1 기준)
+## 스킬 카탈로그 (v2.0.0 기준)
 
 | 스킬 | 설명 | 첫 출시 |
 |---|---|---|

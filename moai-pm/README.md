@@ -2,11 +2,11 @@
 
 > 한국 팀의 프로젝트 관리·주간보고·OKR·회고 자동화
 
-[![Version](https://img.shields.io/badge/Version-1.8.1-blue.svg)]() [![Skills](https://img.shields.io/badge/Skills-1-green.svg)]() [![License](https://img.shields.io/badge/License-MIT-orange.svg)]()
+[![Version](https://img.shields.io/badge/Version-2.0.0-blue.svg)]() [![Skills](https://img.shields.io/badge/Skills-1-green.svg)]() [![License](https://img.shields.io/badge/License-MIT-orange.svg)]()
 
 월요 WBR·금요 마무리·분기 OKR·KPT 회고 등 한국 직장 문화에 정착된 프로젝트 관리 의례를 자동화합니다. Notion·Linear·Asana·Slack MCP가 가용하면 자동 활용, 없어도 자유 텍스트 입력으로 동작합니다.
 
-## 스킬 카탈로그 (v1.8.1 기준)
+## 스킬 카탈로그 (v2.0.0 기준)
 
 | 스킬 | 설명 | 출시 |
 |---|---|---|
