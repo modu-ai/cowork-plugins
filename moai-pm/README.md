@@ -27,10 +27,10 @@
 
 ```
 주간보고 → C-level 1pager
-  standup-summarizer → weekly-report → executive-summary
+  weekly-report → moai-bi/executive-summary
 
 발표 슬라이드
-  weekly-report → ai-slop-reviewer → pptx-designer
+  weekly-report → ai-slop-reviewer → moai-office/pptx-designer
 ```
 
 ## 다른 플러그인과의 경계
@@ -38,14 +38,11 @@
 | 비슷해 보이지만 다른 영역 | 사용해야 할 스킬 |
 |---|---|
 | 일간 보고 | `moai-business/daily-briefing` |
-| 분기 회고 | (예정) `moai-pm/retro-facilitator` |
 | C-level 1pager | `moai-bi/executive-summary` |
 
 ## MCP 통합 (이미 가용)
 
 - Notion · Linear · Asana — 데이터베이스/이슈 자동 fetch
-- Slack — 스탠드업 노트 import (예정 스킬)
-- Gmail — 주간보고 발송 (예정 스킬)
 
 ## 라이선스
 

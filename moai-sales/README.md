@@ -34,10 +34,7 @@ B2B 영업 제안서 (PDF)
   market-analyst → proposal-writer → ai-slop-reviewer → docx-generator
 
 B2B 영업 슬라이드
-  market-analyst → proposal-writer → ai-slop-reviewer → pptx-designer
-
-견적서 분리 발행
-  proposal-writer → quote-generator → xlsx-creator
+  moai-business/market-analyst → proposal-writer → ai-slop-reviewer → moai-office/pptx-designer
 ```
 
 ## 다른 플러그인과의 경계
