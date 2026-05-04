@@ -1,14 +1,14 @@
 ---
 title: "moai-finance — 세무·결산·K-IFRS"
 weight: 130
-description: "3.3% 원천징수·부가세·홈택스·K-IFRS·예실 분석을 다루는 한국 세무·회계 4개 스킬 묶음입니다."
+description: "3.3% 원천징수·부가세·홈택스·K-IFRS·예실 분석을 다루는 한국 세무·회계 6개 스킬 묶음입니다."
 geekdocBreadcrumb: true
 tags: ["moai-finance"]
 ---
 
 # moai-finance
 
-> 한국 세법·회계 기준 4개 스킬을 제공합니다.
+> 한국 세법·회계 기준 6개 스킬을 제공합니다.
 
 ## 무엇을 하는 플러그인인가
 

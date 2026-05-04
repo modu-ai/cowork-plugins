@@ -11,7 +11,7 @@ geekdocCollapseSection: false
 [`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins)는 한국 업무 환경에 맞춰 설계된 **21개 플러그인 · 106개 스킬**의 커뮤니티 마켓플레이스입니다. 사업계획·IR·마케팅·법무·세무·HR·카드뉴스·PPT·이미지 생성 등 도메인별로 묶여 있습니다.
 
 {{< hint type="note" >}}
-**v1.6.0 업데이트 (2026-05-01)**: `skill-forge` → `skill-builder` 리네임 + `skill-tester` self-contained 화 + `moai-office:pdf-writer` 신규(한·중·일·영 다국어 PDF, PyMuPDF + Noto Sans CJK 자동 다운로드). 전체 스킬 수 84 → **85**개. 18지점 버전 동시 bump: 1.5.1 → 1.6.0.
+**v2.0.0 업데이트**: SKILL.md frontmatter `version: 2.0.0` 단일 필드 의무화로 Cowork 자동 업데이트 감지를 복구했습니다. 전체 **106개 스킬 · 21개 플러그인** 체제로 확장(BI 대시보드·프로젝트 관리·영업 신규). marketplace + plugin.json + SKILL.md 128지점 버전 동시 bump.
 {{< /hint >}}
 
 ## 전제 조건
@@ -88,7 +88,7 @@ geekdocCollapseSection: false
 | [moai-pm](./moai-pm/) | 1 | project-manager |
 | [moai-sales](./moai-sales/) | 1 | sales-prospecting |
 
-전체 **106개** 스킬 (v2.0.0 기준, 21개 플러그인). 합계 검산: 7+9+5+7+10+8+12+4+3+4+5+5+6+3+5+3+4+3+1+1+1 = **106**.
+전체 **106개 스킬 · 21개 플러그인** (v2.0.0 기준).
 
 ## 다음 단계
 

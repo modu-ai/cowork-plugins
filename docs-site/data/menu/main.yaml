@@ -59,9 +59,6 @@ main:
     icon: plug
     defaultOpen: true
     sub:
-      - name: 전체 보기
-        ref: /plugins
-        count: 106
       - name: 빠른 시작
         ref: /plugins/quick-start
       - name: 코어-필수
