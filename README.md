@@ -479,6 +479,7 @@ Airtable/Google Sheets 커넥터로 데이터를 직접 분석합니다.
 |---------|--------|------|
 | [harness-100](https://github.com/revfactory/harness-100) | 황민호(Minho Hwang) | Claude Cowork용 하네스 100개 오픈소스. 본 프로젝트의 하네스 설계 패턴과 구조에 핵심 참고자료로 활용 |
 | [knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins) | Anthropic | 공식 11개 지식 노동 플러그인 (Productivity·Sales·Customer Support·PM·Marketing·Legal·Finance·Data·Enterprise Search·Bio Research·Cowork Plugin Management). 플러그인 구조와 스킬 포맷 표준 참고 |
+| [NomaDamas/k-skill](https://github.com/NomaDamas/k-skill) | NomaDamas | 한국인을 위한 Claude Code 스킬 모음(MIT). v2.0.0 한국 B2B 특화 6스킬(`iros-registry-automation`, `real-estate-search`, `mfds-safety`, `court-auction-search`, `korean-stock-search`, `korean-spell-check`)의 원본. 원 저작자 `challengekim`/`tae0y`/`jjlabsio` 보존. 자세한 어트리뷰션은 [`.claude/rules/moai/NOTICE.md`](.claude/rules/moai/NOTICE.md) § NomaDamas k-skill (MIT) 참조 |
 
 ### 표준 및 규격
 | 표준 | 설명 |
