@@ -2046,3 +2046,43 @@ main a:hover {
   fill: #1a2a27 !important;
   stroke: #2d6b63 !important;
 }
+
+/* ── Mermaid dark mode — inline-styled cluster/subgraph background fix ── */
+/* Mermaid style directive generates inline styles with !important (e.g. fill:#eef6ff !important)
+   which CSS !important cannot override. Use filter to visually invert instead. */
+[data-theme="dark"] .mermaid .cluster rect[style*="fill:#"],
+[data-theme="dark"] .mermaid .cluster path[style*="fill:#"],
+[data-theme="dark"] .gdoc-mermaid .cluster rect[style*="fill:#"],
+[data-theme="dark"] .gdoc-mermaid .cluster path[style*="fill:#"],
+[color-theme="dark"] .mermaid .cluster rect[style*="fill:#"],
+[color-theme="dark"] .mermaid .cluster path[style*="fill:#"],
+[color-theme="dark"] .gdoc-mermaid .cluster rect[style*="fill:#"],
+[color-theme="dark"] .gdoc-mermaid .cluster path[style*="fill:#"] {
+  filter: invert(0.82) hue-rotate(150deg) saturate(0.9);
+}
+
+/* ── Mermaid dark mode — prefers-color-scheme fallback ── */
+@media (prefers-color-scheme: dark) {
+  html:not([color-theme="light"]):not([data-theme="light"]) .mermaid .cluster rect[style*="fill:#"],
+  html:not([color-theme="light"]):not([data-theme="light"]) .mermaid .cluster path[style*="fill:#"],
+  html:not([color-theme="light"]):not([data-theme="light"]) .gdoc-mermaid .cluster rect[style*="fill:#"],
+  html:not([color-theme="light"]):not([data-theme="light"]) .gdoc-mermaid .cluster path[style*="fill:#"] {
+    filter: invert(0.82) hue-rotate(150deg) saturate(0.9);
+  }
+  html:not([color-theme="light"]):not([data-theme="light"]) .mermaid .node .label-container[style*="fill:#"],
+  html:not([color-theme="light"]):not([data-theme="light"]) .mermaid .node rect[style*="fill:#"],
+  html:not([color-theme="light"]):not([data-theme="light"]) .gdoc-mermaid .node .label-container[style*="fill:#"],
+  html:not([color-theme="light"]):not([data-theme="light"]) .gdoc-mermaid .node rect[style*="fill:#"] {
+    filter: invert(0.82) hue-rotate(150deg) saturate(0.9);
+  }
+  html:not([color-theme="light"]):not([data-theme="light"]) .mermaid text,
+  html:not([color-theme="light"]):not([data-theme="light"]) .gdoc-mermaid text {
+    fill: #e8eae9 !important;
+  }
+  html:not([color-theme="light"]):not([data-theme="light"]) .mermaid foreignObject span,
+  html:not([color-theme="light"]):not([data-theme="light"]) .mermaid foreignObject div,
+  html:not([color-theme="light"]):not([data-theme="light"]) .gdoc-mermaid foreignObject span,
+  html:not([color-theme="light"]):not([data-theme="light"]) .gdoc-mermaid foreignObject div {
+    color: #e8eae9 !important;
+  }
+}
