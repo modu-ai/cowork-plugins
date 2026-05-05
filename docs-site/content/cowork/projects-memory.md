@@ -23,29 +23,29 @@ geekdocBreadcrumb: true
 ```mermaid
 flowchart TB
     subgraph OS["운영체제 (macOS / Windows)"]
-        FS["파일 시스템<br/>전체 디스크"]
-        SYS["시스템 권한<br/>(개인정보 보호 → 파일 및 폴더)"]
+        FS["파일 시스템<br>전체 디스크"]
+        SYS["시스템 권한<br>(개인정보 보호 → 파일 및 폴더)"]
     end
 
     subgraph CW["Claude Desktop · Cowork 모드"]
-        APP["앱 본체<br/>(로그인 · 플랜 · 커넥터)"]
+        APP["앱 본체<br>(로그인 · 플랜 · 커넥터)"]
 
         subgraph P1["📁 프로젝트 A — '주간 보고'"]
-            FOLDER_A["작업 폴더<br/>~/work/weekly-report/"]
-            CLAUDE_A["CLAUDE.md<br/>(프로젝트 지침)"]
-            MEM_A["./memory/<br/>(프로젝트 메모리)"]
-            PLUG_A["활성 플러그인<br/>(moai-office · moai-content)"]
+            FOLDER_A["작업 폴더<br>~/work/weekly-report/"]
+            CLAUDE_A["CLAUDE.md<br>(프로젝트 지침)"]
+            MEM_A["./memory/<br>(프로젝트 메모리)"]
+            PLUG_A["활성 플러그인<br>(moai-office · moai-content)"]
 
-            subgraph T1A["새 태스크 1<br/>(2026-04-15)"]
-                CHAT_1A["대화 컨텍스트<br/>+ 자동 압축"]
+            subgraph T1A["새 태스크 1<br>(2026-04-15)"]
+                CHAT_1A["대화 컨텍스트<br>+ 자동 압축"]
             end
-            subgraph T2A["새 태스크 2<br/>(2026-04-22)"]
-                CHAT_2A["대화 컨텍스트<br/>+ 자동 압축"]
+            subgraph T2A["새 태스크 2<br>(2026-04-22)"]
+                CHAT_2A["대화 컨텍스트<br>+ 자동 압축"]
             end
         end
 
         subgraph P2["📁 프로젝트 B — '계약 검토'"]
-            FOLDER_B["작업 폴더<br/>~/work/legal/"]
+            FOLDER_B["작업 폴더<br>~/work/legal/"]
             CLAUDE_B["CLAUDE.md"]
             MEM_B["./memory/"]
         end
@@ -156,9 +156,9 @@ OS 층의 권한 설정·재허용·문제 진단은 [폴더와 권한 가이드
 
 ```mermaid
 flowchart TD
-    Q1{같은 폴더의<br/>파일을 다루는가?}
-    Q2{같은 지침<br/>(CLAUDE.md)이<br/>적용되는가?}
-    Q3{같은 플러그인<br/>구성이 필요한가?}
+    Q1{같은 폴더의<br>파일을 다루는가?}
+    Q2{같은 지침<br>(CLAUDE.md)이<br>적용되는가?}
+    Q3{같은 플러그인<br>구성이 필요한가?}
     SAME[같은 프로젝트로 묶기]
     SPLIT[새 프로젝트로 분리]
 
