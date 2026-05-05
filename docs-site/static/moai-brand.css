@@ -1987,3 +1987,62 @@ main a:hover {
 [data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .node[style*="fill:#"] .label-container text {
   filter: none;
 }
+
+/* ── Mermaid dark mode — inline-styled node fix (style on rect.label-container, not on .node) ── */
+[data-theme="dark"] .mermaid .node .label-container[style*="fill:#"],
+[data-theme="dark"] .mermaid .node rect[style*="fill:#"],
+[data-theme="dark"] .gdoc-mermaid .node .label-container[style*="fill:#"],
+[data-theme="dark"] .gdoc-mermaid .node rect[style*="fill:#"],
+[color-theme="dark"] .mermaid .node .label-container[style*="fill:#"],
+[color-theme="dark"] .mermaid .node rect[style*="fill:#"],
+[color-theme="dark"] .gdoc-mermaid .node .label-container[style*="fill:#"],
+[color-theme="dark"] .gdoc-mermaid .node rect[style*="fill:#"] {
+  filter: invert(0.82) hue-rotate(150deg) saturate(0.9);
+}
+
+/* ── Mermaid dark mode — foreignObject text (flowcharts with <br> tags) ── */
+[data-theme="dark"] .mermaid foreignObject span,
+[data-theme="dark"] .mermaid foreignObject div,
+[data-theme="dark"] .mermaid foreignObject p,
+[data-theme="dark"] .gdoc-mermaid foreignObject span,
+[data-theme="dark"] .gdoc-mermaid foreignObject div,
+[data-theme="dark"] .gdoc-mermaid foreignObject p,
+[color-theme="dark"] .mermaid foreignObject span,
+[color-theme="dark"] .mermaid foreignObject div,
+[color-theme="dark"] .mermaid foreignObject p,
+[color-theme="dark"] .gdoc-mermaid foreignObject span,
+[color-theme="dark"] .gdoc-mermaid foreignObject div,
+[color-theme="dark"] .gdoc-mermaid foreignObject p {
+  color: #e8eae9 !important;
+  fill: #e8eae9 !important;
+}
+
+/* ── Mermaid dark mode — edge label text fix (class-based) ── */
+[data-theme="dark"] .mermaid .edgeLabel span,
+[data-theme="dark"] .mermaid .edgeLabel div,
+[data-theme="dark"] .gdoc-mermaid .edgeLabel span,
+[data-theme="dark"] .gdoc-mermaid .edgeLabel div,
+[color-theme="dark"] .mermaid .edgeLabel span,
+[color-theme="dark"] .mermaid .edgeLabel div,
+[color-theme="dark"] .gdoc-mermaid .edgeLabel span,
+[color-theme="dark"] .gdoc-mermaid .edgeLabel div {
+  color: #c5cbc9 !important;
+  fill: #c5cbc9 !important;
+}
+
+/* ── Mermaid dark mode — generic catch-all for any SVG text ── */
+[data-theme="dark"] .mermaid text,
+[data-theme="dark"] .gdoc-mermaid text,
+[color-theme="dark"] .mermaid text,
+[color-theme="dark"] .gdoc-mermaid text {
+  fill: #e8eae9 !important;
+}
+
+/* ── Mermaid dark mode — diamond/rhombus nodes ── */
+[data-theme="dark"] .mermaid .node polygon,
+[data-theme="dark"] .gdoc-mermaid .node polygon,
+[color-theme="dark"] .mermaid .node polygon,
+[color-theme="dark"] .gdoc-mermaid .node polygon {
+  fill: #1a2a27 !important;
+  stroke: #2d6b63 !important;
+}
