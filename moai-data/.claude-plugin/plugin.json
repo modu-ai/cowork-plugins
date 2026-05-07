@@ -1,6 +1,6 @@
 {
   "name": "moai-data",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "데이터 분석 — CSV/Excel 탐색, 공공데이터 조회, 시각화, 대시보드",
   "author": {
     "name": "모두의AI"

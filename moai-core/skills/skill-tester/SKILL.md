@@ -12,7 +12,7 @@ description: |
   - skill-builder Phase 5 이후 검증이 필요할 때
   - /harness 커맨드의 test 단계로 진입할 때
 user-invocable: true
-version: 2.0.0
+version: 2.1.0
 ---
 
 # Skill Tester — 스킬 품질 검증 도구 (루브릭 + 체인 내장)
@@ -269,7 +269,7 @@ score = (correctness * 0.30) + (completeness * 0.25) + (clarity * 0.25) + (effic
 
 ```yaml
 skill: <skill-name>
-version: 1.0.0
+version: 2.1.0
 test_cases:
   - id: TC-001
     name: "happy-path"

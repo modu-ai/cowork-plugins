@@ -12,16 +12,18 @@
 
 v2.0.0부터 **모든 SKILL.md frontmatter에 `version: X.Y.Z` 단일 필드를 의무화**합니다. Cowork(Claude Cowork)가 SKILL.md `version` 필드를 보고 사용자 측 자동 업데이트를 감지합니다.
 
+> **v2.1.0 카운트 갱신**: 마켓플레이스 SKILL.md 106 → **107**개 (humanize-korean 추가). 동기화 지점 총 **129개** (marketplace 1 + plugin.json 21 + SKILL.md 107).
+
 - **이전 정책(v1.3.0~v1.8.x)**: `metadata:` 블록 전체 제거 + plugin.json 단일 소스 → 자동 업데이트 미작동
 - **새 정책(v2.0.0+)**: SKILL.md `version` 단일 필드 필수 + `metadata:` 블록(중첩 객체)은 여전히 금지
 
-### 동기화 대상 (총 128개 지점, v2.0.0 기준)
+### 동기화 대상 (총 129개 지점, v2.1.0 기준)
 
 | 범주 | 경로 | 필드 | 개수 |
 |---|---|---|---|
 | 마켓플레이스 | `.claude-plugin/marketplace.json` | `metadata.version` | 1 |
 | 플러그인 매니페스트 | `<plugin>/.claude-plugin/plugin.json` | `version` | 21 |
-| 스킬 frontmatter (v2.0.0+ 복구) | `<plugin>/skills/<skill>/SKILL.md` | `version` (단일 필드) | 106 |
+| 스킬 frontmatter (v2.0.0+ 복구) | `<plugin>/skills/<skill>/SKILL.md` | `version` (단일 필드) | 107 |
 
 **모두 동일한 값**(예: `2.0.0`)을 가져야 하며, 플러그인·스킬 추가·삭제 시 이 카운트를 함께 갱신합니다.
 
@@ -402,6 +404,7 @@ echo "✅ 릴리스 본문 ${BODY_LEN}자"
 
 ## 9. 태그 히스토리
 
+- **v2.1.0** (2026-05-07): MINOR. `moai-content:humanize-korean` 신규 스킬 도입 — [`epoko77-ai/im-not-ai`](https://github.com/epoko77-ai/im-not-ai) v1.6.1 (MIT, ⭐937 stars) Fast 모드 단일 스킬 변형 포팅. 10대 카테고리 × 40+ AI 티 패턴 SSOT, 의미 100% 보존 가드(변경률 30/50%), A/B/C/D 등급 자동 판정, Python 표준 라이브러리만 쓰는 metrics.py 내장. 권장 체인: `… → moai-core:ai-slop-reviewer (1차) → moai-content:humanize-korean (2차)`. 마켓플레이스 106 → **107 스킬**, 플러그인 21개 유지. Breaking change 없음. 동기화 지점: marketplace.json + 21 plugin.json + 107 SKILL.md = 129 지점.
 - **v1.3.0** (2026-04-14): 공식 MINOR. `/moai` → `/project` 커맨드 이름 전환 (Claude Code 프로젝트 레벨 스킬과의 shadowing 충돌 해소). `ai-slop-reviewer` 스킬 신규 도입 (모든 텍스트 산출물 후처리 검수). **스킬 체이닝 기반 CLAUDE.md 생성** — `/project init`이 산출물별 스킬 체인을 설계하고 확인 후 CLAUDE.md에 기록. SKILL.md `metadata:` 블록 전면 제거 (단일 버전 소스: plugin.json). 글로벌 프로필 시스템(`moai-profile.md`, `[MoAI 프로필]`) 전면 제거. CLAUDE.md 템플릿 외부 파일화(`templates/CLAUDE.md.tmpl`). office/web 스킬 우선 + AI 슬롭 후처리 HARD 규칙 고정 포함.
 - **v1.2.0** (2026-04-14): 공식 MINOR. `moai-media` 신규 플러그인, Nano Banana Pro + 2 체제 확정(Imagen 4 → Gemini 3 Image Preview), Kling 영상 단일화, ElevenLabs·fal.ai MCP 번들, 전 저장소 17 플러그인/70 스킬로 확장.
 - v1.1.0~v1.1.3 (2026-04-14, 내부 이터레이션): moai-media 개발 점진 릴리스. v1.2.0에 집약됨.

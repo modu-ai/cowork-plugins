@@ -8,7 +8,7 @@ description: >
   detail-page-copy가 상세페이지 카피라면, 이 스킬은 광고·메시지 카피를 담당합니다.
   ai-slop-reviewer를 출력 직전 자동 호출합니다.
 user-invocable: true
-version: 2.0.0
+version: 2.1.0
 ---
 
 # 이커머스 카피라이팅 (광고·톡톡·푸시·이메일)

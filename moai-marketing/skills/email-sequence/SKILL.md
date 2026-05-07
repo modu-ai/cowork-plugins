@@ -6,7 +6,7 @@ description: >
   '재활성화 이메일 만들어줘', '뉴스레터 시리즈 짜줘'라고 요청하세요.
   법적 컴플라이언스 체크, 시퀀스 플로우, 이메일 본문 초안을 제공합니다.
 user-invocable: true
-version: 2.0.0
+version: 2.1.0
 ---
 
 # 이메일 시퀀스 (Email Sequence)

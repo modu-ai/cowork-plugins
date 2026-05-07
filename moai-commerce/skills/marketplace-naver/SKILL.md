@@ -6,7 +6,7 @@ description: >
   detail-page-copy/detail-page-image 출력물을 4개 오픈마켓(네이버 스마트스토어 + 11번가 + G마켓 + 옥션) 정책에 맞게 검토하고,
   채널별 이미지 규격·검색태그·금지문구·톡톡 카피·후기 운영 가이드를 제공합니다.
 user-invocable: true
-version: 2.0.0
+version: 2.1.0
 ---
 
 # 네이버 스마트스토어 + 오픈마켓 가이드

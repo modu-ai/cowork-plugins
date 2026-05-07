@@ -5,7 +5,7 @@ description: >
   "SNS 콘텐츠 캘린더 짜줘"처럼 말하면 됩니다. 인스타·스레드·X·링크드인·유튜브쇼츠·카카오·네이버
   7개 플랫폼 2026년 알고리즘 최적화 콘텐츠 제작을 지원합니다.
 user-invocable: true
-version: 2.0.0
+version: 2.1.0
 ---
 
 # 소셜 미디어 (Social Media)

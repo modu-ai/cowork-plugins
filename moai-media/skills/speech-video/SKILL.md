@@ -12,7 +12,7 @@ description: |
   - "SNS용 인물 토킹 헤드", "릴스용 말하는 영상"
   - "제품 설명 동영상", "홍보 영상"
 user-invocable: true
-version: 2.0.0
+version: 2.1.0
 ---
 
 # speech-video — 토킹 헤드 비디오 생성 스킬

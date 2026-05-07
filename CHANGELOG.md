@@ -13,6 +13,47 @@
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
 
+## [2.1.0] - 2026-05-07
+
+MINOR. 한국어 AI 티 정밀 윤문 도입 — [`epoko77-ai/im-not-ai`](https://github.com/epoko77-ai/im-not-ai) v1.6.1 (MIT, ⭐937 stars) Fast 모드 단일 스킬 변형을 `moai-content:humanize-korean`으로 포팅했습니다. 기존 `moai-core:ai-slop-reviewer`는 그대로 유지되며, 권장 체인은 `… → ai-slop-reviewer (1차 일반) → humanize-korean (2차 한국어 정밀)` 입니다. 마켓플레이스 카운트 106 → **107 스킬**, 플러그인은 그대로 21개. Breaking change 없음.
+
+### Added
+
+- **`moai-content:humanize-korean`** — 한국어 AI 티 정밀 윤문 스킬. 10대 카테고리 × 40+ 패턴 SSOT(`ai-tell-taxonomy.md` 40KB)를 S1/S2/S3 심각도로 분류하여 수술적 윤문. **의미 100% 보존 가드**(고유명사·수치·날짜·인용 변경 금지, 변경률 30% 경고 / 50% 강제 중단), **자체검증 6항**, **A/B/C/D 등급 자동 판정**. Python 표준 라이브러리만 쓰는 `metrics.py`(외부 의존 없음)로 사전·사후 정량 메트릭 측정.
+  - 카테고리: A 번역투(~를 통해/~에 있어서/이중 피동), B 영어 인용 과다, C 구조 패턴(이모지·콜론 부제·연결어미 쉼표), D AI 관용구(결론적으로/시사하는 바·hype 어휘·결말 공식), E 리듬 균일성, F 한자어 -성/-적/-화 밀도, G hedging, H 문두 접속사 남발, I 형식명사 과다, J 시각 장식 남용
+  - 산출물: `_workspace/{run_id}/{01_input.txt, 00_metrics.json, final.md, summary.md, 06_metrics_after.json}`
+  - 옵션: 장르(칼럼/리포트/블로그/공적), 강도(보수/기본/적극), 최소심각도(S1/S2/S3)
+  - 권장 체인: `… → moai-core:ai-slop-reviewer → moai-content:humanize-korean`
+- **`references/strict-pipeline-spec.md`** — 원본의 7인 에이전트 Strict 5인 파이프라인 명세 보존(향후 독립 플러그인·Agent Teams 모드 확장 시 참조). 현재 스킬에서는 미사용.
+- **README attribution** — 루트 README.md와 `moai-content/README.md`에 [epoko77-ai/im-not-ai](https://github.com/epoko77-ai/im-not-ai) (MIT License, ⭐937) 출처 표기.
+
+### Changed
+
+- README.md: Version 배지 2.0.0 → **2.1.0**, Skills 배지 106 → **107**, v2.1.0 하이라이트 섹션 추가, 영문 description "21 plugins · 107 skills"로 갱신
+- moai-content/README.md: 9개 → 10개 스킬 표기, humanize-korean 행 추가
+- moai-content/.claude-plugin/plugin.json: description·keywords에 humanize-korean·한국어윤문·AI티제거·humanize 추가
+- .claude-plugin/marketplace.json: `metadata.version` 2.0.0 → **2.1.0**, moai-content description 갱신, 마켓플레이스 description 한 줄 갱신
+- 전 SKILL.md `version: 2.0.0` → `version: 2.1.0` (107개, Cowork 자동 업데이트 감지)
+- 전 plugin.json `version` → 2.1.0 (21개)
+
+### 동기화 지점
+
+- `.claude-plugin/marketplace.json` × 1 (metadata.version)
+- `<plugin>/.claude-plugin/plugin.json` × 21 (version)
+- `<plugin>/skills/<skill>/SKILL.md` × 107 (version, +1 신규 humanize-korean 포함)
+- 총 **129 지점** 동일 버전 유지
+
+### Migration
+
+- 사용자 조치: `/plugin marketplace update cowork-plugins` 후 플러그인 상세 재진입
+- Breaking change 없음 — 기존 워크플로우 그대로 동작
+- 한국어 텍스트 산출물에서 더 정밀한 윤문이 필요할 때 `humanize-korean`을 자연어로 호출하면 됩니다("AI 티 없애줘", "사람이 쓴 것처럼 윤문해줘", "한글 AI 윤문" 등)
+
+### Attribution
+
+- [`epoko77-ai/im-not-ai`](https://github.com/epoko77-ai/im-not-ai) v1.6.1 (MIT License, ⭐937 stars) — taxonomy(40KB SSOT)·rewriting-playbook·quick-rules·metrics.py·baseline.json·web-service-spec·test_metrics.py 모두 원본 그대로 보존. SKILL.md만 cowork v2.0+ frontmatter 정책(version 단일 필드, metadata 블록 금지, user-invocable)과 단일 스킬 워크플로(에이전트 호출 제거)에 맞춰 재작성.
+- 원본 라이선스(MIT)는 cowork-plugins MIT와 호환되며, 추가 의무 없음. NOTICE는 README attribution으로 대체(사용자 결정).
+
 ## [2.0.0] - 2026-05-04
 
 MAJOR. 한국 B2B 시장 특화 강화 릴리스 — `NomaDamas/k-skill` (MIT) 한국 특화 스킬 6종을 cowork에 포팅했습니다. 인터넷등기소 등기부등본 일괄 발급, 국토부 실거래가, 식약처 의약품·식품 안전, 법원경매 매각공고, KRX 시세, 바른한글 맞춤법 검수까지 — 한국 시장에서 즉시 ROI가 발생하는 도메인 특화 스킬을 한꺼번에 도입했습니다. 마켓플레이스 카운트 100 → **106 스킬**, 플러그인은 그대로 21개.

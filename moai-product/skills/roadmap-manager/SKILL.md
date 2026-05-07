@@ -5,7 +5,7 @@ description: >
   "로드맵 정리해줘", "마일스톤 계획 세워줘", "MOU 초안 작성해줘", "ESG 지속가능성 감사 해줘"라고 요청할 때 사용하세요.
   프로젝트 일정·리소스 관리, 전략적 제휴 기획, 지속가능성 지표, DEI 전략을 지원합니다.
 user-invocable: true
-version: 2.0.0
+version: 2.1.0
 ---
 
 # 로드맵 관리 (Roadmap Manager)

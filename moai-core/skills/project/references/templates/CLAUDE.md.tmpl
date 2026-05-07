@@ -42,11 +42,12 @@
 
 ## 4. AI 슬롭 후처리 (HARD)
 
-**모든 텍스트 산출물 워크플로우의 마지막 단계**에 `ai-slop-reviewer`를 호출한다.
+**모든 텍스트 산출물 워크플로우의 마지막 단계**에 `ai-slop-reviewer`를 호출한다. 한국어 최종본은 그 직후 `humanize-korean`(v2.1.0+)으로 정밀 윤문한다.
 
 - 대상: 블로그, 뉴스레터, 카피, 사업계획서, 계약서·공문 초안, 제안서, 보고서, 이메일, 랜딩 카피, 사업보고, 특허 초안, 강의자료 원고 등
 - 제외: 코드, JSON/CSV, 차트·표, 숫자 리포트, 단순 조회 응답
 - 출력: **진단 요약 → 수정 텍스트 → 주요 변경사항** 3블록
+- 한국어 권장 체인: `… → ai-slop-reviewer (1차 일반 후처리) → humanize-korean (2차 한국어 정밀 윤문, A/B/C/D 등급)`
 
 ## 5. 프로젝트 워크플로우 (스킬 체인)
 
@@ -63,15 +64,15 @@
 
 ### 블로그 발행
 - 요청 예시: "AI 스킬 체인 관련 블로그 글 써줘"
-- 체인: `blog` → `ai-slop-reviewer` → (선택) `nano-banana` (썸네일)
+- 체인: `blog` → `ai-slop-reviewer` → `humanize-korean` (한국어 산출물) → (선택) `nano-banana` (썸네일)
 - 입력: 주제, 키워드, 목표 독자
-- 출력: Markdown 포스트 + 검수 리포트 + (선택)썸네일
+- 출력: Markdown 포스트 + 검수 리포트 + 정밀 윤문본(등급 A~D) + (선택)썸네일
 
 ### 제품 랜딩 페이지
 - 요청 예시: "신규 SaaS 랜딩 만들어줘"
-- 체인: `copywriting` → `landing-page` → `ai-slop-reviewer`
+- 체인: `copywriting` → `landing-page` → `ai-slop-reviewer` → `humanize-korean` (한국어 카피)
 - 입력: 제품 가치 제안, 주요 기능, CTA
-- 출력: HTML 파일 + 검수 리포트
+- 출력: HTML 파일 + 검수 리포트 + 정밀 윤문본
 
 ### IR 피칭 덱
 - 요청 예시: "Series A용 피칭 덱"

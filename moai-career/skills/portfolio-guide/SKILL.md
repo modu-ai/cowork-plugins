@@ -5,7 +5,7 @@ description: >
   "프로젝트 정리해줘"처럼 말하면 됩니다. 개발/디자인/마케팅/기획 분야별 구성 전략,
   GitHub/Behance/Notion 포트폴리오 최적화, 프로젝트 기술서 작성을 지원합니다.
 user-invocable: true
-version: 2.0.0
+version: 2.1.0
 ---
 
 # 포트폴리오 가이드 (portfolio-guide)

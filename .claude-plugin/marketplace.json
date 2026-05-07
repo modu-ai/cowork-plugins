@@ -5,8 +5,8 @@
     "email": "email@mo.ai.kr"
   },
   "metadata": {
-    "description": "모두의 AI's Claude Cowork 플러그인 마켓플레이스 — 21 플러그인, 106 스킬. /project init으로 워크플로우 기반 CLAUDE.md 자동 생성, 모든 텍스트 산출물은 ai-slop-reviewer로 검수. v2.0.0에서 NomaDamas/k-skill 한국 특화 스킬 6종이 추가되었습니다 — 인터넷등기소 등기부등본 일괄 발급(moai-legal), 국토부 실거래가(moai-business), 식약처 의약품·식품 안전(moai-commerce), 법원경매 매각공고(moai-finance), KRX 시세(moai-finance), 바른한글 맞춤법 검수(moai-content). v1.8.0부터 moai-commerce 11스킬(자사몰 cafe24·imweb·메이크샵, 와디즈·텀블벅, 카카오 메이커스·무신사·29CM, 라이브 커머스). moai-bi/pm/sales도 정식 등록되었습니다",
-    "version": "2.0.0",
+    "description": "모두의 AI's Claude Cowork 플러그인 마켓플레이스 — 21 플러그인, 107 스킬. /project init으로 워크플로우 기반 CLAUDE.md 자동 생성, 모든 텍스트 산출물은 ai-slop-reviewer로 검수. v2.1.0에서 humanize-korean 스킬이 추가되었습니다(epoko77-ai/im-not-ai MIT, ⭐937 포팅, 한국어 AI 티 정밀 윤문, 10대 카테고리 × 40+ 패턴 SSOT). v2.0.0에서 NomaDamas/k-skill 한국 특화 스킬 6종이 추가되었습니다 — 인터넷등기소 등기부등본 일괄 발급(moai-legal), 국토부 실거래가(moai-business), 식약처 의약품·식품 안전(moai-commerce), 법원경매 매각공고(moai-finance), KRX 시세(moai-finance), 바른한글 맞춤법 검수(moai-content). v1.8.0부터 moai-commerce 11스킬(자사몰 cafe24·imweb·메이크샵, 와디즈·텀블벅, 카카오 메이커스·무신사·29CM, 라이브 커머스). moai-bi/pm/sales도 정식 등록되었습니다",
+    "version": "2.1.0",
     "language": "ko"
   },
   "plugins": [
@@ -16,7 +16,7 @@
     {"name": "moai-legal", "source": "./moai-legal", "description": "법률 — 계약서 검토(민법/상법), 개인정보보호법 컴플라이언스, NDA"},
     {"name": "moai-finance", "source": "./moai-finance", "description": "재무/세무 — 3.3% 원천징수, 부가세, 홈택스, K-IFRS, 연말정산"},
     {"name": "moai-hr", "source": "./moai-hr", "description": "인사/노무 — 근로계약서, 4대보험, 채용, 성과평가, 연차/퇴직금"},
-    {"name": "moai-content", "source": "./moai-content", "description": "크리에이티브 콘텐츠 — 카드뉴스, shadcn/ui 기반 랜딩페이지, shadcn/ui 상세페이지, 뉴스레터, 카피라이팅, 블로그, 소셜미디어, 미디어 프로덕션"},
+    {"name": "moai-content", "source": "./moai-content", "description": "크리에이티브 콘텐츠 — 카드뉴스, shadcn/ui 기반 랜딩페이지, shadcn/ui 상세페이지, 뉴스레터, 카피라이팅, 블로그, 소셜미디어, 미디어 프로덕션, 한국어 AI 티 정밀 윤문(humanize-korean v2.1.0+)"},
     {"name": "moai-operations", "source": "./moai-operations", "description": "운영 — 결재 프로세스, 정부조달, SOP, 벤더 관리"},
     {"name": "moai-education", "source": "./moai-education", "description": "교육/연구 — 강의설계, 논문 리서치, 교육과정 개발"},
     {"name": "moai-lifestyle", "source": "./moai-lifestyle", "description": "라이프스타일 — 여행 플래닝, 건강/식단, 웨딩/이벤트"},

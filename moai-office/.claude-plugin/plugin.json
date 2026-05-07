@@ -1,6 +1,6 @@
 {
   "name": "moai-office",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "문서 생성 — PPT 디자인, Word(DOCX), Excel(XLSX), 한글(HWPX)",
   "author": {
     "name": "모두의AI"

@@ -7,7 +7,7 @@ description: >
   "buyer persona 카피라이팅", "채널별 스크립트 생성", "타겟 고객별 메시지",
   "이메일 템플릿 만들어줘", "SNS 카피 작성", "landing page 메시지"라고 요청하세요.
 user-invocable: true
-version: 2.0.0
+version: 2.1.0
 ---
 
 # 타겟 스크립트 (Target Script)

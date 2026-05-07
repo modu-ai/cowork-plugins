@@ -1,8 +1,8 @@
 # moai-content
 
-크리에이티브 콘텐츠 플러그인 — 카드뉴스, **shadcn/ui 랜딩페이지**, **shadcn/ui 상세페이지**, 뉴스레터, 카피라이팅, 블로그, 소셜미디어, 미디어 프로덕션, **바른한글 맞춤법 검수** (v2.0.0 신규).
+크리에이티브 콘텐츠 플러그인 — 카드뉴스, **shadcn/ui 랜딩페이지**, **shadcn/ui 상세페이지**, 뉴스레터, 카피라이팅, 블로그, 소셜미디어, 미디어 프로덕션, **바른한글 맞춤법 검수** (v2.0.0), **한국어 AI 티 정밀 윤문 humanize-korean** (v2.1.0 신규).
 
-9개 스킬로 텍스트부터 영상까지 콘텐츠 제작 전 과정을 커버합니다. v1.4.0부터 `landing-page`·`product-detail` 두 스킬이 **shadcn/ui + Tailwind CSS v4 + OKLCH 토큰**을 기본 스택으로 사용하고, 코드 생성 전 **소크라테스식 테마 인터뷰**(베이스 팔레트·컬러 모드·모서리 반경·효과)를 자동으로 실행합니다. **v2.0.0부터** `korean-spell-check`(부산대 AI연구실 + ㈜나라인포테크 공동 개발 **바른한글** 표면)으로 한국어 맞춤법·띄어쓰기를 최종 검수합니다 — `ai-slop-reviewer` 직후 체인 권장. Post-Bridge, Typefully, WordPress MCP 연동으로 멀티채널 발행을 자동화합니다.
+10개 스킬로 텍스트부터 영상까지 콘텐츠 제작 전 과정을 커버합니다. v1.4.0부터 `landing-page`·`product-detail` 두 스킬이 **shadcn/ui + Tailwind CSS v4 + OKLCH 토큰**을 기본 스택으로 사용하고, 코드 생성 전 **소크라테스식 테마 인터뷰**(베이스 팔레트·컬러 모드·모서리 반경·효과)를 자동으로 실행합니다. **v2.0.0부터** `korean-spell-check`(부산대 AI연구실 + ㈜나라인포테크 공동 개발 **바른한글** 표면)으로 한국어 맞춤법·띄어쓰기를 최종 검수합니다 — `ai-slop-reviewer` 직후 체인 권장. **v2.1.0부터** `humanize-korean`([epoko77-ai/im-not-ai](https://github.com/epoko77-ai/im-not-ai) MIT, ⭐937 Fast 모드 포팅)으로 10대 카테고리 × 40+ AI 티 패턴 SSOT를 정량 메트릭으로 정밀 윤문합니다 — 의미 100% 보존 가드(변경률 30/50%) + 자체검증 6항 + A/B/C/D 등급 자동 판정. Post-Bridge, Typefully, WordPress MCP 연동으로 멀티채널 발행을 자동화합니다.
 
 ## 스킬
 
@@ -17,6 +17,7 @@
 | [blog](./skills/blog/) | 네이버/티스토리/브런치/WordPress/Ghost 6개 플랫폼 최적화 포스팅 | 6 | ✅ |
 | [social-media](./skills/social-media/) | 인스타/스레드/X/링크드인/유튜브쇼츠/카카오 7개 플랫폼 콘텐츠 | 7 | ✅ |
 | [korean-spell-check](./skills/korean-spell-check/) | 바른한글(부산대) 한국어 맞춤법·띄어쓰기 최종 검수. ai-slop-reviewer 직후 체인 권장 (v2.0.0+) | 0 | ✅ |
+| [humanize-korean](./skills/humanize-korean/) | **🆕 v2.1.0** — 한국어 AI 티 정밀 윤문 (10대 카테고리 × 40+ 패턴 SSOT, S1/S2/S3 심각도, A/B/C/D 등급, 변경률 30/50% 가드). [epoko77-ai/im-not-ai](https://github.com/epoko77-ai/im-not-ai) MIT ⭐937 Fast 모드 포팅 | 6 | ✅ |
 
 ## shadcn/ui 기본 스택 (v1.4.0 신규)
 

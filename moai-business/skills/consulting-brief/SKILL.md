@@ -10,7 +10,7 @@ description: |
   - "경영 컨설팅 제안", "전략 컨설팅 문서", "진단 보고서"
   - "비즈니스 진단", "경영 개선 제안", "컨설팅 계획서"
 user-invocable: true
-version: 2.0.0
+version: 2.1.0
 ---
 
 # 컨설팅 브리프 (Consulting Brief)

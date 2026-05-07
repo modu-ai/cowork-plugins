@@ -3,7 +3,7 @@ name: draft-response
 description: >
   고객 문의에 대한 응답 초안을 작성합니다. "이 문의에 답변 초안 써줘", "환불 요청 이메일 답변 만들어줘", "카카오채널 응답 초안 작성해줘"라고 요청할 때 사용하세요. 한국어 경어 기반 이메일·채팅·공식 답변서 초안을 채널별 어조에 맞게 생성합니다.
 user-invocable: true
-version: 2.0.0
+version: 2.1.0
 ---
 
 # 응답 초안 작성 (Draft Response)
