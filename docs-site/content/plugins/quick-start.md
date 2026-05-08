@@ -21,7 +21,7 @@ geekdocBreadcrumb: true
    modu-ai/cowork-plugins
    ```
 
-   동기화가 끝나면 21개 플러그인·106개 스킬 목록이 표시됩니다.
+   동기화가 끝나면 21개 플러그인·107개 스킬 목록이 표시됩니다.
 
 2. **`moai-core` 설치**
 

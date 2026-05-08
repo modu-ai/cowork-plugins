@@ -1,17 +1,17 @@
 ---
 title: "플러그인 카탈로그"
 weight: 1
-description: "modu-ai/cowork-plugins 마켓플레이스의 21개 플러그인·106개 스킬을 도메인별로 정리한 카탈로그입니다."
+description: "modu-ai/cowork-plugins 마켓플레이스의 21개 플러그인·107개 스킬을 도메인별로 정리한 카탈로그입니다."
 geekdocBreadcrumb: true
 geekdocCollapseSection: false
 ---
 
 # `cowork-plugins` 카탈로그
 
-[`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins)는 한국 업무 환경에 맞춰 설계된 **21개 플러그인 · 106개 스킬**의 커뮤니티 마켓플레이스입니다. 사업계획·IR·마케팅·법무·세무·HR·카드뉴스·PPT·이미지 생성 등 도메인별로 묶여 있습니다.
+[`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins)는 한국 업무 환경에 맞춰 설계된 **21개 플러그인 · 107개 스킬**의 커뮤니티 마켓플레이스입니다. 사업계획·IR·마케팅·법무·세무·HR·카드뉴스·PPT·이미지 생성 등 도메인별로 묶여 있습니다.
 
 {{< hint type="note" >}}
-**v2.0.0 업데이트**: SKILL.md frontmatter `version: 2.0.0` 단일 필드 의무화로 Cowork 자동 업데이트 감지를 복구했습니다. 전체 **106개 스킬 · 21개 플러그인** 체제로 확장(BI 대시보드·프로젝트 관리·영업 신규). marketplace + plugin.json + SKILL.md 128지점 버전 동시 bump.
+**v2.1.0 업데이트**: `moai-content:humanize-korean` 신규 도입 — [epoko77-ai/im-not-ai](https://github.com/epoko77-ai/im-not-ai) (MIT, ⭐937) Fast 모드 포팅. 한국어 AI 티 정밀 윤문(10대 카테고리 × 40+ 패턴 SSOT). 전체 **107개 스킬 · 21개 플러그인** 체제. marketplace + plugin.json + SKILL.md **129지점** 버전 동시 bump (2.0.0 → 2.1.0). Breaking change 없음.
 {{< /hint >}}
 
 ## 전제 조건
@@ -60,14 +60,14 @@ geekdocCollapseSection: false
 - [`moai-career`](./moai-career/) — 자기소개서, 이력서, 면접 코칭, 포트폴리오
 - [`moai-lifestyle`](./moai-lifestyle/) — 여행, 웰니스, 이벤트·웨딩 기획
 
-## 한 눈에 보는 스킬 수 (v2.0.0)
+## 한 눈에 보는 스킬 수 (v2.1.0)
 
 "대표 스킬 (일부)"는 각 플러그인에서 가장 자주 호출되는 스킬을 발췌한 것입니다. 전체 스킬 목록은 플러그인 이름을 클릭해 상세 페이지에서 확인하세요.
 
 | 플러그인 | 스킬 수 | 대표 스킬 (일부) |
 |---|---|---|
 | [moai-core](./moai-core/) | 7 | project, ai-slop-reviewer, feedback, ai-diagnostic, skill-builder, skill-template, skill-tester |
-| [moai-content](./moai-content/) | 9 | blog, card-news, landing-page, copywriting +5종 |
+| [moai-content](./moai-content/) | 10 | blog, card-news, landing-page, copywriting, humanize-korean (v2.1) +5종 |
 | [moai-office](./moai-office/) | 5 | pptx-designer, docx-generator, xlsx-creator, hwpx-writer, pdf-writer |
 | [moai-media](./moai-media/) | 7 | nano-banana, audio-gen, character-mgmt, image-gen, speech-video, video-gen, fal-gateway |
 | [moai-business](./moai-business/) | 10 | strategy-planner, investor-relations, sbiz365-analyst, kr-gov-grant, consulting-brief, sales-playbook, startup-launchpad +3종 |
@@ -88,7 +88,7 @@ geekdocCollapseSection: false
 | [moai-pm](./moai-pm/) | 1 | project-manager |
 | [moai-sales](./moai-sales/) | 1 | sales-prospecting |
 
-전체 **106개 스킬 · 21개 플러그인** (v2.0.0 기준).
+전체 **107개 스킬 · 21개 플러그인** (v2.1.0 기준).
 
 ## 다음 단계
 

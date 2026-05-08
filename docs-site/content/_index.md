@@ -6,8 +6,8 @@ geekdocBreadcrumb: false
 ---
 
 <div class="cw-hero">
-  <div class="eyebrow"><span class="dot"></span>v2.0.0 · 2026.05.04 · cowork.mo.ai.kr</div>
-  <h1>업무에 바로 쓰는<br/><span class="accent">AI 협업 스킬</span> 106종.</h1>
+  <div class="eyebrow"><span class="dot"></span>v2.1.0 · 2026.05.07 · cowork.mo.ai.kr</div>
+  <h1>업무에 바로 쓰는<br/><span class="accent">AI 협업 스킬</span> 107종.</h1>
   <p class="lead-p">
     21개 분야에 걸친 MoAI-Cowork 플러그인 모음. Claude Code에서 슬래시 한 번으로 사업계획서·IR 덱·계약서·블로그·정부지원사업 신청서까지 — 한국어로, 끝까지.
   </p>
@@ -16,10 +16,10 @@ geekdocBreadcrumb: false
     <a class="btn btn--ghost" href="/plugins/">플러그인 둘러보기</a>
   </div>
   <div class="cw-hero-meta">
-    <div class="item"><div class="num">106</div><div class="lbl">총 스킬</div></div>
+    <div class="item"><div class="num">107</div><div class="lbl">총 스킬</div></div>
     <div class="item"><div class="num">21</div><div class="lbl">분야 플러그인</div></div>
-    <div class="item"><div class="num">77</div><div class="lbl">문서 페이지</div></div>
-    <div class="item"><div class="num">v2.0.0</div><div class="lbl">최신 릴리스</div></div>
+    <div class="item"><div class="num">78</div><div class="lbl">문서 페이지</div></div>
+    <div class="item"><div class="num">v2.1.0</div><div class="lbl">최신 릴리스</div></div>
   </div>
 </div>
 
@@ -54,7 +54,7 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
 
 <div class="cw-sect-head">
   <h2 id="plugins-grid" style="margin:0"><span class="num">21</span>분야별 플러그인</h2>
-  <span class="meta">총 106개 스킬 · 21개 도메인</span>
+  <span class="meta">총 107개 스킬 · 21개 도메인</span>
 </div>
 
 <div class="cw-grid">
@@ -65,10 +65,10 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
     <div class="foot"><span>IR</span><span>사업계획</span><span>정부지원</span></div>
   </a>
   <a class="cw-card" href="/plugins/moai-content/">
-    <div class="head"><div class="icon">콘</div><span class="count-pill">9개 스킬</span></div>
-    <div><div class="title">콘텐츠</div><div class="slug">moai-content</div></div>
-    <div class="desc">블로그·뉴스레터·SNS·카피라이팅·SEO 자동화 스킬</div>
-    <div class="foot"><span>블로그</span><span>SNS</span><span>SEO</span></div>
+    <div class="head"><div class="icon">콘</div><span class="count-pill">10개 스킬</span></div>
+    <div><div class="title">콘텐츠<span class="new-tag">v2.1</span></div><div class="slug">moai-content</div></div>
+    <div class="desc">블로그·뉴스레터·SNS·카피라이팅·SEO + 한국어 AI 티 정밀 윤문</div>
+    <div class="foot"><span>블로그</span><span>SNS</span><span>humanize</span></div>
   </a>
   <a class="cw-card" href="/plugins/moai-marketing/">
     <div class="head"><div class="icon">마</div><span class="count-pill">8개 스킬</span></div>
@@ -197,26 +197,35 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
 </div>
 
 <div class="cw-sect-head">
-  <h2 id="release-summary" style="margin:0"><span class="num">v2.0</span>최근 릴리스</h2>
+  <h2 id="release-summary" style="margin:0"><span class="num">v2.1</span>최근 릴리스</h2>
   <span class="meta">CHANGELOG.md 기반</span>
 </div>
 
 <div class="cw-timeline">
   <div class="cw-rel latest">
     <div class="ver-row">
+      <span class="ver">v2.1.0</span>
+      <span class="date">2026-05-07</span>
+      <span class="badge">MINOR</span>
+    </div>
+    <div class="ttl">한국어 AI 티 정밀 윤문 도입 — humanize-korean 신규 스킬</div>
+    <div class="desc">epoko77-ai/im-not-ai (MIT, ⭐937) Fast 모드 포팅. 10대 카테고리 × 40+ AI 티 패턴 SSOT, 의미 100% 보존 가드(변경률 30/50%), A/B/C/D 등급 자동 판정, 자체검증 6항. 권장 체인: ai-slop-reviewer (1차) → humanize-korean (2차).</div>
+    <ul>
+      <li>분류 체계 SSOT 40KB — 번역투·영어인용·구조패턴·AI관용구·리듬·hedging·접속사·형식명사·시각장식 10대 카테고리</li>
+      <li>정량 메트릭 metrics.py — Python 표준 라이브러리만, 외부 의존·API 키 0</li>
+      <li>129지점 버전 동시 bump: marketplace.json + 21 plugin.json + 107 SKILL.md</li>
+      <li>Strict 5인 파이프라인 명세 보존 (references/strict-pipeline-spec.md, 향후 확장용)</li>
+      <li>Breaking change 없음 — 기존 워크플로우 그대로 동작</li>
+    </ul>
+  </div>
+  <div class="cw-rel">
+    <div class="ver-row">
       <span class="ver">v2.0.0</span>
       <span class="date">2026-05-04</span>
       <span class="badge">MAJOR</span>
     </div>
-    <div class="ttl">디자인 시스템 정식 통합 + 한국어 문서 사이트 전면 리뉴얼</div>
-    <div class="desc">Pretendard 브랜드 폰트, 13섹션 cw-* 컴포넌트 시스템, 3컬럼 docs 레이아웃 (사이드바·main·TOC), Claude Design 정합 100% 도달. 18 플러그인 100 스킬 카탈로그.</div>
-    <ul>
-      <li>Pretendard 브랜드 폰트 + Inter latin + JetBrains Mono code 통합</li>
-      <li>21종 cw-* 컴포넌트 (hero, qs, grid, card, track, timeline, rel, toc, side-*) 디자인 시스템 정합</li>
-      <li>좌사이드바 SVG 아이콘 + count pill + NEW/badge + active 흰배경 그림자</li>
-      <li>우측 TOC 240px sticky + scroll spy</li>
-      <li>22지점 버전 동시 bump: 1.8.1 → 2.0.0</li>
-    </ul>
+    <div class="ttl">한국 B2B 시장 특화 6스킬 도입 (NomaDamas/k-skill 포팅)</div>
+    <div class="desc">인터넷등기소 등기부등본 일괄 발급·국토부 실거래가·식약처 안전·법원경매·KRX 시세·바른한글 맞춤법. 마켓플레이스 100 → 106 스킬, MAJOR이지만 Breaking change 없음.</div>
   </div>
   <div class="cw-rel">
     <div class="ver-row">
