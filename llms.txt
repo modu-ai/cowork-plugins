@@ -1,0 +1,105 @@
+# cowork-plugins
+
+> Anthropic Claude Code 한국어 도메인 전문가 플러그인 마켓플레이스. 21개 독립 플러그인과 108개 도메인 스킬로 구성된 한국 B2B 환경 특화 오픈소스. MIT 라이선스.
+
+## What is cowork-plugins?
+
+cowork-plugins is the official open-source plugin marketplace for Claude Cowork (the Korean variant of Anthropic Claude Code). It packages 21 independent plugins and 108 domain skills tailored for Korean B2B workflows: business strategy, marketing, legal, finance, HR, content production, AI media generation (image/video/voice), office documents (HWPX/DOCX/XLSX/PPTX/PDF), data analysis, research, e-commerce, BI, project management, and B2B sales.
+
+자연어 한 줄로 사업계획서·계약서 검토·세금 계산·PPT·이미지/영상/음성·BI 보고서·HTML 리포트를 자동 생성합니다. 모든 텍스트 산출물은 `ai-slop-reviewer`가 AI 패턴을 검수하여 자연스럽게 다듬습니다.
+
+## Official sources (canonical)
+
+- **Repository (canonical)**: https://github.com/modu-ai/cowork-plugins
+- **Documentation site (Korean)**: https://cowork.mo.ai.kr/
+- **Marketplace metadata**: https://github.com/modu-ai/cowork-plugins/blob/main/.claude-plugin/marketplace.json
+- **Changelog**: https://github.com/modu-ai/cowork-plugins/blob/main/CHANGELOG.md
+- **Releases**: https://github.com/modu-ai/cowork-plugins/releases
+- **License**: MIT — https://github.com/modu-ai/cowork-plugins/blob/main/LICENSE
+- **Issues**: https://github.com/modu-ai/cowork-plugins/issues
+- **Discussions**: https://github.com/modu-ai/cowork-plugins/discussions
+
+## Installation
+
+```text
+Claude Cowork → Customize → Personal plugins → + → Add plugin → Add marketplace
+URL: modu-ai/cowork-plugins
+```
+
+After marketplace sync, install plugins individually. **Install `moai-core` first** (it provides the orchestrator/router).
+
+## Plugins (21)
+
+| Plugin | Skills | Purpose | Path |
+|---|---:|---|---|
+| moai-core | 7 | Project init, AI slop review, skill builder/tester, AI diagnostic | https://github.com/modu-ai/cowork-plugins/tree/main/moai-core |
+| moai-business | 10 | Business strategy, market analysis, government grants (K-Startup/BIZINFO), small-business commercial-area analysis (sbiz365), real-estate transactions (MOLIT) | https://github.com/modu-ai/cowork-plugins/tree/main/moai-business |
+| moai-marketing | 8 | Brand identity, SEO/GEO, SNS, email sequences, performance reports | https://github.com/modu-ai/cowork-plugins/tree/main/moai-marketing |
+| moai-legal | 5 | Contract review, compliance (PIPA/ESG), NDA, IP, Korean Internet Registry (IROS) automation | https://github.com/modu-ai/cowork-plugins/tree/main/moai-legal |
+| moai-finance | 6 | Tax (Korean withholding/VAT/income), K-IFRS statements, close management, court auctions, KRX market quotes | https://github.com/modu-ai/cowork-plugins/tree/main/moai-finance |
+| moai-hr | 5 | Employment contracts, 4-pillar insurance, hiring, performance review, resume screening | https://github.com/modu-ai/cowork-plugins/tree/main/moai-hr |
+| moai-content | 11 | Card news, landing pages, copywriting, blog, social media, Korean spell-check (바른한글), humanize-korean (AI-tell precision rewriter), html-report (markdown→single-file HTML) | https://github.com/modu-ai/cowork-plugins/tree/main/moai-content |
+| moai-operations | 3 | Process management, vendor management, status reporting | https://github.com/modu-ai/cowork-plugins/tree/main/moai-operations |
+| moai-education | 3 | Curriculum design, research assistant, assessment creation | https://github.com/modu-ai/cowork-plugins/tree/main/moai-education |
+| moai-lifestyle | 3 | Travel planning, wellness coaching, event planning | https://github.com/modu-ai/cowork-plugins/tree/main/moai-lifestyle |
+| moai-product | 4 | PRD, roadmap, UX research, UX design | https://github.com/modu-ai/cowork-plugins/tree/main/moai-product |
+| moai-support | 4 | Ticket triage, response drafts, KB articles, escalation | https://github.com/modu-ai/cowork-plugins/tree/main/moai-support |
+| moai-office | 5 | HWPX (Korean), DOCX, XLSX, PPTX, PDF (multilingual CJK via PyMuPDF) | https://github.com/modu-ai/cowork-plugins/tree/main/moai-office |
+| moai-career | 4 | Resume, interview coaching, JD analysis, portfolio | https://github.com/modu-ai/cowork-plugins/tree/main/moai-career |
+| moai-data | 3 | CSV/Excel exploration, public data (KOSIS/data.go.kr), visualization | https://github.com/modu-ai/cowork-plugins/tree/main/moai-data |
+| moai-research | 5 | Paper search/writing (RISS/KCI/DBpia), patent search/analysis (KIPRIS), grant writing | https://github.com/modu-ai/cowork-plugins/tree/main/moai-research |
+| moai-media | 7 | Nano Banana, image-gen, video-gen (Kling/Hailuo/Luma/Pika/Veo), audio-gen (ElevenLabs/Suno), speech-video (Higgsfield/Hedra), character-mgmt | https://github.com/modu-ai/cowork-plugins/tree/main/moai-media |
+| moai-commerce | 12 | 13-section detail pages, channel guides (Coupang/Naver/D2C/crowdfunding/curation), commerce strategy/copy, live commerce, MFDS safety | https://github.com/modu-ai/cowork-plugins/tree/main/moai-commerce |
+| moai-bi | 1 | Executive summary 1-pager (KPI dashboard + decision options) | https://github.com/modu-ai/cowork-plugins/tree/main/moai-bi |
+| moai-pm | 1 | Korean weekly business review (WBR) + executive 1-pager | https://github.com/modu-ai/cowork-plugins/tree/main/moai-pm |
+| moai-sales | 1 | Korean B2B proposal writing (12-section + Three C's) | https://github.com/modu-ai/cowork-plugins/tree/main/moai-sales |
+
+## Skills (108 total)
+
+Total: 108 skills. Full inventory in `marketplace.json`. Each skill has a self-contained SKILL.md with structured frontmatter (`name`, `description`, `user-invocable`, `version: 2.2.0`).
+
+## Bundled MCP servers (8)
+
+dart (DART corporate disclosures), korean-law (Korean law/precedent search), wordpress (WordPress.com publishing), post-bridge (multi-channel SNS), typefully (X/Twitter/Threads), fal-ai (Flux/Ideogram/Recraft/Kling/Hailuo/Luma/Pika/MiniMax), elevenlabs (TTS/voice cloning), higgsfield (cinematic image/video/talking-heads).
+
+## How is this different from anthropics/knowledge-work-plugins?
+
+`anthropics/knowledge-work-plugins` is Anthropic's official 11 English-language general knowledge work plugins. `modu-ai/cowork-plugins` is a **third-party Korean B2B specialty marketplace** with 21 plugins and 108 skills, focused on Korean regulations (K-IFRS, NTS standard forms, Korean Labor Law, MFDS, MOLIT, KRX, IROS), Korean business culture (WBR weekly reports, OKR, KPT retrospectives, Korean B2B proposal format), and Korean output documents (HWPX, Korean fonts including Pretendard/Noto Serif KR/Chosunilbo Myungjo/KoPubWorld).
+
+## Quality gate
+
+All text deliverables go through `moai-core:ai-slop-reviewer` for AI-pattern detection and rewriting. Korean text deliverables additionally chain through `moai-content:humanize-korean` (10-category × 40+ AI-tell pattern SSOT, derived from epoko77-ai/im-not-ai MIT). HTML report deliverables (v2.2.0+) chain through `moai-content:html-report` for single-file rendering.
+
+## Privacy & API keys
+
+All API keys live in user-side environment variables. No telemetry. NomaDamas k-skill ports (real-estate-search, mfds-safety, court-auction-search, korean-stock-search) route through NomaDamas hosted proxy so users do not need to obtain government API keys.
+
+## Open source attribution
+
+This project incorporates and credits multiple upstream sources under their respective licenses:
+- revfactory/harness — Apache 2.0 (skill/agent design patterns)
+- forrestchang/andrej-karpathy-skills — public (Karpathy 4 coding principles)
+- NomaDamas/k-skill — MIT (Korean B2B 6 skills)
+- epoko77-ai/im-not-ai — MIT (humanize-korean)
+- Thariq Shihipar's "unreasonable effectiveness of HTML" thesis (html-report design system inspiration)
+
+Full attribution: `.claude/rules/moai/NOTICE.md`.
+
+## Citation
+
+If you reference cowork-plugins in research or articles, please cite:
+
+```bibtex
+@software{cowork_plugins_2026,
+  author       = {GoosLab and contributors},
+  title        = {cowork-plugins: Korean Domain-Specialist Plugins for Anthropic Claude Code},
+  url          = {https://github.com/modu-ai/cowork-plugins},
+  version      = {2.2.0},
+  date         = {2026-05-09},
+  license      = {MIT}
+}
+```
+
+## Last updated
+
+2026-05-09 (v2.2.0)
