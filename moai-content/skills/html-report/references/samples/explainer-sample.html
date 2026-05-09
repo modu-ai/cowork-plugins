@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API 레이트 리미팅 — 토큰 버킷 동작 원리</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Noto+Serif+KR:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    /* ============================================================
+       CSS 변수 계약 (design-tokens.md 단일 진실 준수)
+       html-report v2.2.0 — explainer 모드 샘플
+    ============================================================ */
+    :root {
+      --ivory:  #FAF9F5;
+      --paper:  #FFFFFF;
+      --slate:  #141413;
+      --clay:   #D97757;
+      --clay-d: #B85C3E;
+      --oat:    #E3DACC;
+      --olive:  #788C5D;
+      --g100: #F0EEE6;
+      --g300: #D1CFC5;
+      --g500: #87867F;
+      --g700: #3D3D3A;
+      --sans:   "Noto Sans KR", system-ui, -apple-system, sans-serif;
+      --serif:  "Noto Serif KR", ui-serif, Georgia, serif;
+      --mono:   "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      --max-width:    1100px;
+      --content-max:  680px;
+      --radius-panel: 12px;
+      --radius-row:   8px;
+      --border:       1.5px solid var(--g300);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--ivory);
+      color: var(--slate);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    code, pre { font-family: var(--mono); }
+
+    /* ============================================================
+       레이아웃 — 2단: 사이드 네비 + 메인
+    ============================================================ */
+    .page-wrap {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 200px minmax(0, 1fr);
+      gap: 40px;
+      padding: 40px 24px 80px;
+    }
+
+    /* 사이드 네비 */
+    .side-nav {
+      position: sticky;
+      top: 32px;
+      height: fit-content;
+    }
+    .side-nav .nav-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--g500);
+      margin-bottom: 12px;
+    }
+    .side-nav ul {
+      list-style: none;
+    }
+    .side-nav li + li { margin-top: 4px; }
+    .side-nav a {
+      display: block;
+      font-size: 13px;
+      color: var(--g700);
+      text-decoration: none;
+      padding: 4px 0;
+      border-left: 2px solid transparent;
+      padding-left: 10px;
+      transition: border-color .15s, color .15s;
+    }
+    .side-nav a:hover { color: var(--clay); border-left-color: var(--clay); }
+    .side-nav .sub-link { padding-left: 20px; font-size: 12px; color: var(--g500); }
+
+    /* 메인 컨텐츠 */
+    .main-content { min-width: 0; }
+
+    /* 헤더 */
+    .expl-header {
+      border-bottom: 2px solid var(--slate);
+      padding-bottom: 20px;
+      margin-bottom: 32px;
+    }
+    .expl-header .eyebrow {
+      font-size: 11px;
+      font-family: var(--mono);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--g500);
+      margin-bottom: 8px;
+    }
+    .expl-header h1 {
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .expl-header .lead {
+      font-family: var(--serif);
+      font-size: 15px;
+      color: var(--g700);
+      max-width: var(--content-max);
+    }
+    .expl-header .meta-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .pill-tag {
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: var(--g100);
+      color: var(--g700);
+    }
+    .pill-tag.green { background: rgba(120,140,93,.12); color: var(--olive); }
+
+    /* 섹션 제목 */
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--g500);
+      border-bottom: var(--border);
+      padding-bottom: 8px;
+      margin: 36px 0 20px;
+    }
+
+    /* 개념 설명 단락 */
+    .body-text { max-width: var(--content-max); }
+    .body-text + .body-text { margin-top: 12px; }
+    h2.inline-h { font-size: 17px; font-weight: 700; margin: 24px 0 8px; }
+
+    /* 콜아웃 박스 */
+    .callout {
+      background: var(--oat);
+      border-left: 4px solid var(--clay);
+      border-radius: 0 var(--radius-row) var(--radius-row) 0;
+      padding: 14px 18px;
+      margin: 20px 0;
+      max-width: var(--content-max);
+      font-size: 14px;
+    }
+    .callout .callout-label {
+      font-weight: 700;
+      color: var(--clay-d);
+      margin-bottom: 4px;
+    }
+
+    /* 순서있는 단계 — <details class="step"> */
+    .step-list { display: flex; flex-direction: column; gap: 12px; max-width: var(--content-max); }
+    details.step {
+      background: var(--paper);
+      border: var(--border);
+      border-radius: var(--radius-panel);
+      overflow: hidden;
+    }
+    details.step > summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      user-select: none;
+    }
+    details.step > summary::-webkit-details-marker { display: none; }
+    details.step > summary::before {
+      content: "▸";
+      font-size: 14px;
+      color: var(--g500);
+      transition: transform .2s;
+      flex-shrink: 0;
+    }
+    details.step[open] > summary::before { content: "▾"; }
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--slate);
+      color: var(--ivory);
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    details.step > summary .step-title { font-weight: 700; font-size: 15px; }
+    details.step > summary .step-badge {
+      margin-left: auto;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--g100);
+      color: var(--g500);
+    }
+    .step-body {
+      padding: 0 18px 18px;
+      font-size: 14px;
+      border-top: var(--border);
+      color: var(--g700);
+    }
+    .step-body p { margin-top: 12px; }
+    .step-body pre {
+      background: var(--slate);
+      color: #E8E6E0;
+      border-radius: var(--radius-row);
+      padding: 14px 16px;
+      font-size: 13px;
+      overflow-x: auto;
+      margin-top: 12px;
+    }
+
+    /* 탭 코드 블록 */
+    .tabs-wrap { max-width: var(--content-max); margin: 20px 0; }
+    .tabbar {
+      display: flex;
+      gap: 2px;
+      background: var(--g100);
+      border-radius: var(--radius-row) var(--radius-row) 0 0;
+      padding: 4px 4px 0;
+    }
+    .tabbar button {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 6px 14px;
+      border-radius: 5px 5px 0 0;
+      color: var(--g500);
+      transition: background .15s, color .15s;
+    }
+    .tabbar button.active {
+      background: var(--paper);
+      color: var(--slate);
+      font-weight: 700;
+    }
+    .tab-pane {
+      display: none;
+      background: var(--slate);
+      color: #E8E6E0;
+      padding: 16px;
+      border-radius: 0 0 var(--radius-row) var(--radius-row);
+      font-size: 13px;
+      overflow-x: auto;
+    }
+    .tab-pane.active { display: block; }
+    .tab-pane pre { margin: 0; }
+
+    /* SVG 다이어그램 */
+    .diagram-wrap {
+      background: var(--paper);
+      border: var(--border);
+      border-radius: var(--radius-panel);
+      padding: 24px;
+      overflow-x: auto;
+      margin: 20px 0;
+      max-width: var(--content-max);
+    }
+
+    /* FAQ 아코디언 */
+    .faq-list { display: flex; flex-direction: column; gap: 8px; max-width: var(--content-max); }
+    details.faq-item {
+      background: var(--paper);
+      border: var(--border);
+      border-radius: var(--radius-row);
+    }
+    details.faq-item > summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      user-select: none;
+    }
+    details.faq-item > summary::-webkit-details-marker { display: none; }
+    details.faq-item > summary::after {
+      content: "+";
+      margin-left: auto;
+      font-size: 18px;
+      color: var(--g500);
+      line-height: 1;
+    }
+    details.faq-item[open] > summary::after { content: "−"; color: var(--clay); }
+    .faq-body {
+      padding: 0 18px 16px;
+      font-size: 14px;
+      color: var(--g700);
+      border-top: var(--border);
+    }
+    .faq-body p { margin-top: 10px; }
+    .faq-body code {
+      background: var(--g100);
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    /* 풋터 */
+    .expl-footer {
+      border-top: var(--border);
+      margin-top: 60px;
+      padding-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--g500);
+    }
+
+    /* 인쇄 */
+    @media print {
+      body { background: #fff; }
+      .side-nav { display: none; }
+      .page-wrap { grid-template-columns: 1fr; padding: 0; }
+      details.step, details.faq-item { break-inside: avoid; }
+      details.step > summary::before { content: "▸"; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- 사이드 네비 -->
+  <nav class="side-nav" aria-label="페이지 내 목차">
+    <p class="nav-title">목차</p>
+    <ul>
+      <li><a href="#overview">개요</a></li>
+      <li><a href="#how-it-works">동작 원리</a>
+        <ul>
+          <li><a class="sub-link" href="#step-fill">버킷 채우기</a></li>
+          <li><a class="sub-link" href="#step-consume">토큰 소비</a></li>
+          <li><a class="sub-link" href="#step-reject">초과 거절</a></li>
+        </ul>
+      </li>
+      <li><a href="#integration">코드 예시</a></li>
+      <li><a href="#faq">자주 묻는 질문</a></li>
+    </ul>
+  </nav>
+
+  <!-- 메인 -->
+  <main class="main-content">
+
+    <!-- 헤더 -->
+    <header class="expl-header" id="overview">
+      <p class="eyebrow">API 레이트 리미팅 · 개념 가이드</p>
+      <h1>토큰 버킷 알고리즘<br>동작 원리</h1>
+      <p class="lead">
+        토큰 버킷(Token Bucket)은 API 요청 속도를 제어하는 가장 널리 쓰이는 알고리즘입니다.
+        짧은 트래픽 버스트를 허용하면서도 장기 평균 처리량을 일정하게 유지합니다.
+      </p>
+      <div class="meta-pills">
+        <span class="pill-tag">레이트 리미팅</span>
+        <span class="pill-tag">토큰 버킷</span>
+        <span class="pill-tag">Spring Boot</span>
+        <span class="pill-tag green">초급-중급</span>
+      </div>
+    </header>
+
+    <!-- 개요 단락 -->
+    <p class="body-text">
+      레이트 리미팅 없이 API를 공개하면 단일 클라이언트의 폭발적인 요청이 전체 서비스를 마비시킬 수 있습니다.
+      토큰 버킷은 각 클라이언트에게 <strong>가상의 버킷</strong>을 할당하고, 버킷에 토큰이 있을 때만 요청을 허가합니다.
+    </p>
+
+    <div class="callout">
+      <p class="callout-label">핵심 비유</p>
+      <p>지하철 교통카드를 생각하세요. 잔액이 있으면 탑승(요청)이 가능하고, 잔액이 없으면 게이트(서버)가 막힙니다.
+      잔액은 일정 속도로 자동 충전됩니다.</p>
+    </div>
+
+    <!-- 동작 원리 단계 -->
+    <h2 class="section-title" id="how-it-works">동작 원리</h2>
+    <div class="step-list">
+
+      <details class="step" open>
+        <summary>
+          <span class="step-num">1</span>
+          <span class="step-title" id="step-fill">버킷 채우기 (Token Refill)</span>
+          <span class="step-badge">수동 없음</span>
+        </summary>
+        <div class="step-body">
+          <p>서버는 각 클라이언트(또는 IP, API 키)마다 버킷 하나를 관리합니다. 버킷에는 <strong>최대 용량(capacity)</strong>이 있고,
+          고정 속도(<strong>refill_rate</strong> 토큰/초)로 토큰이 채워집니다.</p>
+          <p>예) <code>capacity = 100</code>, <code>refill_rate = 10 req/s</code> — 버킷이 빈 상태에서 10초 후 완전 충전.</p>
+          <pre>bucket.tokens = min(capacity, bucket.tokens + refill_rate * elapsed)</pre>
+        </div>
+      </details>
+
+      <details class="step">
+        <summary>
+          <span class="step-num">2</span>
+          <span class="step-title" id="step-consume">토큰 소비 (Token Consumption)</span>
+          <span class="step-badge">요청마다</span>
+        </summary>
+        <div class="step-body">
+          <p>요청이 들어올 때마다 버킷에서 토큰 1개(또는 가중치)를 차감합니다.
+          버킷에 토큰이 충분하면 요청이 통과됩니다.</p>
+          <pre>if bucket.tokens >= cost:
+    bucket.tokens -= cost
+    return ALLOW
+else:
+    return DENY</pre>
+          <p>가중치(cost)를 통해 무거운 엔드포인트에 더 많은 토큰을 요구할 수 있습니다.
+          예) 대용량 파일 업로드는 <code>cost = 5</code>.</p>
+        </div>
+      </details>
+
+      <details class="step">
+        <summary>
+          <span class="step-num">3</span>
+          <span class="step-title" id="step-reject">초과 거절 &amp; 응답 헤더</span>
+          <span class="step-badge">429 반환</span>
+        </summary>
+        <div class="step-body">
+          <p>토큰이 부족하면 서버는 <strong>HTTP 429 Too Many Requests</strong>를 반환합니다.
+          클라이언트가 재시도 타이밍을 알 수 있도록 표준 헤더를 포함해야 합니다.</p>
+          <pre>HTTP/1.1 429 Too Many Requests
+X-RateLimit-Limit: 100
+X-RateLimit-Remaining: 0
+X-RateLimit-Reset: 1746787200
+Retry-After: 8</pre>
+          <p><code>Retry-After</code>는 다음 토큰이 채워질 때까지 남은 초(second)를 나타냅니다.
+          클라이언트는 이 값을 보고 지수 백오프 대신 정확한 대기 시간을 계산할 수 있습니다.</p>
+        </div>
+      </details>
+
+    </div>
+
+    <!-- 토큰 버킷 SVG -->
+    <div class="diagram-wrap">
+      <svg viewBox="0 0 560 180" width="560" height="180" role="img" aria-label="토큰 버킷 상태 다이어그램">
+        <defs>
+          <marker id="arr2" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L7,3 Z" fill="#87867F"/>
+          </marker>
+        </defs>
+        <!-- 버킷 외곽 -->
+        <rect x="210" y="20" width="140" height="130" rx="8" fill="#FFFFFF" stroke="#D1CFC5" stroke-width="2"/>
+        <!-- 충전량 표시 (80%) -->
+        <rect x="218" y="60" width="124" height="82" rx="4" fill="rgba(120,140,93,.18)"/>
+        <text x="280" y="104" text-anchor="middle" font-family="'Noto Sans KR', sans-serif" font-size="22" font-weight="700" fill="#788C5D">80</text>
+        <text x="280" y="122" text-anchor="middle" font-family="'Noto Sans KR', sans-serif" font-size="12" fill="#87867F">/ 100 토큰</text>
+        <text x="280" y="14" text-anchor="middle" font-family="'Noto Sans KR', sans-serif" font-size="12" font-weight="700" fill="#141413">토큰 버킷</text>
+
+        <!-- 충전 화살표 (왼쪽) -->
+        <line x1="100" y1="85" x2="206" y2="85" stroke="#788C5D" stroke-width="2" marker-end="url(#arr2)"/>
+        <rect x="20" y="60" width="80" height="50" rx="8" fill="#EDFAED" stroke="#788C5D" stroke-width="1.5"/>
+        <text x="60" y="82" text-anchor="middle" font-family="'Noto Sans KR', sans-serif" font-size="11" font-weight="700" fill="#267D34">리필러</text>
+        <text x="60" y="98" text-anchor="middle" font-family="'Noto Sans KR', sans-serif" font-size="10" fill="#267D34">10 tok/s</text>
+        <text x="153" y="78" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" fill="#788C5D">+토큰</text>
+
+        <!-- 요청 화살표 (오른쪽) -->
+        <line x1="354" y1="75" x2="440" y2="75" stroke="#87867F" stroke-width="2" marker-end="url(#arr2)"/>
+        <text x="397" y="68" text-anchor="middle" font-family="'Noto Sans KR', sans-serif" font-size="10" fill="#87867F">요청 (−1)</text>
+        <rect x="440" y="50" width="80" height="35" rx="8" fill="#EDFAED" stroke="#788C5D" stroke-width="1.5"/>
+        <text x="480" y="72" text-anchor="middle" font-family="'Noto Sans KR', sans-serif" font-size="12" font-weight="700" fill="#267D34">200 OK</text>
+
+        <!-- 거절 화살표 -->
+        <line x1="354" y1="110" x2="440" y2="110" stroke="#B85C3E" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr2)"/>
+        <text x="397" y="103" text-anchor="middle" font-family="'Noto Sans KR', sans-serif" font-size="10" fill="#B85C3E">초과</text>
+        <rect x="440" y="96" width="80" height="35" rx="8" fill="rgba(184,92,62,.08)" stroke="#B85C3E" stroke-width="1.5"/>
+        <text x="480" y="118" text-anchor="middle" font-family="'Noto Sans KR', sans-serif" font-size="12" font-weight="700" fill="#B85C3E">429</text>
+      </svg>
+    </div>
+
+    <!-- 코드 예시 탭 -->
+    <h2 class="section-title" id="integration">코드 예시</h2>
+
+    <div class="tabs-wrap" data-tabs>
+      <div class="tabbar">
+        <button class="active" onclick="switchTab(this, 'java')">Java (Spring)</button>
+        <button onclick="switchTab(this, 'python')">Python</button>
+        <button onclick="switchTab(this, 'nginx')">Nginx</button>
+      </div>
+      <div id="tab-java" class="tab-pane active">
+        <pre>// Bucket4j + Spring Boot 예시
+@RateLimiter(name = "commentApi", fallbackMethod = "rateLimitFallback")
+@PostMapping("/comments")
+public ResponseEntity&lt;Comment&gt; createComment(@RequestBody CommentRequest req) {
+    return ResponseEntity.ok(commentService.create(req));
+}
+
+public ResponseEntity&lt;?&gt; rateLimitFallback(CommentRequest req, Throwable t) {
+    return ResponseEntity.status(429)
+        .header("Retry-After", "8")
+        .body(Map.of("error", "too_many_requests"));
+}</pre>
+      </div>
+      <div id="tab-python" class="tab-pane">
+        <pre># redis-py + slowapi 예시
+from slowapi import Limiter
+from slowapi.util import get_remote_address
+
+limiter = Limiter(key_func=get_remote_address)
+
+@app.post("/comments")
+@limiter.limit("10/second")
+async def create_comment(request: Request, body: CommentBody):
+    return await comment_service.create(body)</pre>
+      </div>
+      <div id="tab-nginx" class="tab-pane">
+        <pre># nginx.conf
+http {
+    limit_req_zone $binary_remote_addr
+        zone=comment_api:10m rate=10r/s;
+
+    server {
+        location /api/v1/comments {
+            limit_req zone=comment_api burst=20 nodelay;
+            limit_req_status 429;
+            proxy_pass http://backend;
+        }
+    }
+}</pre>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <h2 class="section-title" id="faq">자주 묻는 질문</h2>
+    <div class="faq-list">
+
+      <details class="faq-item">
+        <summary>슬라이딩 윈도우와 토큰 버킷의 차이가 무엇인가요?</summary>
+        <div class="faq-body">
+          <p>슬라이딩 윈도우(Sliding Window)는 <strong>지정된 기간(예: 최근 1분)</strong> 안의 요청 수를 카운트합니다.
+          토큰 버킷은 <strong>버스트(burst)를 허용</strong>한다는 점이 다릅니다 — 버킷이 가득 찬 상태에서는
+          짧은 시간에 <code>capacity</code>만큼의 요청을 순간적으로 처리할 수 있습니다.</p>
+          <p>API 응답 일관성이 중요하면 슬라이딩 윈도우를, 합리적 버스트 허용이 필요하면 토큰 버킷을 선택하세요.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Redis 없이 토큰 버킷을 구현할 수 있나요?</summary>
+        <div class="faq-body">
+          <p>단일 인스턴스 환경이라면 인메모리(ConcurrentHashMap 등)로도 충분합니다.
+          하지만 <strong>다중 인스턴스(로드 밸런서 하단) 환경</strong>에서는 Redis 또는 Hazelcast 같은
+          분산 캐시가 필수입니다. 인스턴스별로 버킷을 따로 관리하면 실질 한도가 인스턴스 수만큼 늘어납니다.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>429 응답을 받은 클라이언트는 어떻게 처리해야 하나요?</summary>
+        <div class="faq-body">
+          <p><code>Retry-After</code> 헤더가 있으면 해당 초(second)만큼 대기 후 재시도합니다.
+          헤더가 없으면 지수 백오프(exponential backoff)를 사용하세요 — 1s → 2s → 4s → … 순으로 대기 시간을 늘립니다.</p>
+          <p>SDKs(예: Axios, fetch wrapper) 레벨에서 <code>429</code> 인터셉터를 글로벌로 설정해 두면
+          개별 API 호출 코드에서 처리를 반복할 필요가 없습니다.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>사용자별 / API 키별로 다른 한도를 설정하려면?</summary>
+        <div class="faq-body">
+          <p>버킷 키를 <code>userId</code> 또는 <code>apiKey</code>로 분리하고,
+          플랜(Tier)에 따라 <code>capacity</code>와 <code>refill_rate</code>를 달리 설정합니다.</p>
+          <p>예) Free 플랜: <code>10 req/s, capacity 50</code> · Pro 플랜: <code>100 req/s, capacity 500</code>.
+          Redis Hash에 <code>tier → config</code> 맵을 두면 동적으로 변경 가능합니다.</p>
+        </div>
+      </details>
+
+    </div>
+
+    <!-- 풋터 -->
+    <footer class="expl-footer">
+      <span>API 레이트 리미팅 가이드 · 커뮤니티 플랫폼 팀</span>
+      <span>작성: 2026-05-09 · html-report v2.2.0</span>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+/* 탭 전환 — 30줄 이내 vanilla JS */
+function switchTab(btn, tabId) {
+  const wrap = btn.closest("[data-tabs]");
+  wrap.querySelectorAll(".tabbar button").forEach(b => b.classList.remove("active"));
+  wrap.querySelectorAll(".tab-pane").forEach(p => p.classList.remove("active"));
+  btn.classList.add("active");
+  const pane = wrap.querySelector("#tab-" + tabId);
+  if (pane) pane.classList.add("active");
+}
+document.querySelectorAll("[data-tabs]").forEach(function(wrap) {
+  var first = wrap.querySelector(".tab-pane");
+  if (first) first.classList.add("active");
+  var firstBtn = wrap.querySelector(".tabbar button");
+  if (firstBtn) firstBtn.classList.add("active");
+});
+</script>
+</body>
+</html>

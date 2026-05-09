@@ -1,6 +1,6 @@
 {
   "name": "moai-media",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "AI 미디어 스튜디오 — 이미지·영상·음성·캐릭터 통합 생성 (Higgsfield, Gemini, fal.ai, ElevenLabs)",
   "author": {
     "name": "모두의AI"

@@ -7,7 +7,7 @@ description: >
   Next.js 15 + Tailwind CSS v4 + shadcn/ui 스택으로 히어로부터 CTA까지 전환율 최적화
   랜딩 페이지 전체 구성, 디자인 토큰(OKLCH), Framer Motion 효과를 산출합니다.
 user-invocable: true
-version: 2.1.0
+version: 2.2.0
 ---
 
 # 랜딩 페이지 (Landing Page)

@@ -13,7 +13,7 @@ description: |
   - "전월세 시세", "전세 보증금 추이", "월세 평균"
   - 단지명 + 거래년월 + 평형 조합으로 시세 분석 요청 시
 user-invocable: true
-version: 2.1.0
+version: 2.2.0
 ---
 
 # 한국 부동산 실거래가 조회

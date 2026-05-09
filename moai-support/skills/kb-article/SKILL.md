@@ -3,7 +3,7 @@ name: kb-article
 description: >
   고객지원 지식베이스 문서를 작성합니다. "FAQ 만들어줘", "트러블슈팅 가이드 작성해줘", "헬프센터 아티클 써줘"라고 요청할 때 사용하세요. FAQ, 사용자 가이드, 트러블슈팅 문서, 정책 안내문을 Zendesk·Freshdesk·카카오비즈니스 형식에 맞게 생성합니다.
 user-invocable: true
-version: 2.1.0
+version: 2.2.0
 ---
 
 # 지식베이스 문서 작성 (KB Article)

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>INC-2026-0422 — 주문 결제 게이트웨이 502</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    :root {
+      --ivory: #FAF9F5; --paper: #FFFFFF; --slate: #141413;
+      --clay: #D97757; --clay-d: #B85C3E; --oat: #E3DACC; --olive: #788C5D;
+      --g100: #F0EEE6; --g300: #D1CFC5; --g500: #87867F; --g700: #3D3D3A;
+      --sans: "Pretendard", system-ui, -apple-system, sans-serif;
+      --serif: "Pretendard", ui-serif, Georgia, serif;
+      --mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+      --max-width: 860px; --radius-panel: 12px; --border: 1.5px solid var(--g300);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; padding: 56px 24px 120px; background: var(--ivory); color: var(--slate); font-family: var(--sans); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    .page { max-width: var(--max-width); margin: 0 auto; }
+    header { margin-bottom: 32px; }
+    .inc-id { font-family: var(--mono); font-size: 13px; color: var(--g500); letter-spacing: 0.02em; margin-bottom: 8px; }
+    h1 { font-family: var(--serif); font-weight: 700; font-size: 32px; letter-spacing: -0.01em; margin: 0 0 16px; line-height: 1.2; color: var(--slate); }
+    .meta-row { display: flex; flex-wrap: wrap; gap: 8px 12px; }
+    .pill { display: inline-flex; align-items: baseline; gap: 6px; font-family: var(--sans); font-size: 12px; font-weight: 600; border-radius: 999px; padding: 5px 12px; line-height: 1; }
+    .pill .k { font-weight: 400; opacity: 0.75; }
+    .pill.sev-2 { background: var(--clay); color: var(--paper); }
+    .pill.resolved { background: var(--olive); color: var(--paper); }
+    .pill.neutral { background: var(--g100); color: var(--g700); border: var(--border); }
+    .pill.neutral .v { font-family: var(--mono); }
+    .tldr { background: var(--slate); color: var(--ivory); border-radius: var(--radius-panel); padding: 22px 26px; margin-bottom: 48px; }
+    .tldr-label { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--oat); margin-bottom: 10px; }
+    .tldr p { margin: 0; font-size: 15px; line-height: 1.65; }
+    .tldr code { font-family: var(--mono); font-size: 13.5px; background: rgba(250,249,245,0.12); padding: 1px 5px; border-radius: 4px; }
+    section { margin-bottom: 52px; scroll-margin-top: 24px; }
+    h2 { font-family: var(--serif); font-weight: 700; font-size: 22px; letter-spacing: -0.01em; margin: 0 0 6px; color: var(--slate); }
+    hr.rule { border: none; border-top: 1px solid var(--g300); margin: 0 0 22px; }
+    p { margin: 0 0 14px; }
+    code.inline { font-family: var(--mono); font-size: 13px; background: var(--g100); padding: 1.5px 5px; border-radius: 4px; color: var(--slate); }
+    .timeline { position: relative; padding: 4px 0 4px 16px; }
+    .timeline::before { content: ""; position: absolute; left: 16px; top: 8px; bottom: 8px; width: 2px; background: var(--g300); }
+    .tl-entry { position: relative; padding: 0 0 22px 28px; }
+    .tl-entry:last-child { padding-bottom: 0; }
+    .tl-dot { position: absolute; left: -5px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--g500); border: 2px solid var(--ivory); box-sizing: content-box; }
+    .tl-dot.impact { background: var(--clay); }
+    .tl-dot.mitigated { background: var(--olive); }
+    .tl-time { display: inline-block; font-family: var(--mono); font-size: 12px; color: var(--g700); background: var(--g100); border: 1px solid var(--g300); border-radius: 6px; padding: 2px 8px; margin-bottom: 6px; }
+    .tl-body { font-size: 14px; color: var(--g700); }
+    .tl-body strong { color: var(--slate); font-weight: 600; }
+    .tl-log summary { list-style: none; cursor: pointer; font-family: var(--mono); font-size: 12px; color: var(--g500); margin-top: 8px; }
+    .tl-log summary::-webkit-details-marker { display: none; }
+    .tl-log summary::before { content: "▸ "; color: var(--clay); }
+    .tl-log[open] summary::before { content: "▾ "; }
+    .log-block { margin-top: 8px; background: var(--slate); color: var(--g100); border-radius: 8px; padding: 14px 16px; font-family: var(--mono); font-size: 12.5px; line-height: 1.65; overflow-x: auto; }
+    .code-panel { background: var(--slate); color: var(--g100); border-radius: var(--radius-panel); padding: 18px 20px; font-family: var(--mono); font-size: 13px; line-height: 1.7; overflow-x: auto; margin: 12px 0 4px; }
+    .code-panel .path { color: var(--g500); font-size: 12px; margin-bottom: 10px; display: block; }
+    .diff-line { white-space: pre; }
+    .diff-line.ctx { color: var(--g300); }
+    .diff-line.del { color: #E0897A; }
+    .diff-line.add { color: #A3B88A; }
+    table.impact { width: 100%; max-width: 460px; border-collapse: separate; border-spacing: 0; background: var(--paper); border: var(--border); border-radius: var(--radius-panel); overflow: hidden; }
+    table.impact th, table.impact td { text-align: left; padding: 12px 18px; font-size: 14px; border-bottom: 1px solid var(--g100); }
+    table.impact tr:last-child th, table.impact tr:last-child td { border-bottom: none; }
+    table.impact th { font-weight: 400; color: var(--g500); width: 55%; }
+    table.impact td { font-family: var(--mono); color: var(--slate); }
+    .actions { background: var(--paper); border: var(--border); border-radius: var(--radius-panel); overflow: hidden; }
+    .ai-row { display: grid; grid-template-columns: 36px 36px 1fr 96px; align-items: center; gap: 14px; padding: 14px 18px; border-bottom: 1px solid var(--g100); }
+    .ai-row:last-child { border-bottom: none; }
+    .ai-check { width: 18px; height: 18px; border: 1.5px solid var(--g300); border-radius: 5px; background: var(--paper); position: relative; flex-shrink: 0; }
+    .ai-row.done .ai-check { background: var(--olive); border-color: var(--olive); }
+    .ai-row.done .ai-check::after { content: ""; position: absolute; left: 4px; top: 1px; width: 5px; height: 9px; border: solid var(--paper); border-width: 0 2px 2px 0; transform: rotate(40deg); }
+    .ai-row.done .ai-desc { color: var(--g500); text-decoration: line-through; text-decoration-color: var(--g300); }
+    .ai-avatar { width: 30px; height: 30px; border-radius: 50%; background: var(--oat); color: var(--g700); font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .ai-desc { font-size: 14px; color: var(--slate); }
+    .ai-due { font-family: var(--mono); font-size: 12px; color: var(--g500); text-align: right; }
+    footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--g300); font-family: var(--mono); font-size: 12px; color: var(--g500); }
+    @media print {
+      body { background: white; color: black; padding: 0; font-size: 12pt; }
+      .page { max-width: none; }
+      h1, h2, h3 { page-break-after: avoid; }
+      table.impact, .actions { page-break-inside: avoid; }
+      .tldr { background: #f5f5f5 !important; color: black !important; border: 1px solid #ccc; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="inc-id">INC-2026-0422</div>
+      <h1>주문 결제 게이트웨이 502 — 47분 지속</h1>
+      <div class="meta-row">
+        <span class="pill sev-2">SEV-2</span>
+        <span class="pill resolved">해결됨</span>
+        <span class="pill neutral"><span class="k">지속 시간</span> <span class="v">47분</span></span>
+        <span class="pill neutral"><span class="k">감지 시각</span> <span class="v">2026-04-22 · 14:02 KST</span></span>
+        <span class="pill neutral"><span class="k">담당자</span> <span class="v">김서준</span></span>
+      </div>
+    </header>
+
+    <div class="tldr">
+      <div class="tldr-label">TL;DR</div>
+      <p>
+        결제 게이트웨이 연동 설정 변경으로 <code>pg-gateway</code> 서비스의 커넥션 풀 크기가
+        64에서 8로 줄었습니다. 오후 피크 트래픽에서 커넥션이 소진되어 주문 API가 47분간
+        21%의 502 오류를 반환했습니다. 설정 롤백 및 서비스 재시작으로 복구했으며
+        데이터 손실은 없습니다.
+      </p>
+    </div>
+
+    <section id="timeline">
+      <h2>타임라인</h2>
+      <hr class="rule">
+      <div class="timeline">
+
+        <div class="tl-entry">
+          <span class="tl-dot"></span>
+          <span class="tl-time">14:02</span>
+          <div class="tl-body">설정 변경 <code class="inline">cfg-gateway-v3</code>가 프로덕션에 자동 배포됨.</div>
+        </div>
+
+        <div class="tl-entry">
+          <span class="tl-dot impact"></span>
+          <span class="tl-time">14:07</span>
+          <div class="tl-body">
+            <strong>영향 시작.</strong> 결제 API p95 응답시간이 3초를 초과하고
+            로드 밸런서가 502 반환 시작. 알림 발송: <code class="inline">payment_5xx_rate &gt; 2%</code>.
+          </div>
+          <details class="tl-log">
+            <summary>로그 발췌 보기</summary>
+            <div class="log-block">2026-04-22T14:07:11Z ERROR [pg-gateway] connection pool exhausted: waiting 5000ms
+2026-04-22T14:07:11Z ERROR [order-api] upstream 502: payment gateway timeout
+2026-04-22T14:07:12Z WARN  [pg-gateway] queue depth=48, capacity=8</div>
+          </details>
+        </div>
+
+        <div class="tl-entry">
+          <span class="tl-dot"></span>
+          <span class="tl-time">14:09</span>
+          <div class="tl-body">온콜 담당자 김서준이 알림 확인. 최근 배포 롤백 시도 — 효과 없음.</div>
+        </div>
+
+        <div class="tl-entry">
+          <span class="tl-dot"></span>
+          <span class="tl-time">14:24</span>
+          <div class="tl-body">
+            박지수가 합류해 게이트웨이 대시보드에서 커넥션 대기 포화 상태 발견.
+            설정 변경 이력으로 조사 방향 전환.
+          </div>
+        </div>
+
+        <div class="tl-entry">
+          <span class="tl-dot mitigated"></span>
+          <span class="tl-time">14:36</span>
+          <div class="tl-body">
+            <strong>완화.</strong> <code class="inline">cfg-gateway-v3</code> 롤백 및 게이트웨이 서비스 재시작.
+            3분 내 5xx 비율 0.1% 미만으로 감소.
+          </div>
+        </div>
+
+        <div class="tl-entry">
+          <span class="tl-dot"></span>
+          <span class="tl-time">14:49</span>
+          <div class="tl-body">모니터 5분 정상 유지. 인시던트 종료 선언, 상태 페이지 업데이트.</div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="root-cause">
+      <h2>근본 원인</h2>
+      <hr class="rule">
+      <p>
+        <code class="inline">PR #1204</code>는 게이트웨이별 커넥션 풀 크기를 설정 가능하게 만들었습니다.
+        <code class="inline">pg-gateway</code> 키의 기본값은 전역값(64)을 상속받도록 의도했으나,
+        로컬 테스트 중 8로 하드코딩된 값이 그대로 커밋됐습니다.
+        설정 린터가 타입만 검사하고 범위는 검사하지 않아 CI를 통과했습니다.
+      </p>
+      <p>
+        설정 배포와 코드 배포 파이프라인이 분리되어 있어 온콜이 코드 배포를 먼저
+        롤백하는 데 13분을 소비했습니다.
+      </p>
+      <div class="code-panel">
+        <span class="path">infra/config/gateway.yaml</span>
+        <div class="diff-line ctx">   connection_pool:</div>
+        <div class="diff-line ctx">     global_max: 64</div>
+        <div class="diff-line ctx">     services:</div>
+        <div class="diff-line del">-      pg-gateway: { max_connections: 64 }</div>
+        <div class="diff-line add">+      pg-gateway: { max_connections: 8 }   # 로컬 테스트값, 배포 금지</div>
+        <div class="diff-line ctx">       card-validator: { max_connections: 32 }</div>
+      </div>
+    </section>
+
+    <section id="impact">
+      <h2>영향</h2>
+      <hr class="rule">
+      <table class="impact">
+        <tr><th>502 오류 요청 수</th><td>~38,400건</td></tr>
+        <tr><th>최고 오류율</th><td>21.3%</td></tr>
+        <tr><th>영향 사용자</th><td>약 1,900개 사업자</td></tr>
+        <tr><th>데이터 손실</th><td>없음 — 클라이언트 재시도</td></tr>
+        <tr><th>SLA 위반</th><td>없음 (월간 예산 내)</td></tr>
+        <tr><th>매출 영향</th><td>추정 ~480만 원 (재시도 성공 기준)</td></tr>
+      </table>
+    </section>
+
+    <section id="actions">
+      <h2>조치 항목</h2>
+      <hr class="rule">
+      <div class="actions">
+        <div class="ai-row done">
+          <span class="ai-check"></span>
+          <span class="ai-avatar" title="김서준">KS</span>
+          <span class="ai-desc">cfg-gateway-v3 롤백 및 커넥션 풀 64로 복구</span>
+          <span class="ai-due">4월 22일</span>
+        </div>
+        <div class="ai-row">
+          <span class="ai-check"></span>
+          <span class="ai-avatar" title="박지수">PJ</span>
+          <span class="ai-desc">설정 린터에 <code class="inline">max_connections</code> 범위 검사 추가 (경고: &lt; 32)</span>
+          <span class="ai-due">4월 28일</span>
+        </div>
+        <div class="ai-row">
+          <span class="ai-check"></span>
+          <span class="ai-avatar" title="이현우">LH</span>
+          <span class="ai-desc">온콜 대시보드에 "최근 설정 변경" 섹션 추가 (코드 배포와 동일 화면)</span>
+          <span class="ai-due">5월 5일</span>
+        </div>
+        <div class="ai-row">
+          <span class="ai-check"></span>
+          <span class="ai-avatar" title="최예린">CY</span>
+          <span class="ai-desc">설정 변경 10분 단계적 카나리 배포 정책 도입</span>
+          <span class="ai-due">5월 12일</span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      출처: 온콜 노트 + 알림 이력 · 검토: 김서준, 박지수 &nbsp;&mdash;&nbsp; 생성일: 2026-04-22
+    </footer>
+  </div>
+</body>
+</html>

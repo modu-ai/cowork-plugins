@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>(주)한울페이 — 2026년 1분기 재무제표</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    :root {
+      --ivory:  #FAF9F5;
+      --paper:  #FFFFFF;
+      --slate:  #141413;
+      --clay:   #D97757;
+      --clay-d: #B85C3E;
+      --oat:    #E3DACC;
+      --olive:  #788C5D;
+      --g100: #F0EEE6;
+      --g300: #D1CFC5;
+      --g500: #87867F;
+      --g700: #3D3D3A;
+      --sans:  "Pretendard", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --serif: "Pretendard", ui-serif, Georgia, serif;
+      --mono:  "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      --max-width:    920px;
+      --radius-panel: 12px;
+      --border:       1.5px solid var(--g300);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 56px 24px 120px;
+      background: var(--ivory); color: var(--slate);
+      font-family: var(--sans); font-size: 15px; line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .page { max-width: var(--max-width); margin: 0 auto; }
+    header { margin-bottom: 40px; }
+    .eyebrow {
+      font-family: var(--mono); font-size: 11px; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--g500); margin: 0 0 10px;
+    }
+    h1 {
+      font-family: var(--serif); font-weight: 700; font-size: 32px;
+      letter-spacing: -0.01em; margin: 0 0 12px; color: var(--slate); line-height: 1.2;
+    }
+    .period-badge {
+      display: inline-block; font-family: var(--mono); font-size: 12px;
+      background: var(--g100); border: var(--border); border-radius: 8px;
+      padding: 5px 12px; color: var(--g700);
+    }
+    section { margin-bottom: 52px; }
+    h2 {
+      font-family: var(--serif); font-weight: 700; font-size: 22px;
+      letter-spacing: -0.01em; margin: 0 0 6px; color: var(--slate);
+    }
+    hr.rule { border: none; border-top: 1px solid var(--g300); margin: 0 0 22px; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    @media (max-width: 720px) { .kpi-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 400px) { .kpi-grid { grid-template-columns: 1fr; } }
+    .kpi-card {
+      background: var(--paper); border: var(--border);
+      border-radius: var(--radius-panel); padding: 20px 22px 18px;
+    }
+    .kpi-num {
+      font-family: var(--serif); font-size: 36px; font-weight: 700;
+      line-height: 1; color: var(--slate); margin-bottom: 8px;
+      font-variant-numeric: tabular-nums;
+    }
+    .kpi-label {
+      font-family: var(--sans); font-size: 11px; text-transform: uppercase;
+      letter-spacing: 0.05em; color: var(--g500);
+    }
+    .kpi-delta { font-family: var(--mono); font-size: 11px; margin-top: 6px; font-variant-numeric: tabular-nums; }
+    .kpi-delta.up   { color: var(--olive); }
+    .kpi-delta.down { color: var(--clay-d); }
+    .kpi-delta.flat { color: var(--g500); }
+    table.statement {
+      width: 100%; border-collapse: separate; border-spacing: 0;
+      background: var(--paper); border: var(--border);
+      border-radius: var(--radius-panel); overflow: hidden;
+    }
+    table.statement thead th {
+      text-align: right; font-family: var(--sans); font-size: 11px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.06em; color: var(--g500);
+      background: var(--g100); padding: 12px 16px; border-bottom: 1px solid var(--g300);
+    }
+    table.statement thead th:first-child { text-align: left; min-width: 200px; }
+    table.statement tbody td {
+      padding: 11px 16px; border-bottom: 1px solid var(--g100); font-size: 14px;
+      vertical-align: middle; color: var(--slate); text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    table.statement tbody td:first-child { text-align: left; color: var(--g700); }
+    table.statement tbody tr:last-child td { border-bottom: none; }
+    table.statement tbody tr.row-header td {
+      background: var(--g100); font-weight: 700; font-size: 12px;
+      text-transform: uppercase; letter-spacing: 0.04em; color: var(--g500);
+      padding: 8px 16px; border-top: 1px solid var(--g300);
+    }
+    table.statement tbody tr.row-subtotal td {
+      background: var(--ivory); font-weight: 600; border-top: 1px solid var(--g300);
+    }
+    table.statement tbody tr.row-total td {
+      background: var(--oat); font-weight: 700; font-size: 15px; border-top: 2px solid var(--g300);
+    }
+    .num-neg { color: var(--clay-d); }
+    .num-pos { color: var(--olive); }
+    .chart-panel {
+      background: var(--paper); border: var(--border);
+      border-radius: var(--radius-panel); padding: 24px 28px 18px;
+    }
+    .chart-panel svg { display: block; width: 100%; height: auto; }
+    .chart-caption { font-size: 12px; color: var(--g500); margin-top: 12px; font-family: var(--sans); }
+    .notes { background: var(--oat); border-radius: var(--radius-panel); padding: 20px 22px; }
+    .notes ul { margin: 0; padding: 0 0 0 18px; }
+    .notes li { font-size: 14px; color: var(--g700); padding: 4px 0; }
+    .notes li + li { border-top: 1px solid rgba(20,20,19,0.08); }
+    footer {
+      margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--g300);
+      font-family: var(--mono); font-size: 12px; color: var(--g500);
+    }
+    @media print {
+      body { background: white; color: black; padding: 0; font-size: 11pt; }
+      .page { max-width: none; }
+      a[href]::after { content: " (" attr(href) ")"; font-size: 10pt; color: #555; }
+      h1, h2, h3 { page-break-after: avoid; }
+      table.statement, .chart-panel { page-break-inside: avoid; }
+      .no-print { display: none !important; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <header>
+      <p class="eyebrow">손익계산서 &middot; K-IFRS 제1118호 조기 적용</p>
+      <h1>(주)한울페이</h1>
+      <span class="period-badge">2026년 1월 1일 &ndash; 2026년 3월 31일</span>
+    </header>
+
+    <!-- KPI 카드 -->
+    <section aria-label="핵심 재무 지표">
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-num">148억</div>
+          <div class="kpi-label">매출액</div>
+          <div class="kpi-delta up">+11.4% YoY</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-num">19.8%</div>
+          <div class="kpi-label">영업이익률</div>
+          <div class="kpi-delta up">+2.6pp</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-num">29억</div>
+          <div class="kpi-label">EBITDA [추정]</div>
+          <div class="kpi-delta up">+18.4%</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-num">32.0%</div>
+          <div class="kpi-label">당기순이익 성장</div>
+          <div class="kpi-delta up">2,246백만원</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 손익계산서 테이블 -->
+    <section aria-label="손익계산서">
+      <h2>손익계산서 (K-IFRS 제1118호 5개 범주)</h2>
+      <hr class="rule">
+      <table class="statement">
+        <thead>
+          <tr>
+            <th style="text-align: left;">항목</th>
+            <th>당기 (백만원)</th>
+            <th>전기 (백만원)</th>
+            <th>증감</th>
+            <th>증감률</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row-header"><td colspan="5">영업 범주</td></tr>
+          <tr><td>매출액</td><td>14,823</td><td>13,301</td><td class="num-pos">+1,522</td><td class="num-pos">+11.4%</td></tr>
+          <tr><td>매출원가</td><td>7,411</td><td>7,051</td><td class="num-neg">(360)</td><td class="num-neg">+5.1%</td></tr>
+          <tr class="row-subtotal"><td>매출총이익</td><td>7,412</td><td>6,250</td><td class="num-pos">+1,162</td><td class="num-pos">+18.6%</td></tr>
+          <tr><td>판매비와관리비</td><td>4,479</td><td>3,962</td><td class="num-neg">(517)</td><td class="num-neg">+13.1%</td></tr>
+          <tr class="row-subtotal"><td>영업이익</td><td>2,933</td><td>2,288</td><td class="num-pos">+645</td><td class="num-pos">+28.2%</td></tr>
+          <tr class="row-header"><td colspan="5">투자 범주</td></tr>
+          <tr><td>지분법 이익</td><td>42</td><td>35</td><td class="num-pos">+7</td><td class="num-pos">+20.0%</td></tr>
+          <tr><td>배당금수익</td><td>18</td><td>12</td><td class="num-pos">+6</td><td class="num-pos">+50.0%</td></tr>
+          <tr class="row-header"><td colspan="5">재무 범주</td></tr>
+          <tr><td>이자비용</td><td class="num-neg">(89)</td><td class="num-neg">(103)</td><td class="num-pos">+14</td><td class="num-pos">-13.6%</td></tr>
+          <tr><td>이자수익</td><td>67</td><td>51</td><td class="num-pos">+16</td><td class="num-pos">+31.4%</td></tr>
+          <tr><td>외환차익</td><td>23</td><td class="num-neg">(15)</td><td class="num-pos">+38</td><td class="num-pos">흑전</td></tr>
+          <tr class="row-subtotal"><td>법인세비용차감전순이익</td><td>2,994</td><td>2,268</td><td class="num-pos">+726</td><td class="num-pos">+32.0%</td></tr>
+          <tr><td>법인세비용</td><td class="num-neg">(748)</td><td class="num-neg">(567)</td><td class="num-neg">(181)</td><td class="num-neg">+32.0%</td></tr>
+          <tr class="row-total"><td>당기순이익</td><td>2,246</td><td>1,701</td><td class="num-pos">+545</td><td class="num-pos">+32.0%</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 분산 차트 (수평 막대) -->
+    <section aria-label="전기 대비 분산">
+      <h2>전기 대비 분산</h2>
+      <hr class="rule">
+      <div class="chart-panel">
+        <svg viewBox="0 0 640 260" role="img" aria-label="주요 항목 전기 대비 증감 (백만원)">
+          <!-- 기준선 -->
+          <line x1="200" y1="20" x2="200" y2="240" stroke="#D1CFC5" stroke-width="1.5"/>
+          <!-- 매출액 +1,522 → bar_width=152 -->
+          <text x="190" y="57"  text-anchor="end" font-family="system-ui" font-size="12" fill="#3D3D3A">매출액</text>
+          <rect x="200" y="40"  width="152" height="28" rx="4" fill="#788C5D"/>
+          <text x="358" y="59"  font-family="ui-monospace, monospace" font-size="11.5" fill="#788C5D">+1,522 (+11.4%)</text>
+          <!-- 매출원가 (360) → 음수, bar 왼쪽, width=36 -->
+          <text x="190" y="101" text-anchor="end" font-family="system-ui" font-size="12" fill="#3D3D3A">매출원가</text>
+          <rect x="164" y="84"  width="36" height="28" rx="4" fill="#B85C3E"/>
+          <text x="158" y="103" text-anchor="end" font-family="ui-monospace, monospace" font-size="11.5" fill="#B85C3E">▲360 (비용↑)</text>
+          <!-- 판매관리비 (517) → 음수, width=52 -->
+          <text x="190" y="145" text-anchor="end" font-family="system-ui" font-size="12" fill="#3D3D3A">판관비</text>
+          <rect x="148" y="128" width="52" height="28" rx="4" fill="#B85C3E"/>
+          <text x="142" y="147" text-anchor="end" font-family="ui-monospace, monospace" font-size="11.5" fill="#B85C3E">▲517 (비용↑)</text>
+          <!-- 영업이익 +645 → width=65 -->
+          <text x="190" y="189" text-anchor="end" font-family="system-ui" font-size="12" fill="#3D3D3A">영업이익</text>
+          <rect x="200" y="172" width="65" height="28" rx="4" fill="#788C5D"/>
+          <text x="271" y="191" font-family="ui-monospace, monospace" font-size="11.5" fill="#788C5D">+645 (+28.2%)</text>
+          <!-- 당기순이익 +545 → width=55 -->
+          <text x="190" y="233" text-anchor="end" font-family="system-ui" font-size="12" fill="#3D3D3A">당기순이익</text>
+          <rect x="200" y="216" width="55" height="28" rx="4" fill="#788C5D"/>
+          <text x="261" y="235" font-family="ui-monospace, monospace" font-size="11.5" fill="#788C5D">+545 (+32.0%)</text>
+        </svg>
+        <div class="chart-caption">전기(2025년 1분기) 대비 증감 (백만원) — 초록: 개선, 빨강: 비용 증가</div>
+      </div>
+    </section>
+
+    <!-- 주석 -->
+    <section aria-label="주석">
+      <h2>주석</h2>
+      <hr class="rule">
+      <div class="notes">
+        <ul>
+          <li>K-IFRS 제1118호 조기 적용: 2026년 1분기부터 손익계산서를 5개 범주(영업/투자/재무/법인세/중단영업)로 분류하여 표시함.</li>
+          <li>회계감사 전 잠정치: 당기 재무수치는 외부 감사인의 검토가 완료되지 않은 잠정치이며, 최종 확정 수치와 다를 수 있음.</li>
+          <li>MPM 공시: 조정 EBITDA를 경영진 성과측정치(MPM)로 사용하며, K-IFRS 영업이익과의 조정 내역은 주석 별지 참조.</li>
+          <li><strong>면책 고지</strong>: AI 보조 분석이며 공인 회계사의 전문 자문을 대체하지 않습니다.</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      출처: 재무팀 AI 보조 분석 &nbsp;&mdash;&nbsp; 기준일: 2026-03-31 &nbsp;&mdash;&nbsp; 렌더링: html-report mode=financial
+    </footer>
+
+  </div>
+</body>
+</html>

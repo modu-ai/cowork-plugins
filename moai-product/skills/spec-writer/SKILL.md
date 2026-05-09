@@ -5,7 +5,7 @@ description: >
   "PRD 작성해줘", "기능 명세서 만들어줘", "AI 도입 전략 보고서 써줘", "R&D 과제 신청서 작성해줘"라고 요청할 때 사용하세요.
   프로덕트 매니저 문서, AI/ML 전략, 정부 지원 사업 기획서를 지원합니다.
 user-invocable: true
-version: 2.1.0
+version: 2.2.0
 ---
 
 # 스펙 작성 (Spec Writer)

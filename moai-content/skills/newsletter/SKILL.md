@@ -5,7 +5,7 @@ description: >
   "구독자 늘리는 뉴스레터 기획해줘"처럼 말하면 됩니다. 뉴스레터 기획부터 발행까지,
   구독자 확보 전략, 오픈율 최적화, 콘텐츠 캘린더 연동을 지원합니다.
 user-invocable: true
-version: 2.1.0
+version: 2.2.0
 ---
 
 # 뉴스레터 (Newsletter)

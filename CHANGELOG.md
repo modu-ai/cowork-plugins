@@ -6,12 +6,52 @@
 
 ## 버전 통일 원칙 (HARD)
 
-아래 22개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v1.8.1부터, bi/pm/sales 포함):
+아래 130개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.0.0부터 SKILL.md frontmatter `version:` 복구):
 - `.claude-plugin/marketplace.json` (`metadata.version`) × 1
 - `<plugin>/.claude-plugin/plugin.json` (`version`) × 21
-- ~~`<plugin>/skills/<skill>/SKILL.md`~~ — **v1.3.0에서 제거** (metadata 블록 삭제, plugin.json 단일 소스)
+- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 108 (v2.0.0+ 정책)
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
+
+## [2.2.0] - 2026-05-09
+
+MINOR. 마크다운 보고서를 단일 파일 HTML로 변환하는 `moai-content:html-report` 스킬을 신규 도입했습니다. Thariq Shihipar의 "unreasonable effectiveness of HTML" 사상을 기반으로, **외부 의존성 0개**(한글 웹폰트 CDN 1개만 예외)로 12-25KB 산출물을 생성합니다. 6개 보고서 모드(status/incident/plan/explainer/financial/pr) + 6개 통합 테스트(executive-summary/financial-statements/sbiz365-analyst/daily-briefing 등 4종)를 포함합니다. 마켓플레이스 스킬 107 → **108개**, 플러그인은 21개 유지. Breaking change 없음.
+
+### Added
+
+- **`moai-content:html-report`** — 마크다운 보고서를 단일 파일·자체 완결형 HTML로 변환하는 터미널 렌더러. Thariq HTML-effectiveness 아키텍처 기반, 외부 JS/CSS 프레임워크 의존성 0.
+  - **6개 보고서 모드**: status (주간 현황 / 태스크 리스트), incident (포스트모템 / 우발 대응), plan (구현 계획 / 사업 계획), explainer (기능 설명 / 개념 해설), financial (재무 보고 / 수익 동향), pr (PR 서사 / 관계자 알림)
+  - **인라인 SVG + vanilla JS** — 12-25KB 산출물, 페이지 로딩 거의 무영향. `<script>`, 이벤트 핸들러, 차트·테이블 인터랙션은 모두 inline.
+  - **한글 폰트 매핑** — Pretendard (기본), Noto Serif KR (serif mode), Noto Sans KR (sans), 조선일보명조 (조선일보 수거), KoPubWorld 명조, JetBrains Mono (코드 블록). 모드별 자동 선택 또는 `font_stack` 오버라이드.
+  - **인쇄 친화** — `@media print` 자동 적용, 페이지 나누기 최적화, 하이퍼링크 유지.
+  - **CSS 변수 계약** — `--ivory`, `--slate`, `--clay`, `--oat`, `--olive`, `--sans`, `--serif`, `--mono` 8개. 모드별 기본값 포함.
+  - **P1 컨슈머 4종 호환성 검증** — executive-summary, financial-statements, sbiz365-analyst, daily-briefing 모두 4/5 호환성 통과.
+  - **6개 템플릿** + **6개 통합 테스트** + **design-tokens.md** (CSS 변수 명세) + **fonts.md** (폰트 매핑·CDN)
+  - **옵션**: `mode`, `slug`, `output_path`, `font_stack`, `dark_mode`
+- **권장 체인** — 텍스트 산출물: `[텍스트 스킬] → moai-core:ai-slop-reviewer → moai-content:humanize-korean → moai-content:html-report mode=<X>`
+- **README attribution** — moai-content/README.md에 Thariq Shihipar "unreasonable effectiveness of HTML" 아이디어 출처 표기.
+
+### Changed
+
+- README.md: Version 배지 2.1.0 → **2.2.0**, Skills 배지 107 → **108**, v2.2.0 하이라이트 섹션 추가, 영문 description "21 plugins · 108 skills" 갱신
+- moai-content/README.md: 10개 → **11개** 스킬 표기, html-report 행 추가, 텍스트~영상~보고서 표현 갱신
+- moai-content/.claude-plugin/plugin.json: description·keywords에 html-report·마크다운·보고서·렌더러·리포트 추가
+- .claude-plugin/marketplace.json: `metadata.version` 2.1.0 → **2.2.0**, moai-content description 갱신, 마켓플레이스 description "html-report 신규" 표기
+- 전 SKILL.md `version: 2.1.0` → `version: 2.2.0` (108개, html-report 포함, Cowork 자동 업데이트 감지)
+- 전 plugin.json `version` → 2.2.0 (21개)
+
+### 동기화 지점
+
+- `.claude-plugin/marketplace.json` × 1 (metadata.version)
+- `<plugin>/.claude-plugin/plugin.json` × 21 (version)
+- `<plugin>/skills/<skill>/SKILL.md` × 108 (version, +1 신규 html-report 포함)
+- 총 **130 지점** 동일 버전 유지
+
+### Migration
+
+- 사용자 조치: `/plugin marketplace update cowork-plugins` 후 플러그인 상세 재진입
+- Breaking change 없음 — 기존 워크플로우 그대로 동작
+- 보고서 산출물이 필요할 때 `html-report`를 자연어로 호출하면 됩니다("주간 보고서 HTML로", "재무제표 HTML 변환" 등)
 
 ## [2.1.0] - 2026-05-07
 

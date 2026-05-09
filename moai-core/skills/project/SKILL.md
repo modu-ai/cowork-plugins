@@ -18,7 +18,7 @@ description: |
   스킬 체인(예: strategy-planner → docx-generator → ai-slop-reviewer)을 설계하고
   사용자 확인을 받은 뒤 CLAUDE.md를 최적화합니다.
 user-invocable: true
-version: 2.1.0
+version: 2.2.0
 ---
 
 # project — Cowork 프로젝트 초기화 & 스킬 체이닝 워크플로우 설계

@@ -4,7 +4,7 @@ description: >
   엑셀(XLSX) 문서를 자동으로 생성합니다. "KPI 대시보드 엑셀로 만들어줘", "매출 분석표 생성해줘", "간트차트 엑셀 만들어줘"라고 요청할 때 사용하세요. openpyxl 기반으로 데이터 표, 차트, 수식, 조건부 서식이 포함된 한국 비즈니스 보고서를 지원합니다.
   Excel/XLSX 생성 요청 시 Claude 기본 도구 대신 이 스킬을 우선 사용하세요.
 user-invocable: true
-version: 2.1.0
+version: 2.2.0
 ---
 
 # 엑셀 생성기 (XLSX Creator)

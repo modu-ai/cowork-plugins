@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>고객사 댓글 스레드 v1 — 실행 계획</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    /* ============================================================
+       CSS 변수 계약 (design-tokens.md 단일 진실 준수)
+       html-report v2.2.0 — plan 모드 샘플
+    ============================================================ */
+    :root {
+      --ivory:  #FAF9F5;
+      --paper:  #FFFFFF;
+      --slate:  #141413;
+      --clay:   #D97757;
+      --clay-d: #B85C3E;
+      --oat:    #E3DACC;
+      --olive:  #788C5D;
+      --g100: #F0EEE6;
+      --g150: #F0EEE6;
+      --g300: #D1CFC5;
+      --g500: #87867F;
+      --g700: #3D3D3A;
+      --sans:  "Pretendard", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --serif: "Noto Serif KR", ui-serif, Georgia, serif;
+      --mono:  "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      --max-width:    1100px;
+      --radius-panel: 12px;
+      --radius-row:   8px;
+      --border:       1.5px solid var(--g300);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--ivory);
+      color: var(--slate);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+    a { color: var(--clay); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code, pre { font-family: var(--mono); }
+
+    /* ============================================================
+       레이아웃
+    ============================================================ */
+    .page-wrap {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 32px 24px 80px;
+    }
+
+    /* 헤더 */
+    .plan-header {
+      border-bottom: 2px solid var(--slate);
+      padding-bottom: 20px;
+      margin-bottom: 32px;
+    }
+    .plan-header .eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--g500);
+      margin-bottom: 8px;
+    }
+    .plan-header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .plan-header .subtitle {
+      font-family: var(--serif);
+      font-size: 15px;
+      color: var(--g700);
+    }
+    .plan-header .meta-row {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .plan-header .meta-item {
+      font-size: 13px;
+      color: var(--g500);
+    }
+    .plan-header .meta-item strong {
+      color: var(--slate);
+    }
+
+    /* 요약 스트립 */
+    .summary-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: var(--g300);
+      border-radius: var(--radius-panel);
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+    .summary-strip .kpi-cell {
+      background: var(--paper);
+      padding: 20px 18px;
+      text-align: center;
+    }
+    .summary-strip .kpi-cell:first-child { border-radius: var(--radius-panel) 0 0 var(--radius-panel); }
+    .summary-strip .kpi-cell:last-child  { border-radius: 0 var(--radius-panel) var(--radius-panel) 0; }
+    .kpi-cell .kpi-label {
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--g500);
+      margin-bottom: 6px;
+    }
+    .kpi-cell .kpi-value {
+      font-size: 26px;
+      font-weight: 700;
+      font-family: var(--mono);
+      color: var(--slate);
+      line-height: 1;
+    }
+    .kpi-cell .kpi-sub {
+      font-size: 12px;
+      color: var(--g500);
+      margin-top: 4px;
+    }
+    .kpi-value.accent { color: var(--clay); }
+    .kpi-value.green  { color: var(--olive); }
+
+    /* 섹션 제목 */
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--g500);
+      border-bottom: var(--border);
+      padding-bottom: 8px;
+      margin: 40px 0 24px;
+    }
+
+    /* 마일스톤 타임라인 */
+    .milestone-tl {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .ms-row {
+      display: grid;
+      grid-template-columns: 130px 28px 1fr;
+      gap: 0 12px;
+      align-items: stretch;
+      min-height: 80px;
+    }
+    .ms-date {
+      display: flex;
+      align-items: flex-start;
+      padding-top: 18px;
+      font-size: 12px;
+      font-family: var(--mono);
+      color: var(--g500);
+      text-align: right;
+      justify-content: flex-end;
+      line-height: 1.3;
+    }
+    .ms-spine {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 2.5px solid var(--g300);
+      background: var(--ivory);
+      margin-top: 20px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .dot.done {
+      background: var(--olive);
+      border-color: var(--olive);
+    }
+    .dot.active {
+      background: var(--clay);
+      border-color: var(--clay);
+      box-shadow: 0 0 0 4px rgba(217,119,87,.18);
+    }
+    .spine-line {
+      width: 2px;
+      flex: 1;
+      background: var(--g300);
+      margin-top: 2px;
+    }
+    .ms-row:last-child .spine-line { display: none; }
+    .ms-card {
+      background: var(--paper);
+      border: var(--border);
+      border-radius: var(--radius-panel);
+      padding: 16px 20px;
+      margin: 8px 0 12px;
+    }
+    .ms-card .ms-title {
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+    .ms-card .ms-desc {
+      font-size: 13px;
+      color: var(--g700);
+      margin-bottom: 10px;
+    }
+    .ms-card .tag-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .tag {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--g100);
+      color: var(--g700);
+    }
+    .tag.fe  { background: #EAF2FF; color: #1D5FA6; }
+    .tag.be  { background: #EDFAED; color: #267D34; }
+    .tag.qa  { background: #FFF5E0; color: #8A5700; }
+    .tag.inf { background: #F3EDFF; color: #5B3DAD; }
+
+    .badge-status {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+    .badge-status.done   { background: rgba(120,140,93,.15); color: var(--olive); }
+    .badge-status.active { background: rgba(217,119,87,.15); color: var(--clay-d); }
+    .badge-status.todo   { background: var(--g100); color: var(--g500); }
+
+    /* 슬라이스 테이블 */
+    .slice-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 13px;
+    }
+    .slice-table th {
+      background: var(--g100);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--g500);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .slice-table th:first-child { border-radius: var(--radius-row) 0 0 var(--radius-row); }
+    .slice-table th:last-child  { border-radius: 0 var(--radius-row) var(--radius-row) 0; }
+    .slice-table td {
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--g100);
+      vertical-align: top;
+    }
+    .slice-table tr:last-child td { border-bottom: none; }
+    .slice-table td.slice-id {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--g500);
+    }
+    .slice-table td.slice-title { font-weight: 600; }
+    .priority { font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 4px; }
+    .priority.p1 { background: rgba(184,92,62,.12); color: var(--clay-d); }
+    .priority.p2 { background: rgba(217,119,87,.12); color: var(--clay); }
+    .priority.p3 { background: rgba(120,140,93,.12); color: var(--olive); }
+
+    /* 다이어그램 */
+    .diagram-wrap {
+      background: var(--paper);
+      border: var(--border);
+      border-radius: var(--radius-panel);
+      padding: 24px;
+      overflow-x: auto;
+    }
+    .diagram-wrap svg { display: block; margin: 0 auto; }
+
+    /* 리스크 */
+    .risk-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .risk-card {
+      background: var(--paper);
+      border: var(--border);
+      border-radius: var(--radius-panel);
+      padding: 16px 18px;
+    }
+    .risk-card .risk-level {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .sev.high { color: var(--clay-d); }
+    .sev.med  { color: var(--clay); }
+    .sev.low  { color: var(--olive); }
+    .risk-card .risk-title { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+    .risk-card .risk-mitigation { font-size: 13px; color: var(--g700); }
+
+    /* 성공 지표 */
+    .metrics-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .metric-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: var(--paper);
+      border: var(--border);
+      border-radius: var(--radius-row);
+      padding: 14px 18px;
+    }
+    .metric-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--olive);
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+    .metric-dot.warn { background: var(--clay); }
+    .metric-item .met-label { font-weight: 600; font-size: 14px; }
+    .metric-item .met-value {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--g500);
+    }
+
+    /* 풋터 */
+    .plan-footer {
+      border-top: var(--border);
+      margin-top: 60px;
+      padding-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--g500);
+    }
+
+    /* 인쇄 */
+    @media print {
+      body { background: #fff; }
+      .page-wrap { max-width: 100%; padding: 0; }
+      .summary-strip, .ms-card, .diagram-wrap, .risk-card, .metric-item {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- 헤더 -->
+  <header class="plan-header">
+    <p class="eyebrow">실행 계획 · PLAN-2026-0020</p>
+    <h1>고객사 댓글 스레드 v1</h1>
+    <p class="subtitle">2주 출시 계획 — 4슬라이스 구조</p>
+    <div class="meta-row">
+      <span class="meta-item"><strong>PM</strong> 이수아</span>
+      <span class="meta-item"><strong>기술 리드</strong> 박도현</span>
+      <span class="meta-item"><strong>스프린트</strong> 2026-05-12 ~ 2026-05-23</span>
+      <span class="meta-item"><strong>팀</strong> 커뮤니티 플랫폼</span>
+    </div>
+  </header>
+
+  <!-- 요약 스트립 -->
+  <div class="summary-strip">
+    <div class="kpi-cell">
+      <p class="kpi-label">총 슬라이스</p>
+      <p class="kpi-value">4</p>
+      <p class="kpi-sub">기능 단위</p>
+    </div>
+    <div class="kpi-cell">
+      <p class="kpi-label">목표 출시일</p>
+      <p class="kpi-value accent">D+14</p>
+      <p class="kpi-sub">2026-05-23</p>
+    </div>
+    <div class="kpi-cell">
+      <p class="kpi-label">참여 인원</p>
+      <p class="kpi-value">6</p>
+      <p class="kpi-sub">FE 2 · BE 2 · QA 1 · PM 1</p>
+    </div>
+    <div class="kpi-cell">
+      <p class="kpi-label">현재 진행률</p>
+      <p class="kpi-value green">25%</p>
+      <p class="kpi-sub">슬라이스 1 완료</p>
+    </div>
+  </div>
+
+  <!-- 마일스톤 타임라인 -->
+  <h2 class="section-title">마일스톤 타임라인</h2>
+  <div class="milestone-tl">
+
+    <!-- M1 -->
+    <div class="ms-row">
+      <div class="ms-date">05-12<br>월</div>
+      <div class="ms-spine">
+        <div class="dot done"></div>
+        <div class="spine-line"></div>
+      </div>
+      <div class="ms-card">
+        <span class="badge-status done">완료</span>
+        <p class="ms-title">M1 — 댓글 데이터 모델 &amp; API</p>
+        <p class="ms-desc">댓글 엔티티 설계, REST API 3종 구현 (목록·작성·삭제), 데이터베이스 마이그레이션</p>
+        <div class="tag-row">
+          <span class="tag be">백엔드</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">REST</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- M2 -->
+    <div class="ms-row">
+      <div class="ms-date">05-14<br>수</div>
+      <div class="ms-spine">
+        <div class="dot active"></div>
+        <div class="spine-line"></div>
+      </div>
+      <div class="ms-card">
+        <span class="badge-status active">진행 중</span>
+        <p class="ms-title">M2 — 댓글 UI 컴포넌트</p>
+        <p class="ms-desc">CommentList / CommentInput / CommentItem React 컴포넌트, 낙관적 업데이트, 무한 스크롤</p>
+        <div class="tag-row">
+          <span class="tag fe">프론트엔드</span>
+          <span class="tag">React 18</span>
+          <span class="tag">Zustand</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- M3 -->
+    <div class="ms-row">
+      <div class="ms-date">05-19<br>월</div>
+      <div class="ms-spine">
+        <div class="dot"></div>
+        <div class="spine-line"></div>
+      </div>
+      <div class="ms-card">
+        <span class="badge-status todo">예정</span>
+        <p class="ms-title">M3 — 실시간 알림 &amp; 멘션</p>
+        <p class="ms-desc">WebSocket 실시간 새 댓글 알림, @멘션 자동완성, 이메일 다이제스트 큐</p>
+        <div class="tag-row">
+          <span class="tag be">백엔드</span>
+          <span class="tag fe">프론트엔드</span>
+          <span class="tag inf">인프라</span>
+          <span class="tag">WebSocket</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- M4 -->
+    <div class="ms-row">
+      <div class="ms-date">05-21<br>수</div>
+      <div class="ms-spine">
+        <div class="dot"></div>
+        <div class="spine-line"></div>
+      </div>
+      <div class="ms-card">
+        <span class="badge-status todo">예정</span>
+        <p class="ms-title">M4 — 모더레이션 &amp; QA</p>
+        <p class="ms-desc">신고 플래그, 관리자 블라인드 처리, E2E 테스트 스위트, 접근성(WCAG AA) 검증</p>
+        <div class="tag-row">
+          <span class="tag be">백엔드</span>
+          <span class="tag qa">QA</span>
+          <span class="tag">Playwright</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- M5 -->
+    <div class="ms-row">
+      <div class="ms-date">05-23<br>금</div>
+      <div class="ms-spine">
+        <div class="dot"></div>
+      </div>
+      <div class="ms-card">
+        <span class="badge-status todo">예정</span>
+        <p class="ms-title">M5 — 프로덕션 배포 &amp; 모니터링</p>
+        <p class="ms-desc">블루/그린 배포, 피처 플래그 10% 롤아웃, Datadog 대시보드 설정</p>
+        <div class="tag-row">
+          <span class="tag inf">인프라</span>
+          <span class="tag">K8s</span>
+          <span class="tag">Datadog</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 슬라이스 목록 -->
+  <h2 class="section-title">슬라이스 목록</h2>
+  <table class="slice-table">
+    <thead>
+      <tr>
+        <th>슬라이스 ID</th>
+        <th>기능</th>
+        <th>담당자</th>
+        <th>우선순위</th>
+        <th>포인트</th>
+        <th>상태</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="slice-id">SL-001</td>
+        <td class="slice-title">댓글 CRUD API</td>
+        <td>김진호 (BE)</td>
+        <td><span class="priority p1">P1</span></td>
+        <td>5</td>
+        <td><span class="badge-status done">완료</span></td>
+      </tr>
+      <tr>
+        <td class="slice-id">SL-002</td>
+        <td class="slice-title">댓글 UI 컴포넌트</td>
+        <td>오유진 (FE)</td>
+        <td><span class="priority p1">P1</span></td>
+        <td>8</td>
+        <td><span class="badge-status active">진행 중</span></td>
+      </tr>
+      <tr>
+        <td class="slice-id">SL-003</td>
+        <td class="slice-title">실시간 알림</td>
+        <td>김진호 · 최민준 (FE)</td>
+        <td><span class="priority p2">P2</span></td>
+        <td>13</td>
+        <td><span class="badge-status todo">예정</span></td>
+      </tr>
+      <tr>
+        <td class="slice-id">SL-004</td>
+        <td class="slice-title">모더레이션 패널</td>
+        <td>박도현 (BE) · 이수아 (QA)</td>
+        <td><span class="priority p3">P3</span></td>
+        <td>8</td>
+        <td><span class="badge-status todo">예정</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 데이터 플로우 다이어그램 -->
+  <h2 class="section-title">데이터 플로우</h2>
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 720 200" width="720" height="200" role="img" aria-label="댓글 데이터 플로우 다이어그램">
+      <defs>
+        <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto">
+          <path d="M0,0 L0,7 L8,3.5 Z" fill="#87867F"/>
+        </marker>
+      </defs>
+      <!-- 박스 스타일: rx=8 -->
+      <!-- 브라우저 -->
+      <rect x="20" y="70" width="120" height="60" rx="8" fill="#FFFFFF" stroke="#D1CFC5" stroke-width="1.5"/>
+      <text x="80" y="97" text-anchor="middle" font-family="Pretendard, sans-serif" font-size="12" font-weight="700" fill="#141413">브라우저</text>
+      <text x="80" y="114" text-anchor="middle" font-family="Pretendard, sans-serif" font-size="11" fill="#87867F">React + Zustand</text>
+      <!-- 화살표 → API GW -->
+      <line x1="140" y1="100" x2="196" y2="100" stroke="#87867F" stroke-width="1.5" marker-end="url(#arrow)"/>
+      <text x="168" y="94" text-anchor="middle" font-family="Pretendard, sans-serif" font-size="10" fill="#87867F">REST</text>
+      <!-- API 게이트웨이 -->
+      <rect x="200" y="70" width="130" height="60" rx="8" fill="#FFFFFF" stroke="#D1CFC5" stroke-width="1.5"/>
+      <text x="265" y="97" text-anchor="middle" font-family="Pretendard, sans-serif" font-size="12" font-weight="700" fill="#141413">API 게이트웨이</text>
+      <text x="265" y="114" text-anchor="middle" font-family="Pretendard, sans-serif" font-size="11" fill="#87867F">인증 · 속도 제한</text>
+      <!-- 화살표 → 댓글 서비스 -->
+      <line x1="330" y1="100" x2="386" y2="100" stroke="#87867F" stroke-width="1.5" marker-end="url(#arrow)"/>
+      <!-- 댓글 서비스 -->
+      <rect x="390" y="70" width="130" height="60" rx="8" fill="#EDFAED" stroke="#788C5D" stroke-width="1.5"/>
+      <text x="455" y="97" text-anchor="middle" font-family="Pretendard, sans-serif" font-size="12" font-weight="700" fill="#267D34">댓글 서비스</text>
+      <text x="455" y="114" text-anchor="middle" font-family="Pretendard, sans-serif" font-size="11" fill="#267D34">Spring Boot</text>
+      <!-- 화살표 → DB -->
+      <line x1="520" y1="100" x2="576" y2="100" stroke="#87867F" stroke-width="1.5" marker-end="url(#arrow)"/>
+      <!-- DB -->
+      <rect x="580" y="70" width="120" height="60" rx="8" fill="#FFFFFF" stroke="#D1CFC5" stroke-width="1.5"/>
+      <text x="640" y="97" text-anchor="middle" font-family="Pretendard, sans-serif" font-size="12" font-weight="700" fill="#141413">PostgreSQL</text>
+      <text x="640" y="114" text-anchor="middle" font-family="Pretendard, sans-serif" font-size="11" fill="#87867F">RDS r6g.large</text>
+      <!-- WebSocket 표시 -->
+      <path d="M80 130 Q80 170 265 170 Q390 170 455 130" fill="none" stroke="#D97757" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+      <text x="265" y="186" text-anchor="middle" font-family="Pretendard, sans-serif" font-size="10" fill="#D97757">WebSocket (M3)</text>
+    </svg>
+  </div>
+
+  <!-- 리스크 -->
+  <h2 class="section-title">리스크 &amp; 대응 방안</h2>
+  <div class="risk-grid">
+    <div class="risk-card">
+      <p class="risk-level"><span class="sev high">● 높음</span></p>
+      <p class="risk-title">WebSocket 스케일 아웃</p>
+      <p class="risk-mitigation">Redis Pub/Sub 기반 메시지 브로커 도입, 수평 확장 검증 완료 후 M3 착수</p>
+    </div>
+    <div class="risk-card">
+      <p class="risk-level"><span class="sev med">● 중간</span></p>
+      <p class="risk-title">스팸·어뷰징 급증</p>
+      <p class="risk-mitigation">신고 임계값 자동 블라인드 (3회), 관리자 대시보드 실시간 모니터링</p>
+    </div>
+    <div class="risk-card">
+      <p class="risk-level"><span class="sev low">● 낮음</span></p>
+      <p class="risk-title">모바일 키보드 레이아웃 시프트</p>
+      <p class="risk-mitigation">iOS SafariArea 패딩 처리, 디바이스 테스트 매트릭스 12종 확보</p>
+    </div>
+  </div>
+
+  <!-- 성공 지표 -->
+  <h2 class="section-title">성공 지표</h2>
+  <div class="metrics-list">
+    <div class="metric-item">
+      <div class="metric-dot"></div>
+      <div>
+        <p class="met-label">초기 로드 성능</p>
+        <p class="met-value">댓글 목록 LCP ≤ 800 ms (p95, 3G 기준)</p>
+      </div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-dot"></div>
+      <div>
+        <p class="met-label">실시간 전달 지연</p>
+        <p class="met-value">새 댓글 WebSocket 수신 ≤ 300 ms (p99)</p>
+      </div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-dot warn"></div>
+      <div>
+        <p class="met-label">신고 처리 SLA</p>
+        <p class="met-value">접수 후 24시간 내 관리자 검토율 ≥ 95%</p>
+      </div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-dot"></div>
+      <div>
+        <p class="met-label">E2E 테스트 커버리지</p>
+        <p class="met-value">핵심 플로우 (작성·삭제·멘션·신고) 100% Playwright 커버</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 풋터 -->
+  <footer class="plan-footer">
+    <span>PLAN-2026-0020 · 커뮤니티 플랫폼 팀</span>
+    <span>생성: 2026-05-09 · html-report v2.2.0</span>
+  </footer>
+
+</div>
+</body>
+</html>

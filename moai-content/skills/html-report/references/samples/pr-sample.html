@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PR #312 — 실시간 알림 채널 통합</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    /* ============================================================
+       CSS 변수 계약 (design-tokens.md 단일 진실 준수)
+       html-report v2.2.0 — pr 모드 샘플
+    ============================================================ */
+    :root {
+      --ivory:  #FAF9F5;
+      --paper:  #FFFFFF;
+      --slate:  #141413;
+      --clay:   #D97757;
+      --clay-d: #B85C3E;
+      --oat:    #E3DACC;
+      --olive:  #788C5D;
+      --g100: #F0EEE6;
+      --g300: #D1CFC5;
+      --g500: #87867F;
+      --g700: #3D3D3A;
+      --sans:  "Pretendard", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --serif: "Pretendard", ui-serif, Georgia, serif;
+      --mono:  "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      --max-width:    1040px;
+      --radius-panel: 12px;
+      --radius-row:   8px;
+      --border:       1.5px solid var(--g300);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--ivory);
+      color: var(--slate);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+    code, pre { font-family: var(--mono); }
+    a { color: var(--clay); text-decoration: none; }
+
+    /* ============================================================
+       레이아웃 — 2단: 메인 + 스티키 TOC
+    ============================================================ */
+    .page-wrap {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 40px;
+      padding: 36px 24px 80px;
+    }
+
+    /* TOC */
+    .pr-toc {
+      position: sticky;
+      top: 32px;
+      height: fit-content;
+    }
+    .pr-toc .toc-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--g500);
+      margin-bottom: 10px;
+    }
+    .pr-toc ul { list-style: none; }
+    .pr-toc li + li { margin-top: 4px; }
+    .pr-toc a {
+      font-size: 13px;
+      color: var(--g700);
+      display: block;
+      padding: 3px 0 3px 10px;
+      border-left: 2px solid transparent;
+      transition: border-color .15s, color .15s;
+    }
+    .pr-toc a:hover { color: var(--clay); border-left-color: var(--clay); }
+    .pr-toc .stat-box {
+      background: var(--paper);
+      border: var(--border);
+      border-radius: var(--radius-row);
+      padding: 12px 14px;
+      margin-top: 20px;
+      font-size: 12px;
+    }
+    .pr-toc .stat-box .stat-title {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--g500);
+      margin-bottom: 8px;
+    }
+    .pr-toc .stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 3px 0;
+    }
+    .pr-toc .stat-row + .stat-row { border-top: 1px solid var(--g100); }
+    .diff-add { color: var(--olive); font-weight: 700; }
+    .diff-del { color: var(--clay-d); font-weight: 700; }
+
+    /* 헤더 */
+    .pr-header {
+      border-bottom: 2px solid var(--slate);
+      padding-bottom: 20px;
+      margin-bottom: 28px;
+    }
+    .pr-header .eyebrow {
+      font-size: 11px;
+      font-family: var(--mono);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--g500);
+      margin-bottom: 6px;
+    }
+    .pr-header h1 {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+    .pr-meta-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: var(--g500);
+    }
+    .pr-meta-row strong { color: var(--slate); }
+    .pr-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+    .pr-badge.open   { background: rgba(120,140,93,.15); color: var(--olive); }
+    .pr-badge.merged { background: #EDE0FF; color: #5B3DAD; }
+
+    /* 섹션 제목 */
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--g500);
+      border-bottom: var(--border);
+      padding-bottom: 8px;
+      margin: 36px 0 18px;
+    }
+
+    /* TL;DR */
+    .tldr {
+      background: var(--paper);
+      border-left: 4px solid var(--clay);
+      border-radius: 0 var(--radius-row) var(--radius-row) 0;
+      padding: 16px 20px;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .tldr .tldr-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-bottom: 6px;
+    }
+
+    /* Before / After 2-col 카드 */
+    .ba-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .panel {
+      background: var(--paper);
+      border: var(--border);
+      border-radius: var(--radius-panel);
+      padding: 18px 20px;
+    }
+    .panel.after { border-top: 3px solid var(--olive); }
+    .panel .panel-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--g500);
+      margin-bottom: 10px;
+    }
+    .panel.after .panel-label { color: var(--olive); }
+    .panel ul { padding-left: 18px; font-size: 14px; }
+    .panel li + li { margin-top: 6px; }
+
+    /* 파일 투어 — <details class="file"> */
+    .file-list { display: flex; flex-direction: column; gap: 8px; }
+    details.file {
+      background: var(--paper);
+      border: var(--border);
+      border-radius: var(--radius-row);
+      overflow: hidden;
+    }
+    details.file > summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      user-select: none;
+    }
+    details.file > summary::-webkit-details-marker { display: none; }
+    .chev {
+      font-size: 12px;
+      color: var(--g500);
+      transition: transform .2s;
+      flex-shrink: 0;
+    }
+    details.file[open] > summary .chev { transform: rotate(90deg); }
+    details.file > summary .file-path {
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+    .badge {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      letter-spacing: .04em;
+    }
+    .badge.new { background: rgba(120,140,93,.15); color: var(--olive); }
+    .badge.mod { background: var(--oat); color: var(--g700); }
+    .badge.del { background: rgba(184,92,62,.12); color: var(--clay-d); }
+    details.file > summary .diff-nums {
+      margin-left: auto;
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+    .file-body {
+      padding: 0 16px 14px;
+      border-top: var(--border);
+      font-size: 13px;
+      color: var(--g700);
+    }
+    .file-body pre {
+      background: var(--slate);
+      color: #E8E6E0;
+      border-radius: var(--radius-row);
+      padding: 12px 14px;
+      margin-top: 10px;
+      overflow-x: auto;
+      font-size: 12px;
+    }
+    .file-body .line.add { color: #9ECB7D; }
+    .file-body .line.del { color: #F08080; }
+    .file-body .line.ctx { color: #A8A398; }
+
+    /* 핵심 포인트 */
+    .focus-list { display: flex; flex-direction: column; gap: 14px; }
+    .focus-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: var(--paper);
+      border: var(--border);
+      border-radius: var(--radius-row);
+      padding: 14px 18px;
+    }
+    .focus-item .n {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--clay);
+      color: var(--paper);
+      font-weight: 700;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+    .focus-item .focus-title { font-weight: 700; margin-bottom: 4px; }
+    .focus-item .focus-body { font-size: 13px; color: var(--g700); }
+
+    /* 테스트 계획 */
+    .test-list { display: flex; flex-direction: column; gap: 8px; }
+    .test {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: var(--paper);
+      border: var(--border);
+      border-radius: var(--radius-row);
+      padding: 11px 16px;
+      font-size: 14px;
+    }
+    .check {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 2px solid var(--g300);
+      flex-shrink: 0;
+      margin-top: 2px;
+      position: relative;
+    }
+    .test.done .check {
+      background: var(--olive);
+      border-color: var(--olive);
+    }
+    .test.done .check::after {
+      content: "";
+      position: absolute;
+      left: 3px;
+      top: 1px;
+      width: 7px;
+      height: 4px;
+      border-left: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      transform: rotate(-45deg);
+    }
+    .test-label { flex: 1; }
+    .test-tag {
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: var(--g100);
+      color: var(--g500);
+      white-space: nowrap;
+    }
+
+    /* 롤아웃 단계 -->
+    .rollout-strip {
+      display: flex;
+      gap: 2px;
+      background: var(--g300);
+      border-radius: var(--radius-panel);
+      overflow: hidden;
+    }
+    .rollout-strip .step {
+      flex: 1;
+      background: var(--paper);
+      padding: 14px 16px;
+    }
+    .rollout-strip .step:first-child { border-radius: var(--radius-panel) 0 0 var(--radius-panel); }
+    .rollout-strip .step:last-child  { border-radius: 0 var(--radius-panel) var(--radius-panel) 0; }
+    .step .step-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--g500);
+      margin-bottom: 4px;
+    }
+    .step .step-value { font-weight: 700; font-size: 15px; }
+    .step .step-value.active { color: var(--clay); }
+    .step .step-value.done   { color: var(--olive); }
+    .step .step-sub { font-size: 12px; color: var(--g500); margin-top: 2px; }
+
+    /* 풋터 */
+    .pr-footer {
+      border-top: var(--border);
+      margin-top: 60px;
+      padding-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--g500);
+    }
+
+    /* 인쇄 */
+    @media print {
+      body { background: #fff; }
+      .pr-toc { display: none; }
+      .page-wrap { grid-template-columns: 1fr; padding: 0; }
+      .ba-grid { grid-template-columns: 1fr; }
+      details.file, .focus-item, .test { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- 메인 컬럼 -->
+  <main>
+
+    <!-- PR 헤더 -->
+    <header class="pr-header" id="overview">
+      <p class="eyebrow">Pull Request · #312</p>
+      <h1>실시간 알림 채널 통합</h1>
+      <div class="pr-meta-row">
+        <span class="pr-badge merged">머지됨</span>
+        <span><strong>작성자</strong> 최민준</span>
+        <span><strong>리뷰어</strong> 박도현 · 이수아</span>
+        <span><strong>브랜치</strong> <code>feat/realtime-notification</code> → <code>main</code></span>
+        <span><strong>파일</strong> 14개 변경</span>
+        <span class="diff-add">+847</span>
+        <span class="diff-del">−212</span>
+      </div>
+    </header>
+
+    <!-- TL;DR -->
+    <div class="tldr" id="tldr">
+      <p class="tldr-label">TL;DR</p>
+      <p>댓글 스레드 v1의 마지막 조각인 <strong>실시간 WebSocket 알림</strong>을 구현합니다.
+      서버 측 Redis Pub/Sub 브로커를 도입해 수평 확장을 보장하고, 클라이언트는 커넥션 단절 시 지수 백오프로 자동 재연결합니다.
+      기존 이메일 다이제스트 큐와 통합해 "조용한 시간대" 정책을 함께 지원합니다.</p>
+    </div>
+
+    <!-- Before / After -->
+    <h2 class="section-title" id="changes">변경 전 / 후</h2>
+    <div class="ba-grid">
+      <div class="panel">
+        <p class="panel-label">이전</p>
+        <ul>
+          <li>댓글 작성 후 페이지 새로고침 필요</li>
+          <li>알림: 이메일 배치(5분 주기) 단독</li>
+          <li>단일 인스턴스 인메모리 이벤트 버스</li>
+          <li>모바일 백그라운드 시 알림 유실</li>
+        </ul>
+      </div>
+      <div class="panel after">
+        <p class="panel-label">이후</p>
+        <ul>
+          <li>WebSocket으로 새 댓글 즉시 표시 (≤300 ms)</li>
+          <li>알림: WebSocket + 이메일 다이제스트 통합</li>
+          <li>Redis Pub/Sub 기반 수평 확장 지원</li>
+          <li>FCM 푸시 알림으로 모바일 백그라운드 커버</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 파일 투어 -->
+    <h2 class="section-title" id="files">파일 변경 내역</h2>
+    <div class="file-list">
+
+      <details class="file" open>
+        <summary>
+          <span class="chev">▶</span>
+          <span class="file-path">notification/WebSocketNotificationService.java</span>
+          <span class="badge new">NEW</span>
+          <span class="diff-nums"><span class="diff-add">+312</span></span>
+        </summary>
+        <div class="file-body">
+          <p>WebSocket STOMP 메시지 브로드캐스트 서비스. Redis 채널 구독 후 연결된 모든 세션에 이벤트를 전파합니다.</p>
+          <pre><span class="line add">+ @Service</span>
+<span class="line add">+ public class WebSocketNotificationService implements ApplicationListener&lt;CommentCreatedEvent&gt; {</span>
+<span class="line add">+     private final SimpMessagingTemplate messaging;</span>
+<span class="line add">+     private final RedisPublisher publisher;</span>
+<span class="line ctx">  </span>
+<span class="line add">+     @Override</span>
+<span class="line add">+     public void onApplicationEvent(CommentCreatedEvent event) {</span>
+<span class="line add">+         publisher.publish("notification:" + event.getThreadId(), event);</span>
+<span class="line add">+     }</span>
+<span class="line add">+ }</span></pre>
+        </div>
+      </details>
+
+      <details class="file">
+        <summary>
+          <span class="chev">▶</span>
+          <span class="file-path">notification/config/WebSocketConfig.java</span>
+          <span class="badge new">NEW</span>
+          <span class="diff-nums"><span class="diff-add">+68</span></span>
+        </summary>
+        <div class="file-body">
+          <p>STOMP over WebSocket 엔드포인트 설정. <code>/ws</code> 핸드셰이크 엔드포인트와 <code>/topic</code> 메시지 브로커를 등록합니다.</p>
+          <pre><span class="line add">+ @Configuration</span>
+<span class="line add">+ @EnableWebSocketMessageBroker</span>
+<span class="line add">+ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {</span>
+<span class="line add">+     @Override</span>
+<span class="line add">+     public void registerStompEndpoints(StompEndpointRegistry registry) {</span>
+<span class="line add">+         registry.addEndpoint("/ws").setAllowedOriginPatterns("*").withSockJS();</span>
+<span class="line add">+     }</span>
+<span class="line add">+ }</span></pre>
+        </div>
+      </details>
+
+      <details class="file">
+        <summary>
+          <span class="chev">▶</span>
+          <span class="file-path">frontend/hooks/useCommentNotification.ts</span>
+          <span class="badge new">NEW</span>
+          <span class="diff-nums"><span class="diff-add">+147</span></span>
+        </summary>
+        <div class="file-body">
+          <p>React 훅 — STOMP 클라이언트 수명 주기 관리, 자동 재연결(지수 백오프), Zustand 스토어에 신규 댓글 merge.</p>
+          <pre><span class="line add">+ export function useCommentNotification(threadId: string) {</span>
+<span class="line add">+   const addComment = useCommentStore(s => s.addComment);</span>
+<span class="line add">+   useEffect(() => {</span>
+<span class="line add">+     const client = new Client({ brokerURL: WS_URL });</span>
+<span class="line add">+     client.onConnect = () => {</span>
+<span class="line add">+       client.subscribe(`/topic/thread/${threadId}`, msg => {</span>
+<span class="line add">+         addComment(JSON.parse(msg.body));</span>
+<span class="line add">+       });</span>
+<span class="line add">+     };</span>
+<span class="line add">+     client.activate();</span>
+<span class="line add">+     return () => client.deactivate();</span>
+<span class="line add">+   }, [threadId]);</span>
+<span class="line add">+ }</span></pre>
+        </div>
+      </details>
+
+      <details class="file">
+        <summary>
+          <span class="chev">▶</span>
+          <span class="file-path">notification/EmailDigestService.java</span>
+          <span class="badge mod">수정</span>
+          <span class="diff-nums"><span class="diff-add">+28</span> <span class="diff-del">−45</span></span>
+        </summary>
+        <div class="file-body">
+          <p>이메일 다이제스트와 WebSocket 알림 중복 발송 방지 로직 추가. 사용자 "조용한 시간대" 설정을 존중하도록 리팩터링.</p>
+          <pre><span class="line del">- if (user.emailEnabled) {</span>
+<span class="line add">+ if (user.emailEnabled &amp;&amp; !user.isQuietHours()) {</span>
+<span class="line ctx">      queue.enqueue(new EmailDigestJob(user, comment));</span>
+<span class="line ctx">  }</span></pre>
+        </div>
+      </details>
+
+    </div>
+
+    <!-- 핵심 포인트 -->
+    <h2 class="section-title" id="focus">핵심 설계 결정</h2>
+    <div class="focus-list">
+      <div class="focus-item">
+        <div class="n">1</div>
+        <div>
+          <p class="focus-title">Redis Pub/Sub 기반 인스턴스 간 이벤트 전파</p>
+          <p class="focus-body">단순 인메모리 이벤트 버스로는 로드 밸런서 뒤에서 특정 인스턴스에 연결된 클라이언트에게만 이벤트가 전달됩니다.
+          Redis 채널을 허브로 삼아 모든 인스턴스가 구독하도록 설계해 수평 확장 시에도 유실 없이 브로드캐스트됩니다.</p>
+        </div>
+      </div>
+      <div class="focus-item">
+        <div class="n">2</div>
+        <div>
+          <p class="focus-title">지수 백오프 자동 재연결</p>
+          <p class="focus-body">모바일 네트워크 불안정 시 폴링 폭풍(polling storm)을 막기 위해 클라이언트 측에서
+          1s → 2s → 4s → 8s (최대 30s) 지수 백오프를 적용합니다. @stomp/stompjs의 <code>reconnectDelay</code>
+          콜백에서 구현, 탭이 비활성이면 재연결 시도를 중단합니다.</p>
+        </div>
+      </div>
+      <div class="focus-item">
+        <div class="n">3</div>
+        <div>
+          <p class="focus-title">피처 플래그로 단계적 롤아웃</p>
+          <p class="focus-body">모든 사용자에게 즉시 노출하지 않고 Unleash 피처 플래그 <code>ws_notification_v1</code>로
+          10% → 50% → 100% 단계 배포합니다. 플래그가 꺼진 사용자는 기존 폴링(30초) 방식으로 폴백됩니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 테스트 계획 -->
+    <h2 class="section-title" id="tests">테스트 계획</h2>
+    <div class="test-list">
+      <div class="test done">
+        <div class="check"></div>
+        <span class="test-label">WebSocket 연결 성공 및 구독 메시지 수신</span>
+        <span class="test-tag">단위</span>
+      </div>
+      <div class="test done">
+        <div class="check"></div>
+        <span class="test-label">Redis Pub/Sub 이벤트 → WebSocket 전파 E2E</span>
+        <span class="test-tag">통합</span>
+      </div>
+      <div class="test done">
+        <div class="check"></div>
+        <span class="test-label">클라이언트 재연결 지수 백오프 동작</span>
+        <span class="test-tag">단위</span>
+      </div>
+      <div class="test">
+        <div class="check"></div>
+        <span class="test-label">조용한 시간대 이메일 다이제스트 미발송</span>
+        <span class="test-tag">통합</span>
+      </div>
+      <div class="test">
+        <div class="check"></div>
+        <span class="test-label">다중 인스턴스 환경 브로드캐스트 누락 없음</span>
+        <span class="test-tag">E2E</span>
+      </div>
+      <div class="test">
+        <div class="check"></div>
+        <span class="test-label">피처 플래그 OFF 사용자 폴링 폴백 확인</span>
+        <span class="test-tag">E2E</span>
+      </div>
+    </div>
+
+    <!-- 롤아웃 단계 -->
+    <h2 class="section-title" id="rollout">롤아웃 단계</h2>
+    <div class="rollout-strip">
+      <div class="step">
+        <p class="step-label">단계 1</p>
+        <p class="step-value done">10%</p>
+        <p class="step-sub">내부 사용자</p>
+      </div>
+      <div class="step">
+        <p class="step-label">단계 2</p>
+        <p class="step-value active">50%</p>
+        <p class="step-sub">진행 중 · 이상 없음</p>
+      </div>
+      <div class="step">
+        <p class="step-label">단계 3</p>
+        <p class="step-value">100%</p>
+        <p class="step-sub">2026-05-16 예정</p>
+      </div>
+      <div class="step">
+        <p class="step-label">모니터링</p>
+        <p class="step-value">D+7</p>
+        <p class="step-sub">Datadog 대시보드</p>
+      </div>
+    </div>
+
+    <!-- 풋터 -->
+    <footer class="pr-footer">
+      <span>PR #312 · 커뮤니티 플랫폼 팀</span>
+      <span>머지: 2026-05-09 · html-report v2.2.0</span>
+    </footer>
+
+  </main>
+
+  <!-- TOC -->
+  <aside class="pr-toc" aria-label="PR 목차">
+    <p class="toc-title">이 PR</p>
+    <ul>
+      <li><a href="#tldr">TL;DR</a></li>
+      <li><a href="#changes">변경 전/후</a></li>
+      <li><a href="#files">파일 내역</a></li>
+      <li><a href="#focus">설계 결정</a></li>
+      <li><a href="#tests">테스트</a></li>
+      <li><a href="#rollout">롤아웃</a></li>
+    </ul>
+    <div class="stat-box">
+      <p class="stat-title">통계</p>
+      <div class="stat-row">
+        <span>파일 변경</span>
+        <span>14</span>
+      </div>
+      <div class="stat-row">
+        <span>추가</span>
+        <span class="diff-add">+847</span>
+      </div>
+      <div class="stat-row">
+        <span>삭제</span>
+        <span class="diff-del">−212</span>
+      </div>
+      <div class="stat-row">
+        <span>커밋</span>
+        <span>7</span>
+      </div>
+    </div>
+  </aside>
+
+</div>
+</body>
+</html>

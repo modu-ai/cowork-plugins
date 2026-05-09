@@ -2,19 +2,30 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
-[![Version](https://img.shields.io/badge/Version-2.1.0-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-2.2.0-blue)](CHANGELOG.md)
 [![Plugins](https://img.shields.io/badge/Plugins-21-blue)](.claude-plugin/marketplace.json)
-[![Skills](https://img.shields.io/badge/Skills-107-green)](.claude-plugin/marketplace.json)
+[![Skills](https://img.shields.io/badge/Skills-108-green)](.claude-plugin/marketplace.json)
 [![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)
 [![shadcn/ui](https://img.shields.io/badge/UI-shadcn/ui-black)](https://ui.shadcn.com/)
 
 **Claude Cowork 도메인 전문가 AI 마켓플레이스**
 
-자연어 한 줄이면 사업계획서, 계약서 검토, 세금 계산, PPT 제작, 데이터 분석, 특허 검색, **AI 이미지·영상·음성 생성**, **shadcn/ui 기반 랜딩·상세 페이지 제작**, **소상공인 상권분석·정부지원사업 신청**, **한국 이커머스 풀세트 — 13섹션 상세페이지 + 8개 채널 가이드(쿠팡·네이버·자사몰·크라우드펀딩·큐레이션·라이브) + 통합 마케팅 전략·카피**, **BI 대시보드·경영진 1pager**, **프로젝트 관리·주간보고·OKR·회고**, **B2B 영업·제안서·콜드메일**, **v2.0.0 한국 B2B 특화 6스킬 — 인터넷등기소 등기부등본 일괄 발급·국토부 실거래가·식약처 안전·법원경매·KRX 시세·바른한글 맞춤법**, **v2.1.0 한국어 AI 티 정밀 윤문(humanize-korean)**까지 — 21개 독립 플러그인과 107개 전문 스킬이 업무를 대신합니다. 모든 텍스트 산출물은 **`ai-slop-reviewer`가 AI 패턴을 검수**하여 사람이 쓴 것처럼 자연스럽게 다듬어 드립니다.
+자연어 한 줄이면 사업계획서, 계약서 검토, 세금 계산, PPT 제작, 데이터 분석, 특허 검색, **AI 이미지·영상·음성 생성**, **shadcn/ui 기반 랜딩·상세 페이지 제작**, **소상공인 상권분석·정부지원사업 신청**, **한국 이커머스 풀세트 — 13섹션 상세페이지 + 8개 채널 가이드(쿠팡·네이버·자사몰·크라우드펀딩·큐레이션·라이브) + 통합 마케팅 전략·카피**, **BI 대시보드·경영진 1pager**, **프로젝트 관리·주간보고·OKR·회고**, **B2B 영업·제안서·콜드메일**, **v2.2.0 마크다운→HTML 렌더러(html-report)**, **v2.0.0 한국 B2B 특화 6스킬 — 인터넷등기소 등기부등본 일괄 발급·국토부 실거래가·식약처 안전·법원경매·KRX 시세·바른한글 맞춤법**, **v2.1.0 한국어 AI 티 정밀 윤문(humanize-korean)**까지 — 21개 독립 플러그인과 108개 전문 스킬이 업무를 대신합니다. 모든 텍스트 산출물은 **`ai-slop-reviewer`가 AI 패턴을 검수**하여 사람이 쓴 것처럼 자연스럽게 다듬어 드립니다.
 
-> *Domain expert AI marketplace for [Claude Cowork](https://claude.ai). 21 plugins · 107 skills covering business strategy, marketing, legal, finance, HR, content, operations, education, lifestyle, product, support, document generation (DOCX/PPTX/XLSX/HWPX/**multilingual PDF**), data analysis, research/patents, **AI media production (image/video/voice)**, **shadcn/ui-based web landing/detail pages**, **small-business commercial-area analysis & Korean government grant applications**, **Korean e-commerce full-cycle**, **BI dashboard / executive 1-pager**, **PM weekly report / OKR**, **B2B sales / proposal / cold email**, **v2.0.0 Korean B2B specialty 6 skills (IROS registry automation, MOLIT real-estate transactions, MFDS drug/food safety, court-auction notices, KRX market quotes, Korean spell-check)**, **v2.1.0 Korean AI-tell precision humanizer (10 categories × 40+ patterns SSOT)**, and automatic AI-slop detection for every text deliverable.*
+> *Domain expert AI marketplace for [Claude Cowork](https://claude.ai). 21 plugins · 108 skills covering business strategy, marketing, legal, finance, HR, content, operations, education, lifestyle, product, support, document generation (DOCX/PPTX/XLSX/HWPX/**multilingual PDF**), data analysis, research/patents, **AI media production (image/video/voice)**, **shadcn/ui-based web landing/detail pages**, **small-business commercial-area analysis & Korean government grant applications**, **Korean e-commerce full-cycle**, **BI dashboard / executive 1-pager**, **PM weekly report / OKR**, **B2B sales / proposal / cold email**, **markdown-to-HTML single-file report generator (6 modes, zero external dependencies)**, **v2.0.0 Korean B2B specialty 6 skills (IROS registry automation, MOLIT real-estate transactions, MFDS drug/food safety, court-auction notices, KRX market quotes, Korean spell-check)**, **v2.1.0 Korean AI-tell precision humanizer (10 categories × 40+ patterns SSOT)**, and automatic AI-slop detection for every text deliverable.*
 
-**🆕 v2.1.0 하이라이트** (2026-05-07)
+**🆕 v2.2.0 하이라이트** (2026-05-09)
+- **`moai-content:html-report` 신규 스킬** — Thariq Shihipar의 "unreasonable effectiveness of HTML" 사상 기반, 마크다운 보고서를 단일 파일·자체 완결형 HTML로 변환하는 터미널 렌더러
+- **6개 보고서 모드**: status (주간 현황), incident (포스트모템), plan (구현/사업 계획), explainer (기능·개념 설명), financial (재무 보고), pr (PR 서사)
+- **외부 의존성 0개** — Tailwind/React/Chart.js 없이 inline `<style>` + inline SVG + vanilla JS만으로 12-25KB 산출물 생성. 한글 웹폰트 CDN 1개만 예외(Pretendard / Noto Serif KR / Noto Sans KR / 조선일보명조 / KoPubWorld 명조 / JetBrains Mono)
+- **P1 컨슈머 4종 호환성 검증 완료** — executive-summary, financial-statements, sbiz365-analyst, daily-briefing (모두 4/5 호환성)
+- **인쇄 친화** — `@media print` 자동 적용, 페이지 레이아웃 최적화
+- **6개 템플릿** + **6개 통합 테스트** + **CSS 변수 계약** (`--ivory`, `--slate`, `--clay`, `--sans`, `--serif`, `--mono`)
+- **권장 체인** — 텍스트 산출물: `[텍스트 스킬] → moai-core:ai-slop-reviewer → moai-content:humanize-korean → moai-content:html-report mode=<X>`
+- 마켓플레이스 스킬 수: 107 → **108개**. 동기화 지점 130개 (marketplace 1 + plugin.json 21 + SKILL.md 108) 모두 v2.2.0
+- [한국어 문서 사이트](https://cowork.mo.ai.kr/)
+
+**v2.1.0 하이라이트** (2026-05-07)
 - **`moai-content:humanize-korean` 신규 스킬** — 한국어 AI 티 정밀 윤문 스킬. [`epoko77-ai/im-not-ai`](https://github.com/epoko77-ai/im-not-ai) v1.6.1 (MIT, ⭐937) Fast 모드 단일 스킬 변형
 - **10대 카테고리 × 40+ AI 티 패턴 SSOT** — 번역투(A), 영어 인용(B), 구조 패턴(C), AI 관용구(D), 리듬(E), 수식 중복(F), hedging(G), 접속사(H), 형식명사(I), 시각 장식(J)을 S1/S2/S3 심각도로 분류
 - **의미 100% 보존 가드** — 변경률 30% 경고 / 50% 강제 중단·롤백, 자체검증 6항, A/B/C/D 등급 자동 판정
@@ -100,7 +111,7 @@
 | [moai-legal](./moai-legal/) | 계약서 검토, 컴플라이언스, NDA, 지적재산권, **인터넷등기소 자동화** 🆕 | 5 |
 | [moai-finance](./moai-finance/) | 원천징수, 부가세, K-IFRS, 결산, 예산 분석, **법원경매 매각공고**, **KRX 시세** 🆕 | 6 |
 | [moai-hr](./moai-hr/) | 근로계약서, 4대보험, 채용, 성과평가, **이력서 스크리닝** | 5 |
-| [moai-content](./moai-content/) | 카드뉴스, 상세페이지, 랜딩페이지, 뉴스레터, 카피라이팅, 블로그, 소셜미디어, 바른한글 맞춤법, **한국어 AI 티 정밀 윤문** 🆕 | 10 |
+| [moai-content](./moai-content/) | 카드뉴스, 상세페이지, 랜딩페이지, 뉴스레터, 카피라이팅, 블로그, 소셜미디어, 바른한글 맞춤법, **한국어 AI 티 정밀 윤문**, **마크다운→HTML 렌더러(html-report)** 🆕 | 11 |
 | [moai-operations](./moai-operations/) | 결재, 조달, SOP, 벤더 관리, 상태 보고 | 3 |
 | [moai-education](./moai-education/) | 강의설계, 논문, 교육과정, 시험 출제 | 3 |
 | [moai-lifestyle](./moai-lifestyle/) | 여행, 건강, 웨딩/이벤트 | 3 |
@@ -121,7 +132,7 @@
 | 항목 | 수량 | 비고 |
 |------|:----:|------|
 | 플러그인 | **21** | moai-core + 20 도메인 플러그인 |
-| 스킬 | **107** | 전 SKILL.md `version: 2.1.0` 동기화 (Cowork 자동 업데이트 지원) |
+| 스킬 | **108** | 전 SKILL.md `version: 2.2.0` 동기화 (Cowork 자동 업데이트 지원) |
 | 레퍼런스 파일 | **210** | 각 스킬의 `references/` 안 상세 가이드 |
 | 스크립트 | **13** | helper(`scripts/`) — Python·Node·Shell |
 | 템플릿 | **1** | CLAUDE.md.tmpl 외 |

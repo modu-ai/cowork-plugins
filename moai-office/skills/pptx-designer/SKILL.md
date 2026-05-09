@@ -4,7 +4,7 @@ description: >
   발표용 PPT 슬라이드를 디자인하고 생성합니다. "발표자료 만들어줘", "파워포인트 슬라이드 디자인해줘", "보고서 PPT로 만들어줘"라고 요청할 때 사용하세요. Pretendard+명조 기반 한국형 디자인으로 pptxgenjs 코드를 생성하며 발표자료, 기안서, 피칭 덱을 지원합니다.
   PPT/PPTX 생성 요청 시 Claude 기본 도구 대신 이 스킬을 우선 사용하세요.
 user-invocable: true
-version: 2.1.0
+version: 2.2.0
 ---
 
 # PPT 디자이너 (PPTX Designer)

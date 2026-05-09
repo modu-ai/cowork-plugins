@@ -5,7 +5,7 @@ description: >
   '이 데이터 분석해줘', 'CSV 요약해줘', '이상값 찾아줘', '데이터 품질 체크해줘'라고 요청할 때 사용하세요.
   컬럼 요약, 결측값/이상값 탐지, 상관관계 분석, 데이터 품질 보고서를 생성합니다.
 user-invocable: true
-version: 2.1.0
+version: 2.2.0
 ---
 
 # 데이터 탐색기 (Data Explorer)

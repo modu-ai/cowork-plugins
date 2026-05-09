@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>한울 엔지니어링 — 2026년 1분기 손익계산서</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    :root {
+      --ivory: #FAF9F5; --paper: #FFFFFF; --slate: #141413;
+      --clay: #D97757; --clay-d: #B85C3E; --oat: #E3DACC; --olive: #788C5D;
+      --g100: #F0EEE6; --g300: #D1CFC5; --g500: #87867F; --g700: #3D3D3A;
+      --sans: "Pretendard", system-ui, -apple-system, sans-serif;
+      --serif: "Pretendard", ui-serif, Georgia, serif;
+      --mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+      --max-width: 920px; --radius-panel: 12px; --border: 1.5px solid var(--g300);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 56px 24px 120px; background: var(--ivory); color: var(--slate); font-family: var(--sans); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    .page { max-width: var(--max-width); margin: 0 auto; }
+    header { margin-bottom: 40px; }
+    .eyebrow { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--g500); margin: 0 0 10px; }
+    h1 { font-family: var(--serif); font-weight: 700; font-size: 30px; letter-spacing: -0.01em; margin: 0 0 12px; color: var(--slate); line-height: 1.2; }
+    .period-badge { display: inline-block; font-family: var(--mono); font-size: 12px; background: var(--g100); border: var(--border); border-radius: 8px; padding: 5px 12px; color: var(--g700); }
+    section { margin-bottom: 52px; }
+    h2 { font-family: var(--serif); font-weight: 700; font-size: 22px; letter-spacing: -0.01em; margin: 0 0 6px; color: var(--slate); }
+    hr.rule { border: none; border-top: 1px solid var(--g300); margin: 0 0 22px; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    @media (max-width: 720px) { .kpi-grid { grid-template-columns: repeat(2, 1fr); } }
+    .kpi-card { background: var(--paper); border: var(--border); border-radius: var(--radius-panel); padding: 20px 22px 18px; }
+    .kpi-num { font-family: var(--serif); font-size: 32px; font-weight: 700; line-height: 1; color: var(--slate); margin-bottom: 8px; font-variant-numeric: tabular-nums; }
+    .kpi-label { font-family: var(--sans); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--g500); }
+    .kpi-delta { font-family: var(--mono); font-size: 11px; margin-top: 6px; font-variant-numeric: tabular-nums; }
+    .kpi-delta.up { color: var(--olive); }
+    .kpi-delta.down { color: var(--clay-d); }
+    table.statement { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--paper); border: var(--border); border-radius: var(--radius-panel); overflow: hidden; }
+    table.statement thead th { text-align: right; font-family: var(--sans); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--g500); background: var(--g100); padding: 12px 16px; border-bottom: 1px solid var(--g300); }
+    table.statement thead th:first-child { text-align: left; }
+    table.statement tbody td { padding: 11px 16px; border-bottom: 1px solid var(--g100); font-size: 14px; vertical-align: middle; color: var(--slate); text-align: right; font-variant-numeric: tabular-nums; }
+    table.statement tbody td:first-child { text-align: left; color: var(--g700); }
+    table.statement tbody tr:last-child td { border-bottom: none; }
+    table.statement tbody tr.row-header td { background: var(--g100); font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--g500); padding: 8px 16px; border-top: 1px solid var(--g300); }
+    table.statement tbody tr.row-subtotal td { background: var(--ivory); font-weight: 600; border-top: 1px solid var(--g300); }
+    table.statement tbody tr.row-total td { background: var(--oat); font-weight: 700; font-size: 15px; border-top: 2px solid var(--g300); }
+    .num-neg { color: var(--clay-d); }
+    .num-pos { color: var(--olive); }
+    .chart-panel { background: var(--paper); border: var(--border); border-radius: var(--radius-panel); padding: 24px 28px 18px; }
+    .chart-panel svg { display: block; width: 100%; height: auto; }
+    .chart-caption { font-size: 12px; color: var(--g500); margin-top: 12px; }
+    .notes { background: var(--oat); border-radius: var(--radius-panel); padding: 20px 22px; }
+    .notes ul { margin: 0; padding: 0 0 0 18px; }
+    .notes li { font-size: 14px; color: var(--g700); padding: 4px 0; }
+    footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--g300); font-family: var(--mono); font-size: 12px; color: var(--g500); }
+    @media print {
+      body { background: white; color: black; padding: 0; font-size: 11pt; }
+      .page { max-width: none; }
+      h1, h2, h3 { page-break-after: avoid; }
+      table.statement, .chart-panel { page-break-inside: avoid; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <p class="eyebrow">손익계산서 · 2026년 1분기</p>
+      <h1>한울 엔지니어링</h1>
+      <span class="period-badge">2026년 1월 1일 – 3월 31일</span>
+    </header>
+
+    <section aria-label="핵심 재무 지표">
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-num">48.2억</div>
+          <div class="kpi-label">매출액</div>
+          <div class="kpi-delta up">↑ +13.3% YoY</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-num">9.6억</div>
+          <div class="kpi-label">영업이익</div>
+          <div class="kpi-delta up">↑ +18.5% YoY</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-num">20.0%</div>
+          <div class="kpi-label">영업이익률</div>
+          <div class="kpi-delta up">↑ +0.9%p</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-num">7.2억</div>
+          <div class="kpi-label">당기순이익</div>
+          <div class="kpi-delta up">↑ +14.3% YoY</div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="손익계산서">
+      <h2>손익계산서</h2>
+      <hr class="rule">
+      <table class="statement">
+        <thead>
+          <tr>
+            <th style="text-align:left;">항목</th>
+            <th>당기 (백만원)</th>
+            <th>전기 (백만원)</th>
+            <th>증감</th>
+            <th>증감률</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row-header"><td colspan="5">매출</td></tr>
+          <tr><td>건설 공사 매출</td><td>3,124</td><td>2,798</td><td class="num-pos">+326</td><td class="num-pos">+11.7%</td></tr>
+          <tr><td>엔지니어링 용역</td><td>948</td><td>816</td><td class="num-pos">+132</td><td class="num-pos">+16.2%</td></tr>
+          <tr><td>유지보수 서비스</td><td>748</td><td>697</td><td class="num-pos">+51</td><td class="num-pos">+7.3%</td></tr>
+          <tr class="row-subtotal"><td>매출 소계</td><td>4,820</td><td>4,311</td><td class="num-pos">+509</td><td class="num-pos">+11.8%</td></tr>
+          <tr class="row-header"><td colspan="5">비용</td></tr>
+          <tr><td>재료비</td><td>1,812</td><td>1,654</td><td class="num-neg">−158</td><td class="num-neg">−9.6%</td></tr>
+          <tr><td>인건비</td><td>1,246</td><td>1,178</td><td class="num-neg">−68</td><td class="num-neg">−5.8%</td></tr>
+          <tr><td>외주비</td><td>524</td><td>487</td><td class="num-neg">−37</td><td class="num-neg">−7.6%</td></tr>
+          <tr><td>일반관리비</td><td>278</td><td>264</td><td class="num-neg">−14</td><td class="num-neg">−5.3%</td></tr>
+          <tr class="row-subtotal"><td>비용 소계</td><td>3,860</td><td>3,583</td><td class="num-neg">−277</td><td class="num-neg">−7.7%</td></tr>
+          <tr class="row-total"><td>영업이익</td><td>960</td><td>810</td><td class="num-pos">+150</td><td class="num-pos">+18.5%</td></tr>
+          <tr><td>이자수익</td><td>28</td><td>19</td><td class="num-pos">+9</td><td class="num-pos">+47.4%</td></tr>
+          <tr><td>이자비용</td><td>−46</td><td>−52</td><td class="num-pos">+6</td><td class="num-pos">+11.5%</td></tr>
+          <tr class="row-subtotal"><td>세전이익</td><td>942</td><td>777</td><td class="num-pos">+165</td><td class="num-pos">+21.2%</td></tr>
+          <tr><td>법인세</td><td>224</td><td>146</td><td class="num-neg">−78</td><td class="num-neg">−53.4%</td></tr>
+          <tr class="row-total"><td>당기순이익</td><td>718</td><td>628</td><td class="num-pos">+90</td><td class="num-pos">+14.3%</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section aria-label="분산 차트">
+      <h2>전기 대비 분산 (백만원)</h2>
+      <hr class="rule">
+      <div class="chart-panel">
+        <!-- 인라인 SVG 수평 막대 차트 -->
+        <svg viewBox="0 0 640 300" role="img" aria-label="주요 항목 전기 대비 증감 차트">
+          <!-- 기준선 -->
+          <line x1="200" y1="20" x2="200" y2="280" stroke="#D1CFC5" stroke-width="1.5"/>
+
+          <!-- 매출액 +509 -->
+          <text x="190" y="58" text-anchor="end" font-family="system-ui" font-size="12" fill="#3D3D3A">매출 소계</text>
+          <rect x="200" y="44" width="190" height="28" rx="4" fill="#788C5D"/>
+          <text x="396" y="63" font-family="ui-monospace,monospace" font-size="11.5" fill="#788C5D">+509 (+11.8%)</text>
+
+          <!-- 영업이익 +150 -->
+          <text x="190" y="102" text-anchor="end" font-family="system-ui" font-size="12" fill="#3D3D3A">영업이익</text>
+          <rect x="200" y="88" width="56" height="28" rx="4" fill="#788C5D"/>
+          <text x="262" y="107" font-family="ui-monospace,monospace" font-size="11.5" fill="#788C5D">+150 (+18.5%)</text>
+
+          <!-- 재료비 -158 -->
+          <text x="190" y="146" text-anchor="end" font-family="system-ui" font-size="12" fill="#3D3D3A">재료비</text>
+          <rect x="141" y="132" width="59" height="28" rx="4" fill="#B85C3E"/>
+          <text x="136" y="151" text-anchor="end" font-family="ui-monospace,monospace" font-size="11.5" fill="#B85C3E">−158</text>
+
+          <!-- 인건비 -68 -->
+          <text x="190" y="190" text-anchor="end" font-family="system-ui" font-size="12" fill="#3D3D3A">인건비</text>
+          <rect x="175" y="176" width="25" height="28" rx="4" fill="#B85C3E"/>
+          <text x="170" y="195" text-anchor="end" font-family="ui-monospace,monospace" font-size="11.5" fill="#B85C3E">−68</text>
+
+          <!-- 당기순이익 +90 -->
+          <text x="190" y="234" text-anchor="end" font-family="system-ui" font-size="12" fill="#3D3D3A">당기순이익</text>
+          <rect x="200" y="220" width="34" height="28" rx="4" fill="#788C5D"/>
+          <text x="240" y="239" font-family="ui-monospace,monospace" font-size="11.5" fill="#788C5D">+90 (+14.3%)</text>
+        </svg>
+        <div class="chart-caption">양수(녹색) = 증가, 음수(적색) = 비용 증가. 단위: 백만원, 전기 대비.</div>
+      </div>
+    </section>
+
+    <section aria-label="주석">
+      <h2>주석</h2>
+      <hr class="rule">
+      <div class="notes">
+        <ul>
+          <li>모든 금액은 K-IFRS 기준이며 단위는 백만원입니다.</li>
+          <li>전기(2025년 1분기) 수치는 재무제표 재작성 없이 비교 표시합니다.</li>
+          <li>외주비 증가는 스마트팩토리 프로젝트 확대에 따른 협력사 발주 증가에 기인합니다.</li>
+          <li>법인세율 상승은 2026년 세제 개편(과세표준 구간 조정)을 반영합니다.</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      출처: 한울 엔지니어링 내부 재무 시스템 · 작성: 재무기획팀 &nbsp;&mdash;&nbsp; 생성일: 2026-04-30
+    </footer>
+  </div>
+</body>
+</html>

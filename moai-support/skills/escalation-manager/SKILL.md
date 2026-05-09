@@ -3,7 +3,7 @@ name: escalation-manager
 description: >
   고객 불만 에스컬레이션을 처리하고 VOC를 분석합니다. "불만 고객 대응 전략 세워줘", "VIP 고객 특별 응대 방법 알려줘", "주간 CS 요약 보고서 만들어줘"라고 요청할 때 사용하세요. 에스컬레이션 레벨 배정, VIP 응대, VOC 분석, 주간 CS 요약 보고서 생성을 지원합니다.
 user-invocable: true
-version: 2.1.0
+version: 2.2.0
 ---
 
 # 에스컬레이션 관리자 (Escalation Manager)

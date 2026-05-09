@@ -5,7 +5,7 @@ description: >
   '논문 찾아줘', '선행연구 조사', 'RISS 검색', 'KCI 논문', '문헌 검토'라고 요청할 때 사용하세요.
   RISS, KCI, DBpia, Google Scholar에서 논문을 검색하고 인용 정보를 정리합니다.
 user-invocable: true
-version: 2.1.0
+version: 2.2.0
 ---
 
 # 논문 검색 (Paper Search)

@@ -5,7 +5,7 @@ description: >
   "연봉 협상 문서 써줘"처럼 말하면 됩니다. 근로기준법 준수 기반 채용 제안서,
   연봉 구조 최적화, 4대보험 공제 계산, 스톡옵션 조항 작성을 지원합니다. 2026년 기준 반영.
 user-invocable: true
-version: 2.1.0
+version: 2.2.0
 ---
 
 # 오퍼 레터 작성 (Draft Offer)

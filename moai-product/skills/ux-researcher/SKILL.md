@@ -5,7 +5,7 @@ description: >
   "사용자 인터뷰 질문지 만들어줘", "VOC 분석해줘", "페르소나 설계해줘", "NPS 결과 해석해줘"라고 요청할 때 사용하세요.
   UX 리서치 계획 수립, 페르소나 설계, 유저빌리티 테스트, 고객 피드백·VOC·NPS 분석을 지원합니다.
 user-invocable: true
-version: 2.1.0
+version: 2.2.0
 ---
 
 # UX 리서처 (UX Researcher)

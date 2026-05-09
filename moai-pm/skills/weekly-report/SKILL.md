@@ -10,7 +10,7 @@ description: |
   - "주간 회의 자료", "위클리 리포트", "주간 업무 보고"
   - "임원 주간보고", "팀 주간보고"
 user-invocable: true
-version: 2.1.0
+version: 2.2.0
 ---
 
 # Weekly Report — 한국 팀 주간보고(WBR) 자동 생성

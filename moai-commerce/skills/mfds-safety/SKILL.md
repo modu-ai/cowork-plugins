@@ -16,7 +16,7 @@ description: |
   - "의약품 안전 체크", "식품 안전 체크", "회수·판매중지 식품 검색"
   - 헬스/F&B 커머스에서 상품 안전성 확인 시
 user-invocable: true
-version: 2.1.0
+version: 2.2.0
 ---
 
 # MFDS 의약품·식품 안전 체크 (통합)
