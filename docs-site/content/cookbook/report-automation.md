@@ -90,6 +90,33 @@ MCP 기본 검색은 14일. 그 이상은 `slack_search_public` 사용권을 확
 
 - **월간 보고서** — 같은 파이프라인을 "4주치 CSV" 입력으로 돌려 월간판 생성.
 - **대시보드 HTML** — `data-visualizer`로 사내 공유용 단일 HTML 대시보드 추가 발행 → 이메일 링크.
+- **마크다운 → HTML 변환 (v2.2.0 신규)** — `moai-content:html-report` 스킬로 마크다운 보고서를 단일 파일 HTML로 변환. 외부 의존성 0, 12-25KB 초경량 산출물.
+
+### 마크다운 보고서 → HTML 변환 (v2.2.0)
+
+{{< terminal title="claude — cowork" >}}
+> 이번 주 주간 현황 보고서 HTML로 변환해줘.
+  - 모드: status
+  - 입력: /weekly/주간보고-20260510.md
+
+체인: (기존 보고서 생성) → html-report mode=status
+출력: /weekly/주간보고-20260510.html
+{{< /terminal >}}
+
+**html-report 스킬 특징**:
+- **6개 보고서 모드**: status, incident, plan, explainer, financial, pr
+- **인라인 SVG + vanilla JS**: 외부 의존성 0, 12-25KB 초경량
+- **한글 폰트 6종**: Pretendard(기본), Noto Serif KR, Noto Sans KR, 조선일보명조, KoPubWorld 명조, JetBrains Mono
+- **인쇄 친화**: `@media print` 자동 적용, 페이지 나누기 최적화
+
+**권장 체인**:
+```
+{텍스트 생성 스킬} → ai-slop-reviewer → humanize-korean → html-report mode=<X>
+```
+
+**관련 링크**:
+- [SKILL.md](https://github.com/modu-ai/cowork-plugins/blob/v2.2.0/moai-content/skills/html-report/SKILL.md)
+- [Thariq Shihipar "The Unreasonable Effectiveness of HTML"](https://thariq.substack.com/p/the-unreasonable-effectiveness-of)
 
 ---
 
