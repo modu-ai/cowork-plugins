@@ -1,0 +1,89 @@
+name: docs-site version sync
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs-site/**'
+      - 'CHANGELOG.md'
+  workflow_dispatch:  # 수동 실행 가능
+
+jobs:
+  sync-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 모든 태그 가져오기
+
+      # 1. 최신 Git 태그 추출
+      - name: Extract version from git tag
+        id: version
+        run: |
+          TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          VERSION=${TAG#v}  # v 접두사 제거
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+          echo "📦 Detected version: $TAG"
+
+      # 2. CHANGELOG.md에서 최신 버전 확인 (검증)
+      - name: Verify CHANGELOG.md version
+        run: |
+          CHANGELOG_VER=$(grep -m1 '^## \[' docs-site/CHANGELOG.md | sed 's/## \[\([^]]*\)\].*/\1/')
+          echo "📋 CHANGELOG.md version: $CHANGELOG_VER"
+          if [ "$CHANGELOG_VER" != "${{ steps.version.outputs.version }}" ]; then
+            echo "⚠️ Version mismatch: Git tag says ${{ steps.version.outputs.version }}, CHANGELOG says $CHANGELOG_VER"
+            echo "   Using Git tag version as source of truth"
+          fi
+
+      # 3. hugo.toml 업데이트
+      - name: Update hugo.toml version
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          RELEASE_DATE=$(date +%Y-%m-%d)
+
+          echo "📝 Updating hugo.toml..."
+          sed -i "s/^version = .*/version = \"$VERSION\"/" docs-site/hugo.toml
+          sed -i "s/releaseDate = .*/releaseDate = \"$RELEASE_DATE\"/" docs-site/hugo.toml
+
+          # 검증
+          UPDATED_VER=$(grep "^version = " docs-site/hugo.toml | sed 's/version = "\(.*\)"/\1/')
+          if [ "$UPDATED_VER" != "$VERSION" ]; then
+            echo "❌ Version update failed!"
+            exit 1
+          fi
+          echo "✅ hugo.toml updated to v$VERSION"
+
+      # 4. _index.md의 하드코딩된 버전 검증 (경고)
+      - name: Check _index.md version consistency
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          echo "🔍 Checking _index.md for hardcoded versions..."
+
+          # eyebrow 섹션
+          if grep -q "v2\.[0-9]\.[0-9] · 20[0-9]\.[0-9]\.[0-9]" docs-site/content/_index.md; then
+            echo "⚠️ _index.md eyebrow still has hardcoded version date"
+          fi
+
+          # 최신 릴리스 섹션
+          if ! grep -q "site.Params.version" docs-site/content/_index.md; then
+            echo "⚠️ _index.md does not use site.Params.version for latest release"
+            echo "   Manual update may be required"
+          fi
+
+      # 5. 변경사항이 있으면 커밋 (Optional)
+      - name: Commit version update
+        id: commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+
+          git add docs-site/hugo.toml
+
+          if git diff --quiet && git diff --staged --quiet; then
+            echo "✅ No changes to commit"
+          else
+            git commit -m "chore(docs): auto-sync version to ${{ steps.version.outputs.tag }}"
+            git push
+            echo "✅ Committed and pushed version update"
+          fi
