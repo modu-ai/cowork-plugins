@@ -230,6 +230,5 @@ Dispatch는 **가장 최근 사용 PC**로 라우팅됩니다. 퇴근 후 집 PC
 ---
 
 ### Sources
-- CTR-AX S5 · Skill 라이브 제작 + S6 · Schedule + Dispatch
 - [Claude Docs — MCP Connectors](https://docs.claude.com/en/docs/claude-cowork/connectors)
 - [modu-ai/cowork-plugins — moai-finance](https://github.com/modu-ai/cowork-plugins/tree/main/moai-finance)

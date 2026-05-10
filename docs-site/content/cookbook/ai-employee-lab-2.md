@@ -225,6 +225,5 @@ SKILL.md 본문에 추가:
 ---
 
 ### Sources
-- CTR-AX S6 · Schedule + Dispatch + 과제 계약 (품질·SCM 본부 레시피)
 - [Claude Docs — Sub-agents](https://docs.claude.com/en/docs/claude-cowork/sub-agents)
 - [modu-ai/cowork-plugins — moai-data, moai-operations](https://github.com/modu-ai/cowork-plugins)

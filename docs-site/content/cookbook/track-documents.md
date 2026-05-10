@@ -223,6 +223,5 @@ D:/Contracts/에 있는 40페이지짜리 계약서 PDF를
 ---
 
 ### Sources
-- CTR-AX S3 · 플러그인 카탈로그 (moai-office 4 스킬)
 - [Anthropic Skills — Office](https://github.com/anthropics/anthropic-cookbook/tree/main/skills)
 - [modu-ai/cowork-plugins — moai-office](https://github.com/modu-ai/cowork-plugins/tree/main/moai-office)

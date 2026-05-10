@@ -5,7 +5,7 @@ description: "스킬·커맨드·플러그인·스케줄·MCP 5개 부품으로 
 geekdocBreadcrumb: true
 tags: [cookbook, ai-employee]
 ---
-> "AI 사원"이라는 표현은 마케팅 용어가 아닙니다. Cowork에서는 5개 부품을 조립해 **사람 직원에 대응하는 단위**를 실제로 만들 수 있습니다. CTR-AX 강의에서 제시한 설계 모델을 정리합니다.
+> "AI 사원"이라는 표현은 마케팅 용어가 아닙니다. Cowork에서는 5개 부품을 조립해 **사람 직원에 대응하는 단위**를 실제로 만들 수 있습니다. 설계 모델을 정리합니다.
 
 ## 구성 5요소
 
@@ -196,6 +196,5 @@ SKILL.md 본문은 200줄 이내로 유지합니다. 긴 템플릿·체크리스
 ---
 
 ### Sources
-- CTR-AX S5 · Skill 라이브 제작, S6 · Schedule + Dispatch
 - [Claude Docs — Skills](https://docs.claude.com/en/docs/claude-cowork/skills)
 - [modu-ai/cowork-plugins v1.5.0 — 17 플러그인 73 스킬 카탈로그](https://github.com/modu-ai/cowork-plugins)

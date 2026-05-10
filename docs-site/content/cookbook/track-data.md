@@ -199,7 +199,6 @@ SKILL.md 본문에는 환경변수 참조만 넣습니다.
 ---
 
 ### Sources
-- CTR-AX S3 · 공공 API / 플러그인 카탈로그 (moai-data 3 스킬)
 - [공공데이터포털](https://www.data.go.kr/)
 - [KOSIS OpenAPI](https://kosis.kr/openapi/index/index.jsp)
 - [modu-ai/cowork-plugins — moai-data](https://github.com/modu-ai/cowork-plugins/tree/main/moai-data)

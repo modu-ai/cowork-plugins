@@ -292,6 +292,5 @@ blog.smartflow.co.kr 사이트의 SEO를 종합 감사해줘.
 ---
 
 ### Sources
-- CTR-AX S3 · 플러그인 카탈로그 (moai-marketing 7 + moai-content 8 스킬)
 - [Claude Docs — Cowork Marketing Use Cases](https://docs.claude.com/en/docs/claude-cowork)
 - [modu-ai/cowork-plugins — moai-marketing, moai-content](https://github.com/modu-ai/cowork-plugins)
