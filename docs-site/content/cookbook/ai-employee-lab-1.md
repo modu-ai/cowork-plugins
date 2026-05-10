@@ -225,7 +225,7 @@ Dispatch는 **가장 최근 사용 PC**로 라우팅됩니다. 퇴근 후 집 PC
 - [AI 사원 설계](../ai-employee-design/)
 - [AI 사원 실습 2](../ai-employee-lab-2/)
 - [자동화 레시피](../automation-recipes/)
-- [예약 작업](../../cowork/schedule/)
+- [예약 작업](/cowork/schedule/)
 
 ---
 
