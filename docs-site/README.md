@@ -32,7 +32,7 @@ docs-site/
 ├── content/
 │   ├── _index.md         # 홈
 │   ├── about.md          # 소개
-│   ├── cowork/           # Cowork 공식 한글 가이드 (13)
+│   ├── cowork/           # Cowork 공식 한글 가이드 (14)
 │   ├── plugins/          # 플러그인 카탈로그 (20)
 │   └── cookbook/         # 베스트 프랙티스 · 쿡북 (17)
 ├── layouts/partials/     # 커스텀 헤더/푸터
