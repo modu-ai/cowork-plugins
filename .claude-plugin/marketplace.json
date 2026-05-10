@@ -10,7 +10,7 @@
     "language": "ko"
   },
   "plugins": [
-    {"name": "moai", "source": "./moai-core", "description": "MoAI 코어 — /project 프로젝트 초기화, 스킬 체이닝 워크플로우 설계, 도메인 라우터, AI 슬롭 검수(ai-slop-reviewer), 피드백 허브"},
+    {"name": "moai-core", "source": "./moai-core", "description": "MoAI 코어 — /project 프로젝트 초기화, 스킬 체이닝 워크플로우 설계, 도메인 라우터, AI 슬롭 검수(ai-slop-reviewer), 피드백 허브"},
     {"name": "moai-business", "source": "./moai-business", "description": "비즈니스 전략 — 사업계획서, 시장조사, 재무모델, IR, 소상공인365 상권분석, 정부지원사업 통합"},
     {"name": "moai-marketing", "source": "./moai-marketing", "description": "마케팅 — 네이버/카카오 SEO, SNS 콘텐츠, 캠페인, 이메일 시퀀스"},
     {"name": "moai-legal", "source": "./moai-legal", "description": "법률 — 계약서 검토(민법/상법), 개인정보보호법 컴플라이언스, NDA"},
