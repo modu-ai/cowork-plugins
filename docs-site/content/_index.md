@@ -6,7 +6,7 @@ geekdocBreadcrumb: false
 ---
 
 <div class="cw-hero">
-  <div class="eyebrow"><span class="dot"></span>v{{ site.Params.version }} · {{ site.Params.releaseDate | replace "-" "." }} · cowork.mo.ai.kr</div>
+  <div class="eyebrow"><span class="dot"></span>v{{< version >}} · {{< release-date >}} · cowork.mo.ai.kr</div>
   <h1>업무에 바로 쓰는<br/><span class="accent">AI 협업 스킬</span> 108종.</h1>
   <p class="lead-p">
     21개 분야에 걸친 MoAI-Cowork 플러그인 모음. Claude Code에서 슬래시 한 번으로 사업계획서·IR 덱·계약서·블로그·정부지원사업 신청서까지 — 한국어로, 끝까지.
@@ -19,7 +19,7 @@ geekdocBreadcrumb: false
     <div class="item"><div class="num">108</div><div class="lbl">총 스킬</div></div>
     <div class="item"><div class="num">21</div><div class="lbl">분야 플러그인</div></div>
     <div class="item"><div class="num">78</div><div class="lbl">문서 페이지</div></div>
-    <div class="item"><div class="num">v{{ site.Params.version }}</div><div class="lbl">최신 릴리스</div></div>
+    <div class="item"><div class="num">v{{< version >}}</div><div class="lbl">최신 릴리스</div></div>
   </div>
 </div>
 
