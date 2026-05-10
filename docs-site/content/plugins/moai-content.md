@@ -1,20 +1,20 @@
 ---
 title: "moai-content — 블로그·카드뉴스·랜딩·한국어 윤문"
 weight: 30
-description: "한국 콘텐츠·마케팅 실무에 최적화된 블로그·카드뉴스·랜딩페이지·뉴스레터·한국어 AI 티 정밀 윤문 등 10개 스킬 묶음입니다."
+description: "한국 콘텐츠·마케팅 실무에 최적화된 블로그·카드뉴스·랜딩페이지·뉴스레터·한국어 AI 티 정밀 윤문·마크다운 보고서 HTML 변환 등 11개 스킬 묶음입니다."
 geekdocBreadcrumb: true
 tags: ["moai-content"]
 ---
 
 # moai-content
 
-> 한국 마케팅·콘텐츠 실무에 최적화된 10개 스킬을 제공합니다. 네이버 블로그·티스토리·인스타그램·LinkedIn·카카오 채널까지 플랫폼별 알고리즘 차이를 반영하며, **v2.1.0부터 한국어 AI 티 정밀 윤문(`humanize-korean`)이 추가**되었습니다.
+> 한국 마케팅·콘텐츠 실무에 최적화된 11개 스킬을 제공합니다. 네이버 블로그·티스토리·인스타그램·LinkedIn·카카오 채널까지 플랫폼별 알고리즘 차이를 반영하며, **v2.2.0부터 마크다운 보고서 HTML 변환(`html-report`)이 추가**되었습니다.
 
 ## 무엇을 하는 플러그인인가
 
 `moai-content` (v2.1.0)는 한국 디지털 마케팅 채널의 실제 운영 노하우를 반영해 설계된 텍스트 콘텐츠 생성 플러그인입니다. 단순히 글을 만드는 데 그치지 않고, 네이버 C-Rank·D.I.A. 알고리즘이나 인스타그램의 카드뉴스 길이 기준 등 채널별 베스트 프랙티스를 본문 구조에 반영합니다.
 
-블로그 포스트·카드뉴스·랜딩페이지·뉴스레터·상세페이지·SNS·카피라이팅·미디어 기획·한국어 맞춤법·**한국어 AI 티 정밀 윤문**까지 10개 스킬이 도메인별로 분리되어 있어, 필요한 채널만 선택해 호출할 수 있습니다.
+블로그 포스트·카드뉴스·랜딩페이지·뉴스레터·상세페이지·SNS·카피라이팅·미디어 기획·한국어 맞춤법·**한국어 AI 티 정밀 윤문**·**마크다운 보고서 HTML 변환**까지 11개 스킬이 도메인별로 분리되어 있어, 필요한 채널만 선택해 호출할 수 있습니다.
 
 별도 API 키 없이 사용 가능하며, WordPress 자동 업로드를 원하면 WordPress MCP 연결이 필요합니다.
 
@@ -43,6 +43,7 @@ tags: ["moai-content"]
 | `media-production` | 유튜브·팟캐스트 기획, 콘텐츠 캘린더 | 기획서·큐시트 |
 | `korean-spell-check` (v2.0.0 신규) | 바른한글(부산대) 한국어 맞춤법·띄어쓰기 최종 검수 | 원문/교정안/이유 |
 | `humanize-korean` (v2.1.0 신규) | 한국어 AI 티 정밀 윤문 — 10대 카테고리 × 40+ 패턴 SSOT, 의미 100% 보존, A/B/C/D 등급 | final.md (윤문본) + summary.md (메트릭·등급) |
+| `html-report` (v2.2.0 신규) | 마크다운 보고서 → 단일 파일 HTML — Thariq HTML-effectiveness, 인라인 SVG + vanilla JS, 12-25KB 산출물 | .html 파일 (자체 완결형) |
 
 ## 한국 시장 특화 포인트
 
@@ -191,6 +192,67 @@ card-news → moai-media:nano-banana → ai-slop-reviewer
 - **원본 저장소**: [epoko77-ai/im-not-ai](https://github.com/epoko77-ai/im-not-ai) (MIT, ⭐937)
 - **원본 라이선스**: [im-not-ai/LICENSE](https://github.com/epoko77-ai/im-not-ai/blob/main/LICENSE) (MIT)
 - **개발 주체**: [@epoko77-ai](https://github.com/epoko77-ai) — 한국어 AI 티 SSOT 분류 체계 정립
+
+## v2.2.0 신규 — `html-report` (마크다운 보고서 → 단일 파일 HTML 변환기)
+
+Thariq Shihipar의 **"The Unreasonable Effectiveness of HTML"** 철학을 기반으로, 마크다운 보고서를 단일 파일 HTML로 변환하는 스킬입니다. **외부 JS/CSS 프레임워크 의존성 0**, 인라인 SVG + vanilla JS로 12-25KB 초경량 산출물을 만듭니다.
+
+### 6개 보고서 모드
+
+| 모드 | 용도 | 대상 산출물 |
+|-----|------|-------------|
+| status | 주간 현황 / 태스크 리스트 | 팀 주간 보고, 진행 상황 공유 |
+| incident | 포스트모템 / 우발 대응 | 장애 보고서, 사후 정리 |
+| plan | 구현 계획 / 사업 계획 | 기획서, 제안서, 로드맵 |
+| explainer | 기능 설명 / 개념 해설 | 튜토리얼, 개념 문서, 가이드 |
+| financial | 재무 보고 / 수익 동향 | 재무제표, 실적 보고 |
+| pr | PR 서사 / 관계자 알림 | 보도자료, 공지사항 |
+
+### 핵심 특징
+
+- **인라인 SVG + vanilla JS**: 12-25KB 산출물, 페이지 로딩 거의 무영향
+- **한글 폰트 매핑**: Pretendard (기본), Noto Serif KR (serif), Noto Sans KR (sans), 조선일보명조, KoPubWorld 명조, JetBrains Mono (코드)
+- **인쇄 친화**: `@media print` 자동 적용, 페이지 나누기 최적화
+- **CSS 변수 8종**: `--ivory`, `--slate`, `--clay`, `--oat`, `--olive`, `--sans`, `--serif`, `--mono`
+- **P1 컨슈머 호환성**: executive-summary, financial-statements, sbiz365-analyst, daily-briefing 4종 검증 완료
+
+### 권장 체인 위치 — 텍스트 산출물 마지막 단계
+
+```text
+{텍스트 생성 스킬} → ai-slop-reviewer (1차 일반 후처리)
+                  → humanize-korean (2차 한국어 정밀 윤문)
+                  → html-report mode=<X> (HTML 변환, 인쇄 친화)
+```
+
+`html-report`는 보고서 산출물의 **마지막 단계**에서 HTML 포맷 변환용으로 사용합니다. 기존 체인(블로그 발행 등)에는 영향을 주지 않습니다.
+
+### 사용 예시
+
+```text
+> 주간 현황 보고서 HTML로 변환해줘. mode: status
+→ .moai/workspace/html-report/{run_id}/report.html
+→ 12-25KB 단일 파일, 브라우저에서 바로 열기
+```
+
+```text
+> 이 재무제표 인쇄 친화적으로 변환해줘. mode: financial, font_stack: serif
+→ Noto Serif KR 적용, A4 인쇄 최적화
+→ PDF 내보내기 가능
+```
+
+### Thariq Shihipar "The Unreasonable Effectiveness of HTML"
+
+이 스킬의 핵심 아키텍처 아이디어는 Thariq Shihipar의 블로그 포스트에서 영감을 받았습니다. HTML의 **단순함, 보편성, 웹 표준 준수**라는 철학을 기반으로, 복잡한 프레임워크 없이도 강력한 문서를 만들 수 있음을 보여줍니다.
+
+- **원본 글**: [The Unreasonable Effectiveness of HTML](https://thariq.substack.com/p/the-unreasonable-effectiveness-of)
+- **핵심 메시지**: "HTML은 이미 문서용으로 최적화된 언어입니다. 다른 도구가 필요하지 않습니다."
+
+### 출처 어트리뷰션
+
+본 스킬의 핵심 아키텍처 아이디어는 Thariq Shihipar의 블로그에서 영감을 받았습니다.
+
+- **원본 글**: [Thariq Shihipar "The Unreasonable Effectiveness of HTML"](https://thariq.substack.com/p/the-unreasonable-effectiveness-of)
+- **핵심 라이선스**: 원본 글은 퍼블릭 도메인, 본 스킬은 cowork-plugins MIT 라이선스
 
 ## 다음 단계
 
