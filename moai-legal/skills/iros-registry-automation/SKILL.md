@@ -14,7 +14,7 @@ description: |
   - "TouchEn nxKey", "공동인증서 등기 발급", "법인 결제 페이지당 10건"
   - 사업자등록번호 → 법인등기 매핑, 다운로드한 등기 PDF로 종합 리포트 만들기
 user-invocable: true
-version: 2.2.0
+version: 2.2.1
 ---
 
 # 인터넷등기소 등기부등본 자동화

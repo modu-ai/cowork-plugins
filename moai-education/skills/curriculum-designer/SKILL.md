@@ -5,7 +5,7 @@ description: >
   '온라인 강의 커리큘럼 짜줘', '직무 역량 모델 만들어줘', '영어 학습 계획 세워줘'라고 요청할 때 사용하세요.
   강의 목차 설계, 학습 목표 정의, 역량 갭 분석, 외국어 학습 전략 수립을 지원합니다.
 user-invocable: true
-version: 2.2.0
+version: 2.2.1
 ---
 
 # 커리큘럼 디자이너 (Curriculum Designer)

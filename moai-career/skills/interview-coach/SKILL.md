@@ -5,7 +5,7 @@ description: >
   "모의 면접 해줘"처럼 말하면 됩니다. AI면접/역량면접(BEI)/PT면접/토론면접/임원면접
   유형별 대비, 모의 면접 루프(질문-답변-피드백), 기업별 면접 전략을 지원합니다.
 user-invocable: true
-version: 2.2.0
+version: 2.2.1
 ---
 
 # 면접 코치 (interview-coach)

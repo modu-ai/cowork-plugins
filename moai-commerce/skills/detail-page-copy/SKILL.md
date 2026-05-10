@@ -8,7 +8,7 @@ description: >
   카테고리(electronics/fashion/food/beauty/home/supplement/pet/kids/handmade/general)에 따라 어조와 키워드 전략이 달라집니다.
   출력 직전에 ai-slop-reviewer를 자동 호출하여 AI 패턴을 검수합니다.
 user-invocable: true
-version: 2.2.0
+version: 2.2.1
 ---
 
 # 상세페이지 카피 (Detail Page Copy)

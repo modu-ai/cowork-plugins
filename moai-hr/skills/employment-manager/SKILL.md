@@ -5,7 +5,7 @@ description: >
   "신입 온보딩 계획 짜줘"처럼 말하면 됩니다. 채용 공고 작성, 면접 설계,
   평가 기준 수립, 온보딩 체크리스트, 멘토링 프로그램 설계를 지원합니다.
 user-invocable: true
-version: 2.2.0
+version: 2.2.1
 ---
 
 # 채용 관리자 (employment-manager)

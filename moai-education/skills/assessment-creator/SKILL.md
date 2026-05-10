@@ -5,7 +5,7 @@ description: >
   '수능 기출 분석해줘', '자격증 모의고사 만들어줘', '평가 문제지 출제해줘'라고 요청할 때 사용하세요.
   시험 전략 수립, 기출 분석, 퀴즈 및 모의고사 제작, 자격증·공무원 시험 대비 학습 계획을 지원합니다.
 user-invocable: true
-version: 2.2.0
+version: 2.2.1
 ---
 
 # 평가 도구 제작 (Assessment Creator)

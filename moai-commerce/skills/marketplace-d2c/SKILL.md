@@ -7,7 +7,7 @@ description: >
   카페24(가장 많은 한국 셀러) vs 아임웹(노코드·디자인 강점) vs 메이크샵 운영 비교,
   네이버 검색·구글 SEO·페이스북·카카오 광고 연동까지 통합 안내합니다.
 user-invocable: true
-version: 2.2.0
+version: 2.2.1
 ---
 
 # 자사몰 (D2C) 운영 가이드

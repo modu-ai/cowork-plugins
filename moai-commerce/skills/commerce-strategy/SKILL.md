@@ -7,7 +7,7 @@ description: >
   재구매 리텐션 자동화, KPI 대시보드 설계까지 통합 가이드합니다.
   단계별(런칭/성장/안정) 전략 차이도 명시합니다.
 user-invocable: true
-version: 2.2.0
+version: 2.2.1
 ---
 
 # 이커머스 통합 전략 (Commerce Strategy)

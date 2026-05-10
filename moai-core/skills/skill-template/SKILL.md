@@ -7,7 +7,7 @@ description: |
   다음과 같은 요청 시 이 스킬을 참조하세요:
   - "새 스킬 만들고 싶어", "스킬 템플릿", "SKILL.md 템플릿"
   - "스킬 작성 방법", "스킬 구조", "스킬 포맷"
-version: 2.2.0
+version: 2.2.1
 ---
 
 # SKILL.md Standard Template

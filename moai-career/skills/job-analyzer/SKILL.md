@@ -5,7 +5,7 @@ description: >
   "JD 분석", "이 회사 어때?"처럼 말하면 됩니다. JD에서 필수/우대 역량을 추출하고,
   내 경험과 매칭하여 자소서 소재를 발굴하며, 기업 문화와 성장성을 분석합니다.
 user-invocable: true
-version: 2.2.0
+version: 2.2.1
 ---
 
 # 채용공고 분석기 (job-analyzer)

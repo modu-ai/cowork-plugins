@@ -13,6 +13,33 @@
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
 
+## [2.2.1] - 2026-05-11
+
+PATCH. docs-site에서 Hugo 템플릿 변수가 마크다운 파일 내에서 치환되지 않는 버그를 수정했습니다.
+
+### Fixed
+
+- **변수 치환 버그** — 마크다운 파일 내 HTML에서 `{{ site.Params.version }}`이 렌더링되지 않는 문제 수정
+  - **Shortcodes 도입**: `version.html`, `release-date.html` 생성
+  - **_index.md 수정**: `{{ site.Params.version }}` → `{{< version >}}`, `{{ site.Params.releaseDate | replace "-" "." }}` → `{{< release-date >}}`
+  - **Partial 추가**: `version-badge.html` 컴포넌트
+  - 헤더 버전이 정상적으로 "v2.2.1"로 노출됨
+
+### Changed
+
+- docs-site/content/_index.md: Hugo shortcodes로 변수 참조 방식 변경
+- docs-site/layouts/shortcodes/: version, release-date shortcodes 추가
+- docs-site/layouts/partials/: version-badge partial 추가
+
+### 동기화 지점
+
+- `.claude-plugin/marketplace.json` × 1 (metadata.version)
+- `<plugin>/.claude-plugin/plugin.json` × 21 (version)
+- `<plugin>/skills/<skill>/SKILL.md` × 108 (version)
+- 총 **130 지점** 동일 버전 유지
+
+---
+
 ## [2.2.0] - 2026-05-09
 
 MINOR. 마크다운 보고서를 단일 파일 HTML로 변환하는 `moai-content:html-report` 스킬을 신규 도입했습니다. Thariq Shihipar의 "unreasonable effectiveness of HTML" 사상을 기반으로, **외부 의존성 0개**(한글 웹폰트 CDN 1개만 예외)로 12-25KB 산출물을 생성합니다. 6개 보고서 모드(status/incident/plan/explainer/financial/pr) + 6개 통합 테스트(executive-summary/financial-statements/sbiz365-analyst/daily-briefing 등 4종)를 포함합니다. 마켓플레이스 스킬 107 → **108개**, 플러그인은 21개 유지. Breaking change 없음.

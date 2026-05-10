@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "모두의 AI's Claude Cowork 플러그인 마켓플레이스 — 21 플러그인, 108 스킬. /project init으로 워크플로우 기반 CLAUDE.md 자동 생성, 모든 텍스트 산출물은 ai-slop-reviewer로 검수. v2.2.0에서 html-report 스킬이 추가되었습니다(Thariq HTML-effectiveness 사상, 마크다운 → 단일 파일 HTML 렌더러, 6모드, 외부 의존성 0). v2.1.0에서 humanize-korean 스킬이 추가되었습니다(epoko77-ai/im-not-ai MIT, ⭐937 포팅, 한국어 AI 티 정밀 윤문, 10대 카테고리 × 40+ 패턴 SSOT). v2.0.0에서 NomaDamas/k-skill 한국 특화 스킬 6종이 추가되었습니다 — 인터넷등기소 등기부등본 일괄 발급(moai-legal), 국토부 실거래가(moai-business), 식약처 의약품·식품 안전(moai-commerce), 법원경매 매각공고(moai-finance), KRX 시세(moai-finance), 바른한글 맞춤법 검수(moai-content). v1.8.0부터 moai-commerce 11스킬(자사몰 cafe24·imweb·메이크샵, 와디즈·텀블벅, 카카오 메이커스·무신사·29CM, 라이브 커머스). moai-bi/pm/sales도 정식 등록되었습니다",
-    "version": "2.2.0",
+    "version": "2.2.1",
     "language": "ko"
   },
   "plugins": [

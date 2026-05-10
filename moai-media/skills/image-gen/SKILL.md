@@ -8,7 +8,7 @@ description: >
   제품 사진·편집 스타일은 Higgsfield Soul, 한글 타이포그래피는 Ideogram 또는 Gemini,
   포토리얼리즘은 Flux, 벡터/로고는 Recraft를 자동 선택합니다.
 user-invocable: true
-version: 2.2.0
+version: 2.2.1
 ---
 
 # Image Gen — 통합 AI 이미지 생성

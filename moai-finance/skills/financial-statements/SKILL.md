@@ -5,7 +5,7 @@ description: >
   '재무상태표 작성해줘', '손익계산서 분석해줘', 'K-IFRS 기준으로 재무제표 만들어줘'처럼 말하면 됩니다.
   재무상태표·손익계산서·현금흐름표 전체 세트 작성, 2026년 K-IFRS 제1118호 변경 대응, 주석 공시, 재무비율 분석을 지원합니다.
 user-invocable: true
-version: 2.2.0
+version: 2.2.1
 ---
 
 # 재무제표 작성 (Financial Statements)

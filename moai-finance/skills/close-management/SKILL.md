@@ -6,7 +6,7 @@ description: >
   K-IFRS 기준 계정 마감, 급여 정산, 세무 일정 관리, 결산 보고서 자동 생성을 지원합니다.
   2026년 최신 4대보험 요율과 노동법 변경사항을 반영합니다.
 user-invocable: true
-version: 2.2.0
+version: 2.2.1
 ---
 
 # 결산 관리 (Close Management)
