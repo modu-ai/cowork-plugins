@@ -414,3 +414,102 @@ echo "✅ 릴리스 본문 ${BODY_LEN}자"
 
 Version: 1.3.0
 Last Updated: 2026-04-14
+
+---
+
+## Vercel Build Cost Guard
+
+### [HARD] Build Machine = Elastic 유지
+
+- Vercel Team default + 각 프로젝트 모두 **Elastic** 머신 사용. Turbo($0.126/min) 또는 Standard로 변경 금지 — Elastic은 $0.0035/CPU min로 약 40배 저렴
+- 새 프로젝트 추가 시 Settings → Build and Deployment → Build Machine = Elastic 확인
+- 비용 폭탄 의심 시 **가장 먼저 Build Machine 설정 점검**
+
+---
+
+## 10. docs-site 운영 지침 (HARD, v2.2.0 신규)
+
+### 10-1. 터미널 예시 형식 (HARD)
+
+docs-site의 cookbook 문서에서 터미널 예시는 반드시 Hugo `{{< terminal >}}` shortcode를 사용해야 합니다.
+
+#### 올바른 형식
+
+```markdown
+{{< terminal title="claude — cowork" >}}
+> 사용자 입력 프롬프트
+{{< /terminal >}}
+```
+
+#### 금지 형식
+
+- `> # 스킬 호출` 같은 마크다운 코드 블록 형식 금지
+- 터미널 외부에 단독으로 표시되는 마크다운 헤더 금지
+- 모든 예시는 `{{< terminal >}}` 블록 내부에 포함
+
+#### 검증 방법
+
+```bash
+# 잘못된 형식 검색 (아무 것도 출력되지 않아야 통과)
+grep -r "^> #" content/cookbook --include="*.md" | grep -v "terminal"
+
+# 올바른 터미널 shortcode 확인
+grep -r "{{< terminal" content/cookbook --include="*.md" | wc -l
+```
+
+### 10-2. 다크 테마 버그 방지 (HARD)
+
+새로고침 시 다크 테마가 깜빡이는 버그를 방지하기 위해 HTML 태그에 초기 `data-theme` 속성을 설정합니다.
+
+#### 구성 파일
+
+`layouts/_default/baseof.html`의 `<html>` 태그:
+
+```html
+<html
+  lang="{{ .Site.Language.Lang }}"
+  class="color-toggle-hidden"
+  data-theme="dark"
+  {{ if default false .Site.Params.geekdocDarkModeCode }}code-theme="dark"{{ end }}
+>
+```
+
+#### 동작 원리
+
+- 페이지 로드 시점부터 `data-theme="dark"`가 설정되어 라이트 테마 플래시 방지
+- localStorage migrate() 함수와 함께 초기 테마 설정 보장
+- MutationObserver가 테마 전환 감지
+
+### 10-3. 버전 동기화 (HARD)
+
+docs-site에 버전 정보를 변경할 때는 다음 3곳을 모두 업데이트해야 합니다.
+
+#### 동기화 대상
+
+| 파일 | 경로 | 필드 |
+|---|---|---|
+| 홈 페이지 | `content/_index.md` | eyebrow, hero, 메타데이터 (v2.2.0, 108 스킬) |
+| 플러그인 페이지 | `content/plugins/moai-*.md` | 해당 플러그인 스킬 카운트, v2.2.0 신규 섹션 |
+| 릴리스 페이지 | `content/releases/v2.2.md` | 릴리스 노트 전체 |
+
+#### 검증 명령
+
+```bash
+# 버전 일치 검사 (모두 2.2.0이어야 함)
+grep -h "v2\.2\.0\|2\.2\.0" content/_index.md content/plugins/*.md content/releases/v2.2.md
+
+# 스킬 카운트 검사 (_index.md에서 108, moai-content에서 11)
+grep -E "108|11" content/_index.md content/plugins/moai-content.md
+```
+
+### 10-4. 커밋 전 체크리스트
+
+docs-site 변경 사항을 커밋할 때:
+
+```
+[ ] 터미널 예시가 올바른 Hugo shortcode 형식인지 확인
+[ ] 다크 테마 초기화 속성(data-theme="dark") 포함
+[ ] 버전 정보 3곳 일치 (_index.md, plugins, releases)
+[ ] 새로운 스킬 추가 시 해당 플러그인 페이지 업데이트
+[ ] 변경 내용이 SEO/AGO에 영향을 주는지 확인
+```
