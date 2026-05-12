@@ -4,7 +4,8 @@ description: |
   [책임 경계] MCP dashboard_morning_brief 호출로 매장 운영 데이터(어제 주문·신규 문의·트렌드·ROAS) 1개 호출 통합 요약 전담. 페어 moai-business:daily-briefing(외부 뉴스·웹 정보)와 명확히 구분 — 본 스킬은 MCP 매장 운영 데이터, 페어는 외부 뉴스·시장 정보.
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   "아침 브리핑 해줘", "오늘 매장 현황 보여줘", "어제 주문 몇 개야", "ROAS 확인해줘", "매장 대시보드 요약", "아침에 매장 상황 한눈에 보기", "daily brief", "모닝 브리핑".
-  v2.3.1 신규 (Wave 3 — Day 1 S4·S5 라이브 시연).
+  ai-slop-reviewer 체이닝 제외 (MCP 매장 운영 숫자·데이터 1줄 통합 스킬).
+  v2.3.0 신규 (Wave 3 — Day 1 S4·S5 라이브 시연).
 user-invocable: true
 version: 2.3.0
 ---

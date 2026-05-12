@@ -4,8 +4,8 @@ description: |
   [책임 경계] 강의 운영 매뉴얼 자동 생성 — 3일 21세션 시간표·강사 동선·D-7 사전 준비물·리스크 매트릭스 + Plan B 전담. 페어 moai-education:curriculum-designer(범용 커리큘럼 설계)와 명확히 구분 — 본 스킬은 본 캠프 운영 실무 매뉴얼, 페어는 범용 교육과정 설계.
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   "강의 운영 매뉴얼 만들어줘", "D-7 사전 준비물 메일", "강사 조교 동선표", "리스크 Plan B 매트릭스", "교시별 시간표 만들어줘", "D-30 운영 매뉴얼", "체크리스트 설비 환경".
-  출력: moai-office:docx-generator 자동 체이닝으로 Word(.docx) 생성.
-  v2.3.1 신규 (Wave 4 — moai-education 신규 활성화).
+  체인: course-curriculum-design → moai-core:ai-slop-reviewer (운영 매뉴얼 텍스트 검수) → moai-office:docx-generator (Word .docx 출력).
+  v2.3.0 신규 (Wave 4 — moai-education 신규 활성화).
 user-invocable: true
 version: 2.3.0
 ---

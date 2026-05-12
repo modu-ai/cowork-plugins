@@ -5,7 +5,7 @@ description: |
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   "강의 후기 카피 만들어줘", "D+1 후기 요청 카톡", "D+3 적용 인증 요청", "D+7 성과 수치 후기", "D+14 영상 후기 인센티브 안내", "D+30 심층 인터뷰 제안", "30일 후기 시퀀스", "강의 follow-up".
   체인: moai-content:copywriting → moai-core:ai-slop-reviewer → moai-content:korean-spell-check.
-  v2.3.1 신규 (Wave 4 — moai-education 신규 활성화).
+  v2.3.0 신규 (Wave 4 — moai-education 신규 활성화).
 user-invocable: true
 version: 2.3.0
 ---

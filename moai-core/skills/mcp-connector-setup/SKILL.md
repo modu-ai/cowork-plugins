@@ -4,7 +4,7 @@ description: |
   [책임 경계] Drive·Notion·Higgsfield·OpenAI 4커넥터 인증·환경변수·트러블슈팅 가이드 전담. 페어 moai-commerce:commerce-morning-brief(MCP 매장 데이터 호출)와 명확히 구분 — 본 스킬은 커넥터 설치·인증 단계, 페어는 인증 이후 실제 MCP 호출 결과물.
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   "MCP 커넥터 연결", "Drive 인증 방법", "Notion Integration Token 어디서", "Higgsfield 키 발급", "OpenAI API 키 발급", "Windows MAX_PATH 오류", "한글 파일명 30자 오류", "computer:// 링크 안 열려요", "커넥터 4개 연결 방법", "MCP 4커넥터 인증".
-  v2.3.1 신규 (Wave 3 — Day 1 S4 셋업).
+  v2.3.0 신규 (Wave 3 — Day 1 S4 셋업).
 user-invocable: true
 version: 2.3.0
 ---

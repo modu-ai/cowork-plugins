@@ -4,7 +4,8 @@ description: |
   [책임 경계] MCP order_summary_today 호출로 스마트스토어·카페24·아임웹 채널 통합 신규 주문을 대시보드 5개 → 1줄 통합 전담. 페어 moai-commerce:commerce-morning-brief(4개 영역 아침 브리핑)와 명확히 구분 — 본 스킬은 신규 주문 채널 통합 특화, 페어는 주문·문의·트렌드·ROAS 4개 영역 종합.
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   "신규 주문 통합해줘", "스마트스토어 카페24 아임웹 주문 합쳐줘", "채널별 주문 한눈에", "오늘 주문 몇 개야", "대시보드 5개 왔다갔다 그만하고 싶어", "order_summary_today", "채널 통합 주문 요약".
-  v2.3.1 신규 (Wave 3 — Day 1 S4·S5 라이브 시연).
+  ai-slop-reviewer 체이닝 제외 (MCP 채널 통합 숫자·데이터 1줄 통합 스킬).
+  v2.3.0 신규 (Wave 3 — Day 1 S4·S5 라이브 시연).
 user-invocable: true
 version: 2.3.0
 ---
