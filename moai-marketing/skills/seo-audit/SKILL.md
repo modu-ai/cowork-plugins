@@ -6,7 +6,7 @@ description: >
   '구글 검색 최적화해줘', 'GEO 전략 만들어줘', 'C-Rank 개선 방법 알려줘'라고 요청하세요.
   온페이지·기술 SEO, 키워드 전략, AI 검색 최적화 보고서를 생성합니다.
 user-invocable: true
-version: 2.3.0
+version: 2.4.0
 ---
 
 # SEO 감사 (SEO Audit)

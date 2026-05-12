@@ -3,7 +3,7 @@ name: travel-planner
 description: >
   여행 일정과 개인 라이프스타일 재무를 설계합니다. "제주 3박 4일 일정 짜줘", "부동산 수익률 계산해줘", "부업 아이디어 추천해줘"라고 요청할 때 사용하세요. 여행 일정·맛집·숙소·예산 관리, 개인 재무 계획, 부동산 분석, 사이드 프로젝트 기획을 지원합니다.
 user-invocable: true
-version: 2.3.0
+version: 2.4.0
 ---
 
 # 여행 플래너 (Travel Planner)

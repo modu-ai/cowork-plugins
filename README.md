@@ -2,17 +2,17 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
-[![Version](https://img.shields.io/badge/Version-2.3.0-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-2.4.0-blue)](CHANGELOG.md)
 [![Plugins](https://img.shields.io/badge/Plugins-21-blue)](.claude-plugin/marketplace.json)
-[![Skills](https://img.shields.io/badge/Skills-124-green)](.claude-plugin/marketplace.json)
+[![Skills](https://img.shields.io/badge/Skills-129-green)](.claude-plugin/marketplace.json)
 [![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)
 [![shadcn/ui](https://img.shields.io/badge/UI-shadcn/ui-black)](https://ui.shadcn.com/)
 
-**Claude Cowork 한국어 도메인 전문가 AI 마켓플레이스 — 21 plugins · 124 skills · MIT**
+**Claude Cowork 한국어 도메인 전문가 AI 마켓플레이스 — 21 plugins · 129 skills · MIT**
 
-자연어 한 줄로 **사업계획서·계약서 검토·세금 계산·PPT·이미지/영상/음성·BI 보고서·HTML 리포트·이커머스 강의 캠프**를 자동 생성합니다. 한국 B2B 환경(K-IFRS·국세청·근로기준법·식약처·국토부·KRX·인터넷등기소)에 특화된 21개 독립 플러그인과 124개 도메인 스킬이 업무를 대신하며, 모든 텍스트 산출물은 [`ai-slop-reviewer`](./moai-core/skills/ai-slop-reviewer/)가 AI 패턴을 검수하여 자연스럽게 다듬어 드립니다.
+자연어 한 줄로 **사업계획서·계약서 검토·세금 계산·PPT·이미지/영상/음성·BI 보고서·HTML 리포트·이커머스 강의 캠프·쿠팡 광고 최적화**를 자동 생성합니다. 한국 B2B 환경(K-IFRS·국세청·근로기준법·식약처·국토부·KRX·인터넷등기소)에 특화된 21개 독립 플러그인과 129개 도메인 스킬이 업무를 대신하며, 모든 텍스트 산출물은 [`ai-slop-reviewer`](./moai-core/skills/ai-slop-reviewer/)가 AI 패턴을 검수하여 자연스럽게 다듬어 드립니다.
 
-> *Korean B2B specialty plugin marketplace for [Anthropic Claude Code (Cowork)](https://claude.ai/cowork) — 21 plugins · 124 skills. Korean fonts (Pretendard / Noto Serif KR / Chosunilbo Myungjo / KoPubWorld), Korean text humanizer (humanize-korean), AI-slop reviewer for every deliverable. K-IFRS, NTS, KRX, MFDS, MOLIT, IROS specialty skills. MIT licensed.*
+> *Korean B2B specialty plugin marketplace for [Anthropic Claude Code (Cowork)](https://claude.ai/cowork) — 21 plugins · 129 skills. Korean fonts (Pretendard / Noto Serif KR / Chosunilbo Myungjo / KoPubWorld), Korean text humanizer (humanize-korean), AI-slop reviewer for every deliverable. K-IFRS, NTS, KRX, MFDS, MOLIT, IROS specialty skills. MIT licensed.*
 
 **🚀 빠른 설치**: Claude Cowork → 사용자 지정 → 개인 플러그인 + → **마켓플레이스 추가** → URL `modu-ai/cowork-plugins` 입력 → 동기화 → `moai-core` 먼저 설치
 
@@ -34,7 +34,19 @@
 
 ---
 
-**🆕 v2.3.0 하이라이트** (2026-05-12) — **"모두의 커머스 3일 마스터 캠프"** 통합본 출시
+**🆕 v2.4.0 하이라이트** (2026-05-12) — **"캠프 후속 인사이트 통합본"** 출시
+
+정해준 강사 본인 노하우 3개 문서(쿠팡 매출 9배 비법 전자책 126p + 커머스 업무 자동화 24p + 커머스 매출향상 AI 활용 26p) + 광고 심리학 완전판(13장 376줄)을 분석해 **13건(신규 5 + 강화 8)** 통합. 124 → **129 스킬**.
+
+- **moai-commerce 신규 3** — 쿠팡 광고 풀세트 최적화(`coupang-ad-optimizer`, 3 캠페인 분류·검색/비검색 분리·엔드 ROAS·자동규칙 3종, 정해준 강사 6개월 노하우 wrapper), 마진·엔드 ROAS 자동 계산(`commerce-margin-calculator`, 채널별 수수료 자동 반영), 6대 영역 자동화 진단(`commerce-automation-audit`, 우선순위 점수·3 Phase 로드맵·HITL Golden Rule)
+- **moai-marketing 신규 2** — 랜딩 6섹션 진단(`landing-page-conversion-audit`, CTR/CVR 분기·불안해소 문구·메시지 일치), 메타·구글 픽셀 검증(`pixel-audit`, CAPI·Lookalike 씨앗 품질)
+- **강화 8** — `commerce-product-naming`(공식 4요소·금지 키워드 9종), `detail-page-copy`(PAS·혜택 언어 3단계), `commerce-jtbd-persona`(심리적 필요 4종·타겟 온도), `commerce-channel-message`(6 방아쇠·8 편향·채널 매트릭스), `commerce-integrated-strategy`(자동화 4단계·3 Phase), `commerce-market-research`(포지셔닝 5축·새 카테고리), `campaign-planner`(광고 심리학 완전판), `sns-content`(채널별 심리·메타 학습 기간)
+- **인사이트 원전** — 정해준 강사 본인 노하우 + "온라인 광고의 심리학" 13장 + 시크릿팡 마진계산기 로직 참고
+- 마켓플레이스 스킬 수: 124 → **129개** (+5 신규). 동기화 지점 **151개** (marketplace 1 + plugin.json 21 + SKILL.md 129) 모두 v2.4.0
+- **후속 예정** (v2.5.0) — Track A MoAI-Commerce MCP 서버 (광고 4종 + Phase 1 34종 + Higgsfield)
+
+<details>
+<summary><b>📜 이전: v2.3.0 — "모두의 커머스 3일 마스터 캠프" 통합본</b></summary>
 
 월 매출 100만~10억 스마트스토어·자사몰 셀러가 외주 없이 3일 만에 신상품 1개의 상세페이지·광고·SNS·동영상을 직접 제작·운영하는 시스템을 구축하는 21세션·18개 산출물 데이터 체인 강의의 백엔드 도구입니다.
 
@@ -48,8 +60,10 @@
 - **MCP 의존성** — V6 6도구와 Day1 셋업 스킬은 MoAI-Commerce MCP Phase 1(34종 도구)을 호출. 미출시 시점에는 사전 녹화 영상 5분 또는 강사 본인 워크스페이스 라이브 호출로 대체 (PDF §S4 운영 노트)
 - **SPEC 작성** — `.moai/specs/` 하위 7개 SPEC, 총 **84 EARS REQ**: master + Track A(MCP) + Wave 1·2·3·4 + Track C
 - 마켓플레이스 스킬 수: 108 → **124개** (+16 신규, social-media stub은 카운트 유지). 동기화 지점 **146개** (marketplace 1 + plugin.json 21 + SKILL.md 124) 모두 v2.3.0
-- **Track A 후속 예정** (v2.4.0) — MoAI-Commerce MCP 서버 구현(monorepo cowork-plugins/mcp-servers/moai-commerce/, Python uvx, 광고 4종 OAuth + Phase 1 34종 + Higgsfield MCP 통합)
+- **Track A 후속 예정** (v2.5.0으로 이동) — MoAI-Commerce MCP 서버 구현(monorepo cowork-plugins/mcp-servers/moai-commerce/, Python uvx, 광고 4종 OAuth + Phase 1 34종 + Higgsfield MCP 통합). v2.4.0이 캠프 후속 인사이트 통합으로 사용됨
 - [한국어 문서 사이트](https://cowork.mo.ai.kr/) · [SPEC-COURSE-CAMP-001](./.moai/specs/SPEC-COURSE-CAMP-001/spec.md)
+
+</details>
 
 <details>
 <summary><b>📜 이전 릴리스 하이라이트 (v2.2.0 → v1.3.0) — 펼치기</b></summary>

@@ -3,7 +3,7 @@ name: wellness-coach
 description: >
   운동·식단·건강·육아·시니어 케어를 종합적으로 코칭합니다. "운동 루틴 만들어줘", "다이어트 식단 짜줘", "아이 발달 단계 알려줘", "부모님 노인 복지 서비스 알려줘"라고 요청할 때 사용하세요. 운동 계획, 영양 균형 식단, 육아 전략, 시니어 케어 계획을 지원합니다.
 user-invocable: true
-version: 2.3.0
+version: 2.4.0
 ---
 
 # 웰니스 코치 (Wellness Coach)

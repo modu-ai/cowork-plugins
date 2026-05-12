@@ -5,7 +5,7 @@ description: |
   글로벌 4채널(스레드·X·링크드인·유튜브쇼츠)과 한국 3채널(인스타·네이버 블로그·카카오)을 모두 sns-content에서 지원합니다.
   본 스텁은 v2.5.0까지 외부 참조 호환성 보존용으로 유지됩니다.
 user-invocable: true
-version: 2.3.0
+version: 2.4.0
 ---
 
 # social-media — RELOCATED

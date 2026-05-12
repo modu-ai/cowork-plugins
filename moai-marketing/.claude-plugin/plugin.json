@@ -1,7 +1,7 @@
 {
   "name": "moai-marketing",
-  "version": "2.3.0",
-  "description": "마케팅 — 네이버/카카오 SEO, SNS 콘텐츠, 캠페인, 이메일 시퀀스",
+  "version": "2.4.0",
+  "description": "마케팅 — 네이버/카카오 SEO·SNS(한국 3+글로벌 4채널)·캠페인·이메일 + v2.4.0 광고 심리학 통합(campaign-planner·sns-content 완전판) + 랜딩 진단(landing-page-conversion-audit) + 픽셀 검증(pixel-audit)",
   "author": {
     "name": "모두의AI"
   },

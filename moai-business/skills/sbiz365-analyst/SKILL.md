@@ -16,7 +16,7 @@ description: |
   - "경쟁 분석", "유동인구 분석", "예상 매출 분석"
   - bigdata.sbiz.or.kr, 소상공인365, 소상공인 빅데이터 관련 분석 요청
 user-invocable: true
-version: 2.3.0
+version: 2.4.0
 ---
 
 # 소상공인365 상권분석 전문가 스킬

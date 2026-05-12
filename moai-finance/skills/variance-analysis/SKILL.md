@@ -5,7 +5,7 @@ description: >
   '예산 대비 실적 분석해줘', '매출 미달 원인 찾아줘', '비용 초과 분석해줘'처럼 말하면 됩니다.
   매출·비용·이익 항목별 분산 원인 분석, KPI 추적, 수익성 개선 권고안 도출을 지원합니다.
 user-invocable: true
-version: 2.3.0
+version: 2.4.0
 ---
 
 # 분산 분석 (Variance Analysis)

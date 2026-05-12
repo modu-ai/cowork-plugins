@@ -13,7 +13,7 @@ description: |
   - "주간 시장 동향 알려줘", "위클리 브리핑", "경쟁사 모니터링 보고서"
   - "업계 뉴스 요약", "아침 브리핑", "비즈니스 동향"
 user-invocable: true
-version: 2.3.0
+version: 2.4.0
 ---
 
 # 데일리 브리핑 (Daily Briefing)

@@ -1,13 +1,13 @@
 ---
 title: "Claude Cowork 한국어 문서"
-description: "Claude Cowork 한국어 가이드 — 지식 근로자를 위한 설치·스킬·플러그인·쿡북 완전판. cowork-plugins 21종 카탈로그 + 124 스킬 포함."
+description: "Claude Cowork 한국어 가이드 — 지식 근로자를 위한 설치·스킬·플러그인·쿡북 완전판. cowork-plugins 21종 카탈로그 + 129 스킬 포함."
 geekdocAnchor: false
 geekdocBreadcrumb: false
 ---
 
 <div class="cw-hero">
   <div class="eyebrow"><span class="dot"></span>v{{< version >}} · {{< release-date >}} · cowork.mo.ai.kr</div>
-  <h1>업무에 바로 쓰는<br/><span class="accent">AI 협업 스킬</span> 124종.</h1>
+  <h1>업무에 바로 쓰는<br/><span class="accent">AI 협업 스킬</span> 129종.</h1>
   <p class="lead-p">
     21개 분야에 걸친 MoAI-Cowork 플러그인 모음. Claude Code에서 슬래시 한 번으로 사업계획서·IR 덱·계약서·블로그·정부지원사업 신청서·<strong>이커머스 광고 풀세트</strong>까지 — 한국어로, 끝까지.
   </p>
@@ -16,7 +16,7 @@ geekdocBreadcrumb: false
     <a class="btn btn--ghost" href="/plugins/">플러그인 둘러보기</a>
   </div>
   <div class="cw-hero-meta">
-    <div class="item"><div class="num">124</div><div class="lbl">총 스킬</div></div>
+    <div class="item"><div class="num">129</div><div class="lbl">총 스킬</div></div>
     <div class="item"><div class="num">21</div><div class="lbl">분야 플러그인</div></div>
     <div class="item"><div class="num">78</div><div class="lbl">문서 페이지</div></div>
     <div class="item"><div class="num">v{{< version >}}</div><div class="lbl">최신 릴리스</div></div>
@@ -54,7 +54,7 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
 
 <div class="cw-sect-head">
   <h2 id="plugins-grid" style="margin:0"><span class="num">21</span>분야별 플러그인</h2>
-  <span class="meta">총 124개 스킬 · 21개 도메인</span>
+  <span class="meta">총 129개 스킬 · 21개 도메인</span>
 </div>
 
 <div class="cw-grid">
@@ -203,28 +203,36 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
 </div>
 
 <div class="cw-sect-head">
-  <h2 id="release-summary" style="margin:0"><span class="num">v2.3</span>최근 릴리스</h2>
+  <h2 id="release-summary" style="margin:0"><span class="num">v2.4</span>최근 릴리스</h2>
   <span class="meta">CHANGELOG.md 기반</span>
 </div>
 
 <div class="cw-timeline">
   <div class="cw-rel latest">
     <div class="ver-row">
+      <span class="ver">v2.4.0</span>
+      <span class="date">2026-05-12</span>
+      <span class="badge">MINOR</span>
+    </div>
+    <div class="ttl">"캠프 후속 인사이트 통합본" — 13건(신규 5 + 강화 8)</div>
+    <div class="desc">정해준 강사 본인 노하우 3개 문서(쿠팡 매출 9배 비법 전자책 126p + 커머스 업무 자동화 24p + 커머스 매출향상 AI 활용 26p) + 광고 심리학 완전판(13장 376줄)을 분석해 통합. 캠프 D-14 운영 직전에 본인 비법을 스킬 13건으로 최대치 활용 가능.</div>
+    <ul>
+      <li><strong>moai-commerce 신규 3</strong> — coupang-ad-optimizer(쿠팡 광고 풀세트: 3 캠페인 분류·검색/비검색 분리·엔드 ROAS·자동규칙 3종, 정해준 강사 6개월 노하우 wrapper), commerce-margin-calculator(채널별 수수료 자동 마진·엔드 ROAS), commerce-automation-audit(6대 영역 진단·우선순위 점수·3 Phase 로드맵·HITL Golden Rule)</li>
+      <li><strong>moai-marketing 신규 2</strong> — landing-page-conversion-audit(랜딩 6섹션 진단·CTR/CVR 분기·불안해소 처방), pixel-audit(메타·구글 픽셀·CAPI·Lookalike 씨앗 품질)</li>
+      <li><strong>강화 8</strong> — commerce-product-naming(공식 4요소·금지 키워드 9종), detail-page-copy(PAS·혜택 언어 3단계), commerce-jtbd-persona(심리적 필요 4종·타겟 온도), commerce-channel-message(6 방아쇠·8 편향·채널 매트릭스), commerce-integrated-strategy(자동화 4단계·3 Phase·HITL), commerce-market-research(포지셔닝 5축·새 카테고리), campaign-planner(광고 심리학 완전판), sns-content(채널별 심리·메타 학습 기간)</li>
+      <li>마켓플레이스 124 → <strong>129 스킬</strong>. 동기화 지점 151개 (marketplace 1 + plugin.json 21 + SKILL.md 129) 모두 v2.4.0</li>
+      <li>인사이트 원전 — 정해준 강사 본인 노하우 3개 문서 + "온라인 광고의 심리학" 13장 + 시크릿팡 마진계산기 로직 참고</li>
+      <li><strong>후속 (v2.5.0 예정)</strong> — Track A MoAI-Commerce MCP 서버 (광고 4종 + Phase 1 34종 + Higgsfield)</li>
+    </ul>
+  </div>
+  <div class="cw-rel">
+    <div class="ver-row">
       <span class="ver">v2.3.0</span>
       <span class="date">2026-05-12</span>
       <span class="badge">MINOR</span>
     </div>
     <div class="ttl">"모두의 커머스 3일 마스터 캠프" 통합본 — 17 신규 + 6 강화 스킬</div>
-    <div class="desc">월 매출 100만~10억 스마트스토어·자사몰 셀러가 외주 없이 3일 만에 신상품 1개의 상세페이지·광고·SNS·동영상을 직접 제작·운영하는 21세션·18개 산출물 데이터 체인 강의의 백엔드 도구. Day 1 셋업·Day 2 V6 6도구·Day 3 신규 AI 모델·D+1~D+30 follow-up까지 자연어 한 줄 입력으로 자동 호출.</div>
-    <ul>
-      <li><strong>Day 2 V6 6도구</strong> (moai-commerce) — 시장조사 4 MCP, JTBD 9 + 페르소나 3, 상품명 3안+검증, NCM 메시지 15종, 통합 전략 1장, 상세페이지 강화(진단+페르소나 카피)</li>
-      <li><strong>Day 3 광고 풀세트 6스킬</strong> (moai-media) — 무드보드·GPT Image 2 8단계·Kling/Veo/Seedance 자동 라우팅·채널 규격 변환·AI 표기·캔바 매직 레이어</li>
-      <li><strong>Day 1 셋업 3스킬</strong> — MCP 4커넥터 인증·매장 모닝브리프·채널 통합 주문 요약</li>
-      <li><strong>moai-education 활성화 2스킬</strong> — 3일 21세션 운영 매뉴얼 + D+1~D+30 후기 자산화 시퀀스</li>
-      <li><strong>Track C 페어 정리</strong> — social-media→sns-content 흡수(글로벌 4채널 추가), campaign-planner 책임 분리</li>
-      <li>마켓플레이스 108 → <strong>124 스킬</strong>. 동기화 지점 146개 (marketplace 1 + plugin.json 21 + SKILL.md 124) 모두 v2.3.0</li>
-      <li>SPEC 작성 — .moai/specs/ 하위 7개 SPEC, 총 84 EARS REQ</li>
-    </ul>
+    <div class="desc">월 매출 100만~10억 스마트스토어·자사몰 셀러가 외주 없이 3일 만에 신상품 1개의 상세페이지·광고·SNS·동영상을 직접 제작·운영하는 21세션·18개 산출물 데이터 체인 강의의 백엔드 도구.</div>
   </div>
   <div class="cw-rel">
     <div class="ver-row">

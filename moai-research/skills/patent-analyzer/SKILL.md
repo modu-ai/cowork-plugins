@@ -5,7 +5,7 @@ description: >
   '특허 분석해줘', '선행기술 조사', 'FTO 분석', '특허 맵', '특허 출원서 초안'이라고 요청할 때 사용하세요.
   특허 동향 분석, 선행기술 보고서, FTO(Freedom-to-Operate) 분석, 출원서 초안을 작성합니다.
 user-invocable: true
-version: 2.3.0
+version: 2.4.0
 ---
 
 # 특허 분석 (Patent Analyzer)

@@ -7,7 +7,7 @@ description: >
   먼저 묻고, Mermaid / Recharts / Chart.js / Tremor / ECharts 중 적합한 스택으로
   인터랙티브 대시보드를 제작합니다. moai-office로 PPT/Word 변환도 지원합니다.
 user-invocable: true
-version: 2.3.0
+version: 2.4.0
 ---
 
 # 데이터 시각화 (Data Visualizer)

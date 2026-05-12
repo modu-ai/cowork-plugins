@@ -8,7 +8,7 @@ description: >
   Pillow 기반 자체 합성 스크립트(scripts/compose.py)로 1080×12720 세로 합성 PNG를 만듭니다.
   외부 패키지 설치 불필요 — 합성 로직은 cowork에 자체 구현되어 있습니다.
 user-invocable: true
-version: 2.3.0
+version: 2.4.0
 ---
 
 # 상세페이지 이미지 합성 (Detail Page Image Composer)

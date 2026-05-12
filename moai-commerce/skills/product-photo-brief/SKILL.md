@@ -7,7 +7,7 @@ description: >
   형태·소재·색상·시그니처 앵글·포지셔닝(mass/premium_indie/luxury)을 추출하고,
   13섹션별 사용 가능한 컷 매핑 + 추가 촬영 권장 리스트를 산출합니다.
 user-invocable: true
-version: 2.3.0
+version: 2.4.0
 ---
 
 # 상품 사진 사전 브리프 (Product Photo Brief)

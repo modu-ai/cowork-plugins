@@ -1,10 +1,12 @@
 # moai-marketing
 
-마케팅 플러그인 — 네이버/카카오 SEO, **한국 3채널 + 글로벌 4채널 SNS 통합**(v2.3.0), 캠페인 기획, 이메일 시퀀스, 퍼포먼스 리포트.
+마케팅 플러그인 — 네이버/카카오 SEO, **한국 3채널 + 글로벌 4채널 SNS 통합**(v2.3.0), 캠페인 기획, 이메일 시퀀스, 퍼포먼스 리포트, **광고 심리학 완전판**(v2.4.0).
 
-[![버전](https://img.shields.io/badge/version-2.3.0-blue)](../CHANGELOG.md)
+[![버전](https://img.shields.io/badge/version-2.4.0-blue)](../CHANGELOG.md)
 [![라이선스](https://img.shields.io/badge/license-MIT-green)](../LICENSE)
-[![스킬](https://img.shields.io/badge/skills-8-success)](#스킬)
+[![스킬](https://img.shields.io/badge/skills-10-success)](#스킬)
+
+> **v2.4.0 신규 2 + 강화 2** — `landing-page-conversion-audit`(랜딩 6섹션 진단 + CTR/CVR 분기 + 불안해소 문구 처방), `pixel-audit`(메타·구글 픽셀 + CAPI + Lookalike 씨앗 품질) + `campaign-planner`/`sns-content` 광고 심리학 완전판 통합(6 방아쇠·8 편향·PAS·후크 6종·채널별 심리 매트릭스)
 
 국내 플랫폼(네이버 블로그, 카카오 채널, 인스타그램)과 글로벌 플랫폼(스레드·X·링크드인·유튜브 쇼츠) 특성에 맞춘 콘텐츠 전략과 퍼포먼스 마케팅을 지원합니다. 2026년 네이버 C-Rank, GEO(생성형 검색 최적화) 등 최신 알고리즘을 반영합니다.
 
@@ -24,6 +26,8 @@
 | [email-sequence](./skills/email-sequence/) | 정보통신망법 준수 이메일 시퀀스, 드립 캠페인, 온보딩/재활성화 | 0 | ✅ |
 | [performance-report](./skills/performance-report/) | GA4/메타/네이버/카카오모먼트 채널별 ROAS 분석, KPI 대시보드 [책임 경계: 마케팅 채널 성과] | 0 | ✅ |
 | [target-script](./skills/target-script/) | 타겟 오디언스 분석 + 채널별 메시징 스크립트 자동 생성 (인스타·블로그·이메일·LinkedIn) | 1 | ✅ |
+| [landing-page-conversion-audit](./skills/landing-page-conversion-audit/) | **🆕 v2.4.0** — 랜딩페이지 6섹션 구조 진단 + 진단 분기(CTR↓→광고 / CVR↓→랜딩 / 장바구니↓→결제) + 빠른 처방 3종(불안해소 문구 +10~20% / 메시지 일치 / 간편결제). 자료 4 §9 wrapper | 0 | ✅ |
+| [pixel-audit](./skills/pixel-audit/) | **🆕 v2.4.0** — 메타·구글 픽셀 설치 검증 + 3종 실수 점검(구매자 미제외/이벤트 파라미터 미설정/CAPI 미설치) + 1st Party 데이터 활용 + Lookalike 씨앗 품질(VIP 상위 20% 권장) | 0 | ✅ |
 
 ## sns-content 채널 매트릭스 (v2.3.0)
 
@@ -85,6 +89,7 @@ LinkedIn 포스팅 만들어줘. B2B SaaS 창업자, 시드 라운드 클로징 
 
 ## 변경 이력
 
+- **v2.4.0** (2026-05-12): 광고 심리학 완전판 통합 — 신규 2 (`landing-page-conversion-audit` 랜딩 6섹션 진단 + `pixel-audit` 픽셀·Lookalike 검증) + 강화 2 (`campaign-planner` 6 방아쇠·8 편향·PAS·후크 6종·영상 30초·타겟 온도 × 동기 매트릭스 + `sns-content` 채널별 심리·메타 학습 48~72h). 8 → **10 스킬**. 자료 4 "온라인 광고의 심리학" 13장 376줄 통합
 - **v2.3.0** (2026-05-12): Track C 페어 정리 — `sns-content` 한국 3채널 + 글로벌 4채널 통합 단일 진입점화(`moai-content:social-media` 흡수), `campaign-planner` 책임 분리(상세페이지·이미지 책임을 moai-commerce/moai-media로 이관). 15개 페어 description [책임 경계] 명시. 8 스킬 유지
 - **v2.0.0** (2026-05-04): cowork v2.0.0 — Breaking change 없음
 

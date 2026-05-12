@@ -13,7 +13,7 @@ description: |
   - "C레벨 요약", "executive summary 작성", "임원 보고서 요약"
   - "긴 보고서 1페이지로 줄여줘", "경영진용 핵심 요약"
 user-invocable: true
-version: 2.3.0
+version: 2.4.0
 ---
 
 # Executive Summary — 경영진 1페이지 요약

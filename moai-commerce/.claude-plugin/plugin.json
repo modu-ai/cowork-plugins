@@ -1,7 +1,7 @@
 {
   "name": "moai-commerce",
-  "version": "2.3.0",
-  "description": "이커머스 상세페이지 자동화 — 13섹션 감정여정 카피 생성, 1080×12720 이미지 합성, 쿠팡·스마트스토어 마켓 가이드, 상품 사진 촬영 브리프",
+  "version": "2.4.0",
+  "description": "이커머스 풀세트 — 13섹션 상세페이지·1080×12720 이미지 합성·5개 채널 가이드·V6 6도구·식약처 + v2.4.0 신규 쿠팡 광고 풀세트(coupang-ad-optimizer) + 마진/엔드ROAS 계산(commerce-margin-calculator) + 자동화 진단(commerce-automation-audit)",
   "author": {
     "name": "모두의AI"
   },

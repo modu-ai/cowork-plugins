@@ -1,14 +1,14 @@
 ---
 title: "플러그인 카탈로그"
 weight: 1
-description: "modu-ai/cowork-plugins 마켓플레이스의 21개 플러그인·124개 스킬을 도메인별로 정리한 카탈로그입니다."
+description: "modu-ai/cowork-plugins 마켓플레이스의 21개 플러그인·129개 스킬을 도메인별로 정리한 카탈로그입니다."
 geekdocBreadcrumb: true
 geekdocCollapseSection: false
 ---
 
 # `cowork-plugins` 카탈로그
 
-[`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins)는 한국 업무 환경에 맞춰 설계된 **21개 플러그인 · 124개 스킬**의 커뮤니티 마켓플레이스입니다. 사업계획·IR·마케팅·법무·세무·HR·카드뉴스·PPT·이미지 생성·이커머스 캠프까지 도메인별로 묶여 있습니다.
+[`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins)는 한국 업무 환경에 맞춰 설계된 **21개 플러그인 · 129개 스킬**의 커뮤니티 마켓플레이스입니다. 사업계획·IR·마케팅·법무·세무·HR·카드뉴스·PPT·이미지 생성·이커머스 캠프까지 도메인별로 묶여 있습니다.
 
 ```mermaid
 flowchart LR
@@ -61,7 +61,7 @@ flowchart LR
 ```
 
 {{< hint type="note" >}}
-**v2.3.0 업데이트**: "모두의 커머스 3일 마스터 캠프" 통합본 — 17 신규 + 6 강화 스킬. Day 1 셋업(MCP 4커넥터)·Day 2 V6 6도구·Day 3 광고 풀세트(GPT Image 2·Kling/Veo/Seedance 라우터)·D+1~D+30 후기 자산화. Track C 페어 정리로 책임 경계 명확화. 전체 **124개 스킬 · 21개 플러그인** 체제. Breaking change 없음.
+**v2.4.0 업데이트**: "캠프 후속 인사이트 통합본" — 정해준 강사 본인 노하우 3개 문서 + 광고 심리학 완전판 분석 → 13건(신규 5 + 강화 8) 통합. **신규 5**: coupang-ad-optimizer / commerce-margin-calculator / commerce-automation-audit / landing-page-conversion-audit / pixel-audit. **강화 8**: product-naming·detail-page-copy·jtbd-persona·channel-message·integrated-strategy·market-research·campaign-planner·sns-content. 전체 **129개 스킬 · 21개 플러그인** 체제. Breaking change 없음.
 {{< /hint >}}
 
 ## 전제 조건
@@ -121,8 +121,8 @@ flowchart LR
 | [moai-office](./moai-office/) | 5 | pptx-designer, docx-generator, xlsx-creator, hwpx-writer, pdf-writer |
 | [moai-media](./moai-media/) | 13 | nano-banana, image-gen, video-gen, audio-gen, speech-video, character-mgmt, fal-gateway, **media-moodboard·media-gpt-image2-builder·media-model-router·media-channel-ad-packager·media-ai-disclosure·media-canva-magic-layer (v2.3)** |
 | [moai-business](./moai-business/) | 10 | strategy-planner, investor-relations, sbiz365-analyst, kr-gov-grant, consulting-brief, sales-playbook, startup-launchpad +3종 |
-| [moai-marketing](./moai-marketing/) | 8 | brand-identity, seo-audit, campaign-planner, sns-content (확장 v2.3), target-script +3종 |
-| [moai-commerce](./moai-commerce/) | 19 | mfds-safety, real-estate-search, detail-page-copy (강화 v2.3), **commerce-market-research·commerce-jtbd-persona·commerce-product-naming·commerce-channel-message·commerce-integrated-strategy·commerce-morning-brief·commerce-order-summary (v2.3 V6 6도구)** +6종 |
+| [moai-marketing](./moai-marketing/) | 10 | brand-identity, seo-audit, campaign-planner (강화 v2.4 광고 심리학 완전판), sns-content (확장 v2.3 + 강화 v2.4), target-script, **landing-page-conversion-audit·pixel-audit (v2.4 신규)** +3종 |
+| [moai-commerce](./moai-commerce/) | 22 | mfds-safety, real-estate-search, detail-page-copy (강화 v2.3+v2.4), commerce-market-research·commerce-jtbd-persona·commerce-product-naming·commerce-channel-message·commerce-integrated-strategy·commerce-morning-brief·commerce-order-summary (v2.3 V6 6도구), **coupang-ad-optimizer·commerce-margin-calculator·commerce-automation-audit (v2.4 신규)** +6종 |
 | [moai-product](./moai-product/) | 4 | spec-writer, ux-designer +2종 |
 | [moai-operations](./moai-operations/) | 3 | status-reporter +2종 |
 | [moai-support](./moai-support/) | 4 | ticket-triage +3종 |
@@ -138,7 +138,7 @@ flowchart LR
 | [moai-pm](./moai-pm/) | 1 | project-manager |
 | [moai-sales](./moai-sales/) | 1 | sales-prospecting |
 
-전체 **124개 스킬 · 21개 플러그인** (v2.3.0 기준).
+전체 **129개 스킬 · 21개 플러그인** (v2.4.0 기준).
 
 ## 다음 단계
 

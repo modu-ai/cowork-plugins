@@ -7,7 +7,7 @@ description: |
   "레퍼런스 이미지 찾아줘", "분위기 기획해줘", "톤 앤 매너 정해줘", "Day3 S1 무드보드".
   V6 Day3 ⑫ 무드보드 1장 + 작업 카드 생성 (산출물 ⑫, Day3 S1 10:10–10:25 시연 시점, SPEC §3.1).
 user-invocable: true
-version: 2.3.0
+version: 2.4.0
 ---
 
 # media-moodboard — Day 3 S1 무드보드 자동 생성

@@ -7,7 +7,7 @@ description: |
   "광고 소재 패키징", "채널별 변환", "Day3 S6 패키징", "광고 소재 .zip".
   V6 Day3 ⑰ 채널별 광고 소재 세트 .zip (Day3 S6 16:20–16:45 수강생 실습, SPEC §3.1).
 user-invocable: true
-version: 2.3.0
+version: 2.4.0
 ---
 
 # media-channel-ad-packager — Day 3 S6 채널별 광고 소재 패키징

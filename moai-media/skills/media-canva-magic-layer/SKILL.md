@@ -7,7 +7,7 @@ description: |
   "카피만 교체해줘", "시즌 광고 재사용", "GPT Image 2 재호출 없이 카피 변경", "Day3 S7 캔바".
   V6 Day3 S7 (17:40–17:45) 강사 5분 시연 보너스 산출물 (부록 D 매직 레이어 가이드, SPEC §3.1).
 user-invocable: true
-version: 2.3.0
+version: 2.4.0
 ---
 
 # media-canva-magic-layer — Day 3 S7 Canva 매직 레이어 가이드

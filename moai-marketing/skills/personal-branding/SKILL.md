@@ -12,7 +12,7 @@ description: >
   기업/제품 브랜딩은 brand-identity 스킬을 사용하세요.
   SNS 콘텐츠 단독 작성은 sns-content 스킬이 더 적합합니다.
 user-invocable: true
-version: 2.3.0
+version: 2.4.0
 ---
 
 # 개인 브랜딩 (Personal Branding)

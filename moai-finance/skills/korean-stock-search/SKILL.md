@@ -13,7 +13,7 @@ description: |
   - "20260408 종가", "어제 거래량", "전일 등락률"
   - moai-finance의 DART 공시 분석을 보완하는 KRX 시세 데이터 필요 시
 user-invocable: true
-version: 2.3.0
+version: 2.4.0
 ---
 
 # KRX 한국 주식 검색·시세

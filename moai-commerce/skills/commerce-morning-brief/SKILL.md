@@ -7,7 +7,7 @@ description: |
   ai-slop-reviewer 체이닝 제외 (MCP 매장 운영 숫자·데이터 1줄 통합 스킬).
   v2.3.0 신규 (Wave 3 — Day 1 S4·S5 라이브 시연).
 user-invocable: true
-version: 2.3.0
+version: 2.4.0
 ---
 
 # 커머스 아침 브리핑

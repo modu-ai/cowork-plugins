@@ -17,7 +17,7 @@ description: |
 
   Adapted from epoko77-ai/im-not-ai (MIT, ⭐937) v1.6.1 — humanize-monolith Fast 모드 단일 스킬 변형.
 user-invocable: true
-version: 2.3.0
+version: 2.4.0
 ---
 
 # Humanize Korean — 한국어 AI 티 제거 (Fast 모드)

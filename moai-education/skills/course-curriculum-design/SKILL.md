@@ -7,7 +7,7 @@ description: |
   체인: course-curriculum-design → moai-core:ai-slop-reviewer (운영 매뉴얼 텍스트 검수) → moai-office:docx-generator (Word .docx 출력).
   v2.3.0 신규 (Wave 4 — moai-education 신규 활성화).
 user-invocable: true
-version: 2.3.0
+version: 2.4.0
 ---
 
 # 강의 운영 매뉴얼 자동 생성

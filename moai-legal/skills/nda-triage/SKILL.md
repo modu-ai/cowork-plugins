@@ -6,7 +6,7 @@ description: >
   'NDA 위험 조항 찾아줘', '비밀유지계약 수정 권고해줘'라고 요청하세요.
   한국 민법·영업비밀보호법 기준 조항별 위험도 평가, 수정 권고안을 제공합니다.
 user-invocable: true
-version: 2.3.0
+version: 2.4.0
 ---
 
 # NDA 트리아지 (NDA Triage)

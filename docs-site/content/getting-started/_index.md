@@ -4,7 +4,7 @@ weight: 1
 description: "MoAI Cowork Plugins 설치부터 첫 작업까지 빠른 시작 가이드"
 geekdocBreadcrumb: true
 ---
-MoAI Cowork Plugins은 21개의 플러그인과 124개의 스킬로 구성된 Claude Cowork 전용 플러그인 제품군입니다. 이 가이드는 설치부터 첫 작업까지 세 가지 경로를 통해 빠르게 시작하는 방법을 안내합니다.
+MoAI Cowork Plugins은 21개의 플러그인과 129개의 스킬로 구성된 Claude Cowork 전용 플러그인 제품군입니다. 이 가이드는 설치부터 첫 작업까지 세 가지 경로를 통해 빠르게 시작하는 방법을 안내합니다.
 
 ## 학습 경로
 

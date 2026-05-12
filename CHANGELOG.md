@@ -6,12 +6,69 @@
 
 ## 버전 통일 원칙 (HARD)
 
-아래 146개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.0.0부터 SKILL.md frontmatter `version:` 복구):
+아래 151개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.0.0부터 SKILL.md frontmatter `version:` 복구):
 - `.claude-plugin/marketplace.json` (`metadata.version`) × 1
 - `<plugin>/.claude-plugin/plugin.json` (`version`) × 21
-- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 124 (v2.3.0+ 정책)
+- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 129 (v2.4.0+)
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
+
+## [2.4.0] - 2026-05-12
+
+MINOR. **캠프 후속 인사이트 통합본** — 정해준 강사 본인 노하우 3개 문서(쿠팡 매출 9배 비법 전자책 126p + 커머스 업무 자동화 24p + 커머스 매출향상 AI 활용 26p) + 광고 심리학 완전판(13장 376줄)을 분석해 **13건(신규 5 + 강화 8)** 통합. 124 → **129 스킬**, 동기화 지점 146 → 151.
+
+### Added (신규 5 스킬)
+
+**moai-commerce 신규 3**
+
+- `moai-commerce:coupang-ad-optimizer` — 쿠팡 광고 풀세트 최적화. 3 캠페인 유형(AI스마트/매출최적화/수동키워드) 자동 분류 + 검색영역 vs 비검색영역 매출 분리 분석(CPM 167배 차이) + 엔드 ROAS(본전 ROAS) 자동 계산 + 자동규칙 3종 가이드(골든타임/350%이상 증액/100%미만 알림) + 상품별 의사결정 분기(ROAS·CTR·CVR). 정해준 강사 본인 6개월 노하우(월매출 7천→3.6억, 광고비 30%→11.2%) wrapper.
+- `moai-commerce:commerce-margin-calculator` — 상품별 마진·엔드 ROAS·손익분기 광고비 자동 계산. 채널별 수수료(스마트스토어 5.94% / 쿠팡 10~12% / 카페24 2~3% / 아임웹 0~2.5%) + 부가세 10% + 결제 수수료 + 쿠폰 자동 반영. 시크릿팡 마진계산기 차용 + AI 챗봇 자연어 입력 차별화.
+- `moai-commerce:commerce-automation-audit` — 6대 영역(A 상품운영 / B 가격&프로모션 / C 주문&정산 / D 재고&물류 / E 마케팅&고객 / F 데이터&경영) 진단 + 자동화 3분류(반복형/판단형/창의형) + 우선순위 점수((빈도×시간×오류비용)÷복잡도) + 3 Phase 로드맵(Quick Wins/Core/AI Enhancement) + 5대 KPI + HITL Golden Rule(80% 자동화 + 10배 검수). 정해준 강사 "커머스 업무 자동화" 24p 풀세트 wrapping.
+
+**moai-marketing 신규 2**
+
+- `moai-marketing:landing-page-conversion-audit` — 랜딩페이지 6섹션(히어로·공감·증명·사회증거·CTA·FAQ) 진단 + 진단 분기(CTR↓→광고 / CVR↓→랜딩 / 장바구니↓→결제) + 빠른 처방 3종(불안해소 문구 +10~20% / 메시지 일치 / 간편결제). 자료 4 §9 wrapper.
+- `moai-marketing:pixel-audit` — 메타·구글 픽셀 설치 검증 + 3종 실수 점검(구매자 미제외/이벤트 파라미터 미설정/CAPI 미설치) + 1st Party 데이터 활용 진단 + Lookalike 씨앗 품질 평가(VIP 상위 20% 권장). 자료 4 §5 wrapper.
+
+### Changed (강화 8 스킬)
+
+**moai-commerce 강화 4**
+
+- `commerce-product-naming` 강화 — 공식 4요소 명시 `[브랜드]+[카테고리]+[키워드]+[차별점]` + 매핑 3안 카테고리 명확화(검색 최적화/CTR 최적화/브랜드 강화) + 금지 키워드 9종(최저가·1위·베스트·재입고·인기상품·정품·당일배송·무료배송·특가) + 주의사항 4종(검색어 과다·경쟁사 도용·길이 초과·과장) + 적용 예시 2종(화장품·가전제품)
+- `detail-page-copy` 강화 — 7단계 + 25/50/25 비율 가이드 보강 + 좋은/피해야 할 예시 가이드 + PAS 카피 공식 매핑(7단계 ↔ Problem-Agitate-Solution) + 혜택 언어 3단계 변환법(기능→변화→감정)
+- `commerce-jtbd-persona` 강화 — JTBD 3분류 카테고리별 예시(다이어트 가루 9개) + 심리적 필요 4종 촉발 패턴(보상심리·불안해소·지루함·사회적자극) + 타겟 온도 4단계 메타데이터(콜드/웜/핫/슈퍼)
+- `commerce-channel-message` 강화 — 6 심리 방아쇠(신뢰·손실회피·사회증거·인지쉬움·정체성·앵커링) + 채널별 심리 상태 매트릭스(메타·구글·네이버·카카오·쿠팡) + 인지 편향 8종(프레이밍·후광·타협·현재·매몰비용·제로리스크·선택과부하·디폴트·단순노출)
+- `commerce-integrated-strategy` 강화 — 자동화 4단계 프로세스(나열→분류→점수→결정) + 3 Phase 로드맵 + HITL Golden Rule
+- `commerce-market-research` 강화 — 포지셔닝 5축(품질/가성비/전문성/편의성/가치관) + 새 카테고리 창출 vs 기존 카테고리 경쟁 분석 + 6대 영역 진단 통합
+
+**moai-marketing 강화 2**
+
+- `campaign-planner` 강화 — 광고 심리학 완전판 통합(성과 공식 + 3 동기 + 6 방아쇠 + 8 편향 + PAS + 후크 6종 + 영상 30초 구조 + 타겟 온도 4단계 × 동기 매트릭스 + 1st Party + LTV/CAC + 단계별 예산 배분)
+- `sns-content` 강화 — 채널별 심리 상태 매트릭스 + 메타 학습 기간 48~72시간 가이드 + iOS 14 이후 CAPI·GA4 교차 검증
+
+### 인사이트 원전 (Attribution)
+
+- 정해준 강사 "쿠팡 매출 9배 올려준 광고관리 비법" 전자책 (126p, 본인 6개월 노하우)
+- 정해준 강사 "커머스 업무 자동화 기획" (24p, 6대 영역 + 자동화 프레임워크)
+- 정해준 강사 "커머스 매출향상을 위한 AI 활용 전략" (26p, JTBD + 페르소나 + 상세페이지 + 상품명)
+- "온라인 광고의 심리학" (DOCX, 13장 376줄 완본, 성과 공식 + 심리 방아쇠 + 인지 편향)
+- 시크릿팡 마진계산기 로직 참고 (https://secretpang.kr/?ref=pdf)
+
+### 후속 (v2.5.0 예정)
+
+- Track A MoAI-Commerce MCP 서버 (광고 4종 + Phase 1 34종 + Higgsfield 통합)
+
+### 동기화 지점
+
+- `.claude-plugin/marketplace.json` × 1 (metadata.version)
+- `<plugin>/.claude-plugin/plugin.json` × 21
+- `<plugin>/skills/<skill>/SKILL.md` × 129 (신규 5 포함)
+- 총 **151 지점** 동일 버전 (v2.4.0) 유지
+
+### Migration
+
+- Breaking change 없음 — 기존 워크플로우 그대로 동작
+- 신규 5 스킬은 필요할 때 자연어로 호출 ("쿠팡 광고 분석해줘", "마진 계산해줘", "자동화 진단해줘", "랜딩 진단해줘", "픽셀 점검")
 
 ## [2.3.0] - 2026-05-12
 
