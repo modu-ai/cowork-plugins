@@ -6,6 +6,18 @@ geekdocBreadcrumb: true
 ---
 **법률 트랙**은 계약서 검토부터 문서 생성, AI 검수까지 완결된 법무 컴플라이언스 워크플로우를 제공합니다. 법무팀, 컴플라이언스 담당자, 기업 컨설턴트의 법무 업무를 AI로 자동화합니다.
 
+```mermaid
+flowchart LR
+    A["nda-triage<br/>NDA 빠른 분류"] --> B["contract-review<br/>조항 검토"]
+    B --> C["legal-risk<br/>리스크 평가"]
+    C --> D["compliance-check<br/>규제 준수"]
+    D --> E["docx-generator<br/>보고서"]
+    E --> F["ai-slop-reviewer<br/>검수"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style F fill:#e6ffec,stroke:#30a050
+```
+
 ## 트랙 개요
 
 ### 🎯 목적

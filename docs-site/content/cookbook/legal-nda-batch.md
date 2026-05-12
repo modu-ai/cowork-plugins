@@ -7,6 +7,17 @@ tags: [cookbook, legal]
 ---
 > **목표** — `./nda_inbox/` 폴더의 NDA PDF 12건을 분류·검토하고, 건별 위험도(상/중/하)와 수정 제안이 들어간 위험 보고서를 docx로 생성합니다.
 
+```mermaid
+flowchart LR
+    A["nda-triage<br/>분류·분석"] --> B["contract-review<br/>조항 검토"]
+    B --> C["legal-risk<br/>위험도 평가"]
+    C --> D["docx-generator<br/>보고서 생성"]
+    D --> E["ai-slop-reviewer<br/>어투 정리"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style E fill:#e6ffec,stroke:#30a050
+```
+
 ## 대상 독자
 
 스타트업 법무팀(인하우스 1~3명), 법무법인 어소시에이트, 사업개발 PM이 NDA를 자체 검토할 때.

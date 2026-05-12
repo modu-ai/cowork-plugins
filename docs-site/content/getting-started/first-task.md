@@ -64,6 +64,20 @@ geekdocBreadcrumb: true
 
 요청을 받은 MoAI가 자동으로 전문 스킬 체인을 실행합니다:
 
+```mermaid
+flowchart LR
+    A["사용자 요청<br/>'IR 덱 만들어줘'"] --> B["investor-relations<br/>IR 자료 생성"]
+    B --> C["pptx-designer<br/>PPTX 디자인"]
+    C --> D["ai-slop-reviewer<br/>텍스트 품질 검수"]
+    D --> E["✅ 최종 산출물<br/>.pptx + .xlsx"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style B fill:#e6ffec,stroke:#30a050
+    style C fill:#e6ffec,stroke:#30a050
+    style D fill:#fff4e6,stroke:#e09040
+    style E fill:#dff5dd,stroke:#3a8a3a,stroke-width:2px
+```
+
 1. **investor-relations 스킬** 실행:
    - 투자자 대상 IR 자료 생성
    - 시장 분석 및 경쟁사 대비 분석

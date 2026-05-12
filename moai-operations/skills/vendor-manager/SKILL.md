@@ -3,7 +3,7 @@ name: vendor-manager
 description: >
   공급업체를 평가·선정하고 계약 및 리스크를 관리합니다. "벤더 평가 기준 만들어줘", "공급업체 리스크 레지스터 작성해줘", "계약 관리 체계를 잡아줘"라고 요청할 때 사용하세요. 벤더 선정 기준, 공급업체 평가표, 계약 관리 워크플로우, 리스크 식별 및 대응 계획을 지원합니다.
 user-invocable: true
-version: 2.2.1
+version: 2.3.0
 ---
 
 # 벤더 관리자 (vendor-manager)

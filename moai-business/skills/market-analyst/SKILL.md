@@ -1,6 +1,9 @@
 ---
 name: market-analyst
 description: |
+  [책임 경계] 산업·시장 단위 분석 (TAM/SAM/SOM·포터 5요소·경쟁사 매핑·가격 전략 — 전략 단위 사업 검토용).
+  페어 moai-business:sbiz365-analyst(오프라인 상권 단위)·moai-commerce:commerce-market-research(온라인 카테고리 단위)와 시장 단위 차이로 명확히 구분.
+  사용 분기: 산업 단위 → 본 스킬 / 오프라인 상권 단위 → sbiz365-analyst / 온라인 카테고리·검색 키워드 단위 → commerce-market-research.
   시장 조사, 경쟁사 분석, 가격 전략을 수행하는 시장 분석 전문 스킬입니다.
   TAM/SAM/SOM 산출, 경쟁사 매핑, 포지셔닝 분석, 고객 세분화, 가격 모델 설계를
   체계적으로 수행하여 구조화된 시장 분석 보고서를 생성합니다.
@@ -11,7 +14,7 @@ description: |
   - "가격 전략 수립해줘", "가격 모델 설계", "고객 세분화"
   - "market research", "competitive analysis", "pricing strategy"
 user-invocable: true
-version: 2.2.1
+version: 2.3.0
 ---
 
 # 시장 분석가 (Market Analyst)

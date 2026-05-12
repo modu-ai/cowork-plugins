@@ -1,6 +1,9 @@
 ---
 name: personal-branding
 description: >
+  [책임 경계] 개인 브랜드 단독 전략 (전문성·커리어·창업자 포지셔닝·전문가 등급 목표).
+  페어 moai-marketing:brand-identity와 명확히 구분 — 본 스킬은 개인, 페어는 기업·제품 브랜드.
+  채널별 SNS 콘텐츠 운영은 moai-marketing:sns-content와 보완 관계 — 본 스킬에서 포지셔닝 도출 후 sns-content에서 채널별 콘텐츠 작성 체이닝 권장.
   개인의 전문성과 영향력을 브랜드화하여 커리어와 사업 성장을 지원합니다.
   "개인 브랜딩", "퍼스널 브랜딩", "전문가 브랜딩", "커리어 브랜딩", "자기 브랜딩",
   "개인 브랜드 만들어줘", "포트폴리오 전략", "전문가 포지셔닝", "개인 SNS 전략",
@@ -9,7 +12,7 @@ description: >
   기업/제품 브랜딩은 brand-identity 스킬을 사용하세요.
   SNS 콘텐츠 단독 작성은 sns-content 스킬이 더 적합합니다.
 user-invocable: true
-version: 2.2.1
+version: 2.3.0
 ---
 
 # 개인 브랜딩 (Personal Branding)

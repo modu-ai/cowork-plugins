@@ -1,13 +1,16 @@
 ---
 name: target-script
 description: >
+  [책임 경계] 타겟 분석·페인포인트 도출 → 핵심 메시지 → 채널 변환 → A/B 테스트 (5단계 파이프라인 — 메시지 전략 분석 앞단).
+  페어 moai-commerce:commerce-copywriting과 체이닝 관계 — 본 스킬은 분석·전략(앞단), 페어는 채널별 카피 산출(뒷단).
+  체이닝 권장: target-script(전략 분석) → commerce-copywriting(이커머스 채널별 카피) 또는 → copywriting(범용 카피).
   타겟 고객 맞춤 메시징 스크립트를 생성합니다. 타겟 오디언스 분석부터 채널별 메시지 스크립트를
   파이프라인으로 처리하는 Pipeline 패턴 기반 스킬입니다.
   "타겟 스크립트 만들어줘", "타겟 메시징 전략 짜줘", "고객 맞춤 메시지 필요해",
   "buyer persona 카피라이팅", "채널별 스크립트 생성", "타겟 고객별 메시지",
   "이메일 템플릿 만들어줘", "SNS 카피 작성", "landing page 메시지"라고 요청하세요.
 user-invocable: true
-version: 2.2.1
+version: 2.3.0
 ---
 
 # 타겟 스크립트 (Target Script)

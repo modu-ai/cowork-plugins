@@ -4,7 +4,7 @@ description: |
   통합 오디오 생성 스킬. ElevenLabs MCP 기반 TTS(32개국어), 보이스 클로닝(1분 샘플), 다국어 더빙(립싱크), 효과음 생성을 지원.
   "목소리 생성", "TTS", "음성 합성", "보이스 클로닝", "더빙", "나레이션", "효과음", "AI 음성" 요청 시 사용.
 user-invocable: true
-version: 2.2.1
+version: 2.3.0
 ---
 
 # audio-gen

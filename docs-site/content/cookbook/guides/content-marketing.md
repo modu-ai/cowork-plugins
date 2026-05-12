@@ -6,6 +6,18 @@ geekdocBreadcrumb: true
 ---
 > 콘텐츠 마케팅은 한 번의 히트가 아니라 *지속 가능한 발행 리듬*에서 효과가 나옵니다. cowork-plugins는 기획·작성·검수·게시 전 단계를 자동화해 그 리듬을 만들 수 있게 합니다.
 
+```mermaid
+flowchart LR
+    A["campaign-planner<br/>캠페인 기획"] --> B["blog / copywriting<br/>콘텐츠 작성"]
+    B --> C["seo-audit<br/>SEO 최적화"]
+    C --> D["ai-slop-reviewer<br/>톤 검수"]
+    D --> E["performance-report<br/>성과 분석"]
+    E -- "피드백" --> A
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style E fill:#e6ffec,stroke:#30a050
+```
+
 ## 사용 스킬
 
 | 단계 | 스킬 | 용도 |

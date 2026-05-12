@@ -7,6 +7,19 @@ tags: [cookbook, business]
 ---
 > **목표** — 사업계획서 내용을 받아 투자자 앞에서 15분 안에 끝낼 수 있는 **15장 PPT 피칭 덱**을 만듭니다.
 
+```mermaid
+flowchart LR
+    A["사업계획서<br/>입력"] --> B["investor-relations<br/>스토리라인 + 재무"]
+    B --> C["pptx-designer<br/>15장 PPTX"]
+    C --> D["ai-slop-reviewer<br/>발표용 문장 압축"]
+    D --> E{"추가"}
+    E -- "히어로 이미지" --> F["nano-banana"]
+    E -- "PDF 변환" --> G["배포용 PDF"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style D fill:#e6ffec,stroke:#30a050
+```
+
 ## 대상 독자
 
 Seed·Series A·B 투자 유치를 준비하는 스타트업 창업가.

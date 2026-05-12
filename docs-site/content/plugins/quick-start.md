@@ -13,13 +13,46 @@ geekdocBreadcrumb: true
 
 ## 전체 흐름
 
+```mermaid
+flowchart LR
+    A["① 마켓플레이스<br/>등록"] --> B["② moai-core<br/>설치"]
+    B --> C["③ 도메인<br/>플러그인 선택"]
+    C --> D["④ 프로젝트 생성<br/>/project init"]
+    D --> E["⑤ 첫 요청<br/>자연어 입력"]
+    E --> F["⑥ 산출물<br/>확인"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style B fill:#fde2e2,stroke:#c44,stroke-width:2px
+    style F fill:#e6ffec,stroke:#30a050
+```
+
 1. **마켓플레이스 등록**
 
-   Cowork **좌측 사이드바 → 사용자 지정(Customize) → 개인 플러그인 → 플러그인 추가 → 마켓플레이스 추가**에서 다음 URL을 입력합니다.
+   Cowork **좌측 사이드바 → 사용자 지정(Customize)** 메뉴로 진입합니다.
+
+   ![Customize 메뉴 진입](/screenshots/getting-started/quick-start-marketplace-1.png)
+
+   1. **알림 배지** — Customize 메뉴에 새로운 항목이 있음을 나타냅니다.
+
+   플러그인 설정 화면에서 **마켓플레이스 추가**를 선택합니다.
+
+   ![플러그인 설정 화면](/screenshots/getting-started/quick-start-marketplace-2.png)
+
+   1. **+ 버튼(설정 그룹)** — 새 설정 그룹을 추가합니다.
+   2. **플러그인 설정 + 버튼** — 플러그인 섹션을 확장합니다.
+   3. **"마켓플레이스 추가" 메뉴** — 마켓플레이스 URL을 입력하는 진입점입니다.
+
+   마켓플레이스 추가 대화상자에서 다음 URL을 입력합니다.
+
+   ![마켓플레이스 URL 입력](/screenshots/getting-started/quick-start-marketplace-3.png)
 
    ```text
    modu-ai/cowork-plugins
    ```
+
+   ![URL 입력 필드 상세](/screenshots/getting-started/quick-start-plugin-install-2.png)
+
+   1. **URL 입력 필드** — GitHub `owner/repo` 형식 또는 전체 git 리포지토리 URL을 입력합니다.
 
    동기화가 끝나면 21개 플러그인·107개 스킬 목록이 표시됩니다.
 
@@ -29,7 +62,22 @@ geekdocBreadcrumb: true
    **반드시 `moai-core`부터** 설치합니다. 여기에 `/project init` 마법사와 모든 텍스트 체인에 필요한 `ai-slop-reviewer`가 포함되어 있습니다.
    {{< /hint >}}
 
+   마켓플레이스 동기화 후 플러그인 목록에서 `moai-core`를 찾습니다.
+
+   ![플러그인 디렉토리](/screenshots/getting-started/quick-start-plugin-install-1.png)
+
+   1. **알림 아이콘** — 새 플러그인이 사용 가능함을 알립니다.
+   2. **검색 입력** — "cowork-plugins"로 마켓플레이스를 검색합니다.
+   3. **토글 스위치** — 전체 플러그인을 한 번에 활성화/비활성화합니다.
+   4. **Moai core 카드 + 버튼** — 이 버튼을 클릭하여 핵심 플러그인을 설치합니다.
+
    `moai-core` 옆의 **+** 버튼을 클릭하면 설치가 완료됩니다.
+
+   ![moai-core 설치 화면](/screenshots/getting-started/quick-start-plugin-install-3.png)
+
+   1. **Moai core** — 왼쪽 사이드바의 핵심 기능 카테고리입니다.
+   2. **Moai master** — 메인 화면의 플러그인 항목으로, AI 기반 작업 자동화/최적화 기능을 제공합니다.
+   3. **"설치되지 않음" 상태** — 설치 전 상태를 나타냅니다. + 버튼을 누르면 설치됩니다.
 
 3. **도메인 플러그인 선택**
 

@@ -11,7 +11,7 @@ description: |
   - skill-template으로 시작한 스킬의 체계적 생성이 필요할 때
   - /harness 커맨드의 new 단계로 진입할 때
 user-invocable: true
-version: 2.2.1
+version: 2.3.0
 ---
 
 # Skill Builder — 6-Phase 스킬 생성 워크플로우

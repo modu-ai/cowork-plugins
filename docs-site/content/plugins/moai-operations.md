@@ -10,6 +10,14 @@ tags: ["moai-operations"]
 
 > 운영·총무·구매 실무를 위한 3개 스킬을 제공합니다.
 
+```mermaid
+flowchart LR
+    A["process-manager<br/>SOP·구매·회의록"] --> B["status-reporter<br/>주간·월간 보고서"]
+    B --> C["vendor-manager<br/>벤더 평가·계약"]
+    style A fill:#e6f0ff,stroke:#3070d0
+    style C fill:#e6ffec,stroke:#30a050
+```
+
 ## 무엇을 하는 플러그인인가
 
 `moai-operations` (v1.5.0)는 표준작업지침서(SOP), 구매 요청서·발주서, 회의록, 주간·월간·분기 보고서, OKR 현황, 리스크 매트릭스, 벤더 평가·계약 관리까지 운영 조직에서 반복적으로 작성하는 문서를 자동화합니다.

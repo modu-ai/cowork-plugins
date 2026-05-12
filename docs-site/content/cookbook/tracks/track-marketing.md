@@ -6,6 +6,17 @@ geekdocBreadcrumb: true
 ---
 **마케팅 트랙**은 콘텐츠 생성부터 AI 검수, 이미지 생성까지 완결된 마케팅 콘텐츠 워크플로우를 제공합니다. 마케터, 콘텐츠 크리에이터, 브랜드 매니저의 반복적인 콘텐츠 제작 작업을 AI로 자동화합니다.
 
+```mermaid
+flowchart LR
+    A["campaign-planner<br/>캠페인 기획"] --> B["blog / copywriting<br/>콘텐츠 작성"]
+    B --> C["seo-audit<br/>SEO"]
+    C --> D["ai-slop-reviewer<br/>검수"]
+    D --> E["performance-report<br/>성과 분석"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style E fill:#e6ffec,stroke:#30a050
+```
+
 ## 트랙 개요
 
 ### 🎯 목적

@@ -10,6 +10,15 @@ tags: ["moai-data"]
 
 > CSV·Excel 탐색부터 공공데이터·통계청 API까지 3개 스킬을 제공합니다.
 
+```mermaid
+flowchart LR
+    A["data-explorer<br/>CSV/Excel 프로파일링"] --> B["data-visualizer<br/>차트·대시보드"]
+    A -- "공공데이터" --> C["public-data<br/>KOSIS·data.go.kr"]
+    style A fill:#e6f0ff,stroke:#3070d0
+    style B fill:#e6ffec,stroke:#30a050
+    style C fill:#e6ffec,stroke:#30a050
+```
+
 ## 무엇을 하는 플러그인인가
 
 `moai-data` (v1.5.0)는 업로드한 CSV·Excel 파일의 프로파일링과 결측값·이상값·상관관계 분석, 공공데이터포털(data.go.kr)과 KOSIS 통계청 OpenAPI 호출, Mermaid·Chart.js 기반 인터랙티브 차트와 대시보드 HTML 생성까지 데이터 실무를 자동화합니다.

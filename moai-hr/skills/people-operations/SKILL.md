@@ -5,7 +5,7 @@ description: >
   "비동기 커뮤니케이션 가이드 만들어줘"처럼 말하면 됩니다. 원격·하이브리드 근무 정책,
   협업 도구 선정 기준, 생산성 관리 프레임워크, 직원 경험 설계를 지원합니다.
 user-invocable: true
-version: 2.2.1
+version: 2.3.0
 ---
 
 # 피플 오퍼레이션 (people-operations)

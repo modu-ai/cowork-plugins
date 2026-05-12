@@ -10,6 +10,14 @@ tags: ["moai-hr"]
 
 > 한국 노동법·4대보험을 반영한 5개 스킬을 제공합니다.
 
+```mermaid
+flowchart LR
+    A["employment-manager<br/>JD·면접·온보딩"] --> B["draft-offer<br/>근로계약서"]
+    C["performance-review<br/>성과평가·OKR"] --> D["people-operations<br/>원격근무 정책"]
+    style A fill:#e6f0ff,stroke:#3070d0
+    style D fill:#e6ffec,stroke:#30a050
+```
+
 ## 무엇을 하는 플러그인인가
 
 `moai-hr` (v1.5.0)는 채용공고(JD) 작성, 면접 질문 설계, 신입 온보딩, 채용 제안서·근로계약서, MBO·OKR·KPI 기반 성과평가, 원격·하이브리드 근무 정책까지 HR 전 영역을 커버합니다. 2026년 기준 4대보험 요율과 근로기준법 조항을 계약서 템플릿에 반영하며, 스톡옵션 부여계약서 표준 조항도 포함됩니다.

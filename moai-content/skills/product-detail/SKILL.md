@@ -1,6 +1,9 @@
 ---
 name: product-detail
 description: >
+  [책임 경계] 코드 산출 (shadcn/ui React 컴포넌트 또는 단일 HTML — 스마트스토어/쿠팡/카카오 규격).
+  페어 moai-commerce:detail-page-copy와 명확히 구분 — 본 스킬은 코드 산출, 페어는 13섹션 카피 JSON 산출.
+  체이닝 권장: detail-page-copy(카피) → product-detail(코드). 또한 페어 moai-content:landing-page와 구분 — 본 스킬은 카탈로그 상세, landing-page는 단독 전환 1페이지.
   shadcn/ui 기반 제품·서비스 상세 페이지를 전환율 극대화 전략으로 설계·생성하는 스킬입니다.
   "상세페이지 만들어줘", "제품 페이지 기획", "쇼핑몰 상세 설계", "상세페이지 디자인" 등
   전자상거래 및 SaaS 제품의 상세 페이지 제작 요청 시 사용합니다.
@@ -9,7 +12,7 @@ description: >
   Next.js+shadcn/ui React 컴포넌트를 산출합니다.
   블로그 글, SNS 포스팅, 랜딩 페이지(단독 전환 목적)에는 이 스킬을 사용하지 마세요.
 user-invocable: true
-version: 2.2.1
+version: 2.3.0
 ---
 
 # 상세 페이지 (Product Detail)

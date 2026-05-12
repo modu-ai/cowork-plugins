@@ -10,6 +10,15 @@ tags: ["moai-pm"]
 
 > 한국 팀의 주간 비즈니스 리뷰(WBR)·OKR·회고를 자동 생성하는 프로젝트 관리 플러그인입니다. 임원용 격식체와 팀용 구어체 두 버전을 함께 출력합니다.
 
+```mermaid
+flowchart LR
+    A["(Notion·Linear MCP)<br/>데이터 자동 수집"] --> B["weekly-report<br/>WBR 자동 생성"]
+    B --> C["docx-generator<br/>문서 저장"]
+    C --> D["ai-slop-reviewer<br/>최종 검수"]
+    style A fill:#e6f0ff,stroke:#3070d0
+    style D fill:#e6ffec,stroke:#30a050
+```
+
 ## 무엇을 하는 플러그인인가
 
 `moai-pm` (v1.8.0)는 한국 팀의 반복적인 보고 작업을 자동화합니다.

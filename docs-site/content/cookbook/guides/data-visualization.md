@@ -6,6 +6,19 @@ geekdocBreadcrumb: true
 ---
 > 좋은 차트는 보는 사람이 0.5초 안에 메시지를 읽고, 나머지 시간은 디테일을 확인하는 데 쓰는 차트입니다. 화려한 색·3D·과한 레이블은 그 0.5초를 빼앗습니다.
 
+```mermaid
+flowchart TD
+    A["데이터 형태 파악"] --> B{"어떤 비교인가?"}
+    B -- "시간 변화" --> C["꺾은선 / 영역"]
+    B -- "카테고리 비교" --> D["가로·세로 막대"]
+    B -- "구성 비율" --> E["도넛 / 트리맵"]
+    B -- "관계" --> F["산점도 / 히트맵"]
+    C & D & E & F --> G["data-visualizer<br/>대시보드 생성"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style G fill:#e6ffec,stroke:#30a050
+```
+
 ## 사용 스킬
 
 - **`moai-data:data-visualizer`** — shadcn/ui 기반 데이터 시각화·차트·대시보드 생성. HTML 대시보드 출력 전 소크라테스식 인터뷰로 메시지 명확화.

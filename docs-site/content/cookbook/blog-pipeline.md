@@ -7,6 +7,18 @@ tags: [cookbook, content]
 ---
 > **목표** — 키워드 한 줄에서 시작해 네이버·티스토리·브런치에 바로 올릴 수 있는 2500자 블로그 글까지, 한 번의 지시로 완성합니다.
 
+```mermaid
+flowchart LR
+    A["blog<br/>키워드 기반 글 작성"] --> B{"이미지<br/>필요?"}
+    B -- "예" --> C["nano-banana<br/>썸네일 생성"]
+    B -- "아니오" --> D["ai-slop-reviewer<br/>AI 티 제거"]
+    C --> D
+    D --> E["최종본 저장"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style E fill:#e6ffec,stroke:#30a050
+```
+
 ## 대상 독자
 
 블로그·콘텐츠 마케터, 1인 미디어 운영자, 기업 블로그 담당자.

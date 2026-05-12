@@ -6,6 +6,23 @@ geekdocBreadcrumb: true
 ---
 > Cowork는 Claude Desktop 앱의 일부로 제공됩니다. 별도 설치 파일이 없으니 Desktop 앱을 최신 버전으로 유지하면 됩니다.
 
+## 요금제별 가용 흐름
+
+```mermaid
+flowchart TD
+    A["Claude Desktop<br/>실행"] --> B{"요금제 확인"}
+    B -- "Free" --> C["Cowork 미지원<br/>요금제 업그레이드 필요"]
+    B -- "Pro / Max" --> D["Cowork 모드 활성화<br/>개인 기능 사용"]
+    B -- "Team / Enterprise" --> E["관리자 Cowork 허용"]
+    E --> F["Cowork 모드 활성화<br/>관리 기능 포함"]
+    D --> G["작업 폴더 선택"]
+    F --> G
+    G --> H["Cowork 시작"]
+
+    style C fill:#fde2e2,stroke:#c44
+    style H fill:#e6ffec,stroke:#30a050
+```
+
 ## 요금제 요건
 
 {{< hint type="note" >}}

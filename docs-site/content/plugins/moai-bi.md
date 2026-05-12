@@ -10,6 +10,14 @@ tags: ["moai-bi"]
 
 > 경영진·이사회·투자자에게 보낼 1페이지 요약을 자동 생성하는 BI 플러그인입니다. 긴 분석·재무 보고를 What / So What / Now What 3-축 구조로 압축합니다.
 
+```mermaid
+flowchart LR
+    A["executive-summary<br/>경영진 1pager"] --> B["docx-generator<br/>문서 저장"]
+    B --> C["ai-slop-reviewer<br/>최종 검수"]
+    style A fill:#e6f0ff,stroke:#3070d0
+    style C fill:#e6ffec,stroke:#30a050
+```
+
 ## 무엇을 하는 플러그인인가
 
 `moai-bi` (v1.8.0)는 한국 임원·이사회 표준에 맞춘 BI 자동화 플러그인입니다.

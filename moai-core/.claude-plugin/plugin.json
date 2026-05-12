@@ -1,6 +1,6 @@
 {
   "name": "moai-core",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "description": "MoAI 코어 — 도메인 AI 라우터, 초기화, 자가학습 엔진",
   "author": {
     "name": "모두의AI"

@@ -58,6 +58,26 @@ MoAI Cowork 플러그인을 활용한 실전 워크플로우 트랙을 안내합
 
 모든 트랙은 실제 비즈니스 시나리오를 기반으로 하며, 해당 트랙을 완료하면 관련 업무를 자동화하고 생산성을 크게 향상시킬 수 있습니다.
 
+```mermaid
+flowchart TB
+    START["역할 선택"] --> Q{"주요 업무"}
+    Q -- "기획·보고서" --> DOC["문서 작성<br/>트랙"]
+    Q -- "콘텐츠·홍보" --> MKT["마케팅<br/>트랙"]
+    Q -- "데이터 분석" --> DATA["데이터<br/>분석 트랙"]
+    Q -- "계약·규정" --> LEGAL["법무<br/>트랙"]
+    Q -- "재무·회계" --> FIN["재무<br/>트랙"]
+    Q -- "제품 기획" --> PROD["제품 개발<br/>트랙"]
+    DOC --> GUIDE["주제별 가이드<br/>심화 학습"]
+    MKT --> GUIDE
+    DATA --> GUIDE
+    LEGAL --> GUIDE
+    FIN --> GUIDE
+    PROD --> GUIDE
+
+    style START fill:#e6f0ff,stroke:#3070d0
+    style GUIDE fill:#dff5dd,stroke:#3a8a3a,stroke-width:2px
+```
+
 {{< hint type="note" >}}
 각 트랙의 실습 예시는 실제 비즈니스 환경에서 바로 적용 가능하도록 설계되었습니다. 필요에 따라 예시의 파라미터를 조절하여 사용하시면 됩니다.
 {{< /hint >}}

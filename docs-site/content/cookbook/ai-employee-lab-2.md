@@ -10,6 +10,24 @@ tags: [cookbook, ai-employee, operations]
 
 > [랩 1 — 재무 대리 AI](../ai-employee-lab-1/)에서 기본 설계를 경험했다면, 랩 2는 **현장 공장 데이터**와 **다중 벤더 모니터링**이라는 더 실무적인 영역을 다룹니다.
 
+```mermaid
+flowchart LR
+    subgraph Quality["quality-ops"]
+        A1["defect-dashboard"]
+        A2["anomaly-detector"]
+    end
+    subgraph SCM["scm-watcher"]
+        B1["vendor-risk-scan"]
+        B2["inventory-alert"]
+    end
+    Quality --> C["Schedule 등록<br/>매일 07:00 / 매주 월 08:00"]
+    SCM --> C
+    C --> D["Slack 알림"]
+
+    style Quality fill:#e6f0ff,stroke:#3070d0
+    style D fill:#e6ffec,stroke:#30a050
+```
+
 ## 랩 목표
 
 끝났을 때 결과물:

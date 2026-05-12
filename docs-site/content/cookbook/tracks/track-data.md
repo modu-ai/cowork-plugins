@@ -6,6 +6,16 @@ geekdocBreadcrumb: true
 ---
 **데이터 분석 트랙**은 공공데이터 수집부터 분석, 시각화, 보고서 생성까지 완결된 데이터 워크플로우를 제공합니다. 데이터 분석가, 리서치, 기획자의 데이터 처리 작업을 AI로 자동화합니다.
 
+```mermaid
+flowchart LR
+    A["public-data<br/>공공데이터 수집"] --> B["data-explorer<br/>EDA · 프로파일링"]
+    B --> C["data-visualizer<br/>차트 · 대시보드"]
+    C --> D["xlsx-creator / docx-generator<br/>보고서 출력"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style D fill:#e6ffec,stroke:#30a050
+```
+
 ## 트랙 개요
 
 ### 🎯 목적

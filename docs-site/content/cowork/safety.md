@@ -6,6 +6,33 @@ geekdocBreadcrumb: true
 ---
 > Cowork는 자동화 도구이지만, 사용자가 함부로 맡기지 말아야 할 영역도 분명합니다. 이 페이지는 한국어 사용자를 위해 공식 안전 가이드의 핵심을 정리합니다.
 
+## 안전 영역 한눈에 보기
+
+```mermaid
+flowchart LR
+    subgraph Safe["권장 영역"]
+        D1["초안·분석·요약"]
+        D2["반복 양식 작성"]
+        D3["리서치와 비교"]
+        D4["커뮤니케이션<br/>드래프트"]
+    end
+
+    subgraph Danger["금지·주의 영역"]
+        X1["의료 진단·치료"]
+        X2["법률 최종 결론"]
+        X3["금융 거래 실행"]
+        X4["신원 인증"]
+        X5["생명·안전 제어"]
+    end
+
+    Safe -->|사람 승인 후| R["외부 공개"]
+    Danger -->|사람 직접 판단| R
+
+    style Safe fill:#e6ffec,stroke:#30a050
+    style Danger fill:#fde2e2,stroke:#c44
+    style R fill:#e6f0ff,stroke:#3070d0
+```
+
 ## 피해야 할 사용 영역
 
 {{< hint type="danger" >}}

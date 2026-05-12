@@ -6,12 +6,81 @@
 
 ## 버전 통일 원칙 (HARD)
 
-아래 130개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.0.0부터 SKILL.md frontmatter `version:` 복구):
+아래 146개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.0.0부터 SKILL.md frontmatter `version:` 복구):
 - `.claude-plugin/marketplace.json` (`metadata.version`) × 1
 - `<plugin>/.claude-plugin/plugin.json` (`version`) × 21
-- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 108 (v2.0.0+ 정책)
+- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 124 (v2.3.0+ 정책)
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
+
+## [2.3.0] - 2026-05-12
+
+MINOR. **모두의 커머스 3일 마스터 캠프** (Claude Cowork × MoAI-Cowork × MCP) 통합본 출시. Day1 셋업·Day2 V6 6도구·Day3 신규 AI 모델·D+1~D+30 follow-up까지 18개 산출물 데이터 체인을 강의 안에서 끊김 없이 흐르도록 17 신규 + 6 강화 스킬 추가. Track C 페어 정리로 책임 경계 명확화.
+
+### Added (신규 17 스킬)
+
+**Day2 V6 6도구 (moai-commerce 5 + detail-page-copy 강화)** — PDF §5.3 V6 ↔ MCP 매핑
+
+- `moai-commerce:commerce-market-research` — trend_search · trend_shopping_categories · trend_shopping_keywords · keyword_for_product_idea 4종 MCP 호출 → 거시·경쟁·검색 3축 시장 1장 리포트
+- `moai-commerce:commerce-jtbd-persona` — 1스킬 2모드. `--mode jtbd` (기능·감성·사회 각 3개 = JTBD 9개) / `--mode persona` (review_list_naver·review_list_cafe24·qna_list_cafe24 → 페르소나 3명 8필드). 본인 리뷰 10건 미만 시 fallback 자동 적용
+- `moai-commerce:commerce-product-naming` — keyword_search_volume·keyword_related·keyword_bulk_research → 상품명 3안 (검색·CTR·브랜드) + 스마트스토어/쿠팡/네이버쇼핑 25자·금지어 검증
+- `moai-commerce:commerce-channel-message` — keyword_seasonal_calendar·ad_keyword_performance + NCM 프레임워크 (Need→Channel→Moment→Message→CTA) → 검색·광고·CRM × 5종 = 15종 메시지 (채널별 다른 표현 강제)
+- `moai-commerce:commerce-integrated-strategy` — dashboard_morning_brief·sales_compare_channels·ad_roas_summary → 매출 향상 전략 1장 (실행 우선순위 Top 3)
+
+**Day3 신규 AI 모델 6스킬 (moai-media)** — PDF §6 + 부록 A·B·D
+
+- `moai-media:media-moodboard` — 페르소나·카피·카테고리 → 색팔레트 3종 + 톤 키워드 5개 + 레퍼런스 이미지 5장
+- `moai-media:media-gpt-image2-builder` — 자연어 한 줄 → 8단계 프롬프트 자동 리라이팅 → GPT Image 2 호출 (수강생 비공개 룰: 8단계 구조는 references/ 내부 자료)
+- `moai-media:media-model-router` — 카테고리 매트릭스 자동 라우팅 (의류=Kling 3 / 뷰티=Veo 3 / 건강식품=Kling 3 / 생활용품=Seedance). Higgsfield 동시 호출 비용 폭증 방지 위해 4명×5조 시차 호출 (5분 간격)
+- `moai-media:media-channel-ad-packager` — 메인 영상 + 보조 영상 + 채널 메시지 → 메타 1:1·9:16 / 네이버 GFA 길이 / 카카오 알림톡 변수 / 카카오모먼트 1:1·16:9 채널별 자동 변환
+- `moai-media:media-ai-disclosure` — 광고심의·소비자보호법 대비 "AI 생성" 메타데이터·워터마크 자동 부착 (캔바 매직 레이어 수정 후에도 표기 유지)
+- `moai-media:media-canva-magic-layer` — Day 3 합성 PNG → 카피만 분리 → 시즌 재사용 5단계 가이드 (GPT Image 2 재호출 대비 90% ↓)
+
+**Day1 셋업 3스킬**
+
+- `moai-core:mcp-connector-setup` — Drive · Notion · Higgsfield · OpenAI 4커넥터 인증 가이드 + 트러블슈팅
+- `moai-commerce:commerce-morning-brief` — dashboard_morning_brief MCP → 어제 주문·신규 문의·트렌드·ROAS 1개 호출 통합 1줄
+- `moai-commerce:commerce-order-summary` — order_summary_today MCP → 스마트스토어 + 카페24 + 아임웹 채널 통합 신규 주문 1줄
+
+**moai-education 활성화 2스킬** (현재 0 스킬 → 2 스킬)
+
+- `moai-education:course-followup-sequence` — D+1·D+3·D+7·D+14·D+30 후기 카피 5종 + 30일 자산화 시퀀스 + SUNO BGM·MCP Phase 1 직접 호출 가이드
+- `moai-education:course-curriculum-design` — 3일 21세션 강의 운영 매뉴얼 자동 생성 (표준 시간표·강사·조교 동선·사전 준비물·Plan B 시나리오 5건+)
+
+### Changed (6 강화 + Track C 정리)
+
+- **`moai-commerce:detail-page-copy` 강화** — 기존 13섹션 모드 하위 호환 유지. 신규 `--mode diagnose` (7단계 진단 점수, 단계별 개선 제안) + `--mode copy` (페르소나 2세트 카피, 비율 25/50/25 강제)
+- **Track C 페어 정리 — 통합 1건**: `moai-content:social-media` → `moai-marketing:sns-content` 흡수 (글로벌 4채널 모드 추가: 스레드·X·링크드인·유튜브 쇼츠). social-media는 deprecate stub + 리디렉션 안내. 한국 3채널 모드(인스타·네이버 블로그·카카오)는 유지
+- **Track C 페어 정리 — 책임 분리 1건**: `moai-marketing:campaign-planner`의 "이커머스 상세페이지 제작 · AI 이미지 생성" 책임 제거. 상세페이지 카피는 detail-page-copy, 상세페이지 합성 이미지는 detail-page-image, AI 이미지·영상은 moai-media:* 사용 안내로 이관
+- **Track C 페어 정리 — description [책임 경계] 명확화 15건**: copywriting/commerce-copywriting (Pair 1), product-detail/detail-page-copy (Pair 2), personal-branding/brand-identity (Pair 5), target-script (Pair 6), performance-report/executive-summary (Pair 7), market-analyst/sbiz365-analyst (Pair 8), daily-briefing (Pair 9), landing-page (Pair 10) + sns-content·campaign-planner
+
+### SPEC 산출물
+
+`.moai/specs/` 하위 7개 SPEC 작성 (총 84 EARS REQ):
+- SPEC-COURSE-CAMP-001 (master) — 강의 전체 요구사항·18 산출물·합격기준·운영 매뉴얼
+- SPEC-COMMERCE-MCP-002 — Track A MoAI-Commerce MCP 서버 (후속 마이너 v2.4.0 예정)
+- SPEC-COMMERCE-V6-003 — Wave 1 commerce 6
+- SPEC-MEDIA-CAMP-004 — Wave 2 media 6
+- SPEC-CAMP-SETUP-005 — Wave 3 core 3
+- SPEC-CAMP-FOLLOWUP-006 — Wave 4 education 2
+- SPEC-CATALOG-CLEANUP-007 — Track C 페어 정리
+
+### 후속 작업 (v2.4.0 예정)
+
+- **Track A MoAI-Commerce MCP 서버 구현** (cowork-plugins/mcp-servers/moai-commerce/ monorepo) — 광고 운영 4종 (meta ads · tiktok ads · naver 광고 · kakao 모먼트) + Phase 1 34종 + Higgsfield (Kling 3·Veo 3·Seedance 2.0). Python (uvx) 권장. 본 v2.3.0 출시까지는 사전 녹화 영상 5분 또는 강사 본인 워크스페이스 라이브 호출로 대체 (PDF §S4 운영 노트)
+
+### 동기화 지점
+
+- `.claude-plugin/marketplace.json` × 1 (metadata.version)
+- `<plugin>/.claude-plugin/plugin.json` × 21 (version)
+- `<plugin>/skills/<skill>/SKILL.md` × 124 (version, 신규 17 포함)
+- 총 **146 지점** 동일 버전 (v2.3.0) 유지
+
+### Migration
+
+- 기존 `/social-media` 호출 코드는 v2.5.0까지 deprecate stub으로 유지. `/sns-content` 사용 권장
+- 기존 `/campaign-planner` 호출 시 "상세페이지 만들어줘"는 더 이상 routing되지 않음. `/detail-page-copy` 또는 `/detail-page-image` 직접 호출
+- `moai-education`이 0 스킬에서 2 스킬로 활성화됨 — Cowork에서 플러그인 설치 시 자동 사용 가능
 
 ## [2.2.1] - 2026-05-11
 

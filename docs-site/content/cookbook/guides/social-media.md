@@ -6,6 +6,18 @@ geekdocBreadcrumb: true
 ---
 > 채널마다 사람이 다르고, 사람이 다르면 톤·길이·해시태그도 달라야 합니다. cowork-plugins의 SNS 스킬은 7개 채널의 알고리즘·관습을 미리 알고 있어 동일 메시지를 채널별로 자동 변형합니다.
 
+```mermaid
+flowchart LR
+    A["sns-content<br/>콘텐츠 달력"] --> B["social-media<br/>채널별 변형"]
+    B --> C{"포맷"}
+    C -- "카드뉴스" --> D["card-news"]
+    C -- "텍스트" --> E["ai-slop-reviewer"]
+    A -. "브랜드 가이드" .-> F["brand-identity"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style E fill:#e6ffec,stroke:#30a050
+```
+
 ## 사용 스킬
 
 | 스킬 | 커버 채널 |

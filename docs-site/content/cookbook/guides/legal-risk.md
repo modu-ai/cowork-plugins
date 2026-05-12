@@ -6,6 +6,18 @@ geekdocBreadcrumb: true
 ---
 > 법적 리스크는 사고가 나기 전에는 보이지 않다가, 한 번 터지면 매출의 몇 분의 일이 날아갑니다. 정기적으로 점검 가능한 형태로 만들어 두는 것이 핵심입니다.
 
+```mermaid
+flowchart TD
+    A["legal-risk<br/>종합 리스크 평가"] --> B{"위험 카테고리"}
+    B -- "계약" --> C["contract-review"]
+    B -- "규제" --> D["compliance-check"]
+    B -- "법령 변화" --> E["daily-briefing"]
+    C & D & E --> F["종합 보고서"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style F fill:#e6ffec,stroke:#30a050
+```
+
 ## 사용 스킬
 
 - **`moai-legal:legal-risk`** — 기업 법적 리스크 평가, 특허 침해 위험 분석, 개인정보 위반 리스크 체크, IP 포트폴리오 분석, 2026년 법령 변화 영향 분석

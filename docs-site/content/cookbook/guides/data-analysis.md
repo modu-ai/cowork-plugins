@@ -6,6 +6,16 @@ geekdocBreadcrumb: true
 ---
 > "이 데이터로 뭘 할 수 있을까?"라는 질문은 EDA(탐색적 데이터 분석)으로 답합니다. cowork-plugins의 `data-explorer`가 5분 안에 첫 인사이트를 돌려줍니다.
 
+```mermaid
+flowchart LR
+    A["data-explorer<br/>프로파일링"] --> B["public-data<br/>공공데이터 보강"]
+    B --> C["data-visualizer<br/>시각화"]
+    C --> D["xlsx-creator / docx-generator<br/>보고서 출력"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style D fill:#e6ffec,stroke:#30a050
+```
+
 ## 사용 스킬
 
 | 단계 | 스킬 | 용도 |

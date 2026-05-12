@@ -1,6 +1,9 @@
 ---
 name: brand-identity
 description: >
+  [책임 경계] 기업·제품 브랜드 전체 설계 (네이밍·CI·슬로건·톤앤매너·비주얼 가이드라인).
+  페어 moai-marketing:personal-branding과 명확히 구분 — 본 스킬은 기업·제품, 페어는 개인 브랜드.
+  광고 캠페인 기획은 moai-marketing:campaign-planner / 채널별 SNS 콘텐츠는 moai-marketing:sns-content를 사용하세요.
   브랜드 아이덴티티를 네이밍, 슬로건, 톤앤매너, 비주얼 가이드라인까지 체계적으로 설계합니다.
   "브랜드 만들어줘", "브랜드 아이덴티티 설계", "브랜드 네이밍", "슬로건 만들어줘",
   "브랜드 가이드라인", "로고 컨셉", "톤앤매너 설계", "브랜드 전략", "기업 브랜딩",
@@ -9,7 +12,7 @@ description: >
   개인 브랜딩은 personal-branding 스킬이 더 적합합니다.
   광고 캠페인 기획은 campaign-planner 스킬을 사용하세요.
 user-invocable: true
-version: 2.2.1
+version: 2.3.0
 ---
 
 # 브랜드 아이덴티티 (Brand Identity)

@@ -6,6 +6,16 @@ geekdocBreadcrumb: true
 ---
 **문서 작성 트랙**은 전략 기획부터 프레젠테이션 디자인, 최종 검수까지 완결된 문서 작업 워크플로우를 제공합니다. 기획자, 컨설턴트, 기획팀의 반복적인 문서 작업을 AI로 자동화하여 시간을 절약하고 품질을 향상시킵니다.
 
+```mermaid
+flowchart LR
+    A["strategy-planner<br/>전략 기획"] --> B["docx-generator<br/>문서 생성"]
+    B --> C["pptx-designer<br/>발표 자료"]
+    C --> D["ai-slop-reviewer<br/>최종 검수"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style D fill:#e6ffec,stroke:#30a050
+```
+
 ## 트랙 개요
 
 ### 🎯 목적

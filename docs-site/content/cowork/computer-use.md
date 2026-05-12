@@ -6,6 +6,27 @@ geekdocBreadcrumb: true
 ---
 > Cowork의 컴퓨터 사용(computer use) 기능은 Claude가 마우스·키보드·화면 캡처로 데스크톱 앱이나 브라우저를 직접 조작할 수 있게 합니다.
 
+## 작동 방식
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 사용자
+    participant CW as Cowork
+    participant SCR as 화면 캡처
+    participant APP as 데스크톱 앱
+
+    U->>CW: "이 앱에서 데이터 복사해줘"
+    CW->>SCR: 화면 스크린샷 캡처
+    SCR-->>CW: 화면 이미지 반환
+    CW->>CW: 화면 분석 (버튼·입력창 식별)
+    CW->>U: "이 버튼을 클릭하려 합니다. 허용?"
+    U->>CW: 허용
+    CW->>APP: 마우스 클릭·키보드 입력
+    APP-->>CW: 결과 화면
+    CW->>U: 작업 완료
+```
+
 ## 언제 쓰나
 
 - 공식 API가 없는 데스크톱 앱(예: Figma 데스크톱, 엑셀 고급 기능) 조작

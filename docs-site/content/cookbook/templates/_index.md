@@ -7,6 +7,17 @@ geekdocCollapseSection: true
 ---
 복사 → 변형 → 즉시 활용. 각 템플릿은 관련 cowork-plugins 스킬과 함께 동작하도록 설계되어 있습니다.
 
+```mermaid
+flowchart LR
+    A["템플릿 선택"] --> B["프롬프트로<br/>파라미터 입력"]
+    B --> C["스킬 체인<br/>실행"]
+    C --> D["ai-slop-reviewer<br/>검수"]
+    D --> E["최종 산출물"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style E fill:#dff5dd,stroke:#3a8a3a,stroke-width:2px
+```
+
 ## 템플릿 목록
 
 - [컴플라이언스 체크리스트](./compliance/) — `moai-legal:compliance-check`

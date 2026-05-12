@@ -23,6 +23,31 @@ strategy-planner → docx-generator → ai-slop-reviewer
 
 ## 체인 설계 3원칙
 
+```mermaid
+flowchart LR
+    subgraph Domain["① 도메인 스킬"]
+        D1["strategy-planner"]
+        D2["contract-review"]
+        D3["blog"]
+    end
+
+    subgraph Format["② 포맷 스킬"]
+        F1["docx-generator"]
+        F2["pptx-designer"]
+        F3["xlsx-creator"]
+    end
+
+    subgraph Quality["③ 품질 스킬"]
+        Q1["ai-slop-reviewer"]
+    end
+
+    Domain --> Format --> Quality
+
+    style Domain fill:#e6f0ff,stroke:#3070d0
+    style Format fill:#fff4e6,stroke:#e09040
+    style Quality fill:#e6ffec,stroke:#30a050
+```
+
 1. **도메인 → 포맷 → 품질**
 
    항상 도메인 스킬이 먼저, 포맷 변환이 중간, 품질 검수가 마지막입니다.

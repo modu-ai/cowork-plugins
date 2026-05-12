@@ -6,6 +6,17 @@ geekdocBreadcrumb: true
 ---
 > 재무팀, 회계사, 재무 분석가를 위한 트랙입니다. **재무제표 생성 → 엑셀 리포트 → 세무 검수** 3단계로 재무 업무 전체를 자동화합니다. 결산 작업부터 세무 신고, 예산 분석까지 재무 리스크 관리를 커버합니다.
 
+```mermaid
+flowchart LR
+    A["financial-statements<br/>K-IFRS 재무제표"] --> B["variance-analysis<br/>분산 분석"]
+    B --> C["close-management<br/>결산"]
+    C --> D["xlsx-creator<br/>엑셀 리포트"]
+    D --> E["ai-slop-reviewer<br/>검수"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style E fill:#e6ffec,stroke:#30a050
+```
+
 ## 트랙 개요
 
 ### 🎯 학습 목표

@@ -6,6 +6,20 @@ geekdocBreadcrumb: true
 ---
 > 엑셀의 90%는 SUM·VLOOKUP만으로 풀리지만, 나머지 10%가 사람의 시간을 다 잡아먹습니다. 그 10%를 cowork-plugins로 자동화합니다.
 
+```mermaid
+flowchart LR
+    A["데이터 입력<br/>(CSV·DB·API)"] --> B["xlsx-creator<br/>자동 생성"]
+    B --> C{"출력"}
+    C -- "대시보드" --> D["KPI 시트"]
+    C -- "피벗" --> E["분석 시트"]
+    C -- "템플릿" --> F["보고서"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style D fill:#e6ffec,stroke:#30a050
+    style E fill:#e6ffec,stroke:#30a050
+    style F fill:#e6ffec,stroke:#30a050
+```
+
 ## 사용 스킬
 
 - **`moai-office:xlsx-creator`** — openpyxl 기반 엑셀 자동 생성. 데이터 표·차트·수식·서식·시트 보호까지 코드로 작성.

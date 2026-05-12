@@ -6,6 +6,18 @@ geekdocBreadcrumb: true
 ---
 > 제품 매니저, UX 디자이너, 개발 매니저를 위한 트랙입니다. **제품 기획 → 로드맵 설계 → UX 디자인 → 발표 자료 생성** 5단계로 제품 개발 프로세스 전체를 자동화합니다. 기획단계부터 출시 전까지 제품 개발 전 주기를 커버합니다.
 
+```mermaid
+flowchart LR
+    A["product-planner<br/>PRD 작성"] --> B["roadmapper<br/>로드맵"]
+    B --> C["ux-researcher<br/>리서치"]
+    C --> D["ux-designer<br/>디자인"]
+    D --> E["presenter<br/>발표 자료"]
+    E --> F["product-reviewer<br/>품질 검수"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style F fill:#e6ffec,stroke:#30a050
+```
+
 {{< hint type="note" >}}
 이 트랙은 **사용자가 직접 product-assistant 플러그인을 만드는 튜토리얼**입니다. 본문에 등장하는 `product-planner`, `roadmapper`, `ux-researcher`, `ux-designer`, `presenter`, `product-reviewer`는 cowork-plugins에 기본 포함된 스킬이 아니라 *튜토리얼을 따라 직접 작성하는 스킬*입니다. 기본 포함 스킬만 쓰고 싶다면 [트랙 — 문서 작성](../track-documents/) 또는 [투자 유치 가이드](../../guides/funding/)를 참고하세요.
 {{< /hint >}}

@@ -8,6 +8,26 @@ geekdocCollapseSection: false
 
 Claude Desktop의 **Settings > Cowork**에서 Claude의 동작 방식을 제어하는 핵심 설정을 관리합니다. 이 페이지에서는 전역 지시어, 스킬, 커넥터, 권한 설정을 다룹니다.
 
+## 설정 구조 한눈에 보기
+
+```mermaid
+flowchart LR
+    subgraph Settings["Settings > Cowork"]
+        GI["전역 지시어<br/>(Global Instructions)"]
+        SK["스킬<br/>(Skills)"]
+        CN["커넥터<br/>(Connectors)"]
+        PM["권한<br/>(Permissions)"]
+    end
+
+    GI -->|모든 세션에 적용| SESSION["Cowork 세션"]
+    SK -->|스킬 자동 호출| SESSION
+    CN -->|외부 서비스 연결| SESSION
+    PM -->|접근 범위 제어| SESSION
+
+    style Settings fill:#f7f7f7,stroke:#888
+    style SESSION fill:#dff5dd,stroke:#3a8a3a
+```
+
 ## 설정 메뉴 접근
 
 Claude Desktop에서 설정에 접근하는 방법:

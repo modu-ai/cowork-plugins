@@ -5,7 +5,7 @@ description: >
   '리서치 보고서 작성해줘', '논문 구조 잡아줘', '문헌 검토 정리해줘'라고 요청할 때 사용하세요.
   데이터 수집·분석, 학술 논문 초안 작성, 연구 설계, 인용·참고문헌 관리, 피어 리뷰 대비를 지원합니다.
 user-invocable: true
-version: 2.2.1
+version: 2.3.0
 ---
 
 # 리서치 어시스턴트 (Research Assistant)

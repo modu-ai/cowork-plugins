@@ -2,17 +2,17 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
-[![Version](https://img.shields.io/badge/Version-2.2.0-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-2.3.0-blue)](CHANGELOG.md)
 [![Plugins](https://img.shields.io/badge/Plugins-21-blue)](.claude-plugin/marketplace.json)
-[![Skills](https://img.shields.io/badge/Skills-108-green)](.claude-plugin/marketplace.json)
+[![Skills](https://img.shields.io/badge/Skills-124-green)](.claude-plugin/marketplace.json)
 [![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)
 [![shadcn/ui](https://img.shields.io/badge/UI-shadcn/ui-black)](https://ui.shadcn.com/)
 
-**Claude Cowork 한국어 도메인 전문가 AI 마켓플레이스 — 21 plugins · 108 skills · MIT**
+**Claude Cowork 한국어 도메인 전문가 AI 마켓플레이스 — 21 plugins · 124 skills · MIT**
 
-자연어 한 줄로 **사업계획서·계약서 검토·세금 계산·PPT·이미지/영상/음성·BI 보고서·HTML 리포트**를 자동 생성합니다. 한국 B2B 환경(K-IFRS·국세청·근로기준법·식약처·국토부·KRX·인터넷등기소)에 특화된 21개 독립 플러그인과 108개 도메인 스킬이 업무를 대신하며, 모든 텍스트 산출물은 [`ai-slop-reviewer`](./moai-core/skills/ai-slop-reviewer/)가 AI 패턴을 검수하여 자연스럽게 다듬어 드립니다.
+자연어 한 줄로 **사업계획서·계약서 검토·세금 계산·PPT·이미지/영상/음성·BI 보고서·HTML 리포트·이커머스 강의 캠프**를 자동 생성합니다. 한국 B2B 환경(K-IFRS·국세청·근로기준법·식약처·국토부·KRX·인터넷등기소)에 특화된 21개 독립 플러그인과 124개 도메인 스킬이 업무를 대신하며, 모든 텍스트 산출물은 [`ai-slop-reviewer`](./moai-core/skills/ai-slop-reviewer/)가 AI 패턴을 검수하여 자연스럽게 다듬어 드립니다.
 
-> *Korean B2B specialty plugin marketplace for [Anthropic Claude Code (Cowork)](https://claude.ai/cowork) — 21 plugins · 108 skills. Korean fonts (Pretendard / Noto Serif KR / Chosunilbo Myungjo / KoPubWorld), Korean text humanizer (humanize-korean), AI-slop reviewer for every deliverable. K-IFRS, NTS, KRX, MFDS, MOLIT, IROS specialty skills. MIT licensed.*
+> *Korean B2B specialty plugin marketplace for [Anthropic Claude Code (Cowork)](https://claude.ai/cowork) — 21 plugins · 124 skills. Korean fonts (Pretendard / Noto Serif KR / Chosunilbo Myungjo / KoPubWorld), Korean text humanizer (humanize-korean), AI-slop reviewer for every deliverable. K-IFRS, NTS, KRX, MFDS, MOLIT, IROS specialty skills. MIT licensed.*
 
 **🚀 빠른 설치**: Claude Cowork → 사용자 지정 → 개인 플러그인 + → **마켓플레이스 추가** → URL `modu-ai/cowork-plugins` 입력 → 동기화 → `moai-core` 먼저 설치
 
@@ -34,7 +34,27 @@
 
 ---
 
-**🆕 v2.2.0 하이라이트** (2026-05-09)
+**🆕 v2.3.0 하이라이트** (2026-05-12) — **"모두의 커머스 3일 마스터 캠프"** 통합본 출시
+
+월 매출 100만~10억 스마트스토어·자사몰 셀러가 외주 없이 3일 만에 신상품 1개의 상세페이지·광고·SNS·동영상을 직접 제작·운영하는 시스템을 구축하는 21세션·18개 산출물 데이터 체인 강의의 백엔드 도구입니다.
+
+- **Day2 V6 6도구** (moai-commerce) — V6(정해준 강사) 7교시 구조 1:1 매핑 wrapper 스킬
+  - `commerce-market-research`(시장조사 4 MCP) · `commerce-jtbd-persona`(JTBD 9 + 페르소나 3) · `commerce-product-naming`(상품명 3안 + 검증) · `commerce-channel-message`(NCM 15종) · `commerce-integrated-strategy`(전략 1장) · `detail-page-copy` 강화(7단계 진단 + 페르소나 카피 2세트, 비율 25/50/25)
+- **Day3 신규 AI 모델 6스킬** (moai-media)
+  - `media-moodboard`(색팔레트·톤·레퍼런스 자동) · `media-gpt-image2-builder`(자연어 → 8단계 프롬프트 자동 → GPT Image 2) · `media-model-router`(카테고리 매트릭스 자동 Kling/Veo/Seedance 라우팅 + 4명×5조 시차 호출) · `media-channel-ad-packager`(메타·네이버 GFA·카카오 채널 규격 자동 변환) · `media-ai-disclosure`(광고심의 "AI 생성" 메타데이터·워터마크) · `media-canva-magic-layer`(시즌 재사용 가이드)
+- **Day1 셋업 3스킬** — `moai-core:mcp-connector-setup`(Drive·Notion·Higgsfield·OpenAI 4커넥터 가이드+트러블슈팅) + `moai-commerce:commerce-morning-brief`·`commerce-order-summary`(매장 운영 데이터 1줄 통합)
+- **moai-education 활성화 2스킬** — `course-followup-sequence`(D+1~D+30 후기 자산화 시퀀스) + `course-curriculum-design`(3일 21세션 강의 운영 매뉴얼 자동 생성)
+- **Track C 페어 정리** — `moai-content:social-media` → `moai-marketing:sns-content`로 흡수(글로벌 4채널 모드 추가: 스레드·X·링크드인·유튜브 쇼츠), `campaign-planner`의 "상세페이지·이미지 생성" 책임 분리(detail-page-copy + moai-media로 이관), 15개 페어 description에 [책임 경계] 명시
+- **MCP 의존성** — V6 6도구와 Day1 셋업 스킬은 MoAI-Commerce MCP Phase 1(34종 도구)을 호출. 미출시 시점에는 사전 녹화 영상 5분 또는 강사 본인 워크스페이스 라이브 호출로 대체 (PDF §S4 운영 노트)
+- **SPEC 작성** — `.moai/specs/` 하위 7개 SPEC, 총 **84 EARS REQ**: master + Track A(MCP) + Wave 1·2·3·4 + Track C
+- 마켓플레이스 스킬 수: 108 → **124개** (+16 신규, social-media stub은 카운트 유지). 동기화 지점 **146개** (marketplace 1 + plugin.json 21 + SKILL.md 124) 모두 v2.3.0
+- **Track A 후속 예정** (v2.4.0) — MoAI-Commerce MCP 서버 구현(monorepo cowork-plugins/mcp-servers/moai-commerce/, Python uvx, 광고 4종 OAuth + Phase 1 34종 + Higgsfield MCP 통합)
+- [한국어 문서 사이트](https://cowork.mo.ai.kr/) · [SPEC-COURSE-CAMP-001](./.moai/specs/SPEC-COURSE-CAMP-001/spec.md)
+
+<details>
+<summary><b>📜 이전 릴리스 하이라이트 (v2.2.0 → v1.3.0) — 펼치기</b></summary>
+
+**v2.2.0 하이라이트** (2026-05-09)
 - **`moai-content:html-report` 신규 스킬** — Thariq Shihipar의 "unreasonable effectiveness of HTML" 사상 기반, 마크다운 보고서를 단일 파일·자체 완결형 HTML로 변환하는 터미널 렌더러
 - **6개 보고서 모드**: status (주간 현황), incident (포스트모템), plan (구현/사업 계획), explainer (기능·개념 설명), financial (재무 보고), pr (PR 서사)
 - **외부 의존성 0개** — Tailwind/React/Chart.js 없이 inline `<style>` + inline SVG + vanilla JS만으로 12-25KB 산출물 생성. 한글 웹폰트 CDN 1개만 예외(Pretendard / Noto Serif KR / Noto Sans KR / 조선일보명조 / KoPubWorld 명조 / JetBrains Mono)
@@ -45,8 +65,6 @@
 - 마켓플레이스 스킬 수: 107 → **108개**. 동기화 지점 130개 (marketplace 1 + plugin.json 21 + SKILL.md 108) 모두 v2.2.0
 - [한국어 문서 사이트](https://cowork.mo.ai.kr/)
 
-<details>
-<summary><b>📜 이전 릴리스 하이라이트 (v2.1.0 → v1.3.0) — 펼치기</b></summary>
 
 <br>
 

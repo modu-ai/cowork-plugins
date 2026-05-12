@@ -6,6 +6,16 @@ geekdocBreadcrumb: true
 ---
 > 계약서는 한 번 잘못 보내면 회수가 어렵습니다. cowork-plugins의 `moai-legal` 스킬을 활용해 초안 작성·위험 조항 식별·표준 조항 적용까지 안전하게 진행합니다.
 
+```mermaid
+flowchart LR
+    A["nda-triage<br/>빠른 분류"] --> B["contract-review<br/>조항 검토·작성"]
+    B --> C["compliance-check<br/>컴플라이언스"]
+    C --> D["ai-slop-reviewer<br/>최종 검수"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style D fill:#e6ffec,stroke:#30a050
+```
+
 ## 사용 스킬
 
 | 단계 | 스킬 | 용도 |

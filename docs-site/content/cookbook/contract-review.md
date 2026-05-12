@@ -7,6 +7,24 @@ tags: [cookbook, legal]
 ---
 > **목표** — 상대측이 보낸 계약서·NDA를 **리스크 항목별로 표 정리** → 수정본 DOCX → 1페이지 결재용 요약까지 자동으로 만듭니다.
 
+```mermaid
+flowchart LR
+    subgraph Fast["NDA 빠른 검토"]
+        N["nda-triage"] --> D1["docx-generator"]
+    end
+    subgraph Full["일반 계약서 검토"]
+        A["contract-review<br/>조항 분석"] --> B["legal-risk<br/>리스크 매트릭스"]
+        B --> C["docx-generator<br/>수정본 DOCX"]
+    end
+    D1 --> R["ai-slop-reviewer"]
+    C --> R
+    R --> S["결재용 요약"]
+
+    style Fast fill:#fff4e6,stroke:#e09040
+    style Full fill:#e6f0ff,stroke:#3070d0
+    style S fill:#e6ffec,stroke:#30a050
+```
+
 {{< hint type="danger" >}}
 **법률 자문의 최종 결정은 반드시 변호사가 해야 합니다.** 이 파이프라인은 초안·1차 스크리닝·협상 포인트 정리용입니다. [Cowork 안전 사용](../../cowork/safety/) 참고.
 {{< /hint >}}

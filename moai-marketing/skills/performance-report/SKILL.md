@@ -1,12 +1,15 @@
 ---
 name: performance-report
 description: >
+  [책임 경계] 마케팅팀용 풀 리포트 (채널별 ROAS·KPI·인사이트·다음 액션 플랜 — 길이 제약 없음).
+  페어 moai-bi:executive-summary와 체이닝 관계 — 본 스킬은 마케팅 풀 리포트(전체), 페어는 임원 1pager 요약(≤500단어 압축).
+  체이닝 권장: performance-report 출력 → executive-summary 입력 → C-level 1pager.
   GA4, 네이버 광고, 메타 광고, 카카오모먼트 채널별 ROAS·KPI를 분석하고 성과 보고서를 생성합니다.
   '마케팅 성과 보고서 만들어줘', 'ROAS 분석해줘', 'GA4 데이터 해석해줘',
   '광고비 분석해줘', '채널별 KPI 리포트 써줘'라고 요청하세요.
   경영진용 요약과 실무팀용 상세 분석, 다음 기간 액션 플랜을 함께 제공합니다.
 user-invocable: true
-version: 2.2.1
+version: 2.3.0
 ---
 
 # 퍼포먼스 리포트 (Performance Report)

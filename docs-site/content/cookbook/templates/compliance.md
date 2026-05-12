@@ -4,7 +4,19 @@ weight: 10
 description: "GDPR · PIPA(개인정보보호법) · ISMS · 전자상거래법 컴플라이언스 점검 체크리스트와 자동화 방법."
 geekdocBreadcrumb: true
 ---
-> 컴플라이언스는 분기 1회 점검으로 충분하지만, 그 1회를 빠뜨리면 행정처분이 날아옵니다. 표준 체크리스트를 두고 `moai-legal:compliance-check` 스킬로 자동화하세요.
+> 컴플라이언스는 분기 1회 점검으로 충분하지만, 그 1회을 빠뜨리면 행정처분이 날아옵니다. 표준 체크리스트를 두고 `moai-legal:compliance-check` 스킬로 자동화하세요.
+
+```mermaid
+flowchart TD
+    A["compliance-check<br/>규제 준수 점검"] --> B{"결과"}
+    B -- "위반 항목" --> C["컴플라이언스 리포트"]
+    B -- "적합" --> D["통과 인증서"]
+    C --> E["contract-review<br/>계약 수정"]
+    D --> F["ESG 보고서"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style F fill:#e6ffec,stroke:#30a050
+```
 
 ## 사용 스킬
 

@@ -7,6 +7,23 @@ tags: [cookbook, foundations]
 ---
 > Claude Cowork의 모든 핵심 기능을 한 번에 정리합니다. 실무 투입 전 이 페이지 한 장만 훑어도 충분합니다.
 
+```mermaid
+flowchart TD
+    A["① Cowork 정체성"] --> B["② 핵심 기능"]
+    B --> C["③ 프로젝트·메모리"]
+    C --> D["④ 플러그인·스킬"]
+    D --> E["⑤ MCP 커넥터"]
+    E --> F["⑥ 프롬프트 5원칙"]
+    F --> G["⑦ 예약 작업"]
+    G --> H["⑧ 실전 TOP 10"]
+    H --> I["⑨ 보안"]
+    I --> J["⑩ 비용 최적화"]
+    J --> K["⑪ 초기 설정"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style K fill:#e6ffec,stroke:#30a050
+```
+
 검증된 11개 영역 — 정체성·기능·프로젝트·플러그인·MCP·프롬프트·스케줄·실전 사례·보안·비용·초기 설정 — 을 순서대로 다룹니다.
 
 ## 1. Cowork란 무엇인가

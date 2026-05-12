@@ -16,6 +16,24 @@ geekdocBreadcrumb: true
 - [설치와 요금제 요건](../install/)
 - [첫 작업 실행하기](../first-task/)
 
+## FAQ 카테고리
+
+```mermaid
+flowchart LR
+    A["증상 발생"] --> Q1{"어디 해당?"}
+    Q1 -- "앱·계정" --> C1["설치·계정<br/>Q1-Q2"]
+    Q1 -- "스킬 안 돼" --> C2["스킬·플러그인<br/>Q3-Q5"]
+    Q1 -- "파일 문제" --> C3["산출물·파일<br/>Q6-Q7"]
+    Q1 -- "느림·끊김" --> C4["성능·제한<br/>Q8-Q9"]
+    Q1 -- "보안·감사" --> C5["보안·감사<br/>Q10"]
+
+    style C1 fill:#e6f0ff,stroke:#3070d0
+    style C2 fill:#fff4e6,stroke:#e09040
+    style C3 fill:#e6ffec,stroke:#30a050
+    style C4 fill:#f5e6ff,stroke:#9050d0
+    style C5 fill:#fde2e2,stroke:#c44
+```
+
 ## 설치·계정
 
 ### Q1. Claude Desktop에 Cowork 메뉴가 안 보입니다

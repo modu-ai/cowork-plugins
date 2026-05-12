@@ -6,6 +6,18 @@ geekdocBreadcrumb: true
 ---
 > "디자인이 좋다"는 칭찬은 보통 "정보가 잘 정리되어 있다"는 뜻입니다. 슬라이드를 화려하게 만드는 게 아니라, 한 장에 한 가지 메시지가 명확하게 보이도록 다듬는 것이 핵심입니다.
 
+```mermaid
+flowchart TD
+    A["한 장 한 메시지"] --> B["여백 과감히"]
+    B --> C["글자 수 최소화"]
+    C --> D["시각 강조 1곳"]
+    D --> E["일관된 그리드"]
+    E --> F["pptx-designer<br/>슬라이드 생성"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style F fill:#e6ffec,stroke:#30a050
+```
+
 ## 사용 스킬
 
 - **`moai-office:pptx-designer`** — 발표용 PPT 슬라이드 디자인. Pretendard + 명조 기반 한국형 디자인, 한글 깨짐 없음.

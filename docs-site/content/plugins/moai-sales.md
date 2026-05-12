@@ -10,6 +10,15 @@ tags: ["moai-sales"]
 
 > 한국 B2B 영업팀이 매주 작성하는 제안서·견적서·콜드메일·후속 시퀀스를 자동화하는 플러그인입니다.
 
+```mermaid
+flowchart LR
+    A["(RFP·고객 요구사항)<br/>입력"] --> B["proposal-writer<br/>12섹션 제안서"]
+    B --> C["docx-generator<br/>문서 저장"]
+    C --> D["ai-slop-reviewer<br/>최종 검수"]
+    style A fill:#e6f0ff,stroke:#3070d0
+    style D fill:#e6ffec,stroke:#30a050
+```
+
 ## 무엇을 하는 플러그인인가
 
 `moai-sales` (v1.8.0)는 한국 B2B SaaS·솔루션 회사의 영업 사이클을 압축합니다.

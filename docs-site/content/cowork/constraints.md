@@ -6,6 +6,47 @@ geekdocBreadcrumb: true
 ---
 > Claude Cowork는 Claude Desktop 앱에서 작동하는 사무·연구 협업 모드입니다. 본 페이지는 **앱 사용자 관점**의 한도(요금제·세션·파일·플러그인·커넥터)만 다룹니다. 개발자용 Claude Code(터미널 CLI)와는 별개의 제품군이므로 혼동하지 마세요.
 
+## 제약 구조 한눈에 보기
+
+```mermaid
+flowchart TB
+    subgraph Plan["요금제 한도"]
+        FREE["Free: 미지원"]
+        PRO["Pro: 개인용"]
+        MAX["Max: 확장 한도"]
+        TEAM["Team: 관리자 콘솔"]
+        ENT["Enterprise: 전체 기능"]
+    end
+
+    subgraph Session["세션·컨텍스트"]
+        CTX["대화 컨텍스트"]
+        COMP["자동 압축"]
+        TK["토큰 한도"]
+    end
+
+    subgraph FileSystem["파일 시스템"]
+        PERM["폴더 권한 (명시적 선택)"]
+        PATH["Windows MAX_PATH 260자"]
+        FILES["동시 파일 수"]
+    end
+
+    subgraph Plugin["플러그인·커넥터"]
+        MKT["마켓플레이스"]
+        OAUTH["OAuth scope"]
+        MCP["MCP 서버"]
+    end
+
+    Plan --> Session
+    Session --> FileSystem
+    FileSystem --> Plugin
+
+    style FREE fill:#fde2e2,stroke:#c44
+    style PRO fill:#e6f0ff,stroke:#3070d0
+    style MAX fill:#e6ffec,stroke:#30a050
+    style TEAM fill:#fff4e6,stroke:#e09040
+    style ENT fill:#f5e6ff,stroke:#9050d0
+```
+
 ## 한눈에 보기
 
 | 분류 | 핵심 한도 | 회피·확장 |

@@ -6,6 +6,18 @@ geekdocBreadcrumb: true
 ---
 이 가이드는 MoAI Cowork Plugins용 새로운 플러그인을 개발하고 배포하는 전체 과정을 안내합니다. 기존 플러그인 구조를 따라 일관된 품질의 플러그인을 만들 수 있습니다.
 
+```mermaid
+flowchart TD
+    A["plugin.json 작성"] --> B["스킬 디렉토리 생성"]
+    B --> C["SKILL.md 작성"]
+    C --> D["로컬 테스트"]
+    D --> E["README 작성"]
+    E --> F["PR 제출"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style F fill:#e6ffec,stroke:#30a050
+```
+
 ## 플러그인 기본 구조
 
 ### 표준 디렉토리 구조

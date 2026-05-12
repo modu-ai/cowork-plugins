@@ -6,6 +6,37 @@ geekdocBreadcrumb: true
 ---
 > Cowork는 내장된 커넥터(connectors)와 사용자 지정 MCP 서버를 통해 외부 서비스와 데이터에 접근합니다.
 
+## 연결 아키텍처
+
+```mermaid
+flowchart TB
+    subgraph CW["Claude Cowork"]
+        CONN["커넥터 설정"]
+    end
+
+    subgraph BuiltIn["내장 커넥터"]
+        GDrive["Google Drive"]
+        Gmail["Gmail"]
+        Slack["Slack"]
+        GitHub["GitHub"]
+        Cal["Google Calendar"]
+    end
+
+    subgraph Custom["커스텀 MCP 서버"]
+        Notion["Notion"]
+        Linear["Linear"]
+        DB["사내 DB"]
+        Wiki["사내 위키"]
+    end
+
+    CONN --> BuiltIn
+    CONN --> Custom
+
+    style CW fill:#fafffa,stroke:#5aa05a
+    style BuiltIn fill:#e6f0ff,stroke:#3070d0
+    style Custom fill:#fff4e6,stroke:#e09040
+```
+
 ## 내장 커넥터
 
 Cowork 설정에서 "커넥터" 항목을 열면 Google Drive, Gmail, Google Calendar, Slack, GitHub 등 자주 쓰이는 서비스를 한 번에 연결할 수 있습니다. 2026-02에는 영업·분석·법무·마케팅 영역의 **12종 커넥터가 추가 공개**되었습니다: DocuSign · Apollo · Clay · Outreach · Similarweb · MSCI · LegalZoom · FactSet · WordPress · Harvey · Google Calendar(확장) · Google Drive(확장). 연결 후에는 다음과 같은 요청이 자연스럽게 가능합니다.
@@ -15,6 +46,12 @@ Cowork 설정에서 "커넥터" 항목을 열면 Google Drive, Gmail, Google Cal
 - "Slack #release 채널의 최근 공지를 주간 보고에 포함해줘"
 
 커넥터는 각자 승인된 범위(scope) 내에서만 작동합니다.
+
+![커넥터 권한 설정 화면](/screenshots/getting-started/quick-start-project-5.png)
+
+1. **Chrome 데이터 사용 토글** — 커넥터가 Chrome 데이터에 접근할 수 있는지 제어합니다
+2. **보안 경고** — 커넥터 연결 시 데이터 접근 범위에 대한 보안 안내가 표시됩니다
+3. **커넥터 목록** — Gmail, Google Calendar, Notion 등 사용 가능한 커넥터 목록을 확인합니다
 
 ## MCP가 필요한 이유
 

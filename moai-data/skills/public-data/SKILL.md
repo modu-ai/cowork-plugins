@@ -5,7 +5,7 @@ description: >
   '통계 찾아줘', '공공데이터 조회해줘', '인구 통계', 'KOSIS 검색'이라고 요청할 때 사용하세요.
   data.go.kr API와 KOSIS OpenAPI로 실시간 데이터를 조회하고 분석합니다.
 user-invocable: true
-version: 2.2.1
+version: 2.3.0
 ---
 
 # 공공데이터 조회 (Public Data)

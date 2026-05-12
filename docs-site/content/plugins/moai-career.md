@@ -10,6 +10,15 @@ tags: ["moai-career"]
 
 > 자소서·이력서·면접·포트폴리오 4개 스킬을 제공합니다.
 
+```mermaid
+flowchart LR
+    A["job-analyzer<br/>JD 분석·매칭"] --> B["resume-builder<br/>자소서·이력서"]
+    B --> C["interview-coach<br/>면접 대비"]
+    C --> D["portfolio-guide<br/>포트폴리오"]
+    style A fill:#e6f0ff,stroke:#3070d0
+    style D fill:#e6ffec,stroke:#30a050
+```
+
 ## 무엇을 하는 플러그인인가
 
 `moai-career` (v1.5.0)는 STAR 기법 기반 자기소개서 작성, ATS(지원자 추적 시스템) 친화 이력서·영문 CV·링크드인 프로필, JD 분석과 기업 리서치·역량 매칭, AI·BEI·PT·토론·임원 유형별 면접 대비와 모의 면접, 개발·디자인·마케팅 포트폴리오 구성(GitHub·Behance·Notion 최적화)까지 취업·이직 전 주기를 지원합니다.

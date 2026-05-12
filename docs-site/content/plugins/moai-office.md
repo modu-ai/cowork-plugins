@@ -10,6 +10,16 @@ tags: ["moai-office"]
 
 > 한국 기업 문서 양식에 맞춘 4가지 포맷 생성기입니다. 발표자료, 공문, 매출표, 한글 기안서까지 한 번에 처리합니다.
 
+```mermaid
+flowchart LR
+    A["(도메인 스킬)<br/>사업계획·재무·보고"] --> B["docx-generator<br/>Word"]
+    A --> C["pptx-designer<br/>PowerPoint"]
+    A --> D["xlsx-creator<br/>Excel"]
+    A --> E["hwpx-writer<br/>한글 HWPX"]
+    style A fill:#e6f0ff,stroke:#3070d0
+    style E fill:#e6ffec,stroke:#30a050
+```
+
 ## 무엇을 하는 플러그인인가
 
 `moai-office` (v1.5.0)는 한국 기업·관공서에서 실제로 쓰이는 문서 양식을 그대로 자동 생성하는 플러그인입니다. PowerPoint(PPTX), Word(DOCX), Excel(XLSX), 한글(HWPX) 네 가지 포맷을 모두 지원하며, 폰트·결재란·숫자 표기·표 라벨 등 한국 문서 관례를 기본값으로 반영합니다.

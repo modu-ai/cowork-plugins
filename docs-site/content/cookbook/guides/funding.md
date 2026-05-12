@@ -6,6 +6,18 @@ geekdocBreadcrumb: true
 ---
 > 투자자가 보는 것은 "얼마나 큰 시장에서 얼마나 잘 팔 자신이 있는가"의 두 줄 답변입니다. 그 답변을 IR 덱·재무 모델·실적 데이터로 뒷받침하는 일련의 산출물을 cowork-plugins로 작성합니다.
 
+```mermaid
+flowchart LR
+    A["market-analyst<br/>시장 분석"] --> B["strategy-planner<br/>사업 전략"]
+    B --> C["investor-relations<br/>IR 덱 + 재무"]
+    C --> D["pptx-designer<br/>슬라이드"]
+    D --> E["ai-slop-reviewer<br/>톤 검수"]
+    A -. "정부지원" .-> F["kr-gov-grant"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style E fill:#e6ffec,stroke:#30a050
+```
+
 ## 사용 스킬
 
 | 단계 | 스킬 | 용도 |

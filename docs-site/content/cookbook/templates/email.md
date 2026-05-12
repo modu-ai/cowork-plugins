@@ -6,6 +6,16 @@ geekdocBreadcrumb: true
 ---
 > 이메일은 "죽었다"는 말을 10년째 듣고 있지만, 매출 ROAS 기준으로는 가장 안정적인 채널입니다. cowork-plugins는 한국 정보통신망법을 준수하면서 시퀀스를 자동 설계합니다.
 
+```mermaid
+flowchart LR
+    A["email-sequence<br/>시퀀스 설계"] --> B["newsletter<br/>콘텐츠 작성"]
+    B --> C["copywriting<br/>제목·CTA"]
+    C --> D["ai-slop-reviewer<br/>발송 전 검수"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style D fill:#e6ffec,stroke:#30a050
+```
+
 ## 사용 스킬
 
 | 스킬 | 용도 |

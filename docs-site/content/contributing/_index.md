@@ -6,6 +6,19 @@ geekdocBreadcrumb: true
 ---
 MoAI Cowork Plugins 오픈소스 프로젝트에 기여하는 방법을 안내합니다. 새로운 스킬 개발, 기존 기능 개선, 문서 개선 등 다양한 방식으로 프로젝트에 기여할 수 있습니다.
 
+```mermaid
+flowchart LR
+    A["Fork 저장소"] --> B["Branch 생성"]
+    B --> C["개발·수정"]
+    C --> D["로컬 검증"]
+    D --> E["Push & PR"]
+    E --> F["코드 리뷰"]
+    F --> G["Merge & 배포"]
+
+    style A fill:#e6f0ff,stroke:#3070d0,stroke-width:2px,color:#1a1a1a
+    style G fill:#e6ffec,stroke:#30a050,stroke-width:2px,color:#1a1a1a
+```
+
 ## 기여 방법
 
 ### 1. Fork & Branch

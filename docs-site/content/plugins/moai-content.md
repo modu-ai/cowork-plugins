@@ -10,6 +10,22 @@ tags: ["moai-content"]
 
 > 한국 마케팅·콘텐츠 실무에 최적화된 11개 스킬을 제공합니다. 네이버 블로그·티스토리·인스타그램·LinkedIn·카카오 채널까지 플랫폼별 알고리즘 차이를 반영하며, **v2.2.0부터 마크다운 보고서 HTML 변환(`html-report`)이 추가**되었습니다.
 
+```mermaid
+flowchart LR
+    subgraph 생성["콘텐츠 생성"]
+        A["blog · card-news<br/>landing-page · newsletter"]
+    end
+    subgraph 후처리["후처리"]
+        B["ai-slop-reviewer<br/>AI 패턴 검수"]
+        C["humanize-korean<br/>한국어 정밀 윤문"]
+    end
+    D["html-report<br/>HTML 변환"]
+    생성 --> 후처리
+    B --> C --> D
+    style A fill:#e6f0ff,stroke:#3070d0
+    style D fill:#e6ffec,stroke:#30a050
+```
+
 ## 무엇을 하는 플러그인인가
 
 `moai-content` (v2.1.0)는 한국 디지털 마케팅 채널의 실제 운영 노하우를 반영해 설계된 텍스트 콘텐츠 생성 플러그인입니다. 단순히 글을 만드는 데 그치지 않고, 네이버 C-Rank·D.I.A. 알고리즘이나 인스타그램의 카드뉴스 길이 기준 등 채널별 베스트 프랙티스를 본문 구조에 반영합니다.

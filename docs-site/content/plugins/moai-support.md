@@ -10,6 +10,15 @@ tags: ["moai-support"]
 
 > CS·티켓·지식베이스 관리용 4개 스킬을 제공합니다.
 
+```mermaid
+flowchart LR
+    A["ticket-triage<br/>문의 분류·에스컬레이션"] --> B["draft-response<br/>응답 초안"]
+    B --> C["kb-article<br/>FAQ·지식베이스"]
+    C --> D["escalation-manager<br/>VOC 분석"]
+    style A fill:#e6f0ff,stroke:#3070d0
+    style D fill:#e6ffec,stroke:#30a050
+```
+
 ## 무엇을 하는 플러그인인가
 
 `moai-support` (v1.5.0)는 고객 문의 접수부터 응답·에스컬레이션·지식베이스화까지 CS 조직의 주요 업무를 지원하는 플러그인입니다. 한국어 경어체 응답 초안, Zendesk·Freshdesk 호환 FAQ 문서, VOC 분석 리포트 등 실무 산출물을 바로 생성할 수 있습니다.

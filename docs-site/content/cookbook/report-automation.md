@@ -7,6 +7,23 @@ tags: [cookbook, operations]
 ---
 > **목표** — 매주 금요일 오후 5시에 자동으로 시작해 **KPI 대시보드 + 이슈 요약 + 다음 주 액션**까지 담긴 3페이지 DOCX를 팀 공유 폴더에 저장합니다.
 
+```mermaid
+flowchart LR
+    subgraph Sources["데이터 소스"]
+        S1["KPI CSV"]
+        S2["Slack #ops"]
+        S3["Notion/Asana"]
+    end
+    A["status-reporter<br/>주간 리포트 골격"] --> B["data-explorer<br/>KPI 추출"]
+    B --> C["xlsx-creator<br/>대시보드"]
+    C --> D["docx-generator<br/>3페이지 DOCX"]
+    D --> E["ai-slop-reviewer<br/>문장 다듬기"]
+    Sources --> A
+
+    style Sources fill:#f5e6ff,stroke:#9050d0
+    style E fill:#e6ffec,stroke:#30a050
+```
+
 ## 대상 독자
 
 운영팀·기획팀의 정기 보고를 담당하는 실무자.

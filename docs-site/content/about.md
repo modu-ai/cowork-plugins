@@ -9,6 +9,16 @@ geekdocBreadcrumb: true
 
 Claude Cowork와 `modu-ai/cowork-plugins`를 한국어로 쉽게 시작하기 위한 비공식 커뮤니티 문서입니다.
 
+```mermaid
+flowchart LR
+    A["Anthropic<br/>Claude Cowork"] --> B["modu-ai<br/>cowork-plugins"]
+    B --> C["본 사이트<br/>한국어 가이드"]
+    C --> D["사용자<br/>실무 적용"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style D fill:#e6ffec,stroke:#30a050
+```
+
 ## 만드는 사람
 
 자원봉사 성격의 한국어 문서 프로젝트이며, 원문 저작권은 [Anthropic](https://www.anthropic.com)과 [modu-ai](https://github.com/modu-ai)에 있습니다. 본 사이트는 공식 문서를 번역·재구성해 진입점 역할만 수행합니다.

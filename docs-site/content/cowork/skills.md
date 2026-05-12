@@ -6,6 +6,21 @@ geekdocBreadcrumb: true
 ---
 > 스킬(skill)은 "이런 요청이 오면 이렇게 처리해라"라는 절차적 지침 묶음입니다. 프롬프트 엔지니어링을 파일 하나로 저장해둔 것이라고 생각하면 쉽습니다.
 
+## 스킬 트리거 흐름
+
+```mermaid
+flowchart LR
+    A["사용자 자연어 요청"] --> B{"description<br/>매칭"}
+    B -- 일치 --> C["스킬 자동 호출"]
+    B -- 불일치 --> D["Claude 기본 응답"]
+    C --> E["스킬 본문 실행"]
+    E --> F["결과물 반환"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style C fill:#e6ffec,stroke:#30a050
+    style F fill:#dff5dd,stroke:#3a8a3a
+```
+
 ## 언제 트리거되나
 
 각 스킬의 `description` 필드에 트리거 조건이 쓰여 있습니다. Cowork가 사용자의 요청을 읽고, 일치하는 스킬이 있으면 자동으로 호출합니다.

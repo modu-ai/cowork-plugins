@@ -47,8 +47,8 @@ disablePathToLower = true
 
 # Geekdoc 사이트 파라미터
 [params]
-  version = "2.2.0"
-  releaseDate = "2026-05-11"
+  version = "2.3.0"
+  releaseDate = "2026-05-12"
   geekdocRepo = "https://github.com/modu-ai/cowork-plugins"
   geekdocEditPath = "edit/main/docs-site/content"
   geekdocSearch = true

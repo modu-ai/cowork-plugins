@@ -6,6 +6,17 @@ geekdocBreadcrumb: true
 ---
 이 가이드는 MoAI Cowork Plugins용 새로운 스킬을 개발하는 방법을 상세히 안내합니다. v1.3.0 기준의 최신 규격을 따라 고품질의 스킬을 만들 수 있습니다.
 
+```mermaid
+flowchart TD
+    A["SKILL.md frontmatter 작성"] --> B["본문(지시사항) 작성"]
+    B --> C["로컬 테스트"]
+    C --> D["체인 연동 테스트"]
+    D --> E["버전 동기화"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style E fill:#e6ffec,stroke:#30a050
+```
+
 ## SKILL.md frontmatter 규격
 
 ### 카테고리 A: 슬래시 호출 스킬 (Tab 자동완성 대상)

@@ -1,6 +1,6 @@
 {
   "name": "moai-bi",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "description": "데이터 분석·BI 대시보드 설계·경영진 1pager 보고서 자동화. K-IFRS·KOSIS·DART 한국 통계 친화, moai-finance와 직접 체이닝",
   "author": {
     "name": "모두의AI"

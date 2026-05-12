@@ -1,6 +1,9 @@
 ---
 name: sbiz365-analyst
 description: |
+  [책임 경계] 오프라인 상권 단위 분석 (소상공인365 PDF 기반 — 지역·유동인구·경쟁 점포·예상 매출).
+  페어 moai-business:market-analyst(산업 단위)·moai-commerce:commerce-market-research(온라인 카테고리)와 시장 단위 차이로 명확히 구분.
+  사용 분기: 오프라인 상권 단위 → 본 스킬 / 산업 단위 → market-analyst / 온라인 카테고리·검색 키워드 → commerce-market-research.
   소상공인365(bigdata.sbiz.or.kr)에서 다운로드한 상권분석 PDF를 첨부하면,
   AskUserQuestion으로 업종·예산·목적·분석 중점을 수집하고
   **상권 트렌드 분석 + 창업 타당성 종합 보고서**를 Word(.docx)로 생성합니다.
@@ -13,7 +16,7 @@ description: |
   - "경쟁 분석", "유동인구 분석", "예상 매출 분석"
   - bigdata.sbiz.or.kr, 소상공인365, 소상공인 빅데이터 관련 분석 요청
 user-invocable: true
-version: 2.2.1
+version: 2.3.0
 ---
 
 # 소상공인365 상권분석 전문가 스킬

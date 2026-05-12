@@ -10,6 +10,22 @@ tags: ["moai-finance"]
 
 > 한국 세법·회계 기준 6개 스킬을 제공합니다.
 
+```mermaid
+flowchart LR
+    subgraph 세무회계["세무·회계"]
+        A["tax-helper<br/>원천징수·부가세"]
+        B["financial-statements<br/>K-IFRS 재무제표"]
+        C["close-management<br/>결산·정산"]
+    end
+    subgraph 분석["분석·조회"]
+        D["variance-analysis<br/>예실 분석"]
+        E["court-auction-search<br/>법원경매"]
+        F["korean-stock-search<br/>KRX 시세"]
+    end
+    style A fill:#e6f0ff,stroke:#3070d0
+    style F fill:#e6ffec,stroke:#30a050
+```
+
 ## 무엇을 하는 플러그인인가
 
 `moai-finance` (v1.5.0)는 프리랜서 3.3% 원천징수, 종합소득세·부가가치세 신고, 홈택스 절차, K-IFRS 재무상태표·손익계산서·현금흐름표 작성, 월·분기·연간 결산과 4대보험 정산, 예산 대비 실적 분석까지 한국 기준 재무·세무 실무를 자동화합니다. 2026년 K-IFRS 제1118호 변경사항과 4대보험 요율·노동법 최신값이 반영되어 있습니다.

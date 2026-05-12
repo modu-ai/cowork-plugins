@@ -10,6 +10,16 @@ tags: [cookbook, ai-employee, finance]
 
 > [AI 사원 설계](../ai-employee-design/) 모델을 실제로 구현하는 랩입니다. 재무팀 반복 업무를 맡는 AI를 30분 안에 만들고 운영 흐름까지 확인합니다.
 
+```mermaid
+flowchart LR
+    A["스킬 3개 작성<br/>daily-briefing<br/>expense-categorizer<br/>variance-alert"] --> B["finance-assistant<br/>플러그인 구성"]
+    B --> C["Schedule 등록<br/>매일 08:50"]
+    C --> D["Slack 브리핑<br/>#finance-daily"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style D fill:#e6ffec,stroke:#30a050
+```
+
 ## 랩 목표
 
 끝났을 때 결과물:

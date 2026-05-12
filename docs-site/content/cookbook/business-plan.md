@@ -7,6 +7,21 @@ tags: [cookbook, business]
 ---
 > **목표** — 아이템 아이디어에서 시작해 심사위원이 받을 수 있는 수준의 DOCX 사업계획서까지, 1~2시간 이내로 완성합니다.
 
+```mermaid
+flowchart LR
+    A["strategy-planner<br/>BMC·SWOT·OKR"] --> B["market-analyst<br/>TAM·경쟁사·가격"]
+    B --> C["docx-generator<br/>심사 양식 DOCX"]
+    C --> D["ai-slop-reviewer<br/>기계적 문장 제거"]
+    D --> E{"추가 보강"}
+    E -- "시장 통계" --> F["moai-data<br/>KOSIS 데이터"]
+    E -- "재무 추정" --> G["xlsx-creator<br/>3년 추정표"]
+    F --> E
+    G --> E
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style D fill:#e6ffec,stroke:#30a050
+```
+
 ## 대상 독자
 
 예비창업패키지·TIPS 등 정부 지원사업에 제출할 사업계획서를 준비하는 창업가·중소기업 기획자.

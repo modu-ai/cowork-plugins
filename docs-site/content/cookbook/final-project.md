@@ -7,6 +7,19 @@ tags: [cookbook, capstone]
 ---
 > 8주 코스의 마지막 단계입니다. 자기 업무 한 가지를 골라 3-스킬 체인으로 자동화하고, 산출물·프롬프트·회고를 한 문서로 정리합니다.
 
+```mermaid
+flowchart LR
+    subgraph Design["체인 설계"]
+        A["도메인 스킬"] --> B["포맷 스킬"]
+        B --> C["품질 스킬"]
+    end
+    Design --> Submit["5항목 제출"]
+    Submit --> Rubric["루브릭 평가<br/>4축 × 4단계"]
+
+    style Design fill:#e6f0ff,stroke:#3070d0
+    style Rubric fill:#e6ffec,stroke:#30a050
+```
+
 {{< hint type="warning" >}}
 **v0.2 스켈레톤**: 제출 템플릿과 루브릭의 뼈대만 우선 배치했습니다. 예시 제출물과 모범 답안은 이후 체인 F에서 추가합니다.
 {{< /hint >}}

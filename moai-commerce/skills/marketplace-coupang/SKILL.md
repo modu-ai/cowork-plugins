@@ -7,7 +7,7 @@ description: >
   이미지 규격, 금지문구 체크, 검색 키워드 추천, 우수상품 기준 적용,
   로켓배송 vs 판매자배송 분기 가이드를 제공합니다.
 user-invocable: true
-version: 2.2.1
+version: 2.3.0
 ---
 
 # 쿠팡 상세페이지 가이드 (Coupang Marketplace)

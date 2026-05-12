@@ -16,6 +16,20 @@ geekdocBreadcrumb: true
 
 ## 설치 흐름
 
+```mermaid
+flowchart LR
+    A["사이드바 > 사용자 지정<br/>> 개인 플러그인"] --> B["마켓플레이스 추가<br/>modu-ai/cowork-plugins"]
+    B --> C["목록에서<br/>플러그인 선택"]
+    C --> D["+ 버튼으로<br/>설치"]
+    D --> E["✅ 스킬 자동 활성화"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style B fill:#fff4e6,stroke:#e09040
+    style C fill:#e6ffec,stroke:#30a050
+    style D fill:#f5e6ff,stroke:#9050d0
+    style E fill:#dff5dd,stroke:#3a8a3a,stroke-width:2px
+```
+
 커뮤니티 마켓플레이스를 예로 들면 아래 순서입니다.
 
 1. Cowork **좌측 사이드바 > 사용자 지정(Customize) > 개인 플러그인** 진입

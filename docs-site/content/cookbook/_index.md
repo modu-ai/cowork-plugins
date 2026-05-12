@@ -51,6 +51,19 @@ tags: [cookbook]
 - **포맷 변환은 `moai-office`에 위임합니다.** 내용 생성 스킬은 초안만 만들고 `docx-generator` / `xlsx-creator` / `pptx-designer` / `hwpx-writer`가 실제 파일을 만듭니다.
 - **Windows 사용자는 파일명을 짧게 유지합니다.** MAX_PATH(260자) 제한 때문에 `보고서.docx`처럼 짧은 한글 이름을 권장합니다.
 
+```mermaid
+flowchart LR
+    A["자연어 요청"] --> B{"스킬 라우터<br/>매칭"}
+    B --> C["텍스트 생성<br/>스킬"]
+    B --> D["포맷 변환<br/>moai-office"]
+    C --> E["ai-slop-reviewer<br/>후처리"]
+    E --> D
+    D --> F["최종 산출물"]
+
+    style A fill:#e6f0ff,stroke:#3070d0
+    style F fill:#dff5dd,stroke:#3a8a3a,stroke-width:2px
+```
+
 ---
 
 ### Sources

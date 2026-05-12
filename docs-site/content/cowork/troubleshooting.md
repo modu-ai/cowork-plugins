@@ -6,6 +6,37 @@ geekdocBreadcrumb: true
 ---
 > Claude Cowork(Claude Desktop 앱의 Cowork 모드)에서 자주 발생하는 문제를 모았습니다. 스킬 체인 단계의 트러블슈팅은 [쿡북 — 트러블슈팅](../../cookbook/troubleshooting/), 시스템 한도 설명은 [제약과 한도](../constraints/)를 함께 보세요.
 
+## 진단 흐름
+
+```mermaid
+flowchart TB
+    START["문제 발생"] --> Q1{"어떤 영역?"}
+
+    Q1 -- 앱·로그인 --> S1["§1 설치·로그인"]
+    Q1 -- 폴더·파일 --> S2["§2 작업 폴더"]
+    Q1 -- 산출물 품질 --> Q2{"원인?"}
+    Q1 -- 스킬·플러그인 --> Q3{"원인?"}
+    Q1 -- 커넥터·MCP --> S7["§7 커넥터·MCP"]
+    Q1 -- 세션 끊김 --> S8["§8 세션·대화"]
+    Q1 -- 회사 네트워크 --> S10["§10 프록시·방화벽"]
+
+    Q2 -- AI 어투 --> FIX1["ai-slop-reviewer 호출"]
+    Q2 -- 길이·부정확 --> FIX2["제약 조건 명시"]
+    Q2 -- 폰트 깨짐 --> FIX3["§4-3 폰트 확인"]
+
+    Q3 -- 트리거 약함 --> FIX4["도메인 키워드 포함"]
+    Q3 -- moai-core 누락 --> FIX5["moai-core 설치"]
+    Q3 -- 중복 스킬 --> FIX6["플러그인명 명시"]
+
+    style START fill:#fde2e2,stroke:#c44
+    style FIX1 fill:#e6ffec,stroke:#30a050
+    style FIX2 fill:#e6ffec,stroke:#30a050
+    style FIX3 fill:#e6ffec,stroke:#30a050
+    style FIX4 fill:#e6ffec,stroke:#30a050
+    style FIX5 fill:#e6ffec,stroke:#30a050
+    style FIX6 fill:#e6ffec,stroke:#30a050
+```
+
 ## 빠른 진단표
 
 | 증상 | 점프 |

@@ -6,6 +6,39 @@ geekdocBreadcrumb: true
 ---
 > 조직에서 Cowork를 도입할 때 관리자가 챙겨야 할 요소들을 정리합니다.
 
+## 거버넌스 아키텍처
+
+```mermaid
+flowchart TB
+    subgraph Admin["관리자 콘솔"]
+        POL["플러그인·커넥터<br/>승인 목록"]
+        MON["OpenTelemetry<br/>모니터링"]
+        SSO["SSO·DLP 연동"]
+    end
+
+    subgraph Org["조직 구성원"]
+        U1["사용자 A"]
+        U2["사용자 B"]
+        U3["사용자 N"]
+    end
+
+    subgraph Data["데이터 흐름"]
+        LOCAL["로컬 폴더"]
+        API["Anthropic API"]
+        SIEM["SIEM·Datadog<br/>감사 로그"]
+    end
+
+    Admin --> Org
+    Org --> LOCAL
+    LOCAL --> API
+    API --> SIEM
+    MON --> SIEM
+
+    style Admin fill:#f5e6ff,stroke:#9050d0
+    style Org fill:#e6f0ff,stroke:#3070d0
+    style Data fill:#e6ffec,stroke:#30a050
+```
+
 ## 요금제 특징
 
 - **Team**: 팀 단위 플러그인 관리, 공유 프로젝트

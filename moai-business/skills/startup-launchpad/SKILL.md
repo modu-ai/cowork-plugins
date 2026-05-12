@@ -10,7 +10,7 @@ description: |
   - "시장 분석부터 재무 모델까지 전체 플랜", "startup business plan", "pitch deck"
   - "BM 캔버스 설계", "스타트업 초기 자본 계획", "투자자 피치 자료"
 user-invocable: true
-version: 2.2.1
+version: 2.3.0
 ---
 
 # 스타트업 런치패드 (Startup Launchpad)

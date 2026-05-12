@@ -1,6 +1,9 @@
 ---
 name: executive-summary
 description: |
+  [책임 경계] 임원/이사회 1페이지 요약 (≤500단어, McKinsey Pyramid — What/So What/Now What 구조).
+  페어 moai-marketing:performance-report와 체이닝 관계 — 본 스킬은 임원 압축 요약, 페어는 마케팅 풀 리포트(전체).
+  입력 가능: performance-report 출력 · moai-finance (financial-statements, variance-analysis) · moai-pm:weekly-report · 외부 보고서.
   복잡한 분석·재무·운영 보고를 경영진 1페이지(≤500단어) 요약으로 변환합니다.
   Bezos 6-Pager 아닌 한국 임원/이사회 표준에 맞춘 What/So What/Now What 구조,
   K-IFRS 재무 지표 우선, 정량 수치 + 의사결정 옵션 + 권고안.
@@ -10,7 +13,7 @@ description: |
   - "C레벨 요약", "executive summary 작성", "임원 보고서 요약"
   - "긴 보고서 1페이지로 줄여줘", "경영진용 핵심 요약"
 user-invocable: true
-version: 2.2.1
+version: 2.3.0
 ---
 
 # Executive Summary — 경영진 1페이지 요약

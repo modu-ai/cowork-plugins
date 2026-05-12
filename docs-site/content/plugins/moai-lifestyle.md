@@ -10,6 +10,14 @@ tags: ["moai-lifestyle"]
 
 > 개인 일상과 이벤트 기획을 위한 3개 스킬을 제공합니다.
 
+```mermaid
+flowchart LR
+    A["travel-planner<br/>여행 일정·예산"] --> B["event-planner<br/>행사·웨딩 기획"]
+    B --> C["wellness-coach<br/>운동·식단·케어"]
+    style A fill:#e6f0ff,stroke:#3070d0
+    style C fill:#e6ffec,stroke:#30a050
+```
+
 ## 무엇을 하는 플러그인인가
 
 `moai-lifestyle` (v1.5.0)는 여행 일정·맛집·숙소·예산 계획과 부동산 수익률·사이드 프로젝트 검토, 행사·워크샵·웨딩 준비와 예산·타임라인, 운동 루틴·식단·육아·시니어 케어 플랜까지 개인 일상 영역을 자동화합니다.
