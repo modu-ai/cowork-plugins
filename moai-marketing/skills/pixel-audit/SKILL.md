@@ -81,7 +81,19 @@ Lookalike의 품질 한계 = 씨앗 데이터의 품질 한계.
 5. 월 1회 이상 씨앗 데이터 최신 상태 업데이트
 ```
 
-## 진단 체크리스트
+## 워크플로우 — 진단 체크리스트
+
+```
+[Step 1] 사이트 URL + 광고 채널 사용 여부 입력
+   ↓
+[Step 2] A. 메타 픽셀 / B. 구글 픽셀 / C. 1st Party / D. Lookalike 4영역 점검
+   ↓
+[Step 3] 영역별 점수 산출 (100점 만점)
+   ↓
+[Step 4] Phase 1 (즉시) / Phase 2 (단계적) / Phase 3 (최적화) 우선순위 자동 분류
+   ↓
+[Step 5] 진단 보고서 출력 + (선택) campaign-planner·coupang-ad-optimizer 체이닝
+```
 
 ### A. 메타 픽셀
 - [ ] 픽셀 설치 (Facebook Pixel Helper로 확인)
@@ -151,6 +163,18 @@ Lookalike의 품질 한계 = 씨앗 데이터의 품질 한계.
 
 ### 🟢 최적화 (Phase 3, 분기)
 6. 코호트 분석 + LTV/CAC 측정 자동화
+```
+
+## 체이닝
+
+```
+pixel-audit (본 스킬, 픽셀·1st Party 인프라 진단)
+       ↓ Phase 1 즉시 수정 후
+campaign-planner (인프라 기반 캠페인 기획 + 9 인지 편향 적용)
+       ↓ 메타·구글 광고 운영 시
+sns-content (채널별 심리 상태 매트릭스 + CAPI 검증)
+       ↓ 쿠팡 광고는 별도로
+coupang-ad-optimizer (메타·구글 픽셀 아닌 쿠팡 전용 자동규칙)
 ```
 
 ## 페어 분리
