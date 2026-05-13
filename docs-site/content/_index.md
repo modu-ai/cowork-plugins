@@ -71,10 +71,10 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
     <div class="foot"><span>블로그</span><span>SNS</span><span>humanize</span><span>html-report</span></div>
   </a>
   <a class="cw-card" href="/plugins/moai-marketing/">
-    <div class="head"><div class="icon">마</div><span class="count-pill">8개 스킬</span></div>
-    <div><div class="title">마케팅</div><div class="slug">moai-marketing</div></div>
-    <div class="desc">캠페인·퍼포먼스·CRM·광고 카피·이메일 시퀀스</div>
-    <div class="foot"><span>캠페인</span><span>광고</span><span>CRM</span></div>
+    <div class="head"><div class="icon">마</div><span class="count-pill">10개 스킬</span></div>
+    <div><div class="title">마케팅<span class="new-tag">v2.4</span></div><div class="slug">moai-marketing</div></div>
+    <div class="desc">캠페인·퍼포먼스·CRM·광고 카피·이메일 시퀀스 + 광고 심리학 통합·랜딩 진단·픽셀 검증</div>
+    <div class="foot"><span>캠페인</span><span>광고</span><span>랜딩 진단</span><span>픽셀</span></div>
   </a>
   <a class="cw-card" href="/plugins/moai-media/">
     <div class="head"><div class="icon">미</div><span class="count-pill">13개 스킬</span></div>
@@ -83,10 +83,10 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
     <div class="foot"><span>GPT Image 2</span><span>Kling/Veo/Seedance</span><span>AI 표기</span></div>
   </a>
   <a class="cw-card" href="/plugins/moai-commerce/">
-    <div class="head"><div class="icon">커</div><span class="count-pill">19개 스킬</span></div>
-    <div><div class="title">커머스<span class="new-tag">v2.3</span></div><div class="slug">moai-commerce</div></div>
-    <div class="desc">이커머스 풀세트 + V6 6도구 (시장조사·JTBD·페르소나·상품명·NCM 메시지·통합 전략)</div>
-    <div class="foot"><span>V6 6도구</span><span>상세페이지</span><span>채널</span><span>라이브</span></div>
+    <div class="head"><div class="icon">커</div><span class="count-pill">22개 스킬</span></div>
+    <div><div class="title">커머스<span class="new-tag">v2.4</span></div><div class="slug">moai-commerce</div></div>
+    <div class="desc">이커머스 풀세트 + V6 6도구 + 광고 최적화·자동화 진단·마진 계산 (쿠팡·마진·자동화 진단)</div>
+    <div class="foot"><span>V6 6도구</span><span>상세페이지</span><span>쿠팡 광고</span><span>자동화</span></div>
   </a>
   <a class="cw-card" href="/plugins/moai-office/">
     <div class="head"><div class="icon">오</div><span class="count-pill">5개 스킬</span></div>
