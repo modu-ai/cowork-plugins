@@ -35,11 +35,14 @@ class SeverityLevel(str, Enum):
 
 
 class CategoryName(str, Enum):
-    """4 카테고리 — claude-ads v1.5.1 가중치 구조."""
+    """5 카테고리 — claude-ads v1.5.1 가중치 구조 + Andromeda 진단 (weight=0)."""
     PIXEL_CAPI = "pixel_capi"
     CREATIVE = "creative"
     ACCOUNT_STRUCTURE = "account_structure"
     AUDIENCE = "audience"
+    # ANDROMEDA: weight=0 별도 진단 카테고리 (SPEC §3.1.5)
+    # 가중치 합산에 기여하지 않고 정보 제공 목적 (manifest.json categories[4]._note)
+    ANDROMEDA = "andromeda"
 
 
 # Severity multiplier — claude-ads v1.5.1 (NOTICE.md 직접 인용)
@@ -53,11 +56,13 @@ SEVERITY_MULTIPLIER: dict[SeverityLevel, float] = {
 }
 
 # 카테고리 가중치 — claude-ads v1.5.1 (NOTICE.md 직접 인용)
+# Andromeda는 weight=0 — 합산 기여 없음 (manifest.json categories[4]._note 직접 인용)
 CATEGORY_WEIGHT: dict[CategoryName, float] = {
     CategoryName.PIXEL_CAPI: 0.30,      # 30%
     CategoryName.CREATIVE: 0.30,         # 30%
     CategoryName.ACCOUNT_STRUCTURE: 0.20, # 20%
     CategoryName.AUDIENCE: 0.20,         # 20%
+    CategoryName.ANDROMEDA: 0.0,          # 별도 진단 (가중치 없음)
 }
 
 # PASS/WARNING/FAIL → C_pass 매핑 — NOTICE.md 직접 인용

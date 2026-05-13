@@ -52,6 +52,12 @@ MANDATORY_COLUMNS = {
 # 선택 컬럼 (누락 시 관련 기능 비활성)
 OPTIONAL_COLUMNS = {"placement", "age", "gender", "link_clicks", "ctr", "cpc"}
 
+# 표본 부족 셀 마스킹 N값 — SPEC §7.2 결정 (v0.2.0, 2026-05-13)
+# 사유: 한국 PIPA 재식별 위험 + 통계적 유의성. 인구통계 cross-tab 셀 카운트 < 5 시 마스킹.
+# @MX:ANCHOR: [AUTO] 표본 부족 마스킹 N값 SSOT — xlsx.py·tests·downstream audit 도구 공통 참조
+# @MX:REASON: SPEC §7.2 결정 — PIPA 개인정보 보호 + 통계 유의성. M-CR3 임계값 1000과는 별개.
+MASKING_CELL_THRESHOLD = 5
+
 
 # ============================================================
 # 데이터 모델

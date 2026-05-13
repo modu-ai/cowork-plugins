@@ -4,8 +4,8 @@ build-backend = "hatchling.build"
 
 [project]
 name = "moai-ads-audit-mcp"
-version = "0.1.0"
-description = "Meta 광고 audit 전담 MCP 서버 — claude-ads v1.5.1 방법론 한국 시장 특화 (cowork-plugins v2.5.0)"
+version = "0.2.0"
+description = "Meta 광고 audit 전담 MCP 서버 — claude-ads v1.5.1 방법론 한국 시장 특화 (cowork-plugins v2.5.0, 라운드 4 10종 도구 완성)"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.11"

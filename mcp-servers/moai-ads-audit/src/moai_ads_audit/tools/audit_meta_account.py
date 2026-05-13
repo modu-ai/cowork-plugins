@@ -66,6 +66,23 @@ class AuditMetaAccountInput(BaseModel):
     has_em_hash: bool | None = Field(default=None, description="em 해시화 여부")
     has_ph_hash: bool | None = Field(default=None, description="ph 해시화 여부")
     has_external_id: bool | None = Field(default=None, description="external_id 적용 여부")
+    # v0.2.0 추가: 4 카테고리 실제 audit 활성화 입력
+    ads_data: list[dict] | None = Field(
+        default=None,
+        description="Creative audit용 광고 소재 데이터 (선택, audit_creative_diversity에 전달)",
+    )
+    campaigns: list[dict] | None = Field(
+        default=None,
+        description="Account Structure audit용 캠페인 데이터 (선택, audit_account_structure에 전달)",
+    )
+    audiences: list[dict] | None = Field(
+        default=None,
+        description="Audience audit용 오디언스 데이터 (선택, audit_audience_targeting에 전달)",
+    )
+    lookalike_seeds: list[dict] | None = Field(
+        default=None,
+        description="Lookalike seed 데이터 (선택)",
+    )
 
 
 class AuditMetaAccountOutput(BaseModel):
@@ -81,9 +98,9 @@ class AuditMetaAccountOutput(BaseModel):
     category_scores: dict[str, float] = Field(description="카테고리별 0-100 점수")
     # 각 카테고리 check 결과 요약
     pixel_capi_result: dict = Field(description="Pixel/CAPI audit 결과 (M01-M10)")
-    creative_result: dict = Field(description="Creative audit 결과 (라운드 4 예정)")
-    account_structure_result: dict = Field(description="Account Structure audit 결과 (라운드 4 예정)")
-    audience_result: dict = Field(description="Audience audit 결과 (라운드 4 예정)")
+    creative_result: dict = Field(description="Creative audit 결과 (M25-M32 + M-CR1~4, v0.2.0)")
+    account_structure_result: dict = Field(description="Account Structure audit 결과 (M11-M18 + M-ST1~2, v0.2.0)")
+    audience_result: dict = Field(description="Audience audit 결과 (M19-M24 + M-TH1, v0.2.0)")
     # xlsx 파싱 요약 (있다면)
     xlsx_summary: dict | None = Field(default=None, description="xlsx 파싱 요약")
     # Attribution (REQ-AUDIT-MCP-003)
@@ -96,47 +113,9 @@ class AuditMetaAccountOutput(BaseModel):
 
 
 # ============================================================
-# v1 placeholder — Creative·Account·Audience 카테고리
-# 라운드 4에서 각각 전용 도구로 분리 구현 예정
+# v0.2.0: 모든 4 카테고리 실제 구현 도구를 호출.
+# 미사용 placeholder 함수 제거 (라운드 3 임시 구현이었음).
 # ============================================================
-
-def _placeholder_category_checks(
-    category: CategoryName,
-    check_ids: list[str],
-    default_severity: SeverityLevel = SeverityLevel.MEDIUM,
-) -> list[CheckResult]:
-    """
-    라운드 4 미구현 카테고리에 대한 N/A placeholder check 생성.
-    N/A 상태는 점수 계산에서 제외되므로 합산에 영향 없음.
-    """
-    return [
-        CheckResult(
-            check_id=cid,
-            status=CheckStatus.NA,
-            severity=default_severity,
-            category=category,
-            description=f"{cid}: 라운드 4 구현 예정 (현재 N/A)",
-        )
-        for cid in check_ids
-    ]
-
-
-# Creative 카테고리 check ID 목록 (M25-M32 + M-CR1~4)
-CREATIVE_CHECK_IDS = [
-    "M25", "M26", "M27", "M28", "M29", "M30", "M31", "M32",
-    "M-CR1", "M-CR2", "M-CR3", "M-CR4",
-]
-
-# Account Structure 카테고리 check ID 목록 (M11-M18 + M-ST1~2)
-ACCOUNT_STRUCTURE_CHECK_IDS = [
-    "M11", "M12", "M13", "M14", "M15", "M16", "M17", "M18",
-    "M-ST1", "M-ST2",
-]
-
-# Audience 카테고리 check ID 목록 (M19-M24 + M-TH1)
-AUDIENCE_CHECK_IDS = [
-    "M19", "M20", "M21", "M22", "M23", "M24", "M-TH1",
-]
 
 
 def audit_meta_account_impl(inp: AuditMetaAccountInput) -> AuditMetaAccountOutput:
@@ -205,17 +184,72 @@ def audit_meta_account_impl(inp: AuditMetaAccountInput) -> AuditMetaAccountOutpu
     ]
 
     # ============================================================
-    # Creative·Account·Audience — v1 N/A placeholder (라운드 4 예정)
+    # Creative·Account·Audience — v0.2.0 실제 audit 호출
+    # 입력 데이터 미제공 시 자동으로 N/A 카테고리 (각 도구 내부 처리)
     # ============================================================
-    creative_checks = _placeholder_category_checks(
-        CategoryName.CREATIVE, CREATIVE_CHECK_IDS, SeverityLevel.HIGH
+    from moai_ads_audit.tools.audit_creative_diversity import (
+        AuditCreativeDiversityInput,
+        audit_creative_diversity_impl,
     )
-    account_checks = _placeholder_category_checks(
-        CategoryName.ACCOUNT_STRUCTURE, ACCOUNT_STRUCTURE_CHECK_IDS, SeverityLevel.HIGH
+    from moai_ads_audit.tools.audit_account_structure import (
+        AuditAccountStructureInput,
+        audit_account_structure_impl,
     )
-    audience_checks = _placeholder_category_checks(
-        CategoryName.AUDIENCE, AUDIENCE_CHECK_IDS, SeverityLevel.HIGH
+    from moai_ads_audit.tools.audit_audience_targeting import (
+        AuditAudienceTargetingInput,
+        audit_audience_targeting_impl,
     )
+
+    creative_out = audit_creative_diversity_impl(AuditCreativeDiversityInput(
+        ads_data=inp.ads_data or [],
+        time_window=inp.time_range,
+    ))
+    creative_checks = [
+        CheckResult(
+            check_id=c["check_id"],
+            status=CheckStatus(c["status"]),
+            severity=SeverityLevel(c["severity"]),
+            category=CategoryName.CREATIVE,
+            description=c.get("description", ""),
+            expected_impact=c.get("expected_impact", ""),
+            remediation_option=c.get("remediation_option", ""),
+        )
+        for c in creative_out.checks
+    ]
+
+    account_out = audit_account_structure_impl(AuditAccountStructureInput(
+        campaigns=inp.campaigns or [],
+        time_range=inp.time_range,
+    ))
+    account_checks = [
+        CheckResult(
+            check_id=c["check_id"],
+            status=CheckStatus(c["status"]),
+            severity=SeverityLevel(c["severity"]),
+            category=CategoryName.ACCOUNT_STRUCTURE,
+            description=c.get("description", ""),
+            expected_impact=c.get("expected_impact", ""),
+            remediation_option=c.get("remediation_option", ""),
+        )
+        for c in account_out.checks
+    ]
+
+    audience_out = audit_audience_targeting_impl(AuditAudienceTargetingInput(
+        audiences=inp.audiences or [],
+        lookalike_seeds=inp.lookalike_seeds or [],
+    ))
+    audience_checks = [
+        CheckResult(
+            check_id=c["check_id"],
+            status=CheckStatus(c["status"]),
+            severity=SeverityLevel(c["severity"]),
+            category=CategoryName.AUDIENCE,
+            description=c.get("description", ""),
+            expected_impact=c.get("expected_impact", ""),
+            remediation_option=c.get("remediation_option", ""),
+        )
+        for c in audience_out.checks
+    ]
 
     # ============================================================
     # 전체 합산 (4 카테고리)
@@ -255,19 +289,34 @@ def audit_meta_account_impl(inp: AuditMetaAccountInput) -> AuditMetaAccountOutpu
             "dedup_rate": pixel_result.dedup_rate,
         },
         creative_result={
-            "status": "NOT_IMPLEMENTED_V1",
-            "message": "Creative Diversity & Fatigue audit (M25-M32 + M-CR1~4) 라운드 4 구현 예정",
-            "check_count": len(CREATIVE_CHECK_IDS),
+            "category_score": creative_out.category_score,
+            "pass_count": creative_out.pass_count,
+            "warning_count": creative_out.warning_count,
+            "fail_count": creative_out.fail_count,
+            "na_count": creative_out.na_count,
+            "checks": creative_out.checks,
+            "diversity_summary": creative_out.diversity_summary,
+            "fatigue_summary": creative_out.fatigue_summary,
         },
         account_structure_result={
-            "status": "NOT_IMPLEMENTED_V1",
-            "message": "Account Structure audit (M11-M18 + M-ST1~2) 라운드 4 구현 예정",
-            "check_count": len(ACCOUNT_STRUCTURE_CHECK_IDS),
+            "category_score": account_out.category_score,
+            "pass_count": account_out.pass_count,
+            "warning_count": account_out.warning_count,
+            "fail_count": account_out.fail_count,
+            "na_count": account_out.na_count,
+            "checks": account_out.checks,
+            "learning_limited_ratio": account_out.learning_limited_ratio,
+            "structure_summary": account_out.structure_summary,
         },
         audience_result={
-            "status": "NOT_IMPLEMENTED_V1",
-            "message": "Audience & Targeting audit (M19-M24 + M-TH1) 라운드 4 구현 예정",
-            "check_count": len(AUDIENCE_CHECK_IDS),
+            "category_score": audience_out.category_score,
+            "pass_count": audience_out.pass_count,
+            "warning_count": audience_out.warning_count,
+            "fail_count": audience_out.fail_count,
+            "na_count": audience_out.na_count,
+            "checks": audience_out.checks,
+            "overlap_summary": audience_out.overlap_summary,
+            "audience_summary": audience_out.audience_summary,
         },
         xlsx_summary=xlsx_summary,
     )
