@@ -188,28 +188,6 @@ main:
       - name: 제품 트랙
         ref: /cookbook/tracks/track-product
 
-  - name: 커리큘럼
-    icon: book
-    sub:
-      - name: 커리큘럼 홈
-        ref: /cookbook/curriculum
-      - name: 실습 1
-        ref: /cookbook/curriculum/lab-1
-      - name: 실습 2
-        ref: /cookbook/curriculum/lab-2
-      - name: 최종 프로젝트
-        ref: /cookbook/curriculum/final-project
-
-  - name: 기여하기
-    icon: star
-    sub:
-      - name: 기여 홈
-        ref: /contributing
-      - name: 스킬 개발 가이드
-        ref: /contributing/skill-development
-      - name: 플러그인 개발 가이드
-        ref: /contributing/plugin-development
-
   - name: 릴리스
     icon: tag
     sub:

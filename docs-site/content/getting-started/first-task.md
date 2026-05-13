@@ -170,7 +170,7 @@ flowchart LR
 
 - [빠른 시작 가이드](../quick-start/) - 모든 주요 스킬 숙지하기
 - [릴리스 정보](../../releases/) - 최신 기능 업데이트 확인하기
-- [기여하기](../../contributing/) - 직접 스킬 개발하기
+- [GitHub 저장소](https://github.com/modu-ai/cowork-plugins) - 직접 기여하기
 
 ### Sources
 - GitHub 저장소: [https://github.com/modu-ai/cowork-plugins](https://github.com/modu-ai/cowork-plugins)
