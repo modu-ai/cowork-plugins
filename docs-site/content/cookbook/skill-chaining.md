@@ -43,9 +43,9 @@ flowchart LR
 
     Domain --> Format --> Quality
 
-    style Domain fill:#e6f0ff,stroke:#3070d0
-    style Format fill:#fff4e6,stroke:#e09040
-    style Quality fill:#e6ffec,stroke:#30a050
+    style Domain fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style Format fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style Quality fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 1. **도메인 → 포맷 → 품질**

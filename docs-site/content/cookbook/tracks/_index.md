@@ -74,8 +74,8 @@ flowchart TB
     FIN --> GUIDE
     PROD --> GUIDE
 
-    style START fill:#e6f0ff,stroke:#3070d0
-    style GUIDE fill:#dff5dd,stroke:#3a8a3a,stroke-width:2px
+    style START fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style GUIDE fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
 ```
 
 {{< hint type="note" >}}

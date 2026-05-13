@@ -21,9 +21,9 @@ flowchart LR
     D --> E["⑤ 첫 요청<br/>자연어 입력"]
     E --> F["⑥ 산출물<br/>확인"]
 
-    style A fill:#e6f0ff,stroke:#3070d0
-    style B fill:#fde2e2,stroke:#c44,stroke-width:2px
-    style F fill:#e6ffec,stroke:#30a050
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style B fill:#f5dcd7,stroke:#c44a3a,stroke-width:2px,color:#09110f
+    style F fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 1. **마켓플레이스 등록**

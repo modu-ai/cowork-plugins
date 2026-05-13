@@ -61,8 +61,8 @@ flowchart TD
   E --> F[사용성 테스트<br/>피드백]
   F --> G[UX 디자인<br/>가이드]
 
-  style A fill:#e8f5e9
-  style G fill:#fff3e0
+  style A fill:#cfe5e2,color:#09110f
+  style G fill:#fbf0dc,color:#09110f
 ```
 
 **주요 특징**:

@@ -14,8 +14,8 @@ tags: ["moai-lifestyle"]
 flowchart LR
     A["travel-planner<br/>여행 일정·예산"] --> B["event-planner<br/>행사·웨딩 기획"]
     B --> C["wellness-coach<br/>운동·식단·케어"]
-    style A fill:#e6f0ff,stroke:#3070d0
-    style C fill:#e6ffec,stroke:#30a050
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 ## 무엇을 하는 플러그인인가

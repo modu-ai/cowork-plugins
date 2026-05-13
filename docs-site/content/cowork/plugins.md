@@ -23,11 +23,11 @@ flowchart LR
     C --> D["+ 버튼으로<br/>설치"]
     D --> E["✅ 스킬 자동 활성화"]
 
-    style A fill:#e6f0ff,stroke:#3070d0
-    style B fill:#fff4e6,stroke:#e09040
-    style C fill:#e6ffec,stroke:#30a050
-    style D fill:#f5e6ff,stroke:#9050d0
-    style E fill:#dff5dd,stroke:#3a8a3a,stroke-width:2px
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style D fill:#dceee9,stroke:#2a8a8c,color:#09110f
+    style E fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
 ```
 
 커뮤니티 마켓플레이스를 예로 들면 아래 순서입니다.

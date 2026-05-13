@@ -14,8 +14,8 @@ flowchart LR
     C -- "텍스트" --> E["ai-slop-reviewer"]
     A -. "브랜드 가이드" .-> F["brand-identity"]
 
-    style A fill:#e6f0ff,stroke:#3070d0
-    style E fill:#e6ffec,stroke:#30a050
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style E fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 ## 사용 스킬

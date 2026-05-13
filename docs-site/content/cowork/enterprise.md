@@ -34,9 +34,9 @@ flowchart TB
     API --> SIEM
     MON --> SIEM
 
-    style Admin fill:#f5e6ff,stroke:#9050d0
-    style Org fill:#e6f0ff,stroke:#3070d0
-    style Data fill:#e6ffec,stroke:#30a050
+    style Admin fill:#dceee9,stroke:#2a8a8c,color:#09110f
+    style Org fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style Data fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 ## 요금제 특징

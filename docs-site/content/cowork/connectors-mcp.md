@@ -32,9 +32,9 @@ flowchart TB
     CONN --> BuiltIn
     CONN --> Custom
 
-    style CW fill:#fafffa,stroke:#5aa05a
-    style BuiltIn fill:#e6f0ff,stroke:#3070d0
-    style Custom fill:#fff4e6,stroke:#e09040
+    style CW fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style BuiltIn fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style Custom fill:#fbf0dc,stroke:#c47b2a,color:#09110f
 ```
 
 ## 내장 커넥터

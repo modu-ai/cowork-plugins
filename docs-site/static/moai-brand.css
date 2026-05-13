@@ -1,18 +1,22 @@
 /* MoAI Design System — Hugo/Geekdoc Override
- * Source: Claude Design export (tokens.css + docs.css + cowork.css)
- * Adapted for Geekdoc theme structure
+ * Source: 모두의AI Design System Ver 1.0 (Notion FROZEN, 2026-04-25)
+ *         /tmp/moai-design/colors_and_type.css 토큰 전체 정합
+ * Single source of truth: this file
+ * (assets/css/moai-brand.scss는 빌드 파이프라인에서 사용되지 않는 참고용 사본)
  */
 
-/* ── CSS Custom Properties (FROZEN tokens) ── */
+/* ── CSS Custom Properties (FROZEN tokens — Notion 가이드라인 명시) ── */
 :root {
-  --color-primary: #144a46;
+  /* ── Brand Color (변경 금지) ── */
+  --color-primary: #144a46;          /* 어두운 청록 — CTA, 타이틀, 아이콘 */
   --color-primary-hover: #0e3835;
   --color-primary-active: #0a2825;
-  --color-ink: #09110f;
-  --color-bg: #f3f3f3;
-  --color-surface: #ffffff;
+  --color-ink: #09110f;              /* 본문 텍스트 (#000 대체) */
+  --color-bg: #f3f3f3;               /* 페이지 배경 (#fff 대체 금지) */
+  --color-surface: #ffffff;          /* 카드/모달 */
 
-  --neutral-50: #f3f3f3;
+  /* ── Neutral Scale ── */
+  --neutral-50:  #f3f3f3;
   --neutral-100: #eaeaea;
   --neutral-200: #d4d4d4;
   --neutral-300: #bcbcbc;
@@ -24,128 +28,154 @@
   --neutral-900: #0e1513;
   --neutral-950: #09110f;
 
+  /* ── Semantic ── */
   --color-success: #1c7c70;
   --color-warning: #c47b2a;
-  --color-danger: #c44a3a;
-  --color-info: #2a8a8c;
+  --color-danger:  #c44a3a;
+  --color-info:    #2a8a8c;
 
+  /* ── Foreground roles ── */
   --fg-1: var(--color-ink);
   --fg-2: #4c4c4c;
   --fg-3: #6e6e6e;
   --fg-on-primary: #ffffff;
 
+  /* ── Border ── */
   --border-1: #d4d4d4;
   --border-2: #eaeaea;
   --border-strong: #bcbcbc;
+  --border-focus-ring: rgba(20, 74, 70, 0.12);
 
+  /* ── Signature gradient (코어 자산) ── */
   --gradient-signature: linear-gradient(135deg, #144a46 0%, #09110f 100%);
   --gradient-signature-soft: linear-gradient(135deg, rgba(20,74,70,0.08) 0%, rgba(9,17,15,0.04) 100%);
+  --gradient-signature-dark: linear-gradient(135deg, #22938a 0%, #144a46 100%);
 
-  /* FROZEN per Notion guideline (Pretendard 우선) */
+  /* ── Type families ── */
   --font-sans: "Pretendard", "Pretendard Variable", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
   --font-latin: "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
-  /* Display scale (디자인 시스템 정합) */
-  --text-display: clamp(2.25rem, 4.5vw, 4rem);
-  --tracking-display-tight: -0.075em;
-  --tracking-display: -0.05em;
+  /* ── Weights ── */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-black: 900;
+
+  /* ── Letter-spacing (Notion 자간) ── */
+  --tracking-display-tight: -0.075em;  /* 히어로 -75 */
+  --tracking-display: -0.05em;          /* 메인 타이틀 -50 */
   --tracking-heading: -0.05em;
   --tracking-body: -0.025em;
+  --tracking-body-tight: -0.05em;
   --tracking-caption: 0;
 
-  /* Containers */
+  /* ── Sizes ── */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-display: clamp(2.25rem, 4.5vw, 4rem);
+
+  /* ── Line-heights ── */
+  --lh-tight: 1.05;
+  --lh-snug: 1.25;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.75;
+
+  /* ── Spacing (4px base) ── */
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* ── Radius ── */
+  --radius-none: 0;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 32px;
+  --radius-full: 9999px;
+
+  /* ── Shadow (outer only — inner shadow 미사용) ── */
+  --shadow-xs: 0 1px 2px rgba(9, 17, 15, 0.04);
+  --shadow-sm: 0 2px 4px rgba(9, 17, 15, 0.06);
+  --shadow-md: 0 4px 12px rgba(9, 17, 15, 0.08);
+  --shadow-lg: 0 8px 24px rgba(9, 17, 15, 0.10);
+  --shadow-xl: 0 16px 48px rgba(9, 17, 15, 0.12);
+  --shadow-signature: 0 8px 32px rgba(20, 74, 70, 0.20);  /* hover only */
+
+  /* ── Motion ── */
+  --duration-instant: 75ms;
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+  --duration-page: 600ms;
+  --easing-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-bounce:  cubic-bezier(0.34, 1.56, 0.64, 1);
+  --easing-smooth:  cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ── Containers ── */
   --container-sm: 640px;
   --container-md: 768px;
   --container-lg: 1024px;
   --container-xl: 1280px;
   --container-2xl: 1440px;
-
-  --shadow-xs: 0 1px 2px rgba(9,17,15,0.04);
-  --shadow-sm: 0 2px 4px rgba(9,17,15,0.06);
-  --shadow-md: 0 4px 12px rgba(9,17,15,0.08);
-  --shadow-lg: 0 8px 24px rgba(9,17,15,0.10);
-  --shadow-signature: 0 8px 32px rgba(20,74,70,0.20);
-
-  --easing-default: cubic-bezier(0.4, 0, 0.2, 1);
-
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --radius-full: 9999px;
 }
 
-/* 토글 아이콘 표시 로직 — color-theme attribute 기반 (Geekdoc class 의존 제거)
-   3가지 테마(auto/dark/light) → 2가지(dark/light)로 단순화 */
-.gdoc-icon.gdoc_brightness_auto { display: none !important; }
-.cw-theme-toggle .gdoc-icon { display: none; }
-html[color-theme="dark"] .cw-theme-toggle .gdoc_brightness_dark,
-html:not([color-theme="light"]) .cw-theme-toggle .gdoc_brightness_dark {
-  display: inline-block;
-}
-html[color-theme="light"] .cw-theme-toggle .gdoc_brightness_light {
-  display: inline-block;
-}
-html[color-theme="dark"] .cw-theme-toggle .gdoc_brightness_light {
-  display: none;
+/* 다크 모드 완전 제거 (2026-05-13) — 테마 토글 UI 전체 비표시 */
+.cw-theme-toggle,
+#gdoc-color-theme,
+.gdoc-icon.gdoc_brightness_auto,
+.gdoc-icon.gdoc_brightness_dark,
+.gdoc-icon.gdoc_brightness_light {
+  display: none !important;
 }
 
-/* Dark mode — Geekdoc [color-theme=dark]도 함께 매칭하여 변수 override 보장 */
-[data-theme="dark"],
-html[data-theme="dark"],
-html[color-theme="dark"],
-[color-theme="dark"] {
-  --color-bg: #0e1513;
-  --color-surface: #1a1f1d;
-  --color-primary: #22938a;
-  --color-primary-hover: #2bafa3;
-  --color-ink: #e8eae9;
-  --fg-1: #e8eae9;
-  --fg-2: #c5cbc9;
-  --fg-3: #8a908e;
-  --neutral-50: #1a1f1d;
-  --neutral-100: rgba(255,255,255,0.06);
-  --border-1: rgba(255,255,255,0.10);
-  --border-2: rgba(255,255,255,0.06);
-  --border-strong: rgba(255,255,255,0.20);
-  --gradient-signature: linear-gradient(135deg, #22938a 0%, #144a46 100%);
-
-  /* Geekdoc 기본 변수 override — 슬레이트 블루(#28353e) 톤 제거, 그린 톤 강제 통일 */
-  --body-background: #0e1513 !important;
-  --body-font-color: #e8eae9 !important;
-  --accent-color: rgba(255,255,255,0.10) !important;
-  --accent-color-lite: rgba(255,255,255,0.04) !important;
-  --link-color: #58c4b9 !important;
-  --link-color-visited: #58c4b9 !important;
-  --mark-color: #2bafa3 !important;
-  --code-background: #1a1f1d !important;
-  --code-accent-color: rgba(255,255,255,0.06) !important;
-  --code-accent-color-lite: rgba(255,255,255,0.04) !important;
-  --code-font-color: #e8eae9 !important;
-  --code-copy-background: #1a1f1d !important;
-  --code-copy-font-color: #c5cbc9 !important;
-  --code-copy-border-color: rgba(255,255,255,0.10) !important;
-  --header-background: #0e1513 !important;
-  --header-font-color: #e8eae9 !important;
-  --button-background: #22938a !important;
-  --button-border-color: #144a46 !important;
-  --control-icons: #c5cbc9 !important;
-}
-
-/* OS 다크 모드 + 사용자가 light로 토글했을 때도 우리 그린 다크 톤이 우선되도록
-   media query도 명시적으로 override (Geekdoc @media prefers-color-scheme: dark 덮어쓰기) */
-@media (prefers-color-scheme: dark) {
-  :root:not([color-theme="light"]):not([data-theme="light"]) {
-    --body-background: #0e1513 !important;
-    --body-font-color: #e8eae9 !important;
-    --accent-color: rgba(255,255,255,0.10) !important;
-    --accent-color-lite: rgba(255,255,255,0.04) !important;
-    --link-color: #58c4b9 !important;
-    --link-color-visited: #58c4b9 !important;
-    --code-background: #1a1f1d !important;
-    --code-font-color: #e8eae9 !important;
+/* Accessibility — prefers-reduced-motion (FROZEN per Notion guideline §3 Animation) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
   }
+}
+
+/* ── Dark mode 완전 제거 (2026-05-13) ──
+   라이트 단일 테마. data-theme/color-theme=dark 셀렉터, prefers-color-scheme: dark
+   미디어쿼리는 baseof.html JS가 color-theme=light 강제하므로 dead code 상태.
+   안전망: OS 다크 모드에서도 Geekdoc 기본 다크 변수를 라이트로 강제 override */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --body-background: #f3f3f3 !important;
+    --body-font-color: #09110f !important;
+    --accent-color: rgba(20,74,70,0.08) !important;
+    --accent-color-lite: rgba(20,74,70,0.04) !important;
+    --link-color: #144a46 !important;
+    --link-color-visited: #144a46 !important;
+    --code-background: #ffffff !important;
+    --code-font-color: #09110f !important;
+    --header-background: #ffffff !important;
+    --header-font-color: #09110f !important;
+  }
+  html, body { background: #f3f3f3 !important; color: #09110f !important; }
 }
 
 /* ── Dark mode 일괄 보강 — Geekdoc 기본 옅은 글자 강제 override ── */
@@ -542,10 +572,10 @@ a:hover, a:focus-visible { text-decoration: underline; text-underline-offset: 0.
 .gdoc-page__header .editpage a { color: var(--fg-3); }
 .gdoc-page__header .editpage a:hover { color: var(--fg-1); }
 .gdoc-page__content { max-width: 736px; }
-.gdoc-page, .gdoc-page__content, .gdoc-markdown { line-height: 1.5; }
-/* qsCard·card·track 내부 line-height 명시 (디자인 24px line-height) — Geekdoc article line-height 상속 끊기 */
+.gdoc-page, .gdoc-page__content, .gdoc-markdown { line-height: 1.7; }
+/* qsCard·card·track 내부 line-height 명시 — 한국어 행간 확보 */
 .cw-qs-card, .cw-card, .cw-track, .cw-rel,
-.cw-qs-card *, .cw-card *, .cw-track *, .cw-rel * { line-height: 1.5; }
+.cw-qs-card *, .cw-card *, .cw-track *, .cw-rel * { line-height: 1.65; }
 
 /* ── 카드 border-bottom 투명 버그 일괄 차단 (Geekdoc/normalize의 last-child 영향 방지) ── */
 .cw-qs-card, .cw-card, .cw-track, .cw-rel, .cw-pg-card,
@@ -1181,28 +1211,7 @@ a:hover, a:focus-visible { text-decoration: underline; text-underline-offset: 0.
 }
 [data-theme="dark"] .gdoc-header a { color: var(--fg-1); }
 
-/* ── Geekdoc 다크모드 토글 (#gdoc-color-theme) — colortheme.js가 요구하므로 마크업 유지, 시각적으로는 한 아이콘만 표시 ── */
-.cw-theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  cursor: pointer;
-  color: var(--fg-2);
-  transition: background-color 0.15s ease, color 0.15s ease;
-  margin-left: 12px;
-}
-.cw-theme-toggle:hover { background: rgba(20,74,70,0.08); color: var(--color-primary); }
-[data-theme="dark"] .cw-theme-toggle:hover { background: rgba(34,147,138,0.14); color: #58c4b9; }
-/* 기본은 dark 아이콘 표시. data-theme에 따라 적절한 아이콘 토글 */
-.cw-theme-toggle .gdoc-icon { display: none; }
-.cw-theme-toggle .gdoc_brightness_auto { display: inline-block; }
-html[color-theme="light"] .cw-theme-toggle .gdoc-icon { display: none; }
-html[color-theme="light"] .cw-theme-toggle .gdoc_brightness_light { display: inline-block; }
-html[color-theme="dark"] .cw-theme-toggle .gdoc-icon { display: none; }
-html[color-theme="dark"] .cw-theme-toggle .gdoc_brightness_dark { display: inline-block; }
+/* 다크모드 토글 UI는 라이트 단일화로 완전 제거 (위 §토글 아이콘 블록에서 display:none) */
 
 /* ── 본문 링크 — Geekdoc 기본은 #0a539a 파랑. 우리 디자인 시스템 색으로 강제 ── */
 .gdoc-page a,
@@ -1827,262 +1836,67 @@ main a:hover {
   .cw-header-nav { display: none !important; }
 }
 
-/* ── Mermaid diagrams ── */
-.mermaid svg {
-  max-width: 100%;
-  height: auto;
+/* ── Mermaid diagrams — centering + sizing ── */
+.mermaid,
+.gdoc-mermaid {
+  text-align: center;
+  margin: 24px auto;
+  overflow-x: auto;
 }
+.mermaid svg,
 .gdoc-mermaid svg {
   max-width: 100%;
   height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
-/* ── Mermaid dark mode ── */
-[data-theme="dark"],[color-theme="dark"] .mermaid,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid {
-  color: var(--fg-2);
-}
-[data-theme="dark"],[color-theme="dark"] .mermaid svg,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid svg {
+/* ── Mermaid dark mode — CSS fallback (Mermaid re-renders via JS on theme toggle) ── */
+[data-theme="dark"] .mermaid svg,
+[data-theme="dark"] .gdoc-mermaid svg,
+[color-theme="dark"] .mermaid svg,
+[color-theme="dark"] .gdoc-mermaid svg {
   background: transparent;
 }
-[data-theme="dark"],[color-theme="dark"] .mermaid .nodeLabel,
-[data-theme="dark"],[color-theme="dark"] .mermaid .node label,
-[data-theme="dark"],[color-theme="dark"] .mermaid .node rect + text,
-[data-theme="dark"],[color-theme="dark"] .mermaid .edgeLabel,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .nodeLabel,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .node label,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .edgeLabel {
-  color: #e8eae9 !important;
-  fill: #e8eae9 !important;
-}
-[data-theme="dark"],[color-theme="dark"] .mermaid .node rect,
-[data-theme="dark"],[color-theme="dark"] .mermaid .node circle,
-[data-theme="dark"],[color-theme="dark"] .mermaid .node polygon,
-[data-theme="dark"],[color-theme="dark"] .mermaid .node .label-container,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .node rect,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .node circle,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .node polygon,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .node .label-container {
-  fill: #1a2a27 !important;
-  stroke: #2d6b63 !important;
-}
-[data-theme="dark"],[color-theme="dark"] .mermaid .edgePath .path,
-[data-theme="dark"],[color-theme="dark"] .mermaid .edges .path,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .edgePath .path,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .edges .path {
-  stroke: #58c4b9 !important;
-}
-[data-theme="dark"],[color-theme="dark"] .mermaid .arrowheadPath,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .arrowheadPath {
-  fill: #58c4b9 !important;
-  stroke: #58c4b9 !important;
-}
-[data-theme="dark"],[color-theme="dark"] .mermaid .cluster rect,
-[data-theme="dark"],[color-theme="dark"] .mermaid .cluster path,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .cluster rect,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .cluster path {
-  fill: rgba(34, 147, 138, 0.08) !important;
-  stroke: #2d6b63 !important;
-}
-[data-theme="dark"],[color-theme="dark"] .mermaid .cluster-label,
-[data-theme="dark"],[color-theme="dark"] .mermaid .cluster .nodeLabel,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .cluster-label,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .cluster .nodeLabel {
-  color: #58c4b9 !important;
-  fill: #58c4b9 !important;
-}
-[data-theme="dark"],[color-theme="dark"] .mermaid .actor,
-[data-theme="dark"],[color-theme="dark"] .mermaid .actor-line,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .actor,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .actor-line {
-  fill: #1a2a27 !important;
-  stroke: #2d6b63 !important;
-}
-[data-theme="dark"],[color-theme="dark"] .mermaid .actor > span,
-[data-theme="dark"],[color-theme="dark"] .mermaid text.actor,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .actor > span,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid text.actor {
-  color: #e8eae9 !important;
-  fill: #e8eae9 !important;
-}
-[data-theme="dark"],[color-theme="dark"] .mermaid .messageLine0,
-[data-theme="dark"],[color-theme="dark"] .mermaid .messageLine1,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .messageLine0,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .messageLine1 {
-  stroke: #58c4b9 !important;
-}
-[data-theme="dark"],[color-theme="dark"] .mermaid .messageText,
-[data-theme="dark"],[color-theme="dark"] .mermaid line[class*="messageLine"],
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .messageText,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid line[class*="messageLine"] {
-  fill: #e8eae9 !important;
-  stroke: #58c4b9 !important;
-}
-[data-theme="dark"],[color-theme="dark"] .mermaid .note,
-[data-theme="dark"],[color-theme="dark"] .mermaid .noteRect,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .note,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .noteRect {
-  fill: rgba(34, 147, 138, 0.15) !important;
-  stroke: #2d6b63 !important;
-}
-[data-theme="dark"],[color-theme="dark"] .mermaid .noteText,
-[data-theme="dark"],[color-theme="dark"] .mermaid .note text,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .noteText,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .note text {
-  fill: #c5cbc9 !important;
-}
-[data-theme="dark"],[color-theme="dark"] .mermaid .alt-0,
-[data-theme="dark"],[color-theme="dark"] .mermaid rect[class*="alt-"],
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .alt-0,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid rect[class*="alt-"] {
-  fill: rgba(34, 147, 138, 0.06) !important;
-}
-[data-theme="dark"],[color-theme="dark"] .mermaid .labelText,
-[data-theme="dark"],[color-theme="dark"] .mermaid .loopText,
-[data-theme="dark"],[color-theme="dark"] .mermaid .altText,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .labelText,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .loopText,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .altText {
-  fill: #8a908e !important;
-}
-[data-theme="dark"],[color-theme="dark"] .mermaid .node.bad rect,
-[data-theme="dark"],[color-theme="dark"] .mermaid .node[class*="bad"] rect,
-[data-theme="dark"],[color-theme="dark"] .mermaid .node[class*="bad"] .label-container,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .node.bad rect,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .node[class*="bad"] rect {
-  fill: rgba(200, 60, 60, 0.2) !important;
-  stroke: #c44 !important;
-}
-[data-theme="dark"],[color-theme="dark"] .mermaid .node.good rect,
-[data-theme="dark"],[color-theme="dark"] .mermaid .node[class*="good"] rect,
-[data-theme="dark"],[color-theme="dark"] .mermaid .node[class*="good"] .label-container,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .node.good rect,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .node[class*="good"] rect {
-  fill: rgba(58, 138, 58, 0.2) !important;
-  stroke: #3a8a3a !important;
-}
-[data-theme="dark"],[color-theme="dark"] .mermaid text,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid text {
-  fill: #e8eae9;
-}
-[data-theme="dark"],[color-theme="dark"] .mermaid .edgeLabel text,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .edgeLabel text {
-  fill: #c5cbc9 !important;
-}
-[data-theme="dark"],[color-theme="dark"] .mermaid .edgeLabel,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .edgeLabel {
-  background-color: transparent;
-}
-[data-theme="dark"],[color-theme="dark"] .mermaid .node[style*="fill:#"],
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .node[style*="fill:#"] {
-  filter: invert(0.82) hue-rotate(150deg) saturate(0.9);
-}
-[data-theme="dark"],[color-theme="dark"] .mermaid .node[style*="fill:#"] text,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .node[style*="fill:#"] text {
-  filter: invert(1.1) hue-rotate(-150deg);
-  fill: #e8eae9 !important;
-}
-[data-theme="dark"],[color-theme="dark"] .mermaid .node[style*="fill:#"] .label-container text,
-[data-theme="dark"],[color-theme="dark"] .gdoc-mermaid .node[style*="fill:#"] .label-container text {
-  filter: none;
-}
 
-/* ── Mermaid dark mode — inline-styled node fix (style on rect.label-container, not on .node) ── */
-[data-theme="dark"] .mermaid .node .label-container[style*="fill:#"],
-[data-theme="dark"] .mermaid .node rect[style*="fill:#"],
-[data-theme="dark"] .gdoc-mermaid .node .label-container[style*="fill:#"],
-[data-theme="dark"] .gdoc-mermaid .node rect[style*="fill:#"],
-[color-theme="dark"] .mermaid .node .label-container[style*="fill:#"],
-[color-theme="dark"] .mermaid .node rect[style*="fill:#"],
-[color-theme="dark"] .gdoc-mermaid .node .label-container[style*="fill:#"],
-[color-theme="dark"] .gdoc-mermaid .node rect[style*="fill:#"] {
-  filter: invert(0.82) hue-rotate(150deg) saturate(0.9);
-}
-
-/* ── Mermaid dark mode — foreignObject text (flowcharts with <br> tags) ── */
-[data-theme="dark"] .mermaid foreignObject span,
-[data-theme="dark"] .mermaid foreignObject div,
-[data-theme="dark"] .mermaid foreignObject p,
-[data-theme="dark"] .gdoc-mermaid foreignObject span,
-[data-theme="dark"] .gdoc-mermaid foreignObject div,
-[data-theme="dark"] .gdoc-mermaid foreignObject p,
-[color-theme="dark"] .mermaid foreignObject span,
-[color-theme="dark"] .mermaid foreignObject div,
-[color-theme="dark"] .mermaid foreignObject p,
-[color-theme="dark"] .gdoc-mermaid foreignObject span,
-[color-theme="dark"] .gdoc-mermaid foreignObject div,
-[color-theme="dark"] .gdoc-mermaid foreignObject p {
-  color: #e8eae9 !important;
-  fill: #e8eae9 !important;
-}
-
-/* ── Mermaid dark mode — edge label text fix (class-based) ── */
-[data-theme="dark"] .mermaid .edgeLabel span,
-[data-theme="dark"] .mermaid .edgeLabel div,
-[data-theme="dark"] .gdoc-mermaid .edgeLabel span,
-[data-theme="dark"] .gdoc-mermaid .edgeLabel div,
-[color-theme="dark"] .mermaid .edgeLabel span,
-[color-theme="dark"] .mermaid .edgeLabel div,
-[color-theme="dark"] .gdoc-mermaid .edgeLabel span,
-[color-theme="dark"] .gdoc-mermaid .edgeLabel div {
-  color: #c5cbc9 !important;
-  fill: #c5cbc9 !important;
-}
-
-/* ── Mermaid dark mode — generic catch-all for any SVG text ── */
-[data-theme="dark"] .mermaid text,
-[data-theme="dark"] .gdoc-mermaid text,
-[color-theme="dark"] .mermaid text,
-[color-theme="dark"] .gdoc-mermaid text {
-  fill: #e8eae9 !important;
-}
-
-/* ── Mermaid dark mode — diamond/rhombus nodes ── */
-[data-theme="dark"] .mermaid .node polygon,
-[data-theme="dark"] .gdoc-mermaid .node polygon,
-[color-theme="dark"] .mermaid .node polygon,
-[color-theme="dark"] .gdoc-mermaid .node polygon {
-  fill: #1a2a27 !important;
-  stroke: #2d6b63 !important;
-}
-
-/* ── Mermaid dark mode — inline-styled cluster/subgraph background fix ── */
-/* Mermaid style directive generates inline styles with !important (e.g. fill:#eef6ff !important)
-   which CSS !important cannot override. Use filter to visually invert instead. */
-[data-theme="dark"] .mermaid .cluster rect[style*="fill:#"],
-[data-theme="dark"] .mermaid .cluster path[style*="fill:#"],
-[data-theme="dark"] .gdoc-mermaid .cluster rect[style*="fill:#"],
-[data-theme="dark"] .gdoc-mermaid .cluster path[style*="fill:#"],
-[color-theme="dark"] .mermaid .cluster rect[style*="fill:#"],
-[color-theme="dark"] .mermaid .cluster path[style*="fill:#"],
-[color-theme="dark"] .gdoc-mermaid .cluster rect[style*="fill:#"],
-[color-theme="dark"] .gdoc-mermaid .cluster path[style*="fill:#"] {
-  filter: invert(0.82) hue-rotate(150deg) saturate(0.9);
-}
-
-/* ── Mermaid dark mode — prefers-color-scheme fallback ── */
+/* prefers-color-scheme dark fallback for JS SSR */
 @media (prefers-color-scheme: dark) {
-  html:not([color-theme="light"]):not([data-theme="light"]) .mermaid .cluster rect[style*="fill:#"],
-  html:not([color-theme="light"]):not([data-theme="light"]) .mermaid .cluster path[style*="fill:#"],
-  html:not([color-theme="light"]):not([data-theme="light"]) .gdoc-mermaid .cluster rect[style*="fill:#"],
-  html:not([color-theme="light"]):not([data-theme="light"]) .gdoc-mermaid .cluster path[style*="fill:#"] {
-    filter: invert(0.82) hue-rotate(150deg) saturate(0.9);
-  }
-  html:not([color-theme="light"]):not([data-theme="light"]) .mermaid .node .label-container[style*="fill:#"],
-  html:not([color-theme="light"]):not([data-theme="light"]) .mermaid .node rect[style*="fill:#"],
-  html:not([color-theme="light"]):not([data-theme="light"]) .gdoc-mermaid .node .label-container[style*="fill:#"],
-  html:not([color-theme="light"]):not([data-theme="light"]) .gdoc-mermaid .node rect[style*="fill:#"] {
-    filter: invert(0.82) hue-rotate(150deg) saturate(0.9);
-  }
-  html:not([color-theme="light"]):not([data-theme="light"]) .mermaid text,
-  html:not([color-theme="light"]):not([data-theme="light"]) .gdoc-mermaid text {
-    fill: #e8eae9 !important;
-  }
-  html:not([color-theme="light"]):not([data-theme="light"]) .mermaid foreignObject span,
-  html:not([color-theme="light"]):not([data-theme="light"]) .mermaid foreignObject div,
-  html:not([color-theme="light"]):not([data-theme="light"]) .gdoc-mermaid foreignObject span,
-  html:not([color-theme="light"]):not([data-theme="light"]) .gdoc-mermaid foreignObject div {
-    color: #e8eae9 !important;
+  html:not([color-theme="light"]):not([data-theme="light"]) .mermaid svg,
+  html:not([color-theme="light"]):not([data-theme="light"]) .gdoc-mermaid svg {
+    background: transparent;
   }
 }
+
+/* ── Mermaid 노드 라벨: 한글 자동 줄바꿈 방지 ──
+   짧은 한글 라벨("1. 입문" 등)이 노드 폭 추정 오류로 깨지는 현상 차단.
+   <br/>로 명시한 줄바꿈은 그대로 유지됨.
+   padding은 추가하지 않음 — mermaid 자체 노드 측정과 충돌해 라벨이 박스 밖으로
+   빠져나오는 현상 발생. font-family/weight만 적용. */
+.mermaid .nodeLabel,
+.mermaid .label,
+.gdoc-mermaid .nodeLabel,
+.gdoc-mermaid .label {
+  white-space: nowrap !important;
+  font-family: var(--font-sans, "Pretendard", system-ui, -apple-system, sans-serif);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.mermaid .node rect,
+.mermaid .node polygon,
+.mermaid .node circle,
+.mermaid .node ellipse,
+.gdoc-mermaid .node rect,
+.gdoc-mermaid .node polygon,
+.gdoc-mermaid .node circle,
+.gdoc-mermaid .node ellipse {
+  rx: 6px;
+  ry: 6px;
+}
+/* edge 라벨 폰트만 동일 처리 (패딩 없음) */
+.mermaid .edgeLabel,
+.gdoc-mermaid .edgeLabel {
+  white-space: nowrap !important;
+  font-family: var(--font-sans, "Pretendard", system-ui, sans-serif);
+}
+
+/* Mermaid 다크 모드 매핑은 라이트 단일화로 제거 (2026-05-13) */

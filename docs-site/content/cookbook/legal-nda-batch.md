@@ -14,8 +14,8 @@ flowchart LR
     C --> D["docx-generator<br/>보고서 생성"]
     D --> E["ai-slop-reviewer<br/>어투 정리"]
 
-    style A fill:#e6f0ff,stroke:#3070d0
-    style E fill:#e6ffec,stroke:#30a050
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style E fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 ## 대상 독자

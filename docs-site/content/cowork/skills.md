@@ -16,9 +16,9 @@ flowchart LR
     C --> E["스킬 본문 실행"]
     E --> F["결과물 반환"]
 
-    style A fill:#e6f0ff,stroke:#3070d0
-    style C fill:#e6ffec,stroke:#30a050
-    style F fill:#dff5dd,stroke:#3a8a3a
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style F fill:#d6ebe7,stroke:#1c7c70,color:#09110f
 ```
 
 ## 언제 트리거되나

@@ -12,8 +12,8 @@ flowchart LR
     B --> C["pptx-designer<br/>발표 자료"]
     C --> D["ai-slop-reviewer<br/>최종 검수"]
 
-    style A fill:#e6f0ff,stroke:#3070d0
-    style D fill:#e6ffec,stroke:#30a050
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style D fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 ## 트랙 개요

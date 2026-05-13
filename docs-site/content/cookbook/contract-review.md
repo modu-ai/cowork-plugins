@@ -20,9 +20,9 @@ flowchart LR
     C --> R
     R --> S["결재용 요약"]
 
-    style Fast fill:#fff4e6,stroke:#e09040
-    style Full fill:#e6f0ff,stroke:#3070d0
-    style S fill:#e6ffec,stroke:#30a050
+    style Fast fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style Full fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style S fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 {{< hint type="danger" >}}

@@ -16,8 +16,8 @@ flowchart LR
     B --> C["Schedule 등록<br/>매일 08:50"]
     C --> D["Slack 브리핑<br/>#finance-daily"]
 
-    style A fill:#e6f0ff,stroke:#3070d0
-    style D fill:#e6ffec,stroke:#30a050
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style D fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 ## 랩 목표

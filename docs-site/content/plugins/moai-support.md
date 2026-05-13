@@ -15,8 +15,8 @@ flowchart LR
     A["ticket-triage<br/>문의 분류·에스컬레이션"] --> B["draft-response<br/>응답 초안"]
     B --> C["kb-article<br/>FAQ·지식베이스"]
     C --> D["escalation-manager<br/>VOC 분석"]
-    style A fill:#e6f0ff,stroke:#3070d0
-    style D fill:#e6ffec,stroke:#30a050
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style D fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 ## 무엇을 하는 플러그인인가

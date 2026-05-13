@@ -14,10 +14,10 @@ flowchart LR
     B --> C["⚡ 빠른 시작"]
     C --> D["📖 코워크 가이드"]
 
-    style A fill:#e6f0ff,stroke:#3070d0,stroke-width:2px,color:#1a1a1a
-    style B fill:#e6ffec,stroke:#30a050,stroke-width:2px,color:#1a1a1a
-    style C fill:#fff4e6,stroke:#e09040,stroke-width:2px,color:#1a1a1a
-    style D fill:#f5e6ff,stroke:#9050d0,stroke-width:2px,color:#1a1a1a
+    style A fill:#eaeaea,stroke:#6e6e6e,stroke-width:2px,color:#09110f
+    style B fill:#e6f0ef,stroke:#144a46,stroke-width:2px,color:#09110f
+    style C fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
+    style D fill:#dceee9,stroke:#2a8a8c,stroke-width:2px,color:#09110f
 ```
 
 ### 1. 설치 가이드

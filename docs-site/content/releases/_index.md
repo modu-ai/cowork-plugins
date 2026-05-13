@@ -18,8 +18,8 @@ flowchart LR
     V22 --> V23["v2.3<br/>커머스 캠프"]
     V23 --> V24["v2.4<br/>캠프 후속 통합"]
 
-    style V10 fill:#f0f0f0,stroke:#999
-    style V24 fill:#dff5dd,stroke:#3a8a3a,stroke-width:2px
+    style V10 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style V24 fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
 ```
 
 ## 버전 관리 정책

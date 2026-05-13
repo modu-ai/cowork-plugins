@@ -28,13 +28,13 @@ flowchart TB
     Q3 -- moai-core 누락 --> FIX5["moai-core 설치"]
     Q3 -- 중복 스킬 --> FIX6["플러그인명 명시"]
 
-    style START fill:#fde2e2,stroke:#c44
-    style FIX1 fill:#e6ffec,stroke:#30a050
-    style FIX2 fill:#e6ffec,stroke:#30a050
-    style FIX3 fill:#e6ffec,stroke:#30a050
-    style FIX4 fill:#e6ffec,stroke:#30a050
-    style FIX5 fill:#e6ffec,stroke:#30a050
-    style FIX6 fill:#e6ffec,stroke:#30a050
+    style START fill:#f5dcd7,stroke:#c44a3a,color:#09110f
+    style FIX1 fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style FIX2 fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style FIX3 fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style FIX4 fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style FIX5 fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style FIX6 fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 ## 빠른 진단표

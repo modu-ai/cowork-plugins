@@ -15,8 +15,8 @@ flowchart LR
     A["(RFP·고객 요구사항)<br/>입력"] --> B["proposal-writer<br/>12섹션 제안서"]
     B --> C["docx-generator<br/>문서 저장"]
     C --> D["ai-slop-reviewer<br/>최종 검수"]
-    style A fill:#e6f0ff,stroke:#3070d0
-    style D fill:#e6ffec,stroke:#30a050
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style D fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 ## 무엇을 하는 플러그인인가

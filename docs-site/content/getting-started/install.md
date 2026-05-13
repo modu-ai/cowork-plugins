@@ -17,13 +17,13 @@ flowchart LR
     E --> F["⑥ moai-core<br/>설치"]
     F --> G["✅ 설치 완료"]
 
-    style A fill:#e6f0ff,stroke:#3070d0
-    style B fill:#e6f0ff,stroke:#3070d0
-    style C fill:#e6ffec,stroke:#30a050
-    style D fill:#e6ffec,stroke:#30a050
-    style E fill:#fff4e6,stroke:#e09040
-    style F fill:#fff4e6,stroke:#e09040
-    style G fill:#dff5dd,stroke:#3a8a3a,stroke-width:2px
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style B fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style D fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style E fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style F fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style G fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
 ```
 
 ### 1단계: Claude Desktop 다운로드

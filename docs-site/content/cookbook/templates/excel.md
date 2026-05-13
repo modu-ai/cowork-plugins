@@ -14,10 +14,10 @@ flowchart LR
     C -- "피벗" --> E["분석 시트"]
     C -- "템플릿" --> F["보고서"]
 
-    style A fill:#e6f0ff,stroke:#3070d0
-    style D fill:#e6ffec,stroke:#30a050
-    style E fill:#e6ffec,stroke:#30a050
-    style F fill:#e6ffec,stroke:#30a050
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style D fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style E fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style F fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 ## 사용 스킬

@@ -14,8 +14,8 @@ tags: ["moai-bi"]
 flowchart LR
     A["executive-summary<br/>경영진 1pager"] --> B["docx-generator<br/>문서 저장"]
     B --> C["ai-slop-reviewer<br/>최종 검수"]
-    style A fill:#e6f0ff,stroke:#3070d0
-    style C fill:#e6ffec,stroke:#30a050
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 ## 무엇을 하는 플러그인인가

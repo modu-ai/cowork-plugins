@@ -39,10 +39,10 @@ flowchart TB
     Sub["서브에이전트<br/>subagent"]
     Sub -.->|지침 실행| S1
 
-    style Plugin fill:#e6f0ff,stroke:#3070d0
-    style Chain fill:#fff4e6,stroke:#e09040
-    style Sub fill:#f5e6ff,stroke:#9050d0
-    style Conn fill:#e6ffec,stroke:#30a050
+    style Plugin fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style Chain fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style Sub fill:#dceee9,stroke:#2a8a8c,color:#09110f
+    style Conn fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 ### 스킬 (skill)

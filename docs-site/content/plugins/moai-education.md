@@ -23,9 +23,9 @@ flowchart LR
     end
     A --> B
     D --> E
-    style A fill:#e6f0ff,stroke:#3070d0
-    style D fill:#fff3e0,stroke:#e67e22
-    style E fill:#fff3e0,stroke:#e67e22
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style D fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style E fill:#fbf0dc,stroke:#c47b2a,color:#09110f
 ```
 
 ## 무엇을 하는 플러그인인가

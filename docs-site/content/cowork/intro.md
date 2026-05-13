@@ -38,8 +38,8 @@ flowchart TB
     AGENT --> OUTPUT
     CU --> OUTPUT
 
-    style INPUT fill:#e6f0ff,stroke:#3070d0
-    style OUTPUT fill:#dff5dd,stroke:#3a8a3a,stroke-width:2px
+    style INPUT fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style OUTPUT fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
 ```
 
 - **로컬 파일 접근**: 사용자가 선택한 폴더를 읽고, 수정하고, 새 파일을 저장합니다. DOCX·PPTX·XLSX·HWPX까지 산출물로 만들 수 있습니다.

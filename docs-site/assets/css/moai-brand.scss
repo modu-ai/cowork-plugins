@@ -1,10 +1,14 @@
 /* MoAI Design System — Hugo/Geekdoc Override
- * Source: Claude Design export (tokens.css + docs.css + cowork.css)
- * Adapted for Geekdoc theme structure
+ * Source: 모두의AI Design System Ver 1.0 (Notion FROZEN, 2026-04-25)
+ *
+ * NOTE: 이 SCSS 파일은 현재 Hugo build pipeline에서 컴파일되지 않습니다.
+ *       실제 운영 CSS는 static/moai-brand.css (단일 진실 소스).
+ *       이 파일은 참고용/미래 빌드 복원용 백업으로 토큰만 동기화 유지.
  */
 
-/* ── CSS Custom Properties (FROZEN tokens) ── */
+/* ── CSS Custom Properties (FROZEN tokens — Notion 가이드라인 명시) ── */
 :root {
+  /* ── Brand Color (변경 금지) ── */
   --color-primary: #144a46;
   --color-primary-hover: #0e3835;
   --color-primary-active: #0a2825;
@@ -12,7 +16,8 @@
   --color-bg: #f3f3f3;
   --color-surface: #ffffff;
 
-  --neutral-50: #f3f3f3;
+  /* ── Neutral Scale ── */
+  --neutral-50:  #f3f3f3;
   --neutral-100: #eaeaea;
   --neutral-200: #d4d4d4;
   --neutral-300: #bcbcbc;
@@ -24,40 +29,125 @@
   --neutral-900: #0e1513;
   --neutral-950: #09110f;
 
+  /* ── Semantic ── */
   --color-success: #1c7c70;
   --color-warning: #c47b2a;
-  --color-danger: #c44a3a;
-  --color-info: #2a8a8c;
+  --color-danger:  #c44a3a;
+  --color-info:    #2a8a8c;
 
+  /* ── Foreground roles ── */
   --fg-1: var(--color-ink);
   --fg-2: #4c4c4c;
   --fg-3: #6e6e6e;
   --fg-on-primary: #ffffff;
 
+  /* ── Border ── */
   --border-1: #d4d4d4;
   --border-2: #eaeaea;
   --border-strong: #bcbcbc;
+  --border-focus-ring: rgba(20, 74, 70, 0.12);
 
+  /* ── Signature gradient (코어 자산) ── */
   --gradient-signature: linear-gradient(135deg, #144a46 0%, #09110f 100%);
   --gradient-signature-soft: linear-gradient(135deg, rgba(20,74,70,0.08) 0%, rgba(9,17,15,0.04) 100%);
+  --gradient-signature-dark: linear-gradient(135deg, #22938a 0%, #144a46 100%);
 
-  --font-sans: "Noto Sans KR", "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  /* ── Type families (Pretendard 우선 — Notion FROZEN) ── */
+  --font-sans: "Pretendard", "Pretendard Variable", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
   --font-latin: "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
-  --shadow-xs: 0 1px 2px rgba(9,17,15,0.04);
-  --shadow-sm: 0 2px 4px rgba(9,17,15,0.06);
-  --shadow-md: 0 4px 12px rgba(9,17,15,0.08);
-  --shadow-lg: 0 8px 24px rgba(9,17,15,0.10);
-  --shadow-signature: 0 8px 32px rgba(20,74,70,0.20);
+  /* ── Weights ── */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-black: 900;
 
-  --easing-default: cubic-bezier(0.4, 0, 0.2, 1);
+  /* ── Letter-spacing (Notion 자간) ── */
+  --tracking-display-tight: -0.075em;
+  --tracking-display: -0.05em;
+  --tracking-heading: -0.05em;
+  --tracking-body: -0.025em;
+  --tracking-body-tight: -0.05em;
+  --tracking-caption: 0;
 
+  /* ── Sizes ── */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-display: clamp(2.25rem, 4.5vw, 4rem);
+
+  /* ── Line-heights ── */
+  --lh-tight: 1.05;
+  --lh-snug: 1.25;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.75;
+
+  /* ── Spacing (4px base) ── */
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* ── Radius ── */
+  --radius-none: 0;
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 16px;
   --radius-xl: 24px;
+  --radius-pill: 32px;
   --radius-full: 9999px;
+
+  /* ── Shadow (outer only) ── */
+  --shadow-xs: 0 1px 2px rgba(9, 17, 15, 0.04);
+  --shadow-sm: 0 2px 4px rgba(9, 17, 15, 0.06);
+  --shadow-md: 0 4px 12px rgba(9, 17, 15, 0.08);
+  --shadow-lg: 0 8px 24px rgba(9, 17, 15, 0.10);
+  --shadow-xl: 0 16px 48px rgba(9, 17, 15, 0.12);
+  --shadow-signature: 0 8px 32px rgba(20, 74, 70, 0.20);
+
+  /* ── Motion ── */
+  --duration-instant: 75ms;
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+  --duration-page: 600ms;
+  --easing-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-bounce:  cubic-bezier(0.34, 1.56, 0.64, 1);
+  --easing-smooth:  cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ── Containers ── */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+  --container-2xl: 1440px;
+}
+
+/* Accessibility — prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+  }
 }
 
 /* Dark mode */
@@ -67,13 +157,15 @@ html[data-theme="dark"] {
   --color-surface: #1a1f1d;
   --color-primary: #22938a;
   --color-primary-hover: #2bafa3;
+  --color-primary-active: #1a6f68;
   --color-ink: #e8eae9;
   --fg-1: #e8eae9;
-  --fg-2: #a8aeac;
+  --fg-2: #c5cbc9;
   --fg-3: #8a908e;
-  --border-1: rgba(255,255,255,0.08);
+  --border-1: rgba(255,255,255,0.10);
   --border-2: rgba(255,255,255,0.06);
-  --border-strong: rgba(255,255,255,0.16);
+  --border-strong: rgba(255,255,255,0.20);
+  --border-focus-ring: rgba(34, 147, 138, 0.18);
   --gradient-signature: linear-gradient(135deg, #22938a 0%, #144a46 100%);
 }
 
@@ -683,183 +775,23 @@ tr:hover td { background: rgba(20,74,70,0.025); }
   .cw-stats { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* ── Mermaid diagrams ── */
-.mermaid svg {
-  max-width: 100%;
-  height: auto;
+/* ── Mermaid diagrams — centering + sizing ── */
+.mermaid,
+.gdoc-mermaid {
+  text-align: center;
+  margin: 24px auto;
+  overflow-x: auto;
 }
+.mermaid svg,
 .gdoc-mermaid svg {
   max-width: 100%;
   height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
-/* ── Mermaid dark mode ── */
-[data-theme="dark"] .mermaid,
-[data-theme="dark"] .gdoc-mermaid {
-  color: var(--fg-2);
-}
+/* ── Mermaid dark mode — CSS fallback (Mermaid re-renders via JS on theme toggle) ── */
 [data-theme="dark"] .mermaid svg,
 [data-theme="dark"] .gdoc-mermaid svg {
   background: transparent;
-}
-
-/* Node text */
-[data-theme="dark"] .mermaid .nodeLabel,
-[data-theme="dark"] .mermaid .node label,
-[data-theme="dark"] .mermaid .node rect + text,
-[data-theme="dark"] .mermaid .edgeLabel,
-[data-theme="dark"] .gdoc-mermaid .nodeLabel,
-[data-theme="dark"] .gdoc-mermaid .node label,
-[data-theme="dark"] .gdoc-mermaid .edgeLabel {
-  color: #e8eae9 !important;
-  fill: #e8eae9 !important;
-}
-
-/* Flowchart nodes — rect, circle, polygon */
-[data-theme="dark"] .mermaid .node rect,
-[data-theme="dark"] .mermaid .node circle,
-[data-theme="dark"] .mermaid .node polygon,
-[data-theme="dark"] .mermaid .node .label-container,
-[data-theme="dark"] .gdoc-mermaid .node rect,
-[data-theme="dark"] .gdoc-mermaid .node circle,
-[data-theme="dark"] .gdoc-mermaid .node polygon,
-[data-theme="dark"] .gdoc-mermaid .node .label-container {
-  fill: #1a2a27 !important;
-  stroke: #2d6b63 !important;
-}
-
-/* Edges / paths */
-[data-theme="dark"] .mermaid .edgePath .path,
-[data-theme="dark"] .mermaid .edges .path,
-[data-theme="dark"] .gdoc-mermaid .edgePath .path,
-[data-theme="dark"] .gdoc-mermaid .edges .path {
-  stroke: #58c4b9 !important;
-}
-[data-theme="dark"] .mermaid .arrowheadPath,
-[data-theme="dark"] .gdoc-mermaid .arrowheadPath {
-  fill: #58c4b9 !important;
-  stroke: #58c4b9 !important;
-}
-
-/* Subgraphs */
-[data-theme="dark"] .mermaid .cluster rect,
-[data-theme="dark"] .mermaid .cluster path,
-[data-theme="dark"] .gdoc-mermaid .cluster rect,
-[data-theme="dark"] .gdoc-mermaid .cluster path {
-  fill: rgba(34, 147, 138, 0.08) !important;
-  stroke: #2d6b63 !important;
-}
-[data-theme="dark"] .mermaid .cluster-label,
-[data-theme="dark"] .mermaid .cluster .nodeLabel,
-[data-theme="dark"] .gdoc-mermaid .cluster-label,
-[data-theme="dark"] .gdoc-mermaid .cluster .nodeLabel {
-  color: #58c4b9 !important;
-  fill: #58c4b9 !important;
-}
-
-/* Sequence diagrams */
-[data-theme="dark"] .mermaid .actor,
-[data-theme="dark"] .mermaid .actor-line,
-[data-theme="dark"] .gdoc-mermaid .actor,
-[data-theme="dark"] .gdoc-mermaid .actor-line {
-  fill: #1a2a27 !important;
-  stroke: #2d6b63 !important;
-}
-[data-theme="dark"] .mermaid .actor > span,
-[data-theme="dark"] .mermaid text.actor,
-[data-theme="dark"] .gdoc-mermaid .actor > span,
-[data-theme="dark"] .gdoc-mermaid text.actor {
-  color: #e8eae9 !important;
-  fill: #e8eae9 !important;
-}
-[data-theme="dark"] .mermaid .messageLine0,
-[data-theme="dark"] .mermaid .messageLine1,
-[data-theme="dark"] .gdoc-mermaid .messageLine0,
-[data-theme="dark"] .gdoc-mermaid .messageLine1 {
-  stroke: #58c4b9 !important;
-}
-[data-theme="dark"] .mermaid .messageText,
-[data-theme="dark"] .mermaid line[class*="messageLine"],
-[data-theme="dark"] .gdoc-mermaid .messageText,
-[data-theme="dark"] .gdoc-mermaid line[class*="messageLine"] {
-  fill: #e8eae9 !important;
-  stroke: #58c4b9 !important;
-}
-[data-theme="dark"] .mermaid .note,
-[data-theme="dark"] .mermaid .noteRect,
-[data-theme="dark"] .gdoc-mermaid .note,
-[data-theme="dark"] .gdoc-mermaid .noteRect {
-  fill: rgba(34, 147, 138, 0.15) !important;
-  stroke: #2d6b63 !important;
-}
-[data-theme="dark"] .mermaid .noteText,
-[data-theme="dark"] .mermaid .note text,
-[data-theme="dark"] .gdoc-mermaid .noteText,
-[data-theme="dark"] .gdoc-mermaid .note text {
-  fill: #c5cbc9 !important;
-}
-
-/* Alt blocks in sequence diagrams */
-[data-theme="dark"] .mermaid .alt-0,
-[data-theme="dark"] .mermaid rect[class*="alt-"],
-[data-theme="dark"] .gdoc-mermaid .alt-0,
-[data-theme="dark"] .gdoc-mermaid rect[class*="alt-"] {
-  fill: rgba(34, 147, 138, 0.06) !important;
-}
-[data-theme="dark"] .mermaid .labelText,
-[data-theme="dark"] .mermaid .loopText,
-[data-theme="dark"] .mermaid .altText,
-[data-theme="dark"] .gdoc-mermaid .labelText,
-[data-theme="dark"] .gdoc-mermaid .loopText,
-[data-theme="dark"] .gdoc-mermaid .altText {
-  fill: #8a908e !important;
-}
-
-/* Mermaid classDef overrides for dark mode */
-[data-theme="dark"] .mermaid .node.bad rect,
-[data-theme="dark"] .mermaid .node[class*="bad"] rect,
-[data-theme="dark"] .mermaid .node[class*="bad"] .label-container,
-[data-theme="dark"] .gdoc-mermaid .node.bad rect,
-[data-theme="dark"] .gdoc-mermaid .node[class*="bad"] rect {
-  fill: rgba(200, 60, 60, 0.2) !important;
-  stroke: #c44 !important;
-}
-[data-theme="dark"] .mermaid .node.good rect,
-[data-theme="dark"] .mermaid .node[class*="good"] rect,
-[data-theme="dark"] .mermaid .node[class*="good"] .label-container,
-[data-theme="dark"] .gdoc-mermaid .node.good rect,
-[data-theme="dark"] .gdoc-mermaid .node[class*="good"] rect {
-  fill: rgba(58, 138, 58, 0.2) !important;
-  stroke: #3a8a3a !important;
-}
-
-/* Legend / key text */
-[data-theme="dark"] .mermaid text,
-[data-theme="dark"] .gdoc-mermaid text {
-  fill: #e8eae9;
-}
-/* Re-apply edge labels to be more muted */
-[data-theme="dark"] .mermaid .edgeLabel text,
-[data-theme="dark"] .gdoc-mermaid .edgeLabel text {
-  fill: #c5cbc9 !important;
-}
-[data-theme="dark"] .mermaid .edgeLabel,
-[data-theme="dark"] .gdoc-mermaid .edgeLabel {
-  background-color: transparent;
-}
-
-/* Mermaid inline style overrides — force dark-friendly fills for light-mode styled nodes */
-[data-theme="dark"] .mermaid .node[style*="fill:#"],
-[data-theme="dark"] .gdoc-mermaid .node[style*="fill:#"] {
-  filter: invert(0.82) hue-rotate(150deg) saturate(0.9);
-}
-/* But keep text readable — undo filter on text inside filtered nodes */
-[data-theme="dark"] .mermaid .node[style*="fill:#"] text,
-[data-theme="dark"] .gdoc-mermaid .node[style*="fill:#"] text {
-  filter: invert(1.1) hue-rotate(-150deg);
-  fill: #e8eae9 !important;
-}
-[data-theme="dark"] .mermaid .node[style*="fill:#"] .label-container text,
-[data-theme="dark"] .gdoc-mermaid .node[style*="fill:#"] .label-container text {
-  filter: none;
 }

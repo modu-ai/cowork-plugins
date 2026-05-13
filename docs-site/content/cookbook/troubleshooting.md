@@ -40,8 +40,8 @@ flowchart TD
     A4 --> R
     A5 --> R
 
-    style Start fill:#fde2e2,stroke:#c44
-    style R fill:#e6ffec,stroke:#30a050
+    style Start fill:#f5dcd7,stroke:#c44a3a,color:#09110f
+    style R fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 1. **어느 단계에서 멈췄는가** — 체인이 완결되지 않았다면 마지막으로 응답을 남긴 스킬이 무엇인지 먼저 특정합니다. 도메인 스킬이었는지, 포맷 스킬이었는지, `ai-slop-reviewer` 직전이었는지에 따라 대응이 다릅니다.

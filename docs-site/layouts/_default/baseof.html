@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html
   lang="{{ .Site.Language.Lang }}"
-  class="color-toggle-hidden"
-  data-theme="dark"
+  class="color-toggle-light"
+  color-theme="light"
   {{ if default false .Site.Params.geekdocDarkModeCode }}code-theme="dark"{{ end }}
 >
   <head>
@@ -137,60 +137,36 @@
       });
     })();
 
-    // Geekdoc colortheme.js는 color-theme 속성만 사용 — 우리 CSS [data-theme="dark"]와 매치되도록 sync
-    // + auto 모드 제거 (3가지 테마 → dark/light 2가지로 단순화). auto 진입 시 즉시 dark로 전환.
+    // 라이트 테마 단일화 — 다크 모드 완전 제거 (2026-05-13)
+    // 어떤 상태든 항상 color-theme=light로 강제. 토글 버튼 비활성화.
     (function(){
       var html = document.documentElement;
       var STORE_KEY = 'hugo-geekdoc.color-theme';
 
-      // localStorage에 auto 또는 미설정인 경우 dark 강제 (사용자 명시 light 토글한 경우만 light 유지)
-      var migrate = function(){
-        try {
-          var v = JSON.parse(localStorage.getItem(STORE_KEY) || '"auto"');
-          if (v !== 'dark' && v !== 'light') {
-            localStorage.setItem(STORE_KEY, JSON.stringify('dark'));
-          }
-        } catch(e) {
-          try { localStorage.setItem(STORE_KEY, JSON.stringify('dark')); } catch(_){}
-        }
-      };
-      migrate();
+      // 라이트 강제 + localStorage 정리
+      html.setAttribute('color-theme', 'light');
+      html.removeAttribute('data-theme');
+      html.setAttribute('class', 'color-toggle-light');
+      try { localStorage.setItem(STORE_KEY, JSON.stringify('light')); } catch(e){}
 
-      var sync = function(){
-        var t = html.getAttribute('color-theme');
-        // auto 또는 null인 경우 dark로 강제 보정
-        if (t !== 'dark' && t !== 'light') {
-          html.setAttribute('color-theme', 'dark');
-          try { localStorage.setItem(STORE_KEY, JSON.stringify('dark')); } catch(e){}
-          return; // MutationObserver가 다시 sync 호출
+      // color-theme이 외부에서 변경돼도 즉시 light로 복원
+      new MutationObserver(function(){
+        if (html.getAttribute('color-theme') !== 'light') {
+          html.setAttribute('color-theme', 'light');
         }
-        if (t === 'dark') {
-          html.setAttribute('data-theme', 'dark');
-          html.setAttribute('class', 'color-toggle-dark');
-        } else {
+        if (html.getAttribute('data-theme')) {
           html.removeAttribute('data-theme');
-          html.setAttribute('class', 'color-toggle-light');
         }
-      };
-      sync();
-      new MutationObserver(sync).observe(html, { attributes: true, attributeFilter: ['color-theme'] });
+      }).observe(html, { attributes: true, attributeFilter: ['color-theme', 'data-theme'] });
 
-      // 토글 클릭 핸들러를 dark <-> light 2-state cycle로 교체
+      // Geekdoc 토글 버튼 클릭 핸들러 제거 (CSS에서 display:none으로 숨기지만 안전망)
       document.addEventListener('DOMContentLoaded', function(){
         var btn = document.getElementById('gdoc-color-theme');
-        if (!btn) return;
-        // Geekdoc이 등록한 onclick 무력화 후 우리 로직으로 교체
-        btn.onclick = null;
-        var newClick = function(){
-          var current = html.getAttribute('color-theme') || 'dark';
-          var next = current === 'dark' ? 'light' : 'dark';
-          html.setAttribute('color-theme', next);
-          try { localStorage.setItem(STORE_KEY, JSON.stringify(next)); } catch(e){}
-        };
-        btn.addEventListener('click', newClick);
-        btn.addEventListener('keydown', function(e){
-          if (e.key === 'Enter') { newClick(); e.preventDefault(); }
-        });
+        if (btn) {
+          btn.onclick = null;
+          var clone = btn.cloneNode(true);
+          btn.parentNode.replaceChild(clone, btn);
+        }
       });
     })();
     </script>

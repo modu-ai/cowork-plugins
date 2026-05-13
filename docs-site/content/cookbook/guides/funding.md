@@ -14,8 +14,8 @@ flowchart LR
     D --> E["ai-slop-reviewer<br/>톤 검수"]
     A -. "정부지원" .-> F["kr-gov-grant"]
 
-    style A fill:#e6f0ff,stroke:#3070d0
-    style E fill:#e6ffec,stroke:#30a050
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style E fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 ## 사용 스킬

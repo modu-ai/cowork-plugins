@@ -33,11 +33,11 @@ flowchart LR
     end
     이미지 --> 영상음성
     H --> I --> J --> K --> L --> M
-    style A fill:#e6f0ff,stroke:#3070d0
-    style G fill:#e6ffec,stroke:#30a050
-    style I fill:#fff3e0,stroke:#e67e22
-    style J fill:#fff3e0,stroke:#e67e22
-    style L fill:#ffe6e6,stroke:#e74c3c
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style G fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style I fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style J fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style L fill:#f5dcd7,stroke:#c44a3a,color:#09110f
 ```
 
 ## 무엇을 하는 플러그인인가

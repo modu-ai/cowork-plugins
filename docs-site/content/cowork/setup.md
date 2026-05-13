@@ -24,8 +24,8 @@ flowchart LR
     CN -->|외부 서비스 연결| SESSION
     PM -->|접근 범위 제어| SESSION
 
-    style Settings fill:#f7f7f7,stroke:#888
-    style SESSION fill:#dff5dd,stroke:#3a8a3a
+    style Settings fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style SESSION fill:#d6ebe7,stroke:#1c7c70,color:#09110f
 ```
 
 ## 설정 메뉴 접근

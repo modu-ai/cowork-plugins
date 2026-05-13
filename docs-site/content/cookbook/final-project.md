@@ -16,8 +16,8 @@ flowchart LR
     Design --> Submit["5항목 제출"]
     Submit --> Rubric["루브릭 평가<br/>4축 × 4단계"]
 
-    style Design fill:#e6f0ff,stroke:#3070d0
-    style Rubric fill:#e6ffec,stroke:#30a050
+    style Design fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style Rubric fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 {{< hint type="warning" >}}

@@ -42,11 +42,11 @@ flowchart TD
   S8 --> O7[(영업 전략 DOCX)]
   S9 --> O8[(창업 로드맵 PPTX)]
 
-  style S5 fill:#fff3cd,stroke:#856404
-  style S6 fill:#d1ecf1,stroke:#0c5460
-  style S7 fill:#f8d7da,stroke:#721c24
-  style S8 fill:#d4edda,stroke:#155724
-  style S9 fill:#e2e3e5,stroke:#383d41
+  style S5 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+  style S6 fill:#dceee9,stroke:#2a8a8c,color:#09110f
+  style S7 fill:#f0c7c2,stroke:#c44a3a,color:#09110f
+  style S8 fill:#cfe5e2,stroke:#144a46,color:#09110f
+  style S9 fill:#d4d4d4,stroke:#4c4c4c,color:#09110f
 ```
 
 노란색·파란색·빨간색·초록색·회색 다섯 박스가 v1.5.0~1.5.1에서 새로 들어온 스킬입니다. 나머지 6개는 v1.0부터 있던 검증된 스킬이니 안심하고 사용하시면 됩니다.
@@ -99,8 +99,8 @@ flowchart LR
   C --> D[4축 100점 평가<br/>성장·경쟁·수요·재무]
   D --> E[9섹션 보고서<br/>Word DOCX]
 
-  style A fill:#e8f5e9
-  style E fill:#fff3e0
+  style A fill:#cfe5e2,color:#09110f
+  style E fill:#fbf0dc,color:#09110f
 ```
 
 **4축 100점 평가**는 다음과 같이 가중치가 설정됩니다.
@@ -170,8 +170,8 @@ flowchart LR
   C --> D[실행 계획<br/>KPI 설정]
   D --> E[경영진단 보고서<br/>DOCX]
 
-  style A fill:#e8f5e9
-  style E fill:#fff3e0
+  style A fill:#cfe5e2,color:#09110f
+  style E fill:#fbf0dc,color:#09110f
 ```
 
 **진단 분야**:
@@ -206,8 +206,8 @@ flowchart TD
   Process --> Tools[툴킷·템플릿 생성]
   Tools --> Output[영업 플레이북 DOCX]
 
-  style Start fill:#e3f2fd
-  style Output fill:#f3e5f5
+  style Start fill:#eaeaea,color:#09110f
+  style Output fill:#dceee9,color:#09110f
 ```
 
 **주요 구성**:
@@ -242,8 +242,8 @@ flowchart LR
   D --> E[투자 유치<br/>자금 조달]
   E --> F[창업 가이드<br/>PPTX/DOCX]
 
-  style A fill:#e8f5e9
-  style F fill:#fff3e0
+  style A fill:#cfe5e2,color:#09110f
+  style F fill:#fbf0dc,color:#09110f
 ```
 
 **주요 단계**:

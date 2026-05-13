@@ -70,9 +70,9 @@ disablePathToLower = true
   description = "Claude Cowork와 cowork-plugins 17종의 한국어 사용자 가이드 · 베스트 프랙티스 · 쿡북"
   author = "modu-ai"
 
-  # 다크 모드 기본
+  # 라이트 모드 고정
   geekdocDarkModeDefault = false
-  geekdocDarkModeToggle = true
+  geekdocDarkModeToggle = false
 
   # MoAI 브랜드 에셋
   geekdocImage = "moai-logo.png"

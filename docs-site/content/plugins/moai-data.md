@@ -14,9 +14,9 @@ tags: ["moai-data"]
 flowchart LR
     A["data-explorer<br/>CSV/Excel 프로파일링"] --> B["data-visualizer<br/>차트·대시보드"]
     A -- "공공데이터" --> C["public-data<br/>KOSIS·data.go.kr"]
-    style A fill:#e6f0ff,stroke:#3070d0
-    style B fill:#e6ffec,stroke:#30a050
-    style C fill:#e6ffec,stroke:#30a050
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style B fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 ## 무엇을 하는 플러그인인가

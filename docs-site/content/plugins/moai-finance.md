@@ -22,8 +22,8 @@ flowchart LR
         E["court-auction-search<br/>법원경매"]
         F["korean-stock-search<br/>KRX 시세"]
     end
-    style A fill:#e6f0ff,stroke:#3070d0
-    style F fill:#e6ffec,stroke:#30a050
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style F fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 ## 무엇을 하는 플러그인인가

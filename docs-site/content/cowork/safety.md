@@ -28,9 +28,9 @@ flowchart LR
     Safe -->|사람 승인 후| R["외부 공개"]
     Danger -->|사람 직접 판단| R
 
-    style Safe fill:#e6ffec,stroke:#30a050
-    style Danger fill:#fde2e2,stroke:#c44
-    style R fill:#e6f0ff,stroke:#3070d0
+    style Safe fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style Danger fill:#f5dcd7,stroke:#c44a3a,color:#09110f
+    style R fill:#eaeaea,stroke:#6e6e6e,color:#09110f
 ```
 
 ## 피해야 할 사용 영역

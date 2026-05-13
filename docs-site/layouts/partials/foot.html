@@ -1,0 +1,57 @@
+{{ if default false .Site.Params.geekdocMermaid }}
+<script>
+(function(){
+  // 라이트 테마 단일화 — 다크 분기 제거 (2026-05-13)
+  var lightTheme = {
+    primaryColor: '#144a46',
+    primaryTextColor: '#ffffff',
+    primaryBorderColor: '#0e3835',
+    lineColor: '#144a46',
+    secondaryColor: '#e6f0ef',
+    tertiaryColor: '#f3f3f3',
+    noteBkgColor: '#e6f0ef',
+    noteTextColor: '#09110f',
+    noteBorderColor: '#144a46',
+    edgeLabelBackground: '#ffffff',
+    clusterBkg: '#f3f3f3',
+    clusterBorder: '#144a46',
+    titleColor: '#09110f',
+    actorTextColor: '#09110f',
+    actorBorder: '#144a46',
+    actorBkg: '#e6f0ef',
+    signalColor: '#09110f',
+    signalTextColor: '#09110f',
+    labelBoxBkgColor: '#ffffff',
+    labelBoxBorderColor: '#144a46',
+    labelTextColor: '#09110f',
+    loopTextColor: '#09110f',
+    activationBorderColor: '#144a46',
+    activationBkgColor: '#e6f0ef',
+    sequenceNumberColor: '#ffffff'
+  };
+  var flowchartConfig = {
+    htmlLabels: true,
+    nodeSpacing: 50,
+    rankSpacing: 60,
+    padding: 14,
+    wrappingWidth: 260,
+    useMaxWidth: true,
+    curve: 'basis'
+  };
+  function initMermaid() {
+    if (typeof mermaid === 'undefined') return;
+    mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: 'loose',
+      theme: 'base',
+      themeVariables: lightTheme,
+      flowchart: flowchartConfig
+    });
+  }
+  document.addEventListener('DOMContentLoaded', function(){
+    initMermaid();
+    mermaid.run({ querySelector: '.mermaid' });
+  });
+})();
+</script>
+{{ end }}

@@ -13,8 +13,8 @@ flowchart LR
     C --> D["ai-slop-reviewer<br/>검수"]
     D --> E["performance-report<br/>성과 분석"]
 
-    style A fill:#e6f0ff,stroke:#3070d0
-    style E fill:#e6ffec,stroke:#30a050
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style E fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 ## 트랙 개요

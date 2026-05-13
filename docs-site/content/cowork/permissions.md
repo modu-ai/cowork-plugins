@@ -35,10 +35,10 @@ flowchart LR
 
     OS --> APP --> PRJ --> TASK
 
-    style L1 fill:#fff4e6,stroke:#e09040
-    style L2 fill:#e6f0ff,stroke:#3070d0
-    style L3 fill:#e6ffec,stroke:#30a050
-    style L4 fill:#f5e6ff,stroke:#9050d0
+    style L1 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style L2 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style L3 fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style L4 fill:#dceee9,stroke:#2a8a8c,color:#09110f
 ```
 
 | 층 | 누가 결정 | 사용자가 하는 일 | 막혔을 때 증상 |
@@ -111,8 +111,8 @@ flowchart LR
     B["C:\\w\\report\\Q2.docx"]:::good
     A -.X.-> X["260자 초과 → 저장 실패"]
     B --> Y["짧은 경로 → 안전"]
-    classDef bad fill:#fde2e2,stroke:#c44
-    classDef good fill:#dff5dd,stroke:#3a8a3a
+    classDef bad fill:#f5dcd7,stroke:#c44a3a
+    classDef good fill:#d6ebe7,stroke:#1c7c70
 ```
 
 해결:
@@ -158,10 +158,10 @@ flowchart TD
     S4 -- 아니오 --> FIX4
     S4 -- 예 --> OK
 
-    style FIX1 fill:#fff4e6,stroke:#e09040
-    style FIX2 fill:#e6f0ff,stroke:#3070d0
-    style FIX3 fill:#e6ffec,stroke:#30a050
-    style FIX4 fill:#f5e6ff,stroke:#9050d0
+    style FIX1 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style FIX2 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style FIX3 fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style FIX4 fill:#dceee9,stroke:#2a8a8c,color:#09110f
 ```
 
 ## 베스트 프랙티스 — 권한을 단순하게 유지하는 6가지

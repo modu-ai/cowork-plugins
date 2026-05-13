@@ -51,13 +51,13 @@ flowchart LR
     Core --> Data
     Core --> Life
 
-    style Core fill:#e6f0ff,stroke:#3070d0
-    style Content fill:#e6ffec,stroke:#30a050
-    style Biz fill:#fff4e6,stroke:#e09040
-    style Ops fill:#f5e6ff,stroke:#9050d0
-    style Legal fill:#ffe6e6,stroke:#d04040
-    style Data fill:#e6f9ff,stroke:#3090c0
-    style Life fill:#fff5e6,stroke:#c08030
+    style Core fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style Content fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style Biz fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style Ops fill:#dceee9,stroke:#2a8a8c,color:#09110f
+    style Legal fill:#f5dcd7,stroke:#c44a3a,color:#09110f
+    style Data fill:#e6f0ef,stroke:#6e6e6e,color:#09110f
+    style Life fill:#fbf0dc,stroke:#c47b2a,color:#09110f
 ```
 
 {{< hint type="note" >}}

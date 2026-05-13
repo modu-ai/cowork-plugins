@@ -129,8 +129,8 @@ flowchart TD
   D --> E[라이브러리<br/>템플릿화]
   E --> F[타깃 스크립트<br/>DOCX]
 
-  style A fill:#e8f5e9
-  style F fill:#fff3e0
+  style A fill:#cfe5e2,color:#09110f
+  style F fill:#fbf0dc,color:#09110f
 ```
 
 **주요 특징**:

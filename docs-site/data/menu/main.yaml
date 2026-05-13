@@ -12,8 +12,6 @@ main:
         isNew: true
       - name: 빠른 시작
         ref: /getting-started/quick-start
-      - name: 자주 묻는 질문
-        ref: /cowork/faq
       - name: 이 문서에 대하여
         ref: /about
 

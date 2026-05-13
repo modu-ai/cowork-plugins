@@ -18,7 +18,7 @@ flowchart TB
     MCP[⑤ MCP 커넥터] -->|외부 시스템 접근| Emp
 
     Emp -->|산출물| Delivery[Slack·Gmail·Notion·파일]
-    style Emp fill:#d4edda,stroke:#155724
+    style Emp fill:#cfe5e2,stroke:#144a46,color:#09110f
 {{< terminal title="claude — cowork" >}}
 
 > | 부품 | 비유 | Cowork 구현 |

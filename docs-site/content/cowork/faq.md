@@ -27,11 +27,11 @@ flowchart LR
     Q1 -- "느림·끊김" --> C4["성능·제한<br/>Q8-Q9"]
     Q1 -- "보안·감사" --> C5["보안·감사<br/>Q10"]
 
-    style C1 fill:#e6f0ff,stroke:#3070d0
-    style C2 fill:#fff4e6,stroke:#e09040
-    style C3 fill:#e6ffec,stroke:#30a050
-    style C4 fill:#f5e6ff,stroke:#9050d0
-    style C5 fill:#fde2e2,stroke:#c44
+    style C1 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style C2 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style C3 fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style C4 fill:#dceee9,stroke:#2a8a8c,color:#09110f
+    style C5 fill:#f5dcd7,stroke:#c44a3a,color:#09110f
 ```
 
 ## 설치·계정

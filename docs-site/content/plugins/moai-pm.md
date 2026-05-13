@@ -15,8 +15,8 @@ flowchart LR
     A["(Notion·Linear MCP)<br/>데이터 자동 수집"] --> B["weekly-report<br/>WBR 자동 생성"]
     B --> C["docx-generator<br/>문서 저장"]
     C --> D["ai-slop-reviewer<br/>최종 검수"]
-    style A fill:#e6f0ff,stroke:#3070d0
-    style D fill:#e6ffec,stroke:#30a050
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style D fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 ## 무엇을 하는 플러그인인가

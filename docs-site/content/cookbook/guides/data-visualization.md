@@ -15,8 +15,8 @@ flowchart TD
     B -- "관계" --> F["산점도 / 히트맵"]
     C & D & E & F --> G["data-visualizer<br/>대시보드 생성"]
 
-    style A fill:#e6f0ff,stroke:#3070d0
-    style G fill:#e6ffec,stroke:#30a050
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style G fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 ## 사용 스킬

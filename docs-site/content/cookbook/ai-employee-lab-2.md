@@ -24,8 +24,8 @@ flowchart LR
     SCM --> C
     C --> D["Slack 알림"]
 
-    style Quality fill:#e6f0ff,stroke:#3070d0
-    style D fill:#e6ffec,stroke:#30a050
+    style Quality fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style D fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 ## 랩 목표

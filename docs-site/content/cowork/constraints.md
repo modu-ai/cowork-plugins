@@ -40,11 +40,11 @@ flowchart TB
     Session --> FileSystem
     FileSystem --> Plugin
 
-    style FREE fill:#fde2e2,stroke:#c44
-    style PRO fill:#e6f0ff,stroke:#3070d0
-    style MAX fill:#e6ffec,stroke:#30a050
-    style TEAM fill:#fff4e6,stroke:#e09040
-    style ENT fill:#f5e6ff,stroke:#9050d0
+    style FREE fill:#f5dcd7,stroke:#c44a3a,color:#09110f
+    style PRO fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style MAX fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style TEAM fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style ENT fill:#dceee9,stroke:#2a8a8c,color:#09110f
 ```
 
 ## 한눈에 보기

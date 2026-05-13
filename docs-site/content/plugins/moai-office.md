@@ -16,8 +16,8 @@ flowchart LR
     A --> C["pptx-designer<br/>PowerPoint"]
     A --> D["xlsx-creator<br/>Excel"]
     A --> E["hwpx-writer<br/>한글 HWPX"]
-    style A fill:#e6f0ff,stroke:#3070d0
-    style E fill:#e6ffec,stroke:#30a050
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style E fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 ## 무엇을 하는 플러그인인가

@@ -19,8 +19,8 @@ flowchart TD
     F --> G
     G --> H["Cowork 시작"]
 
-    style C fill:#fde2e2,stroke:#c44
-    style H fill:#e6ffec,stroke:#30a050
+    style C fill:#f5dcd7,stroke:#c44a3a,color:#09110f
+    style H fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 ## 요금제 요건

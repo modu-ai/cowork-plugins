@@ -20,8 +20,8 @@ flowchart TD
     I --> J["⑩ 비용 최적화"]
     J --> K["⑪ 초기 설정"]
 
-    style A fill:#e6f0ff,stroke:#3070d0
-    style K fill:#e6ffec,stroke:#30a050
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style K fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 검증된 11개 영역 — 정체성·기능·프로젝트·플러그인·MCP·프롬프트·스케줄·실전 사례·보안·비용·초기 설정 — 을 순서대로 다룹니다.

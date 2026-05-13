@@ -15,8 +15,8 @@ flowchart LR
     A["job-analyzer<br/>JD 분석·매칭"] --> B["resume-builder<br/>자소서·이력서"]
     B --> C["interview-coach<br/>면접 대비"]
     C --> D["portfolio-guide<br/>포트폴리오"]
-    style A fill:#e6f0ff,stroke:#3070d0
-    style D fill:#e6ffec,stroke:#30a050
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style D fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 ## 무엇을 하는 플러그인인가

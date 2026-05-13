@@ -54,8 +54,8 @@ flowchart LR
     E --> F["⑥ APIKey<br/>키 등록"]
     F --> G["⑦ First Run<br/>첫 작업 예시"]
 
-    style A fill:#e6f0ff,stroke:#3070d0
-    style G fill:#e6ffec,stroke:#30a050
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style G fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 1. **Interview** — 최대 3개 질문으로 이번 프로젝트의 업무 맥락 수집 (이름·회사는 묻지 않음)

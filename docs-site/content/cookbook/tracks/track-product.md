@@ -14,8 +14,8 @@ flowchart LR
     D --> E["presenter<br/>발표 자료"]
     E --> F["product-reviewer<br/>품질 검수"]
 
-    style A fill:#e6f0ff,stroke:#3070d0
-    style F fill:#e6ffec,stroke:#30a050
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style F fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 {{< hint type="note" >}}

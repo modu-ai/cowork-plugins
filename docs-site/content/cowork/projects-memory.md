@@ -60,10 +60,10 @@ flowchart TB
     MEM_A <-.축적.-> T1A
     MEM_A <-.축적.-> T2A
 
-    style P1 fill:#eef6ff,stroke:#4a90e2,stroke-width:2px
-    style P2 fill:#fff4ee,stroke:#e2884a,stroke-width:2px
-    style OS fill:#f7f7f7,stroke:#888
-    style CW fill:#fafffa,stroke:#5aa05a
+    style P1 fill:#eaeaea,stroke:#6e6e6e,stroke-width:2px,color:#09110f
+    style P2 fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
+    style OS fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style CW fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 핵심:
@@ -169,8 +169,8 @@ flowchart TD
     Q3 -- 예 --> SAME
     Q3 -- 아니오 --> SPLIT
 
-    style SAME fill:#dff5dd,stroke:#3a8a3a
-    style SPLIT fill:#fde2e2,stroke:#c44
+    style SAME fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+    style SPLIT fill:#f5dcd7,stroke:#c44a3a,color:#09110f
 ```
 
 ## 베스트 프랙티스 — 5가지 권장 습관

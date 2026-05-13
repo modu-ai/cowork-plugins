@@ -139,9 +139,9 @@ flowchart LR
     AdHoc --> Q
     Q --> Out["산출물 저장 → 알림"]
 
-    style Routine fill:#e6f0ff,stroke:#3070d0
-    style AdHoc fill:#fff4e6,stroke:#e09040
-    style Desk fill:#e6ffec,stroke:#30a050
+    style Routine fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style AdHoc fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style Desk fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 권장 분리:

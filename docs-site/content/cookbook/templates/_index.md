@@ -14,8 +14,8 @@ flowchart LR
     C --> D["ai-slop-reviewer<br/>검수"]
     D --> E["최종 산출물"]
 
-    style A fill:#e6f0ff,stroke:#3070d0
-    style E fill:#dff5dd,stroke:#3a8a3a,stroke-width:2px
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style E fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
 ```
 
 ## 템플릿 목록

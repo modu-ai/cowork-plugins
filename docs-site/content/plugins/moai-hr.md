@@ -14,8 +14,8 @@ tags: ["moai-hr"]
 flowchart LR
     A["employment-manager<br/>JD·면접·온보딩"] --> B["draft-offer<br/>근로계약서"]
     C["performance-review<br/>성과평가·OKR"] --> D["people-operations<br/>원격근무 정책"]
-    style A fill:#e6f0ff,stroke:#3070d0
-    style D fill:#e6ffec,stroke:#30a050
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style D fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 ## 무엇을 하는 플러그인인가

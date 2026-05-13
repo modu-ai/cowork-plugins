@@ -20,8 +20,8 @@ flowchart LR
     D --> E["ai-slop-reviewer<br/>문장 다듬기"]
     Sources --> A
 
-    style Sources fill:#f5e6ff,stroke:#9050d0
-    style E fill:#e6ffec,stroke:#30a050
+    style Sources fill:#dceee9,stroke:#2a8a8c,color:#09110f
+    style E fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 ## 대상 독자

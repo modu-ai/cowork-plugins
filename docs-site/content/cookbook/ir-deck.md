@@ -16,8 +16,8 @@ flowchart LR
     E -- "히어로 이미지" --> F["nano-banana"]
     E -- "PDF 변환" --> G["배포용 PDF"]
 
-    style A fill:#e6f0ff,stroke:#3070d0
-    style D fill:#e6ffec,stroke:#30a050
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style D fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 ## 대상 독자

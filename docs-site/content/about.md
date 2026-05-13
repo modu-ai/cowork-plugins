@@ -15,8 +15,8 @@ flowchart LR
     B --> C["본 사이트<br/>한국어 가이드"]
     C --> D["사용자<br/>실무 적용"]
 
-    style A fill:#e6f0ff,stroke:#3070d0
-    style D fill:#e6ffec,stroke:#30a050
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style D fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 ## 만드는 사람

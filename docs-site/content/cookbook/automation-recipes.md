@@ -19,8 +19,8 @@ flowchart LR
     R -->|로컬 시계 도달| Exec{PC 켜짐?}
     Exec -->|YES| Run[Skill 발동 → Slack·Gmail·Project]
     Exec -->|NO| Skip[회차 건너뜀<br/>자동 보충 없음]
-    style Run fill:#d4edda,stroke:#155724
-    style Skip fill:#ffe5e5,stroke:#d73a49
+    style Run fill:#cfe5e2,stroke:#144a46,color:#09110f
+    style Skip fill:#f5dcd7,stroke:#c44a3a,color:#09110f
 ```
 
 ### Schedule 핵심 팩트
@@ -41,7 +41,7 @@ flowchart TB
     Home --> Exec2[Cowork 세션 자동 재개 → 작업 수행]
     Exec1 --> Back[결과 → Slack·메일·모바일 알림]
     Exec2 --> Back
-    style Route fill:#fff3cd,stroke:#856404
+    style Route fill:#fbf0dc,stroke:#c47b2a,color:#09110f
 ```
 
 ### 현장 규칙 3가지

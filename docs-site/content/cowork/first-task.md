@@ -22,8 +22,8 @@ flowchart LR
     D --> E["⑤ DOCX 저장"]
     E --> F["⑥ 결과 확인·후속"]
 
-    style A fill:#e6f0ff,stroke:#3070d0
-    style F fill:#e6ffec,stroke:#30a050
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style F fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 ## 단계별 진행
