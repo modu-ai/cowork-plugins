@@ -1,0 +1,47 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "moai-ads-audit-mcp"
+version = "0.1.0"
+description = "Meta 광고 audit 전담 MCP 서버 — claude-ads v1.5.1 방법론 한국 시장 특화 (cowork-plugins v2.5.0)"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+authors = [
+    { name = "MoAI-ADK", email = "bobby@afamily.kr" }
+]
+keywords = ["meta-ads", "audit", "mcp", "korea", "marketing"]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Internet :: WWW/HTTP",
+]
+dependencies = [
+    # Anthropic 공식 MCP Python SDK
+    "mcp>=1.0.0",
+    # 입출력 스키마 검증
+    "pydantic>=2.0.0",
+    # .xlsx 보고서 파싱 (openpyxl 단독, pandas 의존성 금지)
+    "openpyxl>=3.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+]
+
+[project.scripts]
+# uvx 진입점 — `uvx moai-ads-audit-mcp` 명령으로 stdio 실행
+moai-ads-audit-mcp = "moai_ads_audit.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/moai_ads_audit"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"

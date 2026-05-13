@@ -1,0 +1,335 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "_comment": "moai-ads-audit-mcp v0.1.0 — Meta 광고 audit 전담 MCP 서버 manifest. REQ-AUDIT-MCP-004.",
+  "_attribution": "Methodology adapted from agricidaniel/claude-ads v1.5.1 under MIT. See .claude/rules/moai/NOTICE.md §'agricidaniel/claude-ads (MIT)'.",
+  "_scope": "v1 = Meta 단독. TikTok·Naver·Kakao audit 도구 미노출 (REQ-AUDIT-MCP-017).",
+
+  "version": "0.1.0",
+  "platform": "Meta",
+  "cowork_version": "2.5.0",
+
+  "tools": [
+    {
+      "name": "audit_meta_account",
+      "req": "REQ-AUDIT-MCP-006",
+      "description_ko": "Meta 광고 계정 전체 audit — 4 카테고리 합산 health score + A-F 등급",
+      "description_en": "Full Meta account audit — 4-category weighted health score + A-F grade",
+      "input": {
+        "scope": "account | campaign | adset",
+        "time_range": "string (예: '2026-03 ~ 2026-04')",
+        "xlsx_path": "string | null (Layer 1 MCP 비활성 시 fallback)"
+      },
+      "output": {
+        "total_score": "float 0-100",
+        "grade": "A | B | C | D | F",
+        "grade_kr_label": "string (한국 시장 표현)",
+        "category_scores": "object {pixel_capi, creative, account_structure, audience}",
+        "pixel_capi_result": "object",
+        "creative_result": "object (NOT_IMPLEMENTED_V1)",
+        "account_structure_result": "object (NOT_IMPLEMENTED_V1)",
+        "audience_result": "object (NOT_IMPLEMENTED_V1)"
+      },
+      "implemented": true,
+      "categories_active": ["pixel_capi"],
+      "categories_stub": ["creative", "account_structure", "audience"]
+    },
+    {
+      "name": "audit_pixel_capi",
+      "req": "REQ-AUDIT-MCP-007",
+      "description_ko": "Pixel/CAPI Health 10개 check (M01-M10) — EMQ tiered targets + dedup rate",
+      "description_en": "Pixel/CAPI Health 10-check audit (M01-M10) — EMQ tiered targets + dedup rate",
+      "checks": ["M01", "M02", "M03", "M04", "M05", "M06", "M07", "M08", "M09", "M10"],
+      "check_count": 10,
+      "emq_thresholds": {
+        "Purchase": 8.5,
+        "AddToCart": 6.5,
+        "PageView": 5.5
+      },
+      "dedup_rate_threshold": 0.9,
+      "input": {
+        "pixel_id": "string",
+        "event_log": "list[object] | null",
+        "xlsx_path": "string | null",
+        "emq_scores": "object | null",
+        "capi_enabled": "bool | null",
+        "has_em_hash": "bool | null",
+        "has_ph_hash": "bool | null",
+        "has_external_id": "bool | null"
+      },
+      "output": {
+        "checks": "list[{check_id, status, severity, description, expected_impact, remediation_option}]",
+        "category_score": "float 0-100",
+        "pass_count": "int",
+        "warning_count": "int",
+        "fail_count": "int",
+        "na_count": "int",
+        "emq_summary": "object",
+        "dedup_rate": "float | null"
+      },
+      "implemented": true
+    },
+    {
+      "name": "audit_creative_diversity",
+      "req": "REQ-AUDIT-MCP-008",
+      "description_ko": "Creative Diversity & Fatigue 12개 check (M25-M32 + M-CR1~4)",
+      "description_en": "Creative diversity & fatigue 12-check audit (M25-M32 + M-CR1~4)",
+      "checks": ["M25", "M26", "M27", "M28", "M29", "M30", "M31", "M32", "M-CR1", "M-CR2", "M-CR3", "M-CR4"],
+      "check_count": 12,
+      "andromeda_similarity_threshold": 60,
+      "implemented": false,
+      "implementation_round": 4
+    },
+    {
+      "name": "audit_account_structure",
+      "req": "REQ-AUDIT-MCP-009",
+      "description_ko": "Account Structure 10개 check (M11-M18 + M-ST1~2)",
+      "description_en": "Account structure 10-check audit (M11-M18 + M-ST1-2)",
+      "checks": ["M11", "M12", "M13", "M14", "M15", "M16", "M17", "M18", "M-ST1", "M-ST2"],
+      "check_count": 10,
+      "learning_limited_threshold": 0.3,
+      "implemented": false,
+      "implementation_round": 4
+    },
+    {
+      "name": "audit_audience_targeting",
+      "req": "REQ-AUDIT-MCP-010",
+      "description_ko": "Audience & Targeting 7개 check (M19-M24 + M-TH1)",
+      "description_en": "Audience & targeting 7-check audit (M19-M24 + M-TH1)",
+      "checks": ["M19", "M20", "M21", "M22", "M23", "M24", "M-TH1"],
+      "check_count": 7,
+      "audience_overlap_threshold": 0.2,
+      "implemented": false,
+      "implementation_round": 4
+    },
+    {
+      "name": "audit_andromeda_emq",
+      "req": "REQ-AUDIT-MCP-011",
+      "description_ko": "Andromeda & Platform Changes 4개 check (M-AN1·M-AT1·M-IA1·M-TH1)",
+      "description_en": "Andromeda & platform changes 4-check audit (M-AN1/AT1/IA1/TH1)",
+      "checks": ["M-AN1", "M-AT1", "M-IA1", "M-TH1"],
+      "check_count": 4,
+      "implemented": false,
+      "implementation_round": 4
+    },
+    {
+      "name": "calculate_health_score",
+      "req": "REQ-AUDIT-MCP-012",
+      "description_ko": "가중치 스코어링 공식 산출 — S_total + A-F 등급 (claude-ads v1.5.1 공식 인용)",
+      "description_en": "Weighted health score calculation — S_total + A-F grade (claude-ads v1.5.1 formula)",
+      "formula": "S_total = Σ(C_pass × W_sev × W_cat) / Σ(C_total × W_sev × W_cat) × 100",
+      "severity_multipliers": {
+        "Critical": 5.0,
+        "High": 3.0,
+        "Medium": 1.5,
+        "Low": 0.5
+      },
+      "category_weights": {
+        "pixel_capi": 0.30,
+        "creative": 0.30,
+        "account_structure": 0.20,
+        "audience": 0.20
+      },
+      "grade_thresholds": {
+        "A": 90,
+        "B": 75,
+        "C": 60,
+        "D": 40,
+        "F": 0
+      },
+      "implemented": true
+    },
+    {
+      "name": "generate_quick_wins",
+      "req": "REQ-AUDIT-MCP-013",
+      "description_ko": "Quick Win 항목 리스트 — Critical/High + 15분 기준값 필터 + 한국어 조치 가이드",
+      "description_en": "Quick wins — Critical/High severity + 15-min threshold filter + Korean remediation guide",
+      "quick_win_criteria": {
+        "severity": ["Critical", "High"],
+        "threshold_minutes": 15,
+        "threshold_note": "claude-ads 원전 분류 기준값 (시간 예측 아님, REQ-AUDIT-MCP-022 예외)"
+      },
+      "implemented": false,
+      "implementation_round": 4
+    },
+    {
+      "name": "apply_korean_benchmarks",
+      "req": "REQ-AUDIT-MCP-014",
+      "description_ko": "한국 시장 8 카테고리 벤치마크 비교 (CPC/CTR/ROAS/CPA/CVR)",
+      "description_en": "Korean market 8-category benchmark comparison (CPC/CTR/ROAS/CPA/CVR)",
+      "implemented": false,
+      "implementation_round": 4
+    },
+    {
+      "name": "apply_korean_compliance",
+      "req": "REQ-AUDIT-MCP-015",
+      "description_ko": "5개 한국 규제 검사 — PIPA·정보통신망법·전자상거래법·표시광고법·식약처",
+      "description_en": "5 Korean regulation checks — PIPA/ITNA/E-commerce/Advertising/MFDS",
+      "implemented": false,
+      "implementation_round": 4
+    }
+  ],
+
+  "categories": [
+    {
+      "name": "pixel_capi",
+      "label_ko": "Pixel/CAPI Health",
+      "weight": 0.30,
+      "check_ids": ["M01","M02","M03","M04","M05","M06","M07","M08","M09","M10"],
+      "check_count": 10
+    },
+    {
+      "name": "creative",
+      "label_ko": "Creative Diversity & Fatigue",
+      "weight": 0.30,
+      "check_ids": ["M25","M26","M27","M28","M29","M30","M31","M32","M-CR1","M-CR2","M-CR3","M-CR4"],
+      "check_count": 12
+    },
+    {
+      "name": "account_structure",
+      "label_ko": "Account Structure",
+      "weight": 0.20,
+      "check_ids": ["M11","M12","M13","M14","M15","M16","M17","M18","M-ST1","M-ST2"],
+      "check_count": 10
+    },
+    {
+      "name": "audience",
+      "label_ko": "Audience & Targeting",
+      "weight": 0.20,
+      "check_ids": ["M19","M20","M21","M22","M23","M24","M-TH1"],
+      "check_count": 7
+    },
+    {
+      "name": "andromeda",
+      "label_ko": "Andromeda & Platform Changes",
+      "weight": 0,
+      "_note": "별도 진단 도구 (카테고리 가중치에 미포함)",
+      "check_ids": ["M-AN1","M-AT1","M-IA1","M-TH1"],
+      "check_count": 4
+    }
+  ],
+
+  "severities": [
+    { "level": "Critical", "multiplier": 5.0, "description_ko": "즉시 조치 검토 권장" },
+    { "level": "High",     "multiplier": 3.0, "description_ko": "조속한 검토 권장" },
+    { "level": "Medium",   "multiplier": 1.5, "description_ko": "중기 개선 검토 권장" },
+    { "level": "Low",      "multiplier": 0.5, "description_ko": "장기 개선 검토 참고" }
+  ],
+
+  "status_states": [
+    { "state": "PASS",    "c_pass": 1.0,  "description_ko": "기준 충족" },
+    { "state": "WARNING", "c_pass": 0.5,  "description_ko": "부분 충족 — 검토 권장" },
+    { "state": "FAIL",    "c_pass": 0.0,  "description_ko": "기준 미충족" },
+    { "state": "N/A",     "c_pass": null, "description_ko": "해당 없음 — C_total 제외" }
+  ],
+
+  "korean_benchmarks": {
+    "_source": "v0.1.0 placeholder — 정해준 강사 노하우 + 자료 1·2·3·4 + 케어밀 사례. 정식 출처 확정 시 갱신 예정.",
+    "_keoji_reference": "케어밀 1.80 ROAS (저관여 식품 기준, NOTICE.md 직접 인용)",
+    "categories": [
+      {
+        "name": "식품/음료",
+        "cpc_min_krw": 500, "cpc_max_krw": 1500,
+        "ctr_min_pct": 0.8, "ctr_max_pct": 2.0,
+        "roas_min": 1.5, "roas_max": 2.5,
+        "requires_mfds_review": false
+      },
+      {
+        "name": "패션/뷰티",
+        "cpc_min_krw": 800, "cpc_max_krw": 2500,
+        "ctr_min_pct": 1.0, "ctr_max_pct": 2.5,
+        "roas_min": 2.0, "roas_max": 3.5,
+        "requires_mfds_review": false
+      },
+      {
+        "name": "건강기능식품/의료",
+        "cpc_min_krw": 1000, "cpc_max_krw": 3000,
+        "ctr_min_pct": 0.5, "ctr_max_pct": 1.5,
+        "roas_min": 1.8, "roas_max": 3.0,
+        "requires_mfds_review": true
+      },
+      {
+        "name": "IT/디지털",
+        "cpc_min_krw": 600, "cpc_max_krw": 2000,
+        "ctr_min_pct": 1.0, "ctr_max_pct": 2.5,
+        "roas_min": 2.5, "roas_max": 4.5,
+        "requires_mfds_review": false
+      },
+      {
+        "name": "가정용품/생활",
+        "cpc_min_krw": 400, "cpc_max_krw": 1200,
+        "ctr_min_pct": 1.0, "ctr_max_pct": 2.0,
+        "roas_min": 1.8, "roas_max": 3.0,
+        "requires_mfds_review": false
+      },
+      {
+        "name": "교육/지식",
+        "cpc_min_krw": 700, "cpc_max_krw": 2500,
+        "ctr_min_pct": 0.8, "ctr_max_pct": 2.0,
+        "roas_min": 2.0, "roas_max": 4.0,
+        "requires_mfds_review": false
+      },
+      {
+        "name": "서비스/B2B",
+        "cpc_min_krw": 1500, "cpc_max_krw": 5000,
+        "ctr_min_pct": 0.5, "ctr_max_pct": 1.5,
+        "roas_min": 1.5, "roas_max": 3.0,
+        "requires_mfds_review": false,
+        "_note": "LTV 기반 ROAS 보정 권장"
+      },
+      {
+        "name": "기타",
+        "cpc_min_krw": 500, "cpc_max_krw": 3000,
+        "ctr_min_pct": 0.5, "ctr_max_pct": 2.5,
+        "roas_min": 1.5, "roas_max": 4.0,
+        "requires_mfds_review": false,
+        "_note": "8 카테고리 fallback — 자동 추정"
+      }
+    ]
+  },
+
+  "korean_compliance": [
+    {
+      "regulation": "개인정보보호법",
+      "abbreviation": "PIPA",
+      "check_id": "PIPA-001",
+      "severity": "High",
+      "description_ko": "광고 픽셀 동의 배너 + em/ph 해시화 검사",
+      "auto_checkable": true
+    },
+    {
+      "regulation": "정보통신망법",
+      "abbreviation": "ITNA",
+      "check_id": "ITNA-001",
+      "severity": "High",
+      "description_ko": "영리 광고성 정보 야간 발송 (21시-08시) + 옵트아웃 링크",
+      "_note": "21시-08시는 법률 시간 정의 (REQ-AUDIT-MCP-022 예외)",
+      "auto_checkable": true
+    },
+    {
+      "regulation": "전자상거래법",
+      "abbreviation": "E-Commerce Act",
+      "check_id": "ECOM-001",
+      "severity": "Medium",
+      "description_ko": "사업자 정보 + 청약철회 + 환불 정책 표시",
+      "auto_checkable": true
+    },
+    {
+      "regulation": "표시광고법",
+      "abbreviation": "Advertising Act",
+      "check_id": "ADV-001",
+      "severity": "High",
+      "description_ko": "허위·과장 표현·부당 비교·최상급 표현 키워드 매칭",
+      "auto_checkable": true
+    },
+    {
+      "regulation": "식약처 광고 심의",
+      "abbreviation": "MFDS",
+      "check_id": "MFDS-001",
+      "severity": "Critical",
+      "description_ko": "사전 심의 번호 + 금지 표현 (질병 치료·예방 효과) 키워드 매칭",
+      "force_active_categories": ["건강기능식품/의료", "건강기능식품", "의료기기", "의약품"],
+      "auto_checkable": true,
+      "_note": "v1: 키워드 매칭 + 시정 가이드까지 자동. 실제 심의 통과는 사용자 책임."
+    }
+  ]
+}
