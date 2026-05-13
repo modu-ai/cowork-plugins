@@ -118,7 +118,7 @@
   const render = (q, hits) => {
     if (!hits.length) { results.innerHTML = '<div class="cw-search-modal__hint">검색 결과 없음.</div>'; return; }
     results.innerHTML = '<ul class="cw-search-modal__list">' + hits.slice(0, 30).map(h => `
-      <li><a href="${escapeHtml(h.uri)}">
+      <li><a href="${escapeHtml(h.href)}">
         <div class="title">${highlight(h.title || '', q)}</div>
         ${h.parent ? `<div class="parent">${escapeHtml(h.parent)}</div>` : ''}
         ${h.content ? `<div class="excerpt">${highlight((h.content || '').slice(0, 140), q)}…</div>` : ''}
