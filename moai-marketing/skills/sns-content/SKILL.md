@@ -6,7 +6,7 @@ description: |
   광고 카피는 moai-content:copywriting / 이커머스 광고·톡톡·푸시 카피는 moai-commerce:commerce-copywriting / 기업 브랜드 전략은 moai-marketing:brand-identity / 개인 브랜드 전략은 moai-marketing:personal-branding을 사용하세요.
   v2.4.0 강화: 채널별 심리 상태 매트릭스(메타 수동적 발견·구글 능동적 탐색·네이버 검색→블로그·카카오 슈퍼 타겟 90%+ 열람) + 메타 학습 기간 48~72시간 가이드 (자료 4 §10).
 user-invocable: true
-version: 2.4.0
+version: 2.5.0
 ---
 
 # SNS 콘텐츠 제작 (SNS Content) — 한국 + 글로벌 통합

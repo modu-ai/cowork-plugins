@@ -11,7 +11,7 @@ description: |
   - "현금흐름 모델", "밸류에이션 계산", "시리즈 A 투자 유치"
   - "투자자 보고서", "IR 자료", "investor deck", "financial model"
 user-invocable: true
-version: 2.4.0
+version: 2.5.0
 ---
 
 # 투자자 관계 (Investor Relations)

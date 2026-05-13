@@ -226,5 +226,6 @@ credentials.env
 CLAUDE.md
 CLAUDE.local.md
 .mcp.json
+!moai-*/.mcp.json
 .claude/
 .moai/

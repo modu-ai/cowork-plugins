@@ -1,22 +1,22 @@
 ---
 title: "Claude Cowork 한국어 문서"
-description: "Claude Cowork 한국어 가이드 — 지식 근로자를 위한 설치·스킬·플러그인·쿡북 완전판. cowork-plugins 21종 카탈로그 + 129 스킬 포함."
+description: "Claude Cowork 한국어 가이드 — 지식 근로자를 위한 설치·스킬·플러그인·쿡북 완전판. cowork-plugins 21종 카탈로그 + 130 스킬 포함."
 geekdocAnchor: false
 geekdocBreadcrumb: false
 ---
 
 <div class="cw-hero">
   <div class="eyebrow"><span class="dot"></span>v{{< version >}} · {{< release-date >}} · cowork.mo.ai.kr</div>
-  <h1>업무에 바로 쓰는<br/><span class="accent">AI 협업 스킬</span> 129종.</h1>
+  <h1>업무에 바로 쓰는<br/><span class="accent">AI 협업 스킬</span> 130종.</h1>
   <p class="lead-p">
-    21개 분야에 걸친 MoAI-Cowork 플러그인 모음. Claude Code에서 슬래시 한 번으로 사업계획서·IR 덱·계약서·블로그·정부지원사업 신청서·<strong>이커머스 광고 풀세트</strong>까지 — 한국어로, 끝까지.
+    21개 분야에 걸친 MoAI-Cowork 플러그인 모음. Claude Code에서 슬래시 한 번으로 사업계획서·IR 덱·계약서·블로그·정부지원사업 신청서·이커머스 광고 풀세트·<strong>메타 광고 보고서 분석</strong>까지 — 한국어로, 끝까지.
   </p>
   <div class="cw-hero-ctas">
     <a class="btn btn--primary" href="/getting-started/quick-start/">5분 만에 시작 →</a>
     <a class="btn btn--ghost" href="/plugins/">플러그인 둘러보기</a>
   </div>
   <div class="cw-hero-meta">
-    <div class="item"><div class="num">129</div><div class="lbl">총 스킬</div></div>
+    <div class="item"><div class="num">130</div><div class="lbl">총 스킬</div></div>
     <div class="item"><div class="num">21</div><div class="lbl">분야 플러그인</div></div>
     <div class="item"><div class="num">78</div><div class="lbl">문서 페이지</div></div>
     <div class="item"><div class="num">v{{< version >}}</div><div class="lbl">최신 릴리스</div></div>
@@ -54,7 +54,7 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
 
 <div class="cw-sect-head">
   <h2 id="plugins-grid" style="margin:0"><span class="num">21</span>분야별 플러그인</h2>
-  <span class="meta">총 129개 스킬 · 21개 도메인</span>
+  <span class="meta">총 130개 스킬 · 21개 도메인</span>
 </div>
 
 <div class="cw-grid">
@@ -71,10 +71,10 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
     <div class="foot"><span>블로그</span><span>SNS</span><span>humanize</span><span>html-report</span></div>
   </a>
   <a class="cw-card" href="/plugins/moai-marketing/">
-    <div class="head"><div class="icon">마</div><span class="count-pill">10개 스킬</span></div>
-    <div><div class="title">마케팅<span class="new-tag">v2.4</span></div><div class="slug">moai-marketing</div></div>
-    <div class="desc">캠페인·퍼포먼스·CRM·광고 카피·이메일 시퀀스 + 광고 심리학 통합·랜딩 진단·픽셀 검증</div>
-    <div class="foot"><span>캠페인</span><span>광고</span><span>랜딩 진단</span><span>픽셀</span></div>
+    <div class="head"><div class="icon">마</div><span class="count-pill">11개 스킬</span></div>
+    <div><div class="title">마케팅<span class="new-tag">v2.5</span></div><div class="slug">moai-marketing</div></div>
+    <div class="desc">캠페인·퍼포먼스·CRM·광고 카피·이메일 시퀀스 + 광고 심리학 통합·랜딩 진단·픽셀 검증 + 메타 광고 보고서 분석(9 모듈·4D 교차·🟢🟡🔴 강도별 액션)</div>
+    <div class="foot"><span>캠페인</span><span>광고</span><span>랜딩 진단</span><span>픽셀</span><span>메타 분석</span><span>MCP</span></div>
   </a>
   <a class="cw-card" href="/plugins/moai-media/">
     <div class="head"><div class="icon">미</div><span class="count-pill">13개 스킬</span></div>
@@ -203,27 +203,36 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
 </div>
 
 <div class="cw-sect-head">
-  <h2 id="release-summary" style="margin:0"><span class="num">v2.4</span>최근 릴리스</h2>
+  <h2 id="release-summary" style="margin:0"><span class="num">v2.5</span>최근 릴리스</h2>
   <span class="meta">CHANGELOG.md 기반</span>
 </div>
 
 <div class="cw-timeline">
   <div class="cw-rel latest">
     <div class="ver-row">
+      <span class="ver">v2.5.0</span>
+      <span class="date">2026-05-13</span>
+      <span class="badge">MINOR</span>
+    </div>
+    <div class="ttl">"메타 광고 audit 3-Layer 인프라" — 신규 1 스킬 + 신규 1 MCP 서버</div>
+    <div class="desc">agricidaniel/claude-ads v1.5.1 (MIT, 4,815 stars) 50-check audit 방법론을 한국 시장 7 변화 영역(벤치마크·8 산업 카테고리·5 규제·5 사용자 그룹·표현 스타일·4 출력 형식·4D 분석)에 맞춰 차용. Layer 3 분석 스킬 + Layer 2 자체 MCP 서버 동시 출시.</div>
+    <ul>
+      <li><strong>moai-marketing 신규 1</strong> — meta-ads-analyzer(.xlsx 보고서 1~6개 → 9 분석 모듈(퍼널·KPI·차원·매트릭스·누수·라이프사이클·학습·예산·시뮬) + 4D 교차(광고×지면×연령×성별) + 3 사용자 그룹 톤(인하우스/대행사/소규모, 명시 입력) + 4 출력 형식(HTML/DOCX/PPTX/MD, cowork 공용 디자인 토큰) + 🟢🟡🔴 강도별 액션 옵션). SKILL.md + 11 references 부록 = 12파일 1,829줄.</li>
+      <li><strong>mcp-servers/moai-ads-audit/ 신규 자체 MCP 서버</strong> — Python uvx 패키지(MIT, v0.1.0). 가중치 스코어링 공식(S_total · Severity 5/3/1.5/0.5 · 카테고리 30/30/20/20 · A-F 등급) + 43 unique check matrix(Pixel/CAPI 10·Creative 12·Account 10·Audience 7·Andromeda 4) + 한국 벤치마크 8 카테고리 + 5 규제(PIPA·ITNA·전상법·표시광고법·식약처). 우선 3 도구 구현(audit_meta_account·audit_pixel_capi·calculate_health_score) + 50/50 pytest pass.</li>
+      <li><strong>MCP 등록 인프라</strong> — moai-marketing/.mcp.json 신규(meta-ads hosted + moai-ads-audit local stdio 2 서버) + CONNECTORS.md 신규(META_ACCESS_TOKEN 발급 + Layer 1 fallback 옵션 4종)</li>
+      <li>마켓플레이스 129 → <strong>130 스킬</strong>. 동기화 지점 152개 (marketplace 1 + plugin.json 21 + SKILL.md 130) 모두 v2.5.0</li>
+      <li>인사이트 원전 — agricidaniel/claude-ads v1.5.1 (MIT) 방법론 차용 + 한국 시장 7 변화 영역 1차 시민 변환. attribution: .claude/rules/moai/NOTICE.md §agricidaniel/claude-ads (MIT)</li>
+      <li><strong>후속 예정 (v2.5.x 또는 v2.6.0)</strong> — moai-ads-audit-mcp 잔여 7 도구(creative_diversity·account_structure·audience_targeting·andromeda_emq·quick_wins·korean_benchmarks·korean_compliance) + 한국 벤치마크 정식 검증 출처 확정 + TikTok·Naver·Kakao audit 확장(v2)</li>
+    </ul>
+  </div>
+  <div class="cw-rel">
+    <div class="ver-row">
       <span class="ver">v2.4.0</span>
       <span class="date">2026-05-12</span>
       <span class="badge">MINOR</span>
     </div>
     <div class="ttl">"캠프 후속 인사이트 통합본" — 13건(신규 5 + 강화 8)</div>
-    <div class="desc">정해준 강사 본인 노하우 3개 문서(쿠팡 매출 9배 비법 전자책 126p + 커머스 업무 자동화 24p + 커머스 매출향상 AI 활용 26p) + 광고 심리학 완전판(13장 376줄)을 분석해 통합. 캠프 D-14 운영 직전에 본인 비법을 스킬 13건으로 최대치 활용 가능.</div>
-    <ul>
-      <li><strong>moai-commerce 신규 3</strong> — coupang-ad-optimizer(쿠팡 광고 풀세트: 3 캠페인 분류·검색/비검색 분리·엔드 ROAS·자동규칙 3종, 정해준 강사 6개월 노하우 wrapper), commerce-margin-calculator(채널별 수수료 자동 마진·엔드 ROAS), commerce-automation-audit(6대 영역 진단·우선순위 점수·3 Phase 로드맵·HITL Golden Rule)</li>
-      <li><strong>moai-marketing 신규 2</strong> — landing-page-conversion-audit(랜딩 6섹션 진단·CTR/CVR 분기·불안해소 처방), pixel-audit(메타·구글 픽셀·CAPI·Lookalike 씨앗 품질)</li>
-      <li><strong>강화 8</strong> — commerce-product-naming(공식 4요소·금지 키워드 9종), detail-page-copy(PAS·혜택 언어 3단계), commerce-jtbd-persona(심리적 필요 4종·타겟 온도), commerce-channel-message(6 방아쇠·8 편향·채널 매트릭스), commerce-integrated-strategy(자동화 4단계·3 Phase·HITL), commerce-market-research(포지셔닝 5축·새 카테고리), campaign-planner(광고 심리학 완전판), sns-content(채널별 심리·메타 학습 기간)</li>
-      <li>마켓플레이스 124 → <strong>129 스킬</strong>. 동기화 지점 151개 (marketplace 1 + plugin.json 21 + SKILL.md 129) 모두 v2.4.0</li>
-      <li>인사이트 원전 — 정해준 강사 본인 노하우 3개 문서 + "온라인 광고의 심리학" 13장 + 시크릿팡 마진계산기 로직 참고</li>
-      <li><strong>후속 (v2.5.0 예정)</strong> — Track A MoAI-Commerce MCP 서버 (광고 4종 + Phase 1 34종 + Higgsfield)</li>
-    </ul>
+    <div class="desc">정해준 강사 본인 노하우 3개 문서(쿠팡 매출 9배 비법 전자책 126p + 커머스 업무 자동화 24p + 커머스 매출향상 AI 활용 26p) + 광고 심리학 완전판(13장 376줄)을 분석해 13건(신규 5 + 강화 8) 통합. 마켓플레이스 124 → 129 스킬.</div>
   </div>
   <div class="cw-rel">
     <div class="ver-row">

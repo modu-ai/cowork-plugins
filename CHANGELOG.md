@@ -6,12 +6,62 @@
 
 ## 버전 통일 원칙 (HARD)
 
-아래 151개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.0.0부터 SKILL.md frontmatter `version:` 복구):
+아래 152개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.0.0부터 SKILL.md frontmatter `version:` 복구):
 - `.claude-plugin/marketplace.json` (`metadata.version`) × 1
 - `<plugin>/.claude-plugin/plugin.json` (`version`) × 21
-- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 129 (v2.4.0+)
+- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 130 (v2.5.0+)
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
+
+## [2.5.0] - 2026-05-13
+
+MINOR. **메타 광고 audit 3-Layer 인프라 출시** — Layer 3 신규 분석 스킬 1종(`meta-ads-analyzer`, .xlsx 보고서 1~6개 → 9 분석 모듈 + 4D 교차 + 강도별 액션 옵션 + 4 출력 형식) + Layer 2 자체 MCP 서버 신규 1종(`moai-ads-audit-mcp`, claude-ads v1.5.1 MIT 방법론 한국 시장 7 변화 영역 특화 + 10 도구 중 3 도구 + 50/50 pytest pass). 129 → **130 스킬**, 동기화 지점 151 → **152**.
+
+### Added (신규 1 스킬)
+
+**moai-marketing 신규 1**
+
+- `moai-marketing:meta-ads-analyzer` — 메타 광고관리자 `.xlsx` 보고서 1~6개 업로드 → 상품 관여도·운영 철학 반영 진단. 9 분석 모듈(퍼널·KPI·차원·매트릭스·누수·라이프사이클·학습·예산·시뮬레이션) + 4D 교차(광고×지면×연령×성별) + 3 사용자 그룹 톤(인하우스/대행사/소규모, 명시 입력) + 4 출력 형식(HTML/DOCX/PPTX/MD, cowork 공용 디자인 토큰 적용 — `--ivory`/`--paper`/`--slate`/`--clay`/`--clay-d`/`--oat`/`--olive`) + 강도별 액션 옵션(🟢🟡🔴 보수/중도/적극) + claude-ads v1.5.1 (MIT, 4,815 stars) 50-check 매트릭스 한국 시장 매핑. SKILL.md + references A~K 11개 부록 = 12파일 1,829줄. ai-slop-reviewer 자동 체이닝.
+
+### Added (신규 인프라)
+
+**자체 MCP 서버 1종 (cowork-plugins monorepo 첫 MCP 패키지)**
+
+- `mcp-servers/moai-ads-audit/` — Meta Ads audit 전담 자체 MCP 서버 (Python uvx, MIT, v0.1.0). claude-ads v1.5.1 (MIT) 방법론 차용 + 한국 시장 7 변화 영역(벤치마크·8 산업 카테고리·5 규제·5 사용자 그룹·표현 스타일·4 출력 형식·4D 분석) 특화. 가중치 스코어링 공식(`S_total = Σ(C_pass × W_sev × W_cat) / Σ(C_total × W_sev × W_cat) × 100`) + Severity 5.0/3.0/1.5/0.5 + 카테고리 가중치 30/30/20/20 + A-F 등급 + **43 unique check matrix**(Pixel/CAPI 10 + Creative 12 + Account 10 + Audience 7 + Andromeda 4) + 한국 벤치마크 8 카테고리(식품/음료·패션/뷰티·건강기능식품·IT/디지털·가정용품·교육·B2B·기타) + 5 규제(PIPA·ITNA·전상법·표시광고법·식약처). 우선 구현 도구 3종(`audit_meta_account`·`audit_pixel_capi`·`calculate_health_score`). **50/50 pytest pass**. 총 3,813줄(Python+테스트+manifest+문서).
+
+**MCP 등록 인프라**
+
+- `moai-marketing/.mcp.json` 신규 — 2개 MCP 등록 (`meta-ads` hosted at `mcp.facebook.com/ads` + `moai-ads-audit` local stdio via uvx)
+- `moai-marketing/CONNECTORS.md` 신규 — `META_ACCESS_TOKEN` 발급 절차 + Layer 1 fallback 옵션 (Adspirer/byadsco/pipeboard) + 10 도구 명세
+
+### 차용 (Attribution)
+
+- [agricidaniel/claude-ads](https://github.com/AgriciDaniel/claude-ads) v1.5.1 (MIT, 4,815 stars, 2026-05-13 시점) — Meta 광고 audit 50-check matrix·가중치 스코어링 공식·Quick Wins 로직·EMQ tiered targets·A-F 등급 임계값
+- 전체 attribution: `.claude/rules/moai/NOTICE.md` §"agricidaniel/claude-ads (MIT)"
+- Korean Market Adaptation 7 영역 한국 시장 1차 시민 변환
+
+### 동기화 지점
+
+- `.claude-plugin/marketplace.json` × 1 (metadata.version)
+- `<plugin>/.claude-plugin/plugin.json` × 21
+- `<plugin>/skills/<skill>/SKILL.md` × 130 (신규 1 포함)
+- 총 **152 지점** 동일 버전 (v2.5.0) 유지
+
+### Migration
+
+- Breaking change 없음 — 기존 워크플로우 그대로 동작
+- 신규 스킬 호출 예시: "메타 광고 보고서 분석해줘", "케어밀 보고서 진단", "ROAS 낮은 이유", "지면별 분석", "Audience Network 진단"
+- MCP 서버 활성화: Claude Code 재시작 시 `moai-marketing/.mcp.json` 자동 인식. Meta 공식 MCP는 OAuth(`META_ACCESS_TOKEN`) 필요. 비활성 환경에서는 `.xlsx` 업로드 fallback 자동 동작 (REQ-AUDIT-MCP-005)
+- v2.4.0과의 관계: 본 v2.5.0은 v2.4.0의 로컬 5 커밋(`5922342`·`1a08357`·`e6363f5`·`db260f7`·`99db972`) 위에 누적. v2.4.0은 별도 release 없이 v2.5.0 통합 release로 발행 예정 (GOOS 명시 컨펌 후, 메모리 `feedback_v240_push_confirm.md` 유지)
+
+### 후속 (v2.5.x 또는 v2.6.0 예정)
+
+- `moai-ads-audit-mcp` 잔여 7 도구 구현 (audit_creative_diversity · audit_account_structure · audit_audience_targeting · audit_andromeda_emq · generate_quick_wins · apply_korean_benchmarks · apply_korean_compliance)
+- 한국 벤치마크 8 카테고리 수치 정식 검증 출처 확정 (현재 v0.1.0 placeholder, SPEC §7 OQ4)
+- claude-ads 50 vs 43 check 차이 7 항목 추가 검토 (SPEC §7 OQ3)
+- 표본 부족 셀 마스킹 기준 N값 통일 (SPEC §7.2 미결정)
+- v2 단계: TikTok·Naver·Kakao audit 확장
+- v3 단계: SaaS UI·다국어·상시 대시보드
 
 ## [2.4.0] - 2026-05-12
 

@@ -9,7 +9,7 @@ description: >
   V6 ③ 상세페이지 도구 = MCP wrapper (SPEC-COMMERCE-V6-003 §5.3 인용).
   v2.4.0 강화: 좋은/피해야 할 예시 가이드 + PAS 카피 공식 매핑 + 혜택 언어 3단계 변환법 (자료 4 §8 광고 심리학 통합).
 user-invocable: true
-version: 2.4.0
+version: 2.5.0
 ---
 
 # 상세페이지 카피 (Detail Page Copy)

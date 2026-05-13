@@ -6,7 +6,7 @@ description: |
   "MCP 커넥터 연결", "Drive 인증 방법", "Notion Integration Token 어디서", "Higgsfield 키 발급", "OpenAI API 키 발급", "Windows MAX_PATH 오류", "한글 파일명 30자 오류", "computer:// 링크 안 열려요", "커넥터 4개 연결 방법", "MCP 4커넥터 인증".
   v2.3.0 신규 (Wave 3 — Day 1 S4 셋업).
 user-invocable: true
-version: 2.4.0
+version: 2.5.0
 ---
 
 # MCP 커넥터 셋업 가이드

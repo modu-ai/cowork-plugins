@@ -4,7 +4,7 @@ description: |
   브랜드 캐릭터 관리 스킬. Higgsfield AI 기반 캐릭터 생성·검색·삭제를 지원하며, 생성된 캐릭터는 image-gen, video-gen, speech-video 스킬에서 재사용됩니다.
   "캐릭터 만들기", "브랜드 마스코트", "가상 인플루언서", "일관된 캐릭터", "캐릭터 아카이빙" 요청 시 사용.
 user-invocable: true
-version: 2.4.0
+version: 2.5.0
 ---
 
 # character-mgmt

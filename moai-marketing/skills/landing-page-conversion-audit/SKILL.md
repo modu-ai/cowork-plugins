@@ -8,7 +8,7 @@ description: |
   ai-slop-reviewer 자동 체이닝 (진단 보고서 텍스트 산출물).
   v2.4.0 신규 (자료 4 "온라인 광고의 심리학" §9 랜딩페이지 풀세트).
 user-invocable: true
-version: 2.4.0
+version: 2.5.0
 ---
 
 # 랜딩페이지 전환율 진단 (Landing Page Conversion Audit)

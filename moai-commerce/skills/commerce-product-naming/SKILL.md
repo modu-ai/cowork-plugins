@@ -10,7 +10,7 @@ description: |
   ai-slop-reviewer 체이닝 제외 (검증 룰 통과 데이터 스킬).
   v2.4.0 강화 (자료 1 정해준 강사 강의 자료 §4 상품명 전략 반영).
 user-invocable: true
-version: 2.4.0
+version: 2.5.0
 ---
 
 # 상품명 자동 생성 (Commerce Product Naming)

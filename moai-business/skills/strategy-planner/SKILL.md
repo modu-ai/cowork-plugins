@@ -11,7 +11,7 @@ description: |
   - "OKR 설정해줘", "해외 진출 전략 짜줘", "시나리오 플래닝"
   - "전략 기획서", "비즈니스 전략 수립", "시장 진입 전략"
 user-invocable: true
-version: 2.4.0
+version: 2.5.0
 ---
 
 # 전략 플래너 (Strategy Planner)

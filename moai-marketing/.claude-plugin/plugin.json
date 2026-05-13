@@ -1,7 +1,7 @@
 {
   "name": "moai-marketing",
-  "version": "2.4.0",
-  "description": "마케팅 — 네이버/카카오 SEO·SNS(한국 3+글로벌 4채널)·캠페인·이메일 + v2.4.0 광고 심리학 통합(campaign-planner·sns-content 완전판) + 랜딩 진단(landing-page-conversion-audit) + 픽셀 검증(pixel-audit)",
+  "version": "2.5.0",
+  "description": "마케팅 — 네이버/카카오 SEO·SNS(한국 3+글로벌 4채널)·캠페인·이메일 + v2.4.0 광고 심리학 통합(campaign-planner·sns-content 완전판) + 랜딩 진단(landing-page-conversion-audit) + 픽셀 검증(pixel-audit) + v2.5.0 메타 광고 보고서 분석(meta-ads-analyzer, 9 모듈·4D 교차·3 그룹·4 출력 형식·🟢🟡🔴 강도별 액션) + MCP 인프라 2서버(meta-ads hosted + moai-ads-audit local stdio, claude-ads v1.5.1 MIT 한국 시장 특화)",
   "author": {
     "name": "모두의AI"
   },

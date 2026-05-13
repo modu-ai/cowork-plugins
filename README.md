@@ -2,17 +2,17 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
-[![Version](https://img.shields.io/badge/Version-2.4.0-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-2.5.0-blue)](CHANGELOG.md)
 [![Plugins](https://img.shields.io/badge/Plugins-21-blue)](.claude-plugin/marketplace.json)
-[![Skills](https://img.shields.io/badge/Skills-129-green)](.claude-plugin/marketplace.json)
+[![Skills](https://img.shields.io/badge/Skills-130-green)](.claude-plugin/marketplace.json)
 [![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)
 [![shadcn/ui](https://img.shields.io/badge/UI-shadcn/ui-black)](https://ui.shadcn.com/)
 
-**Claude Cowork 한국어 도메인 전문가 AI 마켓플레이스 — 21 plugins · 129 skills · MIT**
+**Claude Cowork 한국어 도메인 전문가 AI 마켓플레이스 — 21 plugins · 130 skills · MIT**
 
-자연어 한 줄로 **사업계획서·계약서 검토·세금 계산·PPT·이미지/영상/음성·BI 보고서·HTML 리포트·이커머스 강의 캠프·쿠팡 광고 최적화**를 자동 생성합니다. 한국 B2B 환경(K-IFRS·국세청·근로기준법·식약처·국토부·KRX·인터넷등기소)에 특화된 21개 독립 플러그인과 129개 도메인 스킬이 업무를 대신하며, 모든 텍스트 산출물은 [`ai-slop-reviewer`](./moai-core/skills/ai-slop-reviewer/)가 AI 패턴을 검수하여 자연스럽게 다듬어 드립니다.
+자연어 한 줄로 **사업계획서·계약서 검토·세금 계산·PPT·이미지/영상/음성·BI 보고서·HTML 리포트·이커머스 강의 캠프·쿠팡 광고 최적화·메타 광고 보고서 분석**을 자동 생성합니다. 한국 B2B 환경(K-IFRS·국세청·근로기준법·식약처·국토부·KRX·인터넷등기소)에 특화된 21개 독립 플러그인과 130개 도메인 스킬이 업무를 대신하며, 모든 텍스트 산출물은 [`ai-slop-reviewer`](./moai-core/skills/ai-slop-reviewer/)가 AI 패턴을 검수하여 자연스럽게 다듬어 드립니다.
 
-> *Korean B2B specialty plugin marketplace for [Anthropic Claude Code (Cowork)](https://claude.ai/cowork) — 21 plugins · 129 skills. Korean fonts (Pretendard / Noto Serif KR / Chosunilbo Myungjo / KoPubWorld), Korean text humanizer (humanize-korean), AI-slop reviewer for every deliverable. K-IFRS, NTS, KRX, MFDS, MOLIT, IROS specialty skills. MIT licensed.*
+> *Korean B2B specialty plugin marketplace for [Anthropic Claude Code (Cowork)](https://claude.ai/cowork) — 21 plugins · 130 skills. Korean fonts (Pretendard / Noto Serif KR / Chosunilbo Myungjo / KoPubWorld), Korean text humanizer (humanize-korean), AI-slop reviewer for every deliverable. K-IFRS, NTS, KRX, MFDS, MOLIT, IROS specialty skills. MIT licensed.*
 
 **🚀 빠른 설치**: Claude Cowork → 사용자 지정 → 개인 플러그인 + → **마켓플레이스 추가** → URL `modu-ai/cowork-plugins` 입력 → 동기화 → `moai-core` 먼저 설치
 
@@ -34,7 +34,19 @@
 
 ---
 
-**🆕 v2.4.0 하이라이트** (2026-05-12) — **"캠프 후속 인사이트 통합본"** 출시
+**🆕 v2.5.0 하이라이트** (2026-05-13) — **"메타 광고 audit 3-Layer 인프라"** 출시
+
+[agricidaniel/claude-ads](https://github.com/AgriciDaniel/claude-ads) v1.5.1 (MIT, 4,815 stars) 50-check audit 방법론을 한국 시장 7 변화 영역(벤치마크·8 산업 카테고리·5 규제·5 사용자 그룹·표현·출력·분석 차원)에 맞춰 차용하여 **신규 1 스킬 + 신규 1 MCP 서버** 출시. 129 → **130 스킬**, 동기화 지점 151 → **152**.
+
+- **Layer 3 — moai-marketing 신규 1** — 메타 광고 보고서 분석기(`meta-ads-analyzer`, .xlsx 보고서 1~6개 → 9 모듈(퍼널·KPI·차원·매트릭스·누수·라이프사이클·학습·예산·시뮬) + 4D 교차(광고×지면×연령×성별) + 3 사용자 그룹 톤(인하우스/대행사/소규모, 명시 입력) + 4 출력 형식(HTML/DOCX/PPTX/MD, cowork 공용 디자인 토큰 적용) + 강도별 액션 옵션(🟢🟡🔴 보수/중도/적극) + claude-ads 50-check 매트릭스 한국 매핑). SKILL.md + references A~K 11개 부록 = 12파일 1,829줄.
+- **Layer 2 — `mcp-servers/moai-ads-audit/` 신규 자체 MCP 서버** — Python uvx 패키지(MIT, v0.1.0). 가중치 스코어링 공식(`S_total = Σ(C_pass × W_sev × W_cat) / Σ(C_total × W_sev × W_cat) × 100`, Severity 5.0/3.0/1.5/0.5, 카테고리 30/30/20/20) + A-F 등급 + 43 unique check matrix(Pixel/CAPI 10 + Creative 12 + Account 10 + Audience 7 + Andromeda 4) + 한국 벤치마크 8 카테고리 + 5 규제(PIPA·ITNA·전상법·표시광고법·식약처). 우선 도구 3종 구현. **50/50 pytest pass**. cowork-plugins monorepo 첫 MCP 서버 패키지.
+- **MCP 등록 인프라** — `moai-marketing/.mcp.json` 신규 (Meta 공식 hosted MCP + 자체 audit local stdio MCP 2개 등록) + `moai-marketing/CONNECTORS.md` 신규 (META_ACCESS_TOKEN 발급 + Layer 1 fallback 옵션 4종 안내)
+- **인사이트 원전** — claude-ads v1.5.1 (MIT) 방법론 차용 + 한국 시장 7 변화 영역 1차 시민 변환. 전체 attribution: `.claude/rules/moai/NOTICE.md` §"agricidaniel/claude-ads (MIT)"
+- 마켓플레이스 스킬 수: 129 → **130개** (+1 신규 + Layer 2 MCP 서버). 동기화 지점 **152개** (marketplace 1 + plugin.json 21 + SKILL.md 130) 모두 v2.5.0
+- **후속 예정** (v2.5.x) — moai-ads-audit-mcp 잔여 7 도구(creative_diversity · account_structure · audience_targeting · andromeda_emq · quick_wins · korean_benchmarks · korean_compliance) + 한국 벤치마크 8 카테고리 정식 검증 출처 + TikTok·Naver·Kakao audit 확장(v2 단계)
+
+<details>
+<summary><b>📜 이전: v2.4.0 — "캠프 후속 인사이트 통합본"</b></summary>
 
 정해준 강사 본인 노하우 3개 문서(쿠팡 매출 9배 비법 전자책 126p + 커머스 업무 자동화 24p + 커머스 매출향상 AI 활용 26p) + 광고 심리학 완전판(13장 376줄)을 분석해 **13건(신규 5 + 강화 8)** 통합. 124 → **129 스킬**.
 
@@ -42,8 +54,9 @@
 - **moai-marketing 신규 2** — 랜딩 6섹션 진단(`landing-page-conversion-audit`, CTR/CVR 분기·불안해소 문구·메시지 일치), 메타·구글 픽셀 검증(`pixel-audit`, CAPI·Lookalike 씨앗 품질)
 - **강화 8** — `commerce-product-naming`(공식 4요소·금지 키워드 9종), `detail-page-copy`(PAS·혜택 언어 3단계), `commerce-jtbd-persona`(심리적 필요 4종·타겟 온도), `commerce-channel-message`(6 방아쇠·8 편향·채널 매트릭스), `commerce-integrated-strategy`(자동화 4단계·3 Phase), `commerce-market-research`(포지셔닝 5축·새 카테고리), `campaign-planner`(광고 심리학 완전판), `sns-content`(채널별 심리·메타 학습 기간)
 - **인사이트 원전** — 정해준 강사 본인 노하우 + "온라인 광고의 심리학" 13장 + 시크릿팡 마진계산기 로직 참고
-- 마켓플레이스 스킬 수: 124 → **129개** (+5 신규). 동기화 지점 **151개** (marketplace 1 + plugin.json 21 + SKILL.md 129) 모두 v2.4.0
-- **후속 예정** (v2.5.0) — Track A MoAI-Commerce MCP 서버 (광고 4종 + Phase 1 34종 + Higgsfield)
+- 마켓플레이스 스킬 수: 124 → **129개** (+5 신규). 동기화 지점 **151개** 모두 v2.4.0
+
+</details>
 
 <details>
 <summary><b>📜 이전: v2.3.0 — "모두의 커머스 3일 마스터 캠프" 통합본</b></summary>

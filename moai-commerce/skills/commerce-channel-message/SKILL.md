@@ -8,7 +8,7 @@ description: |
   v2.4.0 강화: 6 심리 방아쇠(신뢰/손실회피/사회적증거/인지쉬움/정체성/앵커링) + 채널별 심리 상태 매트릭스(메타·구글·네이버·카카오·쿠팡) + 인지 편향 9종 적용 가이드 (자료 4 §2·§3·§10 광고 심리학 통합).
   ai-slop-reviewer 자동 체이닝 (텍스트 메시지 15종 산출물).
 user-invocable: true
-version: 2.4.0
+version: 2.5.0
 ---
 
 # 채널별 메시지 자동 생성 (Commerce Channel Message)

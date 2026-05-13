@@ -1,0 +1,21 @@
+{
+  "$comment": "moai-marketing MCP 등록 — v2.5.0 신규. Meta Ads 외부 hosted MCP (Layer 1 데이터 fetch) + moai-ads-audit local stdio MCP (Layer 2 audit 비즈니스 로직). 자세한 발급 절차: ./CONNECTORS.md.",
+  "mcpServers": {
+    "meta-ads": {
+      "$comment": "Meta 공식 Ads MCP (2026-04-29 출시, hosted at https://mcp.facebook.com/ads). OAuth (사용자 본인 토큰). 비활성 환경에서는 Layer 2 moai-ads-audit이 .xlsx 보고서 fallback으로 동작 (SPEC-MOAI-ADS-AUDIT-MCP-001 REQ-AUDIT-MCP-005). META_ACCESS_TOKEN 발급 절차는 ./CONNECTORS.md §Meta Ads 참조.",
+      "type": "http",
+      "url": "https://mcp.facebook.com/ads",
+      "headers": {
+        "Authorization": "Bearer ${META_ACCESS_TOKEN}"
+      }
+    },
+    "moai-ads-audit": {
+      "$comment": "moai-ads-audit-mcp 자체 구현 (cowork-plugins/mcp-servers/moai-ads-audit/, Python uvx 패키지). claude-ads v1.5.1 (MIT) 방법론 한국 시장 특화. 50-check audit + 가중치 스코어링 + Quick Wins + 한국 벤치마크 + 5 규제 컴플라이언스. Layer 2 책임. NOTICE.md §agricidaniel/claude-ads attribution 참조.",
+      "command": "/bin/bash",
+      "args": ["-l", "-c", "exec uvx --from /Users/goos/MoAI/MoAI-Cowork-Plugins/mcp-servers/moai-ads-audit moai-ads-audit-mcp"],
+      "env": {
+        "MOAI_LOG_LEVEL": "${MOAI_LOG_LEVEL:-INFO}"
+      }
+    }
+  }
+}

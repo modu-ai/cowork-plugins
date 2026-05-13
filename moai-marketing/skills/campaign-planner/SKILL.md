@@ -6,7 +6,7 @@ description: |
   상세페이지·이미지 생성 책임은 v2.3.0부터 제거되었습니다. 상세페이지 카피는 moai-commerce:detail-page-copy / 상세페이지 합성 이미지는 moai-commerce:detail-page-image / AI 이미지·영상은 moai-media:* 스킬을 사용하세요.
   v2.4.0 강화: 광고 심리학 완전판 통합 — 성과 공식(타겟×동기×가치×방아쇠×구조×크리에이티브×타이밍÷경쟁강도) + 6 방아쇠 + 9 인지편향 + PAS 카피 공식 + 후크 6종 + 영상 30초 구조 + 타겟 온도 4단계 매트릭스 (자료 4 13장 풀세트).
 user-invocable: true
-version: 2.4.0
+version: 2.5.0
 ---
 
 # 캠페인 플래너 (Campaign Planner)

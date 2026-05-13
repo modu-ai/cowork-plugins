@@ -7,7 +7,7 @@ description: >
   "UX 디자인 검토", "사용자 경험 분석", "heuristic evaluation", "접근성 검토", "사용성",
   "사용자 플로우", "wireframe", "UX 리서치"라고 요청할 때 사용하세요.
 user-invocable: true
-version: 2.4.0
+version: 2.5.0
 ---
 
 # UX 디자이너 (UX Designer)

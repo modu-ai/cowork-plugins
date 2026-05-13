@@ -11,7 +11,7 @@ description: |
   - "영업 이의처리 시나리오", "성공 지표 설정", "접근 전략 수립"
   - "sales playbook", "sales strategy", "B2B sales plan", "proposal template"
 user-invocable: true
-version: 2.4.0
+version: 2.5.0
 ---
 
 # 영업 플레이북 (Sales Playbook)

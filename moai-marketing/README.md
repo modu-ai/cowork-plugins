@@ -1,10 +1,13 @@
 # moai-marketing
 
-마케팅 플러그인 — 네이버/카카오 SEO, **한국 3채널 + 글로벌 4채널 SNS 통합**(v2.3.0), 캠페인 기획, 이메일 시퀀스, 퍼포먼스 리포트, **광고 심리학 완전판**(v2.4.0).
+마케팅 플러그인 — 네이버/카카오 SEO, **한국 3채널 + 글로벌 4채널 SNS 통합**(v2.3.0), 캠페인 기획, 이메일 시퀀스, 퍼포먼스 리포트, **광고 심리학 완전판**(v2.4.0), **메타 광고 보고서 분석 + audit MCP 인프라**(v2.5.0).
 
-[![버전](https://img.shields.io/badge/version-2.4.0-blue)](../CHANGELOG.md)
+[![버전](https://img.shields.io/badge/version-2.5.0-blue)](../CHANGELOG.md)
 [![라이선스](https://img.shields.io/badge/license-MIT-green)](../LICENSE)
-[![스킬](https://img.shields.io/badge/skills-10-success)](#스킬)
+[![스킬](https://img.shields.io/badge/skills-11-success)](#스킬)
+[![MCP](https://img.shields.io/badge/MCP-2_servers-orange)](./CONNECTORS.md)
+
+> **v2.5.0 신규 1 + 인프라** — `meta-ads-analyzer`(메타 광고관리자 `.xlsx` 보고서 1~6개 → 9 분석 모듈 + 4D 교차 + 3 사용자 그룹 톤 + 4 출력 형식 + 강도별 액션 옵션 🟢🟡🔴) + **MCP 2서버 등록 신규** (`meta-ads` Meta 공식 hosted + `moai-ads-audit` 자체 stdio MCP — `mcp-servers/moai-ads-audit/`, claude-ads v1.5.1 MIT 방법론 한국 시장 7 변화 영역 특화, 우선 3 도구 + 50/50 pytest pass). 발급 절차: [CONNECTORS.md](./CONNECTORS.md).
 
 > **v2.4.0 신규 2 + 강화 2** — `landing-page-conversion-audit`(랜딩 6섹션 진단 + CTR/CVR 분기 + 불안해소 문구 처방), `pixel-audit`(메타·구글 픽셀 + CAPI + Lookalike 씨앗 품질) + `campaign-planner`/`sns-content` 광고 심리학 완전판 통합(6 방아쇠·8 편향·PAS·후크 6종·채널별 심리 매트릭스)
 
@@ -28,6 +31,24 @@
 | [target-script](./skills/target-script/) | 타겟 오디언스 분석 + 채널별 메시징 스크립트 자동 생성 (인스타·블로그·이메일·LinkedIn) | 1 | ✅ |
 | [landing-page-conversion-audit](./skills/landing-page-conversion-audit/) | **🆕 v2.4.0** — 랜딩페이지 6섹션 구조 진단 + 진단 분기(CTR↓→광고 / CVR↓→랜딩 / 장바구니↓→결제) + 빠른 처방 3종(불안해소 문구 +10~20% / 메시지 일치 / 간편결제). 자료 4 §9 wrapper | 0 | ✅ |
 | [pixel-audit](./skills/pixel-audit/) | **🆕 v2.4.0** — 메타·구글 픽셀 설치 검증 + 3종 실수 점검(구매자 미제외/이벤트 파라미터 미설정/CAPI 미설치) + 1st Party 데이터 활용 + Lookalike 씨앗 품질(VIP 상위 20% 권장) | 0 | ✅ |
+| [meta-ads-analyzer](./skills/meta-ads-analyzer/) | **🆕 v2.5.0** — 메타 광고관리자 `.xlsx` 보고서 1~6개 업로드 → 9 분석 모듈(퍼널·KPI·차원·매트릭스·누수·라이프사이클·학습·예산·시뮬) + 4D 교차(광고×지면×연령×성별) + 3 사용자 그룹 톤(명시 입력) + 4 출력 형식(HTML/DOCX/PPTX/MD) + 🟢🟡🔴 강도별 액션 옵션. claude-ads v1.5.1 (MIT) 50-check 한국 매핑. ai-slop-reviewer 자동 체이닝 | 11 | ✅ |
+
+## MCP 서버 (v2.5.0 신규)
+
+본 플러그인은 `.mcp.json`에 2개 MCP 서버를 등록한다. 자세한 발급 절차·환경변수 목록은 [CONNECTORS.md](./CONNECTORS.md) 참조.
+
+| 이름 | 책임 | 유형 | 라이선스 | 필수 환경변수 |
+|------|------|------|----------|---------------|
+| `meta-ads` | Layer 1 — Meta Marketing API 원시 데이터 fetch | `http` (hosted at `mcp.facebook.com/ads`) | Meta 약관 | `META_ACCESS_TOKEN` (OAuth) |
+| `moai-ads-audit` | Layer 2 — 50-check audit + 가중치 스코어링 + 한국 벤치마크/컴플라이언스 | `stdio` (local uvx, `mcp-servers/moai-ads-audit/`) | MIT | `MOAI_LOG_LEVEL` (선택) |
+
+3-Layer 아키텍처:
+
+- **Layer 1** (외부 MCP, 옵션): Meta 공식 또는 fallback (Adspirer · byadsco · pipeboard)
+- **Layer 2** (자체 MCP, 필수): `moai-ads-audit` — audit 비즈니스 로직, `.xlsx` 입력 단독 모드도 항상 지원 (REQ-AUDIT-MCP-005)
+- **Layer 3** (스킬): `meta-ads-analyzer` — 사용자 톤·강도별 액션 옵션·4 출력 형식
+
+**Attribution**: `moai-ads-audit` 방법론은 [`agricidaniel/claude-ads`](https://github.com/AgriciDaniel/claude-ads) v1.5.1 (MIT, 4,815 stars) 차용 — 한국 시장 7 변화 영역 특화. 전체 attribution: `.claude/rules/moai/NOTICE.md` §"agricidaniel/claude-ads (MIT)".
 
 ## sns-content 채널 매트릭스 (v2.3.0)
 

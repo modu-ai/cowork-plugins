@@ -8,7 +8,7 @@ description: |
   v2.4.0 강화: 자동화 4단계 프로세스(나열→분류→점수→결정) + 3 Phase 로드맵(Quick Wins/Core/AI Enhancement) + HITL Golden Rule(80% 자동화 + 10배 검수) 통합 (자료 2 §4·§10·§8 운영 자동화 프레임워크).
   ai-slop-reviewer 자동 체이닝 (전략 문서 텍스트 산출물).
 user-invocable: true
-version: 2.4.0
+version: 2.5.0
 ---
 
 # 통합 전략 자동 생성 (Commerce Integrated Strategy)

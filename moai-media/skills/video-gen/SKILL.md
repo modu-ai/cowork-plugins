@@ -13,7 +13,7 @@ description: |
   - "립싱크 비디오", "입 모양 동기화"
   - "orbit 모션으로 줌인", "pan_left 카메라 움직임"
 user-invocable: true
-version: 2.4.0
+version: 2.5.0
 ---
 
 # video-gen — 통합 비디오 생성 스킬

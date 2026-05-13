@@ -13,7 +13,7 @@ description: |
   주의: 정부 지원사업 신청서는 `kr-gov-grant`(moai-business)를 사용하세요. 본 스킬은 **B2B 영업 고객 대상** 제안서만 다룹니다.
   투자자 IR 자료는 `investor-relations`(moai-business)를 사용하세요.
 user-invocable: true
-version: 2.4.0
+version: 2.5.0
 ---
 
 # Proposal Writer — B2B 영업 제안서 자동 생성

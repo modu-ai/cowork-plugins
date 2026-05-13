@@ -8,7 +8,7 @@ description: |
   v2.4.0 강화: JTBD 3분류(기능적/감성적/사회적) 자료 1 예시 + 심리적 필요 4종 촉발 패턴(보상/불안/지루함/사회적 자극) + 타겟 온도 메타데이터(콜드/웜/핫/슈퍼, 자료 4 §4 광고 심리학).
   ai-slop-reviewer 자동 체이닝 (--mode persona 텍스트 산출물).
 user-invocable: true
-version: 2.4.0
+version: 2.5.0
 ---
 
 # JTBD + 페르소나 분석 (Commerce JTBD & Persona)

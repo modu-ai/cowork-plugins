@@ -1,6 +1,6 @@
 {
   "name": "moai-pm",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "description": "한국 팀의 프로젝트 관리·주간보고·OKR·회고 자동화. Notion·Linear·Asana·Slack MCP 활용, 격식체/구어체 톤 스위치 지원",
   "author": {
     "name": "모두의AI"

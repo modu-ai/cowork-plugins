@@ -8,7 +8,7 @@ description: |
   V6 Day3 ⑬ 한글 타이포 이미지 5장 (Hero 1 + 인포 1 + 라이프 2 + CTA 배너 1, Day3 S2 11:08–11:18 강사 시연, SPEC §3.1).
   [내부 자료] references/8-step-prompt.md: 강사·개발팀 내부용. 수강생 출력에 8단계 구조 원문 노출 금지 (REQ-MEDIA-013).
 user-invocable: true
-version: 2.4.0
+version: 2.5.0
 ---
 
 # media-gpt-image2-builder — Day 3 S2 한글 타이포 광고 이미지 5장

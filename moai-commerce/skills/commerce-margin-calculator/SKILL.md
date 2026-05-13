@@ -8,7 +8,7 @@ description: |
   ai-slop-reviewer 체이닝 제외 (수치·표 데이터 스킬).
   v2.4.0 신규 (정해준 강사 쿠팡 비법 §4 + 시크릿팡 마진계산기 차용).
 user-invocable: true
-version: 2.4.0
+version: 2.5.0
 ---
 
 # 마진·엔드 ROAS 자동 계산기 (Commerce Margin Calculator)

@@ -8,7 +8,7 @@ description: |
   V6 Day3 ⑮ 메인 영상 1편 5~10초 + ⑯ 보조 영상 2컷 (Day3 S4 14:08–14:20 강사 시연, SPEC §3.1).
   [내부 자료] references/category-matrix.md: 강사·개발팀 내부용 카테고리 매트릭스. 수강생 출력에 노출 금지 (REQ-MEDIA-013). references/hook-pattern.md: 의심차단형 후크 분석 (내부).
 user-invocable: true
-version: 2.4.0
+version: 2.5.0
 ---
 
 # media-model-router — Day 3 S4 광고 영상 자동 모델 라우팅

@@ -6,30 +6,114 @@
   },
   "metadata": {
     "description": "모두의 AI's Claude Cowork 플러그인 마켓플레이스 — 21 플러그인, 129 스킬. /project init으로 워크플로우 기반 CLAUDE.md 자동 생성, 모든 텍스트 산출물은 ai-slop-reviewer로 검수. v2.4.0에서 '캠프 후속 인사이트 통합본' 출시 — 정해준 강사 본인 노하우(쿠팡 매출 9배 비법 전자책 126p + 커머스 업무 자동화 24p + 커머스 매출향상 AI 활용 26p) + 광고 심리학 완전판(13장 376줄) 4개 문서를 분석해 13건(신규 5 + 강화 8) 통합. moai-commerce 신규 3(coupang-ad-optimizer 3 캠페인 유형 자동 분류·검색/비검색 분리·엔드 ROAS·자동규칙 3종 / commerce-margin-calculator 마진·엔드 ROAS·손익분기 광고비 / commerce-automation-audit 6대 영역 진단·우선순위 점수·3 Phase 로드맵) + moai-marketing 신규 2(landing-page-conversion-audit 6섹션 진단·CTR/CVR 분기 / pixel-audit 메타·구글 픽셀·CAPI·Lookalike 씨앗 품질). 기존 강화 8(commerce-product-naming 공식 4요소·금지 키워드 9종 / detail-page-copy PAS·혜택 언어 3단계 / commerce-jtbd-persona 심리적 필요 4종·타겟 온도 / commerce-channel-message 6 방아쇠·8 편향·채널 매트릭스 / commerce-integrated-strategy 자동화 4단계·3 Phase 로드맵·HITL / commerce-market-research 포지셔닝 5축·새 카테고리 / campaign-planner 광고 심리학 완전판 / sns-content 채널별 심리·메타 학습 기간). v2.3.0에서 '모두의 커머스 3일 마스터 캠프'(Claude Cowork × MoAI-Cowork × MCP) 통합본 출시 — Day2 V6(정해준 강사) 6도구(moai-commerce: market-research·jtbd-persona·product-naming·channel-message·integrated-strategy + detail-page-copy 7단계 진단·페르소나 카피 2세트 강화) + Day3 신규 AI 모델 6스킬(moai-media: moodboard·gpt-image2-builder·model-router·channel-ad-packager·ai-disclosure·canva-magic-layer) + Day1 셋업 3스킬(moai-core:mcp-connector-setup + moai-commerce:commerce-morning-brief·commerce-order-summary) + moai-education 활성화(course-followup-sequence·course-curriculum-design 신규 2) + Track C 페어 정리(social-media→sns-content 흡수, campaign-planner '상세페이지·이미지 생성' 책임 분리, 15 description 책임 경계 명확화). 총 17 신규 + 6 강화. v2.2.0에서 html-report 스킬이 추가되었습니다(Thariq HTML-effectiveness 사상, 마크다운 → 단일 파일 HTML 렌더러, 6모드, 외부 의존성 0). v2.1.0에서 humanize-korean 스킬이 추가되었습니다(epoko77-ai/im-not-ai MIT, ⭐937 포팅, 한국어 AI 티 정밀 윤문, 10대 카테고리 × 40+ 패턴 SSOT). v2.0.0에서 NomaDamas/k-skill 한국 특화 스킬 6종이 추가되었습니다 — 인터넷등기소 등기부등본 일괄 발급(moai-legal), 국토부 실거래가(moai-business), 식약처 의약품·식품 안전(moai-commerce), 법원경매 매각공고(moai-finance), KRX 시세(moai-finance), 바른한글 맞춤법 검수(moai-content). v1.8.0부터 moai-commerce 11스킬(자사몰 cafe24·imweb·메이크샵, 와디즈·텀블벅, 카카오 메이커스·무신사·29CM, 라이브 커머스). moai-bi/pm/sales도 정식 등록되었습니다",
-    "version": "2.4.0",
+    "version": "2.5.0",
     "language": "ko"
   },
   "plugins": [
-    {"name": "moai-core", "source": "./moai-core", "description": "MoAI 코어 — /project 프로젝트 초기화, 스킬 체이닝 워크플로우 설계, 도메인 라우터, AI 슬롭 검수(ai-slop-reviewer), MCP 커넥터 셋업 가이드(mcp-connector-setup — Drive·Notion·Higgsfield·OpenAI, v2.3.0 신규), 피드백 허브"},
-    {"name": "moai-business", "source": "./moai-business", "description": "비즈니스 전략 — 사업계획서, 시장조사, 재무모델, IR, 소상공인365 상권분석, 정부지원사업 통합"},
-    {"name": "moai-marketing", "source": "./moai-marketing", "description": "마케팅 — 네이버/카카오 SEO, SNS 콘텐츠(한국 3채널 + 글로벌 4채널 통합 — v2.3.0 sns-content 흡수), 캠페인, 이메일 시퀀스. v2.4.0 광고 심리학 완전판 통합(campaign-planner: 6 방아쇠·8 편향·PAS·후크 6종·영상 30초 / sns-content: 채널별 심리 매트릭스·메타 학습 48~72h) + 랜딩페이지 6섹션 진단(landing-page-conversion-audit 신규) + 메타·구글 픽셀·CAPI·Lookalike 씨앗 품질 진단(pixel-audit 신규)"},
-    {"name": "moai-legal", "source": "./moai-legal", "description": "법률 — 계약서 검토(민법/상법), 개인정보보호법 컴플라이언스, NDA"},
-    {"name": "moai-finance", "source": "./moai-finance", "description": "재무/세무 — 3.3% 원천징수, 부가세, 홈택스, K-IFRS, 연말정산"},
-    {"name": "moai-hr", "source": "./moai-hr", "description": "인사/노무 — 근로계약서, 4대보험, 채용, 성과평가, 연차/퇴직금"},
-    {"name": "moai-content", "source": "./moai-content", "description": "크리에이티브 콘텐츠 — 카드뉴스, shadcn/ui 기반 랜딩페이지, shadcn/ui 상세페이지, 뉴스레터, 카피라이팅, 블로그, 미디어 프로덕션, 한국어 AI 티 정밀 윤문(humanize-korean v2.1.0+), 마크다운→HTML 렌더러(html-report v2.2.0+ — 6모드, 외부 의존성 0). social-media는 v2.3.0부터 moai-marketing:sns-content로 흡수(deprecate stub 유지)"},
-    {"name": "moai-operations", "source": "./moai-operations", "description": "운영 — 결재 프로세스, 정부조달, SOP, 벤더 관리"},
-    {"name": "moai-education", "source": "./moai-education", "description": "교육/연구 — 강의 운영 자동화(3일 21세션 커리큘럼 설계 course-curriculum-design + D+1~D+30 후기 자산화 시퀀스 course-followup-sequence — v2.3.0 신규 2), 논문 리서치, 교육과정 개발"},
-    {"name": "moai-lifestyle", "source": "./moai-lifestyle", "description": "라이프스타일 — 여행 플래닝, 건강/식단, 웨딩/이벤트"},
-    {"name": "moai-product", "source": "./moai-product", "description": "제품 혁신 — PM 로드맵, UX 리서치, 스프린트 플래닝, 제품 스펙"},
-    {"name": "moai-support", "source": "./moai-support", "description": "고객 지원 — 티켓 분류, 응답 초안, KB 문서, 에스컬레이션"},
-    {"name": "moai-office", "source": "./moai-office", "description": "문서 생성 — PPT 디자인, Word(DOCX), Excel(XLSX), 한글(HWPX), 다국어 PDF(한중일영)"},
-    {"name": "moai-career", "source": "./moai-career", "description": "커리어 준비 — 자기소개서, 이력서, 면접 코칭, 채용공고 분석, 포트폴리오"},
-    {"name": "moai-data", "source": "./moai-data", "description": "데이터 분석 — CSV/Excel 탐색, 공공데이터 조회, shadcn/ui 대시보드 + Recharts/Chart.js/Tremor/ECharts 차트"},
-    {"name": "moai-research", "source": "./moai-research", "description": "연구/특허 — 논문 검색, 학술 논문 작성, 특허 분석/출원, 연구비 신청"},
-    {"name": "moai-media", "source": "./moai-media", "description": "AI 미디어 스튜디오 — Nano Banana(Gemini 3)/GPT Image 2 한국어 타이포 이미지 + 8단계 프롬프트 빌더(media-gpt-image2-builder, v2.3.0 신규), 무드보드 자동 생성(media-moodboard, v2.3.0 신규), Kling/Veo/Seedance 카테고리 모델 라우터(media-model-router, v2.3.0 신규), 메타·네이버 GFA·카카오모먼트 채널 광고 패키저(media-channel-ad-packager, v2.3.0 신규), AI 표기·워터마크 자동 부착(media-ai-disclosure, v2.3.0 신규), 캔바 매직 레이어 가이드(media-canva-magic-layer, v2.3.0 신규), Speech Video 음성합성, Character 일관성 관리, fal.ai 게이트웨이"},
-    {"name": "moai-commerce", "source": "./moai-commerce", "description": "한국 이커머스 풀세트 — V6 6도구(시장조사·JTBD·페르소나·상품명·채널 메시지·통합 전략 — v2.3.0 신규 5 + detail-page-copy 7단계 진단·페르소나 카피 2세트 강화 + v2.4.0 PAS·혜택 언어 3단계·좋은/피해야 할 예시) + Day1 매장 운영(commerce-morning-brief·commerce-order-summary — v2.3.0 신규 2) + v2.4.0 쿠팡 광고 풀세트(coupang-ad-optimizer 3 캠페인 분류·검색/비검색 분리·엔드 ROAS·자동규칙 3종, 정해준 강사 6개월 노하우) + 마진·엔드 ROAS 계산(commerce-margin-calculator) + 6대 영역 자동화 진단·우선순위·로드맵(commerce-automation-audit) + 13섹션 상세페이지·이미지 합성·5개 채널 가이드(쿠팡·네이버·카페24·와디즈·카카오메이커스 등)·식약처(mfds-safety)"},
-    {"name": "moai-bi", "source": "./moai-bi", "description": "BI 대시보드 — 데이터 분석, 경영진 1pager 보고서, KPI 트리, 코호트·퍼널 분석. K-IFRS·KOSIS·DART 한국 통계 친화, moai-finance와 직접 체이닝"},
-    {"name": "moai-pm", "source": "./moai-pm", "description": "프로젝트 관리 — 한국 팀 주간보고·OKR·회고·스탠드업 자동화. Notion·Linear·Asana·Slack MCP 활용, 격식체/구어체 톤 스위치"},
-    {"name": "moai-sales", "source": "./moai-sales", "description": "B2B 영업 — 한국 B2B 워크플로우, 제안서, 견적서, 콜드메일, 후속 시퀀스. 국세청 표준 양식 호환"}
+    {
+      "name": "moai-core",
+      "source": "./moai-core",
+      "description": "MoAI 코어 — /project 프로젝트 초기화, 스킬 체이닝 워크플로우 설계, 도메인 라우터, AI 슬롭 검수(ai-slop-reviewer), MCP 커넥터 셋업 가이드(mcp-connector-setup — Drive·Notion·Higgsfield·OpenAI, v2.3.0 신규), 피드백 허브"
+    },
+    {
+      "name": "moai-business",
+      "source": "./moai-business",
+      "description": "비즈니스 전략 — 사업계획서, 시장조사, 재무모델, IR, 소상공인365 상권분석, 정부지원사업 통합"
+    },
+    {
+      "name": "moai-marketing",
+      "source": "./moai-marketing",
+      "description": "마케팅 — 네이버/카카오 SEO, SNS 콘텐츠(한국 3채널 + 글로벌 4채널 통합 — v2.3.0 sns-content 흡수), 캠페인, 이메일 시퀀스. v2.4.0 광고 심리학 완전판 통합(campaign-planner: 6 방아쇠·8 편향·PAS·후크 6종·영상 30초 / sns-content: 채널별 심리 매트릭스·메타 학습 48~72h) + 랜딩페이지 6섹션 진단(landing-page-conversion-audit 신규) + 메타·구글 픽셀·CAPI·Lookalike 씨앗 품질 진단(pixel-audit 신규). v2.5.0 메타 광고 보고서 분석기(meta-ads-analyzer 신규 — .xlsx 보고서 → 9 모듈 + 4D 교차 + 3 사용자 그룹 톤 + 4 출력 형식 + 🟢🟡🔴 강도별 액션 옵션) + MCP 인프라 2서버 등록(meta-ads hosted + moai-ads-audit local stdio, claude-ads v1.5.1 MIT 한국 시장 7 변화 영역 특화)"
+    },
+    {
+      "name": "moai-legal",
+      "source": "./moai-legal",
+      "description": "법률 — 계약서 검토(민법/상법), 개인정보보호법 컴플라이언스, NDA"
+    },
+    {
+      "name": "moai-finance",
+      "source": "./moai-finance",
+      "description": "재무/세무 — 3.3% 원천징수, 부가세, 홈택스, K-IFRS, 연말정산"
+    },
+    {
+      "name": "moai-hr",
+      "source": "./moai-hr",
+      "description": "인사/노무 — 근로계약서, 4대보험, 채용, 성과평가, 연차/퇴직금"
+    },
+    {
+      "name": "moai-content",
+      "source": "./moai-content",
+      "description": "크리에이티브 콘텐츠 — 카드뉴스, shadcn/ui 기반 랜딩페이지, shadcn/ui 상세페이지, 뉴스레터, 카피라이팅, 블로그, 미디어 프로덕션, 한국어 AI 티 정밀 윤문(humanize-korean v2.1.0+), 마크다운→HTML 렌더러(html-report v2.2.0+ — 6모드, 외부 의존성 0). social-media는 v2.3.0부터 moai-marketing:sns-content로 흡수(deprecate stub 유지)"
+    },
+    {
+      "name": "moai-operations",
+      "source": "./moai-operations",
+      "description": "운영 — 결재 프로세스, 정부조달, SOP, 벤더 관리"
+    },
+    {
+      "name": "moai-education",
+      "source": "./moai-education",
+      "description": "교육/연구 — 강의 운영 자동화(3일 21세션 커리큘럼 설계 course-curriculum-design + D+1~D+30 후기 자산화 시퀀스 course-followup-sequence — v2.3.0 신규 2), 논문 리서치, 교육과정 개발"
+    },
+    {
+      "name": "moai-lifestyle",
+      "source": "./moai-lifestyle",
+      "description": "라이프스타일 — 여행 플래닝, 건강/식단, 웨딩/이벤트"
+    },
+    {
+      "name": "moai-product",
+      "source": "./moai-product",
+      "description": "제품 혁신 — PM 로드맵, UX 리서치, 스프린트 플래닝, 제품 스펙"
+    },
+    {
+      "name": "moai-support",
+      "source": "./moai-support",
+      "description": "고객 지원 — 티켓 분류, 응답 초안, KB 문서, 에스컬레이션"
+    },
+    {
+      "name": "moai-office",
+      "source": "./moai-office",
+      "description": "문서 생성 — PPT 디자인, Word(DOCX), Excel(XLSX), 한글(HWPX), 다국어 PDF(한중일영)"
+    },
+    {
+      "name": "moai-career",
+      "source": "./moai-career",
+      "description": "커리어 준비 — 자기소개서, 이력서, 면접 코칭, 채용공고 분석, 포트폴리오"
+    },
+    {
+      "name": "moai-data",
+      "source": "./moai-data",
+      "description": "데이터 분석 — CSV/Excel 탐색, 공공데이터 조회, shadcn/ui 대시보드 + Recharts/Chart.js/Tremor/ECharts 차트"
+    },
+    {
+      "name": "moai-research",
+      "source": "./moai-research",
+      "description": "연구/특허 — 논문 검색, 학술 논문 작성, 특허 분석/출원, 연구비 신청"
+    },
+    {
+      "name": "moai-media",
+      "source": "./moai-media",
+      "description": "AI 미디어 스튜디오 — Nano Banana(Gemini 3)/GPT Image 2 한국어 타이포 이미지 + 8단계 프롬프트 빌더(media-gpt-image2-builder, v2.3.0 신규), 무드보드 자동 생성(media-moodboard, v2.3.0 신규), Kling/Veo/Seedance 카테고리 모델 라우터(media-model-router, v2.3.0 신규), 메타·네이버 GFA·카카오모먼트 채널 광고 패키저(media-channel-ad-packager, v2.3.0 신규), AI 표기·워터마크 자동 부착(media-ai-disclosure, v2.3.0 신규), 캔바 매직 레이어 가이드(media-canva-magic-layer, v2.3.0 신규), Speech Video 음성합성, Character 일관성 관리, fal.ai 게이트웨이"
+    },
+    {
+      "name": "moai-commerce",
+      "source": "./moai-commerce",
+      "description": "한국 이커머스 풀세트 — V6 6도구(시장조사·JTBD·페르소나·상품명·채널 메시지·통합 전략 — v2.3.0 신규 5 + detail-page-copy 7단계 진단·페르소나 카피 2세트 강화 + v2.4.0 PAS·혜택 언어 3단계·좋은/피해야 할 예시) + Day1 매장 운영(commerce-morning-brief·commerce-order-summary — v2.3.0 신규 2) + v2.4.0 쿠팡 광고 풀세트(coupang-ad-optimizer 3 캠페인 분류·검색/비검색 분리·엔드 ROAS·자동규칙 3종, 정해준 강사 6개월 노하우) + 마진·엔드 ROAS 계산(commerce-margin-calculator) + 6대 영역 자동화 진단·우선순위·로드맵(commerce-automation-audit) + 13섹션 상세페이지·이미지 합성·5개 채널 가이드(쿠팡·네이버·카페24·와디즈·카카오메이커스 등)·식약처(mfds-safety)"
+    },
+    {
+      "name": "moai-bi",
+      "source": "./moai-bi",
+      "description": "BI 대시보드 — 데이터 분석, 경영진 1pager 보고서, KPI 트리, 코호트·퍼널 분석. K-IFRS·KOSIS·DART 한국 통계 친화, moai-finance와 직접 체이닝"
+    },
+    {
+      "name": "moai-pm",
+      "source": "./moai-pm",
+      "description": "프로젝트 관리 — 한국 팀 주간보고·OKR·회고·스탠드업 자동화. Notion·Linear·Asana·Slack MCP 활용, 격식체/구어체 톤 스위치"
+    },
+    {
+      "name": "moai-sales",
+      "source": "./moai-sales",
+      "description": "B2B 영업 — 한국 B2B 워크플로우, 제안서, 견적서, 콜드메일, 후속 시퀀스. 국세청 표준 양식 호환"
+    }
   ]
 }
