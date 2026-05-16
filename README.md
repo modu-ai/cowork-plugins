@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
-[![Version](https://img.shields.io/badge/Version-2.6.0-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-2.6.1-blue)](CHANGELOG.md)
 [![Plugins](https://img.shields.io/badge/Plugins-21-blue)](.claude-plugin/marketplace.json)
 [![Skills](https://img.shields.io/badge/Skills-134-green)](.claude-plugin/marketplace.json)
 [![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)
@@ -35,9 +35,37 @@
 
 ---
 
-**🆕 v2.6.0 하이라이트** (2026-05-16) — **"vault grounding + 한국 CRM·LTV·법규 통합본"**
+**🆕 v2.6.1 하이라이트** (2026-05-16) — **"Wave 2 보강 + Higgsfield 안 C 정리"** (PATCH)
 
-vault 1,329 노트 + Higgsfield MCP audit + 정승우님 자료 어트리뷰션 정리 작업의 결과물. **신규 3 스킬 + 어트리뷰션 정책 변경 + Higgsfield Quick Wins**. 130 → **134 스킬**, 동기화 지점 152 → **156**.
+Wave 1(v2.6.0) 직후 즉시 보강. **신규 스킬 0 + 보강 3 + 정리 3**. 134 스킬 유지, 동기화 지점 156 동일.
+
+- **moai-commerce 보강 3** (vault-ecom §A-4 명세)
+  - `commerce-channel-message` — AARRR 단계별 한국 30+ 브랜드 메시지 풀스택 (Acquisition·Activation·Retention·Revenue·Referral × 토스·배민·쿠팡·야놀자·29CM·인프런·라운즈·듀오링고·리멤버 등) + 3요소 체크리스트 + 단계별 발송 빈도
+  - `commerce-product-naming` — 6질문 상품 파악 프레임 + 네이버 데이터랩 4단계 트렌드 워크플로우 + MD 11년차 통합 체크리스트
+  - `commerce-market-research` — 시장 세분화 4축 + 5축 평가 + USP 3 차별 축 추출 + 다운스트림 일관성 매핑 (MD 11년차 관점)
+
+- **moai-media 책임 경계 명확화** (audit §6 안 C 권장)
+  - `media-model-router` — 백엔드 매핑 표 추가 (Kling 3=Higgsfield MCP · Veo 3·Seedance 2.0=fal-gateway 위임). HIGH-1 Veo 3·Seedance MCP 호출 경로 명확화
+  - `video-gen` — '(범용·단순 영상 전용)' description 명시 + 광고 영상 + 카테고리 라우팅은 media-model-router로 안내
+  - `fal-gateway` — 'media-model-router의 Veo 3·Seedance 2.0 라우팅 백엔드' description 명시 + 트리거 키워드 'Veo 3·Seedance' 추가
+
+- **Breaking change 없음** — 모든 변경이 새 섹션 추가 또는 description 정리
+
+<details>
+<summary><b>📜 이전: v2.6.0 — "vault grounding + 한국 CRM·LTV·법규 통합본"</b></summary>
+
+vault 1,329 노트 + Higgsfield MCP audit + 정승우님 자료 어트리뷰션 정리. **신규 3 스킬 + 어트리뷰션 정책 변경 + Higgsfield Quick Wins**. 130 → 134 스킬.
+
+- **moai-commerce 신규 3** — `commerce-marketing-compliance-kr`(정통망법 게이트), `commerce-push-planner`(앱 푸시 4원칙), `commerce-ltv-cac-architect`(LTV/CAC 6대 지표)
+- **moai-media Higgsfield Quick Wins 6** — MCP 설정·툴명·요금 stale 정정
+- **어트리뷰션 정책 변경** — 정승우님 자료 출처 모두 제거 (내용 보존)
+
+</details>
+
+<details>
+<summary><b>📜 이전: v2.6.0 (deprecated) — README 본문 참조</b></summary>
+
+vault 1,329 노트 + Higgsfield MCP audit + 정승우님 자료 어트리뷰션 정리 작업의 결과물. **신규 3 스킬 + 어트리뷰션 정책 변경 + Higgsfield Quick Wins**. 130 → 134 스킬, 동기화 지점 152 → 156.
 
 - **moai-commerce 신규 3** — vault 1,329 노트 기반 한국 D2C·이커머스 풀스택
   - `commerce-marketing-compliance-kr` — 정통망법 광고·정보성 메시지 자동 게이트 (광고/정보성 판정·옵트인·야간·표기·수신거부·발신자 정보 6대 점검). 과태료 회피 ROI 명확 (1회 위반 최대 3,000만 원 + 1년 이하 징역). 한국 셀러 누구도 피할 수 없는 법규 영역.

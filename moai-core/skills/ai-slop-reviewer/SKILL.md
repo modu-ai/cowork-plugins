@@ -12,7 +12,7 @@ description: |
   - 글쓰기 결과물을 인간적인 톤으로 개선하고 싶을 때
 user-invocable: true
   - "AI 패턴 검사해줘", "기계적인 느낌 없애줘"
-version: 2.6.0
+version: 2.6.1
 ---
 
 # AI 슬롭 검수 및 인간화 스킬

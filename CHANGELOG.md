@@ -9,9 +9,55 @@
 아래 156개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.0.0부터 SKILL.md frontmatter `version:` 복구):
 - `.claude-plugin/marketplace.json` (`metadata.version`) × 1
 - `<plugin>/.claude-plugin/plugin.json` (`version`) × 21
-- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 134 (v2.6.0+)
+- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 134 (v2.6.1+)
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
+
+## [2.6.1] - 2026-05-16
+
+PATCH. **Wave 2 보강 3 + Higgsfield 안 C 정리** — 신규 스킬 0, 보강 3, 책임 경계 명확화 3. 134 스킬 유지, 동기화 지점 156 동일.
+
+### Added (보강만, 새 섹션 추가)
+
+**moai-commerce 보강 3** (vault-ecom §A-4)
+
+- `moai-commerce:commerce-channel-message` — 'AARRR 단계별 한국 30+ 브랜드 메시지 풀스택' 섹션 추가. Acquisition(토스·당근·29CM·듀오링고·인프런 등) · Activation(배민·쿠팡·야놀자·클래스101·카카오뱅크 등) · Retention(오프린트미·퍼블리·콜린스·인프런·야놀자·넷플릭스·라운즈·듀오링고·리멤버 등) · Revenue(에이블리·지그재그·무신사·올웨이즈·쿠팡이츠 등) · Referral(토스·당근·우버이츠·카카오페이·야놀자 등) 5단계 × 5~9 브랜드. 3요소 체크리스트(Timely·Personal·Actionable) + 단계별 발송 빈도 권장. vault 1,329 노트 기반 한국 브랜드 풀스택.
+- `moai-commerce:commerce-product-naming` — '6질문 상품 파악 프레임 + 데이터랩 트렌드 워크플로우' 섹션 추가. 6질문(Primary Buyer·Motive·Search Intent·USP·Channel-Fit·Seasonality) + 네이버 데이터랩 4단계(트렌드·연관키워드·인구통계·시즌) + 통합 체크리스트(4개 이상 PASS) + MD 11년차 인사이트.
+- `moai-commerce:commerce-market-research` — '시장 세분화 + USP 추출 프로세스 (MD 11년차 관점)' 섹션 추가. 4축 세분화(인구·심리·행동·맥락) + 5축 평가(시장크기·성장률·경쟁·진입비용·강점) + USP 3 차별 축(What·How·Why) + 검증 질문 + 다운스트림 일관성 매핑(USP → naming → message → detail-page → campaign).
+
+### Changed (책임 경계 명확화, audit §6 안 C 권장)
+
+**moai-media 3 SKILL.md**
+
+- `moai-media:media-model-router`:
+  - description '백엔드 통합: Kling 3 (Higgsfield MCP) + Veo 3·Seedance 2.0 (fal-gateway 위임)' 명시
+  - 카테고리 매트릭스 아래 '백엔드 매핑' 표 추가 (HIGH-1 audit 결과 Veo 3·Seedance MCP 호출 경로 명확화)
+- `moai-media:video-gen`:
+  - description '(범용·단순 영상 전용)' 명시
+  - '광고 영상 + 카테고리 자동 라우팅이 필요하면 페어 스킬 media-model-router 사용' 안내 추가
+  - (HIGH-2 audit Kling 3 영상 책임 중복 정리)
+- `moai-media:fal-gateway`:
+  - description 'media-model-router의 Veo 3·Seedance 2.0 라우팅도 본 스킬을 백엔드로 사용' 명시
+  - 트리거 키워드 'Veo 3', 'Seedance' 추가
+
+### 동기화 지점
+
+- `.claude-plugin/marketplace.json` × 1 (metadata.version)
+- `<plugin>/.claude-plugin/plugin.json` × 21
+- `<plugin>/skills/<skill>/SKILL.md` × 134 (v2.6.0 유지)
+- 총 **156 지점** 동일 버전 (v2.6.1) 유지
+
+### Migration
+
+- Breaking change 없음 — 모든 변경이 새 섹션 추가 또는 description 정리
+- moai-media 사용자: `media-model-router` Veo 3·Seedance 요청 시 fal-gateway 자동 위임. 추가 설정 없음
+
+### 후속 예정
+
+- Wave 3 (v2.7.0 예상): 신규 2 (`commerce-promotion-planner`·`commerce-repurchase-timer`) + `commerce-product-image-pipeline` 신규
+- Wave 4 (v2.8.0 예상): commerce MED/LOW 7 (review·voc·subscription·influencer·early-fan·trend-namer·season-calendar)
+
+---
 
 ## [2.6.0] - 2026-05-16
 
