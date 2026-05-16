@@ -48,7 +48,7 @@
 - **Layer 2** (자체 MCP, 필수): `moai-ads-audit` — audit 비즈니스 로직, `.xlsx` 입력 단독 모드도 항상 지원 (REQ-AUDIT-MCP-005)
 - **Layer 3** (스킬): `meta-ads-analyzer` — 사용자 톤·강도별 액션 옵션·4 출력 형식
 
-**Attribution**: `moai-ads-audit` 방법론은 [`agricidaniel/claude-ads`](https://github.com/AgriciDaniel/claude-ads) v1.5.1 (MIT, 4,815 stars) 차용 — 한국 시장 7 변화 영역 특화. 전체 attribution: `.claude/rules/moai/NOTICE.md` §"agricidaniel/claude-ads (MIT)".
+**Attribution**: `moai-ads-audit` 방법론은 [`agricidaniel/claude-ads`](https://github.com/AgriciDaniel/claude-ads) v1.5.1 (MIT, 4,815 stars) 차용 — 한국 시장 7 변화 영역 특화. 전체 attribution: `NOTICE.md` §"agricidaniel/claude-ads (MIT)".
 
 ## sns-content 채널 매트릭스 (v2.3.0)
 

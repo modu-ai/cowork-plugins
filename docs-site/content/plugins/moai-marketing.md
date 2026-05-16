@@ -67,7 +67,7 @@ tags: ["moai-marketing"]
 - 우선 도구 3종 구현 (`audit_meta_account` · `audit_pixel_capi` · `calculate_health_score`) + 50/50 pytest pass
 - 잔여 7 도구 (creative_diversity · account_structure · audience_targeting · andromeda_emq · quick_wins · korean_benchmarks · korean_compliance)는 v2.5.x 후속
 
-**Attribution**: [agricidaniel/claude-ads](https://github.com/AgriciDaniel/claude-ads) v1.5.1 (MIT, 4,815 stars) 방법론 차용 — 한국 시장 7 변화 영역(벤치마크·산업·규제·사용자 그룹·표현·출력·분석 차원) 1차 시민 변환. 전체 attribution: [.claude/rules/moai/NOTICE.md §agricidaniel/claude-ads (MIT)](https://github.com/modu-ai/cowork-plugins/blob/main/.claude/rules/moai/NOTICE.md).
+**Attribution**: [agricidaniel/claude-ads](https://github.com/AgriciDaniel/claude-ads) v1.5.1 (MIT, 4,815 stars) 방법론 차용 — 한국 시장 7 변화 영역(벤치마크·산업·규제·사용자 그룹·표현·출력·분석 차원) 1차 시민 변환. 전체 attribution: [NOTICE.md §agricidaniel/claude-ads (MIT)](https://github.com/modu-ai/cowork-plugins/blob/main/NOTICE.md).
 
 ## 대표 체인
 

@@ -61,7 +61,7 @@ flowchart LR
 ```
 
 {{< hint type="note" >}}
-**v2.4.0 업데이트**: "캠프 후속 인사이트 통합본" — 정해준 강사 본인 노하우 3개 문서 + 광고 심리학 완전판 분석 → 13건(신규 5 + 강화 8) 통합. **신규 5**: coupang-ad-optimizer / commerce-margin-calculator / commerce-automation-audit / landing-page-conversion-audit / pixel-audit. **강화 8**: product-naming·detail-page-copy·jtbd-persona·channel-message·integrated-strategy·market-research·campaign-planner·sns-content. 전체 **129개 스킬 · 21개 플러그인** 체제. Breaking change 없음.
+**v2.4.0 업데이트**: "캠프 후속 인사이트 통합본" — 정승우님 본인 노하우 3개 문서 + 광고 심리학 완전판 분석 → 13건(신규 5 + 강화 8) 통합. **신규 5**: coupang-ad-optimizer / commerce-margin-calculator / commerce-automation-audit / landing-page-conversion-audit / pixel-audit. **강화 8**: product-naming·detail-page-copy·jtbd-persona·channel-message·integrated-strategy·market-research·campaign-planner·sns-content. 전체 **129개 스킬 · 21개 플러그인** 체제. Breaking change 없음.
 {{< /hint >}}
 
 ## 전제 조건

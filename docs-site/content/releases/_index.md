@@ -52,7 +52,7 @@ flowchart LR
 
 각 버전의 상세 변경 사항은 다음 페이지에서 확인할 수 있습니다:
 
-- [v2.4.x (최신)](v2.4/) - **"캠프 후속 인사이트 통합본"** — 정해준 강사 본인 노하우 3개 문서(쿠팡 매출 9배·커머스 자동화·매출향상 AI) + 광고 심리학 완전판 분석 → 13건(신규 5 + 강화 8). coupang-ad-optimizer·commerce-margin-calculator·commerce-automation-audit·landing-page-conversion-audit·pixel-audit. 마켓플레이스 124 → 129 스킬
+- [v2.4.x (최신)](v2.4/) - **"캠프 후속 인사이트 통합본"** — 정승우님 본인 노하우 3개 문서(쿠팡 매출 9배·커머스 자동화·매출향상 AI) + 광고 심리학 완전판 분석 → 13건(신규 5 + 강화 8). coupang-ad-optimizer·commerce-margin-calculator·commerce-automation-audit·landing-page-conversion-audit·pixel-audit. 마켓플레이스 124 → 129 스킬
 - [v2.3.x](v2.3/) - **"모두의 커머스 3일 마스터 캠프" 통합본** — 17 신규 + 6 강화 스킬. Day 1 셋업(MCP 4커넥터)·Day 2 V6 6도구·Day 3 광고 풀세트(GPT Image 2·Kling/Veo/Seedance)·D+1~D+30 후기 자산화 + Track C 페어 정리. 마켓플레이스 108 → 124 스킬
 - [v2.2.x](v2.2/) - **마크다운 → 단일 파일 HTML 변환** — html-report 신규 스킬, 6개 보고서 모드, 외부 의존성 0, 12-25KB 산출물
 - [v2.1.x](v2.1/) - **한국어 AI 티 정밀 윤문 도입** (epoko77-ai/im-not-ai 포팅) — humanize-korean 신규 스킬, 10대 카테고리 × 40+ 패턴 SSOT, 의미 100% 보존 가드, A/B/C/D 등급 자동 판정

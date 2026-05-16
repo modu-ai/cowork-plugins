@@ -6,7 +6,7 @@ description: |
   "메타 광고 보고서 분석", "광고 성과 진단", "ROAS 낮은 이유", "지면별 분석", "Audience Network 진단", "연령 성별 분해", "케어밀 보고서 분석", "광고 소재 노후화 점검", "예산 적정성 진단", "캠페인 비교 분석", "광고 누수 점검", "다중 월 추세".
   9 분석 모듈 (퍼널·KPI·차원·매트릭스·누수·라이프사이클·학습·예산·시뮬레이션) + 4D 교차 (광고×지면×연령×성별) + 3 사용자 그룹 톤 + 4 출력 형식 (HTML/DOCX/PPTX/MD) + 강도별 액션 (🟢🟡🔴 보수/중도/적극).
   ai-slop-reviewer 자동 체이닝 (DOCX/PPTX/MD 텍스트 산출물).
-  v2.5.0 신규. Methodology adapted from agricidaniel/claude-ads v1.5.1 (MIT) — see .claude/rules/moai/NOTICE.md.
+  v2.5.0 신규. Methodology adapted from agricidaniel/claude-ads v1.5.1 (MIT) — see NOTICE.md.
 user-invocable: true
 version: 2.5.0
 ---
@@ -25,7 +25,7 @@ version: 2.5.0
 4. **가독성 우선 출력** — 7-Level 계층형 구조로 요약부터 시뮬레이션까지 단계적 공개
 5. **인구통계 차원 통합 분석** — 노출지면 × 연령 × 성별 4차원 교차 분석 지원
 
-> **Attribution**: Methodology adapted from agricidaniel/claude-ads v1.5.1 (MIT). 50-check audit matrix, weighted scoring, Quick Wins logic → 한국 시장 적용 (Korean market adaptation). 상세: `.claude/rules/moai/NOTICE.md §agricidaniel/claude-ads`.
+> **Attribution**: Methodology adapted from agricidaniel/claude-ads v1.5.1 (MIT). 50-check audit matrix, weighted scoring, Quick Wins logic → 한국 시장 적용 (Korean market adaptation). 상세: `NOTICE.md §agricidaniel/claude-ads`.
 
 ---
 

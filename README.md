@@ -42,19 +42,19 @@
 - **Layer 3 — moai-marketing 신규 1** — 메타 광고 보고서 분석기(`meta-ads-analyzer`, .xlsx 보고서 1~6개 → 9 모듈(퍼널·KPI·차원·매트릭스·누수·라이프사이클·학습·예산·시뮬) + 4D 교차(광고×지면×연령×성별) + 3 사용자 그룹 톤(인하우스/대행사/소규모, 명시 입력) + 4 출력 형식(HTML/DOCX/PPTX/MD, cowork 공용 디자인 토큰 적용) + 강도별 액션 옵션(🟢🟡🔴 보수/중도/적극) + claude-ads 50-check 매트릭스 한국 매핑). SKILL.md + references A~K 11개 부록 = 12파일 1,829줄.
 - **Layer 2 — `mcp-servers/moai-ads-audit/` 신규 자체 MCP 서버** — Python uvx 패키지(MIT, v0.1.0). 가중치 스코어링 공식(`S_total = Σ(C_pass × W_sev × W_cat) / Σ(C_total × W_sev × W_cat) × 100`, Severity 5.0/3.0/1.5/0.5, 카테고리 30/30/20/20) + A-F 등급 + 43 unique check matrix(Pixel/CAPI 10 + Creative 12 + Account 10 + Audience 7 + Andromeda 4) + 한국 벤치마크 8 카테고리 + 5 규제(PIPA·ITNA·전상법·표시광고법·식약처). 우선 도구 3종 구현. **50/50 pytest pass**. cowork-plugins monorepo 첫 MCP 서버 패키지.
 - **MCP 등록 인프라** — `moai-marketing/.mcp.json` 신규 (Meta 공식 hosted MCP + 자체 audit local stdio MCP 2개 등록) + `moai-marketing/CONNECTORS.md` 신규 (META_ACCESS_TOKEN 발급 + Layer 1 fallback 옵션 4종 안내)
-- **인사이트 원전** — claude-ads v1.5.1 (MIT) 방법론 차용 + 한국 시장 7 변화 영역 1차 시민 변환. 전체 attribution: `.claude/rules/moai/NOTICE.md` §"agricidaniel/claude-ads (MIT)"
+- **인사이트 원전** — claude-ads v1.5.1 (MIT) 방법론 차용 + 한국 시장 7 변화 영역 1차 시민 변환. 전체 attribution: `NOTICE.md` §"agricidaniel/claude-ads (MIT)"
 - 마켓플레이스 스킬 수: 129 → **130개** (+1 신규 + Layer 2 MCP 서버). 동기화 지점 **152개** (marketplace 1 + plugin.json 21 + SKILL.md 130) 모두 v2.5.0
 - **후속 예정** (v2.5.x) — moai-ads-audit-mcp 잔여 7 도구(creative_diversity · account_structure · audience_targeting · andromeda_emq · quick_wins · korean_benchmarks · korean_compliance) + 한국 벤치마크 8 카테고리 정식 검증 출처 + TikTok·Naver·Kakao audit 확장(v2 단계)
 
 <details>
 <summary><b>📜 이전: v2.4.0 — "캠프 후속 인사이트 통합본"</b></summary>
 
-정해준 강사 본인 노하우 3개 문서(쿠팡 매출 9배 비법 전자책 126p + 커머스 업무 자동화 24p + 커머스 매출향상 AI 활용 26p) + 광고 심리학 완전판(13장 376줄)을 분석해 **13건(신규 5 + 강화 8)** 통합. 124 → **129 스킬**.
+정승우님 본인 노하우 3개 문서(쿠팡 매출 9배 비법 전자책 126p + 커머스 업무 자동화 24p + 커머스 매출향상 AI 활용 26p) + 광고 심리학 완전판(13장 376줄)을 분석해 **13건(신규 5 + 강화 8)** 통합. 124 → **129 스킬**.
 
-- **moai-commerce 신규 3** — 쿠팡 광고 풀세트 최적화(`coupang-ad-optimizer`, 3 캠페인 분류·검색/비검색 분리·엔드 ROAS·자동규칙 3종, 정해준 강사 6개월 노하우 wrapper), 마진·엔드 ROAS 자동 계산(`commerce-margin-calculator`, 채널별 수수료 자동 반영), 6대 영역 자동화 진단(`commerce-automation-audit`, 우선순위 점수·3 Phase 로드맵·HITL Golden Rule)
+- **moai-commerce 신규 3** — 쿠팡 광고 풀세트 최적화(`coupang-ad-optimizer`, 3 캠페인 분류·검색/비검색 분리·엔드 ROAS·자동규칙 3종, 정승우님 6개월 노하우 wrapper), 마진·엔드 ROAS 자동 계산(`commerce-margin-calculator`, 채널별 수수료 자동 반영), 6대 영역 자동화 진단(`commerce-automation-audit`, 우선순위 점수·3 Phase 로드맵·HITL Golden Rule)
 - **moai-marketing 신규 2** — 랜딩 6섹션 진단(`landing-page-conversion-audit`, CTR/CVR 분기·불안해소 문구·메시지 일치), 메타·구글 픽셀 검증(`pixel-audit`, CAPI·Lookalike 씨앗 품질)
 - **강화 8** — `commerce-product-naming`(공식 4요소·금지 키워드 9종), `detail-page-copy`(PAS·혜택 언어 3단계), `commerce-jtbd-persona`(심리적 필요 4종·타겟 온도), `commerce-channel-message`(6 방아쇠·8 편향·채널 매트릭스), `commerce-integrated-strategy`(자동화 4단계·3 Phase), `commerce-market-research`(포지셔닝 5축·새 카테고리), `campaign-planner`(광고 심리학 완전판), `sns-content`(채널별 심리·메타 학습 기간)
-- **인사이트 원전** — 정해준 강사 본인 노하우 + "온라인 광고의 심리학" 13장 + 시크릿팡 마진계산기 로직 참고
+- **인사이트 원전** — 정승우님 본인 노하우 + "온라인 광고의 심리학" 13장 + 시크릿팡 마진계산기 로직 참고
 - 마켓플레이스 스킬 수: 124 → **129개** (+5 신규). 동기화 지점 **151개** 모두 v2.4.0
 
 </details>
@@ -64,7 +64,7 @@
 
 월 매출 100만~10억 스마트스토어·자사몰 셀러가 외주 없이 3일 만에 신상품 1개의 상세페이지·광고·SNS·동영상을 직접 제작·운영하는 시스템을 구축하는 21세션·18개 산출물 데이터 체인 강의의 백엔드 도구입니다.
 
-- **Day2 V6 6도구** (moai-commerce) — V6(정해준 강사) 7교시 구조 1:1 매핑 wrapper 스킬
+- **Day2 V6 6도구** (moai-commerce) — V6(정승우님) 7교시 구조 1:1 매핑 wrapper 스킬
   - `commerce-market-research`(시장조사 4 MCP) · `commerce-jtbd-persona`(JTBD 9 + 페르소나 3) · `commerce-product-naming`(상품명 3안 + 검증) · `commerce-channel-message`(NCM 15종) · `commerce-integrated-strategy`(전략 1장) · `detail-page-copy` 강화(7단계 진단 + 페르소나 카피 2세트, 비율 25/50/25)
 - **Day3 신규 AI 모델 6스킬** (moai-media)
   - `media-moodboard`(색팔레트·톤·레퍼런스 자동) · `media-gpt-image2-builder`(자연어 → 8단계 프롬프트 자동 → GPT Image 2) · `media-model-router`(카테고리 매트릭스 자동 Kling/Veo/Seedance 라우팅 + 4명×5조 시차 호출) · `media-channel-ad-packager`(메타·네이버 GFA·카카오 채널 규격 자동 변환) · `media-ai-disclosure`(광고심의 "AI 생성" 메타데이터·워터마크) · `media-canva-magic-layer`(시즌 재사용 가이드)
@@ -551,7 +551,7 @@ Airtable/Google Sheets 커넥터로 데이터를 직접 분석합니다.
 | commerce-integrated-strategy 🆕 v2.3 | 전략 1장 | 자동화 4단계·3 Phase 로드맵 |
 | commerce-morning-brief 🆕 v2.3 | 매일 브리핑 | 매장 운영 데이터 1줄 통합 |
 | commerce-order-summary 🆕 v2.3 | 주문 요약 | 주문 데이터 집계·추이 분석 |
-| coupang-ad-optimizer 🆕 v2.4 | 쿠팡 광고 최적화 | 3 캠페인 분류·검색/비검색 분리·엔드 ROAS·자동규칙 3종 (정해준 강사 노하우) |
+| coupang-ad-optimizer 🆕 v2.4 | 쿠팡 광고 최적화 | 3 캠페인 분류·검색/비검색 분리·엔드 ROAS·자동규칙 3종 (정승우님 노하우) |
 | commerce-margin-calculator 🆕 v2.4 | 마진 계산 | 채널별 수수료 자동 반영·엔드 ROAS 자동 계산 |
 | commerce-automation-audit 🆕 v2.4 | 자동화 진단 | 6대 영역 자동화 진단·우선순위 점수·3 Phase 로드맵·HITL Golden Rule |
 
@@ -686,7 +686,7 @@ K-IFRS·KOSIS·DART 친화적 한국 통계 환경에서 5분 안에 의사결�
 |---------|--------|------|
 | [harness-100](https://github.com/revfactory/harness-100) | 황민호(Minho Hwang) | Claude Cowork용 하네스 100개 오픈소스. 본 프로젝트의 하네스 설계 패턴과 구조에 핵심 참고자료로 활용 |
 | [knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins) | Anthropic | 공식 11개 지식 노동 플러그인 (Productivity·Sales·Customer Support·PM·Marketing·Legal·Finance·Data·Enterprise Search·Bio Research·Cowork Plugin Management). 플러그인 구조와 스킬 포맷 표준 참고 |
-| [NomaDamas/k-skill](https://github.com/NomaDamas/k-skill) | NomaDamas | 한국인을 위한 Claude Code 스킬 모음(MIT). v2.0.0 한국 B2B 특화 6스킬(`iros-registry-automation`, `real-estate-search`, `mfds-safety`, `court-auction-search`, `korean-stock-search`, `korean-spell-check`)의 원본. 원 저작자 `challengekim`/`tae0y`/`jjlabsio` 보존. 자세한 어트리뷰션은 [`.claude/rules/moai/NOTICE.md`](.claude/rules/moai/NOTICE.md) § NomaDamas k-skill (MIT) 참조 |
+| [NomaDamas/k-skill](https://github.com/NomaDamas/k-skill) | NomaDamas | 한국인을 위한 Claude Code 스킬 모음(MIT). v2.0.0 한국 B2B 특화 6스킬(`iros-registry-automation`, `real-estate-search`, `mfds-safety`, `court-auction-search`, `korean-stock-search`, `korean-spell-check`)의 원본. 원 저작자 `challengekim`/`tae0y`/`jjlabsio` 보존. 자세한 어트리뷰션은 [`NOTICE.md`](NOTICE.md) § NomaDamas k-skill (MIT) 참조 |
 
 ### 표준 및 규격
 | 표준 | 설명 |

@@ -21,7 +21,7 @@ version: 2.5.0
 
 대법원 인터넷등기소(IROS)에서 **법인·부동산 등기부등본**을 묶음 단위로 발급해야 할 때, 사용자가 직접 로그인·결제하는 흐름 안에서 장바구니·열람·저장을 안전하게 보조합니다. 실사·법무 검토·법인 일괄 관리에 사용합니다.
 
-> 본 스킬은 [`NomaDamas/k-skill`](https://github.com/NomaDamas/k-skill) (MIT) 경유 포팅이며, 원 저작자는 [`challengekim/iros-registry-automation`](https://github.com/challengekim/iros-registry-automation) (MIT) 참고 구현입니다. cowork 컨벤션을 입혀 정리한 가이드이며, 어트리뷰션은 `.claude/rules/moai/NOTICE.md`에 기록됩니다.
+> 본 스킬은 [`NomaDamas/k-skill`](https://github.com/NomaDamas/k-skill) (MIT) 경유 포팅이며, 원 저작자는 [`challengekim/iros-registry-automation`](https://github.com/challengekim/iros-registry-automation) (MIT) 참고 구현입니다. cowork 컨벤션을 입혀 정리한 가이드이며, 어트리뷰션은 프로젝트 루트 `NOTICE.md`에 기록됩니다.
 
 ## Hard Limits — 사용자가 반드시 직접 수행
 

@@ -221,7 +221,7 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
       <li><strong>mcp-servers/moai-ads-audit/ 신규 자체 MCP 서버</strong> — Python uvx 패키지(MIT, v0.1.0). 가중치 스코어링 공식(S_total · Severity 5/3/1.5/0.5 · 카테고리 30/30/20/20 · A-F 등급) + 43 unique check matrix(Pixel/CAPI 10·Creative 12·Account 10·Audience 7·Andromeda 4) + 한국 벤치마크 8 카테고리 + 5 규제(PIPA·ITNA·전상법·표시광고법·식약처). 우선 3 도구 구현(audit_meta_account·audit_pixel_capi·calculate_health_score) + 50/50 pytest pass.</li>
       <li><strong>MCP 등록 인프라</strong> — moai-marketing/.mcp.json 신규(meta-ads hosted + moai-ads-audit local stdio 2 서버) + CONNECTORS.md 신규(META_ACCESS_TOKEN 발급 + Layer 1 fallback 옵션 4종)</li>
       <li>마켓플레이스 129 → <strong>130 스킬</strong>. 동기화 지점 152개 (marketplace 1 + plugin.json 21 + SKILL.md 130) 모두 v2.5.0</li>
-      <li>인사이트 원전 — agricidaniel/claude-ads v1.5.1 (MIT) 방법론 차용 + 한국 시장 7 변화 영역 1차 시민 변환. attribution: .claude/rules/moai/NOTICE.md §agricidaniel/claude-ads (MIT)</li>
+      <li>인사이트 원전 — agricidaniel/claude-ads v1.5.1 (MIT) 방법론 차용 + 한국 시장 7 변화 영역 1차 시민 변환. attribution: NOTICE.md §agricidaniel/claude-ads (MIT)</li>
       <li><strong>후속 예정 (v2.5.x 또는 v2.6.0)</strong> — moai-ads-audit-mcp 잔여 7 도구(creative_diversity·account_structure·audience_targeting·andromeda_emq·quick_wins·korean_benchmarks·korean_compliance) + 한국 벤치마크 정식 검증 출처 확정 + TikTok·Naver·Kakao audit 확장(v2)</li>
     </ul>
   </div>
@@ -232,7 +232,7 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
       <span class="badge">MINOR</span>
     </div>
     <div class="ttl">"캠프 후속 인사이트 통합본" — 13건(신규 5 + 강화 8)</div>
-    <div class="desc">정해준 강사 본인 노하우 3개 문서(쿠팡 매출 9배 비법 전자책 126p + 커머스 업무 자동화 24p + 커머스 매출향상 AI 활용 26p) + 광고 심리학 완전판(13장 376줄)을 분석해 13건(신규 5 + 강화 8) 통합. 마켓플레이스 124 → 129 스킬.</div>
+    <div class="desc">정승우님 본인 노하우 3개 문서(쿠팡 매출 9배 비법 전자책 126p + 커머스 업무 자동화 24p + 커머스 매출향상 AI 활용 26p) + 광고 심리학 완전판(13장 376줄)을 분석해 13건(신규 5 + 강화 8) 통합. 마켓플레이스 124 → 129 스킬.</div>
   </div>
   <div class="cw-rel">
     <div class="ver-row">

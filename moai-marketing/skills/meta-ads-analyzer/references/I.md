@@ -98,7 +98,7 @@ SPEC-META-ADS-001 §3.9 + 작업명세서 부록 I 직접 인용.
 
 ```
 Methodology adapted from agricidaniel/claude-ads v1.5.1 (MIT).
-Korean market adaptation by MoAI-ADK. See .claude/rules/moai/NOTICE.md.
+Korean market adaptation by MoAI-ADK. See NOTICE.md (project root).
 ```
 
 HTML 대시보드: Footer에 소문자로 표기.

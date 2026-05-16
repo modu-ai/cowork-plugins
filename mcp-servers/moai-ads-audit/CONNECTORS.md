@@ -1,7 +1,7 @@
 # CONNECTORS — moai-ads-audit-mcp 연결 가이드
 
 > **Attribution**: Methodology adapted from [`agricidaniel/claude-ads`](https://github.com/AgriciDaniel/claude-ads) v1.5.1 under MIT License.
-> See `.claude/rules/moai/NOTICE.md` §"agricidaniel/claude-ads (MIT)".
+> See `NOTICE.md` (project root) §"agricidaniel/claude-ads (MIT)".
 
 ## 환경변수 발급 절차
 

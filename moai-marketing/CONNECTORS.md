@@ -109,7 +109,7 @@ uvx --from ./mcp-servers/moai-ads-audit moai-ads-audit-mcp --version
 
 `moai-ads-audit` MCP 서버의 audit 방법론은 [`agricidaniel/claude-ads`](https://github.com/AgriciDaniel/claude-ads) v1.5.1 (MIT License, 4,815 stars, 2026-05-13 시점)의 50-check matrix·가중치 스코어링 공식·Quick Wins 로직을 한국 시장 7 변화 영역에 맞춰 차용했다.
 
-전체 attribution 텍스트는 `.claude/rules/moai/NOTICE.md` §"agricidaniel/claude-ads (MIT)" 참조.
+전체 attribution 텍스트는 `NOTICE.md` §"agricidaniel/claude-ads (MIT)" 참조.
 
 ---
 

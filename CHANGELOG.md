@@ -37,7 +37,7 @@ MINOR. **메타 광고 audit 3-Layer 인프라 출시** — Layer 3 신규 분�
 ### 차용 (Attribution)
 
 - [agricidaniel/claude-ads](https://github.com/AgriciDaniel/claude-ads) v1.5.1 (MIT, 4,815 stars, 2026-05-13 시점) — Meta 광고 audit 50-check matrix·가중치 스코어링 공식·Quick Wins 로직·EMQ tiered targets·A-F 등급 임계값
-- 전체 attribution: `.claude/rules/moai/NOTICE.md` §"agricidaniel/claude-ads (MIT)"
+- 전체 attribution: `NOTICE.md` §"agricidaniel/claude-ads (MIT)"
 - Korean Market Adaptation 7 영역 한국 시장 1차 시민 변환
 
 ### 동기화 지점
@@ -65,15 +65,15 @@ MINOR. **메타 광고 audit 3-Layer 인프라 출시** — Layer 3 신규 분�
 
 ## [2.4.0] - 2026-05-12
 
-MINOR. **캠프 후속 인사이트 통합본** — 정해준 강사 본인 노하우 3개 문서(쿠팡 매출 9배 비법 전자책 126p + 커머스 업무 자동화 24p + 커머스 매출향상 AI 활용 26p) + 광고 심리학 완전판(13장 376줄)을 분석해 **13건(신규 5 + 강화 8)** 통합. 124 → **129 스킬**, 동기화 지점 146 → 151.
+MINOR. **캠프 후속 인사이트 통합본** — 정승우님 본인 노하우 3개 문서(쿠팡 매출 9배 비법 전자책 126p + 커머스 업무 자동화 24p + 커머스 매출향상 AI 활용 26p) + 광고 심리학 완전판(13장 376줄)을 분석해 **13건(신규 5 + 강화 8)** 통합. 124 → **129 스킬**, 동기화 지점 146 → 151.
 
 ### Added (신규 5 스킬)
 
 **moai-commerce 신규 3**
 
-- `moai-commerce:coupang-ad-optimizer` — 쿠팡 광고 풀세트 최적화. 3 캠페인 유형(AI스마트/매출최적화/수동키워드) 자동 분류 + 검색영역 vs 비검색영역 매출 분리 분석(CPM 167배 차이) + 엔드 ROAS(본전 ROAS) 자동 계산 + 자동규칙 3종 가이드(골든타임/350%이상 증액/100%미만 알림) + 상품별 의사결정 분기(ROAS·CTR·CVR). 정해준 강사 본인 6개월 노하우(월매출 7천→3.6억, 광고비 30%→11.2%) wrapper.
+- `moai-commerce:coupang-ad-optimizer` — 쿠팡 광고 풀세트 최적화. 3 캠페인 유형(AI스마트/매출최적화/수동키워드) 자동 분류 + 검색영역 vs 비검색영역 매출 분리 분석(CPM 167배 차이) + 엔드 ROAS(본전 ROAS) 자동 계산 + 자동규칙 3종 가이드(골든타임/350%이상 증액/100%미만 알림) + 상품별 의사결정 분기(ROAS·CTR·CVR). 정승우님 본인 6개월 노하우(월매출 7천→3.6억, 광고비 30%→11.2%) wrapper.
 - `moai-commerce:commerce-margin-calculator` — 상품별 마진·엔드 ROAS·손익분기 광고비 자동 계산. 채널별 수수료(스마트스토어 5.94% / 쿠팡 10~12% / 카페24 2~3% / 아임웹 0~2.5%) + 부가세 10% + 결제 수수료 + 쿠폰 자동 반영. 시크릿팡 마진계산기 차용 + AI 챗봇 자연어 입력 차별화.
-- `moai-commerce:commerce-automation-audit` — 6대 영역(A 상품운영 / B 가격&프로모션 / C 주문&정산 / D 재고&물류 / E 마케팅&고객 / F 데이터&경영) 진단 + 자동화 3분류(반복형/판단형/창의형) + 우선순위 점수((빈도×시간×오류비용)÷복잡도) + 3 Phase 로드맵(Quick Wins/Core/AI Enhancement) + 5대 KPI + HITL Golden Rule(80% 자동화 + 10배 검수). 정해준 강사 "커머스 업무 자동화" 24p 풀세트 wrapping.
+- `moai-commerce:commerce-automation-audit` — 6대 영역(A 상품운영 / B 가격&프로모션 / C 주문&정산 / D 재고&물류 / E 마케팅&고객 / F 데이터&경영) 진단 + 자동화 3분류(반복형/판단형/창의형) + 우선순위 점수((빈도×시간×오류비용)÷복잡도) + 3 Phase 로드맵(Quick Wins/Core/AI Enhancement) + 5대 KPI + HITL Golden Rule(80% 자동화 + 10배 검수). 정승우님 "커머스 업무 자동화" 24p 풀세트 wrapping.
 
 **moai-marketing 신규 2**
 
@@ -98,9 +98,9 @@ MINOR. **캠프 후속 인사이트 통합본** — 정해준 강사 본인 노�
 
 ### 인사이트 원전 (Attribution)
 
-- 정해준 강사 "쿠팡 매출 9배 올려준 광고관리 비법" 전자책 (126p, 본인 6개월 노하우)
-- 정해준 강사 "커머스 업무 자동화 기획" (24p, 6대 영역 + 자동화 프레임워크)
-- 정해준 강사 "커머스 매출향상을 위한 AI 활용 전략" (26p, JTBD + 페르소나 + 상세페이지 + 상품명)
+- 정승우님 "쿠팡 매출 9배 올려준 광고관리 비법" 전자책 (126p, 본인 6개월 노하우)
+- 정승우님 "커머스 업무 자동화 기획" (24p, 6대 영역 + 자동화 프레임워크)
+- 정승우님 "커머스 매출향상을 위한 AI 활용 전략" (26p, JTBD + 페르소나 + 상세페이지 + 상품명)
 - "온라인 광고의 심리학" (DOCX, 13장 376줄 완본, 성과 공식 + 심리 방아쇠 + 인지 편향)
 - 시크릿팡 마진계산기 로직 참고 (https://secretpang.kr/?ref=pdf)
 
@@ -309,7 +309,7 @@ MAJOR. 한국 B2B 시장 특화 강화 릴리스 — `NomaDamas/k-skill` (MIT) �
 - **`moai-finance:court-auction-search`** — 대법원 법원경매정보(`courtauction.go.kr`) 매각공고 조회. 매각기일·법원·기일/기간 입찰 기준 조회 + 사건번호 단건 조회. read-only, IP 차단 방지를 위해 호출당 약 2초 지연. 자산 처분·경매 투자·실사에 활용.
 - **`moai-finance:korean-stock-search`** — KRX(한국거래소) 상장 종목 검색·기본정보·일별 시세. NomaDamas k-skill-proxy 경유로 사용자 KRX_API_KEY 발급 불필요. moai-business의 DART(공시)를 보완하는 시세 데이터.
 - **`moai-content:korean-spell-check`** — 바른한글(구 부산대 맞춤법/문법 검사기) 표면을 이용한 한국어 최종 검수. 국립국어원 계열 규칙 반영. AI 패턴 검수(`ai-slop-reviewer`) 직후의 마지막 단계로 권장. 비상업·저빈도 사용 정책 명시.
-- **NOTICE.md** — `.claude/rules/moai/NOTICE.md`에 NomaDamas/k-skill MIT attribution 섹션 추가. 6개 포팅 스킬과 원 저작자 링크 보존.
+- **NOTICE.md** — `NOTICE.md`에 NomaDamas/k-skill MIT attribution 섹션 추가. 6개 포팅 스킬과 원 저작자 링크 보존.
 - **CONNECTORS.md 신규/확장** — `moai-commerce/CONNECTORS.md` 신규(MFDS), `moai-finance/CONNECTORS.md` 신규(법원경매·KRX), `moai-business/CONNECTORS.md`에 MOLIT 실거래가 섹션 추가, `moai-legal/CONNECTORS.md`에 IROS 섹션 추가.
 
 ### Changed
@@ -327,7 +327,7 @@ MAJOR. 한국 B2B 시장 특화 강화 릴리스 — `NomaDamas/k-skill` (MIT) �
 ### 출처 및 어트리뷰션
 
 - 소스 리포지토리: [`NomaDamas/k-skill`](https://github.com/NomaDamas/k-skill) (MIT)
-- 통합 어트리뷰션: `.claude/rules/moai/NOTICE.md` § NomaDamas k-skill (MIT)
+- 통합 어트리뷰션: `NOTICE.md` § NomaDamas k-skill (MIT)
 - 원 저작자 보존:
   - `challengekim/iros-registry-automation` (iros)
   - `tae0y/real-estate-mcp` (real-estate)
