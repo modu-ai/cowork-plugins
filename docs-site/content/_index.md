@@ -78,9 +78,9 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
   </a>
   <a class="cw-card" href="/plugins/moai-media/">
     <div class="head"><div class="icon">미</div><span class="count-pill">13개 스킬</span></div>
-    <div><div class="title">미디어<span class="new-tag">v2.3</span></div><div class="slug">moai-media</div></div>
-    <div class="desc">영상·이미지·음성 + Day 3 광고 풀세트 (GPT Image 2·Kling/Veo/Seedance 라우터·AI 표기·캔바 매직 레이어)</div>
-    <div class="foot"><span>GPT Image 2</span><span>Kling/Veo/Seedance</span><span>AI 표기</span></div>
+    <div><div class="title">미디어<span class="new-tag">v2.6</span></div><div class="slug">moai-media</div></div>
+    <div class="desc">영상·이미지·음성 + Day 3 광고 풀세트 (GPT Image 2·Kling/Veo/Seedance 라우터·AI 표기·캔바 매직 레이어) + v2.6 Higgsfield Quick Wins + 책임 경계 정리</div>
+    <div class="foot"><span>GPT Image 2</span><span>Kling/Veo/Seedance</span><span>AI 표기</span><span>책임 경계 정리</span></div>
   </a>
   <a class="cw-card" href="/plugins/moai-commerce/">
     <div class="head"><div class="icon">커</div><span class="count-pill">35개 스킬</span></div>
@@ -159,6 +159,24 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
     <div><div class="title">라이프스타일</div><div class="slug">moai-lifestyle</div></div>
     <div class="desc">여행 일정·가계부·건강·취미</div>
     <div class="foot"><span>여행</span><span>가계</span></div>
+  </a>
+  <a class="cw-card" href="/plugins/moai-bi/">
+    <div class="head"><div class="icon">B</div><span class="count-pill">1개 스킬</span></div>
+    <div><div class="title">BI·임원 1pager</div><div class="slug">moai-bi</div></div>
+    <div class="desc">경영진·이사회용 1페이지 요약 (What / So What / Now What) — K-IFRS·DART·KOSIS 친화</div>
+    <div class="foot"><span>1pager</span><span>K-IFRS</span><span>임원 보고</span></div>
+  </a>
+  <a class="cw-card" href="/plugins/moai-pm/">
+    <div class="head"><div class="icon">P</div><span class="count-pill">1개 스킬</span></div>
+    <div><div class="title">프로젝트 관리</div><div class="slug">moai-pm</div></div>
+    <div class="desc">한국 팀 주간보고(WBR) 자동 — 임원 격식체 + 팀 구어체 두 버전 동시. Notion·Linear·Asana·Slack MCP 활용</div>
+    <div class="foot"><span>WBR</span><span>격식체/구어체</span><span>MCP fetch</span></div>
+  </a>
+  <a class="cw-card" href="/plugins/moai-sales/">
+    <div class="head"><div class="icon">S</div><span class="count-pill">1개 스킬</span></div>
+    <div><div class="title">B2B 영업 제안</div><div class="slug">moai-sales</div></div>
+    <div class="desc">B2B 12섹션 제안서 — Three C's (Compliant·Complete·Compelling) + RFP 답변 + 컴플라이언스 체크리스트</div>
+    <div class="foot"><span>제안서</span><span>RFP</span><span>Three C's</span></div>
   </a>
   <a class="cw-card featured" href="/plugins/moai-core/">
     <div class="head"><div class="icon">코</div><span class="count-pill">8개 스킬</span></div>

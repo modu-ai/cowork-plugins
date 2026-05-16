@@ -42,7 +42,7 @@ flowchart LR
 
 ## 무엇을 하는 플러그인인가
 
-`moai-media` (v2.3.0)는 이미지·영상·음성을 모두 한 플러그인 안에서 생성할 수 있도록 묶은 AI 미디어 스튜디오입니다. **총 13개 스킬**이 통합되어 있습니다.
+`moai-media` (v2.8.0, Day 3 풀세트는 v2.3.0 도입 / Higgsfield 책임 경계는 v2.6.1 정리)는 이미지·영상·음성을 모두 한 플러그인 안에서 생성할 수 있도록 묶은 AI 미디어 스튜디오입니다. **총 13개 스킬**이 통합되어 있습니다.
 
 - **범용 미디어 생성 (7)**: nano-banana(한국어 타이포 SOTA)·image-gen·video-gen·audio-gen·speech-video·character-mgmt·fal-gateway(1000+ 모델)
 - **Day 3 광고 풀세트 (6, v2.3.0 신규)**: "모두의 커머스 3일 마스터 캠프" Day 3 산출물 ⑫~⑰ 전담 — 무드보드부터 채널별 변환, AI 표기, 시즌 재사용 가이드까지
@@ -114,6 +114,27 @@ HIGGSFIELD_SECRET=...
 | `HIGGSFIELD_API_KEY` + `HIGGSFIELD_SECRET` | Higgsfield MCP (시네마틱·립싱크·캐릭터 + Day 3 Kling 3·Veo 3·Seedance) | [higgsfield.ai](https://higgsfield.ai) |
 
 > **v2.3.0 Day 1 셋업**: `moai-core:mcp-connector-setup` 스킬에서 Drive·Notion·Higgsfield·OpenAI 4커넥터 인증·환경변수·트러블슈팅 통합 가이드를 제공합니다.
+
+## v2.6.x 변경 사항 (정정 & 책임 경계)
+
+**v2.6.0 Higgsfield Quick Wins 6건** — audit `research-2026-05-16/higgsfield-audit.md` §7 즉시 자동 수정 적용:
+
+| 스킬 | 변경 | 영향 |
+|------|------|------|
+| `character-mgmt` | MCP 설정 `"command": "uvx" + "args": ["higgsfield-mcp"]` → `"command": "higgsfield-mcp"` 직접 실행 | CONNECTORS.md `pip install` 정책과 일치. uvx 의존성 제거 |
+| `character-mgmt` | "베타 기간 무료" stale → "공식 사이트 요금제 확인 (higgsfield.ai)" | 요금 정보 무기한 stale 방지 |
+| `fal-gateway` | MCP URL `https://fal.ai` → `https://mcp.fal.ai/mcp` | 정식 MCP 엔드포인트로 통일 |
+| `fal-gateway` | Authorization `Key ${FAL_KEY}` → `Bearer ${FAL_KEY}` | 표준 OAuth Bearer 패턴 |
+| `video-gen` | MCP 툴명 `generate_video_dop` → `higgsfield.generate_video_dop` | 네임스페이스 통일 |
+| `speech-video` | MCP 툴명 `generate_speech_video` → `higgsfield.generate_speech_video` | 네임스페이스 통일 |
+
+**v2.6.1 안 C 책임 경계 명확화 3건** — audit §6 안 C 권장 적용:
+
+- **`media-model-router`** — description에 "백엔드 통합: Kling 3 (Higgsfield MCP) + Veo 3·Seedance 2.0 (fal-gateway 위임)" 명시. 카테고리 매트릭스 아래 '백엔드 매핑' 표 추가 (audit HIGH-1 결과: Veo 3·Seedance MCP 호출 경로 명확화).
+- **`video-gen`** — description에 "(범용·단순 영상 전용)" 명시. "광고 영상 + 카테고리 자동 라우팅이 필요하면 페어 스킬 `media-model-router` 사용" 안내 추가 (audit HIGH-2 결과: Kling 3 영상 책임 중복 정리).
+- **`fal-gateway`** — description에 "`media-model-router`의 Veo 3·Seedance 2.0 라우팅도 본 스킬을 백엔드로 사용" 명시. 트리거 키워드 'Veo 3', 'Seedance' 추가.
+
+요약: 광고 영상은 `media-model-router` 단일 진입점. 범용·단순 영상은 `video-gen`. 라우터의 백엔드는 Kling 3=Higgsfield 직접 / Veo 3·Seedance=fal-gateway 위임. CONNECTORS.md 환경변수는 v2.6 변경 사항 자동 반영 — 사용자 추가 작업 없음.
 
 ## Day 3 광고 풀세트 표준 워크플로우
 

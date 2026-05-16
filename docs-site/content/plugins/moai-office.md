@@ -1,14 +1,14 @@
 ---
 title: "moai-office — PPT·Word·Excel·한글"
 weight: 40
-description: "한국 기업 문서 양식에 맞춘 PPTX·DOCX·XLSX·HWPX 4개 포맷 자동 생성 플러그인입니다."
+description: "한국 기업 문서 양식에 맞춘 PPTX·DOCX·XLSX·HWPX·PDF 5개 포맷 자동 생성 플러그인입니다. CJK 다국어 PDF 깨짐 0."
 geekdocBreadcrumb: true
 tags: ["moai-office"]
 ---
 
 # moai-office
 
-> 한국 기업 문서 양식에 맞춘 4가지 포맷 생성기입니다. 발표자료, 공문, 매출표, 한글 기안서까지 한 번에 처리합니다.
+> 한국 기업 문서 양식에 맞춘 5가지 포맷 생성기입니다. 발표자료, 공문, 매출표, 한글 기안서, 한·중·일·영 다국어 PDF까지 한 번에 처리합니다.
 
 ```mermaid
 flowchart LR
@@ -22,9 +22,9 @@ flowchart LR
 
 ## 무엇을 하는 플러그인인가
 
-`moai-office` (v1.5.0)는 한국 기업·관공서에서 실제로 쓰이는 문서 양식을 그대로 자동 생성하는 플러그인입니다. PowerPoint(PPTX), Word(DOCX), Excel(XLSX), 한글(HWPX) 네 가지 포맷을 모두 지원하며, 폰트·결재란·숫자 표기·표 라벨 등 한국 문서 관례를 기본값으로 반영합니다.
+`moai-office` (v2.8.0)는 한국 기업·관공서에서 실제로 쓰이는 문서 양식을 그대로 자동 생성하는 플러그인입니다. PowerPoint(PPTX), Word(DOCX), Excel(XLSX), 한글(HWPX), 다국어 PDF 다섯 가지 포맷을 모두 지원하며, 폰트·결재란·숫자 표기·표 라벨 등 한국 문서 관례를 기본값으로 반영합니다.
 
-각 스킬은 검증된 오픈소스 라이브러리(pptxgenjs, python-docx, openpyxl, python-hwpx) 위에서 동작하며, 다른 도메인 플러그인의 산출물(예: 사업계획서 본문, 결산 데이터)을 받아 최종 파일로 저장하는 **출력 단계**를 담당합니다.
+각 스킬은 검증된 오픈소스 라이브러리(pptxgenjs, python-docx, openpyxl, python-hwpx, PyMuPDF) 위에서 동작하며, 다른 도메인 플러그인의 산출물(예: 사업계획서 본문, 결산 데이터)을 받아 최종 파일로 저장하는 **출력 단계**를 담당합니다. `pdf-writer`는 Noto Sans CJK 번들로 한·중·일 글리프 누락 없이 PDF를 생성합니다.
 
 ## 설치 시 유의
 
@@ -52,6 +52,7 @@ flowchart LR
 | `docx-generator` | 공문·보고서·계약서 | python-docx |
 | `xlsx-creator` | KPI 대시보드·간트차트·매출표 | openpyxl (차트·수식·조건부서식 포함) |
 | `hwpx-writer` | 한글(HWPX) 공문서·기안서 | python-hwpx (OWPML) |
+| `pdf-writer` | 한·중·일·영 다국어 PDF (CJK 깨짐 0) | PyMuPDF + Noto Sans CJK 번들. Markdown·JSON·HTML·텍스트 4종 입력 |
 
 ## 한국 문서 관례 반영
 
