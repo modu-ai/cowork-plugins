@@ -41,9 +41,9 @@ pip install olefile
 ### 3단계: python-hwpx로 문서 생성
 
 ```python
-from hwpx import HWPX
+from hwpx import HwpxDocument
 
-hwp = HWPX()
+hwp = HwpxDocument()
 # 단락 추가, 표 삽입, 서식 적용
 hwp.save("output.hwpx")
 ```

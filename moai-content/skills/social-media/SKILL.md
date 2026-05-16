@@ -4,7 +4,7 @@ description: |
   [DEPRECATED v2.3.0] 본 스킬은 moai-marketing:sns-content로 흡수되었습니다. 신규 호출은 /sns-content를 사용하세요.
   글로벌 4채널(스레드·X·링크드인·유튜브쇼츠)과 한국 3채널(인스타·네이버 블로그·카카오)을 모두 sns-content에서 지원합니다.
   본 스텁은 v2.5.0까지 외부 참조 호환성 보존용으로 유지됩니다.
-user-invocable: true
+user-invocable: false
 version: 2.5.0
 ---
 

@@ -252,9 +252,7 @@ tests:
 
 ---
 
-Version: 1.6.0 (Phase 1.5 Research added)
 Source: revfactory/harness 6-Phase workflow (Apache 2.0) + MoAI adaptation
-Last Updated: 2026-05-01
 
 ## Changelog
 

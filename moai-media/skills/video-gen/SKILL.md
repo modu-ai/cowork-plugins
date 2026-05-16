@@ -214,8 +214,3 @@ API 키 등록 절차: `moai-media/CONNECTORS.md` 참조
 - **지원 모델**: Higgsfield DOP (image-to-video), fal.ai Kling 3.0 (text-to-video, image-to-video)
 - **최대 길이**: Higgsfield DOP (최대 10초), Kling (최대 15초)
 - **지원 화면 비율**: 16:9 (가로), 9:16 (세로), 1:1 (정사각형)
-
----
-
-버전: 1.0.0
-최종 업데이트: 2026-04-30

@@ -8,8 +8,6 @@ version: 2.5.0
 
 # 이벤트 플래너 (Event Planner)
 
-> moai-lifestyle | 이벤트/웨딩 전문 스킬
-
 ## 전략 가이드
 
 | ID | 한국명 | 설명 |

@@ -53,7 +53,7 @@ IF KCI_API_KEY 미설정:
 
 | 검색 소스 | URL | 검색 방법 | 특징 |
 |----------|-----|----------|------|
-| KCI | kci.go.kr | REST API (WebFetch) | 인용색인, 학술지 평가 (API 키 필요) |
+| KCI | open.kci.go.kr | REST API (WebFetch) | 인용색인, 학술지 평가 (API 키 필요) |
 | RISS | riss.kr | WebSearch | 학위논문, 해외 DB 연계 |
 | DBpia | dbpia.co.kr | WebSearch | 전 분야 학술지 |
 | Google Scholar | scholar.google.com | WebSearch | 글로벌 학술 검색 |

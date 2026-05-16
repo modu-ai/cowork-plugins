@@ -54,7 +54,7 @@ IF KIPRIS_API_KEY 미설정:
 ### 3단계: KIPRIS API 검색
 
 **API 기본 정보**
-- Base URL: http://plus.kipris.or.kr/openapi/rest/
+- Base URL: https://plus.kipris.or.kr/openapi/rest/
 - 인증: ServiceKey 파라미터 (KIPRIS_API_KEY)
 - 응답 형식: XML
 
@@ -69,7 +69,7 @@ IF KIPRIS_API_KEY 미설정:
 
 **검색 API 호출 예시:**
 ```
-GET http://plus.kipris.or.kr/openapi/rest/patentSearchInfo
+GET https://plus.kipris.or.kr/openapi/rest/patentSearchInfo
   ?ServiceKey={KIPRIS_API_KEY}
   &keyword={검색어}
   &ipc={IPC코드}

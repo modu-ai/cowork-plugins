@@ -132,6 +132,4 @@ user-invocable: true                        # 선택. 기본값 true. 탭 자동
 
 ---
 
-Version: 1.0.0
 Source: revfactory/harness skill-writing-guide (Apache 2.0) + MoAI adaptation
-Last Updated: 2026-04-30

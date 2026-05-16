@@ -163,6 +163,7 @@ version: 2.5.0
 - **moai-legal/nda-triage**: NDA 비밀유지계약 검토
 - **moai-legal/legal-risk**: 법적 리스크 분석, 지적재산권 전략
 - **moai-finance/tax-helper**: 세금 신고, 홈택스 안내
+- **moai-core/ai-slop-reviewer**: 텍스트 산출물(감사 보고서·체크리스트) AI 패턴 검수 (CLAUDE.local.md §3-2 필수)
 
 ## 이 스킬을 사용하지 말아야 할 때
 

@@ -382,6 +382,4 @@ test_cases:
 
 ---
 
-Version: 1.5.x (rubric + chain-testing internalized)
 Source: revfactory/harness skill-testing-guide + qa-agent-guide + Pipeline pattern (Apache 2.0) + MoAI adaptation
-Last Updated: 2026-05-01

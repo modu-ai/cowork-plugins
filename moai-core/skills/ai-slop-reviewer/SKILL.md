@@ -10,6 +10,7 @@ description: |
   - "보고서가 너무 기계적이야", "이메일이 너무 형식적이야"
   - Cowork/다른 AI 도구로 생성한 문서의 후처리 검수 요청 시
   - 글쓰기 결과물을 인간적인 톤으로 개선하고 싶을 때
+user-invocable: true
   - "AI 패턴 검사해줘", "기계적인 느낌 없애줘"
 version: 2.5.0
 ---
@@ -290,6 +291,4 @@ CLAUDE.local.md §3-2에 따라 **모든 텍스트 산출물 워크플로우의 
 
 ---
 
-Version: 1.0.0
-Last Updated: 2026-04-30
 Classification: Post-processing Skill (Text Output Quality)

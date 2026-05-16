@@ -166,6 +166,7 @@ version: 2.5.0
 - **moai-legal/nda-triage**: NDA 비밀유지계약 전문 검토
 - **moai-legal/compliance-check**: 규제 준수 점검, ESG 보고
 - **moai-legal/legal-risk**: 법적 리스크 분석, 지적재산권 전략
+- **moai-core/ai-slop-reviewer**: 계약서 초안·수정 권고안 AI 패턴 검수 (CLAUDE.local.md §3-2 필수)
 
 ## 이 스킬을 사용하지 말아야 할 때
 

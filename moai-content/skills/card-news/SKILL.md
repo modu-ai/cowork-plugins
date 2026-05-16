@@ -12,7 +12,7 @@ version: 2.5.0
 
 ## 개요
 
-인스타그램 캐러셀 카드뉴스를 기획하고 제작합니다. AI 이미지 생성 기반 비주얼 콘텐츠, 잡지 SOP 적용 편집 디자인, AI 글쓰기 방지 기법으로 오리지널 문체를 구현합니다. 이미지 생성은 `moai-media` 플러그인의 `google-media` 스킬에 위임합니다.
+인스타그램 캐러셀 카드뉴스를 기획하고 제작합니다. AI 이미지 생성 기반 비주얼 콘텐츠, 잡지 SOP 적용 편집 디자인, AI 글쓰기 방지 기법으로 오리지널 문체를 구현합니다. 이미지 생성은 `moai-media` 플러그인의 `nano-banana` 스킬에 위임합니다.
 
 ## 트리거 키워드
 
@@ -156,14 +156,14 @@ IF GEMINI_API_KEY 미설정:
 
 ## 관련 스킬
 
-- `moai-media:google-media` — Gemini 3 기반 AI 이미지 생성
+- `moai-media:nano-banana` — Gemini 3 기반 AI 이미지 생성
 - `moai-content:blog` — SEO 블로그 포스팅 작성
 - `moai-content:copywriting` — 마케팅 카피·헤드라인 작성
 - `moai-core:ai-slop-reviewer` — AI 생성 텍스트 패턴 검수
 
 ## 이미지 생성 연동
 
-이미지 생성은 **`moai-media` 플러그인의 `google-media` 스킬**이 담당합니다. card-news는 프롬프트만 생성하고 실제 렌더링은 moai-media에 위임합니다.
+이미지 생성은 **`moai-media` 플러그인의 `nano-banana` 스킬**이 담당합니다. card-news는 프롬프트만 생성하고 실제 렌더링은 moai-media에 위임합니다.
 
 모델/해상도/비율 미지정 시 사용자에게 선택 요청:
 1. 모델: Nano Banana Pro (권장) / Nano Banana 2
