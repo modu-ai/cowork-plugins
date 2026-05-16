@@ -84,11 +84,20 @@ version: 2.8.0
 → 두 채널 리뷰 1,000+ 통합 → 4단 분석 → PPT 자동화
 ```
 
+## 후속 체인 (텍스트 산출물 검수)
+
+본 스킬의 4단 분석 인사이트·액션플랜·서비스 평가 텍스트는 `moai-core:ai-slop-reviewer`로 자동 후처리 체이닝됩니다 (CLAUDE.local.md §3-2 HARD). 사용자 응대·외부 보고서로 산출하는 모든 텍스트는 AI 슬롭 검수를 거칩니다.
+
+```text
+commerce-review-aggregator → ai-slop-reviewer → (선택) pptx-designer
+```
+
 ## 관련 스킬
 
 - `commerce-voc-triage` — VOC 우선순위 (페어)
 - `commerce-channel-message` — 액션플랜 기반 메시지 작성
 - `pptx-designer` — 분석 결과 PPT 자동화
+- `ai-slop-reviewer` — 텍스트 산출물 AI 슬롭 검수 (자동 체인, HARD)
 
 ## SPEC
 

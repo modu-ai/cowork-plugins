@@ -71,11 +71,20 @@ version: 2.8.0
 → 마이크로 5명 + 나노 10명 추천 + 뒷광고 회피 체크리스트 + 굿즈 안 1개
 ```
 
+## 후속 체인 (텍스트 산출물 검수)
+
+본 스킬의 협업 제안서·뒷광고 회피 안내·UGC 리그램 동의 요청 메시지·굿즈 기획서 텍스트는 `moai-core:ai-slop-reviewer`로 자동 후처리 체이닝됩니다 (CLAUDE.local.md §3-2 HARD). 인플루언서 제안 카피는 외부 발송 텍스트이므로 검수 필수.
+
+```text
+commerce-influencer-collab → ai-slop-reviewer → (선택) sns-content
+```
+
 ## 관련 스킬
 
 - `campaign-planner` — 전체 캠페인 기획 (페어)
 - `commerce-marketing-compliance-kr` — 정통망법 (표시광고법 별개)
 - `sns-content` — 인플루언서용 콘텐츠
+- `ai-slop-reviewer` — 협업 제안 카피 AI 슬롭 검수 (자동 체인, HARD)
 
 ## SPEC
 
