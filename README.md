@@ -2,17 +2,17 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
-[![Version](https://img.shields.io/badge/Version-2.7.0-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-2.8.0-blue)](CHANGELOG.md)
 [![Plugins](https://img.shields.io/badge/Plugins-21-blue)](.claude-plugin/marketplace.json)
-[![Skills](https://img.shields.io/badge/Skills-137-green)](.claude-plugin/marketplace.json)
+[![Skills](https://img.shields.io/badge/Skills-144-green)](.claude-plugin/marketplace.json)
 [![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)
 [![shadcn/ui](https://img.shields.io/badge/UI-shadcn/ui-black)](https://ui.shadcn.com/)
 
-**Claude Cowork 한국어 도메인 전문가 AI 마켓플레이스 — 21 plugins · 137 skills · MIT**
+**Claude Cowork 한국어 도메인 전문가 AI 마켓플레이스 — 21 plugins · 144 skills · MIT**
 
-자연어 한 줄로 **사업계획서·계약서 검토·세금 계산·PPT·이미지/영상/음성·BI 보고서·HTML 리포트·이커머스 강의 캠프·쿠팡 광고 최적화·메타 광고 보고서 분석**을 자동 생성합니다. 한국 B2B 환경(K-IFRS·국세청·근로기준법·식약처·국토부·KRX·인터넷등기소)에 특화된 21개 독립 플러그인과 137개 도메인 스킬이 업무를 대신하며, 모든 텍스트 산출물은 [`ai-slop-reviewer`](./moai-core/skills/ai-slop-reviewer/)가 AI 패턴을 검수하여 자연스럽게 다듬어 드립니다.
+자연어 한 줄로 **사업계획서·계약서 검토·세금 계산·PPT·이미지/영상/음성·BI 보고서·HTML 리포트·이커머스 강의 캠프·쿠팡 광고 최적화·메타 광고 보고서 분석**을 자동 생성합니다. 한국 B2B 환경(K-IFRS·국세청·근로기준법·식약처·국토부·KRX·인터넷등기소)에 특화된 21개 독립 플러그인과 144개 도메인 스킬이 업무를 대신하며, 모든 텍스트 산출물은 [`ai-slop-reviewer`](./moai-core/skills/ai-slop-reviewer/)가 AI 패턴을 검수하여 자연스럽게 다듬어 드립니다.
 
-> *Korean B2B specialty plugin marketplace for [Anthropic Claude Code (Cowork)](https://claude.ai/cowork) — 21 plugins · 137 skills. Korean fonts (Pretendard / Noto Serif KR / Chosunilbo Myungjo / KoPubWorld), Korean text humanizer (humanize-korean), AI-slop reviewer for every deliverable. K-IFRS, NTS, KRX, MFDS, MOLIT, IROS specialty skills. MIT licensed.*
+> *Korean B2B specialty plugin marketplace for [Anthropic Claude Code (Cowork)](https://claude.ai/cowork) — 21 plugins · 144 skills. Korean fonts (Pretendard / Noto Serif KR / Chosunilbo Myungjo / KoPubWorld), Korean text humanizer (humanize-korean), AI-slop reviewer for every deliverable. K-IFRS, NTS, KRX, MFDS, MOLIT, IROS specialty skills. MIT licensed.*
 
 **🚀 빠른 설치**: Claude Cowork → 사용자 지정 → 개인 플러그인 + → **마켓플레이스 추가** → URL `modu-ai/cowork-plugins` 입력 → 동기화 → `moai-core` 먼저 설치
 
@@ -35,9 +35,37 @@
 
 ---
 
-**🆕 v2.7.0 하이라이트** (2026-05-16) — **"Wave 3 — 프로모션·재구매·이미지 파이프라인"**
+**🆕 v2.8.0 하이라이트** (2026-05-16) — **"Wave 4 — moai-commerce 35종 완결"**
 
-moai-commerce 신규 3 스킬 추가. 한국 D2C 셀러 프로모션 기획·재구매 타이밍·상품 이미지 풀세트 자동화. 134 → **137 스킬**, 동기화 지점 156 → **159**.
+moai-commerce Wave 4 신규 7 스킬 추가 (MED 5 + LOW 2). 한국 D2C 풀스택 완결. 137 → **144 스킬**, 동기화 지점 159 → **166**.
+
+- **moai-commerce 신규 7**
+  - `commerce-review-aggregator` — 멀티채널 리뷰 통합 분석 (네이버·쿠팡·자사몰·YouTube·인스타) → 감정·키워드·인사이트·액션플랜 4단
+  - `commerce-voc-triage` — VOC 3축 분류(고객 핏·빈도·핵심 가치) + KTAS 응급실 5단계 처리 우선순위 매트릭스
+  - `commerce-subscription-strategist` — 구독 비즈니스 5가지 질문 + 4 모델(소비재·경험·관계·맞춤) + 한국 시장 적합성 + 락인·이탈 방지
+  - `commerce-influencer-collab` — 5 인플루언서 티어 + 뒷광고 회피 체크리스트(표시광고법) + UGC 리그램 + 굿즈 기획 5축
+  - `commerce-early-fan-builder` — 충성 100명 부트스트랩 5원칙(광고 0원·1:1 손편지·UGC·비공개 채널·추천) + 30일 로드맵 + 100→1만 시나리오. 블랭크·강아지 가방 케이스
+  - `commerce-trend-namer` — 네이버 데이터랩 트렌드 → 상품명·해시태그·블로그 제목 변환
+  - `commerce-season-calendar` — 한국·글로벌 30+ 시즌 이벤트(설날·추석·블프·솽스이) + 카테고리별 매출 피크 + 분기 캠페인 계획
+
+- **moai-commerce 28 → 35 스킬** — Wave 1·3·4 누적 신규 13 + 기존 22
+- **(iii) 결정 완결** — Wave 1~4 모두 완료. vault-ecom.md §A-3 HIGH 5 + MED 5 + LOW 2 = 12 명세 모두 구현.
+
+<details>
+<summary><b>📜 이전: v2.7.0 — Wave 3 프로모션·재구매·이미지 파이프라인</b></summary>
+
+moai-commerce 신규 3 스킬. 134 → 137 스킬.
+
+- `commerce-promotion-planner` — 3대 프로모션 기획법
+- `commerce-repurchase-timer` — 골든타임 3구간
+- `commerce-product-image-pipeline` — 4단계 오케스트레이터
+
+</details>
+
+<details>
+<summary><b>📜 이전: v2.7.0 (deprecated)</b></summary>
+
+moai-commerce 신규 3 스킬 추가. 한국 D2C 셀러 프로모션 기획·재구매 타이밍·상품 이미지 풀세트 자동화. 134 → 137 스킬, 동기화 지점 156 → 159.
 
 - **moai-commerce 신규 3**
   - `commerce-promotion-planner` — 3대 프로모션 기획법(이슈화·얼리버드·한정) + 명목·스토리·혜택 3종 세트 + 벤치마킹 케이스 3개 + 실무 체크리스트 6항목 + 노션 템플릿 페이지 구조. 비플레인 '듣보잡' 12배 매출 케이스 실전 매뉴얼.

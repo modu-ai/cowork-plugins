@@ -7,7 +7,7 @@ description: >
   "상세페이지 기획해줘", "상세페이지 구조 짜줘", "원 메시지 잡아줘", "오프닝 4유형 분기", "이미지 체크리스트", "유통 채널별 상세페이지 전략"처럼 말하면 자동 호출.
   단독 랜딩 1페이지(landing-page) / 13섹션 카피 JSON(detail-page-copy) / 코드 산출(product-detail)에는 본 스킬을 사용하지 마세요 — 페어 스킬로 분리됨.
 user-invocable: true
-version: 2.7.0
+version: 2.8.0
 ---
 
 # 상세페이지 기획자 (Detail Page Planner)

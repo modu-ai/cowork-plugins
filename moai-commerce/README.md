@@ -2,10 +2,12 @@
 
 > 한국 이커머스 풀세트 자동화 플러그인 — **모두의 커머스 3일 마스터 캠프** 전용 V6 6도구 + 상세페이지·이미지·사진 + 채널 가이드 5종 + 통합 마케팅 전략·카피·라이브 커머스 + **식약처 안전(MFDS)**
 
-[![버전](https://img.shields.io/badge/version-2.7.0-blue)](../CHANGELOG.md)
+[![버전](https://img.shields.io/badge/version-2.8.0-blue)](../CHANGELOG.md)
 [![라이선스](https://img.shields.io/badge/license-MIT-green)](../LICENSE)
-[![스킬](https://img.shields.io/badge/skills-28-success)](#스킬-카탈로그-28종)
+[![스킬](https://img.shields.io/badge/skills-35-success)](#스킬-카탈로그-35종)
 
+> **v2.8.0 Wave 4 신규 7** — `commerce-review-aggregator`(멀티채널 리뷰 4단 분석), `commerce-voc-triage`(KTAS 5단계 VOC), `commerce-subscription-strategist`(구독 5가지 질문 + 4 모델), `commerce-influencer-collab`(5 티어 + 뒷광고 회피), `commerce-early-fan-builder`(충성 100명 부트스트랩 30일), `commerce-trend-namer`(데이터랩 트렌드 변환), `commerce-season-calendar`(30+ 시즌 이벤트)
+>
 > **v2.7.0 Wave 3 신규 3** — `commerce-promotion-planner`(3대 프로모션 기획법 + 명목·스토리·혜택 3종 세트), `commerce-repurchase-timer`(골든타임 3구간 + 리드 스코어링 + 리텐션 cohort), `commerce-product-image-pipeline`(character-mgmt → image-gen → video-gen → channel-ad-packager 4단계 오케스트레이터)
 >
 > **v2.6.0 Wave 1 신규 3** (vault grounding) — `commerce-marketing-compliance-kr`(정통망법 광고·정보성 메시지 자동 게이트), `commerce-push-planner`(앱 푸시 4원칙 + 한국 30+ 브랜드 레퍼런스), `commerce-ltv-cac-architect`(CAC→LTV 6대 지표 + 광고 의존도 30%→11~15% 6개월 로드맵)
@@ -25,7 +27,19 @@
 
 합성 로직은 Pillow 단일 의존성으로 자체 구현되어 외부 패키지 설치가 필요하지 않습니다. V6 6도구와 Day1 셋업 스킬은 **MoAI-Commerce MCP Phase 1**(v2.4.0 출시 예정)을 호출합니다.
 
-## 스킬 카탈로그 (28종)
+## 스킬 카탈로그 (35종)
+
+### v2.8.0 Wave 4 신규 7 — 한국 D2C 풀스택 완결
+
+| 스킬 | 역할 |
+|------|------|
+| [commerce-review-aggregator](./skills/commerce-review-aggregator/SKILL.md) | 멀티채널 리뷰 통합 분석 (네이버·쿠팡·자사몰·YouTube·인스타) → 감정·키워드·인사이트·액션플랜 4단 분석. 우선순위 액션 5개 자동 추출 |
+| [commerce-voc-triage](./skills/commerce-voc-triage/SKILL.md) | VOC 3축 분류(고객 핏·빈도·핵심 가치 관련성) + KTAS 응급실 5단계 매핑 + 처리 시한·응답 템플릿. 우선순위 점수 = 3축 곱 |
+| [commerce-subscription-strategist](./skills/commerce-subscription-strategist/SKILL.md) | 구독 비즈니스 5가지 질문 자기진단 + 4 모델(소비재·경험·관계·맞춤) + 한국 시장 적합성 진단 + 락인·이탈 방지 메시지 매트릭스 |
+| [commerce-influencer-collab](./skills/commerce-influencer-collab/SKILL.md) | 5 인플루언서 티어(메가·매크로·마이크로·나노·메가나노) + 뒷광고 회피 체크리스트(표시광고법) + UGC 리그램 가이드 + 5축 굿즈 기획 |
+| [commerce-early-fan-builder](./skills/commerce-early-fan-builder/SKILL.md) | 충성 100명 부트스트랩 5원칙(광고 0원·1:1 손편지·UGC·비공개 채널·추천) + 30일 로드맵 + 100→1만 전환 시나리오. 블랭크·강아지 가방 케이스 |
+| [commerce-trend-namer](./skills/commerce-trend-namer/SKILL.md) | 네이버 데이터랩 트렌드 → 상품명 변형 3안 + 해시태그 30개 + 블로그 제목 3안 자동 변환 |
+| [commerce-season-calendar](./skills/commerce-season-calendar/SKILL.md) | 한국·글로벌 30+ 시즌 이벤트(설날·추석·블프·솽스이·발렌타인) + 카테고리별 매출 피크 매핑 + 분기 캠페인 사전 준비 계획 |
 
 ### v2.7.0 Wave 3 신규 3 — 프로모션·재구매·이미지 파이프라인
 
@@ -187,6 +201,7 @@ V6 6도구와 Day1 셋업 스킬은 **MoAI-Commerce MCP Phase 1**(34종 도구)�
 
 ## 변경 이력
 
+- **v2.8.0** (2026-05-16): "Wave 4 — 한국 D2C 풀스택 완결" — 신규 7 (`commerce-review-aggregator`·`commerce-voc-triage`·`commerce-subscription-strategist`·`commerce-influencer-collab`·`commerce-early-fan-builder`·`commerce-trend-namer`·`commerce-season-calendar`). vault-ecom.md §A-3 MED 5 + LOW 2 명세 구현. 총 28 → **35 스킬**
 - **v2.7.0** (2026-05-16): "Wave 3 — 프로모션·재구매·이미지 파이프라인" — 신규 3 (`commerce-promotion-planner` 3대 프로모션·`commerce-repurchase-timer` 골든타임 3구간·`commerce-product-image-pipeline` 4단계 오케스트레이터). 총 25 → **28 스킬**
 - **v2.6.0** (2026-05-16): "Wave 1 vault grounding" — 신규 3 (`commerce-marketing-compliance-kr` 정통망법 게이트·`commerce-push-planner` 앱 푸시 4원칙·`commerce-ltv-cac-architect` LTV 수익 구조 설계). vault 1,329 노트 기반 한국 CRM·LTV·법규 통합. 총 22 → **25 스킬**
 - **v2.4.0** (2026-05-12): "캠프 후속 인사이트 통합본" — 신규 3 (`coupang-ad-optimizer`·`commerce-margin-calculator`·`commerce-automation-audit`) + 강화 6 (`product-naming`·`detail-page-copy`·`jtbd-persona`·`channel-message`·`integrated-strategy`·`market-research`). 한국 셀러 본인 노하우 3개 문서 + 광고 심리학 완전판 통합. 총 19 → **22 스킬**

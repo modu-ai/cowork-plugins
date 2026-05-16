@@ -6,12 +6,60 @@
 
 ## 버전 통일 원칙 (HARD)
 
-아래 159개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.0.0부터 SKILL.md frontmatter `version:` 복구):
+아래 166개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.0.0부터 SKILL.md frontmatter `version:` 복구):
 - `.claude-plugin/marketplace.json` (`metadata.version`) × 1
 - `<plugin>/.claude-plugin/plugin.json` (`version`) × 21
-- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 137 (v2.7.0+)
+- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 144 (v2.8.0+)
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
+
+## [2.8.0] - 2026-05-16
+
+MINOR. **Wave 4 — moai-commerce 한국 D2C 풀스택 완결** — moai-commerce 신규 7 스킬 (MED 5 + LOW 2). 137 → **144 스킬**, 동기화 지점 159 → **166**. (iii) Wave 1~4 결정 완결.
+
+### Added (신규 7 스킬, moai-commerce)
+
+- `moai-commerce:commerce-review-aggregator` — 멀티채널 리뷰 통합 분석. 네이버 스마트스토어·쿠팡·자사몰·YouTube·인스타그램 5채널 → 감정·키워드·인사이트·액션플랜 4단 분석. 채널별 수집 가이드(API·CSV·Graph API). 미리캔버스 PPT 자동화. vault-ecom.md §A-3 MED-1.
+
+- `moai-commerce:commerce-voc-triage` — VOC 우선순위 판별. 3축 분류(고객 핏 ×1~3 / 빈도 ×1~3 / 핵심 가치 관련성 ×1~3) + 우선순위 점수(3축 곱) + KTAS 응급실 5단계 매핑(Level 1 즉시 <1시간 / Level 5 비응급 <1주). 등급별 응답 톤·내용 가이드. vault-ecom.md §A-3 MED-2.
+
+- `moai-commerce:commerce-subscription-strategist` — 구독 비즈니스 모델 설계. 5가지 질문 자기진단(소비 빈도·가격 예측·락인 가치·이탈 방지·시장 검증) + 4 구독 모델 분류(소비재 오이식스 / 경험 VIPS / 관계 쿠팡 로켓와우 / 맞춤 필리) + 한국 시장 적합성 4단계 진단 + 락인 vs 이탈 방지 메시지 매트릭스 6단계. vault-ecom.md §A-3 MED-3.
+
+- `moai-commerce:commerce-influencer-collab` — 인플루언서·UGC 협업 가이드. 5 티어(메가 100만+ / 매크로 10~100만 / 마이크로 1~10만 / 나노 1천~1만 / 메가나노 ~1천) × 협업 비용·전환율 매트릭스 + 뒷광고 회피 체크리스트 6항목(표시광고법 + 공정위 가이드, 과태료 5,000만원 회피) + UGC 리그램 가이드 + 5축 굿즈 기획(시즌 한정·얼리버드·VIP·인증샷·콜라보). vault-ecom.md §A-3 MED-4.
+
+- `moai-commerce:commerce-early-fan-builder` — 신생 브랜드 충성 100명 부트스트랩. 5원칙(광고 0원·1:1 손편지·UGC 100%·비공개 채널·추천 시스템) + 30일 로드맵(시드 50명 → 100명 → 락인 → 추천) + 100명→1만명 전환 시나리오 + 핵심 지표(재구매율 80%+·평균 10명 추천·LTV/CAC ratio 3+). 블랭크·강아지 가방 케이스. vault-ecom.md §A-3 MED-5.
+
+- `moai-commerce:commerce-trend-namer` — 네이버 데이터랩 트렌드 변환. 카테고리별 급상승 검색어·시즌 트렌드 수집 → 상품명 변형 3안 + 해시태그 세트 30개(카테고리 5·트렌드 10·브랜드 5·일반 10) + 블로그 제목 SEO 3안(C-Rank 친화). vault-ecom.md §A-3 LOW-1.
+
+- `moai-commerce:commerce-season-calendar` — 연간 시즌 캘린더. 한국·글로벌 30+ 시즌 이벤트(1분기 설날·발렌타인·졸업입학 / 2분기 가정의 달·여름 / 3분기 휴가·추석 / 4분기 빼빼로·블프·솽스이·크리스마스) + 카테고리별 매출 피크 매핑(화장품·식품·의류·반려동물·여행) + 분기 캠페인 사전 준비 계획(D-30/D-60/D-90/D-120). vault-ecom.md §A-3 LOW-2.
+
+### 동기화 지점
+
+- `.claude-plugin/marketplace.json` × 1
+- `<plugin>/.claude-plugin/plugin.json` × 21
+- `<plugin>/skills/<skill>/SKILL.md` × 144 (Wave 4 신규 7 + 누적)
+- 총 **166 지점** 동일 버전 (v2.8.0) 유지
+
+### Migration
+
+- Breaking change 없음
+- moai-commerce 사용자: Wave 4 신규 7 스킬 자동 사용. 별도 설정 없음
+- `commerce-review-aggregator` 채널별 API 키 필요 (네이버 커머스·쿠팡 윙·카페24·YouTube·Instagram Graph)
+
+### Wave 1~4 누적 결과 ((iii) 결정 완결)
+
+- 마켓플레이스 130 → **144 스킬** (+14, 누적 14주 작업)
+- moai-commerce 22 → **35 스킬** (+13)
+- moai-media 13 → **13 스킬** (정리만, Quick Wins 6 + 안 C 책임 명확화 3)
+- 어트리뷰션 정책 변경: 정승우님 자료 출처 모두 제거 (내용 보존)
+- vault grounding: 1,329 노트 기반 한국 D2C·CRM·LTV·법규 풀스택
+
+### 후속 (별도 결정)
+
+- Wave 5 후보: moai-marketing 보강 또는 moai-content 신규
+- 또는 사용자 검증 사이클 (실제 사용 → 보강·정정)
+
+---
 
 ## [2.7.0] - 2026-05-16
 
