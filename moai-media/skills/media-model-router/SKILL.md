@@ -1,7 +1,7 @@
 ---
 name: media-model-router
 description: |
-  [책임 경계] Day 3 S4 광고 영상 자동 모델 라우팅 전담 (Higgsfield Kling 3·Veo 3·Seedance 2.0). 페어 스킬 video-gen(범용 영상 생성)·image-gen(이미지 전용)과 명확히 구분 — 카테고리 매트릭스 기반 자동 라우팅 + 의심차단형 후크 패턴 + 메인/보조 영상 세트 생성이 차별화 키.
+  [책임 경계] Day 3 S4 광고 영상 자동 모델 라우팅 전담. 백엔드 통합: Kling 3 (Higgsfield MCP 직접) + Veo 3·Seedance 2.0 (fal-gateway 위임). 페어 스킬 video-gen(범용 영상 생성)·image-gen(이미지 전용)과 명확히 구분 — 카테고리 매트릭스 기반 자동 라우팅 + 의심차단형 후크 패턴 + 메인/보조 영상 세트 생성이 차별화 키.
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   "광고 영상 만들어줘", "메인 컷 영상", "광고 영상 자동 생성", "Day3 S4 영상", "의심차단형 후크 영상",
   "쇼핑몰 광고 영상", "보조 영상 2컷", "Kling·Veo·Seedance 라우팅".
@@ -63,6 +63,16 @@ version: 2.6.0
 | 뷰티 | Veo 3 (클로즈업) | Kling 3 (Hook) | Before-After | 극단 클로즈업·피부 텍스처 |
 | 건강식품 | Kling 3 (라이프) | Veo 3 (성분) | 결과 숫자 | 숫자 강조·임상 데이터 |
 | 생활용품 | Seedance (사용) | Kling 3 (Hook) | 전후 비교 | 사용 전/후 비교 전환 |
+
+**백엔드 매핑** (Wave 2 안 C 정리, 책임 경계 명확화):
+
+| 모델 | 백엔드 MCP | 호출 경로 |
+|------|-----------|----------|
+| **Kling 3** | Higgsfield MCP | `higgsfield.generate_video_dop` 또는 fal.ai Kling 3.0 |
+| **Veo 3** | fal-gateway | fal.ai 모델 카탈로그 경유 |
+| **Seedance 2.0** | fal-gateway | fal.ai 모델 카탈로그 경유 |
+
+> **이유**: Veo 3·Seedance 2.0은 Higgsfield MCP에서 직접 제공되지 않습니다 (HIGH-1 audit 결과). fal-gateway를 통해 호출하되, 본 스킬이 카테고리 매트릭스 + 큐잉 + AI 표기 오케스트레이션을 담당합니다.
 
 **Step 3 — 의심차단형 후크 패턴 적용 (PDF §6.6 + 부록 C, REQ-MEDIA-011)**
 
