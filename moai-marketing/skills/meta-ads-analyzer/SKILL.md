@@ -8,7 +8,7 @@ description: |
   ai-slop-reviewer 자동 체이닝 (DOCX/PPTX/MD 텍스트 산출물).
   v2.5.0 신규. Methodology adapted from agricidaniel/claude-ads v1.5.1 (MIT) — see NOTICE.md.
 user-invocable: true
-version: 2.5.0
+version: 2.6.0
 ---
 
 # 메타 광고 보고서 분석기 (Meta Ads Analyzer)

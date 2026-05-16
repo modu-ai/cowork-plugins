@@ -2,11 +2,13 @@
 
 > 한국 이커머스 풀세트 자동화 플러그인 — **모두의 커머스 3일 마스터 캠프** 전용 V6 6도구 + 상세페이지·이미지·사진 + 채널 가이드 5종 + 통합 마케팅 전략·카피·라이브 커머스 + **식약처 안전(MFDS)**
 
-[![버전](https://img.shields.io/badge/version-2.4.0-blue)](../CHANGELOG.md)
+[![버전](https://img.shields.io/badge/version-2.6.0-blue)](../CHANGELOG.md)
 [![라이선스](https://img.shields.io/badge/license-MIT-green)](../LICENSE)
-[![스킬](https://img.shields.io/badge/skills-22-success)](#스킬-카탈로그-22종)
+[![스킬](https://img.shields.io/badge/skills-25-success)](#스킬-카탈로그-25종)
 
-> **v2.4.0 신규 3 + 강화 강화** — `coupang-ad-optimizer`(쿠팡 광고 풀세트 최적화, 한국 셀러 6개월 실전 노하우), `commerce-margin-calculator`(마진·엔드 ROAS 자동 계산), `commerce-automation-audit`(6대 영역 자동화 진단·로드맵) + `commerce-product-naming`/`detail-page-copy`/`commerce-jtbd-persona`/`commerce-channel-message`/`commerce-integrated-strategy`/`commerce-market-research` 6개 강화
+> **v2.6.0 Wave 1 신규 3** (vault grounding) — `commerce-marketing-compliance-kr`(정통망법 광고·정보성 메시지 자동 게이트), `commerce-push-planner`(앱 푸시 4원칙 + 한국 30+ 브랜드 레퍼런스), `commerce-ltv-cac-architect`(CAC→LTV 6대 지표 + 광고 의존도 30%→11~15% 6개월 로드맵)
+>
+> **v2.4.0 신규 3 + 강화 6** — `coupang-ad-optimizer`(쿠팡 광고 풀세트 최적화, 한국 셀러 6개월 실전 노하우), `commerce-margin-calculator`(마진·엔드 ROAS 자동 계산), `commerce-automation-audit`(6대 영역 자동화 진단·로드맵) + `commerce-product-naming`/`detail-page-copy`/`commerce-jtbd-persona`/`commerce-channel-message`/`commerce-integrated-strategy`/`commerce-market-research` 6개 강화
 
 ## 개요
 
@@ -21,7 +23,15 @@
 
 합성 로직은 Pillow 단일 의존성으로 자체 구현되어 외부 패키지 설치가 필요하지 않습니다. V6 6도구와 Day1 셋업 스킬은 **MoAI-Commerce MCP Phase 1**(v2.4.0 출시 예정)을 호출합니다.
 
-## 스킬 카탈로그 (22종)
+## 스킬 카탈로그 (25종)
+
+### v2.6.0 Wave 1 신규 3 — vault grounding 한국 CRM·LTV·법규
+
+| 스킬 | 역할 |
+|------|------|
+| [commerce-marketing-compliance-kr](./skills/commerce-marketing-compliance-kr/SKILL.md) | 정통망법 광고/정보성 메시지 자동 게이트. 6대 점검(광고성 판정·옵트인·야간 발송·(광고) 표기·무료 수신거부·발신자 정보). 모든 채널(SMS/LMS/MMS·이메일·앱푸시·카톡 친구톡/알림톡·텔레마케팅) 발송 전 의무 통과. **과태료 회피 ROI: 1회 위반 최대 3,000만 원 + 1년 이하 징역** |
+| [commerce-push-planner](./skills/commerce-push-planner/SKILL.md) | 앱 푸시 전용 4원칙(왜/언제/누구에게/어떻게) + Timely·Personal·Actionable 3요소 + 카피 변형 3안(오늘만 vs 매일 / 누구나 vs 너에게만 / 숫자·게이미피케이션·브랜딩) + 한국 30+ 브랜드 레퍼런스(토스·배민·오늘의집·쿠팡·에이블리·지그재그·29CM·인프런·야놀자·퍼블리·넷플릭스·듀오링고 등). 클릭률 예측 가이드 |
+| [commerce-ltv-cac-architect](./skills/commerce-ltv-cac-architect/SKILL.md) | CAC→재구매율→구매주기→ARPU→공헌이익→LTV 6대 지표 연결 모델 + LTV/CAC ratio·Payback·광고 의존도 진단 + 광고비 30%→11~15% 6단계 로드맵(Month 1~6) + 한국 D2C 카테고리별 벤치마크(화장품·식품·패션·가전·펫·구독 SaaS) |
 
 ### v2.4.0 신규 3 — 캠프 후속 인사이트 통합
 
@@ -167,6 +177,7 @@ V6 6도구와 Day1 셋업 스킬은 **MoAI-Commerce MCP Phase 1**(34종 도구)�
 
 ## 변경 이력
 
+- **v2.6.0** (2026-05-16): "Wave 1 vault grounding" — 신규 3 (`commerce-marketing-compliance-kr` 정통망법 게이트·`commerce-push-planner` 앱 푸시 4원칙·`commerce-ltv-cac-architect` LTV 수익 구조 설계). vault 1,329 노트 기반 한국 CRM·LTV·법규 통합. 총 22 → **25 스킬**
 - **v2.4.0** (2026-05-12): "캠프 후속 인사이트 통합본" — 신규 3 (`coupang-ad-optimizer`·`commerce-margin-calculator`·`commerce-automation-audit`) + 강화 6 (`product-naming`·`detail-page-copy`·`jtbd-persona`·`channel-message`·`integrated-strategy`·`market-research`). 한국 셀러 본인 노하우 3개 문서 + 광고 심리학 완전판 통합. 총 19 → **22 스킬**
 - **v2.3.0** (2026-05-12): "모두의 커머스 3일 마스터 캠프" 통합본 — V6 6도구 5신규 + `detail-page-copy` 강화 + Day1 셋업 2신규. 총 11 → **19 스킬**. `commerce-market-research` · `commerce-jtbd-persona` · `commerce-product-naming` · `commerce-channel-message` · `commerce-integrated-strategy` · `commerce-morning-brief` · `commerce-order-summary` 추가
 - **v2.0.0** (2026-05-04): `mfds-safety` 추가 (식약처 의약품·식품 안전 통합). 11 스킬

@@ -6,12 +6,70 @@
 
 ## 버전 통일 원칙 (HARD)
 
-아래 152개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.0.0부터 SKILL.md frontmatter `version:` 복구):
+아래 156개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.0.0부터 SKILL.md frontmatter `version:` 복구):
 - `.claude-plugin/marketplace.json` (`metadata.version`) × 1
 - `<plugin>/.claude-plugin/plugin.json` (`version`) × 21
-- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 130 (v2.5.0+)
+- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 134 (v2.6.0+)
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
+
+## [2.6.0] - 2026-05-16
+
+MINOR. **Wave 1 vault grounding 한국 CRM·LTV·법규 통합본** — vault 1,329 노트 + Higgsfield MCP audit + 어트리뷰션 정책 변경. **신규 3 스킬 + Higgsfield Quick Wins 6 + 어트리뷰션 정리**. 130 → **134 스킬**, 동기화 지점 152 → **156**.
+
+### Added (신규 3 스킬, moai-commerce)
+
+- `moai-commerce:commerce-marketing-compliance-kr` — 한국 정통망법 광고·정보성 메시지 자동 게이트. 6대 점검(광고성 판정·옵트인·야간 발송 21시~익일 8시 차단·(광고) 표기 위치·무료 수신거부 명시·발신자 정보) + BLOCK/PASS 판정 + 위반 조항(제50조 1·3·4항, 제76조) + 구체 fix 가이드 + 채널별 베스트/워스트 패턴 카탈로그. 과태료 위험: 1회 위반 최대 3,000만 원 + 책임자 1년 이하 징역. vault-ecom.md §A-3 HIGH-2 명세 구현.
+
+- `moai-commerce:commerce-push-planner` — 앱 푸시 전용 기획 스킬. 4원칙(왜/언제/누구에게/어떻게) + Timely·Personal·Actionable 3요소 자가 점검 + 카피 변형 3안(오늘만 vs 매일 / 누구나 vs 너에게만 / 숫자 vs 게이미피케이션 vs 브랜딩) + 한국 30+ 브랜드 레퍼런스(토스·배민·오늘의집·쿠팡·에이블리·지그재그·29CM·인프런·야놀자·퍼블리·넷플릭스·듀오링고 등) + 클릭률 예측 가이드. 페어 분리: commerce-channel-message는 카톡/SMS/이메일, 본 스킬은 앱 푸시 전용. vault-ecom.md §A-3 HIGH-3 명세 구현.
+
+- `moai-commerce:commerce-ltv-cac-architect` — 고객 단위 수익 구조 설계. CAC→재구매율→구매주기→ARPU→공헌이익→LTV 6대 지표 연결 모델 + LTV/CAC ratio(<1 손실, 1~3 손익분기, 3~5 건강, ≥5 우수) + Payback Period + 광고 의존도 진단(30%+ 위험 → 11~15% 정상) + 손익분기 ROAS 자동 + 채널·세그먼트별 재구매율 분해 + 광고 의존도 탈출 6단계 로드맵(Month 1~6) + 한국 D2C 카테고리별 벤치마크(화장품·식품·패션·가전·펫·구독 SaaS). 페어 분리: commerce-margin-calculator는 단품 마진, 본 스킬은 고객 1명 평생 수익. vault-ecom.md §A-3 HIGH-1 명세 구현.
+
+### Changed (Higgsfield Quick Wins 6, moai-media)
+
+audit `research-2026-05-16/higgsfield-audit.md` §7 즉시 자동 수정 후보 적용:
+
+- `character-mgmt`:
+  - MCP 설정 `"command": "uvx"` + `"args": ["higgsfield-mcp"]` → `"command": "higgsfield-mcp"` (CONNECTORS.md pip install 정책과 일치)
+  - "베타 기간 무료" stale → "공식 사이트 요금제 확인 (higgsfield.ai)"
+- `fal-gateway`:
+  - MCP URL `https://fal.ai` → `https://mcp.fal.ai/mcp`
+  - Authorization `Key ${FAL_KEY}` → `Bearer ${FAL_KEY}`
+- `video-gen`: MCP 툴명 `generate_video_dop` → `higgsfield.generate_video_dop` (네임스페이스 통일)
+- `speech-video`: MCP 툴명 `generate_speech_video` → `higgsfield.generate_speech_video`
+
+### Changed (어트리뷰션 정책 변경, refactor)
+
+GOOS 결정으로 정승우님 자료 공식 어트리뷰션을 모두 제거. 출처 클로즈만 제거하고 내용·구조·버전 표기는 그대로 보존하여 사용자 경험 무변동.
+
+- `NOTICE.md`: "정승우님 자료 (Course Material — Permitted Use)" 섹션 전체 + 다른 섹션 내 잔여 언급 3건 제거. moai-cowork 자체 제작 교재 섹션은 유지
+- moai-commerce 9 SKILL.md 자료 N §M 인용 + 정승우님 노하우 표현 출처만 제거 (channel-message·automation-audit·product-naming·detail-page-copy·market-research·integrated-strategy·jtbd-persona·coupang-ad-optimizer·commerce-margin-calculator)
+- moai-marketing 5 파일 자료 4 §M 인용 + 정승우님 자료 4 풀명 출처만 제거 (sns-content·pixel-audit·campaign-planner·landing-page-conversion-audit·meta-ads-analyzer/references/D.md)
+- 2 README(moai-commerce·moai-marketing) 카탈로그 설명 일반화 (정승우님 → 한국 셀러 실전 노하우)
+
+처리 패턴 (GOOS 컨펌): 출처 클로즈만 제거 / 버전 클로즈·헤더 텍스트 유지 / frontmatter description 출처 부분만 제거 일반화. Wave 1.5 commit 552d3a4(어트리뷰션 추가)의 forward fix.
+
+### 동기화 지점
+
+- `.claude-plugin/marketplace.json` × 1 (metadata.version)
+- `<plugin>/.claude-plugin/plugin.json` × 21
+- `<plugin>/skills/<skill>/SKILL.md` × 134 (신규 3 + 누적)
+- 총 **156 지점** 동일 버전 (v2.6.0) 유지
+
+### Migration
+
+- Breaking change 없음
+- 정승우님 자료를 직접 참조하던 외부 사용자: 본 버전부터 어트리뷰션 없음. 자체 NOTICE 작성 시 cowork-plugins MIT 라이선스 + 본 리포 출처만 표기 가능
+- Higgsfield MCP 사용자: `character-mgmt` MCP 설정 + `fal-gateway` URL·Auth 자동 업데이트. `pip install higgsfield-mcp` 확인 필요
+- moai-commerce 사용자: Wave 1 신규 3 스킬 자동 사용 가능. 별도 설정 없음
+
+### 후속 예정
+
+- Wave 2: commerce 보강 3(channel-message·product-naming·market-research) + Higgsfield 안 C 정리(model-router·video-gen·fal-gateway)
+- Wave 3: 신규 2(promotion-planner·repurchase-timer) + product-image-pipeline
+- Wave 4: commerce MED/LOW 7(review·voc·subscription·influencer·early-fan·trend-namer·season-calendar)
+
+---
 
 ## [2.5.0] - 2026-05-13
 
