@@ -248,9 +248,9 @@ version: 2.5.0
 {
   "fal-ai": {
     "type": "http",
-    "url": "https://fal.ai",
+    "url": "https://mcp.fal.ai/mcp",
     "headers": {
-      "Authorization": "Key ${FAL_KEY}"
+      "Authorization": "Bearer ${FAL_KEY}"
     }
   }
 }

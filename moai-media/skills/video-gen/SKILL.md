@@ -51,7 +51,7 @@ AI 모델을 라우팅하여 최적의 비디오를 생성하는 통합 스킬�
 
 ```
 소스 이미지 있고 시네마틱 모션 원함?
-  → 예: Higgsfield DOP (MCP: generate_video_dop)
+  → 예: Higgsfield DOP (MCP: higgsfield.generate_video_dop)
   → 아니오 + 텍스트 프롬프트 있음: Kling Text-to-Video (fal.ai)
   → 아니오 + 립싱크 필요: Kling Image-to-Video (fal.ai)
 ```
@@ -210,7 +210,7 @@ API 키 등록 절차: `moai-media/CONNECTORS.md` 참조
 
 ## 기술 참고사항
 
-- **MCP 툴**: `generate_video_dop` (Higgsfield), `fal-ai/kling-video/v3/*` (fal.ai)
+- **MCP 툴**: `higgsfield.generate_video_dop` (Higgsfield), `fal-ai/kling-video/v3/*` (fal.ai)
 - **지원 모델**: Higgsfield DOP (image-to-video), fal.ai Kling 3.0 (text-to-video, image-to-video)
 - **최대 길이**: Higgsfield DOP (최대 10초), Kling (최대 15초)
 - **지원 화면 비율**: 16:9 (가로), 9:16 (세로), 1:1 (정사각형)

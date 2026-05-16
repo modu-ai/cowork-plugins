@@ -253,7 +253,7 @@ API 키 등록 절차: `moai-media/CONNECTORS.md` 참조
 
 ## 기술 참고사항
 
-- **MCP 툴**: `generate_speech_video` (Higgsfield)
+- **MCP 툴**: `higgsfield.generate_speech_video` (Higgsfield)
 - **지원 모델**: Higgsfield Speech-to-Video
 - **최대 길이**: 30초 권장 (기술적 한계: 60초)
 - **지원 화면 비율**: 16:9 (가로), 9:16 (세로), 1:1 (정사각형)

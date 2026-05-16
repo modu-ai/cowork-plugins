@@ -193,8 +193,8 @@ Higgsfield 외부에서 캐릭터를 사용하려면:
 
 ### 요금 및 제한
 
-- **베타 기간**: 무료 (정책 변경 가능)
-- **캐릭터 저장 수**: 제한 없음 (베타 기간)
+- **요금제**: 공식 사이트 확인 ([higgsfield.ai](https://higgsfield.ai))
+- **캐릭터 저장 수**: 계정 플랜에 따름
 - **삭제 주의**: 삭제된 캐릭터는 복구 불가
 
 ### 캐릭터 ID 관리 팁
@@ -228,8 +228,7 @@ Higgsfield 외부에서 캐릭터를 사용하려면:
 ```json
 {
   "higgsfield": {
-    "command": "uvx",
-    "args": ["higgsfield-mcp"],
+    "command": "higgsfield-mcp",
     "env": {
       "HIGGSFIELD_API_KEY": "${HIGGSFIELD_API_KEY}",
       "HIGGSFIELD_SECRET": "${HIGGSFIELD_SECRET}"
