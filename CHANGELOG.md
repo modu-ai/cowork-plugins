@@ -6,12 +6,43 @@
 
 ## 버전 통일 원칙 (HARD)
 
-아래 156개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.0.0부터 SKILL.md frontmatter `version:` 복구):
+아래 159개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.0.0부터 SKILL.md frontmatter `version:` 복구):
 - `.claude-plugin/marketplace.json` (`metadata.version`) × 1
 - `<plugin>/.claude-plugin/plugin.json` (`version`) × 21
-- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 134 (v2.6.1+)
+- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 137 (v2.7.0+)
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
+
+## [2.7.0] - 2026-05-16
+
+MINOR. **Wave 3 — 프로모션·재구매·이미지 파이프라인** — moai-commerce 신규 3 스킬. 134 → **137 스킬**, 동기화 지점 156 → **159**.
+
+### Added (신규 3 스킬, moai-commerce)
+
+- `moai-commerce:commerce-promotion-planner` — 3대 프로모션 기획법(이슈화·얼리버드·한정) 전담. 브랜드 단계(신생/스몰/중대형) × 목표(인지도/충성고객/즉각매출) 매트릭스 + 명목·스토리·혜택 3종 세트(HARD) + 벤치마킹 케이스 3개(명목·스토리·혜택 각 1개) + 실무 체크리스트 6항목 + 노션 템플릿 페이지 구조(1~8 섹션) 자동 생성. 비플레인 '듣보잡' 스몰 D2C 12배 매출 케이스 실전 매뉴얼. vault-ecom.md §A-3 HIGH-4 명세 구현. 페어 분리: integrated-strategy=전체 매출 전략, 본 스킬=단일 프로모션 기획서.
+
+- `moai-commerce:commerce-repurchase-timer` — 재구매 타이밍 엔진. 골든타임 3구간 모델(리마인드 0.8T / 데드라인 1.1T / 휴면 1.5T) + 구간별 메시지 톤·채널 매핑(앱 푸시·카톡 친구톡·이메일) + 인센티브 강도(0~5% / 10~15% / 25~40%+사은품) + 리드 스코어링 8개 행동(구매 후 7일 재방문 +10 / 후기 작성 +25 / 친구 초대 +30 / 미접속 60일 -20 / 수신거부 -100) + 리텐션 차트 cohort 분석 가이드(M+1·M+3·M+12 해석 기준) + 한국 10 카테고리 표준 주기 매트릭스(화장품·면도기·콘택트렌즈·반려동물·영양제·잉크·향수 등). vault-ecom.md §A-3 HIGH-5 명세 구현.
+
+- `moai-commerce:commerce-product-image-pipeline` — 상품 이미지·영상 풀스택 파이프라인 오케스트레이터. character-mgmt → image-gen(Soul) → video-gen(DOP) → media-channel-ad-packager 4단계 체인 자동 호출. 3 시나리오(신규 D2C 캐릭터 없음 / 브랜드 마스코트 보유 / 모델 캐릭터 = 가상 인플루언서) + 이미지 5축(Hero·Lifestyle·Detail·Use-case·Result) + 영상 모션 프리셋 자동 선택(스킨케어=slow_zoom / 패션=pan_left / 식품=orbit) + 채널 변환(메타·네이버 GFA·카카오) + media-ai-disclosure 자동 체인 + 비용 추정(₩2,300~4,000/상품 1건). audit §6 안 C 권장 #7 구현. 페어 분리: detail-page-image=13섹션 합성 PNG 1장 / media-model-router=광고 영상 라우팅 / 본 스킬=풀스택 체인 오케스트레이션.
+
+### 동기화 지점
+
+- `.claude-plugin/marketplace.json` × 1
+- `<plugin>/.claude-plugin/plugin.json` × 21
+- `<plugin>/skills/<skill>/SKILL.md` × 137 (신규 3 + 누적)
+- 총 **159 지점** 동일 버전 (v2.7.0) 유지
+
+### Migration
+
+- Breaking change 없음
+- moai-commerce 사용자: Wave 3 신규 3 스킬 자동 사용 가능. 별도 설정 없음
+- `commerce-product-image-pipeline` 사용 시 Higgsfield API + fal.ai API 모두 필요
+
+### 후속 예정
+
+- Wave 4 (v2.8.0 예상): commerce MED/LOW 7 (review·voc·subscription·influencer·early-fan·trend-namer·season-calendar) — 신규 7
+
+---
 
 ## [2.6.1] - 2026-05-16
 

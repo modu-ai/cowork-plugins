@@ -2,17 +2,17 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
-[![Version](https://img.shields.io/badge/Version-2.6.1-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-2.7.0-blue)](CHANGELOG.md)
 [![Plugins](https://img.shields.io/badge/Plugins-21-blue)](.claude-plugin/marketplace.json)
-[![Skills](https://img.shields.io/badge/Skills-134-green)](.claude-plugin/marketplace.json)
+[![Skills](https://img.shields.io/badge/Skills-137-green)](.claude-plugin/marketplace.json)
 [![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)
 [![shadcn/ui](https://img.shields.io/badge/UI-shadcn/ui-black)](https://ui.shadcn.com/)
 
-**Claude Cowork 한국어 도메인 전문가 AI 마켓플레이스 — 21 plugins · 134 skills · MIT**
+**Claude Cowork 한국어 도메인 전문가 AI 마켓플레이스 — 21 plugins · 137 skills · MIT**
 
-자연어 한 줄로 **사업계획서·계약서 검토·세금 계산·PPT·이미지/영상/음성·BI 보고서·HTML 리포트·이커머스 강의 캠프·쿠팡 광고 최적화·메타 광고 보고서 분석**을 자동 생성합니다. 한국 B2B 환경(K-IFRS·국세청·근로기준법·식약처·국토부·KRX·인터넷등기소)에 특화된 21개 독립 플러그인과 134개 도메인 스킬이 업무를 대신하며, 모든 텍스트 산출물은 [`ai-slop-reviewer`](./moai-core/skills/ai-slop-reviewer/)가 AI 패턴을 검수하여 자연스럽게 다듬어 드립니다.
+자연어 한 줄로 **사업계획서·계약서 검토·세금 계산·PPT·이미지/영상/음성·BI 보고서·HTML 리포트·이커머스 강의 캠프·쿠팡 광고 최적화·메타 광고 보고서 분석**을 자동 생성합니다. 한국 B2B 환경(K-IFRS·국세청·근로기준법·식약처·국토부·KRX·인터넷등기소)에 특화된 21개 독립 플러그인과 137개 도메인 스킬이 업무를 대신하며, 모든 텍스트 산출물은 [`ai-slop-reviewer`](./moai-core/skills/ai-slop-reviewer/)가 AI 패턴을 검수하여 자연스럽게 다듬어 드립니다.
 
-> *Korean B2B specialty plugin marketplace for [Anthropic Claude Code (Cowork)](https://claude.ai/cowork) — 21 plugins · 134 skills. Korean fonts (Pretendard / Noto Serif KR / Chosunilbo Myungjo / KoPubWorld), Korean text humanizer (humanize-korean), AI-slop reviewer for every deliverable. K-IFRS, NTS, KRX, MFDS, MOLIT, IROS specialty skills. MIT licensed.*
+> *Korean B2B specialty plugin marketplace for [Anthropic Claude Code (Cowork)](https://claude.ai/cowork) — 21 plugins · 137 skills. Korean fonts (Pretendard / Noto Serif KR / Chosunilbo Myungjo / KoPubWorld), Korean text humanizer (humanize-korean), AI-slop reviewer for every deliverable. K-IFRS, NTS, KRX, MFDS, MOLIT, IROS specialty skills. MIT licensed.*
 
 **🚀 빠른 설치**: Claude Cowork → 사용자 지정 → 개인 플러그인 + → **마켓플레이스 추가** → URL `modu-ai/cowork-plugins` 입력 → 동기화 → `moai-core` 먼저 설치
 
@@ -35,9 +35,23 @@
 
 ---
 
-**🆕 v2.6.1 하이라이트** (2026-05-16) — **"Wave 2 보강 + Higgsfield 안 C 정리"** (PATCH)
+**🆕 v2.7.0 하이라이트** (2026-05-16) — **"Wave 3 — 프로모션·재구매·이미지 파이프라인"**
 
-Wave 1(v2.6.0) 직후 즉시 보강. **신규 스킬 0 + 보강 3 + 정리 3**. 134 스킬 유지, 동기화 지점 156 동일.
+moai-commerce 신규 3 스킬 추가. 한국 D2C 셀러 프로모션 기획·재구매 타이밍·상품 이미지 풀세트 자동화. 134 → **137 스킬**, 동기화 지점 156 → **159**.
+
+- **moai-commerce 신규 3**
+  - `commerce-promotion-planner` — 3대 프로모션 기획법(이슈화·얼리버드·한정) + 명목·스토리·혜택 3종 세트 + 벤치마킹 케이스 3개 + 실무 체크리스트 6항목 + 노션 템플릿 페이지 구조. 비플레인 '듣보잡' 12배 매출 케이스 실전 매뉴얼.
+  - `commerce-repurchase-timer` — 재구매 타이밍 엔진. 골든타임 3구간(리마인드 0.8T / 데드라인 1.1T / 휴면 1.5T) + 구간별 메시지 톤·채널 + 리드 스코어링 8개 행동 + 리텐션 차트 cohort 가이드. 화장품·면도기·콘택트렌즈·반려동물·영양제 등 10 카테고리 표준.
+  - `commerce-product-image-pipeline` — 상품 이미지·영상 풀스택 파이프라인 오케스트레이터. character-mgmt → image-gen → video-gen → channel-ad-packager 4단계 체인 자동 호출. 자연어 한 줄로 풀세트 산출.
+
+- **후속 예정** Wave 4 — commerce MED/LOW 7 (review·voc·subscription·influencer·early-fan·trend-namer·season-calendar)
+
+<details>
+<summary><b>📜 이전: v2.6.1 — Wave 2 보강 + Higgsfield 안 C 정리</b></summary>
+
+신규 스킬 0 + 보강 3 + 정리 3 (PATCH). 134 스킬 유지.
+
+Wave 1(v2.6.0) 직후 즉시 보강. 신규 스킬 0 + 보강 3 + 정리 3. 134 스킬 유지.
 
 - **moai-commerce 보강 3** (vault-ecom §A-4 명세)
   - `commerce-channel-message` — AARRR 단계별 한국 30+ 브랜드 메시지 풀스택 (Acquisition·Activation·Retention·Revenue·Referral × 토스·배민·쿠팡·야놀자·29CM·인프런·라운즈·듀오링고·리멤버 등) + 3요소 체크리스트 + 단계별 발송 빈도
