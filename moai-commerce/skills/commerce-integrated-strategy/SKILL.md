@@ -5,7 +5,7 @@ description: |
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   "오늘 배운 것 종합 전략으로 정리해줘", "통합 전략 뽑아줘", "실행 우선순위 정해줘", "매출 올리는 전략 1장", "지금 당장 해야 할 것 Top3", "ROAS 개선 전략", "채널별 매출 비교 분석", "오늘 모닝브리핑 요약"
   V6 ⑥ 통합 전략 도구 = MCP dashboard_morning_brief · sales_compare_channels · ad_roas_summary 3종 wrapper. (SPEC-COMMERCE-V6-003 §5.3 인용)
-  v2.4.0 강화: 자동화 4단계 프로세스(나열→분류→점수→결정) + 3 Phase 로드맵(Quick Wins/Core/AI Enhancement) + HITL Golden Rule(80% 자동화 + 10배 검수) 통합 (자료 2 §4·§10·§8 운영 자동화 프레임워크).
+  v2.4.0 강화: 자동화 4단계 프로세스(나열→분류→점수→결정) + 3 Phase 로드맵(Quick Wins/Core/AI Enhancement) + HITL Golden Rule(80% 자동화 + 10배 검수) 통합 (운영 자동화 프레임워크).
   ai-slop-reviewer 자동 체이닝 (전략 문서 텍스트 산출물).
 user-invocable: true
 version: 2.5.0
@@ -180,7 +180,7 @@ PDF §5.5 ⑪ 합격 기준:
 
 ---
 
-## 자동화 4단계 프로세스 통합 (자료 2, v2.4.0 신규)
+## 자동화 4단계 프로세스 통합 (v2.4.0 신규)
 
 매출 전략 1장에 운영 자동화 측면을 추가로 통합. 매출 향상 전술 + 자동화 도입을 함께 검토할 때 사용.
 
@@ -196,7 +196,7 @@ PDF §5.5 ⑪ 합격 기준:
   - Low: AI Copilot 보조
 ```
 
-### 3 Phase 로드맵 (자료 2 §10)
+### 3 Phase 로드맵
 
 | Phase | 기간 | 목표 | 핵심 자동화 |
 |-------|------|------|------------|
@@ -204,7 +204,7 @@ PDF §5.5 ⑪ 합격 기준:
 | **Phase 2** Core Automation | 3~6개월 | 전체 업무량 50% 감축 | 상품 대량 등록 API + 가격/마진 자동 계산 + 정산/리포트 |
 | **Phase 3** AI Enhancement | 6~12개월 | 의사결정 속도 및 정확도 향상 | 수요 예측 + 고객 세그먼트 + 동적 가격 + A/B 테스트 |
 
-### HITL Golden Rule (자료 2 §8)
+### HITL Golden Rule
 
 > **자동화율 80% + 검수 속도 10배 = 목표**
 > 완전 자동화(100%)는 위험. 핵심은 사람의 검수 속도를 10배 빠르게 만드는 것.

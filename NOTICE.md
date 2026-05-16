@@ -146,54 +146,11 @@ The following audit methodology and scoring system is referenced from `agricidan
 
 ### Attribution
 
-`agricidaniel/claude-ads` v1.5.1 is a comprehensive paid advertising audit skill for Claude Code by Daniel Agrici (agricidaniel.com / AI Marketing Hub). MoAI-ADK references its Meta audit checklist, weighted scoring algorithm, and Quick Wins logic when building Korean-market-specific Meta Ads audit MCP. Reference does not include direct code copying; only methodology and check matrix structure are adapted to Korean ecommerce context (정승우님 노하우 + 자료 1·2·3·4 + 케어밀 사례 통합).
+`agricidaniel/claude-ads` v1.5.1 is a comprehensive paid advertising audit skill for Claude Code by Daniel Agrici (agricidaniel.com / AI Marketing Hub). MoAI-ADK references its Meta audit checklist, weighted scoring algorithm, and Quick Wins logic when building Korean-market-specific Meta Ads audit MCP. Reference does not include direct code copying; only methodology and check matrix structure are adapted to Korean ecommerce context (케어밀 사례 통합).
 
 ### Full MIT License Text
 
 For the complete MIT License text, visit: https://opensource.org/licenses/MIT
-
----
-
-## 정승우님 자료 (Course Material — Permitted Use)
-
-The following moai-cowork skills incorporate content adapted from **정승우님 자료**, used with the instructor's explicit written consent.
-
-**Attribution**: 정승우님 자료
-**License**: Permitted use under instructor's consent (not MIT/Apache 2.0 redistribution of source materials)
-
-### Referenced Source Materials
-
-| Reference | Title | Notes |
-|---|---|---|
-| 자료 1 | (정승우님 강의 시리즈 — 세부 명칭 후속 결정) | 상품명 전략 §4, JTBD 3분류 §1, 상세페이지 카피 체크리스트 §3 등 다룸 |
-| 자료 2 | **커머스 업무 자동화 기획** (24p) | 6대 영역 진단, 자동화 3분류, 4단계 프로세스, 3 Phase 로드맵 |
-| 자료 3 | (정승우님 강의 시리즈 — 세부 명칭 후속 결정) | 상세페이지 카피 체크리스트 §3 등 다룸 |
-| 자료 4 | **온라인 광고의 심리학** (13장 풀세트) | 성과 공식, 6 방아쇠, 9 인지편향, PAS 카피, 후크 6종, 30초 구조, 타겟 온도 4단계 |
-
-### Skills Using This Material
-
-**자료 4 (온라인 광고의 심리학) 직접 참조**:
-- `moai-marketing/skills/campaign-planner/SKILL.md` — §1·§2·§3·§8·§13
-- `moai-marketing/skills/landing-page-conversion-audit/SKILL.md` — §9 랜딩페이지 풀세트
-- `moai-marketing/skills/pixel-audit/SKILL.md` — §5 픽셀·1st Party 데이터
-- `moai-marketing/skills/sns-content/SKILL.md` — §10 채널별 심리 매트릭스
-
-**자료 2 (커머스 업무 자동화 기획) 직접 참조**:
-- `moai-commerce/skills/commerce-automation-audit/SKILL.md` — §2·§3
-- `moai-commerce/skills/commerce-integrated-strategy/SKILL.md` — §4·§8·§10
-- `moai-commerce/skills/commerce-market-research/SKILL.md` — §2 (자료 4 §12와 병행)
-
-**자료 1·3 (세부 명칭 후속 결정) 참조**:
-- `moai-commerce/skills/commerce-product-naming/SKILL.md` — 자료 1 §4 상품명 전략
-- `moai-commerce/skills/commerce-jtbd-persona/SKILL.md` — 자료 1 §1 JTBD 3분류
-- `moai-commerce/skills/detail-page-copy/SKILL.md` — 자료 1 §3 카피 체크리스트 + 자료 4 §8
-- `moai-commerce/skills/commerce-channel-message/SKILL.md` — 자료 4 §2·§3·§10
-
-### Usage Constraints
-
-- Source materials are used under 정승우님의 explicit written consent
-- Skills built on this material may be redistributed under MoAI-ADK MIT license; underlying source materials retain their original consent-based license
-- Redistribution or commercial reuse of the source materials themselves is not authorized
 
 ---
 
@@ -215,6 +172,5 @@ These materials are developed internally by the moai-cowork community. Skills ma
 **Import Date (Karpathy)**: 2026-04-28
 **Import Date (k-skill)**: 2026-05-04 (v2.0.0)
 **Reference Date (claude-ads)**: 2026-05-13 (v1.5.1, methodology adaptation only)
-**Reference Date (정승우님 자료)**: 2026-05-16 (consent-based attribution added)
 **MoAI-ADK License**: MIT
-**Combined Compatibility**: Apache 2.0 imports distributed under MIT with Apache attribution preserved. MIT imports compatible. Consent-based source materials (정승우님 자료) used under instructor authorization.
+**Combined Compatibility**: Apache 2.0 imports distributed under MIT with Apache attribution preserved. MIT imports compatible.

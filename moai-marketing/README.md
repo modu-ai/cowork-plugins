@@ -29,7 +29,7 @@
 | [email-sequence](./skills/email-sequence/) | 정보통신망법 준수 이메일 시퀀스, 드립 캠페인, 온보딩/재활성화 | 0 | ✅ |
 | [performance-report](./skills/performance-report/) | GA4/메타/네이버/카카오모먼트 채널별 ROAS 분석, KPI 대시보드 [책임 경계: 마케팅 채널 성과] | 0 | ✅ |
 | [target-script](./skills/target-script/) | 타겟 오디언스 분석 + 채널별 메시징 스크립트 자동 생성 (인스타·블로그·이메일·LinkedIn) | 1 | ✅ |
-| [landing-page-conversion-audit](./skills/landing-page-conversion-audit/) | **🆕 v2.4.0** — 랜딩페이지 6섹션 구조 진단 + 진단 분기(CTR↓→광고 / CVR↓→랜딩 / 장바구니↓→결제) + 빠른 처방 3종(불안해소 문구 +10~20% / 메시지 일치 / 간편결제). 자료 4 §9 wrapper | 0 | ✅ |
+| [landing-page-conversion-audit](./skills/landing-page-conversion-audit/) | **🆕 v2.4.0** — 랜딩페이지 6섹션 구조 진단 + 진단 분기(CTR↓→광고 / CVR↓→랜딩 / 장바구니↓→결제) + 빠른 처방 3종(불안해소 문구 +10~20% / 메시지 일치 / 간편결제). 광고 심리학 §9 wrapper | 0 | ✅ |
 | [pixel-audit](./skills/pixel-audit/) | **🆕 v2.4.0** — 메타·구글 픽셀 설치 검증 + 3종 실수 점검(구매자 미제외/이벤트 파라미터 미설정/CAPI 미설치) + 1st Party 데이터 활용 + Lookalike 씨앗 품질(VIP 상위 20% 권장) | 0 | ✅ |
 | [meta-ads-analyzer](./skills/meta-ads-analyzer/) | **🆕 v2.5.0** — 메타 광고관리자 `.xlsx` 보고서 1~6개 업로드 → 9 분석 모듈(퍼널·KPI·차원·매트릭스·누수·라이프사이클·학습·예산·시뮬) + 4D 교차(광고×지면×연령×성별) + 3 사용자 그룹 톤(명시 입력) + 4 출력 형식(HTML/DOCX/PPTX/MD) + 🟢🟡🔴 강도별 액션 옵션. claude-ads v1.5.1 (MIT) 50-check 한국 매핑. ai-slop-reviewer 자동 체이닝 | 11 | ✅ |
 
@@ -110,7 +110,7 @@ LinkedIn 포스팅 만들어줘. B2B SaaS 창업자, 시드 라운드 클로징 
 
 ## 변경 이력
 
-- **v2.4.0** (2026-05-12): 광고 심리학 완전판 통합 — 신규 2 (`landing-page-conversion-audit` 랜딩 6섹션 진단 + `pixel-audit` 픽셀·Lookalike 검증) + 강화 2 (`campaign-planner` 6 방아쇠·8 편향·PAS·후크 6종·영상 30초·타겟 온도 × 동기 매트릭스 + `sns-content` 채널별 심리·메타 학습 48~72h). 8 → **10 스킬**. 자료 4 "온라인 광고의 심리학" 13장 376줄 통합
+- **v2.4.0** (2026-05-12): 광고 심리학 완전판 통합 — 신규 2 (`landing-page-conversion-audit` 랜딩 6섹션 진단 + `pixel-audit` 픽셀·Lookalike 검증) + 강화 2 (`campaign-planner` 6 방아쇠·8 편향·PAS·후크 6종·영상 30초·타겟 온도 × 동기 매트릭스 + `sns-content` 채널별 심리·메타 학습 48~72h). 8 → **10 스킬**. 광고 심리학 13장 376줄 통합
 - **v2.3.0** (2026-05-12): Track C 페어 정리 — `sns-content` 한국 3채널 + 글로벌 4채널 통합 단일 진입점화(`moai-content:social-media` 흡수), `campaign-planner` 책임 분리(상세페이지·이미지 책임을 moai-commerce/moai-media로 이관). 15개 페어 description [책임 경계] 명시. 8 스킬 유지
 - **v2.0.0** (2026-05-04): cowork v2.0.0 — Breaking change 없음
 

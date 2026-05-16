@@ -6,11 +6,11 @@
 [![라이선스](https://img.shields.io/badge/license-MIT-green)](../LICENSE)
 [![스킬](https://img.shields.io/badge/skills-22-success)](#스킬-카탈로그-22종)
 
-> **v2.4.0 신규 3 + 강화 강화** — `coupang-ad-optimizer`(쿠팡 광고 풀세트 최적화, 정승우님 6개월 노하우), `commerce-margin-calculator`(마진·엔드 ROAS 자동 계산), `commerce-automation-audit`(6대 영역 자동화 진단·로드맵) + `commerce-product-naming`/`detail-page-copy`/`commerce-jtbd-persona`/`commerce-channel-message`/`commerce-integrated-strategy`/`commerce-market-research` 6개 강화
+> **v2.4.0 신규 3 + 강화 강화** — `coupang-ad-optimizer`(쿠팡 광고 풀세트 최적화, 한국 셀러 6개월 실전 노하우), `commerce-margin-calculator`(마진·엔드 ROAS 자동 계산), `commerce-automation-audit`(6대 영역 자동화 진단·로드맵) + `commerce-product-naming`/`detail-page-copy`/`commerce-jtbd-persona`/`commerce-channel-message`/`commerce-integrated-strategy`/`commerce-market-research` 6개 강화
 
 ## 개요
 
-`moai-commerce`는 월 매출 100만~10억 스마트스토어·자사몰 셀러를 위한 풀 사이클 자동화 플러그인입니다. **v2.3.0부터** "모두의 커머스 3일 마스터 캠프"(정승우님) 21세션·18개 산출물 데이터 체인을 자연어 한 줄 입력으로 자동 호출합니다.
+`moai-commerce`는 월 매출 100만~10억 스마트스토어·자사몰 셀러를 위한 풀 사이클 자동화 플러그인입니다. **v2.3.0부터** "모두의 커머스 3일 마스터 캠프" 21세션·18개 산출물 데이터 체인을 자연어 한 줄 입력으로 자동 호출합니다.
 
 - **Day 1 셋업 (2)**: 매장 운영 데이터 1줄 통합 (`commerce-morning-brief`, `commerce-order-summary`)
 - **Day 2 V6 6도구 (6)**: V6 7교시 구조 1:1 매핑 wrapper — 시장조사·JTBD·페르소나·상품명·NCM 메시지·통합 전략
@@ -27,9 +27,9 @@
 
 | 스킬 | 역할 |
 |------|------|
-| [coupang-ad-optimizer](./skills/coupang-ad-optimizer/SKILL.md) | 쿠팡 광고 풀세트 최적화. 3 캠페인 유형(AI스마트/매출최적화/수동키워드) 자동 분류 + 검색영역 vs 비검색영역 매출 분리(CPM 167배 차이) + 엔드 ROAS 자동 계산 + 자동규칙 3종 + 상품별 의사결정 분기. **정승우님 본인 6개월 노하우(월매출 7천→3.6억, 광고비 30%→11.2%) wrapper** |
+| [coupang-ad-optimizer](./skills/coupang-ad-optimizer/SKILL.md) | 쿠팡 광고 풀세트 최적화. 3 캠페인 유형(AI스마트/매출최적화/수동키워드) 자동 분류 + 검색영역 vs 비검색영역 매출 분리(CPM 167배 차이) + 엔드 ROAS 자동 계산 + 자동규칙 3종 + 상품별 의사결정 분기. **한국 셀러 6개월 실전 노하우(월매출 7천→3.6억, 광고비 30%→11.2%) wrapper** |
 | [commerce-margin-calculator](./skills/commerce-margin-calculator/SKILL.md) | 상품별 마진·엔드 ROAS·손익분기 광고비 자동 계산. 채널별 수수료(스마트스토어 5.94%/쿠팡 10~12%/카페24 2~3%/아임웹 0~2.5%) + 부가세·결제 수수료·쿠폰 자동 반영. 시크릿팡 마진계산기 차용 + AI 챗봇 차별화 |
-| [commerce-automation-audit](./skills/commerce-automation-audit/SKILL.md) | 6대 영역(A~F) 진단 + 자동화 3분류(반복형/판단형/창의형) + 우선순위 점수((빈도×시간×오류비용)÷복잡도) + 3 Phase 로드맵(Quick Wins/Core/AI Enhancement) + 5대 KPI + HITL Golden Rule(80% 자동화 + 10배 검수). 정승우님 "커머스 업무 자동화" 24p 풀세트 wrapper |
+| [commerce-automation-audit](./skills/commerce-automation-audit/SKILL.md) | 6대 영역(A~F) 진단 + 자동화 3분류(반복형/판단형/창의형) + 우선순위 점수((빈도×시간×오류비용)÷복잡도) + 3 Phase 로드맵(Quick Wins/Core/AI Enhancement) + 5대 KPI + HITL Golden Rule(80% 자동화 + 10배 검수). "커머스 업무 자동화" 24p 풀세트 wrapper |
 
 ### 기존 19종 (v2.3.0 + v2.4.0 강화)
 
@@ -167,7 +167,7 @@ V6 6도구와 Day1 셋업 스킬은 **MoAI-Commerce MCP Phase 1**(34종 도구)�
 
 ## 변경 이력
 
-- **v2.4.0** (2026-05-12): "캠프 후속 인사이트 통합본" — 신규 3 (`coupang-ad-optimizer`·`commerce-margin-calculator`·`commerce-automation-audit`) + 강화 6 (`product-naming`·`detail-page-copy`·`jtbd-persona`·`channel-message`·`integrated-strategy`·`market-research`). 정승우님 본인 노하우 3개 문서 + 광고 심리학 완전판 통합. 총 19 → **22 스킬**
+- **v2.4.0** (2026-05-12): "캠프 후속 인사이트 통합본" — 신규 3 (`coupang-ad-optimizer`·`commerce-margin-calculator`·`commerce-automation-audit`) + 강화 6 (`product-naming`·`detail-page-copy`·`jtbd-persona`·`channel-message`·`integrated-strategy`·`market-research`). 한국 셀러 본인 노하우 3개 문서 + 광고 심리학 완전판 통합. 총 19 → **22 스킬**
 - **v2.3.0** (2026-05-12): "모두의 커머스 3일 마스터 캠프" 통합본 — V6 6도구 5신규 + `detail-page-copy` 강화 + Day1 셋업 2신규. 총 11 → **19 스킬**. `commerce-market-research` · `commerce-jtbd-persona` · `commerce-product-naming` · `commerce-channel-message` · `commerce-integrated-strategy` · `commerce-morning-brief` · `commerce-order-summary` 추가
 - **v2.0.0** (2026-05-04): `mfds-safety` 추가 (식약처 의약품·식품 안전 통합). 11 스킬
 - **v1.x**: 13섹션 상세페이지 + 채널 가이드 5종 + 라이브 커머스 + 마케팅
