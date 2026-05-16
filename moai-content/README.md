@@ -4,9 +4,9 @@
 
 [![버전](https://img.shields.io/badge/version-2.3.0-blue)](../CHANGELOG.md)
 [![라이선스](https://img.shields.io/badge/license-MIT-green)](../LICENSE)
-[![스킬](https://img.shields.io/badge/skills-11-success)](#스킬)
+[![스킬](https://img.shields.io/badge/skills-12-success)](#스킬)
 
-11개 스킬로 텍스트부터 영상, 보고서까지 콘텐츠 제작 전 과정을 커버합니다. v1.4.0부터 `landing-page`·`product-detail` 두 스킬이 **shadcn/ui + Tailwind CSS v4 + OKLCH 토큰**을 기본 스택으로 사용하고, 코드 생성 전 **소크라테스식 테마 인터뷰**(베이스 팔레트·컬러 모드·모서리 반경·효과)를 자동으로 실행합니다. **v2.0.0부터** `korean-spell-check`(부산대 AI연구실 + ㈜나라인포테크 공동 개발 **바른한글** 표면)으로 한국어 맞춤법·띄어쓰기를 최종 검수합니다 — `ai-slop-reviewer` 직후 체인 권장. **v2.1.0부터** `humanize-korean`([epoko77-ai/im-not-ai](https://github.com/epoko77-ai/im-not-ai) MIT, ⭐937 Fast 모드 포팅)으로 10대 카테고리 × 40+ AI 티 패턴 SSOT를 정량 메트릭으로 정밀 윤문합니다 — 의미 100% 보존 가드(변경률 30/50%) + 자체검증 6항 + A/B/C/D 등급 자동 판정. Post-Bridge, Typefully, WordPress MCP 연동으로 멀티채널 발행을 자동화합니다.
+12개 스킬로 텍스트부터 영상, 보고서까지 콘텐츠 제작 전 과정을 커버합니다. v1.4.0부터 `landing-page`·`product-detail` 두 스킬이 **shadcn/ui + Tailwind CSS v4 + OKLCH 토큰**을 기본 스택으로 사용하고, 코드 생성 전 **소크라테스식 테마 인터뷰**(베이스 팔레트·컬러 모드·모서리 반경·효과)를 자동으로 실행합니다. **v2.0.0부터** `korean-spell-check`(부산대 AI연구실 + ㈜나라인포테크 공동 개발 **바른한글** 표면)으로 한국어 맞춤법·띄어쓰기를 최종 검수합니다 — `ai-slop-reviewer` 직후 체인 권장. **v2.1.0부터** `humanize-korean`([epoko77-ai/im-not-ai](https://github.com/epoko77-ai/im-not-ai) MIT, ⭐937 Fast 모드 포팅)으로 10대 카테고리 × 40+ AI 티 패턴 SSOT를 정량 메트릭으로 정밀 윤문합니다 — 의미 100% 보존 가드(변경률 30/50%) + 자체검증 6항 + A/B/C/D 등급 자동 판정. Post-Bridge, Typefully, WordPress MCP 연동으로 멀티채널 발행을 자동화합니다.
 
 > **v2.3.0 변경 안내**: `social-media` 스킬은 `moai-marketing:sns-content`로 흡수되었습니다(글로벌 4채널 모드 추가: 스레드·X·링크드인·유튜브 쇼츠). 한국 3채널 모드(인스타·네이버 블로그·카카오)도 `sns-content`에서 그대로 지원됩니다. `social-media`는 **v2.5.0까지 deprecate stub으로 유지**되며 신규 호출은 `/sns-content` 사용을 권장합니다.
 
@@ -15,6 +15,7 @@
 | 스킬 | 설명 | 레퍼런스 | 상태 |
 |------|------|:--------:|:----:|
 | [card-news](./skills/card-news/) | AI 이미지 생성 기반 인스타 캐러셀 제작. 잡지 SOP, AI 글쓰기 방지 기법 | 4 | ✅ |
+| [detail-page-planner](./skills/detail-page-planner/) | 한국 이커머스 상세페이지 기획·구조·전략 설계. 5대 기획 모듈 + 4유형 오프닝 분기. Brief 산출 후 `detail-page-copy`(카피)·`product-detail`(코드)·`detail-page-image`(이미지) 체인 | 0 | ✅ |
 | [product-detail](./skills/product-detail/) | **shadcn/ui** 기반 전환율 극대화 상세페이지 빌더. 네이버/쿠팡/카카오 규격 + Next.js 자사몰 | 4 | ✅ |
 | [landing-page](./skills/landing-page/) | **shadcn/ui** 기반 고전환율 랜딩 페이지. CTA 최적화, 소크라테스식 테마 인터뷰, Framer Motion | 7 | ✅ |
 | [copywriting](./skills/copywriting/) | 마케팅 카피, 헤드라인, CTA, 광고 캠페인, 비주얼 스토리텔링 | 3 | ✅ |

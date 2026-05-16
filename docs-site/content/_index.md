@@ -1,13 +1,13 @@
 ---
 title: "Claude Cowork 한국어 문서"
-description: "Claude Cowork 한국어 가이드 — 지식 근로자를 위한 설치·스킬·플러그인·쿡북 완전판. cowork-plugins 21종 카탈로그 + 130 스킬 포함."
+description: "Claude Cowork 한국어 가이드 — 지식 근로자를 위한 설치·스킬·플러그인·쿡북 완전판. cowork-plugins 21종 카탈로그 + 144 스킬 포함."
 geekdocAnchor: false
 geekdocBreadcrumb: false
 ---
 
 <div class="cw-hero">
   <div class="eyebrow"><span class="dot"></span>{{< version >}} · {{< release-date >}} · cowork.mo.ai.kr</div>
-  <h1>업무에 바로 쓰는<br/><span class="accent">AI 협업 스킬</span> 130종.</h1>
+  <h1>업무에 바로 쓰는<br/><span class="accent">AI 협업 스킬</span> 144종.</h1>
   <p class="lead-p">
     21개 분야에 걸친 MoAI-Cowork 플러그인 모음. Claude Code에서 슬래시 한 번으로 사업계획서·IR 덱·계약서·블로그·정부지원사업 신청서·이커머스 광고 풀세트·<strong>메타 광고 보고서 분석</strong>까지 — 한국어로, 끝까지.
   </p>
@@ -16,7 +16,7 @@ geekdocBreadcrumb: false
     <a class="btn btn--ghost" href="/plugins/">플러그인 둘러보기</a>
   </div>
   <div class="cw-hero-meta">
-    <div class="item"><div class="num">130</div><div class="lbl">총 스킬</div></div>
+    <div class="item"><div class="num">144</div><div class="lbl">총 스킬</div></div>
     <div class="item"><div class="num">21</div><div class="lbl">분야 플러그인</div></div>
     <div class="item"><div class="num">78</div><div class="lbl">문서 페이지</div></div>
     <div class="item"><div class="num">{{< version >}}</div><div class="lbl">최신 릴리스</div></div>
@@ -54,7 +54,7 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
 
 <div class="cw-sect-head">
   <h2 id="plugins-grid" style="margin:0"><span class="num">21</span>분야별 플러그인</h2>
-  <span class="meta">총 130개 스킬 · 21개 도메인</span>
+  <span class="meta">총 144개 스킬 · 21개 도메인</span>
 </div>
 
 <div class="cw-grid">
@@ -65,10 +65,10 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
     <div class="foot"><span>IR</span><span>사업계획</span><span>정부지원</span></div>
   </a>
   <a class="cw-card" href="/plugins/moai-content/">
-    <div class="head"><div class="icon">콘</div><span class="count-pill">11개 스킬</span></div>
+    <div class="head"><div class="icon">콘</div><span class="count-pill">12개 스킬</span></div>
     <div><div class="title">콘텐츠<span class="new-tag">v2.2</span></div><div class="slug">moai-content</div></div>
-    <div class="desc">블로그·뉴스레터·SNS·카피라이팅·SEO + 한국어 AI 티 정밀 윤문 + HTML 보고서</div>
-    <div class="foot"><span>블로그</span><span>SNS</span><span>humanize</span><span>html-report</span></div>
+    <div class="desc">블로그·뉴스레터·SNS·카피라이팅·SEO + 한국어 AI 티 정밀 윤문 + HTML 보고서 + 상세페이지 기획</div>
+    <div class="foot"><span>블로그</span><span>SNS</span><span>humanize</span><span>html-report</span><span>detail-planner</span></div>
   </a>
   <a class="cw-card" href="/plugins/moai-marketing/">
     <div class="head"><div class="icon">마</div><span class="count-pill">11개 스킬</span></div>
@@ -83,10 +83,10 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
     <div class="foot"><span>GPT Image 2</span><span>Kling/Veo/Seedance</span><span>AI 표기</span></div>
   </a>
   <a class="cw-card" href="/plugins/moai-commerce/">
-    <div class="head"><div class="icon">커</div><span class="count-pill">22개 스킬</span></div>
-    <div><div class="title">커머스<span class="new-tag">v2.4</span></div><div class="slug">moai-commerce</div></div>
-    <div class="desc">이커머스 풀세트 + V6 6도구 + 광고 최적화·자동화 진단·마진 계산 (쿠팡·마진·자동화 진단)</div>
-    <div class="foot"><span>V6 6도구</span><span>상세페이지</span><span>쿠팡 광고</span><span>자동화</span></div>
+    <div class="head"><div class="icon">커</div><span class="count-pill">35개 스킬</span></div>
+    <div><div class="title">커머스<span class="new-tag">v2.8</span></div><div class="slug">moai-commerce</div></div>
+    <div class="desc">한국 D2C 풀스택 — V6 6도구 + 광고 최적화·마진 계산·자동화 진단 + Wave 1~4 누적(LTV/CAC·프로모션·재구매·이미지 파이프라인·리뷰·VOC·구독·인플루언서·얼리팬·트렌드·시즌)</div>
+    <div class="foot"><span>V6</span><span>LTV/CAC</span><span>프로모션</span><span>재구매</span><span>리뷰</span><span>VOC</span><span>구독</span></div>
   </a>
   <a class="cw-card" href="/plugins/moai-office/">
     <div class="head"><div class="icon">오</div><span class="count-pill">5개 스킬</span></div>
@@ -203,12 +203,58 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
 </div>
 
 <div class="cw-sect-head">
-  <h2 id="release-summary" style="margin:0"><span class="num">v2.5</span>최근 릴리스</h2>
+  <h2 id="release-summary" style="margin:0"><span class="num">v2.8</span>최근 릴리스</h2>
   <span class="meta">CHANGELOG.md 기반</span>
 </div>
 
 <div class="cw-timeline">
   <div class="cw-rel latest">
+    <div class="ver-row">
+      <span class="ver">v2.8.0</span>
+      <span class="date">2026-05-16</span>
+      <span class="badge">MINOR</span>
+    </div>
+    <div class="ttl">"Wave 4 — moai-commerce 한국 D2C 풀스택 완결" — 신규 7 스킬</div>
+    <div class="desc">moai-commerce 신규 7(리뷰·VOC·구독·인플루언서·얼리팬·트렌드·시즌). 137 → <strong>144 스킬</strong>, 동기화 지점 159 → 166. Wave 1~4 누적 결과 (iii) 결정 완결: 130 → 144(+14), moai-commerce 22 → 35(+13).</div>
+    <ul>
+      <li><strong>moai-commerce 신규 7</strong> — review-aggregator(5채널 리뷰 통합) · voc-triage(3축 KTAS 5단계) · subscription-strategist(5질문 자기진단 + 4 모델) · influencer-collab(5 티어 + 뒷광고 회피) · early-fan-builder(충성 100명 30일 부트스트랩) · trend-namer(데이터랩 → 상품명·해시태그) · season-calendar(30+ 시즌 이벤트)</li>
+      <li>vault grounding 1,329 노트 기반 한국 D2C·CRM·LTV·법규 풀스택</li>
+      <li>어트리뷰션 정책 변경 완료(c889354): 정승우님 자료 출처 모두 제거, 내용 보존</li>
+      <li><strong>후속 (별도 결정)</strong> — Wave 5 후보 moai-marketing 보강 또는 moai-content 신규, 또는 사용자 검증 사이클</li>
+    </ul>
+  </div>
+  <div class="cw-rel">
+    <div class="ver-row">
+      <span class="ver">v2.7.0</span>
+      <span class="date">2026-05-16</span>
+      <span class="badge">MINOR</span>
+    </div>
+    <div class="ttl">"Wave 3 — 프로모션·재구매·이미지 파이프라인" — 신규 3 스킬</div>
+    <div class="desc">moai-commerce 신규 3(promotion·repurchase·product-image-pipeline). 134 → 137 스킬, 동기화 지점 156 → 159. Wave 1 vault grounding 후속 첫 신규 스킬 출시.</div>
+    <ul>
+      <li><strong>commerce-promotion-planner</strong> — 3대 프로모션 기획법(이슈화·얼리버드·한정) 전담. 브랜드 단계 × 목표 매트릭스 + 명목·스토리·혜택 3종 세트 + 노션 템플릿 페이지 구조 자동 생성. 비플레인 '듣보잡' 스몰 D2C 12배 매출 케이스 실전 매뉴얼</li>
+      <li><strong>commerce-repurchase-timer</strong> — 재구매 골든타임 3구간 모델(리마인드 0.8T / 데드라인 1.1T / 휴면 1.5T) + 구간별 메시지 톤·채널 + 인센티브 강도 + 리드 스코어링 8개 행동 + 한국 10 카테고리 표준 주기 매트릭스</li>
+      <li><strong>commerce-product-image-pipeline</strong> — 상품 이미지·영상 풀스택 파이프라인 오케스트레이터. character-mgmt → image-gen(Soul) → video-gen(DOP) → media-channel-ad-packager 4단계 체인 자동 호출. 비용 추정(₩2,300~4,000/상품 1건)</li>
+    </ul>
+  </div>
+  <div class="cw-rel">
+    <div class="ver-row">
+      <span class="ver">v2.6.0 + v2.6.1</span>
+      <span class="date">2026-05-16</span>
+      <span class="badge">MINOR + PATCH</span>
+    </div>
+    <div class="ttl">"Wave 1 vault grounding + Wave 2 보강" — 신규 3 + Quick Wins + 안 C 정리</div>
+    <div class="desc">vault 1,329 노트 + Higgsfield MCP audit + 어트리뷰션 정책 변경. moai-commerce 신규 3 + Higgsfield Quick Wins 6 + Wave 2 보강 3(AARRR·6질문·시장 세분화) + 안 C 책임 경계 정리 3. 130 → 134 스킬, 동기화 지점 152 → 156.</div>
+    <ul>
+      <li><strong>commerce-ltv-cac-architect (Wave 1 신규)</strong> — 고객 단위 수익 구조 설계. CAC→재구매율→ARPU→공헌이익→LTV 6대 지표 + LTV/CAC ratio + Payback + 광고 의존도 진단 + 채널·세그먼트 분해 + 한국 D2C 카테고리 벤치마크</li>
+      <li><strong>commerce-push-planner (Wave 1 신규)</strong> — 앱 푸시 4원칙(왜/언제/누구에게/어떻게) + Timely·Personal·Actionable 3요소 + 카피 변형 3안 + 한국 30+ 브랜드 레퍼런스(토스·배민·오늘의집·쿠팡·에이블리 등)</li>
+      <li><strong>commerce-marketing-compliance-kr (Wave 1 신규)</strong> — 한국 정통망법 광고·정보성 메시지 자동 게이트. 6대 점검(광고성 판정·옵트인·야간 발송 차단·표기·수신거부·발신자) + BLOCK/PASS 판정 + 위반 조항(제50조 1·3·4항·제76조). 과태료 최대 3,000만 원 회피</li>
+      <li><strong>Higgsfield Quick Wins 6 + 안 C 정리 3</strong> — character-mgmt·fal-gateway·video-gen·speech-video MCP 설정·툴명·요금 stale 정정. media-model-router·video-gen·fal-gateway 책임 경계 명확화(audit §6 안 C 권장)</li>
+      <li><strong>Wave 2 보강 3 (v2.6.1)</strong> — channel-message AARRR 단계별 한국 30+ 브랜드 풀스택 + product-naming 6질문 + 데이터랩 워크플로우 + market-research 시장 세분화·USP 추출 프로세스</li>
+      <li><strong>어트리뷰션 정책 변경</strong> — 정승우님 자료 공식 어트리뷰션 모두 제거(GOOS 컨펌). 출처 클로즈만 제거하고 내용·구조·버전 표기는 보존하여 사용자 경험 무변동</li>
+    </ul>
+  </div>
+  <div class="cw-rel">
     <div class="ver-row">
       <span class="ver">v2.5.0</span>
       <span class="date">2026-05-13</span>
