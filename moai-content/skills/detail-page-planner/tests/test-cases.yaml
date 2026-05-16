@@ -1,0 +1,110 @@
+# detail-page-planner 테스트 케이스 (skill-tester 호환)
+# 4-dimension rubric: Correctness / Completeness / Clarity / Efficiency
+
+cases:
+  - id: TC-001
+    name: "비건 비누 펀딩 — 공감형 인트로"
+    prompt: |
+      신규 비건 비누 상세페이지 기획해줘. 와디즈 펀딩으로 출시 예정.
+      타깃은 30대 여성 건성 피부.
+    expected:
+      - category: "뷰티"
+      - channel: "펀딩"
+      - opening_type: "공감형"
+      - one_message_includes: ["식물", "보습", "건성"]
+      - body_skeleton_steps: 4
+      - photo_checklist: ["제형", "발색", "흡수", "사용 장면", "전후 비교"]
+      - ad_compliance_warnings: true   # 화장품 심의 경고 필수
+    rubric:
+      correctness: 5      # 카테고리·채널·유형 진단 정확
+      completeness: 4     # 5 모듈 모두 출력
+      clarity: 4          # Brief YAML 가독성
+      efficiency: 4       # AskUserQuestion 라운드 1회 이내
+
+  - id: TC-002
+    name: "프리미엄 노트북 커머스 — 매력형"
+    prompt: |
+      신규 프리미엄 노트북 상세페이지. 쿠팡 출시.
+      타깃은 30~40대 직장인 남성, 가격 250만원대.
+    expected:
+      - category: "테크"
+      - channel: "커머스"
+      - opening_type: "매력형"
+      - body_template: "특징 → 차별점 → 후기 → CTA"   # 모듈 4 커머스 템플릿
+      - target_redefinition_steps: 4
+      - photo_checklist: ["핵심 부품", "연결 단자", "사용 화면", "전체+구성품"]
+      - copy_strategy_involvement: "high"
+      - copy_strategy_pricing: ["앵커링", "비교 가격", "정기구독 할인"]   # 고관여
+    rubric:
+      correctness: 5
+      completeness: 5
+      clarity: 4
+      efficiency: 5
+
+  - id: TC-003
+    name: "패션 셔츠 — 채널 미정 대화형"
+    prompt: |
+      셔츠 상세페이지 기획
+    expected:
+      - askuserquestion_calls: 1   # 카테고리 세부·채널 미정 → 1라운드
+      - after_clarification:
+          category: "패션"
+          # 채널 사용자 선택
+      - body_skeleton_includes: ["원단 클로즈업", "전신 착장"]
+    rubric:
+      correctness: 4   # 추정에 의존
+      completeness: 4
+      clarity: 5
+      efficiency: 4
+
+  - id: TC-004
+    name: "Brief YAML 산출 + 후속 위임 안내"
+    prompt: |
+      이미 작성된 식품 비빔밥 키트 Brief로 카피·코드까지 다 만들어줘.
+    attached_brief: |
+      brief:
+        category: "푸드"
+        channel: "커머스"
+        one_message:
+          message: "30분 비빔밥, 10분 컷"
+        opening:
+          type: "매력형"
+    expected:
+      - brief_validation_pass: true
+      - delegation_announce: ["detail-page-copy", "product-detail", "detail-page-image"]
+      - skill_does_not_produce_copy_or_code: true
+    rubric:
+      correctness: 5
+      completeness: 4
+      clarity: 4
+      efficiency: 5
+
+  - id: TC-005
+    name: "원 메시지 단독 호출"
+    prompt: |
+      이 제품의 원 메시지만 잡아줘. (수면 안대, 30대 여성, 야근 잦음)
+    expected:
+      - one_message_only: true
+      - one_message_includes_brand_concept_message_copy_description: true
+      - target_specific: true   # 야근 페인 반영
+    rubric:
+      correctness: 5
+      completeness: 4   # 단일 모듈만 산출
+      clarity: 5
+      efficiency: 5
+
+# 기대 평균 (skill-builder Phase 6 통과 기준)
+expected_avg:
+  correctness: 4.8
+  completeness: 4.2
+  clarity: 4.4
+  efficiency: 4.6
+  overall: 4.5   # ≥ 0.70 가중평균 통과 기준 충족 (5점 만점 기준 0.70 = 3.5)
+
+# Anti-patterns (반드시 회피)
+anti_patterns:
+  - "스킬이 직접 카피·코드·이미지 산출 (책임 경계 위반)"
+  - "카테고리 진단 없이 일반론 출력"
+  - "유통 채널 분기 누락"
+  - "광고 심의 경고 누락 (화장품·식품)"
+  - "Brief YAML 형식 깨짐"
