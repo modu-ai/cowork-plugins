@@ -39,7 +39,26 @@ flowchart TB
 
 ## 내장 커넥터
 
-Cowork 설정에서 "커넥터" 항목을 열면 Google Drive, Gmail, Google Calendar, Slack, GitHub 등 자주 쓰이는 서비스를 한 번에 연결할 수 있습니다. 2026-02에는 영업·분석·법무·마케팅 영역의 **12종 커넥터가 추가 공개**되었습니다: DocuSign · Apollo · Clay · Outreach · Similarweb · MSCI · LegalZoom · FactSet · WordPress · Harvey · Google Calendar(확장) · Google Drive(확장). 연결 후에는 다음과 같은 요청이 자연스럽게 가능합니다.
+Cowork 설정에서 "커넥터" 항목을 열면 Google Drive, Gmail, Google Calendar, Slack, GitHub 등 자주 쓰이는 서비스를 한 번에 연결할 수 있습니다.
+
+### 2026-02 신규 12종 커넥터 (영업·분석·법무·마케팅)
+
+| 영역 | 커넥터 | 용도 |
+|---|---|---|
+| 영업 | **DocuSign** | 전자 서명 워크플로우 |
+| 영업 | **Apollo** | B2B 리드·연락처 데이터베이스 |
+| 영업 | **Clay** | 영업 데이터 enrichment |
+| 영업 | **Outreach** | 영업 시퀀스 자동화 |
+| 분석 | **Similarweb** | 웹사이트 트래픽·SEO 분석 |
+| 분석 | **MSCI** | 금융 시장·ESG 데이터 |
+| 분석 | **FactSet** | 재무·시장 인텔리전스 |
+| 법무 | **LegalZoom** | 법무 문서·계약 |
+| 법무 | **Harvey** | AI 법무 어시스턴트 |
+| 마케팅 | **WordPress** | 블로그 자동 발행 |
+| 생산성 | **Google Calendar (확장)** | 일정 자동 등록·조정 |
+| 생산성 | **Google Drive (확장)** | 폴더 단위 파일 처리 |
+
+연결 후에는 다음과 같은 요청이 자연스럽게 가능합니다.
 
 - "Drive에서 이번 주 회의록 찾아서 요약해줘"
 - "Gmail 받은편지함의 고객 요청 3건을 카드로 정리해줘"

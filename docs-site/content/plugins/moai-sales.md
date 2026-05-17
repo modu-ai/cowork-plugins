@@ -96,21 +96,27 @@ moai-business:market-analyst → proposal-writer → pptx-designer → ai-slop-r
 proposal-writer → docx-generator(본문) → pptx-designer(발표용 30장) → ai-slop-reviewer
 ```
 
-## 빠른 사용 예
+## 빠른 사용 예 (한 줄 요청 + 시스템 자동 인터뷰)
 
-```text
-> [고객사명] RFP 첨부했어. 제안서 본문 초안 만들어줘.
-  - 우리 솔루션: B2B SaaS 재고관리 SW
-  - 핵심 차별점: 실시간 동기화, K-IFRS 자동 분개
-  - 가격대: 월 50만 원~, 30석 기준
-  - 일정: 4주 PoC → 3개월 본 도입
-  - 저장: 90_Output/proposals/{customer}-proposal.docx
-```
+> 매번 솔루션·차별점·가격·일정·저장 경로를 직접 작성할 필요 없습니다. RFP 파일만 첨부하고 한 줄로 요청하세요. ([사용 패턴 가이드](../../cowork/patterns/) 참조)
 
-```text
-이번 주 RFP 3건 검토했는데, 우리가 답변할 만한 것만 골라서
-컴플라이언스 체크리스트와 함께 정리해줘.
-```
+{{< terminal title="claude — cowork" >}}
+> RFP 첨부했어. B2B 제안서 만들어줘
+{{< /terminal >}}
+
+→ 시스템 인터뷰: 우리 솔루션 한 줄·차별점 3개·가격대·일정·출력 형식 → `proposal-writer` (12섹션 + Three C's) 자동 체인
+
+{{< terminal title="claude — cowork" >}}
+> 이번 주 RFP 3건 중 답변할 만한 것만 골라줘
+{{< /terminal >}}
+
+→ 시스템 인터뷰: 우리 강점·예산 한도·우선 기준 → 매칭 분석 + 컴플라이언스 체크리스트
+
+{{< terminal title="claude — cowork" >}}
+> 발표용 PPT 30장으로도 만들어줘
+{{< /terminal >}}
+
+→ `proposal-writer → pptx-designer → ai-slop-reviewer` 자동 체인
 
 ## 다음 단계
 

@@ -330,24 +330,33 @@ kr-gov-grant → docx-generator (또는 hwpx-writer) → ai-slop-reviewer
 daily-briefing → docx-generator
 ```
 
-## 빠른 사용 예
+## 빠른 사용 예 (한 줄 요청 + 시스템 자동 인터뷰)
 
-```text
-> 초기 SaaS 스타트업 사업계획서 만들어줘.
-타깃은 한국 중소제조업, 조달 목표는 3억.
-```
+> 매번 옵션·요구사항을 직접 작성할 필요 없습니다. 짧은 한 줄로 요청하면 시스템이 단계·조달목표·타깃 등을 인터뷰로 수집합니다. ([사용 패턴 가이드](../../cowork/patterns/) 참조)
 
-```text
-> Series A용 IR 덱 20장 pptx로 만들어줘.
-```
+{{< terminal title="claude — cowork" >}}
+> AI 영어 회화 앱 사업계획서 만들어줘
+{{< /terminal >}}
 
-```text
-> 소상공인365에서 내려받은 홍대 상권 PDF 첨부했어. 카페 창업 타당성 검토해줘.
-```
+→ 시스템 인터뷰: 시리즈·조달목표·타깃·형식·저장 경로 → 자동 체인 (`strategy-planner → docx-generator → ai-slop-reviewer`)
 
-```text
-중기부 예비창업패키지 우리 팀 상황에 맞게 추천받고 신청서 초안도 같이.
-```
+{{< terminal title="claude — cowork" >}}
+> Series A IR 덱 만들어줘
+{{< /terminal >}}
+
+→ 멀티턴 패턴: 스토리라인 초안 제시 → 사용자 검토 → PPT 자동 생성. [IR 덱 쿡북](../../cookbook/ir-deck/) 참조.
+
+{{< terminal title="claude — cowork" >}}
+> 홍대 상권 카페 창업 타당성 검토해줘
+{{< /terminal >}}
+
+→ 시스템 인터뷰: 데이터 파일·예산·콘셉트 → `market-analyst → strategy-planner` 자동 체인
+
+{{< terminal title="claude — cowork" >}}
+> 우리 팀에 맞는 정부지원사업 추천하고 신청서 초안 만들어줘
+{{< /terminal >}}
+
+→ 시스템 인터뷰: 팀 단계·산업·매출·목적 → `kr-gov-grant` 자동 매칭 + 신청서 초안
 
 ## 다음 단계
 

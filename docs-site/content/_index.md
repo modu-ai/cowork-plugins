@@ -24,31 +24,50 @@ geekdocBreadcrumb: false
 </div>
 
 <div class="cw-sect-head">
-  <h2 id="quickstart" style="margin:0"><span class="num">START</span>5분 빠른 시작</h2>
+  <h2 id="how-it-works" style="margin:0"><span class="num">HOW</span>이렇게 동작합니다</h2>
+  <span class="meta">긴 프롬프트를 직접 쓰는 도구가 아닙니다 · 짧게 말하면 시스템이 묻습니다</span>
+</div>
+
+```mermaid
+flowchart LR
+    A["1. 한 줄 자연어 요청<br/>(사용자)"] --> B["2. AskUserQuestion<br/>(시스템이 필요한 맥락 수집)"]
+    B --> C["3. 스킬 체이닝<br/>(자동 일괄 처리)"]
+    C --> D["4. 산출물<br/>(DOCX·PPTX·HTML·이미지)"]
+    style A fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style D fill:#f5dcd7,stroke:#c44a3a,color:#09110f
+```
+
+**예시**: 사용자가 "AI 영어 회화 앱 사업계획서 만들어줘"라고 한 줄 입력 → 시스템이 단계·조달목표·타깃·형식·저장경로를 인터뷰 → `strategy-planner → docx-generator → ai-slop-reviewer` 자동 실행 → DOCX 도착.
+
+➡️ **[4가지 사용 패턴 자세히 보기](/cowork/patterns/)** — 단일 프롬프트 · 멀티턴 대화 · 배치 처리 · 스케줄 자동화
+
+<div class="cw-sect-head">
+  <h2 id="quickstart" style="margin:0"><span class="num">START</span>약 10분 빠른 시작</h2>
 </div>
 
 Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰는 플러그인 한두 개만 활성화하면 끝. 슬래시 명령으로 자연어처럼 호출됩니다.
 
 <div class="cw-qs">
   <a class="cw-qs-card" href="/getting-started/install/">
-    <div class="step">01 · 설치</div>
+    <div class="step">01 · 설치 (약 3분)</div>
     <div class="ttl">마켓플레이스 등록</div>
-    <div class="desc">한 줄 명령으로 cowork-plugins 마켓플레이스를 추가합니다.</div>
+    <div class="desc">Claude Desktop에서 cowork-plugins 마켓플레이스를 추가합니다.</div>
   </a>
   <a class="cw-qs-card" href="/plugins/">
-    <div class="step">02 · 선택</div>
+    <div class="step">02 · 선택 (약 2분)</div>
     <div class="ttl">분야별 플러그인 활성화</div>
-    <div class="desc">콘텐츠·비즈니스·법무 등 21개 분야 중 필요한 것만 켭니다.</div>
+    <div class="desc">21개 분야 중 필요한 것만 켭니다. moai-core는 필수.</div>
   </a>
   <a class="cw-qs-card" href="/getting-started/first-task/">
-    <div class="step">03 · 첫 작업</div>
-    <div class="ttl">슬래시 명령 호출</div>
-    <div class="desc">/project init — 프로젝트 설정하고 첫 산출물을 받아봅니다.</div>
+    <div class="step">03 · 첫 작업 (약 5분)</div>
+    <div class="ttl">한 줄 명령으로 첫 산출물</div>
+    <div class="desc">/project init 으로 프로젝트 설정 → 짧은 자연어로 첫 결과물 받아보기.</div>
   </a>
   <a class="cw-qs-card" href="/cookbook/tracks/">
     <div class="step">04 · 트랙</div>
     <div class="ttl">실전 트랙으로 깊게</div>
-    <div class="desc">사업계획서·계약서·IR 덱 — 분야별 워크플로우 가이드.</div>
+    <div class="desc">사업계획서·이커머스·법무 등 역할별 10개 워크플로우 가이드.</div>
   </a>
 </div>
 

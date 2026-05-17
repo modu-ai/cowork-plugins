@@ -47,44 +47,50 @@ status-reporter → data-explorer → xlsx-creator → docx-generator → ai-slo
 - `docx-generator` — 최종 3페이지 보고서
 - `ai-slop-reviewer` — 임원이 바로 읽을 수 있게 문장 다듬기
 
-## 단계별 실행
+## 사용 방식 — 한 줄 요청 (패턴 4: 스케줄 자동화)
 
-### 1. 입력 소스 고정
+> **핵심**: 사용자가 "수동 실행 → 스케줄 등록" 2 단계로 분리하지 않습니다. 한 줄로 "매주 N요일 X시 주간보고 자동화" 요청 → 시스템이 인터뷰 후 1회 시범 실행 + 스케줄 등록까지 자동. ([4가지 사용 패턴 - 패턴 4](../../cowork/patterns/#패턴-4--스케줄-자동화-scheduled-automation))
 
-매주 같은 곳에서 데이터가 오도록 경로를 약속합니다.
-
-- **KPI 로우 데이터** — `/Claude Work 온라인 문서/weekly/kpi-YYYYMMDD.csv`
-- **이슈 로그** — Slack `#ops-weekly` 채널 최근 7일
-- **할 일 현황** — Notion 「팀 업무」 DB 또는 Asana 프로젝트
-
-### 2. 수동 실행으로 검증
+### 사용자 입력
 
 {{< terminal title="claude — cowork" >}}
-> 이번 주 주간 보고서 만들어줘.
-  - KPI 데이터: /weekly/kpi-20260417.csv
-  - 이슈: Slack #ops-weekly 이번 주
-  - 할 일: Notion 팀 업무 DB 이번 주
-
-체인: status-reporter → data-explorer → xlsx-creator → docx-generator → ai-slop-reviewer
-출력: /weekly/주간보고-20260417.docx
+> 매주 금요일 오후 5시에 우리 팀 주간보고 자동 발송해줘
 {{< /terminal >}}
 
-### 3. 스케줄로 등록
+### 시스템 인터뷰 (AskUserQuestion)
 
-{{< terminal title="claude — cowork" >}}
-> /schedule create
-이름: 주간 보고서
-주기: 매주 금요일 17:00
-프롬프트: (2번의 프롬프트를 그대로, 날짜만 {{date}} 로 치환)
-{{< /terminal >}}
+1. **데이터 소스**: KPI CSV 폴더 / Slack 채널 / Notion DB / Linear / Asana / 자유 텍스트
+2. **수신자**: 임원 (격식체) / 팀 (구어체) / 둘 다
+3. **발송 채널**: Slack 채널 / 이메일 / 노션 페이지 / 파일만
+4. **포함 섹션**: 이번 주 / 다음 주 / 이슈·블로커 / 도움 요청 (4분할 표준)
+5. **검증 단계**: 첫 2주 검토 후 자동 발송 (기본) / 매번 검토 후 발송 / 즉시 자동
 
-### 4. 첫 2주는 수동 검수
+### 자동 체인 (매주 자동 반복)
 
-스케줄이 자동 생성한 보고서를 **2주 연속 눈으로 확인**합니다. 데이터 소스 키가 바뀌면 여기서 잡힙니다.
+```mermaid
+flowchart LR
+    Cron["매주 금 17:00"] --> Fetch["MCP 자동 fetch<br/>Slack·Notion·Linear"]
+    Fetch --> SR["status-reporter<br/>4분할 템플릿"]
+    SR --> DE["data-explorer<br/>KPI CSV 분석"]
+    DE --> XL["xlsx-creator<br/>차트 자동"]
+    XL --> DG["docx-generator<br/>본문"]
+    DG --> AI["ai-slop-reviewer<br/>임원체·팀체 2 버전"]
+    AI --> Send["Slack 발송<br/>+ 90_Output/weekly/"]
+    style Cron fill:#fbf0dc,stroke:#c47b2a
+```
 
-### 5. 팀장 피드백 반영
+### 산출물
 
-팀장이 "이 섹션 더", "이 차트 빼" 같은 요청을 하면 프롬프트에 한 줄씩 추가합니다. 5~6회 반복하면 더 이상 손볼 게 없는 템플릿이 됩니다.
+- 매주 금 17:00 자동 발송:
+  - `90_Output/weekly/주간보고-YYYYMMDD-임원.docx` (격식체)
+  - `90_Output/weekly/주간보고-YYYYMMDD-팀.docx` (구어체)
+  - Slack #weekly 채널 알림 (썸네일 + KPI 3개)
+
+### 검증 흐름 (자동)
+
+- **W1·W2**: 사용자에게 사전 검토 요청 (Slack DM)
+- **W3+**: 자동 발송 (이상 감지 시 알림만)
+- **데이터 소스 누락**: "지난 주 데이터 인용" 자동 fallback
 
 ## 자주 겪는 이슈
 

@@ -42,28 +42,47 @@ nda-triage → contract-review → legal-risk → docx-generator → ai-slop-rev
 | 4 | `docx-generator` | 위험 보고서 docx 생성 |
 | 5 | `ai-slop-reviewer` | 보고서 어투 정리 |
 
-## 단일 프롬프트 실행
+## 사용 방식 — 한 줄 요청 (패턴 3: 배치 처리)
+
+> **위험한 안티 패턴**: 사용자가 모든 옵션(회사명·영업비밀·5단계 스킬·저장 경로·면책 문구)을 매번 직접 작성하는 것은 권장되지 않습니다. 시스템이 가진 자동 인터뷰 + 체이닝을 무력화합니다. ([4가지 사용 패턴 - 패턴 3](../../cowork/patterns/#패턴-3--배치-처리-batch-processing))
+
+### ✅ 올바른 한 줄 요청
 
 {{< terminal title="claude — cowork" >}}
-> ./nda_inbox/ 폴더의 NDA PDF 12개를 분류·검토해줘.
-
-회사 정보:
-  - 회사명: SmartFlow Inc.
-  - 핵심 영업비밀: 고객 거래 데이터, 알고리즘 가중치, 고객사 명단
-
-요청:
-1. 각 NDA를 nda-triage로 분류 (상호/일방, 기간, 손해배상 캡, 준거법, 분쟁관할)
-2. contract-review로 조항별 검토, 트랙체인지 형식의 수정 제안
-3. legal-risk로 위험도(상/중/하) 평가 + 우선순위 부여
-4. 종합 위험 보고서를 docx로 만들어줘
-  - 1페이지 경영진 요약 (위험도 분포 차트, Top 3 위험 NDA)
-  - NDA별 상세 (1건당 1~2페이지)
-  - 부록: 표준 NDA 템플릿 비교표
-5. 마지막에 ai-slop-reviewer로 어투 정리
-
-저장: 90_Output/nda-report/2026-Q2-nda-review.docx
-면책 문구: "본 보고서는 1차 검토 가이드이며 최종 법률자문은 변호사 검토를 거쳐야 합니다"를 자동 삽입
+> ./nda_inbox/ 폴더의 NDA 12개 위험도 검토해서 한 페이지로 정리해줘
 {{< /terminal >}}
+
+### 시스템 인터뷰 (AskUserQuestion)
+
+1. **회사 정보**: 회사명 + 핵심 영업비밀 3개 (한국 영업비밀보호법 §2 기준 자동 적용)
+2. **보고서 형식**: 1페이지 경영진 요약 / 상세 (NDA별 1~2페이지) / 둘 다
+3. **부록 포함**: 표준 NDA 템플릿 비교표 / 통계 차트 / 둘 다
+4. **저장 경로** (기본: `90_Output/nda-report/`)
+5. **면책 문구 자동 삽입** 여부 (기본: 예 — "본 보고서는 1차 검토 가이드이며 최종 법률자문은 변호사 검토를 거쳐야 합니다")
+
+### 자동 체인
+
+```mermaid
+flowchart TB
+    P["./nda_inbox/ 폴더<br/>NDA 12개 PDF"] --> Loop["파일별 분기 처리"]
+    Loop --> S1["nda-triage × 12<br/>상호/일방·기간·캡·준거법"]
+    Loop --> S2["contract-review × 12<br/>조항별 수정 제안"]
+    Loop --> S3["legal-risk × 12<br/>상/중/하 + 우선순위"]
+    S1 --> Agg["통합 위험 보고서"]
+    S2 --> Agg
+    S3 --> Agg
+    Agg --> D["docx-generator<br/>1페이지 요약 + 상세"]
+    D --> AI["ai-slop-reviewer<br/>어투 정리"]
+    AI --> Out["90_Output/nda-report/<br/>2026-Q2-nda-review.docx"]
+    style Out fill:#e6f0ef,stroke:#144a46
+```
+
+### 산출물
+
+- **1페이지 경영진 요약**: 위험도 분포 차트 + Top 3 위험 NDA
+- **NDA별 상세**: 1건당 1~2페이지 (분류·핵심 리스크·수정 제안)
+- **부록**: 표준 NDA 템플릿 비교표 (자동)
+- **자동 면책 문구** 삽입
 
 ## 자주 겪는 이슈
 

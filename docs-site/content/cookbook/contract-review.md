@@ -47,45 +47,53 @@ contract-review → legal-risk → docx-generator → ai-slop-reviewer
 
 (NDA 빠른 검토만 필요하면: `nda-triage → docx-generator → ai-slop-reviewer`)
 
-## 단계별 실행
+## 사용 방식 — 한 줄 요청
 
-### 1. 원문 업로드
+> **사용자가 직접 스킬을 순서대로 호출하지 않습니다.** 짧은 한 줄을 입력하면 시스템이 AskUserQuestion으로 필요 정보를 묻고, 자동 체이닝으로 끝까지 처리합니다. ([4가지 사용 패턴](../../cowork/patterns/) 참조)
 
-{{< terminal title="claude — cowork" >}}
-> 첨부 계약서(서비스계약서-v2.pdf) 검토해줘.
-내 포지션: 을(수탁자)
-관심사: 손해배상 상한, 지재권 귀속, 해지 조항
-{{< /terminal >}}
-
-### 2. 10대 리스크 체크 표
+### 사용자 입력
 
 {{< terminal title="claude — cowork" >}}
-> contract-review 로 조항별로 분석해서 다음 표 만들어줘:
-| 조항 번호 | 조항 요약 | 리스크 | 우리측 대응 |
+> 첨부 계약서 검토해서 위험도 + 1페이지 결재용 요약 만들어줘
 {{< /terminal >}}
 
-### 3. 영향도 매트릭스
+### 시스템 인터뷰 (AskUserQuestion)
 
+1. **계약서 첨부 위치** (PDF/HWPX/DOCX)
+2. **내 포지션**: 갑 (위탁자) / 을 (수탁자) / 양자
+3. **관심사 우선순위**: 손해배상 상한 / 지재권 귀속 / 해지 조항 / 준거법·관할 / 기타
+4. **출력 형식**: 리스크 표 / 매트릭스 / 수정안 DOCX / 1페이지 결재 요약 / 전부
+5. **검토자 향후 사용**: 변호사 자문 전 1차 / 사내 결재용 / 협상용
+
+### 자동 체인
+
+```mermaid
+flowchart LR
+    A["원문 PDF/HWPX"] --> B["nda-triage<br/>(NDA인 경우)"]
+    B --> C["contract-review<br/>조항별 리스크"]
+    C --> D["legal-risk<br/>발생가능성·영향도 매트릭스"]
+    D --> E["compliance-check<br/>규제 검증"]
+    E --> F["docx-generator<br/>수정안 + 1페이지 요약"]
+    F --> G["ai-slop-reviewer<br/>어투 정리"]
+    style F fill:#fbf0dc,stroke:#c47b2a
 ```
-legal-risk 로 각 리스크 항목의 발생가능성 × 영향도를 2x2 매트릭스로.
-상위 3개 리스크는 협상 포인트로 분리.
-```
 
-### 4. 수정본 DOCX
+### 산출물
 
-{{< terminal title="claude — cowork" >}}
-> 상위 3개 조항에 대한 대체 조항 문구를 docx 로 만들어줘.
-  - 원문 인용 + 우리 수정안 + 근거 (조문·판례)
-  - 추적 변경처럼 보이게 표로
-{{< /terminal >}}
+- **리스크 표**: 조항 번호 · 요약 · 리스크 · 우리측 대응 (자동)
+- **2×2 영향도 매트릭스**: 발생가능성 × 영향도. 상위 3개 협상 포인트 자동 표시
+- **수정본 DOCX**: 원문 인용 + 수정안 + 근거 (조문·판례), 추적 변경 형식 표
+- **1페이지 결재 요약**: 핵심 리스크 3개 + 권장 액션 + 승인 필요 사항
+- **자동 면책 문구**: "본 보고서는 1차 검토 가이드이며 최종 법률자문은 변호사 검토를 거쳐야 합니다"
 
-### 5. 1페이지 결재용 요약
+### 변형 시나리오 — 한 줄로 다양하게
 
-{{< terminal title="claude — cowork" >}}
-> 방금 검토를 경영진 결재용으로 1페이지 요약해줘.
-핵심 리스크 3개 + 권장 액션 + 승인 필요 사항.
-ai-slop-reviewer 로 끝에 다듬어줘.
-{{< /terminal >}}
+| 한 줄 요청 | 자동 체인 분기 |
+|---|---|
+| "이 NDA 위험도만 알려줘" | nda-triage → legal-risk (요약만) |
+| "조항별 표만 만들어줘" | contract-review → docx-generator |
+| "협상용 수정안만 필요해" | contract-review → 수정안 DOCX |
+| "경영진 결재용 1페이지" | 1페이지 요약만 |
 
 ## 자주 겪는 이슈
 

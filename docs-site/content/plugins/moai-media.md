@@ -185,19 +185,33 @@ media-moodboard → media-gpt-image2-builder → media-model-router
 - **Day 3 캠프 운영**: 4명×5조 = 20명 시차 호출(5분 간격, 총 100분 윈도우). Higgsfield 워크스페이스 사전 비용 충전 **1.5배** 권장 (PDF §6.9).
 - `fal-gateway`는 단일 `FAL_KEY`로 다양한 모델을 사용할 수 있어 테스트 단계에서 유용합니다.
 
-## 빠른 사용 예
+## 빠른 사용 예 (한 줄 요청 + 시스템 자동 인터뷰)
 
-```text
-> 인스타 6슬라이드 카드뉴스에 쓸 이미지 6장을 3:4 비율로 만들어줘.
-주제는 '프리랜서 3.3% 원천징수 쉽게 정리'.
-```
+> 주제와 의도만 한 줄로. 비율·스타일·매수는 시스템이 인터뷰로 수집합니다. ([사용 패턴 가이드](../../cowork/patterns/) 참조)
 
-```text
-> 무드보드 만들어줘 — 비건 스킨케어, 따뜻한 톤
-> 광고 이미지 5장 만들어줘 — 무선이어폰, 직장인 타겟
-> 광고 영상 만들어줘 — 의류 카테고리, 의심차단형 후크
-> 채널별 광고 소재 만들어줘 — 메타+네이버+카카오
-```
+{{< terminal title="claude — cowork" >}}
+> 프리랜서 원천징수 카드뉴스 만들어줘
+{{< /terminal >}}
+
+→ 시스템 인터뷰: 슬라이드 수·비율·톤 → `card-news → nano-banana` 자동
+
+{{< terminal title="claude — cowork" >}}
+> 비건 스킨케어 무드보드 만들어줘
+{{< /terminal >}}
+
+→ 시스템 인터뷰: 색감·레퍼런스 5장 추천 → `media-moodboard`
+
+{{< terminal title="claude — cowork" >}}
+> 스킨케어 광고 영상 풀세트 만들어줘
+{{< /terminal >}}
+
+→ 시스템 인터뷰: 카테고리·후크 유형·채널 → Day 3 풀세트 (`moodboard → gpt-image2 → model-router → channel-ad-packager → ai-disclosure`) 자동
+
+{{< terminal title="claude — cowork" >}}
+> 메타 + 네이버 GFA + 카카오 채널 변환해줘
+{{< /terminal >}}
+
+→ `media-channel-ad-packager` 단일 호출 (이미 만든 소재 채널별 규격 .zip)
 
 ## 다음 단계
 
