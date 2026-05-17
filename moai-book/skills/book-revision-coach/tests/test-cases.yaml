@@ -1,0 +1,126 @@
+version: 2.9.0
+skill: book-revision-coach
+
+test_cases:
+  - id: TC-01-7-step-checklist
+    name: 7 단계 점검 차례 진행
+    input: |
+      book-chapter-writer 초고 2장 퇴고.
+    expected:
+      - steps: [어법맞춤법, 문체일관성, 논리흐름, 인용각주, 분량정리, 시각자료, 일관성최종]
+      - sequential_execution: true
+    pass_criteria:
+      - all_7_steps_executed: true
+      - 단계별_보고서_present: true
+
+  - id: TC-02-genre-style-consistency
+    name: 4 장르 문체 일관성 검증
+    input: |
+      실용서 본문에 갑자기 소설 묘사 등장.
+    expected:
+      - violation_detected: true
+      - reframe: 실용서_프리셋_복귀_권장
+    pass_criteria:
+      - style_violation_caught: true
+
+  - id: TC-03-5-element-chapter-check
+    name: 꼭지 5 요소 점검 (훅·본문·클라이맥스·정리·연결)
+    input: |
+      각 꼭지의 5 요소 점검.
+    expected:
+      - elements_checked: [훅, 본문, 클라이맥스, 정리, 다음연결]
+      - per_꼭지_status: 표_형식
+    pass_criteria:
+      - 5_elements_status_per_chapter: true
+
+  - id: TC-04-citation-completeness
+    name: 인용·각주 정합성
+    input: |
+      통계·인터뷰·인터넷 자료 인용 점검.
+    expected:
+      - check_items: [출처명시, 양식정확, 각주순서, 저작권]
+      - verbatim_quote_rejection: true
+    pass_criteria:
+      - all_citations_verified: true
+
+  - id: TC-05-volume-balance
+    name: 분량 균형 (±20%)
+    input: |
+      2꼭지 7매 (목표 4매) → 75% 폭주.
+    expected:
+      - warning_raised: true
+      - recommendation: 꼭지_분리
+    pass_criteria:
+      - volume_warning: true
+      - split_recommended: true
+
+  - id: TC-06-visual-asset-integrity
+    name: 시각 자료 정합성
+    input: |
+      도표 2-2 본문 표시는 있으나 별첨 파일 없음.
+    expected:
+      - missing_attachment_detected: true
+      - dpi_check: 300_이상
+    pass_criteria:
+      - asset_completeness_verified: true
+
+  - id: TC-07-terminology-consistency
+    name: 용어·표기 일관성
+    input: |
+      "데이타" / "데이터" / "Next.js" / "next.js" 혼용 검출.
+    expected:
+      - corrections:
+        - 데이타: 데이터
+        - next.js: Next.js
+    pass_criteria:
+      - terminology_unified: true
+
+  - id: TC-08-publisher-style-compliance
+    name: 출판사 양식 준수 (어미 통일)
+    input: |
+      한빛미디어 투고 본문 "~다" / "~합니다" 혼용.
+    expected:
+      - publisher_preference: 한빛미디어_~다
+      - correction_applied: "~합니다 → ~다"
+    pass_criteria:
+      - publisher_style_aligned: true
+
+  - id: TC-09-chain-recommendation
+    name: 4 체인 검수 순서 권장
+    input: |
+      퇴고 완료. 다음 단계는?
+    expected:
+      - chain:
+        - korean-spell-check (정밀 맞춤법)
+        - humanize-korean (AI 티 — 필수)
+        - ai-slop-reviewer (최종 — 필수)
+        - book-proposal-writer (투고 제안서)
+    pass_criteria:
+      - chain_explicit: true
+      - humanize_ai_slop_mandatory: true
+
+rubric_anchors:
+  correctness:
+    target_score: ">= 0.80"
+    checks:
+      - kookrip_grammar_rule_referenced
+      - external_korean_표기법_accurate
+      - copyright_law_referenced
+  completeness:
+    target_score: ">= 0.85"
+    checks:
+      - 7_step_workflow_complete
+      - 4_genre_style_consistency_check
+      - revision_priority_p1_p2_p3
+      - chain_to_4_post_skills_clear
+  clarity:
+    target_score: ">= 0.80"
+    checks:
+      - per_step_check_table_clear
+      - report_template_complete
+      - editor_perspective_explained
+  efficiency:
+    target_score: ">= 0.70"
+    checks:
+      - token_count_reasonable
+      - check_priority_p1_p2_p3_concise

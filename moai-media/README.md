@@ -1,19 +1,33 @@
 # moai-media
 
-> AI 미디어 스튜디오 — 이미지·영상·음성 통합 생성 + **Day 3 한국 이커머스 광고 풀세트** (v2.3.0 신규)
+> AI 미디어 스튜디오 — 이미지·영상·음성 통합 생성 + Day 3 한국 이커머스 광고 풀세트 + **이미지 프롬프트 빌더 3종** (v2.9.0 신규)
 
-[![버전](https://img.shields.io/badge/version-2.3.0-blue)](../CHANGELOG.md)
+[![버전](https://img.shields.io/badge/version-2.9.0-blue)](../CHANGELOG.md)
 [![라이선스](https://img.shields.io/badge/license-MIT-green)](../LICENSE)
-[![스킬](https://img.shields.io/badge/skills-13-success)](#스킬-카탈로그-13종)
+[![스킬](https://img.shields.io/badge/skills-16-success)](#스킬-카탈로그-16종)
 
 ## 개요
 
 `moai-media`는 AI 크리에이터·마케터·이커머스 셀러를 위한 **미디어 생성 단일 창구**입니다.
 카드뉴스·인스타 피드·숏폼 영상·팟캐스트·브랜드 캠페인부터 **이커머스 광고 풀세트**(무드보드·한글 타이포 5장·메인 영상·보조 컷 2개·채널별 변환·AI 표기·캔바 매직 레이어)까지 하나의 플러그인에서 해결합니다.
 
-**v2.3.0부터** "모두의 커머스 3일 마스터 캠프" Day 3(광고 풀세트) 전용 신규 6스킬을 추가했습니다. 카테고리 매트릭스 기반 자동 라우팅(의류=Kling 3 / 뷰티=Veo 3 / 건강식품=Kling 3 / 생활용품=Seedance)으로 4명×5조 시차 호출(5분 간격)로 Higgsfield 동시 호출 비용 폭증을 방지합니다.
+**v2.9.0 신규** — OpenAI GPT-image-2 / Google Gemini 3 Pro Image (Nano Banana Pro) / Midjourney v8.1 공식 프롬프트 가이드를 그대로 적용한 **프롬프트 빌더 3종**. AskUserQuestion 프리셋(제품샷·인물·일러스트·풍경) + 미세조정 라운드로 컨텍스트를 수집해 3개 모델 프롬프트를 동시 출력 (자기 모델 메인 + 다른 2개 보조). 사용자가 ChatGPT·Google AI Studio·Discord에서 그대로 복붙 가능.
 
-## 스킬 카탈로그 (13종)
+**v2.3.0** — "모두의 커머스 3일 마스터 캠프" Day 3(광고 풀세트) 전용 신규 6스킬. 카테고리 매트릭스 기반 자동 라우팅(의류=Kling 3 / 뷰티=Veo 3 / 건강식품=Kling 3 / 생활용품=Seedance)으로 4명×5조 시차 호출(5분 간격)로 Higgsfield 동시 호출 비용 폭증을 방지합니다.
+
+## 스킬 카탈로그 (16종)
+
+### 이미지 프롬프트 빌더 (3 신규) — v2.9.0
+
+| 스킬 | 한글명 | 공식 가이드 | 산출물 |
+|---|---|---|---|
+| [`gpt-image-2-prompt`](skills/gpt-image-2-prompt/SKILL.md) | GPT 프롬프트 빌더 | [OpenAI Cookbook](https://developers.openai.com/cookbook/examples/multimodal/image-gen-models-prompting-guide) | 6-Block 구조 자연어 단락 + 편집 2-column 로직 + 텍스트 verbatim 다국어 |
+| [`gemini-3-image-prompt`](skills/gemini-3-image-prompt/SKILL.md) | Gemini 프롬프트 빌더 | [Google AI for Developers](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image-preview) | 5-component 영문 문장 + Creative Director 어조 + 14 reference + Search Grounding |
+| [`midjourney-v8-prompt`](skills/midjourney-v8-prompt/SKILL.md) | MJ 프롬프트 빌더 | [Midjourney Parameter List](https://docs.midjourney.com/hc/en-us/articles/32859204029709-Parameter-List) | 키워드+`--파라미터` + `--sref`/`--oref`/`--cw`/`--p` + 6대 비용·동작 함정 자동 검사 |
+
+> 본 3 스킬은 **프롬프트 텍스트만 산출**합니다. 실제 이미지 생성은 페어 스킬(`nano-banana`·`image-gen`·`media-gpt-image2-builder`)이 담당하거나 사용자가 외부 도구(ChatGPT·Google AI Studio·Discord `/imagine`)에서 직접 실행합니다. 책임 경계가 명확해 페어로 공존합니다.
+
+## 기존 스킬 카탈로그
 
 ### 범용 미디어 생성 (7) — v1.x 이전부터
 
@@ -46,9 +60,12 @@
 
 | 상황 | 우선 스킬 |
 |---|---|
-| 한국어 대형 타이포그래피 (카드뉴스·포스터·썸네일) | **`nano-banana`** ⭐ |
-| 이커머스 광고 한글 타이포 5장 세트 (Day 3) | **`media-gpt-image2-builder`** 🆕 |
-| 디자인 방향성 수립 (색·톤·레퍼런스) | **`media-moodboard`** 🆕 |
+| **GPT/ChatGPT용 프롬프트 텍스트 작성** | **`gpt-image-2-prompt`** 🆕 v2.9.0 |
+| **Gemini/나노바나나용 프롬프트 텍스트 작성** | **`gemini-3-image-prompt`** 🆕 v2.9.0 |
+| **Midjourney용 프롬프트 텍스트 작성** | **`midjourney-v8-prompt`** 🆕 v2.9.0 |
+| 한국어 대형 타이포그래피 (카드뉴스·포스터·썸네일) — 실제 생성 | **`nano-banana`** ⭐ |
+| 이커머스 광고 한글 타이포 5장 세트 (Day 3) — 실제 생성 | **`media-gpt-image2-builder`** |
+| 디자인 방향성 수립 (색·톤·레퍼런스) | **`media-moodboard`** |
 | 시네마틱·제품 사진·배경 (텍스트 없음) | `image-gen` |
 | 로고·벡터·브랜드 일관 컬러 | `fal-gateway` (Recraft V3) |
 | 일관된 캐릭터 시리즈 | `character-mgmt` |

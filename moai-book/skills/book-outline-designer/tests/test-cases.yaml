@@ -1,0 +1,137 @@
+version: 2.9.0
+skill: book-outline-designer
+
+test_cases:
+  - id: TC-01-3-level-tree
+    name: 3 레벨 트리 (부·장·꼭지)
+    input: |
+      "30일 챌린지로 시작하는 부업" 책 목차 설계. 총 300매·3부 구조.
+    expected:
+      - levels: [부, 장, 꼭지]
+      - 부_count: "3~4"
+      - 장_per_부: "4~6"
+      - 꼭지_per_장: "3~6"
+      - mece_compliance: true
+    pass_criteria:
+      - all_3_levels_present: true
+      - mece_no_duplicate_no_missing: true
+
+  - id: TC-02-volume-distribution
+    name: 장르별 분량 배분 (실용서 300매)
+    input: |
+      실용서 300매, 3부 구조. 분량 배분 가이드 적용.
+    expected:
+      - 총분량: 300매
+      - 부당_분량: "60~90매"
+      - 장당_분량: "12~20매"
+      - 꼭지당_분량: "3~5매"
+      - balance_check: "±20% 범위"
+    pass_criteria:
+      - distribution_within_range: true
+      - balance_warning_if_outside: true
+
+  - id: TC-03-chapter-synopsis-5-elements
+    name: 챕터 시놉시스 5 요소
+    input: |
+      각 장에 대한 시놉시스 작성.
+    expected:
+      - elements: [도입, 약속, 본문요약, 사례인용, 다음장연결]
+      - 분량: "200~400자"
+    pass_criteria:
+      - all_5_elements_present: true
+      - 자수_범위_준수: true
+
+  - id: TC-04-persona-journey-validation
+    name: 페르소나 여정 4단계 검증
+    input: |
+      목차 완성 후 페르소나 여정 시뮬레이션.
+    expected:
+      - checkpoints: [1부_끝, 중반, 마지막부]
+      - validation_criteria:
+        - 1부_끝: "흥미·신뢰 60% 이상"
+        - 중반: "JTBD 기능·감정 50% 이상"
+        - 마지막부: "JTBD 3 차원 모두 도달"
+    pass_criteria:
+      - all_3_checkpoints_evaluated: true
+      - retry_on_fail: Step1_재설계
+
+  - id: TC-05-genre-preset-tech
+    name: 기술서 4부 구조 자동 분기
+    input: |
+      "Next.js 15 + shadcn/ui 실전 가이드" 12 챕터·600매.
+    expected:
+      - genre_preset: 기술·전문서·IT
+      - 부_pattern: "기초·핵심기능·실전프로젝트·심화"
+      - 꼭지_안_구조: [개념, 코드예제, 따라하기, 정리]
+      - 시각자료_count: "꼭지당 3~6개"
+      - 부록: [환경설정, 용어사전, GitHub]
+    pass_criteria:
+      - tech_specific_structure: true
+
+  - id: TC-06-genre-preset-fiction
+    name: 소설 장 단위 (꼭지 없음)
+    input: |
+      장편 소설 목차 설계.
+    expected:
+      - genre_preset: 소설·문학
+      - levels: [부, 장]  # 꼭지 없음
+      - 장_count: "10~30"
+      - 시놉시스_구조: [3막, 5막, 7막]
+      - 인물카드_required: true
+      - 시점_명시: true
+    pass_criteria:
+      - no_꼭지_level: true
+      - narrative_structure_present: true
+
+  - id: TC-07-publisher-convention
+    name: 한국 출판사별 양식 적용
+    input: |
+      한빛미디어 투고용 목차로 변환해줘.
+    expected:
+      - publisher: 한빛미디어
+      - convention_applied:
+        - 부_count: 4
+        - 장당_분량: "25~50매"
+        - 코드_도표_풍부: true
+        - 부록_GitHub: true
+    pass_criteria:
+      - publisher_specific_format: true
+
+  - id: TC-08-volume-overflow-detection
+    name: 분량 폭주 검출
+    input: |
+      한 장이 표준의 1.5배(예: 실용서 30매)를 초과.
+    expected:
+      - warning_raised: true
+      - recommendation: 장_분할
+    pass_criteria:
+      - overflow_detected: true
+      - split_recommended: true
+
+rubric_anchors:
+  correctness:
+    target_score: ">= 0.80"
+    checks:
+      - KPIPA_분량_standard_accurate
+      - korean_publisher_outline_format_accurate
+      - 200자_원고지_기준_정확
+  completeness:
+    target_score: ">= 0.85"
+    checks:
+      - 4_step_workflow_complete
+      - 4_genre_preset_complete
+      - 3_level_tree_complete
+      - 5_element_synopsis_complete
+      - persona_journey_4_validation_complete
+  clarity:
+    target_score: ">= 0.80"
+    checks:
+      - tree_visualization_clear
+      - genre_preset_table_clear
+      - validation_checklist_clear
+  efficiency:
+    target_score: ">= 0.70"
+    checks:
+      - token_count_reasonable
+      - 5_principles_decision_tree
+      - chain_to_next_skills_clear

@@ -8,16 +8,16 @@ tags: ["moai-education"]
 
 # moai-education
 
-> 강의 설계부터 시험 출제, **3일 21세션 캠프 운영 실무**(v2.3.0+)까지 교육 실무 5개 스킬을 제공합니다.
+> 강의 설계부터 시험 출제, **3일 21세션 캠프 운영 실무**까지 교육 실무 5개 스킬을 제공합니다.
 
 ```mermaid
 flowchart LR
-    subgraph 기존["기존 (3)"]
+    subgraph 기존["강의 설계 (3)"]
         A["curriculum-designer<br/>강의 목차 설계"]
         B["assessment-creator<br/>시험·모의고사 출제"]
         C["research-assistant<br/>학술 리서치"]
     end
-    subgraph 신규["v2.3.0 신규 (2)"]
+    subgraph 신규["캠프 운영 (2)"]
         D["course-curriculum-design<br/>3일 캠프 운영 매뉴얼"]
         E["course-followup-sequence<br/>30일 후기 자산화"]
     end
@@ -30,7 +30,7 @@ flowchart LR
 
 ## 무엇을 하는 플러그인인가
 
-`moai-education` (v2.3.0)는 온라인 강의 목차·학습 목표·역량 갭 분석, 시험·퀴즈·모의고사, 자격증·공무원 시험 대비 문항, 학술 리서치·문헌 검토·논문 구조부터 **모두의 커머스 3일 마스터 캠프 같은 본 캠프 운영 실무 매뉴얼**(시간표·강사 동선·D-7 사전 준비물·리스크 Plan B), **강의 후 30일 후기 자산화 시퀀스**(D+1·D+3·D+7·D+14·D+30 카피 5종)까지 교육 콘텐츠 제작과 운영 전반을 자동화합니다.
+`moai-education`는 온라인 강의 목차·학습 목표·역량 갭 분석, 시험·퀴즈·모의고사, 자격증·공무원 시험 대비 문항, 학술 리서치·문헌 검토·논문 구조부터 **모두의 커머스 3일 마스터 캠프 같은 본 캠프 운영 실무 매뉴얼**(시간표·강사 동선·D-7 사전 준비물·리스크 Plan B), **강의 후 30일 후기 자산화 시퀀스**(D+1·D+3·D+7·D+14·D+30 카피 5종)까지 교육 콘텐츠 제작과 운영 전반을 자동화합니다.
 
 ## 설치
 
@@ -53,7 +53,7 @@ flowchart LR
 | `assessment-creator` | 시험·퀴즈·모의고사, 자격증·공무원 대비 |
 | `research-assistant` | 학술 리서치, 문헌 검토, 논문 구조 |
 
-### v2.3.0 신규 (2) — 본 캠프 운영 실무
+### 본 캠프 운영 실무
 
 | 스킬 | 용도 | 출력 |
 |---|---|---|
@@ -74,7 +74,7 @@ curriculum-designer → docx-generator → pptx-designer → ai-slop-reviewer
 assessment-creator → xlsx-creator(문제지) → docx-generator(해설)
 ```
 
-**3일 캠프 운영 풀 체인 (v2.3.0 신규)**
+**3일 캠프 운영 풀 체인**
 
 ```text
 [D-30]  course-curriculum-design → moai-office:docx-generator(.docx 운영 매뉴얼)

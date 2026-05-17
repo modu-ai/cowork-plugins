@@ -1,0 +1,109 @@
+# gpt-image-2-prompt — 테스트 케이스
+# 사용: skill-tester가 본 YAML을 읽어 A/B 또는 회귀 테스트를 실행합니다.
+
+tests:
+  - name: happy-path-product-shot
+    description: 제품샷 프리셋 한 줄 입력 → 3개 모델 프롬프트 정상 출력
+    prompt: "GPT 이미지 프롬프트 만들어줘. 매트 블랙 머그 'MONDAY' 글자 들어간 제품샷, 1:1"
+    expected_output:
+      format: markdown
+      contains:
+        - "### 1) GPT-image-2"
+        - "### 2) Gemini 3 Pro Image"
+        - "### 3) Midjourney v8.1"
+        - '"MONDAY"'           # verbatim 따옴표 유지
+        - "--ar 1:1"            # MJ 화면비
+        - "quality"             # GPT 권장 파라미터
+        - "aspect_ratio"        # Gemini 권장 파라미터
+      not_contains:
+        - "metadata:"           # frontmatter에 metadata 블록 노출 금지
+        - "TODO"                # 미완성 마커 금지
+        - "<placeholder>"       # 슬롯 미치환 금지
+      assertion:
+        - 3개 모델 모두 코드블록 출력
+        - GPT 프롬프트가 6-Block 단락 어조 (Subject·Action·Scene·Composition·Lighting·Style)
+        - Gemini 프롬프트가 5-component 마침표 구분
+        - MJ 프롬프트가 키워드 콤마 + --파라미터
+
+  - name: happy-path-portrait-9-16
+    description: 인물 프리셋 + 9:16 화면비 → 3개 모델 프롬프트
+    prompt: "ChatGPT 이미지 프롬프트, 30대 한국 여성 카페에서 노트북 보는 라이프스타일 컷, 9:16"
+    expected_output:
+      format: markdown
+      contains:
+        - "30-year-old Korean woman"
+        - "9:16"
+        - "85mm"                # 인물 프리셋 권장 렌즈
+        - "shallow depth of field"
+      not_contains:
+        - "metadata:"
+        - "1:1"                 # 사용자가 9:16 명시했으므로 1:1 등장 금지
+      assertion:
+        - 인물 프리셋 적용
+        - 카페 배경 + 노트북 슬롯 반영
+        - 화면비 일관
+
+  - name: edit-mode-2-column-logic
+    description: 편집 모드 → Change/Preserve/Constraints 3블록 출력
+    prompt: "기존 머그 이미지에서 머그 색만 빨강으로 바꾸는 GPT-image-2 프롬프트"
+    expected_output:
+      format: markdown
+      contains:
+        - "Change:"
+        - "Preserve:"
+        - "Constraints:"
+        - "no logo drift"       # 표준 금지 절
+      not_contains:
+        - "Gemini"              # 편집 모드는 GPT만 출력 (Gemini·MJ 편집 메커니즘 다름)
+        - "Midjourney"
+      assertion:
+        - 3-block 편집 구조 준수
+        - Preserve에 face/pose/lighting/framing/text 중 적절 항목 명시
+
+  - name: text-rendering-korean
+    description: 한국어 텍스트 + verbatim 지시 보존
+    prompt: "GPT 프롬프트로 '신선한 시작' 한글 카피 들어간 카드뉴스 표지"
+    expected_output:
+      format: markdown
+      contains:
+        - '"신선한 시작"'        # 한글 verbatim
+        - "verbatim"             # verbatim 지시어
+        - "Hangul"               # 한글 렌더링 가이드 인용
+      not_contains:
+        - "신선한시작"           # 띄어쓰기 누락 금지
+      assertion:
+        - 한글 텍스트 따옴표 + verbatim 명시
+        - 폰트 무게·정렬·색 중 ≥ 2개 명시
+
+  - name: edge-case-ambiguous-input
+    description: 모호한 한 줄 입력 → AskUserQuestion 라운드 진입
+    prompt: "이미지 프롬프트 만들어줘"
+    expected_output:
+      format: askuserquestion
+      assertion:
+        - AskUserQuestion 호출 (Round 1 프리셋 선택)
+        - 4 옵션 + Other 자동 제공
+        - 첫 옵션에 "(권장)" 라벨
+
+# 루브릭 anchor (skill-tester의 §스코어링 루브릭 참조)
+rubric_targets:
+  correctness: 0.80   # 6-Block / 5-component / 키워드+파라미터 구조 준수
+  completeness: 0.75  # 3개 모델 모두 출력 + 화면비 매핑 + 텍스트 verbatim
+  clarity: 0.75       # 한국어 해설 + 페어 스킬 안내
+  efficiency: 0.70    # 라운드 수 ≤ 3, 질문 ≤ 7, 토큰 효율
+  weighted_pass_threshold: 0.70
+
+# 회귀 테스트 (Mode 2)
+regression:
+  baseline_version: "2.9.0"
+  changed_files:
+    - SKILL.md
+    - references/prompt-blocks.md
+    - references/parameter-cheatsheet.md
+    - references/editing-patterns.md
+    - references/text-rendering.md
+    - presets/product-shot.md
+    - presets/portrait.md
+    - presets/illustration.md
+    - presets/landscape.md
+  expected_diff: "신규 스킬 — 회귀 베이스라인 없음 (initial release)"

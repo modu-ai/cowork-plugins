@@ -1,0 +1,100 @@
+# gemini-3-image-prompt — 테스트 케이스
+
+tests:
+  - name: happy-path-product-shot
+    description: 제품샷 프리셋 + 1:1 → Gemini 5-component 메인 + GPT·MJ 보조
+    prompt: "Gemini 이미지 프롬프트 만들어줘. 매트 블랙 머그 'MONDAY' 글자 들어간 제품샷, 1:1"
+    expected_output:
+      format: markdown
+      contains:
+        - "### 1) Gemini 3 Pro Image"
+        - "### 2) GPT-image-2"
+        - "### 3) Midjourney v8.1"
+        - '"MONDAY"'
+        - "aspect_ratio"
+        - "Thinking"               # mode 권장 표시
+        - "SynthID"                # 워터마크 안내
+      not_contains:
+        - "metadata:"
+        - "TODO"
+        - "<placeholder>"
+      assertion:
+        - Gemini 5-component 마침표 구분 (component당 영문 문장)
+        - 카메라 하드웨어 1개 이상 명시
+        - SynthID 워터마크 한국어 해설 포함
+
+  - name: happy-path-portrait-21-9
+    description: 인물 프리셋 + 21:9 → Gemini 전용 비율 안내
+    prompt: "Gemini 3 Pro Image 시네마틱 인물 프롬프트, 21:9 울트라와이드"
+    expected_output:
+      format: markdown
+      contains:
+        - "21:9"
+        - "Gemini"                  # Gemini만 21:9 지원 명시
+      not_contains:
+        - "metadata:"
+      assertion:
+        - 21:9가 Gemini 전용임을 한국어 해설에 명시
+        - MJ는 21:9 미지원이거나 다른 비율로 fallback 표시
+
+  - name: search-grounding-infographic
+    description: 인포그래픽 → Search Grounding 활성화 권장
+    prompt: "나노바나나 프롬프트로 2026년 한국 SNS 사용자 수 비교 인포그래픽"
+    expected_output:
+      format: markdown
+      contains:
+        - "Search Grounding"
+        - "Thinking"
+        - "KOSIS"                   # 데이터 출처 권장 예
+        - "verbatim"
+        - "cross-reference"
+      not_contains:
+        - "metadata:"
+      assertion:
+        - Search Grounding 활성화 권장
+        - Thinking Mode 권장
+        - 데이터 검증 문구 ("cross-reference" 등) 포함
+
+  - name: reference-images-character
+    description: 캐릭터 일관성 → 14 reference image 슬롯 전략 안내
+    prompt: "Gemini 프롬프트로 브랜드 캐릭터 마스코트를 다른 장면에 등장시키기"
+    expected_output:
+      format: markdown
+      contains:
+        - "reference"
+        - "Image 1"                  # reference 라벨링
+        - "preserve"                 # 일관성 키워드
+      assertion:
+        - reference 이미지 슬롯 전략 안내
+        - "Image N" 라벨링 패턴 출력
+
+  - name: edge-case-ambiguous-input
+    description: 모호한 입력 → AskUserQuestion 라운드 진입
+    prompt: "Gemini 이미지 프롬프트 만들어줘"
+    expected_output:
+      format: askuserquestion
+      assertion:
+        - AskUserQuestion 호출 (Round 1 프리셋 선택)
+        - 4 옵션 + Other
+        - 첫 옵션 "(권장)" 라벨
+
+rubric_targets:
+  correctness: 0.80
+  completeness: 0.75
+  clarity: 0.75
+  efficiency: 0.70
+  weighted_pass_threshold: 0.70
+
+regression:
+  baseline_version: "2.9.0"
+  changed_files:
+    - SKILL.md
+    - references/prompt-blocks.md
+    - references/parameter-cheatsheet.md
+    - references/reference-images.md
+    - references/search-grounding.md
+    - presets/product-shot.md
+    - presets/portrait.md
+    - presets/illustration.md
+    - presets/landscape.md
+  expected_diff: "신규 스킬 — 회귀 베이스라인 없음 (initial release)"

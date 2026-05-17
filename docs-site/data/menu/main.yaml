@@ -5,6 +5,8 @@ main:
     sub:
       - name: MoAI-Cowork 소개
         ref: /
+      - name: 시작하기 홈
+        ref: /getting-started
       - name: 설치 및 등록
         ref: /getting-started/install
       - name: 첫 작업
@@ -12,8 +14,6 @@ main:
         isNew: true
       - name: 빠른 시작
         ref: /getting-started/quick-start
-      - name: 이 문서에 대하여
-        ref: /about
 
   - name: 코워크
     icon: book
@@ -23,18 +23,31 @@ main:
         ref: /cowork
       - name: Cowork 소개
         ref: /cowork/intro
+      # ── 1. 입문 ──
       - name: 설치와 요금제
         ref: /cowork/install
+      - name: 설정하기
+        ref: /cowork/setup
+      - name: 사용 패턴 가이드
+        ref: /cowork/patterns
+        isNew: true
       - name: 첫 작업 실행
         ref: /cowork/first-task
+      - name: 용어집
+        ref: /cowork/glossary
+      # ── 2. 안전 ──
       - name: 안전하게 사용
         ref: /cowork/safety
+      - name: 폴더와 권한
+        ref: /cowork/permissions
+      # ── 3. 활용 ──
       - name: 프로젝트와 메모리
         ref: /cowork/projects-memory
       - name: 스킬 사용법
         ref: /cowork/skills
       - name: 플러그인 사용
         ref: /cowork/plugins
+      # ── 4. 확장 ──
       - name: 커넥터·MCP
         ref: /cowork/connectors-mcp
       - name: 예약 작업
@@ -42,6 +55,7 @@ main:
       - name: 컴퓨터 사용
         ref: /cowork/computer-use
         isNew: true
+      # ── 5. 운영 ──
       - name: 자주 묻는 질문
         ref: /cowork/faq
       - name: 트러블슈팅
@@ -50,13 +64,12 @@ main:
         ref: /cowork/constraints
       - name: Team·Enterprise
         ref: /cowork/enterprise
-      - name: 용어집
-        ref: /cowork/glossary
 
   - name: 플러그인
     icon: plug
-    defaultOpen: true
     sub:
+      - name: 카탈로그
+        ref: /plugins
       - name: 빠른 시작
         ref: /plugins/quick-start
       - name: 코어-필수
@@ -127,6 +140,10 @@ main:
         ref: /plugins/moai-sales
         count: 1
         isNew: true
+      - name: 출판
+        ref: /plugins/moai-book
+        count: 8
+        isNew: true
 
   - name: 쿡북
     icon: chef
@@ -191,9 +208,29 @@ main:
     sub:
       - name: 릴리스 홈
         ref: /releases
+      - name: v2.10.x
+        ref: /releases/v2.10
+        isNew: true
+      - name: v2.9.x
+        ref: /releases/v2.9
+      - name: v2.8.x
+        ref: /releases/v2.8
+      - name: v2.7.x
+        ref: /releases/v2.7
+      - name: v2.6.x
+        ref: /releases/v2.6
+      - name: v2.5.x
+        ref: /releases/v2.5
+      - name: v2.4.x
+        ref: /releases/v2.4
+      - name: v2.3.x
+        ref: /releases/v2.3
+      - name: v2.2.x
+        ref: /releases/v2.2
+      - name: v2.1.x
+        ref: /releases/v2.1
       - name: v2.0.x
         ref: /releases/v2.0
-        isNew: true
       - name: v1.6.x
         ref: /releases/v1.6
       - name: v1.5.x

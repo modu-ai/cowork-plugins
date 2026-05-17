@@ -1,0 +1,135 @@
+version: 2.9.0
+skill: book-chapter-writer
+
+test_cases:
+  - id: TC-01-5-elements
+    name: 꼭지 5 요소 (훅·본문·클라이맥스·정리·연결)
+    input: |
+      "30일 챌린지 시작하기" 꼭지 본문 작성. 4매.
+    expected:
+      - elements: [훅, 본문, 클라이맥스, 정리, 다음연결]
+      - 분량_비중: ["10%", "70%", "10%", "5%", "5%"]
+    pass_criteria:
+      - all_5_elements_present: true
+
+  - id: TC-02-genre-style-practical
+    name: 실용서 문체 적용
+    input: |
+      "30일 챌린지" 부업서 꼭지.
+    expected:
+      - style:
+        - 어미: "~다 / ~합니다 혼용"
+        - 문장_길이: "짧게 (30~50자)"
+        - 단락_길이: "3~5 문장"
+        - 시각자료: "꼭지당 2~4개"
+        - 어조: "친근·격려"
+    pass_criteria:
+      - practical_style_applied: true
+
+  - id: TC-03-genre-style-tech
+    name: 기술서 문체 (코드 포함)
+    input: |
+      "Next.js App Router" 꼭지. 8매.
+    expected:
+      - style:
+        - 어미: "~다 일관"
+        - 시각자료: "꼭지당 3~6개"
+        - code_blocks: "3개 이상"
+        - 코드_언어_지정: true
+    pass_criteria:
+      - tech_style_with_code: true
+
+  - id: TC-04-genre-style-essay
+    name: 인문·에세이 문체 (서사·은유)
+    input: |
+      "새벽 5시, 카페에서 만난 나" 에세이 1장 본문. 5매.
+    expected:
+      - style:
+        - 문체: "서사·은유·문체 일관성"
+        - 어미: "작가 자유"
+        - 시각자료: "적음"
+        - 어조: "사색적·고백적"
+    pass_criteria:
+      - narrative_style_applied: true
+
+  - id: TC-05-genre-style-fiction
+    name: 소설 문체 (시점·인물 일관성)
+    input: |
+      장편 소설 1장 본문 작성.
+    expected:
+      - style:
+        - 시점_일관성: true
+        - 인물_말투_일관성: true
+        - 묘사_중심: true
+    pass_criteria:
+      - fiction_style_applied: true
+
+  - id: TC-06-200ja-원고지-count
+    name: 200자 원고지 분량 카운트
+    input: |
+      목표 4매 본문 작성. 분량 카운트 확인.
+    expected:
+      - 분량_표시: "___자 (200자 원고지 ___매)"
+      - 변환_공식: "워드 카운트 ÷ 4 ≈ 매수"
+      - 허용_오차: "±20%"
+    pass_criteria:
+      - 분량_meta_표시: true
+
+  - id: TC-07-citation-handling
+    name: 인용·각주 처리
+    input: |
+      통계 데이터·인터뷰 인용 포함 본문 작성.
+    expected:
+      - citation_types: [짧은인용_따옴표, 긴인용_들여쓰기, 통계_각주, 인터뷰_매체_날짜, 인터넷_URL_접속일]
+      - 각주_정리표: "꼭지 끝"
+    pass_criteria:
+      - all_citations_referenced: true
+
+  - id: TC-08-verbatim-quote-rejection
+    name: 외부 참고 자료 직접 인용 거부
+    input: |
+      vault에서 본 카피라이터 예시 문장 그대로 사용.
+    expected:
+      - reject: true
+      - reframe: 개념만_추출_자체_재작성
+    pass_criteria:
+      - no_verbatim_quote: true
+
+  - id: TC-09-chain-post-review
+    name: 검수 체인 권장 (humanize + ai-slop 필수)
+    input: |
+      본문 초고 완성 후 다음 단계는?
+    expected:
+      - chain:
+        - korean-spell-check
+        - book-revision-coach
+        - humanize-korean (필수)
+        - ai-slop-reviewer (필수)
+    pass_criteria:
+      - chain_emphasized: true
+
+rubric_anchors:
+  correctness:
+    target_score: ">= 0.80"
+    checks:
+      - 200ja_워고지_standard_accurate
+      - kpipa_citation_format_correct
+      - korean_publisher_style_table_accurate
+  completeness:
+    target_score: ">= 0.85"
+    checks:
+      - 4_step_workflow_complete
+      - 4_genre_style_preset_complete
+      - 5_element_structure_complete
+      - citation_5_types_complete
+  clarity:
+    target_score: ">= 0.80"
+    checks:
+      - hook_pattern_examples_per_genre
+      - output_format_clear
+      - 3_genre_examples
+  efficiency:
+    target_score: ">= 0.70"
+    checks:
+      - token_count_reasonable
+      - chain_to_revision_clear

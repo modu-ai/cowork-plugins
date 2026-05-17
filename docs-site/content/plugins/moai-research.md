@@ -25,7 +25,7 @@ flowchart LR
 
 ## 무엇을 하는 플러그인인가
 
-`moai-research` (v1.5.0)는 RISS·KCI·DBpia·Google Scholar 통합 논문 검색, 서론–선행연구–방법론–결과–논의–결론 구조의 학술 논문 작성(APA/KCI/IEEE 참고문헌 포맷), KIPRIS 특허·실용신안·디자인·상표 검색과 FTO(자유실시 권한) 분석, NRF·IITP·KIAT·중기부 연구비 신청서 작성까지 연구자의 전 주기를 지원합니다.
+`moai-research`는 RISS·KCI·DBpia·Google Scholar 통합 논문 검색, 서론–선행연구–방법론–결과–논의–결론 구조의 학술 논문 작성(APA/KCI/IEEE 참고문헌 포맷), KIPRIS 특허·실용신안·디자인·상표 검색과 FTO(자유실시 권한) 분석, NRF·IITP·KIAT·중기부 연구비 신청서 작성까지 연구자의 전 주기를 지원합니다.
 
 학술·R&D 과제 신청서가 필요하면 이 플러그인을 쓰시고, 창업·사업화 지원금은 [`moai-business`](../moai-business/)의 `kr-gov-grant`를 이용하세요.
 

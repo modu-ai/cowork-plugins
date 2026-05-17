@@ -21,7 +21,7 @@ flowchart LR
 
 ## 무엇을 하는 플러그인인가
 
-`moai-sales` (v1.8.0)는 한국 B2B SaaS·솔루션 회사의 영업 사이클을 압축합니다.
+`moai-sales`는 한국 B2B SaaS·솔루션 회사의 영업 사이클을 압축합니다.
 
 - **제안서 자동 생성**: 12섹션 표준 목차 + Three C's (Compliant·Complete·Compelling) 원칙
 - **국세청 표준 양식 호환**: 견적서·세금계산서 형식 준수

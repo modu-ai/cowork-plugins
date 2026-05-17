@@ -1,0 +1,127 @@
+version: 2.9.0
+skill: book-author-bio
+
+test_cases:
+  - id: TC-01-3-lengths
+    name: 3 길이 약력 동시 작성 (50/200/500자)
+    input: |
+      "30일 챌린지로 시작하는 부업" 저자 약력.
+      10년 차 마케팅 매니저, 부업 월 200만원, 인스타 5만.
+    expected:
+      - lengths: [50, 200, 500]
+      - 50자_요소: [정체성, 핵심신호, 현재활동]
+      - 200자_요소: [50자도입, 페르소나공감, 변화결과, 책쓴이유]
+      - 500자_요소: [200자도입, 학력자격, 경력타임라인, 활동영역, 관심분야]
+    pass_criteria:
+      - all_3_lengths_present: true
+      - 자수_허용범위: "±10%"
+
+  - id: TC-02-3-trust-signals
+    name: 3 신호 (권위·공감·변화) 균형
+    input: |
+      저자 약력 작성 후 신뢰 신호 매트릭스 확인.
+    expected:
+      - signals: [권위, 공감, 변화]
+      - balance_required: "3개 모두 ≥ 중 강도"
+    pass_criteria:
+      - all_3_signals_present: true
+      - no_single_signal_dominance: true
+
+  - id: TC-03-author-message-4-sections
+    name: 저자의 말 4단 구조
+    input: |
+      저자의 말 작성. 500~800자.
+    expected:
+      - sections: [도입, 공감, 약속, 초대]
+      - 분량_per_section: ["100~150자", "150~200자", "150~200자", "100~150자"]
+      - 총분량: "500~800자"
+      - 시점: "1인칭 or 2인칭 일관성"
+    pass_criteria:
+      - all_4_sections_present: true
+      - section_length_in_range: true
+
+  - id: TC-04-genre-preset-tech
+    name: 기술서 1순위 신호 (실무 + 오픈소스)
+    input: |
+      "Next.js 15" 저자 약력. 13년차 풀스택, Next.js 컨트리뷰터, 유튜브 5만.
+    expected:
+      - genre_preset: 기술·전문서·IT
+      - signal_priority_1: "실무 경력 + 오픈소스·GitHub 활동"
+      - signal_priority_2: "이전 저서·기술 블로그·발표"
+      - 50자_emphasis: [직책, 기업, 기술스택, GitHub]
+    pass_criteria:
+      - oss_contribution_emphasized: true
+
+  - id: TC-05-genre-preset-essay
+    name: 인문·에세이 1순위 신호 (개인 경험·서사)
+    input: |
+      "엄마이지만 나로 살기" 저자 약력. 40대 워킹맘, 마케팅 15년, 브런치 활동.
+    expected:
+      - genre_preset: 인문·교양·에세이
+      - signal_priority_1: "개인 경험·서사"
+      - 50자_emphasis: [정체성, 관점]
+      - 톤: "서정적·고백적·따뜻함"
+    pass_criteria:
+      - identity_over_career: true
+
+  - id: TC-06-sns-bios
+    name: SNS 채널별 약력 (인스타·링크드인·유튜브·강연)
+    input: |
+      SNS 채널별 저자 소개 만들어줘.
+    expected:
+      - channels: [인스타그램, 브런치, 링크드인, 유튜브, X, 카카오]
+      - 인스타_한도: 150자
+      - 유튜브_분량: 1000자
+      - 강연_분량: 200자
+    pass_criteria:
+      - channel_specific_format: true
+
+  - id: TC-07-author-message-traps
+    name: 저자의 말 함정 회피
+    input: |
+      저자의 말 작성 중 자기 변명·이력서식·스포일러 검출.
+    expected:
+      - traps_detected:
+        - 자기변명_이력서식: 거부
+        - 책내용_스포일러: 거부
+        - 200자_초과_도입: 경고
+    pass_criteria:
+      - traps_avoided: true
+
+  - id: TC-08-persona-simulation
+    name: 페르소나 시뮬레이션 검증
+    input: |
+      약력 완성 후 페르소나 관점 검증.
+    expected:
+      - checks: [권위_신호_인식, 공감_신호_인식, 변화_신호_인식, 3_신호_균형]
+      - pass_threshold: "3 중 2 이상"
+      - retry_on_fail: 약력_재작성
+    pass_criteria:
+      - simulation_required: true
+
+rubric_anchors:
+  correctness:
+    target_score: ">= 0.80"
+    checks:
+      - korean_publisher_bio_format_accurate
+      - sns_character_limits_accurate
+      - kpipa_standards_referenced
+  completeness:
+    target_score: ">= 0.85"
+    checks:
+      - 4_step_workflow_complete
+      - 4_genre_preset_complete
+      - 3_lengths_complete
+      - author_message_4_sections_complete
+      - sns_channel_bios_complete
+  clarity:
+    target_score: ">= 0.80"
+    checks:
+      - trust_signal_matrix_visualized
+      - examples_3_or_more_genres
+      - trap_avoidance_list_clear
+  efficiency:
+    target_score: ">= 0.70"
+    checks:
+      - token_count_reasonable
+      - signal_priority_table_compact

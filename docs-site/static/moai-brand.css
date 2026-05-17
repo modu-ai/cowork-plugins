@@ -507,11 +507,15 @@ a:hover, a:focus-visible { text-decoration: underline; text-underline-offset: 0.
   align-self: flex-start;
   max-height: calc(100vh - 65px);
   overflow-y: auto;
-  /* 스크롤바 시각적으로 숨김 (스크롤 자체는 동작) */
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  /* 스크롤바 완전 숨김 (스크롤 자체는 동작) */
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
-.gdoc-nav::-webkit-scrollbar { width: 0; height: 0; display: none; }
+.gdoc-nav::-webkit-scrollbar { width: 0 !important; height: 0 !important; display: none !important; }
+.gdoc-nav::-webkit-scrollbar-track,
+.gdoc-nav::-webkit-scrollbar-thumb { display: none !important; }
 .cw-toc { scrollbar-width: none; -ms-overflow-style: none; }
 .cw-toc::-webkit-scrollbar { width: 0; height: 0; display: none; }
 .gdoc-page { max-width: 736px; margin-left: 0; padding: 16px 40px 96px; }

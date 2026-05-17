@@ -21,7 +21,7 @@ flowchart LR
 
 ## 무엇을 하는 플러그인인가
 
-`moai-data` (v1.5.0)는 업로드한 CSV·Excel 파일의 프로파일링과 결측값·이상값·상관관계 분석, 공공데이터포털(data.go.kr)과 KOSIS 통계청 OpenAPI 호출, Mermaid·Chart.js 기반 인터랙티브 차트와 대시보드 HTML 생성까지 데이터 실무를 자동화합니다.
+`moai-data`는 업로드한 CSV·Excel 파일의 프로파일링과 결측값·이상값·상관관계 분석, 공공데이터포털(data.go.kr)과 KOSIS 통계청 OpenAPI 호출, Mermaid·Chart.js 기반 인터랙티브 차트와 대시보드 HTML 생성까지 데이터 실무를 자동화합니다.
 
 ## 설치
 

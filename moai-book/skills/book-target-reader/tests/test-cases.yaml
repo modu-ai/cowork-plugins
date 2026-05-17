@@ -1,0 +1,131 @@
+version: 2.9.0
+skill: book-target-reader
+
+test_cases:
+  - id: TC-01-persona-card
+    name: 페르소나 카드 4축 작성
+    input: |
+      book-concept-planner에서 "30대 워킹맘" 페르소나로 컨셉서 완성.
+      book-target-reader로 4축 페르소나 카드 작성해줘.
+    expected:
+      - 4_axes: [인구통계, 라이프스타일, 정체성, 소비신호]
+      - 인구통계_fields: [나이, 성별, 직업, 연봉, 거주지, 가족구성]
+      - 라이프스타일_fields: [하루일과, 취미, 정보채널]
+      - 정체성_fields: [자기인식, 가치관, 불리고싶은이름]
+    pass_criteria:
+      - all_4_axes_filled: true
+      - 1줄_페르소나_대비_확장도: ">= 200자"
+
+  - id: TC-02-jtbd-3-dimensions
+    name: JTBD 3 차원 정의
+    input: |
+      페르소나에 대한 JTBD를 기능적·감정적·사회적 3 차원으로 정의해줘.
+    expected:
+      - jtbd_dimensions: [기능적, 감정적, 사회적]
+      - formula_applied: "[상황]에서 [동기] 때문에 [결과]를 원한다"
+    pass_criteria:
+      - all_3_dimensions_present: true
+      - formula_compliance: true
+
+  - id: TC-03-painpoint-matrix
+    name: 페인포인트 매트릭스 (강도×빈도)
+    input: |
+      페르소나의 페인포인트를 5~10개 추출하고 강도×빈도 매트릭스에 배치해줘.
+    expected:
+      - painpoint_count: ">= 5"
+      - matrix_dimensions: [강도_1_5, 빈도_1_5]
+      - quadrants: [긴급, 핵심, 잠재, 희귀]
+      - book_response_mapped: true  # 분면별 책 대응(카피·본문·부록 등) 표시
+    pass_criteria:
+      - all_painpoints_quadrant_assigned: true
+      - book_chapter_mapping_present: true
+
+  - id: TC-04-genre-preset-tech
+    name: 기술서 장르 자동 분기
+    input: |
+      "Next.js 15 + shadcn/ui" 책 페르소나로 주니어 3년차 백엔드 개발자 설정.
+      JTBD와 페인포인트 매트릭스 만들어줘.
+    expected:
+      - genre_preset_applied: 기술·전문서·IT
+      - jtbd_weights:
+        - 기능적: high
+        - 사회적: 30%_이상  # 커리어·이직
+      - persona_level_options: [입문, 중급, 고급]
+    pass_criteria:
+      - tech_specific_persona_levels: true
+      - career_jtbd_present: true
+
+  - id: TC-05-reading-behavior
+    name: 독서 행동 데이터 정리
+    input: |
+      페르소나의 독서 행동 데이터 정리해줘.
+    expected:
+      - fields: [정보채널, 구매채널, 가격민감도, 형식선호, 읽는시간대, 완독률, 후기행동]
+      - kpipa_data_referenced: true
+    pass_criteria:
+      - all_7_fields_present: true
+      - 한국_데이터_인용: true
+
+  - id: TC-06-no-verbatim-quotes
+    name: 외부 자료 원문 표현 금지 (저작권 정책)
+    input: |
+      카피라이터 노트에서 본 페르소나 예시 그대로 가져와줘.
+    expected:
+      - reject_or_reframe: true
+      - replace_with_2026_korean_examples: true
+    pass_criteria:
+      - no_verbatim_metaphors: true
+      - no_29CM_specific_quotes: true
+
+  - id: TC-07-stereotype-avoidance
+    name: 고정관념 회피 검증
+    input: |
+      "30대 주부 페르소나" 작성해줘. 가사·육아 중심으로.
+    expected:
+      - challenge_stereotype: true
+      - reframe_to: |
+          "주부=가사·육아" 고정관념을 단정하지 않고,
+          정체성·라이프스타일 차원에서 다양한 가능성 제시.
+    pass_criteria:
+      - no_gender_role_assumption: true
+      - identity_multiple_options: true
+
+  - id: TC-08-verification-5-interviews
+    name: 5인 인터뷰 검증 단계 포함
+    input: |
+      페르소나 카드 완성 후 다음 단계는?
+    expected:
+      - recommend_5_interviews: true
+      - pass_threshold: "60% 이상 일치"
+      - retry_on_failure: book-concept-planner_Step1_재방문
+    pass_criteria:
+      - verification_step_explicit: true
+
+rubric_anchors:
+  correctness:
+    target_score: ">= 0.80"
+    checks:
+      - KPIPA_independent_reading_survey_referenced
+      - JTBD_framework_accurate_christensen
+      - korean_book_clubs_listed_actual
+  completeness:
+    target_score: ">= 0.85"
+    checks:
+      - 4_step_workflow_complete
+      - 4_genre_preset_complete
+      - persona_card_4_axes_complete
+      - jtbd_3_dimensions_complete
+      - painpoint_matrix_complete
+      - verification_step_present
+  clarity:
+    target_score: ">= 0.80"
+    checks:
+      - table_structures_clear
+      - usage_examples_2_or_more
+      - quadrant_visual_present
+  efficiency:
+    target_score: ">= 0.70"
+    checks:
+      - token_count_under_9000
+      - no_redundant_sections
+      - chain_to_book_outline_designer_clear

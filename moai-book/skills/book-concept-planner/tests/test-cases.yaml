@@ -1,0 +1,141 @@
+# book-concept-planner test cases
+# Tests verify: 3-단계 워크플로우 작동 / 4 장르 자동 분기 / 출력 형식 준수 / vault 원문 표현 미사용
+
+version: 2.9.0
+skill: book-concept-planner
+
+test_cases:
+  - id: TC-01-practical
+    name: 실용서·자기계발 기본 흐름
+    input: |
+      "30일 챌린지로 시작하는 부업" 도서 컨셉서 작성해줘.
+      직장인 30-40대 대상, 다산북스·길벗 투고 목표.
+    expected:
+      - workflow_steps_invoked: [Step1_의도파악, Step2_리서치, Step3_컨셉도출]
+      - genre_preset_applied: 실용서·자기계발
+      - outputs_required:
+        - 한_줄_요약 (15자 내외)
+        - 30자_카피
+        - 300자_시놉시스
+        - USP_3축
+        - 타깃_페르소나
+        - 시장_포지셔닝_매트릭스
+        - 4_8_경쟁작_매트릭스
+        - 자비_vs_투고_권장
+      - copy_principles:
+        - 구체성_적용
+        - 한자어_우리말_변환
+      - korean_publisher_match: [다산북스, 길벗]
+      - kpipa_data_referenced: true
+    pass_criteria:
+      - all_outputs_present: true
+      - usp_count: 3
+      - competitor_matrix_count: ">= 4"
+      - no_verbatim_quotes: true  # vault 원문 표현 그대로 사용 금지
+
+  - id: TC-02-tech
+    name: IT 입문서 자동 분기
+    input: |
+      "Next.js 15 + shadcn/ui 실전 가이드" 책 컨셉서 작성해줘.
+      한빛미디어·인사이트 투고 목표, 챕터 12개·분량 600매 기준.
+    expected:
+      - genre_preset_applied: 기술·전문서·IT
+      - workflow_adaptation:
+        - code_example_analysis: true
+        - chapter_completeness_focus: true
+        - version_specification_in_copy: true  # "X 책 1권으로 Y까지" 패턴
+      - korean_publisher_match: [한빛미디어, 인사이트]
+      -分량_적합성: 400~800매_범위_확인
+    pass_criteria:
+      - tech_specific_usp_present: true
+      - publisher_recommendation_includes_tech_houses: true
+
+  - id: TC-03-humanities
+    name: 인문·에세이 장르 자동 분기
+    input: |
+      민음사·문학동네 투고 예정 에세이집 컨셉서 만들어줘.
+      40대 워킹맘 시선의 일·가족 이야기.
+    expected:
+      - genre_preset_applied: 인문·교양·에세이
+      - workflow_adaptation:
+        - narrative_focus: true
+        - tone_emotional: true
+        - quotation_recommended: true
+      - korean_publisher_match: [민음사, 문학동네]
+      - 분량_적합성: 300~500매_범위
+    pass_criteria:
+      - emotional_metaphor_in_copy: true
+      - perspective_novelty_in_usp: true
+
+  - id: TC-04-external-copyright
+    name: 외부 자료 원문 표현 직접 인용 금지 (저작권 정책)
+    input: |
+      자비 출판 책 컨셉서 작성. 일본 자메이 자메이 "B형 자기 설명서" 같은 성공 사례 분석해서 USP 도출해줘.
+    expected:
+      - reject_or_reframe_verbatim_quotes: true
+      - replace_with: |
+          일본 출판 사례·인명·원문 표현을 그대로 사용하지 않고,
+          "베스트셀러의 필요 조건은 다름" 같은 추상화된 개념만 적용.
+          한국 2026 기준 자체 사례(부크크·텀블벅·교보문고 차트)로 재구성.
+    pass_criteria:
+      - no_japanese_author_names: true
+      - no_verbatim_metaphors: true
+      - korean_2026_examples_only: true
+
+  - id: TC-05-output-format
+    name: 출력 형식 준수
+    input: |
+      도서 컨셉서 템플릿대로 출력해줘.
+    expected:
+      - markdown_template_sections: 9
+      - section_order:
+        - 한_줄_요약
+        - 30자_카피
+        - 300자_시놉시스
+        - USP_3축
+        - 타깃_페르소나
+        - 시장_포지셔닝
+        - 장르_분류
+        - 자비_vs_투고
+        - 다음_단계_체이닝
+    pass_criteria:
+      - all_9_sections_present: true
+      - chaining_skills_listed: [book-target-reader, book-outline-designer, book-author-bio, book-proposal-writer]
+
+  - id: TC-06-chain-next-skill
+    name: 후속 스킬 체이닝 권장 출력
+    input: |
+      컨셉서 완성. 다음 단계는?
+    expected:
+      - recommend_book_target_reader: true
+      - recommend_book_outline_designer: true
+      - recommend_ai_slop_reviewer_post: true
+    pass_criteria:
+      - chain_recommendation_clear: true
+
+# 4-dimension 자체 루브릭 평가 anchor
+rubric_anchors:
+  correctness:
+    target_score: ">= 0.80"
+    checks:
+      - KPIPA_URL_accurate
+      - korean_publisher_list_accurate
+      - dosege_정가제_정책_correct
+  completeness:
+    target_score: ">= 0.85"
+    checks:
+      - 3_step_workflow_complete
+      - 4_genre_preset_complete
+      - 9_section_output_template_complete
+  clarity:
+    target_score: ">= 0.80"
+    checks:
+      - table_structures_clear
+      - usage_examples_2_or_more
+      - step_by_step_navigation
+  efficiency:
+    target_score: ">= 0.70"
+    checks:
+      - token_count_under_8000
+      - no_redundant_sections
+      - skills_chain_clear

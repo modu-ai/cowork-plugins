@@ -1,6 +1,11 @@
 {{ if default false .Site.Params.geekdocMermaid }}
 <script>
 (function(){
+  // 페이지에 mermaid 다이어그램이 없으면 종료 (불필요한 ~640KB 로드 방지)
+  function findBlocks() {
+    return document.querySelectorAll('pre.gdoc-mermaid, pre.mermaid, .mermaid');
+  }
+
   // 라이트 테마 단일화 — 다크 분기 제거 (2026-05-13)
   var lightTheme = {
     primaryColor: '#144a46',
@@ -38,20 +43,53 @@
     useMaxWidth: true,
     curve: 'basis'
   };
-  function initMermaid() {
-    if (typeof mermaid === 'undefined') return;
-    mermaid.initialize({
-      startOnLoad: false,
-      securityLevel: 'loose',
-      theme: 'base',
-      themeVariables: lightTheme,
-      flowchart: flowchartConfig
-    });
+
+  function runMermaid() {
+    if (typeof window.mermaid === 'undefined') {
+      console.warn('[mermaid] bundle loaded but window.mermaid undefined');
+      return;
+    }
+    try {
+      window.mermaid.initialize({
+        startOnLoad: false,
+        securityLevel: 'loose',
+        theme: 'base',
+        themeVariables: lightTheme,
+        flowchart: flowchartConfig
+      });
+      // .mermaid 클래스를 가진 모든 <pre>를 SVG로 렌더링
+      window.mermaid.run({ querySelector: 'pre.gdoc-mermaid, pre.mermaid, .mermaid' });
+    } catch (e) {
+      console.error('[mermaid] render error:', e);
+    }
   }
-  document.addEventListener('DOMContentLoaded', function(){
-    initMermaid();
-    mermaid.run({ querySelector: '.mermaid' });
-  });
+
+  function loadMermaidBundle() {
+    var blocks = findBlocks();
+    if (!blocks.length) return; // 페이지에 다이어그램 없음
+
+    if (typeof window.mermaid !== 'undefined') {
+      runMermaid();
+      return;
+    }
+    // bundle 동적 로드 (head에 한 번만)
+    if (document.querySelector('script[data-mermaid-bundle]')) {
+      // 이미 로드 중 — onload 콜백 대기 (다른 script 태그가 이미 추가됨)
+      return;
+    }
+    var s = document.createElement('script');
+    s.src = '{{ index (index hugo.Data.assets "mermaid.js") "src" | relURL }}';
+    s.setAttribute('data-mermaid-bundle', '1');
+    s.onload = runMermaid;
+    s.onerror = function() { console.error('[mermaid] bundle load failed'); };
+    document.head.appendChild(s);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadMermaidBundle);
+  } else {
+    loadMermaidBundle();
+  }
 })();
 </script>
 {{ end }}

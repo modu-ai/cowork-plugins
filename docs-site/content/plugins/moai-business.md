@@ -8,13 +8,13 @@ tags: ["moai-business"]
 
 # moai-business
 
-> 스타트업·소상공인·중소기업의 경영과 전략을 위한 **10개 스킬** 묶음입니다. v1.5.0에는 상권분석(`sbiz365-analyst`)과 정부지원사업 통합(`kr-gov-grant`)이, v1.5.1에는 컨설팅·영업·창업 스킬 3종이 추가되었습니다.
+> 스타트업·소상공인·중소기업의 경영과 전략을 위한 **10개 스킬** 묶음입니다. 사업계획서·시장조사·재무모델·IR·투자제안서 + 상권분석·정부지원사업 통합 + 컨설팅·영업·창업 스킬까지 한 플러그인에서 처리합니다.
 
 ## 무엇을 하는 플러그인인가
 
-`moai-business` (v1.5.0)는 사업 아이템을 정리하고, 시장을 살펴보고, 투자자나 정부기관에 제출할 문서까지 만드는 전 과정을 한 플러그인 안에서 끝낼 수 있도록 설계되었습니다. 창업자·기획자·투자 유치 팀·소상공인·지원금 신청자 등 다양한 역할의 사용자를 커버합니다.
+`moai-business`는 사업 아이템을 정리하고, 시장을 살펴보고, 투자자나 정부기관에 제출할 문서까지 만드는 전 과정을 한 플러그인 안에서 끝낼 수 있도록 설계되었습니다. 창업자·기획자·투자 유치 팀·소상공인·지원금 신청자 등 다양한 역할의 사용자를 커버합니다.
 
-v1.5.0의 `sbiz365-analyst`는 소상공인365 빅데이터 포털의 상권분석 PDF를 입력받아 4축 100점 평가와 9섹션 Word 보고서를 생성합니다. `kr-gov-grant`는 정부지원사업 **탐색·작성·검토·일정 관리** 4개 모드를 제공해 K-Startup·BIZINFO·중기부·나라장터·IITP 등 주요 기관의 공고를 연결합니다.
+`sbiz365-analyst`는 소상공인365 빅데이터 포털의 상권분석 PDF를 입력받아 4축 100점 평가와 9섹션 Word 보고서를 생성합니다. `kr-gov-grant`는 정부지원사업 **탐색·작성·검토·일정 관리** 4개 모드를 제공해 K-Startup·BIZINFO·중기부·나라장터·IITP 등 주요 기관의 공고를 연결합니다.
 
 ## 10개 스킬이 어떻게 연결되나요
 
@@ -49,7 +49,7 @@ flowchart TD
   style S9 fill:#d4d4d4,stroke:#4c4c4c,color:#09110f
 ```
 
-노란색·파란색·빨간색·초록색·회색 다섯 박스가 v1.5.0~1.5.1에서 새로 들어온 스킬입니다. 나머지 6개는 v1.0부터 있던 검증된 스킬이니 안심하고 사용하시면 됩니다.
+노란색·파란색·빨간색·초록색·회색 다섯 박스는 최근 추가된 스킬입니다 (sbiz365-analyst·kr-gov-grant·consulting-brief·sales-playbook·startup-launchpad). 나머지 6개는 검증된 기본 스킬입니다.
 
 ## 설치
 
@@ -71,12 +71,12 @@ flowchart TD
 | `market-analyst` | TAM/SAM/SOM, 경쟁사 분석, 포지셔닝, 가격 전략 | PM·마케터 |
 | `investor-relations` | Series A/B IR 덱, 재무 모델, 밸류에이션 | 투자 유치 준비 팀 |
 | `daily-briefing` | 업계 뉴스·경쟁사·시장 동향 아침 브리핑 | 경영진·기획실 |
-| `sbiz365-analyst` (v1.5.0 신규) | 소상공인365 PDF → 상권분석·창업타당성 DOCX | 예비창업자·자영업자 |
-| `kr-gov-grant` (v1.5.0 신규) | 정부지원사업 탐색·신청서 작성·검토·마감 관리 | 모든 지원금 신청자 |
-| `consulting-brief` (v1.5.1 신규) | 경영진단, 개선안, 리스크 분석, 컨설팅 보고서 | 기업 컨설턴트·경영진 |
-| `sales-playbook` (v1.5.1 신규) | 영업 전략, 프로세스 설계, 툴킷, 스크립트 | 영업 팀장·개인 영업 |
-| `startup-launchpad` (v1.5.1 신규) | 아이템 검증, 비즈니스 모델, 창업 로드맵 | 예비 창업자·스타트업 |
-| `real-estate-search` (v2.0.0 신규) | 국토교통부(MOLIT) 실거래가/전월세 — 아파트·오피스텔·빌라·단독·상업용 | 부동산 투자·시장 분석가 |
+| `sbiz365-analyst` | 소상공인365 PDF → 상권분석·창업타당성 DOCX | 예비창업자·자영업자 |
+| `kr-gov-grant` | 정부지원사업 탐색·신청서 작성·검토·마감 관리 | 모든 지원금 신청자 |
+| `consulting-brief` | 경영진단, 개선안, 리스크 분석, 컨설팅 보고서 | 기업 컨설턴트·경영진 |
+| `sales-playbook` | 영업 전략, 프로세스 설계, 툴킷, 스크립트 | 영업 팀장·개인 영업 |
+| `startup-launchpad` | 아이템 검증, 비즈니스 모델, 창업 로드맵 | 예비 창업자·스타트업 |
+| `real-estate-search` | 국토교통부(MOLIT) 실거래가/전월세 — 아파트·오피스텔·빌라·단독·상업용 | 부동산 투자·시장 분석가 |
 
 ## 신규 스킬 1 — `sbiz365-analyst` (소상공인 상권분석)
 
@@ -264,7 +264,7 @@ flowchart LR
 | 문서 형식 | 사업계획서 중심 | 연구계획서·참고문헌 포함 |
 | 심사 키워드 | 시장성·수익성·성장성 | 학술 기여도·연구방법론 |
 
-## v2.0.0 신규 — `real-estate-search` (국토부 실거래가)
+## `real-estate-search` (국토부 실거래가)
 
 국토교통부(MOLIT) 실거래가 신고 데이터를 기반으로 한국 아파트·오피스텔·연립다세대·단독다가구·상업업무용 부동산의 매매·전월세 시세를 조회합니다. 사업·투자 분석, 입지 검토, 자산 평가에 활용합니다.
 
@@ -372,6 +372,6 @@ daily-briefing → docx-generator
 - [소상공인365 빅데이터 포털](https://bigdata.sbiz.or.kr)
 - [K-Startup 창업지원 포털](https://www.k-startup.go.kr)
 - [BIZINFO 기업지원플러스](https://www.bizinfo.go.kr)
-- [NomaDamas/k-skill](https://github.com/NomaDamas/k-skill) — MIT — `real-estate-search` 원본 (v2.0.0)
+- [NomaDamas/k-skill](https://github.com/NomaDamas/k-skill) — MIT — `real-estate-search` 원본
 - [tae0y/real-estate-mcp](https://github.com/tae0y/real-estate-mcp) — MIT — 부동산 MCP 설계 참고
 - [공공데이터포털 (국토부 실거래가)](https://www.data.go.kr) — 공식 데이터 출처

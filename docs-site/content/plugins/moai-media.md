@@ -1,14 +1,14 @@
 ---
-title: "moai-media — 이미지·영상·음성 + Day 3 광고 풀세트"
+title: "moai-media — 이미지·영상·음성 + Day 3 광고 풀세트 + 프롬프트 빌더 3"
 weight: 50
-description: "Nano Banana, fal.ai Gateway, Gemini Audio/Video Gen + Day 3 한국 이커머스 광고 풀세트(GPT Image 2·Kling 3·Veo 3·Seedance 라우터·AI 표기·캔바 매직 레이어)까지 13개 AI 미디어 생성 스킬을 묶은 통합 플러그인입니다."
+description: "Nano Banana, fal.ai Gateway, Gemini Audio/Video Gen + Day 3 한국 이커머스 광고 풀세트(GPT Image 2·Kling 3·Veo 3·Seedance 라우터·AI 표기·캔바 매직 레이어) + 이미지 프롬프트 빌더 3종(GPT-image-2·Gemini 3·Midjourney v8.1)까지 16개 AI 미디어 생성 스킬을 묶은 통합 플러그인입니다."
 geekdocBreadcrumb: true
 tags: ["moai-media"]
 ---
 
 # moai-media
 
-> AI 미디어 생성 전용 플러그인입니다. 카드뉴스 썸네일부터 숏폼 영상·내레이션, **v2.3.0부터 한국 이커머스 광고 풀세트**(무드보드·한글 타이포 5장·메인 영상·보조 컷 2개·채널별 변환·AI 표기·캔바 매직 레이어)까지 한 번에 만들 수 있습니다.
+> AI 미디어 생성 전용 플러그인입니다. 카드뉴스 썸네일부터 숏폼 영상·내레이션, **한국 이커머스 광고 풀세트**(무드보드·한글 타이포 5장·메인 영상·보조 컷 2개·채널별 변환·AI 표기·캔바 매직 레이어), **이미지 프롬프트 빌더 3종**(GPT-image-2·Gemini 3 Pro Image·Midjourney v8.1 공식 가이드 그대로 적용)까지 한 번에 만들 수 있습니다.
 
 ```mermaid
 flowchart LR
@@ -23,13 +23,18 @@ flowchart LR
         F["speech-video<br/>음성+영상"]
     end
     G["fal-gateway<br/>1000+ 모델"]
-    subgraph Day3["Day 3 광고 풀세트 (6, v2.3.0)"]
+    subgraph Day3["Day 3 광고 풀세트 (6)"]
         H["media-moodboard<br/>색·톤·레퍼런스"]
         I["media-gpt-image2-builder<br/>한글 타이포 5장"]
         J["media-model-router<br/>Kling/Veo/Seedance"]
         K["media-channel-ad-packager<br/>채널 규격 변환"]
         L["media-ai-disclosure<br/>AI 표기 자동"]
         M["media-canva-magic-layer<br/>시즌 재사용"]
+    end
+    subgraph Builder["프롬프트 빌더 (3)"]
+        N["gpt-image-2-prompt<br/>OpenAI 6-Block"]
+        O["gemini-3-image-prompt<br/>Google 5-component"]
+        P["midjourney-v8-prompt<br/>키워드+--파라미터"]
     end
     이미지 --> 영상음성
     H --> I --> J --> K --> L --> M
@@ -38,14 +43,18 @@ flowchart LR
     style I fill:#fbf0dc,stroke:#c47b2a,color:#09110f
     style J fill:#fbf0dc,stroke:#c47b2a,color:#09110f
     style L fill:#f5dcd7,stroke:#c44a3a,color:#09110f
+    style N fill:#dceee9,stroke:#2a8a8c,color:#09110f
+    style O fill:#dceee9,stroke:#2a8a8c,color:#09110f
+    style P fill:#dceee9,stroke:#2a8a8c,color:#09110f
 ```
 
 ## 무엇을 하는 플러그인인가
 
-`moai-media` (v2.8.0, Day 3 풀세트는 v2.3.0 도입 / Higgsfield 책임 경계는 v2.6.1 정리)는 이미지·영상·음성을 모두 한 플러그인 안에서 생성할 수 있도록 묶은 AI 미디어 스튜디오입니다. **총 13개 스킬**이 통합되어 있습니다.
+`moai-media`는 이미지·영상·음성을 모두 한 플러그인 안에서 생성할 수 있도록 묶은 AI 미디어 스튜디오입니다. **총 16개 스킬**이 통합되어 있습니다.
 
 - **범용 미디어 생성 (7)**: nano-banana(한국어 타이포 SOTA)·image-gen·video-gen·audio-gen·speech-video·character-mgmt·fal-gateway(1000+ 모델)
-- **Day 3 광고 풀세트 (6, v2.3.0 신규)**: "모두의 커머스 3일 마스터 캠프" Day 3 산출물 ⑫~⑰ 전담 — 무드보드부터 채널별 변환, AI 표기, 시즌 재사용 가이드까지
+- **Day 3 광고 풀세트 (6)**: "모두의 커머스 3일 마스터 캠프" Day 3 산출물 ⑫~⑰ 전담 — 무드보드부터 채널별 변환, AI 표기, 시즌 재사용 가이드까지
+- **이미지 프롬프트 빌더 (3)**: GPT-image-2(OpenAI 6-Block)·Gemini 3 Pro Image(Google 5-component)·Midjourney v8.1(키워드+`--파라미터`) 공식 가이드를 그대로 적용한 프롬프트 텍스트 산출 전용 빌더. 페어: 실제 호출은 기존 `media-gpt-image2-builder`·`nano-banana`가 담당
 
 카드뉴스 슬라이드 이미지 일괄 생성, 한국어 타이포 포스터, 15초 숏폼 영상, 팟캐스트 내레이션부터 **광고 영상 자동 라우팅**(카테고리 매트릭스 기반 의류=Kling 3 / 뷰티=Veo 3 / 건강식품=Kling 3 / 생활용품=Seedance), 메타·네이버 GFA·카카오모먼트 채널 규격 자동 변환까지 한 번의 체인으로 처리할 수 있습니다.
 
@@ -64,7 +73,7 @@ flowchart LR
 {{< /tab >}}
 {{< /tabs >}}
 
-## 핵심 스킬 (13개)
+## 핵심 스킬 (16개)
 
 ### 범용 미디어 생성 (7)
 
@@ -78,7 +87,7 @@ flowchart LR
 | `video-gen` | fal.ai (Kling·Hailuo) + Higgsfield | 단순 영상 생성, 애니메이션, 제품 데모 |
 | `fal-gateway` | fal.ai 통합 | Flux 1.1 Pro, Recraft V3, Ideogram, MiniMax 등 1000+ 모델 |
 
-### Day 3 광고 풀세트 (6) — v2.3.0 신규
+### Day 3 광고 풀세트 (6)
 
 | 스킬 | V6 매핑 | 백엔드 | 산출물 |
 |---|---|---|---|
@@ -89,6 +98,22 @@ flowchart LR
 | `media-ai-disclosure` | Day3 S2~S7 | 후처리 자동 체인 | "AI 생성" 메타데이터·워터마크·캡션 3계층 부착 — 광고심의·소비자보호법 대응 |
 | `media-canva-magic-layer` | Day3 S7 보너스 | 가이드 | 합성 PNG → 카피만 분리 → 시즌 재사용 5단계 체크리스트 (GPT Image 2 재호출 ↓90%) |
 
+### 이미지 프롬프트 빌더 (3)
+
+자연어 한 줄 + AskUserQuestion 프리셋(제품샷·인물·일러스트·풍경)으로 컨텍스트를 수집하고, 동일 입력을 **3개 모델별 어조로 동시 변환**해 복붙 가능한 텍스트를 출력합니다. 책임 경계: 프롬프트 텍스트 산출 전용 (실제 이미지 생성은 페어 스킬 호출).
+
+| 스킬 | 공식 가이드 | 핵심 차별점 |
+|---|---|---|
+| `gpt-image-2-prompt` | [OpenAI Cookbook](https://developers.openai.com/cookbook/examples/multimodal/image-gen-models-prompting-guide) 6-Block | Subject·Action·Scene·Composition·Lighting·Style&Text. 편집 시 Change/Preserve/Constraints 2열. 텍스트 verbatim·ALL CAPS·다국어(한·일·중·힌·벵골) |
+| `gemini-3-image-prompt` | [Google AI Developers](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image-preview) 5-component | 영문 문장형, Creative Director 어조. 카메라 하드웨어(Fujifilm·GoPro·iPhone). Reference image 14 슬롯. Search Grounding. Thinking vs Fast 모드. SynthID 워터마크 |
+| `midjourney-v8-prompt` | [Midjourney Parameter List](https://docs.midjourney.com/hc/en-us/articles/32859204029709-Parameter-List) | `--sref`/`--oref`/`--cw`/`--p` 3대 reference deep dive. 6대 비용 함정 자동 검사(`--hd --q 4` 16x cost, `--cw 100` 상속, `--cref` deprecation 교체) |
+
+**페어 관계** — 본 빌더는 **프롬프트 텍스트만** 생성:
+
+- `gpt-image-2-prompt` ↔ `media-gpt-image2-builder` (GPT Image 2 호출, 광고 5장 자동 생성)
+- `gemini-3-image-prompt` ↔ `nano-banana` (Gemini 직접 호출, 실제 이미지 생성)
+- `midjourney-v8-prompt` — Discord `/imagine` / `alpha.midjourney.com` 외부 실행
+
 ## 필수 API 키
 
 {{< hint type="warning" >}}
@@ -98,26 +123,26 @@ flowchart LR
 ```bash
 # .moai/credentials.env
 GEMINI_API_KEY=...                          # nano-banana, audio-gen, video-gen, speech-video, image-gen
-OPENAI_API_KEY=...                          # media-gpt-image2-builder (v2.3.0+)
+OPENAI_API_KEY=...                          # media-gpt-image2-builder
 FAL_KEY=...                                 # fal-gateway, image-gen, video-gen
 ELEVENLABS_API_KEY=...                      # audio-gen, speech-video (ElevenLabs MCP)
-HIGGSFIELD_API_KEY=...                      # character-mgmt, video-gen, speech-video, media-model-router (v2.3.0+)
+HIGGSFIELD_API_KEY=...                      # character-mgmt, video-gen, speech-video, media-model-router
 HIGGSFIELD_SECRET=...
 ```
 
 | 변수 | 용도 | 발급처 |
 |---|---|---|
 | `GEMINI_API_KEY` | Nano Banana·Audio Gen·Image Gen·Video Gen·Speech Video | [Google AI Studio](https://aistudio.google.com/) |
-| `OPENAI_API_KEY` | **media-gpt-image2-builder** (GPT Image 2 호출, v2.3.0+) | [platform.openai.com](https://platform.openai.com/api-keys) |
+| `OPENAI_API_KEY` | **media-gpt-image2-builder** (GPT Image 2 호출) | [platform.openai.com](https://platform.openai.com/api-keys) |
 | `FAL_KEY` | fal Gateway (Flux 1.1, Recraft V3 등 1000+ 모델) | [fal.ai](https://fal.ai) |
 | `ELEVENLABS_API_KEY` | ElevenLabs MCP (TTS·다국어 더빙) | [elevenlabs.io](https://elevenlabs.io) |
 | `HIGGSFIELD_API_KEY` + `HIGGSFIELD_SECRET` | Higgsfield MCP (시네마틱·립싱크·캐릭터 + Day 3 Kling 3·Veo 3·Seedance) | [higgsfield.ai](https://higgsfield.ai) |
 
-> **v2.3.0 Day 1 셋업**: `moai-core:mcp-connector-setup` 스킬에서 Drive·Notion·Higgsfield·OpenAI 4커넥터 인증·환경변수·트러블슈팅 통합 가이드를 제공합니다.
+> **Day 1 셋업**: `moai-core:mcp-connector-setup` 스킬에서 Drive·Notion·Higgsfield·OpenAI 4커넥터 인증·환경변수·트러블슈팅 통합 가이드를 제공합니다.
 
-## v2.6.x 변경 사항 (정정 & 책임 경계)
+## Higgsfield 정정 & 책임 경계
 
-**v2.6.0 Higgsfield Quick Wins 6건** — audit `research-2026-05-16/higgsfield-audit.md` §7 즉시 자동 수정 적용:
+**Higgsfield Quick Wins** — audit `research-2026-05-16/higgsfield-audit.md` §7 즉시 자동 수정 적용:
 
 | 스킬 | 변경 | 영향 |
 |------|------|------|
@@ -128,7 +153,7 @@ HIGGSFIELD_SECRET=...
 | `video-gen` | MCP 툴명 `generate_video_dop` → `higgsfield.generate_video_dop` | 네임스페이스 통일 |
 | `speech-video` | MCP 툴명 `generate_speech_video` → `higgsfield.generate_speech_video` | 네임스페이스 통일 |
 
-**v2.6.1 안 C 책임 경계 명확화 3건** — audit §6 안 C 권장 적용:
+**책임 경계 명확화** — audit §6 안 C 권장 적용:
 
 - **`media-model-router`** — description에 "백엔드 통합: Kling 3 (Higgsfield MCP) + Veo 3·Seedance 2.0 (fal-gateway 위임)" 명시. 카테고리 매트릭스 아래 '백엔드 매핑' 표 추가 (audit HIGH-1 결과: Veo 3·Seedance MCP 호출 경로 명확화).
 - **`video-gen`** — description에 "(범용·단순 영상 전용)" 명시. "광고 영상 + 카테고리 자동 라우팅이 필요하면 페어 스킬 `media-model-router` 사용" 안내 추가 (audit HIGH-2 결과: Kling 3 영상 책임 중복 정리).
@@ -171,7 +196,7 @@ moai-commerce:detail-page-copy → moai-commerce:detail-page-image (→ nano-ban
 moai-content:copywriting → character-mgmt → speech-video
 ```
 
-**Day 3 광고 풀세트 (v2.3.0 신규)**
+**Day 3 광고 풀세트**
 
 ```text
 media-moodboard → media-gpt-image2-builder → media-model-router

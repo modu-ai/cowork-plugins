@@ -1,0 +1,117 @@
+# midjourney-v8-prompt — 테스트 케이스
+
+tests:
+  - name: happy-path-product-shot
+    description: 제품샷 프리셋 + 1:1 + --hd → MJ 메인 + GPT·Gemini 보조
+    prompt: "Midjourney 프롬프트, 매트 블랙 머그 'MONDAY' 글자 제품샷, 1:1, --hd"
+    expected_output:
+      format: markdown
+      contains:
+        - "### 1) Midjourney v8.1"
+        - "### 2) GPT-image-2"
+        - "### 3) Gemini 3 Pro Image"
+        - "--ar 1:1"
+        - "--hd"
+        - "--style raw"
+        - '"MONDAY"'
+        - "비용"                   # 4x cost 경고
+        - "16x"                    # --hd + --q 4 일 경우 또는 4x for --hd alone
+      not_contains:
+        - "metadata:"
+        - "--cref"                 # deprecated
+        - "TODO"
+        - "<placeholder>"
+      assertion:
+        - 키워드 콤마 + --파라미터 구조
+        - --hd 4x cost 경고 한국어 해설
+        - 출력 순서 MJ 메인 → GPT → Gemini
+
+  - name: oref-character-consistency
+    description: --oref + --cw → 캐릭터 일관성 패턴
+    prompt: "미드저니 프롬프트, --oref https://example.com/char.jpg --cw 50 1:1"
+    expected_output:
+      format: markdown
+      contains:
+        - "--oref"
+        - "--cw 50"
+        - "함정"                   # --cw 가이드
+        - "deprecated"             # --cref deprecation 안내
+      not_contains:
+        - "--cref"
+        - "Fast Mode"              # --oref와 비호환 모드 안내
+      assertion:
+        - --oref + --cw 50 그대로 보존
+        - --cw 가이드 한국어 해설 포함
+
+  - name: sref-style-reference
+    description: --sref 코드 + --sw → Style Reference 패턴
+    prompt: "MJ 프롬프트 --sref 1234567890 --sw 200 시네마틱 풍경"
+    expected_output:
+      format: markdown
+      contains:
+        - "--sref 1234567890"
+        - "--sw 200"
+        - "--sv"                   # default --sv 7 안내
+        - "4x"                     # sref cost
+      assertion:
+        - sref 코드 + sw 200 보존
+        - --sv 7 default 안내
+
+  - name: cost-trap-hd-q4
+    description: --hd + --q 4 조합 → 16x 비용 경고
+    prompt: "미드저니 프롬프트로 인물 사진, --hd --q 4 9:16"
+    expected_output:
+      format: markdown
+      contains:
+        - "--hd"
+        - "--q 4"
+        - "16x"                    # 함정 경고
+        - "Relax"                  # Relax 모드 안내
+      assertion:
+        - 16x 비용 경고 한국어 해설
+        - 1차 탐색 시 --hd --q 4 제거 권장
+
+  - name: deprecated-cref
+    description: 사용자가 --cref 입력 → --oref로 자동 교체
+    prompt: "MJ 프롬프트, --cref https://example.com/face.jpg 인물 일관성"
+    expected_output:
+      format: markdown
+      contains:
+        - "--oref"                 # 자동 교체
+        - "deprecated"             # 한국어 해설
+      not_contains:
+        - "--cref"                 # 자동 제거됨
+      assertion:
+        - --cref → --oref 자동 변환
+        - deprecation 사실 한국어 해설
+
+  - name: edge-case-ambiguous-input
+    description: 모호한 입력 → AskUserQuestion 라운드 진입
+    prompt: "미드저니 프롬프트 만들어줘"
+    expected_output:
+      format: askuserquestion
+      assertion:
+        - AskUserQuestion 호출 (Round 1 프리셋 선택)
+        - 4 옵션 + Other
+        - 첫 옵션 "(권장)" 라벨
+
+rubric_targets:
+  correctness: 0.80
+  completeness: 0.75
+  clarity: 0.75
+  efficiency: 0.70
+  weighted_pass_threshold: 0.70
+
+regression:
+  baseline_version: "2.9.0"
+  changed_files:
+    - SKILL.md
+    - references/prompt-blocks.md
+    - references/parameter-cheatsheet.md
+    - references/style-references.md
+    - references/cost-traps.md
+    - presets/product-shot.md
+    - presets/portrait.md
+    - presets/illustration.md
+    - presets/landscape.md
+  expected_diff: "신규 스킬 — 회귀 베이스라인 없음 (initial release)"

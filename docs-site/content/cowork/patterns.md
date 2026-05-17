@@ -1,6 +1,6 @@
 ---
 title: "사용 패턴 가이드"
-weight: 25
+weight: 28
 description: "Cowork는 '긴 프롬프트를 직접 쓰는 도구'가 아닙니다. 짧은 자연어 한 줄 → 시스템이 묻고 → 스킬 체이닝으로 자동 처리. 4가지 표준 패턴을 익히면 144개 스킬을 자유롭게 조합할 수 있습니다."
 geekdocBreadcrumb: true
 ---

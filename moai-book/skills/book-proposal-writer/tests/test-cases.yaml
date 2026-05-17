@@ -1,0 +1,126 @@
+version: 2.9.0
+skill: book-proposal-writer
+
+test_cases:
+  - id: TC-01-3-package
+    name: 3 패키지 (기획서·샘플·마케팅) 결합
+    input: |
+      4 선행 스킬 산출물(컨셉서·페르소나·목차·약력) 결합해 다산북스 투고 제안서 작성.
+    expected:
+      - packages: [출판기획서, 샘플챕터, 마케팅플랜]
+      - 기획서_분량: "A4 5~10장"
+      - 샘플챕터_분량: "A4 10~30장"
+      - 마케팅플랜_분량: "A4 2~3장"
+    pass_criteria:
+      - all_3_packages_present: true
+
+  - id: TC-02-5-sections
+    name: 출판기획서 5 섹션
+    input: |
+      출판기획서 작성. 5 섹션 구조.
+    expected:
+      - sections: [표지, 책개요, 시장독자분석, 목차시놉시스, 저자약력]
+    pass_criteria:
+      - all_5_sections_present: true
+
+  - id: TC-03-marketing-5-categories
+    name: 마케팅 플랜 5 카테고리
+    input: |
+      저자가 직접 가능한 마케팅 플랜 작성.
+    expected:
+      - categories: [SNS활동, 강연강의, 언론미디어, 북클럽커뮤니티, 출간이벤트]
+      - phases: [출간전_D-90, 출간직후_D+0_30, 출간후_D+30_90]
+      - 숫자_구체화: true
+    pass_criteria:
+      - 5_categories_complete: true
+      - phase_timeline_clear: true
+
+  - id: TC-04-publisher-format-tech
+    name: 한빛미디어 양식 자동 변환
+    input: |
+      Next.js 15 책 한빛미디어 투고 제안서.
+    expected:
+      - publisher: 한빛미디어
+      - format:
+        - 4_part_structure: true
+        - code_examples_in_sample: true
+        - github_appendix: true
+        - 분량: "A4 15~20장"
+    pass_criteria:
+      - publisher_specific: true
+
+  - id: TC-05-publisher-format-literary
+    name: 민음사 양식 자동 변환
+    input: |
+      에세이집 민음사 투고 제안서.
+    expected:
+      - publisher: 민음사
+      - format:
+        - 자유_형식: true
+        - 작가_개성_강조: true
+        - 인용_각주_가능: true
+        - 신인상_옵션_제시: true
+    pass_criteria:
+      - literary_format: true
+
+  - id: TC-06-rejection-signal-detection
+    name: 거절 신호 사전 검출
+    input: |
+      제안서 검토 중 USP 약함·타깃 모호 검출.
+    expected:
+      - signals_detected: [USP_약함, 타깃_모호]
+      - recommendations:
+        - USP_약함: book-concept-planner_Step3_재방문
+        - 타깃_모호: book-target-reader_Step1_3_재방문
+    pass_criteria:
+      - signal_detection_active: true
+      - recovery_path_clear: true
+
+  - id: TC-07-sample-chapter-quality
+    name: 샘플 챕터 품질 검증
+    input: |
+      샘플 챕터 첫 5쪽 검증.
+    expected:
+      - quality_checks:
+        - 완성도_본문_수준: true
+        - 첫_5쪽_강력: true
+        - USP_명확_드러남: true
+    pass_criteria:
+      - first_5_pages_strong: true
+      - usp_visible_in_sample: true
+
+  - id: TC-08-stereotype-publisher-naming
+    name: 출판사명 정확성 (오타·잘못된 이름 검출)
+    input: |
+      "민음서" "한빛 미디어" "문학동내" 같은 오타 검출.
+    expected:
+      - correct_names: [민음사, 한빛미디어, 문학동네]
+    pass_criteria:
+      - typo_correction_applied: true
+
+rubric_anchors:
+  correctness:
+    target_score: ">= 0.80"
+    checks:
+      - korean_publisher_names_accurate
+      - kpipa_data_referenced
+      - munhakdongne_singin_format_accurate
+  completeness:
+    target_score: ">= 0.85"
+    checks:
+      - 4_step_workflow_complete
+      - 4_genre_preset_complete
+      - 5_section_outline_complete
+      - rejection_signal_list_complete
+      - 10_publisher_format_guide
+  clarity:
+    target_score: ">= 0.80"
+    checks:
+      - tables_clear
+      - 3_genre_examples
+      - timeline_d-90_d+90_visualized
+  efficiency:
+    target_score: ">= 0.70"
+    checks:
+      - token_count_reasonable
+      - publisher_match_table_compact

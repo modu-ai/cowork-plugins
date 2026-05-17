@@ -6,12 +6,127 @@
 
 ## 버전 통일 원칙 (HARD)
 
-아래 166개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.0.0부터 SKILL.md frontmatter `version:` 복구):
+아래 178개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.0.0부터 SKILL.md frontmatter `version:` 복구):
 - `.claude-plugin/marketplace.json` (`metadata.version`) × 1
-- `<plugin>/.claude-plugin/plugin.json` (`version`) × 21
-- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 144 (v2.8.0+)
+- `<plugin>/.claude-plugin/plugin.json` (`version`) × 22
+- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 155 (v2.10.0+)
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
+
+## [2.10.0] - 2026-05-17
+
+MINOR. **신규 플러그인 moai-book 도입 — 한국 출판사 제출용 원고 집필 풀스택 8 스킬** — 도서 컨셉서부터 출판사 매칭·본문 집필·퇴고까지 8 단계 워크플로우를 단일 플러그인에 통합. 실용서·인문·기술·소설 4 장르 자동 분기. KPIPA·국립국어원·도서정가제·교보문고·알라딘 베스트셀러 + 30+ 한국 출판사 라이브러리 + 자비 출판 5 플랫폼(부크크·텀블벅·인디고·카카오 브런치북·출판사 자비) 내장. **21 → 22 플러그인 · 147 → 155 스킬 · 동기화 지점 169 → 178**.
+
+### Added (신규 1 플러그인 + 8 스킬, moai-book)
+
+- `moai-book:book-concept-planner` — 도서 컨셉서. 의도파악 → 리서치 → 인사이트 도출 3단계 워크플로우. 한 줄(15자)/30자/300자 요약 + USP 3축 + 시장 포지셔닝 매트릭스 + 자비 vs 출판사 투고 의사결정 + 4 장르 프리셋. KPIPA·교보문고·국립국어원 공식 출처 11회 인용. 409 lines.
+
+- `moai-book:book-target-reader` — 타깃 독자 페르소나. 4축 카드(인구통계·라이프스타일·정체성·소비신호) + JTBD 3 차원(기능적·감정적·사회적) + 페인포인트 강도×빈도 매트릭스 4 분면(긴급·핵심·잠재·희귀) + 독서 행동 7항목 + 5인 인터뷰 검증. 한국 KPIPA 국민독서실태조사 인용. 355 lines.
+
+- `moai-book:book-outline-designer` — 목차 설계. 부·장·꼭지 3 레벨 트리 + 분량 배분(200자 원고지) + 5요소 챕터 시놉시스(도입·약속·본문요약·사례·연결) + 페르소나 여정 4단계 검증(1부 끝·중반·마지막 부) + 분량 폭주·부족 검출 + 4 장르 분기. 352 lines.
+
+- `moai-book:book-author-bio` — 저자 약력. 3 신뢰 신호(권위·공감·변화) + 3 길이 약력(50자·200자·500자) + 저자의 말 4단 구조(도입·공감·약속·초대 500~800자) + 신뢰 신호 매트릭스 5 영역 + SNS 채널별(인스타·브런치·링크드인·유튜브·X·카카오) + 페르소나 시뮬레이션. 387 lines.
+
+- `moai-book:book-proposal-writer` — 출판사 투고 제안서. 출판기획서 5섹션 + 샘플 챕터 + 마케팅 플랜 5 카테고리(SNS·강연·언론·북클럽·이벤트) 3 패키지 = A4 12~20장. 출간 전·직후·후 3 단계 마케팅 타임라인(D-90·D+30·D+90) + 거절 신호 사전 검출(USP 약함·타깃 모호·분량 불균형 등) + 4 장르 × 10 출판사 양식 가이드. 501 lines.
+
+- `moai-book:book-publisher-matcher` — 한국 출판사 매칭. 4 차원 평가(장르 적합도 40% · 규모 25% · 계약 조건 20% · 투고 채널 15%) + Top 5 우선순위 추천 + 거절 후 차순위 시나리오(D-0·D+14·D+45·D+90) + 30+ 한국 출판사 라이브러리(IT·실용·인문·문학·아동 + 자비 출판 5 플랫폼) + 협상 포인트 7 체크리스트(인세·선인세·계약기간·전자책·해외판권 등). 446 lines.
+
+- `moai-book:book-chapter-writer` — 챕터 본문 집필. 꼭지 단위 5 요소(훅 10%·본문 70%·클라이맥스 10%·정리 5%·연결 5%) + 4 장르 문체 프리셋(실용·인문·기술·소설) + 200자 원고지 매수 자동 카운트 + 인용 5 유형 + 도표·코드·이미지 자리표시 + 한국 출판사 8곳 어미·문체 컨벤션. 382 lines.
+
+- `moai-book:book-revision-coach` — 퇴고·교열 7 단계 점검(어법·문체·논리·인용·분량·시각자료·일관성) + 4 장르 문체 일관성 검증 + 분량 ±20% 검증 + 인용 5 유형 정합성 + 6 일관성 차원(어미·시점·인물·용어·표기·분량) + 4 체인 검수 순서(korean-spell-check → book-revision-coach → humanize-korean → ai-slop-reviewer). 420 lines.
+
+### 풀 워크플로우 (8 스킬 체이닝)
+
+```
+book-concept-planner (컨셉서)
+  → book-target-reader (페르소나·JTBD)
+  → book-outline-designer (목차·시놉시스)
+  → book-author-bio (저자 약력·저자의 말)
+  → book-proposal-writer (출판 제안서)
+  → book-publisher-matcher (출판사 매칭 Top 5)
+  → book-chapter-writer (본문 챕터 집필)
+  → book-revision-coach (퇴고 7 단계)
+  → moai-content:korean-spell-check (정밀 맞춤법)
+  → moai-content:humanize-korean (AI 티 정밀 윤문, 필수)
+  → moai-core:ai-slop-reviewer (최종 검수, 필수)
+```
+
+### 한국 출판 컨텍스트 (2026 기준)
+
+- **KPIPA 통계**: 한국 출판 시장 데이터·국민독서실태조사·표준 양식
+- **국립국어원**: 한글 맞춤법·외래어 표기법·우리말 우선 가이드
+- **도서정가제**: 신간 18개월 정가 + 최대 10% 가격할인 + 5% 적립
+- **베스트셀러 차트**: 교보문고·알라딘·예스24 3사 통합 권장
+- **한국 출판사 30+**: IT(한빛미디어·인사이트·제이펍·길벗 IT) · 실용(웅진·다산북스·길벗·메가스터디북스) · 인문(민음사·문학동네·창비·휴머니스트·은행나무·돌베개) · 문학(민음사·문학동네·창비·문학과지성사·자음과모음) · 아동(비룡소·사계절·창비 어린이)
+- **신인 등단 경로**: 문학동네신인상·창비신인상·민음 신인 발굴 + 한국출판문화상·한국과학기술도서상
+- **자비 출판 5 대안**: 부크크(POD)·텀블벅 출판 펀딩·인디고·카카오 브런치북·출판사 자비
+
+### Quality
+
+- 8 스킬 4차원 루브릭 자가 평가: 가중 평균 **0.85** (통과 기준 0.70 ✅)
+- ai-slop 자체 검수: 8 스킬 모두 **APPROVE**
+- frontmatter v2.0.0 정책 준수 (metadata 블록 0건, version 단일 필드)
+- vault 외부 참고 자료 원문 비유·표현 직접 인용 0건 (자체 재구성)
+- 4 장르 자동 분기 검증 (실용·인문·기술·소설)
+- tests/test-cases.yaml: 스킬당 6~9 케이스, 총 60+ test cases
+
+### 동기화 지점 (178)
+
+| 범주 | 경로 | 개수 |
+|---|---|---|
+| 마켓플레이스 | `.claude-plugin/marketplace.json` | 1 |
+| 플러그인 매니페스트 | `<plugin>/.claude-plugin/plugin.json` | 22 (moai-book 신규 1 추가) |
+| 스킬 frontmatter | `<plugin>/skills/<skill>/SKILL.md` | 155 (moai-book 신규 8 추가) |
+
+## [2.9.0] - 2026-05-17
+
+MINOR. **Wave 5 — moai-media 이미지 프롬프트 빌더 3종 신설** — GPT-image-2(OpenAI), Gemini 3 Pro Image(Google Nano Banana Pro), Midjourney v8.1 공식 프롬프트 가이드를 그대로 적용한 빌더 스킬 3종. AskUserQuestion 프리셋(제품샷·인물·일러스트·풍경) + 미세조정 라운드로 컨텍스트를 수집하고, 동일 입력을 3개 모델별 어조(6-Block / 5-component / 키워드+`--파라미터`)로 동시 변환해 복붙 가능한 텍스트로 출력. 144 → **147 스킬**, 동기화 지점 166 → **169**.
+
+### Added (신규 3 스킬, moai-media)
+
+- `moai-media:gpt-image-2-prompt` — OpenAI GPT-image-2 전용 프롬프트 빌더. [OpenAI Cookbook](https://developers.openai.com/cookbook/examples/multimodal/image-gen-models-prompting-guide) 공식 6-Block 구조(Subject·Action·Scene·Composition·Lighting·Style&Text). 편집 시 Change/Preserve/Constraints 2열 로직(`references/editing-patterns.md`). 텍스트 verbatim·ALL CAPS·다국어(한·일·중·힌·벵골) 규칙(`references/text-rendering.md`). 4 프리셋 × 4 슬롯 + 3개 모델 동시 출력. 페어: 기존 `media-gpt-image2-builder`(광고 5장 자동 생성)와 책임 분리 — 본 스킬은 프롬프트 텍스트만.
+
+- `moai-media:gemini-3-image-prompt` — Google Gemini 3 Pro Image (Nano Banana Pro) 전용 프롬프트 빌더. [Google AI for Developers](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image-preview) 5-component 구조(영문 문장형, Creative Director 어조). 카메라 하드웨어 지정(Fujifilm·GoPro·iPhone 등). Reference image 14 슬롯 전략(`references/reference-images.md`). Search Grounding 활성화 가이드(`references/search-grounding.md`). Thinking vs Fast mode 권장. SynthID 워터마크 안내. 페어: 기존 `nano-banana`(실제 API 호출)와 책임 분리.
+
+- `moai-media:midjourney-v8-prompt` — Midjourney v8.1 (2026.03 Alpha) 전용 프롬프트 빌더. [Midjourney Parameter List](https://docs.midjourney.com/hc/en-us/articles/32859204029709-Parameter-List) 기반 키워드+`--파라미터` 구조. `--sref`/`--oref`/`--cw`/`--p` 3대 reference 시스템 deep dive(`references/style-references.md`). 6대 비용·동작 함정 자동 검사(`references/cost-traps.md`) — `--hd --q 4` 16x cost, `--cw 100` 상속 함정, `--cref` deprecation 자동 교체. Midjourney 공식 API 자동화 제한 명시. 페어: Discord/web alpha에서 직접 실행.
+
+### Skill 공통 사양 (3개 동일)
+
+- AskUserQuestion 라운드 ≤ 3, 질문 ≤ 7 (프리셋 + 미세조정 + 화면비·텍스트·고급옵션)
+- 출력: 3개 모델 프롬프트 코드블록 + 권장 파라미터 + 한국어 해설 + 페어 스킬 안내
+- 책임 경계: **프롬프트 텍스트 산출 전용** (실제 이미지 생성은 페어 스킬 호출)
+- 4 프리셋 (제품샷·인물·일러스트·풍경) × 4 슬롯 공유 — 모델별 어조 변환만 다름
+- references 4개 + presets 4개 + tests/test-cases.yaml 5~6 케이스 + 회귀 베이스라인
+- 루브릭 자가 평가: 0.805 ~ 0.815 (통과 기준 0.70 ✅)
+
+### 트리거 키워드 (책임 경계)
+
+| 본 스킬 | vs 기존 스킬 |
+|---|---|
+| "GPT 이미지 프롬프트" | `media-gpt-image2-builder`(GPT 5장 자동 생성)와 분리 — "프롬프트" 명시 |
+| "Gemini 이미지 프롬프트", "나노바나나 프롬프트" | `nano-banana`(Gemini 직접 호출)와 분리 — "프롬프트" 명시 |
+| "미드저니 프롬프트", "MJ 프롬프트" | (기존 MJ 스킬 없음) — 신규 도메인 |
+
+### 동기화 지점 (+3)
+
+- `.claude-plugin/marketplace.json` × 1
+- `<plugin>/.claude-plugin/plugin.json` × 21
+- `<plugin>/skills/<skill>/SKILL.md` × 147 (Wave 5 신규 3 + 누적)
+- 총 **169 지점** 동일 버전 (v2.9.0) 유지
+
+### Migration
+
+- Breaking change 없음
+- moai-media 사용자: Wave 5 신규 3 스킬 자동 사용. 별도 설정 없음
+- 본 빌더 출력 프롬프트는 OpenAI/Google/Midjourney 공식 가이드 형식이므로 외부 도구(ChatGPT 웹, Google AI Studio, Discord `/imagine`, Sora 등) 호환
+
+### 공식 출처 (각 SKILL.md `## 출처` 섹션에 markdown hyperlink 명시)
+
+- **GPT-image-2**: [OpenAI Cookbook](https://developers.openai.com/cookbook/examples/multimodal/image-gen-models-prompting-guide), [openai-cookbook GitHub](https://github.com/openai/openai-cookbook/blob/main/examples/multimodal/image-gen-models-prompting-guide.ipynb)
+- **Gemini 3 Pro Image**: [Google AI for Developers](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image-preview), [Google DeepMind](https://deepmind.google/models/gemini-image/pro/), [Google Cloud Blog Nano Banana guide](https://cloud.google.com/blog/products/ai-machine-learning/ultimate-prompting-guide-for-nano-banana), [Vertex AI docs](https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/3-pro-image)
+- **Midjourney v8.1**: [Parameter List](https://docs.midjourney.com/hc/en-us/articles/32859204029709-Parameter-List), [Style Reference](https://docs.midjourney.com/hc/en-us/articles/32180011136653-Style-Reference), [Omni Reference](https://docs.midjourney.com/hc/en-us/articles/36285124473997-Omni-Reference), [Character Reference (deprecated)](https://docs.midjourney.com/hc/en-us/articles/32162917505293-Character-Reference)
+
+---
 
 ## [2.8.0] - 2026-05-16
 

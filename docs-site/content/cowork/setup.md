@@ -1,6 +1,6 @@
 ---
 title: "설정하기"
-weight: 103
+weight: 25
 description: "Claude Cowork의 핵심 설정: 전역 지시어, 스킬, 커넥터, 권한 관리"
 geekdocBreadcrumb: true
 geekdocCollapseSection: false

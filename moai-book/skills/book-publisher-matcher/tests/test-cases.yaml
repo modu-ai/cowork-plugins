@@ -1,0 +1,123 @@
+version: 2.9.0
+skill: book-publisher-matcher
+
+test_cases:
+  - id: TC-01-4-dimension-eval
+    name: 4 차원 평가 (장르·규모·계약·채널)
+    input: |
+      "Next.js 15" 책 출판사 매칭. 저자 13년차 풀스택, 유튜브 5만.
+    expected:
+      - dimensions: [장르적합도, 규모적합도, 계약조건, 투고채널]
+      - weights: [0.4, 0.25, 0.2, 0.15]
+      - scoring_range: [0, 5]
+    pass_criteria:
+      - all_4_dimensions_scored: true
+      - weighted_average_calculated: true
+
+  - id: TC-02-top-5-recommendation
+    name: Top 5 출판사 추천 + 우선순위
+    input: |
+      IT 입문서 매칭. Top 5 출판사 추천해줘.
+    expected:
+      - count: 5
+      - sorted_by_weighted_average: true
+      - priority_assigned: [1순위, 2순위, 3순위, 4순위, 5순위]
+    pass_criteria:
+      - exactly_5_recommendations: true
+      - priority_clear: true
+
+  - id: TC-03-genre-preset-tech
+    name: 기술서 1순위 = 한빛미디어
+    input: |
+      IT 책 매칭.
+    expected:
+      - 1순위_후보: [한빛미디어, 인사이트, 길벗_IT, 제이펍]
+      - 신인공모_미적용: true  # 기술서는 신인공모 거의 없음
+    pass_criteria:
+      - tech_publishers_prioritized: true
+
+  - id: TC-04-genre-preset-literary
+    name: 문학 1순위 = 민음사·문학동네·창비
+    input: |
+      소설 매칭. 신인 작가.
+    expected:
+      - 1순위_후보: [민음사, 문학동네, 창비]
+      - 신인공모_추천: [문학동네신인상, 창비신인상, 민음_신인]
+    pass_criteria:
+      - literary_publishers_prioritized: true
+      - shin_in_gongmo_listed: true
+
+  - id: TC-05-rejection-scenario
+    name: 거절 후 차순위 시나리오
+    input: |
+      1순위 거절 시 진행 시나리오.
+    expected:
+      - phases: [Phase1_D0, Phase2_D14, Phase3_D45, Phase4_D90]
+      - actions:
+        - Phase2: 답변_대기_2_6주
+        - Phase3: 2순위_3_4순위_동시_투고_가능
+        - Phase4: 자비_출판_또는_6개월_재투고
+    pass_criteria:
+      - scenario_complete: true
+      - timeline_realistic: true
+
+  - id: TC-06-self-publishing-alternative
+    name: 자비 출판 대안 (5종)
+    input: |
+      모두 거절 시 자비 출판 옵션.
+    expected:
+      - platforms: [부크크, 텀블벅, 인디고, 카카오_브런치북, 출판사_자비]
+      - cost_inse:
+        - 부크크: "무료 / 35~70%"
+        - 텀블벅: "펀딩 + 60~80%"
+        - 출판사_자비: "200~500만원"
+    pass_criteria:
+      - 5_alternatives_listed: true
+
+  - id: TC-07-publisher-typo-detection
+    name: 출판사명 오타 검출
+    input: |
+      "민음서·한빛 미디어·문학동내" 출판사 매칭.
+    expected:
+      - correction:
+        - 민음서: 민음사
+        - 한빛_미디어: 한빛미디어
+        - 문학동내: 문학동네
+    pass_criteria:
+      - typos_corrected: true
+
+  - id: TC-08-contract-terms
+    name: 계약 조건 체크리스트
+    input: |
+      출판사 협상 포인트 정리.
+    expected:
+      - checklist: [인세율, 선인세, 계약기간, 전자책권리, 해외판권, 표지의견권, 마케팅협업]
+    pass_criteria:
+      - 7_checklist_items: true
+
+rubric_anchors:
+  correctness:
+    target_score: ">= 0.80"
+    checks:
+      - 30_publishers_accurate
+      - inse_standards_8_10_percent
+      - shin_in_gongmo_listed_real
+  completeness:
+    target_score: ">= 0.85"
+    checks:
+      - 4_step_workflow_complete
+      - 4_genre_preset_complete
+      - 30_publisher_library_complete
+      - rejection_scenario_complete
+      - self_publishing_alternatives_5
+  clarity:
+    target_score: ">= 0.80"
+    checks:
+      - publisher_tables_clear
+      - top_5_format_consistent
+      - timeline_visualized
+  efficiency:
+    target_score: ">= 0.70"
+    checks:
+      - token_count_reasonable
+      - publisher_library_compact

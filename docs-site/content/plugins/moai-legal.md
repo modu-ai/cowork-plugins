@@ -28,7 +28,7 @@ flowchart LR
 
 ## 무엇을 하는 플러그인인가
 
-`moai-legal` (v1.5.0)는 계약서·이용약관·개인정보처리방침·SLA 리스크 분석, NDA 빠른 검토, 규제 준수·내부 감사·ESG 보고, 기업 법적 리스크 매트릭스 및 IP 포트폴리오 분석까지 법무팀의 1차 스크리닝을 자동화합니다. korean-law MCP와 연동하면 국가법령정보센터·판례 검색을 체인에 포함시킬 수 있습니다.
+`moai-legal`는 계약서·이용약관·개인정보처리방침·SLA 리스크 분석, NDA 빠른 검토, 규제 준수·내부 감사·ESG 보고, 기업 법적 리스크 매트릭스 및 IP 포트폴리오 분석까지 법무팀의 1차 스크리닝을 자동화합니다. korean-law MCP와 연동하면 국가법령정보센터·판례 검색을 체인에 포함시킬 수 있습니다.
 
 ## 설치
 
@@ -49,9 +49,9 @@ flowchart LR
 | `nda-triage` | 비밀유지계약(NDA) 빠른 검토·위험 조항 식별 |
 | `compliance-check` | 규제 준수 점검, 내부 감사, ESG 보고 |
 | `legal-risk` | 기업 법적 리스크 매트릭스, IP 포트폴리오 분석 |
-| `iros-registry-automation` (v2.0.0 신규) | 인터넷등기소(IROS) 법인·부동산 등기부등본 일괄 발급 보조 |
+| `iros-registry-automation` | 인터넷등기소(IROS) 법인·부동산 등기부등본 일괄 발급 보조 |
 
-## v2.0.0 신규 — `iros-registry-automation` (인터넷등기소 자동화)
+## `iros-registry-automation` (인터넷등기소 자동화)
 
 대법원 인터넷등기소(IROS, `iros.go.kr`)에서 **법인·부동산 등기부등본**을 묶음 단위로 발급해야 할 때, 사용자가 직접 로그인·결제하는 흐름 안에서 장바구니·열람·저장을 안전하게 보조합니다. 실사·법무 검토·법인 일괄 관리에 사용합니다.
 
@@ -129,7 +129,7 @@ compliance-check → docx-generator(보고서)
 - [modu-ai/cowork-plugins](https://github.com/modu-ai/cowork-plugins)
 - [moai-legal 디렉터리](https://github.com/modu-ai/cowork-plugins/tree/main/moai-legal)
 - [korean-law MCP](https://korean-law-mcp.fly.dev) — 국가법령정보센터 통합 (compliance-check, legal-risk)
-- [NomaDamas/k-skill](https://github.com/NomaDamas/k-skill) — MIT — `iros-registry-automation` 원본 (v2.0.0)
+- [NomaDamas/k-skill](https://github.com/NomaDamas/k-skill) — MIT — `iros-registry-automation` 원본
 - [challengekim/iros-registry-automation](https://github.com/challengekim/iros-registry-automation) — MIT — IROS 자동화 참고 구현
 - [대법원 인터넷등기소 (iros.go.kr)](https://www.iros.go.kr) — 발급 사이트
 - [등기정보광장 OpenAPI (data.iros.go.kr)](https://data.iros.go.kr) — 별개 서비스, 통계·메타 조회용

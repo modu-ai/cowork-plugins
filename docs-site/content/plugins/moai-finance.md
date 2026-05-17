@@ -28,7 +28,7 @@ flowchart LR
 
 ## 무엇을 하는 플러그인인가
 
-`moai-finance` (v1.5.0)는 프리랜서 3.3% 원천징수, 종합소득세·부가가치세 신고, 홈택스 절차, K-IFRS 재무상태표·손익계산서·현금흐름표 작성, 월·분기·연간 결산과 4대보험 정산, 예산 대비 실적 분석까지 한국 기준 재무·세무 실무를 자동화합니다. 2026년 K-IFRS 제1118호 변경사항과 4대보험 요율·노동법 최신값이 반영되어 있습니다.
+`moai-finance`는 프리랜서 3.3% 원천징수, 종합소득세·부가가치세 신고, 홈택스 절차, K-IFRS 재무상태표·손익계산서·현금흐름표 작성, 월·분기·연간 결산과 4대보험 정산, 예산 대비 실적 분석까지 한국 기준 재무·세무 실무를 자동화합니다. 2026년 K-IFRS 제1118호 변경사항과 4대보험 요율·노동법 최신값이 반영되어 있습니다.
 
 ## 설치
 
@@ -49,8 +49,8 @@ flowchart LR
 | `financial-statements` | K-IFRS 재무상태표·손익계산서·현금흐름표 |
 | `close-management` | 월·분기·연간 결산, 4대보험 정산, 급여 마감 |
 | `variance-analysis` | 예산 대비 실적, 매출·비용·이익 분산, KPI 추적 |
-| `court-auction-search` (v2.0.0 신규) | 대법원 법원경매정보 매각공고·사건번호 단건 조회 |
-| `korean-stock-search` (v2.0.0 신규) | KRX 상장 종목 검색·기본정보·일별 시세 |
+| `court-auction-search` | 대법원 법원경매정보 매각공고·사건번호 단건 조회 |
+| `korean-stock-search` | KRX 상장 종목 검색·기본정보·일별 시세 |
 
 ## 한국 기준 최신화
 
@@ -82,7 +82,7 @@ variance-analysis → xlsx-creator → docx-generator → ai-slop-reviewer
 > 이번 분기 재무상태표 K-IFRS 기준으로 엑셀로 만들어줘.
 ```
 
-## v2.0.0 신규 — `court-auction-search` (법원경매 매각공고)
+## `court-auction-search` (법원경매 매각공고)
 
 대법원이 운영하는 공식 **법원경매정보**(`courtauction.go.kr`)의 매각공고와 사건정보를 read-only로 조회합니다. 자산 처분·경매 투자·실사 검토에 사용합니다.
 
@@ -112,7 +112,7 @@ variance-analysis → xlsx-creator → docx-generator → ai-slop-reviewer
 
 본 스킬은 **NomaDamas/k-skill** (MIT) 의 `court-auction-notice-search`를 cowork에 포팅했습니다. 데이터는 [대법원 법원경매정보](https://www.courtauction.go.kr) 사이트의 공개 정보입니다.
 
-## v2.0.0 신규 — `korean-stock-search` (KRX 시세)
+## `korean-stock-search` (KRX 시세)
 
 KRX(한국거래소) 상장 종목 검색·기본정보·일별 시세를 조회합니다. moai-business의 DART(공시)를 보완하는 시세 데이터로 활용합니다.
 
@@ -150,7 +150,7 @@ KOSPI · KOSDAQ · KONEX
 
 - [modu-ai/cowork-plugins](https://github.com/modu-ai/cowork-plugins)
 - [moai-finance 디렉터리](https://github.com/modu-ai/cowork-plugins/tree/main/moai-finance)
-- [NomaDamas/k-skill](https://github.com/NomaDamas/k-skill) — MIT — `court-auction-notice-search`, `korean-stock-search` 원본 (v2.0.0)
+- [NomaDamas/k-skill](https://github.com/NomaDamas/k-skill) — MIT — `court-auction-notice-search`, `korean-stock-search` 원본
 - [jjlabsio/korea-stock-mcp](https://github.com/jjlabsio/korea-stock-mcp) — MIT — KRX MCP 설계 참고
 - [대법원 법원경매정보](https://www.courtauction.go.kr) — 공식 데이터 출처
 - [KRX Open API](https://openapi.krx.co.kr) — 공식 데이터 출처

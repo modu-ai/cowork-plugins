@@ -48,15 +48,44 @@
         <div class="gdoc-page">
           {{ template "main" . }}
 
-          {{- /* 디자인 .pg-nav prev/next 2-card 푸터 (cowork-pages.jsx) */ -}}
+          {{- /* prev/next 2-card 푸터 — main.yaml 메뉴 순서 기반 글로벌 순회
+                 (섹션 인덱스 페이지·섹션 간 이동도 자동 처리. 메뉴에 없는 페이지는 .PrevInSection fallback) */ -}}
           {{- $prev := false -}}{{- $next := false -}}
-          {{- if eq .Kind "home" -}}
-            {{- with .Site.GetPage "/about" }}{{- $prev = dict "title" "이 문서에 대하여" "lbl" "← 소개" "url" .RelPermalink -}}{{- end -}}
-            {{- with .Site.GetPage "/getting-started/install" }}{{- $next = dict "title" "설치 및 등록" "lbl" "다음 →" "url" .RelPermalink -}}{{- end -}}
-            {{- if not $next -}}{{- with .Site.GetPage "/getting-started" }}{{- $next = dict "title" "시작하기" "lbl" "다음 →" "url" .RelPermalink -}}{{- end -}}{{- end -}}
+          {{- $current := .RelPermalink -}}
+          {{- $curKey := printf "%s/" (trim $current "/") -}}
+          {{- /* 메뉴 전체 평탄화 */ -}}
+          {{- $flat := slice -}}
+          {{- range hugo.Data.menu.main.main -}}
+            {{- range .sub -}}
+              {{- if .ref -}}
+                {{- $refKey := printf "%s/" (trim .ref "/") -}}
+                {{- $flat = $flat | append (dict "name" .name "ref" .ref "key" $refKey) -}}
+              {{- end -}}
+            {{- end -}}
+          {{- end -}}
+          {{- /* 현재 페이지 위치 찾기 */ -}}
+          {{- $idx := -1 -}}
+          {{- range $i, $item := $flat -}}
+            {{- if eq $item.key $curKey -}}{{- $idx = $i -}}{{- end -}}
+          {{- end -}}
+          {{- if ge $idx 0 -}}
+            {{- /* 메뉴에서 발견 → 글로벌 평탄 순회 적용 */ -}}
+            {{- if gt $idx 0 -}}
+              {{- $p := index $flat (sub $idx 1) -}}
+              {{- $prev = dict "title" $p.name "lbl" "← 이전" "url" $p.ref -}}
+            {{- end -}}
+            {{- if lt $idx (sub (len $flat) 1) -}}
+              {{- $n := index $flat (add $idx 1) -}}
+              {{- $next = dict "title" $n.name "lbl" "다음 →" "url" $n.ref -}}
+            {{- end -}}
+          {{- else if eq .Kind "home" -}}
+            {{- /* 홈: 메뉴 첫 항목으로 */ -}}
+            {{- if gt (len $flat) 0 -}}
+              {{- $n := index $flat 0 -}}
+              {{- $next = dict "title" $n.name "lbl" "다음 →" "url" $n.ref -}}
+            {{- end -}}
           {{- else -}}
-            {{- /* Hugo .PrevInSection은 의미상 "더 높은 weight" 페이지를 반환 (Hugo 디자인).
-                   사용자 직관(이전=낮은 weight, 다음=높은 weight)과 반대이므로 swap. */ -}}
+            {{- /* 메뉴에 없는 페이지: 같은 섹션 형제 페이지로 fallback (weight 역순 swap) */ -}}
             {{- if .NextInSection -}}{{- $prev = dict "title" .NextInSection.Title "lbl" "← 이전" "url" .NextInSection.RelPermalink -}}{{- end -}}
             {{- if .PrevInSection -}}{{- $next = dict "title" .PrevInSection.Title "lbl" "다음 →" "url" .PrevInSection.RelPermalink -}}{{- end -}}
           {{- end -}}
@@ -168,6 +197,51 @@
           btn.parentNode.replaceChild(clone, btn);
         }
       });
+    })();
+
+    // 사이드바 섹션 펼침/접힘 상태 보존 (localStorage) — 페이지 이동 후에도 유지
+    (function(){
+      var STORAGE_KEY = 'cw-side-state';
+      function getSaved(){
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}') || {}; }
+        catch(e){ return {}; }
+      }
+      function save(state){
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e){}
+      }
+      function keyOf(section){
+        var span = section.querySelector('.cw-side-title > span:last-child');
+        return span ? span.textContent.trim() : null;
+      }
+      function init(){
+        var sections = document.querySelectorAll('.cw-side .cw-side-section');
+        if (!sections.length) return;
+        var saved = getSaved();
+        sections.forEach(function(section){
+          var key = keyOf(section);
+          if (!key) return;
+          // 현재 활성 페이지가 속한 섹션은 강제 open (서버 결정 우선)
+          var hasActive = !!section.querySelector('.cw-side-link.active');
+          if (hasActive) {
+            section.setAttribute('open', '');
+          } else if (saved.hasOwnProperty(key)) {
+            // 다른 섹션은 localStorage 상태 적용
+            if (saved[key]) section.setAttribute('open', '');
+            else section.removeAttribute('open');
+          }
+          // 토글 시 상태 저장
+          section.addEventListener('toggle', function(){
+            var s = getSaved();
+            s[key] = section.hasAttribute('open');
+            save(s);
+          });
+        });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
     })();
     </script>
   </body>

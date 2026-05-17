@@ -8,7 +8,7 @@ tags: ["moai-content"]
 
 # moai-content
 
-> 한국 마케팅·콘텐츠 실무에 최적화된 12개 스킬을 제공합니다. 네이버 블로그·티스토리·인스타그램·LinkedIn·카카오 채널까지 플랫폼별 알고리즘 차이를 반영하며, **v2.2.0부터 마크다운 보고서 HTML 변환(`html-report`)이 추가**되었습니다. 한국 이커머스 상세페이지 기획·구조·전략 설계는 `detail-page-planner`가 전담합니다.
+> 한국 마케팅·콘텐츠 실무에 최적화된 12개 스킬을 제공합니다. 네이버 블로그·티스토리·인스타그램·LinkedIn·카카오 채널까지 플랫폼별 알고리즘 차이를 반영하고, 마크다운 보고서 HTML 변환(`html-report`)·한국어 맞춤법 검수(`korean-spell-check`)·한국어 AI 티 윤문(`humanize-korean`)을 모두 포함합니다. 한국 이커머스 상세페이지 기획·구조·전략 설계는 `detail-page-planner`가 전담합니다.
 
 ```mermaid
 flowchart LR
@@ -28,7 +28,7 @@ flowchart LR
 
 ## 무엇을 하는 플러그인인가
 
-`moai-content` (v2.1.0)는 한국 디지털 마케팅 채널의 실제 운영 노하우를 반영해 설계된 텍스트 콘텐츠 생성 플러그인입니다. 단순히 글을 만드는 데 그치지 않고, 네이버 C-Rank·D.I.A. 알고리즘이나 인스타그램의 카드뉴스 길이 기준 등 채널별 베스트 프랙티스를 본문 구조에 반영합니다.
+`moai-content`는 한국 디지털 마케팅 채널의 실제 운영 노하우를 반영해 설계된 텍스트 콘텐츠 생성 플러그인입니다. 단순히 글을 만드는 데 그치지 않고, 네이버 C-Rank·D.I.A. 알고리즘이나 인스타그램의 카드뉴스 길이 기준 등 채널별 베스트 프랙티스를 본문 구조에 반영합니다.
 
 블로그 포스트·카드뉴스·랜딩페이지·뉴스레터·**상세페이지 기획**·상세페이지·SNS·카피라이팅·미디어 기획·한국어 맞춤법·**한국어 AI 티 정밀 윤문**·**마크다운 보고서 HTML 변환**까지 12개 스킬이 도메인별로 분리되어 있어, 필요한 채널만 선택해 호출할 수 있습니다.
 
@@ -58,9 +58,9 @@ flowchart LR
 | `copywriting` | 광고 헤드라인·슬로건·CTA | 3~5개 대안 카피 |
 | `social-media` | 릴스·쇼츠·스레드·X·LinkedIn 포스트 | 플랫폼별 버전 |
 | `media-production` | 유튜브·팟캐스트 기획, 콘텐츠 캘린더 | 기획서·큐시트 |
-| `korean-spell-check` (v2.0.0 신규) | 바른한글(부산대) 한국어 맞춤법·띄어쓰기 최종 검수 | 원문/교정안/이유 |
-| `humanize-korean` (v2.1.0 신규) | 한국어 AI 티 정밀 윤문 — 10대 카테고리 × 40+ 패턴 SSOT, 의미 100% 보존, A/B/C/D 등급 | final.md (윤문본) + summary.md (메트릭·등급) |
-| `html-report` (v2.2.0 신규) | 마크다운 보고서 → 단일 파일 HTML — Thariq HTML-effectiveness, 인라인 SVG + vanilla JS, 12-25KB 산출물 | .html 파일 (자체 완결형) |
+| `korean-spell-check` | 바른한글(부산대) 한국어 맞춤법·띄어쓰기 최종 검수 | 원문/교정안/이유 |
+| `humanize-korean` | 한국어 AI 티 정밀 윤문 — 10대 카테고리 × 40+ 패턴 SSOT, 의미 100% 보존, A/B/C/D 등급 | final.md (윤문본) + summary.md (메트릭·등급) |
+| `html-report` | 마크다운 보고서 → 단일 파일 HTML — Thariq HTML-effectiveness, 인라인 SVG + vanilla JS, 12-25KB 산출물 | .html 파일 (자체 완결형) |
 
 ## 한국 시장 특화 포인트
 
@@ -100,7 +100,7 @@ card-news → moai-media:nano-banana → ai-slop-reviewer
 > 인스타그램 6슬라이드 카드뉴스로 정부 지원금 신청 방법 만들어줘.
 ```
 
-## v2.0.0 신규 — `korean-spell-check` (한국어 맞춤법 검수)
+## `korean-spell-check` (한국어 맞춤법 검수)
 
 부산대학교 인공지능연구실과 ㈜나라인포테크가 공동 개발한 **바른한글** 공개 검사 표면을 이용해 한국어 문장을 최종 검수합니다. 2024년 10월 기존 "부산대학교 한국어 맞춤법 검사기"에서 **바른한글**로 정식 리브랜딩되었으며, 구 도메인 `speller.cs.pusan.ac.kr`은 폐기되고 [`nara-speller.co.kr`](https://nara-speller.co.kr/speller/)로 통합되었습니다. 블로그·뉴스레터·카피·계약서 등 텍스트 산출물의 마지막 단계에서 사용합니다.
 
@@ -127,7 +127,7 @@ card-news → moai-media:nano-banana → ai-slop-reviewer
 - **개발 주체**: 부산대학교 인공지능연구실 + ㈜나라인포테크 공동 개발 (1991년 권혁철 교수 시작, 2001년 웹 서비스 개시, 2024-10 리브랜딩)
 - 한컴오피스 한글 2018부터 내장 검사기로 채택, 잡코리아·사람인 취업 포털 탑재
 
-## v2.1.0 신규 — `humanize-korean` (한국어 AI 티 정밀 윤문)
+## `humanize-korean` (한국어 AI 티 정밀 윤문)
 
 [`epoko77-ai/im-not-ai`](https://github.com/epoko77-ai/im-not-ai) v1.6.1 (MIT, ⭐937 stars)의 Fast 모드 단일 스킬 변형을 cowork에 포팅했습니다. 영어권 humanizer(QuillBot·Hix·Undetectable AI)가 약한 **한국어 고유 패턴** — 번역투, 영어 인용 과다, 결말 공식, hedging, 형식명사 — 을 정량 메트릭과 SSOT 분류 체계로 수술적으로 제거합니다.
 
@@ -210,7 +210,7 @@ card-news → moai-media:nano-banana → ai-slop-reviewer
 - **원본 라이선스**: [im-not-ai/LICENSE](https://github.com/epoko77-ai/im-not-ai/blob/main/LICENSE) (MIT)
 - **개발 주체**: [@epoko77-ai](https://github.com/epoko77-ai) — 한국어 AI 티 SSOT 분류 체계 정립
 
-## v2.2.0 신규 — `html-report` (마크다운 보고서 → 단일 파일 HTML 변환기)
+## `html-report` (마크다운 보고서 → 단일 파일 HTML 변환기)
 
 Thariq Shihipar의 **"The Unreasonable Effectiveness of HTML"** 철학을 기반으로, 마크다운 보고서를 단일 파일 HTML로 변환하는 스킬입니다. **외부 JS/CSS 프레임워크 의존성 0**, 인라인 SVG + vanilla JS로 12-25KB 초경량 산출물을 만듭니다.
 
@@ -282,7 +282,7 @@ Thariq Shihipar의 **"The Unreasonable Effectiveness of HTML"** 철학을 기반
 ### Sources
 
 - [modu-ai/cowork-plugins README](https://github.com/modu-ai/cowork-plugins)
-- [moai-content 디렉터리](https://github.com/modu-ai/cowork-plugins/tree/v2.1.0/moai-content)
-- [NomaDamas/k-skill](https://github.com/NomaDamas/k-skill) — MIT — `korean-spell-check` 원본 (v2.0.0)
+- [moai-content 디렉터리](https://github.com/modu-ai/cowork-plugins/tree/main/moai-content)
+- [NomaDamas/k-skill](https://github.com/NomaDamas/k-skill) — MIT — `korean-spell-check` 원본
 - [바른한글 (nara-speller.co.kr)](https://nara-speller.co.kr) — 공개 검사 표면
-- [epoko77-ai/im-not-ai](https://github.com/epoko77-ai/im-not-ai) — MIT, ⭐937 — `humanize-korean` 원본 (v2.1.0)
+- [epoko77-ai/im-not-ai](https://github.com/epoko77-ai/im-not-ai) — MIT, ⭐937 — `humanize-korean` 원본
