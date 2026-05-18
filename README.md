@@ -4,15 +4,15 @@
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
 [![Version](https://img.shields.io/badge/Version-2.10.0-blue)](CHANGELOG.md)
 [![Plugins](https://img.shields.io/badge/Plugins-22-blue)](.claude-plugin/marketplace.json)
-[![Skills](https://img.shields.io/badge/Skills-155-green)](.claude-plugin/marketplace.json)
+[![Skills](https://img.shields.io/badge/Skills-156-green)](.claude-plugin/marketplace.json)
 [![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)
 [![shadcn/ui](https://img.shields.io/badge/UI-shadcn/ui-black)](https://ui.shadcn.com/)
 
-**Claude Cowork 한국어 도메인 전문가 AI 마켓플레이스 — 22 plugins · 155 skills · MIT**
+**Claude Cowork 한국어 도메인 전문가 AI 마켓플레이스: 22 plugins · 156 skills · MIT**
 
-자연어 한 줄로 **사업계획서·계약서 검토·세금 계산·PPT·이미지/영상/음성·BI 보고서·HTML 리포트·이커머스 강의 캠프·쿠팡 광고 최적화·메타 광고 보고서 분석·한국 출판사 제출 원고**를 자동 생성합니다. 한국 B2B 환경(K-IFRS·국세청·근로기준법·식약처·국토부·KRX·인터넷등기소·KPIPA)에 특화된 22개 독립 플러그인과 155개 도메인 스킬이 업무를 대신하며, 모든 텍스트 산출물은 [`ai-slop-reviewer`](./moai-core/skills/ai-slop-reviewer/)가 AI 패턴을 검수하여 자연스럽게 다듬어 드립니다.
+자연어 한 줄로 **사업계획서·계약서 검토·세금 계산·PPT·이미지/영상/음성·BI 보고서·HTML 리포트·이커머스 강의 캠프·쿠팡 광고 최적화·메타 광고 보고서 분석·한국 출판사 제출 원고**를 자동 생성합니다. 한국 B2B 환경(K-IFRS·국세청·근로기준법·식약처·국토부·KRX·인터넷등기소·KPIPA)에 특화된 22개 독립 플러그인과 156개 도메인 스킬이 업무를 대신하며, 모든 텍스트 산출물은 [`ai-slop-reviewer`](./moai-core/skills/ai-slop-reviewer/)가 AI 패턴을 검수하여 자연스럽게 다듬어 드립니다.
 
-> *Korean B2B specialty plugin marketplace for [Anthropic Claude Code (Cowork)](https://claude.ai/cowork) — 22 plugins · 155 skills. Korean fonts (Pretendard / Noto Serif KR / Chosunilbo Myungjo / KoPubWorld), Korean text humanizer (humanize-korean), AI-slop reviewer for every deliverable. K-IFRS, NTS, KRX, MFDS, MOLIT, IROS, KPIPA specialty skills. MIT licensed.*
+> *Korean B2B specialty plugin marketplace for [Anthropic Claude Code (Cowork)](https://claude.ai/cowork): 22 plugins · 156 skills. Korean fonts (Pretendard / Noto Serif KR / Chosunilbo Myungjo / KoPubWorld), Korean text humanizer (humanize-korean), AI-slop reviewer for every deliverable. K-IFRS, NTS, KRX, MFDS, MOLIT, IROS, KPIPA specialty skills. MIT licensed.*
 
 **🚀 빠른 설치**: Claude Cowork → 사용자 지정 → 개인 플러그인 + → **마켓플레이스 추가** → URL `modu-ai/cowork-plugins` 입력 → 동기화 → `moai-core` 먼저 설치
 
@@ -339,7 +339,7 @@ vault 1,329 노트 + Higgsfield MCP audit + 정승우님 자료 어트리뷰션 
 | [moai-data](./moai-data/) | 데이터 분석 — CSV/Excel 탐색, 공공데이터, 시각화 | 3 |
 | [moai-research](./moai-research/) | 연구/특허 — 논문 검색, 특허 분석/출원, 연구비 신청 | 5 |
 | [moai-media](./moai-media/) | AI 미디어 스튜디오 — Nano Banana·image-gen·video-gen·audio-gen·speech-video + **무드보드·GPT Image 2 빌더·모델 라우터·채널 광고 패키지·AI 표기·캔바 매직 레이어** + ElevenLabs·fal.ai·Higgsfield | 13 |
-| [moai-commerce](./moai-commerce/) | 한국 이커머스 풀세트 — 상세페이지(카피·이미지·사진 브리프) + 채널 가이드 5종 + 통합 마케팅(전략·카피·라이브) + **V6 6도구**(시장조사·JTBD·상품명·NCM·전략·진단) + **쿠팡 광고 최적화·마진 계산·자동화 진단** + **식약처 안전(MFDS)** | 22 |
+| [moai-commerce](./moai-commerce/) | 한국 이커머스 풀세트: 상세페이지(카피·이미지·사진 브리프) + 채널 가이드 5종 + 통합 마케팅(전략·카피·라이브) + **V6 6도구**(시장조사·JTBD·상품명·NCM·전략·진단) + **쿠팡 광고 최적화·마진 계산·자동화 진단** + **식약처 안전(MFDS)** + **로컬 재고 조회** | 36 |
 | [moai-bi](./moai-bi/) | BI·경영진 1pager — `executive-summary` (KPI 대시보드 + 경영진 보고서) | 1 |
 | [moai-pm](./moai-pm/) | 프로젝트 관리·주간보고·OKR — `weekly-report` (회고·KPI 추적) | 1 |
 | [moai-sales](./moai-sales/) | B2B 영업·제안서·콜드메일 — `proposal-writer` (RFP 대응) | 1 |
@@ -349,7 +349,7 @@ vault 1,329 노트 + Higgsfield MCP audit + 정승우님 자료 어트리뷰션 
 | 항목 | 수량 | 비고 |
 |------|:----:|------|
 | 플러그인 | **21** | moai-core + 20 도메인 플러그인 |
-| 스킬 | **130** | 전 SKILL.md `version: 2.5.0` 동기화 (Cowork 자동 업데이트 지원) |
+| 스킬 | **156** | 전 SKILL.md `version: 2.10.0` 동기화 (Cowork 자동 업데이트 지원) |
 | 레퍼런스 파일 | **210** | 각 스킬의 `references/` 안 상세 가이드 |
 | 스크립트 | **13** | helper(`scripts/`) — Python·Node·Shell |
 | 템플릿 | **1** | CLAUDE.md.tmpl 외 |

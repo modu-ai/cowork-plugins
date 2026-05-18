@@ -6,10 +6,10 @@
 
 ## 버전 통일 원칙 (HARD)
 
-아래 178개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.0.0부터 SKILL.md frontmatter `version:` 복구):
+아래 179개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.0.0부터 SKILL.md frontmatter `version:` 복구):
 - `.claude-plugin/marketplace.json` (`metadata.version`) × 1
 - `<plugin>/.claude-plugin/plugin.json` (`version`) × 22
-- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 155 (v2.10.0+)
+- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 156 (v2.10.0+)
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
 

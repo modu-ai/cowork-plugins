@@ -1,14 +1,14 @@
 ---
 title: "플러그인 카탈로그"
 weight: 1
-description: "modu-ai/cowork-plugins 마켓플레이스의 22개 플러그인·155개 스킬을 도메인별로 정리한 카탈로그입니다."
+description: "modu-ai/cowork-plugins 마켓플레이스의 22개 플러그인·156개 스킬을 도메인별로 정리한 카탈로그입니다."
 geekdocBreadcrumb: true
 geekdocCollapseSection: false
 ---
 
 # `cowork-plugins` 카탈로그
 
-[`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins)는 한국 업무 환경에 맞춰 설계된 **22개 플러그인 · 155개 스킬**의 커뮤니티 마켓플레이스입니다. 사업계획·IR·마케팅·법무·세무·HR·카드뉴스·PPT·이미지 생성·이커머스 캠프·**메타 광고 보고서 분석**·**한국 출판사 제출 원고**까지 도메인별로 묶여 있습니다.
+[`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins)는 한국 업무 환경에 맞춰 설계된 **22개 플러그인 · 156개 스킬**의 커뮤니티 마켓플레이스입니다. 사업계획·IR·마케팅·법무·세무·HR·카드뉴스·PPT·이미지 생성·이커머스 캠프·**메타 광고 보고서 분석**·**한국 출판사 제출 원고**까지 도메인별로 묶여 있습니다.
 
 ```mermaid
 flowchart LR
@@ -135,7 +135,7 @@ flowchart LR
 | [moai-book](./moai-book/) | 8 | **book-concept-planner·book-target-reader·book-outline-designer·book-author-bio·book-proposal-writer·book-publisher-matcher·book-chapter-writer·book-revision-coach (v2.10 신규)** |
 | [moai-business](./moai-business/) | 10 | strategy-planner, investor-relations, sbiz365-analyst, kr-gov-grant, consulting-brief, sales-playbook, startup-launchpad +3종 |
 | [moai-marketing](./moai-marketing/) | 11 | brand-identity, seo-audit, campaign-planner(광고 심리학 완전판), sns-content, target-script, landing-page-conversion-audit, pixel-audit, **meta-ads-analyzer (v2.5)** +3종 |
-| [moai-commerce](./moai-commerce/) | 35 | V6 6도구(market-research·jtbd·naming·channel-msg·integrated-strategy·morning-brief·order-summary), 광고·마진·자동화 진단(coupang-ad·margin·automation-audit), **Wave 1~4 누적 14**(ltv-cac·push·compliance-kr·promotion·repurchase·image-pipeline·review-aggregator·voc-triage·subscription·influencer·early-fan·trend·season) +12종 |
+| [moai-commerce](./moai-commerce/) | 36 | V6 6도구(market-research·jtbd·naming·channel-msg·integrated-strategy·morning-brief·order-summary), 광고·마진·자동화 진단(coupang-ad·margin·automation-audit), 로컬 재고 조회(local-inventory), **Wave 1~4 누적 14**(ltv-cac·push·compliance-kr·promotion·repurchase·image-pipeline·review-aggregator·voc-triage·subscription·influencer·early-fan·trend·season) +12종 |
 | [moai-product](./moai-product/) | 4 | spec-writer, roadmap-manager, ux-designer, ux-researcher |
 | [moai-operations](./moai-operations/) | 3 | status-reporter, process-manager, vendor-manager |
 | [moai-support](./moai-support/) | 4 | ticket-triage, draft-response, escalation-manager, kb-article |
@@ -151,7 +151,7 @@ flowchart LR
 | [moai-pm](./moai-pm/) | 1 | weekly-report |
 | [moai-sales](./moai-sales/) | 1 | proposal-writer |
 
-전체 **155개 스킬 · 22개 플러그인** (v2.10.0 기준).
+전체 **156개 스킬 · 22개 플러그인** (v2.10.0 기준).
 
 ## 다음 단계
 

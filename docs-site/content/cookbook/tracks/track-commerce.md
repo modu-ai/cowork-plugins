@@ -1,7 +1,7 @@
 ---
 title: "🛒 이커머스 트랙"
 weight: 25
-description: "D2C 셀러·이커머스 운영자를 위한 풀스택 워크플로우. moai-commerce 35스킬 + moai-media 광고 풀세트로 신상품 출시부터 재구매·VOC·LTV까지 한 플러그인 안에서 자동화."
+description: "D2C 셀러·이커머스 운영자를 위한 풀스택 워크플로우. moai-commerce 36스킬 + moai-media 광고 풀세트로 신상품 출시부터 재구매·VOC·LTV·로컬 재고 조회까지 한 플러그인 안에서 자동화."
 geekdocBreadcrumb: true
 ---
 
@@ -252,7 +252,7 @@ flowchart LR
 
 ## 자주 묻는 질문
 
-### Q. 35개 스킬을 다 외워야 하나요?
+### Q. 36개 스킬을 다 외워야 하나요?
 
 아니오. **사용자는 짧은 한 줄만 입력**하면 시스템이 자동으로 적절한 스킬을 선택해 체이닝합니다. 예: "재구매 메시지 짜줘" → 시스템이 `commerce-repurchase-timer + push-planner + compliance-kr`를 자동 호출.
 
@@ -273,7 +273,7 @@ flowchart LR
 ## 다음 단계
 
 - **[사용 패턴 가이드](../../../cowork/patterns/)** — 4가지 표준 사용 패턴
-- **[moai-commerce 플러그인](../../../plugins/moai-commerce/)** — 35스킬 전체 카탈로그
+- **[moai-commerce 플러그인](../../../plugins/moai-commerce/)**: 36스킬 전체 카탈로그
 - **[moai-media 플러그인](../../../plugins/moai-media/)** — 광고 영상 풀세트 13스킬
 - **[광고 트랙](../track-advertising/)** — 메타·구글 광고 진단·최적화
 - **[법무 트랙](../track-legal/)** — 표시광고법·정통망법 컴플라이언스

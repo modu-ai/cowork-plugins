@@ -1,10 +1,10 @@
 # cowork-plugins
 
-> Anthropic Claude Code 한국어 도메인 전문가 플러그인 마켓플레이스. 21개 독립 플러그인과 108개 도메인 스킬로 구성된 한국 B2B 환경 특화 오픈소스. MIT 라이선스.
+> Anthropic Claude Code 한국어 도메인 전문가 플러그인 마켓플레이스. 22개 독립 플러그인과 156개 도메인 스킬로 구성된 한국 B2B 환경 특화 오픈소스. MIT 라이선스.
 
 ## What is cowork-plugins?
 
-cowork-plugins is the official open-source plugin marketplace for Claude Cowork (the Korean variant of Anthropic Claude Code). It packages 21 independent plugins and 108 domain skills tailored for Korean B2B workflows: business strategy, marketing, legal, finance, HR, content production, AI media generation (image/video/voice), office documents (HWPX/DOCX/XLSX/PPTX/PDF), data analysis, research, e-commerce, BI, project management, and B2B sales.
+cowork-plugins is the official open-source plugin marketplace for Claude Cowork (the Korean variant of Anthropic Claude Code). It packages 22 independent plugins and 156 domain skills tailored for Korean B2B workflows: business strategy, marketing, legal, finance, HR, content production, AI media generation (image/video/voice), office documents (HWPX/DOCX/XLSX/PPTX/PDF), data analysis, research, e-commerce, BI, project management, B2B sales, and book publishing.
 
 자연어 한 줄로 사업계획서·계약서 검토·세금 계산·PPT·이미지/영상/음성·BI 보고서·HTML 리포트를 자동 생성합니다. 모든 텍스트 산출물은 `ai-slop-reviewer`가 AI 패턴을 검수하여 자연스럽게 다듬습니다.
 
@@ -49,14 +49,14 @@ After marketplace sync, install plugins individually. **Install `moai-core` firs
 | moai-data | 3 | CSV/Excel exploration, public data (KOSIS/data.go.kr), visualization | https://github.com/modu-ai/cowork-plugins/tree/main/moai-data |
 | moai-research | 5 | Paper search/writing (RISS/KCI/DBpia), patent search/analysis (KIPRIS), grant writing | https://github.com/modu-ai/cowork-plugins/tree/main/moai-research |
 | moai-media | 7 | Nano Banana, image-gen, video-gen (Kling/Hailuo/Luma/Pika/Veo), audio-gen (ElevenLabs/Suno), speech-video (Higgsfield/Hedra), character-mgmt | https://github.com/modu-ai/cowork-plugins/tree/main/moai-media |
-| moai-commerce | 12 | 13-section detail pages, channel guides (Coupang/Naver/D2C/crowdfunding/curation), commerce strategy/copy, live commerce, MFDS safety | https://github.com/modu-ai/cowork-plugins/tree/main/moai-commerce |
+| moai-commerce | 36 | 13-section detail pages, channel guides (Coupang/Naver/D2C/crowdfunding/curation), commerce strategy/copy, live commerce, MFDS safety, local inventory lookup | https://github.com/modu-ai/cowork-plugins/tree/main/moai-commerce |
 | moai-bi | 1 | Executive summary 1-pager (KPI dashboard + decision options) | https://github.com/modu-ai/cowork-plugins/tree/main/moai-bi |
 | moai-pm | 1 | Korean weekly business review (WBR) + executive 1-pager | https://github.com/modu-ai/cowork-plugins/tree/main/moai-pm |
 | moai-sales | 1 | Korean B2B proposal writing (12-section + Three C's) | https://github.com/modu-ai/cowork-plugins/tree/main/moai-sales |
 
-## Skills (108 total)
+## Skills (156 total)
 
-Total: 108 skills. Full inventory in `marketplace.json`. Each skill has a self-contained SKILL.md with structured frontmatter (`name`, `description`, `user-invocable`, `version: 2.2.0`).
+Total: 156 skills. Full inventory in `marketplace.json`. Each skill has a self-contained SKILL.md with structured frontmatter (`name`, `description`, `user-invocable`, `version`).
 
 ## Bundled MCP servers (8)
 
@@ -64,7 +64,7 @@ dart (DART corporate disclosures), korean-law (Korean law/precedent search), wor
 
 ## How is this different from anthropics/knowledge-work-plugins?
 
-`anthropics/knowledge-work-plugins` is Anthropic's official 11 English-language general knowledge work plugins. `modu-ai/cowork-plugins` is a **third-party Korean B2B specialty marketplace** with 21 plugins and 108 skills, focused on Korean regulations (K-IFRS, NTS standard forms, Korean Labor Law, MFDS, MOLIT, KRX, IROS), Korean business culture (WBR weekly reports, OKR, KPT retrospectives, Korean B2B proposal format), and Korean output documents (HWPX, Korean fonts including Pretendard/Noto Serif KR/Chosunilbo Myungjo/KoPubWorld).
+`anthropics/knowledge-work-plugins` is Anthropic's official 11 English-language general knowledge work plugins. `modu-ai/cowork-plugins` is a **third-party Korean B2B specialty marketplace** with 22 plugins and 156 skills, focused on Korean regulations (K-IFRS, NTS standard forms, Korean Labor Law, MFDS, MOLIT, KRX, IROS), Korean business culture (WBR weekly reports, OKR, KPT retrospectives, Korean B2B proposal format), and Korean output documents (HWPX, Korean fonts including Pretendard/Noto Serif KR/Chosunilbo Myungjo/KoPubWorld).
 
 ## Quality gate
 

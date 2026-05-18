@@ -4,7 +4,9 @@
 
 [![버전](https://img.shields.io/badge/version-2.8.0-blue)](../CHANGELOG.md)
 [![라이선스](https://img.shields.io/badge/license-MIT-green)](../LICENSE)
-[![스킬](https://img.shields.io/badge/skills-35-success)](#스킬-카탈로그-35종)
+[![스킬](https://img.shields.io/badge/skills-36-success)](#스킬-카탈로그-36종)
+
+> **v2.10.0 신규 1**: `commerce-local-inventory-search`(다이소·GS25·CU·세븐일레븐·이마트24·롯데마트·올리브영 상품·매장·재고 조회, upstream `hmmhmmhm/daiso-mcp` / `daiso` CLI 기반)
 
 > **v2.8.0 Wave 4 신규 7** — `commerce-review-aggregator`(멀티채널 리뷰 4단 분석), `commerce-voc-triage`(KTAS 5단계 VOC), `commerce-subscription-strategist`(구독 5가지 질문 + 4 모델), `commerce-influencer-collab`(5 티어 + 뒷광고 회피), `commerce-early-fan-builder`(충성 100명 부트스트랩 30일), `commerce-trend-namer`(데이터랩 트렌드 변환), `commerce-season-calendar`(30+ 시즌 이벤트)
 >
@@ -23,11 +25,17 @@
 - **상세페이지 (3)**: 13섹션 감정여정 카피 + 1080×12720 합성 PNG + 사진 사전 분석
 - **채널 가이드 (5)**: 쿠팡·네이버·D2C(카페24/아임웹/메이크샵)·크라우드펀딩·큐레이션
 - **마케팅·전략 (3)**: 통합 전략·광고/CRM 카피·라이브 커머스 스크립트
-- **안전 (1)**: 식약처(MFDS) 의약품·식품 통합 조회
+- **안전·조회 (2)**: 식약처(MFDS) 의약품·식품 통합 조회, 로컬 커머스 재고 조회
 
 합성 로직은 Pillow 단일 의존성으로 자체 구현되어 외부 패키지 설치가 필요하지 않습니다. V6 6도구와 Day1 셋업 스킬은 **MoAI-Commerce MCP Phase 1**(v2.4.0 출시 예정)을 호출합니다.
 
-## 스킬 카탈로그 (35종)
+## 스킬 카탈로그 (36종)
+
+### v2.10.0 신규 1: 로컬 커머스 재고 조회
+
+| 스킬 | 역할 |
+|------|------|
+| [commerce-local-inventory-search](./skills/commerce-local-inventory-search/SKILL.md) | upstream `hmmhmmhm/daiso-mcp` / `daiso` CLI 기반 다이소·GS25·CU·세븐일레븐·이마트24·롯데마트·올리브영 상품, 매장, 재고 조회. 구매·예약·결제 자동화 없이 공개 조회 결과만 요약 |
 
 ### v2.8.0 Wave 4 신규 7 — 한국 D2C 풀스택 완결
 
@@ -110,6 +118,7 @@
 | [commerce-copywriting](./skills/commerce-copywriting/SKILL.md) | 광고·톡톡·푸시·이메일 카피 (`ai-slop-reviewer` 자동 체이닝) |
 | [live-commerce](./skills/live-commerce/SKILL.md) | 네이버·카카오·그립·쿠팡 라이브 커머스 가이드 + 30/60분 스크립트 |
 | [mfds-safety](./skills/mfds-safety/SKILL.md) | 식약처(MFDS) 의약품·식품 안전 통합 — e약은요·건강기능식품 인정현황·검사부적합·회수. red flag 시 응급 안내 우선 (v2.0.0+) |
+| [commerce-local-inventory-search](./skills/commerce-local-inventory-search/SKILL.md) | 다이소·편의점·마트·올리브영 상품·매장·재고 조회. `daiso` CLI와 공개 MCP endpoint 사용 |
 
 ## 표준 워크플로우 (3일 캠프 기준)
 
@@ -174,6 +183,7 @@ Day 3: 산출물 합성 (moai-media 연계)
 "신상 패션 와디즈 펀딩 기획 + 영상 시놉시스"                  # → marketplace-crowdfunding
 "네이버 쇼핑라이브 60분 스크립트 — 무선이어폰 3종"            # → live-commerce
 "건강식품 식약처 검사부적합 이력 확인"                        # → mfds-safety
+"강남역 다이소 수납박스 재고 찾아줘"                          # 사용 스킬: commerce-local-inventory-search
 ```
 
 ## MCP 의존성 (v2.3.0)
@@ -201,6 +211,7 @@ V6 6도구와 Day1 셋업 스킬은 **MoAI-Commerce MCP Phase 1**(34종 도구)�
 
 ## 변경 이력
 
+- **v2.10.0** (2026-05-18): `commerce-local-inventory-search` 추가. `hmmhmmhm/daiso-mcp` / `daiso` CLI를 사용해 다이소·GS25·CU·세븐일레븐·이마트24·롯데마트·올리브영 상품·매장·재고를 조회. 총 35종에서 **36종**으로 확대
 - **v2.8.0** (2026-05-16): "Wave 4 — 한국 D2C 풀스택 완결" — 신규 7 (`commerce-review-aggregator`·`commerce-voc-triage`·`commerce-subscription-strategist`·`commerce-influencer-collab`·`commerce-early-fan-builder`·`commerce-trend-namer`·`commerce-season-calendar`). vault-ecom.md §A-3 MED 5 + LOW 2 명세 구현. 총 28 → **35 스킬**
 - **v2.7.0** (2026-05-16): "Wave 3 — 프로모션·재구매·이미지 파이프라인" — 신규 3 (`commerce-promotion-planner` 3대 프로모션·`commerce-repurchase-timer` 골든타임 3구간·`commerce-product-image-pipeline` 4단계 오케스트레이터). 총 25 → **28 스킬**
 - **v2.6.0** (2026-05-16): "Wave 1 vault grounding" — 신규 3 (`commerce-marketing-compliance-kr` 정통망법 게이트·`commerce-push-planner` 앱 푸시 4원칙·`commerce-ltv-cac-architect` LTV 수익 구조 설계). vault 1,329 노트 기반 한국 CRM·LTV·법규 통합. 총 22 → **25 스킬**

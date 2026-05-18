@@ -49,7 +49,7 @@ flowchart TD
 
 | 트랙 | 대상 | 한 줄 요청 예시 | 주요 플러그인 |
 |---|---|---|---|
-| [🛒 이커머스 트랙](track-commerce/) 🆕 ⭐ | D2C 셀러·이커머스 운영자 | "신상품 상세페이지·광고 영상·시즌 캘린더 한 번에 만들어줘" | moai-commerce (35) · moai-media · moai-content |
+| [이커머스 트랙](track-commerce/) | D2C 셀러·이커머스 운영자 | "신상품 상세페이지·광고 영상·시즌 캘린더 한 번에 만들어줘" | moai-commerce (36) · moai-media · moai-content |
 
 ### 운영 + HR
 
