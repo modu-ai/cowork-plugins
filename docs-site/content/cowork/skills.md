@@ -78,7 +78,7 @@ user-invocable: true
 
 {{< terminal title="claude — cowork" >}}
 > /blog
-/contract-review
+  /contract-review
 {{< /terminal >}}
 
 {{< hint type="note" >}}
