@@ -2,21 +2,22 @@
 name: project
 description: |
   Cowork 프로젝트 초기화와 작업 지침(CLAUDE.md) 자동 생성 스킬.
-  사용자의 업무 워크플로우를 인터뷰하고, 설치된 moai-* 플러그인을 기반으로
+  사용자의 업무 워크플로우를 인터뷰하고, 설치된 22개 moai-* 플러그인을 기반으로
   **스킬 체이닝 워크플로우**가 포함된 CLAUDE.md를 생성합니다.
 
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
-  - "/project init", "/project catalog", "/project status", "/project apikey"
+  - "/project init", "/project init resume", "/project catalog", "/project status", "/project apikey"
   - "새 프로젝트 시작", "Cowork 프로젝트 초기 설정", "CLAUDE.md 만들어줘"
   - "이 프로젝트에 어울리는 워크플로우 설계해줘"
   - "도메인 라우팅 설정", "플러그인 연결", "API 키 등록"
+  - "이어서 진행", "설치 완료", "다시 진행" — init 재개 요청
   - 사업계획, 마케팅, 계약서, 세무, 인사, 콘텐츠, 운영, PM 등
     자연어 요청이 들어왔을 때 적합한 도메인 플러그인으로 라우팅해야 할 때
 
   이 스킬은 **이름·회사 같은 글로벌 프로필을 재질문하지 않습니다.**
   프로젝트마다 "이번에 뭘 할 건지, 어떻게 처리하고 싶은지"만 인터뷰해서
   스킬 체인(예: strategy-planner → docx-generator → ai-slop-reviewer)을 설계하고
-  사용자 확인을 받은 뒤 CLAUDE.md를 최적화합니다.
+  누락 플러그인을 자동 감지해 설치 안내 후 사용자 확인을 받은 뒤 CLAUDE.md를 최적화합니다.
 user-invocable: true
 version: 2.11.0
 ---
@@ -31,8 +32,9 @@ version: 2.11.0
 
 **핵심 기능**:
 - 3단계 소크라테스 인터뷰로 프로젝트 맥락 수집
-- 설치된 17개 moai 플러그인 자동 감지
+- 설치된 22개 moai 플러그인 자동 감지 (Bash + system reminder 교차 검증)
 - 산출물별 **스킬 체인 설계** (예: 블로그 = blog → ai-slop-reviewer)
+- **Gap Detection**: 누락 플러그인/스킬 자동 감지 → 설치 안내 → Re-entry 재개
 - CLAUDE.md 템플릿 기반 자동 생성
 - 필수 API 키 선택적 등록 안내
 
@@ -42,13 +44,21 @@ version: 2.11.0
 - CLAUDE.md 외부 템플릿화
 - office/web 스킬 우선 + AI 슬롭 후처리 HARD 규칙 고정
 
+**v2.11.0 변경**:
+- Phase 2 Inventory 구체 메커니즘 도입 (Bash + system reminder 교차 검증)
+- Phase 4 Gap Detection 신규 — 누락 플러그인/스킬 자동 감지 + 설치 안내 + Re-entry
+- moai-media 7 스킬 → 4 스킬 (Higgsfield·ElevenLabs MCP가 직접 지원하는 스킬 제거)
+- 17 플러그인 → 22 플러그인 (moai-book·moai-bi·moai-pm·moai-sales·moai-commerce 추가)
+- `/project init resume` 커맨드 신규 — 누락 플러그인 설치 후 재개
+
 ## 트리거 키워드
 
 이 스킬은 다음 상황에서 자동으로 호출됩니다:
 
 **초기화 요청**:
-- "/project init", "새 프로젝트 시작", "Cowork 프로젝트 초기 설정"
+- "/project init", "/project init resume", "새 프로젝트 시작", "Cowork 프로젝트 초기 설정"
 - "CLAUDE.md 만들어줘", "프로젝트 설정 도와줘"
+- "이어서 진행", "설치 완료", "다시 진행" — init 재개 트리거
 
 **워크플로우 설계**:
 - "이 프로젝트에 어울리는 워크플로우 설계해줘"
@@ -66,7 +76,12 @@ version: 2.11.0
 - 채용, 면접, 4대보험 → `moai-hr`
 - 블로그, 카드뉴스, 뉴스레터 → `moai-content`
 - PPT, 한글, Word, Excel → `moai-office`
-- 이미지, 영상, 음성 → `moai-media`
+- 이미지 프롬프트, 음성, TTS → `moai-media`
+- 이커머스, 상세페이지, 쇼핑몰 → `moai-commerce`
+- 원고, 출판, 전자책 → `moai-book`
+- BI 리포트, 임원 보고 → `moai-bi`
+- 프로젝트 관리, 주간보고 → `moai-pm`
+- 영업, 제안서, 견적서 → `moai-sales`
 
 ## 워크플로우
 
@@ -78,35 +93,73 @@ Phase 1: Interview (최대 3질문)
   ② 주로 만드는 산출물은 무엇인가요? (블로그/사업계획서/계약서/…)
   ③ 특별히 지키고 싶은 톤·형식·제약이 있나요?
 
-Phase 2: Detect
-  - 설치된 moai-* 플러그인 자동 감지
-  - 인터뷰 답변 기반 플러그인 매칭
+Phase 2: Inventory (cowork-plugins 마켓플레이스 스킬만 인벤토리 구성)
+  - 소스 A: Bash로 `~/.claude/plugins/` 안에서 **modu-ai/cowork-plugins 마켓플레이스 출처 플러그인만** 필터링
+    · 필터링 규칙: 디렉토리명이 `moai-*` 패턴이면서, 그 안의 `.claude-plugin/plugin.json`이 cowork-plugins 22 플러그인 화이트리스트에 포함되는 경우만 인정
+    · 22 플러그인 화이트리스트: moai-core, moai-business, moai-marketing, moai-legal, moai-finance,
+      moai-hr, moai-content, moai-operations, moai-education, moai-lifestyle, moai-product,
+      moai-support, moai-office, moai-career, moai-data, moai-research, moai-media,
+      moai-commerce, moai-book, moai-bi, moai-pm, moai-sales
+    · 위 22개 외 다른 출처 플러그인(예: 사용자가 별도 마켓플레이스에서 설치한 플러그인)은 인벤토리에서 **완전 제외**
+  - 필터링된 각 cowork 플러그인 안의 **모든 SKILL.md** 완전 스캔
+    · 명령: `find ~/.claude/plugins/<plugin>/skills -maxdepth 2 -name SKILL.md`
+    · 각 SKILL.md frontmatter에서 `name` 필드 추출 → 인벤토리에 등록
+  - 소스 B: 현재 세션 system reminder "user-invocable skills" 목록 (cowork-plugins 출처만 필터)
+  - 두 소스 교차 검증 → 활성 스킬 인벤토리 구성
+  - .moai/cache/inventory.json에 저장 (스킬명 → cowork 플러그인 매핑)
 
 Phase 3: Chain Design (핵심)
   - 산출물별 스킬 체인 설계
   - 예: 사업계획서 = strategy-planner → docx-generator → ai-slop-reviewer
-  - 예: 블로그 발행 = blog → ai-slop-reviewer → (선택) nano-banana
+  - 예: 블로그 발행 = blog → ai-slop-reviewer
   - 텍스트 산출물 체인은 항상 ai-slop-reviewer로 종료
 
-Phase 4: Confirm
+Phase 4: Gap Detection (누락 감지 — 신규)
+  - Phase 3 체인의 각 스킬이 Phase 2 inventory에 있는지 검증
+  - 누락 스킬 발견 시:
+    · 누락 스킬 → 소속 플러그인 매핑 표 생성
+    · .moai/cache/init-progress.json에 진행 상태 저장 (Phase 1-3 결과)
+    · AskUserQuestion 4 옵션 제시:
+      1. (권장) 설치 안내 + 완료 후 재개 — 설치 명령 표시 후 대기
+      2. 누락 스킬 제외하고 진행 — 해당 체인 단계 생략
+      3. 대체 스킬로 변경 — 인벤토리에서 유사 스킬 추천
+      4. 중단
+  - 모두 설치됨 → Phase 5로 진행
+
+Phase 5: Confirm
   - AskUserQuestion으로 체인 설계 승인 요청
   - 수정 / 승인 / 취소 선택지 제공
 
-Phase 5: Generate CLAUDE.md
+Phase 6: Generate CLAUDE.md
   - references/templates/CLAUDE.md.tmpl 기반 생성
   - Interview 결과를 페르소나·워크플로우 섹션에 주입
   - 승인된 스킬 체인을 "워크플로우" 섹션에 명시
   - office/web/ai-slop HARD 규칙 고정 포함
   - 최대 200라인
 
-Phase 6: API Key (필요 시)
+Phase 7: API Key (필요 시)
   - 선택된 플러그인이 요구하는 API 키만 선택적으로 등록 안내
 
-Phase 7: First Run
+Phase 8: First Run
   - 첫 작업 예시 3개를 스킬 체인 기반으로 동적 생성 후 안내
 ```
 
 상세 프로토콜: `references/core/init-protocol.md`
+
+### /project init resume — 설치 완료 후 재개
+
+```
+진입 패턴:
+  - "/project init resume" 명시적 커맨드
+  - "이어서 진행", "설치 완료", "다시 진행" 자연어 발화
+
+재개 흐름:
+  1. .moai/cache/init-progress.json 로드 (Phase 1-3 결과 복원)
+  2. Phase 2 Inventory 재실행 (설치 여부 재확인)
+  3. Phase 4 Gap Detection 재검증
+  4. 누락 0건 → Phase 5 Confirm으로 진행
+  5. 여전히 누락 → AskUserQuestion 4 옵션 재제시
+```
 
 ### 스킬 체인 설계 원칙
 
@@ -114,7 +167,7 @@ Phase 7: First Run
 1. **기획·분석 스킬** — strategy-planner, market-analyst, ux-researcher
 2. **생성·제작 스킬** — blog, copywriting, card-news, spec-writer
 3. **포맷 변환 스킬** — docx-generator, pptx-designer, xlsx-creator, hwpx-writer, landing-page
-4. **미디어 스킬** (선택) — nano-banana(한국어 타이포 SOTA), image-gen(일반 이미지), video-gen(영상), audio-gen(음성/elevenlabs MCP), speech-video(립싱크), character-mgmt(캐릭터 일관성), fal-gateway(Flux·Recraft 등 1000+ 모델)
+4. **미디어 스킬** (선택) — `gpt-image-2-prompt`·`gemini-3-image-prompt`·`midjourney-v8-prompt`(이미지 프롬프트 빌더), `audio-gen`(ElevenLabs MCP TTS·보이스 클로닝·다국어 더빙). 이미지·영상 실제 렌더링은 Higgsfield MCP(Soul·DOP·말하는머리·캐릭터) 직접 호출. fal.ai 게이트웨이 모델은 fal-ai MCP 직접 호출.
 5. **후처리 스킬** — `ai-slop-reviewer` (텍스트 산출물 체인의 **필수 마지막 단계**)
 
 **체인 표기 규약** (CLAUDE.md에 기록될 형식):
@@ -152,9 +205,9 @@ Phase 1 Interview:
 Phase 3 Chain Design:
   사업계획서: strategy-planner → docx-generator → ai-slop-reviewer
   피칭덱: investor-relations → pptx-designer → ai-slop-reviewer
-  블로그: blog → ai-slop-reviewer → (선택) nano-banana
+  블로그: blog → ai-slop-reviewer
 
-Phase 5 Generate CLAUDE.md:
+Phase 6 Generate CLAUDE.md:
   - 페르소나: 교육 스타트업 창업자, 비즈니스 톤, 데이터 기반
   - 워크플로우: 위 3개 체인 포함
   - HARD 규칙: office 스킬 우선 + ai-slop 후처리
@@ -176,11 +229,11 @@ Phase 1 Interview:
   A3: "친근하고 활기찬 톤, 이모지 적극 활용"
 
 Phase 3 Chain Design:
-  블로그: blog → ai-slop-reviewer → (선택) nano-banana
-  카드뉴스: card-news → nano-banana → ai-slop-reviewer
+  블로그: blog → ai-slop-reviewer
+  카드뉴스: card-news → ai-slop-reviewer
   뉴스레터: newsletter → ai-slop-reviewer
 
-Phase 5 Generate CLAUDE.md:
+Phase 6 Generate CLAUDE.md:
   - 페르소나: 마케팅 팀, 친근한 톤, 이모지 활용
   - 워크플로우: 위 3개 체인 포함
   - HARD 규칙: content 스킬 우선 + ai-slop 후처리
@@ -206,7 +259,7 @@ Phase 3 Chain Design:
   계약서 검토: contract-review → ai-slop-reviewer
   근로계약서: labor-contract → docx-generator → ai-slop-reviewer
 
-Phase 5 Generate CLAUDE.md:
+Phase 6 Generate CLAUDE.md:
   - 페르소나: 법무 담당자, 법률적 정확성, 리스크 명시
   - 워크플로우: 위 3개 체인 포함
   - HARD 규칙: legal 스킬 우선 + ai-slop 후처리
@@ -246,14 +299,14 @@ Phase 5 Generate CLAUDE.md:
 | 산출물 | 요청 예시 | 체인 | 입출력 | 제외 조건 |
 |--------|----------|------|--------|----------|
 | 사업계획서 | "교육 스타트업 사업계획서 작성해줘" | strategy-planner → docx-generator → ai-slop-reviewer | 마켓 분석 → DOCX | - |
-| 블로그 | "AI 툴 소개 블로그 포스트 작성해줘" | blog → ai-slop-reviewer → (선택) nano-banana | 주제 → Markdown | 데이터 시각화 필요 시 |
+| 블로그 | "AI 툴 소개 블로그 포스트 작성해줘" | blog → ai-slop-reviewer | 주제 → Markdown | 데이터 시각화 필요 시 |
 | 피칭덱 | "투자자 피칭용 PPT 만들어줘" | investor-relations → pptx-designer → ai-slop-reviewer | IR 요약 → PPTX | - |
 ```
 
 ### 3. AskUserQuestion 확인 예시
 
 ```markdown
-Phase 4: 스킬 체인 설계 확인
+Phase 5: 스킬 체인 설계 확인
 
 다음 워크플로우로 CLAUDE.md를 생성합니다:
 
@@ -262,8 +315,8 @@ Phase 4: 스킬 체인 설계 확인
   설명: 시장 분석 후 DOCX 형식 사업계획서 생성, AI 슬롭 검수
 
 [블로그]
-  체인: blog → ai-slop-reviewer → (선택) nano-banana
-  설명: 블로그 포스트 작성 후 AI 슬롭 검수, 필요 시 이미지 생성
+  체인: blog → ai-slop-reviewer
+  설명: 블로그 포스트 작성 후 AI 슬롭 검수
 
 [피칭덱]
   체인: investor-relations → pptx-designer → ai-slop-reviewer
@@ -325,38 +378,44 @@ CLAUDE.md는 **최대 200라인**으로 생성합니다.
 - `moai-core:ai-slop-reviewer` — 모든 텍스트 산출물의 필수 마지막 단계
 - `moai-core:feedback` — `/project feedback` 커맨드로 GitHub Issues 자동 등록
 
-### 도메인 플러그인 (17개)
+### 도메인 플러그인 (22개)
 
-| 플러그인 | 도메인 | 주요 스킬 |
-|---------|--------|----------|
-| moai-business | 비즈니스 | strategy-planner, investor-relations |
-| moai-marketing | 마케팅 | seo-optimizer, campaign-planner |
-| moai-legal | 법률 | nda-triage, contract-review |
-| moai-finance | 재무 | tax-calculator, financial-report |
-| moai-hr | 인사 | labor-contract, recruitment-guide |
-| moai-content | 콘텐츠 | blog, card-news, newsletter |
-| moai-operations | 운영 | sop-writer, procurement-guide |
-| moai-education | 교육 | curriculum-design, assessment-creator |
-| moai-lifestyle | 라이프스타일 | travel-planner, wellness-coach |
-| moai-product | 제품 | roadmap-planner, ux-researcher |
-| moai-support | 지원 | ticket-triage, faq-generator |
-| moai-office | 문서 | docx-generator, pptx-designer, xlsx-creator |
-| moai-career | 커리어 | resume-builder, interview-prep |
-| moai-data | 데이터 | csv-analyzer, chart-visualizer |
-| moai-research | 연구 | paper-summarizer, patent-search |
-| moai-media | 미디어 | nano-banana, image-gen, video-gen, audio-gen, speech-video, character-mgmt, fal-gateway |
+| 플러그인 | 도메인 | 스킬 수 |
+|---------|--------|--------|
+| moai-core | 초기화·라우팅·AI 슬롭 검수 | 8 |
+| moai-business | 비즈니스 전략·시장조사 | 10 |
+| moai-marketing | 마케팅·SEO·SNS·광고 | 11 |
+| moai-legal | 법률·계약서·컴플라이언스 | 5 |
+| moai-finance | 재무·세무·결산·분석 | 6 |
+| moai-hr | 인사·노무·채용 | 5 |
+| moai-content | 콘텐츠·블로그·뉴스레터·랜딩·HTML | 12 |
+| moai-operations | 운영·SOP·조달 | 3 |
+| moai-education | 강사·교수·교사 교육 콘텐츠 | 5 |
+| moai-lifestyle | 여행·건강·이벤트 | 3 |
+| moai-product | PM·UX·로드맵·스펙 | 4 |
+| moai-support | 고객지원·티켓 | 4 |
+| moai-office | 문서·PPT·한글·엑셀·PDF | 5 |
+| moai-career | 한국 취준생·재직자 커리어 | 4 |
+| moai-data | 데이터 분석·시각화·공공데이터 | 3 |
+| moai-research | 논문·특허·연구비 | 5 |
+| moai-media | 이미지 프롬프트 빌더 + 음성 | 4 |
+| moai-commerce | 한국 이커머스 풀스택 | 35 |
+| moai-book | 한국 출판사 제출용 원고 | 8 |
+| moai-bi | 비즈니스 인텔리전스·HTML 리포트 | 1 |
+| moai-pm | 프로젝트 관리·주간보고 | 1 |
+| moai-sales | 영업·제안서 | 1 |
 
 ### 관련 프로토콜
 
 상세 프로토콜은 `references/core/`를 참고하세요:
 
-- `init-protocol.md` — /project init 전체 플로우
+- `init-protocol.md` — /project init Phase 1-8 + Gap Detection + Re-entry 전체 플로우 (v2.11.0)
 - `router.md` — 자연어 → 플러그인 라우팅
 - `context-collector.md` — 맥락 수집 프로토콜
 - `claudemd-generator.md` — CLAUDE.md 생성 프로토콜
 - `execution-protocol.md` — 스킬 체인 실행 프로토콜
 - `evaluation-protocol.md` — 평가 프로토콜
-- `diagnostic-protocol.md` — 진단 프로토콜
+- `diagnostic-protocol.md` — 환경 상태 진단 프로토콜
 - `quality-evaluator.md` — 품질 자동 평가
 
 전체 인덱스: `references/core/INDEX.md`
