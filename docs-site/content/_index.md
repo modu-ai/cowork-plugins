@@ -269,12 +269,12 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
   </div>
   <div class="cw-rel">
     <div class="ver-row">
-      <span class="ver">v2.10.0</span>
-      <span class="date">2026-05-17</span>
+      <span class="ver">v2.11.0</span>
+      <span class="date">2026-05-18</span>
       <span class="badge">MINOR</span>
     </div>
-    <div class="ttl">신규 플러그인 <strong>moai-book</strong> — 한국 출판사 제출용 원고 풀스택 8 스킬</div>
-    <div class="desc">도서 컨셉서·페르소나·목차·저자 약력·출판 제안서·출판사 매칭·본문·퇴고 8 단계가 단일 플러그인 안에서 체이닝. 실용서·인문·기술·소설 4 장르 자동 분기. KPIPA·국립국어원·도서정가제·교보문고·알라딘·예스24 + 30+ 한국 출판사 라이브러리 + 자비 출판 5 플랫폼. <strong>21 → 22 플러그인 · 147 → 155 스킬 · 동기화 지점 169 → 178</strong>.</div>
+    <div class="ttl"><strong>moai-media 정리 + 강의 컨텍스트 완전 제거 + docs-site 일관성 정비</strong></div>
+    <div class="desc">Higgsfield·ElevenLabs MCP가 직접 지원하는 12 스킬을 moai-media에서 제거(16→4), moai-commerce·moai-media·moai-education 페이지를 범용 플러그인으로 재정의, moai-bi는 html-report 중심 통합, moai-career는 한국 취준생·재직자 2026 데이터로 재설계. `~` 물결 strikethrough 정정·mermaid 가로→세로·GOAL+AskUserQuestion 골격 통일·terminal shortcode 일관성까지 사용자 화면 가시 이슈 일괄 정비. <strong>22 플러그인 유지 · 155 → 143 스킬 · 동기화 지점 178 → 166</strong>. Breaking change 없음.</div>
     <ul>
       <li><strong>book-concept-planner / book-target-reader / book-outline-designer / book-author-bio</strong> — 컨셉서·USP·페르소나·JTBD·목차·저자 약력 (1-4 단계)</li>
       <li><strong>book-proposal-writer / book-publisher-matcher</strong> — A4 12-20장 출판 제안서 + 30+ 출판사 Top 5 추천 + 차순위 시나리오 (5-6 단계)</li>
