@@ -15,7 +15,7 @@ geekdocBreadcrumb: true
 ## 작업 흐름
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["① 폴더 선택"] --> B["② 요청 입력"]
     B --> C["③ 파일 분석·집계"]
     C --> D["④ 초안 작성"]

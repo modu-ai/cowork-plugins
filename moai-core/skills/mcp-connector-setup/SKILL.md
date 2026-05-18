@@ -6,7 +6,7 @@ description: |
   "MCP 커넥터 연결", "Drive 인증 방법", "Notion Integration Token 어디서", "Higgsfield 키 발급", "OpenAI API 키 발급", "Windows MAX_PATH 오류", "한글 파일명 30자 오류", "computer:// 링크 안 열려요", "커넥터 4개 연결 방법", "MCP 4커넥터 인증".
   v2.3.0 신규 (Wave 3 — Day 1 S4 셋업).
 user-invocable: true
-version: 2.10.0
+version: 2.11.0
 ---
 
 # MCP 커넥터 셋업 가이드
@@ -89,7 +89,7 @@ MCP 커넥터 연결, Drive 인증, Notion Integration Token, Higgsfield API 키
 
 **사전 확인 사항**
 - 강사 운영팀: D-14 이전 Higgsfield 워크스페이스 충전 완료 확인
-- 예상 사용량: Day 3 메인 영상 1편(5~10초) + 시연 1회 + 보조 영상 2컷
+- 예상 사용량: Day 3 메인 영상 1편(5-10초) + 시연 1회 + 보조 영상 2컷
 - 비용 한도: 운영팀이 강의 시작 전 공지 (PDF §6.9)
 
 **인증 단계**

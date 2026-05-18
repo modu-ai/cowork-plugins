@@ -22,7 +22,7 @@ SPEC-META-ADS-001 §3 REQ-AUDIT-MCP-016 + 작업명세서 부록 H 직접 인용
 파일 2개인 경우 분리 보고서 판정:
 - 공통 키(광고 이름 + 보고 기간) 매칭 시도
 - 매칭률 > 80%: 분리 보고서 통합 모드 확정
-- 매칭률 50~80%: 경고 + 사용자 확인 요청
+- 매칭률 50-80%: 경고 + 사용자 확인 요청
 - 매칭률 < 50%: 다중 캠페인 일괄 모드로 전환 권고
 
 ---
@@ -129,7 +129,7 @@ claude-ads v1.5.1 차용 (MIT). 50 check를 본 스킬 9 모듈에 매핑:
 |--------|----------------------|
 | 모듈 1: 퍼널 분해 | 별도 (claude-ads 미포함, 본 스킬 고유) |
 | 모듈 2: KPI 분해 | M-CR4 (CTR), M-ST1-2 (Budget) + benchmarks |
-| 모듈 3: 차원별 분해 | M-CR1~4 (Creative), M19~M24 (Audience), M34 (Placement) |
+| 모듈 3: 차원별 분해 | M-CR1-4 (Creative), M19-M24 (Audience), M34 (Placement) |
 | 모듈 4: 범용 매트릭스 | M16 (Audience overlap), M-AN1 (Andromeda Similarity) |
 | 모듈 5: 누수·파레토 | M28 (Creative fatigue) + breakdown analysis |
 | 모듈 6: 소재 라이프사이클 | M-CR1 (Creative freshness), M28, M29 (Hook rate) |

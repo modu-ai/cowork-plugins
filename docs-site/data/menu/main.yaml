@@ -174,16 +174,8 @@ main:
         ref: /cookbook/ir-deck
       - name: 계약서 검토
         ref: /cookbook/contract-review
-      - name: AI 사원 설계
-        ref: /cookbook/ai-employee-design
-      - name: AI 사원 실습 1
-        ref: /cookbook/ai-employee-lab-1
-      - name: AI 사원 실습 2
-        ref: /cookbook/ai-employee-lab-2
       - name: 트러블슈팅
         ref: /cookbook/troubleshooting
-      - name: 최종 프로젝트
-        ref: /cookbook/final-project
 
   - name: 실전 트랙
     icon: tag

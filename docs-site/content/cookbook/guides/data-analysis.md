@@ -7,7 +7,7 @@ geekdocBreadcrumb: true
 > "이 데이터로 뭘 할 수 있을까?"라는 질문은 EDA(탐색적 데이터 분석)으로 답합니다. cowork-plugins의 `data-explorer`가 5분 안에 첫 인사이트를 돌려줍니다.
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["data-explorer<br/>프로파일링"] --> B["public-data<br/>공공데이터 보강"]
     B --> C["data-visualizer<br/>시각화"]
     C --> D["xlsx-creator / docx-generator<br/>보고서 출력"]
@@ -29,41 +29,43 @@ flowchart LR
 
 ### 1. 구조 파악
 
-```
-> "이 CSV 분석해줘. 컬럼별 타입·결측 비율·고유값 수를 표로 정리하고, 데이터 스키마를 한 줄로 설명해줘."
-```
+{{< terminal title="claude — cowork" >}}
+> 이 CSV 분석해줘. 컬럼별 타입·결측 비율·고유값 수를 표로 정리하고,
+> 데이터 스키마를 한 줄로 설명해줘.
+{{< /terminal >}}
 
 ### 2. 분포·이상값
 
-```
-> "각 숫자 컬럼의 분포를 살펴봐. 평균·중앙값·표준편차, 박스플롯으로 이상값 후보 알려줘."
-```
+{{< terminal title="claude — cowork" >}}
+> 각 숫자 컬럼의 분포를 살펴봐. 평균·중앙값·표준편차, 박스플롯으로 이상값 후보 알려줘.
+{{< /terminal >}}
 
 ### 3. 상관관계
 
-```
-> "수치 컬럼끼리 상관관계 매트릭스 만들어줘. 0.7 이상 또는 -0.7 이하인 쌍만 별도 표로."
-```
+{{< terminal title="claude — cowork" >}}
+> 수치 컬럼끼리 상관관계 매트릭스 만들어줘. 0.7 이상 또는 -0.7 이하인 쌍만 별도 표로.
+{{< /terminal >}}
 
 ### 4. 가설 테스트
 
-```
-> "고객 등급별로 평균 결제액에 차이가 있는지 ANOVA로 확인해줘. p-value와 사후 비교 결과 포함."
-```
+{{< terminal title="claude — cowork" >}}
+> 고객 등급별로 평균 결제액에 차이가 있는지 ANOVA로 확인해줘. p-value와 사후 비교 결과 포함.
+{{< /terminal >}}
 
 ### 5. 보고서
 
-```
-> "이 분석 결과를 한 페이지 워드 보고서로 정리해줘. 발견사항 5개 + 권고 액션 3개."
-```
+{{< terminal title="claude — cowork" >}}
+> 이 분석 결과를 한 페이지 워드 보고서로 정리해줘. 발견사항 5개 + 권고 액션 3개.
+{{< /terminal >}}
 
 ## 한국 공공데이터와 결합
 
 내부 데이터만으로 부족할 때:
 
-```
-> "우리 매출 추이를 같은 기간 KOSIS의 소매판매지수와 비교해줘. 차이가 큰 분기를 표시하고 원인 후보를 정리."
-```
+{{< terminal title="claude — cowork" >}}
+> 우리 매출 추이를 같은 기간 KOSIS의 소매판매지수와 비교해줘.
+> 차이가 큰 분기를 표시하고 원인 후보를 정리.
+{{< /terminal >}}
 
 `public-data` 스킬이 KOSIS·data.go.kr API를 자동 호출합니다.
 

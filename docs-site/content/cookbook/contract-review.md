@@ -8,7 +8,7 @@ tags: [cookbook, legal]
 > **목표** — 상대측이 보낸 계약서·NDA를 **리스크 항목별로 표 정리** → 수정본 DOCX → 1페이지 결재용 요약까지 자동으로 만듭니다.
 
 ```mermaid
-flowchart LR
+flowchart TD
     subgraph Fast["NDA 빠른 검토"]
         N["nda-triage"] --> D1["docx-generator"]
     end
@@ -68,7 +68,7 @@ contract-review → legal-risk → docx-generator → ai-slop-reviewer
 ### 자동 체인
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["원문 PDF/HWPX"] --> B["nda-triage<br/>(NDA인 경우)"]
     B --> C["contract-review<br/>조항별 리스크"]
     C --> D["legal-risk<br/>발생가능성·영향도 매트릭스"]

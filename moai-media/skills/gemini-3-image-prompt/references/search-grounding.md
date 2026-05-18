@@ -74,7 +74,7 @@ finalizing the visualization.
 
 - Search 결과는 **항상 별도 검증** 필요. 모델이 wiki·블로그 등 신뢰도 낮은 출처를 가져올 수 있음.
 - 한국어 검색 결과는 영어보다 품질 편차 큼. 중요 데이터는 영어 키워드로 추가 검증.
-- Search Grounding은 reasoning latency를 늘림 (기본 대비 30~60% 증가).
+- Search Grounding은 reasoning latency를 늘림 (기본 대비 30-60% 증가).
 - 비용: 추가 reasoning 토큰 + Search API 호출. 비용 민감한 워크플로우에서는 사전 가격 확인.
 
 ## 완성 프롬프트 예

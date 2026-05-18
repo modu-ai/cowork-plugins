@@ -14,7 +14,7 @@ tags: ["moai-marketing"]
 
 `moai-marketing`는 브랜드 아이덴티티 설계부터 SEO 감사, 이메일 드립 캠페인, GA4·메타·카카오모먼트 통합 ROAS 분석, 메타 광고관리자 `.xlsx` 보고서 audit까지 마케팅 실무 전 주기를 커버하는 플러그인입니다. 네이버·구글·생성형 검색(GEO)을 모두 포함한 한국 시장 SEO 감사, 정보통신망법을 준수하는 이메일 시퀀스 설계, 한국 시장 7 변화 영역(벤치마크·8 산업·5 규제·표현·출력·분석 차원·사용자 그룹) 특화 audit 등 국내 규제·채널 특성을 반영합니다.
 
-**신규** — 메타 광고관리자 `.xlsx` 보고서 1~6개 업로드 → 9 분석 모듈(퍼널·KPI·차원·매트릭스·누수·라이프사이클·학습·예산·시뮬) + 4D 교차(광고×지면×연령×성별) + 3 사용자 그룹 톤(명시 입력) + 4 출력 형식(HTML/DOCX/PPTX/MD) + 🟢🟡🔴 강도별 액션 옵션(`meta-ads-analyzer`)을 추가했습니다. 동시에 `mcp-servers/moai-ads-audit/` 자체 MCP 서버(Python uvx, MIT)를 신규 출시 — [agricidaniel/claude-ads](https://github.com/AgriciDaniel/claude-ads) v1.5.1 (MIT, 4,815 stars) 방법론을 한국 시장에 맞춰 차용한 50-check audit + 가중치 스코어링 + 한국 벤치마크 8 카테고리 + 5 규제 컴플라이언스를 제공합니다.
+**신규** — 메타 광고관리자 `.xlsx` 보고서 1-6개 업로드 → 9 분석 모듈(퍼널·KPI·차원·매트릭스·누수·라이프사이클·학습·예산·시뮬) + 4D 교차(광고×지면×연령×성별) + 3 사용자 그룹 톤(명시 입력) + 4 출력 형식(HTML/DOCX/PPTX/MD) + 🟢🟡🔴 강도별 액션 옵션(`meta-ads-analyzer`)을 추가했습니다. 동시에 `mcp-servers/moai-ads-audit/` 자체 MCP 서버(Python uvx, MIT)를 신규 출시 — [agricidaniel/claude-ads](https://github.com/AgriciDaniel/claude-ads) v1.5.1 (MIT, 4,815 stars) 방법론을 한국 시장에 맞춰 차용한 50-check audit + 가중치 스코어링 + 한국 벤치마크 8 카테고리 + 5 규제 컴플라이언스를 제공합니다.
 
 **신규** — 광고 심리학 완전판(9 인지편향·6 방아쇠·PAS·후크 6종)을 `campaign-planner`에 통합하고, 랜딩 페이지 CTR/CVR 분기·불안해소 처방(`landing-page-conversion-audit`)과 메타·구글 픽셀·CAPI·Lookalike 씨앗 품질 검증(`pixel-audit`)을 신규 추가했습니다.
 
@@ -43,7 +43,7 @@ tags: ["moai-marketing"]
 | `target-script` | 타깃 고객 스크립트, 맞춤형 메시지, 세그먼트별 콘텐츠 | — |
 | `landing-page-conversion-audit` | 랜딩 페이지 6섹션 진단(히어로·공감·증명·사회증거·CTA·FAQ) + CTR/CVR 분기 + 불안해소·메시지 일치 처방 | 신규 |
 | `pixel-audit` | 메타·구글 픽셀 + CAPI + Lookalike 씨앗 품질 검증 (VIP 상위 20% 권장) + 1st Party 데이터 진단 | 신규 |
-| `meta-ads-analyzer` | 메타 광고관리자 `.xlsx` 보고서 1~6개 → 9 분석 모듈 + 4D 교차(광고×지면×연령×성별) + 3 사용자 그룹 톤(명시 입력) + 4 출력 형식(HTML/DOCX/PPTX/MD) + 🟢🟡🔴 강도별 액션 옵션. claude-ads v1.5.1 (MIT) 50-check 한국 매핑 | 신규 |
+| `meta-ads-analyzer` | 메타 광고관리자 `.xlsx` 보고서 1-6개 → 9 분석 모듈 + 4D 교차(광고×지면×연령×성별) + 3 사용자 그룹 톤(명시 입력) + 4 출력 형식(HTML/DOCX/PPTX/MD) + 🟢🟡🔴 강도별 액션 옵션. claude-ads v1.5.1 (MIT) 50-check 한국 매핑 | 신규 |
 
 ## MCP 서버 인프라
 

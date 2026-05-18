@@ -14,7 +14,7 @@ geekdocBreadcrumb: true
 ## 전체 흐름
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["① 마켓플레이스<br/>등록"] --> B["② moai-core<br/>설치"]
     B --> C["③ 도메인<br/>플러그인 선택"]
     C --> D["④ 프로젝트 생성<br/>/project init"]
@@ -98,7 +98,7 @@ flowchart LR
    /project init
    ```
 
-   `moai-core:project` 스킬이 실행되어 **7단계 흐름**(Interview → Detect → Chain → Confirm → Generate → APIKey → First Run)을 진행합니다. 자세한 내용은 [moai-core 상세](../moai-core/)에서 확인할 수 있습니다. 약 3~5분 안에 프로젝트용 `CLAUDE.md`가 루트에 생성됩니다.
+   `moai-core:project` 스킬이 실행되어 **7단계 흐름**(Interview → Detect → Chain → Confirm → Generate → APIKey → First Run)을 진행합니다. 자세한 내용은 [moai-core 상세](../moai-core/)에서 확인할 수 있습니다. 약 3-5분 안에 프로젝트용 `CLAUDE.md`가 루트에 생성됩니다.
 
 5. **첫 요청**
 

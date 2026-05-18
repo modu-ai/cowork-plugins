@@ -1,197 +1,139 @@
 ---
-title: "마케팅 트랙"
+title: "마케팅 트랙 (입문)"
 weight: 30
-description: "블로그 · SNS · 캠페인 마케팅 콘텐츠 자동화"
+description: "콘텐츠·SNS·캠페인 마케팅 입문 통합 트랙. 더 구체적 도메인은 콘텐츠·광고·이커머스 트랙 참조."
 geekdocBreadcrumb: true
 ---
-> **사용 방식 (v2.8.0+)**: 사용자가 짧은 한 줄 요청만 하면 시스템이 AskUserQuestion으로 맥락 수집 → 자동 체인 실행. [4가지 사용 패턴 참조](../../../cowork/patterns/)
+
+> **이 트랙은 입문 통합용입니다.** 구체적인 도메인별 워크플로우는 아래 분리된 트랙을 참조하세요:
 >
-> **확장된 마케팅 트랙은 [콘텐츠 트랙](../track-content/)·[광고 트랙](../track-advertising/)·[이커머스 트랙](../track-commerce/)으로 분리되었습니다.** 본 페이지는 통합 입문용 — 더 구체적 도메인은 위 3 트랙 참조 권장.
+> - **[콘텐츠 트랙](../track-content/)** — 블로그·카드뉴스·랜딩·뉴스레터·SNS 콘텐츠 생성
+> - **[광고 트랙](../track-advertising/)** — 메타·쿠팡 광고 진단·기획·영상 풀세트
+> - **[이커머스 트랙](../track-commerce/)** — 상품 출시·재구매·VOC·LTV 통합
+>
+> **대상**: 마케팅 입문자, 1인 브랜드, 콘텐츠 마케터, 브랜드 매니저
+> **전제**: moai-core · moai-content 활성화 + (선택) moai-marketing · moai-media
 
-**마케팅 트랙**은 콘텐츠 생성부터 AI 검수, 이미지 생성까지 완결된 마케팅 콘텐츠 워크플로우를 제공합니다. 마케터, 콘텐츠 크리에이터, 브랜드 매니저의 반복적인 콘텐츠 제작 작업을 AI로 자동화합니다.
+## 한 줄 요청 예시 4종
 
-```mermaid
-flowchart LR
-    A["campaign-planner<br/>캠페인 기획"] --> B["blog / copywriting<br/>콘텐츠 작성"]
-    B --> C["seo-audit<br/>SEO"]
-    C --> D["ai-slop-reviewer<br/>검수"]
-    D --> E["performance-report<br/>성과 분석"]
+| # | 한 줄 요청 | 자동 체인 | 더 자세히 |
+|---|---|---|---|
+| 1 | "AI 도입 가이드 블로그 써줘" | blog → ai-slop → humanize-korean | [콘텐츠 트랙](../track-content/) |
+| 2 | "신상품 광고 영상 풀세트 만들어줘" | moodboard → image-gen → video-gen → channel-packager | [광고 트랙](../track-advertising/) |
+| 3 | "월간 캠페인 기획해줘" | campaign-planner → channel-message → ai-slop | [광고 트랙](../track-advertising/) |
+| 4 | "이메일 시퀀스 3부작 짜줘" | email-sequence → ai-slop → korean-spell-check | [콘텐츠 트랙](../track-content/) |
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style E fill:#e6f0ef,stroke:#144a46,color:#09110f
-```
+---
 
-## 트랙 개요
+## 시나리오 ① 블로그 콘텐츠 빠른 생성 (약 5분)
 
-### 🎯 목적
-- 마케팅 콘텐츠 제작 과정 자동화
-- 일관된 브랜드 톤앤매너 유지
-- 콘텐츠 품질 관리 시스템 구축
+### 사용자 입력
 
-### 📊 적용 대상
-- 블로그 포스트 및 기사
-- SNS 콘텐츠 (인스타그램, 페이스북, 링크드인)
-- 이메일 마케팅 캠페인
-- 광고 카피 및 랜딩페이지
-
-### 🛠️ 사용 플러그인
-- **moai-content**: 콘텐츠 생성 (블로그, SNS, 카피)
-- **moai-media**: 이미지 생성 (nano-banana)
-- **moai-core**: AI 품질 검수
-
-## 스킬 체인
-
-```
-blog → ai-slop-reviewer → (optional) nano-banana
-```
-
-### Phase 1: 콘텐츠 생성 (blog)
-**입력**: 마케팅 목표, 타겟 고객, 주제  
-**출력**: 초안 콘텐츠  
-**역할**: 블로그 포스트, SNS 콘텐츠, 카피라이팅 생성
-
-### Phase 2: AI 품질 검수 (ai-slop-reviewer)
-**입력**: 초안 콘텐츠  
-**출력**: 검수된 콘텐츠  
-**역할**: 품질 검증, 브랜드 톤앤매너 적용, AI 패턴 수정
-
-### Phase 3: 이미지 생성 (nano-banana) - 선택
-**입력**: 검수된 텍스트 콘텐츠  
-**출력**: 시각적 자산  
-**역할**: 콘텐츠에 맞는 이미지, 그래픽 생성
-
-## 실전 튜토리얼: AI 도입 가이드 블로그 작성
-
-### 시나리오
-"중소기업을 위한 AI 도입 가이드 블로그 포스트 작성"
-
-### 단계별 가이드
-
-#### Step 1: 콘텐츠 기획 및 생성
 {{< terminal title="claude — cowork" >}}
-> # blog 스킬 호출
-"AI 도입 가이드 블로그 포스트 작성해줘
-Target: 중소기업 경영자/담당자
-Length: 1500-2000자
-Format: 가이드 스타일 (문제 → 해결책 → 사례)
-Key Points: 예산, 시간, 기술적 어려움, 성공 사례"
+> AI 도입 가이드 블로그 1편 써줘. 중소기업 대상
 {{< /terminal >}}
 
-**기대 결과**:
-- 블로그 구조 완성 (서론-본론-결론)
-- 핵심 키워드 포함 SEO 최적화
-- 실용적인 팁과 사례 포함
-- 가독성 높은 전개 구조
+### 시스템 인터뷰
 
-#### Step 2: 콘텐츠 검수 및 품질 개선
-```bash
-# ai-slop-reviewer 스킬 호출
-"AI 도입 가이드 블로그 검수
-Focus: 중소기업 실용성, 전문가 수준의 설명
-Tone: 친절하지만 전문적인
-Format: 블로그 포스트 with headings and bullet points
-Use Case: B2B 기업 블로그"
-```
+1. **플랫폼**: 네이버·티스토리·브런치·WordPress·Ghost
+2. **분량**: 1500자 / 2000자 / 3000자
+3. **톤**: 친절한 전문가 / 격식 / 유머
+4. **키워드**: 자동 추출 + 사용자 추가
 
-**검수 항목**:
-- 전문 용어의 친절한 설명 여부
-- 실제 적용 가능한 조언 포함
-- 구조적 흐름의 논리성
-- 독자 참여 유도 요소
+### 자동 체인
 
-#### Step 3: 시각적 자산 생성 (선택)
-```bash
-# nano-banana 스킬 호출
-"AI 도입 가이드 블로그에 들어갈 이미지 생성
-Style: Professional business illustration
-Topics: AI technology, business meeting, data visualization
-Format: Square (1:1 ratio) for blog header
-Mood: Modern, clean, corporate"
-```
+`blog` → `ai-slop-reviewer` → `korean-spell-check` → `humanize-korean` (3중 후처리)
 
-**생성 이미지**:
-- 블로그 헤더 이미지
-- 개념 설명용 일러스트레이션
-- 데이터 시각화 그래픽
+### 산출물
 
-#### Step 4: 최종 콘텐츠 통합
-검수된 텍스트와 생성된 이미지를 최종 콘텐츠로 통합:
-- 블로그 포스트 본문
-- 이미지 삽입 위치 결정
-- 메타 정보 (태그, 카테고리) 설정
-- SNS 공용 버전 생성
+- 본문 (선택 플랫폼의 SEO 알고리즘 최적화)
+- 메타 정보 (태그·카테고리·키워드)
+- 한국어 윤문 보고서 (변경률 + A/B/C/D 등급)
 
-### 예시 프롬프트
+> **상세 워크플로우**: [콘텐츠 트랙 — 시나리오 ①](../track-content/#시나리오--네이버-블로그-시리즈-발행-약-10분)
+
+---
+
+## 시나리오 ② SNS 시리즈 (인스타·페북·링크드인)
+
+### 사용자 입력
+
 {{< terminal title="claude — cowork" >}}
-> "AI 도입 가이드 블로그 포스트 작성해줘
-타깃: 중소기업 경영자 (IT 문외한)
-주제: 5000만원 이하 예산으로 AI 도입하기
-필수 포함: 예산 분배, 시간 계획, 기술 파트너 선정
-어조: 친절한 전문가, 지견주의 경험담 포함"
+> AI 도입 가이드 인스타 캐러셀 5장 만들어줘
 {{< /terminal >}}
 
-## 확장 예시
+### 시스템 인터뷰
 
-### SNS 콘텐츠 시리즈
-```bash
-# 인스타그램 콘텐츠 생성
-"AI 도입 가이드 SNS 콘텐츠 5종 작성
-Platform: Instagram (Carousel format)
-Style: Educational with engaging visuals
-Topics: Budget planning, timeline, technology selection
-Hashtags: #AI도입가이드 #중소기업AI #디지털전환"
-```
+1. **플랫폼**: 인스타 / 페북 / 링크드인 / 멀티
+2. **콘텐츠 유형**: 교육 / 사례 / 질문형 / Q&A
+3. **이미지 자동 생성**: 예/아니오 (`nano-banana` 호출)
+4. **해시태그**: 자동 추출 + 사용자 추가
 
-**콘텐츠 유형**:
-- 교육 캐러셀 (3-5장)
-- 질문형 포스트
-- 성공 사례 요약
-- 팔로워 참여 유도 포스트
-- 전문가 팁 한 줄 요약
+### 자동 체인
 
-### 이메일 마케팅 캠페인
-```bash
-# 이메일 시리즈 생성
-"AI 도입 가이드 이메일 캠페인 3부작 작성
-Target: 중소기업 경영진
-Goal: AI 도입 서비스 구매 유도
-Sequence:
-  1. 문제 인식 (AI 도입의 어려움)
-  2. 해결 제안 (우리 서비스 소개)
-  3. 한정 혜택 (우리만의 가치)"
-```
+`sns-content` (9채널 매트릭스) → `card-news` (캐러셀) → `nano-banana` (한국어 타이포) → `ai-slop-reviewer`
 
-**이메일 요소**:
-- 개인화된 서론
-- 실용적인 조언
-- 서비스 연결 자연스럽게
-- 명확한 CTA (Call to Action)
-- 이메일 디자인 가이드라인
+> **상세**: [콘텐츠 트랙](../track-content/) · [광고 트랙](../track-advertising/)
 
-## 다음 단계
+---
 
-### 🚀 고급 활용
-- **콘텐츠 일정 자동화**: 월간 콘텐츠 캘린더 생성
-- **A/B 테스팅**: 여 버전 생성 및 성능 비교
-- **다국어 콘텐츠**: 영문/중문 병행 생성
-- **성과 분석**: Google Analytics 연동 효과 측정
+## 시나리오 ③ 이메일 캠페인 3부작 (약 7분)
 
-### 📚 학습 자료
-- [콘텐츠 마케팅 전략](../../guides/content-marketing/)
-- [SNS 최적화 가이드](../../guides/social-media/)
-- [이메일 마케팅 템플릿](../../templates/email/)
+### 사용자 입력
 
-### ⚠️ 주의사항
-{{< hint type="warning" >}}
-마케팅 콘텐츠는 브랜드 이미지에 직접적인 영향을 미칩니다. AI 생성 내용은 반드시 브랜드 가이드라인을 확인하고, 실제 고객 피드백을 통해 검증되어야 합니다.
-{{< /hint >}}
+{{< terminal title="claude — cowork" >}}
+> 신규 구독자 환영 시퀀스 3부작 만들어줘
+{{< /terminal >}}
 
-- 브랜드 톤앤매너 가이드라인 준수
-- 타겟 고객의 언어 습관 반영
-- SEO 최적화 규칙 준수
-- 법적 규정 (광고, 개인정보) 확인
+### 시스템 인터뷰
+
+1. **목표**: 구매 유도 / 인지 / 신뢰 구축
+2. **발송 간격**: D+0 / D+2 / D+5
+3. **개인화 수준**: 이름만 / 행동 기반 / 세그먼트별
+4. **CTA**: 단일 / 다중 / A/B 테스트
+
+### 자동 체인
+
+`email-sequence` → `copywriting` (PAS 카피 구조) → `ai-slop-reviewer` → `korean-spell-check`
+
+### 산출물
+
+- 3통 이메일 본문 (개인화 변수 포함)
+- 제목 A/B 안 2종
+- 발송 일정표
+
+---
+
+## 다음 단계 — 분리된 도메인 트랙으로
+
+마케팅 트랙은 입문 통합용이며, **실제 운영은 도메인별 트랙에서 더 깊이 다룹니다**.
+
+| 도메인 | 추천 트랙 | 핵심 스킬 |
+|---|---|---|
+| 블로그·SNS·랜딩·뉴스레터 | [콘텐츠 트랙](../track-content/) | blog · card-news · landing-page · newsletter · sns-content |
+| 메타·쿠팡 광고 진단·영상 | [광고 트랙](../track-advertising/) | meta-ads-analyzer · pixel-audit · coupang-ad-optimizer · media-* |
+| 상품 출시·재구매·VOC·LTV | [이커머스 트랙](../track-commerce/) | commerce-* 35스킬 |
+
+---
+
+## 자주 묻는 질문
+
+### Q. 마케팅 콘텐츠는 어떤 후처리가 필수인가요?
+
+모든 텍스트 산출물은 **3중 후처리** (`ai-slop-reviewer` → `korean-spell-check` → `humanize-korean`). HARD 규칙: humanize-korean 변경률 50% 초과 시 자동 롤백 (의미 100% 보존).
+
+### Q. 브랜드 톤앤매너 학습은?
+
+`.moai/project/brand-voice.md`에 브랜드 보이스 정의 시 모든 콘텐츠 스킬이 자동 참조. AskUserQuestion에서 톤 재정의 가능.
+
+### Q. 법적 규제 자동 검출되나요?
+
+예. `marketing-compliance-kr`이 마케팅 관련 모든 워크플로우에 자동 게이트. 야간 발송·과대광고·식약처 위반 자동 BLOCK.
+
+---
 
 ### Sources
-- [moai-content: blog 스킬 문서](../../../plugins/moai-content/)
-- [moai-media: nano-banana 스킬 문서](../../../plugins/moai-media/)
-- [마케팅 콘텐츠 제작 가이드](https://contentmarketinginstitute.com/)
+
+- [moai-content 디렉터리](https://github.com/modu-ai/cowork-plugins/tree/main/moai-content)
+- [moai-marketing 디렉터리](https://github.com/modu-ai/cowork-plugins/tree/main/moai-marketing)
+- [정보통신망법](https://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률)

@@ -13,7 +13,7 @@ tags: [cookbook, documents]
 ## 트랙 지도
 
 ```mermaid
-flowchart LR
+flowchart TD
     Need[업무 필요] --> Choice{출력 형식}
     Choice -->|보고서·제안서·계약서| Docx[moai-office docx-generator]
     Choice -->|발표·피치덱| Pptx[moai-office pptx-designer]
@@ -25,9 +25,9 @@ flowchart LR
     Pptx --> Review
     Hwpx --> Review
     Review --> Out[최종 산출물]
-{{< terminal title="claude — cowork" >}}
+```
 
-> ## Word (DOCX) — 가장 많이 쓰는 포맷
+## Word (DOCX) — 가장 많이 쓰는 포맷
 
 ### 적합한 업무
 
@@ -43,16 +43,15 @@ flowchart LR
 
 ### 실무 흐름
 
-```text
-(예시 지시)
-D:/Input/Q2-sales-raw.xlsx를 분석해서
-Q2 매출 보고서를 Word로 작성해줘.
-
-- 상단 임원 요약 (3줄)
-- 제품별 섹션 (5개 제품)
-- 각 섹션에 전년 동기 대비 그래프 삽입
-- 부록: 원본 데이터 테이블
-- 저장 경로: 90_Output/Q2-sales-report.docx
+{{< terminal title="claude — cowork (예시 지시)" >}}
+> D:/Input/Q2-sales-raw.xlsx를 분석해서
+> Q2 매출 보고서를 Word로 작성해줘.
+>
+> - 상단 임원 요약 (3줄)
+> - 제품별 섹션 (5개 제품)
+> - 각 섹션에 전년 동기 대비 그래프 삽입
+> - 부록: 원본 데이터 테이블
+> - 저장 경로: 90_Output/Q2-sales-report.docx
 {{< /terminal >}}
 
 ### 자주 걸리는 지점
@@ -79,24 +78,23 @@ Q2 매출 보고서를 Word로 작성해줘.
 
 ### 실무 흐름
 
-{{< terminal title="claude — cowork" >}}
-> (예시)
-Q2 매출 데이터를 분석해서 임원 대상 PPT 7장을 만들어줘.
-
-- 1장: 타이틀 + 요약 수치 3개
-- 2장: 전년 동기 비교 (막대 그래프)
-- 3~5장: 제품군 A / B / C 섹션
-- 6장: 리스크·이슈
-- 7장: 다음 분기 전망 + 제언
-- 테마: 화이트 배경, 포인트 컬러 코랄
-- 저장: 90_Output/Q2-review.pptx
+{{< terminal title="claude — cowork (예시)" >}}
+> Q2 매출 데이터를 분석해서 임원 대상 PPT 7장을 만들어줘.
+>
+> - 1장: 타이틀 + 요약 수치 3개
+> - 2장: 전년 동기 비교 (막대 그래프)
+> - 3~5장: 제품군 A / B / C 섹션
+> - 6장: 리스크·이슈
+> - 7장: 다음 분기 전망 + 제언
+> - 테마: 화이트 배경, 포인트 컬러 코랄
+> - 저장: 90_Output/Q2-review.pptx
 {{< /terminal >}}
 
 ### 자주 걸리는 지점
 
 **이미지가 들어가지 않음.** PPT 스킬은 이미지를 별도로 지정해야 삽입합니다. `moai-media:nano-banana`로 먼저 이미지를 만들고 경로를 전달하세요.
 
-**슬라이드 수가 폭주.** "5~7장"이라고 상한을 지정하지 않으면 15장 이상으로 부풀어 오릅니다.
+**슬라이드 수가 폭주.** "5-7장"이라고 상한을 지정하지 않으면 15장 이상으로 부풀어 오릅니다.
 
 **글머리표 중복.** 한 슬라이드에 5개 이하 Bullet으로 제한하지 않으면 가독성이 무너집니다.
 
@@ -116,16 +114,15 @@ Q2 매출 데이터를 분석해서 임원 대상 PPT 7장을 만들어줘.
 
 ### 실무 흐름
 
-{{< terminal title="claude — cowork" >}}
-> (예시)
-D:/Input/raw-transactions.csv(5만건)를 분석해서
-월별·카테고리별 피벗을 만들어줘.
-
-- 시트 1: 원본 데이터 (필터만 적용)
-- 시트 2: 월별 합계 피벗 + 스파크라인
-- 시트 3: 카테고리별 Top 10
-- 시트 4: 조건부 서식 (상위 10% 녹색, 하위 10% 빨강)
-- 저장: 90_Output/finance-pivot.xlsx
+{{< terminal title="claude — cowork (예시)" >}}
+> D:/Input/raw-transactions.csv(5만건)를 분석해서
+> 월별·카테고리별 피벗을 만들어줘.
+>
+> - 시트 1: 원본 데이터 (필터만 적용)
+> - 시트 2: 월별 합계 피벗 + 스파크라인
+> - 시트 3: 카테고리별 Top 10
+> - 시트 4: 조건부 서식 (상위 10% 녹색, 하위 10% 빨강)
+> - 저장: 90_Output/finance-pivot.xlsx
 {{< /terminal >}}
 
 ### 자주 걸리는 지점
@@ -151,15 +148,14 @@ D:/Input/raw-transactions.csv(5만건)를 분석해서
 
 ### 실무 흐름
 
-{{< terminal title="claude — cowork" >}}
-> (예시)
-중소기업청 지원사업 신청서 초안을 한글 문서로 만들어줘.
-
-- 양식: 2026년 디지털 전환 지원사업 공식 양식
-- 1페이지: 기업 개요 (사업자등록번호·주소·대표자)
-- 2~3페이지: 사업 계획 (추진 배경·목표·예산)
-- 4페이지: 기대 효과 (정량·정성 지표)
-- 저장: 90_Output/grant-application.hwpx
+{{< terminal title="claude — cowork (예시)" >}}
+> 중소기업청 지원사업 신청서 초안을 한글 문서로 만들어줘.
+>
+> - 양식: 2026년 디지털 전환 지원사업 공식 양식
+> - 1페이지: 기업 개요 (사업자등록번호·주소·대표자)
+> - 2~3페이지: 사업 계획 (추진 배경·목표·예산)
+> - 4페이지: 기대 효과 (정량·정성 지표)
+> - 저장: 90_Output/grant-application.hwpx
 {{< /terminal >}}
 
 ### 자주 걸리는 지점
@@ -183,17 +179,16 @@ D:/Input/raw-transactions.csv(5만건)를 분석해서
 
 ### 실무 흐름
 
-```text
-(예시)
-D:/Contracts/에 있는 40페이지짜리 계약서 PDF를
-열어서 다음 작업을 해줘:
-
-1. 모든 텍스트 추출 (OCR 필요 시 수행)
-2. "책임 제한·지체상금·해지 조건" 조항 하이라이트
-3. 리스크 조항 요약을 별도 Word 보고서로 생성
-4. 원본 PDF + 요약 Word를 묶어서
-   90_Output/contract-review-YYYY-MM-DD.zip으로 압축
-```
+{{< terminal title="claude — cowork (예시)" >}}
+> D:/Contracts/에 있는 40페이지짜리 계약서 PDF를
+> 열어서 다음 작업을 해줘:
+>
+> 1. 모든 텍스트 추출 (OCR 필요 시 수행)
+> 2. "책임 제한·지체상금·해지 조건" 조항 하이라이트
+> 3. 리스크 조항 요약을 별도 Word 보고서로 생성
+> 4. 원본 PDF + 요약 Word를 묶어서
+>    90_Output/contract-review-YYYY-MM-DD.zip으로 압축
+{{< /terminal >}}
 
 ### 자주 걸리는 지점
 

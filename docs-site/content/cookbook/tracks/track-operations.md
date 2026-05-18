@@ -1,5 +1,5 @@
 ---
-title: "🔄 운영 트랙"
+title: "운영 트랙"
 weight: 27
 description: "운영팀·PM·CS·B2B 영업을 위한 통합 워크플로우. moai-operations·moai-pm·moai-support·moai-sales를 한 줄 요청으로 자동 처리."
 geekdocBreadcrumb: true
@@ -7,12 +7,12 @@ geekdocBreadcrumb: true
 
 > **대상**: 운영팀, PM, 고객지원(CS) 매니저, B2B 영업 담당자, 사내 어시스턴트
 > **전제**: moai-core 활성화 + (선택) moai-operations · moai-pm · moai-support · moai-sales 중 필요한 것
-> **소요**: 시나리오당 약 3~10분 (반복은 스케줄로 자동화)
+> **소요**: 시나리오당 약 3-10분 (반복은 스케줄로 자동화)
 
 ## 무엇을 할 수 있나
 
 ```mermaid
-flowchart LR
+flowchart TD
     subgraph 회의["회의·보고"]
         A1["weekly-report<br/>주간 보고서"]
         A2["status-reporter<br/>상태 보고"]
@@ -30,7 +30,9 @@ flowchart LR
     subgraph Vendor["벤더 관리"]
         D1["vendor-manager<br/>공급사 관리"]
     end
-    회의 -.-> CS -.-> Sales
+    회의 -.-> CS
+    회의 -.-> Sales
+    회의 -.-> Vendor
 ```
 
 ## 한 줄 요청 예시 4종
@@ -63,7 +65,7 @@ flowchart LR
 ### 자동 체인 (매주 자동 반복)
 
 ```mermaid
-flowchart LR
+flowchart TD
     Cron["매주 금 16:00"] --> Fetch["MCP 자동 fetch<br/>Notion·Linear·Slack"]
     Fetch --> Gen["weekly-report<br/>임원체·팀체 2 버전"]
     Gen --> S1["docx-generator"]
@@ -96,7 +98,7 @@ flowchart LR
 
 ### 자동 체인
 
-`ticket-triage` (KTAS 5단계 분류) → `commerce-voc-triage` (3축 점수, 이커머스인 경우) → `draft-response` (응답 초안 50건) → `ai-slop-reviewer` → `escalation-manager` (Level 1~2 자동 알림)
+`ticket-triage` (KTAS 5단계 분류) → `commerce-voc-triage` (3축 점수, 이커머스인 경우) → `draft-response` (응답 초안 50건) → `ai-slop-reviewer` → `escalation-manager` (Level 1-2 자동 알림)
 
 ### 산출물
 
@@ -198,7 +200,7 @@ Level 5 (비응급, <1주): 6건 — 자동 응답 + 감사 표현
 
 ### Q. CS 티켓 응답을 사용자 검토 없이 자동 발송하면 위험하지 않나요?
 
-기본값: **Level 3~5 자동 발송 / Level 1~2 사용자 검토 후 발송**. AskUserQuestion에서 조정 가능. 모든 응답은 `ai-slop-reviewer` 후처리.
+기본값: **Level 3-5 자동 발송 / Level 1-2 사용자 검토 후 발송**. AskUserQuestion에서 조정 가능. 모든 응답은 `ai-slop-reviewer` 후처리.
 
 ### Q. B2B 제안서 12섹션이 우리 회사에 안 맞아요.
 

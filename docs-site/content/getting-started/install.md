@@ -4,12 +4,12 @@ weight: 10
 description: "Claude Desktop에 MoAI Cowork Plugins을 설치하는 전체 과정 단계별 안내"
 geekdocBreadcrumb: true
 ---
-이 가이드는 MoAI Cowork Plugins을 Claude Desktop에 설치하는 전체 과정을 단계별로 상세히 안내합니다. 약 5~7분 (Claude Desktop이 이미 설치된 경우) 안에 마켓플레이스 등록 + moai-core 활성화까지 완료됩니다.
+이 가이드는 MoAI Cowork Plugins을 Claude Desktop에 설치하는 전체 과정을 단계별로 상세히 안내합니다. 약 5-7분 (Claude Desktop이 이미 설치된 경우) 안에 마켓플레이스 등록 + moai-core 활성화까지 완료됩니다.
 
 ## 전체 설치 절차
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["① Claude Desktop<br/>다운로드"] --> B["② Anthropic<br/>계정 로그인"]
     B --> C["③ Cowork 모드<br/>활성화"]
     C --> D["④ 작업 폴더<br/>연결"]
@@ -180,7 +180,7 @@ A: Claude Desktop을 재시작하거나, 캐시를 초기화해보세요.
 
 설치가 완료되었다면 이제 첫 작업을 진행할 준비가 되었습니다:
 
-- [첫 작업 가이드](../first-task/) - 약 5~7분 실습 예제 (설치 완료 후)
+- [첫 작업 가이드](../first-task/) - 약 5-7분 실습 예제 (설치 완료 후)
 - [빠른 시작 가이드](../quick-start/) - 주요 스킬 빠르게 숙지하기
 
 ### Sources

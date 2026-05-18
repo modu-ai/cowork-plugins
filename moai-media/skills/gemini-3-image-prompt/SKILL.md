@@ -11,7 +11,7 @@ description: |
 
   이미지 자동 생성(API 호출)은 페어 스킬 nano-banana(Gemini 직접 호출) 또는 image-gen(자동 라우팅)을 사용하세요. 본 스킬은 프롬프트 텍스트 산출 전용입니다.
 user-invocable: true
-version: 2.10.0
+version: 2.11.0
 ---
 
 # Gemini 3 Pro Image Prompt Builder — 5-Component + 3-모델 동시 출력
@@ -76,7 +76,7 @@ Gemini 이미지 프롬프트 나노바나나 프롬프트 Nano Banana Pro 프�
 | 일러스트·아트 | 카드뉴스 일러스트, 책 표지, 컨셉 아트 | `presets/illustration.md` |
 | 풍경·환경 | 배경 이미지, 시네마틱 배경, 여행 컷 | `presets/landscape.md` |
 
-### Round 2 — 프리셋별 미세조정 (3~4 질문)
+### Round 2 — 프리셋별 미세조정 (3-4 질문)
 
 `presets/<name>.md`의 슬롯 정의를 따릅니다. 본 스킬의 presets/는 gpt-image-2-prompt와 동일한 슬롯 데이터를 사용하지만, 모델별 어조 변환 가이드는 Gemini Creative Director 어조로 자동 변환됩니다.
 
@@ -112,7 +112,7 @@ Component 4 — [Style/Media]
 Component 5 — [Specific Constraint/Text]
 ```
 
-각 component는 영문 문장 1~2개. 마침표로 구분. 상세 규칙은 `references/prompt-blocks.md`.
+각 component는 영문 문장 1-2개. 마침표로 구분. 상세 규칙은 `references/prompt-blocks.md`.
 
 ### 내부 처리 — GPT 6-Block + MJ 변환
 
@@ -197,7 +197,7 @@ Component 5 — [Specific Constraint/Text]
 - Thinking Mode는 latency가 증가하지만, 복잡 구도·다중 객체·데이터 시각화·정확한 텍스트가 필요할 때 필수입니다.
 - Search Grounding으로 사실 기반 인포그래픽을 생성하더라도, 결과는 항상 별도 검증 필요 (모델이 정보를 잘못 해석할 가능성).
 - 입력 토큰: Gemini 3 Pro Image 65,536 tokens, Flash 131,072 tokens. 출력 토큰: 32,768 (둘 다).
-- Reference 이미지 첨부 시 첫 2~3개에 핵심 요소(스타일·캐릭터·구도)를 배치하고, 나머지는 부수적 스타일로 사용 권장.
+- Reference 이미지 첨부 시 첫 2-3개에 핵심 요소(스타일·캐릭터·구도)를 배치하고, 나머지는 부수적 스타일로 사용 권장.
 - 마스킹 편집·낮↔밤 변환·다중 이미지 블렌딩은 가끔 비자연스럽거나 아티팩트 발생.
 
 ## 관련 스킬

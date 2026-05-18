@@ -10,7 +10,7 @@ geekdocBreadcrumb: true
 ## 핵심 원칙 ✦ 짧게 말하세요. 나머지는 시스템이 묻습니다.
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["1. 한 줄 자연어 요청<br/>(사용자)"] --> B["2. AskUserQuestion<br/>(시스템이 필요한 맥락 수집)"]
     B --> C["3. 스킬 체이닝<br/>(자동 일괄 처리)"]
     C --> D["4. 산출물<br/>(DOCX·PPTX·HTML·이미지)"]
@@ -79,7 +79,7 @@ sequenceDiagram
 **골격**:
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["사용자 한 줄"] --> B["AskUserQuestion<br/>3~5개 질문"] --> C["스킬 체인 자동 실행"] --> D["산출물 1개"]
 ```
 
@@ -112,7 +112,7 @@ flowchart LR
 **골격**:
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["사용자 한 줄"] --> B["1차 산출"]
     B --> C{"사용자 검토"}
     C -->|수정 요청| B
@@ -173,7 +173,7 @@ flowchart TB
 **골격**:
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["사용자 한 줄<br/>+ 주기 명시"] --> B["AskUserQuestion<br/>데이터 소스·수신자·발송 시각"] --> C["Schedule 등록"]
     C --> D["매주/매일<br/>자동 실행"]
     D --> E["스킬 체인"]

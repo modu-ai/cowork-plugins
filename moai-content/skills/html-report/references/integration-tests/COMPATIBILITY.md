@@ -142,7 +142,7 @@ sbiz365 보고서의 "Executive Summary" + "창업 타당성 평가" + "리스�
 
 ### 매핑되지 않은 섹션
 
-- **경쟁사 동향 서술**: 각 경쟁사별 주요 활동 텍스트 블록은 shipped 테이블 형식으로 압축하기 어렵고, 별도 섹션 없음. 하이라이트 목록에 1~2줄로 요약하거나 생략.
+- **경쟁사 동향 서술**: 각 경쟁사별 주요 활동 텍스트 블록은 shipped 테이블 형식으로 압축하기 어렵고, 별도 섹션 없음. 하이라이트 목록에 1-2줄로 요약하거나 생략.
 - **규제·정책 업데이트**: 별도 섹션으로 시각적 강조가 필요하나, status 템플릿에 전용 슬롯 없어 highlights나 carryover에 통합됨.
 - **시장 지표 상세 (비트코인 등)**: 4개 카드 제한으로 전체 시장 지표 수용 불가, 주요 4개만 표시.
 
@@ -152,7 +152,7 @@ sbiz365 보고서의 "Executive Summary" + "창업 타당성 평가" + "리스�
 moai-business:daily-briefing → moai-content:html-report mode=status
 ```
 
-간단 체인: ai-slop-reviewer 없이도 구조가 명확하여 직접 렌더링 가능. 경쟁사 동향·규제 섹션은 highlights에 1~2줄 요약 삽입. 시장 지표 4개를 메트릭 카드로 우선 배치.
+간단 체인: ai-slop-reviewer 없이도 구조가 명확하여 직접 렌더링 가능. 경쟁사 동향·규제 섹션은 highlights에 1-2줄 요약 삽입. 시장 지표 4개를 메트릭 카드로 우선 배치.
 
 ### 향후 개선 메모
 
@@ -166,7 +166,7 @@ moai-business:daily-briefing → moai-content:html-report mode=status
 
 ### 호환성 평가표
 
-| 컨슈머 스킬 | 적합 모드 | 핵심 슬롯 매핑 수 | 미매핑 섹션 수 | 호환성 점수 (0~5) |
+| 컨슈머 스킬 | 적합 모드 | 핵심 슬롯 매핑 수 | 미매핑 섹션 수 | 호환성 점수 (0-5) |
 |---|---|---|---|---|
 | moai-bi:executive-summary | status | 7개 | 3개 | **4** |
 | moai-finance:financial-statements | financial | 6개 | 4개 | **4** |

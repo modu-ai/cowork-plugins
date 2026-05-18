@@ -7,7 +7,7 @@ description: >
   형태·소재·색상·시그니처 앵글·포지셔닝(mass/premium_indie/luxury)을 추출하고,
   13섹션별 사용 가능한 컷 매핑 + 추가 촬영 권장 리스트를 산출합니다.
 user-invocable: true
-version: 2.10.0
+version: 2.11.0
 ---
 
 # 상품 사진 사전 브리프 (Product Photo Brief)
@@ -27,12 +27,12 @@ ProductDNA, 사진 점검, 추가 촬영, 어떤 사진이 더 필요
 
 ### 1단계: 사진 분석 (Vision)
 
-사용자가 제공한 1~14장의 사진을 분석하여 다음을 추출:
+사용자가 제공한 1-14장의 사진을 분석하여 다음을 추출:
 
 #### 물리적 특성 (Physical)
 - form: 상품 형태 (병/박스/원통/평면 등)
 - dimensions_hint: 크기 추정 (대략)
-- colors: 대표 색상 1~3개
+- colors: 대표 색상 1-3개
 - material: 주 소재
 - texture_keywords: 질감 키워드 (매트/광택/우드/메탈/패브릭)
 - signature_angle: 가장 잘 표현되는 각도

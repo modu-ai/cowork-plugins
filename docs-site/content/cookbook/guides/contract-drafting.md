@@ -7,7 +7,7 @@ geekdocBreadcrumb: true
 > 계약서는 한 번 잘못 보내면 회수가 어렵습니다. cowork-plugins의 `moai-legal` 스킬을 활용해 초안 작성·위험 조항 식별·표준 조항 적용까지 안전하게 진행합니다.
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["nda-triage<br/>빠른 분류"] --> B["contract-review<br/>조항 검토·작성"]
     B --> C["compliance-check<br/>컴플라이언스"]
     C --> D["ai-slop-reviewer<br/>최종 검수"]
@@ -38,9 +38,9 @@ flowchart LR
 
 이메일로 NDA가 도착했을 때:
 
-```
-> "이 NDA 검토해줘. 위험 조항만 표로 뽑아주고, 우리 측에 불리한 부분만 빨갛게 표시해서 DOCX로 저장해줘."
-```
+{{< terminal title="claude — cowork" >}}
+> 이 NDA 검토해줘. 위험 조항만 표로 뽑아주고, 우리 측에 불리한 부분만 빨갛게 표시해서 DOCX로 저장해줘.
+{{< /terminal >}}
 
 `nda-triage` → `contract-review` → `docx-generator` 체인이 자동으로 흘러갑니다.
 
@@ -48,9 +48,10 @@ flowchart LR
 
 자주 쓰는 조항(보안 책임 한도, 데이터 반환·파기 절차, 손해배상 상한)을 회사 표준으로 고정하려면:
 
-```
-> "이 NDA에서 '데이터 파기' 조항 표현을 우리 회사 표준으로 만들어 메모리에 저장해줘. 다음부터는 자동으로 이 표현 사용해줘."
-```
+{{< terminal title="claude — cowork" >}}
+> 이 NDA에서 '데이터 파기' 조항 표현을 우리 회사 표준으로 만들어 메모리에 저장해줘.
+> 다음부터는 자동으로 이 표현 사용해줘.
+{{< /terminal >}}
 
 [프로젝트 메모리](../../../cowork/projects-memory/)의 `feedback` 종류로 저장되어, 같은 프로젝트의 다음 NDA 검토에서 자동 적용됩니다.
 

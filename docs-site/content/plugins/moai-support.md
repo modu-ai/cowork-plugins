@@ -11,7 +11,7 @@ tags: ["moai-support"]
 > CS·티켓·지식베이스 관리용 4개 스킬을 제공합니다.
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["ticket-triage<br/>문의 분류·에스컬레이션"] --> B["draft-response<br/>응답 초안"]
     B --> C["kb-article<br/>FAQ·지식베이스"]
     C --> D["escalation-manager<br/>VOC 분석"]

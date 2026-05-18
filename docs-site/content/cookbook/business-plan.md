@@ -1,14 +1,14 @@
 ---
 title: "사업계획서 자동화"
 weight: 90
-description: "아이템 한 줄에서 심사용 DOCX 사업계획서까지 1~2시간 안에 완성하는 스킬 체인."
+description: "아이템 한 줄에서 심사용 DOCX 사업계획서까지 1-2시간 안에 완성하는 스킬 체인."
 geekdocBreadcrumb: true
 tags: [cookbook, business]
 ---
-> **목표** — 아이템 아이디어에서 시작해 심사위원이 받을 수 있는 수준의 DOCX 사업계획서까지, 1~2시간 이내로 완성합니다.
+> **목표** — 아이템 아이디어에서 시작해 심사위원이 받을 수 있는 수준의 DOCX 사업계획서까지, 1-2시간 이내로 완성합니다.
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["strategy-planner<br/>BMC·SWOT·OKR"] --> B["market-analyst<br/>TAM·경쟁사·가격"]
     B --> C["docx-generator<br/>심사 양식 DOCX"]
     C --> D["ai-slop-reviewer<br/>기계적 문장 제거"]
@@ -47,22 +47,22 @@ strategy-planner → market-analyst → docx-generator → ai-slop-reviewer
 
 ### 1. 아이템을 한 문단으로 정리
 
-```
-한 문단 아이템 설명:
-(예) "50대 이상 1인 가구를 위한 반찬 정기구독 서비스. 주 2회 냉장 배송,
-월 9만원부터. 영양사 1:1 식단 상담 포함."
-
-타깃: 서울·경기 50대 1인 여성, 도보 15분 내 편의점 없는 지역
-매출 모델: 월정액 + 영양 상담 유료 옵션
-제출 양식: 예비창업패키지 2026 상반기
-```
+{{< terminal title="claude — cowork (예시 입력)" >}}
+> 한 문단 아이템 설명:
+> "50대 이상 1인 가구를 위한 반찬 정기구독 서비스. 주 2회 냉장 배송,
+> 월 9만원부터. 영양사 1:1 식단 상담 포함."
+>
+> 타깃: 서울·경기 50대 1인 여성, 도보 15분 내 편의점 없는 지역
+> 매출 모델: 월정액 + 영양 상담 유료 옵션
+> 제출 양식: 예비창업패키지 2026 상반기
+{{< /terminal >}}
 
 ### 2. 뼈대 생성
 
-```
-위 아이템으로 BMC·SWOT·4P·경쟁사 맵을 짜줘.
-strategy-planner 와 market-analyst 를 순서대로 써.
-```
+{{< terminal title="claude — cowork" >}}
+> 위 아이템으로 BMC·SWOT·4P·경쟁사 맵을 짜줘.
+> strategy-planner 와 market-analyst 를 순서대로 써.
+{{< /terminal >}}
 
 ### 3. 심사 양식에 맞춰 DOCX로
 
@@ -77,10 +77,10 @@ docx-generator 스킬로 실제 파일 만들어줘.
 
 ### 4. AI 슬롭 검수
 
-```
-방금 만든 사업계획서 본문 섹션별로 ai-slop-reviewer 돌려줘.
-특히 "패러다임", "본 사업은", "선도적" 같은 표현 잡아줘.
-```
+{{< terminal title="claude — cowork" >}}
+> 방금 만든 사업계획서 본문 섹션별로 ai-slop-reviewer 돌려줘.
+> 특히 "패러다임", "본 사업은", "선도적" 같은 표현 잡아줘.
+{{< /terminal >}}
 
 ### 5. (선택) 시장 통계 보강
 

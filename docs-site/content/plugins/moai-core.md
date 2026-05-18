@@ -46,7 +46,7 @@ tags: ["moai-core"]
 ## `/project init` 흐름 (3분)
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["① Interview<br/>업무 맥락 수집"] --> B["② Detect<br/>플러그인 감지"]
     B --> C["③ Chain Design<br/>체인 설계"]
     C --> D["④ Confirm<br/>승인"]

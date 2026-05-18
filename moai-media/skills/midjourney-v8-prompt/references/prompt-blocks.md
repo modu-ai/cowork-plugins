@@ -16,7 +16,7 @@ Midjourney는 키워드 콤마 + `--파라미터` 구조에 최적화. 자연어
 
 ## Block 1 — Subject
 
-가장 먼저 등장. 핵심 명사 + 형용사 2~3개.
+가장 먼저 등장. 핵심 명사 + 형용사 2-3개.
 
 예:
 - `matte black ceramic coffee mug, ridge texture, MONDAY text`

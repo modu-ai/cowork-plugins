@@ -122,7 +122,6 @@ flowchart TD
 ## 다음 단계
 
 - [스킬 체이닝 가이드](../skill-chaining/) — 체인 설계 3원칙 복습
-- [최종 프로젝트](../final-project/) — 실패를 줄이는 체인 표준화
 
 ---
 

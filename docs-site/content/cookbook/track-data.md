@@ -13,7 +13,7 @@ tags: [cookbook, data]
 ## 트랙 지도
 
 ```mermaid
-flowchart LR
+flowchart TD
     Raw[원본 데이터] --> Explore[① 데이터 탐색<br/>data-explorer]
     Explore -->|이상 없음| Visual[② 시각화<br/>data-visualizer]
     Explore -->|이상 발견| Clean[정제·보완]
@@ -22,9 +22,9 @@ flowchart LR
 
     Public[공공데이터 API] --> PublicData[③ public-data]
     PublicData --> Explore
-{{< terminal title="claude — cowork" >}}
+```
 
-> ## Part 1 — data-explorer
+## Part 1 — data-explorer
 
 ### 언제 쓰나
 
@@ -35,15 +35,15 @@ flowchart LR
 
 ### 기본 프롬프트
 
-```text
-D:/Input/customer-transactions-2026.csv를 분석해줘.
-
-  - 총 행수·결측률·중복 건수
-  - 수치형 컬럼 요약 통계 (평균·중앙값·표준편차·분위수)
-  - 범주형 컬럼 Top 10 빈도
-  - 이상값 탐지 (IQR 기준)
-  - 주요 상관관계 (Pearson > 0.5)
-  - 결과는 Markdown 리포트로, 90_Output/data-quality.md에 저장
+{{< terminal title="claude — cowork" >}}
+> D:/Input/customer-transactions-2026.csv를 분석해줘.
+>
+>   - 총 행수·결측률·중복 건수
+>   - 수치형 컬럼 요약 통계 (평균·중앙값·표준편차·분위수)
+>   - 범주형 컬럼 Top 10 빈도
+>   - 이상값 탐지 (IQR 기준)
+>   - 주요 상관관계 (Pearson > 0.5)
+>   - 결과는 Markdown 리포트로, 90_Output/data-quality.md에 저장
 {{< /terminal >}}
 
 ### 실전 팁
@@ -91,11 +91,9 @@ D:/Input/customer-transactions-2026.csv를 분석해줘.
 
 시각화 결과는 HTML이므로 그대로 PPT에 넣을 수 없습니다. 흐름:
 
-```text
-1. data-visualizer로 HTML 대시보드 생성
+1. `data-visualizer`로 HTML 대시보드 생성
 2. Cowork에 "이 HTML 대시보드의 각 차트를 PNG로 캡처해줘" 지시
-3. PNG를 moai-office:pptx-designer로 임베드
-```
+3. PNG를 `moai-office:pptx-designer`로 임베드
 
 ## Part 3 — public-data
 
@@ -134,19 +132,14 @@ D:/Input/customer-transactions-2026.csv를 분석해줘.
 
 **절대 하드코딩 금지.** 프로젝트 폴더의 `.env` 또는 `credentials.env` 파일에 저장하고 `.gitignore`에 추가하세요.
 
-```text
+```dotenv
 # .env 예시
 KOSIS_API_KEY=XXXXXXXXXXXXXXXX
 DART_API_KEY=YYYYYYYYYYYYYYYY
 DATA_GO_KR_KEY=ZZZZZZZZZZZZ
 ```
 
-SKILL.md 본문에는 환경변수 참조만 넣습니다.
-
-```text
-키 로드: `.env`의 `KOSIS_API_KEY` 값 사용
-절대 프롬프트·로그에 키 노출 금지
-```
+SKILL.md 본문에는 환경변수 참조만 넣습니다. 예: `.env`의 `KOSIS_API_KEY` 값 사용. 절대 프롬프트·로그에 키를 노출하지 마세요.
 
 ## 통합 시나리오 — "매출 분석 완성 파이프라인"
 
@@ -193,7 +186,6 @@ SKILL.md 본문에는 환경변수 참조만 넣습니다.
 
 - [트랙 — 문서](../track-documents/)
 - [트랙 — 마케팅](../track-marketing/)
-- [AI 사원 실습 2](../ai-employee-lab-2/)
 - [보고서 자동화](../report-automation/)
 
 ---

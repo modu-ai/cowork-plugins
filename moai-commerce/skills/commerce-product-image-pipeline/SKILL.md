@@ -4,12 +4,12 @@ description: |
   [책임 경계] 상품 이미지·영상 풀스택 파이프라인 오케스트레이터. character-mgmt → image-gen(Soul) → video-gen(DOP) → media-channel-ad-packager 체인을 단일 자연어 입력으로 자동 호출. 한국 이커머스 셀러가 "상품 이미지·영상 만들어줘" 한 줄로 풀세트 산출.
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   "상품 이미지 만들어줘", "상품 영상 풀세트", "이미지부터 영상까지 한 번에", "상세페이지 이미지·영상 묶음", "비건 세럼 이미지·영상 패키지", "캐릭터 + 이미지 + 영상 한 번에", "이커머스 비주얼 파이프라인", "Higgsfield 풀세트 호출".
-  4단계 체인: ① character-mgmt (선택, 브랜드 캐릭터 일관성) → ② image-gen (상품 이미지 5~10장) → ③ video-gen (시네마틱 영상 5~10초) → ④ media-channel-ad-packager (메타·네이버·카카오 채널 규격 변환).
+  4단계 체인: ① character-mgmt (선택, 브랜드 캐릭터 일관성) → ② image-gen (상품 이미지 5-10장) → ③ video-gen (시네마틱 영상 5-10초) → ④ media-channel-ad-packager (메타·네이버·카카오 채널 규격 변환).
   페어 스킬 detail-page-image(13섹션 합성 PNG)와 명확히 구분 — 본 스킬은 모델 체인 오케스트레이션, 페어는 단일 합성.
   ai-slop-reviewer 체이닝 제외 (이미지·영상 산출물).
   v2.7.0 신규.
 user-invocable: true
-version: 2.10.0
+version: 2.11.0
 ---
 
 # 상품 이미지·영상 풀스택 파이프라인 (Product Image Pipeline)
@@ -20,7 +20,7 @@ version: 2.10.0
 
 **책임 한 줄**: 상품 정보 + 카테고리 + 채널 입력 → character-mgmt(선택) → image-gen → video-gen → channel-ad-packager 4단계 체인 자동 실행 → 채널별 풀세트 산출물 반환.
 
-**vs detail-page-image**: 페어 스킬은 13섹션 합성 PNG 1장 산출. 본 스킬은 **상품 이미지 5~10장 + 영상 5~10초 + 채널별 변환** 풀세트.
+**vs detail-page-image**: 페어 스킬은 13섹션 합성 PNG 1장 산출. 본 스킬은 **상품 이미지 5-10장 + 영상 5-10초 + 채널별 변환** 풀세트.
 
 **vs media-model-router**: media-model-router는 광고 영상 1편 자동 라우팅. 본 스킬은 **이미지부터 영상까지 풀스택 체인** 오케스트레이션.
 
@@ -53,7 +53,7 @@ version: 2.10.0
 | 상품 정보 | 필수 | "비건 세럼 50ml, 한국 농가 직거래, 30일 환불" |
 | 카테고리 | 필수 | 스킨케어·식품·패션·반려동물·가전 등 |
 | 캐릭터 사용 | 선택 | `사용 (character_id 필요)` / `미사용 (제품 단독)` |
-| 채널 (1~3개) | 필수 | 메타·네이버 GFA·카카오 친구톡·카카오 BizBoard·쿠팡 |
+| 채널 (1-3개) | 필수 | 메타·네이버 GFA·카카오 친구톡·카카오 BizBoard·쿠팡 |
 | 톤·무드 | 권장 | 미니멀·따뜻함·프리미엄·활기참 등 |
 | 영상 길이 | 권장 | 5초 (Instagram Story) / 10초 (Reel) / 15초 (TVC) |
 
@@ -165,9 +165,9 @@ version: 2.10.0
 ## 합격 기준
 
 - 4단계 체인 모두 실행 (Step 1 선택적 skip)
-- 이미지 5~10장 (Hero·Lifestyle·Detail·Use-case·Result 5축)
-- 영상 5~10초 (시네마틱 모션 프리셋)
-- 채널별 변환 완료 (선택한 1~3개 채널)
+- 이미지 5-10장 (Hero·Lifestyle·Detail·Use-case·Result 5축)
+- 영상 5-10초 (시네마틱 모션 프리셋)
+- 채널별 변환 완료 (선택한 1-3개 채널)
 - media-ai-disclosure 자동 표기
 - character_id 사용 시 일관성 검증 (선택적)
 
@@ -175,11 +175,11 @@ version: 2.10.0
 
 | 시나리오 | 단계 | 추정 비용 |
 |---------|------|----------|
-| 이미지 7장만 | image-gen Soul | ₩2,000~3,500 |
-| + 영상 1편 (8초) | video-gen DOP | + ₩300~500 |
+| 이미지 7장만 | image-gen Soul | ₩2,000-3,500 |
+| + 영상 1편 (8초) | video-gen DOP | + ₩300-500 |
 | + 채널 3개 변환 | media-channel-ad-packager | + ₩0 (Pillow 자체 처리) |
 | + 캐릭터 등록 (최초 1회) | character-mgmt | + ₩0 (계정 플랜) |
-| **총** | 풀세트 | **₩2,300~4,000 / 상품 1건** |
+| **총** | 풀세트 | **₩2,300-4,000 / 상품 1건** |
 
 > 비용은 Higgsfield·fal.ai 종량제 기준. 실제 가격은 공식 사이트 확인 (higgsfield.ai · fal.ai/dashboard).
 
@@ -197,7 +197,7 @@ version: 2.10.0
    └─ 아니오 → 제품 단독 이미지 모드 (Step 1 skip)
 ```
 
-### Step 2~4: 자동 실행
+### Step 2-4: 자동 실행
 
 - 카테고리에 따라 이미지 5축 (Hero·Lifestyle·Detail·Use-case·Result) 자동 분배
 - 영상 모션 프리셋은 카테고리·톤에 따라 자동 선택 (스킨케어=slow_zoom / 패션=pan_left / 식품=orbit)

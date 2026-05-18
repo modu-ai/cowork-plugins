@@ -9,7 +9,7 @@ description: >
   V6 ③ 상세페이지 도구 = MCP wrapper (SPEC-COMMERCE-V6-003 §5.3 인용).
   v2.4.0 강화: 좋은/피해야 할 예시 가이드 + PAS 카피 공식 매핑 + 혜택 언어 3단계 변환법 (광고 심리학 통합).
 user-invocable: true
-version: 2.10.0
+version: 2.11.0
 ---
 
 # 상세페이지 카피 (Detail Page Copy)
@@ -225,7 +225,7 @@ orchestrator가 사용자에게 다음 정보를 사전 수집합니다 (스킬 
 | 상품명 | 필수 | "스마트워치 X200" |
 | 카테고리 | 권장 | electronics, fashion, food, beauty, home, supplement, pet, kids, handmade, general |
 | 핵심 USP | 필수 | "30시간 배터리 + ANC + IPX5 방수" |
-| 타겟 고객 | 권장 | "20~40대 직장인, 운동 즐기는 분" |
+| 타겟 고객 | 권장 | "20-40대 직장인, 운동 즐기는 분" |
 | 가격대 | 선택 | "12만 9천원" |
 | 브랜드 톤 | 선택 | "신뢰감 있고 전문적" / "젊고 활발하게" |
 | 판매 채널 | 선택 | 쿠팡 / 스마트스토어 / 자사몰 / 범용 |

@@ -8,7 +8,7 @@ tags: [cookbook, operations]
 > **목표** — 매주 금요일 오후 5시에 자동으로 시작해 **KPI 대시보드 + 이슈 요약 + 다음 주 액션**까지 담긴 3페이지 DOCX를 팀 공유 폴더에 저장합니다.
 
 ```mermaid
-flowchart LR
+flowchart TD
     subgraph Sources["데이터 소스"]
         S1["KPI CSV"]
         S2["Slack #ops"]
@@ -68,7 +68,7 @@ status-reporter → data-explorer → xlsx-creator → docx-generator → ai-slo
 ### 자동 체인 (매주 자동 반복)
 
 ```mermaid
-flowchart LR
+flowchart TD
     Cron["매주 금 17:00"] --> Fetch["MCP 자동 fetch<br/>Slack·Notion·Linear"]
     Fetch --> SR["status-reporter<br/>4분할 템플릿"]
     SR --> DE["data-explorer<br/>KPI CSV 분석"]

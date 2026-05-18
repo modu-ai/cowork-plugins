@@ -625,7 +625,7 @@ npx remotion render --gl=angle --concurrency=1
 
 - **durationInFrames**: 효과 타이밍 제어(기본값: 부모 지속 시간)
 - **seed**: 다른 패턴 변형 생성(기본값: 0)
-- **hueShift**: 색조를 0~360도로 조정(기본값: 0, 황-주황색)
+- **hueShift**: 색조를 0-360도로 조정(기본값: 0, 황-주황색)
 
 ### 구현 유연성
 

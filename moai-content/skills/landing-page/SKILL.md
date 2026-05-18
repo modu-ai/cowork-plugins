@@ -1,7 +1,7 @@
 ---
 name: landing-page
 description: >
-  [책임 경계] 단독 전환 1페이지 (히어로~CTA, Lead·SignUp·Launch — 하나의 최종 액션 유도).
+  [책임 경계] 단독 전환 1페이지 (히어로-CTA, Lead·SignUp·Launch — 하나의 최종 액션 유도).
   페어 moai-content:product-detail과 명확히 구분 — 본 스킬은 단독 랜딩 1페이지, 페어는 카탈로그 상세 페이지 (스마트스토어/쿠팡/카카오 규격).
   사용 분기: 단독 마케팅 캠페인·이벤트·리드 수집 → 본 스킬 / 제품 카탈로그·옵션·비교 → product-detail.
   shadcn/ui 기반 고전환율 랜딩 페이지를 설계·생성해주는 스킬입니다.
@@ -10,7 +10,7 @@ description: >
   Next.js 15 + Tailwind CSS v4 + shadcn/ui 스택으로 히어로부터 CTA까지 전환율 최적화
   랜딩 페이지 전체 구성, 디자인 토큰(OKLCH), Framer Motion 효과를 산출합니다.
 user-invocable: true
-version: 2.10.0
+version: 2.11.0
 ---
 
 # 랜딩 페이지 (Landing Page)
@@ -22,7 +22,7 @@ shadcn/ui 기반 고전환율 원페이지 랜딩 설계 전문 스킬입니다.
 히어로부터 최종 CTA까지 전환율 최적화된 랜딩 페이지를 설계·생성합니다.
 
 지원 영역:
-- shadcn/ui 기반 랜딩 페이지 전체 설계 (히어로~CTA)
+- shadcn/ui 기반 랜딩 페이지 전체 설계 (히어로-CTA)
 - Next.js 15 + Tailwind CSS v4 + shadcn/ui 스택
 - OKLCH 컬러 토큰 기반 Light/Dark 모드 동시 산출
 - Framer Motion 인터랙션 프리셋 (페이드업·스크롤 리빌·패럴랙스)

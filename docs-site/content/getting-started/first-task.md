@@ -1,14 +1,14 @@
 ---
 title: "첫 작업"
 weight: 20
-description: "약 5~7분에 완료하는 IR 덱 생성 체험 예제 (설치·플러그인 활성화 완료 후 기준)"
+description: "약 5-7분에 완료하는 IR 덱 생성 체험 예제 (설치·플러그인 활성화 완료 후 기준)"
 geekdocBreadcrumb: true
 ---
-이 가이드는 MoAI Cowork Plugins을 사용하여 실제 비즈니스 문제를 해결하는 전체 과정을 약 5~7분에 체험할 수 있도록 설계되었습니다. **전제 조건**: [설치](../install/)와 플러그인 활성화가 이미 완료된 상태. Series A IR 덱을 생성하는 전체 워크플로우를 직접 경험해 보세요.
+이 가이드는 MoAI Cowork Plugins을 사용하여 실제 비즈니스 문제를 해결하는 전체 과정을 약 5-7분에 체험할 수 있도록 설계되었습니다. **전제 조건**: [설치](../install/)와 플러그인 활성화가 이미 완료된 상태. Series A IR 덱을 생성하는 전체 워크플로우를 직접 경험해 보세요.
 
 ## 목표
 
-**약 5~7분 안에 완료할 수 있는 작업** (설치·플러그인 활성화 이미 완료 전제):
+**약 5-7분 안에 완료할 수 있는 작업** (설치·플러그인 활성화 이미 완료 전제):
 - SaaS Series A IR 덱 초안 생성
 - 전문가 스킬 체인 자동 실행
 - 결과물 파일로 확인
@@ -33,7 +33,7 @@ geekdocBreadcrumb: true
 > /project init "SaaS IR Deck Project 초기화 진행!!"
 {{< /terminal >}}
 
-`/project init`은 **7 Phase 워크플로우**로 동작합니다(총 2~3분, AskUserQuestion 최대 6회). 이 중 사용자가 직접 답하는 인터뷰는 **Phase 1의 3질문**뿐이며, 나머지 Phase는 자동으로 진행됩니다.
+`/project init`은 **7 Phase 워크플로우**로 동작합니다(총 2-3분, AskUserQuestion 최대 6회). 이 중 사용자가 직접 답하는 인터뷰는 **Phase 1의 3질문**뿐이며, 나머지 Phase는 자동으로 진행됩니다.
 
 | Phase | 동작 | 사용자 입력 |
 |---|---|---|
@@ -42,7 +42,7 @@ geekdocBreadcrumb: true
 | 3. 스킬 체인 설계 | 산출물별 실행 파이프라인 설계 | 자동 |
 | 4. 설계 확인 | 체인 설계 승인/수정/취소 | 1회 |
 | 5. CLAUDE.md 생성 | 템플릿(≤200라인) + 스킬 체인 주입 | 자동 |
-| 6. API 키 등록 (조건부) | 선택된 플러그인에 필요한 키만 | 조건부 1~2회 |
+| 6. API 키 등록 (조건부) | 선택된 플러그인에 필요한 키만 | 조건부 1-2회 |
 | 7. 첫 실행 안내 | 설계된 체인 기반 예시 3개 제시 | 자동 |
 
 **Phase 1 인터뷰 — 실제 질문과 선택지** (IR 덱 시나리오 기준 권장 답변):
@@ -111,7 +111,7 @@ geekdocBreadcrumb: true
 요청을 받은 MoAI가 자동으로 전문 스킬 체인을 실행합니다:
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["사용자 요청<br/>'IR 덱 만들어줘'"] --> B["investor-relations<br/>IR 자료 생성"]
     B --> C["pptx-designer<br/>PPTX 디자인"]
     C --> D["ai-slop-reviewer<br/>텍스트 품질 검수"]

@@ -7,7 +7,7 @@ description: >
   "상세페이지 기획해줘", "상세페이지 구조 짜줘", "원 메시지 잡아줘", "오프닝 4유형 분기", "이미지 체크리스트", "유통 채널별 상세페이지 전략"처럼 말하면 자동 호출.
   단독 랜딩 1페이지(landing-page) / 13섹션 카피 JSON(detail-page-copy) / 코드 산출(product-detail)에는 본 스킬을 사용하지 마세요 — 페어 스킬로 분리됨.
 user-invocable: true
-version: 2.10.0
+version: 2.11.0
 ---
 
 # 상세페이지 기획자 (Detail Page Planner)
@@ -302,7 +302,7 @@ brief:
 → AskUserQuestion 1라운드:
    - Q1: 카테고리 세부 (스킨케어·메이크업·헤어 등)
    - Q2: 채널 (펀딩/커머스)
-→ 답변 후 Step 1~7 진행
+→ 답변 후 Step 1-7 진행
 
 ### 예시 3 — Brief만 받아서 후속 위임
 
@@ -311,7 +311,7 @@ brief:
 + 첨부: 작성된 Brief YAML
 ```
 
-→ Step 0: Brief 검증 (모듈 1~5 항목 누락 확인)
+→ Step 0: Brief 검증 (모듈 1-5 항목 누락 확인)
 → Brief 완성 후: detail-page-copy → product-detail → detail-page-image 순차 위임
 
 ## 페어 스킬과의 관계

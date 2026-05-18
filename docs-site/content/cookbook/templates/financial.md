@@ -7,7 +7,7 @@ geekdocBreadcrumb: true
 > 투자 검토에서 통하는 재무 모델은 *복잡함이 아니라 검증 가능함*에서 신뢰를 얻습니다. 5개 시트, 가정과 결과의 명확한 분리, 가정을 바꾸면 결과가 자동으로 따라가는 구조 — 이 셋이면 충분합니다.
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["financial-statements<br/>K-IFRS 재무제표"] --> B["variance-analysis<br/>분산 분석"]
     B --> C["close-management<br/>결산"]
     C --> D["xlsx-creator<br/>5시트 통합 모델"]
@@ -57,9 +57,11 @@ flowchart LR
 
 ## 워크플로우 예시 — 36개월 모델 자동 생성
 
-```
-> "시리즈 A 투자 검토용 재무 모델 만들어줘. 36개월, 5개 시트(Assumptions/P&L/Cash/Cohort/Funding). 가정은 다음과 같음 — ARPU 50,000원, 신규 MoM 15%, Churn 5%, CAC 80,000원. xlsx 한 파일로 저장."
-```
+{{< terminal title="claude — cowork" >}}
+> 시리즈 A 투자 검토용 재무 모델 만들어줘. 36개월, 5개 시트(Assumptions/P&L/Cash/Cohort/Funding).
+> 가정은 다음과 같음 — ARPU 50,000원, 신규 MoM 15%, Churn 5%, CAC 80,000원.
+> xlsx 한 파일로 저장.
+{{< /terminal >}}
 
 체인:
 1. `financial-statements`
@@ -69,17 +71,19 @@ flowchart LR
 
 투자자가 "Churn 7%로 가정하면?" 같은 질문을 던졌을 때 5초 안에 답할 수 있어야 합니다.
 
-```
-> "방금 만든 모델의 Assumptions 시트에서 Churn을 7%로 바꿔 결과 비교해줘. 기존(5%) vs 변경(7%) 상태에서 24개월 매출과 EBITDA를 표로 정리."
-```
+{{< terminal title="claude — cowork" >}}
+> 방금 만든 모델의 Assumptions 시트에서 Churn을 7%로 바꿔 결과 비교해줘.
+> 기존(5%) vs 변경(7%) 상태에서 24개월 매출과 EBITDA를 표로 정리.
+{{< /terminal >}}
 
 ## K-IFRS 결산 보고
 
 스타트업이 시리즈 A 이후 결산 보고서가 필수가 되면:
 
-```
-> "2026년 K-IFRS 기준 재무제표 만들어줘. 손익계산서·재무상태표·현금흐름표 풀 세트. 1년치 거래 데이터는 첨부 엑셀에."
-```
+{{< terminal title="claude — cowork" >}}
+> 2026년 K-IFRS 기준 재무제표 만들어줘. 손익계산서·재무상태표·현금흐름표 풀 세트.
+> 1년치 거래 데이터는 첨부 엑셀에.
+{{< /terminal >}}
 
 ## 자주 겪는 실수
 

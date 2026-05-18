@@ -15,7 +15,7 @@ tags: [cookbook]
 **핵심 원칙**: 사용자가 짧은 한 줄 요청 → 시스템이 AskUserQuestion으로 맥락 수집 → 스킬 체이닝 자동 일괄 처리. 사용자가 매번 긴 옵션 프롬프트를 작성하지 않습니다.
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["1. 한 줄 자연어 요청"] --> B["2. AskUserQuestion"] --> C["3. 스킬 체이닝"] --> D["4. 산출물"]
     style A fill:#fbf0dc,stroke:#c47b2a
     style C fill:#e6f0ef,stroke:#144a46
@@ -58,11 +58,7 @@ flowchart LR
 - [사업계획서 자동화](./business-plan/) — 전략→산업분석→PPT
 - [IR 덱 제작](./ir-deck/) — 투자자 관점 슬라이드
 - [계약서 검토 리포트](./contract-review/) — NDA 트리아지·리스크 점검
-- [AI 사원 설계](./ai-employee-design/) — 역할→체인→KPI
-- [AI 사원 실습 1 — 재무](./ai-employee-lab-1/) — 월말 마감 자동화
-- [AI 사원 실습 2 — 품질·SCM](./ai-employee-lab-2/) — 이상 감지 알림
 - [트러블슈팅](./troubleshooting/) — 체인 실패 진단·재시도
-- [최종 프로젝트](./final-project/) — 본인 업무 1건을 체인으로
 
 ## 공통 원칙
 
@@ -72,7 +68,7 @@ flowchart LR
 - **Windows 사용자는 파일명을 짧게 유지합니다.** MAX_PATH(260자) 제한 때문에 `보고서.docx`처럼 짧은 한글 이름을 권장합니다.
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["자연어 요청"] --> B{"스킬 라우터<br/>매칭"}
     B --> C["텍스트 생성<br/>스킬"]
     B --> D["포맷 변환<br/>moai-office"]

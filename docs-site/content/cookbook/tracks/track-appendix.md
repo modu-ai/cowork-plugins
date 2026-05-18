@@ -1,5 +1,5 @@
 ---
-title: "📚 부록 트랙"
+title: "부록 트랙"
 weight: 90
 description: "연구·교육·라이프스타일을 위한 부록 워크플로우. moai-research · moai-education · moai-lifestyle 13스킬 한 줄 요청."
 geekdocBreadcrumb: true
@@ -7,7 +7,7 @@ geekdocBreadcrumb: true
 
 > **대상**: 연구자 (대학원생·교수·R&D), 교육자 (강사·튜터), 일반 사용자 (여행·이벤트·웰니스)
 > **전제**: moai-core 활성화 + 필요한 플러그인
-> **소요**: 시나리오당 약 5~15분
+> **소요**: 시나리오당 약 5-15분
 
 ## 한 줄 요청 예시 6종
 

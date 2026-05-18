@@ -9,7 +9,7 @@ MoAI Cowork Plugins은 21개의 플러그인과 129개의 스킬로 구성된 Cl
 ## 학습 경로
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["📥 설치 가이드"] --> B["🚀 첫 작업"]
     B --> C["⚡ 빠른 시작"]
     C --> D["📖 코워크 가이드"]

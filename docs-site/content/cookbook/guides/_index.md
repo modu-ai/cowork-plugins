@@ -8,7 +8,7 @@ geekdocCollapseSection: true
 각 [트랙](../tracks/)이 끝날 때 권장하는 심화 가이드입니다. 한 가지 도메인을 더 깊이 파고들고 싶을 때 여기서 시작하세요.
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["트랙 완료"] --> B{"심화 학습<br/>필요?"}
     B -- 법무 --> C["계약서 작성<br/>법률 리스크"]
     B -- 투자 --> D["투자 유치<br/>가이드"]

@@ -11,7 +11,7 @@ tags: ["moai-sales"]
 > 한국 B2B 영업팀이 매주 작성하는 제안서·견적서·콜드메일·후속 시퀀스를 자동화하는 플러그인입니다.
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["(RFP·고객 요구사항)<br/>입력"] --> B["proposal-writer<br/>12섹션 제안서"]
     B --> C["docx-generator<br/>문서 저장"]
     C --> D["ai-slop-reviewer<br/>최종 검수"]

@@ -7,7 +7,7 @@ description: |
   3축 분류: ① 고객 핏(핵심 고객 vs 일반 vs 비핵심) ② 빈도(반복 vs 일회성) ③ 핵심 가치 관련성(브랜드 USP 직격 vs 관련 vs 무관). KTAS 5단계 응급도 매핑.
   v2.8.0 신규.
 user-invocable: true
-version: 2.10.0
+version: 2.11.0
 ---
 
 # VOC 우선순위 판별 (Commerce VOC Triage)
@@ -33,7 +33,7 @@ VOC(Voice of Customer)의 폭주 시기에 모든 의견을 다 처리할 수 �
 | 분류 | 정의 | 가중치 |
 |-----|------|------|
 | **반복** | 같은 VOC 5건+ | ×3 |
-| **간헐** | 같은 VOC 2~4건 | ×2 |
+| **간헐** | 같은 VOC 2-4건 | ×2 |
 | **일회성** | 1건 | ×1 |
 
 ### 축 3: 핵심 가치 관련성 (Brand Value Relevance)
@@ -61,10 +61,10 @@ VIP 고객 + 반복 + USP 직격 = 3×3×3 = 27 (최우선)
 | 등급 | 명칭 | VOC 점수 | 처리 시한 | 예시 |
 |------|------|---------|---------|------|
 | **Level 1** | 🔴 즉시 (Resuscitation) | 27 | <1시간 | VIP 환불 거부 / 식약처 신고 위협 |
-| **Level 2** | 🟠 응급 (Emergent) | 18~26 | <4시간 | 반복 부정 리뷰 / USP 핵심 불만 |
-| **Level 3** | 🟡 긴급 (Urgent) | 12~17 | <24시간 | 일반 고객 반복 불만 |
-| **Level 4** | 🟢 준응급 (Less Urgent) | 4~11 | <72시간 | 일회성 일반 불만 |
-| **Level 5** | 🔵 비응급 (Non-Urgent) | 1~3 | <1주 | 칭찬·정보 문의 |
+| **Level 2** | 🟠 응급 (Emergent) | 18-26 | <4시간 | 반복 부정 리뷰 / USP 핵심 불만 |
+| **Level 3** | 🟡 긴급 (Urgent) | 12-17 | <24시간 | 일반 고객 반복 불만 |
+| **Level 4** | 🟢 준응급 (Less Urgent) | 4-11 | <72시간 | 일회성 일반 불만 |
+| **Level 5** | 🔵 비응급 (Non-Urgent) | 1-3 | <1주 | 칭찬·정보 문의 |
 
 ## 처리 순서 + 응답 템플릿
 
@@ -85,7 +85,7 @@ VIP 고객 + 반복 + USP 직격 = 3×3×3 = 27 (최우선)
 
 ## 후속 체인 (텍스트 산출물 검수)
 
-본 스킬의 응답 템플릿(Level 1~5)·처리 순서 안내·고객 응대 카피는 `moai-core:ai-slop-reviewer`로 자동 후처리 체이닝됩니다 (CLAUDE.local.md §3-2 HARD). VIP·응급 대응 메시지가 AI 패턴(과한 형용사·번역체)을 포함하면 신뢰도가 무너지므로 검수 필수.
+본 스킬의 응답 템플릿(Level 1-5)·처리 순서 안내·고객 응대 카피는 `moai-core:ai-slop-reviewer`로 자동 후처리 체이닝됩니다 (CLAUDE.local.md §3-2 HARD). VIP·응급 대응 메시지가 AI 패턴(과한 형용사·번역체)을 포함하면 신뢰도가 무너지므로 검수 필수.
 
 ```text
 commerce-voc-triage → ai-slop-reviewer → 사용자 검토 → CS 발송

@@ -9,7 +9,7 @@ geekdocBreadcrumb: true
 ## 스킬 트리거 흐름
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["사용자 자연어 요청"] --> B{"description<br/>매칭"}
     B -- 일치 --> C["스킬 자동 호출"]
     B -- 불일치 --> D["Claude 기본 응답"]
@@ -89,26 +89,23 @@ user-invocable: true
 
 여러 스킬을 연결해 파이프라인을 구성합니다. 자세한 설계 방법은 [쿡북 — 스킬 체인 설계](../../cookbook/skill-chaining/)에서 다룹니다.
 
-## 커스텀 스킬
+## 제공된 스킬 활용하기
 
-사용자 본인도 스킬을 만들 수 있습니다. 핵심만 요약하면 다음과 같습니다.
+modu-ai/cowork-plugins 마켓플레이스는 21개 플러그인 안에 144개 스킬을 묶어 제공합니다. 사용자는 스킬을 직접 만들 필요 없이 — 자연어 한 줄로 GOAL을 던지면 시스템이 적합한 스킬을 자동으로 선택·체이닝합니다.
 
-- 파일 위치: `~/.claude/skills/<skill-name>/SKILL.md` (개인용) 또는 플러그인 내부 `<plugin>/skills/<skill-name>/SKILL.md` (배포용)
-- 최소 YAML: `name`, `description` 두 필드만 있으면 동작합니다
-- Tab 자동완성을 원한다면 `user-invocable: true`를 추가합니다
-- `description`에 **트리거 키워드**를 풍부하게 쓰면 자동 호출 정확도가 올라갑니다 — "다음과 같은 요청 시 이 스킬을 사용하세요:" 블록으로 명시하는 패턴을 권장합니다
-- 본문은 사람이 읽는 절차서처럼 작성합니다. 조건·금지 사항·예시를 분리하면 Claude가 안정적으로 따라갑니다
-
-처음 만들 때는 `cowork-plugins` 저장소의 기존 스킬(`moai-content/skills/blog/SKILL.md` 등)을 템플릿으로 복사해 수정하는 방법이 가장 빠릅니다. 전체 공식 절차는 [플러그인 개발 튜토리얼](https://claude.com/resources/tutorials/how-to-build-a-plugin-from-scratch-in-cowork)을 참고하세요.
+- **카테고리별 스킬 모음**: 콘텐츠·디자인·재무·법무·운영·마케팅·이커머스 등 21개 플러그인 ([플러그인 카탈로그](../../plugins/))
+- **체인 예시 12종**: 자주 쓰는 스킬 조합 ([쿡북 — 스킬 체인 설계](../../cookbook/skill-chaining/))
+- **트랙별 시나리오**: 본부·업무 영역별 한 줄 요청 → 자동 체인 ([쿡북 트랙](../../cookbook/tracks/))
 
 ## 다음 단계
 
 - [플러그인 사용](../plugins/)
 - [쿡북 — 스킬 체인 설계](../../cookbook/skill-chaining/)
+- [쿡북 — 트랙별 시나리오](../../cookbook/tracks/)
 
 ---
 
 ### Sources
 
 - [Use Skills in Claude](https://support.claude.com/en/articles/12512180)
-- [How to build a plugin from scratch in Cowork](https://claude.com/resources/tutorials/how-to-build-a-plugin-from-scratch-in-cowork)
+- [modu-ai/cowork-plugins 마켓플레이스](https://github.com/modu-ai/cowork-plugins)

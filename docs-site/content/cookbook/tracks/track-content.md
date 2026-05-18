@@ -1,5 +1,5 @@
 ---
-title: "✍️ 콘텐츠 트랙"
+title: "콘텐츠 트랙"
 weight: 22
 description: "콘텐츠 크리에이터·블로거·SNS 운영자를 위한 워크플로우. moai-content 12스킬 + moai-marketing + moai-media로 블로그·카드뉴스·랜딩·뉴스레터를 한 줄 요청으로 자동 생성."
 geekdocBreadcrumb: true
@@ -7,12 +7,12 @@ geekdocBreadcrumb: true
 
 > **대상**: 1인 콘텐츠 크리에이터, 마케터, 블로거, 인플루언서, 뉴스레터 발행자
 > **전제**: moai-core · moai-content 활성화 + (선택) moai-media·moai-marketing
-> **소요**: 시나리오당 약 3~10분
+> **소요**: 시나리오당 약 3-10분
 
 ## 무엇을 할 수 있나
 
 ```mermaid
-flowchart LR
+flowchart TD
     subgraph 입력["입력"]
         A["주제 한 줄"]
     end
@@ -86,7 +86,7 @@ flowchart LR
 
 ### 시스템 인터뷰
 
-1. **슬라이드 수**: 6~10장
+1. **슬라이드 수**: 6-10장
 2. **톤**: 친근 / 격식 / 유머
 3. **이미지 비율**: 1:1 / 4:5 / 9:16 (스토리)
 4. **AI 이미지 생성**: 예/아니오 (`nano-banana` 호출)
@@ -109,7 +109,7 @@ flowchart LR
 
 1. **베이스 팔레트**: Neutral / Zinc / Stone / Slate
 2. **컬러 모드**: Light / Dark / System / Auto Toggle
-3. **모서리 반경**: Sharp ~ Pill
+3. **모서리 반경**: Sharp - Pill
 4. **효과**: Fade-up · Scroll Reveal · Parallax · Chart
 
 ### 자동 체인
@@ -129,7 +129,7 @@ flowchart LR
 콘텐츠 트랙의 핵심 — 모든 텍스트는 **반드시 3중 후처리** 거침:
 
 ```mermaid
-flowchart LR
+flowchart TD
     Gen["콘텐츠 생성<br/>(blog·card-news·...)"] --> S1["ai-slop-reviewer<br/>일반 AI 패턴 검수"]
     S1 --> S2["korean-spell-check<br/>바른한글 맞춤법"]
     S2 --> S3["humanize-korean<br/>한국어 SSOT 40+ 패턴"]

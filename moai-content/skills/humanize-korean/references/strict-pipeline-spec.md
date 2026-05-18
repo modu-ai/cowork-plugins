@@ -13,11 +13,11 @@
 
 | 에이전트 | 모드 | 역할 |
 |---|---|---|
-| `humanize-monolith` | Fast 디폴트 | 단일 호출 윤문(탐지·윤문·자체검증 일괄, 도구 호출 4~5회 캡) |
+| `humanize-monolith` | Fast 디폴트 | 단일 호출 윤문(탐지·윤문·자체검증 일괄, 도구 호출 4-5회 캡) |
 | `ai-tell-detector` | Strict | span 단위 JSON 탐지 리포트 생성 |
 | `korean-style-rewriter` | Strict | finding 기반 수술적 윤문, 변경률 모니터링 |
 | `content-fidelity-auditor` | Strict | 의미 동등성 감사(13항), 훼손 시 롤백 지시 |
-| `naturalness-reviewer` | Strict | 잔존 AI 티 · 과윤문 · 자연도 판정, 품질 등급 A~D |
+| `naturalness-reviewer` | Strict | 잔존 AI 티 · 과윤문 · 자연도 판정, 품질 등급 A-D |
 | `korean-ai-tell-taxonomist` | 별도 명령 | 분류 체계(SSOT) 관리, 신규 패턴 심사 승격 |
 | `humanize-web-architect` | 옵션 | Next.js 15 + Vercel 웹 서비스 확장 설계 |
 
@@ -86,9 +86,9 @@ cowork 통합 시 위 에이전트 정의는 가져오지 않았습니다(현재
 
 ## naturalness 판정(naturalness-reviewer)
 
-- **accept**: S1 잔존 0, S2 잔존 ≤2, 변경률 10~25%, 자연도 점수 70%+
-- **accept_with_note**: S1 잔존 0, S2 잔존 3~4 — 비치명적 잔존 메모만 첨부
-- **rewrite_round_2**: S1 잔존 1~2 또는 과윤문 시그널 1~2개 → 2차 윤문 진입
+- **accept**: S1 잔존 0, S2 잔존 ≤2, 변경률 10-25%, 자연도 점수 70%+
+- **accept_with_note**: S1 잔존 0, S2 잔존 3-4 — 비치명적 잔존 메모만 첨부
+- **rewrite_round_2**: S1 잔존 1-2 또는 과윤문 시그널 1-2개 → 2차 윤문 진입
 - **rollback_and_rewrite**: 과윤문 시그널 3+ → 윤문가에 롤백 지시
 
 ## 향후 확장 시 cowork 적용 방안

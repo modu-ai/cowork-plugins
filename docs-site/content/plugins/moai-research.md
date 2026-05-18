@@ -11,7 +11,7 @@ tags: ["moai-research"]
 > 논문·특허·연구비 신청까지 연구자 워크플로우를 커버하는 5개 스킬을 제공합니다.
 
 ```mermaid
-flowchart LR
+flowchart TD
     subgraph 논문["논문"]
         A["paper-search<br/>RISS·KCI 검색"] --> B["paper-writer<br/>논문 작성"]
     end

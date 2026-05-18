@@ -8,7 +8,7 @@ description: |
   ai-slop-reviewer 자동 체이닝 (진단 보고서 텍스트 산출물).
   v2.4.0 신규 (광고 심리학 §5 픽셀 풀세트).
 user-invocable: true
-version: 2.10.0
+version: 2.11.0
 ---
 
 # 픽셀·1st Party 데이터 진단 (Pixel Audit)
@@ -49,7 +49,7 @@ fbq('track', 'ViewContent', {
 픽셀만으로는 iOS 사용자의 전환 추적이 불완전. **서버 사이드 전환 API(CAPI)를 같이 설치 필수**.
 
 iOS 14.5+ 이후:
-- pixel-only: 실제 전환의 50~70%만 추적
+- pixel-only: 실제 전환의 50-70%만 추적
 - pixel + CAPI: 90%+ 추적 가능
 
 ## 1st Party 데이터 3종
@@ -120,7 +120,7 @@ Lookalike의 품질 한계 = 씨앗 데이터의 품질 한계.
 
 ### D. Lookalike
 - [ ] VIP 씨앗 데이터 사용
-- [ ] 유사도 1~3% 시작
+- [ ] 유사도 1-3% 시작
 - [ ] 기존 고객 제외
 - [ ] 월 1회 이상 씨앗 업데이트
 

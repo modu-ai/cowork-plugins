@@ -19,7 +19,7 @@
 | [product-detail](./skills/product-detail/) | **shadcn/ui** 기반 전환율 극대화 상세페이지 빌더. 네이버/쿠팡/카카오 규격 + Next.js 자사몰 | 4 | ✅ |
 | [landing-page](./skills/landing-page/) | **shadcn/ui** 기반 고전환율 랜딩 페이지. CTA 최적화, 소크라테스식 테마 인터뷰, Framer Motion | 7 | ✅ |
 | [copywriting](./skills/copywriting/) | 마케팅 카피, 헤드라인, CTA, 광고 캠페인, 비주얼 스토리텔링 | 3 | ✅ |
-| [newsletter](./skills/newsletter/) | 뉴스레터 기획~발행, 구독자 확보 전략, 오픈율 최적화 | 1 | ✅ |
+| [newsletter](./skills/newsletter/) | 뉴스레터 기획-발행, 구독자 확보 전략, 오픈율 최적화 | 1 | ✅ |
 | [media-production](./skills/media-production/) | Remotion 영상, 유튜브 프로덕션, 팟캐스트, 전자책 출판 | 9 | ✅ |
 | [blog](./skills/blog/) | 네이버/티스토리/브런치/WordPress/Ghost 6개 플랫폼 최적화 포스팅 | 6 | ✅ |
 | [social-media](./skills/social-media/) | **⚠️ Deprecated (v2.3.0)** — `moai-marketing:sns-content`로 흡수됨. `/sns-content` 사용 권장. v2.5.0까지 호환 stub 유지 | — | ⚠️ |
@@ -41,7 +41,7 @@
 | 폰트 | Pretendard (KR) + Inter (EN) |
 | 차트 | Recharts (선택 시) |
 
-코드 생성 직전 `AskUserQuestion` 4문항 인터뷰 — (1) 베이스 팔레트(Neutral/Zinc/Stone/Slate) · (2) 컬러 모드(Light/Dark/System+Toggle/Auto) · (3) 모서리 반경(Sharp~Pill) · (4) 효과(Fade-up·Scroll Reveal·Parallax·Chart) — 를 실행합니다.
+코드 생성 직전 `AskUserQuestion` 4문항 인터뷰 — (1) 베이스 팔레트(Neutral/Zinc/Stone/Slate) · (2) 컬러 모드(Light/Dark/System+Toggle/Auto) · (3) 모서리 반경(Sharp-Pill) · (4) 효과(Fade-up·Scroll Reveal·Parallax·Chart) — 를 실행합니다.
 
 공용 레퍼런스: [`skills/landing-page/references/landing-page/shadcn-theme-interview.md`](./skills/landing-page/references/landing-page/shadcn-theme-interview.md)
 

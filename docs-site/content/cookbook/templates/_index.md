@@ -8,7 +8,7 @@ geekdocCollapseSection: true
 복사 → 변형 → 즉시 활용. 각 템플릿은 관련 cowork-plugins 스킬과 함께 동작하도록 설계되어 있습니다.
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["템플릿 선택"] --> B["프롬프트로<br/>파라미터 입력"]
     B --> C["스킬 체인<br/>실행"]
     C --> D["ai-slop-reviewer<br/>검수"]

@@ -17,7 +17,7 @@ description: |
 
   Adapted from epoko77-ai/im-not-ai (MIT, ⭐937) v1.6.1 — humanize-monolith Fast 모드 단일 스킬 변형.
 user-invocable: true
-version: 2.10.0
+version: 2.11.0
 ---
 
 # Humanize Korean — 한국어 AI 티 제거 (Fast 모드)
@@ -119,7 +119,7 @@ python3 moai-content/skills/humanize-korean/references/metrics.py \
 - I-1 ~인 것이다/한 것이다 결말
 - J-2 따옴표 강조 5+회
 
-**S2 (강함 — 1~2회 허용, 3+ 시 제거)**:
+**S2 (강함 — 1-2회 허용, 3+ 시 제거)**:
 - A-4/A-5/A-6/A-9/A-10/A-11/A-15
 - B-1/B-2 영어 인용 과다
 - C-7/C-8/C-9 구조 패턴
@@ -194,9 +194,9 @@ before/after 비교로 카테고리별 개선율(%)을 계산합니다.
 
 | 등급 | 조건 |
 |---|---|
-| **A** | S1 잔존 0, S2 잔존 ≤2, 변경률 10~25%, 자체검증 6/6 |
+| **A** | S1 잔존 0, S2 잔존 ≤2, 변경률 10-25%, 자체검증 6/6 |
 | **B** | S1 잔존 0, S2 잔존 ≤4, 자체검증 5/6 이상 |
-| **C** | S1 잔존 1~2 또는 자체검증 ≤4 — 사용자에게 정밀 검증 권고 |
+| **C** | S1 잔존 1-2 또는 자체검증 ≤4 — 사용자에게 정밀 검증 권고 |
 | **D** | S1 잔존 3+ 또는 변경률 50% 초과 — 작업 중단 권고 |
 
 ## Phase 6: 사용자에게 결과 반환

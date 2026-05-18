@@ -8,7 +8,7 @@ geekdocCollapseSection: true
 cowork-plugins의 디자인 계열 스킬을 사용할 때 참고할 수 있는 원칙 모음입니다.
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["콘텐츠 기획"] --> B["디자인 원칙<br/>적용"]
     B --> C["pptx-designer<br/>또는 landing-page"]
     C --> D["ai-slop-reviewer<br/>검수"]

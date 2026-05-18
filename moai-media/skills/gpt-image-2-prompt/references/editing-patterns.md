@@ -15,7 +15,7 @@ Constraints: <금지 사항>
 ## Change — 변경할 요소
 
 원칙:
-- 한 번에 1~3개 변경. 4개 이상은 별도 호출로 분할.
+- 한 번에 1-3개 변경. 4개 이상은 별도 호출로 분할.
 - 변경 후 상태를 구체적으로 묘사 (단순 "make it red" 보다 "change mug body color to deep crimson (#8B0000), keep handle matte black").
 - 텍스트 변경 시 새 텍스트를 따옴표로 verbatim 지정.
 

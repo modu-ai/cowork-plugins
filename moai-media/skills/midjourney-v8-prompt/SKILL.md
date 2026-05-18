@@ -12,7 +12,7 @@ description: |
 
   Midjourney는 공식 API 자동화가 제한적이므로 본 스킬은 프롬프트 텍스트만 산출하고, 실제 생성은 사용자가 Discord 또는 web alpha에서 직접 실행합니다.
 user-invocable: true
-version: 2.10.0
+version: 2.11.0
 ---
 
 # Midjourney v8.1 Prompt Builder — 키워드+파라미터 + 3-모델 동시 출력
@@ -68,7 +68,7 @@ Midjourney v8 Alpha (2026.03.17 출시) 및 v8.1 (2026.03.21 announce)은 5배 �
 
 `presets/`의 4개 프리셋 (제품샷·인물·일러스트·풍경) 중 선택. gpt-image-2-prompt와 동일한 슬롯 데이터를 공유합니다.
 
-### Round 2 — 프리셋별 미세조정 (3~4 질문)
+### Round 2 — 프리셋별 미세조정 (3-4 질문)
 
 `presets/<name>.md` 슬롯 정의를 따릅니다.
 

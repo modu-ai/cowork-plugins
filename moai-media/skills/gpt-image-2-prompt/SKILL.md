@@ -11,7 +11,7 @@ description: |
 
   이미지 자동 생성(API 호출)은 페어 스킬 image-gen·nano-banana·media-gpt-image2-builder를 사용하세요. 본 스킬은 프롬프트 텍스트 산출 전용입니다.
 user-invocable: true
-version: 2.10.0
+version: 2.11.0
 ---
 
 # GPT-image-2 Prompt Builder — 6-Block 구조 + 3-모델 동시 출력
@@ -25,7 +25,7 @@ OpenAI GPT-image-2 모델은 자연어를 art-director 어조로 이해하는 re
 특히 본 스킬은:
 
 - **3개 모델 동시 출력**: GPT-image-2 메인 프롬프트와 함께 동일한 의도를 Gemini 3 Pro Image(5-component)와 Midjourney v8.1(키워드+`--파라미터`) 어조로도 변환해 한 화면에 제공합니다.
-- **프리셋 + 미세조정**: 4개 프리셋(제품샷·인물·일러스트·풍경)으로 학습 곡선을 낮추고, 프리셋별 3~4개 미세조정 질문으로 디테일을 확보합니다.
+- **프리셋 + 미세조정**: 4개 프리셋(제품샷·인물·일러스트·풍경)으로 학습 곡선을 낮추고, 프리셋별 3-4개 미세조정 질문으로 디테일을 확보합니다.
 - **텍스트 verbatim 보장**: 이미지에 들어갈 글자는 따옴표·ALL CAPS·verbatim 지시로 GPT-image-2의 95%+ 텍스트 렌더링 정확도를 활용합니다.
 
 페어 스킬 `image-gen`·`nano-banana`·`media-gpt-image2-builder`는 실제 이미지를 API로 생성하는 반면, 본 스킬은 **프롬프트 텍스트만** 산출합니다. 사용자가 원하는 도구(ChatGPT 웹, Sora, OpenAI Playground, fal.ai 등)에서 직접 복붙해 사용하세요.
@@ -67,7 +67,7 @@ GPT 이미지 프롬프트 ChatGPT 이미지 프롬프트 GPT-image-2 프롬프�
 
 선택 결과는 Round 2의 질문 세트를 결정합니다.
 
-### Round 2 — 프리셋별 미세조정 (3~4 질문)
+### Round 2 — 프리셋별 미세조정 (3-4 질문)
 
 선택된 프리셋의 `presets/<name>.md`에 정의된 질문 세트를 `AskUserQuestion`으로 순회합니다. 각 질문은 4 옵션 + Other이며, 첫 번째 옵션에 `(권장)` 라벨을 표시합니다.
 
@@ -79,7 +79,7 @@ GPT 이미지 프롬프트 ChatGPT 이미지 프롬프트 GPT-image-2 프롬프�
 
 다른 프리셋의 슬롯은 `presets/portrait.md`, `presets/illustration.md`, `presets/landscape.md`에서 정의됩니다.
 
-### Round 3 — 화면비 + 텍스트 (1~2 질문)
+### Round 3 — 화면비 + 텍스트 (1-2 질문)
 
 | 화면비 옵션 | 용도 | 모델별 매핑 |
 |---|---|---|

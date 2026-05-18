@@ -12,7 +12,7 @@ description: >
   Next.js+shadcn/ui React 컴포넌트를 산출합니다.
   블로그 글, SNS 포스팅, 랜딩 페이지(단독 전환 목적)에는 이 스킬을 사용하지 마세요.
 user-invocable: true
-version: 2.10.0
+version: 2.11.0
 ---
 
 # 상세 페이지 (Product Detail)
@@ -68,7 +68,7 @@ Chart 선택 시 Q5 차트 라이브러리 선택 (Recharts/Chart.js/Tremor/ECha
 ### 1단계: 제품 분석 및 타겟 파악
 
 **제품 분석**
-- 카테고리별 업계 평균 전환율 확인 (뷰티 1.5~2.5%, 전자 0.8~1.5%)
+- 카테고리별 업계 평균 전환율 확인 (뷰티 1.5-2.5%, 전자 0.8-1.5%)
 - FAB(Feature-Advantage-Benefit) 변환표 작성
 - 경쟁 제품 대비 차별화 포인트 3가지 도출
 
@@ -100,10 +100,10 @@ Chart 선택 시 Q5 차트 라이브러리 선택 (Recharts/Chart.js/Tremor/ECha
 ### 3단계: 섹션별 카피 작성
 
 **AIDA 공식 적용**
-- Attention(0~3초): 숫자/형용사 + 핵심 benefit 헤더
-- Interest(3~15초): 고객 pain point 공감 + 해결책 제시
-- Desire(15~40초): 5감 시나리오 + 라이프스타일 연결
-- Action(40~60초): 긴급성 + 사회적 증명 + CTA
+- Attention(0-3초): 숫자/형용사 + 핵심 benefit 헤더
+- Interest(3-15초): 고객 pain point 공감 + 해결책 제시
+- Desire(15-40초): 5감 시나리오 + 라이프스타일 연결
+- Action(40-60초): 긴급성 + 사회적 증명 + CTA
 
 **FAB 공식 적용**
 - 모든 기능(Feature)을 이점(Advantage)으로 변환
@@ -128,8 +128,8 @@ Chart 선택 시 Q5 차트 라이브러리 선택 (Recharts/Chart.js/Tremor/ECha
 
 **폰트**
 - 본문: Pretendard 400 (16px/1.6)
-- 제목: Pretendard 700 (24~32px)
-- 가격: Pretendard 800 (28~36px, `--primary` 색상)
+- 제목: Pretendard 700 (24-32px)
+- 가격: Pretendard 800 (28-36px, `--primary` 색상)
 - 할인가: `line-through` + `text-muted-foreground`
 
 **레이아웃**

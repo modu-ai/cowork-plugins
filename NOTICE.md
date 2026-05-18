@@ -114,7 +114,7 @@ The following audit methodology and scoring system is referenced from `agricidan
 
 1. **Meta 50-check audit matrix** → SPEC-MOAI-ADS-AUDIT-MCP-001 audit tools
    - Pixel/CAPI Health (M01-M10): event_id, EMQ tiered targets, dedup rate ≥90%, AEM top 8 events
-   - Creative Diversity & Fatigue (M25-M32 + M-CR1~4): Andromeda Similarity <60%, frequency thresholds
+   - Creative Diversity & Fatigue (M25-M32 + M-CR1-4): Andromeda Similarity <60%, frequency thresholds
    - Account Structure (M11-M18 + M33-M40 + M-ST1-2): Learning Limited <30%, CBO/ABO decision
    - Audience & Targeting (M19-M24 + M-TH1): audience overlap <20%, Lookalike seed quality
    - Andromeda & Platform Changes (M-AN1, M-AT1, M-IA1, M-TH1): 2026 Meta platform updates

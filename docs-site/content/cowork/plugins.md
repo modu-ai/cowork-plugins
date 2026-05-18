@@ -17,7 +17,7 @@ geekdocBreadcrumb: true
 ## 설치 흐름
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["사이드바 > 사용자 지정<br/>> 개인 플러그인"] --> B["마켓플레이스 추가<br/>modu-ai/cowork-plugins"]
     B --> C["목록에서<br/>플러그인 선택"]
     C --> D["+ 버튼으로<br/>설치"]

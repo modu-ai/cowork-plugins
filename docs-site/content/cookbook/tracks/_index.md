@@ -36,42 +36,42 @@ flowchart TD
 
 | 트랙 | 대상 | 한 줄 요청 예시 | 주요 플러그인 |
 |---|---|---|---|
-| [📊 문서 트랙](track-documents/) | 기획·컨설팅·PM | "AI 영어 회화 앱 사업계획서 만들어줘" | moai-business · moai-office · moai-bi |
+| [문서 트랙](track-documents/) | 기획·컨설팅·PM | "AI 영어 회화 앱 사업계획서 만들어줘" | moai-business · moai-office · moai-bi |
 
 ### 콘텐츠 + 마케팅
 
 | 트랙 | 대상 | 한 줄 요청 예시 | 주요 플러그인 |
 |---|---|---|---|
-| [✍️ 콘텐츠 트랙](track-content/) 🆕 | 콘텐츠 크리에이터·블로거 | "비건 카페 오픈 블로그 시리즈 5편 써줘" | moai-content · moai-media · moai-marketing |
-| [📢 광고 트랙](track-advertising/) 🆕 | 퍼포먼스 마케터 | "신상품 메타 광고 3주차 보고서 분석해줘" | moai-marketing · moai-media · moai-ads-audit-mcp |
+| [콘텐츠 트랙](track-content/) | 콘텐츠 크리에이터·블로거 | "비건 카페 오픈 블로그 시리즈 5편 써줘" | moai-content · moai-media · moai-marketing |
+| [광고 트랙](track-advertising/) | 퍼포먼스 마케터 | "신상품 메타 광고 3주차 보고서 분석해줘" | moai-marketing · moai-media · moai-ads-audit-mcp |
 
 ### 이커머스
 
 | 트랙 | 대상 | 한 줄 요청 예시 | 주요 플러그인 |
 |---|---|---|---|
-| [🛒 이커머스 트랙](track-commerce/) 🆕 ⭐ | D2C 셀러·이커머스 운영자 | "신상품 상세페이지·광고 영상·시즌 캘린더 한 번에 만들어줘" | moai-commerce (35) · moai-media · moai-content |
+| [이커머스 트랙](track-commerce/) | D2C 셀러·이커머스 운영자 | "신상품 상세페이지·광고 영상·시즌 캘린더 한 번에 만들어줘" | moai-commerce (35) · moai-media · moai-content |
 
 ### 운영 + HR
 
 | 트랙 | 대상 | 한 줄 요청 예시 | 주요 플러그인 |
 |---|---|---|---|
-| [👥 HR·커리어 트랙](track-hr/) 🆕 | 인사 담당자 · 구직자 | "데이터분석가 채용공고 + JD 만들어줘" | moai-hr · moai-career |
-| [🔄 운영 트랙](track-operations/) 🆕 | 운영팀·PM·CS·B2B 영업 | "매주 금요일 우리 팀 주간보고 자동화해줘" | moai-operations · moai-pm · moai-support · moai-sales |
+| [HR·커리어 트랙](track-hr/) | 인사 담당자 · 구직자 | "데이터분석가 채용공고 + JD 만들어줘" | moai-hr · moai-career |
+| [운영 트랙](track-operations/) | 운영팀·PM·CS·B2B 영업 | "매주 금요일 우리 팀 주간보고 자동화해줘" | moai-operations · moai-pm · moai-support · moai-sales |
 
 ### 전문 영역
 
 | 트랙 | 대상 | 한 줄 요청 예시 | 주요 플러그인 |
 |---|---|---|---|
-| [⚖️ 법무 트랙](track-legal/) | 법무·컴플라이언스 | "NDA 12개 위험도 검토 한 페이지로 정리해줘" | moai-legal |
-| [💰 재무 트랙](track-finance/) | 재무·세무·회계 | "Q1 변동분석 + K-IFRS 보고서 만들어줘" | moai-finance · moai-bi |
-| [📈 데이터 트랙](track-data/) | 데이터 분석가 | "통계청 인구 데이터로 5년 트렌드 시각화" | moai-data · moai-bi |
-| [🚀 프로덕트 트랙](track-product/) | PM · UX 디자이너 | "결제 모듈 PRD 초안 + 사용자 인터뷰 가이드" | moai-product |
+| [법무 트랙](track-legal/) | 법무·컴플라이언스 | "NDA 12개 위험도 검토 한 페이지로 정리해줘" | moai-legal |
+| [재무 트랙](track-finance/) | 재무·세무·회계 | "Q1 변동분석 + K-IFRS 보고서 만들어줘" | moai-finance · moai-bi |
+| [데이터 트랙](track-data/) | 데이터 분석가 | "통계청 인구 데이터로 5년 트렌드 시각화" | moai-data · moai-bi |
+| [프로덕트 트랙](track-product/) | PM · UX 디자이너 | "결제 모듈 PRD 초안 + 사용자 인터뷰 가이드" | moai-product |
 
 ### 부록
 
 | 영역 | 대상 | 다루는 플러그인 |
 |---|---|---|
-| [📚 부록 트랙](track-appendix/) 🆕 | 연구자 · 교육자 · 일반 사용자 | moai-research · moai-education · moai-lifestyle |
+| [부록 트랙](track-appendix/) | 연구자 · 교육자 · 일반 사용자 | moai-research · moai-education · moai-lifestyle |
 
 ---
 

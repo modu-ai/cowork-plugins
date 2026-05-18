@@ -2,21 +2,21 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
-[![Version](https://img.shields.io/badge/Version-2.10.0-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-2.11.0-blue)](CHANGELOG.md)
 [![Plugins](https://img.shields.io/badge/Plugins-22-blue)](.claude-plugin/marketplace.json)
-[![Skills](https://img.shields.io/badge/Skills-155-green)](.claude-plugin/marketplace.json)
+[![Skills](https://img.shields.io/badge/Skills-143-green)](.claude-plugin/marketplace.json)
 [![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)
 [![shadcn/ui](https://img.shields.io/badge/UI-shadcn/ui-black)](https://ui.shadcn.com/)
 
-**Claude Cowork 한국어 도메인 전문가 AI 마켓플레이스 — 22 plugins · 155 skills · MIT**
+**Claude Cowork 한국어 도메인 전문가 AI 마켓플레이스 — 22 plugins · 143 skills · MIT**
 
-자연어 한 줄로 **사업계획서·계약서 검토·세금 계산·PPT·이미지/영상/음성·BI 보고서·HTML 리포트·이커머스 강의 캠프·쿠팡 광고 최적화·메타 광고 보고서 분석·한국 출판사 제출 원고**를 자동 생성합니다. 한국 B2B 환경(K-IFRS·국세청·근로기준법·식약처·국토부·KRX·인터넷등기소·KPIPA)에 특화된 22개 독립 플러그인과 155개 도메인 스킬이 업무를 대신하며, 모든 텍스트 산출물은 [`ai-slop-reviewer`](./moai-core/skills/ai-slop-reviewer/)가 AI 패턴을 검수하여 자연스럽게 다듬어 드립니다.
+자연어 한 줄로 **사업계획서·계약서 검토·세금 계산·PPT·이미지 프롬프트·음성 더빙·BI 보고서·HTML 리포트·쿠팡 광고 최적화·메타 광고 보고서 분석·한국 출판사 제출 원고**를 자동 생성합니다. 한국 B2B 환경(K-IFRS·국세청·근로기준법·식약처·국토부·KRX·인터넷등기소·KPIPA)에 특화된 22개 독립 플러그인과 143개 도메인 스킬이 업무를 대신하며, 모든 텍스트 산출물은 [`ai-slop-reviewer`](./moai-core/skills/ai-slop-reviewer/)가 AI 패턴을 검수하여 자연스럽게 다듬어 드립니다.
 
-> *Korean B2B specialty plugin marketplace for [Anthropic Claude Code (Cowork)](https://claude.ai/cowork) — 22 plugins · 155 skills. Korean fonts (Pretendard / Noto Serif KR / Chosunilbo Myungjo / KoPubWorld), Korean text humanizer (humanize-korean), AI-slop reviewer for every deliverable. K-IFRS, NTS, KRX, MFDS, MOLIT, IROS, KPIPA specialty skills. MIT licensed.*
+> *Korean B2B specialty plugin marketplace for [Anthropic Claude Code (Cowork)](https://claude.ai/cowork) — 22 plugins · 143 skills. Korean fonts (Pretendard / Noto Serif KR / Chosunilbo Myungjo / KoPubWorld), Korean text humanizer (humanize-korean), AI-slop reviewer for every deliverable. K-IFRS, NTS, KRX, MFDS, MOLIT, IROS, KPIPA specialty skills. MIT licensed.*
 
 **🚀 빠른 설치**: Claude Cowork → 사용자 지정 → 개인 플러그인 + → **마켓플레이스 추가** → URL `modu-ai/cowork-plugins` 입력 → 동기화 → `moai-core` 먼저 설치
 
-**🔗 바로가기**: [📚 한국어 문서](https://cowork.mo.ai.kr/) · [🎓 강의로 배우기](https://academy.mo.ai.kr/?utm_source=github&utm_medium=referral&utm_campaign=readme-quicklink) · [📦 카탈로그 ↓](#플러그인-카탈로그) · [❓ FAQ ↓](#자주-묻는-질문-faq) · [💬 Discussions](https://github.com/modu-ai/cowork-plugins/discussions) · [📜 Releases](https://github.com/modu-ai/cowork-plugins/releases) · [🐛 Issues](https://github.com/modu-ai/cowork-plugins/issues)
+**🔗 바로가기**: [📚 한국어 문서](https://cowork.mo.ai.kr/) · [📦 카탈로그 ↓](#플러그인-카탈로그) · [❓ FAQ ↓](#자주-묻는-질문-faq) · [💬 Discussions](https://github.com/modu-ai/cowork-plugins/discussions) · [📜 Releases](https://github.com/modu-ai/cowork-plugins/releases) · [🐛 Issues](https://github.com/modu-ai/cowork-plugins/issues)
 
 ---
 
@@ -28,30 +28,29 @@
 | ⚖️ **법률·재무** | `contract-review` · `tax-helper` · `financial-statements` · `iros-registry-automation` · `korean-stock-search` | 계약서 검토 · 세금 · K-IFRS 재무제표 · 등기부등본 일괄발급 · KRX 시세 |
 | ✍️ **콘텐츠** | `landing-page` · `humanize-korean` · `html-report` 🆕 v2.2.0 · `ai-slop-reviewer` · `korean-spell-check` | shadcn/ui 랜딩 · 한국어 AI 티 윤문 · 단일파일 HTML 보고서 · AI 슬롭 검수 · 바른한글 맞춤법 |
 | 📢 **마케팅·광고** | `meta-ads-analyzer` 🆕 v2.5.0 · `campaign-planner` · `landing-page-conversion-audit` · `pixel-audit` | 메타 광고 보고서 9모듈 분석 · 광고 심리학 캠페인 · 랜딩 진단 · 픽셀 검증 |
-| 🎨 **AI 미디어** | `nano-banana` · `image-gen` · `video-gen` · `audio-gen` · `speech-video` | Nano Banana Pro+2 이미지 · Flux/Kling/Hailuo/Luma 영상 · ElevenLabs 음성 · Higgsfield 토킹헤드 |
+| 🎨 **AI 미디어** | `gpt-image-2-prompt` · `gemini-3-image-prompt` · `midjourney-v8-prompt` · `audio-gen` | 3대 모델 공식 가이드 프롬프트 텍스트 빌더 + ElevenLabs 32개 언어 더빙·BGM·효과음 |
 | 📑 **문서·이커머스·BI** | `hwpx-writer` · `pdf-writer` · `detail-page-copy` · `executive-summary` · `weekly-report` | HWPX(한글) · 한·중·일·영 PDF · 13섹션 상세페이지 · 경영진 1pager · WBR 주간보고 |
 
 > 22개 플러그인 전체 카탈로그와 카테고리 비교는 [플러그인 카탈로그](#플러그인-카탈로그)와 [플러그인 상세 소개](#플러그인-상세-소개)를 참조하세요.
 
 ---
 
-## 🎓 강의로 배우기 — 모두의 AI 아카데미 1기 모집중
+**🆕 v2.11.0 하이라이트** (2026-05-18) — **"moai-media 정리(16→4) + 강의 컨텍스트 제거 + docs-site 일관성 정리"**
 
-> **"야근하지 말고, 이제 AI Agents 18명에게 위임하세요"** — 3일 동안 cowork-plugins를 직접 셋업하고, **AI 팀원 18명·8개 부서·19종 결과물**을 내 폴더에 영구 보유합니다. 강의가 끝나도 도구가 그대로 남는 강의.
+22 플러그인 유지, **155 → 143 스킬**, 동기화 지점 178 → **166**. Breaking change 없음.
 
-| 항목 | 내용 |
-|---|---|
-| 📅 **일정** | 2026.05.29~31 (금·토·일) · 매일 10:00~18:00 |
-| 📍 **장소** | 강남 패스트파이브 삼성4호점 B1 |
-| 👥 **정원** | 25명 (1일 전까지 100% 환불) |
-| 🎯 **대상** | 월매출 100만~10억 스마트스토어·자사몰 1~2인 팀 운영자 |
-| 📚 **커리큘럼** | Day 1 도구 셋업(Cowork + 21 플러그인 + 외부 5종) · Day 2 광고 영상·이미지 제작(GPT Image 2·Higgsfield·ElevenLabs) · Day 3 Cowork 통합 실습(시장조사·JTBD·페르소나·광고 데이터) |
+- **moai-media 16→4 축소** — 이미지·영상·음성 직접 호출 12 스킬 제거. 해당 영역은 **Higgsfield MCP + ElevenLabs MCP + fal-ai MCP**가 이미 직접 지원하므로 wrapper 정리. 유지 4: [`gpt-image-2-prompt`](./moai-media/skills/gpt-image-2-prompt/) · [`gemini-3-image-prompt`](./moai-media/skills/gemini-3-image-prompt/) · [`midjourney-v8-prompt`](./moai-media/skills/midjourney-v8-prompt/) (3대 모델 공식 가이드 기반 프롬프트 텍스트 빌더) + [`audio-gen`](./moai-media/skills/audio-gen/) (ElevenLabs 32개 언어 더빙·BGM·효과음)
+- **강의 컨텍스트 완전 제거** — "3일 마스터 캠프", "Day 1/2/3", "V6 6도구", "21세션" 등 특정 강의 컨텍스트가 SKILL.md·docs-site·README 전반에서 제거됨. 본 저장소는 도메인 스킬 마켓플레이스 정체성으로 환원
+- **moai-education 범용화** — "강사·교수·교사 교육 콘텐츠 풀스택"으로 재정의. 1일~16주 모든 강의 형식 지원
+- **moai-career 한국 채용 2026 재설계** — 팀핏 면접·핀셋 채용·AI 진정성·4 플랫폼 MAU·헤드헌터 5축·NCS·블라인드 반영
+- **moai-bi html-report 중심 재정의** — `executive-summary` 산출물을 단일 HTML 파일(카톡 즉시 확인 가능)로 통일. pdf/docx/pptx/hwpx는 옵션 변환
+- **docs-site 일관성 대대적 정리** — 물결 `~` 사고 정정(266+ 파일 1,000+), mermaid 가로→세로(67 파일 77 블록), GOAL+AskUserQuestion+스킬 체이닝 공통 골격 적용, 터미널 prompt shortcode 통일, 본문 진행 마커(`(v2.X+)`·`Day N`·`Wave N` 등) 일괄 제거
+- **삭제 페이지 4** — `cookbook/ai-employee-design` · `lab-1` · `lab-2` · `final-project` + 메뉴·링크 정리
 
-[**🎫 1기 신청하기 →**](https://mo-ai.notion.site/35e9a2a0bfc281c18aabd8f047aa89af?utm_source=github&utm_medium=referral&utm_campaign=readme-cta-apply) · [아카데미 자세히 보기](https://academy.mo.ai.kr/?utm_source=github&utm_medium=referral&utm_campaign=readme-academy)
+기존 워크플로우 그대로 동작합니다. moai-media의 12 스킬을 직접 호출하던 워크플로우만 외부 MCP 직접 사용으로 대체하면 됩니다 (v2.6.0부터 번들된 MCP).
 
----
-
-**🆕 v2.10.0 하이라이트** (2026-05-17) — **"moai-book — 한국 출판사 제출용 원고 집필 풀스택"**
+<details>
+<summary><b>📜 이전: v2.10.0 — moai-book 신규 플러그인 한국 출판 풀스택</b></summary>
 
 신규 플러그인 **moai-book** 도입. 도서 컨셉서부터 출판사 매칭·본문 집필·퇴고까지 8 단계 워크플로우를 단일 플러그인에 통합. 실용서·인문·기술·소설 4 장르 자동 분기. 한국 출판 컨텍스트(KPIPA·국립국어원·도서정가제·교보문고·알라딘 베스트셀러) + 30+ 출판사 라이브러리 + 자비 출판 5 플랫폼(부크크·텀블벅 등) 내장. **21 → 22 플러그인 · 147 → 155 스킬 · 동기화 지점 169 → 178**.
 
@@ -69,8 +68,10 @@
 - **풀스택 워크플로우** — `book-concept-planner → book-target-reader → book-outline-designer → book-author-bio → book-proposal-writer → book-publisher-matcher → book-chapter-writer → book-revision-coach → moai-content:korean-spell-check → moai-content:humanize-korean → moai-core:ai-slop-reviewer`
 - **루브릭 자가 평가** 8 스킬 모두 가중 평균 0.85 (통과 기준 0.70 ✅), ai-slop 검수 8개 모두 **APPROVE**
 
+</details>
+
 <details>
-<summary><b>📜 이전: v2.9.0 — Wave 5 moai-media 이미지 프롬프트 빌더 3종</b></summary>
+<summary><b>📜 이전: v2.9.0 — moai-media 이미지 프롬프트 빌더 3종</b></summary>
 
 moai-media 신규 3 스킬 추가 (OpenAI/Google/Midjourney 공식 가이드 기반). AskUserQuestion 프리셋·미세조정으로 컨텍스트를 수집해 3개 모델 프롬프트를 동시 출력. 144 → **147 스킬**, 동기화 지점 166 → **169**.
 
@@ -81,7 +82,7 @@ moai-media 신규 3 스킬 추가 (OpenAI/Google/Midjourney 공식 가이드 기
 
 - **공통 사양** — AskUserQuestion 라운드 ≤ 3, 4 프리셋(제품샷·인물·일러스트·풍경) × 4 슬롯, 3개 모델 동시 출력(자기 모델 메인 + 다른 2개 보조), 한국어 해설, 페어 스킬(image-gen·nano-banana·media-gpt-image2-builder) 안내
 - **책임 경계** — 본 스킬 3종은 **프롬프트 텍스트만 산출**. 실제 이미지 생성은 페어 스킬 또는 사용자가 ChatGPT/Google AI Studio/Discord에서 직접 실행
-- **루브릭 자가 평가** 0.805 ~ 0.815 (통과 기준 0.70 ✅), AI Slop 검수 3개 모두 **APPROVE**
+- **루브릭 자가 평가** 0.805 - 0.815 (통과 기준 0.70 ✅), AI Slop 검수 3개 모두 **APPROVE**
 
 <details>
 <summary><b>📜 이전: v2.8.0 — Wave 4 moai-commerce 35종 완결</b></summary>
@@ -98,7 +99,7 @@ moai-commerce Wave 4 신규 7 스킬 추가 (MED 5 + LOW 2). 한국 D2C 풀스�
   - `commerce-season-calendar` — 한국·글로벌 30+ 시즌 이벤트(설날·추석·블프·솽스이) + 카테고리별 매출 피크 + 분기 캠페인 계획
 
 - **moai-commerce 28 → 35 스킬** — Wave 1·3·4 누적 신규 13 + 기존 22
-- **(iii) 결정 완결** — Wave 1~4 모두 완료. vault-ecom.md §A-3 HIGH 5 + MED 5 + LOW 2 = 12 명세 모두 구현.
+- **(iii) 결정 완결** — Wave 1-4 모두 완료. vault-ecom.md §A-3 HIGH 5 + MED 5 + LOW 2 = 12 명세 모두 구현.
 
 </details>
 
@@ -163,7 +164,7 @@ vault 1,329 노트 + Higgsfield MCP audit + 정승우님 자료 어트리뷰션 
 - **moai-commerce 신규 3** — vault 1,329 노트 기반 한국 D2C·이커머스 풀스택
   - `commerce-marketing-compliance-kr` — 정통망법 광고·정보성 메시지 자동 게이트 (광고/정보성 판정·옵트인·야간·표기·수신거부·발신자 정보 6대 점검). 과태료 회피 ROI 명확 (1회 위반 최대 3,000만 원 + 1년 이하 징역). 한국 셀러 누구도 피할 수 없는 법규 영역.
   - `commerce-push-planner` — 앱 푸시 전용 4원칙(왜/언제/누구에게/어떻게) + Timely·Personal·Actionable 3요소 + 카피 변형 3안 + 한국 30+ 브랜드 레퍼런스(토스·배민·오늘의집·쿠팡·에이블리·지그재그·29CM·인프런·야놀자·퍼블리·넷플릭스·듀오링고 등).
-  - `commerce-ltv-cac-architect` — CAC→재구매율→구매주기→ARPU→공헌이익→LTV 6대 지표 연결 모델 + LTV/CAC ratio·Payback·광고 의존도 진단 + 광고비 30%→11~15% 6개월 전환 로드맵 + 한국 D2C 카테고리별 벤치마크.
+  - `commerce-ltv-cac-architect` — CAC→재구매율→구매주기→ARPU→공헌이익→LTV 6대 지표 연결 모델 + LTV/CAC ratio·Payback·광고 의존도 진단 + 광고비 30%→11-15% 6개월 전환 로드맵 + 한국 D2C 카테고리별 벤치마크.
 
 - **moai-media Higgsfield Quick Wins 6** — audit 보고서 §7 즉시 자동 수정
   - `character-mgmt` MCP 설정 uvx → higgsfield-mcp 직접 실행, 베타 무료 stale → 공식 사이트 안내
@@ -174,14 +175,14 @@ vault 1,329 노트 + Higgsfield MCP audit + 정승우님 자료 어트리뷰션 
 
 - 마켓플레이스 스킬 수: 130 → **134개** (+3 commerce 신규 + v2.5.x 누적). 동기화 지점 152 → **156개** (marketplace 1 + plugin.json 21 + SKILL.md 134) 모두 v2.6.0
 
-- **후속 예정** (Wave 2~4) — Wave 2 commerce 보강 3(channel-message·product-naming·market-research) + Higgsfield 안 C 정리(model-router·video-gen·fal-gateway). Wave 3 신규 2 + product-image-pipeline. Wave 4 commerce MED/LOW 7.
+- **후속 예정** (Wave 2-4) — Wave 2 commerce 보강 3(channel-message·product-naming·market-research) + Higgsfield 안 C 정리(model-router·video-gen·fal-gateway). Wave 3 신규 2 + product-image-pipeline. Wave 4 commerce MED/LOW 7.
 
 <details>
 <summary><b>📜 이전: v2.5.0 — "메타 광고 audit 3-Layer 인프라"</b></summary>
 
 [agricidaniel/claude-ads](https://github.com/AgriciDaniel/claude-ads) v1.5.1 (MIT, 4,815 stars) 50-check audit 방법론을 한국 시장 7 변화 영역에 맞춰 차용하여 **신규 1 스킬 + 신규 1 MCP 서버** 출시. 129 → 130 스킬.
 
-- **Layer 3 — moai-marketing 신규 1** — `meta-ads-analyzer` (.xlsx 보고서 1~6개 → 9 모듈 + 4D 교차 + 3 사용자 그룹 톤 + 4 출력 형식 + 강도별 액션 옵션 + claude-ads 50-check 매트릭스 한국 매핑). SKILL.md + references A~K 11개 부록 = 12파일 1,829줄.
+- **Layer 3 — moai-marketing 신규 1** — `meta-ads-analyzer` (.xlsx 보고서 1-6개 → 9 모듈 + 4D 교차 + 3 사용자 그룹 톤 + 4 출력 형식 + 강도별 액션 옵션 + claude-ads 50-check 매트릭스 한국 매핑). SKILL.md + references A-K 11개 부록 = 12파일 1,829줄.
 - **Layer 2 — `mcp-servers/moai-ads-audit/` 신규 자체 MCP 서버** — Python uvx 패키지(MIT, v0.1.0). 43 unique check matrix(Pixel/CAPI·Creative·Account·Audience·Andromeda) + 한국 벤치마크 8 카테고리 + 5 규제. 우선 도구 3종 구현. **50/50 pytest pass**.
 - **MCP 등록 인프라** — `moai-marketing/.mcp.json` 신규 + `moai-marketing/CONNECTORS.md` 신규
 - **인사이트 원전** — claude-ads v1.5.1 (MIT) 방법론 차용 + 한국 시장 7 변화 영역 1차 시민 변환
@@ -204,14 +205,14 @@ vault 1,329 노트 + Higgsfield MCP audit + 정승우님 자료 어트리뷰션 
 <details>
 <summary><b>📜 이전: v2.3.0 — "모두의 커머스 3일 마스터 캠프" 통합본</b></summary>
 
-월 매출 100만~10억 스마트스토어·자사몰 셀러가 외주 없이 3일 만에 신상품 1개의 상세페이지·광고·SNS·동영상을 직접 제작·운영하는 시스템을 구축하는 21세션·18개 산출물 데이터 체인 강의의 백엔드 도구입니다.
+월 매출 100만-10억 스마트스토어·자사몰 셀러가 외주 없이 3일 만에 신상품 1개의 상세페이지·광고·SNS·동영상을 직접 제작·운영하는 시스템을 구축하는 21세션·18개 산출물 데이터 체인 강의의 백엔드 도구입니다.
 
 - **Day2 V6 6도구** (moai-commerce) — V6(정승우님) 7교시 구조 1:1 매핑 wrapper 스킬
   - `commerce-market-research`(시장조사 4 MCP) · `commerce-jtbd-persona`(JTBD 9 + 페르소나 3) · `commerce-product-naming`(상품명 3안 + 검증) · `commerce-channel-message`(NCM 15종) · `commerce-integrated-strategy`(전략 1장) · `detail-page-copy` 강화(7단계 진단 + 페르소나 카피 2세트, 비율 25/50/25)
 - **Day3 신규 AI 모델 6스킬** (moai-media)
   - `media-moodboard`(색팔레트·톤·레퍼런스 자동) · `media-gpt-image2-builder`(자연어 → 8단계 프롬프트 자동 → GPT Image 2) · `media-model-router`(카테고리 매트릭스 자동 Kling/Veo/Seedance 라우팅 + 4명×5조 시차 호출) · `media-channel-ad-packager`(메타·네이버 GFA·카카오 채널 규격 자동 변환) · `media-ai-disclosure`(광고심의 "AI 생성" 메타데이터·워터마크) · `media-canva-magic-layer`(시즌 재사용 가이드)
 - **Day1 셋업 3스킬** — `moai-core:mcp-connector-setup`(Drive·Notion·Higgsfield·OpenAI 4커넥터 가이드+트러블슈팅) + `moai-commerce:commerce-morning-brief`·`commerce-order-summary`(매장 운영 데이터 1줄 통합)
-- **moai-education 활성화 2스킬** — `course-followup-sequence`(D+1~D+30 후기 자산화 시퀀스) + `course-curriculum-design`(3일 21세션 강의 운영 매뉴얼 자동 생성)
+- **moai-education 활성화 2스킬** — `course-followup-sequence`(D+1-D+30 후기 자산화 시퀀스) + `course-curriculum-design`(3일 21세션 강의 운영 매뉴얼 자동 생성)
 - **Track C 페어 정리** — `moai-content:social-media` → `moai-marketing:sns-content`로 흡수(글로벌 4채널 모드 추가: 스레드·X·링크드인·유튜브 쇼츠), `campaign-planner`의 "상세페이지·이미지 생성" 책임 분리(detail-page-copy + moai-media로 이관), 15개 페어 description에 [책임 경계] 명시
 - **MCP 의존성** — V6 6도구와 Day1 셋업 스킬은 MoAI-Commerce MCP Phase 1(34종 도구)을 호출. 미출시 시점에는 사전 녹화 영상 5분 또는 강사 본인 워크스페이스 라이브 호출로 대체 (PDF §S4 운영 노트)
 - **SPEC 작성** — `.moai/specs/` 하위 7개 SPEC, 총 **84 EARS REQ**: master + Track A(MCP) + Wave 1·2·3·4 + Track C
@@ -330,7 +331,7 @@ vault 1,329 노트 + Higgsfield MCP audit + 정승우님 자료 어트리뷰션 
 | [moai-hr](./moai-hr/) | 근로계약서, 4대보험, 채용, 성과평가, **이력서 스크리닝** | 5 |
 | [moai-content](./moai-content/) | 카드뉴스, 상세페이지, 랜딩페이지, 뉴스레터, 카피라이팅, 블로그, 소셜미디어, 바른한글 맞춤법, **한국어 AI 티 정밀 윤문**, **마크다운→HTML 렌더러(html-report)** 🆕 | 11 |
 | [moai-operations](./moai-operations/) | 결재, 조달, SOP, 벤더 관리, 상태 보고 | 3 |
-| [moai-education](./moai-education/) | 강의설계, 논문, 교육과정, 시험 출제, **3일 캠프 커리큘럼**, **D+1~D+30 후기 자산화** | 5 |
+| [moai-education](./moai-education/) | 강사·교수·교사 교육 콘텐츠 풀스택 — 강의설계, 평가 출제, 1일~16주 모든 강의 형식 커리큘럼, 일반 강의·연수·정규 강좌 후기 자산화 | 5 |
 | [moai-lifestyle](./moai-lifestyle/) | 여행, 건강, 웨딩/이벤트 | 3 |
 | [moai-product](./moai-product/) | PM 로드맵, UX 리서치, 스펙, **UX 디자이너** | 4 |
 | [moai-support](./moai-support/) | 티켓 분류, KB 문서, 에스컬레이션 | 4 |
@@ -338,8 +339,8 @@ vault 1,329 노트 + Higgsfield MCP audit + 정승우님 자료 어트리뷰션 
 | [moai-career](./moai-career/) | 커리어 준비 — 자기소개서, 이력서, 면접 코칭, 채용공고 분석 | 4 |
 | [moai-data](./moai-data/) | 데이터 분석 — CSV/Excel 탐색, 공공데이터, 시각화 | 3 |
 | [moai-research](./moai-research/) | 연구/특허 — 논문 검색, 특허 분석/출원, 연구비 신청 | 5 |
-| [moai-media](./moai-media/) | AI 미디어 스튜디오 — Nano Banana·image-gen·video-gen·audio-gen·speech-video + **무드보드·GPT Image 2 빌더·모델 라우터·채널 광고 패키지·AI 표기·캔바 매직 레이어** + ElevenLabs·fal.ai·Higgsfield | 13 |
-| [moai-commerce](./moai-commerce/) | 한국 이커머스 풀세트 — 상세페이지(카피·이미지·사진 브리프) + 채널 가이드 5종 + 통합 마케팅(전략·카피·라이브) + **V6 6도구**(시장조사·JTBD·상품명·NCM·전략·진단) + **쿠팡 광고 최적화·마진 계산·자동화 진단** + **식약처 안전(MFDS)** | 22 |
+| [moai-media](./moai-media/) | 이미지 프롬프트 텍스트 빌더(GPT-image-2·Gemini 3·Midjourney v8 공식 가이드) + ElevenLabs 32개 언어 음성. 실제 이미지·영상 생성은 외부 MCP(Higgsfield·fal-ai) 직접 사용 | 4 |
+| [moai-commerce](./moai-commerce/) | 한국 D2C 풀세트 — 상세페이지(카피·이미지·사진 브리프) + 채널 가이드 5종 + 통합 마케팅(전략·카피·라이브) + 쿠팡 광고 최적화·마진 계산·자동화 진단 + LTV/CAC·프로모션·재구매·리뷰·VOC·구독·인플루언서·얼리팬·트렌드·시즌 + 식약처 안전(MFDS) | 35 |
 | [moai-bi](./moai-bi/) | BI·경영진 1pager — `executive-summary` (KPI 대시보드 + 경영진 보고서) | 1 |
 | [moai-pm](./moai-pm/) | 프로젝트 관리·주간보고·OKR — `weekly-report` (회고·KPI 추적) | 1 |
 | [moai-sales](./moai-sales/) | B2B 영업·제안서·콜드메일 — `proposal-writer` (RFP 대응) | 1 |
@@ -348,14 +349,14 @@ vault 1,329 노트 + Higgsfield MCP audit + 정승우님 자료 어트리뷰션 
 
 | 항목 | 수량 | 비고 |
 |------|:----:|------|
-| 플러그인 | **21** | moai-core + 20 도메인 플러그인 |
-| 스킬 | **130** | 전 SKILL.md `version: 2.5.0` 동기화 (Cowork 자동 업데이트 지원) |
+| 플러그인 | **22** | moai-core + 21 도메인 플러그인 (moai-book 포함) |
+| 스킬 | **143** | 전 SKILL.md `version: 2.11.0` 동기화 (Cowork 자동 업데이트 지원) |
 | 레퍼런스 파일 | **210** | 각 스킬의 `references/` 안 상세 가이드 |
 | 스크립트 | **13** | helper(`scripts/`) — Python·Node·Shell |
 | 템플릿 | **1** | CLAUDE.md.tmpl 외 |
 | 에이전트 | **47** | `.claude/agents/` 서브에이전트 정의 |
 | MCP 서버 | **10** | 플러그인 번들: dart(business), korean-law(legal), post-bridge·typefully·wordpress(content), fal-ai·elevenlabs·higgsfield(media), **meta-ads·moai-ads-audit(marketing)** |
-| 도메인 | 21 | business/marketing/legal/finance/hr/content/operations/education/lifestyle/product/support/office/career/data/research/media/commerce/bi/pm/sales + core |
+| 도메인 | 22 | business/marketing/legal/finance/hr/content/operations/education/lifestyle/product/support/office/career/data/research/media/commerce/bi/pm/sales/book + core |
 
 ## 설치 방법
 
@@ -377,7 +378,7 @@ modu-ai/cowork-plugins
 
 ### Step 2: 플러그인 설치
 
-동기화가 완료되면 **21개 플러그인** 목록이 표시됩니다.
+동기화가 완료되면 **22개 플러그인** 목록이 표시됩니다.
 
 1. **개인** 탭 선택 → **cowork-plugins** 마켓플레이스 확인
 2. 원하는 플러그인 옆의 **+** 버튼으로 설치
@@ -481,7 +482,7 @@ DART MCP 서버로 기업 공시/재무제표를 실시간 조회합니다. `kr-
 | target-script | 타겟 스크립트 | 타겟 고객군별 영업·CS·프레젠테이션 맞춤 스크립트 |
 | landing-page-conversion-audit 🆕 v2.4 | 랜딩 진단 | 랜딩 6섹션 진단 — CTR/CVR 분기·불안해소 문구·메시지 일치 |
 | pixel-audit 🆕 v2.4 | 픽셀 검증 | 메타·구글 픽셀 검증 — CAPI·Lookalike 씨앗 품질 |
-| meta-ads-analyzer 🆕 v2.5 | 메타 광고 분석 | .xlsx 보고서 1~6개 → 9 모듈 + 4D 교차(광고×지면×연령×성별) + 3 그룹 톤 + 4 출력 형식(HTML/DOCX/PPTX/MD) + 🟢🟡🔴 강도별 액션 |
+| meta-ads-analyzer 🆕 v2.5 | 메타 광고 분석 | .xlsx 보고서 1-6개 → 9 모듈 + 4D 교차(광고×지면×연령×성별) + 3 그룹 톤 + 4 출력 형식(HTML/DOCX/PPTX/MD) + 🟢🟡🔴 강도별 액션 |
 
 MCP 서버 2종 번들: Meta 공식 hosted MCP + 자체 moai-ads-audit local stdio MCP. MCP 등록은 `moai-marketing/CONNECTORS.md` 참조.
 
@@ -534,7 +535,7 @@ korean-law MCP로 법령/판례를 실시간 검색합니다. `iros-registry-aut
 | product-detail | 상세페이지 | 전환율 극대화 상세페이지 — 네이버/쿠팡/카카오 규격 |
 | landing-page | 랜딩페이지 | 고전환율 랜딩 페이지 설계, CTA 최적화 |
 | copywriting | 카피라이팅 | 마케팅 카피, 헤드라인, 광고 문구, 비주얼 스토리텔링 |
-| newsletter | 뉴스레터 | 뉴스레터 기획~발행, 구독자 확보, 오픈율 최적화 |
+| newsletter | 뉴스레터 | 뉴스레터 기획-발행, 구독자 확보, 오픈율 최적화 |
 | media-production | 미디어 제작 | 유튜브 스크립트, Remotion 영상, 팟캐스트 기획 |
 | blog | 블로그 | SEO 블로그 글 작성, 시리즈 기획, 내부 링크 전략 |
 | social-media | 소셜미디어 | 멀티 채널 소셜 콘텐츠, 캘린더, 해시태그 전략 |
@@ -561,8 +562,8 @@ WordPress·Post-Bridge·Typefully MCP 커넥터로 직접 발행 가능합니다
 | curriculum-designer | 커리큘럼 설계 | 온라인/오프라인 강의 설계, 커리큘럼 개발 |
 | research-assistant | 리서치 보조 | 문헌 검토, 리서치 보고서, 데이터 수집/분석 |
 | assessment-creator | 평가 출제 | 시험 문제 출제, 자격증 대비, 평가 루브릭 |
-| course-curriculum-design 🆕 v2.3 | 캠프 커리큘럼 | 3일 21세션 강의 운영 매뉴얼 자동 생성 |
-| course-followup-sequence 🆕 v2.3 | 후기 자산화 | D+1~D+30 후기 자산화 시퀀스 — 리뷰·포토·영상 수집 자동화 |
+| course-curriculum-design | 커리큘럼 설계 | 1일~16주 모든 강의 형식 운영 매뉴얼 자동 생성 (표준 시간표·강사·조교 동선·사전 준비물·Plan B 시나리오) |
+| course-followup-sequence | 후기 자산화 | D+1-D+30 후기 자산화 시퀀스 — 일반 강의·연수·정규 강좌 후 리뷰·포토·영상 수집 자동화 |
 
 ---
 
@@ -645,28 +646,25 @@ Airtable/Google Sheets 커넥터로 데이터를 직접 분석합니다.
 | patent-analyzer | 특허 분석 | 특허 맵, 선행기술 조사, FTO 분석, 출원서 초안 |
 | grant-writer | 연구비 신청 | NRF/IITP/KIAT 연구비 신청서 작성 |
 
-### moai-media — AI 미디어 스튜디오
+### moai-media — 이미지 프롬프트 빌더 + 음성
 
 | 스킬 | 한글명 | 기능 |
 |------|--------|------|
-| nano-banana | 나노바나나 | Google Gemini Nano Banana Pro + 2 이미지 생성 (한국어 텍스트 SOTA) |
-| image-gen | 범용 이미지 | 모델 추상화 인터페이스 — Nano Banana / Flux / Recraft / Imagen 자동 선택 |
-| video-gen | 범용 영상 | Kling·Hailuo·Luma·Pika·Veo 통합 — 숏폼/롱폼·립싱크·립트랙·스타일 |
-| audio-gen | 음성/TTS | ElevenLabs·Suno·MiniMax Music — 32개 언어 더빙·BGM·효과음 |
-| speech-video | 토킹 헤드 | Higgsfield·Hedra·Sync — 정지 이미지 + 음성 → 입모양 동기화 영상 |
-| character-mgmt | 캐릭터 관리 | Higgsfield Character·LoRA — 일관된 캐릭터·아바타 시리즈 생성 |
-| fal-gateway | 팔게이트웨이 | Flux·Recraft·Hailuo·Luma·Pika·MiniMax Music 1000+ 모델 통합 (fal.ai) |
-| media-moodboard 🆕 v2.3 | 무드보드 | 색팔레트·톤·레퍼런스 자동 생성 |
-| media-gpt-image2-builder 🆕 v2.3 | GPT Image 2 빌더 | 자연어 → 8단계 프롬프트 자동 → GPT Image 2 |
-| media-model-router 🆕 v2.3 | 모델 라우터 | 카테고리 매트릭스 자동 Kling/Veo/Seedance 라우팅 + 시차 호출 |
-| media-channel-ad-packager 🆕 v2.3 | 채널 광고 패키지 | 메타·네이버 GFA·카카오 채널 규격 자동 변환 |
-| media-ai-disclosure 🆕 v2.3 | AI 표기 | 광고심의 "AI 생성" 메타데이터·워터마크 |
-| media-canva-magic-layer 🆕 v2.3 | 캔바 매직 레이어 | 시즌 재사용 가이드 — 캔바 템플릿 활용 |
+| gpt-image-2-prompt | GPT-image-2 프롬프트 | OpenAI Cookbook 6-Block(Subject·Action·Scene·Composition·Lighting·Style&Text) + 편집 시 Change/Preserve/Constraints 2열 + 다국어(한·일·중·힌·벵골) |
+| gemini-3-image-prompt | Gemini 3 프롬프트 | Google AI 5-component 영문 문장형 + 카메라 하드웨어 지정 + Reference image 14 슬롯 + Search Grounding + Thinking 모드 |
+| midjourney-v8-prompt | Midjourney v8 프롬프트 | 키워드+`--파라미터` 구조 + `--sref`/`--oref`/`--cw`/`--p` 3대 reference + 6대 비용 함정 자동 검사 |
+| audio-gen | 음성/TTS | ElevenLabs MCP — 32개 언어 더빙·BGM·효과음·음성복제 |
 
-**사용 API 키 3종**: `GEMINI_API_KEY`(Nano Banana), `FAL_KEY`(fal.ai), `ELEVENLABS_API_KEY`, `HIGGSFIELD_API_KEY`+`HIGGSFIELD_SECRET`(Higgsfield).
+**책임 경계**: moai-media 4 스킬은 **프롬프트 텍스트 산출 + 음성 생성** 전용입니다. 실제 이미지·영상 생성은 외부 채널을 통해 직접 실행합니다.
+
+- **이미지 생성** — ChatGPT(GPT-image-2) · Google AI Studio(Gemini 3 Pro Image) · Discord(Midjourney) 직접 사용
+- **영상 생성** — Higgsfield MCP(DOP·Soul) · fal-ai MCP(Kling·Veo·Hailuo·Luma·Pika)
+- **음성 생성** — `audio-gen`이 ElevenLabs MCP 호출
+
+**사용 API 키**: `ELEVENLABS_API_KEY`(audio-gen), `FAL_KEY`(fal-ai MCP 직접 사용 시), `HIGGSFIELD_API_KEY`+`HIGGSFIELD_SECRET`(Higgsfield MCP 직접 사용 시).
 **번들 MCP 3종**: `fal-ai`(hosted HTTP), `elevenlabs`(local stdio via `uvx`), `higgsfield`(local stdio).
 
-> **변경 이력**: v1.6.0부터 `ideogram`/`kling`/`elevenlabs` 독립 SKILL은 **MCP·모델 ID로 통합**되었습니다. 사용자 측 호출은 `audio-gen`/`video-gen`/`nano-banana` + `fal-gateway`로 라우팅됩니다.
+> **변경 이력**: v2.11.0부터 wrapper 스킬 12개(`nano-banana`·`image-gen`·`video-gen`·`speech-video`·`character-mgmt`·`fal-gateway`·`media-moodboard`·`media-gpt-image2-builder`·`media-model-router`·`media-channel-ad-packager`·`media-ai-disclosure`·`media-canva-magic-layer`)를 제거하고 외부 MCP 직접 사용으로 환원했습니다. MCP는 v2.6.0부터 번들되어 있어 사용자 측 추가 작업 없습니다.
 
 ---
 
@@ -745,8 +743,8 @@ K-IFRS·KOSIS·DART 친화적 한국 통계 환경에서 5분 안에 의사결�
 ## 기술 특징
 
 **Anthropic 공식 스킬 가이드 준수**
-- 모든 **130개** 스킬에 [What]+[When]+[Triggers] 구조의 description 적용
-- 모든 SKILL.md frontmatter에 `version: 2.5.0` 동기화 (Cowork 자동 업데이트 감지)
+- 모든 **143개** 스킬에 [What]+[When]+[Triggers] 구조의 description 적용
+- 모든 SKILL.md frontmatter에 `version: 2.11.0` 동기화 (Cowork 자동 업데이트 감지)
 - Negative triggers로 불필요한 스킬 로딩 방지
 - 인라인 폴백과 에러 핸들링 내장
 
@@ -841,14 +839,14 @@ K-IFRS·KOSIS·DART 친화적 한국 통계 환경에서 5분 안에 의사결�
 
 ### What is cowork-plugins?
 
-Anthropic Claude Code 한국어 사용자를 위한 도메인 전문가 플러그인 마켓플레이스입니다. 21개 플러그인과 130개 스킬로 구성되어 있으며 MIT 라이선스로 배포됩니다. 자연어 한 줄로 사업계획서·계약서 검토·세금 계산·PPT·이미지/영상/음성·BI 보고서·HTML 리포트를 자동 생성합니다.
+Anthropic Claude Code 한국어 사용자를 위한 도메인 전문가 플러그인 마켓플레이스입니다. 22개 플러그인과 143개 스킬로 구성되어 있으며 MIT 라이선스로 배포됩니다. 자연어 한 줄로 사업계획서·계약서 검토·세금 계산·PPT·이미지/영상/음성·BI 보고서·HTML 리포트를 자동 생성합니다.
 
-> *cowork-plugins is a third-party Korean B2B specialty plugin marketplace for Anthropic Claude Code, with 21 plugins and 130 skills under MIT license.*
+> *cowork-plugins is a third-party Korean B2B specialty plugin marketplace for Anthropic Claude Code, with 22 plugins and 143 skills under MIT license.*
 
 ### Anthropic의 [knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins)와 무엇이 다른가요?
 
 - **anthropics/knowledge-work-plugins**: Anthropic 공식 11개 영문 일반 지식 노동 플러그인 (Productivity·Sales·Customer Support·PM·Marketing·Legal·Finance·Data·Enterprise Search·Bio Research·Cowork Plugin Management).
-- **modu-ai/cowork-plugins** (이 저장소): 한국 B2B 환경에 특화된 21개 플러그인·130개 스킬. 한국 법규(K-IFRS·국세청 표준양식·근로기준법·식약처·국토부·KRX·인터넷등기소), 한국 비즈니스 문화(WBR 주간보고·OKR·KPT 회고·한국 B2B 제안서 12섹션), 한국어 산출 문서(HWPX·Pretendard·조선일보명조·KoPubWorld 등 한글 폰트) 지원.
+- **modu-ai/cowork-plugins** (이 저장소): 한국 B2B 환경에 특화된 22개 플러그인·143개 스킬. 한국 법규(K-IFRS·국세청 표준양식·근로기준법·식약처·국토부·KRX·인터넷등기소), 한국 비즈니스 문화(WBR 주간보고·OKR·KPT 회고·한국 B2B 제안서 12섹션), 한국어 산출 문서(HWPX·Pretendard·조선일보명조·KoPubWorld 등 한글 폰트) 지원.
 
 두 저장소는 **상호 보완 관계**입니다. 영문권 일반 워크플로우는 `knowledge-work-plugins`, 한국 B2B 도메인 워크플로우는 `cowork-plugins`를 함께 설치해 사용할 수 있습니다.
 

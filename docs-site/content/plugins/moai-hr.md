@@ -11,7 +11,7 @@ tags: ["moai-hr"]
 > 한국 노동법·4대보험을 반영한 5개 스킬을 제공합니다.
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["employment-manager<br/>JD·면접·온보딩"] --> B["draft-offer<br/>근로계약서"]
     C["performance-review<br/>성과평가·OKR"] --> D["people-operations<br/>원격근무 정책"]
     style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f

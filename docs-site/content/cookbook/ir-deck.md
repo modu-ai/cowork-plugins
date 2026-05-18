@@ -8,7 +8,7 @@ tags: [cookbook, business]
 > **목표** — 사업계획서 내용을 받아 투자자 앞에서 15분 안에 끝낼 수 있는 **15장 PPT 피칭 덱**을 만듭니다.
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["사업계획서<br/>입력"] --> B["investor-relations<br/>스토리라인 + 재무"]
     B --> C["pptx-designer<br/>15장 PPTX"]
     C --> D["ai-slop-reviewer<br/>발표용 문장 압축"]
@@ -53,7 +53,7 @@ investor-relations → pptx-designer → ai-slop-reviewer
 | 7 | 경쟁 | 2×2 포지셔닝 |
 | 8 | 성장 지표 | MRR·MoM·리텐션 |
 | 9 | Go-to-Market | 채널·캠페인 |
-| 10 | 로드맵 | 12~18개월 마일스톤 |
+| 10 | 로드맵 | 12-18개월 마일스톤 |
 | 11 | 팀 | 대표·핵심 인력 |
 | 12 | 재무 추정 | 3년 매출·손익 |
 | 13 | 이번 라운드 | 조달액·밸류·용도 |
@@ -93,7 +93,7 @@ investor-relations → pptx-designer → ai-slop-reviewer
 ### Turn 3 — 본 PPT 생성 (자동)
 
 ```mermaid
-flowchart LR
+flowchart TD
     SL["확정 스토리라인"] --> PP["pptx-designer<br/>15장 + 차트 자동"]
     PP --> NB["nano-banana<br/>커버 히어로 이미지"]
     NB --> SL2["ai-slop-reviewer<br/>슬라이드 압축<br/>(한 줄 12자, 불릿 3개)"]

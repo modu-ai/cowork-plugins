@@ -8,7 +8,7 @@ description: >
   Pillow 기반 자체 합성 스크립트(scripts/compose.py)로 1080×12720 세로 합성 PNG를 만듭니다.
   외부 패키지 설치 불필요 — 합성 로직은 cowork에 자체 구현되어 있습니다.
 user-invocable: true
-version: 2.10.0
+version: 2.11.0
 ---
 
 # 상세페이지 이미지 합성 (Detail Page Image Composer)
@@ -33,7 +33,7 @@ combined.png, 상폐 합성본, 이커머스 이미지 합성
 2. **moai-media 플러그인 활성화**: 13섹션 이미지 생성에 nano-banana 사용
    - 또는 사용자가 별도로 13장의 섹션 이미지를 준비해서 폴더 경로 제공
 
-3. **상품 사진 1~14장**: 실제 상품 레퍼런스 (옵션이지만 권장)
+3. **상품 사진 1-14장**: 실제 상품 레퍼런스 (옵션이지만 권장)
 
 ## 워크플로우
 
@@ -41,7 +41,7 @@ combined.png, 상폐 합성본, 이커머스 이미지 합성
 
 다음을 확보합니다:
 - 13섹션 카피 JSON (`detail-page-copy` 스킬 출력)
-- 상품 사진 1~14장 경로
+- 상품 사진 1-14장 경로
 - 카테고리 (electronics/fashion/food/beauty/home/supplement/pet/kids/handmade/general)
 - ProductDNA (선택, `product-photo-brief` 스킬 출력)
 - 출력 디렉토리 (기본: `./commerce-output/{job_id}/`)
@@ -70,11 +70,11 @@ combined.png, 상폐 합성본, 이커머스 이미지 합성
 
 생성 전략:
 - 각 섹션 너비: **1080px**
-- 섹션별 높이: `references/sections-spec.md` 표 참조 (Hero 1600 ~ Filter 700)
+- 섹션별 높이: `references/sections-spec.md` 표 참조 (Hero 1600-Filter 700)
 - 카테고리 비주얼 브리프(electronics/fashion/...) 모든 프롬프트에 주입
 - 상품 레퍼런스 사진을 nano-banana의 image-to-image 모드로 전달
 
-생성 결과를 `output_dir/{job_id}/sections/01_hero.png` ~ `13_cta.png`에 저장.
+생성 결과를 `output_dir/{job_id}/sections/01_hero.png` 부터 `13_cta.png` 까지 저장.
 
 생성 실패 시: 해당 섹션은 다크 플레이스홀더(40,40,40)로 채워 합성을 진행합니다.
 

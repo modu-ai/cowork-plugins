@@ -11,7 +11,7 @@ tags: ["moai-office"]
 > 한국 기업 문서 양식에 맞춘 5가지 포맷 생성기입니다. 발표자료, 공문, 매출표, 한글 기안서, 한·중·일·영 다국어 PDF까지 한 번에 처리합니다.
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["(도메인 스킬)<br/>사업계획·재무·보고"] --> B["docx-generator<br/>Word"]
     A --> C["pptx-designer<br/>PowerPoint"]
     A --> D["xlsx-creator<br/>Excel"]

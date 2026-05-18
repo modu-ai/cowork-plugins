@@ -25,10 +25,10 @@ python3 ../../scripts/download_fonts.py --force
 
 | 파일 | 굵기 | 크기 | 용도 |
 |------|------|------|------|
-| `NotoSansCJK-Light.otf` | 300 | ~16MB | 본문 보조, 캡션 |
-| `NotoSansCJK-Regular.otf` | 400 | ~16MB | 본문 기본 |
-| `NotoSansCJK-Medium.otf` | 500 | ~16MB | 강조, 부제목 |
-| `NotoSansCJK-Bold.otf` | 700 | ~16MB | 제목, 강조 |
+| `NotoSansCJK-Light.otf` | 300 | 약 16MB | 본문 보조, 캡션 |
+| `NotoSansCJK-Regular.otf` | 400 | 약 16MB | 본문 기본 |
+| `NotoSansCJK-Medium.otf` | 500 | 약 16MB | 강조, 부제목 |
+| `NotoSansCJK-Bold.otf` | 700 | 약 16MB | 제목, 강조 |
 | `LICENSE.txt` | — | 4.2KB | SIL Open Font License 1.1 (저장소 포함) |
 
 다운로드 후 총 용량: 약 **64MB**

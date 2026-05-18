@@ -19,7 +19,7 @@ Cowork는 **사용자가 명시적으로 선택한 폴더만** 읽고 씁니다.
 ## 4개 층 권한 모델
 
 ```mermaid
-flowchart LR
+flowchart TD
     subgraph L1["① OS 권한<br/>(macOS · Windows)"]
         OS[/"개인정보 보호 → 파일 및 폴더<br/>또는 폴더 ACL"/]
     end
@@ -117,7 +117,7 @@ flowchart LR
 
 해결:
 - 작업 폴더를 짧은 경로(`C:\w\<name>\`)로 옮깁니다
-- 파일명을 한국어 1~2 단어로 줄입니다
+- 파일명을 한국어 1-2 단어로 줄입니다
 - 그래도 막히면 그룹 정책에서 `LongPathsEnabled = 1` (관리자 권한, 일부 앱 미지원)
 
 ## 프로젝트별 폴더 — 한 프로젝트에서 여러 위치를 다루고 싶을 때

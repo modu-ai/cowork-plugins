@@ -7,7 +7,7 @@ geekdocBreadcrumb: true
 MoAI Cowork Plugins은 지속적인 개발을 통해 새로운 기능을 추가하고 기존 기능을 개선합니다. 이 페이지에서는 버전 관리 정책과 릴리스 노트에 대한 정보를 제공합니다.
 
 ```mermaid
-flowchart LR
+flowchart TD
     V10["v1.0<br/>초기 릴리스"] --> V12["v1.2<br/>미디어·MCP"]
     V12 --> V13["v1.3<br/>AI 슬롭·체이닝"]
     V13 --> V15["v1.5<br/>상권분석·문서"]
@@ -15,17 +15,18 @@ flowchart LR
     V16 --> V20["v2.0<br/>B2B 6스킬"]
     V20 --> V21["v2.1<br/>humanize-korean"]
     V21 --> V22["v2.2<br/>html-report"]
-    V22 --> V23["v2.3<br/>커머스 캠프"]
-    V23 --> V24["v2.4<br/>캠프 후속 통합"]
+    V22 --> V23["v2.3<br/>커머스 통합"]
+    V23 --> V24["v2.4<br/>인사이트 통합"]
     V24 --> V25["v2.5<br/>메타 광고 audit"]
-    V25 --> V26["v2.6<br/>vault grounding·Wave 1+2"]
-    V26 --> V27["v2.7<br/>Wave 3 신규 3"]
-    V27 --> V28["v2.8<br/>Wave 4 D2C 완결"]
-    V28 --> V29["v2.9<br/>Wave 5 프롬프트 빌더 3"]
+    V25 --> V26["v2.6<br/>vault grounding"]
+    V26 --> V27["v2.7<br/>프로모션·재구매"]
+    V27 --> V28["v2.8<br/>D2C 35종 완결"]
+    V28 --> V29["v2.9<br/>프롬프트 빌더 3"]
     V29 --> V210["v2.10<br/>moai-book 신규"]
+    V210 --> V211["v2.11<br/>media 정리·재정의"]
 
     style V10 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style V210 fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+    style V211 fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
 ```
 
 ## 버전 관리 정책
@@ -58,9 +59,10 @@ flowchart LR
 
 각 버전의 상세 변경 사항은 다음 페이지에서 확인할 수 있습니다:
 
-- [v2.10.x (최신)](v2.10/) - **신규 플러그인 `moai-book`** — 한국 출판사 제출용 원고 풀스택 8 스킬(컨셉서·페르소나·목차·저자 약력·제안서·출판사 매칭·본문·퇴고). 실용서·인문·기술·소설 4 장르 자동 분기. KPIPA·국립국어원·도서정가제·30+ 한국 출판사 + 자비 출판 5 플랫폼. **21 → 22 플러그인 · 147 → 155 스킬 · 동기화 지점 178**
+- [v2.11.x (최신)](v2.11/) - **moai-media 정리(16→4) · 강의 컨텍스트 제거 · docs-site 일관성 정리** — 이미지·영상·음성 wrapper 12개 제거(Higgsfield·ElevenLabs·fal-ai MCP 직접 사용으로 환원). moai-education/career/bi 재정의. **22 플러그인 유지 · 155 → 143 스킬 · 동기화 지점 178 → 166**. Breaking change 없음
+- [v2.10.x](v2.10/) - **신규 플러그인 `moai-book`** — 한국 출판사 제출용 원고 풀스택 8 스킬(컨셉서·페르소나·목차·저자 약력·제안서·출판사 매칭·본문·퇴고). 실용서·인문·기술·소설 4 장르 자동 분기. KPIPA·국립국어원·도서정가제·30+ 한국 출판사 + 자비 출판 5 플랫폼. **21 → 22 플러그인 · 147 → 155 스킬 · 동기화 지점 178**
 - [v2.9.x](v2.9/) - **"Wave 5 — moai-media 이미지 프롬프트 빌더 3종"** — GPT-image-2(OpenAI 6-Block)·Gemini 3 Pro Image(Google 5-component)·Midjourney v8.1(키워드+`--파라미터`) 공식 가이드 그대로 적용. AskUserQuestion 프리셋 + 3개 모델 동시 변환. 144 → 147 스킬
-- [v2.8.x](v2.8/) - **"Wave 4 — moai-commerce 한국 D2C 풀스택 완결"** — moai-commerce 신규 7(리뷰·VOC·구독·인플루언서·얼리팬·트렌드·시즌). 137 → 144 스킬, Wave 1~4 누적 (iii) 결정 완결
+- [v2.8.x](v2.8/) - **"Wave 4 — moai-commerce 한국 D2C 풀스택 완결"** — moai-commerce 신규 7(리뷰·VOC·구독·인플루언서·얼리팬·트렌드·시즌). 137 → 144 스킬, Wave 1-4 누적 (iii) 결정 완결
 - [v2.7.x](v2.7/) - **"Wave 3 — 프로모션·재구매·이미지 파이프라인"** — moai-commerce 신규 3. 134 → 137 스킬
 - [v2.6.x](v2.6/) - **"Wave 1 vault grounding + Wave 2 보강"** — moai-commerce 신규 3(LTV/CAC·push·compliance-kr) + Higgsfield Quick Wins 6 + 안 C 정리 3 + Wave 2 보강 3(AARRR·6질문·시장 세분화). 130 → 134 스킬
 - [v2.5.x](v2.5/) - **"메타 광고 audit 3-Layer 인프라"** — moai-marketing 신규 1(meta-ads-analyzer) + 자체 MCP 서버 moai-ads-audit + agricidaniel/claude-ads 방법론 한국화. 129 → 130 스킬
@@ -88,6 +90,7 @@ MoAI Cowork Plugins의 업그레이드는 일반적으로 안전하게 진행할
 
 ### 호환성 정보
 
+- **v2.11.x**: 이전 버전과 완전 호환 — Breaking change 없음 (moai-media 16→4 정리, 외부 MCP 직접 사용으로 환원. 강의 컨텍스트 제거, 도메인 스킬 마켓플레이스 정체성 환원)
 - **v2.10.x**: 이전 버전과 완전 호환 — Breaking change 없음 (신규 플러그인 moai-book 8 스킬 추가, 별도 활성화 필요)
 - **v2.9.x**: 이전 버전과 완전 호환 — Breaking change 없음 (moai-media 프롬프트 빌더 3 스킬 추가)
 - **v2.8.x**: 이전 버전과 완전 호환 — Breaking change 없음 (moai-commerce 신규 7 스킬, Wave 4)

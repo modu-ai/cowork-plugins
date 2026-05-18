@@ -6,12 +6,59 @@
 
 ## 버전 통일 원칙 (HARD)
 
-아래 178개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.0.0부터 SKILL.md frontmatter `version:` 복구):
+아래 166개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.0.0부터 SKILL.md frontmatter `version:` 복구):
 - `.claude-plugin/marketplace.json` (`metadata.version`) × 1
 - `<plugin>/.claude-plugin/plugin.json` (`version`) × 22
-- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 155 (v2.10.0+)
+- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 143 (v2.11.0+)
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
+
+## [2.11.0] - 2026-05-18
+
+MINOR. **moai-media 16→4 축소(이미지·영상·음성 직접 호출은 외부 MCP에 위임) + 강의 컨텍스트 전면 제거 + docs-site 일관성 대대적 정리 + moai-education/career/bi 재정의**. 22 플러그인 유지, **155 → 143 스킬**, 동기화 지점 178 → **166**. Breaking change 없음 (기존 워크플로우 그대로 동작).
+
+### Removed (moai-media 12 스킬 정리)
+
+이미지·영상·음성 직접 호출 스킬 12개를 제거. 해당 영역은 **Higgsfield MCP + ElevenLabs MCP + fal-ai MCP**가 직접 지원하므로 wrapper 스킬을 정리해 책임 경계를 명확히 함.
+
+- 제거된 스킬: `nano-banana`, `image-gen`, `video-gen`, `speech-video`, `character-mgmt`, `fal-gateway`, `media-moodboard`, `media-gpt-image2-builder`, `media-model-router`, `media-channel-ad-packager`, `media-ai-disclosure`, `media-canva-magic-layer`
+- 유지: `gpt-image-2-prompt`, `gemini-3-image-prompt`, `midjourney-v8-prompt` (프롬프트 텍스트 빌더 3종) + `audio-gen` (ElevenLabs MCP 래퍼 1종)
+- moai-media 정체성 재정의: **이미지 프롬프트 텍스트 빌더 + ElevenLabs 음성**. 실제 이미지·영상 생성은 사용자가 ChatGPT / Google AI Studio / Discord / Higgsfield MCP를 직접 사용
+
+### Removed (강의 컨텍스트 전면 제거)
+
+- "모두의 커머스 3일 마스터 캠프", "Day 1/2/3", "V6 6도구", "21세션·18개 산출물" 등 특정 강의 컨텍스트가 SKILL.md·docs-site·README·CHANGELOG·academy handoff 전반에서 제거됨
+- 강의로 함께 배우는 옵션은 외부 사이트(`academy.mo.ai.kr`)로만 안내 — 본 저장소는 도메인 스킬 마켓플레이스 정체성으로 환원
+- 영향: README의 "🎓 강의로 배우기 — 모두의 AI 아카데미" 섹션 삭제, docs-site `_index.md`의 academy 카드 삭제, moai-commerce·moai-media·moai-education 페이지 모두 범용 플러그인으로 재정의
+
+### Changed (3 플러그인 정체성 재정의)
+
+- **moai-education** — "강사·교수·교사 교육 콘텐츠 풀스택"으로 재정의. `course-curriculum-design`은 1일~16주 모든 강의 형식 지원, `course-followup-sequence`는 일반 강의·연수·정규 강좌 후 후기 자산화로 일반화
+- **moai-career** — 한국 취준생·재직자 2026 채용 트렌드 반영(팀핏 면접·핀셋 채용·AI 진정성·4 플랫폼 MAU·헤드헌터 5축·NCS·블라인드). vault 인사이트만 참고(PUBLY 원문 0건 그대로)
+- **moai-bi** — `executive-summary`의 산출물을 `html-report` 중심으로 재정의. 단일 HTML 파일에 이미지·CSS·JS 모두 인라인(카톡 즉시 확인 가능) + pdf/docx/pptx/hwpx 변환은 옵션
+
+### Fixed (docs-site 일관성 대대적 정리)
+
+- 물결 `~` strikethrough 사고 정정 — 266+ 파일 1,000+ 변환
+- mermaid 가로(LR) → 세로(TD) 변환 — 67 파일 77 블록 모바일 가독성 개선
+- GOAL + AskUserQuestion + 스킬 체이닝 공통 골격 적용 — `cookbook/tracks/` 전체 일괄
+- 터미널 prompt shortcode 통일 (`{{< terminal >}}`) — 첫 행만 `>`, 이어지는 줄 들여쓰기
+- 본문 진행 마커 제거 — `(v2.X+)` `Day N` `Wave N` `21세션` `V6` `# 스킬 호출` 코드 주석 등 누적 마커 일괄 정리
+- 삭제 페이지 4종 — `cookbook/ai-employee-design` · `lab-1` · `lab-2` · `final-project` + 메뉴·링크 정리
+
+### Migration
+
+- **Breaking change 없음** — 기존 워크플로우 그대로 동작
+- moai-media 12 스킬 제거 — 해당 영역은 **Higgsfield MCP·ElevenLabs MCP·fal-ai MCP**를 직접 사용. 외부 MCP는 v2.6.0부터 번들되어 있어 사용자 측 추가 작업 없음
+- 강의 진행 마커는 본문에서 제거됐지만 `releases/v2.3.md` 등 과거 릴리스 노트는 history로 보존
+
+### 동기화 지점 (166)
+
+| 범주 | 경로 | 개수 |
+|---|---|---|
+| 마켓플레이스 | `.claude-plugin/marketplace.json` | 1 |
+| 플러그인 매니페스트 | `<plugin>/.claude-plugin/plugin.json` | 22 |
+| 스킬 frontmatter | `<plugin>/skills/<skill>/SKILL.md` | 143 (moai-media 16→4 = -12) |
 
 ## [2.10.0] - 2026-05-17
 
@@ -25,9 +72,9 @@ MINOR. **신규 플러그인 moai-book 도입 — 한국 출판사 제출용 원
 
 - `moai-book:book-outline-designer` — 목차 설계. 부·장·꼭지 3 레벨 트리 + 분량 배분(200자 원고지) + 5요소 챕터 시놉시스(도입·약속·본문요약·사례·연결) + 페르소나 여정 4단계 검증(1부 끝·중반·마지막 부) + 분량 폭주·부족 검출 + 4 장르 분기. 352 lines.
 
-- `moai-book:book-author-bio` — 저자 약력. 3 신뢰 신호(권위·공감·변화) + 3 길이 약력(50자·200자·500자) + 저자의 말 4단 구조(도입·공감·약속·초대 500~800자) + 신뢰 신호 매트릭스 5 영역 + SNS 채널별(인스타·브런치·링크드인·유튜브·X·카카오) + 페르소나 시뮬레이션. 387 lines.
+- `moai-book:book-author-bio` — 저자 약력. 3 신뢰 신호(권위·공감·변화) + 3 길이 약력(50자·200자·500자) + 저자의 말 4단 구조(도입·공감·약속·초대 500-800자) + 신뢰 신호 매트릭스 5 영역 + SNS 채널별(인스타·브런치·링크드인·유튜브·X·카카오) + 페르소나 시뮬레이션. 387 lines.
 
-- `moai-book:book-proposal-writer` — 출판사 투고 제안서. 출판기획서 5섹션 + 샘플 챕터 + 마케팅 플랜 5 카테고리(SNS·강연·언론·북클럽·이벤트) 3 패키지 = A4 12~20장. 출간 전·직후·후 3 단계 마케팅 타임라인(D-90·D+30·D+90) + 거절 신호 사전 검출(USP 약함·타깃 모호·분량 불균형 등) + 4 장르 × 10 출판사 양식 가이드. 501 lines.
+- `moai-book:book-proposal-writer` — 출판사 투고 제안서. 출판기획서 5섹션 + 샘플 챕터 + 마케팅 플랜 5 카테고리(SNS·강연·언론·북클럽·이벤트) 3 패키지 = A4 12-20장. 출간 전·직후·후 3 단계 마케팅 타임라인(D-90·D+30·D+90) + 거절 신호 사전 검출(USP 약함·타깃 모호·분량 불균형 등) + 4 장르 × 10 출판사 양식 가이드. 501 lines.
 
 - `moai-book:book-publisher-matcher` — 한국 출판사 매칭. 4 차원 평가(장르 적합도 40% · 규모 25% · 계약 조건 20% · 투고 채널 15%) + Top 5 우선순위 추천 + 거절 후 차순위 시나리오(D-0·D+14·D+45·D+90) + 30+ 한국 출판사 라이브러리(IT·실용·인문·문학·아동 + 자비 출판 5 플랫폼) + 협상 포인트 7 체크리스트(인세·선인세·계약기간·전자책·해외판권 등). 446 lines.
 
@@ -68,7 +115,7 @@ book-concept-planner (컨셉서)
 - frontmatter v2.0.0 정책 준수 (metadata 블록 0건, version 단일 필드)
 - vault 외부 참고 자료 원문 비유·표현 직접 인용 0건 (자체 재구성)
 - 4 장르 자동 분기 검증 (실용·인문·기술·소설)
-- tests/test-cases.yaml: 스킬당 6~9 케이스, 총 60+ test cases
+- tests/test-cases.yaml: 스킬당 6-9 케이스, 총 60+ test cases
 
 ### 동기화 지점 (178)
 
@@ -96,8 +143,8 @@ MINOR. **Wave 5 — moai-media 이미지 프롬프트 빌더 3종 신설** — G
 - 출력: 3개 모델 프롬프트 코드블록 + 권장 파라미터 + 한국어 해설 + 페어 스킬 안내
 - 책임 경계: **프롬프트 텍스트 산출 전용** (실제 이미지 생성은 페어 스킬 호출)
 - 4 프리셋 (제품샷·인물·일러스트·풍경) × 4 슬롯 공유 — 모델별 어조 변환만 다름
-- references 4개 + presets 4개 + tests/test-cases.yaml 5~6 케이스 + 회귀 베이스라인
-- 루브릭 자가 평가: 0.805 ~ 0.815 (통과 기준 0.70 ✅)
+- references 4개 + presets 4개 + tests/test-cases.yaml 5-6 케이스 + 회귀 베이스라인
+- 루브릭 자가 평가: 0.805 - 0.815 (통과 기준 0.70 ✅)
 
 ### 트리거 키워드 (책임 경계)
 
@@ -130,17 +177,17 @@ MINOR. **Wave 5 — moai-media 이미지 프롬프트 빌더 3종 신설** — G
 
 ## [2.8.0] - 2026-05-16
 
-MINOR. **Wave 4 — moai-commerce 한국 D2C 풀스택 완결** — moai-commerce 신규 7 스킬 (MED 5 + LOW 2). 137 → **144 스킬**, 동기화 지점 159 → **166**. (iii) Wave 1~4 결정 완결.
+MINOR. **Wave 4 — moai-commerce 한국 D2C 풀스택 완결** — moai-commerce 신규 7 스킬 (MED 5 + LOW 2). 137 → **144 스킬**, 동기화 지점 159 → **166**. (iii) Wave 1-4 결정 완결.
 
 ### Added (신규 7 스킬, moai-commerce)
 
 - `moai-commerce:commerce-review-aggregator` — 멀티채널 리뷰 통합 분석. 네이버 스마트스토어·쿠팡·자사몰·YouTube·인스타그램 5채널 → 감정·키워드·인사이트·액션플랜 4단 분석. 채널별 수집 가이드(API·CSV·Graph API). 미리캔버스 PPT 자동화. vault-ecom.md §A-3 MED-1.
 
-- `moai-commerce:commerce-voc-triage` — VOC 우선순위 판별. 3축 분류(고객 핏 ×1~3 / 빈도 ×1~3 / 핵심 가치 관련성 ×1~3) + 우선순위 점수(3축 곱) + KTAS 응급실 5단계 매핑(Level 1 즉시 <1시간 / Level 5 비응급 <1주). 등급별 응답 톤·내용 가이드. vault-ecom.md §A-3 MED-2.
+- `moai-commerce:commerce-voc-triage` — VOC 우선순위 판별. 3축 분류(고객 핏 ×1-3 / 빈도 ×1-3 / 핵심 가치 관련성 ×1-3) + 우선순위 점수(3축 곱) + KTAS 응급실 5단계 매핑(Level 1 즉시 <1시간 / Level 5 비응급 <1주). 등급별 응답 톤·내용 가이드. vault-ecom.md §A-3 MED-2.
 
 - `moai-commerce:commerce-subscription-strategist` — 구독 비즈니스 모델 설계. 5가지 질문 자기진단(소비 빈도·가격 예측·락인 가치·이탈 방지·시장 검증) + 4 구독 모델 분류(소비재 오이식스 / 경험 VIPS / 관계 쿠팡 로켓와우 / 맞춤 필리) + 한국 시장 적합성 4단계 진단 + 락인 vs 이탈 방지 메시지 매트릭스 6단계. vault-ecom.md §A-3 MED-3.
 
-- `moai-commerce:commerce-influencer-collab` — 인플루언서·UGC 협업 가이드. 5 티어(메가 100만+ / 매크로 10~100만 / 마이크로 1~10만 / 나노 1천~1만 / 메가나노 ~1천) × 협업 비용·전환율 매트릭스 + 뒷광고 회피 체크리스트 6항목(표시광고법 + 공정위 가이드, 과태료 5,000만원 회피) + UGC 리그램 가이드 + 5축 굿즈 기획(시즌 한정·얼리버드·VIP·인증샷·콜라보). vault-ecom.md §A-3 MED-4.
+- `moai-commerce:commerce-influencer-collab` — 인플루언서·UGC 협업 가이드. 5 티어(메가 100만+ / 매크로 10-100만 / 마이크로 1-10만 / 나노 1천-1만 / 메가나노 1천 이하) × 협업 비용·전환율 매트릭스 + 뒷광고 회피 체크리스트 6항목(표시광고법 + 공정위 가이드, 과태료 5,000만원 회피) + UGC 리그램 가이드 + 5축 굿즈 기획(시즌 한정·얼리버드·VIP·인증샷·콜라보). vault-ecom.md §A-3 MED-4.
 
 - `moai-commerce:commerce-early-fan-builder` — 신생 브랜드 충성 100명 부트스트랩. 5원칙(광고 0원·1:1 손편지·UGC 100%·비공개 채널·추천 시스템) + 30일 로드맵(시드 50명 → 100명 → 락인 → 추천) + 100명→1만명 전환 시나리오 + 핵심 지표(재구매율 80%+·평균 10명 추천·LTV/CAC ratio 3+). 블랭크·강아지 가방 케이스. vault-ecom.md §A-3 MED-5.
 
@@ -161,7 +208,7 @@ MINOR. **Wave 4 — moai-commerce 한국 D2C 풀스택 완결** — moai-commerc
 - moai-commerce 사용자: Wave 4 신규 7 스킬 자동 사용. 별도 설정 없음
 - `commerce-review-aggregator` 채널별 API 키 필요 (네이버 커머스·쿠팡 윙·카페24·YouTube·Instagram Graph)
 
-### Wave 1~4 누적 결과 ((iii) 결정 완결)
+### Wave 1-4 누적 결과 ((iii) 결정 완결)
 
 - 마켓플레이스 130 → **144 스킬** (+14, 누적 14주 작업)
 - moai-commerce 22 → **35 스킬** (+13)
@@ -182,11 +229,11 @@ MINOR. **Wave 3 — 프로모션·재구매·이미지 파이프라인** — moa
 
 ### Added (신규 3 스킬, moai-commerce)
 
-- `moai-commerce:commerce-promotion-planner` — 3대 프로모션 기획법(이슈화·얼리버드·한정) 전담. 브랜드 단계(신생/스몰/중대형) × 목표(인지도/충성고객/즉각매출) 매트릭스 + 명목·스토리·혜택 3종 세트(HARD) + 벤치마킹 케이스 3개(명목·스토리·혜택 각 1개) + 실무 체크리스트 6항목 + 노션 템플릿 페이지 구조(1~8 섹션) 자동 생성. 비플레인 '듣보잡' 스몰 D2C 12배 매출 케이스 실전 매뉴얼. vault-ecom.md §A-3 HIGH-4 명세 구현. 페어 분리: integrated-strategy=전체 매출 전략, 본 스킬=단일 프로모션 기획서.
+- `moai-commerce:commerce-promotion-planner` — 3대 프로모션 기획법(이슈화·얼리버드·한정) 전담. 브랜드 단계(신생/스몰/중대형) × 목표(인지도/충성고객/즉각매출) 매트릭스 + 명목·스토리·혜택 3종 세트(HARD) + 벤치마킹 케이스 3개(명목·스토리·혜택 각 1개) + 실무 체크리스트 6항목 + 노션 템플릿 페이지 구조(1-8 섹션) 자동 생성. 비플레인 '듣보잡' 스몰 D2C 12배 매출 케이스 실전 매뉴얼. vault-ecom.md §A-3 HIGH-4 명세 구현. 페어 분리: integrated-strategy=전체 매출 전략, 본 스킬=단일 프로모션 기획서.
 
-- `moai-commerce:commerce-repurchase-timer` — 재구매 타이밍 엔진. 골든타임 3구간 모델(리마인드 0.8T / 데드라인 1.1T / 휴면 1.5T) + 구간별 메시지 톤·채널 매핑(앱 푸시·카톡 친구톡·이메일) + 인센티브 강도(0~5% / 10~15% / 25~40%+사은품) + 리드 스코어링 8개 행동(구매 후 7일 재방문 +10 / 후기 작성 +25 / 친구 초대 +30 / 미접속 60일 -20 / 수신거부 -100) + 리텐션 차트 cohort 분석 가이드(M+1·M+3·M+12 해석 기준) + 한국 10 카테고리 표준 주기 매트릭스(화장품·면도기·콘택트렌즈·반려동물·영양제·잉크·향수 등). vault-ecom.md §A-3 HIGH-5 명세 구현.
+- `moai-commerce:commerce-repurchase-timer` — 재구매 타이밍 엔진. 골든타임 3구간 모델(리마인드 0.8T / 데드라인 1.1T / 휴면 1.5T) + 구간별 메시지 톤·채널 매핑(앱 푸시·카톡 친구톡·이메일) + 인센티브 강도(0-5% / 10-15% / 25-40%+사은품) + 리드 스코어링 8개 행동(구매 후 7일 재방문 +10 / 후기 작성 +25 / 친구 초대 +30 / 미접속 60일 -20 / 수신거부 -100) + 리텐션 차트 cohort 분석 가이드(M+1·M+3·M+12 해석 기준) + 한국 10 카테고리 표준 주기 매트릭스(화장품·면도기·콘택트렌즈·반려동물·영양제·잉크·향수 등). vault-ecom.md §A-3 HIGH-5 명세 구현.
 
-- `moai-commerce:commerce-product-image-pipeline` — 상품 이미지·영상 풀스택 파이프라인 오케스트레이터. character-mgmt → image-gen(Soul) → video-gen(DOP) → media-channel-ad-packager 4단계 체인 자동 호출. 3 시나리오(신규 D2C 캐릭터 없음 / 브랜드 마스코트 보유 / 모델 캐릭터 = 가상 인플루언서) + 이미지 5축(Hero·Lifestyle·Detail·Use-case·Result) + 영상 모션 프리셋 자동 선택(스킨케어=slow_zoom / 패션=pan_left / 식품=orbit) + 채널 변환(메타·네이버 GFA·카카오) + media-ai-disclosure 자동 체인 + 비용 추정(₩2,300~4,000/상품 1건). audit §6 안 C 권장 #7 구현. 페어 분리: detail-page-image=13섹션 합성 PNG 1장 / media-model-router=광고 영상 라우팅 / 본 스킬=풀스택 체인 오케스트레이션.
+- `moai-commerce:commerce-product-image-pipeline` — 상품 이미지·영상 풀스택 파이프라인 오케스트레이터. character-mgmt → image-gen(Soul) → video-gen(DOP) → media-channel-ad-packager 4단계 체인 자동 호출. 3 시나리오(신규 D2C 캐릭터 없음 / 브랜드 마스코트 보유 / 모델 캐릭터 = 가상 인플루언서) + 이미지 5축(Hero·Lifestyle·Detail·Use-case·Result) + 영상 모션 프리셋 자동 선택(스킨케어=slow_zoom / 패션=pan_left / 식품=orbit) + 채널 변환(메타·네이버 GFA·카카오) + media-ai-disclosure 자동 체인 + 비용 추정(₩2,300-4,000/상품 1건). audit §6 안 C 권장 #7 구현. 페어 분리: detail-page-image=13섹션 합성 PNG 1장 / media-model-router=광고 영상 라우팅 / 본 스킬=풀스택 체인 오케스트레이션.
 
 ### 동기화 지점
 
@@ -215,7 +262,7 @@ PATCH. **Wave 2 보강 3 + Higgsfield 안 C 정리** — 신규 스킬 0, 보강
 
 **moai-commerce 보강 3** (vault-ecom §A-4)
 
-- `moai-commerce:commerce-channel-message` — 'AARRR 단계별 한국 30+ 브랜드 메시지 풀스택' 섹션 추가. Acquisition(토스·당근·29CM·듀오링고·인프런 등) · Activation(배민·쿠팡·야놀자·클래스101·카카오뱅크 등) · Retention(오프린트미·퍼블리·콜린스·인프런·야놀자·넷플릭스·라운즈·듀오링고·리멤버 등) · Revenue(에이블리·지그재그·무신사·올웨이즈·쿠팡이츠 등) · Referral(토스·당근·우버이츠·카카오페이·야놀자 등) 5단계 × 5~9 브랜드. 3요소 체크리스트(Timely·Personal·Actionable) + 단계별 발송 빈도 권장. vault 1,329 노트 기반 한국 브랜드 풀스택.
+- `moai-commerce:commerce-channel-message` — 'AARRR 단계별 한국 30+ 브랜드 메시지 풀스택' 섹션 추가. Acquisition(토스·당근·29CM·듀오링고·인프런 등) · Activation(배민·쿠팡·야놀자·클래스101·카카오뱅크 등) · Retention(오프린트미·퍼블리·콜린스·인프런·야놀자·넷플릭스·라운즈·듀오링고·리멤버 등) · Revenue(에이블리·지그재그·무신사·올웨이즈·쿠팡이츠 등) · Referral(토스·당근·우버이츠·카카오페이·야놀자 등) 5단계 × 5-9 브랜드. 3요소 체크리스트(Timely·Personal·Actionable) + 단계별 발송 빈도 권장. vault 1,329 노트 기반 한국 브랜드 풀스택.
 - `moai-commerce:commerce-product-naming` — '6질문 상품 파악 프레임 + 데이터랩 트렌드 워크플로우' 섹션 추가. 6질문(Primary Buyer·Motive·Search Intent·USP·Channel-Fit·Seasonality) + 네이버 데이터랩 4단계(트렌드·연관키워드·인구통계·시즌) + 통합 체크리스트(4개 이상 PASS) + MD 11년차 인사이트.
 - `moai-commerce:commerce-market-research` — '시장 세분화 + USP 추출 프로세스 (MD 11년차 관점)' 섹션 추가. 4축 세분화(인구·심리·행동·맥락) + 5축 평가(시장크기·성장률·경쟁·진입비용·강점) + USP 3 차별 축(What·How·Why) + 검증 질문 + 다운스트림 일관성 매핑(USP → naming → message → detail-page → campaign).
 
@@ -259,11 +306,11 @@ MINOR. **Wave 1 vault grounding 한국 CRM·LTV·법규 통합본** — vault 1,
 
 ### Added (신규 3 스킬, moai-commerce)
 
-- `moai-commerce:commerce-marketing-compliance-kr` — 한국 정통망법 광고·정보성 메시지 자동 게이트. 6대 점검(광고성 판정·옵트인·야간 발송 21시~익일 8시 차단·(광고) 표기 위치·무료 수신거부 명시·발신자 정보) + BLOCK/PASS 판정 + 위반 조항(제50조 1·3·4항, 제76조) + 구체 fix 가이드 + 채널별 베스트/워스트 패턴 카탈로그. 과태료 위험: 1회 위반 최대 3,000만 원 + 책임자 1년 이하 징역. vault-ecom.md §A-3 HIGH-2 명세 구현.
+- `moai-commerce:commerce-marketing-compliance-kr` — 한국 정통망법 광고·정보성 메시지 자동 게이트. 6대 점검(광고성 판정·옵트인·야간 발송 21시-익일 8시 차단·(광고) 표기 위치·무료 수신거부 명시·발신자 정보) + BLOCK/PASS 판정 + 위반 조항(제50조 1·3·4항, 제76조) + 구체 fix 가이드 + 채널별 베스트/워스트 패턴 카탈로그. 과태료 위험: 1회 위반 최대 3,000만 원 + 책임자 1년 이하 징역. vault-ecom.md §A-3 HIGH-2 명세 구현.
 
 - `moai-commerce:commerce-push-planner` — 앱 푸시 전용 기획 스킬. 4원칙(왜/언제/누구에게/어떻게) + Timely·Personal·Actionable 3요소 자가 점검 + 카피 변형 3안(오늘만 vs 매일 / 누구나 vs 너에게만 / 숫자 vs 게이미피케이션 vs 브랜딩) + 한국 30+ 브랜드 레퍼런스(토스·배민·오늘의집·쿠팡·에이블리·지그재그·29CM·인프런·야놀자·퍼블리·넷플릭스·듀오링고 등) + 클릭률 예측 가이드. 페어 분리: commerce-channel-message는 카톡/SMS/이메일, 본 스킬은 앱 푸시 전용. vault-ecom.md §A-3 HIGH-3 명세 구현.
 
-- `moai-commerce:commerce-ltv-cac-architect` — 고객 단위 수익 구조 설계. CAC→재구매율→구매주기→ARPU→공헌이익→LTV 6대 지표 연결 모델 + LTV/CAC ratio(<1 손실, 1~3 손익분기, 3~5 건강, ≥5 우수) + Payback Period + 광고 의존도 진단(30%+ 위험 → 11~15% 정상) + 손익분기 ROAS 자동 + 채널·세그먼트별 재구매율 분해 + 광고 의존도 탈출 6단계 로드맵(Month 1~6) + 한국 D2C 카테고리별 벤치마크(화장품·식품·패션·가전·펫·구독 SaaS). 페어 분리: commerce-margin-calculator는 단품 마진, 본 스킬은 고객 1명 평생 수익. vault-ecom.md §A-3 HIGH-1 명세 구현.
+- `moai-commerce:commerce-ltv-cac-architect` — 고객 단위 수익 구조 설계. CAC→재구매율→구매주기→ARPU→공헌이익→LTV 6대 지표 연결 모델 + LTV/CAC ratio(<1 손실, 1-3 손익분기, 3-5 건강, ≥5 우수) + Payback Period + 광고 의존도 진단(30%+ 위험 → 11-15% 정상) + 손익분기 ROAS 자동 + 채널·세그먼트별 재구매율 분해 + 광고 의존도 탈출 6단계 로드맵(Month 1-6) + 한국 D2C 카테고리별 벤치마크(화장품·식품·패션·가전·펫·구독 SaaS). 페어 분리: commerce-margin-calculator는 단품 마진, 본 스킬은 고객 1명 평생 수익. vault-ecom.md §A-3 HIGH-1 명세 구현.
 
 ### Changed (Higgsfield Quick Wins 6, moai-media)
 
@@ -313,13 +360,13 @@ GOOS 결정으로 정승우님 자료 공식 어트리뷰션을 모두 제거. �
 
 ## [2.5.0] - 2026-05-13
 
-MINOR. **메타 광고 audit 3-Layer 인프라 출시** — Layer 3 신규 분석 스킬 1종(`meta-ads-analyzer`, .xlsx 보고서 1~6개 → 9 분석 모듈 + 4D 교차 + 강도별 액션 옵션 + 4 출력 형식) + Layer 2 자체 MCP 서버 신규 1종(`moai-ads-audit-mcp`, claude-ads v1.5.1 MIT 방법론 한국 시장 7 변화 영역 특화 + 10 도구 중 3 도구 + 50/50 pytest pass). 129 → **130 스킬**, 동기화 지점 151 → **152**.
+MINOR. **메타 광고 audit 3-Layer 인프라 출시** — Layer 3 신규 분석 스킬 1종(`meta-ads-analyzer`, .xlsx 보고서 1-6개 → 9 분석 모듈 + 4D 교차 + 강도별 액션 옵션 + 4 출력 형식) + Layer 2 자체 MCP 서버 신규 1종(`moai-ads-audit-mcp`, claude-ads v1.5.1 MIT 방법론 한국 시장 7 변화 영역 특화 + 10 도구 중 3 도구 + 50/50 pytest pass). 129 → **130 스킬**, 동기화 지점 151 → **152**.
 
 ### Added (신규 1 스킬)
 
 **moai-marketing 신규 1**
 
-- `moai-marketing:meta-ads-analyzer` — 메타 광고관리자 `.xlsx` 보고서 1~6개 업로드 → 상품 관여도·운영 철학 반영 진단. 9 분석 모듈(퍼널·KPI·차원·매트릭스·누수·라이프사이클·학습·예산·시뮬레이션) + 4D 교차(광고×지면×연령×성별) + 3 사용자 그룹 톤(인하우스/대행사/소규모, 명시 입력) + 4 출력 형식(HTML/DOCX/PPTX/MD, cowork 공용 디자인 토큰 적용 — `--ivory`/`--paper`/`--slate`/`--clay`/`--clay-d`/`--oat`/`--olive`) + 강도별 액션 옵션(🟢🟡🔴 보수/중도/적극) + claude-ads v1.5.1 (MIT, 4,815 stars) 50-check 매트릭스 한국 시장 매핑. SKILL.md + references A~K 11개 부록 = 12파일 1,829줄. ai-slop-reviewer 자동 체이닝.
+- `moai-marketing:meta-ads-analyzer` — 메타 광고관리자 `.xlsx` 보고서 1-6개 업로드 → 상품 관여도·운영 철학 반영 진단. 9 분석 모듈(퍼널·KPI·차원·매트릭스·누수·라이프사이클·학습·예산·시뮬레이션) + 4D 교차(광고×지면×연령×성별) + 3 사용자 그룹 톤(인하우스/대행사/소규모, 명시 입력) + 4 출력 형식(HTML/DOCX/PPTX/MD, cowork 공용 디자인 토큰 적용 — `--ivory`/`--paper`/`--slate`/`--clay`/`--clay-d`/`--oat`/`--olive`) + 강도별 액션 옵션(🟢🟡🔴 보수/중도/적극) + claude-ads v1.5.1 (MIT, 4,815 stars) 50-check 매트릭스 한국 시장 매핑. SKILL.md + references A-K 11개 부록 = 12파일 1,829줄. ai-slop-reviewer 자동 체이닝.
 
 ### Added (신규 인프라)
 
@@ -370,12 +417,12 @@ MINOR. **캠프 후속 인사이트 통합본** — 정승우님 본인 노하�
 **moai-commerce 신규 3**
 
 - `moai-commerce:coupang-ad-optimizer` — 쿠팡 광고 풀세트 최적화. 3 캠페인 유형(AI스마트/매출최적화/수동키워드) 자동 분류 + 검색영역 vs 비검색영역 매출 분리 분석(CPM 167배 차이) + 엔드 ROAS(본전 ROAS) 자동 계산 + 자동규칙 3종 가이드(골든타임/350%이상 증액/100%미만 알림) + 상품별 의사결정 분기(ROAS·CTR·CVR). 정승우님 본인 6개월 노하우(월매출 7천→3.6억, 광고비 30%→11.2%) wrapper.
-- `moai-commerce:commerce-margin-calculator` — 상품별 마진·엔드 ROAS·손익분기 광고비 자동 계산. 채널별 수수료(스마트스토어 5.94% / 쿠팡 10~12% / 카페24 2~3% / 아임웹 0~2.5%) + 부가세 10% + 결제 수수료 + 쿠폰 자동 반영. 시크릿팡 마진계산기 차용 + AI 챗봇 자연어 입력 차별화.
+- `moai-commerce:commerce-margin-calculator` — 상품별 마진·엔드 ROAS·손익분기 광고비 자동 계산. 채널별 수수료(스마트스토어 5.94% / 쿠팡 10-12% / 카페24 2-3% / 아임웹 0-2.5%) + 부가세 10% + 결제 수수료 + 쿠폰 자동 반영. 시크릿팡 마진계산기 차용 + AI 챗봇 자연어 입력 차별화.
 - `moai-commerce:commerce-automation-audit` — 6대 영역(A 상품운영 / B 가격&프로모션 / C 주문&정산 / D 재고&물류 / E 마케팅&고객 / F 데이터&경영) 진단 + 자동화 3분류(반복형/판단형/창의형) + 우선순위 점수((빈도×시간×오류비용)÷복잡도) + 3 Phase 로드맵(Quick Wins/Core/AI Enhancement) + 5대 KPI + HITL Golden Rule(80% 자동화 + 10배 검수). 정승우님 "커머스 업무 자동화" 24p 풀세트 wrapping.
 
 **moai-marketing 신규 2**
 
-- `moai-marketing:landing-page-conversion-audit` — 랜딩페이지 6섹션(히어로·공감·증명·사회증거·CTA·FAQ) 진단 + 진단 분기(CTR↓→광고 / CVR↓→랜딩 / 장바구니↓→결제) + 빠른 처방 3종(불안해소 문구 +10~20% / 메시지 일치 / 간편결제). 자료 4 §9 wrapper.
+- `moai-marketing:landing-page-conversion-audit` — 랜딩페이지 6섹션(히어로·공감·증명·사회증거·CTA·FAQ) 진단 + 진단 분기(CTR↓→광고 / CVR↓→랜딩 / 장바구니↓→결제) + 빠른 처방 3종(불안해소 문구 +10-20% / 메시지 일치 / 간편결제). 자료 4 §9 wrapper.
 - `moai-marketing:pixel-audit` — 메타·구글 픽셀 설치 검증 + 3종 실수 점검(구매자 미제외/이벤트 파라미터 미설정/CAPI 미설치) + 1st Party 데이터 활용 진단 + Lookalike 씨앗 품질 평가(VIP 상위 20% 권장). 자료 4 §5 wrapper.
 
 ### Changed (강화 8 스킬)
@@ -392,7 +439,7 @@ MINOR. **캠프 후속 인사이트 통합본** — 정승우님 본인 노하�
 **moai-marketing 강화 2**
 
 - `campaign-planner` 강화 — 광고 심리학 완전판 통합(성과 공식 + 3 동기 + 6 방아쇠 + 8 편향 + PAS + 후크 6종 + 영상 30초 구조 + 타겟 온도 4단계 × 동기 매트릭스 + 1st Party + LTV/CAC + 단계별 예산 배분)
-- `sns-content` 강화 — 채널별 심리 상태 매트릭스 + 메타 학습 기간 48~72시간 가이드 + iOS 14 이후 CAPI·GA4 교차 검증
+- `sns-content` 강화 — 채널별 심리 상태 매트릭스 + 메타 학습 기간 48-72시간 가이드 + iOS 14 이후 CAPI·GA4 교차 검증
 
 ### 인사이트 원전 (Attribution)
 
@@ -420,7 +467,7 @@ MINOR. **캠프 후속 인사이트 통합본** — 정승우님 본인 노하�
 
 ## [2.3.0] - 2026-05-12
 
-MINOR. **모두의 커머스 3일 마스터 캠프** (Claude Cowork × MoAI-Cowork × MCP) 통합본 출시. Day1 셋업·Day2 V6 6도구·Day3 신규 AI 모델·D+1~D+30 follow-up까지 18개 산출물 데이터 체인을 강의 안에서 끊김 없이 흐르도록 17 신규 + 6 강화 스킬 추가. Track C 페어 정리로 책임 경계 명확화.
+MINOR. **모두의 커머스 3일 마스터 캠프** (Claude Cowork × MoAI-Cowork × MCP) 통합본 출시. Day1 셋업·Day2 V6 6도구·Day3 신규 AI 모델·D+1-D+30 follow-up까지 18개 산출물 데이터 체인을 강의 안에서 끊김 없이 흐르도록 17 신규 + 6 강화 스킬 추가. Track C 페어 정리로 책임 경계 명확화.
 
 ### Added (신규 17 스킬)
 
@@ -535,7 +582,7 @@ MINOR. 마크다운 보고서를 단일 파일 HTML로 변환하는 `moai-conten
 ### Changed
 
 - README.md: Version 배지 2.1.0 → **2.2.0**, Skills 배지 107 → **108**, v2.2.0 하이라이트 섹션 추가, 영문 description "21 plugins · 108 skills" 갱신
-- moai-content/README.md: 10개 → **11개** 스킬 표기, html-report 행 추가, 텍스트~영상~보고서 표현 갱신
+- moai-content/README.md: 10개 → **11개** 스킬 표기, html-report 행 추가, 텍스트·영상·보고서 표현 갱신
 - moai-content/.claude-plugin/plugin.json: description·keywords에 html-report·마크다운·보고서·렌더러·리포트 추가
 - .claude-plugin/marketplace.json: `metadata.version` 2.1.0 → **2.2.0**, moai-content description 갱신, 마켓플레이스 description "html-report 신규" 표기
 - 전 SKILL.md `version: 2.1.0` → `version: 2.2.0` (108개, html-report 포함, Cowork 자동 업데이트 감지)
@@ -561,7 +608,7 @@ MINOR. 한국어 AI 티 정밀 윤문 도입 — [`epoko77-ai/im-not-ai`](https:
 ### Added
 
 - **`moai-content:humanize-korean`** — 한국어 AI 티 정밀 윤문 스킬. 10대 카테고리 × 40+ 패턴 SSOT(`ai-tell-taxonomy.md` 40KB)를 S1/S2/S3 심각도로 분류하여 수술적 윤문. **의미 100% 보존 가드**(고유명사·수치·날짜·인용 변경 금지, 변경률 30% 경고 / 50% 강제 중단), **자체검증 6항**, **A/B/C/D 등급 자동 판정**. Python 표준 라이브러리만 쓰는 `metrics.py`(외부 의존 없음)로 사전·사후 정량 메트릭 측정.
-  - 카테고리: A 번역투(~를 통해/~에 있어서/이중 피동), B 영어 인용 과다, C 구조 패턴(이모지·콜론 부제·연결어미 쉼표), D AI 관용구(결론적으로/시사하는 바·hype 어휘·결말 공식), E 리듬 균일성, F 한자어 -성/-적/-화 밀도, G hedging, H 문두 접속사 남발, I 형식명사 과다, J 시각 장식 남용
+  - 카테고리: A 번역투('-를 통해'/'-에 있어서'/이중 피동), B 영어 인용 과다, C 구조 패턴(이모지·콜론 부제·연결어미 쉼표), D AI 관용구(결론적으로/시사하는 바·hype 어휘·결말 공식), E 리듬 균일성, F 한자어 -성/-적/-화 밀도, G hedging, H 문두 접속사 남발, I 형식명사 과다, J 시각 장식 남용
   - 산출물: `_workspace/{run_id}/{01_input.txt, 00_metrics.json, final.md, summary.md, 06_metrics_after.json}`
   - 옵션: 장르(칼럼/리포트/블로그/공적), 강도(보수/기본/적극), 최소심각도(S1/S2/S3)
   - 권장 체인: `… → moai-core:ai-slop-reviewer → moai-content:humanize-korean`
@@ -730,7 +777,7 @@ MINOR. **신규 플러그인 `moai-commerce` 추가 — 한국 이커머스 상�
 - **`detail-page-copy`** — 13섹션 감정여정(Hero→Pain→Problem→Story→Solution→How→Proof→Authority→Benefits→Risk→Compare→Filter→CTA) 카피 생성. 10개 카테고리(electronics/fashion/food/beauty/home/supplement/pet/kids/handmade/general) 어조 가이드. **출력 직전 ai-slop-reviewer 자동 체이닝** (HARD 규칙 준수).
 - **`detail-page-image`** — 13섹션 이미지 프롬프트 생성 → `moai-media:nano-banana` 호출 → **Pillow 단일 의존성으로 1080×12720 세로 합성 PNG 산출**. 외부 패키지 설치 불필요. 부분 실패 시 다크 플레이스홀더 자동 대체(exit code 5).
 - **`marketplace-coupang` / `marketplace-naver`** — 쿠팡 + 네이버 스마트스토어 + 11번가/G마켓/옥션/티몬/위메프 채널별 정책·검색 키워드·금지문구·우수상품 기준 적용.
-- **`product-photo-brief`** — 상품 사진 1~14장 분석 → ProductDNA(physical/positioning/palette) 추출 → 13섹션별 사용 가능 컷 매핑 → 부족한 컷 우선순위별 추가 촬영 브리프 자동 생성.
+- **`product-photo-brief`** — 상품 사진 1-14장 분석 → ProductDNA(physical/positioning/palette) 추출 → 13섹션별 사용 가능 컷 매핑 → 부족한 컷 우선순위별 추가 촬영 브리프 자동 생성.
 - 마켓플레이스 카운트 17 → **18 플러그인**, 89 → **94 스킬**.
 
 ### Added
@@ -853,7 +900,7 @@ PATCH 릴리스. **저장소 위생 강화 + 한국어 문서 사이트 정식 �
 ### Added
 
 - **`moai-business/skills/sbiz365-analyst/`** 신규 스킬 (Category A) — 소상공인365 PDF 기반 상권 트렌드 분석 + 창업 타당성 종합 보고서.
-  - Step 0~5 워크플로우: PDF 확인 → 4문 AskUserQuestion(업종·목적·예산·중점) → PDF 데이터 추출 → 5대 분석(유동인구·매출·경쟁·입지·타당성) → 9섹션 DOCX → AI 슬롭 검수.
+  - Step 0-5 워크플로우: PDF 확인 → 4문 AskUserQuestion(업종·목적·예산·중점) → PDF 데이터 추출 → 5대 분석(유동인구·매출·경쟁·입지·타당성) → 9섹션 DOCX → AI 슬롭 검수.
   - 4축 100점 평가 체계: 성장성(30) + 경쟁 적합도(25) + 수요 매칭도(25) + 재무 타당성(20).
   - `references/{analysis-guide, data-fields, feasibility-scoring, report-template}.md` 4종 레퍼런스 포함.
 - **`moai-business/skills/kr-gov-grant/`** 신규 스킬 (Category A) — 대한민국 정부·공공기관 지원사업 통합 분석 및 신청서 작성.
@@ -997,7 +1044,7 @@ PATCH 릴리스. **저장소 위생 강화 + 한국어 문서 사이트 정식 �
 
 ## [1.2.0] - 2026-04-14
 
-공식 MINOR 릴리스. v1.1.0~v1.1.3의 점진적 변경을 안정 버전으로 집약하여 배포.
+공식 MINOR 릴리스. v1.1.0-v1.1.3의 점진적 변경을 안정 버전으로 집약하여 배포.
 
 ### Highlights
 
@@ -1051,7 +1098,7 @@ PATCH 릴리스. **저장소 위생 강화 + 한국어 문서 사이트 정식 �
 - `gemini-2.5-flash-image` 모델 매핑
 - `nano-banana-ultra` 별칭 및 `ULTRA_ALIASES` 상수
 - `moai-content/scripts/card-news/` 디렉토리 (moai-media로 이관)
-- v1.0.x 잔존 로컬 태그 (v1.1.0~v1.3.0) — marketplace 버전 체계와 불일치하여 정리
+- v1.0.x 잔존 로컬 태그 (v1.1.0-v1.3.0) — marketplace 버전 체계와 불일치하여 정리
 
 ### Migration
 
@@ -1219,7 +1266,7 @@ v1.1.0에서 방금 설치한 사용자도 즉시 업데이트 필요:
   - `elevenlabs` (local stdio MCP via `uvx elevenlabs-mcp`, `ELEVENLABS_API_KEY` 주입)
 - **API 키 2종 신규 지원**: `FAL_KEY`, `ELEVENLABS_API_KEY` (기존 `NANO_BANANA_API_KEY` 유지)
 - **4K 이미지 해상도** 지원 (`image_size="4K"`, Nano Banana Ultra 전용)
-- **14종 화면비 지원** (1:1 ~ 21:9, Gemini 3 Image Preview 기본 스펙)
+- **14종 화면비 지원** (1:1부터 21:9까지, Gemini 3 Image Preview 기본 스펙)
 - [`moai-media/CONNECTORS.md`](moai-media/CONNECTORS.md): API 키·MCP·커넥터 통합 가이드
 
 ### Changed

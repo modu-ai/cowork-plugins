@@ -1,254 +1,180 @@
 ---
-title: "moai-media — 이미지·영상·음성 + Day 3 광고 풀세트 + 프롬프트 빌더 3"
+title: "moai-media — 이미지 프롬프트 빌더 + 음성 생성"
 weight: 50
-description: "Nano Banana, fal.ai Gateway, Gemini Audio/Video Gen + Day 3 한국 이커머스 광고 풀세트(GPT Image 2·Kling 3·Veo 3·Seedance 라우터·AI 표기·캔바 매직 레이어) + 이미지 프롬프트 빌더 3종(GPT-image-2·Gemini 3·Midjourney v8.1)까지 16개 AI 미디어 생성 스킬을 묶은 통합 플러그인입니다."
+description: "OpenAI GPT-image-2·Google Gemini 3 Pro Image·Midjourney v8.1 공식 가이드 기반 이미지 프롬프트 빌더 3종 + ElevenLabs MCP 기반 TTS·보이스 클로닝·다국어 더빙·효과음 생성 — 총 4개 스킬. 이미지·영상 렌더링은 별도 MCP(Higgsfield 등)가 담당하는 컴패니언 플러그인입니다."
 geekdocBreadcrumb: true
 tags: ["moai-media"]
 ---
 
 # moai-media
 
-> AI 미디어 생성 전용 플러그인입니다. 카드뉴스 썸네일부터 숏폼 영상·내레이션, **한국 이커머스 광고 풀세트**(무드보드·한글 타이포 5장·메인 영상·보조 컷 2개·채널별 변환·AI 표기·캔바 매직 레이어), **이미지 프롬프트 빌더 3종**(GPT-image-2·Gemini 3 Pro Image·Midjourney v8.1 공식 가이드 그대로 적용)까지 한 번에 만들 수 있습니다.
-
-```mermaid
-flowchart LR
-    subgraph 이미지["이미지 (3)"]
-        A["nano-banana<br/>카드뉴스·인스타"]
-        B["image-gen<br/>범용 이미지"]
-        C["character-mgmt<br/>캐릭터 시리즈"]
-    end
-    subgraph 영상음성["영상·음성 (3)"]
-        D["video-gen<br/>숏폼 영상"]
-        E["audio-gen<br/>음성·배경음"]
-        F["speech-video<br/>음성+영상"]
-    end
-    G["fal-gateway<br/>1000+ 모델"]
-    subgraph Day3["Day 3 광고 풀세트 (6)"]
-        H["media-moodboard<br/>색·톤·레퍼런스"]
-        I["media-gpt-image2-builder<br/>한글 타이포 5장"]
-        J["media-model-router<br/>Kling/Veo/Seedance"]
-        K["media-channel-ad-packager<br/>채널 규격 변환"]
-        L["media-ai-disclosure<br/>AI 표기 자동"]
-        M["media-canva-magic-layer<br/>시즌 재사용"]
-    end
-    subgraph Builder["프롬프트 빌더 (3)"]
-        N["gpt-image-2-prompt<br/>OpenAI 6-Block"]
-        O["gemini-3-image-prompt<br/>Google 5-component"]
-        P["midjourney-v8-prompt<br/>키워드+--파라미터"]
-    end
-    이미지 --> 영상음성
-    H --> I --> J --> K --> L --> M
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style G fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style I fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style J fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style L fill:#f5dcd7,stroke:#c44a3a,color:#09110f
-    style N fill:#dceee9,stroke:#2a8a8c,color:#09110f
-    style O fill:#dceee9,stroke:#2a8a8c,color:#09110f
-    style P fill:#dceee9,stroke:#2a8a8c,color:#09110f
-```
+> AI 미디어 작업의 **프롬프트 산출과 음성 합성** 전담 플러그인. 이미지 프롬프트 빌더 3종(GPT-image-2·Gemini 3 Pro Image·Midjourney v8.1)과 음성 생성 1종(audio-gen)으로 구성된 4개 스킬 묶음입니다.
 
 ## 무엇을 하는 플러그인인가
 
-`moai-media`는 이미지·영상·음성을 모두 한 플러그인 안에서 생성할 수 있도록 묶은 AI 미디어 스튜디오입니다. **총 16개 스킬**이 통합되어 있습니다.
+`moai-media`는 두 가지 작업에 집중합니다.
 
-- **범용 미디어 생성 (7)**: nano-banana(한국어 타이포 SOTA)·image-gen·video-gen·audio-gen·speech-video·character-mgmt·fal-gateway(1000+ 모델)
-- **Day 3 광고 풀세트 (6)**: "모두의 커머스 3일 마스터 캠프" Day 3 산출물 ⑫~⑰ 전담 — 무드보드부터 채널별 변환, AI 표기, 시즌 재사용 가이드까지
-- **이미지 프롬프트 빌더 (3)**: GPT-image-2(OpenAI 6-Block)·Gemini 3 Pro Image(Google 5-component)·Midjourney v8.1(키워드+`--파라미터`) 공식 가이드를 그대로 적용한 프롬프트 텍스트 산출 전용 빌더. 페어: 실제 호출은 기존 `media-gpt-image2-builder`·`nano-banana`가 담당
+1. **이미지 프롬프트 텍스트 작성** — 모델별 공식 가이드(OpenAI Cookbook·Google AI Developers·Midjourney Parameter List)를 그대로 적용해 ChatGPT·Google AI Studio·Discord `/imagine`에서 바로 복붙할 수 있는 프롬프트를 출력합니다.
+2. **음성 합성** — ElevenLabs MCP로 TTS·보이스 클로닝·다국어 더빙·효과음을 생성합니다.
 
-카드뉴스 슬라이드 이미지 일괄 생성, 한국어 타이포 포스터, 15초 숏폼 영상, 팟캐스트 내레이션부터 **광고 영상 자동 라우팅**(카테고리 매트릭스 기반 의류=Kling 3 / 뷰티=Veo 3 / 건강식품=Kling 3 / 생활용품=Seedance), 메타·네이버 GFA·카카오모먼트 채널 규격 자동 변환까지 한 번의 체인으로 처리할 수 있습니다.
+**이미지·영상의 실제 렌더링은 본 플러그인 책임이 아닙니다.** 시네마틱 영상·캐릭터·말하는머리 등은 **Higgsfield MCP**(별도 설치)가 처리하고, 이미지 렌더링은 사용자가 외부 도구에서 직접 실행합니다. 본 플러그인은 그 앞단의 프롬프트 작성과 음성 합성을 담당하는 컴패니언입니다.
 
-본 플러그인은 MCP 서버를 번들합니다 (`fal-ai` hosted, `elevenlabs` local stdio, `higgsfield` local stdio). API 키 등록 절차는 플러그인 루트의 `CONNECTORS.md`를 참고하세요.
+```mermaid
+flowchart TD
+    subgraph Prompt["이미지 프롬프트 빌더 (3)"]
+        A["gpt-image-2-prompt<br/>OpenAI 6-Block"]
+        B["gemini-3-image-prompt<br/>Google 5-component"]
+        C["midjourney-v8-prompt<br/>키워드+--파라미터"]
+    end
+    subgraph Audio["음성 생성 (1)"]
+        D["audio-gen<br/>ElevenLabs MCP"]
+    end
+    A --> E[/ChatGPT·OpenAI API/]
+    B --> F[/Google AI Studio·Gemini API/]
+    C --> G[/Discord /imagine·alpha.midjourney.com/]
+    D --> H[(MP3·WAV·OGG 파일)]
+
+    style A fill:#dceee9,stroke:#2a8a8c,color:#09110f
+    style B fill:#dceee9,stroke:#2a8a8c,color:#09110f
+    style C fill:#dceee9,stroke:#2a8a8c,color:#09110f
+    style D fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+```
 
 ## 설치
 
 {{< tabs "install-media" >}}
 {{< tab "마켓플레이스 (권장)" >}}
 1. `moai-core` 설치 후 `moai-media` 옆의 **+** 버튼을 눌러 설치합니다.
-2. 아래 API 키를 `.moai/credentials.env`에 등록합니다.
-3. Day 3 광고 풀세트를 사용하려면 `OPENAI_API_KEY`(GPT Image 2)와 `HIGGSFIELD_API_KEY`+`HIGGSFIELD_SECRET`(Kling/Veo/Seedance)을 함께 등록합니다.
+2. `audio-gen`을 쓰려면 `ELEVENLABS_API_KEY`를 `.moai/credentials.env`에 등록합니다.
+3. 이미지 프롬프트 빌더 3종은 **API 키 불필요** (텍스트 프롬프트만 생성).
 {{< /tab >}}
 {{< tab "수동" >}}
 [GitHub 저장소](https://github.com/modu-ai/cowork-plugins/tree/main/moai-media)를 클론한 뒤 `~/.claude/plugins/`에 배치합니다.
 {{< /tab >}}
 {{< /tabs >}}
 
-## 핵심 스킬 (16개)
+## 핵심 스킬 (4개)
 
-### 범용 미디어 생성 (7)
+### 이미지 프롬프트 빌더 3종
 
-| 스킬 | 모델·서비스 | 특화 |
+자연어 한 줄 + AskUserQuestion 프리셋(제품샷·인물·일러스트·풍경)으로 컨텍스트를 수집하고, 각 모델의 공식 가이드에 정렬된 프롬프트 텍스트를 출력합니다. **책임 경계: 프롬프트 텍스트 산출 전용** — 실제 이미지 생성은 사용자가 외부 도구에서 직접 실행합니다.
+
+| 스킬 | 공식 가이드 | 핵심 특징 |
 |---|---|---|
-| `nano-banana` | Google Gemini (nano-banana pro/flash) | 카드뉴스·인스타 이미지, 한국어 텍스트 렌더링 SOTA |
-| `audio-gen` | Google Gemini + ElevenLabs MCP | 음성 생성, 배경음악, 효과음, 다국어 더빙 |
-| `character-mgmt` | Higgsfield | 캐릭터 디자인, 일관된 캐릭터 이미지 시리즈 |
-| `image-gen` | Google Gemini + fal.ai | 다양한 스타일 이미지 생성, 한국어 프롬프트 최적화 |
-| `speech-video` | ElevenLabs + Higgsfield | 음성 합성 + 립싱크 영상, 팟캐스트/강의용 |
-| `video-gen` | fal.ai (Kling·Hailuo) + Higgsfield | 단순 영상 생성, 애니메이션, 제품 데모 |
-| `fal-gateway` | fal.ai 통합 | Flux 1.1 Pro, Recraft V3, Ideogram, MiniMax 등 1000+ 모델 |
+| `gpt-image-2-prompt` | [OpenAI Cookbook](https://developers.openai.com/cookbook/examples/multimodal/image-gen-models-prompting-guide) | Subject·Action·Scene·Composition·Lighting·Style&Text 6-Block. 편집 시 Change/Preserve/Constraints 2열. 텍스트 verbatim·ALL CAPS·다국어(한·일·중·힌·벵골) |
+| `gemini-3-image-prompt` | [Google AI Developers](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image-preview) | 영문 문장형 5-component, Creative Director 어조. 카메라 하드웨어(Fujifilm·GoPro·iPhone). Reference image 14 슬롯. Search Grounding. Thinking vs Fast 모드. SynthID 워터마크 |
+| `midjourney-v8-prompt` | [Midjourney Parameter List](https://docs.midjourney.com/hc/en-us/articles/32859204029709-Parameter-List) | 키워드+`--파라미터`. `--sref`/`--oref`/`--cw`/`--p` 3대 reference deep dive. 6대 비용 함정 자동 검사 (`--hd --q 4` 16x cost, `--cw 100` 상속, `--cref` deprecation 교체) |
 
-### Day 3 광고 풀세트 (6)
+### 음성 생성
 
-| 스킬 | V6 매핑 | 백엔드 | 산출물 |
-|---|---|---|---|
-| `media-moodboard` | ⑫ Day3 S1 | 분석·검색 | 색 팔레트 3종 + 톤 키워드 5개 + 레퍼런스 이미지 5장 + 작업 카드 |
-| `media-gpt-image2-builder` | ⑬ Day3 S2 | **GPT Image 2** | 한글 타이포 5장 세트 (Hero 1 + 인포 1 + 라이프 2 + CTA 1) — 8단계 자동 리라이팅 |
-| `media-model-router` | ⑮⑯ Day3 S4 | Kling 3 / Veo 3 / Seedance | 카테고리 매트릭스 자동 라우팅 + 의심차단형 후크 + 메인 영상 5~10초 + 보조 영상 2컷 |
-| `media-channel-ad-packager` | ⑰ Day3 S6 | 후처리 | 메타 1:1·9:16 / 네이버 GFA / 카카오모먼트 1:1·16:9 채널 규격 자동 변환 + .zip |
-| `media-ai-disclosure` | Day3 S2~S7 | 후처리 자동 체인 | "AI 생성" 메타데이터·워터마크·캡션 3계층 부착 — 광고심의·소비자보호법 대응 |
-| `media-canva-magic-layer` | Day3 S7 보너스 | 가이드 | 합성 PNG → 카피만 분리 → 시즌 재사용 5단계 체크리스트 (GPT Image 2 재호출 ↓90%) |
-
-### 이미지 프롬프트 빌더 (3)
-
-자연어 한 줄 + AskUserQuestion 프리셋(제품샷·인물·일러스트·풍경)으로 컨텍스트를 수집하고, 동일 입력을 **3개 모델별 어조로 동시 변환**해 복붙 가능한 텍스트를 출력합니다. 책임 경계: 프롬프트 텍스트 산출 전용 (실제 이미지 생성은 페어 스킬 호출).
-
-| 스킬 | 공식 가이드 | 핵심 차별점 |
+| 스킬 | 백엔드 | 산출물 |
 |---|---|---|
-| `gpt-image-2-prompt` | [OpenAI Cookbook](https://developers.openai.com/cookbook/examples/multimodal/image-gen-models-prompting-guide) 6-Block | Subject·Action·Scene·Composition·Lighting·Style&Text. 편집 시 Change/Preserve/Constraints 2열. 텍스트 verbatim·ALL CAPS·다국어(한·일·중·힌·벵골) |
-| `gemini-3-image-prompt` | [Google AI Developers](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image-preview) 5-component | 영문 문장형, Creative Director 어조. 카메라 하드웨어(Fujifilm·GoPro·iPhone). Reference image 14 슬롯. Search Grounding. Thinking vs Fast 모드. SynthID 워터마크 |
-| `midjourney-v8-prompt` | [Midjourney Parameter List](https://docs.midjourney.com/hc/en-us/articles/32859204029709-Parameter-List) | `--sref`/`--oref`/`--cw`/`--p` 3대 reference deep dive. 6대 비용 함정 자동 검사(`--hd --q 4` 16x cost, `--cw 100` 상속, `--cref` deprecation 교체) |
+| `audio-gen` | ElevenLabs MCP | TTS, 보이스 클로닝, 다국어 더빙(영·일·중·스 등), 효과음(SFX) — MP3·WAV·OGG |
 
-**페어 관계** — 본 빌더는 **프롬프트 텍스트만** 생성:
+## MCP 통합 (책임 분리)
 
-- `gpt-image-2-prompt` ↔ `media-gpt-image2-builder` (GPT Image 2 호출, 광고 5장 자동 생성)
-- `gemini-3-image-prompt` ↔ `nano-banana` (Gemini 직접 호출, 실제 이미지 생성)
-- `midjourney-v8-prompt` — Discord `/imagine` / `alpha.midjourney.com` 외부 실행
+`moai-media`는 ElevenLabs MCP 1개만 번들합니다. 이미지·영상 렌더링은 별도 MCP에 위임합니다.
 
-## 필수 API 키
+| 영역 | 담당 | 비고 |
+|---|---|---|
+| 이미지 프롬프트 텍스트 작성 | **`moai-media` 빌더 3종** | API 키 불필요, 텍스트만 출력 |
+| 음성·TTS·더빙·효과음 합성 | **`moai-media:audio-gen` (ElevenLabs MCP)** | `ELEVENLABS_API_KEY` 1개 필요 |
+| 이미지 실제 렌더링 | 사용자가 ChatGPT·Google AI Studio·Discord에서 실행 | 본 플러그인 외부 |
+| 시네마틱 영상·캐릭터·립싱크 | **Higgsfield MCP** (별도 설치) | Soul·DOP·말하는머리 |
+
+## API 키 (1개)
 
 {{< hint type="warning" >}}
-이미지·영상·음성을 생성하려면 **API 키 설정이 필수**입니다. 프로젝트 루트 `.moai/credentials.env`에 저장하세요.
+**이미지 프롬프트 빌더 3종은 API 키 불필요**입니다. `audio-gen`만 ElevenLabs 키 1개를 요구합니다.
 {{< /hint >}}
 
 ```bash
 # .moai/credentials.env
-GEMINI_API_KEY=...                          # nano-banana, audio-gen, video-gen, speech-video, image-gen
-OPENAI_API_KEY=...                          # media-gpt-image2-builder
-FAL_KEY=...                                 # fal-gateway, image-gen, video-gen
-ELEVENLABS_API_KEY=...                      # audio-gen, speech-video (ElevenLabs MCP)
-HIGGSFIELD_API_KEY=...                      # character-mgmt, video-gen, speech-video, media-model-router
-HIGGSFIELD_SECRET=...
+ELEVENLABS_API_KEY=sk_...     # audio-gen 전용
 ```
 
 | 변수 | 용도 | 발급처 |
 |---|---|---|
-| `GEMINI_API_KEY` | Nano Banana·Audio Gen·Image Gen·Video Gen·Speech Video | [Google AI Studio](https://aistudio.google.com/) |
-| `OPENAI_API_KEY` | **media-gpt-image2-builder** (GPT Image 2 호출) | [platform.openai.com](https://platform.openai.com/api-keys) |
-| `FAL_KEY` | fal Gateway (Flux 1.1, Recraft V3 등 1000+ 모델) | [fal.ai](https://fal.ai) |
-| `ELEVENLABS_API_KEY` | ElevenLabs MCP (TTS·다국어 더빙) | [elevenlabs.io](https://elevenlabs.io) |
-| `HIGGSFIELD_API_KEY` + `HIGGSFIELD_SECRET` | Higgsfield MCP (시네마틱·립싱크·캐릭터 + Day 3 Kling 3·Veo 3·Seedance) | [higgsfield.ai](https://higgsfield.ai) |
+| `ELEVENLABS_API_KEY` | `audio-gen` (TTS·보이스 클로닝·더빙·효과음) | [elevenlabs.io/app/settings/api-keys](https://elevenlabs.io/app/settings/api-keys) |
 
-> **Day 1 셋업**: `moai-core:mcp-connector-setup` 스킬에서 Drive·Notion·Higgsfield·OpenAI 4커넥터 인증·환경변수·트러블슈팅 통합 가이드를 제공합니다.
-
-## Higgsfield 정정 & 책임 경계
-
-**Higgsfield Quick Wins** — audit `research-2026-05-16/higgsfield-audit.md` §7 즉시 자동 수정 적용:
-
-| 스킬 | 변경 | 영향 |
-|------|------|------|
-| `character-mgmt` | MCP 설정 `"command": "uvx" + "args": ["higgsfield-mcp"]` → `"command": "higgsfield-mcp"` 직접 실행 | CONNECTORS.md `pip install` 정책과 일치. uvx 의존성 제거 |
-| `character-mgmt` | "베타 기간 무료" stale → "공식 사이트 요금제 확인 (higgsfield.ai)" | 요금 정보 무기한 stale 방지 |
-| `fal-gateway` | MCP URL `https://fal.ai` → `https://mcp.fal.ai/mcp` | 정식 MCP 엔드포인트로 통일 |
-| `fal-gateway` | Authorization `Key ${FAL_KEY}` → `Bearer ${FAL_KEY}` | 표준 OAuth Bearer 패턴 |
-| `video-gen` | MCP 툴명 `generate_video_dop` → `higgsfield.generate_video_dop` | 네임스페이스 통일 |
-| `speech-video` | MCP 툴명 `generate_speech_video` → `higgsfield.generate_speech_video` | 네임스페이스 통일 |
-
-**책임 경계 명확화** — audit §6 안 C 권장 적용:
-
-- **`media-model-router`** — description에 "백엔드 통합: Kling 3 (Higgsfield MCP) + Veo 3·Seedance 2.0 (fal-gateway 위임)" 명시. 카테고리 매트릭스 아래 '백엔드 매핑' 표 추가 (audit HIGH-1 결과: Veo 3·Seedance MCP 호출 경로 명확화).
-- **`video-gen`** — description에 "(범용·단순 영상 전용)" 명시. "광고 영상 + 카테고리 자동 라우팅이 필요하면 페어 스킬 `media-model-router` 사용" 안내 추가 (audit HIGH-2 결과: Kling 3 영상 책임 중복 정리).
-- **`fal-gateway`** — description에 "`media-model-router`의 Veo 3·Seedance 2.0 라우팅도 본 스킬을 백엔드로 사용" 명시. 트리거 키워드 'Veo 3', 'Seedance' 추가.
-
-요약: 광고 영상은 `media-model-router` 단일 진입점. 범용·단순 영상은 `video-gen`. 라우터의 백엔드는 Kling 3=Higgsfield 직접 / Veo 3·Seedance=fal-gateway 위임. CONNECTORS.md 환경변수는 v2.6 변경 사항 자동 반영 — 사용자 추가 작업 없음.
-
-## Day 3 광고 풀세트 표준 워크플로우
-
-```text
-[10:10–10:25 S1]  media-moodboard               → 색 팔레트·톤·레퍼런스 5장 + 작업 카드
-       ↓
-[11:08–11:18 S2]  media-gpt-image2-builder      → Hero+인포+라이프 2+CTA = 5장 한글 타이포
-       ↓                                         ↘ media-ai-disclosure 자동 체인
-[14:08–14:20 S4]  media-model-router            → 카테고리 매트릭스 자동 라우팅
-                                                  → 메인 영상 5~10초 + 보조 영상 2컷
-       ↓                                         ↘ media-ai-disclosure 자동 체인
-[16:20–16:45 S6]  media-channel-ad-packager     → 메타·네이버 GFA·카카오 채널 규격 .zip
-       ↓
-[17:40–17:45 S7]  media-canva-magic-layer       → 카피만 교체해 시즌 재사용 가이드
-```
-
-## 대표 체인
-
-**카드뉴스 전체 제작 (기존)**
-
-```text
-moai-content:card-news → nano-banana → ai-slop-reviewer
-```
-
-**쇼핑몰 상세페이지 이미지 (기존)**
-
-```text
-moai-commerce:detail-page-copy → moai-commerce:detail-page-image (→ nano-banana) → ai-slop-reviewer
-```
-
-**캐릭터 기반 영상 콘텐츠**
-
-```text
-moai-content:copywriting → character-mgmt → speech-video
-```
-
-**Day 3 광고 풀세트**
-
-```text
-media-moodboard → media-gpt-image2-builder → media-model-router
-  → media-channel-ad-packager → media-ai-disclosure (자동 체인) → media-canva-magic-layer
-```
-
-## 비용 관리
-
-- `nano-banana`는 비교적 저렴하며 반복 생성에 적합합니다.
-- `video-gen`·`media-model-router`는 영상당 비용이 상대적으로 큽니다 — 스토리보드 확정 후 최종 생성 권장.
-- **Day 3 캠프 운영**: 4명×5조 = 20명 시차 호출(5분 간격, 총 100분 윈도우). Higgsfield 워크스페이스 사전 비용 충전 **1.5배** 권장 (PDF §6.9).
-- `fal-gateway`는 단일 `FAL_KEY`로 다양한 모델을 사용할 수 있어 테스트 단계에서 유용합니다.
+> Free 티어: 월 10,000자 TTS · Starter $5/월: 30,000자 + 음성 복제 10개 · Creator $22/월: 100,000자 + 더빙 30분.
 
 ## 빠른 사용 예 (한 줄 요청 + 시스템 자동 인터뷰)
 
-> 주제와 의도만 한 줄로. 비율·스타일·매수는 시스템이 인터뷰로 수집합니다. ([사용 패턴 가이드](../../cowork/patterns/) 참조)
+> 모델·스타일·비율은 시스템이 인터뷰로 수집합니다. ([사용 패턴 가이드](../../cowork/patterns/) 참조)
 
 {{< terminal title="claude — cowork" >}}
-> 프리랜서 원천징수 카드뉴스 만들어줘
+> 비건 스킨케어 제품샷 GPT 프롬프트 만들어줘
 {{< /terminal >}}
 
-→ 시스템 인터뷰: 슬라이드 수·비율·톤 → `card-news → nano-banana` 자동
+→ 시스템 인터뷰: 프리셋(제품샷)·조명·구도 → `gpt-image-2-prompt` 출력 → 사용자가 ChatGPT에 복붙
 
 {{< terminal title="claude — cowork" >}}
-> 비건 스킨케어 무드보드 만들어줘
+> 한국어 타이포 카드뉴스 5장 Gemini 프롬프트 만들어줘
 {{< /terminal >}}
 
-→ 시스템 인터뷰: 색감·레퍼런스 5장 추천 → `media-moodboard`
+→ 시스템 인터뷰: 카메라·레퍼런스·텍스트 verbatim → `gemini-3-image-prompt` 출력 → 사용자가 Google AI Studio에 복붙
 
 {{< terminal title="claude — cowork" >}}
-> 스킨케어 광고 영상 풀세트 만들어줘
+> 사이버펑크 도시 일러스트 Midjourney 프롬프트 만들어줘
 {{< /terminal >}}
 
-→ 시스템 인터뷰: 카테고리·후크 유형·채널 → Day 3 풀세트 (`moodboard → gpt-image2 → model-router → channel-ad-packager → ai-disclosure`) 자동
+→ 시스템 인터뷰: 스타일·`--sref` 레퍼런스·비율 → `midjourney-v8-prompt` 출력 → 사용자가 Discord `/imagine`에 복붙
 
 {{< terminal title="claude — cowork" >}}
-> 메타 + 네이버 GFA + 카카오 채널 변환해줘
+> 30초 한국어 내레이션 음성 만들어줘 — 차분한 여성 목소리
 {{< /terminal >}}
 
-→ `media-channel-ad-packager` 단일 호출 (이미 만든 소재 채널별 규격 .zip)
+→ 시스템 인터뷰: 목소리·속도·감정 → `audio-gen`이 ElevenLabs MCP 호출 → MP3 산출
+
+{{< terminal title="claude — cowork" >}}
+> 이 영어 영상을 한국어로 더빙해줘
+{{< /terminal >}}
+
+→ `audio-gen` — 원본 음성 분석 → 한국어 더빙 트랙 생성 (다국어 더빙은 한 번에 여러 언어 동시 산출 가능)
+
+## 대표 체인
+
+**이미지 제작 (외부 도구 연결)**
+
+```text
+moai-content:copywriting → gpt-image-2-prompt
+                          (사용자가 ChatGPT에서 실행)
+```
+
+**나노바나나(Gemini 3 Image)로 한국어 타이포 카드뉴스**
+
+```text
+moai-content:card-news → gemini-3-image-prompt
+                        (사용자가 Google AI Studio에서 실행)
+```
+
+**유튜브 내레이션**
+
+```text
+moai-content:blog → audio-gen (한국어 TTS) → 영상 편집기 import
+```
+
+**다국어 더빙**
+
+```text
+audio-gen (원본 업로드 → 영·일·중 동시 산출)
+```
 
 ## 다음 단계
 
-- [`moai-commerce`](../moai-commerce/) — V6 6도구·상세페이지·채널 가이드
-- [`moai-content`](../moai-content/) — 슬라이드 카피·기획과 결합
-- [`moai-core`](../moai-core/) — MCP 4커넥터 인증 셋업 가이드
+- [`moai-content`](../moai-content/) — 카드뉴스·블로그·랜딩페이지 카피 (본 플러그인 빌더와 페어)
+- [`moai-commerce`](../moai-commerce/) — 상세페이지 카피·구조
+- [`moai-core`](../moai-core/) — MCP 커넥터 셋업·`ai-slop-reviewer` 텍스트 검수
 - [Cowork 커넥터와 MCP](../../cowork/connectors-mcp/)
 
 ---
 
 ### Sources
 
-- [modu-ai/cowork-plugins README](https://github.com/modu-ai/cowork-plugins)
+- [modu-ai/cowork-plugins](https://github.com/modu-ai/cowork-plugins)
 - [moai-media 디렉터리](https://github.com/modu-ai/cowork-plugins/tree/main/moai-media)
-- [SPEC-MEDIA-CAMP-004](https://github.com/modu-ai/cowork-plugins/blob/main/.moai/specs/SPEC-MEDIA-CAMP-004/spec.md) — Day 3 광고 풀세트 EARS 요구사항
+- [OpenAI Image Gen Prompting Guide](https://developers.openai.com/cookbook/examples/multimodal/image-gen-models-prompting-guide)
+- [Google Gemini 3 Pro Image Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image-preview)
+- [Midjourney Parameter List](https://docs.midjourney.com/hc/en-us/articles/32859204029709-Parameter-List)
+- [ElevenLabs MCP (GitHub)](https://github.com/elevenlabs/elevenlabs-mcp)

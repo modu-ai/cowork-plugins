@@ -2,6 +2,8 @@
 name: executive-summary
 description: |
   [책임 경계] 임원/이사회 1페이지 요약 (≤500단어, McKinsey Pyramid — What/So What/Now What 구조).
+  **기본 출력은 moai-content:html-report로 단일 HTML 파일을 생성합니다** — 이미지·CSS·JS 모두 인라인 포함,
+  카톡·이메일로 바로 공유 가능. pdf/docx/pptx/hwpx 변환은 옵션 체이닝.
   페어 moai-marketing:performance-report와 체이닝 관계 — 본 스킬은 임원 압축 요약, 페어는 마케팅 풀 리포트(전체).
   입력 가능: performance-report 출력 · moai-finance (financial-statements, variance-analysis) · moai-pm:weekly-report · 외부 보고서.
   복잡한 분석·재무·운영 보고를 경영진 1페이지(≤500단어) 요약으로 변환합니다.
@@ -12,8 +14,9 @@ description: |
   - "경영진 보고", "이사회 자료", "임원 1pager"
   - "C레벨 요약", "executive summary 작성", "임원 보고서 요약"
   - "긴 보고서 1페이지로 줄여줘", "경영진용 핵심 요약"
+  - "카톡으로 보낼 보고서", "이메일에 첨부할 단일 HTML 1pager"
 user-invocable: true
-version: 2.10.0
+version: 2.11.0
 ---
 
 # Executive Summary — 경영진 1페이지 요약
@@ -25,6 +28,23 @@ version: 2.10.0
 10-50페이지짜리 분석·재무·운영 보고서를 C-level이 5분 안에 의사결정할 수 있는 1페이지로 변환합니다. moai-finance(financial-statements, variance-analysis), moai-pm(weekly-report), 외부 보고서 모두 입력 가능합니다.
 
 핵심 원칙: **결론부터** (McKinsey Pyramid). 근거는 그 다음, 데이터는 부록.
+
+## 기본 출력 = 단일 HTML 파일 (카톡 즉시 공유)
+
+본 스킬의 **기본 출력은 마크다운 + `moai-content:html-report` 렌더링한 단일 HTML 파일**입니다.
+
+- **1개 HTML 파일**: 이미지(base64/SVG)·CSS(`<style>`)·JS(`<script>`) 전부 인라인
+- **외부 의존성 0**: 폰트 CDN 1건 제외(한국어 가독성 단일 예외)
+- **즉시 공유 가능**: 카톡 첨부, 이메일 첨부, USB 전달, 오프라인 열람 모두 가능
+- **변환 옵션 체이닝**: 동일 마크다운에서 pdf/docx/pptx/hwpx로 분기 변환
+
+```text
+executive-summary → html-report (mode=status, 기본)
+                  → (선택) pdf-writer       — 인쇄·결재용 PDF
+                  → (선택) docx-generator   — 편집 가능한 .docx
+                  → (선택) pptx-designer    — 이사회 슬라이드 1매
+                  → (선택) hwpx-writer      — 한국 공공기관 .hwpx
+```
 
 ## 트리거 키워드
 
@@ -129,19 +149,27 @@ version: 2.10.0
 
 ## 사용 예시
 
-**예시 1 — 변동분석 → 임원 1pager**
+**예시 1 — 변동분석 → 카톡 공유용 단일 HTML (기본 경로)**
 ```
-사용자: "이번 분기 변동분석 보고서를 임원 1pager로 만들어줘."
+사용자: "이번 분기 변동분석 보고서를 임원 1pager 만들어서 카톡으로 보낼 수 있게 해줘."
 → moai-finance/variance-analysis 결과 입력
-→ executive-summary가 K-IFRS 지표 우선 + What/So What/Now What 출력
-→ 후속: moai-office/pptx-designer로 슬라이드 1매
+→ executive-summary가 K-IFRS 지표 우선 + What/So What/Now What 마크다운 생성
+→ moai-content:html-report (mode=status)로 단일 HTML 렌더링
+→ 결과: 1개 .html 파일 (이미지·CSS·JS 인라인) → 카톡 첨부 가능
 ```
 
-**예시 2 — 주간 → C-level**
+**예시 2 — 변동분석 → 이사회 슬라이드 (변환 옵션)**
 ```
-사용자: "이번 주 weekly-report를 더 압축해서 C레벨 보고로."
-→ 6섹션 주간보고 → 1pager 6섹션으로 재구조화
-→ 의사결정 요청을 옵션 + 권고 형식으로 명시화
+사용자: "이번 분기 변동분석을 이사회 PPT 1매로 만들어줘."
+→ executive-summary → html-report (기본)
+→ pptx-designer로 변환 분기 → .pptx 슬라이드 1매
+```
+
+**예시 3 — 주간 → C-level HTML + 결재용 PDF 동시 출력**
+```
+사용자: "이번 주 weekly-report를 C레벨 보고로 압축하고 HTML·PDF 둘 다 줘."
+→ weekly-report 6섹션 → executive-summary 1pager 6섹션
+→ html-report (기본 HTML) + pdf-writer (변환 PDF) 병렬 출력
 ```
 
 ## 주의사항
@@ -160,10 +188,18 @@ version: 2.10.0
 - `moai-pm/weekly-report` — 주간보고
 - (외부 보고서)
 
-**After (출력 후처리)**:
+**Renderer (기본 출력 = 단일 HTML)**:
+- `moai-content/html-report` — **기본 렌더러**, mode=status (이미지·CSS·JS 인라인, 카톡 공유 가능)
+
+**Converter (선택 변환 분기)**:
+- `moai-office/pdf-writer` — 인쇄·결재용 PDF
+- `moai-office/docx-generator` — 편집 가능한 .docx
 - `moai-office/pptx-designer` — 이사회 슬라이드 1매
-- `moai-office/docx-generator` — PDF 1pager
+- `moai-office/hwpx-writer` — 한국 공공기관 .hwpx
+
+**Post-process**:
 - `moai-core/ai-slop-reviewer` — 격식체·정량 출처 검수
+- `moai-content/humanize-korean` — 한국어 자연스러움 보강
 
 **Alternative**:
 - `moai-pm/weekly-report` — 팀 단위 주간 (1pager 아닌 6섹션)
@@ -171,9 +207,12 @@ version: 2.10.0
 
 ## 관련 커맨드
 
-- (CLAUDE.local.md §3-3 등록 체인)
-  - 재무 → 경영진 보고: `variance-analysis → executive-summary → pptx-designer`
-  - 주간 → C-level: `weekly-report → executive-summary`
+대표 체인 (기본 = html-report 단일 HTML):
+- 재무 → 경영진 카톡 공유: `variance-analysis → executive-summary → ai-slop-reviewer → html-report (mode=status)`
+- 재무 → 이사회 슬라이드: `variance-analysis → executive-summary → html-report → pptx-designer`
+- 재무 → 결재용 PDF: `variance-analysis → executive-summary → html-report → pdf-writer`
+- 주간 → C-level HTML: `weekly-report → executive-summary → html-report (mode=status)`
+- 주간 → 공공기관 hwpx: `weekly-report → executive-summary → html-report → hwpx-writer`
 
 ## 출처
 

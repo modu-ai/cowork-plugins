@@ -37,7 +37,7 @@ Thariq 사상은 JS/CSS CDN의 환각·런타임 비결정 문제를 차단하�
 - **라이선스**: OFL-1.1 (SIL Open Font License)
 - **CDN**: jsDelivr (GitHub 미러, pinned v1.3.9)
 - **URL**: `https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css`
-- **포함 웨이트**: 100~900 (Variable Font)
+- **포함 웨이트**: 100-900 (Variable Font)
 - **preconnect 호스트**: `https://cdn.jsdelivr.net`
 
 ### Noto Serif KR + Noto Sans KR (Google Fonts)

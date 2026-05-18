@@ -84,10 +84,10 @@ design-spec:
 ### 2. Typography Roles
 | 역할 | 크기 | 용도 |
 |------|------|------|
-| display | 3rem~4.5rem | 히어로 헤드라인 |
-| headline | 1.5rem~2.5rem | 섹션 제목 |
-| body | 1rem~1.125rem | 본문 |
-| caption | 0.75rem~0.875rem | 보조 정보 |
+| display | 3rem-4.5rem | 히어로 헤드라인 |
+| headline | 1.5rem-2.5rem | 섹션 제목 |
+| body | 1rem-1.125rem | 본문 |
+| caption | 0.75rem-0.875rem | 보조 정보 |
 
 ### 3. Visual Thesis (한 문장)
 ```
@@ -104,7 +104,7 @@ Detail  → [explain | prove | deepen | convert] 중 택 1 (Support와 다른 �
 CTA     → 전환 유도 + 최종 행동
 ```
 
-### 5. Interaction Thesis (2~3개 모션)
+### 5. Interaction Thesis (2-3개 모션)
 ```
 예: "히어로 fade-up 시퀀스 → 섹션별 scroll-reveal → CTA pulse hover"
 예: "히어로 parallax 배경 → 기능 카드 stagger 입장 → 버튼 spring hover"

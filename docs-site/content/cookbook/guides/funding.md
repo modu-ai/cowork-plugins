@@ -7,7 +7,7 @@ geekdocBreadcrumb: true
 > 투자자가 보는 것은 "얼마나 큰 시장에서 얼마나 잘 팔 자신이 있는가"의 두 줄 답변입니다. 그 답변을 IR 덱·재무 모델·실적 데이터로 뒷받침하는 일련의 산출물을 cowork-plugins로 작성합니다.
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["market-analyst<br/>시장 분석"] --> B["strategy-planner<br/>사업 전략"]
     B --> C["investor-relations<br/>IR 덱 + 재무"]
     C --> D["pptx-designer<br/>슬라이드"]
@@ -42,9 +42,11 @@ flowchart LR
 
 ## 워크플로우 예시 — 시리즈 A IR 덱 1주 만에 완성
 
-```
-> "우리 회사 시리즈 A IR 덱 만들어줘. 회사 정보는 첨부 파일 회사 소개서 참고. 12장 분량으로 — 문제·솔루션·시장(TAM/SAM/SOM)·경쟁우위·트랙션·비즈니스 모델·고객·로드맵·팀·재무·요청 라운드·연락처 순서. 발표 자료 PPT로 저장해줘."
-```
+{{< terminal title="claude — cowork" >}}
+> 우리 회사 시리즈 A IR 덱 만들어줘. 회사 정보는 첨부 파일 회사 소개서 참고.
+> 12장 분량으로 — 문제·솔루션·시장(TAM/SAM/SOM)·경쟁우위·트랙션·비즈니스 모델·고객·로드맵·팀·재무·요청 라운드·연락처 순서.
+> 발표 자료 PPT로 저장해줘.
+{{< /terminal >}}
 
 체인:
 1. `market-analyst`
@@ -62,17 +64,20 @@ flowchart LR
 4. Cohort (고객 코호트별 매출)
 5. Funding need (자금 소요 + 사용 계획)
 
-```
-> "시리즈 A 투자 받기 위한 3년 P&L 모델 만들어줘. 월별로 36개월. assumptions 시트에 단가·MAU·CAC·인건비·임대료를 분리. P&L·cash-flow·cohort·funding need 5개 시트로 xlsx 저장."
-```
+{{< terminal title="claude — cowork" >}}
+> 시리즈 A 투자 받기 위한 3년 P&L 모델 만들어줘. 월별로 36개월.
+> assumptions 시트에 단가·MAU·CAC·인건비·임대료를 분리.
+> P&L·cash-flow·cohort·funding need 5개 시트로 xlsx 저장.
+{{< /terminal >}}
 
 ## 정부지원사업 병행
 
 VC 투자와 별도로 정부지원사업은 비희석 자금으로 매년 검토할 가치가 있습니다:
 
-```
-> "지금 시점에서 우리 회사가 받을 수 있는 정부지원사업 정리해줘. K-Startup, 창업도약패키지, 기보·신보 보증, 콘텐츠진흥원 등 — 마감일이 가까운 순으로 표로."
-```
+{{< terminal title="claude — cowork" >}}
+> 지금 시점에서 우리 회사가 받을 수 있는 정부지원사업 정리해줘.
+> K-Startup, 창업도약패키지, 기보·신보 보증, 콘텐츠진흥원 등 — 마감일이 가까운 순으로 표로.
+{{< /terminal >}}
 
 `kr-gov-grant` 스킬이 K-Startup·BIZINFO·나라장터·창업진흥원을 통합 검색해 마감 임박 순으로 정리합니다.
 

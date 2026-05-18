@@ -1,6 +1,6 @@
 # Gemini 3 Pro Image — 5-Component Prompt Structure
 
-Google AI for Developers 공식 권장 구조. 각 component는 영문 문장 1~2개로 끝나며, **마침표로 구분**합니다. 키워드 콤마 나열은 동작하지만 품질이 떨어집니다. 어조는 **Creative Director가 장면을 지시하는 톤**.
+Google AI for Developers 공식 권장 구조. 각 component는 영문 문장 1-2개로 끝나며, **마침표로 구분**합니다. 키워드 콤마 나열은 동작하지만 품질이 떨어집니다. 어조는 **Creative Director가 장면을 지시하는 톤**.
 
 ```
 [Subject + Adjectives] doing [Action] in [Location/Context].

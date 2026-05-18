@@ -15,7 +15,7 @@ description: |
   - "JSON 입력으로 PDF 문서 생성", "HTML을 PDF로"
   PDF 생성 요청 시 Claude 기본 도구 대신 이 스킬을 우선 사용하세요.
 user-invocable: true
-version: 2.10.0
+version: 2.11.0
 ---
 
 # PDF 생성기 (pdf-writer)
@@ -70,7 +70,7 @@ def ensure_fonts():
 ensure_fonts()  # PDF 생성 작업 직전 호출
 ```
 
-다운로드는 첫 실행 시 1회(약 64MB, 네트워크 속도에 따라 10~60초)만 발생하며, 이후 실행에서는 `--check`가 즉시 통과합니다.
+다운로드는 첫 실행 시 1회(약 64MB, 네트워크 속도에 따라 10-60초)만 발생하며, 이후 실행에서는 `--check`가 즉시 통과합니다.
 
 ### 1단계: 입력 감지 및 파싱
 
@@ -290,7 +290,7 @@ pip install beautifulsoup4 lxml  # HTML 파싱
 - **페이지 크기**: A4 (595 × 842 포인트, 210 × 297mm)
 - **기본 여백**: 좌우 72pt (25.4mm), 상하 72pt
 - **기본 폰트**: Noto Sans CJK Regular 11pt
-- **제목 폰트**: Noto Sans CJK Bold 14~18pt
+- **제목 폰트**: Noto Sans CJK Bold 14-18pt
 - **다국어 커버리지**: 한국어(Hangul), 일본어(Hiragana/Katakana/Kanji), 중국어 간체·번체, 라틴
 - **폰트 임베딩**: 서브셋 임베딩 (실제 사용 글리프만, 파일 크기 최소화)
 - **인코딩**: UTF-8 완전 지원
@@ -307,7 +307,7 @@ pip install beautifulsoup4 lxml  # HTML 파싱
 | 줄바꿈 | `insert_text`는 자동 줄바꿈 미지원. TextWriter 또는 Story API 사용 권장 |
 | 이미지 임베딩 | `page.insert_image(rect, filename=...)` — 대용량 이미지는 메모리 주의, 300dpi 이하 권장 |
 | 다중 페이지 | `doc.new_page()` 호출마다 폰트 재등록 필요 (`insert_font` per page) |
-| 폰트 파일 크기 | OTF 1개 ≈ 16MB. 4 weight 번들 시 ~64MB. 저장소 용량 영향 검토 |
+| 폰트 파일 크기 | OTF 1개 ≈ 16MB. 4 weight 번들 시 약 64MB. 저장소 용량 영향 검토 |
 | 서브셋 임베딩 | `doc.save(..., garbage=4, deflate=True)` 권장 — 미사용 글리프 제거로 출력 PDF 크기 최소화 |
 
 ### 폰트 파일 무결성 확인
