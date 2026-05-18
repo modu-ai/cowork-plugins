@@ -47,8 +47,12 @@ disablePathToLower = true
 
 # Geekdoc 사이트 파라미터
 [params]
-  version = "2.10.0"
-  releaseDate = "2026-05-17"
+  # ⚠️ SSOT (Single Source of Truth) — 버전 표기는 이 두 줄만 갱신하면
+  # 좌측 사이드바·footer·version-badge.html 등 모든 표시 위치에 자동 반영됨.
+  # 새 vX.Y.Z 릴리스 시 .claude-plugin/marketplace.json + plugin.json + SKILL.md 일괄 bump와 함께
+  # 반드시 이 두 줄을 동시에 갱신할 것 (feedback_version_bump_docs_checklist 참조).
+  version = "2.11.0"
+  releaseDate = "2026-05-18"
   geekdocRepo = "https://github.com/modu-ai/cowork-plugins"
   geekdocEditPath = "edit/main/docs-site/content"
   geekdocSearch = true
