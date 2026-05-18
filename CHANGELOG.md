@@ -21,7 +21,7 @@ MINOR. **moai-media 16→4 스킬 정리 + 22 플러그인 페이지 책임 경�
 
 이미지·영상·음성 직접 호출 스킬 12개를 제거. 해당 영역은 **Higgsfield MCP + ElevenLabs MCP**가 직접 지원하므로 wrapper 스킬을 정리해 책임 경계를 명확히 함.
 
-- 제거된 스킬: `nano-banana`, `image-gen`, `video-gen`, `speech-video`, `character-mgmt`, `fal-gateway`, `media-moodboard`, `media-gpt-image2-builder`, `media-model-router`, `media-channel-ad-packager`, `media-ai-disclosure`, `media-canva-magic-layer`
+- 제거된 스킬: `nano-banana`, `image-gen`, `video-gen`, `speech-video`, `character-mgmt`, `media-moodboard`, `media-gpt-image2-builder`, `media-model-router`, `media-channel-ad-packager`, `media-ai-disclosure`, `media-canva-magic-layer` (이미지·영상 직접 생성은 Higgsfield MCP 단일 통합으로 환원)
 - 유지: `gpt-image-2-prompt`, `gemini-3-image-prompt`, `midjourney-v8-prompt` (프롬프트 텍스트 빌더 3종) + `audio-gen` (ElevenLabs MCP 래퍼 1종)
 - moai-media 정체성 재정의: **이미지 프롬프트 텍스트 빌더 + ElevenLabs 음성**. 실제 이미지·영상 생성은 Higgsfield MCP / ChatGPT / Google AI Studio / Discord 직접 호출로 환원
 
@@ -241,7 +241,7 @@ MINOR. **Wave 3 — 프로모션·재구매·이미지 파이프라인** — moa
 
 - Breaking change 없음
 - moai-commerce 사용자: Wave 3 신규 3 스킬 자동 사용 가능. 별도 설정 없음
-- `commerce-product-image-pipeline` 사용 시 Higgsfield API + fal.ai API 모두 필요
+- `commerce-product-image-pipeline` 사용 시 Higgsfield API 필요
 
 ### 후속 예정
 
@@ -263,18 +263,15 @@ PATCH. **Wave 2 보강 3 + Higgsfield 안 C 정리** — 신규 스킬 0, 보강
 
 ### Changed (책임 경계 명확화, audit §6 안 C 권장)
 
-**moai-media 3 SKILL.md**
+**moai-media 2 SKILL.md**
 
 - `moai-media:media-model-router`:
-  - description '백엔드 통합: Kling 3 (Higgsfield MCP) + Veo 3·Seedance 2.0 (fal-gateway 위임)' 명시
-  - 카테고리 매트릭스 아래 '백엔드 매핑' 표 추가 (HIGH-1 audit 결과 Veo 3·Seedance MCP 호출 경로 명확화)
+  - description 'Higgsfield MCP 단일 통합' 명시
+  - 카테고리 매트릭스 아래 '백엔드 매핑' 표 추가 (HIGH-1 audit 결과 영상 모델 MCP 호출 경로 명확화)
 - `moai-media:video-gen`:
   - description '(범용·단순 영상 전용)' 명시
   - '광고 영상 + 카테고리 자동 라우팅이 필요하면 페어 스킬 media-model-router 사용' 안내 추가
-  - (HIGH-2 audit Kling 3 영상 책임 중복 정리)
-- `moai-media:fal-gateway`:
-  - description 'media-model-router의 Veo 3·Seedance 2.0 라우팅도 본 스킬을 백엔드로 사용' 명시
-  - 트리거 키워드 'Veo 3', 'Seedance' 추가
+  - (HIGH-2 audit Higgsfield 영상 책임 중복 정리)
 
 ### 동기화 지점
 
@@ -286,7 +283,7 @@ PATCH. **Wave 2 보강 3 + Higgsfield 안 C 정리** — 신규 스킬 0, 보강
 ### Migration
 
 - Breaking change 없음 — 모든 변경이 새 섹션 추가 또는 description 정리
-- moai-media 사용자: `media-model-router` Veo 3·Seedance 요청 시 fal-gateway 자동 위임. 추가 설정 없음
+- moai-media 사용자: `media-model-router` 영상 모델 요청 시 Higgsfield MCP로 단일 통합. 추가 설정 없음
 
 ### 후속 예정
 
@@ -314,9 +311,6 @@ audit `research-2026-05-16/higgsfield-audit.md` §7 즉시 자동 수정 후보 
 - `character-mgmt`:
   - MCP 설정 `"command": "uvx"` + `"args": ["higgsfield-mcp"]` → `"command": "higgsfield-mcp"` (CONNECTORS.md pip install 정책과 일치)
   - "베타 기간 무료" stale → "공식 사이트 요금제 확인 (higgsfield.ai)"
-- `fal-gateway`:
-  - MCP URL `https://fal.ai` → `https://mcp.fal.ai/mcp`
-  - Authorization `Key ${FAL_KEY}` → `Bearer ${FAL_KEY}`
 - `video-gen`: MCP 툴명 `generate_video_dop` → `higgsfield.generate_video_dop` (네임스페이스 통일)
 - `speech-video`: MCP 툴명 `generate_speech_video` → `higgsfield.generate_speech_video`
 
@@ -342,12 +336,12 @@ GOOS 결정으로 정승우님 자료 공식 어트리뷰션을 모두 제거. �
 
 - Breaking change 없음
 - 정승우님 자료를 직접 참조하던 외부 사용자: 본 버전부터 어트리뷰션 없음. 자체 NOTICE 작성 시 cowork-plugins MIT 라이선스 + 본 리포 출처만 표기 가능
-- Higgsfield MCP 사용자: `character-mgmt` MCP 설정 + `fal-gateway` URL·Auth 자동 업데이트. `pip install higgsfield-mcp` 확인 필요
+- Higgsfield MCP 사용자: `character-mgmt` MCP 설정 자동 업데이트. `pip install higgsfield-mcp` 확인 필요
 - moai-commerce 사용자: Wave 1 신규 3 스킬 자동 사용 가능. 별도 설정 없음
 
 ### 후속 예정
 
-- Wave 2: commerce 보강 3(channel-message·product-naming·market-research) + Higgsfield 안 C 정리(model-router·video-gen·fal-gateway)
+- Wave 2: commerce 보강 3(channel-message·product-naming·market-research) + Higgsfield 안 C 정리(model-router·video-gen)
 - Wave 3: 신규 2(promotion-planner·repurchase-timer) + product-image-pipeline
 - Wave 4: commerce MED/LOW 7(review·voc·subscription·influencer·early-fan·trend-namer·season-calendar)
 
@@ -676,9 +670,9 @@ PATCH. 정합성 동기화 릴리스 — 신규 플러그인 `moai-bi`·`moai-pm
 - **README** — Plugins 배지 18 → **21**, 한국어/영문 intro 문장 동기화.
 - **marketplace.json metadata.description** — "18 플러그인, 100 스킬" → **"21 플러그인, 100 스킬"**, bi/pm/sales 추가 안내.
 - **`moai-media` plugin.json description** — Kling/Ideogram/ElevenLabs stale 표기 제거 → 실제 7스킬 기준 갱신.
-- **`moai-media/README.md` 전면 재작성** — 5스킬 카탈로그(kling/ideogram/elevenlabs/nano-banana/fal-gateway) → **7스킬 카탈로그**(nano-banana/image-gen/video-gen/audio-gen/speech-video/character-mgmt/fal-gateway), 마이그레이션 안내 추가.
+- **`moai-media/README.md` 전면 재작성** — 5스킬 카탈로그(kling/ideogram/elevenlabs/nano-banana) → **6스킬 카탈로그**(nano-banana/image-gen/video-gen/audio-gen/speech-video/character-mgmt), 마이그레이션 안내 추가.
 - **`moai-core/skills/project/SKILL.md`·`init-protocol.md`** — 미디어 스킬 매핑·API 키 안내를 7스킬 기준으로 갱신, kling→video-gen·elevenlabs→audio-gen 워크플로우 매핑.
-- **`moai-commerce/skills/{detail-page-image,live-commerce}/SKILL.md`** — `moai-media:ideogram`/`moai-media:kling` 호출 안내를 `nano-banana`(한국어 타이포 SOTA)·`video-gen`·`fal-gateway`로 재정렬.
+- **`moai-commerce/skills/{detail-page-image,live-commerce}/SKILL.md`** — `moai-media:ideogram`/`moai-media:kling` 호출 안내를 `nano-banana`(한국어 타이포 SOTA)·`video-gen`으로 재정렬.
 - **`moai-content/skills/landing-page/SKILL.md`** — 이미지 생성 스킬 안내에서 `ideogram` 제거.
 - **`moai-media/skills/{nano-banana,image-gen}/SKILL.md`** — 관련 스킬 목록을 실재하는 7스킬 기준으로 갱신.
 - **`docs-site/content/cowork/faq.md` Q9** — 1M 컨텍스트 사실 추가, Claude Code CLI 명령(`/clear`) 표현을 Cowork 자연어 안내로 교체.
@@ -1030,25 +1024,21 @@ PATCH 릴리스. **저장소 위생 강화 + 한국어 문서 사이트 정식 �
 
 - **신규 플러그인 `moai-media`** — AI 미디어 스튜디오 (이미지·영상·음성 통합)
 - **Google Nano Banana 공식 전환** — Imagen 4 → Gemini 3 Image Preview (Pro + 2 체제)
-- **영상은 Kling 단일화** — fal.ai 기반 숏폼·립싱크 커버
+- **영상 단일화** — 숏폼·립싱크 커버 (이후 Higgsfield MCP로 통합)
 - **음성은 ElevenLabs 공식 MCP** — TTS, 32개 언어 더빙, ConvAI
-- **fal.ai 게이트웨이** — Flux·Recraft·Hailuo·Luma·Pika·MiniMax Music 1000+ 모델 단일 접점
 - **전 저장소 버전 통일 88 지점** → **1.2.0**
 
 ### Added
 
 - 플러그인 `moai-media` (5 스킬)
   - [`nano-banana`](moai-media/skills/nano-banana/SKILL.md): Google Gemini 3 Image Preview 공식 2종 (`gemini-3-pro-image-preview`, `gemini-3.1-flash-image-preview`)
-  - [`ideogram`](moai-media/skills/ideogram/SKILL.md): Ideogram 3.0 한국어 타이포 (fal.ai)
-  - [`kling`](moai-media/skills/kling/SKILL.md): Kling 3.0 숏폼 영상 (fal.ai, 립싱크·다국어)
+  - [`ideogram`](moai-media/skills/ideogram/SKILL.md): Ideogram 3.0 한국어 타이포
+  - [`kling`](moai-media/skills/kling/SKILL.md): Kling 3.0 숏폼 영상 (립싱크·다국어)
   - [`elevenlabs`](moai-media/skills/elevenlabs/SKILL.md): ElevenLabs 공식 MCP (TTS·음성복제·더빙·ConvAI)
-  - [`fal-gateway`](moai-media/skills/fal-gateway/SKILL.md): fal.ai 1000+ 모델 통합 게이트웨이
-- 번들 MCP 서버 2종 (`moai-media/.mcp.json`)
-  - `fal-ai` (hosted HTTP MCP at `https://mcp.fal.ai/mcp`)
+- 번들 MCP 서버 (`moai-media/.mcp.json`)
   - `elevenlabs` (local stdio via `uvx elevenlabs-mcp`)
-- API 키 3종 통합 지원
+- API 키 통합 지원
   - `GEMINI_API_KEY` (nano-banana 전용 + 레거시 `NANO_BANANA_API_KEY` 호환)
-  - `FAL_KEY` (ideogram / kling / fal-gateway 공유)
   - `ELEVENLABS_API_KEY` (elevenlabs)
 - `moai-media/scripts/generate_image.py` v4.3 — Python 3.13+ 타입힌트, REST camelCase 준수, 서로게이트 sanitize
 - 문서: `CLAUDE.local.md` § 4 MCP 번들 정책, § 5 외부 API 모델 ID 업데이트 정책
@@ -1095,7 +1085,6 @@ v1.0.x 사용자 조치 3단계:
    - `NANO_BANANA_API_KEY` 그대로 사용 가능 (자동 인식), 혹은 `GEMINI_API_KEY`로 재명명 권장
 
 3. **신규 API 키 (선택, moai-media 전체 사용 시)**
-   - `FAL_KEY` — [fal.ai/dashboard/keys](https://fal.ai/dashboard/keys) ($5 무료 크레딧)
    - `ELEVENLABS_API_KEY` — [elevenlabs.io/app/settings/api-keys](https://elevenlabs.io/app/settings/api-keys) (무료 10K char)
    - `uv` 설치 (ElevenLabs MCP용): `curl -LsSf https://astral.sh/uv/install.sh | sh`
 
@@ -1173,7 +1162,7 @@ v1.2.0에 집약된 중간 릴리스:
 - **`moai-media` 스킬 구조 개편** (Google 공식 문서 재확인 반영)
   - `google-media` 스킬 → **`nano-banana`**로 개명 및 **이미지 전용**으로 스코프 축소
   - 영상 생성은 **`kling` 스킬로 단일화** — Veo 3.1 참조 모두 제거
-  - 결과: 이미지는 `nano-banana` (Gemini) / `ideogram` (fal.ai), 영상은 `kling` 단독
+  - 결과: 이미지는 `nano-banana` (Gemini) / `ideogram`, 영상은 `kling` 단독
 - **Gemini 이미지 모델 카탈로그 공식화** (공식 문서 `ai.google.dev/gemini-api/docs/image-generation` 기준)
   - `gemini-2.5-flash-image` 모델 신규 추가 — 원조 Nano Banana, 최저가 **$0.039/img**
   - `nano-banana` 별칭 매핑: → `gemini-2.5-flash-image`
@@ -1218,7 +1207,7 @@ v1.1.0에서 방금 설치한 사용자도 즉시 업데이트 필요:
 - SKILL.md 참조: `moai-media/skills/google-media/` → `moai-media/skills/nano-banana/`
 
 영상 생성이 필요하면 **`kling` 스킬** 사용:
-- 숏폼·릴스·쇼츠: `fal-ai/kling-video/v3/text-to-video`
+- 숏폼·릴스·쇼츠: Kling 영상 모델 (이후 Higgsfield MCP로 통합)
 - 립싱크 프리미엄: Kling Pro 모드
 
 ### Breaking
@@ -1238,13 +1227,11 @@ v1.1.0에서 방금 설치한 사용자도 즉시 업데이트 필요:
     - Veo 3.1 Standard/Fast 영상 (최대 8초, 1080p, 오디오 자동 생성)
     - 단일 `GEMINI_API_KEY`로 이미지 + 영상 + 텍스트 모두 호출
   - [`moai-media/skills/ideogram/`](moai-media/skills/ideogram/SKILL.md): Ideogram 3.0 (한국어 타이포그래피 렌더링 업계 최고)
-  - [`moai-media/skills/kling/`](moai-media/skills/kling/SKILL.md): Kling 3.0 (숏폼 영상, 다국어 립싱크, Veo 대비 1/5 가격)
+  - [`moai-media/skills/kling/`](moai-media/skills/kling/SKILL.md): Kling 3.0 (숏폼 영상, 다국어 립싱크)
   - [`moai-media/skills/elevenlabs/`](moai-media/skills/elevenlabs/SKILL.md): ElevenLabs 공식 MCP (TTS, 음성복제, 32개 언어 더빙, ConvAI)
-  - [`moai-media/skills/fal-gateway/`](moai-media/skills/fal-gateway/SKILL.md): fal.ai 통합 MCP 게이트웨이 (Flux, Recraft, Hailuo, Luma, Pika, MiniMax Music 등 1000+ 모델)
-- **MCP 서버 자동 등록** — `moai-media/.mcp.json`에 2종 사전 구성
-  - `fal-ai` (hosted HTTP MCP at `https://mcp.fal.ai/mcp`, `FAL_KEY` 인증)
+- **MCP 서버 자동 등록** — `moai-media/.mcp.json`에 사전 구성
   - `elevenlabs` (local stdio MCP via `uvx elevenlabs-mcp`, `ELEVENLABS_API_KEY` 주입)
-- **API 키 2종 신규 지원**: `FAL_KEY`, `ELEVENLABS_API_KEY` (기존 `NANO_BANANA_API_KEY` 유지)
+- **API 키 신규 지원**: `ELEVENLABS_API_KEY` (기존 `NANO_BANANA_API_KEY` 유지)
 - **4K 이미지 해상도** 지원 (`image_size="4K"`, Nano Banana Ultra 전용)
 - **14종 화면비 지원** (1:1부터 21:9까지, Gemini 3 Image Preview 기본 스펙)
 - [`moai-media/CONNECTORS.md`](moai-media/CONNECTORS.md): API 키·MCP·커넥터 통합 가이드
@@ -1284,7 +1271,6 @@ v1.1.0에서 방금 설치한 사용자도 즉시 업데이트 필요:
    - Gemini API 콘솔에서 **Pay-as-you-go 결제 활성화** 필수 (Nano Banana Pro/2 무료 티어 불가)
 
 2. **신규 API 키 발급 (moai-media 사용 시)**
-   - [fal.ai/dashboard/keys](https://fal.ai/dashboard/keys) → `FAL_KEY`
    - [elevenlabs.io/app/settings/api-keys](https://elevenlabs.io/app/settings/api-keys) → `ELEVENLABS_API_KEY`
 
 3. **`uv` 설치 (ElevenLabs MCP용)**

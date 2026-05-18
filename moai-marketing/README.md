@@ -70,7 +70,7 @@
 | **이커머스 광고·톡톡·푸시 카피** | `moai-commerce:commerce-copywriting` |
 | **상세페이지 카피 (13섹션)** | `moai-commerce:detail-page-copy` |
 | **상세페이지 합성 이미지 (1080×12720)** | `moai-commerce:detail-page-image` |
-| **AI 이미지·영상 생성** | Higgsfield MCP · fal-ai MCP 직접 호출 (프롬프트 빌더 `moai-media:gpt-image-2-prompt`·`gemini-3-image-prompt`·`midjourney-v8-prompt`) |
+| **AI 이미지·영상 생성** | Higgsfield MCP 직접 호출 (프롬프트 빌더 `moai-media:gpt-image-2-prompt`·`gemini-3-image-prompt`·`midjourney-v8-prompt`) |
 | **이커머스 도메인 (시장조사·JTBD·상품명·채널 메시지)** | `moai-commerce:commerce-*` |
 | **사업·OKR·BMC 단위 전략(1-5년)** | `moai-business:strategy-planner` |
 | **개인 브랜드 콘텐츠 채널 전략** | `moai-marketing:personal-branding` (이 플러그인) |

@@ -269,12 +269,12 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
   </div>
   <div class="cw-rel">
     <div class="ver-row">
-      <span class="ver">v2.11.0</span>
-      <span class="date">2026-05-18</span>
+      <span class="ver">v2.10.0</span>
+      <span class="date">2026-05-17</span>
       <span class="badge">MINOR</span>
     </div>
-    <div class="ttl"><strong>moai-media 정리 + 강의 컨텍스트 완전 제거 + docs-site 일관성 정비</strong></div>
-    <div class="desc">Higgsfield·ElevenLabs MCP가 직접 지원하는 12 스킬을 moai-media에서 제거(16→4), moai-commerce·moai-media·moai-education 페이지를 범용 플러그인으로 재정의, moai-bi는 html-report 중심 통합, moai-career는 한국 취준생·재직자 2026 데이터로 재설계. `~` 물결 strikethrough 정정·mermaid 가로→세로·GOAL+AskUserQuestion 골격 통일·terminal shortcode 일관성까지 사용자 화면 가시 이슈 일괄 정비. <strong>22 플러그인 유지 · 155 → 143 스킬 · 동기화 지점 178 → 166</strong>. Breaking change 없음.</div>
+    <div class="ttl">신규 플러그인 <strong>moai-book</strong> — 한국 출판사 제출용 원고 풀스택 8 스킬</div>
+    <div class="desc">도서 컨셉서·페르소나·목차·저자 약력·출판 제안서·출판사 매칭·본문·퇴고 8 단계가 단일 플러그인 안에서 체이닝. 실용서·인문·기술·소설 4 장르 자동 분기. KPIPA·국립국어원·도서정가제·교보문고·알라딘·예스24 + 30+ 한국 출판사 라이브러리 + 자비 출판 5 플랫폼. <strong>21 → 22 플러그인 · 147 → 155 스킬 · 동기화 지점 169 → 178</strong>.</div>
     <ul>
       <li><strong>book-concept-planner / book-target-reader / book-outline-designer / book-author-bio</strong> — 컨셉서·USP·페르소나·JTBD·목차·저자 약력 (1-4 단계)</li>
       <li><strong>book-proposal-writer / book-publisher-matcher</strong> — A4 12-20장 출판 제안서 + 30+ 출판사 Top 5 추천 + 차순위 시나리오 (5-6 단계)</li>
@@ -336,12 +336,12 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
       <span class="badge">MINOR + PATCH</span>
     </div>
     <div class="ttl">moai-commerce 신규 3 + Higgsfield MCP 정정 + 어트리뷰션 정책 변경</div>
-    <div class="desc">한국 정통망법 광고 메시지 자동 게이트(과태료 3,000만 원 회피) · 앱 푸시 4원칙·30+ 브랜드 레퍼런스 · LTV/CAC 6대 지표·D2C 벤치마크 등 moai-commerce 신규 3 스킬. Higgsfield MCP 설정·툴명·요금 표기 6건 정정(character-mgmt·fal-gateway·video-gen·speech-video). 정승우님 자료 공식 출처 모두 제거(내용·구조 보존, GOOS 컨펌). 130 → <strong>134 스킬</strong>, 동기화 지점 152 → 156.</div>
+    <div class="desc">한국 정통망법 광고 메시지 자동 게이트(과태료 3,000만 원 회피) · 앱 푸시 4원칙·30+ 브랜드 레퍼런스 · LTV/CAC 6대 지표·D2C 벤치마크 등 moai-commerce 신규 3 스킬. Higgsfield MCP 설정·툴명·요금 표기 6건 정정(character-mgmt·video-gen·speech-video). 정승우님 자료 공식 출처 모두 제거(내용·구조 보존, GOOS 컨펌). 130 → <strong>134 스킬</strong>, 동기화 지점 152 → 156.</div>
     <ul>
       <li><strong>commerce-marketing-compliance-kr (신규)</strong> — 한국 정통망법 광고·정보성 메시지 자동 게이트(BLOCK/PASS). 6대 점검(광고성 판정·옵트인·야간 발송 21시-익일 8시·(광고) 표기·무료 수신거부·발신자 정보) + 위반 조항(제50조 1·3·4항·제76조). 1회 위반 최대 3,000만 원 + 책임자 1년 이하 징역 회피</li>
       <li><strong>commerce-push-planner (신규)</strong> — 앱 푸시 4원칙(왜/언제/누구에게/어떻게) + Timely·Personal·Actionable 3요소 + 카피 변형 3안(오늘만 vs 매일 / 누구나 vs 너에게만 / 숫자 vs 게이미피케이션) + 한국 30+ 브랜드 레퍼런스(토스·배민·오늘의집·쿠팡·에이블리·지그재그·29CM·인프런·야놀자·퍼블리·넷플릭스·듀오링고 등)</li>
       <li><strong>commerce-ltv-cac-architect (신규)</strong> — CAC→재구매율→구매주기→ARPU→공헌이익→LTV 6대 지표 연결 + LTV/CAC ratio 4구간(&lt;1·1-3·3-5·≥5) + 광고 의존도 진단(30%+ 위험 → 11-15% 정상) + 광고 의존도 탈출 6단계 로드맵 + 한국 D2C 카테고리 벤치마크(화장품·식품·패션·가전·펫·구독 SaaS)</li>
-      <li><strong>Higgsfield MCP 정정 6건</strong> — character-mgmt MCP command + 요금 표기 정정, fal-gateway URL `mcp.fal.ai/mcp` + Authorization `Bearer`, video-gen·speech-video MCP 툴명 `higgsfield.*` 네임스페이스 통일</li>
+      <li><strong>Higgsfield MCP 정정 6건</strong> — character-mgmt MCP command + 요금 표기 정정, video-gen·speech-video MCP 툴명 `higgsfield.*` 네임스페이스 통일</li>
       <li><strong>v2.6.1 PATCH 보강 3</strong> — channel-message AARRR 5단계 × 한국 30+ 브랜드 풀스택, product-naming 6질문 + 데이터랩 4단계 워크플로우, market-research 4축 세분화 + USP 3 차별 축. 모두 새 섹션 추가, Breaking 없음</li>
       <li><strong>어트리뷰션 정책 변경</strong> — 정승우님 자료 공식 출처 클로즈 모두 제거(GOOS 컨펌). 내용·구조·버전 표기는 보존하여 사용자 경험 무변동(NOTICE·14 SKILL.md·2 README)</li>
     </ul>

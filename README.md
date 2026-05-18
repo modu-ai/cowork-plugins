@@ -138,9 +138,8 @@ Wave 1(v2.6.0) 직후 즉시 보강. 신규 스킬 0 + 보강 3 + 정리 3. 134 
   - `commerce-market-research` — 시장 세분화 4축 + 5축 평가 + USP 3 차별 축 추출 + 다운스트림 일관성 매핑 (MD 11년차 관점)
 
 - **moai-media 책임 경계 명확화** (audit §6 안 C 권장)
-  - `media-model-router` — 백엔드 매핑 표 추가 (Kling 3=Higgsfield MCP · Veo 3·Seedance 2.0=fal-gateway 위임). HIGH-1 Veo 3·Seedance MCP 호출 경로 명확화
+  - `media-model-router` — 백엔드 매핑 표 추가 (Higgsfield MCP 단일 통합). HIGH-1 영상 모델 MCP 호출 경로 명확화
   - `video-gen` — '(범용·단순 영상 전용)' description 명시 + 광고 영상 + 카테고리 라우팅은 media-model-router로 안내
-  - `fal-gateway` — 'media-model-router의 Veo 3·Seedance 2.0 라우팅 백엔드' description 명시 + 트리거 키워드 'Veo 3·Seedance' 추가
 
 - **Breaking change 없음** — 모든 변경이 새 섹션 추가 또는 description 정리
 
@@ -167,14 +166,13 @@ vault 1,329 노트 + Higgsfield MCP audit + 정승우님 자료 어트리뷰션 
 
 - **moai-media Higgsfield Quick Wins 6** — audit 보고서 §7 즉시 자동 수정
   - `character-mgmt` MCP 설정 uvx → higgsfield-mcp 직접 실행, 베타 무료 stale → 공식 사이트 안내
-  - `fal-gateway` MCP URL `https://fal.ai` → `https://mcp.fal.ai/mcp`, Auth `Key` → `Bearer`
   - `video-gen`·`speech-video` MCP 툴명 네임스페이스 통일 (`higgsfield.*` prefix)
 
 - **어트리뷰션 정책 변경** — 정승우님 자료 공식 어트리뷰션을 모두 제거. NOTICE.md 정승우님 자료 섹션 + 13 스킬 본문의 출처 인용 57회 일괄 제거. 출처 클로즈만 제거하고 내용·구조·버전 표기는 그대로 보존하여 사용자 경험 무변동.
 
 - 마켓플레이스 스킬 수: 130 → **134개** (+3 commerce 신규 + v2.5.x 누적). 동기화 지점 152 → **156개** (marketplace 1 + plugin.json 21 + SKILL.md 134) 모두 v2.6.0
 
-- **후속 예정** (Wave 2-4) — Wave 2 commerce 보강 3(channel-message·product-naming·market-research) + Higgsfield 안 C 정리(model-router·video-gen·fal-gateway). Wave 3 신규 2 + product-image-pipeline. Wave 4 commerce MED/LOW 7.
+- **후속 예정** (Wave 2-4) — Wave 2 commerce 보강 3(channel-message·product-naming·market-research) + Higgsfield 안 C 정리(model-router·video-gen). Wave 3 신규 2 + product-image-pipeline. Wave 4 commerce MED/LOW 7.
 
 <details>
 <summary><b>📜 이전: v2.5.0 — "메타 광고 audit 3-Layer 인프라"</b></summary>
@@ -655,7 +653,7 @@ Airtable/Google Sheets 커넥터로 데이터를 직접 분석합니다.
 **사용 API 키**: `ELEVENLABS_API_KEY`(audio-gen), `HIGGSFIELD_API_KEY`+`HIGGSFIELD_SECRET`(Higgsfield MCP 직접 사용 시).
 **번들 MCP 2종**: `elevenlabs`(local stdio via `uvx`), `higgsfield`(local stdio).
 
-> **변경 이력**: v2.11.1부터 이미지·영상 직접 생성은 **Higgsfield MCP로 단일 통합**되었습니다. fal-ai MCP·`fal-gateway` 스킬은 중복 채널 정리 차원에서 제거되었습니다. v2.11.0에서 wrapper 스킬 12개(`nano-banana`·`image-gen`·`video-gen`·`speech-video`·`character-mgmt`·`fal-gateway`·`media-moodboard`·`media-gpt-image2-builder`·`media-model-router`·`media-channel-ad-packager`·`media-ai-disclosure`·`media-canva-magic-layer`)를 제거하고 외부 MCP 직접 사용으로 환원한 흐름의 연장선입니다.
+> **변경 이력**: 이미지·영상 직접 생성은 **Higgsfield MCP로 단일 통합**되었습니다. v2.11.0에서 wrapper 스킬 12개(`nano-banana`·`image-gen`·`video-gen`·`speech-video`·`character-mgmt`·`media-moodboard`·`media-gpt-image2-builder`·`media-model-router`·`media-channel-ad-packager`·`media-ai-disclosure`·`media-canva-magic-layer` 등)를 제거하고 외부 MCP 직접 사용으로 환원했습니다.
 
 ---
 
