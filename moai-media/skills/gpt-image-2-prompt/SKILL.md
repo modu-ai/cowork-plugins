@@ -28,7 +28,7 @@ OpenAI GPT-image-2 모델은 자연어를 art-director 어조로 이해하는 re
 - **프리셋 + 미세조정**: 4개 프리셋(제품샷·인물·일러스트·풍경)으로 학습 곡선을 낮추고, 프리셋별 3-4개 미세조정 질문으로 디테일을 확보합니다.
 - **텍스트 verbatim 보장**: 이미지에 들어갈 글자는 따옴표·ALL CAPS·verbatim 지시로 GPT-image-2의 95%+ 텍스트 렌더링 정확도를 활용합니다.
 
-페어 스킬 `image-gen`·`nano-banana`·`media-gpt-image2-builder`는 실제 이미지를 API로 생성하는 반면, 본 스킬은 **프롬프트 텍스트만** 산출합니다. 사용자가 원하는 도구(ChatGPT 웹, Sora, OpenAI Playground, fal.ai 등)에서 직접 복붙해 사용하세요.
+본 스킬은 **프롬프트 텍스트만** 산출합니다. 사용자가 원하는 도구(ChatGPT 웹, Sora, OpenAI Playground 등)에서 직접 복붙해 사용하거나, **Higgsfield MCP**(Soul) 직접 호출로 이미지를 생성합니다.
 
 ## 트리거 키워드
 
@@ -153,10 +153,9 @@ GPT 이미지 프롬프트 ChatGPT 이미지 프롬프트 GPT-image-2 프롬프�
 - 3개는 같은 장면이지만 어조가 다릅니다 (자연어 단락 / 5-component 문장 / 키워드+파라미터)
 - 텍스트 정확도: GPT 95%+, Gemini 우수, MJ V8에서 개선됨
 
-### 🔗 페어 스킬 (실제 이미지 생성)
-- `image-gen` — 자동 라우팅 (Higgsfield/fal.ai/Gemini)
-- `nano-banana` — Gemini 3 Pro Image 직접 호출 (한글 타이포 특화)
-- `media-gpt-image2-builder` — GPT Image 2 광고 5장 세트 (Day3 S2 강의 전용)
+### 🔗 실제 이미지 생성
+- **Higgsfield MCP**(Soul) — 시네마틱 이미지·캐릭터 단일 통합 직접 호출
+- ChatGPT 웹·Sora·OpenAI Playground 직접 복붙
 ```
 
 ### 편집 워크플로우 (선택)
@@ -227,7 +226,6 @@ Constraints: <no extra objects, no redesign, no logo drift, no watermark>
 
 업계 참고:
 
-- [fal.ai — GPT Image 2 Prompting Guide and Examples](https://fal.ai/learn/tools/prompting-gpt-image-2)
 - [Atlabs AI — The Ultimate GPT Image 2 Prompting Guide (2026)](https://www.atlabs.ai/blog/the-ultimate-gpt-image-2-prompting-guide-how-to-use-openai%E2%80%99s-best-image-model-2026)
 
 위 출처를 기반으로 6-Block 구조, quality/size 권장값, 편집 2열 로직, 텍스트 verbatim 규칙을 도출했습니다.

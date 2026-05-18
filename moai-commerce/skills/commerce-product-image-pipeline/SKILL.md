@@ -181,7 +181,7 @@ version: 2.11.0
 | + 캐릭터 등록 (최초 1회) | character-mgmt | + ₩0 (계정 플랜) |
 | **총** | 풀세트 | **₩2,300-4,000 / 상품 1건** |
 
-> 비용은 Higgsfield·fal.ai 종량제 기준. 실제 가격은 공식 사이트 확인 (higgsfield.ai · fal.ai/dashboard).
+> 비용은 Higgsfield 종량제 기준. 실제 가격은 공식 사이트 확인 (higgsfield.ai).
 
 ## 워크플로우
 
@@ -222,8 +222,7 @@ version: 2.11.0
 - **13섹션 합성 PNG 1장**: `detail-page-image` 사용
 - **단일 이미지 생성**: `image-gen` 직접 호출
 - **단일 영상 생성**: `video-gen` 직접 호출
-- **광고 영상 카테고리 라우팅**: `media-model-router` 사용 (광고 전용)
-- **이미지 이상의 AI 모델 (Flux·Recraft 등)**: `fal-gateway` 사용
+- **광고 영상 카테고리 라우팅**: **Higgsfield MCP**(DOP) 직접 호출
 
 ## 참고 자료
 

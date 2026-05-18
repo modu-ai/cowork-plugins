@@ -156,16 +156,14 @@ python scripts/compose.py \
 
 - `moai-commerce:detail-page-copy` — 13섹션 카피 생성 (이 스킬 입력)
 - `moai-commerce:product-photo-brief` — 상품 사진 사전 분석
-- `moai-media:nano-banana` — 13섹션 이미지 생성 백엔드 (한국어 타이포 SOTA)
-- `moai-media:fal-gateway` — Ideogram·Recraft 등 fal.ai 모델 보조 활용
+- 13섹션 이미지 생성 — **Higgsfield MCP**(Soul·시네마틱 이미지·캐릭터) 직접 호출
 - `moai-commerce:marketplace-coupang` — 채널별 이미지 규격 가이드
 
 ## 이 스킬을 사용하지 말아야 할 때
 
 - 카피만 필요할 때: `detail-page-copy` 단독 사용
-- 단일 상품 컷만 필요할 때: `moai-media:nano-banana` 직접 호출
-- 한국어 타이포 강조: `moai-media:nano-banana` (Gemini 3 Image, 한국어 타이포 SOTA)
-- 영상 생성: `moai-media:video-gen` (fal.ai Kling·Hailuo 등 백엔드)
+- 단일 상품 컷만 필요할 때: **Higgsfield MCP** 직접 호출
+- 영상 생성: **Higgsfield MCP**(DOP·Soul) 직접 호출
 - shadcn/ui 기반 웹 상세페이지: `moai-content:product-detail`
 
 ## 라이선스

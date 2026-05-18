@@ -98,7 +98,7 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
   <a class="cw-card" href="/plugins/moai-media/">
     <div class="head"><div class="icon">미</div><span class="count-pill">4개 스킬</span></div>
     <div><div class="title">미디어<span class="new-tag">v2.11</span></div><div class="slug">moai-media</div></div>
-    <div class="desc">이미지 프롬프트 텍스트 빌더 3종(GPT-image-2·Gemini 3·Midjourney v8 공식 가이드) + ElevenLabs 32개 언어 음성. 실제 이미지·영상 생성은 외부 MCP(Higgsfield·fal-ai) 직접 사용</div>
+    <div class="desc">이미지 프롬프트 텍스트 빌더 3종(GPT-image-2·Gemini 3·Midjourney v8 공식 가이드) + ElevenLabs 32개 언어 음성. 실제 이미지·영상 생성은 <strong>Higgsfield MCP</strong> 단일 통합</div>
     <div class="foot"><span>GPT Image 2</span><span>Gemini 3</span><span>Midjourney v8</span><span>ElevenLabs</span></div>
   </a>
   <a class="cw-card" href="/plugins/moai-commerce/">
@@ -258,7 +258,7 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
       <span class="badge">MINOR</span>
     </div>
     <div class="ttl">moai-media 정리(16→4) · 강의 컨텍스트 제거 · docs-site 일관성 정리</div>
-    <div class="desc">22 플러그인 유지, <strong>155 → 143 스킬</strong>, 동기화 지점 178 → 166. Breaking change 없음. moai-media wrapper 12개 제거(이미지·영상·음성 직접 호출은 Higgsfield MCP·ElevenLabs MCP·fal-ai MCP에 위임). 특정 강의 컨텍스트가 SKILL.md·docs-site·README 전반에서 제거되어 본 저장소는 도메인 스킬 마켓플레이스 정체성으로 환원.</div>
+    <div class="desc">22 플러그인 유지, <strong>155 → 143 스킬</strong>, 동기화 지점 178 → 166. Breaking change 없음. moai-media wrapper 12개 제거(이미지·영상 직접 호출은 Higgsfield MCP, 음성은 ElevenLabs MCP에 위임). 특정 강의 컨텍스트가 SKILL.md·docs-site·README 전반에서 제거되어 본 저장소는 도메인 스킬 마켓플레이스 정체성으로 환원.</div>
     <ul>
       <li><strong>moai-media 4 스킬 유지</strong> — gpt-image-2-prompt · gemini-3-image-prompt · midjourney-v8-prompt (3대 모델 공식 가이드 프롬프트 텍스트 빌더) + audio-gen (ElevenLabs 32개 언어 음성)</li>
       <li><strong>moai-education 범용화</strong> — "강사·교수·교사 교육 콘텐츠 풀스택"으로 재정의. 1일~16주 모든 강의 형식 지원</li>

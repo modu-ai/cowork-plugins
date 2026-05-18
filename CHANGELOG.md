@@ -15,42 +15,37 @@
 
 ## [2.11.0] - 2026-05-18
 
-MINOR. **moai-media 16→4 축소(이미지·영상·음성 직접 호출은 외부 MCP에 위임) + 강의 컨텍스트 전면 제거 + docs-site 일관성 대대적 정리 + moai-education/career/bi 재정의**. 22 플러그인 유지, **155 → 143 스킬**, 동기화 지점 178 → **166**. Breaking change 없음 (기존 워크플로우 그대로 동작).
+MINOR. **moai-media 16→4 스킬 정리 + 22 플러그인 페이지 책임 경계 재정렬 + docs-site 일관성 정리**. 22 플러그인 유지, **155 → 143 스킬**, 동기화 지점 178 → **166**. Breaking change 없음.
 
 ### Removed (moai-media 12 스킬 정리)
 
-이미지·영상·음성 직접 호출 스킬 12개를 제거. 해당 영역은 **Higgsfield MCP + ElevenLabs MCP + fal-ai MCP**가 직접 지원하므로 wrapper 스킬을 정리해 책임 경계를 명확히 함.
+이미지·영상·음성 직접 호출 스킬 12개를 제거. 해당 영역은 **Higgsfield MCP + ElevenLabs MCP**가 직접 지원하므로 wrapper 스킬을 정리해 책임 경계를 명확히 함.
 
 - 제거된 스킬: `nano-banana`, `image-gen`, `video-gen`, `speech-video`, `character-mgmt`, `fal-gateway`, `media-moodboard`, `media-gpt-image2-builder`, `media-model-router`, `media-channel-ad-packager`, `media-ai-disclosure`, `media-canva-magic-layer`
 - 유지: `gpt-image-2-prompt`, `gemini-3-image-prompt`, `midjourney-v8-prompt` (프롬프트 텍스트 빌더 3종) + `audio-gen` (ElevenLabs MCP 래퍼 1종)
-- moai-media 정체성 재정의: **이미지 프롬프트 텍스트 빌더 + ElevenLabs 음성**. 실제 이미지·영상 생성은 사용자가 ChatGPT / Google AI Studio / Discord / Higgsfield MCP를 직접 사용
+- moai-media 정체성 재정의: **이미지 프롬프트 텍스트 빌더 + ElevenLabs 음성**. 실제 이미지·영상 생성은 Higgsfield MCP / ChatGPT / Google AI Studio / Discord 직접 호출로 환원
 
-### Removed (강의 컨텍스트 전면 제거)
+### Changed (플러그인 페이지 책임 경계 재정렬)
 
-- "모두의 커머스 3일 마스터 캠프", "Day 1/2/3", "V6 6도구", "21세션·18개 산출물" 등 특정 강의 컨텍스트가 SKILL.md·docs-site·README·CHANGELOG·academy handoff 전반에서 제거됨
-- 강의로 함께 배우는 옵션은 외부 사이트(`academy.mo.ai.kr`)로만 안내 — 본 저장소는 도메인 스킬 마켓플레이스 정체성으로 환원
-- 영향: README의 "🎓 강의로 배우기 — 모두의 AI 아카데미" 섹션 삭제, docs-site `_index.md`의 academy 카드 삭제, moai-commerce·moai-media·moai-education 페이지 모두 범용 플러그인으로 재정의
+- **moai-commerce 페이지** — 35 스킬 도메인 카탈로그(시장조사·JTBD·페르소나·상품명·통합전략 등 9 카테고리)로 재작성
+- **moai-media 페이지** — 이미지 프롬프트 빌더 3종 + audio-gen 4 스킬로 재작성. Higgsfield MCP 단일 통합
+- **moai-education 페이지** — 강사·교수·교사 교육 콘텐츠 풀스택으로 재정의. `course-curriculum-design`은 1일~16주 모든 코스 형식 지원, `course-followup-sequence`는 코스 종료 후 D+1·D+3·D+7·D+14·D+30 후기 자산화로 일반화
+- **moai-bi 페이지** — `executive-summary`의 산출물을 `html-report` 중심으로 재정의. 단일 HTML 파일에 이미지·CSS·JS 모두 인라인 + pdf/docx/pptx/hwpx 변환은 옵션
+- **moai-career 페이지** — 한국 취준생·재직자 2026 채용 데이터 반영(팀핏 면접·핀셋 채용·AI 진정성·4 플랫폼 MAU·헤드헌터 5축·NCS·블라인드)
 
-### Changed (3 플러그인 정체성 재정의)
+### Fixed (docs-site 일관성 정리)
 
-- **moai-education** — "강사·교수·교사 교육 콘텐츠 풀스택"으로 재정의. `course-curriculum-design`은 1일~16주 모든 강의 형식 지원, `course-followup-sequence`는 일반 강의·연수·정규 강좌 후 후기 자산화로 일반화
-- **moai-career** — 한국 취준생·재직자 2026 채용 트렌드 반영(팀핏 면접·핀셋 채용·AI 진정성·4 플랫폼 MAU·헤드헌터 5축·NCS·블라인드). vault 인사이트만 참고(PUBLY 원문 0건 그대로)
-- **moai-bi** — `executive-summary`의 산출물을 `html-report` 중심으로 재정의. 단일 HTML 파일에 이미지·CSS·JS 모두 인라인(카톡 즉시 확인 가능) + pdf/docx/pptx/hwpx 변환은 옵션
-
-### Fixed (docs-site 일관성 대대적 정리)
-
-- 물결 `~` strikethrough 사고 정정 — 266+ 파일 1,000+ 변환
+- 물결 `~` strikethrough 사고 정정 — 266+ 파일 1,000+ 위치
 - mermaid 가로(LR) → 세로(TD) 변환 — 67 파일 77 블록 모바일 가독성 개선
-- GOAL + AskUserQuestion + 스킬 체이닝 공통 골격 적용 — `cookbook/tracks/` 전체 일괄
 - 터미널 prompt shortcode 통일 (`{{< terminal >}}`) — 첫 행만 `>`, 이어지는 줄 들여쓰기
-- 본문 진행 마커 제거 — `(v2.X+)` `Day N` `Wave N` `21세션` `V6` `# 스킬 호출` 코드 주석 등 누적 마커 일괄 정리
-- 삭제 페이지 4종 — `cookbook/ai-employee-design` · `lab-1` · `lab-2` · `final-project` + 메뉴·링크 정리
+- hugo.toml SSOT 도입 — 좌측 사이드바·footer·badge 자동 반영
+- 삭제 페이지 정리 — `cookbook/ai-employee-design` 등 + 메뉴·링크 정리
 
 ### Migration
 
 - **Breaking change 없음** — 기존 워크플로우 그대로 동작
-- moai-media 12 스킬 제거 — 해당 영역은 **Higgsfield MCP·ElevenLabs MCP·fal-ai MCP**를 직접 사용. 외부 MCP는 v2.6.0부터 번들되어 있어 사용자 측 추가 작업 없음
-- 강의 진행 마커는 본문에서 제거됐지만 `releases/v2.3.md` 등 과거 릴리스 노트는 history로 보존
+- moai-media 12 스킬 제거 — 해당 영역은 **Higgsfield MCP·ElevenLabs MCP**를 직접 사용. 외부 MCP는 v2.6.0부터 번들되어 있어 사용자 측 추가 작업 없음
+- 이미지 프롬프트 빌더 3종(`gpt-image-2-prompt`·`gemini-3-image-prompt`·`midjourney-v8-prompt`)·음성 `audio-gen`: 변경 없음
 
 ### 동기화 지점 (166)
 
@@ -410,7 +405,7 @@ MINOR. **메타 광고 audit 3-Layer 인프라 출시** — Layer 3 신규 분�
 
 ## [2.4.0] - 2026-05-12
 
-MINOR. **캠프 후속 인사이트 통합본** — 정승우님 본인 노하우 3개 문서(쿠팡 매출 9배 비법 전자책 126p + 커머스 업무 자동화 24p + 커머스 매출향상 AI 활용 26p) + 광고 심리학 완전판(13장 376줄)을 분석해 **13건(신규 5 + 강화 8)** 통합. 124 → **129 스킬**, 동기화 지점 146 → 151.
+MINOR. **moai-commerce·moai-marketing 인사이트 통합** — 정승우님 본인 노하우 3개 문서(쿠팡 매출 9배 비법 전자책 126p + 커머스 업무 자동화 24p + 커머스 매출향상 AI 활용 26p) + 광고 심리학 완전판(13장 376줄)을 분석해 **13건(신규 5 + 강화 8)** 통합. 124 → **129 스킬**, 동기화 지점 146 → 151.
 
 ### Added (신규 5 스킬)
 
@@ -467,11 +462,11 @@ MINOR. **캠프 후속 인사이트 통합본** — 정승우님 본인 노하�
 
 ## [2.3.0] - 2026-05-12
 
-MINOR. **모두의 커머스 3일 마스터 캠프** (Claude Cowork × MoAI-Cowork × MCP) 통합본 출시. Day1 셋업·Day2 V6 6도구·Day3 신규 AI 모델·D+1-D+30 follow-up까지 18개 산출물 데이터 체인을 강의 안에서 끊김 없이 흐르도록 17 신규 + 6 강화 스킬 추가. Track C 페어 정리로 책임 경계 명확화.
+MINOR. **moai-commerce에 시장조사·JTBD·상품명·채널 메시지·통합전략 등 17 신규 스킬 + moai-education 2 신규 스킬 + Track C 책임 경계 정리**. 124 → 141 스킬, 동기화 지점 146.
 
 ### Added (신규 17 스킬)
 
-**Day2 V6 6도구 (moai-commerce 5 + detail-page-copy 강화)** — PDF §5.3 V6 ↔ MCP 매핑
+**moai-commerce 도메인 확장 (5 신규)**
 
 - `moai-commerce:commerce-market-research` — trend_search · trend_shopping_categories · trend_shopping_keywords · keyword_for_product_idea 4종 MCP 호출 → 거시·경쟁·검색 3축 시장 1장 리포트
 - `moai-commerce:commerce-jtbd-persona` — 1스킬 2모드. `--mode jtbd` (기능·감성·사회 각 3개 = JTBD 9개) / `--mode persona` (review_list_naver·review_list_cafe24·qna_list_cafe24 → 페르소나 3명 8필드). 본인 리뷰 10건 미만 시 fallback 자동 적용
@@ -479,25 +474,25 @@ MINOR. **모두의 커머스 3일 마스터 캠프** (Claude Cowork × MoAI-Cowo
 - `moai-commerce:commerce-channel-message` — keyword_seasonal_calendar·ad_keyword_performance + NCM 프레임워크 (Need→Channel→Moment→Message→CTA) → 검색·광고·CRM × 5종 = 15종 메시지 (채널별 다른 표현 강제)
 - `moai-commerce:commerce-integrated-strategy` — dashboard_morning_brief·sales_compare_channels·ad_roas_summary → 매출 향상 전략 1장 (실행 우선순위 Top 3)
 
-**Day3 신규 AI 모델 6스킬 (moai-media)** — PDF §6 + 부록 A·B·D
+**moai-media 도메인 확장 (6 신규, v2.11.0에서 일부 정리)**
 
 - `moai-media:media-moodboard` — 페르소나·카피·카테고리 → 색팔레트 3종 + 톤 키워드 5개 + 레퍼런스 이미지 5장
-- `moai-media:media-gpt-image2-builder` — 자연어 한 줄 → 8단계 프롬프트 자동 리라이팅 → GPT Image 2 호출 (수강생 비공개 룰: 8단계 구조는 references/ 내부 자료)
-- `moai-media:media-model-router` — 카테고리 매트릭스 자동 라우팅 (의류=Kling 3 / 뷰티=Veo 3 / 건강식품=Kling 3 / 생활용품=Seedance). Higgsfield 동시 호출 비용 폭증 방지 위해 4명×5조 시차 호출 (5분 간격)
+- `moai-media:media-gpt-image2-builder` — 자연어 한 줄 → 8단계 프롬프트 자동 리라이팅 → GPT Image 2 호출
+- `moai-media:media-model-router` — 카테고리 매트릭스 자동 라우팅 (의류=Kling 3 / 뷰티=Veo 3 / 건강식품=Kling 3 / 생활용품=Seedance). Higgsfield 동시 호출 비용 폭증 방지 위해 시차 호출 (5분 간격)
 - `moai-media:media-channel-ad-packager` — 메인 영상 + 보조 영상 + 채널 메시지 → 메타 1:1·9:16 / 네이버 GFA 길이 / 카카오 알림톡 변수 / 카카오모먼트 1:1·16:9 채널별 자동 변환
 - `moai-media:media-ai-disclosure` — 광고심의·소비자보호법 대비 "AI 생성" 메타데이터·워터마크 자동 부착 (캔바 매직 레이어 수정 후에도 표기 유지)
-- `moai-media:media-canva-magic-layer` — Day 3 합성 PNG → 카피만 분리 → 시즌 재사용 5단계 가이드 (GPT Image 2 재호출 대비 90% ↓)
+- `moai-media:media-canva-magic-layer` — 합성 PNG → 카피만 분리 → 시즌 재사용 5단계 가이드 (GPT Image 2 재호출 대비 90% ↓)
 
-**Day1 셋업 3스킬**
+**moai-core·moai-commerce 셋업/일일 운영 (3 신규)**
 
 - `moai-core:mcp-connector-setup` — Drive · Notion · Higgsfield · OpenAI 4커넥터 인증 가이드 + 트러블슈팅
 - `moai-commerce:commerce-morning-brief` — dashboard_morning_brief MCP → 어제 주문·신규 문의·트렌드·ROAS 1개 호출 통합 1줄
 - `moai-commerce:commerce-order-summary` — order_summary_today MCP → 스마트스토어 + 카페24 + 아임웹 채널 통합 신규 주문 1줄
 
-**moai-education 활성화 2스킬** (현재 0 스킬 → 2 스킬)
+**moai-education 활성화 (2 신규, 0 → 2 스킬)**
 
-- `moai-education:course-followup-sequence` — D+1·D+3·D+7·D+14·D+30 후기 카피 5종 + 30일 자산화 시퀀스 + SUNO BGM·MCP Phase 1 직접 호출 가이드
-- `moai-education:course-curriculum-design` — 3일 21세션 강의 운영 매뉴얼 자동 생성 (표준 시간표·강사·조교 동선·사전 준비물·Plan B 시나리오 5건+)
+- `moai-education:course-followup-sequence` — 코스 종료 후 D+1·D+3·D+7·D+14·D+30 후기 카피 5종 + 30일 자산화 시퀀스 + SUNO BGM·MCP Phase 1 직접 호출 가이드
+- `moai-education:course-curriculum-design` — 1일~16주 코스 운영 매뉴얼 자동 생성 (표준 시간표·강사·조교 동선·사전 준비물·Plan B 시나리오 5건+)
 
 ### Changed (6 강화 + Track C 정리)
 
@@ -505,21 +500,6 @@ MINOR. **모두의 커머스 3일 마스터 캠프** (Claude Cowork × MoAI-Cowo
 - **Track C 페어 정리 — 통합 1건**: `moai-content:social-media` → `moai-marketing:sns-content` 흡수 (글로벌 4채널 모드 추가: 스레드·X·링크드인·유튜브 쇼츠). social-media는 deprecate stub + 리디렉션 안내. 한국 3채널 모드(인스타·네이버 블로그·카카오)는 유지
 - **Track C 페어 정리 — 책임 분리 1건**: `moai-marketing:campaign-planner`의 "이커머스 상세페이지 제작 · AI 이미지 생성" 책임 제거. 상세페이지 카피는 detail-page-copy, 상세페이지 합성 이미지는 detail-page-image, AI 이미지·영상은 moai-media:* 사용 안내로 이관
 - **Track C 페어 정리 — description [책임 경계] 명확화 15건**: copywriting/commerce-copywriting (Pair 1), product-detail/detail-page-copy (Pair 2), personal-branding/brand-identity (Pair 5), target-script (Pair 6), performance-report/executive-summary (Pair 7), market-analyst/sbiz365-analyst (Pair 8), daily-briefing (Pair 9), landing-page (Pair 10) + sns-content·campaign-planner
-
-### SPEC 산출물
-
-`.moai/specs/` 하위 7개 SPEC 작성 (총 84 EARS REQ):
-- SPEC-COURSE-CAMP-001 (master) — 강의 전체 요구사항·18 산출물·합격기준·운영 매뉴얼
-- SPEC-COMMERCE-MCP-002 — Track A MoAI-Commerce MCP 서버 (후속 마이너 v2.4.0 예정)
-- SPEC-COMMERCE-V6-003 — Wave 1 commerce 6
-- SPEC-MEDIA-CAMP-004 — Wave 2 media 6
-- SPEC-CAMP-SETUP-005 — Wave 3 core 3
-- SPEC-CAMP-FOLLOWUP-006 — Wave 4 education 2
-- SPEC-CATALOG-CLEANUP-007 — Track C 페어 정리
-
-### 후속 작업 (v2.4.0 예정)
-
-- **Track A MoAI-Commerce MCP 서버 구현** (cowork-plugins/mcp-servers/moai-commerce/ monorepo) — 광고 운영 4종 (meta ads · tiktok ads · naver 광고 · kakao 모먼트) + Phase 1 34종 + Higgsfield (Kling 3·Veo 3·Seedance 2.0). Python (uvx) 권장. 본 v2.3.0 출시까지는 사전 녹화 영상 5분 또는 강사 본인 워크스페이스 라이브 호출로 대체 (PDF §S4 운영 노트)
 
 ### 동기화 지점
 

@@ -474,7 +474,7 @@ Phase 2에서 선택된 플러그인이 API 키를 요구하면 등록 안내.
 | 2 | KIPRIS Plus | `KIPRIS_API_KEY` | 특허 검색 | plus.kipris.or.kr |
 | 3 | 국가법령정보 | `KOREAN_LAW_OC` | 법령/판례 | law.go.kr |
 | 4 | Google Gemini | `GEMINI_API_KEY` | gemini-3-image-prompt | ai.google.dev |
-| 5 | fal.ai | `FAL_KEY` | fal-ai MCP (Flux·Recraft·Hailuo·Luma 등) | fal.ai |
+| 5 | Higgsfield | `HIGGSFIELD_API_KEY` + `HIGGSFIELD_SECRET` | Higgsfield MCP (Soul·DOP·말하는머리·캐릭터 단일 통합) | higgsfield.ai |
 | 6 | ElevenLabs | `ELEVENLABS_API_KEY` | audio-gen (TTS/보이스 클로닝, ElevenLabs MCP) | elevenlabs.io |
 
 선택된 플러그인과 무관한 키는 물어보지 않는다.
@@ -597,4 +597,4 @@ Phase 3에서 설계된 체인 중 상위 3개를 예시로 제시:
 | 활성 인벤토리 캐시 | 없음 | `.moai/cache/inventory.json` |
 | 지원 플러그인 수 | 17개 | 22개 |
 | moai-media 스킬 수 | 7개 | 4개 (Higgsfield·ElevenLabs MCP 직접 호출) |
-| API 키 목록 | Gemini·fal.ai·ElevenLabs 등 | 동일 + Gemini 용도 명칭 변경 |
+| API 키 목록 | Gemini·Higgsfield·ElevenLabs 등 | 동일 + Gemini 용도 명칭 변경 |

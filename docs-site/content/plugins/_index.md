@@ -66,7 +66,7 @@ flowchart TD
 ```
 
 {{< hint type="note" >}}
-**v2.11.0 업데이트 (최신)**: moai-media wrapper 12 스킬 제거(Higgsfield·ElevenLabs·fal-ai MCP가 직접 지원) → **이미지 프롬프트 빌더 3종 + audio-gen 4 스킬**로 정리. moai-commerce·moai-media·moai-education 페이지 범용 플러그인으로 재정의. moai-bi html-report 통합, moai-career 2026 한국 채용 데이터 반영. **22 플러그인 유지 · 155 → 143 스킬**. Breaking change 없음.
+**v2.11.0 업데이트 (최신)**: moai-media wrapper 12 스킬 제거(이미지·영상은 Higgsfield MCP, 음성은 ElevenLabs MCP가 직접 지원) → **이미지 프롬프트 빌더 3종 + audio-gen 4 스킬**로 정리. moai-commerce·moai-media·moai-education 페이지 범용 플러그인으로 재정의. moai-bi html-report 통합, moai-career 2026 한국 채용 데이터 반영. **22 플러그인 유지 · 155 → 143 스킬**. Breaking change 없음.
 
 **v2.10.0**: 신규 플러그인 **`moai-book`** — 한국 출판사 제출용 원고 풀스택 8 스킬(컨셉서·페르소나·목차·저자 약력·제안서·출판사 매칭·본문·퇴고). 21 → 22 플러그인 · 147 → 155 스킬.
 {{< /hint >}}
@@ -131,7 +131,7 @@ flowchart TD
 | [moai-core](./moai-core/) | 8 | project, ai-slop-reviewer, feedback, ai-diagnostic, mcp-connector-setup, skill-builder, skill-template, skill-tester |
 | [moai-content](./moai-content/) | 12 | blog, card-news, landing-page, copywriting, humanize-korean, html-report, detail-page-planner +5종 |
 | [moai-office](./moai-office/) | 5 | pptx-designer, docx-generator, xlsx-creator, hwpx-writer, pdf-writer |
-| [moai-media](./moai-media/) | 4 | **gpt-image-2-prompt·gemini-3-image-prompt·midjourney-v8-prompt** (이미지 프롬프트 빌더 3종) · **audio-gen** (ElevenLabs MCP TTS·보이스 클로닝·다국어 더빙). v2.11에서 wrapper 12 스킬 제거(Higgsfield·ElevenLabs·fal-ai MCP 직접 지원) |
+| [moai-media](./moai-media/) | 4 | **gpt-image-2-prompt·gemini-3-image-prompt·midjourney-v8-prompt** (이미지 프롬프트 빌더 3종) · **audio-gen** (ElevenLabs MCP TTS·보이스 클로닝·다국어 더빙). v2.11에서 wrapper 12 스킬 제거 — 이미지·영상은 **Higgsfield MCP** 단일 통합, 음성은 ElevenLabs MCP 직접 지원 |
 | [moai-book](./moai-book/) | 8 | **book-concept-planner·book-target-reader·book-outline-designer·book-author-bio·book-proposal-writer·book-publisher-matcher·book-chapter-writer·book-revision-coach (v2.10 신규)** |
 | [moai-business](./moai-business/) | 10 | strategy-planner, investor-relations, sbiz365-analyst, kr-gov-grant, consulting-brief, sales-playbook, startup-launchpad +3종 |
 | [moai-marketing](./moai-marketing/) | 11 | brand-identity, seo-audit, campaign-planner(광고 심리학 완전판), sns-content, target-script, landing-page-conversion-audit, pixel-audit, **meta-ads-analyzer (v2.5)** +3종 |

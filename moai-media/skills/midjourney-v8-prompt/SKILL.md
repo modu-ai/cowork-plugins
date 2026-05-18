@@ -220,8 +220,7 @@ Midjourney v8은 텍스트 렌더링이 V6/V7보다 개선됐지만 GPT/Gemini�
 |---|---|---|
 | gpt-image-2-prompt | sibling | 동일 입력으로 GPT 6-Block 어조 프롬프트 |
 | gemini-3-image-prompt | sibling | 동일 입력으로 Gemini 5-component 어조 프롬프트 |
-| image-gen | alternative | API 자동 생성 (Higgsfield/fal.ai/Gemini 라우팅, MJ는 미포함) |
-| media-moodboard | before | 무드보드·스타일 방향 수립 후 본 스킬로 프롬프트 작성 |
+| Higgsfield MCP (Soul) | alternative | API 자동 생성 (시네마틱 이미지·캐릭터 단일 통합, MJ는 미포함) |
 
 ## 출처
 

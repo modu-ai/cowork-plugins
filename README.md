@@ -35,17 +35,16 @@
 
 ---
 
-**🆕 v2.11.0 하이라이트** (2026-05-18) — **"moai-media 정리(16→4) + 강의 컨텍스트 제거 + docs-site 일관성 정리"**
+**🆕 v2.11.0 하이라이트** (2026-05-18) — **"moai-media 16→4 정리 + 플러그인 페이지 책임 경계 재정렬 + docs-site 일관성 정비"**
 
 22 플러그인 유지, **155 → 143 스킬**, 동기화 지점 178 → **166**. Breaking change 없음.
 
-- **moai-media 16→4 축소** — 이미지·영상·음성 직접 호출 12 스킬 제거. 해당 영역은 **Higgsfield MCP + ElevenLabs MCP + fal-ai MCP**가 이미 직접 지원하므로 wrapper 정리. 유지 4: [`gpt-image-2-prompt`](./moai-media/skills/gpt-image-2-prompt/) · [`gemini-3-image-prompt`](./moai-media/skills/gemini-3-image-prompt/) · [`midjourney-v8-prompt`](./moai-media/skills/midjourney-v8-prompt/) (3대 모델 공식 가이드 기반 프롬프트 텍스트 빌더) + [`audio-gen`](./moai-media/skills/audio-gen/) (ElevenLabs 32개 언어 더빙·BGM·효과음)
-- **강의 컨텍스트 완전 제거** — "3일 마스터 캠프", "Day 1/2/3", "V6 6도구", "21세션" 등 특정 강의 컨텍스트가 SKILL.md·docs-site·README 전반에서 제거됨. 본 저장소는 도메인 스킬 마켓플레이스 정체성으로 환원
-- **moai-education 범용화** — "강사·교수·교사 교육 콘텐츠 풀스택"으로 재정의. 1일~16주 모든 강의 형식 지원
+- **moai-media 16→4 축소** — 이미지·영상·음성 직접 호출 12 스킬 제거. 해당 영역은 **Higgsfield MCP + ElevenLabs MCP**가 이미 직접 지원하므로 wrapper 정리. 유지 4: [`gpt-image-2-prompt`](./moai-media/skills/gpt-image-2-prompt/) · [`gemini-3-image-prompt`](./moai-media/skills/gemini-3-image-prompt/) · [`midjourney-v8-prompt`](./moai-media/skills/midjourney-v8-prompt/) (3대 모델 공식 가이드 기반 프롬프트 텍스트 빌더) + [`audio-gen`](./moai-media/skills/audio-gen/) (ElevenLabs 32개 언어 더빙·BGM·효과음)
+- **moai-commerce 페이지 재작성** — 35 스킬 도메인 카탈로그(시장조사·JTBD·페르소나·상품명·통합전략 등 9 카테고리)로 정렬
+- **moai-education 범용화** — 강사·교수·교사 교육 콘텐츠 풀스택으로 재정의. 1일~16주 모든 코스 형식 지원
 - **moai-career 한국 채용 2026 재설계** — 팀핏 면접·핀셋 채용·AI 진정성·4 플랫폼 MAU·헤드헌터 5축·NCS·블라인드 반영
-- **moai-bi html-report 중심 재정의** — `executive-summary` 산출물을 단일 HTML 파일(카톡 즉시 확인 가능)로 통일. pdf/docx/pptx/hwpx는 옵션 변환
-- **docs-site 일관성 대대적 정리** — 물결 `~` 사고 정정(266+ 파일 1,000+), mermaid 가로→세로(67 파일 77 블록), GOAL+AskUserQuestion+스킬 체이닝 공통 골격 적용, 터미널 prompt shortcode 통일, 본문 진행 마커(`(v2.X+)`·`Day N`·`Wave N` 등) 일괄 제거
-- **삭제 페이지 4** — `cookbook/ai-employee-design` · `lab-1` · `lab-2` · `final-project` + 메뉴·링크 정리
+- **moai-bi html-report 중심 재정의** — `executive-summary` 산출물을 단일 HTML 파일로 통일. pdf/docx/pptx/hwpx는 옵션 변환
+- **docs-site 일관성 정비** — 물결 `~` 사고 정정(266+ 파일 1,000+), mermaid 가로→세로(67 파일 77 블록), 터미널 prompt shortcode 통일, hugo.toml SSOT 도입
 
 기존 워크플로우 그대로 동작합니다. moai-media의 12 스킬을 직접 호출하던 워크플로우만 외부 MCP 직접 사용으로 대체하면 됩니다 (v2.6.0부터 번들된 MCP).
 
@@ -203,22 +202,14 @@ vault 1,329 노트 + Higgsfield MCP audit + 정승우님 자료 어트리뷰션 
 </details>
 
 <details>
-<summary><b>📜 이전: v2.3.0 — "모두의 커머스 3일 마스터 캠프" 통합본</b></summary>
+<summary><b>📜 이전: v2.3.0 — moai-commerce 17 신규 + moai-education 2 신규</b></summary>
 
-월 매출 100만-10억 스마트스토어·자사몰 셀러가 외주 없이 3일 만에 신상품 1개의 상세페이지·광고·SNS·동영상을 직접 제작·운영하는 시스템을 구축하는 21세션·18개 산출물 데이터 체인 강의의 백엔드 도구입니다.
+moai-commerce에 시장조사·JTBD·페르소나·상품명·채널 메시지·통합전략 등 17 신규 스킬, moai-education에 `course-curriculum-design`·`course-followup-sequence` 2 신규 스킬을 추가하고 Track C 책임 경계 정리를 수행했습니다. 108 → **124 스킬**, 동기화 지점 **146**.
 
-- **Day2 V6 6도구** (moai-commerce) — V6(정승우님) 7교시 구조 1:1 매핑 wrapper 스킬
-  - `commerce-market-research`(시장조사 4 MCP) · `commerce-jtbd-persona`(JTBD 9 + 페르소나 3) · `commerce-product-naming`(상품명 3안 + 검증) · `commerce-channel-message`(NCM 15종) · `commerce-integrated-strategy`(전략 1장) · `detail-page-copy` 강화(7단계 진단 + 페르소나 카피 2세트, 비율 25/50/25)
-- **Day3 신규 AI 모델 6스킬** (moai-media)
-  - `media-moodboard`(색팔레트·톤·레퍼런스 자동) · `media-gpt-image2-builder`(자연어 → 8단계 프롬프트 자동 → GPT Image 2) · `media-model-router`(카테고리 매트릭스 자동 Kling/Veo/Seedance 라우팅 + 4명×5조 시차 호출) · `media-channel-ad-packager`(메타·네이버 GFA·카카오 채널 규격 자동 변환) · `media-ai-disclosure`(광고심의 "AI 생성" 메타데이터·워터마크) · `media-canva-magic-layer`(시즌 재사용 가이드)
-- **Day1 셋업 3스킬** — `moai-core:mcp-connector-setup`(Drive·Notion·Higgsfield·OpenAI 4커넥터 가이드+트러블슈팅) + `moai-commerce:commerce-morning-brief`·`commerce-order-summary`(매장 운영 데이터 1줄 통합)
-- **moai-education 활성화 2스킬** — `course-followup-sequence`(D+1-D+30 후기 자산화 시퀀스) + `course-curriculum-design`(3일 21세션 강의 운영 매뉴얼 자동 생성)
-- **Track C 페어 정리** — `moai-content:social-media` → `moai-marketing:sns-content`로 흡수(글로벌 4채널 모드 추가: 스레드·X·링크드인·유튜브 쇼츠), `campaign-planner`의 "상세페이지·이미지 생성" 책임 분리(detail-page-copy + moai-media로 이관), 15개 페어 description에 [책임 경계] 명시
-- **MCP 의존성** — V6 6도구와 Day1 셋업 스킬은 MoAI-Commerce MCP Phase 1(34종 도구)을 호출. 미출시 시점에는 사전 녹화 영상 5분 또는 강사 본인 워크스페이스 라이브 호출로 대체 (PDF §S4 운영 노트)
-- **SPEC 작성** — `.moai/specs/` 하위 7개 SPEC, 총 **84 EARS REQ**: master + Track A(MCP) + Wave 1·2·3·4 + Track C
-- 마켓플레이스 스킬 수: 108 → **124개** (+16 신규, social-media stub은 카운트 유지). 동기화 지점 **146개** (marketplace 1 + plugin.json 21 + SKILL.md 124) 모두 v2.3.0
-- **Track A 후속 예정** (v2.5.0으로 이동) — MoAI-Commerce MCP 서버 구현(monorepo cowork-plugins/mcp-servers/moai-commerce/, Python uvx, 광고 4종 OAuth + Phase 1 34종 + Higgsfield MCP 통합). v2.4.0이 캠프 후속 인사이트 통합으로 사용됨
-- [한국어 문서 사이트](https://cowork.mo.ai.kr/) · [SPEC-COURSE-CAMP-001](./.moai/specs/SPEC-COURSE-CAMP-001/spec.md)
+- **moai-commerce 신규/강화** — `commerce-market-research`·`commerce-jtbd-persona`·`commerce-product-naming`·`commerce-channel-message`·`commerce-integrated-strategy` + `detail-page-copy` 강화(`--mode diagnose`/`--mode copy`) + `commerce-morning-brief`·`commerce-order-summary`
+- **moai-education 활성화** — `course-curriculum-design`(1일~16주 코스 운영 매뉴얼) + `course-followup-sequence`(D+1~D+30 후기 자산화 시퀀스)
+- **Track C 페어 정리** — `moai-content:social-media` → `moai-marketing:sns-content` 흡수, `campaign-planner`의 "상세페이지·이미지 생성" 책임 분리, 15개 페어 description에 [책임 경계] 명시
+- [한국어 문서 사이트](https://cowork.mo.ai.kr/)
 
 </details>
 
@@ -339,7 +330,7 @@ vault 1,329 노트 + Higgsfield MCP audit + 정승우님 자료 어트리뷰션 
 | [moai-career](./moai-career/) | 커리어 준비 — 자기소개서, 이력서, 면접 코칭, 채용공고 분석 | 4 |
 | [moai-data](./moai-data/) | 데이터 분석 — CSV/Excel 탐색, 공공데이터, 시각화 | 3 |
 | [moai-research](./moai-research/) | 연구/특허 — 논문 검색, 특허 분석/출원, 연구비 신청 | 5 |
-| [moai-media](./moai-media/) | 이미지 프롬프트 텍스트 빌더(GPT-image-2·Gemini 3·Midjourney v8 공식 가이드) + ElevenLabs 32개 언어 음성. 실제 이미지·영상 생성은 외부 MCP(Higgsfield·fal-ai) 직접 사용 | 4 |
+| [moai-media](./moai-media/) | 이미지 프롬프트 텍스트 빌더(GPT-image-2·Gemini 3·Midjourney v8 공식 가이드) + ElevenLabs 32개 언어 음성. 실제 이미지·영상 생성은 **Higgsfield MCP** 단일 통합 | 4 |
 | [moai-commerce](./moai-commerce/) | 한국 D2C 풀세트 — 상세페이지(카피·이미지·사진 브리프) + 채널 가이드 5종 + 통합 마케팅(전략·카피·라이브) + 쿠팡 광고 최적화·마진 계산·자동화 진단 + LTV/CAC·프로모션·재구매·리뷰·VOC·구독·인플루언서·얼리팬·트렌드·시즌 + 식약처 안전(MFDS) | 35 |
 | [moai-bi](./moai-bi/) | BI·경영진 1pager — `executive-summary` (KPI 대시보드 + 경영진 보고서) | 1 |
 | [moai-pm](./moai-pm/) | 프로젝트 관리·주간보고·OKR — `weekly-report` (회고·KPI 추적) | 1 |
@@ -355,7 +346,7 @@ vault 1,329 노트 + Higgsfield MCP audit + 정승우님 자료 어트리뷰션 
 | 스크립트 | **13** | helper(`scripts/`) — Python·Node·Shell |
 | 템플릿 | **1** | CLAUDE.md.tmpl 외 |
 | 에이전트 | **47** | `.claude/agents/` 서브에이전트 정의 |
-| MCP 서버 | **10** | 플러그인 번들: dart(business), korean-law(legal), post-bridge·typefully·wordpress(content), fal-ai·elevenlabs·higgsfield(media), **meta-ads·moai-ads-audit(marketing)** |
+| MCP 서버 | **9** | 플러그인 번들: dart(business), korean-law(legal), post-bridge·typefully·wordpress(content), elevenlabs·higgsfield(media), **meta-ads·moai-ads-audit(marketing)** |
 | 도메인 | 22 | business/marketing/legal/finance/hr/content/operations/education/lifestyle/product/support/office/career/data/research/media/commerce/bi/pm/sales/book + core |
 
 ## 설치 방법
@@ -657,14 +648,14 @@ Airtable/Google Sheets 커넥터로 데이터를 직접 분석합니다.
 
 **책임 경계**: moai-media 4 스킬은 **프롬프트 텍스트 산출 + 음성 생성** 전용입니다. 실제 이미지·영상 생성은 외부 채널을 통해 직접 실행합니다.
 
-- **이미지 생성** — ChatGPT(GPT-image-2) · Google AI Studio(Gemini 3 Pro Image) · Discord(Midjourney) 직접 사용
-- **영상 생성** — Higgsfield MCP(DOP·Soul) · fal-ai MCP(Kling·Veo·Hailuo·Luma·Pika)
+- **이미지 생성** — ChatGPT(GPT-image-2) · Google AI Studio(Gemini 3 Pro Image) · Discord(Midjourney) 직접 사용 또는 **Higgsfield MCP**(Soul · 시네마틱 이미지 · 캐릭터)
+- **영상 생성** — **Higgsfield MCP** 단일 통합 (DOP · Soul · 말하는머리 · 캐릭터)
 - **음성 생성** — `audio-gen`이 ElevenLabs MCP 호출
 
-**사용 API 키**: `ELEVENLABS_API_KEY`(audio-gen), `FAL_KEY`(fal-ai MCP 직접 사용 시), `HIGGSFIELD_API_KEY`+`HIGGSFIELD_SECRET`(Higgsfield MCP 직접 사용 시).
-**번들 MCP 3종**: `fal-ai`(hosted HTTP), `elevenlabs`(local stdio via `uvx`), `higgsfield`(local stdio).
+**사용 API 키**: `ELEVENLABS_API_KEY`(audio-gen), `HIGGSFIELD_API_KEY`+`HIGGSFIELD_SECRET`(Higgsfield MCP 직접 사용 시).
+**번들 MCP 2종**: `elevenlabs`(local stdio via `uvx`), `higgsfield`(local stdio).
 
-> **변경 이력**: v2.11.0부터 wrapper 스킬 12개(`nano-banana`·`image-gen`·`video-gen`·`speech-video`·`character-mgmt`·`fal-gateway`·`media-moodboard`·`media-gpt-image2-builder`·`media-model-router`·`media-channel-ad-packager`·`media-ai-disclosure`·`media-canva-magic-layer`)를 제거하고 외부 MCP 직접 사용으로 환원했습니다. MCP는 v2.6.0부터 번들되어 있어 사용자 측 추가 작업 없습니다.
+> **변경 이력**: v2.11.1부터 이미지·영상 직접 생성은 **Higgsfield MCP로 단일 통합**되었습니다. fal-ai MCP·`fal-gateway` 스킬은 중복 채널 정리 차원에서 제거되었습니다. v2.11.0에서 wrapper 스킬 12개(`nano-banana`·`image-gen`·`video-gen`·`speech-video`·`character-mgmt`·`fal-gateway`·`media-moodboard`·`media-gpt-image2-builder`·`media-model-router`·`media-channel-ad-packager`·`media-ai-disclosure`·`media-canva-magic-layer`)를 제거하고 외부 MCP 직접 사용으로 환원한 흐름의 연장선입니다.
 
 ---
 
@@ -791,7 +782,6 @@ K-IFRS·KOSIS·DART 친화적 한국 통계 환경에서 5분 안에 의사결�
 | [wordpress](https://mcp.wordpress.com/) | 공식 (HTTP) | WordPress.com 블로그 발행 | moai-content | OAuth |
 | [post-bridge](https://app.post-bridge.com/mcp) | 공식 (HTTP) | 멀티채널 SNS 발행 | moai-content | OAuth |
 | [typefully](https://api.typefully.com/mcp) | 공식 (HTTP) | X(Twitter)·Threads 발행 | moai-content | API Key |
-| [fal-ai](https://mcp.fal.ai/mcp) | 공식 (HTTP) | Flux·Ideogram·Recraft·Kling·Hailuo·Luma·Pika·MiniMax Music 1000+ 모델 | moai-media | `FAL_KEY` |
 | [elevenlabs](https://github.com/elevenlabs/elevenlabs-mcp) | 공식 (local stdio via uvx) | TTS·음성복제·다국어 더빙 | moai-media | `ELEVENLABS_API_KEY` |
 | [higgsfield](https://higgsfield.ai/) | 공식 (local stdio) | 시네마틱 이미지(Soul)·영상(DOP)·말하는머리·캐릭터 관리 | moai-media | `HIGGSFIELD_API_KEY`+`HIGGSFIELD_SECRET` |
 | [Meta Ads](https://developers.facebook.com/docs/marketing-api/) | 공식 (hosted HTTP) 🆕 v2.5 | 메타 광고 계정·캠페인·광고 데이터 | moai-marketing | `META_ACCESS_TOKEN` |

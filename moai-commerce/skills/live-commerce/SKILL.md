@@ -136,7 +136,7 @@ version: 2.11.0
 - `moai-commerce:commerce-copywriting` — 광고·이메일 카피
 - `moai-commerce:commerce-strategy` — 전체 채널 전략
 - `moai-content:social-media` — SNS 콘텐츠 (라이브 클립 재가공)
-- `moai-media:video-gen` — 라이브 후 짧은 영상 콘텐츠 (fal.ai Kling·Hailuo 백엔드)
+- 라이브 후 짧은 영상 콘텐츠 — **Higgsfield MCP**(DOP·Soul) 직접 호출
 
 ## 이 스킬을 사용하지 말아야 할 때
 

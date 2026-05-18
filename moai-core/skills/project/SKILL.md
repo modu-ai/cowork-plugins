@@ -167,7 +167,7 @@ Phase 8: First Run
 1. **기획·분석 스킬** — strategy-planner, market-analyst, ux-researcher
 2. **생성·제작 스킬** — blog, copywriting, card-news, spec-writer
 3. **포맷 변환 스킬** — docx-generator, pptx-designer, xlsx-creator, hwpx-writer, landing-page
-4. **미디어 스킬** (선택) — `gpt-image-2-prompt`·`gemini-3-image-prompt`·`midjourney-v8-prompt`(이미지 프롬프트 빌더), `audio-gen`(ElevenLabs MCP TTS·보이스 클로닝·다국어 더빙). 이미지·영상 실제 렌더링은 Higgsfield MCP(Soul·DOP·말하는머리·캐릭터) 직접 호출. fal.ai 게이트웨이 모델은 fal-ai MCP 직접 호출.
+4. **미디어 스킬** (선택) — `gpt-image-2-prompt`·`gemini-3-image-prompt`·`midjourney-v8-prompt`(이미지 프롬프트 빌더), `audio-gen`(ElevenLabs MCP TTS·보이스 클로닝·다국어 더빙). 이미지·영상 실제 렌더링은 **Higgsfield MCP**(Soul·DOP·말하는머리·캐릭터) 단일 통합으로 직접 호출.
 5. **후처리 스킬** — `ai-slop-reviewer` (텍스트 산출물 체인의 **필수 마지막 단계**)
 
 **체인 표기 규약** (CLAUDE.md에 기록될 형식):

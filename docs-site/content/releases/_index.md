@@ -59,15 +59,15 @@ flowchart TD
 
 각 버전의 상세 변경 사항은 다음 페이지에서 확인할 수 있습니다:
 
-- [v2.11.x (최신)](v2.11/) - **moai-media 정리(16→4) · 강의 컨텍스트 제거 · docs-site 일관성 정리** — 이미지·영상·음성 wrapper 12개 제거(Higgsfield·ElevenLabs·fal-ai MCP 직접 사용으로 환원). moai-education/career/bi 재정의. **22 플러그인 유지 · 155 → 143 스킬 · 동기화 지점 178 → 166**. Breaking change 없음
+- [v2.11.x (최신)](v2.11/) - **moai-media 16→4 정리 · 플러그인 페이지 책임 경계 재정렬 · docs-site 일관성 정비** — 이미지·영상·음성 wrapper 12개 제거(Higgsfield·ElevenLabs·fal-ai MCP 직접 사용으로 환원). moai-commerce/media/education/bi/career 페이지 재작성. **22 플러그인 유지 · 155 → 143 스킬 · 동기화 지점 178 → 166**. Breaking change 없음
 - [v2.10.x](v2.10/) - **신규 플러그인 `moai-book`** — 한국 출판사 제출용 원고 풀스택 8 스킬(컨셉서·페르소나·목차·저자 약력·제안서·출판사 매칭·본문·퇴고). 실용서·인문·기술·소설 4 장르 자동 분기. KPIPA·국립국어원·도서정가제·30+ 한국 출판사 + 자비 출판 5 플랫폼. **21 → 22 플러그인 · 147 → 155 스킬 · 동기화 지점 178**
 - [v2.9.x](v2.9/) - **"Wave 5 — moai-media 이미지 프롬프트 빌더 3종"** — GPT-image-2(OpenAI 6-Block)·Gemini 3 Pro Image(Google 5-component)·Midjourney v8.1(키워드+`--파라미터`) 공식 가이드 그대로 적용. AskUserQuestion 프리셋 + 3개 모델 동시 변환. 144 → 147 스킬
 - [v2.8.x](v2.8/) - **"Wave 4 — moai-commerce 한국 D2C 풀스택 완결"** — moai-commerce 신규 7(리뷰·VOC·구독·인플루언서·얼리팬·트렌드·시즌). 137 → 144 스킬, Wave 1-4 누적 (iii) 결정 완결
 - [v2.7.x](v2.7/) - **"Wave 3 — 프로모션·재구매·이미지 파이프라인"** — moai-commerce 신규 3. 134 → 137 스킬
 - [v2.6.x](v2.6/) - **"Wave 1 vault grounding + Wave 2 보강"** — moai-commerce 신규 3(LTV/CAC·push·compliance-kr) + Higgsfield Quick Wins 6 + 안 C 정리 3 + Wave 2 보강 3(AARRR·6질문·시장 세분화). 130 → 134 스킬
 - [v2.5.x](v2.5/) - **"메타 광고 audit 3-Layer 인프라"** — moai-marketing 신규 1(meta-ads-analyzer) + 자체 MCP 서버 moai-ads-audit + agricidaniel/claude-ads 방법론 한국화. 129 → 130 스킬
-- [v2.4.x](v2.4/) - **"캠프 후속 인사이트 통합본"** — 13건(신규 5 + 강화 8). coupang-ad-optimizer·commerce-margin-calculator·commerce-automation-audit·landing-page-conversion-audit·pixel-audit. 124 → 129 스킬
-- [v2.3.x](v2.3/) - **"모두의 커머스 3일 마스터 캠프" 통합본** — 17 신규 + 6 강화 스킬. Day 1 셋업(MCP 4커넥터)·Day 2 V6 6도구·Day 3 광고 풀세트(GPT Image 2·Kling/Veo/Seedance). 108 → 124 스킬
+- [v2.4.x](v2.4/) - **moai-commerce·moai-marketing 인사이트 통합** — 13건(신규 5 + 강화 8). coupang-ad-optimizer·commerce-margin-calculator·commerce-automation-audit·landing-page-conversion-audit·pixel-audit. 124 → 129 스킬
+- [v2.3.x](v2.3/) - **moai-commerce 17 신규 + moai-education 2 신규** — 시장조사·JTBD·페르소나·상품명·채널 메시지·통합전략 도메인 확장 + MCP 4커넥터 셋업 + Track C 책임 경계 정리. 108 → 124 스킬
 - [v2.2.x](v2.2/) - **마크다운 → 단일 파일 HTML 변환** — html-report 신규 스킬, 6개 보고서 모드, 외부 의존성 0, 12-25KB 산출물
 - [v2.1.x](v2.1/) - **한국어 AI 티 정밀 윤문 도입** (epoko77-ai/im-not-ai 포팅) — humanize-korean 신규 스킬, 10대 카테고리 × 40+ 패턴 SSOT, 의미 100% 보존 가드, A/B/C/D 등급 자동 판정
 - [v2.0.x](v2.0/) - **한국 B2B 시장 특화 6스킬 도입** (NomaDamas/k-skill 포팅) — 인터넷등기소·국토부 실거래가·식약처·법원경매·KRX·바른한글
@@ -90,14 +90,14 @@ MoAI Cowork Plugins의 업그레이드는 일반적으로 안전하게 진행할
 
 ### 호환성 정보
 
-- **v2.11.x**: 이전 버전과 완전 호환 — Breaking change 없음 (moai-media 16→4 정리, 외부 MCP 직접 사용으로 환원. 강의 컨텍스트 제거, 도메인 스킬 마켓플레이스 정체성 환원)
+- **v2.11.x**: 이전 버전과 완전 호환 — Breaking change 없음 (moai-media 16→4 정리, 외부 MCP 직접 사용으로 환원. 플러그인 페이지 책임 경계 재정렬)
 - **v2.10.x**: 이전 버전과 완전 호환 — Breaking change 없음 (신규 플러그인 moai-book 8 스킬 추가, 별도 활성화 필요)
 - **v2.9.x**: 이전 버전과 완전 호환 — Breaking change 없음 (moai-media 프롬프트 빌더 3 스킬 추가)
 - **v2.8.x**: 이전 버전과 완전 호환 — Breaking change 없음 (moai-commerce 신규 7 스킬, Wave 4)
 - **v2.7.x**: 이전 버전과 완전 호환 — Breaking change 없음 (moai-commerce 신규 3 스킬, Wave 3)
 - **v2.6.x**: 이전 버전과 완전 호환 — Breaking change 없음 (moai-commerce 신규 3 + Higgsfield 정리)
 - **v2.5.x**: 이전 버전과 완전 호환 — Breaking change 없음 (meta-ads-analyzer + MCP 서버 추가)
-- **v2.4.x**: 이전 버전과 완전 호환 — Breaking change 없음 (5 신규 + 8 강화 스킬, 캠프 후속 인사이트 통합)
+- **v2.4.x**: 이전 버전과 완전 호환 — Breaking change 없음 (5 신규 + 8 강화 스킬, moai-commerce·moai-marketing 인사이트 통합)
 - **v2.3.x**: 이전 버전과 완전 호환 — Breaking change 없음 (17 신규 + 6 강화 스킬 추가, Track C 페어 정리는 stub으로 v2.5.0까지 호환)
 - **v2.2.x**: 이전 버전과 완전 호환 — Breaking change 없음 (html-report 신규 스킬 추가)
 - **v2.1.x**: 이전 버전과 완전 호환 — Breaking change 없음 (humanize-korean 신규 스킬 추가)

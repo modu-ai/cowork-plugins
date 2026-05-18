@@ -136,7 +136,7 @@ flowchart TD
 
 | 플러그인 | 필요한 키·커넥터 |
 |---|---|
-| `moai-media` | `GEMINI_API_KEY`, `FAL_KEY`, `ELEVENLABS_API_KEY` |
+| `moai-media` | `GEMINI_API_KEY`, `HIGGSFIELD_API_KEY`, `HIGGSFIELD_SECRET`, `ELEVENLABS_API_KEY` |
 | `moai-business` (DART 공시 연동) | DART MCP |
 | `moai-data` | 공공데이터포털·KOSIS API 키 |
 | `moai-content:blog` (WordPress 자동 업로드) | WordPress MCP |

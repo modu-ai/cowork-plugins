@@ -262,7 +262,7 @@ AI가 생성한 랜딩 페이지 카피는 사실 확인 후 사용하세요.
 - **플랫폼 규격 변경**: 노코드 툴(Webflow, Framer, Wix)의 UI 및 기능은 수시로 변경됩니다. 구현 방향은 참고용으로 활용하세요.
 - **shadcn 버전 충돌**: shadcn CLI v4 기준으로 산출. 구 버전 프로젝트는 `pnpm dlx shadcn@latest init`으로 마이그레이션 후 적용하세요.
 - **브랜드 가이드 미제공**: shadcn 베이스 팔레트를 그대로 적용하고 결과를 보여준 뒤 사용자가 정제를 요청하면 `--primary` 오버라이드만 추가합니다.
-- **이미지 생성 실패**: 이 스킬은 텍스트 카피와 디자인 방향을 제공합니다. 실제 이미지는 `moai-media:nano-banana`(한국어 타이포 SOTA)·`moai-media:image-gen`(일반 이미지)·`moai-media:fal-gateway`(Flux·Ideogram 등) 또는 Unsplash·Pexels를 활용하세요.
+- **이미지 생성 실패**: 이 스킬은 텍스트 카피와 디자인 방향을 제공합니다. 실제 이미지는 **Higgsfield MCP**(Soul·시네마틱 이미지·캐릭터 단일 통합) 직접 호출 또는 Unsplash·Pexels를 활용하세요.
 - **A/B 테스트 필요**: AI가 생성한 랜딩 페이지 카피의 최적안은 실제 트래픽 테스트로만 확인 가능합니다. 헤드라인과 CTA를 중심으로 A/B 테스트를 진행하세요.
 
 ## 관련 스킬

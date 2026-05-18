@@ -119,7 +119,7 @@
 
 ## 한국어 타이포 처리
 
-이미지 안 한국어 텍스트가 깨지는 경우, **moai-media:nano-banana** (Gemini 3 Image, 한국어 타이포 SOTA)로 재생성하거나 **moai-media:fal-gateway** (Ideogram v3 모델)로 보조하거나, 이미지는 비주얼만 만들고 텍스트는 별도 PostScript 단계로 오버레이.
+이미지 안 한국어 텍스트가 깨지는 경우, **Higgsfield MCP**(Soul) 직접 호출로 재생성하거나, 이미지는 비주얼만 만들고 텍스트는 별도 PostScript 단계로 오버레이.
 
 ## 카테고리별 비주얼 브리프 적용
 

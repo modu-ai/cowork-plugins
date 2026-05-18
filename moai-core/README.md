@@ -42,7 +42,7 @@ MoAI 코어 플러그인 — 프로젝트 초기화, 도메인 라우터, AI 슬
 ```
 /project apikey
 ```
-등록된 API 키(공공데이터포털, KIPRIS, 국가법령정보, Gemini, fal.ai, ElevenLabs)를 조회·변경·추가·삭제합니다.
+등록된 API 키(공공데이터포털, KIPRIS, 국가법령정보, Gemini, Higgsfield, ElevenLabs)를 조회·변경·추가·삭제합니다.
 
 ```
 /project feedback PPT 생성 시 한글 폰트가 깨져요
