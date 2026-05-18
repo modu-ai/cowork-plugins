@@ -6,7 +6,7 @@ description: >
   역량 면접(BEI), PT, 토론, 임원, **2026 팀핏 면접**까지 유형별 대비 + 모의 면접 루프
   (질문→답변→피드백) + 역질문 15종 + 화상/하이브리드 면접 가이드를 제공합니다.
 user-invocable: true
-version: 2.11.0
+version: 2.11.1
 ---
 
 # 면접 코치 (interview-coach)

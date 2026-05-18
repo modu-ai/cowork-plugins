@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
-[![Version](https://img.shields.io/badge/Version-2.11.0-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-2.11.1-blue)](CHANGELOG.md)
 [![Plugins](https://img.shields.io/badge/Plugins-22-blue)](.claude-plugin/marketplace.json)
 [![Skills](https://img.shields.io/badge/Skills-143-green)](.claude-plugin/marketplace.json)
 [![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)

@@ -8,7 +8,7 @@ description: |
   ai-slop-reviewer 자동 체이닝 (기획서 텍스트 산출물).
   v2.7.0 신규.
 user-invocable: true
-version: 2.11.0
+version: 2.11.1
 ---
 
 # 3대 프로모션 기획법 (Commerce Promotion Planner)

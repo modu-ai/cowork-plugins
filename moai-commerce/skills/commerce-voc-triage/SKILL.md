@@ -7,7 +7,7 @@ description: |
   3축 분류: ① 고객 핏(핵심 고객 vs 일반 vs 비핵심) ② 빈도(반복 vs 일회성) ③ 핵심 가치 관련성(브랜드 USP 직격 vs 관련 vs 무관). KTAS 5단계 응급도 매핑.
   v2.8.0 신규.
 user-invocable: true
-version: 2.11.0
+version: 2.11.1
 ---
 
 # VOC 우선순위 판별 (Commerce VOC Triage)

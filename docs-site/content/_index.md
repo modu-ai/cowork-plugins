@@ -253,6 +253,22 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
 <div class="cw-timeline">
   <div class="cw-rel latest">
     <div class="ver-row">
+      <span class="ver">v2.11.1</span>
+      <span class="date">2026-05-18</span>
+      <span class="badge">PATCH</span>
+    </div>
+    <div class="ttl">v2.11.0 후속 정정 · fal-ai 완전 제거(Higgsfield 단일) · /project init Phase 2/4 · hugo.toml SSOT</div>
+    <div class="desc">v2.11.0 발행 후 사용자 보고 5건 정정 PATCH. fal-ai MCP 9 파일 32건 완전 제거(Higgsfield 단일 통합). <code>/project init</code> Phase 2 Inventory(cowork 22 화이트리스트) + Phase 4 Gap Detection(누락 감지+설치 안내) + Re-entry(<code>/project init resume</code>) 추가. hugo.toml SSOT로 좌측 사이드바·footer·badge 자동 반영. 22 플러그인·143 스킬 유지. Breaking change 없음.</div>
+    <ul>
+      <li><strong>fal-ai 완전 제거</strong> — 이미지·영상 직접 생성은 Higgsfield MCP 단일 통합. 번들 MCP는 higgsfield+elevenlabs 2종</li>
+      <li><strong>/project init Phase 2 Inventory</strong> — cowork-plugins 22 화이트리스트 필터 + 각 플러그인의 모든 SKILL.md 완전 스캔. 다른 마켓플레이스 출처는 완전 제외</li>
+      <li><strong>/project init Phase 4 Gap Detection</strong> — 체인 누락 자동 감지 + AskUserQuestion 4 옵션(설치 안내·제외·대체·중단) + .moai/cache/init-progress.json 진행 상태 저장</li>
+      <li><strong>/project init resume 신규</strong> — 누락 플러그인 설치 완료 후 진행 재개. 자연어 "이어서 진행" 발화도 지원</li>
+      <li><strong>hugo.toml SSOT</strong> — [params] version 한 줄 갱신으로 좌측 사이드바·footer·version-badge 모든 표시 위치 자동 반영. 동기화 지점 166 → 167</li>
+    </ul>
+  </div>
+  <div class="cw-rel">
+    <div class="ver-row">
       <span class="ver">v2.11.0</span>
       <span class="date">2026-05-18</span>
       <span class="badge">MINOR</span>

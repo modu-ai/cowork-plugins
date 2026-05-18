@@ -6,12 +6,49 @@
 
 ## 버전 통일 원칙 (HARD)
 
-아래 166개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.0.0부터 SKILL.md frontmatter `version:` 복구):
+아래 167개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.11.1+ `hugo.toml` SSOT 포함):
 - `.claude-plugin/marketplace.json` (`metadata.version`) × 1
 - `<plugin>/.claude-plugin/plugin.json` (`version`) × 22
 - `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 143 (v2.11.0+)
+- `docs-site/hugo.toml` (`[params] version`) × 1 (v2.11.1+ SSOT, 좌측 사이드바·footer 자동 반영)
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
+
+## [2.11.1] - 2026-05-18
+
+PATCH. **v2.11.0 후속 정정 — fal-ai 완전 제거 + project 스킬 Phase 2/4/Re-entry 추가 + hugo.toml SSOT 도입 + 홈 v2.10 카드 라벨 정정**. 22 플러그인 유지, 143 스킬 유지, 동기화 지점 167(166 + hugo.toml). Breaking change 없음.
+
+### Added (project 스킬 — `/project init` 흐름 강화)
+
+- `/project init` Phase 2 Inventory 구체 메커니즘 — `~/.claude/plugins/` 에서 **cowork-plugins 22 화이트리스트만** 필터링한 후 각 플러그인의 모든 `SKILL.md` 완전 스캔. 다른 마켓플레이스 출처 플러그인은 인벤토리에서 완전 제외
+- `/project init` Phase 4 Gap Detection — 체인 설계의 각 스킬이 inventory에 있는지 검증. 누락 발견 시 AskUserQuestion 4 옵션(설치 안내·제외·대체·중단) 제시 + `.moai/cache/init-progress.json` 진행 상태 저장
+- `/project init resume` 커맨드 신규 — 사용자가 누락 플러그인 설치 완료 후 `/project init resume` 또는 자연어 "이어서 진행" 발화 시 진행 상태 복원 + Phase 4부터 재검증
+- `docs-site/hugo.toml` SSOT — `[params] version` 단일 갱신으로 좌측 사이드바·footer·version-badge.html 모든 표시 위치 자동 반영
+
+### Fixed (fal-ai 완전 제거 + 카드 라벨 정정)
+
+- **fal-ai MCP 완전 제거** — 9 파일 32건 (CHANGELOG·README·docs-site/_index·releases/_index·v2.11·v2.7·v2.6·v1.2·moai-marketing). 이미지·영상 직접 생성은 **Higgsfield MCP 단일 통합**으로 환원. 음성은 ElevenLabs MCP. 번들 MCP는 higgsfield+elevenlabs 2종만
+- 홈 페이지 "최근 릴리스" 두 번째 카드가 v2.11.0으로 잘못 라벨링되어 있던 것 → v2.10.0(moai-book 신규 8 스킬)로 정정. 첫 카드 v2.11.0 + 두 번째 v2.10.0 + 세 번째 v2.9.0 순서 정상
+- 좌측 사이드바 상단 "MoAI-Cowork 문서 v2.10.0" 표기가 v2.11.0로 갱신되지 않던 문제 — hugo.toml SSOT 누락이 원인이었음. SSOT 한 줄 갱신으로 모든 표시 위치 자동 반영
+- 릴리스 노트 v2.11.md Hugo shortcode escape — backtick 안 `{{< terminal >}}`이 Hugo에 의해 shortcode로 해석되어 빌드 실패하던 문제. `{{</* terminal */>}}` literal escape로 정정
+- 메뉴 yaml에 v2.11.x 항목 누락 + isNew 마커가 v2.10에 남아있던 것 정정
+
+### Changed (메모리 정책)
+
+- `feedback_fal_ai_deprecated.md` — "fal-ai MCP 사용 금지, Higgsfield 단일 통합" 강한 정책 확정
+- `feedback_version_bump_docs_checklist.md` — vX.Y.Z bump 시 `hugo.toml [params] version` SSOT를 게이트 0(1순위)로 명시. docs-site 5 지점 + 8 검증 게이트 명세
+- 메모리 `feedback_terminal_prompt_first_line.md`, `feedback_tilde_strikethrough_ban.md`는 v2.11.0에서 이미 등록됨
+
+### Removed (academy handoff 정리 — v2.11.0 누락분 보강)
+
+- `academy-moai-cowork-handoff.md` 파일 삭제 — academy 외부 사이트(academy.mo.ai.kr)가 강의 안내를 담당하므로 저장소 내부 핸드오프 문서 불필요. v2.11.0에서 강의 컨텍스트 제거 작업의 마무리
+
+### Migration
+
+- 사용자 영향 없음 — 기존 워크플로우 그대로 동작
+- 이미지·영상 직접 생성을 fal-ai로 호출하던 사용자: **Higgsfield MCP**로 환원 (`higgsfield.soul.*`·`higgsfield.dop.*`·`higgsfield.speak.*`·`higgsfield.character.*`)
+- 음성은 ElevenLabs MCP 그대로
+- `/project init`을 다시 실행하면 Phase 2 Inventory + Phase 4 Gap Detection이 자동 활성화되어 누락 플러그인 발견 시 설치 안내 제공
 
 ## [2.11.0] - 2026-05-18
 
