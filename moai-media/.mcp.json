@@ -1,9 +1,9 @@
 {
   "mcpServers": {
     "higgsfield": {
-      "$comment": "Higgsfield 공식 hosted MCP — 이미지·영상 생성 (Soul·DOP·Speak·Character + Sora 2·Veo 3·Kling 3.0·Seedance·Nano Banana 등 30+ 모델). 첫 연결 시 Cowork 또는 Claude에서 OAuth 인증 1회. API 키 별도 발급 불필요.",
+      "$comment": "Higgsfield 공식 hosted MCP — 이미지·영상 생성 (Soul·DOP·Speak·Character + Sora 2·Veo 3·Kling 3.0·Seedance·Nano Banana 등 30+ 모델). 공식 URL: https://mcp.higgsfield.ai/mcp (higgsfield.ai/mcp 명시). 첫 연결 시 Cowork 또는 Claude에서 OAuth 인증 1회. API 키 별도 발급 불필요.",
       "type": "http",
-      "url": "https://mcp.higgsfield.ai"
+      "url": "https://mcp.higgsfield.ai/mcp"
     },
     "elevenlabs": {
       "$comment": "ElevenLabs 공식 MCP — TTS, 보이스 클로닝, 다국어 더빙, 효과음. audio-gen 스킬 전용. ELEVENLABS_API_KEY 필요.",

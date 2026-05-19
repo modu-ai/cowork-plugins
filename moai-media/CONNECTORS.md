@@ -8,7 +8,7 @@
 - **음성 생성 1종** (`audio-gen`) — ElevenLabs MCP 호출, `ELEVENLABS_API_KEY` 1개 필요
 
 **번들 MCP 2종** (`moai-media/.mcp.json`에 자동 등록):
-- **Higgsfield MCP** (hosted, `https://mcp.higgsfield.ai`) — 이미지·영상 생성 30+ 모델
+- **Higgsfield MCP** (hosted, `https://mcp.higgsfield.ai/mcp`) — 이미지·영상 생성 30+ 모델
 - **ElevenLabs MCP** (uvx stdio) — 음성·TTS·더빙
 
 ## MCP 번들 (자동 등록)
@@ -21,7 +21,7 @@
 {
   "higgsfield": {
     "type": "http",
-    "url": "https://mcp.higgsfield.ai"
+    "url": "https://mcp.higgsfield.ai/mcp"
   }
 }
 ```
