@@ -8,7 +8,7 @@ description: |
   v2.4.0 강화: 6대 영역 진단(A-F) + 포지셔닝 5축(품질/가성비/전문성/편의성/가치관) + 새 카테고리 창출 vs 기존 카테고리 경쟁 분석.
   ai-slop-reviewer 체이닝 제외 (수치·표 데이터 스킬).
 user-invocable: true
-version: 2.12.2
+version: 2.12.3
 ---
 
 # 카테고리 시장조사 (Commerce Market Research)

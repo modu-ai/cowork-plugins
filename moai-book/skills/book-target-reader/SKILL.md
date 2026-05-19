@@ -10,7 +10,7 @@ description: |
   - "독서 행동 분석", "책 구매 동기"
   - "독자 페르소나 카드 작성"
 user-invocable: true
-version: 2.12.2
+version: 2.12.3
 ---
 
 # book-target-reader

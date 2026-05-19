@@ -14,34 +14,41 @@
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
 
+## [2.12.3] - 2026-05-20
+
+PATCH. **moai-content:card-news 본문·참고 자료 자체 재구성** (v2.12.2의 외부 카피 의존 제거, 자체 표현으로 전면 재작성). 23 플러그인·148 스킬 유지, 동기화 지점 173.
+
+### Changed (moai-content:card-news)
+
+- SKILL.md 전면 재작성 — 10 구성 패턴 이름·표현·예시를 자체 작명으로 (A·B 듀얼 선택·순차 빌드·체크박스 점검·궁금증 해소·함정 회피·첫 발 가이드·개념 사전·페인 솔루션·실전 사례·즉시 활용 키트)
+- references/prompt-templates.md 전면 재작성 — 본문 골격·디자인 톤·통합 프롬프트·꿀팁 모두 자체 표현
+- 5 디자인 톤 재명명 (Soft Cream·Claude Modern·Corporate Trust·Playful Pop·Bold Dark)
+- 8단계 워크플로우 자체 정립 (주제 파악 → 패턴 선택 → 본문 골격 → 톤 → 통합 프롬프트 → 이미지 위임 → 카피 검수 → 채널 산출)
+- 채널별 캡션 가이드 추가 (인스타·스레드·카카오 채널·페이스북)
+- 분량별 확장 가이드 (4장·7장·10장 시리즈)
+
+### Removed
+
+- 외부 카피 표현·예시 직접 인용 제거
+- v2.12.2 본문·CHANGELOG에 있던 외부 출처 표기 정정
+
+### 버전 동기화
+
+- marketplace.json + 23 plugin.json + 148 SKILL.md + hugo.toml = 173 지점 2.12.2 → 2.12.3
+
 ## [2.12.2] - 2026-05-20
 
-PATCH. **moai-content:card-news 카드뉴스 프롬프트 완전 가이드 통합**. 23 플러그인·148 스킬 유지, 동기화 지점 173. Breaking change 없음.
+PATCH. **moai-content:card-news 1차 확장** — 10 구성 패턴·통합 프롬프트·디자인 톤 추가 (이후 v2.12.3에서 자체 표현으로 전면 재작성).
 
-### Added (moai-content:card-news)
+### Added (moai-content:card-news, 후속 v2.12.3에서 재구성)
 
-- references/prompt-templates.md (신규) — 10 구조 유형별 프롬프트 + 공통 스타일 문구 + 최종 범용 프롬프트 + 꿀팁
-- SKILL.md 본문 — 10 구조 유형 자동 선택 (비교·단계·체크리스트·Q&A·실수·입문·용어·문제해결·예시·템플릿)
-- 5 디자인 톤 (한국형 MZ·Claude·브랜드 비즈니스·발랄 캐주얼·다크 톤)
-- Claude 톤 변형 (Anthropic Orange #d97757 + Light Beige #faf9f5 + Pretendard)
-- 통합 프롬프트 — 구조·디자인·꿀팁 결합
+- references/prompt-templates.md 신규
+- SKILL.md 본문 — 10 구성 패턴·5 디자인 톤·통합 프롬프트
 
 ### Changed
 
 - marketplace.json + 23 plugin.json + 148 SKILL.md + hugo.toml = 173 지점 2.12.1 → 2.12.2
 - docs-site: releases/v2.12.2.md 신규 · releases/_index.md · data/menu/main.yaml
-
-### Fixed
-
-해당 없음
-
-### Removed
-
-해당 없음
-
-### Sources
-
-- **카드뉴스 프롬프트 완전 가이드** (© 2026 COMMME · Built with Claude Code) — [Notion 공유 자료](https://canyon-newsboy-274.notion.site/36495b7e6610817da8c0f911932c4d9f)
 
 ## [2.12.1] - 2026-05-20
 

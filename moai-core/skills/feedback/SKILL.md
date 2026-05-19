@@ -11,7 +11,7 @@ description: |
 
   단순 불만 표출이나 일반 대화, 플러그인 사용법 질문에는 사용하지 마세요.
 user-invocable: true
-version: 2.12.2
+version: 2.12.3
 ---
 
 # Feedback — 피드백 수집 및 GitHub Issues 등록

@@ -9,7 +9,7 @@ description: |
   - 복합적 원인이 의심되는 문제 상황 진단
   - 성능 저하, 오류 원인, 병목 파악
 user-invocable: true
-version: 2.12.2
+version: 2.12.3
 ---
 
 # ai-diagnostic
