@@ -67,10 +67,30 @@ main:
 
   - name: 클로드 디자인
     icon: palette
+    defaultOpen: true
     sub:
-      - name: 개요
+      - name: 섹션 개요
         ref: /claude-design
         isNew: true
+      - name: 시작하기
+        ref: /claude-design/getting-started
+      - name: 디자인 시스템 설정
+        ref: /claude-design/design-system
+        badge: 핵심
+      - name: 리파인먼트
+        ref: /claude-design/refinement
+      - name: 협업과 공유
+        ref: /claude-design/collaboration
+      - name: 내보내기·핸드오프
+        ref: /claude-design/export-handoff
+      - name: 역할별 사용 사례
+        ref: /claude-design/use-cases
+      - name: 베스트 프랙티스
+        ref: /claude-design/best-practices
+      - name: 요금제와 한도
+        ref: /claude-design/pricing-limits
+      - name: 제한 사항·로드맵
+        ref: /claude-design/limitations
 
   - name: 플러그인
     icon: plug
