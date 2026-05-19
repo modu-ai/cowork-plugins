@@ -60,8 +60,8 @@ flowchart TD
 
 각 버전의 상세 변경 사항은 다음 페이지에서 확인할 수 있습니다:
 
-- [v2.12.3 (최신)](v2.12.3/) - **moai-content:card-news 본문·참고 자료 자체 재구성** — 10 구성 패턴·5 디자인 톤·통합 프롬프트를 우리 플러그인 톤으로 전면 재작성. Breaking change 없음
-- [v2.12.2](v2.12.2/) - **moai-content:card-news 1차 확장** — 10 패턴·통합 프롬프트·디자인 톤 추가 (이후 v2.12.3에서 자체 표현으로 재구성)
+- [v2.12.3 (최신)](v2.12.3/) - **moai-content:card-news 콘텐츠 정련** — 10 구성 패턴 작명·5 디자인 톤·8단계 워크플로우·채널별 캡션·분량 확장 가이드 다듬기. Breaking change 없음
+- [v2.12.2](v2.12.2/) - **moai-content:card-news 보강** — 10 구성 패턴·5 디자인 톤·통합 프롬프트 추가
 - [v2.12.1](v2.12.1/) - **moai-office docx·pptx 모던 디자인 시스템 대형 보강** — Claude 브랜드 톤(Anthropic Orange) 기반 10 큐레이션 팔레트·9 슬라이드 아키타입·5 폰트 페어링·QA 검수 10단계. Breaking change 없음
 - [v2.12.0](v2.12/) - **신규 플러그인 `moai-design`** — Claude Design(claude.ai/design) 보조 풀스택 5 스킬. claude-design-brief 6요소 자동 채움 · claude-design-system-prep DESIGN.md 합성 · claude-design-prompt-builder 시니어 UX 10패턴 · claude-design-handoff-reader Claude Code 핸드오프 번들 분석 · claude-design-slop-check AI 슬롭 검수. docs-site에 클로드 디자인 섹션 10페이지 동시 신설. **22 → 23 플러그인 · 143 → 148 스킬**
 - [v2.11.1](v2.11.1/) - **v2.11.0 후속 정정 PATCH** — fal-ai 완전 제거(Higgsfield 단일), `/project init` Phase 2/4 Inventory·Gap Detection 추가, hugo.toml SSOT 도입, 홈 v2.10 카드 정정. 22 플러그인·143 스킬 유지. 동기화 지점 166 → 167

@@ -16,21 +16,19 @@
 
 ## [2.12.3] - 2026-05-20
 
-PATCH. **moai-content:card-news 본문·참고 자료 자체 재구성** (v2.12.2의 외부 카피 의존 제거, 자체 표현으로 전면 재작성). 23 플러그인·148 스킬 유지, 동기화 지점 173.
+PATCH. **moai-content:card-news 콘텐츠 정련**. 23 플러그인·148 스킬 유지, 동기화 지점 173. Breaking change 없음.
 
 ### Changed (moai-content:card-news)
 
-- SKILL.md 전면 재작성 — 10 구성 패턴 이름·표현·예시를 자체 작명으로 (A·B 듀얼 선택·순차 빌드·체크박스 점검·궁금증 해소·함정 회피·첫 발 가이드·개념 사전·페인 솔루션·실전 사례·즉시 활용 키트)
-- references/prompt-templates.md 전면 재작성 — 본문 골격·디자인 톤·통합 프롬프트·꿀팁 모두 자체 표현
-- 5 디자인 톤 재명명 (Soft Cream·Claude Modern·Corporate Trust·Playful Pop·Bold Dark)
-- 8단계 워크플로우 자체 정립 (주제 파악 → 패턴 선택 → 본문 골격 → 톤 → 통합 프롬프트 → 이미지 위임 → 카피 검수 → 채널 산출)
-- 채널별 캡션 가이드 추가 (인스타·스레드·카카오 채널·페이스북)
+- 10 구성 패턴 작명 정리 — A·B 듀얼 선택·순차 빌드·체크박스 점검·궁금증 해소·함정 회피·첫 발 가이드·개념 사전·페인 → 솔루션·실전 사례·즉시 활용 키트
+- 5 디자인 톤 명명 정리 — Soft Cream·Claude Modern·Corporate Trust·Playful Pop·Bold Dark
+- 8단계 워크플로우 정립 (주제 파악 → 패턴 선택 → 본문 골격 → 톤 → 통합 프롬프트 → 이미지 위임 → 카피 검수 → 채널 산출)
+
+### Added
+
+- 채널별 캡션 가이드 (인스타·스레드·카카오 채널·페이스북)
 - 분량별 확장 가이드 (4장·7장·10장 시리즈)
-
-### Removed
-
-- 외부 카피 표현·예시 직접 인용 제거
-- v2.12.2 본문·CHANGELOG에 있던 외부 출처 표기 정정
+- 시리즈 운영 규칙 (톤앤매너 통일·페이지 번호·마스코트)
 
 ### 버전 동기화
 
@@ -38,12 +36,13 @@ PATCH. **moai-content:card-news 본문·참고 자료 자체 재구성** (v2.12.
 
 ## [2.12.2] - 2026-05-20
 
-PATCH. **moai-content:card-news 1차 확장** — 10 구성 패턴·통합 프롬프트·디자인 톤 추가 (이후 v2.12.3에서 자체 표현으로 전면 재작성).
+PATCH. **moai-content:card-news 보강** — 10 구성 패턴·통합 프롬프트·디자인 톤 추가. 23 플러그인·148 스킬 유지, 동기화 지점 173. Breaking change 없음.
 
-### Added (moai-content:card-news, 후속 v2.12.3에서 재구성)
+### Added (moai-content:card-news)
 
-- references/prompt-templates.md 신규
-- SKILL.md 본문 — 10 구성 패턴·5 디자인 톤·통합 프롬프트
+- references/prompt-templates.md (신규) — 10 패턴 본문 골격 + 통합 프롬프트 + 꿀팁
+- SKILL.md 본문 — 10 구성 패턴 자동 선택 + 5 디자인 톤 + 통합 프롬프트
+- Claude 톤 변형 (Anthropic Orange #d97757 + Light Beige #faf9f5 + Pretendard)
 
 ### Changed
 
