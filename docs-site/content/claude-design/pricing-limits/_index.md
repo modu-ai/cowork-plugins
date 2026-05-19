@@ -24,17 +24,19 @@ geekdocBreadcrumb: true
 
 Claude Design은 **일반 채팅·Claude Code와 분리된 별도 쿼터**를 사용합니다.
 
-```
-┌──────────────────────────────────────────────────┐
-│ 사용자의 Anthropic 계정                          │
-├──────────────────────────────────────────────────┤
-│  ┌────────────┐  ┌────────────┐  ┌────────────┐  │
-│  │ 일반 채팅  │  │ Claude     │  │ Claude     │  │
-│  │ (claude.ai)│  │ Code       │  │ Design     │  │
-│  │            │  │            │  │            │  │
-│  │ 쿼터 A     │  │ 쿼터 B     │  │ 쿼터 C     │  │
-│  └────────────┘  └────────────┘  └────────────┘  │
-└──────────────────────────────────────────────────┘
+```mermaid
+flowchart TB
+    subgraph Acc["사용자의 Anthropic 계정"]
+        direction LR
+        A["일반 채팅<br/>claude.ai<br/><br/><b>쿼터 A</b>"]
+        B["Claude Code<br/><br/><br/><b>쿼터 B</b>"]
+        C["Claude Design<br/>claude.ai/design<br/><br/><b>쿼터 C</b>"]
+    end
+
+    style Acc fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style A fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style B fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style C fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
 ```
 
 A·B·C는 서로 영향을 주지 않습니다. 일반 채팅 한도를 다 써도 Design은 그대로 가능하고, 그 반대도 같습니다.
