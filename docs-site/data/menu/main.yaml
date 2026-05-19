@@ -65,6 +65,13 @@ main:
       - name: Team·Enterprise
         ref: /cowork/enterprise
 
+  - name: 클로드 디자인
+    icon: palette
+    sub:
+      - name: 개요
+        ref: /claude-design
+        isNew: true
+
   - name: 플러그인
     icon: plug
     sub:
