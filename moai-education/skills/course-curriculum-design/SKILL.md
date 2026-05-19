@@ -6,7 +6,7 @@ description: |
   "강의 운영 매뉴얼 만들어줘", "워크숍 시간표·동선 만들어줘", "연수 D-N 사전 준비물 메일", "강사·조교 동선표", "수업 리스크 Plan B 매트릭스", "교시별·세션별 시간표", "D-N 운영 준비 체크리스트", "강의실 설비·환경 체크리스트".
   체인: course-curriculum-design → moai-core:ai-slop-reviewer (운영 매뉴얼 텍스트 검수) → moai-office:docx-generator (Word .docx 출력).
 user-invocable: true
-version: 2.12.1
+version: 2.12.2
 ---
 
 # 강의 운영 매뉴얼 자동 생성 (강사·교수·교사용)

@@ -8,7 +8,7 @@ description: |
   ai-slop-reviewer 자동 체이닝 (카피 텍스트 산출물).
   v2.6.0 신규.
 user-invocable: true
-version: 2.12.1
+version: 2.12.2
 ---
 
 # 앱 푸시 메시지 기획 (Commerce Push Planner)

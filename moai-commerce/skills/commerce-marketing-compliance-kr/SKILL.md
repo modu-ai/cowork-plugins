@@ -9,7 +9,7 @@ description: |
   ai-slop-reviewer 체이닝 제외 (규칙 기반 검증 스킬).
   v2.6.0 신규.
 user-invocable: true
-version: 2.12.1
+version: 2.12.2
 ---
 
 # 정보통신망법 광고·정보성 메시지 준수 게이트 (Korean Marketing Compliance)

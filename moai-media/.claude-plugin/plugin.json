@@ -1,6 +1,6 @@
 {
   "name": "moai-media",
-  "version": "2.12.1",
+  "version": "2.12.2",
   "description": "AI 이미지 프롬프트 빌더 3종 + 음성 생성 — GPT-image-2·Gemini 3 Pro Image·Midjourney v8.1 공식 가이드 적용 + ElevenLabs MCP 기반 TTS·보이스 클로닝·다국어 더빙·효과음. 이미지·영상 렌더링은 별도 MCP(Higgsfield 등)가 담당.",
   "author": {
     "name": "모두의AI"

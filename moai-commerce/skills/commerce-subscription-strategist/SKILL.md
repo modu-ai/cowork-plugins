@@ -7,7 +7,7 @@ description: |
   4 구독 모델: ① 소비재 (오이식스·롯데 새벽배송) ② 경험 (VIPS·CGM) ③ 관계 (배송 멤버십) ④ 맞춤 (영양제·화장품).
   v2.8.0 신규.
 user-invocable: true
-version: 2.12.1
+version: 2.12.2
 ---
 
 # 구독 비즈니스 모델 설계 (Commerce Subscription Strategist)

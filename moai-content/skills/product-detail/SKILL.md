@@ -12,7 +12,7 @@ description: >
   Next.js+shadcn/ui React 컴포넌트를 산출합니다.
   블로그 글, SNS 포스팅, 랜딩 페이지(단독 전환 목적)에는 이 스킬을 사용하지 마세요.
 user-invocable: true
-version: 2.12.1
+version: 2.12.2
 ---
 
 # 상세 페이지 (Product Detail)

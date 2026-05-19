@@ -14,6 +14,35 @@
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
 
+## [2.12.2] - 2026-05-20
+
+PATCH. **moai-content:card-news 카드뉴스 프롬프트 완전 가이드 통합**. 23 플러그인·148 스킬 유지, 동기화 지점 173. Breaking change 없음.
+
+### Added (moai-content:card-news)
+
+- references/prompt-templates.md (신규) — 10 구조 유형별 프롬프트 + 공통 스타일 문구 + 최종 범용 프롬프트 + 꿀팁
+- SKILL.md 본문 — 10 구조 유형 자동 선택 (비교·단계·체크리스트·Q&A·실수·입문·용어·문제해결·예시·템플릿)
+- 5 디자인 톤 (한국형 MZ·Claude·브랜드 비즈니스·발랄 캐주얼·다크 톤)
+- Claude 톤 변형 (Anthropic Orange #d97757 + Light Beige #faf9f5 + Pretendard)
+- 통합 프롬프트 — 구조·디자인·꿀팁 결합
+
+### Changed
+
+- marketplace.json + 23 plugin.json + 148 SKILL.md + hugo.toml = 173 지점 2.12.1 → 2.12.2
+- docs-site: releases/v2.12.2.md 신규 · releases/_index.md · data/menu/main.yaml
+
+### Fixed
+
+해당 없음
+
+### Removed
+
+해당 없음
+
+### Sources
+
+- **카드뉴스 프롬프트 완전 가이드** (© 2026 COMMME · Built with Claude Code) — [Notion 공유 자료](https://canyon-newsboy-274.notion.site/36495b7e6610817da8c0f911932c4d9f)
+
 ## [2.12.1] - 2026-05-20
 
 PATCH. **moai-office docx-generator·pptx-designer 모던 디자인 시스템 대형 보강**. Claude 브랜드 톤(Anthropic Orange #d97757, Light Beige #faf9f5, Dark #141413) 기반 색·타이포·간격·구조 패턴 내장. 23 플러그인·148 스킬 유지, 동기화 지점 173. Breaking change 없음.

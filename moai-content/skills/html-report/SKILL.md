@@ -13,7 +13,7 @@ description: |
   - "html-report mode=status", "html-report mode=financial", "html-report mode=plan"
 
 user-invocable: true
-version: 2.12.1
+version: 2.12.2
 ---
 
 # html-report — 단일 파일 HTML 보고서 렌더러
