@@ -24,9 +24,10 @@ flowchart TD
     V28 --> V29["v2.9<br/>프롬프트 빌더 3"]
     V29 --> V210["v2.10<br/>moai-book 신규"]
     V210 --> V211["v2.11<br/>media 정리·재정의"]
+    V211 --> V212["v2.12<br/>moai-design 신규"]
 
     style V10 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style V211 fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+    style V212 fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
 ```
 
 ## 버전 관리 정책
@@ -59,7 +60,8 @@ flowchart TD
 
 각 버전의 상세 변경 사항은 다음 페이지에서 확인할 수 있습니다:
 
-- [v2.11.1 (최신)](v2.11.1/) - **v2.11.0 후속 정정 PATCH** — fal-ai 완전 제거(Higgsfield 단일), `/project init` Phase 2/4 Inventory·Gap Detection 추가, hugo.toml SSOT 도입, 홈 v2.10 카드 정정. 22 플러그인·143 스킬 유지. 동기화 지점 166 → 167
+- [v2.12.0 (최신)](v2.12/) - **신규 플러그인 `moai-design`** — Claude Design(claude.ai/design) 보조 풀스택 5 스킬. claude-design-brief 6요소 자동 채움 · claude-design-system-prep DESIGN.md 합성 · claude-design-prompt-builder 시니어 UX 10패턴 · claude-design-handoff-reader Claude Code 핸드오프 번들 분석 · claude-design-slop-check AI 슬롭 검수. docs-site에 클로드 디자인 섹션 10페이지 동시 신설. **22 → 23 플러그인 · 143 → 148 스킬**
+- [v2.11.1](v2.11.1/) - **v2.11.0 후속 정정 PATCH** — fal-ai 완전 제거(Higgsfield 단일), `/project init` Phase 2/4 Inventory·Gap Detection 추가, hugo.toml SSOT 도입, 홈 v2.10 카드 정정. 22 플러그인·143 스킬 유지. 동기화 지점 166 → 167
 - [v2.11.0](v2.11/) - **moai-media 16→4 정리 · 플러그인 페이지 책임 경계 재정렬 · docs-site 일관성 정비** — 이미지·영상·음성 wrapper 12개 제거(Higgsfield · ElevenLabs MCP 직접 사용으로 환원). moai-commerce/media/education/bi/career 페이지 재작성. **22 플러그인 유지 · 155 → 143 스킬 · 동기화 지점 178 → 166**. Breaking change 없음
 - [v2.10.x](v2.10/) - **신규 플러그인 `moai-book`** — 한국 출판사 제출용 원고 풀스택 8 스킬(컨셉서·페르소나·목차·저자 약력·제안서·출판사 매칭·본문·퇴고). 실용서·인문·기술·소설 4 장르 자동 분기. KPIPA·국립국어원·도서정가제·30+ 한국 출판사 + 자비 출판 5 플랫폼. **21 → 22 플러그인 · 147 → 155 스킬 · 동기화 지점 178**
 - [v2.9.x](v2.9/) - **"Wave 5 — moai-media 이미지 프롬프트 빌더 3종"** — GPT-image-2(OpenAI 6-Block)·Gemini 3 Pro Image(Google 5-component)·Midjourney v8.1(키워드+`--파라미터`) 공식 가이드 그대로 적용. AskUserQuestion 프리셋 + 3개 모델 동시 변환. 144 → 147 스킬
@@ -91,6 +93,7 @@ MoAI Cowork Plugins의 업그레이드는 일반적으로 안전하게 진행할
 
 ### 호환성 정보
 
+- **v2.12.x**: 이전 버전과 완전 호환 — Breaking change 없음 (신규 플러그인 moai-design 5 스킬 추가, 별도 활성화 필요)
 - **v2.11.x**: 이전 버전과 완전 호환 — Breaking change 없음 (moai-media 16→4 정리, 외부 MCP 직접 사용으로 환원. 플러그인 페이지 책임 경계 재정렬)
 - **v2.10.x**: 이전 버전과 완전 호환 — Breaking change 없음 (신규 플러그인 moai-book 8 스킬 추가, 별도 활성화 필요)
 - **v2.9.x**: 이전 버전과 완전 호환 — Breaking change 없음 (moai-media 프롬프트 빌더 3 스킬 추가)

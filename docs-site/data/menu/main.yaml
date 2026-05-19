@@ -171,6 +171,10 @@ main:
         ref: /plugins/moai-book
         count: 8
         isNew: true
+      - name: 클로드 디자인 보조
+        ref: /plugins/moai-design
+        count: 5
+        isNew: true
 
   - name: 쿡북
     icon: chef
@@ -227,9 +231,11 @@ main:
     sub:
       - name: 릴리스 홈
         ref: /releases
+      - name: v2.12.0
+        ref: /releases/v2.12
+        isNew: true
       - name: v2.11.1
         ref: /releases/v2.11.1
-        isNew: true
       - name: v2.11.0
         ref: /releases/v2.11
       - name: v2.10.x

@@ -9,7 +9,7 @@ description: |
   ai-slop-reviewer 체이닝 제외 (이미지·영상 산출물).
   v2.7.0 신규.
 user-invocable: true
-version: 2.11.1
+version: 2.12.0
 ---
 
 # 상품 이미지·영상 풀스택 파이프라인 (Product Image Pipeline)

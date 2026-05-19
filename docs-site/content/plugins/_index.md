@@ -1,14 +1,14 @@
 ---
 title: "플러그인 카탈로그"
 weight: 1
-description: "modu-ai/cowork-plugins 마켓플레이스의 22개 플러그인·143개 스킬을 도메인별로 정리한 카탈로그입니다."
+description: "modu-ai/cowork-plugins 마켓플레이스의 23개 플러그인·148개 스킬을 도메인별로 정리한 카탈로그입니다."
 geekdocBreadcrumb: true
 geekdocCollapseSection: false
 ---
 
 # `cowork-plugins` 카탈로그
 
-[`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins)는 한국 업무 환경에 맞춰 설계된 **22개 플러그인 · 143개 스킬**의 커뮤니티 마켓플레이스입니다. 사업계획·IR·마케팅·법무·세무·HR·카드뉴스·PPT·이미지 프롬프트 빌더·이커머스 풀스택·**메타 광고 보고서 분석**·**한국 출판사 제출 원고**까지 도메인별로 묶여 있습니다.
+[`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins)는 한국 업무 환경에 맞춰 설계된 **23개 플러그인 · 148개 스킬**의 커뮤니티 마켓플레이스입니다. 사업계획·IR·마케팅·법무·세무·HR·카드뉴스·PPT·이미지 프롬프트 빌더·이커머스 풀스택·메타 광고 보고서 분석·한국 출판사 제출 원고·**Claude Design 보조 풀스택**까지 도메인별로 묶여 있습니다.
 
 ```mermaid
 flowchart TD
@@ -66,9 +66,11 @@ flowchart TD
 ```
 
 {{< hint type="note" >}}
-**v2.11.0 업데이트 (최신)**: moai-media wrapper 12 스킬 제거(이미지·영상은 Higgsfield MCP, 음성은 ElevenLabs MCP가 직접 지원) → **이미지 프롬프트 빌더 3종 + audio-gen 4 스킬**로 정리. moai-commerce·moai-media·moai-education 페이지 범용 플러그인으로 재정의. moai-bi html-report 통합, moai-career 2026 한국 채용 데이터 반영. **22 플러그인 유지 · 155 → 143 스킬**. Breaking change 없음.
+**v2.12.0 업데이트 (최신)**: 신규 플러그인 **`moai-design`** — Claude Design(claude.ai/design) 보조 풀스택 5 스킬(claude-design-brief 6요소 자동 채움 · claude-design-system-prep DESIGN.md 합성 · claude-design-prompt-builder 시니어 UX 10패턴 · claude-design-handoff-reader Claude Code 핸드오프 번들 분석 · claude-design-slop-check AI 슬롭 검수). docs-site에 클로드 디자인 섹션 10페이지 동시 신설. **22 → 23 플러그인 · 143 → 148 스킬**.
 
-**v2.10.0**: 신규 플러그인 **`moai-book`** — 한국 출판사 제출용 원고 풀스택 8 스킬(컨셉서·페르소나·목차·저자 약력·제안서·출판사 매칭·본문·퇴고). 21 → 22 플러그인 · 147 → 155 스킬.
+**v2.11.0**: moai-media wrapper 12 스킬 제거(이미지·영상은 Higgsfield MCP, 음성은 ElevenLabs MCP가 직접 지원) → 이미지 프롬프트 빌더 3종 + audio-gen 4 스킬로 정리.
+
+**v2.10.0**: 신규 플러그인 **`moai-book`** — 한국 출판사 제출용 원고 풀스택 8 스킬. 21 → 22 플러그인 · 147 → 155 스킬.
 {{< /hint >}}
 
 ## 전제 조건
@@ -122,7 +124,11 @@ flowchart TD
 - [`moai-career`](./moai-career/) — 자기소개서·이력서·면접 코칭·포트폴리오
 - [`moai-lifestyle`](./moai-lifestyle/) — 여행·웰니스·이벤트·웨딩 기획
 
-## 한 눈에 보는 스킬 수 (v2.11.0)
+### Claude Design 보조
+
+- [`moai-design`](./moai-design/) **NEW v2.12** — [claude.ai/design](https://claude.ai/design) 사용을 받쳐 주는 풀스택 5 스킬. 브리프 작성·디자인 시스템 자산 합성·시니어 UX 프롬프트·Claude Code 핸드오프 분석·AI 슬롭 검수
+
+## 한 눈에 보는 스킬 수 (v2.12.0)
 
 "대표 스킬 (일부)"는 각 플러그인에서 가장 자주 호출되는 스킬을 발췌한 것입니다. 전체 스킬 목록은 플러그인 이름을 클릭해 상세 페이지에서 확인하세요.
 
@@ -150,8 +156,9 @@ flowchart TD
 | [moai-bi](./moai-bi/) | 1 | executive-summary |
 | [moai-pm](./moai-pm/) | 1 | weekly-report |
 | [moai-sales](./moai-sales/) | 1 | proposal-writer |
+| [moai-design](./moai-design/) | 5 | **claude-design-brief · claude-design-system-prep · claude-design-prompt-builder · claude-design-handoff-reader · claude-design-slop-check (v2.12 신규)** |
 
-전체 **143개 스킬 · 22개 플러그인** (v2.11.0 기준).
+전체 **148개 스킬 · 23개 플러그인** (v2.12.0 기준).
 
 ## 다음 단계
 
@@ -166,4 +173,4 @@ flowchart TD
 
 - [modu-ai/cowork-plugins](https://github.com/modu-ai/cowork-plugins)
 - [cowork-plugins README](https://raw.githubusercontent.com/modu-ai/cowork-plugins/main/README.md)
-- [v2.11.0 릴리스 (최신)](../releases/v2.11/) · [v2.10.0 릴리스](../releases/v2.10/) · [v2.9.0 릴리스](../releases/v2.9/)
+- [v2.12.0 릴리스 (최신)](../releases/v2.12/) · [v2.11.0 릴리스](../releases/v2.11/) · [v2.10.0 릴리스](../releases/v2.10/)

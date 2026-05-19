@@ -6,7 +6,7 @@ description: |
   "트렌드 키워드 상품명", "데이터랩 검색어 변환", "이번주 트렌드 해시태그", "시즌 트렌드 블로그 제목", "급상승 키워드 상품명".
   v2.8.0 신규.
 user-invocable: true
-version: 2.11.1
+version: 2.12.0
 ---
 
 # 트렌드 키워드 → 상품명·해시태그 (Commerce Trend Namer)

@@ -8,7 +8,7 @@ description: |
   ai-slop-reviewer 체이닝 제외 (수치·표·의사결정 데이터 스킬).
   v2.4.0 신규 (쿠팡 광고 운영 6개월 실전 노하우 기반).
 user-invocable: true
-version: 2.11.1
+version: 2.12.0
 ---
 
 # 쿠팡 광고 풀세트 최적화 (Coupang Ad Optimizer)

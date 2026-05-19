@@ -6,13 +6,77 @@
 
 ## 버전 통일 원칙 (HARD)
 
-아래 167개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.11.1+ `hugo.toml` SSOT 포함):
+아래 173개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.11.1+ `hugo.toml` SSOT 포함):
 - `.claude-plugin/marketplace.json` (`metadata.version`) × 1
-- `<plugin>/.claude-plugin/plugin.json` (`version`) × 22
-- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 143 (v2.11.0+)
+- `<plugin>/.claude-plugin/plugin.json` (`version`) × 23 (v2.12.0+)
+- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 148 (v2.12.0+)
 - `docs-site/hugo.toml` (`[params] version`) × 1 (v2.11.1+ SSOT, 좌측 사이드바·footer 자동 반영)
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
+
+## [2.12.0] - 2026-05-20
+
+MINOR. **신규 플러그인 `moai-design` — Claude Design(claude.ai/design) 보조 풀스택 5 스킬 + docs-site 클로드 디자인 섹션 10페이지 동시 신설**. 22 → 23 플러그인, 143 → 148 스킬, 동기화 지점 167 → 173. Breaking change 없음.
+
+### Added (신규 플러그인: moai-design — 5 스킬)
+
+- `moai-design/.claude-plugin/plugin.json` — Cowork 마켓플레이스 등록
+- `moai-design/README.md` — 플러그인 사용 가이드
+- **`claude-design-brief`** — Claude Design 6요소 브리프(Project·Audience·Pages·Tone·Reference·Constraints) 자동 채움. 자연어 한 줄 입력 → AskUserQuestion으로 누락 요소 보완 → AI 슬롭 회피 블록 자동 포함된 복붙용 프롬프트 생성
+- **`claude-design-system-prep`** — 브랜드 자산 5종(코드·디자인·브랜드·실물·사전 빌트인) → DESIGN.md 합성. 색 팔레트·타이포·컴포넌트·voice·레이아웃 자동 추출. Claude Design 업로드 가이드 동봉
+- **`claude-design-prompt-builder`** — 시니어 UX 10 패턴(IA·리서치·디자인 시스템·카피·온보딩·휴리스틱·대시보드·접근성·폼·테스트) 중 자동 선택 + ROLE·GOAL·CONSTRAINTS·OUTPUTS 자동 채움. 사용자는 CONTEXT만 보완
+- **`claude-design-handoff-reader`** — Claude Code 핸드오프 번들(README·design-tokens.json·components.json·layout-hierarchy.json·chat-history.md) 분석. 컴포넌트 트리·토큰·디자인 결정 맥락·구현 우선순위 + Claude Code 지시 1줄 자동 생성
+- **`claude-design-slop-check`** — 영문(Reimagine your·Unleash your potential 등 Tier 1 11개·Tier 2 5개) + 한국어(혁신적인·차세대·재정의하는 등 Tier 1 9개·Tier 2 5개) 슬롭 패턴 검수. moai-content:humanize-korean 체이닝 권장
+
+### Added (docs-site 클로드 디자인 섹션 10페이지)
+
+코워크와 플러그인 사이 top-level 섹션 신설:
+
+- `docs-site/content/claude-design/_index.md` — 학습 경로 허브 (123줄)
+- `docs-site/content/claude-design/getting-started/_index.md` — 입력 4종·6요소 템플릿·Hello World 5종·30분 워크플로우 (197줄)
+- `docs-site/content/claude-design/design-system/_index.md` ★ — 자산 5종·6단계 셋업·Figma·GitHub·CSS 토큰·멀티 시스템·Published 토글 (273줄)
+- `docs-site/content/claude-design/refinement/_index.md` — 4가지 조작·컨텍스트 누적·AI 슬롭 회피·시니어 UX 10 패턴 (213줄)
+- `docs-site/content/claude-design/collaboration/_index.md` — Org-scoped 공유·3권한·그룹 대화·데이터 거버넌스·DPA·GDPR (191줄)
+- `docs-site/content/claude-design/export-handoff/_index.md` — 6 출력 형식·핸드오프 번들 내부 구조·양방향 우회 (237줄)
+- `docs-site/content/claude-design/use-cases/_index.md` — 5 역할 워크플로우·Brilliant·Datadog·Canva 사례·한국 SaaS·D2C·어드민 시나리오 (254줄)
+- `docs-site/content/claude-design/best-practices/_index.md` — 10대 원칙·통합 프롬프트 템플릿·보안·조직 운영 체크리스트 (253줄)
+- `docs-site/content/claude-design/pricing-limits/_index.md` — 별도 쿼터·RBAC 4단계·도입 결정 체크리스트·한국 결제 메모 (210줄)
+- `docs-site/content/claude-design/limitations/_index.md` — Research Preview 9 제한·향후 로드맵 추정·v0·Lovable·Bolt 비교·도입 부적합 7조건 (225줄)
+- `docs-site/layouts/partials/menu.html` — `palette` 아이콘 SVG 추가
+
+### Added (docs-site 인덱스 갱신)
+
+- `docs-site/content/plugins/moai-design.md` — moai-design 플러그인 상세 페이지
+- `docs-site/content/releases/v2.12.md` — v2.12.0 릴리스 노트
+
+### Changed
+
+- `marketplace.json` `metadata.description` — v2.12.0 highlights 추가, plugins[] 배열에 moai-design
+- `marketplace.json` `metadata.version`: 2.11.1 → 2.12.0
+- 모든 `plugin.json` `version`: 2.11.1 → 2.12.0 (22 → 23 파일)
+- 모든 `SKILL.md` `version` frontmatter: 2.11.1 → 2.12.0 (143 → 148 파일)
+- `docs-site/hugo.toml` `[params] version`: 2.11.1 → 2.12.0, `releaseDate`: 2026-05-20
+- `docs-site/data/menu/main.yaml` — 플러그인 카탈로그에 "클로드 디자인 보조" 추가, 릴리스 메뉴에 v2.12.0 추가
+- `docs-site/content/_index.md` — 22 → 23 플러그인, 143 → 148 스킬 카운트 갱신
+- `docs-site/content/plugins/_index.md` — 카탈로그 메인 표·도메인별 섹션·v2.12 hint·NEW 표시 + Sources 링크 갱신
+- `docs-site/content/releases/_index.md` — mermaid 흐름도 + 최신 릴리스 카드 + 호환성 메모
+
+### Fixed
+
+해당 없음 (MINOR 신규 추가만)
+
+### Removed
+
+해당 없음
+
+### Migration
+
+기존 워크플로우는 그대로 동작. moai-design 플러그인은 마켓플레이스에서 별도 활성화가 필요. 기존 디자인 인접 스킬(`moai-product:ux-designer`·`moai-product:ux-researcher`·`moai-marketing:brand-identity` 등)은 그대로 유지.
+
+```bash
+/plugin marketplace update cowork-plugins
+# moai-design 활성화는 마켓플레이스에서 +
+```
 
 ## [2.11.1] - 2026-05-18
 

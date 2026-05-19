@@ -7,7 +7,7 @@ description: |
   표시광고법 + 공정거래위 가이드 준수. 5 인플루언서 티어 차등 협업 전략.
   v2.8.0 신규.
 user-invocable: true
-version: 2.11.1
+version: 2.12.0
 ---
 
 # 인플루언서·UGC 협업 가이드 (Commerce Influencer Collaboration)
