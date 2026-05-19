@@ -8,7 +8,7 @@ description: |
   ai-slop-reviewer 자동 체이닝 (진단 보고서 텍스트 산출물).
   v2.4.0 신규 ("커머스 업무 자동화" 24p 풀세트 wrapping).
 user-invocable: true
-version: 2.12.3
+version: 2.13.0
 ---
 
 # 커머스 자동화 진단·로드맵 (Commerce Automation Audit)

@@ -1,14 +1,14 @@
 ---
 title: "플러그인 카탈로그"
 weight: 1
-description: "modu-ai/cowork-plugins 마켓플레이스의 23개 플러그인·148개 스킬을 도메인별로 정리한 카탈로그입니다."
+description: "modu-ai/cowork-plugins 마켓플레이스의 23개 플러그인·150개 스킬을 도메인별로 정리한 카탈로그입니다."
 geekdocBreadcrumb: true
 geekdocCollapseSection: false
 ---
 
 # `cowork-plugins` 카탈로그
 
-[`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins)는 한국 업무 환경에 맞춰 설계된 **23개 플러그인 · 148개 스킬**의 커뮤니티 마켓플레이스입니다. 사업계획·IR·마케팅·법무·세무·HR·카드뉴스·PPT·이미지 프롬프트 빌더·이커머스 풀스택·메타 광고 보고서 분석·한국 출판사 제출 원고·**Claude Design 보조 풀스택**까지 도메인별로 묶여 있습니다.
+[`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins)는 한국 업무 환경에 맞춰 설계된 **23개 플러그인 · 150개 스킬**의 커뮤니티 마켓플레이스입니다. 사업계획·IR·마케팅·법무·세무·HR·카드뉴스·PPT·이미지 프롬프트 빌더·이커머스 풀스택·메타 광고 보고서 분석·한국 출판사 제출 원고·**Claude Design 보조 풀스택**까지 도메인별로 묶여 있습니다.
 
 ```mermaid
 flowchart TD
@@ -66,7 +66,9 @@ flowchart TD
 ```
 
 {{< hint type="note" >}}
-**v2.12.0 업데이트 (최신)**: 신규 플러그인 **`moai-design`** — Claude Design(claude.ai/design) 보조 풀스택 5 스킬(claude-design-brief 6요소 자동 채움 · claude-design-system-prep DESIGN.md 합성 · claude-design-prompt-builder 시니어 UX 10패턴 · claude-design-handoff-reader Claude Code 핸드오프 번들 분석 · claude-design-slop-check AI 슬롭 검수). docs-site에 클로드 디자인 섹션 10페이지 동시 신설. **22 → 23 플러그인 · 143 → 148 스킬**.
+**v2.13.0 업데이트 (최신)**: `moai-media` 플러그인에 **`higgsfield-image`·`higgsfield-video`** 신규 2 스킬 도입 — Higgsfield MCP를 직접 호출해 이미지(Soul·Nano Banana 등 5 모델)·영상(Sora 2·Veo 3.1·Kling 3·Speak·DOP 등 31 모델) 생성을 자연어 한 줄로 처리. 캐릭터 일관성·DOP 카메라 디렉팅·립싱크·비동기 잡 폴링 통합. **23 플러그인 유지 · 148 → 150 스킬**.
+
+**v2.12.0**: 신규 플러그인 **`moai-design`** — Claude Design(claude.ai/design) 보조 풀스택 5 스킬(claude-design-brief 6요소 자동 채움 · claude-design-system-prep DESIGN.md 합성 · claude-design-prompt-builder 시니어 UX 10패턴 · claude-design-handoff-reader Claude Code 핸드오프 번들 분석 · claude-design-slop-check AI 슬롭 검수). docs-site에 클로드 디자인 섹션 10페이지 동시 신설. **22 → 23 플러그인 · 143 → 148 스킬**.
 
 **v2.11.0**: moai-media wrapper 12 스킬 제거(이미지·영상은 Higgsfield MCP, 음성은 ElevenLabs MCP가 직접 지원) → 이미지 프롬프트 빌더 3종 + audio-gen 4 스킬로 정리.
 
@@ -128,7 +130,7 @@ flowchart TD
 
 - [`moai-design`](./moai-design/) **NEW v2.12** — [claude.ai/design](https://claude.ai/design) 사용을 받쳐 주는 풀스택 5 스킬. 브리프 작성·디자인 시스템 자산 합성·시니어 UX 프롬프트·Claude Code 핸드오프 분석·AI 슬롭 검수
 
-## 한 눈에 보는 스킬 수 (v2.12.0)
+## 한 눈에 보는 스킬 수 (v2.13.0)
 
 "대표 스킬 (일부)"는 각 플러그인에서 가장 자주 호출되는 스킬을 발췌한 것입니다. 전체 스킬 목록은 플러그인 이름을 클릭해 상세 페이지에서 확인하세요.
 
@@ -137,7 +139,7 @@ flowchart TD
 | [moai-core](./moai-core/) | 8 | project, ai-slop-reviewer, feedback, ai-diagnostic, mcp-connector-setup, skill-builder, skill-template, skill-tester |
 | [moai-content](./moai-content/) | 12 | blog, card-news, landing-page, copywriting, humanize-korean, html-report, detail-page-planner +5종 |
 | [moai-office](./moai-office/) | 5 | pptx-designer, docx-generator, xlsx-creator, hwpx-writer, pdf-writer |
-| [moai-media](./moai-media/) | 4 | **gpt-image-2-prompt·gemini-3-image-prompt·midjourney-v8-prompt** (이미지 프롬프트 빌더 3종) · **audio-gen** (ElevenLabs MCP TTS·보이스 클로닝·다국어 더빙). v2.11에서 wrapper 12 스킬 제거 — 이미지·영상은 **Higgsfield MCP** 단일 통합, 음성은 ElevenLabs MCP 직접 지원 |
+| [moai-media](./moai-media/) | 6 | **higgsfield-image·higgsfield-video (v2.13 신규)** Higgsfield MCP 직접 호출로 Soul·Nano Banana 등 5 이미지 모델 + Sora 2·Veo 3.1·Kling 3·Speak·DOP 등 31 영상 모델 자연어 호출 · **gpt-image-2-prompt·gemini-3-image-prompt·midjourney-v8-prompt** 외부 도구 프롬프트 빌더 · **audio-gen** ElevenLabs MCP TTS·보이스 클로닝·다국어 더빙 |
 | [moai-book](./moai-book/) | 8 | **book-concept-planner·book-target-reader·book-outline-designer·book-author-bio·book-proposal-writer·book-publisher-matcher·book-chapter-writer·book-revision-coach (v2.10 신규)** |
 | [moai-business](./moai-business/) | 10 | strategy-planner, investor-relations, sbiz365-analyst, kr-gov-grant, consulting-brief, sales-playbook, startup-launchpad +3종 |
 | [moai-marketing](./moai-marketing/) | 11 | brand-identity, seo-audit, campaign-planner(광고 심리학 완전판), sns-content, target-script, landing-page-conversion-audit, pixel-audit, **meta-ads-analyzer (v2.5)** +3종 |
@@ -158,7 +160,7 @@ flowchart TD
 | [moai-sales](./moai-sales/) | 1 | proposal-writer |
 | [moai-design](./moai-design/) | 5 | **claude-design-brief · claude-design-system-prep · claude-design-prompt-builder · claude-design-handoff-reader · claude-design-slop-check (v2.12 신규)** |
 
-전체 **148개 스킬 · 23개 플러그인** (v2.12.0 기준).
+전체 **150개 스킬 · 23개 플러그인** (v2.12.0 기준).
 
 ## 다음 단계
 

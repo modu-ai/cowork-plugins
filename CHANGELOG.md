@@ -6,13 +6,69 @@
 
 ## 버전 통일 원칙 (HARD)
 
-아래 173개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.11.1+ `hugo.toml` SSOT 포함):
+아래 175개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.11.1+ `hugo.toml` SSOT 포함):
 - `.claude-plugin/marketplace.json` (`metadata.version`) × 1
 - `<plugin>/.claude-plugin/plugin.json` (`version`) × 23 (v2.12.0+)
-- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 148 (v2.12.0+)
+- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 150 (v2.13.0+)
 - `docs-site/hugo.toml` (`[params] version`) × 1 (v2.11.1+ SSOT, 좌측 사이드바·footer 자동 반영)
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
+
+## [2.13.0] - 2026-05-20
+
+MINOR. **moai-media에 Higgsfield MCP 직접 호출 신규 2 스킬 — higgsfield-image · higgsfield-video**. 23 플러그인 유지, 148 → 150 스킬, 동기화 지점 173 → 175. Breaking change 없음.
+
+### Added (moai-media:higgsfield-image)
+
+- SKILL.md — 5 이미지 모델(Soul·Nano Banana·Flux·Seedream·Cinema Studio) 자동 선택·호출
+- 모델 선택 키워드 매칭 (글자→Nano Banana, 시네마틱→Soul·Cinema Studio, 사진→Flux 등)
+- 파라미터 자동 설계 (width_and_height·quality·batch_size·style·seed·custom_reference_id)
+- 비율 자동 매핑 (인스타·스토리·블로그·인쇄)
+- 캐릭터 일관성 — Soul + create_character + custom_reference_id 패턴
+- 비동기 잡 폴링 (queued → in_progress → completed/failed/nsfw)
+- references/model-guide.md — 5 모델별 강점·약점·예시 프롬프트·비교 매트릭스
+
+### Added (moai-media:higgsfield-video)
+
+- SKILL.md — 31 영상 모델 자동 선택·호출
+  - 일반: Sora 2·Veo 3·Veo 3.1·Kling 3·Kling 2.6·Seedance·Minimax Hailuo·Wan 2.2/2.5/2.6
+  - 카메라: DOP (Director of Photography)
+  - 인물: Speak (infinite-talk)·Image2Video
+- 입력 유형별 분기 (text-to-video / image-to-video / speak with audio)
+- DOP 카메라 무브먼트 — 줌·팬·트래킹·돌리·틸트·특수효과
+- 단일/2개/3개 모션 조합·strength 가이드 (0.5-0.7 자연스러움)
+- Speak 통합 — audio-gen (ElevenLabs)로 음성 → Speak 립싱크
+- 비동기 잡 폴링 (5-90초, 모델별)
+- references/dop-motions.md — DOP 모션 ID 카탈로그·strength 가이드·시나리오별 추천
+
+### Added (docs-site)
+
+- content/releases/v2.13.md (신규) — v2.13.0 릴리스 노트
+- data/menu/main.yaml — 릴리스 메뉴 v2.13.0 추가
+- content/releases/_index.md — mermaid 흐름도 v2.13 추가, 카드 설명·호환성 메모
+
+### Changed
+
+- marketplace.json metadata.description — v2.13.0 highlights 추가
+- marketplace.json metadata.version — 2.12.3 → 2.13.0
+- marketplace.json plugins[].moai-media description — Higgsfield 직접 호출 명시
+- moai-media/.claude-plugin/plugin.json description·keywords — Higgsfield 키워드 확장
+- 전체 plugin.json + SKILL.md + hugo.toml SSOT = 175 지점 2.12.3 → 2.13.0
+- docs-site content/_index.md, plugins/_index.md — 148 → 150 스킬 카운트 갱신
+
+### Migration
+
+기존 워크플로우 그대로 동작. moai-media를 이미 활성화한 사용자는 업데이트 후 추가 작업 불필요. Higgsfield 첫 사용 시 Cowork → 설정 → MCP → Higgsfield → Connect로 OAuth 1회 인증.
+
+```bash
+/plugin marketplace update cowork-plugins
+```
+
+### Sources
+
+- [Higgsfield 공식 MCP](https://higgsfield.ai/mcp) — hosted server URL·모델 목록
+- [Higgsfield AI 본사](https://higgsfield.ai)
+- Higgsfield MCP 공식 안내 — generate_image·generate_video·generate_video_dop 파라미터
 
 ## [2.12.3] - 2026-05-20
 
