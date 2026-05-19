@@ -14,6 +14,38 @@
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
 
+## [2.12.1] - 2026-05-20
+
+PATCH. **moai-office docx-generator·pptx-designer 모던 디자인 시스템 대형 보강**. Claude 브랜드 톤(Anthropic Orange #d97757, Light Beige #faf9f5, Dark #141413) 기반 색·타이포·간격·구조 패턴 내장. 23 플러그인·148 스킬 유지, 동기화 지점 173. Breaking change 없음.
+
+### Added (moai-office:docx-generator)
+
+- references/modern-design-system.md — Claude 톤 색 팔레트·타이포 페어링·간격 토큰
+- references/modern-templates.md — 6대 모던 템플릿 (공문서·기업 보고서·계약서·제안서·기획서·사업계획서) + 각 팔레트 변형
+- references/qa-checklist.md — 10단계 자동·시각 검수 (placeholder·헤딩 위계·표 보더·폰트·색 대비·AI 슬롭)
+- SKILL.md 본문 — 모던 디자인 패턴 6종 (Executive Summary Box·Pull Quote·Stat Callout·Comparison Table·Sidebar Note·Section Divider) + python-docx 코드 패턴
+
+### Added (moai-office:pptx-designer)
+
+- references/curated-palettes.md — **10 큐레이션 팔레트** (Claude Classic·Coral·Mono·Blue Calm·Green Earth·Korean Brick·Navy·Sage·Dark Editorial·High Contrast Bold)
+- references/slide-archetypes.md — **9 비즈니스 슬라이드 아키타입** (Title·Agenda·Problem·Solution·Features·Stats·Team·CTA·Closing) + 시퀀스 조합 예시
+- references/typography-pairings.md — **5 폰트 페어링** (Modern·Editorial·Bold Heading·Classic·Tech) + 사이즈 위계·라이선스 메모
+- references/qa-checklist.md — 자동 (5단계) + 시각 (5단계) 검수 + LibreOffice CLI 변환·Claude Code subagent 검수
+- SKILL.md 본문 — HTML-First 옵션 + 다중 산출물 (PPTX·PDF·JPEG·발표자 노트·편집 가이드)
+
+### Changed
+
+- marketplace.json + 23 plugin.json + 148 SKILL.md + hugo.toml SSOT = 173 지점 모두 2.12.0 → 2.12.1 일괄 bump
+- docs-site/content/releases/_index.md + data/menu/main.yaml — v2.12.1 추가, v2.12.0 보존
+
+### Fixed
+
+해당 없음 (PATCH 콘텐츠 보강만)
+
+### Removed
+
+해당 없음
+
 ## [2.12.0] - 2026-05-20
 
 MINOR. **신규 플러그인 `moai-design` — Claude Design(claude.ai/design) 보조 풀스택 5 스킬 + docs-site 클로드 디자인 섹션 10페이지 동시 신설**. 22 → 23 플러그인, 143 → 148 스킬, 동기화 지점 167 → 173. Breaking change 없음.

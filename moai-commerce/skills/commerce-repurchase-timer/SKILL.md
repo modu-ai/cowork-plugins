@@ -9,7 +9,7 @@ description: |
   ai-slop-reviewer 자동 체이닝 (텍스트 메시지 산출물).
   v2.7.0 신규.
 user-invocable: true
-version: 2.12.0
+version: 2.12.1
 ---
 
 # 재구매 타이밍 엔진 (Commerce Repurchase Timer)

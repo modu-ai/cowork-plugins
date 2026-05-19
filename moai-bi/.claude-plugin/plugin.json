@@ -1,6 +1,6 @@
 {
   "name": "moai-bi",
-  "version": "2.12.0",
+  "version": "2.12.1",
   "description": "비즈니스 인텔리전스·리포트 풀스택. 기본 출력은 단일 HTML 파일(이미지·CSS·JS 인라인, 카톡 즉시 공유 가능). pdf/docx/pptx/hwpx 변환 옵션 체이닝. K-IFRS·KOSIS·DART 한국 통계 친화",
   "author": {
     "name": "모두의AI"

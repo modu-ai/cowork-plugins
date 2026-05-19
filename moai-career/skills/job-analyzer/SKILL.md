@@ -6,7 +6,7 @@ description: >
   JD에서 필수/우대 역량 추출 + 본인 경험 매칭 + DART·잡플래닛·블라인드·사람인 공고 이력
   종합 분석 + 2026 핀셋 채용 시대의 회사 현재 우선순위 추출까지 지원합니다.
 user-invocable: true
-version: 2.12.0
+version: 2.12.1
 ---
 
 # 채용공고 분석기 (job-analyzer)

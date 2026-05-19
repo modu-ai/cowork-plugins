@@ -14,7 +14,7 @@ description: |
   - "가격 전략 수립해줘", "가격 모델 설계", "고객 세분화"
   - "market research", "competitive analysis", "pricing strategy"
 user-invocable: true
-version: 2.12.0
+version: 2.12.1
 ---
 
 # 시장 분석가 (Market Analyst)

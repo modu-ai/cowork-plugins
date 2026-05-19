@@ -10,7 +10,7 @@ description: |
   - "베스트셀러 분석", "장르별 출판사 컨벤션"
   - "자비 출판 vs 출판사 투고 의사결정"
 user-invocable: true
-version: 2.12.0
+version: 2.12.1
 ---
 
 # book-concept-planner
