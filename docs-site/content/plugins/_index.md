@@ -66,7 +66,7 @@ flowchart TD
 ```
 
 {{< hint type="note" >}}
-**v2.13.0 업데이트 (최신)**: `moai-media` 플러그인에 **`higgsfield-image`·`higgsfield-video`** 신규 2 스킬 도입 — Higgsfield MCP를 직접 호출해 이미지(Soul·Nano Banana 등 5 모델)·영상(Sora 2·Veo 3.1·Kling 3·Speak·DOP 등 31 모델) 생성을 자연어 한 줄로 처리. 캐릭터 일관성·DOP 카메라 디렉팅·립싱크·비동기 잡 폴링 통합. **23 플러그인 유지 · 148 → 150 스킬**.
+**v2.13.0 업데이트 (최신)**: `moai-media` 플러그인에 **`higgsfield-image`·`higgsfield-video`** 신규 2 스킬 도입 — higgsfield.ai 공식 11 이미지 모델(Soul 3종·Nano Banana 2종·GPT Image 2종·Seedream 4.0·Flux Kontext·Wan 2.2/2.5) + 공식 11 영상 모델(Sora 2·Veo 3·Kling 4종·Seedance 2종·Cinema Studio 3.5·MiniMax Hailuo 02·Wan 2.5) + 6 비디오 프리셋(UGC·Unboxing·Product review·Hyper motion·TV spot·Wild Card)을 자연어 한 줄로 호출. 캐릭터 일관성(Soul Characters·Kling Avatars 2.0)·비동기 잡 폴링 통합. **23 플러그인 유지 · 148 → 150 스킬**.
 
 **v2.12.0**: 신규 플러그인 **`moai-design`** — Claude Design(claude.ai/design) 보조 풀스택 5 스킬(claude-design-brief 6요소 자동 채움 · claude-design-system-prep DESIGN.md 합성 · claude-design-prompt-builder 시니어 UX 10패턴 · claude-design-handoff-reader Claude Code 핸드오프 번들 분석 · claude-design-slop-check AI 슬롭 검수). docs-site에 클로드 디자인 섹션 10페이지 동시 신설. **22 → 23 플러그인 · 143 → 148 스킬**.
 
@@ -139,7 +139,7 @@ flowchart TD
 | [moai-core](./moai-core/) | 8 | project, ai-slop-reviewer, feedback, ai-diagnostic, mcp-connector-setup, skill-builder, skill-template, skill-tester |
 | [moai-content](./moai-content/) | 12 | blog, card-news, landing-page, copywriting, humanize-korean, html-report, detail-page-planner +5종 |
 | [moai-office](./moai-office/) | 5 | pptx-designer, docx-generator, xlsx-creator, hwpx-writer, pdf-writer |
-| [moai-media](./moai-media/) | 6 | **higgsfield-image·higgsfield-video (v2.13 신규)** Higgsfield MCP 직접 호출로 Soul·Nano Banana 등 5 이미지 모델 + Sora 2·Veo 3.1·Kling 3·Speak·DOP 등 31 영상 모델 자연어 호출 · **gpt-image-2-prompt·gemini-3-image-prompt·midjourney-v8-prompt** 외부 도구 프롬프트 빌더 · **audio-gen** ElevenLabs MCP TTS·보이스 클로닝·다국어 더빙 |
+| [moai-media](./moai-media/) | 6 | **higgsfield-image·higgsfield-video (v2.13 신규)** Higgsfield MCP 직접 호출로 공식 11 이미지 모델(Soul 계열·Nano Banana 계열·GPT Image 계열·Seedream 4.0·Flux Kontext·Wan 2.2/2.5) + 공식 11 영상 모델(Sora 2·Veo 3·Kling 2.1/2.5/3.0·Kling Avatars 2.0·Seedance 2.0/Pro·Cinema Studio 3.5·MiniMax Hailuo 02·Wan 2.5) + 6 비디오 프리셋(UGC·Unboxing·Product review·Hyper motion·TV spot·Wild Card) 자연어 호출 · **gpt-image-2-prompt·gemini-3-image-prompt·midjourney-v8-prompt** 외부 도구 프롬프트 빌더 · **audio-gen** ElevenLabs MCP TTS·보이스 클로닝·다국어 더빙 |
 | [moai-book](./moai-book/) | 8 | **book-concept-planner·book-target-reader·book-outline-designer·book-author-bio·book-proposal-writer·book-publisher-matcher·book-chapter-writer·book-revision-coach (v2.10 신규)** |
 | [moai-business](./moai-business/) | 10 | strategy-planner, investor-relations, sbiz365-analyst, kr-gov-grant, consulting-brief, sales-playbook, startup-launchpad +3종 |
 | [moai-marketing](./moai-marketing/) | 11 | brand-identity, seo-audit, campaign-planner(광고 심리학 완전판), sns-content, target-script, landing-page-conversion-audit, pixel-audit, **meta-ads-analyzer (v2.5)** +3종 |

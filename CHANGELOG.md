@@ -16,30 +16,34 @@
 
 ## [2.13.0] - 2026-05-20
 
-MINOR. **moai-media에 Higgsfield MCP 직접 호출 신규 2 스킬 — higgsfield-image · higgsfield-video**. 23 플러그인 유지, 148 → 150 스킬, 동기화 지점 173 → 175. Breaking change 없음.
+MINOR. **moai-media에 Higgsfield MCP 직접 호출 신규 2 스킬 — higgsfield-image · higgsfield-video** (higgsfield.ai 공식 페이지 명시 모델 기준). 23 플러그인 유지, 148 → 150 스킬, 동기화 지점 173 → 175. Breaking change 없음.
 
 ### Added (moai-media:higgsfield-image)
 
-- SKILL.md — 5 이미지 모델(Soul·Nano Banana·Flux·Seedream·Cinema Studio) 자동 선택·호출
-- 모델 선택 키워드 매칭 (글자→Nano Banana, 시네마틱→Soul·Cinema Studio, 사진→Flux 등)
+- SKILL.md — higgsfield.ai 공식 11 이미지 모델 자동 선택·호출
+  · Soul 계열: Soul · Soul 2.0 · Soul Cinema
+  · Nano Banana 계열: Nano Banana · Nano Banana Pro
+  · GPT Image 계열: GPT Image · GPT Image 2
+  · 기타: Seedream 4.0 · Flux Kontext · Wan 2.2 Image · Wan 2.5
+- 모델 선택 키워드 매칭 (글자→Nano Banana Pro, 시네마틱→Soul Cinema·Soul 2.0, 사진→Flux Kontext·GPT Image 2, 아트→Seedream 4.0 등)
 - 파라미터 자동 설계 (width_and_height·quality·batch_size·style·seed·custom_reference_id)
 - 비율 자동 매핑 (인스타·스토리·블로그·인쇄)
-- 캐릭터 일관성 — Soul + create_character + custom_reference_id 패턴
+- 캐릭터 일관성 — Soul Characters reference 패턴
 - 비동기 잡 폴링 (queued → in_progress → completed/failed/nsfw)
-- references/model-guide.md — 5 모델별 강점·약점·예시 프롬프트·비교 매트릭스
+- references/model-guide.md — 11 모델별 강점·약점·예시 프롬프트·비교 매트릭스
 
 ### Added (moai-media:higgsfield-video)
 
-- SKILL.md — 31 영상 모델 자동 선택·호출
-  - 일반: Sora 2·Veo 3·Veo 3.1·Kling 3·Kling 2.6·Seedance·Minimax Hailuo·Wan 2.2/2.5/2.6
-  - 카메라: DOP (Director of Photography)
-  - 인물: Speak (infinite-talk)·Image2Video
-- 입력 유형별 분기 (text-to-video / image-to-video / speak with audio)
-- DOP 카메라 무브먼트 — 줌·팬·트래킹·돌리·틸트·특수효과
-- 단일/2개/3개 모션 조합·strength 가이드 (0.5-0.7 자연스러움)
-- Speak 통합 — audio-gen (ElevenLabs)로 음성 → Speak 립싱크
-- 비동기 잡 폴링 (5-90초, 모델별)
-- references/dop-motions.md — DOP 모션 ID 카탈로그·strength 가이드·시나리오별 추천
+- SKILL.md — higgsfield.ai 공식 11 영상 모델 + 6 비디오 프리셋 자동 선택·호출
+  · 일반 영상: Sora 2 · Google Veo 3 · Kling 2.1 Master · Kling 2.5 Turbo · Kling 3.0 · Seedance 2.0 · Seedance Pro · MiniMax Hailuo 02 · Wan 2.5
+  · 시네마틱: Cinema Studio 3.5
+  · 캐릭터 일관성: Kling Avatars 2.0
+  · 비디오 프리셋: UGC · Unboxing · Product review · Hyper motion · TV spot · Wild Card
+- 입력 유형별 분기 (text-to-video / image-to-video / 캐릭터 시리즈)
+- 모델·프리셋 자동 매칭 (시네마틱→Cinema Studio 3.5+TV spot, 빠른 시안→Kling 2.5 Turbo+UGC, 액션→Seedance Pro+Hyper motion 등)
+- 길이·비율 자동 (16:9·9:16·1:1·4:5)
+- 비동기 잡 폴링 (10-90초, 모델별)
+- references/dop-motions.md — 6 프리셋 사용 가이드·모델별 톤 변경·호출 예시
 
 ### Added (docs-site)
 
@@ -66,9 +70,9 @@ MINOR. **moai-media에 Higgsfield MCP 직접 호출 신규 2 스킬 — higgsfie
 
 ### Sources
 
-- [Higgsfield 공식 MCP](https://higgsfield.ai/mcp) — hosted server URL·모델 목록
-- [Higgsfield AI 본사](https://higgsfield.ai)
-- Higgsfield MCP 공식 안내 — generate_image·generate_video·generate_video_dop 파라미터
+- [Higgsfield 공식 사이트](https://higgsfield.ai) — 공식 11 이미지 + 11 영상 모델 + 30+ 광고
+- [Higgsfield MCP](https://higgsfield.ai/mcp) — hosted MCP 안내
+- [Higgsfield Skills](https://higgsfield.ai/skills) — 6 비디오 프리셋 (UGC·Unboxing·Product review·Hyper motion·TV spot·Wild Card)
 
 ## [2.12.3] - 2026-05-20
 

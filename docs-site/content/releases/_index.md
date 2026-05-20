@@ -61,7 +61,7 @@ flowchart TD
 
 각 버전의 상세 변경 사항은 다음 페이지에서 확인할 수 있습니다:
 
-- [v2.13.0 (최신)](v2.13/) - **moai-media higgsfield-image·higgsfield-video 신규 2 스킬** — Higgsfield MCP 직접 호출, 5 이미지 모델·31 영상 모델·DOP·Speak·캐릭터 일관성·비동기 잡 폴링 통합. 23 플러그인 유지·148 → 150 스킬
+- [v2.13.0 (최신)](v2.13/) - **moai-media higgsfield-image·higgsfield-video 신규 2 스킬** — Higgsfield MCP 직접 호출, higgsfield.ai 공식 11 이미지 모델 + 11 영상 모델 + 6 비디오 프리셋(UGC·Unboxing·Product review·Hyper motion·TV spot·Wild Card)·캐릭터 일관성(Soul Characters·Kling Avatars 2.0)·비동기 잡 폴링 통합. 23 플러그인 유지·148 → 150 스킬
 - [v2.12.3](v2.12.3/) - **moai-content:card-news 콘텐츠 정련** — 10 구성 패턴 작명·5 디자인 톤·8단계 워크플로우·채널별 캡션·분량 확장 가이드 다듬기. Breaking change 없음
 - [v2.12.2](v2.12.2/) - **moai-content:card-news 보강** — 10 구성 패턴·5 디자인 톤·통합 프롬프트 추가
 - [v2.12.1](v2.12.1/) - **moai-office docx·pptx 모던 디자인 시스템 대형 보강** — Claude 브랜드 톤(Anthropic Orange) 기반 10 큐레이션 팔레트·9 슬라이드 아키타입·5 폰트 페어링·QA 검수 10단계. Breaking change 없음

@@ -1,208 +1,145 @@
-# Higgsfield DOP — 카메라 무브먼트 카탈로그
+# Higgsfield 영상 프리셋·카메라 디렉팅 가이드
 
-DOP (Director of Photography) 모델이 지원하는 카메라 모션 ID와 권장 강도(strength).
+[higgsfield.ai/skills](https://higgsfield.ai/skills) 명시 기준 (2026-05).
 
-## 모션 카테고리
+Higgsfield 공식 자료에는 6가지 **비디오 프리셋**과 모델 11종이 공개되어 있습니다. 일부 커뮤니티 MCP 구현체에는 추가 카메라 모션 도구(DOP)가 존재하지만, **공식 페이지에는 별도 모델로 명시되어 있지 않습니다**. 본 가이드는 공식 프리셋·모델 중심으로 카메라 디렉팅을 다룹니다.
 
-### 1. 줌 (Zoom)
+## 6가지 공식 비디오 프리셋
 
-| 모션 ID | 효과 | 권장 strength | 적합 시점 |
-|---|---|---|---|
-| `slow_zoom_in` | 천천히 가까이 | 0.5-0.8 | 제품 클로즈업·발견 모먼트 |
-| `slow_zoom_out` | 천천히 멀어짐 | 0.5-0.8 | 클라이맥스 후 여운 |
-| `fast_zoom_in` | 빠르게 가까이 | 0.7-1.0 | 임팩트·놀람 |
-| `fast_zoom_out` | 빠르게 멀어짐 | 0.7-1.0 | 반전·드라마틱 |
-| `dolly_zoom` (히치콕 줌) | 줌+트랙 반대 | 0.6-0.9 | 긴장감·심리적 충격 |
-
-### 2. 팬 (Pan)
-
-| 모션 ID | 효과 | strength | 적합 |
-|---|---|---|---|
-| `pan_left` | 좌로 패닝 | 0.4-0.7 | 풍경 탐색·내러티브 |
-| `pan_right` | 우로 패닝 | 0.4-0.7 | 같은 용도 |
-| `pan_up` | 위로 | 0.5-0.7 | 건물·인물 풀샷 강조 |
-| `pan_down` | 아래로 | 0.5-0.7 | 발견·디테일 노출 |
-
-### 3. 트래킹 (Track)
-
-| 모션 ID | 효과 | strength | 적합 |
-|---|---|---|---|
-| `track_in` | 정면 다가감 | 0.5-0.8 | 주제로 접근 |
-| `track_out` | 정면 멀어짐 | 0.5-0.8 | 결말·여운 |
-| `side_track_left` | 측면 좌로 이동 | 0.4-0.7 | 흐름·진행 |
-| `side_track_right` | 측면 우로 이동 | 0.4-0.7 | 같은 용도 |
-| `orbit_left` | 좌측 회전 | 0.6-0.9 | 제품 회전·360도 |
-| `orbit_right` | 우측 회전 | 0.6-0.9 | 같은 용도 |
-| `orbit_360` | 완전 360도 | 0.7-1.0 | 제품 전체 회전 |
-
-### 4. 돌리·페데스탈 (Dolly/Pedestal)
-
-| 모션 ID | 효과 | strength | 적합 |
-|---|---|---|---|
-| `dolly_in` | 카메라 자체 전진 | 0.5-0.8 | 줌과 다른 깊이감 |
-| `dolly_out` | 카메라 후진 | 0.5-0.8 | 같은 용도 반대 |
-| `pedestal_up` | 카메라 상승 | 0.5-0.7 | 풍경 펼침·신적 시점 |
-| `pedestal_down` | 카메라 하강 | 0.5-0.7 | 사람 시점으로 |
-
-### 5. 틸트 (Tilt)
-
-| 모션 ID | 효과 | strength | 적합 |
-|---|---|---|---|
-| `tilt_up` | 카메라 위로 기울임 | 0.4-0.7 | 인물 풀샷·건물 |
-| `tilt_down` | 아래로 | 0.4-0.7 | 발 아래·디테일 |
-
-### 6. 특수 효과
-
-| 모션 ID | 효과 | strength | 적합 |
-|---|---|---|---|
-| `bullet_time` | 매트릭스풍 정지+회전 | 0.7-1.0 | 액션·드라마틱 |
-| `handheld` | 핸드헬드 흔들림 | 0.3-0.6 | 다큐멘터리·생동감 |
-| `rotation_cw` | 시계 방향 회전 | 0.5-0.8 | 비현실·꿈 시퀀스 |
-| `rotation_ccw` | 반시계 방향 | 0.5-0.8 | 같은 용도 |
-| `vertigo` | 어지럼증 효과 | 0.6-0.9 | 심리·긴장 |
-
----
-
-## 조합 가이드
-
-### 단일 모션 (자연스러움 우선)
-
-```
-motions: [
-  { id: "slow_zoom_in", strength: 0.6 }
-]
-```
-
-→ 한 가지 효과만 적용. 가장 자연스러움.
-
-### 2개 조합 (드라마틱)
-
-```
-motions: [
-  { id: "slow_zoom_in", strength: 0.5 },
-  { id: "tilt_up", strength: 0.3 }
-]
-```
-
-→ 줌인하면서 살짝 위로. 인물 강조에 적합.
-
-### 3개 조합 (영화적)
-
-```
-motions: [
-  { id: "track_in", strength: 0.6 },
-  { id: "tilt_down", strength: 0.3 },
-  { id: "slow_zoom_in", strength: 0.4 }
-]
-```
-
-→ 카메라가 다가가며 살짝 내려보고 줌인. 발견 모먼트.
-
-**주의**: 모션 4개 이상은 결과가 흐트러집니다. 최대 3개 권장.
-
----
-
-## 사용 시나리오별 추천
-
-### 제품 광고 영상
-
-```
-1. orbit_360 (strength 0.8) — 제품 전체 노출
-2. 이어서 slow_zoom_in (0.5) — 디테일 클로즈업
-```
-
-### 인물 인터뷰·다큐
-
-```
-handheld (0.4) — 약간의 생동감
-```
-
-### 부동산·공간 영상
-
-```
-pedestal_up (0.5) + pan_right (0.4) — 공간 펼침
-```
-
-### 음식·요리 영상
-
-```
-slow_zoom_in (0.6) — 음식에 집중
-또는 orbit_left (0.6) — 회전 노출
-```
-
-### 발견·언박싱 모먼트
-
-```
-tilt_down (0.5) + slow_zoom_in (0.4) — 위에서 천천히
-```
-
-### 액션·드라마틱
-
-```
-bullet_time (0.9) — 매트릭스풍
-또는 dolly_zoom (0.7) — 히치콕 효과
-```
-
-### 풍경 영상
-
-```
-pan_right (0.6) — 풍경 탐색
-또는 pedestal_up (0.5) + pan_left (0.4)
-```
-
----
-
-## strength 가이드
-
-| 값 | 효과 | 시점 |
+| 프리셋 | 용도 | 적합 모델 |
 |---|---|---|
-| 0.1-0.3 | 매우 미세함 | 자연스러운 배경 효과 |
-| 0.4-0.6 | 보통 | 일반 광고·내러티브 (★ 권장) |
-| 0.7-0.9 | 강함 | 드라마틱·임팩트 |
-| 1.0 | 최대 | 거의 사용 안 함 — 과함 |
+| **UGC** | 일반 사용자 콘텐츠 톤 — 자연스러움 | Kling 2.5 Turbo · Seedance 2.0 |
+| **Unboxing** | 언박싱·제품 개봉 | Seedance Pro · Google Veo 3 |
+| **Product review** | 제품 리뷰 (특징 강조) | Seedance Pro · Cinema Studio 3.5 |
+| **Hyper motion** | 빠른 모션·다이내믹 | Seedance Pro · Seedance 2.0 |
+| **TV spot** | 광고 TV 톤 (시네마틱) | Cinema Studio 3.5 · Google Veo 3 |
+| **Wild Card** | 실험적·창의적 자유 톤 | Wan 2.5 · Kling 3.0 |
 
-**자연스러움 우선**: 처음에는 0.5로 시작 후 결과 보고 조정.
+## 프리셋 사용 가이드
 
----
+### UGC
+
+```
+preset: "UGC"
+권장: 자연스러운 손이 흔들리는 듯한 핸드헬드 톤
+적합: 인스타 릴스·틱톡·자연스러운 소셜
+```
+
+### Unboxing
+
+```
+preset: "Unboxing"
+권장: 위에서 내려보는 시점 + 천천히 줌인 + 제품 노출
+적합: 신제품 출시·이커머스 첫 인상
+```
+
+### Product review
+
+```
+preset: "Product review"
+권장: 다각도 회전 + 디테일 클로즈업 + 사용 시연
+적합: 제품 페이지·광고 첫 30초
+```
+
+### Hyper motion
+
+```
+preset: "Hyper motion"
+권장: 빠른 컷·역동적 카메라·시각적 임팩트
+적합: 댄스·액션·게임 마케팅·이벤트
+```
+
+### TV spot
+
+```
+preset: "TV spot"
+권장: 영화적 그레이딩·시네마틱 카메라·내러티브
+적합: 브랜드 광고·TV CM·고급 캠페인
+```
+
+### Wild Card
+
+```
+preset: "Wild Card"
+권장: AI 자율 — 실험적·창의적 접근
+적합: 무드보드·아트워크·새로운 시도
+```
+
+## 모델 선택 → 카메라 디렉팅
+
+| 사용자 의도 | 권장 모델 | 권장 프리셋 |
+|---|---|---|
+| 시네마틱 광고 | Cinema Studio 3.5 또는 Google Veo 3 | TV spot |
+| 빠른 SNS 시안 | Kling 2.5 Turbo | UGC |
+| 다이내믹 모션 | Seedance Pro | Hyper motion |
+| 제품 회전 노출 | MiniMax Hailuo 02 또는 Seedance Pro | Product review |
+| 언박싱 | Seedance Pro | Unboxing |
+| 인물 캐릭터 시리즈 | Kling Avatars 2.0 | (프리셋 없이) |
+| 실험적·창의적 | Wan 2.5 | Wild Card |
+
+## 영상 길이·비율 조합
+
+| 채널 | 비율 | 길이 | 권장 모델·프리셋 |
+|---|---|---|---|
+| 인스타 피드 (16:9) | 16:9 | 6-15s | Veo 3 · Sora 2 · Cinema Studio 3.5 + TV spot |
+| 인스타 릴스·스토리 | 9:16 | 5-9s | Kling 2.5 Turbo · Seedance 2.0 + UGC |
+| 페북·유튜브 | 16:9 | 10-15s | Veo 3 · Sora 2 + TV spot |
+| 카카오 채널 | 9:16 또는 1:1 | 5-10s | Kling 2.5 Turbo + UGC |
+| 트위터·X | 16:9 | 5-10s | Veo 3 · Kling 3.0 |
+| 광고 LP 임베드 | 16:9 | 8-12s | Cinema Studio 3.5 + TV spot |
+
+## 결과 톤 변경 — 모델 교체 가이드
+
+같은 프롬프트·이미지로 톤이 다르면:
+
+| 현재 결과 | 원하는 변화 | 다음 모델 |
+|---|---|---|
+| 너무 평면적 | 더 시네마틱 | Cinema Studio 3.5 |
+| 인물 표정 어색 | 자연스러운 표정 | Kling 3.0 |
+| 너무 느림 | 빠른 모션 | Seedance Pro + Hyper motion |
+| 톤이 너무 정형적 | 실험적 | Wan 2.5 + Wild Card |
+| 광고 톤 부족 | 광고 같은 그레이딩 | Google Veo 3 + TV spot |
 
 ## 호출 예시
 
 ```javascript
-// 단일 모션
-mcp__higgsfield__generate_video_dop({
-  input_image_url: "https://...",
-  prompt: "A leather wallet on dark wood, warm light",
-  motions: [
-    { id: "slow_zoom_in", strength: 0.6 }
-  ]
+// 기본 (text-to-video)
+mcp__higgsfield__generate_video({
+  model: "veo_3",
+  prompt: "A luxury watch on dark velvet, slow rotation, warm light",
+  aspect_ratio: "16:9",
+  duration_seconds: 8,
+  quality: "high",
+  preset: "TV spot"
 })
 
-// 2개 조합
-mcp__higgsfield__generate_video_dop({
-  input_image_url: "https://...",
-  prompt: "Modern office interior, daylight from window",
-  motions: [
-    { id: "track_in", strength: 0.5 },
-    { id: "pan_right", strength: 0.4 }
-  ]
+// Image-to-video
+mcp__higgsfield__generate_video({
+  model: "seedance_pro",
+  image_url: "https://...",
+  prompt: "Slow zoom in, revealing the product detail",
+  aspect_ratio: "16:9",
+  duration_seconds: 8,
+  preset: "Product review"
 })
 
-// 3개 조합 (영화적)
-mcp__higgsfield__generate_video_dop({
-  input_image_url: "https://...",
-  prompt: "Founder at desk, contemplating",
-  motions: [
-    { id: "dolly_in", strength: 0.5 },
-    { id: "tilt_down", strength: 0.3 },
-    { id: "slow_zoom_in", strength: 0.4 }
-  ]
+// 캐릭터 시리즈
+mcp__higgsfield__generate_video({
+  model: "kling_avatars_2_0",
+  prompt: "Mascot jumping with joy",
+  aspect_ratio: "1:1",
+  duration_seconds: 5
 })
 ```
 
----
-
 ## 주의
 
-- 모션 ID는 Higgsfield 업데이트에 따라 변할 수 있음. 호출 실패 시 [공식 페이지](https://higgsfield.ai/mcp)에서 최신 목록 확인
-- 정확한 UUID 형식 모션 ID를 사용하는 경우도 있음 (커뮤니티 MCP 구현)
-- DOP는 기본 generate_video보다 1.2-1.5배 비쌈 (카메라 워크 계산 추가)
+- 모델·프리셋·식별자는 Higgsfield 업데이트에 따라 변할 수 있음
+- 정확한 최신 식별자는 [공식 페이지](https://higgsfield.ai/mcp)에서 확인
+- 커뮤니티 MCP 구현체에는 공식 외 추가 도구(예: DOP)가 있을 수 있지만, 본 가이드는 **공식 발표 모델·프리셋**만 다룹니다
+
+## 출처
+
+- [higgsfield.ai 공식 사이트](https://higgsfield.ai) — 영상 모델 11종
+- [higgsfield.ai/skills](https://higgsfield.ai/skills) — 비디오 프리셋 6종
+- [higgsfield.ai/mcp](https://higgsfield.ai/mcp) — MCP 통합 정보
