@@ -2,17 +2,17 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
-[![Version](https://img.shields.io/badge/Version-2.11.1-blue)](CHANGELOG.md)
-[![Plugins](https://img.shields.io/badge/Plugins-22-blue)](.claude-plugin/marketplace.json)
-[![Skills](https://img.shields.io/badge/Skills-143-green)](.claude-plugin/marketplace.json)
+[![Version](https://img.shields.io/badge/Version-2.13.0-blue)](CHANGELOG.md)
+[![Plugins](https://img.shields.io/badge/Plugins-23-blue)](.claude-plugin/marketplace.json)
+[![Skills](https://img.shields.io/badge/Skills-150-green)](.claude-plugin/marketplace.json)
 [![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)
 [![shadcn/ui](https://img.shields.io/badge/UI-shadcn/ui-black)](https://ui.shadcn.com/)
 
-**Claude Cowork 한국어 도메인 전문가 AI 마켓플레이스 — 22 plugins · 143 skills · MIT**
+**Claude Cowork 한국어 도메인 전문가 AI 마켓플레이스 — 23 plugins · 150 skills · MIT**
 
-자연어 한 줄로 **사업계획서·계약서 검토·세금 계산·PPT·이미지 프롬프트·음성 더빙·BI 보고서·HTML 리포트·쿠팡 광고 최적화·메타 광고 보고서 분석·한국 출판사 제출 원고**를 자동 생성합니다. 한국 B2B 환경(K-IFRS·국세청·근로기준법·식약처·국토부·KRX·인터넷등기소·KPIPA)에 특화된 22개 독립 플러그인과 143개 도메인 스킬이 업무를 대신하며, 모든 텍스트 산출물은 [`ai-slop-reviewer`](./moai-core/skills/ai-slop-reviewer/)가 AI 패턴을 검수하여 자연스럽게 다듬어 드립니다.
+자연어 한 줄로 **사업계획서·계약서 검토·세금 계산·PPT·Claude Design 보조·Higgsfield 이미지·영상·음성 더빙·BI 보고서·HTML 리포트·쿠팡 광고·메타 광고 분석·한국 출판사 제출 원고**를 자동 생성합니다. 한국 B2B 환경(K-IFRS·국세청·근로기준법·식약처·국토부·KRX·인터넷등기소·KPIPA)에 특화된 23개 독립 플러그인과 150개 도메인 스킬이 업무를 대신하며, 모든 텍스트 산출물은 [`ai-slop-reviewer`](./moai-core/skills/ai-slop-reviewer/)가 AI 패턴을 검수하여 자연스럽게 다듬어 드립니다.
 
-> *Korean B2B specialty plugin marketplace for [Anthropic Claude Code (Cowork)](https://claude.ai/cowork) — 22 plugins · 143 skills. Korean fonts (Pretendard / Noto Serif KR / Chosunilbo Myungjo / KoPubWorld), Korean text humanizer (humanize-korean), AI-slop reviewer for every deliverable. K-IFRS, NTS, KRX, MFDS, MOLIT, IROS, KPIPA specialty skills. MIT licensed.*
+> *Korean B2B specialty plugin marketplace for [Anthropic Claude Code (Cowork)](https://claude.ai/cowork) — 23 plugins · 150 skills. Korean fonts (Pretendard / Noto Serif KR / Chosunilbo Myungjo / KoPubWorld), Korean text humanizer (humanize-korean), AI-slop reviewer for every deliverable. Higgsfield MCP image/video (22 official models), Claude Design helper. K-IFRS, NTS, KRX, MFDS, MOLIT, IROS, KPIPA specialty skills. MIT licensed.*
 
 **🚀 빠른 설치**: Claude Cowork → 사용자 지정 → 개인 플러그인 + → **마켓플레이스 추가** → URL `modu-ai/cowork-plugins` 입력 → 동기화 → `moai-core` 먼저 설치
 
@@ -31,11 +31,46 @@
 | 🎨 **AI 미디어** | `gpt-image-2-prompt` · `gemini-3-image-prompt` · `midjourney-v8-prompt` · `audio-gen` | 3대 모델 공식 가이드 프롬프트 텍스트 빌더 + ElevenLabs 32개 언어 더빙·BGM·효과음 |
 | 📑 **문서·이커머스·BI** | `hwpx-writer` · `pdf-writer` · `detail-page-copy` · `executive-summary` · `weekly-report` | HWPX(한글) · 한·중·일·영 PDF · 13섹션 상세페이지 · 경영진 1pager · WBR 주간보고 |
 
-> 22개 플러그인 전체 카탈로그와 카테고리 비교는 [플러그인 카탈로그](#플러그인-카탈로그)와 [플러그인 상세 소개](#플러그인-상세-소개)를 참조하세요.
+> 23개 플러그인 전체 카탈로그와 카테고리 비교는 [플러그인 카탈로그](#플러그인-카탈로그)와 [플러그인 상세 소개](#플러그인-상세-소개)를 참조하세요.
 
 ---
 
-**🆕 v2.11.0 하이라이트** (2026-05-18) — **"moai-media 16→4 정리 + 플러그인 페이지 책임 경계 재정렬 + docs-site 일관성 정비"**
+**🆕 v2.13.0 하이라이트** (2026-05-20) — **"moai-media Higgsfield MCP 직접 호출 — higgsfield-image · higgsfield-video 신규 2 스킬"**
+
+23 플러그인 유지, **148 → 150 스킬**, 동기화 지점 173 → **175**. Breaking change 없음.
+
+- **`higgsfield-image` 신규** — [higgsfield.ai](https://higgsfield.ai) 공식 **11 이미지 모델** 자연어 한 줄 호출. Soul · Soul 2.0 · Soul Cinema · Nano Banana · Nano Banana Pro · GPT Image · GPT Image 2 · Seedream 4.0 · Flux Kontext · Wan 2.2 Image · Wan 2.5. 키워드 매칭 자동 선택(글자·카드뉴스→**GPT Image 2 1순위**, 시네마틱→Soul Cinema, 사진→Flux Kontext). Soul Characters reference로 캐릭터 시리즈 일관성. 비동기 잡 폴링·5 비율 매핑·1080p/2K/4K.
+- **`higgsfield-video` 신규** — 공식 **11 영상 모델** + **6 비디오 프리셋** 직접 호출. Sora 2 · Google Veo 3 · Kling 2.1 Master · Kling 2.5 Turbo · Kling 3.0 · Kling Avatars 2.0(캐릭터 일관성) · Seedance 2.0 · Seedance Pro · Cinema Studio 3.5 · MiniMax Hailuo 02 · Wan 2.5. 프리셋: UGC · Unboxing · Product review · Hyper motion · TV spot · Wild Card.
+- **`.mcp.json` 자동 등록** — `moai-media` 활성화 시 Higgsfield hosted MCP(`https://mcp.higgsfield.ai/mcp`, OAuth)와 ElevenLabs MCP(uvx stdio) 2종 자동 등록. API 키 별도 발급 불필요(OAuth 1회).
+
+기존 워크플로우 그대로 동작. Higgsfield 첫 사용 시 Cowork → 설정 → MCP → Higgsfield → Connect로 OAuth 1회 인증.
+
+<details>
+<summary><b>📜 이전: v2.12.x — moai-design 신규 + Claude Design 가이드 + moai-office 모던 디자인 + card-news 보강</b></summary>
+
+v2.12.0 (MINOR) + v2.12.1·v2.12.2·v2.12.3 (PATCH) 묶음. 22 → **23 플러그인**, 143 → **148 스킬**, 동기화 지점 167 → **173**.
+
+- **v2.12.0 — moai-design 신규 플러그인 + docs-site 클로드 디자인 섹션 10페이지**
+  - [`claude-design-brief`](./moai-design/skills/claude-design-brief/) — 6요소 브리프(Project·Audience·Pages·Tone·Reference·Constraints) 자동 채움 + AI 슬롭 회피 블록
+  - [`claude-design-system-prep`](./moai-design/skills/claude-design-system-prep/) — 브랜드 자산 5종 → DESIGN.md 합성
+  - [`claude-design-prompt-builder`](./moai-design/skills/claude-design-prompt-builder/) — 시니어 UX 10 패턴 자동 선택·완성
+  - [`claude-design-handoff-reader`](./moai-design/skills/claude-design-handoff-reader/) — Claude Code 핸드오프 번들 분석 + 1줄 지시 자동 생성
+  - [`claude-design-slop-check`](./moai-design/skills/claude-design-slop-check/) — 영문·한국어 AI 슬롭 패턴 검출 + 수정 대안 3개
+  - docs-site에 **클로드 디자인 섹션 10페이지** 동시 신설
+
+- **v2.12.1 — moai-office docx·pptx 모던 디자인 시스템 대형 보강**
+  - `docx-generator` — Claude 톤 색·6 문서 유형별 템플릿·모던 디자인 패턴 6종·10단계 QA
+  - `pptx-designer` — 10 큐레이션 팔레트·9 비즈니스 슬라이드 아키타입·5 폰트 페어링·HTML-First·자동 QA
+
+- **v2.12.2·v2.12.3 — moai-content:card-news 보강·정련**
+  - 10 구성 패턴 자동 선택 (A·B 듀얼·순차 빌드·체크박스·궁금증·함정·첫 발·개념 사전·페인 솔루션·실전 사례·즉시 활용)
+  - 5 디자인 톤 (Soft Cream·Claude Modern·Corporate Trust·Playful Pop·Bold Dark)
+  - 8단계 워크플로우·채널별 캡션·4·7·10장 분량 확장
+
+</details>
+
+<details>
+<summary><b>📜 이전: v2.11.0 — moai-media 16→4 정리 + 플러그인 페이지 책임 경계 재정렬</b></summary>
 
 22 플러그인 유지, **155 → 143 스킬**, 동기화 지점 178 → **166**. Breaking change 없음.
 
@@ -46,7 +81,7 @@
 - **moai-bi html-report 중심 재정의** — `executive-summary` 산출물을 단일 HTML 파일로 통일. pdf/docx/pptx/hwpx는 옵션 변환
 - **docs-site 일관성 정비** — 물결 `~` 사고 정정(266+ 파일 1,000+), mermaid 가로→세로(67 파일 77 블록), 터미널 prompt shortcode 통일, hugo.toml SSOT 도입
 
-기존 워크플로우 그대로 동작합니다. moai-media의 12 스킬을 직접 호출하던 워크플로우만 외부 MCP 직접 사용으로 대체하면 됩니다 (v2.6.0부터 번들된 MCP).
+</details>
 
 <details>
 <summary><b>📜 이전: v2.10.0 — moai-book 신규 플러그인 한국 출판 풀스택</b></summary>
@@ -367,7 +402,7 @@ modu-ai/cowork-plugins
 
 ### Step 2: 플러그인 설치
 
-동기화가 완료되면 **22개 플러그인** 목록이 표시됩니다.
+동기화가 완료되면 **23개 플러그인** 목록이 표시됩니다.
 
 1. **개인** 탭 선택 → **cowork-plugins** 마켓플레이스 확인
 2. 원하는 플러그인 옆의 **+** 버튼으로 설치
@@ -827,14 +862,14 @@ K-IFRS·KOSIS·DART 친화적 한국 통계 환경에서 5분 안에 의사결�
 
 ### What is cowork-plugins?
 
-Anthropic Claude Code 한국어 사용자를 위한 도메인 전문가 플러그인 마켓플레이스입니다. 22개 플러그인과 143개 스킬로 구성되어 있으며 MIT 라이선스로 배포됩니다. 자연어 한 줄로 사업계획서·계약서 검토·세금 계산·PPT·이미지/영상/음성·BI 보고서·HTML 리포트를 자동 생성합니다.
+Anthropic Claude Code 한국어 사용자를 위한 도메인 전문가 플러그인 마켓플레이스입니다. 23개 플러그인과 150개 스킬로 구성되어 있으며 MIT 라이선스로 배포됩니다. 자연어 한 줄로 사업계획서·계약서 검토·세금 계산·PPT·이미지/영상/음성·BI 보고서·HTML 리포트를 자동 생성합니다.
 
-> *cowork-plugins is a third-party Korean B2B specialty plugin marketplace for Anthropic Claude Code, with 22 plugins and 143 skills under MIT license.*
+> *cowork-plugins is a third-party Korean B2B specialty plugin marketplace for Anthropic Claude Code, with 23 plugins and 150 skills under MIT license.*
 
 ### Anthropic의 [knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins)와 무엇이 다른가요?
 
 - **anthropics/knowledge-work-plugins**: Anthropic 공식 11개 영문 일반 지식 노동 플러그인 (Productivity·Sales·Customer Support·PM·Marketing·Legal·Finance·Data·Enterprise Search·Bio Research·Cowork Plugin Management).
-- **modu-ai/cowork-plugins** (이 저장소): 한국 B2B 환경에 특화된 22개 플러그인·143개 스킬. 한국 법규(K-IFRS·국세청 표준양식·근로기준법·식약처·국토부·KRX·인터넷등기소), 한국 비즈니스 문화(WBR 주간보고·OKR·KPT 회고·한국 B2B 제안서 12섹션), 한국어 산출 문서(HWPX·Pretendard·조선일보명조·KoPubWorld 등 한글 폰트) 지원.
+- **modu-ai/cowork-plugins** (이 저장소): 한국 B2B 환경에 특화된 23개 플러그인·150개 스킬. 한국 법규(K-IFRS·국세청 표준양식·근로기준법·식약처·국토부·KRX·인터넷등기소), 한국 비즈니스 문화(WBR 주간보고·OKR·KPT 회고·한국 B2B 제안서 12섹션), 한국어 산출 문서(HWPX·Pretendard·조선일보명조·KoPubWorld 등 한글 폰트) 지원.
 
 두 저장소는 **상호 보완 관계**입니다. 영문권 일반 워크플로우는 `knowledge-work-plugins`, 한국 B2B 도메인 워크플로우는 `cowork-plugins`를 함께 설치해 사용할 수 있습니다.
 
