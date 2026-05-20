@@ -267,12 +267,42 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
 </div>
 
 <div class="cw-sect-head">
-  <h2 id="release-summary" style="margin:0"><span class="num">v2.11</span>최근 릴리스</h2>
+  <h2 id="release-summary" style="margin:0"><span class="num">v2.13</span>최근 릴리스</h2>
   <span class="meta">CHANGELOG.md 기반</span>
 </div>
 
 <div class="cw-timeline">
   <div class="cw-rel latest">
+    <div class="ver-row">
+      <span class="ver">v2.13.0</span>
+      <span class="date">2026-05-20</span>
+      <span class="badge">MINOR</span>
+    </div>
+    <div class="ttl">moai-media Higgsfield MCP 직접 호출 — higgsfield-image · higgsfield-video 신규 2 스킬</div>
+    <div class="desc"><a href="https://higgsfield.ai" target="_blank" rel="noopener">higgsfield.ai</a> 공식 11 이미지 모델 + 11 영상 모델 + 6 비디오 프리셋을 자연어 한 줄로 호출. <code>.mcp.json</code>에 Higgsfield hosted MCP(<code>https://mcp.higgsfield.ai/mcp</code>) + ElevenLabs MCP 2종 자동 등록. API 키 별도 발급 불필요(OAuth 1회). 23 플러그인 유지·148 → <strong>150 스킬</strong>·동기화 지점 173 → 175. Breaking change 없음.</div>
+    <ul>
+      <li><strong>higgsfield-image (신규)</strong> — 공식 11 이미지 모델 자동 선택. Soul · Soul 2.0 · Soul Cinema · Nano Banana · Nano Banana Pro · GPT Image · GPT Image 2 · Seedream 4.0 · Flux Kontext · Wan 2.2 Image · Wan 2.5. 글자·카드뉴스 1순위는 <strong>GPT Image 2</strong>(SOTA), 시네마틱은 Soul Cinema, 사진 사실성은 Flux Kontext</li>
+      <li><strong>higgsfield-video (신규)</strong> — 공식 11 영상 모델 + 6 프리셋. Sora 2 · Google Veo 3 · Kling 2.1 Master / 2.5 Turbo / 3.0 · Kling Avatars 2.0(캐릭터 일관성) · Seedance 2.0 / Pro · Cinema Studio 3.5 · MiniMax Hailuo 02 · Wan 2.5. 프리셋: UGC · Unboxing · Product review · Hyper motion · TV spot · Wild Card</li>
+      <li><strong>Soul Characters · Kling Avatars 2.0</strong> — 캐릭터 일관성 보장. 1차 생성 → reference UUID → 이후 동일 인물 다양한 포즈·씬</li>
+      <li><strong>비동기 잡 폴링</strong> 자동 처리 — queued → in_progress → completed (이미지 5-15초·영상 10-90초)</li>
+      <li><strong>references 보강</strong> — model-guide.md(11 모델 비교 매트릭스) + dop-motions.md(6 프리셋·모델별 톤·호출 예시)</li>
+    </ul>
+  </div>
+  <div class="cw-rel">
+    <div class="ver-row">
+      <span class="ver">v2.12.x</span>
+      <span class="date">2026-05-20</span>
+      <span class="badge">MINOR + 3 PATCH</span>
+    </div>
+    <div class="ttl">moai-design 신규 플러그인 + Claude Design 가이드 10페이지 + moai-office 모던 디자인 + card-news 보강</div>
+    <div class="desc">v2.12.0 (MINOR) + v2.12.1·v2.12.2·v2.12.3 (PATCH) 묶음. 22 → <strong>23 플러그인</strong>, 143 → <strong>148 스킬</strong>, 동기화 지점 167 → 173. Breaking change 없음.</div>
+    <ul>
+      <li><strong>v2.12.0 — moai-design 신규 5 스킬</strong> — claude-design-brief 6요소 자동 채움 · claude-design-system-prep DESIGN.md 합성 · claude-design-prompt-builder 시니어 UX 10 패턴 · claude-design-handoff-reader Claude Code 핸드오프 분석 · claude-design-slop-check AI 슬롭 검수. docs-site에 <strong>클로드 디자인 섹션 10페이지</strong> 동시 신설(개요·시작·디자인 시스템·리파인먼트·협업·내보내기·사용 사례·BP·요금제·제한)</li>
+      <li><strong>v2.12.1 — moai-office docx·pptx 모던 디자인 시스템</strong> — Claude 톤 색·6 문서 유형별 템플릿(공문서·기업 보고서·계약서·제안서·기획서·사업계획서) · 10 큐레이션 PPTX 팔레트 · 9 비즈니스 슬라이드 아키타입(Title·Agenda·Problem·Solution·Features·Stats·Team·CTA·Closing) · 5 폰트 페어링 · HTML-First 옵션 · 10단계 자동 QA</li>
+      <li><strong>v2.12.2·v2.12.3 — moai-content:card-news 보강·정련</strong> — 10 구성 패턴(A·B 듀얼·순차 빌드·체크박스·궁금증·함정·첫 발·개념 사전·페인 솔루션·실전 사례·즉시 활용) + 5 디자인 톤(Soft Cream·Claude Modern·Corporate Trust·Playful Pop·Bold Dark) + 채널별 캡션(인스타·스레드·카카오·페이스북) + 4·7·10장 분량 확장</li>
+    </ul>
+  </div>
+  <div class="cw-rel">
     <div class="ver-row">
       <span class="ver">v2.11.1</span>
       <span class="date">2026-05-18</span>
