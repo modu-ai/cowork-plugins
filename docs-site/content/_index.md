@@ -23,6 +23,27 @@ geekdocBreadcrumb: false
   </div>
 </div>
 
+<div class="cw-academy-banner">
+  <div class="cw-academy-banner__inner">
+    <div class="cw-academy-banner__head">
+      <span class="cw-academy-banner__eyebrow">모두의 AI 아카데미</span>
+      <h3 class="cw-academy-banner__title">강의로 가장 빠르게 익히기</h3>
+    </div>
+    <p class="cw-academy-banner__lead">
+      cowork-plugins를 실무에 적용하는 3일 강의입니다. 사업계획·이커머스·콘텐츠·디자인 트랙을 직접 따라 만들어 보며 한국어 도메인 워크플로우를 익힐 수 있습니다.
+    </p>
+    <ul class="cw-academy-banner__points">
+      <li>3일 집중 — 한국 도메인 트랙(B2B·이커머스·콘텐츠·디자인) 직접 실습</li>
+      <li>실제 산출물 제작 — 사업계획·랜딩·카드뉴스·메타 광고 보고서까지</li>
+      <li>강사 직강·소규모 정원 운영 — 1대1 피드백 가능</li>
+    </ul>
+    <div class="cw-academy-banner__ctas">
+      <a class="btn btn--primary" href="https://academy.mo.ai.kr/?utm_source=cowork-docs&utm_medium=banner&utm_campaign=docs-home" target="_blank" rel="noopener noreferrer">강의 안내 보기 →</a>
+      <a class="btn btn--ghost" href="/cookbook/" >쿡북으로 먼저 둘러보기</a>
+    </div>
+  </div>
+</div>
+
 <div class="cw-sect-head">
   <h2 id="how-it-works" style="margin:0"><span class="num">HOW</span>이렇게 동작합니다</h2>
   <span class="meta">긴 프롬프트를 직접 쓰는 도구가 아닙니다 · 짧게 말하면 시스템이 묻습니다</span>

@@ -1644,6 +1644,88 @@ main a:hover {
 }
 .cw-track a { color: inherit; text-decoration: none; }
 
+/* ── Academy banner (홈 강의 안내) ── */
+.cw-academy-banner {
+  margin: 56px 0 24px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(20,74,70,0.06) 0%, rgba(196,123,42,0.07) 100%);
+  border: 1px solid var(--border-2);
+  position: relative;
+  overflow: hidden;
+}
+.cw-academy-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top right, rgba(196,123,42,0.12), transparent 50%);
+  pointer-events: none;
+}
+.cw-academy-banner__inner {
+  position: relative;
+  padding: 36px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.cw-academy-banner__head { display: flex; flex-direction: column; gap: 6px; }
+.cw-academy-banner__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-warning);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.cw-academy-banner__title {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.25;
+  color: var(--color-ink);
+  font-weight: 700;
+}
+.cw-academy-banner__lead {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--fg-2);
+  max-width: 720px;
+}
+.cw-academy-banner__points {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--fg-2);
+}
+.cw-academy-banner__points li {
+  position: relative;
+  padding-left: 22px;
+}
+.cw-academy-banner__points li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--color-warning);
+  font-weight: 700;
+}
+.cw-academy-banner__ctas {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+@media (max-width: 720px) {
+  .cw-academy-banner__inner { padding: 28px 22px; }
+  .cw-academy-banner__title { font-size: 22px; }
+}
+[data-theme="dark"] .cw-academy-banner {
+  background: linear-gradient(135deg, rgba(34,147,138,0.10) 0%, rgba(196,123,42,0.12) 100%);
+  border-color: var(--neutral-700);
+}
+
 /* ── Section heading ── */
 .cw-sect-head {
   display: flex;
