@@ -88,11 +88,14 @@ version: 2.13.0
 
 `moai-media` 플러그인의 이미지 프롬프트 빌더에 통합 프롬프트를 전달합니다.
 
-| 모델 | 추천 시점 |
-|---|---|
-| `moai-media:gemini-3-image-prompt` (Nano Banana Pro 등) | 텍스트가 정확히 들어가는 카드뉴스 (★ 권장) |
-| `moai-media:gpt-image-2-prompt` | 일러스트·캐릭터 강조 |
-| `moai-media:midjourney-v8-prompt` | 비주얼 임팩트가 핵심 |
+| 위임 스킬 | 모델 | 추천 시점 |
+|---|---|---|
+| **`moai-media:higgsfield-image`** | **GPT Image 2** (1순위) | **텍스트가 정확히 들어가는 카드뉴스 ★ 권장** — MCP 자동 호출 |
+| `moai-media:higgsfield-image` | Nano Banana Pro | 보조·fallback |
+| `moai-media:higgsfield-image` | Soul Cinema | 시네마틱 카드 (글자 비중 낮을 때) |
+| `moai-media:gpt-image-2-prompt` | OpenAI GPT-image-2 | ChatGPT 외부 도구로 복붙 (MCP 미사용 환경) |
+| `moai-media:gemini-3-image-prompt` | Google Gemini 3 Image | Google AI Studio 외부 도구로 복붙 |
+| `moai-media:midjourney-v8-prompt` | Midjourney v8.1 | Discord MJ 사용 (비주얼 임팩트) |
 
 해상도·비율 미지정 시 사용자 확인. 인스타는 1:1 (1080×1080) 권장.
 

@@ -19,7 +19,7 @@ Higgsfield MCP의 이미지 생성 도구를 호출하는 스킬입니다. 사�
 
 ## 트리거 키워드
 
-Higgsfield 이미지, Soul, Soul 2.0, Soul Cinema, Nano Banana, Nano Banana Pro, GPT Image, Seedream 4.0, Flux Kontext, Wan 2.2 Image, Wan 2.5, AI 이미지 생성, 시네마틱 이미지, 캐릭터 일관성, 4K 이미지
+Higgsfield 이미지, Soul, Soul 2.0, Soul Cinema, Nano Banana, Nano Banana Pro, GPT Image, GPT Image 2, Seedream 4.0, Flux Kontext, Wan 2.2 Image, Wan 2.5, AI 이미지 생성, 시네마틱 이미지, 캐릭터 일관성, 4K 이미지
 
 ## 전제 — MCP 등록
 
@@ -55,14 +55,14 @@ Soul Characters 기능으로 캐릭터 reference 학습 → 시리즈 일관성.
 | 모델 | 강점 | 적합 시점 |
 |---|---|---|
 | **Nano Banana** | 글자 렌더링·기본 품질 | 일반 SNS·인포그래픽 |
-| **Nano Banana Pro** | 글자 렌더링 SOTA·2K+·정확도↑ | 카드뉴스·포스터·인쇄 |
+| **Nano Banana Pro** | 2K+ 해상도·일반 카드 톤 | 일반 SNS 카드·인쇄 보조 |
 
 ### GPT Image 계열 (OpenAI)
 
 | 모델 | 강점 | 적합 시점 |
 |---|---|---|
 | **GPT Image** | OpenAI 1세대 이미지 모델 | 범용 |
-| **GPT Image 2** | OpenAI 개선판, 사실성·정확성↑ | 사실적 일러스트·제품 |
+| **GPT Image 2** ★ | OpenAI 개선판, **글자 렌더링 SOTA**·사실성·정확성↑ | **카드뉴스·포스터** ★·사실적 일러스트·제품 |
 
 ### Seedream
 
@@ -104,10 +104,10 @@ Soul Characters 기능으로 캐릭터 reference 학습 → 시리즈 일관성.
 
 | 사용자 표현 | 자동 선택 |
 |---|---|
-| "글자 정확하게", "포스터", "카드뉴스" | Nano Banana Pro (2K) 또는 Nano Banana (1K) |
+| "글자 정확하게", "포스터", "카드뉴스" | **GPT Image 2** (1순위) 또는 Nano Banana Pro (2K) |
 | "시네마틱", "영화 룩" | Soul Cinema 또는 Soul 2.0 |
 | "인물 디테일", "캐릭터" | Soul 2.0 (+ Soul Characters reference) |
-| "사진처럼", "사실적", "제품 샷" | Flux Kontext 또는 GPT Image 2 |
+| "사진처럼", "사실적", "제품 샷" | Flux Kontext (1순위) 또는 GPT Image 2 |
 | "예술적", "독특한 톤", "아트워크" | Seedream 4.0 |
 | "실험적", "새로운 톤" | Wan 2.5 |
 | "범용·빠름" | GPT Image 또는 Nano Banana |
@@ -196,7 +196,8 @@ Higgsfield는 **비동기 처리**. 호출 직후 job ID를 받고 상태 폴링
 ```
 요청: "스타트업 투자 카드뉴스 4장 이미지 만들어 줘 (글자 들어감)"
 
-자동 선택: Nano Banana Pro (2K, 글자 SOTA)
+자동 선택: GPT Image 2 (글자 렌더링 SOTA) — 1순위
+대안: Nano Banana Pro (2K, 보조)
 비율: 1024x1024 (인스타 피드)
 quality: 2K
 batch_size: 4

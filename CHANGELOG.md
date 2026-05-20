@@ -25,7 +25,7 @@ MINOR. **moai-media에 Higgsfield MCP 직접 호출 신규 2 스킬 — higgsfie
   · Nano Banana 계열: Nano Banana · Nano Banana Pro
   · GPT Image 계열: GPT Image · GPT Image 2
   · 기타: Seedream 4.0 · Flux Kontext · Wan 2.2 Image · Wan 2.5
-- 모델 선택 키워드 매칭 (글자→Nano Banana Pro, 시네마틱→Soul Cinema·Soul 2.0, 사진→Flux Kontext·GPT Image 2, 아트→Seedream 4.0 등)
+- 모델 선택 키워드 매칭 (**글자·카드뉴스→GPT Image 2 1순위·Nano Banana Pro 보조**, 시네마틱→Soul Cinema·Soul 2.0, 사진→Flux Kontext, 아트→Seedream 4.0 등)
 - 파라미터 자동 설계 (width_and_height·quality·batch_size·style·seed·custom_reference_id)
 - 비율 자동 매핑 (인스타·스토리·블로그·인쇄)
 - 캐릭터 일관성 — Soul Characters reference 패턴
