@@ -55,20 +55,42 @@
 ELEVENLABS_API_KEY=sk_...
 ```
 
-**MCP 자동 등록 설정**:
+**MCP 자동 등록 설정** ([공식 GitHub](https://github.com/elevenlabs/elevenlabs-mcp) 기준):
+
 ```json
 {
-  "elevenlabs": {
-    "command": "/bin/bash",
-    "args": ["-l", "-c", "exec uvx elevenlabs-mcp"],
+  "ElevenLabs": {
+    "command": "uvx",
+    "args": ["elevenlabs-mcp"],
     "env": { "ELEVENLABS_API_KEY": "${ELEVENLABS_API_KEY}" }
   }
 }
 ```
 
-- **uvx 자동 설치** — 최초 실행 시 `elevenlabs-mcp` 패키지 설치
+- **uvx 자동 설치** — 최초 실행 시 `elevenlabs-mcp` 패키지 자동 설치
 - 사전 준비: `uv` 설치 (`curl -LsSf https://astral.sh/uv/install.sh | sh`)
+- `which uvx` 결과가 비어 있으면 PATH에 추가 필요 (`~/.local/bin` 등)
+- Windows 사용자: Claude Desktop "Help → Enable Developer Mode" 활성화 필요
 - [공식 MCP GitHub](https://github.com/elevenlabs/elevenlabs-mcp)
+
+**옵션 환경변수** (필요 시 추가):
+
+| 변수 | 기본 | 용도 |
+|---|---|---|
+| `ELEVENLABS_API_KEY` | 필수 | API 인증 |
+| `ELEVENLABS_MCP_BASE_PATH` | `~/Desktop` | 파일 출력 디렉토리 |
+| `ELEVENLABS_MCP_OUTPUT_MODE` | `files` | files / resources / both |
+| `ELEVENLABS_API_RESIDENCY` | `us` | 데이터 거주지 |
+
+**로그 위치** (트러블슈팅):
+- macOS: `~/Library/Logs/Claude/mcp-server-elevenlabs.log`
+- Windows: `%APPDATA%\Claude\logs\mcp-server-elevenlabs.log`
+
+**대체 설치 방법** (pip):
+```bash
+pip install elevenlabs-mcp
+python -m elevenlabs_mcp --api-key=${ELEVENLABS_API_KEY}
+```
 
 ## 스킬-도구 매핑
 

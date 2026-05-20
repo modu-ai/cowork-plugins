@@ -5,10 +5,10 @@
       "type": "http",
       "url": "https://mcp.higgsfield.ai/mcp"
     },
-    "elevenlabs": {
-      "$comment": "ElevenLabs 공식 MCP — TTS, 보이스 클로닝, 다국어 더빙, 효과음. audio-gen 스킬 전용. ELEVENLABS_API_KEY 필요.",
-      "command": "/bin/bash",
-      "args": ["-l", "-c", "exec uvx elevenlabs-mcp"],
+    "ElevenLabs": {
+      "$comment": "ElevenLabs 공식 MCP (github.com/elevenlabs/elevenlabs-mcp) — TTS·보이스 클로닝·다국어 더빙·효과음. audio-gen 스킬 전용. 사전 설치: curl -LsSf https://astral.sh/uv/install.sh | sh. ELEVENLABS_API_KEY 필수 (elevenlabs.io/app/settings/api-keys 발급). 옵션: ELEVENLABS_MCP_BASE_PATH (기본 ~/Desktop), ELEVENLABS_MCP_OUTPUT_MODE (files/resources/both), ELEVENLABS_API_RESIDENCY (us 등).",
+      "command": "uvx",
+      "args": ["elevenlabs-mcp"],
       "env": {
         "ELEVENLABS_API_KEY": "${ELEVENLABS_API_KEY}"
       }
