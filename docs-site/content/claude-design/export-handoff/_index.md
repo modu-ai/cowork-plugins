@@ -68,17 +68,35 @@ geekdocBreadcrumb: true
 포함 파일: index.html · styles.css · scripts.js · assets/
 ```
 
-### Canva
+### Canva — 네이티브 통합 (공식 파트너십)
 
-마케팅 팀이 후속 편집·공동 작업해야 할 때.
+마케팅 팀이 후속 편집·공동 작업해야 할 때. Claude Design 출시 시점부터 **Canva 공식 파트너십**으로 네이티브 내보내기·편집을 지원합니다 (Anthropic ↔ Canva 공식 발표 2026-04-17).
+
+> "Claude Design에서 Canva로 자연스럽게 아이디어와 초안을 가져올 수 있게 협업을 확장하고 있습니다." — Melanie Perkins, Canva CEO ([Anthropic 출시 공지](https://www.anthropic.com/news/claude-design-anthropic-labs))
 
 ```
-장점: Canva의 풍부한 편집 기능, 협업·버전 관리, 템플릿화 가능
+장점: Canva의 풍부한 편집 기능, 협업·버전 관리, 템플릿화 가능,
+      네이티브 export로 폰트·색 토큰 보존
 단점: Claude Design의 코드 의도가 옅어짐, 자유로운 수정으로 일관성 깨질 위험
-권장 시나리오: SNS 캠페인 비주얼, 이벤트 포스터, 멀티 채널 변형
+권장 시나리오: SNS 캠페인 비주얼, 이벤트 포스터, 멀티 채널 변형,
+              마케팅 팀의 후속 일러스트레이션·텍스트 변형
 ```
 
-Canva 전송 후에는 **편집·협업이 가능**합니다. Canva의 자체 공유 링크로 외부 공유도 가능합니다 (Canva 정책 적용).
+#### 마케팅 후속 편집 워크플로우
+
+```mermaid
+flowchart LR
+    A["1. Claude Design<br/>디자인 시스템 기반 시안"] --> B["2. Canva 네이티브 export<br/>색·폰트·레이아웃 보존"]
+    B --> C["3. 마케팅 팀<br/>채널별 변형<br/>(인스타·SNS·광고)"]
+    C --> D["4. Canva 공유 링크<br/>외부 클라이언트 회람"]
+
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style C fill:#dceee9,stroke:#2a8a8c,color:#09110f
+    style D fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+```
+
+Canva 전송 후에는 **편집·협업이 가능**합니다. Canva의 자체 공유 링크로 외부 공유도 가능합니다 (Canva 정책 적용). Claude Code 핸드오프(프로덕션 코드 빌드)와는 **다른 경로**로 운영하세요 — 두 경로를 동시에 진행하면 디자인이 두 도구에서 동시에 변형돼 일관성이 깨집니다.
 
 ### ZIP archive
 

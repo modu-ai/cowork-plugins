@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
-[![Version](https://img.shields.io/badge/Version-2.13.0-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-2.14.0-blue)](CHANGELOG.md)
 [![Plugins](https://img.shields.io/badge/Plugins-23-blue)](.claude-plugin/marketplace.json)
 [![Skills](https://img.shields.io/badge/Skills-150-green)](.claude-plugin/marketplace.json)
 [![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)
@@ -35,7 +35,21 @@
 
 ---
 
-**🆕 v2.13.0 하이라이트** (2026-05-20) — **"moai-media Higgsfield MCP 직접 호출 — higgsfield-image · higgsfield-video 신규 2 스킬"**
+**🆕 v2.14.0 하이라이트** (2026-05-25) — **"Claude Design 보조 docs·스킬 정합성 보완 — Anthropic 공식 발표(2026-04-17) 정확 반영"**
+
+23 플러그인·150 스킬 유지, 동기화 지점 175. Breaking change 없음. 신규 스킬·플러그인 없이 정확성·정합성 보완에 집중한 MINOR 릴리스.
+
+- **A. 코드 기반 프로토타입 카테고리 명시** — Anthropic 공식이 강조한 *"code-based prototypes with audio, video, shaders, 3D"* 영역을 `getting-started` Hello World·`use-cases` 디자이너 시나리오·`limitations` #4에 정확히 반영. 인터랙티브 HTML+JS 출력 vs 독립 비디오 파일(.mp4) 미지원의 정확한 경계 명시
+- **B. Canva 네이티브 통합 워크플로우 강화** — `export-handoff`에 Canva 공식 파트너십·CEO Melanie Perkins 인용·마케팅 후속 편집 mermaid 워크플로우 추가. `claude-design-handoff-reader`에 "Claude Code 빌드 vs Canva 마케팅 후속" **두 경로 분기** 표 신규
+- **C. 통합 빌더 단기 로드맵 명시** — *"Over the coming weeks, we'll make it easier to build integrations with Claude Design"* Anthropic 공식 약속을 `limitations`에 외부 추정과 분리해 별도 섹션으로
+- **D. Brilliant·Datadog 공식 인용 추가** — `best-practices`에 도입 사례 인용으로 원칙 1·9 신뢰성 강화 (Olivia Xu·Aneesh Kethini)
+- **`claude-design-prompt-builder` 보조 패턴 신규** — WebGL 셰이더·Three.js 3D·Web Audio API·캔버스 애니메이션 4영역 권장 ROLE·CONSTRAINTS 추가 (11번째 정식 패턴은 아니며 명시적 미디어 키워드에만 활성화)
+- **루트 README 카탈로그 누락 정정** — moai-book·moai-design 두 행이 v2.13 릴리스 시 누락되어 있던 점 정정 (21 → 23행)
+
+기존 워크플로우 그대로 동작. `/plugin marketplace update cowork-plugins`로 적용.
+
+<details>
+<summary><b>📜 이전: v2.13.0 — moai-media Higgsfield MCP 직접 호출 — higgsfield-image · higgsfield-video 신규 2 스킬</b></summary>
 
 23 플러그인 유지, **148 → 150 스킬**, 동기화 지점 173 → **175**. Breaking change 없음.
 
@@ -43,7 +57,7 @@
 - **`higgsfield-video` 신규** — 공식 **11 영상 모델** + **6 비디오 프리셋** 직접 호출. Sora 2 · Google Veo 3 · Kling 2.1 Master · Kling 2.5 Turbo · Kling 3.0 · Kling Avatars 2.0(캐릭터 일관성) · Seedance 2.0 · Seedance Pro · Cinema Studio 3.5 · MiniMax Hailuo 02 · Wan 2.5. 프리셋: UGC · Unboxing · Product review · Hyper motion · TV spot · Wild Card.
 - **`.mcp.json` 자동 등록** — `moai-media` 활성화 시 Higgsfield hosted MCP(`https://mcp.higgsfield.ai/mcp`, OAuth)와 ElevenLabs MCP(uvx stdio) 2종 자동 등록. API 키 별도 발급 불필요(OAuth 1회).
 
-기존 워크플로우 그대로 동작. Higgsfield 첫 사용 시 Cowork → 설정 → MCP → Higgsfield → Connect로 OAuth 1회 인증.
+</details>
 
 <details>
 <summary><b>📜 이전: v2.12.x — moai-design 신규 + Claude Design 가이드 + moai-office 모던 디자인 + card-news 보강</b></summary>
@@ -368,13 +382,15 @@ moai-commerce에 시장조사·JTBD·페르소나·상품명·채널 메시지·
 | [moai-bi](./moai-bi/) | BI·경영진 1pager — `executive-summary` (KPI 대시보드 + 경영진 보고서) | 1 |
 | [moai-pm](./moai-pm/) | 프로젝트 관리·주간보고·OKR — `weekly-report` (회고·KPI 추적) | 1 |
 | [moai-sales](./moai-sales/) | B2B 영업·제안서·콜드메일 — `proposal-writer` (RFP 대응) | 1 |
+| [moai-book](./moai-book/) | 한국 출판사 제출용 원고 풀스택 — 컨셉서·페르소나·목차·저자 약력·제안서·30+ 출판사 매칭·본문 집필·퇴고 (실용서·인문·기술·소설 4 장르 자동 분기) | 8 |
+| [moai-design](./moai-design/) | Claude Design(claude.ai/design) 보조 — 6요소 브리프·DESIGN.md 합성·시니어 UX 10패턴(+프론티어 미디어 보조)·핸드오프 번들 분석(두 경로 분기)·AI 슬롭 검수 | 5 |
 
 ## 총 산출물
 
 | 항목 | 수량 | 비고 |
 |------|:----:|------|
-| 플러그인 | **22** | moai-core + 21 도메인 플러그인 (moai-book 포함) |
-| 스킬 | **143** | 전 SKILL.md `version: 2.11.0` 동기화 (Cowork 자동 업데이트 지원) |
+| 플러그인 | **23** | moai-core + 22 도메인 플러그인 (moai-book·moai-design 포함) |
+| 스킬 | **150** | 전 SKILL.md `version: 2.14.0` 동기화 (Cowork 자동 업데이트 지원) |
 | 레퍼런스 파일 | **210** | 각 스킬의 `references/` 안 상세 가이드 |
 | 스크립트 | **13** | helper(`scripts/`) — Python·Node·Shell |
 | 템플릿 | **1** | CLAUDE.md.tmpl 외 |
@@ -767,8 +783,8 @@ K-IFRS·KOSIS·DART 친화적 한국 통계 환경에서 5분 안에 의사결�
 ## 기술 특징
 
 **Anthropic 공식 스킬 가이드 준수**
-- 모든 **143개** 스킬에 [What]+[When]+[Triggers] 구조의 description 적용
-- 모든 SKILL.md frontmatter에 `version: 2.11.0` 동기화 (Cowork 자동 업데이트 감지)
+- 모든 **150개** 스킬에 [What]+[When]+[Triggers] 구조의 description 적용
+- 모든 SKILL.md frontmatter에 `version: 2.14.0` 동기화 (Cowork 자동 업데이트 감지)
 - Negative triggers로 불필요한 스킬 로딩 방지
 - 인라인 폴백과 에러 핸들링 내장
 

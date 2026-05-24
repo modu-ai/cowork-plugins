@@ -66,7 +66,9 @@ flowchart TD
 ```
 
 {{< hint type="note" >}}
-**v2.13.0 업데이트 (최신)**: `moai-media` 플러그인에 **`higgsfield-image`·`higgsfield-video`** 신규 2 스킬 도입 — higgsfield.ai 공식 11 이미지 모델(Soul 3종·Nano Banana 2종·GPT Image 2종·Seedream 4.0·Flux Kontext·Wan 2.2/2.5) + 공식 11 영상 모델(Sora 2·Veo 3·Kling 4종·Seedance 2종·Cinema Studio 3.5·MiniMax Hailuo 02·Wan 2.5) + 6 비디오 프리셋(UGC·Unboxing·Product review·Hyper motion·TV spot·Wild Card)을 자연어 한 줄로 호출. 캐릭터 일관성(Soul Characters·Kling Avatars 2.0)·비동기 잡 폴링 통합. **23 플러그인 유지 · 148 → 150 스킬**.
+**v2.14.0 업데이트 (최신)**: **Claude Design 보조 docs·스킬 정합성 보완** — Anthropic 공식 발표(2026-04-17) 정확 반영. (A) 코드 기반 프로토타입(음성·비디오·셰이더·3D) 카테고리 명시, (B) Canva 네이티브 파트너십(CEO Melanie Perkins 인용)·마케팅 후속 워크플로우, (C) 통합 빌더 단기 로드맵 ("coming weeks") 분리, (D) Brilliant·Datadog 공식 도입 사례 인용. `claude-design-prompt-builder`에 프론티어 미디어 보조 패턴(WebGL 셰이더·Three.js 3D·Web Audio API·캔버스 애니메이션) + `claude-design-handoff-reader`에 두 경로 분기(Claude Code 빌드 vs Canva 마케팅 후속) 신규. **23 플러그인·150 스킬 유지 · 동기화 지점 175 유지 · Breaking change 없음**.
+
+**v2.13.0**: `moai-media` 플러그인에 **`higgsfield-image`·`higgsfield-video`** 신규 2 스킬 도입 — higgsfield.ai 공식 11 이미지 모델(Soul 3종·Nano Banana 2종·GPT Image 2종·Seedream 4.0·Flux Kontext·Wan 2.2/2.5) + 공식 11 영상 모델(Sora 2·Veo 3·Kling 4종·Seedance 2종·Cinema Studio 3.5·MiniMax Hailuo 02·Wan 2.5) + 6 비디오 프리셋(UGC·Unboxing·Product review·Hyper motion·TV spot·Wild Card)을 자연어 한 줄로 호출. 캐릭터 일관성(Soul Characters·Kling Avatars 2.0)·비동기 잡 폴링 통합. **23 플러그인 유지 · 148 → 150 스킬**.
 
 **v2.12.0**: 신규 플러그인 **`moai-design`** — Claude Design(claude.ai/design) 보조 풀스택 5 스킬(claude-design-brief 6요소 자동 채움 · claude-design-system-prep DESIGN.md 합성 · claude-design-prompt-builder 시니어 UX 10패턴 · claude-design-handoff-reader Claude Code 핸드오프 번들 분석 · claude-design-slop-check AI 슬롭 검수). docs-site에 클로드 디자인 섹션 10페이지 동시 신설. **22 → 23 플러그인 · 143 → 148 스킬**.
 
@@ -130,7 +132,7 @@ flowchart TD
 
 - [`moai-design`](./moai-design/) **NEW v2.12** — [claude.ai/design](https://claude.ai/design) 사용을 받쳐 주는 풀스택 5 스킬. 브리프 작성·디자인 시스템 자산 합성·시니어 UX 프롬프트·Claude Code 핸드오프 분석·AI 슬롭 검수
 
-## 한 눈에 보는 스킬 수 (v2.13.0)
+## 한 눈에 보는 스킬 수 (v2.14.0)
 
 "대표 스킬 (일부)"는 각 플러그인에서 가장 자주 호출되는 스킬을 발췌한 것입니다. 전체 스킬 목록은 플러그인 이름을 클릭해 상세 페이지에서 확인하세요.
 
@@ -160,7 +162,7 @@ flowchart TD
 | [moai-sales](./moai-sales/) | 1 | proposal-writer |
 | [moai-design](./moai-design/) | 5 | **claude-design-brief · claude-design-system-prep · claude-design-prompt-builder · claude-design-handoff-reader · claude-design-slop-check (v2.12 신규)** |
 
-전체 **150개 스킬 · 23개 플러그인** (v2.12.0 기준).
+전체 **150개 스킬 · 23개 플러그인** (v2.14.0 기준).
 
 ## 다음 단계
 
@@ -175,4 +177,4 @@ flowchart TD
 
 - [modu-ai/cowork-plugins](https://github.com/modu-ai/cowork-plugins)
 - [cowork-plugins README](https://raw.githubusercontent.com/modu-ai/cowork-plugins/main/README.md)
-- [v2.12.0 릴리스 (최신)](../releases/v2.12/) · [v2.11.0 릴리스](../releases/v2.11/) · [v2.10.0 릴리스](../releases/v2.10/)
+- [v2.14.0 릴리스 (최신)](../releases/v2.14/) · [v2.13.0 릴리스](../releases/v2.13/) · [v2.12.0 릴리스](../releases/v2.12/)

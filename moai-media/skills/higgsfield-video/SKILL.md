@@ -8,7 +8,7 @@ description: >
   자연어 요청 한 줄로 선택·생성합니다. 6가지 비디오 프리셋(UGC·Unboxing·Product review·
   Hyper motion·TV spot·Wild Card)과 캐릭터 일관성(Kling Avatars 2.0), 비동기 잡 폴링까지 처리.
 user-invocable: true
-version: 2.13.0
+version: 2.14.0
 ---
 
 # Higgsfield 영상 생성 (higgsfield-video)

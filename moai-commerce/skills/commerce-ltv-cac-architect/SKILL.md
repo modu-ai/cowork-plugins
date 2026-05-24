@@ -8,7 +8,7 @@ description: |
   ai-slop-reviewer 체이닝 제외 (수치·표·다이어그램 데이터 스킬).
   v2.6.0 신규.
 user-invocable: true
-version: 2.13.0
+version: 2.14.0
 ---
 
 # 고객 단위 수익 구조 설계 (LTV/CAC Architect)

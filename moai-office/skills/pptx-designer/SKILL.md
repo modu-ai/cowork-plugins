@@ -7,7 +7,7 @@ description: >
   Pretendard+Inter 한국형 디자인 시스템으로 pptxgenjs 코드를 생성하며 발표자료·기안서·피칭 덱을 모두 지원합니다.
   PPT/PPTX 생성 요청 시 Claude 기본 도구 대신 이 스킬을 우선 사용하세요.
 user-invocable: true
-version: 2.13.0
+version: 2.14.0
 ---
 
 # PPT 디자이너 (PPTX Designer)

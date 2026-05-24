@@ -21,6 +21,16 @@ geekdocBreadcrumb: true
 | 9 | 개발 핸드오프는 짧은 지시 | "이 번들대로 프로덕션 코드, 기존 시스템 토큰 유지" |
 | 10 | 인터랙션은 별도 라운드 | 정적 UI 먼저, 마이크로 인터랙션은 그다음 |
 
+## 공식 도입 사례 — 왜 이 원칙들이 작동하는가
+
+Anthropic 공식 출시 공지(2026-04-17)에서 인용된 도입 사례 2건. 두 사례 모두 이 페이지의 원칙 1(디자인 시스템부터)과 원칙 9(짧은 핸드오프 지시)를 정확히 활용한 결과입니다.
+
+> "복잡한 페이지를 다른 도구에서 만들려면 20+ 프롬프트가 필요했지만 Claude Design에서는 2 프롬프트로 충분했습니다. 핸드오프 번들에 디자인 의도를 포함시키니 프로토타입에서 프로덕션까지의 점프가 매끄러웠습니다." — Olivia Xu, Brilliant
+
+> "거친 아이디어를 회의실을 나가기 전에 작동하는 프로토타입으로 만들 수 있었습니다. 이전에는 1주일이 걸렸던 브리프·목업 사이클이 한 번의 대화로 압축됐어요." — Aneesh Kethini, Datadog
+
+원문 출처: [Introducing Claude Design by Anthropic Labs](https://www.anthropic.com/news/claude-design-anthropic-labs).
+
 ## 원칙 1 — 디자인 시스템부터
 
 | 셋업 안 함 | 셋업 함 |
@@ -245,6 +255,7 @@ Claude Design은 별도 쿼터이지만 디자인 시스템 자체 생성은 토
 
 ### Sources
 
+- [Introducing Claude Design by Anthropic Labs](https://www.anthropic.com/news/claude-design-anthropic-labs) — Brilliant·Datadog·Canva 공식 인용
 - [10 Advanced Prompts for Claude Design](https://pasqualepillitteri.it/en/news/1486/claude-design-prompts-senior-ux-designer-guide)
 - [Claude Design: Complete Guide for Non-Designers (BuildFastWithAI)](https://www.buildfastwithai.com/blogs/claude-design-anthropic-guide-2026)
 - [How to Use Claude Design for UX/UI (DesignerUp)](https://designerup.co/blog/how-to-use-claude-design-for-ux-ui/)

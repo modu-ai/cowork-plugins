@@ -14,6 +14,66 @@
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
 
+## [2.14.0] - 2026-05-25
+
+MINOR. **Anthropic 공식 발표(2026-04-17) 정합성 보완** — Claude Design 관련 docs 5페이지와 moai-design 스킬 2종에 (A) 음성·비디오·셰이더·3D 코드 기반 프로토타입 카테고리, (B) Canva 네이티브 파트너십 워크플로우, (C) 통합 빌더 단기 로드맵, (D) Brilliant·Datadog 공식 도입 사례를 정확히 반영. 부수적으로 루트 README 카탈로그에서 누락되어 있던 moai-book·moai-design 두 행 정정. 23 플러그인·150 스킬 유지, 동기화 지점 175. Breaking change 없음.
+
+### Added
+
+#### docs-site (claude-design 섹션)
+
+- `getting-started/_index.md` — Hello World 6번째 예시 "코드 기반 인터랙티브 프로토타입 (셰이더·3D·웹 오디오)" 추가. 인터랙티브 HTML+JS 출력 vs 독립 .mp4 미지원 경계 명시
+- `use-cases/_index.md` — 디자이너 섹션에 "프론티어 미디어 프로토타입" 시나리오 추가
+- `best-practices/_index.md` — "공식 도입 사례 — 왜 이 원칙들이 작동하는가" 섹션 신규 (Brilliant Olivia Xu·Datadog Aneesh Kethini 인용)
+- `limitations/_index.md` — "향후 로드맵 — Anthropic 공식 단기 (2026-04-17 발표 명시)" 섹션 신규. 통합 빌더 "coming weeks" 원문 인용. 기존 "추정" 섹션과 명확히 분리
+- `_index.md` (Claude Design root) — "한눈에 보기" 출력 형식에 **Canva(네이티브 파트너십)** 강조
+
+#### moai-design 스킬
+
+- `claude-design-prompt-builder/SKILL.md` — 10대 패턴 표 다음에 **"보조 패턴 — 프론티어 미디어 프로토타입"** 섹션 신규. WebGL 셰이더·Three.js 3D·Web Audio API·캔버스 애니메이션 4영역 권장 ROLE(Pixar·Disney Research·Ableton·Stripe)·CONSTRAINTS. 11번째 정식 패턴은 아니며 명시적 미디어 키워드에만 활성화
+- `claude-design-handoff-reader/SKILL.md` — 4단계에 **"두 경로 분기"** 표 신규. Claude Code 빌드 경로(스킬 1차 목적) vs Canva 마케팅 후속 경로(Anthropic ↔ Canva 공식 파트너십) 명확 분리. 두 경로 동시 진행 시 일관성 깨짐 경고
+
+#### docs-site (릴리스)
+
+- `content/releases/v2.14.md` (신규) — v2.14.0 릴리스 노트
+- `data/menu/main.yaml` — 릴리스 메뉴 v2.14.0 추가
+
+### Changed
+
+- `limitations/_index.md` — #4 "3D · 음성 · 비디오 초기 단계" → "코드 기반 프로토타입 — 공식 지원 vs 실제 한계"로 재작성. Anthropic 공식 명시 vs 사용자 보고 한계를 표로 구분 (WebGL 셰이더·Three.js 3D·Web Audio API 공식 지원 / 독립 .mp4 미지원)
+- `export-handoff/_index.md` — Canva 섹션을 "Canva — 네이티브 통합 (공식 파트너십)"로 확장. Canva CEO Melanie Perkins 인용 + 마케팅 후속 편집 워크플로우 mermaid 추가
+- `best-practices/_index.md` Sources — Anthropic 공식 출시 공지 URL 최상단 추가 (Brilliant·Datadog·Canva 인용 원문)
+- `marketplace.json metadata.description` — v2.14.0 헤드라인 추가
+- `content/plugins/_index.md` — v2.14 업데이트 노트 + 헤더 카운트 표기 갱신
+- 루트 `README.md` — v2.14.0 하이라이트 섹션 신규, 카탈로그 표 누락 행 2개 정정 (moai-book·moai-design 추가, 21→23행), 총 산출물·기술 특징의 outdated 카운트(22·143·v2.11.0) 정정
+- 전체 marketplace.json + plugin.json + SKILL.md + hugo.toml 일괄 2.13.0 → 2.14.0 (175 지점)
+
+### Migration
+
+Breaking change 없음. 기존 워크플로우 그대로 동작. moai-design을 활용 중인 사용자는 업데이트 후 `claude-design-prompt-builder`·`claude-design-handoff-reader` 본문에서 새 섹션을 확인하세요.
+
+```bash
+/plugin marketplace update cowork-plugins
+```
+
+### 동기화 지점 카운트
+
+| 범주 | 지점 수 | 변화 |
+|---|---|---|
+| marketplace.json | 1 | 유지 |
+| plugin.json | 23 | 유지 |
+| SKILL.md frontmatter | 150 | 유지 |
+| hugo.toml SSOT | 1 | 유지 |
+| **합계** | **175** | 유지 |
+
+### Sources
+
+- [Introducing Claude Design by Anthropic Labs](https://www.anthropic.com/news/claude-design-anthropic-labs) — 2026-04-17 공식 출시 공지
+  · 원문 인용: *"code-based prototypes including those with audio, video, shaders, and 3D"*
+  · 원문 인용: *"Over the coming weeks, we'll make it easier to build integrations with Claude Design"*
+  · Brilliant Olivia Xu · Datadog Aneesh Kethini · Canva CEO Melanie Perkins 공식 인용
+- [Using Claude Design for prototypes and UX (Anthropic Tutorial)](https://claude.com/resources/tutorials/using-claude-design-for-prototypes-and-ux)
+
 ## [2.13.0] - 2026-05-20
 
 MINOR. **moai-media에 Higgsfield MCP 직접 호출 신규 2 스킬 — higgsfield-image · higgsfield-video** (higgsfield.ai 공식 페이지 명시 모델 기준). 23 플러그인 유지, 148 → 150 스킬, 동기화 지점 173 → 175. Breaking change 없음.

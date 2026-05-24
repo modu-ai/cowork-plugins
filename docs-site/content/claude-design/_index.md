@@ -46,7 +46,7 @@ flowchart TD
 | Enterprise 기본값 | OFF — 관리자가 Anthropic Labs 설정에서 활성화 |
 | 사용량 한도 | 일반 채팅·Claude Code와 **분리된 별도 쿼터** |
 | Enterprise 사용량제 크레딧 | 약 20 프롬프트 일회성 (2026-07-17 만료) |
-| 출력 형식 | Canva · PDF · PPTX · 표준 HTML · ZIP · Claude Code 핸드오프 번들 |
+| 출력 형식 | **Canva(네이티브 파트너십)** · PDF · PPTX · 표준 HTML · ZIP · Claude Code 핸드오프 번들 |
 
 {{< hint type="note" >}}
 **플러그인과 다릅니다.** `claude.ai/design`(이 섹션의 주제)은 비주얼 생성 제품이고, [`claude.com/plugins/design`](https://claude.com/plugins/design)은 Cowork에서 디자인 비평·UX 카피·접근성 감사를 돕는 **별도 플러그인**입니다. 두 도구는 함께 쓸 수 있지만 같은 도구가 아닙니다.

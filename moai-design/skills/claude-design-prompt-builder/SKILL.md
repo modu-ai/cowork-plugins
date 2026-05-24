@@ -12,7 +12,7 @@ description: |
   - "디자인 시스템 프롬프트"
   - "프롬프트 빌더"
 user-invocable: true
-version: 2.13.0
+version: 2.14.0
 ---
 
 # claude-design-prompt-builder — 시니어 UX 패턴 프롬프트 빌더
@@ -39,6 +39,19 @@ Claude Design 프롬프트, 시니어 UX, UX 패턴, 정보 구조 프롬프트,
 | 8 | WCAG·EAA 접근성 | Level Access 시니어 접근성 컨설턴트 | WCAG 2.1 AA 감사·키보드 내비·NVDA/VoiceOver |
 | 9 | 폼 컨버전 | CXL Institute 시니어 컨버전 옵티마이저 | 필드 감축·심리 순서·GDPR 동의 |
 | 10 | 프로토타입 테스트 | Google Ventures 시니어 UX 리서처 | think-aloud·24h 모집·2h 합성·10분 발표 |
+
+## 보조 패턴 — 프론티어 미디어 프로토타입
+
+Anthropic 공식 발표(2026-04-17)에서 강조한 **코드 기반 프로토타입** 영역(음성·비디오·셰이더·3D). 10대 패턴과 별개로, 사용자가 명시적으로 "셰이더·3D·웹 오디오·캔버스 애니메이션" 키워드를 입력할 때만 활성화합니다.
+
+| 영역 | 권장 ROLE | 핵심 CONSTRAINTS |
+|---|---|---|
+| WebGL 셰이더 데모 | Pixar 시니어 테크니컬 아티스트 | 30 FPS 유지·모바일 fallback·React 컴포넌트 추출 가능·prefers-reduced-motion 존중 |
+| Three.js 3D 씬 | Disney Research 시니어 3D 엔지니어 | .glb 모델 호환·OrbitControls·LOD·모바일 30 FPS |
+| Web Audio API 사운드 UI | Ableton 시니어 오디오 UX 디자이너 | 8 패드 이내·라텐시 50ms 이하·키보드 단축키·접근성 라벨 |
+| 캔버스·CSS 애니메이션 인터랙션 | Stripe 시니어 모션 디자이너 | 60 FPS·prefers-reduced-motion 존중·0.3s 이내 트랜지션 |
+
+이 보조 패턴은 11번째 정식 패턴이 아닙니다. 사용자 입력에 명시적 미디어 키워드가 없으면 1-10 패턴 안에서 매칭하고 이 표는 호출하지 않습니다. 출력 한계(독립 .mp4 파일 미지원, 인터랙티브 HTML+JS만 출력)는 [제한 사항 문서](https://cowork.mo.ai.kr/claude-design/limitations/#4-코드-기반-프로토타입--공식-지원-vs-실제-한계) 참고.
 
 ## 워크플로우
 

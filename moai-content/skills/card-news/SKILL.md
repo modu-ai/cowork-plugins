@@ -7,7 +7,7 @@ description: >
   채널별 캡션·해시태그를 한 번에 만들어 줍니다. Claude 톤 변형 디자인 시스템과
   한국어 가독성 가이드, AI 글쓰기 자연화 체이닝까지 포함합니다.
 user-invocable: true
-version: 2.13.0
+version: 2.14.0
 ---
 
 # 카드뉴스 (Card News)

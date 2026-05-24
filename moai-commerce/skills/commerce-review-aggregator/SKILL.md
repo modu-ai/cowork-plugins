@@ -7,7 +7,7 @@ description: |
   4단 분석: ① 감정(긍정·부정·중립 비율) ② 키워드(상위 20개) ③ 인사이트(제품·서비스 개선 포인트) ④ 액션플랜(우선순위 액션 5개).
   v2.8.0 신규.
 user-invocable: true
-version: 2.13.0
+version: 2.14.0
 ---
 
 # 멀티채널 리뷰 통합 분석 (Commerce Review Aggregator)

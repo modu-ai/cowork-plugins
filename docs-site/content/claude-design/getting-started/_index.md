@@ -143,6 +143,19 @@ Cart → Address & shipping → Payment & review.
 한 줄 12자 이내, 출처와 작성자 정보를 푸터에.
 ```
 
+### 6. 코드 기반 인터랙티브 프로토타입 (셰이더·3D·웹 오디오)
+
+```
+다음 중 하나를 시연용 인터랙티브 프로토타입으로:
+- WebGL 셰이더 풀스크린 배경 (마우스 위치에 따라 색 그라데이션이 흐름)
+- Three.js 3D 제품 시연 (.glb 업로드 → 드래그로 회전·확대·축소)
+- Web Audio API 사운드 보드 (8개 패드, 키보드 단축키)
+모두 인터랙티브 HTML+JS로 출력. 모바일에서는 정적 fallback.
+React 컴포넌트로 추출 가능하게.
+```
+
+Anthropic 공식 발표(2026-04-17)에서 강조된 *"code-based prototypes including audio, video, shaders, and 3D"* 카테고리입니다. **독립 비디오 파일(.mp4)이 아니라 인터랙티브 코드**로 출력됩니다 — 자세한 한계는 [제한 사항](../limitations/#4-코드-기반-프로토타입--공식-지원-vs-실제-한계) 참고.
+
 ## 처음 30분 워크플로우
 
 ```mermaid

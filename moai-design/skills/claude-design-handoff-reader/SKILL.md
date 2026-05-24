@@ -11,7 +11,7 @@ description: |
   - "디자인 토큰 추출"
   - "Claude Code 핸드오프 준비"
 user-invocable: true
-version: 2.13.0
+version: 2.14.0
 ---
 
 # claude-design-handoff-reader — 핸드오프 번들 분석
@@ -177,8 +177,17 @@ Page
 
 ### 4단계 — 후속 권장
 
+#### 두 경로 분기
+
+| 경로 | 사용 시점 | 본 스킬의 역할 |
+|---|---|---|
+| **Claude Code 빌드 경로** (1차 목적) | 프로덕션 코드로 구현해야 할 때 | 번들 분석 + Claude Code 1줄 지시 자동 생성 (아래 워크플로우) |
+| **Canva 마케팅 후속 경로** (Anthropic ↔ Canva 공식 파트너십) | 마케팅 팀이 SNS·이벤트·광고 변형을 후속 편집해야 할 때 | 본 스킬의 분석은 참고용. 실제 Canva export는 Claude Design 캔버스의 Export → Canva 메뉴에서 직접 실행 |
+
+두 경로를 동시에 진행하면 디자인이 두 도구에서 동시에 변형되어 일관성이 깨집니다. **한 시안에서 한 경로만** 운영하세요.
+
 ```
-## 다음 단계
+## 다음 단계 (Claude Code 빌드 경로)
 
 1. 위 Claude Code 핸드오프 지시를 복사
 2. Claude Code 터미널 또는 Web에서 붙여넣기
@@ -191,6 +200,7 @@ Page
 
 - 핸드오프 후 디자인을 또 수정하지 마세요 — 코드와 어긋납니다
 - 큰 디자인 변경은 새 핸드오프 번들 작성 후 부분 인계
+- 마케팅 후속(Canva 경로)이 필요하면 핸드오프 번들과 별개로 Claude Design 캔버스에서 직접 Export → Canva
 ```
 
 ## 사용 예시

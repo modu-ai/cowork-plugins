@@ -26,9 +26,11 @@ flowchart TD
     V210 --> V211["v2.11<br/>media 정리·재정의"]
     V211 --> V212["v2.12<br/>moai-design 신규"]
     V212 --> V213["v2.13<br/>Higgsfield 이미지·영상"]
+    V213 --> V214["v2.14<br/>Claude Design 정합성"]
 
     style V10 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style V213 fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+    style V213 fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+    style V214 fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
 ```
 
 ## 버전 관리 정책
@@ -61,7 +63,8 @@ flowchart TD
 
 각 버전의 상세 변경 사항은 다음 페이지에서 확인할 수 있습니다:
 
-- [v2.13.0 (최신)](v2.13/) - **moai-media higgsfield-image·higgsfield-video 신규 2 스킬** — Higgsfield MCP 직접 호출, higgsfield.ai 공식 11 이미지 모델 + 11 영상 모델 + 6 비디오 프리셋(UGC·Unboxing·Product review·Hyper motion·TV spot·Wild Card)·캐릭터 일관성(Soul Characters·Kling Avatars 2.0)·비동기 잡 폴링 통합. 23 플러그인 유지·148 → 150 스킬
+- [v2.14.0 (최신)](v2.14/) - **Claude Design 보조 docs·스킬 정합성 보완** — Anthropic 공식 발표(2026-04-17) 정확 반영. (A) 코드 기반 프로토타입(음성·비디오·셰이더·3D) 카테고리 명시 (B) Canva 네이티브 파트너십(CEO Melanie Perkins 인용)·마케팅 후속 워크플로우 (C) 통합 빌더 단기 로드맵 ("coming weeks") (D) Brilliant·Datadog 공식 도입 사례 인용. claude-design-prompt-builder에 프론티어 미디어 보조 패턴 + claude-design-handoff-reader에 두 경로 분기 표 신규. **23 플러그인·150 스킬 유지·동기화 지점 175 유지·Breaking change 없음**
+- [v2.13.0](v2.13/) - **moai-media higgsfield-image·higgsfield-video 신규 2 스킬** — Higgsfield MCP 직접 호출, higgsfield.ai 공식 11 이미지 모델 + 11 영상 모델 + 6 비디오 프리셋(UGC·Unboxing·Product review·Hyper motion·TV spot·Wild Card)·캐릭터 일관성(Soul Characters·Kling Avatars 2.0)·비동기 잡 폴링 통합. 23 플러그인 유지·148 → 150 스킬
 - [v2.12.3](v2.12.3/) - **moai-content:card-news 콘텐츠 정련** — 10 구성 패턴 작명·5 디자인 톤·8단계 워크플로우·채널별 캡션·분량 확장 가이드 다듬기. Breaking change 없음
 - [v2.12.2](v2.12.2/) - **moai-content:card-news 보강** — 10 구성 패턴·5 디자인 톤·통합 프롬프트 추가
 - [v2.12.1](v2.12.1/) - **moai-office docx·pptx 모던 디자인 시스템 대형 보강** — Claude 브랜드 톤(Anthropic Orange) 기반 10 큐레이션 팔레트·9 슬라이드 아키타입·5 폰트 페어링·QA 검수 10단계. Breaking change 없음
@@ -98,6 +101,7 @@ MoAI Cowork Plugins의 업그레이드는 일반적으로 안전하게 진행할
 
 ### 호환성 정보
 
+- **v2.14.x**: 이전 버전과 완전 호환 — Breaking change 없음 (Claude Design 관련 docs·스킬 정합성 보완만, 신규 스킬·플러그인 없음. moai-design 사용자는 업데이트 후 prompt-builder·handoff-reader 본문 새 섹션 확인)
 - **v2.13.x**: 이전 버전과 완전 호환 — Breaking change 없음 (moai-media 신규 2 스킬 higgsfield-image·higgsfield-video. Higgsfield 첫 사용 시 OAuth 1회 필요)
 - **v2.12.x**: 이전 버전과 완전 호환 — Breaking change 없음 (신규 플러그인 moai-design 5 스킬 추가, 별도 활성화 필요)
 - **v2.11.x**: 이전 버전과 완전 호환 — Breaking change 없음 (moai-media 16→4 정리, 외부 MCP 직접 사용으로 환원. 플러그인 페이지 책임 경계 재정렬)

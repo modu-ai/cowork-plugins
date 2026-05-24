@@ -16,7 +16,7 @@ description: |
   - "긴 보고서 1페이지로 줄여줘", "경영진용 핵심 요약"
   - "카톡으로 보낼 보고서", "이메일에 첨부할 단일 HTML 1pager"
 user-invocable: true
-version: 2.13.0
+version: 2.14.0
 ---
 
 # Executive Summary — 경영진 1페이지 요약
