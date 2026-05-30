@@ -1,13 +1,13 @@
 ---
 title: "Claude Cowork 한국어 문서"
-description: "Claude Cowork 한국어 가이드 — 지식 근로자를 위한 설치·스킬·플러그인·쿡북 완전판. cowork-plugins 23종 카탈로그 + 150 스킬 포함."
+description: "Claude Cowork 한국어 가이드 — 지식 근로자를 위한 설치·스킬·플러그인·쿡북 완전판. cowork-plugins 23종 카탈로그 + 152 스킬 포함."
 geekdocAnchor: false
 geekdocBreadcrumb: false
 ---
 
 <div class="cw-hero">
   <div class="eyebrow"><span class="dot"></span>{{< version >}} · {{< release-date >}} · cowork.mo.ai.kr</div>
-  <h1>업무에 바로 쓰는<br/><span class="accent">AI 협업 스킬</span> 150종.</h1>
+  <h1>업무에 바로 쓰는<br/><span class="accent">AI 협업 스킬</span> 152종.</h1>
   <p class="lead-p">
     23개 분야에 걸친 MoAI-Cowork 플러그인 모음. Claude Code에서 슬래시 한 번으로 사업계획서·IR 덱·계약서·블로그·정부지원사업 신청서·이커머스 광고 풀세트·메타 광고 보고서 분석·한국 출판사 제출 원고·<strong>Claude Design 보조 5종</strong>까지 — 한국어로, 끝까지.
   </p>
@@ -16,7 +16,7 @@ geekdocBreadcrumb: false
     <a class="btn btn--ghost" href="/plugins/">플러그인 둘러보기</a>
   </div>
   <div class="cw-hero-meta">
-    <div class="item"><div class="num">150</div><div class="lbl">총 스킬</div></div>
+    <div class="item"><div class="num">152</div><div class="lbl">총 스킬</div></div>
     <div class="item"><div class="num">23</div><div class="lbl">분야 플러그인</div></div>
     <div class="item"><div class="num">78</div><div class="lbl">문서 페이지</div></div>
     <div class="item"><div class="num">{{< version >}}</div><div class="lbl">최신 릴리스</div></div>
@@ -273,6 +273,20 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
 
 <div class="cw-timeline">
   <div class="cw-rel latest">
+    <div class="ver-row">
+      <span class="ver">v2.15.0</span>
+      <span class="date">2026-05-30</span>
+      <span class="badge">MINOR</span>
+    </div>
+    <div class="ttl">Meta 공식 Ads AI Connectors + NotebookLM 슬라이드 프롬프트 신규 2 스킬</div>
+    <div class="desc"><a href="https://mcp.facebook.com/ads" target="_blank" rel="noopener">Meta Ads MCP (공식 OAuth 커넥터)</a>로 캠페인·광고세트·광고를 자연어 한 줄로 생성·수정·예산·온오프. <code>meta-ads-manager</code>는 신규 리소스 PAUSED 기본값·쓰기 동작 사용자 승인 필수(2단계 안전 제어). 또한 Google <a href="https://notebooklm.google.com" target="_blank" rel="noopener">NotebookLM</a>의 Video Overview·슬라이드용 한국어 소스·대본·구조를 설계한 <code>notebooklm-slide-prompt</code> + 슬라이드별 나노바나나 이미지 프롬프트 자동 생성. <strong>23 플러그인 · 150 → 152 스킬 · 동기화 지점 175 유지 · Breaking change 없음</strong>. Meta OAuth 2.0 정정(기존 정적 토큰·서드파티 3종 제거).</div>
+    <ul>
+      <li><strong>meta-ads-manager (신규)</strong> — Meta 공식 <a href="https://mcp.facebook.com/ads" target="_blank" rel="noopener">Ads AI Connectors</a>(OAuth 커넥터) 직접 호출. 캠페인·광고세트·광고 CRUD + 예산·상태 온오프 · 자동 권장사항(타겟·입찰가·크리에이티브) · 성과 메트릭 조회(노출·클릭·ROAS) · 신규 리소스 기본값 PAUSED(실수 방지) · 쓰기 동작은 사용자 2단계 확인(AskUserQuestion)</li>
+      <li><strong>notebooklm-slide-prompt (신규)</strong> — Google NotebookLM의 Video Overview·슬라이드 생성용 한국어 소스·대본·구조·타이밍 설계 + 슬라이드별 나노바나나 이미지 프롬프트(Nano Banana Pro/Light) 자동 생성 · 4·7·10·15·20 슬라이드 분량 확장 · 브랜드 톤·시각 스타일·폰트 옵션</li>
+      <li><strong>Meta OAuth 2.0 정정</strong> — 기존 정적 토큰·서드파티 fallback 3종 제거 · 공식 OAuth 커넥터 단일 지원</li>
+    </ul>
+  </div>
+  <div class="cw-rel">
     <div class="ver-row">
       <span class="ver">v2.13.0</span>
       <span class="date">2026-05-20</span>

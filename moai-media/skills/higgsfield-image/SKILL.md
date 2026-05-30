@@ -8,7 +8,7 @@ description: >
   스타일 프리셋, 해상도(720p/1080p/2K/4K), 시드 고정, 비동기 잡 폴링까지 처리합니다.
   Higgsfield MCP가 등록되어 있어야 하며(자동), 첫 호출 시 OAuth 인증 1회.
 user-invocable: true
-version: 2.14.0
+version: 2.15.0
 ---
 
 # Higgsfield 이미지 생성 (higgsfield-image)

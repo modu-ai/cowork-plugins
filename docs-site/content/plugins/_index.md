@@ -1,14 +1,14 @@
 ---
 title: "플러그인 카탈로그"
 weight: 1
-description: "modu-ai/cowork-plugins 마켓플레이스의 23개 플러그인·150개 스킬을 도메인별로 정리한 카탈로그입니다."
+description: "modu-ai/cowork-plugins 마켓플레이스의 23개 플러그인·152개 스킬을 도메인별로 정리한 카탈로그입니다."
 geekdocBreadcrumb: true
 geekdocCollapseSection: false
 ---
 
 # `cowork-plugins` 카탈로그
 
-[`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins)는 한국 업무 환경에 맞춰 설계된 **23개 플러그인 · 150개 스킬**의 커뮤니티 마켓플레이스입니다. 사업계획·IR·마케팅·법무·세무·HR·카드뉴스·PPT·이미지 프롬프트 빌더·이커머스 풀스택·메타 광고 보고서 분석·한국 출판사 제출 원고·**Claude Design 보조 풀스택**까지 도메인별로 묶여 있습니다.
+[`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins)는 한국 업무 환경에 맞춰 설계된 **23개 플러그인 · 152개 스킬**의 커뮤니티 마켓플레이스입니다. 사업계획·IR·마케팅·법무·세무·HR·카드뉴스·PPT·이미지 프롬프트 빌더·이커머스 풀스택·메타 광고 보고서 분석·Meta 광고 운영·NotebookLM 슬라이드·한국 출판사 제출 원고·**Claude Design 보조 풀스택**까지 도메인별로 묶여 있습니다.
 
 ```mermaid
 flowchart TD
@@ -66,7 +66,9 @@ flowchart TD
 ```
 
 {{< hint type="note" >}}
-**v2.14.0 업데이트 (최신)**: **Claude Design 보조 docs·스킬 정합성 보완** — Anthropic 공식 발표(2026-04-17) 정확 반영. (A) 코드 기반 프로토타입(음성·비디오·셰이더·3D) 카테고리 명시, (B) Canva 네이티브 파트너십(CEO Melanie Perkins 인용)·마케팅 후속 워크플로우, (C) 통합 빌더 단기 로드맵 ("coming weeks") 분리, (D) Brilliant·Datadog 공식 도입 사례 인용. `claude-design-prompt-builder`에 프론티어 미디어 보조 패턴(WebGL 셰이더·Three.js 3D·Web Audio API·캔버스 애니메이션) + `claude-design-handoff-reader`에 두 경로 분기(Claude Code 빌드 vs Canva 마케팅 후속) 신규. **23 플러그인·150 스킬 유지 · 동기화 지점 175 유지 · Breaking change 없음**.
+**v2.15.0 업데이트 (최신)**: **Meta 공식 Ads AI Connectors + NotebookLM 슬라이드 프롬프트 신규 2 스킬** — `moai-marketing`에 **`meta-ads-manager`** 추가(Meta Ads MCP 공식 OAuth 커넥터로 캠페인·광고세트·광고 자연어 생성·수정·예산·온오프, 신규 리소스 기본값 PAUSED, 쓰기 동작 사용자 승인). `moai-office`에 **`notebooklm-slide-prompt`** 추가(Google NotebookLM Video Overview·슬라이드용 한국어 소스·대본·구조·나노바나나 이미지 프롬프트 설계). **23 플러그인·152 스킬·동기화 지점 175 유지·Breaking change 없음**. Meta OAuth 2.0 정정(정적 토큰·서드파티 3종 제거).
+
+**v2.14.0**: **Claude Design 보조 docs·스킬 정합성 보완** — Anthropic 공식 발표(2026-04-17) 정확 반영. (A) 코드 기반 프로토타입(음성·비디오·셰이더·3D) 카테고리 명시, (B) Canva 네이티브 파트너십(CEO Melanie Perkins 인용)·마케팅 후속 워크플로우, (C) 통합 빌더 단기 로드맵 ("coming weeks") 분리, (D) Brilliant·Datadog 공식 도입 사례 인용. `claude-design-prompt-builder`에 프론티어 미디어 보조 패턴(WebGL 셰이더·Three.js 3D·Web Audio API·캔버스 애니메이션) + `claude-design-handoff-reader`에 두 경로 분기(Claude Code 빌드 vs Canva 마케팅 후속) 신규. **23 플러그인·150 스킬 유지 · 동기화 지점 175 유지 · Breaking change 없음**.
 
 **v2.13.0**: `moai-media` 플러그인에 **`higgsfield-image`·`higgsfield-video`** 신규 2 스킬 도입 — higgsfield.ai 공식 11 이미지 모델(Soul 3종·Nano Banana 2종·GPT Image 2종·Seedream 4.0·Flux Kontext·Wan 2.2/2.5) + 공식 11 영상 모델(Sora 2·Veo 3·Kling 4종·Seedance 2종·Cinema Studio 3.5·MiniMax Hailuo 02·Wan 2.5) + 6 비디오 프리셋(UGC·Unboxing·Product review·Hyper motion·TV spot·Wild Card)을 자연어 한 줄로 호출. 캐릭터 일관성(Soul Characters·Kling Avatars 2.0)·비동기 잡 폴링 통합. **23 플러그인 유지 · 148 → 150 스킬**.
 
@@ -132,7 +134,7 @@ flowchart TD
 
 - [`moai-design`](./moai-design/) **NEW v2.12** — [claude.ai/design](https://claude.ai/design) 사용을 받쳐 주는 풀스택 5 스킬. 브리프 작성·디자인 시스템 자산 합성·시니어 UX 프롬프트·Claude Code 핸드오프 분석·AI 슬롭 검수
 
-## 한 눈에 보는 스킬 수 (v2.14.0)
+## 한 눈에 보는 스킬 수 (v2.15.0)
 
 "대표 스킬 (일부)"는 각 플러그인에서 가장 자주 호출되는 스킬을 발췌한 것입니다. 전체 스킬 목록은 플러그인 이름을 클릭해 상세 페이지에서 확인하세요.
 
@@ -140,11 +142,11 @@ flowchart TD
 |---|---|---|
 | [moai-core](./moai-core/) | 8 | project, ai-slop-reviewer, feedback, ai-diagnostic, mcp-connector-setup, skill-builder, skill-template, skill-tester |
 | [moai-content](./moai-content/) | 12 | blog, card-news, landing-page, copywriting, humanize-korean, html-report, detail-page-planner +5종 |
-| [moai-office](./moai-office/) | 5 | pptx-designer, docx-generator, xlsx-creator, hwpx-writer, pdf-writer |
+| [moai-office](./moai-office/) | 6 | pptx-designer, docx-generator, xlsx-creator, hwpx-writer, pdf-writer, **notebooklm-slide-prompt (v2.15 신규)** |
 | [moai-media](./moai-media/) | 6 | **higgsfield-image·higgsfield-video (v2.13 신규)** Higgsfield MCP 직접 호출로 공식 11 이미지 모델(Soul 계열·Nano Banana 계열·GPT Image 계열·Seedream 4.0·Flux Kontext·Wan 2.2/2.5) + 공식 11 영상 모델(Sora 2·Veo 3·Kling 2.1/2.5/3.0·Kling Avatars 2.0·Seedance 2.0/Pro·Cinema Studio 3.5·MiniMax Hailuo 02·Wan 2.5) + 6 비디오 프리셋(UGC·Unboxing·Product review·Hyper motion·TV spot·Wild Card) 자연어 호출 · **gpt-image-2-prompt·gemini-3-image-prompt·midjourney-v8-prompt** 외부 도구 프롬프트 빌더 · **audio-gen** ElevenLabs MCP TTS·보이스 클로닝·다국어 더빙 |
 | [moai-book](./moai-book/) | 8 | **book-concept-planner·book-target-reader·book-outline-designer·book-author-bio·book-proposal-writer·book-publisher-matcher·book-chapter-writer·book-revision-coach (v2.10 신규)** |
 | [moai-business](./moai-business/) | 10 | strategy-planner, investor-relations, sbiz365-analyst, kr-gov-grant, consulting-brief, sales-playbook, startup-launchpad +3종 |
-| [moai-marketing](./moai-marketing/) | 11 | brand-identity, seo-audit, campaign-planner(광고 심리학 완전판), sns-content, target-script, landing-page-conversion-audit, pixel-audit, **meta-ads-analyzer (v2.5)** +3종 |
+| [moai-marketing](./moai-marketing/) | 12 | brand-identity, seo-audit, campaign-planner(광고 심리학 완전판), sns-content, target-script, landing-page-conversion-audit, pixel-audit, **meta-ads-analyzer (v2.5)** · **meta-ads-manager (v2.15 신규)** +3종 |
 | [moai-commerce](./moai-commerce/) | 35 | 시장조사·JTBD·페르소나·상품명·통합전략·아침브리핑·주문집계(7), 광고·마진·자동화·법규 진단(4), LTV/CAC·푸시·프로모션·재구매·상세 이미지·리뷰·VOC·구독·인플루언서·초기 팬·트렌드·시즌(13), 마켓플레이스(쿠팡·네이버·D2C·크라우드펀딩·큐레이션) 등 풀스택 35 스킬 |
 | [moai-product](./moai-product/) | 4 | spec-writer, roadmap-manager, ux-designer, ux-researcher |
 | [moai-operations](./moai-operations/) | 3 | status-reporter, process-manager, vendor-manager |
@@ -162,7 +164,7 @@ flowchart TD
 | [moai-sales](./moai-sales/) | 1 | proposal-writer |
 | [moai-design](./moai-design/) | 5 | **claude-design-brief · claude-design-system-prep · claude-design-prompt-builder · claude-design-handoff-reader · claude-design-slop-check (v2.12 신규)** |
 
-전체 **150개 스킬 · 23개 플러그인** (v2.14.0 기준).
+전체 **152개 스킬 · 23개 플러그인** (v2.15.0 기준).
 
 ## 다음 단계
 
@@ -177,4 +179,4 @@ flowchart TD
 
 - [modu-ai/cowork-plugins](https://github.com/modu-ai/cowork-plugins)
 - [cowork-plugins README](https://raw.githubusercontent.com/modu-ai/cowork-plugins/main/README.md)
-- [v2.14.0 릴리스 (최신)](../releases/v2.14/) · [v2.13.0 릴리스](../releases/v2.13/) · [v2.12.0 릴리스](../releases/v2.12/)
+- [v2.15.0 릴리스 (최신)](../releases/v2.15/) · [v2.14.0 릴리스](../releases/v2.14/) · [v2.13.0 릴리스](../releases/v2.13/)

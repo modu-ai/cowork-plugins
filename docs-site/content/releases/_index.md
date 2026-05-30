@@ -27,10 +27,11 @@ flowchart TD
     V211 --> V212["v2.12<br/>moai-design 신규"]
     V212 --> V213["v2.13<br/>Higgsfield 이미지·영상"]
     V213 --> V214["v2.14<br/>Claude Design 정합성"]
+    V214 --> V215["v2.15<br/>Meta 광고·NotebookLM"]
 
     style V10 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style V213 fill:#d6ebe7,stroke:#1c7c70,color:#09110f
-    style V214 fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
+    style V214 fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+    style V215 fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
 ```
 
 ## 버전 관리 정책
@@ -63,7 +64,8 @@ flowchart TD
 
 각 버전의 상세 변경 사항은 다음 페이지에서 확인할 수 있습니다:
 
-- [v2.14.0 (최신)](v2.14/) - **Claude Design 보조 docs·스킬 정합성 보완** — Anthropic 공식 발표(2026-04-17) 정확 반영. (A) 코드 기반 프로토타입(음성·비디오·셰이더·3D) 카테고리 명시 (B) Canva 네이티브 파트너십(CEO Melanie Perkins 인용)·마케팅 후속 워크플로우 (C) 통합 빌더 단기 로드맵 ("coming weeks") (D) Brilliant·Datadog 공식 도입 사례 인용. claude-design-prompt-builder에 프론티어 미디어 보조 패턴 + claude-design-handoff-reader에 두 경로 분기 표 신규. **23 플러그인·150 스킬 유지·동기화 지점 175 유지·Breaking change 없음**
+- [v2.15.0 (최신)](v2.15/) - **Meta 공식 Ads AI Connectors OAuth + NotebookLM 슬라이드 프롬프트 신규 2 스킬** — Meta Ads MCP 공식 OAuth 커넥터로 캠페인·광고세트·광고 자연어 생성·수정·예산·온오프(신규 리소스 PAUSED 기본값·쓰기 동작 사용자 승인). NotebookLM Video Overview·슬라이드용 한국어 소스·대본·구조·나노바나나 이미지 프롬프트 설계. **23 플러그인·152 스킬·동기화 지점 175 유지·Breaking change 없음**. Meta OAuth 2.0 정정(정적 토큰·서드파티 3종 제거).
+- [v2.14.0](v2.14/) - **Claude Design 보조 docs·스킬 정합성 보완** — Anthropic 공식 발표(2026-04-17) 정확 반영. (A) 코드 기반 프로토타입(음성·비디오·셰이더·3D) 카테고리 명시 (B) Canva 네이티브 파트너십(CEO Melanie Perkins 인용)·마케팅 후속 워크플로우 (C) 통합 빌더 단기 로드맵 ("coming weeks") (D) Brilliant·Datadog 공식 도입 사례 인용. claude-design-prompt-builder에 프론티어 미디어 보조 패턴 + claude-design-handoff-reader에 두 경로 분기 표 신규. **23 플러그인·150 스킬 유지·동기화 지점 175 유지·Breaking change 없음**
 - [v2.13.0](v2.13/) - **moai-media higgsfield-image·higgsfield-video 신규 2 스킬** — Higgsfield MCP 직접 호출, higgsfield.ai 공식 11 이미지 모델 + 11 영상 모델 + 6 비디오 프리셋(UGC·Unboxing·Product review·Hyper motion·TV spot·Wild Card)·캐릭터 일관성(Soul Characters·Kling Avatars 2.0)·비동기 잡 폴링 통합. 23 플러그인 유지·148 → 150 스킬
 - [v2.12.3](v2.12.3/) - **moai-content:card-news 콘텐츠 정련** — 10 구성 패턴 작명·5 디자인 톤·8단계 워크플로우·채널별 캡션·분량 확장 가이드 다듬기. Breaking change 없음
 - [v2.12.2](v2.12.2/) - **moai-content:card-news 보강** — 10 구성 패턴·5 디자인 톤·통합 프롬프트 추가

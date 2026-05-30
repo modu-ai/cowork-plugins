@@ -6,13 +6,78 @@
 
 ## 버전 통일 원칙 (HARD)
 
-아래 175개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.11.1+ `hugo.toml` SSOT 포함):
+아래 176개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.11.1+ `hugo.toml` SSOT 포함):
 - `.claude-plugin/marketplace.json` (`metadata.version`) × 1
 - `<plugin>/.claude-plugin/plugin.json` (`version`) × 23 (v2.12.0+)
-- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 150 (v2.13.0+)
+- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 151 (v2.14.1+)
 - `docs-site/hugo.toml` (`[params] version`) × 1 (v2.11.1+ SSOT, 좌측 사이드바·footer 자동 반영)
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
+
+## [2.15.0] - 2026-05-30
+
+MINOR. **Meta 공식 광고 커넥터 라이브 운영 + NotebookLM 슬라이드 프롬프트 신규 2 스킬**. 23 플러그인 유지, **150 → 152 스킬**. Breaking change 없음.
+
+### Added
+
+- **`meta-ads-manager`** 스킬 신규 (moai-marketing) — Meta 공식 **Ads AI Connectors**(OAuth 커넥터, `mcp.facebook.com/ads`, 2026-04-29 오픈 베타)에 연결해 캠페인·광고세트·광고를 자연어로 생성·수정·예산조정·온오프. 신규 리소스 **PAUSED 기본** + 쓰기·결제 동작 사용자 승인. 권한 등급 read-only/read+write/financial. 보고서 분석(`meta-ads-analyzer`)과 페어 분리.
+- **`notebooklm-slide-prompt`** 스킬 신규 (moai-office) — Google NotebookLM Video Overview·슬라이드 생성을 위한 한국어 소스 정리·대본·구조 설계 + 슬라이드별 나노바나나(Gemini 3 Pro Image) 5-Component 이미지 프롬프트. NotebookLM 공식 4축 매핑 + 49 시각 스타일 라이브러리. PPTX 파일 생성(`pptx-designer`)과 페어 분리.
+
+### Changed
+
+- `moai-marketing` MCP `meta-ads` 인증을 정적 `META_ACCESS_TOKEN` Bearer → **Meta Business OAuth 2.0 커넥터 흐름**으로 정정 (라이브 검증: RFC 9728 protected-resource discovery + RFC 6750 Bearer, scope `ads_management ads_read catalog_management business_management pages_show_list`). 정적 토큰은 개발 환경 fallback으로 강등.
+- 전체 버전 동기화 2.14.1 → 2.15.0 (marketplace.json + 23 plugin.json + 152 SKILL.md).
+- docs-site: meta-ads-manager 사용법(광고 트랙 시나리오 ⑤ + 커넥터 등록 가이드) + notebooklm-slide-prompt 사용법 추가, hugo.toml SSOT·릴리스 페이지 v2.15.0.
+
+### Removed
+
+- `moai-marketing/CONNECTORS.md`에서 서드파티 오픈소스 Meta Ads MCP fallback 3종(Adspirer · byadsco/meta-ads-mcp · pipeboard) 제거 — Meta 공식 커넥터로 단일화. 자체 `moai-ads-audit` MCP(한국 50-check audit)는 유지.
+
+### Migration
+
+- `/plugin marketplace update cowork-plugins`로 신규 2 스킬 자동 노출. Meta 광고 운영은 Claude 커넥터에 `https://mcp.facebook.com/ads` 등록 후 OAuth 로그인(앱 생성 불필요). 기존 워크플로우 그대로 동작.
+
+---
+
+## [2.14.1] - 2026-05-26
+
+PATCH (v2.15.0에 집약). **`moai-office`에 NotebookLM 슬라이드 데크 프롬프트 빌더 신규**. 강연·강의·세미나 본문 마크다운을 입력받아 (A) NotebookLM Studio에 그대로 붙여 넣을 슬라이드 데크 생성 프롬프트와 (B) 슬라이드별 나노바나나(Gemini 3 Pro Image) 5-Component 이미지 프롬프트를 동시 산출하는 prompt-builder. NotebookLM 공식 4축(Format `Detailed Deck` / `Presenter Slides`, Length `short`/`default`/`long`, Output language, Prompt 6블록) 정확 매핑 + DeepMind 공식 5-Component(Style·Subject·Setting·Action·Composition) + 시리즈 일관성 태그 자동 생성. 23 플러그인 유지, **150 → 151 스킬**, 동기화 지점 175 → **176**. Breaking change 없음.
+
+### Added
+
+#### moai-office (5 → 6 스킬)
+
+- [`notebooklm-slide-prompt`](./moai-office/skills/notebooklm-slide-prompt/) — NotebookLM Studio 슬라이드 데크 + 나노바나나 이미지 프롬프트 빌더
+  - **입력**: 강연·강의·세미나 본문 마크다운 (도입→핵심→데모→정리 4블록 권장)
+  - **산출 Part A**: NotebookLM Studio 4축 입력값 + Prompt 6블록(청중·1순위 메시지·구조·톤·강조 슬라이드·금지)
+  - **산출 Part B**: 슬라이드별 5-Component 이미지 프롬프트 (보통 5~8 슬라이드: 표지·섹션 구분·Must-Have·정리)
+  - **시리즈 일관성**: 모든 슬라이드 이미지에 동일 `series`·`palette`·`lighting` 태그 자동 부여
+  - **세이프티**: 실존 인물·저작권 캐릭터·브랜드 로고 직접 묘사 금지 자동 가드
+  - **체이닝**: `notebooklm-slide-prompt → moai-core:ai-slop-reviewer` 권장 (텍스트 산출물)
+  - **49 시각 스타일 라이브러리 내장** ([`references/slide-style-library.md`](./moai-office/skills/notebooklm-slide-prompt/references/slide-style-library.md)) — 8 카테고리 × 49 스타일:
+    - A. 모던 웹·기술 UI (8): 벤토 그리드·뉴 모피즘·글래스 모피즘 3D·SaaS 대시보드·아이소메트릭 플랫·모던 다크 모드 등
+    - B. 비즈니스·코퍼레이트 (10): 비즈니스 미니멀·뉴스레터 에디토리얼·프리미엄 컨설팅·데이터 스토리텔링·스위스 그리드 등
+    - C. 교육·학습·매뉴얼 (7): 칠판 스타일·일본 만화 튜토리얼·스케치노트·화이트보드 전략·포스트잇 문제 해결맵 등
+    - D. 레트로·복고·팝아트 (7): DOS 터미널·복셀 아트·레트로 팝 아트·빈티지 액션 코믹스·도트 픽셀 아트 등
+    - E. 시네마틱·SF·다이내믹 (4): 네온 사이버펑크·역동 애니메이션·시네마틱 우주 SF·볼드 타이포그래피
+    - F. 일러스트·예술·핸드메이드 (8): 바우하우스·식물학 일러스트·로코코·페이퍼 컷아웃·디지털 마인드맵 등
+    - G. 라이프스타일·캐주얼 (4): 클레이 애니메이션·카와이 파스텔·Before/After·듀오톤 그래픽
+    - H. 한국형 편집 디자인 (1): 포털형 카드 매거진
+    - 발표 키워드 → 스타일 자동 매칭 규칙(10 키워드), 시리즈 일관성 가드, 안티패턴 5종 내장
+  - **공식 출처**: [NotebookLM Slide Deck](https://support.google.com/notebooklm/answer/16757456) · [DeepMind Gemini Image Prompt Guide](https://deepmind.google/models/gemini-image/prompt-guide/) · [Nano Banana Pro 발표](https://blog.google/innovation-and-ai/products/nano-banana-pro/)
+  - **참고**: 49 스타일 분류는 공개된 옵시디언 publish 자료(이커머스 클래스 · 노트북 LM 슬라이드 가이드북)를 참고해 카테고리·매칭 규칙·일관성 가드를 재구성
+
+### Changed
+
+- 루트 `README.md` — 버전 배지(v2.14.0 → v2.14.1), 스킬 카운트(150 → 151), v2.14.1 하이라이트 섹션 신규 + v2.14.0 details 이동, moai-office 카탈로그 행(5 → 6 스킬)
+- `moai-office/README.md` — 소개 문구에 NotebookLM 슬라이드 데크 프롬프트 빌더 추가, 스킬 테이블에 notebooklm-slide-prompt 행 신설
+- 버전 통일: marketplace.json + 23 plugin.json + **151 SKILL.md** = **176 동기화 지점**
+
+### Migration
+
+- 사용자 조치 없음. `/plugin marketplace update cowork-plugins`로 신규 스킬 자동 노출.
+- 호출 예: `"S0 도입 본문을 NotebookLM 슬라이드 프롬프트로 만들어줘"` 또는 `"본문을 15장 Presenter Slides로, 시각은 미니멀 등각 다이어그램으로"`.
+- 실제 이미지 생성은 별도 단계 (Gemini 앱·Google AI Studio·Vertex AI·moai-media:higgsfield-image 중 택1).
 
 ## [2.14.0] - 2026-05-25
 

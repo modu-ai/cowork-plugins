@@ -11,7 +11,7 @@ description: |
 
   이미지 자동 생성(API 호출)은 페어 스킬 image-gen·nano-banana·media-gpt-image2-builder를 사용하세요. 본 스킬은 프롬프트 텍스트 산출 전용입니다.
 user-invocable: true
-version: 2.14.0
+version: 2.15.0
 ---
 
 # GPT-image-2 Prompt Builder — 6-Block 구조 + 3-모델 동시 출력

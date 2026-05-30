@@ -53,6 +53,9 @@ flowchart TD
 | `xlsx-creator` | KPI 대시보드·간트차트·매출표 | openpyxl (차트·수식·조건부서식 포함) |
 | `hwpx-writer` | 한글(HWPX) 공문서·기안서 | python-hwpx (OWPML) |
 | `pdf-writer` | 한·중·일·영 다국어 PDF (CJK 깨짐 0) | PyMuPDF + Noto Sans CJK 번들. Markdown·JSON·HTML·텍스트 4종 입력 |
+| `notebooklm-slide-prompt` | NotebookLM 슬라이드 데크 프롬프트 + 슬라이드별 이미지 프롬프트 | NotebookLM Studio 4축 매핑 + 나노바나나(Gemini 3 Pro Image) 5-Component |
+
+> `pptx-designer`는 바로 열리는 `.pptx` 파일을 만들고, `notebooklm-slide-prompt`는 NotebookLM에 넣을 준비물(소스·대본·구조·이미지 프롬프트)을 만듭니다. 결과물 형태로 둘을 구분하세요.
 
 ## 한국 문서 관례 반영
 
@@ -88,6 +91,14 @@ moai-finance:variance-analysis → xlsx-creator
 moai-operations:process-manager → hwpx-writer → ai-slop-reviewer
 ```
 
+**강연 본문 → NotebookLM 슬라이드 프롬프트**
+
+```text
+강연 본문 MD → notebooklm-slide-prompt → ai-slop-reviewer
+```
+
+(NotebookLM에 본문을 소스로 올린 뒤 산출된 Prompt를 붙여 넣어 데크를 생성합니다.)
+
 ## 빠른 사용 예
 
 ```text
@@ -97,6 +108,10 @@ KPI는 매출·고객수·재구매율이야.
 
 ```text
 > 기업설명회용 IR 덱을 20장 피칭덱으로 pptx 만들어줘.
+```
+
+```text
+> 강연 본문 MD를 NotebookLM 슬라이드 프롬프트로 만들어줘.
 ```
 
 ## 다음 단계

@@ -6,7 +6,7 @@ description: >
   개발(GitHub·기술 블로그)/디자인(Figma·Behance)/마케팅/기획 분야별 + 검색되는 노션
   포트폴리오 + 채용공고 맞춤형 1page 셀링 + 877건 노하우 기반 비중 배분을 지원합니다.
 user-invocable: true
-version: 2.14.0
+version: 2.15.0
 ---
 
 # 포트폴리오 가이드 (portfolio-guide)

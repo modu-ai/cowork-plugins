@@ -1,14 +1,15 @@
 # moai-office
 
-문서 생성 플러그인 — PPT 디자인(PPTX), Word(DOCX), Excel(XLSX), 한글(HWPX), **다국어 PDF**.
+문서 생성 플러그인 — PPT 디자인(PPTX), Word(DOCX), Excel(XLSX), 한글(HWPX), **다국어 PDF**, **NotebookLM 슬라이드 데크 프롬프트 빌더**.
 
-Pretendard+명조 기반 한국형 디자인과 OWPML 표준을 지원합니다. python-docx, python-hwpx, pptxgenjs, openpyxl, PyMuPDF 기반으로 편집 가능한 파일을 직접 생성합니다. PDF는 Noto Sans CJK 폰트 자동 다운로드로 한·중·일·영 깨짐을 근본 해결합니다.
+Pretendard+명조 기반 한국형 디자인과 OWPML 표준을 지원합니다. python-docx, python-hwpx, pptxgenjs, openpyxl, PyMuPDF 기반으로 편집 가능한 파일을 직접 생성합니다. PDF는 Noto Sans CJK 폰트 자동 다운로드로 한·중·일·영 깨짐을 근본 해결합니다. NotebookLM 슬라이드 데크는 Studio 공식 4축(Format/Length/Language/Prompt) 매핑 + 슬라이드별 나노바나나(Gemini 3 Pro Image) 5-Component 이미지 프롬프트를 동시 산출합니다.
 
 ## 스킬
 
 | 스킬 | 설명 | 레퍼런스 | 상태 |
 |------|------|:--------:|:----:|
 | [pptx-designer](./skills/pptx-designer/) | pptxgenjs 코드 생성. 발표자료, 보고서, 기안서, 피칭 덱 슬라이드 | 3 | ✅ |
+| [notebooklm-slide-prompt](./skills/notebooklm-slide-prompt/) | 강연·강의 본문 MD → NotebookLM Studio 슬라이드 데크 프롬프트 + 슬라이드별 나노바나나(Gemini 3 Pro Image) 5-Component 이미지 프롬프트 | 4 | ✅ |
 | [hwpx-writer](./skills/hwpx-writer/) | python-hwpx + lxml 기반 OWPML HWPX 생성. 공문서, 기안서, 보고서 | 2 | ✅ |
 | [docx-generator](./skills/docx-generator/) | python-docx 기반 보고서, 계약서, 공문서, 제안서 DOCX 생성 | 0 | ✅ |
 | [xlsx-creator](./skills/xlsx-creator/) | openpyxl 기반 데이터 표, 차트, 수식, 조건부 서식 XLSX 생성 | 0 | ✅ |

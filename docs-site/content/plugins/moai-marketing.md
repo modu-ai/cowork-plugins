@@ -1,14 +1,14 @@
 ---
 title: "moai-marketing — 브랜딩·SEO·캠페인"
 weight: 70
-description: "퍼스널·기업 브랜딩부터 네이버·구글·GEO 통합 SEO와 퍼포먼스 리포트, 광고 심리학 통합·랜딩 진단·픽셀 검증·메타 광고 보고서 분석까지 11개 마케팅 스킬 + 2 MCP 서버 묶음입니다."
+description: "퍼스널·기업 브랜딩부터 네이버·구글·GEO 통합 SEO와 퍼포먼스 리포트, 광고 심리학 통합·랜딩 진단·픽셀 검증·메타 광고 보고서 분석·공식 커넥터 라이브 운영까지 12개 마케팅 스킬 + 2 MCP 서버 묶음입니다."
 geekdocBreadcrumb: true
 tags: ["moai-marketing"]
 ---
 
 # moai-marketing
 
-> 퍼스널·기업 브랜딩부터 퍼포먼스 마케팅까지 11개 스킬을 제공합니다. 광고 심리학 완전판·랜딩 페이지 CVR 진단·메타·구글 픽셀 검증 + 메타 광고 보고서 분석기 + 자체 audit MCP 서버 인프라까지 한국 시장 특화 마케팅 풀스택을 한 플러그인에서 처리합니다.
+> 퍼스널·기업 브랜딩부터 퍼포먼스 마케팅까지 12개 스킬을 제공합니다. 광고 심리학 완전판·랜딩 페이지 CVR 진단·메타·구글 픽셀 검증 + 메타 광고 보고서 분석기 + 공식 커넥터 기반 라이브 광고 운영 + 자체 audit MCP 서버 인프라까지 한국 시장 특화 마케팅 풀스택을 한 플러그인에서 처리합니다.
 
 ## 무엇을 하는 플러그인인가
 
@@ -29,7 +29,7 @@ tags: ["moai-marketing"]
 {{< /tab >}}
 {{< /tabs >}}
 
-## 핵심 스킬 (11개)
+## 핵심 스킬 (12개)
 
 | 스킬 | 용도 | 신규 |
 |---|---|---|
@@ -44,6 +44,7 @@ tags: ["moai-marketing"]
 | `landing-page-conversion-audit` | 랜딩 페이지 6섹션 진단(히어로·공감·증명·사회증거·CTA·FAQ) + CTR/CVR 분기 + 불안해소·메시지 일치 처방 | 신규 |
 | `pixel-audit` | 메타·구글 픽셀 + CAPI + Lookalike 씨앗 품질 검증 (VIP 상위 20% 권장) + 1st Party 데이터 진단 | 신규 |
 | `meta-ads-analyzer` | 메타 광고관리자 `.xlsx` 보고서 1-6개 → 9 분석 모듈 + 4D 교차(광고×지면×연령×성별) + 3 사용자 그룹 톤(명시 입력) + 4 출력 형식(HTML/DOCX/PPTX/MD) + 🟢🟡🔴 강도별 액션 옵션. claude-ads v1.5.1 (MIT) 50-check 한국 매핑 | 신규 |
+| `meta-ads-manager` | Meta 공식 **Ads AI Connectors**(OAuth 커넥터)에 연결해 캠페인·광고세트·광고를 자연어로 **직접 생성·수정·예산조정·온오프**. 신규 리소스 PAUSED 기본 + 쓰기 동작 사용자 승인. 보고서 분석은 `meta-ads-analyzer`와 페어 분리 | 신규 |
 
 ## MCP 서버 인프라
 
@@ -51,7 +52,7 @@ tags: ["moai-marketing"]
 
 | MCP 이름 | 책임 | 유형 | 환경변수 |
 |---------|------|------|---------|
-| `meta-ads` | Meta Marketing API 원시 데이터 fetch (Layer 1) | http (hosted at `mcp.facebook.com/ads`) | `META_ACCESS_TOKEN` (OAuth) |
+| `meta-ads` | Meta 공식 Ads AI Connectors — 라이브 운영 + Marketing API 데이터 fetch (Layer 1) | http (hosted at `mcp.facebook.com/ads`) | Meta Business OAuth 2.0 (정적 토큰 불필요) |
 | `moai-ads-audit` | 50-check audit + 가중치 스코어링 + 한국 벤치마크/컴플라이언스 (Layer 2) | stdio (local uvx, `mcp-servers/moai-ads-audit/`) | `MOAI_LOG_LEVEL` (선택) |
 
 **자체 MCP 서버 사양** (`moai-ads-audit`):
@@ -90,6 +91,14 @@ pixel-audit (인프라 검증) → landing-page-conversion-audit (랜딩 진단)
 ```
 
 Layer 1 `meta-ads` MCP가 활성화된 환경에서는 보고서 업로드 없이 Meta Marketing API에서 직접 데이터를 fetch. 비활성 환경에서는 `.xlsx` 업로드 fallback이 자동 동작 (REQ-AUDIT-MCP-005).
+
+**메타 광고 라이브 운영** (공식 커넥터)
+
+```text
+meta-ads-manager (OAuth 커넥터 연결 → 캠페인·광고세트 생성, 신규 PAUSED) → 사용자 승인 → 활성화 → meta-ads-analyzer / moai-ads-audit (성과·진단)
+```
+
+`meta-ads-manager`는 Meta 공식 **Ads AI Connectors**(`mcp.facebook.com/ads`)에 OAuth로 연결해 광고를 자연어로 직접 만들고 켜고 끕니다. 신규 리소스는 항상 PAUSED로 생성되고, 활성화·예산·결제 동작은 실행 전 사용자 승인을 거칩니다. 자세한 연결·사용법은 [광고 트랙 쿡북](../../cookbook/tracks/track-advertising/)과 [커넥터와 MCP](../../cowork/connectors-mcp/) 문서를 참고하세요.
 
 **SEO 리뉴얼**
 

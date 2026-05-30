@@ -6,7 +6,7 @@ description: |
   "수강생 후기 카피 만들어줘", "D+1 후기 요청", "D+3 적용 인증 요청", "D+7 성과 수치 후기", "D+14 영상 후기 인센티브 안내", "D+30 심층 인터뷰 제안", "강의 후 30일 시퀀스", "수업 follow-up", "연수 후기 자산화".
   체인: moai-content:copywriting → moai-core:ai-slop-reviewer → moai-content:korean-spell-check.
 user-invocable: true
-version: 2.14.0
+version: 2.15.0
 ---
 
 # 강의 종료 후 30일 Follow-up 시퀀스

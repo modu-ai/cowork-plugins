@@ -6,7 +6,7 @@ geekdocBreadcrumb: true
 ---
 
 > **대상**: 메타·구글·쿠팡 광고 운영자, 퍼포먼스 마케터, 광고 대행사
-> **전제**: moai-core · moai-marketing 활성화 + (선택) `META_ACCESS_TOKEN` · moai-ads-audit-mcp 자동 설치
+> **전제**: moai-core · moai-marketing 활성화 + (선택) Meta 광고 AI 커넥터(공식 OAuth) 또는 `META_ACCESS_TOKEN` · moai-ads-audit-mcp 자동 설치
 > **소요**: 시나리오당 약 5-15분
 
 ## 무엇을 할 수 있나
@@ -49,6 +49,7 @@ flowchart TB
 | 2 | "광고 떨어지는데 뭐가 문제야? 픽셀·랜딩 진단해줘" | pixel-audit → landing-page-conversion-audit → 진단 리포트 |
 | 3 | "스킨케어 메타 광고 영상 풀세트 만들어줘" | media-moodboard → gpt-image2-builder → model-router → channel-ad-packager |
 | 4 | "쿠팡 광고 최적화 가이드 짜줘" | coupang-ad-optimizer → 3 캠페인 분류 → 자동규칙 3종 |
+| 5 | "신상품 메타 광고 캠페인 만들어서 운영해줘" | meta-ads-manager → OAuth 연결 → 캠페인·광고세트 생성(PAUSED) → 승인 → 활성화 |
 
 ---
 
@@ -176,6 +177,75 @@ flowchart TD
 
 ---
 
+## 시나리오 ⑤ 메타 광고 직접 운영 — 공식 커넥터 (약 10분)
+
+**상황**: 보고서 분석이 아니라 메타 광고를 **직접 만들고 운영**한다. Meta 공식 **Ads AI Connectors**(OAuth 커넥터)에 연결해 자연어로 캠페인·광고세트·광고를 생성·수정·예산조정·온오프한다. 보고서 분석(`meta-ads-analyzer`)과 명확히 구분되는 **라이브 운영** 시나리오다.
+
+### 0. 사전 연결 (최초 1회)
+
+Meta 공식 Ads AI Connectors(2026-04-29 오픈 베타)를 OAuth로 연결한다. 앱 생성·앱 심사·토큰 복사가 **필요 없다**.
+
+1. Cowork 설정 → 커넥터 → 커스텀 커넥터 추가 → URL `https://mcp.facebook.com/ads`
+2. 브라우저에서 **Meta Business OAuth 로그인** (필요 시 2FA)
+3. 공유할 광고 계정·페이지 + 권한 등급 선택 (read-only로 시작 권장)
+
+> `moai-marketing` 설치 시 `meta-ads`가 `.mcp.json`에 미리 등록되어 있어 URL 입력이 생략된다. Claude 재시작 후 첫 호출 시 OAuth 로그인만 진행하면 된다. 자세히는 [커넥터와 MCP](../../../cowork/connectors-mcp/).
+
+### 사용자 입력
+
+{{< terminal title="claude — cowork" >}}
+> 신상품 비타민 메타 광고 캠페인 만들어서 운영해줘. 일예산 5만원, 전환 목표.
+{{< /terminal >}}
+
+### 시스템 인터뷰
+
+1. **광고 계정·페이지 확정** (read-only로 목록 조회 후 선택)
+2. **목표**: 전환 / 트래픽 / 도달 / 참여
+3. **예산**: 일예산 / 총예산 + 집행 기간
+4. **타겟**: 지역·연령·관심사 / 기존 커스텀 오디언스
+5. **소재**: 이미지·영상·문구 (없으면 `moai-media` 체이닝 제안)
+
+### 워크플로우 (안전 우선)
+
+```mermaid
+flowchart TD
+    A["read-only 연결<br/>계정·페이지 확정"] --> B["운영 의도 수집<br/>목표·예산·타겟·소재"]
+    B --> C["변경안 표 제시<br/>캠페인→광고세트→광고"]
+    C --> D{"사용자 승인"}
+    D -->|승인| E["PAUSED로 생성<br/>리소스 ID 회신"]
+    D -->|수정| B
+    E --> F{"활성화 승인"}
+    F -->|승인| G["광고 ON<br/>지출 시작"]
+    F -->|보류| H["PAUSED 유지"]
+    style E fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style G fill:#e6f0ef,stroke:#144a46,color:#09110f
+```
+
+### 안전 가드 (HARD)
+
+| 가드 | 규칙 |
+|---|---|
+| 기본 PAUSED | 자연어로 생성한 신규 캠페인·광고세트·광고는 **항상 PAUSED**. 자동 활성화 금지. |
+| 활성화 승인 | 광고를 켜거나 지출 시작 전 사용자 명시 확인. |
+| 쓰기 승인 | 모든 쓰기·예산·결제 동작은 실행 전 승인 (커넥터도 동작별 승인 요구). |
+| 권한 최소화 | read-only로 시작, 운영 시에만 read+write, 결제는 financial 등급에서만. |
+
+### 자동 체인
+
+```text
+meta-ads-manager (생성·운영, PAUSED)
+  → (성과 누적 후) meta-ads-analyzer / moai-ads-audit-mcp (진단)
+  → ai-slop-reviewer (진단 텍스트 검수)
+```
+
+### 산출물
+
+- 변경안 표 (캠페인→광고세트→광고, 예산, 상태=PAUSED)
+- 실행 결과: 생성된 리소스 ID·상태, 적용된 변경 요약
+- 활성화 후 성과 조회: spend / impressions / CTR / ROAS + breakdown
+
+---
+
 ## AskUserQuestion 표준 슬롯 (광고 트랙 공통)
 
 | 슬롯 | 예시 값 |
@@ -203,6 +273,14 @@ flowchart TD
 
 예. 카테고리가 식품·건강기능식품이면 `commerce-marketing-compliance-kr`이 자동 활성화됩니다.
 
+### Q. 광고를 직접 만들면 바로 집행되나요?
+
+아니요. `meta-ads-manager`로 만든 신규 캠페인·광고세트·광고는 **항상 PAUSED**로 생성됩니다. 활성화·예산 증액·결제는 실행 전 사용자 승인을 거칩니다. 안심하고 초안을 만들어 검토할 수 있습니다.
+
+### Q. 공식 커넥터 연결에 개발자 앱이 필요한가요?
+
+아니요. Meta 공식 Ads AI Connectors는 OAuth 2.0 커넥터 흐름을 씁니다. 커넥터 URL(`mcp.facebook.com/ads`) 등록 후 브라우저에서 Meta Business 로그인만 하면 됩니다 — 개발자 앱 생성·앱 심사·토큰 수동 복사가 필요 없습니다. (개발 환경에서만 `META_ACCESS_TOKEN` 정적 토큰을 fallback으로 씁니다.)
+
 ---
 
 ## 다음 단계
@@ -218,5 +296,6 @@ flowchart TD
 ### Sources
 
 - [agricidaniel/claude-ads v1.5.1 (MIT)](https://github.com/AgriciDaniel/claude-ads) — 50-check matrix 방법론
-- [Meta for Developers](https://developers.facebook.com/) — 공식 MCP
+- [Meta 광고 AI 커넥터 — Meta Business Help](https://www.facebook.com/business/help/1456422242197840) — 공식 커넥터
+- [Meta for Developers — Introducing the Ads CLI (2026-04-29)](https://developers.facebook.com/blog/post/2026/04/29/introducing-ads-cli/) — 공식 MCP·CLI
 - [정보통신망법 + 표시광고법 + 식약처 광고 심의](https://www.law.go.kr) — 5 규제

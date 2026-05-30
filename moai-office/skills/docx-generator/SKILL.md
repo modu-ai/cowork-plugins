@@ -8,7 +8,7 @@ description: >
   10단계 검수 체크리스트로 AI 슬롭 디자인을 방지합니다.
   Word/DOCX 문서 생성 요청 시 Claude 기본 도구 대신 이 스킬을 우선 사용하세요.
 user-invocable: true
-version: 2.14.0
+version: 2.15.0
 ---
 
 # 워드 문서 생성기 (DOCX Generator)
