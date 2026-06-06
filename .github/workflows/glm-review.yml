@@ -23,7 +23,14 @@ jobs:
       - name: Run GLM Review
         shell: bash
         env:
-          GLM_API_KEY: ${{ secrets.GLM_API_KEY }}}
-
+          GLM_API_KEY: ${{ secrets.GLM_API_KEY }}
         run: |
+          if [[ -z "$GLM_API_KEY" ]]; then
+            echo "::notice::GLM_API_KEY not configured — skipping GLM review"
+            exit 0
+          fi
+          if ! command -v glm &> /dev/null; then
+            echo "::notice::glm CLI not installed — skipping GLM review"
+            exit 0
+          fi
           glm code-review --diff

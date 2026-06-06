@@ -18,16 +18,19 @@ jobs:
         uses: ./.github/actions/detect-language
 
       - name: Setup Claude
+        id: setup
         shell: bash
         run: |
           if ! command -v claude &> /dev/null; then
-            echo "::error::Claude CLI not found. Install from https://claude.ai/download"
-            exit 1
+            echo "::notice::Claude CLI not installed — skipping Claude review"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Run Claude Review
+        if: steps.setup.outputs.skip != 'true'
         shell: bash
         env:
-          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
         run: |
-          claude code review --diff ${{ github.event.issue.body }}}
+          claude code review --diff "$ISSUE_BODY"

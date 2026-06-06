@@ -15,28 +15,37 @@ jobs:
         id: visibility
         shell: bash
         run: |
-          if [[ "${{ github.repository_visibility }}}}" == "public" ]]; then
-            echo "::error::Codex review is restricted to private repositories (REQ-SEC-001)"
-            echo "See OpenAI policy: https://openai.com/policies"
-            exit 1
+          if [[ "${{ github.event.repository.private }}" != "true" ]]; then
+            echo "::notice::Codex review is restricted to private repositories (REQ-SEC-001) — skipping on public repo"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
           fi
 
       - uses: actions/checkout@v4
+        if: steps.visibility.outputs.skip != 'true'
 
       - name: Codex Bootstrap
+        if: steps.visibility.outputs.skip != 'true'
         uses: ./.github/actions/codex-bootstrap
         with:
-          repo-is-private: ${{ github.repository_visibility == 'private' }}}
+          repo-is-private: ${{ github.event.repository.private }}
 
       - name: Detect Language
         id: detect
+        if: steps.visibility.outputs.skip != 'true'
         uses: ./.github/actions/detect-language
 
       - name: Run Codex Review
+        if: steps.visibility.outputs.skip != 'true'
         shell: bash
         env:
-          CODEX_AUTH_JSON: ${{ secrets.CODEX_AUTH_JSON }}}
-
+          CODEX_AUTH_JSON: ${{ secrets.CODEX_AUTH_JSON }}
         run: |
-          codex review --diff ${{ steps.detect.outputs.language }}}
-
+          if [[ -z "$CODEX_AUTH_JSON" ]]; then
+            echo "::notice::CODEX_AUTH_JSON not configured — skipping Codex review"
+            exit 0
+          fi
+          if ! command -v codex &> /dev/null; then
+            echo "::notice::codex CLI not installed — skipping Codex review"
+            exit 0
+          fi
+          codex review --diff ${{ steps.detect.outputs.language }}

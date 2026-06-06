@@ -16,22 +16,30 @@ jobs:
       - name: Post LLM Panel Comment
         uses: actions/github-script@v7
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}}
-
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            gh pr comment ${{ github.event.pull_request.number }} --body "## LLM Code Review Status
-
-
-| LLM | Status |
-|-----|--------|
-| Claude | Pending (add \`/claude\` comment) |
-| Codex | ${{ secrets.CODEX_AUTH_JSON != '' && '✓ Ready' || '⚠️ Token missing' }} |
-| Gemini | ${{ secrets.GEMINI_API_KEY != '' && '✓ Ready' || '⚠️ Token missing' }} |
-| GLM | ${{ secrets.GLM_API_KEY != '' && '✓ Ready' || '⚠️ Token missing' }} |
-
-Trigger individual reviews:
-- Add \`/claude\` comment to trigger Claude
-- Add \`/codex\` comment to trigger Codex
-- Add \`/gemini\` comment to trigger Gemini
-- Add \`/glm\` comment to trigger GLM
-"
+            const codex = ${{ secrets.CODEX_AUTH_JSON != '' }} ? '✓ Ready' : '⚠️ Token missing';
+            const gemini = ${{ secrets.GEMINI_API_KEY != '' }} ? '✓ Ready' : '⚠️ Token missing';
+            const glm = ${{ secrets.GLM_API_KEY != '' }} ? '✓ Ready' : '⚠️ Token missing';
+            const body = [
+              '## LLM Code Review Status',
+              '',
+              '| LLM | Status |',
+              '|-----|--------|',
+              '| Claude | Pending (add `/claude` comment) |',
+              `| Codex | ${codex} |`,
+              `| Gemini | ${gemini} |`,
+              `| GLM | ${glm} |`,
+              '',
+              'Trigger individual reviews:',
+              '- Add `/claude` comment to trigger Claude',
+              '- Add `/codex` comment to trigger Codex',
+              '- Add `/gemini` comment to trigger Gemini',
+              '- Add `/glm` comment to trigger GLM',
+            ].join('\n');
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body,
+            });

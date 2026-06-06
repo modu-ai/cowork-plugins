@@ -9,6 +9,6 @@ runs:
   steps:
     - shell: bash
       run: |
-        if [[ "{{ inputs.repo-is-private }}}" == "true" ]]; then
+        if [[ "${{ inputs.repo-is-private }}" == "true" ]]; then
           echo "CODex conditional seeding enabled for private repo"
         fi

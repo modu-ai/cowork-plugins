@@ -3,7 +3,7 @@ description: 'Detects the primary programming language from repository files'
 outputs:
   language:
     description: 'Detected language (go, python, typescript, javascript, rust, java, kotlin, csharp, ruby, php, elixir, cpp, scala, r, flutter, swift)'
-    value: ${{ steps.detect.outputs.language }}}
+    value: ${{ steps.detect.outputs.language }}
 
 runs:
   using: 'composite'

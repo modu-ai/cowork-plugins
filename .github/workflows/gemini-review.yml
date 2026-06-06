@@ -20,7 +20,14 @@ jobs:
       - name: Run Gemini Review
         shell: bash
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}}
-
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
+          if [[ -z "$GEMINI_API_KEY" ]]; then
+            echo "::notice::GEMINI_API_KEY not configured — skipping Gemini review"
+            exit 0
+          fi
+          if ! command -v gemini &> /dev/null; then
+            echo "::notice::gemini CLI not installed — skipping Gemini review"
+            exit 0
+          fi
           gemini code-review --diff
