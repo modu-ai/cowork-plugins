@@ -5,7 +5,7 @@ description: "프레젠테이션·랜딩 페이지·시각 자료 디자인 원�
 geekdocBreadcrumb: true
 geekdocCollapseSection: true
 ---
-cowork-plugins의 디자인 계열 스킬을 사용할 때 참고할 수 있는 원칙 모음입니다.
+cowork-plugins의 디자인 계열 스킬로 슬라이드나 랜딩 페이지를 만들 때, 결과물의 완성도를 높이는 원칙 모음입니다. 스킬이 자동으로 생성한 산출물을 더 잘 다듬고 싶을 때 참고하세요.
 
 ```mermaid
 flowchart TD

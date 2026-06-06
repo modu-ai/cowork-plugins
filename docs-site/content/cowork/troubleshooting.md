@@ -56,29 +56,17 @@ flowchart TB
 
 ### 1-1. Claude Desktop 앱에 Cowork 메뉴가 안 보임
 
-- 앱 버전이 Cowork 지원 버전인지 확인합니다. 메뉴 → "About Claude"에서 버전 확인 후 [공식 다운로드 페이지](https://support.claude.com/en/articles/10065433)에서 최신 빌드로 갱신
-- 앱을 완전 종료 후 재실행 (메뉴 막대 → Quit, Windows는 시스템 트레이 → 종료)
-- 로그인 계정의 요금제가 Cowork를 지원하는지 확인 — Pro·Max·Team·Enterprise. Free는 원칙적으로 미지원이며, 지역에 따라 순차 출시
-- Team·Enterprise 사용자는 관리자가 Admin Settings → Capabilities에서 **Cowork를 활성화**했는지 확인
+먼저 앱 버전이 Cowork를 지원하는지 확인합니다. 메뉴 → "About Claude"에서 버전을 확인한 뒤, [공식 다운로드 페이지](https://support.claude.com/en/articles/10065433)에서 최신 빌드로 갱신하세요. 버전이 최신이라면 앱을 완전 종료 후 재실행합니다(macOS는 메뉴 막대 → Quit, Windows는 시스템 트레이 → 종료). 로그인 계정의 요금제가 Pro·Max·Team·Enterprise인지도 확인하세요. Free는 원칙적으로 미지원이며 지역에 따라 순차 출시됩니다. Team·Enterprise 사용자는 관리자가 Admin Settings → Capabilities에서 **Cowork를 활성화**했는지 추가로 확인해야 합니다.
 
 ### 1-2. 로그인 후 빈 화면 또는 무한 로딩
 
-- 시스템 시간이 정확한지 확인 (NTP 동기화) — 시계 오차로 OAuth 토큰이 거부될 수 있음
-- VPN/프록시를 일시 해제하고 재시도
-- 앱 캐시 삭제:
-  - macOS: `~/Library/Application Support/Claude/`의 `Cache`/`Code Cache` 폴더 삭제
-  - Windows: `%APPDATA%\Claude\`의 `Cache`/`Code Cache` 폴더 삭제
-- 그래도 안 되면 앱 재설치 — 작업 폴더와 메모리는 보존됩니다 (계정 동기화)
+시스템 시간이 정확한지 먼저 확인하세요(NTP 동기화). 시계 오차로 OAuth 토큰이 거부될 수 있습니다. VPN/프록시를 일시 해제하고 재시도해보고, 그래도 안 된다면 앱 캐시를 삭제합니다. macOS에서는 `~/Library/Application Support/Claude/`의 `Cache`/`Code Cache` 폴더를, Windows에서는 `%APPDATA%\Claude\`의 같은 폴더를 지우세요. 캐시 삭제 후에도 해결되지 않으면 앱을 재설치합니다. 작업 폴더와 메모리는 계정 동기화로 보존됩니다.
 
 ## 2. 작업 폴더·파일 시스템
 
 ### 2-1. 폴더가 비어 보이거나 파일이 안 잡힘
 
-- 작업 폴더 권한을 확인 — Cowork는 사용자가 명시적으로 선택한 폴더만 읽고 쓸 수 있습니다
-- 폴더 안에 `.DS_Store`/`Thumbs.db` 외에 실제 파일이 있는지 확인
-- 우측 상단 **폴더 아이콘**을 다시 눌러 폴더를 재선택 — 캐시 갱신
-- macOS: 시스템 환경설정 → 개인정보 보호 → **파일 및 폴더**에서 Claude 항목의 폴더 권한 확인
-- Windows: 파일 탐색기에서 해당 폴더 우클릭 → 속성 → 보안 탭에서 권한 확인
+Cowork는 사용자가 명시적으로 선택한 폴더만 읽고 쓸 수 있으므로, 폴더가 비어 보인다면 우측 상단 **폴더 아이콘**을 다시 눌러 폴더를 재선택하세요. 폴더 안에 `.DS_Store`/`Thumbs.db` 외에 실제 파일이 있는지도 확인합니다. 재선택 후에도 문제가 있다면 권한을 점검합니다. macOS에서는 시스템 환경설정 → 개인정보 보호 → **파일 및 폴더**에서 Claude 항목의 권한을, Windows에서는 파일 탐색기에서 해당 폴더 우클릭 → 속성 → 보안 탭에서 확인하세요.
 
 ### 2-2. Windows에서 파일이 저장되지 않음 (MAX_PATH)
 
@@ -270,11 +258,7 @@ cowork-plugins는 커뮤니티 마켓플레이스이므로 자동 업데이트�
 
 ## 그래도 해결이 안 될 때
 
-- 같은 증상의 [자주 묻는 질문](../faq/)부터 확인
-- 시스템 한도(컨텍스트, 플랜 가용성, 권한 정책 등) 의심 시 [제약과 한도](../constraints/) 참조
-- 플러그인·체인 레이어 문제라면 [쿡북 — 트러블슈팅](../../cookbook/troubleshooting/)으로 이동
-- Anthropic 공식 지원: [support.claude.com](https://support.claude.com)
-- 커뮤니티 마켓플레이스 이슈: [modu-ai/cowork-plugins Issues](https://github.com/modu-ai/cowork-plugins/issues) — 증상·OS·앱 버전·플러그인 목록을 함께 등록
+위 절차로도 해결이 안 된다면 먼저 [자주 묻는 질문](../faq/)에서 같은 증상을 찾아보세요. 컨텍스트·플랜 가용성·권한 정책 같은 시스템 한도가 원인이라면 [제약과 한도](../constraints/)를, 플러그인·체인 레이어 문제라면 [쿡북 — 트러블슈팅](../../cookbook/troubleshooting/)을 참고합니다. 이를 모두 확인한 뒤에도 해결이 안 된다면 Anthropic 공식 지원([support.claude.com](https://support.claude.com))에 문의하거나, 커뮤니티 마켓플레이스 이슈는 [modu-ai/cowork-plugins Issues](https://github.com/modu-ai/cowork-plugins/issues)에 증상·OS·앱 버전·플러그인 목록을 함께 등록하세요.
 
 ---
 

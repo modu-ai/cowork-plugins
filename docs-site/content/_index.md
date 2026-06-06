@@ -67,7 +67,7 @@ flowchart TD
   <h2 id="quickstart" style="margin:0"><span class="num">START</span>약 10분 빠른 시작</h2>
 </div>
 
-Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰는 플러그인 한두 개만 활성화하면 끝. 슬래시 명령으로 자연어처럼 호출됩니다.
+Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고 자주 쓰는 플러그인 한두 개만 활성화하면 준비는 끝납니다. 이후에는 슬래시 명령 하나로 자연어처럼 호출할 수 있습니다.
 
 <div class="cw-qs">
   <a class="cw-qs-card" href="/getting-started/install/">
@@ -237,7 +237,7 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
   <span class="meta">분야별 워크플로우 가이드 · 6개 트랙</span>
 </div>
 
-<p>스킬을 어떻게 조합하느냐가 결과를 결정합니다. 자주 쓰는 6개 워크플로우를 트랙으로 정리했습니다.</p>
+<p>스킬은 단독으로 쓰기보다 조합할 때 진가가 나옵니다. 어떤 스킬을 어떤 순서로 연결하느냐가 결과물의 수준을 결정합니다. 자주 쓰이는 6개 워크플로우를 역할별 트랙으로 정리했습니다.</p>
 
 <div class="cw-track-grid">
   <a class="cw-track" href="/cookbook/tracks/track-documents/">

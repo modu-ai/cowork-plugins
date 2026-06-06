@@ -26,7 +26,7 @@ flowchart TD
 
 ## 대상 독자
 
-운영팀·기획팀의 정기 보고를 담당하는 실무자.
+매주 금요일 오후가 되면 보고서 작성으로 퇴근이 미뤄지는 경험을 반복하고 있는 운영팀·기획팀 실무자를 위한 레시피입니다.
 
 ## 사전 준비
 
@@ -41,11 +41,7 @@ flowchart TD
 status-reporter → data-explorer → xlsx-creator → docx-generator → ai-slop-reviewer
 ```
 
-- `status-reporter` — 주간 리포트 골격, OKR 진행률
-- `data-explorer` — 로우 데이터(CSV·Slack·Notion)에서 KPI 추출
-- `xlsx-creator` — KPI 대시보드 시트
-- `docx-generator` — 최종 3페이지 보고서
-- `ai-slop-reviewer` — 임원이 바로 읽을 수 있게 문장 다듬기
+`status-reporter`가 주간 리포트 골격과 OKR 진행률을 구성하고, `data-explorer`가 CSV·Slack·Notion 원본에서 KPI를 추출합니다. `xlsx-creator`가 KPI 대시보드 시트를 만들면, `docx-generator`가 최종 3페이지 보고서로 통합합니다. `ai-slop-reviewer`가 마지막에 임원이 바로 읽을 수 있도록 문장을 다듬습니다.
 
 ## 사용 방식 — 한 줄 요청 (패턴 4: 스케줄 자동화)
 
@@ -111,9 +107,7 @@ MCP 기본 검색은 14일. 그 이상은 `slack_search_public` 사용권을 확
 
 ## 응용 변형
 
-- **월간 보고서** — 같은 파이프라인을 "4주치 CSV" 입력으로 돌려 월간판 생성.
-- **대시보드 HTML** — `data-visualizer`로 사내 공유용 단일 HTML 대시보드 추가 발행 → 이메일 링크.
-- **마크다운 → HTML 변환 (v2.2.0 신규)** — `moai-content:html-report` 스킬로 마크다운 보고서를 단일 파일 HTML로 변환. 외부 의존성 0, 12-25KB 초경량 산출물.
+같은 파이프라인을 "4주치 CSV" 입력으로 돌리면 그대로 월간 보고서가 됩니다(**월간 보고서**). 파일 공유 대신 사내 공유용 HTML 대시보드를 추가로 발행하고 싶다면 `data-visualizer`로 단일 HTML을 생성한 뒤 이메일로 링크를 보낼 수 있습니다(**대시보드 HTML**). Markdown 보고서를 읽기 편한 HTML로 변환하는 기능은 v2.2.0에 추가된 `moai-content:html-report` 스킬이 담당합니다. 외부 의존성 없이 12-25KB 초경량 파일로 출력됩니다(**마크다운 → HTML 변환**).
 
 ### 마크다운 보고서 → HTML 변환 (v2.2.0)
 

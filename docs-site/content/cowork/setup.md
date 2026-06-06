@@ -6,7 +6,7 @@ geekdocBreadcrumb: true
 geekdocCollapseSection: false
 ---
 
-Claude Desktop의 **Settings > Cowork**에서 Claude의 동작 방식을 제어하는 핵심 설정을 관리합니다. 이 페이지에서는 전역 지시어, 스킬, 커넥터, 권한 설정을 다룹니다.
+처음 Cowork를 쓰기 시작하면 설정이 필요한 네 가지 항목을 곧바로 만나게 됩니다. "한국어로 답해줘"나 "파일 삭제 전 확인해줘" 같은 말을 매번 입력하는 대신, Claude Desktop의 **Settings > Cowork**에서 전역 지시어·스킬·커넥터·권한을 한 번 설정해두면 이후 모든 세션에 일관되게 적용됩니다.
 
 ## 설정 구조 한눈에 보기
 
@@ -30,19 +30,11 @@ flowchart TD
 
 ## 설정 메뉴 접근
 
-Claude Desktop에서 설정에 접근하는 방법:
-
-1. **설정 열기**: `⌘ Command` + `,` (macOS) 또는 메뉴 바에서 `Claude Desktop > Settings`
-2. **Cowork 탭 선택**: 좌측 패널에서 `Cowork` 탭 클릭
-3. **설정 카테고리**:
-   - **Global instructions**: 모든 세션에 적용되는 지시어
-   - **Skills**: 스킬 마켓플레이스 및 내 스킬 관리
-   - **Connectors**: MCP 서버 및 외부 서비스 연결
-   - **Permissions**: 파일/폴더 접근 권한 관리
+macOS에서는 `⌘ Command` + `,`, Windows에서는 메뉴 바의 `Claude Desktop > Settings`를 선택하면 설정이 열립니다. 좌측 패널에서 `Cowork` 탭을 클릭하면 Global instructions(전역 지시어), Skills(스킬), Connectors(커넥터), Permissions(권한) 네 카테고리가 나타납니다.
 
 ## 전역 지시어 (Global Instructions)
 
-전역 지시어는 **모든 Cowork 세션의 시작점**에서 Claude가 읽는 영구 규칙입니다.
+전역 지시어는 **모든 Cowork 세션의 시작점**에서 Claude가 읽는 영구 규칙입니다. 매번 "한국어로 답해줘" 또는 "파일 삭제 전 확인해줘"를 입력할 필요 없이, 한 번 저장해두면 이후 모든 세션에 자동으로 적용됩니다.
 
 ### 설정 방법
 
@@ -83,14 +75,11 @@ Claude Desktop에서 설정에 접근하는 방법:
 
 ## 스킬 (Skills)
 
-스킬은 **재사용 가능한 프롬프트 템플릿**입니다. `/`로 시작하는 슬래시 명령으로 호출합니다.
+스킬은 **재사용 가능한 프롬프트 템플릿**입니다. "블로그 글 써줘"처럼 자연어로 요청하면 Cowork가 적합한 스킬을 자동 선택하고, 명시적으로 부르고 싶을 때는 `/`로 시작하는 슬래시 명령을 사용합니다.
 
 ### 스킬 마켓플레이스
 
-1. Settings > Cowork > Skills
-2. **Marketplace** 탭에서 스킬 브라우징
-3. 원하는 스킬의 **Install** 클릭
-4. 설치된 스킬은 내 스킬 탭에서 확인
+Settings > Cowork > Skills의 **Marketplace** 탭에서 스킬을 찾아 **Install** 을 클릭하면 설치됩니다. 설치된 스킬은 내 스킬 탭에서 확인할 수 있습니다.
 
 ### 스킬 사용
 
@@ -100,9 +89,7 @@ Claude Desktop에서 설정에 접근하는 방법:
 > /refactor
 {{< /terminal >}}
 
-- `/blog` — 블로그 글 작성 스킬
-- `/summarize` — 문서 요약 스킬
-- `/refactor` — 코드 리팩토링 스킬
+`/blog`는 블로그 글 작성, `/summarize`는 문서 요약, `/refactor`는 코드 리팩토링 스킬입니다.
 
 ### 인기 스킬 카테고리
 
@@ -152,7 +139,7 @@ headers:
 
 ## 권한 관리 (Permissions)
 
-Cowork가 파일/폴더에 접근하기 **이전에** 사용자 승인이 필요합니다.
+Cowork가 파일/폴더에 접근하기 **이전에** 사용자 승인이 필요합니다. 권한 모드는 세 가지입니다. **Ask**는 매번 확인하므로 가장 안전하고, **Allow**는 묻지 않고 허용하며, **Deny**는 묻지 않고 거부합니다.
 
 ### 권한 카테고리
 
@@ -164,12 +151,6 @@ Settings > Cowork에서 관리:
 | **File Access** | 파일 읽기/쓰기 | Ask |
 | **Network** | 외부 API 호출 | Ask |
 | **Agent** | 서브에이전트 호출 | Allow |
-
-### 권한 모드
-
-- **Ask**: 매번 묻기 (가장 안전)
-- **Allow**: 묻지 않고 허용
-- **Deny**: 묻지 않고 거부
 
 ### 프로젝트별 권한
 
@@ -197,20 +178,11 @@ Settings > Cowork에서 관리:
 
 ### 모델 선택
 
-1. Settings > Models
-2. Cowork용 기본 모델 선택
-3. 작업 유형별 모델 설정:
-   - **Coding**: Claude Sonnet 4.6 (권장)
-   - **Writing**: Claude Opus 4.7 (권장)
-   - **Analysis**: Claude Haiku 4.5 (빠른 응답)
+작업 유형에 따라 모델을 다르게 쓰면 속도와 품질을 균형 있게 맞출 수 있습니다. Settings > Models에서 Cowork 기본 모델을 선택하는데, 코딩 작업에는 Claude Sonnet 4.6, 문서 작성에는 Claude Opus 4.7, 빠른 분석에는 Claude Haiku 4.5가 권장됩니다.
 
 ### 로그 및 디버깅
 
-Settings > Advanced:
-
-- **Debug mode**: 개발자 로그 활성화
-- **Log level**: Error / Warn / Info / Debug
-- **Export logs**: 로그 파일 내보내기
+Settings > Advanced에서 **Debug mode**로 개발자 로그를 켜거나, **Log level**(Error / Warn / Info / Debug)을 조정하고, **Export logs**로 로그 파일을 내보낼 수 있습니다.
 
 ## 설정 확인하기
 

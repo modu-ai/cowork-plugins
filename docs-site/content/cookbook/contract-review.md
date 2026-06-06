@@ -31,7 +31,7 @@ flowchart TD
 
 ## 대상 독자
 
-계약서·NDA 1차 리뷰가 자주 필요한 사업개발·법무 담당자, 스타트업 대표.
+상대측 계약서가 오면 어디서부터 봐야 할지 막막한 순간이 있습니다. 이 레시피는 계약서·NDA 1차 리뷰가 자주 필요한 사업개발·법무 담당자와 스타트업 대표를 위한 것입니다.
 
 ## 사전 준비
 
@@ -45,7 +45,7 @@ flowchart TD
 contract-review → legal-risk → docx-generator → ai-slop-reviewer
 ```
 
-(NDA 빠른 검토만 필요하면: `nda-triage → docx-generator → ai-slop-reviewer`)
+일반 계약서는 위 체인 전체를 따릅니다. NDA처럼 빠른 1차 검토만 필요한 경우에는 `nda-triage → docx-generator → ai-slop-reviewer`로 축약할 수 있습니다.
 
 ## 사용 방식 — 한 줄 요청
 
@@ -114,8 +114,7 @@ flowchart TD
 
 ## 응용 변형
 
-- **대량 표준계약서 심사** — 같은 포맷 계약서가 월 수십 건이라면 슬래시 명령으로 묶어 `/contract-review` 하나로 실행합니다.
-- **이력 관리** — 수정본마다 `xlsx-creator`로 차수별 변경점 표를 누적합니다.
+같은 포맷의 표준계약서가 월 수십 건 들어온다면 슬래시 명령으로 묶어 `/contract-review` 하나로 일괄 실행할 수 있습니다(**대량 표준계약서 심사**). 협상이 진행되는 동안 수정본이 여러 차례 오간다면 `xlsx-creator`로 차수별 변경점 표를 누적 관리하세요(**이력 관리**).
 
 ---
 

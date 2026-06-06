@@ -4,7 +4,7 @@ weight: 30
 description: "modu-ai/cowork-plugins 마켓플레이스 등록부터 첫 스킬 체인 실행까지 약 10분 완성 가이드"
 geekdocBreadcrumb: true
 ---
-`modu-ai/cowork-plugins` 마켓플레이스를 Claude Cowork에 등록하고 첫 스킬 체인을 실행하기까지의 전체 흐름을 정리한 페이지입니다. 처음부터 끝까지 약 **10분** 소요됩니다.
+마켓플레이스를 등록하고, 필요한 플러그인을 켜고, 자연어로 첫 요청을 던지기까지 — 전체 흐름을 처음부터 끝까지 약 **10분**으로 압축한 가이드입니다.
 
 ## 사전 체크
 
@@ -49,14 +49,7 @@ flowchart TD
 
 3. **도메인 플러그인 선택**
 
-   이번에 진행할 작업에 맞춰 플러그인을 추가합니다. 예시는 다음과 같습니다.
-
-   - 사업계획서 → `moai-business`, `moai-office`
-   - 블로그 발행 → `moai-content`, `moai-media`
-   - 계약서 검토 → `moai-legal`, `moai-office`
-   - 이미지 생성 → `moai-media` (+ `GEMINI_API_KEY` 필요)
-
-   21개 모두를 한 번에 설치할 필요는 없습니다.
+   지금 하려는 작업에 맞는 플러그인만 추가하면 됩니다. 예를 들어 사업계획서를 쓴다면 `moai-business`와 `moai-office`를, 블로그를 발행한다면 `moai-content`와 `moai-media`를 선택하세요. 계약서 검토는 `moai-legal`·`moai-office`, 이미지 생성은 `moai-media`(+ `GEMINI_API_KEY` 필요)로 시작합니다. 21개를 한 번에 설치할 필요는 없습니다.
 
 4. **프로젝트 생성 및 `/project init`**
 
@@ -114,11 +107,11 @@ flowchart TD
    13. **형식 지정** — 산출물 형식을 세부 지정합니다
    14. **완료 확인** — 모든 인터뷰 항목 입력 후 완료를 확인합니다
 
-   `moai-core:project` 스킬이 실행되어 **7단계 흐름**(Interview → Detect → Chain → Confirm → Generate → APIKey → First Run)을 진행합니다. 자세한 내용은 [moai-core 상세](../../plugins/moai-core/)에서 확인할 수 있습니다. 약 3-5분 안에 프로젝트용 `CLAUDE.md`가 루트에 생성됩니다.
+   `moai-core:project` 스킬이 실행되며 **7단계 흐름**(Interview → Detect → Chain → Confirm → Generate → APIKey → First Run)이 진행됩니다. 약 3-5분이면 프로젝트 루트에 `CLAUDE.md`가 생성됩니다. 자세한 내용은 [moai-core 상세](../../plugins/moai-core/)에서 확인할 수 있습니다.
 
 5. **첫 요청**
 
-   이제 자연어로 요청하면 `moai-core`의 라우터가 적합한 스킬을 자동으로 호출합니다. **본 문서의 모든 사용자 입력은 `> ` prefix와 함께 표기**합니다(실제 입력 시 `>` 제외 — [표기 규약](../../cowork/skills/#스킬-호출-방식)).
+   이제 자연어로 요청하면 `moai-core`의 라우터가 적합한 스킬을 자동으로 호출합니다. **본 문서의 모든 사용자 입력은 `> ` prefix와 함께 표기**하지만, 실제 입력 시에는 `>` 없이 본문만 입력하면 됩니다([표기 규약](../../cowork/skills/#스킬-호출-방식)).
 
    {{< terminal title="claude — cowork" >}}
 > "우리 SaaS의 Series A용 IR 덱 초안 만들어줘. 타깃 고객은 한국 중소제조업체야."
@@ -128,11 +121,11 @@ flowchart TD
 
 6. **산출물 확인**
 
-   PPTX 파일이 작업 폴더에 저장되고, 대화창에 **진단 → 수정 → 주요 변경사항** 3블록의 AI 슬롭 검수 리포트가 함께 표시됩니다.
+   PPTX 파일이 작업 폴더에 저장되고, 대화창에 **진단 → 수정 → 주요 변경사항** 3블록으로 구성된 AI 슬롭 검수 리포트가 함께 표시됩니다.
 
 ## API 키·커넥터 등록 (선택)
 
-일부 플러그인은 외부 서비스 키가 필요합니다.
+일부 플러그인은 외부 서비스 연동을 위해 별도의 API 키가 필요합니다.
 
 | 플러그인 | 필요한 키·커넥터 |
 |---|---|
@@ -141,13 +134,11 @@ flowchart TD
 | `moai-data` | 공공데이터포털·KOSIS API 키 |
 | `moai-content:blog` (WordPress 자동 업로드) | WordPress MCP |
 
-키는 프로젝트 루트의 `.moai/credentials.env`에 저장됩니다. 절대 외부 저장소에 커밋하지 마세요.
+키는 프로젝트 루트의 `.moai/credentials.env`에 저장합니다. 절대 외부 저장소에 커밋하지 마세요.
 
 ## 잘 안 될 때
 
-- **스킬이 자동으로 호출되지 않을 때**: `moai-core`가 설치돼 있는지, `/project init`이 실행됐는지 확인합니다.
-- **Word·PPT 파일이 깨질 때**: `moai-office`가 설치돼 있는지, Python 의존성(`python-docx`, `python-hwpx` 등)이 갖춰졌는지 확인합니다.
-- **AI 슬롭 검수가 실행되지 않을 때**: 요청에 "빠르게"라는 표현이 포함되면 검수가 스킵될 수 있습니다. "검수까지 돌려줘"라고 명시하세요.
+스킬이 자동으로 호출되지 않는다면 `moai-core`가 설치돼 있는지, `/project init`이 실행됐는지 먼저 확인하세요. Word·PPT 파일이 깨진다면 `moai-office` 설치 여부와 Python 의존성(`python-docx`, `python-hwpx` 등)을 점검합니다. AI 슬롭 검수가 실행되지 않는다면 요청에 "빠르게"라는 표현이 들어가 검수가 스킵된 것일 수 있습니다. "검수까지 돌려줘"라고 명시하면 해결됩니다.
 
 ## 주요 스킬 카탈로그 (129개)
 

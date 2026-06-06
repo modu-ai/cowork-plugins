@@ -5,7 +5,7 @@ description: "Claude Cowork 공식 자료의 한국어 친화적 가이드. 설�
 geekdocBreadcrumb: true
 geekdocCollapseSection: false
 ---
-Claude Cowork를 한국어 사용자가 빠르게 익히고 안전하게 사용할 수 있도록 정리한 가이드입니다.
+이 가이드는 Claude Cowork를 처음 접하는 한국어 사용자를 위해 설치부터 팀 운영까지의 과정을 단계별로 담았습니다. 처음부터 순서대로 따라가도 되고, 이미 특정 단계를 마쳤다면 해당 페이지로 바로 건너뛰어도 됩니다.
 
 ## 학습 경로
 
@@ -17,7 +17,7 @@ Claude Cowork를 한국어 사용자가 빠르게 익히고 안전하게 사용�
 | <span style="white-space:nowrap">4. 확장</span> | [커넥터와 MCP](connectors-mcp/), [예약 작업과 디스패치](schedule/), [컴퓨터 사용](computer-use/) ⚠ | 외부 시스템 연동 + 자동·원격 트리거 (컴퓨터 사용 전 [안전하게 사용하기](safety/) 숙지 필수) |
 | <span style="white-space:nowrap">5. 운영</span> | [자주 묻는 질문](faq/), [트러블슈팅](troubleshooting/), [제약과 한도](constraints/), [Team·Enterprise 관리](enterprise/) | 팀 도입 의사결정 |
 
-각 페이지 하단의 **Sources** 섹션은 원문 공식 문서로 연결됩니다. 본 사이트는 공식 문서의 대체가 아닌 **한국어 진입점**입니다.
+각 페이지 하단의 **Sources** 섹션은 원문 공식 문서로 연결됩니다. 이 사이트는 공식 문서를 대체하는 것이 아니라, 한국어 사용자를 위한 진입점 역할을 합니다.
 
 ```mermaid
 flowchart TD

@@ -8,7 +8,7 @@ geekdocCollapseSection: false
 
 # `cowork-plugins` 카탈로그
 
-[`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins)는 한국 업무 환경에 맞춰 설계된 **23개 플러그인 · 152개 스킬**의 커뮤니티 마켓플레이스입니다. 사업계획·IR·마케팅·법무·세무·HR·카드뉴스·PPT·이미지 프롬프트 빌더·이커머스 풀스택·메타 광고 보고서 분석·Meta 광고 운영·NotebookLM 슬라이드·한국 출판사 제출 원고·**Claude Design 보조 풀스택**까지 도메인별로 묶여 있습니다.
+사업계획서를 쓸 때와 이커머스 상세페이지를 만들 때, 필요한 맥락은 완전히 다릅니다. 그 도메인별 맥락을 미리 담아 둔 것이 [`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins)입니다. 사업계획·IR·마케팅·법무·세무·HR·카드뉴스·PPT·이미지 프롬프트 빌더·이커머스 풀스택·Meta 광고 운영·NotebookLM 슬라이드·한국 출판사 제출 원고·**Claude Design 보조 풀스택**까지 **23개 플러그인 · 152개 스킬**로 구성된 커뮤니티 마켓플레이스로, 필요한 도메인만 골라 설치하면 자연어 한 줄로 전문 체인이 동작합니다.
 
 ```mermaid
 flowchart TD
@@ -81,9 +81,7 @@ flowchart TD
 
 ## 전제 조건
 
-- Claude Desktop 앱 + Cowork 모드 진입 완료 → [Cowork 설치](../../cowork/install/)
-- 마켓플레이스 설치 절차는 [빠른 시작](./quick-start/) 참고
-- **`moai-core`는 가장 먼저 설치**해야 합니다 — `/project init` 마법사와 `ai-slop-reviewer`가 여기에 들어 있습니다
+플러그인을 사용하려면 Claude Desktop 앱과 Cowork 모드 진입이 먼저 완료되어야 합니다([Cowork 설치](../../cowork/install/) 참고). 설치 절차 전체는 [빠른 시작](./quick-start/)에서 확인할 수 있으며, **`moai-core`를 가장 먼저 설치**하는 것이 필수입니다. `/project init` 마법사와 모든 텍스트 체인의 마지막 단계를 담당하는 `ai-slop-reviewer`가 여기에 포함되어 있어, 이것 없이는 다른 플러그인이 제대로 동작하지 않습니다.
 
 ## 도메인별 플러그인
 
@@ -95,13 +93,13 @@ flowchart TD
 
 - [`moai-content`](./moai-content/) — 블로그·카드뉴스·랜딩·뉴스레터·상세페이지·SNS 콘텐츠 + 한국어 AI 티 정밀 윤문 + HTML 보고서
 - [`moai-office`](./moai-office/) — PPTX·DOCX·XLSX·HWPX·PDF 문서 자동 생성
-- [`moai-media`](./moai-media/) — 이미지(나노바나나·Ideogram)·영상(Kling·Veo·Seedance)·음성(ElevenLabs) + Day 3 광고 풀세트 + **v2.9 프롬프트 빌더 3종**
+- [`moai-media`](./moai-media/) — 이미지(나노바나나·Ideogram)·영상(Kling·Veo·Seedance)·음성(ElevenLabs) + Day 3 광고 풀세트 + v2.9 프롬프트 빌더 3종
 - [`moai-book`](./moai-book/) **NEW v2.10** — 한국 출판사 제출용 원고 풀스택 8 스킬(컨셉서·페르소나·목차·저자 약력·제안서·출판사 매칭·본문·퇴고)
 
 ### 경영·전략·제품·BI
 
 - [`moai-business`](./moai-business/) — 사업계획서·IR 덱·시장조사·일간 브리핑·상권분석·정부지원사업
-- [`moai-marketing`](./moai-marketing/) — 브랜드 아이덴티티·SEO·SNS 캠페인·퍼포먼스 리포트 + **메타 광고 보고서 분석**
+- [`moai-marketing`](./moai-marketing/) — 브랜드 아이덴티티·SEO·SNS 캠페인·퍼포먼스 리포트 + 메타 광고 보고서 분석
 - [`moai-product`](./moai-product/) — PRD·기능 명세·로드맵·UX 리서치
 - [`moai-bi`](./moai-bi/) — 경영진·이사회용 1페이지 임원 요약(K-IFRS·DART·KOSIS 친화)
 
@@ -136,7 +134,7 @@ flowchart TD
 
 ## 한 눈에 보는 스킬 수 (v2.15.0)
 
-"대표 스킬 (일부)"는 각 플러그인에서 가장 자주 호출되는 스킬을 발췌한 것입니다. 전체 스킬 목록은 플러그인 이름을 클릭해 상세 페이지에서 확인하세요.
+아래 표의 "대표 스킬 (일부)"는 각 플러그인에서 가장 자주 호출되는 스킬만 추린 것입니다. 전체 스킬 목록은 플러그인 이름을 클릭해 상세 페이지에서 확인하세요.
 
 | 플러그인 | 스킬 수 | 대표 스킬 (일부) |
 |---|---|---|

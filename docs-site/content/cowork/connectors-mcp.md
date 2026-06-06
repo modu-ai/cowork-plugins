@@ -39,7 +39,7 @@ flowchart TB
 
 ## 내장 커넥터
 
-Cowork 설정에서 "커넥터" 항목을 열면 Google Drive, Gmail, Google Calendar, Slack, GitHub 등 자주 쓰이는 서비스를 한 번에 연결할 수 있습니다.
+Cowork 설정에서 "커넥터" 항목을 열면 Google Drive, Gmail, Google Calendar, Slack, GitHub 등 자주 쓰이는 서비스를 OAuth 한 번으로 바로 연결할 수 있습니다.
 
 ### 2026-02 신규 12종 커넥터 (영업·분석·법무·마케팅)
 
@@ -64,7 +64,7 @@ Cowork 설정에서 "커넥터" 항목을 열면 Google Drive, Gmail, Google Cal
 - "Gmail 받은편지함의 고객 요청 3건을 카드로 정리해줘"
 - "Slack #release 채널의 최근 공지를 주간 보고에 포함해줘"
 
-커넥터는 각자 승인된 범위(scope) 내에서만 작동합니다.
+각 커넥터는 사용자가 승인한 범위(scope) 내에서만 작동합니다.
 
 ![커넥터 권한 설정 화면](/screenshots/getting-started/quick-start-project-5.png)
 
@@ -109,9 +109,7 @@ Meta는 2026-04-29 **Ads AI Connectors**(Meta 광고 AI 커넥터)를 오픈 베
 
 ## 보안 체크
 
-- 처음 보는 MCP URL은 사용자가 책임지고 검증해야 합니다.
-- 조직 플랜에서는 관리자 승인 목록만 사용 가능하게 정책을 걸 수 있습니다.
-- 민감 데이터 접근 범위는 최소 권한으로 맞춥니다.
+처음 보는 MCP URL은 사용자가 직접 책임지고 신뢰 출처인지 검증해야 합니다. 조직 플랜에서는 관리자가 승인한 목록만 사용 가능하게 정책을 걸 수 있으며, 민감 데이터에 접근하는 커넥터는 항상 최소 권한 원칙으로 범위를 좁혀두는 것이 안전합니다.
 
 ## 다음 단계
 

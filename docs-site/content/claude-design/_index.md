@@ -95,20 +95,11 @@ sequenceDiagram
 
 ## Cowork와의 관계
 
-Claude Design은 별개의 Anthropic Labs 제품이지만 같은 Claude 계정·요금제를 공유합니다. 일반 동선:
-
-```
-아이디어  →  Claude Design (claude.ai/design)
-시안     →  Claude Code 핸드오프 번들
-검토·UX 카피·접근성  →  Cowork 마켓의 "Design 플러그인"
-반복 자동화·문서 생성  →  Cowork 본체 + MoAI 플러그인
-```
-
-같은 Anthropic 계정으로 로그인된 모든 디바이스에서 결과물을 이어 받을 수 있습니다. 자세한 동선은 [내보내기와 핸드오프](export-handoff/)·[역할별 사용 사례](use-cases/) 페이지에서.
+Claude Design은 별개의 Anthropic Labs 제품이지만 같은 Claude 계정과 요금제를 공유합니다. 일반적인 동선은 아이디어를 Claude Design(claude.ai/design)에서 시안으로 만들고, Claude Code 핸드오프 번들로 개발에 넘기고, 검토·UX 카피·접근성 작업은 Cowork 마켓의 "Design 플러그인"을 활용하며, 반복 자동화나 문서 생성은 Cowork 본체와 MoAI 플러그인으로 처리하는 흐름입니다. 같은 Anthropic 계정으로 로그인된 모든 디바이스에서 결과물을 이어 받을 수 있습니다. 자세한 동선은 [내보내기와 핸드오프](export-handoff/)·[역할별 사용 사례](use-cases/) 페이지에서 확인하세요.
 
 ## 보조 플러그인 — `moai-design`
 
-이 섹션의 운영 원칙·베스트 프랙티스를 자동화한 [`moai-design`](../plugins/moai-design/) 플러그인이 v2.12.0부터 마켓플레이스에 정식 등록되어 있습니다. Cowork에서 자연어로 호출하면 AskUserQuestion으로 정보를 모은 뒤 claude.ai/design 채팅에 그대로 붙여 넣을 수 있는 산출물을 만들어 줍니다.
+이 섹션의 운영 원칙과 베스트 프랙티스를 자동화한 [`moai-design`](../plugins/moai-design/) 플러그인이 v2.12.0부터 마켓플레이스에 정식 등록되어 있습니다. Cowork에서 자연어로 호출하면 AskUserQuestion으로 필요한 정보를 모은 뒤 claude.ai/design 채팅에 그대로 붙여 넣을 수 있는 산출물을 만들어 줍니다.
 
 | 단계 | 스킬 | 결과물 |
 |---|---|---|
@@ -120,7 +111,7 @@ Claude Design은 별개의 Anthropic Labs 제품이지만 같은 Claude 계정·
 
 ## 다음 단계
 
-먼저 [시작하기](getting-started/)에서 첫 프롬프트와 입력 4종을 익히세요. 그다음 [디자인 시스템 설정](design-system/) ★ 페이지를 반드시 통과하는 것을 권장합니다. 디자인 시스템 셋업을 건너뛰면 결과 품질이 학습 데이터 평균값으로 수렴해 "AI가 만든 것 같은" 일반적 디자인이 나옵니다.
+먼저 [시작하기](getting-started/)에서 첫 프롬프트와 입력 4종을 익히세요. 그다음에는 반드시 [디자인 시스템 설정](design-system/) ★ 페이지를 통과하는 것을 강력히 권장합니다. 이 단계를 건너뛰면 결과 품질이 학습 데이터 평균값으로 수렴해 "AI가 만든 것 같은" 일반적 디자인이 나옵니다.
 
 ---
 

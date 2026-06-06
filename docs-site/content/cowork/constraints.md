@@ -79,10 +79,7 @@ flowchart TB
 
 ### 2-1. 폴더 권한
 
-- Cowork는 사용자가 **명시적으로 선택한 폴더만** 읽고 씁니다 — 전체 디스크 접근 권한을 받지 않습니다
-- macOS는 첫 실행 시 시스템 권한 다이얼로그에서 "허용"을 선택해야 함
-- 폴더 권한 회수는 시스템 환경설정 → 개인정보 보호 → 파일 및 폴더 (macOS), 파일 시스템 권한 (Windows)에서 가능
-- 권한이 거부된 폴더는 Cowork 우측 사이드바에 표시되지 않거나 비어 보입니다
+Cowork는 사용자가 **명시적으로 선택한 폴더만** 읽고 씁니다. 전체 디스크 접근 권한은 요청하지 않습니다. macOS에서는 첫 실행 시 시스템 권한 다이얼로그가 뜨는데, 여기서 "허용"을 선택해야 폴더가 사이드바에 나타납니다. 권한을 거부한 폴더는 비어 보이거나 아예 표시되지 않습니다. 폴더 권한을 회수하려면 macOS는 시스템 환경설정 → 개인정보 보호 → 파일 및 폴더, Windows는 파일 시스템 권한 설정에서 변경할 수 있습니다.
 
 ### 2-2. Windows MAX_PATH
 
@@ -124,33 +121,21 @@ Cowork는 사용자가 토큰·컨텍스트를 직접 관리하지 않도록 설
 
 ### 4-3. 활성·비활성 정책
 
-- 플러그인은 설치 후에도 프로젝트별로 **켜고 끌 수 있습니다**
-- Team·Enterprise 조직 플랜에서는 관리자가 승인 목록을 강제할 수 있어, 구성원이 임의의 마켓플레이스를 추가할 수 없을 수 있습니다 ([Manage plugins for your organization](https://support.claude.com/en/articles/13837433))
-- 신규 버전 적용은 **마켓플레이스 갱신 → 플러그인 상세 재진입**으로 반영됩니다 (커뮤니티 마켓플레이스의 경우)
+플러그인은 설치 후에도 프로젝트별로 켜고 끌 수 있습니다. Team·Enterprise 조직 플랜에서는 관리자가 승인 목록을 강제할 수 있어 구성원이 임의의 마켓플레이스를 추가하지 못할 수 있습니다([Manage plugins for your organization](https://support.claude.com/en/articles/13837433)). 커뮤니티 마켓플레이스의 신규 버전을 적용하려면 마켓플레이스를 갱신한 뒤 플러그인 상세 페이지에 재진입해야 반영됩니다.
 
 ### 4-4. 플러그인 자동 업데이트
 
-- Anthropic 공식 카탈로그: 자동 업데이트 ON
-- 서드파티(GitHub) 마켓플레이스: 사용자가 수동 갱신 (예: cowork-plugins는 신버전 후 사용자 측에서 마켓플레이스 갱신 필요)
-- 조직 정책에 의해 자동 업데이트가 제한될 수 있음
+Anthropic 공식 카탈로그의 플러그인은 자동 업데이트가 켜져 있습니다. 반면 GitHub 같은 서드파티 마켓플레이스(예: cowork-plugins)는 사용자가 직접 마켓플레이스를 갱신해야 신버전이 반영됩니다. 조직 정책에 따라 자동 업데이트가 제한될 수도 있습니다.
 
 ## 5. 커넥터와 MCP
 
 ### 5-1. 내장 커넥터
 
-Cowork 설정 > 커넥터에서 Google Drive·Gmail·Google Calendar·Slack·GitHub 등 자주 쓰이는 서비스를 OAuth로 한 번에 연결할 수 있습니다. 2026-02에는 영업·분석·법무·마케팅 영역의 12종 커넥터가 추가 공개되었습니다 (DocuSign·Apollo·Clay·Outreach·Similarweb·MSCI·LegalZoom·FactSet·WordPress·Harvey·Google Calendar/Drive 확장).
-
-- 각 커넥터는 **사용자가 승인한 scope** 내에서만 작동
-- 권한 범위는 항상 최소 권한 원칙으로 부여
-- 회수는 Cowork 설정 또는 해당 서비스의 OAuth 관리 페이지에서 가능
+Cowork 설정 > 커넥터에서 Google Drive·Gmail·Google Calendar·Slack·GitHub 등 자주 쓰이는 서비스를 OAuth로 한 번에 연결할 수 있습니다. 2026-02에는 영업·분석·법무·마케팅 영역의 12종 커넥터(DocuSign·Apollo·Clay·Outreach·Similarweb·MSCI·LegalZoom·FactSet·WordPress·Harvey·Google Calendar/Drive 확장)가 추가로 공개되었습니다. 각 커넥터는 사용자가 승인한 scope 내에서만 작동하며, 권한은 항상 최소 권한 원칙으로 부여합니다. 권한 회수는 Cowork 설정 또는 해당 서비스의 OAuth 관리 페이지에서 할 수 있습니다.
 
 ### 5-2. 사용자 지정 MCP 서버
 
-내장 커넥터가 없는 서비스(사내 위키·내부 API·공공데이터 포털 등)는 **MCP(Model Context Protocol) 서버**를 통해 연결합니다 ([Get started with custom connectors using remote MCP](https://support.claude.com/en/articles/11175166)).
-
-- Cowork 설정 > 커넥터 > **커스텀 커넥터 추가**에서 MCP 서버 URL과 인증 방식을 입력
-- 처음 보는 MCP URL은 **사용자가 책임지고 검증**해야 합니다 (악성 도구 노출 가능)
-- 조직 플랜에서는 관리자가 승인 목록만 사용하도록 정책 강제 가능
+내장 커넥터가 없는 서비스(사내 위키·내부 API·공공데이터 포털 등)는 **MCP(Model Context Protocol) 서버**를 통해 연결합니다([Get started with custom connectors using remote MCP](https://support.claude.com/en/articles/11175166)). Cowork 설정 > 커넥터 > **커스텀 커넥터 추가**에서 MCP 서버 URL과 인증 방식을 입력하면 됩니다. 처음 보는 MCP URL은 악성 도구에 노출될 수 있으므로 사용자가 직접 책임지고 검증해야 하며, 조직 플랜에서는 관리자가 승인 목록만 사용하도록 정책을 강제할 수 있습니다.
 
 ### 5-3. 커넥터 한도
 
@@ -175,27 +160,13 @@ Cowork 설정 > 커넥터에서 Google Drive·Gmail·Google Calendar·Slack·Git
 
 ## 8. Team·Enterprise 거버넌스
 
-Team·Enterprise 관리자는 다음을 제어할 수 있습니다 ([Manage plugins for your organization](https://support.claude.com/en/articles/13837433)).
-
-- 사용자가 추가할 수 있는 마켓플레이스 목록 제한
-- 승인된 플러그인만 활성화 허용
-- 커넥터 화이트리스트
-- 사용 이력·감사 로그 조회
-- OpenTelemetry 기반 모니터링 (Enterprise)
+Team·Enterprise 관리자는 다음 항목을 제어할 수 있습니다([Manage plugins for your organization](https://support.claude.com/en/articles/13837433)). 사용자가 추가할 수 있는 마켓플레이스 목록을 제한하고, 승인된 플러그인만 활성화되도록 허용하며, 커넥터 화이트리스트를 관리하고, 사용 이력·감사 로그를 조회할 수 있습니다. Enterprise 플랜에서는 OpenTelemetry 기반 모니터링도 제공됩니다.
 
 자세한 도입 가이드는 [Team·Enterprise 관리](../enterprise/)를 참고하세요.
 
 ## 9. 회사 환경 (프록시·방화벽)
 
-회사 네트워크에서 Cowork를 사용할 때 IT 팀에 다음 사항을 사전 협의하세요.
-
-- TLS 검사 프록시(Zscaler·CrowdStrike 등) 환경에서는 회사 루트 인증서를 OS 신뢰 저장소에 등록해야 안정 동작
-- Cowork와 마켓플레이스가 사용하는 도메인을 화이트리스트:
-  - `claude.ai`
-  - `api.anthropic.com`
-  - `support.claude.com`
-  - 사용 중인 마켓플레이스 호스팅 도메인 (커뮤니티는 보통 `github.com`)
-- VPN 강제 환경에서는 OAuth 리다이렉트가 차단되지 않도록 OAuth 도메인 허용 설정
+회사 네트워크에서 Cowork를 사용할 때는 IT 팀과 다음 사항을 미리 협의해두세요. TLS 검사 프록시(Zscaler·CrowdStrike 등) 환경에서는 회사 루트 인증서를 OS 신뢰 저장소에 등록해야 안정적으로 동작합니다. 방화벽 화이트리스트에는 `claude.ai`, `api.anthropic.com`, `support.claude.com`, 그리고 사용 중인 마켓플레이스 호스팅 도메인(커뮤니티 마켓플레이스는 보통 `github.com`)을 추가해야 합니다. VPN 강제 환경에서는 OAuth 리다이렉트가 차단되지 않도록 OAuth 도메인 허용 설정도 함께 요청하세요.
 
 ## 10. 알려진 회피·확장책
 

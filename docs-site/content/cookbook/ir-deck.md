@@ -22,7 +22,7 @@ flowchart TD
 
 ## 대상 독자
 
-Seed·Series A·B 투자 유치를 준비하는 스타트업 창업가.
+투자자 미팅 전날 PPT가 없어서 밤새 만든 경험이 있다면 이 레시피가 도움이 됩니다. Seed·Series A·B 투자 유치를 준비하는 스타트업 창업가를 위한 레시피입니다.
 
 ## 사전 준비
 
@@ -36,9 +36,7 @@ Seed·Series A·B 투자 유치를 준비하는 스타트업 창업가.
 investor-relations → pptx-designer → ai-slop-reviewer
 ```
 
-- `investor-relations` — 재무 모델·밸류에이션·스토리라인
-- `pptx-designer` — Pretendard + 명조 한국형 PPT 코드
-- `ai-slop-reviewer` — 발표용 문장 다듬기(짧고 자연스럽게)
+`investor-relations`가 재무 모델·밸류에이션·스토리라인을 정리하고, `pptx-designer`가 Pretendard + 명조 기반 한국형 PPT로 출력합니다. 마지막 `ai-slop-reviewer`가 발표 문장을 짧고 자연스럽게 다듬어 슬라이드 밀도를 맞춥니다.
 
 ## 15장 표준 구조
 
@@ -134,8 +132,7 @@ Pretendard가 시스템에 없으면 Calibri로 폴백됩니다. 배포 전 "Pre
 
 ## 응용 변형
 
-- **투자자별 맞춤** — 심사역이 특정 산업 포커스라면 2·5·7장을 해당 산업 용어로 다시 쓰세요.
-- **원페이저** — 15장 요약본을 `docx-generator`로 A4 한 장 티저로 먼저 뿌리면 미팅 약속이 잘 잡힙니다.
+심사역이 특정 산업에 집중한다면 2·5·7장을 해당 산업 용어로 다시 쓰는 것만으로 공감도가 크게 달라집니다(**투자자별 맞춤**). 미팅을 먼저 잡고 싶다면 15장 요약본을 `docx-generator`로 A4 한 장 티저로 만들어 먼저 공유하세요. 본 덱을 보여주기 전에 관심을 확인할 수 있습니다(**원페이저**).
 
 ---
 

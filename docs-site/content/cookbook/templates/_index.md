@@ -5,7 +5,7 @@ description: "재무 모델·이메일·엑셀·컴플라이언스 등 즉시 �
 geekdocBreadcrumb: true
 geekdocCollapseSection: true
 ---
-복사 → 변형 → 즉시 활용. 각 템플릿은 관련 cowork-plugins 스킬과 함께 동작하도록 설계되어 있습니다.
+처음부터 만드는 시간을 아끼고 싶다면 여기서 출발하세요. 각 템플릿은 관련 cowork-plugins 스킬과 함께 동작하도록 설계되어 있어, 파라미터만 바꾸면 즉시 실무에 적용할 수 있습니다.
 
 ```mermaid
 flowchart TD

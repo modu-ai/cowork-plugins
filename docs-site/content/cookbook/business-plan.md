@@ -24,7 +24,7 @@ flowchart TD
 
 ## 대상 독자
 
-예비창업패키지·TIPS 등 정부 지원사업에 제출할 사업계획서를 준비하는 창업가·중소기업 기획자.
+사업계획서를 처음 쓰거나 반복 지원으로 지쳐 있는 창업가·중소기업 기획자를 위한 레시피입니다. 예비창업패키지·TIPS 등 정부 지원사업 제출을 목표로 합니다.
 
 ## 사전 준비
 
@@ -38,10 +38,7 @@ flowchart TD
 strategy-planner → market-analyst → docx-generator → ai-slop-reviewer
 ```
 
-- `strategy-planner` — BMC·SWOT·OKR로 뼈대 작성
-- `market-analyst` — TAM/SAM/SOM·경쟁사·가격 전략
-- `docx-generator` — 심사 양식에 맞는 DOCX 변환
-- `ai-slop-reviewer` — 기계적 문장 제거
+`strategy-planner`가 BMC·SWOT·OKR로 뼈대를 잡고, `market-analyst`가 TAM/SAM/SOM·경쟁사·가격 전략까지 채웁니다. `docx-generator`가 심사 양식에 맞는 DOCX로 변환하고, 마지막으로 `ai-slop-reviewer`가 기계적 문장을 걷어냅니다.
 
 ## 단계별 실행
 
@@ -116,8 +113,7 @@ docx-generator 스킬로 실제 파일 만들어줘.
 
 ## 응용 변형
 
-- **정부 지원사업 매칭** — `kr-grant-writer` 스킬로 내 아이템에 맞는 공고를 먼저 찾고 그 양식에 맞춰 진행합니다.
-- **피칭 덱 변환** — 완성된 DOCX를 `investor-relations + pptx-designer`로 IR 덱으로 변환 → [IR 덱 제작](../ir-deck/) 참고.
+어떤 공고에 지원할지 아직 정하지 못했다면 `kr-grant-writer` 스킬로 내 아이템에 맞는 공고를 먼저 찾고 그 양식에 맞춰 진행하세요(**정부 지원사업 매칭**). 완성된 DOCX를 투자자용 PPT로 이어가고 싶다면 `investor-relations + pptx-designer`로 IR 덱으로 변환할 수 있습니다 → [IR 덱 제작](../ir-deck/) 참고.
 
 ---
 
