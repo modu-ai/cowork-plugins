@@ -209,7 +209,7 @@ flowchart TD
 ### moai-media (미디어)
 - **image-gen**: 이미지 생성
 - **video-gen**: 비디오 생성
-- **nano-banana**: 이미지 생성 (Nano Banana Pro)
+- **higgsfield-image**: 이미지 생성 (Nano Banana Pro)
 
 ### moai-product (제품)
 - **ux-designer**: UX 디자인

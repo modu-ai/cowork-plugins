@@ -266,7 +266,7 @@ moai-core:ai-slop-reviewer
 - Gemini 앱 (모바일·웹)
 - Google AI Studio
 - Vertex AI
-- (MoAI 사용자) `moai-media:nano-banana` 스킬에 그대로 전달
+- (MoAI 사용자) `moai-media:higgsfield-image` 스킬에 그대로 전달
 
 ## 안티패턴 (하지 말 것)
 
@@ -302,7 +302,7 @@ moai-core:ai-slop-reviewer
 - Nano Banana(Gemini Image) 프롬프트 작성 가이드 — Google DeepMind  
   <https://deepmind.google/models/gemini-image/prompt-guide/>
 - Nano Banana Pro / Gemini 3 Pro Image 발표 — Google Blog  
-  <https://blog.google/innovation-and-ai/products/nano-banana-pro/>
+  <https://blog.google/innovation-and-ai/products/higgsfield-image-pro/>
 - Nano Banana 이미지 생성 — Google AI for Developers  
   <https://ai.google.dev/gemini-api/docs/image-generation>
 

@@ -296,7 +296,7 @@ flowchart TD
 - **DART MCP** (금융감독원 전자공시) — 상장사 공시·재무 데이터 자동 조회
 - `moai-office` — 최종 DOCX·PPTX·XLSX·HWPX 저장
 - `moai-data` — 공공데이터·KOSIS 통계 결합
-- `moai-media:nano-banana` — 사업계획서·IR 덱용 다이어그램·썸네일 생성
+- `moai-media:higgsfield-image` — 사업계획서·IR 덱용 다이어그램·썸네일 생성
 
 ## 대표 체인
 

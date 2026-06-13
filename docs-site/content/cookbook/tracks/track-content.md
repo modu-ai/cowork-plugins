@@ -42,7 +42,7 @@ flowchart TD
 | # | 한 줄 요청 | 자동 체인 |
 |---|---|---|
 | 1 | "비건 카페 오픈 블로그 시리즈 5편 써줘" | blog × 5 → ai-slop → korean-spell-check → humanize-korean |
-| 2 | "프리랜서 세금 카드뉴스 8장 만들어줘" | card-news → nano-banana → ai-slop |
+| 2 | "프리랜서 세금 카드뉴스 8장 만들어줘" | card-news → higgsfield-image → ai-slop |
 | 3 | "AI 영어 회화 앱 랜딩 페이지 만들어줘" | landing-page (shadcn/ui 인터뷰) → ai-slop |
 | 4 | "월간 뉴스레터 발행해줘. 구독자 500명" | newsletter → ai-slop → korean-spell-check → 이메일 발송 |
 
@@ -89,11 +89,11 @@ flowchart TD
 1. **슬라이드 수**: 6-10장
 2. **톤**: 친근 / 격식 / 유머
 3. **이미지 비율**: 1:1 / 4:5 / 9:16 (스토리)
-4. **AI 이미지 생성**: 예/아니오 (`nano-banana` 호출)
+4. **AI 이미지 생성**: 예/아니오 (`higgsfield-image` 호출)
 
 ### 자동 체인
 
-`card-news` → `nano-banana` (한국어 타이포 SOTA) → `ai-slop-reviewer` → `media-ai-disclosure` (광고 표기 자동, 필요 시)
+`card-news` → `higgsfield-image` (Nano Banana 계열 — 한국어 타이포) → `ai-slop-reviewer`
 
 ---
 
@@ -156,7 +156,7 @@ flowchart TD
 | 분량 | 1500/2000/3000자 |
 | 톤 | 친근·격식·유머·전문 |
 | 키워드 | 자동 추출 + 사용자 추가 |
-| 이미지 자동 생성 | 예/아니오 (nano-banana 호출) |
+| 이미지 자동 생성 | 예/아니오 (higgsfield-image 호출) |
 | 발행 자동화 | WordPress MCP / Post-Bridge MCP / 수동 |
 
 ---

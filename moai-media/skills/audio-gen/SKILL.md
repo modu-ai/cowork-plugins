@@ -191,8 +191,8 @@ AI 기반 오디오 생성을 위한 통합 스킬입니다. ElevenLabs의 고�
 
 ## 관련 스킬
 
-- **video-gen**: TTS 오디오를 AI 비디오와 결합 (speech-video)
-- **image-gen**: 오디오 기반 이미지 생성 (앨범 아트, 썸네일)
+- **higgsfield-video**: TTS 오디오를 AI 비디오와 결합
+- **higgsfield-image**: 앨범 아트·썸네일 등 오디오 콘텐츠용 이미지 생성
 - **moai-content:blog**: 블로그 글 → 나레이션 스크립트 변환
 - **moai-content:copywriting**: 광고 카피 → 광고 보이스 생성
 

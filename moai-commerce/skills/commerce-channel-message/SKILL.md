@@ -4,8 +4,7 @@ description: |
   [책임 경계] NCM 프레임워크(Need→Channel→Moment→Message→CTA) 기반 검색·광고·CRM 채널별 메시지 15종 자동 생성. 페어 스킬 moai-domain-copywriting과 명확히 구분 — 본 스킬은 채널 분기 메시지(채널별 다른 표현), 페어는 단일 목적 광고 카피.
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   "채널별 메시지 만들어줘", "검색광고 카피 15종", "CRM 메시지 뽑아줘", "채널 메시지 분기", "스마트스토어 배너 카피", "쿠팡 광고 문구", "카카오 알림톡 문구", "SNS 광고 카피 5종", "NCM 프레임워크 적용"
-  V6 ⑤ 채널별 메시지 도구 = MCP keyword_seasonal_calendar · ad_keyword_performance 2종 wrapper. (SPEC-COMMERCE-V6-003 §5.3 인용)
-  v2.4.0 강화: 6 심리 방아쇠(신뢰/손실회피/사회적증거/인지쉬움/정체성/앵커링) + 채널별 심리 상태 매트릭스(메타·구글·네이버·카카오·쿠팡) + 인지 편향 9종 적용 가이드 (광고 심리학 통합).
+  6 심리 방아쇠(신뢰/손실회피/사회적증거/인지쉬움/정체성/앵커링) + 채널별 심리 상태 매트릭스(메타·구글·네이버·카카오·쿠팡) + 인지 편향 9종 적용 가이드 (광고 심리학 통합).
   ai-slop-reviewer 자동 체이닝 (텍스트 메시지 15종 산출물).
 user-invocable: true
 version: 2.15.0
@@ -17,13 +16,11 @@ version: 2.15.0
 
 JTBD와 페르소나를 기반으로 NCM 프레임워크(Need → Channel → Moment → Message → CTA)에 따라 검색·광고·CRM 3개 채널 × 5종 = 총 15종 메시지를 채널별 다른 표현으로 자동 생성하는 스킬입니다.
 
-**V6 ↔ MCP 매핑** (SPEC-COMMERCE-V6-003 §5.3):
-- `keyword_seasonal_calendar` — 계절·시즌별 키워드 캘린더 (Moment 결정)
-- `ad_keyword_performance` — 광고 키워드 성과 데이터 (CTA 최적화)
+**데이터 소스**:
+- 계절·시즌별 키워드 캘린더 (Moment 결정) — 네이버 데이터랩 등 공개 트렌드 데이터 또는 사용자가 첨부한 시즌 키워드 자료
+- 광고 키워드 성과 데이터 (CTA 최적화) — 광고 플랫폼(네이버 검색광고·쿠팡 애즈 등)에서 내보낸 성과 리포트 파일
 
-**MCP 백엔드**: 본 스킬은 MoAI-Commerce MCP Phase 1 (SPEC-COMMERCE-MCP-002)의 위 2종 도구를 호출합니다. MCP 미출시 시점에는 강사 본인 워크스페이스 사전 녹화 영상 5분으로 시연 대체 (PDF §4 운영 노트 §S4 인용).
-
-**Day 2 시연 시점**: 6교시 16:10–16:55
+**데이터 연동**: 연결된 커머스 MCP 커넥터가 있으면 직접 조회하고, 없으면 사용자가 첨부한 내보내기 파일·스크린샷 또는 Claude의 자체 분석으로 동일한 산출물을 생성합니다.
 
 ## 트리거 키워드
 
@@ -33,13 +30,13 @@ JTBD와 페르소나를 기반으로 NCM 프레임워크(Need → Channel → Mo
 
 | 단계 | 설명 | 입력 소스 |
 |------|------|----------|
-| **N** — Need | 고객의 핵심 니즈 정의 | ⑥ JTBD 9개 |
+| **N** — Need | 고객의 핵심 니즈 정의 | JTBD 9개 (commerce-jtbd-persona) |
 | **C** — Channel | 메시지 전달 채널 선택 | 우선 채널 입력 |
-| **M** — Moment | 최적 접촉 시점 | MCP keyword_seasonal_calendar |
+| **M** — Moment | 최적 접촉 시점 | 시즌 키워드 캘린더 (데이터랩·첨부 자료) |
 | **M** — Message | 채널별 맞춤 메시지 작성 | JTBD + 페르소나 |
-| **CTA** | 채널별 행동 유도 문구 | MCP ad_keyword_performance |
+| **CTA** | 채널별 행동 유도 문구 | 광고 키워드 성과 리포트 |
 
-**핵심 제약 (REQ-V6-013 HARD)**: 같은 니즈라도 채널별 반드시 다른 표현으로 분기.
+**핵심 제약 (HARD)**: 같은 니즈라도 채널별 반드시 다른 표현으로 분기.
 
 ---
 
@@ -49,26 +46,26 @@ JTBD와 페르소나를 기반으로 NCM 프레임워크(Need → Channel → Mo
 
 | 항목 | 필수 여부 | 예시 |
 |------|----------|------|
-| ⑥ JTBD 결과 | 필수 | commerce-jtbd-persona --mode jtbd 산출물 |
-| ⑦ 페르소나 | 권장 | commerce-jtbd-persona --mode persona 산출물 |
+| JTBD 결과 | 필수 | commerce-jtbd-persona --mode jtbd 산출물 |
+| 페르소나 | 권장 | commerce-jtbd-persona --mode persona 산출물 |
 | 우선 채널 | 필수 | 검색광고, 배너광고, CRM (최소 1개 선택) |
 | 시즌/시기 | 선택 | "봄 시즌", "연말 프로모션" (기본값: 현재 월) |
 
-### MCP 호출 순서
+### 메시지 생성 순서
 
 ```
-1. keyword_seasonal_calendar(category, current_month)
+1. 시즌 키워드 정리 (카테고리, 현재 월 기준 — 데이터랩 조회 결과 또는 첨부된 시즌 키워드 자료)
    → 현재 시즌 핵심 키워드 + 접촉 최적 시점
 
-2. ad_keyword_performance(product_keywords[], channel)
+2. 광고 키워드 성과 검토 (광고 플랫폼 내보내기 리포트 첨부 시)
    → 채널별 광고 키워드 성과 → CTA 문구 최적화 힌트
 
 3. NCM 매핑:
    [N] JTBD 우선순위 1위 니즈 선정
    [C] 채널 3개 분류: 검색(네이버/쿠팡) / 광고(배너/SNS) / CRM(카카오/이메일/SMS)
-   [M] seasonal_calendar 기반 최적 시점 설정
+   [M] 시즌 키워드 캘린더 기반 최적 시점 설정
    [M] 채널별 다른 표현으로 메시지 5종씩 작성
-   [CTA] ad_keyword_performance 기반 채널별 CTA 최적화
+   [CTA] 키워드 성과 데이터 기반 채널별 CTA 최적화
 ```
 
 ### ai-slop-reviewer 자동 체이닝 (HARD)
@@ -144,12 +141,10 @@ JTBD와 페르소나를 기반으로 NCM 프레임워크(Need → Channel → Mo
 }
 ```
 
-## 합격 기준
-
-PDF §5.5 ⑩ 합격 기준:
+## 품질 체크리스트
 
 - **15종 완성**: 검색·광고·CRM 각 5종씩 총 15종
-- **채널별 다른 표현**: 같은 니즈가 채널별 다른 방식으로 분기 (REQ-V6-013)
+- **채널별 다른 표현**: 같은 니즈가 채널별 다른 방식으로 분기
 - **ai-slop-reviewer 검수 흔적**: slop_review 블록 포함
 - **CTA 포함**: 각 메시지에 채널 특성에 맞는 행동 유도 문구
 
@@ -157,8 +152,8 @@ PDF §5.5 ⑩ 합격 기준:
 
 체이닝 순서: `commerce-jtbd-persona --mode persona` → **commerce-channel-message** → `commerce-integrated-strategy`
 
-- `commerce-jtbd-persona` — ⑥⑦ JTBD+페르소나 (이전 단계, Need 정의 입력)
-- `commerce-product-naming` — ⑨ 확정 상품명 (메시지 내 상품명 활용)
+- `commerce-jtbd-persona` — JTBD+페르소나 (이전 단계, Need 정의 입력)
+- `commerce-product-naming` — 확정 상품명 (메시지 내 상품명 활용)
 - `commerce-integrated-strategy` — 채널 메시지 포함 전략 1장 종합 (다음 단계)
 - `moai-content:social-media` — SNS 콘텐츠 단독 심화 작업
 
@@ -167,7 +162,7 @@ PDF §5.5 ⑩ 합격 기준:
 - **단일 채널 광고 카피만 필요**: `moai-domain-copywriting` 사용
 - **상세페이지 카피**: `detail-page-copy` 사용
 - **이메일 뉴스레터 본문**: `moai-content:blog` 또는 `moai-content:email` 사용
-- **광고 실집행·캠페인 운영**: 광고 플랫폼 직접 관리 (본 캠프 외 영역, PDF §1.3)
+- **광고 실집행·캠페인 운영**: 광고 플랫폼에서 직접 관리
 
 ---
 

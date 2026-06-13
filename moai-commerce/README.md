@@ -40,9 +40,9 @@
 | 스킬 | 역할 |
 |------|------|
 | [detail-page-copy](./skills/detail-page-copy/SKILL.md) | 13섹션 감정여정 카피 + `--mode diagnose`: 7단계 진단 점수 / `--mode copy`: 페르소나 2세트 카피(비율 25/50/25 강제) |
-| [detail-page-image](./skills/detail-page-image/SKILL.md) | 13섹션 이미지 프롬프트 → `moai-media:nano-banana` 호출 → Pillow 1080×12720 합성 |
+| [detail-page-image](./skills/detail-page-image/SKILL.md) | 13섹션 이미지 프롬프트 → `moai-media:higgsfield-image` 호출 → Pillow 1080×12720 합성 |
 | [product-photo-brief](./skills/product-photo-brief/SKILL.md) | 상품 사진 사전 분석 + ProductDNA 추출 + 부족한 컷 식별 + 추가 촬영 브리프 |
-| [commerce-product-image-pipeline](./skills/commerce-product-image-pipeline/SKILL.md) | 상품 이미지·영상 풀스택 파이프라인 오케스트레이터. character-mgmt → image-gen(Soul) → video-gen(DOP) → media-channel-ad-packager 4단계 체인 자동 호출. 자연어 한 줄로 이미지 5-10장 + 영상 5-10초 + 채널 3개 변환 |
+| [commerce-product-image-pipeline](./skills/commerce-product-image-pipeline/SKILL.md) | 상품 이미지·영상 풀스택 파이프라인 오케스트레이터. 캐릭터 일관성(선택) → higgsfield-image(Soul) → higgsfield-video(DOP) → 채널 규격 변환(Pillow 자체 처리) 4단계 체인 자동 호출. 자연어 한 줄로 이미지 5-10장 + 영상 5-10초 + 채널 3개 변환 |
 
 ### 운영 데이터 통합 (2)
 
@@ -183,7 +183,7 @@
 
 ## 관련 플러그인
 
-- `moai-media` — AI 모델 6스킬(GPT Image 2·Kling 3·Veo 3·Seedance 라우터·캔바 매직 레이어·AI 표기)
+- `moai-media` — 이미지·영상·음성 생성 6스킬(higgsfield-image·higgsfield-video·gpt-image-2-prompt·gemini-3-image-prompt·midjourney-v8-prompt·audio-gen)
 - `moai-content` — 카드뉴스·블로그·랜딩·상세페이지(코드, shadcn/ui)
 - `moai-marketing` — `sns-content` 한국 3채널 + 글로벌 4채널, `campaign-planner`(중장기 캠페인 기획)
 - `moai-education` — `course-followup-sequence` 후속 30일 자산화

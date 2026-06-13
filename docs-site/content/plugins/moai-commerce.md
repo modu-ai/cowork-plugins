@@ -21,17 +21,17 @@ tags: ["moai-commerce"]
 - **광고·수익 구조**: 쿠팡 광고 풀세트 최적화, 마진·엔드 ROAS 자동 계산, CAC→LTV 6대 지표 설계, 광고 의존도 30%→11-15% 6개월 로드맵
 - **CRM·법규·재구매**: 정통망법 광고/정보성 메시지 자동 게이트(과태료 회피), 앱 푸시 4원칙, 재구매 골든타임 3구간
 - **D2C 풀스택**: 멀티채널 리뷰 통합 분석, VOC 5단계 우선순위, 구독 4 모델, 인플루언서 5 티어, 충성 100명 부트스트랩, 시즌 캘린더 30+ 이벤트
-- **상품 사진·이미지 파이프라인**: ProductDNA 추출, 추가 촬영 브리프, character-mgmt → image-gen → video-gen → 채널 변환 4단계 오케스트레이터
+- **상품 사진·이미지 파이프라인**: ProductDNA 추출, 추가 촬영 브리프, 캐릭터 일관성 → 이미지 생성 → 영상 생성 → 채널 규격 변환 4단계 오케스트레이터(Higgsfield MCP 기반)
 - **식약처 안전**: 의약품·식품 통합 조회 (e약은요·건강기능식품 인정현황·검사부적합·회수)
 
-이미지 생성은 `moai-media:nano-banana`(Gemini 3 Image)·`media-gpt-image2-builder`(GPT Image 2)로 위임하며, 합성은 Pillow 기반 자체 스크립트로 처리하므로 외부 패키지 설치가 필요 없습니다. 모든 텍스트 산출물은 `ai-slop-reviewer`로 자동 체이닝됩니다.
+이미지 생성은 `moai-media:higgsfield-image`(Higgsfield MCP — Soul·Nano Banana·GPT Image 계열)로 위임하고, 외부 도구에서 직접 생성할 때는 `moai-media:gpt-image-2-prompt`·`moai-media:gemini-3-image-prompt` 프롬프트 빌더를 활용합니다. 합성은 Pillow 기반 자체 스크립트로 처리하므로 외부 패키지 설치가 필요 없습니다. 모든 텍스트 산출물은 `ai-slop-reviewer`로 자동 체이닝됩니다.
 
 ## 설치
 
 {{< tabs "install-commerce" >}}
 {{< tab "마켓플레이스 (권장)" >}}
 1. `moai-core` 설치 후 `moai-commerce` 옆의 **+** 버튼을 눌러 설치합니다.
-2. 이미지 합성을 사용하려면 `moai-media`도 설치하고 `GEMINI_API_KEY`를 등록합니다 ([CONNECTORS.md](https://github.com/modu-ai/cowork-plugins/blob/main/moai-media/CONNECTORS.md)).
+2. 이미지 생성·합성을 사용하려면 `moai-media`도 설치하고 Higgsfield 커넥터를 연결합니다 ([CONNECTORS.md](https://github.com/modu-ai/cowork-plugins/blob/main/moai-media/CONNECTORS.md)).
 {{< /tab >}}
 {{< tab "수동" >}}
 [GitHub 저장소](https://github.com/modu-ai/cowork-plugins/tree/main/moai-commerce)를 클론한 뒤 `~/.claude/plugins/`에 배치합니다.
@@ -56,9 +56,9 @@ tags: ["moai-commerce"]
 | 스킬 | 역할 | 대표 출력 |
 |---|---|---|
 | `detail-page-copy` | 13섹션 감정여정 카피 + `--mode diagnose`(7단계 점수) / `--mode copy`(페르소나 2세트, 비율 25/50/25) | 섹션별 카피 + 혜택 언어 3단계 변환법 |
-| `detail-page-image` | 13섹션 이미지 프롬프트 → nano-banana 호출 → Pillow 합성 | 1080×12720 단일 PNG |
+| `detail-page-image` | 13섹션 이미지 프롬프트 → 이미지 생성(Higgsfield MCP) → Pillow 합성 | 1080×12720 단일 PNG |
 | `product-photo-brief` | ProductDNA 추출 + 부족한 컷 식별 + 추가 촬영 브리프 | 13섹션 컷 매핑 + 촬영 리스트 |
-| `commerce-product-image-pipeline` | 상품 이미지·영상 풀스택 오케스트레이터 — character-mgmt → image-gen(Soul) → video-gen(DOP) → channel-ad-packager 4단계 자동 호출 | 이미지 5축(Hero·Lifestyle·Detail·Use-case·Result) + 영상 모션 + 채널 변환 + 비용 ₩2,300-4,000/상품 |
+| `commerce-product-image-pipeline` | 상품 이미지·영상 풀스택 오케스트레이터 — 캐릭터 일관성(선택) → 이미지 생성(Soul) → 영상 생성(DOP) → 채널 규격 변환 4단계 자동 실행(Higgsfield MCP 기반) | 이미지 5축(Hero·Lifestyle·Detail·Use-case·Result) + 영상 모션 + 채널 변환 + 비용 ₩2,300-4,000/상품 |
 
 ### 운영 데이터 통합 (2)
 

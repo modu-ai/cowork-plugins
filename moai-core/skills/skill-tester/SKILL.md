@@ -90,7 +90,7 @@ skill-builder Phase 5에서 사용하는 기본 모드입니다.
 
 #### Mode 3: 체인 테스트 (스킬 조합 검증)
 
-여러 스킬이 순차적으로 연결되는 체인을 테스트합니다. CLAUDE.local.md §3-3에 정의된 모든 체인이 검증 대상입니다.
+여러 스킬이 순차적으로 연결되는 체인을 테스트합니다. 프로젝트에 정의된 모든 스킬 체인이 검증 대상입니다.
 
 ##### 3-1. Chain Definition Format
 
@@ -106,7 +106,7 @@ chain:
       input_from: ["blog_draft"]
       output_type: "markdown"
       provides: ["reviewed_draft"]
-    - skill: "moai-media:nano-banana"
+    - skill: "moai-media:higgsfield-image"
       input_from: ["reviewed_draft"]
       output_type: "image_url"
       optional: true
@@ -158,12 +158,12 @@ chain:
 - Pass criteria: 최종 출력이 선택 단계 기여 없이도 유의미함
 ```
 
-##### 3-4. Known Chains (CLAUDE.local.md §3-3 매핑)
+##### 3-4. Known Chains
 
 | Chain | Steps | Status |
 |-------|-------|--------|
 | 사업계획서(PPT) | strategy-planner → pptx-designer → ai-slop-reviewer | 검증 대상 |
-| 블로그 발행 | blog → ai-slop-reviewer → (optional) nano-banana | 검증 대상 |
+| 블로그 발행 | blog → ai-slop-reviewer → (optional) higgsfield-image | 검증 대상 |
 | 제품 랜딩 | copywriting → landing-page → ai-slop-reviewer | 검증 대상 |
 
 ##### 3-5. 회귀 통합

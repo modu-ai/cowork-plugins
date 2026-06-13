@@ -9,7 +9,7 @@ description: |
   - "Google AI Studio 이미지 프롬프트", "Vertex AI 이미지 프롬프트"
   - "/gemini-3-image-prompt" (직접 호출)
 
-  이미지 자동 생성(API 호출)은 페어 스킬 nano-banana(Gemini 직접 호출) 또는 image-gen(자동 라우팅)을 사용하세요. 본 스킬은 프롬프트 텍스트 산출 전용입니다.
+  이미지 자동 생성은 페어 스킬 higgsfield-image(Higgsfield MCP, Nano Banana Pro 포함)를 사용하세요. 본 스킬은 프롬프트 텍스트 산출 전용입니다.
 user-invocable: true
 version: 2.15.0
 ---
@@ -39,7 +39,7 @@ Gemini 3 Pro Image (Nano Banana Pro)는 Google DeepMind의 reasoning-driven 이�
 - **Thinking vs Fast 모드 안내**: 복잡 구도·텍스트는 Thinking, 빠른 탐색은 Fast (Gemini 3.1 Flash Image)
 - **카메라 하드웨어 지정**: GoPro · Fujifilm · disposable · iPhone 등 시각적 DNA를 결정하는 하드웨어 지시
 
-페어 스킬 `nano-banana`(Gemini 직접 호출 + 한글 타이포 특화) 또는 `image-gen`(자동 라우팅)이 실제 이미지를 생성하는 동안, 본 스킬은 **프롬프트 텍스트만** 산출합니다.
+페어 스킬 `higgsfield-image`(Higgsfield MCP — Nano Banana Pro 포함 11개 이미지 모델)가 실제 이미지를 생성하고, 본 스킬은 **프롬프트 텍스트만** 산출합니다.
 
 ## 트리거 키워드
 
@@ -148,8 +148,7 @@ Component 5 — [Specific Constraint/Text]
 - 모든 출력 이미지에 SynthID 워터마크 자동 삽입 (imperceptible)
 
 ### 🔗 페어 스킬 (실제 이미지 생성)
-- `nano-banana` — Gemini 3 Pro Image 직접 호출 (한글 타이포 특화)
-- `image-gen` — 자동 라우팅 (Gemini Direct 포함)
+- `higgsfield-image` — Higgsfield MCP 직접 호출 (Nano Banana Pro 포함, 실제 이미지 생성)
 - `gpt-image-2-prompt` — GPT 어조 프롬프트 빌더 (sibling)
 - `midjourney-v8-prompt` — MJ 어조 프롬프트 빌더 (sibling)
 ```
@@ -206,9 +205,7 @@ Component 5 — [Specific Constraint/Text]
 |---|---|---|
 | gpt-image-2-prompt | sibling | 동일 입력으로 GPT 6-Block 어조 프롬프트 |
 | midjourney-v8-prompt | sibling | 동일 입력으로 MJ 키워드+파라미터 프롬프트 |
-| nano-banana | after | Gemini 3 Pro Image 직접 API 호출 (실제 이미지 생성, 한글 타이포 특화) |
-| image-gen | after | 자동 라우팅 (Gemini Direct 포함) |
-| media-moodboard | before | 무드보드·레퍼런스 방향 수립 후 본 스킬로 프롬프트 작성 |
+| higgsfield-image | after | Higgsfield MCP 직접 호출로 실제 이미지 생성 (Nano Banana Pro 포함) |
 
 ## 출처
 

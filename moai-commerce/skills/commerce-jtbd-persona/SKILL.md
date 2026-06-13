@@ -4,8 +4,7 @@ description: |
   [책임 경계] 1스킬 2모드 — `--mode jtbd`: JTBD 9개 + 시장 매칭 우선순위 자동 도출 / `--mode persona`: 리뷰·Q&A 분석 기반 페르소나 3명 자동 생성. 페어 스킬 moai-domain-copywriting과 명확히 구분 — 본 스킬은 고객 분석(Why), 페어는 카피 작성(What).
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   "JTBD 분석해줘", "고객이 왜 사는지 분석", "구매 동기 9개 뽑아줘", "페르소나 만들어줘", "타겟 고객 프로필 생성", "리뷰 분석해서 페르소나", "고객 여정 분석", "구매결정요인 뽑아줘"
-  V6 ② 고객분석 도구 = MCP review_list_naver · review_list_cafe24 · qna_list_cafe24 3종 wrapper + ⑤ 시장조사 입력 연계. (SPEC-COMMERCE-V6-003 §5.3 인용)
-  v2.4.0 강화: JTBD 3분류(기능적/감성적/사회적) 예시 + 심리적 필요 4종 촉발 패턴(보상/불안/지루함/사회적 자극) + 타겟 온도 메타데이터(콜드/웜/핫/슈퍼, 광고 심리학).
+  JTBD 3분류(기능적/감성적/사회적) 예시 + 심리적 필요 4종 촉발 패턴(보상/불안/지루함/사회적 자극) + 타겟 온도 메타데이터(콜드/웜/핫/슈퍼, 광고 심리학).
   ai-slop-reviewer 자동 체이닝 (--mode persona 텍스트 산출물).
 user-invocable: true
 version: 2.15.0
@@ -15,17 +14,15 @@ version: 2.15.0
 
 ## 개요
 
-V6 ② 고객분석 도구를 감싸는 1스킬 2모드 스킬입니다. 이커머스 셀러가 고객의 구매 동기(JTBD)와 구체적인 페르소나를 데이터 기반으로 자동 생성합니다.
+리뷰·Q&A 데이터를 분석하는 1스킬 2모드 스킬입니다. 이커머스 셀러가 고객의 구매 동기(JTBD)와 구체적인 페르소나를 데이터 기반으로 자동 생성합니다.
 
-**V6 ↔ MCP 매핑** (SPEC-COMMERCE-V6-003 §5.3):
-- `review_list_naver` — 네이버 쇼핑 리뷰 수집
-- `review_list_cafe24` — 카페24 자사몰 리뷰 수집
-- `qna_list_cafe24` — 카페24 Q&A 수집
-- + ⑤ 시장조사 결과 (commerce-market-research 산출물) 입력 연계
+**데이터 소스**:
+- 네이버 쇼핑 리뷰 — 상품 페이지 리뷰 복사 텍스트 또는 스크린샷
+- 자사몰(카페24 등) 리뷰 — 관리자 리뷰 내보내기 파일
+- 자사몰 Q&A — 관리자 Q&A 내보내기 파일 (구매 전 불안·질문 패턴)
+- 시장조사 결과 (commerce-market-research 산출물) 입력 연계
 
-**MCP 백엔드**: 본 스킬은 MoAI-Commerce MCP Phase 1 (SPEC-COMMERCE-MCP-002)의 위 3종 도구를 호출합니다. MCP 미출시 시점에는 강사 본인 워크스페이스 사전 녹화 영상 5분으로 시연 대체 (PDF §4 운영 노트 §S4 인용).
-
-**Day 2 시연 시점**: 2교시 11:20–11:30 (JTBD), 3교시 13:25–13:50 (페르소나)
+**데이터 연동**: 연결된 커머스 MCP 커넥터가 있으면 리뷰·Q&A를 직접 조회하고, 없으면 사용자가 첨부한 내보내기 파일·복사 텍스트·스크린샷을 분석합니다.
 
 ## 트리거 키워드
 
@@ -33,10 +30,10 @@ JTBD, 고객 동기, 구매 이유, 잡스 투 비 던, 기능적 동기, 감성
 
 ## 모드 선택
 
-| 모드 | 플래그 | 시연 교시 | 핵심 산출물 |
-|------|--------|----------|-----------|
-| JTBD 도출 | `--mode jtbd` | Day2 2교시 | JTBD 9개 + 시장 매칭 우선순위 |
-| 페르소나 생성 | `--mode persona` | Day2 3교시 | 페르소나 3명 (8필드) |
+| 모드 | 플래그 | 핵심 산출물 |
+|------|--------|-----------|
+| JTBD 도출 | `--mode jtbd` | JTBD 9개 + 시장 매칭 우선순위 |
+| 페르소나 생성 | `--mode persona` | 페르소나 3명 (8필드) |
 
 모드 미지정 시: `--mode jtbd` 먼저 실행 후 `--mode persona` 연속 실행 권장.
 
@@ -48,14 +45,14 @@ JTBD, 고객 동기, 구매 이유, 잡스 투 비 던, 기능적 동기, 감성
 
 | 항목 | 필수 여부 | 예시 |
 |------|----------|------|
-| ⑤ 시장조사 결과 | 필수 | commerce-market-research 산출물 .md 파일 경로 |
+| 시장조사 결과 | 필수 | commerce-market-research 산출물 .md 파일 경로 |
 | 상품 정보 | 필수 | 상품명, USP, 카테고리 |
 | 채널 | 선택 | 스마트스토어, 쿠팡 (기본값: 전체) |
 
-### MCP 호출 순서 (mode=jtbd)
+### 분석 순서 (mode=jtbd)
 
 ```
-⑤ 시장조사 결과 로드 (입력)
+시장조사 결과 로드 (입력)
   ↓
 분석: 기능적 동기 3개 (Functional Job)
       감성적 동기 3개 (Emotional Job)
@@ -110,27 +107,24 @@ JTBD, 고객 동기, 구매 이유, 잡스 투 비 던, 기능적 동기, 감성
 
 | 항목 | 필수 여부 | 예시 |
 |------|----------|------|
-| ⑥ JTBD 9개 | 필수 | mode=jtbd 산출물 |
+| JTBD 9개 | 필수 | mode=jtbd 산출물 |
 | 쇼핑몰 URL / 상품 ID | 권장 | 네이버 스마트스토어 또는 카페24 상품 URL |
 | 리뷰 최소 건수 | 자동 | 10건 (부족 시 fallback 자동 적용) |
 
-### MCP 호출 순서 (mode=persona)
+### 분석 순서 (mode=persona)
 
 ```
-1. review_list_naver(product_url or search_keyword, min=10)
-   → 네이버 리뷰 수집
+1. 네이버 리뷰 수집 (커넥터 조회 또는 첨부 데이터, 최소 10건)
 
-2. review_list_cafe24(product_id, min=10)
-   → 카페24 리뷰 수집
+2. 자사몰 리뷰 수집 (최소 10건)
 
-3. qna_list_cafe24(product_id)
-   → Q&A 수집 (구매 전 불안·질문 패턴)
+3. Q&A 수집 (구매 전 불안·질문 패턴)
 
-4. ⑥ JTBD 교차 분석
+4. JTBD 교차 분석
    → 리뷰+Q&A × JTBD → 페르소나 군집 3개 분류
 ```
 
-### Fallback 규칙 (REQ-V6-010)
+### Fallback 규칙
 
 **리뷰 10건 미만 시 자동 적용:**
 
@@ -231,15 +225,13 @@ mode=persona 산출물은 텍스트 페르소나 프로필이므로 `moai-core:a
 }
 ```
 
-## 합격 기준
+## 품질 체크리스트
 
-PDF §5.5 ⑥⑦ 합격 기준:
-
-**mode=jtbd (⑥)**:
+**mode=jtbd**:
 - 기능·감성·사회 각 3개씩 총 9개 JTBD 완성
 - 시장 기회 매칭 우선순위 1축 명시 (market_match_priority 배열)
 
-**mode=persona (⑦)**:
+**mode=persona**:
 - 페르소나 3명 (메인 1 + 보조 2)
 - 8필드 모두 채움: 이름·나이·직업·일상·니즈·불만·가치관·구매결정요인
 - ai-slop-reviewer 검수 흔적 (slop_review 블록)
@@ -248,14 +240,14 @@ PDF §5.5 ⑥⑦ 합격 기준:
 
 체이닝 순서: `commerce-market-research` → **commerce-jtbd-persona --mode jtbd** → **commerce-jtbd-persona --mode persona** → `detail-page-copy --mode copy` → `commerce-product-naming` → `commerce-channel-message`
 
-- `commerce-market-research` — ⑤ 시장조사 1장 (이전 단계, mode=jtbd 입력)
-- `detail-page-copy --mode copy` — ⑥⑦ 페르소나 기반 카피 2세트 생성
-- `commerce-product-naming` — ⑥ JTBD 기반 상품명 3안
-- `commerce-channel-message` — ⑥⑦ 기반 NCM 채널별 메시지 15종
+- `commerce-market-research` — 시장조사 1장 (이전 단계, mode=jtbd 입력)
+- `detail-page-copy --mode copy` — 페르소나 기반 카피 2세트 생성
+- `commerce-product-naming` — JTBD 기반 상품명 3안
+- `commerce-channel-message` — JTBD·페르소나 기반 NCM 채널별 메시지 15종
 
 ## 이 스킬을 사용하지 말아야 할 때
 
 - **카피 작성 (Why 아닌 What)**: `moai-domain-copywriting` 또는 `detail-page-copy` 사용
 - **브랜드 아이덴티티 설계**: `moai-domain-brand-design` 사용
-- **광고 타겟팅 설정 (실집행)**: 광고 플랫폼 직접 사용 (본 캠프 외 영역, PDF §1.3)
+- **광고 타겟팅 설정 (실집행)**: 광고 플랫폼에서 직접 설정
 - **정성 인터뷰 / UX 리서치**: 별도 사용자 리서치 프로세스 활용

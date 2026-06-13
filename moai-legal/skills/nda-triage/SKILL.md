@@ -146,7 +146,7 @@ NDA, 비밀유지계약, 기밀유지계약, 비밀유지협약, NDA 검토, 계
 - **moai-legal/contract-review**: 일반 용역·공급 계약서 검토
 - **moai-legal/compliance-check**: 규제 준수 점검, ESG 보고
 - **moai-legal/legal-risk**: 법적 리스크 전반 분석, IP 전략
-- **moai-core/ai-slop-reviewer**: NDA 평가 보고서 AI 패턴 검수 (CLAUDE.local.md §3-2 필수)
+- **moai-core/ai-slop-reviewer**: NDA 평가 보고서 AI 패턴 검수
 
 ## 이 스킬을 사용하지 말아야 할 때
 

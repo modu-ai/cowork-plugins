@@ -6,7 +6,7 @@ description: |
   "쿠팡 광고 분석해줘", "쿠팡 AI스마트광고 세팅", "쿠팡 매출최적화 캠페인", "쿠팡 수동키워드 광고", "엔드 ROAS 계산", "본전 ROAS", "쿠팡 검색영역 비검색영역", "쿠팡 골든타임 자동규칙", "목표 ROAS 설정", "키워드 제외 500개", "오디언스 플러스 끄기", "쿠팡 캠페인 분리".
   쿠팡 광고 전용 wrapper (시크릿팡 호환 엑셀 입력 또는 쿠팡 광고보고서 직접 분석).
   ai-slop-reviewer 체이닝 제외 (수치·표·의사결정 데이터 스킬).
-  v2.4.0 신규 (쿠팡 광고 운영 6개월 실전 노하우 기반).
+  쿠팡 광고 운영 실전 노하우 기반.
 user-invocable: true
 version: 2.15.0
 ---
@@ -158,9 +158,9 @@ version: 2.15.0
 ## 체이닝
 
 ```
-[Day 1] commerce-morning-brief → commerce-order-summary
-[Day 2] commerce-market-research → commerce-jtbd-persona → detail-page-copy → commerce-product-naming
-[Day 3] (광고 운영 시) coupang-ad-optimizer ← ← 본 스킬 ← ←
+[운영 루틴] commerce-morning-brief → commerce-order-summary
+[전략·카피] commerce-market-research → commerce-jtbd-persona → detail-page-copy → commerce-product-naming
+[광고 운영] coupang-ad-optimizer ← ← 본 스킬 ← ←
             ↓ (광고 분석 결과 기반)
         detail-page-copy --mode diagnose (CTR/CVR 진단)
         commerce-channel-message (NCM 15종 재생성)
@@ -175,11 +175,7 @@ version: 2.15.0
 | `commerce-integrated-strategy` | 매출 향상 전략 1장 (본 스킬은 광고 운영 의사결정 분기) |
 | `commerce-margin-calculator` | 마진·엔드 ROAS 계산 전담 (본 스킬은 캠페인 분류·의사결정 전담) |
 
-## 참고 (원전)
+## 참고 자료
 
-- 쿠팡 광고 운영 실전 가이드 (한국 셀러 6개월 노하우, 126p)
-- 시크릿팡 마진계산기 (`https://secretpang.kr/?ref=pdf`)
-
-## SPEC
-
-`.moai/specs/SPEC-COUPANG-AD-001/spec.md` (v2.4.0 신규)
+- 쿠팡 광고 운영 실전 노하우 (한국 셀러 6개월 운영 사례 기반)
+- 시크릿팡 마진계산기 (`https://secretpang.kr`)

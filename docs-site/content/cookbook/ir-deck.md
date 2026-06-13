@@ -13,7 +13,7 @@ flowchart TD
     B --> C["pptx-designer<br/>15장 PPTX"]
     C --> D["ai-slop-reviewer<br/>발표용 문장 압축"]
     D --> E{"추가"}
-    E -- "히어로 이미지" --> F["nano-banana"]
+    E -- "히어로 이미지" --> F["higgsfield-image"]
     E -- "PDF 변환" --> G["배포용 PDF"]
 
     style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
@@ -95,7 +95,7 @@ investor-relations → pptx-designer → ai-slop-reviewer
 ```mermaid
 flowchart TD
     SL["확정 스토리라인"] --> PP["pptx-designer<br/>15장 + 차트 자동"]
-    PP --> NB["nano-banana<br/>커버 히어로 이미지"]
+    PP --> NB["higgsfield-image<br/>커버 히어로 이미지"]
     NB --> SL2["ai-slop-reviewer<br/>슬라이드 압축<br/>(한 줄 12자, 불릿 3개)"]
     SL2 --> PDF["PDF 내보내기"]
 ```

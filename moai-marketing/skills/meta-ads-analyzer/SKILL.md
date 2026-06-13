@@ -3,7 +3,7 @@ name: meta-ads-analyzer
 description: |
   [책임 경계] 메타 광고관리자 .xlsx 보고서 1-6개 업로드 → 상품 관여도·운영 철학 반영 진단 + 강도별 액션 옵션 (🟢🟡🔴) 전담. 페어 스킬 pixel-audit(인프라 진단)·landing-page-conversion-audit(랜딩 진단)과 명확히 구분 — 본 스킬은 광고관리자 데이터 사후 분석.
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
-  "메타 광고 보고서 분석", "광고 성과 진단", "ROAS 낮은 이유", "지면별 분석", "Audience Network 진단", "연령 성별 분해", "케어밀 보고서 분석", "광고 소재 노후화 점검", "예산 적정성 진단", "캠페인 비교 분석", "광고 누수 점검", "다중 월 추세".
+  "메타 광고 보고서 분석", "광고 성과 진단", "ROAS 낮은 이유", "지면별 분석", "Audience Network 진단", "연령 성별 분해", "광고 소재 노후화 점검", "예산 적정성 진단", "캠페인 비교 분석", "광고 누수 점검", "다중 월 추세".
   9 분석 모듈 (퍼널·KPI·차원·매트릭스·누수·라이프사이클·학습·예산·시뮬레이션) + 4D 교차 (광고×지면×연령×성별) + 3 사용자 그룹 톤 + 4 출력 형식 (HTML/DOCX/PPTX/MD) + 강도별 액션 (🟢🟡🔴 보수/중도/적극).
   ai-slop-reviewer 자동 체이닝 (DOCX/PPTX/MD 텍스트 산출물).
   v2.5.0 신규. Methodology adapted from agricidaniel/claude-ads v1.5.1 (MIT) — see NOTICE.md.
@@ -17,7 +17,7 @@ version: 2.15.0
 
 메타 광고관리자에서 추출한 `.xlsx` 보고서를 업로드받아, 상품 관여도와 운영 철학을 반영한 진단 결과와 강도별 액션 옵션을 제시하는 분석 도구.
 
-**핵심 차별점 5가지** (SPEC-META-ADS-001 §1.1):
+**핵심 차별점 5가지**:
 
 1. **상품 관여도 반영 해석** — 저관여(식품/뷰티)와 고관여(교육/B2B)의 ROAS 기준·해석 방식이 다름
 2. **운영 철학별 권장안** — 자동 신뢰형(알고리즘 우선)과 적극 통제형(수동 조정 선호)으로 분기
@@ -36,7 +36,7 @@ version: 2.15.0
 - "메타 광고 보고서 분석해줘", "광고 성과 진단해줘", "ROAS가 왜 낮은지 분석해줘"
 - "지면별 성과 어떤지 봐줘", "Audience Network 끊어야 하나", "AN 지면 진단"
 - "연령대별·성별로 분해해줘", "인구통계 분석 해줘", "페르소나별 효율 보고 싶어"
-- "케어밀 보고서 분석해줘", "광고 소재 노후화됐는지 봐줘", "소재 피로도 진단"
+- "내 브랜드 광고 보고서 분석해줘", "광고 소재 노후화됐는지 봐줘", "소재 피로도 진단"
 - "예산이 적정한지 봐줘", "광고비 낭비 찾아줘", "누수 광고 찾기"
 - "캠페인 두 개 비교해줘", "이번 달 vs 지난 달 추세 봐줘", "다중 월 비교"
 - "광고 보고서 올릴게요", "xlsx 분석해줘", "메타 광고관리자 데이터 분석"
@@ -166,7 +166,7 @@ Level 1-6: **모든 출력 형식 필수** / Level 7: 사용자 선택
 
 ## 강도별 액션 옵션 (🟢🟡🔴)
 
-모든 권장안은 단정적 명령 없이 다음 표준 템플릿 5요소를 갖춥니다 (SPEC §3.6):
+모든 권장안은 단정적 명령 없이 다음 표준 템플릿 5요소를 갖춥니다:
 
 ```
 ### [발견] {제목}
@@ -224,7 +224,7 @@ Level 1-6: **모든 출력 형식 필수** / Level 7: 사용자 선택
 | 지면·소재·인구통계별 개선 방향 제시 | 메타 UI 캡처·스크린샷 |
 | 구체적 액션 권장 (예: "AN 지면 노출 OFF 검토") | 편향된 일반화 |
 | 사용자 그룹별 톤 조정 | 검증 안 된 벤치마크 (출처 미명시) |
-| 벤치마크 수치 인용 시 출처 명시 (SPEC §3.6 / 케어밀 reference) | 운영 철학 강요 |
+| 벤치마크 수치 인용 시 출처 명시 (공개 벤치마크 출처) | 운영 철학 강요 |
 
 **표현 수준 예시**:
 - ✓ "AN 지면 ROAS가 두 달 연속 0이므로 노출 OFF 검토 권장"
@@ -251,7 +251,7 @@ Level 1-6: **모든 출력 형식 필수** / Level 7: 사용자 선택
 ```
 meta-ads-analyzer (보고서 분석)
        ↓ DOCX/PPTX/MD 텍스트 산출물
-moai-core:ai-slop-reviewer (AI 슬롭 검수 — CLAUDE.local.md §3-2 HARD)
+moai-core:ai-slop-reviewer (AI 슬롭 검수)
        ↓ 인프라 문제 발견 시
 pixel-audit (픽셀·1st Party 데이터 인프라 진단)
        ↓ 랜딩 문제 발견 시
@@ -270,7 +270,7 @@ landing-page-conversion-audit (랜딩 6섹션 전환율 진단)
 | `landing-page-conversion-audit` | 랜딩 6섹션 전환율 진단 | 광고 클릭 후 랜딩 UX → 페어, 광고 시스템 KPI(노출/클릭/구매/매출/ROAS) → 본 스킬 |
 | `campaign-planner` | 캠페인 사전 기획 | 사전 기획(목표·타겟·소재 컨셉) → campaign-planner, 집행 후 사후 진단·액션 → 본 스킬 |
 
-(SPEC-META-ADS-001 §8.2 페어 분리 원칙)
+(페어 분리 원칙)
 
 ---
 
@@ -288,7 +288,7 @@ landing-page-conversion-audit (랜딩 6섹션 전환율 진단)
 | H | 정합성 검증 6종 + Layer 2 MCP 호출 가이드 | [references/H.md](references/H.md) |
 | I | 면책 문구 전문 + 명시적 한계 + 시간 예측 금지 예외 | [references/I.md](references/I.md) |
 | J | 자매 스킬 후보 (creative-generator·budget-planner·curriculum-builder) | [references/J.md](references/J.md) |
-| K | 케어밀 보고서 fixture 가이드 + 테스트 예시 | [references/K.md](references/K.md) |
+| K | 샘플 보고서 fixture 가이드 + 테스트 예시 | [references/K.md](references/K.md) |
 
 ---
 
@@ -296,4 +296,4 @@ landing-page-conversion-audit (랜딩 6섹션 전환율 진단)
 
 | 버전 | 날짜 | 내용 |
 |------|------|------|
-| 2.5.0 | 2026-05-13 | v2.5.0 신규 출시 — SPEC-META-ADS-001 v0.2.0 기반. 9 분석 모듈 + 4D 교차 + 5 자동 모드 + 3 사용자 그룹 + 4 출력 형식. Methodology adapted from agricidaniel/claude-ads v1.5.1 (MIT). |
+| 2.5.0 | 2026-05-13 | v2.5.0 신규 출시 — 9 분석 모듈 + 4D 교차 + 5 자동 모드 + 3 사용자 그룹 + 4 출력 형식. Methodology adapted from agricidaniel/claude-ads v1.5.1 (MIT). |

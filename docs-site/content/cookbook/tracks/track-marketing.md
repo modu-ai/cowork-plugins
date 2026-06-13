@@ -66,12 +66,12 @@ geekdocBreadcrumb: true
 
 1. **플랫폼**: 인스타 / 페북 / 링크드인 / 멀티
 2. **콘텐츠 유형**: 교육 / 사례 / 질문형 / Q&A
-3. **이미지 자동 생성**: 예/아니오 (`nano-banana` 호출)
+3. **이미지 자동 생성**: 예/아니오 (`higgsfield-image` 호출)
 4. **해시태그**: 자동 추출 + 사용자 추가
 
 ### 자동 체인
 
-`sns-content` (9채널 매트릭스) → `card-news` (캐러셀) → `nano-banana` (한국어 타이포) → `ai-slop-reviewer`
+`sns-content` (9채널 매트릭스) → `card-news` (캐러셀) → `higgsfield-image` (한국어 타이포) → `ai-slop-reviewer`
 
 > **상세**: [콘텐츠 트랙](../track-content/) · [광고 트랙](../track-advertising/)
 

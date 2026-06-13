@@ -84,7 +84,7 @@ AI 이미지 생성 기반 캐러셀 10장.
 
 시스템 인터뷰: ① 플랫폼 비율(인스타 1080×1350·페북 1080×1080) ② 스타일·포인트 컬러 ③ 장수 ④ CTA 문구
 
-체인: `card-news → nano-banana → ai-slop-reviewer`
+체인: `card-news → higgsfield-image → ai-slop-reviewer`
 
 ### newsletter — 뉴스레터
 
@@ -108,7 +108,7 @@ AI 이미지 생성 기반 캐러셀 10장.
 
 시스템 인터뷰: ① 대상 플랫폼 ② 톤(전문가/친근) ③ 해시태그 전략 ④ 이미지 동반 여부
 
-체인: `social-media → nano-banana(이미지 필요 시) → ai-slop-reviewer`
+체인: `social-media → higgsfield-image(이미지 필요 시) → ai-slop-reviewer`
 
 ### product-detail — 상세페이지
 
@@ -120,7 +120,7 @@ AI 이미지 생성 기반 캐러셀 10장.
 
 시스템 인터뷰: ① 제품 카테고리·가격대 ② 타깃 고객 ③ 핵심 USP 3가지 ④ 구매 혜택
 
-체인: `product-detail → nano-banana(제품 이미지) → ai-slop-reviewer`
+체인: `product-detail → higgsfield-image(제품 이미지) → ai-slop-reviewer`
 
 ### landing-page — 단독 랜딩
 

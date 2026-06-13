@@ -170,4 +170,4 @@ Pretendard (jsdelivr CSS)와 KoPubWorld (직접 woff)는 `@font-face`의 `font-d
 
 | 날짜 | 버전 | 변경 내용 |
 |------|------|-----------|
-| 2026-05-09 | 1.0.0 | Wave 1 초기 작성 — 6개 폰트 매핑, CDN URL, preconnect 패턴 |
+| 2026-05-09 | 1.0.0 | 초기 작성 — 6개 폰트 매핑, CDN URL, preconnect 패턴 |

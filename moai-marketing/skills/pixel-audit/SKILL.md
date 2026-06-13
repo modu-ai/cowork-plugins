@@ -184,7 +184,3 @@ coupang-ad-optimizer (메타·구글 픽셀 아닌 쿠팡 전용 자동규칙)
 | `performance-report` | GA4·메타·네이버 ROAS 종합 분석 (본 스킬은 픽셀·데이터 인프라 검증) |
 | `campaign-planner` | 캠페인 기획·운영 (본 스킬은 데이터 인프라 진단) |
 | `coupang-ad-optimizer` | 쿠팡 광고 (본 스킬은 메타·구글 픽셀) |
-
-## SPEC
-
-`.moai/specs/SPEC-PIXEL-AUDIT-001/spec.md` (v2.4.0 신규)

@@ -175,13 +175,13 @@ ProductDNA, 사진 점검, 추가 촬영, 어떤 사진이 더 필요
 
 - `moai-commerce:detail-page-copy` — 13섹션 카피 (이 스킬의 ProductDNA 활용)
 - `moai-commerce:detail-page-image` — 이미지 생성·합성
-- `moai-media:nano-banana` — 부족한 컷을 AI로 생성하고 싶을 때 (실사 촬영 대체)
+- `moai-media:higgsfield-image` — 부족한 컷을 AI로 생성하고 싶을 때 (실사 촬영 대체)
 - `moai-content:landing-page` — 웹용 상세페이지
 
 ## 이 스킬을 사용하지 말아야 할 때
 
 - 카피만 필요할 때: `detail-page-copy` 사용
-- 이미지 생성: `moai-media:nano-banana` 사용
+- 이미지 생성: `moai-media:higgsfield-image` 사용
 - 마켓 등록 가이드: `marketplace-coupang` 또는 `marketplace-naver`
 
 ## 주의사항

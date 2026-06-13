@@ -4,7 +4,7 @@ description: >
   한국 이커머스 상세페이지 13섹션 이미지를 자동 생성하고 1080×12720 단일 PNG로 합성하는 스킬입니다.
   "상세페이지 이미지 만들어줘", "13섹션 합성 이미지", "상폐 이미지", "1080 12720 합성"처럼 말하면 됩니다.
   detail-page-copy의 13섹션 카피와 사용자 상품 사진을 받아 섹션별 이미지 프롬프트를 작성하고,
-  moai-media:nano-banana(Gemini 3 Image)로 13장의 이미지를 생성한 뒤
+  moai-media:higgsfield-image(Nano Banana Pro 등 11개 모델)로 13장의 이미지를 생성한 뒤
   Pillow 기반 자체 합성 스크립트(scripts/compose.py)로 1080×12720 세로 합성 PNG를 만듭니다.
   외부 패키지 설치 불필요 — 합성 로직은 cowork에 자체 구현되어 있습니다.
 user-invocable: true
@@ -16,7 +16,7 @@ version: 2.15.0
 ## 개요
 
 13섹션 감정여정 상세페이지 이미지를 생성하고 세로 합성 PNG로 만드는 스킬입니다.
-moai-media:nano-banana를 백엔드로 사용하여 카테고리별 비주얼 톤이 일관된 13장의 섹션 이미지를 만들고,
+moai-media:higgsfield-image를 백엔드로 사용하여 카테고리별 비주얼 톤이 일관된 13장의 섹션 이미지를 만들고,
 Pillow 단일 의존성으로 1080×12720 단일 합성 이미지를 산출합니다.
 
 ## 트리거 키워드
@@ -30,7 +30,7 @@ combined.png, 상폐 합성본, 이커머스 이미지 합성
    - Python 3.10+ 환경
    - 다른 의존성 없음 (NumPy 불필요)
 
-2. **moai-media 플러그인 활성화**: 13섹션 이미지 생성에 nano-banana 사용
+2. **moai-media 플러그인 활성화**: 13섹션 이미지 생성에 higgsfield-image 사용
    - 또는 사용자가 별도로 13장의 섹션 이미지를 준비해서 폴더 경로 제공
 
 3. **상품 사진 1-14장**: 실제 상품 레퍼런스 (옵션이지만 권장)
@@ -48,7 +48,7 @@ combined.png, 상폐 합성본, 이커머스 이미지 합성
 
 ### 2단계: 13섹션 이미지 프롬프트 생성
 
-각 섹션의 카피와 카테고리 비주얼 브리프를 합쳐 nano-banana 프롬프트를 작성합니다.
+각 섹션의 카피와 카테고리 비주얼 브리프를 합쳐 higgsfield-image 프롬프트를 작성합니다.
 `references/image-prompts.md` 참조 (섹션별 비주얼 언어, 합성 가이드).
 
 각 섹션은 고유한 비주얼 언어를 가집니다:
@@ -66,13 +66,13 @@ combined.png, 상폐 합성본, 이커머스 이미지 합성
 - **Filter**: checklist_visual — 체크리스트 시각화
 - **CTA**: urgent_product_reveal — 긴급성 + 가격 강조
 
-### 3단계: 이미지 생성 (moai-media:nano-banana)
+### 3단계: 이미지 생성 (moai-media:higgsfield-image)
 
 생성 전략:
 - 각 섹션 너비: **1080px**
 - 섹션별 높이: `references/sections-spec.md` 표 참조 (Hero 1600-Filter 700)
 - 카테고리 비주얼 브리프(electronics/fashion/...) 모든 프롬프트에 주입
-- 상품 레퍼런스 사진을 nano-banana의 image-to-image 모드로 전달
+- 상품 레퍼런스 사진을 higgsfield-image의 image-to-image 모드로 전달
 
 생성 결과를 `output_dir/{job_id}/sections/01_hero.png` 부터 `13_cta.png` 까지 저장.
 

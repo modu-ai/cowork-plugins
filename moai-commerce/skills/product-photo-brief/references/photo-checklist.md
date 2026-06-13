@@ -150,7 +150,7 @@ Hero 컷 재사용 가능. 또는:
 
 ## AI 이미지 보완 옵션
 
-부족한 컷은 `moai-media:nano-banana`로 보완 가능:
+부족한 컷은 `moai-media:higgsfield-image`로 보완 가능:
 - 라이프스타일 컷 (모델·배경 합성)
 - 인포그래픽
 - 일러스트 단계 시퀀스

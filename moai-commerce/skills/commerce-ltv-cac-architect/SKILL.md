@@ -280,7 +280,7 @@ Payback = 50,000 / (12,000 × 0.33)
 - 예상 자생 매출 비율: 70%+
 ```
 
-## 합격 기준
+## 품질 체크리스트
 
 - 6대 지표 모두 입력 + 계산 완료
 - LTV/CAC ratio + Payback Period 명시
@@ -328,7 +328,3 @@ Payback = 50,000 / (12,000 × 0.33)
 - **메시지 카피 작성**: `commerce-channel-message` 사용
 - **광고 캠페인 기획**: `campaign-planner` 사용
 - **단순 ROAS 계산 (광고 단위)**: `coupang-ad-optimizer` 또는 `performance-report` 사용
-
-## SPEC
-
-`.moai/specs/SPEC-LTV-CAC-001/spec.md` (v2.6.0 신규)

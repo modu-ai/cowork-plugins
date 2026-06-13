@@ -74,19 +74,19 @@ flowchart TD
 **블로그 발행 파이프라인**
 
 ```text
-blog → ai-slop-reviewer → (선택) moai-media:nano-banana
+blog → ai-slop-reviewer → (선택) moai-media:higgsfield-image
 ```
 
 **쇼핑몰 상세페이지**
 
 ```text
-product-detail → moai-media:nano-banana → ai-slop-reviewer
+product-detail → moai-media:higgsfield-image → ai-slop-reviewer
 ```
 
 **카드뉴스 시리즈**
 
 ```text
-card-news → moai-media:nano-banana → ai-slop-reviewer
+card-news → moai-media:higgsfield-image → ai-slop-reviewer
 ```
 
 ## 빠른 사용 예

@@ -5,7 +5,7 @@
     "email": "email@mo.ai.kr"
   },
   "metadata": {
-    "description": "모두의 AI's Claude Cowork 플러그인 마켓플레이스 — 23 플러그인, 150 스킬. v2.14.0에서 **Claude Design 보조 docs·스킬 정합성 보완 — Anthropic 공식 발표(2026-04-17) 정확 반영**. 코드 기반 프로토타입(음성·비디오·셰이더·3D) 카테고리 명시, Canva 네이티브 파트너십(CEO Melanie Perkins 인용) 워크플로우, 통합 빌더 단기 로드맵(coming weeks 공식 약속) 분리, Brilliant·Datadog 공식 도입 사례 인용. claude-design-prompt-builder에 프론티어 미디어 보조 패턴(WebGL 셰이더·Three.js 3D·Web Audio API·캔버스 애니메이션) 추가, claude-design-handoff-reader에 Claude Code 빌드 vs Canva 마케팅 후속 두 경로 분기 표 신규. 신규 스킬·플러그인 없음, 23/150 유지. v2.13.0에서 **moai-media:higgsfield-image · higgsfield-video** 신규 2 스킬 도입 — Higgsfield MCP를 직접 호출해 공식 이미지 11종(Soul·Soul 2.0·Soul Cinema·Nano Banana·Nano Banana Pro·GPT Image·GPT Image 2·Seedream 4.0·Flux Kontext·Wan 2.2 Image·Wan 2.5) + 공식 영상 11종(Sora 2·Google Veo 3·Kling 2.1 Master·Kling 2.5 Turbo·Kling 3.0·Kling Avatars 2.0·Seedance 2.0·Seedance Pro·Cinema Studio 3.5·MiniMax Hailuo 02·Wan 2.5) + 6 비디오 프리셋(UGC·Unboxing·Product review·Hyper motion·TV spot·Wild Card)을 자연어 한 줄로 호출. 캐릭터 일관성(Soul Characters·Kling Avatars 2.0)·비동기 잡 폴링 통합. v2.12.0에서 **moai-design** 신규 플러그인 도입 — Claude Design(claude.ai/design) 보조 풀스택 5 스킬(claude-design-brief 6요소 자동 채움·claude-design-system-prep DESIGN.md 합성·claude-design-prompt-builder 시니어 UX 10 패턴·claude-design-handoff-reader Claude Code 핸드오프 번들 분석·claude-design-slop-check AI 슬롭 검수). docs-site에 클로드 디자인 섹션 10페이지(개요·시작·디자인 시스템·리파인먼트·협업·내보내기·사용 사례·BP·요금제·제한) 동시 신설. v2.10.0에서 **moai-book** 신규 플러그인 도입 — 한국 출판사 제출용 원고 집필 풀스택 8 스킬(book-concept-planner·book-target-reader·book-outline-designer·book-author-bio·book-proposal-writer·book-publisher-matcher·book-chapter-writer·book-revision-coach). 도서 컨셉서·JTBD 페르소나·목차 설계·저자 약력·출판 제안서·30+ 한국 출판사 매칭·챕터 집필·퇴고 7 단계 점검을 4 장르(실용서·인문·기술·소설) 자동 분기로 처리. KPIPA·국립국어원·교보문고·알라딘 등 한국 출판 컨텍스트 + 부크크·텀블벅 자비 출판 대안 포함. /project init으로 워크플로우 기반 CLAUDE.md 자동 생성, 모든 텍스트 산출물은 ai-slop-reviewer로 검수. v2.4.0에서 '캠프 후속 인사이트 통합본' 출시 — 정해준 강사 본인 노하우(쿠팡 매출 9배 비법 전자책 126p + 커머스 업무 자동화 24p + 커머스 매출향상 AI 활용 26p) + 광고 심리학 완전판(13장 376줄) 4개 문서를 분석해 13건(신규 5 + 강화 8) 통합. moai-commerce 신규 3(coupang-ad-optimizer 3 캠페인 유형 자동 분류·검색/비검색 분리·엔드 ROAS·자동규칙 3종 / commerce-margin-calculator 마진·엔드 ROAS·손익분기 광고비 / commerce-automation-audit 6대 영역 진단·우선순위 점수·3 Phase 로드맵) + moai-marketing 신규 2(landing-page-conversion-audit 6섹션 진단·CTR/CVR 분기 / pixel-audit 메타·구글 픽셀·CAPI·Lookalike 씨앗 품질). 기존 강화 8(commerce-product-naming 공식 4요소·금지 키워드 9종 / detail-page-copy PAS·혜택 언어 3단계 / commerce-jtbd-persona 심리적 필요 4종·타겟 온도 / commerce-channel-message 6 방아쇠·8 편향·채널 매트릭스 / commerce-integrated-strategy 자동화 4단계·3 Phase 로드맵·HITL / commerce-market-research 포지셔닝 5축·새 카테고리 / campaign-planner 광고 심리학 완전판 / sns-content 채널별 심리·메타 학습 기간). v2.3.0에서 '모두의 커머스 3일 마스터 캠프'(Claude Cowork × MoAI-Cowork × MCP) 통합본 출시 — Day2 V6(정해준 강사) 6도구(moai-commerce: market-research·jtbd-persona·product-naming·channel-message·integrated-strategy + detail-page-copy 7단계 진단·페르소나 카피 2세트 강화) + Day3 신규 AI 모델 6스킬(moai-media: moodboard·gpt-image2-builder·model-router·channel-ad-packager·ai-disclosure·canva-magic-layer) + Day1 셋업 3스킬(moai-core:mcp-connector-setup + moai-commerce:commerce-morning-brief·commerce-order-summary) + moai-education 활성화(course-followup-sequence·course-curriculum-design 신규 2) + Track C 페어 정리(social-media→sns-content 흡수, campaign-planner '상세페이지·이미지 생성' 책임 분리, 15 description 책임 경계 명확화). 총 17 신규 + 6 강화. v2.2.0에서 html-report 스킬이 추가되었습니다(Thariq HTML-effectiveness 사상, 마크다운 → 단일 파일 HTML 렌더러, 6모드, 외부 의존성 0). v2.1.0에서 humanize-korean 스킬이 추가되었습니다(epoko77-ai/im-not-ai MIT, ⭐937 포팅, 한국어 AI 티 정밀 윤문, 10대 카테고리 × 40+ 패턴 SSOT). v2.0.0에서 NomaDamas/k-skill 한국 특화 스킬 6종이 추가되었습니다 — 인터넷등기소 등기부등본 일괄 발급(moai-legal), 국토부 실거래가(moai-business), 식약처 의약품·식품 안전(moai-commerce), 법원경매 매각공고(moai-finance), KRX 시세(moai-finance), 바른한글 맞춤법 검수(moai-content). v1.8.0부터 moai-commerce 11스킬(자사몰 cafe24·imweb·메이크샵, 와디즈·텀블벅, 카카오 메이커스·무신사·29CM, 라이브 커머스). moai-bi/pm/sales도 정식 등록되었습니다",
+    "description": "모두의 AI의 Claude Cowork 플러그인 마켓플레이스 — 23 플러그인, 152 스킬. 사업계획·이커머스·마케팅·콘텐츠·법률·재무·HR·교육·출판·디자인·미디어 등 한국 실무 도메인 전반을 한국어 자연어 한 줄로 처리합니다. 짧게 요청하면 시스템이 필요한 맥락을 질문(AskUserQuestion)으로 수집하고, 산출물별 스킬 체인으로 결과를 완성합니다. 모든 텍스트 산출물은 ai-slop-reviewer 검수 체인을 권장하며, /project init으로 프로젝트 워크플로우 기반 CLAUDE.md를 자동 생성합니다. 버전별 변경 내역은 CHANGELOG.md와 GitHub Releases에서 확인하세요.",
     "version": "2.15.0",
     "language": "ko"
   },
@@ -13,7 +13,7 @@
     {
       "name": "moai-core",
       "source": "./moai-core",
-      "description": "MoAI 코어 — /project 프로젝트 초기화, 스킬 체이닝 워크플로우 설계, 도메인 라우터, AI 슬롭 검수(ai-slop-reviewer), MCP 커넥터 셋업 가이드(mcp-connector-setup — Drive·Notion·Higgsfield·OpenAI, v2.3.0 신규), 피드백 허브"
+      "description": "MoAI 코어 — /project 프로젝트 초기화, 스킬 체이닝 워크플로우 설계, 도메인 라우터, AI 슬롭 검수(ai-slop-reviewer), MCP 커넥터 셋업 가이드(mcp-connector-setup — Drive·Notion·Higgsfield·OpenAI), 피드백 허브 + AI 슬롭 검수 에이전트(slop-reviewer — Cowork·Claude Code 전용)"
     },
     {
       "name": "moai-business",
@@ -23,7 +23,7 @@
     {
       "name": "moai-marketing",
       "source": "./moai-marketing",
-      "description": "마케팅 — 네이버/카카오 SEO, SNS 콘텐츠(한국 3채널 + 글로벌 4채널 통합 — v2.3.0 sns-content 흡수), 캠페인, 이메일 시퀀스. v2.4.0 광고 심리학 완전판 통합(campaign-planner: 6 방아쇠·8 편향·PAS·후크 6종·영상 30초 / sns-content: 채널별 심리 매트릭스·메타 학습 48~72h) + 랜딩페이지 6섹션 진단(landing-page-conversion-audit 신규) + 메타·구글 픽셀·CAPI·Lookalike 씨앗 품질 진단(pixel-audit 신규). v2.5.0 메타 광고 보고서 분석기(meta-ads-analyzer 신규 — .xlsx 보고서 → 9 모듈 + 4D 교차 + 3 사용자 그룹 톤 + 4 출력 형식 + 🟢🟡🔴 강도별 액션 옵션) + MCP 인프라 2서버 등록(meta-ads hosted + moai-ads-audit local stdio, claude-ads v1.5.1 MIT 한국 시장 7 변화 영역 특화)"
+      "description": "마케팅 — 네이버/카카오 SEO, SNS 콘텐츠(한국 3채널 + 글로벌 4채널), 캠페인 기획(광고 심리학 — 방아쇠 6종·인지 편향 8종·PAS·후크 6종), 이메일 시퀀스, 랜딩페이지 6섹션 전환 진단(landing-page-conversion-audit), 메타·구글 픽셀·CAPI·Lookalike 진단(pixel-audit), 메타 광고 .xlsx 보고서 분석(meta-ads-analyzer — 9 모듈 + 4D 교차 분석), Meta 공식 광고 커넥터(mcp.facebook.com/ads OAuth) 연동"
     },
     {
       "name": "moai-legal",
@@ -43,7 +43,7 @@
     {
       "name": "moai-content",
       "source": "./moai-content",
-      "description": "크리에이티브 콘텐츠 — 카드뉴스, shadcn/ui 기반 랜딩페이지, shadcn/ui 상세페이지, 뉴스레터, 카피라이팅, 블로그, 미디어 프로덕션, 한국어 AI 티 정밀 윤문(humanize-korean v2.1.0+), 마크다운→HTML 렌더러(html-report v2.2.0+ — 6모드, 외부 의존성 0). social-media는 v2.3.0부터 moai-marketing:sns-content로 흡수(deprecate stub 유지)"
+      "description": "크리에이티브 콘텐츠 — 카드뉴스, shadcn/ui 기반 랜딩페이지·상세페이지, 뉴스레터, 카피라이팅, 블로그, 미디어 프로덕션, 한국어 AI 티 정밀 윤문(humanize-korean), 마크다운→HTML 렌더러(html-report — 6모드, 외부 의존성 0). social-media는 moai-marketing:sns-content로 흡수(deprecate stub 유지)"
     },
     {
       "name": "moai-operations",
@@ -53,7 +53,7 @@
     {
       "name": "moai-education",
       "source": "./moai-education",
-      "description": "교육/연구 — 강의 운영 자동화(3일 21세션 커리큘럼 설계 course-curriculum-design + D+1~D+30 후기 자산화 시퀀스 course-followup-sequence — v2.3.0 신규 2), 논문 리서치, 교육과정 개발"
+      "description": "교육/연구 — 강의·수업·연수·워크숍 운영 매뉴얼 자동 생성(course-curriculum-design — 1일 특강부터 정규 강좌까지), 수강 후 30일 후기 자산화 시퀀스(course-followup-sequence), 논문 리서치, 교육과정 개발, 평가 출제"
     },
     {
       "name": "moai-lifestyle",
@@ -73,7 +73,7 @@
     {
       "name": "moai-office",
       "source": "./moai-office",
-      "description": "문서 생성 — PPT 디자인, Word(DOCX), Excel(XLSX), 한글(HWPX), 다국어 PDF(한중일영)"
+      "description": "문서 생성 — PPT 디자인, Word(DOCX), Excel(XLSX), 한글(HWPX), 다국어 PDF(한중일영), NotebookLM 슬라이드 프롬프트 + 문서 산출물 QA 에이전트(doc-qa — Cowork·Claude Code 전용)"
     },
     {
       "name": "moai-career",
@@ -88,17 +88,17 @@
     {
       "name": "moai-research",
       "source": "./moai-research",
-      "description": "연구/특허 — 논문 검색, 학술 논문 작성, 특허 분석/출원, 연구비 신청"
+      "description": "연구/특허 — 논문 검색, 학술 논문 작성, 특허 분석/출원, 연구비 신청 + 다중 소스 리서치 에이전트(research-scout — Cowork·Claude Code 전용)"
     },
     {
       "name": "moai-media",
       "source": "./moai-media",
-      "description": "AI 이미지·영상·음성 통합 풀스택 — Higgsfield MCP 직접 호출(higgsfield-image: 11 공식 이미지 모델 Soul·Soul 2.0·Soul Cinema·Nano Banana·Nano Banana Pro·GPT Image·GPT Image 2·Seedream 4.0·Flux Kontext·Wan 2.2 Image·Wan 2.5 + higgsfield-video: 11 공식 영상 모델 Sora 2·Google Veo 3·Kling 2.1 Master·Kling 2.5 Turbo·Kling 3.0·Kling Avatars 2.0·Seedance 2.0·Seedance Pro·Cinema Studio 3.5·MiniMax Hailuo 02·Wan 2.5 + 6 비디오 프리셋 UGC·Unboxing·Product review·Hyper motion·TV spot·Wild Card) + 외부 도구 프롬프트 빌더 3종(GPT-image-2·Gemini 3 Pro Image·Midjourney v8.1) + ElevenLabs MCP TTS·보이스 클로닝·다국어 더빙·효과음. .mcp.json 자동 등록(Higgsfield hosted OAuth + ElevenLabs uvx). 캐릭터 일관성(Soul Characters·Kling Avatars 2.0)·비동기 잡 폴링 통합 (v2.13.0 Higgsfield 2 스킬 신규)"
+      "description": "AI 이미지·영상·음성 통합 풀스택 — Higgsfield MCP 직접 호출(higgsfield-image: 11 공식 이미지 모델 Soul·Soul 2.0·Soul Cinema·Nano Banana·Nano Banana Pro·GPT Image·GPT Image 2·Seedream 4.0·Flux Kontext·Wan 2.2 Image·Wan 2.5 + higgsfield-video: 11 공식 영상 모델 Sora 2·Google Veo 3·Kling 2.1 Master·Kling 2.5 Turbo·Kling 3.0·Kling Avatars 2.0·Seedance 2.0·Seedance Pro·Cinema Studio 3.5·MiniMax Hailuo 02·Wan 2.5 + 6 비디오 프리셋 UGC·Unboxing·Product review·Hyper motion·TV spot·Wild Card) + 외부 도구 프롬프트 빌더 3종(GPT-image-2·Gemini 3 Pro Image·Midjourney v8.1) + ElevenLabs MCP TTS·보이스 클로닝·다국어 더빙·효과음. .mcp.json 자동 등록(Higgsfield hosted OAuth + ElevenLabs uvx). 캐릭터 일관성(Soul Characters·Kling Avatars 2.0)·비동기 잡 폴링 통합"
     },
     {
       "name": "moai-commerce",
       "source": "./moai-commerce",
-      "description": "한국 이커머스 풀세트 — V6 6도구(시장조사·JTBD·페르소나·상품명·채널 메시지·통합 전략 — v2.3.0 신규 5 + detail-page-copy 7단계 진단·페르소나 카피 2세트 강화 + v2.4.0 PAS·혜택 언어 3단계·좋은/피해야 할 예시) + Day1 매장 운영(commerce-morning-brief·commerce-order-summary — v2.3.0 신규 2) + v2.4.0 쿠팡 광고 풀세트(coupang-ad-optimizer 3 캠페인 분류·검색/비검색 분리·엔드 ROAS·자동규칙 3종, 정해준 강사 6개월 노하우) + 마진·엔드 ROAS 계산(commerce-margin-calculator) + 6대 영역 자동화 진단·우선순위·로드맵(commerce-automation-audit) + 13섹션 상세페이지·이미지 합성·5개 채널 가이드(쿠팡·네이버·카페24·와디즈·카카오메이커스 등)·식약처(mfds-safety)"
+      "description": "한국 이커머스 풀세트 — 핵심 6도구(시장조사·JTBD·페르소나·상품명·채널 메시지·통합 전략) + 상세페이지 7단계 진단·페르소나 카피 2세트(detail-page-copy — PAS·혜택 언어 3단계) + 매장 일일 운영 브리핑(commerce-morning-brief·commerce-order-summary) + 쿠팡 광고 최적화(coupang-ad-optimizer — 3 캠페인 유형 분류·검색/비검색 분리·엔드 ROAS·자동규칙 3종) + 마진·손익분기 광고비 계산(commerce-margin-calculator) + 6대 영역 자동화 진단·로드맵(commerce-automation-audit) + 13섹션 상세페이지·이미지 합성·5개 채널 가이드(쿠팡·네이버·카페24·와디즈·카카오메이커스 등)·식약처(mfds-safety)"
     },
     {
       "name": "moai-bi",
@@ -118,12 +118,12 @@
     {
       "name": "moai-book",
       "source": "./moai-book",
-      "description": "한국 출판사 제출용 원고 집필 풀스택 — 도서 컨셉서·타깃 독자(JTBD·페인포인트)·목차 설계·저자 약력·출판 제안서·출판사 매칭(30+ 라이브러리)·챕터 본문 집필·퇴고 8 스킬. 실용서·인문·기술·소설 4 장르 프리셋 자동 분기. KPIPA 통계·국립국어원 어문규범·도서정가제·교보문고/알라딘 베스트셀러·자비 출판 5 플랫폼(부크크·텀블벅 등) 내장 (v2.10.0 신규)"
+      "description": "한국 출판사 제출용 원고 집필 풀스택 — 도서 컨셉서·타깃 독자(JTBD·페인포인트)·목차 설계·저자 약력·출판 제안서·출판사 매칭(30+ 라이브러리)·챕터 본문 집필·퇴고 8 스킬. 실용서·인문·기술·소설 4 장르 프리셋 자동 분기. KPIPA 통계·국립국어원 어문규범·도서정가제·교보문고/알라딘 베스트셀러·자비 출판 5 플랫폼(부크크·텀블벅 등) 내장"
     },
     {
       "name": "moai-design",
       "source": "./moai-design",
-      "description": "Claude Design 보조 — claude.ai/design 사용을 받쳐 주는 풀스택 5 스킬. claude-design-brief 6요소 자동 채움(Project·Audience·Pages·Tone·Reference·Constraints + AI 슬롭 회피 블록), claude-design-system-prep 브랜드 자산 → DESIGN.md 합성(코드·Figma·실물·사전 빌트인 5 자산 유형), claude-design-prompt-builder 시니어 UX 10 패턴(IA·리서치·디자인 시스템·카피·온보딩·휴리스틱·대시보드·접근성·폼·테스트) 자동 선택·완성, claude-design-handoff-reader Claude Code 핸드오프 번들(README·design-tokens·components·layout·chat-history) 분석·요약 + 1줄 지시 자동 생성, claude-design-slop-check 영문·한국어 AI 슬롭 패턴(Reimagine your·차세대·혁신적인) 검출 + 수정 대안 3개 (v2.12.0 신규)"
+      "description": "Claude Design 보조 — claude.ai/design 사용을 받쳐 주는 풀스택 5 스킬. claude-design-brief 6요소 자동 채움(Project·Audience·Pages·Tone·Reference·Constraints + AI 슬롭 회피 블록), claude-design-system-prep 브랜드 자산 → DESIGN.md 합성(코드·Figma·실물·사전 빌트인 5 자산 유형), claude-design-prompt-builder 시니어 UX 10 패턴(IA·리서치·디자인 시스템·카피·온보딩·휴리스틱·대시보드·접근성·폼·테스트) 자동 선택·완성, claude-design-handoff-reader Claude Code 핸드오프 번들(README·design-tokens·components·layout·chat-history) 분석·요약 + 1줄 지시 자동 생성, claude-design-slop-check 영문·한국어 AI 슬롭 패턴(Reimagine your·차세대·혁신적인) 검출 + 수정 대안 3개"
     }
   ]
 }

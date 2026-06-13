@@ -144,7 +144,3 @@ moai-content:landing-page (shadcn/ui 신규 랜딩 코드 생성)
 | `moai-content:landing-page` | 신규 랜딩 코드 생성 (shadcn/ui) — 본 스킬은 기존 랜딩 진단·개선 |
 | `moai-marketing:campaign-planner` | 캠페인 전체 기획 (본 스킬은 랜딩 단일 진단) |
 | `moai-commerce:detail-page-copy` | 이커머스 13섹션 상세페이지 (본 스킬은 캠페인 랜딩) |
-
-## SPEC
-
-`.moai/specs/SPEC-LANDING-AUDIT-001/spec.md` (v2.4.0 신규)

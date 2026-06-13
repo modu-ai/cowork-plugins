@@ -206,7 +206,7 @@ flowchart TD
 - IPO 준비 덱: 상장 준비 자료
 
 ### 다른 스킬 체인
-- 블로그 생성: `blog` → `ai-slop-reviewer` → `nano-banana`
+- 블로그 생성: `blog` → `ai-slop-reviewer` → `higgsfield-image`
 - 사업 계획서: `strategy-planner` → `pptx-designer` → `ai-slop-reviewer`
 - 랜딩 페이지: `copywriting` → `landing-page` → `ai-slop-reviewer`
 

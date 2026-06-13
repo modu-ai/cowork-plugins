@@ -352,7 +352,7 @@ Noto Sans CJK는 4개 언어 변형(`kr`/`jp`/`sc`/`tc`)이 있으며, 같은 �
 | `moai-content:blog` | before (콘텐츠 먼저 생성 후 PDF 변환) | 블로그 글을 PDF 리포트로 |
 | `moai-content:landing-page` | before (랜딩 카피 생성 후 PDF 제안서로) | 제안서·브로셔 PDF 제작 |
 | `moai-office:docx-generator` | alternative (Word 편집 가능 산출물 원할 때) | 수신자가 편집 가능한 파일 필요 시 |
-| `moai-core:ai-slop-reviewer` | after (텍스트 산출물 AI 패턴 검수) | **모든 텍스트 PDF 생성 후 필수** (CLAUDE.local.md §3-2) |
+| `moai-core:ai-slop-reviewer` | after (텍스트 산출물 AI 패턴 검수) | **모든 텍스트 PDF 생성 후 필수** |
 
 ## 기술 참조
 

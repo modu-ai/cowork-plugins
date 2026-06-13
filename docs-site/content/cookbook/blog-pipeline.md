@@ -10,7 +10,7 @@ tags: [cookbook, content]
 ```mermaid
 flowchart TD
     A["blog<br/>키워드 기반 글 작성"] --> B{"이미지<br/>필요?"}
-    B -- "예" --> C["nano-banana<br/>썸네일 생성"]
+    B -- "예" --> C["higgsfield-image<br/>썸네일 생성"]
     B -- "아니오" --> D["ai-slop-reviewer<br/>AI 티 제거"]
     C --> D
     D --> E["최종본 저장"]
@@ -26,13 +26,13 @@ flowchart TD
 ## 사전 준비
 
 - 플러그인: `moai-content`, `moai-core:ai-slop-reviewer`
-- (선택) 이미지 — `moai-media`의 `nano-banana` (한국어 타이포 SOTA) 또는 `image-gen`
+- (선택) 이미지 — `moai-media`의 `higgsfield-image` (한국어 타이포 SOTA) 또는 `image-gen`
 - 입력: **타깃 키워드**, **플랫폼**(네이버·티스토리·브런치 등), **대상 독자**
 
 ## 스킬 체인
 
 ```
-blog → (이미지가 필요하면 nano-banana) → ai-slop-reviewer
+blog → (이미지가 필요하면 higgsfield-image) → ai-slop-reviewer
 ```
 
 `blog` 스킬이 C-Rank/D.I.A./GEO 알고리즘을 고려한 글을 쓰고, 마지막에 `ai-slop-reviewer`로 AI 티를 벗겨냅니다.
@@ -77,7 +77,7 @@ Claude가 초안을 보여주면 다음 두 가지를 체크합니다:
 
 {{< terminal title="claude — cowork" >}}
 > 방금 글 제목으로 카드뉴스 썸네일 한 장 만들어줘.
-nano-banana로 한글 타이포 들어가게. 3:4 비율.
+higgsfield-image로 한글 타이포 들어가게. 3:4 비율.
 {{< /terminal >}}
 
 ### 5. 최종본 저장
@@ -95,7 +95,7 @@ nano-banana로 한글 타이포 들어가게. 3:4 비율.
 
 {{< hint type="note" >}}
 **이슈 2 — 브런치 업로드 시 이미지가 너무 큼.**
-`nano-banana` 기본 출력이 1536px 인 경우가 있으므로 "브런치용 1024px 로 리사이즈" 한 번 더 지시하세요.
+`higgsfield-image` 기본 출력이 1536px 인 경우가 있으므로 "브런치용 1024px 로 리사이즈" 한 번 더 지시하세요.
 {{< /hint >}}
 
 {{< hint type="note" >}}

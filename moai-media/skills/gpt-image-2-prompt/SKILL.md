@@ -9,7 +9,7 @@ description: |
   - "OpenAI 이미지 프롬프트", "GPT용 이미지 프롬프트 빌더"
   - "/gpt-image-2-prompt" (직접 호출)
 
-  이미지 자동 생성(API 호출)은 페어 스킬 image-gen·nano-banana·media-gpt-image2-builder를 사용하세요. 본 스킬은 프롬프트 텍스트 산출 전용입니다.
+  이미지 자동 생성은 페어 스킬 higgsfield-image(Higgsfield MCP)를 사용하세요. 본 스킬은 프롬프트 텍스트 산출 전용입니다.
 user-invocable: true
 version: 2.15.0
 ---
@@ -212,10 +212,7 @@ Constraints: <no extra objects, no redesign, no logo drift, no watermark>
 |---|---|---|
 | gemini-3-image-prompt | sibling | 동일 입력으로 Gemini 어조 최적화 프롬프트 산출 |
 | midjourney-v8-prompt | sibling | 동일 입력으로 MJ 키워드+파라미터 프롬프트 산출 |
-| image-gen | after | 생성된 프롬프트를 받아 실제 이미지 자동 생성 (멀티모델 라우팅) |
-| nano-banana | after | Gemini 3 Pro Image 직접 호출로 한글 타이포 이미지 생성 |
-| media-gpt-image2-builder | alternative | V6 Day3 S2 강의 전용 — GPT Image 2 광고 5장 세트 자동 생성 |
-| media-moodboard | before | 무드보드·레퍼런스 방향 수립 후 본 스킬로 프롬프트 작성 |
+| higgsfield-image | after | 생성된 프롬프트로 Higgsfield MCP 직접 이미지 생성 (GPT Image 2·Nano Banana Pro 포함) |
 
 ## 출처
 

@@ -181,7 +181,7 @@ MCP 가용 시 자동 우선 활용. 사용자가 명시적으로 텍스트 입�
 ### 5단계: 후처리 가이드
 
 - **executive-summary**: 1pager를 더 압축된 C-level 보고로 변환
-- **ai-slop-reviewer**: 격식체 톤 검수 (CLAUDE.local.md §3-2)
+- **ai-slop-reviewer**: 격식체 톤 검수
 - **pptx-designer**: 슬라이드 발표 자료로 출력
 
 ## 출력 형식
@@ -262,7 +262,7 @@ MCP 가용 시 자동 우선 활용. 사용자가 명시적으로 텍스트 입�
 
 ## 관련 커맨드
 
-- (CLAUDE.local.md §3-3 등록 체인)
+- 등록된 스킬 체인:
   - 주간보고 → 임원 1pager: `standup-summarizer → weekly-report → executive-summary`
   - 발표 슬라이드: `weekly-report → ai-slop-reviewer → pptx-designer`
 

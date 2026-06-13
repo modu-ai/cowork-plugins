@@ -144,13 +144,13 @@ flowchart TD
 ### 산출물
 
 ```text
-[D+36 리마인드 — 앱 푸시, 0~5% 인센티브, 가벼운 톤]
+[D+36 리마인드 — 앱 푸시, 0-5% 인센티브, 가벼운 톤]
 "세럼 다 쓰셨나요? 다음 주 신상 알려드릴게요 ✨"
 
-[D+50 데드라인 — 카톡 친구톡, 10~15% 인센티브, 긴급 톤]
+[D+50 데드라인 — 카톡 친구톡, 10-15% 인센티브, 긴급 톤]
 "이번주만 — 단골 할인 15% 자동 적용 (~5/24)"
 
-[D+68 휴면 — 카톡 + SMS, 25~40% + 사은품, 위닝백 톤]
+[D+68 휴면 — 카톡 + SMS, 25-40% + 사은품, 위닝백 톤]
 "오랜만이에요. 30% + 신제품 미니어처 동봉 — 5/30까지"
 ```
 
@@ -223,13 +223,13 @@ flowchart TD
 
 ## 광고 영상 풀스택 (보너스, 약 15분)
 
-이커머스 셀러가 상품 광고 영상까지 한 번에 만드는 시나리오. `commerce-product-image-pipeline`이 `moai-media` 4단계를 자동 호출합니다.
+이커머스 셀러가 상품 광고 영상까지 한 번에 만드는 시나리오. `commerce-product-image-pipeline`이 Higgsfield MCP 기반 4단계 체인을 자동 실행합니다.
 
 {{< terminal title="claude — cowork" >}}
 > 스킨케어 상품 광고 영상 풀세트 만들어줘. 메타 + 네이버 GFA + 카카오 채널 변환까지
 {{< /terminal >}}
 
-자동 체인: `character-mgmt` (캐릭터) → `image-gen` (5축: Hero·Lifestyle·Detail·Use-case·Result) → `video-gen` (DOP, 모션 프리셋 자동) → `media-channel-ad-packager` (메타·네이버·카카오 채널 규격 .zip) → `media-ai-disclosure` (AI 표기 자동)
+자동 체인: `commerce-product-image-pipeline` — 캐릭터 일관성(선택) → 이미지 생성 (Soul, 5축: Hero·Lifestyle·Detail·Use-case·Result) → 영상 생성 (DOP, 모션 프리셋 자동) → 메타·네이버·카카오 채널 규격 변환
 
 **비용 추정**: ₩2,300-4,000/상품 1건 (1 캐릭터 + 5 이미지 + 1 메인 영상 + 채널 3 변환)
 
@@ -283,6 +283,6 @@ flowchart TD
 ### Sources
 
 - [moai-commerce 디렉터리](https://github.com/modu-ai/cowork-plugins/tree/main/moai-commerce)
-- 정승우님 자료 + 실무 노트 기반 통합 가이드
+- 커머스 실무 노트 기반 통합 가이드
 - [정보통신망법 제50조](https://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률)
 - 한국 D2C 카테고리 벤치마크: commerce-ltv-cac-architect 내장 데이터

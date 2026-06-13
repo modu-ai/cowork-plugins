@@ -95,7 +95,7 @@ flowchart TD
 
 - [`moai-content`](./moai-content/) — 블로그·카드뉴스·랜딩·뉴스레터·상세페이지·SNS 콘텐츠 + 한국어 AI 티 정밀 윤문 + HTML 보고서
 - [`moai-office`](./moai-office/) — PPTX·DOCX·XLSX·HWPX·PDF 문서 자동 생성
-- [`moai-media`](./moai-media/) — 이미지(나노바나나·Ideogram)·영상(Kling·Veo·Seedance)·음성(ElevenLabs) + Day 3 광고 풀세트 + **v2.9 프롬프트 빌더 3종**
+- [`moai-media`](./moai-media/) — 이미지·영상 생성(Higgsfield MCP — Soul·Nano Banana·Kling·Veo·Seedance 계열)·음성(ElevenLabs) + 이미지 프롬프트 빌더 3종(GPT-image-2·Gemini 3 Pro Image·Midjourney v8)
 - [`moai-book`](./moai-book/) **NEW v2.10** — 한국 출판사 제출용 원고 풀스택 8 스킬(컨셉서·페르소나·목차·저자 약력·제안서·출판사 매칭·본문·퇴고)
 
 ### 경영·전략·제품·BI
@@ -117,7 +117,7 @@ flowchart TD
 
 - [`moai-legal`](./moai-legal/) — 계약서 검토·NDA·컴플라이언스·IP 리스크
 - [`moai-finance`](./moai-finance/) — 세무·결산·K-IFRS 재무제표·예실 분석
-- [`moai-commerce`](./moai-commerce/) — 한국 D2C 풀스택 (V6 6도구 + Wave 1-4 누적 — 리뷰·VOC·구독·인플루언서·얼리팬·트렌드·시즌)
+- [`moai-commerce`](./moai-commerce/) — 한국 이커머스 풀스택 (핵심 6도구 — 시장조사·JTBD·페르소나·상품명·채널 메시지·통합 전략 + 리뷰·VOC·구독·인플루언서·얼리팬·트렌드·시즌)
 
 ### 데이터·연구·교육
 

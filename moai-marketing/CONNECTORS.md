@@ -67,7 +67,7 @@ OAuth가 불가한 개발 환경 **전용 fallback**이다. 개발자/시스템 
 
 > ⚠️ OAuth 보호 엔드포인트(`mcp.facebook.com/ads`)는 일반 정적 Bearer를 거부할 수 있다(라이브 프로브에서 더미 Bearer는 403). **항상 OAuth 커넥터를 먼저** 사용하고, 정적 토큰은 우선순위가 낮은 fallback으로만 둔다.
 
-### 보안 (CLAUDE.local.md §6 HARD)
+### 보안 (MCP 키 관리 원칙)
 
 - 토큰을 코드·plugin.json·SKILL.md에 절대 하드코딩하지 않는다
 - 토큰을 git에 commit하지 않는다 (`.gitignore` 확인 — `.env`, `.envrc`, `**/secrets/**`)

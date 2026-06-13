@@ -188,7 +188,7 @@ Level 5 (비응급, <1주): 6건 — 자동 응답 + 감사 표현
 > 매일 오전 8시 우리 매장 어제 주문·문의·트렌드·ROAS 4영역 1줄 브리핑 슬랙으로 보내줘
 {{< /terminal >}}
 
-→ `commerce-morning-brief` (MCP `dashboard_morning_brief`) 매일 자동 실행
+→ `commerce-morning-brief` (어제 주문·신규 문의·트렌드·ROAS 4영역 1줄 통합) 매일 자동 실행
 
 ---
 

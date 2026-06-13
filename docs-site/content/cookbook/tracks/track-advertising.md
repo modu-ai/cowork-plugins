@@ -22,15 +22,14 @@ flowchart TB
         P1["campaign-planner<br/>광고 심리학 풀세트"]
         P2["target-script<br/>타깃·예산 분배"]
     end
-    subgraph 콘텐츠["3. 광고 콘텐츠"]
-        C1["sns-content<br/>9채널 매트릭스"]
-        C2["media-moodboard<br/>색·톤·레퍼런스"]
-        C3["media-gpt-image2-builder<br/>한글 타이포 5장"]
-        C4["media-model-router<br/>Kling/Veo/Seedance"]
+    subgraph 콘텐츠["3. 광고 크리에이티브"]
+        C1["higgsfield-image<br/>광고 이미지 11 모델"]
+        C2["higgsfield-video<br/>광고 영상 11 모델 + 6 프리셋"]
+        C3["gpt-image-2-prompt<br/>외부 도구 프롬프트 빌더"]
     end
-    subgraph 채널["4. 채널 변환"]
-        Pkg["media-channel-ad-packager<br/>메타·네이버·카카오 .zip"]
-        Disc["media-ai-disclosure<br/>AI 표기 자동"]
+    subgraph 채널["4. 채널 카피·검수"]
+        Pkg["sns-content<br/>9채널 매트릭스 카피"]
+        Disc["ai-slop-reviewer<br/>카피 검수"]
     end
     subgraph 분석["5. 성과 분석"]
         R1["performance-report<br/>주간·월간 성과"]
@@ -47,7 +46,7 @@ flowchart TB
 |---|---|---|
 | 1 | "신상품 메타 광고 3주차 보고서 분석해줘" | meta-ads-analyzer → 9 모듈 분석 → DOCX |
 | 2 | "광고 떨어지는데 뭐가 문제야? 픽셀·랜딩 진단해줘" | pixel-audit → landing-page-conversion-audit → 진단 리포트 |
-| 3 | "스킨케어 메타 광고 영상 풀세트 만들어줘" | media-moodboard → gpt-image2-builder → model-router → channel-ad-packager |
+| 3 | "스킨케어 메타 광고 영상 풀세트 만들어줘" | higgsfield-image → higgsfield-video → sns-content → ai-slop-reviewer |
 | 4 | "쿠팡 광고 최적화 가이드 짜줘" | coupang-ad-optimizer → 3 캠페인 분류 → 자동규칙 3종 |
 | 5 | "신상품 메타 광고 캠페인 만들어서 운영해줘" | meta-ads-manager → OAuth 연결 → 캠페인·광고세트 생성(PAUSED) → 승인 → 활성화 |
 
@@ -60,7 +59,7 @@ flowchart TB
 ### 사용자 입력
 
 {{< terminal title="claude — cowork" >}}
-> 케어밀 3개월 메타 광고 보고서 분석해줘. .xlsx 첨부.
+> 내 브랜드 3개월 메타 광고 보고서 분석해줘. .xlsx 첨부.
 {{< /terminal >}}
 
 ### 시스템 인터뷰
@@ -77,7 +76,7 @@ flowchart TB
 ### 산출물
 
 - 7-Level 출력 계층 (한 줄 요약 → 영역별 진단 → 강도별 액션 → 시나리오 시뮬)
-- 한국 벤치마크 매핑 (CPC ₩500-1,500, ROAS 1.5-2.5, 케어밀 1.80 reference)
+- 한국 벤치마크 매핑 (CPC ₩500-1,500, ROAS 1.5-2.5, 업계 평균 1.80 참고치)
 - 5 규제 검사 (PIPA · ITNA · 전상법 · 표시광고법 · 식약처)
 
 ---
@@ -127,7 +126,7 @@ flowchart TD
 
 ### 시스템 인터뷰
 
-1. **카테고리** (자동 매핑: 의류=Kling 3 / 뷰티=Veo 3 / 식품=Kling 3 / 생활용품=Seedance)
+1. **카테고리** (영상 모델 추천: 의류·식품=Kling / 뷰티=Veo 3 / 생활용품=Seedance)
 2. **광고 목적**: 인지도 / 클릭 / 전환
 3. **후크 유형**: 의심차단형 / 호기심 / 권위 / 사회증거
 4. **채널**: 메타 1:1·9:16 / 네이버 GFA / 카카오모먼트 1:1·16:9
@@ -135,19 +134,18 @@ flowchart TD
 ### 자동 체인 (광고 풀세트)
 
 ```text
-[10:10 S1] media-moodboard         → 색 팔레트·톤·레퍼런스 5장
-[11:08 S2] media-gpt-image2-builder → Hero+인포+라이프 2+CTA = 5장 한글 타이포
-[14:08 S4] media-model-router       → 카테고리 매트릭스 자동 라우팅 + 메인 영상 5~10초 + 보조 2컷
-[16:20 S6] media-channel-ad-packager → 4채널 .zip 패키지
-[17:40 S7] media-canva-magic-layer   → 시즌 재사용 가이드 (재호출 ↓90%)
+higgsfield-image  → 광고 이미지 세트 (Hero·인포·라이프스타일·CTA — Soul·Nano Banana·GPT Image 계열)
+higgsfield-video  → 메인 영상 5-10초 + 보조 2컷 (Kling·Veo 3·Seedance 등 11 모델 + 6 프리셋)
+sns-content       → 메타 1:1·9:16 / 네이버 GFA / 카카오모먼트 1:1·16:9 채널별 카피
+ai-slop-reviewer  → 카피 검수 (AI 티 제거)
 ```
 
-`media-ai-disclosure` 자동 체인 (광고심의·소비자보호법 대응)
+AI 생성 소재는 채널별 "AI 생성" 표기 정책에 맞춰 캡션·메타데이터에 명시하세요 (광고심의·소비자보호법 대응).
 
 ### 산출물 + 비용
 
-- 5장 한글 타이포 이미지 + 1 메인 영상 + 2 보조 영상 + 4채널 변환 .zip
-- 비용 추정: ₩2,300-4,000/상품 1건
+- 광고 이미지 세트(Hero·인포·라이프스타일·CTA) + 메인 영상 1편 + 보조 영상 2컷 + 채널별 카피
+- 비용 추정: ₩2,300-4,000/상품 1건 (Higgsfield 종량제 기준)
 
 ---
 

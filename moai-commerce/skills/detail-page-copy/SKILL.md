@@ -1,13 +1,12 @@
 ---
 name: detail-page-copy
 description: >
-  [책임 경계] 카피 산출 (13섹션 감정여정 JSON + 마크다운 미리보기 — Hero→Pain→Problem→Story→Solution→How→Proof→Authority→Benefits→Risk→Compare→Filter→CTA) + V6 신규 모드 (`--mode diagnose`: 7단계 진단 점수 / `--mode copy`: 페르소나 2세트 카피, 비율 25/50/25 강제).
+  [책임 경계] 카피 산출 (13섹션 감정여정 JSON + 마크다운 미리보기 — Hero→Pain→Problem→Story→Solution→How→Proof→Authority→Benefits→Risk→Compare→Filter→CTA) + 확장 모드 (`--mode diagnose`: 7단계 진단 점수 / `--mode copy`: 페르소나 2세트 카피, 비율 25/50/25 강제).
   페어 moai-content:product-detail과 명확히 구분 — 본 스킬은 카피, 페어는 코드 (shadcn/ui React 또는 HTML).
   체이닝 권장: detail-page-copy(카피) → product-detail(코드) 또는 detail-page-copy → detail-page-image(1080×12720 합성 PNG).
   한국 이커머스 상세페이지(상폐)를 위한 13섹션 감정여정 카피를 자동 생성하는 스킬입니다.
   "상세페이지 카피 써줘", "상폐 만들어줘", "이커머스 상세페이지 글 작성해줘", "쇼핑몰 상품 카피 만들어줘", "현재 상세페이지 진단해줘", "상세페이지 점수 매겨줘", "페르소나별 카피 2세트 만들어줘"처럼 말하면 됩니다.
-  V6 ③ 상세페이지 도구 = MCP wrapper (SPEC-COMMERCE-V6-003 §5.3 인용).
-  v2.4.0 강화: 좋은/피해야 할 예시 가이드 + PAS 카피 공식 매핑 + 혜택 언어 3단계 변환법 (광고 심리학 통합).
+  좋은/피해야 할 예시 가이드 + PAS 카피 공식 매핑 + 혜택 언어 3단계 변환법 (광고 심리학 통합).
 user-invocable: true
 version: 2.15.0
 ---
@@ -18,15 +17,11 @@ version: 2.15.0
 
 이커머스 고전환 상세페이지를 위한 카피 생성 전문 스킬입니다. **3가지 모드**를 지원합니다:
 
-| 모드 | 플래그 | 설명 | 시연 시점 |
-|------|--------|------|----------|
-| 기본 (13섹션) | 없음 | 감정여정 13섹션 카피 전체 생성 (기존 하위 호환) | 기존 |
-| 진단 | `--mode diagnose` | 현재 상세페이지 7단계 진단 점수 (V6 신규) | Day2 4교시 |
-| 페르소나 카피 | `--mode copy` | ⑥⑦ 기반 카피 2세트 생성, 비율 25/50/25 강제 (V6 신규) | Day2 4교시 |
-
-**V6 ↔ MCP 매핑** (SPEC-COMMERCE-V6-003 §5.3): V6 ③ 상세페이지 도구 wrapper.
-
-**MCP 백엔드**: 본 스킬은 MoAI-Commerce MCP Phase 1 (SPEC-COMMERCE-MCP-002)의 ③ 상세페이지 도구를 호출합니다 (`--mode diagnose` 및 `--mode copy` 시). MCP 미출시 시점에는 강사 본인 워크스페이스 사전 녹화 영상 5분으로 시연 대체 (PDF §4 운영 노트 §S4 인용).
+| 모드 | 플래그 | 설명 |
+|------|--------|------|
+| 기본 (13섹션) | 없음 | 감정여정 13섹션 카피 전체 생성 (기존 하위 호환) |
+| 진단 | `--mode diagnose` | 현재 상세페이지 7단계 진단 점수 |
+| 페르소나 카피 | `--mode copy` | JTBD·페르소나 기반 카피 2세트 생성, 비율 25/50/25 강제 |
 
 지원 카테고리: electronics / fashion / food / beauty / home / supplement / pet / kids / handmade / general
 
@@ -38,7 +33,7 @@ detail page, 상세 카피, 온라인 쇼핑몰 상품 페이지, 감정여정 �
 
 ---
 
-## V6 신규 모드 워크플로우 (--mode diagnose / --mode copy)
+## 확장 모드 워크플로우 (--mode diagnose / --mode copy)
 
 ### --mode diagnose: 7단계 진단 점수
 
@@ -84,9 +79,9 @@ detail page, 상세 카피, 온라인 쇼핑몰 상품 페이지, 감정여정 �
 
 ### --mode copy: 페르소나 2세트 카피 (비율 25/50/25 강제)
 
-⑥⑦ JTBD·페르소나와 현재 상세페이지를 입력받아 메인·보조 페르소나용 카피 2세트를 생성합니다.
+JTBD·페르소나(commerce-jtbd-persona 산출물)와 현재 상세페이지를 입력받아 메인·보조 페르소나용 카피 2세트를 생성합니다.
 
-**비율 가이드 강제 적용 (REQ-V6-011 HARD)**:
+**비율 가이드 강제 적용 (HARD)**:
 - 문제·공감 섹션: **25%** (Hero + Pain + Problem)
 - 핵심·증명 섹션: **50%** (Solution + How + Proof + Authority + Benefits)
 - FAQ·CTA 섹션: **25%** (Risk + Compare + Filter + CTA)
@@ -95,8 +90,8 @@ detail page, 상세 카피, 온라인 쇼핑몰 상품 페이지, 감정여정 �
 
 | 항목 | 필수 여부 | 예시 |
 |------|----------|------|
-| ⑥ JTBD 결과 | 필수 | commerce-jtbd-persona --mode jtbd 산출물 |
-| ⑦ 페르소나 3명 | 필수 | commerce-jtbd-persona --mode persona 산출물 |
+| JTBD 결과 | 필수 | commerce-jtbd-persona --mode jtbd 산출물 |
+| 페르소나 3명 | 필수 | commerce-jtbd-persona --mode persona 산출물 |
 | 현재 상세페이지 | 권장 | URL 또는 --mode diagnose 결과 (개선점 반영) |
 
 **출력 형식** (--mode copy):
@@ -450,9 +445,7 @@ JSON 출력 후, 사용자 확인용 마크다운 미리보기를 섹션별로 �
 - "수제 원목 도마 이커머스 상세페이지 — handmade 카테고리, 프리미엄 톤"
 - "반려견 유산균 상세페이지 카피 — 수의사 추천 포인트 있음"
 
-## 합격 기준 (V6 강화 모드)
-
-PDF §5.5 ⑧ 합격 기준:
+## 품질 체크리스트 (확장 모드)
 
 **--mode diagnose**:
 - 7단계 모두 점수 산출
@@ -467,9 +460,9 @@ PDF §5.5 ⑧ 합격 기준:
 
 ## 관련 스킬
 
-체이닝 (V6): `commerce-jtbd-persona --mode persona` → **detail-page-copy --mode diagnose** → **detail-page-copy --mode copy** → `commerce-product-naming`
+체이닝: `commerce-jtbd-persona --mode persona` → **detail-page-copy --mode diagnose** → **detail-page-copy --mode copy** → `commerce-product-naming`
 
-- `commerce-jtbd-persona` — ⑥⑦ JTBD·페르소나 (--mode copy 입력)
+- `commerce-jtbd-persona` — JTBD·페르소나 (--mode copy 입력)
 - `moai-commerce:detail-page-image` — 생성된 카피를 기반으로 13섹션 이미지 합성
 - `moai-commerce:marketplace-coupang` — 쿠팡 정책 적용 최적화
 - `moai-commerce:marketplace-naver` — 스마트스토어/오픈마켓 최적화

@@ -1,10 +1,8 @@
-# 부록 H — 정합성 검증 + Layer 2 MCP 호출 가이드
-
-SPEC-META-ADS-001 §3 REQ-AUDIT-MCP-016 + 작업명세서 부록 H 직접 인용.
+# 부록 H — 정합성 검증 + 실시간 데이터 연동 가이드
 
 ---
 
-## H.1 정합성 검증 체크 항목 6종 (작업명세서 H.1 직접 인용)
+## H.1 정합성 검증 체크 항목 6종
 
 컬럼 매핑 완료 후, 분석 실행 전에 다음 6개 항목을 자동 검증합니다:
 
@@ -17,7 +15,7 @@ SPEC-META-ADS-001 §3 REQ-AUDIT-MCP-016 + 작업명세서 부록 H 직접 인용
 | 5 | **중복 행 감지** | 광고 이름 + 노출 위치 + 기간이 동일한 행 중복 여부 | 중복 행 목록 + 합산 또는 제거 선택 |
 | 6 | **인구통계 컬럼 일관성** | 연령·성별 컬럼이 일부 행에만 있는 경우 감지 | 불완전한 인구통계 컬럼 경고 + 완전한 행만 인구통계 분석 |
 
-### 통합/분리 보고서 판정 (작업명세서 H.4)
+### 통합/분리 보고서 판정
 
 파일 2개인 경우 분리 보고서 판정:
 - 공통 키(광고 이름 + 보고 기간) 매칭 시도
@@ -27,7 +25,7 @@ SPEC-META-ADS-001 §3 REQ-AUDIT-MCP-016 + 작업명세서 부록 H 직접 인용
 
 ---
 
-## H.2 노출수 추정 (작업명세서 H.2)
+## H.2 노출수 추정
 
 **조건**: 노출수(Impressions) 컬럼 부재 + CTR 컬럼 존재
 
@@ -42,7 +40,7 @@ SPEC-META-ADS-001 §3 REQ-AUDIT-MCP-016 + 작업명세서 부록 H 직접 인용
 
 ---
 
-## H.3 다중 월 정규화 (작업명세서 H.3)
+## H.3 다중 월 정규화
 
 다중 월 비교 모드 시 보고 기간이 다를 경우 일평균으로 정규화:
 
@@ -57,7 +55,7 @@ SPEC-META-ADS-001 §3 REQ-AUDIT-MCP-016 + 작업명세서 부록 H 직접 인용
 
 ---
 
-## H.4 분리 보고서 매칭 (작업명세서 H.4 직접 인용)
+## H.4 분리 보고서 매칭
 
 두 보고서 통합 시 매칭 키:
 
@@ -86,42 +84,30 @@ SPEC-META-ADS-001 §3 REQ-AUDIT-MCP-016 + 작업명세서 부록 H 직접 인용
 
 ---
 
-## H.6 Layer 2 MCP 호출 가이드 (v2 단계 — 현재 v1에서는 참고만)
+## H.6 실시간 데이터 연동 가이드
 
-SPEC-META-ADS-001 v0.2.0 Amendment REQ-META-ADS-AMEND-001 기준.
+본 스킬의 기본 입력은 메타 광고관리자에서 내보낸 .xlsx 보고서입니다. 실시간 데이터가 필요한 경우 Meta 공식 광고 커넥터(`mcp.facebook.com/ads`, OAuth 2.0)를 연결하면 보고서 업로드 없이 광고 계정 데이터를 직접 조회할 수 있습니다.
 
-### 3-Layer 아키텍처 (v2 단계 계획)
-
-```
-Layer 1: Meta 공식 MCP (mcp.facebook.com/ads) 또는 .xlsx 업로드 (v1 현재)
-   ↓ 데이터 fetch
-Layer 2: moai-ads-audit-mcp (SPEC-MOAI-ADS-AUDIT-MCP-001 — v2 별도 SPEC)
-   ↓ 50-check audit 비즈니스 로직
-Layer 3: meta-ads-analyzer (본 스킬 — 사용자 UI + 톤 조정 + 액션 옵션)
-```
-
-### v2 단계 Layer 2 MCP 주요 도구 (계획)
-
-| 도구 | 역할 |
-|------|------|
-| `audit_meta_account` | Meta 50-check 진행 |
-| `calculate_health_score` | 가중 점수 계산 (Critical 5× / High 3× / Medium 1.5× / Low 0.5×) |
-| `get_quick_wins` | 15분 이내 조치 가능 항목 추출 |
-| `get_emq_score` | EMQ tiered targets 평가 (Purchase 8.5+ / AddToCart 6.5+ / PageView 5.5+) |
-
-> **v1 현재**: Layer 2 MCP는 미구현 상태. 모든 분석은 업로드된 .xlsx 데이터 기반. v2 API 연동 시 SPEC-COMMERCE-MCP-002 참조.
-
-### Meta 공식 MCP 활성화 조건 (v2 계획)
+### 데이터 경로 2종
 
 ```
-is_ads_mcp_enabled: true → Meta 공식 MCP 우선 사용
-is_ads_mcp_enabled: false → Adspirer 또는 byadsco MCP fallback
-.xlsx 업로드 → Layer 1 없이 직접 Layer 3 (현재 v1)
+경로 A (기본):   메타 광고관리자 .xlsx 보고서 업로드 → 본 스킬 분석
+경로 B (실시간): Meta 공식 광고 커넥터 (mcp.facebook.com/ads, OAuth 2.0) 조회 → 본 스킬 분석
 ```
+
+### 경로 선택 기준
+
+| 상황 | 권장 경로 |
+|------|---------|
+| 보고 기간이 고정된 보고서 사후 분석 | 경로 A (.xlsx 업로드) |
+| 최신 성과 즉시 조회·점검 | 경로 B (공식 커넥터) |
+| 커넥터 미연결 환경 | 경로 A (.xlsx 업로드) |
+
+어느 경로든 50-check 진단, 가중 점수 계산(Critical 5× / High 3× / Medium 1.5× / Low 0.5×), Quick Wins 추출, EMQ 평가(Purchase 8.5+ / AddToCart 6.5+ / PageView 5.5+)는 본 스킬이 직접 수행합니다.
 
 ---
 
-## H.7 50-check ID → 9 모듈 매핑 (SPEC v0.2.0 Amendment)
+## H.7 50-check ID → 9 모듈 매핑
 
 claude-ads v1.5.1 차용 (MIT). 50 check를 본 스킬 9 모듈에 매핑:
 

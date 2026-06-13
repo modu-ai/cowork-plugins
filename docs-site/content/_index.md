@@ -375,7 +375,7 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
       <li><strong>gpt-image-2-prompt</strong> — 6-Block(Subject·Action·Scene·Composition·Lighting·Style&Text), 편집 시 Change/Preserve/Constraints 2열, 텍스트 verbatim·ALL CAPS·다국어(한·일·중·힌·벵골)</li>
       <li><strong>gemini-3-image-prompt</strong> — 5-component 영문 문장형, 카메라 하드웨어 지정, Reference image 14 슬롯, Search Grounding, Thinking vs Fast 모드, SynthID 워터마크</li>
       <li><strong>midjourney-v8-prompt</strong> — `--sref`/`--oref`/`--cw`/`--p` 3대 reference deep dive, 6대 비용 함정 자동 검사(`--hd --q 4` 16x cost, `--cref` deprecation 자동 교체)</li>
-      <li>책임 경계 — <strong>프롬프트 텍스트 산출 전용</strong>. 실제 이미지 생성은 페어 스킬(`media-gpt-image2-builder`·`nano-banana`) 또는 외부(Discord/web alpha)</li>
+      <li>책임 경계 — <strong>프롬프트 텍스트 산출 전용</strong>. 실제 이미지 생성은 페어 스킬(`higgsfield-image`) 또는 외부(Discord/web alpha)</li>
     </ul>
   </div>
   <div class="cw-rel">
@@ -417,14 +417,14 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
       <span class="badge">MINOR + PATCH</span>
     </div>
     <div class="ttl">moai-commerce 신규 3 + Higgsfield MCP 정정 + 어트리뷰션 정책 변경</div>
-    <div class="desc">한국 정통망법 광고 메시지 자동 게이트(과태료 3,000만 원 회피) · 앱 푸시 4원칙·30+ 브랜드 레퍼런스 · LTV/CAC 6대 지표·D2C 벤치마크 등 moai-commerce 신규 3 스킬. Higgsfield MCP 설정·툴명·요금 표기 6건 정정(character-mgmt·video-gen·speech-video). 정승우님 자료 공식 출처 모두 제거(내용·구조 보존, GOOS 컨펌). 130 → <strong>134 스킬</strong>, 동기화 지점 152 → 156.</div>
+    <div class="desc">한국 정통망법 광고 메시지 자동 게이트(과태료 3,000만 원 회피) · 앱 푸시 4원칙·30+ 브랜드 레퍼런스 · LTV/CAC 6대 지표·D2C 벤치마크 등 moai-commerce 신규 3 스킬. Higgsfield MCP 설정·툴명·요금 표기 6건 정정. 130 → <strong>134 스킬</strong>, 동기화 지점 152 → 156.</div>
     <ul>
       <li><strong>commerce-marketing-compliance-kr (신규)</strong> — 한국 정통망법 광고·정보성 메시지 자동 게이트(BLOCK/PASS). 6대 점검(광고성 판정·옵트인·야간 발송 21시-익일 8시·(광고) 표기·무료 수신거부·발신자 정보) + 위반 조항(제50조 1·3·4항·제76조). 1회 위반 최대 3,000만 원 + 책임자 1년 이하 징역 회피</li>
       <li><strong>commerce-push-planner (신규)</strong> — 앱 푸시 4원칙(왜/언제/누구에게/어떻게) + Timely·Personal·Actionable 3요소 + 카피 변형 3안(오늘만 vs 매일 / 누구나 vs 너에게만 / 숫자 vs 게이미피케이션) + 한국 30+ 브랜드 레퍼런스(토스·배민·오늘의집·쿠팡·에이블리·지그재그·29CM·인프런·야놀자·퍼블리·넷플릭스·듀오링고 등)</li>
       <li><strong>commerce-ltv-cac-architect (신규)</strong> — CAC→재구매율→구매주기→ARPU→공헌이익→LTV 6대 지표 연결 + LTV/CAC ratio 4구간(&lt;1·1-3·3-5·≥5) + 광고 의존도 진단(30%+ 위험 → 11-15% 정상) + 광고 의존도 탈출 6단계 로드맵 + 한국 D2C 카테고리 벤치마크(화장품·식품·패션·가전·펫·구독 SaaS)</li>
       <li><strong>Higgsfield MCP 정정 6건</strong> — character-mgmt MCP command + 요금 표기 정정, video-gen·speech-video MCP 툴명 `higgsfield.*` 네임스페이스 통일</li>
       <li><strong>v2.6.1 PATCH 보강 3</strong> — channel-message AARRR 5단계 × 한국 30+ 브랜드 풀스택, product-naming 6질문 + 데이터랩 4단계 워크플로우, market-research 4축 세분화 + USP 3 차별 축. 모두 새 섹션 추가, Breaking 없음</li>
-      <li><strong>어트리뷰션 정책 변경</strong> — 정승우님 자료 공식 출처 클로즈 모두 제거(GOOS 컨펌). 내용·구조·버전 표기는 보존하여 사용자 경험 무변동(NOTICE·14 SKILL.md·2 README)</li>
+      <li><strong>출처 정리</strong> — 외부 참고 자료의 공식 출처 표기를 정리하고 내용·구조는 보존</li>
     </ul>
   </div>
   <div class="cw-rel">
@@ -449,8 +449,8 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
       <span class="date">2026-05-12</span>
       <span class="badge">MINOR</span>
     </div>
-    <div class="ttl">"캠프 후속 인사이트 통합본" — 13건(신규 5 + 강화 8)</div>
-    <div class="desc">정승우님 본인 노하우 3개 문서(쿠팡 매출 9배 비법 전자책 126p + 커머스 업무 자동화 24p + 커머스 매출향상 AI 활용 26p) + 광고 심리학 완전판(13장 376줄)을 분석해 13건(신규 5 + 강화 8) 통합. 마켓플레이스 124 → 129 스킬.</div>
+    <div class="ttl">커머스 인사이트 통합 — 13건(신규 5 + 강화 8)</div>
+    <div class="desc">커머스 실전 운영 노하우와 광고 심리학을 분석해 13건(신규 5 + 강화 8) 통합. 마켓플레이스 124 → 129 스킬.</div>
   </div>
   <div class="cw-rel">
     <div class="ver-row">
@@ -458,8 +458,8 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
       <span class="date">2026-05-12</span>
       <span class="badge">MINOR</span>
     </div>
-    <div class="ttl">"모두의 커머스 3일 마스터 캠프" 통합본 — 17 신규 + 6 강화 스킬</div>
-    <div class="desc">월 매출 100만-10억 스마트스토어·자사몰 셀러가 외주 없이 3일 만에 신상품 1개의 상세페이지·광고·SNS·동영상을 직접 제작·운영하는 21세션·18개 산출물 데이터 체인 강의의 백엔드 도구.</div>
+    <div class="ttl">커머스 풀세트 통합 — 17 신규 + 6 강화 스킬</div>
+    <div class="desc">스마트스토어·자사몰 셀러가 외주 없이 신상품의 상세페이지·광고·SNS·동영상을 직접 제작·운영하도록 돕는 커머스 풀세트.</div>
   </div>
   <div class="cw-rel">
     <div class="ver-row">

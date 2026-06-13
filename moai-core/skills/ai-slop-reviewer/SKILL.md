@@ -8,10 +8,10 @@ description: |
   - "너무 AI 같아", "너무 딱딱해", "자연스럽게 다듬어줘"
   - "이 글 AI가 쓴 것 같아 보여서...", "어색한 표현 수정해줘"
   - "보고서가 너무 기계적이야", "이메일이 너무 형식적이야"
+  - "AI 패턴 검사해줘", "기계적인 느낌 없애줘"
   - Cowork/다른 AI 도구로 생성한 문서의 후처리 검수 요청 시
   - 글쓰기 결과물을 인간적인 톤으로 개선하고 싶을 때
 user-invocable: true
-  - "AI 패턴 검사해줘", "기계적인 느낌 없애줘"
 version: 2.15.0
 ---
 
@@ -21,7 +21,7 @@ AI가 생성한 텍스트는 내용은 정확하지만, 종종 기계적이고 �
 
 ## 개요
 
-이 스킬은 **모든 텍스트 산출물 워크플로우의 마지막 단계**에서 호출되어 AI 특유의 기계적 패턴을 제거합니다. CLAUDE.local.md §3-2에 따라 블로그, 뉴스레터, 카피, 사업계획서, 계약서, 제안서, 보고서, 이메일, 랜딩 카피, 사업보고, 특허 초안, 강의자료 원고 등 **모든 텍스트 산출물**에 적용됩니다.
+이 스킬은 **모든 텍스트 산출물 워크플로우의 마지막 단계**에서 호출되어 AI 특유의 기계적 패턴을 제거합니다. 블로그, 뉴스레터, 카피, 사업계획서, 계약서, 제안서, 보고서, 이메일, 랜딩 카피, 사업보고, 특허 초안, 강의자료 원고 등 **모든 텍스트 산출물**에 적용됩니다.
 
 코드, JSON/CSV 데이터, 차트·표, 숫자 리포트, 단순 조회 응답에는 적용하지 않습니다.
 
@@ -271,14 +271,14 @@ Most productivity tools promise to save you time. Most of them don't. But after 
 - `moai-office:pptx-designer` — PPTX 발표자료 생성
 
 ### 후속 스킬 (선택적)
-- `moai-media:nano-banana` — (선택) 블로그 발행 체인의 이미지 생성 단계
+- `moai-media:higgsfield-image` — (선택) 블로그 발행 체인의 이미지 생성 단계
 
 ### 통합 워크플로우
 이 스킬은 다음 체인의 **마지막 단계**로 호출됩니다:
 
 ```
 블로그 발행:
-  blog → ai-slop-reviewer → (선택) nano-banana
+  blog → ai-slop-reviewer → (선택) higgsfield-image
 
 사업계획서(PPT):
   strategy-planner → pptx-designer → ai-slop-reviewer
@@ -287,7 +287,7 @@ Most productivity tools promise to save you time. Most of them don't. But after 
   copywriting → landing-page → ai-slop-reviewer
 ```
 
-CLAUDE.local.md §3-2에 따라 **모든 텍스트 산출물 워크플로우의 필수 후처리 단계**입니다.
+**모든 텍스트 산출물 워크플로우의 필수 후처리 단계**입니다.
 
 ---
 

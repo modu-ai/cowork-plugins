@@ -80,7 +80,7 @@ flowchart LR
 | NDA 검토 | 1. `nda-triage`<br>2. `docx-generator(수정본)`<br>3. `ai-slop-reviewer` | moai-legal, moai-office, moai-core |
 | 계약서 리뷰 | 1. `contract-review`<br>2. `legal-risk`<br>3. `docx-generator` | moai-legal, moai-office |
 | 주간 보고서 | 1. `status-reporter`<br>2. `xlsx-creator`<br>3. `docx-generator`<br>4. `ai-slop-reviewer` | moai-operations, moai-office, moai-core |
-| 카드뉴스 | 1. `card-news`<br>2. `nano-banana(이미지)`<br>3. `pptx-designer` | moai-content, moai-media, moai-office |
+| 카드뉴스 | 1. `card-news`<br>2. `higgsfield-image(이미지)`<br>3. `pptx-designer` | moai-content, moai-media, moai-office |
 | 쇼츠 영상 | 1. `social-media(스크립트)`<br>2. `audio-gen(TTS)`<br>3. `video-gen(영상)` | moai-content, moai-media |
 | 연구 논문 | 1. `paper-search`<br>2. `paper-writer`<br>3. `docx-generator`<br>4. `ai-slop-reviewer` | moai-research, moai-office, moai-core |
 | 면접 준비 | 1. `job-analyzer`<br>2. `interview-coach`<br>3. `interview-coach(모의)` | moai-career |

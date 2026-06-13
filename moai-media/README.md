@@ -135,4 +135,4 @@ audio-gen (원본 음성 업로드 → 영어·일본어·중국어 더빙 동�
 
 ## 라이선스
 
-MIT · [CHANGELOG](../CHANGELOG.md) · [CLAUDE.local.md](../CLAUDE.local.md)
+MIT · [CHANGELOG](../CHANGELOG.md)

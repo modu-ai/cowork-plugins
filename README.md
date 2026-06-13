@@ -139,7 +139,7 @@ moai-media 신규 3 스킬 추가 (OpenAI/Google/Midjourney 공식 가이드 기
   - [`gemini-3-image-prompt`](./moai-media/skills/gemini-3-image-prompt/) — Google Gemini 3 Pro Image (Nano Banana Pro) 전용. [Google AI for Developers](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image-preview) 5-component 구조 + Creative Director 어조 + 카메라 하드웨어 지정(Fujifilm·GoPro·iPhone) + Reference image 14 슬롯 + Search Grounding + Thinking 모드.
   - [`midjourney-v8-prompt`](./moai-media/skills/midjourney-v8-prompt/) — Midjourney v8.1 전용. [Midjourney Parameter List](https://docs.midjourney.com/hc/en-us/articles/32859204029709-Parameter-List) 기반 키워드+`--파라미터` + `--sref`/`--oref`/`--cw`/`--p` 3대 reference 시스템 + 6대 비용·동작 함정 자동 검사(`--hd --q 4` 16x cost, `--cw 100` 상속 함정, `--cref` deprecation 교체).
 
-- **공통 사양** — AskUserQuestion 라운드 ≤ 3, 4 프리셋(제품샷·인물·일러스트·풍경) × 4 슬롯, 3개 모델 동시 출력(자기 모델 메인 + 다른 2개 보조), 한국어 해설, 페어 스킬(image-gen·nano-banana·media-gpt-image2-builder) 안내
+- **공통 사양** — AskUserQuestion 라운드 ≤ 3, 4 프리셋(제품샷·인물·일러스트·풍경) × 4 슬롯, 3개 모델 동시 출력(자기 모델 메인 + 다른 2개 보조), 한국어 해설, 페어 스킬(image-gen·higgsfield-image·media-gpt-image2-builder) 안내
 - **책임 경계** — 본 스킬 3종은 **프롬프트 텍스트만 산출**. 실제 이미지 생성은 페어 스킬 또는 사용자가 ChatGPT/Google AI Studio/Discord에서 직접 실행
 - **루브릭 자가 평가** 0.805 - 0.815 (통과 기준 0.70 ✅), AI Slop 검수 3개 모두 **APPROVE**
 
@@ -320,7 +320,7 @@ moai-commerce에 시장조사·JTBD·페르소나·상품명·채널 메시지·
 **v1.7.0 하이라이트**
 - **`moai-commerce` 신규 플러그인** — 한국 이커머스 상세페이지(상폐) 자동화. **13섹션 감정여정 카피**(Hero→Pain→…→CTA) + **1080×12720 단일 PNG 합성**(Pillow 자체 구현) + **쿠팡·네이버 스마트스토어·11번가/G마켓/옥션 가이드** + **상품 사진 촬영 브리프** 5종 스킬
 - **`detail-page-copy`** — 13섹션 카피 + ai-slop-reviewer 자동 체이닝, 10개 카테고리(electronics/fashion/food/beauty/home/supplement/pet/kids/handmade/general) 어조 가이드
-- **`detail-page-image`** — 섹션별 이미지 프롬프트 → `moai-media:nano-banana` 호출 → Pillow 세로 합성. 외부 패키지 설치 불필요
+- **`detail-page-image`** — 섹션별 이미지 프롬프트 → `moai-media:higgsfield-image` 호출 → Pillow 세로 합성. 외부 패키지 설치 불필요
 - **`marketplace-coupang` / `marketplace-naver`** — 채널별 정책·검색 키워드·금지문구·우수상품 기준 적용
 - **`product-photo-brief`** — ProductDNA 추출 + 13섹션 컷 매핑 + 추가 촬영 브리프 자동 생성
 - README Skills 배지 85 → **94** (moai-commerce 5개 + 누적 보정 4개)
@@ -715,7 +715,7 @@ Airtable/Google Sheets 커넥터로 데이터를 직접 분석합니다.
 **사용 API 키**: `ELEVENLABS_API_KEY`(audio-gen), `HIGGSFIELD_API_KEY`+`HIGGSFIELD_SECRET`(Higgsfield MCP 직접 사용 시).
 **번들 MCP 2종**: `elevenlabs`(local stdio via `uvx`), `higgsfield`(local stdio).
 
-> **변경 이력**: 이미지·영상 직접 생성은 **Higgsfield MCP로 단일 통합**되었습니다. v2.11.0에서 wrapper 스킬 12개(`nano-banana`·`image-gen`·`video-gen`·`speech-video`·`character-mgmt`·`media-moodboard`·`media-gpt-image2-builder`·`media-model-router`·`media-channel-ad-packager`·`media-ai-disclosure`·`media-canva-magic-layer` 등)를 제거하고 외부 MCP 직접 사용으로 환원했습니다.
+> **변경 이력**: 이미지·영상 직접 생성은 **Higgsfield MCP로 단일 통합**되었습니다. v2.11.0에서 wrapper 스킬 12개(`higgsfield-image`·`image-gen`·`video-gen`·`speech-video`·`character-mgmt`·`media-moodboard`·`media-gpt-image2-builder`·`media-model-router`·`media-channel-ad-packager`·`media-ai-disclosure`·`media-canva-magic-layer` 등)를 제거하고 외부 MCP 직접 사용으로 환원했습니다.
 
 ---
 
@@ -724,7 +724,7 @@ Airtable/Google Sheets 커넥터로 데이터를 직접 분석합니다.
 | 스킬 | 한글명 | 기능 |
 |------|--------|------|
 | detail-page-copy | 상세페이지 카피 | 13섹션 감정여정(Hero→Pain→…→CTA) + ai-slop-reviewer 자동 체이닝, 10개 카테고리 어조 가이드 |
-| detail-page-image | 상세페이지 이미지 | 섹션별 프롬프트 → nano-banana → Pillow 1080×12720 단일 PNG 합성 |
+| detail-page-image | 상세페이지 이미지 | 섹션별 프롬프트 → higgsfield-image → Pillow 1080×12720 단일 PNG 합성 |
 | product-photo-brief | 상품 사진 브리프 | ProductDNA 추출 + 13섹션 컷 매핑 + 추가 촬영 브리프 |
 | marketplace-coupang | 쿠팡 가이드 | 정책·검색 키워드·금지문구·우수상품·로켓배송 |
 | marketplace-naver | 네이버 가이드 | 스마트스토어 + 11번가/G마켓/옥션 4개 오픈마켓 통합 |
@@ -742,7 +742,7 @@ Airtable/Google Sheets 커넥터로 데이터를 직접 분석합니다.
 | commerce-integrated-strategy 🆕 v2.3 | 전략 1장 | 자동화 4단계·3 Phase 로드맵 |
 | commerce-morning-brief 🆕 v2.3 | 매일 브리핑 | 매장 운영 데이터 1줄 통합 |
 | commerce-order-summary 🆕 v2.3 | 주문 요약 | 주문 데이터 집계·추이 분석 |
-| coupang-ad-optimizer 🆕 v2.4 | 쿠팡 광고 최적화 | 3 캠페인 분류·검색/비검색 분리·엔드 ROAS·자동규칙 3종 (정승우님 노하우) |
+| coupang-ad-optimizer 🆕 v2.4 | 쿠팡 광고 최적화 | 3 캠페인 분류·검색/비검색 분리·엔드 ROAS·자동규칙 3종 |
 | commerce-margin-calculator 🆕 v2.4 | 마진 계산 | 채널별 수수료 자동 반영·엔드 ROAS 자동 계산 |
 | commerce-automation-audit 🆕 v2.4 | 자동화 진단 | 6대 영역 자동화 진단·우선순위 점수·3 Phase 로드맵·HITL Golden Rule |
 

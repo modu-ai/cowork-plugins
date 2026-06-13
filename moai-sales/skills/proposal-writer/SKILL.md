@@ -91,7 +91,7 @@ RFP가 제공된 경우, 모든 필수 항목을 추출해 체크리스트화합
 
 산출 직후 다음 후속 단계를 사용자에게 안내합니다:
 
-1. `ai-slop-reviewer`로 본문 검수 (CLAUDE.local.md §3-2 강제)
+1. `ai-slop-reviewer`로 본문 검수
 2. `docx-generator`(워드/PDF) 또는 `pptx-designer`(슬라이드) 출력
 3. 견적서 분리 발행 시 `quote-generator` 호출
 4. 발송 전 **반드시 사람이 최종 검토** (HubSpot Best Practice: Human-in-the-Loop)
@@ -164,7 +164,7 @@ RFP가 제공된 경우, 모든 필수 항목을 추출해 체크리스트화합
 ## 관련 커맨드
 
 - `/harness` — 본 스킬 자체의 추가 개선·재생성
-- (CLAUDE.local.md §3-3 등록 체인)
+- 등록된 스킬 체인:
   - B2B 영업 제안서: `market-analyst → proposal-writer → ai-slop-reviewer → docx-generator`
   - B2B 영업 슬라이드: `market-analyst → proposal-writer → ai-slop-reviewer → pptx-designer`
   - 견적서 분리: `proposal-writer → quote-generator → xlsx-creator`

@@ -85,7 +85,7 @@ VIP 고객 + 반복 + USP 직격 = 3×3×3 = 27 (최우선)
 
 ## 후속 체인 (텍스트 산출물 검수)
 
-본 스킬의 응답 템플릿(Level 1-5)·처리 순서 안내·고객 응대 카피는 `moai-core:ai-slop-reviewer`로 자동 후처리 체이닝됩니다 (CLAUDE.local.md §3-2 HARD). VIP·응급 대응 메시지가 AI 패턴(과한 형용사·번역체)을 포함하면 신뢰도가 무너지므로 검수 필수.
+본 스킬의 응답 템플릿(Level 1-5)·처리 순서 안내·고객 응대 카피는 `moai-core:ai-slop-reviewer`로 자동 후처리 체이닝됩니다. VIP·응급 대응 메시지가 AI 패턴(과한 형용사·번역체)을 포함하면 신뢰도가 무너지므로 검수 필수.
 
 ```text
 commerce-voc-triage → ai-slop-reviewer → 사용자 검토 → CS 발송
@@ -96,7 +96,3 @@ commerce-voc-triage → ai-slop-reviewer → 사용자 검토 → CS 발송
 - `commerce-review-aggregator` — VOC 원천 (페어, 다른 책임)
 - `commerce-channel-message` — 응답 메시지 카피
 - `ai-slop-reviewer` — 응답 템플릿 AI 슬롭 검수 (자동 체인, HARD)
-
-## SPEC
-
-`.moai/specs/SPEC-VOC-TRIAGE-001/spec.md` (v2.8.0 신규)

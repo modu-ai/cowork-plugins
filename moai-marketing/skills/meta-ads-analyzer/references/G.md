@@ -1,6 +1,5 @@
 # 부록 G — 4 출력 형식 명세
 
-SPEC-META-ADS-001 §2 + 작업명세서 부록 G.1-G.4 직접 인용.
 HTML 디자인 토큰: `moai-content:html-report` references/design-tokens.md SSOT 적용.
 
 ---

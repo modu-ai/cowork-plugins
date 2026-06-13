@@ -49,7 +49,7 @@ version: 2.15.0
 
 ## 후속 체인 (텍스트 산출물 검수)
 
-본 스킬의 상품명 변형 3안·해시태그 세트 30개·블로그 제목 3안은 모두 검색 노출·CTR에 직접 영향을 주는 텍스트 산출물이므로 `moai-core:ai-slop-reviewer`로 자동 후처리 체이닝됩니다 (CLAUDE.local.md §3-2 HARD). 트렌드 키워드를 그대로 차용한 부자연스러운 결합은 검수에서 정정됩니다.
+본 스킬의 상품명 변형 3안·해시태그 세트 30개·블로그 제목 3안은 모두 검색 노출·CTR에 직접 영향을 주는 텍스트 산출물이므로 `moai-core:ai-slop-reviewer`로 자동 후처리 체이닝됩니다. 트렌드 키워드를 그대로 차용한 부자연스러운 결합은 검수에서 정정됩니다.
 
 ```text
 commerce-trend-namer → ai-slop-reviewer → (선택) commerce-product-naming (검증)
@@ -60,7 +60,3 @@ commerce-trend-namer → ai-slop-reviewer → (선택) commerce-product-naming (
 - `commerce-product-naming` — 표준 상품명 3안 (페어)
 - `commerce-season-calendar` — 연간 시즌 캘린더
 - `ai-slop-reviewer` — 상품명·해시태그·블로그 제목 AI 슬롭 검수 (자동 체인, HARD)
-
-## SPEC
-
-`.moai/specs/SPEC-TREND-NAMER-001/spec.md` (v2.8.0 신규)

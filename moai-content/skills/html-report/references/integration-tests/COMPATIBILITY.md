@@ -1,6 +1,6 @@
 # P1 컨슈머 통합 호환성 보고서
 
-> html-report v2.2.0 Wave 3 검증 — 4개 P1 소비 스킬 통합 테스트 결과
+> html-report 호환성 검증 — 4개 P1 소비 스킬 통합 테스트 결과
 > 작성일: 2026-05-09
 
 ---
@@ -194,4 +194,4 @@ moai-business:daily-briefing → moai-content:html-report mode=status
 
 ---
 
-*작성: moai-content:html-report Wave 3 통합 검증 | html-report v2.2.0*
+*작성: moai-content:html-report 통합 검증*

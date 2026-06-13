@@ -107,7 +107,7 @@ version: 2.15.0
 
 ## 후속 체인 (텍스트 산출물 검수)
 
-본 스킬의 분기 캠페인 사전 준비 계획·시즌별 매출 피크 해설·카테고리별 권장 메시지 텍스트는 `moai-core:ai-slop-reviewer`로 자동 후처리 체이닝됩니다 (CLAUDE.local.md §3-2 HARD). 캘린더 표 자체는 데이터지만, 캠페인 계획 안내문·시즌 마케팅 권장사항 텍스트는 외부 보고서나 미팅 자료로 산출되는 경우가 많아 검수 필수.
+본 스킬의 분기 캠페인 사전 준비 계획·시즌별 매출 피크 해설·카테고리별 권장 메시지 텍스트는 `moai-core:ai-slop-reviewer`로 자동 후처리 체이닝됩니다. 캘린더 표 자체는 데이터지만, 캠페인 계획 안내문·시즌 마케팅 권장사항 텍스트는 외부 보고서나 미팅 자료로 산출되는 경우가 많아 검수 필수.
 
 ```text
 commerce-season-calendar → ai-slop-reviewer → (선택) commerce-promotion-planner (시즌별 프로모션 상세 기획)
@@ -118,7 +118,3 @@ commerce-season-calendar → ai-slop-reviewer → (선택) commerce-promotion-pl
 - `commerce-trend-namer` — 시즌 키워드 변환 (페어)
 - `commerce-promotion-planner` — 시즌 프로모션 기획
 - `ai-slop-reviewer` — 캠페인 계획·시즌 해설 AI 슬롭 검수 (자동 체인, HARD)
-
-## SPEC
-
-`.moai/specs/SPEC-SEASON-CAL-001/spec.md` (v2.8.0 신규)

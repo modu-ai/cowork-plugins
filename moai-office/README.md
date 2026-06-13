@@ -15,6 +15,14 @@ Pretendard+명조 기반 한국형 디자인과 OWPML 표준을 지원합니다.
 | [xlsx-creator](./skills/xlsx-creator/) | openpyxl 기반 데이터 표, 차트, 수식, 조건부 서식 XLSX 생성 | 0 | ✅ |
 | [pdf-writer](./skills/pdf-writer/) | PyMuPDF + Noto Sans CJK 자동 다운로드. 한·중·일·영 다국어 PDF 생성 (Markdown/JSON/HTML/Text 입력) | 1 | ✅ |
 
+## 에이전트
+
+| 에이전트 | 역할 | 위임 트리거 예시 |
+|----------|------|------------------|
+| [doc-qa](./agents/doc-qa.md) | 생성된 DOCX·PPTX·XLSX·HWPX·PDF를 열어 구조·내용·요구사항 충족을 독립 컨텍스트에서 검증 (읽기 전용, PASS/FAIL 보고) | "방금 만든 PPT 품질 검사해줘", 문서 생성 직후 플레이스홀더 잔존·분량 미달·한글 깨짐 점검 |
+
+> 서브에이전트는 Cowork·Claude Code 전용입니다 (claude.ai Chat에서는 미지원).
+
 ## 스크립트
 
 | 디렉토리 | 용도 |

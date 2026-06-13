@@ -14,6 +14,14 @@
 | [patent-analyzer](./skills/patent-analyzer/) | 특허 맵, 선행기술 조사, FTO 분석 | 1 | ✅ |
 | [grant-writer](./skills/grant-writer/) | NRF/IITP/KIAT 연구비 신청서 작성 | 1 | ✅ |
 
+## 에이전트
+
+| 에이전트명 | 역할 | 위임 트리거 예시 |
+|------------|------|------------------|
+| [research-scout](./agents/research-scout.md) | 격리 컨텍스트에서 다중 소스 검색·수집·교차검증 후 출처 포함 요약만 반환 (읽기 전용) | "경쟁사·시장 자료를 여러 소스에서 조사해 출처 포함으로 요약해줘" |
+
+> 에이전트는 Cowork·Claude Code 전용입니다 (Chat에서는 미지원).
+
 ## API 키 (선택)
 
 | 서비스 | 환경변수 | 발급처 |

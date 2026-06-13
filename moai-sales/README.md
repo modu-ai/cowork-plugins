@@ -50,7 +50,7 @@ B2B 영업 슬라이드
 
 - **국세청 전자세금계산서**: 모든 가격 섹션에 VAT 별도/포함 명시 강제
 - **NDA 처리**: 고객사 비밀 정보 포함 시 `moai-legal/nda-triage` 체이닝 권고
-- **AI Slop 후처리**: 모든 텍스트 산출물 마지막 단계에 `moai-core/ai-slop-reviewer` 강제 (CLAUDE.local.md §3-2)
+- **AI Slop 후처리**: 모든 텍스트 산출물 마지막 단계에 `moai-core/ai-slop-reviewer` 강제
 
 ## 출처 및 베스트 프랙티스
 
