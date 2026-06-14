@@ -1,11 +1,19 @@
 ---
 name: grant-writer
-description: >
-  연구비 신청서를 작성합니다.
-  '연구비 신청서', 'NRF 과제', 'IITP 사업', '정부 과제 신청', '연구 제안서'라고 요청할 때 사용하세요.
-  한국연구재단(NRF), IITP, KIAT, 중소벤처기업부 등 주요 연구비 양식에 맞춘 신청서를 작성합니다.
+description: |
+  한국연구재단(NRF)·IITP·KIAT·중소벤처기업부 양식에 맞춘 정부 연구비 신청서 초안을 만들어 드립니다.
+  다음과 같은 요청 시 사용하세요:
+  - "기초연구과제 신청서 써줘. 주제는 딥러닝 의료 영상 진단이야"
+  - "NRF 중견연구 제안서 작성해줘. 3년 프로젝트야"
+  - "IITP ICT R&D 사업계획서 초안 만들어줘"
+  - "TIPS 과제 신청서 써줘. AI 이상 탐지 기술이야"
+  - "KIAT 산업기술혁신 연구비 신청서 작성해줘"
+  - "정부 과제 제안서 초안 잡아줘"
+  - "국가 R&D 사업 신청서 양식대로 써줘"
+  연구 목표·내용·방법론·기대효과·예산 섹션을 기관 양식에 맞춰 구성하고, 평가 기준 대비 자체 점검표까지 만들어 ai-slop 검수 체인으로 마무리합니다.
+  [책임 경계] 정부 일반 지원사업은 moai-business:kr-gov-grant
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 연구비 신청서 작성 (Grant Writer)
@@ -42,7 +50,7 @@ AskUserQuestion으로 지원 기관과 사업 유형을 선택받습니다:
 - 연구 목표 및 기대 성과
 - 연구팀 구성 및 참여 기관
 - 연구 기간 및 예산 규모
-- 선행연구 현황 (선행연조사 필요시 paper-search 연계)
+- 선행연구 현황 (선행연구 조사 필요시 moai-research:paper-search 연계)
 
 ### 3단계: 양식별 섹션 작성
 
@@ -73,8 +81,8 @@ AskUserQuestion으로 지원 기관과 사업 유형을 선택받습니다:
 
 ### 4단계: 시각화 및 보완 (선택)
 
-- 기술 로드맵/간트 차트: data-visualizer 스킬 연계
-- 선행연구 인용: paper-search 스킬로 논문 검색
+- 기술 로드맵/간트 차트: moai-data:data-visualizer 스킬 연계
+- 선행연구 인용: moai-research:paper-search 스킬로 논문 검색
 - 평가 기준 대비 자체 점검 및 약점 보완 제안
 
 ### 5단계: 최종 검토
@@ -100,15 +108,25 @@ AskUserQuestion으로 지원 기관과 사업 유형을 선택받습니다:
 
 - 본 스킬은 참고용 초안을 생성합니다. 최종 제출 전 반드시 해당 기관의 공식 양식과 지침을 확인해야 합니다.
 - 연구비 신청서는 각 기관의 가이드라인과 평가 기준이 상이하므로, 지원 기관별 맞춤 작성이 필요합니다.
-- 선행연구 조사가 필요한 경우 paper-search 스킬을 먼저 실행하여 관련 논문을 수집한 뒤 연계 작성하는 것을 권장합니다.
-- 시각화 자료(로드맵, 간트 차트)가 필요한 경우 data-visualizer 스킬을 연계하여 활용할 수 있습니다.
+- 선행연구 조사가 필요한 경우 moai-research:paper-search 스킬을 먼저 실행하여 관련 논문을 수집한 뒤 연계 작성하는 것을 권장합니다.
+- 시각화 자료(로드맵, 간트 차트)가 필요한 경우 moai-data:data-visualizer 스킬을 연계하여 활용할 수 있습니다.
 
 ## 관련 스킬
 
 - **moai-research:paper-search** - 선행연조사 및 논문 검색
 - **moai-data:data-visualizer** - 기술 로드맵, 간트 차트 시각화
 - **moai-business:strategy-planner** - 사업화 계획 수립 (TIPS 등 창업 과제)
+
+### 후처리 체인 (본문/서술 산출물)
+
+연구비 신청서 본문 등 서술형 텍스트를 작성한 뒤에는 다음 체인으로 마무리합니다:
+
+`grant-writer → moai-core:ai-slop-reviewer → moai-content:humanize-korean`
+
 - **moai-core:ai-slop-reviewer** - 작성된 신청서 AI 패턴 검수 및 후처리
+- **moai-content:humanize-korean** - 한국어 문장 자연화(AI 티 제거, 의미 보존)
+
+> 예산 요구 내역·기술 로드맵·간트 차트 등 데이터/표 산출물은 본 체인 대상이 아니며, 시각화가 필요하면 **moai-data:data-visualizer**로 라우팅합니다.
 
 ## 면책 조항
 

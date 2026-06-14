@@ -1,27 +1,27 @@
 ---
 name: mcp-connector-setup
 description: |
-  [책임 경계] Drive·Notion·Higgsfield·OpenAI 4커넥터 인증·환경변수·트러블슈팅 가이드 전담. 페어 moai-commerce:commerce-morning-brief(MCP 매장 데이터 호출)와 명확히 구분 — 본 스킬은 커넥터 설치·인증 단계, 페어는 인증 이후 실제 MCP 호출 결과물.
+  [책임 경계] Drive·Notion·Higgsfield 3커넥터 인증·환경변수·트러블슈팅 가이드 전담. 페어 moai-commerce:commerce-morning-brief(MCP 매장 데이터 호출)와 명확히 구분 — 본 스킬은 커넥터 설치·인증 단계, 페어는 인증 이후 실제 MCP 호출 결과물.
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
-  "MCP 커넥터 연결", "Drive 인증 방법", "Notion Integration Token 어디서", "Higgsfield 키 발급", "OpenAI API 키 발급", "Windows MAX_PATH 오류", "한글 파일명 30자 오류", "computer:// 링크 안 열려요", "커넥터 4개 연결 방법", "MCP 4커넥터 인증", "커넥터 오류 해결".
+  "MCP 커넥터 연결", "Drive 인증 방법", "Notion Integration Token 어디서", "Higgsfield 키 발급", "Windows MAX_PATH 오류", "한글 파일명 30자 오류", "computer:// 링크 안 열려요", "커넥터 3개 연결 방법", "MCP 3커넥터 인증", "커넥터 오류 해결".
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # MCP 커넥터 셋업 가이드
 
 ## 개요
 
-Drive·Notion·Higgsfield·OpenAI 4커넥터를 Cowork에 연결하는 단계별 가이드를 제공합니다. 인증 흐름, API 키 입력, 1회 호출 검증, 트러블슈팅까지 셋업 전 과정을 다룹니다.
+Drive·Notion·Higgsfield 3커넥터를 Cowork에 연결하는 단계별 가이드를 제공합니다. 인증 흐름, API 키 입력, 1회 호출 검증, 트러블슈팅까지 셋업 전 과정을 다룹니다.
 
 **셋업 완료 체크리스트**
-Drive·Notion·Higgsfield·OpenAI — 인증 성공 + 1회 호출 성공 (Drive: 폴더 list / Notion: 공유 페이지 read / Higgsfield: 모델 list / OpenAI: GPT Image 2 ping)
+Drive·Notion·Higgsfield — 인증 성공 + 1회 호출 성공 (Drive: 폴더 list / Notion: 공유 페이지 read / Higgsfield: 모델 list)
 
 ---
 
 ## 트리거 키워드
 
-MCP 커넥터 연결, Drive 인증, Notion Integration Token, Higgsfield API 키, OpenAI Project Keys, 4커넥터 설치, computer:// 링크, MAX_PATH 오류, 한글 파일명 오류, OAuth redirect URI
+MCP 커넥터 연결, Drive 인증, Notion Integration Token, Higgsfield API 키, 3커넥터 설치, computer:// 링크, MAX_PATH 오류, 한글 파일명 오류, OAuth redirect URI
 
 ---
 
@@ -33,7 +33,6 @@ MCP 커넥터 연결, Drive 인증, Notion Integration Token, Higgsfield API 키
 - Google 계정 (Drive)
 - Notion 계정
 - Higgsfield 계정 + 워크스페이스 크레딧 충전
-- OpenAI 계정 (API 키 발급 가능 상태)
 
 > **[HARD] API 키 보안 수칙**: API 키는 본인이 직접 발급·보관합니다. 채팅 대화나 공유 문서에 키 원문을 붙여넣지 말고, 커넥터 설정 화면의 API Key 필드에만 입력하세요.
 
@@ -95,25 +94,6 @@ MCP 커넥터 연결, Drive 인증, Notion Integration Token, Higgsfield API 키
 
 ---
 
-### Connector D — OpenAI
-
-**목적**: GPT Image 2를 활용한 상세페이지 이미지 생성
-
-**인증 방법**: API 키 방식
-
-**사용 범위**
-- **사용**: GPT Image 2 (이미지 생성)
-- **미사용**: GPT-5.5, Sora — 이미지 생성 워크플로우에는 필요하지 않음
-
-**인증 단계**
-1. Cowork 앱 → 설정 → MCP 커넥터 → OpenAI 선택
-2. API Key 필드에 발급받은 Project Key 입력 (발급처: platform.openai.com → API Keys)
-3. 연결 완료 후 GPT Image 2 ping 1회 호출로 검증
-
-**1회 호출 검증**: 모델 상태 응답이 나타나면 성공
-
----
-
 ## 트러블슈팅
 
 ### T1 — Windows MAX_PATH 260자 초과 오류
@@ -154,15 +134,14 @@ MCP 커넥터 연결, Drive 인증, Notion Integration Token, Higgsfield API 키
 
 ---
 
-### T4 — API 키 인증 실패 (Higgsfield·OpenAI)
+### T4 — API 키 인증 실패 (Higgsfield)
 
 **증상**: "Invalid API key" 또는 "Unauthorized" 오류
 
 **해결 방법**
 1. API 키 앞뒤 공백 없이 정확히 복사·붙여넣기 확인
-2. OpenAI: Project Keys 사용 확인 (계정 전체 API Keys 아님)
-3. Higgsfield: 워크스페이스 충전 여부 확인 (잔액 부족 시 인증 실패)
-4. 키 재발급 후 재시도
+2. Higgsfield: 워크스페이스 충전 여부 확인 (잔액 부족 시 인증 실패)
+3. 키 재발급 후 재시도
 
 ---
 
@@ -184,7 +163,7 @@ MCP 커넥터 연결, Drive 인증, Notion Integration Token, Higgsfield API 키
 
 ## 사전 점검 체크리스트 (`--check` 옵션)
 
-사전 준비물 기준으로 4커넥터 가입·인증 상태를 체크하는 옵션입니다.
+사전 준비물 기준으로 3커넥터 가입·인증 상태를 체크하는 옵션입니다.
 
 ```
 /mcp-connector-setup --check
@@ -195,7 +174,6 @@ MCP 커넥터 연결, Drive 인증, Notion Integration Token, Higgsfield API 키
 [✅] Google Drive — 계정 확인 완료
 [✅] Notion — 계정 확인 완료
 [⚠️] Higgsfield — 워크스페이스 크레딧 충전 미확인 (충전 후 재시도)
-[⚠️] OpenAI — API 키 미입력 (발급 후 입력 필요)
 ```
 
 ---
@@ -212,18 +190,13 @@ MCP 커넥터 연결, Drive 인증, Notion Integration Token, Higgsfield API 키
 
 → T1 (MAX_PATH 오류) 해결 방법 제공 + 대체 경로 안내
 
-**예시 3**
-> "OpenAI 키 어디서 발급받아요"
-
-→ platform.openai.com → API Keys → Project Keys 발급 URL 안내
-
 ---
 
 ## 출력 형식
 
 - 단계별 인증 가이드 (Markdown)
 - 트러블슈팅 해결 방법 (번호 목록)
-- `--check` 옵션: 4커넥터 상태 체크리스트 (`.md` 파일 저장 가능)
+- `--check` 옵션: 3커넥터 상태 체크리스트 (`.md` 파일 저장 가능)
 
 ---
 
@@ -234,23 +207,21 @@ MCP 커넥터 연결, Drive 인증, Notion Integration Token, Higgsfield API 키
 | Google Drive | OAuth (drive.readonly, drive.file) | 폴더 list 응답 |
 | Notion | OAuth (워크스페이스 연결) | 공유 페이지 read 응답 |
 | Higgsfield | API Key | 모델 list 응답 |
-| OpenAI | Project API Key | GPT Image 2 ping 응답 |
 
-4커넥터 모두 인증 성공 + 1회 호출 성공이면 셋업이 완료된 것입니다.
+3커넥터 모두 인증 성공 + 1회 호출 성공이면 셋업이 완료된 것입니다.
 
 ---
 
 ## 관련 스킬
 
-- `moai-commerce:commerce-morning-brief` — 인증 완료 후 매장 데이터 아침 브리핑
-- `moai-commerce:commerce-order-summary` — 인증 완료 후 신규 주문 통합 요약
+- `moai-commerce:commerce-morning-brief` — 인증 완료 후 매장 데이터 아침 브리핑 + 신규 주문 통합 요약 (주문 요약 모드)
 - `moai-media:higgsfield-image` / `moai-media:higgsfield-video` — Higgsfield 커넥터 인증 완료 후 이미지·영상 생성
 
 ---
 
 ## 이 스킬을 사용하지 말아야 할 때
 
-- 이미 4커넥터가 모두 연결된 경우 → `commerce-morning-brief` 또는 `commerce-order-summary` 직접 호출
+- 이미 3커넥터가 모두 연결된 경우 → `moai-commerce:commerce-morning-brief` 직접 호출 (전체 브리핑 또는 주문 요약 모드)
 - MCP 호출 결과물(아침 브리핑·주문 요약) 생성이 목적인 경우 → `moai-commerce` 스킬 사용
 - Cowork 앱 설치 자체가 안 되는 경우 → Cowork 공식 지원 채널 문의 (본 스킬 범위 외)
 - 광고 플랫폼 커넥터 (Meta 광고 등) 연결 → `moai-marketing:meta-ads-manager` 스킬 참조

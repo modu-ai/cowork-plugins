@@ -6,7 +6,7 @@ description: |
   "연간 시즌 캘린더", "블프 솽스이 일정", "한국 시즌 이벤트", "분기 캠페인 계획", "시즌별 매출 피크", "명절 마케팅", "발렌타인 이벤트".
   v2.8.0 신규.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 연간 시즌 캘린더 (Commerce Season Calendar)
@@ -115,6 +115,6 @@ commerce-season-calendar → ai-slop-reviewer → (선택) commerce-promotion-pl
 
 ## 관련 스킬
 
-- `commerce-trend-namer` — 시즌 키워드 변환 (페어)
+- `commerce-product-naming` — 시즌 트렌드 키워드 → 상품명·해시태그·블로그 제목 변환 (트렌드 변환 모드)
 - `commerce-promotion-planner` — 시즌 프로모션 기획
 - `ai-slop-reviewer` — 캠페인 계획·시즌 해설 AI 슬롭 검수 (자동 체인, HARD)

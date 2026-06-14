@@ -6,7 +6,7 @@ description: |
   "충성 100명 만들기", "신생 브랜드 부트스트랩", "블랭크 사례", "강아지 가방 케이스", "얼리어답터 100명", "초기 팬 구축", "100명에서 1만명으로".
   v2.8.0 신규.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 충성 100명 부트스트랩 (Commerce Early Fan Builder)

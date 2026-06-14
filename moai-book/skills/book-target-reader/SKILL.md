@@ -10,7 +10,7 @@ description: |
   - "독서 행동 분석", "책 구매 동기"
   - "독자 페르소나 카드 작성"
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # book-target-reader
@@ -324,9 +324,12 @@ JTBD와 페인포인트 매트릭스 만들어줘.
 - `moai-commerce:commerce-jtbd-persona` — 이커머스 상품용 JTBD·페르소나 (도서 외)
 - `moai-marketing:campaign-planner` — 마케팅 캠페인 페르소나
 
-### Post (검수)
+### Post (검수 — 정규 체인)
 - `moai-content:korean-spell-check` — 한글 맞춤법
-- `moai-core:ai-slop-reviewer` — 페르소나 카드 최종 검수
+- `moai-core:ai-slop-reviewer` — AI 슬롭 검수 (필수)
+- `moai-content:humanize-korean` — AI 티 정밀 윤문 (필수)
+
+> JTBD·페인포인트 매트릭스 같은 표는 데이터 출력이지만 **페르소나 카드 서술·카피 적용 가이드**는 산문입니다. 페르소나 산문은 정규 체인 **`book-target-reader → moai-core:ai-slop-reviewer → moai-content:humanize-korean`**으로 마무리합니다.
 
 ## 10. 출처
 

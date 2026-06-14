@@ -1,12 +1,19 @@
 ---
 name: campaign-planner
 description: |
-  [책임 경계] 마케팅 캠페인 기획·퍼포먼스 마케팅·A/B 테스트·인플루언서·CRM·고객 여정 — 전술 단위만 담당. 페어 스킬 moai-business:strategy-planner와 명확히 구분 — 본 스킬은 캠페인 단위 전술(1-3개월), 페어는 사업·OKR·BMC 단위 전략(1-5년).
-  '마케팅 캠페인 기획해줘', 'A/B 테스트 설계해줘', '인플루언서 전략 짜줘', '고객 여정 맵 만들어줘', 'CRM 전략 수립해줘'라고 요청하세요.
-  상세페이지·이미지 생성 책임은 v2.3.0부터 제거되었습니다. 상세페이지 카피는 moai-commerce:detail-page-copy / 상세페이지 합성 이미지는 moai-commerce:detail-page-image / AI 이미지·영상은 moai-media:* 스킬을 사용하세요.
-  v2.4.0 강화: 광고 심리학 완전판 통합 — 성과 공식(타겟×동기×가치×방아쇠×구조×크리에이티브×타이밍÷경쟁강도) + 6 방아쇠 + 9 인지편향 + PAS 카피 공식 + 후크 6종 + 영상 30초 구조 + 타겟 온도 4단계 매트릭스 (광고 심리학 13장 풀세트).
+  광고·SNS·이메일을 묶은 마케팅 캠페인 기획안(목표·채널·예산·KPI·크리에이티브 방향)을 만들어 드립니다.
+  다음과 같은 요청 시 사용하세요:
+  - "신제품 런칭 캠페인 기획해줘, 예산 500만원에 2030 여성 타깃"
+  - "A/B 테스트 설계해줘"
+  - "인플루언서 마케팅 전략 짜줘, 마이크로 위주로"
+  - "고객 여정 맵 만들어줘"
+  - "CRM 전략이랑 자동화 시퀀스 짜줘"
+  - "퍼널이랑 채널별 예산 배분 해줘"
+  - "광고 후크랑 카피 방향 잡아줘"
+  소비자 심리(구매 동기·심리 방아쇠·인지 편향)와 광고 카피 공식을 적용해 캠페인 전략 문서를 만들고, 서술 부분은 moai-core:ai-slop-reviewer → moai-content:humanize-korean으로 다듬습니다.
+  [책임 경계] vs moai-business:strategy-planner: 이 스킬=캠페인 단위 전술(1-3개월), 저 스킬=사업·전략 단위(1-5년). 상세페이지 카피·이미지·AI 영상은 moai-commerce:*·moai-media:* 사용.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 캠페인 플래너 (Campaign Planner)
@@ -15,7 +22,7 @@ version: 2.15.0
 
 마케팅 캠페인 기획 및 퍼포먼스 마케팅 전문 스킬입니다. A/B 테스트 설계, 그로스 해킹, 인플루언서 전략, CRM 전략, 고객 여정 맵, 영업 지원을 다룹니다.
 
-> **v2.3.0 책임 정리**: 본 스킬에서 "이커머스 상세페이지 제작·AI 이미지 생성" 책임이 제거되었습니다(SPEC-CATALOG-CLEANUP-007 REQ-CLEANUP-007). 상세페이지·이미지가 필요한 경우 아래 "관련 스킬" 표를 참고하세요.
+> 이 스킬은 캠페인 기획·전략에 집중합니다. 이커머스 상세페이지 제작이나 AI 이미지 생성이 필요하면 아래 "관련 스킬" 표를 참고하세요.
 
 ## 트리거 키워드
 
@@ -66,7 +73,13 @@ version: 2.15.0
 |------|------|
 | 예산이나 채널 정보가 없는 경우 | 업종·목표 기반 추천 예산 배분 제안 후 확인 |
 | 사업·OKR·BMC 단위 전략이 필요한 경우 | 본 스킬 범위 밖. `moai-business:strategy-planner`로 안내 |
-| 상세페이지·이미지 생성 요청 | 본 스킬 범위 밖 (v2.3.0부터 책임 분리). 아래 "관련 스킬" 표 참고 |
+| 상세페이지·이미지 생성 요청 | 본 스킬 범위 밖. 아래 "관련 스킬" 표 참고 |
+
+## 후처리 (필수 체인 — 서술 부분만)
+
+캠페인 전략 문서·인플루언서 협찬 제안서·고객 여정 맵 설명·CRM 전략 등 **서술형(prose) 산출물**은 발행 전 후처리 체인을 거칩니다. A/B 테스트 설계표·예산 배분표·매트릭스 등 **수치·표 산출물은 대상이 아닙니다**.
+
+**권장 체인(서술 부분)**: `campaign-planner(서술) → moai-core:ai-slop-reviewer → moai-content:humanize-korean`
 
 ## 관련 스킬
 
@@ -78,6 +91,8 @@ version: 2.15.0
 | `moai-marketing:performance-report` | 마케팅 성과 분석 보고서 |
 | `moai-marketing:email-sequence` | 이메일 시퀀스·드립 캠페인 카피 |
 | `moai-marketing:target-script` | 타겟별 핵심 메시지 분석 (페인포인트→메시지) |
+| `moai-core:ai-slop-reviewer` | 사후 체이닝(필수, 서술 부분): 캠페인 전략 문서의 AI 패턴 검수 |
+| `moai-content:humanize-korean` | 사후 체이닝(필수, 서술 부분): ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |
 | `moai-commerce:detail-page-copy` | 이커머스 상세페이지 카피 (13섹션 감정여정) |
 | `moai-commerce:detail-page-image` | 이커머스 상세페이지 합성 이미지 (1080×12720 PNG) |
 | `moai-media:image-gen` | AI 이미지 생성 |
@@ -86,14 +101,14 @@ version: 2.15.0
 ## 이 스킬을 사용하지 말아야 할 때
 
 - 사업 단위 전략(OKR·BMC·SWOT·Lean Canvas): `moai-business:strategy-planner` 사용
-- 이커머스 상세페이지 카피: `moai-commerce:detail-page-copy` 사용 (v2.3.0 책임 분리)
+- 이커머스 상세페이지 카피: `moai-commerce:detail-page-copy` 사용
 - 이커머스 상세페이지 합성 이미지: `moai-commerce:detail-page-image` 사용
 - AI 이미지·영상 생성: `moai-media:*` 스킬 사용
 - SNS 단건 콘텐츠 작성: `moai-marketing:sns-content` 사용
 
 ---
 
-## 광고 심리학 완전판 (v2.4.0 신규)
+## 광고 심리학 완전판
 
 ### 성과 공식 (책 전체의 지도)
 ```

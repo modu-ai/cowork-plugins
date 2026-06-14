@@ -1,15 +1,19 @@
 ---
 name: performance-report
-description: >
-  [책임 경계] 마케팅팀용 풀 리포트 (채널별 ROAS·KPI·인사이트·다음 액션 플랜 — 길이 제약 없음).
-  페어 moai-bi:executive-summary와 체이닝 관계 — 본 스킬은 마케팅 풀 리포트(전체), 페어는 임원 1pager 요약(≤500단어 압축).
-  체이닝 권장: performance-report 출력 → executive-summary 입력 → C-level 1pager.
-  GA4, 네이버 광고, 메타 광고, 카카오모먼트 채널별 ROAS·KPI를 분석하고 성과 보고서를 생성합니다.
-  '마케팅 성과 보고서 만들어줘', 'ROAS 분석해줘', 'GA4 데이터 해석해줘',
-  '광고비 분석해줘', '채널별 KPI 리포트 써줘'라고 요청하세요.
-  경영진용 요약과 실무팀용 상세 분석, 다음 기간 액션 플랜을 함께 제공합니다.
+description: |
+  GA4·네이버·메타·카카오·구글 광고 데이터를 묶어 채널별 ROAS·KPI를 분석하고, 인사이트와 다음 액션 플랜까지 담은 마케팅 성과 보고서를 만들어 드립니다.
+  다음과 같은 요청 시 사용하세요:
+  - "지난달 마케팅 성과 보고서 만들어줘"
+  - "ROAS 분석해줘"
+  - "GA4 데이터 해석해줘"
+  - "네이버랑 메타 광고 통합해서 분석해줘"
+  - "채널별 KPI 리포트 써줘"
+  - "분기 마케팅 성과를 경영진 보고용으로 정리해줘"
+  - "광고비 어디서 새는지 분석해줘"
+  경영진 요약과 실무용 상세 분석, 예산 재배분 권고를 함께 만들고, 서술 부분은 moai-core:ai-slop-reviewer → moai-content:humanize-korean으로 다듬습니다.
+  [책임 경계] vs moai-bi:executive-summary: 이 스킬=마케팅 풀 리포트(전체), 저 스킬=임원 1pager 요약(압축). 이 스킬 출력을 그대로 executive-summary에 넘겨 1pager로 만들 수 있습니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 퍼포먼스 리포트 (Performance Report)
@@ -213,9 +217,20 @@ ROAS 단일 지표만 보지 말고 **누적 이익 = LTV × 재구매**까지 �
 | 채널이 너무 많아 복잡한 경우 | 매출 기여도 상위 2-3개 채널 집중 분석 후 나머지 요약 처리 |
 | 업종 벤치마크가 없는 경우 | 범용 업종 기준값 제시. 사용자 직접 측정 KPI 설정 권고 |
 
+## 후처리 (필수 체인 — 서술 부분만)
+
+경영진 요약·핵심 발견·인사이트·다음 액션 플랜 등 **서술형(prose) 산출물**은 발행 전 후처리 체인을 거칩니다. 채널별 성과표·ROAS/LTV·CAC·NSM 표 등 **수치·표 산출물은 대상이 아니며**, 시각화가 필요하면 `moai-office:xlsx-creator` 또는 `moai-data:data-visualizer`로 라우팅합니다.
+
+**권장 체인(서술 부분)**: `performance-report(서술) → moai-core:ai-slop-reviewer → moai-content:humanize-korean`
+
 ## 관련 스킬
 
 | 스킬 | 사용 시점 |
 |------|----------|
 | `moai-marketing:campaign-planner` | 마케팅 캠페인 기획이나 새 캠페인 전략 수립 |
 | `moai-marketing:seo-audit` | SEO 감사나 검색 최적화 |
+| `moai-bi:executive-summary` | 풀 리포트 → 임원 1pager 요약 압축 |
+| `moai-core:ai-slop-reviewer` | 사후 체이닝(필수, 서술 부분): 리포트 내러티브의 AI 패턴 검수 |
+| `moai-content:humanize-korean` | 사후 체이닝(필수, 서술 부분): ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |
+| `moai-office:xlsx-creator` | 성과표·KPI 표 산출물 (수치·표 라우팅) |
+| `moai-data:data-visualizer` | 성과 대시보드·차트 시각화 (수치·표 라우팅) |

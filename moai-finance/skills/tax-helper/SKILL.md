@@ -5,7 +5,7 @@ description: >
   '3.3% 원천징수 계산해줘', '종합소득세 신고 방법 알려줘', '부가세 신고 어떻게 해줘'처럼 말하면 됩니다.
   프리랜서 3.3% 원천징수, 종합소득세, 부가가치세, 홈택스 신고 절차를 한국 세법 기준으로 안내합니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 세무 도우미 (Tax Helper)
@@ -134,13 +134,7 @@ version: 2.15.0
 
 ### 2026년 4대보험 요율
 
-| 보험 | 사업주 | 근로자 | 합계 | 비고 |
-|------|--------|--------|------|------|
-| 국민연금 | 4.75% | 4.75% | 9.5% | 2026년 인상 (9%→9.5%) |
-| 건강보험 | 3.595% | 3.595% | 7.19% | 2026년 인상 (3.545%→3.595%) |
-| 장기요양 | 건강보험의 12.95% | 건강보험의 12.95% | | |
-| 고용보험 | 0.9%+ | 0.9% | 1.8%+ | 사업주 추가분 업종별 차등 |
-| 산재보험 | 업종별 | - | 업종별 | 전액 사업주 부담 |
+> 2026년 4대보험 요율표·세율표는 이 스킬의 `references/2026-rates.md` 단일 SSOT를 참조한다. 변경 시 해당 파일만 갱신한다.
 
 ## 문제 해결
 
@@ -151,13 +145,26 @@ version: 2.15.0
 
 ## 관련 스킬
 
-- **moai-finance/close-management**: 월말 결산, 급여 정산
-- **moai-finance/financial-statements**: K-IFRS 재무제표 작성
-- **moai-finance/variance-analysis**: 예산 대비 실적 분석
+- **moai-finance:close-management**: 월말 결산, 급여 정산
+- **moai-finance:financial-statements**: K-IFRS 재무제표 작성
+- **moai-finance:variance-analysis**: 예산 대비 실적 분석
+
+### 후처리 체인 (세무 안내문·신고 절차 설명·절세 가이드 등 서술형 산출물)
+
+세무 안내문, 신고 절차 설명, 절세 가이드, 고객 회신문처럼 문장 산출물을 작성한 뒤에는 아래 체인으로 마무리한다.
+
+```
+tax-helper → moai-core:ai-slop-reviewer → moai-content:humanize-korean
+```
+
+- **moai-core:ai-slop-reviewer**: AI 티 나는 표현·과장·상투구 검수 및 수정
+- **moai-content:humanize-korean**: 한국어 자연스러움 보정 (서술 산출물 한정)
+
+> 원천징수 계산 내역·세율표·신고 일정 캘린더 같은 표·숫자 산출물은 체인 대상이 아니며, 엑셀화가 필요하면 `moai-office:xlsx-creator`로 라우팅한다.
 
 ## 이 스킬을 사용하지 말아야 할 때
 
 - **실제 세금 신고·납부**: 홈택스 신고 대행은 공인 세무사에게 의뢰하세요. AI가 작성한 내용은 참고용입니다.
-- **법인세 신고**: 법인 결산 및 법인세 신고는 `close-management` 스킬과 세무사를 활용하세요.
-- **재무제표 작성**: K-IFRS 기준 재무제표 작성은 `financial-statements` 스킬을 사용하세요.
+- **법인세 신고**: 법인 결산 및 법인세 신고는 `moai-finance:close-management` 스킬과 세무사를 활용하세요.
+- **재무제표 작성**: K-IFRS 기준 재무제표 작성은 `moai-finance:financial-statements` 스킬을 사용하세요.
 - **세무 조사 대응**: 세무조사 대응은 반드시 세무사·변호사와 함께 진행하세요.

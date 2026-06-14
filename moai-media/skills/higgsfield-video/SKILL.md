@@ -1,14 +1,19 @@
 ---
 name: higgsfield-video
-description: >
-  Higgsfield MCP를 호출해 영상을 생성합니다. "Higgsfield 영상", "Veo 3로", "Sora 2로",
-  "Kling 3.0으로", "Seedance Pro로", "Cinema Studio 3.5"라고 말하면 자동 호출됩니다.
-  Seedance 2.0·Seedance Pro·Cinema Studio 3.5·Kling 2.1 Master·Kling 2.5 Turbo·Kling 3.0·
-  Kling Avatars 2.0·MiniMax Hailuo 02·Google Veo 3·Sora 2·Wan 2.5 11개 공식 영상 모델을
-  자연어 요청 한 줄로 선택·생성합니다. 6가지 비디오 프리셋(UGC·Unboxing·Product review·
-  Hyper motion·TV spot·Wild Card)과 캐릭터 일관성(Kling Avatars 2.0), 비동기 잡 폴링까지 처리.
+description: |
+  Higgsfield MCP 기반 AI 영상을 자연어 요청 한 줄로 생성합니다.
+  다음과 같은 요청 시 사용하세요:
+  - "Higgsfield 영상 만들어줘"
+  - "Veo 3로 영상"
+  - "Sora 2로 영상 만들어"
+  - "Kling 3.0으로 영상"
+  - "Seedance Pro로 영상 생성"
+  - "Cinema Studio 3.5로 시네마틱 영상"
+  - "UGC 광고 영상 만들어줘"
+  - "캐릭터 일관성 있는 아바타 영상"
+  Seedance 2.0·Seedance Pro·Cinema Studio 3.5·Kling 2.1 Master·Kling 2.5 Turbo·Kling 3.0·Kling Avatars 2.0·MiniMax Hailuo 02·Google Veo 3·Sora 2·Wan 2.5 11개 공식 영상 모델과 6가지 비디오 프리셋(UGC·Unboxing·Product review·Hyper motion·TV spot·Wild Card), 캐릭터 일관성(Kling Avatars 2.0), 비동기 잡 폴링까지 처리한 완성 영상을 산출합니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # Higgsfield 영상 생성 (higgsfield-video)

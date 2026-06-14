@@ -1,16 +1,18 @@
 ---
 name: consulting-brief
 description: |
-  컨설팅 인게이지먼트 브리프 생성 스킬입니다. McKinsey, BCG, Bain 등 Major 3 컨설팅 펌의
-  방법론을 기반으로 산업별 전문 지식을 결합하여 구조화된 컨설팅 제안서를 작성합니다.
-
-  다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
-  - "컨설팅 브리프 작성", "컨설팅 제안서 만들어줘"
-  - "consulting brief", "업무 제안서", "컨설팅 리포트"
-  - "경영 컨설팅 제안", "전략 컨설팅 문서", "진단 보고서"
-  - "비즈니스 진단", "경영 개선 제안", "컨설팅 계획서"
+  현황 진단부터 30-60-90일 실행 계획까지 담은 전문 컨설팅 제안서(브리프)를 만들어 드립니다.
+  다음과 같은 요청 시 사용하세요:
+  - "컨설팅 제안서 만들어줘"
+  - "경영 진단 보고서 써줘"
+  - "우리 회사 컨설팅 브리프 작성해줘"
+  - "전략 컨설팅 문서 정리해줘"
+  - "경영 개선 제안서 만들어줘"
+  - "비즈니스 진단 리포트 써줘"
+  - "현황 분석하고 권고안까지 정리해줘"
+  Executive Summary·현황 분석·문제 정의·권고사항·실행 로드맵 구조로 작성하며, PPT 변환이나 AI 표현 다듬기로 이어집니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 컨설팅 브리프 (Consulting Brief)
@@ -305,12 +307,7 @@ OPL 75%, 재고 회전율 3.2회/년, 불량률 2.1%로 업계 평균 미달.
 
 ## 관련 스킬
 
-- **strategy-planner**: 전략 기획서 작성 시 활용
-- **market-analyst**: 시장 분석이 필요한 경우 먼저 실행
-- **pptx-designer**: 브리프를 PPT로 변환
-- **ai-slop-reviewer**: 최종 산출물 AI 패턴 검수 (필수)
-
----
-
-Version: 1.3.0
-Last Updated: 2026-04-30
+- **moai-business:strategy-planner**: 전략 기획서 작성 시 활용
+- **moai-business:market-analyst**: 시장 분석이 필요한 경우 먼저 실행
+- **moai-office:pptx-designer**: 브리프를 PPT로 변환
+- **moai-core:ai-slop-reviewer → moai-content:humanize-korean**: 최종 산출물 AI 패턴 검수 후 한국어 표현을 자연스럽게 다듬습니다 (필수)

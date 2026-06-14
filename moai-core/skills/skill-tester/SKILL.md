@@ -11,8 +11,8 @@ description: |
   - "스킬 루브릭 스코어링", "4차원 평가"
   - skill-builder Phase 5 이후 검증이 필요할 때
   - /harness 커맨드의 test 단계로 진입할 때
-user-invocable: true
-version: 2.15.0
+user-invocable: false
+version: 2.17.0
 ---
 
 # Skill Tester — 스킬 품질 검증 도구 (루브릭 + 체인 내장)
@@ -269,7 +269,7 @@ score = (correctness * 0.30) + (completeness * 0.25) + (clarity * 0.25) + (effic
 
 ```yaml
 skill: <skill-name>
-version: 2.15.0
+version: 2.17.0
 test_cases:
   - id: TC-001
     name: "happy-path"

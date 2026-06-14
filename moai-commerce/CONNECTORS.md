@@ -41,7 +41,7 @@ FOODSAFETYKOREA_API_KEY=식품안전나라_키      # 건강기능식품 + 회�
 ### 활용 스킬
 
 - `mfds-safety`: 의약품·식품 통합 안전 체크 (red flag 인터뷰 우선)
-- `commerce-strategy`: 헬스/F&B 신상품 기획 시 안전성 검토
+- `commerce-integrated-strategy`: 헬스/F&B 신상품 기획 시 안전성 검토
 - `detail-page-copy`: 안전 정보 반영한 상세페이지 카피
 - `marketplace-coupang`/`marketplace-naver`: 헬스/F&B 카테고리 상품 등록 시 안전성 검증
 

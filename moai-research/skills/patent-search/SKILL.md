@@ -1,11 +1,18 @@
 ---
 name: patent-search
-description: >
-  특허를 검색하고 분석합니다.
-  '특허 찾아줘', 'KIPRIS 검색', '선행기술 조사', '특허 출원 현황'이라고 요청할 때 사용하세요.
-  KIPRIS Plus API로 특허/실용신안/디자인/상표를 검색하고 서지정보를 정리합니다.
+description: |
+  KIPRIS Plus로 특허·실용신안·디자인·상표를 검색해 출원 현황과 서지정보를 정리해 드립니다.
+  다음과 같은 요청 시 사용하세요:
+  - "딥러닝 이미지 분류 관련 특허 검색해줘"
+  - "삼성전자 반도체 등록특허 찾아줘"
+  - "최근 5년간 배터리 기술 출원 현황 조사해줘"
+  - "자율주행 LiDAR 선행기술 조사해줘"
+  - "이 키워드로 특허 출원 추이 알려줘"
+  - "KIPRIS에서 상표 검색해줘"
+  - "이 분야 출원인별 경쟁 현황 정리해줘"
+  특허 목록·핵심 청구항 요약·IPC 분류별 분포를 정리하고, 선행기술 조사·FTO·출원서가 필요하면 moai-research:patent-analyzer로 이어집니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 특허 검색 (Patent Search)
@@ -113,7 +120,7 @@ GET https://plus.kipris.or.kr/openapi/rest/patentSearchInfo
 - KIPRIS Plus API 키가 없는 경우 검색을 진행할 수 없습니다. API 키는 KIPRIS 또는 data.go.kr에서 무료로 발급받을 수 있습니다.
 - KIPRIS API는 1,000회/월 무료 호출이 가능합니다. 초과 시 유료 요금제가 적용됩니다.
 - 일부 특허는 전문 텍스트를 확인하지 못할 수 있습니다. 이 경우 서지정보와 청구항 요약만 제공됩니다.
-- 선행기술 조사, FTO 분석, 출원서 작성이 필요한 경우 patent-analyzer 스킬로 연계합니다.
+- 선행기술 조사, FTO 분석, 출원서 작성이 필요한 경우 moai-research:patent-analyzer 스킬로 연계합니다.
 
 ## 관련 스킬
 
@@ -134,7 +141,7 @@ GET https://plus.kipris.or.kr/openapi/rest/patentSearchInfo
 - 개발가이드: https://plus.kipris.or.kr/portal/bbs/view.do?nttId=1060&bbsId=B0000001
 
 **IPC 분류코드**
-- A部: 생활필수품 (농업, 식품, 의약)
+- A부: 생활필수품 (농업, 식품, 의약)
 - B부: 처리조작, 운수 (분리, 혼합, 운수)
 - C부: 화학, 야금
 - D부: 섬유, 종이

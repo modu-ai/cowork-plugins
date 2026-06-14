@@ -4,7 +4,7 @@
 
 ## 개요
 
-고객 응대 품질은 어조(tone)에서 결정됩니다. 동일한 정보라도 어조에 따라 고객 만족도가 크게 달라집니다. 이 가이드는 한국 CS 환경에 최적화된 채널별 어조 기준을 제공하며, moai-hr의 `korean-tone-reviewer` 에이전트와의 연동 방법을 안내합니다.
+고객 응대 품질은 어조(tone)에서 결정됩니다. 동일한 정보라도 어조에 따라 고객 만족도가 크게 달라집니다. 이 가이드는 한국 CS 환경에 최적화된 채널별 어조 기준을 제공하며, 응답 초안 완성 후 적용하는 후처리 체인(`moai-core:ai-slop-reviewer → moai-content:humanize-korean`) 연동 방법을 안내합니다.
 
 ---
 
@@ -74,18 +74,25 @@
 
 ---
 
-## 4. korean-tone-reviewer 에이전트 연동
+## 4. 후처리 체인 연동
 
-moai-hr의 `korean-tone-reviewer` 에이전트를 호출하여 경어 수준과 어조 적절성을 자동으로 검증할 수 있습니다.
+응답 초안을 완성한 뒤에는 다음 체인으로 어조·표현 품질을 마무리합니다:
+
+```
+draft-response → moai-core:ai-slop-reviewer → moai-content:humanize-korean
+```
+
+- `moai-core:ai-slop-reviewer` — AI 티 나는 표현·과잉 수식·기계적 문장 패턴을 검수·수정
+- `moai-content:humanize-korean` — 한국어 경어 자연스러움과 사람이 쓴 듯한 어조로 다듬기
 
 ### 호출 방법
 
 ```
-korean-tone-reviewer에게 다음 응답의 경어 수준과 어조를 검토해달라고 요청하세요:
+[초안 응답 내용]을 작성한 뒤,
+moai-core:ai-slop-reviewer로 AI 패턴을 검수하고
+moai-content:humanize-korean으로 자연스러운 한국어 어조로 다듬어줘.
 
-[초안 응답 내용]
-
-검토 기준:
+맥락:
 - 채널: [이메일/채팅/전화/공문서]
 - 브랜드 어조: [공식/표준/친근]
 - 고객 상황: [일반 문의/불만 고객/VIP]
@@ -98,3 +105,4 @@ korean-tone-reviewer에게 다음 응답의 경어 수준과 어조를 검토해
 - 부정 표현 사용 여부
 - 채널 어조 적합성
 - 다음 단계 명확성
+- AI 티 나는 기계적 표현 제거 여부

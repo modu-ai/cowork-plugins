@@ -9,7 +9,7 @@ description: |
   - "출판사 투고 채널", "투고 우선순위"
   - "자비 출판 플랫폼", "독립 출판사 추천"
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # book-publisher-matcher
@@ -412,8 +412,9 @@ Phase 4 (D+90): 모두 거절 시 자비 출판 검토 또는 6개월 후 재투
 - `moai-business:kr-gov-grant` — 한국출판문화산업진흥원 지원사업 (출판 자금 지원)
 - `moai-business:investor-relations` — 출판 펀딩 (텀블벅 등)
 
-### Post (검수)
-- `moai-core:ai-slop-reviewer` — 출판사 매칭 결과 최종 검수
+### 산출물 라우팅 (데이터 출력)
+- 본 스킬의 핵심 산출물은 **Top 5 출판사 점수 매트릭스**(4 차원 가중 점수 표)로, 산문이 아닌 **데이터·표 출력**입니다. 따라서 AI 슬롭 검수(`moai-core:ai-slop-reviewer`)·윤문(`moai-content:humanize-korean`) 체인 대상이 아닙니다.
+- 점수표·비교표를 엑셀로 정리하려면 `moai-office:xlsx-creator`로 라우팅하세요.
 
 ## 10. 출처
 

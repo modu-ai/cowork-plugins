@@ -3,7 +3,7 @@ name: draft-response
 description: >
   고객 문의에 대한 응답 초안을 작성합니다. "이 문의에 답변 초안 써줘", "환불 요청 이메일 답변 만들어줘", "카카오채널 응답 초안 작성해줘"라고 요청할 때 사용하세요. 한국어 경어 기반 이메일·채팅·공식 답변서 초안을 채널별 어조에 맞게 생성합니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 응답 초안 작성 (Draft Response)
@@ -77,9 +77,16 @@ version: 2.15.0
 | 사내 답변 가이드라인 존재 | 가이드라인 핵심 원칙을 알려주시면 그에 맞춰 조정합니다 |
 | 법적 분쟁 가능성 있는 문의 | 법적 주의사항을 포함한 신중한 어조로 작성하며 법무팀 검토를 권장합니다 |
 
-## 공유 에이전트 활용
+## 관련 스킬 (후처리 체인)
 
-moai-hr의 `korean-tone-reviewer` 에이전트를 호출하여 경어 수준과 톤 적절성을 검증할 수 있습니다.
+응답 초안을 작성한 뒤에는 다음 체인으로 마무리합니다:
+
+```
+draft-response → moai-core:ai-slop-reviewer → moai-content:humanize-korean
+```
+
+- `moai-core:ai-slop-reviewer` — AI 티 나는 표현·과잉 수식·기계적 문장 패턴을 검수·수정
+- `moai-content:humanize-korean` — 한국어 경어 자연스러움과 사람이 쓴 듯한 어조로 다듬기
 
 채널별 어조 기준 및 금지 표현 목록: `references/tone-guide.md`
 

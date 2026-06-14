@@ -1,20 +1,19 @@
 ---
 name: market-analyst
 description: |
-  [책임 경계] 산업·시장 단위 분석 (TAM/SAM/SOM·포터 5요소·경쟁사 매핑·가격 전략 — 전략 단위 사업 검토용).
-  페어 moai-business:sbiz365-analyst(오프라인 상권 단위)·moai-commerce:commerce-market-research(온라인 카테고리 단위)와 시장 단위 차이로 명확히 구분.
-  사용 분기: 산업 단위 → 본 스킬 / 오프라인 상권 단위 → sbiz365-analyst / 온라인 카테고리·검색 키워드 단위 → commerce-market-research.
-  시장 조사, 경쟁사 분석, 가격 전략을 수행하는 시장 분석 전문 스킬입니다.
-  TAM/SAM/SOM 산출, 경쟁사 매핑, 포지셔닝 분석, 고객 세분화, 가격 모델 설계를
-  체계적으로 수행하여 구조화된 시장 분석 보고서를 생성합니다.
-
-  다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
-  - "TAM/SAM/SOM 산출해줘", "시장 규모 조사해줘", "시장 조사 보고서 작성"
-  - "경쟁사 분석해줘", "경쟁사 매핑", "포지셔닝 맵 만들어줘"
-  - "가격 전략 수립해줘", "가격 모델 설계", "고객 세분화"
-  - "market research", "competitive analysis", "pricing strategy"
+  시장 규모(TAM/SAM/SOM)·경쟁사 분석·가격 전략을 정리한 시장 분석 보고서를 만들어 드립니다.
+  다음과 같은 요청 시 사용하세요:
+  - "시장 규모 조사해줘"
+  - "TAM SAM SOM 산출해줘"
+  - "경쟁사 분석해줘"
+  - "포지셔닝 맵 만들어줘"
+  - "가격 전략 세워줘"
+  - "고객 세분화 좀 해줘"
+  - "시장 조사 보고서 써줘"
+  공개 데이터로 시장 규모·경쟁 구도·가격 모델을 분석하고, 인사이트와 권고안까지 정리합니다.
+  [책임 경계] vs 오프라인 상권 단위는 moai-business:sbiz365-analyst, 온라인 카테고리·검색 키워드 단위는 moai-commerce:commerce-market-research를 사용하세요. 이 스킬=산업·시장 단위 분석.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 시장 분석가 (Market Analyst)
@@ -316,12 +315,9 @@ Customer / Competitor / Company를 각각 나열하면 더 이상 전략 도구�
 
 ## 관련 스킬
 
-- **strategy-planner**: 시장 분석 결과를 바탕으로 전략 수립
-- **startup-launchpad**: 스타트업 시장 분석 및 진입 전략
-- **consulting-brief**: 컨설팅 제안서에 시장 분석 포함
-- **ai-slop-reviewer**: 생성된 분석 보고서 AI 패턴 검수 (필수)
+- **moai-business:strategy-planner**: 시장 분석 결과를 바탕으로 전략 수립
+- **moai-business:startup-launchpad**: 스타트업 시장 분석 및 진입 전략
+- **moai-business:consulting-brief**: 컨설팅 제안서에 시장 분석 포함
+- **moai-core:ai-slop-reviewer → moai-content:humanize-korean**: 생성된 분석 보고서 AI 패턴 검수 후 한국어 표현을 자연스럽게 다듬습니다 (필수)
 
----
-
-Version: 1.3.0
-Last Updated: 2026-04-30
+> 포지셔닝 매트릭스·TAM/SAM/SOM 산식·경쟁사 비교 등 **표·수치 산출물은 humanize 대상이 아닙니다** — `moai-office:xlsx-creator` 또는 `moai-data:data-visualizer`로 라우팅하세요. 위 체인은 인사이트·권고안 등 **서술(narrative) 본문**에만 적용합니다.

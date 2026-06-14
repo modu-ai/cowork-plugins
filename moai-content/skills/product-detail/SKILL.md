@@ -1,18 +1,18 @@
 ---
 name: product-detail
-description: >
-  [책임 경계] 코드 산출 (shadcn/ui React 컴포넌트 또는 단일 HTML — 스마트스토어/쿠팡/카카오 규격).
-  페어 moai-commerce:detail-page-copy와 명확히 구분 — 본 스킬은 코드 산출, 페어는 13섹션 카피 JSON 산출.
-  체이닝 권장: detail-page-planner(기획·Brief) → detail-page-copy(카피) → product-detail(코드) → detail-page-image(이미지). 페어 moai-content:landing-page와 구분 — 본 스킬은 카탈로그 상세, landing-page는 단독 전환 1페이지.
-  shadcn/ui 기반 제품·서비스 상세 페이지를 전환율 극대화 전략으로 설계·생성하는 스킬입니다.
-  "상세페이지 만들어줘", "제품 페이지 기획", "쇼핑몰 상세 설계", "상세페이지 디자인" 등
-  전자상거래 및 SaaS 제품의 상세 페이지 제작 요청 시 사용합니다.
-  코드 생성 전에 소크라테스식 테마 인터뷰(베이스 팔레트·컬러 모드·모서리 반경·효과)를
-  먼저 묻고, 네이버 스마트스토어/쿠팡/카카오 커머스 규격에 맞춰 HTML 또는
-  Next.js+shadcn/ui React 컴포넌트를 산출합니다.
-  블로그 글, SNS 포스팅, 랜딩 페이지(단독 전환 목적)에는 이 스킬을 사용하지 마세요.
+description: |
+  네이버 스마트스토어·쿠팡·카카오 규격에 맞는 제품 상세 페이지를 코드(HTML 또는 React 컴포넌트)로 만들어 드립니다. 전환율을 높이는 구조와 디자인 토큰까지 함께 산출합니다.
+  다음과 같은 요청 시 사용하세요:
+  - "스마트스토어 가습기 상세페이지 만들어줘"
+  - "쿠팡에 올릴 화장품 상세 페이지 기획해줘"
+  - "SaaS 제품 상세 페이지 React로 만들어줘"
+  - "카카오 선물하기용 상품 상세 설계해줘"
+  - "건강식품 상세페이지 카피랑 디자인이랑 코드 다 만들어줘"
+  - "모바일 전용 상세페이지 숏폼 스타일로 만들어줘"
+  코드 생성 전에 디자인 톤(색·모드·모서리·효과)을 먼저 묻습니다. 기획은 moai-content:detail-page-planner, 카피는 moai-commerce:detail-page-copy, 이미지는 moai-commerce:detail-page-image로 이어집니다.
+  [책임 경계] vs 페어 스킬: 이 스킬=코드 산출, moai-commerce:detail-page-copy=13섹션 카피 JSON, moai-content:landing-page=단독 전환 랜딩 1페이지.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 상세 페이지 (Product Detail)
@@ -237,14 +237,14 @@ AI가 생성한 상세 페이지 카피에 포함된 판매량, 평점, 고객 �
 
 ## 관련 스킬
 
-- `landing-page` — 랜딩 페이지 (단독 전환 목적)
-- `social-media` — 소셜미디어 콘텐츠
-- `copywriting` — 광고 카피
+- `moai-content:landing-page` — 랜딩 페이지 (단독 전환 목적)
+- `moai-marketing:sns-content` — 소셜미디어 콘텐츠
+- `moai-content:copywriting` — 광고 카피
 
 ## 이 스킬을 사용하지 말아야 할 때
 
-- 블로그 포스팅/리뷰 글: `blog` 스킬 사용
-- SNS 포스팅: `social-media` 스킬 사용
-- 랜딩 페이지: `landing-page` 스킬 사용
-- 광고 카피 단독 작성: `copywriting` 스킬 사용
+- 블로그 포스팅/리뷰 글: `moai-content:blog` 스킬 사용
+- SNS 포스팅: `moai-marketing:sns-content` 스킬 사용
+- 랜딩 페이지: `moai-content:landing-page` 스킬 사용
+- 광고 카피 단독 작성: `moai-content:copywriting` 스킬 사용
 - 카탈로그/리스트 페이지: 이 스킬의 범위 아님

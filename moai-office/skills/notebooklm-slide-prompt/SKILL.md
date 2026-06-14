@@ -13,7 +13,7 @@ description: |
   - "본문 MD를 NotebookLM 프롬프트로 변환", "강연용 슬라이드 자료 만들어줘"
   - "PPT 발표 자료 프롬프트", "발표 슬라이드 통째로 생성"
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # notebooklm-slide-prompt — NotebookLM 슬라이드 데크 + 나노바나나 이미지 프롬프트 빌더
@@ -33,7 +33,7 @@ version: 2.15.0
 | 입력 | 강연·강의 본문 MD | 보고서·기획 내용 + 디자인 요구 |
 | 언제 쓰나 | "NotebookLM으로 발표자료 만들 프롬프트가 필요" | "지금 바로 열리는 PPT 파일이 필요" |
 
-요약: **NotebookLM에 넣을 준비물(소스·대본·구조·이미지 프롬프트)을 만드는 빌더**가 이 스킬입니다. 실제 `.pptx` 파일이 필요하면 `pptx-designer`를 호출하세요. "PPT 파일로 뽑아줘"는 pptx-designer, "NotebookLM 슬라이드 프롬프트 만들어줘"는 이 스킬입니다.
+요약: **NotebookLM에 넣을 준비물(소스·대본·구조·이미지 프롬프트)을 만드는 빌더**가 이 스킬입니다. 실제 `.pptx` 파일이 필요하면 `moai-office:pptx-designer`를 호출하세요. "PPT 파일로 뽑아줘"는 `moai-office:pptx-designer`, "NotebookLM 슬라이드 프롬프트 만들어줘"는 이 스킬입니다.
 
 ## 트리거 키워드
 
@@ -308,5 +308,5 @@ moai-core:ai-slop-reviewer
 
 ## 참고
 
-- 원본 프롬프트 빌더 설계는 Goos Kim의 "하네스 강연 프로젝트"(2026-05) 내부 자료에서 출발했으며, cowork-plugins에 통합되며 frontmatter 정책(`metadata:` 블록 제거 + `version:` 단일 필드)에 맞춰 재구성되었습니다.
+- 원본 프롬프트 빌더 설계는 Goos Kim의 "하네스 강연 프로젝트"(2026-05) 내부 자료에서 출발해 재구성된 자료입니다.
 - 49가지 시각 스타일 분류(`references/slide-style-library.md`)는 공개된 옵시디언 publish 자료 "노트북 LM 슬라이드 가이드북"(이커머스 클래스, datawave)을 참고해 카테고리·매칭 규칙·일관성 가드를 재구성한 자료입니다.

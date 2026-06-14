@@ -1,22 +1,15 @@
 ---
 name: executive-summary
 description: |
-  [책임 경계] 임원/이사회 1페이지 요약 (≤500단어, McKinsey Pyramid — What/So What/Now What 구조).
-  **기본 출력은 moai-content:html-report로 단일 HTML 파일을 생성합니다** — 이미지·CSS·JS 모두 인라인 포함,
-  카톡·이메일로 바로 공유 가능. pdf/docx/pptx/hwpx 변환은 옵션 체이닝.
-  페어 moai-marketing:performance-report와 체이닝 관계 — 본 스킬은 임원 압축 요약, 페어는 마케팅 풀 리포트(전체).
-  입력 가능: performance-report 출력 · moai-finance (financial-statements, variance-analysis) · moai-pm:weekly-report · 외부 보고서.
   복잡한 분석·재무·운영 보고를 경영진 1페이지(≤500단어) 요약으로 변환합니다.
-  Bezos 6-Pager 아닌 한국 임원/이사회 표준에 맞춘 What/So What/Now What 구조,
-  K-IFRS 재무 지표 우선, 정량 수치 + 의사결정 옵션 + 권고안.
-
-  다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
-  - "경영진 보고", "이사회 자료", "임원 1pager"
-  - "C레벨 요약", "executive summary 작성", "임원 보고서 요약"
-  - "긴 보고서 1페이지로 줄여줘", "경영진용 핵심 요약"
-  - "카톡으로 보낼 보고서", "이메일에 첨부할 단일 HTML 1pager"
+  다음과 같은 요청 시 사용하세요:
+  - "임원 보고용 1페이지 요약 만들어줘" / "이사회 보고서 요약해줘" / "경영진 브리핑 1장으로 정리해줘"
+  - "이 리포트 핵심만 요약해줘" / "긴 보고서 1페이지로 줄여줘" / "C레벨 요약 작성해줘"
+  - "What/So What/Now What 구조로 정리해줘" / "카톡·이메일로 보낼 단일 HTML 1pager 만들어줘"
+  기본 출력은 moai-content:html-report로 단일 HTML(이미지·CSS·JS 인라인, 카톡·이메일 바로 공유)이며, pdf/docx/pptx/hwpx 변환은 옵션 체이닝. 입력 가능: moai-marketing:performance-report 출력 · moai-finance:financial-statements · moai-finance:variance-analysis · moai-pm:weekly-report · 외부 보고서. 한국 임원/이사회 표준 What/So What/Now What + K-IFRS 재무 지표 우선.
+  [책임 경계] vs moai-marketing:performance-report: executive-summary=임원 압축 요약(≤500단어), performance-report=마케팅 풀 리포트(전체).
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # Executive Summary — 경영진 1페이지 요약

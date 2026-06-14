@@ -6,7 +6,7 @@ description: >
   채널별 정책·노출·수수료를 정리하고, 30분/60분 라이브 방송용 진행 스크립트(오프닝→상품 소개→실시간 응대→마감 CTA)를 산출합니다.
   라이브는 한국 이커머스에서 가장 빠르게 성장 중인 채널입니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 라이브 커머스 가이드 + 스크립트 작성
@@ -133,8 +133,8 @@ version: 2.15.0
 ## 관련 스킬
 
 - `moai-commerce:detail-page-copy` — 상세페이지 카피
-- `moai-commerce:commerce-copywriting` — 광고·이메일 카피
-- `moai-commerce:commerce-strategy` — 전체 채널 전략
+- `moai-commerce:commerce-channel-message` — 광고·이메일 카피
+- `moai-commerce:commerce-integrated-strategy` — 전체 채널 전략
 - `moai-content:social-media` — SNS 콘텐츠 (라이브 클립 재가공)
 - 라이브 후 짧은 영상 콘텐츠 — **Higgsfield MCP**(DOP·Soul) 직접 호출
 

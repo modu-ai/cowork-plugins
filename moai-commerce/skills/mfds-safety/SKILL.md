@@ -16,7 +16,7 @@ description: |
   - "의약품 안전 체크", "식품 안전 체크", "회수·판매중지 식품 검색"
   - 헬스/F&B 커머스에서 상품 안전성 확인 시
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # MFDS 의약품·식품 안전 체크 (통합)
@@ -112,7 +112,7 @@ red flag 가 하나라도 있으면 **API 조회보다 즉시 119·응급실·�
 
 ## 관련 스킬 체이닝
 
-- **before**: `moai-commerce:commerce-strategy` — 헬스/F&B 신상품 기획 시 안전성 검토
+- **before**: `moai-commerce:commerce-integrated-strategy` — 헬스/F&B 신상품 기획 시 안전성 검토
 - **after**: `moai-commerce:detail-page-copy` — 안전 정보 반영한 상세페이지 카피
 - **after**: `moai-content:product-detail` — 안전성 안내 콘텐츠 작성
 

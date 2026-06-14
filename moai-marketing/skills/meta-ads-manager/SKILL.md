@@ -1,18 +1,18 @@
 ---
 name: meta-ads-manager
 description: |
-  Meta(페이스북·인스타그램) 광고를 자연어로 "직접 운영"하는 스킬입니다. Meta 공식 "Meta Ads AI Connectors"(Meta 광고 AI 커넥터, 2026-04-29 오픈 베타)의 Ads MCP 서버(`https://mcp.facebook.com/ads`)에 연결해 캠페인·광고세트·광고를 실제로 생성·수정하고, 예산을 조정하며, 켜고 끕니다. OAuth 2.0 커넥터 흐름으로 인증하므로 앱 생성·심사·토큰 복사 없이 브라우저 로그인만으로 광고 계정에 연결됩니다.
-  이 스킬의 책임 경계는 "라이브 운영(쓰기)"입니다. 보고서 분석·진단은 meta-ads-analyzer, 픽셀·CAPI 설치 검증은 pixel-audit, 캠페인 기획(인지편향)은 campaign-planner가 담당합니다. 운영 동사 요청만 이 스킬이 받습니다.
-
-  다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
-  - "메타 광고 만들어줘", "페이스북/인스타 광고 캠페인 생성해줘"
+  페이스북·인스타그램 광고를 자연어로 직접 만들고 켜고 끄고 예산까지 조정해 드립니다. Meta 공식 광고 AI 커넥터에 브라우저 로그인 한 번으로 연결되며, 신규 광고는 항상 꺼진(PAUSED) 상태로 만들고 켜기 전에 꼭 확인을 받습니다.
+  다음과 같은 요청 시 사용하세요:
+  - "메타 광고 만들어줘", "인스타 광고 캠페인 생성해줘"
   - "광고세트 추가해줘", "새 광고 소재 등록해줘"
-  - "광고 예산 변경해줘", "일예산 5만원으로 올려줘/내려줘"
-  - "광고 켜줘", "광고 꺼줘/일시정지해줘", "캠페인 활성화/중지"
+  - "일예산 5만원으로 올려줘", "광고 예산 변경해줘"
+  - "광고 켜줘", "광고 꺼줘", "캠페인 일시정지해줘"
   - "Meta 광고 운영해줘", "AI 커넥터로 광고 관리해줘"
-  - "전환 픽셀 캠페인에 연결해줘", "광고 타겟/소재 수정해줘"
+  - "전환 픽셀 캠페인에 연결해줘", "광고 타겟이랑 소재 수정해줘"
+  실제 계정에 변경을 적용하는 라이브 운영 스킬이라, 쓰기·예산·결제 동작은 실행 전에 항상 사용자 확인을 거칩니다.
+  [책임 경계] vs meta-ads-analyzer·pixel-audit·campaign-planner: 이 스킬=실제 광고 생성·수정·온오프(쓰기), 저 스킬=보고서 분석·픽셀 설치 검증·캠페인 기획.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # Meta 광고 운영 (Meta Ads AI Connectors)
@@ -139,14 +139,15 @@ OAuth 로그인 중 사용자가 등급을 선택합니다. 쓰기·결제 동�
 
 ## 7. 체이닝
 
-- 마지막 단계에서 한국 시장 audit이 필요하면 **`moai-ads-audit` MCP**(자체 50-check) 또는 **`meta-ads-analyzer`** 스킬로 체이닝.
-- 운영 결과를 진단 텍스트 산출물로 정리하면 **`ai-slop-reviewer`** 자동 체이닝으로 AI 패턴 검수.
+- 마지막 단계에서 한국 시장 audit이 필요하면 **`moai-ads-audit` MCP**(자체 50-check) 또는 **`moai-marketing:meta-ads-analyzer`** 스킬로 체이닝.
+- 운영 결과를 진단 텍스트 산출물로 정리하면 **`moai-core:ai-slop-reviewer` → `moai-content:humanize-korean`** 체이닝으로 AI 패턴 검수 + 한국어 AI 티 제거. (수치·대시보드 산출물은 대상 아님)
 
 권장 체인 예:
 ```
 meta-ads-manager (생성·운영)
-  → meta-ads-analyzer / moai-ads-audit MCP (진단)
-  → ai-slop-reviewer (진단 텍스트 검수)
+  → moai-marketing:meta-ads-analyzer / moai-ads-audit MCP (진단)
+  → moai-core:ai-slop-reviewer (진단 텍스트 검수)
+  → moai-content:humanize-korean (한국어 AI 티 제거)
 ```
 
 ---

@@ -15,7 +15,7 @@
 | [curriculum-designer](./skills/curriculum-designer/) | 강의 목차 설계, 학습 목표 정의, 역량 갭 분석, 외국어 학습 전략 | ✅ |
 | [research-assistant](./skills/research-assistant/) | 데이터 수집/분석, 학술 논문 초안, 연구 설계, 인용/참고문헌 관리 | ✅ |
 | [assessment-creator](./skills/assessment-creator/) | 시험 문제 출제, 기출 분석, 자격증 모의고사, 학습 평가 설계 | ✅ |
-| [course-curriculum-design](./skills/course-curriculum-design/) | 강의·수업·연수·워크숍 운영 매뉴얼 자동 생성. 일자별 시간표 + 강사·조교 동선 + D-N 사전 준비물 + 환경·설비 체크리스트 + 리스크 매트릭스 + Plan B 5건+. `moai-office:docx-generator` 자동 체이닝으로 Word(.docx) 출력 | ✅ |
+| [course-operations-manual](./skills/course-operations-manual/) | 강의·수업·연수·워크숍 운영 매뉴얼 자동 생성. 일자별 시간표 + 강사·조교 동선 + D-N 사전 준비물 + 환경·설비 체크리스트 + 리스크 매트릭스 + Plan B 5건+. `moai-office:docx-generator` 자동 체이닝으로 Word(.docx) 출력 (구 `course-curriculum-design`) | ✅ |
 | [course-followup-sequence](./skills/course-followup-sequence/) | 강의 종료 후 30일 follow-up 시퀀스. 후기 카피 5종(D+1·D+3·D+7·D+14·D+30) + 인센티브·자산화 가이드. 체인: copywriting → ai-slop-reviewer → korean-spell-check | ✅ |
 
 ## 사용 예시
@@ -38,7 +38,7 @@
 ```
 사내 AI 활용 2일 워크숍 운영 매뉴얼 만들어줘 — 강사·조교 동선·Plan B 포함
 ```
-→ `course-curriculum-design`
+→ `course-operations-manual`
 
 ```
 강의 종료 후 D+1·D+3·D+7·D+14·D+30 후기 시퀀스 카피 만들어줘
@@ -60,11 +60,11 @@
   assessment-creator(기출 분석·모의고사) → docx-generator → ai-slop-reviewer
 
 강의·연수·워크숍 운영 풀 사이클
-  course-curriculum-design(D-N 운영 매뉴얼) → moai-office:docx-generator(.docx)
+  course-operations-manual(D-N 운영 매뉴얼) → moai-office:docx-generator(.docx)
     ↓ (D-7 사전 안내)
-  사전 준비물 메일 발송 (course-curriculum-design --output prep-mail)
+  사전 준비물 메일 발송 (course-operations-manual --output prep-mail)
     ↓ (D-1 리허설)
-  course-curriculum-design(시간표·동선표 출력)
+  course-operations-manual(시간표·동선표 출력)
     ↓ (D+0 강의·수업 실행)
   강의 진행
     ↓ (D+1 ~ D+30)
@@ -82,7 +82,7 @@
 | 사내 HR 교육·온보딩 체크리스트 | `moai-hr:employment-manager` |
 | 어린이 발달 가이드 | `moai-lifestyle:wellness-coach` |
 | 학습 목표·역량 갭 중심 교육과정 설계 | `curriculum-designer` (이 플러그인) |
-| 강의·연수·워크숍 운영 실무 매뉴얼 | `course-curriculum-design` (이 플러그인) |
+| 강의·연수·워크숍 운영 실무 매뉴얼 | `course-operations-manual` (이 플러그인) |
 | 일반 마케팅·광고 카피 | `moai-content:copywriting` |
 | 강의 후 수강생 후기 자산화 시퀀스 | `course-followup-sequence` (이 플러그인) |
 

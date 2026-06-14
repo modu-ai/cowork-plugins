@@ -10,7 +10,7 @@ description: |
   - "베스트셀러 분석", "장르별 출판사 컨벤션"
   - "자비 출판 vs 출판사 투고 의사결정"
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # book-concept-planner
@@ -377,10 +377,12 @@ USP의 핵심은 "다름". 일본·미국 출판 사례에서 반복 확인된 �
 - `moai-business:strategy-planner` — 전략 컨셉 (사업·서비스 대상, 책 아님)
 - `moai-marketing:campaign-planner` — 마케팅 캠페인 컨셉
 
-### Post (검수)
+### Post (검수 — 정규 체인)
 - `moai-content:korean-spell-check` — 한국어 맞춤법
-- `moai-content:humanize-korean` — AI 티 제거
-- `moai-core:ai-slop-reviewer` — 최종 검수 (컨셉서 전체)
+- `moai-core:ai-slop-reviewer` — AI 슬롭 검수 (필수)
+- `moai-content:humanize-korean` — AI 티 정밀 윤문 (필수)
+
+> 컨셉서 산문(한 줄·30자·300자 카피, USP 서술)은 정규 체인 **`book-concept-planner → moai-core:ai-slop-reviewer → moai-content:humanize-korean`**으로 마무리. 경쟁작·포지셔닝 매트릭스 같은 표는 데이터 출력이므로 체인 대상이 아닙니다.
 
 ## 10. 출처
 

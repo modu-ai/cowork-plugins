@@ -5,7 +5,7 @@ description: >
   "피드백 면담 스크립트 써줘"처럼 말하면 됩니다. MBO·OKR·KPI 체계 구축,
   360도 평가 설계, 인사 고과 가이드, 피드백 면담 스크립트 작성을 지원합니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 성과평가 (Performance Review)
@@ -147,6 +147,21 @@ version: 2.15.0
 - 개인별 성과평가 보고서
 - 팀/조직 성과 대시보드
 
+## 관련 스킬 (체인)
+
+평가 면담 스크립트·성과평가 보고서의 강점/개선 기회·피드백 서술 등 **산문 부분**은 사람이 읽는 글이므로, 작성 직후 아래 후처리 체인을 거칩니다.
+
+**텍스트 후처리 체인 (면담 스크립트·평가 보고서 서술 부분 등 산문 산출물)**:
+
+```
+performance-review → moai-core:ai-slop-reviewer → moai-content:humanize-korean
+```
+
+- `moai-core:ai-slop-reviewer` — AI 티 패턴(기계적 어투, 상투적 피드백 표현) 검수·수정
+- `moai-content:humanize-korean` — 자연스러운 한국어 문장으로 다듬기 (의미 100% 보존)
+
+> KPI/OKR 달성률 표·평가 등급 매트릭스·성과 대시보드 같은 **숫자·표 산출물**은 위 텍스트 체인 대상이 아닙니다. 표·대시보드가 필요하면 `moai-office:xlsx-creator` 또는 `moai-data:data-visualizer`로 라우팅하세요. 혼합 산출물은 **서술 부분만** 체인을 적용하고 표는 데이터 라우팅을 유지합니다.
+
 ## 참고 사항
 
 ### 2026년 성과관리 트렌드
@@ -171,6 +186,6 @@ version: 2.15.0
 ## 이 스킬을 사용하지 말아야 할 때
 
 - **법적 노동 분쟁 대응**: 평가 결과로 인한 해고, 징계, 임금 분쟁은 노무사에게 의뢰하세요.
-- **채용·온보딩 프로세스**: JD 작성, 면접 설계, 신입 온보딩은 `employment-manager` 스킬이 더 적합합니다.
-- **오퍼 레터·연봉 협상 문서**: `draft-offer` 스킬을 사용하세요.
-- **원격 근무 정책 수립**: 재택 정책, 협업 도구 선택은 `people-operations` 스킬을 사용하세요.
+- **채용·온보딩 프로세스**: JD 작성, 면접 설계, 신입 온보딩은 `moai-hr:employment-manager` 스킬이 더 적합합니다.
+- **오퍼 레터·연봉 협상 문서**: `moai-hr:draft-offer` 스킬을 사용하세요.
+- **원격 근무 정책 수립**: 재택 정책, 협업 도구 선택은 `moai-hr:people-operations` 스킬을 사용하세요.

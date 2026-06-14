@@ -1,14 +1,20 @@
 ---
 name: meta-ads-analyzer
 description: |
-  [책임 경계] 메타 광고관리자 .xlsx 보고서 1-6개 업로드 → 상품 관여도·운영 철학 반영 진단 + 강도별 액션 옵션 (🟢🟡🔴) 전담. 페어 스킬 pixel-audit(인프라 진단)·landing-page-conversion-audit(랜딩 진단)과 명확히 구분 — 본 스킬은 광고관리자 데이터 사후 분석.
-  다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
-  "메타 광고 보고서 분석", "광고 성과 진단", "ROAS 낮은 이유", "지면별 분석", "Audience Network 진단", "연령 성별 분해", "광고 소재 노후화 점검", "예산 적정성 진단", "캠페인 비교 분석", "광고 누수 점검", "다중 월 추세".
-  9 분석 모듈 (퍼널·KPI·차원·매트릭스·누수·라이프사이클·학습·예산·시뮬레이션) + 4D 교차 (광고×지면×연령×성별) + 3 사용자 그룹 톤 + 4 출력 형식 (HTML/DOCX/PPTX/MD) + 강도별 액션 (🟢🟡🔴 보수/중도/적극).
-  ai-slop-reviewer 자동 체이닝 (DOCX/PPTX/MD 텍스트 산출물).
-  v2.5.0 신규. Methodology adapted from agricidaniel/claude-ads v1.5.1 (MIT) — see NOTICE.md.
+  메타 광고관리자에서 내려받은 엑셀(.xlsx) 보고서를 올리면 광고 성과를 진단하고, 무엇을 어떻게 손볼지 강도별(🟢보수 🟡중도 🔴적극)로 정리한 리포트를 만들어 드립니다.
+  다음과 같은 요청 시 사용하세요:
+  - "메타 광고 보고서 분석해줘"
+  - "ROAS가 왜 낮은지 봐줘"
+  - "지면별 성과 어떤지 봐줘, Audience Network 끊어야 하나"
+  - "연령대·성별로 분해해줘"
+  - "광고 소재가 노후화됐는지 봐줘"
+  - "예산이 적정한지, 광고비 누수 있는지 찾아줘"
+  - "이번 달이랑 지난 달 추세 비교해줘"
+  - "광고 보고서 엑셀 올릴게, 분석해줘"
+  퍼널·KPI·지면·연령·성별·누수까지 분석해 HTML·DOCX·PPTX·MD 중 원하는 형식으로 보고서를 만들고, 문서 텍스트는 moai-core:ai-slop-reviewer → moai-content:humanize-korean으로 다듬습니다.
+  [책임 경계] vs pixel-audit·landing-page-conversion-audit: 이 스킬=광고관리자 데이터 사후 분석, 저 스킬=픽셀 인프라 진단·랜딩 진단.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 메타 광고 보고서 분석기 (Meta Ads Analyzer)
@@ -62,7 +68,7 @@ version: 2.15.0
    ↓
 [Step 8] 선택 출력 형식 (HTML / DOCX / PPTX / MD) 생성
    ↓
-[Step 9] DOCX/PPTX/MD → ai-slop-reviewer 자동 체이닝
+[Step 9] DOCX/PPTX/MD → moai-core:ai-slop-reviewer → moai-content:humanize-korean 자동 체이닝
    ↓
 [Step 10] 면책 문구 포함하여 최종 산출물 제공
 ```
@@ -126,7 +132,7 @@ version: 2.15.0
 
 ## 9 분석 모듈
 
-보고서 업로드 시 다음 9개 모듈이 자동 실행됩니다 (SPEC §3.1):
+보고서 업로드 시 다음 9개 모듈이 자동 실행됩니다:
 
 | # | 모듈 | 핵심 산출 |
 |---|------|----------|
@@ -148,7 +154,7 @@ version: 2.15.0
 
 ## 7-Level 출력 계층
 
-모든 출력 형식은 다음 7단계 계층을 따릅니다 (SPEC §3.2):
+모든 출력 형식은 다음 7단계 계층을 따릅니다:
 
 ```
 Level 1: 한 줄 요약
@@ -234,7 +240,7 @@ Level 1-6: **모든 출력 형식 필수** / Level 7: 사용자 선택
 
 ## 면책 문구
 
-모든 출력물에 다음 문구를 포함합니다 (SPEC §3.9):
+모든 출력물에 다음 문구를 포함합니다:
 
 > 본 분석 결과는 데이터 기반 진단입니다.
 > 최종 운영 의사결정은 사용자의 경험·맥락·전략에 따라 다를 수 있으며,
@@ -252,13 +258,15 @@ Level 1-6: **모든 출력 형식 필수** / Level 7: 사용자 선택
 meta-ads-analyzer (보고서 분석)
        ↓ DOCX/PPTX/MD 텍스트 산출물
 moai-core:ai-slop-reviewer (AI 슬롭 검수)
+       ↓
+moai-content:humanize-korean (한국어 AI 티 제거)
        ↓ 인프라 문제 발견 시
-pixel-audit (픽셀·1st Party 데이터 인프라 진단)
+moai-marketing:pixel-audit (픽셀·1st Party 데이터 인프라 진단)
        ↓ 랜딩 문제 발견 시
-landing-page-conversion-audit (랜딩 6섹션 전환율 진단)
+moai-marketing:landing-page-conversion-audit (랜딩 6섹션 전환율 진단)
 ```
 
-> HTML 대시보드는 React 컴포넌트+차트가 주 산출물이므로 ai-slop-reviewer 체이닝 대상에서 제외 (본문 카피·해석 텍스트는 해당).
+> HTML 대시보드는 React 컴포넌트+차트가 주 산출물이므로 `moai-core:ai-slop-reviewer`·`moai-content:humanize-korean` 체이닝 대상에서 제외 (본문 카피·해석 텍스트만 해당).
 
 ---
 
@@ -266,9 +274,9 @@ landing-page-conversion-audit (랜딩 6섹션 전환율 진단)
 
 | 페어 스킬 | 책임 | 본 스킬과의 경계 |
 |----------|------|-----------------|
-| `pixel-audit` | 메타 픽셀·인프라 진단 | 픽셀 설치·CAPI·Lookalike 씨앗 → pixel-audit, 보고서 결과 분석 → 본 스킬 |
-| `landing-page-conversion-audit` | 랜딩 6섹션 전환율 진단 | 광고 클릭 후 랜딩 UX → 페어, 광고 시스템 KPI(노출/클릭/구매/매출/ROAS) → 본 스킬 |
-| `campaign-planner` | 캠페인 사전 기획 | 사전 기획(목표·타겟·소재 컨셉) → campaign-planner, 집행 후 사후 진단·액션 → 본 스킬 |
+| `moai-marketing:pixel-audit` | 메타 픽셀·인프라 진단 | 픽셀 설치·CAPI·Lookalike 씨앗 → moai-marketing:pixel-audit, 보고서 결과 분석 → 본 스킬 |
+| `moai-marketing:landing-page-conversion-audit` | 랜딩 6섹션 전환율 진단 | 광고 클릭 후 랜딩 UX → 페어, 광고 시스템 KPI(노출/클릭/구매/매출/ROAS) → 본 스킬 |
+| `moai-marketing:campaign-planner` | 캠페인 사전 기획 | 사전 기획(목표·타겟·소재 컨셉) → moai-marketing:campaign-planner, 집행 후 사후 진단·액션 → 본 스킬 |
 
 (페어 분리 원칙)
 

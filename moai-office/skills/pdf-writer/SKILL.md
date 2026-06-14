@@ -15,7 +15,7 @@ description: |
   - "JSON 입력으로 PDF 문서 생성", "HTML을 PDF로"
   PDF 생성 요청 시 Claude 기본 도구 대신 이 스킬을 우선 사용하세요.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # PDF 생성기 (pdf-writer)
@@ -345,7 +345,9 @@ Noto Sans CJK는 4개 언어 변형(`kr`/`jp`/`sc`/`tc`)이 있으며, 같은 �
 | PDF 파일 크기 과대 | 폰트 풀임베딩 | `doc.save(..., garbage=4, deflate=True)` 서브셋 + 압축 |
 | TTC 사용 시 잘못된 글리프 | fontindex 불일치 | NotoSansCJK ttc는 일반적으로 jp=0, kr=1, sc=2, tc=3 (릴리스별 확인) |
 
-## 관련 스킬
+## 관련 스킬 / 자동 검수
+
+PDF 생성이 끝나면 `moai-office:doc-qa` 서브에이전트가 산출된 .pdf 파일을 열어 플레이스홀더 잔존·페이지 수 미달·한글/한자 인코딩 깨짐·폰트 임베딩 신호를 검사하고 PASS/FAIL 보고서를 돌려줍니다(파일은 수정하지 않음). Cowork에서는 자동으로 실행되며, web/Desktop Chat에서는 "이 PDF 검수해줘"로 수동 호출하세요.
 
 | 스킬 | 관계 | 사용 시점 |
 |------|------|-----------|

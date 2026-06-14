@@ -6,7 +6,7 @@ description: >
   JD에서 필수/우대 역량 추출 + 본인 경험 매칭 + DART·잡플래닛·블라인드·사람인 공고 이력
   종합 분석 + 2026 핀셋 채용 시대의 회사 현재 우선순위 추출까지 지원합니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 채용공고 분석기 (job-analyzer)
@@ -226,7 +226,7 @@ Python       | 상           | 중           | ▲   | 프로젝트 X 경험
 
 ## 이 스킬을 사용하지 말아야 할 때
 
-- **자소서/이력서 작성**: JD 분석 결과를 바탕으로 문서를 작성하려면 `resume-builder` 스킬을 사용하세요.
-- **면접 준비**: 분석된 역량 기반으로 면접을 준비하려면 `interview-coach` 스킬이 적합합니다.
-- **포트폴리오 구성**: 프로젝트 정리는 `portfolio-guide` 스킬을 사용하세요.
-- **시장조사/경쟁 분석**: 투자 목적의 기업 분석은 moai-business의 `market-analyst` 스킬이 적합합니다.
+- **자소서/이력서 작성**: JD 분석 결과를 바탕으로 문서를 작성하려면 `moai-career:resume-builder` 스킬을 사용하세요.
+- **면접 준비**: 분석된 역량 기반으로 면접을 준비하려면 `moai-career:interview-coach` 스킬이 적합합니다.
+- **포트폴리오 구성**: 프로젝트 정리는 `moai-career:portfolio-guide` 스킬을 사용하세요.
+- **시장조사/경쟁 분석**: 투자 목적의 기업 분석은 `moai-business:market-analyst` 스킬이 적합합니다.

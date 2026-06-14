@@ -5,7 +5,7 @@ description: >
   '재무상태표 작성해줘', '손익계산서 분석해줘', 'K-IFRS 기준으로 재무제표 만들어줘'처럼 말하면 됩니다.
   재무상태표·손익계산서·현금흐름표 전체 세트 작성, 2026년 K-IFRS 제1118호 변경 대응, 주석 공시, 재무비율 분석을 지원합니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 재무제표 작성 (Financial Statements)
@@ -168,13 +168,26 @@ K-IFRS(한국채택국제회계기준)에 따른 재무제표 작성을 지원�
 
 ## 관련 스킬
 
-- **moai-finance/close-management**: 월말·급여 결산 업무
-- **moai-finance/variance-analysis**: 예산 대비 실적 분석
-- **moai-finance/tax-helper**: 세금 신고, 홈택스 안내
+- **moai-finance:close-management**: 월말·급여 결산 업무
+- **moai-finance:variance-analysis**: 예산 대비 실적 분석
+- **moai-finance:tax-helper**: 세금 신고, 홈택스 안내
+
+### 후처리 체인 (재무제표 해설·주석·재무비율 코멘트 등 서술형 산출물)
+
+재무제표 분석 코멘트, 주석 초안의 서술 문단, 재무비율 해설, 경영진 보고용 설명문처럼 문장 산출물을 작성한 뒤에는 아래 체인으로 마무리한다.
+
+```
+financial-statements (해설·코멘트 부분) → moai-core:ai-slop-reviewer → moai-content:humanize-korean
+```
+
+- **moai-core:ai-slop-reviewer**: AI 티 나는 표현·과장·상투구 검수 및 수정
+- **moai-content:humanize-korean**: 한국어 자연스러움 보정 (서술 산출물 한정)
+
+> 재무상태표·손익계산서·현금흐름표·재무비율 같은 표·숫자 산출물 자체는 체인 대상이 아니며, 엑셀화가 필요하면 `moai-office:xlsx-creator`로 라우팅한다. 체인은 표를 둘러싼 해설·주석·코멘트 문장에만 적용한다.
 
 ## 이 스킬을 사용하지 말아야 할 때
 
-- **월말·급여 결산 업무**: 계정 마감, 급여 정산, 4대보험 계산은 `close-management` 스킬이 더 적합합니다.
-- **예산 대비 실적 분석**: 분산 분석과 KPI 추적은 `variance-analysis` 스킬을 사용하세요.
-- **세금 신고·납부**: 부가가치세·법인세 신고 절차는 `tax-helper` 스킬을 먼저 확인하고 세무사에게 의뢰하세요.
+- **월말·급여 결산 업무**: 계정 마감, 급여 정산, 4대보험 계산은 `moai-finance:close-management` 스킬이 더 적합합니다.
+- **예산 대비 실적 분석**: 분산 분석과 KPI 추적은 `moai-finance:variance-analysis` 스킬을 사용하세요.
+- **세금 신고·납부**: 부가가치세·법인세 신고 절차는 `moai-finance:tax-helper` 스킬을 먼저 확인하고 세무사에게 의뢰하세요.
 - **투자 판단용 실사(DD)**: 인수합병, 투자 결정을 위한 재무 실사는 공인회계사나 회계법인의 공식 실사가 필요합니다.

@@ -3,7 +3,7 @@ name: kb-article
 description: >
   고객지원 지식베이스 문서를 작성합니다. "FAQ 만들어줘", "트러블슈팅 가이드 작성해줘", "헬프센터 아티클 써줘"라고 요청할 때 사용하세요. FAQ, 사용자 가이드, 트러블슈팅 문서, 정책 안내문을 Zendesk·Freshdesk·카카오비즈니스 형식에 맞게 생성합니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 지식베이스 문서 작성 (KB Article)
@@ -110,6 +110,17 @@ version: 2.15.0
 | 고객 정보 부족 | 서비스 특성(커머스/SaaS/앱 등)을 알려주시면 그에 맞는 KB 구조를 제안합니다 |
 | 기존 KB 내용 업데이트 필요 | 현재 문서를 공유해 주시면 변경 사항을 반영한 개정안을 작성합니다 |
 | 다국어 KB 필요 | 한국어 원문 작성 후 번역 방향과 대상 언어를 알려주세요 |
+
+## 관련 스킬 (후처리 체인)
+
+KB 아티클(FAQ·가이드·트러블슈팅) 본문을 작성한 뒤에는 다음 체인으로 마무리합니다:
+
+```
+kb-article → moai-core:ai-slop-reviewer → moai-content:humanize-korean
+```
+
+- `moai-core:ai-slop-reviewer` — AI 티 나는 표현·과잉 수식·기계적 문장 패턴을 검수·수정
+- `moai-content:humanize-korean` — 한국어 경어 자연스러움과 사람이 쓴 듯한 어조로 다듬기
 
 ## 이 스킬을 사용하지 말아야 할 때
 

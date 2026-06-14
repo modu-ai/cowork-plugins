@@ -10,7 +10,7 @@ description: |
   - "출판 마케팅 플랜", "저자 마케팅 활동"
   - "출판사별 양식 변환"
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # book-proposal-writer
@@ -467,10 +467,12 @@ version: 2.15.0
 - `moai-business:strategy-planner` — 사업 제안서 (책 아님)
 - `moai-research:grant-writer` — 정부지원사업 신청
 
-### Post (검수)
+### Post (검수 — 정규 체인)
 - `moai-content:korean-spell-check` — 한국어 맞춤법
-- `moai-content:humanize-korean` — AI 티 제거
-- `moai-core:ai-slop-reviewer` — 제안서 최종 검수
+- `moai-core:ai-slop-reviewer` — AI 슬롭 검수 (필수)
+- `moai-content:humanize-korean` — AI 티 정밀 윤문 (필수)
+
+> 제안서 산문(개요·시장 분석·샘플 챕터·마케팅 플랜 서술)은 정규 체인 **`book-proposal-writer → moai-core:ai-slop-reviewer → moai-content:humanize-korean`**으로 마무리. 신뢰 신호 매트릭스·경쟁작 매트릭스 같은 표는 데이터 출력이므로 체인 대상이 아닙니다.
 
 ## 10. 출처
 

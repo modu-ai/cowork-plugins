@@ -1,19 +1,17 @@
 ---
 name: html-report
 description: |
-  마크다운 보고서를 단일 파일·자체 완결형 HTML로 렌더링하는 터미널 스킬입니다.
-  Thariq Shihipar의 "unreasonable effectiveness of HTML" 사상 기반 — 외부 JS·CSS 프레임워크
-  의존성 0, 한국어 가독성을 위한 폰트 CDN 단일 예외 허용.
-
-  다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
-  - "보고서 HTML로", "주간 보고서 HTML 파일로 만들어줘", "단일 파일 HTML 렌더"
-  - "status report html", "재무제표 HTML 출력", "보고서를 하나의 HTML 파일로"
-  - "프린트 가능한 HTML 보고서", "이메일에 임베드할 HTML 리포트"
-  - "현황 보고 HTML", "인시던트 리포트 HTML", "사업계획서 HTML"
-  - "html-report mode=status", "html-report mode=financial", "html-report mode=plan"
-
+  마크다운 보고서를 그대로 브라우저에서 열리는 단일 파일 HTML로 바꿔 드립니다. 외부 라이브러리 없이 한 파일로 완결돼 이메일 첨부·인쇄·오프라인 열람이 됩니다.
+  다음과 같은 요청 시 사용하세요:
+  - "이 보고서 HTML 파일로 만들어줘"
+  - "주간 현황 보고서를 하나의 HTML로 렌더해줘"
+  - "재무제표를 HTML 보고서로 변환해줘"
+  - "인시던트 리포트를 HTML로 정리해줘"
+  - "프린트 가능한 사업계획서 HTML로 만들어줘"
+  - "이메일에 붙일 수 있는 HTML 리포트 만들어줘"
+  현황·인시던트·사업계획·설명서·재무·PR 6종 서식을 갖췄고, 보고서 종류에 맞춰 자동으로 골라 줍니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # html-report — 단일 파일 HTML 보고서 렌더러
@@ -23,7 +21,7 @@ version: 2.15.0
 `moai-content:html-report`는 cowork 텍스트 산출 파이프라인의 **터미널 렌더러**입니다.
 `moai-bi:executive-summary`, `moai-finance:financial-statements`, `moai-business:sbiz365-analyst` 등이 생성한 마크다운 보고서를 **단일 파일·자체 완결형(self-contained) HTML**로 변환합니다.
 
-**핵심 원칙 (Thariq 사상)**:
+**핵심 원칙**:
 - 외부 JS 라이브러리(Chart.js, D3, htmx) 0 의존
 - 외부 CSS 프레임워크(Tailwind, Bootstrap) 0 의존
 - 인라인 SVG로 차트 직접 렌더링
@@ -67,9 +65,11 @@ version: 2.15.0
 | **`financial`** | KPI 카드 4개 · 손익계산서 테이블(항목/당기/전기/증감/증감률) · Variance SVG 수평 막대 차트 · 주석 패널 | `moai-finance:financial-statements` |
 | **`pr`** | TL;DR · PR 메타 행(파일수·+/−·브랜치) · Before/After 2단 카드 · 파일 투어 `<details>` · 핵심 포인트 · 테스트 체크리스트 · 롤아웃 단계 | `moai-business:investor-relations` |
 
-#### 모드별 입력 슬롯 요약
+#### 모드별 입력 항목 요약
 
-| 모드 | 주요 Mustache 슬롯 |
+각 서식이 채우는 주요 항목입니다(템플릿 내부 변수명 기준).
+
+| 모드 | 주요 입력 항목 |
 |------|-------------------|
 | `status` | `{{title}}`, `{{#metrics}}`, `{{#highlights}}`, `{{#completed_rows}}`, `{{#chart_bars}}` |
 | `incident` | `{{inc_id}}`, `{{severity}}`, `{{title}}`, `{{#tl_entries}}`, `{{#impact_rows}}`, `{{#actions}}` |
@@ -138,12 +138,12 @@ version: 2.15.0
 ## 체인 통합 권장
 
 ```
-[텍스트 스킬] → moai-core:ai-slop-reviewer → moai-content:humanize-korean → moai-content:html-report (mode=X)
+[텍스트 스킬] → moai-core:ai-slop-reviewer → moai-content:humanize-korean → moai-content:html-report (서식 선택)
 ```
 
 최소 체인 (빠른 렌더링):
 ```
-[텍스트 스킬] → moai-content:html-report (mode=X)
+[텍스트 스킬] → moai-content:html-report (서식 선택)
 ```
 
 ---
@@ -152,38 +152,33 @@ version: 2.15.0
 
 **예시 1: 주간 현황 보고서**
 ```
-moai-bi:executive-summary 결과 마크다운을 받아 상태 보고서로 렌더링해줘.
-mode=status, 회사명: 한울 엔지니어링, 주차: 11
+경영 요약 결과를 받아서 한울 엔지니어링 11주차 현황 보고서 HTML로 만들어줘.
 ```
 
 **예시 2: 재무제표 HTML 보고서**
 ```
-financial-statements 결과를 HTML 보고서로 변환해줘.
-mode=financial
+재무제표 결과를 HTML 보고서로 변환해줘.
 ```
 
 **예시 3: 인시던트 리포트**
 ```
-결제 게이트웨이 502 장애 내용을 정리해서 인시던트 리포트 HTML로 만들어줘.
-mode=incident, severity=SEV-2
+결제 게이트웨이 502 장애 내용을 정리해서 인시던트 리포트 HTML로 만들어줘. 심각도는 SEV-2.
 ```
 
 **예시 4: PR 설명 문서**
 ```
 PR #312 실시간 알림 채널 통합 내용을 HTML 리뷰 문서로 만들어줘.
-mode=pr
 ```
 
 ---
 
-## 비-목표
+## 하지 않는 것
 
-- [HARD] 마크다운 기본 출력 대체 금지 — HTML은 추가 렌더링 분기
-- [HARD] React / Vue / Tailwind CDN / Chart.js / D3 도입 금지
-- [HARD] 빌드 단계(webpack, vite, esbuild) 도입 금지
-- [HARD] `moai-office:pptx-designer`(슬라이드) 영역 침범 금지
-- [HARD] `moai-data:data-visualizer`(독립 차트) 영역 침범 금지
-- 멀티 파일 출력 금지 — 모든 산출물은 단일 `.html` 파일
+- 마크다운 기본 출력을 대체하지 않습니다 — HTML은 추가 렌더링 분기입니다.
+- React / Vue / Tailwind CDN / Chart.js / D3 같은 외부 라이브러리를 쓰지 않습니다.
+- 빌드 단계(webpack, vite, esbuild)를 도입하지 않습니다.
+- 슬라이드는 `moai-office:pptx-designer`, 독립 차트는 `moai-data:data-visualizer`가 맡습니다.
+- 여러 파일로 나누지 않습니다 — 모든 산출물은 단일 `.html` 파일입니다.
 
 ---
 
@@ -209,7 +204,7 @@ mode=pr
 - [`references/samples/financial-sample.html`](references/samples/financial-sample.html) — financial 모드 렌더링 예시
 - [`references/samples/pr-sample.html`](references/samples/pr-sample.html) — pr 모드 렌더링 예시
 
-원본 사상: [Thariq Shihipar, "The Unreasonable Effectiveness of HTML"](https://thariqs.github.io/html-effectiveness/)
+설계 참고: [Thariq Shihipar, "The Unreasonable Effectiveness of HTML"](https://thariqs.github.io/html-effectiveness/) — 외부 라이브러리 없이 HTML 한 파일로 끝내는 접근의 출처.
 
 ---
 

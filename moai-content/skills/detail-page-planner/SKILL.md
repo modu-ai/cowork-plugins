@@ -1,13 +1,18 @@
 ---
 name: detail-page-planner
-description: >
-  [책임 경계] 한국 이커머스 상세페이지의 **기획·구조·전략 설계**.
-  카피 산출(detail-page-copy)·코드 산출(product-detail)·이미지 합성(detail-page-image) 직전 단계의 입력 산출물을 만든다.
-  체이닝: planner(이 스킬) → detail-page-copy → product-detail → detail-page-image.
-  "상세페이지 기획해줘", "상세페이지 구조 짜줘", "원 메시지 잡아줘", "오프닝 4유형 분기", "이미지 체크리스트", "유통 채널별 상세페이지 전략"처럼 말하면 자동 호출.
-  단독 랜딩 1페이지(landing-page) / 13섹션 카피 JSON(detail-page-copy) / 코드 산출(product-detail)에는 본 스킬을 사용하지 마세요 — 페어 스킬로 분리됨.
+description: |
+  한국 이커머스 상세페이지의 기획안(원 메시지·오프닝 유형·본문 뼈대·유통 채널 전략·사진 체크리스트)을 만들어 드립니다. 카피·코드·이미지를 만들기 전, 무엇을 어떤 구조와 톤으로 보여줄지 먼저 확정하는 단계입니다.
+  다음과 같은 요청 시 사용하세요:
+  - "상세페이지 기획해줘"
+  - "상세페이지 구조 짜줘"
+  - "이 제품 원 메시지 잡아줘"
+  - "와디즈 펀딩 상세페이지 전략 세워줘"
+  - "스마트스토어 상세페이지 사진 체크리스트 만들어줘"
+  - "화장품 상세페이지 어떻게 구성할지 기획해줘"
+  완성한 기획안은 moai-commerce:detail-page-copy(카피) → moai-content:product-detail(코드) → moai-commerce:detail-page-image(이미지)로 이어집니다.
+  [책임 경계] vs 페어 스킬: 이 스킬=기획·전략, moai-commerce:detail-page-copy=13섹션 카피, moai-content:product-detail=코드, moai-content:landing-page=단독 랜딩 1페이지.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 상세페이지 기획자 (Detail Page Planner)
@@ -19,7 +24,7 @@ version: 2.15.0
 | 1. 기획·전략 (★ **본 스킬**) | `moai-content:detail-page-planner` | **Brief** (원 메시지·오프닝·본문 뼈대·채널·이미지 체크리스트) |
 | 2. 카피 | `moai-commerce:detail-page-copy` | 13섹션 감정여정 JSON |
 | 3. 코드 | `moai-content:product-detail` | shadcn/ui React 또는 HTML |
-| 4. 이미지 | `moai-content:detail-page-image` | 1080×12720 합성 PNG |
+| 4. 이미지 | `moai-commerce:detail-page-image` | 1080×12720 합성 PNG |
 
 **본 스킬은 1번만 담당** — 카피·코드·이미지는 위임. Brief가 후속 3개 스킬의 입력.
 
@@ -249,7 +254,7 @@ brief:
     visual_notes: "(사진/디자인 분기)"
 
   three_missions:
-    real_差별점: true
+    real_differentiation: true
     switch_motivation: true
     vivid_indirect_experience: true
 
@@ -275,7 +280,7 @@ brief:
 ```
 1. brief 산출 후 → moai-commerce:detail-page-copy "Brief: <yaml>"
 2. 카피 JSON 산출 후 → moai-content:product-detail "Brief + Copy"
-3. 코드 산출 후 → moai-content:detail-page-image "Brief + Copy + Code"
+3. 코드 산출 후 → moai-commerce:detail-page-image "Brief + Copy + Code"
 ```
 
 ## 사용 예시
@@ -312,7 +317,7 @@ brief:
 ```
 
 → Step 0: Brief 검증 (모듈 1-5 항목 누락 확인)
-→ Brief 완성 후: detail-page-copy → product-detail → detail-page-image 순차 위임
+→ Brief 완성 후: moai-commerce:detail-page-copy → product-detail → moai-commerce:detail-page-image 순차 위임
 
 ## 페어 스킬과의 관계
 
@@ -320,7 +325,7 @@ brief:
 
 - "상세페이지 카피 만들어줘" → `moai-commerce:detail-page-copy` (13섹션 JSON)
 - "상세페이지 코드 만들어줘" → `moai-content:product-detail` (shadcn/ui 컴포넌트)
-- "상세페이지 이미지 합성해줘" → `moai-content:detail-page-image` (1080×12720 PNG)
+- "상세페이지 이미지 합성해줘" → `moai-commerce:detail-page-image` (1080×12720 PNG)
 - "랜딩 페이지 만들어줘" → `moai-content:landing-page` (단독 전환 1페이지)
 
 ### 본 스킬을 사용하는 경우
@@ -363,6 +368,6 @@ brief:
 ## 관련
 
 - before: 사용자 자연어 발화 → 본 스킬 자동 호출
-- after: detail-page-copy → product-detail → detail-page-image 순차 체이닝
+- after: moai-commerce:detail-page-copy → product-detail → moai-commerce:detail-page-image 순차 체이닝
 - alternative: 빠른 단일 카피만 → moai-commerce:detail-page-copy 직접
 - 가이드: `moai-foundation-cc` (Claude Code 스킬 작성), `.claude/rules/moai/development/skill-authoring.md`

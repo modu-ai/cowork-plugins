@@ -3,7 +3,7 @@ name: status-reporter
 description: >
   KPI 대시보드와 운영 현황 보고서를 자동으로 생성합니다. "주간 보고서 작성해줘", "KPI 현황 정리해줘", "월간 성과 보고서 만들어줘"라고 요청할 때 사용하세요. 주간·월간·분기 보고서, OKR 현황, 마일스톤 진행률, 이슈 및 리스크 매트릭스를 지원합니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 운영 현황 보고자 (Status Reporter)
@@ -76,6 +76,19 @@ version: 2.15.0
 - 이슈 및 리스크 매트릭스
 - 다음 기간 액션 아이템 목록
 - 경영진/팀별 맞춤 어조 조정 버전
+
+## 관련 스킬 (후처리 체인)
+
+보고서의 **서술형 본문**(핵심 요약, 이슈·리스크 설명, 액션 아이템 등 산문 부분)은 다음 체인으로 마무리합니다.
+
+```
+status-reporter → moai-core:ai-slop-reviewer → moai-content:humanize-korean
+```
+
+- `moai-core:ai-slop-reviewer` — 서술형 본문의 AI 티 패턴을 검수·수정합니다.
+- `moai-content:humanize-korean` — 검수된 본문을 자연스러운 한국어 보고체로 다듬습니다.
+
+KPI 달성 현황 표, 마일스톤 진행률, 이슈·리스크 매트릭스 등 **수치·표 산출물**은 산문 후처리 대상이 아니며 `moai-office:xlsx-creator`(엑셀 연동) 또는 `moai-data:data-visualizer`(대시보드 시각화)로 라우팅합니다.
 
 ## 참고 사항
 

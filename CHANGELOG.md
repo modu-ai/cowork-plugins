@@ -6,13 +6,64 @@
 
 ## 버전 통일 원칙 (HARD)
 
-아래 176개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.11.1+ `hugo.toml` SSOT 포함):
+아래 201개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.11.1+ `hugo.toml` SSOT 포함):
 - `.claude-plugin/marketplace.json` (`metadata.version`) × 1
-- `<plugin>/.claude-plugin/plugin.json` (`version`) × 23 (v2.12.0+)
-- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 151 (v2.14.1+)
+- `<plugin>/.claude-plugin/plugin.json` (`version`) × 27 (v2.17.0+)
+- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 173 (v2.17.0+)
 - `docs-site/hugo.toml` (`[params] version`) × 1 (v2.11.1+ SSOT, 좌측 사이드바·footer 자동 반영)
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
+
+## [2.17.0] - 2026-06-14
+
+MINOR. **Cowork-fit 재설계 — moai-public-data 신규 + Cowork 코디네이터 11종 + 매니페스트 정직화**. taxonomy·체이닝·매니페스트·이미지 정책을 4축으로 재설계하되 별칭·스텁으로 호환을 유지했습니다. **26 → 27 플러그인, 170 → 173 스킬**, 동기화 지점 198 → 201. Breaking change 없음 — 기존 워크플로우 그대로 동작(별칭·스텁 호환).
+
+### Added
+
+- **`moai-public-data` 신규 플러그인 (4 스킬)** — 한국 공공데이터 조회 단일 도메인. `korean-stock-search`(KRX 상장종목·시세), `court-auction-search`(대법원 법원경매 매각공고), `real-estate-search`(국토부 실거래가/전월세), `public-data`(공공데이터포털/KOSIS 통계). 흩어져 있던 공공데이터 조회 스킬을 한곳으로 모았으며, 기존 위치(moai-finance·moai-business·moai-data)는 별칭·스텁으로 호환 유지.
+- **Cowork 코디네이터 서브에이전트 11종** — 멀티 스킬 파이프라인을 한 번에 실행하는 Cowork 전용 서브에이전트: `commerce-launch`(커머스 런칭), `detail-page-orchestrator`(상세페이지), `book-manuscript`(도서 원고), `business-plan`(사업계획서), `hiring`(채용), `legal-review`(법무 검토), `meta-ads`(메타 광고), `media-pipeline`(미디어 파이프라인), `ticket-triage-batch`(티켓 일괄 분류), `ux-audit`(UX 감사), `finance-report-assembler`(재무 보고 조립). Cowork에서는 코디네이터 한 번으로, Chat에서는 개별 스킬을 인라인 호출해 동일 결과.
+- **WordPress 발행 커넥터 wiring** — `blog`·`newsletter` 스킬에 WordPress.com 발행 커넥터 연결.
+
+### Changed
+
+- **체이닝·트리거 표준화** — 60종+ 스킬에 `ai-slop → humanize` 체이닝을 표준 적용하고, description+trigger를 자연어 트리거 STANDARD로 일괄 정리.
+- **taxonomy 정리** — moai-commerce 35 → 30 스킬로 머지(중복 제거), 보수적 rename(별칭 유지로 기존 호출 호환), `grant` 소유 경계 명확화, `ai-diagnostic` moai-core → moai-business 이동, `travel-planner` 분해, media-production split(`content-calendar` + `youtube-podcast-planner`).
+- **매니페스트 정직화** — 실제 보유 스킬만 노출하도록 정정: moai-pm(`weekly-report`만), moai-sales(`proposal-writer`만), moai-bi(`executive-summary`만).
+- 전체 버전 동기화 2.16.0 → 2.17.0 (marketplace.json + 27 plugin.json + 173 SKILL.md + hugo.toml). 동기화 지점 198 → 201.
+- 루트 README 카탈로그(+moai-public-data 행, pm·sales·bi 범위 정정)·배지(Plugins 27 / Skills 173)·v2.17.0 하이라이트 추가, marketplace.json `plugins[]` +1 등록.
+- docs-site: moai-public-data 플러그인 페이지 + 릴리스 v2.17 페이지 + 메뉴·홈 카운트 동기화.
+
+### Removed
+
+- `mcp-connector-setup`의 **Connector D(OpenAI/GPT Image 2) 제거** — 이미지 생성은 Higgsfield 단일 정책으로 통일.
+
+### Migration
+
+- `/plugin marketplace update cowork-plugins`로 신규 moai-public-data 플러그인·코디네이터 자동 노출. **Breaking change 없음 — 기존 워크플로우 그대로 동작**(rename은 별칭, relocation은 스텁으로 호환). 공공데이터 스킬을 기존 경로로 호출하던 경우에도 그대로 동작하며, 신규 통합 위치는 `moai-public-data`입니다.
+
+---
+
+## [2.16.0] - 2026-06-13
+
+MINOR. **개인·일잘러 도메인 3종 신규 — moai-wealth · moai-productivity · moai-comms**. 사용자 실무 지식 데이터(vault) 2,219개 노트 전수 분석으로 커버리지 공백 3종을 식별·충전. **23 → 26 플러그인, 152 → 170 스킬**, 동기화 지점 176 → 198. Breaking change 없음.
+
+### Added
+
+- **`moai-wealth` 신규 플러그인 (6 스킬)** — 개인 재무·재테크. `wealth-roadmap`(재테크 로드맵 — 현황 진단·종잣돈 4단계·자산 배분), `household-budget`(가계부·소비관리 — 통장 쪼개기·50/30/20·소비 회고), `invest-primer`(투자 입문 — 분산·장기·리스크·자산군·초보 포트폴리오·투자 사기 회피), `insurance-fit`(보험 설계 — 필요 보험 진단·과보험 점검·생애주기 리모델링), `personal-tax-saver`(근로자 연말정산 절세 — 소득공제 vs 세액공제·연금저축/IRP·환급 극대화), `econ-literacy`(경제지표 읽기 — 금리·환율·물가·GDP를 내 돈 관점으로). 법인 세무(moai-finance)와 분리된 개인 자산관리 도메인.
+- **`moai-productivity` 신규 플러그인 (7 스킬)** — 자기관리·생산성. `retro-builder`(회고 — KPT·연간·키워드), `goal-planner`(목표관리 — 12주·만다라트·개인 OKR), `time-system`(시간관리 — 블록식스·덩어리 시간·우선순위), `habit-routine`(습관·루틴 설계), `self-care`(번아웃·자기돌봄), `notion-template-kit`(노션 올인원 템플릿), `weekly-report`(직장 주간업무보고). 개인 자기관리 특화(팀 PM은 moai-product).
+- **`moai-comms` 신규 플러그인 (5 스킬)** — 직장 커뮤니케이션·소프트스킬. `report-speak`(보고·설명의 기술 — 두괄식·핵심 요약), `meeting-facilitator`(회의 진행·퍼실리테이션), `feedback-loop`(피드백 주고받기), `conflict-handler`(갈등·소통빌런 대응·정중한 거절), `negotiation-1on1`(1:1 면담·설득·협상). moai-hr(공식 성과평가)·moai-content(문서 작성)와 구분되는 대인 커뮤니케이션 실전.
+
+### Changed
+
+- 전체 버전 동기화 2.15.0 → 2.16.0 (marketplace.json + 26 plugin.json + 170 SKILL.md + hugo.toml). 동기화 지점 176 → 198.
+- 루트 README 카탈로그(+3행)·배지(Plugins 26 / Skills 170)·v2.16.0 하이라이트 추가, marketplace.json `plugins[]` +3 등록.
+- docs-site: moai-wealth·moai-productivity·moai-comms 플러그인 페이지 + 릴리스 v2.16 페이지 + 메뉴·홈 카운트 동기화.
+
+### Migration
+
+- `/plugin marketplace update cowork-plugins`로 신규 3 플러그인 자동 노출. 기존 워크플로우·플러그인 그대로 동작. 신규 도메인(개인 재무·자기관리·직장 커뮤니케이션)은 기존 23개 플러그인과 중복 없음.
+
+---
 
 ## [2.15.0] - 2026-05-30
 

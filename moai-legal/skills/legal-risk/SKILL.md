@@ -6,7 +6,7 @@ description: >
   'IP 포트폴리오 분석해줘', '2026년 법령 변화 영향 분석해줘'라고 요청하세요.
   판례·법령 리서치, IP 포트폴리오, 리스크 매트릭스, 대응 액션 플랜을 제공합니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 법적 리스크 분석 (Legal Risk)
@@ -38,24 +38,7 @@ version: 2.15.0
 
 ### 2단계: 2026년 최신 법령 변화 체크
 
-**개인정보보호법 (2026.9.11. 시행):**
-- 징벌적 과징금: 매출액 최대 **10%** (반복·중대 위반)
-- 기존 3% → 10%로 대폭 강화
-- CEO·CPO 책임 강화: 이사회 보고 의무화
-- ISMS-P 인증 의무화 (일정 규모 이상)
-- 유출 가능성 인지 시점부터 통지 의무
-- 유출 범위 확대: 분실·도난·유출 → 위조·변조·훼손 포함
-
-**노동 관련 (2026 시행):**
-- 노란봉투법 (2026.3.10. 시행): 사용자 범위 확대, 하청 교섭권 확대
-- 체불임금 대지급금 회수 강화 (2026.5.12. 시행)
-- 최저임금: 10,320원/시간 (2026년)
-- 4대보험 국민연금 요율: 9% → 9.5% 인상
-- 근로자의 날 → '노동절' 명칭 변경
-
-**K-IFRS 제1118호 (조기 적용 2026, 의무 2027):**
-- 손익계산서 5개 범주 분류 (영업·투자·재무·법인세·중단영업)
-- MPM(경영진 성과측정치) 공시 의무화
+> 2026년 개정 법령 변화 목록(개인정보보호법·노동 관련·K-IFRS 제1118호)은 `moai-legal:compliance-check` references/2026-law-changes.md 단일 SSOT를 참조한다.
 
 ### 3단계: 리스크 매핑 및 평가
 
@@ -162,14 +145,27 @@ version: 2.15.0
 
 ## 관련 스킬
 
-- **moai-legal/contract-review**: 계약서 검토, 이용약관 작성
-- **moai-legal/nda-triage**: NDA 비밀유지계약 검토
-- **moai-legal/compliance-check**: 규제 준수 점검, ESG 보고
-- **moai-core/ai-slop-reviewer**: 리스크 분석 보고서 AI 패턴 검수
+- **moai-legal:contract-review**: 계약서 검토, 이용약관 작성
+- **moai-legal:nda-triage**: NDA 비밀유지계약 검토
+- **moai-legal:compliance-check**: 규제 준수 점검, ESG 보고
+- **moai-core:ai-slop-reviewer**: 리스크 분석 보고서 AI 패턴 검수
+
+### 후처리 체인 (텍스트 산출물)
+
+법적 리스크 평가 보고서·법령 변화 영향 분석·대응 액션 플랜 등 서술형 산출물은 작성 후 반드시 다음 체인으로 마무리합니다.
+
+```
+legal-risk → moai-core:ai-slop-reviewer → moai-content:humanize-korean
+```
+
+- **moai-core:ai-slop-reviewer**: AI 글쓰기 패턴(과장·상투구·획일적 구조) 검수
+- **moai-content:humanize-korean**: 한국어 자연스러움 보정으로 사람이 쓴 듯한 문장으로 다듬기
+
+리스크 매트릭스 표 등 데이터 산출물은 이 체인 대상이 아니며, 별도로 **moai-office:xlsx-creator**로 정리합니다.
 
 ## 이 스킬을 사용하지 말아야 할 때
 
-- **계약서 검토나 이용약관 작성** → moai-legal/contract-review 사용
-- **NDA 비밀유지계약 전문 검토** → moai-legal/nda-triage 사용
-- **컴플라이언스 점검이나 ESG 보고** → moai-legal/compliance-check 사용
+- **계약서 검토나 이용약관 작성** → moai-legal:contract-review 사용
+- **NDA 비밀유지계약 전문 검토** → moai-legal:nda-triage 사용
+- **컴플라이언스 점검이나 ESG 보고** → moai-legal:compliance-check 사용
 - **실제 법적 분쟁이나 소송 대응** → 반드시 전문 변호사에게 의뢰하세요

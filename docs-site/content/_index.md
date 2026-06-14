@@ -1,24 +1,24 @@
 ---
 title: "Claude Cowork 한국어 문서"
-description: "Claude Cowork 한국어 가이드 — 지식 근로자를 위한 설치·스킬·플러그인·쿡북 완전판. cowork-plugins 23종 카탈로그 + 152 스킬 포함."
+description: "Claude Cowork 한국어 가이드 — 지식 근로자를 위한 설치·스킬·플러그인·쿡북 완전판. cowork-plugins 27종 카탈로그 + 173 스킬 포함."
 geekdocAnchor: false
 geekdocBreadcrumb: false
 ---
 
 <div class="cw-hero">
   <div class="eyebrow"><span class="dot"></span>{{< version >}} · {{< release-date >}} · cowork.mo.ai.kr</div>
-  <h1>업무에 바로 쓰는<br/><span class="accent">AI 협업 스킬</span> 152종.</h1>
+  <h1>업무에 바로 쓰는<br/><span class="accent">AI 협업 스킬</span> 173종.</h1>
   <p class="lead-p">
-    23개 분야에 걸친 MoAI-Cowork 플러그인 모음. Claude Code에서 슬래시 한 번으로 사업계획서·IR 덱·계약서·블로그·정부지원사업 신청서·이커머스 광고 풀세트·메타 광고 보고서 분석·한국 출판사 제출 원고·<strong>Claude Design 보조 5종</strong>까지 — 한국어로, 끝까지.
+    27개 분야에 걸친 MoAI-Cowork 플러그인 모음. Claude Code에서 슬래시 한 번으로 사업계획서·IR 덱·계약서·블로그·정부지원사업 신청서·이커머스 광고 풀세트·한국 출판사 제출 원고·개인 재무·자기관리·직장 커뮤니케이션·<strong>한국 공공·시세 데이터 조회</strong>까지 — 한국어로, 끝까지.
   </p>
   <div class="cw-hero-ctas">
     <a class="btn btn--primary" href="/getting-started/quick-start/">5분 만에 시작 →</a>
     <a class="btn btn--ghost" href="/plugins/">플러그인 둘러보기</a>
   </div>
   <div class="cw-hero-meta">
-    <div class="item"><div class="num">152</div><div class="lbl">총 스킬</div></div>
-    <div class="item"><div class="num">23</div><div class="lbl">분야 플러그인</div></div>
-    <div class="item"><div class="num">78</div><div class="lbl">문서 페이지</div></div>
+    <div class="item"><div class="num">173</div><div class="lbl">총 스킬</div></div>
+    <div class="item"><div class="num">27</div><div class="lbl">분야 플러그인</div></div>
+    <div class="item"><div class="num">79</div><div class="lbl">문서 페이지</div></div>
     <div class="item"><div class="num">{{< version >}}</div><div class="lbl">최신 릴리스</div></div>
   </div>
 </div>
@@ -78,7 +78,7 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
   <a class="cw-qs-card" href="/plugins/">
     <div class="step">02 · 선택 (약 2분)</div>
     <div class="ttl">분야별 플러그인 활성화</div>
-    <div class="desc">22개 분야 중 필요한 것만 켭니다. moai-core는 필수.</div>
+    <div class="desc">27개 분야 중 필요한 것만 켭니다. moai-core는 필수.</div>
   </a>
   <a class="cw-qs-card" href="/getting-started/first-task/">
     <div class="step">03 · 첫 작업 (약 5분)</div>
@@ -93,8 +93,8 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
 </div>
 
 <div class="cw-sect-head">
-  <h2 id="plugins-grid" style="margin:0"><span class="num">22</span>분야별 플러그인</h2>
-  <span class="meta">총 143개 스킬 · 22개 도메인</span>
+  <h2 id="plugins-grid" style="margin:0"><span class="num">27</span>분야별 플러그인</h2>
+  <span class="meta">총 173개 스킬 · 27개 도메인</span>
 </div>
 
 <div class="cw-grid">
@@ -267,12 +267,40 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
 </div>
 
 <div class="cw-sect-head">
-  <h2 id="release-summary" style="margin:0"><span class="num">v2.13</span>최근 릴리스</h2>
+  <h2 id="release-summary" style="margin:0"><span class="num">v2.17</span>최근 릴리스</h2>
   <span class="meta">CHANGELOG.md 기반</span>
 </div>
 
 <div class="cw-timeline">
   <div class="cw-rel latest">
+    <div class="ver-row">
+      <span class="ver">v2.17.0</span>
+      <span class="date">2026-06-14</span>
+      <span class="badge">MINOR</span>
+    </div>
+    <div class="ttl">Cowork-fit 재설계 마무리 — moai-public-data + 코디네이터 sub-agent 11종</div>
+    <div class="desc">한국 공공·시세 조회를 한곳에 모은 신규 <strong>moai-public-data</strong>(KRX 종목·법원경매·국토부 실거래가·공공데이터포털/KOSIS 4 조회, 별도 API 키 불필요) + Cowork 전용 <strong>코디네이터 sub-agent 11종</strong>으로 여러 스킬 체인을 한 번에 실행. 60여 스킬 <code>ai-slop-reviewer → humanize-korean</code> 후처리 체이닝 표준화 · 설명·트리거 STANDARD 정리 · moai-pm·moai-sales·moai-bi manifest 정직화 · 이미지·영상 Higgsfield 단일화 · WordPress 발행 wiring. <strong>26 → 27 플러그인 · 170 → 173 스킬 · Breaking change 없음</strong>.</div>
+    <ul>
+      <li><strong>moai-public-data (신규 4)</strong> — korean-stock-search(KRX 종목·일별 시세)·court-auction-search(법원경매 매각공고)·real-estate-search(국토부 실거래가)·public-data(공공데이터포털·KOSIS 통계). 모두 read-only·API 키 불필요</li>
+      <li><strong>Cowork 코디네이터 sub-agent 11종 (Cowork 전용)</strong> — commerce-launch·detail-page-orchestrator·book-manuscript·business-plan·hiring·legal-review·meta-ads·media-pipeline·ticket-triage-batch·ux-audit·finance-report-assembler</li>
+      <li><strong>재설계 마무리</strong> — 60여 스킬 humanize 체이닝 표준화·설명/트리거 STANDARD·taxonomy 정리·manifest 정직화(pm·sales·bi)·Connector D(OpenAI) 제거→Higgsfield 단일·WordPress 발행 wiring</li>
+    </ul>
+  </div>
+  <div class="cw-rel">
+    <div class="ver-row">
+      <span class="ver">v2.16.0</span>
+      <span class="date">2026-06-13</span>
+      <span class="badge">MINOR</span>
+    </div>
+    <div class="ttl">개인·일잘러 도메인 3종 신규 — moai-wealth · moai-productivity · moai-comms</div>
+    <div class="desc">직장인 개인이 매일 부딪히는 재무·자기관리·소통 영역을 vault 분석 기반 커버리지 공백 충전으로 채운 신규 3 플러그인 18 스킬. <strong>moai-wealth</strong>(개인 재무·재테크 6)·<strong>moai-productivity</strong>(자기관리·생산성 7)·<strong>moai-comms</strong>(직장 커뮤니케이션 5). 법인 세무 moai-finance·팀 PM moai-product·공식 인사 moai-hr와 역할이 분리됩니다. <strong>23 → 26 플러그인 · 152 → 170 스킬 · 동기화 176 → 198 · Breaking change 없음</strong>.</div>
+    <ul>
+      <li><strong>moai-wealth (신규 6)</strong> — wealth-roadmap(재테크 로드맵)·household-budget(가계부·예산)·invest-primer(투자 입문)·insurance-fit(보험 설계)·personal-tax-saver(근로자 연말정산 절세)·econ-literacy(경제지표 읽기). 개인 재무 면책 고지 포함, 외부 API 키 불필요</li>
+      <li><strong>moai-productivity (신규 7)</strong> — goal-planner(12주·만다라트·OKR)·retro-builder(KPT·연간 회고)·time-system(블록식스·덩어리 시간)·habit-routine(습관·루틴)·self-care(번아웃·자기돌봄)·notion-template-kit(노션 올인원)·weekly-report(직장 주간업무보고)</li>
+      <li><strong>moai-comms (신규 5)</strong> — report-speak(두괄식 보고·설명)·meeting-facilitator(회의 진행)·feedback-loop(피드백 주고받기·SBI)·conflict-handler(갈등·정중한 거절)·negotiation-1on1(1:1 면담·설득·협상)</li>
+    </ul>
+  </div>
+  <div class="cw-rel">
     <div class="ver-row">
       <span class="ver">v2.15.0</span>
       <span class="date">2026-05-30</span>

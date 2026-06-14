@@ -1,16 +1,19 @@
 ---
 name: target-script
-description: >
-  [책임 경계] 타겟 분석·페인포인트 도출 → 핵심 메시지 → 채널 변환 → A/B 테스트 (5단계 파이프라인 — 메시지 전략 분석 앞단).
-  페어 moai-commerce:commerce-copywriting과 체이닝 관계 — 본 스킬은 분석·전략(앞단), 페어는 채널별 카피 산출(뒷단).
-  체이닝 권장: target-script(전략 분석) → commerce-copywriting(이커머스 채널별 카피) 또는 → copywriting(범용 카피).
-  타겟 고객 맞춤 메시징 스크립트를 생성합니다. 타겟 오디언스 분석부터 채널별 메시지 스크립트를
-  파이프라인으로 처리하는 Pipeline 패턴 기반 스킬입니다.
-  "타겟 스크립트 만들어줘", "타겟 메시징 전략 짜줘", "고객 맞춤 메시지 필요해",
-  "buyer persona 카피라이팅", "채널별 스크립트 생성", "타겟 고객별 메시지",
-  "이메일 템플릿 만들어줘", "SNS 카피 작성", "landing page 메시지"라고 요청하세요.
+description: |
+  타겟 고객을 분석해 그들의 고민(페인포인트)을 짚고, 채널별로 바로 쓸 수 있는 맞춤 메시지·카피를 만들어 드립니다.
+  다음과 같은 요청 시 사용하세요:
+  - "타겟 고객 맞춤 메시지 만들어줘"
+  - "타겟 메시징 전략 짜줘"
+  - "우리 고객 페르소나 분석해서 카피 써줘"
+  - "채널별 스크립트 생성해줘"
+  - "이메일·SNS·랜딩 페이지용 메시지 다 만들어줘"
+  - "광고 카피 A/B 테스트 안 만들어줘"
+  - "고객 고민에 딱 맞는 헤드라인 뽑아줘"
+  고객 분석 → 페인포인트 → 핵심 메시지 → 채널별 변환 → A/B 테스트 순서로 정리하고, 결과 스크립트는 moai-core:ai-slop-reviewer → moai-content:humanize-korean으로 다듬어 바로 쓸 수 있게 만듭니다.
+  [책임 경계] vs moai-commerce:commerce-channel-message: 이 스킬=메시지 전략 분석(앞단), 저 스킬=채널별 카피 산출(뒷단). 이 스킬 분석 결과를 moai-commerce:commerce-channel-message나 moai-content:copywriting에 넘겨 카피를 완성합니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 타겟 스크립트 (Target Script)
@@ -186,7 +189,7 @@ AI가 콘텐츠 생산을 90%까지 점유한 시대, 평균 전환율은 오히
 
 **예시 2**: D2C 브랜드 타겟 스크립트
 - 타겟 고객: 반려동물 보유 1인 가구, 연 소득 5천만원 이상, 2030 여성
-- 제품: 프리미엄 반려동물 유기농 사료 (100% 유기농, 무添加剂)
+- 제품: 프리미엄 반려동물 유기농 사료 (100% 유기농, 무첨가)
 - 캠페인 목표: 첫 구매 유도 (첫 구매 20% 할인)
 - 채널: Instagram, 이메일, 랜딩 페이지
 
@@ -209,9 +212,11 @@ Markdown 형식의 구조화된 문서로 출력됩니다:
 3. 캠페인 목표 (구매, 리드 생성, 브랜드 인지도 제고 등)
 4. 채널 (이메일, SNS, 웹, 광고 중 최소 1개 이상)
 
-### AI 슬롭 후처리
+### AI 슬롭 후처리 + 한국어 휴머나이징 (필수 체인)
 
-생성된 타겟 스크립트는 반드시 `moai-core:ai-slop-reviewer` 스킬을 통해 후처리해야 합니다. AI 패턴(반복적 표현, 과장된 어조, 추상적 문장)을 제거하고 실전 즉시 활용 가능한 구체적이고 명확한 스크립트로 변환합니다.
+생성된 타겟 스크립트는 반드시 후처리 체인을 거쳐야 합니다: `moai-core:ai-slop-reviewer`로 AI 패턴(반복적 표현, 과장된 어조, 추상적 문장)을 제거한 뒤, `moai-content:humanize-korean`으로 한국어 어투의 AI 티를 다듬어 실전 즉시 활용 가능한 구체적이고 자연스러운 스크립트로 변환합니다.
+
+**권장 체인**: `target-script → moai-core:ai-slop-reviewer → moai-content:humanize-korean`
 
 ## 관련 스킬
 
@@ -220,4 +225,5 @@ Markdown 형식의 구조화된 문서로 출력됩니다:
 | `moai-marketing:campaign-planner` | 선행 체이닝: 타겟 스크립트 생성 전, 전체 캠페인 전략이 필요한 경우 |
 | `moai-marketing:sns-content` | 사후 체이닝: 생성된 SNS 스크립트를 바탕으로 실제 SNS 포스트를 생성 |
 | `moai-core:ai-slop-reviewer` | 사후 체이닝(필수): 생성된 타겟 스크립트의 AI 패턴을 검수하고 수정 |
+| `moai-content:humanize-korean` | 사후 체이닝(필수): ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |
 | `moai-domain-copywriting` | 대안: 브랜드 중심의 카피라이팅이 필요한 경우 |

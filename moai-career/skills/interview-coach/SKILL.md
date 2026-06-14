@@ -6,7 +6,7 @@ description: >
   역량 면접(BEI), PT, 토론, 임원, **2026 팀핏 면접**까지 유형별 대비 + 모의 면접 루프
   (질문→답변→피드백) + 역질문 15종 + 화상/하이브리드 면접 가이드를 제공합니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 면접 코치 (interview-coach)
@@ -238,6 +238,19 @@ STAR보다 더 짧고 인상적. 임원 면접 권장.
 - **긴장 관리**: 모의 면접을 5회 이상 반복하면 실전 긴장이 크게 줄어듭니다. 녹음/녹화 후 자기 모니터링을 병행하세요.
 - **영어 면접 대비**: 외국계 기업이나 영어 면접이 필요하면 영어 답변 모드로 전환할 수 있습니다.
 
+## 관련 스킬 / 후처리 체인
+
+모범 답변 스크립트·자기소개 1분 원고·역질문 문안 등 면접 준비물의 서술 텍스트는 사람이 읽고 말하는 산출물입니다. 답변 초안을 다듬을 때 다음 체인을 거쳐 AI 패턴을 제거하고 자연스러운 구어체 한국어로 만듭니다.
+
+```
+moai-career:interview-coach → moai-core:ai-slop-reviewer → moai-content:humanize-korean
+```
+
+- `moai-core:ai-slop-reviewer` — "최선을 다했습니다" 류 추상 답변·클리셰 등 AI 패턴 1차 검수·교정
+- `moai-content:humanize-korean` — 면접에서 실제로 말하듯 자연스러운 문장 리듬으로 2차 휴머나이즈
+
+지원 서류는 `moai-career:resume-builder`, JD 분석은 `moai-career:job-analyzer`, 포트폴리오는 `moai-career:portfolio-guide`와 함께 사용하세요.
+
 ## 공유 에이전트
 
 이 플러그인에서 활용할 수 있는 다른 플러그인의 에이전트:
@@ -249,7 +262,7 @@ STAR보다 더 짧고 인상적. 임원 면접 권장.
 
 ## 이 스킬을 사용하지 말아야 할 때
 
-- **자기소개서 작성**: 자소서/이력서 작성은 `resume-builder` 스킬을 사용하세요.
-- **채용공고 분석**: JD 분석이나 기업 리서치는 `job-analyzer` 스킬이 적합합니다.
-- **채용 담당자용 면접 설계**: 기업 인사 담당자가 면접을 설계하려면 moai-hr의 `employment-manager` 스킬을 사용하세요.
+- **자기소개서 작성**: 자소서/이력서 작성은 `moai-career:resume-builder` 스킬을 사용하세요.
+- **채용공고 분석**: JD 분석이나 기업 리서치는 `moai-career:job-analyzer` 스킬이 적합합니다.
+- **채용 담당자용 면접 설계**: 기업 인사 담당자가 면접을 설계하려면 `moai-hr:employment-manager` 스킬을 사용하세요.
 - **코딩 테스트 준비**: 알고리즘/자료구조 문제 풀이는 이 스킬의 범위가 아닙니다.

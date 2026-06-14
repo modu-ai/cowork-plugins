@@ -1,13 +1,18 @@
 ---
 name: ux-designer
-description: >
-  UX 디자인 분석 및 권고안 생성 스킬입니다. 휴리스틱 평가, 접근성 검토, 사용자 플로우 분석을 병렬로 수행하여
-  통합 UX 권고안을 도출합니다. Fan-out/Fan-in 패턴으로 3개 차원(휴리스틱/접근성/플로우)을 동시에 분석하고
-  결과를 통합하여 우선순위별 개선 항목을 제시합니다.
-  "UX 디자인 검토", "사용자 경험 분석", "heuristic evaluation", "접근성 검토", "사용성",
-  "사용자 플로우", "wireframe", "UX 리서치"라고 요청할 때 사용하세요.
+description: |
+  우선순위별 UX 개선 권고안과 평가 보고서(휴리스틱·접근성·사용자 플로우)를 만들어 드립니다.
+  다음과 같은 요청 시 사용하세요:
+  - "UX 디자인 검토해줘"
+  - "휴리스틱 평가해줘"
+  - "접근성(WCAG) 검토해줘"
+  - "사용자 플로우 분석해줘"
+  - "와이어프레임 사용성 점검해줘"
+  - "사용성 개선안 정리해줘"
+  3개 차원(휴리스틱·접근성·플로우)을 분석해 심각도·우선순위가 매겨진 개선 로드맵으로 정리하고, ai-slop-reviewer·humanize-korean으로 마무리할 수 있습니다.
+  [책임 경계] vs moai-product:ux-researcher: ux-designer=휴리스틱·접근성·플로우 평가, ux-researcher=인터뷰·페르소나·VOC 리서치
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # UX 디자이너 (UX Designer)
@@ -33,7 +38,7 @@ UX 디자인, 사용자 경험, UX 분석, heuristic evaluation, 휴리스틱 �
 3개 차원이 독립적으로 병렬 분석 수행:
 
 **차원 1: 휴리스틱 평가 (Heuristic Evaluation)**
-Nielsen's 10 Usability Heuristics를 기반으로 평가: 시스템 상태 가시성, 시스템与现实 세계의 일치, 사용자 통제권과 자유, 일관성과 표준, 오류 예방, 인식보다 기억, 사용의 유연성과 효율성, 미적·최소화 디자인, 오류 진단·회복·정정, 도움말과 문서
+Nielsen's 10 Usability Heuristics를 기반으로 평가: 시스템 상태 가시성, 시스템과 현실 세계의 일치, 사용자 통제권과 자유, 일관성과 표준, 오류 예방, 인식보다 기억, 사용의 유연성과 효율성, 미적·최소화 디자인, 오류 진단·회복·정정, 도움말과 문서
 
 **차원 2: 접근성 검토 (Accessibility Review)**
 WCAG 2.1 (Level AA) 기준으로 평가: 인지 가능성(텍스트 대안, 캡션, 구분 가능, 크기 조정), 운용 가능성(키보드 접근, 충분 시간, 광과민성, 네비게이션 가능), 이해 가능성(가독성, 예측 가능, 입력 도움), 견고성(호환성, 마크업)
@@ -103,3 +108,12 @@ UX 분석 보고서는 다음 섹션들을 포함합니다:
 | `moai-product:ux-researcher` | 선행 작업: 사용자 리서치가 필요한 경우 |
 | `moai-product:spec-writer` | 후속 작업: UX 사양서 작성 필요 시 |
 | `moai-content:landing-page` | 대안: 랜딩 페이지 UX 개선 필요 시 |
+
+## 후처리 체인
+
+UX 분석 보고서의 **서술형 권고안 부분**(통합 UX 권고안 P0~P3 설명, 개선 로드맵 서술)만 다음 체인으로 마무리합니다. 심각도·RICE·우선순위 매트릭스 같은 표·점수 데이터는 정제 대상이 아닙니다:
+
+`moai-product:ux-designer → moai-core:ai-slop-reviewer → moai-content:humanize-korean`
+
+- `moai-core:ai-slop-reviewer`: AI 특유의 상투적 표현·과장·군더더기를 점검하고 다듬습니다.
+- `moai-content:humanize-korean`: 자연스러운 한국어 문장으로 최종 정제합니다.

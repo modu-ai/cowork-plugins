@@ -1,14 +1,14 @@
 ---
 title: "플러그인 카탈로그"
 weight: 1
-description: "modu-ai/cowork-plugins 마켓플레이스의 23개 플러그인·152개 스킬을 도메인별로 정리한 카탈로그입니다."
+description: "modu-ai/cowork-plugins 마켓플레이스의 27개 플러그인·173개 스킬을 도메인별로 정리한 카탈로그입니다."
 geekdocBreadcrumb: true
 geekdocCollapseSection: false
 ---
 
 # `cowork-plugins` 카탈로그
 
-[`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins)는 한국 업무 환경에 맞춰 설계된 **23개 플러그인 · 152개 스킬**의 커뮤니티 마켓플레이스입니다. 사업계획·IR·마케팅·법무·세무·HR·카드뉴스·PPT·이미지 프롬프트 빌더·이커머스 풀스택·메타 광고 보고서 분석·Meta 광고 운영·NotebookLM 슬라이드·한국 출판사 제출 원고·**Claude Design 보조 풀스택**까지 도메인별로 묶여 있습니다.
+[`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins)는 한국 업무 환경에 맞춰 설계된 **27개 플러그인 · 173개 스킬**의 커뮤니티 마켓플레이스입니다. 사업계획·IR·마케팅·법무·세무·HR·카드뉴스·PPT·이미지 프롬프트 빌더·이커머스 풀스택·메타 광고 운영·NotebookLM 슬라이드·한국 출판사 제출 원고·Claude Design 보조 풀스택·개인 재무·자기관리·직장 커뮤니케이션·**한국 공공·시세 데이터 조회**까지 도메인별로 묶여 있습니다.
 
 ```mermaid
 flowchart TD
@@ -66,7 +66,11 @@ flowchart TD
 ```
 
 {{< hint type="note" >}}
-**v2.15.0 업데이트 (최신)**: **Meta 공식 Ads AI Connectors + NotebookLM 슬라이드 프롬프트 신규 2 스킬** — `moai-marketing`에 **`meta-ads-manager`** 추가(Meta Ads MCP 공식 OAuth 커넥터로 캠페인·광고세트·광고 자연어 생성·수정·예산·온오프, 신규 리소스 기본값 PAUSED, 쓰기 동작 사용자 승인). `moai-office`에 **`notebooklm-slide-prompt`** 추가(Google NotebookLM Video Overview·슬라이드용 한국어 소스·대본·구조·나노바나나 이미지 프롬프트 설계). **23 플러그인·152 스킬·동기화 지점 175 유지·Breaking change 없음**. Meta OAuth 2.0 정정(정적 토큰·서드파티 3종 제거).
+**v2.17.0 업데이트 (최신)**: **Cowork-fit 재설계 마무리** — 한국 공공·시세 조회를 한곳에 모은 신규 **`moai-public-data`**(KRX 종목·법원경매·국토부 실거래가·공공데이터포털/KOSIS 4 조회, 모두 read-only·별도 API 키 불필요)와 Cowork 전용 **코디네이터 sub-agent 11종**(상품 출시·상세페이지·원고·사업계획·채용·법무 검토·메타 광고·미디어·문의 분류·UX 점검·재무 리포트 조립)으로 여러 스킬 체인을 한 번에 실행합니다. 60여 스킬 `ai-slop-reviewer → humanize-korean` 후처리 체이닝 표준화 · 설명·트리거 STANDARD 정리 · moai-pm·moai-sales·moai-bi manifest 정직화 · 이미지·영상 Higgsfield 단일화 · WordPress 발행 wiring. **26 → 27 플러그인 · 170 → 173 스킬 · Breaking change 없음**. (코디네이터 sub-agent는 Cowork·Claude Code 환경 전용입니다.)
+
+**v2.16.0**: **개인·일잘러 도메인 3종 신규** — 직장인 개인이 매일 부딪히는 재무·자기관리·소통 영역을 vault 분석 기반 커버리지 공백 충전으로 채웠습니다. **`moai-wealth`**(개인 재무·재테크 6 — 재테크 로드맵·가계부·투자 입문·보험 설계·연말정산 절세·경제지표 읽기), **`moai-productivity`**(자기관리·생산성 7 — 회고·목표·시간·습관·자기돌봄·노션·주간보고), **`moai-comms`**(직장 커뮤니케이션 5 — 보고·회의·피드백·갈등·면담·협상). 법인 세무 moai-finance·팀 PM moai-product·공식 인사 moai-hr와 역할이 분리됩니다. **23 → 26 플러그인·152 → 170 스킬·동기화 지점 176 → 198·Breaking change 없음**.
+
+**v2.15.0**: **Meta 공식 Ads AI Connectors + NotebookLM 슬라이드 프롬프트 신규 2 스킬** — `moai-marketing`에 **`meta-ads-manager`** 추가(Meta Ads MCP 공식 OAuth 커넥터로 캠페인·광고세트·광고 자연어 생성·수정·예산·온오프, 신규 리소스 기본값 PAUSED, 쓰기 동작 사용자 승인). `moai-office`에 **`notebooklm-slide-prompt`** 추가(Google NotebookLM Video Overview·슬라이드용 한국어 소스·대본·구조·나노바나나 이미지 프롬프트 설계). **23 플러그인·152 스킬·동기화 지점 175 유지·Breaking change 없음**. Meta OAuth 2.0 정정(정적 토큰·서드파티 3종 제거).
 
 **v2.14.0**: **Claude Design 보조 docs·스킬 정합성 보완** — Anthropic 공식 발표(2026-04-17) 정확 반영. (A) 코드 기반 프로토타입(음성·비디오·셰이더·3D) 카테고리 명시, (B) Canva 네이티브 파트너십(CEO Melanie Perkins 인용)·마케팅 후속 워크플로우, (C) 통합 빌더 단기 로드맵 ("coming weeks") 분리, (D) Brilliant·Datadog 공식 도입 사례 인용. `claude-design-prompt-builder`에 프론티어 미디어 보조 패턴(WebGL 셰이더·Three.js 3D·Web Audio API·캔버스 애니메이션) + `claude-design-handoff-reader`에 두 경로 분기(Claude Code 빌드 vs Canva 마케팅 후속) 신규. **23 플러그인·150 스킬 유지 · 동기화 지점 175 유지 · Breaking change 없음**.
 
@@ -130,24 +134,34 @@ flowchart TD
 - [`moai-career`](./moai-career/) — 자기소개서·이력서·면접 코칭·포트폴리오
 - [`moai-lifestyle`](./moai-lifestyle/) — 여행·웰니스·이벤트·웨딩 기획
 
+### 개인·일잘러
+
+- [`moai-wealth`](./moai-wealth/) — 개인 재무·재테크(재테크 로드맵·가계부·투자 입문·보험 설계·연말정산 절세·경제지표 읽기)
+- [`moai-productivity`](./moai-productivity/) — 자기관리·생산성(회고·목표·시간관리·습관·자기돌봄·노션 템플릿·주간보고)
+- [`moai-comms`](./moai-comms/) — 직장 커뮤니케이션·소프트스킬(보고·회의 진행·피드백·갈등 대응·1:1 면담·협상)
+
+### 공공·데이터 조회
+
+- [`moai-public-data`](./moai-public-data/) — 한국 공공·시세 조회 전담(KRX 종목·법원경매·국토부 실거래가·공공데이터포털·KOSIS). 모두 read-only·별도 API 키 불필요
+
 ### Claude Design 보조
 
 - [`moai-design`](./moai-design/) **NEW v2.12** — [claude.ai/design](https://claude.ai/design) 사용을 받쳐 주는 풀스택 5 스킬. 브리프 작성·디자인 시스템 자산 합성·시니어 UX 프롬프트·Claude Code 핸드오프 분석·AI 슬롭 검수
 
-## 한 눈에 보는 스킬 수 (v2.15.0)
+## 한 눈에 보는 스킬 수 (v2.17.0)
 
 "대표 스킬 (일부)"는 각 플러그인에서 가장 자주 호출되는 스킬을 발췌한 것입니다. 전체 스킬 목록은 플러그인 이름을 클릭해 상세 페이지에서 확인하세요.
 
 | 플러그인 | 스킬 수 | 대표 스킬 (일부) |
 |---|---|---|
 | [moai-core](./moai-core/) | 8 | project, ai-slop-reviewer, feedback, ai-diagnostic, mcp-connector-setup, skill-builder, skill-template, skill-tester |
-| [moai-content](./moai-content/) | 12 | blog, card-news, landing-page, copywriting, humanize-korean, html-report, detail-page-planner +5종 |
+| [moai-content](./moai-content/) | 14 | blog, card-news, landing-page, copywriting, humanize-korean, html-report, detail-page-planner +7종 |
 | [moai-office](./moai-office/) | 6 | pptx-designer, docx-generator, xlsx-creator, hwpx-writer, pdf-writer, **notebooklm-slide-prompt (v2.15 신규)** |
 | [moai-media](./moai-media/) | 6 | **higgsfield-image·higgsfield-video (v2.13 신규)** Higgsfield MCP 직접 호출로 공식 11 이미지 모델(Soul 계열·Nano Banana 계열·GPT Image 계열·Seedream 4.0·Flux Kontext·Wan 2.2/2.5) + 공식 11 영상 모델(Sora 2·Veo 3·Kling 2.1/2.5/3.0·Kling Avatars 2.0·Seedance 2.0/Pro·Cinema Studio 3.5·MiniMax Hailuo 02·Wan 2.5) + 6 비디오 프리셋(UGC·Unboxing·Product review·Hyper motion·TV spot·Wild Card) 자연어 호출 · **gpt-image-2-prompt·gemini-3-image-prompt·midjourney-v8-prompt** 외부 도구 프롬프트 빌더 · **audio-gen** ElevenLabs MCP TTS·보이스 클로닝·다국어 더빙 |
 | [moai-book](./moai-book/) | 8 | **book-concept-planner·book-target-reader·book-outline-designer·book-author-bio·book-proposal-writer·book-publisher-matcher·book-chapter-writer·book-revision-coach (v2.10 신규)** |
-| [moai-business](./moai-business/) | 10 | strategy-planner, investor-relations, sbiz365-analyst, kr-gov-grant, consulting-brief, sales-playbook, startup-launchpad +3종 |
+| [moai-business](./moai-business/) | 11 | strategy-planner, investor-relations, sbiz365-analyst, kr-gov-grant, consulting-brief, sales-playbook, startup-launchpad +4종 |
 | [moai-marketing](./moai-marketing/) | 12 | brand-identity, seo-audit, campaign-planner(광고 심리학 완전판), sns-content, target-script, landing-page-conversion-audit, pixel-audit, **meta-ads-analyzer (v2.5)** · **meta-ads-manager (v2.15 신규)** +3종 |
-| [moai-commerce](./moai-commerce/) | 35 | 시장조사·JTBD·페르소나·상품명·통합전략·아침브리핑·주문집계(7), 광고·마진·자동화·법규 진단(4), LTV/CAC·푸시·프로모션·재구매·상세 이미지·리뷰·VOC·구독·인플루언서·초기 팬·트렌드·시즌(13), 마켓플레이스(쿠팡·네이버·D2C·크라우드펀딩·큐레이션) 등 풀스택 35 스킬 |
+| [moai-commerce](./moai-commerce/) | 30 | 핵심 6도구(시장조사·JTBD·페르소나·상품명·채널메시지·통합전략) + 아침브리핑·광고/마진/자동화/법규 진단 + LTV/CAC·프로모션·재구매·리뷰/VOC·구독·인플루언서·초기팬·시즌 + 상세페이지(카피·이미지·사진브리프) + 마켓플레이스 6종(쿠팡·쿠팡광고·네이버·D2C·크라우드펀딩·큐레이션) + 식약처 등 풀스택 30 스킬 |
 | [moai-product](./moai-product/) | 4 | spec-writer, roadmap-manager, ux-designer, ux-researcher |
 | [moai-operations](./moai-operations/) | 3 | status-reporter, process-manager, vendor-manager |
 | [moai-support](./moai-support/) | 4 | ticket-triage, draft-response, escalation-manager, kb-article |
@@ -156,15 +170,19 @@ flowchart TD
 | [moai-finance](./moai-finance/) | 6 | tax-helper, financial-statements, close-management, variance-analysis, court-auction-search, korean-stock-search |
 | [moai-data](./moai-data/) | 3 | data-explorer, public-data, data-visualizer |
 | [moai-research](./moai-research/) | 5 | paper-search, paper-writer, grant-writer, patent-search, patent-analyzer |
-| [moai-education](./moai-education/) | 5 | curriculum-designer, assessment-creator, research-assistant, course-curriculum-design, course-followup-sequence |
+| [moai-education](./moai-education/) | 6 | curriculum-designer, assessment-creator, research-assistant, course-operations-manual, course-followup-sequence, course-curriculum-design(별칭) |
 | [moai-career](./moai-career/) | 4 | resume-builder, job-analyzer, interview-coach, portfolio-guide |
 | [moai-lifestyle](./moai-lifestyle/) | 3 | travel-planner, event-planner, wellness-coach |
 | [moai-bi](./moai-bi/) | 1 | executive-summary |
 | [moai-pm](./moai-pm/) | 1 | weekly-report |
 | [moai-sales](./moai-sales/) | 1 | proposal-writer |
-| [moai-design](./moai-design/) | 5 | **claude-design-brief · claude-design-system-prep · claude-design-prompt-builder · claude-design-handoff-reader · claude-design-slop-check (v2.12 신규)** |
+| [moai-design](./moai-design/) | 5 | claude-design-brief · claude-design-system-prep · claude-design-prompt-builder · claude-design-handoff-reader · claude-design-slop-check |
+| [moai-wealth](./moai-wealth/) | 6 | wealth-roadmap, household-budget, invest-primer, insurance-fit, personal-tax-saver, econ-literacy |
+| [moai-productivity](./moai-productivity/) | 7 | goal-planner, retro-builder, time-system, habit-routine, self-care, notion-template-kit, weekly-report |
+| [moai-comms](./moai-comms/) | 5 | report-speak, meeting-facilitator, feedback-loop, conflict-handler, negotiation-1on1 |
+| [moai-public-data](./moai-public-data/) | 4 | korean-stock-search, court-auction-search, real-estate-search, public-data |
 
-전체 **152개 스킬 · 23개 플러그인** (v2.15.0 기준).
+전체 **173개 스킬 · 27개 플러그인** (v2.17.0 기준).
 
 ## 다음 단계
 
@@ -179,4 +197,4 @@ flowchart TD
 
 - [modu-ai/cowork-plugins](https://github.com/modu-ai/cowork-plugins)
 - [cowork-plugins README](https://raw.githubusercontent.com/modu-ai/cowork-plugins/main/README.md)
-- [v2.15.0 릴리스 (최신)](../releases/v2.15/) · [v2.14.0 릴리스](../releases/v2.14/) · [v2.13.0 릴리스](../releases/v2.13/)
+- [v2.17.0 릴리스 (최신)](../releases/v2.17/) · [v2.16.0 릴리스](../releases/v2.16/) · [v2.15.0 릴리스](../releases/v2.15/)

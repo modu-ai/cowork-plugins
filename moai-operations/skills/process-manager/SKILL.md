@@ -3,7 +3,7 @@ name: process-manager
 description: >
   업무 프로세스를 문서화하고 표준화합니다. "SOP 만들어줘", "구매 요청서 써줘", "회의록 정리해줘", "운영 매뉴얼 작성해줘"라고 요청할 때 사용하세요. 운영 매뉴얼, SOP(표준 운영 절차), 조달 문서(구매 요청서·발주서), 회의록 작성 및 안건 관리를 지원합니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 프로세스 관리자 (process-manager)
@@ -56,6 +56,17 @@ version: 2.15.0
 | 조달 규정 확인 불가 | 일반적인 내부 구매 기준으로 작성 후 담당 부서 검토를 권장합니다 |
 | 기존 프로세스와 충돌 | 현행 절차 문서를 공유해 주시면 개선안으로 작성해 드립니다 |
 | 업종·도메인 특화 요구 | 해당 업종 규정이나 컴플라이언스 기준을 함께 제공해 주세요 |
+
+## 관련 스킬 (후처리 체인)
+
+SOP, 운영 매뉴얼, 회의록, 조달 문서 등 **서술형 산출물**은 다음 체인으로 마무리합니다.
+
+```
+process-manager → moai-core:ai-slop-reviewer → moai-content:humanize-korean
+```
+
+- `moai-core:ai-slop-reviewer` — 문서 본문의 AI 티 패턴을 검수·수정합니다.
+- `moai-content:humanize-korean` — 검수된 본문을 자연스러운 한국어 실무 문체로 다듬습니다.
 
 ## 공유 에이전트
 

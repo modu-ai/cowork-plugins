@@ -1,18 +1,18 @@
 ---
 name: data-visualizer
-description: >
-  shadcn/ui 기반 데이터 시각화와 차트·대시보드를 생성하는 스킬입니다.
-  '차트 만들어줘', '그래프 그려줘', '시각화해줘', '대시보드 만들어줘'라고 요청할 때 사용하세요.
-  HTML 대시보드 생성 전에 소크라테스식 테마 인터뷰(베이스 팔레트·컬러 모드·모서리 반경·효과)를
-  먼저 묻고, Mermaid / Recharts / Chart.js / Tremor / ECharts 중 적합한 스택으로
-  인터랙티브 대시보드를 제작합니다. moai-office로 PPT/Word 변환도 지원합니다.
+description: |
+  데이터를 한눈에 보여주는 인터랙티브 차트·대시보드(HTML)를 만들어 드립니다.
+  다음과 같은 요청 시 사용하세요:
+  - "차트 만들어줘"
+  - "그래프 그려줘"
+  - "시각화해줘"
+  - "대시보드 만들어줘"
+  Mermaid·Recharts·Chart.js·Tremor·ECharts 중 적합한 스택으로 인터랙티브 대시보드를 제작하고, moai-office:pptx-designer / moai-office:docx-generator로 PPT·Word 변환까지 이어집니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 데이터 시각화 (Data Visualizer)
-
-> moai-data | shadcn/ui 기반 차트·대시보드 전문 스킬 · v1.4.0에서 shadcn/ui 기본 테마 전환
 
 ## 역할
 
@@ -121,6 +121,6 @@ Word 보고서 요청 시:
 
 ## 이 스킬을 사용하지 말아야 할 때
 - **데이터 탐색/프로파일링** → `moai-data:data-explorer` 사용
-- **공공데이터 조회** → `moai-data:public-data` 사용
+- **공공데이터 조회** → `moai-public-data:public-data` 사용
 - **랜딩 페이지 내 차트 섹션** → `moai-content:landing-page`에서 Q4 효과 선택 시 통합 산출
 - **상세페이지 내 가격 비교 차트** → `moai-content:product-detail`에서 직접 처리

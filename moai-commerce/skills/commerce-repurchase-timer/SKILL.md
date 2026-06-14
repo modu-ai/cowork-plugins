@@ -9,7 +9,7 @@ description: |
   ai-slop-reviewer 자동 체이닝 (텍스트 메시지 산출물).
   v2.7.0 신규.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 재구매 타이밍 엔진 (Commerce Repurchase Timer)
@@ -201,18 +201,17 @@ version: 2.15.0
 ## 관련 스킬
 
 체이닝:
-`commerce-repurchase-timer` (타이밍 계산) → `commerce-push-planner` (앱 푸시 카피) → `commerce-marketing-compliance-kr` (법규 게이트) → 실제 발송
+`commerce-repurchase-timer` (타이밍 계산) → `moai-commerce:commerce-channel-message` (앱 푸시·카톡·이메일 카피) → `commerce-marketing-compliance-kr` (법규 게이트) → 실제 발송
 
 - `commerce-ltv-cac-architect` — 전체 LTV/CAC 모델 (페어, 다른 책임)
-- `commerce-push-planner` — 구간별 앱 푸시 카피
-- `commerce-channel-message` — 구간별 카톡·이메일 카피
+- `commerce-channel-message` — 구간별 앱 푸시·카톡·이메일 카피 (앱 푸시 기획 모드 포함)
 - `commerce-marketing-compliance-kr` — 발송 전 정통망법 게이트
 
 ## 이 스킬을 사용하지 말아야 할 때
 
 - **전체 LTV/CAC 분석**: `commerce-ltv-cac-architect` 사용
 - **신규 고객 획득**: 본 스킬은 재구매 전용. 신규는 `campaign-planner` 사용
-- **단순 메시지 카피 작성**: `commerce-channel-message` 또는 `commerce-push-planner` 사용
+- **단순 메시지 카피 작성**: `commerce-channel-message` 사용 (앱 푸시 기획 모드 포함)
 - **첫 구매 onboarding**: `commerce-channel-message` Activation 단계 사용
 
 ## 참고 자료

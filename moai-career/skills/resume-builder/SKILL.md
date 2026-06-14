@@ -6,7 +6,7 @@ description: >
   말하면 됩니다. KKK-STAR 자소서, USP+CAR 이력서, ATS·블라인드·NCS 모드, 2026 AI 진정성
   검증 회피 가드, 500/1000/1500자 분량 자동, 영문 CV·LinkedIn 헤드라인을 지원합니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 이력서/자소서 빌더 (resume-builder)
@@ -69,14 +69,18 @@ CAR (Challenge - Action - Result)
 - 회사 추천 받으면 2-3주 답변
 - 헤드헌터 통한 협상 결렬 시 직접 지원 어려움 (블랙리스트 위험)
 
-### 5. AI 생성 티 제거 체크리스트
+### 5. AI 생성 티 제거 — 후처리 체인 위임
 
-채용 담당자가 AI 텍스트 구분 — 회피 방법:
-- 범용 표현 제거 ("~한 경험이 있습니다", "성장했습니다")
-- 1-2 고유 에피소드 (시간·장소·인물 구체)
-- 본인의 감정·결정 동기 명시
-- 회사 사업·문화에 대한 구체 언급
-- 단순 형용사 (탁월한·뛰어난) 최소화
+채용 담당자가 AI 텍스트를 구분하는 시대에는, 초안을 직접 손보는 자체 체크리스트보다 검증된 후처리 체인에 맡기는 편이 일관됩니다. 자소서·이력서·경력기술서 초안을 완성한 뒤 다음 체인을 반드시 거칩니다.
+
+```
+resume-builder → moai-core:ai-slop-reviewer → moai-content:humanize-korean
+```
+
+- `moai-core:ai-slop-reviewer` — "~한 경험이 있습니다", "성장했습니다" 같은 범용 표현, 클리셰 결론, 형용사 남발 등 AI 패턴을 1차 검수·교정합니다.
+- `moai-content:humanize-korean` — 균일한 문장 길이·동일 접속사 패턴을 사람이 쓴 듯한 리듬(단문+장문 혼합, 구어 표현)으로 2차 다듬습니다.
+
+체인 산출 후에도 본인만의 고유 에피소드(시간·장소·인물 구체), 결정 동기, 회사 사업·문화에 대한 구체 언급은 직접 보강해야 진정성이 완성됩니다.
 
 ## 자소서 작성 프레임워크 (STAR + 두괄식)
 
@@ -123,7 +127,7 @@ CAR (Challenge - Action - Result)
 
 ## 2026 AI 진정성 검증 회피 가드
 
-원티드 HR 트렌드 리포트 2026에 따르면 **AI로 포장된 지원자의 진정성 및 표절 검증(41%)**이 면접관의 주요 숙제로 떠올랐습니다. 챗GPT/제미나이 흔적이 남는 표현은 자동 감지·재작성합니다.
+원티드 HR 트렌드 리포트 2026에 따르면 **AI로 포장된 지원자의 진정성 및 표절 검증(41%)**이 면접관의 주요 숙제로 떠올랐습니다. 아래 표는 챗GPT/제미나이 흔적이 남는 패턴과 재작성 방향이며, 실제 교정은 `moai-core:ai-slop-reviewer → moai-content:humanize-korean` 체인이 일관되게 수행합니다.
 
 | 자동 감지 패턴 | 재작성 방향 |
 |---|---|
@@ -197,6 +201,19 @@ CAR (Challenge - Action - Result)
 - **글자수 초과**: 1K(결론)과 3K(강조)를 먼저 압축한 후, 2K(STAR)에서 Action 부분을 핵심만 남깁니다.
 - **AI 생성 티 문제**: "~한 경험이 있습니다", "이를 통해 성장했습니다" 같은 범용 표현 대신 구체적 상황과 감정을 담은 고유 표현을 사용하세요.
 
+## 관련 스킬 / 후처리 체인
+
+자소서·이력서·경력기술서·CV·LinkedIn 텍스트는 모두 사람이 읽는 산출물입니다. 초안 완성 후 다음 체인을 반드시 거쳐 AI 패턴을 제거하고 자연스러운 한국어로 다듬습니다.
+
+```
+moai-career:resume-builder → moai-core:ai-slop-reviewer → moai-content:humanize-korean
+```
+
+- `moai-core:ai-slop-reviewer` — AI 생성 패턴(범용 표현·클리셰·형용사 남발) 1차 검수·교정
+- `moai-content:humanize-korean` — 문장 리듬·구어 표현으로 2차 휴머나이즈
+
+JD 분석은 `moai-career:job-analyzer`, 면접 준비는 `moai-career:interview-coach`, 포트폴리오는 `moai-career:portfolio-guide`와 함께 사용하세요.
+
 ## 공유 에이전트
 
 이 플러그인에서 활용할 수 있는 다른 플러그인의 에이전트:
@@ -208,7 +225,7 @@ CAR (Challenge - Action - Result)
 
 ## 이 스킬을 사용하지 말아야 할 때
 
-- **채용공고(JD) 분석**: 공고를 분석하여 역량을 추출하려면 `job-analyzer` 스킬을 사용하세요.
-- **면접 준비**: 면접 예상 질문이나 모의 면접은 `interview-coach` 스킬이 적합합니다.
-- **포트폴리오 구성**: 프로젝트 정리나 포트폴리오 전략은 `portfolio-guide` 스킬을 사용하세요.
-- **채용 담당자용 JD 작성**: 기업 인사 담당자가 JD를 작성하려면 moai-hr의 `employment-manager` 스킬을 사용하세요.
+- **채용공고(JD) 분석**: 공고를 분석하여 역량을 추출하려면 `moai-career:job-analyzer` 스킬을 사용하세요.
+- **면접 준비**: 면접 예상 질문이나 모의 면접은 `moai-career:interview-coach` 스킬이 적합합니다.
+- **포트폴리오 구성**: 프로젝트 정리나 포트폴리오 전략은 `moai-career:portfolio-guide` 스킬을 사용하세요.
+- **채용 담당자용 JD 작성**: 기업 인사 담당자가 JD를 작성하려면 `moai-hr:employment-manager` 스킬을 사용하세요.

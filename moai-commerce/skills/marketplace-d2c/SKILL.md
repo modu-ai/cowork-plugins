@@ -7,7 +7,7 @@ description: >
   카페24(가장 많은 한국 셀러) vs 아임웹(노코드·디자인 강점) vs 메이크샵 운영 비교,
   네이버 검색·구글 SEO·페이스북·카카오 광고 연동까지 통합 안내합니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 자사몰 (D2C) 운영 가이드
@@ -152,8 +152,8 @@ version: 2.15.0
 
 - `moai-commerce:detail-page-copy` — 상세페이지 카피 (자사몰에도 그대로 사용)
 - `moai-commerce:detail-page-image` — 1080×12720 합성 이미지
-- `moai-commerce:commerce-strategy` — 채널 믹스, 광고 ROI, 리텐션 전략
-- `moai-commerce:commerce-copywriting` — 광고·이메일·푸시 카피
+- `moai-commerce:commerce-integrated-strategy` — 채널 믹스, 광고 ROI, 리텐션 전략
+- `moai-commerce:commerce-channel-message` — 광고·이메일·푸시 카피
 - `moai-marketing:campaign-planner` — 캠페인 기획
 - `moai-content:landing-page` — shadcn/ui 기반 마케팅 랜딩 (자사몰 보조 페이지)
 

@@ -1,11 +1,15 @@
 ---
 name: data-explorer
-description: >
-  CSV/Excel 데이터 탐색과 프로파일링을 수행합니다.
-  '이 데이터 분석해줘', 'CSV 요약해줘', '이상값 찾아줘', '데이터 품질 체크해줘'라고 요청할 때 사용하세요.
-  컬럼 요약, 결측값/이상값 탐지, 상관관계 분석, 데이터 품질 보고서를 생성합니다.
+description: |
+  CSV·Excel 데이터의 프로파일링·품질 보고서를 만들어 드립니다.
+  다음과 같은 요청 시 사용하세요:
+  - "이 데이터 분석해줘"
+  - "CSV 요약해줘"
+  - "이상값 찾아줘"
+  - "데이터 품질 체크해줘"
+  컬럼 요약·결측값/이상값 탐지·상관관계 분석을 거쳐 데이터 품질 보고서로 정리합니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 데이터 탐색기 (Data Explorer)
@@ -52,5 +56,5 @@ CSV/Excel 파일을 받아 데이터 프로파일링, 품질 검사, 기초 분�
 
 ## 이 스킬을 사용하지 말아야 할 때
 - **차트/그래프 생성** → moai-data:data-visualizer 사용
-- **공공데이터 조회** → moai-data:public-data 사용
+- **공공데이터 조회** → moai-public-data:public-data 사용
 - **PPT/Word 변환** → moai-office 플러그인 사용

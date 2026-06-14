@@ -8,7 +8,7 @@ description: |
   ai-slop-reviewer 체이닝 제외 (수치·표·다이어그램 데이터 스킬).
   v2.6.0 신규.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 고객 단위 수익 구조 설계 (LTV/CAC Architect)
@@ -144,7 +144,7 @@ Payback = 50,000 / (12,000 × 0.33)
 | **신규 회원 (첫 구매)** | 0% | 1.0x | 첫 구매 → 7일 내 두 번째 구매 유도 (메시지·할인) |
 | **2회 구매자** | 65% | 2.5x | 5회 구매까지 onboarding 시퀀스 |
 | **VIP (5회+)** | 85% | 5x+ | Lookalike 씨앗 (광고 효율 최고) + VIP 혜택 |
-| **휴면 직전 (60-90일)** | 25% | 1.3x | 재구매 시점 골든타임 푸시 (commerce-push-planner) |
+| **휴면 직전 (60-90일)** | 25% | 1.3x | 재구매 시점 골든타임 푸시 (commerce-channel-message 앱 푸시 기획 모드) |
 | **휴면 (90일+)** | 8% | 1.05x | 윈백 이벤트 또는 손절 |
 
 ### 채널별 재구매율
@@ -172,7 +172,7 @@ Payback = 50,000 / (12,000 × 0.33)
 
 [Month 3] 재구매 메시지 시퀀스
    - 첫 구매 후 7일·30일·60일·90일 시퀀스 (4단계)
-   - commerce-push-planner + commerce-channel-message 활용
+   - commerce-channel-message 활용 (운영 카피 + 앱 푸시 기획 모드)
 
 [Month 4] 광고 채널 재배분
    - 신규 광고비 50%로 감축 (해당 매출은 일시 -10%)
@@ -267,7 +267,7 @@ Payback = 50,000 / (12,000 × 0.33)
 
 ### Priority 1: 첫 구매 후 7일 시퀀스 (Payback 단축)
 - 현재 12% → 목표 30% 재구매율
-- 도구: commerce-push-planner + commerce-channel-message
+- 도구: commerce-channel-message (운영 카피 + 앱 푸시 기획 모드)
 - 예상 LTV 상승: +35%
 
 ### Priority 2: VIP Lookalike 메타 등록 (CAC 감축)
@@ -318,8 +318,7 @@ Payback = 50,000 / (12,000 × 0.33)
 체이닝: `commerce-margin-calculator` (단품 마진) → **commerce-ltv-cac-architect** (고객 수익 구조) → 다음 단계 액션 스킬
 
 - `commerce-margin-calculator` — 단품 마진·엔드 ROAS 계산 (페어, 다른 책임)
-- `commerce-channel-message` — Priority 1·3 액션의 메시지 카피
-- `commerce-push-planner` — Priority 1 액션의 앱 푸시 기획
+- `commerce-channel-message` — Priority 1·3 액션의 메시지 카피 + 앱 푸시 기획 (앱 푸시 기획 모드)
 - `commerce-integrated-strategy` — 통합 전략 1장에 본 진단 결과 포함
 
 ## 이 스킬을 사용하지 말아야 할 때
@@ -327,4 +326,4 @@ Payback = 50,000 / (12,000 × 0.33)
 - **단품 마진 계산**: `commerce-margin-calculator` 사용
 - **메시지 카피 작성**: `commerce-channel-message` 사용
 - **광고 캠페인 기획**: `campaign-planner` 사용
-- **단순 ROAS 계산 (광고 단위)**: `coupang-ad-optimizer` 또는 `performance-report` 사용
+- **단순 ROAS 계산 (광고 단위)**: `moai-commerce:marketplace-coupang-ads` 또는 `performance-report` 사용

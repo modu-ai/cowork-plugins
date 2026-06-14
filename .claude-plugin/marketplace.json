@@ -5,15 +5,15 @@
     "email": "email@mo.ai.kr"
   },
   "metadata": {
-    "description": "모두의 AI의 Claude Cowork 플러그인 마켓플레이스 — 23 플러그인, 152 스킬. 사업계획·이커머스·마케팅·콘텐츠·법률·재무·HR·교육·출판·디자인·미디어 등 한국 실무 도메인 전반을 한국어 자연어 한 줄로 처리합니다. 짧게 요청하면 시스템이 필요한 맥락을 질문(AskUserQuestion)으로 수집하고, 산출물별 스킬 체인으로 결과를 완성합니다. 모든 텍스트 산출물은 ai-slop-reviewer 검수 체인을 권장하며, /project init으로 프로젝트 워크플로우 기반 CLAUDE.md를 자동 생성합니다. 버전별 변경 내역은 CHANGELOG.md와 GitHub Releases에서 확인하세요.",
-    "version": "2.15.0",
+    "description": "모두의 AI의 Claude Cowork 플러그인 마켓플레이스 — 27 플러그인, 173 스킬. 사업계획·이커머스·마케팅·콘텐츠·법률·재무·재테크·HR·교육·출판·디자인·미디어·생산성·커뮤니케이션 등 한국 실무 도메인 전반을 한국어 자연어 한 줄로 처리합니다. 짧게 요청하면 시스템이 필요한 맥락을 질문(AskUserQuestion)으로 수집하고, 산출물별 스킬 체인으로 결과를 완성합니다. 모든 텍스트 산출물은 ai-slop-reviewer 검수 체인을 권장하며, /project init으로 프로젝트 워크플로우 기반 CLAUDE.md를 자동 생성합니다. 버전별 변경 내역은 CHANGELOG.md와 GitHub Releases에서 확인하세요.",
+    "version": "2.17.0",
     "language": "ko"
   },
   "plugins": [
     {
       "name": "moai-core",
       "source": "./moai-core",
-      "description": "MoAI 코어 — /project 프로젝트 초기화, 스킬 체이닝 워크플로우 설계, 도메인 라우터, AI 슬롭 검수(ai-slop-reviewer), MCP 커넥터 셋업 가이드(mcp-connector-setup — Drive·Notion·Higgsfield·OpenAI), 피드백 허브 + AI 슬롭 검수 에이전트(slop-reviewer — Cowork·Claude Code 전용)"
+      "description": "MoAI 코어 — /project 프로젝트 초기화, 스킬 체이닝 워크플로우 설계, 도메인 라우터, AI 슬롭 검수(ai-slop-reviewer), MCP 커넥터 셋업 가이드(mcp-connector-setup — Drive·Notion·Higgsfield), 피드백 허브 + AI 슬롭 검수 에이전트(slop-reviewer — Cowork·Claude Code 전용)"
     },
     {
       "name": "moai-business",
@@ -53,7 +53,7 @@
     {
       "name": "moai-education",
       "source": "./moai-education",
-      "description": "교육/연구 — 강의·수업·연수·워크숍 운영 매뉴얼 자동 생성(course-curriculum-design — 1일 특강부터 정규 강좌까지), 수강 후 30일 후기 자산화 시퀀스(course-followup-sequence), 논문 리서치, 교육과정 개발, 평가 출제"
+      "description": "교육/연구 — 강의·수업·연수·워크숍 운영 매뉴얼 자동 생성(course-operations-manual — 1일 특강부터 정규 강좌까지), 수강 후 30일 후기 자산화 시퀀스(course-followup-sequence), 논문 리서치, 교육과정 개발, 평가 출제"
     },
     {
       "name": "moai-lifestyle",
@@ -86,6 +86,11 @@
       "description": "데이터 분석 — CSV/Excel 탐색, 공공데이터 조회, shadcn/ui 대시보드 + Recharts/Chart.js/Tremor/ECharts 차트"
     },
     {
+      "name": "moai-public-data",
+      "source": "./moai-public-data",
+      "description": "한국 공공·데이터 조회 전담 — KRX 상장 종목 시세(korean-stock-search), 대법원 법원경매 매각공고(court-auction-search), 국토교통부 실거래가·전월세(real-estate-search), 공공데이터포털·KOSIS 통계(public-data). 대부분 키 불필요(프록시·공개 데이터), data.go.kr·KOSIS만 무료 키 등록. 모두 read-only 조회 전용"
+    },
+    {
       "name": "moai-research",
       "source": "./moai-research",
       "description": "연구/특허 — 논문 검색, 학술 논문 작성, 특허 분석/출원, 연구비 신청 + 다중 소스 리서치 에이전트(research-scout — Cowork·Claude Code 전용)"
@@ -103,17 +108,17 @@
     {
       "name": "moai-bi",
       "source": "./moai-bi",
-      "description": "BI 대시보드 — 데이터 분석, 경영진 1pager 보고서, KPI 트리, 코호트·퍼널 분석. K-IFRS·KOSIS·DART 한국 통계 친화, moai-finance와 직접 체이닝"
+      "description": "BI 리포트 — 경영진 1pager 핵심 요약(executive-summary). K-IFRS·KOSIS·DART 한국 통계 친화, moai-content:html-report·moai-office 변환 체이닝"
     },
     {
       "name": "moai-pm",
       "source": "./moai-pm",
-      "description": "프로젝트 관리 — 한국 팀 주간보고·OKR·회고·스탠드업 자동화. Notion·Linear·Asana·Slack MCP 활용, 격식체/구어체 톤 스위치"
+      "description": "프로젝트 관리 — 한국 팀 주간업무보고(WBR) 작성 자동화, 격식체/구어체 톤 스위치"
     },
     {
       "name": "moai-sales",
       "source": "./moai-sales",
-      "description": "B2B 영업 — 한국 B2B 워크플로우, 제안서, 견적서, 콜드메일, 후속 시퀀스. 국세청 표준 양식 호환"
+      "description": "B2B 영업 — 한국 B2B 제안서(proposal) 작성·RFP 대응·제안 구조화"
     },
     {
       "name": "moai-book",
@@ -124,6 +129,21 @@
       "name": "moai-design",
       "source": "./moai-design",
       "description": "Claude Design 보조 — claude.ai/design 사용을 받쳐 주는 풀스택 5 스킬. claude-design-brief 6요소 자동 채움(Project·Audience·Pages·Tone·Reference·Constraints + AI 슬롭 회피 블록), claude-design-system-prep 브랜드 자산 → DESIGN.md 합성(코드·Figma·실물·사전 빌트인 5 자산 유형), claude-design-prompt-builder 시니어 UX 10 패턴(IA·리서치·디자인 시스템·카피·온보딩·휴리스틱·대시보드·접근성·폼·테스트) 자동 선택·완성, claude-design-handoff-reader Claude Code 핸드오프 번들(README·design-tokens·components·layout·chat-history) 분석·요약 + 1줄 지시 자동 생성, claude-design-slop-check 영문·한국어 AI 슬롭 패턴(Reimagine your·차세대·혁신적인) 검출 + 수정 대안 3개"
+    },
+    {
+      "name": "moai-wealth",
+      "source": "./moai-wealth",
+      "description": "개인 재무·재테크 — 재테크 로드맵(현황 진단·종잣돈 4단계·자산 배분), 가계부·소비관리(통장 쪼개기·50/30/20·소비 회고), 투자 입문(분산·장기·리스크·자산군·초보 포트폴리오·투자 사기 회피), 보험 설계(필요 보험 진단·과보험 점검·생애주기 리모델링), 근로자 연말정산 절세(소득공제 vs 세액공제·연금저축/IRP·환급 극대화), 경제지표 읽기(금리·환율·물가·GDP를 내 돈 관점으로). moai-finance(법인 세무)와 분리된 개인 자산관리 도메인"
+    },
+    {
+      "name": "moai-productivity",
+      "source": "./moai-productivity",
+      "description": "자기관리·생산성 — 회고(KPT·연간·키워드 회고 템플릿), 목표관리(12주 계획·만다라트·개인 OKR·신년 로드맵), 시간관리(블록식스·덩어리 시간·우선순위·야근 줄이기), 습관·루틴 설계(작심3일 극복·모닝 루틴·습관 트래커), 번아웃·자기돌봄, 노션 올인원 템플릿 생성, 직장 주간업무보고(moai-pm 흡수). 개인 자기관리에 특화"
+    },
+    {
+      "name": "moai-comms",
+      "source": "./moai-comms",
+      "description": "직장 커뮤니케이션·소프트스킬 — 보고·설명의 기술(두괄식·핵심 요약·상사 보고), 회의 진행·퍼실리테이션(아젠다·의사결정·회의록), 피드백 주고받기(건설적 전달·부정 피드백 소화), 갈등·소통빌런 유형별 대응·정중한 거절, 1:1 면담·설득·협상. moai-hr(공식 성과평가)·moai-content(문서 작성)와 구분되는 대인 커뮤니케이션 실전"
     }
   ]
 }

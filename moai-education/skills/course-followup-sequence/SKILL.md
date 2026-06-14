@@ -1,12 +1,20 @@
 ---
 name: course-followup-sequence
 description: |
-  [책임 경계] 강사·교수·교사 대상 강의·수업·연수·워크숍·정규 강좌 종료 후 30일 follow-up 시퀀스 — 후기 카피 5종 (D+1·D+3·D+7·D+14·D+30) + 인센티브·자산화 전담. 페어 moai-content:copywriting(일반 마케팅 카피)과 명확히 구분 — 본 스킬은 수강생 후기 30일 시퀀스 전용, 페어는 범용 마케팅 카피.
-  다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
-  "수강생 후기 카피 만들어줘", "D+1 후기 요청", "D+3 적용 인증 요청", "D+7 성과 수치 후기", "D+14 영상 후기 인센티브 안내", "D+30 심층 인터뷰 제안", "강의 후 30일 시퀀스", "수업 follow-up", "연수 후기 자산화".
-  체인: moai-content:copywriting → moai-core:ai-slop-reviewer → moai-content:korean-spell-check.
+  강의가 끝난 뒤 30일 동안 수강생 후기를 모으는 단계별 후기 요청 카피 5종(D+1·D+3·D+7·D+14·D+30)을 만들어 드립니다.
+  다음과 같은 요청 시 사용하세요:
+  - "강의 끝났어, 수강생 후기 카피 만들어줘"
+  - "D+1 후기 요청 카톡 만들어줘"
+  - "D+3 적용 인증 요청 메시지 써줘"
+  - "D+7 성과 수치 후기 요청, 5% 할인 넣어서 만들어줘"
+  - "D+14 영상 후기 요청, 우수 후기 인센티브 강화해줘"
+  - "D+30 심층 인터뷰 제안 메시지 만들어줘"
+  - "사내 AI 연수 follow-up 시퀀스 짜줘"
+  - "수업 후기 자산화 30일 플랜 만들어줘"
+  감사 인사부터 적용 인증, 성과 수치, 영상 후기, 심층 인터뷰까지 시점별 톤에 맞춰 후기를 회수하고, moai-content:copywriting → moai-core:ai-slop-reviewer → moai-content:korean-spell-check 체인으로 자연스럽게 다듬어 드립니다.
+  [책임 경계] vs moai-content:copywriting: 이 스킬=강의 수강생 후기 30일 회수 시퀀스, 저 스킬=범용 마케팅 카피.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 강의 종료 후 30일 Follow-up 시퀀스
@@ -22,10 +30,10 @@ version: 2.15.0
 - 온라인 라이브·녹화 강의
 - 대학·대학원 수업, 평생교육원·HRD 과정
 
-**체인 (REQ-FOLLOWUP-002, HARD)**
+**체인**
 후기 카피 5종 생성 시: `moai-content:copywriting → moai-core:ai-slop-reviewer → moai-content:korean-spell-check`
 
-체인 중 단계 누락 시 출력 거부합니다.
+세 단계를 모두 거쳐야 후기 카피를 출력합니다.
 
 ---
 
@@ -47,7 +55,7 @@ version: 2.15.0
 | D+14 | 후기 요청 ④ — 영상 후기 (1분 셀카) | 신뢰도 최상위 콘텐츠 | 차기 강의 10% 추가 할인 또는 멤버십 1개월 |
 | D+30 | 후기 요청 ⑤ — 장기 변화 인터뷰 (지면) | 심층 사례 자산 | 차기 강의 무료 청강권 |
 
-> 인센티브 예시는 강좌 운영자가 자유롭게 커스터마이즈할 수 있습니다 (`--escalation premium` 등).
+> 인센티브 예시는 강좌 운영자가 자유롭게 바꿀 수 있습니다. "우수 후기 인센티브 강화해줘"처럼 요청하면 프리미엄 인센티브 안내를 함께 넣어 드립니다.
 
 ---
 
@@ -61,9 +69,9 @@ version: 2.15.0
 | ④ | D+14 | 인센티브 안내 | 영상 후기 | 3-4문장 |
 | ⑤ | D+30 | 깊이 있는 인터뷰 제안 | 장기 변화 | 5-7문장 |
 
-> **[HARD] 금지 (REQ-FOLLOWUP-009)**: 후기 카피에 시간 예측 표현 금지 — "2-3일 안에", "1주 후", "ASAP" 등. D+N 시퀀스 라벨(D+1, D+3, D+7, D+14, D+30)은 단계 식별자로 허용.
+> **표현 가이드**: 후기 카피에는 "2-3일 안에", "1주 후", "ASAP" 같은 시간 예측 표현을 쓰지 않습니다. D+N 시퀀스 라벨(D+1, D+3, D+7, D+14, D+30)은 단계를 가리키는 용도로만 씁니다.
 
-> **[HARD] 운영 노트**: "사람이 보낸 메시지처럼 자연스럽게." ai-slop-reviewer 통과 필수 (REQ-FOLLOWUP-010).
+> **운영 노트**: 사람이 보낸 메시지처럼 자연스럽게 다듬으며, ai-slop-reviewer 검수를 반드시 거칩니다.
 
 ---
 
@@ -71,26 +79,26 @@ version: 2.15.0
 
 ### 호출 방법
 
-```
-/course-followup-sequence --day +1
-/course-followup-sequence --day +3
-/course-followup-sequence --day +7
-/course-followup-sequence --day +14
-/course-followup-sequence --day +30
-/course-followup-sequence --day +14 --escalation premium   # 우수 후기 인센티브 강화
-```
+자연어로 시점을 말하면 됩니다.
 
-### 입력 슬롯
+- "D+1 후기 요청 카피 만들어줘"
+- "D+3 적용 인증 요청 만들어줘"
+- "D+7 성과 수치 후기 요청 만들어줘"
+- "D+14 영상 후기 요청 만들어줘"
+- "D+30 심층 인터뷰 제안 만들어줘"
+- "D+14 영상 후기 요청, 우수 후기 인센티브 강화해줘"
 
-| 슬롯 | 필수 여부 | 기본값 | 설명 |
+### 함께 알려주면 좋은 정보
+
+| 항목 | 필수 여부 | 기본값 | 설명 |
 |------|-----------|--------|------|
-| `--day` | 필수 | 없음 | D+N 시점 (+1, +3, +7, +14, +30) |
-| `--course` | 선택 | 없음 | 강의·수업·연수 명칭 (카피에 자동 삽입) |
-| `--instructor` | 선택 | 없음 | 강사·교수명 |
-| `--channel` | 선택 | kakao | kakao / email / sms / discord — 발송 채널 |
-| `--escalation` | 선택 | 없음 | premium — 우수 후기 인센티브 강화 안내 포함 |
+| 시점 (D+N) | 필수 | 없음 | D+1, D+3, D+7, D+14, D+30 중 어느 시점인지 |
+| 강의·과정 이름 | 선택 | 없음 | 카피에 자연스럽게 넣어 드립니다 |
+| 강사·교수명 | 선택 | 없음 | 발신자 이름으로 사용 |
+| 발송 채널 | 선택 | 카카오 | 카카오 / 이메일 / 문자 / 디스코드 중 선택 |
+| 우수 후기 인센티브 강화 | 선택 | 없음 | "인센티브 강화해줘"라고 하면 프리미엄 안내 포함 |
 
-### 처리 체인 (HARD — REQ-FOLLOWUP-002)
+### 처리 체인
 
 ```
 Step 1: moai-content:copywriting → 시점별 톤·목적·길이 기준 후기 카피 초안 생성
@@ -124,15 +132,13 @@ Step 4: .md 파일 저장 + 발송 가이드 출력
 > "D+14 영상 후기 요청, 우수 후기 인센티브 강화해줘"
 
 ```
-/course-followup-sequence --day +14 --escalation premium
-→ "차기 강의 10% 추가 할인 또는 멤버십 1개월" 인센티브 자동 포함 (REQ-FOLLOWUP-007)
+→ "차기 강의 10% 추가 할인 또는 멤버십 1개월" 인센티브 자동 포함
 ```
 
 **예시 4 — 사내 연수 D+3 (이메일 채널)**
 > "사내 AI 연수 D+3 적용 인증 메일 만들어줘"
 
 ```
-/course-followup-sequence --day +3 --course "사내 AI 연수" --channel email
 → 격려 톤 2-3문장 + 이메일 형식 가이드
 ```
 
@@ -190,7 +196,7 @@ Step 4: .md 파일 저장 + 발송 가이드 출력
 - `moai-content:copywriting` — 체인 1단계: 후기 카피 초안 생성
 - `moai-core:ai-slop-reviewer` — 체인 2단계: AI 패턴 후처리
 - `moai-content:korean-spell-check` — 체인 3단계: 맞춤법 검사
-- `moai-education:course-curriculum-design` — 강의 운영 매뉴얼 (선행 스킬)
+- `moai-education:course-operations-manual` — 강의 운영 매뉴얼 (선행 스킬)
 - `moai-media` — D+30 영상 후기 재가공 (선택)
 - `moai-content:blog` — D+30 심층 인터뷰 블로그 사례 기사 (선택)
 
@@ -199,6 +205,6 @@ Step 4: .md 파일 저장 + 발송 가이드 출력
 ## 이 스킬을 사용하지 말아야 할 때
 
 - 강의와 무관한 일반 마케팅 후기·리뷰 카피 → `moai-content:copywriting` 직접 사용
-- 강의 운영 매뉴얼·시간표·동선 설계 → `moai-education:course-curriculum-design` 사용
+- 강의 운영 매뉴얼·시간표·동선 설계 → `moai-education:course-operations-manual` 사용
 - 카톡·알림톡·이메일 자동 발송 인프라 설정 → 외부 발송 도구 사용 (본 스킬은 카피·가이드 생성만)
 - 학습 평가·시험 채점 → `moai-education:assessment-creator` 사용

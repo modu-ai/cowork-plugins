@@ -6,7 +6,7 @@ description: >
   '개인정보처리방침 작성해줘', 'SLA 계약서 써줘'라고 요청하세요.
   한국 민법·상법 기반 10대 리스크 패턴 분석, 수정 권고안을 제공합니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 계약서 검토 (Contract Review)
@@ -163,14 +163,25 @@ version: 2.15.0
 
 ## 관련 스킬
 
-- **moai-legal/nda-triage**: NDA 비밀유지계약 전문 검토
-- **moai-legal/compliance-check**: 규제 준수 점검, ESG 보고
-- **moai-legal/legal-risk**: 법적 리스크 분석, 지적재산권 전략
-- **moai-core/ai-slop-reviewer**: 계약서 초안·수정 권고안 AI 패턴 검수
+- **moai-legal:nda-triage**: NDA 비밀유지계약 전문 검토
+- **moai-legal:compliance-check**: 규제 준수 점검, ESG 보고
+- **moai-legal:legal-risk**: 법적 리스크 분석, 지적재산권 전략
+- **moai-core:ai-slop-reviewer**: 계약서 초안·수정 권고안 AI 패턴 검수
+
+### 후처리 체인 (텍스트 산출물)
+
+계약서 초안·수정 권고안·이용약관·개인정보처리방침·SLA 등 서술형 산출물은 작성 후 반드시 다음 체인으로 마무리합니다.
+
+```
+contract-review → moai-core:ai-slop-reviewer → moai-content:humanize-korean
+```
+
+- **moai-core:ai-slop-reviewer**: AI 글쓰기 패턴(과장·상투구·획일적 구조) 검수
+- **moai-content:humanize-korean**: 한국어 자연스러움 보정으로 사람이 쓴 듯한 문장으로 다듬기
 
 ## 이 스킬을 사용하지 말아야 할 때
 
-- **NDA 비밀유지계약 전문 검토** → moai-legal/nda-triage 사용
-- **컴플라이언스 점검이나 ESG 보고** → moai-legal/compliance-check 사용
-- **법적 리스크 분석이나 지적재산 전략** → moai-legal/legal-risk 사용
+- **NDA 비밀유지계약 전문 검토** → moai-legal:nda-triage 사용
+- **컴플라이언스 점검이나 ESG 보고** → moai-legal:compliance-check 사용
+- **법적 리스크 분석이나 지적재산 전략** → moai-legal:legal-risk 사용
 - **실제 법적 분쟁이나 소송 대응** → 반드시 전문 변호사에게 의뢰하세요

@@ -1,18 +1,25 @@
 ---
 name: patent-analyzer
-description: >
-  특허 분석과 선행기술 조사를 수행합니다.
-  '특허 분석해줘', '선행기술 조사', 'FTO 분석', '특허 맵', '특허 출원서 초안'이라고 요청할 때 사용하세요.
-  특허 동향 분석, 선행기술 보고서, FTO(Freedom-to-Operate) 분석, 출원서 초안을 작성합니다.
+description: |
+  특허 동향 보고서·선행기술 조사 보고서·FTO(침해 가능성) 분석·특허 출원서 초안을 만들어 드립니다.
+  다음과 같은 요청 시 사용하세요:
+  - "배터리 기술 특허 동향 분석해줘. 최근 10년 기준으로"
+  - "이 발명의 선행기술 조사해줘. 핵심 구성요소는 A, B, C야"
+  - "FTO 분석 해줘. 대상 기술은 AI 이상 탐지야"
+  - "특허 출원서 초안 써줘. 명칭은 양자 암호 통신 방법이야"
+  - "특허 맵 그려줘. 출원인별 점유율도 보여줘"
+  - "이 청구항 대비 침해 가능성 판단해줘"
+  - "회피 설계 방향 제안해줘"
+  특허 데이터가 없으면 moai-research:patent-search로 먼저 검색한 뒤 분석하며, 보고서 본문은 ai-slop 검수 체인으로 마무리합니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 특허 분석 (Patent Analyzer)
 
 ## 개요
 
-특허 데이터를 체계적으로 분석하여 기술 동향, 선행기술 보고서, FTO(Freedom-to-Operate) 분석, 특허 출원서 초안을 작성하는 전문 스킬입니다. patent-search 스킬로 검색한 특허 데이터를 바탕으로 심층 분석을 수행합니다.
+특허 데이터를 체계적으로 분석하여 기술 동향, 선행기술 보고서, FTO(Freedom-to-Operate) 분석, 특허 출원서 초안을 작성하는 전문 스킬입니다. moai-research:patent-search 스킬로 검색한 특허 데이터를 바탕으로 심층 분석을 수행합니다.
 
 ## 트리거 키워드
 
@@ -37,7 +44,7 @@ AskUserQuestion으로 분석 목적을 선택받습니다:
 
 ### 2단계: 특허 데이터 수집 (필요시)
 
-분석 대상 특허 데이터가 없는 경우 patent-search 스킬을 연계하여 검색합니다:
+분석 대상 특허 데이터가 없는 경우 moai-research:patent-search 스킬을 연계하여 검색합니다:
 - 검색 키워드 및 IPC 분류코드
 - 검색 범위 (국내/해외, 연도, 상태)
 - 데이터 수집 목적 (동향/선행기술/FTO)
@@ -58,7 +65,7 @@ AskUserQuestion으로 분석 목적을 선택받습니다:
    - 대분류별 기술 분포
    - 세부 분야별 핵심 기술 식별
 
-4. 시각화 (data-visualizer 스킬 연계)
+4. 시각화 (moai-data:data-visualizer 스킬 연계)
    - 연도별 출원 추이 차트
    - 출원인별 점유율 파이 차트
    - IPC 분포 트리맵
@@ -70,7 +77,7 @@ AskUserQuestion으로 분석 목적을 선택받습니다:
    - 해결 수단별 핵심 구성요소
    - 구성요소별 키워드 및 IPC 매핑
 
-2. 관련 특허 검색 (patent-search 스킬 연계)
+2. 관련 특허 검색 (moai-research:patent-search 스킬 연계)
    - 구성요소별 개별 검색
    - 조합 검색 (구성요소 2개 이상 AND)
    - 배제 검색 (차별점 강조)
@@ -96,7 +103,7 @@ AskUserQuestion으로 분석 목적을 선택받습니다:
 2. 청구항 분석 (독립항 중심)
    - 독립항 구성요소별 요건 해석
    - 구성요소 대비 비교 (All Element Rule)
-   - 균등論 적용 가능성 검토
+   - 균등론 적용 가능성 검토
 
 3. 침해 가능성 판단
    - 직접 침해 (모든 구성요소 포함)
@@ -113,7 +120,7 @@ AskUserQuestion으로 분석 목적을 선택받습니다:
    - 분석 대상 특허 리스트
    - 청구항 대비 구성요소 비교표
    - 침해 가능성 종합 의견
-   - 리스크等级 (High/Medium/Low)
+   - 리스크 등급 (High/Medium/Low)
    - 회피 설계 방안
 
 **D. 출원서 초안 작성**
@@ -176,15 +183,25 @@ AskUserQuestion으로 분석 목적을 선택받습니다:
 - 선행기술 조사 및 FTO 분석은 변리사 자격이 있는 전문가의 검토를 거치시기 바랍니다.
 - FTO 분석은 등록특허를 대상으로 하며, 출원 중인 특허는 등록 후 권리 범위가 확정됩니다.
 - 출원서 초안은 참고용이며, 실제 출원 전 반드시 변리사의 검토를 거치시기 바랍니다.
-- 특허 데이터가 부족한 경우 patent-search 스킬을 먼저 실행하여 데이터를 수집한 뒤 연계 분석하는 것을 권장합니다.
-- 시각화가 필요한 경우 data-visualizer 스킬을 연계하여 차트를 생성할 수 있습니다.
+- 특허 데이터가 부족한 경우 moai-research:patent-search 스킬을 먼저 실행하여 데이터를 수집한 뒤 연계 분석하는 것을 권장합니다.
+- 시각화가 필요한 경우 moai-data:data-visualizer 스킬을 연계하여 차트를 생성할 수 있습니다.
 
 ## 관련 스킬
 
 - **moai-research:patent-search** - 특허 검색 및 서지정보 수집
 - **moai-data:data-visualizer** - 특허 동향 시각화 (연도별 추이, IPC 분포 차트)
 - **moai-research:grant-writer** - 연구비 신청서 선행기술 섹션 작성
-- **moai-core:ai-slop-reviewer** - 작성된 보고서 AI 패턴 검수 및 후처리
+
+### 후처리 체인 (본문/서술 산출물)
+
+선행기술 조사 보고서·FTO 분석 보고서·특허 출원서 초안 등 서술형 텍스트를 작성한 뒤에는 다음 체인으로 마무리합니다:
+
+`patent-analyzer → moai-core:ai-slop-reviewer → moai-content:humanize-korean`
+
+- **moai-core:ai-slop-reviewer** - 작성된 보고서·출원서 AI 패턴 검수 및 후처리
+- **moai-content:humanize-korean** - 한국어 문장 자연화(AI 티 제거, 의미 보존)
+
+> 연도별 출원 추이·IPC 분포·출원인 점유율 등 데이터/표·차트 산출물은 본 체인 대상이 아니며, 시각화는 **moai-data:data-visualizer**로 라우팅합니다(혼합 산출물은 서술 부분에만 체인 적용).
 
 ## 면책 조항
 

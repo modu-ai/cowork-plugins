@@ -1,5 +1,5 @@
 ---
-title: "moai-bi — 비즈니스 인텔리전스·리포트 풀스택"
+title: "moai-bi — 경영진 1pager 임원 요약"
 weight: 90
 description: "기본 출력은 단일 HTML 파일(이미지·CSS·JS 인라인, 카톡 즉시 공유 가능). pdf/docx/pptx/hwpx로 변환 분기. K-IFRS·KOSIS·DART 한국 통계 친화."
 geekdocBreadcrumb: true
@@ -68,7 +68,7 @@ flowchart TD
 |---|---|---|
 | `executive-summary` | 경영진 1페이지 요약 자동 생성 | `html-report (mode=status)` 단일 HTML |
 
-향후 추가 예정 (로드맵): `kpi-tree` · `cohort-analysis` · `funnel-analysis` · `dashboard-spec` · `variance-analysis` (모두 html-report 기본 출력 + 변환 옵션 체인 동일 정책).
+KPI·코호트·재무 변동 분석은 [`moai-finance`](../moai-finance/) `variance-analysis`·[`moai-data`](../moai-data/) `data-visualizer`와 체이닝해 `executive-summary`로 1pager로 압축합니다.
 
 ## 대표 체인 (HTML 기본 + 변환 옵션)
 

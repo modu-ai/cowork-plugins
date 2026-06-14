@@ -1,11 +1,18 @@
 ---
 name: paper-search
-description: >
-  학술 논문을 통합 검색합니다.
-  '논문 찾아줘', '선행연구 조사', 'RISS 검색', 'KCI 논문', '문헌 검토'라고 요청할 때 사용하세요.
-  RISS, KCI, DBpia, Google Scholar에서 논문을 검색하고 인용 정보를 정리합니다.
+description: |
+  RISS·KCI·DBpia·Google Scholar에서 논문을 통합 검색해 서지정보와 인용 형식을 정리해 드립니다.
+  다음과 같은 요청 시 사용하세요:
+  - "딥러닝 이미지 분류 논문 찾아줘. 최근 5년 내로"
+  - "자연어 처리 선행연구 조사해줘"
+  - "KCI 등재 학술지에서 머신러닝 논문 검색해줘"
+  - "이 주제 문헌 고찰 해줘. 관련 연구 정리해줘"
+  - "RISS에서 학위논문 찾아줘"
+  - "이 분야 연구 동향 파악해줘"
+  - "참고문헌 BibTeX로 정리해줘"
+  핵심 논문 요약·연도별 연구 동향·참고문헌(BibTeX/RIS/텍스트)을 만들고, 논문 작성이 필요하면 moai-research:paper-writer로 이어집니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 논문 검색 (Paper Search)
@@ -84,7 +91,7 @@ GET https://open.kci.go.kr/po/openapi/openApiSearch.kci
 "딥러닝 기반 이미지 분류 관련 논문을 찾아줘. 최근 5년 내로."
 "자연어 처리 선행연구 조사해줘. 특히 트랜스포머 모델 관련."
 "KCI 등재 학술지에서 '머신러닝' 키워드 논문 검색해줘."
-"의료 영상 진령 관련 연구 동향 파악해줘."
+"의료 영상 진단 관련 연구 동향 파악해줘."
 ```
 
 ## 출력 형식
@@ -99,12 +106,12 @@ GET https://open.kci.go.kr/po/openapi/openApiSearch.kci
 - KCI API 키가 없는 경우, 웹검색으로 대체합니다. 웹검색은 API에 비해 결과 수와 정확도가 낮을 수 있습니다.
 - KCI API 키는 data.go.kr에서 무료로 발급받을 수 있습니다 (활용신청 후 자동승인).
 - 학술 DB 접근 권한에 따라 일부 논문의 전문 텍스트를 확인하지 못할 수 있습니다. 이 경우 서지정보만 제공됩니다.
-- 논문 작성이 필요한 경우 paper-writer 스킬로 연계하여 참고문헌 인용 포맷을 자동 생성할 수 있습니다.
+- 논문 작성이 필요한 경우 moai-research:paper-writer 스킬로 연계하여 참고문헌 인용 포맷을 자동 생성할 수 있습니다.
 
 ## 관련 스킬
 
 - **moai-research:paper-writer** - 논문 작성 및 참고문헌 포맷팅
-- **moai-research:grant-writer** - 연구비 신청서 선행연조사 섹션 작성
+- **moai-research:grant-writer** - 연구비 신청서 선행연구 조사 섹션 작성
 - **moai-data:data-visualizer** - 연구 동향 시각화 (연도별 추세 차트)
 
 ## API 발급 안내

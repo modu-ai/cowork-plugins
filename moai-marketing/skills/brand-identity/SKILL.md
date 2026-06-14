@@ -1,18 +1,20 @@
 ---
 name: brand-identity
-description: >
-  [책임 경계] 기업·제품 브랜드 전체 설계 (네이밍·CI·슬로건·톤앤매너·비주얼 가이드라인).
-  페어 moai-marketing:personal-branding과 명확히 구분 — 본 스킬은 기업·제품, 페어는 개인 브랜드.
-  광고 캠페인 기획은 moai-marketing:campaign-planner / 채널별 SNS 콘텐츠는 moai-marketing:sns-content를 사용하세요.
-  브랜드 아이덴티티를 네이밍, 슬로건, 톤앤매너, 비주얼 가이드라인까지 체계적으로 설계합니다.
-  "브랜드 만들어줘", "브랜드 아이덴티티 설계", "브랜드 네이밍", "슬로건 만들어줘",
-  "브랜드 가이드라인", "로고 컨셉", "톤앤매너 설계", "브랜드 전략", "기업 브랜딩",
-  "브랜드 리뉴얼", "CI 설계", "브랜드 포지셔닝" 등 브랜드 아이덴티티 설계 전반에 사용합니다.
-  기존 브랜드명이 있는 경우에도 슬로건/비주얼 설계를 지원합니다.
-  개인 브랜딩은 personal-branding 스킬이 더 적합합니다.
-  광고 캠페인 기획은 campaign-planner 스킬을 사용하세요.
+description: |
+  기업·제품 브랜드의 이름·슬로건·톤앤매너·색상까지 한 번에 정리한 브랜드 가이드 문서를 만들어 드립니다.
+  다음과 같은 요청 시 사용하세요:
+  - "친환경 생활용품 브랜드 만들어줘, 2030 여성 타깃"
+  - "우리 스타트업 이름 후보 좀 지어줘"
+  - "브랜드명은 정했으니 슬로건이랑 톤앤매너만 만들어줘"
+  - "카페 브랜드 리뉴얼하고 싶어"
+  - "회사 브랜드 색상이랑 로고 컨셉 잡아줘"
+  - "브랜드 포지셔닝이랑 전략 정리해줘"
+  - "브랜드 가이드라인 문서로 만들어줘"
+  - "기업 브랜딩 처음부터 도와줘"
+  네이밍 후보 평가, 슬로건, 브랜드 스토리, 색상 시스템, 채널별 적용 가이드를 문서로 묶어 줍니다. 텍스트 산출물은 moai-core:ai-slop-reviewer → moai-content:humanize-korean으로 다듬습니다.
+  [책임 경계] vs moai-marketing:personal-branding: 이 스킬=기업·제품 브랜드, 저 스킬=개인·전문가 브랜드.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 브랜드 아이덴티티 (Brand Identity)
@@ -181,6 +183,12 @@ version: 2.15.0
 - 실제 로고 파일(.ai, .svg) 제작, 인쇄물 시안, 상표 출원 대행은 이 스킬의 범위가 아닙니다
 - 도메인/상표 확인이 불가능한 경우 "[확인 필요]"로 표시하고 사용자에게 직접 확인을 권고합니다
 
+## 후처리 (필수 체인)
+
+슬로건·태그라인·브랜드 스토리·매니페스토·톤앤매너 가이드 등 **텍스트 산출물**은 발행 전 반드시 후처리 체인을 거칩니다. 색상 시스템·SMILE 평가표 등 표·수치 산출물은 대상이 아닙니다.
+
+**권장 체인**: `brand-identity → moai-core:ai-slop-reviewer → moai-content:humanize-korean`
+
 ## 관련 스킬
 
 | 스킬 | 사용 시점 |
@@ -188,4 +196,6 @@ version: 2.15.0
 | `moai-marketing:personal-branding` | 개인 브랜딩, 퍼스널 브랜딩 |
 | `moai-marketing:campaign-planner` | 광고 캠페인 기획, 미디어 플래닝 |
 | `moai-marketing:sns-content` | SNS 콘텐츠 제작 |
+| `moai-core:ai-slop-reviewer` | 사후 체이닝(필수): 브랜드 텍스트 산출물의 AI 패턴 검수 |
+| `moai-content:humanize-korean` | 사후 체이닝(필수): ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |
 | `moai-design-system` | 디자인 시스템/컴포넌트 구축 |

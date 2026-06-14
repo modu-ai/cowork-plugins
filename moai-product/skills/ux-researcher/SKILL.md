@@ -1,11 +1,18 @@
 ---
 name: ux-researcher
-description: >
-  사용자 경험을 연구하고 고객 피드백을 분석합니다.
-  "사용자 인터뷰 질문지 만들어줘", "VOC 분석해줘", "페르소나 설계해줘", "NPS 결과 해석해줘"라고 요청할 때 사용하세요.
-  UX 리서치 계획 수립, 페르소나 설계, 유저빌리티 테스트, 고객 피드백·VOC·NPS 분석을 지원합니다.
+description: |
+  사용자 인터뷰 가이드·페르소나 문서·VOC 분석 보고서·NPS 해석안 같은 UX 리서치 결과물을 만들어 드립니다.
+  다음과 같은 요청 시 사용하세요:
+  - "사용자 인터뷰 질문지 만들어줘"
+  - "VOC 분석해줘"
+  - "페르소나 설계해줘"
+  - "NPS 결과 해석해줘"
+  - "유저빌리티 테스트 시나리오 만들어줘"
+  - "고객 설문 인사이트 정리해줘"
+  정성·정량 리서치 결과를 의사결정에 쓸 수 있는 인사이트로 정리하고, ai-slop-reviewer·humanize-korean으로 마무리할 수 있습니다.
+  [책임 경계] vs moai-product:ux-designer: ux-researcher=정성/정량 리서치(인터뷰·페르소나·VOC), ux-designer=디자인 평가(휴리스틱·접근성·플로우)
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # UX 리서처 (UX Researcher)
@@ -59,7 +66,7 @@ UX, UX 리서치, 사용자 인터뷰, 유저빌리티, 페르소나, VOC, NPS, 
 |------|------|-------------------|
 | 사용자 인터뷰 | 1:1 심층 인터뷰 30-60분 | 유교적 문화로 직접 비판 회피. 간접 표현 분석 필요 |
 | 유저빌리티 테스트 | 실제 태스크 수행 관찰 | 한국어 UI 가독성, 모바일 First |
-| 설문 조사 | 정량 데이터 수집 | 카카오포, 네이버폼, Google Forms 활용 |
+| 설문 조사 | 정량 데이터 수집 | 카카오폼, 네이버폼, Google Forms 활용 |
 | 다이어리 스터디 | 2-4주 사용 일기 | 카카오톡 채널을 통한 일일 체크인 |
 | A/B 테스트 | 변형 버전 비교 | 네이버/카카오 SDK의 통계 유의성 도구 활용 |
 | VOC 분석 | 고객 리뷰·CS 데이터 분석 | 네이버 리뷰, 카카오 채널 메시지, 앱스토어 리뷰 |
@@ -85,3 +92,12 @@ UX, UX 리서치, 사용자 인터뷰, 유저빌리티, 페르소나, VOC, NPS, 
 | `moai-product:spec-writer` | PRD·기능 명세 작성 |
 | `moai-support:draft-response` | 고객 CS 응답 초안 작성 |
 | `moai-marketing:performance-report` | 마케팅 데이터 분석 |
+
+## 후처리 체인
+
+VOC 분석 보고서·페르소나 문서·인터뷰 가이드·NPS 개선 제안 같은 서술형 결과물을 완성한 뒤에는 다음 체인으로 마무리합니다(설문 응답 표·정량 수치는 제외, 본문 서술 부분에만 적용):
+
+`moai-product:ux-researcher → moai-core:ai-slop-reviewer → moai-content:humanize-korean`
+
+- `moai-core:ai-slop-reviewer`: AI 특유의 상투적 표현·과장·군더더기를 점검하고 다듬습니다.
+- `moai-content:humanize-korean`: 자연스러운 한국어 문장으로 최종 정제합니다.

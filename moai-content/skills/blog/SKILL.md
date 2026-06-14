@@ -1,11 +1,17 @@
 ---
 name: blog
-description: >
-  블로그 포스팅을 작성해주는 스킬입니다. "네이버 블로그 글 써줘", "티스토리 포스팅 만들어줘",
-  "SEO 최적화 블로그 글 작성해줘"처럼 말하면 됩니다. 네이버·티스토리·브런치·WordPress·Ghost
-  6개 플랫폼 최적화, C-Rank·D.I.A.·GEO 알고리즘 반영 포스팅 작성을 지원합니다.
+description: |
+  네이버·티스토리·브런치·WordPress·Ghost에 바로 올릴 수 있는 블로그 포스팅(제목·목차·본문·CTA·SEO 메타)을 완성해 드립니다.
+  다음과 같은 요청 시 사용하세요:
+  - "네이버 블로그에 스타트업 자금 조달 글 써줘"
+  - "티스토리에 SEO 최적화 블로그 글 작성해줘"
+  - "브런치 스타일 회고 에세이 써줘"
+  - "검색 상위 노출되는 블로그 포스팅 만들어줘"
+  - "GEO 최적화해서 AI 검색에 인용되는 가이드 글 써줘"
+  - "제품 리뷰 블로그 포스팅 구성 짜줘"
+  검색 상위 노출과 독자 전환을 함께 노리며, 완성 후 moai-core:ai-slop-reviewer로 AI 티를 정리하면 좋습니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 블로그 (Blog)
@@ -173,7 +179,16 @@ version: 2.15.0
 
 **브랜드 가이드 미제공**: 브랜드 톤앤매너, 타겟 독자, 금지어가 있다면 미리 알려주세요. 없으면 일반 독자 친화적 문체로 작성합니다.
 
-**이미지 생성**: 이 스킬은 텍스트 콘텐츠를 생성합니다. 이미지가 필요한 경우 Midjourney, Adobe Firefly 등 이미지 생성 도구를 별도로 활용하거나 `card-news` 스킬을 사용하세요.
+**이미지 생성**: 이 스킬은 텍스트 콘텐츠를 생성합니다. 이미지가 필요한 경우 Midjourney, Adobe Firefly 등 이미지 생성 도구를 별도로 활용하거나 `moai-content:card-news` 스킬을 사용하세요.
+
+## 발행 (WordPress MCP)
+
+ai-slop 검수 → humanize 체인까지 마친 완성 포스팅은, 이 플러그인의 `.mcp.json`에 등록된 WordPress MCP 커넥터(mcp.wordpress.com)로 바로 발행할 수 있습니다.
+
+- 흐름: **draft 저장 → 사용자 검토 → 발행** (제목·본문·카테고리·태그·특성 이미지 반영)
+- 커넥터 미연결 시 마크다운 카피만 반환하고 "Settings > Connectors에서 WordPress 연결" 안내
+- 네이버·티스토리·브런치·Ghost는 발행 자동화 대상이 아니므로 플랫폼 최적화 마크다운을 생성합니다(발행은 수동)
+- SNS 동시 발행이 필요하면 같은 `.mcp.json`의 post-bridge·typefully 커넥터로 크로스포스트할 수 있습니다
 
 ## 관련 스킬
 
@@ -181,13 +196,3 @@ version: 2.15.0
 - `moai-content:newsletter` — 이메일 뉴스레터 기획·작성
 - `moai-content:copywriting` — 마케팅 카피·헤드라인·CTA 작성
 - `moai-core:ai-slop-reviewer` — AI 생성 텍스트 패턴 검수·수정
-
-## 발행 연동 (선택)
-
-WordPress Cowork 커넥터가 연결되어 있으면 발행까지 자동화합니다.
-
-실행 시 커넥터 연결 여부를 확인합니다:
-- **연결됨** → 카피 생성 후 WordPress에 직접 발행 (카테고리, 태그, 특성 이미지 자동 설정)
-- **미연결** → "WordPress 커넥터가 연결되어 있지 않습니다. Settings > Connectors에서 연결하세요." 안내 후, 마크다운 카피만 생성
-
-네이버/티스토리/브런치/Ghost 등: 플랫폼에 최적화된 마크다운 카피를 생성합니다 (발행은 수동).

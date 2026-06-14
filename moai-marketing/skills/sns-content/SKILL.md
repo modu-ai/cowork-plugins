@@ -1,12 +1,19 @@
 ---
 name: sns-content
 description: |
-  [책임 경계] 한국 3채널 (인스타·네이버 블로그·카카오) + 글로벌 4채널 (스레드·X·링크드인·유튜브쇼츠) SNS 콘텐츠와 브랜드 전략 단일 진입점. v2.3.0부터 moai-content:social-media를 흡수했습니다.
-  '인스타 피드 글 써줘', '네이버 블로그 포스팅 해줘', '링크드인 포스팅 만들어줘', '유튜브 쇼츠 스크립트 써줘', '브랜드 보이스 가이드 만들어줘', '콘텐츠 달력 짜줘'라고 요청하세요.
-  광고 카피는 moai-content:copywriting / 이커머스 광고·톡톡·푸시 카피는 moai-commerce:commerce-copywriting / 기업 브랜드 전략은 moai-marketing:brand-identity / 개인 브랜드 전략은 moai-marketing:personal-branding을 사용하세요.
-  v2.4.0 강화: 채널별 심리 상태 매트릭스(메타 수동적 발견·구글 능동적 탐색·네이버 검색→블로그·카카오 슈퍼 타겟 90%+ 열람) + 메타 학습 기간 48-72시간 가이드.
+  인스타·네이버 블로그·카카오부터 스레드·X·링크드인·유튜브 쇼츠까지, 채널에 맞춘 SNS 게시글과 캡션·해시태그·스크립트를 써 드립니다.
+  다음과 같은 요청 시 사용하세요:
+  - "인스타 피드 글 5개 써줘"
+  - "네이버 블로그 포스팅 해줘"
+  - "링크드인 포스팅 만들어줘"
+  - "유튜브 쇼츠 스크립트 써줘"
+  - "브랜드 보이스 가이드 만들어줘"
+  - "한 달치 콘텐츠 달력 짜줘"
+  - "내 유튜브 강의를 인스타·블로그·뉴스레터로 리퍼포징해줘"
+  채널별 심리와 알고리즘에 맞춰 게시글을 만들고 콘텐츠를 여러 채널로 재활용하며, 텍스트 산출물은 moai-core:ai-slop-reviewer → moai-content:humanize-korean으로 다듬습니다.
+  [책임 경계] vs 형제 스킬: 범용 광고 카피는 moai-content:copywriting, 이커머스 광고·톡톡·푸시 카피는 moai-commerce:commerce-channel-message, 기업 브랜드 전략은 moai-marketing:brand-identity, 개인 브랜드 전략은 moai-marketing:personal-branding.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # SNS 콘텐츠 제작 (SNS Content) — 한국 + 글로벌 통합
@@ -15,11 +22,7 @@ version: 2.15.0
 
 인스타그램·네이버 블로그·카카오 채널(한국 3채널) + 스레드·X·링크드인·유튜브 쇼츠(글로벌 4채널) SNS 최적화 콘텐츠를 제작합니다.
 
-브랜드 아이덴티티, 브랜드 보이스 가이드, 콘텐츠 재활용(리퍼포징), 퍼스널 브랜딩 전략을 포함한 종합 SNS 콘텐츠 서비스를 제공합니다.
-
-> **v2.3.0 업데이트**: `moai-content:social-media`가 본 스킬로 흡수되었습니다. 글로벌 4채널(스레드·X·링크드인·유튜브쇼츠) 모드가 추가되었으며, 한국 3채널 모드는 기본 유지됩니다.
->
-> **v2.4.0 강화**: 채널별 심리 상태 매트릭스(메타·유튜브·쇼츠·네이버·카카오·스레드·X·LinkedIn·쿠팡 9채널) + 메타 학습 기간 가이드(48-72시간 절대 미수정) + iOS 14.5+ 이후 CAPI 필수·GA4 교차 검증이 통합되었습니다 (SPEC-CATALOG-CLEANUP-007 §v2.4.0 Amendment §B).
+브랜드 아이덴티티, 브랜드 보이스 가이드, 콘텐츠 재활용(리퍼포징), 퍼스널 브랜딩 전략을 포함한 종합 SNS 콘텐츠 서비스를 제공합니다. 한국 3채널과 글로벌 4채널, 채널별 심리 상태 매트릭스, 메타 광고 학습 기간 가이드를 함께 다룹니다.
 
 ## 트리거 키워드
 
@@ -154,6 +157,12 @@ CTA: 의견을 댓글로 남겨주세요 / 공감하시면 리포스트
 | AI 생성 콘텐츠의 사실 확인 | 수치·통계·인물 정보는 반드시 원출처를 검증 |
 | 플랫폼 규격 변경 | 소셜미디어 플랫폼은 알고리즘과 규격을 수시로 변경합니다. 최신 정보는 각 플랫폼 공식 업데이트를 확인하세요 |
 
+## 후처리 (필수 체인)
+
+인스타 캡션·블로그 본문·카카오 메시지·링크드인 포스트·쇼츠 스크립트 등 **텍스트 산출물**은 발행 전 반드시 후처리 체인을 거칩니다. 해시태그 표·콘텐츠 달력 등 표 산출물은 대상이 아닙니다.
+
+**권장 체인**: `sns-content → moai-core:ai-slop-reviewer → moai-content:humanize-korean`
+
 ## 관련 스킬
 
 | 스킬 | 사용 시점 |
@@ -163,24 +172,26 @@ CTA: 의견을 댓글로 남겨주세요 / 공감하시면 리포스트
 | `moai-marketing:email-sequence` | 이메일 시퀀스·드립 캠페인 |
 | `moai-marketing:personal-branding` | 개인 브랜딩 단독 전략 (전문가·창업자) |
 | `moai-marketing:brand-identity` | 기업·제품 브랜드 전략 |
+| `moai-core:ai-slop-reviewer` | 사후 체이닝(필수): SNS 텍스트 산출물의 AI 패턴 검수 |
+| `moai-content:humanize-korean` | 사후 체이닝(필수): ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |
 | `moai-content:blog` | 블로그 포스팅 단건 작성 |
 | `moai-content:card-news` | 카드뉴스·슬라이드 |
 | `moai-content:newsletter` | 이메일 뉴스레터 |
 | `moai-content:copywriting` | 범용 광고 카피·헤드라인·CTA |
-| `moai-commerce:commerce-copywriting` | 이커머스 광고·톡톡·푸시·이메일 카피 |
-| `moai-content:media-production` | 유튜브 장편 영상·팟캐스트 |
+| `moai-commerce:commerce-channel-message` | 이커머스 광고·톡톡·푸시·이메일 카피 |
+| `moai-content:youtube-podcast-planner` | 유튜브 장편 영상·팟캐스트 |
 
 ## 이 스킬을 사용하지 말아야 할 때
 
 - 범용 광고 카피·헤드라인: `moai-content:copywriting` 스킬 사용
-- 이커머스 광고·톡톡·푸시·이메일 카피: `moai-commerce:commerce-copywriting` 사용
-- 유튜브 장편 영상 기획: `moai-content:media-production` 스킬 사용
+- 이커머스 광고·톡톡·푸시·이메일 카피: `moai-commerce:commerce-channel-message` 사용
+- 유튜브 장편 영상 기획: `moai-content:youtube-podcast-planner` 스킬 사용
 - 기업·제품 브랜드 전체 전략: `moai-marketing:brand-identity` 사용
 - 카드뉴스·슬라이드: `moai-content:card-news` 사용
 
 ---
 
-## 채널별 심리 상태 매트릭스 (v2.4.0 신규)
+## 채널별 심리 상태 매트릭스
 
 각 채널은 완전히 다른 심리 상태의 사람들이 있는 곳. 같은 콘텐츠라도 채널별로 다른 메시지·구조 적용.
 
@@ -194,9 +205,9 @@ CTA: 의견을 댓글로 남겨주세요 / 공감하시면 리포스트
 | **스레드 (Threads)** | 캐주얼 대화 | 심리적·정체성 | 4-5개 연속 포스트, 500자 단위 대화체 |
 | **X (Twitter)** | 빠른 의견 | 정체성·뉴스 | 280자 헤드라인 + 스레드(threadcrop) |
 | **LinkedIn** | 전문 정체성 | 기능적+정체성 | 1300자 인사이트 + Hook + CTA, B2B 정체성 |
-| **쿠팡** (참고) | 즉시 구매 의도 | 기능적 | `moai-commerce:coupang-ad-optimizer`로 연계 |
+| **쿠팡** (참고) | 즉시 구매 의도 | 기능적 | `moai-commerce:marketplace-coupang-ads`로 연계 |
 
-## 메타 학습 기간 가이드 (v2.4.0 신규)
+## 메타 학습 기간 가이드
 
 광고 세트 활성화 후 **48-72시간은 절대 건드리지 않음**:
 

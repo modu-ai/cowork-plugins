@@ -1,14 +1,12 @@
 {
   "name": "moai-pm",
-  "version": "2.15.0",
-  "description": "한국 팀의 프로젝트 관리·주간보고·OKR·회고 자동화. Notion·Linear·Asana·Slack MCP 활용, 격식체/구어체 톤 스위치 지원",
+  "version": "2.17.0",
+  "description": "한국 팀 주간업무보고(WBR) 작성 자동화. 격식체/구어체 톤 스위치 지원",
   "author": {
     "name": "모두의AI"
   },
   "keywords": [
-    "PM", "프로젝트관리", "주간보고", "WBR", "OKR", "회고",
-    "project-management", "weekly-report", "standup", "retro",
-    "Notion", "Linear", "Asana", "한국주간보고"
+    "PM", "주간보고", "WBR", "weekly-report", "주간업무보고", "한국주간보고", "project-management"
   ],
   "license": "MIT"
 }

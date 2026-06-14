@@ -1,7 +1,7 @@
 ---
 title: "moai-pm — 프로젝트 관리·주간보고"
 weight: 95
-description: "한국 팀 주간보고(WBR)·OKR·회고·스탠드업 자동화. Notion·Linear·Asana·Slack MCP 활용, 격식체/구어체 톤 스위치 지원."
+description: "한국 팀 주간보고(WBR) 자동 생성. Notion·Linear·Asana·Slack MCP 활용, 임원 격식체/팀 구어체 두 버전 동시 출력."
 geekdocBreadcrumb: true
 tags: ["moai-pm"]
 ---
@@ -28,8 +28,6 @@ flowchart TD
 - **MCP 데이터 자동 fetch**: Notion·Linear·Asana·Slack MCP가 가용하면 자동 수집, 없으면 자유 텍스트 입력 fallback
 - **한국 주간보고 문화**: 한국 팀 표준 양식(이번 주 / 다음 주 / 이슈·블로커 / 도움 요청) + 글로벌 베스트 프랙티스 결합
 
-향후 OKR 추적, 회고(KPT/4L), 스탠드업, 스프린트 리뷰 스킬이 추가될 예정입니다 (v1.9.x 이후 로드맵).
-
 ## 설치
 
 {{< tabs "install-pm" >}}
@@ -42,13 +40,13 @@ flowchart TD
 {{< /tab >}}
 {{< /tabs >}}
 
-## 핵심 스킬 (1개 + 로드맵)
+## 핵심 스킬
 
 | 스킬 | 용도 | 대표 출력 |
 |---|---|---|
 | `weekly-report` | 한국 팀 주간 비즈니스 리뷰(WBR) 자동 생성 | 임원 격식체 + 팀 구어체 두 버전 |
 
-향후 추가 예정 (로드맵): `okr-tracker` · `retro-kpt` · `standup-summary` · `sprint-review` · `roadmap-status`.
+OKR·회고·스탠드업처럼 주간보고에서 파생되는 산출물은 `weekly-report`가 입력 맥락에 맞춰 함께 정리합니다.
 
 ## 대표 체인
 

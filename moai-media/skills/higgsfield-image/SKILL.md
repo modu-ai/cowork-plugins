@@ -1,14 +1,19 @@
 ---
 name: higgsfield-image
-description: >
-  Higgsfield MCP를 호출해 이미지를 생성합니다. "Higgsfield로 이미지 만들어 줘", "Soul 2.0으로",
-  "Nano Banana Pro로", "AI 이미지 생성"이라고 말하면 자동 호출됩니다. Soul·Soul 2.0·Soul Cinema·
-  Nano Banana·Nano Banana Pro·GPT Image·GPT Image 2·Seedream 4.0·Flux Kontext·Wan 2.2 Image·Wan 2.5
-  11개 공식 이미지 모델을 자연어 요청 한 줄로 선택·생성합니다. 캐릭터 일관성(Soul Characters),
-  스타일 프리셋, 해상도(720p/1080p/2K/4K), 시드 고정, 비동기 잡 폴링까지 처리합니다.
-  Higgsfield MCP가 등록되어 있어야 하며(자동), 첫 호출 시 OAuth 인증 1회.
+description: |
+  Higgsfield MCP 기반 AI 이미지를 자연어 요청 한 줄로 생성합니다.
+  다음과 같은 요청 시 사용하세요:
+  - "Higgsfield로 이미지 만들어 줘"
+  - "Soul 2.0으로 이미지"
+  - "Nano Banana Pro로 카드뉴스 이미지"
+  - "AI 이미지 생성해줘"
+  - "Seedream 4.0으로 이미지"
+  - "시네마틱 키 비주얼 만들어줘"
+  - "캐릭터 일관성 있는 시리즈 이미지"
+  - "4K 이미지 생성"
+  Soul·Soul 2.0·Soul Cinema·Nano Banana·Nano Banana Pro·GPT Image·GPT Image 2·Seedream 4.0·Flux Kontext·Wan 2.2 Image·Wan 2.5 11개 공식 이미지 모델과 캐릭터 일관성(Soul Characters), 스타일 프리셋, 해상도(720p/1080p/2K/4K), 시드 고정, 비동기 잡 폴링까지 처리한 완성 이미지를 산출합니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # Higgsfield 이미지 생성 (higgsfield-image)

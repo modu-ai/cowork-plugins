@@ -7,7 +7,7 @@ description: >
   채널 정체성에 맞는 브랜드 콘셉트와 제품 라인업을 정리해 입점 제안을 안내합니다.
   카카오 메이커스(주문생산), 무신사(패션 한정), 29CM(라이프스타일 큐레이션) 채널별 정책을 통합합니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 큐레이션 커머스 가이드 (카카오 메이커스·무신사·29CM)
@@ -144,7 +144,7 @@ version: 2.15.0
 
 - `moai-commerce:detail-page-copy` — 제품 상세 카피
 - `moai-commerce:product-photo-brief` — 라이프스타일 사진 컷 기획
-- `moai-commerce:commerce-strategy` — 채널 믹스 전략
+- `moai-commerce:commerce-integrated-strategy` — 채널 믹스 전략
 - `moai-content:landing-page` — 브랜드 소개 자사몰
 - `moai-business:strategy-planner` — 사업 계획서 (입점 제안서 베이스)
 

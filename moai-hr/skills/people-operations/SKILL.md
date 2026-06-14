@@ -5,7 +5,7 @@ description: >
   "비동기 커뮤니케이션 가이드 만들어줘"처럼 말하면 됩니다. 원격·하이브리드 근무 정책,
   협업 도구 선정 기준, 생산성 관리 프레임워크, 직원 경험 설계를 지원합니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 피플 오퍼레이션 (people-operations)
@@ -137,6 +137,21 @@ version: 2.15.0
 3. `--deepthink` 또는 복잡 조직 설계 → `mcp__sequential-thinking__sequentialthinking` 호출
 4. 결과물 생성 후 사용자 검토 요청
 
+## 관련 스킬 (체인)
+
+재택근무 정책 문서·비동기 커뮤니케이션 가이드·직원 경험 프로그램 본문은 사람이 읽는 산문이므로, 작성 직후 아래 후처리 체인을 거칩니다.
+
+**텍스트 후처리 체인 (정책 문서·가이드라인 등 산문 산출물)**:
+
+```
+people-operations → moai-core:ai-slop-reviewer → moai-content:humanize-korean
+```
+
+- `moai-core:ai-slop-reviewer` — AI 티 패턴(기계적 어투, 상투적 정책 표현) 검수·수정
+- `moai-content:humanize-korean` — 자연스러운 한국어 문장으로 다듬기 (의미 100% 보존)
+
+> 협업 도구 비교표·생산성 지표 표 같은 **표 산출물**은 위 텍스트 체인 대상이 아닙니다. 표가 필요하면 `moai-office:xlsx-creator`로 라우팅하세요.
+
 ## 문제 해결
 
 - **근로기준법 조항 불확실**: 재택근무 시 산재 적용, 근로시간 산정 등 법적 쟁점은 노무사에게 확인하세요. AI가 제공하는 내용은 참고용입니다.
@@ -147,6 +162,6 @@ version: 2.15.0
 ## 이 스킬을 사용하지 말아야 할 때
 
 - **법적 노동 분쟁 대응**: 재택근무 중 발생한 산재, 임금 분쟁은 노무사에게 의뢰하세요.
-- **채용·온보딩 프로세스 설계**: 채용 파이프라인과 신입 온보딩 계획은 `employment-manager` 스킬이 더 적합합니다.
-- **성과평가 체계 설계**: OKR/KPI 설정 및 평가 면담은 `performance-review` 스킬을 사용하세요.
-- **오퍼 레터·근로계약서 작성**: 계약 문서는 `draft-offer` 스킬을 사용하세요.
+- **채용·온보딩 프로세스 설계**: 채용 파이프라인과 신입 온보딩 계획은 `moai-hr:employment-manager` 스킬이 더 적합합니다.
+- **성과평가 체계 설계**: OKR/KPI 설정 및 평가 면담은 `moai-hr:performance-review` 스킬을 사용하세요.
+- **오퍼 레터·근로계약서 작성**: 계약 문서는 `moai-hr:draft-offer` 스킬을 사용하세요.

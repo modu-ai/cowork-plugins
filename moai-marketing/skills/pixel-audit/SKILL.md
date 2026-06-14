@@ -1,14 +1,19 @@
 ---
 name: pixel-audit
 description: |
-  [책임 경계] 메타·구글·네이버 픽셀 설치 검증 + 1st Party 데이터 활용 진단 + Lookalike 씨앗 품질 평가 전담. 페어 스킬 performance-report(GA4·메타 광고 ROAS 분석)와 명확히 구분 — 본 스킬은 픽셀·데이터 인프라 검증, 페어는 광고 성과 분석.
-  다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
-  "픽셀 설치 점검", "메타 픽셀 검증", "구글 픽셀 확인", "CAPI 설치 확인", "전환 API 점검", "Lookalike 씨앗 품질", "VIP 구매자 Lookalike", "1st Party 데이터 진단", "이메일 리스트 활용", "픽셀 실수 점검", "iOS 14 전환 추적 손실".
-  3종 픽셀 실수(구매자 미제외/이벤트 파라미터 미설정/CAPI 미설치) 검증 + 1st Party 데이터 3종(이메일·전화번호 / 픽셀 이벤트 / 구매·CRM) 활용도 진단 + Lookalike 씨앗(VIP 구매자 상위 20%) 품질 평가.
-  ai-slop-reviewer 자동 체이닝 (진단 보고서 텍스트 산출물).
-  v2.4.0 신규 (광고 심리학 §5 픽셀 풀세트).
+  메타·구글 광고 추적 픽셀이 제대로 설치됐는지 점검하고, 광고비를 새게 만드는 설정 실수와 고객 데이터 활용도를 진단한 리포트를 만들어 드립니다.
+  다음과 같은 요청 시 사용하세요:
+  - "픽셀 설치 제대로 됐는지 점검해줘"
+  - "메타 픽셀이랑 구글 픽셀 검증해줘"
+  - "CAPI(전환 API) 설치 확인해줘"
+  - "iOS 업데이트 이후 전환이 적게 잡히는 것 같아"
+  - "Lookalike 씨앗 품질 봐줘", "VIP 구매자로 유사 타겟 만들어도 되나"
+  - "이메일 리스트 광고에 잘 쓰고 있는지 진단해줘"
+  - "광고비 새는 픽셀 실수 있는지 찾아줘"
+  자주 하는 픽셀 실수(구매자 미제외·이벤트 정보 누락·CAPI 미설치)와 고객 데이터·유사 타겟 활용도를 점수화해 개선 우선순위를 제시합니다. 진단 보고서 서술 부분은 moai-core:ai-slop-reviewer → moai-content:humanize-korean으로 다듬습니다.
+  [책임 경계] vs moai-marketing:performance-report: 이 스킬=픽셀·데이터 인프라 검증, 저 스킬=광고 성과(ROAS) 분석.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 픽셀·1st Party 데이터 진단 (Pixel Audit)
@@ -92,7 +97,7 @@ Lookalike의 품질 한계 = 씨앗 데이터의 품질 한계.
    ↓
 [Step 4] Phase 1 (즉시) / Phase 2 (단계적) / Phase 3 (최적화) 우선순위 자동 분류
    ↓
-[Step 5] 진단 보고서 출력 + (선택) campaign-planner·coupang-ad-optimizer 체이닝
+[Step 5] 진단 보고서 출력 + (선택) moai-marketing:campaign-planner·moai-commerce:marketplace-coupang-ads 체이닝
 ```
 
 ### A. 메타 픽셀
@@ -170,17 +175,19 @@ Lookalike의 품질 한계 = 씨앗 데이터의 품질 한계.
 ```
 pixel-audit (본 스킬, 픽셀·1st Party 인프라 진단)
        ↓ Phase 1 즉시 수정 후
-campaign-planner (인프라 기반 캠페인 기획 + 9 인지 편향 적용)
+moai-marketing:campaign-planner (인프라 기반 캠페인 기획 + 9 인지 편향 적용)
        ↓ 메타·구글 광고 운영 시
-sns-content (채널별 심리 상태 매트릭스 + CAPI 검증)
+moai-marketing:sns-content (채널별 심리 상태 매트릭스 + CAPI 검증)
        ↓ 쿠팡 광고는 별도로
-coupang-ad-optimizer (메타·구글 픽셀 아닌 쿠팡 전용 자동규칙)
+moai-commerce:marketplace-coupang-ads (메타·구글 픽셀 아닌 쿠팡 전용 자동규칙)
 ```
+
+> 진단 보고서의 서술형 텍스트는 발행 전 `moai-core:ai-slop-reviewer → moai-content:humanize-korean`으로 후처리합니다. 점수·체크리스트 표는 대상이 아닙니다.
 
 ## 페어 분리
 
 | 페어 스킬 | 차이 |
 |----------|------|
-| `performance-report` | GA4·메타·네이버 ROAS 종합 분석 (본 스킬은 픽셀·데이터 인프라 검증) |
-| `campaign-planner` | 캠페인 기획·운영 (본 스킬은 데이터 인프라 진단) |
-| `coupang-ad-optimizer` | 쿠팡 광고 (본 스킬은 메타·구글 픽셀) |
+| `moai-marketing:performance-report` | GA4·메타·네이버 ROAS 종합 분석 (본 스킬은 픽셀·데이터 인프라 검증) |
+| `moai-marketing:campaign-planner` | 캠페인 기획·운영 (본 스킬은 데이터 인프라 진단) |
+| `moai-commerce:marketplace-coupang-ads` | 쿠팡 광고 (본 스킬은 메타·구글 픽셀) |

@@ -1,17 +1,18 @@
 ---
 name: investor-relations
 description: |
-  투자 유치, IR 자료, 재무 모델을 준비하는 투자자 관계 전문 스킬입니다.
-  시리즈 A/B 투자 유치용 피칭 덱, 재무 모델, 매출 예측, 손익분석, 현금흐름,
-  밸류에이션을 체계적으로 작성하여 투자자를 설득하는 IR 자료를 생성합니다.
-
-  다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
-  - "IR 덱 만들어줘", "피칭 자료 써줘", "투자자 피치덱 작성"
-  - "재무 모델 만들어줘", "매출 예측 해줘", "손익분석"
-  - "현금흐름 모델", "밸류에이션 계산", "시리즈 A 투자 유치"
-  - "투자자 보고서", "IR 자료", "investor deck", "financial model"
+  투자 유치를 위한 IR 피치덱과 3개년 재무 모델(매출 예측·손익·현금흐름·밸류에이션)을 만들어 드립니다.
+  다음과 같은 요청 시 사용하세요:
+  - "IR 덱 만들어줘"
+  - "투자자 피치 자료 써줘"
+  - "재무 모델 만들어줘"
+  - "매출 예측 좀 해줘"
+  - "밸류에이션 계산해줘"
+  - "시리즈 A 투자 유치 자료 준비해줘"
+  - "투자자 보고서 정리해줘"
+  투자 단계(Pre-Seed~Series B)에 맞춘 12슬라이드 피치덱·재무 모델·예상 질문 Q&A를 만들고, PPT/엑셀 변환으로 이어집니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 투자자 관계 (Investor Relations)
@@ -354,13 +355,10 @@ AI옵틱스: 중가, 고기능 (차별화)
 
 ## 관련 스킬
 
-- **startup-launchpad**: 스타트업 초기 IR 자료 및 재무 모델
-- **market-analyst**: 시장 규모 분석 및 TAM/SAM/SOM
-- **strategy-planner**: 비즈니스 모델 및 성장 전략
-- **pptx-designer**: IR 덱 Markdown → PPT 변환
-- **ai-slop-reviewer**: 생성된 IR 자료 AI 패턴 검수 (필수)
+- **moai-business:startup-launchpad**: 스타트업 초기 IR 자료 및 재무 모델
+- **moai-business:market-analyst**: 시장 규모 분석 및 TAM/SAM/SOM
+- **moai-business:strategy-planner**: 비즈니스 모델 및 성장 전략
+- **moai-office:pptx-designer**: IR 덱 Markdown → PPT 변환
+- **moai-core:ai-slop-reviewer → moai-content:humanize-korean**: 생성된 IR 자료 AI 패턴 검수 후 한국어 표현을 자연스럽게 다듬습니다 (필수)
 
----
-
-Version: 1.3.0
-Last Updated: 2026-04-30
+> IR 덱의 재무 모델·매출 예측·밸류에이션 등 **표·수치 산출물은 humanize 대상이 아닙니다** — `moai-office:xlsx-creator`로 라우팅하세요. 위 체인은 문제·솔루션·시장·비전 등 **서술(narrative) 슬라이드 본문**에만 적용합니다.

@@ -1,14 +1,14 @@
 ---
-title: "moai-sales — B2B 영업 제안서·콜드메일"
+title: "moai-sales — B2B 영업 제안서"
 weight: 100
-description: "한국 B2B 영업 워크플로우 — 제안서, 견적서, 콜드메일, 후속 시퀀스. 국세청 표준 양식 호환."
+description: "한국 B2B 영업 제안서 자동 생성 — 12섹션 표준 목차 + Three C's(Compliant·Complete·Compelling) + RFP 답변·컴플라이언스 체크리스트."
 geekdocBreadcrumb: true
 tags: ["moai-sales"]
 ---
 
 # moai-sales
 
-> 한국 B2B 영업팀이 매주 작성하는 제안서·견적서·콜드메일·후속 시퀀스를 자동화하는 플러그인입니다.
+> 한국 B2B 영업팀의 12섹션 제안서를 RFP·고객 요구사항 기반으로 자동 생성하는 플러그인입니다.
 
 ```mermaid
 flowchart TD
@@ -29,8 +29,6 @@ flowchart TD
 
 `kr-gov-grant`(moai-business)는 정부 지원사업 신청서, `investor-relations`(moai-business)는 투자자 IR 자료를 다룹니다 — 본 플러그인은 **B2B 영업 고객 대상**입니다.
 
-향후 견적서, 콜드메일, 후속 시퀀스, 고객사 분석 스킬이 추가될 예정입니다 (v1.9.x 이후 로드맵).
-
 ## 설치
 
 {{< tabs "install-sales" >}}
@@ -43,13 +41,13 @@ flowchart TD
 {{< /tab >}}
 {{< /tabs >}}
 
-## 핵심 스킬 (1개 + 로드맵)
+## 핵심 스킬
 
 | 스킬 | 용도 | 대표 출력 |
 |---|---|---|
 | `proposal-writer` | RFP·고객 요구사항 기반 12섹션 B2B 제안서 자동 생성 | 컴플라이언스 체크리스트 + 본문 초안 |
 
-향후 추가 예정 (로드맵): `quote-generator` · `cold-email` · `follow-up-sequence` · `account-research` · `objection-handler`.
+견적서·콜드메일·후속 시퀀스가 필요할 때는 [`moai-finance`](../moai-finance/)(견적·세금계산서 양식)·[`moai-marketing`](../moai-marketing/)(이메일 시퀀스)와 체이닝합니다.
 
 ## 12섹션 표준 목차
 

@@ -9,7 +9,7 @@ description: |
   ai-slop-reviewer 체이닝 제외 (규칙 기반 검증 스킬).
   v2.6.0 신규.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 정보통신망법 광고·정보성 메시지 준수 게이트 (Korean Marketing Compliance)
@@ -268,8 +268,7 @@ SMS (90자 이내, 광고성):
 
 체이닝 순서: `commerce-channel-message` (카피 작성) → **commerce-marketing-compliance-kr** (법규 게이트) → 실제 발송
 
-- `commerce-channel-message` — 메시지 카피 작성 (이전 단계)
-- `commerce-push-planner` — 앱푸시 4원칙 기획 (앱푸시 채널의 카피 작성)
+- `commerce-channel-message` — 메시지 카피 작성 + 앱 푸시 4원칙 기획 (이전 단계, 앱 푸시 기획 모드 포함)
 - `email-sequence` — 이메일 시퀀스 (이메일 채널 카피)
 
 ## 이 스킬을 사용하지 말아야 할 때

@@ -10,8 +10,8 @@ description: |
   - "Vibe 스킬 추가", "새 플러그인 스킬"
   - skill-template으로 시작한 스킬의 체계적 생성이 필요할 때
   - /harness 커맨드의 new 단계로 진입할 때
-user-invocable: true
-version: 2.15.0
+user-invocable: false
+version: 2.17.0
 ---
 
 # Skill Builder — 6-Phase 스킬 생성 워크플로우
@@ -123,7 +123,7 @@ Phase 6: Review         → 품질 게이트 통과 확인, 파일 배치
 | Fan-out/Fan-in | 병렬 분석 후 결과 통합 | ux-designer, market-analysis |
 | Expert Pool | 다 도메인 전문 지식 결합 | consulting-brief, startup-launchpad |
 | Producer-Reviewer | 생성 + 품질 검토 순환 | sales-playbook, copywriting |
-| Supervisor | 다수 전문 스킬 오케스트레이션 | ai-diagnostic, project |
+| Supervisor | 다수 전문 스킬 오케스트레이션 | moai-business:ai-diagnostic, project |
 | Hierarchical Delegation | 복잡 작업 계층적 분해 | startup-launchpad |
 
 **선택 기준:** 스킬의 워크플로우 단계 수, 병렬성 여부, 품질 검증 필요성을 기준으로 판단합니다.

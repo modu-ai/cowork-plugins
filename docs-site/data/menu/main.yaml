@@ -175,6 +175,20 @@ main:
         ref: /plugins/moai-design
         count: 5
         isNew: true
+      - name: 개인 재무
+        ref: /plugins/moai-wealth
+        count: 6
+        isNew: true
+      - name: 자기관리·생산성
+        ref: /plugins/moai-productivity
+        count: 7
+      - name: 직장 커뮤니케이션
+        ref: /plugins/moai-comms
+        count: 5
+      - name: 공공·데이터 조회
+        ref: /plugins/moai-public-data
+        count: 4
+        isNew: true
 
   - name: 쿡북
     icon: chef
@@ -231,9 +245,13 @@ main:
     sub:
       - name: 릴리스 홈
         ref: /releases
+      - name: v2.17.0
+        ref: /releases/v2.17
+        isNew: true
+      - name: v2.16.0
+        ref: /releases/v2.16
       - name: v2.15.0
         ref: /releases/v2.15
-        isNew: true
       - name: v2.14.0
         ref: /releases/v2.14
       - name: v2.13.0

@@ -3,7 +3,7 @@ name: vendor-manager
 description: >
   공급업체를 평가·선정하고 계약 및 리스크를 관리합니다. "벤더 평가 기준 만들어줘", "공급업체 리스크 레지스터 작성해줘", "계약 관리 체계를 잡아줘"라고 요청할 때 사용하세요. 벤더 선정 기준, 공급업체 평가표, 계약 관리 워크플로우, 리스크 식별 및 대응 계획을 지원합니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 벤더 관리자 (vendor-manager)
@@ -90,6 +90,19 @@ version: 2.15.0
 | 조달 규정 확인 불가 | 공공기관은 국가계약법, 민간기업은 내부 규정 기준으로 초안 작성 후 검토를 권장합니다 |
 | 벤더 이력 데이터 없음 | 자체 평가 설문지와 레퍼런스 체크 질문지를 작성해 드립니다 |
 | 해외 벤더 관리 | 무역 조건(Incoterms), 관세, 환율 리스크 항목을 추가 포함합니다 |
+
+## 관련 스킬 (후처리 체인)
+
+리스크 대응 계획, 벤더 위험 요소 설명, 계약 관리 절차 설명 등 **서술형 보고 본문**은 다음 체인으로 마무리합니다.
+
+```
+vendor-manager → moai-core:ai-slop-reviewer → moai-content:humanize-korean
+```
+
+- `moai-core:ai-slop-reviewer` — 서술형 본문의 AI 티 패턴을 검수·수정합니다.
+- `moai-content:humanize-korean` — 검수된 본문을 자연스러운 한국어 보고체로 다듬습니다.
+
+벤더 평가표, 리스크 평가 매트릭스 등 **점수·표 산출물**은 산문 후처리 대상이 아니며 `moai-office:xlsx-creator` 또는 `moai-data:data-visualizer`로 라우팅합니다.
 
 ## 이 스킬을 사용하지 말아야 할 때
 

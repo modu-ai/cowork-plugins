@@ -1,17 +1,18 @@
 ---
 name: strategy-planner
 description: |
-  사업계획서, 비즈니스 모델, 신시장 진출, 전략 수립을 위한 종합 전략 기획 스킬입니다.
-  BMC, Lean Canvas, SWOT, Porter's 5 Forces, Blue Ocean, OKR 등 검증된 전략 프레임워크를 활용하여
-  구조화된 전략 문서를 생성합니다.
-
-  다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
-  - "사업계획서 써줘", "비즈니스 모델 만들어줘", "스타트업 린 캔버스 작성"
-  - "SWOT 분석해줘", "Porter's 5 Forces", "블루오션 전략"
-  - "OKR 설정해줘", "해외 진출 전략 짜줘", "시나리오 플래닝"
-  - "전략 기획서", "비즈니스 전략 수립", "시장 진입 전략"
+  사업계획서·비즈니스 모델·신시장 진출 같은 전략 문서를 검증된 프레임워크(SWOT·린 캔버스·블루오션·OKR 등)로 정리해 만들어 드립니다.
+  다음과 같은 요청 시 사용하세요:
+  - "사업계획서 써줘"
+  - "비즈니스 모델 만들어줘"
+  - "SWOT 분석해줘"
+  - "린 캔버스 작성해줘"
+  - "블루오션 전략 세워줘"
+  - "OKR 설정해줘"
+  - "해외 진출 전략 짜줘"
+  현황 분석·전략 프레임워크·전략 방향·실행 로드맵 구조로 작성하며, PPT 변환이나 AI 표현 다듬기로 이어집니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 전략 플래너 (Strategy Planner)
@@ -27,7 +28,7 @@ version: 2.15.0
 - 사업계획서, 비즈니스 모델, 전략 기획, strategy
 - 린 캔버스, BMC, 비즈니스 모델 캔버스
 - SWOT, Porter's 5 Forces, 블루오션, Blue Ocean
-- OKR, 목표 설정, 조관 목표
+- OKR, 목표 설정, 조직 목표
 - 해외 진출, 신시장 진출, 시장 진입 전략
 - 시나리오 플래닝, 미래 시나리오
 
@@ -112,7 +113,7 @@ SWOT은 단순히 4칸을 채우는 도구가 아니라 **마케팅·사업 플�
 
 **비즈니스 모델:**
 - Business Model Canvas 9블록 분석
-- 가치 제양 설계 → 수익 모델 정의
+- 가치 제안 설계 → 수익 모델 정의
 
 **전략 분석:**
 - SWOT 분석 → SO/WO/ST/WT 전략 도출
@@ -262,13 +263,8 @@ SWOT은 단순히 4칸을 채우는 도구가 아니라 **마케팅·사업 플�
 
 ## 관련 스킬
 
-- **consulting-brief**: 컨설팅 제안서 형식의 구조화된 문서 필요 시
-- **startup-launchpad**: 스타트업 종합 계획 (피치덱, 재무 모델 포함)
-- **market-analyst**: 심층 시장 조사 및 경쟁사 분석 필요 시
-- **pptx-designer**: 전략 문서를 PPT로 변환
-- **ai-slop-reviewer**: 생성된 문서 AI 패턴 검수 (필수)
-
----
-
-Version: 1.3.0
-Last Updated: 2026-04-30
+- **moai-business:consulting-brief**: 컨설팅 제안서 형식의 구조화된 문서 필요 시
+- **moai-business:startup-launchpad**: 스타트업 종합 계획 (피치덱, 재무 모델 포함)
+- **moai-business:market-analyst**: 심층 시장 조사 및 경쟁사 분석 필요 시
+- **moai-office:pptx-designer**: 전략 문서를 PPT로 변환
+- **moai-core:ai-slop-reviewer → moai-content:humanize-korean**: 생성된 문서 AI 패턴 검수 후 한국어 표현을 자연스럽게 다듬습니다 (필수)

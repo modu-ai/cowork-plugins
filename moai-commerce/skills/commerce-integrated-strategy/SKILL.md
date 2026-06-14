@@ -1,13 +1,13 @@
 ---
 name: commerce-integrated-strategy
 description: |
-  [책임 경계] 선행 스킬 산출물(commerce-market-research·commerce-jtbd-persona·commerce-product-naming·commerce-channel-message·detail-page-copy 결과) 전체를 종합하여 매출 향상 통합 전략 1장 + 실행 우선순위 Top 3 자동 생성. 페어 스킬 moai-business:strategy-planner와 명확히 구분 — 본 스킬은 이커머스 셀러 즉시 실행 전술(당일 데이터 기반), 페어는 중장기 사업 전략.
+  선행 스킬 산출물(commerce-market-research·commerce-jtbd-persona·commerce-product-naming·commerce-channel-message·detail-page-copy 결과)과 매장 운영 데이터를 종합해 매출 향상 통합 전략 1장 + 실행 우선순위 Top 3을 자동 생성하고, 채널 믹스·가격·프로모션 캘린더·리텐션·KPI까지 단계별(런칭/성장/안정)로 설계합니다.
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
-  "오늘 배운 것 종합 전략으로 정리해줘", "통합 전략 뽑아줘", "실행 우선순위 정해줘", "매출 올리는 전략 1장", "지금 당장 해야 할 것 Top3", "ROAS 개선 전략", "채널별 매출 비교 분석", "오늘 모닝브리핑 요약"
-  자동화 4단계 프로세스(나열→분류→점수→결정) + 3 Phase 로드맵(Quick Wins/Core/AI Enhancement) + HITL Golden Rule(80% 자동화 + 10배 검수) 통합 (운영 자동화 프레임워크).
-  ai-slop-reviewer 자동 체이닝 (전략 문서 텍스트 산출물).
+  "오늘 배운 것 종합 전략으로 정리해줘", "통합 전략 뽑아줘", "실행 우선순위 정해줘", "매출 올리는 전략 1장", "지금 당장 해야 할 것 Top3", "ROAS 개선 전략", "채널별 매출 비교 분석", "커머스 전략 짜줘", "채널 믹스 추천해줘", "가격 전략 세워줘", "프로모션 캘린더 만들어줘", "리텐션 전략 추천", "이커머스 KPI 대시보드 설계"
+  매크로 전략 모드(채널 믹스·3단계 가격·시즌 프로모션 캘린더·재구매 자동화·KPI 대시보드 references 제공) + 통합 1장 모드(선행 산출물 종합) 2계층으로 동작하며, 전략 1장 직후 moai-core:ai-slop-reviewer를 자동 체이닝합니다.
+  [책임 경계] 본 스킬은 이커머스 셀러 즉시 실행 전술 + 채널 전략. 중장기 사업 전략은 moai-business:strategy-planner, 운영 자동화 진단은 moai-commerce:commerce-automation-audit 사용.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 통합 전략 자동 생성 (Commerce Integrated Strategy)
@@ -25,7 +25,17 @@ version: 2.15.0
 
 ## 트리거 키워드
 
-통합 전략, 실행 우선순위, 매출 향상 전략, Top 3 액션, 종합 리포트, 모닝 브리핑, 채널 매출 비교, ROAS 분석, 오늘 할 일, 이커머스 전략 1장, 산출물 종합
+통합 전략, 실행 우선순위, 매출 향상 전략, Top 3 액션, 종합 리포트, 채널 매출 비교, ROAS 분석, 오늘 할 일, 이커머스 전략 1장, 산출물 종합,
+커머스 전략, 채널 믹스, 채널 전략, 가격 전략, 프로모션 캘린더, 리텐션, 재구매율, LTV, AOV, 이커머스 KPI, CRM, 마케팅 자동화
+
+## 2계층 동작 모드
+
+| 모드 | 언제 | 산출물 |
+|------|------|--------|
+| **매크로 전략 모드** | 사업 단계(런칭/성장/안정) 기준으로 채널·가격·프로모션·리텐션·KPI 큰 그림을 짤 때 | 채널 믹스 + 3단계 가격 + 시즌 캘린더 + 리텐션 자동화 + KPI 대시보드 설계 |
+| **통합 1장 모드** | 선행 스킬 산출물 + 당일 운영 데이터를 종합해 즉시 실행 전술을 뽑을 때 | 통합 전략 1장 + 실행 우선순위 Top 3 |
+
+자연어로 모드가 자동 선택됩니다("채널 믹스 추천해줘" → 매크로, "오늘 데이터 종합해줘" → 통합 1장). 두 모드를 함께 요청하면 매크로 전략을 먼저 설계한 뒤 당일 데이터로 우선순위를 조정합니다.
 
 ## 워크플로우
 
@@ -160,15 +170,76 @@ version: 2.15.0
 - `commerce-jtbd-persona` — JTBD+페르소나 (입력)
 - `detail-page-copy` — 상세페이지 카피 (입력)
 - `commerce-product-naming` — 상품명 (입력)
-- `commerce-channel-message` — 채널 메시지 (입력, 이전 단계)
+- `commerce-channel-message` — 채널 메시지 (입력, 이전 단계 + 프로모션 카피)
+- `commerce-margin-calculator` — 단일 상품 마진·가격 검증 (매크로 가격 전략 입력)
+- `marketplace-coupang/naver/d2c/curation/crowdfunding` — 채널별 운영 실행
+- `commerce-automation-audit` — 운영 자동화 진단 (풀세트)
 - `moai-core:ai-slop-reviewer` — 전략 문서 AI 검수 (자동 체인)
+- `moai-business:strategy-planner` — 중장기 사업 전략 (페어, 상위 레벨)
 
 ## 이 스킬을 사용하지 말아야 할 때
 
 - **중장기 사업 전략 (분기·연간)**: `moai-business:strategy-planner` 사용
+- **운영 자동화 진단 풀세트**: `moai-commerce:commerce-automation-audit` 사용
 - **IR 덱·투자 유치 전략**: `moai-office:pptx-designer` + 별도 사업기획 스킬 사용
 - **광고 캠페인 집행 계획**: 광고 플랫폼에서 직접 관리
+- **단일 채널 등록 가이드**: `marketplace-*` 스킬 직접 호출
 - **특정 스킬 단독 산출물만 필요**: 해당 스킬 직접 호출 (통합 불필요)
+
+---
+
+## 매크로 전략 모드 (채널·가격·프로모션·리텐션·KPI)
+
+사업 단계 기준으로 큰 그림을 설계할 때 사용합니다. 각 영역의 상세 표·체크리스트·도구는 `references/`에 정리되어 있습니다.
+
+### 1단계: 사업 단계 진단
+
+| 단계 | 매출 규모 | 핵심 질문 |
+|------|---------|---------|
+| 런칭 (0-6개월) | 0-월 1천만 | 어디서 첫 매출? 트래픽 확보? |
+| 성장 (6-24개월) | 월 1천-3억 | 채널 다각화? 광고 ROI? |
+| 안정 (24개월+) | 월 3억+ | LTV·재구매? 브랜드 자산? |
+
+### 2단계: 채널 믹스 결정
+
+사업 단계 + 카테고리 + 자원에 맞춰 채널 비중을 정합니다. 단계별 권장 비중·카테고리 가중치·채널 추가/제거 신호·다채널 운영 도구는 `references/channel-mix.md` 참조.
+
+### 3단계: 가격 전략
+
+3단계 가격 구조(정가/할인가/프로모션가), 채널별 가격 정합성 룰, 가격 표시 법규(표시광고법 "최근 30일 최저가"), 묶음·정기배송 가격은 `references/pricing.md` 참조.
+
+### 4단계: 프로모션 캘린더
+
+한국 이커머스 시즌(설·가정의달·추석·빼빼로·블프·연말), 프로모션 유형, 시즌별 채널 우선순위, 광고 집중 시점은 `references/promotion.md` 참조. 프로모션 카피는 `moai-commerce:commerce-channel-message`로 작성.
+
+### 5단계: 리텐션 자동화
+
+첫 구매 후 시퀀스(+3/7/14/30/60/90일), 카트 이탈 회복, 비활성 회원 회복, 등급제, 적립금·쿠폰, 정기배송은 `references/retention.md` 참조.
+
+### 6단계: KPI 대시보드
+
+매출·트래픽·광고·리텐션·만족도·재무 KPI와 일/주/월/분기 점검 템플릿, 분석 도구는 `references/kpi.md` 참조.
+
+### 매크로 전략 출력 형식
+
+```json
+{
+  "business_stage": "런칭 | 성장 | 안정",
+  "channel_mix": {"마켓플레이스": "60%", "자사몰": "30%", "크라우드펀딩": "10%", "rationale": "런칭기 트래픽 확보"},
+  "pricing": {"list_price": 149000, "discount_price": 119000, "promotion_price": 99000,
+    "channel_policies": {"쿠팡": "정가 -16%", "스마트스토어": "정가 -13%", "자사몰": "정가 -10% + 적립금 5%"}},
+  "promotion_calendar": [
+    {"month": 5, "event": "가정의달", "discount": "20%", "channels": ["all"]},
+    {"month": 11, "event": "빼빼로·블프", "discount": "30%", "channels": ["all"]}],
+  "retention_flow": [
+    {"trigger": "첫 구매 +7d", "channel": "이메일", "content": "사용 가이드"},
+    {"trigger": "첫 구매 +30d", "channel": "이메일", "content": "재구매 쿠폰"}],
+  "kpi_targets": {"weekly": ["신규 가입", "전환율", "ROAS", "AOV"], "monthly": ["LTV(90d)", "재구매율(30d)"]},
+  "ad_budget_allocation": {"naver_search": "40%", "meta_ads": "30%", "kakao_moment": "20%", "google_ads": "10%"}
+}
+```
+
+> 매크로 전략 주의: 전략은 가설 — 실제 운영 데이터로 매주 검증·조정. 광고비는 사업비 절반 이하로 시작(100% 광고 의존 시 ROAS 폭락에 즉사). 상시 할인은 브랜드 가치 훼손 — 프로모션은 캘린더 시점에 단발성으로.
 
 ---
 
@@ -213,4 +284,4 @@ version: 2.15.0
 - 자동 롤백 및 재시도: API 실패 시 즉시 복구, 3회 재시도
 - 감사 로그 (Audit Log): 모든 자동화·개입·수정 이력 영구 보존
 
-> **연계**: 자동화 진단 자체는 별도의 `commerce-automation-audit` 스킬에서 풀세트로 진행. 본 스킬은 매출 전략에 자동화 측면을 통합할 때 사용.
+> [책임 경계] 자동화 진단은 `moai-commerce:commerce-automation-audit`가 SSOT로 풀세트 진행. 본 스킬은 매출/채널 전략에 자동화 측면을 요약 통합할 때만 사용 — 상세 자동화 설계는 commerce-automation-audit로 위임.

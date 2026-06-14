@@ -9,7 +9,7 @@ description: |
   - "장르별 문체", "출판 원고 작성"
   - "인용 처리", "각주 표기", "도표 삽입"
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # book-chapter-writer
@@ -309,7 +309,7 @@ book-outline-designer 출력: 2장 3꼭지 "30일 챌린지 시작하기" 시놉
 | **장르 문체 위반** | 4 장르 프리셋 일관성 (실용서에 소설 문체 금지) |
 | **인용 표기 누락** | 모든 인용·통계·발언에 출처 명시 |
 | **추상어 남용** | "다양한", "여러", "많은" 같은 추상어 → 구체적 숫자 |
-| **AI 티 (Slop)** | 책의 끝에 ai-slop-reviewer + humanize-korean 체이닝 필수 |
+| **AI 티 (Slop)** | 본문 작성 후 `moai-core:ai-slop-reviewer` → `moai-content:humanize-korean` 체이닝 필수 |
 | **한자어 과다** | 우리말 우선, 한자어는 정확한 용어일 때만 |
 | **출판사 양식 무시** | 투고 출판사의 어미·문체 컨벤션 사전 확인 |
 
@@ -349,12 +349,12 @@ book-outline-designer 출력: 2장 3꼭지 "30일 챌린지 시작하기" 시놉
 - `moai-content:newsletter` — 뉴스레터 (시리즈 콘텐츠)
 
 ### Post (검수 — 권장 체인)
-- `moai-content:korean-spell-check` — 한국어 맞춤법
 - `book-revision-coach` — 퇴고·교열
+- `moai-content:korean-spell-check` — 한국어 맞춤법
+- `moai-core:ai-slop-reviewer` — AI 슬롭 검수 (필수)
 - `moai-content:humanize-korean` — AI 티 정밀 윤문 (필수)
-- `moai-core:ai-slop-reviewer` — 최종 검수
 
-> ⚠️ 출판 본문은 AI 티가 가장 잘 드러나는 산출물. **humanize-korean + ai-slop-reviewer 체이닝 필수**.
+> ⚠️ 출판 본문은 AI 티가 가장 잘 드러나는 산출물. 정규 체인 **`book-chapter-writer → moai-core:ai-slop-reviewer → moai-content:humanize-korean`** 필수.
 
 ## 10. 출처
 

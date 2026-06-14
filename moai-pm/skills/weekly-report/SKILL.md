@@ -9,8 +9,9 @@ description: |
   - "주간보고 작성", "WBR 준비", "이번 주 한 일 정리"
   - "주간 회의 자료", "위클리 리포트", "주간 업무 보고"
   - "임원 주간보고", "팀 주간보고"
+  [책임 경계] 제품 발견·로드맵/마일스톤 기획은 moai-product:roadmap-manager, 본 스킬은 운영 케이던스(주간보고)
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # Weekly Report — 한국 팀 주간보고(WBR) 자동 생성
@@ -180,9 +181,10 @@ MCP 가용 시 자동 우선 활용. 사용자가 명시적으로 텍스트 입�
 
 ### 5단계: 후처리 가이드
 
-- **executive-summary**: 1pager를 더 압축된 C-level 보고로 변환
-- **ai-slop-reviewer**: 격식체 톤 검수
-- **pptx-designer**: 슬라이드 발표 자료로 출력
+- **moai-core:ai-slop-reviewer**: AI 패턴·격식체 톤 검수 (텍스트 산출물 필수)
+- **moai-content:humanize-korean**: 한국어 자연스러움 보정 (ai-slop-reviewer 다음 단계)
+- **moai-bi:executive-summary**: 1pager를 더 압축된 C-level 보고로 변환
+- **moai-office:pptx-designer**: 슬라이드 발표 자료로 출력
 
 ## 출력 형식
 
@@ -243,28 +245,42 @@ MCP 가용 시 자동 우선 활용. 사용자가 명시적으로 텍스트 입�
 - **시간 추정 금지**: "다음 주 화요일까지 완료" 같은 직접 날짜·시간 추정은 priority labels로 변환
 - **개인 평가 금지**: 팀원 개인 비난·칭찬은 본문에 자동 포함되지 않음 (필요 시 별도 1:1)
 - **확인되지 않은 수치 금지**: KPI 데이터 출처(BI 도구·내부 DB) 명시 또는 [추정] 태그
-- **NDA 정보 주의**: 외부 공유용 보고서 작성 시 회사 비밀 정보 자동 검사 (`moai-legal/nda-triage` 권고)
+- **NDA 정보 주의**: 외부 공유용 보고서 작성 시 회사 비밀 정보 자동 검사 (`moai-legal:nda-triage` 권고)
+
+## 내장 모드 — 스탠드업 요약 / 회고
+
+별도 스킬 호출 없이 이 스킬 안에서 두 가지 보조 모드를 함께 처리합니다.
+
+**스탠드업 요약 모드 (주간보고의 입력 정리)**
+- 매일 남긴 데일리 스탠드업 메모(완료·진행 중·블로커)를 한 주 단위로 누적·압축
+- "이번 주 스탠드업 정리", "데일리 노트 모아줘" 같은 요청 시 이 모드로 진입
+- 정리된 결과를 그대로 6섹션 주간보고의 raw input(완료·진행 중·이슈)으로 연결
+
+**회고 모드 (KPT·4Ls)**
+- 위 "② 회고 프레임워크 KPT·4Ls" 표를 사용해 분기/스프린트 회고 섹션을 생성
+- "이번 분기 회고", "스프린트 회고 정리" 요청 시 이 모드로 진입
+- 주간보고 본문에 회고 섹션으로 통합하거나, 단독 회고 문서로 출력
 
 ## 관련 스킬
 
 **Before**:
-- `moai-pm/standup-summarizer` — 일일 스탠드업 노트 누적
-- (Notion·Linear·Asana MCP) — 자동 데이터 fetch
+- (Notion·Linear·Asana MCP) — 자동 데이터 fetch (스탠드업 메모는 위 "스탠드업 요약 모드"로 직접 정리)
 
-**After**:
-- `moai-bi/executive-summary` — C-level 1pager로 더 압축
-- `moai-core/ai-slop-reviewer` — AI 패턴 검수
-- `moai-office/pptx-designer` — 발표 슬라이드 출력
+**After (텍스트 산출물 후처리 — 표준 체인)**:
+- `moai-core:ai-slop-reviewer` — AI 패턴 검수
+- `moai-content:humanize-korean` — 한국어 자연스러움 보정 (ai-slop-reviewer 다음)
+- `moai-bi:executive-summary` — C-level 1pager로 더 압축
+- `moai-office:pptx-designer` — 발표 슬라이드 출력
 
 **Alternative**:
-- `moai-business/daily-briefing` — 일간 보고 (주간이 아닌 일일)
-- `moai-pm/retro-facilitator` — 분기 회고 (주간이 아닌 분기)
+- `moai-business:daily-briefing` — 일간 보고 (주간이 아닌 일일)
 
 ## 관련 커맨드
 
 - 등록된 스킬 체인:
-  - 주간보고 → 임원 1pager: `standup-summarizer → weekly-report → executive-summary`
-  - 발표 슬라이드: `weekly-report → ai-slop-reviewer → pptx-designer`
+  - 주간보고 본문 후처리(표준): `weekly-report → moai-core:ai-slop-reviewer → moai-content:humanize-korean`
+  - 주간보고 → 임원 1pager: `weekly-report → moai-core:ai-slop-reviewer → moai-content:humanize-korean → moai-bi:executive-summary`
+  - 발표 슬라이드: `weekly-report → moai-core:ai-slop-reviewer → moai-content:humanize-korean → moai-office:pptx-designer`
 
 ## 출처
 

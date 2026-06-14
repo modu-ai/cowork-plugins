@@ -1,16 +1,18 @@
 ---
 name: landing-page
-description: >
-  [책임 경계] 단독 전환 1페이지 (히어로-CTA, Lead·SignUp·Launch — 하나의 최종 액션 유도).
-  페어 moai-content:product-detail과 명확히 구분 — 본 스킬은 단독 랜딩 1페이지, 페어는 카탈로그 상세 페이지 (스마트스토어/쿠팡/카카오 규격).
-  사용 분기: 단독 마케팅 캠페인·이벤트·리드 수집 → 본 스킬 / 제품 카탈로그·옵션·비교 → product-detail.
-  shadcn/ui 기반 고전환율 랜딩 페이지를 설계·생성해주는 스킬입니다.
-  "랜딩 페이지 만들어줘", "세일즈 페이지 기획해줘", "원페이지 구성해줘"처럼 말하면 됩니다.
-  코드 생성 전에 shadcn 테마 인터뷰(베이스 팔레트, 컬러 모드, 모서리 반경, 효과)를 먼저 묻고,
-  Next.js 15 + Tailwind CSS v4 + shadcn/ui 스택으로 히어로부터 CTA까지 전환율 최적화
-  랜딩 페이지 전체 구성, 디자인 토큰(OKLCH), Framer Motion 효과를 산출합니다.
+description: |
+  하나의 행동(가입·구매·신청)을 유도하는 단독 전환 랜딩 1페이지를 카피와 코드까지 만들어 드립니다. 히어로부터 최종 CTA까지 전환율을 높이도록 구성합니다.
+  다음과 같은 요청 시 사용하세요:
+  - "SaaS 제품 랜딩 페이지 구성해줘"
+  - "이벤트 참가 신청 랜딩 만들어줘"
+  - "무료 체험 유도 세일즈 페이지 기획해줘"
+  - "앱 다운로드 랜딩 페이지 카피 써줘"
+  - "B2B 서비스 리드 수집 랜딩 설계해줘"
+  - "깔끔한 원페이지 만들어줘"
+  코드 생성 전에 디자인 톤(색·모드·모서리·효과)을 먼저 물은 뒤, 최신 웹 스택으로 랜딩 페이지 전체 구성과 디자인 토큰·인터랙션을 산출합니다.
+  [책임 경계] vs moai-content:product-detail: 이 스킬=단독 전환 랜딩 1페이지(캠페인·이벤트·리드 수집), 저 스킬=카탈로그 제품 상세 페이지(스마트스토어·쿠팡·카카오 규격, 옵션·비교).
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 랜딩 페이지 (Landing Page)
@@ -267,16 +269,16 @@ AI가 생성한 랜딩 페이지 카피는 사실 확인 후 사용하세요.
 
 ## 관련 스킬
 
-- `product-detail` — 제품 상세 페이지 (이커머스)
-- `social-media` — 소셜미디어 콘텐츠
-- `copywriting` — 광고 카피 단독 작성
-- `blog` — SEO 블로그 포스팅
+- `moai-content:product-detail` — 제품 상세 페이지 (이커머스)
+- `moai-marketing:sns-content` — 소셜미디어 콘텐츠
+- `moai-content:copywriting` — 광고 카피 단독 작성
+- `moai-content:blog` — SEO 블로그 포스팅
 
 ## 이 스킬을 사용하지 말아야 할 때
 
-- 블로그 포스팅: `blog` 스킬 사용
-- SNS 포스팅: `social-media` 스킬 사용
-- 이메일 뉴스레터: `newsletter` 스킬 사용
-- 제품 상세페이지: `product-detail` 스킬 사용
-- 데이터 대시보드: `data-visualizer` 스킬 사용
+- 블로그 포스팅: `moai-content:blog` 스킬 사용
+- SNS 포스팅: `moai-marketing:sns-content` 스킬 사용
+- 이메일 뉴스레터: `moai-content:newsletter` 스킬 사용
+- 제품 상세페이지: `moai-content:product-detail` 스킬 사용
+- 데이터 대시보드: `moai-data:data-visualizer` 스킬 사용
 - 멀티 페이지 웹사이트: 별도 웹 에이전트 필요

@@ -1,12 +1,12 @@
 # moai-pm
 
-> 한국 팀의 프로젝트 관리·주간보고·OKR·회고 자동화
+> 한국 팀 주간업무보고(WBR) 작성 자동화
 
 [![Version](https://img.shields.io/badge/Version-2.0.0-blue.svg)]() [![Skills](https://img.shields.io/badge/Skills-1-green.svg)]() [![License](https://img.shields.io/badge/License-MIT-orange.svg)]()
 
-월요 WBR·금요 마무리·분기 OKR·KPT 회고 등 한국 직장 문화에 정착된 프로젝트 관리 의례를 자동화합니다. Notion·Linear·Asana·Slack MCP가 가용하면 자동 활용, 없어도 자유 텍스트 입력으로 동작합니다.
+한국 직장 문화에 정착된 주간업무보고(WBR) 작성을 자동화합니다. 6섹션 표준 보고와 임원용 1pager 두 버전을 출력하며, 격식체/구어체 톤 스위치를 지원합니다. 자유 텍스트 입력만으로 동작합니다.
 
-## 스킬 카탈로그 (v2.0.0 기준)
+## 스킬 카탈로그
 
 | 스킬 | 설명 | 출시 |
 |---|---|---|
@@ -27,22 +27,18 @@
 
 ```
 주간보고 → C-level 1pager
-  weekly-report → moai-bi/executive-summary
+  weekly-report → moai-bi:executive-summary
 
 발표 슬라이드
-  weekly-report → ai-slop-reviewer → moai-office/pptx-designer
+  weekly-report → moai-core:ai-slop-reviewer → moai-office:pptx-designer
 ```
 
 ## 다른 플러그인과의 경계
 
 | 비슷해 보이지만 다른 영역 | 사용해야 할 스킬 |
 |---|---|
-| 일간 보고 | `moai-business/daily-briefing` |
-| C-level 1pager | `moai-bi/executive-summary` |
-
-## MCP 통합 (이미 가용)
-
-- Notion · Linear · Asana — 데이터베이스/이슈 자동 fetch
+| 일간 보고 | `moai-business:daily-briefing` |
+| C-level 1pager | `moai-bi:executive-summary` |
 
 ## 라이선스
 

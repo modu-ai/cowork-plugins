@@ -6,7 +6,7 @@ description: >
   개발(GitHub·기술 블로그)/디자인(Figma·Behance)/마케팅/기획 분야별 + 검색되는 노션
   포트폴리오 + 채용공고 맞춤형 1page 셀링 + 877건 노하우 기반 비중 배분을 지원합니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 포트폴리오 가이드 (portfolio-guide)
@@ -292,6 +292,21 @@ AX(AI Transformation) 시대의 디자이너는 화면을 예쁘게 만드는 �
 - **디자인 역량 부족 (개발자)**: Notion, GitHub README, 간결한 와이어프레임으로도 충분합니다. 비주얼보다 콘텐츠 품질이 우선입니다.
 - **다수 분야 경험**: 지원 직무와 가장 관련 높은 프로젝트를 앞에 배치하고, 부가 역량은 별도 섹션으로 분리하세요.
 
+## 관련 스킬 / 후처리 체인
+
+프로젝트 기술서·About 단락·케이스 스터디·README 본문 등 포트폴리오의 서술 텍스트는 모두 사람이 읽는 산출물입니다. 초안 완성 후 다음 체인을 거쳐 AI 패턴을 제거하고 자연스러운 한국어로 다듬습니다.
+
+```
+moai-career:portfolio-guide → moai-core:ai-slop-reviewer → moai-content:humanize-korean
+```
+
+- `moai-core:ai-slop-reviewer` — AI 생성 패턴(범용 표현·클리셰·형용사 남발) 1차 검수·교정
+- `moai-content:humanize-korean` — 문장 리듬·구어 표현으로 2차 휴머나이즈
+
+지원 서류는 `moai-career:resume-builder`, JD 분석은 `moai-career:job-analyzer`, 면접 준비는 `moai-career:interview-coach`와 함께 사용하세요.
+
+> 표·스크린샷·다이어그램·정량 대시보드 같은 비서술 산출물은 이 체인 대상이 아닙니다. 서술 텍스트 부분에만 적용합니다.
+
 ## 공유 에이전트
 
 이 플러그인에서 활용할 수 있는 다른 플러그인의 에이전트:
@@ -303,7 +318,7 @@ AX(AI Transformation) 시대의 디자이너는 화면을 예쁘게 만드는 �
 
 ## 이 스킬을 사용하지 말아야 할 때
 
-- **자소서/이력서 작성**: 지원 서류 작성은 `resume-builder` 스킬을 사용하세요.
-- **면접 준비**: 포트폴리오 발표 면접이 아닌 일반 면접은 `interview-coach` 스킬이 적합합니다.
-- **채용공고 분석**: JD 분석과 역량 매칭은 `job-analyzer` 스킬을 사용하세요.
+- **자소서/이력서 작성**: 지원 서류 작성은 `moai-career:resume-builder` 스킬을 사용하세요.
+- **면접 준비**: 포트폴리오 발표 면접이 아닌 일반 면접은 `moai-career:interview-coach` 스킬이 적합합니다.
+- **채용공고 분석**: JD 분석과 역량 매칭은 `moai-career:job-analyzer` 스킬을 사용하세요.
 - **실제 웹사이트 구축**: 포트폴리오 사이트를 직접 코딩하려면 개발 도구를 사용하세요.

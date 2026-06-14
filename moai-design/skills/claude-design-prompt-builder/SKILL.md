@@ -12,7 +12,7 @@ description: |
   - "디자인 시스템 프롬프트"
   - "프롬프트 빌더"
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # claude-design-prompt-builder — 시니어 UX 패턴 프롬프트 빌더

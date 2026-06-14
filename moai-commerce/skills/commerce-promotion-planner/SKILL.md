@@ -8,7 +8,7 @@ description: |
   ai-slop-reviewer 자동 체이닝 (기획서 텍스트 산출물).
   v2.7.0 신규.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 3대 프로모션 기획법 (Commerce Promotion Planner)
@@ -235,9 +235,8 @@ version: 2.15.0
 체이닝 순서:
 `commerce-promotion-planner` (프로모션 기획) → `commerce-channel-message` (메시지 카피) → `commerce-marketing-compliance-kr` (법규 게이트) → 실제 발송
 
-- `commerce-channel-message` — 프로모션 채널 메시지 15종 작성
+- `commerce-channel-message` — 프로모션 채널 메시지 15종 + 앱 푸시 채널 카피 (앱 푸시 기획 모드 포함)
 - `commerce-marketing-compliance-kr` — 발송 전 정통망법 게이트 (필수)
-- `commerce-push-planner` — 앱 푸시 채널 카피
 - `commerce-integrated-strategy` — 매출 향상 1장에 본 프로모션 포함
 - `commerce-jtbd-persona` — 타겟 세그먼트 페르소나
 

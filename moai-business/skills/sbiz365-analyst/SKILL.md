@@ -1,22 +1,19 @@
 ---
 name: sbiz365-analyst
 description: |
-  [책임 경계] 오프라인 상권 단위 분석 (소상공인365 PDF 기반 — 지역·유동인구·경쟁 점포·예상 매출).
-  페어 moai-business:market-analyst(산업 단위)·moai-commerce:commerce-market-research(온라인 카테고리)와 시장 단위 차이로 명확히 구분.
-  사용 분기: 오프라인 상권 단위 → 본 스킬 / 산업 단위 → market-analyst / 온라인 카테고리·검색 키워드 → commerce-market-research.
-  소상공인365(bigdata.sbiz.or.kr)에서 다운로드한 상권분석 PDF를 첨부하면,
-  AskUserQuestion으로 업종·예산·목적·분석 중점을 수집하고
-  **상권 트렌드 분석 + 창업 타당성 종합 보고서**를 Word(.docx)로 생성합니다.
-
-  다음 요청 시 반드시 이 스킬을 사용하세요:
-  - "상권 PDF 분석해줘", "소상공인365 보고서 분석해줘"
-  - "이 지역 창업 타당성 검토해줘", "창업 가능성 분석해줘"
-  - "업종 적합도 알려줘", "이 상권 들어가도 될까"
-  - "소상공인 상권분석 보고서 만들어줘"
-  - "경쟁 분석", "유동인구 분석", "예상 매출 분석"
-  - bigdata.sbiz.or.kr, 소상공인365, 소상공인 빅데이터 관련 분석 요청
+  소상공인365(bigdata.sbiz.or.kr)에서 받은 상권분석 PDF를 첨부하면, 유동인구·경쟁 점포·예상 매출을 분석한 창업 타당성 보고서(Word)를 만들어 드립니다.
+  다음과 같은 요청 시 사용하세요:
+  - "이 상권 PDF 분석해줘"
+  - "소상공인365 보고서 분석해줘"
+  - "이 지역에서 창업해도 될까?"
+  - "창업 타당성 검토해줘"
+  - "이 동네 카페 차려도 괜찮을까?"
+  - "유동인구랑 경쟁 점포 분석해줘"
+  - "예상 매출 어느 정도일지 봐줘"
+  PDF를 첨부하면 업종·예산·목적을 먼저 물어본 뒤, 5대 분석과 창업 타당성 점수까지 담은 보고서를 만들고 AI 표현 다듬기로 이어집니다.
+  [책임 경계] vs 산업 단위는 moai-business:market-analyst, 온라인 카테고리·검색 키워드 단위는 moai-commerce:commerce-market-research를 사용하세요. 이 스킬=오프라인 상권 단위 분석.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 소상공인365 상권분석 전문가 스킬
@@ -43,9 +40,9 @@ PDF가 첨부된 경우 → Step 1로 진행
 
 ---
 
-### Step 1: 인터뷰 (AskUserQuestion — 한 번에 4개 질문)
+### Step 1: 인터뷰 (한 번에 4개 질문)
 
-PDF 확인 후 즉시 AskUserQuestion으로 아래 4개를 **한 번에** 수집합니다.
+PDF 확인 후 즉시 아래 4개를 **한 번에** 질문해 수집합니다.
 인터뷰 결과는 분석의 관점과 보고서 논조를 결정합니다.
 
 ```
@@ -189,14 +186,15 @@ Claude 기본 Word 생성 금지.
 
 ---
 
-### Step 5: AI 슬롭 검수 (ai-slop-reviewer)
+### Step 5: AI 슬롭 검수 + 한국어 다듬기 (moai-core:ai-slop-reviewer → moai-content:humanize-korean)
 
-**반드시 마지막 단계**로 `ai-slop-reviewer`를 실행합니다.
-우선순위: `anthropic-skills:ai-slop-reviewer` > `moai:ai-slop-reviewer`.
+**반드시 마지막 단계**로 체인 `moai-core:ai-slop-reviewer → moai-content:humanize-korean`을 실행합니다.
+우선순위: `anthropic-skills:ai-slop-reviewer` > `moai-core:ai-slop-reviewer`.
 
-- AI 기계적 문어체 → 현장감 있는 소상공인 언어로 변환
-- 과도한 수식어 제거, 핵심 메시지 강화
+- `moai-core:ai-slop-reviewer`: AI 기계적 문어체 → 현장감 있는 소상공인 언어로 변환, 과도한 수식어 제거, 핵심 메시지 강화
+- `moai-content:humanize-korean`: AI 티가 남은 한국어 표현을 자연스럽게 다듬습니다
 - 진단 요약 → 수정 텍스트 → 주요 변경사항 순서로 출력
+- **적용 범위**: 보고서의 **서술(narrative) 섹션 본문**에만 적용. 4축 평가 점수표·유동인구 수치표·매출 데이터 표 등 **표·수치 산출물은 대상에서 제외**합니다.
 
 ---
 

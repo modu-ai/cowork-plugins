@@ -1,12 +1,18 @@
 ---
 name: seo-audit
-description: >
-  네이버·구글·AI 검색(GEO) 통합 SEO 감사 및 최적화 전략을 수립합니다.
-  'SEO 감사해줘', '네이버 상위 노출 전략 짜줘', '키워드 분석해줘',
-  '구글 검색 최적화해줘', 'GEO 전략 만들어줘', 'C-Rank 개선 방법 알려줘'라고 요청하세요.
-  온페이지·기술 SEO, 키워드 전략, AI 검색 최적화 보고서를 생성합니다.
+description: |
+  네이버·구글·AI 검색(GEO)에서 잘 노출되는지 점검하고, 검색 순위를 올릴 개선안과 추천 키워드를 담은 SEO 감사 보고서를 만들어 드립니다.
+  다음과 같은 요청 시 사용하세요:
+  - "우리 블로그 SEO 감사해줘"
+  - "네이버 상위 노출 전략 짜줘"
+  - "키워드 분석해줘"
+  - "구글 검색 최적화해줘"
+  - "ChatGPT·Perplexity 같은 AI 검색에 잘 노출되게 GEO 전략 만들어줘"
+  - "네이버 C-Rank 떨어졌는데 개선 방법 알려줘"
+  - "이커머스 사이트 SEO 로드맵 만들어줘"
+  네이버(C-Rank·D.I.A.)·구글(E-E-A-T·Core Web Vitals)·AI 검색 인용까지 점검해 개선 우선순위와 키워드 목록을 정리하고, 서술 권고는 moai-core:ai-slop-reviewer → moai-content:humanize-korean으로 다듬습니다.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # SEO 감사 (SEO Audit)
@@ -204,9 +210,17 @@ ChatGPT·Perplexity·Claude·네이버 AI 브리핑·구글 AI Overview가 답�
 | 키워드 검색량 데이터가 없는 경우 | 네이버 광고 플랫폼·Google Keyword Planner 사용 안내. 추정 기반 제안 |
 | 사이트 구조 정보가 없는 경우 | 핵심 페이지 URL 2-3개와 업종 정보로 일반 가이드라인 제공 |
 
+## 후처리 (필수 체인 — 서술형 권고만)
+
+감사 보고서의 서술형 권고·개선 전략·인사이트 등 **prose 산출물**은 발행 전 후처리 체인을 거칩니다. 추천 키워드 목록·기술 SEO 체크리스트·점수 표 등 **수치·표 산출물은 대상이 아닙니다**.
+
+**권장 체인(서술 권고)**: `seo-audit(서술 권고) → moai-core:ai-slop-reviewer → moai-content:humanize-korean`
+
 ## 관련 스킬
 
 | 스킬 | 사용 시점 |
 |------|----------|
 | `moai-marketing:sns-content` | SNS 콘텐츠 작성이나 브랜드 전략 |
 | `moai-marketing:campaign-planner` | 마케팅 캠페인 기획이나 광고 집행 |
+| `moai-core:ai-slop-reviewer` | 사후 체이닝(필수, 서술 권고): 감사 보고서 내러티브의 AI 패턴 검수 |
+| `moai-content:humanize-korean` | 사후 체이닝(필수, 서술 권고): ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |

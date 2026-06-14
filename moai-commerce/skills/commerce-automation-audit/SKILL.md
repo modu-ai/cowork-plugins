@@ -8,7 +8,7 @@ description: |
   ai-slop-reviewer 자동 체이닝 (진단 보고서 텍스트 산출물).
   이커머스 운영 자동화 가능성 자가 진단 + 우선순위·로드맵 생성.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 커머스 자동화 진단·로드맵 (Commerce Automation Audit)
@@ -83,7 +83,7 @@ version: 2.15.0
 | B 가격 & 프로모션 | 마진율 자동 계산기 (`commerce-margin-calculator` 연계) |
 | **C 주문 & 정산** | **주문 통합 + 송장 자동 등록** (가장 먼저) |
 | D 재고 & 물류 | 실시간 재고 동기화 |
-| E 마케팅 & 고객 | 광고 리포트 자동 집계 (`coupang-ad-optimizer` 연계) |
+| E 마케팅 & 고객 | 광고 리포트 자동 집계 (`moai-commerce:marketplace-coupang-ads` 연계) |
 | F 데이터 & 경영 | 일매출 대시보드 자동 갱신 (`commerce-morning-brief` 연계) |
 
 > **Insight**: 100% 자동화를 목표로 하기보다, 이 6개 항목만 자동화해도 업무 효율은 3배 이상 증가.
@@ -201,7 +201,7 @@ version: 2.15.0
 commerce-automation-audit (현황 진단)
        ↓ (Phase 1 식별)
 commerce-margin-calculator (마진 자동 계산)
-coupang-ad-optimizer (광고 자동 최적화)
+marketplace-coupang-ads (광고 자동 최적화)
        ↓ (Phase 2~3 추진)
 commerce-integrated-strategy (매출 전략 + 자동화 통합)
 ```

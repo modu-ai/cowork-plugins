@@ -9,7 +9,7 @@ description: |
   - "문장 다듬기", "어법 점검", "문체 일관성"
   - "논리 흐름 검증", "분량 정리"
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # book-revision-coach
@@ -269,7 +269,7 @@ book-outline-designer의 분량 배분과 실제 본문 분량 비교:
 - **우선순위 수정**:
   1. 2꼭지 분량 폭주 → 2꼭지·2.5꼭지로 분리
   2. 용어 통일 ("데이타" → "데이터", "next.js" → "Next.js")
-- **다음 단계**: 수정 후 humanize-korean → ai-slop-reviewer 체이닝
+- **다음 단계**: 수정 후 moai-core:ai-slop-reviewer → moai-content:humanize-korean 체이닝
 ```
 
 ## 5. 사용 예시
@@ -350,7 +350,7 @@ P3 (편집 단계): 시각 자료 보완, 도표 디자인, 인쇄 해상도
 | **퇴고 한 번에 모든 점검** | 7 단계를 차례로 (한 번에 1-2 단계만 집중) |
 | **자신의 문장에 너무 익숙** | 시간 두고 다시 읽기 (1주 후·소리 내어 읽기) |
 | **맞춤법만 점검** | 어법은 1차만, 정밀은 korean-spell-check |
-| **AI 티 무시** | humanize-korean + ai-slop-reviewer 체이닝 필수 |
+| **AI 티 무시** | `moai-core:ai-slop-reviewer` → `moai-content:humanize-korean` 체이닝 필수 |
 | **분량 편차 방치** | ±20% 초과 시 분리·통합 강제 |
 | **출판사 양식 미준수** | 투고 출판사의 어미·문체 컨벤션 사전 확인 |
 
@@ -363,9 +363,9 @@ P3 (편집 단계): 시각 자료 보완, 도표 디자인, 인쇄 해상도
   ↓
 정밀 맞춤법 (moai-content:korean-spell-check, 바른한글)
   ↓
-AI 티 윤문 (moai-content:humanize-korean) ← 필수
+AI 슬롭 검수 (moai-core:ai-slop-reviewer) ← 필수
   ↓
-최종 검수 (moai-core:ai-slop-reviewer) ← 필수
+AI 티 윤문 (moai-content:humanize-korean) ← 필수
   ↓
 출판사 투고용 제안서 (book-proposal-writer)
 ```
@@ -382,11 +382,13 @@ AI 티 윤문 (moai-content:humanize-korean) ← 필수
 - `book-chapter-writer` — 본문 초고 (퇴고 대상)
 - `book-outline-designer` — 시놉시스 (장 단위 점검 기준)
 
-### After (체이닝 — 4 체인 권장)
+### After (체이닝 — 정규 체인)
 - `moai-content:korean-spell-check` — 정밀 한국어 맞춤법
+- `moai-core:ai-slop-reviewer` — AI 슬롭 검수 (필수)
 - `moai-content:humanize-korean` — AI 티 정밀 윤문 (필수)
-- `moai-core:ai-slop-reviewer` — 최종 검수 (필수)
 - `book-proposal-writer` — 검수 완료 후 출판사 투고 제안서로
+
+> 퇴고 완료 본문은 정규 체인 **`book-revision-coach → moai-core:ai-slop-reviewer → moai-content:humanize-korean`**으로 마무리합니다.
 
 ### Alternative
 - `moai-content:korean-spell-check` 단독 — 빠른 맞춤법만

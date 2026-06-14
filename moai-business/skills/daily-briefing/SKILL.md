@@ -1,19 +1,19 @@
 ---
 name: daily-briefing
 description: |
-  [책임 경계] 외부 뉴스·업계 동향·경쟁사 모니터링 (웹 검색·공개 정보 기반 일반 사업 아침 브리핑).
-  페어 moai-commerce:commerce-morning-brief(v2.3.0 신규)와 데이터 소스 차이로 명확히 구분 — 본 스킬은 외부 뉴스·웹 정보, 페어는 MCP 매장 운영 데이터(어제 주문·신규 문의·트렌드·ROAS).
-  사용 분기: 비즈니스 분석가·임원 → 본 스킬 / 이커머스 셀러 매장 운영 데이터 → commerce-morning-brief.
-  매일 아침 업계 뉴스, 시장 동향, 경쟁사 모니터링, KPI 대시보드를 구조화된 브리핑으로
-  생성하는 비즈니스 모니터링 스킬입니다. 국내외 업계 뉴스, 규제·정책 변화, 오늘의 액션 아이템을
-  하나의 리포트로 통합하여 업무 시작 전 5분 만에 비즈니스 현황을 파악할 수 있습니다.
-
-  다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
-  - "오늘 비즈니스 브리핑 해줘", "아침 이슈 요약해줘", "데일리 리포트"
-  - "주간 시장 동향 알려줘", "위클리 브리핑", "경쟁사 모니터링 보고서"
-  - "업계 뉴스 요약", "아침 브리핑", "비즈니스 동향"
+  업계 뉴스·시장 동향·경쟁사 소식·규제 변화·오늘 할 일을 한 장으로 묶은 아침 비즈니스 브리핑을 만들어 드립니다.
+  다음과 같은 요청 시 사용하세요:
+  - "오늘 비즈니스 브리핑 해줘"
+  - "아침 이슈 요약해줘"
+  - "데일리 리포트 만들어줘"
+  - "주간 시장 동향 알려줘"
+  - "경쟁사 모니터링 보고서 써줘"
+  - "업계 뉴스 요약해줘"
+  - "오늘 업무 시작 전에 챙길 거 정리해줘"
+  국내외 뉴스·규제·시장 지표·경쟁사 동향을 시사점과 액션 아이템으로 묶어 5분 만에 읽히는 리포트를 만듭니다.
+  [책임 경계] vs moai-commerce:commerce-morning-brief: 이 스킬=외부 뉴스·웹 정보 기반 일반 사업 브리핑, 저 스킬=MCP 매장 운영 데이터(어제 주문·신규 문의·ROAS) 기반 이커머스 셀러 브리핑.
 user-invocable: true
-version: 2.15.0
+version: 2.17.0
 ---
 
 # 데일리 브리핑 (Daily Briefing)
@@ -190,7 +190,7 @@ version: 2.15.0
 아래 표준 포맷으로 마크다운 리포트 생성:
 
 ```markdown
-# [날짜] 데일리 브리핁
+# [날짜] 데일리 브리핑
 
 ## 헤드라인 요약 (3줄 핵심)
 1. ...
@@ -355,7 +355,7 @@ version: 2.15.0
 
 - `.moai/config.json`에 `industry`, `competitors`, `keywords` 설정 시 맞춤 브리핑 자동화
 - 사용자가 "매일 아침 브리핑" 요청 시 이전 브리핑과 비교하여 변화 포인트를 강조
-- TAM·SAM·SOM 기반 시장 동향 분석 가능 (market-analyst 스킬과 연동)
+- TAM·SAM·SOM 기반 시장 동향 분석 가능 (moai-business:market-analyst 스킬과 연동)
 
 ### TAM·SAM·SOM 시장 규모 분석 (투자자 브리핑 모드)
 
@@ -366,12 +366,7 @@ version: 2.15.0
 
 ## 관련 스킬
 
-- **market-analyst**: 심층 시장 분석이나 TAM/SAM/SOM 산출
-- **investor-relations**: 투자자 보고서나 IR 덱 작성
-- **consulting-brief**: 경쟁사 분석 포함 컨설팅 제안서
-- **ai-slop-reviewer**: 생성된 브리핑 AI 패턴 검수 (필수)
-
----
-
-Version: 1.3.0
-Last Updated: 2026-04-30
+- **moai-business:market-analyst**: 심층 시장 분석이나 TAM/SAM/SOM 산출
+- **moai-business:investor-relations**: 투자자 보고서나 IR 덱 작성
+- **moai-business:consulting-brief**: 경쟁사 분석 포함 컨설팅 제안서
+- **moai-core:ai-slop-reviewer → moai-content:humanize-korean**: 생성된 브리핑 AI 패턴 검수 후 한국어 표현을 자연스럽게 다듬습니다 (필수)
