@@ -16,5 +16,5 @@
     "gpt-image-2", "gemini-3-image", "midjourney", "elevenlabs",
     "MCP-호출", "비동기-잡"
   ],
-  "license": "MIT"
+  "license": "LicenseRef-MoAI-NC-ND-1.0"
 }

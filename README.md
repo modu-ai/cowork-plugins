@@ -1,6 +1,6 @@
 # cowork-plugins
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: NC-ND v1.0](https://img.shields.io/badge/License-NC--ND%20v1.0-red.svg)](LICENSE)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
 [![Version](https://img.shields.io/badge/Version-2.19.0-blue)](CHANGELOG.md)
 [![Plugins](https://img.shields.io/badge/Plugins-27-blue)](.claude-plugin/marketplace.json)
@@ -8,11 +8,11 @@
 [![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)
 [![shadcn/ui](https://img.shields.io/badge/UI-shadcn/ui-black)](https://ui.shadcn.com/)
 
-**Claude Cowork 한국어 도메인 전문가 AI 마켓플레이스 — 27 plugins · 173 skills · MIT**
+**Claude Cowork 한국어 도메인 전문가 AI 마켓플레이스 — 27 plugins · 173 skills · NC-ND v1.0**
 
 자연어 한 줄로 **사업계획서·계약서 검토·세금 계산·PPT·NotebookLM 슬라이드·Claude Design 보조·Higgsfield 이미지·영상·음성 더빙·BI 보고서·HTML 리포트·쿠팡 광고·메타 광고 분석·한국 출판사 제출 원고·한국 공공데이터 조회**를 자동 생성합니다. 한국 B2B 환경(K-IFRS·국세청·근로기준법·식약처·국토부·KRX·인터넷등기소·KPIPA)에 특화된 27개 독립 플러그인과 173개 도메인 스킬이 업무를 대신하며, 모든 텍스트 산출물은 [`ai-slop-reviewer`](./moai-core/skills/ai-slop-reviewer/)가 AI 패턴을 검수하여 자연스럽게 다듬어 드립니다.
 
-> *Korean B2B specialty plugin marketplace for [Anthropic Claude Code (Cowork)](https://claude.ai/cowork) — 27 plugins · 173 skills. Korean fonts (Pretendard / Noto Serif KR / Chosunilbo Myungjo / KoPubWorld), Korean text humanizer (humanize-korean), AI-slop reviewer for every deliverable. Higgsfield MCP image/video (22 official models), Claude Design helper. K-IFRS, NTS, KRX, MFDS, MOLIT, IROS, KPIPA specialty skills. MIT licensed.*
+> *Korean B2B specialty plugin marketplace for [Anthropic Claude Code (Cowork)](https://claude.ai/cowork) — 27 plugins · 173 skills. Korean fonts (Pretendard / Noto Serif KR / Chosunilbo Myungjo / KoPubWorld), Korean text humanizer (humanize-korean), AI-slop reviewer for every deliverable. Higgsfield MCP image/video (22 official models), Claude Design helper. K-IFRS, NTS, KRX, MFDS, MOLIT, IROS, KPIPA specialty skills. Non-Commercial No-Derivatives (NC-ND) licensed.*
 
 **🚀 빠른 설치**: Claude Cowork → 사용자 지정 → 개인 플러그인 + → **마켓플레이스 추가** → URL `modu-ai/cowork-plugins` 입력 → 동기화 → `moai-core` 먼저 설치
 
@@ -995,4 +995,12 @@ Claude Cowork에서 **마켓플레이스 추가 → URL `modu-ai/cowork-plugins`
 
 ## 라이선스
 
-[MIT](LICENSE)
+본 저장소는 **MoAI Cowork Plugins 라이선스 — 비상업·변경금지(NC-ND) v1.0**([LICENSE](LICENSE))으로 배포됩니다.
+
+- **비상업 이용만 허용** — 판매·유료 서비스·도서·강의·유료 강좌 등 상업적 이용 금지
+- **변경 금지** — 수정·2차적저작물 작성·재배포 금지(원형 그대로의 비상업 재배포만 허용)
+- **출처 표시 의무** — 저작권·라이선스·NOTICE 고지 보존 필수(도용 금지)
+
+일부 제3자 구성요소는 각자의 라이선스(Apache 2.0 / MIT / SIL OFL 1.1)가 적용되며, 자세한 내용은 [NOTICE.md](NOTICE.md)를 참조하십시오. 종전 MIT 라이선스로 배포된 릴리스는 해당 릴리스에 한하여 [LICENSE.MIT](LICENSE.MIT)로 계속 제공됩니다.
+
+> 상업적 라이선스 문의: email@mo.ai.kr

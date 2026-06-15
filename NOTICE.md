@@ -1,5 +1,8 @@
 # MoAI-ADK Third-Party Notices
 
+> **본 저장소(저작물)의 라이선스**: MoAI Cowork Plugins 라이선스 — 비상업·변경금지(NC-ND) v1.0 ([LICENSE](LICENSE)).
+> 아래에 열거된 제3자 구성요소는 **각자의 원 라이선스**가 적용되며, NC-ND 라이선스의 적용을 받지 아니합니다(LICENSE 제7조). 충돌이 발생하는 경우 해당 구성요소에 관하여는 제3자 라이선스가 우선합니다.
+
 This product includes software developed by revfactory/harness and redistributed under the Apache License 2.0.
 
 ## Apache License 2.0
@@ -172,5 +175,6 @@ These materials are developed internally by the moai-cowork community. Skills ma
 **Import Date (Karpathy)**: 2026-04-28
 **Import Date (k-skill)**: 2026-05-04 (v2.0.0)
 **Reference Date (claude-ads)**: 2026-05-13 (v1.5.1, methodology adaptation only)
-**MoAI-ADK License**: MIT
-**Combined Compatibility**: Apache 2.0 imports distributed under MIT with Apache attribution preserved. MIT imports compatible.
+**Main Work License**: MoAI Cowork Plugins License — Non-Commercial No-Derivatives (NC-ND) v1.0 (see LICENSE)
+**Prior Releases**: MIT (see LICENSE.MIT) — applies to releases distributed before the NC-ND transition (LICENSE §11)
+**Third-Party Components**: governed solely by their own licenses listed above (Apache License 2.0 / MIT / SIL OFL 1.1). The NC-ND license does not modify, restrict, or supersede them; where a conflict arises, the third-party license controls for that component.
