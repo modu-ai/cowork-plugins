@@ -48,6 +48,16 @@ flowchart TD
         MCA[moai-career]
         ML2[moai-lifestyle]
     end
+    subgraph Personal["개인·일잘러"]
+        MW[moai-wealth]
+        MPR[moai-productivity]
+        MCO[moai-comms]
+    end
+    subgraph Extra["디자인·학습·공공데이터"]
+        MDS[moai-design]
+        MTU[moai-tutor]
+        MPD[moai-public-data]
+    end
 
     Core --> Content
     Core --> Biz
@@ -55,6 +65,8 @@ flowchart TD
     Core --> Legal
     Core --> Data
     Core --> Life
+    Core --> Personal
+    Core --> Extra
 
     style Core fill:#eaeaea,stroke:#6e6e6e,color:#09110f
     style Content fill:#e6f0ef,stroke:#144a46,color:#09110f
@@ -63,6 +75,8 @@ flowchart TD
     style Legal fill:#f5dcd7,stroke:#c44a3a,color:#09110f
     style Data fill:#e6f0ef,stroke:#6e6e6e,color:#09110f
     style Life fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style Personal fill:#dceee9,stroke:#2a8a8c,color:#09110f
+    style Extra fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 {{< hint type="note" >}}

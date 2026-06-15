@@ -878,8 +878,8 @@ K-IFRS·KOSIS·DART 친화적 한국 통계 환경에서 5분 안에 의사결�
 ## 기술 특징
 
 **Anthropic 공식 스킬 가이드 준수**
-- 모든 **173개** 스킬에 [What]+[When]+[Triggers] 구조의 description 적용
-- 모든 SKILL.md frontmatter에 `version: 2.19.0` 동기화 (Cowork 자동 업데이트 감지)
+- 모든 **176개** 스킬에 [What]+[When]+[Triggers] 구조의 description 적용
+- 모든 SKILL.md frontmatter에 `version: 2.20.0` 동기화 (Cowork 자동 업데이트 감지)
 - Negative triggers로 불필요한 스킬 로딩 방지
 - 인라인 폴백과 에러 핸들링 내장
 
