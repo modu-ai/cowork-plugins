@@ -110,10 +110,19 @@ _DOUBLE_PASSIVE_TOKENS = (
     "놓여진",
 )
 
-# T2a "~에 의해 + 피동" — 피동 동사가 직후 N어절 안에 등장해야 매칭.
+# T2a "~에 의해 + 피동" — 피동 동사가 직후 N글자 안에 등장해야 매칭.
 # 단순 "에 의해" 는 빈번한 자연 한국어이므로 제외 (보고서 T2 caveat).
+# 한자어 피동은 '되-'가 축약된 표층형(된·될·되는·된다·되었)으로 가장 흔하게
+# 나타나며(생성된·구성되는·제작되었다), '-아/어/여지다'(만들어진·끊어진) 계열도
+# 행위자 피동에 포함된다. 비축약 '되다'·'받다'·'당하다'도 함께 매칭한다.
 _BY_PASSIVE_RE = re.compile(
-    r"에\s*의(?:해|하여)\s+\S{0,12}?(?:되|받|당하|지)(?:다|었|어|ㄴ다|는다|는|ㄹ|을)"
+    r"에\s*의(?:해|하여)\s+\S{0,12}?"
+    r"(?:"
+    r"된다|된|될|되는|되어|되었|되며|되고|되다"   # 되다 계열 (축약 된·될 포함)
+    r"|받는|받은|받을|받았|받아|받다"             # 받다 피동
+    r"|당하|당한|당했|당할|당해"                  # 당하다 피동
+    r"|[아어여]진|[아어여]졌|[아어여]지"          # -아/어/여지다 계열 (만들어진·끊어진)
+    r")"
 )
 
 # T3 인칭 대명사 — 영어 he/she/it/they 의 1대1 매핑.
@@ -498,26 +507,58 @@ def deul_overuse_rate(text: str) -> float:
     return hits / len(toks)
 
 
-def relative_clause_nesting(text: str) -> int:
-    """T5: count of sentences with relative-clause nesting depth >= 3.
+# 주제·주격·목적격 조사 음절 — 관형사형 어미와 동형이나 관형형이 아니므로
+# relative_clause_nesting 판정에서 명시 제외한다 (F1 오탐 차단).
+_NON_ADNOMINAL_FINAL = ("은", "는", "을", "를")
 
-    Approximation: a sentence is nested when it contains 3+ adnominal
-    clause endings -ㄴ/-는/-ㄹ/-한/-된/-할 followed by a noun (heuristic:
-    the syllable before whitespace). We check every sentence for the
-    count of token endings in `(ㄴ|는|ㄹ|던|할|한|된|될)` followed by a
-    short space-separated noun. Returns the *number of sentences*
-    (not total nestings) with depth >= 3.
+
+def _is_adnominal_eojeol(tok: str) -> bool:
+    """어절이 관형사형 어미(받침 ㄴ/ㄹ)로 끝나는지 근사 판정한다.
+
+    한국어 관형사형은 종성이 ㄴ/ㄹ 인 경우가 압도적이다
+    (-ㄴ/-은/-던/-한/-된 과거·현재, -ㄹ/-을/-할/-될 미래). 다만 동형이의인
+    주제/주격/목적격 조사(은·는·을·를)는 관형형이 아니므로 명시 제외한다.
+    형태소 분석기(konlpy/mecab) 없이 종성 분해로 근사하는 휴리스틱이며,
+    동형인 '은'(읽은 vs 책은)은 보수적으로 조사 쪽으로 분류해 오탐을 줄인다
+    (보고서 T5 caveat — recall보다 precision 우선).
+    """
+    if len(tok) < 2:
+        return False
+    last = tok[-1]
+    if last in _NON_ADNOMINAL_FINAL:
+        return False
+    if not ("가" <= last <= "힣"):
+        return False
+    jongseong = (ord(last) - 0xAC00) % 28
+    return jongseong in (4, 8)  # 종성 ㄴ(4) 또는 ㄹ(8) → 관형사형 어미 추정
+
+
+def relative_clause_nesting(text: str) -> int:
+    """T5: count of sentences with left-branching adnominal nesting depth >= 3.
+
+    Approximation: within a sentence, count eojeols that end in an adnominal
+    ending (받침 ㄴ/ㄹ, via :func:`_is_adnominal_eojeol`) AND are immediately
+    followed by a Hangul noun head. Topic/subject/object particles
+    (은·는·을·를) are excluded so a sentence with several 주제어 is not
+    mis-flagged as relative-clause nesting. Returns the *number of sentences*
+    (not total nestings) whose adnominal depth is >= 3.
     """
     sents = _split_sentences(text)
     if not sents:
         return 0
-    # 관형형 어미 종결 음절 매칭 — 어절 끝이 (ㄴ|는|ㄹ|던|한|된|할|될|온) 인 토큰 수.
-    adnominal_re = re.compile(r"[가-힣]+(?:ㄴ|는|ㄹ|던|한|된|할|될|온|간)\s+[가-힣]")
-    matches_per_sent = []
+    count = 0
     for s in sents:
-        m = adnominal_re.findall(s)
-        matches_per_sent.append(len(m))
-    return sum(1 for c in matches_per_sent if c >= 3)
+        toks = [t for t in (_strip_punct(e) for e in _eojeols(s)) if t]
+        depth = 0
+        for i in range(len(toks) - 1):  # 마지막 어절은 핵 명사 자리가 없음
+            if not _is_adnominal_eojeol(toks[i]):
+                continue
+            nxt = toks[i + 1]
+            if nxt and "가" <= nxt[0] <= "힣":  # 뒤 어절이 한글(명사 핵 추정)
+                depth += 1
+        if depth >= 3:
+            count += 1
+    return count
 
 
 def have_make_literal_count(text: str) -> int:

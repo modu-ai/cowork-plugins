@@ -23,7 +23,7 @@ model: sonnet
 2. `moai-commerce:commerce-ltv-cac-architect` — LTV/CAC 설계
 3. `moai-commerce:commerce-repurchase-timer` — 재구매 주기 분석
 4. `moai-commerce:commerce-subscription-strategist` — 구독 전환 전략
-5. `moai-commerce:coupang-ad-optimizer` — 광고 효율 최적화
+5. `moai-commerce:marketplace-coupang-ads` — 광고 효율 최적화
 6. (분석 코멘터리 텍스트) → `moai-core:ai-slop-reviewer`
 
 ## Cowork 환경 제약

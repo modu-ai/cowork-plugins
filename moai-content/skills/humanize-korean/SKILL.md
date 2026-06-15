@@ -38,7 +38,7 @@ version: 2.19.0
 작업 시작 시 가장 먼저 다음 한 줄을 출력합니다.
 
 ```
-humanize-korean v2.2 — fast 모드 / run_id: {YYYY-MM-DD-NNN}
+humanize-korean — fast 모드 / run_id: {YYYY-MM-DD-NNN}
 ```
 
 ### run_id 결정

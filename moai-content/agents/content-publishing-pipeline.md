@@ -22,7 +22,7 @@ model: sonnet
 1. `moai-content:content-calendar` — 발행 일정·주제 정렬
 2. `moai-content:blog` — 원본 블로그 글 작성 (WebSearch로 사실 보강 가능)
 3. (원본 텍스트) → `moai-core:ai-slop-reviewer` → `moai-content:humanize-korean`
-4. 리퍼포징 → `moai-content:social-media` + `moai-content:newsletter` + `moai-content:card-news`
+4. 리퍼포징 → `moai-marketing:sns-content` + `moai-content:newsletter` + `moai-content:card-news`
 5. 각 채널 텍스트도 출력 전 ai-slop-reviewer 재적용
 
 ## Cowork 환경 제약

@@ -19,7 +19,7 @@ model: sonnet
 
 ## 워크플로우
 
-1. `moai-education:curriculum-designer` 또는 `moai-education:course-curriculum-design` — 커리큘럼 설계
+1. `moai-education:curriculum-designer` — 커리큘럼 설계
 2. `moai-education:assessment-creator` — 평가·과제 설계
 3. `moai-education:course-operations-manual` — 운영 매뉴얼
 4. `moai-education:course-followup-sequence` — 수강 후 후속 시퀀스

@@ -224,6 +224,31 @@ class MetricsV2Tests(unittest.TestCase):
         text = "그는 책을 읽고 있다. 비가 내리고 있다."
         self.assertGreater(metrics_v2.progressive_aspect_rate(text), 0.0)
 
+    def test_by_passive_detects_sino_passive(self) -> None:
+        # F2 회귀 가드 — A-9 정규 예시: '에 의해 + ...된/되었다' 축약 한자어 피동.
+        self.assertGreaterEqual(
+            metrics_v2.by_passive_count("AI에 의해 생성된 이미지"), 1
+        )
+        self.assertGreaterEqual(
+            metrics_v2.by_passive_count("건물이 폭격에 의해 파괴되었다"), 1
+        )
+        # bare '에 의해'(피동 동사 부재)는 카운트하지 않는다.
+        self.assertEqual(
+            metrics_v2.by_passive_count("이에 의해 우리는 성장했다"), 0
+        )
+
+    def test_relative_clause_excludes_topic_markers(self) -> None:
+        # F1 회귀 가드 — 주제/주격/목적격 조사(은·는·을·를)는 관형형이 아니므로
+        # 한 문장에 주제어가 여럿이어도 관계절 중첩으로 오탐하지 않는다.
+        topic_only = "그는 학생이고 나는 교사이고 회사는 성장하지만 시장은 변한다."
+        self.assertEqual(metrics_v2.relative_clause_nesting(topic_only), 0)
+        # 실제 좌향 수식 3중 이상(직역체)은 정상 탐지한다.
+        nested = (
+            "그는 사고를 일으킨 화학물질을 생산한 회사에서 "
+            "한때 일했던 한 남자를 만났다."
+        )
+        self.assertGreaterEqual(metrics_v2.relative_clause_nesting(nested), 1)
+
     # ------------------------------------------------------------------
     # compute_all_v2 superset contract
     # ------------------------------------------------------------------
