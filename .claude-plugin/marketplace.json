@@ -5,9 +5,10 @@
     "email": "email@mo.ai.kr"
   },
   "metadata": {
-    "description": "모두의 AI의 Claude Cowork 플러그인 마켓플레이스 — 27 플러그인, 173 스킬. 사업계획·이커머스·마케팅·콘텐츠·법률·재무·재테크·HR·교육·출판·디자인·미디어·생산성·커뮤니케이션 등 한국 실무 도메인 전반을 한국어 자연어 한 줄로 처리합니다. 짧게 요청하면 시스템이 필요한 맥락을 질문(AskUserQuestion)으로 수집하고, 산출물별 스킬 체인으로 결과를 완성합니다. 모든 텍스트 산출물은 ai-slop-reviewer 검수 체인을 권장하며, /project로 프로젝트 워크플로우 기반 CLAUDE.md를 자동 생성합니다. 버전별 변경 내역은 CHANGELOG.md와 GitHub Releases에서 확인하세요.",
-    "version": "2.19.0",
-    "language": "ko"
+    "description": "모두의 AI의 Claude Cowork 플러그인 마켓플레이스 — 29 플러그인, 177 스킬. 사업계획·이커머스·마케팅·콘텐츠·법률·재무·재테크·HR·교육·학습·출판·디자인·미디어·생산성·커뮤니케이션·X 데이터 워크플로우 등 한국 실무 도메인 전반을 한국어 자연어 한 줄로 처리합니다. 짧게 요청하면 시스템이 필요한 맥락을 질문(AskUserQuestion)으로 수집하고, 산출물별 스킬 체인으로 결과를 완성합니다. 모든 텍스트 산출물은 ai-slop-reviewer 검수 체인을 권장하며, /project로 프로젝트 워크플로우 기반 CLAUDE.md를 자동 생성합니다. 버전별 변경 내역은 CHANGELOG.md와 GitHub Releases에서 확인하세요.",
+    "version": "2.20.0",
+    "language": "ko",
+    "license": "LicenseRef-MoAI-NC-ND-1.0"
   },
   "plugins": [
     {
@@ -144,6 +145,11 @@
       "name": "moai-comms",
       "source": "./moai-comms",
       "description": "직장 커뮤니케이션·소프트스킬 — 보고·설명의 기술(두괄식·핵심 요약·상사 보고), 회의 진행·퍼실리테이션(아젠다·의사결정·회의록), 피드백 주고받기(건설적 전달·부정 피드백 소화), 갈등·소통빌런 유형별 대응·정중한 거절, 1:1 면담·설득·협상. moai-hr(공식 성과평가)·moai-content(문서 작성)와 구분되는 대인 커뮤니케이션 실전"
+    },
+    {
+      "name": "moai-tutor",
+      "source": "./moai-tutor",
+      "description": "학습자·수강생 전용 개인 AI 튜터 — 내 학습 프로젝트 초기화(목표·수준 진단·단계별 로드맵·진도 추적), context7+웹검색 병렬 리서치로 최신 정보 수집, mermaid 도식·ECharts 차트·KaTeX 수식·highlight.js 코드가 조건부로 들어간 단일 HTML 학습자료 자동 생성. claude code·cowork·영어 등 어떤 주제든 풍부한 설명과 도식으로 스스로 학습. moai-education(강사용)과 분리된 학습자(배우는 쪽) 도메인"
     },
     {
       "name": "moai-xquik",

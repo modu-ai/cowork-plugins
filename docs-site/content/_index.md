@@ -1,23 +1,23 @@
 ---
 title: "Claude Cowork 한국어 문서"
-description: "Claude Cowork 한국어 가이드 — 지식 근로자를 위한 설치·스킬·플러그인·쿡북 완전판. cowork-plugins 27종 카탈로그 + 173 스킬 포함."
+description: "Claude Cowork 한국어 가이드 — 지식 근로자를 위한 설치·스킬·플러그인·쿡북 완전판. cowork-plugins 28종 카탈로그 + 176 스킬 포함."
 geekdocAnchor: false
 geekdocBreadcrumb: false
 ---
 
 <div class="cw-hero">
   <div class="eyebrow"><span class="dot"></span>{{< version >}} · {{< release-date >}} · cowork.mo.ai.kr</div>
-  <h1>업무에 바로 쓰는<br/><span class="accent">AI 협업 스킬</span> 173종.</h1>
+  <h1>업무에 바로 쓰는<br/><span class="accent">AI 협업 스킬</span> 176종.</h1>
   <p class="lead-p">
-    27개 분야에 걸친 MoAI-Cowork 플러그인 모음. Claude Code에서 슬래시 한 번으로 사업계획서·IR 덱·계약서·블로그·정부지원사업 신청서·이커머스 광고 풀세트·한국 출판사 제출 원고·개인 재무·자기관리·직장 커뮤니케이션·<strong>한국 공공·시세 데이터 조회</strong>까지 — 한국어로, 끝까지.
+    28개 분야에 걸친 MoAI-Cowork 플러그인 모음. Claude Code에서 슬래시 한 번으로 사업계획서·IR 덱·계약서·블로그·정부지원사업 신청서·이커머스 광고 풀세트·한국 출판사 제출 원고·개인 재무·자기관리·직장 커뮤니케이션·<strong>한국 공공·시세 데이터 조회</strong>까지 — 한국어로, 끝까지.
   </p>
   <div class="cw-hero-ctas">
     <a class="btn btn--primary" href="/getting-started/quick-start/">5분 만에 시작 →</a>
     <a class="btn btn--ghost" href="/plugins/">플러그인 둘러보기</a>
   </div>
   <div class="cw-hero-meta">
-    <div class="item"><div class="num">173</div><div class="lbl">총 스킬</div></div>
-    <div class="item"><div class="num">27</div><div class="lbl">분야 플러그인</div></div>
+    <div class="item"><div class="num">176</div><div class="lbl">총 스킬</div></div>
+    <div class="item"><div class="num">28</div><div class="lbl">분야 플러그인</div></div>
     <div class="item"><div class="num">79</div><div class="lbl">문서 페이지</div></div>
     <div class="item"><div class="num">{{< version >}}</div><div class="lbl">최신 릴리스</div></div>
   </div>
@@ -78,7 +78,7 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
   <a class="cw-qs-card" href="/plugins/">
     <div class="step">02 · 선택 (약 2분)</div>
     <div class="ttl">분야별 플러그인 활성화</div>
-    <div class="desc">27개 분야 중 필요한 것만 켭니다. moai-core는 필수.</div>
+    <div class="desc">28개 분야 중 필요한 것만 켭니다. moai-core는 필수.</div>
   </a>
   <a class="cw-qs-card" href="/getting-started/first-task/">
     <div class="step">03 · 첫 작업 (약 5분)</div>
@@ -93,8 +93,8 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
 </div>
 
 <div class="cw-sect-head">
-  <h2 id="plugins-grid" style="margin:0"><span class="num">27</span>분야별 플러그인</h2>
-  <span class="meta">총 173개 스킬 · 27개 도메인</span>
+  <h2 id="plugins-grid" style="margin:0"><span class="num">28</span>분야별 플러그인</h2>
+  <span class="meta">총 176개 스킬 · 28개 도메인</span>
 </div>
 
 <div class="cw-grid">
@@ -224,6 +224,12 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
     <div class="desc">한국 출판사 제출용 원고 풀스택 — 컨셉서·페르소나·목차·저자 약력·제안서·출판사 매칭·본문·퇴고 8 단계. 4 장르 자동 분기 + 30+ 출판사 + 자비 출판 5 플랫폼 + KPIPA·국립국어원·도서정가제</div>
     <div class="foot"><span>출판 풀스택</span><span>4 장르</span><span>30+ 출판사</span><span>자비 출판</span></div>
   </a>
+  <a class="cw-card" href="/plugins/moai-tutor/">
+    <div class="head"><div class="icon">학</div><span class="count-pill">3개 스킬</span></div>
+    <div><div class="title">학습 튜터<span class="new-tag">v2.20 NEW</span></div><div class="slug">moai-tutor</div></div>
+    <div class="desc">학습자 전용 개인 AI 튜터 — 학습 프로젝트·로드맵 + context7+웹검색 병렬 리서치 + mermaid·차트·코드 HTML 학습자료</div>
+    <div class="foot"><span>학습 프로젝트</span><span>병렬 리서치</span><span>HTML 학습자료</span></div>
+  </a>
   <a class="cw-card featured" href="/plugins/moai-core/">
     <div class="head"><div class="icon">코</div><span class="count-pill">8개 스킬</span></div>
     <div><div class="title">코어 (필수)<span class="new-tag">v2.3</span></div><div class="slug">moai-core</div></div>
@@ -267,12 +273,26 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
 </div>
 
 <div class="cw-sect-head">
-  <h2 id="release-summary" style="margin:0"><span class="num">v2.19</span>최근 릴리스</h2>
+  <h2 id="release-summary" style="margin:0"><span class="num">v2.20</span>최근 릴리스</h2>
   <span class="meta">CHANGELOG.md 기반</span>
 </div>
 
 <div class="cw-timeline">
   <div class="cw-rel latest">
+    <div class="ver-row">
+      <span class="ver">v2.20.0</span>
+      <span class="date">2026-06-16</span>
+      <span class="badge">MINOR</span>
+    </div>
+    <div class="ttl">학습자 전용 moai-tutor 플러그인 신규 (3 스킬)</div>
+    <div class="desc">가르치는 사람(moai-education)과 분리된 <strong>배우는 사람(학습자·수강생)</strong> 도메인. 학습 질문을 <strong>context7(공식 문서)+웹검색(최신 정보) 병렬</strong> 조사·교차검증하고, mermaid 도식·차트·수식·코드가 조건부로 들어간 <strong>단일 HTML 학습자료</strong>를 자동 생성. claude code·cowork·영어 등 어떤 주제든 스스로 학습. <strong>27→28 플러그인 · 173→176 스킬 · 기능적 비파괴 · Breaking change 없음</strong>.</div>
+    <ul>
+      <li><strong>moai-tutor 신규 3 스킬</strong> — learning-project(학습 프로젝트·로드맵·진도) · tutor-research(context7+웹검색 병렬 리서치·교차검증) · learning-material(도식·차트·코드 HTML 학습자료)</li>
+      <li><strong>context7 MCP 번들</strong> — 설치 시 라이브러리·SDK 공식 문서 조회 자동 활성화(별도 API 키 불필요)</li>
+      <li><strong>2026 CDN 라이브러리 스택</strong> — Mermaid·ECharts·highlight.js·KaTeX·AOS 조건부 로딩. html-report 0-JS 원칙 보존</li>
+    </ul>
+  </div>
+  <div class="cw-rel">
     <div class="ver-row">
       <span class="ver">v2.19.0</span>
       <span class="date">2026-06-15</span>

@@ -15,7 +15,7 @@ description: |
 
   주의: **per-candidate 평가**에 한정됩니다. 채용 프로세스 설계(JD 작성·면접 구조·온보딩)는 `moai-hr:employment-manager`를 사용하세요.
 user-invocable: true
-version: 2.19.0
+version: 2.20.0
 ---
 
 # Resume Screener — NCS 기반 이력서 스크리닝 (의사결정 보조)

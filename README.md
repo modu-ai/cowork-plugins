@@ -1,18 +1,18 @@
 # cowork-plugins
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: NC-ND v1.0](https://img.shields.io/badge/License-NC--ND%20v1.0-red.svg)](LICENSE)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
-[![Version](https://img.shields.io/badge/Version-2.19.0-blue)](CHANGELOG.md)
-[![Plugins](https://img.shields.io/badge/Plugins-27-blue)](.claude-plugin/marketplace.json)
-[![Skills](https://img.shields.io/badge/Skills-173-green)](.claude-plugin/marketplace.json)
+[![Version](https://img.shields.io/badge/Version-2.20.0-blue)](CHANGELOG.md)
+[![Plugins](https://img.shields.io/badge/Plugins-29-blue)](.claude-plugin/marketplace.json)
+[![Skills](https://img.shields.io/badge/Skills-177-green)](.claude-plugin/marketplace.json)
 [![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)
 [![shadcn/ui](https://img.shields.io/badge/UI-shadcn/ui-black)](https://ui.shadcn.com/)
 
-**Claude Cowork 한국어 도메인 전문가 AI 마켓플레이스 — 27 plugins · 173 skills · MIT**
+**Claude Cowork 한국어 도메인 전문가 AI 마켓플레이스 — 29 plugins · 177 skills · NC-ND v1.0**
 
-자연어 한 줄로 **사업계획서·계약서 검토·세금 계산·PPT·NotebookLM 슬라이드·Claude Design 보조·Higgsfield 이미지·영상·음성 더빙·BI 보고서·HTML 리포트·쿠팡 광고·메타 광고 분석·한국 출판사 제출 원고·한국 공공데이터 조회**를 자동 생성합니다. 한국 B2B 환경(K-IFRS·국세청·근로기준법·식약처·국토부·KRX·인터넷등기소·KPIPA)에 특화된 27개 독립 플러그인과 173개 도메인 스킬이 업무를 대신하며, 모든 텍스트 산출물은 [`ai-slop-reviewer`](./moai-core/skills/ai-slop-reviewer/)가 AI 패턴을 검수하여 자연스럽게 다듬어 드립니다.
+자연어 한 줄로 **사업계획서·계약서 검토·세금 계산·PPT·NotebookLM 슬라이드·Claude Design 보조·Higgsfield 이미지·영상·음성 더빙·BI 보고서·HTML 리포트·쿠팡 광고·메타 광고 분석·한국 출판사 제출 원고·한국 공공데이터 조회·X 데이터 워크플로우**를 자동 생성합니다. 한국 B2B 환경(K-IFRS·국세청·근로기준법·식약처·국토부·KRX·인터넷등기소·KPIPA)에 특화된 29개 독립 플러그인과 177개 도메인 스킬이 업무를 대신하며, 모든 텍스트 산출물은 [`ai-slop-reviewer`](./moai-core/skills/ai-slop-reviewer/)가 AI 패턴을 검수하여 자연스럽게 다듬어 드립니다.
 
-> *Korean B2B specialty plugin marketplace for [Anthropic Claude Code (Cowork)](https://claude.ai/cowork) — 27 plugins · 173 skills. Korean fonts (Pretendard / Noto Serif KR / Chosunilbo Myungjo / KoPubWorld), Korean text humanizer (humanize-korean), AI-slop reviewer for every deliverable. Higgsfield MCP image/video (22 official models), Claude Design helper. K-IFRS, NTS, KRX, MFDS, MOLIT, IROS, KPIPA specialty skills. MIT licensed.*
+> *Korean B2B specialty plugin marketplace for [Anthropic Claude Code (Cowork)](https://claude.ai/cowork) — 29 plugins · 177 skills. Korean fonts (Pretendard / Noto Serif KR / Chosunilbo Myungjo / KoPubWorld), Korean text humanizer (humanize-korean), AI-slop reviewer for every deliverable. Higgsfield MCP image/video (22 official models), Claude Design helper, X data workflow setup. K-IFRS, NTS, KRX, MFDS, MOLIT, IROS, KPIPA specialty skills. Non-Commercial No-Derivatives (NC-ND) licensed.*
 
 **🚀 빠른 설치**: Claude Cowork → 사용자 지정 → 개인 플러그인 + → **마켓플레이스 추가** → URL `modu-ai/cowork-plugins` 입력 → 동기화 → `moai-core` 먼저 설치
 
@@ -31,9 +31,20 @@
 | 🎨 **AI 미디어** | `gpt-image-2-prompt` · `gemini-3-image-prompt` · `midjourney-v8-prompt` · `audio-gen` | 3대 모델 공식 가이드 프롬프트 텍스트 빌더 + ElevenLabs 32개 언어 더빙·BGM·효과음 |
 | 📑 **문서·이커머스·BI** | `hwpx-writer` · `pdf-writer` · `detail-page-copy` · `executive-summary` · `weekly-report` | HWPX(한글) · 한·중·일·영 PDF · 13섹션 상세페이지 · 경영진 1pager · WBR 주간보고 |
 
-> 27개 플러그인 전체 카탈로그와 카테고리 비교는 [플러그인 카탈로그](#플러그인-카탈로그)와 [플러그인 상세 소개](#플러그인-상세-소개)를 참조하세요.
+> 29개 플러그인 전체 카탈로그와 카테고리 비교는 [플러그인 카탈로그](#플러그인-카탈로그)와 [플러그인 상세 소개](#플러그인-상세-소개)를 참조하세요.
 
 ---
+
+**🆕 v2.20.0 하이라이트** (2026-06-16) — **"학습자 전용 moai-tutor 신규 — context7+웹검색 병렬 리서치 → mermaid·차트 HTML 학습자료"**
+
+27 → **28 플러그인**, 173 → **176 스킬**, 동기화 2.20.0. 기능·인터페이스 Breaking change 없음. MINOR 릴리스. 가르치는 사람(moai-education)과 분리된 **배우는 사람(학습자·수강생)** 도메인을 신설했고, 저장소 라이선스를 **MIT → NC-ND 1.0**으로 전환했습니다.
+
+- **`moai-tutor` 신규 (3 스킬)** — `learning-project`(내 학습 프로젝트·로드맵·진도 추적 초기화) · `tutor-research`(질문→context7 공식문서+웹검색 **병렬** 조사·교차검증) · `learning-material`(도식·차트·수식·코드가 조건부로 들어간 단일 HTML 학습자료 생성). claude code·cowork·영어 등 어떤 주제든 최신 정보로 스스로 학습.
+- **context7 MCP 번들** — `moai-tutor/.mcp.json`에 context7을 번들해 설치 시 라이브러리·SDK 공식 문서 조회가 함께 활성화(별도 API 키 불필요).
+- **2026 CDN 라이브러리 스택 큐레이션** — learning-material 렌더러는 Mermaid v11·Apache ECharts v5·highlight.js v11·KaTeX v0.16·AOS v2를 **조건부 로딩**(콘텐츠가 쓸 때만 주입, 순수 텍스트는 JS 0). `moai-content:html-report`의 0-JS 원칙은 보존.
+- **라이선스 MIT → NC-ND 1.0 전환 + humanize-korean 자체 재생성** — 저장소를 비상업·변경금지(NC-ND) 1.0으로 전환(종전 MIT 릴리스는 `LICENSE.MIT`로 보존, 제3자 구성요소는 `NOTICE.md` 격리). `moai-content:humanize-korean`의 MIT 차용 의존을 100% 제거하고 한국 번역학계 8유형 번역투 계보 기반 자체 저작으로 재생성 — 검증된 구조(10대 카테고리·CLI·등급 로직) 보존, 기능 동등(28 테스트 PASS).
+
+기존 워크플로우·플러그인 그대로 동작. `/plugin marketplace update cowork-plugins`로 적용.
 
 **🆕 v2.19.0 하이라이트** (2026-06-15) — **"humanize-korean v2.0.0 포팅 + Cowork-safe 플러그인 코디네이터 31종 재도입"**
 
@@ -455,19 +466,21 @@ moai-commerce에 시장조사·JTBD·페르소나·상품명·채널 메시지·
 | [moai-wealth](./moai-wealth/) | 개인 재무·재테크 — 재테크 로드맵·가계부/소비관리·투자 입문·보험 설계·근로자 연말정산 절세·경제지표 읽기 | 6 |
 | [moai-productivity](./moai-productivity/) | 자기관리·생산성 — 회고(KPT·연간)·목표관리(12주·만다라트·OKR)·시간관리·습관/루틴·자기돌봄·노션 템플릿·주간보고 | 7 |
 | [moai-comms](./moai-comms/) | 직장 커뮤니케이션 — 보고·설명의 기술·회의 진행·피드백 주고받기·갈등 대응·1:1 면담/협상 | 5 |
+| [moai-tutor](./moai-tutor/) | 학습자·수강생 전용 개인 AI 튜터 — 학습 프로젝트 초기화·로드맵·진도 추적, context7+웹검색 병렬 리서치, mermaid·차트·코드가 들어간 HTML 학습자료 자동 생성 🆕 | 3 |
+| [moai-xquik](./moai-xquik/) | Xquik 원격 MCP 설정 — X 데이터 검색, 프로필 조회, 추출, 모니터링, 웹훅, 게시 워크플로우 연결·검증 | 1 |
 
 ## 총 산출물
 
 | 항목 | 수량 | 비고 |
 |------|:----:|------|
-| 플러그인 | **27** | moai-core + 26 도메인 플러그인 (moai-public-data 포함) |
-| 스킬 | **173** | 전 SKILL.md `version: 2.19.0` 동기화 (Cowork 자동 업데이트 지원) |
+| 플러그인 | **29** | moai-core + 28 도메인 플러그인 (moai-public-data·moai-tutor·moai-xquik 포함) |
+| 스킬 | **177** | 176개 기존 스킬은 `version: 2.20.0` 동기화, moai-xquik 1개 스킬 추가 |
 | 코디네이터 서브에이전트 | **31** | 플러그인 번들 `agents/` — 24 플러그인, Cowork-safe(Bash·WebFetch 배제), 텍스트 체인 ai-slop→humanize 마감 |
 | 레퍼런스 파일 | **287** | 각 스킬의 `references/` 안 상세 가이드 |
 | 스크립트 | **13** | helper(`scripts/`) — Python·Node·Shell |
 | 템플릿 | **1** | CLAUDE.md.tmpl 외 |
-| MCP 서버 | **9** | 플러그인 번들: dart(business), korean-law(legal), post-bridge·typefully·wordpress(content), elevenlabs·higgsfield(media), **meta-ads·moai-ads-audit(marketing)** |
-| 도메인 | 26 | business/marketing/legal/finance/public-data/hr/content/operations/education/lifestyle/product/support/office/career/data/research/media/commerce/bi/pm/sales/book/design/wealth/productivity/comms + core |
+| MCP 서버 | **10** | 플러그인 번들: dart(business), korean-law(legal), post-bridge·typefully·wordpress(content), elevenlabs·higgsfield(media), meta-ads·moai-ads-audit(marketing), **context7(tutor)** |
+| 도메인 | 28 | business/marketing/legal/finance/public-data/hr/content/operations/education/lifestyle/product/support/office/career/data/research/media/commerce/bi/pm/sales/book/design/wealth/productivity/comms/tutor/xquik + core |
 
 ## 설치 방법
 
@@ -838,6 +851,26 @@ K-IFRS·KOSIS·DART 친화적 한국 통계 환경에서 5분 안에 의사결�
 
 한국 B2B SaaS·중소기업 영업 환경에 특화. 견적서·콜드메일·후속 시퀀스는 차기 minor에서 추가 예정.
 
+---
+
+### moai-tutor — 학습자 개인 AI 튜터
+
+| 스킬 | 한글명 | 기능 |
+|------|--------|------|
+| learning-project | 학습 프로젝트 | 학습 목표·수준 진단, 단계별 로드맵(Bloom 6단계), 진도 추적·학습 전용 CLAUDE.md 스캐폴딩 |
+| tutor-research | 튜터 리서치 | 질문→context7(공식 문서)+웹검색(최신 정보) 병렬 조사·교차검증, 출처 검증 종합본 생성 |
+| learning-material | 학습자료 렌더러 | 학습목표·핵심개념·도식·예제·복습 구조의 단일 HTML. mermaid·ECharts·KaTeX·highlight.js·AOS 조건부 로딩 |
+
+가르치는 사람(moai-education)과 분리된 **배우는 사람(학습자·수강생)** 전용. context7 MCP를 번들(`.mcp.json`)해 설치 시 라이브러리·SDK 공식 문서 조회가 함께 활성화됩니다. learning-material은 `moai-content:html-report`의 디자인 토큰을 공유하되 0-JS 원칙은 건드리지 않는 별도 렌더러입니다(CDN 라이브러리 스택은 `references/cdn-libraries.md` SSOT).
+
+### moai-xquik — Xquik MCP 설정
+
+| 스킬 | 한글명 | 기능 |
+|------|--------|------|
+| xquik-mcp-setup | Xquik MCP 셋업 | Xquik 원격 MCP URL, 클라이언트 비밀값 보관, Bearer 인증, 401 검증, 오류 처리를 안내 |
+
+X 데이터 검색, 프로필 조회, 추출, 모니터링, 웹훅, 게시 워크플로우를 Cowork 프로젝트에서 다룰 때 사용합니다. API 키 원문은 채팅이나 문서에 붙여넣지 않고, 클라이언트 비밀값 저장소나 환경변수에만 보관하도록 안내합니다.
+
 ## 스킬 간 공유 기능
 
 각 스킬의 references에 전문 기능이 포함되어 있으며, CLAUDE.md 생성 시 순차/병렬 실행 지시가 자동으로 작성됩니다.
@@ -974,7 +1007,7 @@ Claude Cowork에서 **마켓플레이스 추가 → URL `modu-ai/cowork-plugins`
 
 ### 텍스트 산출물 품질은 어떻게 보장하나요?
 
-**모든 텍스트 산출 워크플로우의 마지막 단계**에 `moai-core:ai-slop-reviewer`를 자동 호출하여 AI 패턴(금지어, 획일적 문장 길이, AI식 도입/결말, 수동태 남용)을 검수·수정합니다. 한국어 산출물은 추가로 **`moai-content:humanize-korean`**(10대 카테고리 × 40+ AI 티 패턴 SSOT, [`epoko77-ai/im-not-ai`](https://github.com/epoko77-ai/im-not-ai) MIT 기반)을 체이닝해 정밀 윤문합니다.
+**모든 텍스트 산출 워크플로우의 마지막 단계**에 `moai-core:ai-slop-reviewer`를 자동 호출하여 AI 패턴(금지어, 획일적 문장 길이, AI식 도입/결말, 수동태 남용)을 검수·수정합니다. 한국어 산출물은 추가로 **`moai-content:humanize-korean`**(한국 번역학계 8유형 번역투 계보 기반 10대 카테고리 × 40+ AI 티 패턴 SSOT)을 체이닝해 정밀 윤문합니다.
 
 ### 이 프로젝트는 Anthropic 공식인가요?
 
@@ -995,4 +1028,12 @@ Claude Cowork에서 **마켓플레이스 추가 → URL `modu-ai/cowork-plugins`
 
 ## 라이선스
 
-[MIT](LICENSE)
+본 저장소는 **MoAI Cowork Plugins 라이선스 — 비상업·변경금지(NC-ND) v1.0**([LICENSE](LICENSE))으로 배포됩니다.
+
+- **비상업 이용만 허용** — 판매·유료 서비스·도서·강의·유료 강좌 등 상업적 이용 금지
+- **변경 금지** — 수정·2차적저작물 작성·재배포 금지(원형 그대로의 비상업 재배포만 허용)
+- **출처 표시 의무** — 저작권·라이선스·NOTICE 고지 보존 필수(도용 금지)
+
+일부 제3자 구성요소는 각자의 라이선스(Apache 2.0 / MIT / SIL OFL 1.1)가 적용되며, 자세한 내용은 [NOTICE.md](NOTICE.md)를 참조하십시오. 종전 MIT 라이선스로 배포된 릴리스는 해당 릴리스에 한하여 [LICENSE.MIT](LICENSE.MIT)로 계속 제공됩니다.
+
+> 상업적 라이선스 문의: email@mo.ai.kr

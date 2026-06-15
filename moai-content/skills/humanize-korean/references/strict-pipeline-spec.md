@@ -1,120 +1,96 @@
-# Strict 파이프라인 명세 (보존용)
+# 정밀 모드 설계 노트 (향후 확장용)
 
-이 문서는 `epoko77-ai/im-not-ai` v1.6.1 원본의 **Strict 모드 에이전트 파이프라인**(원본 정의 에이전트 7종 — 아래 로스터 참조) 명세를 cowork 환경에 보존한 것입니다. 현재 `humanize-korean` 스킬은 **Fast 모드 단일 콜**만 구현하며, 이 문서는 향후 별도 워크플로(독립 플러그인 또는 Agent Teams 모드)로 정밀 검증 파이프라인을 확장할 때 참조용입니다.
+이 문서는 `humanize-korean` 스킬의 **향후 정밀 검증 모드** 설계 메모다. 현재 스킬은 한 콜에서 탐지·윤문·자체검증을 끝내는 **단일 콜 모드**만 구현한다. 정밀 모드는 아직 구현 대상이 아니며, 별도 워크플로(독립 플러그인 또는 Agent Teams 모드)로 다중 패스 검증을 확장할 가능성을 정리한 자체 저작 설계 스케치다.
 
-## 적용 시점
+## 1. 정밀 모드를 고려할 시점
 
-- 입력 8,000자 초과 장문
-- Fast 모드 결과가 등급 C·D로 판정된 경우
-- 사용자가 `--strict`·"정밀 모드"·"strict 파이프라인"을 명시한 경우
-- 내용 훼손 위험이 큰 텍스트(법무·의료·재무 등 정확성 요구 도메인)
+단일 콜 모드의 등급 판정(`quick-rules.md` 참조)이 다음에 해당하면 더 엄격한 검증을 권할 수 있다:
 
-## 7인 에이전트 (원본 정의)
+- 입력 8,000자 초과 장문 — 한 콜 안에서 전 구간을 일관되게 다루기 어려운 분량
+- 단일 콜 결과가 등급 C·D로 판정된 경우 — 잔존 S1 패턴 또는 과윤문 신호가 남음
+- 사용자가 명시적으로 정밀 검증을 요청한 경우
+- 정확성이 특히 중요한 도메인(법무·의료·재무 등) — 의미 훼손 위험이 큰 텍스트
 
-| 에이전트 | 모드 | 역할 |
-|---|---|---|
-| `humanize-monolith` | Fast 디폴트 | 단일 호출 윤문(탐지·윤문·자체검증 일괄, 도구 호출 4-5회 캡) |
-| `ai-tell-detector` | Strict | span 단위 JSON 탐지 리포트 생성 |
-| `korean-style-rewriter` | Strict | finding 기반 수술적 윤문, 변경률 모니터링 |
-| `content-fidelity-auditor` | Strict | 의미 동등성 감사(13항), 훼손 시 롤백 지시 |
-| `naturalness-reviewer` | Strict | 잔존 AI 티 · 과윤문 · 자연도 판정, 품질 등급 A-D |
-| `korean-ai-tell-taxonomist` | 별도 명령 | 분류 체계(SSOT) 관리, 신규 패턴 심사 승격 |
-| `humanize-web-architect` | 옵션 | Next.js 15 + Vercel 웹 서비스 확장 설계 |
+## 2. 다중 패스 개념
 
-cowork 통합 시 위 에이전트 정의는 가져오지 않았습니다(현재 스킬은 단일 콜 Fast 모드만 사용). 원본 정의는 [im-not-ai/.claude/agents/](https://github.com/epoko77-ai/im-not-ai/tree/main/.claude/agents) 참조.
-
-## 데이터 흐름 (Strict)
+정밀 모드의 핵심 아이디어는 단일 콜이 한 번에 처리하는 **탐지 → 윤문 → 검증**을 분리된 패스로 풀어, 각 패스가 직전 패스의 산출물을 입력으로 받아 독립적으로 점검하는 것이다. 개념적 흐름은 다음 세 패스로 정리한다.
 
 ```
-01_input.txt
-    ↓ [ai-tell-detector]
-02_detection.json
-    ↓ [korean-style-rewriter]
-03_rewrite.md + 03_rewrite_diff.json
-    ↓ [병렬 검증 팀]
-    ├→ [content-fidelity-auditor] → 04_fidelity_audit.json
-    └→ [naturalness-reviewer]      → 05_naturalness_review.json
-    ↓ [오케스트레이터 종합 분기]
-    ├→ accept              → final.md + summary.md
-    ├→ rewrite_round_2     → Phase B로 복귀(target finding)
-    ├→ rollback_and_rewrite → 문제 edit 롤백 후 재윤문
-    └→ hold_and_report     → 사람 검토 권고
+원문
+  ↓ [탐지 패스]   분류 체계(ai-tell-taxonomy.md) 기준으로 AI 티 구간을 span 단위로 표시
+탐지 리포트
+  ↓ [윤문 패스]   탐지된 span만 수술적으로 고치고 변경률을 기록
+윤문본 + 변경 이력
+  ↓ [검증 패스]   의미 동등성 + 잔존 패턴 + 과윤문 여부를 점검
+  ├─ 통과        → 최종본 + 요약
+  ├─ 부분 재윤문  → 문제 span만 다시 윤문 패스로
+  └─ 보류·보고    → 사람 검토 권고
 ```
 
-최대 3회 재윤문 후에도 미해결이면 `hold_and_report`로 사람 개입.
+단일 콜 모드는 위 세 패스를 한 번의 추론으로 압축한다. 정밀 모드는 같은 흐름을 분리해 각 패스를 독립 점검할 수 있게 만드는 것이 차이다. 재윤문은 최대 3회로 제한하고, 그 후에도 미해결이면 사람 개입을 권고한다.
 
-## Phase 별 산출물
+## 3. 검증 패스의 두 축
 
-| 파일 | 내용 |
-|---|---|
-| `01_input.txt` | 원문 그대로 |
-| `02_detection.json` | AI 티 탐지 리포트(위치·종류·심각도) |
-| `03_rewrite.md` | 윤문본 |
-| `03_rewrite_diff.json` | 윤문 전후 diff(Edit 이력) |
-| `03_rewrite_v2.md`, `v3.md` | 2차·3차 윤문본(루프 진입 시) |
-| `04_fidelity_audit.json` | 의미 동등성 감사 결과(13항 체크리스트) |
-| `05_naturalness_review.json` | 자연도 재측정 결과(잔존·과윤문 판정) |
-| `final.md` + `summary.md` | 최종 윤문본 + 점수·주요 변경·등급 요약 |
+검증 패스는 두 가지를 따로 본다.
 
-## 종합 판정 매트릭스
+### 3.1 의미 동등성 (내용 불변 점검)
 
-| fidelity | naturalness | 종합 | 후속 |
-|---|---|---|---|
-| full_pass | accept / accept_with_note | **최종 승인** | Phase D로 |
-| full_pass | rewrite_round_2 | **2차 윤문** | Phase B 재호출(target finding) |
-| full_pass | rollback_and_rewrite | **롤백 후 재윤문** | 윤문가에 edit 롤백 지시 |
-| conditional_pass | - | **롤백된 edit만 재시도** | Phase B 재호출 |
-| fail | - | **전면 재작업** | Phase B 전면 재호출 |
+윤문 전후가 같은 내용을 말하는지 확인한다. 핵심 점검 항목:
 
-## fidelity 13항 체크리스트 (content-fidelity-auditor)
+- 사실 명제와 수치·통계·비율이 그대로인가
+- 고유명사·기관명·인명·날짜가 한 글자도 바뀌지 않았는가
+- 직접 인용("" 안)이 원문 그대로인가
+- 인과 관계·논리 흐름·주장의 강도(단언 vs 추측)·부정/긍정이 보존됐는가
+- 원문에 없던 함의나 비유를 임의로 추가하지 않았는가
 
-1. 사실 명제 동등성
-2. 수치·통계·비율 일치
-3. 고유명사·기관명·인명 100% 보존
-4. 직접 인용 한 글자 보존
-5. 시간 표현(연도·날짜·시점) 일치
-6. 인과 관계·논리 흐름 동등
-7. 주장의 강도(단언 vs 추측) 보존
-8. 부정·긍정 polarity 보존
-9. 조건절·전제 보존
-10. 주체-객체 관계 보존
-11. 비유·상징 의도 보존(원문에 있는 것만)
-12. 명시되지 않은 함의 추가 금지
-13. 장르 적합성(칼럼·리포트 register)
+한 항목이라도 위반이면 해당 윤문 edit을 롤백하고 그 구간만 다시 윤문한다.
 
-한 항목이라도 위반이면 해당 edit 롤백 지시 → 윤문가에 conditional_pass 신호.
+### 3.2 자연도 (AI 티 잔존·과윤문 점검)
 
-## naturalness 판정(naturalness-reviewer)
+윤문본이 충분히 사람 글다워졌는지, 동시에 과하게 고쳐 내용이 흔들리지 않았는지 본다. `quick-rules.md`의 등급 기준을 재사용한다:
 
-- **accept**: S1 잔존 0, S2 잔존 ≤2, 변경률 10-25%, 자연도 점수 70%+
-- **accept_with_note**: S1 잔존 0, S2 잔존 3-4 — 비치명적 잔존 메모만 첨부
-- **rewrite_round_2**: S1 잔존 1-2 또는 과윤문 시그널 1-2개 → 2차 윤문 진입
-- **rollback_and_rewrite**: 과윤문 시그널 3+ → 윤문가에 롤백 지시
+- **통과**: S1 잔존 0, S2 잔존 2 이하, 변경률 10-25%
+- **메모 첨부 통과**: S1 잔존 0, S2 잔존 3-4 — 비치명적 잔존만 기록
+- **부분 재윤문**: S1 잔존 1-2 또는 과윤문 신호 1-2개 → 해당 span 재윤문
+- **롤백 후 재윤문**: 과윤문 신호 3개 이상 → 문제 edit 롤백
 
-## 향후 확장 시 cowork 적용 방안
+두 축의 결과를 종합해 최종 승인 / 부분 재윤문 / 보류·보고 중 하나로 분기한다.
 
-### 옵션 1: 독립 플러그인 (`moai-humanize`)
+## 4. cowork 적용 방안 (향후)
 
-7인 에이전트 + 1 skill + 2 commands를 캡슐화한 독립 플러그인. `.claude/agents/` 경로에 7개 에이전트 정의 배치, `commands/humanize.md`·`humanize-redo.md`로 슬래시 커맨드 노출.
+정밀 모드를 cowork 환경에서 구현한다면 세 가지 경로를 검토할 수 있다.
+
+### 옵션 1: 독립 플러그인
+
+탐지·윤문·검증 패스를 캡슐화한 별도 플러그인으로 분리하고, 슬래시 커맨드로 정밀 모드를 노출한다. 단일 콜 스킬과 독립적으로 버전을 관리할 수 있다.
 
 ### 옵션 2: Agent Teams 모드
 
-cowork v2.x의 Agent Teams 모드를 활용해 `humanize-review-team`을 동적 구성. 워크플로우:
-1. `TeamCreate` → 팀 생성(detector·rewriter·auditor·reviewer)
-2. 단계별 `Agent()` 호출(role_profile 사용)
-3. 병렬 검증은 implementer/reviewer 역할로 분산
-4. `TeamDelete` → 자원 해제
+cowork의 Agent Teams 모드를 활용해 검증 팀을 동적으로 구성한다. 흐름:
 
-### 옵션 3: 단일 스킬 시뮬레이션 (현재는 미구현)
+1. `TeamCreate`로 팀 생성
+2. 패스별로 `Agent()` 호출(role_profile 사용 — 탐지·윤문·검증 역할 분산)
+3. 검증 패스의 두 축(의미 동등성·자연도)을 병렬 reviewer 역할로 분산
+4. `TeamDelete`로 자원 해제
 
-이 스킬 본문에서 Phase A→B→C→D를 도구 호출로 시뮬레이션 가능합니다(SKILL.md 본문이 5배 길어지고 신뢰도가 단일 콜 대비 낮아져 현재는 채택하지 않음).
+### 옵션 3: 단일 스킬 내 시뮬레이션
 
-## 라이선스
+이 스킬 본문에서 세 패스를 도구 호출로 순차 시뮬레이션할 수도 있으나, 본문이 크게 길어지고 단일 콜 대비 신뢰도 이점이 분명하지 않아 현재는 채택하지 않는다.
 
-원본 명세는 [epoko77-ai/im-not-ai](https://github.com/epoko77-ai/im-not-ai) v1.6.1 (MIT License)에서 보존했습니다. 7인 에이전트 정의 본문은 가져오지 않았으며, 원문 출처를 그대로 참조하시기 바랍니다.
+## 5. 산출물 (정밀 모드 구현 시)
+
+정밀 모드가 다중 패스로 구현되면 패스별 중간 산출물을 다음과 같이 남길 수 있다.
+
+| 산출물 | 내용 |
+|---|---|
+| 원문 | 입력 그대로 |
+| 탐지 리포트 | AI 티 구간(위치·종류·심각도) |
+| 윤문본 + 변경 이력 | 윤문 결과와 edit별 diff |
+| 검증 결과 | 의미 동등성 + 자연도 판정, 등급 |
+| 최종본 + 요약 | 최종 윤문본 + 점수·주요 변경·등급 요약 |
 
 ---
 
-Version: 2.1.0 (cowork preservation)
-Original Source: epoko77-ai/im-not-ai v1.6.1, MIT License
-Last Updated: 2026-05-07
+Version: 3.0.0
+Status: 설계 노트 (미구현 — 향후 확장 검토용)
+Last Updated: 2026-06-16

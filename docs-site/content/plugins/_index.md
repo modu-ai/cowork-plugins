@@ -1,14 +1,14 @@
 ---
 title: "플러그인 카탈로그"
 weight: 1
-description: "modu-ai/cowork-plugins 마켓플레이스의 27개 플러그인·173개 스킬을 도메인별로 정리한 카탈로그입니다."
+description: "modu-ai/cowork-plugins 마켓플레이스의 28개 플러그인·176개 스킬을 도메인별로 정리한 카탈로그입니다."
 geekdocBreadcrumb: true
 geekdocCollapseSection: false
 ---
 
 # `cowork-plugins` 카탈로그
 
-[`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins)는 한국 업무 환경에 맞춰 설계된 **27개 플러그인 · 173개 스킬**의 커뮤니티 마켓플레이스입니다. 사업계획·IR·마케팅·법무·세무·HR·카드뉴스·PPT·이미지 프롬프트 빌더·이커머스 풀스택·메타 광고 운영·NotebookLM 슬라이드·한국 출판사 제출 원고·Claude Design 보조 풀스택·개인 재무·자기관리·직장 커뮤니케이션·**한국 공공·시세 데이터 조회**까지 도메인별로 묶여 있습니다.
+[`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins)는 한국 업무 환경에 맞춰 설계된 **28개 플러그인 · 176개 스킬**의 커뮤니티 마켓플레이스입니다. 사업계획·IR·마케팅·법무·세무·HR·카드뉴스·PPT·이미지 프롬프트 빌더·이커머스 풀스택·메타 광고 운영·NotebookLM 슬라이드·한국 출판사 제출 원고·Claude Design 보조 풀스택·개인 재무·자기관리·직장 커뮤니케이션·**한국 공공·시세 데이터 조회**까지 도메인별로 묶여 있습니다.
 
 ```mermaid
 flowchart TD
@@ -66,7 +66,9 @@ flowchart TD
 ```
 
 {{< hint type="note" >}}
-**v2.19.0 업데이트 (최신)**: **humanize-korean v2.0.0 포팅 + Cowork-safe 코디네이터 31종 재도입** — `moai-content:humanize-korean`을 upstream epoko77-ai/im-not-ai v2.0.0으로 정렬(번역투 8유형 계보 + 신규 패턴 A-16·A-18·A-19·E-7 + post-editese 14메트릭). Cowork-safe 코디네이터 31개(24 플러그인, Bash·WebFetch 배제)를 실측 근거로 선별 재도입. v2.18.0 `/project` Agent Synthesis와 공존. **27 플러그인 · 173 스킬 유지 · 기능적 비파괴 · Breaking change 없음**.
+**v2.20.0 업데이트 (최신)**: **학습자 전용 moai-tutor 플러그인 신규 (3 스킬)** — 가르치는 사람(moai-education)과 분리된 **배우는 사람(학습자·수강생)** 도메인. `learning-project`(학습 프로젝트·로드맵·진도) · `tutor-research`(context7 공식 문서 + 웹검색 **병렬** 조사·교차검증) · `learning-material`(도식·차트·수식·코드가 조건부로 들어간 단일 HTML 학습자료). context7 MCP 번들 + 2026 CDN 라이브러리 스택(Mermaid·ECharts·highlight.js·KaTeX·AOS) 큐레이션. **27 → 28 플러그인 · 173 → 176 스킬 · 기능적 비파괴 · Breaking change 없음**.
+
+**v2.19.0**: **humanize-korean v2.0.0 포팅 + Cowork-safe 코디네이터 31종 재도입** — `moai-content:humanize-korean`을 upstream epoko77-ai/im-not-ai v2.0.0으로 정렬(번역투 8유형 계보 + 신규 패턴 A-16·A-18·A-19·E-7 + post-editese 14메트릭). Cowork-safe 코디네이터 31개(24 플러그인, Bash·WebFetch 배제)를 실측 근거로 선별 재도입. v2.18.0 `/project` Agent Synthesis와 공존. **27 플러그인 · 173 스킬 유지 · 기능적 비파괴 · Breaking change 없음**.
 
 **v2.18.0**: **Cowork 에이전트 모델 전환** — v2.17.0이 도입한 플러그인 번들 코디네이터 sub-agent 14개를 전면 제거하고, **`/project`가 사용자 프로젝트에 맞춤 sub-agent를 직접 생성**하는 Agent Synthesis(Phase 3.5) 모델로 일원화했습니다. 프로젝트 에이전트는 고정 다단계·병렬 fan-out·빈번 반복 워크플로우에 한해 `.claude/agents/`에 생성되며, 플러그인 번들보다 우선순위가 높고 Cowork가 자동 로드하며 새 세션에서 활성화됩니다. moai-core:project 스킬 현대화(27 플러그인/173 스킬 정합 · Phase 2 화이트리스트 동적 도출 · bare `/project` 기본 동작) · moai-office 5 SKILL.md의 삭제된 doc-qa 참조 정정. **27 플러그인 · 173 스킬 유지 · 기능적 비파괴 · Breaking change 없음**.
 
@@ -152,7 +154,11 @@ flowchart TD
 
 - [`moai-design`](./moai-design/) **NEW v2.12** — [claude.ai/design](https://claude.ai/design) 사용을 받쳐 주는 풀스택 5 스킬. 브리프 작성·디자인 시스템 자산 합성·시니어 UX 프롬프트·Claude Code 핸드오프 분석·AI 슬롭 검수
 
-## 한 눈에 보는 스킬 수 (v2.19.0)
+### 학습 (학습자 전용)
+
+- [`moai-tutor`](./moai-tutor/) **NEW v2.20** — 학습자·수강생 전용 개인 AI 튜터. 학습 프로젝트 초기화·로드맵·진도 추적 + context7+웹검색 병렬 리서치 + mermaid 도식·차트·수식·코드가 들어간 단일 HTML 학습자료 생성. moai-education(강사용)과 분리된 배우는 사람 도메인
+
+## 한 눈에 보는 스킬 수 (v2.20.0)
 
 "대표 스킬 (일부)"는 각 플러그인에서 가장 자주 호출되는 스킬을 발췌한 것입니다. 전체 스킬 목록은 플러그인 이름을 클릭해 상세 페이지에서 확인하세요.
 
@@ -185,8 +191,9 @@ flowchart TD
 | [moai-productivity](./moai-productivity/) | 7 | goal-planner, retro-builder, time-system, habit-routine, self-care, notion-template-kit, weekly-report |
 | [moai-comms](./moai-comms/) | 5 | report-speak, meeting-facilitator, feedback-loop, conflict-handler, negotiation-1on1 |
 | [moai-public-data](./moai-public-data/) | 4 | korean-stock-search, court-auction-search, real-estate-search, public-data |
+| [moai-tutor](./moai-tutor/) | 3 | learning-project, tutor-research, learning-material |
 
-전체 **173개 스킬 · 27개 플러그인** (v2.19.0 기준).
+전체 **176개 스킬 · 28개 플러그인** (v2.20.0 기준).
 
 ## 다음 단계
 
@@ -201,4 +208,4 @@ flowchart TD
 
 - [modu-ai/cowork-plugins](https://github.com/modu-ai/cowork-plugins)
 - [cowork-plugins README](https://raw.githubusercontent.com/modu-ai/cowork-plugins/main/README.md)
-- [v2.19.0 릴리스 (최신)](../releases/v2.19/) · [v2.18.0 릴리스](../releases/v2.18/) · [v2.17.0 릴리스](../releases/v2.17/) · [v2.16.0 릴리스](../releases/v2.16/)
+- [v2.20.0 릴리스 (최신)](../releases/v2.20/) · [v2.19.0 릴리스](../releases/v2.19/) · [v2.18.0 릴리스](../releases/v2.18/) · [v2.17.0 릴리스](../releases/v2.17/)

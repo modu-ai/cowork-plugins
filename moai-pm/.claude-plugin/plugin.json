@@ -1,6 +1,6 @@
 {
   "name": "moai-pm",
-  "version": "2.19.0",
+  "version": "2.20.0",
   "description": "한국 팀 주간업무보고(WBR) 작성 자동화. 격식체/구어체 톤 스위치 지원",
   "author": {
     "name": "모두의AI"
@@ -8,5 +8,5 @@
   "keywords": [
     "PM", "주간보고", "WBR", "weekly-report", "주간업무보고", "한국주간보고", "project-management"
   ],
-  "license": "MIT"
+  "license": "LicenseRef-MoAI-NC-ND-1.0"
 }

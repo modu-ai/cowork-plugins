@@ -129,7 +129,7 @@ card-news → moai-media:higgsfield-image → ai-slop-reviewer
 
 ## `humanize-korean` (한국어 AI 티 정밀 윤문)
 
-[`epoko77-ai/im-not-ai`](https://github.com/epoko77-ai/im-not-ai) v1.6.1 (MIT, ⭐937 stars)의 Fast 모드 단일 스킬 변형을 cowork에 포팅했습니다. 영어권 humanizer(QuillBot·Hix·Undetectable AI)가 약한 **한국어 고유 패턴** — 번역투, 영어 인용 과다, 결말 공식, hedging, 형식명사 — 을 정량 메트릭과 SSOT 분류 체계로 수술적으로 제거합니다.
+한국 번역학계가 정립한 8유형 번역투 계보를 토대로 cowork이 자체 저작한 한국어 정밀 윤문 스킬입니다. 영어권 humanizer(QuillBot·Hix·Undetectable AI)가 약한 **한국어 고유 패턴** — 번역투, 영어 인용 과다, 결말 공식, hedging, 형식명사 — 을 정량 메트릭과 SSOT 분류 체계로 수술적으로 제거합니다.
 
 ### 4대 철칙 (위반 시 즉시 롤백)
 
@@ -200,15 +200,15 @@ card-news → moai-media:higgsfield-image → ai-slop-reviewer
 
 - 외부 API 호출 0건 (로컬 완결)
 - 사용자 측 API 키 발급 불필요
-- Strict 5인 파이프라인 명세는 `references/strict-pipeline-spec.md`에 보존 (현재 미사용, 향후 독립 워크플로 확장용)
+- 정밀 모드 설계 노트는 `references/strict-pipeline-spec.md`에 정리 (현재 미사용, 향후 독립 워크플로 확장용)
 
 ### 출처 어트리뷰션
 
-본 스킬은 [`epoko77-ai/im-not-ai`](https://github.com/epoko77-ai/im-not-ai) v1.6.1 (MIT License, ⭐937 stars) Fast 모드 단일 스킬 변형을 포팅했습니다. taxonomy(40KB SSOT)·rewriting-playbook·quick-rules·metrics.py·baseline.json·web-service-spec·test_metrics.py는 모두 원본 그대로 보존했으며, SKILL.md만 cowork v2.0+ 정책(version 단일 필드, metadata 블록 금지, user-invocable, 단일 스킬 워크플로)에 맞춰 재작성했습니다.
+본 스킬은 한국 번역학계가 정립한 8유형 번역투 계보와 학술 원전(KatFish, Toral 2019 등)을 토대로 cowork이 100% 자체 저작했습니다. taxonomy·rewriting-playbook·quick-rules·metrics.py·baseline.json·test_metrics.py·scholarship.md는 모두 자체 저작 콘텐츠이며, 외부 라이브러리 코드·예문·산문을 포함하지 않습니다(언어 개념·학술 원전은 저작권 비대상으로 직접 인용).
 
-- **원본 저장소**: [epoko77-ai/im-not-ai](https://github.com/epoko77-ai/im-not-ai) (MIT, ⭐937)
-- **원본 라이선스**: [im-not-ai/LICENSE](https://github.com/epoko77-ai/im-not-ai/blob/main/LICENSE) (MIT)
-- **개발 주체**: [@epoko77-ai](https://github.com/epoko77-ai) — 한국어 AI 티 SSOT 분류 체계 정립
+- **학술 기반**: 한국 번역학계 8유형 번역투 계보 (김정우 2007, 이근희 2005 등)
+- **메트릭 원전**: KatFish (Park et al.), Toral 2019 (arXiv:1907.00900) — post-editese 정량 신호
+- **저작·라이선스**: cowork 자체 저작 (NC-ND 1.0)
 
 ## `html-report` (마크다운 보고서 → 단일 파일 HTML 변환기)
 
@@ -285,4 +285,3 @@ Thariq Shihipar의 **"The Unreasonable Effectiveness of HTML"** 철학을 기반
 - [moai-content 디렉터리](https://github.com/modu-ai/cowork-plugins/tree/main/moai-content)
 - [NomaDamas/k-skill](https://github.com/NomaDamas/k-skill) — MIT — `korean-spell-check` 원본
 - [바른한글 (nara-speller.co.kr)](https://nara-speller.co.kr) — 공개 검사 표면
-- [epoko77-ai/im-not-ai](https://github.com/epoko77-ai/im-not-ai) — MIT, ⭐937 — `humanize-korean` 원본

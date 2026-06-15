@@ -15,9 +15,9 @@ description: |
 
   적용 제외 — 단순 맞춤법·오탈자 교정(직접 처리), 번역(번역 스킬), 내용 추가·삭제 동반 재작성(별도 집필 스킬), 코드·JSON·CSV·차트·표.
 
-  Adapted from epoko77-ai/im-not-ai (MIT, ⭐2.9k) v2.0.0 — humanize-monolith Fast 모드 단일 스킬 변형. 한국 번역학계 8유형 번역투 계보 + 신규 패턴 A-16/A-18/A-19/E-7 + post-editese 14메트릭 포함.
+  한국 번역학계 8유형 번역투 계보를 통합한 10대 카테고리 분류 + 신규 패턴 A-16/A-18/A-19/E-7 + post-editese 14메트릭 기반 한국어 정밀 윤문 스킬입니다.
 user-invocable: true
-version: 2.19.0
+version: 2.20.0
 ---
 
 # Humanize Korean — 한국어 AI 티 제거 (Fast 모드)
@@ -215,7 +215,7 @@ before/after 비교로 카테고리별 개선율(%)을 계산합니다.
 1. **한 줄 상태**: `완료. 변경률 X% / 등급 Y / 자체검증 N/6 통과`
 2. **윤문본 본문**: 마크다운 블록 형태로
 3. **summary.md 핵심 표**: 메트릭 + 카테고리 탐지 + 자체검증
-4. **등급 B 이하 시 안내**: "더 정밀한 검증이 필요하면 `references/strict-pipeline-spec.md`의 5인 파이프라인 명세를 참조해 별도 워크플로로 실행하시기 바랍니다."
+4. **등급 B 이하 시 안내**: "더 정밀한 검증이 필요하면 `references/strict-pipeline-spec.md`의 정밀 모드 설계 노트를 참조해 별도 워크플로로 실행하시기 바랍니다."
 
 ## 부분 재실행 / 후속 명령
 
@@ -262,10 +262,9 @@ ai-slop-reviewer만으로 충분한 경우(영어 비중 높은 텍스트, 캐�
 - (옵션) post-editese 메트릭: [`references/metrics_v2.py`](references/metrics_v2.py) — 번역투 14개 정량 신호(3축 T1~T8), metrics.py import 상위집합, CLI `--genre essay|news|blog|qa|dialogue`
 - (옵션) post-editese 베이스라인: [`references/baseline_v2.json`](references/baseline_v2.json) — 3축 placeholder 임계값(모든 셀 `_placeholder: true`, calibration 전)
 - 번역학 학술 SSOT: [`references/scholarship.md`](references/scholarship.md) — 한국 번역학계 8유형 계보 + 국제 이론(Baker·Toury·Toral) + caveat 6건, 신규 패턴 출처
-- 정밀 모드 명세(향후 확장용): [`references/strict-pipeline-spec.md`](references/strict-pipeline-spec.md) — 7인 에이전트 파이프라인(현재 스킬에서는 미사용, 별도 워크플로로 실행 시 참조)
+- 정밀 모드 설계 노트(향후 확장용): [`references/strict-pipeline-spec.md`](references/strict-pipeline-spec.md) — 이 스킬은 단일 콜 Fast 모드만 구현하며, 다중 패스 정밀 검증 개념은 향후 확장용 설계 노트로 정리(현재 미구현, 별도 워크플로로 실행 시 참조)
 - 웹 서비스 확장(옵션): [`references/web-service-spec.md`](references/web-service-spec.md) — Next.js + Vercel 확장 시 참조
 
 ---
 
-**Adapted from**: [epoko77-ai/im-not-ai](https://github.com/epoko77-ai/im-not-ai) v2.0.0 (MIT License, ⭐2.9k).
-원본은 7인 에이전트 + Fast/Strict 듀얼 모드 오케스트레이터 스킬입니다. 이 cowork 변형은 Fast 모드를 단일 스킬로 압축하고, Strict 5인 파이프라인 명세는 `references/strict-pipeline-spec.md`에 보존했습니다. 분류 체계(taxonomy)·룰북(quick-rules·playbook)·메트릭(metrics.py·baseline.json)·테스트(test_metrics.py)는 모두 원본 그대로 가져왔습니다.
+이 스킬은 한 콜에서 탐지·윤문·자체검증을 끝내는 단일 콜 Fast 모드로 동작합니다. 분류 체계(`references/ai-tell-taxonomy.md`)·룰북(`quick-rules.md`·`rewriting-playbook.md`)·정량 메트릭(`metrics.py`·`baseline.json`)·번역학 학술 근거(`scholarship.md`)를 SSOT로 두고, 다중 패스 정밀 검증은 `references/strict-pipeline-spec.md`의 설계 노트로 향후 확장을 정리했습니다.

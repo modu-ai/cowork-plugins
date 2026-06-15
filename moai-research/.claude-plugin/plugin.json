@@ -1,10 +1,10 @@
 {
   "name": "moai-research",
-  "version": "2.19.0",
+  "version": "2.20.0",
   "description": "연구/특허 — 논문 검색, 학술 논문 작성, 특허 분석/출원, 연구비 신청",
   "author": {
     "name": "모두의AI"
   },
   "keywords": ["논문", "특허", "연구", "KIPRIS", "KCI", "RISS", "연구비", "출원", "학술"],
-  "license": "MIT"
+  "license": "LicenseRef-MoAI-NC-ND-1.0"
 }

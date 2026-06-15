@@ -4,7 +4,7 @@ description: |
   (별칭) media-production 스킬은 두 개의 스킬로 분리되었습니다.
   콘텐츠 발행 일정·캘린더는 moai-content:content-calendar 를, 유튜브·팟캐스트 에피소드 기획은 moai-content:youtube-podcast-planner 를 사용하세요.
 user-invocable: true
-version: 2.19.0
+version: 2.20.0
 ---
 
 # 미디어 프로덕션 (별칭 → 분리됨)

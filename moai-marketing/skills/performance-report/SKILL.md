@@ -13,7 +13,7 @@ description: |
   경영진 요약과 실무용 상세 분석, 예산 재배분 권고를 함께 만들고, 서술 부분은 moai-core:ai-slop-reviewer → moai-content:humanize-korean으로 다듬습니다.
   [책임 경계] vs moai-bi:executive-summary: 이 스킬=마케팅 풀 리포트(전체), 저 스킬=임원 1pager 요약(압축). 이 스킬 출력을 그대로 executive-summary에 넘겨 1pager로 만들 수 있습니다.
 user-invocable: true
-version: 2.19.0
+version: 2.20.0
 ---
 
 # 퍼포먼스 리포트 (Performance Report)

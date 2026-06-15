@@ -1,6 +1,6 @@
 {
   "name": "moai-education",
-  "version": "2.19.0",
+  "version": "2.20.0",
   "description": "강사·교수·교사 교육 콘텐츠 풀스택 — 커리큘럼 설계, 출제, 학술 리서치, 강의 운영 매뉴얼, 수강 후 후기 자산화",
   "author": {
     "name": "모두의AI"
@@ -8,5 +8,5 @@
   "keywords": [
     "교육", "연구", "강의", "논문", "커리큘럼", "에듀테크"
   ],
-  "license": "MIT"
+  "license": "LicenseRef-MoAI-NC-ND-1.0"
 }

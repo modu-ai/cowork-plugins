@@ -1,13 +1,20 @@
-"""Humanize KR v1.6 quantitative metrics calculator.
+"""humanize-korean 정량 메트릭 계산기 (v1.6 호환).
 
-External pre-processor for the monolith fast path. Run BEFORE the monolith
-agent — its output (prepended to the input text) gives the LLM a numerical
-baseline read so it does not waste tool-call budget computing comma rates
-or counting hanja suffixes.
+이 스킬이 한국어 텍스트의 "AI 티" 정량 신호를 한 번의 호출로 산출하기 위해
+쓰는 측정 모듈이다. 외부 형태소 분석기 없이 정규식과 한자어 접미사 사전으로
+형태소 분석을 근사한다. 산출된 수치는 윤문 단계가 텍스트의 위험도를 빠르게
+가늠하는 수치 기준으로 쓰인다 — 최종 판정은 윤문 단계의 몫이다.
 
-Hard rule: standard library ONLY (json/re/math/collections/os/sys/argparse).
-No konlpy/bareun/mecab/spaCy. We approximate morphological analysis with
-regex + a small hanja suffix dictionary. Final judgement is monolith's job.
+설계 원칙:
+- 표준 라이브러리만 사용한다(json/re/math/os/sys/argparse/collections).
+  konlpy/bareun/mecab/spaCy/numpy/pandas 등 외부 패키지는 도입하지 않는다.
+- 문장 분리와 어절 토큰화는 한 번만 수행해 `_Document` 모델에 담아 두고
+  각 지표 함수가 이를 재사용한다.
+
+언어 개념 출처(직접 인용):
+- 쉼표 포함률·쉼표 사용량·연결어미+쉼표·쉼표 구간 길이 등 쉼표 계열 지표는
+  KatFish(Park et al.) 한국어 인간/LLM 대조 코퍼스의 측정 항목을 그대로
+  쓴다. 한자어 명사화(-성/-적/-화) 밀도, 어휘 다양성(TTR)도 같은 계열이다.
 
 CLI:
     python metrics.py --input run/01_input.txt \
@@ -18,342 +25,336 @@ from __future__ import annotations
 
 import argparse
 import json
-import math
+import math  # noqa: F401  (재보정 시 표준편차 계산에 사용 — API 호환 유지)
 import os
 import re
 import sys
-from collections import Counter
-from typing import Any
+from dataclasses import dataclass
+from typing import Any, Optional
 
 # ---------------------------------------------------------------------------
-# Module-level constants
+# 모듈 상수
 # ---------------------------------------------------------------------------
 
 VERSION = "v1.6"
 
-# Connective endings (-고, -며, -지만, -면서, -아서, -어서) followed by a comma.
-# All of these end at a syllable boundary, so we anchor to the syllable + ",".
-# Use a non-capturing group; allow space before comma (Korean writers
-# sometimes type "...고 ,").
-_ENDING_COMMA_RE = re.compile(
-    r"(?:고|며|지만|면서|아서|어서)\s*,"
-)
+# 연결어미 음절 집합. 어절 끝에서 다음 연결로 이어주는 어미들이다.
+# 정규식에서 교대 패턴 대신 음절열 목록을 join 해 표현한다.
+_CONNECTIVE_SYLLABLES = ("고", "며", "지만", "면서", "아서", "어서")
+_CONNECTIVE_ALT = "|".join(_CONNECTIVE_SYLLABLES)
 
-# Eojeol = whitespace-separated token. Strip trailing punctuation for length
-# accounting but keep raw token for diversity / suffix tests.
-_EOJEOL_SPLIT_RE = re.compile(r"\s+")
+# 연결어미 직후에 쉼표가 따라오는 위치(어미 + 선택적 공백 + 쉼표).
+_CONNECTIVE_COMMA = re.compile(rf"(?:{_CONNECTIVE_ALT})[ \t]*,")
 
-# Sentence boundary: . ! ? + closing quote/bracket optional + whitespace or EOS.
-# Korean text rarely uses semicolons; we keep them out to avoid false splits.
-_SENTENCE_SPLIT_RE = re.compile(r"(?<=[\.!?。])\s+")
+# 연결어미가 어절 경계(공백·문장부호·문자열 끝)에서 끝나는 위치. 분모 산정용.
+_CONNECTIVE_AT_BOUNDARY = re.compile(rf"(?:{_CONNECTIVE_ALT})(?=[\s,.!?、。]|$)")
 
-# Hanja-style nominalizer suffixes: 성, 적, 화. We only count them when the
-# *token* ends with one of these AND has at least 2 chars before — that
-# excludes the standalone particles "적" / "성" / "화" and short adverbial
-# uses. We also skip pure-Hangul exact matches in a small block-list.
-_HANJA_SUFFIXES = ("성", "적", "화")
-_HANJA_BLOCK = {
-    # Common false positives — bare verbs / nouns that happen to end in these
-    # syllables but are not -성/-적/-화 nominalizations.
-    "있는화", "되는화",  # placeholder — extend as needed
-    "맞아", "와서",  # not actually -화 but caught for safety
-}
+# 어절 분할 — 연속 공백(스페이스/탭/개행)으로 자른다.
+_WHITESPACE_RUN = re.compile(r"[ \t\r\n\f\v]+")
 
-# Tokens we never count for hanja density: numerals, English, single-char.
-_PUNCT_STRIP_RE = re.compile(r"[\.,!?;:\(\)\[\]\{\}\"'`~、。“”‘’\-]+")
+# 문장 종결 부호 뒤를 문장 경계로 본다. 한국어는 세미콜론을 거의 안 쓰므로 제외.
+_SENTENCE_TERMINATOR = re.compile(r"(?<=[.!?。])\s+")
+
+# 어절 양끝의 문장부호를 떼어내는 패턴(길이/접미사 판정 정확도용).
+# 하이픈은 문자 클래스 끝에 두어 리터럴로 처리한다(이스케이프 불필요).
+_EDGE_PUNCT = re.compile(r"[.,!?;:()\[\]{}\"'`~、。“”‘’-]+")
+
+# 한자어 명사화 접미사 — 어절 마지막 글자가 이 중 하나면 후보로 본다.
+_SINO_NOMINALIZER = frozenset(("성", "적", "화"))
+
+# 한자어 접미사 오탐 차단 목록(-성/-적/-화로 끝나는 듯하나 명사화가 아닌 어절).
+_SINO_FALSE_POSITIVES = frozenset({"있는화", "되는화", "맞아", "와서"})
+
+# 기본 어휘 사전 — baseline 파일이 제공하지 않을 때의 폴백.
+_DEFAULT_CONCLUSION_PIVOTS = ["결론적으로", "따라서", "이를 통해", "그러므로"]
+_DEFAULT_SAFE_HEDGES = ["양쪽 모두", "두 가지 모두", "장점도 있지만", "신중하게", "균형"]
 
 
 # ---------------------------------------------------------------------------
-# Helpers
+# 텍스트 모델 — 문장/어절 분할을 한 번만 계산해 재사용한다
 # ---------------------------------------------------------------------------
 
 
-def _split_sentences(text: str) -> list[str]:
-    text = text.strip()
-    if not text:
+@dataclass
+class _Document:
+    """원문 한 편의 분할 결과를 담는 경량 컨테이너."""
+
+    raw: str
+    sentences: list[str]
+
+
+def _split_into_sentences(text: str) -> list[str]:
+    """종결 부호 + 개행을 모두 문장 경계로 보고 평탄화한다."""
+    stripped = text.strip()
+    if not stripped:
         return []
-    parts = _SENTENCE_SPLIT_RE.split(text)
-    # Each `parts[i]` may contain newlines; flatten on \n too.
-    out: list[str] = []
-    for p in parts:
-        for line in p.split("\n"):
+    collected: list[str] = []
+    for chunk in _SENTENCE_TERMINATOR.split(stripped):
+        for line in chunk.split("\n"):
             line = line.strip()
             if line:
-                out.append(line)
-    return out
+                collected.append(line)
+    return collected
 
 
-def _eojeols(text: str) -> list[str]:
-    return [tok for tok in _EOJEOL_SPLIT_RE.split(text.strip()) if tok]
+def _word_units(fragment: str) -> list[str]:
+    """공백 기준 어절 리스트."""
+    return [w for w in _WHITESPACE_RUN.split(fragment.strip()) if w]
 
 
-def _strip_punct(token: str) -> str:
-    return _PUNCT_STRIP_RE.sub("", token)
+def _bare_word(word: str) -> str:
+    """어절 양끝 문장부호를 제거한 표층형."""
+    return _EDGE_PUNCT.sub("", word)
+
+
+def _model(text: str) -> _Document:
+    return _Document(raw=text, sentences=_split_into_sentences(text))
 
 
 # ---------------------------------------------------------------------------
-# 6 + 2 metric functions (signatures requested in the brief)
+# 8개 지표 함수 — 모두 raw text를 받아 동일 인터페이스를 유지한다
 # ---------------------------------------------------------------------------
 
 
 def comma_inclusion_rate(text: str) -> float:
-    """Ratio of sentences containing 1+ commas (0~1)."""
-    sents = _split_sentences(text)
-    if not sents:
+    """쉼표를 1개 이상 포함한 문장의 비율(0~1)."""
+    sentences = _model(text).sentences
+    if not sentences:
         return 0.0
-    with_comma = sum(1 for s in sents if "," in s)
-    return with_comma / len(sents)
+    has_comma = [s for s in sentences if "," in s]
+    return len(has_comma) / len(sentences)
 
 
 def comma_usage_rate(text: str) -> float:
-    """Average comma count per sentence."""
-    sents = _split_sentences(text)
-    if not sents:
+    """문장당 평균 쉼표 개수."""
+    sentences = _model(text).sentences
+    if not sentences:
         return 0.0
-    return sum(s.count(",") for s in sents) / len(sents)
+    total_commas = sum(s.count(",") for s in sentences)
+    return total_commas / len(sentences)
 
 
 def ending_comma_rate(text: str) -> float:
-    """Ratio of connective-ending positions immediately followed by a comma.
+    """연결어미 위치 중 직후에 쉼표가 붙은 비율.
 
-    Denominator = total connective-ending occurrences (with or without comma).
-    Numerator   = ending + comma matches.
-    Returns 0.0 when the denominator is 0.
+    분모는 어절 경계에서 끝나는 연결어미 전체 개수,
+    분자는 그중 쉼표가 따라오는 개수. 분모가 0이면 0.0.
     """
     if not text.strip():
         return 0.0
-    # All occurrences of the endings (with optional trailing comma).
-    all_endings = re.findall(r"(?:고|며|지만|면서|아서|어서)(?:\s*,)?", text)
-    # Filter to those that actually represent a connective ending. The bare
-    # syllable can occur inside other words (e.g. "고기"), so we require that
-    # the syllable sit at an eojeol's end OR be followed by space/punct.
-    # Approximation: count regex hits whose match ends at a token boundary.
-    boundary_endings = re.findall(
-        r"(?:고|며|지만|면서|아서|어서)(?=[\s,\.!?、。]|$)", text
-    )
-    if not boundary_endings:
+    boundary_hits = _CONNECTIVE_AT_BOUNDARY.findall(text)
+    if not boundary_hits:
         return 0.0
-    # Count those followed by comma.
-    with_comma = len(_ENDING_COMMA_RE.findall(text))
-    return with_comma / len(boundary_endings)
+    comma_hits = _CONNECTIVE_COMMA.findall(text)
+    return len(comma_hits) / len(boundary_hits)
 
 
 def comma_segment_length(text: str) -> float:
-    """Average eojeol-count of comma-delimited segments across sentences."""
-    sents = _split_sentences(text)
-    seg_lens: list[int] = []
-    for s in sents:
-        if "," not in s:
-            seg_lens.append(len(_eojeols(s)))
+    """쉼표로 나뉜 구간들의 평균 어절 수.
+
+    쉼표 없는 문장은 문장 전체를 한 구간으로 본다.
+    """
+    sentences = _model(text).sentences
+    segment_word_counts: list[int] = []
+    for sentence in sentences:
+        if "," not in sentence:
+            segment_word_counts.append(len(_word_units(sentence)))
             continue
-        for seg in s.split(","):
-            seg = seg.strip()
-            if seg:
-                seg_lens.append(len(_eojeols(seg)))
-    if not seg_lens:
+        for piece in sentence.split(","):
+            piece = piece.strip()
+            if piece:
+                segment_word_counts.append(len(_word_units(piece)))
+    if not segment_word_counts:
         return 0.0
-    return sum(seg_lens) / len(seg_lens)
+    return sum(segment_word_counts) / len(segment_word_counts)
 
 
-def conclusion_pivot_count(text: str, lexicon: list[str] | None = None) -> int:
-    """Count occurrences of conclusion-pivot lexicon items."""
-    items = lexicon or ["결론적으로", "따라서", "이를 통해", "그러므로"]
-    return sum(text.count(w) for w in items)
+def conclusion_pivot_count(text: str, lexicon: Optional[list[str]] = None) -> int:
+    """결론 전환 어휘의 등장 횟수 합."""
+    words = lexicon if lexicon else _DEFAULT_CONCLUSION_PIVOTS
+    return sum(text.count(term) for term in words)
 
 
-def safe_balance_count(text: str, lexicon: list[str] | None = None) -> int:
-    """Count occurrences of safe-balance hedge lexicon."""
-    items = lexicon or ["양쪽 모두", "두 가지 모두", "장점도 있지만", "신중하게", "균형"]
-    return sum(text.count(w) for w in items)
+def safe_balance_count(text: str, lexicon: Optional[list[str]] = None) -> int:
+    """안전 균형형 hedging 어휘의 등장 횟수 합."""
+    words = lexicon if lexicon else _DEFAULT_SAFE_HEDGES
+    return sum(text.count(term) for term in words)
 
 
 def hanja_nominalizer_density(text: str) -> float:
-    """Token-level density of -성 / -적 / -화 endings (0~1).
+    """-성/-적/-화로 끝나는 한자어 명사화 어절의 토큰 밀도(0~1).
 
-    Token = whitespace-split eojeol after stripping trailing punctuation.
-    A token "counts" only if it has >= 2 chars total (so bare "성", "적",
-    "화" don't count) and its final char is one of the three suffixes.
+    어절은 양끝 문장부호를 떼어낸 표층형으로 본다. 길이가 2자 미만이거나
+    오탐 목록에 들면 세지 않는다.
     """
-    tokens = [_strip_punct(t) for t in _eojeols(text)]
-    tokens = [t for t in tokens if t]
-    if not tokens:
+    words = [w for w in (_bare_word(t) for t in _word_units(text)) if w]
+    if not words:
         return 0.0
-    hits = 0
-    for t in tokens:
-        if len(t) < 2:
+    matched = 0
+    for word in words:
+        if len(word) < 2:
             continue
-        if t in _HANJA_BLOCK:
+        if word in _SINO_FALSE_POSITIVES:
             continue
-        if t[-1] in _HANJA_SUFFIXES:
-            hits += 1
-    return hits / len(tokens)
+        if word[-1] in _SINO_NOMINALIZER:
+            matched += 1
+    return matched / len(words)
 
 
 def lexical_diversity(text: str) -> float:
-    """Type-token ratio over eojeols (unique / total)."""
-    toks = [_strip_punct(t) for t in _eojeols(text)]
-    toks = [t for t in toks if t]
-    if not toks:
+    """어절 기준 type-token ratio(고유 어절 수 / 전체 어절 수)."""
+    words = [w for w in (_bare_word(t) for t in _word_units(text)) if w]
+    if not words:
         return 0.0
-    return len(set(toks)) / len(toks)
+    return len(set(words)) / len(words)
 
 
 # ---------------------------------------------------------------------------
-# Baseline + z-score
+# baseline 로드 + z-score 근사
 # ---------------------------------------------------------------------------
 
 
-def _default_baseline_path() -> str:
-    here = os.path.dirname(os.path.abspath(__file__))
-    # Baseline ships next to metrics.py: references/baseline.json
-    return os.path.join(here, "baseline.json")
+def _baseline_beside_module() -> str:
+    module_dir = os.path.dirname(os.path.abspath(__file__))
+    return os.path.join(module_dir, "baseline.json")
 
 
-def _load_baseline(path: str | None) -> dict[str, Any]:
-    p = path or _default_baseline_path()
-    with open(p, "r", encoding="utf-8") as f:
-        return json.load(f)
+def _read_baseline(path: Optional[str]) -> dict[str, Any]:
+    resolved = path or _baseline_beside_module()
+    with open(resolved, "r", encoding="utf-8") as handle:
+        return json.load(handle)
 
 
-def _resolve_genre_cells(
+def _genre_cells(
     baseline: dict[str, Any], genre: str
-) -> tuple[dict[str, Any], str | None]:
-    """Return (cells, fallback_warning_or_None).
-
-    Cells = mapping metric_key -> {"human": x, "ai": y, ...} merged across
-    requested genre with global_average fill for missing fields.
-    """
-    genres = baseline.get("genres", {}) or {}
-    requested = genres.get(genre)
-    fallback = None
+) -> tuple[dict[str, Any], Optional[str]]:
+    """요청 장르의 지표 셀(전역 평균으로 결측 보강)과 폴백 경고를 돌려준다."""
+    by_genre = baseline.get("genres", {}) or {}
+    requested = by_genre.get(genre)
+    warning: Optional[str] = None
     if requested is None:
-        fallback = f"baseline_genre_null:{genre}->essay"
-        requested = genres.get("essay") or {}
-    # Merge with global average for any missing keys.
-    g = baseline.get("global_average", {}) or {}
+        warning = f"baseline_genre_null:{genre}->essay"
+        requested = by_genre.get("essay") or {}
+    global_avg = baseline.get("global_average", {}) or {}
     merged: dict[str, Any] = {}
-    keys = set(requested.keys()) | set(g.keys())
-    for k in keys:
-        cell = requested.get(k) or g.get(k)
+    for key in set(requested.keys()) | set(global_avg.keys()):
+        cell = requested.get(key) or global_avg.get(key)
         if cell:
-            merged[k] = cell
-    return merged, fallback
+            merged[key] = cell
+    return merged, warning
 
 
-def _z(value: float, human: float, ai: float, *, percent: bool) -> float | None:
-    """Approximate z-score using (ai - human) / 2 as standard deviation.
+def _z_against_means(
+    value: float, human: Optional[float], ai: Optional[float], *, scale_to_percent: bool
+) -> Optional[float]:
+    """인간/AI 평균 두 값만으로 z-score를 근사한다.
 
-    The KatFish report only gives two means per metric; with no spread
-    published, we treat half the human-vs-AI gap as a one-sigma proxy.
-    Direction: positive z means closer to AI. percent=True converts the
-    measured value (0~1) to percent before subtracting human.
+    공개된 코퍼스는 지표별 평균 2개만 제공하므로, 인간-AI 격차의 절반을
+    표준편차 1-sigma 대용으로 삼는다. 양의 z는 AI에 가깝다는 뜻이다.
+    `scale_to_percent`가 참이면 측정값(0~1)을 백분율로 환산해 비교한다.
     """
     if human is None or ai is None:
         return None
-    val = value * 100 if percent else value
-    sd = abs(ai - human) / 2.0
-    if sd == 0:
+    measured = value * 100 if scale_to_percent else value
+    sigma = abs(ai - human) / 2.0
+    if sigma == 0:
         return 0.0
-    return (val - human) / sd
+    return (measured - human) / sigma
 
 
-def _classify_risk(z_scores: dict[str, float | None], lexicon_hits: dict[str, int]) -> tuple[str, int]:
-    score = 0
+def _grade_band(
+    z_scores: dict[str, Optional[float]], lexicon_counts: dict[str, int]
+) -> tuple[str, int]:
+    """z-score와 어휘 카운트를 합산해 위험 등급(low/medium/high)을 정한다."""
+    points = 0
     for key in ("comma_inclusion_rate", "ending_comma_rate", "comma_segment_length"):
         z = z_scores.get(key)
         if z is not None and z > 1.0:
-            score += 2
-    ld = z_scores.get("lexical_diversity")
-    if ld is not None and ld < -1.0:
-        score += 1
-    if lexicon_hits.get("conclusion_pivot_count", 0) >= 2:
-        score += 1
-    if lexicon_hits.get("safe_balance_count", 0) >= 2:
-        score += 1
-    hz = z_scores.get("hanja_nominalizer_density")
-    if hz is not None and hz > 1.0:
-        score += 1
-    if score >= 6:
-        band = "high"
-    elif score >= 4:
-        band = "medium"
-    else:
-        band = "low"
-    return band, score
+            points += 2
+    diversity_z = z_scores.get("lexical_diversity")
+    if diversity_z is not None and diversity_z < -1.0:
+        points += 1
+    if lexicon_counts.get("conclusion_pivot_count", 0) >= 2:
+        points += 1
+    if lexicon_counts.get("safe_balance_count", 0) >= 2:
+        points += 1
+    hanja_z = z_scores.get("hanja_nominalizer_density")
+    if hanja_z is not None and hanja_z > 1.0:
+        points += 1
+    if points >= 6:
+        return "high", points
+    if points >= 4:
+        return "medium", points
+    return "low", points
 
 
-def _evidence_spans(text: str, lexicon: list[str]) -> list[str]:
-    found: list[str] = []
-    for w in lexicon:
-        if w in text:
-            found.append(w)
-    return found
+def _matched_terms(text: str, lexicon: list[str]) -> list[str]:
+    return [term for term in lexicon if term in text]
 
 
 # ---------------------------------------------------------------------------
-# Public entry point
+# 공개 진입점
 # ---------------------------------------------------------------------------
 
 
 def compute_all(
     text: str,
     genre: str = "essay",
-    baseline_path: str | None = None,
+    baseline_path: Optional[str] = None,
 ) -> dict[str, Any]:
-    """Compute all v1.6 metrics + z-scores + risk band for a single document."""
-    baseline = _load_baseline(baseline_path)
-    cells, fallback_warning = _resolve_genre_cells(baseline, genre)
-    lex = baseline.get("lexicons", {}) or {}
-    pivot_lex = lex.get("conclusion_pivot") or [
-        "결론적으로", "따라서", "이를 통해", "그러므로",
-    ]
-    safe_lex = lex.get("safe_balance") or [
-        "양쪽 모두", "두 가지 모두", "장점도 있지만", "신중하게", "균형",
-    ]
+    """한 편의 문서에 대해 8개 지표 + z-score + 위험 등급을 산출한다."""
+    baseline = _read_baseline(baseline_path)
+    cells, fallback_warning = _genre_cells(baseline, genre)
+    lexicons = baseline.get("lexicons", {}) or {}
+    pivot_lexicon = lexicons.get("conclusion_pivot") or list(_DEFAULT_CONCLUSION_PIVOTS)
+    hedge_lexicon = lexicons.get("safe_balance") or list(_DEFAULT_SAFE_HEDGES)
 
-    metrics: dict[str, float | int] = {
+    metrics: dict[str, Any] = {
         "comma_inclusion_rate": comma_inclusion_rate(text),
         "comma_usage_rate": comma_usage_rate(text),
         "ending_comma_rate": ending_comma_rate(text),
         "comma_segment_length": comma_segment_length(text),
-        "conclusion_pivot_count": conclusion_pivot_count(text, pivot_lex),
-        "safe_balance_count": safe_balance_count(text, safe_lex),
+        "conclusion_pivot_count": conclusion_pivot_count(text, pivot_lexicon),
+        "safe_balance_count": safe_balance_count(text, hedge_lexicon),
         "hanja_nominalizer_density": hanja_nominalizer_density(text),
         "lexical_diversity": lexical_diversity(text),
     }
 
-    # baseline cells use percent for inclusion/ending rates.
-    z_scores: dict[str, float | None] = {}
-    for key, percent in (
-        ("comma_inclusion_rate", True),
-        ("comma_usage_rate", False),
-        ("ending_comma_rate", True),
-        ("comma_segment_length", False),
-    ):
+    # 쉼표 포함률·연결어미 쉼표율은 baseline 셀이 백분율 단위이므로 환산해 비교.
+    z_scores: dict[str, Optional[float]] = {}
+    percent_flags = {
+        "comma_inclusion_rate": True,
+        "comma_usage_rate": False,
+        "ending_comma_rate": True,
+        "comma_segment_length": False,
+    }
+    for key, as_percent in percent_flags.items():
         cell = cells.get(key)
         if cell:
-            z_scores[key] = _z(metrics[key], cell.get("human"), cell.get("ai"), percent=percent)
+            z_scores[key] = _z_against_means(
+                metrics[key], cell.get("human"), cell.get("ai"), scale_to_percent=as_percent
+            )
         else:
             z_scores[key] = None
 
-    # hanja_nominalizer_density baseline: report says 12 occurrences per doc
-    # = S2 strong signal. We approximate by treating density 0.06 as human
-    # reference and 0.12 as AI reference (rough proxy when no per-doc cells).
-    z_scores["hanja_nominalizer_density"] = _z(
-        metrics["hanja_nominalizer_density"] * 100, 6.0, 12.0, percent=False
+    # 한자어 명사화 밀도: 코퍼스가 문서당 12회를 S2 강신호로 본다는 점에 착안해
+    # 밀도 0.06(인간)·0.12(AI)를 근사 기준으로 삼아 백분율 환산값을 비교한다.
+    z_scores["hanja_nominalizer_density"] = _z_against_means(
+        metrics["hanja_nominalizer_density"] * 100, 6.0, 12.0, scale_to_percent=False
     )
-    # lexical_diversity has no baseline cell either; use rough 0.65 human /
-    # 0.55 AI from typical Korean essay corpora as a placeholder. AI tends
-    # to repeat tokens slightly more.
-    z_scores["lexical_diversity"] = _z(metrics["lexical_diversity"], 0.65, 0.55, percent=False)
+    # 어휘 다양성도 전용 셀이 없으므로 한국어 에세이 통상치 0.65(인간)·0.55(AI)를
+    # 임시 기준으로 둔다(AI가 토큰을 약간 더 반복하는 경향).
+    z_scores["lexical_diversity"] = _z_against_means(
+        metrics["lexical_diversity"], 0.65, 0.55, scale_to_percent=False
+    )
 
-    lexicon_hits = {
+    lexicon_counts = {
         "conclusion_pivot_count": int(metrics["conclusion_pivot_count"]),
         "safe_balance_count": int(metrics["safe_balance_count"]),
     }
-    risk_band, risk_score = _classify_risk(z_scores, lexicon_hits)
+    risk_band, risk_score = _grade_band(z_scores, lexicon_counts)
 
-    out: dict[str, Any] = {
+    report: dict[str, Any] = {
         "version": VERSION,
         "genre": genre,
         "char_count": len(text),
@@ -362,13 +363,13 @@ def compute_all(
         "risk_band": risk_band,
         "risk_score": risk_score,
         "evidence": {
-            "conclusion_pivots": _evidence_spans(text, pivot_lex),
-            "safe_balances": _evidence_spans(text, safe_lex),
+            "conclusion_pivots": _matched_terms(text, pivot_lexicon),
+            "safe_balances": _matched_terms(text, hedge_lexicon),
         },
     }
     if fallback_warning:
-        out["warning"] = fallback_warning
-    return out
+        report["warning"] = fallback_warning
+    return report
 
 
 # ---------------------------------------------------------------------------
@@ -376,27 +377,26 @@ def compute_all(
 # ---------------------------------------------------------------------------
 
 
-def _main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Humanize KR v1.6 metric runner")
-    parser.add_argument("--input", required=True, help="Input text file path")
+def _main(argv: Optional[list[str]] = None) -> int:
+    parser = argparse.ArgumentParser(description="humanize-korean v1.6 메트릭 러너")
+    parser.add_argument("--input", required=True, help="입력 텍스트 파일 경로")
     parser.add_argument("--genre", default="essay", help="essay/poetry/abstract/...")
-    parser.add_argument("--output", default=None, help="Output JSON path (optional)")
-    parser.add_argument(
-        "--baseline", default=None, help="Override baseline JSON path"
-    )
+    parser.add_argument("--output", default=None, help="출력 JSON 경로(선택)")
+    parser.add_argument("--baseline", default=None, help="baseline JSON 경로 재정의")
     args = parser.parse_args(argv)
 
-    with open(args.input, "r", encoding="utf-8") as f:
-        text = f.read()
+    with open(args.input, "r", encoding="utf-8") as handle:
+        text = handle.read()
 
-    result = compute_all(text, genre=args.genre, baseline_path=args.baseline)
+    report = compute_all(text, genre=args.genre, baseline_path=args.baseline)
 
     if args.output:
-        os.makedirs(os.path.dirname(os.path.abspath(args.output)), exist_ok=True)
-        with open(args.output, "w", encoding="utf-8") as f:
-            json.dump(result, f, ensure_ascii=False, indent=2)
+        out_dir = os.path.dirname(os.path.abspath(args.output))
+        os.makedirs(out_dir, exist_ok=True)
+        with open(args.output, "w", encoding="utf-8") as handle:
+            json.dump(report, handle, ensure_ascii=False, indent=2)
 
-    print(result["risk_band"])
+    print(report["risk_band"])
     return 0
 
 

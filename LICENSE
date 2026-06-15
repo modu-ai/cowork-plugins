@@ -1,21 +1,130 @@
-MIT License
+MoAI Cowork Plugins 라이선스
+비상업·변경금지(Non-Commercial, No-Derivatives; NC-ND) 버전 1.0
 
-Copyright (c) 2026 modu-ai
+저작권 (c) 2026 modu-ai. 모든 권리 보유(All Rights Reserved).
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+전문(前文)
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+본 라이선스는 MoAI Cowork Plugins("저작물")의 이용을 규율합니다. 저작물은
+Claude Code / Claude Cowork용 스킬, 플러그인, 프롬프트, 문서 및 부속 스크립트의
+모음입니다. 저작물은 개인적·교육적·내부 평가 목적의 이용에 한하여 제공됩니다.
+상업적 이용과 2차적저작물의 작성은 허용되지 않습니다. 일부 제3자 구성요소에는
+별도의 라이선스가 적용됩니다 — 제7조 및 NOTICE.md를 참조하십시오.
+
+
+제1조 (정의)
+
+1.1 "저작물"이란 NOTICE.md에 명시된 제3자 구성요소를 제외한 본 저장소의 내용
+    전체를 말합니다.
+1.2 "이용자"란 본 라이선스에 따라 권리를 행사하는 모든 개인 또는 단체를 말합니다.
+1.3 "비상업"이란 직접적이든 간접적이든 상업적 이익 또는 금전적 보상을 주된
+    목적으로 하거나 그를 지향하지 아니함을 말합니다.
+1.4 "2차적저작물"이란 저작물의 전부 또는 일부를 수정·번안·번역·변형하거나 이에
+    기초하여 작성한 모든 저작물을 말합니다.
+1.5 "상업적 교육 상품"이란 유료 또는 상업적 이익을 위하여 제공되는 도서, 전자책,
+    유료 강좌, 온라인 클래스, 강연, 워크숍, 부트캠프, 교육 프로그램, 자격 과정 및
+    이와 유사한 일체의 제공물을 말합니다.
+
+
+제2조 (이용 허락)
+
+이용자가 본 라이선스를 완전히 준수하는 것을 조건으로, modu-ai는 이용자에게
+전 세계적·무상·비독점·양도불가·철회가능한 권리로서 다음을 허락합니다.
+
+  (가) 비상업적 목적으로 저작물을 내려받아 설치하고 실행하는 행위
+  (나) 모든 저작권 고지, 본 라이선스 및 NOTICE.md를 원형 그대로 유지하는 것을
+       조건으로, 비상업적 목적으로 저작물의 원형 그대로의(수정되지 아니한)
+       복제물을 재배포하는 행위
+
+
+제3조 (제한)
+
+이용자는 modu-ai의 사전 서면 허락 없이 다음의 행위를 할 수 없습니다.
+
+  (가) 저작물의 전부 또는 일부를 판매, 라이선스 부여, 재라이선스, 대여하거나
+       유료 제품·서비스의 일부로 제공하는 등 일체의 상업적 목적으로 이용하는 행위
+  (나) 저작물 또는 그 일부를 상업적 교육 상품에 포함·삽입·결합하거나 이에 기초하여
+       제작하는 행위. 여기에는 도서, 유료 강연, 온라인 강좌, 워크숍 및 경쟁 교육
+       자료가 명시적으로 포함됩니다.
+  (다) 2차적저작물을 작성, 배포, 공연 또는 공중 전시하는 행위. 재배포를 위한 것을
+       포함하여 저작물의 수정은 금지됩니다.
+  (라) 저작물과 경쟁하거나 저작물로부터 실질적으로 파생된 제품 또는 서비스를
+       개발, 배포 또는 운영하는 행위
+  (마) 저작권·출처표시·상표·라이선스 고지를 제거·변경·은폐·위조하거나, 저작물의
+       전부 또는 일부를 이용자 자신의 독자적 창작물로 표시하는 행위(도용)
+
+
+제4조 (출처표시 및 고지 보존)
+
+허락된 모든 복제물은 다음을 수정 없이 보존하여야 합니다.
+
+  (가) 모든 저작권 고지
+  (나) 본 라이선스의 전문(全文)
+  (다) 모든 제3자 출처표시를 포함한 NOTICE.md
+
+
+제5조 (사적 이용)
+
+이용자가 자신의 환경에서 저작물을 실행하는 데 필요한 내부적·비공개적 설정은
+허용됩니다. 다만 수정된 복제물을 제3자에게 배포·공표·공유하지 아니하는 것을
+조건으로 합니다.
+
+
+제6조 (권리의 유보)
+
+본 라이선스에서 명시적으로 허락하지 아니한 모든 권리는 modu-ai가 유보합니다.
+어떠한 권리도 묵시적으로 또는 금반언(禁反言)에 의하여 발생하지 아니합니다.
+상업적 라이선스에 관하여는 modu-ai에 문의하십시오.
+
+
+제7조 (제3자 구성요소)
+
+저작물은 각자의 라이선스가 적용되는 제3자 자료를 포함하거나 참조하며, 이는
+NOTICE.md에 열거되어 있습니다(Apache License 2.0, MIT License, SIL Open Font
+License 1.1 등을 포함하되 이에 한정되지 아니함). 본 라이선스는 해당 제3자
+라이선스를 변경·제한하거나 그에 우선하지 아니하며, 해당 구성요소에 대한 이용자의
+권리는 오로지 각 제3자 라이선스에 의하여 규율됩니다. 충돌이 발생하는 경우 해당
+구성요소에 관하여는 제3자 라이선스가 우선합니다.
+
+
+제8조 (종료)
+
+본 라이선스는 위반이 있는 경우 자동으로 종료됩니다. 종료 시 이용자는 모든 이용을
+중단하고 모든 복제물을 폐기하여야 합니다. 제6조, 제9조, 제10조는 종료 후에도
+존속합니다.
+
+
+제9조 (보증의 부인)
+
+저작물은 명시적이든 묵시적이든 어떠한 종류의 보증도 없이 "있는 그대로(AS IS)"
+제공됩니다. 상품성, 특정 목적에의 적합성 및 비침해에 대한 보증을 포함하되 이에
+한정되지 아니합니다.
+
+
+제10조 (책임의 제한)
+
+어떠한 경우에도 modu-ai는 저작물 또는 그 이용과 관련하여 발생하는 일체의 청구,
+손해 또는 기타 책임에 대하여 책임을 지지 아니합니다.
+
+
+제11조 (이전 버전)
+
+종전에 MIT 라이선스로 배포된 릴리스는 해당 릴리스에 한하여 MIT 라이선스로 계속
+제공됩니다(LICENSE.MIT 참조). 본 라이선스는 본 릴리스 및 이후 릴리스에만
+적용됩니다.
+
+
+제12조 (준거법)
+
+본 라이선스는 대한민국 법률에 따라 규율되고 해석됩니다.
+
+
+────────────────────────────────────────────────────────────────────────
+
+This license is written in Korean as the authoritative text. An English
+summary is available in LICENSE.en (if provided); in case of any discrepancy,
+the Korean text governs. For commercial licensing inquiries, contact modu-ai.
+
+For previously MIT-licensed releases, see LICENSE.MIT.
+Third-party component licenses are listed in NOTICE.md.

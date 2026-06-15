@@ -6,13 +6,37 @@
 
 ## 버전 통일 원칙 (HARD)
 
-아래 201개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.11.1+ `hugo.toml` SSOT 포함):
+아래 205개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.11.1+ `hugo.toml` SSOT 별도 추적):
 - `.claude-plugin/marketplace.json` (`metadata.version`) × 1
-- `<plugin>/.claude-plugin/plugin.json` (`version`) × 27 (v2.17.0+)
-- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 173 (v2.17.0+)
+- `<plugin>/.claude-plugin/plugin.json` (`version`) × 28 (v2.20.0+)
+- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 176 (v2.20.0+)
 - `docs-site/hugo.toml` (`[params] version`) × 1 (v2.11.1+ SSOT, 좌측 사이드바·footer 자동 반영)
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
+
+## [2.20.0] - 2026-06-16
+
+MINOR. **학습자 전용 `moai-tutor` 플러그인 신규 (3 스킬)**. 가르치는 사람(moai-education)과 분리된 **배우는 사람(학습자·수강생)** 도메인을 신설했습니다. 학습 질문을 context7(공식 문서)+웹검색(최신 정보)으로 **병렬** 조사·교차검증하고, mermaid 도식·차트·수식·코드 하이라이트가 **조건부로** 들어간 단일 HTML 학습자료를 자동 생성합니다. claude code·cowork·영어 등 어떤 주제든 스스로 깊이 학습하는 워크플로우입니다. 27 → 28 플러그인, 173 → 176 스킬, 동기화 2.19.0 → 2.20.0. 기능적 비파괴(기존 플러그인·스킬·워크플로우 무변경). 아울러 저장소 라이선스를 **MIT → NC-ND 1.0**으로 전환하고, `moai-content:humanize-korean`을 MIT 차용 의존 없이 **100% 자체 저작으로 재생성**(검증된 구조 보존 + 표현 전면 자체 저작, 기능 동등성 유지)했습니다.
+
+### Added
+
+- **`moai-tutor` 신규 플러그인 (3 스킬)** — 학습자 본인이 쓰는 개인 AI 튜터 도메인.
+  - `learning-project` — 학습 목표·수준 진단, 단계별 로드맵(Bloom 6단계 골격), 진도 추적 + 학습 전용 `CLAUDE.md` 스캐폴딩. tutor-research·learning-material 체인의 출발점.
+  - `tutor-research` — 질문을 리서치 축으로 분해해 context7(라이브러리·SDK·CLI 공식 문서)과 WebSearch(최신 트렌드·튜토리얼·비교)를 **한 턴에 병렬** 실행, 출처 교차검증 후 learning-material 입력 규격 종합본 생성. 광범위 주제는 `/deep-research` 제안. GLM 백엔드 웹 도구 라우팅 준수.
+  - `learning-material` — 학습목표·핵심개념·도식·예제·복습 구조의 단일 HTML 학습자료 렌더러. `moai-content:html-report` 디자인 토큰·폰트 공유(html-report의 0-JS 원칙은 별도 보존).
+- **context7 MCP 번들** — `moai-tutor/.mcp.json`에 context7(`alwaysLoad`)을 번들해 설치 시 라이브러리·SDK 공식 문서 조회가 함께 활성화됩니다. 별도 API 키 불필요(npx 자동 설치).
+- **CDN 라이브러리 스택 SSOT** (`moai-tutor/skills/learning-material/references/cdn-libraries.md`) — 2026 영역별 최고 라이브러리 큐레이션: Mermaid v11(MIT)·Apache ECharts v5(Apache-2.0)·highlight.js v11(BSD-3)·KaTeX v0.16(MIT)·AOS v2(MIT) + 경량/고급 대안. 콘텐츠가 실제 쓸 때만 주입하는 **조건부 로딩** 규칙, 메이저 버전 핀, 오프라인 폴백, 라이선스 안전(CDN 런타임 로딩은 재배포 아님) 명시.
+
+### Changed
+
+- **라이선스 전환 MIT → NC-ND 1.0** — 루트 `LICENSE`를 비상업·변경금지(Non-Commercial No-Derivatives) 1.0으로 전환. 종전 MIT 릴리스는 `LICENSE.MIT`로 보존(해당 릴리스에 한해 계속 유효), 제3자 구성요소(Apache/MIT/OFL)는 `NOTICE.md`로 격리(LICENSE 제7조). 전체 plugin.json 28개 `license: LicenseRef-MoAI-NC-ND-1.0`.
+- **`moai-content:humanize-korean` 라이선스 안전 자체 재생성** — MIT 차용 의존(코드·예문·산문) 100% 제거. 검증된 구조(10대 카테고리 A~J·S1/S2/S3 심각도·CLI·등급 로직)는 보존하되 메트릭 알고리즘(metrics.py·metrics_v2.py)·테스트·taxonomy 예문·scholarship 산문·파생 룰북·SKILL.md 출처표시를 전면 자체 저작. 한국 번역학계 8유형 번역투 계보 + 학술 원전(KatFish·Toral 2019 arXiv:1907.00900) 직접 인용 기반. 기능 동등성 잠금(동일 risk_band·메트릭 값 byte-identical, 28 테스트 PASS, RiskBandRegression 영구 가드). 스킬 전체가 NC-ND 하에 편입.
+- 전체 버전 동기화 2.19.0 → 2.20.0 (marketplace.json + 28 plugin.json + 176 SKILL.md).
+- 루트 README·`marketplace.json` 카탈로그에 moai-tutor 추가, 배지(28 플러그인 · 176 스킬) 및 총 산출물 표 갱신.
+
+### Migration
+
+- 신규 플러그인 추가만 있고 기존 플러그인·스킬·워크플로우는 변경되지 않습니다(기능적 비파괴). `/plugin marketplace update cowork-plugins`로 마켓플레이스를 갱신한 뒤 `moai-tutor`를 설치하면 됩니다.
 
 ## [2.19.0] - 2026-06-15
 

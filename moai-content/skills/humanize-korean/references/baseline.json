@@ -1,7 +1,7 @@
 {
   "version": "v1.6-2026-05-06",
-  "source": "KatFish (Park et al., 인간 470 vs LLM 1,624편 / 에세이 771·시 945·초록 378) + LREAD 인간 판독 실험",
-  "notes": "metric-engineer는 이 baseline을 그대로 import해 z-score 계산에 사용한다. 미공개 셀은 null. 사용자 코퍼스로 보강 시 source에 ',user-corpus-{date}' 추가.",
+  "source": "KatFish (Park et al., 인간 470편 vs LLM 1,624편 / 에세이 771·시 945·초록 378) 한국어 인간/LLM 대조 코퍼스의 쉼표·연결어미 통계 + LREAD 인간 판독 실험. 원전 직접 인용.",
+  "notes": "metrics.py가 이 baseline을 읽어 z-score 계산에 쓴다. 미공개 셀은 null. 사용자 코퍼스로 보강 시 source에 ',user-corpus-{date}'를 덧붙인다.",
   "genres": {
     "essay": {
       "comma_inclusion_rate": {"human": 26.31, "ai": 61.03, "ratio": 2.32, "unit": "percent"},
@@ -96,7 +96,7 @@
     ],
     "hold": [
       {"cand_id": "cand-v16-005", "name": "spacing_regularness", "reason": "보고서 본문에 정량 셀 미공개. 사용자 코퍼스 baseline 확보 후 v1.7 검토. 탐지 전용 신호로만 채용 가능, 윤문 처방 없음(맞춤법 일부러 틀리게 만들지 않음)"},
-      {"cand_id": "cand-v16-009", "name": "persona_register_mismatch", "reason": "v1.5 monolith fast + author-context 미주입과 충돌. 메타 부스터로만 작동하는 옵트인 설계가 정리되면 v1.7+ 검토"}
+      {"cand_id": "cand-v16-009", "name": "persona_register_mismatch", "reason": "단일 패스 윤문 + author-context 미주입과 충돌. 메타 부스터로만 작동하는 옵트인 설계가 정리되면 v1.7+ 검토"}
     ]
   }
 }

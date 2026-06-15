@@ -13,7 +13,7 @@ description: |
   국내외 뉴스·규제·시장 지표·경쟁사 동향을 시사점과 액션 아이템으로 묶어 5분 만에 읽히는 리포트를 만듭니다.
   [책임 경계] vs moai-commerce:commerce-morning-brief: 이 스킬=외부 뉴스·웹 정보 기반 일반 사업 브리핑, 저 스킬=MCP 매장 운영 데이터(어제 주문·신규 문의·ROAS) 기반 이커머스 셀러 브리핑.
 user-invocable: true
-version: 2.19.0
+version: 2.20.0
 ---
 
 # 데일리 브리핑 (Daily Briefing)
