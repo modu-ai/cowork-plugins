@@ -1,6 +1,6 @@
 {
   "name": "moai-bi",
-  "version": "2.19.0",
+  "version": "2.20.0",
   "description": "경영진용 1-pager 핵심 요약(executive summary) 작성. K-IFRS·KOSIS·DART 한국 통계 친화. 산출물은 moai-content:html-report·moai-office 변환으로 체이닝",
   "author": {
     "name": "모두의AI"

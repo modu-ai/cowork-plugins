@@ -189,6 +189,10 @@ main:
         ref: /plugins/moai-public-data
         count: 4
         isNew: true
+      - name: 학습 튜터
+        ref: /plugins/moai-tutor
+        count: 3
+        isNew: true
 
   - name: 쿡북
     icon: chef

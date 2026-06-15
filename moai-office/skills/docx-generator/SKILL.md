@@ -12,7 +12,7 @@ description: |
   - "분기 보고서를 깔끔한 톤으로 워드로 뽑아줘"
   Claude 브랜드 톤 기반 모던 디자인 시스템과 한국 공문서 표준 양식을 함께 지원하며, 텍스트가 끝나면 AI 슬롭 검수로 자연스럽게 다듬을 수 있습니다.
 user-invocable: true
-version: 2.19.0
+version: 2.20.0
 ---
 
 # 워드 문서 생성기 (DOCX Generator)

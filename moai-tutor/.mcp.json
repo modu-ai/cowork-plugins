@@ -1,0 +1,16 @@
+{
+  "$schema": "https://raw.githubusercontent.com/anthropics/claude-code/main/.mcp.schema.json",
+  "mcpServers": {
+    "context7": {
+      "$comment": "Context7 — 라이브러리·SDK·프레임워크·CLI 도구의 최신 공식 문서를 실시간 조회. tutor-research 스킬의 병렬 리서치 축 한 쪽(공식 문서)을 담당합니다. resolve-library-id로 라이브러리 ID를 찾고 get-library-docs로 버전별 문서를 가져옵니다. 별도 API 키 불필요(npx 자동 설치).",
+      "alwaysLoad": true,
+      "command": "/bin/bash",
+      "args": ["-l", "-c", "exec npx -y @upstash/context7-mcp@latest"]
+    }
+  },
+  "staggeredStartup": {
+    "enabled": true,
+    "delayMs": 500,
+    "connectionTimeout": 15000
+  }
+}

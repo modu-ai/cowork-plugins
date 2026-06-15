@@ -14,7 +14,7 @@ description: |
   자기 분석·포지셔닝·콘텐츠 주제·채널 운영 전략을 문서로 묶고, 텍스트 산출물은 moai-core:ai-slop-reviewer → moai-content:humanize-korean으로 다듬습니다. 채널별 콘텐츠 제작은 sns-content로 이어집니다.
   [책임 경계] vs moai-marketing:brand-identity: 이 스킬=개인·전문가 브랜드, 저 스킬=기업·제품 브랜드.
 user-invocable: true
-version: 2.19.0
+version: 2.20.0
 ---
 
 # 개인 브랜딩 (Personal Branding)

@@ -1,6 +1,6 @@
 {
   "name": "moai-media",
-  "version": "2.19.0",
+  "version": "2.20.0",
   "description": "AI 이미지·영상·음성 통합 — Higgsfield MCP 직접 호출(higgsfield-image: 11 이미지 모델 Soul·Soul 2.0·Soul Cinema·Nano Banana·Nano Banana Pro·GPT Image·GPT Image 2·Seedream 4.0·Flux Kontext·Wan 2.2 Image·Wan 2.5 + higgsfield-video: 11 영상 모델 Sora 2·Veo 3·Kling 2.1 Master·Kling 2.5 Turbo·Kling 3.0·Kling Avatars 2.0·Seedance 2.0·Seedance Pro·Cinema Studio 3.5·MiniMax Hailuo 02·Wan 2.5 + 6 비디오 프리셋 UGC·Unboxing·Product review·Hyper motion·TV spot·Wild Card) + 외부 도구 프롬프트 빌더 3종(GPT-image-2·Gemini 3 Pro Image·Midjourney v8.1) + ElevenLabs MCP TTS·보이스 클로닝·다국어 더빙·효과음. .mcp.json 자동 등록(Higgsfield hosted OAuth + ElevenLabs uvx).",
   "author": {
     "name": "모두의AI"

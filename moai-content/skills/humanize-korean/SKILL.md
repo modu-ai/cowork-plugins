@@ -17,7 +17,7 @@ description: |
 
   Adapted from epoko77-ai/im-not-ai (MIT, ⭐2.9k) v2.0.0 — humanize-monolith Fast 모드 단일 스킬 변형. 한국 번역학계 8유형 번역투 계보 + 신규 패턴 A-16/A-18/A-19/E-7 + post-editese 14메트릭 포함.
 user-invocable: true
-version: 2.19.0
+version: 2.20.0
 ---
 
 # Humanize Korean — 한국어 AI 티 제거 (Fast 모드)
