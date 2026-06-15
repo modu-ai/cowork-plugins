@@ -27,12 +27,13 @@ MINOR. **humanize-korean v2.0.0 포팅 + Cowork-safe 플러그인 코디네이�
 
 ### Changed
 
-- **humanize-korean 분류 체계 v1.6 → v2.0** — `ai-tell-taxonomy.md` 머리말에 8유형 번역투 계보 통합, 보강 4패턴(`A-15` 사역·인지 동사 3축 처방 · `A-7` light verb construction · `F-4` 영어 명사화 접미사 4종 · `E-2` 진행형 '~고 있다' 처방). `quick-rules.md`·`rewriting-playbook.md`(PE 통합 체크리스트 15항목)·`SKILL.md`(attribution v2.0.0 ⭐2.9k, Phase 2 옵션 post-editese 레이어, 배너 v2.2) 동기화.
+- **humanize-korean 분류 체계 v1.6 → v2.0** — `ai-tell-taxonomy.md` 머리말에 8유형 번역투 계보 통합, 보강 4패턴(`A-15` 사역·인지 동사 3축 처방 · `A-7` light verb construction · `F-4` 영어 명사화 접미사 4종 · `E-2` 진행형 '~고 있다' 처방). `quick-rules.md`·`rewriting-playbook.md`(PE 통합 체크리스트 15항목)·`SKILL.md`(attribution v2.0.0 ⭐2.9k, Phase 2 옵션 post-editese 레이어, 런타임 배너 정리) 동기화.
 - 전체 버전 동기화 2.18.0 → 2.19.0 (marketplace.json + 27 plugin.json + 173 SKILL.md).
 
 ### Fixed
 
 - humanize-korean `tests/test_metrics.py` 경로 복구 — v1.6.1 verbatim 포팅 시 upstream 레이아웃(`.claude/skills/...`)이 cowork 레이아웃(`moai-content/skills/...`)으로 적응되지 않아 `import metrics` 실패하던 사전 결함을 수정(이제 22 테스트 전부 실행·통과).
+- 재검수 보강 — 코디네이터 3종의 deprecated/rename stub 참조 정정(education-course-builder·content-publishing-pipeline·commerce-growth-analyst), humanize-korean metrics_v2 관계절·by-passive 탐지 정확도 수정(F1·F2, 회귀 테스트 2종 추가 24 PASS), 문서 일관성(strict-pipeline-spec·scholarship·SKILL 배너).
 
 ### Migration
 

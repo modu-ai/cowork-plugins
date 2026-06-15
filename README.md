@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
-[![Version](https://img.shields.io/badge/Version-2.18.0-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-2.19.0-blue)](CHANGELOG.md)
 [![Plugins](https://img.shields.io/badge/Plugins-27-blue)](.claude-plugin/marketplace.json)
 [![Skills](https://img.shields.io/badge/Skills-173-green)](.claude-plugin/marketplace.json)
 [![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)
@@ -35,6 +35,15 @@
 
 ---
 
+**🆕 v2.19.0 하이라이트** (2026-06-15) — **"humanize-korean v2.0.0 포팅 + Cowork-safe 플러그인 코디네이터 31종 재도입"**
+
+27 플러그인 · 173 스킬 유지, 동기화 2.19.0. MINOR 릴리스. Breaking change 없음.
+
+- **humanize-korean v2.0.0 정렬** — upstream epoko77-ai/im-not-ai v1.6.1 → v2.0.0 포팅. 한국 번역학계 8유형 번역투 계보 + 신규 패턴 A-16(영어 대명사 직역)·A-18(관계절 좌향 수식)·A-19(이중 조사)·E-7(청자 경어법 일관성) 추가. post-editese 14메트릭(metrics_v2.py) + scholarship.md(학술 출처) 신규. 22→24 테스트 PASS.
+- **Cowork-safe 코디네이터 31종 선별 재도입** — 24 플러그인, `moai-*/agents/`. tools는 Read/Grep/Glob/Write/Edit/WebSearch만(Bash·WebFetch 배제). 텍스트 산출 체인은 `ai-slop-reviewer → humanize-korean`으로 마감. v2.18.0 `/project` Agent Synthesis와 공존.
+
+기존 워크플로우 그대로 동작. `/plugin marketplace update cowork-plugins`로 적용.
+
 **🆕 v2.18.0 하이라이트** (2026-06-15) — **"Cowork 에이전트 모델 전환 — 플러그인 번들 코디네이터 제거 + /project 맞춤 에이전트 생성"**
 
 27 플러그인 · 173 스킬 유지, 동기화 201지점 2.18.0. MINOR 릴리스. v2.17.0의 플러그인 번들 코디네이터 sub-agent를 전면 제거하고, `/project`가 사용자 워크플로우에 맞춘 전담 에이전트를 직접 생성하는 모델로 전환했습니다. 기존 스킬 체인은 자연어 인라인 호출로 동일하게 동작합니다.
@@ -46,6 +55,9 @@
 
 기존 워크플로우·플러그인 그대로 동작. `/plugin marketplace update cowork-plugins`로 적용.
 
+<details>
+<summary><b>📜 이전: v2.17.0 — Cowork-fit 재설계 — moai-public-data 신규 + 코디네이터 11종 + 매니페스트 정직화</b></summary>
+
 **🆕 v2.17.0 하이라이트** (2026-06-14) — **"Cowork-fit 재설계 — moai-public-data 신규 + Cowork 코디네이터 11종 + 매니페스트 정직화"**
 
 26 → **27 플러그인**, 170 → **173 스킬**, 동기화 지점 198 → **201**. Breaking change 없음. MINOR 릴리스. 별칭·스텁 호환을 유지한 채 Cowork 사용 적합성(taxonomy·체이닝·매니페스트)을 4축으로 재설계했습니다.
@@ -56,6 +68,8 @@
 - **이미지 정책 단일화** — `mcp-connector-setup`의 Connector D(OpenAI/GPT Image 2)를 제거하고 이미지 생성은 Higgsfield 단일로 통일. WordPress 발행 커넥터를 blog·newsletter에 연결.
 
 기존 워크플로우·플러그인 그대로 동작(별칭·스텁 호환). `/plugin marketplace update cowork-plugins`로 적용.
+
+</details>
 
 <details>
 <summary><b>📜 이전: v2.16.0 — 개인·일잘러 도메인 3종 신규 (moai-wealth · moai-productivity · moai-comms)</b></summary>
@@ -447,8 +461,8 @@ moai-commerce에 시장조사·JTBD·페르소나·상품명·채널 메시지·
 | 항목 | 수량 | 비고 |
 |------|:----:|------|
 | 플러그인 | **27** | moai-core + 26 도메인 플러그인 (moai-public-data 포함) |
-| 스킬 | **173** | 전 SKILL.md `version: 2.17.0` 동기화 (Cowork 자동 업데이트 지원) |
-| 코디네이터 서브에이전트 | **14** | 플러그인 번들 `agents/` — 멀티 스킬 파이프라인 one-shot (Cowork 전용) |
+| 스킬 | **173** | 전 SKILL.md `version: 2.19.0` 동기화 (Cowork 자동 업데이트 지원) |
+| 코디네이터 서브에이전트 | **31** | 플러그인 번들 `agents/` — 24 플러그인, Cowork-safe(Bash·WebFetch 배제), 텍스트 체인 ai-slop→humanize 마감 |
 | 레퍼런스 파일 | **287** | 각 스킬의 `references/` 안 상세 가이드 |
 | 스크립트 | **13** | helper(`scripts/`) — Python·Node·Shell |
 | 템플릿 | **1** | CLAUDE.md.tmpl 외 |
@@ -841,7 +855,7 @@ K-IFRS·KOSIS·DART 친화적 한국 통계 환경에서 5분 안에 의사결�
 
 **Anthropic 공식 스킬 가이드 준수**
 - 모든 **173개** 스킬에 [What]+[When]+[Triggers] 구조의 description 적용
-- 모든 SKILL.md frontmatter에 `version: 2.17.0` 동기화 (Cowork 자동 업데이트 감지)
+- 모든 SKILL.md frontmatter에 `version: 2.19.0` 동기화 (Cowork 자동 업데이트 감지)
 - Negative triggers로 불필요한 스킬 로딩 방지
 - 인라인 폴백과 에러 핸들링 내장
 

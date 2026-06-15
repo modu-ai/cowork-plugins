@@ -267,12 +267,26 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
 </div>
 
 <div class="cw-sect-head">
-  <h2 id="release-summary" style="margin:0"><span class="num">v2.18</span>최근 릴리스</h2>
+  <h2 id="release-summary" style="margin:0"><span class="num">v2.19</span>최근 릴리스</h2>
   <span class="meta">CHANGELOG.md 기반</span>
 </div>
 
 <div class="cw-timeline">
   <div class="cw-rel latest">
+    <div class="ver-row">
+      <span class="ver">v2.19.0</span>
+      <span class="date">2026-06-15</span>
+      <span class="badge">MINOR</span>
+    </div>
+    <div class="ttl">humanize-korean v2.0.0 포팅 + Cowork-safe 플러그인 코디네이터 31종 재도입</div>
+    <div class="desc"><strong>humanize-korean</strong>을 upstream epoko77-ai/im-not-ai v2.0.0으로 정렬(한국 번역학계 8유형 번역투 계보 + 신규 패턴 4종 + post-editese 14메트릭). <strong>Cowork-safe 플러그인 코디네이터 31개</strong>(24 플러그인, Bash·WebFetch 배제, 텍스트 체인 ai-slop→humanize 마감)를 v2.17.0 실측 근거로 선별 재도입. <strong>27 플러그인 · 173 스킬 유지 · 기능적 비파괴 · Breaking change 없음</strong>.</div>
+    <ul>
+      <li><strong>humanize-korean v2.0.0</strong> — A-16(영어 대명사 직역)·A-18(관계절 좌향 수식)·A-19(이중 조사)·E-7(청자 경어법) 4종 신규, post-editese metrics_v2.py + scholarship.md(한국 번역학계 출처) 추가. 22→24 테스트 PASS</li>
+      <li><strong>Cowork-safe 코디네이터 31개 재도입</strong> — 24 플러그인 `moai-*/agents/`. tools: Read/Grep/Glob/Write/Edit/WebSearch(Bash·WebFetch 배제). 멀티스텝 체인·배치·QA 고가치 클러스터에만 선별 부착</li>
+      <li><strong>/project Agent Synthesis와 공존</strong> — 플러그인 번들 코디네이터(마켓플레이스 기본)와 사용자 프로젝트 맞춤 에이전트(`/project` 생성)는 별개 레이어로 공존</li>
+    </ul>
+  </div>
+  <div class="cw-rel">
     <div class="ver-row">
       <span class="ver">v2.18.0</span>
       <span class="date">2026-06-15</span>

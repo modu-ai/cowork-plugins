@@ -66,7 +66,9 @@ flowchart TD
 ```
 
 {{< hint type="note" >}}
-**v2.18.0 업데이트 (최신)**: **Cowork 에이전트 모델 전환** — v2.17.0이 도입한 플러그인 번들 코디네이터 sub-agent 14개를 전면 제거하고, **`/project`가 사용자 프로젝트에 맞춤 sub-agent를 직접 생성**하는 Agent Synthesis(Phase 3.5) 모델로 일원화했습니다. 프로젝트 에이전트는 고정 다단계·병렬 fan-out·빈번 반복 워크플로우에 한해 `.claude/agents/`에 생성되며, 플러그인 번들보다 우선순위가 높고 Cowork가 자동 로드하며 새 세션에서 활성화됩니다. moai-core:project 스킬 현대화(27 플러그인/173 스킬 정합 · Phase 2 화이트리스트 동적 도출 · bare `/project` 기본 동작) · moai-office 5 SKILL.md의 삭제된 doc-qa 참조 정정. **27 플러그인 · 173 스킬 유지 · 기능적 비파괴 · Breaking change 없음** (제거된 코디네이터의 스킬 체인은 자연어 인라인 호출로 동일하게 동작합니다).
+**v2.19.0 업데이트 (최신)**: **humanize-korean v2.0.0 포팅 + Cowork-safe 코디네이터 31종 재도입** — `moai-content:humanize-korean`을 upstream epoko77-ai/im-not-ai v2.0.0으로 정렬(번역투 8유형 계보 + 신규 패턴 A-16·A-18·A-19·E-7 + post-editese 14메트릭). Cowork-safe 코디네이터 31개(24 플러그인, Bash·WebFetch 배제)를 실측 근거로 선별 재도입. v2.18.0 `/project` Agent Synthesis와 공존. **27 플러그인 · 173 스킬 유지 · 기능적 비파괴 · Breaking change 없음**.
+
+**v2.18.0**: **Cowork 에이전트 모델 전환** — v2.17.0이 도입한 플러그인 번들 코디네이터 sub-agent 14개를 전면 제거하고, **`/project`가 사용자 프로젝트에 맞춤 sub-agent를 직접 생성**하는 Agent Synthesis(Phase 3.5) 모델로 일원화했습니다. 프로젝트 에이전트는 고정 다단계·병렬 fan-out·빈번 반복 워크플로우에 한해 `.claude/agents/`에 생성되며, 플러그인 번들보다 우선순위가 높고 Cowork가 자동 로드하며 새 세션에서 활성화됩니다. moai-core:project 스킬 현대화(27 플러그인/173 스킬 정합 · Phase 2 화이트리스트 동적 도출 · bare `/project` 기본 동작) · moai-office 5 SKILL.md의 삭제된 doc-qa 참조 정정. **27 플러그인 · 173 스킬 유지 · 기능적 비파괴 · Breaking change 없음**.
 
 **v2.17.0**: **Cowork-fit 재설계 마무리** — 한국 공공·시세 조회를 한곳에 모은 신규 **`moai-public-data`**(KRX 종목·법원경매·국토부 실거래가·공공데이터포털/KOSIS 4 조회, 모두 read-only·별도 API 키 불필요). 60여 스킬 `ai-slop-reviewer → humanize-korean` 후처리 체이닝 표준화 · 설명·트리거 STANDARD 정리 · moai-pm·moai-sales·moai-bi manifest 정직화 · 이미지·영상 Higgsfield 단일화 · WordPress 발행 wiring. **26 → 27 플러그인 · 170 → 173 스킬 · Breaking change 없음**.
 
@@ -150,7 +152,7 @@ flowchart TD
 
 - [`moai-design`](./moai-design/) **NEW v2.12** — [claude.ai/design](https://claude.ai/design) 사용을 받쳐 주는 풀스택 5 스킬. 브리프 작성·디자인 시스템 자산 합성·시니어 UX 프롬프트·Claude Code 핸드오프 분석·AI 슬롭 검수
 
-## 한 눈에 보는 스킬 수 (v2.18.0)
+## 한 눈에 보는 스킬 수 (v2.19.0)
 
 "대표 스킬 (일부)"는 각 플러그인에서 가장 자주 호출되는 스킬을 발췌한 것입니다. 전체 스킬 목록은 플러그인 이름을 클릭해 상세 페이지에서 확인하세요.
 
@@ -184,7 +186,7 @@ flowchart TD
 | [moai-comms](./moai-comms/) | 5 | report-speak, meeting-facilitator, feedback-loop, conflict-handler, negotiation-1on1 |
 | [moai-public-data](./moai-public-data/) | 4 | korean-stock-search, court-auction-search, real-estate-search, public-data |
 
-전체 **173개 스킬 · 27개 플러그인** (v2.18.0 기준).
+전체 **173개 스킬 · 27개 플러그인** (v2.19.0 기준).
 
 ## 다음 단계
 
@@ -199,4 +201,4 @@ flowchart TD
 
 - [modu-ai/cowork-plugins](https://github.com/modu-ai/cowork-plugins)
 - [cowork-plugins README](https://raw.githubusercontent.com/modu-ai/cowork-plugins/main/README.md)
-- [v2.18.0 릴리스 (최신)](../releases/v2.18/) · [v2.17.0 릴리스](../releases/v2.17/) · [v2.16.0 릴리스](../releases/v2.16/)
+- [v2.19.0 릴리스 (최신)](../releases/v2.19/) · [v2.18.0 릴리스](../releases/v2.18/) · [v2.17.0 릴리스](../releases/v2.17/) · [v2.16.0 릴리스](../releases/v2.16/)
