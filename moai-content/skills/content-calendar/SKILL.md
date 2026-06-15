@@ -11,7 +11,7 @@ description: |
   - "블로그·유튜브·SNS 발행 스케줄 정리해줘"
   산출물은 발행 캘린더 표(데이터)와 콘텐츠 전략 문서이며, 전략·캠페인 설명 같은 산문 텍스트는 moai-core:ai-slop-reviewer → moai-content:humanize-korean 체인으로 마무리하세요.
 user-invocable: true
-version: 2.18.0
+version: 2.19.0
 ---
 
 # 콘텐츠 발행 캘린더 (Content Calendar)

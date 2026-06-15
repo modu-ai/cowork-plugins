@@ -9,7 +9,7 @@ description: |
   - "출판사 투고 채널", "투고 우선순위"
   - "자비 출판 플랫폼", "독립 출판사 추천"
 user-invocable: true
-version: 2.18.0
+version: 2.19.0
 ---
 
 # book-publisher-matcher

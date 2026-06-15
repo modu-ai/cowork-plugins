@@ -9,7 +9,7 @@ description: |
   - "장르별 문체", "출판 원고 작성"
   - "인용 처리", "각주 표기", "도표 삽입"
 user-invocable: true
-version: 2.18.0
+version: 2.19.0
 ---
 
 # book-chapter-writer

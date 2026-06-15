@@ -1,7 +1,9 @@
-"""Tests for humanize-ko v1.6 metrics module.
+"""Tests for humanize-ko v1.6 metrics + v2.0 post-editese metrics modules.
 
-Runs under either pytest or unittest. Imports the metrics module from its
-location under .claude/skills/humanize-korean/references/.
+Runs under either pytest or unittest. Imports the metrics modules from the
+cowork skill layout: references/ sits directly under the skill root
+(PROJECT_ROOT), NOT under .claude/skills/... (that was the upstream
+im-not-ai layout — adapted here for the moai-content cowork plugin).
 """
 
 from __future__ import annotations
@@ -14,16 +16,15 @@ import unittest
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(HERE, ".."))
-METRICS_DIR = os.path.join(
-    PROJECT_ROOT, ".claude", "skills", "humanize-korean", "references"
-)
+METRICS_DIR = os.path.join(PROJECT_ROOT, "references")
 sys.path.insert(0, METRICS_DIR)
 
 import metrics  # noqa: E402  (sys.path mutation is intentional)
+import metrics_v2  # noqa: E402  (v2.0 post-editese layer)
 
-BASELINE_PATH = os.path.join(
-    PROJECT_ROOT, "_workspace", "v1.6-2026-05-06", "02_katfish_baseline.json"
-)
+# Baselines ship alongside the metric modules in references/.
+BASELINE_PATH = os.path.join(METRICS_DIR, "baseline.json")
+BASELINE_V2_PATH = os.path.join(METRICS_DIR, "baseline_v2.json")
 
 
 class MetricsTests(unittest.TestCase):
@@ -163,6 +164,117 @@ class MetricsTests(unittest.TestCase):
                 data = json.load(f)
             self.assertEqual(data["version"], "v1.6")
             self.assertIn(data["risk_band"], ("low", "medium", "high"))
+
+
+class MetricsV2Tests(unittest.TestCase):
+    """v2.0 post-editese layer — regression-safe sibling of metrics.py."""
+
+    # ------------------------------------------------------------------
+    # v1.6 callables are re-exported verbatim (regression guard)
+    # ------------------------------------------------------------------
+
+    def test_v1_callables_reexported(self) -> None:
+        text = "그는 일어나고, 세수했고, 옷을 입었다."
+        self.assertEqual(
+            metrics_v2.comma_inclusion_rate(text),
+            metrics.comma_inclusion_rate(text),
+        )
+        self.assertEqual(
+            metrics_v2.ending_comma_rate(text),
+            metrics.ending_comma_rate(text),
+        )
+
+    # ------------------------------------------------------------------
+    # Robustness — empty input is safe across all 14 new metrics
+    # ------------------------------------------------------------------
+
+    def test_empty_string_is_safe_v2(self) -> None:
+        self.assertEqual(metrics_v2.lexical_density(""), 0.0)
+        self.assertEqual(metrics_v2.ending_diversity(""), 0.0)
+        self.assertEqual(metrics_v2.normalisation_score(""), 0.0)
+        self.assertEqual(metrics_v2.da_streak_rate(""), 0)
+        self.assertEqual(metrics_v2.inanimate_subject_rate(""), 0.0)
+        self.assertEqual(metrics_v2.by_passive_count(""), 0)
+        self.assertEqual(metrics_v2.double_passive_count(""), 0)
+        self.assertEqual(metrics_v2.pronoun_density(""), 0.0)
+        self.assertEqual(metrics_v2.deul_overuse_rate(""), 0.0)
+        self.assertEqual(metrics_v2.relative_clause_nesting(""), 0)
+        self.assertEqual(metrics_v2.have_make_literal_count(""), 0)
+        self.assertEqual(metrics_v2.double_particle_count(""), 0)
+        self.assertEqual(metrics_v2.progressive_aspect_rate(""), 0.0)
+
+    # ------------------------------------------------------------------
+    # T-signal detection (interference axis)
+    # ------------------------------------------------------------------
+
+    def test_double_particle_detects_double_only(self) -> None:
+        # 이중 조사 2건; 단순 '~의'는 절대 카운트 안 됨 (caveat C5).
+        text = "긴장으로부터의 해방과 주점 2층에서의 살림. 회사의 정책의 변화의 의미."
+        self.assertEqual(metrics_v2.double_particle_count(text), 2)
+
+    def test_double_passive_detects_surface(self) -> None:
+        text = "그것은 잊혀진 기록이다. 결과가 보여진다. 데이터가 쓰여진다."
+        self.assertGreaterEqual(metrics_v2.double_passive_count(text), 3)
+
+    def test_have_make_literal(self) -> None:
+        text = "우리는 어제 회의를 가졌다. 위원회가 결정을 내렸다."
+        self.assertGreaterEqual(metrics_v2.have_make_literal_count(text), 2)
+
+    def test_progressive_aspect(self) -> None:
+        text = "그는 책을 읽고 있다. 비가 내리고 있다."
+        self.assertGreater(metrics_v2.progressive_aspect_rate(text), 0.0)
+
+    # ------------------------------------------------------------------
+    # compute_all_v2 superset contract
+    # ------------------------------------------------------------------
+
+    def test_compute_all_v2_superset(self) -> None:
+        text = "AI는 빠르게 발전하고 있다. 그는 데이터를 분석했다."
+        result = metrics_v2.compute_all_v2(
+            text,
+            genre="essay",
+            baseline_path=BASELINE_PATH,
+            baseline_v2_path=BASELINE_V2_PATH,
+        )
+        # v1.6 keys preserved (superset)
+        self.assertIn("metrics", result)
+        self.assertIn("risk_band", result)
+        # v2.0 keys added
+        self.assertEqual(result["version"], "v2.0")
+        self.assertIn("v2_metrics", result)
+        self.assertIn("v2_interference_index", result)
+        self.assertEqual(len(result["v2_metrics"]), 14)
+        # placeholder baseline → every cell flagged
+        self.assertEqual(len(result["v2_baseline_warnings"]), 14)
+
+    def test_compute_all_alias(self) -> None:
+        # compute_all is aliased to compute_all_v2 (v1.6 호환)
+        self.assertIs(metrics_v2.compute_all, metrics_v2.compute_all_v2)
+
+    # ------------------------------------------------------------------
+    # CLI smoke
+    # ------------------------------------------------------------------
+
+    def test_v2_cli_writes_json_and_prints_band(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            in_path = os.path.join(td, "input.txt")
+            out_path = os.path.join(td, "out_v2.json")
+            with open(in_path, "w", encoding="utf-8") as f:
+                f.write("오늘 비가 왔다. 그는 우산을 가지고 있다.")
+            rc = metrics_v2._main(
+                [
+                    "--input", in_path,
+                    "--genre", "essay",
+                    "--output", out_path,
+                    "--baseline", BASELINE_PATH,
+                    "--baseline-v2", BASELINE_V2_PATH,
+                ]
+            )
+            self.assertEqual(rc, 0)
+            with open(out_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            self.assertEqual(data["version"], "v2.0")
+            self.assertIn("v2_metrics", data)
 
 
 if __name__ == "__main__":

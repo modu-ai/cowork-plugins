@@ -11,7 +11,7 @@ description: |
   - "제품 리뷰 블로그 포스팅 구성 짜줘"
   검색 상위 노출과 독자 전환을 함께 노리며, 완성 후 moai-core:ai-slop-reviewer로 AI 티를 정리하면 좋습니다.
 user-invocable: true
-version: 2.18.0
+version: 2.19.0
 ---
 
 # 블로그 (Blog)

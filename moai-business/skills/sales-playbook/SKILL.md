@@ -12,7 +12,7 @@ description: |
   - "영업 성공 지표 설정해줘"
   타겟 분석·접근 전략·이의처리·성공 지표를 한 문서로 묶고, PPT 변환이나 AI 표현 다듬기로 이어집니다.
 user-invocable: true
-version: 2.18.0
+version: 2.19.0
 ---
 
 # 영업 플레이북 (Sales Playbook)

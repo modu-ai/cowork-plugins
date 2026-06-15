@@ -15,9 +15,9 @@ description: |
 
   적용 제외 — 단순 맞춤법·오탈자 교정(직접 처리), 번역(번역 스킬), 내용 추가·삭제 동반 재작성(별도 집필 스킬), 코드·JSON·CSV·차트·표.
 
-  Adapted from epoko77-ai/im-not-ai (MIT, ⭐937) v1.6.1 — humanize-monolith Fast 모드 단일 스킬 변형.
+  Adapted from epoko77-ai/im-not-ai (MIT, ⭐2.9k) v2.0.0 — humanize-monolith Fast 모드 단일 스킬 변형. 한국 번역학계 8유형 번역투 계보 + 신규 패턴 A-16/A-18/A-19/E-7 + post-editese 14메트릭 포함.
 user-invocable: true
-version: 2.18.0
+version: 2.19.0
 ---
 
 # Humanize Korean — 한국어 AI 티 제거 (Fast 모드)
@@ -38,7 +38,7 @@ version: 2.18.0
 작업 시작 시 가장 먼저 다음 한 줄을 출력합니다.
 
 ```
-humanize-korean v2.1 — fast 모드 / run_id: {YYYY-MM-DD-NNN}
+humanize-korean v2.2 — fast 모드 / run_id: {YYYY-MM-DD-NNN}
 ```
 
 ### run_id 결정
@@ -83,6 +83,15 @@ python3 moai-content/skills/humanize-korean/references/metrics.py \
 - 한자어 명사화 -성/-적/-화 밀도(F-4)
 - 종결어미 분포(I 카테고리)
 - 문두 접속사 빈도(H-1)
+
+**(옵션) post-editese 분석 레이어 — `references/metrics_v2.py`**: 번역투 14개 정량 신호(simplification·normalisation·interference 3축, T1~T8)를 추가로 측정하려면 `metrics_v2.py`를 호출합니다. `metrics.py`를 import해 v1.6 출력의 상위집합을 반환하므로(`v2_metrics`·`v2_interference_index` 키 추가) 기존 Phase 흐름과 호환됩니다. 이 레이어는 **선택적 분석용**으로, Fast 파이프라인의 1차 baseline은 여전히 `metrics.py`입니다. baseline은 placeholder(`baseline_v2.json`, 모든 셀 `_placeholder: true` — calibration 전이므로 z-score는 참고용).
+
+```bash
+python3 moai-content/skills/humanize-korean/references/metrics_v2.py \
+  --input "_workspace/{run_id}/01_input.txt" \
+  --genre {essay|news|blog|qa|dialogue} \
+  --output "_workspace/{run_id}/00_metrics_v2.json"
+```
 
 표준 라이브러리만 사용하므로 별도 의존 설치는 없습니다(Python 3.13+ 권장).
 
@@ -250,10 +259,13 @@ ai-slop-reviewer만으로 충분한 경우(영어 비중 높은 텍스트, 캐�
 - 윤문 처방: [`references/rewriting-playbook.md`](references/rewriting-playbook.md) — 카테고리별 치환 레시피·장르별 허용 표
 - 정량 메트릭: [`references/metrics.py`](references/metrics.py) — Python 3.13+ 표준 라이브러리만, CLI 호출
 - 베이스라인: [`references/baseline.json`](references/baseline.json) — 카테고리별 임계값
+- (옵션) post-editese 메트릭: [`references/metrics_v2.py`](references/metrics_v2.py) — 번역투 14개 정량 신호(3축 T1~T8), metrics.py import 상위집합, CLI `--genre essay|news|blog|qa|dialogue`
+- (옵션) post-editese 베이스라인: [`references/baseline_v2.json`](references/baseline_v2.json) — 3축 placeholder 임계값(모든 셀 `_placeholder: true`, calibration 전)
+- 번역학 학술 SSOT: [`references/scholarship.md`](references/scholarship.md) — 한국 번역학계 8유형 계보 + 국제 이론(Baker·Toury·Toral) + caveat 6건, 신규 패턴 출처
 - 정밀 모드 명세(향후 확장용): [`references/strict-pipeline-spec.md`](references/strict-pipeline-spec.md) — 7인 에이전트 파이프라인(현재 스킬에서는 미사용, 별도 워크플로로 실행 시 참조)
 - 웹 서비스 확장(옵션): [`references/web-service-spec.md`](references/web-service-spec.md) — Next.js + Vercel 확장 시 참조
 
 ---
 
-**Adapted from**: [epoko77-ai/im-not-ai](https://github.com/epoko77-ai/im-not-ai) v1.6.1 (MIT License, ⭐937).
+**Adapted from**: [epoko77-ai/im-not-ai](https://github.com/epoko77-ai/im-not-ai) v2.0.0 (MIT License, ⭐2.9k).
 원본은 7인 에이전트 + Fast/Strict 듀얼 모드 오케스트레이터 스킬입니다. 이 cowork 변형은 Fast 모드를 단일 스킬로 압축하고, Strict 5인 파이프라인 명세는 `references/strict-pipeline-spec.md`에 보존했습니다. 분류 체계(taxonomy)·룰북(quick-rules·playbook)·메트릭(metrics.py·baseline.json)·테스트(test_metrics.py)는 모두 원본 그대로 가져왔습니다.

@@ -12,7 +12,7 @@ description: |
   실제 계정에 변경을 적용하는 라이브 운영 스킬이라, 쓰기·예산·결제 동작은 실행 전에 항상 사용자 확인을 거칩니다.
   [책임 경계] vs meta-ads-analyzer·pixel-audit·campaign-planner: 이 스킬=실제 광고 생성·수정·온오프(쓰기), 저 스킬=보고서 분석·픽셀 설치 검증·캠페인 기획.
 user-invocable: true
-version: 2.18.0
+version: 2.19.0
 ---
 
 # Meta 광고 운영 (Meta Ads AI Connectors)

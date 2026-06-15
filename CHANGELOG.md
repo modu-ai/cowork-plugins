@@ -14,6 +14,32 @@
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
 
+## [2.19.0] - 2026-06-15
+
+MINOR. **humanize-korean v2.0.0 포팅 + Cowork-safe 플러그인 코디네이터 31종 선별 재도입**. 두 갈래 통합 릴리스입니다. ① `moai-content:humanize-korean`을 upstream [epoko77-ai/im-not-ai](https://github.com/epoko77-ai/im-not-ai) v1.6.1 → v2.0.0으로 정렬(한국 번역학계 8유형 번역투 계보 + 신규 패턴 4 + post-editese 14메트릭). ② v2.18.0에서 제거했던 번들 에이전트를, 에이전트 도구 동작 실측 리포트(플러그인 서브에이전트는 Cowork에서 Read/Grep/Glob/Write/Edit/WebSearch 동작·Bash/WebFetch 미동작)를 근거로 **Cowork-safe 형태로 선별 재도입**(24 플러그인 31개). `/project` Agent Synthesis와 공존(플러그인 번들 = 마켓플레이스 기본 제공, /project = 사용자 프로젝트 맞춤). 27 플러그인 / 173 스킬 유지, 동기화 2.18.0 → 2.19.0. 기능적 비파괴.
+
+### Added
+
+- **Cowork-safe 플러그인 코디네이터 sub-agent 31개** (`moai-*/agents/*.md`, 24 플러그인) — 멀티스텝 체인·배치·QA가 필요한 고가치 스킬 클러스터에만 선별 부착. 모든 에이전트는 `tools: Read, Grep, Glob, Write, Edit, WebSearch`(Bash·WebFetch 배제 — Cowork 서브에이전트 미지원)이며, 텍스트 산출 체인은 `moai-core:ai-slop-reviewer → moai-content:humanize-korean`으로 마감(§3-2). 분포: commerce 4 · marketing 3 · business·content 2 · 그 외 18 플러그인 1개씩. (단일 스킬 plugin bi·lifestyle·pm은 의도적 제외.)
+- **humanize-korean 신규 패턴 4종** — `A-16` 영어 대명사 직역 [S1] · `A-18` 관계절 좌향 수식 [S2] · `A-19` 이중 조사 결합 [S2] · `E-7` 청자 경어법 일관성 손실 [S2 estimated]. `A-17`(무정물 '-들' 부착)은 hold(외부 회차 양성 0건 → v2.1 재평가).
+- **post-editese 메트릭 레이어** — `references/metrics_v2.py`(번역투 14개 정량 신호, simplification·normalisation·interference 3축, metrics.py import 상위집합, stdlib only) + `references/baseline_v2.json`(5장르 placeholder 임계값) + `references/scholarship.md`(한국 번역학계 8유형 + 국제 이론 Baker·Toury·Toral + caveat 6건).
+- humanize-korean tests에 v2.0 스모크 테스트 9종 추가(총 22 테스트 PASS).
+
+### Changed
+
+- **humanize-korean 분류 체계 v1.6 → v2.0** — `ai-tell-taxonomy.md` 머리말에 8유형 번역투 계보 통합, 보강 4패턴(`A-15` 사역·인지 동사 3축 처방 · `A-7` light verb construction · `F-4` 영어 명사화 접미사 4종 · `E-2` 진행형 '~고 있다' 처방). `quick-rules.md`·`rewriting-playbook.md`(PE 통합 체크리스트 15항목)·`SKILL.md`(attribution v2.0.0 ⭐2.9k, Phase 2 옵션 post-editese 레이어, 배너 v2.2) 동기화.
+- 전체 버전 동기화 2.18.0 → 2.19.0 (marketplace.json + 27 plugin.json + 173 SKILL.md).
+
+### Fixed
+
+- humanize-korean `tests/test_metrics.py` 경로 복구 — v1.6.1 verbatim 포팅 시 upstream 레이아웃(`.claude/skills/...`)이 cowork 레이아웃(`moai-content/skills/...`)으로 적응되지 않아 `import metrics` 실패하던 사전 결함을 수정(이제 22 테스트 전부 실행·통과).
+
+### Migration
+
+- v2.18.0의 `/project` Agent Synthesis는 그대로 유지됩니다. 이번 플러그인 번들 에이전트는 마켓플레이스 기본 제공 코디네이터로, 사용자 프로젝트 맞춤 에이전트와 공존합니다.
+- 플러그인 에이전트는 Cowork에서 자동 노출됩니다(설치 버전 갱신 후). 셸 실행·웹페이지 fetch가 필요한 작업은 부모 세션이 담당합니다.
+- 적용: `/plugin marketplace update cowork-plugins`.
+
 ## [2.18.0] - 2026-06-15
 
 MINOR. **Cowork 에이전트 모델 전환 — 플러그인 번들 코디네이터 제거 + `/project` 맞춤 에이전트 생성 + project 스킬 현대화**. v2.17.0의 플러그인 번들 코디네이터 sub-agent를 전면 제거하고, `/project`가 사용자 워크플로우에 맞춘 전담 에이전트를 직접 생성하는 Agent Synthesis 모델로 일원화했습니다. **27 플러그인 / 173 스킬 유지**, 동기화 201지점 2.17.0 → 2.18.0. 기능적 비파괴 — 기존 스킬 체인은 자연어 인라인 호출로 동일 결과.

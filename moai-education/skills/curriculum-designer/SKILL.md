@@ -14,7 +14,7 @@ description: |
   학습 목표 명세서, 주차별 커리큘럼 표, 강사 가이드 초안까지 한 번에 정리해 드립니다.
   [책임 경계] vs moai-education:assessment-creator: 이 스킬=커리큘럼과 학습 목표 설계, 저 스킬=실제 시험 문제 출제와 채점.
 user-invocable: true
-version: 2.18.0
+version: 2.19.0
 ---
 
 # 커리큘럼 디자이너 (Curriculum Designer)

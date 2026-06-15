@@ -12,7 +12,7 @@ description: |
   - "회피 설계 방향 제안해줘"
   특허 데이터가 없으면 moai-research:patent-search로 먼저 검색한 뒤 분석하며, 보고서 본문은 ai-slop 검수 체인으로 마무리합니다.
 user-invocable: true
-version: 2.18.0
+version: 2.19.0
 ---
 
 # 특허 분석 (Patent Analyzer)

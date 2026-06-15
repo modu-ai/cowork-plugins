@@ -7,7 +7,7 @@ description: |
   쿠팡 광고보고서·시크릿팡 호환 엑셀을 입력받아 상품별 의사결정·캠페인 분리안을 산출하며, 수치·표·의사결정 데이터 스킬이라 ai-slop-reviewer 체이닝은 제외합니다. end-ROAS 공식은 moai-commerce:commerce-margin-calculator references/end-roas.md를 참조합니다.
   [책임 경계] 페어 moai-marketing:performance-report(GA4·메타·네이버 다채널 ROAS 종합)와 구분 — 본 스킬은 쿠팡 단일 채널 광고관리 전담. 마진·엔드 ROAS 계산은 moai-commerce:commerce-margin-calculator, 채널 등록·운영은 moai-commerce:marketplace-coupang.
 user-invocable: true
-version: 2.18.0
+version: 2.19.0
 ---
 
 # 쿠팡 광고 풀세트 최적화 (Marketplace Coupang Ads)
