@@ -1,24 +1,24 @@
-"""Humanize KR v2.0 quantitative metrics calculator.
+"""humanize-korean 정량 메트릭 계산기 (v2.0 — post-editese 확장).
 
-Extends v1.6 metrics.py with post-editese 3축 (simplification·normalisation·
-interference) and 8 translation-type detection signals from the Korean
-machine-translation/post-editing literature (Toral 2019; Schmaltz 2020;
-보고서 T1~T8).
+v1.6 metrics.py의 8개 쉼표·명사화 지표 위에, 번역투/포스트-에디팅 문헌의
+3축(simplification·normalisation·interference)과 T1~T8 직역체 신호 14종을
+얹는다. v2.0 출력은 v1.6 출력의 상위집합이다.
 
-Hard rule: standard library ONLY (json/re/os/sys/argparse/statistics). No
-konlpy/bareun/mecab/spaCy. Morphological analysis is approximated with
-regex + suffix dictionaries (한자어 -성·-적·-화·-도·-력·-감·-원,
-평서형 -한다·-된다·-이다, 진행형 -고 있다, 이중 조사 -에서의·-에로의·-으로의·-에의·-으로부터의·-로부터의).
+설계 원칙:
+- 표준 라이브러리만 사용한다(json/re/os/sys/argparse/statistics).
+  konlpy/bareun/mecab/spaCy/numpy/pandas 등 외부 패키지는 도입하지 않는다.
+- v1.6 8개 함수는 metrics.py에서 그대로 재노출한다(시그니처·반환 보존, 회귀 안전).
+  여기서 재정의하지 않는다.
+- v2.0이 추가하는 14개 함수는 한자어 접미사 사전(-성/-적/-화/-도/-력/-감/-원),
+  평서형 종결(-한다/-된다/-이다), 진행형(-고 있다), 이중 조사(-에서의 등) 등을
+  정규식 + 사전으로 근사한다.
 
-Versioning:
-- v1.6 8 functions (comma_inclusion_rate ... lexical_diversity) are imported
-  *as-is* from references/metrics.py (signature + return preserved). DO NOT
-  redefine them here. Regression-safe.
-- v2.0 adds 14 NEW pure functions for post-editese + T1~T8 detection.
-
-This file is the cowork Fast-mode port: it sits next to metrics.py in the
-skill's references/ folder. The post-editese layer is an OPTIONAL analysis
-track — the Fast pipeline still runs metrics.py as its primary baseline.
+언어 개념 출처(직접 인용):
+- 3축 정의: Toral 2019 (arXiv:1907.00900) simplification/normalisation/interference,
+  Baker 1993 normalisation, Toury 1995 law of interference.
+- T1~T8 한국어 직역체 유형: 한국 번역학계의 번역투 분류(무정물 주어, 이중 피동,
+  인칭 대명사 과다, 무정물 복수 -들, 좌향 관형절 중첩, light verb 직역,
+  이중 조사, 진행형 1대1 매핑).
 
 CLI:
     python metrics_v2.py --input run/01_input.txt \
@@ -32,61 +32,54 @@ import json
 import os
 import re
 import sys
-from statistics import StatisticsError, mean
-from typing import Any
+from statistics import StatisticsError, fmean
+from typing import Any, Optional
 
 # ---------------------------------------------------------------------------
-# Import v1.6 metrics module (regression-safe — signatures untouched)
+# v1.6 메트릭 모듈 임포트 (회귀 안전 — 시그니처 그대로 재노출)
 # ---------------------------------------------------------------------------
 
-# metrics_v2.py lives in the SAME directory as metrics.py (this skill's
-# references/ folder). We add the module's own directory to sys.path and
-# import the v1.6 module by name. No .claude/ path assumptions.
-_HERE = os.path.dirname(os.path.abspath(__file__))
-if _HERE not in sys.path:
-    sys.path.insert(0, _HERE)
+# metrics_v2.py는 metrics.py와 같은 디렉터리(이 스킬의 references/)에 있다.
+# 모듈 디렉터리를 sys.path 앞에 넣고 이름으로 임포트한다.
+_MODULE_DIR = os.path.dirname(os.path.abspath(__file__))
+if _MODULE_DIR not in sys.path:
+    sys.path.insert(0, _MODULE_DIR)
 
-import metrics as _v1  # noqa: E402  (sys.path mutation is intentional)
+import metrics as _base  # noqa: E402  (sys.path 조작 의도적)
 
-# Re-export the 8 v1.6 metric callables verbatim. They keep their original
-# signatures and return shapes — `metrics_v2.comma_inclusion_rate(text)`
-# is byte-identical to `metrics.comma_inclusion_rate(text)`.
-comma_inclusion_rate = _v1.comma_inclusion_rate
-comma_usage_rate = _v1.comma_usage_rate
-ending_comma_rate = _v1.ending_comma_rate
-comma_segment_length = _v1.comma_segment_length
-conclusion_pivot_count = _v1.conclusion_pivot_count
-safe_balance_count = _v1.safe_balance_count
-hanja_nominalizer_density = _v1.hanja_nominalizer_density
-lexical_diversity = _v1.lexical_diversity
+# v1.6 8개 지표 콜러블을 그대로 재노출. 시그니처·반환 형태가 동일하다.
+comma_inclusion_rate = _base.comma_inclusion_rate
+comma_usage_rate = _base.comma_usage_rate
+ending_comma_rate = _base.ending_comma_rate
+comma_segment_length = _base.comma_segment_length
+conclusion_pivot_count = _base.conclusion_pivot_count
+safe_balance_count = _base.safe_balance_count
+hanja_nominalizer_density = _base.hanja_nominalizer_density
+lexical_diversity = _base.lexical_diversity
 
-# Reuse v1.6 internal helpers (private, regression-safe — we never mutate).
-_split_sentences = _v1._split_sentences
-_eojeols = _v1._eojeols
-_strip_punct = _v1._strip_punct
+# v1.6 분할 헬퍼 재사용 (내부 함수 — 읽기 전용으로만 쓴다).
+_segment_sentences = _base._split_into_sentences
+_split_words = _base._word_units
+_clean_word = _base._bare_word
 
 VERSION = "v2.0"
 
 # ---------------------------------------------------------------------------
-# v2.0 module-level constants — sufix / lexicon dictionaries
+# v2.0 상수 — 접미사 / 어휘 사전
 # ---------------------------------------------------------------------------
 
-# 한자어 명사화 접미사 v2.0 확장 — v1.6의 -성·-적·-화 + 보고서 T6 보강 4종.
-# token-final 1글자 매칭. 토큰 길이 >= 2 가드는 함수 내부에서.
-_HANJA_SUFFIXES_V2 = ("성", "적", "화", "도", "력", "감", "원")
+# 한자어 명사화 접미사 v2.0 — v1.6 3종 + 4종 보강. 어절 마지막 1글자 매칭.
+_SINO_SUFFIX_V2 = ("성", "적", "화", "도", "력", "감", "원")
 
-# 평서형 종결 사전 — normalisation 축. 문장 마지막 어절의 어미를 매칭.
-# 한자어 + 한다/된다/이다 형태가 가장 흔한 정규화 시그널.
-_DECLARATIVE_ENDINGS = ("한다", "된다", "이다")
+# 평서형 종결 어미 — normalisation 축. 문장 끝 어절의 어미를 본다.
+_DECLARATIVE_TAIL = ("한다", "된다", "이다")
 
-# 진행형 어미 — T8b. "~고 있다" 표층 매칭. 종결형/연결형 모두 포함.
-# 부정형 "있지 않다", 의존명사 "있는" 은 별개. 정규식은 "고 있" 토큰
-# 시작점 + 후속 "다/었/는" 등을 폭넓게 캡처.
-_PROGRESSIVE_RE = re.compile(r"고\s*있(?:다|었|는|을|던|는다)")
+# 진행형 '~고 있다' 표층 매칭(종결/연결/관형형 폭넓게 캡처).
+_PROGRESSIVE = re.compile(r"고\s*있(?:다|었|는|을|던|는다)")
 
-# T2b 이중 피동 표층 어휘. 모두 "되어진/여진/혀진/려진" 등 피동 보조어간 +
-# 피동 보조용언 중첩의 표층형. 단순 "되다" 는 정상 표현이므로 제외.
-_DOUBLE_PASSIVE_TOKENS = (
+# 이중 피동 표층 어휘. 단순 '되다'는 정상 표현이므로 제외하고, '되어진/여진/
+# 혀진/려진' 류 중첩 피동만 등재한다.
+_DOUBLE_PASSIVE_FORMS = (
     "되어진다",
     "되어졌다",
     "되어진",
@@ -110,36 +103,32 @@ _DOUBLE_PASSIVE_TOKENS = (
     "놓여진",
 )
 
-# T2a "~에 의해 + 피동" — 피동 동사가 직후 N글자 안에 등장해야 매칭.
-# 단순 "에 의해" 는 빈번한 자연 한국어이므로 제외 (보고서 T2 caveat).
-# 한자어 피동은 '되-'가 축약된 표층형(된·될·되는·된다·되었)으로 가장 흔하게
-# 나타나며(생성된·구성되는·제작되었다), '-아/어/여지다'(만들어진·끊어진) 계열도
-# 행위자 피동에 포함된다. 비축약 '되다'·'받다'·'당하다'도 함께 매칭한다.
-_BY_PASSIVE_RE = re.compile(
+# T2a '~에 의해 + 피동'. 피동 동사가 직후 12글자 안에 와야 매칭한다.
+# 단순 '에 의해'는 자연 한국어이므로 제외. 한자어 피동은 '되-' 축약형
+# (생성된·구성되는·제작되었다)이 가장 흔하고, '-아/어/여지다'(만들어진·끊어진)
+# 계열도 행위자 피동에 포함한다. 비축약 '되다'·'받다'·'당하다'도 함께 본다.
+_AGENT_PASSIVE = re.compile(
     r"에\s*의(?:해|하여)\s+\S{0,12}?"
     r"(?:"
-    r"된다|된|될|되는|되어|되었|되며|되고|되다"   # 되다 계열 (축약 된·될 포함)
-    r"|받는|받은|받을|받았|받아|받다"             # 받다 피동
-    r"|당하|당한|당했|당할|당해"                  # 당하다 피동
-    r"|[아어여]진|[아어여]졌|[아어여]지"          # -아/어/여지다 계열 (만들어진·끊어진)
+    r"된다|된|될|되는|되어|되었|되며|되고|되다"
+    r"|받는|받은|받을|받았|받아|받다"
+    r"|당하|당한|당했|당할|당해"
+    r"|[아어여]진|[아어여]졌|[아어여]지"
     r")"
 )
 
-# T3 인칭 대명사 — 영어 he/she/it/they 의 1대1 매핑.
-# "그" 단독은 지시사·관형사로도 자주 쓰이므로 보수적으로 처리:
-#   - "그" 뒤에 조사 "는/가/를/의/에게/에서/와/도/만" 이 붙은 경우만 인칭으로 본다.
-#   - 그녀/그들/그것 은 거의 항상 인칭 대명사이므로 단독 매칭.
-_PRONOUN_RE = re.compile(
+# T3 인칭 대명사. 영어 he/she/it/they 1대1 매핑.
+# '그' 단독은 지시사로도 흔하므로, 인칭 조사가 붙은 경우만 인칭으로 본다.
+# 그녀/그들/그것은 거의 항상 인칭이므로 단독 매칭한다.
+_PRONOUN = re.compile(
     r"(?:그녀(?:는|가|를|의|에게|와|도|만)?"
     r"|그것(?:은|이|을|의|에|에게)?"
     r"|그들(?:은|이|을|의|에게|과|도)?"
-    r"|그(?:는|가|를|의|에게|와|도|만)(?=\s|[\.,!?]|$))"
+    r"|그(?:는|가|를|의|에게|와|도|만)(?=\s|[.,!?]|$))"
 )
 
 # T4 무정물·추상명사 + -들. 토큰 단위 매칭.
-# 보고서 III.3.4.2 + pe_checklist PE5에서 "거의 모두 삭제 후보" 로 거론된
-# 핵심 어휘셋. 사전은 보수적(false positive 줄임).
-_INANIMATE_DEUL_TOKENS = (
+_INANIMATE_PLURAL = (
     "데이터들",
     "정보들",
     "결과들",
@@ -167,9 +156,8 @@ _INANIMATE_DEUL_TOKENS = (
     "원리들",
 )
 
-# T6 light verb construction — have/make 류 직역.
-# "회의를 가지다·결정을 내리다" 식 light verb.
-_HAVE_MAKE_LITERAL_TOKENS = (
+# T6 light verb 직역 — have/make 류.
+_LIGHT_VERB_LITERAL = (
     "가지고 있다",
     "가지고있다",
     "가지고 있는",
@@ -203,119 +191,101 @@ _HAVE_MAKE_LITERAL_TOKENS = (
     "결정을 내렸",
 )
 
-# T7 이중 조사 결합. caveat #5 (단순 ~의 제외) 정확히 반영.
-# "에서의" 등 6종만 매칭 — 단일 ~의는 절대 매칭 안 됨.
-_DOUBLE_PARTICLE_RE = re.compile(
-    r"(?:에서의|에로의|으로의|에의|으로부터의|로부터의)"
-)
+# T7 이중 조사. 단일 '~의'는 절대 매칭하지 않도록 6종만 등재한다.
+_DOUBLE_PARTICLE = re.compile(r"(?:에서의|에로의|으로의|에의|으로부터의|로부터의)")
 
-# 단락 분리: 빈 줄 1개 이상.
-_PARAGRAPH_SPLIT_RE = re.compile(r"\n\s*\n")
+# 단락 분리 — 빈 줄 1개 이상.
+_PARAGRAPH_BREAK = re.compile(r"\n\s*\n")
 
-# 종결어미 다양성 — 문장 마지막 종결어미 표층(보통 1~2음절 끝마디)을 키로 사용.
-# verb stem(예: "결정한다"의 "결정") 부분은 제외하고 어미 부분(예: "한다")만 봐야
-# 다양성 신호가 의미를 가진다. 따라서 마지막 2음절을 우선 키로 사용.
-_ENDING_FINAL_RE = re.compile(r"([가-힣]{2})[\.!?]\s*$")
-# 한 음절만 있는 문장(예: "와.")은 별도로 1음절 매칭.
-_ENDING_FINAL_FALLBACK_RE = re.compile(r"([가-힣])[\.!?]\s*$")
+# 종결어미 표층 키 — 문장 끝 마지막 2음절(없으면 1음절)을 다양성 키로 쓴다.
+_TAIL_TWO = re.compile(r"([가-힣]{2})[.!?]\s*$")
+_TAIL_ONE = re.compile(r"([가-힣])[.!?]\s*$")
+
+# 주제/주격/목적격 조사 음절 — 관형사형 어미와 동형이나 관형형이 아니므로
+# relative_clause_nesting 판정에서 명시 제외한다(F1 오탐 차단).
+_TOPIC_PARTICLE_TAIL = ("은", "는", "을", "를")
 
 
 # ---------------------------------------------------------------------------
-# Local helpers (do not shadow v1.6)
+# v2.0 전용 헬퍼 (v1.6 헬퍼와 이름 충돌 없음)
 # ---------------------------------------------------------------------------
 
 
-def _split_paragraphs(text: str) -> list[str]:
-    text = text.strip()
-    if not text:
+def _segment_paragraphs(text: str) -> list[str]:
+    stripped = text.strip()
+    if not stripped:
         return []
-    return [p.strip() for p in _PARAGRAPH_SPLIT_RE.split(text) if p.strip()]
+    return [p.strip() for p in _PARAGRAPH_BREAK.split(stripped) if p.strip()]
 
 
-def _last_eojeol(sentence: str) -> str:
-    toks = _eojeols(sentence)
-    if not toks:
+def _final_word(sentence: str) -> str:
+    words = _split_words(sentence)
+    if not words:
         return ""
-    return _strip_punct(toks[-1])
+    return _clean_word(words[-1])
 
 
-def _all_tokens(text: str) -> list[str]:
-    toks = [_strip_punct(t) for t in _eojeols(text)]
-    return [t for t in toks if t]
+def _clean_words(text: str) -> list[str]:
+    return [w for w in (_clean_word(t) for t in _split_words(text)) if w]
 
 
 # ---------------------------------------------------------------------------
-# === v2.0 NEW METRICS ===
 # Group A: simplification 축
 # ---------------------------------------------------------------------------
 
 
 def lexical_diversity_ttr(text: str) -> float:
-    """Type-token ratio (TTR) over Korean eojeols — simplification axis.
-
-    Identical computation to v1.6 ``lexical_diversity`` but exposed under the
-    Toral 2019 simplification-axis name so the post-editese score can map
-    cleanly. Returns 0.0 on empty input.
-    """
+    """어절 TTR — simplification 축. v1.6 lexical_diversity와 동일 계산."""
     return lexical_diversity(text)
 
 
 def lexical_density(text: str) -> float:
-    """Content-word ratio — proxy for lexical density (simplification axis).
+    """내용어 비율 근사 — simplification 축.
 
-    Standard-library proxy: a token is counted as a *content word* if its
-    final character is one of the v2.0 hanja nominalizer suffixes
-    (-성·-적·-화·-도·-력·-감·-원), or if it ends with a verb/adjective
-    declarative marker (-한다·-된다·-이다·-했다·-된다·-였다·-이었다·-답다·-스럽다·-롭다).
-    Function words (조사·접속부사) are filtered out by length<2 and a small
-    stopword list.
-
-    Returns content_word_count / total_token_count in [0, 1].
+    어절 마지막 글자가 v2.0 한자어 접미사(-성·-적·-화·-도·-력·-감·-원)이거나,
+    동사/형용사 평서 종결(-한다·-된다·-이다·-했다·-였다·-었다·-답다·-스럽다·
+    -롭다·-하다·-되다)로 끝나면 내용어로 센다. 기능어(조사·접속부사)는
+    길이<2 가드와 작은 불용어 목록으로 거른다. 반환은 [0, 1].
     """
-    tokens = _all_tokens(text)
-    if not tokens:
+    words = _clean_words(text)
+    if not words:
         return 0.0
-    stop = {
+    stopwords = {
         "그리고", "그러나", "하지만", "또한", "또는", "혹은", "즉", "예를", "예컨대",
         "이는", "이것은", "그것은", "그러므로", "따라서",
     }
-    content_suffixes = ("성", "적", "화", "도", "력", "감", "원")
-    content_endings = (
+    content_suffix = ("성", "적", "화", "도", "력", "감", "원")
+    content_tail = (
         "한다", "된다", "이다", "했다", "였다", "었다",
         "답다", "스럽다", "롭다", "하다", "되다",
     )
-    hits = 0
-    for t in tokens:
-        if len(t) < 2:
+    matched = 0
+    for word in words:
+        if len(word) < 2 or word in stopwords:
             continue
-        if t in stop:
+        if word[-1] in content_suffix:
+            matched += 1
             continue
-        if t[-1] in content_suffixes:
-            hits += 1
-            continue
-        if any(t.endswith(end) for end in content_endings):
-            hits += 1
-    return hits / len(tokens)
+        if any(word.endswith(tail) for tail in content_tail):
+            matched += 1
+    return matched / len(words)
 
 
 def ending_diversity(text: str) -> float:
-    """Sentence-ending diversity — unique endings / total sentences.
+    """종결어미 다양성 — 고유 종결 키 / 전체 종결 키 수.
 
-    Approximates 종결어미 다양성. Sentence is split via v1.6 helper; the
-    last 1~3 syllables (Hangul only) before the terminal punctuation are
-    used as the ending key. Higher = more diverse (more human-like).
-    Returns 0.0 when no sentence ends with valid punctuation.
+    문장 끝 종결 부호 직전의 1~2음절을 종결 키로 본다. 값이 높을수록
+    종결이 다양(인간형). 유효한 종결이 없으면 0.0.
     """
-    sents = _split_sentences(text)
     keys: list[str] = []
-    for s in sents:
-        m = _ENDING_FINAL_RE.search(s)
-        if m:
-            keys.append(m.group(1))
+    for sentence in _segment_sentences(text):
+        m_two = _TAIL_TWO.search(sentence)
+        if m_two:
+            keys.append(m_two.group(1))
             continue
-        m2 = _ENDING_FINAL_FALLBACK_RE.search(s)
-        if m2:
-            keys.append(m2.group(1))
+        m_one = _TAIL_ONE.search(sentence)
+        if m_one:
+            keys.append(m_one.group(1))
     if not keys:
         return 0.0
     return len(set(keys)) / len(keys)
@@ -327,205 +297,171 @@ def ending_diversity(text: str) -> float:
 
 
 def normalisation_score(text: str) -> float:
-    """Declarative-form (~한다/~된다/~이다) concentration — normalisation axis.
+    """평서형(-한다/-된다/-이다) 집중도 — normalisation 축.
 
-    Returns the ratio of sentences whose final eojeol ends with one of the
-    three canonical declarative markers (~한다·~된다·~이다 — variants
-    `-한다.`, `-한다!` 등은 punctuation-stripped). High values (>0.7) signal
-    normalised, AI-like prose; very low values (<0.3) often signal informal
-    speech (해체) or heterogeneous registers. Range [0, 1].
+    문장 끝 어절이 세 평서 종결 중 하나로 끝나는 문장 비율. 높을수록(>0.7)
+    정규화된 AI 문체, 매우 낮으면(<0.3) 비격식체나 혼합 문체일 때가 많다. [0,1].
     """
-    sents = _split_sentences(text)
-    if not sents:
+    sentences = _segment_sentences(text)
+    if not sentences:
         return 0.0
-    hits = 0
-    for s in sents:
-        last = _last_eojeol(s)
-        if not last:
-            continue
-        for ending in _DECLARATIVE_ENDINGS:
-            if last.endswith(ending):
-                hits += 1
-                break
-    return hits / len(sents)
+    matched = 0
+    for sentence in sentences:
+        tail = _final_word(sentence)
+        if tail and any(tail.endswith(end) for end in _DECLARATIVE_TAIL):
+            matched += 1
+    return matched / len(sentences)
 
 
 def da_streak_rate(text: str) -> int:
-    """Count of '-다' streak runs of length >= 4 — T8a normalisation signal.
+    """길이 4 이상의 '-다' 연속 구간 개수 — T8a normalisation 신호.
 
-    A *streak* = consecutive sentences whose final eojeol ends in '다'
-    (any '~다' — 한다·된다·이다·었다·았다·였다 등). Streaks of length 4+
-    are reported. The return value is the number of distinct streaks
-    (not the total streak length). Documents with one long uniform run
-    of '-다' will return 1; truly diverse docs return 0.
+    문장 끝 어절이 '다'로 끝나는 문장이 연달아 4개 이상 이어지면 한 구간으로
+    센다. 반환은 구간 개수(누적 길이가 아니다). 균일한 '-다' 한 줄기는 1,
+    종결이 다양하면 0.
     """
-    sents = _split_sentences(text)
     streaks = 0
-    cur = 0
-    for s in sents:
-        last = _last_eojeol(s)
-        if last.endswith("다"):
-            cur += 1
+    run = 0
+    for sentence in _segment_sentences(text):
+        if _final_word(sentence).endswith("다"):
+            run += 1
         else:
-            if cur >= 4:
+            if run >= 4:
                 streaks += 1
-            cur = 0
-    if cur >= 4:
+            run = 0
+    if run >= 4:
         streaks += 1
     return streaks
 
 
 # ---------------------------------------------------------------------------
-# Group C: interference 축 — T1~T8 detection signals
+# Group C: interference 축 — T1~T8 신호
 # ---------------------------------------------------------------------------
 
 
 def inanimate_subject_rate(text: str) -> float:
-    """T1: inanimate-subject + universal-verb pattern rate.
+    """T1: 무정물 주어 + 보편 동사 패턴 비율.
 
-    Approximation: count sentences whose first content noun ends with one
-    of the v2.0 hanja suffixes (-성·-적·-화·-도·-력·-감·-원) OR matches a
-    short list of inanimate/abstract subjects (`연구·데이터·분석·결과·시스템·
-    기술·사례·현상·이론·정책·보고서`) AND whose verb is a universal
-    cognitive/declarative verb (보여준다·시사한다·만든다·드러낸다·제시한다·
-    나타낸다·증명한다·말해준다·의미한다·가져온다). Returns
-    matching_sents / total_sents in [0, 1].
+    근사: 문장 첫 어절(주어 추정)이 v2.0 한자어 접미사로 끝나거나 무정물·추상
+    명사 목록에 들고, 뒤 어절 중 보편 인지/서술 동사(보여준다·시사한다·만든다·
+    드러낸다·제시한다·나타낸다·증명한다·말해준다·의미한다·가져온다)가 있으면
+    센다. 반환 = 해당 문장 수 / 전체 문장 수, [0, 1].
     """
-    sents = _split_sentences(text)
-    if not sents:
+    sentences = _segment_sentences(text)
+    if not sentences:
         return 0.0
-    inanimate_subjects = (
+    inanimate_heads = (
         "연구", "데이터", "분석", "결과", "시스템", "기술", "사례",
         "현상", "이론", "정책", "보고서", "AI", "인공지능", "모델",
         "알고리즘", "변화", "위기", "혁신", "사회", "경제",
     )
-    universal_verbs = (
+    cognitive_verbs = (
         "보여준다", "보여줬다", "보여주는", "시사한다", "시사하는",
         "만든다", "만들어", "드러낸다", "드러냈다", "드러내는",
         "제시한다", "제시했다", "나타낸다", "나타냈다", "나타내는",
         "증명한다", "증명했다", "말해준다", "말해주는",
         "의미한다", "의미하는", "가져온다", "가져왔다", "가져오는",
     )
-    hits = 0
-    for s in sents:
-        toks = _all_tokens(s)
-        if not toks:
+    matched = 0
+    for sentence in sentences:
+        words = _clean_words(sentence)
+        if not words:
             continue
-        head = toks[0]
-        # Subject heuristic: first token, optionally followed by 은/는/이/가.
-        head_stem = head
+        head = words[0]
+        stem = head
         for josa in ("은", "는", "이", "가", "도"):
             if head.endswith(josa) and len(head) > 1:
-                head_stem = head[:-1]
+                stem = head[:-1]
                 break
-        is_inanimate = (
-            head_stem in inanimate_subjects
-            or (len(head_stem) >= 2 and head_stem[-1] in _HANJA_SUFFIXES_V2)
+        head_is_inanimate = stem in inanimate_heads or (
+            len(stem) >= 2 and stem[-1] in _SINO_SUFFIX_V2
         )
-        if not is_inanimate:
+        if not head_is_inanimate:
             continue
-        # Verb heuristic: any later token in `universal_verbs`.
-        if any(any(uv in t for uv in universal_verbs) for t in toks[1:]):
-            hits += 1
-    return hits / len(sents)
+        if any(any(verb in w for verb in cognitive_verbs) for w in words[1:]):
+            matched += 1
+    return matched / len(sentences)
 
 
 def by_passive_count(text: str) -> int:
-    """T2a: ~에 의해 + passive-verb co-occurrence count.
+    """T2a: '~에 의해 + 피동 동사' 동시 출현 개수.
 
-    Bare '에 의해' is excluded. Only the regex-anchored
-    '에 의해 ... 되/받/당하/지' pattern is counted. Returns int >= 0.
+    단순 '에 의해'는 제외, 정규식이 잡는 '에 의해 ... 되/받/당하/지'만 센다.
     """
     if not text.strip():
         return 0
-    return len(_BY_PASSIVE_RE.findall(text))
+    return len(_AGENT_PASSIVE.findall(text))
 
 
 def double_passive_count(text: str) -> int:
-    """T2b: double-passive (잊혀지다·보여지다·되어진다·여지다·쓰여지다 …) count.
+    """T2b: 이중 피동(잊혀지다·보여지다·되어진다·여지다·쓰여지다 …) 개수.
 
-    Surface-form lexicon. 단순 '되다' 는 제외 (자연 표현). Returns int >= 0.
+    표층형 사전 매칭. 단순 '되다'는 제외(자연 표현).
     """
     if not text.strip():
         return 0
-    n = 0
-    for tok in _DOUBLE_PASSIVE_TOKENS:
-        n += text.count(tok)
-    return n
+    return sum(text.count(form) for form in _DOUBLE_PASSIVE_FORMS)
 
 
 def pronoun_density(text: str) -> float:
-    """T3: personal-pronoun density per paragraph (avg).
+    """T3: 단락별 인칭 대명사 밀도 평균.
 
-    Counts 그/그녀/그것/그들 (+ 조사 fused forms). Bare '그' is only counted
-    when followed by 는/가/를/의/에게/와/도/만 to filter out demonstrative use.
-    Returns paragraph-mean of (pronoun_tokens / paragraph_eojeols).
-    Range [0, 1]. Empty input returns 0.0.
+    그/그녀/그것/그들(+조사 결합형)을 센다. 단독 '그'는 인칭 조사가 붙은
+    경우만 센다(지시사 제거). 반환 = 단락별 (인칭 토큰 / 단락 어절) 평균. [0, 1].
     """
-    paragraphs = _split_paragraphs(text)
+    paragraphs = _segment_paragraphs(text)
     if not paragraphs:
         return 0.0
-    densities: list[float] = []
-    for p in paragraphs:
-        toks = _all_tokens(p)
-        if not toks:
+    ratios: list[float] = []
+    for paragraph in paragraphs:
+        words = _clean_words(paragraph)
+        if not words:
             continue
-        pronoun_hits = len(_PRONOUN_RE.findall(p))
-        densities.append(pronoun_hits / len(toks))
-    if not densities:
+        hits = len(_PRONOUN.findall(paragraph))
+        ratios.append(hits / len(words))
+    if not ratios:
         return 0.0
     try:
-        return mean(densities)
+        return fmean(ratios)
     except StatisticsError:
         return 0.0
 
 
 def deul_overuse_rate(text: str) -> float:
-    """T4: inanimate / abstract noun + '-들' over-use ratio.
+    """T4: 무정물/추상명사 + '-들' 과용 비율.
 
-    Returns deul_overuse_hits / total_eojeols. The numerator counts
-    occurrences of any token in `_INANIMATE_DEUL_TOKENS` (데이터들·정보들·
-    결과들·연구들·아이디어들·방법들·문제들·의견들·시스템들·기술들 …).
-    Range [0, 1] — practical AI text seldom exceeds ~0.05.
+    분자 = 무정물 복수 목록(데이터들·정보들·결과들 …)에 드는 토큰 수,
+    조사가 한두 글자 붙은 형태도 함께 센다. 반환 = 분자 / 전체 어절. [0, 1].
     """
-    toks = _all_tokens(text)
-    if not toks:
+    words = _clean_words(text)
+    if not words:
         return 0.0
-    hits = 0
-    for t in toks:
-        # Match exact OR with one short josa suffix (-과/와/이/가/을/를/의/에/은/는/도)
-        if t in _INANIMATE_DEUL_TOKENS:
-            hits += 1
+    matched = 0
+    for word in words:
+        if word in _INANIMATE_PLURAL:
+            matched += 1
             continue
-        for base in _INANIMATE_DEUL_TOKENS:
-            if t.startswith(base) and len(t) - len(base) in (1, 2):
-                # remaining tail must be hangul (likely josa)
-                tail = t[len(base):]
+        for base in _INANIMATE_PLURAL:
+            if word.startswith(base) and len(word) - len(base) in (1, 2):
+                tail = word[len(base):]
                 if all("가" <= ch <= "힣" for ch in tail):
-                    hits += 1
+                    matched += 1
                     break
-    return hits / len(toks)
+    return matched / len(words)
 
 
-# 주제·주격·목적격 조사 음절 — 관형사형 어미와 동형이나 관형형이 아니므로
-# relative_clause_nesting 판정에서 명시 제외한다 (F1 오탐 차단).
-_NON_ADNOMINAL_FINAL = ("은", "는", "을", "를")
+def _is_adnominal(word: str) -> bool:
+    """어절이 관형사형 어미(종성 ㄴ/ㄹ)로 끝나는지 근사 판정한다.
 
-
-def _is_adnominal_eojeol(tok: str) -> bool:
-    """어절이 관형사형 어미(받침 ㄴ/ㄹ)로 끝나는지 근사 판정한다.
-
-    한국어 관형사형은 종성이 ㄴ/ㄹ 인 경우가 압도적이다
-    (-ㄴ/-은/-던/-한/-된 과거·현재, -ㄹ/-을/-할/-될 미래). 다만 동형이의인
-    주제/주격/목적격 조사(은·는·을·를)는 관형형이 아니므로 명시 제외한다.
-    형태소 분석기(konlpy/mecab) 없이 종성 분해로 근사하는 휴리스틱이며,
-    동형인 '은'(읽은 vs 책은)은 보수적으로 조사 쪽으로 분류해 오탐을 줄인다
-    (보고서 T5 caveat — recall보다 precision 우선).
+    한국어 관형사형은 종성이 ㄴ/ㄹ 인 경우가 압도적이다(-ㄴ/-은/-던/-한/-된,
+    -ㄹ/-을/-할/-될). 동형이의인 주제/주격/목적격 조사(은·는·을·를)는 관형형이
+    아니므로 명시 제외한다. 형태소 분석기 없이 종성 분해로 근사하며, 동형인
+    '은'(읽은 vs 책은)은 보수적으로 조사 쪽으로 분류해 오탐을 줄인다(precision 우선).
     """
-    if len(tok) < 2:
+    if len(word) < 2:
         return False
-    last = tok[-1]
-    if last in _NON_ADNOMINAL_FINAL:
+    last = word[-1]
+    if last in _TOPIC_PARTICLE_TAIL:
         return False
     if not ("가" <= last <= "힣"):
         return False
@@ -534,167 +470,159 @@ def _is_adnominal_eojeol(tok: str) -> bool:
 
 
 def relative_clause_nesting(text: str) -> int:
-    """T5: count of sentences with left-branching adnominal nesting depth >= 3.
+    """T5: 좌향 관형절 중첩 깊이 3 이상인 문장의 개수.
 
-    Approximation: within a sentence, count eojeols that end in an adnominal
-    ending (받침 ㄴ/ㄹ, via :func:`_is_adnominal_eojeol`) AND are immediately
-    followed by a Hangul noun head. Topic/subject/object particles
-    (은·는·을·를) are excluded so a sentence with several 주제어 is not
-    mis-flagged as relative-clause nesting. Returns the *number of sentences*
-    (not total nestings) whose adnominal depth is >= 3.
+    근사: 문장 안에서 관형사형 어미(종성 ㄴ/ㄹ)로 끝나고 바로 뒤에 한글 명사
+    핵이 오는 어절을 센다. 주제/주격/목적격 조사(은·는·을·를)는 제외하므로
+    주제어가 여럿인 문장이 관계절 중첩으로 오탐되지 않는다. 반환은 깊이 3 이상인
+    문장 수(총 중첩 수가 아니다).
     """
-    sents = _split_sentences(text)
-    if not sents:
+    sentences = _segment_sentences(text)
+    if not sentences:
         return 0
-    count = 0
-    for s in sents:
-        toks = [t for t in (_strip_punct(e) for e in _eojeols(s)) if t]
+    matched_sentences = 0
+    for sentence in sentences:
+        words = [w for w in (_clean_word(e) for e in _split_words(sentence)) if w]
         depth = 0
-        for i in range(len(toks) - 1):  # 마지막 어절은 핵 명사 자리가 없음
-            if not _is_adnominal_eojeol(toks[i]):
+        for i in range(len(words) - 1):  # 마지막 어절은 핵 명사 자리가 없음
+            if not _is_adnominal(words[i]):
                 continue
-            nxt = toks[i + 1]
-            if nxt and "가" <= nxt[0] <= "힣":  # 뒤 어절이 한글(명사 핵 추정)
+            head = words[i + 1]
+            if head and "가" <= head[0] <= "힣":
                 depth += 1
         if depth >= 3:
-            count += 1
-    return count
+            matched_sentences += 1
+    return matched_sentences
 
 
 def have_make_literal_count(text: str) -> int:
-    """T6: count of literal have/make light-verb constructions.
+    """T6: have/make light verb 직역 구문 개수.
 
     가지고 있다·갖고 있다·~을 가지다·~을 만들다·회의를 가지다·결정을 내리다 …
-    Returns int >= 0.
     """
     if not text.strip():
         return 0
-    n = 0
-    for tok in _HAVE_MAKE_LITERAL_TOKENS:
-        n += text.count(tok)
-    return n
+    return sum(text.count(form) for form in _LIGHT_VERB_LITERAL)
 
 
 def double_particle_count(text: str) -> int:
-    """T7: double-particle (에서의·에로의·으로의·에의·으로부터의·로부터의) count.
+    """T7: 이중 조사(에서의·에로의·으로의·에의·으로부터의·로부터의) 개수.
 
-    Caveat #5 (single ~의 excluded) is *enforced by construction* — the
-    regex never matches a bare ~의. Returns int >= 0.
+    단일 '~의'는 정규식 구성상 절대 매칭되지 않는다(caveat #5 강제).
     """
     if not text.strip():
         return 0
-    return len(_DOUBLE_PARTICLE_RE.findall(text))
+    return len(_DOUBLE_PARTICLE.findall(text))
 
 
 def progressive_aspect_rate(text: str) -> float:
-    """T8b: progressive aspect '~고 있다' rate per sentence.
+    """T8b: 진행형 '~고 있다' 문장당 비율.
 
-    Returns progressive_hits / total_sentences. Surface-form match; not
-    every '~고 있다' is reducible (예: 진행 의미가 본질적인 동사) but
-    high rates flag automatic 1대1 매핑. Range typically [0, 1+] — values
-    >0.5 signal heavy literal mapping.
+    반환 = 진행형 매칭 수 / 전체 문장 수. 표층형 매칭이라 모든 '~고 있다'가
+    축약 가능한 것은 아니나, 비율이 높으면(>0.5) 1대1 매핑을 시사한다.
     """
-    sents = _split_sentences(text)
-    if not sents:
+    sentences = _segment_sentences(text)
+    if not sentences:
         return 0.0
-    hits = sum(len(_PROGRESSIVE_RE.findall(s)) for s in sents)
-    return hits / len(sents)
+    hits = sum(len(_PROGRESSIVE.findall(s)) for s in sentences)
+    return hits / len(sentences)
 
 
 # ---------------------------------------------------------------------------
 # === v2.0 INTERFERENCE INDEX ===
-# Composite signal weighted across T1~T8.
+# T1~T8 가중 합성 신호.
 # ---------------------------------------------------------------------------
+
+# 각 신호의 [0,1] 환산 가중치. 합성은 z-score가 아니라 서술적 지표이며,
+# baseline 보정은 compute_all_v2에서 별도로 수행한다.
+_INTERFERENCE_WEIGHTS = {
+    "T1_inanimate_subject_rate": 1.0,
+    "T2a_by_passive_per_1k": 0.2,
+    "T2b_double_passive_per_1k": 0.2,
+    "T3_pronoun_density": 4.0,
+    "T4_deul_overuse_rate": 4.0,
+    "T5_nested_clause_count": 0.05,
+    "T6_have_make_per_1k": 0.2,
+    "T7_double_particle_per_1k": 0.5,
+    "T8b_progressive_rate": 1.0,
+}
 
 
 def interference_index(text: str) -> dict[str, Any]:
-    """T1~T8 weighted interference signal — interference axis composite.
+    """T1~T8 가중 간섭 신호 — interference 축 합성.
 
-    Returns a dict with each sub-signal score plus a `weighted_total`
-    that sums per-type contributions (each capped to [0, 1] by simple
-    rescaling). This is descriptive, not a z-score — calibration to
-    baseline happens in compute_all_v2.
+    각 하위 신호 점수와 per-type 기여를 [0,1]로 단순 환산해 더한 weighted_total
+    을 함께 돌려준다.
     """
-    n_sents = max(len(_split_sentences(text)), 1)
-    chars = max(len(text), 1)
+    sentence_count = max(len(_segment_sentences(text)), 1)
+    char_count = max(len(text), 1)
     components = {
         "T1_inanimate_subject_rate": inanimate_subject_rate(text),
-        "T2a_by_passive_per_1k": by_passive_count(text) / chars * 1000,
-        "T2b_double_passive_per_1k": double_passive_count(text) / chars * 1000,
+        "T2a_by_passive_per_1k": by_passive_count(text) / char_count * 1000,
+        "T2b_double_passive_per_1k": double_passive_count(text) / char_count * 1000,
         "T3_pronoun_density": pronoun_density(text),
         "T4_deul_overuse_rate": deul_overuse_rate(text),
         "T5_nested_clause_count": relative_clause_nesting(text),
-        "T6_have_make_per_1k": have_make_literal_count(text) / chars * 1000,
-        "T7_double_particle_per_1k": double_particle_count(text) / chars * 1000,
+        "T6_have_make_per_1k": have_make_literal_count(text) / char_count * 1000,
+        "T7_double_particle_per_1k": double_particle_count(text) / char_count * 1000,
         "T8b_progressive_rate": progressive_aspect_rate(text),
     }
-    # Each component clamped to [0, 1] heuristically:
-    weights = {
-        "T1_inanimate_subject_rate": 1.0,        # already in [0,1]
-        "T2a_by_passive_per_1k": 0.2,            # /5
-        "T2b_double_passive_per_1k": 0.2,
-        "T3_pronoun_density": 4.0,               # human <0.015, scale up
-        "T4_deul_overuse_rate": 4.0,
-        "T5_nested_clause_count": 0.05,          # /20
-        "T6_have_make_per_1k": 0.2,
-        "T7_double_particle_per_1k": 0.5,
-        "T8b_progressive_rate": 1.0,
-    }
     weighted_total = 0.0
-    for k, v in components.items():
-        weighted_total += min(1.0, max(0.0, v * weights[k]))
+    for name, raw_value in components.items():
+        scaled = raw_value * _INTERFERENCE_WEIGHTS[name]
+        weighted_total += min(1.0, max(0.0, scaled))
     return {
         "components": components,
         "weighted_total": weighted_total,
-        "n_sentences": n_sents,
-        "n_chars": chars,
+        "n_sentences": sentence_count,
+        "n_chars": char_count,
     }
 
 
 # ---------------------------------------------------------------------------
-# Baseline + z-score (v2.0 extension)
+# baseline + z-score (v2.0 확장)
 # ---------------------------------------------------------------------------
 
 
-def _default_baseline_v2_path() -> str:
-    return os.path.join(_HERE, "baseline_v2.json")
+def _baseline_v2_beside_module() -> str:
+    return os.path.join(_MODULE_DIR, "baseline_v2.json")
 
 
-def _load_baseline_v2(path: str | None) -> dict[str, Any]:
-    p = path or _default_baseline_v2_path()
-    if not os.path.exists(p):
+def _read_baseline_v2(path: Optional[str]) -> dict[str, Any]:
+    resolved = path or _baseline_v2_beside_module()
+    if not os.path.exists(resolved):
         return {}
-    with open(p, "r", encoding="utf-8") as f:
-        return json.load(f)
+    with open(resolved, "r", encoding="utf-8") as handle:
+        return json.load(handle)
 
 
-def _z_simple(value: float, mean_v: float, stdev: float) -> float | None:
-    if stdev is None or stdev <= 0:
+def _z_from_cell(value: float, cell_mean: float, cell_stdev: float) -> Optional[float]:
+    if cell_stdev is None or cell_stdev <= 0:
         return None
-    return (value - mean_v) / stdev
+    return (value - cell_mean) / cell_stdev
 
 
 # ---------------------------------------------------------------------------
-# Public entry point — v2.0 superset
+# 공개 진입점 — v2.0 상위집합
 # ---------------------------------------------------------------------------
 
 
 def compute_all_v2(
     text: str,
     genre: str = "essay",
-    baseline_path: str | None = None,
-    baseline_v2_path: str | None = None,
+    baseline_path: Optional[str] = None,
+    baseline_v2_path: Optional[str] = None,
 ) -> dict[str, Any]:
-    """Compute v1.6 metrics + v2.0 post-editese + T1~T8 signals.
+    """v1.6 지표 + v2.0 post-editese + T1~T8 신호를 산출한다.
 
-    Returns the v1.6 ``compute_all`` payload extended with:
-        - ``v2_metrics``: dict of new metric values
-        - ``v2_z_scores``: per-metric z against baseline_v2 (None if placeholder)
-        - ``v2_baseline_warnings``: list of metric keys whose baseline cell
-          carries `_placeholder: true`.
+    v1.6 compute_all 결과에 다음을 더한다:
+        - ``v2_metrics``: 신규 14개 지표 값
+        - ``v2_interference_index``: T1~T8 합성 신호
+        - ``v2_z_scores``: baseline_v2 대비 지표별 z(placeholder면 None)
+        - ``v2_baseline_warnings``: baseline 셀이 `_placeholder: true`인 지표 키 목록
     """
-    base = _v1.compute_all(text, genre=genre, baseline_path=baseline_path)
-    v2_metrics: dict[str, float | int] = {
+    report = _base.compute_all(text, genre=genre, baseline_path=baseline_path)
+    v2_metrics: dict[str, Any] = {
         "lexical_diversity_ttr": lexical_diversity_ttr(text),
         "lexical_density": lexical_density(text),
         "ending_diversity": ending_diversity(text),
@@ -712,30 +640,31 @@ def compute_all_v2(
     }
     interference = interference_index(text)
 
-    bv2 = _load_baseline_v2(baseline_v2_path)
-    cells = {}
-    warnings: list[str] = []
-    if bv2:
-        genres = bv2.get("genres", {}) or {}
-        cells = genres.get(genre) or genres.get("essay") or {}
-    z_scores: dict[str, float | None] = {}
-    for k, v in v2_metrics.items():
-        cell = cells.get(k)
+    baseline_v2 = _read_baseline_v2(baseline_v2_path)
+    cells: dict[str, Any] = {}
+    if baseline_v2:
+        by_genre = baseline_v2.get("genres", {}) or {}
+        cells = by_genre.get(genre) or by_genre.get("essay") or {}
+
+    z_scores: dict[str, Optional[float]] = {}
+    placeholder_keys: list[str] = []
+    for key, value in v2_metrics.items():
+        cell = cells.get(key)
         if not cell:
-            z_scores[k] = None
+            z_scores[key] = None
             continue
         if cell.get("_placeholder"):
-            warnings.append(k)
-        z_scores[k] = _z_simple(
-            float(v), float(cell.get("mean", 0.0)), float(cell.get("stdev", 0.0))
+            placeholder_keys.append(key)
+        z_scores[key] = _z_from_cell(
+            float(value), float(cell.get("mean", 0.0)), float(cell.get("stdev", 0.0))
         )
 
-    base["version"] = VERSION
-    base["v2_metrics"] = v2_metrics
-    base["v2_interference_index"] = interference
-    base["v2_z_scores"] = z_scores
-    base["v2_baseline_warnings"] = warnings
-    return base
+    report["version"] = VERSION
+    report["v2_metrics"] = v2_metrics
+    report["v2_interference_index"] = interference
+    report["v2_z_scores"] = z_scores
+    report["v2_baseline_warnings"] = placeholder_keys
+    return report
 
 
 # ---------------------------------------------------------------------------
@@ -743,23 +672,21 @@ def compute_all_v2(
 # ---------------------------------------------------------------------------
 
 
-def _main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Humanize KR v2.0 metric runner")
-    parser.add_argument("--input", required=True, help="Input text file path")
+def _main(argv: Optional[list[str]] = None) -> int:
+    parser = argparse.ArgumentParser(description="humanize-korean v2.0 메트릭 러너")
+    parser.add_argument("--input", required=True, help="입력 텍스트 파일 경로")
     parser.add_argument("--genre", default="essay", help="essay/news/blog/qa/dialogue")
-    parser.add_argument("--output", default=None, help="Output JSON path (optional)")
+    parser.add_argument("--output", default=None, help="출력 JSON 경로(선택)")
+    parser.add_argument("--baseline", default=None, help="v1.6 baseline JSON 경로 재정의")
     parser.add_argument(
-        "--baseline", default=None, help="Override v1.6 baseline JSON path"
-    )
-    parser.add_argument(
-        "--baseline-v2", default=None, help="Override v2.0 baseline JSON path"
+        "--baseline-v2", default=None, help="v2.0 baseline JSON 경로 재정의"
     )
     args = parser.parse_args(argv)
 
-    with open(args.input, "r", encoding="utf-8") as f:
-        text = f.read()
+    with open(args.input, "r", encoding="utf-8") as handle:
+        text = handle.read()
 
-    result = compute_all_v2(
+    report = compute_all_v2(
         text,
         genre=args.genre,
         baseline_path=args.baseline,
@@ -767,18 +694,19 @@ def _main(argv: list[str] | None = None) -> int:
     )
 
     if args.output:
-        os.makedirs(os.path.dirname(os.path.abspath(args.output)), exist_ok=True)
-        with open(args.output, "w", encoding="utf-8") as f:
-            json.dump(result, f, ensure_ascii=False, indent=2)
+        out_dir = os.path.dirname(os.path.abspath(args.output))
+        os.makedirs(out_dir, exist_ok=True)
+        with open(args.output, "w", encoding="utf-8") as handle:
+            json.dump(report, handle, ensure_ascii=False, indent=2)
 
-    print(result["risk_band"])
+    print(report["risk_band"])
     return 0
 
 
 # ---------------------------------------------------------------------------
-# v1.6 호환 별칭 (prepare_monolith_input.py가 _metrics_mod.compute_all 호출)
+# v1.6 호환 별칭 — v2.0 출력은 v1.6 출력의 상위집합이다.
 # ---------------------------------------------------------------------------
-compute_all = compute_all_v2  # v2.0 출력은 v1.6의 상위집합 (integration_note §1)
+compute_all = compute_all_v2
 
 
 if __name__ == "__main__":

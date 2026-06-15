@@ -1,7 +1,7 @@
 {
   "version": "v2.0-baseline-diff-2026-05-07",
-  "source": "Placeholder. Toral 2019 simplification·normalisation·interference 정의 + 보고서 T1~T8 ko_manifestation 추정치. 비번역 한국어 (Sejong corpus·국립국어원 모두의 말뭉치 등) 정밀 측정은 별도 calibration 회차에서 수행.",
-  "notes": "metric-engineer(Phase 3b) 산출. ALL cells carry _placeholder: true. Phase 6 integrator는 본진 baseline.json에 merge할 때 placeholder 플래그를 반드시 보존하고, calibration 완료 셀만 플래그를 해제한다.",
+  "source": "Placeholder. Toral 2019 (arXiv:1907.00900) simplification·normalisation·interference 정의 + 한국 번역학계 T1~T8 직역체 유형의 한국어 표면 추정치. 원전 직접 인용. 비번역 한국어(세종 코퍼스·국립국어원 모두의 말뭉치 등) 정밀 측정은 별도 calibration 회차에서 수행한다.",
+  "notes": "모든 셀에 _placeholder: true 플래그가 붙어 있다(추정치). 이후 calibration으로 본진 baseline.json에 병합할 때 placeholder 플래그를 보존하고, 측정이 끝난 셀만 플래그를 해제한다.",
   "calibration_due": true,
   "genres": {
     "essay": {
@@ -113,6 +113,6 @@
     }
   },
   "z_score_thresholds": {
-    "comments": "Phase 6 integrator는 v1.6 thresholds(z>1.0 가산)를 그대로 계승. v2.0 placeholder는 calibration 완료 후 본진 baseline.json에 merge."
+    "comments": "v1.6 thresholds(z>1.0 가산)를 그대로 계승한다. v2.0 placeholder 셀은 calibration 완료 후 본진 baseline.json에 병합한다."
   }
 }

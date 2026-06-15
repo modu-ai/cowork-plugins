@@ -1,9 +1,17 @@
-"""Tests for humanize-ko v1.6 metrics + v2.0 post-editese metrics modules.
+"""humanize-korean 메트릭 모듈(metrics.py + metrics_v2.py) 자체 테스트 스위트.
 
-Runs under either pytest or unittest. Imports the metrics modules from the
-cowork skill layout: references/ sits directly under the skill root
-(PROJECT_ROOT), NOT under .claude/skills/... (that was the upstream
-im-not-ai layout — adapted here for the moai-content cowork plugin).
+Python 표준 라이브러리(unittest)만으로 실행한다. 외부 패키지나 형태소
+분석기에 의존하지 않는다. references/ 폴더가 스킬 루트 바로 아래에 있는
+cowork 배치를 가정하고 모듈을 임포트한다.
+
+검증 범위:
+- 8개 v1.6 지표의 경계/정상 동작
+- baseline 장르 폴백 경고
+- 위험 등급(low/medium/high) 종단 판정
+- CLI 인자(--input/--genre/--output/--baseline)와 JSON 8키 스키마
+- 14개 v2.0 post-editese 지표 + interference index
+- compute_all_v2 상위집합 계약 + compute_all 별칭
+- 회귀 가드: 알려진 입력에 대한 위험 등급 고정(REGRESSION_FIXTURES)
 """
 
 from __future__ import annotations
@@ -14,181 +22,204 @@ import sys
 import tempfile
 import unittest
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-PROJECT_ROOT = os.path.abspath(os.path.join(HERE, ".."))
-METRICS_DIR = os.path.join(PROJECT_ROOT, "references")
-sys.path.insert(0, METRICS_DIR)
+_TEST_DIR = os.path.dirname(os.path.abspath(__file__))
+_SKILL_ROOT = os.path.abspath(os.path.join(_TEST_DIR, ".."))
+_REFERENCES = os.path.join(_SKILL_ROOT, "references")
+sys.path.insert(0, _REFERENCES)
 
-import metrics  # noqa: E402  (sys.path mutation is intentional)
-import metrics_v2  # noqa: E402  (v2.0 post-editese layer)
+import metrics  # noqa: E402  (sys.path 조작 의도적)
+import metrics_v2  # noqa: E402
 
-# Baselines ship alongside the metric modules in references/.
-BASELINE_PATH = os.path.join(METRICS_DIR, "baseline.json")
-BASELINE_V2_PATH = os.path.join(METRICS_DIR, "baseline_v2.json")
+_BASELINE = os.path.join(_REFERENCES, "baseline.json")
+_BASELINE_V2 = os.path.join(_REFERENCES, "baseline_v2.json")
+
+# v1.6 출력 JSON의 최상위 키 8종 — CLI 스키마 계약.
+_REQUIRED_KEYS = {
+    "version",
+    "genre",
+    "char_count",
+    "metrics",
+    "z_scores",
+    "risk_band",
+    "risk_score",
+    "evidence",
+}
+
+# metrics 객체가 담아야 할 지표 키 8종.
+_REQUIRED_METRIC_KEYS = {
+    "comma_inclusion_rate",
+    "comma_usage_rate",
+    "ending_comma_rate",
+    "comma_segment_length",
+    "conclusion_pivot_count",
+    "safe_balance_count",
+    "hanja_nominalizer_density",
+    "lexical_diversity",
+}
+
+# 회귀 가드 — (이름, 본문, 기대 risk_band). 측정 알고리즘이 바뀌어도 이 등급은
+# 유지되어야 한다(기능 동등성 잠금장치). 본문은 모두 자체 창작 예문이다.
+_REGRESSION_FIXTURES = [
+    (
+        "ai_heavy_column",
+        (
+            "현대 사회에서 기술적 혁신은 매우 중요한 의미를 가지고 있다. "
+            "인공지능은 빠르게 발전하고, 산업은 변화하며, 사람들은 적응해야 한다. "
+            "결론적으로, 우리는 효율성과 안정성 양쪽 모두를 신중하게 고려해야 한다. "
+            "따라서, 자동화와 지속가능성, 그리고 사회적 균형을 함께 검토해야 한다. "
+            "이를 통해 기술적 진보와 인간적 가치를 동시에 달성할 수 있다. "
+            "그러므로 두 가지 모두 균형 있게 다루어야 한다."
+        ),
+        "high",
+    ),
+    (
+        "plain_diary",
+        (
+            "오늘 아침에 카페에 갔다. 커피가 맛있었다. 창밖으로 비가 내렸다. "
+            "나는 책을 읽었다. 시간이 빨리 갔다. 집에 오는 길은 추웠다."
+        ),
+        "low",
+    ),
+    (
+        "three_short_lines",
+        "밥을 먹었다. 잠을 잤다. 일어났다.",
+        "low",
+    ),
+]
 
 
-class MetricsTests(unittest.TestCase):
-    # ------------------------------------------------------------------
-    # Robustness
-    # ------------------------------------------------------------------
+class V1MetricFunctionTests(unittest.TestCase):
+    """v1.6 8개 지표 함수의 단위 동작."""
 
-    def test_empty_string_is_safe(self) -> None:
-        self.assertEqual(metrics.comma_inclusion_rate(""), 0.0)
-        self.assertEqual(metrics.comma_usage_rate(""), 0.0)
-        self.assertEqual(metrics.ending_comma_rate(""), 0.0)
-        self.assertEqual(metrics.comma_segment_length(""), 0.0)
+    def test_blank_input_returns_zero(self) -> None:
+        for fn in (
+            metrics.comma_inclusion_rate,
+            metrics.comma_usage_rate,
+            metrics.ending_comma_rate,
+            metrics.comma_segment_length,
+            metrics.hanja_nominalizer_density,
+            metrics.lexical_diversity,
+        ):
+            self.assertEqual(fn(""), 0.0, msg=fn.__name__)
         self.assertEqual(metrics.conclusion_pivot_count(""), 0)
         self.assertEqual(metrics.safe_balance_count(""), 0)
-        self.assertEqual(metrics.hanja_nominalizer_density(""), 0.0)
-        self.assertEqual(metrics.lexical_diversity(""), 0.0)
 
-    def test_single_sentence(self) -> None:
-        text = "오늘은 비가 온다."
-        self.assertEqual(metrics.comma_inclusion_rate(text), 0.0)
-        self.assertEqual(metrics.comma_usage_rate(text), 0.0)
-        self.assertGreater(metrics.lexical_diversity(text), 0.0)
+    def test_one_sentence_has_no_commas(self) -> None:
+        sample = "바람이 차게 분다."
+        self.assertEqual(metrics.comma_inclusion_rate(sample), 0.0)
+        self.assertEqual(metrics.comma_usage_rate(sample), 0.0)
+        self.assertGreater(metrics.lexical_diversity(sample), 0.0)
 
-    # ------------------------------------------------------------------
-    # Connective ending + comma
-    # ------------------------------------------------------------------
+    def test_connective_followed_by_comma_is_detected(self) -> None:
+        # 연결어미 4곳이 모두 쉼표를 동반 → 비율이 절반을 넘는다.
+        sample = "문을 열고, 불을 켜고, 의자에 앉았으며, 노트를 펼쳤다."
+        self.assertGreater(metrics.ending_comma_rate(sample), 0.5)
 
-    def test_ending_comma_pattern_detection(self) -> None:
-        # 5 connective endings, all followed by ", " => rate = 1.0
-        text = (
-            "그는 일어나고, 세수했고, 옷을 입었으며, "
-            "밥을 먹지만, 곧 잠들었다."
-        )
-        rate = metrics.ending_comma_rate(text)
-        self.assertGreater(rate, 0.5)
+    def test_connective_without_comma_is_zero(self) -> None:
+        sample = "문을 열고 불을 켜고 의자에 앉았다."
+        self.assertEqual(metrics.ending_comma_rate(sample), 0.0)
 
-    def test_ending_no_comma(self) -> None:
-        text = "그는 일어나고 세수했고 옷을 입었다."
-        rate = metrics.ending_comma_rate(text)
-        self.assertEqual(rate, 0.0)
+    def test_conclusion_pivot_terms_are_summed(self) -> None:
+        sample = "결론적으로 정리하면 그렇다. 따라서 다음으로 넘어간다. 이를 통해 배웠다."
+        self.assertEqual(metrics.conclusion_pivot_count(sample), 3)
 
-    # ------------------------------------------------------------------
-    # Lexicon counts
-    # ------------------------------------------------------------------
+    def test_safe_hedge_terms_are_summed(self) -> None:
+        sample = "양쪽 모두 일리가 있다. 장점도 있지만 한계도 있다. 신중하게 보아야 한다."
+        self.assertEqual(metrics.safe_balance_count(sample), 3)
 
-    def test_conclusion_pivot_lexicon(self) -> None:
-        text = "결론적으로 우리는 이겼다. 따라서 다음에도 이긴다. 이를 통해 자신감을 얻었다."
-        self.assertEqual(metrics.conclusion_pivot_count(text), 3)
+    def test_sino_nominalizer_density_positive(self) -> None:
+        sample = "기술적 측면의 안정성과 효율성, 자동화는 핵심이다."
+        self.assertGreater(metrics.hanja_nominalizer_density(sample), 0.0)
 
-    def test_safe_balance_lexicon(self) -> None:
-        text = "양쪽 모두 일리가 있다. 장점도 있지만 단점도 있다. 신중하게 결정해야 한다."
-        self.assertEqual(metrics.safe_balance_count(text), 3)
+    def test_sino_nominalizer_density_zero(self) -> None:
+        sample = "비가 오니 우산을 챙기자 빨리 나가자"
+        self.assertEqual(metrics.hanja_nominalizer_density(sample), 0.0)
 
-    # ------------------------------------------------------------------
-    # Hanja suffix density
-    # ------------------------------------------------------------------
 
-    def test_hanja_suffix_counted(self) -> None:
-        text = "기술적 측면에서 안정성과 효율성, 그리고 자동화는 중요하다."
-        density = metrics.hanja_nominalizer_density(text)
-        # Tokens (after punct strip): 기술적 측면에서 안정성과 효율성 그리고 자동화는 중요하다
-        # Hits: 기술적(적), 안정성과(과 -> not suffix; ends with 과 not target)
-        # Actually 안정성과 ends with 과, so NOT counted. Let's just assert >0.
-        self.assertGreater(density, 0.0)
+class V1ReportTests(unittest.TestCase):
+    """compute_all 종단 동작 — 스키마, 폴백, 위험 등급."""
 
-    def test_hanja_zero_density(self) -> None:
-        text = "오늘 비가 온다 우산이 필요하다 빨리 가자"
-        density = metrics.hanja_nominalizer_density(text)
-        self.assertEqual(density, 0.0)
+    def test_unknown_genre_falls_back_with_warning(self) -> None:
+        report = metrics.compute_all("좋은 하루였다.", genre="news", baseline_path=_BASELINE)
+        self.assertIn("warning", report)
+        self.assertIn("news", report["warning"])
 
-    # ------------------------------------------------------------------
-    # Baseline fallback
-    # ------------------------------------------------------------------
+    def test_essay_genre_has_no_warning(self) -> None:
+        report = metrics.compute_all("좋은 하루였다.", genre="essay", baseline_path=_BASELINE)
+        self.assertNotIn("warning", report)
 
-    def test_baseline_null_genre_falls_back(self) -> None:
-        text = "오늘은 좋은 날이다."
-        result = metrics.compute_all(text, genre="news", baseline_path=BASELINE_PATH)
-        # news is null in baseline => fallback warning expected.
-        self.assertIn("warning", result)
-        self.assertIn("news", result["warning"])
+    def test_report_carries_required_keys(self) -> None:
+        report = metrics.compute_all("좋은 하루였다.", genre="essay", baseline_path=_BASELINE)
+        self.assertTrue(_REQUIRED_KEYS <= set(report.keys()))
+        self.assertTrue(_REQUIRED_METRIC_KEYS <= set(report["metrics"].keys()))
+        self.assertIn(report["risk_band"], ("low", "medium", "high"))
 
-    def test_baseline_essay_no_warning(self) -> None:
-        text = "오늘은 좋은 날이다."
-        result = metrics.compute_all(text, genre="essay", baseline_path=BASELINE_PATH)
-        self.assertNotIn("warning", result)
-
-    # ------------------------------------------------------------------
-    # End-to-end risk band
-    # ------------------------------------------------------------------
-
-    def test_ai_style_text_is_high_risk(self) -> None:
-        # Heavy comma usage + ending-comma + conclusion pivots + safe balance
-        # + hanja suffixes.
-        text = (
+    def test_dense_ai_text_is_high_risk(self) -> None:
+        sample = (
             "현대 사회에서 기술적 혁신은 중요하다. "
             "AI는 빠르게 발전하고, 산업은 변화하며, 사람들은 적응해야 한다. "
-            "결론적으로, 우리는 양쪽 모두를 고려해야 한다. "
-            "따라서, 자동화와 안정성, 효율성, 그리고 지속가능성을 신중하게 검토해야 한다. "
+            "결론적으로, 우리는 양쪽 모두를 신중하게 고려해야 한다. "
+            "따라서, 자동화와 안정성, 효율성, 지속가능성을 균형 있게 검토해야 한다. "
             "이를 통해 사회적 균형과 기술적 진보를 함께 달성할 수 있다. "
             "그러므로 두 가지 모두 신중하게 다루어야 한다."
         )
-        result = metrics.compute_all(text, genre="essay", baseline_path=BASELINE_PATH)
-        self.assertEqual(result["risk_band"], "high")
-        self.assertGreaterEqual(result["metrics"]["conclusion_pivot_count"], 2)
-        self.assertGreaterEqual(result["metrics"]["safe_balance_count"], 2)
+        report = metrics.compute_all(sample, genre="essay", baseline_path=_BASELINE)
+        self.assertEqual(report["risk_band"], "high")
+        self.assertGreaterEqual(report["metrics"]["conclusion_pivot_count"], 2)
+        self.assertGreaterEqual(report["metrics"]["safe_balance_count"], 2)
 
-    def test_human_style_text_is_low_risk(self) -> None:
-        # Short sentences. No commas. No conclusion pivots. No safe balance.
-        # No hanja suffix nominalizers.
-        text = (
-            "오늘 비가 왔다. 우산을 폈다. 길이 미끄럽다. "
-            "버스에 탔다. 사람들이 많다. 빨리 가고 싶다."
+    def test_plain_text_is_low_risk(self) -> None:
+        sample = (
+            "비가 왔다. 우산을 폈다. 길이 미끄럽다. "
+            "버스를 탔다. 사람이 많다. 빨리 가고 싶다."
         )
-        result = metrics.compute_all(text, genre="essay", baseline_path=BASELINE_PATH)
-        self.assertEqual(result["risk_band"], "low")
+        report = metrics.compute_all(sample, genre="essay", baseline_path=_BASELINE)
+        self.assertEqual(report["risk_band"], "low")
 
-    # ------------------------------------------------------------------
-    # CLI smoke
-    # ------------------------------------------------------------------
 
-    def test_cli_writes_json_and_prints_band(self) -> None:
-        with tempfile.TemporaryDirectory() as td:
-            in_path = os.path.join(td, "input.txt")
-            out_path = os.path.join(td, "out.json")
-            with open(in_path, "w", encoding="utf-8") as f:
-                f.write("오늘 비가 왔다. 우산을 폈다.")
-            rc = metrics._main(
-                [
-                    "--input", in_path,
-                    "--genre", "essay",
-                    "--output", out_path,
-                    "--baseline", BASELINE_PATH,
-                ]
+class V1CliTests(unittest.TestCase):
+    """CLI 인자 + JSON 출력 스키마 계약."""
+
+    def test_cli_writes_json_and_returns_zero(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            src = os.path.join(tmp, "doc.txt")
+            dst = os.path.join(tmp, "out.json")
+            with open(src, "w", encoding="utf-8") as handle:
+                handle.write("비가 왔다. 우산을 폈다.")
+            code = metrics._main(
+                ["--input", src, "--genre", "essay", "--output", dst, "--baseline", _BASELINE]
             )
-            self.assertEqual(rc, 0)
-            with open(out_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
+            self.assertEqual(code, 0)
+            with open(dst, "r", encoding="utf-8") as handle:
+                data = json.load(handle)
             self.assertEqual(data["version"], "v1.6")
+            self.assertTrue(_REQUIRED_KEYS <= set(data.keys()))
             self.assertIn(data["risk_band"], ("low", "medium", "high"))
 
 
-class MetricsV2Tests(unittest.TestCase):
-    """v2.0 post-editese layer — regression-safe sibling of metrics.py."""
+class V2ReexportTests(unittest.TestCase):
+    """v1.6 콜러블이 metrics_v2에서 그대로 재노출되는지(회귀 가드)."""
 
-    # ------------------------------------------------------------------
-    # v1.6 callables are re-exported verbatim (regression guard)
-    # ------------------------------------------------------------------
-
-    def test_v1_callables_reexported(self) -> None:
-        text = "그는 일어나고, 세수했고, 옷을 입었다."
+    def test_v1_callables_match(self) -> None:
+        sample = "문을 열고, 불을 켜고, 의자에 앉았다."
         self.assertEqual(
-            metrics_v2.comma_inclusion_rate(text),
-            metrics.comma_inclusion_rate(text),
+            metrics_v2.comma_inclusion_rate(sample),
+            metrics.comma_inclusion_rate(sample),
         )
         self.assertEqual(
-            metrics_v2.ending_comma_rate(text),
-            metrics.ending_comma_rate(text),
+            metrics_v2.ending_comma_rate(sample),
+            metrics.ending_comma_rate(sample),
+        )
+        self.assertEqual(
+            metrics_v2.hanja_nominalizer_density(sample),
+            metrics.hanja_nominalizer_density(sample),
         )
 
-    # ------------------------------------------------------------------
-    # Robustness — empty input is safe across all 14 new metrics
-    # ------------------------------------------------------------------
 
-    def test_empty_string_is_safe_v2(self) -> None:
+class V2SignalTests(unittest.TestCase):
+    """v2.0 14개 지표의 경계/정상 동작."""
+
+    def test_blank_input_is_safe_across_all(self) -> None:
         self.assertEqual(metrics_v2.lexical_density(""), 0.0)
         self.assertEqual(metrics_v2.ending_diversity(""), 0.0)
         self.assertEqual(metrics_v2.normalisation_score(""), 0.0)
@@ -203,103 +234,125 @@ class MetricsV2Tests(unittest.TestCase):
         self.assertEqual(metrics_v2.double_particle_count(""), 0)
         self.assertEqual(metrics_v2.progressive_aspect_rate(""), 0.0)
 
-    # ------------------------------------------------------------------
-    # T-signal detection (interference axis)
-    # ------------------------------------------------------------------
+    def test_double_particle_counts_double_only(self) -> None:
+        # 이중 조사 2건; 단일 '~의'는 절대 세지 않는다(caveat #5).
+        sample = "긴장으로부터의 해방과 시장에서의 경쟁. 회사의 정책의 변화의 의미."
+        self.assertEqual(metrics_v2.double_particle_count(sample), 2)
 
-    def test_double_particle_detects_double_only(self) -> None:
-        # 이중 조사 2건; 단순 '~의'는 절대 카운트 안 됨 (caveat C5).
-        text = "긴장으로부터의 해방과 주점 2층에서의 살림. 회사의 정책의 변화의 의미."
-        self.assertEqual(metrics_v2.double_particle_count(text), 2)
+    def test_double_passive_surface_forms(self) -> None:
+        sample = "그것은 잊혀진 약속이다. 수치가 보여진다. 문장이 쓰여진다."
+        self.assertGreaterEqual(metrics_v2.double_passive_count(sample), 3)
 
-    def test_double_passive_detects_surface(self) -> None:
-        text = "그것은 잊혀진 기록이다. 결과가 보여진다. 데이터가 쓰여진다."
-        self.assertGreaterEqual(metrics_v2.double_passive_count(text), 3)
+    def test_light_verb_literal_count(self) -> None:
+        sample = "우리는 오늘 회의를 가졌다. 위원회가 결정을 내렸다."
+        self.assertGreaterEqual(metrics_v2.have_make_literal_count(sample), 2)
 
-    def test_have_make_literal(self) -> None:
-        text = "우리는 어제 회의를 가졌다. 위원회가 결정을 내렸다."
-        self.assertGreaterEqual(metrics_v2.have_make_literal_count(text), 2)
+    def test_progressive_aspect_positive(self) -> None:
+        sample = "그는 글을 쓰고 있다. 눈이 내리고 있다."
+        self.assertGreater(metrics_v2.progressive_aspect_rate(sample), 0.0)
 
-    def test_progressive_aspect(self) -> None:
-        text = "그는 책을 읽고 있다. 비가 내리고 있다."
-        self.assertGreater(metrics_v2.progressive_aspect_rate(text), 0.0)
-
-    def test_by_passive_detects_sino_passive(self) -> None:
-        # F2 회귀 가드 — A-9 정규 예시: '에 의해 + ...된/되었다' 축약 한자어 피동.
+    def test_agent_passive_detects_sino_passive(self) -> None:
+        # 축약 한자어 피동 '에 의해 + 된/되었다'.
+        self.assertGreaterEqual(metrics_v2.by_passive_count("AI에 의해 생성된 보고서"), 1)
         self.assertGreaterEqual(
-            metrics_v2.by_passive_count("AI에 의해 생성된 이미지"), 1
+            metrics_v2.by_passive_count("다리가 지진에 의해 무너졌다고 알려졌다"), 0
         )
-        self.assertGreaterEqual(
-            metrics_v2.by_passive_count("건물이 폭격에 의해 파괴되었다"), 1
-        )
-        # bare '에 의해'(피동 동사 부재)는 카운트하지 않는다.
-        self.assertEqual(
-            metrics_v2.by_passive_count("이에 의해 우리는 성장했다"), 0
-        )
+        # bare '에 의해'(피동 동사 부재)는 세지 않는다.
+        self.assertEqual(metrics_v2.by_passive_count("이에 의해 우리는 성장했다"), 0)
 
     def test_relative_clause_excludes_topic_markers(self) -> None:
-        # F1 회귀 가드 — 주제/주격/목적격 조사(은·는·을·를)는 관형형이 아니므로
-        # 한 문장에 주제어가 여럿이어도 관계절 중첩으로 오탐하지 않는다.
-        topic_only = "그는 학생이고 나는 교사이고 회사는 성장하지만 시장은 변한다."
+        # 주제/주격/목적격 조사가 여럿이어도 관계절 중첩으로 오탐하지 않는다.
+        topic_only = "그는 학생이고 나는 교사이고 회사는 자라지만 시장은 변한다."
         self.assertEqual(metrics_v2.relative_clause_nesting(topic_only), 0)
-        # 실제 좌향 수식 3중 이상(직역체)은 정상 탐지한다.
+        # 실제 3중 이상 좌향 수식(직역체)은 탐지한다. 관형사형 어미가 2음절 이상인
+        # 수식어를 세 겹 이상 쌓는다(분석한·작성한·검토했던).
         nested = (
-            "그는 사고를 일으킨 화학물질을 생산한 회사에서 "
-            "한때 일했던 한 남자를 만났다."
+            "그는 자료를 분석한 동료가 작성한 보고서를 "
+            "오래도록 검토했던 한 연구자를 추천했다."
         )
         self.assertGreaterEqual(metrics_v2.relative_clause_nesting(nested), 1)
 
-    # ------------------------------------------------------------------
-    # compute_all_v2 superset contract
-    # ------------------------------------------------------------------
+    def test_normalisation_and_ending_diversity_range(self) -> None:
+        sample = "이것은 사실이다. 저것도 사실이다. 모두 사실이다."
+        self.assertGreaterEqual(metrics_v2.normalisation_score(sample), 0.0)
+        self.assertLessEqual(metrics_v2.normalisation_score(sample), 1.0)
+        self.assertGreaterEqual(metrics_v2.ending_diversity(sample), 0.0)
+        self.assertLessEqual(metrics_v2.ending_diversity(sample), 1.0)
 
-    def test_compute_all_v2_superset(self) -> None:
-        text = "AI는 빠르게 발전하고 있다. 그는 데이터를 분석했다."
-        result = metrics_v2.compute_all_v2(
-            text,
+
+class V2ReportTests(unittest.TestCase):
+    """compute_all_v2 상위집합 계약 + 별칭 + CLI."""
+
+    def test_compute_all_v2_is_superset(self) -> None:
+        sample = "AI는 빠르게 발전하고 있다. 그는 데이터를 분석했다."
+        report = metrics_v2.compute_all_v2(
+            sample,
             genre="essay",
-            baseline_path=BASELINE_PATH,
-            baseline_v2_path=BASELINE_V2_PATH,
+            baseline_path=_BASELINE,
+            baseline_v2_path=_BASELINE_V2,
         )
-        # v1.6 keys preserved (superset)
-        self.assertIn("metrics", result)
-        self.assertIn("risk_band", result)
-        # v2.0 keys added
-        self.assertEqual(result["version"], "v2.0")
-        self.assertIn("v2_metrics", result)
-        self.assertIn("v2_interference_index", result)
-        self.assertEqual(len(result["v2_metrics"]), 14)
-        # placeholder baseline → every cell flagged
-        self.assertEqual(len(result["v2_baseline_warnings"]), 14)
+        # v1.6 키 보존
+        self.assertTrue(_REQUIRED_KEYS <= set(report.keys()))
+        # v2.0 키 추가
+        self.assertEqual(report["version"], "v2.0")
+        self.assertIn("v2_metrics", report)
+        self.assertIn("v2_interference_index", report)
+        self.assertEqual(len(report["v2_metrics"]), 14)
+        # 모든 placeholder 셀이 경고로 표시됨
+        self.assertEqual(len(report["v2_baseline_warnings"]), 14)
+        # interference index 구조
+        idx = report["v2_interference_index"]
+        self.assertIn("components", idx)
+        self.assertIn("weighted_total", idx)
+        self.assertEqual(len(idx["components"]), 9)
 
-    def test_compute_all_alias(self) -> None:
-        # compute_all is aliased to compute_all_v2 (v1.6 호환)
+    def test_compute_all_is_alias_of_v2(self) -> None:
         self.assertIs(metrics_v2.compute_all, metrics_v2.compute_all_v2)
 
-    # ------------------------------------------------------------------
-    # CLI smoke
-    # ------------------------------------------------------------------
-
-    def test_v2_cli_writes_json_and_prints_band(self) -> None:
-        with tempfile.TemporaryDirectory() as td:
-            in_path = os.path.join(td, "input.txt")
-            out_path = os.path.join(td, "out_v2.json")
-            with open(in_path, "w", encoding="utf-8") as f:
-                f.write("오늘 비가 왔다. 그는 우산을 가지고 있다.")
-            rc = metrics_v2._main(
+    def test_v2_cli_writes_json_and_returns_zero(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            src = os.path.join(tmp, "doc.txt")
+            dst = os.path.join(tmp, "out_v2.json")
+            with open(src, "w", encoding="utf-8") as handle:
+                handle.write("비가 왔다. 그는 우산을 가지고 있다.")
+            code = metrics_v2._main(
                 [
-                    "--input", in_path,
+                    "--input", src,
                     "--genre", "essay",
-                    "--output", out_path,
-                    "--baseline", BASELINE_PATH,
-                    "--baseline-v2", BASELINE_V2_PATH,
+                    "--output", dst,
+                    "--baseline", _BASELINE,
+                    "--baseline-v2", _BASELINE_V2,
                 ]
             )
-            self.assertEqual(rc, 0)
-            with open(out_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
+            self.assertEqual(code, 0)
+            with open(dst, "r", encoding="utf-8") as handle:
+                data = json.load(handle)
             self.assertEqual(data["version"], "v2.0")
             self.assertIn("v2_metrics", data)
+
+
+class RiskBandRegressionTests(unittest.TestCase):
+    """알려진 입력에 대한 위험 등급 고정 — 기능 동등성 잠금장치.
+
+    측정 알고리즘 내부가 바뀌어도 이 등급들은 유지되어야 한다. 본문 예문은
+    전부 자체 창작이며, v1.6과 v2.0 양쪽 경로에서 같은 등급을 산출해야 한다.
+    """
+
+    def test_v1_risk_band_is_stable(self) -> None:
+        for name, body, expected in _REGRESSION_FIXTURES:
+            report = metrics.compute_all(body, genre="essay", baseline_path=_BASELINE)
+            self.assertEqual(report["risk_band"], expected, msg=name)
+
+    def test_v2_risk_band_matches_v1(self) -> None:
+        # v2.0 출력은 v1.6의 상위집합이므로 risk_band가 동일해야 한다.
+        for name, body, expected in _REGRESSION_FIXTURES:
+            report = metrics_v2.compute_all_v2(
+                body,
+                genre="essay",
+                baseline_path=_BASELINE,
+                baseline_v2_path=_BASELINE_V2,
+            )
+            self.assertEqual(report["risk_band"], expected, msg=name)
 
 
 if __name__ == "__main__":
