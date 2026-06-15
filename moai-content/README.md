@@ -6,7 +6,7 @@
 [![라이선스](https://img.shields.io/badge/license-MIT-green)](../LICENSE)
 [![스킬](https://img.shields.io/badge/skills-12-success)](#스킬)
 
-12개 스킬로 텍스트부터 영상, 보고서까지 콘텐츠 제작 전 과정을 커버합니다. v1.4.0부터 `landing-page`·`product-detail` 두 스킬이 **shadcn/ui + Tailwind CSS v4 + OKLCH 토큰**을 기본 스택으로 사용하고, 코드 생성 전 **소크라테스식 테마 인터뷰**(베이스 팔레트·컬러 모드·모서리 반경·효과)를 자동으로 실행합니다. **v2.0.0부터** `korean-spell-check`(부산대 AI연구실 + ㈜나라인포테크 공동 개발 **바른한글** 표면)으로 한국어 맞춤법·띄어쓰기를 최종 검수합니다 — `ai-slop-reviewer` 직후 체인 권장. **v2.1.0부터** `humanize-korean`([epoko77-ai/im-not-ai](https://github.com/epoko77-ai/im-not-ai) MIT, ⭐937 Fast 모드 포팅)으로 10대 카테고리 × 40+ AI 티 패턴 SSOT를 정량 메트릭으로 정밀 윤문합니다 — 의미 100% 보존 가드(변경률 30/50%) + 자체검증 6항 + A/B/C/D 등급 자동 판정. Post-Bridge, Typefully, WordPress MCP 연동으로 멀티채널 발행을 자동화합니다.
+12개 스킬로 텍스트부터 영상, 보고서까지 콘텐츠 제작 전 과정을 커버합니다. v1.4.0부터 `landing-page`·`product-detail` 두 스킬이 **shadcn/ui + Tailwind CSS v4 + OKLCH 토큰**을 기본 스택으로 사용하고, 코드 생성 전 **소크라테스식 테마 인터뷰**(베이스 팔레트·컬러 모드·모서리 반경·효과)를 자동으로 실행합니다. **v2.0.0부터** `korean-spell-check`(부산대 AI연구실 + ㈜나라인포테크 공동 개발 **바른한글** 표면)으로 한국어 맞춤법·띄어쓰기를 최종 검수합니다 — `ai-slop-reviewer` 직후 체인 권장. **v2.1.0부터** `humanize-korean`(한국 번역학계 8유형 번역투 계보 기반 자체 저작 SSOT)으로 10대 카테고리 × 40+ AI 티 패턴을 정량 메트릭으로 정밀 윤문합니다 — 의미 100% 보존 가드(변경률 30/50%) + 자체검증 6항 + A/B/C/D 등급 자동 판정. Post-Bridge, Typefully, WordPress MCP 연동으로 멀티채널 발행을 자동화합니다.
 
 > **v2.3.0 변경 안내**: `social-media` 스킬은 `moai-marketing:sns-content`로 흡수되었습니다(글로벌 4채널 모드 추가: 스레드·X·링크드인·유튜브 쇼츠). 한국 3채널 모드(인스타·네이버 블로그·카카오)도 `sns-content`에서 그대로 지원됩니다. `social-media`는 **v2.5.0까지 deprecate stub으로 유지**되며 신규 호출은 `/sns-content` 사용을 권장합니다.
 
@@ -24,7 +24,7 @@
 | [blog](./skills/blog/) | 네이버/티스토리/브런치/WordPress/Ghost 6개 플랫폼 최적화 포스팅 | 6 | ✅ |
 | [social-media](./skills/social-media/) | **⚠️ Deprecated (v2.3.0)** — `moai-marketing:sns-content`로 흡수됨. `/sns-content` 사용 권장. v2.5.0까지 호환 stub 유지 | — | ⚠️ |
 | [korean-spell-check](./skills/korean-spell-check/) | 바른한글(부산대) 한국어 맞춤법·띄어쓰기 최종 검수. ai-slop-reviewer 직후 체인 권장 (v2.0.0+) | 0 | ✅ |
-| [humanize-korean](./skills/humanize-korean/) | 한국어 AI 티 정밀 윤문 (10대 카테고리 × 40+ 패턴 SSOT, S1/S2/S3 심각도, A/B/C/D 등급, 변경률 30/50% 가드). [epoko77-ai/im-not-ai](https://github.com/epoko77-ai/im-not-ai) MIT ⭐937 Fast 모드 포팅 (v2.1.0+) | 6 | ✅ |
+| [humanize-korean](./skills/humanize-korean/) | 한국어 AI 티 정밀 윤문 (10대 카테고리 × 40+ 패턴 SSOT, S1/S2/S3 심각도, A/B/C/D 등급, 변경률 30/50% 가드). 한국 번역학계 8유형 번역투 계보 기반 자체 저작 | 6 | ✅ |
 | [html-report](./skills/html-report/) | **🆕 v2.2.0** — 마크다운 보고서를 단일 파일 HTML로 변환 (6 모드: status/incident/plan/explainer/financial/pr, 외부 의존성 0, 한글 폰트 CDN 1개만 예외) | 0 | ✅ |
 
 ## shadcn/ui 기본 스택 (v1.4.0 신규)

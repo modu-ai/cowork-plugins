@@ -68,7 +68,7 @@ dart (DART corporate disclosures), korean-law (Korean law/precedent search), wor
 
 ## Quality gate
 
-All text deliverables go through `moai-core:ai-slop-reviewer` for AI-pattern detection and rewriting. Korean text deliverables additionally chain through `moai-content:humanize-korean` (10-category × 40+ AI-tell pattern SSOT, derived from epoko77-ai/im-not-ai MIT). HTML report deliverables (v2.2.0+) chain through `moai-content:html-report` for single-file rendering.
+All text deliverables go through `moai-core:ai-slop-reviewer` for AI-pattern detection and rewriting. Korean text deliverables additionally chain through `moai-content:humanize-korean` (10-category × 40+ AI-tell pattern SSOT grounded in Korean translation-studies scholarship, self-authored). HTML report deliverables (v2.2.0+) chain through `moai-content:html-report` for single-file rendering.
 
 ## Privacy & API keys
 
@@ -80,7 +80,6 @@ This project incorporates and credits multiple upstream sources under their resp
 - revfactory/harness — Apache 2.0 (skill/agent design patterns)
 - forrestchang/andrej-karpathy-skills — public (Karpathy 4 coding principles)
 - NomaDamas/k-skill — MIT (Korean B2B 6 skills)
-- epoko77-ai/im-not-ai — MIT (humanize-korean)
 - Thariq Shihipar's "unreasonable effectiveness of HTML" thesis (html-report design system inspiration)
 
 Full attribution: `.claude/rules/moai/NOTICE.md`.

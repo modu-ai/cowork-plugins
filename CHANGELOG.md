@@ -16,7 +16,7 @@
 
 ## [2.20.0] - 2026-06-16
 
-MINOR. **학습자 전용 `moai-tutor` 플러그인 신규 (3 스킬)**. 가르치는 사람(moai-education)과 분리된 **배우는 사람(학습자·수강생)** 도메인을 신설했습니다. 학습 질문을 context7(공식 문서)+웹검색(최신 정보)으로 **병렬** 조사·교차검증하고, mermaid 도식·차트·수식·코드 하이라이트가 **조건부로** 들어간 단일 HTML 학습자료를 자동 생성합니다. claude code·cowork·영어 등 어떤 주제든 스스로 깊이 학습하는 워크플로우입니다. 27 → 28 플러그인, 173 → 176 스킬, 동기화 2.19.0 → 2.20.0. 기능적 비파괴(기존 플러그인·스킬·워크플로우 무변경).
+MINOR. **학습자 전용 `moai-tutor` 플러그인 신규 (3 스킬)**. 가르치는 사람(moai-education)과 분리된 **배우는 사람(학습자·수강생)** 도메인을 신설했습니다. 학습 질문을 context7(공식 문서)+웹검색(최신 정보)으로 **병렬** 조사·교차검증하고, mermaid 도식·차트·수식·코드 하이라이트가 **조건부로** 들어간 단일 HTML 학습자료를 자동 생성합니다. claude code·cowork·영어 등 어떤 주제든 스스로 깊이 학습하는 워크플로우입니다. 27 → 28 플러그인, 173 → 176 스킬, 동기화 2.19.0 → 2.20.0. 기능적 비파괴(기존 플러그인·스킬·워크플로우 무변경). 아울러 저장소 라이선스를 **MIT → NC-ND 1.0**으로 전환하고, `moai-content:humanize-korean`을 MIT 차용 의존 없이 **100% 자체 저작으로 재생성**(검증된 구조 보존 + 표현 전면 자체 저작, 기능 동등성 유지)했습니다.
 
 ### Added
 
@@ -29,6 +29,8 @@ MINOR. **학습자 전용 `moai-tutor` 플러그인 신규 (3 스킬)**. 가르�
 
 ### Changed
 
+- **라이선스 전환 MIT → NC-ND 1.0** — 루트 `LICENSE`를 비상업·변경금지(Non-Commercial No-Derivatives) 1.0으로 전환. 종전 MIT 릴리스는 `LICENSE.MIT`로 보존(해당 릴리스에 한해 계속 유효), 제3자 구성요소(Apache/MIT/OFL)는 `NOTICE.md`로 격리(LICENSE 제7조). 전체 plugin.json 28개 `license: LicenseRef-MoAI-NC-ND-1.0`.
+- **`moai-content:humanize-korean` 라이선스 안전 자체 재생성** — MIT 차용 의존(코드·예문·산문) 100% 제거. 검증된 구조(10대 카테고리 A~J·S1/S2/S3 심각도·CLI·등급 로직)는 보존하되 메트릭 알고리즘(metrics.py·metrics_v2.py)·테스트·taxonomy 예문·scholarship 산문·파생 룰북·SKILL.md 출처표시를 전면 자체 저작. 한국 번역학계 8유형 번역투 계보 + 학술 원전(KatFish·Toral 2019 arXiv:1907.00900) 직접 인용 기반. 기능 동등성 잠금(동일 risk_band·메트릭 값 byte-identical, 28 테스트 PASS, RiskBandRegression 영구 가드). 스킬 전체가 NC-ND 하에 편입.
 - 전체 버전 동기화 2.19.0 → 2.20.0 (marketplace.json + 28 plugin.json + 176 SKILL.md).
 - 루트 README·`marketplace.json` 카탈로그에 moai-tutor 추가, 배지(28 플러그인 · 176 스킬) 및 총 산출물 표 갱신.
 

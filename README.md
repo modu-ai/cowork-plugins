@@ -997,7 +997,7 @@ Claude Cowork에서 **마켓플레이스 추가 → URL `modu-ai/cowork-plugins`
 
 ### 텍스트 산출물 품질은 어떻게 보장하나요?
 
-**모든 텍스트 산출 워크플로우의 마지막 단계**에 `moai-core:ai-slop-reviewer`를 자동 호출하여 AI 패턴(금지어, 획일적 문장 길이, AI식 도입/결말, 수동태 남용)을 검수·수정합니다. 한국어 산출물은 추가로 **`moai-content:humanize-korean`**(10대 카테고리 × 40+ AI 티 패턴 SSOT, [`epoko77-ai/im-not-ai`](https://github.com/epoko77-ai/im-not-ai) MIT 기반)을 체이닝해 정밀 윤문합니다.
+**모든 텍스트 산출 워크플로우의 마지막 단계**에 `moai-core:ai-slop-reviewer`를 자동 호출하여 AI 패턴(금지어, 획일적 문장 길이, AI식 도입/결말, 수동태 남용)을 검수·수정합니다. 한국어 산출물은 추가로 **`moai-content:humanize-korean`**(한국 번역학계 8유형 번역투 계보 기반 10대 카테고리 × 40+ AI 티 패턴 SSOT)을 체이닝해 정밀 윤문합니다.
 
 ### 이 프로젝트는 Anthropic 공식인가요?
 
