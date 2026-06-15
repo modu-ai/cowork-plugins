@@ -83,7 +83,7 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
   <a class="cw-qs-card" href="/getting-started/first-task/">
     <div class="step">03 · 첫 작업 (약 5분)</div>
     <div class="ttl">한 줄 명령으로 첫 산출물</div>
-    <div class="desc">/project init 으로 프로젝트 설정 → 짧은 자연어로 첫 결과물 받아보기.</div>
+    <div class="desc">/project 으로 프로젝트 설정 → 짧은 자연어로 첫 결과물 받아보기.</div>
   </a>
   <a class="cw-qs-card" href="/cookbook/tracks/">
     <div class="step">04 · 트랙</div>
@@ -267,12 +267,26 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
 </div>
 
 <div class="cw-sect-head">
-  <h2 id="release-summary" style="margin:0"><span class="num">v2.17</span>최근 릴리스</h2>
+  <h2 id="release-summary" style="margin:0"><span class="num">v2.18</span>최근 릴리스</h2>
   <span class="meta">CHANGELOG.md 기반</span>
 </div>
 
 <div class="cw-timeline">
   <div class="cw-rel latest">
+    <div class="ver-row">
+      <span class="ver">v2.18.0</span>
+      <span class="date">2026-06-15</span>
+      <span class="badge">MINOR</span>
+    </div>
+    <div class="ttl">Cowork 에이전트 모델 전환 — 플러그인 번들 코디네이터 제거 + /project 맞춤 에이전트</div>
+    <div class="desc">v2.17.0이 도입한 플러그인 번들 <strong>코디네이터 sub-agent 14개를 전면 제거</strong>하고, <code>/project</code>가 사용자 프로젝트에 맞춤 sub-agent를 직접 생성하는 <strong>Agent Synthesis(Phase 3.5)</strong> 모델로 일원화. 프로젝트 에이전트는 플러그인 번들보다 우선순위가 높고 Cowork가 자동 로드하며 새 세션에서 활성화. moai-core:project 스킬 현대화 · bare <code>/project</code> 기본 동작. <strong>27 플러그인 · 173 스킬 유지 · 기능적 비파괴 · Breaking change 없음</strong>.</div>
+    <ul>
+      <li><strong>/project Agent Synthesis (신규 Phase 3.5)</strong> — 고정 다단계+비우회 게이트 · 병렬 fan-out · 빈번 반복 워크플로우에 한해 사용자 <code>.claude/agents/</code>에 맞춤 sub-agent 생성. 새 세션에서 활성화</li>
+      <li><strong>코디네이터 14개 제거</strong> — 우선순위 최하위·설치 버전 게이트·orchestrator 중복. 파이프라인 로직은 Phase 3.5 예시로 보존(자연어 인라인 호출로 동일 결과)</li>
+      <li><strong>project 스킬 현대화</strong> — 22→27 플러그인/143→173 스킬 정합 · Phase 2 화이트리스트 동적 도출(신규 5플러그인 누락 버그 해소) · 폐기 harness·글로벌 프로필 잔재 제거 · moai-office 5 SKILL.md doc-qa 참조→인라인 자체검수</li>
+    </ul>
+  </div>
+  <div class="cw-rel">
     <div class="ver-row">
       <span class="ver">v2.17.0</span>
       <span class="date">2026-06-14</span>

@@ -12,7 +12,7 @@ description: |
   3개 차원(휴리스틱·접근성·플로우)을 분석해 심각도·우선순위가 매겨진 개선 로드맵으로 정리하고, ai-slop-reviewer·humanize-korean으로 마무리할 수 있습니다.
   [책임 경계] vs moai-product:ux-researcher: ux-designer=휴리스틱·접근성·플로우 평가, ux-researcher=인터뷰·페르소나·VOC 리서치
 user-invocable: true
-version: 2.17.0
+version: 2.18.0
 ---
 
 # UX 디자이너 (UX Designer)

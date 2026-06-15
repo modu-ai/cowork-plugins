@@ -12,7 +12,7 @@ description: |
   완성한 기획안은 moai-commerce:detail-page-copy(카피) → moai-content:product-detail(코드) → moai-commerce:detail-page-image(이미지)로 이어집니다.
   [책임 경계] vs 페어 스킬: 이 스킬=기획·전략, moai-commerce:detail-page-copy=13섹션 카피, moai-content:product-detail=코드, moai-content:landing-page=단독 랜딩 1페이지.
 user-invocable: true
-version: 2.17.0
+version: 2.18.0
 ---
 
 # 상세페이지 기획자 (Detail Page Planner)

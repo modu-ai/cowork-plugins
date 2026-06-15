@@ -50,7 +50,7 @@ IF 같은 문제가 3회 이상 반복:
   → "심각한 문제" 신호
   → 규칙 업데이트 필요
   
-IF 특정 하네스에서 일관된 성공:
+IF 특정 스킬/체인에서 일관된 성공:
   → "좋은 패턴" 신호
   → 규칙 강화
 
@@ -80,7 +80,7 @@ IF 문제_유형 == "지역 규제 무지":
 
 **Step 5: 교차 도메인 학습**
 ```
-한 하네스에서의 학습을 다른 하네스에 적용:
+한 스킬에서의 학습을 다른 스킬에 적용:
 
 Example:
 copywriting에서 "사용자는 짧은 문단 선호" 발견
@@ -88,8 +88,8 @@ copywriting에서 "사용자는 짧은 문단 선호" 발견
 → sop-writer 결과 설명도 간결화
 
 학습 전파:
-pattern-database.md (공통) → 모든 하네스에 적용
-→ 개별 하네스별 특화 패턴 추가
+pattern-database.md (공통) → 모든 스킬에 적용
+→ 개별 스킬별 특화 패턴 추가
 ```
 
 ---
@@ -138,7 +138,7 @@ pattern-database.md (공통) → 모든 하네스에 적용
 
 ## 2026-04-05 (Update 1)
 
-### 변경 대상: copywriting 하네스 패턴
+### 변경 대상: 카피라이팅(copywriting) 스킬 패턴
 - **변경 이유**: 사용자 피드백 "실행 아이템 필요"
 - **변경 전**: "솔루션 3가지 제시"
 - **변경 후**: "솔루션 3가지 + 각 솔루션별 실행 스텝 3-5개"
@@ -271,7 +271,7 @@ IF Day 30 평가 < Day 7 평가:
 ```
 .moai/evolution/metrics.csv:
 
-date,harness,feedback_score,completion_time,quality_score,problem_type
+date,skill,feedback_score,completion_time,quality_score,problem_type
 2026-04-04,copywriting,8,12,85,실행성부족
 2026-04-04,sop-writer,9,8,90,none
 2026-04-05,copywriting,8.5,14,88,실행성부족 (개선중)

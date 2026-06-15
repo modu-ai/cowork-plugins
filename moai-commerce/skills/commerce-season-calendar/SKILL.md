@@ -6,7 +6,7 @@ description: |
   "연간 시즌 캘린더", "블프 솽스이 일정", "한국 시즌 이벤트", "분기 캠페인 계획", "시즌별 매출 피크", "명절 마케팅", "발렌타인 이벤트".
   v2.8.0 신규.
 user-invocable: true
-version: 2.17.0
+version: 2.18.0
 ---
 
 # 연간 시즌 캘린더 (Commerce Season Calendar)

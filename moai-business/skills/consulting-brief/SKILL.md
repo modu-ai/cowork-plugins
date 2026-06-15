@@ -12,7 +12,7 @@ description: |
   - "현황 분석하고 권고안까지 정리해줘"
   Executive Summary·현황 분석·문제 정의·권고사항·실행 로드맵 구조로 작성하며, PPT 변환이나 AI 표현 다듬기로 이어집니다.
 user-invocable: true
-version: 2.17.0
+version: 2.18.0
 ---
 
 # 컨설팅 브리프 (Consulting Brief)

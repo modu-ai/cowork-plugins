@@ -30,10 +30,11 @@ flowchart TD
     V214 --> V215["v2.15<br/>Meta 광고·NotebookLM"]
     V215 --> V216["v2.16<br/>개인·일잘러 3종"]
     V216 --> V217["v2.17<br/>공공데이터·코디네이터"]
+    V217 --> V218["v2.18<br/>에이전트 모델 전환"]
 
     style V10 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style V216 fill:#d6ebe7,stroke:#1c7c70,color:#09110f
-    style V217 fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
+    style V217 fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+    style V218 fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
 ```
 
 ## 버전 관리 정책
@@ -66,7 +67,8 @@ flowchart TD
 
 각 버전의 상세 변경 사항은 다음 페이지에서 확인할 수 있습니다:
 
-- [v2.17.0 (최신)](v2.17/) - **Cowork-fit 재설계 마무리 — 공공데이터 조회 플러그인 + 코디네이터 sub-agent 11종** — 한국 공공·시세 조회를 한곳에 모은 신규 **moai-public-data**(KRX 종목·법원경매·국토부 실거래가·공공데이터포털/KOSIS 4 조회, 별도 API 키 불필요) + Cowork 전용 **코디네이터 sub-agent 11종**(상품 출시·상세페이지·원고·사업계획·채용·법무 검토·메타 광고·미디어·문의 분류·UX 점검·재무 리포트 조립). 60여 스킬 `ai-slop-reviewer → humanize-korean` 후처리 체이닝 표준화 · 설명·트리거 STANDARD 정리 · moai-pm·moai-sales·moai-bi manifest 정직화 · 이미지·영상 Higgsfield 단일화 · WordPress 발행 wiring. **26 → 27 플러그인 · 170 → 173 스킬 · Breaking change 없음**
+- [v2.18.0 (최신)](v2.18/) - **Cowork 에이전트 모델 전환 — 플러그인 번들 코디네이터 제거 + /project 맞춤 에이전트** — v2.17.0이 도입한 플러그인 번들 코디네이터 sub-agent 14개를 전면 제거하고, `/project`가 사용자 프로젝트에 맞춤 sub-agent를 직접 생성하는 **Agent Synthesis(Phase 3.5)** 모델로 일원화. 프로젝트 에이전트는 플러그인 번들보다 우선순위가 높고 Cowork가 자동 로드하며 새 세션에서 활성화. moai-core:project 스킬 현대화(27 플러그인/173 스킬 정합·Phase 2 화이트리스트 동적 도출·bare `/project` 기본 동작) · moai-office 5 SKILL.md의 삭제된 doc-qa 참조 정정. **27 플러그인·173 스킬 유지 · 기능적 비파괴 · Breaking change 없음**
+- [v2.17.0](v2.17/) - **Cowork-fit 재설계 마무리 — 공공데이터 조회 플러그인 + 코디네이터 sub-agent 11종** — 한국 공공·시세 조회를 한곳에 모은 신규 **moai-public-data**(KRX 종목·법원경매·국토부 실거래가·공공데이터포털/KOSIS 4 조회, 별도 API 키 불필요) + Cowork 전용 **코디네이터 sub-agent 11종**(상품 출시·상세페이지·원고·사업계획·채용·법무 검토·메타 광고·미디어·문의 분류·UX 점검·재무 리포트 조립). 60여 스킬 `ai-slop-reviewer → humanize-korean` 후처리 체이닝 표준화 · 설명·트리거 STANDARD 정리 · moai-pm·moai-sales·moai-bi manifest 정직화 · 이미지·영상 Higgsfield 단일화 · WordPress 발행 wiring. **26 → 27 플러그인 · 170 → 173 스킬 · Breaking change 없음**
 - [v2.16.0](v2.16/) - **개인·일잘러 도메인 3종 신규** — 직장인 개인의 재무·자기관리·소통 영역을 vault 분석 기반 커버리지 공백 충전으로 채운 신규 3 플러그인 18 스킬. **moai-wealth**(개인 재무·재테크 6: 재테크 로드맵·가계부·투자 입문·보험 설계·연말정산 절세·경제지표 읽기) · **moai-productivity**(자기관리·생산성 7: 회고·목표·시간·습관·자기돌봄·노션·주간보고) · **moai-comms**(직장 커뮤니케이션 5: 보고·회의·피드백·갈등·면담·협상). 법인 세무 moai-finance·팀 PM moai-product·공식 인사 moai-hr와 역할 분리. **23 → 26 플러그인 · 152 → 170 스킬 · 동기화 지점 176 → 198 · Breaking change 없음**
 - [v2.15.0](v2.15/) - **Meta 공식 Ads AI Connectors OAuth + NotebookLM 슬라이드 프롬프트 신규 2 스킬** — Meta Ads MCP 공식 OAuth 커넥터로 캠페인·광고세트·광고 자연어 생성·수정·예산·온오프(신규 리소스 PAUSED 기본값·쓰기 동작 사용자 승인). NotebookLM Video Overview·슬라이드용 한국어 소스·대본·구조·나노바나나 이미지 프롬프트 설계. **23 플러그인·152 스킬·동기화 지점 175 유지·Breaking change 없음**. Meta OAuth 2.0 정정(정적 토큰·서드파티 3종 제거).
 - [v2.14.0](v2.14/) - **Claude Design 보조 docs·스킬 정합성 보완** — Anthropic 공식 발표(2026-04-17) 정확 반영. (A) 코드 기반 프로토타입(음성·비디오·셰이더·3D) 카테고리 명시 (B) Canva 네이티브 파트너십(CEO Melanie Perkins 인용)·마케팅 후속 워크플로우 (C) 통합 빌더 단기 로드맵 ("coming weeks") (D) Brilliant·Datadog 공식 도입 사례 인용. claude-design-prompt-builder에 프론티어 미디어 보조 패턴 + claude-design-handoff-reader에 두 경로 분기 표 신규. **23 플러그인·150 스킬 유지·동기화 지점 175 유지·Breaking change 없음**
@@ -107,7 +109,8 @@ MoAI Cowork Plugins의 업그레이드는 일반적으로 안전하게 진행할
 
 ### 호환성 정보
 
-- **v2.17.x**: 이전 버전과 완전 호환 — Breaking change 없음 (신규 플러그인 moai-public-data 4 스킬 추가, 별도 활성화 필요. Cowork 코디네이터 sub-agent 11종은 Cowork·Claude Code 환경 전용. 이미지·영상 직접 생성은 Higgsfield MCP 단일로 환원. 외부 API 키 불필요)
+- **v2.18.x**: 이전 버전과 완전 호환 — Breaking change 없음 (플러그인 번들 코디네이터 sub-agent 14개 전면 제거, 기능적 비파괴. `/project` Agent Synthesis로 프로젝트 맞춤 sub-agent 생성, 새 세션에서 활성화. 27 플러그인·173 스킬 유지, 외부 API 키 불필요)
+- **v2.17.x**: 이전 버전과 완전 호환 — Breaking change 없음 (신규 플러그인 moai-public-data 4 스킬 추가, 별도 활성화 필요. 이미지·영상 직접 생성은 Higgsfield MCP 단일로 환원. 외부 API 키 불필요)
 - **v2.16.x**: 이전 버전과 완전 호환 — Breaking change 없음 (신규 플러그인 3종 moai-wealth·moai-productivity·moai-comms 18 스킬 추가, 별도 활성화 필요. 외부 API 키 불필요)
 - **v2.15.x**: 이전 버전과 완전 호환 — Breaking change 없음 (meta-ads-manager·notebooklm-slide-prompt 신규 2 스킬. Meta 광고 운영은 OAuth 커넥터 인증 필요)
 - **v2.14.x**: 이전 버전과 완전 호환 — Breaking change 없음 (Claude Design 관련 docs·스킬 정합성 보완만, 신규 스킬·플러그인 없음. moai-design 사용자는 업데이트 후 prompt-builder·handoff-reader 본문 새 섹션 확인)

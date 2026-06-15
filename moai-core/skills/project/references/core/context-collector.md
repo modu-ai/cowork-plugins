@@ -1,7 +1,7 @@
 # context-collector.md — 맥락 수집 프로토콜
 
 ## 개요
-하네스 실행에 필요한 사용자 맥락을 체계적으로 수집하는 프로토콜입니다.
+이 프로젝트의 스킬 체인 실행에 필요한 사용자 맥락을 체계적으로 수집하는 프로토콜입니다.
 맥락 충분성 등급, 심화 인터뷰, 모호성 감지, 반복 제한을 통해 효율적인 수집을 구현합니다.
 
 ---
@@ -17,44 +17,45 @@
 - 설치 플러그인 (`{installed_plugins}`)
 
 **충족 조건**: `./CLAUDE.md` 로드 (Cowork 세션 시작 시 자동).
-v1.3.0부터 **글로벌 프로필(`moai-profile.md`)은 사용하지 않는다**. 프로젝트 CLAUDE.md가 유일한 맥락 소스.
+v1.3.0부터 **글로벌 프로필은 사용하지 않는다**. 프로젝트 CLAUDE.md가 유일한 맥락 소스.
 
 ---
 
 ### B등급 — 핵심 (80% 이상 충족 권장)
-하네스별 도메인 맥락. **반드시 해당 하네스 레퍼런스의 "맥락 수집 질문" 섹션 참조**.
+산출물별 도메인 맥락. 선택한 스킬(또는 스킬 체인)에 맞춰 **Phase 1 인터뷰 + 필요 시 추가 AskUserQuestion**으로 수집한다.
 
 **질문 생성 규칙 (중요!)**:
 ```
-1. 하네스 레퍼런스 로딩: Read("references/harness/{harness-id}.md")
-2. "맥락 수집 질문 (AskUserQuestion)" 섹션의 필수 질문을 기반으로 사용
-3. 임의로 질문을 만들지 않는다
-4. 옵션 예시도 레퍼런스 원본 그대로
-5. 질문 횟수: 필요한 맥락이 부족할 때 자연스럽게 질문. 형식과 횟수는 상황에 맞게 판단.
-   (레퍼런스 Q1~Q4가 기준이지만, 이미 맥락이 충분하면 생략 가능)
+1. 선택한 스킬(또는 스킬 체인)이 무엇을 만드는지 파악 (산출물 유형)
+2. Phase 1 인터뷰 답변과 CLAUDE.md 프로젝트 개요에서 이미 알고 있는 맥락은 재질문하지 않는다
+3. 부족한 도메인 맥락만 AskUserQuestion으로 보강
+4. 질문 횟수: 필요한 맥락이 부족할 때 자연스럽게 질문. 형식과 횟수는 상황에 맞게 판단.
+   (이미 맥락이 충분하면 생략 가능)
 ```
 
 <!-- "최대 4질문" 하드 리밋 제거: Claude가 상황에 맞게 질문 수를 판단. 과잉 질문도, 무조건 4개 채우기도 불필요. -->
 
-**예시** (레퍼런스 기반):
+**예시** (산출물 유형별 질문 템플릿):
 
-**copywriting** (references/harness/copywriting.md):
+**카피·콘텐츠 작성 (copywriting)**:
 - Q1. 콘텐츠 목적은? → 브랜드 인지 / 리드 생성 / 전환 유도 / 고객 유지
 - Q2. 타겟 독자는? → B2B 의사결정자 / B2C 소비자 / 내부 직원 / 투자자
 - Q3. 긴급도는? → 즉시 / 1주일 내 / 2주+ / 미정
 - Q4. 선호 톤은? → 전문적 / 캐주얼 / 스토리텔링 / 데이터 중심
 
-**market-research** (references/harness/market-research.md):
+**시장조사 (market-research)**:
 - Q1. 조사 대상은? → 특정 산업명/제품군
 - Q2. 조사 목적은? → 신규 진입 / 경쟁 대응 / 투자 판단 / 전략 수립
 - Q3. 지리 범위는? → 한국 / 아시아 / 글로벌
 - Q4. 초점은? → 시장 규모 / 경쟁사 / 소비자 니즈 / 트렌드
 
-**technical-writer** (references/harness/technical-writer.md):
+**기술 문서 (technical-writer)**:
 - Q1. 문서 유형은? → API 가이드 / 사용자 매뉴얼 / 운영 가이드 / 제품 가이드
 - Q2. 타깃 독자는? → 개발자 / 관리자 / 최종 사용자 / 조합
 - Q3. 기술 스택은? → 웹 / 모바일 / 클라우드 / 데이터베이스 / 기타
 - Q4. 문서 현황은? → 신규 / 기존 개선 / 마이그레이션 / 유지보수
+
+위 3개 세트는 어디까지나 예시 템플릿이다. 실제 질문은 선택한 스킬의 산출물 유형에 맞춰 구성한다.
 
 ---
 
@@ -73,26 +74,25 @@ v1.3.0부터 **글로벌 프로필(`moai-profile.md`)은 사용하지 않는다*
 
 ### 2-1. 초기 평가
 ```
-harness_ref = Read("references/harness/{harness-id}.md")
-current_context = collect_user_context_from_profile()
-missing_context = A등급 + 필수_B등급 - current_context
+context = (CLAUDE.md "프로젝트 개요") + (Phase 1 인터뷰 답변)
+missing_context = A등급 + 필수_B등급 - context
 
 IF missing_context.empty():
-  → 즉시 실행 (프로필 완전)
+  → 즉시 실행 (맥락 충분)
 ELSE:
-  → 질문 프롬프트 생성 (harness_ref의 맥락 수집 질문 사용)
+  → 부족분만 AskUserQuestion으로 보강
 ```
 
 ### 2-2. 질문 생성 (AskUserQuestion)
 ```
-# 하네스 레퍼런스에서 질문 추출
-questions = extract_questions_from_harness_ref(harness_ref, section="맥락 수집 질문")
+# 선택한 스킬(체인)의 산출물 유형에 맞는 도메인 질문 구성
+questions = build_domain_questions(selected_skill_chain)
 
-# 이미 프로필/이전 맥락으로 충족된 질문은 스킵
+# CLAUDE.md 프로젝트 개요 / Phase 1 답변으로 이미 충족된 질문은 스킵
 missing_questions = [q for q in questions if not already_known(q)]
 
 FOR each 질문 in missing_questions:
-  options = 질문.options  # 레퍼런스에 정의된 옵션 그대로 사용
+  options = 질문.options  # 산출물 유형에 맞는 옵션 제시
   user_response = AskUserQuestion(질문.text, options)
   context_store[질문.id] = user_response
 
@@ -133,11 +133,10 @@ IF sufficiency_score >= 60% AND sufficiency_score < 80%:
   - 사용자가 "빨리 진행해" 또는 간단히 답하면 즉시 실행으로 전환
   - 응답 내용을 context_store에 저장
 
-하네스별 심화 질문 우선순위:
-  - 전략/규제 하네스 (market-research, compliance 등): 동기 탐색 + 전제 확인
-  - 콘텐츠 하네스 (copywriting, newsletter 등): 영향 범위 + 제약 발견
-  - 기술 하네스 (technical-writer, feature-spec 등): 대안 탐색 + 제약 발견
-  - 또는 하네스 레퍼런스의 "선택적 심화 질문" 섹션에서 택 2
+산출물 유형별 심화 질문 우선순위:
+  - 전략/규제 산출물 (시장조사, 컴플라이언스 등): 동기 탐색 + 전제 확인
+  - 콘텐츠 산출물 (카피, 뉴스레터 등): 영향 범위 + 제약 발견
+  - 기술 산출물 (기술 문서, 사양서 등): 대안 탐색 + 제약 발견
 ```
 
 ### 2-5. 충분성 재평가
@@ -164,7 +163,7 @@ ELSE:
 
 ### 3-1. 최대 반복 횟수
 ```
-max_rounds_per_harness = 7회
+max_rounds = 7회  (산출물 체인 단위)
 
 LOOP for round in 1..7:
   remaining_context = identify_missing_context()
@@ -186,13 +185,14 @@ IF round >= 7 and sufficiency < 60%:
 
 ### 3-2. 반복 방지 (캐싱)
 ```
-context_cache = load_from_profile()
-FOR each harness:
-  IF context_cache[harness] exists and age < 30days:
-    reuse(context_cache[harness])
+# CLAUDE.md 프로젝트 개요 + 현재 세션에서 이미 수집한 맥락을 우선 재사용
+context_cache = load_from_claude_md_and_session()
+FOR each deliverable_chain:
+  IF context_cache[chain] exists in this session:
+    reuse(context_cache[chain])
     skip_collection()
   ELSE:
-    collect_context(harness)
+    collect_context(chain)
 ```
 
 ### 3-3. 피드백 루프
@@ -200,11 +200,11 @@ FOR each harness:
 ```
 evaluation = get_user_feedback_or_auto_eval()
 IF evaluation_score >= 8/10:
-  → 컨텍스트 충분 (캐시 유지, TTL = 90days)
+  → 컨텍스트 충분 (현재 세션 재사용)
 ELSE IF evaluation_score >= 5/10:
-  → 컨텍스트 부분 적용 (TTL = 30days)
+  → 컨텍스트 부분 적용
 ELSE:
-  → 컨텍스트 갱신 필요 (TTL = 7days, 재수집 권장)
+  → 컨텍스트 갱신 필요 (재수집 권장)
 ```
 
 ---
@@ -217,7 +217,7 @@ ELSE:
 [신호 2] 저신뢰도 응답 (예: "음... 잘 모르겠어요")
 [신호 3] 상충하는 답변 (예: Q1="매일" vs Q2="월 1회")
 [신호 4] 도메인 키워드 부재 (너무 일반적인 답변)
-[신호 5] 프로필 불일치 (역할과 요청이 불일치)
+[신호 5] 산출물 목적과 요청 불일치
 ```
 
 ### 4-2. 해소 전략
@@ -238,59 +238,23 @@ IF resolution_attempts >= 2:
 
 ## 5. 저장 및 추적
 
-### 5-1. harness-contexts 파일 구조 (핵심!)
+### 5-1. 수집된 맥락의 저장 위치
 
-**기존 문제**: 15줄짜리 축약본만 생성됨
-**개선**: 사용자 맥락 + 풀 하네스 레퍼런스 복사
+수집된 맥락은 **Phase 6에서 CLAUDE.md 본문(프로젝트 개요·스킬 체인 섹션)에 기록**되며,
+별도의 컨텍스트 파일이나 글로벌 프로필을 만들지 않는다.
 
-```markdown
-# {사용자 언어 하네스명} ({harness-id}) — 하네스 컨텍스트
-
-## 사용자 맥락 (수집 결과)
-- **하네스 ID**: {harness-id}
-- **표시명**: {사용자 언어 하네스명}
-- **카테고리**: {category}
-- **설치일**: {YYYY-MM-DD}
-- **충분성 등급**: {A/B/C}
-
-### 수집된 답변
-- **Q1**: {질문} → {답변}
-- **Q2**: {질문} → {답변}
-- **Q3**: {질문} → {답변}
-- **Q4**: {질문} → {답변}
-
-### 심화 맥락 (심화 인터뷰 결과)
-- {열린 질문 1}: {사용자 답변 요약}
-- {열린 질문 2}: {사용자 답변 요약}
-
-### 활용 시나리오
-- {구체적 시나리오 1}
-- {구체적 시나리오 2}
-- {구체적 시나리오 3}
-
----
-
-## 하네스 레퍼런스 (원본)
-
-{references/harness/{harness-id}.md 전체 내용 복사}
-{축약 금지! 페르소나, 전문가 역할, 워크플로우, 산출물 형식 등 모두 포함}
-```
-
-**파일 최소 크기**: 80줄 이상
-- 사용자 맥락 섹션: 약 25줄
-- 하네스 레퍼런스 원본: 약 55줄 이상 (하네스별 상이)
-- 15줄 축약본은 부적합 → 재생성 필요
+- 인터뷰 답변 → CLAUDE.md "프로젝트 개요"에 반영
+- 산출물별 스킬 체인 → CLAUDE.md "프로젝트 워크플로우" 섹션에 기록
+- 현재 세션 내에서는 context_store에 임시 보관, 세션 종료 후에는 CLAUDE.md가 단일 소스
 
 ### 5-2. 메타데이터 추적
 ```
 context_metadata = {
   collected_date: timestamp,
-  source: "profile" | "user_input" | "document_upload",
+  source: "claude_md" | "user_input" | "document_upload",
   confidence: 0.0 ~ 1.0,
-  ttl_days: 30,
   last_used: timestamp,
   feedback_score: 0 ~ 10,
-  refresh_needed: boolean,
   interview_depth: "step1_only" | "step1_step2" | "full_step123"
 }
 ```
@@ -299,11 +263,11 @@ context_metadata = {
 
 ## 6. 컨텍스트 갱신 트리거
 
-자동 갱신 요청:
-- 프로필 변경 후 (회사, 역할, 산업)
-- TTL 만료 시
+다음 경우에 맥락을 갱신한다:
+- 사용자가 CLAUDE.md를 직접 수정한 경우
+- 새 산출물 유형(스킬 체인)을 추가하는 경우
 - 평가 점수 < 5/10
-- 사용자 명시적 요청 (`/project refresh-context`)
+- 사용자가 명시적으로 재수집을 요청한 경우
 
 ---
 
@@ -330,5 +294,5 @@ IF context_missing():
 - **충분성률**: 첫 라운드에 A+B등급 달성 %
 - **재질문율**: 평균 재질문 횟수
 - **만족도**: 사용자 평가 평균
-- **캐시 히트율**: 프로필 재사용 %
+- **캐시 히트율**: 세션 내 맥락 재사용 %
 - **심화 인터뷰 깊이**: 평균 심화 질문 수

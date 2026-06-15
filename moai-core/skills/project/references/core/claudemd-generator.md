@@ -1,18 +1,18 @@
-# claudemd-generator.md — CLAUDE.md 생성 프로토콜 (v1.3)
+# claudemd-generator.md — CLAUDE.md 생성 프로토콜
 
 ## 개요
 
-`/project init` Phase 5에서 호출되는 CLAUDE.md 자동 생성 프로토콜.
+bare `/project`(레거시 `/project init`) 초기화 Phase 6에서 호출되는 CLAUDE.md 자동 생성 프로토콜.
 사용자 맞춤형 `./CLAUDE.md`를 생성하되, **200라인 이내**로 제한한다.
-하네스의 상세 내용은 CLAUDE.md에 복사하지 않고, **스킬의 `references/harness/`를 런타임에 호출**하여 사용한다.
+스킬의 상세 내용은 CLAUDE.md에 복사하지 않고, 실행 시 해당 **스킬(SKILL.md)을 런타임에 로드**하여 사용한다.
 
-**v1.3.0 핵심 원칙:**
+**핵심 원칙:**
 - CLAUDE.md 템플릿은 **외부 파일(`references/templates/CLAUDE.md.tmpl`)로 분리**. 인라인 하드코딩 금지.
-- `/project init`은 Phase 3에서 설계된 **스킬 체인**을 템플릿의 `{workflow_chains}` 슬롯에 주입한다.
+- 초기화 워크플로우는 Phase 3에서 설계된 **스킬 체인**을 템플릿의 `{workflow_chains}` 슬롯에 주입한다.
 - 모든 생성된 CLAUDE.md에 **office/web 스킬 우선 + AI 슬롭 후처리 HARD 규칙 블록**이 고정 포함된다.
-- **글로벌 프로필 변수(`{user_name}`, `{company_name}`, `{role}`, `{industry}`) 제거됨.** v1.3.0부터는 프로젝트 맥락 변수만 사용한다.
-- `.claude/rules/` 생성 제거 → CLAUDE.md 하나에 지침 통합
-- **한국어 전용** (다국어 템플릿 제거)
+- **글로벌 프로필 변수(`{user_name}`, `{company_name}`, `{role}`, `{industry}`) 사용 안 함.** 프로젝트 맥락 변수만 사용한다.
+- `.claude/rules/` 생성 안 함 → CLAUDE.md 하나에 지침 통합
+- **한국어 전용** (다국어 템플릿 없음)
 
 ---
 
@@ -51,16 +51,16 @@
 | **여유분** | 약 59라인 | 맥락 확장용 |
 | **합계** | **≤ 200** | |
 
-### 2.2 하네스 내용 처리 방식
+### 2.2 스킬 내용 처리 방식
 
 ```
 ❌ 잘못된 방식:
-  CLAUDE.md에 하네스의 전문가 역할, 워크플로우, 출력 기준을 전체 복사
+  CLAUDE.md에 스킬의 전문가 역할, 워크플로우, 출력 기준을 전체 복사
   → 200라인 초과, 토큰 낭비
 
 ✅ 올바른 방식:
-  CLAUDE.md에는 하네스의 핵심 역할과 목적을 2~3줄로 요약
-  → 실행 시 해당 스킬의 references/harness/{id}.md를 Read하여 상세 지침 로드
+  CLAUDE.md에는 스킬 체인의 핵심 역할과 목적을 2~3줄로 요약
+  → 실행 시 해당 스킬(SKILL.md)이 런타임에 로드되어 상세 지침을 제공
 ```
 
 ### 2.3 스킬 체인 기록
@@ -91,7 +91,7 @@ moai-core/skills/project/references/templates/CLAUDE.md.tmpl
 
 ---
 
-## 4. 변수 치환 규칙 (v1.3)
+## 4. 변수 치환 규칙
 
 ### 4.1 프로젝트 맥락 변수 (Phase 1 인터뷰 결과)
 
@@ -109,6 +109,7 @@ moai-core/skills/project/references/templates/CLAUDE.md.tmpl
 |------|------|
 | `{installed_plugins}` | Phase 2에서 감지된 플러그인 리스트(쉼표 구분) |
 | `{workflow_chains}` | Phase 3에서 설계된 체인 블록(Markdown) |
+| `{generated_agents}` | Phase 3.5에서 생성된 프로젝트 에이전트 목록(이름 + 한 줄 설명). 생성 0건이면 빈 값 |
 | `{routing_summary}` | 설치된 플러그인 기반 키워드 → 플러그인 매핑 테이블 |
 
 ### 4.3 시스템 변수
@@ -117,14 +118,14 @@ moai-core/skills/project/references/templates/CLAUDE.md.tmpl
 |------|------|
 | `{version}` | `moai-core/.claude-plugin/plugin.json` `version` |
 | `{date}` | 오늘 날짜 (YYYY-MM-DD, `+09:00` 기준) |
-| `{connectors_and_apikeys}` | Phase 6에서 등록된 키·커넥터 요약 |
+| `{connectors_and_apikeys}` | Phase 7에서 등록된 키·커넥터 요약 |
 | `{project_context_notes}` | 초기값 비어있음 (실행 중 자동 누적) |
 
-### 4.4 제거된 변수 (v1.2 이하)
+### 4.4 사용 금지 변수
 
-다음 변수는 **v1.3.0에서 제거**되었다. 템플릿에 사용 금지:
+다음 변수는 템플릿에 **사용 금지**:
 
-- `{user_name}`, `{company_name}`, `{role}`, `{industry}` — 글로벌 프로필 시스템 제거에 따른 삭제
+- `{user_name}`, `{company_name}`, `{role}`, `{industry}` — 글로벌 프로필 시스템을 사용하지 않음
 - `{harness_name_ko}`, `{harness_id}`, `{installed_skill}` — 단일 하네스 모델 폐기, 스킬 체인으로 대체
 
 ---
@@ -139,7 +140,9 @@ moai-core/skills/project/references/templates/CLAUDE.md.tmpl
    - Phase 1 인터뷰 결과
    - Phase 2 감지된 플러그인
    - Phase 3 스킬 체인 설계
-   - Phase 6 등록된 API 키/커넥터
+   - Phase 3.5에서 생성한 프로젝트 에이전트 목록 → {generated_agents} 슬롯에 주입
+     (생성 0건이면 빈 값 — 해당 섹션은 비어 있게 둔다)
+   - Phase 7 등록된 API 키/커넥터
 
 3. 치환
    각 {변수}를 수집된 값으로 치환.
@@ -177,9 +180,9 @@ moai-core/skills/project/references/templates/CLAUDE.md.tmpl
 
 | 상황 | 동작 |
 |------|------|
-| `/project init` 재실행 | CLAUDE.md 재생성 (기존 덮어쓰기, 사용자 확인 후) |
+| `/project` 재실행 (레거시 `/project init`) | CLAUDE.md 재생성 (기존 덮어쓰기, 사용자 확인 후) |
 | `/project evolve` | 반성 결과를 `.moai/evolution/`에 기록 (CLAUDE.md 변경 없음) |
-| 플러그인 추가 설치 | `/project init` 재실행 권장 (체인 재설계) |
+| 플러그인 추가 설치 | `/project` 재실행 권장 (체인 재설계) |
 | 스킬 체인 수정 요청 | 해당 체인 블록만 Edit로 교체 (전체 재생성 불필요) |
 
 ---

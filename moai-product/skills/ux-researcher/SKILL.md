@@ -12,7 +12,7 @@ description: |
   정성·정량 리서치 결과를 의사결정에 쓸 수 있는 인사이트로 정리하고, ai-slop-reviewer·humanize-korean으로 마무리할 수 있습니다.
   [책임 경계] vs moai-product:ux-designer: ux-researcher=정성/정량 리서치(인터뷰·페르소나·VOC), ux-designer=디자인 평가(휴리스틱·접근성·플로우)
 user-invocable: true
-version: 2.17.0
+version: 2.18.0
 ---
 
 # UX 리서처 (UX Researcher)

@@ -14,7 +14,7 @@ description: |
   네이밍 후보 평가, 슬로건, 브랜드 스토리, 색상 시스템, 채널별 적용 가이드를 문서로 묶어 줍니다. 텍스트 산출물은 moai-core:ai-slop-reviewer → moai-content:humanize-korean으로 다듬습니다.
   [책임 경계] vs moai-marketing:personal-branding: 이 스킬=기업·제품 브랜드, 저 스킬=개인·전문가 브랜드.
 user-invocable: true
-version: 2.17.0
+version: 2.18.0
 ---
 
 # 브랜드 아이덴티티 (Brand Identity)

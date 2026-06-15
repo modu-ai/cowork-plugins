@@ -12,11 +12,11 @@ tags: ["moai-core"]
 
 ## 무엇을 하는 플러그인인가
 
-`moai-core`는 `cowork-plugins` 마켓플레이스의 모든 도메인 플러그인이 공유하는 인프라를 제공합니다. 프로젝트별 작업 지침(`CLAUDE.md`)을 자동 생성하는 `/project init` 마법사, 모든 텍스트 산출물의 마지막 단계에서 AI 패턴을 다듬어주는 `ai-slop-reviewer`, 버그·기능 요청을 GitHub Issues로 바로 등록하는 `feedback` 스킬, Drive·Notion·Higgsfield·OpenAI **4커넥터 인증·환경변수·트러블슈팅 통합 가이드** `mcp-connector-setup`을 포함한 **총 8개 스킬**이 포함되어 있습니다.
+`moai-core`는 `cowork-plugins` 마켓플레이스의 모든 도메인 플러그인이 공유하는 인프라를 제공합니다. 프로젝트별 작업 지침(`CLAUDE.md`)을 자동 생성하고 프로젝트 맞춤 에이전트까지 합성하는 `/project` 마법사, 모든 텍스트 산출물의 마지막 단계에서 AI 패턴을 다듬어주는 `ai-slop-reviewer`, 버그·기능 요청을 GitHub Issues로 바로 등록하는 `feedback` 스킬, Drive·Notion·Higgsfield·OpenAI **4커넥터 인증·환경변수·트러블슈팅 통합 가이드** `mcp-connector-setup`을 포함한 **총 8개 스킬**이 포함되어 있습니다.
 
 `ai-slop-reviewer`는 모든 한국어 텍스트 산출물(블로그·뉴스레터·계약서·사업계획서·이메일 등)의 체인 마지막 단계에서 호출되어, 과장된 수식어·기계적 접속어·모호한 일반화 같은 AI 글쓰기 패턴을 진단하고 사람 톤으로 다듬어줍니다.
 
-`/project init` 한 번이면 설치된 `moai-*` 플러그인을 자동 감지해 산출물별 스킬 체인을 설계하고, 200라인 이내의 `CLAUDE.md`를 프로젝트 루트에 생성합니다.
+`/project` 한 번이면 설치된 `moai-*` 플러그인을 자동 감지해 산출물별 스킬 체인을 설계하고, 200라인 이내의 `CLAUDE.md`를 프로젝트 루트에 생성하며, 자격 조건을 갖춘 워크플로우에 한해 프로젝트 맞춤 sub-agent를 `.claude/agents/`에 합성합니다. (`/project init`은 레거시 별칭으로 계속 동작합니다.)
 
 ## 설치
 
@@ -34,7 +34,7 @@ tags: ["moai-core"]
 
 | 스킬 | 용도 | 자동 호출 트리거 |
 |---|---|---|
-| `project` | 프로젝트 초기화·상태·API 키·카탈로그 관리 (`/project init`, `/project status`, `/project apikey`, `/project catalog`) | "프로젝트 초기화", "CLAUDE.md 만들어줘" |
+| `project` | 프로젝트 초기화·맞춤 에이전트 합성·상태·API 키·카탈로그 관리 (`/project`, `/project status`, `/project apikey`, `/project catalog`; `/project init`은 레거시 별칭) | "프로젝트 초기화", "CLAUDE.md 만들어줘", "전담 에이전트로 만들어줘" |
 | `ai-slop-reviewer` | 텍스트 산출물의 AI 패턴 진단·수정 | "AI 티 나는 부분 고쳐줘", "사람이 쓴 것처럼 수정해줘" |
 | `feedback` | 버그 리포트·기능 요청을 GitHub Issues로 자동 등록 | "/project feedback", "버그 신고", "기능 요청" |
 | `ai-diagnostic` | AI 시스템 진단, 성능 모니터링, 오류 분석 | "AI 동작이 이상해", "성능 체크해줘" |
@@ -43,28 +43,31 @@ tags: ["moai-core"]
 | `skill-template` | 스킬 구조 템플릿, 프롬프트 엔지니어링 가이드 | "스킬 구조 알려줘", "템플릿 참고할게" |
 | `skill-tester` | 스킬 테스트, 검증, 품질 보증 | "이 스킬 테스트해줘", "검증 프로세스 설계해줘" |
 
-## `/project init` 흐름 (3분)
+## `/project` 흐름
 
 ```mermaid
 flowchart TD
     A["① Interview<br/>업무 맥락 수집"] --> B["② Detect<br/>플러그인 감지"]
     B --> C["③ Chain Design<br/>체인 설계"]
-    C --> D["④ Confirm<br/>승인"]
+    C --> CA["③·5 Agent Synthesis<br/>맞춤 에이전트 합성"]
+    CA --> D["④ Confirm<br/>승인"]
     D --> E["⑤ Generate<br/>CLAUDE.md 생성"]
     E --> F["⑥ APIKey<br/>키 등록"]
     F --> G["⑦ First Run<br/>첫 작업 예시"]
 
     style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style CA fill:#fbf0dc,stroke:#c47b2a,color:#09110f
     style G fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 1. **Interview** — 최대 3개 질문으로 이번 프로젝트의 업무 맥락 수집 (이름·회사는 묻지 않음)
-2. **Detect** — 설치된 `moai-*` 플러그인 자동 감지
+2. **Detect** — 설치된 `moai-*` 플러그인 자동 감지 (화이트리스트 동적 도출)
 3. **Chain Design** — 산출물별 스킬 체인 설계 (예: 사업계획서 → `strategy-planner → docx-generator → ai-slop-reviewer`)
-4. **Confirm** — AskUserQuestion으로 체인 설계 최종 승인
-5. **Generate** — `CLAUDE.md` 자동 생성 (200라인 이내)
-6. **APIKey** — 선택된 플러그인이 요구하는 키만 프로젝트 격리 저장
-7. **First Run** — 첫 작업 예시 3개 제안
+4. **Agent Synthesis (Phase 3.5)** — 고정 다단계·병렬 fan-out·빈번 반복 등 자격 조건을 갖춘 워크플로우에 한해 프로젝트 맞춤 sub-agent를 `.claude/agents/`에 합성 (새 세션에서 활성화, 플러그인 번들보다 우선순위 높음)
+5. **Confirm** — AskUserQuestion으로 체인·에이전트 설계 최종 승인
+6. **Generate** — `CLAUDE.md` 자동 생성 (200라인 이내)
+7. **APIKey** — 선택된 플러그인이 요구하는 키만 프로젝트 격리 저장
+8. **First Run** — 첫 작업 예시 3개 제안
 
 ## `ai-slop-reviewer` 이해하기
 
@@ -90,7 +93,7 @@ AI가 작성한 글에는 공통된 패턴이 있습니다.
 ## 빠른 사용 예
 
 ```text
-/project init
+/project
 ```
 
 ```text

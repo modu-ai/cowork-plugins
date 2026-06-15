@@ -12,7 +12,7 @@ description: |
   코드 생성 전에 디자인 톤(색·모드·모서리·효과)을 먼저 묻습니다. 기획은 moai-content:detail-page-planner, 카피는 moai-commerce:detail-page-copy, 이미지는 moai-commerce:detail-page-image로 이어집니다.
   [책임 경계] vs 페어 스킬: 이 스킬=코드 산출, moai-commerce:detail-page-copy=13섹션 카피 JSON, moai-content:landing-page=단독 전환 랜딩 1페이지.
 user-invocable: true
-version: 2.17.0
+version: 2.18.0
 ---
 
 # 상세 페이지 (Product Detail)

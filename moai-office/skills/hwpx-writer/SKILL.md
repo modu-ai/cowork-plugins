@@ -13,7 +13,7 @@ description: |
   한컴오피스(아래아한글) 호환 표준 양식을 따르며, 한컴이 없는 환경이면 워드(.docx) 생성으로 대체할 수 있습니다.
   [책임 경계] vs moai-office:docx-generator: 이 스킬=한컴 .hwpx 한글 파일, 저 스킬=MS 워드 .docx 파일.
 user-invocable: true
-version: 2.17.0
+version: 2.18.0
 ---
 
 # 한글 문서 작성자 (HWPX Writer)
@@ -116,9 +116,9 @@ HWP 파일 버전(2010/2014/2018 등)에 따라 변환 제한이 있을 수 있�
 | 폰트 깨짐 | 한컴 전용 폰트(HY헤드라인, HY견고딕 등)는 한컴오피스 설치 환경에서만 정상 표시됩니다 |
 | 한글에서 열리지 않음 | OWPML 네임스페이스를 확인하고 xml 헤더가 올바른지 검증하세요 |
 
-## 관련 스킬 / 자동 검수
+## 관련 스킬 / 자체 검수
 
-한글 문서 생성이 끝나면 `moai-office:doc-qa` 서브에이전트가 산출된 .hwpx 파일을 열어 플레이스홀더 잔존·OWPML 구조·한글 인코딩 깨짐·표 깨짐을 검사하고 PASS/FAIL 보고서를 돌려줍니다(파일은 수정하지 않음). Cowork에서는 자동으로 실행되며, web/Desktop Chat에서는 "이 한글 문서 검수해줘"로 수동 호출하세요.
+한글 문서 생성이 끝나면 산출된 .hwpx 파일을 다시 열어 플레이스홀더 잔존·OWPML 구조·한글 인코딩 깨짐·표 깨짐을 **자체 검수**하고, 문제가 있으면 자동 수정 후 재생성하며 최종 PASS/FAIL 결과를 보고합니다.
 
 - `moai-office:docx-generator` - DOCX(Word) 문서 생성
 - `moai-office:pptx-designer` - 발표용 PPT 슬라이드 생성

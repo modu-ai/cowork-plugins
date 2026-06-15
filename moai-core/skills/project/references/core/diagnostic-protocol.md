@@ -1,8 +1,10 @@
 # diagnostic-protocol.md — 진단 프로토콜
 
 ## 개요
-MoAI 환경과 프로필 상태를 진단하고 문제를 식별하는 프로토콜입니다.
-/project doctor와 /project status 명령어로 실행됩니다.
+cowork 플러그인 환경과 프로젝트 설정 상태를 진단하고 문제를 식별하는 프로토콜입니다.
+`/project doctor`와 `/project status` 명령어로 실행됩니다.
+
+> `/project init`은 더 이상 별도 동작이 아니며, 맨 명령 `/project`(초기화 기본 동작)의 **레거시 별칭**입니다.
 
 ---
 
@@ -10,56 +12,48 @@ MoAI 환경과 프로필 상태를 진단하고 문제를 식별하는 프로토
 
 ### 1-1. 진단 구성
 
-```bash
+```
 /project doctor
 ```
 
 ### 1-2. 체크리스트
 
 ```
-┌─ MoAI 환경 진단 (v1.3.0) ────────────────────────┐
+┌─ cowork 플러그인 환경 진단 ──────────────────────┐
 │
 │ [Phase 1] 파일 시스템 검사
 │ ├─ ./CLAUDE.md 존재: ✓
 │ ├─ .moai/ 디렉토리: ✓
 │ ├─ .moai/credentials.env: ✓ (프로젝트 격리)
 │ ├─ skills/project/references/: ✓ (core + templates 포함)
-│ └─ 17개 플러그인 설치 상태: ✓
+│ └─ 27개 플러그인 / 173 스킬 설치 상태: ✓
 │
 │ [Phase 2] 프로젝트 CLAUDE.md 검사
 │ ├─ CLAUDE.md 라인 수: 178 / 200 (한도 내 ✓)
 │ ├─ HARD 규칙 포함(office 우선): ✓
 │ ├─ HARD 규칙 포함(ai-slop 후처리): ✓
 │ ├─ 스킬 체인 블록 포함: ✓ (6개 체인)
-│ └─ 레거시 프로필 변수 흔적: 없음 ✓
-│   (v1.3.0에서 moai-profile.md 및 글로벌 프로필 시스템 제거됨)
+│ └─ 레거시 전역 변수 흔적: 없음 ✓
+│   (v1.3.0에서 글로벌 프로필 시스템 제거됨)
 │
 │ [Phase 3] 설치 플러그인 + 스킬 체인 상태
 │ ├─ moai-core: ✓ (project, ai-slop-reviewer, feedback)
+│ ├─ 화이트리스트 대조: 27개 플러그인 일치 ✓
 │ ├─ 설계된 스킬 체인: 6개
 │ └─ ai-slop-reviewer 체인 말미 포함율: 100%
 │
-│ [Phase 4] 시스템 지침 검사
+│ [Phase 4] API 키 / 커넥터 상태
+│ ├─ .moai/credentials.env 로드: ✓
+│ ├─ MCP 커넥터 등록: higgsfield ✓ / elevenlabs ✓
+│ └─ 누락 키: 0개
+│
+│ [Phase 5] 시스템 지침 검사
 │ ├─ ./CLAUDE.md 로드: ✓
-│ ├─ v1.0.0 아키텍처 적용: ✓
-│ └─ 에이전트 디렉터 모델 활성: ✓
-│
-│ [Phase 5] 진화 상태
-│ ├─ evolution 로그: ✓ (4개 기록)
-│ ├─ 마지막 자기학습: 2026-04-04 10:30
-│ ├─ 평가 평균: 8.2/10
-│ ├─ 활성 패턴: 3개
-│ └─ 권장사항: 규칙 강화 필요 없음
-│
-│ [Phase 6] auto-memory 접근
-│ ├─ MEMORY.md 접근: ✓
-│ ├─ 인덱스 동기화: ✓
-│ └─ 백업 상태: ✓ (최근 백업: 2026-04-04)
+│ └─ 에이전트 오케스트레이터 모델 활성: ✓
 │
 │ ═════════════════════════════════════════════
 │ 전체 진단: ✓ HEALTHY (건강함)
-│ 조치 필요: 1개 (sop-writer 설치)
-│ 성능: 96%
+│ 조치 필요: 0개
 │ ═════════════════════════════════════════════
 └─────────────────────────────────────────────────┘
 ```
@@ -70,8 +64,7 @@ MoAI 환경과 프로필 상태를 진단하고 문제를 식별하는 프로토
 ```
 FOR each critical_file in [
   ./CLAUDE.md,
-  .moai/config.json,
-  .moai/evolution/self-refine-log.md
+  .moai/config.json
 ]:
   IF file.exists AND file.size > 0:
     status = "✓"
@@ -80,24 +73,32 @@ FOR each critical_file in [
     remediation = suggest_fix()
 ```
 
-**프로필 유효성**
+**CLAUDE.md 유효성**
 ```
-schema_validation(moai_profile.yaml)
-  → required fields check
-  → data type validation
-  → enum values validation
-  → consistency check (country vs company_country)
-  
-completeness_score = (filled_fields / total_fields) * 100
+- "프로젝트 개요" 섹션 존재 여부
+- HARD 규칙(office 우선 / ai-slop 후처리) 포함 여부
+- "프로젝트 워크플로우" 스킬 체인 블록 존재 여부
+- 라인 수 한도(200) 준수 여부
+
+completeness_score = (충족_항목 / 전체_항목) * 100
 ```
 
-**하네스 상태**
+**플러그인 인벤토리 검사 (27 화이트리스트)**
 ```
-FOR each harness in installed_harnesses:
-  check_reference_files()
-  check_context_file()
-  check_rule_file()
-  validate_config()
+installed = scan_installed_plugins()
+FOR each plugin in installed:
+  IF plugin in WHITELIST_27:
+    check_plugin_json()       # plugin.json 유효성·버전
+    check_skills_present()    # skills/*/SKILL.md 존재
+  ELSE:
+    warn("화이트리스트 밖 플러그인: " + plugin)
+```
+
+**스킬 체인 정의 유효성**
+```
+FOR each chain in CLAUDE.md "프로젝트 워크플로우":
+  validate_skill_names()      # 각 스킬이 설치된 플러그인에 실재하는지
+  check_aislop_tail()         # 텍스트 산출물 체인 말미에 ai-slop-reviewer 포함
 ```
 
 ---
@@ -106,53 +107,42 @@ FOR each harness in installed_harnesses:
 
 ### 2-1. 간단한 상태 확인
 
-```bash
+```
 /project status
 ```
 
 ### 2-2. 출력 예시
 
 ```
-MoAI 현황 ({user_name})
+프로젝트 현황
 ═════════════════════════════════════════════════
 
-프로필:
-  이름: {user_name}
-  역할: {user_role}
-  회사: {company_name}
-  국가: 한국 (KRW)
-  프로필 완성도: 95% (A+)
+프로젝트:
+  CLAUDE.md: ✓ (프로젝트 개요 + 워크플로우 포함)
+  스킬 체인: 6개 설계됨
 
-설치된 하네스 (84개 중):
-  ✓ copywriting (마지막 사용: 2026-04-04 10:30)
-  ✓ email-crafter (마지막 사용: 2026-04-02 14:15)
-  ○ sop-writer (미설치, 추천됨)
+설치된 플러그인 (27개 중):
+  ✓ moai-core (project, ai-slop-reviewer, feedback ...)
+  ✓ moai-content (copywriting, landing-page ...)
+  ✓ moai-office (docx-generator, pptx-designer ...)
+  ... (총 27 플러그인 / 173 스킬)
 
-진화 상태:
-  총 작업 수: 12개
-  평가 평균: 8.2/10
-  지난 주 개선율: +5%
-  활성 규칙 개선안: 2개
-
-컨텍스트:
-  수집 라운드: 3회
-  충분성 등급: 85% (B등급)
-  마지막 갱신: 2026-04-04 09:00
-  컨텍스트 신선도: 양호
+API 키 / 커넥터:
+  ✓ higgsfield (이미지·영상)
+  ✓ elevenlabs (음성)
+  누락: 0개
 
 다음 권장 조치:
-  1. sop-writer 설치
-  2. 월간 프로필 검토 (2026-04-11 예정)
+  1. 없음 — 환경 정상
 
 ═════════════════════════════════════════════════
 ```
 
 ### 2-3. 상세 보기 옵션
 
-```bash
+```
 /project status --detailed
-/project status --harness=copywriting
-/project status --evolution
+/project status --plugins
 /project status --export=json
 ```
 
@@ -163,17 +153,20 @@ MoAI 현황 ({user_name})
 ### 3-1. 자동 감지 규칙
 
 ```
-IF 프로필_완성도 < 60%:
-  WARNING: "프로필이 불완전합니다. /project init --reset 권장"
+IF CLAUDE.md_없음 OR "프로젝트 개요"_섹션_부재:
+  ERROR: "프로젝트가 초기화되지 않았습니다. /project 실행 필요"
 
-IF 하네스_설치 == 0:
-  ERROR: "설치된 하네스가 없습니다. /project init 실행 필요"
+IF 설치_플러그인 == 0:
+  ERROR: "설치된 cowork 플러그인이 없습니다. 마켓플레이스 설치 필요"
 
-IF evolution_평가_평균 < 5:
-  WARNING: "평가가 낮습니다. /project evolution --suggest 확인"
+IF 화이트리스트_밖_플러그인_감지:
+  WARNING: "27 화이트리스트 밖 플러그인이 있습니다. /project catalog 확인"
 
-IF 컨텍스트_TTL > 30days:
-  INFO: "컨텍스트 갱신 시간입니다. /project refresh-context 권장"
+IF 스킬_체인_내_미설치_스킬_참조:
+  WARNING: "스킬 체인이 미설치 스킬을 참조합니다. /project catalog 확인"
+
+IF 커넥터_API_키_누락:
+  INFO: "일부 커넥터 키가 없습니다. /project apikey 로 등록"
 
 IF CLAUDE.md_로드_실패:
   ERROR: "시스템 지침 로드 실패. ./CLAUDE.md 확인 필요"
@@ -181,61 +174,37 @@ IF CLAUDE.md_로드_실패:
 
 ### 3-2. 진단 레포트 생성
 
-```bash
+```
 /project doctor --report
 
 출력:
-doctor-report-2026-04-04-1030.md 생성됨
+doctor-report-YYYY-MM-DD-HHMM.md 생성됨
 ├── 진단 결과 요약
-├── 발견된 문제 5개
+├── 발견된 문제 목록
 ├── 각 문제별 해결 방안
-├── 성능 메트릭
 └── 권장 조치 우선순위
 ```
 
 ---
 
-## 4. 성능 메트릭
+## 4. 진단 메트릭
 
 ### 4-1. 추적 메트릭
 
 ```
-성능 대시보드:
+진단 대시보드:
 
-시스템 성능:
-  └─ 응답 속도: 1.2초 (목표: < 2초) ✓
-  └─ 캐시 히트율: 78% (목표: > 70%) ✓
+환경 상태:
+  └─ CLAUDE.md 유효성: ✓
+  └─ 플러그인 인벤토리: 27/27 일치 ✓
 
-작업 성능:
-  └─ 평균 평가: 8.2/10 (목표: > 7.5) ✓
-  └─ 완료율: 100% (목표: > 95%) ✓
-
-학습 성능:
-  └─ 규칙 개선: 12회 (월간)
-  └─ 롤백율: 8% (목표: < 10%) ✓
+설정 상태:
+  └─ 스킬 체인 유효성: 6/6 ✓
+  └─ 커넥터 키 완비율: 100% (목표: 100%) ✓
 
 안정성:
-  └─ 에러율: 2% (목표: < 5%) ✓
-  └─ 평균 운영시간: 99.8% (목표: > 99%) ✓
-```
-
-### 4-2. 트렌드 분석
-
-```bash
-/project status --trend=30days
-
-출력:
-평가 점수 추이 (최근 30일):
-│
-8.5│                    ●
-8.0│          ●    ●    ●    ●
-7.5│    ●    ●    ●    ●    ●
-7.0│         
-6.5│
-────┴─────────────────────────
-   1주   2주   3주   4주
-   
-트렌드: ↑ 상향 (+0.5점)
+  └─ 미설치 스킬 참조: 0개 (목표: 0) ✓
+  └─ 화이트리스트 밖 플러그인: 0개 (목표: 0) ✓
 ```
 
 ---
@@ -244,70 +213,42 @@ doctor-report-2026-04-04-1030.md 생성됨
 
 ### 5-1. 부분 재설정
 
-```bash
-# 프로필만 초기화
-/project profile --reset
+```
+# CLAUDE.md만 재생성 (스킬 체인 재설계)
+/project
 
-# 진화 데이터만 초기화 (프로필은 유지)
-/project evolution --reset
-
-# 하네스 컨텍스트만 초기화
-/project context --reset
+# 커넥터 키만 재등록
+/project apikey
 ```
 
 ### 5-2. 전체 재설정
 
-```bash
-/project reset --confirm
+```
+# CLAUDE.md를 처음부터 다시 작성 (Phase 1 인터뷰 재실행)
+/project
 
-주의: 모든 진화 기록이 삭제됩니다.
-백업이 자동 생성됩니다: .moai/backups/reset-2026-04-04/
+주의: 기존 CLAUDE.md 본문이 갱신됩니다.
 
 초기화 후:
-1. /project init 재실행
-2. 하네스 재설치
-3. 컨텍스트 재수집
-```
-
-### 5-3. 복구
-
-```bash
-# 특정 시점으로 복구
-/project restore --backup=2026-04-01
-
-# 백업 목록 조회
-/project backups --list
-
-출력:
-Available backups:
-  1. 2026-04-04_reset (Latest)
-  2. 2026-04-03_auto
-  3. 2026-04-02_auto
-  4. 2026-04-01_auto
+1. Phase 1 인터뷰 응답
+2. 스킬 체인 재설계
+3. CLAUDE.md 본문 재작성
 ```
 
 ---
 
 ## 6. 로깅 및 디버깅
 
-### 6-1. 로그 조회
+### 6-1. 디버그 모드
 
-```bash
-/project logs --level=ERROR
-/project logs --harness=copywriting
-/project logs --after=2026-04-04T09:00:00+09:00
 ```
-
-### 6-2. 디버그 모드
-
-```bash
 /project --debug {command}
 
 출력:
-[DEBUG] 프로필 로드 중...
-[DEBUG] 규칙 파일 검증 중...
-[DEBUG] 하네스 context 로드 중...
-[DEBUG] router 실행 중...
+[DEBUG] CLAUDE.md 로드 중...
+[DEBUG] 플러그인 인벤토리 스캔 중...
+[DEBUG] 스킬 체인 정의 검증 중...
+[DEBUG] 커넥터 키 점검 중...
 ...
 ```
 
@@ -321,20 +262,18 @@ Available backups:
 Health Score = Σ(component_score × weight)
 
 Components:
-  프로필 완성도: 20% × (현재/목표)
-  하네스 상태: 25% × (설치수/권장수)
-  진화 상태: 20% × (평가_평균 / 10)
-  규칙 유효성: 15% × (유효_규칙수 / 전체_규칙수)
-  시스템 안정성: 20% × (가용성 / 100)
+  CLAUDE.md 유효성: 30% × (충족_항목 / 전체_항목)
+  플러그인 인벤토리: 25% × (일치_플러그인 / 27)
+  스킬 체인 유효성: 25% × (유효_체인 / 전체_체인)
+  커넥터 키 완비: 20% × (등록_키 / 필요_키)
 
 예:
-  프로필: 95 × 0.20 = 19.0
-  하네스: 80 × 0.25 = 20.0
-  진화: 82 × 0.20 = 16.4
-  규칙: 100 × 0.15 = 15.0
-  안정성: 99.8 × 0.20 = 19.96
+  CLAUDE.md:   100 × 0.30 = 30.0
+  플러그인:    100 × 0.25 = 25.0
+  스킬 체인:   100 × 0.25 = 25.0
+  커넥터:      100 × 0.20 = 20.0
   ────────────────────────
-  Health Score = 90.36 (HEALTHY)
+  Health Score = 100 (HEALTHY)
 ```
 
 ### 7-2. 상태 레벨
@@ -345,4 +284,3 @@ Components:
 60-79: ⚠ WARNING (경고)
 0-59: ✗ CRITICAL (심각)
 ```
-

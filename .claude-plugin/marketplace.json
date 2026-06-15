@@ -5,15 +5,15 @@
     "email": "email@mo.ai.kr"
   },
   "metadata": {
-    "description": "모두의 AI의 Claude Cowork 플러그인 마켓플레이스 — 27 플러그인, 173 스킬. 사업계획·이커머스·마케팅·콘텐츠·법률·재무·재테크·HR·교육·출판·디자인·미디어·생산성·커뮤니케이션 등 한국 실무 도메인 전반을 한국어 자연어 한 줄로 처리합니다. 짧게 요청하면 시스템이 필요한 맥락을 질문(AskUserQuestion)으로 수집하고, 산출물별 스킬 체인으로 결과를 완성합니다. 모든 텍스트 산출물은 ai-slop-reviewer 검수 체인을 권장하며, /project init으로 프로젝트 워크플로우 기반 CLAUDE.md를 자동 생성합니다. 버전별 변경 내역은 CHANGELOG.md와 GitHub Releases에서 확인하세요.",
-    "version": "2.17.0",
+    "description": "모두의 AI의 Claude Cowork 플러그인 마켓플레이스 — 27 플러그인, 173 스킬. 사업계획·이커머스·마케팅·콘텐츠·법률·재무·재테크·HR·교육·출판·디자인·미디어·생산성·커뮤니케이션 등 한국 실무 도메인 전반을 한국어 자연어 한 줄로 처리합니다. 짧게 요청하면 시스템이 필요한 맥락을 질문(AskUserQuestion)으로 수집하고, 산출물별 스킬 체인으로 결과를 완성합니다. 모든 텍스트 산출물은 ai-slop-reviewer 검수 체인을 권장하며, /project로 프로젝트 워크플로우 기반 CLAUDE.md를 자동 생성합니다. 버전별 변경 내역은 CHANGELOG.md와 GitHub Releases에서 확인하세요.",
+    "version": "2.18.0",
     "language": "ko"
   },
   "plugins": [
     {
       "name": "moai-core",
       "source": "./moai-core",
-      "description": "MoAI 코어 — /project 프로젝트 초기화, 스킬 체이닝 워크플로우 설계, 도메인 라우터, AI 슬롭 검수(ai-slop-reviewer), MCP 커넥터 셋업 가이드(mcp-connector-setup — Drive·Notion·Higgsfield), 피드백 허브 + AI 슬롭 검수 에이전트(slop-reviewer — Cowork·Claude Code 전용)"
+      "description": "MoAI 코어 — /project 프로젝트 초기화, 스킬 체이닝 워크플로우 설계, 도메인 라우터, AI 슬롭 검수(ai-slop-reviewer), MCP 커넥터 셋업 가이드(mcp-connector-setup — Drive·Notion·Higgsfield), 피드백 허브"
     },
     {
       "name": "moai-business",
@@ -73,7 +73,7 @@
     {
       "name": "moai-office",
       "source": "./moai-office",
-      "description": "문서 생성 — PPT 디자인, Word(DOCX), Excel(XLSX), 한글(HWPX), 다국어 PDF(한중일영), NotebookLM 슬라이드 프롬프트 + 문서 산출물 QA 에이전트(doc-qa — Cowork·Claude Code 전용)"
+      "description": "문서 생성 — PPT 디자인, Word(DOCX), Excel(XLSX), 한글(HWPX), 다국어 PDF(한중일영), NotebookLM 슬라이드 프롬프트"
     },
     {
       "name": "moai-career",
@@ -93,7 +93,7 @@
     {
       "name": "moai-research",
       "source": "./moai-research",
-      "description": "연구/특허 — 논문 검색, 학술 논문 작성, 특허 분석/출원, 연구비 신청 + 다중 소스 리서치 에이전트(research-scout — Cowork·Claude Code 전용)"
+      "description": "연구/특허 — 논문 검색, 학술 논문 작성, 특허 분석/출원, 연구비 신청"
     },
     {
       "name": "moai-media",

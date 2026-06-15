@@ -12,7 +12,7 @@ description: |
   - "투자자 피치 자료 준비해줘"
   6단계로 아이디어 검증·시장 분석·BM 설계·피치덱·재무 모델·로드맵을 만들고, PPT 변환이나 AI 표현 다듬기로 이어집니다.
 user-invocable: true
-version: 2.17.0
+version: 2.18.0
 ---
 
 # 스타트업 런치패드 (Startup Launchpad)

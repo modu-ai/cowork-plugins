@@ -31,12 +31,12 @@
 | 블로그 포스트 | `moai-content:blog` |
 | 카드뉴스 | `moai-content:card-news` |
 | 뉴스레터 | `moai-content:newsletter` |
-| SNS 콘텐츠 | `moai-content:social-media` |
+| SNS 콘텐츠 | `moai-marketing:sns-content` |
 | 카피·광고 문구 | `moai-content:copywriting` |
 | 상세페이지 | `moai-content:product-detail` |
 | 이미지 | `moai-media:higgsfield-image` |
-| 영상 | `moai-media:kling` |
-| 음성·TTS | `moai-media:elevenlabs` |
+| 영상 | `moai-media:higgsfield-video` |
+| 음성·TTS | `moai-media:audio-gen` |
 
 설치되어 있는 스킬이면 기본 artifacts로 직접 생성하지 않는다.
 
@@ -79,6 +79,22 @@
 - 체인: `investor-relations` → `pptx-designer` → `ai-slop-reviewer`
 - 입력: 재무 데이터, 시장 크기, 팀 구성
 - 출력: `.pptx` 파일 + 검수 리포트
+-->
+
+## 5.5 프로젝트 에이전트
+
+이 프로젝트에 생성된 전담 서브에이전트. 자연어로 위임하면 자동 호출됩니다. (없으면 이 섹션은 비어 있음)
+
+{generated_agents}
+
+<!--
+위 섹션 예시 (Phase 3.5에서 생성된 경우):
+
+- `finance-report-pack` — 재무 보고 패키지(병렬 fan-out + 세무 면책 게이트)
+- `commerce-launch` — 신상품 런칭(고정 파이프라인 + 정보통신망법 게이트)
+
+⚠️ 디스크에 작성된 에이전트(./.claude/agents/)는 세션 시작 시 로드됩니다.
+   새 세션(또는 /reload-plugins)에서 활성화됩니다.
 -->
 
 ## 6. 실행 플로우 (Interview → Plan → Confirm → Execute)

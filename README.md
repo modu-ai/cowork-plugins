@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
-[![Version](https://img.shields.io/badge/Version-2.17.0-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-2.18.0-blue)](CHANGELOG.md)
 [![Plugins](https://img.shields.io/badge/Plugins-27-blue)](.claude-plugin/marketplace.json)
 [![Skills](https://img.shields.io/badge/Skills-173-green)](.claude-plugin/marketplace.json)
 [![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)
@@ -31,9 +31,20 @@
 | 🎨 **AI 미디어** | `gpt-image-2-prompt` · `gemini-3-image-prompt` · `midjourney-v8-prompt` · `audio-gen` | 3대 모델 공식 가이드 프롬프트 텍스트 빌더 + ElevenLabs 32개 언어 더빙·BGM·효과음 |
 | 📑 **문서·이커머스·BI** | `hwpx-writer` · `pdf-writer` · `detail-page-copy` · `executive-summary` · `weekly-report` | HWPX(한글) · 한·중·일·영 PDF · 13섹션 상세페이지 · 경영진 1pager · WBR 주간보고 |
 
-> 26개 플러그인 전체 카탈로그와 카테고리 비교는 [플러그인 카탈로그](#플러그인-카탈로그)와 [플러그인 상세 소개](#플러그인-상세-소개)를 참조하세요.
+> 27개 플러그인 전체 카탈로그와 카테고리 비교는 [플러그인 카탈로그](#플러그인-카탈로그)와 [플러그인 상세 소개](#플러그인-상세-소개)를 참조하세요.
 
 ---
+
+**🆕 v2.18.0 하이라이트** (2026-06-15) — **"Cowork 에이전트 모델 전환 — 플러그인 번들 코디네이터 제거 + /project 맞춤 에이전트 생성"**
+
+27 플러그인 · 173 스킬 유지, 동기화 201지점 2.18.0. MINOR 릴리스. v2.17.0의 플러그인 번들 코디네이터 sub-agent를 전면 제거하고, `/project`가 사용자 워크플로우에 맞춘 전담 에이전트를 직접 생성하는 모델로 전환했습니다. 기존 스킬 체인은 자연어 인라인 호출로 동일하게 동작합니다.
+
+- **`/project` Agent Synthesis (신규)** — 초기화 인터뷰에서 자격 워크플로우(고정 다단계+비우회 게이트, 병렬 fan-out, 빈번 반복)에 한해 사용자 프로젝트 `.claude/agents/`에 맞춤 sub-agent를 생성합니다. 프로젝트 에이전트는 플러그인 번들보다 우선순위가 높고 Cowork이 자동 로드합니다(새 세션에서 활성화).
+- **플러그인 번들 코디네이터 14종 제거** — 우선순위 최하위·설치 버전 게이트·orchestrator 중복이던 번들 에이전트를 제거. 동일 작업은 자연어로 스킬 체인을 인라인 호출하면 같은 결과이며, 전담 에이전트가 필요하면 `/project`로 생성합니다.
+- **moai-core:project 스킬 현대화** — 22→27 플러그인 / 143→173 스킬 정합, Phase 2 인벤토리 화이트리스트 동적 도출(신규 5개 플러그인 누락 버그 해소), 폐기된 harness 모델·글로벌 프로필 잔재 제거.
+- **커맨드 표면 단순화** — bare `/project`가 초기화 기본 동작. `/project init`은 레거시 별칭으로 계속 인식(비파괴).
+
+기존 워크플로우·플러그인 그대로 동작. `/plugin marketplace update cowork-plugins`로 적용.
 
 **🆕 v2.17.0 하이라이트** (2026-06-14) — **"Cowork-fit 재설계 — moai-public-data 신규 + Cowork 코디네이터 11종 + 매니페스트 정직화"**
 
@@ -403,7 +414,7 @@ moai-commerce에 시장조사·JTBD·페르소나·상품명·채널 메시지·
 
 | 플러그인 | 설명 | 스킬 수 |
 |---------|------|:-------:|
-| [moai-core](./moai-core/) | 프로젝트 초기화(`/project init`) + 스킬 체이닝 라우터 + AI 슬롭 검수 + 피드백 + **AI 진단** + **MCP 커넥터 셋업** + **스킬 빌더/테스터/템플릿** | 8 |
+| [moai-core](./moai-core/) | 프로젝트 초기화(`/project`) + 스킬 체이닝 라우터 + AI 슬롭 검수 + 피드백 + **AI 진단** + **MCP 커넥터 셋업** + **스킬 빌더/테스터/템플릿** | 8 |
 | [moai-business](./moai-business/) | 사업계획서, 시장조사, 재무모델, 투자제안서, **소상공인 상권분석**, **정부지원사업 통합**, **국토부 실거래가**, **AI 진단** | 11 |
 | [moai-marketing](./moai-marketing/) | 기업/개인 브랜딩, SEO, SNS, 캠페인, 이메일 시퀀스, 퍼포먼스, **랜딩 진단**, **픽셀 검증**, **메타 광고 보고서 분석(9 모듈·4D 교차)**, **공식 커넥터 광고 라이브 운영** | 12 |
 | [moai-legal](./moai-legal/) | 계약서 검토, 컴플라이언스, NDA, 법적 리스크, **인터넷등기소 자동화** | 5 |
@@ -485,12 +496,12 @@ modu-ai/cowork-plugins
 ![프로젝트 생성](docs/projec-1.png)
 ![프로젝트 설정](docs/projec-2.png)
 
-### Step 4: `/project init` 으로 초기화
+### Step 4: `/project` 로 초기화
 
 프로젝트 생성 후 채팅창에서 MoAI를 초기화합니다.
 
 ```
-/project init
+/project
 ```
 
 1. **Phase 1**: 분야 선택 (비즈니스/마케팅/관리/기술 중 택 1)
@@ -516,11 +527,11 @@ modu-ai/cowork-plugins
 
 ### moai-core — 오케스트레이터 + 검수 엔진
 
-자연어 요청을 분석하여 26개 도메인 플러그인 중 적합한 스킬로 자동 라우팅합니다. `/project init`으로 워크플로우를 인터뷰하여 **스킬 체인 기반 CLAUDE.md**를 생성하고, `/project catalog`로 설치된 스킬 목록을 조회합니다.
+자연어 요청을 분석하여 27개 도메인 플러그인 중 적합한 스킬로 자동 라우팅합니다. bare `/project`로 워크플로우를 인터뷰하여 **스킬 체인 기반 CLAUDE.md**를 생성하고(`/project init`은 레거시 별칭), `/project catalog`로 설치된 스킬 목록을 조회합니다.
 
 | 스킬 | 한글명 | 기능 |
 |------|--------|------|
-| project | 프로젝트 초기화 | `/project init` — 워크플로우 인터뷰 → 스킬 체인 설계 → CLAUDE.md 생성, `/project catalog/status/apikey/feedback` |
+| project | 프로젝트 초기화 | `/project` — 워크플로우 인터뷰 → 스킬 체인 설계 → CLAUDE.md 생성(`/project init`은 레거시 별칭), `/project catalog/status/apikey/feedback` |
 | ai-slop-reviewer | AI 슬롭 검수 | Claude가 생성한 텍스트의 기계적 패턴(금지어, 획일적 문장 길이, AI식 도입/결말, 수동태 남용)을 진단·수정. **모든 텍스트 산출물 체인의 필수 마지막 단계** |
 | ai-diagnostic | AI 진단 | 사용 환경·플러그인·커넥터 상태 점검, 문제 진단, 권장 조치 |
 | feedback | 피드백 | 버그/기능 요청을 GitHub Issues에 자동 등록 (`/project feedback`) |

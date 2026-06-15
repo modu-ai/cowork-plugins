@@ -14,7 +14,7 @@ description: |
   난이도 배분과 정답·해설을 갖춘 평가 문항을 만들고, 오답 분석표로 보충 학습 방향까지 짚어 드립니다.
   [책임 경계] vs moai-education:curriculum-designer: 이 스킬=시험 문제 출제와 채점, 저 스킬=강의 커리큘럼과 학습 목표 설계.
 user-invocable: true
-version: 2.17.0
+version: 2.18.0
 ---
 
 # 평가 도구 제작 (Assessment Creator)

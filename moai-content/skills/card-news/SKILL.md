@@ -11,7 +11,7 @@ description: |
   - "프롬프트 엔지니어링 FAQ 카드뉴스 기획해줘"
   주제에 맞는 구성 패턴을 자동으로 골라 4장을 채우고, 이미지 생성은 moai-media 이미지 스킬로, 한국어 자연화는 moai-content:humanize-korean으로 이어집니다.
 user-invocable: true
-version: 2.17.0
+version: 2.18.0
 ---
 
 # 카드뉴스 (Card News)

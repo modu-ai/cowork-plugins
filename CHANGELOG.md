@@ -14,6 +14,36 @@
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
 
+## [2.18.0] - 2026-06-15
+
+MINOR. **Cowork 에이전트 모델 전환 — 플러그인 번들 코디네이터 제거 + `/project` 맞춤 에이전트 생성 + project 스킬 현대화**. v2.17.0의 플러그인 번들 코디네이터 sub-agent를 전면 제거하고, `/project`가 사용자 워크플로우에 맞춘 전담 에이전트를 직접 생성하는 Agent Synthesis 모델로 일원화했습니다. **27 플러그인 / 173 스킬 유지**, 동기화 201지점 2.17.0 → 2.18.0. 기능적 비파괴 — 기존 스킬 체인은 자연어 인라인 호출로 동일 결과.
+
+### Added
+
+- **`/project` Agent Synthesis (Phase 3.5)** — 초기화 인터뷰에서 자격 워크플로우(고정 다단계 + 비우회 게이트 / 병렬 fan-out / 빈번 반복)에 한해 사용자 프로젝트 `.claude/agents/<name>.md`에 맞춤 sub-agent를 생성합니다. 신규 `agent.md.tmpl` 템플릿(`description:` 블록 스칼라). 프로젝트 에이전트는 플러그인 번들보다 우선순위가 높고 Cowork이 자동 로드하며, 디스크 직접 작성이므로 **새 세션에서 활성화**됩니다.
+
+### Changed
+
+- **moai-core:project 스킬 현대화** — 카운트 정합 22 → 27 플러그인 / 143 → 173 스킬. Phase 2 인벤토리 화이트리스트를 하드코딩에서 **동적 도출**로 전환(신규 5개 플러그인 moai-comms·moai-design·moai-productivity·moai-public-data·moai-wealth 스킬이 런타임에 필터링되던 버그 해소). router 27개 라우팅 재작성. 폐기된 harness 모듈·글로벌 프로필(`{user_name}`) 잔재 제거.
+- **커맨드 표면 단순화** — bare `/project`가 초기화 기본 동작으로 승격. `/project init`·`/project init resume`은 레거시 별칭으로 계속 인식(비파괴), `/project resume` 신설.
+- 전체 버전 동기화 2.17.0 → 2.18.0 (marketplace.json + 27 plugin.json + 173 SKILL.md + hugo.toml). 201지점.
+- marketplace.json 플러그인 description에서 제거된 에이전트 언급(slop-reviewer·doc-qa·research-scout) 정리.
+
+### Removed
+
+- **플러그인 번들 코디네이터 sub-agent 14개 전면 제거** — `moai-*/agents/*.md` 14개 + `agents/` 폴더 제거(v2.17.0의 코디네이터 11종 + 미문서화 3종). 우선순위 최하위·설치 버전 게이트·orchestrator 중복이라는 구조적 약점으로 `/project` Agent Synthesis로 대체. 파이프라인 로직(finance 병렬 조립·commerce 7단계+컴플라이언스 게이트)은 Phase 3.5 자격 예시로 보존.
+
+### Fixed
+
+- book·commerce 코디네이터 frontmatter YAML 파싱 오류 — 인라인 `description:`의 콜론+공백이 YAML 매핑으로 파싱되던 문제(제거 전 복구, 패턴은 `agent.md.tmpl` 블록 스칼라로 재발 방지).
+- moai-office 5개 SKILL.md(docx·pptx·xlsx·hwpx·pdf)의 삭제된 `doc-qa` 에이전트 자동 실행 안내 → 인라인 자체검수 안내로 정정.
+
+### Migration
+
+- 기존에 플러그인 코디네이터를 자연어로 호출하던 워크플로우는 **동일 스킬 체인을 자연어로 요청하면 같은 결과**를 얻습니다(orchestrator 인라인 라우팅).
+- 전담 에이전트가 반복적으로 필요하면 `/project`로 프로젝트 맞춤 에이전트를 생성하세요(생성 후 **새 세션**에서 활성화).
+- 적용: `/plugin marketplace update cowork-plugins`.
+
 ## [2.17.0] - 2026-06-14
 
 MINOR. **Cowork-fit 재설계 — moai-public-data 신규 + Cowork 코디네이터 11종 + 매니페스트 정직화**. taxonomy·체이닝·매니페스트·이미지 정책을 4축으로 재설계하되 별칭·스텁으로 호환을 유지했습니다. **26 → 27 플러그인, 170 → 173 스킬**, 동기화 지점 198 → 201. Breaking change 없음 — 기존 워크플로우 그대로 동작(별칭·스텁 호환).

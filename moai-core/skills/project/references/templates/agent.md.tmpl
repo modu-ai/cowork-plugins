@@ -1,0 +1,39 @@
+<!--
+  agent.md.tmpl — Phase 3.5 Agent Synthesis 프로젝트 서브에이전트 템플릿
+
+  이 템플릿은 ./.claude/agents/<name>.md 로 Write 되어 프로젝트 전용 서브에이전트가 된다.
+  유효한 Claude Code 서브에이전트를 생성해야 한다.
+
+  [CRITICAL] description 은 반드시 `description: |` 블록 스칼라로 작성한다.
+    인라인 description 안에 콜론+공백(예: '위임하세요: "..."')이 들어가면
+    YAML frontmatter 파싱이 깨진다. 블록 스칼라는 이를 안전하게 회피한다.
+
+  변수:
+  - {agent_name}          서브에이전트 식별자(소문자·하이픈, 파일명과 동일). 예: finance-report-pack
+  - {agent_description}    호출 트리거 + 역할 서술(여러 줄 가능, 블록 스칼라 본문)
+  - {agent_tools}          쉼표 구분 도구 목록. 기본 "Read, Write, Edit, Grep, Glob, Bash"
+  - {agent_color}          공식 enum 중 택1: red | blue | green | yellow | purple | orange | pink | cyan
+  - {agent_display_name}   사람이 읽는 제목(한국어). 예: 재무 보고 패키지 에이전트
+  - {agent_role_sentence}  에이전트의 역할을 1-2문장으로 요약
+  - {chain_steps_block}    작업 절차(번호 매긴 스킬 체인 단계 블록, Markdown)
+-->
+---
+name: {agent_name}
+description: |
+  {agent_description}
+tools: {agent_tools}
+color: {agent_color}
+---
+
+# {agent_display_name}
+
+{agent_role_sentence}
+
+## 작업 절차
+{chain_steps_block}
+
+## 규칙
+- 본 대화를 볼 수 없으므로 위임 메시지의 정보만으로 작업한다. 대상이 불명확하면 추측하지 말고 필요한 것을 명시한 보고로 응답한다.
+- 텍스트 산출물은 moai-core:ai-slop-reviewer로 검수하고, 한국어 최종본은 moai-content:humanize-korean으로 2차 정밀 윤문한다.
+- 표·수치·차트·코드는 검수 대상에서 제외한다.
+- AskUserQuestion을 호출하지 않는다(서브에이전트 제약). 사용자 입력이 필요하면 부모에게 보고한다.

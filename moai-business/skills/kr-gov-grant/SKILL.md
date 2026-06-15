@@ -15,7 +15,7 @@ description: |
   지원사업 탐색·신청서 작성·서류 검토·일정 관리까지 도와주며, 마지막에 AI 표현 다듬기로 이어집니다.
   [책임 경계] vs moai-research:grant-writer: 이 스킬=범용 정부 지원사업(창업·소상공인·중기·공모전), 저 스킬=학술/R&D 연구비 특화(NRF·IITP·KIAT).
 user-invocable: true
-version: 2.17.0
+version: 2.18.0
 ---
 
 # 대한민국 정부지원사업 통합 분석·신청 스킬
