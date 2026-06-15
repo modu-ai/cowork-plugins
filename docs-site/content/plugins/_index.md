@@ -200,7 +200,7 @@ flowchart TD
 - [빠른 시작](./quick-start/) — 마켓플레이스 추가 → 플러그인 설치 → 첫 체인
 - [`moai-core`](./moai-core/) — 반드시 가장 먼저 설치
 - [Cowork 플러그인 사용](../../cowork/plugins/) — Cowork 환경 통합 가이드
-- [강의로 배우기 (모두의 AI 아카데미 1기)](https://academy.mo.ai.kr/?utm_source=cowork-docs&utm_medium=referral&utm_campaign=docs-plugins-catalog) — 3일 · 정원 25명
+- [강의로 배우기 (모두의 AI 아카데미)](https://academy.mo.ai.kr/?utm_source=cowork-docs&utm_medium=referral&utm_campaign=docs-plugins-catalog) — 클로드 코워크로 나만의 AI 팀 만들기 · 코드 없이 2일 · 오프라인 정원 30석 · 모집 중
 
 ---
 
