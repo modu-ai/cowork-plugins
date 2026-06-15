@@ -37,11 +37,12 @@
 
 **🆕 v2.20.0 하이라이트** (2026-06-16) — **"학습자 전용 moai-tutor 신규 — context7+웹검색 병렬 리서치 → mermaid·차트 HTML 학습자료"**
 
-27 → **28 플러그인**, 173 → **176 스킬**, 동기화 2.20.0. Breaking change 없음. MINOR 릴리스. 가르치는 사람(moai-education)과 분리된 **배우는 사람(학습자·수강생)** 도메인을 신설했습니다.
+27 → **28 플러그인**, 173 → **176 스킬**, 동기화 2.20.0. 기능·인터페이스 Breaking change 없음. MINOR 릴리스. 가르치는 사람(moai-education)과 분리된 **배우는 사람(학습자·수강생)** 도메인을 신설했고, 저장소 라이선스를 **MIT → NC-ND 1.0**으로 전환했습니다.
 
 - **`moai-tutor` 신규 (3 스킬)** — `learning-project`(내 학습 프로젝트·로드맵·진도 추적 초기화) · `tutor-research`(질문→context7 공식문서+웹검색 **병렬** 조사·교차검증) · `learning-material`(도식·차트·수식·코드가 조건부로 들어간 단일 HTML 학습자료 생성). claude code·cowork·영어 등 어떤 주제든 최신 정보로 스스로 학습.
 - **context7 MCP 번들** — `moai-tutor/.mcp.json`에 context7을 번들해 설치 시 라이브러리·SDK 공식 문서 조회가 함께 활성화(별도 API 키 불필요).
 - **2026 CDN 라이브러리 스택 큐레이션** — learning-material 렌더러는 Mermaid v11·Apache ECharts v5·highlight.js v11·KaTeX v0.16·AOS v2를 **조건부 로딩**(콘텐츠가 쓸 때만 주입, 순수 텍스트는 JS 0). `moai-content:html-report`의 0-JS 원칙은 보존.
+- **라이선스 MIT → NC-ND 1.0 전환 + humanize-korean 자체 재생성** — 저장소를 비상업·변경금지(NC-ND) 1.0으로 전환(종전 MIT 릴리스는 `LICENSE.MIT`로 보존, 제3자 구성요소는 `NOTICE.md` 격리). `moai-content:humanize-korean`의 MIT 차용 의존을 100% 제거하고 한국 번역학계 8유형 번역투 계보 기반 자체 저작으로 재생성 — 검증된 구조(10대 카테고리·CLI·등급 로직) 보존, 기능 동등(28 테스트 PASS).
 
 기존 워크플로우·플러그인 그대로 동작. `/plugin marketplace update cowork-plugins`로 적용.
 
