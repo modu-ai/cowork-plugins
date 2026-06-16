@@ -4,7 +4,7 @@
 
 [![버전](https://img.shields.io/badge/version-2.10.0-blue)](../CHANGELOG.md)
 [![라이선스](https://img.shields.io/badge/license-MIT-green)](../LICENSE)
-[![스킬](https://img.shields.io/badge/skills-5-success)](#스킬)
+[![스킬](https://img.shields.io/badge/skills-6-success)](#스킬)
 
 온라인 강의 제작부터 학술 논문 작성, 자격증 시험 대비, 강의·연수 운영 실무, 강의 후 후기 자산화까지 강사·교수·교사가 운영하는 교육 활동 전반을 지원합니다.
 
@@ -16,6 +16,7 @@
 | [research-assistant](./skills/research-assistant/) | 데이터 수집/분석, 학술 논문 초안, 연구 설계, 인용/참고문헌 관리 | ✅ |
 | [assessment-creator](./skills/assessment-creator/) | 시험 문제 출제, 기출 분석, 자격증 모의고사, 학습 평가 설계 | ✅ |
 | [course-operations-manual](./skills/course-operations-manual/) | 강의·수업·연수·워크숍 운영 매뉴얼 자동 생성. 일자별 시간표 + 강사·조교 동선 + D-N 사전 준비물 + 환경·설비 체크리스트 + 리스크 매트릭스 + Plan B 5건+. `moai-office:docx-generator` 자동 체이닝으로 Word(.docx) 출력 (구 `course-curriculum-design`) | ✅ |
+| [course-curriculum-design](./skills/course-curriculum-design/) | ⚠️ Deprecated (rename) — `course-operations-manual`로 이름 변경됨. 강의 운영 매뉴얼·시간표·체크리스트는 `course-operations-manual` 사용 | ⚠️ |
 | [course-followup-sequence](./skills/course-followup-sequence/) | 강의 종료 후 30일 follow-up 시퀀스. 후기 카피 5종(D+1·D+3·D+7·D+14·D+30) + 인센티브·자산화 가이드. 체인: copywriting → ai-slop-reviewer → korean-spell-check | ✅ |
 
 ## 사용 예시

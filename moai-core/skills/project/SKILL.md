@@ -20,7 +20,7 @@ description: |
   스킬 체인(예: strategy-planner → docx-generator → ai-slop-reviewer)을 설계하고
   누락 플러그인을 자동 감지해 설치 안내 후 사용자 확인을 받은 뒤 CLAUDE.md를 최적화합니다.
 user-invocable: true
-version: 2.20.0
+version: 2.21.0
 ---
 
 # project — Cowork 프로젝트 초기화 & 스킬 체이닝 워크플로우 설계
@@ -134,16 +134,18 @@ Phase 2: Inventory (cowork-plugins 마켓플레이스 스킬만 인벤토리 구
     · 각 SKILL.md frontmatter에서 `name` 필드 추출 → 인벤토리에 등록
   - 소스 B: 현재 세션 system reminder "user-invocable skills" 목록 (cowork-plugins 출처만 필터)
   - 두 소스 교차 검증 → 활성 스킬 인벤토리 구성
-  - .moai/cache/inventory.json에 저장 (스킬명 → cowork 플러그인 매핑)
+  - 에이전트 인벤토리: 각 플러그인 agents/*.md 동적 스캔 → agents_available (코디네이터, Cowork 전용)
+  - .moai/cache/inventory.json에 저장 (스킬명·에이전트명 → cowork 플러그인 매핑)
 
-Phase 3: Chain Design (핵심)
-  - 산출물별 스킬 체인 설계
-  - 예: 사업계획서 = strategy-planner → docx-generator → ai-slop-reviewer
-  - 예: 블로그 발행 = blog → ai-slop-reviewer
-  - 텍스트 산출물 체인은 항상 ai-slop-reviewer로 종료
+Phase 3: Chain Design (핵심) — 코디네이터 우선(agent-aware)
+  - 코디네이터 우선: 매칭 코디네이터 에이전트가 있으면 우선 추천, 없으면 인라인 스킬 체인
+  - 예: 사업계획서 = business-plan-coordinator(에이전트) / 폴백 strategy-planner → pptx-designer → ai-slop-reviewer
+  - 예: 블로그 발행 = blog → ai-slop-reviewer (단순 — 코디네이터 불요)
+  - 텍스트 산출물 체인은 항상 ai-slop-reviewer로 종료 (코디네이터가 내부 처리 시 중복 금지)
 
-Phase 3.5: Agent Synthesis (선택 — 자격 워크플로우를 전담 프로젝트 에이전트로 생성)
-  - 자격 워크플로우(고정 파이프라인+게이트 / 병렬 fan-out / 고빈도 반복)만 후보
+Phase 3.5: Agent Synthesis (선택 — 기존 코디네이터가 없을 때만 신규 생성)
+  - Step 0: 매칭되는 기존 코디네이터가 있으면 그것을 쓰고 신규 생성 안 함
+  - 자격 워크플로우(고정 파이프라인+게이트 / 병렬 fan-out / 고빈도 반복) 중 기존 미커버만 후보
   - AskUserQuestion(multiSelect)로 선택 → ./.claude/agents/<name>.md 생성
   - 자격 체인 0건이거나 "생성 안 함" 선택 시 건너뜀 (additive)
   - 디스크 작성 에이전트는 새 세션(또는 /reload-plugins)에서 활성화
@@ -199,7 +201,7 @@ Phase 8: First Run
 
 ### Phase 3.5 — Agent Synthesis (프로젝트 에이전트 생성)
 
-Phase 3 체인 설계 직후, **전담 에이전트로 만들 가치가 있는 워크플로우**만 프로젝트 전용 서브에이전트(`./.claude/agents/<name>.md`)로 생성하는 선택 단계입니다. 플러그인 번들 코디네이터 에이전트는 제거되므로, 사용자가 서브에이전트를 얻는 **유일한 경로**가 이 Phase 3.5입니다.
+Phase 3 체인 설계 직후, **전담 에이전트로 만들 가치가 있는데 매칭되는 기존 코디네이터가 없는** 워크플로우만 프로젝트 전용 서브에이전트(`./.claude/agents/<name>.md`)로 생성하는 선택 단계입니다. 각 도메인 플러그인은 코디네이터 에이전트(`<plugin>/agents/*.md`, 스냅샷 31개)를 번들하므로 **매칭 코디네이터가 있으면 그것을 우선 활용**하고(Phase 3 코디네이터 우선), Phase 3.5는 **커버되지 않는 워크플로우에만** 신규 생성합니다. 매핑·결정 규칙은 `references/core/agent-catalog.md`.
 
 **자격 판정 규칙(Decision Rule)** — 다음 중 하나 이상을 만족할 때만 생성:
 - (a) 고정 다단계 파이프라인 + 비우회 컴플라이언스/면책 게이트
@@ -214,6 +216,8 @@ Phase 3 체인 설계 직후, **전담 에이전트로 만들 가치가 있는 �
 
 ### 스킬 체인 설계 원칙
 
+**코디네이터 우선 (agent-aware)**: 체인 설계 전, 매칭되는 기존 코디네이터 에이전트가 있으면 우선 실행기로 추천한다(상세: `references/core/agent-catalog.md`). 코디네이터가 없을 때만 아래 인라인 스킬 체인을 구성한다. 코디네이터·에이전트는 Cowork 서브에이전트 전용이다.
+
 **체인 구성 요소**:
 1. **기획·분석 스킬** — strategy-planner, market-analyst, ux-researcher
 2. **생성·제작 스킬** — blog, copywriting, card-news, spec-writer
@@ -221,7 +225,7 @@ Phase 3 체인 설계 직후, **전담 에이전트로 만들 가치가 있는 �
 4. **미디어 스킬** (선택) — `gpt-image-2-prompt`·`gemini-3-image-prompt`·`midjourney-v8-prompt`(이미지 프롬프트 빌더), `audio-gen`(ElevenLabs MCP TTS·보이스 클로닝·다국어 더빙). 이미지·영상 실제 렌더링은 **Higgsfield MCP**(Soul·DOP·말하는머리·캐릭터) 단일 통합으로 직접 호출.
 5. **후처리 스킬** — `ai-slop-reviewer` (텍스트 산출물 체인의 **필수 마지막 단계**)
 
-**체인 표기 규약** (CLAUDE.md에 기록될 형식):
+**체인 표기 규약** (CLAUDE.md에 기록될 형식 — 코디네이터가 있으면 `실행기: <coordinator>` + `폴백:` 인라인 체인을 함께 표기, 상세 `agent-catalog.md` §체인 표기 규약):
 ```
 [산출물명]
   요청 예시: "..."

@@ -1,14 +1,14 @@
 ---
 title: "moai-content — 블로그·카드뉴스·랜딩·한국어 윤문"
 weight: 30
-description: "한국 콘텐츠·마케팅 실무에 최적화된 블로그·카드뉴스·랜딩페이지·뉴스레터·상세페이지 기획·한국어 AI 티 정밀 윤문·마크다운 보고서 HTML 변환 등 12개 스킬 묶음입니다."
+description: "한국 콘텐츠·마케팅 실무에 최적화된 블로그·카드뉴스·랜딩페이지·뉴스레터·상세페이지 기획·한국어 AI 티 정밀 윤문·마크다운 보고서 HTML 변환 등 15개 스킬 묶음입니다."
 geekdocBreadcrumb: true
 tags: ["moai-content"]
 ---
 
 # moai-content
 
-> 한국 마케팅·콘텐츠 실무에 최적화된 12개 스킬을 제공합니다. 네이버 블로그·티스토리·인스타그램·LinkedIn·카카오 채널까지 플랫폼별 알고리즘 차이를 반영하고, 마크다운 보고서 HTML 변환(`html-report`)·한국어 맞춤법 검수(`korean-spell-check`)·한국어 AI 티 윤문(`humanize-korean`)을 모두 포함합니다. 한국 이커머스 상세페이지 기획·구조·전략 설계는 `detail-page-planner`가 전담합니다.
+> 한국 마케팅·콘텐츠 실무에 최적화된 15개 스킬을 제공합니다. 네이버 블로그·티스토리·인스타그램·LinkedIn·카카오 채널까지 플랫폼별 알고리즘 차이를 반영하고, 마크다운 보고서 HTML 변환(`html-report`)·한국어 맞춤법 검수(`korean-spell-check`)·한국어 AI 티 윤문(`humanize-korean`)을 모두 포함합니다. 한국 이커머스 상세페이지 기획·구조·전략 설계는 `detail-page-planner`가 전담합니다.
 
 ```mermaid
 flowchart TD
@@ -30,7 +30,7 @@ flowchart TD
 
 `moai-content`는 한국 디지털 마케팅 채널의 실제 운영 노하우를 반영해 설계된 텍스트 콘텐츠 생성 플러그인입니다. 단순히 글을 만드는 데 그치지 않고, 네이버 C-Rank·D.I.A. 알고리즘이나 인스타그램의 카드뉴스 길이 기준 등 채널별 베스트 프랙티스를 본문 구조에 반영합니다.
 
-블로그 포스트·카드뉴스·랜딩페이지·뉴스레터·**상세페이지 기획**·상세페이지·SNS·카피라이팅·미디어 기획·한국어 맞춤법·**한국어 AI 티 정밀 윤문**·**마크다운 보고서 HTML 변환**까지 12개 스킬이 도메인별로 분리되어 있어, 필요한 채널만 선택해 호출할 수 있습니다.
+블로그 포스트·카드뉴스·랜딩페이지·뉴스레터·**상세페이지 기획**·상세페이지·SNS·카피라이팅·미디어 기획·한국어 맞춤법·**한국어 AI 티 정밀 윤문**·**마크다운 보고서 HTML 변환**까지 15개 스킬이 도메인별로 분리되어 있어, 필요한 채널만 선택해 호출할 수 있습니다.
 
 별도 API 키 없이 사용 가능하며, WordPress 자동 업로드를 원하면 WordPress MCP 연결이 필요합니다.
 
@@ -129,7 +129,7 @@ card-news → moai-media:higgsfield-image → ai-slop-reviewer
 
 ## `humanize-korean` (한국어 AI 티 정밀 윤문)
 
-한국 번역학계가 정립한 8유형 번역투 계보를 토대로 cowork이 자체 저작한 한국어 정밀 윤문 스킬입니다. 영어권 humanizer(QuillBot·Hix·Undetectable AI)가 약한 **한국어 고유 패턴** — 번역투, 영어 인용 과다, 결말 공식, hedging, 형식명사 — 을 정량 메트릭과 SSOT 분류 체계로 수술적으로 제거합니다.
+한국 번역학계가 정립한 8유형 번역투 계보를 토대로 cowork이 자체 저작한 한국어 정밀 윤문 스킬입니다. 영어권 humanizer(QuillBot·Hix·Undetectable AI)가 약한 **한국어 고유 패턴** — 번역투, 영어 인용 과다, 결말 공식, hedging, 형식명사 — 을 정량 메트릭과 SSOT 분류 체계로 수술적으로 제거합니다. **v2.21.0부터는 한국적 정서·결 K 카테고리(양성 축)**를 더해 '빼기'를 넘어 '한국적 결로 채우기'까지 아울렀습니다.
 
 ### 4대 철칙 (위반 시 즉시 롤백)
 
@@ -152,6 +152,19 @@ card-news → moai-media:higgsfield-image → ai-slop-reviewer
 | H | 접속사 남발 | 문두 "또한·따라서·즉·나아가" 5회+ |
 | I | 형식명사 과다 | `…인 것이다`, `…다는 뜻이다`, 권고형 결말 |
 | J | 시각 장식 | 헤딩 강조 남발, 따옴표 5회+, 불릿 리스트 (칼럼·리포트 한정) |
+
+### K 카테고리 — 한국적 정서·결 양성 축 (v2.21.0 추가)
+
+A~J가 **음성(제거) 축** — "AI 티"를 빼는 데 집중 — 이라면, **K는 양성(지향) 축**으로 "한국적 정서·결로 채우는" 역할을 합니다. 빼기에서 멈추지 않고 온도·절제·호흡·아크를 더해 사람이 쓴 글의 결로 만듭니다.
+
+| K | 양성 패턴 | 내용 |
+|---|----------|------|
+| K-1 | 정서온도 | 안전한 일반성 ↔ 체온·구체. 예시의 온도 조절 |
+| K-2 | 절제·곡언 | 과장을 절제로, 곡언(두루 말하기)으로 순화 |
+| K-3 | 구어 호흡·여백 | 호흡·여백·말끝 (장르 가드 강함) |
+| K-4 | 정서 아크 | 담화 단위 감정 흐름 |
+
+본진에도 **E-8**(다어절 띄어쓰기 기계적 균일성, S2)·**E-7 보강**(3단계 화계 선택)·머리말 **모델별 번역투 시그니처 힌트**를 추가했습니다. 학술 근거: Park & Han 2026 LREAD(arXiv:2601.19913) · translationese(arXiv:2602.16469) · KatFish 2025 교차. 자체 저작·학술 원전 직접 인용. **메트릭·테스트 무변경**(parity 안전) — 기존 윤문 결과는 동일합니다.
 
 ### 권장 체인 위치 — `ai-slop-reviewer` 직후
 
@@ -209,6 +222,45 @@ card-news → moai-media:higgsfield-image → ai-slop-reviewer
 - **학술 기반**: 한국 번역학계 8유형 번역투 계보 (김정우 2007, 이근희 2005 등)
 - **메트릭 원전**: KatFish (Park et al.), Toral 2019 (arXiv:1907.00900) — post-editese 정량 신호
 - **저작·라이선스**: cowork 자체 저작 (NC-ND 1.0)
+
+## `drawio-diagram` (편집 가능한 draw.io 다이어그램 렌더러)
+
+자연어 설명을 **편집 가능한 `.drawio` XML**과 **단일 HTML**(draw.io CDN 뷰어 `viewer-static.min.js`, Apache-2.0) 두 산출물로 렌더합니다. mermaid가 텍스트→자동 레이아웃으로 빠른 플로우·시퀀스에 강하다면, 이 스킬은 **정교한 셰이프·수동 레이아웃·클라우드 아이콘·편집 가능한 원본**이 필요할 때 씁니다. `html-report` 디자인 토큰·폰트를 공유해 Cowork 산출물 전반과 시각 일관성을 유지합니다.
+
+> **CLI 설치 불필요**: 원본 [Agents365-ai/drawio-skill](https://github.com/Agents365-ai/drawio-skill)(MIT)은 PNG export에 draw.io 데스크톱 CLI가 필요합니다. 이 스킬은 CDN 뷰어로 렌더해 Cowork 관리 환경에서 추가 설치 없이 동작합니다.
+
+### 6개 프리셋
+
+| 프리셋 | 용도 |
+|--------|------|
+| `erd` | 엔티티-관계(DB 스키마) — 테이블 셰이프, PK/FK, 1:N 관계 |
+| `uml-class` | 클래스 다이어그램 — 3-구획 박스, 상속·연관 |
+| `sequence` | 시퀀스 — 라이프라인, 활성 막대, 동기/비동기 메시지 |
+| `architecture` | 시스템·클라우드 — 그룹 컨테이너, 컴포넌트, 클라우드 셰이프 |
+| `ml-pipeline` | ML/딥러닝 파이프라인 — 데이터·전처리·모델·평가 흐름 |
+| `flowchart` | 프로세스 플로우차트 — 시작/끝, 처리, 판단, 분기 |
+
+### 산출물
+
+`<cwd>/diagrams/` 아래 두 파일을 같은 slug로 생성합니다.
+
+- `<slug>-<YYYYMMDD>.drawio` — 편집용 원본(draw.io app.diagrams.net에서 열기)
+- `<slug>-<YYYYMMDD>.html` — 브라우저 즉시 열람용(CDN 뷰어 임베드, 뷰어 실패 시 XML 텍스트 보존)
+
+### 책임 경계 — mermaid vs drawio-diagram
+
+| 상황 | 추천 |
+|------|------|
+| 빠른 텍스트 플로우·시퀀스·간단 ER | mermaid(learning-material·html-report) |
+| 정교한 셰이프·클라우드 아이콘·편집 가능 원본 | drawio-diagram |
+| 데이터 수치 차트 | moai-data:data-visualizer / ECharts |
+
+`moai-tutor:learning-material`은 이 스킬의 `.drawio` 도식을 ```drawio` 블록으로 조건부 임베드합니다(mermaid 보완용). 자세한 임베드 규격·단일 HTML 래핑은 [`references/cdn-viewer.md`](https://github.com/modu-ai/cowork-plugins/blob/main/moai-content/skills/drawio-diagram/references/cdn-viewer.md) 참조.
+
+### 출처·라이선스
+
+- **영감 원본**: [Agents365-ai/drawio-skill](https://github.com/Agents365-ai/drawio-skill)(MIT, © 2026 Agents365-ai) — 6 프리셋 구성·셰이프 해상을 참고해 MoAI 환경에 맞게 재구현. 본 스킬 SKILL.md·presets.md·cdn-viewer.md는 MoAI 자체 저작이며 원본 코드를 복사하지 않았습니다.
+- **렌더 뷰어**: draw.io `viewer-static.min.js`(Apache-2.0). CDN 런타임 로딩(브라우저가 직접 로드)으로 저장소 NC-ND 라이선스와 무관합니다.
 
 ## `html-report` (마크다운 보고서 → 단일 파일 HTML 변환기)
 

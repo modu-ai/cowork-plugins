@@ -13,7 +13,7 @@ description: |
   한국형 폰트·색 팔레트 디자인 시스템과 비즈니스 슬라이드 구성안을 적용해 슬라이드를 만들고, 카피는 AI 슬롭 검수로 다듬을 수 있습니다.
   [책임 경계] vs moai-office:notebooklm-slide-prompt: 이 스킬=지금 바로 열리는 .pptx 파일, 저 스킬=NotebookLM에 넣을 슬라이드 생성 프롬프트.
 user-invocable: true
-version: 2.20.0
+version: 2.21.0
 ---
 
 # PPT 디자이너 (PPTX Designer)

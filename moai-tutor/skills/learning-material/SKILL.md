@@ -12,7 +12,7 @@ description: |
   학습 전용 렌더러로, html-report design-token·폰트를 공유해 시각 일관성을 유지하되 mermaid·ECharts·KaTeX·highlight.js·AOS를 콘텐츠가 쓸 때만 조건부 로딩합니다.
   [책임 경계] vs moai-content:html-report: 이 스킬=도식·차트·코드가 풍부한 학습자료(JS 라이브러리 허용), 저 스킬=0-JS 단일파일 업무 보고서.
 user-invocable: true
-version: 2.20.0
+version: 2.21.0
 ---
 
 # 학습자료 렌더러 (Learning Material)
@@ -80,6 +80,7 @@ version: 2.20.0
 | 콘텐츠에 있으면 | 주입 라이브러리 | 비고 |
 |----------------|-----------------|------|
 | ` ```mermaid ` 블록 | **Mermaid v11** (ESM) | `<pre class="mermaid">`로 변환 후 init |
+| ` ```drawio ` 블록 | **draw.io 뷰어** (viewer-static) | `<div class="mxgraph">` 임베드. 정교 도식·편집 가능 .drawio. `moai-content:drawio-diagram` 산출물 |
 | 데이터·수치 시각화 | **ECharts v5** | `<div>` + init 스크립트. 경량 필요 시 Chart.js v4 |
 | `$…$` / `$$…$$` 수식 | **KaTeX v0.16** + auto-render | CSS+JS+auto-render 3종 |
 | 코드 블록(` ```lang `) | **highlight.js v11** | 테마 CSS + JS + `hljs.highlightAll()` |

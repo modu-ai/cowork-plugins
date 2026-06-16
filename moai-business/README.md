@@ -18,6 +18,7 @@
 | [sales-playbook](./skills/sales-playbook/) | 영업 플레이북 자동 생성 (타겟 산업·ICP·콜드 콘택트·반론 대응·후속 시퀀스) | 1 | ✅ |
 | [startup-launchpad](./skills/startup-launchpad/) | 스타트업 종합 패키지 — 아이디어→사업계획서→피치덱→재무 모델→3년 예산까지 한 번에 | 1 | ✅ |
 | [real-estate-search](./skills/real-estate-search/) | 국토교통부(MOLIT) 실거래가/전월세 — 아파트·오피스텔·빌라·단독·상업용 (k-skill-proxy 경유, v2.0.0+) | 0 | ✅ |
+| [ai-diagnostic](./skills/ai-diagnostic/) | AI 다차원 진단 — 기술·프로세스·사람·비즈니스 4차원 병렬 진단으로 근본 원인 식별 + 우선순위별 해결책 | 0 | ✅ |
 
 ## MCP 커넥터
 

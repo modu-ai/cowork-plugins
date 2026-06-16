@@ -33,11 +33,13 @@ flowchart TD
     V217 --> V218["v2.18<br/>에이전트 모델 전환"]
     V218 --> V219["v2.19<br/>humanize v2.0·코디네이터 31"]
     V219 --> V220["v2.20<br/>moai-tutor 학습 튜터"]
+    V220 --> V221["v2.21<br/>drawio·humanize K·agent-aware"]
 
     style V10 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
     style V218 fill:#d6ebe7,stroke:#1c7c70,color:#09110f
     style V219 fill:#d6ebe7,stroke:#1c7c70,color:#09110f
-    style V220 fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
+    style V220 fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+    style V221 fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
 ```
 
 ## 버전 관리 정책
@@ -70,7 +72,9 @@ flowchart TD
 
 각 버전의 상세 변경 사항은 다음 페이지에서 확인할 수 있습니다:
 
-- [v2.20.0 (최신)](v2.20/) - **학습자 전용 moai-tutor 플러그인 신규 (3 스킬)** — 가르치는 사람(moai-education)과 분리된 배우는 사람(학습자·수강생) 도메인. `learning-project`(학습 프로젝트·로드맵·진도) · `tutor-research`(context7 공식 문서 + 웹검색 **병렬** 조사·교차검증) · `learning-material`(도식·차트·수식·코드가 조건부로 들어간 단일 HTML 학습자료). context7 MCP 번들 + 2026 CDN 라이브러리 스택(Mermaid·ECharts·highlight.js·KaTeX·AOS) 큐레이션. **27→28 플러그인·173→176 스킬 · 기능적 비파괴 · Breaking change 없음**
+- [v2.21.0 (최신)](v2.21/) - **drawio-diagram 신규 + humanize-korean 한국적 정서·결 K 카테고리 + /project agent-aware** — 자연어를 편집 가능한 `.drawio` + 단일 HTML(draw.io CDN 뷰어, Apache-2.0) 두 산출물로 렌더하는 **drawio-diagram** 신규(6 프리셋·CLI 불필요). `humanize-korean`에 한국적 정서·결 **K 카테고리(양성 축) 4종** 추가(A~J 음성·제거에 K 양성·지향 충전, 2026 학술 교차·메트릭 무변경). `/project`가 코디네이터 에이전트까지 동적 스캔·체인 설계. `learning-material` ```drawio` 블록 연동. **28 플러그인 유지 · 173→177 스킬 · 기능적 비파괴 · Breaking change 없음**
+
+- [v2.20.0](v2.20/) - **학습자 전용 moai-tutor 플러그인 신규 (3 스킬)** — 가르치는 사람(moai-education)과 분리된 배우는 사람(학습자·수강생) 도메인. `learning-project`(학습 프로젝트·로드맵·진도) · `tutor-research`(context7 공식 문서 + 웹검색 **병렬** 조사·교차검증) · `learning-material`(도식·차트·수식·코드가 조건부로 들어간 단일 HTML 학습자료). context7 MCP 번들 + 2026 CDN 라이브러리 스택(Mermaid·ECharts·highlight.js·KaTeX·AOS) 큐레이션. **27→28 플러그인·173→176 스킬 · 기능적 비파괴 · Breaking change 없음**
 - [v2.19.0](v2.19/) - **humanize-korean v2.0.0 포팅 + Cowork-safe 플러그인 코디네이터 31종 재도입** — `moai-content:humanize-korean`을 upstream epoko77-ai/im-not-ai v2.0.0으로 정렬(번역투 8유형 계보 + 신규 패턴 A-16·A-18·A-19·E-7 + post-editese 14메트릭). Cowork-safe 코디네이터 31개(24 플러그인, Bash·WebFetch 배제)를 실측 근거로 선별 재도입. **27 플러그인·173 스킬 유지 · 기능적 비파괴 · Breaking change 없음**
 - [v2.18.0](v2.18/) - **Cowork 에이전트 모델 전환 — 플러그인 번들 코디네이터 제거 + /project 맞춤 에이전트** — v2.17.0이 도입한 플러그인 번들 코디네이터 sub-agent 14개를 전면 제거하고, `/project`가 사용자 프로젝트에 맞춤 sub-agent를 직접 생성하는 **Agent Synthesis(Phase 3.5)** 모델로 일원화. 프로젝트 에이전트는 플러그인 번들보다 우선순위가 높고 Cowork가 자동 로드하며 새 세션에서 활성화. moai-core:project 스킬 현대화(27 플러그인/173 스킬 정합·Phase 2 화이트리스트 동적 도출·bare `/project` 기본 동작) · moai-office 5 SKILL.md의 삭제된 doc-qa 참조 정정. **27 플러그인·173 스킬 유지 · 기능적 비파괴 · Breaking change 없음**
 - [v2.17.0](v2.17/) - **Cowork-fit 재설계 마무리 — 공공데이터 조회 플러그인 + 코디네이터 sub-agent 11종** — 한국 공공·시세 조회를 한곳에 모은 신규 **moai-public-data**(KRX 종목·법원경매·국토부 실거래가·공공데이터포털/KOSIS 4 조회, 별도 API 키 불필요) + Cowork 전용 **코디네이터 sub-agent 11종**(상품 출시·상세페이지·원고·사업계획·채용·법무 검토·메타 광고·미디어·문의 분류·UX 점검·재무 리포트 조립). 60여 스킬 `ai-slop-reviewer → humanize-korean` 후처리 체이닝 표준화 · 설명·트리거 STANDARD 정리 · moai-pm·moai-sales·moai-bi manifest 정직화 · 이미지·영상 Higgsfield 단일화 · WordPress 발행 wiring. **26 → 27 플러그인 · 170 → 173 스킬 · Breaking change 없음**

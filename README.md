@@ -2,9 +2,9 @@
 
 [![License: NC-ND v1.0](https://img.shields.io/badge/License-NC--ND%20v1.0-red.svg)](LICENSE)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
-[![Version](https://img.shields.io/badge/Version-2.20.0-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-2.21.0-blue)](CHANGELOG.md)
 [![Plugins](https://img.shields.io/badge/Plugins-28-blue)](.claude-plugin/marketplace.json)
-[![Skills](https://img.shields.io/badge/Skills-176-green)](.claude-plugin/marketplace.json)
+[![Skills](https://img.shields.io/badge/Skills-177-green)](.claude-plugin/marketplace.json)
 [![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)
 [![shadcn/ui](https://img.shields.io/badge/UI-shadcn/ui-black)](https://ui.shadcn.com/)
 
@@ -32,6 +32,19 @@
 | 📑 **문서·이커머스·BI** | `hwpx-writer` · `pdf-writer` · `detail-page-copy` · `executive-summary` · `weekly-report` | HWPX(한글) · 한·중·일·영 PDF · 13섹션 상세페이지 · 경영진 1pager · WBR 주간보고 |
 
 > 28개 플러그인 전체 카탈로그와 카테고리 비교는 [플러그인 카탈로그](#플러그인-카탈로그)와 [플러그인 상세 소개](#플러그인-상세-소개)를 참조하세요.
+
+---
+
+**🆕 v2.21.0 하이라이트** (2026-06-16) — **"drawio-diagram 신규 + humanize-korean 한국적 정서·결 K 카테고리 + /project agent-aware"**
+
+28 플러그인(유지), 173 → **177 스킬**, 동기화 2.21.0. 기능·인터페이스 Breaking change 없음. MINOR 릴리스. 콘텐츠·문서 작업의 도식 역량을 강화하고 한국적 정서 윤문 지식을 보강했습니다.
+
+- **`drawio-diagram` 신규 (moai-content)** — 자연어를 편집 가능한 `.drawio` + 단일 HTML(draw.io CDN 뷰어 `viewer-static.min.js`, Apache-2.0) 두 산출물로 렌더. 6 프리셋(erd·uml-class·sequence·architecture·ml-pipeline·flowchart). **CLI 설치 불필요**(브라우저 즉시 열람). mermaid로 부족한 정교한 셰이프·클라우드 아이콘·편집 가능 원본. [Agents365-ai/drawio-skill](https://github.com/Agents365-ai/drawio-skill)(MIT) 영감 → 자체 재구현(CLI 의존 제거).
+- **`humanize-korean` 한국적 정서·결 K 카테고리 (taxonomy v2.1)** — 기존 A~J(음성·제거 축)에 **K(양성·지향 축)** 4종(K-1 정서온도·K-2 절제·곡언·K-3 구어 호흡·K-4 정서 아크) 추가. 본진 E-8(띄어쓰기 기계적 균일성)·E-7 보강(3단계 화계)·머리말 모델별 번역투 시그니처 힌트. Park & Han 2026 LREAD(arXiv:2601.19913)·translationese(arXiv:2602.16469) 학술 교차. **메트릭·테스트 무변경**(parity 안전).
+- **`/project` agent-aware 강화 (moai-core)** — `/project init`이 스킬뿐 아니라 **코디네이터 에이전트**까지 동적 스캔·체인 설계. 신규 `agent-catalog.md` SSOT + Phase 2 에이전트 인벤토리 + Phase 3 코디네이터 우선 + 기존 에이전트 우선(stale 정정).
+- **`moai-tutor:learning-material` drawio 연동** — ```drawio` 블록을 인식해 draw.io 뷰어를 조건부 임베드(`references/cdn-libraries.md` §6 신규). mermaid는 그대로 유지.
+
+기존 워크플로우·플러그인 그대로 동작. `/plugin marketplace update cowork-plugins`로 적용.
 
 ---
 
@@ -446,7 +459,7 @@ moai-commerce에 시장조사·JTBD·페르소나·상품명·채널 메시지·
 | [moai-finance](./moai-finance/) | 원천징수, 부가세, K-IFRS, 결산, 예산 분석, **법원경매 매각공고**, **KRX 시세** | 6 |
 | [moai-public-data](./moai-public-data/) | 한국 공공데이터 조회 — KRX 시세, 법원경매, 국토부 실거래가, 공공데이터포털/KOSIS 통계 🆕 | 4 |
 | [moai-hr](./moai-hr/) | 근로계약서, 4대보험, 채용, 성과평가, **이력서 스크리닝** | 5 |
-| [moai-content](./moai-content/) | 카드뉴스, 상세페이지, 랜딩페이지, 뉴스레터, 카피라이팅, 블로그, 소셜미디어, 콘텐츠 캘린더, 유튜브·팟캐스트 기획, 바른한글 맞춤법, **한국어 AI 티 정밀 윤문**, **마크다운→HTML 렌더러(html-report)** | 14 |
+| [moai-content](./moai-content/) | 카드뉴스, 상세페이지, 랜딩페이지, 뉴스레터, 카피라이팅, 블로그, 소셜미디어, 콘텐츠 캘린더, 유튜브·팟캐스트 기획, 바른한글 맞춤법, **한국어 AI 티 정밀 윤문**, **마크다운→HTML 렌더러(html-report)**, **draw.io 다이어그램(drawio-diagram)** | 15 |
 | [moai-operations](./moai-operations/) | 결재, 조달, SOP, 벤더 관리, 상태 보고 | 3 |
 | [moai-education](./moai-education/) | 강사·교수·교사 교육 콘텐츠 풀스택 — 강의설계, 평가 출제, 1일-16주 모든 강의 형식 커리큘럼, 일반 강의·연수·정규 강좌 후기 자산화 | 6 |
 | [moai-lifestyle](./moai-lifestyle/) | 여행, 건강, 웨딩/이벤트 | 3 |

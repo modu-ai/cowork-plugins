@@ -4,7 +4,7 @@
 
 [![버전](https://img.shields.io/badge/version-2.5.0-blue)](../CHANGELOG.md)
 [![라이선스](https://img.shields.io/badge/license-MIT-green)](../LICENSE)
-[![스킬](https://img.shields.io/badge/skills-11-success)](#스킬)
+[![스킬](https://img.shields.io/badge/skills-12-success)](#스킬)
 [![MCP](https://img.shields.io/badge/MCP-2_servers-orange)](./CONNECTORS.md)
 
 > **v2.5.0 신규 1 + 인프라** — `meta-ads-analyzer`(메타 광고관리자 `.xlsx` 보고서 1-6개 → 9 분석 모듈 + 4D 교차 + 3 사용자 그룹 톤 + 4 출력 형식 + 강도별 액션 옵션 🟢🟡🔴) + **MCP 2서버 등록 신규** (`meta-ads` Meta 공식 hosted + `moai-ads-audit` 자체 stdio MCP — `mcp-servers/moai-ads-audit/`, claude-ads v1.5.1 MIT 방법론 한국 시장 7 변화 영역 특화, 우선 3 도구 + 50/50 pytest pass). 발급 절차: [CONNECTORS.md](./CONNECTORS.md).
@@ -32,6 +32,7 @@
 | [landing-page-conversion-audit](./skills/landing-page-conversion-audit/) | **🆕 v2.4.0** — 랜딩페이지 6섹션 구조 진단 + 진단 분기(CTR↓→광고 / CVR↓→랜딩 / 장바구니↓→결제) + 빠른 처방 3종(불안해소 문구 +10-20% / 메시지 일치 / 간편결제). 광고 심리학 §9 wrapper | 0 | ✅ |
 | [pixel-audit](./skills/pixel-audit/) | **🆕 v2.4.0** — 메타·구글 픽셀 설치 검증 + 3종 실수 점검(구매자 미제외/이벤트 파라미터 미설정/CAPI 미설치) + 1st Party 데이터 활용 + Lookalike 씨앗 품질(VIP 상위 20% 권장) | 0 | ✅ |
 | [meta-ads-analyzer](./skills/meta-ads-analyzer/) | **🆕 v2.5.0** — 메타 광고관리자 `.xlsx` 보고서 1-6개 업로드 → 9 분석 모듈(퍼널·KPI·차원·매트릭스·누수·라이프사이클·학습·예산·시뮬) + 4D 교차(광고×지면×연령×성별) + 3 사용자 그룹 톤(명시 입력) + 4 출력 형식(HTML/DOCX/PPTX/MD) + 🟢🟡🔴 강도별 액션 옵션. claude-ads v1.5.1 (MIT) 50-check 한국 매핑. ai-slop-reviewer 자동 체이닝 | 11 | ✅ |
+| [meta-ads-manager](./skills/meta-ads-manager/) | 🆕 v2.15.0 — 페이스북·인스타그램 광고를 자연어로 직접 생성·ON/OFF·예산 조정. Meta 공식 광고 AI 커넥터(OAuth 브라우저 로그인), 신규 광고는 항상 PAUSED 상태로 생성 후 확인 받음 | 3 | ✅ |
 
 ## MCP 서버 (v2.5.0 신규)
 

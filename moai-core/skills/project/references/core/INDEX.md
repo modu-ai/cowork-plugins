@@ -14,7 +14,7 @@ Cowork 프로젝트 초기화 + 스킬 체이닝 워크플로우 설계 스킬(`
 
 ---
 
-## 파일 목록 (9개)
+## 파일 목록 (10개)
 
 ### 1. router.md — 자연어 → 플러그인 라우팅
 27개 플러그인 키워드 매핑, 모호성 해소, 복합 요청 분기.
@@ -43,6 +43,9 @@ Self-Refine 사이클: 반성 → 피드백 → 패턴 → 업데이트 → 학�
 
 ### 9. quality-evaluator.md — 품질 자동 평가
 산출물 품질 자동 검증, AI 슬롭 체크리스트 포함.
+
+### 10. agent-catalog.md — 코디네이터 에이전트 인지 & 체인 설계
+31개 코디네이터 에이전트 동적 인벤토리(Phase 2 `agents_available`), 코디네이터 우선 체인 설계(Phase 3), 기존 우선 에이전트 생성(Phase 3.5 Step 0), 도메인 매핑·Cowork 제약·체인 표기 규약 SSOT.
 
 ### (삭제됨) profile-manager.md
 **전면 제거됨**. 이름·회사·역할을 프로젝트마다 묻지 않는 정책으로 전환.
@@ -77,6 +80,7 @@ router.md → init-protocol.md → context-collector.md
 4. 체인 정의는 `/project init` Phase 3에서 생성되어 CLAUDE.md에 기록된다.
 5. DOCX/PPTX/XLSX/HWPX/HTML 포맷은 Claude 기본 artifacts가 아닌 **moai-office/moai-content 스킬 우선**.
 6. **Gap Detection**: Phase 4에서 체인의 각 스킬을 Inventory와 대조해 누락 플러그인을 자동 감지하고, 설치 안내 후 Re-entry로 재개한다.
+7. **코디네이터 우선 (agent-aware)**: 체인 설계 시 매칭되는 기존 코디네이터 에이전트를 우선 활용하고(`agent-catalog.md`), 없을 때만 인라인 스킬 체인 또는 신규 에이전트 생성으로 내려간다.
 
 ---
 

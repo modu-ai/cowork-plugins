@@ -4,7 +4,7 @@
 
 [![버전](https://img.shields.io/badge/version-2.10.0-blue)](../CHANGELOG.md)
 [![라이선스](https://img.shields.io/badge/license-MIT-green)](../LICENSE)
-[![스킬](https://img.shields.io/badge/skills-4-success)](#스킬-카탈로그-4종)
+[![스킬](https://img.shields.io/badge/skills-6-success)](#스킬-카탈로그-6종)
 
 ## 개요
 
@@ -26,6 +26,13 @@
 | [`midjourney-v8-prompt`](skills/midjourney-v8-prompt/SKILL.md) | [Midjourney Parameter List](https://docs.midjourney.com/hc/en-us/articles/32859204029709-Parameter-List) | 키워드+`--파라미터` + `--sref`/`--oref`/`--cw`/`--p` 3대 reference + 6대 비용·동작 함정 자동 검사 |
 
 > 본 3 스킬은 **프롬프트 텍스트만 산출**합니다. 실제 이미지 생성은 사용자가 ChatGPT·Google AI Studio·Discord `/imagine`(또는 alpha.midjourney.com)에서 직접 실행합니다.
+
+### 이미지·영상 직접 생성 — Higgsfield (2) 🆕 v2.13.0
+
+| 스킬 | 백엔드 | 용도 |
+|---|---|---|
+| [`higgsfield-image`](skills/higgsfield-image/SKILL.md) | Higgsfield MCP | AI 이미지 자연어 한 줄로 직접 생성 (공식 11 이미지 모델, 비동기 잡 폴링) |
+| [`higgsfield-video`](skills/higgsfield-video/SKILL.md) | Higgsfield MCP | AI 영상 자연어 한 줄로 직접 생성 (공식 11 영상 모델 + UGC·언박싱·제품리뷰 등 6 프리셋) |
 
 ### 음성 생성 (1)
 

@@ -6,13 +6,41 @@
 
 ## 버전 통일 원칙 (HARD)
 
-아래 205개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.11.1+ `hugo.toml` SSOT 별도 추적):
+아래 206개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.11.1+ `hugo.toml` SSOT 별도 추적):
 - `.claude-plugin/marketplace.json` (`metadata.version`) × 1
 - `<plugin>/.claude-plugin/plugin.json` (`version`) × 28 (v2.20.0+)
-- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 176 (v2.20.0+)
+- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 177 (v2.21.0+)
 - `docs-site/hugo.toml` (`[params] version`) × 1 (v2.11.1+ SSOT, 좌측 사이드바·footer 자동 반영)
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
+
+## [2.21.0] - 2026-06-16
+
+MINOR. **`drawio-diagram` 신규 스킬(moai-content) + `humanize-korean` 한국적 정서·결 K 카테고리 강화 + `/project` agent-aware 강화**. 콘텐츠·문서 작업의 도식 역량을 강화하고 한국적 정서 윤문 지식을 보강하며, `/project`가 코디네이터 에이전트까지 활용하도록 확장했습니다. 28 플러그인(유지) · 173 → 177 스킬(+drawio-diagram 1개) · 동기화 2.20.0 → 2.21.0. 기능적 비파괴(기존 플러그인·스킬·인터페이스 무변경). Breaking change 없음.
+
+### Added
+
+- **`drawio-diagram` 신규 스킬 (moai-content)** — 자연어를 편집 가능한 `.drawio` XML + 단일 HTML(draw.io CDN 뷰어 `viewer-static.min.js`, Apache-2.0) 두 산출물로 렌더. 6 프리셋(erd·uml-class·sequence·architecture·ml-pipeline·flowchart). CLI 설치 불필요(브라우저 즉시 열람, 폴백 시 XML 텍스트 보존). `html-report` 디자인 토큰·폰트 공유. 영감 출처 [Agents365-ai/drawio-skill](https://github.com/Agents365-ai/drawio-skill)(MIT) → 자체 재구현(CLI 의존 제거, CDN 뷰어 전환).
+- **`humanize-korean` 한국적 정서·결 K 카테고리 (taxonomy v2.1)** — 기존 A~J 음성(제거) 축에 **K 양성(지향) 축** 4종 추가: K-1 정서온도·K-2 절제·곡언·K-3 구어 호흡·여백·K-4 정서 아크. 본진 신규 E-8(다어절 띄어쓰기 기계적 균일성, S2)·E-7 보강(3단계 화계 framework)·머리말 모델별 번역투 시그니처 힌트. scholarship 섹션 KatFish 2025·LREAD 2026·translationese 2026 + caveat C7. 학술 근거 Park & Han 2026 LREAD(arXiv:2601.19913)·translationese(arXiv:2602.16469) 교차. 전부 자체저작·학술원전 직접 인용. **AC-003 A~J 10 유지(K는 양성 축 추가), 메트릭·테스트·baseline 무변경**(parity 안전).
+- **`/project` agent-aware 강화 (moai-core)** — `/project init`이 스킬뿐 아니라 **코디네이터 에이전트**까지 활용하도록 강화. Phase 2 에이전트 인벤토리(설치된 플러그인 `agents/*.md` 동적 스캔) + Phase 3 코디네이터 우선 + 기존 에이전트 우선(stale 정정) + CLAUDE.md.tmpl §5.4 에이전트 체인 슬롯. 신규 `references/core/agent-catalog.md`(코디네이터 SSOT). +167/-27 (7 파일).
+
+### Changed
+
+- **스킬 카운트 173 → 177** — `drawio-diagram` 1개 신규(moai-content 14 → 15 스킬). 플러그인 28개 유지.
+- **전체 버전 동기화 2.20.0 → 2.21.0** — marketplace.json + 28 plugin.json + 177 SKILL.md (206개 지점) + hugo.toml SSOT.
+- **`moai-tutor:learning-material` drawio 연동** — ` ```drawio ` 블록 인식해 draw.io 뷰어 조건부 임베드(`references/cdn-libraries.md` §6 신규). mermaid는 유지.
+- 루트 README·docs-site 카탈로그에 drawio-diagram 추가, 배지(177 스킬)·플러그인 스킬 수 표 갱신.
+- **기존 부채 정합 — 5개 플러그인 README 스킬 테이블** — 게이트 4(스킬 테이블 실측 일치) 28/28 플러그인 달성. moai-business(`ai-diagnostic` 추가), moai-commerce(삭제 스킬 잔재 6행 제거 + `marketplace-coupang-ads` 추가), moai-education(`course-curriculum-design` rename stub 추가), moai-marketing(`meta-ads-manager` 추가), moai-media(`higgsfield-image`·`higgsfield-video` 추가). 각 플러그인 README 스킬 수 배지·도입부 카운트를 실측에 정합.
+
+### Fixed
+
+- 해당 없음.
+
+### Removed
+
+- 해당 없음.
+
+---
 
 ## [2.20.0] - 2026-06-16
 

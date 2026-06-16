@@ -11,7 +11,7 @@ description: |
   - "이메일에 붙일 수 있는 HTML 리포트 만들어줘"
   현황·인시던트·사업계획·설명서·재무·PR 6종 서식을 갖췄고, 보고서 종류에 맞춰 자동으로 골라 줍니다.
 user-invocable: true
-version: 2.20.0
+version: 2.21.0
 ---
 
 # html-report — 단일 파일 HTML 보고서 렌더러

@@ -7,7 +7,7 @@ description: |
   3개 동작 모드(채널 분기 메시지 15종 / 운영 카피 / 앱 푸시 기획)가 자연어로 자동 선택되며, 6 심리 방아쇠 + 채널별 심리 상태 매트릭스 + 인지 편향 9종을 적용하고, 텍스트 산출물 직후 moai-core:ai-slop-reviewer를 자동 체이닝합니다.
   [책임 경계] 페어 moai-domain-copywriting(도메인 비특정 단일 목적 카피)·moai-content:copywriting(이커머스 외 범용)과 구분 — 본 스킬은 이커머스 채널 운영 메시지 전용. 상세페이지 카피는 moai-commerce:detail-page-copy, 발송 전 법규 게이트는 moai-commerce:commerce-marketing-compliance-kr.
 user-invocable: true
-version: 2.20.0
+version: 2.21.0
 ---
 
 # 채널별 메시지 자동 생성 (Commerce Channel Message)
