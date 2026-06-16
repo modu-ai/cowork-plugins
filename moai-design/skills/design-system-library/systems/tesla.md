@@ -1,3 +1,20 @@
+---
+version: alpha
+name: Tesla-design-analysis
+description: 'Radical subtraction — white canvas with a single Electric Blue (#3E6AE1) CTA accent, no decoration, photography-first presentation.'
+colors:
+  primary: "#3e6ae1"
+  primary-active: "#3e6ae1"
+  ink: "#171a20"
+  body: "#393c41"
+  muted: "#393c41"
+  hairline: "#e8e8e8"
+  canvas: "#ffffff"
+  surface-soft: "#f4f4f4"
+  surface-card: "#f4f4f4"
+  on-primary: "#ffffff"
+---
+
 # Design System Inspired by Tesla
 
 ## 1. Visual Theme & Atmosphere

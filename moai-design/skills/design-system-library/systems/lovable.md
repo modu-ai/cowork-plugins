@@ -1,3 +1,20 @@
+---
+version: alpha
+name: Lovable-design-analysis
+description: 'Warmth through restraint — creamy parchment background, humanist Camera Plain typeface, and an opacity-driven gray scale derived from #1c1c1c.'
+colors:
+  primary: "#1c1c1c"
+  primary-active: "#1c1c1c"
+  ink: "#1c1c1c"
+  body: "#1c1c1c"
+  muted: "#5f5f5d"
+  hairline: "#eceae4"
+  canvas: "#f7f4ed"
+  surface-soft: "#f7f4ed"
+  surface-card: "#f7f4ed"
+  on-primary: "#fcfbf8"
+---
+
 # Design System Inspired by Lovable
 
 ## 1. Visual Theme & Atmosphere

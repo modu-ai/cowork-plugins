@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="데이터 분석 파이프라인" id="track-data-workflow-1">
+    <mxGraphModel dx="1000" dy="760" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="760" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- ============ 제목 ============ -->
+        <!-- ============ 원본 데이터 (재료 검수 전) ============ -->
+        <!-- ============ ① 탐색 (data-explorer) ============ -->
+        <!-- ============ 판단 다이아몬드: 이상 발견? ============ -->
+        <!-- ============ ② 정제 (수동 지시) — 위쪽 가지 ============ -->
+        <!-- ============ ③ 시각화 (data-visualizer) ============ -->
+        <!-- ============ ④ 보고서 · PPT 변환 (moai-office) ============ -->
+        <!-- ============ 곁가지: 공공데이터 ============ -->
+        <!-- ============ 순서가 중요하다는 경고 밴드 ============ -->
+        <!-- ============ 화살표 ============ -->
+        <mxCell id="e_raw_s1" edge="1" parent="1" source="raw" target="s1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=3;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_s1_check" edge="1" parent="1" source="s1" target="check" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;strokeWidth=2;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_check_s2_yes" value="발견" edge="1" parent="1" source="check" target="s2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=3;endArrow=blockThin;endFill=1;fontFamily=Helvetica;fontColor=#B85C3E;fontStyle=1;fontSize=11;labelBackgroundColor=#FAF9F5;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_check_s3_no" value="없음 (바로 시각화)" edge="1" parent="1" source="check" target="s3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;strokeWidth=2;endArrow=blockThin;endFill=1;dashed=1;fontFamily=Helvetica;fontColor=#5F6F4A;fontSize=10;labelBackgroundColor=#FAF9F5;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_s2_s3" edge="1" parent="1" source="s2" target="s3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=3;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_s3_s4" edge="1" parent="1" source="s3" target="s4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#1c7c70;strokeWidth=3;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_public_s3" edge="1" parent="1" source="public" target="s3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;strokeWidth=2;endArrow=blockThin;endFill=1;dashed=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      <mxCell id="title" value="데이터 분석 파이프라인 (요리에 비유하면)" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=20;fontStyle=1;fontColor=#141413;">
+          <mxGeometry x="150" y="20" width="700" height="36" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="왜 탐색 → 정제 → 시각화 → 보고서 순서여야 하는가" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#87867F;">
+          <mxGeometry x="150" y="54" width="700" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="raw" value="원본 데이터&#10;(CSV · Excel)&#10;&#10;· 썩은 부분(결측값)&#10;· 비정상 부품(이상값)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=30;fillColor=#D97757;strokeColor=#B85C3E;fontColor=#FFFFFF;fontStyle=1;fontSize=12;fontFamily=Helvetica;align=center;verticalAlign=middle;">
+          <mxGeometry x="70" y="110" width="200" height="110" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="s1" value="① 탐색&#10;data-explorer" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D97757;strokeWidth=2;fontColor=#141413;fontStyle=1;fontSize=12;fontFamily=Helvetica;">
+          <mxGeometry x="350" y="110" width="200" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="s1_metaphor" value="재료 검수&#10;(썩은 부분 골라내기)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3DACC;strokeColor=#C9BCA6;fontColor=#5F6F4A;fontStyle=1;fontSize=10;fontFamily=Helvetica;align=center;verticalAlign=middle;">
+          <mxGeometry x="350" y="166" width="200" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="s1_gloss" value="용어 정리&#10;결측값 = 빈 칸 · 이상값 = 튀는 숫자 · IQR = 정상 범위 상자" vertex="1" parent="1" style="text;align=center;whiteSpace=wrap;html=1;fontColor=#87867F;fontSize=9;fontFamily=Helvetica;">
+          <mxGeometry x="330" y="218" width="240" height="30" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="check" value="결측·이상&#10;발견?" vertex="1" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FAF9F5;strokeColor=#D97757;fontColor=#141413;fontStyle=1;fontSize=11;fontFamily=Helvetica;">
+          <mxGeometry x="640" y="95" width="160" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="s2" value="② 정제 · 보완&#10;(수동 프롬프트)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D97757;strokeWidth=2;fontColor=#141413;fontStyle=1;fontSize=12;fontFamily=Helvetica;">
+          <mxGeometry x="630" y="210" width="180" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="s2_metaphor" value="손질&#10;(씻고 썰기)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3DACC;strokeColor=#C9BCA6;fontColor=#5F6F4A;fontStyle=1;fontSize=10;fontFamily=Helvetica;align=center;verticalAlign=middle;">
+          <mxGeometry x="630" y="264" width="180" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="s3" value="③ 시각화&#10;data-visualizer" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#144a46;strokeWidth=2;fontColor=#141413;fontStyle=1;fontSize=12;fontFamily=Helvetica;">
+          <mxGeometry x="410" y="380" width="200" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="s3_metaphor" value="플레이팅&#10;(접시에 예쁘게 담기)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6F0EF;strokeColor=#144a46;fontColor=#144a46;fontStyle=1;fontSize=10;fontFamily=Helvetica;align=center;verticalAlign=middle;">
+          <mxGeometry x="410" y="434" width="200" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="s3_gloss" value="산출물: HTML 차트 · 대시보드 (반응형, 다크 모드)" vertex="1" parent="1" style="text;align=center;whiteSpace=wrap;html=1;fontColor=#87867F;fontSize=9;fontFamily=Helvetica;">
+          <mxGeometry x="390" y="484" width="240" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="s4" value="④ 보고서 · PPT 변환&#10;moai-office" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=30;fillColor=#1c7c70;strokeColor=#144a46;fontColor=#FFFFFF;fontStyle=1;fontSize=12;fontFamily=Helvetica;align=center;verticalAlign=middle;">
+          <mxGeometry x="410" y="540" width="200" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="s4_metaphor" value="코스 요리로 조립&#10;(고객에게 내놓기)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D6EBE7;strokeColor=#144a46;fontColor=#144a46;fontStyle=1;fontSize=10;fontFamily=Helvetica;align=center;verticalAlign=middle;">
+          <mxGeometry x="410" y="614" width="200" height="44" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="public" value="공공데이터 API&#10;(KOSIS · data.go.kr)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF9F5;strokeColor=#87867F;dashed=1;fontColor=#5F6F4A;fontSize=10;fontFamily=Helvetica;align=center;verticalAlign=middle;">
+          <mxGeometry x="70" y="380" width="200" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="public_note" value="CPI · 거시 지표로&#10;실질 매출 계산" vertex="1" parent="1" style="text;align=center;whiteSpace=wrap;html=1;fontColor=#87867F;fontSize=9;fontFamily=Helvetica;fontStyle=1;">
+          <mxGeometry x="70" y="434" width="200" height="36" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="warn_band" value="순서가 바뀌면?  썩은 재료를 접시에 담거나, 날것을 그대로 내놓는 결과" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B85C3E;strokeColor=#8a3e25;fontColor=#FFFFFF;fontStyle=1;fontSize=11;fontFamily=Helvetica;align=center;verticalAlign=middle;">
+          <mxGeometry x="70" y="688" width="740" height="40" as="geometry"/>
+        </mxCell>
+
+        </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

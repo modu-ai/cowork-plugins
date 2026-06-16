@@ -27,7 +27,7 @@ flowchart TD
         APP[/"앱이 시스템에서 허락받은<br/>'접근 가능한 폴더 목록'"/]
     end
     subgraph L3["③ 프로젝트 바인딩"]
-        PRJ[/"이 프로젝트의 작업 폴더<br/>= ~/work/&lt;name&gt;/"/]
+        PRJ[/"이 프로젝트의 작업 폴더<br/>= ~/work/{name}/"/]
     end
     subgraph L4["④ 새 태스크 (대화)"]
         TASK[/"이번 대화에서<br/>실제 R/W하는 파일"/]

@@ -10,7 +10,7 @@ description: |
   - "출판 마케팅 플랜", "저자 마케팅 활동"
   - "출판사별 양식 변환"
 user-invocable: true
-version: 2.22.0
+version: 2.23.0
 ---
 
 # book-proposal-writer

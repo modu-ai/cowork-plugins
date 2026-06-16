@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="Track-Documents-Pipeline" id="td-1">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="780" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="e_in_pick" edge="1" parent="1" source="input" target="pick" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;strokeWidth=2;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_pick_w" edge="1" parent="1" source="pick" target="fmt_word" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=2;endArrow=blockThin;endFill=1;fontFamily=Helvetica;fontColor=#B85C3E;fontSize=10;labelBackgroundColor=#FAF9F5;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_pick_p" edge="1" parent="1" source="pick" target="fmt_ppt" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=2;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_pick_x" edge="1" parent="1" source="pick" target="fmt_xls" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=2;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_pick_h" edge="1" parent="1" source="pick" target="fmt_hwp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=2;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_pick_f" edge="1" parent="1" source="pick" target="fmt_pdf" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=2;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e_w_rev" edge="1" parent="1" source="fmt_word" target="review" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#144A46;strokeWidth=2;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_p_rev" edge="1" parent="1" source="fmt_ppt" target="review" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#144A46;strokeWidth=2;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_h_rev" edge="1" parent="1" source="fmt_hwp" target="review" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#144A46;strokeWidth=2;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_x_skip" edge="1" parent="1" source="fmt_xls" target="skip_note" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;strokeWidth=2;endArrow=blockThin;endFill=1;dashed=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_f_skip" edge="1" parent="1" source="fmt_pdf" target="skip_note" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;strokeWidth=2;endArrow=blockThin;endFill=1;dashed=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e_rev_out" edge="1" parent="1" source="review" target="output" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=3;endArrow=blockThin;endFill=1;fontFamily=Helvetica;fontColor=#B85C3E;fontStyle=1;fontSize=10;labelBackgroundColor=#FAF9F5;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_skip_out" edge="1" parent="1" source="skip_note" target="output" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;strokeWidth=2;endArrow=blockThin;endFill=1;dashed=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="title" value="문서 자동화 트랙 — 조립 라인 파이프라인" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=20;fontStyle=1;fontColor=#141413;">
+          <mxGeometry x="150" y="20" width="800" height="36" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="원본 재료 → 목적에 맞는 기계 선택 → 인쇄 → 교정 → 납품" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#87867F;">
+          <mxGeometry x="150" y="54" width="800" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="stage_in" value="스테이지 1 — 입력" vertex="1" parent="1" style="text;align=left;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=11;fontStyle=1;fontColor=#87867F;">
+          <mxGeometry x="40" y="100" width="160" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="input" value="원본 재료&#10;데이터 · 원고 · 템플릿&#10;(D:/Input, Drive)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3DACC;strokeColor=#C9BCA6;fontColor=#141413;fontFamily=Helvetica;fontStyle=1;align=center;verticalAlign=middle;fontSize=12;">
+          <mxGeometry x="60" y="130" width="180" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="stage_pick" value="스테이지 2 — 목적 분기 (라우터)" vertex="1" parent="1" style="text;align=left;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=11;fontStyle=1;fontColor=#B85C3E;">
+          <mxGeometry x="300" y="100" width="260" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="pick" value="이걸 뭘로 만들 거냐?&#10;(목적이 무엇인가)" vertex="1" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#D97757;strokeColor=#B85C3E;fontColor=#FFFFFF;fontFamily=Helvetica;fontStyle=1;align=center;verticalAlign=middle;fontSize=12;">
+          <mxGeometry x="330" y="130" width="200" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="stage_fmt" value="스테이지 3 — 포맷별 생성 스킬 (인쇄기)" vertex="1" parent="1" style="text;align=left;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=11;fontStyle=1;fontColor=#144A46;">
+          <mxGeometry x="620" y="100" width="440" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="fmt_word" value="Word — 읽는 글&#10;docx-generator" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="620" y="130" width="200" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="fmt_ppt" value="PPT — 보여주는 발표&#10;pptx-designer" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="840" y="130" width="200" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="fmt_xls" value="Excel — 계산하는 표&#10;xlsx-creator" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="620" y="190" width="200" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="fmt_hwp" value="한글 — 관공서 제출&#10;hwpx-writer" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="840" y="190" width="200" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="fmt_pdf" value="PDF — 편집 불가 배포&#10;pdf" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="720" y="250" width="220" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="stage_rev" value="스테이지 4 — 품질 검수 (교정)" vertex="1" parent="1" style="text;align=left;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=11;fontStyle=1;fontColor=#B85C3E;">
+          <mxGeometry x="300" y="330" width="260" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="review" value="ai-slop-reviewer&#10;어투 · 표현 다듬기&#10;(텍스트 산출물만)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D97757;strokeColor=#B85C3E;fontColor=#FFFFFF;fontFamily=Helvetica;fontStyle=1;align=center;verticalAlign=middle;fontSize=12;">
+          <mxGeometry x="330" y="360" width="200" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="skip_note" value="Excel · PDF&#10;어투 없음 → 검수 생략" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3DACC;strokeColor=#C9BCA6;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;dashed=1;">
+          <mxGeometry x="600" y="360" width="200" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="stage_out" value="스테이지 5 — 납품" vertex="1" parent="1" style="text;align=left;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=11;fontStyle=1;fontColor=#5F6F4A;">
+          <mxGeometry x="40" y="500" width="200" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="output" value="최종 산출물&#10;90_Output / 배포 폴더" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#788C5D;strokeColor=#5F6F4A;fontColor=#FFFFFF;fontFamily=Helvetica;fontStyle=1;align=center;verticalAlign=middle;fontSize=12;">
+          <mxGeometry x="60" y="530" width="220" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="caption" value="다섯 포맷은 경쟁이 아니라 목적이 다른 전용 인쇄기. 문장 중심 산출물(Word·PPT·한글)만 교정을 거치고, 숫자·배포 중심(Excel·PDF)은 검수를 건너뛴다." vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#87867F;fontStyle=2;">
+          <mxGeometry x="150" y="620" width="800" height="40" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

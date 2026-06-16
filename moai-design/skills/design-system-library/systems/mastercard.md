@@ -1,3 +1,20 @@
+---
+version: alpha
+name: Mastercard-design-analysis
+description: 'Warm editorial magazine on putty-cream canvas with extreme border-radius, circular image orbits with traced-orange arcs, and ink-black CTAs.'
+colors:
+  primary: "#cf4500"
+  primary-active: "#cf4500"
+  ink: "#141413"
+  body: "#141413"
+  muted: "#5a5854"
+  hairline: "#e8e3df"
+  canvas: "#f3f0ee"
+  surface-soft: "#fcfbfa"
+  surface-card: "#fcfbfa"
+  on-primary: "#ffffff"
+---
+
 # Design System Inspired by Mastercard
 
 ## 1. Visual Theme & Atmosphere

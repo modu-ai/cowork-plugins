@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="NDA-Batch-Workflow" id="nda-1">
+    <mxGraphModel dx="1280" dy="820" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1160" pageHeight="820" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="e_raw_s1" edge="1" parent="1" source="raw" target="step1_grp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=3;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_s1_s2" edge="1" parent="1" source="step1_grp" target="step2_grp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=3;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_s2_s3" edge="1" parent="1" source="step2_grp" target="step3_grp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=3;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_s3_s4" edge="1" parent="1" source="step3_grp" target="step4_grp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=3;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_s4_s5" edge="1" parent="1" source="step4_grp" target="step5_grp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=3;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_s5_final" edge="1" parent="1" source="step5_grp" target="final" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#144A46;strokeWidth=3;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="title" value="NDA 일괄 검토 파이프라인 — 5단계 조립 라인" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=20;fontStyle=1;fontColor=#141413;">
+          <mxGeometry x="180" y="20" width="800" height="36" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="12건의 NDA가 컨베이어 벨트를 타고 5개 작업대를 통과해 한 권의 위험 보고서로 통합된다" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#87867F;">
+          <mxGeometry x="180" y="56" width="800" height="22" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="belt_label" value="컨베이어 벨트 (데이터가 한 방향으로 흐른다)" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=11;fontStyle=1;fontColor=#B85C3E;">
+          <mxGeometry x="180" y="92" width="800" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="belt" value="" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3DACC;strokeColor=#C9BCA6;dashed=0;">
+          <mxGeometry x="180" y="115" width="800" height="260" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="raw" value="NDA 원본&#10;12건 PDF&#10;(반제품 원료)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="60" y="210" width="110" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="step1_grp" value="① nda-triage" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FBF0DC;strokeColor=#C47B2A;verticalAlign=top;fontStyle=1;align=center;fontFamily=Helvetica;fontColor=#141413;fontSize=12;">
+          <mxGeometry x="200" y="135" width="150" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="step1_role" value="역할: 분류" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=10;fontStyle=1;fontColor=#B85C3E;">
+          <mxGeometry x="210" y="170" width="130" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="step1_body" value="상호/일방&#10;기간·손배 캡&#10;준거법 구분" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF9F5;strokeColor=#D1CFC5;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="215" y="195" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="step1_out" value="→ 종류별로 묶음" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#87867F;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=10;">
+          <mxGeometry x="215" y="270" width="120" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="step2_grp" value="② contract-review" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FBF0DC;strokeColor=#C47B2A;verticalAlign=top;fontStyle=1;align=center;fontFamily=Helvetica;fontColor=#141413;fontSize=12;">
+          <mxGeometry x="370" y="135" width="150" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="step2_role" value="역할: 조항 수정" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=10;fontStyle=1;fontColor=#B85C3E;">
+          <mxGeometry x="380" y="170" width="130" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="step2_body" value="조항별 정밀 검토&#10;수정 제안 마크업" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF9F5;strokeColor=#D1CFC5;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="385" y="195" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="step2_out" value="→ 고쳐야 할 조항 표시" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#87867F;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=10;">
+          <mxGeometry x="385" y="270" width="120" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="step3_grp" value="③ legal-risk" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FBF0DC;strokeColor=#C47B2A;verticalAlign=top;fontStyle=1;align=center;fontFamily=Helvetica;fontColor=#141413;fontSize=12;">
+          <mxGeometry x="540" y="135" width="150" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="step3_role" value="역할: 위험도 스티커" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=10;fontStyle=1;fontColor=#B85C3E;">
+          <mxGeometry x="550" y="170" width="130" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="step3_body" value="상/중/하 평가&#10;우선순위 부여" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF9F5;strokeColor=#D1CFC5;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="555" y="195" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="step3_out" value="→ 위험 순위 매김" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#87867F;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=10;">
+          <mxGeometry x="555" y="270" width="120" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="step4_grp" value="④ docx-generator" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FBF0DC;strokeColor=#C47B2A;verticalAlign=top;fontStyle=1;align=center;fontFamily=Helvetica;fontColor=#141413;fontSize=12;">
+          <mxGeometry x="710" y="135" width="150" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="step4_role" value="역할: 보고서 포장" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=10;fontStyle=1;fontColor=#B85C3E;">
+          <mxGeometry x="720" y="170" width="130" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="step4_body" value="1페이지 요약&#10;+ NDA별 상세&#10;한 권으로 합침" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF9F5;strokeColor=#D1CFC5;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="725" y="195" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="step4_out" value="→ 통합 보고서 1권" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#87867F;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=10;">
+          <mxGeometry x="725" y="270" width="120" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="step5_grp" value="⑤ ai-slop-reviewer" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6F0EF;strokeColor=#144A46;verticalAlign=top;fontStyle=1;align=center;fontFamily=Helvetica;fontColor=#141413;fontSize=12;">
+          <mxGeometry x="880" y="135" width="150" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="step5_role" value="역할: 어투 닦기 (품질)" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=10;fontStyle=1;fontColor=#1C7C70;">
+          <mxGeometry x="890" y="170" width="130" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="step5_body" value="기계적 어투 제거&#10;사람이 쓴 듯 자연스럽게" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF9F5;strokeColor=#D1CFC5;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="895" y="195" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="step5_out" value="→ 읽기 편한 문장" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#87867F;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=10;">
+          <mxGeometry x="895" y="270" width="120" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="final" value="최종 위험 보고서&#10;.docx&#10;(완성품)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#144A46;strokeColor=#0E3633;fontColor=#FFFFFF;fontFamily=Helvetica;fontStyle=1;align=center;verticalAlign=middle;fontSize=12;">
+          <mxGeometry x="1060" y="210" width="80" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="lesson_title" value="한 단계가 빠지면?" vertex="1" parent="1" style="text;align=left;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=12;fontStyle=1;fontColor=#B85C3E;">
+          <mxGeometry x="60" y="440" width="200" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="miss1" value="① 분류 없음&#10;상호·일방 구분 불가" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F4E4E4;strokeColor=#C97B7B;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=10;">
+          <mxGeometry x="60" y="465" width="180" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="miss3" value="③ 위험평가 없음&#10;우선순위 사라짐" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F4E4E4;strokeColor=#C97B7B;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=10;">
+          <mxGeometry x="270" y="465" width="180" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="miss5" value="⑤ 어투정리 없음&#10;기계처럼 딱딱한 문장" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F4E4E4;strokeColor=#C97B7B;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=10;">
+          <mxGeometry x="480" y="465" width="180" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="principle_title" value="핵심 원칙" vertex="1" parent="1" style="text;align=left;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=12;fontStyle=1;fontColor=#5F6F4A;">
+          <mxGeometry x="700" y="440" width="120" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="principle1" value="순서 = 품질&#10;데이터는 한 방향" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#788C5D;strokeColor=#5F6F4A;fontColor=#FFFFFF;fontFamily=Helvetica;fontStyle=1;align=center;verticalAlign=middle;fontSize=10;">
+          <mxGeometry x="700" y="465" width="180" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="principle2" value="앞 단계 결과가&#10;뒷 단계 입력" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#788C5D;strokeColor=#5F6F4A;fontColor=#FFFFFF;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=10;">
+          <mxGeometry x="900" y="465" width="180" height="50" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

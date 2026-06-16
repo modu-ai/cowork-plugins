@@ -8,6 +8,10 @@ geekdocBreadcrumb: true
 
 ## 전체 설치 절차
 
+전체 설치는 여섯 단계로 이어지며, 각 단계는 바로 앞 단계가 끝나야만 의미가 있습니다. 새 스마트폰을 처음 샀을 때 세팅하는 과정에 비유하면 순서가 왜 정해져 있는지 한눈에 보입니다. 박스를 개봉해 본체를 꺼내는(① 다운로드) 일부터 시작해, 주인이 누구인지 인증(② 로그인)을 하고, 그래야 비로소 사용 모드를 켤(③ Cowork 모드) 수 있습니다. 이어서 내 사진과 파일을 옮길 폴더를 고르고(④ 작업 폴더), 앱 스토어에 로그인해(⑤ 마켓플레이스) 필요한 필수 앱을 내려받는(⑥ 플러그인 설치) 순서입니다. 앱 스토어에 들어가려면 먼저 로그인이 되어 있어야 하듯, ⑤단계는 ③단계가 켜져 있어야 의미가 있고 ⑥단계는 ⑤단계가 끝나야 실행할 수 있습니다.
+
+순서를 거꾸로 하거나 중간을 건너뛰면 흔히 "마켓플레이스가 안 보여요", "/project init이 안 돼요" 같은 문제로 이어집니다. 아래 흐름도는 여섯 단계가 어떻게 앞단계에 기대어 쌓이는지를 한 방향 화살표로 보여줍니다 — 회색은 준비, 초록은 환경 켜기, 노란색은 콘텐츠(마켓플레이스·플러그인) 채우기, 진한 초록은 최종 완료를 뜻합니다.
+
 ```mermaid
 flowchart TD
     A["① Claude Desktop<br/>다운로드"] --> B["② Anthropic<br/>계정 로그인"]
@@ -25,6 +29,14 @@ flowchart TD
     style F fill:#fbf0dc,stroke:#c47b2a,color:#09110f
     style G fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
 ```
+
+### 핵심 용어 3가지
+
+이 가이드 전체에서 세 단어가 반복해서 등장합니다. 요리에 비유해 한 번에 짚고 갑니다.
+
+- **Cowork 모드** — 주방에 들어가 요리를 시작할 수 있게 전원을 켜는 것과 같습니다. 켜기 전에는 Claude Desktop이 그저 대화창일 뿐, 파일을 읽거나 플러그인을 부를 수 없습니다. ③단계에서 켭니다.
+- **마켓플레이스** — 레시피와 조리 도구를 한곳에 모아파는 "요리 용품점(앱 스토어)"입니다. 이 가이드에서는 `modu-ai/cowork-plugins`라는 한 가게에 접속합니다. 가게 자체는 ⑤단계에서 등록합니다.
+- **플러그인** — 그 가게에서 사서 내 주방에 가져다 놓는 "특정 요리 키트/레시피 묶음"입니다. 한 플러그인 안에는 보통 여러 스킬(점원이 아는 요리법)이 들어 있습니다. `moai-core`는 그중 가장 기본이 되는 "기본 조리 도구 세트"라서 제일 먼저 깝니다(⑥단계).
 
 ### 1단계: Claude Desktop 다운로드
 
@@ -110,6 +122,32 @@ MoAI Cowork Plugins 마켓플레이스를 추가합니다:
 4. **URL 입력 필드** — `modu-ai/cowork-plugins`을 입력하고 추가를 확인합니다
 
 ### 6단계: 필수 플러그인 설치
+
+#### 왜 moai-core를 제일 먼저 깔아야 할까
+
+가구 조립에 비유하면 `moai-core`는 책장의 "뼈대(프레임)"입니다. 뼈대 없이 선반판(다른 플러그인)부터 세우면 무너집니다. `moai-core` 안에는 프로젝트를 처음 세팅하는 `/project init`과, 글에서 AI 특유 어투를 솎아내는 `ai-slop-reviewer` 같은 가장 기본 동작이 들어 있습니다. 다른 모든 플러그인은 이 기본 동작 위에서 돌아간다고 가정합니다. 그래서 `moai-core`가 먼저 깔려 있지 않으면 `/project init`이 아예 실행되지 않고, 뒤이어 깐 콘텐츠·문서·마케팅 플러그인들이 "기본 도구를 찾을 수 없다"며 빈 결과를 내놓습니다.
+
+아래 흐름도는 이 의존성 관계를 보여줍니다. `moai-core`가 기반 층에 깔리고, 그 위에 다른 플러그인들이 올라타야 안정적으로 동작합니다.
+
+```mermaid
+flowchart TD
+    Base["moai-core (뼈대)<br/>/project init · ai-slop-reviewer"]
+    Base --> P1["moai-content"]
+    Base --> P2["moai-office"]
+    Base --> P3["moai-business"]
+    Base --> P4["moai-legal 외"]
+    P1 --> R["안정적으로 동작<br/>(기본 도구가 준비됨)"]
+    P2 --> R
+    P3 --> R
+    P4 --> R
+
+    style Base fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
+    style P1 fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style P2 fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style P3 fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style P4 fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style R fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+```
 
 가장 먼저 `moai-core` 플러그인을 설치합니다:
 

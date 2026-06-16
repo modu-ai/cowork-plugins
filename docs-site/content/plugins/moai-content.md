@@ -26,6 +26,27 @@ flowchart TD
     style D fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
+## 이 플러그인으로 무엇을 할 수 있나
+
+회사에 '콘텐츠 부서'가 하나 있다고 상상해 보세요. 그 부서 안에는 글을 쓰는 사람, 디자인을 잡는 사람, 맞춤법을 검사하는 사람, 마지막에 깔끔하게 인쇄해서 내보내는 사람까지 모여 있습니다. `moai-content`는 바로 그런 부서 한 통을 Cowork 안에 옮겨 놓은 플러그입니다. 사용자는 부서에 "네이버 블로그 글 하나 써줘"라고 주문만 하면, 그 안에서 알아서 글이 쓰이고 → 기계 맛이 빠지고 → 한국어 결이 다듬어지고 → 마지막엔 바로 쓸 수 있는 산출물까지 나옵니다.
+
+이 부서에는 15명의 일꾼(15개 스킬)이 있고, 각자 한 가지 일만 전문적으로 맡습니다. 블로그 글을 쓰는 일꾼(`blog`), 인스타그램 카드뉴스를 만드는 일꾼(`card-news`), 상세페이지를 기획하는 일꾼(`detail-page-planner`), 맞춤법을 검사하는 일꾼(`korean-spell-check`), AI 특유의 어투를 빼는 일꾼(`humanize-korean`)까지 저마다 이름표가 달려 있습니다. 사용자는 전부 부를 필요 없이, 지금 필요한 일꾼만 골라 부르면 됩니다.
+
+```mermaid
+flowchart LR
+    U["주문 한 줄"] --> S1["blog<br/>card-news<br/>detail-page-planner<br/>외 12개 스킬"]
+    S1 --> S2["ai-slop-reviewer<br/>기계 맛 빼기"]
+    S2 --> S3["humanize-korean<br/>한국어 결 다듬기"]
+    S3 --> S4["html-report<br/>최종 산출물"]
+    style U fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style S1 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style S2 fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style S3 fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style S4 fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+```
+
+이해를 돕기 위해 아래에 등장하는 실무 용어를 먼저 한 줄씩 풀어 둡니다. **네이버 C-Rank·D.I.A.**는 네이버가 검색 결과에 어떤 글을 더 잘 보여줄지 정하는 내부 규칙입니다. **GEO**(생성형 검색 최적화)는 최근처럼 AI가 답을 직접 말해 주는 검색 창에서도 내 글이 잘 걸리도록 글을 짜는 방식입니다. **스키마 마크업**은 글의 구조(제목, 질문, 답변 등)를 기계가 알아볼 수 있게 표시해 두는 꼬리표입니다. 이런 규칙들을 스킬 안에 미리 반영해 뒀기 때문에, 사용자는 규칙을 외울 필요 없이 주문만 하면 됩니다.
+
 ## 무엇을 하는 플러그인인가
 
 `moai-content`는 한국 디지털 마케팅 채널의 실제 운영 노하우를 반영해 설계된 텍스트 콘텐츠 생성 플러그인입니다. 단순히 글을 만드는 데 그치지 않고, 네이버 C-Rank·D.I.A. 알고리즘이나 인스타그램의 카드뉴스 길이 기준 등 채널별 베스트 프랙티스를 본문 구조에 반영합니다.
@@ -71,6 +92,21 @@ flowchart TD
 
 ## 대표 체인
 
+왜 스킬 하나로 끝내지 않고 여러 개를 이어 부를까? 요리에 비유하면 이해가 쉽습니다. 한 냄비에 재료를 몽땅 쏟고 끓이는 대신, **재료 손질 → 볶기 → 플레이팅 → 맛보기**로 단계를 나누는 것이 훨씬 안정적으로 맛있는 결과를 냅니다. 콘텐츠도 같습니다. 글을 쓰고(`blog`) → 기계 맛을 빼고(`ai-slop-reviewer`) → 한국어 결을 다듬고(`humanize-korean`) → 마지막에 그릇에 담는(`html-report`) 식으로 단계를 나눠 거치면, 어느 한 단계에서 흔들려도 전체가 망가지지 않습니다.
+
+아래 화살표(`→`)는 "앞 스킬이 만든 결과물을 뒤 스킬이 이어받는다"는 뜻입니다. 곧바로 배포할 수 있는 글은 첫 단계를 거친 직후엔 아직 **재료는 손질됐지만 익히지 않은 상태**라서 중간 단계를 건너뛰면 기계 맛이 남거나 한국어 결이 어색해집니다. 그래서 품질 단계(검수·윤문)는 늘 마지막에 와야 합니다. 아래 세 체인은 이 원칙을 따라 조립한 대표 예시입니다.
+
+```mermaid
+flowchart LR
+    A["① 도메인<br/>글 쓰기·기획<br/>blog / product-detail / card-news"] --> B["② 품질<br/>기계 맛 빼기<br/>ai-slop-reviewer"]
+    B --> C["③ (선택) 미디어<br/>이미지 생성<br/>moai-media"]
+    C --> D["④ 완성<br/>배포 가능 산출물"]
+    style A fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style B fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style C fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style D fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+```
+
 **블로그 발행 파이프라인**
 
 ```text
@@ -108,7 +144,7 @@ card-news → moai-media:higgsfield-image → ai-slop-reviewer
 
 ### AI 글에서 기계 티를 빼는 두 단계 — ai-slop → humanize 체인
 
-AI가 쓴 글을 읽다 보면 어딘가 기계 맛이 납니다. "혁신적인 솔루션", "첫째, 둘째, 마지막으로" 같은 반복, "많은 사람들은~" 같은 뭉툭한 일반화가 대표적입니다. 이런 흔적을 **AI 슬롭(AI slop, AI가 찍어낸 티 나는 텍스트)**이라 부르고, 이걸 사람 글처럼 다시 다듬는 작업을 **휴머나이즈(humanize, 사람화)**라고 합니다. cowork는 이 두 작업을 순서대로 묶어 **후처리 체인**으로 돌립니다.
+AI가 쓴 글을 읽다 보면 어딘가 기계 맛이 납니다. "혁신적인 솔루션", "첫째, 둘째, 마지막으로" 같은 반복, "많은 사람들은~" 같은 뭉툭한 일반화가 대표적입니다. 이런 흔적을 **AI 슬롭**(AI slop, AI가 찍어낸 티 나는 텍스트)이라 부르고, 이걸 사람 글처럼 다시 다듬는 작업을 **휴머나이즈**(humanize, 사람화)라고 합니다. cowork는 이 두 작업을 순서대로 묶어 **후처리 체인**으로 돌립니다.
 
 비유하자면 번역물을 두 번 손보는 것과 같습니다. 1차 통역사가 대강 옮긴 뒤, 2차 교정자가 문맥을 다듬는 식입니다. 먼저 `ai-slop-reviewer`가 과장 수식어·기계 접속어·모호한 일반화 같은 **일반적인 AI 패턴**을 찾아 빼고 사람 톤으로 정리합니다. 예를 들어 "획기적으로 개선된 혁신적인 플랫폼"이라는 문장은 "쓰기 편해진 플랫폼" 정도로 줄입니다. 그 뒤 `humanize-korean`이 한국어 특유의 결을 잡습니다 — 영어식 번역투("…를 통해"), 남발하는 한자어 명사화, 정체 없는 관용구("시사하는 바가 크다"), 형식 명사 결말("…인 것이다") 같은 **한국어 SSOT 40개 이상의 패턴**을 정량 메트릭으로 찾아 수술합니다.
 
@@ -121,7 +157,7 @@ AI가 쓴 글을 읽다 보면 어딘가 기계 맛이 납니다. "혁신적인 
 `ai-slop-reviewer`는 AI 패턴(과한 형용사·반복·번역체)을 검수하고, `korean-spell-check`는 규칙 기반 띄어쓰기·맞춤법을 잡습니다 — 차원이 다릅니다.
 
 
-📊 [다이어그램으로 보기](/diagrams/ai-slop-humanize.html) — 브라우저에서 바로 열립니다. 편집은 [`ai-slop-humanize.drawio`](/diagrams/ai-slop-humanize.drawio)를 [app.diagrams.net](https://app.diagrams.net)에서 여세요.
+![ai-slop-humanize](/diagrams/ai-slop-humanize.svg)
 
 ### Policy first
 
@@ -140,7 +176,28 @@ AI가 쓴 글을 읽다 보면 어딘가 기계 맛이 납니다. "혁신적인 
 
 ## `humanize-korean` (한국어 AI 티 정밀 윤문)
 
-한국 번역학계가 정립한 8유형 번역투 계보를 토대로 cowork이 자체 저작한 한국어 정밀 윤문 스킬입니다. 영어권 humanizer(QuillBot·Hix·Undetectable AI)가 약한 **한국어 고유 패턴** — 번역투, 영어 인용 과다, 결말 공식, hedging, 형식명사 — 을 정량 메트릭과 SSOT 분류 체계로 수술적으로 제거합니다. **v2.21.0부터는 한국적 정서·결 K 카테고리(양성 축)**를 더해 '빼기'를 넘어 '한국적 결로 채우기'까지 아울렀습니다.
+한국 번역학계가 정립한 8유형 번역투 계보를 토대로 cowork이 자체 저작한 한국어 정밀 윤문 스킬입니다. 영어권 humanizer(QuillBot·Hix·Undetectable AI)가 약한 **한국어 고유 패턴** — 번역투, 영어 인용 과다, 결말 공식, hedging, 형식명사 — 을 정량 메트릭과 SSOT 분류 체계로 수술적으로 제거합니다. 한국적 정서·결을 더하는 K 카테고리(양성 축)를 더해 '빼기'를 넘어 '한국적 결로 채우기'까지 아울렀습니다.
+
+## 패턴 분류표가 왜 필요한가 — AI 글에서 사람 글로 옷장 정리하기
+
+AI가 쓴 글은 옷장에 옷이 아무렇게나 던져져 있는 상태와 같습니다. 번역투 옷, 영어 간판이 달린 옷, 장식이 너무 화려한 옷, 한 번도 입지 않을 관용구 옷이 뒤섞여 있습니다. 이걸 한꺼번에 "전부 사람 옷으로 바꿔"라고만 시키면 어디를 손대야 할지 막막합니다. 그래서 `humanize-korean`은 먼저 어지러운 옷의 종류를 10가지 카테고리(A에서 J까지)로 나눕니다 — 번역투(A), 영어 인용 과다(B), 구조적 AI 패턴(C), AI 특유 관용구(D)처럼 말입니다. 종류별로 알맞은 방식으로 하나씩 정리(제거)합니다.
+
+여기에 한 가지가 더 있습니다. A에서 J까지는 모두 "어떤 옷을 뺄 것인가"를 다루는 **음성(제거) 축**입니다. 하지만 옷만 빼면 옷장이 휑해집니다. 글도 마찬가지로 AI 티를 빼기만 하면 문장이 건조하고 밋밋해집니다. 그래서 마지막 K 카테고리는 **양성(지향) 축**으로, 비워진 자리에 한국적인 색감의 옷을 다시 걸어두는 단계입니다 — 정서의 온도, 절제된 말투, 구어의 호흡, 감정의 흐름 같은 한국적 결로 채웁니다. 빼기에서 멈추지 않고 채우기까지 이어가는 것입니다.
+
+아래에 이어지는 분류표(A부터 K)는 곧 "옷장을 단정하게 정리하는 11단계 체크리스트"입니다. 표의 줄 하나하나가 "이런 종류의 AI 티는 이렇게 손본다"는 한 항목입니다. 초보자가 표 전체를 외울 필요는 없습니다 — `humanize-korean`이 글을 읽고 자동으로 해당하는 항목을 찾아 손보기 때문입니다. 다만 "이 스킬이 글의 무엇을 어떻게 다루는지"를 한눈에 파악하고 싶을 때 이 표를 펼쳐 보면 됩니다.
+
+```mermaid
+flowchart LR
+    A["AI가 쓴 글<br/>(뒤섞인 옷장)"] --> B["종류 분류<br/>A~J 카테고리"]
+    B --> C["종류별 정리<br/>(음성·제거 축)"]
+    C --> D["빈 자리 채우기<br/>K 카테고리<br/>(양성·지향 축)"]
+    D --> E["사람이 쓴 듯한<br/>한국어 결"]
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style D fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style E fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+```
 
 ### 4대 철칙 (위반 시 즉시 롤백)
 
@@ -234,45 +291,6 @@ A~J가 **음성(제거) 축** — "AI 티"를 빼는 데 집중 — 이라면, *
 - **메트릭 원전**: KatFish (Park et al.), Toral 2019 (arXiv:1907.00900) — post-editese 정량 신호
 - **저작·라이선스**: cowork 자체 저작 (NC-ND 1.0)
 
-## `drawio-diagram` (편집 가능한 draw.io 다이어그램 렌더러)
-
-자연어 설명을 **편집 가능한 `.drawio` XML**과 **단일 HTML**(draw.io CDN 뷰어 `viewer-static.min.js`, Apache-2.0) 두 산출물로 렌더합니다. mermaid가 텍스트→자동 레이아웃으로 빠른 플로우·시퀀스에 강하다면, 이 스킬은 **정교한 셰이프·수동 레이아웃·클라우드 아이콘·편집 가능한 원본**이 필요할 때 씁니다. `html-report` 디자인 토큰·폰트를 공유해 Cowork 산출물 전반과 시각 일관성을 유지합니다.
-
-> **CLI 설치 불필요**: 원본 [Agents365-ai/drawio-skill](https://github.com/Agents365-ai/drawio-skill)(MIT)은 PNG export에 draw.io 데스크톱 CLI가 필요합니다. 이 스킬은 CDN 뷰어로 렌더해 Cowork 관리 환경에서 추가 설치 없이 동작합니다.
-
-### 6개 프리셋
-
-| 프리셋 | 용도 |
-|--------|------|
-| `erd` | 엔티티-관계(DB 스키마) — 테이블 셰이프, PK/FK, 1:N 관계 |
-| `uml-class` | 클래스 다이어그램 — 3-구획 박스, 상속·연관 |
-| `sequence` | 시퀀스 — 라이프라인, 활성 막대, 동기/비동기 메시지 |
-| `architecture` | 시스템·클라우드 — 그룹 컨테이너, 컴포넌트, 클라우드 셰이프 |
-| `ml-pipeline` | ML/딥러닝 파이프라인 — 데이터·전처리·모델·평가 흐름 |
-| `flowchart` | 프로세스 플로우차트 — 시작/끝, 처리, 판단, 분기 |
-
-### 산출물
-
-`<cwd>/diagrams/` 아래 두 파일을 같은 slug로 생성합니다.
-
-- `<slug>-<YYYYMMDD>.drawio` — 편집용 원본(draw.io app.diagrams.net에서 열기)
-- `<slug>-<YYYYMMDD>.html` — 브라우저 즉시 열람용(CDN 뷰어 임베드, 뷰어 실패 시 XML 텍스트 보존)
-
-### 책임 경계 — mermaid vs drawio-diagram
-
-| 상황 | 추천 |
-|------|------|
-| 빠른 텍스트 플로우·시퀀스·간단 ER | mermaid(learning-material·html-report) |
-| 정교한 셰이프·클라우드 아이콘·편집 가능 원본 | drawio-diagram |
-| 데이터 수치 차트 | moai-data:data-visualizer / ECharts |
-
-`moai-tutor:learning-material`은 이 스킬의 `.drawio` 도식을 ```drawio` 블록으로 조건부 임베드합니다(mermaid 보완용). 자세한 임베드 규격·단일 HTML 래핑은 [`references/cdn-viewer.md`](https://github.com/modu-ai/cowork-plugins/blob/main/moai-content/skills/drawio-diagram/references/cdn-viewer.md) 참조.
-
-### 출처·라이선스
-
-- **영감 원본**: [Agents365-ai/drawio-skill](https://github.com/Agents365-ai/drawio-skill)(MIT, © 2026 Agents365-ai) — 6 프리셋 구성·셰이프 해상을 참고해 MoAI 환경에 맞게 재구현. 본 스킬 SKILL.md·presets.md·cdn-viewer.md는 MoAI 자체 저작이며 원본 코드를 복사하지 않았습니다.
-- **렌더 뷰어**: draw.io `viewer-static.min.js`(Apache-2.0). CDN 런타임 로딩(브라우저가 직접 로드)으로 저장소 NC-ND 라이선스와 무관합니다.
-
 ## `html-report` (마크다운 보고서 → 단일 파일 HTML 변환기)
 
 Thariq Shihipar의 **"The Unreasonable Effectiveness of HTML"** 철학을 기반으로, 마크다운 보고서를 단일 파일 HTML로 변환하는 스킬입니다. **외부 JS/CSS 프레임워크 의존성 0**, 인라인 SVG + vanilla JS로 12-25KB 초경량 산출물을 만듭니다.
@@ -304,7 +322,7 @@ Thariq Shihipar의 **"The Unreasonable Effectiveness of HTML"** 철학을 기반
 - **P1 컨슈머 호환성**: executive-summary, financial-statements, sbiz365-analyst, daily-briefing 4종 검증 완료
 
 
-📊 [다이어그램으로 보기](/diagrams/p1.html) — 브라우저에서 바로 열립니다. 편집은 [`p1.drawio`](/diagrams/p1.drawio)를 [app.diagrams.net](https://app.diagrams.net)에서 여세요.
+![p1](/diagrams/p1.svg)
 
 ### 권장 체인 위치 — 텍스트 산출물 마지막 단계
 

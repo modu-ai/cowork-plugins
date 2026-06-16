@@ -1,0 +1,14 @@
+{
+  "name": "docs-diagram-render",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "docs-site mermaid lint + drawio→SVG 변환 (puppeteer)",
+  "scripts": {
+    "lint:mermaid": "node lint-mermaid.mjs",
+    "export:drawio": "node export-drawio-svg.mjs"
+  },
+  "dependencies": {
+    "puppeteer": "^23.9.0"
+  }
+}

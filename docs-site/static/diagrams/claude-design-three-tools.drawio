@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="Claude-Design-Three-Tools" id="cd-3t">
+    <mxGraphModel dx="1180" dy="820" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="720" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="arrow_idea_design" edge="1" parent="1" source="idea" target="design" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=3;endArrow=blockThin;endFill=1;fontFamily=Helvetica;fontColor=#B85C3E;fontStyle=1;fontSize=11;labelBackgroundColor=#FAF9F5;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow_design_code" value="시안 + 핸드오프 번들" edge="1" parent="1" source="design" target="code" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=3;endArrow=blockThin;endFill=1;fontFamily=Helvetica;fontColor=#B85C3E;fontStyle=1;fontSize=11;labelBackgroundColor=#FAF9F5;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow_code_product" edge="1" parent="1" source="code" target="product" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=3;endArrow=blockThin;endFill=1;fontFamily=Helvetica;fontColor=#B85C3E;fontStyle=1;fontSize=11;labelBackgroundColor=#FAF9F5;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="arrow_cowork_design" value="보조" edge="1" parent="1" source="cowork" target="design" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2A8A8C;strokeWidth=2;endArrow=blockThin;endFill=1;dashed=1;fontFamily=Helvetica;fontColor=#2A8A8C;fontStyle=1;fontSize=11;labelBackgroundColor=#FAF9F5;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow_cowork_code" value="보조" edge="1" parent="1" source="cowork" target="code" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2A8A8C;strokeWidth=2;endArrow=blockThin;endFill=1;dashed=1;fontFamily=Helvetica;fontColor=#2A8A8C;fontStyle=1;fontSize=11;labelBackgroundColor=#FAF9F5;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="title" value="세 도구의 역할 분담 — Claude Design · Cowork · Claude Code" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=20;fontStyle=1;fontColor=#141413;">
+          <mxGeometry x="100" y="20" width="800" height="36" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="건축 프로젝트에 비유: 아이디어 → 시안 → 코드 → 검토·자동화 흐름에서 각 도구가 맡는 구간" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#87867F;">
+          <mxGeometry x="100" y="54" width="800" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="idea" value="아이디어&#10;텍스트 · 이미지 · 문서" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAEAEA;strokeColor=#6E6E6E;fontColor=#141413;fontFamily=Helvetica;fontStyle=1;align=center;verticalAlign=middle;fontSize=12;">
+          <mxGeometry x="40" y="120" width="180" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="design" value="Claude Design&#10;(설계 사무실)&#10;&#10;시안을 만든다 — 비주얼 중심" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FBF0DC;strokeColor=#C47B2A;strokeWidth=3;fontColor=#141413;fontFamily=Helvetica;fontStyle=1;align=center;verticalAlign=middle;fontSize=12;">
+          <mxGeometry x="270" y="110" width="220" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="code" value="Claude Code&#10;(시공사)&#10;&#10;시안을 코드로 짓는다" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6F0EF;strokeColor=#144A46;strokeWidth=2;fontColor=#141413;fontFamily=Helvetica;fontStyle=1;align=center;verticalAlign=middle;fontSize=12;">
+          <mxGeometry x="560" y="110" width="200" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="product" value="완성물&#10;프로덕션 빌드" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D6EBE7;strokeColor=#1C7C70;fontColor=#141413;fontFamily=Helvetica;fontStyle=1;align=center;verticalAlign=middle;fontSize=12;">
+          <mxGeometry x="830" y="120" width="150" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="cowork" value="Cowork + MoAI 플러그인&#10;(운영 · 자동화 담당)&#10;&#10;UX 카피 · 접근성 검사 · 디자인 비평 · 반복 문서 · 발행 자동화" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCEEE9;strokeColor=#2A8A8C;strokeWidth=2;fontColor=#141413;fontFamily=Helvetica;fontStyle=1;align=center;verticalAlign=middle;fontSize=12;">
+          <mxGeometry x="310" y="430" width="420" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="legend_lbl" value="흐름 한눈에 보기" vertex="1" parent="1" style="text;align=left;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=12;fontStyle=1;fontColor=#5F6F4A;">
+          <mxGeometry x="40" y="580" width="200" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="step1" value="① 아이디어&#10;→ Claude Design&#10;시안 생성" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FBF0DC;strokeColor=#C47B2A;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="40" y="610" width="200" height="56" as="geometry"/>
+        </mxCell>
+        <mxCell id="step2" value="② 시안 → Claude Code&#10;핸드오프 번들로&#10;프로덕션 코드 빌드" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6F0EF;strokeColor=#144A46;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="270" y="610" width="220" height="56" as="geometry"/>
+        </mxCell>
+        <mxCell id="step3" value="③ Cowork 보조&#10;검토 · 카피 · 접근성 ·&#10;반복 문서·자동화" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCEEE9;strokeColor=#2A8A8C;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="520" y="610" width="210" height="56" as="geometry"/>
+        </mxCell>
+        <mxCell id="step4" value="④ 완성물&#10;같은 Anthropic 계정으로&#10;모든 디바이스에서 이어받기" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D6EBE7;strokeColor=#1C7C70;fontColor=#141413;fontFamily=Helvetica;fontStyle=1;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="760" y="610" width="220" height="56" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

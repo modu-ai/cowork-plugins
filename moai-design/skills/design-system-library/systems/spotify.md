@@ -1,3 +1,20 @@
+---
+version: alpha
+name: Spotify-design-analysis
+description: 'Dark, immersive music-player interface with near-black surfaces where Spotify Green (#1ed760) is the singular functional accent and album art carries all color.'
+colors:
+  primary: "#1ed760"
+  primary-active: "#1ed760"
+  ink: "#ffffff"
+  body: "#b3b3b3"
+  muted: "#b3b3b3"
+  hairline: "#2d2d2d"
+  canvas: "#121212"
+  surface-soft: "#181818"
+  surface-card: "#181818"
+  on-primary: "#121212"
+---
+
 # Design System Inspired by Spotify
 
 ## 1. Visual Theme & Atmosphere

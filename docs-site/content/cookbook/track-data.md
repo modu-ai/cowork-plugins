@@ -10,6 +10,30 @@ tags: [cookbook, data]
 
 > CSV·Excel을 Cowork에 던지고 나면 Pandas 콘솔이 열리는 것이 아니라 **보고서 수준의 결과물**이 나오는 흐름을 만듭니다. `moai-data` 세 스킬과 공공데이터 API를 조합하는 실전 트랙입니다.
 
+## 왜 이 흐름인가
+
+데이터 분석은 요리에 비유하면 이해하기 쉽습니다. 재료를 검수하고(썩은 부분 골라내기), 손질하고(씻고 썰기), 접시에 예쁘게 담고(플레이팅), 코스 요리로 조립하는 네 단계로 이어집니다. 이 순서가 바뀌면 썩은 재료를 접시에 담거나 날것을 그대로 내놓는 사고가 납니다. 데이터도 같습니다. 한 번도 살펴보지 않은 원본 CSV를 곧장 차트로 그리면, 빠진 값과 튀는 값이 그대로 그래프에 반영되어 잘못된 결론을 내리게 됩니다.
+
+그래서 `moai-data` 세 스킬은 정해진 순서로 엮입니다. 먼저 `data-explorer`가 원본 데이터의 건강 상태를 진단합니다. 이때 자주 등장하는 말이 셋 있습니다. **결측값**은 재료에 빠진 부분(비어 있는 칸), **이상값**은 비정상적으로 크거나 작은 부품(평균에서 크게 벗어난 숫자), **IQR**(사분위수 범위)은 정상 범위를 상자로 그려놓은 기준선입니다. 이 진단 결과를 `data-visualizer`가 그래프로 옮기고, 마지막으로 `moai-office` 스킬이 보고서·PPT로 포장합니다. 탐색 없이 시각화부터 하면 "썩은 재료를 접시에 담는" 결과가 되므로, 반드시 탐색 → 정제 → 시각화 순서를 지킵니다.
+
+```mermaid
+flowchart LR
+    A["원본 데이터<br/>(CSV·Excel)"] --> B["① 탐색<br/>data-explorer"]
+    B --> C{"결측·이상<br/>발견?"}
+    C -- 발견 --> D["② 정제·보완<br/>(수동 지시)"]
+    C -- 없음 --> E
+    D --> E["③ 시각화<br/>data-visualizer"]
+    E --> F["④ 보고서·PPT 변환<br/>moai-office"]
+
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style D fill:#f6e6dc,stroke:#c47b2a,color:#09110f
+    style E fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style F fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+```
+
+![track-data-workflow](/diagrams/track-data-workflow.svg)
+
 ## 트랙 지도
 
 ```mermaid
@@ -115,6 +139,12 @@ flowchart TD
 | KCI | 학술지 인용 | API 키 필요 |
 | 국가법령정보센터 | 법령·판례 | API 키 필요 |
 
+### 왜 거시 지표가 필요한가
+
+용돈을 떠올려 보면 됩니다. 10년 전 용돈 5만 원과 지금의 5만 원은 살 수 있는 것이 다릅니다. 그 사이 물가가 올랐기 때문입니다. 회사 매출도 마찬가지입니다. 매출이 10% 올랐다고 진짜로 10% 성장한 것은 아닐 수 있습니다. 같은 기간 물가가 8% 올랐다면, 겉으로는 10% 늘었어도 물가 상승분을 빼고 나면 진짜 성장은 2%에 불과합니다.
+
+이렇게 겉으로 보이는 금액을 **명목 매출**, 물가 거품을 걷어낸 진짜 가치를 **실질 매출**이라 부릅니다. 물가 상승분을 빼고 진짜 성장률을 계산하는 작업을 **디플레이트**(deflate)라고 합니다. 이때 물가의 자로 쓰는 대표 지표가 **CPI**(소비자물가지수)입니다. `public-data`로 KOSIS에서 CPI를 가져오고, `data-visualizer`로 명목 매출과 실질 매출을 한 그래프에 겹쳐 그리면 "우리가 진짜로 성장하고 있는가"라는 질문에 처음으로 정직한 대답을 얻게 됩니다. 이것이 내부 데이터만으로는 볼 수 없는, 공공데이터와 결합해야만 보이는 시야입니다.
+
 ### 기본 프롬프트
 
 {{< terminal title="claude — cowork" >}}
@@ -149,6 +179,26 @@ SKILL.md 본문에는 환경변수 참조만 넣습니다. 예: `.env`의 `KOSIS
 4. **시각화 — data-visualizer** — 매출 추이 + 거시 지표 비교 차트 HTML 대시보드.
 5. **PPT 변환 — pptx-designer** — 임원 보고용 7장 PPT. 차트는 PNG로 임베드.
 6. **Word 요약 — docx-generator** — 경영진 3페이지 요약본. 핵심 수치 + 그래프 + 제언.
+
+이 여섯 단계는 식당의 코스 요리 완성에 비유하면 흐름이 보입니다. 재료를 검수하고(①탐색), 불량 재료를 골라내고(②정제), 시장 시세표를 받아옵니다(③거시 지표 — CPI로 실질 매출을 계산하는 것은 "물가 상승분을 빼고 진짜 늘었는지 보는" 작업입니다). 요리를 완성하고(④시각화), 고급 접시에 담아 내고(⑤PPT, 임원용), 마지막으로 한 페이지 요약 카드를 만듭니다(⑥Word). 중요한 점은 각 단계의 산출물이 곧 다음 단계의 재료가 된다는 것입니다. 아래 그래프에서 화살표를 따라가며 데이터가 어떻게 가공되며 흘러가는지 확인해 보세요.
+
+```mermaid
+flowchart LR
+    S1["① 탐색<br/>data-explorer"] --> S2["② 정제<br/>수동 지시"]
+    S2 --> S3["③ 거시 지표 결합<br/>public-data (CPI)"]
+    S3 --> S4["④ 시각화<br/>data-visualizer"]
+    S4 --> S5["⑤ PPT 변환<br/>pptx-designer"]
+    S5 --> S6["⑥ Word 요약<br/>docx-generator"]
+
+    S3 -.->|물가 거품 제거| S4
+
+    style S1 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style S2 fill:#f6e6dc,stroke:#c47b2a,color:#09110f
+    style S3 fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style S4 fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style S5 fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+    style S6 fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+```
 
 ## 자주 걸리는 지점
 

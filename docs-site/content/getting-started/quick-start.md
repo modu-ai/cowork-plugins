@@ -11,6 +11,30 @@ geekdocBreadcrumb: true
 - [Cowork 설치](../install/) 완료
 - 작업할 **로컬 폴더** 하나 준비 (Windows에서는 짧은 경로를 권장합니다)
 
+## 6단계가 한 줄로 이어지는 이유
+
+이 페이지는 여섯 단계를 순서대로 안내하지만, 처음 보는 입장에서는 "왜 하필 이 순서인가"가 궁금할 수 있습니다. 음식 배달 앱에 빗대어 보면 한눈에 들어옵니다. **앱 스토어에서 배달 앱을 설치**하고(① 마켓플레이스 등록, ② 플러그인 설치), **집 주소와 결제수단을 한 번 등록**해 두면(④ 프로젝트 + `/project init`), 이후에는 **"오늘 저녁 한국식으로" 한 줄만 주문**하면(⑤ 자연어 요청) **주방에서 요리 순서대로 만들어 도착**합니다(⑥ 산출물). 즉 여섯 단계는 흩어진 작업이 아니라 "주문 한 번 → 완성품 도착"의 한 줄 파이프라인입니다.
+
+처음 한 번만 준비(①②③④)해 두면, 그 뒤로는 ⑤ 한 줄 입력과 ⑥ 결과 확인만 반복하면 됩니다. 준비 단계가 앞에 있는 이유는 시스템이 "어떤 일을, 어떤 순서로, 어떤 품질 기준으로 만들지"를 알아야 주문 한 줄만으로 알아서 조립할 수 있기 때문입니다. 아래 흐름도는 사용자가 설치에서 첫 산출물까지 거치는 여정을 한 줄로 보여줍니다.
+
+```mermaid
+flowchart LR
+    A["① 마켓플레이스<br/>등록"] --> B["② moai-core<br/>설치"]
+    B --> C["③ 도메인<br/>플러그인 선택"]
+    C --> D["④ 프로젝트<br/>+ /project init"]
+    D --> E["⑤ 한 줄<br/>주문"]
+    E --> F["⑥ 산출물<br/>도착"]
+
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style D fill:#dceee9,stroke:#2a8a8c,color:#09110f
+    style E fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style F fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+```
+
+![quick-start-journey](/diagrams/quick-start-journey.svg)
+
 ## 전체 흐름
 
 ```mermaid
@@ -27,6 +51,28 @@ flowchart TD
     style D fill:#dceee9,stroke:#2a8a8c,color:#09110f
     style E fill:#e6f0ef,stroke:#144a46,color:#09110f
     style F fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+```
+
+## 마켓플레이스, 플러그인, core — 세 단어 정리
+
+아래 1-3단계로 넘어가기 전에 처음 만나는 용어 네 개를 스마트폰에 빗대어 잡아둡니다. **마켓플레이스**는 앱 스토어(플레이스토어·앱스토어)처럼 "설치할 수 있는 앱 목록이 모여 있는 곳"입니다. **플러그인**은 그 스토어에서 하나하나 다운로드하는 앱 한 개입니다 — 사진 편집 앱, 배달 앱처럼 각자 쓰임이 정해져 있습니다. 여기서 **moai-core**는 운영체제(iOS·안드로이드) 같은 기반입니다. 운영체제 없이 앱이 켜지지 않듯, `moai-core` 없이는 다른 플러그인의 핵심 기능인 `/project init` 마법사와 `ai-slop-reviewer` 검수가 작동하지 않습니다. 그래서 반드시 `moai-core`를 먼저 설치합니다.
+
+**도메인 플러그인**은 일을 분야별로 묶어 둔 앱 묶음입니다(비즈니스 묶음, 콘텐츠 묶음, 법무 묶음 등). 사진 편집을 안 한다면 그 앱은 내려받지 않아도 되듯, 21개 플러그인 중 지금 진행할 작업에 맞는 것만 골라 설치하면 됩니다. 토큰이란 컴퓨터가 한 번에 읽는 텍스트 분량의 단위인데, 설치를 최소한으로 유지하면 대화창이 한 번에 읽어야 할 분량도 줄어들어 반응이 가벼워집니다.
+
+```mermaid
+flowchart TD
+    MK["마켓플레이스<br/>(앱 스토어)"] --> OS["moai-core<br/>(운영체제 — 반드시 먼저)"]
+    OS --> D1["도메인 플러그인<br/>(분야별 앱 묶음)"]
+    OS --> D2["도메인 플러그인"]
+    OS --> D3["도메인 플러그인"]
+    D1 --> R["필요한 일만<br/>골라 설치"]
+
+    style MK fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style OS fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style D1 fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style D2 fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style D3 fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style R fill:#d6ebe7,stroke:#1c7c70,color:#09110f
 ```
 
 1. **마켓플레이스 등록**
@@ -57,6 +103,28 @@ flowchart TD
    - 이미지 생성 → `moai-media` (+ `GEMINI_API_KEY` 필요)
 
    21개 모두를 한 번에 설치할 필요는 없습니다.
+
+## `/project init`이 하는 일 — 점원이 주문을 받아 주방까지 전달
+
+프로젝트를 만들고 `/project init`을 실행하는 단계는 식당에 들어가서 **점원이 인터뷰를 시작하는 순간**에 해당합니다. 손님이 자리에 앉으면 점원이 "몇 명이세요, 매운 거 괜찮으세요, 예산이 어떻게 되세요"라고 차례로 묻습니다. 점원은 그 답을 모아 알아서 앞채 → 메인 → 디저트 순서(체인)를 정하고 주방에 넘깁니다. 손님이 직접 요리 순서를 정하지 않아도 됩니다. `/project init`이 바로 이 점원 역할을 합니다.
+
+구체적으로는 7단계 흐름(질문 → 감지 → 체인 조립 → 확인 → 생성 → API키 → 첫 실행)을 거칩니다. 먼저 프로젝트의 목적과 산출물을 **인터뷰**(질문)로 듣고, 그 답에서 **무슨 일인지를 감지**한 뒤, 알맞은 스킬들을 순서대로 이어 **체인**으로 조립합니다. 사용자가 **확인**하면 프로젝트 루트에 `CLAUDE.md`(이 프로젝트에서 일할 때 지켜야 할 규칙 모음)를 **생성**하고, 외부 서비스가 필요하면 **API 키** 등록을 안내한 뒤 **첫 실행**까지 이어갑니다. 이 일곱 단계가 끝나면 "어떤 일을, 어떤 순서로, 어떤 품질 기준으로"가 한 번에 정리됩니다.
+
+```mermaid
+sequenceDiagram
+    participant U as 사용자
+    participant W as 점원 (/project init)
+    participant K as 주방 (스킬 체인)
+
+    U->>W: /project init
+    W->>U: 인터뷰 (목적·산출물·대상)
+    U-->>W: 답변
+    W->>W: 감지 → 체인 조립
+    W->>U: 조립된 체인 확인 요청
+    U-->>W: 승인
+    W->>K: CLAUDE.md 생성 + 체인 전달
+    K-->>U: 첫 실행 결과
+```
 
 4. **프로젝트 생성 및 `/project init`**
 
@@ -115,6 +183,28 @@ flowchart TD
    14. **완료 확인** — 모든 인터뷰 항목 입력 후 완료를 확인합니다
 
    `moai-core:project` 스킬이 실행되어 **7단계 흐름**(Interview → Detect → Chain → Confirm → Generate → APIKey → First Run)을 진행합니다. 자세한 내용은 [moai-core 상세](../../plugins/moai-core/)에서 확인할 수 있습니다. 약 3-5분 안에 프로젝트용 `CLAUDE.md`가 루트에 생성됩니다.
+
+## 한 줄을 쓰면 체인이 저절로 조립되는 원리
+
+`/project init`이 끝나면 이후에는 자연어 한 줄만 던지면 됩니다. "IR 덱 만들어줘"라고 쓰면 마치 "오늘 비즈니스 점심으로" 한마디만 했는데 점원이 알아서 적합한 세트메뉴를 조립해 오는 것과 같습니다. 사용자는 어떤 스킬을, 어떤 순서로 부를지 직접 정하지 않아도 됩니다.
+
+이게 작동하는 까닭은 `moai-core`의 **라우터**가 한 줄 요청의 맥락을 읽어 "이 일은 도메인 → 포맷 → 품질 순서로 흘러가겠구나"를 판단하기 때문입니다. 도메인 스킬(예: `investor-relations`)이 내용을 만들면, 포맷 스킬(예: `pptx-designer`)이 PPTX로 옮기고, 품질 스킬(`ai-slop-reviewer`)이 마지막에 AI 특유 어투를 솎아냅니다. 이 세 단계가 한 줄에서 자동으로 연쇄 실행되므로, 사용자는 "무엇을 만들까"에만 집중하면 됩니다.
+
+```mermaid
+flowchart LR
+    O["한 줄 요청<br/>IR 덱 만들어줘"] --> R{"라우터<br/>맥락 판단"}
+    R --> S1["① 도메인<br/>investor-relations"]
+    S1 --> S2["② 포맷<br/>pptx-designer"]
+    S2 --> S3["③ 품질<br/>ai-slop-reviewer"]
+    S3 --> P["완성된 PPTX"]
+
+    style O fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style R fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style S1 fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style S2 fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style S3 fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style P fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+```
 
 5. **첫 요청**
 

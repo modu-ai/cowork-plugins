@@ -6,18 +6,58 @@ geekdocBreadcrumb: true
 ---
 MoAI Cowork Plugins은 21개의 플러그인과 129개의 스킬로 구성된 Claude Cowork 전용 플러그인 제품군입니다. 이 가이드는 설치부터 첫 작업까지 세 가지 경로를 통해 빠르게 시작하는 방법을 안내합니다.
 
-## 학습 경로
+## 플러그인과 스킬: 큰 음식점의 메뉴 구조
+
+큰 음식점에 들어서면 먼저 한식·중식·양식 같은 큰 코너가 눈에 들어옵니다. 그 코너 안에 가 보면 비빔밥·된장찌개·불고기처럼 개별 메뉴가 줄지어 있습니다. 손님은 "된장찌개 주세요"라고 메뉴 하나만 말하면 되고, 어느 코너 요리사가 만들지는 주방이 알아서 정합니다. MoAI Cowork Plugins도 이 구조와 같습니다.
+
+여기서 **플러그인**(plugin)은 한식·중식·양식 같은 '요리 카테고리(코너)'입니다. 비즈니스·법무·콘텐츠·재무 같은 큰 분야를 묶어둔 단위로, 21개가 있습니다. **스킬**(skill)은 그 코너 안의 '개별 메뉴'입니다 — 사업계획서 쓰기, 계약서 검토하기, 블로그 원고 작성하기 같은 구체적인 일 하나하나가 스킬이며, 21개 코너 안에 모두 129개의 메뉴가 들어 있습니다.
+
+사용자가 할 일은 메뉴 하나를 말하는 것뿐입니다. "사업계획서 만들어줘"라고 입력하면 시스템이 그 메뉴가 속한 코너(플러그인)와 담당 요리사(스킬)를 스스로 찾아 배정합니다. 메뉴판을 전부 외우거나 코너를 직접 고를 필요는 없습니다. 이때 시스템이 한 번에 읽어 들일 수 있는 주문서 분량의 한도를 **토큰**(token)이라고 부릅니다 — 토큰이 많을수록 더 긴 문맥을 기억하지만 비용도 커지므로, 스킬 설계는 처음엔 가볍게·필요할 때만 깊이 불러오도록 되어 있습니다.
 
 ```mermaid
 flowchart TD
-    A["📥 설치 가이드"] --> B["🚀 첫 작업"]
-    B --> C["⚡ 빠른 시작"]
-    C --> D["📖 코워크 가이드"]
+    A["MoAI Cowork Plugins"] --> B["21개 플러그인<br/>(요리 카테고리)"]
+    B --> P1["moai-business"]
+    B --> P2["moai-legal"]
+    B --> P3["moai-content"]
+    B --> P4["… 그 외 18개"]
+    P1 --> S1["129개 스킬<br/>(개별 메뉴)<br/>예: strategy-planner"]
+    P2 --> S2["예: contract-review"]
+    P3 --> S3["예: blog"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,stroke-width:2px,color:#09110f
-    style B fill:#e6f0ef,stroke:#144a46,stroke-width:2px,color:#09110f
-    style C fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
-    style D fill:#dceee9,stroke:#2a8a8c,stroke-width:2px,color:#09110f
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style P1 fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style P2 fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style P3 fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style P4 fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style S1 fill:#dceee9,stroke:#2a8a8c,color:#09110f
+    style S2 fill:#dceee9,stroke:#2a8a8c,color:#09110f
+    style S3 fill:#dceee9,stroke:#2a8a8c,color:#09110f
+```
+
+## 사용자 여정: 한 줄 요청이 산출물이 되기까지
+
+배달 앱으로 음식을 시키는 흐름을 떠올려 보세요. (1) 앱을 설치하고 → (2) "오늘 저녁엔 된장찌개"라고 주문을 넣으면 → (3) 주방장이 알아서 담당 요리사를 배정하고 → (4) 완성된 요리가 도착합니다. 요리법을 알 필요도, 누가 만들지 지정할 필요도 없습니다. MoAI Cowork Plugins에서 문서를 만드는 과정도 똑같이 흘러갑니다.
+
+먼저 **플러그인을 설치**합니다(앱 설치). 그다음 대화창에 **자연어로 한 줄 요청**을 넣습니다 — "사업계획서 만들어줘"처럼 일상적인 말로 충분합니다. 시스템은 요청을 읽고 129개 메뉴 중 가장 알맞은 **스킬을 자동으로 선택**해 배정합니다(주방장의 요리사 배정). 마지막으로 스킬 본문이 실행되며 **문서 산출물**이 완성됩니다. 사용자는 요리법을 몰라도, 어느 스킬이 돌아가는지 몰라도 결과물을 받게 됩니다.
+
+## 학습 경로
+
+아래 다이어그램은 사용자가 한 줄을 입력한 순간부터 산출물이 나오기까지 시스템 안에서 일어나는 일의 흐름을 보여줍니다. 앱 설치 → 자연어 주문 → 시스템의 스킬 자동 선택 → 결과물 도착까지, 배달 앱 주문과 같은 흐름입니다.
+
+```mermaid
+flowchart TD
+    A["① 플러그인 설치<br/>(배달 앱 설치)"] --> B["② 자연어 요청<br/>'사업계획서 만들어줘'"]
+    B --> C{"③ 시스템이<br/>스킬 자동 선택"}
+    C --> D["④ 담당 스킬 실행<br/>(주방장이 요리사 배정)"]
+    D --> E["⑤ 산출물 완성<br/>(문서 파일 도착)"]
+
+    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style D fill:#dceee9,stroke:#2a8a8c,color:#09110f
+    style E fill:#788C5D,stroke:#5F6F4A,color:#FFFFFF
 ```
 
 ### 1. 설치 가이드
@@ -25,6 +65,8 @@ Claude Desktop에 MoAI Cowork Plugins을 설치하는 전체 과정을 단계별
 
 ### 2. 첫 작업
 5분 만에 완료할 수 있는 실습 예제를 통해 IR 덱 생성 워크플로우를 직접 체험합니다.
+
+**IR 덱(IR Deck)이란?** 기업이 투자를 받을 때 투자자에게 보여주는 발표 자료입니다. "우리 회사가 왜 투자 가치가 있는지, 돈을 받아 무엇을 할지"를 슬라이드 몇 장으로 정리한 일종의 사업 소개서 겸 자기소개서라고 생각하면 됩니다. 스타트업이 투자 유치를 준비할 때 가장 먼저 만들게 되는 핵심 문서라 첫 실습 주제로 자주 쓰입니다.
 
 ### 3. 빠른 시작
 설치 완료 후 즉시 사용할 수 있는 주요 스킬과 사용 패턴을 빠르게 숙지할 수 있습니다.

@@ -13,7 +13,7 @@ description: |
   - "4K 이미지 생성"
   Soul·Soul 2.0·Soul Cinema·Nano Banana·Nano Banana Pro·GPT Image·GPT Image 2·Seedream 4.0·Flux Kontext·Wan 2.2 Image·Wan 2.5 11개 공식 이미지 모델과 캐릭터 일관성(Soul Characters), 스타일 프리셋, 해상도(720p/1080p/2K/4K), 시드 고정, 비동기 잡 폴링까지 처리한 완성 이미지를 산출합니다.
 user-invocable: true
-version: 2.22.0
+version: 2.23.0
 ---
 
 # Higgsfield 이미지 생성 (higgsfield-image)

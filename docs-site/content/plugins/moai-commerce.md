@@ -14,6 +14,44 @@ tags: ["moai-commerce"]
 
 `moai-commerce`는 월 매출 100만-10억 규모의 스마트스토어·자사몰·오픈마켓 셀러가 실제로 마주치는 작업을 다룹니다.
 
+## 이 플러그인으로 무엇을 할 수 있나
+
+`moai-commerce`를 한마디로 비유하면 **주방장 35명이 있는 대형 키친**입니다. 주방장마다 담당이 다릅니다. 시장조사 담당은 재료 시세를 조사하고, 카피라이터 담당은 상세페이지 문구를 쓰고, 디자이너 담당은 이미지를 합성하고, 회계 담당은 마진과 광고 수익을 계산하고, 법규 담당은 광고성 메시지 과태료를 피해줍니다. 손님인 사용자가 "무선 이어폰 상세페이지 만들어줘"라고 주문하면, 주방장 35명이 알아서 분업해 한 그릇(완성된 상세페이지 PNG, 또는 아침 브리핑 한 줄)을 내놓습니다. 스킬 35개가 각자의 일만 담당한 뒤 결과를 조립해 하나의 산출물로 완성하는 구조, 이것이 바로 이 플러그인의 본질입니다.
+
+이 키친에서 자주 등장하는 전문 용어를 미리 한 줄씩 풀어두겠습니다. **JTBD**(Job To Be Done)는 "고객이 이 상품을 통해 해결하려는 일"을 뜻합니다. 무선 이어폰을 사는 진짜 이유가 '블루투스 칩 성능'이 아니라 '출퇴근 지하철에서 소음을 차단하고 싶다'는 일(Job)이라는 식으로 고객의 목적을 읽는 방법입니다. **ROAS**(Return On Ad Spend)는 "광고에 1만 원을 썼을 때 매출이 몇 배로 돌아오는지"를 나타내는 비율로, ROAS 400%면 1만 원 쓰고 4만 원 매출이 났다는 뜻입니다. **CAC**와 **LTV**는 한 쌍입니다. CAC(Customer Acquisition Cost)는 "고객 한 명을 데려오는 데 든 비용"이고, LTV(Lifetime Value)는 "그 고객이 브랜드를 떠나기 전까지 평생 써주는 매출"입니다. CAC가 1만 원인데 LTV가 3만 원이면 3배가 되니 건강한 사업이고, 반대면 광고를 멈추는 순간 매출이 사라지는 위험한 구조입니다.
+
+아래 다이어그램은 대표적인 주문 하나가 키친 안에서 어떻게 흘러가는지 보여줍니다. 시장조사 담당이 먼저 재료를 점검하고, 고객 분석 담당이 누가 먹을지 정한 뒤, 카피·이미지·마진·법규 담당이 차례로 결과를 이어받아 마지막에 한 그릇(산출물)으로 조립됩니다.
+
+```mermaid
+flowchart LR
+    subgraph Research["① 시장·고객 (재료 점검)"]
+        R1["commerce-market-research"]
+        R2["commerce-jtbd-persona"]
+    end
+
+    subgraph Build["② 상품 만들기 (조리)"]
+        B1["commerce-product-naming"]
+        B2["detail-page-copy"]
+        B3["detail-page-image"]
+    end
+
+    subgraph Ops["③ 수익·법규 (검수·정산)"]
+        O1["commerce-margin-calculator"]
+        O2["commerce-marketing-compliance-kr"]
+    end
+
+    subgraph Output["④ 산출물 (한 그릇)"]
+        OUT["상세페이지 PNG<br/>아침 브리핑 1줄<br/>광고 최적화안"]
+    end
+
+    Research --> Build --> Ops --> Output
+
+    style Research fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style Build fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style Ops fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style Output fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+```
+
 - **상세페이지 자동화**: 13섹션 감정여정 카피(Hero→Pain→Problem→Story→Solution→How→Proof→Authority→Benefits→Risk→Compare→Filter→CTA) + 1080×12720 단일 PNG 자동 합성. `--mode diagnose`(7단계 진단 점수) / `--mode copy`(페르소나 2세트, 비율 25/50/25 강제)
 - **시장·고객·전략 분석**: 시장조사 4 MCP, JTBD 9 + 페르소나 3, 상품명 3안+검증, NCM 메시지 15종, 통합 전략 1장
 - **운영 데이터 통합**: `commerce-morning-brief`(어제 주문·신규 문의·트렌드·ROAS 4영역) + `commerce-order-summary`(스마트스토어+카페24+아임웹 채널 통합)
@@ -83,7 +121,7 @@ tags: ["moai-commerce"]
 | `commerce-automation-audit` | 6대 영역(A-F) 자동화 진단 + 3분류(반복/판단/창의)·우선순위 점수·3 Phase 로드맵·5 KPI·HITL Golden Rule(80% 자동화 + 10배 검수) | 자동화 진단 리포트 + 우선순위 점수 + 3 Phase 로드맵 |
 
 
-📊 [다이어그램으로 보기](/diagrams/hitl-golden-rule.html) — 브라우저에서 바로 열립니다. 편집은 [`hitl-golden-rule.drawio`](/diagrams/hitl-golden-rule.drawio)를 [app.diagrams.net](https://app.diagrams.net)에서 여세요.
+![hitl-golden-rule](/diagrams/hitl-golden-rule.svg)
 
 ### CRM·LTV·법규 (3)
 

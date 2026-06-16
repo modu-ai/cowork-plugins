@@ -12,6 +12,37 @@ tags: [cookbook, marketing]
 
 브랜드 전략부터 SNS 운영, 상세페이지 전환율, SEO 감사까지 — `moai-marketing`과 `moai-content` 플러그인 조합으로 마케팅 본부 하나를 덮는 트랙입니다.
 
+## 트랙이 무엇인가 — 한 줄 요청이 산출물이 되기까지
+
+트랙(track)은 단일 스킬이 아니라, 한 가지 일(예: 마케팅)을 끝내는 데 필요한 스킬 여러 개를 미리 엮어둔 **세트 메뉴 패키지**입니다. 음식점에 비유하면 쉽습니다. 손님이 "비빔밥 하나 주세요"라고 한 줄만 말해도 점원이 곧바로 "고기 빼시나요? 매운 정도는? 국물 따로 드릴까요?"라고 **맥락을 물어본 뒤**(=시스템 인터뷰), 주방에서 밥·나물·고기를 차례로 담고(=체인의 각 스킬), 마지막에 플레이팅하고 맛보기(=품질 검수)까지 거쳐 완성된 한 그릇을 내옵니다.
+
+트랙도 같은 방식으로 동작합니다. 사용자가 "B2B SaaS 브랜드 리뉴얼안 만들어줘"라고 한 줄을 입력하면, 시스템이 먼저 **시스템 인터뷰**(여기서는 AskUserQuestion, 즉 시스템이 사용자에게 몇 가지 선택지로 맥락을 물어보는 절차)를 통해 타깃 고객·산출물 형식·핵심 포인트 같은 필수 정보 3-4개를 수집합니다. 그다음 수집된 맥락을 바탕으로 **체인**(여러 스킬이 화살표로 이어진 파이프라인)을 자동으로 실행합니다 — 브랜드 아이덴티티를 만드는 스킬 → 문서로 저장하는 스킬 → AI 특유 어투를 솎아내는 품질 스킬 순서로. 각 스킬은 앞 스킬의 결과물을 입력받아 다음 결과물을 넘겨주므로, 사용자는 스킬을 일일이 부를 필요 없이 한 줄로 전체 과정을 끝냅니다.
+
+아래 시퀀스는 이 흐름을 시간 순서대로 보여줍니다. 사용자 입력 한 줄에서 출발해 인터뷰 수집, 체인 자동 실행, 최종 산출물 도착까지 단계가 어떻게 이어지는지가 핵심입니다.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 사용자
+    participant S as 시스템
+    participant I as 인터뷰 (AskUserQuestion)
+    participant C as 스킬 체인
+    participant Q as 품질 스킬
+
+    U->>S: "B2B SaaS 브랜드 리뉴얼안 만들어줘"
+    S->>I: 맥락 부족 감지
+    I->>U: 타깃 고객·산출물·핵심 포인트 3-4문항
+    U->>I: 선택지 응답
+    I->>C: 맥락 전달
+    C->>C: brand-identity (브랜드 설계)
+    C->>C: docx-generator (문서 저장)
+    C->>Q: 원문 전달
+    Q->>Q: ai-slop-reviewer (AI 티 검수)
+    Q-->>U: 최종 산출물 (한 그릇 완성)
+```
+
+![track-marketing-workflow](/diagrams/track-marketing-workflow.svg)
+
 ## 트랙 지도
 
 ```mermaid
@@ -28,6 +59,26 @@ flowchart TB
     Blog --> SEO["seo-audit"]
     Social --> Campaign["campaign-planner"]
     Campaign --> Report["performance-report"]
+```
+
+## 3단계 마케팅 파이프라인 — 왜 브랜드가 먼저이고 성과가 마지막인가
+
+이 트랙은 위 트랙 지도가 보여주는 것처럼 Part 1(브랜드) → Part 2(콘텐츠) → Part 3(성과) 세 단계로 나뉩니다. 이 순서는 임의가 아니라, 집을 짓는 순서와 같습니다. 먼저 **뼈대**(브랜드 아이덴티티·보이스·Part 1)를 세우고, 그 뼈대 위에 **방마다 인테리어**(블로그·카드뉴스·상세페이지 같은 콘텐츠·Part 2)를 입힌 뒤, 다 지은 다음에 **거주자 만족도와 에너지 효율을 측정**(캠페인 성과 보고·Part 3)합니다.
+
+뼈대 없이 인테리어부터 하면 집이 무너지듯, 브랜드 보이스(=브랜드가 말하는 톤과 태도)를 정하지 않고 SNS 글부터 쓰면 채널마다 어투가 흔들립니다. 그래서 Part 1에서 "이 브랜드는 누구에게, 어떤 톤으로 말하는가"를 먼저 고정합니다. 그 위에서 Part 2가 그 보이스를 바탕으로 실제 콘텐츠를 만들고, Part 3는 만들어진 콘텐츠의 효과(전환율·노출·클릭)를 측정합니다. 각 Part는 앞 Part의 산출물에 의존하므로 순서를 거꾸로 뒤집으면 결과가 흔들립니다 — 콘텐츠 없이 성과를 측정할 수 없고, 브랜드 보이스 없이 콘텐츠 톤을 맞출 수 없습니다.
+
+```mermaid
+flowchart LR
+    P1["Part 1 — 브랜드·전략<br/>(뼈대 세우기)<br/><br/>brand-identity<br/>personal-branding"]
+    P2["Part 2 — 콘텐츠 제작<br/>(인테리어 입히기)<br/><br/>blog · card-news<br/>newsletter · social-media<br/>product-detail · landing-page"]
+    P3["Part 3 — 캠페인·성과<br/>(거주 만족도 측정)<br/><br/>campaign-planner<br/>performance-report<br/>seo-audit · email-sequence"]
+
+    P1 -->|"보이스·아이덴티티 전달"| P2
+    P2 -->|"만들어진 콘텐츠 전달"| P3
+
+    style P1 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style P2 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style P3 fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 ---
@@ -187,6 +238,28 @@ AI 검색(GEO) 최적화까지 포함.
 체인: `email-sequence → ai-slop-reviewer → korean-spell-check`
 
 ---
+
+## 체인 읽는 법 — 화살표가 뜻하는 것과 품질 스킬이 항상 끝에 오는 이유
+
+이 트랙의 각 스킬 아래에는 `blog → ai-slop-reviewer → korean-spell-check → humanize-korean` 같은 **체인 표기**가 붙어 있습니다. 화살표(`→`)는 "왼쪽 스킬의 결과물을 오른쪽 스킬이 입력받아 이어 처리한다"는 뜻입니다. 즉 `blog`가 쓴 원고를 `ai-slop-reviewer`가 검수하고, 그 결과를 `korean-spell-check`가 맞춤법 점검하고, 마지막으로 `humanize-korean`이 사람이 쓴 것처럼 다듬는 식으로 한 방향으로 흘러갑니다.
+
+이 화살표 끝에는 항상 같은 얼굴이 반복해 붙습니다 — `ai-slop-reviewer`, `korean-spell-check`, `humanize-korean` 같은 **품질 스킬**들입니다. 왜 끝인가. 세탁 라인에 비유하면 명확해집니다. 옷을 먼저 만들고(도메인 스킬) → 포장하고(포맷 스킬) → 마지막에 검수·다림질·보풀 제거(품질 스킬) 순서로 돌아갑니다. 다림질(품질)을 맨 앞에 하면 구겨진 옷을 다릴 수 없듯, 검수할 원문이 없는 상태에서 `ai-slop-reviewer`를 부르면 의미가 없습니다. 그래서 품질 스킬은 항상 체인의 맨 끝에 옵니다.
+
+아래 '자주 걸리는 지점' 절의 "AI 티 나는 문장" 항목이 바로 이 품질 스킬이 잡아내는 대상입니다. 품질 스킬을 체인 끝에 두는 이유와, 그것이 실제로 무엇을 잡아내는지를 함께 보면 체인 표기가 왜 저 모양으로 생겼는지 한눈에 들어옵니다.
+
+```mermaid
+flowchart LR
+    D["도메인 스킬<br/>(내용 만들기)<br/><br/>blog · newsletter<br/>brand-identity"]
+    F["포맷 스킬<br/>(형태 갖추기)<br/><br/>docx-generator<br/>pptx-designer"]
+    Q["품질 스킬<br/>(검수·다듬기)<br/><br/>ai-slop-reviewer<br/>humanize-korean"]
+
+    D -->|"원문 전달"| F
+    F -->|"완성본 전달"| Q
+
+    style D fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style F fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style Q fill:#e6f0ef,stroke:#144a46,color:#09110f
+```
 
 ## 자주 걸리는 지점
 

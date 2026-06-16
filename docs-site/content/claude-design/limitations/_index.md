@@ -6,6 +6,32 @@ geekdocBreadcrumb: true
 ---
 > Claude Design은 출시 직후 단계의 Research Preview 제품입니다. 현재 무엇이 안 되는지, 무엇이 곧 될 것 같은지, 대안 도구가 더 나은 경우는 언제인지를 정확히 정리합니다.
 
+## Research Preview란 — 공사 중인 건물에 들어가는 것
+
+새로 지은 건물에 입주한다고 상상해 보세요. 골조는 완성됐고 대부분의 층은 쓸 수 있지만, 아직 공사판이 서 있는 층도 있고, 엘리베이터가 잠시 멈추기도 하고, 일부 창호는 덧칠 예정입니다. 이럴 때 중요한 것은 "이 건물은 못 쓴다"가 아니라 "어디는 쓸 수 있고, 어디는 조심해야 하고, 언제 다 완성되나"를 정확히 아는 것입니다.
+
+Claude Design의 **Research Preview** 상태가 바로 이런 공사 중 건물입니다. 핵심 기능(텍스트로 시안 만들기, 디자인 시스템 적용, Claude Code로 핸드오프)은 이미 안정적으로 쓸 수 있지만, 감사 로그·데이터 거주지·모바일 같은 엔터프라이즈 기능은 아직 공사 중입니다. 이 페이지는 "지금 확실히 안 되는 것"과 "곧 될 가능성이 있는 것"을 구분해, 도입 전에 미리 점검할 수 있게 정리합니다. 아래 결정 트리를 한 번 훑으면, 우리 조직이 지금 당장 써도 되는지 1분 안에 판단할 수 있습니다.
+
+```mermaid
+flowchart TD
+    Start["Claude Design 도입 검토"]
+    Start --> Q1{"데이터 거주지 보장이<br/>필요한가?"}
+    Q1 -- "예" --> HOLD["도입 보류<br/>(정부·금융·헬스케어)"]
+    Q1 -- "아니오" --> Q2{"감사 로그·접근 추적이<br/>엄격히 필요한가?"}
+    Q2 -- "예" --> HOLD
+    Q2 -- "아니오" --> Q3{"모바일·외부 공개 링크가<br/>필수인가?"}
+    Q3 -- "예" --> ALT["대안 검토<br/>(Figma·Canva)"]
+    Q3 -- "아니오" --> GO["도입 진행 ★<br/>일반 SaaS·마케팅·스타트업"]
+
+    style Start fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style Q1 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style Q2 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style Q3 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style HOLD fill:#d6dbe0,stroke:#87867f,color:#09110f
+    style ALT fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style GO fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+```
+
 ## 현재 상태 한눈에
 
 | 차원 | 상태 |

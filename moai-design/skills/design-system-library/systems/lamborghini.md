@@ -1,3 +1,20 @@
+---
+version: alpha
+name: Lamborghini-design-analysis
+description: 'Cathedral of darkness — true black surfaces with white type and Lamborghini Gold (#FFC000) as the sole accent, sharp angular rectangles, and cinematic full-viewport video.'
+colors:
+  primary: "#ffc000"
+  primary-active: "#ffc000"
+  ink: "#ffffff"
+  body: "#e6e6e6"
+  muted: "#b0b0b0"
+  hairline: "#202020"
+  canvas: "#000000"
+  surface-soft: "#202020"
+  surface-card: "#202020"
+  on-primary: "#000000"
+---
+
 # Design System Inspired by Lamborghini
 
 ## 1. Visual Theme & Atmosphere

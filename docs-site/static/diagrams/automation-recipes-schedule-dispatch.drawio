@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="Schedule + Dispatch 결합 자동화" id="auto-1">
+    <mxGraphModel dx="1180" dy="820" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1140" pageHeight="820" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- ============ 제목 ============ -->
+        <!-- ============ 두 축 라벨 (시간축 / 공간축) ============ -->
+        <!-- ============ 축별 비유 박스 ============ -->
+        <!-- ============ 결합 결론 밴드 ============ -->
+        <!-- 축 → 결합 밴드 연결 -->
+        <!-- ============ 전체 파이프라인 컨테이너 ============ -->
+        <!-- ============ STEP 1: 알람 예약 ============ -->
+        <!-- ============ STEP 2: 시각 도달 (판단) ============ -->
+        <!-- ============ STEP 3: PC 켜짐? (결정적 조건) ============ -->
+        <!-- ============ STEP 4A: 비서 출근·작업 (YES 경로) ============ -->
+        <!-- ============ STEP 4B: 회차 스킵 (NO 경로) ============ -->
+        <!-- ============ STEP 5: 결과 회신 ============ -->
+        <!-- ============ Dispatch 보조 경로 (출장지에서 지시) ============ -->
+        <!-- ============ 파이프라인 내 화살표 ============ -->
+        <!-- ============ 캡션 ============ -->
+        <mxCell id="arrow_time_combine" edge="1" parent="1" source="metaphor_time" target="combine_band" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=3;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow_space_combine" edge="1" parent="1" source="metaphor_space" target="combine_band" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#144A46;strokeWidth=3;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e_s1_s2" edge="1" parent="1" source="s1" target="s2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;strokeWidth=2;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_s2_s3_yes" value="예약 시각 도달" edge="1" parent="1" source="s2" target="s3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=2;endArrow=blockThin;endFill=1;fontFamily=Helvetica;fontColor=#B85C3E;fontSize=10;labelBackgroundColor=#FAF9F5;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_s3_s4yes" value="YES" edge="1" parent="1" source="s3" target="s4_yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#144A46;strokeWidth=3;endArrow=blockThin;endFill=1;fontFamily=Helvetica;fontColor=#144A46;fontStyle=1;fontSize=11;labelBackgroundColor=#FAF9F5;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_s3_s4no" value="NO (PC 꺼짐)" edge="1" parent="1" source="s3" target="s4_no" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#C44A3A;strokeWidth=2;endArrow=blockThin;endFill=1;fontFamily=Helvetica;fontColor=#C44A3A;fontSize=10;labelBackgroundColor=#FAF9F5;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_s4yes_s5" edge="1" parent="1" source="s4_yes" target="s5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#5F6F4A;strokeWidth=2;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_dispatch_s4yes" value="언제든 지시 쏘기" edge="1" parent="1" source="dispatch_box" target="s4_yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#144A46;strokeWidth=2;endArrow=blockThin;endFill=1;dashed=1;fontFamily=Helvetica;fontColor=#144A46;fontSize=10;labelBackgroundColor=#FAF9F5;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="title" value="Schedule + Dispatch — 자리 비운 사무실을 계속 돌리는 자동화" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=20;fontStyle=1;fontColor=#141413;">
+          <mxGeometry x="170" y="20" width="800" height="34" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="시간의 자동화(Schedule)와 공간의 확장(Dispatch)이 합쳐져 '사람 없이 도는 사무실'을 만드는 원리" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#87867F;">
+          <mxGeometry x="170" y="54" width="800" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="axis_time_lbl" value="시간축 (Schedule)" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=12;fontStyle=1;fontColor=#B85C3E;">
+          <mxGeometry x="60" y="90" width="280" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="axis_space_lbl" value="공간축 (Dispatch)" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=12;fontStyle=1;fontColor=#144A46;">
+          <mxGeometry x="780" y="90" width="300" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="metaphor_time" value="알람시계&#10;정해진 시각에 울린다" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D97757;strokeColor=#B85C3E;fontColor=#FFFFFF;fontFamily=Helvetica;fontStyle=1;align=center;verticalAlign=middle;fontSize=12;">
+          <mxGeometry x="80" y="120" width="240" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="metaphor_space" value="출장지에서 거는 전화&#10;멀리 있는 비서에게 지시" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#144A46;strokeColor=#0E3A35;fontColor=#FFFFFF;fontFamily=Helvetica;fontStyle=1;align=center;verticalAlign=middle;fontSize=12;">
+          <mxGeometry x="810" y="120" width="240" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="combine_band" value="결합 = '내가 없어도 사무실이 계속 돈다'" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3DACC;strokeColor=#C9BCA6;fontColor=#141413;fontFamily=Helvetica;fontStyle=1;align=center;verticalAlign=middle;fontSize=13;">
+          <mxGeometry x="380" y="200" width="380" height="46" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="grp_pipeline" value="자동화 한 회차 파이프라인 (알람 울림 → 비서 출근 → 작업 → 결과 회신)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3DACC;strokeColor=#C9BCA6;verticalAlign=top;fontStyle=1;fontSize=12;fontColor=#141413;dashed=1;opacity=35;align=left;spacingLeft=14;">
+          <mxGeometry x="40" y="280" width="1060" height="420" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="s1" value="① 예약 등록&#10;(알람 맞추기)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fillColor=#D97757;strokeColor=#B85C3E;fontColor=#FFFFFF;fontStyle=1;fontSize=12;fontFamily=Helvetica;">
+          <mxGeometry x="70" y="330" width="160" height="64" as="geometry"/>
+        </mxCell>
+        <mxCell id="s1_desc" value="시간표 규칙(Cron) +&#10;어느 나라 시계(타임존) 지정&#10;예: 매일 08:50 (서울)" vertex="1" parent="1" style="text;align=center;whiteSpace=wrap;html=1;fontColor=#5F6F4A;fontSize=10;fontFamily=Helvetica;">
+          <mxGeometry x="60" y="398" width="180" height="44" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="s2" value="② 로컬 시계가&#10;예약 시각 도달?" vertex="1" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FAF9F5;strokeColor=#D97757;fontColor=#141413;fontStyle=1;fontSize=11;fontFamily=Helvetica;">
+          <mxGeometry x="280" y="320" width="170" height="86" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="s3" value="③ PC 켜져 있는가?&#10;(결정적 조건)" vertex="1" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FBF0DC;strokeColor=#C47B2A;fontColor=#141413;fontStyle=1;fontSize=11;fontFamily=Helvetica;">
+          <mxGeometry x="500" y="320" width="180" height="86" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="s4_yes" value="④ 비서가 자동 출근&#10;Skill 발동&#10;→ Slack · Gmail · Project" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CFE5E2;strokeColor=#144A46;fontColor=#141413;fontStyle=1;fontSize=11;fontFamily=Helvetica;">
+          <mxGeometry x="730" y="320" width="220" height="86" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="s4_no" value="✗ 회차 건너뜀&#10;자동 보충 없음&#10;다음 알람까지 대기" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5DCD7;strokeColor=#C44A3A;fontColor=#141413;fontStyle=1;fontSize=11;fontFamily=Helvetica;">
+          <mxGeometry x="500" y="470" width="180" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="s5" value="⑤ 결과 회신&#10;모바일 알림 · 메일 · Slack" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fillColor=#788C5D;strokeColor=#5F6F4A;fontColor=#FFFFFF;fontStyle=1;fontSize=12;fontFamily=Helvetica;">
+          <mxGeometry x="760" y="470" width="200" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="dispatch_box" value="Dispatch 보조 경로&#10;출장지 모바일에서 전화(지시) →&#10;마지막 사용 PC에서 즉시 실행" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#144A46;strokeColor=#0E3A35;fontColor=#FFFFFF;fontFamily=Helvetica;fontStyle=1;align=center;verticalAlign=middle;fontSize=11;opacity=85;">
+          <mxGeometry x="70" y="600" width="300" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="caption" value="Schedule은 시각이 도달했을 때 PC가 켜져 있어야 발동하고, Dispatch는 언제든 모바일에서 지시를 보낼 수 있다. 둘이 합쳐야 자리를 비운 시간에도 사무실이 돈다." vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#87867F;">
+          <mxGeometry x="120" y="730" width="900" height="40" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

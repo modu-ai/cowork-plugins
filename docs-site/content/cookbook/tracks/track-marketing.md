@@ -14,6 +14,27 @@ geekdocBreadcrumb: true
 > **대상**: 마케팅 입문자, 1인 브랜드, 콘텐츠 마케터, 브랜드 매니저
 > **전제**: moai-core · moai-content 활성화 + (선택) moai-marketing · moai-media
 
+## 왜 마케팅 트랙이 세 갈래로 갈라지나 — 큰 주방이 전문 조리대로 나뉘는 이유
+
+음식점을 하나 열 때 주방 전체를 한 명에게 맡기지 않습니다. 본 요리(메인 디시)를 만드는 조리대, 메뉴판·간판 사진을 찍는 홍보 책상, 손님을 끌어모으는 쿠폰·이벤트 책상은 하는 일이 전혀 다릅니다. 마케팅도 똑같아서 "마케팅해줘" 한마디로 끝나지 않습니다. 글을 써서 알리는 일(콘텐츠), 돈을 들여 노출 자리를 사는 일(광고), 물건을 팔아 재구매를 끌어내는 일(이커머스)은 각자 쓰는 스킬과 접근법이 다릅니다.
+
+이 트랙은 그 세 갈래가 갈라지기 **전**의 입문용 모임입니다. 처음에는 "내 마케팅이 어디에 해당하는가"를 한눈에 보여주고, 본격적으로 파고들 땐 갈래길 아래의 전용 트랙으로 넘어갑니다. 아래 다이어그램에서 세 갈래가 어디로 이어지는지 먼저 확인하면, 내 요청이 어느 트랙으로 가야 할지 헤매지 않습니다.
+
+```mermaid
+flowchart TD
+    Start["마케팅 입문 통합 트랙<br/>(이 페이지)"]
+    Start --> Q{"내가 하려는 일이<br/>무엇인가?"}
+    Q -- "글·이미지로<br/>알린다" --> C["콘텐츠 트랙<br/>blog · card-news · landing · newsletter"]
+    Q -- "돈을 들여<br/>노출을 산다" --> A["광고 트랙<br/>meta-ads · pixel · coupang-ad · media"]
+    Q -- "물건을<br/>판다" --> E["이커머스 트랙<br/>commerce-* 35 스킬"]
+
+    style Start fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style Q fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style A fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style E fill:#e6f0ef,stroke:#144a46,color:#09110f
+```
+
 ## 한 줄 요청 예시 4종
 
 | # | 한 줄 요청 | 자동 체인 | 더 자세히 |

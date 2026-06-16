@@ -39,7 +39,7 @@ flowchart LR
     style Trigger fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
-📊 [다이어그램으로 보기](/diagrams/plugins-index-marketplace.html) — 브라우저에서 바로 열립니다.
+![plugins-index-marketplace](/diagrams/plugins-index-marketplace.svg)
 
 ## 왜 묶어서 배포하나요: 마켓플레이스의 의미
 
@@ -224,7 +224,7 @@ flowchart TD
 | 플러그인 | 스킬 수 | 대표 스킬 (일부) |
 |---|---|---|
 | [moai-core](./moai-core/) | 8 | project, ai-slop-reviewer, feedback, ai-diagnostic, mcp-connector-setup, skill-builder, skill-template, skill-tester |
-| [moai-content](./moai-content/) | 15 | blog, card-news, landing-page, copywriting, humanize-korean, html-report, detail-page-planner, drawio-diagram +7종 |
+| [moai-content](./moai-content/) | 14 | blog, card-news, landing-page, copywriting, humanize-korean, html-report, detail-page-planner +7종 |
 | [moai-office](./moai-office/) | 6 | pptx-designer, docx-generator, xlsx-creator, hwpx-writer, pdf-writer, **notebooklm-slide-prompt (v2.15 신규)** |
 | [moai-media](./moai-media/) | 6 | **higgsfield-image·higgsfield-video (v2.13 신규)** Higgsfield MCP 직접 호출로 공식 11 이미지 모델(Soul 계열·Nano Banana 계열·GPT Image 계열·Seedream 4.0·Flux Kontext·Wan 2.2/2.5) + 공식 11 영상 모델(Sora 2·Veo 3·Kling 2.1/2.5/3.0·Kling Avatars 2.0·Seedance 2.0/Pro·Cinema Studio 3.5·MiniMax Hailuo 02·Wan 2.5) + 6 비디오 프리셋(UGC·Unboxing·Product review·Hyper motion·TV spot·Wild Card) 자연어 호출 · **gpt-image-2-prompt·gemini-3-image-prompt·midjourney-v8-prompt** 외부 도구 프롬프트 빌더 · **audio-gen** ElevenLabs MCP TTS·보이스 클로닝·다국어 더빙 |
 | [moai-book](./moai-book/) | 8 | **book-concept-planner·book-target-reader·book-outline-designer·book-author-bio·book-proposal-writer·book-publisher-matcher·book-chapter-writer·book-revision-coach (v2.10 신규)** |
