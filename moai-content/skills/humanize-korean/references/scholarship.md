@@ -1,4 +1,4 @@
-# Humanize KR Scholarship Reference (v2.0)
+# Humanize KR Scholarship Reference (v2.1)
 
 > **외부 SSOT** — 본진 분류 체계(`references/ai-tell-taxonomy.md`)는 패턴 행마다 한 줄 메타(`source_anchor`)로 이 파일을 가리킨다. 학술 출처 전문은 본 파일에 모아 두어 본진 룰북의 슬림성을 지킨다.
 >
@@ -163,6 +163,37 @@
 
 ---
 
+## 한국어 AI 텍스트 탐지 벤치마크 계보
+
+> 한국어 LLM 생성 텍스트를 탐지하는 정량·인간 판독 연구 계보. 본진 분류의 정량 신호(C-11·C-12·E-5·E-6·E-8·F-4)와 양성 축(K-1)의 학술 근거다.
+
+### KatFishNet / KatFish — Park et al. 2025
+
+**Shinwoo Park et al. (2025)**. "KatFishNet: Detecting LLM-Generated Korean Text through Linguistic Feature Analysis", arXiv:2503.00032.
+
+- 한국어 LLM 생성 텍스트 탐지의 첫 벤치마크 데이터셋(KatFish: 인간 470 vs LLM 1,624편 / 에세이·시·초록)을 제안한다.
+- 핵심: 한국어 고유의 언어 자질 — 특히 영어 대비 잦은 쉼표 사용 — 으로 AI 텍스트를 가려낸다. 본진 `C-11`(연결어미 뒤 쉼표, 4.84배)·`C-12`(쉼표 포함률, 2.32배)·`E-5`(쉼표 분절 길이, 1.97배)·`E-6`(쉼표 전후 POS 다양성, 2.44배)·`F-4`(한자어 명사화 -성/-적/-화)·`G-3`(안전 균형 어휘)의 정량 근거다.
+
+### LREAD — Park & Han 2026
+
+**Shinwoo Park · Yo-Sub Han (2026)**. "From Intuition to Calibrated Judgment: A Rubric-Based Expert-Panel Study of Human Detection of LLM-Generated Korean Text", arXiv:2601.19913 (제출 2026-01-06, 개정 2026-03-17).
+
+- KatFish와 동일 1저자(Shinwoo Park)의 후속. 인간 판독자를 루브릭으로 훈련하는 프레임워크 **LREAD**를 제안한다.
+- 핵심 결과: 직관만으로는 판독 정확도 60%, 명시적 루브릭 기준을 주면 90%까지 오르고(소표본에서 만점), 판독자 간 일치도가 0에 가깝던 데서 0.82로 강화된다. 개선은 주로 *위양성(false negative)*을 줄이는 방향이며 과탐지 편향을 만들지 않는다.
+- 인간 판독자가 의존한 한국어 미시 단서: 선택적 쉼표 위치, 연결어미 뒤 구두점, **다어절 경계 띄어쓰기**(본진 `E-8` 근거), 한자어 명사화의 register 진단.
+- 기계 판독기와의 차이: 기계는 *일관성·균형 잡힌 서술·예시의 안전한 일반성*을 본다 — 이는 곧 사람 글의 체온·구체성의 부재로, 본진 양성 축 `K-1`(정서 온도 0)의 학술 근거다.
+- 모델별 시그니처: GPT-4o는 영어식 번역투(수식어 많은 명사구·잦은 대명사), Qwen2는 한자어 명사화·calque형 어구가 두드러진다(머리말 모델별 시그니처 메타 근거). caveat C2·C6 가드 적용.
+
+### translationese 탐지 가능성 — 2026
+
+**(2026)**. "Training Models on Dialects of Translationese Shows How Lexical Diversity and Source-Target Syntactic Similarity Shape Learning", arXiv:2602.16469.
+
+- 번역체(translationese)는 원천언어의 흔적(fingerprint)으로, 인간 번역보다 구조적 다양성이 낮고 어휘·형태 풍부도가 떨어진다.
+- 핵심: 번역체는 자동 분류기로 쉽게 탐지된다 — 기능어(function words)·형태통사 범주·대명사가 특히 정보량이 크고, 단순 분류기가 전문 번역가보다도 잘 가려낸다. 번역 데이터로 학습한 모델은 자연·관용 표현 선호가 약해질 수 있다.
+- 본진 함의: 대명사(`A-16`)·기능어·형태통사 신호가 번역체/AI 탐지에 강하다는 독립 근거다. caveat C6(2026 시점 노후화) 적용.
+
+---
+
 ## NMT/LLM 시대 한국 PE 가이드라인 계보
 
 > 한국어 후편집(PE) 교육·연구의 흐름을 정리한다.
@@ -261,11 +292,17 @@ Toral(2019)은 en→de, de→en, es→de, en→fr, zh→en 다섯 언어쌍을 �
 
 **분류 함의**: 분류 체계 v2.0 발행 시 'valid as of 2026-05'를 명기하고, 6개월 주기로 모델별 재현율 회차를 설정한다.
 
+### C7. 다어절 띄어쓰기 단서의 한국어 baseline 미확정
+
+Park & Han(2026)은 다어절 경계 띄어쓰기를 인간 판독 단서로 보고하나, 한국어 띄어쓰기는 복합어마다 규범이 갈리고(사전 등재 여부·관용) 개인차가 크다. AI 출력이 '과도하게 균일'한지의 정량 baseline은 자체 코퍼스 보정 전까지 확정할 수 없다.
+
+**분류 함의**: `E-8`은 보조 지표(`spacing_uniformity`)로만 두고 단독 가산하지 않는다. 구두점(E-6)과 함께 위반할 때만 가중한다.
+
 ---
 
 ## 자체 검증
 
-- Caveat 6건이 모두 본 파일 §Caveats 절에 정리됨 — **통과**.
+- Caveat 7건이 모두 본 파일 §Caveats 절에 정리됨 — **통과**.
 - 8유형 모두 한국 번역학 학자 anchor ≥ 1명 부착:
   - T1 이영옥 2001·김정우 2007·박옥수 2017
   - T2 이근희 2005·김정우 1996·오경순 2010·김은일 2015·서보현·김순영 2018
@@ -277,6 +314,7 @@ Toral(2019)은 en→de, de→en, es→de, en→fr, zh→en 다섯 언어쌍을 �
   - T8 김혜영 2019
   - 8/8 — **통과**.
 - 국제 4대 이론(Baker 1993·Toury 1995·Laviosa 2002·Toral 2019)이 모두 별도 섹션 보유 — **통과**. (+ Chesterman 2004·Sarti 2022·Cho 2019·Frawley 1984·Hayase 2024.)
+- 한국어 AI 텍스트 탐지 벤치마크 3건(KatFish 2025·LREAD/Park & Han 2026·translationese 2026) 별도 섹션 보유 — **통과**. (K-1·E-8·모델 시그니처 메타의 학술 근거.)
 - NMT/LLM 시대 PE 가이드라인 계보 7명(윤미선 외 2018·김혜림 2022·이상빈 2017·2018a·2018b·마승혜 2018·이주리애 2018) — **통과**.
 - 15항목 PE 체크리스트(PE1~PE15)에 본진 매핑 + type_anchor 부착 — **통과**.
 
@@ -284,4 +322,4 @@ Toral(2019)은 en→de, de→en, es→de, en→fr, zh→en 다섯 언어쌍을 �
 
 ---
 
-valid as of 2026-05.
+valid as of 2026-06.

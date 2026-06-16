@@ -1,13 +1,13 @@
 ---
 title: "Claude Cowork 한국어 문서"
-description: "Claude Cowork 한국어 가이드 — 지식 근로자를 위한 설치·스킬·플러그인·쿡북 완전판. cowork-plugins 28종 카탈로그 + 176 스킬 포함."
+description: "Claude Cowork 한국어 가이드 — 지식 근로자를 위한 설치·스킬·플러그인·쿡북 완전판. cowork-plugins 28종 카탈로그 + 177 스킬 포함."
 geekdocAnchor: false
 geekdocBreadcrumb: false
 ---
 
 <div class="cw-hero">
   <div class="eyebrow"><span class="dot"></span>{{< version >}} · {{< release-date >}} · cowork.mo.ai.kr</div>
-  <h1>업무에 바로 쓰는<br/><span class="accent">AI 협업 스킬</span> 176종.</h1>
+  <h1>업무에 바로 쓰는<br/><span class="accent">AI 협업 스킬</span> 177종.</h1>
   <p class="lead-p">
     28개 분야에 걸친 MoAI-Cowork 플러그인 모음. Claude Code에서 슬래시 한 번으로 사업계획서·IR 덱·계약서·블로그·정부지원사업 신청서·이커머스 광고 풀세트·한국 출판사 제출 원고·개인 재무·자기관리·직장 커뮤니케이션·<strong>한국 공공·시세 데이터 조회</strong>까지 — 한국어로, 끝까지.
   </p>
@@ -16,7 +16,7 @@ geekdocBreadcrumb: false
     <a class="btn btn--ghost" href="/plugins/">플러그인 둘러보기</a>
   </div>
   <div class="cw-hero-meta">
-    <div class="item"><div class="num">176</div><div class="lbl">총 스킬</div></div>
+    <div class="item"><div class="num">177</div><div class="lbl">총 스킬</div></div>
     <div class="item"><div class="num">28</div><div class="lbl">분야 플러그인</div></div>
     <div class="item"><div class="num">79</div><div class="lbl">문서 페이지</div></div>
     <div class="item"><div class="num">{{< version >}}</div><div class="lbl">최신 릴리스</div></div>
@@ -26,16 +26,16 @@ geekdocBreadcrumb: false
 <div class="cw-academy-banner">
   <div class="cw-academy-banner__inner">
     <div class="cw-academy-banner__head">
-      <span class="cw-academy-banner__eyebrow">모두의 AI 아카데미</span>
+      <span class="cw-academy-banner__eyebrow">모두의 AI 아카데미 · 모집 중</span>
       <h3 class="cw-academy-banner__title">강의로 가장 빠르게 익히기</h3>
     </div>
     <p class="cw-academy-banner__lead">
-      cowork-plugins를 실무에 적용하는 3일 강의입니다. 사업계획·이커머스·콘텐츠·디자인 트랙을 직접 따라 만들어 보며 한국어 도메인 워크플로우를 익힐 수 있습니다.
+      <strong>클로드 코워크로 시작하는 나만의 AI 팀 만들기 — 코드 없이 2일.</strong> 코드 한 줄 없이, 말 한마디로 지휘하는 나만의 AI 팀을 2일 만에 꾸립니다. 프로젝트·지시·메모리·플러그인·스킬·커넥터·자동화 파이프라인부터 Claude Design까지 직접 따라 만듭니다.
     </p>
     <ul class="cw-academy-banner__points">
-      <li>3일 집중 — 한국 도메인 트랙(B2B·이커머스·콘텐츠·디자인) 직접 실습</li>
-      <li>실제 산출물 제작 — 사업계획·랜딩·카드뉴스·메타 광고 보고서까지</li>
-      <li>강사 직강·소규모 정원 운영 — 1대1 피드백 가능</li>
+      <li>2일 집중 (6월 27-28일 토·일 · 10:00-18:00) — Cowork 입문·프로젝트·메모리·커넥터부터 나만의 스킬·플러그인까지</li>
+      <li>직접 만드는 산출물 — 프로젝트·커넥터·나만의 스킬·플러그인·디스패치·스케줄·자동화 파이프라인·디자인 시스템</li>
+      <li>오프라인 정원 30석 · 강사 구스 킴 · 수강 후 30일 운영 지원</li>
     </ul>
     <div class="cw-academy-banner__ctas">
       <a class="btn btn--primary" href="https://academy.mo.ai.kr/?utm_source=cowork-docs&utm_medium=banner&utm_campaign=docs-home" target="_blank" rel="noopener noreferrer">강의 안내 보기 →</a>
@@ -94,7 +94,7 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
 
 <div class="cw-sect-head">
   <h2 id="plugins-grid" style="margin:0"><span class="num">28</span>분야별 플러그인</h2>
-  <span class="meta">총 176개 스킬 · 28개 도메인</span>
+  <span class="meta">총 177개 스킬 · 28개 도메인</span>
 </div>
 
 <div class="cw-grid">
@@ -279,6 +279,20 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
 
 <div class="cw-timeline">
   <div class="cw-rel latest">
+    <div class="ver-row">
+      <span class="ver">v2.21.0</span>
+      <span class="date">2026-06-16</span>
+      <span class="badge">MINOR</span>
+    </div>
+    <div class="ttl">drawio-diagram 신규 + humanize-korean 한국적 정서·결 K 카테고리 + /project agent-aware</div>
+    <div class="desc">콘텐츠·문서 작업의 <strong>도식 역량 강화</strong>. 자연어를 편집 가능한 <code>.drawio</code> + 단일 HTML(draw.io CDN 뷰어, Apache-2.0) 두 산출물로 렌더하는 <strong>drawio-diagram</strong> 신규(6 프리셋, CLI 불필요). <strong>humanize-korean</strong>에 한국적 정서·결 <strong>K 카테고리(양성 축) 4종</strong> 추가 — 기존 A~J(음성·제거)에 K(지향) 충전, 2026 학술 교차. <strong>/project</strong>가 코디네이터 에이전트까지 동적 스캔·체인 설계. <strong>28 플러그인 유지 · 173→177 스킬 · 기능적 비파괴 · Breaking change 없음</strong>.</div>
+    <ul>
+      <li><strong>drawio-diagram 신규</strong> — erd·uml-class·sequence·architecture·ml-pipeline·flowchart 6 프리셋. mermaid로 부족한 정교한 셰이프·클라우드 아이콘·편집 가능 원본. learning-material과 ```drawio 블록 연동</li>
+      <li><strong>humanize-korean K 카테고리</strong> — K-1 정서온도·K-2 절제·곡언·K-3 구어 호흡·K-4 정서 아크(양성 축). E-8 띄어쓰기·E-7 화계 3단계·모델별 시그니처 힌트. 메트릭·테스트 무변경(parity 안전)</li>
+      <li><strong>/project agent-aware</strong> — 설치된 플러그인 코디네이터 에이전트 동적 스캔·체인 설계. 신규 agent-catalog.md SSOT</li>
+    </ul>
+  </div>
+  <div class="cw-rel">
     <div class="ver-row">
       <span class="ver">v2.20.0</span>
       <span class="date">2026-06-16</span>

@@ -13,7 +13,7 @@ description: |
   여행 일정표·예산표를 산출합니다.
   [책임 경계] 개인 재무는 moai-wealth:household-budget, 부동산 조회·분석은 moai-public-data:real-estate-search, 사이드 프로젝트·부업은 moai-business:startup-launchpad
 user-invocable: true
-version: 2.20.0
+version: 2.21.0
 ---
 
 # 여행 플래너 (Travel Planner)

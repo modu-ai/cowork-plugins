@@ -183,6 +183,10 @@ done
     "pptx-designer": "moai-office",
     "ai-slop-reviewer": "moai-core"
   },
+  "agents_available": {
+    "content-publishing-pipeline": "moai-content",
+    "office-doc-qa": "moai-office"
+  },
   "confidence": {
     "moai-content": "HIGH",
     "moai-office": "HIGH",
@@ -212,11 +216,36 @@ done
 
 **moai-core는 항상 포함** (라우터·ai-slop-reviewer). 선택 UI에는 표시하지 않는다.
 
+### 2-4. 에이전트 인벤토리 (코디네이터 동적 스캔)
+
+스킬과 함께, 설치된 cowork 플러그인이 번들한 **코디네이터 에이전트**(`<plugin>/agents/*.md`)도 동적으로 인벤토리에 등록한다. 스킬 인벤토리와 동일하게 **하드코딩 목록 금지**(신규 코디네이터 자동 포함).
+
+```bash
+for plugin in "${INSTALLED_COWORK_PLUGINS[@]}"; do
+  for af in "$PLUGIN_DIR/$plugin"/agents/*.md; do
+    [ -f "$af" ] || continue
+    grep -m1 '^name:' "$af" | sed 's/^name: *//'   # → agents_available[name] = plugin
+  done
+done
+```
+
+각 에이전트 `name`·`description`(호출 트리거)을 추출해 `inventory.json`의 `agents_available`에 등록한다. 플러그인이 설치돼 있으면 그 코디네이터도 가용으로 간주한다(에이전트는 플러그인 번들). 코디네이터는 **Cowork 서브에이전트 전용**이다. 상세·도메인 매핑·결정 규칙은 `references/core/agent-catalog.md` 참조.
+
 ---
 
 ## Phase 3: 스킬 체인 설계 (핵심)
 
-Phase 1-2 결과를 바탕으로 **산출물별 실행 체인**을 설계한다.
+Phase 1-2 결과를 바탕으로 **산출물별 실행 체인**을 설계한다. 스킬뿐 아니라 **기존 코디네이터 에이전트를 우선 활용**한다.
+
+### 3-0. 코디네이터 우선 원칙 (agent-aware)
+
+각 산출물 워크플로우마다 다음 순서로 실행기를 정한다(상세: `agent-catalog.md` §결정 규칙):
+
+1. **매칭 코디네이터 존재** + 워크플로우가 그 도메인 체인과 일치 → **코디네이터 에이전트를 우선 실행기로 추천**(CLAUDE.md 체인에 담당 코디네이터 명시). 코디네이터가 내부에서 ai-slop·humanize까지 처리하면 후처리를 중복 추가하지 않는다.
+2. **매칭 코디네이터 없음 / 부분 커버 / 단순 1-2단계** → 아래 인라인 스킬 체인(3-1·3-2)으로 설계.
+3. 코디네이터도 없고 자격 조건(고정 게이트·병렬 fan-out·고빈도) 충족 → Phase 3.5 신규 에이전트 생성 후보.
+
+매칭 판정은 `inventory.json`의 `agents_available`과 `agent-catalog.md` 매핑을 사용한다. cowork-plugins는 Cowork를 대상 환경으로 가정한다.
 
 ### 3-1. 체인 구성 규칙
 
@@ -299,13 +328,17 @@ Phase 5(확인 단계)에서 사용자에게 보여줄 요약:
 
 ## Phase 3.5: Agent Synthesis (프로젝트 에이전트 생성)
 
-Phase 3에서 설계된 체인 중 **전담 에이전트로 만들 가치가 있는 워크플로우**만 프로젝트 전용 서브에이전트로 생성한다. 디스크에 직접 작성하는 `./.claude/agents/<name>.md`는 서브에이전트 스코프 우선순위 3(플러그인 에이전트 5보다 높음)이며 Cowork/Claude Code가 세션 시작 시 자동 로드한다. 플러그인 번들 코디네이터 에이전트는 제거되므로, **사용자가 서브에이전트를 얻는 유일한 경로는 이 Phase 3.5다.**
+Phase 3에서 설계된 체인 중 **전담 에이전트로 만들 가치가 있는데 매칭되는 기존 코디네이터가 없는** 워크플로우만 프로젝트 전용 서브에이전트로 생성한다. 디스크에 직접 작성하는 `./.claude/agents/<name>.md`는 서브에이전트 스코프 우선순위 3(플러그인 에이전트 5보다 높음)이며 Cowork/Claude Code가 세션 시작 시 자동 로드한다.
+
+> **기존 코디네이터 우선 (HARD)**: cowork-plugins 각 도메인 플러그인은 코디네이터 에이전트(`<plugin>/agents/*.md`, 현재 스냅샷 31개)를 번들한다. **Phase 3.5는 기존 코디네이터로 커버되지 않는 워크플로우에만 신규 에이전트를 생성한다.** 매칭 코디네이터가 있으면 그것을 우선 활용하고(§Phase 3 코디네이터 우선), 신규 생성하지 않는다. 매핑·결정 규칙은 `agent-catalog.md` 참조.
 
 이 Phase는 **선택·additive**다. 자격 워크플로우가 없거나 사용자가 "생성 안 함"을 고르면 아무 에이전트도 만들지 않고 Phase 4로 넘어간다. bare `/project`는 에이전트를 하나도 생성하지 않아도 정상 동작한다.
 
 ### 3.5-1. 자격 판정 규칙 (Decision Rule)
 
-전담 프로젝트 에이전트는 다음 중 **하나 이상**을 만족하는 워크플로우에만 생성한다:
+**Step 0 (선행) — 기존 코디네이터 확인**: 워크플로우에 매칭되는 기존 코디네이터(`agents_available`·`agent-catalog.md`)가 있으면 그것을 사용하고 **신규 생성하지 않는다**. 아래 자격 규칙은 매칭 코디네이터가 **없을 때만** 적용한다.
+
+전담 프로젝트 에이전트는 (매칭 코디네이터가 없고) 다음 중 **하나 이상**을 만족하는 워크플로우에만 생성한다:
 
 - **(a) 고정 다단계 파이프라인 + 비우회 컴플라이언스/면책 게이트** — 단계 순서가 고정돼 있고, 중간에 반드시 통과해야 하는 법적·면책 게이트가 있는 경우.
 - **(b) 병렬 fan-out** — 여러 산출물을 동시에 생성한 뒤 하나로 종합해야 하는 경우(여러 스킬을 병렬 호출 → 종합).
@@ -375,7 +408,7 @@ Phase 3에서 설계된 체인 중 **전담 에이전트로 만들 가치가 있
 
 ### 3.5-5. 자격 워크플로우 예시
 
-다음 두 예시는 **곧 제거될 플러그인 코디네이터의 파이프라인 로직을 흡수**한 것이다. 향후 사용자가 서브에이전트를 얻는 경로는 이 Phase 3.5의 생성뿐이다.
+다음 두 예시는 **매칭되는 기존 코디네이터가 없을 때** 신규 생성하는 파이프라인 형태를 보여준다(기존 코디네이터가 있으면 그것을 우선 사용한다).
 
 **예시 A — 재무 보고 패키지 에이전트** `[병렬 fan-out + 게이트 → 자격]`
 
@@ -570,7 +603,9 @@ AskUserQuestion (1질문, 3옵션)
 | `{project_purpose}` | Phase 1-2 답변에서 추출 |
 | `{audience}` | Phase 1-2에서 추출 또는 "미지정" |
 | `{tone_constraints}` | Phase 1-3 답변 |
-| `{workflow_chains}` | Phase 3에서 설계된 체인 블록 (Markdown) |
+| `{workflow_chains}` | Phase 3에서 설계된 체인 블록 (Markdown, 담당 코디네이터 명시) |
+| `{coordinator_agents}` | 이 프로젝트 관련 기존 코디네이터 에이전트 표 (§5.4, `agents_available` 기반) |
+| `{generated_agents}` | Phase 3.5에서 생성된 프로젝트 에이전트 목록 (§5.5, 없으면 비움) |
 | `{routing_summary}` | 사용하는 플러그인의 라우팅 키워드만 요약 |
 | `{connectors_and_apikeys}` | Phase 7 결과 요약 |
 | `{project_context_notes}` | 자유 메모 (초기값: 비어있음) |

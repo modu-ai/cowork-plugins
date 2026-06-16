@@ -13,7 +13,7 @@ description: |
   소비자 심리(구매 동기·심리 방아쇠·인지 편향)와 광고 카피 공식을 적용해 캠페인 전략 문서를 만들고, 서술 부분은 moai-core:ai-slop-reviewer → moai-content:humanize-korean으로 다듬습니다.
   [책임 경계] vs moai-business:strategy-planner: 이 스킬=캠페인 단위 전술(1-3개월), 저 스킬=사업·전략 단위(1-5년). 상세페이지 카피·이미지·AI 영상은 moai-commerce:*·moai-media:* 사용.
 user-invocable: true
-version: 2.20.0
+version: 2.21.0
 ---
 
 # 캠페인 플래너 (Campaign Planner)

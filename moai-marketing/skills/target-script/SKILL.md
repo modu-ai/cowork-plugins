@@ -13,7 +13,7 @@ description: |
   고객 분석 → 페인포인트 → 핵심 메시지 → 채널별 변환 → A/B 테스트 순서로 정리하고, 결과 스크립트는 moai-core:ai-slop-reviewer → moai-content:humanize-korean으로 다듬어 바로 쓸 수 있게 만듭니다.
   [책임 경계] vs moai-commerce:commerce-channel-message: 이 스킬=메시지 전략 분석(앞단), 저 스킬=채널별 카피 산출(뒷단). 이 스킬 분석 결과를 moai-commerce:commerce-channel-message나 moai-content:copywriting에 넘겨 카피를 완성합니다.
 user-invocable: true
-version: 2.20.0
+version: 2.21.0
 ---
 
 # 타겟 스크립트 (Target Script)

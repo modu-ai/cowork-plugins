@@ -2,17 +2,17 @@
 
 [![License: NC-ND v1.0](https://img.shields.io/badge/License-NC--ND%20v1.0-red.svg)](LICENSE)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
-[![Version](https://img.shields.io/badge/Version-2.20.0-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-2.21.0-blue)](CHANGELOG.md)
 [![Plugins](https://img.shields.io/badge/Plugins-29-blue)](.claude-plugin/marketplace.json)
-[![Skills](https://img.shields.io/badge/Skills-177-green)](.claude-plugin/marketplace.json)
+[![Skills](https://img.shields.io/badge/Skills-178-green)](.claude-plugin/marketplace.json)
 [![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)
 [![shadcn/ui](https://img.shields.io/badge/UI-shadcn/ui-black)](https://ui.shadcn.com/)
 
-**Claude Cowork 한국어 도메인 전문가 AI 마켓플레이스 — 29 plugins · 177 skills · NC-ND v1.0**
+**Claude Cowork 한국어 도메인 전문가 AI 마켓플레이스 — 29 plugins · 178 skills · NC-ND v1.0**
 
-자연어 한 줄로 **사업계획서·계약서 검토·세금 계산·PPT·NotebookLM 슬라이드·Claude Design 보조·Higgsfield 이미지·영상·음성 더빙·BI 보고서·HTML 리포트·쿠팡 광고·메타 광고 분석·한국 출판사 제출 원고·한국 공공데이터 조회·X 데이터 워크플로우**를 자동 생성합니다. 한국 B2B 환경(K-IFRS·국세청·근로기준법·식약처·국토부·KRX·인터넷등기소·KPIPA)에 특화된 29개 독립 플러그인과 177개 도메인 스킬이 업무를 대신하며, 모든 텍스트 산출물은 [`ai-slop-reviewer`](./moai-core/skills/ai-slop-reviewer/)가 AI 패턴을 검수하여 자연스럽게 다듬어 드립니다.
+자연어 한 줄로 **사업계획서·계약서 검토·세금 계산·PPT·NotebookLM 슬라이드·Claude Design 보조·Higgsfield 이미지·영상·음성 더빙·BI 보고서·HTML 리포트·쿠팡 광고·메타 광고 분석·한국 출판사 제출 원고·한국 공공데이터 조회·X 데이터 워크플로우**를 자동 생성합니다. 한국 B2B 환경(K-IFRS·국세청·근로기준법·식약처·국토부·KRX·인터넷등기소·KPIPA)에 특화된 29개 독립 플러그인과 178개 도메인 스킬이 업무를 대신하며, 모든 텍스트 산출물은 [`ai-slop-reviewer`](./moai-core/skills/ai-slop-reviewer/)가 AI 패턴을 검수하여 자연스럽게 다듬어 드립니다.
 
-> *Korean B2B specialty plugin marketplace for [Anthropic Claude Code (Cowork)](https://claude.ai/cowork) — 29 plugins · 177 skills. Korean fonts (Pretendard / Noto Serif KR / Chosunilbo Myungjo / KoPubWorld), Korean text humanizer (humanize-korean), AI-slop reviewer for every deliverable. Higgsfield MCP image/video (22 official models), Claude Design helper, X data workflow setup. K-IFRS, NTS, KRX, MFDS, MOLIT, IROS, KPIPA specialty skills. Non-Commercial No-Derivatives (NC-ND) licensed.*
+> *Korean B2B specialty plugin marketplace for [Anthropic Claude Code (Cowork)](https://claude.ai/cowork) — 29 plugins · 178 skills. Korean fonts (Pretendard / Noto Serif KR / Chosunilbo Myungjo / KoPubWorld), Korean text humanizer (humanize-korean), AI-slop reviewer for every deliverable. Higgsfield MCP image/video (22 official models), Claude Design helper, X data workflow setup. K-IFRS, NTS, KRX, MFDS, MOLIT, IROS, KPIPA specialty skills. Non-Commercial No-Derivatives (NC-ND) licensed.*
 
 **🚀 빠른 설치**: Claude Cowork → 사용자 지정 → 개인 플러그인 + → **마켓플레이스 추가** → URL `modu-ai/cowork-plugins` 입력 → 동기화 → `moai-core` 먼저 설치
 
@@ -32,6 +32,19 @@
 | 📑 **문서·이커머스·BI** | `hwpx-writer` · `pdf-writer` · `detail-page-copy` · `executive-summary` · `weekly-report` | HWPX(한글) · 한·중·일·영 PDF · 13섹션 상세페이지 · 경영진 1pager · WBR 주간보고 |
 
 > 29개 플러그인 전체 카탈로그와 카테고리 비교는 [플러그인 카탈로그](#플러그인-카탈로그)와 [플러그인 상세 소개](#플러그인-상세-소개)를 참조하세요.
+
+---
+
+**🆕 v2.21.0 하이라이트** (2026-06-16) — **"drawio-diagram 신규 + humanize-korean 한국적 정서·결 K 카테고리 + /project agent-aware"**
+
+28 플러그인(유지), 173 → **177 스킬**, 동기화 2.21.0. 기능·인터페이스 Breaking change 없음. MINOR 릴리스. 콘텐츠·문서 작업의 도식 역량을 강화하고 한국적 정서 윤문 지식을 보강했습니다.
+
+- **`drawio-diagram` 신규 (moai-content)** — 자연어를 편집 가능한 `.drawio` + 단일 HTML(draw.io CDN 뷰어 `viewer-static.min.js`, Apache-2.0) 두 산출물로 렌더. 6 프리셋(erd·uml-class·sequence·architecture·ml-pipeline·flowchart). **CLI 설치 불필요**(브라우저 즉시 열람). mermaid로 부족한 정교한 셰이프·클라우드 아이콘·편집 가능 원본. [Agents365-ai/drawio-skill](https://github.com/Agents365-ai/drawio-skill)(MIT) 영감 → 자체 재구현(CLI 의존 제거).
+- **`humanize-korean` 한국적 정서·결 K 카테고리 (taxonomy v2.1)** — 기존 A~J(음성·제거 축)에 **K(양성·지향 축)** 4종(K-1 정서온도·K-2 절제·곡언·K-3 구어 호흡·K-4 정서 아크) 추가. 본진 E-8(띄어쓰기 기계적 균일성)·E-7 보강(3단계 화계)·머리말 모델별 번역투 시그니처 힌트. Park & Han 2026 LREAD(arXiv:2601.19913)·translationese(arXiv:2602.16469) 학술 교차. **메트릭·테스트 무변경**(parity 안전).
+- **`/project` agent-aware 강화 (moai-core)** — `/project init`이 스킬뿐 아니라 **코디네이터 에이전트**까지 동적 스캔·체인 설계. 신규 `agent-catalog.md` SSOT + Phase 2 에이전트 인벤토리 + Phase 3 코디네이터 우선 + 기존 에이전트 우선(stale 정정).
+- **`moai-tutor:learning-material` drawio 연동** — ```drawio` 블록을 인식해 draw.io 뷰어를 조건부 임베드(`references/cdn-libraries.md` §6 신규). mermaid는 그대로 유지.
+
+기존 워크플로우·플러그인 그대로 동작. `/plugin marketplace update cowork-plugins`로 적용.
 
 ---
 
@@ -446,7 +459,7 @@ moai-commerce에 시장조사·JTBD·페르소나·상품명·채널 메시지·
 | [moai-finance](./moai-finance/) | 원천징수, 부가세, K-IFRS, 결산, 예산 분석, **법원경매 매각공고**, **KRX 시세** | 6 |
 | [moai-public-data](./moai-public-data/) | 한국 공공데이터 조회 — KRX 시세, 법원경매, 국토부 실거래가, 공공데이터포털/KOSIS 통계 🆕 | 4 |
 | [moai-hr](./moai-hr/) | 근로계약서, 4대보험, 채용, 성과평가, **이력서 스크리닝** | 5 |
-| [moai-content](./moai-content/) | 카드뉴스, 상세페이지, 랜딩페이지, 뉴스레터, 카피라이팅, 블로그, 소셜미디어, 콘텐츠 캘린더, 유튜브·팟캐스트 기획, 바른한글 맞춤법, **한국어 AI 티 정밀 윤문**, **마크다운→HTML 렌더러(html-report)** | 14 |
+| [moai-content](./moai-content/) | 카드뉴스, 상세페이지, 랜딩페이지, 뉴스레터, 카피라이팅, 블로그, 소셜미디어, 콘텐츠 캘린더, 유튜브·팟캐스트 기획, 바른한글 맞춤법, **한국어 AI 티 정밀 윤문**, **마크다운→HTML 렌더러(html-report)**, **draw.io 다이어그램(drawio-diagram)** | 15 |
 | [moai-operations](./moai-operations/) | 결재, 조달, SOP, 벤더 관리, 상태 보고 | 3 |
 | [moai-education](./moai-education/) | 강사·교수·교사 교육 콘텐츠 풀스택 — 강의설계, 평가 출제, 1일-16주 모든 강의 형식 커리큘럼, 일반 강의·연수·정규 강좌 후기 자산화 | 6 |
 | [moai-lifestyle](./moai-lifestyle/) | 여행, 건강, 웨딩/이벤트 | 3 |
@@ -474,7 +487,7 @@ moai-commerce에 시장조사·JTBD·페르소나·상품명·채널 메시지·
 | 항목 | 수량 | 비고 |
 |------|:----:|------|
 | 플러그인 | **29** | moai-core + 28 도메인 플러그인 (moai-public-data·moai-tutor·moai-xquik 포함) |
-| 스킬 | **177** | 176개 기존 스킬은 `version: 2.20.0` 동기화, moai-xquik 1개 스킬 추가 |
+| 스킬 | **178** | 177개 기존 스킬은 `version: 2.21.0` 동기화, moai-xquik 1개 스킬 추가 |
 | 코디네이터 서브에이전트 | **31** | 플러그인 번들 `agents/` — 24 플러그인, Cowork-safe(Bash·WebFetch 배제), 텍스트 체인 ai-slop→humanize 마감 |
 | 레퍼런스 파일 | **287** | 각 스킬의 `references/` 안 상세 가이드 |
 | 스크립트 | **13** | helper(`scripts/`) — Python·Node·Shell |
@@ -887,8 +900,8 @@ X 데이터 검색, 프로필 조회, 추출, 모니터링, 웹훅, 게시 워�
 ## 기술 특징
 
 **Anthropic 공식 스킬 가이드 준수**
-- 모든 **173개** 스킬에 [What]+[When]+[Triggers] 구조의 description 적용
-- 모든 SKILL.md frontmatter에 `version: 2.19.0` 동기화 (Cowork 자동 업데이트 감지)
+- 모든 **177개 기존** 스킬에 [What]+[When]+[Triggers] 구조의 description 적용
+- 기존 SKILL.md frontmatter에 `version: 2.21.0` 동기화, moai-xquik 스킬은 Xquik MCP 설정 버전을 따름 (Cowork 자동 업데이트 감지)
 - Negative triggers로 불필요한 스킬 로딩 방지
 - 인라인 폴백과 에러 핸들링 내장
 

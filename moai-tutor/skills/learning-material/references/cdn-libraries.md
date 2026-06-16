@@ -18,6 +18,7 @@
 | 영역 | 채택(기본) | 라이선스 | 선정 근거 | 대안(opt-in) |
 |------|-----------|----------|-----------|--------------|
 | 다이어그램 | **Mermaid v11** | MIT | 텍스트→플로우·시퀀스·클래스·간트·ER 표준. 학습 개념 시각화에 최적 | — |
+| 정교 도식 | **draw.io 뷰어** (viewer-static) | Apache-2.0 | 편집 가능 .drawio·표준 셰이프·클라우드 아이콘·수동 레이아웃. mermaid 자동 레이아웃으로 부족한 정교한 도식·아키텍처 | mermaid(빠른 텍스트 도식) |
 | 차트 | **Apache ECharts v5** | Apache-2.0 | 대용량·인터랙티브·미려, canvas+SVG, 풍부한 차트 유형 | Chart.js v4 (경량·입문) |
 | 코드 하이라이트 | **highlight.js v11** | BSD-3 | zero-config 자동 언어 감지, 190+ 언어, 브라우저 동작 | Prism.js v1 (줄번호·복사 버튼 플러그인) |
 | 수식 | **KaTeX v0.16** | MIT | 동기 렌더·레이아웃 시프트 0·경량. 수식 즉시 표시 | MathJax 3 (고급 LaTeX·MathML 접근성) |
@@ -131,6 +132,22 @@ flowchart TD
   `https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js` + `https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js`
 - 폴백: 로드 실패 시 효과 없이 정상 표시(`once:true`로 콘텐츠는 항상 보임)
 
+## 6. draw.io 뷰어 — 정교 도식 (선택)
+
+콘텐츠에 ` ```drawio ` 블록(mxGraph XML)이 있을 때만 주입. mermaid로 부족한 정교한 셰이프·클라우드 아이콘·편집 가능한 도식에 사용. 작도·산출은 `moai-content:drawio-diagram` 스킬이 담당하고, 학습자료는 그 `.drawio` XML을 같은 HTML에 임베드한다.
+
+```html
+<div class="mxgraph" style="max-width:100%;border:1px solid var(--g300,#D1CFC5);border-radius:12px;"
+     data-mxgraph='{"highlight":"#D97757","nav":true,"resize":true,"toolbar":"zoom layers lightbox","xml":"<mxfile>…</mxfile>"}'>
+</div>
+<script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+```
+
+- 적합 도식: 시스템·클라우드 아키텍처, ERD, UML 클래스, 시퀀스, ML 파이프라인 — 편집 가능한 .drawio 원본이 필요할 때
+- 무버전 롤링 URL — 임의 버전 경로를 지어내지 않는다(`viewer-static.min.js` 고정)
+- 폴백: 로드 실패 시 `.drawio` XML을 `<details><pre>`로 함께 보존해 정보 손실 0
+- 상세 임베드 규격·이스케이프·단일 HTML 래퍼: `moai-content:drawio-diagram`의 `references/cdn-viewer.md`
+
 ---
 
 ## 조건부 로딩 결정 표
@@ -138,6 +155,7 @@ flowchart TD
 | 콘텐츠 신호 | 주입 | 비주입 시 |
 |-------------|------|-----------|
 | ` ```mermaid ` | Mermaid | — |
+| ` ```drawio ` | draw.io 뷰어 | XML 텍스트 보존 |
 | 수치 데이터·추이 | ECharts (또는 Chart.js) | 표만 |
 | ` ```lang ` 코드 블록 | highlight.js | mono 평문 |
 | `$…$` / `$$…$$` | KaTeX | — |
@@ -164,3 +182,4 @@ flowchart TD
 | 날짜 | 버전 | 변경 내용 |
 |------|------|-----------|
 | 2026-06-16 | 2.20.0 | 초기 큐레이션 — Mermaid·ECharts·highlight.js·KaTeX·AOS 5종 + 폰트·조건부 로딩 규칙 |
+| 2026-06-16 | 2.20.0 | draw.io 뷰어(정교 도식, 조건부) 추가 — moai-content:drawio-diagram 연동 |

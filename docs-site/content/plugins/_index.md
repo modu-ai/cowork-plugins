@@ -48,6 +48,16 @@ flowchart TD
         MCA[moai-career]
         ML2[moai-lifestyle]
     end
+    subgraph Personal["개인·일잘러"]
+        MW[moai-wealth]
+        MPR[moai-productivity]
+        MCO[moai-comms]
+    end
+    subgraph Extra["디자인·학습·공공데이터"]
+        MDS[moai-design]
+        MTU[moai-tutor]
+        MPD[moai-public-data]
+    end
 
     Core --> Content
     Core --> Biz
@@ -55,6 +65,8 @@ flowchart TD
     Core --> Legal
     Core --> Data
     Core --> Life
+    Core --> Personal
+    Core --> Extra
 
     style Core fill:#eaeaea,stroke:#6e6e6e,color:#09110f
     style Content fill:#e6f0ef,stroke:#144a46,color:#09110f
@@ -63,10 +75,14 @@ flowchart TD
     style Legal fill:#f5dcd7,stroke:#c44a3a,color:#09110f
     style Data fill:#e6f0ef,stroke:#6e6e6e,color:#09110f
     style Life fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style Personal fill:#dceee9,stroke:#2a8a8c,color:#09110f
+    style Extra fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
 {{< hint type="note" >}}
-**v2.20.0 업데이트 (최신)**: **학습자 전용 moai-tutor 플러그인 신규 (3 스킬)** — 가르치는 사람(moai-education)과 분리된 **배우는 사람(학습자·수강생)** 도메인. `learning-project`(학습 프로젝트·로드맵·진도) · `tutor-research`(context7 공식 문서 + 웹검색 **병렬** 조사·교차검증) · `learning-material`(도식·차트·수식·코드가 조건부로 들어간 단일 HTML 학습자료). context7 MCP 번들 + 2026 CDN 라이브러리 스택(Mermaid·ECharts·highlight.js·KaTeX·AOS) 큐레이션. **27 → 28 플러그인 · 173 → 176 스킬 · 기능적 비파괴 · Breaking change 없음**.
+**v2.21.0 업데이트 (최신)**: **drawio-diagram 신규 + humanize-korean 한국적 정서·결 K 카테고리 + /project agent-aware** — 자연어를 편집 가능한 `.drawio` + 단일 HTML(draw.io CDN 뷰어, Apache-2.0)로 렌더하는 **`drawio-diagram`** 신규(6 프리셋·CLI 불필요·`learning-material`과 ```drawio` 블록 연동). `humanize-korean`에 한국적 정서·결 **K 카테고리(양성 축) 4종**(A~J 음성·제거에 K 양성·지향 충전, 2026 학술 교차·메트릭 무변경). `/project`가 코디네이터 에이전트까지 동적 스캔·체인 설계. **28 플러그인 유지 · 173 → 177 스킬 · 기능적 비파괴 · Breaking change 없음**.
+
+**v2.20.0**: **학습자 전용 moai-tutor 플러그인 신규 (3 스킬)** — 가르치는 사람(moai-education)과 분리된 **배우는 사람(학습자·수강생)** 도메인. `learning-project`(학습 프로젝트·로드맵·진도) · `tutor-research`(context7 공식 문서 + 웹검색 **병렬** 조사·교차검증) · `learning-material`(도식·차트·수식·코드가 조건부로 들어간 단일 HTML 학습자료). context7 MCP 번들 + 2026 CDN 라이브러리 스택(Mermaid·ECharts·highlight.js·KaTeX·AOS) 큐레이션. **27 → 28 플러그인 · 173 → 176 스킬 · 기능적 비파괴 · Breaking change 없음**.
 
 **v2.19.0**: **humanize-korean v2.0.0 포팅 + Cowork-safe 코디네이터 31종 재도입** — `moai-content:humanize-korean`을 upstream epoko77-ai/im-not-ai v2.0.0으로 정렬(번역투 8유형 계보 + 신규 패턴 A-16·A-18·A-19·E-7 + post-editese 14메트릭). Cowork-safe 코디네이터 31개(24 플러그인, Bash·WebFetch 배제)를 실측 근거로 선별 재도입. v2.18.0 `/project` Agent Synthesis와 공존. **27 플러그인 · 173 스킬 유지 · 기능적 비파괴 · Breaking change 없음**.
 
@@ -165,7 +181,7 @@ flowchart TD
 | 플러그인 | 스킬 수 | 대표 스킬 (일부) |
 |---|---|---|
 | [moai-core](./moai-core/) | 8 | project, ai-slop-reviewer, feedback, ai-diagnostic, mcp-connector-setup, skill-builder, skill-template, skill-tester |
-| [moai-content](./moai-content/) | 14 | blog, card-news, landing-page, copywriting, humanize-korean, html-report, detail-page-planner +7종 |
+| [moai-content](./moai-content/) | 15 | blog, card-news, landing-page, copywriting, humanize-korean, html-report, detail-page-planner, drawio-diagram +7종 |
 | [moai-office](./moai-office/) | 6 | pptx-designer, docx-generator, xlsx-creator, hwpx-writer, pdf-writer, **notebooklm-slide-prompt (v2.15 신규)** |
 | [moai-media](./moai-media/) | 6 | **higgsfield-image·higgsfield-video (v2.13 신규)** Higgsfield MCP 직접 호출로 공식 11 이미지 모델(Soul 계열·Nano Banana 계열·GPT Image 계열·Seedream 4.0·Flux Kontext·Wan 2.2/2.5) + 공식 11 영상 모델(Sora 2·Veo 3·Kling 2.1/2.5/3.0·Kling Avatars 2.0·Seedance 2.0/Pro·Cinema Studio 3.5·MiniMax Hailuo 02·Wan 2.5) + 6 비디오 프리셋(UGC·Unboxing·Product review·Hyper motion·TV spot·Wild Card) 자연어 호출 · **gpt-image-2-prompt·gemini-3-image-prompt·midjourney-v8-prompt** 외부 도구 프롬프트 빌더 · **audio-gen** ElevenLabs MCP TTS·보이스 클로닝·다국어 더빙 |
 | [moai-book](./moai-book/) | 8 | **book-concept-planner·book-target-reader·book-outline-designer·book-author-bio·book-proposal-writer·book-publisher-matcher·book-chapter-writer·book-revision-coach (v2.10 신규)** |
@@ -200,7 +216,7 @@ flowchart TD
 - [빠른 시작](./quick-start/) — 마켓플레이스 추가 → 플러그인 설치 → 첫 체인
 - [`moai-core`](./moai-core/) — 반드시 가장 먼저 설치
 - [Cowork 플러그인 사용](../../cowork/plugins/) — Cowork 환경 통합 가이드
-- [강의로 배우기 (모두의 AI 아카데미 1기)](https://academy.mo.ai.kr/?utm_source=cowork-docs&utm_medium=referral&utm_campaign=docs-plugins-catalog) — 3일 · 정원 25명
+- [강의로 배우기 (모두의 AI 아카데미)](https://academy.mo.ai.kr/?utm_source=cowork-docs&utm_medium=referral&utm_campaign=docs-plugins-catalog) — 클로드 코워크로 나만의 AI 팀 만들기 · 코드 없이 2일 · 오프라인 정원 30석 · 모집 중
 
 ---
 

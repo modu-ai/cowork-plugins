@@ -8,7 +8,7 @@ description: |
   표준 상품명 3안·검증은 룰 통과 데이터 산출(ai-slop 체이닝 제외)이나, 트렌드 변환 모드의 해시태그·블로그 제목은 텍스트 산출물이므로 moai-core:ai-slop-reviewer를 체이닝합니다.
   [책임 경계] 페어 moai-domain-copywriting(광고·마케팅 카피)와 구분 — 본 스킬은 상품 등록용 상품명(SEO 최적화) + 트렌드 키워드 변환 전담.
 user-invocable: true
-version: 2.20.0
+version: 2.21.0
 ---
 
 # 상품명 자동 생성 (Commerce Product Naming)

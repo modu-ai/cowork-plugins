@@ -11,7 +11,7 @@ description: |
   - "구독자 늘리는 뉴스레터 기획해줘"
   완성 후 moai-core:ai-slop-reviewer로 AI 티를 정리하면 좋습니다.
 user-invocable: true
-version: 2.20.0
+version: 2.21.0
 ---
 
 # 뉴스레터 (Newsletter)

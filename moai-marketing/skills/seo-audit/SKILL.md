@@ -12,7 +12,7 @@ description: |
   - "이커머스 사이트 SEO 로드맵 만들어줘"
   네이버(C-Rank·D.I.A.)·구글(E-E-A-T·Core Web Vitals)·AI 검색 인용까지 점검해 개선 우선순위와 키워드 목록을 정리하고, 서술 권고는 moai-core:ai-slop-reviewer → moai-content:humanize-korean으로 다듬습니다.
 user-invocable: true
-version: 2.20.0
+version: 2.21.0
 ---
 
 # SEO 감사 (SEO Audit)

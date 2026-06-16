@@ -7,7 +7,7 @@ description: |
   매크로 전략 모드(채널 믹스·3단계 가격·시즌 프로모션 캘린더·재구매 자동화·KPI 대시보드 references 제공) + 통합 1장 모드(선행 산출물 종합) 2계층으로 동작하며, 전략 1장 직후 moai-core:ai-slop-reviewer를 자동 체이닝합니다.
   [책임 경계] 본 스킬은 이커머스 셀러 즉시 실행 전술 + 채널 전략. 중장기 사업 전략은 moai-business:strategy-planner, 운영 자동화 진단은 moai-commerce:commerce-automation-audit 사용.
 user-invocable: true
-version: 2.20.0
+version: 2.21.0
 ---
 
 # 통합 전략 자동 생성 (Commerce Integrated Strategy)
