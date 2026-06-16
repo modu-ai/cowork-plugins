@@ -7,7 +7,7 @@ description: |
   자연어 한 줄 입력으로 엑셀 없이 즉시 계산. 모든 채널 수수료 자동 반영(스마트스토어 5.94% / 쿠팡 10-12% / 카페24 2-3% / 아임웹 0-2.5%).
   ai-slop-reviewer 체이닝 제외 (수치·표 데이터 스킬).
 user-invocable: true
-version: 2.21.0
+version: 2.22.0
 ---
 
 # 마진·엔드 ROAS 자동 계산기 (Commerce Margin Calculator)

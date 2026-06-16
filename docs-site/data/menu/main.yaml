@@ -249,9 +249,15 @@ main:
     sub:
       - name: 릴리스 홈
         ref: /releases
+      - name: v2.22.0
+        ref: /releases/v2.22
+        isNew: true
+      - name: v2.21.0
+        ref: /releases/v2.21
+      - name: v2.20.0
+        ref: /releases/v2.20
       - name: v2.19.0
         ref: /releases/v2.19
-        isNew: true
       - name: v2.18.0
         ref: /releases/v2.18
       - name: v2.17.0

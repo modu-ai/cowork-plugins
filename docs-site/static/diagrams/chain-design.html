@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>체인 설계 프로세스 — 다이어그램</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Noto+Serif+KR:wght@400;700&display=swap">
+<style>
+  :root{
+    --ivory:#FAF9F5; --paper:#FFFFFF; --slate:#141413; --clay:#D97757;
+    --oat:#E3DACC; --g300:#D1CFC5; --g500:#87867F;
+    --sans:"Noto Sans KR",system-ui,-apple-system,sans-serif;
+    --serif:"Noto Serif KR",ui-serif,Georgia,serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--ivory);color:var(--slate);font-family:var(--sans);line-height:1.6;}
+  .wrap{max-width:980px;margin:0 auto;padding:32px 20px;}
+  h1{font-family:var(--serif);font-weight:700;font-size:1.6rem;margin:0 0 .25rem;}
+  .caption{color:var(--g500);font-size:.9rem;margin:.25rem 0 1.25rem;}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;font-size:.82rem;color:var(--slate);margin:0 0 16px;}
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .sw{width:14px;height:14px;border-radius:3px;border:1px solid var(--g300);display:inline-block;}
+  .view{background:var(--paper);border:1px solid var(--g300);border-radius:12px;padding:6px;min-height:560px;}
+  details{margin-top:16px;}
+  summary{cursor:pointer;color:var(--g500);font-size:.9rem;}
+  pre{background:var(--paper);border:1px solid var(--g300);border-radius:8px;padding:12px;overflow:auto;font-size:.76rem;line-height:1.45;white-space:pre;}
+  .src{color:var(--g500);font-size:.8rem;border-top:1px solid var(--g300);margin-top:24px;padding-top:12px;}
+  .src a{color:var(--clay);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>체인 설계 프로세스</h1>
+  <p class="caption">flowchart 프리셋 · 생성일 2026-06-16 · docs-site cowork 가이드용</p>
+
+  <div class="legend">
+    <span><i class="sw" style="background:#D97757;border-color:#B85C3E"></i> 시작/주 흐름</span>
+    <span><i class="sw" style="background:#FFFFFF"></i> 처리 단계</span>
+    <span><i class="sw" style="background:#FAF9F5;border-color:#D97757"></i> 판단/분기</span>
+    <span><i class="sw" style="background:#788C5D;border-color:#5F6F4A"></i> 산출물/데이터</span>
+    <span><i class="sw" style="background:#E3DACC;border-color:#C9BCA6"></i> 그룹 컨테이너</span>
+  </div>
+
+  <!-- 뷰어가 렌더할 컨테이너 (class는 JS가 부여 → 자동 init 중복 방지) -->
+  <div id="drawio-view" class="view" style="max-width:100%;"></div>
+
+  <!-- 다이어그램 원본 (raw .drawio XML — 실행/HTML 파싱 안 됨) -->
+  <script type="application/xml" id="drawio-src"><mxfile host="app.diagrams.net" type="device">
+  <diagram name="체인 설계 프로세스" id="chain-design-1">
+    <mxGraphModel dx="900" dy="640" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="900" pageHeight="760" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="grp_pipeline" value="체인 설계 파이프라인 (Chain Design Pipeline)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3DACC;strokeColor=#C9BCA6;verticalAlign=top;fontStyle=1;fontSize=13;fontColor=#141413;dashed=1;opacity=35;">
+          <mxGeometry x="40" y="40" width="820" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="s1" value="① 입력 분석&#10;(요청 이해)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fillColor=#D97757;strokeColor=#B85C3E;fontColor=#FFFFFF;fontStyle=1;fontSize=12;fontFamily=Helvetica;">
+          <mxGeometry x="70" y="90" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="s1_desc" value="무엇을 만들 것인가?&#10;예: &quot;블로그 글 발행&quot;" vertex="1" parent="1" style="text;align=center;whiteSpace=wrap;html=1;fontColor=#5F6F4A;fontSize=10;fontFamily=Helvetica;">
+          <mxGeometry x="70" y="165" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s2" value="② 단계 분해&#10;(작업 쪼개기)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontStyle=1;fontSize=12;fontFamily=Helvetica;">
+          <mxGeometry x="290" y="90" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="s2_desc" value="① 주제 선정 → ② 원고 작성&#10;→ ③ 발행 → ④ 품질 점검" vertex="1" parent="1" style="text;align=center;whiteSpace=wrap;html=1;fontColor=#5F6F4A;fontSize=10;fontFamily=Helvetica;">
+          <mxGeometry x="280" y="165" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s3" value="③ 스킬 선택&#10;(도메인 → 포맷)" vertex="1" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FAF9F5;strokeColor=#D97757;fontColor=#141413;fontStyle=1;fontSize=11;fontFamily=Helvetica;">
+          <mxGeometry x="530" y="75" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="s3_desc" value="각 단계에 맞는 스킬 매칭&#10;3원칙: 도메인 → 포맷 → 품질" vertex="1" parent="1" style="text;align=center;whiteSpace=wrap;html=1;fontColor=#5F6F4A;fontSize=10;fontFamily=Helvetica;">
+          <mxGeometry x="510" y="180" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="grp_skills" value="매칭된 스킬 (Skills)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#788C5D;strokeColor=#5F6F4A;verticalAlign=top;fontStyle=1;fontSize=12;fontColor=#FFFFFF;opacity=20;">
+          <mxGeometry x="530" y="300" width="280" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="sk1" value="blog&#10;(원고 작성)" vertex="1" parent="grp_skills" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontSize=10;fontFamily=Helvetica;">
+          <mxGeometry x="20" y="40" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="sk2" value="copywriting&#10;(카피)" vertex="1" parent="grp_skills" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontSize=10;fontFamily=Helvetica;">
+          <mxGeometry x="150" y="40" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="sk3" value="landing-page&#10;(발행)" vertex="1" parent="grp_skills" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontSize=10;fontFamily=Helvetica;">
+          <mxGeometry x="20" y="110" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="sk4" value="ai-slop-reviewer&#10;(품질 점검)" vertex="1" parent="grp_skills" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D97757;strokeColor=#B85C3E;fontColor=#FFFFFF;fontSize=10;fontStyle=1;fontFamily=Helvetica;">
+          <mxGeometry x="150" y="110" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="sk5" value="humanize-korean&#10;(자연스러움)" vertex="1" parent="grp_skills" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontSize=10;fontFamily=Helvetica;">
+          <mxGeometry x="85" y="180" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="s4" value="④ 흐름 구성&#10;(체인 조립)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D97757;strokeWidth=2;fontColor=#141413;fontStyle=1;fontSize=12;fontFamily=Helvetica;">
+          <mxGeometry x="290" y="310" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="s4_desc" value="순서 연결: domain → format → quality" vertex="1" parent="1" style="text;align=center;whiteSpace=wrap;html=1;fontColor=#5F6F4A;fontSize=10;fontFamily=Helvetica;">
+          <mxGeometry x="270" y="385" width="200" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="chain_out" value="조립된 체인&#10;blog → copywriting → landing-page&#10;→ ai-slop-reviewer → humanize-korean" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#788C5D;strokeColor=#5F6F4A;fontColor=#FFFFFF;fontSize=10;fontFamily=Helvetica;align=center;">
+          <mxGeometry x="240" y="420" width="260" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="s5" value="⑤ 테스트&#10;(결과 검증)" vertex="1" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FAF9F5;strokeColor=#D97757;fontColor=#141413;fontStyle=1;fontSize=11;fontFamily=Helvetica;">
+          <mxGeometry x="70" y="420" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="s6" value="완성된 산출물&#10;(배포)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fillColor=#788C5D;strokeColor=#5F6F4A;fontColor=#FFFFFF;fontStyle=1;fontSize=12;fontFamily=Helvetica;">
+          <mxGeometry x="70" y="560" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="s1" target="s2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=2;endArrow=block;fontColor=#B85C3E;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="s2" target="s3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=2;endArrow=block;fontColor=#B85C3E;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="s3" target="sk1" value="매칭" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;strokeWidth=2;endArrow=block;fontColor=#5F6F4A;fontSize=10;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="sk4" target="s4" value="선택 완료" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;strokeWidth=2;endArrow=block;fontColor=#5F6F4A;fontSize=10;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="s4" target="chain_out" value="조립" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#788C5D;strokeWidth=2;endArrow=block;fontColor=#5F6F4A;fontSize=10;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="chain_out" target="s5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;strokeWidth=2;endArrow=block;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_loop" edge="1" parent="1" source="s5" target="s3" value="아니오 (수정)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;dashed=1;strokeWidth=2;endArrow=block;fontColor=#B85C3E;fontSize=10;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="620" y="460" />
+              <mxPoint x="620" y="220" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_pass" edge="1" parent="1" source="s5" target="s6" value="예 (통과)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#788C5D;strokeWidth=2;endArrow=block;fontColor=#5F6F4A;fontSize=10;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="grp_legend" value="범례 (Legend)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3DACC;strokeColor=#C9BCA6;verticalAlign=top;fontStyle=1;fontSize=11;fontColor=#141413;opacity=30;">
+          <mxGeometry x="70" y="640" width="760" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lg1" value="■ 시작/끝" vertex="1" parent="grp_legend" style="text;align=left;whiteSpace=wrap;html=1;fontColor=#B85C3E;fontSize=10;fontFamily=Helvetica;">
+          <mxGeometry x="20" y="25" width="120" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="lg2" value="◆ 판단/분기" vertex="1" parent="grp_legend" style="text;align=left;whiteSpace=wrap;html=1;fontColor=#B85C3E;fontSize=10;fontFamily=Helvetica;">
+          <mxGeometry x="160" y="25" width="120" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="lg3" value="▢ 처리 단계" vertex="1" parent="grp_legend" style="text;align=left;whiteSpace=wrap;html=1;fontColor=#141413;fontSize=10;fontFamily=Helvetica;">
+          <mxGeometry x="300" y="25" width="120" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="lg4" value="▣ 산출물/데이터" vertex="1" parent="grp_legend" style="text;align=left;whiteSpace=wrap;html=1;fontColor=#5F6F4A;fontSize=10;fontFamily=Helvetica;">
+          <mxGeometry x="440" y="25" width="140" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="lg5" value="⇢ 피드백 루프" vertex="1" parent="grp_legend" style="text;align=left;whiteSpace=wrap;html=1;fontColor=#B85C3E;fontSize=10;fontFamily=Helvetica;">
+          <mxGeometry x="600" y="25" width="140" height="25" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile></script>
+
+  <details>
+    <summary>다이어그램 소스 (.drawio XML — 뷰어 차단 시 폴백)</summary>
+    <pre id="src-dump"></pre>
+  </details>
+
+  <p class="src">렌더: draw.io <code>viewer-static.min.js</code> (Apache-2.0) · 편집: 같은 폴더의 <code>chain-design.drawio</code>를 <a href="https://app.diagrams.net" target="_blank" rel="noopener">app.diagrams.net</a>에서 열기</p>
+</div>
+
+<!-- draw.io 정적 뷰어 (무버전 롤링 CDN) -->
+<script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+<script>
+(function(){
+  var srcEl = document.getElementById('drawio-src');
+  var xml = srcEl ? srcEl.textContent.trim() : '';
+  // 폴백 덤프(textContent 대입 → 자동 이스케이프, 인젝션 안전)
+  var dump = document.getElementById('src-dump');
+  if (dump) dump.textContent = xml;
+  // data-mxgraph 런타임 구성: JSON.stringify가 모든 따옴표/특수문자를 안전 처리
+  var view = document.getElementById('drawio-view');
+  var cfg = { highlight:"#D97757", nav:true, resize:true, "toolbar":"zoom layers lightbox", "toolbar-position":"top", lightbox:false, xml: xml };
+  view.setAttribute('data-mxgraph', JSON.stringify(cfg));
+  view.className = 'mxgraph view';   // mxgraph 클래스를 이 시점에 부여
+  function render(){
+    if (window.GraphViewer && typeof GraphViewer.processElements === 'function') {
+      GraphViewer.processElements();
+    }
+  }
+  if (document.readyState !== 'loading') render();
+  else document.addEventListener('DOMContentLoaded', render);
+})();
+</script>
+</body>
+</html>

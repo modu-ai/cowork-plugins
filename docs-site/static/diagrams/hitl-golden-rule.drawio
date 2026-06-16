@@ -1,0 +1,108 @@
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="HITL Golden Rule" id="hitl-gr-1">
+    <mxGraphModel dx="900" dy="640" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="860" pageHeight="780" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ============ 그룹 A: 자동화 영역 (80%) ============ -->
+        <mxCell id="grp_auto" value="자동화 영역 — AI가 담당 (80%)" vertex="1" parent="1"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3DACC;strokeColor=#C9BCA6;verticalAlign=top;fontStyle=1;fontColor=#141413;dashed=1;opacity=40;spacingTop=6;">
+          <mxGeometry x="40" y="40" width="380" height="660" as="geometry" />
+        </mxCell>
+
+        <!-- 입력: 반복 작업 100건 (스타디움 시작 셰이프) -->
+        <mxCell id="in_work" value="반복 업무 100건&#10;(주문·문의·카피 초안 등)" vertex="1" parent="1"
+          style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#D97757;strokeColor=#B85C3E;fontColor=#FFFFFF;fontStyle=1;fontFamily=Helvetica;">
+          <mxGeometry x="140" y="90" width="200" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- 처리: AI 초안 생성 -->
+        <mxCell id="ai_draft" value="AI 초안 자동 생성&#10;(80건 = 80%)" vertex="1" parent="1"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontFamily=Helvetica;">
+          <mxGeometry x="140" y="210" width="200" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- 판단: HITL 게이트 -->
+        <mxCell id="gate_hitl" value="사람 검수 게이트&#10;(HITL)" vertex="1" parent="1"
+          style="rhombus;whiteSpace=wrap;html=1;fillColor=#FAF9F5;strokeColor=#D97757;strokeWidth=2;fontColor=#141413;fontStyle=1;fontFamily=Helvetica;">
+          <mxGeometry x="150" y="340" width="180" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- 처리: 10배 검수 (핵심 강조) -->
+        <mxCell id="deep_review" value="★ 10배 검수&#10;사람이 자동 산출물을&#10;안 한 20% 대비 10배&#10;꼼꼼히 확인" vertex="1" parent="1"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D97757;strokeColor=#B85C3E;fontColor=#FFFFFF;fontStyle=1;fontFamily=Helvetica;">
+          <mxGeometry x="130" y="520" width="220" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- ============ 그룹 B: 수동 처리 영역 (20%) ============ -->
+        <mxCell id="grp_manual" value="수동 처리 영역 — 사람 직접 (20%)" vertex="1" parent="1"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3DACC;strokeColor=#C9BCA6;verticalAlign=top;fontStyle=1;fontColor=#141413;dashed=1;opacity=40;spacingTop=6;">
+          <mxGeometry x="500" y="40" width="320" height="360" as="geometry" />
+        </mxCell>
+
+        <!-- 수동 직접 처리 -->
+        <mxCell id="manual_direct" value="고난도·창의 작업&#10;사람이 직접&#10;(20건 = 20%)" vertex="1" parent="1"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontFamily=Helvetica;">
+          <mxGeometry x="560" y="150" width="200" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- 수동 표준 검수 -->
+        <mxCell id="manual_review" value="표준 검수&#10;(1배 기준선)" vertex="1" parent="1"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontFamily=Helvetica;">
+          <mxGeometry x="560" y="270" width="200" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- ============ 최종 산출 ============ -->
+        <mxCell id="out_done" value="최종 산출&#10;승인 / 반려 후 반영" vertex="1" parent="1"
+          style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#788C5D;strokeColor=#5F6F4A;fontColor=#FFFFFF;fontStyle=1;fontFamily=Helvetica;">
+          <mxGeometry x="290" y="660" width="280" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- ============ 엣지 (흐름) ============ -->
+        <!-- 입력 → AI 초안 -->
+        <mxCell id="e1" value="분류" edge="1" parent="1" source="in_work" target="ai_draft"
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;fontColor=#87867F;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- AI 초안 → HITL 게이트 -->
+        <mxCell id="e2" edge="1" parent="1" source="ai_draft" target="gate_hitl"
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 입력 → 수동 직접 (분류: 20%) -->
+        <mxCell id="e3" value="고난도 20%" edge="1" parent="1" source="in_work" target="manual_direct"
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;fontColor=#87867F;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 수동 직접 → 수동 표준 검수 -->
+        <mxCell id="e4" value="1배 검수" edge="1" parent="1" source="manual_direct" target="manual_review"
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;fontColor=#87867F;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- HITL 게이트 → 10배 검수 (예: 자동 산출물 확인) -->
+        <mxCell id="e5" value="예: 자동 산출물" edge="1" parent="1" source="gate_hitl" target="deep_review"
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=2;fontColor=#B85C3E;fontStyle=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 10배 검수 → 최종 산출 -->
+        <mxCell id="e6" value="10배 검수 완료" edge="1" parent="1" source="deep_review" target="out_done"
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=2;fontColor=#B85C3E;fontStyle=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 수동 표준 검수 → 최종 산출 -->
+        <mxCell id="e7" value="표준 검수 완료" edge="1" parent="1" source="manual_review" target="out_done"
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;fontColor=#87867F;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

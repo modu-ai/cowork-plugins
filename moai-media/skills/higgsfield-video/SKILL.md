@@ -13,7 +13,7 @@ description: |
   - "캐릭터 일관성 있는 아바타 영상"
   Seedance 2.0·Seedance Pro·Cinema Studio 3.5·Kling 2.1 Master·Kling 2.5 Turbo·Kling 3.0·Kling Avatars 2.0·MiniMax Hailuo 02·Google Veo 3·Sora 2·Wan 2.5 11개 공식 영상 모델과 6가지 비디오 프리셋(UGC·Unboxing·Product review·Hyper motion·TV spot·Wild Card), 캐릭터 일관성(Kling Avatars 2.0), 비동기 잡 폴링까지 처리한 완성 영상을 산출합니다.
 user-invocable: true
-version: 2.21.0
+version: 2.22.0
 ---
 
 # Higgsfield 영상 생성 (higgsfield-video)

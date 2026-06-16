@@ -33,7 +33,7 @@
 [8] Claude Code로 구현
 ```
 
-## 스킬 5종
+## 스킬 6종
 
 | 스킬 | 사용 시점 | 결과물 |
 |---|---|---|
@@ -42,6 +42,7 @@
 | [`claude-design-prompt-builder`](./skills/claude-design-prompt-builder/) | 특정 UX 영역(IA·온보딩·접근성 등) 작업 | 시니어 UX 10패턴 중 적합 프롬프트 |
 | [`claude-design-handoff-reader`](./skills/claude-design-handoff-reader/) | Claude Design → Claude Code 직전 | 번들 요약 + Claude Code 지시 1줄 |
 | [`claude-design-slop-check`](./skills/claude-design-slop-check/) | Claude Design 카피 결과물 검수 | AI 슬롭 패턴 검수 리포트 + 수정 제안 |
+| [`design-system-library`](./skills/design-system-library/) | 브랜드 디자인 시스템 적용 시 | 56개 글로벌 브랜드 디자인 시스템 토큰 → Tailwind Play CDN + shadcn vanilla HTML |
 
 ## 빠른 시작
 

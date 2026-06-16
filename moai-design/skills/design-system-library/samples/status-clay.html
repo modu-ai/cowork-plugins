@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>주간 현황 — Clay 테마 샘플</title>
+
+  <!-- Tailwind Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Clay design tokens (systems/clay.md) → tailwind.config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0a0a0a',
+            'primary-active': '#1f1f1f',
+            canvas:  '#fffaf0',
+            ink:     '#0a0a0a',
+            body:    '#3a3a3a',
+            'body-strong': '#1a1a1a',
+            muted:   '#6a6a6a',
+            'muted-soft': '#9a9a9a',
+            hairline:'#e5e5e5',
+            surface: { soft:'#faf5e8', card:'#f5f0e0', strong:'#ebe6d6', dark:'#0a1a1a' },
+            brand: { pink:'#ff4d8b', teal:'#1a3a3a', lavender:'#b8a4ed',
+                     peach:'#ffb084', ochre:'#e8b94a' },
+          },
+          fontFamily: {
+            display: ['"Plain Black"', 'Inter', '-apple-system', 'sans-serif'],
+            sans:    ['Inter', '-apple-system', 'sans-serif'],
+            mono:    ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+          },
+          borderRadius: { md:'12px', lg:'16px', xl:'24px' },
+          letterSpacing:{ tight:'-0.02em', tighter:'-0.03em' },
+        }
+      }
+    }
+  </script>
+
+  <!-- 웹폰트: Plain Black 대체 (Inter weight 500, rounded warmth) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+</head>
+
+<body class="bg-canvas text-ink font-sans antialiased">
+  <main class="mx-auto max-w-3xl px-6 py-14">
+
+    <!-- 헤더 -->
+    <header class="mb-10">
+      <p class="mb-2 font-mono text-[11px] uppercase tracking-wider text-muted">Weekly Status · 2026-W23</p>
+      <div class="flex items-end justify-between gap-3 flex-wrap">
+        <h1 class="font-display text-5xl tracking-tight text-ink" style="font-weight:500">한울 엔지니어링 11주차 현황</h1>
+      </div>
+      <p class="mt-3 text-body">2026-06-09 ~ 06-15 · 작성자: 김한울</p>
+    </header>
+
+    <!-- 메트릭 카드 4개 -->
+    <section class="grid grid-cols-2 gap-4 md:grid-cols-4 mb-10">
+      <div class="rounded-xl border border-hairline bg-white p-6">
+        <div class="font-display text-4xl tracking-tight text-primary" style="font-weight:500">12</div>
+        <div class="mt-1 text-[11px] uppercase tracking-wider text-muted">완료 PR</div>
+      </div>
+      <div class="rounded-xl border border-hairline bg-white p-6">
+        <div class="font-display text-4xl tracking-tight text-ink" style="font-weight:500">+847</div>
+        <div class="mt-1 text-[11px] uppercase tracking-wider text-muted">코드 추가</div>
+      </div>
+      <div class="rounded-xl border border-hairline bg-white p-6">
+        <div class="font-display text-4xl tracking-tight text-ink" style="font-weight:500">94%</div>
+        <div class="mt-1 text-[11px] uppercase tracking-wider text-muted">테스트 통과율</div>
+      </div>
+      <div class="rounded-xl border border-hairline bg-white p-6">
+        <div class="font-display text-4xl tracking-tight text-brand-teal" style="font-weight:500">3</div>
+        <div class="mt-1 text-[11px] uppercase tracking-wider text-muted">진행 마일스톤</div>
+      </div>
+    </section>
+
+    <!-- 하이라이트 -->
+    <section class="mb-10">
+      <h2 class="font-display text-2xl tracking-tight text-ink mb-4" style="font-weight:500">이번 주 하이라이트</h2>
+      <div class="space-y-3">
+        <div class="flex gap-3 items-start rounded-xl border-l-4 border-brand-pink bg-brand-pink p-4">
+          <p class="text-white" style="font-weight:600">결제 게이트웨이 v2 마이그레이션 완료 — 평균 응답시간 320ms → 180ms (-44%) 개선</p>
+        </div>
+        <div class="flex gap-3 items-start rounded-xl border-l-4 border-brand-teal bg-brand-teal p-4">
+          <p class="text-white" style="font-weight:600">신규 디자인 시스템 라이브러리 도입 — 보고서·랜딩 템플릿 일관성 확보</p>
+        </div>
+        <div class="flex gap-3 items-start rounded-xl border-l-4 border-brand-ochre bg-brand-ochre p-4">
+          <p class="text-ink" style="font-weight:600">SEV-2 장애 1건 대응 완료 (502, 47분 소요) — 사후분석 문서화</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 완료 테이블 -->
+    <section class="mb-10">
+      <h2 class="font-display text-2xl tracking-tight text-ink mb-4" style="font-weight:500">완료된 작업</h2>
+      <div class="overflow-x-auto rounded-xl border border-hairline">
+        <table class="w-full text-sm">
+          <thead class="bg-surface-soft text-left text-muted">
+            <tr>
+              <th class="px-4 py-3 font-medium">PR</th>
+              <th class="px-4 py-3 font-medium">제목</th>
+              <th class="px-4 py-3 font-medium">작성자</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-hairline">
+            <tr class="text-ink"><td class="px-4 py-3"><a href="#" class="text-primary underline">#312</a></td><td class="px-4 py-3">실시간 알림 채널 통합</td><td class="px-4 py-3 text-muted">박지은</td></tr>
+            <tr class="text-ink"><td class="px-4 py-3"><a href="#" class="text-primary underline">#309</a></td><td class="px-4 py-3">결제 v2 마이그레이션</td><td class="px-4 py-3 text-muted">김한울</td></tr>
+            <tr class="text-ink"><td class="px-4 py-3"><a href="#" class="text-primary underline">#305</a></td><td class="px-4 py-3">디자인 시스템 라이브러리 도입</td><td class="px-4 py-3 text-muted">이서연</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Carryover -->
+    <section class="mb-10">
+      <h2 class="font-display text-2xl tracking-tight text-ink mb-4" style="font-weight:500">다음 주로 이월</h2>
+      <div class="rounded-xl bg-surface-soft p-6">
+        <ul class="space-y-3 text-body">
+          <li class="flex gap-2"><span class="text-primary">·</span> 알림 채널 A/B 테스트 결과 분석</li>
+          <li class="flex gap-2"><span class="text-primary">·</span> 결제 웹훅 재시도 로직 보강</li>
+          <li class="flex gap-2"><span class="text-primary">·</span> 디자인 시스템 Phase 2 확장 (56개)</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="border-t border-hairline pt-6 text-xs text-muted-soft">
+      <p>본 문서는 <code class="font-mono">design-system-library</code> · Clay 테마(Tailwind Play CDN)로 렌더된 샘플입니다.</p>
+    </footer>
+
+  </main>
+</body>
+</html>

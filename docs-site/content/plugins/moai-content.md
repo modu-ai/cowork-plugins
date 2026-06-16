@@ -106,11 +106,22 @@ card-news → moai-media:higgsfield-image → ai-slop-reviewer
 
 ### 권장 체인 위치 — `ai-slop-reviewer` 직후
 
+### AI 글에서 기계 티를 빼는 두 단계 — ai-slop → humanize 체인
+
+AI가 쓴 글을 읽다 보면 어딘가 기계 맛이 납니다. "혁신적인 솔루션", "첫째, 둘째, 마지막으로" 같은 반복, "많은 사람들은~" 같은 뭉툭한 일반화가 대표적입니다. 이런 흔적을 **AI 슬롭(AI slop, AI가 찍어낸 티 나는 텍스트)**이라 부르고, 이걸 사람 글처럼 다시 다듬는 작업을 **휴머나이즈(humanize, 사람화)**라고 합니다. cowork는 이 두 작업을 순서대로 묶어 **후처리 체인**으로 돌립니다.
+
+비유하자면 번역물을 두 번 손보는 것과 같습니다. 1차 통역사가 대강 옮긴 뒤, 2차 교정자가 문맥을 다듬는 식입니다. 먼저 `ai-slop-reviewer`가 과장 수식어·기계 접속어·모호한 일반화 같은 **일반적인 AI 패턴**을 찾아 빼고 사람 톤으로 정리합니다. 예를 들어 "획기적으로 개선된 혁신적인 플랫폼"이라는 문장은 "쓰기 편해진 플랫폼" 정도로 줄입니다. 그 뒤 `humanize-korean`이 한국어 특유의 결을 잡습니다 — 영어식 번역투("…를 통해"), 남발하는 한자어 명사화, 정체 없는 관용구("시사하는 바가 크다"), 형식 명사 결말("…인 것이다") 같은 **한국어 SSOT 40개 이상의 패턴**을 정량 메트릭으로 찾아 수술합니다.
+
+왜 두 단계로 나누는지가 핵심입니다. 1차는 "글의 뼈대에서 AI 냄새를 빼는" 단계이고, 2차는 "한국어 결로 살을 채우는" 단계입니다. `humanize-korean`은 의미 100% 보존을 원칙으로 삼아 사실·수치·고유명사·직접 인용은 한 글자도 바꾸지 않고, 변경률이 30%를 넘으면 경고, 50%를 넘으면 되레 롤백까지 합니다 — 과윤문을 막기 위해서입니다. 마지막엔 A/B/C/D 등급까지 매겨줘 "이 글이 얼마나 사람 같은지"를 숫자로 확인합니다. 이 체인을 거친 글은 배포 전 마지막으로 사람이 한 번 읽어주면 끝입니다.
+
 ```text
 {콘텐츠 생성 스킬} → ai-slop-reviewer → korean-spell-check → 사용자 최종 검토
 ```
 
 `ai-slop-reviewer`는 AI 패턴(과한 형용사·반복·번역체)을 검수하고, `korean-spell-check`는 규칙 기반 띄어쓰기·맞춤법을 잡습니다 — 차원이 다릅니다.
+
+
+📊 [다이어그램으로 보기](/diagrams/ai-slop-humanize.html) — 브라우저에서 바로 열립니다. 편집은 [`ai-slop-humanize.drawio`](/diagrams/ai-slop-humanize.drawio)를 [app.diagrams.net](https://app.diagrams.net)에서 여세요.
 
 ### Policy first
 
@@ -278,12 +289,22 @@ Thariq Shihipar의 **"The Unreasonable Effectiveness of HTML"** 철학을 기반
 | pr | PR 서사 / 관계자 알림 | 보도자료, 공지사항 |
 
 ### 핵심 특징
+## P1 컨슈머 호환성이란 무엇인가요?
+
+`html-report`는 산출물 용도에 따라 여러 "모드"를 제공합니다. 그중 **P1 컨슈머 호환성**이란, **최종 사용자(컨슈머)에게 그대로 전달할 수 있도록 렌더링·한글 폰트·인쇄·체인 연동을 모두 검증 마친 모드**를 뜻합니다. 여기서 "컨슈머"는 외부 담당자를 의미합니다. 즉 회사 바깥의 고객, 임원, 투자자, 소상공인처럼 이 산출물을 받아보는 사람입니다.
+
+비유하자면, 레스토랑 주방에서 만든 음식이 "나가기 전 위생 검사를 통과한 메뉴"인지 확인하는 것과 같습니다. `html-report`가 요리라면, P1 호환은 "손님 상에 올려도 되는가"를 점검한 상태입니다. 통과한 모드는 별도 설정 없이 바로 컨슈머 산출물로 직행합니다.
+
+현재 **4종이 P1 검증을 통과**했습니다. `executive-summary`는 임원·대표에게 한 페이지로 보내는 경영 요약용이고, `financial-statements`는 재무팀과 투자자 공시에 쓰는 숫자 중심 재무제표, `sbiz365-analyst`는 소상공인 분석 리포트, `daily-briefing`은 팀 채널에 매일 공유하는 아침 브리핑입니다. 반면 `status`·`incident`처럼 내부 팀만 보는 용도는 컨슈머(외부 사용자) 산출물이 아니므로 P1 검증 범위에서 제외됩니다. 요약하면 "P1 = 외부로 나가도 검증된, 안심하고 쓸 수 있는 모드"입니다.
 
 - **인라인 SVG + vanilla JS**: 12-25KB 산출물, 페이지 로딩 거의 무영향
 - **한글 폰트 매핑**: Pretendard (기본), Noto Serif KR (serif), Noto Sans KR (sans), 조선일보명조, KoPubWorld 명조, JetBrains Mono (코드)
 - **인쇄 친화**: `@media print` 자동 적용, 페이지 나누기 최적화
 - **CSS 변수 8종**: `--ivory`, `--slate`, `--clay`, `--oat`, `--olive`, `--sans`, `--serif`, `--mono`
 - **P1 컨슈머 호환성**: executive-summary, financial-statements, sbiz365-analyst, daily-briefing 4종 검증 완료
+
+
+📊 [다이어그램으로 보기](/diagrams/p1.html) — 브라우저에서 바로 열립니다. 편집은 [`p1.drawio`](/diagrams/p1.drawio)를 [app.diagrams.net](https://app.diagrams.net)에서 여세요.
 
 ### 권장 체인 위치 — 텍스트 산출물 마지막 단계
 

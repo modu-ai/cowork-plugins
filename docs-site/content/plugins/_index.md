@@ -1,14 +1,53 @@
 ---
 title: "플러그인 카탈로그"
 weight: 1
-description: "modu-ai/cowork-plugins 마켓플레이스의 28개 플러그인·176개 스킬을 도메인별로 정리한 카탈로그입니다."
+description: "modu-ai/cowork-plugins 마켓플레이스의 28개 플러그인·178개 스킬을 도메인별로 정리한 카탈로그입니다."
 geekdocBreadcrumb: true
 geekdocCollapseSection: false
 ---
 
 # `cowork-plugins` 카탈로그
 
-[`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins)는 한국 업무 환경에 맞춰 설계된 **28개 플러그인 · 176개 스킬**의 커뮤니티 마켓플레이스입니다. 사업계획·IR·마케팅·법무·세무·HR·카드뉴스·PPT·이미지 프롬프트 빌더·이커머스 풀스택·메타 광고 운영·NotebookLM 슬라이드·한국 출판사 제출 원고·Claude Design 보조 풀스택·개인 재무·자기관리·직장 커뮤니케이션·**한국 공공·시세 데이터 조회**까지 도메인별로 묶여 있습니다.
+[`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins)는 한국 업무 환경에 맞춰 설계된 **28개 플러그인 · 178개 스킬**의 커뮤니티 마켓플레이스입니다. 사업계획·IR·마케팅·법무·세무·HR·카드뉴스·PPT·이미지 프롬프트 빌더·이커머스 풀스택·메타 광고 운영·NotebookLM 슬라이드·한국 출판사 제출 원고·Claude Design 보조 풀스택·개인 재무·자기관리·직장 커뮤니케이션·**한국 공공·시세 데이터 조회**까지 도메인별로 묶여 있습니다.
+
+## 플러그인과 스킬, 무엇이 다른가요
+
+문서 곳곳에 "플러그인"과 "스킬"이라는 두 단어가 함께 등장합니다. 두 단어를 같은 뜻으로 읽으면 "스킬이 178개인데 왜 28개만 설치하나?" 같은 의문이 생깁니다. 둘은 층위가 다른 개념입니다.
+
+대형 마트에 비유하면 명확해집니다. 마트에는 '청과 코너', '정육 코너', '문구 코너'처럼 비슷한 상품끼리 모은 **매장**이 있습니다. 이 매장 하나하나가 **플러그인**입니다. 그리고 매장 안에는 사과·배추·소고기 같은 개별 **상품**이 진열되어 있는데, 이 상품 하나하나가 **스킬**입니다. 즉 "플러그인 = 비슷한 스킬들을 모아둔 상자/매장", "스킬 = 그 안의 개별 도구"입니다. 그래서 28개 플러그인 안에 178개 스킬이 들어 있는 구조가 성립합니다 — 매장 28곳에 상품이 총 178개 진열된 셈입니다.
+
+마지막으로 **트리거**라는 말이 중요합니다. 손님이 "사과 사러 왔어"라고 한마디하면(자연어 트리거) 점원이 사과가 어느 매장 어느 칸에 있는지 찾아 가져다 줍니다. 스킬에도 똑같이 "이런 요청이 들어오면 나를 불러달라"는 신호가 정해져 있고, 사용자의 한 줄 자연어가 그 신호를 켭니다. 플러그인→스킬→트리거의 세 층이 한 방향으로 이어지는 이 관계가 아래 흐름도에 나와 있습니다.
+
+```mermaid
+flowchart LR
+    subgraph Plugin["① 플러그인 (매장)"]
+        P["moai-business<br/>비슷한 스킬을 모은 상자"]
+    end
+
+    subgraph Skill["② 스킬 (개별 도구)"]
+        S["strategy-planner<br/>사업계획서 기획"]
+    end
+
+    subgraph Trigger["③ 트리거 (한마디)"]
+        T["『사업계획서 만들어줘』<br/>자연어 요청"]
+    end
+
+    Plugin --> Skill --> Trigger
+
+    style Plugin fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style Skill fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style Trigger fill:#e6f0ef,stroke:#144a46,color:#09110f
+```
+
+📊 [다이어그램으로 보기](/diagrams/plugins-index-marketplace.html) — 브라우저에서 바로 열립니다.
+
+## 왜 묶어서 배포하나요: 마켓플레이스의 의미
+
+178개 스킬을 굳이 28개 플러그인 단위로 묶어 배포하는 이유는, 사용자가 **전체를 한 번에 설치할 필요 없이 필요한 만큼만 골라 담기 위해서**입니다. 마켓플레이스라는 낯선 단어도 이 맥락에서 풀립니다.
+
+마켓플레이스는 '여러 브랜드가 한 건물에 입점한 백화점 지하 푸드코트'와 같습니다. 각 입점 브랜드(플러그인)가 자기 메뉴(스킬)를 내놓고, 손님은 배가 부르면 한 브랜드 메뉴만 시켜도 되고 여러 브랜드를 조합해 먹어도 됩니다. 푸드코트 통째로 한 번에 다 먹을 필요 없이, 한식이 먹고 싶으면 한식 브랜드 코너만, 디저트가 필요하면 카페 코너만 찾아가면 됩니다. 마찬가지로 사업계획서가 필요하면 `moai-business` 플러그인만, 문서 파일이 필요하면 `moai-office` 플러그인만 설치하면 됩니다.
+
+"한국 업무 환경에 맞춰 설계됐다"는 말은 이 푸드코트가 한국인 입맛(사업계획서·IR·세무·법무·카드뉴스·공공 데이터 등)에 맞게 입점 브랜드를 큐레이션했다는 뜻입니다. 필요한 코너만 골라 설치하고, 일이 커지면 다른 코너를 추가로 설치하는 식으로 점진적으로 늘려가면 됩니다.
 
 ```mermaid
 flowchart TD
@@ -80,7 +119,9 @@ flowchart TD
 ```
 
 {{< hint type="note" >}}
-**v2.21.0 업데이트 (최신)**: **drawio-diagram 신규 + humanize-korean 한국적 정서·결 K 카테고리 + /project agent-aware** — 자연어를 편집 가능한 `.drawio` + 단일 HTML(draw.io CDN 뷰어, Apache-2.0)로 렌더하는 **`drawio-diagram`** 신규(6 프리셋·CLI 불필요·`learning-material`과 ```drawio` 블록 연동). `humanize-korean`에 한국적 정서·결 **K 카테고리(양성 축) 4종**(A~J 음성·제거에 K 양성·지향 충전, 2026 학술 교차·메트릭 무변경). `/project`가 코디네이터 에이전트까지 동적 스캔·체인 설계. **28 플러그인 유지 · 173 → 177 스킬 · 기능적 비파괴 · Breaking change 없음**.
+**v2.22.0 업데이트 (최신)**: **design-system-library 신규 — 56개 글로벌 브랜드 디자인 시스템 → Tailwind Play CDN + shadcn vanilla HTML** — Claude·ClickHouse·Clay 기본 3테마 + Notion·Linear·Stripe·Vercel·Figma 등 **56개 글로벌 브랜드** 토큰(색·타이포·radius·spacing) SSOT. `html-report`에 `design_system` 파라미터로 지정 → 단일 파일 HTML 렌더(빌드 불필요, CDN 1개). Claude Design DESIGN.md 합성 소스로도 사용. **28 플러그인 유지 · 177→178 스킬 · 기능적 비파괴 · Breaking change 없음**.
+
+**v2.21.0 업데이트**: **drawio-diagram 신규 + humanize-korean 한국적 정서·결 K 카테고리 + /project agent-aware** — 자연어를 편집 가능한 `.drawio` + 단일 HTML(draw.io CDN 뷰어, Apache-2.0)로 렌더하는 **`drawio-diagram`** 신규(6 프리셋·CLI 불필요·`learning-material`과 ```drawio` 블록 연동). `humanize-korean`에 한국적 정서·결 **K 카테고리(양성 축) 4종**(A~J 음성·제거에 K 양성·지향 충전, 2026 학술 교차·메트릭 무변경). `/project`가 코디네이터 에이전트까지 동적 스캔·체인 설계. **28 플러그인 유지 · 173 → 177 스킬 · 기능적 비파괴 · Breaking change 없음**.
 
 **v2.20.0**: **학습자 전용 moai-tutor 플러그인 신규 (3 스킬)** — 가르치는 사람(moai-education)과 분리된 **배우는 사람(학습자·수강생)** 도메인. `learning-project`(학습 프로젝트·로드맵·진도) · `tutor-research`(context7 공식 문서 + 웹검색 **병렬** 조사·교차검증) · `learning-material`(도식·차트·수식·코드가 조건부로 들어간 단일 HTML 학습자료). context7 MCP 번들 + 2026 CDN 라이브러리 스택(Mermaid·ECharts·highlight.js·KaTeX·AOS) 큐레이션. **27 → 28 플러그인 · 173 → 176 스킬 · 기능적 비파괴 · Breaking change 없음**.
 
@@ -110,6 +151,8 @@ flowchart TD
 - Claude Desktop 앱 + Cowork 모드 진입 완료 → [Cowork 설치](../../cowork/install/)
 - 마켓플레이스 설치 절차는 [빠른 시작](./quick-start/) 참고
 - **`moai-core`는 가장 먼저 설치**해야 합니다 — `/project` 마법사와 `ai-slop-reviewer`가 여기에 들어 있습니다
+
+`moai-core`가 먼저 깔려 있어야 하는 이유는 단순한 권장이 아니라 **동작 전제 조건**입니다. 조립식 책장을 비유로 들면, 부품(다른 플러그인)을 여러 개 사 와도 드라이버와 조립 순서도(=moai-core)가 없으면 부품을 끼울 수 없는 것과 같습니다. `moai-core`에는 프로젝트를 처음 세팅하는 마법사(`/project`)와 모든 산출물의 마지막 품질을 검수하는 검수기(`ai-slop-reviewer`)가 들어 있습니다. 다른 플러그인이 만든 결과물을 검수하고 여러 스킬을 체인으로 엮으려면, 이 안내데스크 역할의 코어가 먼저 바닥에 깔려 있어야 합니다. 그래서 "가장 먼저"는 순서상 권장이 아니라, 나머지 플러그인이 제 역할을 하기 위한 의존성(없으면 동작하지 않는 선행 조건)입니다.
 
 ## 도메인별 플러그인
 
@@ -174,7 +217,7 @@ flowchart TD
 
 - [`moai-tutor`](./moai-tutor/) **NEW v2.20** — 학습자·수강생 전용 개인 AI 튜터. 학습 프로젝트 초기화·로드맵·진도 추적 + context7+웹검색 병렬 리서치 + mermaid 도식·차트·수식·코드가 들어간 단일 HTML 학습자료 생성. moai-education(강사용)과 분리된 배우는 사람 도메인
 
-## 한 눈에 보는 스킬 수 (v2.20.0)
+## 한 눈에 보는 스킬 수 (v2.22.0)
 
 "대표 스킬 (일부)"는 각 플러그인에서 가장 자주 호출되는 스킬을 발췌한 것입니다. 전체 스킬 목록은 플러그인 이름을 클릭해 상세 페이지에서 확인하세요.
 
@@ -209,7 +252,7 @@ flowchart TD
 | [moai-public-data](./moai-public-data/) | 4 | korean-stock-search, court-auction-search, real-estate-search, public-data |
 | [moai-tutor](./moai-tutor/) | 3 | learning-project, tutor-research, learning-material |
 
-전체 **176개 스킬 · 28개 플러그인** (v2.20.0 기준).
+전체 **178개 스킬 · 28개 플러그인** (v2.22.0 기준).
 
 ## 다음 단계
 
