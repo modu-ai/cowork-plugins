@@ -1,3 +1,20 @@
+---
+version: alpha
+name: Theverge-design-analysis
+description: 'Almost-black editorial canvas with acid-mint (#3cffd0) and ultraviolet (#5200ff) hazard-tape accents, massive Manuka display headlines, and saturated color-block story tiles.'
+colors:
+  primary: "#3cffd0"
+  primary-active: "#3cffd0"
+  ink: "#ffffff"
+  body: "#949494"
+  muted: "#e9e9e9"
+  hairline: "#2d2d2d"
+  canvas: "#131313"
+  surface-soft: "#2d2d2d"
+  surface-card: "#2d2d2d"
+  on-primary: "#131313"
+---
+
 # Design System Inspired by The Verge
 
 ## 1. Visual Theme & Atmosphere

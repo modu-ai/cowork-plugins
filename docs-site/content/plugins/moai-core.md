@@ -12,6 +12,10 @@ tags: ["moai-core"]
 
 ## 무엇을 하는 플러그인인가
 
+`moai-core`를 한마디로 이해하려면 건물의 **기초공사·수도·전기 배선**을 떠올리면 됩니다. 콘텐츠를 만드는 플러그인, 사업·법무를 다루는 플러그인이 각 층의 방이라면, `moai-core`는 그 방들이 공통으로 쓰는 수도·전기·도면을 깔아두는 지하 인프라 층입니다. 그래서 다른 방을 꾸미기 전에 이 층부터 먼저 시공(설치)해야 합니다. 여기서 **인프라**(infrastructure)란 "각 방이 제 몫을 하려면 반드시 깔려 있어야 할 공용 바탕 시설"을 가리키는 말입니다.
+
+이 인프라 층이 구체적으로 까는 것은 크게 세 가지입니다. 첫째, 프로젝트의 도면 역할을 하는 작업 지침서(`CLAUDE.md`)를 자동으로 그려주는 `/project` 마법사, 둘째, 완성된 글에서 기계적으로 튀어나오는 AI 특유 어투를 마지막 한 번 솎아내는 `ai-slop-reviewer`, 셋째, 외부 도구(Drive·Notion·Higgsfield·OpenAI)를 연결하는 발주 창구 겸 가이드인 `mcp-connector-setup`입니다. 이 세 가지가 자리잡아야 비로소 다른 플러그인이 만든 산출물이 안정적으로 흘러나옵니다.
+
 `moai-core`는 `cowork-plugins` 마켓플레이스의 모든 도메인 플러그인이 공유하는 인프라를 제공합니다. 프로젝트별 작업 지침(`CLAUDE.md`)을 자동 생성하고 프로젝트 맞춤 에이전트까지 합성하는 `/project` 마법사, 모든 텍스트 산출물의 마지막 단계에서 AI 패턴을 다듬어주는 `ai-slop-reviewer`, 버그·기능 요청을 GitHub Issues로 바로 등록하는 `feedback` 스킬, Drive·Notion·Higgsfield·OpenAI **4커넥터 인증·환경변수·트러블슈팅 통합 가이드** `mcp-connector-setup`을 포함한 **총 8개 스킬**이 포함되어 있습니다.
 
 `ai-slop-reviewer`는 모든 한국어 텍스트 산출물(블로그·뉴스레터·계약서·사업계획서·이메일 등)의 체인 마지막 단계에서 호출되어, 과장된 수식어·기계적 접속어·모호한 일반화 같은 AI 글쓰기 패턴을 진단하고 사람 톤으로 다듬어줍니다.
@@ -30,6 +34,37 @@ tags: ["moai-core"]
 {{< /tab >}}
 {{< /tabs >}}
 
+## 완성된 공구 진열대 vs 공구를 만드는 작업장
+
+8개 스킬 표를 한 번에 펼쳐 보면 "내가 지금 뭘 써야 하지?" 하고 망설이게 됩니다. 그래서 이 표를 읽기 전에 먼저 **공장** 하나를 떠올려 보세요. 공장에는 두 구역이 있습니다. 하나는 완성된 망치·드라이버·펜치를 진열해 둔 **완제품 진열대**이고, 다른 하나는 그 공구를 직접 깎아 만드는 **작업장**입니다.
+
+`moai-core`의 8개 스킬도 똑같이 두 갈래로 나뉩니다. `project`·`ai-slop-reviewer`·`feedback`·`mcp-connector-setup`은 진열대 위에 올라온 **바로 집어 쓰는 완성된 공구**입니다 — "프로젝트 세팅해줘", "AI 티 고쳐줘", "버그 신고할게"라고 말하면 즉시 작동합니다. 반면 `skill-builder`·`skill-template`·`skill-tester`는 공구를 깎아 만드는 **작업장 도구**입니다. 이 셋은 새 스킬을 만들거나 고칠 때만 찾는, 이른바 **메타 스킬(meta-skill)** — 도구를 다루는 도구를 뜻합니다.
+
+핵심은 **일반 사용자는 진열대만 둘러봐도 충분**하다는 점입니다. 평소에는 `project`로 도면을 깔고 `ai-slop-reviewer`로 마무리 다듬기를 반복하면 됩니다. 작업장(`skill-builder` 일가)은 "기존 스킬에 없는 새로운 일이 생겼다, 내가 직접 스킬 하나 더 만들어야겠다"는 날이 오기 전까지는 굳이 열어볼 필요가 없습니다. 즉, 이 표를 읽을 때 진열대 영역(바로 쓰는 스킬)과 작업장 영역(메타 스킬)을 구분해서 보면, 어디서부터 시작할지 막막하지 않습니다.
+
+```mermaid
+flowchart LR
+    subgraph Shelf["① 완제품 진열대 (바로 집어 쓰는 스킬)"]
+        S1["project<br/>도면 깔기"]
+        S2["ai-slop-reviewer<br/>마무리 다듬기"]
+        S3["feedback<br/>버그 신고"]
+        S4["mcp-connector-setup<br/>외부 연결"]
+    end
+
+    subgraph Workshop["② 공구 제작 작업장 (메타 스킬)"]
+        W1["skill-builder<br/>새 공구 깎기"]
+        W2["skill-template<br/>공구 설계도"]
+        W3["skill-tester<br/>공구 시험"]
+    end
+
+    User(["일반 사용자"]) --> Shelf
+    Workshop -. 필요할 때만 .-> Shelf
+
+    style Shelf fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style Workshop fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style User fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+```
+
 ## 핵심 스킬 (8개)
 
 | 스킬 | 용도 | 자동 호출 트리거 |
@@ -47,7 +82,7 @@ tags: ["moai-core"]
 
 ### 프로젝트에 딱 맞는 전담 에이전트를 만들어주는 기능
 
-**서브에이전트(sub-agent)**란 AI가 스스로 불러 쓰는 "작업 담당 조수"입니다. 블로그를 쓰는 스킬 하나, 발표자료를 만드는 스킬 하나처럼 단일 일을 하는 도구를 넘어, "사업계획서를 완성해 줘"처럼 여러 단계를 묶어 한 번에 끝내는 역할을 합니다.
+**서브에이전트**(sub-agent)란 AI가 스스로 불러 쓰는 "작업 담당 조수"입니다. 블로그를 쓰는 스킬 하나, 발표자료를 만드는 스킬 하나처럼 단일 일을 하는 도구를 넘어, "사업계획서를 완성해 줘"처럼 여러 단계를 묶어 한 번에 끝내는 역할을 합니다.
 
 `moai-core`의 `/project` 마법사는 **"이 프로젝트에선 어떤 산출물을, 얼마나 자주 만드나"**를 몇 가지 질문으로 파악한 뒤, 설치된 `moai-*` 플러그인에 이미 딸려 온 담당 조수(코디네이터 에이전트)가 있는지 먼저 살핍니다. 있으면 그것을 그대로 씁니다. 예컨대 "사업계획서 만들어줘"라고 하면 `moai-business` 플러그인에 들어있는 `business-plan-coordinator`가 기획→시장분석→검수→발표자료까지 알아서 엮어 줍니다.
 
@@ -80,9 +115,13 @@ flowchart TD
 8. **First Run** — 첫 작업 예시 3개 제안
 
 
-📊 [다이어그램으로 보기](/diagrams/moai-core-subagent-synthesis.html) — 브라우저에서 바로 열립니다. 편집은 [`moai-core-subagent-synthesis.drawio`](/diagrams/moai-core-subagent-synthesis.drawio)를 [app.diagrams.net](https://app.diagrams.net)에서 여세요.
+![moai-core-subagent-synthesis](/diagrams/moai-core-subagent-synthesis.svg)
 
 ## `ai-slop-reviewer` 이해하기
+
+왜 이 스킬이 체인의 **맨 마지막**에 와야 할까요? **출간 전 원고교정 편집자**를 떠올리면 됩니다. 원고가 아무리 잘 쓰였어도 기계적으로 반복되는 수식어와 늘어진 접속어는 마지막 한 번 더 솎아내야 비로소 "사람이 쓴 듯한" 문장이 됩니다. 냄비에 재료를 다 넣고 끓인 뒤, 마지막에 불을 줄여 거품을 걷어내는 것과 같습니다 — 거품(AI 패턴)을 걷어내야 맑고 깔끔한 국물(완성된 글)이 되듯, 이 검수가 빠지면 산출물 표면에 기계적인 티가 그대로 남게 됩니다.
+
+그래서 순서가 중요합니다. 글이 다 쓰이기도 전에 검수를 끼워 넣으면 검수할 원문 자체가 없고, 포맷 변환 전에 검수하면 나중에 형식이 바뀌면서 다시 AI 어투가 스며들 수 있습니다. 글의 내용과 형식이 모두 완성된 **가장 마지막 한 번**에 통과시켜야 효과가 남습니다.
 
 AI가 작성한 글에는 공통된 패턴이 있습니다.
 
@@ -92,6 +131,44 @@ AI가 작성한 글에는 공통된 패턴이 있습니다.
 - 불필요한 요약 반복
 
 `ai-slop-reviewer`는 이러한 패턴을 **진단**하고, **수정 텍스트**를 제시하며, **주요 변경사항**을 리포트로 남깁니다. `cowork-plugins`의 모든 텍스트 스킬 체인은 이 단계로 종료하는 것이 권장됩니다.
+
+## 산출물 파이프라인에서의 위치
+
+`moai-core`가 전체 산출물 흐름의 어디에 서 있는지 한눈에 보려면 **요리 스튜디오의 공용 설비**를 떠올리면 됩니다. 각 분야 플러그인(moai-business·moai-content·moai-legal 등)이 메뉴를 만드는 주방이라면, `moai-core`는 레시피 북(`project`), 맛 점검역(`ai-slop-reviewer`), 식자재 발주 창구(`mcp-connector-setup`)를 갖춘 중앙 지원 구역입니다. 주방에서 요리가 다 나와도 마지막엔 반드시 맛 점검역이 한 번 더 기계적 맛(AI 티)을 솎아내야 완성된 산출물이 됩니다.
+
+아래 그림은 산출물이 도메인 스킬(내용 만들기)에서 포맷 스킬(형식 갖추기)을 거쳐, 마지막으로 `moai-core`의 품질 스킬(기계적 어투 솎아내기) 단계로 흘러들어 완성되는 과정을 보여줍니다.
+
+```mermaid
+flowchart LR
+    subgraph Domain["① 도메인 스킬 (내용 만들기)"]
+        D1["moai-business"]
+        D2["moai-content"]
+        D3["moai-legal"]
+    end
+
+    subgraph Format["② 포맷 스킬 (형식 갖추기)"]
+        F1["docx-generator"]
+        F2["pptx-designer"]
+        F3["xlsx-creator"]
+    end
+
+    subgraph Core["③ moai-core (품질·지원)"]
+        C1["project<br/>작업 지침서 생성"]
+        C2["ai-slop-reviewer<br/>AI 어투 솎아내기"]
+        C3["mcp-connector-setup<br/>외부 도구 연결"]
+    end
+
+    Domain --> Format
+    Format --> C2
+    C1 -. 지침서 제공 .-> Domain
+    C3 -. 키·연결 .-> Domain
+
+    style Domain fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style Format fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style Core fill:#e6f0ef,stroke:#144a46,color:#09110f
+```
+
+그림에서 실선은 산출물이 실제로 흘러가는 방향(내용 → 형식 → 품질 점검)이고, 점선은 `moai-core`가 앞단계에 **지원**으로 끼워 넣는 것 — 작업 지침서(`project`)와 외부 연결(`mcp-connector-setup`)을 미리 깔아두는 역할입니다. 이렇게 보면 왜 이 스킬들이 한 플러그인에 묶였는지, 그리고 다른 플러그인의 결과물 품질을 어떻게 떠받치는지가 한눈에 드러납니다.
 
 ## 대표 체인
 
@@ -121,6 +198,43 @@ MCP 커넥터 4개 연결 방법 알려줘 — Drive·Notion·Higgsfield·OpenAI
 ## `mcp-connector-setup`
 
 Drive·Notion·Higgsfield·OpenAI 4커넥터를 Cowork에 연결하는 단계별 가이드입니다. 커넥터별 인증 절차·환경변수 설정·트러블슈팅을 한 곳에서 다루며, 셋업 완료 체크리스트는 **4커넥터 모두 인증 성공 + 1회 호출 성공**입니다.
+
+## 왜 '커넥터'를 연결해야 할까
+
+커넥터라는 단어가 처음이면 **레스토랑의 외부 발주 전화선**을 떠올리세요. 주방(moai 스킬)이 Google Drive에 있는 문서를 읽어 오거나 Higgsfield에서 이미지를 찍어 내려면, 그 외부 서비스에 "주문 전화"를 걸 수 있는 전화선과 인증된 전화번호가 미리 깔려 있어야 합니다. 전화선이 안 깔리면 아무리 주방이 뛰어나도 외부 식자재를 당겨올 수 없습니다.
+
+여기서 두 낯선 용어가 등장합니다. **MCP**(Model Context Protocol)는 그 전화선 규격, 즉 "AI가 외부 도구와 통신하는 표준 연결 방식"입니다. **커넥터**는 그 규격에 맞춰 깔은 전화선 한 가닥 — Drive 선, Notion 선, Higgsfield 선, OpenAI 선 4가닥입니다. 그리고 **API 키**(또는 OAuth 토큰)는 "이 전화를 걸 권리가 있는, 인증된 전화번호" 역할을 합니다.
+
+`mcp-connector-setup`은 바로 이 **전화선 4가닥을 설치하고 인증된 전화번호를 등록해 주는 통신 설치 가이드**입니다. 각 커넥터가 어떤 인증을 요구하는지, 환경변수(설정값)를 어디에 적어 넣어야 하는지, 선이 안 깔리거나 번호가 만료됐을 때(트러블슈팅) 어떻게 고치는지를 차례로 안내합니다. 4가닥이 모두 연결되고 한 번씩 "여보세요" 호출이 성공해야 셋업이 끝난 것으로 봅니다.
+
+```mermaid
+flowchart LR
+    subgraph Kitchen["주방 (moai 스킬)"]
+        K1["문서 읽기"]
+        K2["이미지 생성"]
+        K3["음성·영상 생성"]
+    end
+
+    Setup["mcp-connector-setup<br/>통신 설치 가이드"]
+
+    subgraph Lines["외부 발주 전화선 (MCP 커넥터)"]
+        L1["Drive 선<br/>(문서·파일)"]
+        L2["Notion 선<br/>(메모·DB)"]
+        L3["Higgsfield 선<br/>(이미지·영상)"]
+        L4["OpenAI 선<br/>(텍스트·추론)"]
+    end
+
+    Keys["API 키 · OAuth<br/>(인증된 전화번호)"]
+
+    Setup --> Lines
+    Keys -. 등록 .-> Lines
+    Kitchen ==>|주문 전화| Lines
+
+    style Kitchen fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style Setup fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style Lines fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style Keys fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+```
 
 **트러블슈팅 커버리지**:
 - Windows MAX_PATH (260자 제한) 오류

@@ -1,3 +1,20 @@
+---
+version: alpha
+name: Starbucks-design-analysis
+description: 'Warm, confident retail flagship with four-tier Starbucks Green on warm-neutral cream canvas, full-pill buttons, and gold reserved for Rewards ceremony.'
+colors:
+  primary: "#00754a"
+  primary-active: "#00754a"
+  ink: "#1e3932"
+  body: "#1e3932"
+  muted: "#595959"
+  hairline: "#d4e9e2"
+  canvas: "#f2f0eb"
+  surface-soft: "#edebe9"
+  surface-card: "#edebe9"
+  on-primary: "#ffffff"
+---
+
 # Design System Inspired by Starbucks
 
 ## 1. Visual Theme & Atmosphere

@@ -12,7 +12,7 @@ description: |
   - "어두운 테마 / 따뜻한 화이트 테마로"
   - "Claude Design에 올릴 디자인 시스템 자료 정리"
 user-invocable: true
-version: 2.22.0
+version: 2.23.0
 ---
 
 # design-system-library — 56개 브랜드 디자인 시스템 SSOT
@@ -60,7 +60,7 @@ version: 2.22.0
 
 [`systems/registry.md`](systems/registry.md) 참조 — 분류(light/warm/dark) · 캔버스 · primary 색 · 폰트 · 무드 메타 포함.
 
-전체 56개 시스템 분석 완료 — 각 `systems/<name>.md`에 토큰 보관, `registry.md`에 휘도 기반 분류(light 33 · dark 13 · warm 2 · 미분석 8)·메타 표기. 기본 3테마(claude/clickhouse/clay)는 Tailwind 매핑 검증 완료.
+전체 56개 시스템 분석 완료 — 각 `systems/<name>.md`에 토큰 보관, `registry.md`에 휘도 기반 분류(light 38 · dark 16 · warm 2)·메타 표기. 기본 3테마(claude/clickhouse/clay)는 Tailwind 매핑 검증 완료.
 
 ---
 
@@ -106,6 +106,8 @@ version: 2.22.0
 | Table | `Table` / `TableHeader` / `TableRow` | semantic `table.thead.tbody.tr` + token borders |
 | Tabs | `Tabs` / `TabsList` | `<details>` 또는 vanilla JS tab + token classes |
 | Alert | `Alert` | `div.rounded-lg.border.p-4` + semantic color |
+
+각 컴포넌트의 풀 마크업(변형·접근성 메모 포함)은 개별 파일 — [`card.md`](components/card.md) · [`button.md`](components/button.md) · [`badge.md`](components/badge.md) · [`table.md`](components/table.md) · [`tabs.md`](components/tabs.md) · [`alert.md`](components/alert.md). 토큰 매핑 규칙은 [`mapping/tailwind.md`](mapping/tailwind.md) §1·§3.
 
 ---
 

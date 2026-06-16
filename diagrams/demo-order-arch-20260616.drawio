@@ -1,0 +1,40 @@
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="주문 처리 아키텍처" id="demo-arch-1">
+    <mxGraphModel dx="900" dy="640" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="560" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="client" value="Client (웹/모바일)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3DACC;strokeColor=#C9BCA6;fontColor=#141413;fontFamily=Helvetica;">
+          <mxGeometry x="40" y="240" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="vpc" value="백엔드 (VPC)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3DACC;strokeColor=#C9BCA6;verticalAlign=top;fontStyle=1;fontColor=#141413;dashed=1;opacity=40;">
+          <mxGeometry x="280" y="100" width="500" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="gw" value="API Gateway" vertex="1" parent="vpc" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D97757;strokeColor=#B85C3E;fontColor=#FFFFFF;fontFamily=Helvetica;">
+          <mxGeometry x="40" y="150" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="order" value="Order Service" vertex="1" parent="vpc" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontFamily=Helvetica;">
+          <mxGeometry x="250" y="60" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pay" value="Payment Service" vertex="1" parent="vpc" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontFamily=Helvetica;">
+          <mxGeometry x="250" y="240" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="db" value="Orders DB" vertex="1" parent="vpc" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#788C5D;strokeColor=#5F6F4A;fontColor=#FFFFFF;fontFamily=Helvetica;boundedLbl=1;">
+          <mxGeometry x="410" y="60" width="70" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="HTTPS" edge="1" parent="1" source="client" target="gw" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;fontColor=#87867F;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="라우팅" edge="1" parent="vpc" source="gw" target="order" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=2;fontColor=#B85C3E;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="결제 요청" edge="1" parent="vpc" source="order" target="pay" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;fontColor=#87867F;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="저장" edge="1" parent="vpc" source="order" target="db" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#788C5D;fontColor=#5F6F4A;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

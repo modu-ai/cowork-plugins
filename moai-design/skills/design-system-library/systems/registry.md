@@ -8,9 +8,7 @@ canvas 휘도(R+G+B 평균) 기반 자동 분류: `<100` dark · `<232` warm · 
 
 ## 상태 표기
 
-- ✅ **완료** — `systems/<name>.md` 존재, frontmatter 토큰 파싱 완료
-
-- ⚠️ **미분석** — 파일은 존재하나 frontmatter `colors` 구조가 표준(`canvas`/`primary`)과 상이해 자동 파싱 미적용 (8개: theverge · tesla · starbucks · spotify · mastercard · lovable · lamborghini · kraken). 수동 보완 예정.
+- ✅ **완료** — `systems/<name>.md` 존재, frontmatter 토큰 파싱 완료. **전체 56개 분류 완료** (8개 2차 정합: kraken · tesla · starbucks · mastercard · lovable · spotify · theverge · lamborghini).
 
 ---
 
@@ -67,6 +65,11 @@ canvas 휘도(R+G+B 평균) 기반 자동 분류: `<100` dark · `<232` warm · 
 | [`vodafone`](vodafone.md) | light | `#ffffff` | `#e60000` | Vodafone |
 | [`wise`](wise.md) | light | `#ffffff` | `#9fe870` | Wise Sans |
 | [`zapier`](zapier.md) | light | `#fffefb` | `#ff4f00` | Degular Display |
+| [`kraken`](kraken.md) | light | `#ffffff` | `#7132f5` | Kraken-Brand |
+| [`lovable`](lovable.md) | light | `#f7f4ed` | `#1c1c1c` | Camera Plain |
+| [`mastercard`](mastercard.md) | light | `#f3f0ee` | `#cf4500` | MarkForMC |
+| [`starbucks`](starbucks.md) | light | `#f2f0eb` | `#00754a` | SoDoSans |
+| [`tesla`](tesla.md) | light | `#ffffff` | `#3e6ae1` | Universal Sans |
 
 ### WARM (2개) — 따뜻한 중간 톤
 
@@ -96,21 +99,9 @@ canvas 휘도(R+G+B 평균) 기반 자동 분류: `<100` dark · `<232` warm · 
 | [`shopify`](shopify.md) | dark | `#000000` | `#000000` | NeueHaasGrotesk Display |
 | [`spacex`](spacex.md) | dark | `#000000` | `#000000` | D-DIN-Bold |
 | [`x.ai`](x.ai.md) | dark | `#0a0a0a` | `#ffffff` | universalSans |
-
-### ? (8개) — 미분석 — colors 구조 상이
-
-| 시스템 | 분류 | 캔버스 | Primary | 폰트 |
-
-|--------|------|--------|---------|------|
-
-| `kraken` | ? | `?` | `?` | ? |
-| `lamborghini` | ? | `?` | `?` | ? |
-| `lovable` | ? | `?` | `?` | ? |
-| `mastercard` | ? | `?` | `?` | ? |
-| `spotify` | ? | `?` | `?` | ? |
-| `starbucks` | ? | `?` | `?` | ? |
-| `tesla` | ? | `?` | `?` | ? |
-| `theverge` | ? | `?` | `?` | ? |
+| [`lamborghini`](lamborghini.md) | dark | `#000000` | `#ffc000` | LamboType |
+| [`spotify`](spotify.md) | dark | `#121212` | `#1ed760` | SpotifyMixUI |
+| [`theverge`](theverge.md) | dark | `#131313` | `#3cffd0` | Manuka |
 
 ---
 
@@ -118,13 +109,11 @@ canvas 휘도(R+G+B 평균) 기반 자동 분류: `<100` dark · `<232` warm · 
 
 - **전체**: 56개 시스템
 
-- **light**: 33개
+- **light**: 38개
 
-- **dark**: 13개
+- **dark**: 16개
 
 - **warm**: 2개
-
-- **미분석(?)**: 8개
 
 - **기본(default)**: 3개 — claude · clickhouse · clay
 
@@ -151,6 +140,8 @@ Tailwind 렌더 시 다크/라이트 자동 분기는 `mapping/tailwind.md` §5 
 
 | 날짜 | 변경 |
 |------|------|
+
+| 2026-06-16 | 3차 정합 — 8개 시스템(kraken · tesla · starbucks · mastercard · lovable · spotify · theverge · lamborghini) frontmatter `colors` 블록 추가 → 전체 56개 분류 완료(light 38/dark 16/warm 2) |
 
 | 2026-06-16 | 2차 확장 완료 — 56개 전체 복사 + frontmatter 토큰 파싱 + 휘도 자동 분류(light 33/dark 13/warm 2/미분석 8). 기본 3테마(claude/clickhouse/clay) Tailwind 매핑 검증 완료 |
 

@@ -5,10 +5,7 @@ description: |
   모니터링, 웹훅, 게시 워크플로우에서 Xquik MCP URL, API 키 보관, 인증 오류
   처리가 필요할 때 사용하세요.
 user-invocable: true
-metadata:
-  version: "0.1.0"
-  status: "active"
-  updated: "2026-06-15"
+version: 2.23.0
 ---
 
 # Xquik MCP 셋업

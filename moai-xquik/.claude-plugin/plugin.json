@@ -1,6 +1,6 @@
 {
   "name": "moai-xquik",
-  "version": "0.1.0",
+  "version": "2.23.0",
   "description": "Xquik MCP 설정 가이드. X 데이터 검색, 프로필 조회, 추출, 모니터링, 웹훅, 게시 워크플로우용 원격 MCP를 Cowork 프로젝트에 연결하고 검증합니다.",
   "author": {
     "name": "Xquik"

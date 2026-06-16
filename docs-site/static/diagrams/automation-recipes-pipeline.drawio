@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="Automation-Recipes-Pipeline" id="arp-1">
+    <mxGraphModel dx="1180" dy="780" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="720" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="arrow_t_route" edge="1" parent="1" source="grp_trigger" target="route" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=3;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow_route_exec" edge="1" parent="1" source="route" target="exec" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=3;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow_exec_notify" edge="1" parent="1" source="exec" target="notify" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=3;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="title" value="자동화 레시피 공통 파이프라인" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=20;fontStyle=1;fontColor=#141413;">
+          <mxGeometry x="200" y="20" width="700" height="34" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="부서별 레시피는 달라 보여도 트리거 → 라우팅 → PC 실행 → 결과 알림, 같은 한 줄의 흐름을 따른다" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#87867F;">
+          <mxGeometry x="150" y="54" width="800" height="22" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="grp_trigger" value="① 트리거 (Schedule)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAEAEA;strokeColor=#6E6E6E;verticalAlign=top;fontStyle=1;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#141413;fontSize=12;">
+          <mxGeometry x="30" y="110" width="260" height="420" as="geometry"/>
+        </mxCell>
+        <mxCell id="t1" value="재무 — 매일 08:50&#10;환율 + 미결 메일" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="50" y="160" width="220" height="56" as="geometry"/>
+        </mxCell>
+        <mxCell id="t2" value="품질 — 매일 07:00&#10;전일 불량 대시보드" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="50" y="236" width="220" height="56" as="geometry"/>
+        </mxCell>
+        <mxCell id="t3" value="SCM — 매주 월 08:00&#10;벤더 리스크 스캔" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="50" y="312" width="220" height="56" as="geometry"/>
+        </mxCell>
+        <mxCell id="t4" value="해외영업 — 매일 06:00&#10;현지 업계 뉴스 요약" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="50" y="388" width="220" height="56" as="geometry"/>
+        </mxCell>
+        <mxCell id="t_note" value="부서마다 내용은 다르지만&#10;모두 &quot;정해진 시각에 알람&quot;" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=10;fontStyle=2;fontColor=#87867F;">
+          <mxGeometry x="50" y="460" width="220" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="route" value="② 라우팅 (Dispatch)&#10;&#10;지시를 대기 중인 PC로 배달&#10;&quot;마지막으로 사용한 PC&quot; 기준" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D97757;strokeColor=#B85C3E;fontColor=#FFFFFF;fontFamily=Helvetica;fontStyle=1;align=center;verticalAlign=middle;fontSize=12;">
+          <mxGeometry x="340" y="240" width="220" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="exec" value="③ PC 실행&#10;&#10;Cowork 세션이 자동 재개&#10;실제 작업 수행 (조회·분석·보고서 작성)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#788C5D;strokeColor=#5F6F4A;fontColor=#FFFFFF;fontFamily=Helvetica;fontStyle=1;align=center;verticalAlign=middle;fontSize=12;">
+          <mxGeometry x="620" y="240" width="220" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="notify" value="④ 결과 알림&#10;&#10;Slack · Gmail · 카톡 · Notion&#10;실무자가 결과를 받는 채널" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#144A46;strokeColor=#0E3633;fontColor=#FFFFFF;fontFamily=Helvetica;fontStyle=1;align=center;verticalAlign=middle;fontSize=12;">
+          <mxGeometry x="880" y="240" width="190" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="insight_lbl" value="이 다이어그램이 말하는 핵심" vertex="1" parent="1" style="text;align=left;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=11;fontStyle=1;fontColor=#B85C3E;">
+          <mxGeometry x="30" y="560" width="280" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="insight_1" value="레시피를 외울 필요 없다&#10;&quot;무엇·언제·어디서·결과는 어디로&quot;&#10;네 칸만 채우면 어떤 부서든 동일 틀" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3DACC;strokeColor=#C9BCA6;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="30" y="584" width="320" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="insight_2" value="부서명만 바뀔 뿐&#10;아래 흐르는 파이프라인은 하나" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3DACC;strokeColor=#C9BCA6;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="370" y="584" width="320" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="insight_3" value="새 부서 레시피도&#10;같은 틀에 넣어 즉시 생성" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3DACC;strokeColor=#C9BCA6;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="710" y="584" width="320" height="70" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

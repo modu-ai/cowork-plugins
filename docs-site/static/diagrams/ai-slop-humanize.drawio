@@ -1,123 +1,101 @@
+<?xml version='1.0' encoding='UTF-8'?>
 <mxfile host="app.diagrams.net" type="device">
   <diagram name="ai-slop-humanize-chain" id="diagram-1">
-    <mxGraphModel dx="1100" dy="760" grid="1" gridSize="10" guides="1" tooltips="1"
-        connect="1" arrows="1" fold="1" page="1" pageScale="1"
-        pageWidth="980" pageHeight="720" math="0" shadow="0">
+    <mxGraphModel dx="1100" dy="760" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="980" pageHeight="720" math="0" shadow="0">
       <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
 
         <!-- ========== 그룹 컨테이너: 전체 파이프라인 ========== -->
-        <mxCell id="grp_pipeline" value="AI 텍스트 산출물 — 후처리 체인(ai-slop → humanize)" vertex="1" parent="1"
-            style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3DACC;strokeColor=#C9BCA6;verticalAlign=top;fontStyle=1;fontSize=13;fontColor=#141413;align=left;spacingLeft=16;spacingTop=10;dashed=0;arcSize=6;">
-          <mxGeometry x="20" y="20" width="940" height="680" as="geometry" />
-        </mxCell>
-
         <!-- ========== 시작점: AI 초안 ========== -->
-        <mxCell id="n_draft" value="① AI 초안&#10;블로그 · 뉴스레터 · 카피 · 사업계획서&#10;(기계 티 포함)" vertex="1" parent="1"
-            style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#D97757;strokeColor=#B85C3E;fontColor=#FFFFFF;fontStyle=1;fontSize=13;">
-          <mxGeometry x="380" y="70" width="220" height="80" as="geometry" />
-        </mxCell>
-
         <!-- ========== 1단계: ai-slop-reviewer 그룹 ========== -->
-        <mxCell id="grp_slop" value="1차 — 일반 후처리(ai-slop-reviewer)" vertex="1" parent="1"
-            style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF9F5;strokeColor=#D1CFC5;verticalAlign=top;fontStyle=1;fontSize=11;fontColor=#5F6F4A;align=left;spacingLeft=12;spacingTop=8;dashed=1;">
-          <mxGeometry x="40" y="200" width="900" height="200" as="geometry" />
-        </mxCell>
-
-        <mxCell id="n_slop_diag" value="② 진단&#10;과장 수식어 · 기계 접속어&#10;모호한 일반화 · 요약 반복" vertex="1" parent="1"
-            style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontSize=12;">
-          <mxGeometry x="70" y="250" width="200" height="100" as="geometry" />
-        </mxCell>
-
-        <mxCell id="n_slop_fix" value="③ 1차 수정&#10;영어 표현 · 일반 AI 패턴 정리&#10;사람 톤으로 다듬기" vertex="1" parent="1"
-            style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontSize=12;">
-          <mxGeometry x="380" y="250" width="220" height="100" as="geometry" />
-        </mxCell>
-
         <!-- 1차 판단 다이아몬드: 통과? -->
-        <mxCell id="n_slop_decision" value="④ 일반 패턴&#10;제거?" vertex="1" parent="1"
-            style="rhombus;whiteSpace=wrap;html=1;fillColor=#FAF9F5;strokeColor=#D97757;fontColor=#141413;fontSize=11;">
-          <mxGeometry x="720" y="250" width="160" height="100" as="geometry" />
-        </mxCell>
-
         <!-- ========== 2단계: humanize-korean 그룹 ========== -->
-        <mxCell id="grp_humanize" value="2차 — 한국어 정밀 윤문(humanize-korean)" vertex="1" parent="1"
-            style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF9F5;strokeColor=#D1CFC5;verticalAlign=top;fontStyle=1;fontSize=11;fontColor=#5F6F4A;align=left;spacingLeft=12;spacingTop=8;dashed=1;">
-          <mxGeometry x="40" y="430" width="900" height="200" as="geometry" />
-        </mxCell>
-
-        <mxCell id="n_hum_scan" value="⑤ SSOT 탐지&#10;A~J 음성 축(40+ 패턴) + K 양성 축&#10;번역투 · 관용구 · 형식명사 · 정서온도" vertex="1" parent="1"
-            style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontSize=12;">
-          <mxGeometry x="70" y="480" width="240" height="110" as="geometry" />
-        </mxCell>
-
-        <mxCell id="n_hum_metrics" value="⑥ 정량 메트릭 + 수술적 수정&#10;변경률 30% 경고 / 50% 롤백&#10;의미 100% 보존(사실·수치·고유명사)" vertex="1" parent="1"
-            style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontSize=12;">
-          <mxGeometry x="380" y="480" width="240" height="110" as="geometry" />
-        </mxCell>
-
         <!-- 등급 산출 (데이터/저장소 색으로 결과 강조) -->
-        <mxCell id="n_hum_grade" value="⑦ A/B/C/D 등급&#10;final.md + summary.md" vertex="1" parent="1"
-            style="shape=document;whiteSpace=wrap;html=1;fillColor=#788C5D;strokeColor=#5F6F4A;fontColor=#FFFFFF;fontStyle=1;fontSize=12;boundedLbl=1;backgroundOutline=1;">
-          <mxGeometry x="720" y="490" width="160" height="90" as="geometry" />
-        </mxCell>
-
         <!-- ========== 종료점: 사용자 최종 검토 ========== -->
-        <mxCell id="n_user" value="⑧ 사람이 쓴 글&#10;→ 사용자 최종 검토 후 배포" vertex="1" parent="1"
-            style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#D97757;strokeColor=#B85C3E;fontColor=#FFFFFF;fontStyle=1;fontSize=13;">
-          <mxGeometry x="380" y="650" width="220" height="40" as="geometry" />
-        </mxCell>
-
         <!-- ========== 엣지: 메인 흐름 ========== -->
-        <mxCell id="e1" edge="1" parent="1" source="n_draft" target="n_slop_diag"
-            style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;strokeWidth=2;endArrow=block;endFill=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <mxCell id="e2" edge="1" parent="1" source="n_slop_diag" target="n_slop_fix"
-            style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <mxCell id="e3" edge="1" parent="1" source="n_slop_fix" target="n_slop_decision"
-            style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
         <!-- 판단 → 2차 진입 (예) -->
-        <mxCell id="e4" edge="1" parent="1" source="n_slop_decision" target="n_hum_scan"
-            style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=2;endArrow=block;endFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" value="예 (한국어 정밀 윤문 진행)">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <mxCell id="e5" edge="1" parent="1" source="n_hum_scan" target="n_hum_metrics"
-            style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <mxCell id="e6" edge="1" parent="1" source="n_hum_metrics" target="n_hum_grade"
-            style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <mxCell id="e7" edge="1" parent="1" source="n_hum_grade" target="n_user"
-            style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=2;endArrow=block;endFill=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
         <!-- ========== 범례 ========== -->
-        <mxCell id="n_legend_title" value="범례" vertex="1" parent="1"
-            style="text;html=1;align=left;fontStyle=1;fontColor=#87867F;fontSize=11;">
-          <mxGeometry x="710" y="650" width="50" height="20" as="geometry" />
+        <mxCell id="e1" edge="1" parent="1" source="n_draft" target="n_slop_diag" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;strokeWidth=2;endArrow=block;endFill=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;">
+          <mxGeometry relative="1" as="geometry"/>
         </mxCell>
-        <mxCell id="n_legend_clay" value="시작/끝" vertex="1" parent="1"
-            style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#D97757;strokeColor=#B85C3E;fontColor=#FFFFFF;fontSize=9;">
-          <mxGeometry x="770" y="650" width="60" height="22" as="geometry" />
+
+        <mxCell id="e2" edge="1" parent="1" source="n_slop_diag" target="n_slop_fix" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;">
+          <mxGeometry relative="1" as="geometry"/>
         </mxCell>
-        <mxCell id="n_legend_data" value="결과 산출" vertex="1" parent="1"
-            style="shape=document;whiteSpace=wrap;html=1;fillColor=#788C5D;strokeColor=#5F6F4A;fontColor=#FFFFFF;fontSize=9;">
-          <mxGeometry x="840" y="650" width="60" height="22" as="geometry" />
+
+        <mxCell id="e3" edge="1" parent="1" source="n_slop_fix" target="n_slop_decision" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e4" edge="1" parent="1" source="n_slop_decision" target="n_hum_scan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=2;endArrow=block;endFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" value="예 (한국어 정밀 윤문 진행)">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e5" edge="1" parent="1" source="n_hum_scan" target="n_hum_metrics" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e6" edge="1" parent="1" source="n_hum_metrics" target="n_hum_grade" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e7" edge="1" parent="1" source="n_hum_grade" target="n_user" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=2;endArrow=block;endFill=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="grp_pipeline" value="AI 텍스트 산출물 — 후처리 체인(ai-slop → humanize)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3DACC;strokeColor=#C9BCA6;verticalAlign=top;fontStyle=1;fontSize=13;fontColor=#141413;align=left;spacingLeft=16;spacingTop=10;dashed=0;arcSize=6;">
+          <mxGeometry x="20" y="20" width="940" height="680" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n_draft" value="① AI 초안&#10;블로그 · 뉴스레터 · 카피 · 사업계획서&#10;(기계 티 포함)" vertex="1" parent="1" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#D97757;strokeColor=#B85C3E;fontColor=#FFFFFF;fontStyle=1;fontSize=13;">
+          <mxGeometry x="380" y="70" width="220" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="grp_slop" value="1차 — 일반 후처리(ai-slop-reviewer)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF9F5;strokeColor=#D1CFC5;verticalAlign=top;fontStyle=1;fontSize=11;fontColor=#5F6F4A;align=left;spacingLeft=12;spacingTop=8;dashed=1;">
+          <mxGeometry x="40" y="200" width="900" height="200" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n_slop_diag" value="② 진단&#10;과장 수식어 · 기계 접속어&#10;모호한 일반화 · 요약 반복" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontSize=12;">
+          <mxGeometry x="70" y="250" width="200" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n_slop_fix" value="③ 1차 수정&#10;영어 표현 · 일반 AI 패턴 정리&#10;사람 톤으로 다듬기" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontSize=12;">
+          <mxGeometry x="380" y="250" width="220" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n_slop_decision" value="④ 일반 패턴&#10;제거?" vertex="1" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FAF9F5;strokeColor=#D97757;fontColor=#141413;fontSize=11;">
+          <mxGeometry x="720" y="250" width="160" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="grp_humanize" value="2차 — 한국어 정밀 윤문(humanize-korean)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF9F5;strokeColor=#D1CFC5;verticalAlign=top;fontStyle=1;fontSize=11;fontColor=#5F6F4A;align=left;spacingLeft=12;spacingTop=8;dashed=1;">
+          <mxGeometry x="40" y="430" width="900" height="200" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n_hum_scan" value="⑤ SSOT 탐지&#10;A~J 음성 축(40+ 패턴) + K 양성 축&#10;번역투 · 관용구 · 형식명사 · 정서온도" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontSize=12;">
+          <mxGeometry x="70" y="480" width="240" height="110" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n_hum_metrics" value="⑥ 정량 메트릭 + 수술적 수정&#10;변경률 30% 경고 / 50% 롤백&#10;의미 100% 보존(사실·수치·고유명사)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontSize=12;">
+          <mxGeometry x="380" y="480" width="240" height="110" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n_hum_grade" value="⑦ A/B/C/D 등급&#10;final.md + summary.md" vertex="1" parent="1" style="shape=document;whiteSpace=wrap;html=1;fillColor=#788C5D;strokeColor=#5F6F4A;fontColor=#FFFFFF;fontStyle=1;fontSize=12;boundedLbl=1;backgroundOutline=1;">
+          <mxGeometry x="720" y="490" width="160" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n_user" value="⑧ 사람이 쓴 글&#10;→ 사용자 최종 검토 후 배포" vertex="1" parent="1" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#D97757;strokeColor=#B85C3E;fontColor=#FFFFFF;fontStyle=1;fontSize=13;">
+          <mxGeometry x="380" y="650" width="220" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n_legend_title" value="범례" vertex="1" parent="1" style="text;html=1;align=left;fontStyle=1;fontColor=#87867F;fontSize=11;">
+          <mxGeometry x="710" y="650" width="50" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="n_legend_clay" value="시작/끝" vertex="1" parent="1" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#D97757;strokeColor=#B85C3E;fontColor=#FFFFFF;fontSize=9;">
+          <mxGeometry x="770" y="650" width="60" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="n_legend_data" value="결과 산출" vertex="1" parent="1" style="shape=document;whiteSpace=wrap;html=1;fillColor=#788C5D;strokeColor=#5F6F4A;fontColor=#FFFFFF;fontSize=9;">
+          <mxGeometry x="840" y="650" width="60" height="22" as="geometry"/>
         </mxCell>
 
       </root>

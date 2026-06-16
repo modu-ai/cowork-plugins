@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="Contract-Review-Workflow" id="crw-1">
+    <mxGraphModel dx="1280" dy="860" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1180" pageHeight="860" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="e_in_tri" edge="1" parent="1" source="input" target="triage" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;strokeWidth=2;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_tri_dia" edge="1" parent="1" source="triage" target="diamond" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#87867F;strokeWidth=2;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_dia_fast" edge="1" parent="1" source="diamond" target="grp_fast" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#C47B2A;strokeWidth=3;endArrow=blockThin;endFill=1;fontColor=#B85C3E;fontStyle=1;fontSize=11;labelBackgroundColor=#FAF9F5;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="200" y="330"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_dia_full" edge="1" parent="1" source="diamond" target="grp_full" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6E6E6E;strokeWidth=3;endArrow=blockThin;endFill=1;fontColor=#3F3F3F;fontStyle=1;fontSize=11;labelBackgroundColor=#FAF9F5;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="980" y="330"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_fast_mat" edge="1" parent="1" source="grp_fast" target="matrix" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#C47B2A;strokeWidth=2;endArrow=blockThin;endFill=1;dashed=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_full_mat" edge="1" parent="1" source="grp_full" target="matrix" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6E6E6E;strokeWidth=2;endArrow=blockThin;endFill=1;dashed=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_mat_docx" edge="1" parent="1" source="matrix" target="docx" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=3;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_docx_ai" edge="1" parent="1" source="docx" target="aislop" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#144A46;strokeWidth=2;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_ai_sum" edge="1" parent="1" source="aislop" target="summary" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#5F6F4A;strokeWidth=2;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="title" value="계약서 검토 파이프라인 — 빠른 길 · 긴 길 분기" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=20;fontStyle=1;fontColor=#141413;">
+          <mxGeometry x="190" y="20" width="800" height="36" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="NDA는 빠른 레인, 일반 계약서는 심층 레인으로 갈라졌다가 2×2 리스크 매트릭스에서 합류" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#87867F;">
+          <mxGeometry x="190" y="54" width="800" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="input" value="사용자 한 줄 요청&#10;&#10;&quot;첨부 계약서 검토해줘&quot;&#10;(PDF / HWPX / DOCX + 맥락 5문항)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D97757;strokeColor=#B85C3E;fontColor=#FFFFFF;fontFamily=Helvetica;fontStyle=1;align=center;verticalAlign=middle;fontSize=12;">
+          <mxGeometry x="490" y="100" width="300" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="triage" value="nda-triage&#10;(계약서 분류)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#87867F;fontColor=#141413;fontFamily=Helvetica;fontStyle=1;align=center;verticalAlign=middle;fontSize=12;">
+          <mxGeometry x="555" y="210" width="170" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="diamond" value="NDA?" vertex="1" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#E3DACC;strokeColor=#C9BCA6;fontColor=#141413;fontFamily=Helvetica;fontStyle=1;align=center;verticalAlign=middle;fontSize=12;">
+          <mxGeometry x="585" y="300" width="110" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="grp_fast" value="빠른 길 (NDA triage)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FBF0DC;strokeColor=#C47B2A;verticalAlign=top;fontStyle=1;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#141413;fontSize=12;">
+          <mxGeometry x="40" y="410" width="320" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="fast_1" value="nda-triage&#10;리스크 항목 빠르게 추출" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="70" y="460" width="260" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="fast_2" value="위험도 점수화 (가벼움)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF9F5;strokeColor=#D1CFC5;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="70" y="520" width="260" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="grp_full" value="긴 길 (일반 계약서 전체 검토)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAEAEA;strokeColor=#6E6E6E;verticalAlign=top;fontStyle=1;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#141413;fontSize=12;">
+          <mxGeometry x="820" y="410" width="320" height="280" as="geometry"/>
+        </mxCell>
+        <mxCell id="full_1" value="contract-review&#10;조항별 분석" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="850" y="460" width="260" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="full_2" value="legal-risk&#10;발생가능성 × 영향도" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1CFC5;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="850" y="514" width="260" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="full_3" value="compliance-check&#10;규제 검증" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF9F5;strokeColor=#D1CFC5;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="850" y="568" width="260" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="full_4" value="조문·판례 레퍼런스 매칭" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF9F5;strokeColor=#D1CFC5;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="850" y="622" width="260" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="matrix" value="2×2 리스크 매트릭스&#10;&#10;가로: 일어날 가능성&#10;세로: 터졌을 때 피해 규모&#10;&#10;고위험 상위 3개 → 협상 포인트 자동 선정" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FBF0DC;strokeColor=#C47B2A;fontColor=#141413;fontFamily=Helvetica;fontStyle=1;align=center;verticalAlign=middle;fontSize=12;">
+          <mxGeometry x="490" y="500" width="300" height="110" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="docx" value="docx-generator&#10;수정본 DOCX (추적 변경 표)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#87867F;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=12;">
+          <mxGeometry x="555" y="660" width="270" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="aislop" value="ai-slop-reviewer&#10;어투 정리 (결재용 다듬기)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6F0EF;strokeColor=#144A46;fontColor=#141413;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=12;">
+          <mxGeometry x="555" y="740" width="270" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="summary" value="결재용 1페이지 요약&#10;핵심 리스크 3개 + 권장 액션 + 승인 사항" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#788C5D;strokeColor=#5F6F4A;fontColor=#FFFFFF;fontFamily=Helvetica;fontStyle=1;align=center;verticalAlign=middle;fontSize=12;">
+          <mxGeometry x="490" y="810" width="400" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="lbl_fast" value="예 (빠른 길)" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=11;fontStyle=1;fontColor=#B85C3E;">
+          <mxGeometry x="330" y="392" width="120" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="lbl_full" value="아니오 (긴 길)" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=11;fontStyle=1;fontColor=#3F3F3F;">
+          <mxGeometry x="730" y="392" width="120" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="merge_lbl" value="두 길 합류" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=10;fontStyle=1;fontColor=#87867F;">
+          <mxGeometry x="420" y="540" width="60" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="caption" value="공항 보안 검색대에 비유: NDA(국내선)는 빠른 레인 한 단계, 일반 계약서(국제선)는 심층 검사를 거쳐 같은 탑승구(결재 요약)에서 합류." vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#87867F;fontStyle=2;">
+          <mxGeometry x="190" y="860" width="800" height="20" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

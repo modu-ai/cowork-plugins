@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="Report-Automation-Assembly-Line" id="ra-1">
+    <mxGraphModel dx="1280" dy="780" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="760" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- 제목 -->
+        <!-- 데이터 소스 (좌측 입력 밴드) -->
+        <!-- 5개 작업대 (조립 라인) -->
+        <!-- 산출물 (우측 결과) -->
+        <!-- 조립 화살표 (좌→우) -->
+        <!-- 순서 고정 원칙 설명 밴드 -->
+        <!-- 색상 범례 -->
+        <!-- 캡션 -->
+        <mxCell id="a_src_st1" edge="1" parent="1" source="src_box" target="st1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2a8a8c;strokeWidth=2;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a_st1_st2" edge="1" parent="1" source="st1" target="st2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=3;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a_st2_st3" edge="1" parent="1" source="st2" target="st3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=3;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a_st3_st4" edge="1" parent="1" source="st3" target="st4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=3;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a_st4_st5" edge="1" parent="1" source="st4" target="st5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97757;strokeWidth=3;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a_st5_out" edge="1" parent="1" source="st5" target="out_box" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#B85C3E;strokeWidth=2;endArrow=blockThin;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="title" value="주간 보고서 5단계 조립 라인" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=20;fontStyle=1;fontColor=#141413;">
+          <mxGeometry x="200" y="20" width="800" height="34" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="하나의 완성품을 만들기 위해 5개 작업대를 차례로 거치는 공장 조립 라인" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#87867F;">
+          <mxGeometry x="200" y="54" width="800" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="src_lbl" value="데이터 소스 (재료)" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=11;fontStyle=1;fontColor=#2a8a8c;">
+          <mxGeometry x="30" y="110" width="160" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="src_box" value="KPI CSV&#10;Slack #ops&#10;Notion / Asana" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dceee9;strokeColor=#2a8a8c;fontColor=#09110f;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="40" y="134" width="150" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="st1_lbl" value="① 기획자" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=10;fontStyle=1;fontColor=#6e6e6e;">
+          <mxGeometry x="230" y="110" width="150" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="st1" value="status-reporter&#10;보고서 뼈대 잡기&#10;OKR 진행률" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaeaea;strokeColor=#6e6e6e;fontColor=#09110f;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="230" y="130" width="150" height="94" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="st2_lbl" value="② 데이터 분석가" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=10;fontStyle=1;fontColor=#c47b2a;">
+          <mxGeometry x="410" y="110" width="150" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="st2" value="data-explorer&#10;숫자 채우기&#10;KPI 추출" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fbf0dc;strokeColor=#c47b2a;fontColor=#09110f;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="410" y="130" width="150" height="94" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="st3_lbl" value="③ 표 담당" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=10;fontStyle=1;fontColor=#c47b2a;">
+          <mxGeometry x="590" y="110" width="150" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="st3" value="xlsx-creator&#10;차트로 정리&#10;대시보드 시트" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fbf0dc;strokeColor=#c47b2a;fontColor=#09110f;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="590" y="130" width="150" height="94" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="st4_lbl" value="④ 문서 편집자" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=10;fontStyle=1;fontColor=#c47b2a;">
+          <mxGeometry x="770" y="110" width="150" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="st4" value="docx-generator&#10;3페이지로 묶기&#10;최종 보고서" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fbf0dc;strokeColor=#c47b2a;fontColor=#09110f;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="770" y="130" width="150" height="94" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="st5_lbl" value="⑤ 교정 편집자" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=10;fontStyle=1;fontColor=#144a46;">
+          <mxGeometry x="950" y="110" width="150" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="st5" value="ai-slop-reviewer&#10;문장 다듬기&#10;임원체 / 팀체" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6f0ef;strokeColor=#144a46;fontColor=#09110f;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="950" y="130" width="150" height="94" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="out_lbl" value="완성품" vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=11;fontStyle=1;fontColor=#B85C3E;">
+          <mxGeometry x="1130" y="110" width="60" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="out_box" value="주간 보고서&#10;3페이지 DOCX" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D97757;strokeColor=#B85C3E;fontColor=#FFFFFF;fontFamily=Helvetica;fontStyle=1;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="1120" y="134" width="80" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rule_lbl" value="왜 순서가 고정인가" vertex="1" parent="1" style="text;align=left;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=11;fontStyle=1;fontColor=#5F6F4A;">
+          <mxGeometry x="230" y="270" width="200" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="rule_1" value="앞 단계의 결과물이&#10;뒷단계의 입력" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#788C5D;strokeColor=#5F6F4A;fontColor=#FFFFFF;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="230" y="294" width="210" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="rule_2" value="뼈대 없이 숫자부터&#10;넣으면 자리 없음" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#788C5D;strokeColor=#5F6F4A;fontColor=#FFFFFF;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="460" y="294" width="210" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="rule_3" value="문장 다듬기를 먼저 하면&#10;숫자 바뀔 때 다시 고쳐야" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#788C5D;strokeColor=#5F6F4A;fontColor=#FFFFFF;fontFamily=Helvetica;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="690" y="294" width="210" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="rule_4" value="한 작업대 빠지면&#10;완성품에 빈 칸" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#788C5D;strokeColor=#5F6F4A;fontColor=#FFFFFF;fontFamily=Helvetica;fontStyle=1;align=center;verticalAlign=middle;fontSize=11;">
+          <mxGeometry x="920" y="294" width="180" height="48" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="legend_lbl" value="작업대 색깔" vertex="1" parent="1" style="text;align=left;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=11;fontStyle=1;fontColor=#87867F;">
+          <mxGeometry x="40" y="400" width="120" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_plan" value="기획 (회색)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaeaea;strokeColor=#6e6e6e;fontColor=#09110f;fontFamily=Helvetica;fontSize=11;align=center;verticalAlign=middle;">
+          <mxGeometry x="40" y="424" width="120" height="32" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_build" value="생성 (베이지)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fbf0dc;strokeColor=#c47b2a;fontColor=#09110f;fontFamily=Helvetica;fontSize=11;align=center;verticalAlign=middle;">
+          <mxGeometry x="170" y="424" width="120" height="32" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_qa" value="검수 (민트)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6f0ef;strokeColor=#144a46;fontColor=#09110f;fontFamily=Helvetica;fontSize=11;align=center;verticalAlign=middle;">
+          <mxGeometry x="300" y="424" width="120" height="32" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_out" value="완성품 (클레이)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D97757;strokeColor=#B85C3E;fontColor=#FFFFFF;fontFamily=Helvetica;fontSize=11;align=center;verticalAlign=middle;">
+          <mxGeometry x="430" y="424" width="140" height="32" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="caption" value="한 냄비 요리가 아니라 콘베이어 벨트 위의 순차 조립 — 스킬 순서를 바꾸면 조립 순서가 뒤섞인 것과 같습니다." vertex="1" parent="1" style="text;align=center;verticalAlign=middle;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#87867F;fontStyle=2;">
+          <mxGeometry x="200" y="700" width="800" height="30" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

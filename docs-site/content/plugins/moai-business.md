@@ -12,6 +12,29 @@ tags: ["moai-business"]
 
 ## 무엇을 하는 플러그인인가
 
+`moai-business`는 종합병원에 비유하면 이해하기 쉽습니다. 환자(창업자나 사업자)가 접수 창구에서 "어떤 고민이신가요?"라고 물어보는 질문에 답하면, 병원 측이 알맞은 진료과로 안내해 줍니다. 전략이 필요하면 전략과, 시장을 알고 싶으면 시장과, 자금이 필요하면 재무·지원금과로 보내주는 식입니다. 각 진료과에서는 검사를 하고 처방전(분석 결과·문서)을 건네주며, 퇴원 뒤에도 매일 아침 건강 상태를 점검하듯 업계 동향 브리핑을 받을 수 있습니다. 한 건물 안에 열 개의 진료과가 모여 있어 환자가 어디로 가야 할지 혼자 떠돌지 않고 접수에서 곧장 알맞은 과으로 연결되는 점이, 열 개 스킬이 하나의 플러그인으로 묶여 있는 이유입니다.
+
+왜 굳이 열 개를 한 플러그인으로 묶었을까요. 사업은 보통 한 번의 작업으로 끝나지 않습니다. 아이디어를 검증하고, 시장을 확인하고, 자금이나 투자를 구하고, 실행하는 과정이 차례로 이어지는 여정입니다. 이 여정의 각 단계마다 전문 도구가 필요한데, 그 도구들을 한 플러그인 안에 미리 갖춰두면 사용자가 단계마다 새로운 도구를 찾아 헤맬 필요가 없습니다. 플러그인(이름표처럼 관련 스킬들을 한 묶음으로 묶어주는 상자) 안의 스킬들은 각자 한 가지 일을 깊이 있게 하고, 필요할 때 차례로 이어 쓸 수 있습니다. 이렇게 여러 스킬을 화살표로 연결해 하나의 흐름으로 조립하는 것을 체인이라고 부릅니다. 아래 다이어그램은 한 사업자의 고민이 어떤 스킬로 안내되고, 그 결과 어떤 산출물로 나오는지를 한눈에 보여줍니다.
+
+```mermaid
+flowchart LR
+    User([사업자 · 창업자]) --> Rec{어떤 고민인가요?}
+    Rec -->|전략 · 계획| D1[전략 스킬]
+    Rec -->|시장 확인| D2[시장조사 스킬]
+    Rec -->|자금 · 투자| D3[IR · 지원금 스킬]
+    Rec -->|운영 · 영업| D4[컨설팅 · 영업 스킬]
+    D1 --> Out[(사업계획서)]
+    D2 --> Out
+    D3 --> Out
+    D4 --> Out
+    Out --> Daily[매일 아침 브리핑]
+
+    style User fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style Rec fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style Out fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style Daily fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+```
+
 `moai-business`는 사업 아이템을 정리하고, 시장을 살펴보고, 투자자나 정부기관에 제출할 문서까지 만드는 전 과정을 한 플러그인 안에서 끝낼 수 있도록 설계되었습니다. 창업자·기획자·투자 유치 팀·소상공인·지원금 신청자 등 다양한 역할의 사용자를 커버합니다.
 
 `sbiz365-analyst`는 소상공인365 빅데이터 포털의 상권분석 PDF를 입력받아 4축 100점 평가와 9섹션 Word 보고서를 생성합니다. `kr-gov-grant`는 정부지원사업 **탐색·작성·검토·일정 관리** 4개 모드를 제공해 K-Startup·BIZINFO·중기부·나라장터·IITP 등 주요 기관의 공고를 연결합니다.
@@ -299,6 +322,31 @@ flowchart TD
 - `moai-media:higgsfield-image` — 사업계획서·IR 덱용 다이어그램·썸네일 생성
 
 ## 대표 체인
+
+아래 체인들은 모두 같은 원칙으로 조립되어 있습니다. 요리에 비유하면 이해가 쉽습니다. 도메인 스킬(`strategy-planner` 등)은 요리사가 요리를 만드는 일입니다. 포맷 스킬(`docx-generator`, `pptx-designer`)은 그 요리를 예쁜 접시에 담아 내는 일이고, 품질 스킬(`ai-slop-reviewer`)은 손님에게 내보내기 전에 맛을 보고 손질하는 일입니다. 요리를 만들기도 전에 접시에 담거나 맛을 볼 수 없듯, 이 순서는 도메인 다음 포맷, 포맷 다음 품질로 고정되어야 결과가 흔들리지 않습니다.
+
+한 가지 주의점이 있습니다. 재무제표 숫자, 데이터 차트, 코드는 애초에 AI 특유의 어투가 들어갈 자리가 없습니다. 그래서 이런 산출물에서는 맨 끝의 맛보기 단계(`ai-slop-reviewer`)를 건너뛰어도 무방합니다. 반면 사업계획서나 IR 덱처럼 사람이 읽고 설득되어야 할 글에서는 맛보기 단계를 빼지 않는 것이 좋습니다.
+
+```mermaid
+flowchart LR
+    subgraph Domain["① 도메인 — 요리 만들기"]
+        direction TB
+        A1["strategy-planner<br/>investor-relations<br/>kr-gov-grant"]
+    end
+    subgraph Format["② 포맷 — 접시에 담기"]
+        direction TB
+        B1["docx-generator<br/>pptx-designer<br/>hwpx-writer"]
+    end
+    subgraph Quality["③ 품질 — 맛보기"]
+        direction TB
+        C1["ai-slop-reviewer"]
+    end
+    Domain --> Format --> Quality
+
+    style Domain fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style Format fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style Quality fill:#e6f0ef,stroke:#144a46,color:#09110f
+```
 
 **사업계획서**
 

@@ -1,3 +1,20 @@
+---
+version: alpha
+name: Kraken-design-analysis
+description: 'Clean, trustworthy crypto exchange on white canvas with Kraken Purple (#7132f5) as the commanding brand color, near-black text, and whisper-level shadows.'
+colors:
+  primary: "#7132f5"
+  primary-active: "#7132f5"
+  ink: "#101114"
+  body: "#3d3d3a"
+  muted: "#686b82"
+  hairline: "#dedee5"
+  canvas: "#ffffff"
+  surface-soft: "#f7f7fa"
+  surface-card: "#f7f7fa"
+  on-primary: "#ffffff"
+---
+
 # Design System Inspired by Kraken
 
 ## 1. Visual Theme & Atmosphere

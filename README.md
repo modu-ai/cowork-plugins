@@ -2,7 +2,7 @@
 
 [![License: NC-ND v1.0](https://img.shields.io/badge/License-NC--ND%20v1.0-red.svg)](LICENSE)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
-[![Version](https://img.shields.io/badge/Version-2.22.0-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-2.23.0-blue)](CHANGELOG.md)
 [![Plugins](https://img.shields.io/badge/Plugins-29-blue)](.claude-plugin/marketplace.json)
 [![Skills](https://img.shields.io/badge/Skills-178-green)](.claude-plugin/marketplace.json)
 [![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)
@@ -471,7 +471,7 @@ moai-commerce에 시장조사·JTBD·페르소나·상품명·채널 메시지·
 | [moai-finance](./moai-finance/) | 원천징수, 부가세, K-IFRS, 결산, 예산 분석, **법원경매 매각공고**, **KRX 시세** | 6 |
 | [moai-public-data](./moai-public-data/) | 한국 공공데이터 조회 — KRX 시세, 법원경매, 국토부 실거래가, 공공데이터포털/KOSIS 통계 🆕 | 4 |
 | [moai-hr](./moai-hr/) | 근로계약서, 4대보험, 채용, 성과평가, **이력서 스크리닝** | 5 |
-| [moai-content](./moai-content/) | 카드뉴스, 상세페이지, 랜딩페이지, 뉴스레터, 카피라이팅, 블로그, 소셜미디어, 콘텐츠 캘린더, 유튜브·팟캐스트 기획, 바른한글 맞춤법, **한국어 AI 티 정밀 윤문**, **마크다운→HTML 렌더러(html-report)**, **draw.io 다이어그램(drawio-diagram)** | 15 |
+| [moai-content](./moai-content/) | 카드뉴스, 상세페이지, 랜딩페이지, 뉴스레터, 카피라이팅, 블로그, 소셜미디어, 콘텐츠 캘린더, 유튜브·팟캐스트 기획, 바른한글 맞춤법, **한국어 AI 티 정밀 윤문**, **마크다운→HTML 렌더러(html-report)** | 14 |
 | [moai-operations](./moai-operations/) | 결재, 조달, SOP, 벤더 관리, 상태 보고 | 3 |
 | [moai-education](./moai-education/) | 강사·교수·교사 교육 콘텐츠 풀스택 — 강의설계, 평가 출제, 1일-16주 모든 강의 형식 커리큘럼, 일반 강의·연수·정규 강좌 후기 자산화 | 6 |
 | [moai-lifestyle](./moai-lifestyle/) | 여행, 건강, 웨딩/이벤트 | 3 |
@@ -499,7 +499,7 @@ moai-commerce에 시장조사·JTBD·페르소나·상품명·채널 메시지·
 | 항목 | 수량 | 비고 |
 |------|:----:|------|
 | 플러그인 | **29** | moai-core + 28 도메인 플러그인 (moai-public-data·moai-tutor·moai-xquik 포함) |
-| 스킬 | **178** | 전 SKILL.md `version: 2.22.0` 동기화, moai-xquik 1개 스킬 포함 |
+| 스킬 | **178** | 전 SKILL.md `version: 2.23.0` 동기화, moai-xquik 1개 스킬 포함 |
 | 코디네이터 서브에이전트 | **31** | 플러그인 번들 `agents/` — 24 플러그인, Cowork-safe(Bash·WebFetch 배제), 텍스트 체인 ai-slop→humanize 마감 |
 | 레퍼런스 파일 | **287** | 각 스킬의 `references/` 안 상세 가이드 |
 | 스크립트 | **13** | helper(`scripts/`) — Python·Node·Shell |
@@ -913,7 +913,7 @@ X 데이터 검색, 프로필 조회, 추출, 모니터링, 웹훅, 게시 워�
 
 **Anthropic 공식 스킬 가이드 준수**
 - 모든 **178개** 스킬에 [What]+[When]+[Triggers] 구조의 description 적용
-- 모든 SKILL.md frontmatter에 `version: 2.22.0` 동기화, moai-xquik 스킬은 Xquik MCP 설정 버전을 따름 (Cowork 자동 업데이트 감지)
+- 모든 SKILL.md frontmatter에 `version: 2.23.0` 동기화 (Cowork 자동 업데이트 감지)
 - Negative triggers로 불필요한 스킬 로딩 방지
 - 인라인 폴백과 에러 핸들링 내장
 

@@ -17,7 +17,7 @@ description: |
 
   한국 번역학계 8유형 번역투 계보를 통합한 10대 카테고리 분류 + 신규 패턴 A-16/A-18/A-19/E-7 + post-editese 14메트릭 기반 한국어 정밀 윤문 스킬입니다.
 user-invocable: true
-version: 2.22.0
+version: 2.23.0
 ---
 
 # Humanize Korean — 한국어 AI 티 제거 (Fast 모드)

@@ -74,7 +74,7 @@ flowchart LR
    자주 쓰는 체인은 슬래시 명령으로 만들면 한 번의 지시로 실행됩니다. 예: `/weekly-report`는 `status-reporter → xlsx-creator → docx-generator → ai-slop-reviewer`를 한 번에.
 
 
-📊 [다이어그램으로 보기](/diagrams/chain-design.html) — 브라우저에서 바로 열립니다. 편집은 [`chain-design.drawio`](/diagrams/chain-design.drawio)를 [app.diagrams.net](https://app.diagrams.net)에서 여세요.
+![chain-design](/diagrams/chain-design.svg)
 
 ## 자주 쓰는 체인 12종
 

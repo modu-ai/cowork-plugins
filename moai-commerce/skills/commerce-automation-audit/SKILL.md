@@ -8,7 +8,7 @@ description: |
   ai-slop-reviewer 자동 체이닝 (진단 보고서 텍스트 산출물).
   이커머스 운영 자동화 가능성 자가 진단 + 우선순위·로드맵 생성.
 user-invocable: true
-version: 2.22.0
+version: 2.23.0
 ---
 
 # 커머스 자동화 진단·로드맵 (Commerce Automation Audit)

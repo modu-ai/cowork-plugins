@@ -35,4 +35,4 @@ model: sonnet
 ## 품질 게이트
 
 - 고객 대상 텍스트는 `moai-core:ai-slop-reviewer`(필수) → `moai-content:humanize-korean`로 마감.
-- 국내 광고 표현은 `moai-commerce:commerce-compliance-coordinator` 또는 `commerce-marketing-compliance-kr` 검수를 권장.
+- 국내 광고 표현은 `moai-commerce:commerce-marketing-compliance-kr` 검수를 권장.

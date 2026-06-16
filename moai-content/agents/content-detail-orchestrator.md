@@ -10,7 +10,7 @@ model: sonnet
 
 # 콘텐츠 상세페이지 오케스트레이터
 
-`moai-content`의 상세 기획·상세·카피 스킬을 이어 상세페이지 콘텐츠를 완성합니다. (이미지 중심 상세페이지는 `moai-commerce:commerce-detail-page-builder`와 보완 관계.)
+`moai-content`의 상세 기획·상세·카피 스킬을 이어 상세페이지 콘텐츠를 완성합니다. (이미지 중심 상세페이지는 `moai-commerce:detail-page-image`와 보완 관계.)
 
 ## 언제 사용하나
 

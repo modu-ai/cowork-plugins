@@ -9,10 +9,17 @@
 아래 208개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.11.1+ `hugo.toml` SSOT 별도 추적):
 - `.claude-plugin/marketplace.json` (`metadata.version`) × 1
 - `<plugin>/.claude-plugin/plugin.json` (`version`) × 28 (v2.20.0+)
-- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 178 (v2.22.0+)
+- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 177 (v2.22.0+)
 - `docs-site/hugo.toml` (`[params] version`) × 1 (v2.11.1+ SSOT, 좌측 사이드바·footer 자동 반영)
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
+
+## [2.23.0] - 2026-06-16
+
+MINOR. **`drawio-diagram` 스킬 제거 (moai-content)** — `viewer-static.min.js` CDN 렌더링이 drawio XML마다 불안정(검증 21개 중 2개만 성공)하여 스킬 가치를 훼손합니다. 배포용 스킬에서 제거하고 다이어그램은 **mermaid(인라인, 안정)**로 통일했습니다. 로컬 문서 정교 도식은 draw.io desktop CLI(로컬 전용)로 SVG 생성. 28 플러그인(유지) · 178 → 177 스킬 · 동기화 2.22.0 → 2.23.0. 기능적 비파괴(기존 플러그인·스킬·인터페이스 무변경). Breaking change 없음.
+
+### Removed
+- **`drawio-diagram` 스킬 제거 (moai-content)** — `viewer-static.min.js` CDN 렌더링이 drawio XML마다 불안정(검증 21개 중 2개만 성공)하여 스킬 가치를 훼손합니다. 배포용 스킬에서 제거하고, 다이어그램은 **mermaid(인라인, 안정)**를 기본으로 통일했습니다. docs-site 등 로컬 문서의 정교 도식은 **draw.io desktop CLI(`brew install --cask drawio`, 로컬 전용)**로 SVG를 생성해 마크다운 이미지로 인라인 사용합니다(CLAUDE.local.md §10-6). **28 플러그인 유지 · 178 → 177 스킬**. `moai-tutor:learning-material`의 ```drawio` 블록 지원도 제거(mermaid로 수렴).
 
 ## [2.22.0] - 2026-06-16
 

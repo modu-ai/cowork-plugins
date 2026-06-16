@@ -2,7 +2,7 @@
 
 > AI 이미지 프롬프트 빌더 + 음성 생성 — Higgsfield MCP·ElevenLabs MCP 통합 컴패니언 플러그인
 
-[![버전](https://img.shields.io/badge/version-2.10.0-blue)](../CHANGELOG.md)
+[![버전](https://img.shields.io/badge/version-2.22.0-blue)](../CHANGELOG.md)
 [![라이선스](https://img.shields.io/badge/license-MIT-green)](../LICENSE)
 [![스킬](https://img.shields.io/badge/skills-6-success)](#스킬-카탈로그-6종)
 
@@ -15,7 +15,7 @@
 
 이미지·영상의 **실제 렌더링**은 별도 MCP가 담당합니다 (예: Higgsfield MCP의 Soul·DOP·캐릭터·말하는머리 등). 본 플러그인은 텍스트 프롬프트 산출과 음성 합성에 집중합니다.
 
-## 스킬 카탈로그 (4종)
+## 스킬 카탈로그 (6종)
 
 ### 이미지 프롬프트 빌더 (3)
 
