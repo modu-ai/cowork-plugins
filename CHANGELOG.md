@@ -6,13 +6,34 @@
 
 ## 버전 통일 원칙 (HARD)
 
-아래 206개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.11.1+ `hugo.toml` SSOT 별도 추적):
+아래 208개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.11.1+ `hugo.toml` SSOT 별도 추적):
 - `.claude-plugin/marketplace.json` (`metadata.version`) × 1
 - `<plugin>/.claude-plugin/plugin.json` (`version`) × 28 (v2.20.0+)
-- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 177 (v2.21.0+)
+- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 178 (v2.22.0+)
 - `docs-site/hugo.toml` (`[params] version`) × 1 (v2.11.1+ SSOT, 좌측 사이드바·footer 자동 반영)
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
+
+## [2.22.0] - 2026-06-16
+
+MINOR. **`design-system-library` 신규 스킬(moai-design) — 56개 글로벌 브랜드 디자인 시스템 → Tailwind Play CDN + shadcn vanilla HTML**. HTML 보고서·랜딩·문서에 즉시 적용 가능한 브랜드 디자인 시스템 라이브러리를 추가했습니다. 28 플러그인(유지) · 177 → 178 스킬(+design-system-library 1개) · 동기화 2.21.0 → 2.22.0. 기능적 비파괴(기존 플러그인·스킬·인터페이스 무변경). Breaking change 없음.
+
+### Added
+
+- **`design-system-library` 신규 스킬 (moai-design)** — Claude·ClickHouse·Clay 기본 3테마 + 글로벌 56종 브랜드(Notion·Linear·Stripe·Vercel·Figma·Sentry·Raycast·Mintlify 등) 디자인 시스템 토큰(색·타이포·radius·spacing·컴포넌트)을 단일 진실 원천(single source of truth)으로 보관. 두 소비 경로: (1) `html-report`에 `design_system` 파라미터로 시스템 선택 → Tailwind Play CDN config + shadcn vanilla 컴포넌트로 단일 파일 HTML 렌더, (2) Claude Design 핸드오프 시 `claude-design-system-prep`가 DESIGN.md 합성 소스로 사용. 핵심 원칙: 라이브러리는 데이터 SSOT(렌더 로직은 소비자 html-report 소유), Tailwind Play CDN으로 외부 빌드 없이 브랜드 토큰 적용(인터넷 필요), shadcn 컴포넌트는 React가 아닌 vanilla HTML/CSS로 재현, 기존 html-report 0의존 템플릿 유지(design_system 미지정 시 하위 호환). 56개 중 48종 휘도 기반 분류(light 33·dark 13·warm 2) 완료, 8종(theverge·tesla·starbucks·spotify·mastercard·lovable·lamborghini·kraken) colors 구조 후속 보완 예정.
+
+### Changed
+
+- **스킬 카운트 177 → 178** — `design-system-library` 1개 신규(moai-design 5 → 6 스킬). 플러그인 28개 유지.
+- **전체 버전 동기화 2.21.0 → 2.22.0** — marketplace.json + 28 plugin.json + 178 SKILL.md (208개 지점) + hugo.toml SSOT.
+
+### Fixed
+
+- 해당 없음.
+
+### Removed
+
+- 해당 없음.
 
 ## [2.21.0] - 2026-06-16
 

@@ -12,7 +12,7 @@ description: |
   .drawio XML(편집용) + draw.io CDN 뷰어를 임베드한 단일 HTML(즉시 열람)을 함께 산출합니다. 로컬 설치 불필요. moai-content:html-report의 design-token·폰트를 공유하고, moai-tutor:learning-material에서 mermaid 보완용으로 조건부 임베드됩니다.
   [책임 경계] vs mermaid: 빠른 텍스트 기반 플로우·시퀀스는 mermaid, 정교한 셰이프·클라우드 아이콘·편집 가능한 산출물이 필요하면 이 스킬.
 user-invocable: true
-version: 2.21.0
+version: 2.22.0
 ---
 
 # drawio-diagram — 편집 가능한 draw.io 다이어그램 렌더러

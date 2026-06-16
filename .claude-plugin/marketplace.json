@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "모두의 AI의 Claude Cowork 플러그인 마켓플레이스 — 28 플러그인, 176 스킬. 사업계획·이커머스·마케팅·콘텐츠·법률·재무·재테크·HR·교육·학습·출판·디자인·미디어·생산성·커뮤니케이션 등 한국 실무 도메인 전반을 한국어 자연어 한 줄로 처리합니다. 짧게 요청하면 시스템이 필요한 맥락을 질문(AskUserQuestion)으로 수집하고, 산출물별 스킬 체인으로 결과를 완성합니다. 모든 텍스트 산출물은 ai-slop-reviewer 검수 체인을 권장하며, /project로 프로젝트 워크플로우 기반 CLAUDE.md를 자동 생성합니다. 버전별 변경 내역은 CHANGELOG.md와 GitHub Releases에서 확인하세요.",
-    "version": "2.21.0",
+    "version": "2.22.0",
     "language": "ko",
     "license": "LicenseRef-MoAI-NC-ND-1.0"
   },
@@ -129,7 +129,7 @@
     {
       "name": "moai-design",
       "source": "./moai-design",
-      "description": "Claude Design 보조 — claude.ai/design 사용을 받쳐 주는 풀스택 5 스킬. claude-design-brief 6요소 자동 채움(Project·Audience·Pages·Tone·Reference·Constraints + AI 슬롭 회피 블록), claude-design-system-prep 브랜드 자산 → DESIGN.md 합성(코드·Figma·실물·사전 빌트인 5 자산 유형), claude-design-prompt-builder 시니어 UX 10 패턴(IA·리서치·디자인 시스템·카피·온보딩·휴리스틱·대시보드·접근성·폼·테스트) 자동 선택·완성, claude-design-handoff-reader Claude Code 핸드오프 번들(README·design-tokens·components·layout·chat-history) 분석·요약 + 1줄 지시 자동 생성, claude-design-slop-check 영문·한국어 AI 슬롭 패턴(Reimagine your·차세대·혁신적인) 검출 + 수정 대안 3개"
+      "description": "Claude Design 보조 — claude.ai/design 사용을 받쳐 주는 풀스택 6 스킬. claude-design-brief 6요소 자동 채움(Project·Audience·Pages·Tone·Reference·Constraints + AI 슬롭 회피 블록), claude-design-system-prep 브랜드 자산 → DESIGN.md 합성(코드·Figma·실물·사전 빌트인 5 자산 유형), claude-design-prompt-builder 시니어 UX 10 패턴(IA·리서치·디자인 시스템·카피·온보딩·휴리스틱·대시보드·접근성·폼·테스트) 자동 선택·완성, claude-design-handoff-reader Claude Code 핸드오프 번들(README·design-tokens·components·layout·chat-history) 분석·요약 + 1줄 지시 자동 생성, claude-design-slop-check 영문·한국어 AI 슬롭 패턴(Reimagine your·차세대·혁신적인) 검출 + 수정 대안 3개, design-system-library 56개 글로벌 브랜드 디자인 시스템 토큰 → Tailwind Play CDN + shadcn vanilla HTML"
     },
     {
       "name": "moai-wealth",

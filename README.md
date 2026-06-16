@@ -2,17 +2,17 @@
 
 [![License: NC-ND v1.0](https://img.shields.io/badge/License-NC--ND%20v1.0-red.svg)](LICENSE)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
-[![Version](https://img.shields.io/badge/Version-2.21.0-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-2.22.0-blue)](CHANGELOG.md)
 [![Plugins](https://img.shields.io/badge/Plugins-28-blue)](.claude-plugin/marketplace.json)
-[![Skills](https://img.shields.io/badge/Skills-177-green)](.claude-plugin/marketplace.json)
+[![Skills](https://img.shields.io/badge/Skills-178-green)](.claude-plugin/marketplace.json)
 [![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)
 [![shadcn/ui](https://img.shields.io/badge/UI-shadcn/ui-black)](https://ui.shadcn.com/)
 
-**Claude Cowork 한국어 도메인 전문가 AI 마켓플레이스 — 28 plugins · 176 skills · NC-ND v1.0**
+**Claude Cowork 한국어 도메인 전문가 AI 마켓플레이스 — 28 plugins · 178 skills · NC-ND v1.0**
 
-자연어 한 줄로 **사업계획서·계약서 검토·세금 계산·PPT·NotebookLM 슬라이드·Claude Design 보조·Higgsfield 이미지·영상·음성 더빙·BI 보고서·HTML 리포트·쿠팡 광고·메타 광고 분석·한국 출판사 제출 원고·한국 공공데이터 조회**를 자동 생성합니다. 한국 B2B 환경(K-IFRS·국세청·근로기준법·식약처·국토부·KRX·인터넷등기소·KPIPA)에 특화된 28개 독립 플러그인과 176개 도메인 스킬이 업무를 대신하며, 모든 텍스트 산출물은 [`ai-slop-reviewer`](./moai-core/skills/ai-slop-reviewer/)가 AI 패턴을 검수하여 자연스럽게 다듬어 드립니다.
+자연어 한 줄로 **사업계획서·계약서 검토·세금 계산·PPT·NotebookLM 슬라이드·Claude Design 보조·Higgsfield 이미지·영상·음성 더빙·BI 보고서·HTML 리포트·쿠팡 광고·메타 광고 분석·한국 출판사 제출 원고·한국 공공데이터 조회**를 자동 생성합니다. 한국 B2B 환경(K-IFRS·국세청·근로기준법·식약처·국토부·KRX·인터넷등기소·KPIPA)에 특화된 28개 독립 플러그인과 178개 도메인 스킬이 업무를 대신하며, 모든 텍스트 산출물은 [`ai-slop-reviewer`](./moai-core/skills/ai-slop-reviewer/)가 AI 패턴을 검수하여 자연스럽게 다듬어 드립니다.
 
-> *Korean B2B specialty plugin marketplace for [Anthropic Claude Code (Cowork)](https://claude.ai/cowork) — 28 plugins · 176 skills. Korean fonts (Pretendard / Noto Serif KR / Chosunilbo Myungjo / KoPubWorld), Korean text humanizer (humanize-korean), AI-slop reviewer for every deliverable. Higgsfield MCP image/video (22 official models), Claude Design helper. K-IFRS, NTS, KRX, MFDS, MOLIT, IROS, KPIPA specialty skills. Non-Commercial No-Derivatives (NC-ND) licensed.*
+> *Korean B2B specialty plugin marketplace for [Anthropic Claude Code (Cowork)](https://claude.ai/cowork) — 28 plugins · 178 skills. Korean fonts (Pretendard / Noto Serif KR / Chosunilbo Myungjo / KoPubWorld), Korean text humanizer (humanize-korean), AI-slop reviewer for every deliverable. Higgsfield MCP image/video (22 official models), Claude Design helper. K-IFRS, NTS, KRX, MFDS, MOLIT, IROS, KPIPA specialty skills. Non-Commercial No-Derivatives (NC-ND) licensed.*
 
 **🚀 빠른 설치**: Claude Cowork → 사용자 지정 → 개인 플러그인 + → **마켓플레이스 추가** → URL `modu-ai/cowork-plugins` 입력 → 동기화 → `moai-core` 먼저 설치
 
@@ -32,6 +32,18 @@
 | 📑 **문서·이커머스·BI** | `hwpx-writer` · `pdf-writer` · `detail-page-copy` · `executive-summary` · `weekly-report` | HWPX(한글) · 한·중·일·영 PDF · 13섹션 상세페이지 · 경영진 1pager · WBR 주간보고 |
 
 > 28개 플러그인 전체 카탈로그와 카테고리 비교는 [플러그인 카탈로그](#플러그인-카탈로그)와 [플러그인 상세 소개](#플러그인-상세-소개)를 참조하세요.
+
+---
+
+**🆕 v2.22.0 하이라이트** (2026-06-16) — **"design-system-library 신규 — 56개 글로벌 브랜드 디자인 시스템 → Tailwind Play CDN + shadcn vanilla HTML"**
+
+28 플러그인(유지), 177 → **178 스킬**, 동기화 2.22.0. 기능·인터페이스 Breaking change 없음. MINOR 릴리스. HTML 보고서·랜딩·문서에 즉시 적용 가능한 브랜드 디자인 시스템 라이브러리를 추가했습니다.
+
+- **`design-system-library` 신규 (moai-design)** — Claude·ClickHouse·Clay 기본 3테마 + 글로벌 56종(Notion·Linear·Stripe·Vercel·Figma·Sentry·Raycast 등) 디자인 시스템 토큰(색·타이포·radius·spacing·컴포넌트)을 단일 진실 원천으로 보관. `html-report`에 `design_system` 파라미터로 지정하면 Tailwind Play CDN config + shadcn 스타일 vanilla 컴포넌트로 브랜드 무드를 즉시 적용. **CLI 설치·빌드 불필요**(단일 HTML 파일, 외부 의존은 CDN 1개). Claude Design 핸드오프 시 DESIGN.md 지침 소스로도 사용.
+- **자동 추천 휴리스틱** — 산출물 성격에 따라 테마 자동 추천(주간현황·사업계획서→`claude` warm editorial / 인시던트·데이터 리포트→`clickhouse` 다크 / 랜딩·마케팅→`clay` playful). `design_system` 미지정 시 기존 0의존 템플릿 유지(하위 호환).
+- **분류 완료 48종 + 후속 8종** — 56개 중 48종은 휘도 기반 분류(light 33 · dark 13 · warm 2) 완료, 8종(theverge·tesla·starbucks·spotify·mastercard·lovable·lamborghini·kraken)은 colors 구조 후속 보완 예정.
+
+기존 워크플로우·플러그인 그대로 동작. `/plugin marketplace update cowork-plugins`로 적용.
 
 ---
 
@@ -475,7 +487,7 @@ moai-commerce에 시장조사·JTBD·페르소나·상품명·채널 메시지·
 | [moai-pm](./moai-pm/) | 주간보고 — `weekly-report` (한국 WBR 6섹션 + 임원 1pager) | 1 |
 | [moai-sales](./moai-sales/) | B2B 제안서 — `proposal-writer` (RFP 대응 12섹션) | 1 |
 | [moai-book](./moai-book/) | 한국 출판사 제출용 원고 풀스택 — 컨셉서·페르소나·목차·저자 약력·제안서·30+ 출판사 매칭·본문 집필·퇴고 (실용서·인문·기술·소설 4 장르 자동 분기) | 8 |
-| [moai-design](./moai-design/) | Claude Design(claude.ai/design) 보조 — 6요소 브리프·DESIGN.md 합성·시니어 UX 10패턴(+프론티어 미디어 보조)·핸드오프 번들 분석(두 경로 분기)·AI 슬롭 검수 | 5 |
+| [moai-design](./moai-design/) | Claude Design(claude.ai/design) 보조 — 6요소 브리프·DESIGN.md 합성·시니어 UX 10패턴(+프론티어 미디어 보조)·핸드오프 번들 분석(두 경로 분기)·AI 슬롭 검수·**56 브랜드 디자인 시스템 라이브러리(`design-system-library`)** | 6 |
 | [moai-wealth](./moai-wealth/) | 개인 재무·재테크 — 재테크 로드맵·가계부/소비관리·투자 입문·보험 설계·근로자 연말정산 절세·경제지표 읽기 | 6 |
 | [moai-productivity](./moai-productivity/) | 자기관리·생산성 — 회고(KPT·연간)·목표관리(12주·만다라트·OKR)·시간관리·습관/루틴·자기돌봄·노션 템플릿·주간보고 | 7 |
 | [moai-comms](./moai-comms/) | 직장 커뮤니케이션 — 보고·설명의 기술·회의 진행·피드백 주고받기·갈등 대응·1:1 면담/협상 | 5 |
@@ -486,7 +498,7 @@ moai-commerce에 시장조사·JTBD·페르소나·상품명·채널 메시지·
 | 항목 | 수량 | 비고 |
 |------|:----:|------|
 | 플러그인 | **28** | moai-core + 27 도메인 플러그인 (moai-public-data·moai-tutor 포함) |
-| 스킬 | **176** | 전 SKILL.md `version: 2.20.0` 동기화 (Cowork 자동 업데이트 지원) |
+| 스킬 | **178** | 전 SKILL.md `version: 2.22.0` 동기화 (Cowork 자동 업데이트 지원) |
 | 코디네이터 서브에이전트 | **31** | 플러그인 번들 `agents/` — 24 플러그인, Cowork-safe(Bash·WebFetch 배제), 텍스트 체인 ai-slop→humanize 마감 |
 | 레퍼런스 파일 | **287** | 각 스킬의 `references/` 안 상세 가이드 |
 | 스크립트 | **13** | helper(`scripts/`) — Python·Node·Shell |
@@ -891,8 +903,8 @@ K-IFRS·KOSIS·DART 친화적 한국 통계 환경에서 5분 안에 의사결�
 ## 기술 특징
 
 **Anthropic 공식 스킬 가이드 준수**
-- 모든 **176개** 스킬에 [What]+[When]+[Triggers] 구조의 description 적용
-- 모든 SKILL.md frontmatter에 `version: 2.20.0` 동기화 (Cowork 자동 업데이트 감지)
+- 모든 **178개** 스킬에 [What]+[When]+[Triggers] 구조의 description 적용
+- 모든 SKILL.md frontmatter에 `version: 2.22.0` 동기화 (Cowork 자동 업데이트 감지)
 - Negative triggers로 불필요한 스킬 로딩 방지
 - 인라인 폴백과 에러 핸들링 내장
 

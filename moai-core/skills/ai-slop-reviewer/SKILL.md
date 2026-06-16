@@ -12,7 +12,7 @@ description: |
   - Cowork/다른 AI 도구로 생성한 문서의 후처리 검수 요청 시
   - 글쓰기 결과물을 인간적인 톤으로 개선하고 싶을 때
 user-invocable: true
-version: 2.21.0
+version: 2.22.0
 ---
 
 # AI 슬롭 검수 및 인간화 스킬

@@ -10,7 +10,7 @@ description: |
   - "북스타그래머 프로필", "SNS 약력"
   - "강연·강의 약력"
 user-invocable: true
-version: 2.21.0
+version: 2.22.0
 ---
 
 # book-author-bio

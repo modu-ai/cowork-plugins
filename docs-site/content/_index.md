@@ -1,6 +1,6 @@
 ---
 title: "Claude Cowork 한국어 문서"
-description: "Claude Cowork 한국어 가이드 — 지식 근로자를 위한 설치·스킬·플러그인·쿡북 완전판. cowork-plugins 28종 카탈로그 + 177 스킬 포함."
+description: "Claude Cowork 한국어 가이드 — 지식 근로자를 위한 설치·스킬·플러그인·쿡북 완전판. cowork-plugins 28종 카탈로그 + 178 스킬 포함."
 geekdocAnchor: false
 geekdocBreadcrumb: false
 ---
@@ -43,6 +43,14 @@ geekdocBreadcrumb: false
     </div>
   </div>
 </div>
+
+## Cowork가 무엇인가요
+
+흔히 쓰는 챗봇(ChatGPT 같은)은 주방장 한 명이 모든 걸 혼자 처리하는 식당과 비슷합니다. 손님이 "맛있는 거 줘"라고 한 줄 말하면, 그 주방장 한 명이 요리 종류를 짐작하고, 재료를 고르고, 불 조절까지 다 해야 합니다. 그래서 결과가 들쭉날쭉합니다. Cowork는 다릅니다. 28개의 전문 주방(플러그인)이 있고, 각 주방마다 주방장과 훈련된 직원(스킬)이 따로 있습니다. 그리고 문 앞의 호스트(Cowork)가 손님에게 몇 가지 질문을 먼저 건넨 뒤, 필요한 주방들만 정해진 순서로 불러 모아 모든 요리가 한꺼번에 나오도록 합니다.
+
+여기서 자주 나오는 말을 먼저 정리하겠습니다. **스킬**이란 하나의 구체적인 작업 지침서입니다 — "이런 요청이 오면 이렇게 처리해라"를 적어둔 파일입니다. **플러그인**이란 같은 분야의 스킬들을 묶은 상자입니다 — 비즈니스 상자, 법무 상자, 오피스 상자처럼 분야별로 담아둡니다. **마켓플레이스**란 이 상자들을 한곳에서 설치하는 앱스토어 같은 곳입니다 — 한 번 등록하면 28개 상자 전부를 꺼내 쓸 수 있습니다. **체인**이란 여러 스킬을 차례로 이어 일을 끝내는 순서입니다 — 초안 쓰기 → 파일로 포장하기 → 품질 검사하기처럼 단계를 잇는 것입니다.
+
+차이는 명확합니다. 챗봇은 한 명이 모든 걸 짐작해야 해서 "사업계획서 만들어줘" 한마디에 품질이 흔들립니다. Cowork는 먼저 몇 가지를 물어보고(단계, 조달 목표, 타깃 고객, 저장할 형식), 그 답을 바탕으로 알맞은 주방들만 순서대로 부릅니다. 긴 프롬프트(명령어 문장)를 직접 쓸 필요도 없습니다. 짧게 말하면 시스템이 필요한 맥락을 물어보고, 알아서 스킬들을 엮어(체이닝) 끝까지 책임집니다.
 
 <div class="cw-sect-head">
   <h2 id="how-it-works" style="margin:0"><span class="num">HOW</span>이렇게 동작합니다</h2>
@@ -92,9 +100,46 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
   </a>
 </div>
 
+## 플러그인 생태계: 큰 건물 안의 층과 창구
+
+아래 28개 카드를 보기 전에, 전체 구조를 한 번에 잡아두겠습니다. 백화점에 비유하면 이해가 빠릅니다. **마켓플레이스**는 백화점 건물 전체입니다 — 한 번 들어가면(설치 1회) 모든 층을 오갈 수 있습니다. **플러그인**은 건물 안의 층입니다 — 비즈니스 층, 법무 층, 오피스 층처럼 분야별로 28개 층이 있습니다. **스킬**은 그 층에 놓인 구체적인 창구입니다 — 사업계획서 창구, 계약서 검토 창구, DOCX 만들기 창구. 그리고 **체인**은 손님이 창구들을 직접 돌아다니는 동선입니다 — 비즈니스 층에서 초안을 받아 → 오피스 층에서 DOCX로 포장하고 → 품질 검수대를 통과합니다.
+
+한 가지 중요한 점은 "모든 층을 항상 켜두지 않아도 된다"는 것입니다. 처음엔 필수인 moai-core 층과 당장 필요한 1-2개 층만 켭니다. 나머지는 필요해질 때 그때 활성화하면 됩니다. 이래서 178개 스킬, 28개 플러그인이라는 숫자가 무섭지 않습니다 — 전부를 외울 필요 없이, 지금 내가 서 있는 층의 창구만 알면 그만입니다.
+
+```mermaid
+flowchart TD
+    M["마켓플레이스<br/>(백화점 전체 · 설치 1회)"]
+    M --> P1["moai-business 층<br/>(비즈니스 분야)"]
+    M --> P2["moai-legal 층<br/>(법무 분야)"]
+    M --> P3["moai-office 층<br/>(문서 형식)"]
+    M --> PN["... 28개 분야 층"]
+
+    P1 --> S1["strategy-planner 창구"]
+    P1 --> S2["contract-review 창구"]
+    P2 --> S3["nda-triage 창구"]
+    P3 --> S4["docx-generator 창구"]
+
+    S1 --> C1["체인 1<br/>strategy → docx → 검수"]
+    S3 --> C2["체인 2<br/>nda → docx → 검수"]
+
+    style M fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style P1 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style P2 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style P3 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style PN fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style S1 fill:#f5dcd7,stroke:#c44a3a,color:#09110f
+    style S2 fill:#f5dcd7,stroke:#c44a3a,color:#09110f
+    style S3 fill:#f5dcd7,stroke:#c44a3a,color:#09110f
+    style S4 fill:#f5dcd7,stroke:#c44a3a,color:#09110f
+    style C1 fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style C2 fill:#e6f0ef,stroke:#144a46,color:#09110f
+```
+
+📊 [다이어그램으로 보기](/diagrams/home-ecosystem.html) — 브라우저에서 바로 열립니다. 편집은 [`home-ecosystem.drawio`](/diagrams/home-ecosystem.drawio)를 [app.diagrams.net](https://app.diagrams.net)에서 여세요.
+
 <div class="cw-sect-head">
   <h2 id="plugins-grid" style="margin:0"><span class="num">28</span>분야별 플러그인</h2>
-  <span class="meta">총 177개 스킬 · 28개 도메인</span>
+  <span class="meta">총 178개 스킬 · 28개 도메인</span>
 </div>
 
 <div class="cw-grid">
@@ -273,24 +318,33 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
 </div>
 
 <div class="cw-sect-head">
-  <h2 id="release-summary" style="margin:0"><span class="num">v2.20</span>최근 릴리스</h2>
+  <h2 id="release-summary" style="margin:0"><span class="num">v2.22</span>최근 릴리스</h2>
   <span class="meta">CHANGELOG.md 기반</span>
 </div>
 
 <div class="cw-timeline">
   <div class="cw-rel latest">
     <div class="ver-row">
+      <span class="ver">v2.22.0</span>
+      <span class="date">2026-06-16</span>
+      <span class="badge">MINOR</span>
+    </div>
+    <div class="ttl">design-system-library 신규 — 56개 글로벌 브랜드 디자인 시스템 → Tailwind Play CDN + shadcn vanilla HTML</div>
+    <div class="desc">HTML 보고서·랜딩·문서에 <strong>즉시 적용 가능한 브랜드 디자인 시스템 라이브러리</strong>. Claude·ClickHouse·Clay 기본 3테마 + Notion·Linear·Stripe·Vercel·Figma 등 <strong>56개 글로벌 브랜드</strong> 토큰(색·타이포·radius·spacing) SSOT. <strong>html-report</strong>에 <code>design_system</code> 파라미터로 지정 → Tailwind Play CDN config + shadcn vanilla 컴포넌트로 단일 파일 렌더. <strong>빌드 불필요</strong>(CDN 1개). Claude Design DESIGN.md 합성 소스로도 사용. <strong>28 플러그인 유지 · 177→178 스킬 · 기능적 비파괴 · Breaking change 없음</strong>.</div>
+    <ul>
+      <li><strong>design-system-library 신규</strong> — 기본 3테마(claude·clickhouse·clay) + 53 브랜드. 휘도 기반 분류(light 33·dark 13·warm 2) 완료 48종 + 후속 8종(theverge·tesla·starbucks 등)</li>
+      <li><strong>자동 추천 휴리스틱</strong> — 보고서→claude warm / 데이터 리포트→clickhouse 다크 / 랜딩→clay playful. design_system 미지정 시 기존 0의존 템플릿 유지(하위 호환)</li>
+      <li><strong>html-report 연동</strong> — design_system 파라미터 추가. Claude Design 핸드오프 시 DESIGN.md 합성 소스</li>
+    </ul>
+  </div>
+  <div class="cw-rel">
+    <div class="ver-row">
       <span class="ver">v2.21.0</span>
       <span class="date">2026-06-16</span>
       <span class="badge">MINOR</span>
     </div>
     <div class="ttl">drawio-diagram 신규 + humanize-korean 한국적 정서·결 K 카테고리 + /project agent-aware</div>
-    <div class="desc">콘텐츠·문서 작업의 <strong>도식 역량 강화</strong>. 자연어를 편집 가능한 <code>.drawio</code> + 단일 HTML(draw.io CDN 뷰어, Apache-2.0) 두 산출물로 렌더하는 <strong>drawio-diagram</strong> 신규(6 프리셋, CLI 불필요). <strong>humanize-korean</strong>에 한국적 정서·결 <strong>K 카테고리(양성 축) 4종</strong> 추가 — 기존 A~J(음성·제거)에 K(지향) 충전, 2026 학술 교차. <strong>/project</strong>가 코디네이터 에이전트까지 동적 스캔·체인 설계. <strong>28 플러그인 유지 · 173→177 스킬 · 기능적 비파괴 · Breaking change 없음</strong>.</div>
-    <ul>
-      <li><strong>drawio-diagram 신규</strong> — erd·uml-class·sequence·architecture·ml-pipeline·flowchart 6 프리셋. mermaid로 부족한 정교한 셰이프·클라우드 아이콘·편집 가능 원본. learning-material과 ```drawio 블록 연동</li>
-      <li><strong>humanize-korean K 카테고리</strong> — K-1 정서온도·K-2 절제·곡언·K-3 구어 호흡·K-4 정서 아크(양성 축). E-8 띄어쓰기·E-7 화계 3단계·모델별 시그니처 힌트. 메트릭·테스트 무변경(parity 안전)</li>
-      <li><strong>/project agent-aware</strong> — 설치된 플러그인 코디네이터 에이전트 동적 스캔·체인 설계. 신규 agent-catalog.md SSOT</li>
-    </ul>
+    <div class="desc">콘텐츠·문서 작업의 <strong>도식 역량 강화</strong>. 자연어를 편집 가능한 <code>.drawio</code> + 단일 HTML(draw.io CDN 뷰어, Apache-2.0) 두 산출물로 렌더하는 <strong>drawio-diagram</strong> 신규(6 프리셋, CLI 불필요). <strong>humanize-korean</strong>에 한국적 정서·결 <strong>K 카테고리(양성 축) 4종</strong> 추가. <strong>/project</strong>가 코디네이터 에이전트까지 동적 스캔·체인 설계. <strong>28 플러그인 유지 · 173→177 스킬 · 기능적 비파괴 · Breaking change 없음</strong>.</div>
   </div>
   <div class="cw-rel">
     <div class="ver-row">

@@ -11,7 +11,7 @@ description: |
   - "이메일에 붙일 수 있는 HTML 리포트 만들어줘"
   현황·인시던트·사업계획·설명서·재무·PR 6종 서식을 갖췄고, 보고서 종류에 맞춰 자동으로 골라 줍니다.
 user-invocable: true
-version: 2.21.0
+version: 2.22.0
 ---
 
 # html-report — 단일 파일 HTML 보고서 렌더러
@@ -37,6 +37,7 @@ version: 2.21.0
 |------|------|--------|------|
 | `markdown` | ✓ | — | 변환할 마크다운 본문 |
 | `mode` | ✓ | — | `status` \| `incident` \| `plan` \| `explainer` \| `financial` \| `pr` |
+| `design_system` | — | (미지정 시 0의존 기본 템플릿) | `claude` \| `clickhouse` \| `clay` 또는 [`design-system-library`](../../moai-design/skills/design-system-library/SKILL.md)의 56개 시스템. **지정 시** Tailwind Play CDN + shadcn vanilla 컴포넌트로 해당 브랜드 토큰 적용 (인터넷 연결 필요) |
 | `slug` | — | 제목에서 자동 생성 | 출력 파일명 prefix |
 | `output_path` | — | `<cwd>/reports/<slug>-<YYYYMMDD>.html` | 출력 경로 |
 | `font_stack` | — | 모드별 기본값 | 폰트 매핑 오버라이드 |
@@ -135,6 +136,37 @@ version: 2.21.0
 
 ---
 
+## 디자인 시스템 적용 (`design_system` 파라미터)
+
+`design_system` 입력을 지정하면 [`moai-design:design-system-library`](../../moai-design/skills/design-system-library/SKILL.md)에서 브랜드 토큰을 로드해 **Tailwind Play CDN + shadcn vanilla 컴포넌트**로 렌더합니다.
+
+**두 가지 렌더 엔진** (하위 호환 유지):
+
+| `design_system` | 엔진 | 외부 의존 | 산출물 특성 |
+|-----------------|------|-----------|-------------|
+| **미지정** | 0의존 (기존 템플릿) | 폰트 CDN 1건만 | 이메일 첨부·오프라인·인쇄 가능 단일 파일 |
+| **`claude` / `clickhouse` / `clay` / 56개** | Tailwind Play CDN | Tailwind CDN + 폰트 CDN | 브랜드 무드 적용, 인터넷 연결 필요 |
+
+### 3개 기본 테마 자동 추천
+
+| 모드 | 추천 design_system |
+|------|-------------------|
+| `status` / `plan` / `pr` | `claude` (warm editorial) |
+| `incident` / 기술 리포트 | `clickhouse` (다크 엔지니어링) |
+| `explainer` / 마케팅 | `clay` (playful saturated) |
+| `financial` | `claude` (편집성·신뢰) |
+
+### 적용 절차
+
+1. `design_system` 값으로 `systems/<name>.md` 토큰 로드
+2. [`mapping/tailwind.md`](../../moai-design/skills/design-system-library/mapping/tailwind.md) 규칙으로 `tailwind.config` 객체 생성
+3. shadcn vanilla 컴포넌트(card/button/table/badge)로 구조 치환
+4. 단일 파일 HTML로 출력 (CDN script + config + 마크업)
+
+> **주의**: `design_system` 지정 산출물은 Tailwind Play CDN을 런타임 로드하므로 오프라인에서는 스타일이 적용되지 않습니다. 오프라인·인쇄·이메일 첨부 용도라면 `design_system`을 미지정(0의존 템플릿)하세요.
+
+---
+
 ## 체인 통합 권장
 
 ```
@@ -145,6 +177,13 @@ version: 2.21.0
 ```
 [텍스트 스킬] → moai-content:html-report (서식 선택)
 ```
+
+브랜드 디자인 시스템 적용 체인:
+```
+[텍스트 스킬] → ai-slop-reviewer → html-report (design_system: clickhouse)
+```
+
+> `design_system` 지정 시 `moai-design:design-system-library`에서 토큰을 자동 로드합니다 — 별도 선행 스킬 호출 불필요.
 
 ---
 
