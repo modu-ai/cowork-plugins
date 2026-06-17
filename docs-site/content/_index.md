@@ -1,13 +1,13 @@
 ---
 title: "Claude Cowork 한국어 문서"
-description: "Claude Cowork 한국어 가이드 — 지식 근로자를 위한 설치·스킬·플러그인·쿡북 완전판. cowork-plugins 28종 카탈로그 + 177 스킬 포함."
+description: "Claude Cowork 한국어 가이드 — 지식 근로자를 위한 설치·스킬·플러그인·쿡북 완전판. cowork-plugins 28종 카탈로그 + 178 스킬 포함. v2.24.0 — html-slide 신규(단일 파일 HTML 슬라이드 덱)."
 geekdocAnchor: false
 geekdocBreadcrumb: false
 ---
 
 <div class="cw-hero">
   <div class="eyebrow"><span class="dot"></span>{{< version >}} · {{< release-date >}} · cowork.mo.ai.kr</div>
-  <h1>업무에 바로 쓰는<br/><span class="accent">AI 협업 스킬</span> 177종.</h1>
+  <h1>업무에 바로 쓰는<br/><span class="accent">AI 협업 스킬</span> 178종.</h1>
   <p class="lead-p">
     28개 분야에 걸친 MoAI-Cowork 플러그인 모음. Claude Code에서 슬래시 한 번으로 사업계획서·IR 덱·계약서·블로그·정부지원사업 신청서·이커머스 광고 풀세트·한국 출판사 제출 원고·개인 재무·자기관리·직장 커뮤니케이션·<strong>한국 공공·시세 데이터 조회</strong>까지 — 한국어로, 끝까지.
   </p>
@@ -16,7 +16,7 @@ geekdocBreadcrumb: false
     <a class="btn btn--ghost" href="/plugins/">플러그인 둘러보기</a>
   </div>
   <div class="cw-hero-meta">
-    <div class="item"><div class="num">177</div><div class="lbl">총 스킬</div></div>
+    <div class="item"><div class="num">178</div><div class="lbl">총 스킬</div></div>
     <div class="item"><div class="num">28</div><div class="lbl">분야 플러그인</div></div>
     <div class="item"><div class="num">79</div><div class="lbl">문서 페이지</div></div>
     <div class="item"><div class="num">{{< version >}}</div><div class="lbl">최신 릴리스</div></div>
@@ -61,7 +61,7 @@ geekdocBreadcrumb: false
 flowchart TD
     A["1. 한 줄 자연어 요청<br/>(사용자)"] --> B["2. AskUserQuestion<br/>(시스템이 필요한 맥락 수집)"]
     B --> C["3. 스킬 체이닝<br/>(자동 일괄 처리)"]
-    C --> D["4. 산출물<br/>(DOCX·PPTX·HTML·이미지)"]
+    C --> D["4. 산출물<br/>(DOCX·PPTX·HTML·슬라이드 덱·이미지)"]
     style A fill:#fbf0dc,stroke:#c47b2a,color:#09110f
     style C fill:#e6f0ef,stroke:#144a46,color:#09110f
     style D fill:#f5dcd7,stroke:#c44a3a,color:#09110f
@@ -104,7 +104,7 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
 
 아래 28개 카드를 보기 전에, 전체 구조를 한 번에 잡아두겠습니다. 백화점에 비유하면 이해가 빠릅니다. **마켓플레이스**는 백화점 건물 전체입니다 — 한 번 들어가면(설치 1회) 모든 층을 오갈 수 있습니다. **플러그인**은 건물 안의 층입니다 — 비즈니스 층, 법무 층, 오피스 층처럼 분야별로 28개 층이 있습니다. **스킬**은 그 층에 놓인 구체적인 창구입니다 — 사업계획서 창구, 계약서 검토 창구, DOCX 만들기 창구. 그리고 **체인**은 손님이 창구들을 직접 돌아다니는 동선입니다 — 비즈니스 층에서 초안을 받아 → 오피스 층에서 DOCX로 포장하고 → 품질 검수대를 통과합니다.
 
-한 가지 중요한 점은 "모든 층을 항상 켜두지 않아도 된다"는 것입니다. 처음엔 필수인 moai-core 층과 당장 필요한 1-2개 층만 켭니다. 나머지는 필요해질 때 그때 활성화하면 됩니다. 이래서 177개 스킬, 28개 플러그인이라는 숫자가 무섭지 않습니다 — 전부를 외울 필요 없이, 지금 내가 서 있는 층의 창구만 알면 그만입니다.
+한 가지 중요한 점은 "모든 층을 항상 켜두지 않아도 된다"는 것입니다. 처음엔 필수인 moai-core 층과 당장 필요한 1-2개 층만 켭니다. 나머지는 필요해질 때 그때 활성화하면 됩니다. 이래서 178개 스킬, 28개 플러그인이라는 숫자가 무섭지 않습니다 — 전부를 외울 필요 없이, 지금 내가 서 있는 층의 창구만 알면 그만입니다.
 
 ```mermaid
 flowchart TD
@@ -175,37 +175,37 @@ flowchart TD
 
 <div class="cw-sect-head">
   <h2 id="plugins-grid" style="margin:0"><span class="num">28</span>분야별 플러그인</h2>
-  <span class="meta">총 177개 스킬 · 28개 도메인</span>
+  <span class="meta">총 178개 스킬 · 28개 도메인</span>
 </div>
 
 <div class="cw-grid">
   <a class="cw-card" href="/plugins/moai-business/">
     <div class="head"><div class="icon">비</div><span class="count-pill">10개 스킬</span></div>
-    <div><div class="title">비즈니스<span class="new-tag">v1.5</span></div><div class="slug">moai-business</div></div>
+    <div><div class="title">비즈니스</div><div class="slug">moai-business</div></div>
     <div class="desc">사업계획서·IR·시장조사·정부지원사업</div>
     <div class="foot"><span>IR</span><span>사업계획</span><span>정부지원</span></div>
   </a>
   <a class="cw-card" href="/plugins/moai-content/">
-    <div class="head"><div class="icon">콘</div><span class="count-pill">12개 스킬</span></div>
-    <div><div class="title">콘텐츠<span class="new-tag">v2.2</span></div><div class="slug">moai-content</div></div>
-    <div class="desc">블로그·뉴스레터·SNS·카피라이팅·SEO + 한국어 AI 티 정밀 윤문 + HTML 보고서 + 상세페이지 기획</div>
-    <div class="foot"><span>블로그</span><span>SNS</span><span>humanize</span><span>html-report</span><span>detail-planner</span></div>
+    <div class="head"><div class="icon">콘</div><span class="count-pill">15개 스킬</span></div>
+    <div><div class="title">콘텐츠<span class="new-tag">NEW</span></div><div class="slug">moai-content</div></div>
+    <div class="desc">블로그·뉴스레터·SNS·카피라이팅·SEO + 한국어 AI 티 정밀 윤문 + 단일 파일 HTML 보고서·슬라이드 덱 + 상세페이지 기획</div>
+    <div class="foot"><span>블로그</span><span>SNS</span><span>humanize</span><span>html-report</span><span>html-slide</span></div>
   </a>
   <a class="cw-card" href="/plugins/moai-marketing/">
     <div class="head"><div class="icon">마</div><span class="count-pill">11개 스킬</span></div>
-    <div><div class="title">마케팅<span class="new-tag">v2.5</span></div><div class="slug">moai-marketing</div></div>
+    <div><div class="title">마케팅</div><div class="slug">moai-marketing</div></div>
     <div class="desc">캠페인·퍼포먼스·CRM·광고 카피·이메일 시퀀스 + 광고 심리학 통합·랜딩 진단·픽셀 검증 + 메타 광고 보고서 분석(9 모듈·4D 교차·🟢🟡🔴 강도별 액션)</div>
     <div class="foot"><span>캠페인</span><span>광고</span><span>랜딩 진단</span><span>픽셀</span><span>메타 분석</span><span>MCP</span></div>
   </a>
   <a class="cw-card" href="/plugins/moai-media/">
     <div class="head"><div class="icon">미</div><span class="count-pill">4개 스킬</span></div>
-    <div><div class="title">미디어<span class="new-tag">v2.11</span></div><div class="slug">moai-media</div></div>
+    <div><div class="title">미디어</div><div class="slug">moai-media</div></div>
     <div class="desc">이미지 프롬프트 텍스트 빌더 3종(GPT-image-2·Gemini 3·Midjourney v8 공식 가이드) + ElevenLabs 32개 언어 음성. 실제 이미지·영상 생성은 <strong>Higgsfield MCP</strong> 단일 통합</div>
     <div class="foot"><span>GPT Image 2</span><span>Gemini 3</span><span>Midjourney v8</span><span>ElevenLabs</span></div>
   </a>
   <a class="cw-card" href="/plugins/moai-commerce/">
     <div class="head"><div class="icon">커</div><span class="count-pill">35개 스킬</span></div>
-    <div><div class="title">커머스<span class="new-tag">v2.8</span></div><div class="slug">moai-commerce</div></div>
+    <div><div class="title">커머스</div><div class="slug">moai-commerce</div></div>
     <div class="desc">한국 D2C 풀스택 35 스킬 — 시장조사·JTBD·상품명·채널 메시지·통합 전략·자동화 진단 + 쿠팡 광고 최적화·마진 계산 + LTV/CAC·프로모션·재구매·상품 이미지·리뷰·VOC·구독·인플루언서·얼리팬·트렌드·시즌</div>
     <div class="foot"><span>D2C 풀스택</span><span>LTV/CAC</span><span>프로모션</span><span>재구매</span><span>리뷰</span><span>VOC</span><span>구독</span></div>
   </a>
@@ -265,7 +265,7 @@ flowchart TD
   </a>
   <a class="cw-card" href="/plugins/moai-education/">
     <div class="head"><div class="icon">교</div><span class="count-pill">5개 스킬</span></div>
-    <div><div class="title">교육<span class="new-tag">v2.11</span></div><div class="slug">moai-education</div></div>
+    <div><div class="title">교육</div><div class="slug">moai-education</div></div>
     <div class="desc">강사·교수·교사 교육 콘텐츠 풀스택 — 강의안·평가지·학습자료·코호트 운영 + 1일~16주 모든 강의 형식 커리큘럼 설계 + 강의·연수·정규 강좌 후기 자산화</div>
     <div class="foot"><span>강의안</span><span>커리큘럼</span><span>후기 자산화</span></div>
   </a>
@@ -301,19 +301,49 @@ flowchart TD
   </a>
   <a class="cw-card" href="/plugins/moai-book/">
     <div class="head"><div class="icon">책</div><span class="count-pill">8개 스킬</span></div>
-    <div><div class="title">출판<span class="new-tag">v2.10 NEW</span></div><div class="slug">moai-book</div></div>
+    <div><div class="title">출판</div><div class="slug">moai-book</div></div>
     <div class="desc">한국 출판사 제출용 원고 풀스택 — 컨셉서·페르소나·목차·저자 약력·제안서·출판사 매칭·본문·퇴고 8 단계. 4 장르 자동 분기 + 30+ 출판사 + 자비 출판 5 플랫폼 + KPIPA·국립국어원·도서정가제</div>
     <div class="foot"><span>출판 풀스택</span><span>4 장르</span><span>30+ 출판사</span><span>자비 출판</span></div>
   </a>
   <a class="cw-card" href="/plugins/moai-tutor/">
     <div class="head"><div class="icon">학</div><span class="count-pill">3개 스킬</span></div>
-    <div><div class="title">학습 튜터<span class="new-tag">v2.20 NEW</span></div><div class="slug">moai-tutor</div></div>
+    <div><div class="title">학습 튜터</div><div class="slug">moai-tutor</div></div>
     <div class="desc">학습자 전용 개인 AI 튜터 — 학습 프로젝트·로드맵 + context7+웹검색 병렬 리서치 + mermaid·차트·코드 HTML 학습자료</div>
     <div class="foot"><span>학습 프로젝트</span><span>병렬 리서치</span><span>HTML 학습자료</span></div>
   </a>
+  <a class="cw-card" href="/plugins/moai-design/">
+    <div class="head"><div class="icon">디</div><span class="count-pill">6개 스킬</span></div>
+    <div><div class="title">디자인<span class="new-tag">NEW</span></div><div class="slug">moai-design</div></div>
+    <div class="desc">Claude Design 핸드오프 + 56개 글로벌 브랜드 디자인 시스템 라이브러리(색·타이포·radius·spacing) → Tailwind Play CDN + shadcn vanilla HTML</div>
+    <div class="foot"><span>Claude Design</span><span>design-system-library</span><span>56 브랜드</span></div>
+  </a>
+  <a class="cw-card" href="/plugins/moai-public-data/">
+    <div class="head"><div class="icon">공</div><span class="count-pill">4개 스킬</span></div>
+    <div><div class="title">공공·시세 데이터</div><div class="slug">moai-public-data</div></div>
+    <div class="desc">한국 공공·시세 데이터 조회 — KRX 종목·법원경매·국토부 실거래가·공공데이터포털/KOSIS. API 키 불필요</div>
+    <div class="foot"><span>KRX</span><span>경매</span><span>실거래가</span><span>KOSIS</span></div>
+  </a>
+  <a class="cw-card" href="/plugins/moai-wealth/">
+    <div class="head"><div class="icon">자</div><span class="count-pill">6개 스킬</span></div>
+    <div><div class="title">개인 재무</div><div class="slug">moai-wealth</div></div>
+    <div class="desc">개인 재무·재테크 — 재테크 로드맵·가계부·투자 입문·보험 설계·연말정산 절세·경제지표 읽기</div>
+    <div class="foot"><span>재무 로드맵</span><span>가계부</span><span>보험</span><span>절세</span></div>
+  </a>
+  <a class="cw-card" href="/plugins/moai-productivity/">
+    <div class="head"><div class="icon">생</div><span class="count-pill">7개 스킬</span></div>
+    <div><div class="title">자기관리·생산성</div><div class="slug">moai-productivity</div></div>
+    <div class="desc">목표·회고·시간·습관·자기돌봄·노션 템플릿·주간업무보고 — 12주·만다라트·OKR·KPT</div>
+    <div class="foot"><span>목표</span><span>회고</span><span>시간</span><span>습관</span></div>
+  </a>
+  <a class="cw-card" href="/plugins/moai-comms/">
+    <div class="head"><div class="icon">소</div><span class="count-pill">5개 스킬</span></div>
+    <div><div class="title">직장 커뮤니케이션</div><div class="slug">moai-comms</div></div>
+    <div class="desc">두괄식 보고·회의 진행·피드백(SBI)·갈등 처리·1:1 면담·설득·협상</div>
+    <div class="foot"><span>보고</span><span>회의</span><span>피드백</span><span>협상</span></div>
+  </a>
   <a class="cw-card featured" href="/plugins/moai-core/">
     <div class="head"><div class="icon">코</div><span class="count-pill">8개 스킬</span></div>
-    <div><div class="title">코어 (필수)<span class="new-tag">v2.3</span></div><div class="slug">moai-core</div></div>
+    <div><div class="title">코어 (필수)</div><div class="slug">moai-core</div></div>
     <div class="desc">프로젝트 초기화·AI 슬롭 검수·스킬 관리·MCP 4커넥터 인증 — 반드시 먼저 설치</div>
     <div class="foot"><span>project</span><span>ai-slop</span><span>MCP 4커넥터</span></div>
   </a>
@@ -354,15 +384,29 @@ flowchart TD
 </div>
 
 <div class="cw-sect-head">
-  <h2 id="release-summary" style="margin:0"><span class="num">v2.23</span>최근 릴리스</h2>
+  <h2 id="release-summary" style="margin:0"><span class="num">v2.24</span>최근 릴리스</h2>
   <span class="meta">CHANGELOG.md 기반</span>
 </div>
 
 <div class="cw-timeline">
   <div class="cw-rel latest">
     <div class="ver-row">
-      <span class="ver">v2.23.0</span>
+      <span class="ver">v2.24.0</span>
       <span class="date">2026-06-17</span>
+      <span class="badge">MINOR</span>
+    </div>
+    <div class="ttl">html-slide 신규 — 단일 파일 HTML 슬라이드 덱 + 인라인 SVG 인포그래픽 + 편집 가능 PPTX</div>
+    <div class="desc">발표용 슬라이드 덱을 브라우저에서 바로 열리는 <strong>단일 파일·자체 완결형 HTML</strong>로 만듭니다. 인포그래픽(차트·다이어그램·KPI)은 한국어 숫자·라벨이 100% 정확한 <strong>인라인 SVG</strong>로 직접 렌더링하고, 실사·일러스트 이미지는 <strong>Higgsfield MCP 또는 codex(gpt-image-2)</strong>로 생성합니다. <strong>design-system-library</strong> 56개 브랜드 토큰 중 테마를 골라 적용하며, 편집 가능 PPTX는 <code>pptx-designer</code>(moai-office) 체이닝으로 산출합니다. <strong>28 플러그인 유지 · 177→178 스킬 · 기능적 비파괴 · Breaking change 없음</strong>.</div>
+    <ul>
+      <li><strong>html-slide 신규 (moai-content)</strong> — 단일 파일 무의존 HTML 슬라이드 덱(자체 vanilla JS 런타임, 16:9, <code>?print-pdf</code> 인쇄 모드, speaker notes, 0의존, <code>file://</code> 즉시 오픈). 인포그래픽은 LLM 직접 인라인 SVG(한국어 숫자/라벨 100% 정확)</li>
+      <li><strong>이미지 백엔드 정책 변경</strong> — Higgsfield MCP 단일에서 Higgsfield + codex(gpt-image-2) 복수로 확장. codex exec 내장 image_gen이 gpt-image-2를 ChatGPT OAuth 구독 한도로 호출(API 키 불필요). fal.ai는 여전히 금지</li>
+      <li><strong>design-system-library 연동</strong> — 56개 브랜드 토큰 중 테마 선택 시 각 토큰별 getdesign.md 상세 페이지 링크로 미리보기 제공</li>
+    </ul>
+  </div>
+  <div class="cw-rel">
+    <div class="ver-row">
+      <span class="ver">v2.23.0</span>
+      <span class="date">2026-06-16</span>
       <span class="badge">PATCH</span>
     </div>
     <div class="ttl">drawio-diagram 스킬 제거 — CDN 렌더링 불안정 → mermaid 단일화</div>

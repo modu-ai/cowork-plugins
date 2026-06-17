@@ -22,7 +22,7 @@ flowchart TD
     end
     subgraph 분석["3. 분석"]
         C1["variance-analysis<br/>예산 대비 실적"]
-        C2["financial-statements<br/>재무비율 (수익성·안정성)"]
+        C2["financial-statements<br/>재무비율 분석 (수익성·안정성)"]
     end
     subgraph 산출["4. 산출"]
         D1["xlsx-creator<br/>엑셀 리포트"]
@@ -57,7 +57,7 @@ flowchart TD
 
 | # | 한 줄 요청 | 자동 체인 |
 |---|---|---|
-| 1 | "Q1 변동분석 + K-IFRS 보고서 만들어줘" | financial-statements → variance-analysis → xlsx → docx → ai-slop |
+| 1 | "Q1 변동분석 + K-IFRS 보고서 만들어줘" | close-management → financial-statements → variance-analysis → xlsx → docx → ai-slop |
 | 2 | "법인세 신고서 작성해줘" | tax-helper(법인세 모드) → xlsx-creator → ai-slop |
 | 3 | "월간 결산 자동화해줘" | close-management → financial-statements → xlsx (매월 자동) |
 | 4 | "투자자용 재무 분석 보고서 만들어줘" | financial-statements(재무비율 분석) → variance-analysis → docx → ai-slop |
@@ -174,7 +174,7 @@ flowchart TD
 
 ### 자동 체인
 
-`financial-statements`(3개년 통합 + 재무비율 분석: ROA·ROE·부채비율·유동비율 등) → `variance-analysis`(YoY 변동률) → `docx-generator` 또는 `pptx-designer` → `ai-slop-reviewer`
+`financial-statements`(3개년 통합 + 비율 분석: ROA·ROE·부채비율·유동비율 등) → `variance-analysis`(YoY 변동률) → `docx-generator` 또는 `pptx-designer` → `ai-slop-reviewer`
 
 ### 산출물
 

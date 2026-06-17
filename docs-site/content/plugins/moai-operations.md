@@ -87,13 +87,13 @@ flowchart LR
 
 ## 빠른 사용 예
 
-```text
+{{< terminal title="claude — cowork" >}}
 > 영업팀용 월간 보고서 템플릿 만들어줘. 리드·전환·파이프라인 지표 포함.
-```
+{{< /terminal >}}
 
-```text
+{{< terminal title="claude — cowork" >}}
 > 클라우드 서비스 벤더 3곳 평가표 만들어줘.
-```
+{{< /terminal >}}
 
 ## 다음 단계
 

@@ -271,23 +271,23 @@ flowchart TD
 
 #### 빠른 사용 예
 
-```text
+{{< terminal title="claude — cowork" >}}
 > 30대 여성을 위한 뷰티 제품 영업 스크립트 5가지 버전 만들어줘. 핵심은 자연 유기 성분이야.
-```
+{{< /terminal >}}
 
-```text
+{{< terminal title="claude — cowork" >}}
 > B2B 고객사별 맞춤 프레젠테이션 오프닝 스크립트 3종 제작해줘. IT 매니저와 C레벌용으로 분류.
-```
+{{< /terminal >}}
 
 ## 빠른 사용 예
 
-```text
+{{< terminal title="claude — cowork" >}}
 > 친환경 생활용품 D2C 브랜드 아이덴티티 설계해줘. 20대 후반 여성 타깃.
-```
+{{< /terminal >}}
 
-```text
+{{< terminal title="claude — cowork" >}}
 > 지난달 네이버·메타·카카오 광고 ROAS 통합 분석해서 경영진 보고서 만들어줘.
-```
+{{< /terminal >}}
 
 ## 다음 단계
 

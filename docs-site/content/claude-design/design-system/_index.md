@@ -8,7 +8,7 @@ geekdocBreadcrumb: true
 
 ## 왜 디자인 시스템이 가장 중요한가
 
-Claude Design은 비전 기반 모델(Claude Opus 4.7)이 학습한 일반적 UI 패턴을 기본값으로 사용합니다. 디자인 시스템을 등록하면:
+Claude Design은 비전 기반 모델(Claude Opus 4.7 이상)이 학습한 일반적 UI 패턴을 기본값으로 사용합니다. 디자인 시스템을 등록하면:
 
 - **색 팔레트**가 브랜드 정의로 고정 (primary·secondary·accent + 100-900 스케일)
 - **타이포그래피**가 브랜드 폰트 패밀리·사이즈·웨이트로 고정
@@ -26,14 +26,18 @@ Claude Design은 비전 기반 모델(Claude Opus 4.7)이 학습한 일반적 UI
 | **디자인 파일** | Figma `.fig` 익스포트, Sketch 파일 | 색 팔레트, 타이포 스케일, 컴포넌트 라이브러리 구조 |
 | **브랜드 자산** | 로고 SVG·PNG, 색 팔레트 이미지, 타이포 샘플, 스타일 가이드 PDF | 색·타이포·로고 사용 규칙 |
 | **실물** | 운영 중인 웹사이트 URL, 잘 만든 PPTX 덱, 최근 마케팅 사이트 | 실제 사용 중인 컴포넌트·간격·voice |
-| **사전 빌트인** | Apple · Linear · Stripe 등 오픈 라이선스 시스템 | 시작점 — 이후 우리 브랜드로 커스터마이즈 |
+| **사전 빌트인** | Claude Design 자체 빌트인(Apple · Linear · Stripe 등) · `moai-design:design-system-library` 56개 글로벌 브랜드 토큰 | 시작점 — 이후 우리 브랜드로 커스터마이즈 |
 
 {{< hint type="tip" >}}
 **사양서보다 실물 1개가 더 강한 시그널.** "톤은 미니멀하고 모던" 같은 문장보다 **잘 만든 자사 마케팅 페이지 URL 1개 + 경쟁사 스크린샷 2장**이 훨씬 정확한 가이드를 줍니다.
 {{< /hint >}}
 
 {{< hint type="note" >}}
-**빌트인 시스템에서 한 단계 빠르게 시작.** 자체 자산을 준비하기 전에 `moai-design:design-system-library` 스킬을 호출하면 Notion · Linear · Stripe · Vercel · Figma · Sentry 등 **56개 글로벌 브랜드 디자인 시스템 토큰**을 곧바로 불러올 수 있습니다. Cowork에서 `/design-system-library`로 호출하며, 추출된 토큰은 Claude Design 온보딩의 DESIGN.md 소스로도 활용 가능합니다.
+**빌트인 시스템에서 한 단계 빠르게 시작.** 자체 자산을 준비하기 전에 `moai-design:design-system-library` 스킬을 호출하면 **56개 글로벌 브랜드 디자인 시스템 토큰**을 곧바로 불러올 수 있습니다. Notion · Linear · Stripe · Vercel · Figma · Sentry · ClickHouse · Clay 등을 토큰(색·타이포·radius·spacing) 단위로 보관한 단일 진실 원천으로, Cowork에서는 `/design-system-library`로 호출합니다.
+
+세 가지로 연결됩니다. (1) **빠른 시작** — 이 중 하나를 골라 위 6단계 셋업의 "자산 업로드" 단계를 건너뛰고 곧바로 "UI 키트 검토"로 진입할 수 있습니다. (2) **HTML 산출물** — `moai-content:html-report`의 `design_system` 파라미터로 지정하면 Tailwind Play CDN config + shadcn vanilla 컴포넌트로 단일 파일 HTML에 해당 브랜드 무드가 즉시 적용됩니다. (3) **Claude Design 핸드오프** — 추출된 토큰은 `claude-design-system-prep`를 거쳐 Claude Design 온보딩의 **DESIGN.md 합성 소스**로 활용됩니다.
+
+브랜드 무드를 빨리 잡고 싶을 때 기본 3 테마(`claude` warm editorial · `clickhouse` high-contrast 다크 · `clay` playful B2B)가 산출물 성격에 따라 자동 추천됩니다. 자체 브랜드 자산이 준비되면 이 시스템들을 시작점 삼아 Remix로 커스터마이즈하면 됩니다.
 {{< /hint >}}
 
 ## 6단계 셋업 절차
@@ -81,7 +85,7 @@ flowchart TD
    요청.
 2. 생성된 DESIGN.md를 Claude Design 온보딩에 업로드.
 ```
-이 절차는 토큰 비용을 크게 줄여 줍니다.
+이 절차는 토큰 비용을 크게 줄여 줍니다. 자체 브랜드 자산이 아직 없다면 `design-system-library`의 56개 시스템 중 브랜드 무드와 가장 가까운 것을 DESIGN.md의 출발점으로 삼으면 됩니다 — `claude-design-system-prep`가 해당 시스템 토큰을 불러와 합성합니다.
 
 ### 단계 3 — UI 키트 검토
 

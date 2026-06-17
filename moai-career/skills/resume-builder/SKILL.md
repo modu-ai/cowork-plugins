@@ -6,7 +6,7 @@ description: >
   말하면 됩니다. KKK-STAR 자소서, USP+CAR 이력서, ATS·블라인드·NCS 모드, 2026 AI 진정성
   검증 회피 가드, 500/1000/1500자 분량 자동, 영문 CV·LinkedIn 헤드라인을 지원합니다.
 user-invocable: true
-version: 2.23.0
+version: 2.24.0
 ---
 
 # 이력서/자소서 빌더 (resume-builder)

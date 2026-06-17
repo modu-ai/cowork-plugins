@@ -102,13 +102,13 @@ grant-writer → docx-generator → ai-slop-reviewer
 
 ## 빠른 사용 예
 
-```text
-"스마트팩토리 AI 이상탐지" 주제로 최근 3년 KCI 논문 20편 찾고 서론 초안 써줘.
-```
+{{< terminal title="claude — cowork" >}}
+> "스마트팩토리 AI 이상탐지" 주제로 최근 3년 KCI 논문 20편 찾고 서론 초안 써줘.
+{{< /terminal >}}
 
-```text
+{{< terminal title="claude — cowork" >}}
 > 2026년 NRF 중견연구자지원사업 신청서 초안 만들어줘. 주제는 ○○, 팀 구성은 …
-```
+{{< /terminal >}}
 
 ## 다음 단계
 

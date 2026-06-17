@@ -12,7 +12,7 @@ description: |
   - "국문·영문 초록 200자로 작성해줘"
   국문·영문 초록과 본문 전체 섹션을 구성하고, 작성 후 ai-slop 검수 체인으로 마무리합니다.
 user-invocable: true
-version: 2.23.0
+version: 2.24.0
 ---
 
 # 학술 논문 작성 (Paper Writer)

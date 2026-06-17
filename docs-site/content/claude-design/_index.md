@@ -111,6 +111,8 @@ Claude Design에서도 똑같습니다. 우리 회사의 색·글씨체·버튼 
 
 반대로 디자인 시스템을 먼저 등록하면 어떻게 될까요. 우리 브랜드 색과 글씨체가 시안에 일관되게 묻어납니다. 매장마다 분위기가 같아지는 것처럼, 어떤 페이지를 만들든 우리 회사 느낌이 유지됩니다. 그래서 학습 경로 두 번째 단계에 ★ 표시가 붙어 있고, "디자인 시스템 페이지를 반드시 통과할 것"을 권장하는 것입니다. 한두 단계 건너뛰면 결과가 AI 냄새 나는 일반적 디자인으로 퇴색합니다.
 
+> **가이드북이 아직 없다면** — 밑바닥부터 토큰을 정의하는 대신, [`moai-design` 플러그인](../plugins/moai-design/)의 `design-system-library` 스킬이 제공하는 56개 글로벌 브랜드 시스템(Notion·Linear·Stripe·Vercel·Figma·Sentry 등) 중 하나에서 시작하세요. 검증된 시스템을 DESIGN.md 소스로 가져오면 "학습 데이터 평균값으로 수렴"하는 함정을 피할 수 있습니다. 자세한 원칙은 [디자인 시스템 설정](design-system/) 페이지의 "사전 빌트인 시스템에서 시작"을 참고하세요.
+
 ## 누구를 위한 가이드인가
 
 | 역할 | 어떤 페이지부터 읽을지 |
@@ -185,10 +187,12 @@ flowchart LR
 
 이 섹션의 운영 원칙·베스트 프랙티스를 자동화한 [`moai-design`](../plugins/moai-design/) 플러그인이 마켓플레이스에 정식 등록되어 있습니다(6개 스킬). Cowork에서 자연어로 호출하면 AskUserQuestion으로 정보를 모은 뒤 claude.ai/design 채팅에 그대로 붙여 넣을 수 있는 산출물을 만들어 줍니다.
 
+특히 **`design-system-library`**는 우리 브랜드 가이드북이 없을 때 가장 먼저 손댈 곳입니다. Notion·Linear·Stripe·Vercel·Figma·Sentry 등 56개 글로벌 브랜드 디자인 시스템을 빌트인으로 품고 있어, 밑바닥부터 토큰을 정의하지 않고도 검증된 시스템에서 출발할 수 있습니다. [디자인 시스템 설정](design-system/) 페이지의 "사전 빌트인 시스템에서 시작" 원칙(원칙 6)과 직결됩니다.
+
 | 단계 | 스킬 | 결과물 |
 |---|---|---|
 | 디자인 시스템 셋업 | `claude-design-system-prep` | DESIGN.md + 자산 정리 |
-| 디자인 시스템 소스 | `design-system-library` | 56개 글로벌 브랜드 디자인 시스템 → Tailwind Play CDN + shadcn |
+| 디자인 시스템 소스 | `design-system-library` | 56개 글로벌 브랜드 디자인 시스템(Notion·Linear·Stripe 등) → Tailwind Play CDN + shadcn |
 | 시안 작성 | `claude-design-brief` | 6요소 복붙용 프롬프트 |
 | 특정 영역 | `claude-design-prompt-builder` | 시니어 UX 10 패턴 프롬프트 |
 | 결과 검수 | `claude-design-slop-check` | AI 슬롭 검수 + 수정안 |

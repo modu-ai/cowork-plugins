@@ -14,7 +14,7 @@ description: |
   감사 인사부터 적용 인증, 성과 수치, 영상 후기, 심층 인터뷰까지 시점별 톤에 맞춰 후기를 회수하고, moai-content:copywriting → moai-core:ai-slop-reviewer → moai-content:korean-spell-check 체인으로 자연스럽게 다듬어 드립니다.
   [책임 경계] vs moai-content:copywriting: 이 스킬=강의 수강생 후기 30일 회수 시퀀스, 저 스킬=범용 마케팅 카피.
 user-invocable: true
-version: 2.23.0
+version: 2.24.0
 ---
 
 # 강의 종료 후 30일 Follow-up 시퀀스

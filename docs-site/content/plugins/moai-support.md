@@ -103,13 +103,13 @@ escalation-manager → docx-generator
 
 ## 빠른 사용 예
 
-```text
+{{< terminal title="claude — cowork" >}}
 > 환불 요청 이메일 답변 초안 만들어줘. 고객은 구매 5일 뒤 단순 변심이야.
-```
+{{< /terminal >}}
 
-```text
-지난주 CS 티켓 120건 분석해서 반복되는 이슈 TOP 5 뽑아줘.
-```
+{{< terminal title="claude — cowork" >}}
+> 지난주 CS 티켓 120건 분석해서 반복되는 이슈 TOP 5 뽑아줘.
+{{< /terminal >}}
 
 ## 다음 단계
 

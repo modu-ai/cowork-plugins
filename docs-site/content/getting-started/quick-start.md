@@ -246,16 +246,16 @@ flowchart LR
 - **Word·PPT 파일이 깨질 때**: `moai-office`가 설치돼 있는지, Python 의존성(`python-docx`, `python-hwpx` 등)이 갖춰졌는지 확인합니다.
 - **AI 슬롭 검수가 실행되지 않을 때**: 요청에 "빠르게"라는 표현이 포함되면 검수가 스킵될 수 있습니다. "검수까지 돌려줘"라고 명시하세요.
 
-## 주요 스킬 카탈로그 (177개)
+## 주요 스킬 카탈로그 (178개)
 
-아래는 28개 플러그인에 담긴 177개 스킬 중 자주 쓰이는 **대표 스킬**만 뽑은 것입니다. 전체 목록은 [플러그인 카탈로그](../../plugins/) 각 페이지에서 확인할 수 있습니다.
+아래는 28개 플러그인에 담긴 178개 스킬 중 자주 쓰이는 **대표 스킬**만 뽑은 것입니다. 각 플러그인의 대표 스킬을 한 줄씩 정리했으며, 전체 목록은 [플러그인 카탈로그](../../plugins/) 각 페이지에서 확인할 수 있습니다.
 
-### moai-core (핵심 유틸리티)
+### moai-core (핵심 유틸리티, 8종)
 - **ai-slop-reviewer**: 모든 텍스트 산출물의 AI 패턴 검수 및 개선
 - **project**: 프로젝트 초기화 및 문서 생성 (`/project init`)
 - **feedback**: 사용자 피드백 수집 및 GitHub 이슈 생성
 
-### moai-content (콘텐츠 생성)
+### moai-content (콘텐츠 생성, 15종)
 - **blog**: 블로그 포스팅 생성
 - **card-news**: 뉴스 카드 생성
 - **copywriting**: 마케팅 카피 작성
@@ -268,10 +268,11 @@ flowchart LR
 - **media-production**: 미디어 제품 기획
 - **youtube-podcast-planner**: 유튜브·팟캐스트 기획
 - **html-report**: 단일 파일 HTML 리포트 생성
+- **html-slide**: 발표용 단일 파일 HTML 슬라이드 덱 생성 (인라인 SVG 인포그래픽 + pptx-designer 체이닝)
 - **humanize-korean**: 한국어 AI 티 제거 (윤문 후처리)
 - **korean-spell-check**: 한국어 맞춤법 검사
 
-### moai-business (비즈니스)
+### moai-business (비즈니스, 11종)
 - **daily-briefing**: 일간 브리핑 생성
 - **investor-relations**: 투자자 관계 문서 생성
 - **market-analyst**: 시장 분석 보고서 작성
@@ -279,25 +280,25 @@ flowchart LR
 - **sbiz365-analyst**: 소상공인365 상권분석
 - **kr-gov-grant**: 정부지원사업 통합 지원
 
-### moai-office (오피스 문서)
+### moai-office (오피스 문서, 6종)
 - **docx-generator**: Word 문서 생성
 - **pptx-designer**: PowerPoint 디자인
 - **xlsx-creator**: Excel 생성
 - **hwpx-writer**: 한글 문서 작성
 
-### moai-legal (법률)
+### moai-legal (법률, 5종)
 - **compliance-check**: 규정 준수 검사
 - **contract-review**: 계약서 검토
 - **legal-risk**: 법적 위험 평가
 - **nda-triage**: NDA 우선순위 분류
 
-### moai-finance (재무)
+### moai-finance (재무, 6종)
 - **close-management**: 마감 관리
 - **financial-statements**: 재무제표 생성
 - **tax-helper**: 세무 도우미
 - **variance-analysis**: 분석 차이
 
-### moai-marketing (마케팅)
+### moai-marketing (마케팅, 12종)
 - **brand-identity**: 브랜드 정체성 생성
 - **campaign-planner**: 캠페인 기획
 - **email-sequence**: 이메일 시퀀스 작성
@@ -307,22 +308,41 @@ flowchart LR
 - **sns-content**: SNS 콘텐츠
 - **target-script**: 타겟 스크립트 생성
 
-### moai-education (교육)
+### moai-education (교육, 6종)
 - **assessment-creator**: 평가 문제 생성
 - **curriculum-designer**: 커리큘럼 설계
 - **research-assistant**: 연구 보조
 
-### moai-media (미디어)
-- **higgsfield-image**: 이미지 생성 (Nano Banana Pro)
-- **higgsfield-video**: 영상 생성
-- **audio-gen**: 음성 생성 (ElevenLabs)
-- **gpt-image-2-prompt** / **gemini-3-image-prompt** / **midjourney-v8-prompt**: 이미지 프롬프트 빌더 3종
+### moai-media (미디어, 6종)
+- **higgsfield-image**: Higgsfield MCP 기반 이미지 생성 (Soul·Nano Banana Pro·Seedream·GPT Image 등 11개 모델)
+- **higgsfield-video**: Higgsfield MCP 기반 영상 생성
+- **audio-gen**: 음성·TTS·보이스 클로닝·더빙 생성 (ElevenLabs)
+- **gpt-image-2-prompt** / **gemini-3-image-prompt** / **midjourney-v8-prompt**: 외부 이미지 모델용 프롬프트 빌더 3종
 
-### 그 밖의 도메인 플러그인
-- **moai-design**: `design-system-library`, Claude Design 연동 스킬군
-- **moai-book**: 책 기획·집필 8종 (`book-concept-planner`, `book-chapter-writer` 등)
-- **moai-tutor**: 학습자 전용 3종 (`learning-project`, `tutor-research`, `learning-material`)
-- **moai-product** (`ux-designer`), **moai-research**, **moai-commerce**, **moai-sales**, **moai-bi**, **moai-pm**, **moai-hr**, **moai-operations**, **moai-support**, **moai-career**, **moai-lifestyle**, **moai-wealth**, **moai-public-data**, **moai-comms**, **moai-productivity** 등
+### moai-commerce (커머스, 30종)
+- **commerce-integrated-strategy**: 커머스 통합 전략 수립
+- **commerce-ltv-cac-architect**: LTV·CAC 구조 설계
+- **detail-page-copy** / **detail-page-image**: 상세페이지 카피·이미지
+- **marketplace-coupang** / **marketplace-naver** / **marketplace-d2c**: 마켓플레이스 채널별 운영
+- **live-commerce**: 라이브커머스 기획·운영
+- **commerce-margin-calculator** / **commerce-promotion-planner** / **commerce-voc-triage** 등 30종
+
+### 그 밖의 도메인 플러그인 (대표 스킬 한 줄)
+- **moai-design**: `design-system-library` (56개 글로벌 브랜드 디자인 시스템 → Tailwind Play CDN + shadcn) 외 Claude Design 연동 6종
+- **moai-book**: 책 기획·집필 8종 — `book-concept-planner`, `book-chapter-writer`, `book-proposal-writer` 등
+- **moai-tutor**: 학습자 전용 3종 — `learning-project`, `tutor-research`, `learning-material`
+- **moai-product**: `ux-designer`, `ux-researcher`, `spec-writer`, `roadmap-manager` (4종)
+- **moai-research**: 논문·특허·연구과제 5종 — `paper-search`, `patent-analyzer`, `grant-writer` 등
+- **moai-sales** (`proposal-writer`), **moai-bi** (`executive-summary`), **moai-pm** (`weekly-report`)
+- **moai-hr**: 채용·평가 5종 — `resume-screener`, `draft-offer`, `performance-review` 등
+- **moai-operations** (`process-manager`, `status-reporter`, `vendor-manager`), **moai-support** (`ticket-triage`, `kb-article`, `draft-response`)
+- **moai-career**: `resume-builder`, `interview-coach`, `job-analyzer`, `portfolio-guide` (4종)
+- **moai-lifestyle** (`travel-planner`, `event-planner`, `wellness-coach`), **moai-comms** (`meeting-facilitator`, `negotiation-1on1`, `conflict-handler`)
+- **moai-wealth**: 자산관리 6종 — `wealth-roadmap`, `household-budget`, `insurance-fit`, `personal-tax-saver` 등
+- **moai-public-data** (`public-data`, `court-auction-search`, `real-estate-search`, `korean-stock-search`), **moai-data** (`data-explorer`, `data-visualizer`)
+- **moai-productivity**: 생산성 7종 — `goal-planner`, `time-system`, `notion-template-kit`, `retro-builder` 등
+
+> 위는 대표 스킬만 추린 것입니다. 각 플러그인의 전체 스킬·체인·API 키는 [플러그인 카탈로그](../../plugins/)에서 확인하세요.
 
 ## 다음 단계
 

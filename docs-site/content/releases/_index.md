@@ -76,7 +76,9 @@ flowchart TD
 
 각 버전의 상세 변경 사항은 다음 페이지에서 확인할 수 있습니다:
 
-- [v2.23.0 (최신)](v2.23/) - **`drawio-diagram` 스킬 제거 · 배포용 다이어그램을 mermaid로 통일**(인라인, 안정) — `viewer-static.min.js` CDN 렌더링이 drawio XML마다 불안정(검증 21개 중 2개만 성공)하여 스킬 가치를 훼손합니다. 배포용 스킬에서 제거하고, 다이어그램은 **mermaid**(인라인, 안정)를 기본으로 통일했습니다. docs-site 등 로컬 문서의 정교 도식은 draw.io desktop CLI(로컬 전용)로 SVG를 생성해 마크다운 이미지로 인라인 사용합니다. **28 플러그인 유지 · 178→177 스킬 · 기능적 비파괴 · Breaking change 없음**
+- [v2.24.0 (최신)](v2.24/) - **html-slide 신규 — 단일 파일 HTML 슬라이드 덱 + 편집 가능 PPTX + 인라인 SVG 인포그래픽 + getdesign.md 미리보기** — 발표용 슬라이드 덱을 브라우저에서 바로 열리는 단일 파일 HTML로 생성. 인포그래픽(차트·다이어그램·KPI)은 한국어 숫자·라벨이 100% 정확한 인라인 SVG, 실사 히어로는 Higgsfield MCP/codex(gpt-image-2). design-system-library 56 브랜드 토큰 + getdesign.md 링크 미리보기. 편집 가능 PPTX는 pptx-designer 체이닝. **이미지 백엔드 정책 변경: Higgsfield + codex 복수 확장**. **28 플러그인 유지 · 177→178 스킬 · 기능적 비파괴 · Breaking change 없음**
+
+- [v2.23.0](v2.23/) - **`drawio-diagram` 스킬 제거 · 배포용 다이어그램을 mermaid로 통일**(인라인, 안정) — `viewer-static.min.js` CDN 렌더링이 drawio XML마다 불안정(검증 21개 중 2개만 성공)하여 스킬 가치를 훼손합니다. 배포용 스킬에서 제거하고, 다이어그램은 **mermaid**(인라인, 안정)를 기본으로 통일했습니다. docs-site 등 로컬 문서의 정교 도식은 draw.io desktop CLI(로컬 전용)로 SVG를 생성해 마크다운 이미지로 인라인 사용합니다. **28 플러그인 유지 · 178→177 스킬 · 기능적 비파괴 · Breaking change 없음**
 
 - [v2.22.0](v2.22/) - **design-system-library 신규 — 56개 글로벌 브랜드 디자인 시스템 → Tailwind Play CDN + shadcn vanilla HTML** — Claude·ClickHouse·Clay 기본 3테마 + Notion·Linear·Stripe·Vercel·Figma 등 **56개 글로벌 브랜드** 토큰(색·타이포·radius·spacing) SSOT. `html-report`에 `design_system` 파라미터로 지정 → Tailwind Play CDN config + shadcn vanilla 컴포넌트로 단일 파일 HTML 렌더. **빌드 불필요**(CDN 1개). Claude Design DESIGN.md 합성 소스로도 사용. **28 플러그인 유지 · 177→178 스킬 · 기능적 비파괴 · Breaking change 없음**
 
@@ -126,6 +128,7 @@ MoAI Cowork Plugins의 업그레이드는 일반적으로 안전하게 진행할
 
 ### 호환성 정보
 
+- **v2.24.x**: 이전 버전과 완전 호환 — Breaking change 없음 (`html-slide` 신규 스킬 추가, 별도 호출 시에만 동작. 이미지 백엔드 Higgsfield+codex 확장. 28 플러그인·178 스킬, 외부 API 키 불필요)
 - **v2.23.x**: 이전 버전과 완전 호환 — Breaking change 없음 (`drawio-diagram` 스킬 제거, 배포용 다이어그램은 mermaid(인라인)로 통일. 기존 플러그인·스킬·인터페이스 무변경. 28 플러그인·177 스킬, 외부 API 키 불필요)
 - **v2.22.x**: 이전 버전과 완전 호환 — Breaking change 없음 (design-system-library 신규 스킬 추가, 별도 활성화 필요. 28 플러그인·178 스킬)
 - **v2.21.x**: 이전 버전과 완전 호환 — Breaking change 없음 (humanize-korean K 카테고리 강화 + `/project` agent-aware. v2.21에서 도입된 `drawio-diagram`은 v2.23에서 제거됨. 28 플러그인·177 스킬)

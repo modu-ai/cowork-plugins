@@ -130,13 +130,13 @@ flowchart TD
 
 #### 빠른 사용 예
 
-```text
+{{< terminal title="claude — cowork" >}}
 > 모바일 앱의 결제 프로세스 UX 디자인 만들어줘. 사용자는 30대 이커머스 고객이야.
-```
+{{< /terminal >}}
 
-```text
+{{< terminal title="claude — cowork" >}}
 > 웹사이트 메인 페이지 디자인 시스템과 컴포넌트 라이브러리 만들어줘. B2B 서비스 타겟이야.
-```
+{{< /terminal >}}
 
 ## 대표 체인
 
@@ -160,13 +160,13 @@ ux-researcher → ux-designer → spec-writer → docx-generator → ai-slop-rev
 
 ## 빠른 사용 예
 
-```text
-결제 모듈 리뉴얼 PRD 써줘. 대상 고객은 국내 전자상거래 소상공인.
-```
+{{< terminal title="claude — cowork" >}}
+> 결제 모듈 리뉴얼 PRD 써줘. 대상 고객은 국내 전자상거래 소상공인.
+{{< /terminal >}}
 
-```text
-지난 분기 NPS 결과 50개 텍스트 응답 분석해서 개선 우선순위 뽑아줘.
-```
+{{< terminal title="claude — cowork" >}}
+> 지난 분기 NPS 결과 50개 텍스트 응답 분석해서 개선 우선순위 뽑아줘.
+{{< /terminal >}}
 
 ## 다음 단계
 

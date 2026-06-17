@@ -1,14 +1,14 @@
 ---
 title: "moai-content — 블로그·카드뉴스·랜딩·한국어 윤문"
 weight: 30
-description: "한국 콘텐츠·마케팅 실무에 최적화된 블로그·카드뉴스·랜딩페이지·뉴스레터·상세페이지 기획·한국어 AI 티 정밀 윤문·마크다운 보고서 HTML 변환 등 14개 스킬 묶음입니다."
+description: "한국 콘텐츠·마케팅 실무에 최적화된 블로그·카드뉴스·랜딩페이지·뉴스레터·상세페이지 기획·한국어 AI 티 정밀 윤문·마크다운 보고서 HTML 변환·발표 슬라이드 HTML 등 15개 스킬 묶음입니다."
 geekdocBreadcrumb: true
 tags: ["moai-content"]
 ---
 
 # moai-content
 
-> 한국 마케팅·콘텐츠 실무에 최적화된 14개 스킬을 제공합니다. 네이버 블로그·티스토리·인스타그램·LinkedIn·카카오 채널까지 플랫폼별 알고리즘 차이를 반영하고, 마크다운 보고서 HTML 변환(`html-report`)·한국어 맞춤법 검수(`korean-spell-check`)·한국어 AI 티 윤문(`humanize-korean`)을 모두 포함합니다. 한국 이커머스 상세페이지 기획·구조·전략 설계는 `detail-page-planner`가 전담합니다.
+> 한국 마케팅·콘텐츠 실무에 최적화된 15개 스킬을 제공합니다. 네이버 블로그·티스토리·인스타그램·LinkedIn·카카오 채널까지 플랫폼별 알고리즘 차이를 반영하고, 마크다운 보고서 HTML 변환(`html-report`)·한국어 맞춤법 검수(`korean-spell-check`)·한국어 AI 티 윤문(`humanize-korean`)을 모두 포함합니다. 한국 이커머스 상세페이지 기획·구조·전략 설계는 `detail-page-planner`가 전담합니다.
 
 ```mermaid
 flowchart TD
@@ -30,11 +30,11 @@ flowchart TD
 
 회사에 '콘텐츠 부서'가 하나 있다고 상상해 보세요. 그 부서 안에는 글을 쓰는 사람, 디자인을 잡는 사람, 맞춤법을 검사하는 사람, 마지막에 깔끔하게 인쇄해서 내보내는 사람까지 모여 있습니다. `moai-content`는 바로 그런 부서 한 통을 Cowork 안에 옮겨 놓은 플러그입니다. 사용자는 부서에 "네이버 블로그 글 하나 써줘"라고 주문만 하면, 그 안에서 알아서 글이 쓰이고 → 기계 맛이 빠지고 → 한국어 결이 다듬어지고 → 마지막엔 바로 쓸 수 있는 산출물까지 나옵니다.
 
-이 부서에는 14명의 일꾼(14개 스킬)이 있고, 각자 한 가지 일만 전문적으로 맡습니다. 블로그 글을 쓰는 일꾼(`blog`), 인스타그램 카드뉴스를 만드는 일꾼(`card-news`), 상세페이지를 기획하는 일꾼(`detail-page-planner`), 맞춤법을 검사하는 일꾼(`korean-spell-check`), AI 특유의 어투를 빼는 일꾼(`humanize-korean`)까지 저마다 이름표가 달려 있습니다. 사용자는 전부 부를 필요 없이, 지금 필요한 일꾼만 골라 부르면 됩니다.
+이 부서에는 15명의 일꾼(15개 스킬)이 있고, 각자 한 가지 일만 전문적으로 맡습니다. 블로그 글을 쓰는 일꾼(`blog`), 인스타그램 카드뉴스를 만드는 일꾼(`card-news`), 상세페이지를 기획하는 일꾼(`detail-page-planner`), 맞춤법을 검사하는 일꾼(`korean-spell-check`), AI 특유의 어투를 빼는 일꾼(`humanize-korean`)까지 저마다 이름표가 달려 있습니다. 사용자는 전부 부를 필요 없이, 지금 필요한 일꾼만 골라 부르면 됩니다.
 
 ```mermaid
 flowchart LR
-    U["주문 한 줄"] --> S1["blog<br/>card-news<br/>detail-page-planner<br/>외 11개 스킬"]
+    U["주문 한 줄"] --> S1["blog<br/>card-news<br/>detail-page-planner<br/>외 12개 스킬"]
     S1 --> S2["ai-slop-reviewer<br/>기계 맛 빼기"]
     S2 --> S3["humanize-korean<br/>한국어 결 다듬기"]
     S3 --> S4["html-report<br/>최종 산출물"]
@@ -51,7 +51,7 @@ flowchart LR
 
 `moai-content`는 한국 디지털 마케팅 채널의 실제 운영 노하우를 반영해 설계된 텍스트 콘텐츠 생성 플러그인입니다. 단순히 글을 만드는 데 그치지 않고, 네이버 C-Rank·D.I.A. 알고리즘이나 인스타그램의 카드뉴스 길이 기준 등 채널별 베스트 프랙티스를 본문 구조에 반영합니다.
 
-블로그 포스트·카드뉴스·랜딩페이지·뉴스레터·**상세페이지 기획**·상세페이지·카피라이팅·콘텐츠 캘린더·유튜브·팟캐스트 기획·한국어 맞춤법·**한국어 AI 티 정밀 윤문**·**마크다운 보고서 HTML 변환**까지 14개 스킬이 도메인별로 분리되어 있어, 필요한 채널만 선택해 호출할 수 있습니다.
+블로그 포스트·카드뉴스·랜딩페이지·뉴스레터·**상세페이지 기획**·상세페이지·카피라이팅·콘텐츠 캘린더·유튜브·팟캐스트 기획·한국어 맞춤법·**한국어 AI 티 정밀 윤문**·**마크다운 보고서 HTML 변환**·**발표 슬라이드 HTML**까지 15개 스킬이 도메인별로 분리되어 있어, 필요한 채널만 선택해 호출할 수 있습니다.
 
 별도 API 키 없이 사용 가능하며, WordPress 자동 업로드를 원하면 WordPress MCP 연결이 필요합니다.
 
@@ -82,8 +82,9 @@ flowchart LR
 | `korean-spell-check` | 바른한글(부산대) 한국어 맞춤법·띄어쓰기 최종 검수 | 원문/교정안/이유 |
 | `humanize-korean` | 한국어 AI 티 정밀 윤문 — 10대 카테고리 × 40+ 패턴 SSOT, 의미 100% 보존, A/B/C/D 등급 | final.md (윤문본) + summary.md (메트릭·등급) |
 | `html-report` | 마크다운 보고서 → 단일 파일 HTML — Thariq HTML-effectiveness, 인라인 SVG + vanilla JS, 12-25KB 산출물 | .html 파일 (자체 완결형) |
+| `html-slide` | 발표 슬라이드 덱 → 단일 파일 HTML(16:9·`?print-pdf`·speaker notes) + 편집 가능 PPTX(`pptx-designer` 체이닝). 인포그래픽은 인라인 SVG, 히어로 이미지는 Higgsfield/codex. 56 브랜드 토큰 + getdesign.md 미리보기 | .html 덱 + (옵션) .pptx + deck.json 원고 |
 
-> SNS 콘텐츠는 `moai-marketing:sns-content`가 전담합니다(글로벌 4채널·한국 3채널 통합). 본 플러그인의 `social-media`·`media-production`은 과거 버전 호환용 스텁으로 신규 호출에 권장하지 않습니다.
+> SNS 콘텐츠는 `moai-marketing:sns-content`가 전담합니다(글로벌 4채널·한국 3채널 통합). 본 플러그인의 `social-media`·`media-production`은 레거시 호환용으로만 유지됩니다(`social-media` = v2.3.0 DEPRECATED → `sns-content`로 흡수, `media-production` = `content-calendar`/`youtube-podcast-planner`로 분리된 별칭). 위 표의 13개가 활성 스킬이며, 이 둘을 포함해 총 15개 SKILL.md가 존재합니다.
 
 ## 한국 시장 특화 포인트
 

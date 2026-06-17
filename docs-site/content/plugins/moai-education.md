@@ -68,12 +68,13 @@ flowchart TD
 | `assessment-creator` | 시험·퀴즈·모의고사, 자격증·공무원 대비 |
 | `research-assistant` | 학술 리서치, 문헌 검토, 논문 구조 |
 
-### 강의·연수 운영 실무 (2)
+### 강의·연수 운영 실무 (3)
 
 | 스킬 | 용도 | 출력 |
 |---|---|---|
 | `course-curriculum-design` | 일자별 시간표(1일·다일·주간 모드 지원) + 강사·조교 동선표 + D-N 사전 준비물 메일 + 환경·설비 체크리스트 + 리스크 Plan B 5건+ | `moai-office:docx-generator` 자동 체이닝 → Word(.docx) |
 | `course-followup-sequence` | 강의 종료 후 30일 후기 카피 5종(D+1·D+3·D+7·D+14·D+30) + 인센티브·자산화 시퀀스 | 후기 카피 5종 + 발송 가이드 |
+| `course-operations-manual` | 강의·과정·연수·워크숍 운영 매뉴얼 — 일자별 시간표·강사·조교 동선·D-N 사전 준비물·환경·설비 체크리스트·리스크 매트릭스 + Plan B | Word 매뉴얼(.docx) |
 
 ## 대표 체인
 

@@ -19,12 +19,11 @@ flowchart TD
         A3["roadmap-manager<br/>분기 로드맵"]
     end
     subgraph 리서치["2. UX 리서치"]
-        B1["ux-researcher<br/>사용자 인터뷰"]
-        B2["ux-designer<br/>페르소나·스크립트"]
+        B1["ux-researcher<br/>인터뷰 가이드·페르소나·VOC·NPS"]
     end
     subgraph 디자인["3. UX 디자인"]
         C1["landing-page<br/>shadcn/ui 프로토타입"]
-        C2["ux-designer<br/>와이어프레임"]
+        C2["ux-designer<br/>휴리스틱·접근성·플로우 평가"]
     end
     subgraph 발표["4. 발표 자료"]
         D1["pptx-designer<br/>피칭 데크"]
@@ -175,9 +174,9 @@ flowchart TD
 
 **아니오.** 기본 `moai-business` (strategy-planner) + `moai-product` (spec-writer·ux-researcher·roadmap-manager) + `moai-office` (pptx·docx) + `moai-content` (landing-page)만으로 모든 시나리오 처리 가능. 더 깊은 자동화가 필요하면 [사용자 정의 플러그인 설정 가이드](../../../cowork/setup/)로 빌드.
 
-### Q. UX 디자인 와이어프레임도 자동 생성되나요?
+### Q. UX 와이어프레임·디자인 평가도 자동으로 되나요?
 
-`landing-page`로 코드 기반 프로토타입 즉시 생성 가능. `ux-designer`(moai-product)로 페르소나·사용자 흐름·와이어프레임 기획 가능. Figma·Sketch 연동은 [커넥터 설정 가이드](../../../cowork/connectors-mcp/) 참조.
+`landing-page`로 코드 기반 프로토타입 즉시 생성 가능. `ux-researcher`(moai-product)로 페르소나·사용자 흐름을 설계하고, `ux-designer`(moai-product)로 휴리스틱·접근성(WCAG)·사용자 플로우 평가 보고서를 받을 수 있습니다. Figma·Sketch 연동은 [커넥터 설정 가이드](../../../cowork/connectors-mcp/) 참조.
 
 ### Q. PRD 표준 양식은?
 

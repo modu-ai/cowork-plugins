@@ -12,7 +12,7 @@ description: |
   - "참고문헌 BibTeX로 정리해줘"
   핵심 논문 요약·연도별 연구 동향·참고문헌(BibTeX/RIS/텍스트)을 만들고, 논문 작성이 필요하면 moai-research:paper-writer로 이어집니다.
 user-invocable: true
-version: 2.23.0
+version: 2.24.0
 ---
 
 # 논문 검색 (Paper Search)

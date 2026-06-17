@@ -13,7 +13,7 @@ description: |
   연구 목표·내용·방법론·기대효과·예산 섹션을 기관 양식에 맞춰 구성하고, 평가 기준 대비 자체 점검표까지 만들어 ai-slop 검수 체인으로 마무리합니다.
   [책임 경계] 정부 일반 지원사업은 moai-business:kr-gov-grant
 user-invocable: true
-version: 2.23.0
+version: 2.24.0
 ---
 
 # 연구비 신청서 작성 (Grant Writer)

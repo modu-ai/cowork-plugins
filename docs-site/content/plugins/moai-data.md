@@ -120,13 +120,13 @@ data-visualizer  (HTML + Chart.js 단독)
 
 ## 빠른 사용 예
 
-```text
+{{< terminal title="claude — cowork" >}}
 > KOSIS에서 최근 10년 서울 1인 가구 추이 가져와서 라인차트 만들어줘.
-```
+{{< /terminal >}}
 
-```text
+{{< terminal title="claude — cowork" >}}
 > customers.csv에서 이상값 찾고 데이터 품질 보고서 만들어줘.
-```
+{{< /terminal >}}
 
 ## 다음 단계
 

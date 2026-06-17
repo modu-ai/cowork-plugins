@@ -82,13 +82,13 @@ wellness-coach → docx-generator(월간 플랜) → ai-slop-reviewer
 
 ## 빠른 사용 예
 
-```text
-제주 3박 4일 가족 여행(아이 7세) 일정 짜줘. 예산 150만원, 렌트카 포함.
-```
+{{< terminal title="claude — cowork" >}}
+> 제주 3박 4일 가족 여행(아이 7세) 일정 짜줘. 예산 150만원, 렌트카 포함.
+{{< /terminal >}}
 
-```text
+{{< terminal title="claude — cowork" >}}
 > 50명 규모 회사 워크샵 하루 프로그램 기획해줘. 팀빌딩 위주.
-```
+{{< /terminal >}}
 
 ## 다음 단계
 

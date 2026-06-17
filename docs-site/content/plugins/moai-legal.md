@@ -156,13 +156,13 @@ compliance-check → docx-generator(보고서)
 
 ## 빠른 사용 예
 
-```text
+{{< terminal title="claude — cowork" >}}
 > 상대측에서 보낸 NDA 검토해줘. 우리에게 불리한 조항 위주로.
-```
+{{< /terminal >}}
 
-```text
+{{< terminal title="claude — cowork" >}}
 > 개인정보처리방침을 2026년 기준으로 업데이트해줘.
-```
+{{< /terminal >}}
 
 ## 다음 단계
 

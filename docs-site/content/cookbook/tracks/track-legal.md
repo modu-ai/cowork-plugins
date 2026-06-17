@@ -24,7 +24,7 @@ flowchart TD
     end
     subgraph 규제["3. 컴플라이언스"]
         C1["compliance-check<br/>국내·해외 규제"]
-        C2["marketing-compliance-kr<br/>정통망법·표시광고법"]
+        C2["commerce-marketing-compliance-kr<br/>정통망법·표시광고법"]
     end
     subgraph 검수["4. 검수"]
         D1["ai-slop-reviewer"]
@@ -38,9 +38,9 @@ flowchart TD
 | # | 한 줄 요청 | 자동 체인 |
 |---|---|---|
 | 1 | "./nda_inbox/ 폴더 NDA 12개 위험도 검토해줘" | nda-triage(배치) → contract-review → legal-risk → docx |
-| 2 | "공급 계약서 리뷰하고 개선안 만들어줘" | contract-review(리뷰) → contract-review(개선안) → docx → ai-slop |
+| 2 | "공급 계약서 리뷰하고 개선안 만들어줘" | contract-review(리뷰) → contract-review(개선안 초안) → docx → ai-slop |
 | 3 | "GDPR 준수 보고서 생성해줘" | compliance-check → docx-generator → ai-slop |
-| 4 | "B2B SaaS 표준 NDA 한·영 동시에 만들어줘" | contract-review(초안) → docx (KR/EN 병렬) → ai-slop |
+| 4 | "B2B SaaS 표준 NDA 한·영 동시에 만들어줘" | contract-review(한·영 초안) → docx (KR/EN 병렬) → ai-slop |
 
 ---
 
@@ -88,7 +88,7 @@ flowchart TD
 
 ### 자동 체인
 
-`contract-review`(조항별 리스크 분석) → `legal-risk`(A/B/C 등급) → `contract-review`(개선안 초안) → `docx-generator` → `ai-slop-reviewer`
+`contract-review`(조항별 리스크 분석) → `legal-risk`(A/B/C 등급) → `contract-review`(개선안·수정안 초안 작성) → `docx-generator` → `ai-slop-reviewer`
 
 ### 산출물
 
@@ -115,7 +115,7 @@ flowchart TD
 
 ### 자동 체인
 
-`compliance-check`(GDPR 7대 원칙 매핑) → `marketing-compliance-kr`(국내 정통망법 동시 검토) → `docx-generator` → `ai-slop-reviewer`
+`compliance-check`(GDPR 7대 원칙 매핑) → `commerce-marketing-compliance-kr`(국내 정통망법·표시광고법 동시 검토) → `docx-generator` → `ai-slop-reviewer`
 
 ### 산출물
 
@@ -176,7 +176,7 @@ flowchart TD
 
 ### Q. 한국 정통망법·표시광고법 자동 검출되나요?
 
-예. `marketing-compliance-kr`이 마케팅 관련 모든 워크플로우에 자동 게이트. 야간 발송·과대광고·식약처 위반 자동 BLOCK.
+예. `commerce-marketing-compliance-kr`이 마케팅 메시지 발송 전 의무 통과 게이트로 동작. 야간 발송(21시-익일 8시) 차단·(광고) 표기 위치 검증·무료 수신거부 문구 점검을 자동으로 BLOCK/통과 시킵니다.
 
 ---
 

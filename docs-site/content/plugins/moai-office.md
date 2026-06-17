@@ -152,18 +152,18 @@ moai-operations:process-manager → hwpx-writer → ai-slop-reviewer
 
 ## 빠른 사용 예
 
-```text
+{{< terminal title="claude — cowork" >}}
 > 2026년 1분기 영업 실적 보고서 docx로 만들어줘.
-KPI는 매출·고객수·재구매율이야.
-```
+  KPI는 매출·고객수·재구매율이야.
+{{< /terminal >}}
 
-```text
+{{< terminal title="claude — cowork" >}}
 > 기업설명회용 IR 덱을 20장 피칭덱으로 pptx 만들어줘.
-```
+{{< /terminal >}}
 
-```text
+{{< terminal title="claude — cowork" >}}
 > 강연 본문 MD를 NotebookLM 슬라이드 프롬프트로 만들어줘.
-```
+{{< /terminal >}}
 
 ## 다음 단계
 

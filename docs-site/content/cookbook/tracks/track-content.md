@@ -1,7 +1,7 @@
 ---
 title: "콘텐츠 트랙"
 weight: 22
-description: "콘텐츠 크리에이터·블로거·SNS 운영자를 위한 워크플로우. moai-content 12스킬 + moai-marketing + moai-media로 블로그·카드뉴스·랜딩·뉴스레터를 한 줄 요청으로 자동 생성."
+description: "콘텐츠 크리에이터·블로거·SNS 운영자를 위한 워크플로우. moai-content 15스킬 + moai-marketing + moai-media로 블로그·카드뉴스·랜딩·뉴스레터를 한 줄 요청으로 자동 생성."
 geekdocBreadcrumb: true
 ---
 
@@ -28,10 +28,10 @@ flowchart TD
         C2["korean-spell-check<br/>맞춤법"]
         C3["humanize-korean<br/>AI 티 정밀 윤문"]
     end
-    subgraph 발행["발행"]
-        D1["WordPress MCP"]
-        D2["Post-Bridge MCP"]
-        D3["Typefully MCP"]
+    subgraph 발행["발행 (외부 커넥터, 선택)"]
+        D1["WordPress MCP<br/>커넥터"]
+        D2["Post-Bridge MCP<br/>커넥터"]
+        D3["Typefully MCP<br/>커넥터"]
     end
     입력 --> 생성 --> 검수 --> 발행
     style 검수 fill:#e6f0ef,stroke:#144a46
@@ -62,11 +62,11 @@ flowchart TD
 2. **편당 분량**: 1500자 / 2000자 / 3000자
 3. **시리즈 구성**: 자동 5편 분류 (오픈 소식 → 메뉴 → 인테리어 → 운영 → 후기) 확인
 4. **키워드**: 자동 추출 + 사용자 추가 입력
-5. **이미지 첨부**: WordPress MCP 자동 업로드 / 로컬 저장
+5. **이미지 첨부**: WordPress MCP 커넥터 자동 업로드 / 로컬 저장
 
 ### 자동 체인
 
-`blog × 5편` → `ai-slop-reviewer` (1차 일반) → `korean-spell-check` (바른한글) → `humanize-korean` (한국어 정밀 윤문, A/B/C/D 등급) → (선택) WordPress MCP 발행
+`blog × 5편` → `ai-slop-reviewer` (1차 일반) → `korean-spell-check` (바른한글) → `humanize-korean` (한국어 정밀 윤문, A/B/C/D 등급) → (선택) WordPress MCP 커넥터 발행
 
 ### 산출물
 
@@ -93,7 +93,7 @@ flowchart TD
 
 ### 자동 체인
 
-`card-news` → `higgsfield-image` (Nano Banana 계열 — 한국어 타이포) → `ai-slop-reviewer`
+`card-news` → `higgsfield-image` (한국어 타이포 정확도 우수) → `ai-slop-reviewer`
 
 ---
 
@@ -144,7 +144,7 @@ flowchart TD
 | korean-spell-check | 띄어쓰기·맞춤법 (부산대 바른한글 표면) | 오류 N건 |
 | humanize-korean | 10대 카테고리 × 40+ 패턴 (번역투·관용구·형식명사) | 변경률 % + A/B/C/D 등급 |
 
-**HARD 가드**: humanize-korean 변경률 30% 초과 → 경고 / 50% 초과 → 강제 중단·전체 롤백 (의미 100% 보존)
+**안전 가드**: humanize-korean은 변경률 30% 초과 시 경고, 50% 초과 시 강제 중단·전체 롤백하여 의미를 100% 보존합니다.
 
 ---
 
@@ -157,13 +157,13 @@ flowchart TD
 | 톤 | 친근·격식·유머·전문 |
 | 키워드 | 자동 추출 + 사용자 추가 |
 | 이미지 자동 생성 | 예/아니오 (higgsfield-image 호출) |
-| 발행 자동화 | WordPress MCP / Post-Bridge MCP / 수동 |
+| 발행 자동화 | WordPress MCP / Post-Bridge MCP / Typefully MCP / 수동 (외부 커넥터, 선택) |
 
 ---
 
 ## 자주 묻는 질문
 
-### Q. 12개 스킬 중 어떤 걸 호출해야 할까요?
+### Q. 15개 스킬 중 어떤 걸 호출해야 할까요?
 
 **사용자는 호출 안 함**. 시스템이 한 줄 요청을 분석해 자동 선택. 예: "블로그" → `blog`, "랜딩" → `landing-page`, "카드뉴스" → `card-news`.
 
@@ -173,7 +173,7 @@ AskUserQuestion에서 "AI 검수 강도" 선택 시 "기본" (3중) / "약함" (
 
 ### Q. WordPress 자동 발행이 안 됩니다.
 
-[WordPress MCP](https://mcp.wordpress.com/mcp) 커넥터 등록 필요. Settings → Connectors → WordPress 활성화.
+발행은 cowork 스킬이 아닌 **외부 MCP 커넥터**(선택)로 동작합니다. [WordPress MCP](https://mcp.wordpress.com/mcp) 외에도 Post-Bridge(뉴스레터·브런치 동시 발행)·Typefully(X/Threads 스레드 예약) 커넥터를 같은 절차로 등록할 수 있습니다. Settings → Connectors → 해당 커넥터 활성화. 등록 절차는 [커넥터 가이드](../../../cowork/patterns/)를 참조하세요.
 
 ---
 
@@ -181,7 +181,7 @@ AskUserQuestion에서 "AI 검수 강도" 선택 시 "기본" (3중) / "약함" (
 
 - **[사용 패턴 가이드](../../../cowork/patterns/)**
 - **[광고 트랙](../track-advertising/)** — 콘텐츠 + 광고 결합
-- **[moai-content 플러그인](../../../plugins/moai-content/)** — 12스킬 전체
+- **[moai-content 플러그인](../../../plugins/moai-content/)** — 15스킬 전체
 - **[블로그 파이프라인 쿡북](../../blog-pipeline/)** — 발행 시퀀스 심화
 
 ---

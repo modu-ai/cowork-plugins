@@ -94,13 +94,13 @@ variance-analysis → xlsx-creator → docx-generator → ai-slop-reviewer
 
 ## 빠른 사용 예
 
-```text
+{{< terminal title="claude — cowork" >}}
 > 프리랜서 3.3% 원천징수 영수증 12장 합계 계산해줘. 종합소득세 예상 세액도.
-```
+{{< /terminal >}}
 
-```text
+{{< terminal title="claude — cowork" >}}
 > 이번 분기 재무상태표 K-IFRS 기준으로 엑셀로 만들어줘.
-```
+{{< /terminal >}}
 
 ## `court-auction-search` (법원경매 매각공고)
 

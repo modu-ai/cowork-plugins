@@ -12,7 +12,7 @@ description: |
   일정·리소스·파트너십·지속가능성 계획을 실행 가능한 문서로 정리하고, ai-slop-reviewer·humanize-korean으로 마무리할 수 있습니다.
   [책임 경계] 운영 케이던스(주간보고·스탠드업·회고·OKR 추적)는 moai-pm, 본 스킬은 제품 발견·로드맵/마일스톤 기획
 user-invocable: true
-version: 2.23.0
+version: 2.24.0
 ---
 
 # 로드맵 관리 (Roadmap Manager)

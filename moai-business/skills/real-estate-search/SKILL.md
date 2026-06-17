@@ -4,7 +4,7 @@ description: |
   이 스킬은 `moai-public-data:real-estate-search`로 이전되었습니다.
   국토교통부(MOLIT) 실거래가/전월세 조회는 moai-public-data 플러그인을 사용하세요.
 user-invocable: true
-version: 2.23.0
+version: 2.24.0
 ---
 
 # real-estate-search — 이전됨

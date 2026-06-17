@@ -45,7 +45,7 @@ flowchart TD
 
 ## 어디서 시작하나요?
 
-- **역할이 명확하면 → [실전 트랙](./tracks/)** — 10개 트랙 + 부록 (문서·콘텐츠·광고·이커머스·HR·운영·법무·재무·데이터·프로덕트)
+- **역할이 명확하면 → [실전 트랙](./tracks/)** — 11개 트랙 + 부록 (문서·콘텐츠·광고·이커머스·마케팅·HR·운영·법무·재무·데이터·프로덕트)
 - **구체적 시나리오를 찾는다면 → 아래 쿡북 목록**
 - **개념부터 익힌다면 → [스킬 체이닝 가이드](./skill-chaining/)**
 
@@ -92,9 +92,8 @@ flowchart TD
 
 ## 예제 목록
 
-- [스킬 체이닝 가이드](./skill-chaining/) — 체인 설계 기초
-- [베스트 프랙티스](./best-practices/) — 실패 패턴 10선, 프롬프트 점검표
-- [자동화 레시피](./automation-recipes/) — 바로 쓰는 20개 체인 모음
+- [베스트 프랙티스](./best-practices/) — Cowork 핵심 기능·프롬프트 5원칙·실전 TOP 10
+- [자동화 레시피](./automation-recipes/) — Schedule·Dispatch 본부별 자동화 레시피
 - [블로그 파이프라인](./blog-pipeline/) — 초안→검수→썸네일
 - [주간 보고서 자동화](./report-automation/) — 상태 집계→XLSX→DOCX
 - [마케팅 트랙](./track-marketing/) — 브랜딩·SEO·캠페인 8주

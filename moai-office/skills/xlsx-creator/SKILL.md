@@ -12,7 +12,7 @@ description: |
   - "손익계산서 엑셀로 만들어줘"
   한국 비즈니스 표준 서식(천 단위 구분·원화 표시·날짜 형식)과 차트·수식을 자동 적용합니다.
 user-invocable: true
-version: 2.23.0
+version: 2.24.0
 ---
 
 # 엑셀 생성기 (XLSX Creator)

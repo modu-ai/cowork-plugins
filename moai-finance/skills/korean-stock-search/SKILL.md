@@ -4,7 +4,7 @@ description: |
   이 스킬은 `moai-public-data:korean-stock-search`로 이전되었습니다.
   KRX 상장 종목 검색·기본정보·일별 시세 조회는 moai-public-data 플러그인을 사용하세요.
 user-invocable: true
-version: 2.23.0
+version: 2.24.0
 ---
 
 # korean-stock-search — 이전됨

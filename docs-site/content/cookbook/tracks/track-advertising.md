@@ -134,7 +134,7 @@ flowchart TD
 ### 자동 체인 (광고 풀세트)
 
 ```text
-higgsfield-image  → 광고 이미지 세트 (Hero·인포·라이프스타일·CTA — Soul·Nano Banana·GPT Image 계열)
+higgsfield-image  → 광고 이미지 세트 (Hero·인포·라이프스타일·CTA — Soul·DOP·Character 계열, Higgsfield 22 모델)
 higgsfield-video  → 메인 영상 5-10초 + 보조 2컷 (Kling·Veo 3·Seedance 등 11 모델 + 6 프리셋)
 sns-content       → 메타 1:1·9:16 / 네이버 GFA / 카카오모먼트 1:1·16:9 채널별 카피
 ai-slop-reviewer  → 카피 검수 (AI 티 제거)

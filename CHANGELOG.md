@@ -6,13 +6,27 @@
 
 ## 버전 통일 원칙 (HARD)
 
-아래 208개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.11.1+ `hugo.toml` SSOT 별도 추적):
+아래 209개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.11.1+ `hugo.toml` SSOT 별도 추적):
 - `.claude-plugin/marketplace.json` (`metadata.version`) × 1
 - `<plugin>/.claude-plugin/plugin.json` (`version`) × 28 (v2.20.0+)
-- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 177 (v2.22.0+)
+- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 178 (v2.22.0+)
 - `docs-site/hugo.toml` (`[params] version`) × 1 (v2.11.1+ SSOT, 좌측 사이드바·footer 자동 반영)
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
+
+## [2.24.0] - 2026-06-17
+
+MINOR. **`html-slide` 신규 스킬 (moai-content) — 단일 파일 HTML 슬라이드 덱 + 편집 가능 PPTX + 인라인 SVG 인포그래픽 + getdesign.md 미리보기**. 발표용 슬라이드 덱을 브라우저에서 바로 열리는 단일 파일·자체 완결형 HTML로 생성합니다. 인포그래픽(차트·다이어그램·KPI)은 한국어 숫자·라벨이 100% 정확한 인라인 SVG로 직접 렌더링, 실사 히어로 이미지는 Higgsfield MCP 또는 codex(gpt-image-2)로 생성합니다. design-system-library 56개 브랜드 토큰 중 테마 선택 시 각 토큰별 getdesign.md 상세 페이지 링크로 미리보기 제공. 편집 가능 PPTX는 pptx-designer(moai-office) 체이닝으로 산출(deck.json 원고 → pptxgenjs OOXML 직접 생성). 28 플러그인(유지) · 177 → 178 스킬(+html-slide 1개) · 동기화 2.23.0 → 2.24.0. 기능적 비파괴. Breaking change 없음.
+
+### Added
+- **`html-slide` 신규 스킬 (moai-content)** — 단일 파일 무의존 HTML 슬라이드 덱(자체 vanilla JS 런타임, 16:9, `?print-pdf` 인쇄 모드, speaker notes, 0의존, file:// 즉시 오픈). 인포그래픽은 LLM 직접 인라인 SVG(한국어 숫자/라벨 100% 정확). 이미지 백엔드: Higgsfield MCP(기본) + codex(gpt-image-2, 공식 추가 2026-06-17). design-system-library 56 브랜드 토큰 + getdesign.md 링크 미리보기. 편집 가능 PPTX는 pptx-designer 체이닝(deck.json 원고 SSOT → OOXML). 스킬 파일 9개(SKILL.md + references 6 + samples 2).
+- **이미지 백엔드 정책 변경** — Higgsfield MCP 단일에서 Higgsfield + codex(gpt-image-2) 복수로 확장(GOOS 결정 2026-06-17). codex exec 내장 image_gen이 gpt-image-2를 ChatGPT OAuth 구독 한도로 호출(API 키 불필요). antigravity(agy -p)는 OAuth 브라우저·quota·CI 무인 불가로 비권장 문서화. 그 외 외부 이미지 백엔드(MCP·API·게이트웨이)는 사용하지 않습니다.
+
+### Changed
+- docs-site 스킬 카운트 177 → 178 (`_index.md` 5곳, cookbook 6종, `plugins/moai-content.md`)
+- docs-site 부채 정리: `moai-business`(ai-diagnostic)·`moai-education`(course-operations-manual) 표 누락 스킬 추가; `moai-content` media-production/social-media 레거시 정체 메모 정확화(social-media=DEPRECATED 흡수, media-production=분리 별칭)
+- `moai-content` 스킬 수 14 → 15 (html-slide)
+- `evaluation-protocol.md` 볼드+괄호 한글 렌더링 버그 정정(CLAUDE.local.md §10-5)
 
 ## [2.23.0] - 2026-06-16
 

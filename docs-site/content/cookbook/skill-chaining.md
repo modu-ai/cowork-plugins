@@ -21,7 +21,9 @@ tags: [cookbook, skills]
 strategy-planner → docx-generator → ai-slop-reviewer
 ```
 
-## 체인 설계 3원칙: 한 번에 끝나지 않는 일을 단계로 쪼개 조립하기
+## 체인 설계 3원칙
+
+### 체인 설계란
 
 체인 설계는 "블로그 글 하나 발행해줘" 같은 한 줄 요청을 여러 스킬이 차례로 이어받는 파이프라인(작업이 한 방향으로 흘러가는 연결선)으로 설계하는 방법입니다. 요리에 비유하면 한 냄비에 다 넣고 끓이는 게 아니라, 재료 손질 → 볶기 → 플레이팅 → 맛보기 순서로 요리 단계를 나누는 것과 같습니다. 순서가 있어야 결과가 일관되게 맛있듯, 스킬에도 순서가 있어야 산출물 품질이 흔들리지 않습니다.
 
@@ -108,7 +110,7 @@ flowchart TD
 | 용도 | 체인 | 사용 플러그인 |
 |---|---|---|
 | 블로그 글 | 1. `blog`<br>2. `ai-slop-reviewer` | moai-content, moai-core |
-| 보도자료 | 1. `target-script`<br>2. `docx-generator`<br>3. `ai-slop-reviewer` | moai-marketing, moai-office, moai-core |
+| 보도자료 | 1. `copywriting`(헤드라인·본문 카피)<br>2. `docx-generator`<br>3. `ai-slop-reviewer` | moai-content, moai-office, moai-core |
 | 사업계획서 | 1. `strategy-planner`<br>2. `docx-generator`<br>3. `ai-slop-reviewer` | moai-business, moai-office, moai-core |
 | IR 덱 | 1. `investor-relations`<br>2. `pptx-designer`<br>3. `ai-slop-reviewer` | moai-business, moai-office, moai-core |
 | 월말 결산 | 1. `close-management`<br>2. `xlsx-creator`<br>3. `docx-generator` | moai-finance, moai-office |

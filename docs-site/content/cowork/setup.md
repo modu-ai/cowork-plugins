@@ -175,9 +175,9 @@ Settings > Cowork에서 관리:
 
 ### 권한 변경 관리
 
-Cowork 앱에서 권한을 변경한 뒤에는 다음 세션부터 즉시 반영됩니다. 자주 묻는 권한 팝업을 줄이려면 Settings > Cowork > Permissions에서 해당 카테고리를 **Allow**로 변경하세요.
+Cowork 앱에서 권한을 변경한 뒤에는 다음 세션부터 즉시 반영됩니다. 자주 묻는 권한 팝업을 줄이려면 **Settings > Cowork > Permissions** UI에서 해당 카테고리를 **Allow**로 변경하세요.
 
-> **참고**: Claude Code CLI(`claude` 명령줄) 환경에서는 프로젝트 루트의 `.claude/settings.json` 파일로 동일한 권한을 코드 형태로 관리할 수 있습니다. 이 파일 방식은 CLI 전용이며 Cowork 앱 UI와는 별개입니다.
+권한은 Cowork 앱의 설정 화면에서만 관리합니다. CLI 전용 구성 파일을 직접 편집할 필요 없이, **Permissions** 패널의 토글과 드롭다운으로 카테고리별 접근 범위를 그래픽으로 지정하면 즉시 적용됩니다.
 
 ## 고급 설정
 
@@ -228,10 +228,3 @@ Settings > Advanced:
 
 - [Get started with Claude Cowork | Claude Help Center](https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork)
 - [Install and configure Claude Cowork with third-party platforms | Claude Help Center](https://support.claude.com/en/articles/14680741-install-and-configure-claude-cowork-with-third-party-platforms)
-
-### 커뮤니티 참고자료 (비공식)
-
-아래는 Anthropic 공식 문서가 아니며, 커뮤니티에서 작성한 참고자료입니다. 내용의 정확성은 보장되지 않으므로 공식 문서를 우선 참고하세요.
-
-- [Claude Cowork Guide - Complete Tutorial & Features (비공식)](https://claudecowork.im/)
-- [The Actual Guide to Setting Up Claude Cowork | Reddit (커뮤니티 게시물)](https://www.reddit.com/r/ClaudeCode/comments/1roa5bu/the_actual_guide_to_setting_up_claude_cowork/?tl=ko)

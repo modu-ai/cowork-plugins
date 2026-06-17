@@ -144,18 +144,18 @@ flowchart LR
 
 ## 빠른 사용 예
 
-```text
+{{< terminal title="claude — cowork" >}}
 > 이번 주 주간보고 만들어줘.
   - 데이터 소스: Notion 'Team Tasks' 페이지의 이번 주 완료 태스크
   - 형식: 임원용 격식체 + 팀용 구어체 두 버전
   - 다음 주 계획 포함
   - 저장: 90_Output/wbr/2026-W17-{임원|팀}.docx
-```
+{{< /terminal >}}
 
-```text
+{{< terminal title="claude — cowork" >}}
 > 지난 한 주 회의록 5개를 첨부했어. 주간보고로 정리해줘.
-구어체로 슬랙 #weekly 채널에 올릴 거야.
-```
+  구어체로 슬랙 #weekly 채널에 올릴 거야.
+{{< /terminal >}}
 
 ## 다음 단계
 

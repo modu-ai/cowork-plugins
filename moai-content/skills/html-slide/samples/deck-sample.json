@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "title": "2026년 하반기 AI 슬라이드 스킬 출시 전략",
+    "design_system": "claude",
+    "aspect_ratio": "16:9",
+    "locale": "ko",
+    "presenter": "모AI 콘텐츠팀",
+    "date": "2026-06-17",
+    "slide_count": 8
+  },
+  "slides": [
+    {
+      "id": "s1",
+      "layout": "title",
+      "layout_key": "title",
+      "title": "AI 슬라이드 스킬 출시 전략",
+      "subtitle": "단일 HTML + 편집 가능 PPTX — 브라우저에서 바로 발표",
+      "notes": "표지. 발표자 소개와 오늘 다룰 핵심 메시지를 한 문장으로 연다."
+    },
+    {
+      "id": "s2",
+      "layout": "agenda",
+      "layout_key": "agenda",
+      "title": "오늘의 목차",
+      "bullets": [
+        "시장 배경과 기회",
+        "핵심 기능 아키텍처",
+        "분기별 성과 지표",
+        "출시 로드맵과 다음 단계"
+      ],
+      "notes": "목차. 4개 섹션을 빠르게 훑고 3번째 지표에서 시간을 많이 쓴다고 미리 안내."
+    },
+    {
+      "id": "s3",
+      "layout": "data-chart",
+      "layout_key": "stats",
+      "title": "분기별 활성 사용자 추이",
+      "subtitle": "전년 동기 대비 +217% 성장",
+      "chart": {
+        "type": "bar",
+        "data": {
+          "labels": ["Q1", "Q2", "Q3", "Q4"],
+          "values": [320, 480, 610, 920],
+          "unit": "천 명"
+        }
+      },
+      "bullets": ["신규 고객 217% 증가", "엔터프라이즈 확장이 핵심 동력"],
+      "notes": "Q3~Q4 가파른 성장의 원인인 엔터프라이즈 계약 3건을 강조. 숫자는 deck.json 원고와 정확히 일치해야 한다."
+    },
+    {
+      "id": "s4",
+      "layout": "stats",
+      "layout_key": "stats",
+      "title": "핵심 지표",
+      "bullets": [
+        "920천 명 — 월간 활성 사용자",
+        "94% — 슬라이드 완성 만족도",
+        "1.2만 — 누적 생성 덱 수"
+      ],
+      "notes": "KPI 3종. 만족도 94%는 베타 테스트 응답 기준. 큰 숫자를 강조할 것."
+    },
+    {
+      "id": "s5",
+      "layout": "features-grid",
+      "layout_key": "features",
+      "title": "핵심 기능",
+      "bullets": [
+        "단일 파일 HTML — 브라우저 즉시 오픈",
+        "인라인 SVG 인포그래픽 — 한국어 100% 정확",
+        "56개 브랜드 토큰 — getdesign.md 미리보기",
+        "pptx-designer 체이닝 — 편집 가능 PPTX"
+      ],
+      "notes": "4가지 차별점. 인포그래픽 정확도와 편집 가능 PPTX를 핵심 세일즈 포인트로."
+    },
+    {
+      "id": "s6",
+      "layout": "data-chart",
+      "layout_key": "stats",
+      "title": "매출 구성 비중",
+      "subtitle": "B2B SaaS가 전체 매출의 60%",
+      "chart": {
+        "type": "donut",
+        "data": {
+          "segments": [
+            { "label": "B2B SaaS", "value": 60 },
+            { "label": "엔터프라이즈", "value": 25 },
+            { "label": "기타", "value": 15 }
+          ]
+        }
+      },
+      "notes": "도넛 차트. B2B SaaS 60% 비중이 지속가능한 반복 매출의 근거임을 강조."
+    },
+    {
+      "id": "s7",
+      "layout": "cta",
+      "layout_key": "cta",
+      "title": "다음 단계",
+      "subtitle": "v2.24.0 출시를 함께 만들어 갑시다",
+      "bullets": ["이번 주 베타 오픈 · 다음 주 정식 릴리스"],
+      "notes": "행동 요청. 베타 참여 링크와 타임라인 명확히 전달."
+    },
+    {
+      "id": "s8",
+      "layout": "closing",
+      "layout_key": "closing",
+      "title": "감사합니다",
+      "subtitle": "질문은 moai-team@cowork.example 로 —",
+      "notes": "마무리. 연락처와 Q&A 시간 안내."
+    }
+  ]
+}

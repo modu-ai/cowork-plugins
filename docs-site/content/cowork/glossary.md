@@ -4,7 +4,7 @@ weight: 35
 description: "스킬·플러그인·체인·커넥터·MCP·서브에이전트 등 Cowork 핵심 용어 6종을 정리합니다."
 geekdocBreadcrumb: true
 ---
-> Cowork를 처음 쓸 때 가장 자주 혼동되는 6개 용어를 한 자리에 모았습니다.
+> Cowork를 처음 쓸 때 가장 자주 혼동되는 6개 용어를 한 자리에 모았습니다. 현재 28개 플러그인·178개 스킬이 이 여섯 단어 안에서 어떻게 조직되는지 함께 봅니다.
 
 ## 학습 목표
 
@@ -55,17 +55,20 @@ flowchart TB
 
 ### 스킬 체인 (skill chain)
 
-여러 스킬을 순서대로 엮어 한 요청을 처리하는 파이프라인입니다. 예: `strategy-planner → docx-generator → ai-slop-reviewer`.
+여러 스킬을 순서대로 엮어 한 요청을 처리하는 파이프라인입니다. 산출물이 문서·카피 같은 텍스트일 때는 마지막에 검수 스킬을 붙이는 것이 권장 패턴입니다.
+
+- 사업계획서: `strategy-planner → pptx-designer → ai-slop-reviewer`
+- 블로그 원고: `blog → ai-slop-reviewer → humanize-korean` (2차 후처리)
 
 **오개념**: 체인은 시스템이 자동으로 엮는 것이 아니라, 사용자 요청 문맥에 맞춰 Claude가 판단해 구성합니다.
 
 ### 커넥터 (connector)
 
-Slack·Gmail·Notion 등 외부 서비스에 접근하는 인증·API 래퍼입니다. Cowork에서는 MCP로 구현됩니다.
+Slack·Gmail·Notion 등 외부 서비스에 접근하는 인증·API 래퍼입니다. 플러그인이 `.mcp.json`으로 선언하면 Cowork가 해당 서비스를 호출할 수 있습니다.
 
 ### MCP (Model Context Protocol)
 
-Anthropic이 정의한 커넥터 표준 프로토콜입니다. 커넥터는 구체적 구현, MCP는 규격이라고 보면 됩니다.
+Anthropic이 정의한 커넥터 표준 프로토콜입니다. 커넥터는 구체적 구현, MCP는 그 구현이 따르는 규격이라고 보면 됩니다.
 
 ### 서브에이전트 (subagent)
 

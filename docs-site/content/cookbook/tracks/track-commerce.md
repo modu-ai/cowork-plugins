@@ -50,7 +50,7 @@ flowchart TB
 | 1 | "신상품 상세페이지 만들어줘" | detail-page-planner → copy → image → ai-slop-reviewer |
 | 2 | "이번 시즌 프로모션 기획해줘" | commerce-promotion-planner → channel-message → marketing-compliance-kr |
 | 3 | "재구매 캠페인 자동 설계해줘" | commerce-repurchase-timer → commerce-channel-message |
-| 4 | "리뷰 5채널 통합 분석해줘" | commerce-review-aggregator → voc-triage → docx-generator |
+| 4 | "리뷰 5채널 통합 분석해줘" | commerce-voc-triage (리뷰 집계 모드) → docx-generator → ai-slop-reviewer |
 | 5 | "우리 D2C 광고비 30% 의존도 탈출 전략 짜줘" | commerce-ltv-cac-architect → margin-calculator → integrated-strategy |
 
 ---
@@ -172,7 +172,7 @@ flowchart TD
 
 ### 자동 체인
 
-`commerce-review-aggregator` (4단 분석) → `commerce-voc-triage` (KTAS 5단계 등급) → `docx-generator` → `ai-slop-reviewer`
+`commerce-voc-triage` (리뷰 집계 모드 — 5채널 감정·키워드·인사이트·액션플랜 4단 분석) → `docx-generator` → `ai-slop-reviewer`
 
 ### 산출물 미리보기
 
