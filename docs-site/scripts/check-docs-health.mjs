@@ -29,8 +29,8 @@ for (const f of mdFiles) {
   // 구버전 플러그인 카운트 (현재 28이 아닌 구값)
   const stalePlugin = txt.match(/\b(17|21)\s*(개)?\s*(플러그인|plugins?)\b/gi) || [];
   if (stalePlugin.length) findings.push({ file: rel, type: 'stale-plugin-count', matches: stalePlugin });
-  // 본문 버전 마커 누적 (§10-4) — releases/ 제외
-  const markers = txt.match(/(v2\.\d+(\.\d+)?)\s*(신규|추가)|Wave\s*\d+|출시\s*예정/gi) || [];
+  // 본문 버전 마커 — plugins/_index 카탈로그 "v2.X 신규"는 스킬 도입 메타데이터로 보존(사용자 결정). Wave/출시예정만 경고.
+  const markers = txt.match(/Wave\s*\d+|출시\s*예정/gi) || [];
   if (markers.length) findings.push({ file: rel, type: 'version-marker', matches: markers });
   // fal.ai 서비스 잔재 (feedback_fal_ai_deprecated). Nano Banana는 Higgsfield MCP 공식 모델명이므로 제외.
   const fal = txt.match(/(fal\.ai|fal-ai|FAL_KEY|fal-gateway)/gi) || [];
