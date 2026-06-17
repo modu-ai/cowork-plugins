@@ -1,20 +1,20 @@
 ---
 title: "플러그인 카탈로그"
 weight: 1
-description: "modu-ai/cowork-plugins 마켓플레이스의 28개 플러그인·178개 스킬을 도메인별로 정리한 카탈로그입니다."
+description: "modu-ai/cowork-plugins 마켓플레이스의 28개 플러그인·177개 스킬을 도메인별로 정리한 카탈로그입니다."
 geekdocBreadcrumb: true
 geekdocCollapseSection: false
 ---
 
 # `cowork-plugins` 카탈로그
 
-[`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins)는 한국 업무 환경에 맞춰 설계된 **28개 플러그인 · 178개 스킬**의 커뮤니티 마켓플레이스입니다. 사업계획·IR·마케팅·법무·세무·HR·카드뉴스·PPT·이미지 프롬프트 빌더·이커머스 풀스택·메타 광고 운영·NotebookLM 슬라이드·한국 출판사 제출 원고·Claude Design 보조 풀스택·개인 재무·자기관리·직장 커뮤니케이션·**한국 공공·시세 데이터 조회**까지 도메인별로 묶여 있습니다.
+[`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins)는 한국 업무 환경에 맞춰 설계된 **28개 플러그인 · 177개 스킬**의 커뮤니티 마켓플레이스입니다. 사업계획·IR·마케팅·법무·세무·HR·카드뉴스·PPT·이미지 프롬프트 빌더·이커머스 풀스택·메타 광고 운영·NotebookLM 슬라이드·한국 출판사 제출 원고·Claude Design 보조 풀스택·개인 재무·자기관리·직장 커뮤니케이션·**한국 공공·시세 데이터 조회**까지 도메인별로 묶여 있습니다.
 
 ## 플러그인과 스킬, 무엇이 다른가요
 
-문서 곳곳에 "플러그인"과 "스킬"이라는 두 단어가 함께 등장합니다. 두 단어를 같은 뜻으로 읽으면 "스킬이 178개인데 왜 28개만 설치하나?" 같은 의문이 생깁니다. 둘은 층위가 다른 개념입니다.
+문서 곳곳에 "플러그인"과 "스킬"이라는 두 단어가 함께 등장합니다. 두 단어를 같은 뜻으로 읽으면 "스킬이 177개인데 왜 28개만 설치하나?" 같은 의문이 생깁니다. 둘은 층위가 다른 개념입니다.
 
-대형 마트에 비유하면 명확해집니다. 마트에는 '청과 코너', '정육 코너', '문구 코너'처럼 비슷한 상품끼리 모은 **매장**이 있습니다. 이 매장 하나하나가 **플러그인**입니다. 그리고 매장 안에는 사과·배추·소고기 같은 개별 **상품**이 진열되어 있는데, 이 상품 하나하나가 **스킬**입니다. 즉 "플러그인 = 비슷한 스킬들을 모아둔 상자/매장", "스킬 = 그 안의 개별 도구"입니다. 그래서 28개 플러그인 안에 178개 스킬이 들어 있는 구조가 성립합니다 — 매장 28곳에 상품이 총 178개 진열된 셈입니다.
+대형 마트에 비유하면 명확해집니다. 마트에는 '청과 코너', '정육 코너', '문구 코너'처럼 비슷한 상품끼리 모은 **매장**이 있습니다. 이 매장 하나하나가 **플러그인**입니다. 그리고 매장 안에는 사과·배추·소고기 같은 개별 **상품**이 진열되어 있는데, 이 상품 하나하나가 **스킬**입니다. 즉 "플러그인 = 비슷한 스킬들을 모아둔 상자/매장", "스킬 = 그 안의 개별 도구"입니다. 그래서 28개 플러그인 안에 177개 스킬이 들어 있는 구조가 성립합니다 — 매장 28곳에 상품이 총 177개 진열된 셈입니다.
 
 마지막으로 **트리거**라는 말이 중요합니다. 손님이 "사과 사러 왔어"라고 한마디하면(자연어 트리거) 점원이 사과가 어느 매장 어느 칸에 있는지 찾아 가져다 줍니다. 스킬에도 똑같이 "이런 요청이 들어오면 나를 불러달라"는 신호가 정해져 있고, 사용자의 한 줄 자연어가 그 신호를 켭니다. 플러그인→스킬→트리거의 세 층이 한 방향으로 이어지는 이 관계가 아래 흐름도에 나와 있습니다.
 
@@ -39,11 +39,35 @@ flowchart LR
     style Trigger fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
-![plugins-index-marketplace](/diagrams/plugins-index-marketplace.svg)
+```mermaid
+flowchart LR
+    subgraph P["① 플러그인 (매장)"]
+        direction TB
+        P1["총 28개"]
+        P2["비슷한 스킬을 한 상자에 묶은 설치 단위\n비유: 대형 마트의 매장\n예시: moai-business · moai-office · moai-legal · moai-media"]
+    end
+    subgraph S["② 스킬 (개별 도구)"]
+        direction TB
+        S1["총 177개"]
+        S2["실제 일을 수행하는 실행 단위\n비유: 매장 안의 개별 상품\n예시: strategy-planner · docx-generator · contract-review · blog"]
+    end
+    subgraph T["③ 트리거 (한마디)"]
+        direction TB
+        T1["자연어 한 줄"]
+        T2["사용자 발화로 스킬을 켜는 스위치\n비유: 손님이 점원에게 던지는 한마디\n예시: 사업계획서 만들어줘 → strategy-planner 자동 호출"]
+    end
+
+    P -- "포함한다" --> S
+    S -- "호출한다" --> T
+
+    T -. "결과: 매장 선택 설치 · 한 줄 자동 인출 · 한국 큐레이션 · 점진적 확장" .-> R
+    P -.-> R
+    R["핵심 구조\n비슷한 도구를 한 상자에 묶어\n필요한 것만 골라 설치"]
+```
 
 ## 왜 묶어서 배포하나요: 마켓플레이스의 의미
 
-178개 스킬을 굳이 28개 플러그인 단위로 묶어 배포하는 이유는, 사용자가 **전체를 한 번에 설치할 필요 없이 필요한 만큼만 골라 담기 위해서**입니다. 마켓플레이스라는 낯선 단어도 이 맥락에서 풀립니다.
+177개 스킬을 굳이 28개 플러그인 단위로 묶어 배포하는 이유는, 사용자가 **전체를 한 번에 설치할 필요 없이 필요한 만큼만 골라 담기 위해서**입니다. 마켓플레이스라는 낯선 단어도 이 맥락에서 풀립니다.
 
 마켓플레이스는 '여러 브랜드가 한 건물에 입점한 백화점 지하 푸드코트'와 같습니다. 각 입점 브랜드(플러그인)가 자기 메뉴(스킬)를 내놓고, 손님은 배가 부르면 한 브랜드 메뉴만 시켜도 되고 여러 브랜드를 조합해 먹어도 됩니다. 푸드코트 통째로 한 번에 다 먹을 필요 없이, 한식이 먹고 싶으면 한식 브랜드 코너만, 디저트가 필요하면 카페 코너만 찾아가면 됩니다. 마찬가지로 사업계획서가 필요하면 `moai-business` 플러그인만, 문서 파일이 필요하면 `moai-office` 플러그인만 설치하면 됩니다.
 
@@ -119,9 +143,11 @@ flowchart TD
 ```
 
 {{< hint type="note" >}}
-**v2.22.0 업데이트 (최신)**: **design-system-library 신규 — 56개 글로벌 브랜드 디자인 시스템 → Tailwind Play CDN + shadcn vanilla HTML** — Claude·ClickHouse·Clay 기본 3테마 + Notion·Linear·Stripe·Vercel·Figma 등 **56개 글로벌 브랜드** 토큰(색·타이포·radius·spacing) SSOT. `html-report`에 `design_system` 파라미터로 지정 → 단일 파일 HTML 렌더(빌드 불필요, CDN 1개). Claude Design DESIGN.md 합성 소스로도 사용. **28 플러그인 유지 · 177→178 스킬 · 기능적 비파괴 · Breaking change 없음**.
+**v2.23.0 업데이트 (최신)**: **drawio-diagram 스킬 제거** — draw.io CDN 뷰어(`viewer-static.min.js`) 렌더링이 drawio XML마다 불안정하여 사용자 환경에서 무작위 실패하는 이슈를 해소했습니다. 이제 배포용 스킬의 다이어그램은 안정적인 인라인 **mermaid**가 기본이며, draw.io는 로컬 개발자 환경 전용(export한 SVG를 docs-site에 삽입)으로 한정됩니다. **28 플러그인 유지 · 178 → 177 스킬 · 기능적 비파괴**.
 
-**v2.21.0 업데이트**: **drawio-diagram 신규 + humanize-korean 한국적 정서·결 K 카테고리 + /project agent-aware** — 자연어를 편집 가능한 `.drawio` + 단일 HTML(draw.io CDN 뷰어, Apache-2.0)로 렌더하는 **`drawio-diagram`** 신규(6 프리셋·CLI 불필요·`learning-material`과 ```drawio` 블록 연동). `humanize-korean`에 한국적 정서·결 **K 카테고리(양성 축) 4종**(A~J 음성·제거에 K 양성·지향 충전, 2026 학술 교차·메트릭 무변경). `/project`가 코디네이터 에이전트까지 동적 스캔·체인 설계. **28 플러그인 유지 · 173 → 177 스킬 · 기능적 비파괴 · Breaking change 없음**.
+**v2.22.0 업데이트**: **design-system-library 신규 — 56개 글로벌 브랜드 디자인 시스템 → Tailwind Play CDN + shadcn vanilla HTML** — Claude·ClickHouse·Clay 기본 3테마 + Notion·Linear·Stripe·Vercel·Figma 등 **56개 글로벌 브랜드** 토큰(색·타이포·radius·spacing) SSOT. `html-report`에 `design_system` 파라미터로 지정 → 단일 파일 HTML 렌더(빌드 불필요, CDN 1개). Claude Design DESIGN.md 합성 소스로도 사용. **28 플러그인 유지 · 177→178 스킬 · 기능적 비파괴 · Breaking change 없음**.
+
+**v2.21.0 업데이트**: **humanize-korean 한국적 정서·결 K 카테고리 + /project agent-aware** — `humanize-korean`에 한국적 정서·결 **K 카테고리(양성 축) 4종**(A~J 음성·제거에 K 양성·지향 충전, 2026 학술 교차·메트릭 무변경). `/project`가 코디네이터 에이전트까지 동적 스캔·체인 설계. **28 플러그인 유지 · 173 → 177 스킬 · 기능적 비파괴 · Breaking change 없음**.
 
 **v2.20.0**: **학습자 전용 moai-tutor 플러그인 신규 (3 스킬)** — 가르치는 사람(moai-education)과 분리된 **배우는 사람(학습자·수강생)** 도메인. `learning-project`(학습 프로젝트·로드맵·진도) · `tutor-research`(context7 공식 문서 + 웹검색 **병렬** 조사·교차검증) · `learning-material`(도식·차트·수식·코드가 조건부로 들어간 단일 HTML 학습자료). context7 MCP 번들 + 2026 CDN 라이브러리 스택(Mermaid·ECharts·highlight.js·KaTeX·AOS) 큐레이션. **27 → 28 플러그인 · 173 → 176 스킬 · 기능적 비파괴 · Breaking change 없음**.
 
@@ -211,13 +237,13 @@ flowchart TD
 
 ### Claude Design 보조
 
-- [`moai-design`](./moai-design/) **NEW v2.12** — [claude.ai/design](https://claude.ai/design) 사용을 받쳐 주는 풀스택 5 스킬. 브리프 작성·디자인 시스템 자산 합성·시니어 UX 프롬프트·Claude Code 핸드오프 분석·AI 슬롭 검수
+- [`moai-design`](./moai-design/) **NEW v2.12** — [claude.ai/design](https://claude.ai/design) 사용을 받쳐 주는 풀스택 6 스킬. 브리프 작성·디자인 시스템 자산 합성·시니어 UX 프롬프트·Claude Code 핸드오프 분석·AI 슬롭 검수 · 56개 글로벌 브랜드 디자인 시스템 라이브러리(v2.22 신규)
 
 ### 학습 (학습자 전용)
 
 - [`moai-tutor`](./moai-tutor/) **NEW v2.20** — 학습자·수강생 전용 개인 AI 튜터. 학습 프로젝트 초기화·로드맵·진도 추적 + context7+웹검색 병렬 리서치 + mermaid 도식·차트·수식·코드가 들어간 단일 HTML 학습자료 생성. moai-education(강사용)과 분리된 배우는 사람 도메인
 
-## 한 눈에 보는 스킬 수 (v2.22.0)
+## 한 눈에 보는 스킬 수 (v2.23.0)
 
 "대표 스킬 (일부)"는 각 플러그인에서 가장 자주 호출되는 스킬을 발췌한 것입니다. 전체 스킬 목록은 플러그인 이름을 클릭해 상세 페이지에서 확인하세요.
 
@@ -245,14 +271,14 @@ flowchart TD
 | [moai-bi](./moai-bi/) | 1 | executive-summary |
 | [moai-pm](./moai-pm/) | 1 | weekly-report |
 | [moai-sales](./moai-sales/) | 1 | proposal-writer |
-| [moai-design](./moai-design/) | 5 | claude-design-brief · claude-design-system-prep · claude-design-prompt-builder · claude-design-handoff-reader · claude-design-slop-check |
+| [moai-design](./moai-design/) | 6 | claude-design-brief · claude-design-system-prep · claude-design-prompt-builder · claude-design-handoff-reader · claude-design-slop-check · **design-system-library (v2.22 신규)** |
 | [moai-wealth](./moai-wealth/) | 6 | wealth-roadmap, household-budget, invest-primer, insurance-fit, personal-tax-saver, econ-literacy |
 | [moai-productivity](./moai-productivity/) | 7 | goal-planner, retro-builder, time-system, habit-routine, self-care, notion-template-kit, weekly-report |
 | [moai-comms](./moai-comms/) | 5 | report-speak, meeting-facilitator, feedback-loop, conflict-handler, negotiation-1on1 |
 | [moai-public-data](./moai-public-data/) | 4 | korean-stock-search, court-auction-search, real-estate-search, public-data |
 | [moai-tutor](./moai-tutor/) | 3 | learning-project, tutor-research, learning-material |
 
-전체 **178개 스킬 · 28개 플러그인** (v2.22.0 기준).
+전체 **177개 스킬 · 28개 플러그인** (v2.23.0 기준).
 
 ## 다음 단계
 
@@ -267,4 +293,4 @@ flowchart TD
 
 - [modu-ai/cowork-plugins](https://github.com/modu-ai/cowork-plugins)
 - [cowork-plugins README](https://raw.githubusercontent.com/modu-ai/cowork-plugins/main/README.md)
-- [v2.20.0 릴리스 (최신)](../releases/v2.20/) · [v2.19.0 릴리스](../releases/v2.19/) · [v2.18.0 릴리스](../releases/v2.18/) · [v2.17.0 릴리스](../releases/v2.17/)
+- [v2.23.0 릴리스 (최신)](../releases/v2.23/) · [v2.22.0 릴리스](../releases/v2.22/) · [v2.21.0 릴리스](../releases/v2.21/) · [v2.20.0 릴리스](../releases/v2.20/) · [v2.19.0 릴리스](../releases/v2.19/)

@@ -29,7 +29,38 @@ flowchart TD
     style Skip fill:#f5dcd7,stroke:#c44a3a,color:#09110f
 ```
 
-![automation-recipes-schedule-dispatch](/diagrams/automation-recipes-schedule-dispatch.svg)
+```mermaid
+flowchart TD
+    subgraph AXIS["두 축의 결합"]
+        direction LR
+        A1["🜂 시간축 Schedule<br/>알람시계 — 정해진 시각에 울린다"]
+        A2["🜄 공간축 Dispatch<br/>출장지 전화 — 멀리 비서에게 지시"]
+    end
+
+    COMBINE["결합 = '내가 없어도 사무실이 계속 돈다'"]
+
+    subgraph PIPE["자동화 한 회차 파이프라인"]
+        direction TB
+        S1["① 예약 등록<br/>(알람 맞추기)<br/>시간표 규칙 Cron + 타임존<br/>예: 매일 08:50 서울"]
+        S2{"② 로컬 시계가<br/>예약 시각 도달?"}
+        S3{"③ PC 켜져 있는가?<br/>(결정적 조건)"}
+        S4["④ 비서가 자동 출근<br/>Skill 발동<br/>→ Slack · Gmail · Project"]
+        S5["⑤ 결과 회신<br/>모바일 알림 · 메일 · Slack"]
+        SNO["✗ 회차 건너뜀<br/>자동 보충 없음<br/>다음 알람까지 대기"]
+    end
+
+    DISPATCH["Dispatch 보조 경로<br/>출장지 모바일에서 지시 →<br/>마지막 사용 PC에서 즉시 실행"]
+
+    A1 --> COMBINE
+    A2 --> COMBINE
+
+    S1 -->|시간표 도달 대기| S2
+    S2 -->|예약 시각 도달| S3
+    S3 -->|YES| S4
+    S3 -->|NO PC 꺼짐| SNO
+    S4 --> S5
+    DISPATCH -.->|언제든 지시 쏘기| S4
+```
 
 ## Schedule — 예약을 걸 때 알아야 할 기본 용어
 
@@ -121,7 +152,22 @@ flowchart LR
     style Notify fill:#cfe5e2,stroke:#144a46,color:#09110f
 ```
 
-![automation-recipes-pipeline](/diagrams/automation-recipes-pipeline.svg)
+```mermaid
+flowchart LR
+    subgraph T["① 트리거 (Schedule)"]
+        direction TB
+        T1["재무 — 매일 08:50\n환율 + 미결 메일"]
+        T2["품질 — 매일 07:00\n전일 불량 대시보드"]
+        T3["SCM — 매주 월 08:00\n벤더 리스크 스캔"]
+        T4["해외영업 — 매일 06:00\n현지 업계 뉴스 요약"]
+    end
+
+    T --> R["② 라우팅 (Dispatch)\n지시를 대기 중인 PC로 배달\n마지막으로 사용한 PC 기준"]
+    R --> E["③ PC 실행\nCowork 세션이 자동 재개\n조회·분석·보고서 작성"]
+    E --> N["④ 결과 알림\nSlack · Gmail · 카톡 · Notion"]
+
+    N -.-> I["모든 부서 레시피는\n무엇·언제·어디서·결과는 어디로\n네 칸만 채우면 동일 틀"]
+```
 
 ### 재무
 
@@ -318,4 +364,4 @@ Dispatch는 모바일 Claude 앱에서 이렇게 생깁니다.
 
 ### Sources
 - [Claude Docs — Scheduled Tasks](https://docs.claude.com/en/docs/claude-cowork/scheduled-tasks)
-- [modu-ai/cowork-plugins v1.5.0](https://github.com/modu-ai/cowork-plugins)
+- [modu-ai/cowork-plugins](https://github.com/modu-ai/cowork-plugins)

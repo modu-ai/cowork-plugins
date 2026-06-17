@@ -32,7 +32,24 @@ flowchart LR
     style F fill:#d6ebe7,stroke:#1c7c70,color:#09110f
 ```
 
-![track-data-workflow](/diagrams/track-data-workflow.svg)
+```mermaid
+flowchart TD
+    RAW["원본 데이터<br/>CSV · Excel<br/>(결측값 · 이상값 포함)"]
+    S1["① 탐색<br/>data-explorer"]
+    CHK{"결측·이상<br/>발견?"}
+    S2["② 정제 · 보완<br/>(수동 프롬프트)"]
+    S3["③ 시각화<br/>data-visualizer"]
+    S4["④ 보고서 · PPT 변환<br/>moai-office"]
+    PUB["공공데이터 API<br/>(KOSIS · data.go.kr)"]
+
+    RAW --> S1
+    S1 --> CHK
+    CHK -->|"발견"| S2
+    CHK -->|"없음 (바로 시각화)"| S3
+    S2 --> S3
+    PUB -.->|"CPI·거시지표로 실질 매출 계산"| S3
+    S3 --> S4
+```
 
 ## 트랙 지도
 
@@ -222,7 +239,7 @@ flowchart LR
 
 ### 민감 데이터는 격리
 
-고객 개인정보·금융 거래는 별도 암호화 폴더에서만 작업. ai-slop-reviewer 같은 후처리에 노출되지 않도록 프롬프트에 명시.
+고객 개인정보·금융 거래는 별도 암호화 폴더에서만 작업. 분석 스킬(`data-explorer`·`data-visualizer`)의 입력 프롬프트에 민감 데이터가 노출되지 않도록 명시.
 
 ### 익명화·가명화
 

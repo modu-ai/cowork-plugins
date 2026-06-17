@@ -54,7 +54,41 @@ flowchart LR
     style E fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
-![report-automation-assembly-line](/diagrams/report-automation-assembly-line.svg)
+```mermaid
+flowchart LR
+    SRC["데이터 소스 (재료)<br/>KPI CSV · Slack #ops · Notion/Asana"]
+    ST1["① 기획자<br/>status-reporter<br/>보고서 뼈대 · OKR 진행률"]
+    ST2["② 데이터 분석가<br/>data-explorer<br/>숫자 채우기 · KPI 추출"]
+    ST3["③ 표 담당<br/>xlsx-creator<br/>차트 정리 · 대시보드 시트"]
+    ST4["④ 문서 편집자<br/>docx-generator<br/>3페이지 묶기 · 최종 보고서"]
+    ST5["⑤ 교정 편집자<br/>ai-slop-reviewer<br/>문장 다듬기 · 임원체/팀체"]
+    OUT["완성품<br/>주간 보고서 3페이지 DOCX"]
+
+    SRC --> ST1 --> ST2 --> ST3 --> ST4 --> ST5 --> OUT
+
+    subgraph seq["왜 순서가 고정인가 — 콘베이어 벨트 위 순차 조립"]
+        direction LR
+        R1["앞 단계 결과물이<br/>뒷단계 입력"]
+        R2["뼈대 없이 숫자부터<br/>넣으면 자리 없음"]
+        R3["문장 다듬기를 먼저 하면<br/>숫자 바뀔 때 다시 고쳐야"]
+        R4["한 작업대 빠지면<br/>완성품에 빈 칸"]
+        R1 ~~~ R2 ~~~ R3 ~~~ R4
+    end
+
+    classDef plan fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    classDef build fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    classDef qa fill:#e6f0ef,stroke:#144a46,color:#09110f
+    classDef src fill:#dceee9,stroke:#2a8a8c,color:#09110f
+    classDef out fill:#D97757,stroke:#B85C3E,color:#FFFFFF
+    classDef rule fill:#788C5D,stroke:#5F6F4A,color:#FFFFFF
+
+    class SRC src
+    class ST1 plan
+    class ST2,ST3,ST4 build
+    class ST5 qa
+    class OUT out
+    class R1,R2,R3,R4 rule
+```
 
 ## 사전 준비
 
@@ -179,9 +213,9 @@ MCP 기본 검색은 14일. 그 이상은 `slack_search_public` 사용권을 확
 
 - **월간 보고서** — 같은 파이프라인을 "4주치 CSV" 입력으로 돌려 월간판 생성.
 - **대시보드 HTML** — `data-visualizer`로 사내 공유용 단일 HTML 대시보드 추가 발행 → 이메일 링크.
-- **마크다운 → HTML 변환 (v2.2.0 신규)** — `moai-content:html-report` 스킬로 마크다운 보고서를 단일 파일 HTML로 변환. 외부 의존성 0, 12-25KB 초경량 산출물.
+- **마크다운 → HTML 변환** — `moai-content:html-report` 스킬로 마크다운 보고서를 단일 파일 HTML로 변환. 외부 의존성 0, 12-25KB 초경량 산출물.
 
-### 마크다운 보고서 → HTML 변환 (v2.2.0)
+### 마크다운 보고서 → HTML 변환
 
 {{< terminal title="claude — cowork" >}}
 > 이번 주 주간 현황 보고서 HTML로 변환해줘.

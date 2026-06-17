@@ -55,7 +55,23 @@ flowchart LR
 
 이 순서를 바꾸면 결과가 흔들립니다. 검수 스킬을 맨 앞에 두면 검사할 글이 아직 없고, 문서 변환을 뼈대보다 먼저 돌리면 빈 양식만 나옵니다. 도메인(분야 전문)이 먼저, 포맷(문서 형식)이 중간, 품질 검수가 마지막이라는 3원칙을 따르는 것이 사업계획서 품질을 안정적으로 지키는 핵심입니다.
 
-![business-plan-workflow](/diagrams/business-plan-workflow.svg)
+```mermaid
+flowchart LR
+    Start["한 줄 아이템 입력"] --> S1["① strategy-planner<br/>설계도 · 뼈대<br/>BMC·SWOT·OKR"]
+    S1 --> S2["② market-analyst<br/>부지 조사 · 시장<br/>TAM·경쟁사"]
+    S2 --> S3["③ docx-generator<br/>시공 · 문서 변환<br/>심사 양식 DOCX"]
+    S3 --> S4["④ ai-slop-reviewer<br/>감리 · 품질 검수<br/>기계 냄새 제거"]
+    S4 --> Result["심사용 DOCX 완성"]
+
+    S3 -.보강.-> D1["moai-data<br/>KOSIS 시장 통계"]
+    S3 -.보강.-> D2["xlsx-creator<br/>3년 재무 추정표"]
+    D1 -.환류.-> S3
+    D2 -.환류.-> S3
+
+    style S1 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+    style S3 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+    style S4 fill:#e6f0ef,stroke:#144a46,color:#09110f
+```
 
 ## 스킬 체인
 
@@ -96,7 +112,7 @@ strategy-planner → market-analyst → docx-generator → ai-slop-reviewer
 - **OKR**(목표·핵심 결과) — "이번 분기에 무엇을, 어떤 숫자로 달성할 것인가"를 적는 목표 설정 틀.
 {{< /hint >}}
 
-이 약자들이 어려워 보여도 `strategy-planner`와 `market-analyst`가 알아서 칸을 채워준다. 초보자는 "어떤 질문에 답하고 있는지"만 이해해도 뼈대가 믿을 수 있는 이유가 보입니다.
+이 약자들이 어려워 보여도 `strategy-planner`와 `market-analyst`가 알아서 칸을 채워줍니다. 초보자는 "어떤 질문에 답하고 있는지"만 이해해도 뼈대가 믿을 수 있는 이유가 보입니다.
 
 ### 2. 뼈대 생성
 
@@ -165,7 +181,7 @@ AI가 쓴 사업계획서 글도 똑같습니다. 내용은 충실해도 문장 
 
 ## 응용 변형
 
-- **정부 지원사업 매칭** — `kr-grant-writer` 스킬로 내 아이템에 맞는 공고를 먼저 찾고 그 양식에 맞춰 진행합니다.
+- **정부 지원사업 매칭** — `kr-gov-grant` 스킬로 내 아이템에 맞는 공고를 먼저 찾고 그 양식에 맞춰 진행합니다.
 - **피칭 덱 변환** — 완성된 DOCX를 `investor-relations + pptx-designer`로 IR 덱으로 변환 → [IR 덱 제작](../ir-deck/) 참고.
 
 ---

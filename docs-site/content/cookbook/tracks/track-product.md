@@ -1,12 +1,12 @@
 ---
 title: "제품 개발 트랙"
 weight: 70
-description: "PRD·로드맵·UX·발표 자료 자동화. moai-core(strategy-planner) + moai-office + 사용자 정의 스킬 체이닝."
+description: "PRD·로드맵·UX·발표 자료 자동화. moai-business(strategy-planner) + moai-product + moai-office + 사용자 정의 스킬 체이닝."
 geekdocBreadcrumb: true
 ---
 
 > **대상**: 제품 매니저(PM), UX 디자이너, 개발 매니저, 스타트업 창업자
-> **전제**: moai-core 활성화 + (선택) moai-office · moai-content · 사용자 정의 product-assistant 플러그인
+> **전제**: moai-business · moai-product 활성화 + (선택) moai-office · moai-content · 사용자 정의 product-assistant 플러그인
 > **소요**: 시나리오당 약 5-20분
 
 ## 무엇을 할 수 있나
@@ -19,12 +19,12 @@ flowchart TD
         A3["roadmap-manager<br/>분기 로드맵"]
     end
     subgraph 리서치["2. UX 리서치"]
-        B1["campaign-planner<br/>사용자 인터뷰"]
-        B2["interview-guide<br/>스크립트"]
+        B1["ux-researcher<br/>사용자 인터뷰"]
+        B2["ux-designer<br/>페르소나·스크립트"]
     end
     subgraph 디자인["3. UX 디자인"]
         C1["landing-page<br/>shadcn/ui 프로토타입"]
-        C2["pencil-mcp<br/>와이어프레임"]
+        C2["ux-designer<br/>와이어프레임"]
     end
     subgraph 발표["4. 발표 자료"]
         D1["pptx-designer<br/>피칭 데크"]
@@ -39,7 +39,7 @@ flowchart TD
 
 | # | 한 줄 요청 | 자동 체인 |
 |---|---|---|
-| 1 | "결제 모듈 PRD 초안 + 인터뷰 가이드 만들어줘" | strategy-planner → spec-writer → interview-guide → docx |
+| 1 | "결제 모듈 PRD 초안 + 인터뷰 가이드 만들어줘" | strategy-planner → spec-writer → ux-researcher → docx |
 | 2 | "분기 로드맵 짜줘. 향후 12개월" | roadmap-manager → docx + xlsx (마일스톤) |
 | 3 | "SaaS 랜딩 프로토타입 만들어줘" | landing-page → ai-slop → humanize-korean |
 | 4 | "투자자용 피칭 데크 12장 만들어줘" | strategy-planner → pptx-designer → ai-slop |
@@ -63,7 +63,7 @@ flowchart TD
 
 ### 자동 체인
 
-`strategy-planner`(제품 전략 정의) → `spec-writer`(PRD: 문제·해결·요구사항·인수기준) → `interview-guide`(5-7개 핵심 질문 + STAR 후속 질문) → `docx-generator` → `ai-slop-reviewer`
+`strategy-planner`(제품 전략 정의) → `spec-writer`(PRD: 문제·해결·요구사항·인수기준) → `ux-researcher`(5-7개 핵심 질문 + STAR 후속 질문) → `docx-generator` → `ai-slop-reviewer`
 
 ### 산출물
 
@@ -173,11 +173,11 @@ flowchart TD
 
 ### Q. 사용자 정의 product-assistant 플러그인을 직접 만들어야 하나요?
 
-**아니오.** 기본 `moai-core` (strategy-planner·spec-writer) + `moai-office` (pptx·docx) + `moai-content` (landing-page)만으로 모든 시나리오 처리 가능. 더 깊은 자동화가 필요하면 [/project init 가이드](../../../cowork/setup/)로 사용자 정의 플러그인 빌드.
+**아니오.** 기본 `moai-business` (strategy-planner) + `moai-product` (spec-writer·ux-researcher·roadmap-manager) + `moai-office` (pptx·docx) + `moai-content` (landing-page)만으로 모든 시나리오 처리 가능. 더 깊은 자동화가 필요하면 [사용자 정의 플러그인 설정 가이드](../../../cowork/setup/)로 빌드.
 
 ### Q. UX 디자인 와이어프레임도 자동 생성되나요?
 
-`landing-page`로 코드 기반 프로토타입 즉시 생성 가능. Figma·Sketch 와이어프레임은 [/moai design](../../../cowork/patterns/) 워크플로우 (Pencil MCP) 참조.
+`landing-page`로 코드 기반 프로토타입 즉시 생성 가능. `ux-designer`(moai-product)로 페르소나·사용자 흐름·와이어프레임 기획 가능. Figma·Sketch 연동은 [커넥터 설정 가이드](../../../cowork/connectors-mcp/) 참조.
 
 ### Q. PRD 표준 양식은?
 

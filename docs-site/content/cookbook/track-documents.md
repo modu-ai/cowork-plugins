@@ -59,7 +59,40 @@ flowchart LR
     style Out fill:#eaeaea,stroke:#6e6e6e,color:#09110f
 ```
 
-![track-documents-pipeline](/diagrams/track-documents-pipeline.svg)
+```mermaid
+flowchart LR
+    IN["원본 재료<br/>데이터·원고·템플릿<br/>(D:/Input, Drive)"]
+
+    PICK{"목적 분기<br/>이걸 뭘로 만들 거냐?"}
+
+    W["Word — 읽는 글<br/>docx-generator"]
+    P["PPT — 보여주는 발표<br/>pptx-designer"]
+    H["한글 — 관공서 제출<br/>hwpx-writer"]
+    X["Excel — 계산하는 표<br/>xlsx-creator"]
+    F["PDF — 편집 불가 배포<br/>pdf"]
+
+    REV["ai-slop-reviewer<br/>어투·표현 다듬기<br/>(텍스트 산출물만)"]
+    SKIP["Excel·PDF<br/>어투 없음 → 검수 생략"]
+
+    OUT["최종 산출물<br/>90_Output / 배포 폴더"]
+
+    IN -->|"스테이지 1 → 2"| PICK
+
+    PICK -->|"텍스트형"| W
+    PICK -->|"텍스트형"| P
+    PICK -->|"텍스트형"| H
+    PICK -->|"숫자·배포형"| X
+    PICK -->|"숫자·배포형"| F
+
+    W -->|"검수"| REV
+    P -->|"검수"| REV
+    H -->|"검수"| REV
+    X -.->|"생략"| SKIP
+    F -.->|"생략"| SKIP
+
+    REV ==>|"납품"| OUT
+    SKIP -.->|"납품"| OUT
+```
 
 ## Word (DOCX) — 가장 많이 쓰는 포맷
 
@@ -137,7 +170,7 @@ flowchart TD
 >
 > - 1장: 타이틀 + 요약 수치 3개
 > - 2장: 전년 동기 비교 (막대 그래프)
-> - 3~5장: 제품군 A / B / C 섹션
+> - 3-5장: 제품군 A / B / C 섹션
 > - 6장: 리스크·이슈
 > - 7장: 다음 분기 전망 + 제언
 > - 테마: 화이트 배경, 포인트 컬러 코랄
@@ -207,7 +240,7 @@ flowchart TD
 >
 > - 양식: 2026년 디지털 전환 지원사업 공식 양식
 > - 1페이지: 기업 개요 (사업자등록번호·주소·대표자)
-> - 2~3페이지: 사업 계획 (추진 배경·목표·예산)
+> - 2-3페이지: 사업 계획 (추진 배경·목표·예산)
 > - 4페이지: 기대 효과 (정량·정성 지표)
 > - 저장: 90_Output/grant-application.hwpx
 {{< /terminal >}}

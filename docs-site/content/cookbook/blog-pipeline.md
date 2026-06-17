@@ -17,23 +17,28 @@ tags: [cookbook, content]
 
 ```mermaid
 flowchart TD
-    START["키워드 한 줄 입력<br/>(예: 노션 프로젝트 관리 템플릿)"] --> KW["키워드 분석<br/>검색 의도 파악"]
-    KW --> A["① blog<br/>SEO·C-Rank 구조로 초안 작성"]
-    A --> B{"썸네일<br/>필요?"}
-    B -- "예" --> C["② higgsfield-image<br/>한글 타이포 썸네일"]
-    B -- "아니오" --> D["③ ai-slop-reviewer<br/>AI 어투 제거 · 자연화"]
-    C --> D
-    D --> E["④ 플랫폼별 저장<br/>네이버·티스토리·브런치"]
+    A["사용자 입력<br/>(자연어 한 줄)"] --> B["키워드 분석<br/>검색 의도 파악 · 경쟁 글 스캔"]
+    B --> C["① blog 스킬<br/>SEO · C-Rank 구조<br/>도입-본론3단-결론 초안"]
+    C --> D{"썸네일 필요?"}
+    D -- "예" --> E["② higgsfield-image (선택)<br/>한글 타이포 썸네일 · 3:4 비율"]
+    D -- "아니오" --> F
+    E --> F["③ ai-slop-reviewer (핵심)<br/>AI 어투 제거 · 사람 문장 자연화<br/>★ 항상 마지막 단계"]
+    F --> G["④ 플랫폼별 저장<br/>네이버 / 티스토리 / 브런치<br/>줄바꿈 · 이미지 사이즈 조정"]
 
-    style START fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style A fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style B fill:#fff,stroke:#87867f,color:#09110f
-    style C fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style D fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style E fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+    classDef input fill:#FAF9F5,stroke:#87867F,color:#141413
+    classDef step fill:#FFFFFF,stroke:#D1CFC5,color:#141413
+    classDef core fill:#E3DACC,stroke:#C9BCA6,color:#141413,font-weight:bold
+    classDef review fill:#D97757,stroke:#B85C3E,color:#FFFFFF,font-weight:bold
+    classDef save fill:#788C5D,stroke:#5F6F4A,color:#FFFFFF,font-weight:bold
+    classDef opt fill:#FFFFFF,stroke:#D1CFC5,color:#141413,stroke-dasharray:5 5
+
+    class A input
+    class B step
+    class C core
+    class E opt
+    class F review
+    class G save
 ```
-
-![blog-pipeline-workflow](/diagrams/blog-pipeline-workflow.svg)
 
 ## 대상 독자
 
@@ -42,7 +47,7 @@ flowchart TD
 ## 사전 준비
 
 - 플러그인: `moai-content`, `moai-core:ai-slop-reviewer`
-- (선택) 이미지 — `moai-media`의 `higgsfield-image` (한국어 타이포 SOTA) 또는 `image-gen`
+- (선택) 이미지 — `moai-media`의 `higgsfield-image` (한국어 타이포 SOTA). 다른 스타일이 필요하면 `gpt-image-2-prompt`·`gemini-3-image-prompt`·`midjourney-v8-prompt` 프롬프트 스킬 활용
 - 입력: **타깃 키워드**, **플랫폼**(네이버·티스토리·브런치 등), **대상 독자**
 
 ## 스킬 체인
@@ -138,4 +143,4 @@ higgsfield-image로 한글 타이포 들어가게. 3:4 비율.
 
 ### Sources
 - [modu-ai/cowork-plugins › moai-content](https://github.com/modu-ai/cowork-plugins)
-- [네이버 검색 공식 블로그 — C-Rank](https://blog.naver.com/naver_search)
+- [네이버 서치어드바이저 — 검색 최적화 가이드](https://searchadvisor.naver.com/)

@@ -19,7 +19,7 @@ flowchart TD
         A3["legal-risk<br/>리스크 등급 평가"]
     end
     subgraph 생성["2. 문서 생성"]
-        B1["contract-drafter<br/>표준 계약 초안"]
+        B1["contract-review<br/>계약 초안·개선안"]
         B2["docx-generator<br/>워드 산출물"]
     end
     subgraph 규제["3. 컴플라이언스"]
@@ -38,9 +38,9 @@ flowchart TD
 | # | 한 줄 요청 | 자동 체인 |
 |---|---|---|
 | 1 | "./nda_inbox/ 폴더 NDA 12개 위험도 검토해줘" | nda-triage(배치) → contract-review → legal-risk → docx |
-| 2 | "공급 계약서 리뷰하고 개선안 만들어줘" | contract-review → contract-drafter → docx → ai-slop |
+| 2 | "공급 계약서 리뷰하고 개선안 만들어줘" | contract-review(리뷰) → contract-review(개선안) → docx → ai-slop |
 | 3 | "GDPR 준수 보고서 생성해줘" | compliance-check → docx-generator → ai-slop |
-| 4 | "B2B SaaS 표준 NDA 한·영 동시에 만들어줘" | contract-drafter → docx (KR/EN 병렬) → ai-slop |
+| 4 | "B2B SaaS 표준 NDA 한·영 동시에 만들어줘" | contract-review(초안) → docx (KR/EN 병렬) → ai-slop |
 
 ---
 
@@ -88,7 +88,7 @@ flowchart TD
 
 ### 자동 체인
 
-`contract-review`(조항별 리스크 분석) → `legal-risk`(A/B/C 등급) → `contract-drafter`(개선안 초안) → `docx-generator` → `ai-slop-reviewer`
+`contract-review`(조항별 리스크 분석) → `legal-risk`(A/B/C 등급) → `contract-review`(개선안 초안) → `docx-generator` → `ai-slop-reviewer`
 
 ### 산출물
 
@@ -142,7 +142,7 @@ flowchart TD
 
 ### 자동 체인
 
-`contract-drafter`(한·영 병렬) → `docx-generator`(KR/EN 2 파일) → `ai-slop-reviewer`
+`contract-review`(한·영 병렬 초안) → `docx-generator`(KR/EN 2 파일) → `ai-slop-reviewer`
 
 ### 산출물
 

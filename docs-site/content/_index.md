@@ -1,13 +1,13 @@
 ---
 title: "Claude Cowork 한국어 문서"
-description: "Claude Cowork 한국어 가이드 — 지식 근로자를 위한 설치·스킬·플러그인·쿡북 완전판. cowork-plugins 28종 카탈로그 + 178 스킬 포함."
+description: "Claude Cowork 한국어 가이드 — 지식 근로자를 위한 설치·스킬·플러그인·쿡북 완전판. cowork-plugins 28종 카탈로그 + 177 스킬 포함."
 geekdocAnchor: false
 geekdocBreadcrumb: false
 ---
 
 <div class="cw-hero">
   <div class="eyebrow"><span class="dot"></span>{{< version >}} · {{< release-date >}} · cowork.mo.ai.kr</div>
-  <h1>업무에 바로 쓰는<br/><span class="accent">AI 협업 스킬</span> 178종.</h1>
+  <h1>업무에 바로 쓰는<br/><span class="accent">AI 협업 스킬</span> 177종.</h1>
   <p class="lead-p">
     28개 분야에 걸친 MoAI-Cowork 플러그인 모음. Claude Code에서 슬래시 한 번으로 사업계획서·IR 덱·계약서·블로그·정부지원사업 신청서·이커머스 광고 풀세트·한국 출판사 제출 원고·개인 재무·자기관리·직장 커뮤니케이션·<strong>한국 공공·시세 데이터 조회</strong>까지 — 한국어로, 끝까지.
   </p>
@@ -16,7 +16,7 @@ geekdocBreadcrumb: false
     <a class="btn btn--ghost" href="/plugins/">플러그인 둘러보기</a>
   </div>
   <div class="cw-hero-meta">
-    <div class="item"><div class="num">178</div><div class="lbl">총 스킬</div></div>
+    <div class="item"><div class="num">177</div><div class="lbl">총 스킬</div></div>
     <div class="item"><div class="num">28</div><div class="lbl">분야 플러그인</div></div>
     <div class="item"><div class="num">79</div><div class="lbl">문서 페이지</div></div>
     <div class="item"><div class="num">{{< version >}}</div><div class="lbl">최신 릴리스</div></div>
@@ -104,7 +104,7 @@ Claude Code에 MoAI-Cowork 마켓플레이스를 등록하고, 가장 자주 쓰
 
 아래 28개 카드를 보기 전에, 전체 구조를 한 번에 잡아두겠습니다. 백화점에 비유하면 이해가 빠릅니다. **마켓플레이스**는 백화점 건물 전체입니다 — 한 번 들어가면(설치 1회) 모든 층을 오갈 수 있습니다. **플러그인**은 건물 안의 층입니다 — 비즈니스 층, 법무 층, 오피스 층처럼 분야별로 28개 층이 있습니다. **스킬**은 그 층에 놓인 구체적인 창구입니다 — 사업계획서 창구, 계약서 검토 창구, DOCX 만들기 창구. 그리고 **체인**은 손님이 창구들을 직접 돌아다니는 동선입니다 — 비즈니스 층에서 초안을 받아 → 오피스 층에서 DOCX로 포장하고 → 품질 검수대를 통과합니다.
 
-한 가지 중요한 점은 "모든 층을 항상 켜두지 않아도 된다"는 것입니다. 처음엔 필수인 moai-core 층과 당장 필요한 1-2개 층만 켭니다. 나머지는 필요해질 때 그때 활성화하면 됩니다. 이래서 178개 스킬, 28개 플러그인이라는 숫자가 무섭지 않습니다 — 전부를 외울 필요 없이, 지금 내가 서 있는 층의 창구만 알면 그만입니다.
+한 가지 중요한 점은 "모든 층을 항상 켜두지 않아도 된다"는 것입니다. 처음엔 필수인 moai-core 층과 당장 필요한 1-2개 층만 켭니다. 나머지는 필요해질 때 그때 활성화하면 됩니다. 이래서 177개 스킬, 28개 플러그인이라는 숫자가 무섭지 않습니다 — 전부를 외울 필요 없이, 지금 내가 서 있는 층의 창구만 알면 그만입니다.
 
 ```mermaid
 flowchart TD
@@ -135,11 +135,47 @@ flowchart TD
     style C2 fill:#e6f0ef,stroke:#144a46,color:#09110f
 ```
 
-![home-ecosystem](/diagrams/home-ecosystem.svg)
+```mermaid
+flowchart TD
+    M["마켓플레이스 (백화점 전체)<br/>한 번 등록하면 모든 층을 오갈 수 있습니다"]
+
+    subgraph P["플러그인 — 28개 층"]
+        P1["moai-core<br/>(코어·필수)"]
+        P2["moai-business<br/>(비즈니스)"]
+        P3["moai-legal<br/>(법무)"]
+        P4["moai-office<br/>(문서 형식)"]
+        P5["... 그 외 24개 분야<br/>(커머스·콘텐츠·재무 등)"]
+    end
+
+    subgraph S["스킬 — 구체적 작업 창구"]
+        S1["project<br/>(초기화·검수)"]
+        S2["strategy-planner<br/>(사업계획서 초안)"]
+        S3["nda-triage<br/>(NDA 검토)"]
+        S4["docx-generator<br/>(DOCX 생성)"]
+        S5["ai-slop-reviewer<br/>(품질 검수)"]
+    end
+
+    subgraph C["체인 — 창구를 도는 동선"]
+        CA1["① strategy-planner"] --> CA2["② docx-generator"] --> CA3["③ ai-slop-reviewer"]
+        CB1["① nda-triage"] --> CB2["② docx-generator"] --> CB3["③ ai-slop-reviewer"]
+    end
+
+    M -.-> P1
+    M -.-> P2
+    M -.-> P3
+    M -.-> P4
+    M -.-> P5
+
+    P1 --> S1
+    P2 --> S2
+    P3 --> S3
+    P4 --> S4
+    P1 --> S5
+```
 
 <div class="cw-sect-head">
   <h2 id="plugins-grid" style="margin:0"><span class="num">28</span>분야별 플러그인</h2>
-  <span class="meta">총 178개 스킬 · 28개 도메인</span>
+  <span class="meta">총 177개 스킬 · 28개 도메인</span>
 </div>
 
 <div class="cw-grid">
@@ -318,12 +354,21 @@ flowchart TD
 </div>
 
 <div class="cw-sect-head">
-  <h2 id="release-summary" style="margin:0"><span class="num">v2.22</span>최근 릴리스</h2>
+  <h2 id="release-summary" style="margin:0"><span class="num">v2.23</span>최근 릴리스</h2>
   <span class="meta">CHANGELOG.md 기반</span>
 </div>
 
 <div class="cw-timeline">
   <div class="cw-rel latest">
+    <div class="ver-row">
+      <span class="ver">v2.23.0</span>
+      <span class="date">2026-06-17</span>
+      <span class="badge">PATCH</span>
+    </div>
+    <div class="ttl">drawio-diagram 스킬 제거 — CDN 렌더링 불안정 → mermaid 단일화</div>
+    <div class="desc">v2.21.0에 도입했던 <code>drawio-diagram</code> 스킬을 제거합니다. draw.io CDN 뷰어(<code>viewer-static.min.js</code>)가 drawio XML마다 무작위 렌더링 실패를 일으켜 사용자 환경에서 불안정했습니다. 이후 문서용 다이어그램은 안정적인 mermaid 인라인 렌더링으로 단일화합니다. <strong>28 플러그인 유지 · 178→177 스킬 · 기능적 비파괴 · Breaking change 없음</strong>.</div>
+  </div>
+  <div class="cw-rel">
     <div class="ver-row">
       <span class="ver">v2.22.0</span>
       <span class="date">2026-06-16</span>
@@ -343,8 +388,8 @@ flowchart TD
       <span class="date">2026-06-16</span>
       <span class="badge">MINOR</span>
     </div>
-    <div class="ttl">drawio-diagram 신규 + humanize-korean 한국적 정서·결 K 카테고리 + /project agent-aware</div>
-    <div class="desc">콘텐츠·문서 작업의 <strong>도식 역량 강화</strong>. 자연어를 편집 가능한 <code>.drawio</code> + 단일 HTML(draw.io CDN 뷰어, Apache-2.0) 두 산출물로 렌더하는 <strong>drawio-diagram</strong> 신규(6 프리셋, CLI 불필요). <strong>humanize-korean</strong>에 한국적 정서·결 <strong>K 카테고리(양성 축) 4종</strong> 추가. <strong>/project</strong>가 코디네이터 에이전트까지 동적 스캔·체인 설계. <strong>28 플러그인 유지 · 173→177 스킬 · 기능적 비파괴 · Breaking change 없음</strong>.</div>
+    <div class="ttl">humanize-korean 한국적 정서·결 K 카테고리 + /project agent-aware</div>
+    <div class="desc">콘텐츠·문서 작업의 <strong>정서·결 정밀화와 에이전트 인식 강화</strong>. <strong>humanize-korean</strong>에 한국적 정서·결 <strong>K 카테고리(양성 축) 4종</strong> 추가. <strong>/project</strong>가 코디네이터 에이전트까지 동적 스캔·체인 설계. <strong>28 플러그인 유지 · 173→177 스킬 · 기능적 비파괴 · Breaking change 없음</strong>. <em>(v2.21.0에 함께 추가된 drawio-diagram 스킬은 v2.23.0에서 CDN 렌더링 불안정으로 제거 → mermaid 단일화)</em></div>
   </div>
   <div class="cw-rel">
     <div class="ver-row">

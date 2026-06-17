@@ -26,7 +26,7 @@ flowchart TD
     Start --> Q{"내가 하려는 일이<br/>무엇인가?"}
     Q -- "글·이미지로<br/>알린다" --> C["콘텐츠 트랙<br/>blog · card-news · landing · newsletter"]
     Q -- "돈을 들여<br/>노출을 산다" --> A["광고 트랙<br/>meta-ads · pixel · coupang-ad · media"]
-    Q -- "물건을<br/>판다" --> E["이커머스 트랙<br/>commerce-* 35 스킬"]
+    Q -- "물건을<br/>판다" --> E["이커머스 트랙<br/>commerce-* 30 스킬"]
 
     style Start fill:#eaeaea,stroke:#6e6e6e,color:#09110f
     style Q fill:#fbf0dc,stroke:#c47b2a,color:#09110f
@@ -133,7 +133,7 @@ flowchart TD
 |---|---|---|
 | 블로그·SNS·랜딩·뉴스레터 | [콘텐츠 트랙](../track-content/) | blog · card-news · landing-page · newsletter · sns-content |
 | 메타·쿠팡 광고 진단·영상 | [광고 트랙](../track-advertising/) | meta-ads-analyzer · pixel-audit · coupang-ad-optimizer · media-* |
-| 상품 출시·재구매·VOC·LTV | [이커머스 트랙](../track-commerce/) | commerce-* 35스킬 |
+| 상품 출시·재구매·VOC·LTV | [이커머스 트랙](../track-commerce/) | commerce-* 30 스킬 |
 
 ---
 

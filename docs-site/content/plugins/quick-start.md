@@ -13,11 +13,11 @@ geekdocBreadcrumb: true
 
 ## 마켓플레이스·플러그인·스킬 한눈에 보기
 
-본격 설정에 들어가기 전에 세 단어부터 정리하겠습니다. 이 페이지 전체에서 "21개 플러그인·107개 스킬"이라는 문장이 계속 나오는데, 셋이 어떻게 포함되는지를 머릿속에 그려두어야 다음 6단계가 왜 이 순서인지 이해할 수 있습니다.
+본격 설정에 들어가기 전에 세 단어부터 정리하겠습니다. 이 페이지 전체에서 "28개 플러그인·177개 스킬"이라는 문장이 계속 나오는데, 셋이 어떻게 포함되는지를 머릿속에 그려두어야 다음 6단계가 왜 이 순서인지 이해할 수 있습니다.
 
 큰 마트(대형 마켓플레이스)에 비유하면 한눈에 들어옵니다. 마트 안에는 신선식품·생활용품·가전 같은 **코너**(플러그인)가 있고, 각 코너마다 진열된 **개별 상품**(스킬)이 있습니다. 한 번에 모든 코너를 들를 필요는 없고, 오늘 저녁 메뉴에 맞춰 필요한 코너(moai-business 같은)만 장보기를 하면 됩니다. 이때 `moai-core`는 어느 요리에든 가장 먼저 들러야 하는 **기본 조리도구 코너**(칼·도마·기본 양념)로, 없으면 아무리 좋은 재료를 사 와도 손을 댈 수 없습니다.
 
-정리하면 위계는 `마켓플레이스 ⊃ 플러그인 ⊃ 스킬` 한 방향입니다. 마켓플레이스는 GitHub에 올라 있는 큰 상자 하나(`modu-ai/cowork-plugins`)이고, 그 안을 분야별로 나눈 21개의 묶음이 플러그인, 다시 그 묶음 안에 들어 있는 개별 기능 하나하나가 스킬입니다. 스킬이 실제로 일을 하는 가장 작은 단위이고, 플러그인은 "어떤 분야의 스킬을 한 묶음으로 설치할까"를 고르는 선택 단위입니다.
+정리하면 위계는 `마켓플레이스 ⊃ 플러그인 ⊃ 스킬` 한 방향입니다. 마켓플레이스는 GitHub에 올라 있는 큰 상자 하나(`modu-ai/cowork-plugins`)이고, 그 안을 분야별로 나눈 28개의 묶음이 플러그인, 다시 그 묶음 안에 들어 있는 개별 기능 하나하나가 스킬입니다. 스킬이 실제로 일을 하는 가장 작은 단위이고, 플러그인은 "어떤 분야의 스킬을 한 묶음으로 설치할까"를 고르는 선택 단위입니다.
 
 ```mermaid
 flowchart TD
@@ -28,7 +28,7 @@ flowchart TD
     P1 --> S1["스킬: ai-slop-reviewer"]
     P1 --> S2["스킬: project"]
     P2 --> S3["스킬: strategy-planner"]
-    P3 --> S4["스킬: video-gen"]
+    P3 --> S4["스킬: higgsfield-video"]
 
     style MP fill:#eaeaea,stroke:#6e6e6e,color:#09110f
     style P1 fill:#f5dcd7,stroke:#c44a3a,stroke-width:2px,color:#09110f
@@ -85,7 +85,7 @@ flowchart TD
 
    1. **URL 입력 필드** — GitHub `owner/repo` 형식 또는 전체 git 리포지토리 URL을 입력합니다.
 
-   동기화가 끝나면 21개 플러그인·107개 스킬 목록이 표시됩니다.
+   동기화가 끝나면 28개 플러그인·177개 스킬 목록이 표시됩니다.
 
 2. **`moai-core` 설치**
 
@@ -118,9 +118,38 @@ flowchart TD
 
    `moai-core`라는 조리도구 코너를 갖췄다면, 이제 오늘 만들 메뉴에 맞춰 들를 **도메인 플러그인**(코너)을 고릅니다. 백화점 층별 안내도에 비유하면 쉽습니다. 지하 식품관(moai-media), 1층 화장품(moai-content), 2층 패션(moai-business)처럼 층(플러그인)마다 전문 매대(스킬)가 따로 있고, 방문 목적에 따라 갈 층을 고르는 구조입니다. 핵심은 **한 층에 모든 것이 있지 않다**는 점입니다. 목적별로 층을 먼저 고른 뒤, 그 층에서 필요한 스킬을 고르는 2단계 선택입니다.
 
-   아래 지도는 21개 플러그인을 비즈니스·콘텐츠·미디어·오피스·법무·재무·운영·리서치 등 분야 그룹으로 묶고, 각 플러그인 안에 핵심 스킬 2-4개를 함께 표시한 생태계 지도입니다. "내 작업은 어느 그룹인가"를 먼저 찾으면 어느 플러그인을 깔면 될지 한눈에 잡을 수 있습니다.
+   아래 지도는 28개 플러그인을 비즈니스·콘텐츠·미디어·오피스·법무·재무·운영·리서치 등 분야 그룹으로 묶고, 각 플러그인 안에 핵심 스킬 2-4개를 함께 표시한 생태계 지도입니다. "내 작업은 어느 그룹인가"를 먼저 찾으면 어느 플러그인을 깔면 될지 한눈에 잡을 수 있습니다.
 
-![plugins-quick-start-ecosystem](/diagrams/plugins-quick-start-ecosystem.svg)
+```mermaid
+flowchart TD
+    MP["modu-ai/cowork-plugins 마켓플레이스<br/>28개 플러그인 · 177개 스킬"]
+    CORE["① 기본 조리도구 (필수)<br/>moai-core — 라우터 · /project · ai-slop-reviewer"]
+
+    subgraph DOMAIN["② 도메인 코너 — 목적별로 한 층씩 선택"]
+        direction LR
+        BIZ["비즈니스 · 전략<br/>moai-business"]
+        OFF["오피스 · 문서 변환<br/>moai-office"]
+        LEG["법무 · 계약<br/>moai-legal"]
+        CON["콘텐츠 · 카피<br/>moai-content"]
+        MED["미디어 · 이미지·영상·음성<br/>moai-media"]
+        MKT["마케팅 · PR<br/>moai-marketing"]
+        FIN["재무 · 결산<br/>moai-finance"]
+        OPS["운영 · 보고<br/>moai-operations"]
+        RES["리서치 · 데이터<br/>moai-research · moai-data"]
+        TUT["학습자 (튜터)<br/>moai-tutor"]
+    end
+
+    subgraph RULE["선택 원칙"]
+        direction LR
+        R1["① core는 항상 필수"]
+        R2["② 도메인은 목적별<br/>(사업계획서 = business+office)"]
+        R3["③ 필요한 층만 골라 추가"]
+    end
+
+    MP --> CORE
+    CORE --> DOMAIN
+    DOMAIN --> RULE
+```
 
    이번에 진행할 작업에 맞춰 플러그인을 추가합니다. 예시는 다음과 같습니다.
 
@@ -129,7 +158,7 @@ flowchart TD
    - 계약서 검토 → `moai-legal`, `moai-office`
    - 이미지 생성 → `moai-media` (+ `GEMINI_API_KEY` 필요)
 
-   21개 모두를 한 번에 설치할 필요는 없습니다.
+   28개 모두를 한 번에 설치할 필요는 없습니다.
 
 4. **프로젝트 생성 및 `/project init`**
 
@@ -139,7 +168,7 @@ flowchart TD
    /project init
    ```
 
-   `moai-core:project` 스킬이 실행되어 **7단계 흐름**(Interview → Detect → Chain → Confirm → Generate → APIKey → First Run)을 진행합니다. 자세한 내용은 [moai-core 상세](../moai-core/)에서 확인할 수 있습니다. 약 3-5분 안에 프로젝트용 `CLAUDE.md`가 루트에 생성됩니다.
+   `moai-core:project` 스킬이 실행되어 **8단계 흐름**(Interview → Detect → Chain Design → Agent Synthesis → Confirm → Generate → APIKey → First Run)을 진행합니다. 자세한 내용은 [moai-core 상세](../moai-core/)에서 확인할 수 있습니다. 약 3-5분 안에 프로젝트용 `CLAUDE.md`가 루트에 생성됩니다.
 
 5. **첫 요청**
 

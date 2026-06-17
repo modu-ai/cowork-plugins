@@ -1,14 +1,14 @@
 ---
 title: "moai-content — 블로그·카드뉴스·랜딩·한국어 윤문"
 weight: 30
-description: "한국 콘텐츠·마케팅 실무에 최적화된 블로그·카드뉴스·랜딩페이지·뉴스레터·상세페이지 기획·한국어 AI 티 정밀 윤문·마크다운 보고서 HTML 변환 등 15개 스킬 묶음입니다."
+description: "한국 콘텐츠·마케팅 실무에 최적화된 블로그·카드뉴스·랜딩페이지·뉴스레터·상세페이지 기획·한국어 AI 티 정밀 윤문·마크다운 보고서 HTML 변환 등 14개 스킬 묶음입니다."
 geekdocBreadcrumb: true
 tags: ["moai-content"]
 ---
 
 # moai-content
 
-> 한국 마케팅·콘텐츠 실무에 최적화된 15개 스킬을 제공합니다. 네이버 블로그·티스토리·인스타그램·LinkedIn·카카오 채널까지 플랫폼별 알고리즘 차이를 반영하고, 마크다운 보고서 HTML 변환(`html-report`)·한국어 맞춤법 검수(`korean-spell-check`)·한국어 AI 티 윤문(`humanize-korean`)을 모두 포함합니다. 한국 이커머스 상세페이지 기획·구조·전략 설계는 `detail-page-planner`가 전담합니다.
+> 한국 마케팅·콘텐츠 실무에 최적화된 14개 스킬을 제공합니다. 네이버 블로그·티스토리·인스타그램·LinkedIn·카카오 채널까지 플랫폼별 알고리즘 차이를 반영하고, 마크다운 보고서 HTML 변환(`html-report`)·한국어 맞춤법 검수(`korean-spell-check`)·한국어 AI 티 윤문(`humanize-korean`)을 모두 포함합니다. 한국 이커머스 상세페이지 기획·구조·전략 설계는 `detail-page-planner`가 전담합니다.
 
 ```mermaid
 flowchart TD
@@ -30,11 +30,11 @@ flowchart TD
 
 회사에 '콘텐츠 부서'가 하나 있다고 상상해 보세요. 그 부서 안에는 글을 쓰는 사람, 디자인을 잡는 사람, 맞춤법을 검사하는 사람, 마지막에 깔끔하게 인쇄해서 내보내는 사람까지 모여 있습니다. `moai-content`는 바로 그런 부서 한 통을 Cowork 안에 옮겨 놓은 플러그입니다. 사용자는 부서에 "네이버 블로그 글 하나 써줘"라고 주문만 하면, 그 안에서 알아서 글이 쓰이고 → 기계 맛이 빠지고 → 한국어 결이 다듬어지고 → 마지막엔 바로 쓸 수 있는 산출물까지 나옵니다.
 
-이 부서에는 15명의 일꾼(15개 스킬)이 있고, 각자 한 가지 일만 전문적으로 맡습니다. 블로그 글을 쓰는 일꾼(`blog`), 인스타그램 카드뉴스를 만드는 일꾼(`card-news`), 상세페이지를 기획하는 일꾼(`detail-page-planner`), 맞춤법을 검사하는 일꾼(`korean-spell-check`), AI 특유의 어투를 빼는 일꾼(`humanize-korean`)까지 저마다 이름표가 달려 있습니다. 사용자는 전부 부를 필요 없이, 지금 필요한 일꾼만 골라 부르면 됩니다.
+이 부서에는 14명의 일꾼(14개 스킬)이 있고, 각자 한 가지 일만 전문적으로 맡습니다. 블로그 글을 쓰는 일꾼(`blog`), 인스타그램 카드뉴스를 만드는 일꾼(`card-news`), 상세페이지를 기획하는 일꾼(`detail-page-planner`), 맞춤법을 검사하는 일꾼(`korean-spell-check`), AI 특유의 어투를 빼는 일꾼(`humanize-korean`)까지 저마다 이름표가 달려 있습니다. 사용자는 전부 부를 필요 없이, 지금 필요한 일꾼만 골라 부르면 됩니다.
 
 ```mermaid
 flowchart LR
-    U["주문 한 줄"] --> S1["blog<br/>card-news<br/>detail-page-planner<br/>외 12개 스킬"]
+    U["주문 한 줄"] --> S1["blog<br/>card-news<br/>detail-page-planner<br/>외 11개 스킬"]
     S1 --> S2["ai-slop-reviewer<br/>기계 맛 빼기"]
     S2 --> S3["humanize-korean<br/>한국어 결 다듬기"]
     S3 --> S4["html-report<br/>최종 산출물"]
@@ -51,7 +51,7 @@ flowchart LR
 
 `moai-content`는 한국 디지털 마케팅 채널의 실제 운영 노하우를 반영해 설계된 텍스트 콘텐츠 생성 플러그인입니다. 단순히 글을 만드는 데 그치지 않고, 네이버 C-Rank·D.I.A. 알고리즘이나 인스타그램의 카드뉴스 길이 기준 등 채널별 베스트 프랙티스를 본문 구조에 반영합니다.
 
-블로그 포스트·카드뉴스·랜딩페이지·뉴스레터·**상세페이지 기획**·상세페이지·SNS·카피라이팅·미디어 기획·한국어 맞춤법·**한국어 AI 티 정밀 윤문**·**마크다운 보고서 HTML 변환**까지 15개 스킬이 도메인별로 분리되어 있어, 필요한 채널만 선택해 호출할 수 있습니다.
+블로그 포스트·카드뉴스·랜딩페이지·뉴스레터·**상세페이지 기획**·상세페이지·카피라이팅·콘텐츠 캘린더·유튜브·팟캐스트 기획·한국어 맞춤법·**한국어 AI 티 정밀 윤문**·**마크다운 보고서 HTML 변환**까지 14개 스킬이 도메인별로 분리되어 있어, 필요한 채널만 선택해 호출할 수 있습니다.
 
 별도 API 키 없이 사용 가능하며, WordPress 자동 업로드를 원하면 WordPress MCP 연결이 필요합니다.
 
@@ -77,11 +77,13 @@ flowchart LR
 | `product-detail` | 네이버 스마트스토어·쿠팡 상세페이지 | 상세 HTML + 이미지 프롬프트 |
 | `newsletter` | 이메일 뉴스레터 (stibee·mailchimp 스타일) | HTML + 제목 A/B 안 |
 | `copywriting` | 광고 헤드라인·슬로건·CTA | 3-5개 대안 카피 |
-| `social-media` | 릴스·쇼츠·스레드·X·LinkedIn 포스트 | 플랫폼별 버전 |
-| `media-production` | 유튜브·팟캐스트 기획, 콘텐츠 캘린더 | 기획서·큐시트 |
+| `content-calendar` | 콘텐츠 발행 캘린더·채널별 게시 일정 | 월간 캘린더 + 채널별 주기 |
+| `youtube-podcast-planner` | 유튜브 영상·팟캐스트 에피소드 기획·대본·쇼노트 | 기획서·큐시트·쇼노트 |
 | `korean-spell-check` | 바른한글(부산대) 한국어 맞춤법·띄어쓰기 최종 검수 | 원문/교정안/이유 |
 | `humanize-korean` | 한국어 AI 티 정밀 윤문 — 10대 카테고리 × 40+ 패턴 SSOT, 의미 100% 보존, A/B/C/D 등급 | final.md (윤문본) + summary.md (메트릭·등급) |
 | `html-report` | 마크다운 보고서 → 단일 파일 HTML — Thariq HTML-effectiveness, 인라인 SVG + vanilla JS, 12-25KB 산출물 | .html 파일 (자체 완결형) |
+
+> SNS 콘텐츠는 `moai-marketing:sns-content`가 전담합니다(글로벌 4채널·한국 3채널 통합). 본 플러그인의 `social-media`·`media-production`은 과거 버전 호환용 스텁으로 신규 호출에 권장하지 않습니다.
 
 ## 한국 시장 특화 포인트
 
@@ -127,14 +129,14 @@ card-news → moai-media:higgsfield-image → ai-slop-reviewer
 
 ## 빠른 사용 예
 
-```text
-네이버 블로그에 '프리랜서 3.3% 원천징수' 주제로 2000자 분량 글 써줘.
-키워드는 '원천징수 신고', '종합소득세'.
-```
+{{< terminal title="claude — cowork" >}}
+> 네이버 블로그에 '프리랜서 3.3% 원천징수' 주제로 2000자 분량 글 써줘.
+  키워드는 '원천징수 신고', '종합소득세'.
+{{< /terminal >}}
 
-```text
+{{< terminal title="claude — cowork" >}}
 > 인스타그램 6슬라이드 카드뉴스로 정부 지원금 신청 방법 만들어줘.
-```
+{{< /terminal >}}
 
 ## `korean-spell-check` (한국어 맞춤법 검수)
 
@@ -157,7 +159,32 @@ AI가 쓴 글을 읽다 보면 어딘가 기계 맛이 납니다. "혁신적인 
 `ai-slop-reviewer`는 AI 패턴(과한 형용사·반복·번역체)을 검수하고, `korean-spell-check`는 규칙 기반 띄어쓰기·맞춤법을 잡습니다 — 차원이 다릅니다.
 
 
-![ai-slop-humanize](/diagrams/ai-slop-humanize.svg)
+```mermaid
+flowchart TD
+    A["① AI 초안<br/블로그·뉴스레터·카피·사업계획서<br/기계 티 포함)"]
+
+    subgraph S1["1차 — 일반 후처리 (ai-slop-reviewer)"]
+        B["② 진단<br/과장 수식어·기계 접속어<br/모호한 일반화·요약 반복"]
+        C["③ 1차 수정<br/영어 표현·일반 AI 패턴 정리<br/사람 톤으로 다듬기"]
+        D{"④ 일반 패턴<br/제거?"}
+    end
+
+    subgraph S2["2차 — 한국어 정밀 윤문 (humanize-korean)"]
+        E["⑤ SSOT 탐지<br/A~J 음성 축 40+ 패턴 + K 양성 축<br/번역투·관용구·형식명사·정서온도"]
+        F["⑥ 정량 메트릭 + 수술적 수정<br/변경률 30% 경고 / 50% 롤백<br/의미 100% 보존 (사실·수치·고유명사)"]
+        G["⑦ A/B/C/D 등급 산출<br/final.md + summary.md"]
+    end
+
+    H(["⑧ 사람이 쓴 글<br/→ 사용자 최종 검토 후 배포"])
+
+    A --> B
+    B --> C
+    C --> D
+    D -- "예 (한국어 정밀 윤문 진행)" --> E
+    E --> F
+    F --> G
+    G --> H
+```
 
 ### Policy first
 
@@ -221,7 +248,7 @@ flowchart LR
 | I | 형식명사 과다 | `…인 것이다`, `…다는 뜻이다`, 권고형 결말 |
 | J | 시각 장식 | 헤딩 강조 남발, 따옴표 5회+, 불릿 리스트 (칼럼·리포트 한정) |
 
-### K 카테고리 — 한국적 정서·결 양성 축 (v2.21.0 추가)
+### K 카테고리 — 한국적 정서·결 양성 축
 
 A~J가 **음성(제거) 축** — "AI 티"를 빼는 데 집중 — 이라면, **K는 양성(지향) 축**으로 "한국적 정서·결로 채우는" 역할을 합니다. 빼기에서 멈추지 않고 온도·절제·호흡·아크를 더해 사람이 쓴 글의 결로 만듭니다.
 
@@ -322,7 +349,42 @@ Thariq Shihipar의 **"The Unreasonable Effectiveness of HTML"** 철학을 기반
 - **P1 컨슈머 호환성**: executive-summary, financial-statements, sbiz365-analyst, daily-briefing 4종 검증 완료
 
 
-![p1](/diagrams/p1.svg)
+```mermaid
+flowchart LR
+    subgraph P1["P1 호환 — 컨슈머 검증 완료 (4종)"]
+        direction TB
+        ES["executive-summary<br/>경영 요약 · 핵심 1페이지"]
+        FS["financial-statements<br/>재무제표 · 숫자 중심"]
+        SB["sbiz365-analyst<br/>소상공인 분석 리포트"]
+        DB["daily-briefing<br/>일일 브리핑 · 빠른 공유"]
+        PASS["✓ 컨슈머 호환성 검증 PASS<br/>렌더·한글 폰트·인쇄·체인 연동 OK"]
+        READY["즉시 사용 가능 — 별도 설정 없이 컨슈머 산출물로 직행"]
+        ES --> PASS
+        FS --> PASS
+        SB --> PASS
+        DB --> PASS
+        PASS --> READY
+    end
+
+    subgraph N1["P1 미해당 — 검증 대상 아님 (2종)"]
+        direction TB
+        ST["status<br/>주간 현황 · 내부 팀 공유용"]
+        IN["incident<br/>장애 포스트모템 · 내부 사후 정리용"]
+        EXC["내부 워크플로우 용도<br/>컨슈머 외부 산출물이 아니므로<br/>P1 검증 범위에서 제외"]
+        ST --> EXC
+        IN --> EXC
+    end
+
+    subgraph ALL["html-report 모드 전체 (6종)"]
+        direction TB
+        R1["status — 주간 현황 / 태스크"]
+        R2["incident — 포스트모템 / 우발 대응"]
+        R3["plan — 구현 계획 / 사업 계획"]
+        R4["explainer — 기능 설명 / 개념 해설"]
+        R5["financial — 재무 보고 / 수익 동향 ★ P1"]
+        R6["pr — PR 서사 / 관계자 알림"]
+    end
+```
 
 ### 권장 체인 위치 — 텍스트 산출물 마지막 단계
 

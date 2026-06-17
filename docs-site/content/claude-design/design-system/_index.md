@@ -32,6 +32,10 @@ Claude Design은 비전 기반 모델(Claude Opus 4.7)이 학습한 일반적 UI
 **사양서보다 실물 1개가 더 강한 시그널.** "톤은 미니멀하고 모던" 같은 문장보다 **잘 만든 자사 마케팅 페이지 URL 1개 + 경쟁사 스크린샷 2장**이 훨씬 정확한 가이드를 줍니다.
 {{< /hint >}}
 
+{{< hint type="note" >}}
+**빌트인 시스템에서 한 단계 빠르게 시작.** 자체 자산을 준비하기 전에 `moai-design:design-system-library` 스킬을 호출하면 Notion · Linear · Stripe · Vercel · Figma · Sentry 등 **56개 글로벌 브랜드 디자인 시스템 토큰**을 곧바로 불러올 수 있습니다. Cowork에서 `/design-system-library`로 호출하며, 추출된 토큰은 Claude Design 온보딩의 DESIGN.md 소스로도 활용 가능합니다.
+{{< /hint >}}
+
 ## 6단계 셋업 절차
 
 ```mermaid

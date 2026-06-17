@@ -49,7 +49,7 @@ flowchart TD
 
 | 트랙 | 대상 | 한 줄 요청 예시 | 주요 플러그인 |
 |---|---|---|---|
-| [이커머스 트랙](track-commerce/) | D2C 셀러·이커머스 운영자 | "신상품 상세페이지·광고 영상·시즌 캘린더 한 번에 만들어줘" | moai-commerce (35) · moai-media · moai-content |
+| [이커머스 트랙](track-commerce/) | D2C 셀러·이커머스 운영자 | "신상품 상세페이지·광고 영상·시즌 캘린더 한 번에 만들어줘" | moai-commerce (30) · moai-media · moai-content |
 
 ### 운영 + HR
 
@@ -98,11 +98,10 @@ flowchart TD
 
 - **[사용 패턴 가이드](../../cowork/patterns/)** — 4가지 표준 사용 패턴
 - **[쿡북](../)** — 트랙 외의 30+ 구체적 시나리오
-- **[플러그인 카탈로그](../../plugins/)** — 21 도메인 144 스킬 전체
+- **[플러그인 카탈로그](../../plugins/)** — 28 플러그인 177 스킬 전체
 
 ---
 
 ### Sources
 
 - [modu-ai/cowork-plugins README](https://github.com/modu-ai/cowork-plugins)
-- 트랙 재설계: v2.8.0 시점 (6 → 10 + 부록 확장, GOOS 결정)

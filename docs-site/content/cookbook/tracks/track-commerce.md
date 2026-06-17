@@ -1,7 +1,7 @@
 ---
 title: "이커머스 트랙"
 weight: 25
-description: "D2C 셀러·이커머스 운영자를 위한 풀스택 워크플로우. moai-commerce 35스킬 + moai-media 광고 풀세트로 신상품 출시부터 재구매·VOC·LTV까지 한 플러그인 안에서 자동화."
+description: "D2C 셀러·이커머스 운영자를 위한 풀스택 워크플로우. moai-commerce 30스킬 + moai-media 미디어 생성으로 신상품 출시부터 재구매·VOC·LTV까지 한 플러그인 안에서 자동화."
 geekdocBreadcrumb: true
 ---
 
@@ -24,15 +24,14 @@ flowchart TB
     subgraph 콘텐츠["3. 콘텐츠 자동화"]
         C1["detail-page-planner<br/>13섹션 Brief"]
         C2["detail-page-copy<br/>13섹션 카피"]
-        C3["detail-page-image<br/>1080×12720 PNG"]
+        C3["detail-page-image<br/>1080×1270 PNG"]
         C4["commerce-product-image-pipeline<br/>광고 영상 풀세트"]
     end
     subgraph 운영["4. 운영·CRM"]
-        O1["commerce-push-planner<br/>앱 푸시"]
-        O2["commerce-channel-message<br/>카톡·SMS"]
-        O3["commerce-repurchase-timer<br/>재구매 골든타임"]
-        O4["commerce-voc-triage<br/>VOC 응대"]
-        O5["commerce-review-aggregator<br/>리뷰 통합"]
+        O1["commerce-channel-message<br/>카톡·SMS·앱 푸시"]
+        O2["commerce-repurchase-timer<br/>재구매 골든타임"]
+        O3["commerce-voc-triage<br/>VOC 응대"]
+        O4["commerce-subscription-strategist<br/>구독 설계"]
     end
     subgraph 분석["5. 수익 분석"]
         A1["commerce-margin-calculator<br/>마진"]
@@ -50,7 +49,7 @@ flowchart TB
 |---|---|---|
 | 1 | "신상품 상세페이지 만들어줘" | detail-page-planner → copy → image → ai-slop-reviewer |
 | 2 | "이번 시즌 프로모션 기획해줘" | commerce-promotion-planner → channel-message → marketing-compliance-kr |
-| 3 | "재구매 캠페인 자동 설계해줘" | commerce-repurchase-timer → push-planner → channel-message |
+| 3 | "재구매 캠페인 자동 설계해줘" | commerce-repurchase-timer → commerce-channel-message |
 | 4 | "리뷰 5채널 통합 분석해줘" | commerce-review-aggregator → voc-triage → docx-generator |
 | 5 | "우리 D2C 광고비 30% 의존도 탈출 전략 짜줘" | commerce-ltv-cac-architect → margin-calculator → integrated-strategy |
 
@@ -79,7 +78,7 @@ flowchart TB
 ```mermaid
 flowchart TD
     P1["detail-page-planner<br/>Brief 생성"] --> P2["detail-page-copy<br/>13섹션 감정 여정"]
-    P2 --> P3["detail-page-image<br/>1080×12720 PNG"]
+    P2 --> P3["detail-page-image<br/>1080×1270 PNG"]
     P3 --> P4["ai-slop-reviewer<br/>카피 검수"]
     P4 --> P5["humanize-korean<br/>AI 티 제거"]
     P5 --> Out["산출물<br/>HTML·PNG·DOCX"]
@@ -89,7 +88,7 @@ flowchart TD
 ### 산출물
 
 - `90_Output/products/wireless-ear/detail.html` — 13섹션 HTML (Next.js + shadcn/ui)
-- `90_Output/products/wireless-ear/detail-1080x12720.png` — 단일 합성 이미지
+- `90_Output/products/wireless-ear/detail-1080x1270.png` — 단일 합성 이미지
 - `90_Output/products/wireless-ear/copy-personas.md` — 페르소나 2세트 비교
 
 ---
@@ -112,7 +111,7 @@ flowchart TD
 
 ### 자동 체인
 
-`commerce-season-calendar` → `commerce-promotion-planner` → `commerce-channel-message` (AARRR 5단계) → `commerce-marketing-compliance-kr` (정통망법 게이트) → `commerce-push-planner` → `ai-slop-reviewer`
+`commerce-season-calendar` → `commerce-promotion-planner` → `commerce-channel-message` (AARRR 5단계, 카톡·SMS·앱 푸시) → `commerce-marketing-compliance-kr` (정통망법 게이트) → `ai-slop-reviewer`
 
 ### 산출물
 
@@ -252,9 +251,9 @@ flowchart TD
 
 ## 자주 묻는 질문
 
-### Q. 35개 스킬을 다 외워야 하나요?
+### Q. 30개 스킬을 다 외워야 하나요?
 
-아니오. **사용자는 짧은 한 줄만 입력**하면 시스템이 자동으로 적절한 스킬을 선택해 체이닝합니다. 예: "재구매 메시지 짜줘" → 시스템이 `commerce-repurchase-timer + push-planner + compliance-kr`를 자동 호출.
+아니오. **사용자는 짧은 한 줄만 입력**하면 시스템이 자동으로 적절한 스킬을 선택해 체이닝합니다. 예: "재구매 메시지 짜줘" → 시스템이 `commerce-repurchase-timer + commerce-channel-message + commerce-marketing-compliance-kr`를 자동 호출.
 
 ### Q. 광고 영상 만들 때 비용이 걱정됩니다.
 
@@ -273,8 +272,8 @@ flowchart TD
 ## 다음 단계
 
 - **[사용 패턴 가이드](../../../cowork/patterns/)** — 4가지 표준 사용 패턴
-- **[moai-commerce 플러그인](../../../plugins/moai-commerce/)** — 35스킬 전체 카탈로그
-- **[moai-media 플러그인](../../../plugins/moai-media/)** — 광고 영상 풀세트 13스킬
+- **[moai-commerce 플러그인](../../../plugins/moai-commerce/)** — 30스킬 전체 카탈로그
+- **[moai-media 플러그인](../../../plugins/moai-media/)** — 이미지·영상 생성 미디어 6스킬
 - **[광고 트랙](../track-advertising/)** — 메타·구글 광고 진단·최적화
 - **[법무 트랙](../track-legal/)** — 표시광고법·정통망법 컴플라이언스
 

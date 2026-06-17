@@ -2,7 +2,7 @@
 
 [![License: NC-ND v1.0](https://img.shields.io/badge/License-NC--ND%20v1.0-red.svg)](LICENSE)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
-[![Version](https://img.shields.io/badge/Version-2.22.0-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-2.23.0-blue)](CHANGELOG.md)
 [![Plugins](https://img.shields.io/badge/Plugins-28-blue)](.claude-plugin/marketplace.json)
 [![Skills](https://img.shields.io/badge/Skills-177-green)](.claude-plugin/marketplace.json)
 [![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)
@@ -35,6 +35,17 @@
 
 ---
 
+**🆕 v2.23.0 하이라이트** (2026-06-17) — **"drawio-diagram 스킬 제거 — 다이어그램은 mermaid(인라인, 안정)로 단일화"**
+
+28 플러그인(유지), 178 → **177 스킬**, 동기화 2.23.0. 기능·인터페이스 Breaking change 없음. MINOR 릴리스. `drawio-diagram` 스킬의 `viewer-static.min.js` CDN 렌더링이 drawio XML마다 불안정(검증 21개 중 2개만 성공)하여 스킬 가치를 훼손하는 문제로 배포용 스킬에서 제거했습니다.
+
+- **`drawio-diagram` 스킬 제거 (moai-content)** — `viewer-static.min.js` CDN 렌더링이 drawio XML마다 불안정(검증 21개 중 2개만 성공)하여 스킬 가치를 훼손합니다. 배포용 스킬에서 제거하고 다이어그램은 **mermaid(인라인, 안정)**로 통일했습니다. docs-site 등 로컬 문서의 정교 도식은 **draw.io desktop CLI(로컬 전용)**로 SVG를 생성해 마크다운 이미지로 인라인 사용합니다(CLAUDE.local.md §10-6).
+- **`moai-tutor:learning-material` drawio 연동 제거** — ```drawio` 블록 지원을 제거하고 mermaid로 수렴했습니다. mermaid 도식 기능은 그대로 유지됩니다.
+
+기존 워크플로우·플러그인 그대로 동작(기능적 비파괴). `/plugin marketplace update cowork-plugins`로 적용.
+
+---
+
 **🆕 v2.22.0 하이라이트** (2026-06-16) — **"design-system-library 신규 — 56개 글로벌 브랜드 디자인 시스템 → Tailwind Play CDN + shadcn vanilla HTML"**
 
 28 플러그인(유지), 177 → **178 스킬**, 동기화 2.22.0. 기능·인터페이스 Breaking change 없음. MINOR 릴리스. HTML 보고서·랜딩·문서에 즉시 적용 가능한 브랜드 디자인 시스템 라이브러리를 추가했습니다.
@@ -51,10 +62,10 @@
 
 28 플러그인(유지), 173 → **177 스킬**, 동기화 2.21.0. 기능·인터페이스 Breaking change 없음. MINOR 릴리스. 콘텐츠·문서 작업의 도식 역량을 강화하고 한국적 정서 윤문 지식을 보강했습니다.
 
-- **`drawio-diagram` 신규 (moai-content)** — 자연어를 편집 가능한 `.drawio` + 단일 HTML(draw.io CDN 뷰어 `viewer-static.min.js`, Apache-2.0) 두 산출물로 렌더. 6 프리셋(erd·uml-class·sequence·architecture·ml-pipeline·flowchart). **CLI 설치 불필요**(브라우저 즉시 열람). mermaid로 부족한 정교한 셰이프·클라우드 아이콘·편집 가능 원본. [Agents365-ai/drawio-skill](https://github.com/Agents365-ai/drawio-skill)(MIT) 영감 → 자체 재구현(CLI 의존 제거).
+- **`drawio-diagram` 신규 (moai-content)** *(v2.23.0에서 제거됨 — CDN 렌더링 불안정)* — 당시 자연어를 편집 가능한 `.drawio` + 단일 HTML(draw.io CDN 뷰어 `viewer-static.min.js`, Apache-2.0) 두 산출물로 렌더하는 스킬로 도입됐으나, CDN 렌더링이 drawio XML마다 불안정(검증 21개 중 2개만 성공)하여 v2.23.0에서 배포용 스킬을 제거하고 다이어그램은 mermaid로 통일했습니다. 릴리스 이력으로 보존.
 - **`humanize-korean` 한국적 정서·결 K 카테고리 (taxonomy v2.1)** — 기존 A~J(음성·제거 축)에 **K(양성·지향 축)** 4종(K-1 정서온도·K-2 절제·곡언·K-3 구어 호흡·K-4 정서 아크) 추가. 본진 E-8(띄어쓰기 기계적 균일성)·E-7 보강(3단계 화계)·머리말 모델별 번역투 시그니처 힌트. Park & Han 2026 LREAD(arXiv:2601.19913)·translationese(arXiv:2602.16469) 학술 교차. **메트릭·테스트 무변경**(parity 안전).
 - **`/project` agent-aware 강화 (moai-core)** — `/project init`이 스킬뿐 아니라 **코디네이터 에이전트**까지 동적 스캔·체인 설계. 신규 `agent-catalog.md` SSOT + Phase 2 에이전트 인벤토리 + Phase 3 코디네이터 우선 + 기존 에이전트 우선(stale 정정).
-- **`moai-tutor:learning-material` drawio 연동** — ```drawio` 블록을 인식해 draw.io 뷰어를 조건부 임베드(`references/cdn-libraries.md` §6 신규). mermaid는 그대로 유지.
+- **`moai-tutor:learning-material` drawio 연동** *(v2.23.0에서 제거됨)* — ```drawio` 블록을 인식해 draw.io 뷰어를 조건부 임베드하는 연동이었으나, v2.23.0에서 drawio-diagram 제거와 함께 ```drawio` 블록 지원을 제거하고 mermaid로 수렴했습니다. 릴리스 이력으로 보존.
 
 기존 워크플로우·플러그인 그대로 동작. `/plugin marketplace update cowork-plugins`로 적용.
 
@@ -498,7 +509,7 @@ moai-commerce에 시장조사·JTBD·페르소나·상품명·채널 메시지·
 | 항목 | 수량 | 비고 |
 |------|:----:|------|
 | 플러그인 | **28** | moai-core + 27 도메인 플러그인 (moai-public-data·moai-tutor 포함) |
-| 스킬 | **177** | 전 SKILL.md `version: 2.22.0` 동기화 (Cowork 자동 업데이트 지원) |
+| 스킬 | **177** | 전 SKILL.md `version: 2.23.0` 동기화 (Cowork 자동 업데이트 지원) |
 | 코디네이터 서브에이전트 | **31** | 플러그인 번들 `agents/` — 24 플러그인, Cowork-safe(Bash·WebFetch 배제), 텍스트 체인 ai-slop→humanize 마감 |
 | 레퍼런스 파일 | **287** | 각 스킬의 `references/` 안 상세 가이드 |
 | 스크립트 | **13** | helper(`scripts/`) — Python·Node·Shell |
@@ -904,7 +915,7 @@ K-IFRS·KOSIS·DART 친화적 한국 통계 환경에서 5분 안에 의사결�
 
 **Anthropic 공식 스킬 가이드 준수**
 - 모든 **177개** 스킬에 [What]+[When]+[Triggers] 구조의 description 적용
-- 모든 SKILL.md frontmatter에 `version: 2.22.0` 동기화 (Cowork 자동 업데이트 감지)
+- 모든 SKILL.md frontmatter에 `version: 2.23.0` 동기화 (Cowork 자동 업데이트 감지)
 - Negative triggers로 불필요한 스킬 로딩 방지
 - 인라인 폴백과 에러 핸들링 내장
 
@@ -998,14 +1009,14 @@ K-IFRS·KOSIS·DART 친화적 한국 통계 환경에서 5분 안에 의사결�
 
 ### What is cowork-plugins?
 
-Anthropic Claude Code 한국어 사용자를 위한 도메인 전문가 플러그인 마켓플레이스입니다. 27개 플러그인과 173개 스킬로 구성되어 있으며 MIT 라이선스로 배포됩니다. 자연어 한 줄로 사업계획서·계약서 검토·세금 계산·PPT·NotebookLM 슬라이드·이미지/영상/음성·BI 보고서·HTML 리포트·한국 공공데이터 조회를 자동 생성합니다.
+Anthropic Claude Code 한국어 사용자를 위한 도메인 전문가 플러그인 마켓플레이스입니다. 28개 플러그인과 177개 스킬로 구성되어 있으며 NC-ND 1.0 라이선스로 배포됩니다. 자연어 한 줄로 사업계획서·계약서 검토·세금 계산·PPT·NotebookLM 슬라이드·이미지/영상/음성·BI 보고서·HTML 리포트·한국 공공데이터 조회를 자동 생성합니다.
 
-> *cowork-plugins is a third-party Korean B2B specialty plugin marketplace for Anthropic Claude Code, with 27 plugins and 173 skills under MIT license.*
+> *cowork-plugins is a third-party Korean B2B specialty plugin marketplace for Anthropic Claude Code, with 28 plugins and 177 skills under NC-ND 1.0 license.*
 
 ### Anthropic의 [knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins)와 무엇이 다른가요?
 
 - **anthropics/knowledge-work-plugins**: Anthropic 공식 11개 영문 일반 지식 노동 플러그인 (Productivity·Sales·Customer Support·PM·Marketing·Legal·Finance·Data·Enterprise Search·Bio Research·Cowork Plugin Management).
-- **modu-ai/cowork-plugins** (이 저장소): 한국 B2B 환경에 특화된 27개 플러그인·173개 스킬. 한국 법규(K-IFRS·국세청 표준양식·근로기준법·식약처·국토부·KRX·인터넷등기소), 한국 비즈니스 문화(WBR 주간보고·OKR·KPT 회고·한국 B2B 제안서 12섹션), 한국어 산출 문서(HWPX·Pretendard·조선일보명조·KoPubWorld 등 한글 폰트) 지원.
+- **modu-ai/cowork-plugins** (이 저장소): 한국 B2B 환경에 특화된 28개 플러그인·177개 스킬. 한국 법규(K-IFRS·국세청 표준양식·근로기준법·식약처·국토부·KRX·인터넷등기소), 한국 비즈니스 문화(WBR 주간보고·OKR·KPT 회고·한국 B2B 제안서 12섹션), 한국어 산출 문서(HWPX·Pretendard·조선일보명조·KoPubWorld 등 한글 폰트) 지원.
 
 두 저장소는 **상호 보완 관계**입니다. 영문권 일반 워크플로우는 `knowledge-work-plugins`, 한국 B2B 도메인 워크플로우는 `cowork-plugins`를 함께 설치해 사용할 수 있습니다.
 

@@ -41,7 +41,23 @@ sequenceDiagram
     Q-->>U: 최종 산출물 (한 그릇 완성)
 ```
 
-![track-marketing-workflow](/diagrams/track-marketing-workflow.svg)
+```mermaid
+flowchart LR
+    S1["① 사용자 입력<br/>한 줄 자연어 요청<br/>예: B2B SaaS 브랜드 리뉴얼안 만들어줘"]
+    S2["② 시스템 인터뷰<br/>AskUserQuestion으로<br/>맥락 3-4문항 수집<br/>(타깃 고객·산출물 형식·핵심 포인트)"]
+    S3["③ 스킬 체인 자동 실행"]
+    S4["④ 최종 산출물<br/>완성된 한 그릇<br/>(브랜드 아이덴티티 문서 +<br/>검수 완료된 원고)"]
+
+    S1 --> S2 --> S3 --> S4
+
+    subgraph chain["스킬 체인"]
+        direction LR
+        C1["brand-identity<br/>(브랜드 설계)"]
+        C2["docx-generator<br/>(문서 저장)"]
+        C3["ai-slop-reviewer<br/>(AI 티 검수 · 품질)"]
+        C1 --> C2 --> C3
+    end
+```
 
 ## 트랙 지도
 
@@ -269,7 +285,7 @@ flowchart LR
 
 ### 이미지 생성 비용
 
-카드뉴스 10장 × 3세트 = 30장. Nano Banana는 장당 약 2-3초 + 토큰 소요. 시스템이 자동으로 배치 병렬 생성으로 속도 절감합니다.
+카드뉴스 10장 × 3세트 = 30장. `higgsfield-image`로 생성하며 장당 수 초 + 토큰이 소요됩니다. 시스템이 자동으로 배치 병렬 생성으로 속도 절감합니다.
 
 ### 채널별 분량 규정 위반
 
@@ -281,10 +297,9 @@ flowchart LR
 
 ## 다음 읽을거리
 
-- [트랙 — 데이터](./tracks/track-data/)
-- [트랙 — 문서](./tracks/track-documents/)
-- [AI 사원 실습 2](./ai-employee-lab-2/)
-- [블로그 파이프라인](./blog-pipeline/)
+- [트랙 — 데이터](../track-data/)
+- [트랙 — 문서](../track-documents/)
+- [블로그 파이프라인](../blog-pipeline/)
 
 ---
 

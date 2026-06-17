@@ -14,9 +14,9 @@ tags: ["moai-marketing"]
 
 `moai-marketing`는 브랜드 아이덴티티 설계부터 SEO 감사, 이메일 드립 캠페인, GA4·메타·카카오모먼트 통합 ROAS 분석, 메타 광고관리자 `.xlsx` 보고서 audit까지 마케팅 실무 전 주기를 커버하는 플러그인입니다. 네이버·구글·생성형 검색(GEO)을 모두 포함한 한국 시장 SEO 감사, 정보통신망법을 준수하는 이메일 시퀀스 설계, 한국 시장 7 변화 영역(벤치마크·8 산업·5 규제·표현·출력·분석 차원·사용자 그룹) 특화 audit 등 국내 규제·채널 특성을 반영합니다.
 
-**신규** — 메타 광고관리자 `.xlsx` 보고서 1-6개 업로드 → 9 분석 모듈(퍼널·KPI·차원·매트릭스·누수·라이프사이클·학습·예산·시뮬) + 4D 교차(광고×지면×연령×성별) + 3 사용자 그룹 톤(명시 입력) + 4 출력 형식(HTML/DOCX/PPTX/MD) + 🟢🟡🔴 강도별 액션 옵션(`meta-ads-analyzer`)을 추가했습니다. 동시에 `mcp-servers/moai-ads-audit/` 자체 MCP 서버(Python uvx, MIT)를 신규 출시 — [agricidaniel/claude-ads](https://github.com/AgriciDaniel/claude-ads) v1.5.1 (MIT, 4,815 stars) 방법론을 한국 시장에 맞춰 차용한 50-check audit + 가중치 스코어링 + 한국 벤치마크 8 카테고리 + 5 규제 컴플라이언스를 제공합니다.
+`meta-ads-analyzer`는 메타 광고관리자 `.xlsx` 보고서 1-6개 업로드 한 번으로 9 분석 모듈(퍼널·KPI·차원·매트릭스·누수·라이프사이클·학습·예산·시뮬) + 4D 교차(광고×지면×연령×성별) + 3 사용자 그룹 톤(명시 입력) + 4 출력 형식(HTML/DOCX/PPTX/MD) + 🟢🟡🔴 강도별 액션 옵션을 한 번에 뽑아냅니다. 이와 함께 자체 MCP 서버 `mcp-servers/moai-ads-audit/`(Python uvx, MIT)가 동봉되어 — [agricidaniel/claude-ads](https://github.com/AgriciDaniel/claude-ads) v1.5.1 (MIT, 4,815 stars) 방법론을 한국 시장에 맞춰 차용한 50-check audit + 가중치 스코어링 + 한국 벤치마크 8 카테고리 + 5 규제 컴플라이언스를 제공합니다.
 
-**신규** — 광고 심리학 완전판(9 인지편향·6 방아쇠·PAS·후크 6종)을 `campaign-planner`에 통합하고, 랜딩 페이지 CTR/CVR 분기·불안해소 처방(`landing-page-conversion-audit`)과 메타·구글 픽셀·CAPI·Lookalike 씨앗 품질 검증(`pixel-audit`)을 신규 추가했습니다.
+`campaign-planner`에는 광고 심리학 완전판(9 인지편향·6 방아쇠·PAS·후크 6종)이 통합되어 있고, 랜딩 페이지 CTR/CVR 분기·불안해소 처방은 `landing-page-conversion-audit`, 메타·구글 픽셀·CAPI·Lookalike 씨앗 품질 검증은 `pixel-audit`가 담당합니다.
 
 ## 설치
 
@@ -84,20 +84,20 @@ flowchart LR
 
 ## 핵심 스킬 (12개)
 
-| 스킬 | 용도 | 신규 |
-|---|---|---|
-| `brand-identity` | 네이밍·슬로건·톤앤매너·비주얼 가이드 | — |
-| `personal-branding` | 전문가 포지셔닝, 링크드인·브런치·유튜브 전략 | — |
-| `sns-content` | 인스타·네이버 블로그·카카오 브랜드 보이스 콘텐츠 + 글로벌 4채널(스레드·X·링크드인·유튜브쇼츠) + 채널별 심리 상태 매트릭스 | — |
-| `campaign-planner` | 마케팅 캠페인·그로스해킹·인플루언서 + 광고 심리학 완전판(성과 공식·3 동기·6 방아쇠·9 편향·PAS·후크 6종·영상 30초·타겟 온도×3동기 매트릭스·CAC/LTV·단계별 예산 배분) | — |
-| `seo-audit` | 네이버·구글·AI(GEO) 통합 SEO 감사 | — |
-| `email-sequence` | 정보통신망법 준수 드립 캠페인·온보딩 시퀀스 | — |
-| `performance-report` | GA4·네이버·메타·카카오모먼트 채널별 ROAS 분석 | — |
-| `target-script` | 타깃 고객 스크립트, 맞춤형 메시지, 세그먼트별 콘텐츠 | — |
-| `landing-page-conversion-audit` | 랜딩 페이지 6섹션 진단(히어로·공감·증명·사회증거·CTA·FAQ) + CTR/CVR 분기 + 불안해소·메시지 일치 처방 | 신규 |
-| `pixel-audit` | 메타·구글 픽셀 + CAPI + Lookalike 씨앗 품질 검증 (VIP 상위 20% 권장) + 1st Party 데이터 진단 | 신규 |
-| `meta-ads-analyzer` | 메타 광고관리자 `.xlsx` 보고서 1-6개 → 9 분석 모듈 + 4D 교차(광고×지면×연령×성별) + 3 사용자 그룹 톤(명시 입력) + 4 출력 형식(HTML/DOCX/PPTX/MD) + 🟢🟡🔴 강도별 액션 옵션. claude-ads v1.5.1 (MIT) 50-check 한국 매핑 | 신규 |
-| `meta-ads-manager` | Meta 공식 **Ads AI Connectors**(OAuth 커넥터)에 연결해 캠페인·광고세트·광고를 자연어로 **직접 생성·수정·예산조정·온오프**. 신규 리소스 PAUSED 기본 + 쓰기 동작 사용자 승인. 보고서 분석은 `meta-ads-analyzer`와 페어 분리 | 신규 |
+| 스킬 | 용도 |
+|---|---|
+| `brand-identity` | 네이밍·슬로건·톤앤매너·비주얼 가이드 |
+| `personal-branding` | 전문가 포지셔닝, 링크드인·브런치·유튜브 전략 |
+| `sns-content` | 인스타·네이버 블로그·카카오 브랜드 보이스 콘텐츠 + 글로벌 4채널(스레드·X·링크드인·유튜브쇼츠) + 채널별 심리 상태 매트릭스 |
+| `campaign-planner` | 마케팅 캠페인·그로스해킹·인플루언서 + 광고 심리학 완전판(성과 공식·3 동기·6 방아쇠·9 편향·PAS·후크 6종·영상 30초·타겟 온도×3동기 매트릭스·CAC/LTV·단계별 예산 배분) |
+| `seo-audit` | 네이버·구글·AI(GEO) 통합 SEO 감사 |
+| `email-sequence` | 정보통신망법 준수 드립 캠페인·온보딩 시퀀스 |
+| `performance-report` | GA4·네이버·메타·카카오모먼트 채널별 ROAS 분석 |
+| `target-script` | 타깃 고객 스크립트, 맞춤형 메시지, 세그먼트별 콘텐츠 |
+| `landing-page-conversion-audit` | 랜딩 페이지 6섹션 진단(히어로·공감·증명·사회증거·CTA·FAQ) + CTR/CVR 분기 + 불안해소·메시지 일치 처방 |
+| `pixel-audit` | 메타·구글 픽셀 + CAPI + Lookalike 씨앗 품질 검증 (VIP 상위 20% 권장) + 1st Party 데이터 진단 |
+| `meta-ads-analyzer` | 메타 광고관리자 `.xlsx` 보고서 1-6개 → 9 분석 모듈 + 4D 교차(광고×지면×연령×성별) + 3 사용자 그룹 톤(명시 입력) + 4 출력 형식(HTML/DOCX/PPTX/MD) + 🟢🟡🔴 강도별 액션 옵션. claude-ads v1.5.1 (MIT) 50-check 한국 매핑 |
+| `meta-ads-manager` | Meta 공식 **Ads AI Connectors**(OAuth 커넥터)에 연결해 캠페인·광고세트·광고를 자연어로 **직접 생성·수정·예산조정·온오프**. 신규 리소스 PAUSED 기본 + 쓰기 동작 사용자 승인. 보고서 분석은 `meta-ads-analyzer`와 페어 분리 |
 
 ## MCP 서버 인프라
 
@@ -153,7 +153,7 @@ flowchart TD
 **브랜드 런칭 세트**
 
 ```text
-brand-identity → personal-branding (선택) → copywriting → ai-slop-reviewer
+brand-identity → personal-branding (선택) → moai-content:copywriting → ai-slop-reviewer
 ```
 
 **광고 캠페인**
@@ -223,7 +223,7 @@ meta-ads-manager (OAuth 커넥터 연결 → 캠페인·광고세트 생성, 신
 **SEO 리뉴얼**
 
 ```text
-seo-audit → blog(재작성) → ai-slop-reviewer
+seo-audit → moai-content:blog(재작성) → ai-slop-reviewer
 ```
 
 **월간 성과 보고서**
@@ -232,7 +232,7 @@ seo-audit → blog(재작성) → ai-slop-reviewer
 performance-report → xlsx-creator → docx-generator
 ```
 
-### 신규 스킬 — `target-script` (타깃 스크립트)
+### `target-script` (타깃 스크립트)
 
 #### 언제 쓰나요
 

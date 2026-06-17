@@ -83,7 +83,7 @@ Claude Desktop에서 설정에 접근하는 방법:
 
 ## 스킬 (Skills)
 
-스킬은 **재사용 가능한 프롬프트 템플릿**입니다. `/`로 시작하는 슬래시 명령으로 호출합니다.
+스킬은 **재사용 가능한 절차적 지침 묶음**입니다. `/`로 시작하는 슬래시 명령으로 호출하며, 특정 작업(문서 작성, 콘텐츠 제작, 오피스 산출물 생성 등)을 단계별로 수행합니다.
 
 ### 스킬 마켓플레이스
 
@@ -96,22 +96,24 @@ Claude Desktop에서 설정에 접근하는 방법:
 
 {{< terminal title="claude — cowork (스킬 호출 예시)" >}}
 > /blog
-> /summarize
-> /refactor
+> /newsletter
+> /landing-page
 {{< /terminal >}}
 
 - `/blog` — 블로그 글 작성 스킬
-- `/summarize` — 문서 요약 스킬
-- `/refactor` — 코드 리팩토링 스킬
+- `/newsletter` — 뉴스레터 기획·작성 스킬
+- `/landing-page` — 랜딩 페이지 제작 스킬
 
 ### 인기 스킬 카테고리
 
 | 카테고리 | 예시 |
 |---|---|
-| **문서 생성** | `/blog`, `/docx`, `/pptx` |
-| **코드 작업** | `/refactor`, `/test`, `/review` |
-| **데이터 처리** | `/analyze`, `/chart`, `/report` |
-| **워크플로우** | `/project`, `/deploy`, `/release` |
+| **문서 생성** | `/blog`, `/docx-generator`, `/pptx-designer` |
+| **콘텐츠 제작** | `/newsletter`, `/card-news`, `/social-media` |
+| **오피스 산출물** | `/xlsx-creator`, `/hwpx-writer`, `/pdf-writer` |
+| **프로젝트** | `/project` |
+
+> 위 예시는 cowork-plugins 마켓플레이스에 실제로 배포된 스킬 이름입니다. 설치한 스킬에 따라 호출 가능한 명령이 달라지며, `/` 입력 시 자동완성 목록에서 확인할 수 있습니다.
 
 ## 커넥터 (Connectors)
 
@@ -171,21 +173,11 @@ Settings > Cowork에서 관리:
 - **Allow**: 묻지 않고 허용
 - **Deny**: 묻지 않고 거부
 
-### 프로젝트별 권한
+### 권한 변경 관리
 
-`.claude/settings.json`에서 프로젝트별 권한 설정:
+Cowork 앱에서 권한을 변경한 뒤에는 다음 세션부터 즉시 반영됩니다. 자주 묻는 권한 팝업을 줄이려면 Settings > Cowork > Permissions에서 해당 카테고리를 **Allow**로 변경하세요.
 
-```json
-{
-  "permissions": {
-    "allow": {
-      "bash": ["npm test", "go build"],
-      "fileAccess": ["src/", "tests/"],
-      "network": ["api.github.com"]
-    }
-  }
-}
-```
+> **참고**: Claude Code CLI(`claude` 명령줄) 환경에서는 프로젝트 루트의 `.claude/settings.json` 파일로 동일한 권한을 코드 형태로 관리할 수 있습니다. 이 파일 방식은 CLI 전용이며 Cowork 앱 UI와는 별개입니다.
 
 ## 고급 설정
 
@@ -236,5 +228,10 @@ Settings > Advanced:
 
 - [Get started with Claude Cowork | Claude Help Center](https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork)
 - [Install and configure Claude Cowork with third-party platforms | Claude Help Center](https://support.claude.com/en/articles/14680741-install-and-configure-claude-cowork-with-third-party-platforms)
-- [Claude Cowork Guide - Complete Tutorial & Features](https://claudecowork.im/)
-- [The Actual Guide to Setting Up Claude Cowork | Reddit](https://www.reddit.com/r/ClaudeCode/comments/1roa5bu/the_actual_guide_to_setting_up_claude_cowork/?tl=ko)
+
+### 커뮤니티 참고자료 (비공식)
+
+아래는 Anthropic 공식 문서가 아니며, 커뮤니티에서 작성한 참고자료입니다. 내용의 정확성은 보장되지 않으므로 공식 문서를 우선 참고하세요.
+
+- [Claude Cowork Guide - Complete Tutorial & Features (비공식)](https://claudecowork.im/)
+- [The Actual Guide to Setting Up Claude Cowork | Reddit (커뮤니티 게시물)](https://www.reddit.com/r/ClaudeCode/comments/1roa5bu/the_actual_guide_to_setting_up_claude_cowork/?tl=ko)

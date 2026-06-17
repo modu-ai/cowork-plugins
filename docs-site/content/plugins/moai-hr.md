@@ -14,8 +14,10 @@ tags: ["moai-hr"]
 flowchart TD
     A["employment-manager<br/>JD·면접·온보딩"] --> B["draft-offer<br/>근로계약서"]
     C["performance-review<br/>성과평가·OKR"] --> D["people-operations<br/>원격근무 정책"]
+    E["resume-screener<br/>NCS 이력서 평가"]
     style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
     style D fill:#e6f0ef,stroke:#144a46,color:#09110f
+    style E fill:#eaeaea,stroke:#6e6e6e,color:#09110f
 ```
 
 ## 무엇을 하는 플러그인인가
@@ -49,6 +51,7 @@ flowchart TD
 | `draft-offer` | 채용 제안서·근로계약서 (연봉·4대보험·스톡옵션) |
 | `performance-review` | MBO·OKR·KPI, 360도 평가, 피드백 면담 스크립트 |
 | `people-operations` | 원격·하이브리드 근무 정책, 협업 도구, 직원 경험 |
+| `resume-screener` | NCS 기반 이력서·자기소개서 적합성 평가, 보호 정보 마스킹 |
 
 ## 한국 실무 반영
 

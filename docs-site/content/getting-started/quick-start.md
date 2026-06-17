@@ -19,21 +19,28 @@ geekdocBreadcrumb: true
 
 ```mermaid
 flowchart LR
-    A["① 마켓플레이스<br/>등록"] --> B["② moai-core<br/>설치"]
-    B --> C["③ 도메인<br/>플러그인 선택"]
-    C --> D["④ 프로젝트<br/>+ /project init"]
-    D --> E["⑤ 한 줄<br/>주문"]
-    E --> F["⑥ 산출물<br/>도착"]
+    subgraph PREP["한 번만 준비 (①-④)"]
+        direction LR
+        S1["① 마켓플레이스<br/>등록"]
+        S2["② moai-core<br/>설치"]
+        S3["③ 도메인<br/>플러그인 선택"]
+        S4["④ 프로젝트<br/>+ /project init"]
+        S1 --> S2 --> S3 --> S4
+    end
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style D fill:#dceee9,stroke:#2a8a8c,color:#09110f
-    style E fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style F fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+    subgraph REPEAT["매번 반복 (⑤-⑥)"]
+        direction TB
+        S5["⑤ 한 줄<br/>주문"]
+        S6["⑥ 산출물<br/>도착"]
+        S5 --> S6
+        S6 -. "다음 주문" .-> S5
+    end
+
+    S4 ==>|핵심 전환| S5
+
+    classDef highlight fill:#D97757,stroke:#B85C3E,color:#FFFFFF,font-weight:bold
+    class S2,S5 highlight
 ```
-
-![quick-start-journey](/diagrams/quick-start-journey.svg)
 
 ## 전체 흐름
 
@@ -57,7 +64,7 @@ flowchart TD
 
 아래 1-3단계로 넘어가기 전에 처음 만나는 용어 네 개를 스마트폰에 빗대어 잡아둡니다. **마켓플레이스**는 앱 스토어(플레이스토어·앱스토어)처럼 "설치할 수 있는 앱 목록이 모여 있는 곳"입니다. **플러그인**은 그 스토어에서 하나하나 다운로드하는 앱 한 개입니다 — 사진 편집 앱, 배달 앱처럼 각자 쓰임이 정해져 있습니다. 여기서 **moai-core**는 운영체제(iOS·안드로이드) 같은 기반입니다. 운영체제 없이 앱이 켜지지 않듯, `moai-core` 없이는 다른 플러그인의 핵심 기능인 `/project init` 마법사와 `ai-slop-reviewer` 검수가 작동하지 않습니다. 그래서 반드시 `moai-core`를 먼저 설치합니다.
 
-**도메인 플러그인**은 일을 분야별로 묶어 둔 앱 묶음입니다(비즈니스 묶음, 콘텐츠 묶음, 법무 묶음 등). 사진 편집을 안 한다면 그 앱은 내려받지 않아도 되듯, 21개 플러그인 중 지금 진행할 작업에 맞는 것만 골라 설치하면 됩니다. 토큰이란 컴퓨터가 한 번에 읽는 텍스트 분량의 단위인데, 설치를 최소한으로 유지하면 대화창이 한 번에 읽어야 할 분량도 줄어들어 반응이 가벼워집니다.
+**도메인 플러그인**은 일을 분야별로 묶어 둔 앱 묶음입니다(비즈니스 묶음, 콘텐츠 묶음, 법무 묶음 등). 사진 편집을 안 한다면 그 앱은 내려받지 않아도 되듯, 28개 플러그인 중 지금 진행할 작업에 맞는 것만 골라 설치하면 됩니다. 토큰이란 컴퓨터가 한 번에 읽는 텍스트 분량의 단위인데, 설치를 최소한으로 유지하면 대화창이 한 번에 읽어야 할 분량도 줄어들어 반응이 가벼워집니다.
 
 ```mermaid
 flowchart TD
@@ -77,13 +84,13 @@ flowchart TD
 
 1. **마켓플레이스 등록**
 
-   Cowork **좌측 사이드바 → 사용자 지정(Customize) → 개인 플러그인 → 플러그인 추가 → 마켓플이스 추가**에서 다음 URL을 입력합니다.
+   Cowork **좌측 사이드바 → 사용자 지정(Customize) → 개인 플러그인 → 플러그인 추가 → 마켓플레이스 추가**에서 다음 URL을 입력합니다.
 
    {{< terminal title="claude — cowork" >}}
 > modu-ai/cowork-plugins
    {{< /terminal >}}
 
-   동기화가 끝나면 21개 플러그인 목록이 표시됩니다.
+   동기화가 끝나면 28개 플러그인 목록이 표시됩니다.
 
 2. **`moai-core` 설치**
 
@@ -102,7 +109,7 @@ flowchart TD
    - 계약서 검토 → `moai-legal`, `moai-office`
    - 이미지 생성 → `moai-media` (+ `GEMINI_API_KEY` 필요)
 
-   21개 모두를 한 번에 설치할 필요는 없습니다.
+   28개 모두를 한 번에 설치할 필요는 없습니다.
 
 ## `/project init`이 하는 일 — 점원이 주문을 받아 주방까지 전달
 
@@ -239,11 +246,13 @@ flowchart LR
 - **Word·PPT 파일이 깨질 때**: `moai-office`가 설치돼 있는지, Python 의존성(`python-docx`, `python-hwpx` 등)이 갖춰졌는지 확인합니다.
 - **AI 슬롭 검수가 실행되지 않을 때**: 요청에 "빠르게"라는 표현이 포함되면 검수가 스킵될 수 있습니다. "검수까지 돌려줘"라고 명시하세요.
 
-## 주요 스킬 카탈로그 (129개)
+## 주요 스킬 카탈로그 (177개)
+
+아래는 28개 플러그인에 담긴 177개 스킬 중 자주 쓰이는 **대표 스킬**만 뽑은 것입니다. 전체 목록은 [플러그인 카탈로그](../../plugins/) 각 페이지에서 확인할 수 있습니다.
 
 ### moai-core (핵심 유틸리티)
 - **ai-slop-reviewer**: 모든 텍스트 산출물의 AI 패턴 검수 및 개선
-- **project**: 프로젝트 초기화 및 문서 생성
+- **project**: 프로젝트 초기화 및 문서 생성 (`/project init`)
 - **feedback**: 사용자 피드백 수집 및 GitHub 이슈 생성
 
 ### moai-content (콘텐츠 생성)
@@ -253,7 +262,14 @@ flowchart LR
 - **landing-page**: 랜딩 페이지 생성
 - **newsletter**: 뉴스레터 생성
 - **product-detail**: 제품 상세페이지 작성
+- **detail-page-planner**: 상세페이지 기획
 - **social-media**: SNS 콘텐츠 생성
+- **content-calendar**: 콘텐츠 캘린더 기획
+- **media-production**: 미디어 제품 기획
+- **youtube-podcast-planner**: 유튜브·팟캐스트 기획
+- **html-report**: 단일 파일 HTML 리포트 생성
+- **humanize-korean**: 한국어 AI 티 제거 (윤문 후처리)
+- **korean-spell-check**: 한국어 맞춤법 검사
 
 ### moai-business (비즈니스)
 - **daily-briefing**: 일간 브리핑 생성
@@ -297,12 +313,16 @@ flowchart LR
 - **research-assistant**: 연구 보조
 
 ### moai-media (미디어)
-- **image-gen**: 이미지 생성
-- **video-gen**: 비디오 생성
 - **higgsfield-image**: 이미지 생성 (Nano Banana Pro)
+- **higgsfield-video**: 영상 생성
+- **audio-gen**: 음성 생성 (ElevenLabs)
+- **gpt-image-2-prompt** / **gemini-3-image-prompt** / **midjourney-v8-prompt**: 이미지 프롬프트 빌더 3종
 
-### moai-product (제품)
-- **ux-designer**: UX 디자인
+### 그 밖의 도메인 플러그인
+- **moai-design**: `design-system-library`, Claude Design 연동 스킬군
+- **moai-book**: 책 기획·집필 8종 (`book-concept-planner`, `book-chapter-writer` 등)
+- **moai-tutor**: 학습자 전용 3종 (`learning-project`, `tutor-research`, `learning-material`)
+- **moai-product** (`ux-designer`), **moai-research**, **moai-commerce**, **moai-sales**, **moai-bi**, **moai-pm**, **moai-hr**, **moai-operations**, **moai-support**, **moai-career**, **moai-lifestyle**, **moai-wealth**, **moai-public-data**, **moai-comms**, **moai-productivity** 등
 
 ## 다음 단계
 

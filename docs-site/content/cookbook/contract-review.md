@@ -55,7 +55,34 @@ sequenceDiagram
     A-->>U: 결재용 요약 (두 길 합류)
 ```
 
-![contract-review-workflow](/diagrams/contract-review-workflow.svg)
+```mermaid
+flowchart TD
+    IN["사용자 한 줄 요청<br/>'첨부 계약서 검토해줘'<br/>(PDF / HWPX / DOCX + 맥락 5문항)"]
+    TRI["nda-triage<br/>(계약서 분류)"]
+    DEC{"NDA?"}
+
+    subgraph FAST["빠른 길 (NDA triage)"]
+        F1["nda-triage<br/>리스크 항목 빠르게 추출"]
+        F2["위험도 점수화 (가벼움)"]
+    end
+
+    subgraph FULL["긴 길 (일반 계약서 전체 검토)"]
+        U1["contract-review<br/>조항별 분석"]
+        U2["legal-risk<br/>발생가능성 × 영향도"]
+        U3["compliance-check<br/>규제 검증"]
+        U4["조문·판례 레퍼런스 매칭"]
+    end
+
+    MAT["2×2 리스크 매트릭스<br/>가로: 일어날 가능성 / 세로: 피해 규모<br/>고위험 상위 3 → 협상 포인트 자동 선정"]
+    DOCX["docx-generator<br/>수정본 DOCX (추적 변경 표)"]
+    AI["ai-slop-reviewer<br/>어투 정리 (결재용 다듬기)"]
+    SUM["결재용 1페이지 요약<br/>핵심 리스크 3 + 권장 액션 + 승인 사항"]
+
+    IN --> TRI --> DEC
+    DEC -- "예 (빠른 길)" --> F1 --> F2 --> MAT
+    DEC -- "아니오 (긴 길)" --> U1 --> U2 --> U3 --> U4 --> MAT
+    MAT --> DOCX --> AI --> SUM
+```
 
 {{< hint type="danger" >}}
 **법률 자문의 최종 결정은 반드시 변호사가 해야 합니다.** 이 파이프라인은 초안·1차 스크리닝·협상 포인트 정리용입니다. [Cowork 안전 사용](../../cowork/safety/) 참고.

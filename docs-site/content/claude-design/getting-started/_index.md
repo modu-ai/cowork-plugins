@@ -1,7 +1,7 @@
 ---
 title: "시작하기"
 weight: 10
-description: "claude.ai/design 접근부터 첫 프로젝트 생성까지. 입력 4종, 첫 프롬프트 6요소, Hello World 예시 5종, 처음 30분 워크플로우를 정리합니다."
+description: "claude.ai/design 접근부터 첫 프로젝트 생성까지. 입력 4종, 첫 프롬프트 6요소, Hello World 예시 6종, 처음 30분 워크플로우를 정리합니다."
 geekdocBreadcrumb: true
 ---
 > Claude Design은 "디자인 도구를 켜기 전" 단계에 머릿속 아이디어를 화면에 띄우는 도구입니다. 이 페이지는 처음 30분 안에 첫 결과물을 받아 보는 것을 목표로 합니다.
@@ -94,7 +94,7 @@ Reference:   linear.app/pricing, stripe.com/pricing 톤
 Constraints: 데스크톱 우선, 디자인 시스템은 기존 React 컴포넌트, 결제 정보 입력 X
 ```
 
-## Hello World 예시 5종
+## Hello World 예시 6종
 
 복사해 그대로 써 보세요. 디자인 시스템을 아직 셋업하지 않았어도 작동합니다.
 

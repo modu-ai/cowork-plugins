@@ -1,6 +1,6 @@
 ---
 title: "클로드 디자인"
-weight: 25
+weight: 1
 description: "claude.ai/design에서 Claude와 함께 프로토타입·슬라이드·랜딩페이지를 만드는 공식 비주얼 도구. 9개 페이지로 정리한 한국어 진입점."
 geekdocBreadcrumb: true
 geekdocCollapseSection: false
@@ -61,7 +61,7 @@ flowchart TD
 |---|---|
 | 출시 | 2026-04-17, Anthropic Labs |
 | 진입 URL | [claude.ai/design](https://claude.ai/design) (웹 전용) |
-| 베이스 모델 | Claude Opus 4.7 (비전 기반) |
+| 베이스 모델 | Claude Opus 4.7 이상 (비전 기반) |
 | 상태 | Research Preview (점진 롤아웃) |
 | 요금제 | Pro · Max · Team · Enterprise |
 | Enterprise 기본값 | OFF — 관리자가 Anthropic Labs 설정에서 활성화 |
@@ -151,17 +151,44 @@ flowchart LR
     style CW fill:#dceee9,stroke:#2a8a8c,color:#09110f
 ```
 
-![claude-design-three-tools](/diagrams/claude-design-three-tools.svg)
+```mermaid
+flowchart LR
+    IDEA["아이디어<br/>텍스트 · 이미지 · 문서"]
+    DESIGN["Claude Design<br/>(설계 사무소)<br/><br/>시안을 만든다 — 비전 중심"]
+    CODE["Claude Code<br/>(시공사)<br/><br/>시안을 코드로 짓는다"]
+    PRODUCT["완성물<br/>프로덕션 빌드"]
+    COWORK["Cowork + MoAI 플러그인<br/>(운영 · 자동화 담당)<br/><br/>UX 카피 · 접근성 검사 · 디자인 비평 · 반복 문서 · 발행 자동화"]
+
+    IDEA --> DESIGN
+    DESIGN -->|"시안 + 핸드오프 번들"| CODE
+    CODE --> PRODUCT
+
+    COWORK -.->|"보조"| DESIGN
+    COWORK -.->|"보조"| CODE
+
+    classDef ideaNode fill:#EAEAEA,stroke:#6E6E6E,color:#141413
+    classDef designNode fill:#FBF0DC,stroke:#C47B2A,stroke-width:3px,color:#141413
+    classDef codeNode fill:#E6F0EF,stroke:#144A46,stroke-width:2px,color:#141413
+    classDef productNode fill:#D6EBE7,stroke:#1C7C70,color:#141413
+    classDef coworkNode fill:#DCEEE9,stroke:#2A8A8C,stroke-width:2px,color:#141413
+
+    class IDEA ideaNode
+    class DESIGN designNode
+    class CODE codeNode
+    class PRODUCT productNode
+    class COWORK coworkNode
+```
 
 자세한 동선은 [내보내기와 핸드오프](export-handoff/)·[역할별 사용 사례](use-cases/) 페이지에서.
 
 ## 보조 플러그인 — `moai-design`
 
-이 섹션의 운영 원칙·베스트 프랙티스를 자동화한 [`moai-design`](../plugins/moai-design/) 플러그인이 v2.12.0부터 마켓플레이스에 정식 등록되어 있습니다. Cowork에서 자연어로 호출하면 AskUserQuestion으로 정보를 모은 뒤 claude.ai/design 채팅에 그대로 붙여 넣을 수 있는 산출물을 만들어 줍니다.
+이 섹션의 운영 원칙·베스트 프랙티스를 자동화한 [`moai-design`](../plugins/moai-design/) 플러그인이 마켓플레이스에 정식 등록되어 있습니다(6개 스킬). Cowork에서 자연어로 호출하면 AskUserQuestion으로 정보를 모은 뒤 claude.ai/design 채팅에 그대로 붙여 넣을 수 있는 산출물을 만들어 줍니다.
 
 | 단계 | 스킬 | 결과물 |
 |---|---|---|
 | 디자인 시스템 셋업 | `claude-design-system-prep` | DESIGN.md + 자산 정리 |
+| 디자인 시스템 소스 | `design-system-library` | 56개 글로벌 브랜드 디자인 시스템 → Tailwind Play CDN + shadcn |
 | 시안 작성 | `claude-design-brief` | 6요소 복붙용 프롬프트 |
 | 특정 영역 | `claude-design-prompt-builder` | 시니어 UX 10 패턴 프롬프트 |
 | 결과 검수 | `claude-design-slop-check` | AI 슬롭 검수 + 수정안 |
