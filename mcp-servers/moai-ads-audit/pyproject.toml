@@ -27,6 +27,11 @@ dependencies = [
     "pydantic>=2.0.0",
     # .xlsx 보고서 파싱 (openpyxl 단독, pandas 의존성 금지)
     "openpyxl>=3.1.0",
+    # 보안 constraints — mcp SDK transitive 의존성의 취약 버전 하한선(Dependabot alerts fix)
+    "PyJWT>=2.13.0",
+    "cryptography>=48.0.1",
+    "python-multipart>=0.0.31",
+    "starlette>=1.3.1",
 ]
 
 [project.optional-dependencies]

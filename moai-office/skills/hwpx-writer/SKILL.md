@@ -13,7 +13,7 @@ description: |
   한컴오피스(아래아한글) 호환 표준 양식을 따르며, 한컴이 없는 환경이면 워드(.docx) 생성으로 대체할 수 있습니다.
   [책임 경계] vs moai-office:docx-generator: 이 스킬=한컴 .hwpx 한글 파일, 저 스킬=MS 워드 .docx 파일.
 user-invocable: true
-version: 2.24.0
+version: 2.24.1
 ---
 
 # 한글 문서 작성자 (HWPX Writer)

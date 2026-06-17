@@ -13,7 +13,7 @@ description: |
   design-system-library 56개 브랜드 토큰 중 테마를 골라 적용하고, 각 토큰별 getdesign.md 상세 페이지 링크로 미리보기를 제공합니다.
   [책임 경계] vs moai-office:pptx-designer: 이 스킬=브라우저에서 바로 열리는 단일 .html 슬라이드 덱(편집 가능 .pptx는 pptx-designer 체이닝으로 산출). vs moai-office:notebooklm-slide-prompt: 저 스킬=NotebookLM 입력용 프롬프트(파일 생성 없음). vs moai-content:html-report: 저 스킬=연속 스크롤 문서/보고서(슬라이드 덱이 아님).
 user-invocable: true
-version: 2.24.0
+version: 2.24.1
 ---
 
 # html-slide — 단일 파일 HTML 슬라이드 덱 생성기

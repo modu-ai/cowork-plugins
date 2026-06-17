@@ -12,7 +12,7 @@ description: |
   - "이 분야 출원인별 경쟁 현황 정리해줘"
   특허 목록·핵심 청구항 요약·IPC 분류별 분포를 정리하고, 선행기술 조사·FTO·출원서가 필요하면 moai-research:patent-analyzer로 이어집니다.
 user-invocable: true
-version: 2.24.0
+version: 2.24.1
 ---
 
 # 특허 검색 (Patent Search)

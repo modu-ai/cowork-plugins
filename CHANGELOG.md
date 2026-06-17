@@ -14,6 +14,17 @@
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
 
+## [2.24.1] - 2026-06-17
+
+PATCH. **보안 의존성 fix + docs-site 정리**. moai-ads-audit MCP 서버의 Python transitive 의존성 취약점(Dependabot 15 alerts) 해소 — pyproject.toml에 보안 constraints 추가 + uv.lock 갱신(4패키지 fix 버전). docs-site 부채 정리: moai-education course-curriculum-design(rename 스템) → course-operations-manual 정식 이름 통일; moai-media/agents media-production-pipeline 이미지 백엔드 정책 반영. 28 플러그인 / 178 스킬 유지 · 동기화 2.24.0 → 2.24.1. 기능적 비파괴. Breaking change 없음.
+
+### Fixed
+- **moai-ads-audit MCP 보안 의존성 fix** — Dependabot 15 alerts(PyJWT·starlette·cryptography·python-multipart, 5 high·5 medium·5 low, 전부 fix available) 해소. pyproject.toml 보안 constraints 추가 + uv.lock 갱신(cryptography v48.0.0→49.0.0, pyjwt v2.12.1→2.13.0, python-multipart v0.0.28→0.0.32, starlette v1.0.0→1.3.1). 취약 패키지는 mcp SDK의 transitive 의존성.
+
+### Changed
+- docs-site `moai-education`: `course-curriculum-design`(rename 스템) → `course-operations-manual` 정식 이름으로 통일(표 중복 행 제거 + 본문/mermaid 참조 일괄 변경)
+- `moai-media/agents/media-production-pipeline.md`: 이미지 백엔드 정책(Higgsfield + codex) 반영, 허용 백엔드 명시
+
 ## [2.24.0] - 2026-06-17
 
 MINOR. **`html-slide` 신규 스킬 (moai-content) — 단일 파일 HTML 슬라이드 덱 + 편집 가능 PPTX + 인라인 SVG 인포그래픽 + getdesign.md 미리보기**. 발표용 슬라이드 덱을 브라우저에서 바로 열리는 단일 파일·자체 완결형 HTML로 생성합니다. 인포그래픽(차트·다이어그램·KPI)은 한국어 숫자·라벨이 100% 정확한 인라인 SVG로 직접 렌더링, 실사 히어로 이미지는 Higgsfield MCP 또는 codex(gpt-image-2)로 생성합니다. design-system-library 56개 브랜드 토큰 중 테마 선택 시 각 토큰별 getdesign.md 상세 페이지 링크로 미리보기 제공. 편집 가능 PPTX는 pptx-designer(moai-office) 체이닝으로 산출(deck.json 원고 → pptxgenjs OOXML 직접 생성). 28 플러그인(유지) · 177 → 178 스킬(+html-slide 1개) · 동기화 2.23.0 → 2.24.0. 기능적 비파괴. Breaking change 없음.

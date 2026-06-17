@@ -1,6 +1,6 @@
 {
   "name": "moai-pm",
-  "version": "2.24.0",
+  "version": "2.24.1",
   "description": "한국 팀 주간업무보고(WBR) 작성 자동화. 격식체/구어체 톤 스위치 지원",
   "author": {
     "name": "모두의AI"

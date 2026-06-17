@@ -31,5 +31,5 @@ model: sonnet
 
 ## 품질 게이트
 
-- 미디어 직접 생성은 Higgsfield(이미지·영상)·ElevenLabs(음성) 단일 통합만 사용(fal-ai 금지).
+- 미디어 직접 생성은 허용 백엔드만 사용합니다 — 이미지·영상: Higgsfield MCP, 음성: ElevenLabs (이미지는 Higgsfield 또는 codex gpt-image-2).
 - 텍스트 스크립트/자막은 `moai-core:ai-slop-reviewer`로 다듬습니다.

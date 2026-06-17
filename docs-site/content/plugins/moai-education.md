@@ -18,7 +18,7 @@ flowchart TD
         C["research-assistant<br/>학술 리서치"]
     end
     subgraph 운영["강의 운영·자산화 (2)"]
-        D["course-curriculum-design<br/>운영 매뉴얼·시간표·동선"]
+        D["course-operations-manual<br/>운영 매뉴얼·시간표·동선"]
         E["course-followup-sequence<br/>30일 후기 자산화"]
     end
     A --> B
@@ -72,9 +72,8 @@ flowchart TD
 
 | 스킬 | 용도 | 출력 |
 |---|---|---|
-| `course-curriculum-design` | 일자별 시간표(1일·다일·주간 모드 지원) + 강사·조교 동선표 + D-N 사전 준비물 메일 + 환경·설비 체크리스트 + 리스크 Plan B 5건+ | `moai-office:docx-generator` 자동 체이닝 → Word(.docx) |
+| `course-operations-manual` | 일자별 시간표(1일·다일·주간 모드 지원) + 강사·조교 동선표 + D-N 사전 준비물 메일 + 환경·설비 체크리스트 + 리스크 Plan B 5건+ | `moai-office:docx-generator` 자동 체이닝 → Word(.docx) |
 | `course-followup-sequence` | 강의 종료 후 30일 후기 카피 5종(D+1·D+3·D+7·D+14·D+30) + 인센티브·자산화 시퀀스 | 후기 카피 5종 + 발송 가이드 |
-| `course-operations-manual` | 강의·과정·연수·워크숍 운영 매뉴얼 — 일자별 시간표·강사·조교 동선·D-N 사전 준비물·환경·설비 체크리스트·리스크 매트릭스 + Plan B | Word 매뉴얼(.docx) |
 
 ## 대표 체인
 
@@ -93,9 +92,9 @@ assessment-creator → xlsx-creator(문제지) → docx-generator(해설)
 **강의·연수·워크숍 운영 풀 사이클**
 
 ```text
-[D-N]   course-curriculum-design → moai-office:docx-generator(.docx 운영 매뉴얼)
-[D-7]   사전 준비물 안내 메일 발송 (course-curriculum-design --output prep-mail)
-[D-1]   course-curriculum-design (시간표·동선표 출력)
+[D-N]   course-operations-manual → moai-office:docx-generator(.docx 운영 매뉴얼)
+[D-7]   사전 준비물 안내 메일 발송 (course-operations-manual --output prep-mail)
+[D-1]   course-operations-manual (시간표·동선표 출력)
 [D+0]   강의 진행 (1일 특강·다일 워크숍·8/16주 정규 강좌)
 [D+1~D+30]  course-followup-sequence → moai-content:copywriting
               → ai-slop-reviewer → moai-content:korean-spell-check
@@ -105,7 +104,7 @@ assessment-creator → xlsx-creator(문제지) → docx-generator(해설)
 
 위 체인에 쓰인 `[D-N]`, `[D+0]`, `[D+30]` 표기는 **강의 당일을 D+0(그냥 'D'라고도 씁니다)으로 잡고, 그 앞뒤 날짜를 세는 수업 일정표**입니다. 예를 들어 강의가 6월 20일이라면 D+0은 6월 20일, D-7은 일주일 전인 6월 13일, D+30은 한 달 뒤인 7월 20일이 됩니다. 이렇게 당일을 기준으로 날짜를 표기하면 강의가 언제든 일정만 바꿔 넣으면 똑같은 준비 흐름을 재사용할 수 있어서 실무에서 널리 씁니다.
 
-이 날짜 표기가 중요한 이유는, 각 스킬이 **산출물을 만들어 다음 스킬로 넘겨주는 파이프라인**(한 방향으로만 흐르는 연결선)이기 때문입니다. 강의 전(D-N 단계)에 `course-curriculum-design`이 만든 운영 매뉴얼과 사전 준비물 메일이 있어야, 강의 당일(D+0)에 강사가 그 매뉴얼대로 진행할 수 있습니다. 그리고 강의가 무사히 끝난 뒤(D+1~D+30)에야 `course-followup-sequence`가 돌면서 후기를 거둬들일 수 있습니다. 순서가 뒤바뀌면 — 예를 들어 강의 전에 후기 메일부터 보내면 — 아직 강의도 안 했는데 후기를 달라는 꼴이 됩니다.
+이 날짜 표기가 중요한 이유는, 각 스킬이 **산출물을 만들어 다음 스킬로 넘겨주는 파이프라인**(한 방향으로만 흐르는 연결선)이기 때문입니다. 강의 전(D-N 단계)에 `course-operations-manual`이 만든 운영 매뉴얼과 사전 준비물 메일이 있어야, 강의 당일(D+0)에 강사가 그 매뉴얼대로 진행할 수 있습니다. 그리고 강의가 무사히 끝난 뒤(D+1~D+30)에야 `course-followup-sequence`가 돌면서 후기를 거둬들일 수 있습니다. 순서가 뒤바뀌면 — 예를 들어 강의 전에 후기 메일부터 보내면 — 아직 강의도 안 했는데 후기를 달라는 꼴이 됩니다.
 
 아래 시퀀스 다이어그램은 강사와 각 스킬이 시간 순서대로 어떻게 주고받는지를 보여줍니다.
 
@@ -113,7 +112,7 @@ assessment-creator → xlsx-creator(문제지) → docx-generator(해설)
 sequenceDiagram
     autonumber
     actor 강사
-    participant CD as course-curriculum-design<br/>(운영 매뉴얼 스킬)
+    participant CD as course-operations-manual<br/>(운영 매뉴얼 스킬)
     participant FS as course-followup-sequence<br/>(후기 자산화 스킬)
 
     Note over 강사,FS: 강의 전 — 재료 준비
@@ -152,7 +151,7 @@ sequenceDiagram
 > 사내 AI 활용 2일 워크숍 운영 매뉴얼 만들어줘
 {{< /terminal >}}
 
-→ 시스템 인터뷰: 일수·세션 수·운영 인력·사전 안내 시점 → `course-curriculum-design` 자동 호출
+→ 시스템 인터뷰: 일수·세션 수·운영 인력·사전 안내 시점 → `course-operations-manual` 자동 호출
 
 {{< terminal title="claude — cowork" >}}
 > 강의 끝났어, D+1 후기 카피 만들어줘
