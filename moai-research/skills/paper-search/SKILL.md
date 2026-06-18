@@ -12,7 +12,7 @@ description: |
   - "참고문헌 BibTeX로 정리해줘"
   핵심 논문 요약·연도별 연구 동향·참고문헌(BibTeX/RIS/텍스트)을 만들고, 논문 작성이 필요하면 moai-research:paper-writer로 이어집니다.
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 논문 검색 (Paper Search)
@@ -64,6 +64,8 @@ IF KCI_API_KEY 미설정:
 | RISS | riss.kr | WebSearch | 학위논문, 해외 DB 연계 |
 | DBpia | dbpia.co.kr | WebSearch | 전 분야 학술지 |
 | Google Scholar | scholar.google.com | WebSearch | 글로벌 학술 검색 |
+
+> ⚠️ 각 API의 정확한 base URL·파라미터·오퍼레이션명은 발급처 개발가이드 기준으로 확인하세요 (표의 호스트는 참고용이며, KCI 등은 data.go.kr 경유 시 호스트가 다를 수 있습니다).
 
 **KCI API 호출 예시 (키 있을 때):**
 ```

@@ -6,7 +6,7 @@ description: >
   개발(GitHub·기술 블로그)/디자인(Figma·Behance)/마케팅/기획 분야별 + 검색되는 노션
   포트폴리오 + 채용공고 맞춤형 1page 셀링 + 877건 노하우 기반 비중 배분을 지원합니다.
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 포트폴리오 가이드 (portfolio-guide)
@@ -22,7 +22,7 @@ version: 2.24.1
 | 플랫폼 최적화 | GitHub, Behance, Notion, 개인 블로그 포트폴리오 |
 | 포트폴리오 리뷰 | 기존 포트폴리오 개선점 분석 및 피드백 |
 
-참조 가이드: `references/portfolio-by-field.md`, `references/realtime-patterns.md`
+참조 가이드: `references/portfolio-by-field.md`
 
 ## 실전 포트폴리오 패턴 (한국 채용 시장)
 
@@ -282,7 +282,7 @@ AX(AI Transformation) 시대의 디자이너는 화면을 예쁘게 만드는 �
 
 1. 사용자 요청 수신 → 분야 및 목적 파악
 2. `references/{id}.md` 존재 시 로드 → 가이드에 따라 실행
-3. `--deepthink` 또는 복잡한 다분야 포트폴리오 → `mcp__sequential-thinking__sequentialthinking` 호출
+3. `--deepthink` 또는 복잡한 다분야 포트폴리오 → sequential-thinking MCP가 설치돼 있으면 `mcp__sequential-thinking__sequentialthinking`를 활용, 없으면 `ultrathink` 키워드 기반 심층 추론 또는 일반 단계 추론으로 대체
 4. 구조와 초안 생성 후 사용자 검토 요청
 
 ## 문제 해결

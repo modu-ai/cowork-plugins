@@ -13,7 +13,7 @@ description: |
   여행 일정표·예산표를 산출합니다.
   [책임 경계] 개인 재무는 moai-wealth:household-budget, 부동산 조회·분석은 moai-public-data:real-estate-search, 사이드 프로젝트·부업은 moai-business:startup-launchpad
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 여행 플래너 (Travel Planner)
@@ -28,7 +28,7 @@ version: 2.24.1
 
 1. 사용자 요청 수신 → 여행 유형(국내/해외, 동행 구성, 여행 스타일) 판별
 2. `references/travel-planner.md` 로드 → 일정 설계 워크플로우에 따라 실행
-3. `--deepthink` 또는 복잡한 다중 도시·장기 일정 → `mcp__sequential-thinking__sequentialthinking` 호출
+3. `--deepthink` 또는 복잡한 다중 도시·장기 일정 → sequential-thinking MCP가 설치돼 있으면 `mcp__sequential-thinking__sequentialthinking`를 활용, 없으면 `ultrathink` 키워드 기반 심층 추론 또는 일반 단계 추론으로 대체
 4. 일정표·예산표 생성 후 사용자 검토 요청
 
 ## 독립 실행 워크플로우

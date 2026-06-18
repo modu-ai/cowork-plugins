@@ -3,7 +3,7 @@ name: process-manager
 description: >
   업무 프로세스를 문서화하고 표준화합니다. "SOP 만들어줘", "구매 요청서 써줘", "회의록 정리해줘", "운영 매뉴얼 작성해줘"라고 요청할 때 사용하세요. 운영 매뉴얼, SOP(표준 운영 절차), 조달 문서(구매 요청서·발주서), 회의록 작성 및 안건 관리를 지원합니다.
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 프로세스 관리자 (process-manager)
@@ -23,7 +23,7 @@ version: 2.24.1
 
 1. 사용자 요청 수신 → 해당 전략 가이드 판별
 2. `references/{id}.md` 로드 → 전략 가이드에 따라 실행
-3. `--deepthink` 또는 복잡 프로세스 설계 → `mcp__sequential-thinking__sequentialthinking` 호출
+3. `--deepthink` 또는 복잡 프로세스 설계 → sequential-thinking MCP가 설치돼 있으면 `mcp__sequential-thinking__sequentialthinking`를 활용, 없으면 `ultrathink` 키워드 기반 심층 추론 또는 일반 단계 추론으로 대체
 4. 결과물 생성 후 사용자 검토 요청
 
 ## 트리거 키워드

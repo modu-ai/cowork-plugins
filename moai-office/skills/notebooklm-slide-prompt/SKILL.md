@@ -13,7 +13,7 @@ description: |
   - "본문 MD를 NotebookLM 프롬프트로 변환", "강연용 슬라이드 자료 만들어줘"
   - "PPT 발표 자료 프롬프트", "발표 슬라이드 통째로 생성"
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # notebooklm-slide-prompt — NotebookLM 슬라이드 데크 + 나노바나나 이미지 프롬프트 빌더

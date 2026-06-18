@@ -163,7 +163,7 @@ The following skills reference moai-cowork 캠프 자체 제작 교재 (PDF 매�
 
 | Skill | Reference |
 |---|---|
-| `moai-education/skills/course-curriculum-design/SKILL.md` | "PDF §8" — moai-cowork 캠프 운영 실무 매뉴얼 |
+| `moai-education/skills/course-operations-manual/SKILL.md` | "PDF §8" — moai-cowork 캠프 운영 실무 매뉴얼 |
 | `moai-education/skills/course-followup-sequence/SKILL.md` | "PDF §10" — 동일 매뉴얼 |
 
 These materials are developed internally by the moai-cowork community. Skills may be redistributed under MoAI-ADK MIT; the underlying PDF remains community-internal.

@@ -3,7 +3,7 @@ name: vendor-manager
 description: >
   공급업체를 평가·선정하고 계약 및 리스크를 관리합니다. "벤더 평가 기준 만들어줘", "공급업체 리스크 레지스터 작성해줘", "계약 관리 체계를 잡아줘"라고 요청할 때 사용하세요. 벤더 선정 기준, 공급업체 평가표, 계약 관리 워크플로우, 리스크 식별 및 대응 계획을 지원합니다.
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 벤더 관리자 (vendor-manager)
@@ -20,7 +20,7 @@ version: 2.24.1
 
 1. 사용자 요청 수신 → 해당 전략 가이드 판별
 2. `references/{id}.md` 로드 → 전략 가이드에 따라 실행
-3. `--deepthink` 또는 복잡 리스크 분석 → `mcp__sequential-thinking__sequentialthinking` 호출
+3. `--deepthink` 또는 복잡 리스크 분석 → sequential-thinking MCP가 설치돼 있으면 `mcp__sequential-thinking__sequentialthinking`를 활용, 없으면 `ultrathink` 키워드 기반 심층 추론 또는 일반 단계 추론으로 대체
 4. 결과물 생성 후 사용자 검토 요청
 
 ## 트리거 키워드

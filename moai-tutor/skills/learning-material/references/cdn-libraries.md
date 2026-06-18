@@ -164,4 +164,3 @@ flowchart TD
 | 날짜 | 버전 | 변경 내용 |
 |------|------|-----------|
 | 2026-06-16 | 2.20.0 | 초기 큐레이션 — Mermaid·ECharts·highlight.js·KaTeX·AOS 5종 + 폰트·조건부 로딩 규칙 |
-| 2026-06-16 | 2.20.0 | draw.io 뷰어(정교 도식, 조건부) 추가 — moai-content:drawio-diagram 연동 |

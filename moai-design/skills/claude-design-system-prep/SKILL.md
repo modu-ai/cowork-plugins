@@ -12,7 +12,7 @@ description: |
   - "claude.ai/design 디자인 시스템 셋업 준비"
   - "DESIGN.md 만들어 줘"
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # claude-design-system-prep — 디자인 시스템 자산 합성
@@ -70,7 +70,7 @@ Claude Design 디자인 시스템, 디자인 시스템 자산, DESIGN.md, 브랜
 
 ### 3단계 — DESIGN.md 합성
 
-**라이브러리 시스템 선택 우선 경로 (v2.21.0+)**: 1단계에서 브랜드 무드만 지정된 경우, `design-system-library`의 [`systems/registry.md`](./design-system-library/systems/registry.md)에서 매칭되는 시스템을 선택하고 `systems/<name>.md`의 YAML 토큰을 DESIGN.md의 Color palette · Typography · Spacing 섹션에 직접 반영합니다. 이 경로는 자산 분석(2단계)을 생략하거나 보강으로만 사용하므로 가장 빠릅니다.
+**라이브러리 시스템 선택 우선 경로 (v2.21.0+)**: 1단계에서 브랜드 무드만 지정된 경우, `moai-design:design-system-library`의 `systems/registry.md`에서 매칭되는 시스템을 선택하고 `systems/<name>.md`의 YAML 토큰을 DESIGN.md의 Color palette · Typography · Spacing 섹션에 직접 반영합니다. 이 경로는 자산 분석(2단계)을 생략하거나 보강으로만 사용하므로 가장 빠릅니다.
 
 다음 구조로 DESIGN.md를 작성합니다.
 

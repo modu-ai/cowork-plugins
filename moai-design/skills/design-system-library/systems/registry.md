@@ -26,7 +26,7 @@ canvas 휘도(R+G+B 평균) 기반 자동 분류: `<100` dark · `<232` warm · 
 
 ## 전체 56개 — 분류별
 
-### LIGHT (33개) — 밝은 캔버스 — white/cream, 본문 near-black
+### LIGHT (38개) — 밝은 캔버스 — white/cream, 본문 near-black
 
 | 시스템 | 분류 | 캔버스 | Primary | 폰트 |
 
@@ -80,7 +80,7 @@ canvas 휘도(R+G+B 평균) 기반 자동 분류: `<100` dark · `<232` warm · 
 | [`playstation`](playstation.md) | warm | `#0070d1` | `#0070d1` | PlayStation SST |
 | [`revolut`](revolut.md) | warm | `#494fdf` | `#494fdf` | Aeonik Pro |
 
-### DARK (13개) — 어두운 캔버스 — near-black/navy, 본문 white
+### DARK (16개) — 어두운 캔버스 — near-black/navy, 본문 white
 
 | 시스템 | 분류 | 캔버스 | Primary | 폰트 |
 

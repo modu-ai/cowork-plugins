@@ -90,7 +90,6 @@
 |--------|------|
 | 프로젝트 초기화, project init | project |
 | AI 슬롭 검수, 후처리 | ai-slop-reviewer |
-| AI 진단, 점검 | ai-diagnostic |
 | 피드백, 이슈 제출 | feedback |
 | MCP 커넥터 등록 | mcp-connector-setup |
 | 스킬 제작·템플릿·테스트 | skill-builder, skill-template, skill-tester |
@@ -104,6 +103,7 @@
 | 전략, OKR, 컨설팅 | strategy-planner, consulting-brief |
 | 정부지원사업 | kr-gov-grant |
 | 소상공인, 상권분석 | sbiz365-analyst |
+| AI 진단, 점검 | ai-diagnostic |
 | 부동산 조회 | real-estate-search |
 | 영업 플레이북, 데일리 브리핑 | sales-playbook, daily-briefing |
 
@@ -176,7 +176,7 @@
 |--------|------|
 | 강의 운영매뉴얼 | course-operations-manual |
 | 후기 시퀀스 | course-followup-sequence |
-| 교육과정 설계 | course-curriculum-design, curriculum-designer |
+| 교육과정 설계 | curriculum-designer |
 | 시험출제, 평가 | assessment-creator |
 | 교육 리서치 | research-assistant |
 

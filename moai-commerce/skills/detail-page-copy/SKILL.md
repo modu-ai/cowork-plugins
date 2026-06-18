@@ -8,7 +8,7 @@ description: >
   "상세페이지 카피 써줘", "상폐 만들어줘", "이커머스 상세페이지 글 작성해줘", "쇼핑몰 상품 카피 만들어줘", "현재 상세페이지 진단해줘", "상세페이지 점수 매겨줘", "페르소나별 카피 2세트 만들어줘"처럼 말하면 됩니다.
   좋은/피해야 할 예시 가이드 + PAS 카피 공식 매핑 + 혜택 언어 3단계 변환법 (광고 심리학 통합).
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 상세페이지 카피 (Detail Page Copy)
@@ -149,7 +149,7 @@ JTBD·페르소나(commerce-jtbd-persona 산출물)와 현재 상세페이지를
 
 ---
 
-## 카피 품질 가이드 (v2.4.0 신규)
+## 카피 품질 가이드
 
 ### 좋은 예시 vs 피해야 할 예시 (상세페이지 체크리스트)
 
@@ -474,5 +474,5 @@ JSON 출력 후, 사용자 확인용 마크다운 미리보기를 섹션별로 �
 
 - 랜딩 페이지(마케팅 원페이지): `moai-content:landing-page` 사용
 - 블로그 포스팅: `moai-content:blog` 사용
-- SNS 콘텐츠: `moai-content:social-media` 사용
+- SNS 콘텐츠: `moai-marketing:sns-content` 사용
 - 이미지 합성만 필요할 때: `moai-commerce:detail-page-image` 직접 사용

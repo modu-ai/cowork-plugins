@@ -6,7 +6,7 @@ description: >
   역량 면접(BEI), PT, 토론, 임원, **2026 팀핏 면접**까지 유형별 대비 + 모의 면접 루프
   (질문→답변→피드백) + 역질문 15종 + 화상/하이브리드 면접 가이드를 제공합니다.
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 면접 코치 (interview-coach)
@@ -22,7 +22,7 @@ version: 2.24.1
 | 유형별 대비 | AI면접, 역량면접(BEI), PT면접, 토론면접, 임원면접 |
 | 답변 코칭 | STAR 기반 답변 구조화, 시간 배분, 비언어 커뮤니케이션 |
 
-참조 가이드: `references/common-questions.md`, `references/interview-types.md`, `references/realtime-patterns.md`
+참조 가이드: `references/common-questions.md`, `references/interview-types.md`
 
 ## 실전 면접 패턴 (한국 채용 시장)
 
@@ -228,7 +228,7 @@ STAR보다 더 짧고 인상적. 임원 면접 권장.
 
 1. 사용자 요청 수신 → 면접 유형 및 기업 정보 파악
 2. `references/{id}.md` 존재 시 로드 → 가이드에 따라 실행
-3. `--deepthink` 또는 복잡한 기업 분석 기반 면접 → `mcp__sequential-thinking__sequentialthinking` 호출
+3. `--deepthink` 또는 복잡한 기업 분석 기반 면접 → sequential-thinking MCP가 설치돼 있으면 `mcp__sequential-thinking__sequentialthinking`를 활용, 없으면 `ultrathink` 키워드 기반 심층 추론 또는 일반 단계 추론으로 대체
 4. 모의 면접 시 1문제씩 순차 진행, 사용자 답변 대기
 
 ## 문제 해결

@@ -13,7 +13,7 @@ description: |
   연구 목표·내용·방법론·기대효과·예산 섹션을 기관 양식에 맞춰 구성하고, 평가 기준 대비 자체 점검표까지 만들어 ai-slop 검수 체인으로 마무리합니다.
   [책임 경계] 정부 일반 지원사업은 moai-business:kr-gov-grant
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 연구비 신청서 작성 (Grant Writer)
@@ -113,7 +113,7 @@ AskUserQuestion으로 지원 기관과 사업 유형을 선택받습니다:
 
 ## 관련 스킬
 
-- **moai-research:paper-search** - 선행연조사 및 논문 검색
+- **moai-research:paper-search** - 선행연구 조사 및 논문 검색
 - **moai-data:data-visualizer** - 기술 로드맵, 간트 차트 시각화
 - **moai-business:strategy-planner** - 사업화 계획 수립 (TIPS 등 창업 과제)
 

@@ -2,17 +2,17 @@
 
 [![License: NC-ND v1.0](https://img.shields.io/badge/License-NC--ND%20v1.0-red.svg)](LICENSE)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
-[![Version](https://img.shields.io/badge/Version-2.24.1-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-2.25.0-blue)](CHANGELOG.md)
 [![Plugins](https://img.shields.io/badge/Plugins-28-blue)](.claude-plugin/marketplace.json)
-[![Skills](https://img.shields.io/badge/Skills-178-green)](.claude-plugin/marketplace.json)
+[![Skills](https://img.shields.io/badge/Skills-176-green)](.claude-plugin/marketplace.json)
 [![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)
 [![shadcn/ui](https://img.shields.io/badge/UI-shadcn/ui-black)](https://ui.shadcn.com/)
 
-**Claude Cowork 한국어 도메인 전문가 AI 마켓플레이스 — 28 plugins · 178 skills · NC-ND v1.0**
+**Claude Cowork 한국어 도메인 전문가 AI 마켓플레이스 — 28 plugins · 176 skills · NC-ND v1.0**
 
-자연어 한 줄로 **사업계획서·계약서 검토·세금 계산·PPT·NotebookLM 슬라이드·Claude Design 보조·Higgsfield 이미지·영상·음성 더빙·BI 보고서·HTML 리포트·쿠팡 광고·메타 광고 분석·한국 출판사 제출 원고·한국 공공데이터 조회**를 자동 생성합니다. 한국 B2B 환경(K-IFRS·국세청·근로기준법·식약처·국토부·KRX·인터넷등기소·KPIPA)에 특화된 28개 독립 플러그인과 178개 도메인 스킬이 업무를 대신하며, 모든 텍스트 산출물은 [`ai-slop-reviewer`](./moai-core/skills/ai-slop-reviewer/)가 AI 패턴을 검수하여 자연스럽게 다듬어 드립니다.
+자연어 한 줄로 **사업계획서·계약서 검토·세금 계산·PPT·NotebookLM 슬라이드·Claude Design 보조·Higgsfield 이미지·영상·음성 더빙·BI 보고서·HTML 리포트·쿠팡 광고·메타 광고 분석·한국 출판사 제출 원고·한국 공공데이터 조회**를 자동 생성합니다. 한국 B2B 환경(K-IFRS·국세청·근로기준법·식약처·국토부·KRX·인터넷등기소·KPIPA)에 특화된 28개 독립 플러그인과 176개 도메인 스킬이 업무를 대신하며, 모든 텍스트 산출물은 [`ai-slop-reviewer`](./moai-core/skills/ai-slop-reviewer/)가 AI 패턴을 검수하여 자연스럽게 다듬어 드립니다.
 
-> *Korean B2B specialty plugin marketplace for [Anthropic Claude Code (Cowork)](https://claude.ai/cowork) — 28 plugins · 178 skills. Korean fonts (Pretendard / Noto Serif KR / Chosunilbo Myungjo / KoPubWorld), Korean text humanizer (humanize-korean), AI-slop reviewer for every deliverable. Higgsfield MCP image/video (22 official models), Claude Design helper. K-IFRS, NTS, KRX, MFDS, MOLIT, IROS, KPIPA specialty skills. Non-Commercial No-Derivatives (NC-ND) licensed.*
+> *Korean B2B specialty plugin marketplace for [Anthropic Claude Code (Cowork)](https://claude.ai/cowork) — 28 plugins · 176 skills. Korean fonts (Pretendard / Noto Serif KR / Chosunilbo Myungjo / KoPubWorld), Korean text humanizer (humanize-korean), AI-slop reviewer for every deliverable. Higgsfield MCP image/video (22 official models), Claude Design helper. K-IFRS, NTS, KRX, MFDS, MOLIT, IROS, KPIPA specialty skills. Non-Commercial No-Derivatives (NC-ND) licensed.*
 
 **🚀 빠른 설치**: Claude Cowork → 사용자 지정 → 개인 플러그인 + → **마켓플레이스 추가** → URL `modu-ai/cowork-plugins` 입력 → 동기화 → `moai-core` 먼저 설치
 
@@ -34,6 +34,17 @@
 > 28개 플러그인 전체 카탈로그와 카테고리 비교는 [플러그인 카탈로그](#플러그인-카탈로그)와 [플러그인 상세 소개](#플러그인-상세-소개)를 참조하세요.
 
 ---
+
+**🆕 v2.25.0 하이라이트** (2026-06-19) — **"28 플러그인 전수 품질 감사 + pdf-writer weasyprint 재작성 + 리다이렉트 stub 2개 제거"**
+
+28 플러그인 유지, 178 → **176 스킬**(리다이렉트 stub 2개 제거), 동기화 2.25.0. 기능·인터페이스 Breaking change 없음. MINOR 릴리스. "PDF로 생성"이 `pdf-writer`로 안정적으로 라우팅되도록 트리거·엔진을 개선하고 전 플러그인 지침을 정정했습니다.
+
+- **pdf-writer 미발동 근본 해소** — weasyprint 단일 엔진 재작성(스타일 HTML 디자인 보존 + Noto Sans CJK `@font-face`) + 일반 트리거 보강 + "weasyprint 직접 설치 말고 스킬 사용" 포지셔닝. office·media 산출물 스킬도 동일 포지셔닝, html-report/html-slide→pdf 핸드오프 신설.
+- **전수 콘텐츠 감사 정정** — 끊긴 cross-ref·deprecated 참조(`social-media`→`sns-content`)·미번들 MCP 호출·노후 사실(FID→INP·이베이→지마켓·나라장터 웹표준·자살예방 109)·오탈자. 미검증 도메인 수치(세법·과징금·요율)는 공식 출처 참조로 완화.
+- **리다이렉트 stub 2개 제거** — `ai-diagnostic`·`course-curriculum-design` → 178→176 스킬, `/ai-diagnostic` 이름 충돌 해소.
+
+<details>
+<summary>이전 하이라이트 (v2.24.0)</summary>
 
 **🆕 v2.24.0 하이라이트** (2026-06-17) — **"html-slide 신규 — 단일 파일 HTML 슬라이드 덱 + 편집 가능 PPTX + 인라인 SVG 인포그래픽 + getdesign.md 미리보기"**
 
@@ -486,7 +497,7 @@ moai-commerce에 시장조사·JTBD·페르소나·상품명·채널 메시지·
 
 | 플러그인 | 설명 | 스킬 수 |
 |---------|------|:-------:|
-| [moai-core](./moai-core/) | 프로젝트 초기화(`/project`) + 스킬 체이닝 라우터 + AI 슬롭 검수 + 피드백 + **AI 진단** + **MCP 커넥터 셋업** + **스킬 빌더/테스터/템플릿** | 8 |
+| [moai-core](./moai-core/) | 프로젝트 초기화(`/project`) + 스킬 체이닝 라우터 + AI 슬롭 검수 + 피드백 + **MCP 커넥터 셋업** + **스킬 빌더/테스터/템플릿** | 7 |
 | [moai-business](./moai-business/) | 사업계획서, 시장조사, 재무모델, 투자제안서, **소상공인 상권분석**, **정부지원사업 통합**, **국토부 실거래가**, **AI 진단** | 11 |
 | [moai-marketing](./moai-marketing/) | 기업/개인 브랜딩, SEO, SNS, 캠페인, 이메일 시퀀스, 퍼포먼스, **랜딩 진단**, **픽셀 검증**, **메타 광고 보고서 분석(9 모듈·4D 교차)**, **공식 커넥터 광고 라이브 운영** | 12 |
 | [moai-legal](./moai-legal/) | 계약서 검토, 컴플라이언스, NDA, 법적 리스크, **인터넷등기소 자동화** | 5 |
@@ -495,7 +506,7 @@ moai-commerce에 시장조사·JTBD·페르소나·상품명·채널 메시지·
 | [moai-hr](./moai-hr/) | 근로계약서, 4대보험, 채용, 성과평가, **이력서 스크리닝** | 5 |
 | [moai-content](./moai-content/) | 카드뉴스, 상세페이지, 랜딩페이지, 뉴스레터, 카피라이팅, 블로그, 소셜미디어, 콘텐츠 캘린더, 유튜브·팟캐스트 기획, 바른한글 맞춤법, **한국어 AI 티 정밀 윤문**, **마크다운→HTML 렌더러(html-report)** | 14 |
 | [moai-operations](./moai-operations/) | 결재, 조달, SOP, 벤더 관리, 상태 보고 | 3 |
-| [moai-education](./moai-education/) | 강사·교수·교사 교육 콘텐츠 풀스택 — 강의설계, 평가 출제, 1일-16주 모든 강의 형식 커리큘럼, 일반 강의·연수·정규 강좌 후기 자산화 | 6 |
+| [moai-education](./moai-education/) | 강사·교수·교사 교육 콘텐츠 풀스택 — 강의설계, 평가 출제, 1일-16주 모든 강의 형식 커리큘럼, 일반 강의·연수·정규 강좌 후기 자산화 | 5 |
 | [moai-lifestyle](./moai-lifestyle/) | 여행, 건강, 웨딩/이벤트 | 3 |
 | [moai-product](./moai-product/) | PM 로드맵, UX 리서치, 스펙, **UX 디자이너** | 4 |
 | [moai-support](./moai-support/) | 티켓 분류, KB 문서, 에스컬레이션, 응대 초안 | 4 |
@@ -732,7 +743,6 @@ WordPress·Post-Bridge·Typefully MCP 커넥터로 직접 발행 가능합니다
 | curriculum-designer | 커리큘럼 설계 | 온라인/오프라인 강의 설계, 커리큘럼 개발 |
 | research-assistant | 리서치 보조 | 문헌 검토, 리서치 보고서, 데이터 수집/분석 |
 | assessment-creator | 평가 출제 | 시험 문제 출제, 자격증 대비, 평가 루브릭 |
-| course-curriculum-design | 커리큘럼 설계 | 1일-16주 모든 강의 형식 운영 매뉴얼 자동 생성 (표준 시간표·강사·조교 동선·사전 준비물·Plan B 시나리오) |
 | course-followup-sequence | 후기 자산화 | D+1-D+30 후기 자산화 시퀀스 — 일반 강의·연수·정규 강좌 후 리뷰·포토·영상 수집 자동화 |
 
 ---

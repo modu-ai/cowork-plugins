@@ -7,7 +7,7 @@ description: |
   쿠팡 광고보고서·마진계산기 결과 엑셀을 입력받아 상품별 의사결정·캠페인 분리안을 산출하며, 수치·표·의사결정 데이터 스킬이라 ai-slop-reviewer 체이닝은 제외합니다. end-ROAS 공식은 moai-commerce:commerce-margin-calculator references/end-roas.md를 참조합니다.
   [책임 경계] 페어 moai-marketing:performance-report(GA4·메타·네이버 다채널 ROAS 종합)와 구분 — 본 스킬은 쿠팡 단일 채널 광고관리 전담. 마진·엔드 ROAS 계산은 moai-commerce:commerce-margin-calculator, 채널 등록·운영은 moai-commerce:marketplace-coupang.
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 쿠팡 광고 풀세트 최적화 (Marketplace Coupang Ads)
@@ -73,7 +73,7 @@ version: 2.24.1
 
 요약: `엔드 ROAS = (판매가 ÷ 마진) × 100`. 예시(1만원 상품, 원가+배송비 8천원 → 마진 2천원)면 엔드 ROAS 500%.
 
-> **쿠팡 ROAS 보정**: 쿠팡 화면 ROAS는 부가세 빠진 금액 → 실제는 **10% 더 낮음**. ROAS 200% 표기 = 실제 180%. (보정 상세는 references/end-roas.md)
+> **쿠팡 ROAS 보정**: 쿠팡 화면 ROAS는 부가세 빠진 금액 → 실제는 **10% 더 낮음**. ROAS 200% 표기 = 실제 180%. (보정 상세는 moai-commerce:commerce-margin-calculator references/end-roas.md)
 
 ## 광고 효율 = CPC × 전환율 × 객단가
 
@@ -171,4 +171,4 @@ version: 2.24.1
 ## 참고 자료
 
 - 쿠팡 광고 운영 실전 노하우 (한국 셀러 6개월 운영 사례 기반)
-- commerce-margin-calculator 엔드 ROAS 공식 (`references/end-roas.md`)
+- commerce-margin-calculator 엔드 ROAS 공식 (`moai-commerce:commerce-margin-calculator references/end-roas.md`)

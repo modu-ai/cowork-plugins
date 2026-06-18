@@ -6,7 +6,7 @@ description: >
   말하면 됩니다. KKK-STAR 자소서, USP+CAR 이력서, ATS·블라인드·NCS 모드, 2026 AI 진정성
   검증 회피 가드, 500/1000/1500자 분량 자동, 영문 CV·LinkedIn 헤드라인을 지원합니다.
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 이력서/자소서 빌더 (resume-builder)
@@ -22,7 +22,7 @@ version: 2.24.1
 | 경력기술서 | 프로젝트 기반 성과 기술, 수치화된 기여도 정리 |
 | 프로필 최적화 | LinkedIn 프로필, 원페이지 소개서, 헤드라인 최적화 |
 
-참조 가이드: `references/korean-resume.md`, `references/cover-letter-guide.md`, `references/realtime-patterns.md`
+참조 가이드: `references/korean-resume.md`, `references/cover-letter-guide.md`
 
 ## 실전 작성 패턴 (한국 채용 시장)
 
@@ -191,7 +191,7 @@ resume-builder → moai-core:ai-slop-reviewer → moai-content:humanize-korean
 
 1. 사용자 요청 수신 → 문서 유형 및 기업 정보 파악
 2. `references/{id}.md` 존재 시 로드 → 가이드에 따라 실행
-3. `--deepthink` 또는 복잡한 다중 항목 자소서 → `mcp__sequential-thinking__sequentialthinking` 호출
+3. `--deepthink` 또는 복잡한 다중 항목 자소서 → sequential-thinking MCP가 설치돼 있으면 `mcp__sequential-thinking__sequentialthinking`를 활용, 없으면 `ultrathink` 키워드 기반 심층 추론 또는 일반 단계 추론으로 대체
 4. 초안 생성 후 사용자 검토 요청
 
 ## 문제 해결

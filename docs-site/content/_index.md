@@ -1,13 +1,13 @@
 ---
 title: "Claude Cowork 한국어 문서"
-description: "Claude Cowork 한국어 가이드 — 지식 근로자를 위한 설치·스킬·플러그인·쿡북 완전판. cowork-plugins 28종 카탈로그 + 178 스킬 포함. v2.24.0 — html-slide 신규(단일 파일 HTML 슬라이드 덱)."
+description: "Claude Cowork 한국어 가이드 — 지식 근로자를 위한 설치·스킬·플러그인·쿡북 완전판. cowork-plugins 28종 카탈로그 + 176 스킬 포함. v2.24.0 — html-slide 신규(단일 파일 HTML 슬라이드 덱)."
 geekdocAnchor: false
 geekdocBreadcrumb: false
 ---
 
 <div class="cw-hero">
   <div class="eyebrow"><span class="dot"></span>{{< version >}} · {{< release-date >}} · cowork.mo.ai.kr</div>
-  <h1>업무에 바로 쓰는<br/><span class="accent">AI 협업 스킬</span> 178종.</h1>
+  <h1>업무에 바로 쓰는<br/><span class="accent">AI 협업 스킬</span> 176종.</h1>
   <p class="lead-p">
     28개 분야에 걸친 MoAI-Cowork 플러그인 모음. Claude Code에서 슬래시 한 번으로 사업계획서·IR 덱·계약서·블로그·정부지원사업 신청서·이커머스 광고 풀세트·한국 출판사 제출 원고·개인 재무·자기관리·직장 커뮤니케이션·<strong>한국 공공·시세 데이터 조회</strong>까지 — 한국어로, 끝까지.
   </p>
@@ -16,7 +16,7 @@ geekdocBreadcrumb: false
     <a class="btn btn--ghost" href="/plugins/">플러그인 둘러보기</a>
   </div>
   <div class="cw-hero-meta">
-    <div class="item"><div class="num">178</div><div class="lbl">총 스킬</div></div>
+    <div class="item"><div class="num">176</div><div class="lbl">총 스킬</div></div>
     <div class="item"><div class="num">28</div><div class="lbl">분야 플러그인</div></div>
     <div class="item"><div class="num">79</div><div class="lbl">문서 페이지</div></div>
     <div class="item"><div class="num">{{< version >}}</div><div class="lbl">최신 릴리스</div></div>
@@ -175,7 +175,7 @@ flowchart TD
 
 <div class="cw-sect-head">
   <h2 id="plugins-grid" style="margin:0"><span class="num">28</span>분야별 플러그인</h2>
-  <span class="meta">총 178개 스킬 · 28개 도메인</span>
+  <span class="meta">총 176개 스킬 · 28개 도메인</span>
 </div>
 
 <div class="cw-grid">

@@ -6,7 +6,7 @@ description: >
   detail-page-copy/detail-page-image 출력물을 4개 오픈마켓(네이버 스마트스토어 + 11번가 + G마켓 + 옥션) 정책에 맞게 검토하고,
   채널별 이미지 규격·검색태그·금지문구·톡톡 카피·후기 운영 가이드를 제공합니다.
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 네이버 스마트스토어 + 오픈마켓 가이드
@@ -31,7 +31,7 @@ version: 2.24.1
 판매 채널 식별:
 - **네이버 스마트스토어**: 검색·노출 강점, 톡톡 운영 필수
 - **11번가**: 모바일 강점, 십일절 등 시즌 이벤트 활용
-- **G마켓 / 옥션**: 동일 운영(이베이 코리아), 통합 등록 가능
+- **G마켓 / 옥션**: 동일 운영(지마켓, 신세계 그룹 · ESM PLUS 통합), 통합 등록 가능
 
 ### 2단계: 채널별 정책 적용
 
@@ -105,7 +105,7 @@ version: 2.24.1
 - `moai-commerce:detail-page-copy` — 카피 생성
 - `moai-commerce:detail-page-image` — 이미지 합성
 - `moai-commerce:marketplace-coupang` — 쿠팡 비교
-- `moai-marketing:seo-naver-kakao` — 네이버 SEO 일반
+- `moai-marketing:seo-audit` — 네이버 SEO 일반
 - `moai-marketing:campaign-planner` — 시즌 캠페인 기획
 
 ## 이 스킬을 사용하지 말아야 할 때

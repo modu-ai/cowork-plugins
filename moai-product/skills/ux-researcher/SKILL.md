@@ -12,7 +12,7 @@ description: |
   정성·정량 리서치 결과를 의사결정에 쓸 수 있는 인사이트로 정리하고, ai-slop-reviewer·humanize-korean으로 마무리할 수 있습니다.
   [책임 경계] vs moai-product:ux-designer: ux-researcher=정성/정량 리서치(인터뷰·페르소나·VOC), ux-designer=디자인 평가(휴리스틱·접근성·플로우)
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # UX 리서처 (UX Researcher)
@@ -31,7 +31,7 @@ UX, UX 리서치, 사용자 인터뷰, 유저빌리티, 페르소나, VOC, NPS, 
 
 사용자 요청 수신 → 해당 전략 가이드 판별 → `references/{id}.md` 로드 → 전략 가이드에 따라 실행 → 결과물 생성 후 사용자 검토 요청
 
-복잡한 분석 시 `mcp__sequential-thinking__sequentialthinking`을 호출합니다.
+복잡한 분석 시 sequential-thinking MCP가 설치돼 있으면 `mcp__sequential-thinking__sequentialthinking`을 활용하고, 없으면 `ultrathink` 키워드 기반 심층 추론으로 대체합니다.
 
 ## 사용 예시
 
@@ -80,7 +80,7 @@ UX, UX 리서치, 사용자 인터뷰, 유저빌리티, 페르소나, VOC, NPS, 
 
 ### 한국 서비스 UX 특성
 
-- **모바일 퍼스트**: 인터넷 사용의 80%+ 이상이 모바일
+- **모바일 퍼스트**: 인터넷 사용의 대부분(약 80%)이 모바일
 - **카카오 생태계**: 카카오 로그인·결제·채널과의 UX 일관성 중요
 - **빠른 응답 기대**: 페이지 로드 2초 초과 시 이탈률 급상승 (사용자 특성)
 - **고령 친화**: 폰트 크기, 버튼 크기, 명도 대비 접근성 고려 증가

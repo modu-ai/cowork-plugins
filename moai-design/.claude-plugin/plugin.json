@@ -1,6 +1,6 @@
 {
   "name": "moai-design",
-  "version": "2.24.1",
+  "version": "2.25.0",
   "description": "Claude Design 보조 — 6요소 브리프 작성, 디자인 시스템 자산 합성, 시니어 UX 프롬프트 빌더, Claude Code 핸드오프 분석, AI 슬롭 검수",
   "author": {
     "name": "모두의AI"

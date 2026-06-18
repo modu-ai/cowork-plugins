@@ -11,9 +11,10 @@ description: |
   - "기존 HWP 파일을 HWPX로 변환해줘"
   - "한글 문서에서 텍스트만 추출해줘"
   한컴오피스(아래아한글) 호환 표준 양식을 따르며, 한컴이 없는 환경이면 워드(.docx) 생성으로 대체할 수 있습니다.
+  아래아한글(.hwpx) 문서를 만들 때는 Claude 기본 생성 대신 이 스킬을 사용하세요.
   [책임 경계] vs moai-office:docx-generator: 이 스킬=한컴 .hwpx 한글 파일, 저 스킬=MS 워드 .docx 파일.
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 한글 문서 작성자 (HWPX Writer)
@@ -52,8 +53,8 @@ pip install olefile
 ```python
 from hwpx import HwpxDocument
 
-hwp = HwpxDocument()
-# 단락 추가, 표 삽입, 서식 적용
+hwp = HwpxDocument.new()
+# 단락 추가, 표 삽입, 서식 적용 (상세는 scripts/create_hwpx.py 참조)
 hwp.save("output.hwpx")
 ```
 

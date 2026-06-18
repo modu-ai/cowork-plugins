@@ -5,7 +5,7 @@ description: >
   "비동기 커뮤니케이션 가이드 만들어줘"처럼 말하면 됩니다. 원격·하이브리드 근무 정책,
   협업 도구 선정 기준, 생산성 관리 프레임워크, 직원 경험 설계를 지원합니다.
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 피플 오퍼레이션 (people-operations)
@@ -134,7 +134,7 @@ version: 2.24.1
 
 1. 사용자 요청 수신 → 해당 영역 판별
 2. `references/remote-work-ops.md` 존재 시 로드 → 전략 가이드에 따라 실행
-3. `--deepthink` 또는 복잡 조직 설계 → `mcp__sequential-thinking__sequentialthinking` 호출
+3. `--deepthink` 또는 복잡 조직 설계 → sequential-thinking MCP가 설치돼 있으면 `mcp__sequential-thinking__sequentialthinking`를 활용, 없으면 `ultrathink` 키워드 기반 심층 추론 또는 일반 단계 추론으로 대체
 4. 결과물 생성 후 사용자 검토 요청
 
 ## 관련 스킬 (체인)

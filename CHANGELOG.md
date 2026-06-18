@@ -9,10 +9,30 @@
 아래 209개 지점의 버전 표기는 **항상 완전히 동일**합니다 (v2.11.1+ `hugo.toml` SSOT 별도 추적):
 - `.claude-plugin/marketplace.json` (`metadata.version`) × 1
 - `<plugin>/.claude-plugin/plugin.json` (`version`) × 28 (v2.20.0+)
-- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 178 (v2.22.0+)
+- `<plugin>/skills/<skill>/SKILL.md` (`version:` frontmatter) × 176 (v2.25.0: stub 2개 제거)
 - `docs-site/hugo.toml` (`[params] version`) × 1 (v2.11.1+ SSOT, 좌측 사이드바·footer 자동 반영)
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
+
+## [2.25.0] - 2026-06-19
+
+MINOR. **28 플러그인 전수 품질 감사 + pdf-writer weasyprint 재작성 + 리다이렉트 stub 2개 제거**. 사용자가 "PDF로 생성"을 요청해도 `moai-office:pdf-writer`가 발동하지 않던 근본 원인(CJK 전문가 프레이밍에 치우친 트리거 + PyMuPDF의 HTML 충실도 한계)을 해소하고, 28개 플러그인의 스킬·에이전트·커넥터 지침을 전수 감사해 끊긴 교차참조·dead-reference·미번들 MCP 호출·노후 사실·중복 스킬을 정정했습니다. 리다이렉트 stub 2개 제거로 178 → **176 스킬**. 28 플러그인 유지 · 동기화 2.24.1 → 2.25.0. 기능적 비파괴(스킬 트리거·문서 정확도 개선). Breaking change 없음.
+
+### Added
+- `moai-office/skills/pdf-writer/scripts/render_pdf.py` — weasyprint 단일 엔진 PDF 렌더러(HTML/Markdown/JSON/Text → HTML → weasyprint). 스타일 HTML 리포트의 디자인을 그대로 보존하며 번들 Noto Sans CJK를 `@font-face`로 임베딩해 한·중·일 글리프 깨짐 방지.
+
+### Changed
+- **pdf-writer weasyprint 단일 엔진 재작성** — PyMuPDF 좌표 기반 렌더링을 폐기하고 weasyprint 풀 CSS 충실 렌더로 통일. 트리거를 일반 표현("PDF로 만들어줘"·"이 리포트 PDF로"·"HTML을 PDF로"·"PDF로도 생성")으로 대폭 보강 + "weasyprint를 직접 설치·호출하지 말고 이 스킬 사용" 포지셔닝 명시.
+- **산출물 스킬 발동 포지셔닝 강화** — office(docx·pptx·xlsx·hwpx) "Claude 기본 생성 대신 이 스킬 사용" 추가, media(higgsfield-image/video) 생성 포지셔닝, html-report·html-slide → pdf-writer PDF 핸드오프 신설.
+- **딥 콘텐츠 감사 정정(26 플러그인)** — Core Web Vitals FID→INP(2024-03 공식 대체), G마켓/옥션 운영사 이베이코리아→지마켓(2021 신세계), Mermaid bar→xychart-beta, 나라장터 ActiveX→웹표준(2024 차세대), 자살예방·정신건강 위기상담 1577-0199→109(2024 통합), sequential-thinking MCP 호출 12곳을 미설치 시 일반 추론 fallback으로 완화. 세법·개인정보보호법 과징금·4대보험 요율·웨딩 의무화·ESG 공시 등 미검증 도메인 수치는 공식 출처 참조로 완화(verification-claim-integrity 준수 — 새 수치 단정 회피).
+- **deprecated/dead 참조 정정** — `moai-content:social-media`(deprecated) 참조 7곳 → `moai-marketing:sns-content`, dead reference(realtime-patterns.md·python-docx-patterns.md·init-protocol.md) 정정, 끊긴 cross-ref 5곳(`moai-media:image-gen`→`higgsfield-image` 등) 수정.
+- **31 코디네이터 에이전트 정합** — 전 플러그인 번들 코디네이터 `model: sonnet → inherit`(메인 세션 사용자 선택 모델 승계) + 역할별 `effort`(low 3·medium 14·high 13·xhigh 1). `/project` 생성 에이전트 기본 tools에서 Bash 제거(Cowork-safe).
+
+### Removed
+- **리다이렉트 stub 2개 제거** — `moai-core:ai-diagnostic`(→`moai-business:ai-diagnostic`), `moai-education:course-curriculum-design`(→`moai-education:course-operations-manual`). user-invocable 리다이렉트 전용 스킬로 `/ai-diagnostic` 이름 충돌·카운트 부풀림 유발. 178 → 176 스킬 + 참조·README·router·docs-site·NOTICE 전 지점 cascade 정합.
+
+### Fixed
+- 오탈자 — 실간→실시간, 체이션→리텐션, 국세천→국세청, 선행연조사→선행연구 조사. `book-publisher-matcher` 중첩 코드펜스 렌더링 깨짐, design `registry.md` 휘도 카운트(33/13→38/16), `claude-design-prompt-builder` "전부 포함" 과장 등 내부 모순 정정.
 
 ## [2.24.1] - 2026-06-17
 

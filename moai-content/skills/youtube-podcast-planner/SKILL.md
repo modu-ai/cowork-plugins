@@ -11,7 +11,7 @@ description: |
   - "팟캐스트 포맷 설계해줘"
   산출물은 에피소드 기획서·스크립트·쇼노트이며, 대본·쇼노트 같은 산문 텍스트는 moai-core:ai-slop-reviewer → moai-content:humanize-korean 체인으로 마무리하세요.
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 유튜브·팟캐스트 기획 (YouTube & Podcast Planner)
@@ -185,12 +185,12 @@ AI가 생성한 기획안과 스크립트는 사실 확인 후 사용하세요.
 - **플랫폼 규격 변경**: 유튜브·팟빵·Spotify의 업로드 규격과 알고리즘은 수시로 변경됩니다. 최신 정보는 각 플랫폼 공식 Creator 채널에서 확인하세요.
 - **브랜드 가이드 미제공**: 채널 톤앤매너, 로고, 색상 가이드를 제공하면 더 일관된 기획안을 작성할 수 있습니다.
 - **썸네일 이미지 생성**: 썸네일 디자인은 Canva, Adobe Express를 활용하거나 `card-news` 스킬의 이미지 생성 기능을 사용하세요.
-- **Remotion 빌드 오류**: Node.js 버전, @remotion/cli 버전 충돌이 흔합니다. `package.json`의 Remotion 패키지 버전을 일치시키고 `npx remotion check`를 실행하세요.
+- **Remotion 빌드 오류**: Node.js 버전, @remotion/cli 버전 충돌이 흔합니다. `package.json`의 Remotion 패키지 버전을 일치시키고 `npx remotion versions`를 실행하세요.
 
 ## 관련 스킬
 
 - `content-calendar` — 콘텐츠 발행 캘린더·일정 기획
-- `social-media` — 소셜미디어 콘텐츠
+- `moai-marketing:sns-content` — 소셜미디어 콘텐츠
 - `copywriting` — 카피라이팅
 - `moai-core:ai-slop-reviewer` — 텍스트 산출물 AI 패턴 검수 (1차)
 - `moai-content:humanize-korean` — 한국어 자연스러움 보정 (2차)
@@ -198,7 +198,7 @@ AI가 생성한 기획안과 스크립트는 사실 확인 후 사용하세요.
 ## 이 스킬을 사용하지 말아야 할 때
 
 - 콘텐츠 발행 일정·캘린더 수립: `content-calendar` 스킬 사용
-- SNS 텍스트 포스팅: `social-media` 스킬 사용
+- SNS 텍스트 포스팅: `moai-marketing:sns-content` 스킬 사용
 - 블로그 포스팅: `blog` 스킬 사용
 - 카드뉴스: `card-news` 스킬 사용
 - 광고 카피: `copywriting` 스킬 사용

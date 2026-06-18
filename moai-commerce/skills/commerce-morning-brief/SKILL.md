@@ -7,7 +7,7 @@ description: |
   2개 SCOPE 모드(전체 아침 브리핑 / 주문 요약만)가 발화로 자동 선택되며, 수치·데이터 1줄 통합 산출이므로 ai-slop-reviewer 체이닝은 제외합니다.
   [책임 경계] 페어 moai-business:daily-briefing(외부 뉴스·시장 정보)와 구분 — 본 스킬은 매장 운영 데이터 전용.
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 커머스 아침 브리핑

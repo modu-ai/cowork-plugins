@@ -28,4 +28,4 @@ GET https://kosis.kr/openapi/Param/statisticsParameterData.do
 
 ## API 키 로드 함수 (참조)
 
-credentials.env에서 키 로드 시 init-protocol.md의 load_api_key() 함수 참조.
+키는 `${CLAUDE_PLUGIN_DATA}/moai-credentials.env`에서 `KEY=VALUE` 형식으로 로드한다(예: `os.environ` 또는 파일 파싱). 별도 init-protocol 모듈에 의존하지 않는다.

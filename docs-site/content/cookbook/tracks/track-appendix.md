@@ -79,7 +79,7 @@ flowchart TD
 
 시스템 인터뷰: 학습자 레벨 · 과목 · 주당 시간 · 평가 방식
 
-자동 체인: `course-curriculum-design` (12주 차주별 학습 목표·실습·평가) → `assessment-creator` (퀴즈·과제·시험) → `pptx-designer` (강의 슬라이드 자동)
+자동 체인: `curriculum-designer` (12주 차주별 학습 목표·실습·평가) → `assessment-creator` (퀴즈·과제·시험) → `pptx-designer` (강의 슬라이드 자동)
 
 ### 시나리오 ⑤ 수강생 후속 시퀀스 (스케줄)
 

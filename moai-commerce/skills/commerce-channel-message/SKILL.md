@@ -7,7 +7,7 @@ description: |
   3개 동작 모드(채널 분기 메시지 15종 / 운영 카피 / 앱 푸시 기획)가 자연어로 자동 선택되며, 6 심리 방아쇠 + 채널별 심리 상태 매트릭스 + 인지 편향 9종을 적용하고, 텍스트 산출물 직후 moai-core:ai-slop-reviewer를 자동 체이닝합니다.
   [책임 경계] 페어 moai-domain-copywriting(도메인 비특정 단일 목적 카피)·moai-content:copywriting(이커머스 외 범용)과 구분 — 본 스킬은 이커머스 채널 운영 메시지 전용. 상세페이지 카피는 moai-commerce:detail-page-copy, 발송 전 법규 게이트는 moai-commerce:commerce-marketing-compliance-kr.
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 채널별 메시지 자동 생성 (Commerce Channel Message)
@@ -170,7 +170,7 @@ JTBD와 페르소나를 기반으로 NCM 프레임워크(Need → Channel → Mo
 - `commerce-product-naming` — 확정 상품명 (메시지 내 상품명 활용)
 - `commerce-integrated-strategy` — 채널 메시지 포함 전략 1장 종합 (다음 단계)
 - `commerce-marketing-compliance-kr` — 발송 전 법규 게이트 (푸시·알림톡·이메일 광고)
-- `moai-content:social-media` — SNS 콘텐츠 단독 심화 작업
+- `moai-marketing:sns-content` — SNS 콘텐츠 단독 심화 작업
 - `moai-core:ai-slop-reviewer` — AI 패턴 검수 (자동 체이닝)
 
 ## 이 스킬을 사용하지 말아야 할 때
@@ -178,7 +178,7 @@ JTBD와 페르소나를 기반으로 NCM 프레임워크(Need → Channel → Mo
 - **도메인 비특정 단일 목적 카피**: `moai-domain-copywriting` 사용
 - **이커머스 외 일반 광고 카피**: `moai-content:copywriting` 사용
 - **상세페이지 13섹션 카피**: `detail-page-copy` 사용
-- **이메일 뉴스레터 본문**: `moai-content:blog` 또는 `moai-content:email` 사용
+- **이메일 뉴스레터 본문**: `moai-content:newsletter` 또는 `moai-marketing:email-sequence` 사용
 - **광고 캠페인 전체 기획**: `moai-marketing:campaign-planner` 사용
 - **광고 실집행·캠페인 운영**: 광고 플랫폼에서 직접 관리
 
@@ -250,7 +250,7 @@ JTBD와 페르소나를 기반으로 NCM 프레임워크(Need → Channel → Mo
 
 ---
 
-## 광고 심리학 통합 가이드 (v2.4.0 신규)
+## 광고 심리학 통합 가이드
 
 ### 6가지 심리 방아쇠
 

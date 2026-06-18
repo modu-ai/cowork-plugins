@@ -11,7 +11,7 @@ description: |
   기획 의도와 요구사항을 검토 가능한 문서로 정리하고, ai-slop-reviewer·humanize-korean으로 마무리할 수 있습니다.
   [책임 경계] 정부·지원사업 신청서는 moai-business:kr-gov-grant, R&D·연구비 과제는 moai-research:grant-writer로 라우팅
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 스펙 작성 (Spec Writer)
@@ -32,7 +32,7 @@ PRD, 기능명세, 스펙, 제품 기획, AI 전략, 디지털전환, 프로덕�
 
 사용자 요청 수신 → 해당 전략 가이드 판별 → `references/{id}.md`(`product-manager` / `ai-strategy`) 로드 → 전략 가이드에 따라 실행 → 결과물 생성 후 사용자 검토 요청
 
-복잡한 전략 판단 시 `mcp__sequential-thinking__sequentialthinking`을 호출합니다.
+복잡한 전략 판단 시 sequential-thinking MCP가 설치돼 있으면 `mcp__sequential-thinking__sequentialthinking`을 활용하고, 없으면 `ultrathink` 키워드 기반 심층 추론으로 대체합니다.
 
 ### 지원사업·R&D 과제 요청이 들어오면
 

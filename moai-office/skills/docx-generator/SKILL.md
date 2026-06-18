@@ -11,8 +11,9 @@ description: |
   - "협조 공문 한 장 작성해줘"
   - "분기 보고서를 깔끔한 톤으로 워드로 뽑아줘"
   Claude 브랜드 톤 기반 모던 디자인 시스템과 한국 공문서 표준 양식을 함께 지원하며, 텍스트가 끝나면 AI 슬롭 검수로 자연스럽게 다듬을 수 있습니다.
+  보고서·문서를 워드(.docx) 파일로 만들 때는 Claude 기본 생성 대신 이 스킬을 사용하세요 (서식·디자인 보존).
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 워드 문서 생성기 (DOCX Generator)
@@ -128,7 +129,7 @@ for run in title.runs:
     run.font.size = Pt(28)
 ```
 
-전체 코드 패턴은 `references/python-docx-patterns.md` 참고.
+전체 코드 패턴은 `references/modern-templates.md` 참고.
 
 ### 4단계: 서식 적용 및 파일 출력
 
@@ -272,7 +273,7 @@ Orange 작은 도형 + Mid Gray 가로선 + 섹션 번호.
 | 표 셀 색 안 바뀜 | `_tc.get_or_add_tcPr()` + `OxmlElement('w:shd')` 사용 |
 | 페이지 번호 안 들어감 | 머리글·바닥글 영역에 `field` 객체 삽입 |
 
-자세한 트러블슈팅·코드 예시는 `references/python-docx-patterns.md` 참고.
+자세한 트러블슈팅·코드 예시는 `references/modern-templates.md` 참고.
 
 ## 관련 스킬 / 자체 검수
 
@@ -299,6 +300,5 @@ Orange 작은 도형 + Mid Gray 가로선 + 섹션 번호.
 
 - `references/modern-design-system.md` — 색·타이포·간격 디자인 토큰 전문
 - `references/modern-templates.md` — 6대 문서 유형별 모던 템플릿 구조
-- `references/python-docx-patterns.md` — python-docx 코드 패턴 (헤딩·표·이미지·머리글)
 - `references/qa-checklist.md` — 10단계 검수 체크리스트
 - `references/document-generator.md` — 한국 비즈니스 문서 생성 가이드 (기존 자료, 유지)

@@ -12,7 +12,7 @@ description: |
   - "이 분야 출원인별 경쟁 현황 정리해줘"
   특허 목록·핵심 청구항 요약·IPC 분류별 분포를 정리하고, 선행기술 조사·FTO·출원서가 필요하면 moai-research:patent-analyzer로 이어집니다.
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 특허 검색 (Patent Search)
@@ -64,6 +64,7 @@ IF KIPRIS_API_KEY 미설정:
 - Base URL: https://plus.kipris.or.kr/openapi/rest/
 - 인증: ServiceKey 파라미터 (KIPRIS_API_KEY)
 - 응답 형식: XML
+- ⚠️ 정확한 호스트·오퍼레이션명은 KIPRIS Plus 개발가이드 기준으로 확인하세요 (아래 호출 예시는 형식 예시이며, 오퍼레이션명은 발급처 명세를 따릅니다).
 
 **주요 검색 API**
 

@@ -5,7 +5,7 @@ description: >
   '금리 오르면 어떻게 돼', '환율이 내 자산에 미치는 영향', '경제지표 읽는 법', 'GDP가 뭐야', '경기 사이클'처럼 말하면 됩니다.
   금리·환율·물가(CPI)·GDP·고용·수출입 지표가 대출·예금·투자·소비에 어떻게 연결되는지 쉬운 언어로 설명합니다.
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 경제지표 읽기 (Economic Literacy)

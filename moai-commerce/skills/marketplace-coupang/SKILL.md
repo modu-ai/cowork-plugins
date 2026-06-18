@@ -7,7 +7,7 @@ description: >
   이미지 규격, 금지문구 체크, 검색 키워드 추천, 우수상품 기준 적용,
   로켓배송 vs 판매자배송 분기 가이드를 제공합니다.
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 쿠팡 상세페이지 가이드 (Coupang Marketplace)
@@ -135,7 +135,7 @@ version: 2.24.1
 - `moai-commerce:detail-page-copy` — 카피 생성
 - `moai-commerce:detail-page-image` — 이미지 합성
 - `moai-commerce:marketplace-naver` — 네이버/오픈마켓 비교
-- `moai-marketing:seo-naver-kakao` — 채널 SEO 일반
+- `moai-marketing:seo-audit` — 채널 SEO 일반
 
 ## 이 스킬을 사용하지 말아야 할 때
 

@@ -12,7 +12,7 @@ description: |
   일정·리소스·파트너십·지속가능성 계획을 실행 가능한 문서로 정리하고, ai-slop-reviewer·humanize-korean으로 마무리할 수 있습니다.
   [책임 경계] 운영 케이던스(주간보고·스탠드업·회고·OKR 추적)는 moai-pm, 본 스킬은 제품 발견·로드맵/마일스톤 기획
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 로드맵 관리 (Roadmap Manager)
@@ -31,7 +31,7 @@ version: 2.24.1
 
 사용자 요청 수신 → 해당 전략 가이드 판별 → `references/{id}.md` 로드 → 전략 가이드에 따라 실행 → 결과물 생성 후 사용자 검토 요청
 
-복잡한 전략 판단 시 `mcp__sequential-thinking__sequentialthinking`을 호출합니다.
+복잡한 전략 판단 시 sequential-thinking MCP가 설치돼 있으면 `mcp__sequential-thinking__sequentialthinking`을 활용하고, 없으면 `ultrathink` 키워드 기반 심층 추론으로 대체합니다.
 
 ## 사용 예시
 
@@ -77,7 +77,7 @@ version: 2.24.1
 
 ### ESG 지속가능성 (2026 의무화 대응)
 
-- **공시 의무화**: 2026년부터 자산 2조 원 이상 상장사 ESG 정보 공시 의무
+- **공시 단계적 추진**: 자산 2조 원 이상 상장사 대상 ESG 정보 공시 의무화가 추진 중 (시행 시점은 금융위 발표 기준 확인 필요)
 - **KSSB 표준**: 한국지속가능성기준위원회(KSSB) 기준 준수 필요
 - **중소기업 선제 대응**: 대기업 공급망 ESG 요구로 중소기업도 선제적 대응 필요
 

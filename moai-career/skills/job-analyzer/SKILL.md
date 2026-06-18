@@ -6,7 +6,7 @@ description: >
   JD에서 필수/우대 역량 추출 + 본인 경험 매칭 + DART·잡플래닛·블라인드·사람인 공고 이력
   종합 분석 + 2026 핀셋 채용 시대의 회사 현재 우선순위 추출까지 지원합니다.
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 채용공고 분석기 (job-analyzer)
@@ -22,7 +22,7 @@ version: 2.24.1
 | 기업 분석 | 기업 문화, 최근 동향, 성장성, 경쟁사 비교 |
 | 전략 수립 | 지원 전략 로드맵, 약점 보완 계획 |
 
-참조 가이드: `references/jd-analysis-guide.md`, `references/realtime-patterns.md`
+참조 가이드: `references/jd-analysis-guide.md`
 
 ## 실전 분석 패턴 (한국 채용 시장)
 
@@ -205,7 +205,7 @@ Python       | 상           | 중           | ▲   | 프로젝트 X 경험
 
 1. 사용자 요청 수신 → JD 분석 또는 기업 분석 판별
 2. `references/{id}.md` 존재 시 로드 → 가이드에 따라 실행
-3. `--deepthink` 또는 복잡한 다기업 비교 분석 → `mcp__sequential-thinking__sequentialthinking` 호출
+3. `--deepthink` 또는 복잡한 다기업 비교 분석 → sequential-thinking MCP가 설치돼 있으면 `mcp__sequential-thinking__sequentialthinking`를 활용, 없으면 `ultrathink` 키워드 기반 심층 추론 또는 일반 단계 추론으로 대체
 4. 분석 결과를 표 형태로 정리하여 제시
 
 ## 문제 해결

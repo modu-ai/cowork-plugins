@@ -11,7 +11,7 @@ description: |
   - "블로그·유튜브·SNS 발행 스케줄 정리해줘"
   산출물은 발행 캘린더 표(데이터)와 콘텐츠 전략 문서이며, 전략·캠페인 설명 같은 산문 텍스트는 moai-core:ai-slop-reviewer → moai-content:humanize-korean 체인으로 마무리하세요.
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 콘텐츠 발행 캘린더 (Content Calendar)
@@ -116,7 +116,7 @@ SNS: 주 3~5회 (영상 클립, 인사이트, 커뮤니티 참여)
 ## 관련 스킬
 
 - `youtube-podcast-planner` — 유튜브·팟캐스트 에피소드 기획
-- `social-media` — 소셜미디어 콘텐츠
+- `moai-marketing:sns-content` — 소셜미디어 콘텐츠
 - `blog` — 블로그 포스팅
 - `newsletter` — 이메일 뉴스레터
 - `moai-core:ai-slop-reviewer` — 텍스트 산출물 AI 패턴 검수 (1차)
@@ -125,6 +125,6 @@ SNS: 주 3~5회 (영상 클립, 인사이트, 커뮤니티 참여)
 ## 이 스킬을 사용하지 말아야 할 때
 
 - 유튜브 영상·팟캐스트 에피소드 기획: `youtube-podcast-planner` 스킬 사용
-- SNS 텍스트 포스팅 자체: `social-media` 스킬 사용
+- SNS 텍스트 포스팅 자체: `moai-marketing:sns-content` 스킬 사용
 - 블로그 본문 작성: `blog` 스킬 사용
 - 광고 카피: `copywriting` 스킬 사용

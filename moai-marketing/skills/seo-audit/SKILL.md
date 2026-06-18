@@ -12,7 +12,7 @@ description: |
   - "이커머스 사이트 SEO 로드맵 만들어줘"
   네이버(C-Rank·D.I.A.)·구글(E-E-A-T·Core Web Vitals)·AI 검색 인용까지 점검해 개선 우선순위와 키워드 목록을 정리하고, 서술 권고는 moai-core:ai-slop-reviewer → moai-content:humanize-korean으로 다듬습니다.
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # SEO 감사 (SEO Audit)
@@ -78,7 +78,7 @@ SEO 감사, 검색최적화, 키워드 분석, 네이버 SEO, 구글 SEO, 온페
 
 **Core Web Vitals 임계값**:
 - LCP < 2.5s (최대 콘텐츠 로딩)
-- FID < 100ms (첫 입력 지연)
+- INP < 200ms (상호작용 응답성 — 2024-03 FID 공식 대체)
 - CLS < 0.1 (레이아웃 변동)
 
 기술 SEO도 동시에: 모바일 친화성, sitemap.xml, robots.txt, HTTPS, 구조화 데이터 (schema.org).
@@ -171,7 +171,7 @@ ChatGPT·Perplexity·Claude·네이버 AI 브리핑·구글 AI Overview가 답�
 
 ### 3단계: 구글 SEO 감사 (Core Web Vitals + E-E-A-T)
 
-**기술 SEO:** Core Web Vitals(LCP < 2.5s, FID < 100ms, CLS < 0.1), 모바일 친화성(Mobile-First Index), 사이트맵·robots.txt 설정, HTTPS 보안 인증을 확인합니다.
+**기술 SEO:** Core Web Vitals(LCP < 2.5s, INP < 200ms, CLS < 0.1), 모바일 친화성(Mobile-First Index), 사이트맵·robots.txt 설정, HTTPS 보안 인증을 확인합니다.
 
 **콘텐츠 SEO (E-E-A-T):** Experience(경험) · Expertise(전문성) · Authoritativeness(권위) · Trustworthiness(신뢰성), 구조화 데이터(Schema.org) 마크업을 평가합니다.
 

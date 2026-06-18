@@ -12,7 +12,7 @@ description: |
   - "국문·영문 초록 200자로 작성해줘"
   국문·영문 초록과 본문 전체 섹션을 구성하고, 작성 후 ai-slop 검수 체인으로 마무리합니다.
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 학술 논문 작성 (Paper Writer)
@@ -126,7 +126,7 @@ AskUserQuestion으로 다음 정보를 수집합니다:
 
 ## 관련 스킬
 
-- **moai-research:paper-search** - 선행연조사 및 논문 검색
+- **moai-research:paper-search** - 선행연구 조사 및 논문 검색
 - **moai-data:data-visualizer** - 결과 섹션 차트 및 테이블 시각화
 
 ### 후처리 체인 (본문/서술 산출물)

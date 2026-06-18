@@ -14,7 +14,7 @@ description: |
   퍼널·KPI·지면·연령·성별·누수까지 분석해 HTML·DOCX·PPTX·MD 중 원하는 형식으로 보고서를 만들고, 문서 텍스트는 moai-core:ai-slop-reviewer → moai-content:humanize-korean으로 다듬습니다.
   [책임 경계] vs pixel-audit·landing-page-conversion-audit: 이 스킬=광고관리자 데이터 사후 분석, 저 스킬=픽셀 인프라 진단·랜딩 진단.
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 메타 광고 보고서 분석기 (Meta Ads Analyzer)
@@ -300,8 +300,6 @@ moai-marketing:landing-page-conversion-audit (랜딩 6섹션 전환율 진단)
 
 ---
 
-## 변경 이력
+## 출처
 
-| 버전 | 날짜 | 내용 |
-|------|------|------|
-| 2.5.0 | 2026-05-13 | v2.5.0 신규 출시 — 9 분석 모듈 + 4D 교차 + 5 자동 모드 + 3 사용자 그룹 + 4 출력 형식. Methodology adapted from agricidaniel/claude-ads v1.5.1 (MIT). |
+> Methodology adapted from agricidaniel/claude-ads v1.5.1 (MIT).

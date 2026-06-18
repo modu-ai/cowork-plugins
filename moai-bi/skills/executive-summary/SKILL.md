@@ -9,7 +9,7 @@ description: |
   기본 출력은 moai-content:html-report로 단일 HTML(이미지·CSS·JS 인라인, 카톡·이메일 바로 공유)이며, pdf/docx/pptx/hwpx 변환은 옵션 체이닝. 입력 가능: moai-marketing:performance-report 출력 · moai-finance:financial-statements · moai-finance:variance-analysis · moai-pm:weekly-report · 외부 보고서. 한국 임원/이사회 표준 What/So What/Now What + K-IFRS 재무 지표 우선.
   [책임 경계] vs moai-marketing:performance-report: executive-summary=임원 압축 요약(≤500단어), performance-report=마케팅 풀 리포트(전체).
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # Executive Summary — 경영진 1페이지 요약

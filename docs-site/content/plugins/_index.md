@@ -265,7 +265,7 @@ flowchart TD
 | [moai-finance](./moai-finance/) | 6 | tax-helper, financial-statements, close-management, variance-analysis, court-auction-search, korean-stock-search |
 | [moai-data](./moai-data/) | 3 | data-explorer, public-data, data-visualizer |
 | [moai-research](./moai-research/) | 5 | paper-search, paper-writer, grant-writer, patent-search, patent-analyzer |
-| [moai-education](./moai-education/) | 6 | curriculum-designer, assessment-creator, research-assistant, course-operations-manual, course-followup-sequence, course-curriculum-design(별칭) |
+| [moai-education](./moai-education/) | 5 | curriculum-designer, assessment-creator, research-assistant, course-operations-manual, course-followup-sequence |
 | [moai-career](./moai-career/) | 4 | resume-builder, job-analyzer, interview-coach, portfolio-guide |
 | [moai-lifestyle](./moai-lifestyle/) | 3 | travel-planner, event-planner, wellness-coach |
 | [moai-bi](./moai-bi/) | 1 | executive-summary |

@@ -5,7 +5,7 @@ description: >
   "신입 온보딩 계획 짜줘"처럼 말하면 됩니다. 채용 공고 작성, 면접 설계,
   평가 기준 수립, 온보딩 체크리스트, 멘토링 프로그램 설계를 지원합니다.
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 채용 관리자 (employment-manager)
@@ -94,7 +94,7 @@ version: 2.24.1
 
 1. 사용자 요청 수신 → 해당 영역 판별
 2. `references/{id}.md` 존재 시 로드 → 전략 가이드에 따라 실행
-3. `--deepthink` 또는 복잡 채용 설계 → `mcp__sequential-thinking__sequentialthinking` 호출
+3. `--deepthink` 또는 복잡 채용 설계 → sequential-thinking MCP가 설치돼 있으면 `mcp__sequential-thinking__sequentialthinking`를 활용, 없으면 `ultrathink` 키워드 기반 심층 추론 또는 일반 단계 추론으로 대체
 4. 결과물 생성 후 사용자 검토 요청
 
 ## 관련 스킬 (체인)

@@ -9,7 +9,7 @@ description: |
   - "대시보드 만들어줘"
   Mermaid·Recharts·Chart.js·Tremor·ECharts 중 적합한 스택으로 인터랙티브 대시보드를 제작하고, moai-office:pptx-designer / moai-office:docx-generator로 PPT·Word 변환까지 이어집니다.
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 데이터 시각화 (Data Visualizer)
@@ -21,7 +21,7 @@ version: 2.24.1
 ## 시각화 전략 (자동 판단)
 
 ### 방식 1: Mermaid 다이어그램 (간단 차트)
-- pie chart, bar chart, flowchart, gantt
+- pie chart, xychart-beta(막대/선), flowchart, gantt
 - Cowork Artifacts에서 직접 렌더링
 - 빠르고 가벼움, 별도 파일 불필요
 - 테마 인터뷰 **생략 가능** (Mermaid 기본 스타일 사용)

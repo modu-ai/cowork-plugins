@@ -3,7 +3,7 @@ name: wellness-coach
 description: >
   운동·식단·건강·육아·시니어 케어를 종합적으로 코칭합니다. "운동 루틴 만들어줘", "다이어트 식단 짜줘", "아이 발달 단계 알려줘", "부모님 노인 복지 서비스 알려줘"라고 요청할 때 사용하세요. 운동 계획, 영양 균형 식단, 육아 전략, 시니어 케어 계획을 지원합니다.
 user-invocable: true
-version: 2.24.1
+version: 2.25.0
 ---
 
 # 웰니스 코치 (Wellness Coach)
@@ -29,7 +29,7 @@ version: 2.24.1
 
 1. 사용자 요청 수신 → 해당 전략 가이드 판별
 2. `references/{id}.md` 로드 → 전략 가이드에 따라 실행
-3. `--deepthink` 또는 복잡 의사결정 → `mcp__sequential-thinking__sequentialthinking` 호출
+3. `--deepthink` 또는 복잡 의사결정 → sequential-thinking MCP가 설치돼 있으면 `mcp__sequential-thinking__sequentialthinking`를 활용, 없으면 `ultrathink` 키워드 기반 심층 추론 또는 일반 단계 추론으로 대체
 4. 결과물 생성 후 사용자 검토 요청
 
 ## 사용 예시
