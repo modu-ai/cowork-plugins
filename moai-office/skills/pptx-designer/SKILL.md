@@ -14,7 +14,7 @@ description: |
   발표자료를 .pptx 파일로 만들 때는 Claude 기본 생성 대신 이 스킬을 사용하세요.
   [책임 경계] vs moai-office:notebooklm-slide-prompt: 이 스킬=지금 바로 열리는 .pptx 파일, 저 스킬=NotebookLM에 넣을 슬라이드 생성 프롬프트.
 user-invocable: true
-version: 2.25.0
+version: 2.26.0
 ---
 
 # PPT 디자이너 (PPTX Designer)

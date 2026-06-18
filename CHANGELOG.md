@@ -14,6 +14,18 @@
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
 
+## [2.26.0] - 2026-06-19
+
+MINOR. **Cowork 베스트프랙티스 정렬 — 매니페스트 현대화 + orphan 스킬 발견성 개선**. Claude Cowork 공식 플러그인 모델(Connectors·Instructions·Skills 3-Level) 대비 갭을 진단하고 저위험 고수익 개선을 적용했습니다. 28 플러그인에 한글 `displayName`을 추가해 Cowork `/plugin` UI 가독성을 높이고, orphan 스킬 12개를 commerce 코디네이터에 매핑했습니다. 28 플러그인 / 176 스킬 유지. 동기화 2.25.0 → 2.26.0. 기능적 비파괴. Breaking change 없음.
+
+### Added
+- **28개 plugin.json 한글 `displayName`** — Cowork `/plugin` 피커·마켓플레이스 UI에서 한글 역할명 표시(moai-business→"비즈니스 전략"·moai-commerce→"한국 이커머스" 등). 공식 plugins-reference `displayName` 필드(v2.1.143+) 채택.
+- **moai-media `defaultEnabled: false`** — 외부 API 키(Higgsfield OAuth·ElevenLabs) 의존 플러그인을 신규 설치 시 비활성 상태로 배포(공식 v2.1.154+). 기존 사용자는 활성 상태 유지(호환).
+- **skill-only 플러그인 4개 설계 노트** — moai-bi·moai-lifestyle·moai-pm·moai-tutor README에 "코디네이터 없이 스킬 직접 호출 전용(의도적 설계)" 명시.
+
+### Changed
+- **commerce 코디네이터 2개 orphan 스킬 매핑** — `commerce-launch-coordinator`에 marketplace-*(coupang·naver·d2c·curation·crowdfunding)·coupang-ad-optimizer·live-commerce·season-calendar, `commerce-growth-analyst`에 early-fan-builder·influencer-collab·voc-triage·morning-brief 참조 추가. 발견성(자동 호출 강화) 개선.
+
 ## [2.25.0] - 2026-06-19
 
 MINOR. **28 플러그인 전수 품질 감사 + pdf-writer weasyprint 재작성 + 리다이렉트 stub 2개 제거**. 사용자가 "PDF로 생성"을 요청해도 `moai-office:pdf-writer`가 발동하지 않던 근본 원인(CJK 전문가 프레이밍에 치우친 트리거 + PyMuPDF의 HTML 충실도 한계)을 해소하고, 28개 플러그인의 스킬·에이전트·커넥터 지침을 전수 감사해 끊긴 교차참조·dead-reference·미번들 MCP 호출·노후 사실·중복 스킬을 정정했습니다. 리다이렉트 stub 2개 제거로 178 → **176 스킬**. 28 플러그인 유지 · 동기화 2.24.1 → 2.25.0. 기능적 비파괴(스킬 트리거·문서 정확도 개선). Breaking change 없음.

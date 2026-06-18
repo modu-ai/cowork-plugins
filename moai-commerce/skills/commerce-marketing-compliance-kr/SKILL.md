@@ -8,7 +8,7 @@ description: |
   과태료 위험: 1회 위반 최대 3,000만 원 과태료 (정통망법 제50조·제76조). 영리 목적 광고 정보 대량 전송 등 의도적 위반은 별도 징역형 조항(제50조의8) 적용 가능.
   ai-slop-reviewer 체이닝 제외 (규칙 기반 검증 스킬).
 user-invocable: true
-version: 2.25.0
+version: 2.26.0
 ---
 
 # 정보통신망법 광고·정보성 메시지 준수 게이트 (Korean Marketing Compliance)

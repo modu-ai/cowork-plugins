@@ -1,6 +1,7 @@
 {
   "name": "moai-tutor",
-  "version": "2.25.0",
+  "displayName": "개인 AI 튜터",
+  "version": "2.26.0",
   "description": "학습자·수강생 전용 개인 AI 튜터 — 내 학습 프로젝트 초기화, context7+웹검색 병렬 리서치로 최신 정보 수집, mermaid 도식·차트·수식·코드 하이라이트가 들어간 HTML 학습자료 자동 생성. claude code·cowork·영어 등 어떤 주제든 풍부한 설명과 도식으로 스스로 학습.",
   "author": {
     "name": "모두의AI"

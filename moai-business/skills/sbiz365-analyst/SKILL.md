@@ -13,7 +13,7 @@ description: |
   PDF를 첨부하면 업종·예산·목적을 먼저 물어본 뒤, 5대 분석과 창업 타당성 점수까지 담은 보고서를 만들고 AI 표현 다듬기로 이어집니다.
   [책임 경계] vs 산업 단위는 moai-business:market-analyst, 온라인 카테고리·검색 키워드 단위는 moai-commerce:commerce-market-research를 사용하세요. 이 스킬=오프라인 상권 단위 분석.
 user-invocable: true
-version: 2.25.0
+version: 2.26.0
 ---
 
 # 소상공인365 상권분석 전문가 스킬

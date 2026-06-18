@@ -14,7 +14,7 @@ description: |
   PDF 배포본이 필요하면 브라우저 `?print-pdf` 인쇄 모드를 쓰거나, 생성한 HTML을 moai-office:pdf-writer로 넘겨 변환하세요 (weasyprint를 직접 설치·호출하지 말 것).
   [책임 경계] vs moai-office:pptx-designer: 이 스킬=브라우저에서 바로 열리는 단일 .html 슬라이드 덱(편집 가능 .pptx는 pptx-designer 체이닝으로 산출). vs moai-office:notebooklm-slide-prompt: 저 스킬=NotebookLM 입력용 프롬프트(파일 생성 없음). vs moai-content:html-report: 저 스킬=연속 스크롤 문서/보고서(슬라이드 덱이 아님).
 user-invocable: true
-version: 2.25.0
+version: 2.26.0
 ---
 
 # html-slide — 단일 파일 HTML 슬라이드 덱 생성기

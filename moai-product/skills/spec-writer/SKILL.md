@@ -11,7 +11,7 @@ description: |
   기획 의도와 요구사항을 검토 가능한 문서로 정리하고, ai-slop-reviewer·humanize-korean으로 마무리할 수 있습니다.
   [책임 경계] 정부·지원사업 신청서는 moai-business:kr-gov-grant, R&D·연구비 과제는 moai-research:grant-writer로 라우팅
 user-invocable: true
-version: 2.25.0
+version: 2.26.0
 ---
 
 # 스펙 작성 (Spec Writer)

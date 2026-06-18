@@ -2,7 +2,7 @@
 
 [![License: NC-ND v1.0](https://img.shields.io/badge/License-NC--ND%20v1.0-red.svg)](LICENSE)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
-[![Version](https://img.shields.io/badge/Version-2.25.0-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-2.26.0-blue)](CHANGELOG.md)
 [![Plugins](https://img.shields.io/badge/Plugins-28-blue)](.claude-plugin/marketplace.json)
 [![Skills](https://img.shields.io/badge/Skills-176-green)](.claude-plugin/marketplace.json)
 [![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)
@@ -32,6 +32,19 @@
 | 📑 **문서·이커머스·BI** | `hwpx-writer` · `pdf-writer` · `detail-page-copy` · `executive-summary` · `weekly-report` | HWPX(한글) · 한·중·일·영 PDF · 13섹션 상세페이지 · 경영진 1pager · WBR 주간보고 |
 
 > 28개 플러그인 전체 카탈로그와 카테고리 비교는 [플러그인 카탈로그](#플러그인-카탈로그)와 [플러그인 상세 소개](#플러그인-상세-소개)를 참조하세요.
+
+---
+
+**🆕 v2.26.0 하이라이트** (2026-06-19) — **"Cowork 베스트프랙티스 정렬 — 28개 플러그인 한글 displayName + orphan 스킬 발견성 개선"**
+
+28 플러그인(유지), **176 스킬**(유지), 동기화 2.26.0. 기능·인터페이스 Breaking change 없음. MINOR 릴리스. Claude Cowork 공식 베스트프랙티스(Connectors·Instructions·Skills 3-Level) 대비 진단·정렬했습니다.
+
+- **28개 플러그인 한글 `displayName`** — Cowork `/plugin` 피커에서 한글 역할명 표시(moai-commerce→"한국 이커머스" 등). 공식 `displayName` 필드(v2.1.143+) 채택.
+- **moai-media opt-in 배포** — 외부 API 키(Higgsfield·ElevenLabs) 의존 플러그인을 신규 설치 시 비활성(`defaultEnabled:false`, v2.1.154+). 기존 사용자는 활성 유지.
+- **commerce 스킬 발견성 개선** — orphan 스킬 12개(marketplace-*·coupang-ad·live-commerce·VOC 등)를 `commerce-launch-coordinator`·`commerce-growth-analyst`에 매핑. 자동 호출 강화.
+- **skill-only 플러그인 의도 명시** — moai-bi·lifestyle·pm·tutor README에 "코디네이터 없이 직접 호출 전용(의도적)" 설계 노트.
+
+기존 워크플로우·플러그인 그대로 동작(기능적 비파괴). `/plugin marketplace update cowork-plugins`로 적용.
 
 ---
 

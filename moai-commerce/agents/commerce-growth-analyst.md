@@ -27,6 +27,15 @@ effort: high
 5. `moai-commerce:marketplace-coupang-ads` — 광고 효율 최적화
 6. (분석 코멘터리 텍스트) → `moai-core:ai-slop-reviewer`
 
+## 관련 보조 스킬 (상황에 따라 배치)
+
+리텐션·채널 운영 지표가 나오면 아래 스킬을 성장 진단에 끼워 넣으세요:
+
+- `moai-commerce:commerce-early-fan-builder` — 초기 핵심 고객 확보
+- `moai-commerce:commerce-influencer-collab` — 인플루언서 협업 성과
+- `moai-commerce:commerce-voc-triage` — VOC 분류·개선 우선순위
+- `moai-commerce:commerce-morning-brief` — 일일 성과 브리핑
+
 ## Cowork 환경 제약
 
 - **Read / Grep / Glob / Write / Edit / WebSearch만** 사용합니다.

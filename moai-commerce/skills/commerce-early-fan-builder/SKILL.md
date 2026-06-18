@@ -5,7 +5,7 @@ description: |
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   "충성 100명 만들기", "신생 브랜드 부트스트랩", "블랭크 사례", "강아지 가방 케이스", "얼리어답터 100명", "초기 팬 구축", "100명에서 1만명으로".
 user-invocable: true
-version: 2.25.0
+version: 2.26.0
 ---
 
 # 충성 100명 부트스트랩 (Commerce Early Fan Builder)

@@ -12,7 +12,7 @@ description: |
   AIDA·PAS·FAB 같은 검증된 틀로 작성하고, 공정거래법·표시광고법 금지 표현을 피합니다. 완성 후 moai-core:ai-slop-reviewer로 AI 티를 정리하면 좋습니다.
   [책임 경계] vs moai-commerce:commerce-channel-message: 이 스킬=범용 카피(블로그·일반 광고·슬로건), 저 스킬=이커머스 운영 카피(광고·톡톡·푸시·이메일·카트 이탈) 전용.
 user-invocable: true
-version: 2.25.0
+version: 2.26.0
 ---
 
 # 카피라이팅 (Copywriting)

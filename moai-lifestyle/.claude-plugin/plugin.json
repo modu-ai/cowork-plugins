@@ -1,6 +1,7 @@
 {
   "name": "moai-lifestyle",
-  "version": "2.25.0",
+  "displayName": "라이프스타일",
+  "version": "2.26.0",
   "description": "라이프스타일 — 여행 플래닝, 건강/식단, 웨딩/이벤트",
   "author": {
     "name": "모두의AI"

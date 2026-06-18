@@ -1,6 +1,7 @@
 {
   "name": "moai-operations",
-  "version": "2.25.0",
+  "displayName": "운영",
+  "version": "2.26.0",
   "description": "운영 — 결재 프로세스, 정부조달, SOP, 벤더 관리",
   "author": {
     "name": "모두의AI"

@@ -5,7 +5,7 @@ description: |
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   "연간 시즌 캘린더", "블프 솽스이 일정", "한국 시즌 이벤트", "분기 캠페인 계획", "시즌별 매출 피크", "명절 마케팅", "발렌타인 이벤트".
 user-invocable: true
-version: 2.25.0
+version: 2.26.0
 ---
 
 # 연간 시즌 캘린더 (Commerce Season Calendar)

@@ -28,6 +28,16 @@ effort: high
 6. `moai-commerce:commerce-channel-message` — 채널별 메시지
 7. (카피·메시지 텍스트) → `moai-core:ai-slop-reviewer` → `moai-content:humanize-korean`
 
+## 관련 보조 스킬 (상황에 따라 배치)
+
+런칭 채널·플랫폼이 정해지면 아래 스킬을 워크플로우 6번(채널 메시지) 전후로 끼워 넣으세요:
+
+- `moai-commerce:marketplace-naver` / `marketplace-coupang` / `marketplace-d2c` — 플랫폼별 진입·리스팅 전략
+- `moai-commerce:marketplace-curation` / `marketplace-crowdfunding` — 큐레이션·크라우드펀딩 채널
+- `moai-commerce:coupang-ad-optimizer` — 쿠팡 로켓/광고 최적화
+- `moai-commerce:live-commerce` — 라이브 커머스 기획
+- `moai-commerce:commerce-season-calendar` — 시즌·키 쇼핑데이 캘린더 반영
+
 ## Cowork 환경 제약
 
 - **Read / Grep / Glob / Write / Edit / WebSearch만** 사용합니다.

@@ -12,7 +12,7 @@ description: |
   현황·인시던트·사업계획·설명서·재무·PR 6종 서식을 갖췄고, 보고서 종류에 맞춰 자동으로 골라 줍니다.
   PDF 파일이 필요하면 생성한 HTML을 moai-office:pdf-writer로 넘겨 디자인 그대로 PDF로 변환하세요 (weasyprint를 직접 설치·호출하지 말 것).
 user-invocable: true
-version: 2.25.0
+version: 2.26.0
 ---
 
 # html-report — 단일 파일 HTML 보고서 렌더러

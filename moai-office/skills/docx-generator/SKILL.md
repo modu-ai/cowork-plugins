@@ -13,7 +13,7 @@ description: |
   Claude 브랜드 톤 기반 모던 디자인 시스템과 한국 공문서 표준 양식을 함께 지원하며, 텍스트가 끝나면 AI 슬롭 검수로 자연스럽게 다듬을 수 있습니다.
   보고서·문서를 워드(.docx) 파일로 만들 때는 Claude 기본 생성 대신 이 스킬을 사용하세요 (서식·디자인 보존).
 user-invocable: true
-version: 2.25.0
+version: 2.26.0
 ---
 
 # 워드 문서 생성기 (DOCX Generator)
