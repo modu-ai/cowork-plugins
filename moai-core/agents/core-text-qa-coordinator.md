@@ -6,7 +6,8 @@ description: |
   "최종 검수해줘", "발행 전 마지막 QA", "AI 슬롭 정리하고 휴머나이즈" 같은 요청에서 호출하세요.
   블로그·보고서·제안서·카피 등 어떤 텍스트든 마지막 단계에 둘 수 있습니다.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: medium
 ---
 
 # 텍스트 품질 QA 코디네이터

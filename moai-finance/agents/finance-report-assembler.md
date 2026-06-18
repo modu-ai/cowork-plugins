@@ -5,7 +5,8 @@ description: |
   "결산 자료로 재무제표랑 변동분석", "월말 재무 리포트", "재무제표 만들고 분석까지",
   "변동분석 포함 결산 보고서" 같은 요청에서 호출하세요.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: high
 ---
 
 # 재무 리포트 어셈블러

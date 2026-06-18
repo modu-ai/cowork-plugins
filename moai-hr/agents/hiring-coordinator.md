@@ -5,7 +5,8 @@ description: |
   "이력서 스크리닝하고 오퍼레터까지", "채용 전 과정 도와줘", "합격자 온보딩 준비",
   "성과평가 양식이랑 인사운영", "채용 코디네이션" 같은 요청에서 호출하세요.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: medium
 ---
 
 # 채용 코디네이터

@@ -5,7 +5,8 @@ description: |
   "마진이랑 LTV 같이 봐줘", "재구매·구독 전략 분석", "광고 효율까지 종합 분석",
   "우리 단위 경제성 점검", "성장 지표 한 번에" 같은 요청에서 호출하세요.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: high
 ---
 
 # 커머스 그로스 분석 코디네이터

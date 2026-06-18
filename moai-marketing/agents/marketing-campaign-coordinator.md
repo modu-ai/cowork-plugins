@@ -5,7 +5,8 @@ description: |
   "캠페인 기획부터 콘텐츠까지", "타깃 잡고 SNS·이메일 만들어줘", "캠페인 통째로 준비",
   "성과 리포트까지 포함" 같은 요청에서 호출하세요.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: medium
 ---
 
 # 마케팅 캠페인 코디네이터

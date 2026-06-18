@@ -5,7 +5,8 @@ description: |
   "이 계약서 검토해줘", "NDA 빠르게 보고 리스크까지", "법적 리스크 점검",
   "컴플라이언스 체크", "계약 검토 통째로" 같은 요청에서 호출하세요.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: high
 ---
 
 # 법무 검토 코디네이터

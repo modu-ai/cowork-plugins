@@ -5,7 +5,8 @@ description: |
   "상세페이지 기획부터 카피까지", "제품 상세 페이지 글 써줘", "디테일 페이지 통째로",
   "상세 기획하고 카피라이팅까지" 같은 요청에서 호출하세요.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: medium
 ---
 
 # 콘텐츠 상세페이지 오케스트레이터

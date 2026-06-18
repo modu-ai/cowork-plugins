@@ -5,7 +5,8 @@ description: |
   "논문 찾아서 정리하고 작성", "특허 검색하고 분석", "선행연구 조사부터 작성",
   "연구계획서·논문 통째로" 같은 요청에서 호출하세요.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: high
 ---
 
 # 리서치 스카우트 코디네이터

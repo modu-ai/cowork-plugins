@@ -5,7 +5,8 @@ description: |
   "프로세스 정리하고 벤더 관리", "운영 상태 보고서", "업무 프로세스·벤더·보고 통합",
   "운영 코디네이션" 같은 요청에서 호출하세요.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: medium
 ---
 
 # 운영 코디네이터

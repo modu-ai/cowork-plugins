@@ -5,7 +5,8 @@ description: |
   "데이터 탐색하고 차트까지", "분석해서 시각화·리포트", "공공데이터로 분석 리포트",
   "데이터 정리부터 해설까지" 같은 요청에서 호출하세요.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: high
 ---
 
 # 데이터 분석 코디네이터

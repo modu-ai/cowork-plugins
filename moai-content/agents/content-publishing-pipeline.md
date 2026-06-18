@@ -5,7 +5,8 @@ description: |
   "블로그 쓰고 SNS용으로도", "콘텐츠 캘린더대로 발행", "이 글 채널별로 리퍼포징",
   "뉴스레터랑 카드뉴스까지", "멀티채널 콘텐츠" 같은 요청에서 호출하세요.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: low
 ---
 
 # 멀티채널 발행 파이프라인

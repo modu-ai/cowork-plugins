@@ -380,7 +380,7 @@ Phase 3에서 설계된 체인 중 **전담 에이전트로 만들 가치가 있
 3. 변수 치환
    - {agent_name}          체인을 대표하는 소문자-하이픈 식별자(파일명과 동일). 예: finance-report-pack
    - {agent_description}    호출 트리거 + 역할 서술 (블록 스칼라 본문, 여러 줄 가능)
-   - {agent_tools}          기본 "Read, Write, Edit, Grep, Glob, Bash"
+   - {agent_tools}          기본 "Read, Grep, Glob, Write, Edit, WebSearch" (Cowork 서브에이전트 표준 — Bash·WebFetch는 Cowork 서브에이전트에서 미동작하므로 기본 도구에서 제외. 셸 작업이 필요하면 부모 세션에 위임)
    - {agent_color}          공식 enum 중 택1 (red/blue/green/yellow/purple/orange/pink/cyan)
    - {agent_display_name}   한국어 제목. 예: 재무 보고 패키지 에이전트
    - {agent_role_sentence}  역할 1-2문장 요약

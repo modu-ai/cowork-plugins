@@ -5,7 +5,8 @@ description: |
   "문의 분류하고 답변 초안", "티켓 트리아지하고 KB 정리", "응답이랑 에스컬레이션",
   "CS 문의 한 번에 처리" 같은 요청에서 호출하세요.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: low
 ---
 
 # CS 티켓 트리아지 배치

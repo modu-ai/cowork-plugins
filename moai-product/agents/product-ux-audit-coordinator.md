@@ -5,7 +5,8 @@ description: |
   "UX 리서치하고 설계까지", "스펙 문서랑 로드맵", "제품 기획 통째로",
   "사용자 조사부터 로드맵" 같은 요청에서 호출하세요.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: high
 ---
 
 # 프로덕트 UX 코디네이터

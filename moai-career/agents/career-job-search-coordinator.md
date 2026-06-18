@@ -5,7 +5,8 @@ description: |
   "이 공고에 맞춰 이력서랑 포트폴리오", "직무 분석하고 면접 준비까지", "취업 준비 통째로",
   "이력서부터 면접 코칭" 같은 요청에서 호출하세요.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: medium
 ---
 
 # 커리어 구직 코디네이터

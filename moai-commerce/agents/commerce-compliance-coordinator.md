@@ -5,7 +5,8 @@ description: |
   "광고 문구 법적으로 괜찮아?", "식약처 표시 점검", "표시광고법 검수",
   "이 카피 규정 위반 없나", "런칭 전 컴플라이언스 체크" 같은 요청에서 호출하세요.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: high
 ---
 
 # 커머스 컴플라이언스 코디네이터

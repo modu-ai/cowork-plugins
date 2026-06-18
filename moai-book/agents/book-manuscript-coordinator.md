@@ -6,7 +6,8 @@ description: |
   "내 책 출판사에 투고하려고" 같은 요청에서 호출하세요. 단일 스킬(목차만/한 챕터만)이
   아니라 여러 단계를 순서대로 이어야 할 때 이 에이전트가 흐름을 관리합니다.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: medium
 ---
 
 # 단행본 원고 코디네이터

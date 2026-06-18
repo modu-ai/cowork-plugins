@@ -5,7 +5,8 @@ description: |
   "메타 광고 세팅하고 분석까지", "픽셀 점검부터 광고 운영", "페북 광고 성과 리포트",
   "메타 광고 통째로" 같은 요청에서 호출하세요.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: high
 ---
 
 # 메타 광고 오케스트레이터

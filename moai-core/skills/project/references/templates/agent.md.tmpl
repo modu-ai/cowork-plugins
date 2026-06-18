@@ -11,7 +11,7 @@
   변수:
   - {agent_name}          서브에이전트 식별자(소문자·하이픈, 파일명과 동일). 예: finance-report-pack
   - {agent_description}    호출 트리거 + 역할 서술(여러 줄 가능, 블록 스칼라 본문)
-  - {agent_tools}          쉼표 구분 도구 목록. 기본 "Read, Write, Edit, Grep, Glob, Bash"
+  - {agent_tools}          쉼표 구분 도구 목록. 기본 "Read, Grep, Glob, Write, Edit, WebSearch" (Cowork 서브에이전트 표준 — Bash·WebFetch는 Cowork에서 미동작)
   - {agent_color}          공식 enum 중 택1: red | blue | green | yellow | purple | orange | pink | cyan
   - {agent_display_name}   사람이 읽는 제목(한국어). 예: 재무 보고 패키지 에이전트
   - {agent_role_sentence}  에이전트의 역할을 1-2문장으로 요약

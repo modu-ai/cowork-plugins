@@ -5,7 +5,8 @@ description: |
   "신상품 런칭 준비", "상품 출시 전략 세워줘", "시장조사부터 프로모션까지",
   "런칭 캠페인 통째로", "페르소나 잡고 네이밍·프로모션까지" 같은 요청에서 호출하세요.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: high
 ---
 
 # 커머스 런칭 코디네이터

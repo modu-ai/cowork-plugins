@@ -5,7 +5,8 @@ description: |
   "사업계획서 만들어줘", "IR 덱 준비", "투자 유치 자료", "전략부터 발표자료까지",
   "시장분석 넣어서 사업계획" 같은 요청에서 호출하세요. 여러 단계를 순서대로 엮어야 할 때 사용합니다.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: xhigh
 ---
 
 # 사업계획서·IR 코디네이터

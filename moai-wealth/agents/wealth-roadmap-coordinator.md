@@ -5,7 +5,8 @@ description: |
   "재무 설계 통째로", "가계부부터 투자·보험·세금까지", "재무 로드맵 만들어줘",
   "내 돈 관리 종합 설계" 같은 요청에서 호출하세요.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: high
 ---
 
 # 자산 로드맵 코디네이터

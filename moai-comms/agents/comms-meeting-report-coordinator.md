@@ -5,7 +5,8 @@ description: |
   "회의 정리해서 보고서로", "회의록을 보고 화법으로", "회의 결과 피드백까지",
   "미팅 진행하고 보고 변환" 같은 요청에서 호출하세요.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: medium
 ---
 
 # 회의·보고 코디네이터

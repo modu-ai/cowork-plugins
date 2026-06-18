@@ -5,7 +5,8 @@ description: |
   "보고서 문서로 만들고 검수까지", "PPT 만들고 다듬어줘", "한글 문서 작성하고 QA",
   "문서 생성 후 AI 티 제거" 같은 요청에서 호출하세요.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: medium
 ---
 
 # 오피스 문서 QA 코디네이터

@@ -5,7 +5,8 @@ description: |
   "SEO랑 랜딩 같이 점검", "전환율 감사", "마케팅 자산 종합 진단",
   "픽셀까지 감사 한 번에" 같은 요청에서 호출하세요.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: high
 ---
 
 # 마케팅 감사 코디네이터

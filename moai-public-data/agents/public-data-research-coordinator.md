@@ -5,7 +5,8 @@ description: |
   "공공데이터 여러 개 묶어서 분석", "법원경매·주식·부동산 종합 조회", "공공 데이터 리포트",
   "여러 데이터 합쳐서 정리" 같은 요청에서 호출하세요.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: high
 ---
 
 # 공공데이터 리서치 코디네이터

@@ -5,7 +5,8 @@ description: |
   "목표 세우고 습관·시간까지 설계", "생산성 시스템 통째로", "주간 회고 루틴",
   "목표부터 회고까지" 같은 요청에서 호출하세요.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: medium
 ---
 
 # 생산성 플래닝 코디네이터

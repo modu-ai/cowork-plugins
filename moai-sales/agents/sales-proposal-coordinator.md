@@ -5,7 +5,8 @@ description: |
   "제안서 써줘", "영업 제안서 작성하고 다듬어줘", "제안서 QA까지",
   "고객 제안서 마감" 같은 요청에서 호출하세요.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: medium
 ---
 
 # 영업 제안서 코디네이터

@@ -5,7 +5,8 @@ description: |
   "Claude Design 핸드오프 준비", "디자인 브리프부터 프롬프트까지", "디자인 시스템 준비하고 검수",
   "핸드오프 패키지 통째로" 같은 요청에서 호출하세요.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: medium
 ---
 
 # 디자인 핸드오프 코디네이터

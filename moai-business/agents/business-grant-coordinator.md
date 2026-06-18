@@ -5,7 +5,8 @@ description: |
   "정부지원사업 신청서", "창업지원금 받고 싶어", "소상공인 지원사업 분석",
   "지원사업 매칭하고 신청서까지", "사업화 지원 신청서 써줘" 같은 요청에서 호출하세요.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: high
 ---
 
 # 정부지원사업 신청 코디네이터

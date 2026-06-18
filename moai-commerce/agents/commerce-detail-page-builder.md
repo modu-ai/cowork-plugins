@@ -5,7 +5,8 @@ description: |
   "상세페이지 만들어줘", "디테일 페이지 카피랑 이미지", "제품 상세 이미지 기획",
   "상세페이지 통째로 준비" 같은 요청에서 호출하세요.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: medium
 ---
 
 # 커머스 상세페이지 빌더

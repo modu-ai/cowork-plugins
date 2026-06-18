@@ -5,7 +5,8 @@ description: |
   "강의 커리큘럼 만들고 평가까지", "코스 운영 매뉴얼이랑 후속 메일", "교육과정 통째로 설계",
   "커리큘럼부터 운영까지" 같은 요청에서 호출하세요.
 tools: Read, Grep, Glob, Write, Edit, WebSearch
-model: sonnet
+model: inherit
+effort: medium
 ---
 
 # 교육 코스 빌더

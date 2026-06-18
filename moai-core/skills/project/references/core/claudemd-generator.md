@@ -65,7 +65,19 @@ bare `/project`(레거시 `/project init`) 초기화 Phase 6에서 호출되는 
 
 ### 2.3 스킬 체인 기록
 
-Phase 3에서 설계된 각 산출물 체인을 `{workflow_chains}` 슬롯에 다음 형식으로 주입:
+Phase 3에서 설계된 각 산출물 체인을 `{workflow_chains}` 슬롯에 주입한다. 체인 표기 규약의 SSOT는 `references/core/agent-catalog.md` §체인 표기 규약이며, 코디네이터 우선 판정(§결정 규칙)에 따라 아래 두 형식 중 하나를 쓴다.
+
+**(a) 매칭 코디네이터가 있는 경우** — 담당 코디네이터를 실행기로 명시한다:
+
+```markdown
+### {산출물명}
+- 요청 예시: "..."
+- 실행기: `{coordinator-name}` (에이전트, Cowork)
+- 내부 체인: `skill-A` → `skill-B` → `ai-slop-reviewer` → `humanize-korean`
+- 폴백(에이전트 미가용 시): `skill-A` → `skill-B` → `ai-slop-reviewer`  (인라인 스킬 체인)
+```
+
+**(b) 매칭 코디네이터가 없는 경우** — 인라인 스킬 체인으로 표기한다:
 
 ```markdown
 ### {산출물명}
@@ -108,9 +120,10 @@ moai-core/skills/project/references/templates/CLAUDE.md.tmpl
 | 변수 | 출처 |
 |------|------|
 | `{installed_plugins}` | Phase 2에서 감지된 플러그인 리스트(쉼표 구분) |
-| `{workflow_chains}` | Phase 3에서 설계된 체인 블록(Markdown) |
+| `{workflow_chains}` | Phase 3에서 설계된 체인 블록(Markdown, 담당 코디네이터 명시 — §2.3 형식) |
+| `{coordinator_agents}` | Phase 3에서 실행기로 채택된 코디네이터를 §5.4 표로 렌더(`agents_available` ∩ Phase 3 선택분, `agent-catalog.md` §체인 표기 규약). 관련 0건이면 빈 값 |
 | `{generated_agents}` | Phase 3.5에서 생성된 프로젝트 에이전트 목록(이름 + 한 줄 설명). 생성 0건이면 빈 값 |
-| `{routing_summary}` | 설치된 플러그인 기반 키워드 → 플러그인 매핑 테이블 |
+| `{routing_summary}` | 설치된 플러그인 기반 키워드 → 플러그인 매핑 테이블(각 플러그인의 `router.md` §3 키워드 행에서 도출) |
 
 ### 4.3 시스템 변수
 
@@ -138,10 +151,13 @@ moai-core/skills/project/references/templates/CLAUDE.md.tmpl
 
 2. 변수 수집
    - Phase 1 인터뷰 결과
-   - Phase 2 감지된 플러그인
+   - Phase 2 감지된 플러그인 + `agents_available`(코디네이터 인벤토리)
    - Phase 3 스킬 체인 설계
+   - Phase 3에서 실행기로 채택된 코디네이터 → {coordinator_agents} 슬롯에 §5.4 표로 주입
+     (`agents_available` ∩ Phase 3 선택분, `agent-catalog.md` §체인 표기 규약. 관련 0건이면 빈 값)
    - Phase 3.5에서 생성한 프로젝트 에이전트 목록 → {generated_agents} 슬롯에 주입
      (생성 0건이면 빈 값 — 해당 섹션은 비어 있게 둔다)
+   - 설치된 플러그인 각각의 `router.md` §3 키워드 행 → {routing_summary} 요약 테이블 생성
    - Phase 7 등록된 API 키/커넥터
 
 3. 치환
@@ -168,6 +184,9 @@ moai-core/skills/project/references/templates/CLAUDE.md.tmpl
 - [ ] **200라인 이내** (`wc -l` 확인)
 - [ ] 프로젝트명·산출물·톤 제약이 올바르게 치환됨
 - [ ] 스킬 체인 블록이 `{workflow_chains}` 자리에 주입됨
+- [ ] `{coordinator_agents}` 표가 §5.4에 주입됨 (관련 코디네이터 0건이면 의도적 빈 값)
+- [ ] `{generated_agents}`가 §5.5에 처리됨 (생성 0건이면 의도적 빈 값)
+- [ ] `{routing_summary}`가 §7에 주입됨
 - [ ] office/web 스킬 우선 표(§3)가 고정 포함됨
 - [ ] AI 슬롭 후처리 규칙(§4)이 고정 포함됨
 - [ ] 실행 플로우(Interview → Plan → Confirm → Execute) 포함
@@ -194,3 +213,5 @@ moai-core/skills/project/references/templates/CLAUDE.md.tmpl
 - 프로젝트 맥락: `./.moai/context.md`
 - API 키: `./.moai/credentials.env` (프로젝트 격리)
 - 체인 프리셋: `references/core/init-protocol.md` §3-2
+- 코디네이터 인지·체인 표기 규약: `references/core/agent-catalog.md` (§체인 표기 규약·§결정 규칙)
+- 라우팅 키워드 맵: `references/core/router.md` §3
