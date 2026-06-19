@@ -7,7 +7,7 @@ description: |
   체인: course-operations-manual → moai-core:ai-slop-reviewer (운영 매뉴얼 텍스트 검수) → moai-office:docx-generator (Word .docx 출력).
   [책임 경계] vs moai-education:curriculum-designer: operations-manual=운영 절차·체크리스트, curriculum-designer=커리큘럼·학습설계
 user-invocable: true
-version: 2.26.0
+version: 2.27.0
 ---
 
 # 강의 운영 매뉴얼 자동 생성 (강사·교수·교사용)

@@ -7,7 +7,7 @@ description: |
   6대 지표 통합: CAC·재구매율·구매주기·ARPU·공헌이익·LTV 연결 다이어그램 + 정상/위험 범위 + 한국 D2C 벤치마크. 광고 의존도 진단: 광고비 매출 비율 30%+ → 11-15% 전환 로드맵.
   ai-slop-reviewer 체이닝 제외 (수치·표·다이어그램 데이터 스킬).
 user-invocable: true
-version: 2.26.0
+version: 2.27.0
 ---
 
 # 고객 단위 수익 구조 설계 (LTV/CAC Architect)

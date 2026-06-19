@@ -11,7 +11,7 @@ description: |
   - "임원 주간보고", "팀 주간보고"
   [책임 경계] 제품 발견·로드맵/마일스톤 기획은 moai-product:roadmap-manager, 본 스킬은 운영 케이던스(주간보고)
 user-invocable: true
-version: 2.26.0
+version: 2.27.0
 ---
 
 # Weekly Report — 한국 팀 주간보고(WBR) 자동 생성

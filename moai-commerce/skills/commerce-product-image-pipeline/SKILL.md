@@ -8,7 +8,7 @@ description: |
   페어 스킬 detail-page-image(13섹션 합성 PNG)와 명확히 구분 — 본 스킬은 모델 체인 오케스트레이션, 페어는 단일 합성.
   ai-slop-reviewer 체이닝 제외 (이미지·영상 산출물).
 user-invocable: true
-version: 2.26.0
+version: 2.27.0
 ---
 
 # 상품 이미지·영상 풀스택 파이프라인 (Product Image Pipeline)

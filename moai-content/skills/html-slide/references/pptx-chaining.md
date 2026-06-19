@@ -27,7 +27,7 @@ SKILL.md "입력" 섹션의 `export_pptx` 설명과 1단계 AskUserQuestion에�
 
 ## design_system 승계 매핑
 
-html-slide의 design_system(56 시스템) → pptx-designer의 10 큐레이션 팔레트 자동 매핑 규약:
+html-slide의 design_system(75 시스템) → pptx-designer의 10 큐레이션 팔레트 자동 매핑 규약:
 
 | html-slide design_system | pptx-designer 팔레트 | 근거 |
 |--------------------------|----------------------|------|
@@ -36,7 +36,7 @@ html-slide의 design_system(56 시스템) → pptx-designer의 10 큐레이션 �
 | `clay` | Claude Coral (Crail #c15f3c) | playful saturated |
 | `notion` | Claude Classic (warm minimalism 유사) | 밝은 편집성 |
 | `spotify`·`nike` | High Contrast Bold | 임팩트 |
-| 그 외 56개 | Claude Classic (기본 폴백) + 시스템 primary 색을 pptx-designer primary에 주입 | design-system-library 토큰 우선 |
+| 그 외 75개 | Claude Classic (기본 폴백) + 시스템 primary 색을 pptx-designer primary에 주입 | design-system-library 토큰 우선 |
 
 > 매핑이 완벽하지 않아도 pptx-designer가 자체 10팔레트로 일관된 PPTX를 산출합니다. design_system 토큰의 primary/canvas 색을 pptx-designer의 colors 객체에 주입해 최대한 브랜드 정합.
 

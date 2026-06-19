@@ -14,7 +14,7 @@ description: |
   Seedance 2.0·Seedance Pro·Cinema Studio 3.5·Kling 2.1 Master·Kling 2.5 Turbo·Kling 3.0·Kling Avatars 2.0·MiniMax Hailuo 02·Google Veo 3·Sora 2·Wan 2.5 11개 공식 영상 모델과 6가지 비디오 프리셋(UGC·Unboxing·Product review·Hyper motion·TV spot·Wild Card), 캐릭터 일관성(Kling Avatars 2.0), 비동기 잡 폴링까지 처리한 완성 영상을 산출합니다.
   실제 영상 생성 요청 시 Higgsfield MCP가 연결돼 있으면 이 스킬을 사용하세요.
 user-invocable: true
-version: 2.26.0
+version: 2.27.0
 ---
 
 # Higgsfield 영상 생성 (higgsfield-video)

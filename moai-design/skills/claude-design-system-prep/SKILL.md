@@ -12,7 +12,7 @@ description: |
   - "claude.ai/design 디자인 시스템 셋업 준비"
   - "DESIGN.md 만들어 줘"
 user-invocable: true
-version: 2.26.0
+version: 2.27.0
 ---
 
 # claude-design-system-prep — 디자인 시스템 자산 합성
@@ -36,9 +36,9 @@ Claude Design 디자인 시스템, 디자인 시스템 자산, DESIGN.md, 브랜
 | **브랜드 자산** | 로고 SVG·PNG, 색 팔레트 이미지, 스타일 가이드 PDF | 색·타이포·로고 사용 규칙 |
 | **실물** | 운영 중 웹사이트 URL, PPTX 덱, 잘 만든 마케팅 페이지 | 실제 컴포넌트·간격·voice |
 | **사전 빌트인** | Apple · Linear · Stripe 시스템 (오픈 라이선스) | 시작점 |
-| **디자인 시스템 라이브러리** | `moai-design:design-system-library`의 56개 시스템 (claude · clickhouse · clay 등) | 토큰(색·타이포·radius·spacing) + 컴포넌트 매핑 — DESIGN.md 합성의 즉시 소스 |
+| **디자인 시스템 라이브러리** | `moai-design:design-system-library`의 75개 시스템 (claude · clickhouse · clay 등) | 토큰(색·타이포·radius·spacing) + 컴포넌트 매핑 — DESIGN.md 합성의 즉시 소스 |
 
-> **우선 순위 (v2.21.0+)**: 사용자가 특정 브랜드 무드를 지정하거나 결과물 성격에 맞는 시스템이 필요하면, 별도 자산 수집 전 **`design-system-library`의 56개 시스템에서 먼저 선택**합니다. `claude-design-system-prep`는 선택된 `systems/<name>.md` 토큰을 DESIGN.md 합성의 1차 소스로 사용합니다. 외부 자산(웹사이트 URL·Figma 등)은 라이브러리 시스템에 대한 보강 자료로만 활용합니다.
+> **우선 순위 (v2.21.0+)**: 사용자가 특정 브랜드 무드를 지정하거나 결과물 성격에 맞는 시스템이 필요하면, 별도 자산 수집 전 **`design-system-library`의 75개 시스템에서 먼저 선택**합니다. `claude-design-system-prep`는 선택된 `systems/<name>.md` 토큰을 DESIGN.md 합성의 1차 소스로 사용합니다. 외부 자산(웹사이트 URL·Figma 등)은 라이브러리 시스템에 대한 보강 자료로만 활용합니다.
 
 ## 워크플로우
 

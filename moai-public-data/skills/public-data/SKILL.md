@@ -9,7 +9,7 @@ description: |
   - "KOSIS 검색"
   data.go.kr API와 KOSIS OpenAPI로 실시간 데이터를 조회하고 분석해 핵심 인사이트로 정리합니다.
 user-invocable: true
-version: 2.26.0
+version: 2.27.0
 ---
 
 # 공공데이터 조회 (Public Data)

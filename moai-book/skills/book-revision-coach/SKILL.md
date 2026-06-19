@@ -9,7 +9,7 @@ description: |
   - "문장 다듬기", "어법 점검", "문체 일관성"
   - "논리 흐름 검증", "분량 정리"
 user-invocable: true
-version: 2.26.0
+version: 2.27.0
 ---
 
 # book-revision-coach

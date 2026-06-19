@@ -7,7 +7,7 @@ description: |
   3가지 프로모션 타입: ① 이슈화(브랜드 인지도 폭발) ② 얼리버드(충성 고객 확보) ③ 한정(즉각 매출). 한국 스몰 D2C 12배 매출 케이스 실전 매뉴얼.
   ai-slop-reviewer 자동 체이닝 (기획서 텍스트 산출물).
 user-invocable: true
-version: 2.26.0
+version: 2.27.0
 ---
 
 # 3대 프로모션 기획법 (Commerce Promotion Planner)

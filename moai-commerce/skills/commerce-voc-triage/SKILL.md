@@ -7,7 +7,7 @@ description: |
   2개 동작 모드가 자연어로 자동 선택됩니다 — ① 리뷰 집계 모드(4채널 리뷰 → 감정·키워드·인사이트·액션플랜 4단 분석) ② VOC 분류·트리아지 모드(고객 핏·빈도·핵심 가치 3축 × KTAS 5단계 응급도 → 처리 순서 + 응답 템플릿). 텍스트 산출물(인사이트·액션플랜·응답 템플릿)은 moai-core:ai-slop-reviewer를 자동 체이닝합니다.
   [책임 경계] 응답 메시지 카피 작성은 moai-commerce:commerce-channel-message, 분석 결과 PPT는 moai-office:pptx-designer로 위임.
 user-invocable: true
-version: 2.26.0
+version: 2.27.0
 ---
 
 # 고객의 소리 통합 (Commerce VOC)

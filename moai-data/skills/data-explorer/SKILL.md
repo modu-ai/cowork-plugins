@@ -9,7 +9,7 @@ description: |
   - "데이터 품질 체크해줘"
   컬럼 요약·결측값/이상값 탐지·상관관계 분석을 거쳐 데이터 품질 보고서로 정리합니다.
 user-invocable: true
-version: 2.26.0
+version: 2.27.0
 ---
 
 # 데이터 탐색기 (Data Explorer)

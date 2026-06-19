@@ -10,11 +10,11 @@ description: |
   - "슬라이드 만들고 PPTX로도 저장해줘"
   - "투자 피칭 덱 인터랙티브 HTML로"
   - "발표 자료를 HTML 슬라이드 + 편집 가능 PPTX 둘 다"
-  design-system-library 56개 브랜드 토큰 중 테마를 골라 적용하고, 각 토큰별 getdesign.md 상세 페이지 링크로 미리보기를 제공합니다.
+  design-system-library 75개 브랜드 토큰 중 테마를 골라 적용하고, 각 토큰별 getdesign.md 상세 페이지 링크로 미리보기를 제공합니다.
   PDF 배포본이 필요하면 브라우저 `?print-pdf` 인쇄 모드를 쓰거나, 생성한 HTML을 moai-office:pdf-writer로 넘겨 변환하세요 (weasyprint를 직접 설치·호출하지 말 것).
   [책임 경계] vs moai-office:pptx-designer: 이 스킬=브라우저에서 바로 열리는 단일 .html 슬라이드 덱(편집 가능 .pptx는 pptx-designer 체이닝으로 산출). vs moai-office:notebooklm-slide-prompt: 저 스킬=NotebookLM 입력용 프롬프트(파일 생성 없음). vs moai-content:html-report: 저 스킬=연속 스크롤 문서/보고서(슬라이드 덱이 아님).
 user-invocable: true
-version: 2.26.0
+version: 2.27.0
 ---
 
 # html-slide — 단일 파일 HTML 슬라이드 덱 생성기
@@ -27,7 +27,7 @@ version: 2.26.0
 - 단일 `.html` 파일 — 외부 빌드 단계·런타임 SPA 의존 없이 `file://`로 즉시 오픈
 - 인포그래픽은 LLM이 인라인 SVG로 직접 저작 — 한국어 숫자·라벨 100% 정확, 확대 선명, 재현 가능
 - 실사·일러스트 이미지는 Higgsfield MCP 또는 codex(gpt-image-2)로 생성 — 허용 백엔드만 사용 (`references/image-backend-policy.md`)
-- design-system-library 56개 브랜드 토큰 적용 — 각 토큰별 getdesign.md 상세 페이지 링크 제공
+- design-system-library 75개 브랜드 토큰 적용 — 각 토큰별 getdesign.md 상세 페이지 링크 제공
 - 편집 가능 PPTX 산출은 `pptx-designer`(moai-office) 체이닝으로 위임 — 자체 구현하지 않음(중복·책임 모호화 방지)
 
 **원고 SSOT**: 모든 덱은 구조화 원고 `deck.json`(title/bullets/chart-data/image-path/layout-key/notes)을 단일 진실 원천으로 둡니다. HTML 렌더와 (체이닝 시) pptx-designer PPTX 렌더 양쪽이 같은 원고를 소비합니다 — 픽셀→OOXML 역매핑이 아니라 원고→객체 직접 생성이 "편집 가능 PPTX"의 보증 기구입니다.
@@ -39,7 +39,7 @@ version: 2.26.0
 | 인자 | 필수 | 기본값 | 설명 |
 |------|------|--------|------|
 | `topic` / 자연어 주제 | ✓ | — | 덱 주제·대상 청중·발표 목적 |
-| `design_system` | — | `claude` | `claude` \| `clickhouse` \| `clay` 또는 [`design-system-library`](../../../moai-design/skills/design-system-library/SKILL.md)의 56개 시스템. 지정 시 Tailwind Play CDN + shadcn vanilla 컴포넌트로 해당 브랜드 토큰 적용. 각 토큰별 getdesign.md 미리보기 링크는 [`references/design-system-links.md`](references/design-system-links.md) |
+| `design_system` | — | `claude` | `claude` \| `clickhouse` \| `clay` 또는 [`design-system-library`](../../../moai-design/skills/design-system-library/SKILL.md)의 75개 시스템. 지정 시 Tailwind Play CDN + shadcn vanilla 컴포넌트로 해당 브랜드 토큰 적용. 각 토큰별 getdesign.md 미리보기 링크는 [`references/design-system-links.md`](references/design-system-links.md) |
 | `slide_count` / 발표 시간 | — | 주제에서 추천 | 3분=5-7장 · 10분=10-15장 · 30분=20-30장 |
 | `aspect_ratio` | — | `16:9` | `16:9`(프로젝터 표준) \| `1:1`(소셜/카드뉴스) |
 | `locale` | — | `ko` | `ko` \| `en` — 헤드라인·카피 언어 |
@@ -62,7 +62,7 @@ version: 2.26.0
 ## 핵심 워크플로우 (9단계)
 
 ### 1. 컨텍스트 수집
-`AskUserQuestion`으로 design_system(56 시스템, 기본 `claude`)·발표 시간(슬라이드 수)·이미지 필요 여부·PPTX 산출 여부를 확인합니다. design_system 선택 시 [`references/design-system-links.md`](references/design-system-links.md)의 getdesign.md 링크로 각 토큰 상세 페이지를 안내해 사용자가 미리보기로 확인할 수 있게 합니다.
+`AskUserQuestion`으로 design_system(75 시스템, 기본 `claude`)·발표 시간(슬라이드 수)·이미지 필요 여부·PPTX 산출 여부를 확인합니다. design_system 선택 시 [`references/design-system-links.md`](references/design-system-links.md)의 getdesign.md 링크로 각 토큰 상세 페이지를 안내해 사용자가 미리보기로 확인할 수 있게 합니다. **강연/발표 맥락** — 비개발자 청중 다수·주간·프로젝터 환경에서는 라이트 테마(claude·notion·apple·stripe·mintlify)가 안전합니다. 다크는 발표 공간을 어둡게 조절할 수 있을 때만 권장.
 
 ### 2. 원고 SSOT 구축 (핵심)
 `deck.json` 원고를 먼저 작성합니다 — title/bullets/chart-data/image-path/layout-key/notes. 이 원고가 HTML 렌더와 pptx-designer PPTX 렌더 양쪽의 공통 소스입니다. 스키마: [`references/deck-manuscript-schema.md`](references/deck-manuscript-schema.md). layout-key는 pptx-designer 9 아키타입(Title/Agenda/Problem/Solution/Features/Stats/Team/CTA/Closing)에 정합시킵니다.
@@ -108,7 +108,7 @@ design_system 지정 시 `systems/<name>.md` 토큰 → Tailwind Play CDN config
 | `design_system` | 엔진 | 외부 의존 | 산출물 특성 |
 |-----------------|------|-----------|-------------|
 | **미지정** | 0의존 (기본 템플릿) | 폰트 CDN 1건만 | 오프라인·인쇄·이메일 첨부 가능 |
-| **`claude` / `clickhouse` / `clay` / 56개** | Tailwind Play CDN | Tailwind CDN + 폰트 CDN | 브랜드 무드 적용, 인터넷 연결 필요 |
+| **`claude` / `clickhouse` / `clay` / 75개** | Tailwind Play CDN | Tailwind CDN + 폰트 CDN | 브랜드 무드 적용, 인터넷 연결 필요 |
 
 ### 테마별 적합 슬라이드 (자동 추천)
 
@@ -116,11 +116,15 @@ design_system 지정 시 `systems/<name>.md` 토큰 → Tailwind Play CDN config
 |-----------|-------------------|
 | 사업계획서·보고서·편집성 (기본) | `claude` (warm editorial, 크림+코랄) |
 | 기술·데이터·엔지니어링·다크 프로젝터 | `clickhouse` (dark tech) |
-| 제품 소개·SaaS·스타트업 | `notion` (light minimalism) |
-| 마케팅·키노트·임팩트 | `spotify`·`nike` (bold) |
+| 제품 소개·SaaS·스타트업 | `notion`·`apple`·`stripe`·`mintlify` (light, 깔끔) |
+| 마케팅·키노트·임팩트 | `spotify`·`nike`·`airbnb` (bold) |
+| **비개발자 청중·주간·프로젝터 (라이트 안전)** | `claude`(기본) · `notion` · `apple` · `stripe` · `mintlify` |
+| 다크 (방을 어둡게 조절 가능할 때) | `clickhouse` · `vercel` · `linear.app` · `supabase` · `binance` |
+
+> **강연 추천** (getdesign.md 컬렉션 74종 쇼케이스 기준): 비개발자 청중(약 75%)·주간·프로젝터 환경에서는 **라이트가 안전**합니다. 현재 `claude`가 무난하고, 변화를 주고 싶으면 `notion`·`apple`·`stripe`·`mintlify`. 다크는 발표 공간을 어둡게 할 수 있을 때만 — `clickhouse`·`vercel`·`linear.app` 등. 전체 75개 중 19개(⚙️)는 경량 토큰이라 폰트가 시스템 산세리프 기반입니다.
 
 ### getdesign.md 미리보기 링크
-각 design_system 값에 대해 [`references/design-system-links.md`](references/design-system-links.md)의 `https://getdesign.md/<slug>` 링크로 상세 페이지를 안내합니다. 사용자가 테마 선택 전 링크를 열어 팔레트·타이포그래피·무드를 직접 확인할 수 있습니다. 56개 시스템 전체 매핑표(저장소 시스템명 → getdesign.md slug)를 해당 파일에서 관리합니다.
+각 design_system 값에 대해 [`references/design-system-links.md`](references/design-system-links.md)의 `https://getdesign.md/<slug>` 링크로 상세 페이지를 안내합니다. 사용자가 테마 선택 전 링크를 열어 팔레트·타이포그래피·무드를 직접 확인할 수 있습니다. 75개 시스템 전체 매핑표(저장소 시스템명 → getdesign.md slug)를 해당 파일에서 관리합니다.
 
 ---
 
@@ -191,14 +195,14 @@ AI 슬라이드 스킬 스타트업 사업계획서 10장 슬라이드로 만들
 - [`references/inline-svg-infographics.md`](references/inline-svg-infographics.md) — 인라인 SVG 인포그래픽 패턴 (차트·다이어그램·KPI, 한국어 숫자/라벨 정확 렌더)
 - [`references/image-backend-policy.md`](references/image-backend-policy.md) — 이미지 백엔드 정책 (Higgsfield + codex 공식, antigravity 비권장, 허용 백엔드만)
 - [`references/pptx-chaining.md`](references/pptx-chaining.md) — pptx-designer 체이닝 규약 (편집 가능 PPTX 보증 기구)
-- [`references/design-system-links.md`](references/design-system-links.md) — 56개 시스템 → getdesign.md 링크 매핑표
+- [`references/design-system-links.md`](references/design-system-links.md) — 75개 시스템 → getdesign.md 링크 매핑표
 
 ### 샘플
 - [`samples/deck-sample.json`](samples/deck-sample.json) — 8장 비즈니스 발표 원고 (deck.json SSOT)
 - [`samples/deck-sample.html`](samples/deck-sample.html) — 완성 단일 파일 HTML 덱 (design_system: claude 적용)
 
 ### 이웃 스킬 (체이닝)
-- [`moai-design:design-system-library`](../../../moai-design/skills/design-system-library/SKILL.md) — 56개 브랜드 토큰 SSOT
+- [`moai-design:design-system-library`](../../../moai-design/skills/design-system-library/SKILL.md) — 75개 브랜드 토큰 SSOT
 - [`moai-office:pptx-designer`](../../../moai-office/skills/pptx-designer/SKILL.md) — 편집 가능 .pptx 생성 (체이닝)
 - [`moai-media:higgsfield-image`](../../../moai-media/skills/higgsfield-image/SKILL.md) — Higgsfield MCP 이미지 (기본 백엔드)
 - [`moai-media:gpt-image-2-prompt`](../../../moai-media/skills/gpt-image-2-prompt/SKILL.md) — 한국어 verbatim 이미지 프롬프트 빌더

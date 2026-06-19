@@ -8,7 +8,7 @@ description: |
   화장품·식품·반려동물·렌즈·면도기 등 정기 구매 카테고리 한국 D2C 표준 적용.
   ai-slop-reviewer 자동 체이닝 (텍스트 메시지 산출물).
 user-invocable: true
-version: 2.26.0
+version: 2.27.0
 ---
 
 # 재구매 타이밍 엔진 (Commerce Repurchase Timer)

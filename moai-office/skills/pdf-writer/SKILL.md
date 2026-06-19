@@ -17,7 +17,7 @@ description: |
   반드시 이 스킬(scripts/render_pdf.py)을 사용하세요. 이 스킬이 내부적으로 weasyprint를
   올바른 CJK 폰트 설정과 함께 호출합니다.
 user-invocable: true
-version: 2.26.0
+version: 2.27.0
 ---
 
 # PDF 생성기 (pdf-writer)

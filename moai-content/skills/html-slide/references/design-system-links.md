@@ -1,6 +1,6 @@
 # 디자인 시스템 → getdesign.md 링크 매핑표
 
-[`moai-design:design-system-library`](../../../moai-design/skills/design-system-library/SKILL.md)의 56개 브랜드 시스템을 [`getdesign.md`](https://getdesign.md) 상세 페이지에 매핑합니다. 스킬이 design_system 선택 안내 시 각 토큰 옆에 링크를 표시해, 사용자가 클릭(또는 복사)하여 팔레트·타이포그래피·무드를 직접 미리볼 수 있게 합니다.
+[`moai-design:design-system-library`](../../../moai-design/skills/design-system-library/SKILL.md)의 75개 브랜드 시스템을 [`getdesign.md`](https://getdesign.md) 상세 페이지에 매핑합니다. 스킬이 design_system 선택 안내 시 각 토큰 옆에 링크를 표시해, 사용자가 클릭(또는 복사)하여 팔레트·타이포그래피·무드를 직접 미리볼 수 있게 합니다.
 
 ## URL 패턴
 
@@ -25,7 +25,7 @@ https://getdesign.md/<slug>
 | `clickhouse` | dark | `#0a0a0a` | `#faff69` | Inter | https://getdesign.md/clickhouse |
 | `clay` | light | `#fffaf0` | `#0a0a0a` | Plain Black | https://getdesign.md/clay |
 
-## LIGHT (38개)
+## LIGHT (48개)
 
 | design_system | Primary | getdesign.md |
 |---------------|---------|--------------|
@@ -65,6 +65,16 @@ https://getdesign.md/<slug>
 | `mastercard` | `#cf4500` | https://getdesign.md/mastercard |
 | `starbucks` | `#00754a` | https://getdesign.md/starbucks |
 | `tesla` | `#3e6ae1` | https://getdesign.md/tesla |
+| `airbnb` | `#ff5a5f` | https://getdesign.md/airbnb |
+| `airtable` | `#2d7ff9` | https://getdesign.md/airtable |
+| `apple` | `#0071e3` | https://getdesign.md/apple |
+| `cal` | `#111827` | https://getdesign.md/cal |
+| `dell-1996` | `#007db8` | https://getdesign.md/dell-1996 |
+| `hp` | `#0096d6` | https://getdesign.md/hp |
+| `nintendo-2001` | `#e60012` | https://getdesign.md/nintendo-2001 |
+| `stripe` | `#635bff` | https://getdesign.md/stripe |
+| `webflow` | `#146ef5` | https://getdesign.md/webflow |
+| `wired` | `#0000ee` | https://getdesign.md/wired |
 
 ## WARM (2개)
 
@@ -73,7 +83,7 @@ https://getdesign.md/<slug>
 | `playstation` | `#0070d1` | https://getdesign.md/playstation |
 | `revolut` | `#494fdf` | https://getdesign.md/revolut |
 
-## DARK (16개)
+## DARK (25개)
 
 | design_system | Primary | getdesign.md |
 |---------------|---------|--------------|
@@ -92,6 +102,15 @@ https://getdesign.md/<slug>
 | `lamborghini` | `#ffc000` | https://getdesign.md/lamborghini |
 | `spotify` | `#1ed760` | https://getdesign.md/spotify |
 | `theverge` | `#3cffd0` | https://getdesign.md/the-verge |
+| `binance` | `#f0b90b` | https://getdesign.md/binance |
+| `bmw` | `#1c69d4` | https://getdesign.md/bmw |
+| `bmw-m` | `#1c69d4` | https://getdesign.md/bmw-m |
+| `bugatti` | `#1f4fa0` | https://getdesign.md/bugatti |
+| `linear.app` | `#7c84ec` | https://getdesign.md/linear |
+| `supabase` | `#3ecf8e` | https://getdesign.md/supabase |
+| `vercel` | `#ffffff` | https://getdesign.md/vercel |
+| `voltagent` | `#00d992` | https://getdesign.md/voltagent |
+| `warp` | `#01a2ff` | https://getdesign.md/warp |
 
 ## 안내 패턴 (SKILL.md 1단계에서 사용)
 
@@ -103,7 +122,7 @@ design_system 선택 안내 시 각 옵션에 getdesign.md 링크를 함께 표�
 2. clickhouse (dark tech)        → https://getdesign.md/clickhouse
 3. notion (light minimalism)     → https://getdesign.md/notion
 4. spotify (dark bold)           → https://getdesign.md/spotify
-나머지 52개: design-system-links.md 매핑표 참조
+나머지 71개: design-system-links.md 매핑표 참조
 ```
 
-> getdesign.md는 75개 DESIGN.md 분석 컬렉션(2026-06 기준)으로, 본 저장소 56개 시스템은 거의 1:1로 대응합니다. 일부 슬러그는 브랜드 표기 정규화(`.ai`→`-ai`, `xAI`→`xai` 등)가 필요합니다. 링크가 깨지면 getdesign.md 홈(https://getdesign.md)에서 검색 후 본 표의 슬러그를 업데이트하세요.
+> getdesign.md는 74종 DESIGN.md 분석 컬렉션(2026-06 기준)으로, 본 저장소 75개 시스템은 거의 1:1로 대응합니다(56개 풍부 분석 + 19개 경량 토큰). 일부 슬러그는 브랜드 표기 정규화(`.ai`→`-ai`, `xAI`→`xai`, `linear.app`→`linear` 등)가 필요합니다. 링크가 깨지면 getdesign.md 홈(https://getdesign.md)에서 검색 후 본 표의 슬러그를 업데이트하세요.

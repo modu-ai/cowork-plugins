@@ -1,6 +1,6 @@
-# Design System Registry — 56개 브랜드 카탈로그
+# Design System Registry — 75개 브랜드 카탈로그
 
-본 레지스트리는 `design-system-library`의 56개 디자인 시스템에 대한 인덱스입니다. 
+본 레지스트리는 `design-system-library`의 75개 디자인 시스템에 대한 인덱스입니다. 
 각 시스템의 상세 토큰은 `systems/<name>.md`에 있습니다. 
 canvas 휘도(R+G+B 평균) 기반 자동 분류: `<100` dark · `<232` warm · 그 외 light.
 
@@ -8,7 +8,8 @@ canvas 휘도(R+G+B 평균) 기반 자동 분류: `<100` dark · `<232` warm · 
 
 ## 상태 표기
 
-- ✅ **완료** — `systems/<name>.md` 존재, frontmatter 토큰 파싱 완료. **전체 56개 분류 완료** (8개 2차 정합: kraken · tesla · starbucks · mastercard · lovable · spotify · theverge · lamborghini).
+- ✅ **완료** — `systems/<name>.md` 존재, frontmatter 토큰 파싱 완료. **전체 75개 분류 완료** (56 풍부 분석 + 19 경량 토큰: 2026-06-19 테마_컴포넌트_쇼케이스에서 추출).
+- ⚙️ **경량** — 19개(airbnb·airtable·apple·binance·bmw·bmw-m·bugatti·cal·dell-1996·hp·linear.app·nintendo-2001·stripe·supabase·vercel·voltagent·warp·webflow·wired)는 `테마_컴포넌트_쇼케이스_전체.html`에서 추출한 경량 토큰. 풍부한 브랜드 분석·typography 스케일은 추후 보강.
 
 ---
 
@@ -24,9 +25,9 @@ canvas 휘도(R+G+B 평균) 기반 자동 분류: `<100` dark · `<232` warm · 
 
 ---
 
-## 전체 56개 — 분류별
+## 전체 75개 — 분류별
 
-### LIGHT (38개) — 밝은 캔버스 — white/cream, 본문 near-black
+### LIGHT (48개) — 밝은 캔버스 — white/cream, 본문 near-black
 
 | 시스템 | 분류 | 캔버스 | Primary | 폰트 |
 
@@ -70,6 +71,16 @@ canvas 휘도(R+G+B 평균) 기반 자동 분류: `<100` dark · `<232` warm · 
 | [`mastercard`](mastercard.md) | light | `#f3f0ee` | `#cf4500` | MarkForMC |
 | [`starbucks`](starbucks.md) | light | `#f2f0eb` | `#00754a` | SoDoSans |
 | [`tesla`](tesla.md) | light | `#ffffff` | `#3e6ae1` | Universal Sans |
+| [`airbnb`](airbnb.md) ⚙️ | light | `#ffffff` | `#ff5a5f` | 시스템 산세리프 |
+| [`airtable`](airtable.md) ⚙️ | light | `#ffffff` | `#2d7ff9` | 시스템 산세리프 |
+| [`apple`](apple.md) ⚙️ | light | `#ffffff` | `#0071e3` | 시스템 산세리프 |
+| [`cal`](cal.md) ⚙️ | light | `#ffffff` | `#111827` | 시스템 산세리프 |
+| [`dell-1996`](dell-1996.md) ⚙️ | light | `#ffffff` | `#007db8` | 시스템 산세리프 |
+| [`hp`](hp.md) ⚙️ | light | `#ffffff` | `#0096d6` | 시스템 산세리프 |
+| [`nintendo-2001`](nintendo-2001.md) ⚙️ | light | `#ffffff` | `#e60012` | 시스템 산세리프 |
+| [`stripe`](stripe.md) ⚙️ | light | `#ffffff` | `#635bff` | 시스템 산세리프 |
+| [`webflow`](webflow.md) ⚙️ | light | `#ffffff` | `#146ef5` | 시스템 산세리프 |
+| [`wired`](wired.md) ⚙️ | light | `#ffffff` | `#0000ee` | Georgia(세리프) |
 
 ### WARM (2개) — 따뜻한 중간 톤
 
@@ -80,7 +91,7 @@ canvas 휘도(R+G+B 평균) 기반 자동 분류: `<100` dark · `<232` warm · 
 | [`playstation`](playstation.md) | warm | `#0070d1` | `#0070d1` | PlayStation SST |
 | [`revolut`](revolut.md) | warm | `#494fdf` | `#494fdf` | Aeonik Pro |
 
-### DARK (16개) — 어두운 캔버스 — near-black/navy, 본문 white
+### DARK (25개) — 어두운 캔버스 — near-black/navy, 본문 white
 
 | 시스템 | 분류 | 캔버스 | Primary | 폰트 |
 
@@ -102,22 +113,31 @@ canvas 휘도(R+G+B 평균) 기반 자동 분류: `<100` dark · `<232` warm · 
 | [`lamborghini`](lamborghini.md) | dark | `#000000` | `#ffc000` | LamboType |
 | [`spotify`](spotify.md) | dark | `#121212` | `#1ed760` | SpotifyMixUI |
 | [`theverge`](theverge.md) | dark | `#131313` | `#3cffd0` | Manuka |
+| [`binance`](binance.md) ⚙️ | dark | `#161619` | `#f0b90b` | 시스템 산세리프 |
+| [`bmw`](bmw.md) ⚙️ | dark | `#161619` | `#1c69d4` | 시스템 산세리프 |
+| [`bmw-m`](bmw-m.md) ⚙️ | dark | `#161619` | `#1c69d4` | 시스템 산세리프 |
+| [`bugatti`](bugatti.md) ⚙️ | dark | `#161619` | `#1f4fa0` | 시스템 산세리프 |
+| [`linear.app`](linear.app.md) ⚙️ | dark | `#16161a` | `#7c84ec` | 시스템 산세리프 |
+| [`supabase`](supabase.md) ⚙️ | dark | `#1c1c1c` | `#3ecf8e` | 시스템 산세리프 |
+| [`vercel`](vercel.md) ⚙️ | dark | `#000000` | `#ffffff` | 시스템 산세리프 |
+| [`voltagent`](voltagent.md) ⚙️ | dark | `#161619` | `#00d992` | 시스템 산세리프 |
+| [`warp`](warp.md) ⚙️ | dark | `#161619` | `#01a2ff` | 시스템 산세리프 |
 
 ---
 
 ## 통계
 
-- **전체**: 56개 시스템
+- **전체**: 75개 시스템 (56 풍부 + 19 경량 ⚙️)
 
-- **light**: 38개
+- **light**: 48개 (38 + 10 ⚙️)
 
-- **dark**: 16개
+- **dark**: 25개 (16 + 9 ⚙️)
 
 - **warm**: 2개
 
 - **기본(default)**: 3개 — claude · clickhouse · clay
 
-- **원본 소스**: `/Users/goos/Downloads/DESIGN-<name>.md`
+- **원본 소스**: 풍부 56개 — `/Users/goos/Downloads/DESIGN-<name>.md` · 경량 19개 — `테마_컴포넌트_쇼케이스_전체.html`(getdesign.md 74종 컬렉션)
 
 ---
 
@@ -140,6 +160,8 @@ Tailwind 렌더 시 다크/라이트 자동 분기는 `mapping/tailwind.md` §5 
 
 | 날짜 | 변경 |
 |------|------|
+
+| 2026-06-19 | 19개 경량 시스템 추가(⚙️) — `테마_컴포넌트_쇼케이스_전체.html`의 getdesign.md 74종 컬렉션에서 추출(airbnb·airtable·apple·binance·bmw·bmw-m·bugatti·cal·dell-1996·hp·linear.app·nintendo-2001·stripe·supabase·vercel·voltagent·warp·webflow·wired) → 전체 75개(light 48/dark 25/warm 2) |
 
 | 2026-06-16 | 3차 정합 — 8개 시스템(kraken · tesla · starbucks · mastercard · lovable · spotify · theverge · lamborghini) frontmatter `colors` 블록 추가 → 전체 56개 분류 완료(light 38/dark 16/warm 2) |
 

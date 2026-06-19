@@ -2,7 +2,7 @@
 
 [![License: NC-ND v1.0](https://img.shields.io/badge/License-NC--ND%20v1.0-red.svg)](LICENSE)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-blueviolet)](https://claude.ai)
-[![Version](https://img.shields.io/badge/Version-2.26.0-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-2.27.0-blue)](CHANGELOG.md)
 [![Plugins](https://img.shields.io/badge/Plugins-28-blue)](.claude-plugin/marketplace.json)
 [![Skills](https://img.shields.io/badge/Skills-176-green)](.claude-plugin/marketplace.json)
 [![Docs](https://img.shields.io/badge/Docs-cowork.mo.ai.kr-orange)](https://cowork.mo.ai.kr/)
@@ -32,6 +32,18 @@
 | 📑 **문서·이커머스·BI** | `hwpx-writer` · `pdf-writer` · `detail-page-copy` · `executive-summary` · `weekly-report` | HWPX(한글) · 한·중·일·영 PDF · 13섹션 상세페이지 · 경영진 1pager · WBR 주간보고 |
 
 > 28개 플러그인 전체 카탈로그와 카테고리 비교는 [플러그인 카탈로그](#플러그인-카탈로그)와 [플러그인 상세 소개](#플러그인-상세-소개)를 참조하세요.
+
+---
+
+**🆕 v2.27.0 하이라이트** (2026-06-19) — **"design-system-library 56→75종 확장 — getdesign.md 74종 컬렉션 통합 + 강연 테마 추천"**
+
+28 플러그인(유지), **176 스킬**(유지), 동기화 2.27.0. 기능·인터페이스 Breaking change 없음. MINOR 릴리스. `테마_컴포넌트_쇼케이스`의 74종에서 19개 신규 브랜드를 추가해 `design_system` 선택지를 75종으로 확장했습니다.
+
+- **19개 신규 디자인 시스템** — airbnb·apple·stripe·vercel·supabase·linear·bmw·binance 등. design-system-library 56→75종 (light 10 + dark 9).
+- **강연/발표 테마 추천 가이드** — 비개발자 청중·프로젝터 환경에서는 라이트(claude·notion·apple·stripe·mintlify)가 안전. 다크는 발표 공간을 어둡게 할 수 있을 때만.
+- **getdesign.md 74종 매핑** — 각 design_system에 미리보기 링크로 사용자가 토큰을 직접 확인 후 선택.
+
+기존 워크플로우·플러그인 그대로 동작(기능적 비파괴). `/plugin marketplace update cowork-plugins`로 적용.
 
 ---
 

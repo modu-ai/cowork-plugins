@@ -9,7 +9,7 @@ description: |
   - "책 구성안", "출판 기획서 목차"
   - "장르별 목차 패턴", "실용서 목차 / 소설 플롯"
 user-invocable: true
-version: 2.26.0
+version: 2.27.0
 ---
 
 # book-outline-designer

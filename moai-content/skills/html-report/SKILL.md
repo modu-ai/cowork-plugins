@@ -12,7 +12,7 @@ description: |
   현황·인시던트·사업계획·설명서·재무·PR 6종 서식을 갖췄고, 보고서 종류에 맞춰 자동으로 골라 줍니다.
   PDF 파일이 필요하면 생성한 HTML을 moai-office:pdf-writer로 넘겨 디자인 그대로 PDF로 변환하세요 (weasyprint를 직접 설치·호출하지 말 것).
 user-invocable: true
-version: 2.26.0
+version: 2.27.0
 ---
 
 # html-report — 단일 파일 HTML 보고서 렌더러
@@ -38,7 +38,7 @@ version: 2.26.0
 |------|------|--------|------|
 | `markdown` | ✓ | — | 변환할 마크다운 본문 |
 | `mode` | ✓ | — | `status` \| `incident` \| `plan` \| `explainer` \| `financial` \| `pr` |
-| `design_system` | — | (미지정 시 0의존 기본 템플릿) | `claude` \| `clickhouse` \| `clay` 또는 [`design-system-library`](../../moai-design/skills/design-system-library/SKILL.md)의 56개 시스템. **지정 시** Tailwind Play CDN + shadcn vanilla 컴포넌트로 해당 브랜드 토큰 적용 (인터넷 연결 필요) |
+| `design_system` | — | (미지정 시 0의존 기본 템플릿) | `claude` \| `clickhouse` \| `clay` 또는 [`design-system-library`](../../moai-design/skills/design-system-library/SKILL.md)의 75개 시스템. **지정 시** Tailwind Play CDN + shadcn vanilla 컴포넌트로 해당 브랜드 토큰 적용 (인터넷 연결 필요) |
 | `slug` | — | 제목에서 자동 생성 | 출력 파일명 prefix |
 | `output_path` | — | `<cwd>/reports/<slug>-<YYYYMMDD>.html` | 출력 경로 |
 | `font_stack` | — | 모드별 기본값 | 폰트 매핑 오버라이드 |
@@ -146,7 +146,7 @@ version: 2.26.0
 | `design_system` | 엔진 | 외부 의존 | 산출물 특성 |
 |-----------------|------|-----------|-------------|
 | **미지정** | 0의존 (기존 템플릿) | 폰트 CDN 1건만 | 이메일 첨부·오프라인·인쇄 가능 단일 파일 |
-| **`claude` / `clickhouse` / `clay` / 56개** | Tailwind Play CDN | Tailwind CDN + 폰트 CDN | 브랜드 무드 적용, 인터넷 연결 필요 |
+| **`claude` / `clickhouse` / `clay` / 75개** | Tailwind Play CDN | Tailwind CDN + 폰트 CDN | 브랜드 무드 적용, 인터넷 연결 필요 |
 
 ### 3개 기본 테마 자동 추천
 

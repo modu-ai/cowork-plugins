@@ -1,7 +1,7 @@
 ---
 name: design-system-library
 description: |
-  56개 글로벌 브랜드 디자인 시스템(Claude · ClickHouse · Clay 포함)을 단일 파일 HTML 산출물에 적용합니다. 각 시스템의 토큰(색·타이포·radius·spacing·컴포넌트)을 Tailwind Play CDN config + shadcn 스타일 vanilla 컴포넌트로 변환해 렌더합니다.
+  75개 글로벌 브랜드 디자인 시스템(Claude · ClickHouse · Clay 포함)을 단일 파일 HTML 산출물에 적용합니다. 각 시스템의 토큰(색·타이포·radius·spacing·컴포넌트)을 Tailwind Play CDN config + shadcn 스타일 vanilla 컴포넌트로 변환해 렌더합니다.
   html-report · 랜딩 페이지 · 각종 문서 생성 시 design_system을 지정하면 해당 브랜드 무드가 즉시 적용됩니다. Claude Design 핸드오프 시에는 DESIGN.md 지침 소스로 제공됩니다.
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   - "Claude 스타일로 HTML 보고서 만들어줘"
@@ -12,14 +12,14 @@ description: |
   - "어두운 테마 / 따뜻한 화이트 테마로"
   - "Claude Design에 올릴 디자인 시스템 자료 정리"
 user-invocable: true
-version: 2.26.0
+version: 2.27.0
 ---
 
-# design-system-library — 56개 브랜드 디자인 시스템 SSOT
+# design-system-library — 75개 브랜드 디자인 시스템 SSOT
 
 ## 목적과 범위
 
-글로벌 브랜드 56종의 디자인 시스템(token 기반 분석 결과)을 단일 진실 원천(single source of truth)으로 보관하고, HTML 산출물에 적용 가능한 형태로 제공합니다.
+글로벌 브랜드 75종(56개 풍부 분석 + 19개 경량 토큰)의 디자인 시스템(token 기반 분석 결과)을 단일 진실 원천(single source of truth)으로 보관하고, HTML 산출물에 적용 가능한 형태로 제공합니다.
 
 **두 가지 소비 경로**:
 1. **html-report / HTML 문서 렌더** — `design_system` 파라미터로 시스템 선택 → Tailwind Play CDN config + shadcn vanilla 컴포넌트로 단일 파일 HTML 렌더
@@ -56,11 +56,11 @@ version: 2.26.0
 
 ---
 
-## 전체 56개 카탈로그
+## 전체 75개 카탈로그
 
 [`systems/registry.md`](systems/registry.md) 참조 — 분류(light/warm/dark) · 캔버스 · primary 색 · 폰트 · 무드 메타 포함.
 
-전체 56개 시스템 분석 완료 — 각 `systems/<name>.md`에 토큰 보관, `registry.md`에 휘도 기반 분류(light 38 · dark 16 · warm 2)·메타 표기. 기본 3테마(claude/clickhouse/clay)는 Tailwind 매핑 검증 완료.
+전체 75개 시스템(56개 풍부 분석 + 19개 경량 토큰 ⚙️) — 각 `systems/<name>.md`에 토큰 보관, `registry.md`에 휘도 기반 분류(light 48 · dark 25 · warm 2)·메타 표기. 기본 3테마(claude/clickhouse/clay)는 Tailwind 매핑 검증 완료. 19개 경량(⚙️)은 `테마_컴포넌트_쇼케이스_전체.html`에서 추출 — 풍부한 분석·typography 스케일은 추후 보강.
 
 ---
 
@@ -117,7 +117,7 @@ version: 2.26.0
 
 `moai-content:html-report`에 `design_system` 입력 파라미터 추가:
 - 미지정 → 기존 0의존 템플릿 (Anthropic 영감 ivory/slate/clay, 하위 호환)
-- `design_system: claude|clickhouse|clay|<56개 중>` → 본 라이브러리에서 토큰 로드 → Tailwind Play CDN + shadcn vanilla 렌더
+- `design_system: claude|clickhouse|clay|<75개 중>` → 본 라이브러리에서 토큰 로드 → Tailwind Play CDN + shadcn vanilla 렌더
 
 체인 예시:
 ```
@@ -175,7 +175,7 @@ Claude Design에 올릴 디자인 시스템 자료를 Linear 스타일 기반으
 
 ## 참고 문서
 
-- [`systems/registry.md`](systems/registry.md) — 56개 전체 카탈로그 인덱스
+- [`systems/registry.md`](systems/registry.md) — 75개 전체 카탈로그 인덱스
 - [`systems/anthropic-claude.md`](systems/anthropic-claude.md) · [`systems/clickhouse.md`](systems/clickhouse.md) · [`systems/clay.md`](systems/clay.md) — 기본 3테마 상세 토큰 (claude.md는 `CLAUDE.md` 자동 로드 회피를 위해 `anthropic-claude.md`로 명명)
 - [`mapping/tailwind.md`](mapping/tailwind.md) — YAML 토큰 → Tailwind CDN config 매핑 규칙
 - [`components/`](components/) — shadcn vanilla 컴포넌트 참조 마크업

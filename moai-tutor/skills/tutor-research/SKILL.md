@@ -12,7 +12,7 @@ description: |
   질문을 리서치 축으로 분해해 context7(라이브러리·SDK·CLI 공식 문서)과 WebSearch(최신 트렌드·튜토리얼·비교)를 병렬 실행하고, 출처를 교차검증한 뒤 learning-material로 넘길 종합본을 만듭니다.
   [책임 경계] vs moai-education:research-assistant: 이 스킬=개인 학습용 최신 정보 빠른 조사, 저 스킬=학술 논문용 문헌 검토와 인용 관리.
 user-invocable: true
-version: 2.26.0
+version: 2.27.0
 ---
 
 # 튜터 리서치 (Tutor Research)

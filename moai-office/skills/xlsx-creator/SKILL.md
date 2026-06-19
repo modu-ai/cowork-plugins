@@ -13,7 +13,7 @@ description: |
   한국 비즈니스 표준 서식(천 단위 구분·원화 표시·날짜 형식)과 차트·수식을 자동 적용합니다.
   데이터를 엑셀(.xlsx) 파일로 만들 때는 Claude 기본 생성 대신 이 스킬을 사용하세요 (수식·차트·서식 보존).
 user-invocable: true
-version: 2.26.0
+version: 2.27.0
 ---
 
 # 엑셀 생성기 (XLSX Creator)

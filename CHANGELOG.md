@@ -14,6 +14,17 @@
 
 상세 정책: `CLAUDE.local.md` § 1 참조.
 
+## [2.27.0] - 2026-06-19
+
+MINOR. **design-system-library 56 → 75종 확장 (getdesign.md 74종 컬렉션 통합)**. `테마_컴포넌트_쇼케이스_전체.html`의 getdesign.md 74종 컬렉션에서 19개 신규 브랜드(airbnb·airtable·apple·binance·bmw·bmw-m·bugatti·cal·dell-1996·hp·linear.app·nintendo-2001·stripe·supabase·vercel·voltagent·warp·webflow·wired)를 design-system-library에 추가. html-slide·html-report의 design_system 선택지가 75종으로 확장, 강연/발표 맥락 추천 가이드(비개발자·라이트 안전) 반영. 28 플러그인 / 176 스킬 유지. 동기화 2.26.0 → 2.27.0. 기능적 비파괴. Breaking change 없음.
+
+### Added
+- **19개 신규 디자인 시스템** (design-system-library/systems/) — `테마_컴포넌트_쇼케이스_전체.html`에서 토큰 추출. light 10개(airbnb·airtable·apple·cal·dell-1996·hp·nintendo-2001·stripe·webflow·wired) + dark 9개(binance·bmw·bmw-m·bugatti·linear.app·supabase·vercel·voltagent·warp). frontmatter(colors/typography/rounded) 형식으로 design_system 파라미터 즉시 소비 가능.
+
+### Changed
+- **html-slide·html-report design_system 75종화** — 테마별 적합 슬라이드 추천표에 강연 맥락 가이드(비개발자 청중·프로젝터 → 라이트 안전) 추가. design-system-links.md getdesign.md 매핑 74종 확장. registry.md 75개 카탈로그(light 48/dark 25/warm 2) 재분류. design-system-library SKILL·README·claude-design-system-prep·pptx-chaining 56→75 정합.
+- 19개 신규 시스템은 경량 토큰(⚙️ 표기) — 풍부한 브랜드 분석·typography 스케일은 추후 보강.
+
 ## [2.26.0] - 2026-06-19
 
 MINOR. **Cowork 베스트프랙티스 정렬 — 매니페스트 현대화 + orphan 스킬 발견성 개선**. Claude Cowork 공식 플러그인 모델(Connectors·Instructions·Skills 3-Level) 대비 갭을 진단하고 저위험 고수익 개선을 적용했습니다. 28 플러그인에 한글 `displayName`을 추가해 Cowork `/plugin` UI 가독성을 높이고, orphan 스킬 12개를 commerce 코디네이터에 매핑했습니다. 28 플러그인 / 176 스킬 유지. 동기화 2.25.0 → 2.26.0. 기능적 비파괴. Breaking change 없음.
