@@ -1,0 +1,9 @@
+{
+  "name": "moai-search",
+  "displayName": "웹 검색",
+  "version": "1.0.0",
+  "description": "웹 검색 — You.com Search API로 실시간 웹 검색 결과를 제공",
+  "author": { "name": "Cooperation-org" },
+  "keywords": ["검색", "웹검색", "you.com", "youcom"],
+  "license": "LicenseRef-MoAI-NC-ND-1.0"
+}
