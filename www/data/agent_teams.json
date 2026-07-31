@@ -1,1441 +1,1499 @@
 {
-  "marketplace_version": "6.2.0",
-  "generated_from": "marketplace.json + plugin frontmatter (SSOT)",
-  "employees": [
+ "marketplace_version": "1.0.0",
+ "generated_from": "marketplace.json + plugin frontmatter (SSOT)",
+ "employees": [
+  {
+   "id": "moai-coworker",
+   "displayName": "🧑‍💼 코워커",
+   "category": "범용 실무",
+   "version": "1.0.1",
+   "description": "실무 범용 코어 AI 직원 — 브랜드·제안서·보고·협상·프로세스 등 비즈니스 실무 + 라이프스타일·자기계발(목표·습관·회고·여행·웰니스·행사기획) 스킬 32종. 전문 영역은 전문가 플러그인으로 분리되었으며, 코워커는 범용 비즈니스 코어와 생활 도메인을 담당합니다. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 1인 사업자·스타트업 운영자.",
+   "skill_count": 32,
+   "skills": [
     {
-      "id": "moai-coworker",
-      "displayName": "🧑‍💼 코워커",
-      "category": "범용 실무",
-      "version": "6.1.0",
-      "description": "실무 범용 코어 AI 직원 — 브랜드·제안서·보고·협상·프로세스 등 비즈니스 실무 + 라이프스타일·자기계발(목표·습관·회고·여행·웰니스·행사기획) 스킬 32종. 전문 영역은 전문가 플러그인으로 분리되었으며, 코워커는 범용 비즈니스 코어와 생활 도메인을 담당합니다. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 1인 사업자·스타트업 운영자.",
-      "skill_count": 32,
-      "skills": [
-        {
-          "name": "business-brand-identity",
-          "summary": "| 기업·제품 브랜드의 이름·슬로건·톤앤매너·색상까지 한 번에 정리한 브랜드 가이드 문서를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"친환경 생활용품 브랜드 만들어줘, 2030 여성 타깃\" - \"우리 스타트업 이름 후보 좀 지어줘\" - \"브랜드명은 정했으니 슬로건이랑 톤앤매너만 만들어줘\" - \"카페 브랜드 "
-        },
-        {
-          "name": "business-conflict-handler",
-          "summary": "> 까다로운 동료·소통빌런과 부딪힐 때 감정 상하지 않게 대응하고 거리를 지키도록 도와주는 스킬입니다. '이 사람 어떻게 대하지', '자꾸 떠넘기는 동료', '거절하는 법', '직장 인간관계 스트레스', '갈등 대응'처럼 말하면 됩니다. 유형별 대응 전략, 감정과 사안 분리, 정중한 거절, 관계 거리 두기로 직장 갈등을 "
-        },
-        {
-          "name": "business-executive-summary",
-          "summary": "| 복잡한 분석·재무·운영 보고를 경영진 1페이지(≤500단어) 요약으로 변환합니다. 다음과 같은 요청 시 사용하세요: - \"임원 보고용 1페이지 요약 만들어줘\" / \"이사회 보고서 요약해줘\" / \"경영진 브리핑 1장으로 정리해줘\" - \"이 리포트 핵심만 요약해줘\" / \"긴 보고서 1페이지로 줄여줘\" / \"C레벨 요약 작"
-        },
-        {
-          "name": "business-feedback-loop",
-          "summary": "> 피드백을 건설적으로 주고, 받은 피드백을 감정 상하지 않게 소화하도록 도와주는 스킬입니다. '피드백 어떻게 줘야 해', '부정적 피드백 받았는데 속상해', '피드백 전달하는 법', '중간 점검 요청하고 싶어'처럼 말하면 됩니다. SBI 구조로 건설적 피드백을 설계하고, 받은 피드백을 사실과 감정으로 분리해 소화하며, "
-        },
-        {
-          "name": "business-meeting-facilitator",
-          "summary": "> 회의가 산으로 가지 않게 아젠다를 짜고 결론까지 끌고 가는 진행을 도와주는 스킬입니다. '회의 아젠다 짜줘', '이 회의 어떻게 진행하지', '회의가 자꾸 산으로 가', '의사결정 회의 준비', '회의록 정리'처럼 말하면 됩니다. 목적 정의 → 아젠다 설계 → 진행 규칙 → 의사결정 → 회의록·후속 액션의 5단계로 결"
-        },
-        {
-          "name": "business-negotiation-1on1",
-          "summary": "> 1:1 면담을 준비하고, 상대를 설득하거나 무언가를 요청·협상할 때 대화를 설계해 주는 스킬입니다. '면담 준비해줘', '이거 어떻게 설득하지', '연봉 협상 어떻게', '부탁하는 법', '정중하게 요청하고 싶어'처럼 말하면 됩니다. 면담 목표 설정 → 상대 입장 파악 → 설득 구조 → 요청·거절 화법 → 합의·후속의"
-        },
-        {
-          "name": "business-pm-weekly-report",
-          "summary": "| 한국 팀의 주간 비즈니스 리뷰(WBR) 보고서 자동 생성 스킬입니다. 일일 노트·완료 태스크·KPI 데이터를 입력받아 임원/팀 두 버전(격식체/구어체)으로 작성합니다. Notion·Linear·Asana·Slack MCP가 가용하면 자동 데이터 fetch, 없어도 자유 텍스트 입력 fallback. 다음과 같은 요청 "
-        },
-        {
-          "name": "business-process-manager",
-          "summary": "> 업무 프로세스를 문서화하고 표준화합니다. \"SOP 만들어줘\", \"구매 요청서 써줘\", \"회의록 정리해줘\", \"운영 매뉴얼 작성해줘\"라고 요청할 때 사용하세요. 운영 매뉴얼, SOP(표준 운영 절차), 조달 문서(구매 요청서·발주서), 회의록 작성 및 안건 관리를 지원합니다."
-        },
-        {
-          "name": "business-productivity-weekly-report",
-          "summary": "> 직장에서 제출하는 주간업무보고를 빠르게 작성해주는 스킬입니다. '주간보고 작성해줘', '이번 주 한 일 정리', '주간업무보고', '팀장님께 보낼 보고', '한 주 업무 리뷰'처럼 말하면 됩니다. 한 주 성과·진행 중 일·이슈·다음 주 계획을 정해진 틀로 정리하고, 격식체/구어체 톤까지 맞춰 보고서 초안을 만들어줍니다"
-        },
-        {
-          "name": "business-proposal-writer",
-          "summary": "| 한국 B2B 영업 제안서 본문을 RFP·고객 요구사항 기반으로 자동 생성합니다. 12섹션 표준 목차(표지·Executive Summary·회사 소개·시장 이해·솔루션·기술 스펙·일정·운영·레퍼런스·가격·리스크·부록)와 Three C's(Compliant·Complete·Compelling) 원칙을 적용해 컴플라이언스 "
-        },
-        {
-          "name": "business-report-speak",
-          "summary": "> 상사에게 보고하거나 누군가에게 무언가를 설명할 때 결론부터 명확하게 전달하도록 도와주는 스킬입니다. '이거 어떻게 보고하지', '결론부터 말하는 법', '팀장님한테 보고할 내용 정리해줘', '설명을 쉽게 하고 싶어'처럼 말하면 됩니다. 결론 먼저(두괄식) 구조, 상사 유형별 보고 방식, 상대 머리에 꽂히는 설명 순서로"
-        },
-        {
-          "name": "business-roadmap-manager",
-          "summary": "| 프로젝트 로드맵·마일스톤 계획과 전략적 제휴(MOU) 초안, ESG 지속가능성 감사·DEI 전략 문서를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"로드맵 정리해줘\" - \"마일스톤 계획 세워줘\" - \"MOU 초안 작성해줘\" - \"ESG 지속가능성 감사 해줘\" - \"DEI 정책 도입 로드맵 설계해줘\" - \""
-        },
-        {
-          "name": "business-sales-playbook",
-          "summary": "| 타겟 기업·접근 전략·이의처리 시나리오·성공 지표까지 담은 실전 영업 플레이북(전략서)을 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"영업 플레이북 만들어줘\" - \"세일즈 전략서 써줘\" - \"B2B 영업 계획 세워줘\" - \"타겟 기업 분석해서 영업 전략 짜줘\" - \"영업 이의처리 시나리오 만들어줘\" - \""
-        },
-        {
-          "name": "business-spec-writer",
-          "summary": "| 제품 기획 문서(PRD·기능 명세서)와 AI 도입 전략 보고서를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"PRD 작성해줘\" - \"기능 명세서 만들어줘\" - \"AI 도입 전략 보고서 써줘\" - \"제품 기능 우선순위 정리해줘\" - \"디지털 전환 로드맵 수립해줘\" 기획 의도와 요구사항을 검토 가능한 문서로 "
-        },
-        {
-          "name": "business-status-reporter",
-          "summary": "> KPI 대시보드와 운영 현황 보고서를 자동으로 생성합니다. \"주간 보고서 작성해줘\", \"KPI 현황 정리해줘\", \"월간 성과 보고서 만들어줘\"라고 요청할 때 사용하세요. 주간·월간·분기 보고서, OKR 현황, 마일스톤 진행률, 이슈 및 리스크 매트릭스를 지원합니다."
-        },
-        {
-          "name": "business-ux-designer",
-          "summary": "| 우선순위별 UX 개선 권고안과 평가 보고서(휴리스틱·접근성·사용자 플로우)를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"UX 디자인 검토해줘\" - \"휴리스틱 평가해줘\" - \"접근성(WCAG) 검토해줘\" - \"사용자 플로우 분석해줘\" - \"와이어프레임 사용성 점검해줘\" - \"사용성 개선안 정리해줘\" 3개 "
-        },
-        {
-          "name": "business-ux-researcher",
-          "summary": "| 사용자 인터뷰 가이드·페르소나 문서·VOC 분석 보고서·NPS 해석안 같은 UX 리서치 결과물을 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"사용자 인터뷰 질문지 만들어줘\" - \"VOC 분석해줘\" - \"페르소나 설계해줘\" - \"NPS 결과 해석해줘\" - \"유저빌리티 테스트 시나리오 만들어줘\" - \"고객 설"
-        },
-        {
-          "name": "business-vendor-manager",
-          "summary": "> 공급업체를 평가·선정하고 계약 및 리스크를 관리합니다. \"벤더 평가 기준 만들어줘\", \"공급업체 리스크 레지스터 작성해줘\", \"계약 관리 체계를 잡아줘\"라고 요청할 때 사용하세요. 벤더 선정 기준, 공급업체 평가표, 계약 관리 워크플로우, 리스크 식별 및 대응 계획을 지원합니다."
-        },
-        {
-          "name": "claude-prompting-basics",
-          "summary": "비개발자를 위한 Claude 대화 모범 사례 — 명확한 지시, 맥락 제공, 예시 활용, XML 태그 구조화. Claude 공식 프롬프트 엔지니어링 가이드 기반. \"Claude한테 어떻게 물어봐야 잘 답해줘?\" 질문에 즉시 활용."
-        },
-        {
-          "name": "general-ai-diagnostic",
-          "summary": "| AI 기반 다차원 진단 분석 스킬. 기술, 프로세스, 사람, 비즈니스 4차원 병렬 진단을 통해 근본 원인을 식별하고 우선순위별 해결책을 제시합니다. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: - \"시스템 진단\", \"문제 분석\", \"원인 파악\", \"diagnostic\", \"트러블슈팅\" - \"근본 원인\", \"현황"
-        },
-        {
-          "name": "general-ai-slop-reviewer",
-          "summary": "| AI가 생성한 텍스트에서 기계적 패턴(AI 슬롭)을 감지하고 인간적인 글쓰기로 수정하는 스킬. 모든 텍스트 산출물(블로그, 뉴스레터, 카피, 사업계획서, 계약서, 제안서, 보고서, 이메일, 랜딩 카피 등)의 필수 후처리 단계로 사용합니다. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: - \"AI 티 나는 부분 고"
-        },
-        {
-          "name": "general-event-planner",
-          "summary": "> 행사·이벤트·웨딩을 기획하고 준비 계획을 수립합니다. \"결혼 준비 체크리스트 만들어줘\", \"사내 세미나 기획해줘\", \"워크샵 진행 방식 설계해줘\"라고 요청할 때 사용하세요. 행사 기획, 예산 계획, 일정 관리, 웨딩 준비(스드메·예산·타임라인)를 지원합니다."
-        },
-        {
-          "name": "general-feedback",
-          "summary": "| 버그 리포트와 기능 요청을 수집하여 GitHub Issues에 자동 등록합니다. 다음과 같은 요청 시 이 스킬을 사용하세요: - \"버그 신고\", \"기능 요청\", \"피드백\", \"개선 제안\" - \"/project feedback\" 커맨드 실행 - \"이슈 등록\", \"문제 신고\", \"bug report\", \"feature r"
-        },
-        {
-          "name": "general-self-care",
-          "summary": "> 번아웃과 지친 마음을 점검하고 회복하도록 돕는 자기돌봄 스킬입니다. '번아웃인 것 같아', '쉬어도 쉰 것 같지 않아', '마음이 지쳤어', '회복하고 싶어', '제대로 쉬는 법'처럼 말하면 됩니다. 마음 기초체력 점검·회복 루틴·생활력 관리로, 무작정 버티기 대신 자신을 돌보며 다시 일어설 힘을 설계합니다."
-        },
-        {
-          "name": "general-skill-builder",
-          "summary": "| 6-Phase 스킬 생성 워크플로우. revfactory/harness 방법론을 기반으로 체계적으로 새 스킬을 생성합니다. 요구사항 분석부터 최종 검증까지 전체 생명주기를 관리합니다. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: - \"새 스킬 만들어줘\", \"스킬 생성\", \"general-skill-builder"
-        },
-        {
-          "name": "general-skill-template",
-          "summary": "| SKILL.md 표준 템플릿. 새 스킬 생성 시 이 템플릿을 기반으로 작성합니다. 스킬 작성 가이드라인과 필수 섹션 구조를 정의합니다. 다음과 같은 요청 시 이 스킬을 참조하세요: - \"새 스킬 만들고 싶어\", \"스킬 템플릿\", \"SKILL.md 템플릿\" - \"스킬 작성 방법\", \"스킬 구조\", \"스킬 포맷\""
-        },
-        {
-          "name": "general-skill-tester",
-          "summary": "| 스킬 품질 자동 검증 도구. 생성된 스킬의 테스트 케이스를 실행하고 baseline 대비 개선을 측정합니다. A/B 테스트, 회귀 테스트, 체인 테스트 + 4차원 스코어링 루브릭을 단일 스킬에 내장하여 self-contained로 동작합니다. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: - \"스킬 테스트해줘\","
-        },
-        {
-          "name": "general-travel-planner",
-          "summary": "| 여행 일정·맛집·숙소·예산을 한 번에 설계해주는 여행 플래너입니다. 다음과 같은 요청 시 사용하세요: - \"제주 3박 4일 일정 짜줘\" - \"도쿄 5박 6일 여행 코스와 예산 계획 세워줘\" - \"강릉 주말 여행 맛집·카페 추천해줘\" - \"부산 가족 여행 숙소 골라줘\" - \"유럽 배낭여행 2주 일정 만들어줘\" - \"제주"
-        },
-        {
-          "name": "general-wellness-coach",
-          "summary": "> 운동·식단·건강·육아·시니어 케어를 종합적으로 코칭합니다. \"운동 루틴 만들어줘\", \"다이어트 식단 짜줘\", \"아이 발달 단계 알려줘\", \"부모님 노인 복지 서비스 알려줘\"라고 요청할 때 사용하세요. 운동 계획, 영양 균형 식단, 육아 전략, 시니어 케어 계획을 지원합니다."
-        },
-        {
-          "name": "office-goal-planner",
-          "summary": "> 목표를 막연한 다짐이 아니라 실천 가능한 계획으로 바꿔주는 스킬입니다. '신년 목표 세워줘', '12주 계획법으로 쪼개줘', '만다라트 만들어줘', '개인 OKR', '목표를 실천으로'처럼 말하면 됩니다. 12주 계획·만다라트·개인 OKR 등으로 목표를 잘게 나누고 주간 루틴까지 연결해, \"세웠는데 안 하는\" 목표를 "
-        },
-        {
-          "name": "office-habit-routine",
-          "summary": "> 작심3일을 꾸준함으로 바꾸도록 습관과 루틴을 설계해주는 스킬입니다. '습관 만들고 싶어', '작심3일 극복', '모닝 루틴 짜줘', '습관 트래커', '꾸준히 하는 법'처럼 말하면 됩니다. 습관 쌓기·트리거 연결·트래커·회복 규칙으로, 의지에 기대지 않고 구조로 반복하게 만드는 루틴을 설계합니다."
-        },
-        {
-          "name": "office-retro-builder",
-          "summary": "> 한 주나 한 해를 가볍게 돌아보는 회고를 도와주는 스킬입니다. '이번 주 회고하고 싶어', 'KPT로 정리해줘', '연말 회고 템플릿', '한 줄 회고', '올해 돌아보기'처럼 말하면 됩니다. KPT·한 줄 회고·키워드 회고 등 부담 없는 템플릿으로, 반성·자책이 아니라 가볍게 돌아보고 다음을 정하는 회고를 설계합니다"
-        }
-      ],
-      "agents": [],
-      "mcp_servers": [
-        "dart"
-      ]
+     "name": "business-brand-identity",
+     "summary": "| 기업·제품 브랜드의 이름·슬로건·톤앤매너·색상까지 한 번에 정리한 브랜드 가이드 문서를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"친환경 생활용품 브랜드 만들어줘, 2030 여성 타깃\" - \"우리 스타트업 이름 후보 좀 지어줘\" - \"브랜드명은 정했으니 슬로건이랑 톤앤매너만 만들어줘\" - \"카페 브랜드 "
     },
     {
-      "id": "moai-writer",
-      "displayName": "✍️ 작가",
-      "category": "창작·출판",
-      "version": "0.2.0",
-      "description": "출판·텍스트 전담 AI 직원 — 출판 기획·집필·제안서·출판사 매칭(book-* 8종), 한국어 인문화 윤문과 맞춤법 검수까지 텍스트 창작 전 과정 스킬 10종. 스토리/IP 창작은 moai-story 플러그인으로 분리. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 작가·1인 출판인·실용서 저자.",
-      "skill_count": 10,
-      "skills": [
-        {
-          "name": "book-author-bio",
-          "summary": "| 도서 저자 약력·저자의 말·SNS·강연 통합 작성 — 저자가 타깃 페르소나에게 \"왜 이 사람이 이 책을 쓰는가\"를 1분 안에 설득하는 핵심 문서. book-target-reader의 페르소나·JTBD를 입력받아 4 장르별 신뢰 신호(학력·실무 경력·수상·팬덤·SNS·강연)를 자동 분기. 짧은 약력(50자)·중간(200"
-        },
-        {
-          "name": "book-chapter-writer",
-          "summary": "| 도서 본문 챕터 초고 집필 — 꼭지 단위 작성·매수 관리·인용 처리·4 장르 문체 자동 분기. book-outline-designer의 챕터 시놉시스를 입력받아 한 꼭지를 처음부터 끝까지 완결성 있게 작성. 실용서(명료·실습)·인문(서사·문체)·기술(코드·도표)·소설(묘사·시점) 프리셋. 200자 원고지 매수 자동 카"
-        },
-        {
-          "name": "book-concept-planner",
-          "summary": "| 한국 출판사 제출용 도서 컨셉서 작성 — 한 줄·30자·300자 요약, USP 3축, 타깃 페르소나, 시장 포지셔닝 매트릭스를 한 흐름으로 산출. 의도파악 → 리서치(데스크+필드) → 인사이트 도출 3단계. 실용서·인문·기술·소설 4 장르 프리셋 자동 분기. KPIPA 통계·교보문고/알라딘 베스트셀러·도서정가제 등 한"
-        },
-        {
-          "name": "book-outline-designer",
-          "summary": "| 도서 목차 설계 — 부·장·꼭지 3 레벨 구조 + 분량 배분 + 챕터 시놉시스. book-concept-planner와 book-target-reader의 산출물(USP·페르소나·JTBD)을 입력받아 4 장르별 목차 패턴 자동 적용. 실용서(Q&A·실습)·인문(서사)·기술(실습장)·소설(플롯) 프리셋. 한국 주요 출판"
-        },
-        {
-          "name": "book-proposal-writer",
-          "summary": "| 한국 출판사 투고용 제안서 작성 — 출판기획서 + 샘플 챕터 1-2개 + 마케팅 플랜 통합. book-concept-planner·book-target-reader·book-outline-designer·book-author-bio 4 스킬 산출물을 결합해 출판사 편집장이 1분 안에 통과 여부 판단할 수 있는 제안서로"
-        },
-        {
-          "name": "book-publisher-matcher",
-          "summary": "| 한국 출판사 매칭 — 장르·규모·계약 조건·투고 채널·평균 인세를 4 차원으로 평가해 책 컨셉서·페르소나·저자 약력에 가장 적합한 출판사 Top 5를 추천. 책의 가능성을 극대화할 출판사 선정 + 투고 우선순위 + 협상 포인트 + 거절 후 차순위 시나리오까지 일괄 산출. 30+ 한국 주요 출판사 라이브러리 내장 (IT"
-        },
-        {
-          "name": "book-revision-coach",
-          "summary": "| 도서 본문 퇴고·교열 코치 — 7 단계 점검(어법·문체·논리·인용·분량·시각자료·일관성)으로 출판 직전 원고를 다듬는 스킬. 국립국어원 어문규범 기준 + 한국 출판사 편집자 관점 + book-chapter-writer의 4 장르 문체 일관성 검증. korean-spell-check(맞춤법) + general-human"
-        },
-        {
-          "name": "book-target-reader",
-          "summary": "| 도서 타깃 독자 페르소나·JTBD(Jobs To Be Done)·페인포인트 매트릭스를 단계적으로 작성. book-concept-planner의 페르소나 1명을 입력으로 받아 4축 페르소나 카드 → JTBD 정의 → 페인포인트 매트릭스 → 독서 행동 데이터로 확장. 실용서·인문·기술·소설 4 장르 프리셋 자동 분기. K"
-        },
-        {
-          "name": "general-humanize-korean",
-          "summary": "| AI(ChatGPT·Claude·Gemini 등)가 쓴 한국어 텍스트의 \"AI 티\"를 정밀하게 제거해 사람이 쓴 글처럼 윤문하는 한국어 특화 스킬입니다. 번역투(~를 통해/~에 있어서/이중 피동), 영어 인용 과다, 기계적 병렬(첫째·둘째·셋째), AI 특유 관용구(결론적으로/시사하는 바가 크다/혁신적인), 피동태 남"
-        },
-        {
-          "name": "korean-spell-check",
-          "summary": "| 국립국어원 계열 규칙을 반영한 바른한글(구 부산대 맞춤법/문법 검사기) 표면을 이용해 한국어 문장의 띄어쓰기·맞춤법·문법을 최종 검수합니다. 긴 글은 청크 분할로 나눠 순차 검사하고, 결과를 원문·교정안·이유 중심으로 정리합니다. general-ai-slop-reviewer가 AI 패턴을 검수한 뒤 마지막 단계에서 호"
-        }
-      ],
-      "agents": [
-        {
-          "name": "manuscript-auditor",
-          "description": "Read-only skeptical auditor for the moai-writer plugin. Use to independently evaluate book manuscripts and publisher proposals produced by writer-director or book-* skills. Checks manuscript consisten",
-          "tools": [
-            "Read",
-            "Grep",
-            "Glob"
-          ],
-          "readonly": true
-        },
-        {
-          "name": "writer-director",
-          "description": "Book-publishing director for the moai-writer plugin. Use when the user asks to plan or write a book (concept, outline, chapters, publisher proposal, author bio, publisher matching) and finish Korean p",
-          "tools": [
-            "Read",
-            "Write",
-            "Edit",
-            "Bash",
-            "Grep",
-            "Glob",
-            "WebSearch",
-            "WebFetch",
-            "Skill"
-          ],
-          "readonly": false
-        }
-      ],
-      "mcp_servers": []
+     "name": "business-conflict-handler",
+     "summary": "> 까다로운 동료·소통빌런과 부딪힐 때 감정 상하지 않게 대응하고 거리를 지키도록 도와주는 스킬입니다. '이 사람 어떻게 대하지', '자꾸 떠넘기는 동료', '거절하는 법', '직장 인간관계 스트레스', '갈등 대응'처럼 말하면 됩니다. 유형별 대응 전략, 감정과 사안 분리, 정중한 거절, 관계 거리 두기로 직장 갈등을 "
     },
     {
-      "id": "moai-story",
-      "displayName": "📖 스토리 크리에이터",
-      "category": "창작·IP",
-      "version": "0.1.0",
-      "description": "스토리/IP 창작 전담 AI 직원 — 웹툰·웹소설·시나리오·콘티·표지·캐릭터 시트·IP 사업화(story-* 13종) 스킬. Higgsfield 이미지·영상 MCP 연동으로 캐릭터 일관성 작화·시네마틱 프리비즈까지. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 웹툰/웹소설 창작자·시나리오 작가·IP 콘텐츠 기획자.",
-      "skill_count": 13,
-      "skills": [
-        {
-          "name": "story-ad-conti",
-          "summary": "| 광고 콘티 스킬 — 제품·브랜드 스토리보드를 Higgsfield Marketing Studio·Ads 2.0·Seedance 2.0으로 생성한다. 사전 크레딧 고지와 사용자 확인이 필수. MCP 미연결 시 프롬프트 온리 모드. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: - \"광고 콘티\", \"광고 스토리보드\" "
-        },
-        {
-          "name": "story-character-sheet",
-          "summary": "| 캐릭터 시트 스킬 — 인물 설정(성격·관계·갈등)과 비주얼을 Higgsfield Soul ID로 학습시켜 일관된 작화에 사용한다. 사전 크레딧 고지와 사용자 확인이 필수. MCP 미연결 시 프롬프트 온리 모드. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: - \"캐릭터 시트\", \"인물 설정\", \"캐릭터 디자인\" "
-        },
-        {
-          "name": "story-conti",
-          "summary": "| 콘티·스토리보드 스킬 — 씬을 프레임 시퀀스로 분해하고 Higgsfield Popcorn(8프레임)·Shots(9앵글)로 이미지를 생성한다. 사전 크레딧 고지와 사용자 확인이 필수. MCP 미연결 시 프롬프트 온리 모드. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: - \"콘티\", \"스토리보드\", \"프레임 시퀀스"
-        },
-        {
-          "name": "story-cover-art",
-          "summary": "| 표지·일러스트 스킬 — 단행본 표지·웹툰 썸네일·웹소설 표지를 Higgsfield Soul 2.0과 업스케일로 인쇄 해상도까지 생성한다. 사전 크레딧 고지와 사용자 확인이 필수. MCP 미연결 시 프롬프트 온리 모드. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: - \"책 표지\", \"웹툰 썸네일\", \"웹소설 표지"
-        },
-        {
-          "name": "story-ip-pitch",
-          "summary": "| IP 사업화 스킬 — 작품을 2차 저작(드라마화·영화화·게임·굿즈·웹툰↔웹소설 전환)으로 피칭하는 문서와 판권 제안서를 작성한다. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: - \"IP 피칭\", \"판권 제안\", \"2차 저작\" - \"웹툰 드라마화\", \"웹소설 웹툰화\" - \"IP 가치 평가\", \"IP 확장\""
-        },
-        {
-          "name": "story-previz",
-          "summary": "| 시네마틱 프리비즈 스킬 — 카메라 무빙·렌즈·조명을 지정한 숏을 Higgsfield DoP와 Cinema Studio 3.5로 생성한다. 사전 크레딧 고지와 사용자 확인이 필수. MCP 미연결 시 프롬프트 온리 모드. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: - \"프리비즈\", \"시네마틱 숏\" - \"카메라 무"
-        },
-        {
-          "name": "story-project",
-          "summary": "| 작품 유형을 파악해 출판·웹툰·웹소설·시나리오·콘티·광고 콘티·캐릭터·표지·프리비즈·IP 사업화 파이프라인으로 라우팅하는 진입점 스킬. 사용자의 한마디 요청에서 장르를 분류해 알맞은 story-* 스킬로 안내한다. moai-coworker 플러그인의 /project 역할 담당. 다음과 같은 요청 시 반드시 이 스킬을 "
-        },
-        {
-          "name": "story-screenplay",
-          "summary": "| 시나리오 스킬 — 씬 넘버·지문·대사를 한국 방송·영화 표준 포맷으로 작성한다. 시놉시스를 받아 촬영 가능한 단위의 대본으로 전개한다. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: - \"시나리오\", \"대본\", \"씬 작성\" - \"드라마 대본\", \"영화 시나리오\" - \"씬 넘버\", \"지문\", \"대사\""
-        },
-        {
-          "name": "story-synopsis",
-          "summary": "| 시놉시스 스킬 — 로그라인·기획의도·인물 소개·회차/막 구성을 한 문서로 정리한다. 드라마·영화·웹드라마 제작사 제출용 기획서의 뼈대. story-screenplay의 선행 스킬. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: - \"시놉시스\", \"로그라인\", \"기획의도\" - \"드라마 기획서\", \"영화 시놉\" - "
-        },
-        {
-          "name": "story-webnovel-writer",
-          "summary": "| 웹소설 연재 집필 스킬 — 문피아·카카오페이지 플랫폼 문법, 회차 절단(클리프행어) 설계, 일러 회차 분량 가이드까지 다룬다. 장르별 베스트 실례 패턴과 연재 주기 설계를 지원한다. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: - \"웹소설 연재\", \"문피아 집필\", \"카카오페이지 소설\" - \"웹소설 절단\", \""
-        },
-        {
-          "name": "story-webtoon-art",
-          "summary": "| 웹툰 패널 작화 스킬 — Higgsfield AI Anime Generator와 Soul ID로 캐릭터 일관성을 유지하며 컷 이미지를 생성한다. 사전 크레딧 고지와 사용자 확인이 필수. MCP 미연결 시 프롬프트 온리 모드로 전환한다. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: - \"웹툰 작화\", \"웹툰 컷 "
-        },
-        {
-          "name": "story-webtoon-episode",
-          "summary": "| 웹툰 회차 대본 스킬 — 한 회를 컷 단위로 분할하고 대사·연출·말칸 배치까지 설계한다. story-webtoon-planner의 기획서를 받아 그림 작가·AI 작화가 바로 쓸 수 있는 회차 대본을 산출한다. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: - \"웹툰 회차 대본\", \"컷 분할\", \"웹툰 대사\" - "
-        },
-        {
-          "name": "story-webtoon-planner",
-          "summary": "| 웹툰 기획 스킬 — 세계관·캐릭터·시즌/회차 구성·플랫폼 문법(네이버웹툰·카카오웹툰·카카오페이지)을 한 흐름으로 설계한다. 장르별 베스트 실례 패턴과 연재 주기 설계까지 다룬다. story-webtoon-episode(대본)·story-webtoon-art(작화)의 선행 스킬. 다음과 같은 요청 시 반드시 이 스킬을 "
-        }
-      ],
-      "agents": [
-        {
-          "name": "story-continuity-auditor",
-          "description": "Read-only skeptical auditor for the moai-story plugin. Use to independently evaluate webtoon/webnovel episodes, screenplays, synopses, character sheets, conti/previz art, and IP pitch/rights packages ",
-          "tools": [
-            "Read",
-            "Grep",
-            "Glob"
-          ],
-          "readonly": true
-        },
-        {
-          "name": "story-director",
-          "description": "Story/IP creation director for the moai-story plugin. Use when the user asks to plan or write a webtoon or webnovel episode, a screenplay or synopsis, a storyboard/conti, cover art or character sheets",
-          "tools": [
-            "Read",
-            "Write",
-            "Edit",
-            "Bash",
-            "Grep",
-            "Glob",
-            "WebSearch",
-            "WebFetch",
-            "Skill"
-          ],
-          "readonly": false
-        }
-      ],
-      "mcp_servers": [
-        "higgsfield"
-      ]
+     "name": "business-executive-summary",
+     "summary": "| 복잡한 분석·재무·운영 보고를 경영진 1페이지(≤500단어) 요약으로 변환합니다. 다음과 같은 요청 시 사용하세요: - \"임원 보고용 1페이지 요약 만들어줘\" / \"이사회 보고서 요약해줘\" / \"경영진 브리핑 1장으로 정리해줘\" - \"이 리포트 핵심만 요약해줘\" / \"긴 보고서 1페이지로 줄여줘\" / \"C레벨 요약 작"
     },
     {
-      "id": "moai-marketer",
-      "displayName": "📣 마케터",
-      "category": "마케팅",
-      "version": "0.2.0",
-      "description": "마케팅 전담 AI 직원 — 캠페인 기획·퍼포먼스 분석(marketing-* 11종), 블로그·뉴스레터·SNS 콘텐츠(content-* 8종) 스킬 19종. Meta Ads·게시 채널 MCP 연동. 미디어 생성(media-*)은 moai-media 플러그인으로 분리. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 마케터·콘텐츠 크리에이터·1인 브랜드.",
-      "skill_count": 19,
-      "skills": [
-        {
-          "name": "content-blog",
-          "summary": "| 네이버·티스토리·브런치·WordPress·Ghost에 바로 올릴 수 있는 블로그 포스팅(제목·목차·본문·CTA·SEO 메타)을 완성해 드립니다. 다음과 같은 요청 시 사용하세요: - \"네이버 블로그에 스타트업 자금 조달 글 써줘\" - \"티스토리에 SEO 최적화 블로그 글 작성해줘\" - \"브런치 스타일 회고 에세이 써줘"
-        },
-        {
-          "name": "content-card-news",
-          "summary": "| 인스타그램·스레드·카카오 채널용 카드뉴스 4장(본문 카피·디자인 가이드·이미지 생성 프롬프트·채널별 캡션·해시태그)을 한 번에 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"카드뉴스 만들어줘\" - \"인스타 슬라이드 기획해줘\" - \"캐러셀 콘텐츠 구성해줘\" - \"재택근무 도구 비교 카드뉴스 만들어줘\" - \"스"
-        },
-        {
-          "name": "content-copywriting",
-          "summary": "| 헤드라인·CTA·슬로건·광고 카피를 후보 여러 개로 뽑아 드립니다. 광고 캠페인 전략과 영상 스토리보드까지 확장할 수 있습니다. 다음과 같은 요청 시 사용하세요: - \"신제품 출시 헤드라인 5가지 만들어줘\" - \"앱 다운로드 유도 CTA 문구 써줘\" - \"카카오 광고 캠페인 카피 만들어줘\" - \"스타트업 브랜드 슬로건"
-        },
-        {
-          "name": "content-editorial-calendar",
-          "summary": "| 콘텐츠 발행 캘린더와 채널별 게시 일정을 기획해주는 스킬입니다. 다음과 같은 요청 시 사용하세요: - \"콘텐츠 캘린더 짜줘\" - \"이번 달 발행 일정 만들어줘\" - \"채널별 게시 주기 정해줘\" - \"콘텐츠 발행 계획표 만들어줘\" - \"3개월 편집 캘린더 설계해줘\" - \"블로그·유튜브·SNS 발행 스케줄 정리해줘\" 산출"
-        },
-        {
-          "name": "content-email-sequence",
-          "summary": "| 가입·구매 후 단계별로 자동 발송할 이메일 시퀀스(발송 시점·제목·본문 초안)를 한국 정보통신망법에 맞게 설계해 드립니다. 다음과 같은 요청 시 사용하세요: - \"신규 가입자 온보딩 이메일 7단계로 만들어줘\" - \"이메일 자동화 시퀀스 짜줘\" - \"드립 캠페인 설계해줘\" - \"90일 미접속 고객 재활성화 메일 써줘\" "
-        },
-        {
-          "name": "content-newsletter",
-          "summary": "| 이메일 뉴스레터(제목·프리헤더·본문·CTA)와 구독자 확보 전략·콘텐츠 캘린더를 만들어 드립니다. 오픈율을 높이는 제목 후보도 여러 개 뽑아 드립니다. 다음과 같은 요청 시 사용하세요: - \"스타트업 위클리 뉴스레터 첫 호 써줘\" - \"오픈율 높이는 이메일 제목 후보 10가지 만들어줘\" - \"구독자 1,000명 확보 "
-        },
-        {
-          "name": "content-sns-content",
-          "summary": "| 인스타·네이버 블로그·카카오부터 스레드·X·링크드인·유튜브 쇼츠까지, 채널에 맞춘 SNS 게시글과 캡션·해시태그·스크립트를 써 드립니다. 다음과 같은 요청 시 사용하세요: - \"인스타 피드 글 5개 써줘\" - \"네이버 블로그 포스팅 해줘\" - \"링크드인 포스팅 만들어줘\" - \"유튜브 쇼츠 스크립트 써줘\" - \"브랜드 "
-        },
-        {
-          "name": "content-social-media",
-          "summary": "| [DEPRECATED v2.3.0] 본 스킬은 moai-marketer:content-sns-content로 흡수되었습니다. 신규 호출은 /content-sns-content를 사용하세요. 글로벌 4채널(스레드·X·링크드인·유튜브쇼츠)과 한국 3채널(인스타·네이버 블로그·카카오)을 모두 content-sns-conte"
-        },
-        {
-          "name": "marketing-campaign-planner",
-          "summary": "| 광고·SNS·이메일을 묶은 마케팅 캠페인 기획안(목표·채널·예산·KPI·크리에이티브 방향)을 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"신제품 런칭 캠페인 기획해줘, 예산 500만원에 2030 여성 타깃\" - \"A/B 테스트 설계해줘\" - \"인플루언서 마케팅 전략 짜줘, 마이크로 위주로\" - \"고객 여정"
-        },
-        {
-          "name": "marketing-landing-page-conversion-audit",
-          "summary": "| 기존 랜딩페이지가 왜 안 팔리는지 진단하고 전환율을 올릴 우선순위 처방 리포트를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"랜딩페이지 진단해줘\" - \"전환율이 왜 낮은지 봐줘\" - \"광고 클릭은 많은데 구매가 안 일어나\" - \"장바구니에서 다들 이탈하는 이유 찾아줘\" - \"광고 문구랑 랜딩 첫 줄이 맞는"
-        },
-        {
-          "name": "marketing-landing-page",
-          "summary": "| 하나의 행동(가입·구매·신청)을 유도하는 단독 전환 랜딩 1페이지를 카피와 코드까지 만들어 드립니다. 히어로부터 최종 CTA까지 전환율을 높이도록 구성합니다. 다음과 같은 요청 시 사용하세요: - \"SaaS 제품 랜딩 페이지 구성해줘\" - \"이벤트 참가 신청 랜딩 만들어줘\" - \"무료 체험 유도 세일즈 페이지 기획해줘"
-        },
-        {
-          "name": "marketing-meta-ads-analyzer",
-          "summary": "| 메타 광고관리자에서 내려받은 엑셀(.xlsx) 보고서를 올리면 광고 성과를 진단하고, 무엇을 어떻게 손볼지 강도별(🟢보수 🟡중도 🔴적극)로 정리한 리포트를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"메타 광고 보고서 분석해줘\" - \"ROAS가 왜 낮은지 봐줘\" - \"지면별 성과 어떤지 봐줘, Audien"
-        },
-        {
-          "name": "marketing-meta-ads-manager",
-          "summary": "| 페이스북·인스타그램 광고를 자연어로 직접 만들고 켜고 끄고 예산까지 조정해 드립니다. Meta 공식 광고 AI 커넥터에 브라우저 로그인 한 번으로 연결되며, 신규 광고는 항상 꺼진(PAUSED) 상태로 만들고 켜기 전에 꼭 확인을 받습니다. 다음과 같은 요청 시 사용하세요: - \"메타 광고 만들어줘\", \"인스타 광고 "
-        },
-        {
-          "name": "marketing-performance-report",
-          "summary": "| GA4·네이버·메타·카카오·구글 광고 데이터를 묶어 채널별 ROAS·KPI를 분석하고, 인사이트와 다음 액션 플랜까지 담은 마케팅 성과 보고서를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"지난달 마케팅 성과 보고서 만들어줘\" - \"ROAS 분석해줘\" - \"GA4 데이터 해석해줘\" - \"네이버랑 메타 광고"
-        },
-        {
-          "name": "marketing-personal-branding",
-          "summary": "| 개인의 전문성과 경력을 브랜드로 정리해 포지셔닝·콘텐츠·채널 전략 문서를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"프리랜서 디자이너 개인 브랜딩 전략 세워줘\" - \"퍼스널 브랜딩 처음부터 도와줘\" - \"링크드인 프로필 최적화해줘\" - \"강연자·저자 포지셔닝 전략 만들어줘\" - \"유튜브 전문가 채널 기획"
-        },
-        {
-          "name": "marketing-pixel-audit",
-          "summary": "| 메타·구글 광고 추적 픽셀이 제대로 설치됐는지 점검하고, 광고비를 새게 만드는 설정 실수와 고객 데이터 활용도를 진단한 리포트를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"픽셀 설치 제대로 됐는지 점검해줘\" - \"메타 픽셀이랑 구글 픽셀 검증해줘\" - \"CAPI(전환 API) 설치 확인해줘\" - \"iOS"
-        },
-        {
-          "name": "marketing-seo-audit",
-          "summary": "| 네이버·구글·AI 검색(GEO)에서 잘 노출되는지 점검하고, 검색 순위를 올릴 개선안과 추천 키워드를 담은 SEO 감사 보고서를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"우리 블로그 SEO 감사해줘\" - \"네이버 상위 노출 전략 짜줘\" - \"키워드 분석해줘\" - \"구글 검색 최적화해줘\" - \"ChatG"
-        },
-        {
-          "name": "marketing-target-script",
-          "summary": "| 타겟 고객을 분석해 그들의 고민(페인포인트)을 짚고, 채널별로 바로 쓸 수 있는 맞춤 메시지·카피를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"타겟 고객 맞춤 메시지 만들어줘\" - \"타겟 메시징 전략 짜줘\" - \"우리 고객 페르소나 분석해서 카피 써줘\" - \"채널별 스크립트 생성해줘\" - \"이메일·SNS"
-        },
-        {
-          "name": "marketing-youtube-podcast-planner",
-          "summary": "| 유튜브 영상과 팟캐스트 에피소드를 기획하고 대본·쇼노트까지 구성해주는 스킬입니다. 다음과 같은 요청 시 사용하세요: - \"유튜브 영상 기획해줘\" - \"팟캐스트 에피소드 구성해줘\" - \"쇼노트 만들어줘\" - \"유튜브 대본 아웃라인 짜줘\" - \"유튜브 채널 기획서 만들어줘\" - \"팟캐스트 포맷 설계해줘\" 산출물은 에피소드"
-        }
-      ],
-      "agents": [
-        {
-          "name": "campaign-strategist",
-          "description": "Marketing campaign strategist for the moai-marketer plugin. Use when the user asks to plan, draft, or improve a marketing campaign, content calendar, creative brief, ad plan (Meta Ads), SEO/landing-pa",
-          "tools": [
-            "Read",
-            "Write",
-            "Edit",
-            "Bash",
-            "Grep",
-            "Glob",
-            "WebSearch",
-            "WebFetch",
-            "Skill"
-          ],
-          "readonly": false
-        },
-        {
-          "name": "performance-auditor",
-          "description": "Read-only skeptical auditor for the moai-marketer plugin. Use to independently verify campaign plans, budget allocations, ad copy, content calendars, and performance reports produced by campaign-strat",
-          "tools": [
-            "Read",
-            "Grep",
-            "Glob"
-          ],
-          "readonly": true
-        }
-      ],
-      "mcp_servers": [
-        "meta-ads",
-        "post-bridge",
-        "typefully",
-        "wordpress"
-      ]
+     "name": "business-feedback-loop",
+     "summary": "> 피드백을 건설적으로 주고, 받은 피드백을 감정 상하지 않게 소화하도록 도와주는 스킬입니다. '피드백 어떻게 줘야 해', '부정적 피드백 받았는데 속상해', '피드백 전달하는 법', '중간 점검 요청하고 싶어'처럼 말하면 됩니다. SBI 구조로 건설적 피드백을 설계하고, 받은 피드백을 사실과 감정으로 분리해 소화하며, "
     },
     {
-      "id": "moai-media",
-      "displayName": "🎬 미디어 크리에이터",
-      "category": "미디어 생성",
-      "version": "0.1.0",
-      "description": "미디어 생성 전담 AI 직원 — 이미지·영상·오디오 생성(media-* 9종) 스킬. Higgsfield 이미지·영상, ElevenLabs TTS/보이스클로닝, GPT-image-2·Gemini 3·Midjourney v8 프롬프트 빌더, codex/NotebookLM 연동까지 멀티모달 생성 도구 모음. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 콘텐츠 크리에이터·마케터·디자이너·1인 브랜드.",
-      "skill_count": 10,
-      "skills": [
-        {
-          "name": "media-asset-production",
-          "summary": "| (별칭) media-asset-production 스킬은 두 개의 스킬로 분리되었습니다. 콘텐츠 발행 일정·캘린더는 moai-marketer:content-editorial-calendar 를, 유튜브·팟캐스트 에피소드 기획은 moai-marketer:marketing-youtube-podcast-planner 를 사"
-        },
-        {
-          "name": "media-audio-gen",
-          "summary": "| 통합 오디오 생성 스킬. ElevenLabs MCP 기반 TTS(32개국어), 보이스 클로닝(1분 샘플), 다국어 더빙(립싱크), 효과음 생성을 지원. \"목소리 생성\", \"TTS\", \"음성 합성\", \"보이스 클로닝\", \"더빙\", \"나레이션\", \"효과음\", \"AI 음성\" 요청 시 사용."
-        },
-        {
-          "name": "media-codex-image",
-          "summary": "| codex CLI의 내장 image_gen 도구로 **gpt-image-2** 이미지를 생성합니다 — ChatGPT OAuth 인증으로 **API 키 불필요**, ChatGPT Plus/Team/Enterprise 구독 한도로 동작합니다. 다음과 같은 요청 시 사용하세요: - \"codex로 이미지 만들어줘\", \"cod"
-        },
-        {
-          "name": "media-gemini-3-image-prompt",
-          "summary": "| Google Gemini 3 Pro Image (a.k.a. Nano Banana Pro) 전용 이미지 프롬프트 빌더. 사용자 자연어 한 줄 + AskUserQuestion 프리셋·미세조정으로 컨텍스트를 수집해 Google AI Developers 공식 가이드의 5-component 구조([Subject+Adj] do"
-        },
-        {
-          "name": "media-gpt-image-2-prompt",
-          "summary": "| OpenAI GPT-image-2 모델 전용 이미지 프롬프트 텍스트 빌더. 사용자 자연어 한 줄 + AskUserQuestion 프리셋·미세조정 라운드로 컨텍스트를 수집하고, OpenAI Cookbook 공식 6-Block 구조(Subject·Action·Scene·Composition·Lighting·Style&Te"
-        },
-        {
-          "name": "media-higgsfield-core",
-          "summary": "| Higgsfield MCP 이미지·영상 생성의 공유 코어. media-higgsfield-image / media-higgsfield-video가 로드하는 SSOT(single source of truth)로, 호출 스키마·라이브 카탈로그 조회 프로토콜·공통 크래프트 규칙(R1–R5)·인터뷰 슬롯·잡 수명주기를 정의합"
-        },
-        {
-          "name": "media-higgsfield-image",
-          "summary": "| Higgsfield MCP 기반 AI 이미지를 자연어 요청 한 줄로 생성합니다. 모델·파라미터를 하드코딩하지 않고 라이브 카탈로그(models_explore)를 조회해 호출하므로, 카탈로그가 바뀌어도 드리프트 없이 동작합니다. 다음과 같은 요청 시 사용하세요: - \"Higgsfield로 이미지 만들어 줘\" - \"Sou"
-        },
-        {
-          "name": "media-higgsfield-video",
-          "summary": "| Higgsfield MCP 기반 AI 영상을 자연어 요청 한 줄로 생성합니다. 모델·파라미터를 하드코딩하지 않고 라이브 카탈로그(models_explore)를 조회해 호출하므로, 카탈로그가 바뀌어도 드리프트 없이 동작합니다. 다음과 같은 요청 시 사용하세요: - \"Higgsfield 영상 만들어줘\" - \"Veo로 영상"
-        },
-        {
-          "name": "media-midjourney-v8-prompt",
-          "summary": "| Midjourney v8.1 (2026.03 Alpha) 전용 이미지 프롬프트 빌더. 사용자 자연어 한 줄 + AskUserQuestion 프리셋·미세조정으로 컨텍스트를 수집해 Midjourney 공식 Parameter List 기반 키워드+`--파라미터` 형식으로 변환합니다. Discord `/imagine` 또는 "
-        },
-        {
-          "name": "media-notebooklm-slide-prompt",
-          "summary": "| 강연·강의·세미나 본문 마크다운을 입력받아 (1) NotebookLM Studio에 그대로 붙여 넣을 슬라이드 데크 생성 프롬프트와 (2) 슬라이드별 나노바나나(Gemini 3 Pro Image, a.k.a. Nano Banana Pro) 5-Component 이미지 프롬프트를 동시 산출하는 prompt-builder"
-        }
-      ],
-      "agents": [
-        {
-          "name": "media-brand-auditor",
-          "description": "Read-only skeptical auditor for the moai-media plugin. Use to independently evaluate image, video, and audio assets plus generation prompts produced by media-producer or media-* skills. Checks brand/s",
-          "tools": [
-            "Read",
-            "Grep",
-            "Glob"
-          ],
-          "readonly": true
-        },
-        {
-          "name": "media-producer",
-          "description": "Multimodal media generation producer for the moai-media plugin. Use when the user asks to generate images, video, or audio — an Higgsfield image/video, an ElevenLabs TTS/voice-clone/dub, or a build pr",
-          "tools": [
-            "Read",
-            "Write",
-            "Edit",
-            "Bash",
-            "Grep",
-            "Glob",
-            "WebSearch",
-            "WebFetch",
-            "Skill"
-          ],
-          "readonly": false
-        }
-      ],
-      "mcp_servers": [
-        "ElevenLabs",
-        "higgsfield"
-      ]
+     "name": "business-meeting-facilitator",
+     "summary": "> 회의가 산으로 가지 않게 아젠다를 짜고 결론까지 끌고 가는 진행을 도와주는 스킬입니다. '회의 아젠다 짜줘', '이 회의 어떻게 진행하지', '회의가 자꾸 산으로 가', '의사결정 회의 준비', '회의록 정리'처럼 말하면 됩니다. 목적 정의 → 아젠다 설계 → 진행 규칙 → 의사결정 → 회의록·후속 액션의 5단계로 결"
     },
     {
-      "id": "moai-seller",
-      "displayName": "🛒 셀러",
-      "category": "이커머스",
-      "version": "0.1.0",
-      "description": "이커머스 셀러 전담 AI 직원 — 스마트스토어·아임웹·카페24 MCP 연동과 상세페이지·마켓플레이스·광고·CRM 등 커머스 실무 스킬 29종. VOC·채널 메시지는 moai-cs(CS매니저)로 이관. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 온라인 셀러·이커머스 운영자.",
-      "skill_count": 29,
-      "skills": [
-        {
-          "name": "commerce-automation-audit",
-          "summary": "| [책임 경계] 셀러 운영 자체 진단 + 자동화 우선순위 점수 산정 + 3 Phase 로드맵 자동 생성 전담. \"커머스 업무 자동화\" 프레임워크(6대 영역 A-F + 3 자동화 유형 + 4단계 설계 프로세스)를 자연어로 wrapping. 페어 스킬 commerce-integrated-strategy(매출 향상 전략 1장"
-        },
-        {
-          "name": "commerce-coupang-ad-optimizer",
-          "summary": "| 이 스킬은 moai-seller:commerce-marketplace-coupang-ads로 이름이 변경되었습니다. 쿠팡 광고 풀세트 최적화(캠페인 분류·검색/비검색 분리·엔드 ROAS·자동규칙)는 새 이름으로 호출하세요. 다음과 같은 요청 시 사용하세요: \"쿠팡 광고 분석해줘\", \"쿠팡 AI스마트광고 세팅\", \"쿠팡"
-        },
-        {
-          "name": "commerce-detail-page-copy",
-          "summary": "> [책임 경계] 카피 산출 (13섹션 감정여정 JSON + 마크다운 미리보기 — Hero→Pain→Problem→Story→Solution→How→Proof→Authority→Benefits→Risk→Compare→Filter→CTA) + 확장 모드 (`--mode diagnose`: 7단계 진단 점수 / `--mode"
-        },
-        {
-          "name": "commerce-detail-page-image",
-          "summary": "> 한국 이커머스 상세페이지 13섹션 이미지를 자동 생성하고 1080×12720 단일 PNG로 합성하는 스킬입니다. \"상세페이지 이미지 만들어줘\", \"13섹션 합성 이미지\", \"상폐 이미지\", \"1080 12720 합성\"처럼 말하면 됩니다. commerce-detail-page-copy의 13섹션 카피와 사용자 상품 사진"
-        },
-        {
-          "name": "commerce-detail-page-planner",
-          "summary": "| 한국 이커머스 상세페이지의 기획안(원 메시지·오프닝 유형·본문 뼈대·유통 채널 전략·사진 체크리스트)을 만들어 드립니다. 카피·코드·이미지를 만들기 전, 무엇을 어떤 구조와 톤으로 보여줄지 먼저 확정하는 단계입니다. 다음과 같은 요청 시 사용하세요: - \"상세페이지 기획해줘\" - \"상세페이지 구조 짜줘\" - \"이 제품"
-        },
-        {
-          "name": "commerce-early-fan-builder",
-          "summary": "| [책임 경계] 신생 브랜드의 충성 100명 부트스트랩 전담 — '잘 만든 충성 고객 100명, 1만 고객 부럽지 않다' 원칙 + 블랭크 사례 + 강아지 가방 케이스 분석 + 100명→1만 전환 로드맵. 페어 스킬 commerce-promotion-planner(전체 프로모션 기획)와 명확히 구분 — 본 스킬은 신생 부"
-        },
-        {
-          "name": "commerce-influencer-collab",
-          "summary": "| [책임 경계] 인플루언서·UGC 협업 가이드 전담 — 뒷광고 회피·체험단·UGC 리그램·굿즈 기획법. 페어 스킬 marketing-campaign-planner(전체 캠페인 기획)와 명확히 구분 — 본 스킬은 인플루언서 단일 협업 가이드, 페어는 전체 마케팅 캠페인. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요:"
-        },
-        {
-          "name": "commerce-integrated-strategy",
-          "summary": "| 선행 스킬 산출물(commerce-market-research·commerce-jtbd-persona·commerce-product-naming·commerce-channel-message·commerce-detail-page-copy 결과)과 매장 운영 데이터를 종합해 매출 향상 통합 전략 1장 + 실행 우선순위 T"
-        },
-        {
-          "name": "commerce-jtbd-persona",
-          "summary": "| [책임 경계] 1스킬 2모드 — `--mode jtbd`: JTBD 9개 + 시장 매칭 우선순위 자동 도출 / `--mode persona`: 리뷰·Q&A 분석 기반 페르소나 3명 자동 생성. 페어 스킬 moai-domain-copywriting과 명확히 구분 — 본 스킬은 고객 분석(Why), 페어는 카피 작성(Wh"
-        },
-        {
-          "name": "commerce-live-commerce",
-          "summary": "> 네이버 쇼핑라이브·카카오 쇼핑라이브·그립·쿠팡 라이브 등 한국 라이브 커머스 채널 가이드 + 라이브 스크립트 작성 스킬입니다. \"라이브 커머스 가이드\", \"쇼핑라이브 스크립트\", \"그립 방송\", \"라이브 방송 카피\"처럼 말하면 됩니다. 채널별 정책·노출·수수료를 정리하고, 30분/60분 라이브 방송용 진행 스크립트(오"
-        },
-        {
-          "name": "commerce-ltv-cac-architect",
-          "summary": "| [책임 경계] CAC→재구매율→구매주기→ARPU→공헌이익→LTV 6대 지표 연결 모델 + LTV/CAC ratio 진단 + 광고 의존도 진단 + 손익분기 ROAS 자동 계산 + 채널·세그먼트별 재구매율 분해 권장 액션. 페어 스킬 commerce-margin-calculator(단품 마진 계산)와 명확히 구분 — 본 "
-        },
-        {
-          "name": "commerce-margin-calculator",
-          "summary": "| [책임 경계] 상품별 마진·엔드 ROAS(본전 ROAS)·손익분기 광고비 자동 계산 전담. 부가세·플랫폼 수수료·쿠폰·할인 모두 반영한 정확한 마진 산출. 페어 스킬 moai-seller:commerce-marketplace-coupang-ads(쿠팡 광고 운영 의사결정)와 명확히 구분 — 본 스킬은 마진·ROAS 계"
-        },
-        {
-          "name": "commerce-market-research",
-          "summary": "| [책임 경계] 카테고리 시장조사 1장 자동 생성 — 거시·경쟁·검색 3축 리포트. 페어 스킬 moai-tutor:education-grant-writer와 명확히 구분 — 본 스킬은 이커머스 셀러 카테고리 진입 판단, 페어는 정책자금 리서치. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: \"내 카테고리 시장조사 "
-        },
-        {
-          "name": "commerce-marketing-compliance-kr",
-          "summary": "| [책임 경계] 한국 정보통신망법(정통망법) 광고·정보성 메시지 자동 판정 + 야간 발송 차단 + 표기 위치 검증 + 무료 수신거부 명시 점검 전담. 모든 채널(SMS/LMS/MMS·이메일·앱푸시·카톡 친구톡/알림톡·텔레마케팅) 발송 전 의무 통과 법규 게이트. 페어 스킬 commerce-channel-message(메"
-        },
-        {
-          "name": "commerce-marketplace-coupang-ads",
-          "summary": "| 쿠팡 광고 풀세트를 자연어로 분석·최적화합니다 — 3 캠페인 유형(AI스마트/매출최적화/수동키워드) 자동 분류 + 검색영역 vs 비검색영역 매출 분리 + 엔드 ROAS 계산 + 자동규칙 3종 + 상품별 의사결정 분기(ROAS·CTR·CVR). 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: \"쿠팡 광고 분석해줘\","
-        },
-        {
-          "name": "commerce-marketplace-coupang",
-          "summary": "> 쿠팡 상세페이지 정책과 검색최적화·우수상품 가이드라인을 적용하는 스킬입니다. \"쿠팡 상세페이지 가이드\", \"로켓배송 등록\", \"쿠팡 SEO\", \"쿠팡 우수상품\"처럼 말하면 됩니다. commerce-detail-page-copy/commerce-detail-page-image 출력물을 쿠팡 정책에 맞게 검토하고, 이미지"
-        },
-        {
-          "name": "commerce-marketplace-crowdfunding",
-          "summary": "> 와디즈·텀블벅 등 한국 크라우드펀딩 채널의 프로젝트 기획·심사·리워드 구성·후속 정산 가이드 스킬입니다. \"와디즈 펀딩\", \"텀블벅 프로젝트\", \"크라우드펀딩 기획\", \"리워드 구성\", \"선주문 펀딩\"처럼 말하면 됩니다. 신상품 출시 또는 한정판을 사전판매·검증 형식으로 런칭하고 싶을 때 유용합니다. 와디즈(리워드·투"
-        },
-        {
-          "name": "commerce-marketplace-curation",
-          "summary": "> 카카오 메이커스·무신사·29CM 등 한국 큐레이션 커머스 채널 입점 가이드 스킬입니다. \"카카오 메이커스 입점\", \"무신사 셀러\", \"29CM 입점\", \"큐레이션 셀렉션\", \"주문생산 펀딩\"처럼 말하면 됩니다. 일반 마켓·자사몰과 달리 채널이 큐레이팅·셀렉션하는 입점 모델로, 채널 정체성에 맞는 브랜드 콘셉트와 제품 "
-        },
-        {
-          "name": "commerce-marketplace-d2c",
-          "summary": "> 카페24·아임웹·메이크샵 등 한국 자사몰(D2C) 빌더 운영 가이드 스킬입니다. \"카페24 등록\", \"아임웹 쇼핑몰\", \"자사몰 만들기\", \"D2C 브랜드 쇼핑몰\", \"메이크샵 가이드\"처럼 말하면 됩니다. 마켓 수수료 없이 브랜드 단독으로 운영하는 자사몰 채널의 도메인·결제·배송·디자인 정책을 정리하고, 카페24(가장"
-        },
-        {
-          "name": "commerce-marketplace-naver",
-          "summary": "> 네이버 스마트스토어 + 11번가/G마켓/옥션 오픈마켓 정책·검색최적화 가이드 스킬입니다. \"스마트스토어 등록\", \"네이버 쇼핑 SEO\", \"11번가 가이드\", \"옥션 등록\", \"오픈마켓 가이드\"처럼 말하면 됩니다. commerce-detail-page-copy/commerce-detail-page-image 출력물을 "
-        },
-        {
-          "name": "commerce-morning-brief",
-          "summary": "| 매장 운영 데이터를 1줄로 통합 요약합니다. SCOPE에 따라 전체 아침 브리핑(어제 주문·신규 문의·트렌드·ROAS 4개 영역) 또는 주문 요약만(스마트스토어·카페24·아임웹 신규 주문 채널 통합)을 자연어로 선택합니다. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: \"아침 브리핑 만들어줘\", \"오늘 매장 현황"
-        },
-        {
-          "name": "commerce-product-detail",
-          "summary": "| 네이버 스마트스토어·쿠팡·카카오 규격에 맞는 제품 상세 페이지를 코드(HTML 또는 React 컴포넌트)로 만들어 드립니다. 전환율을 높이는 구조와 디자인 토큰까지 함께 산출합니다. 다음과 같은 요청 시 사용하세요: - \"스마트스토어 가습기 상세페이지 만들어줘\" - \"쿠팡에 올릴 화장품 상세 페이지 기획해줘\" - \"S"
-        },
-        {
-          "name": "commerce-product-image-pipeline",
-          "summary": "| [책임 경계] 상품 이미지·영상 풀스택 파이프라인 오케스트레이터. 캐릭터 일관성(선택) → media-higgsfield-image(Soul) → media-higgsfield-video(DOP) → 채널 규격 변환(Pillow 자체 처리) 체인을 단일 자연어 입력으로 자동 호출. 한국 이커머스 셀러가 \"상품 이미지·"
-        },
-        {
-          "name": "commerce-product-naming",
-          "summary": "| 상품명 3안 자동 생성 + 플랫폼 검증(스마트스토어·쿠팡·네이버쇼핑 25자·금지어)에 더해, 네이버 데이터랩 급상승 트렌드 검색어를 상품명 변형·해시태그 30개·블로그 제목 SEO 3안으로 변환합니다. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: \"상품명 뽑아줘\", \"상품명 3개 안 만들어줘\", \"키워드 넣어서"
-        },
-        {
-          "name": "commerce-product-photo-brief",
-          "summary": "> 사용자가 제공한 상품 사진을 분석하여 ProductDNA를 추출하고, 13섹션 상세페이지에 부족한 컷을 식별, 추가 촬영을 위한 구체적인 브리프를 작성해주는 스킬입니다. \"상품 사진 분석해줘\", \"촬영 브리프 만들어줘\", \"부족한 컷 알려줘\", \"어떤 사진이 더 필요해?\"처럼 말하면 됩니다. 형태·소재·색상·시그니처 "
-        },
-        {
-          "name": "commerce-promotion-planner",
-          "summary": "| [책임 경계] 3대 프로모션 기획법(이슈화·얼리버드·한정) 전담. 브랜드 단계·목표·할인율·시즌 입력 → 프로모션 타입 추천 + 명목·스토리·혜택 3종 세트 + 벤치마킹 포인트 + 실무 체크리스트 + 노션 템플릿 구조 자동 생성. 페어 스킬 commerce-integrated-strategy(매출 향상 통합 전략)와 "
-        },
-        {
-          "name": "commerce-repurchase-timer",
-          "summary": "| [책임 경계] 재구매 타이밍 엔진 — 구매주기 골든타임 3구간(리마인드 80% / 데드라인 110-120% / 휴면 진입 150%) + 구간별 메시지 톤 + 리드 스코어링 룰 + 리텐션 차트 cohort 분석 가이드 전담. 페어 스킬 commerce-ltv-cac-architect(고객 수익 구조)와 명확히 구분 — "
-        },
-        {
-          "name": "commerce-season-calendar",
-          "summary": "| [책임 경계] 연간 시즌 캘린더 전담 — 한국·글로벌 이커머스 시즌 이벤트 30+개 매핑(블프·솽스이·발렌타인·명절·여름·겨울 등) + 카테고리별 매출 피크 분석 + 분기 캠페인 계획 자동 생성. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: \"연간 시즌 캘린더\", \"블프 솽스이 일정\", \"한국 시즌 이벤트\", "
-        },
-        {
-          "name": "commerce-subscription-strategist",
-          "summary": "| [책임 경계] 구독 비즈니스 모델 설계 전담 — 5가지 질문 자기진단 + 구독 모델 분류(소비재·경험·관계·맞춤) + 한국 시장 적합성 진단 + 락인 vs 이탈 방지 메시지. 페어 스킬 moai-seller:commerce-integrated-strategy(거시 채널·사업 전략)와 명확히 구분 — 본 스킬은 단일 구"
-        }
-      ],
-      "agents": [
-        {
-          "name": "listing-builder",
-          "description": "E-commerce listing and store-operations specialist for the moai-seller plugin. Use when the user asks to plan, draft, or improve a product detail page, marketplace listing (SmartStore / Coupang / Imwe",
-          "tools": [
-            "Read",
-            "Write",
-            "Edit",
-            "Bash",
-            "Grep",
-            "Glob",
-            "WebSearch",
-            "WebFetch",
-            "Skill"
-          ],
-          "readonly": false
-        },
-        {
-          "name": "margin-auditor",
-          "description": "Read-only skeptical auditor for the moai-seller plugin. Use to independently verify listings, margin/pricing calculations, ad budget allocations, and campaign plans produced by listing-builder or comm",
-          "tools": [
-            "Read",
-            "Grep",
-            "Glob",
-            "Bash"
-          ],
-          "readonly": false
-        }
-      ],
-      "mcp_servers": [
-        "moai-cafe24",
-        "moai-imweb",
-        "moai-smartstore"
-      ]
+     "name": "business-negotiation-1on1",
+     "summary": "> 1:1 면담을 준비하고, 상대를 설득하거나 무언가를 요청·협상할 때 대화를 설계해 주는 스킬입니다. '면담 준비해줘', '이거 어떻게 설득하지', '연봉 협상 어떻게', '부탁하는 법', '정중하게 요청하고 싶어'처럼 말하면 됩니다. 면담 목표 설정 → 상대 입장 파악 → 설득 구조 → 요청·거절 화법 → 합의·후속의"
     },
     {
-      "id": "moai-officer",
-      "displayName": "📄 사무관",
-      "category": "문서·오피스",
-      "version": "0.2.0",
-      "description": "사무 문서 전담 AI 직원 — 한국형 오피스 문서(HWPX·DOCX·XLSX·PPTX·PDF)·HTML 리포트/슬라이드 생성, 공문서 파싱, 노션 템플릿·생산성 루틴 스킬 13종. kordoc MCP 연동. 공공데이터 조회·데이터 분석은 moai-analyst로, 라이프스타일은 moai-coworker로 분리. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 사무직·기획자·자영업 운영자.",
-      "skill_count": 13,
-      "skills": [
-        {
-          "name": "office-daily-briefing",
-          "summary": "| 업계 뉴스·시장 동향·경쟁사 소식·규제 변화·오늘 할 일을 한 장으로 묶은 아침 비즈니스 브리핑을 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"오늘 비즈니스 브리핑 해줘\" - \"아침 이슈 요약해줘\" - \"데일리 리포트 만들어줘\" - \"주간 시장 동향 알려줘\" - \"경쟁사 모니터링 보고서 써줘\" - \"업계 "
-        },
-        {
-          "name": "office-design-system-library",
-          "summary": "| 75개 글로벌 브랜드 디자인 시스템(Claude · ClickHouse · Clay 포함)의 토큰(색·타이포·radius·spacing·컴포넌트)을 단일 파일 HTML 산출물에 적용합니다. 본 스킬은 moai-design 플러그인의 정본(canonical)을 가리키는 포인터입니다 — 실제 시스템 토큰·컴포넌트 정의·샘"
-        },
-        {
-          "name": "office-document-reader",
-          "summary": "| 한국 공문서(HWP 3.0/5.x·HWPX·HWPML·PDF·XLSX·DOCX)를 마크다운으로 파싱해 드립니다 — 표 완벽 재현, 신구대조표, 양식 필드 추출/자동 채우기, 문서 비교, DRM 배포용 문서 복호화, OCR 연동까지. kordoc MCP의 8개 도구를 호출하므로 별도 설치·API 키가 필요 없습니다(No"
-        },
-        {
-          "name": "office-docx-generator",
-          "summary": "| 편집 가능한 워드(.docx) 문서를 만들어 드립니다 — 보고서, 계약서, 제안서, 공문서, 기획서를 한국형 디자인 톤으로 바로 쓸 수 있게 출력합니다. 다음과 같은 요청 시 사용하세요: - \"보고서 워드 파일로 만들어줘\" - \"계약서 DOCX로 작성해줘\" - \"공문서 양식대로 써줘\" - \"제안서 워드 문서 만들어줘\""
-        },
-        {
-          "name": "office-html-report",
-          "summary": "| 마크다운 보고서를 그대로 브라우저에서 열리는 단일 파일 HTML로 바꿔 드립니다. 외부 라이브러리 없이 한 파일로 완결돼 이메일 첨부·인쇄·오프라인 열람이 됩니다. 다음과 같은 요청 시 사용하세요: - \"이 보고서 HTML 파일로 만들어줘\" - \"주간 현황 보고서를 하나의 HTML로 렌더해줘\" - \"재무제표를 HTML"
-        },
-        {
-          "name": "office-html-slide",
-          "summary": "| 발표용 슬라이드 덱을 브라우저에서 바로 열리는 단일 파일·자체 완결형(self-contained) HTML로 만들어 드립니다. 인포그래픽(차트·다이어그램·KPI)은 한국어 숫자·라벨이 100% 정확한 인라인 SVG로 직접 렌더링하고, 실사 히어로·일러스트 이미지는 Higgsfield MCP 또는 codex(gpt-im"
-        },
-        {
-          "name": "office-hwpx-writer",
-          "summary": "| 아래아한글(.hwpx) 문서를 만들어 드립니다 — 한컴오피스에서 열리는 공문서·기안서·품의서·보고서를 작성하고, 기존 HWP 파일을 HWPX로 변환합니다. 다음과 같은 요청 시 사용하세요: - \"한글 파일로 공문서 만들어줘\" - \"HWP 문서 작성해줘\" - \"아래한글 기안서 써줘\" - \"한글로 품의서 작성해줘\" - \""
-        },
-        {
-          "name": "office-mcp-connector-setup",
-          "summary": "| [책임 경계] Drive·Notion·Higgsfield 3커넥터 인증·환경변수·트러블슈팅 가이드 전담. 페어 moai-seller:commerce-morning-brief(MCP 매장 데이터 호출)와 명확히 구분 — 본 스킬은 커넥터 설치·인증 단계, 페어는 인증 이후 실제 MCP 호출 결과물. 다음과 같은 요청 시"
-        },
-        {
-          "name": "office-notion-template-kit",
-          "summary": "> 노션 올인원 업무관리·목표·회고 템플릿의 구조를 설계해주는 스킬입니다. '노션 템플릿 만들어줘', '올인원 업무관리 대시보드', '노션 목표 관리', '노션 회고 템플릿', '노션 구조 짜줘'처럼 말하면 됩니다. 데이터베이스·뷰·속성 구조를 설계해, 흩어진 메모를 한곳에 모으는 노션 대시보드의 뼈대를 만들어줍니다."
-        },
-        {
-          "name": "office-pdf-writer",
-          "summary": "| 어떤 콘텐츠든 PDF 파일로 만들어 드립니다 — 스타일이 입혀진 HTML 리포트는 디자인을 그대로 보존해 변환하고, Markdown·구조화 JSON·일반 텍스트는 자동 서식으로 렌더합니다. weasyprint 단일 엔진으로 풀 CSS를 충실히 렌더하며, 번들 Noto Sans CJK 폰트를 임베딩해 한국어·일본어·중국"
-        },
-        {
-          "name": "office-pptx-designer",
-          "summary": "| 발표용 파워포인트(.pptx) 슬라이드를 디자인해 바로 열리는 파일로 만들어 드립니다 — 사내 보고, 투자 피칭, 교육자료, 컨퍼런스 키노트까지. 다음과 같은 요청 시 사용하세요: - \"발표자료 PPT로 만들어줘\" - \"파워포인트 슬라이드 디자인해줘\" - \"보고서를 발표용 PPT로 만들어줘\" - \"투자 피칭 덱 15장"
-        },
-        {
-          "name": "office-time-system",
-          "summary": "> 하루·한 주의 시간을 주도적으로 설계하도록 도와주는 시간관리 스킬입니다. '시간관리 어떻게 해', '야근 줄이고 싶어', '블록식스로 일정 짜줘', '덩어리 시간 만들기', '우선순위 정해줘'처럼 말하면 됩니다. 블록식스·덩어리 시간·우선순위 매트릭스로 일정을 구조화해, 끌려다니던 하루를 내가 짠 하루로 바꾸고 야근을"
-        },
-        {
-          "name": "office-xlsx-creator",
-          "summary": "| 엑셀(.xlsx) 문서를 만들어 드립니다 — 데이터 표, 차트, 수식, 조건부 서식이 들어간 KPI 대시보드·매출 분석표·예산표·간트차트를 바로 쓸 수 있게 출력합니다. 다음과 같은 요청 시 사용하세요: - \"KPI 대시보드 엑셀로 만들어줘\" - \"월간 매출 분석표 생성해줘\" - \"프로젝트 일정 간트차트 엑셀로 작성해"
-        }
-      ],
-      "agents": [
-        {
-          "name": "data-auditor",
-          "description": "Read-only skeptical auditor for the moai-officer plugin. Use to independently verify office documents (HWPX/DOCX/XLSX/PPTX/PDF/HTML), figures embedded in them, and calculations produced by doc-produce",
-          "tools": [
-            "Read",
-            "Grep",
-            "Glob"
-          ],
-          "readonly": true
-        },
-        {
-          "name": "doc-producer",
-          "description": "Korean office-document specialist for the moai-officer plugin. Use when the user asks to produce a report, slide deck, or form document (HWPX / DOCX / XLSX / PPTX / PDF / HTML report / HTML slide), pa",
-          "tools": [
-            "Read",
-            "Write",
-            "Edit",
-            "Bash",
-            "Grep",
-            "Glob",
-            "WebSearch",
-            "WebFetch",
-            "Skill"
-          ],
-          "readonly": false
-        }
-      ],
-      "mcp_servers": [
-        "kordoc"
-      ]
+     "name": "business-pm-weekly-report",
+     "summary": "| 한국 팀의 주간 비즈니스 리뷰(WBR) 보고서 자동 생성 스킬입니다. 일일 노트·완료 태스크·KPI 데이터를 입력받아 임원/팀 두 버전(격식체/구어체)으로 작성합니다. Notion·Linear·Asana·Slack MCP가 가용하면 자동 데이터 fetch, 없어도 자유 텍스트 입력 fallback. 다음과 같은 요청 "
     },
     {
-      "id": "moai-analyst",
-      "displayName": "📊 데이터 애널리스트",
-      "category": "데이터·분석",
-      "version": "0.1.0",
-      "description": "데이터·공공데이터 분석 전담 AI 직원 — 데이터 프로파일링·시각화, 공공데이터 조회(부동산·경매·주식·KOSIS·건축물대장·DART 전자공시) 스킬 11종. KOSIS 통계·건축HUB·DART MCP 연동. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 데이터 애널리스트·사무직·기획자·자영업 운영자.",
-      "skill_count": 11,
-      "skills": [
-        {
-          "name": "office-building-ledger-search",
-          "summary": "| 국토교통부 건축HUB 건축물대장·건축인허가·주택인허가 실측 데이터로 한 필지의 용도지역·주용도·구조·규모·건폐율/용적률·세대/주차·사용승인일·내진·공시가격 시계열·노후도·철거멸실(석면)·인허가 파이프라인을 조회해 드립니다. archhub MCP의 11개 도구를 호출하므로 별도 설치·API 키가 필요 없습니다(공용키 h"
-        },
-        {
-          "name": "office-business-real-estate-search",
-          "summary": "| 이 스킬은 `moai-analyst:office-public-data-real-estate-search`로 이전되었습니다. 국토교통부(MOLIT) 실거래가/전월세 조회는 moai-public-data 플러그인을 사용하세요."
-        },
-        {
-          "name": "office-data-explorer",
-          "summary": "| CSV·Excel 데이터의 프로파일링·품질 보고서를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"이 데이터 분석해줘\" - \"CSV 요약해줘\" - \"이상값 찾아줘\" - \"데이터 품질 체크해줘\" 컬럼 요약·결측값/이상값 탐지·상관관계 분석을 거쳐 데이터 품질 보고서로 정리합니다."
-        },
-        {
-          "name": "office-data-public-data",
-          "summary": "| 이 스킬은 `moai-analyst:office-public-data-public-data`로 이전되었습니다. 공공데이터포털(data.go.kr)·KOSIS 통계청 실시간 조회는 moai-public-data 플러그인을 사용하세요."
-        },
-        {
-          "name": "office-data-visualizer",
-          "summary": "| 데이터를 한눈에 보여주는 인터랙티브 차트·대시보드(HTML)를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"차트 만들어줘\" - \"그래프 그려줘\" - \"시각화해줘\" - \"대시보드 만들어줘\" Mermaid·Recharts·Chart.js·Tremor·ECharts 중 적합한 스택으로 인터랙티브 대시보드를 제작"
-        },
-        {
-          "name": "office-finance-court-auction-search",
-          "summary": "| 이 스킬은 `moai-analyst:office-public-data-court-auction-search`로 이전되었습니다. 대법원 법원경매정보 매각공고·사건번호 단건 조회는 moai-public-data 플러그인을 사용하세요."
-        },
-        {
-          "name": "office-finance-korean-stock-search",
-          "summary": "| 이 스킬은 `moai-analyst:office-public-data-korean-stock-search`로 이전되었습니다. KRX 상장 종목 검색·기본정보·일별 시세 조회는 moai-public-data 플러그인을 사용하세요."
-        },
-        {
-          "name": "office-public-data-court-auction-search",
-          "summary": "| 대법원 법원경매정보(courtauction.go.kr) 부동산 매각공고를 매각기일·법원·기일/기간 입찰 기준으로 조회하고, 각 공고를 사건번호·용도·주소·감정평가액·최저매각가로 펼쳐서 보여줍니다. 법원사무소 코드와 사건번호로 단건 직접 조회도 지원합니다. read-only이며 IP 차단 방지를 위해 호출당 약 2초 지"
-        },
-        {
-          "name": "office-public-data-korean-stock-search",
-          "summary": "| KRX(한국거래소) 상장 종목을 검색하고 종목 기본정보·일별 시세를 조회합니다. k-skill-proxy 경유로 호출하므로 사용자는 KRX_API_KEY 발급이나 별도 MCP 서버 설치가 필요 없습니다. read-only 일별 snapshot이며 실시간 호가·체결은 제공하지 않습니다. 투자 자문이 아닙니다. 다음과 같"
-        },
-        {
-          "name": "office-public-data-public-data",
-          "summary": "| 공공데이터포털(data.go.kr)·KOSIS 통계청의 실시간 통계를 정밀 조회·분석해 드립니다. 자연어 1줄 질문(인구·고용·출산·물가·미세먼지 등)은 korean-stats MCP(공용키 hosted, 발급 불필요)를 우선하고, 본 스킬은 data.go.kr OpenAPI 직접 제어·정밀 조회·고급 분석이 필요할 "
-        },
-        {
-          "name": "office-public-data-real-estate-search",
-          "summary": "| 국토교통부 실거래가 신고 데이터로 아파트·오피스텔·연립다세대·단독다가구·상업업무용 부동산의 매매·전월세 시세를 조회해 드립니다(별도 API 키 없이 바로 사용). 다음과 같은 요청 시 사용하세요: - \"잠실 리센츠 2024년 매매 실거래가 찾아줘\" - \"강남구 아파트 실거래가 알려줘\" - \"마포구 아파트 전세 실거래 "
-        }
-      ],
-      "agents": [
-        {
-          "name": "data-analyst",
-          "description": "Data and Korean public-data analyst for the moai-analyst plugin. Use when the user asks to research Korean public data (real estate transactions, court auctions, stocks, KOSIS statistics, building led",
-          "tools": [
-            "Read",
-            "Write",
-            "Edit",
-            "Bash",
-            "Grep",
-            "Glob",
-            "WebSearch",
-            "WebFetch",
-            "Skill"
-          ],
-          "readonly": false
-        },
-        {
-          "name": "data-provenance-auditor",
-          "description": "Read-only skeptical auditor for the moai-analyst plugin. Use to independently verify public-data research briefs, data citations, dataset profiles, charts/dashboards, and calculations produced by data",
-          "tools": [
-            "Read",
-            "Grep",
-            "Glob"
-          ],
-          "readonly": true
-        }
-      ],
-      "mcp_servers": [
-        "archhub",
-        "dart",
-        "korean-stats"
-      ]
+     "name": "business-process-manager",
+     "summary": "> 업무 프로세스를 문서화하고 표준화합니다. \"SOP 만들어줘\", \"구매 요청서 써줘\", \"회의록 정리해줘\", \"운영 매뉴얼 작성해줘\"라고 요청할 때 사용하세요. 운영 매뉴얼, SOP(표준 운영 절차), 조달 문서(구매 요청서·발주서), 회의록 작성 및 안건 관리를 지원합니다."
     },
     {
-      "id": "moai-lawyer",
-      "displayName": "⚖️ 법무 담당",
-      "category": "전문직",
-      "version": "0.1.0",
-      "description": "법무 전담 AI 직원 — 계약 검토·NDA 트리아지·컴플라이언스 점검·법령/판례 리서치·특허 검색/분석·식약처 안전 기준 스킬 9종. 국가법령정보 MCP(korean-law) 연동으로 인용 검증까지 수행합니다. 이런 분께 추천: 1인 사업자·스타트업 운영자. ※ 법률 자문 대체가 아닌 참고 자료입니다.",
-      "skill_count": 9,
-      "skills": [
-        {
-          "name": "legal-compliance-check",
-          "summary": "> 규제 준수 점검, 내부 감사, ESG 보고, 인허가 서류를 지원합니다. '컴플라이언스 점검해줘', '내부 감사 보고서 작성해줘', 'ESG 보고서 만들어줘', '규제 갭 분석해줘', '인허가 서류 준비해줘'라고 요청하세요. 한국 주요 규제 기준 적용, 갭 분석, 시정 계획, ESG 지표 보고서를 제공합니다."
-        },
-        {
-          "name": "legal-contract-review",
-          "summary": "> 계약서 검토, 이용약관, 개인정보처리방침 등 법률 문서를 분석하고 작성합니다. '계약서 검토해줘', '위험 조항 찾아줘', '이용약관 만들어줘', '개인정보처리방침 작성해줘', 'SLA 계약서 써줘'라고 요청하세요. 한국 민법·상법 기반 10대 리스크 패턴 분석, 수정 권고안을 제공합니다."
-        },
-        {
-          "name": "legal-iros-registry-automation",
-          "summary": "| 대법원 인터넷등기소(IROS, iros.go.kr)에서 법인·부동산 등기부등본(등기사항증명서)을 여러 건 일괄 발급할 때 안전한 작업 순서와 로컬 자동화 방법을 안내합니다. 로그인·인증·결제는 사용자가 브라우저에서 직접 처리하고, 본 스킬은 장바구니 담기· 결제 후 열람·저장·종합 리포트 생성을 보조합니다. 다음과 같"
-        },
-        {
-          "name": "legal-law-research",
-          "summary": "| 법제처 법령·판례·행정규칙·자치법규·조약·해석례(국세청) 원문 조회와 LLM 환각방지 인용검증·판례 생사 확인·행위시법 판단·조문 영향 그래프·신구대조표를 전담합니다. korean-law MCP(법제처 42개 API → 9 도구) 사용. 다음과 같은 요청 시 사용하세요: - \"근로기준법 제74조 본문 알려줘\" - \"이"
-        },
-        {
-          "name": "legal-legal-risk",
-          "summary": "> 기업 법적 리스크를 분석하고 지적재산권 전략을 수립합니다. '법적 리스크 평가해줘', '특허 침해 위험 분석해줘', '개인정보 위반 리스크 체크해줘', 'IP 포트폴리오 분석해줘', '2026년 법령 변화 영향 분석해줘'라고 요청하세요. 판례·법령 리서치, IP 포트폴리오, 리스크 매트릭스, 대응 액션 플랜을 제공합니"
-        },
-        {
-          "name": "legal-mfds-safety",
-          "summary": "| 식품의약품안전처(MFDS) 공식 OpenAPI를 k-skill-proxy 경유로 조회해 의약품과 식품의 공식 안전 정보를 확인합니다. 의약품(e약은요·안전상비의약품)과 식품(건강기능식품 원료 인정현황·개별인정형·품목제조 신고·검사부적합·회수·판매중지)을 통합 조회합니다. 사용자가 증상·복용/섭취 상황을 말하면 절대 단"
-        },
-        {
-          "name": "legal-nda-triage",
-          "summary": "> 비밀유지계약서(NDA)를 빠르게 검토하고 리스크를 평가합니다. 'NDA 검토해줘', '비밀유지계약서 분석해줘', '기밀유지 조항 확인해줘', 'NDA 위험 조항 찾아줘', '비밀유지계약 수정 권고해줘'라고 요청하세요. 한국 민법·영업비밀보호법 기준 조항별 위험도 평가, 수정 권고안을 제공합니다."
-        },
-        {
-          "name": "legal-patent-analyzer",
-          "summary": "| 특허 동향 보고서·선행기술 조사 보고서·FTO(침해 가능성) 분석·특허 출원서 초안을 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"배터리 기술 특허 동향 분석해줘. 최근 10년 기준으로\" - \"이 발명의 선행기술 조사해줘. 핵심 구성요소는 A, B, C야\" - \"FTO 분석 해줘. 대상 기술은 AI 이상 "
-        },
-        {
-          "name": "legal-patent-search",
-          "summary": "| KIPRIS Plus로 특허·실용신안·디자인·상표를 검색해 출원 현황과 서지정보를 정리해 드립니다. 다음과 같은 요청 시 사용하세요: - \"딥러닝 이미지 분류 관련 특허 검색해줘\" - \"삼성전자 반도체 등록특허 찾아줘\" - \"최근 5년간 배터리 기술 출원 현황 조사해줘\" - \"자율주행 LiDAR 선행기술 조사해줘\" -"
-        }
-      ],
-      "agents": [
-        {
-          "name": "legal-researcher",
-          "description": "Legal research and document-review specialist for the moai-lawyer plugin. Use when the user asks to review a contract or NDA, run a compliance check, research statutes or case law, search/analyze pate",
-          "tools": [
-            "Read",
-            "Write",
-            "Edit",
-            "Bash",
-            "Grep",
-            "Glob",
-            "WebSearch",
-            "WebFetch",
-            "Skill"
-          ],
-          "readonly": false
-        },
-        {
-          "name": "risk-auditor",
-          "description": "Read-only skeptical auditor for the moai-lawyer plugin. Use to independently verify contract reviews, compliance reports, statute/case-law research memos, and patent analyses produced by legal-researc",
-          "tools": [
-            "Read",
-            "Grep",
-            "Glob"
-          ],
-          "readonly": true
-        }
-      ],
-      "mcp_servers": [
-        "korean-law"
-      ]
+     "name": "business-productivity-weekly-report",
+     "summary": "> 직장에서 제출하는 주간업무보고를 빠르게 작성해주는 스킬입니다. '주간보고 작성해줘', '이번 주 한 일 정리', '주간업무보고', '팀장님께 보낼 보고', '한 주 업무 리뷰'처럼 말하면 됩니다. 한 주 성과·진행 중 일·이슈·다음 주 계획을 정해진 틀로 정리하고, 격식체/구어체 톤까지 맞춰 보고서 초안을 만들어줍니다"
     },
     {
-      "id": "moai-accountant",
-      "displayName": "💰 재무·세무 담당",
-      "category": "전문직",
-      "version": "0.1.0",
-      "description": "재무·세무 전담 AI 직원 — 재무제표 분석·결산 관리·차이 분석·IR, 개인 세금 절약·가계 예산·투자 입문·보험 적합성 스킬 11종. OpenDART 전자공시 MCP 연동. 이런 분께 추천: 사업자·재무 담당자·개인 재테크 입문자. ※ 세무사·회계사 자문 대체가 아닌 참고 자료입니다.",
-      "skill_count": 11,
-      "skills": [
-        {
-          "name": "finance-close-management",
-          "summary": "> 월말·분기·연간 결산을 도와주는 스킬입니다. '결산 체크리스트 만들어줘', '4대보험 정산해줘', '급여 마감해줘'처럼 말하면 됩니다. K-IFRS 기준 계정 마감, 급여 정산, 세무 일정 관리, 결산 보고서 자동 생성을 지원합니다. 2026년 최신 4대보험 요율과 노동법 변경사항을 반영합니다."
-        },
-        {
-          "name": "finance-econ-literacy",
-          "summary": "> 금리·환율·물가 같은 경제지표를 '내 돈' 관점에서 읽도록 도와주는 스킬입니다. '금리 오르면 어떻게 돼', '환율이 내 자산에 미치는 영향', '경제지표 읽는 법', 'GDP가 뭐야', '경기 사이클'처럼 말하면 됩니다. 금리·환율·물가(CPI)·GDP·고용·수출입 지표가 대출·예금·투자·소비에 어떻게 연결되는지 쉬"
-        },
-        {
-          "name": "finance-financial-statements",
-          "summary": "> 재무제표를 만들어주는 스킬입니다. '재무상태표 작성해줘', '손익계산서 분석해줘', 'K-IFRS 기준으로 재무제표 만들어줘'처럼 말하면 됩니다. 재무상태표·손익계산서·현금흐름표 전체 세트 작성, 2026년 K-IFRS 제1118호 변경 대응, 주석 공시, 재무비율 분석을 지원합니다."
-        },
-        {
-          "name": "finance-household-budget",
-          "summary": "> 월급 관리와 가계부, 예산 배분, 소비 회고를 도와주는 스킬입니다. '통장 쪼개기 해줘', '월급 관리법', '가계부 어떻게 써', '돈이 자꾸 새', '예산 짜줘'처럼 말하면 됩니다. 통장 쪼개기, 50/30/20 예산, 가계부 분류, 소비 회고 루틴으로 매달 저축 가능액을 확보하는 돈 관리 시스템을 설계합니다."
-        },
-        {
-          "name": "finance-insurance-fit",
-          "summary": "> 나에게 꼭 필요한 보험만 남기고 과보험·중복을 정리하도록 돕는 스킬입니다. '보험 점검해줘', '실손 꼭 들어야 해', '암보험 필요할까', '보험료가 너무 많아', '보험 리모델링'처럼 말하면 됩니다. 필요한 보험 진단(실손·암·종신·연금), 과보험·중복 점검, 생애주기별 우선순위, 보험 리모델링을 한국 보험 기준으"
-        },
-        {
-          "name": "finance-invest-primer",
-          "summary": "> 투자를 처음 시작하는 사람에게 기본 원칙과 자산군, 초보 포트폴리오를 안내하는 스킬입니다. '투자 어떻게 시작해', '주식 초보', 'ETF가 뭐야', '분산투자 방법', '초보 포트폴리오 짜줘'처럼 말하면 됩니다. 분산·장기·리스크 관리 원칙, 자산군(주식/ETF/채권/부동산/예적금) 비교, 초보 포트폴리오, 투자 "
-        },
-        {
-          "name": "finance-investor-relations",
-          "summary": "| 투자 유치를 위한 IR 피치덱과 3개년 재무 모델(매출 예측·손익·현금흐름·밸류에이션)을 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"IR 덱 만들어줘\" - \"투자자 피치 자료 써줘\" - \"재무 모델 만들어줘\" - \"매출 예측 좀 해줘\" - \"밸류에이션 계산해줘\" - \"시리즈 A 투자 유치 자료 준비해줘\""
-        },
-        {
-          "name": "finance-personal-tax-saver",
-          "summary": "> 근로자 연말정산에서 환급을 더 받도록 절세 전략을 짜주는 스킬입니다. '연말정산 환급 늘리는 법', '소득공제 뭐 챙겨', '연금저축 세액공제', '13월의 월급', '맞벌이 절세'처럼 말하면 됩니다. 소득공제 vs 세액공제 구조, 항목별 공제 전략(신용카드·연금·청약·의료·기부 등), 2026 변경점, 환급 극대화를"
-        },
-        {
-          "name": "finance-tax-helper",
-          "summary": "> 세금 관련 질문에 답해주는 스킬입니다. '3.3% 원천징수 계산해줘', '종합소득세 신고 방법 알려줘', '부가세 신고 어떻게 해줘'처럼 말하면 됩니다. 프리랜서 3.3% 원천징수, 종합소득세, 부가가치세, 홈택스 신고 절차를 한국 세법 기준으로 안내합니다."
-        },
-        {
-          "name": "finance-variance-analysis",
-          "summary": "> 예산과 실적 차이를 분석해주는 스킬입니다. '예산 대비 실적 분석해줘', '매출 미달 원인 찾아줘', '비용 초과 분석해줘'처럼 말하면 됩니다. 매출·비용·이익 항목별 분산 원인 분석, KPI 추적, 수익성 개선 권고안 도출을 지원합니다."
-        },
-        {
-          "name": "finance-wealth-roadmap",
-          "summary": "> 재테크를 어디서부터 시작할지 막막할 때 나만의 자산 관리 로드맵을 짜주는 스킬입니다. '재테크 어떻게 시작해', '종잣돈 모으는 법', '내 자산 관리 계획 세워줘', '월급으로 1억 모으기'처럼 말하면 됩니다. 재무 현황 진단 → 목표 설정 → 종잣돈 단계 → 자산 배분 → 자동화·점검의 5단계로 개인 맞춤 재테크 "
-        }
-      ],
-      "agents": [
-        {
-          "name": "close-auditor",
-          "description": "Read-only skeptical auditor for the moai-accountant plugin. Use to independently verify financial statements, close packages, variance analyses, tax calculations, and IR financial models produced by f",
-          "tools": [
-            "Read",
-            "Grep",
-            "Glob",
-            "Bash"
-          ],
-          "readonly": false
-        },
-        {
-          "name": "finance-analyst",
-          "description": "Finance and tax analysis specialist for the moai-accountant plugin. Use when the user asks to build or analyze financial statements, run month/quarter/year-end close, analyze budget-vs-actual variance",
-          "tools": [
-            "Read",
-            "Write",
-            "Edit",
-            "Bash",
-            "Grep",
-            "Glob",
-            "WebSearch",
-            "WebFetch",
-            "Skill"
-          ],
-          "readonly": false
-        }
-      ],
-      "mcp_servers": [
-        "dart"
-      ]
+     "name": "business-proposal-writer",
+     "summary": "| 한국 B2B 영업 제안서 본문을 RFP·고객 요구사항 기반으로 자동 생성합니다. 12섹션 표준 목차(표지·Executive Summary·회사 소개·시장 이해·솔루션·기술 스펙·일정·운영·레퍼런스·가격·리스크·부록)와 Three C's(Compliant·Complete·Compelling) 원칙을 적용해 컴플라이언스 "
     },
     {
-      "id": "moai-recruiter",
-      "displayName": "🤝 인사·채용 담당",
-      "category": "전문직",
-      "version": "0.1.0",
-      "description": "인사·채용 전담 AI 직원(고용주 편) — 채용 공고 분석·이력서 스크리닝·오퍼레터/근로계약서·성과평가·People Ops 스킬 6종. 구직자 편은 moai-career(커리어코치)로 분리되었습니다. 이런 분께 추천: 채용 담당자·인사 실무자.",
-      "skill_count": 6,
-      "skills": [
-        {
-          "name": "business-draft-offer",
-          "summary": "> 채용 제안서와 근로계약서를 작성해주는 스킬입니다. \"오퍼 레터 만들어줘\", \"근로계약서 초안 작성해줘\", \"연봉 협상 문서 써줘\"처럼 말하면 됩니다. 근로기준법 준수 기반 채용 제안서, 연봉 구조 최적화, 4대보험 공제 계산, 스톡옵션 조항 작성을 지원합니다. 2026년 기준 반영."
-        },
-        {
-          "name": "business-employment-manager",
-          "summary": "> 채용 프로세스 전반을 관리해주는 스킬입니다. \"JD 작성해줘\", \"면접 질문 만들어줘\", \"신입 온보딩 계획 짜줘\"처럼 말하면 됩니다. 채용 공고 작성, 면접 설계, 평가 기준 수립, 온보딩 체크리스트, 멘토링 프로그램 설계를 지원합니다."
-        },
-        {
-          "name": "business-job-analyzer",
-          "summary": "> 한국 취준생·재직 이직자를 위한 채용공고(JD) 분해·기업 리서치·헤드헌터 오퍼 검증 스킬입니다. \"채용공고 분석해줘\", \"JD 분석\", \"이 회사 어때?\", \"헤드헌터 오퍼 검토\"처럼 말하면 됩니다. JD에서 필수/우대 역량 추출 + 본인 경험 매칭 + DART·잡플래닛·블라인드·사람인 공고 이력 종합 분석 + 20"
-        },
-        {
-          "name": "business-people-operations",
-          "summary": "> 원격 근무와 팀 운영 정책을 설계해주는 스킬입니다. \"재택근무 정책 만들어줘\", \"협업 도구 추천해줘\", \"비동기 커뮤니케이션 가이드 만들어줘\"처럼 말하면 됩니다. 원격·하이브리드 근무 정책, 협업 도구 선정 기준, 생산성 관리 프레임워크, 직원 경험 설계를 지원합니다."
-        },
-        {
-          "name": "business-performance-review",
-          "summary": "> 성과평가 체계를 설계하고 실행을 도와주는 스킬입니다. \"OKR 설정해줘\", \"성과 리뷰 템플릿 만들어줘\", \"피드백 면담 스크립트 써줘\"처럼 말하면 됩니다. MBO·OKR·KPI 체계 구축, 360도 평가 설계, 인사 고과 가이드, 피드백 면담 스크립트 작성을 지원합니다."
-        },
-        {
-          "name": "business-resume-screener",
-          "summary": "| NCS 국가직무능력표준 기반 이력서·자기소개서 적합성 평가 스킬입니다. 인간 검토자가 사용할 점수표·근거·강점/약점 요약을 제공하며, 보호 계층 정보(사진·생년월일·출신지·가족관계 등) 자동 마스킹과 4년 결정 로그 보관 안내를 강제합니다. ⚠️ 본 스킬은 의사결정 보조 도구입니다. AI 자동 거절·자동 합격 기능을 "
-        }
-      ],
-      "agents": [
-        {
-          "name": "recruiter",
-          "description": "HR and recruiting specialist for the moai-recruiter plugin. Use when the user asks to analyze a job posting, build or screen a resume, prepare interview questions or coaching, design performance/compe",
-          "tools": [
-            "Read",
-            "Write",
-            "Edit",
-            "Bash",
-            "Grep",
-            "Glob",
-            "WebSearch",
-            "WebFetch",
-            "Skill"
-          ],
-          "readonly": false
-        },
-        {
-          "name": "screening-auditor",
-          "description": "Read-only skeptical auditor for the moai-recruiter plugin. Use to independently verify screening scorecards, evaluation rubrics, JDs, interview kits, and hiring-market claims produced by the recruiter",
-          "tools": [
-            "Read",
-            "Grep",
-            "Glob"
-          ],
-          "readonly": true
-        }
-      ],
-      "mcp_servers": []
+     "name": "business-report-speak",
+     "summary": "> 상사에게 보고하거나 누군가에게 무언가를 설명할 때 결론부터 명확하게 전달하도록 도와주는 스킬입니다. '이거 어떻게 보고하지', '결론부터 말하는 법', '팀장님한테 보고할 내용 정리해줘', '설명을 쉽게 하고 싶어'처럼 말하면 됩니다. 결론 먼저(두괄식) 구조, 상사 유형별 보고 방식, 상대 머리에 꽂히는 설명 순서로"
     },
     {
-      "id": "moai-cs",
-      "displayName": "🎧 CS매니저",
-      "category": "고객지원",
-      "version": "0.1.0",
-      "description": "고객지원·CRM 전담 AI 직원 — 티켓 분류·응답 초안·에스컬레이션·지식베이스와 VOC 분석·채널 메시지까지 고객 접점 실무 스킬 6종. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 온라인 셀러·CS 담당자·1인 사업자.",
-      "skill_count": 6,
-      "skills": [
-        {
-          "name": "business-draft-response",
-          "summary": "> 고객 문의에 대한 응답 초안을 작성합니다. \"이 문의에 답변 초안 써줘\", \"환불 요청 이메일 답변 만들어줘\", \"카카오채널 응답 초안 작성해줘\"라고 요청할 때 사용하세요. 한국어 경어 기반 이메일·채팅·공식 답변서 초안을 채널별 어조에 맞게 생성합니다."
-        },
-        {
-          "name": "business-escalation-manager",
-          "summary": "> 고객 불만 에스컬레이션을 처리하고 VOC를 분석합니다. \"불만 고객 대응 전략 세워줘\", \"VIP 고객 특별 응대 방법 알려줘\", \"주간 CS 요약 보고서 만들어줘\"라고 요청할 때 사용하세요. 에스컬레이션 레벨 배정, VIP 응대, VOC 분석, 주간 CS 요약 보고서 생성을 지원합니다."
-        },
-        {
-          "name": "business-kb-article",
-          "summary": "> 고객지원 지식베이스 문서를 작성합니다. \"FAQ 만들어줘\", \"트러블슈팅 가이드 작성해줘\", \"헬프센터 아티클 써줘\"라고 요청할 때 사용하세요. FAQ, 사용자 가이드, 트러블슈팅 문서, 정책 안내문을 Zendesk·Freshdesk·카카오비즈니스 형식에 맞게 생성합니다."
-        },
-        {
-          "name": "business-ticket-triage",
-          "summary": "> 고객 지원 티켓을 신속하게 분류하고 우선순위를 배정합니다. \"이 문의를 어떻게 분류해야 하나요\", \"티켓 우선순위 정해줘\", \"고객 문의 긴급도 판단해줘\"라고 요청할 때 사용하세요. 유형 분류(기술/결제/배송/불만), 긴급도 등급(P1~P4), 담당팀 배정, 에스컬레이션 판단을 지원합니다."
-        },
-        {
-          "name": "commerce-channel-message",
-          "summary": "| NCM 프레임워크(Need→Channel→Moment→Message→CTA)로 검색·광고·CRM·앱 푸시 채널별 메시지를 자동 생성하는 단일 채널 메시지 엔진입니다 — 채널 분기 메시지 15종 + 채널별 운영 카피(광고·톡톡·푸시·이메일) + 앱 푸시 기획(4원칙·3요소·변형 3안)을 한 곳에서 처리합니다. 다음과 같"
-        },
-        {
-          "name": "commerce-voc-triage",
-          "summary": "| 고객의 소리(VOC) 전체를 다루는 엄브렐러 스킬 — 멀티채널 리뷰를 통합 분석하고(리뷰는 VOC의 한 원천), 폭주하는 VOC의 처리 우선순위를 3축 분류 + KTAS 응급실 5단계로 판별합니다. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: \"리뷰 모아서 분석해줘\", \"리뷰 분석해줘\", \"수백 개 리뷰 정리\""
-        }
-      ],
-      "agents": [
-        {
-          "name": "cs-responder",
-          "description": "Customer support and CRM specialist for the moai-cs plugin. Use when the user asks to triage support tickets, draft customer responses, handle escalations or VIP complaints, write knowledge-base artic",
-          "tools": [
-            "Read",
-            "Write",
-            "Edit",
-            "Bash",
-            "Grep",
-            "Glob",
-            "WebSearch",
-            "WebFetch",
-            "Skill"
-          ],
-          "readonly": false
-        },
-        {
-          "name": "voc-auditor",
-          "description": "Read-only skeptical auditor for the moai-cs plugin. Use to independently verify response-draft quality, escalation verdicts, VOC/review classification reports, KB article accuracy, and customer-sentim",
-          "tools": [
-            "Read",
-            "Grep",
-            "Glob"
-          ],
-          "readonly": true
-        }
-      ],
-      "mcp_servers": []
+     "name": "business-roadmap-manager",
+     "summary": "| 프로젝트 로드맵·마일스톤 계획과 전략적 제휴(MOU) 초안, ESG 지속가능성 감사·DEI 전략 문서를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"로드맵 정리해줘\" - \"마일스톤 계획 세워줘\" - \"MOU 초안 작성해줘\" - \"ESG 지속가능성 감사 해줘\" - \"DEI 정책 도입 로드맵 설계해줘\" - \""
     },
     {
-      "id": "moai-consultant",
-      "displayName": "💼 컨설턴트",
-      "category": "경영 자문",
-      "version": "0.1.0",
-      "description": "경영·창업 컨설팅 전담 AI 직원 — 사업계획서·비즈니스 모델·시장 분석(TAM/SAM/SOM)·경영 진단 브리프·정부 지원사업 매칭·상권분석 보고서까지 전략 실무 스킬 6종. 이런 분께 추천: 예비 창업자·소상공인·스타트업 운영자.",
-      "skill_count": 6,
-      "skills": [
-        {
-          "name": "business-consulting-brief",
-          "summary": "| 현황 진단부터 30-60-90일 실행 계획까지 담은 전문 컨설팅 제안서(브리프)를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"컨설팅 제안서 만들어줘\" - \"경영 진단 보고서 써줘\" - \"우리 회사 컨설팅 브리프 작성해줘\" - \"전략 컨설팅 문서 정리해줘\" - \"경영 개선 제안서 만들어줘\" - \"비즈니스 "
-        },
-        {
-          "name": "business-kr-gov-grant",
-          "summary": "| 나에게 맞는 정부·공공기관 지원사업을 찾아주고, 심사 기준에 맞춘 사업계획서·신청서 초안을 만들어 드립니다(Word·한글·Excel 파일까지). 창업자·소상공인·중소기업·연구자·비영리단체·개인 누구나 쓸 수 있습니다. 다음과 같은 요청 시 사용하세요: - \"정부 지원사업 찾아줘\" - \"우리 상황에 맞는 지원금 있어?\""
-        },
-        {
-          "name": "business-market-analyst",
-          "summary": "| 시장 규모(TAM/SAM/SOM)·경쟁사 분석·가격 전략을 정리한 시장 분석 보고서를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"시장 규모 조사해줘\" - \"TAM SAM SOM 산출해줘\" - \"경쟁사 분석해줘\" - \"포지셔닝 맵 만들어줘\" - \"가격 전략 세워줘\" - \"고객 세분화 좀 해줘\" - \"시장 "
-        },
-        {
-          "name": "business-sbiz365-analyst",
-          "summary": "| 소상공인365(bigdata.sbiz.or.kr)에서 받은 상권분석 PDF를 첨부하면, 유동인구·경쟁 점포·예상 매출을 분석한 창업 타당성 보고서(Word)를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"이 상권 PDF 분석해줘\" - \"소상공인365 보고서 분석해줘\" - \"이 지역에서 창업해도 될까?\" -"
-        },
-        {
-          "name": "business-startup-launchpad",
-          "summary": "| 아이디어부터 사업계획서·비즈니스 모델 캔버스·피치덱·재무 모델·실행 로드맵까지, 스타트업 종합 계획서를 한 번에 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"스타트업 계획 짜줘\" - \"창업 사업계획서 써줘\" - \"비즈니스 모델 만들어줘\" - \"피치덱 구성해줘\" - \"BM 캔버스 설계해줘\" - \"시장 분석부"
-        },
-        {
-          "name": "business-strategy-planner",
-          "summary": "| 사업계획서·비즈니스 모델·신시장 진출 같은 전략 문서를 검증된 프레임워크(SWOT·린 캔버스·블루오션·OKR 등)로 정리해 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"사업계획서 써줘\" - \"비즈니스 모델 만들어줘\" - \"SWOT 분석해줘\" - \"린 캔버스 작성해줘\" - \"블루오션 전략 세워줘\" - \"OK"
-        }
-      ],
-      "agents": [
-        {
-          "name": "feasibility-auditor",
-          "description": "Read-only skeptical auditor for the moai-consultant plugin. Use to independently verify market-size calculations, revenue projections, grant-eligibility mappings, feasibility verdicts, and strategy cl",
-          "tools": [
-            "Read",
-            "Grep",
-            "Glob"
-          ],
-          "readonly": true
-        },
-        {
-          "name": "strategy-consultant",
-          "description": "Business and startup consulting specialist for the moai-consultant plugin. Use when the user asks to write a business plan, design a business model, analyze a market (TAM/SAM/SOM), produce a consultin",
-          "tools": [
-            "Read",
-            "Write",
-            "Edit",
-            "Bash",
-            "Grep",
-            "Glob",
-            "WebSearch",
-            "WebFetch",
-            "Skill"
-          ],
-          "readonly": false
-        }
-      ],
-      "mcp_servers": []
+     "name": "business-sales-playbook",
+     "summary": "| 타겟 기업·접근 전략·이의처리 시나리오·성공 지표까지 담은 실전 영업 플레이북(전략서)을 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"영업 플레이북 만들어줘\" - \"세일즈 전략서 써줘\" - \"B2B 영업 계획 세워줘\" - \"타겟 기업 분석해서 영업 전략 짜줘\" - \"영업 이의처리 시나리오 만들어줘\" - \""
     },
     {
-      "id": "moai-career",
-      "displayName": "🧭 커리어코치",
-      "category": "커리어",
-      "version": "0.1.0",
-      "description": "구직자 편 커리어 코칭 전담 AI 직원 — 이력서·포트폴리오 첨삭, 면접 준비, 이직 전략까지 커리어 전환 실무 스킬. 인사채용(고용주 편)과 구분되는 구직자 관점입니다. 이런 분께 추천: 이직 준비자·취업 준비생·주니어 직장인.",
-      "skill_count": 5,
-      "skills": [
-        {
-          "name": "business-interview-coach",
-          "summary": "> 한국 취준생·재직 이직자를 위한 면접 준비·모의 면접·답변 코칭 스킬입니다. \"면접 준비해줘\", \"예상 질문 뽑아줘\", \"모의 면접 해줘\", \"팀핏 질문 대비\"처럼 말하면 됩니다. AI 역량검사, 역량 면접(BEI), PT, 토론, 임원, **2026 팀핏 면접**까지 유형별 대비 + 모의 면접 루프 (질문→답변→피드"
-        },
-        {
-          "name": "business-portfolio-guide",
-          "summary": "> 한국 신입 취준생·재직자를 위한 분야별 포트폴리오 구성과 프로젝트 기술서 작성 스킬입니다. \"포트폴리오 만들어줘\", \"프로젝트 정리해줘\", \"노션 포트폴리오 1시간 만에\"처럼 말하면 됩니다. 개발(GitHub·기술 블로그)/디자인(Figma·Behance)/마케팅/기획 분야별 + 검색되는 노션 포트폴리오 + 채용공고 "
-        },
-        {
-          "name": "business-resume-builder",
-          "summary": "> 한국 취준생·재직 이직자를 위한 자기소개서·이력서·경력기술서·영문 CV·링크드인 작성 스킬입니다. \"자소서 써줘\", \"이력서 만들어줘\", \"경력기술서 정리해줘\", \"1page 셀링 시트 만들어줘\"처럼 말하면 됩니다. KKK-STAR 자소서, USP+CAR 이력서, ATS·블라인드·NCS 모드, 2026 AI 진정성 검"
-        },
-        {
-          "name": "career-junior-onboarding",
-          "summary": "> 신입·주니어가 첫 90일을 스스로 설계하도록 돕는 온보딩 코칭 스킬입니다. \"신입인데 뭘 해야 할지 모르겠어\", \"첫 출근 준비\", \"질문하는 법 알려줘\", \"사수가 없어\", \"일 빨리 배우고 싶어\"처럼 요청할 때 사용하세요. 입사 전 준비 → 첫 90일 정보 비대칭 해소 → 질문 3요소 프레임 → 보고 기술 → 사수"
-        },
-        {
-          "name": "career-transition-strategist",
-          "summary": "> 이직·전직을 감정이 아닌 프로젝트로 설계하도록 돕는 커리어 전환 전략 스킬입니다. \"이직 준비 도와줘\", \"이직 타이밍인지 모르겠어\", \"연봉 협상 어떻게 하지\", \"경력기술서 서사 잡아줘\", \"퇴사 절차 알려줘\"처럼 요청할 때 사용하세요. 타이밍 진단 → 현황 분석 → 목표 설정 → 시장조사 → 갭 메우기 → 경력 "
-        }
-      ],
-      "agents": [
-        {
-          "name": "career-coach",
-          "description": "Candidate-side career coaching specialist for the moai-career plugin. Use when the user asks to write or improve a resume, cover letter, or career statement, build a portfolio, prepare for interviews ",
-          "tools": [
-            "Read",
-            "Write",
-            "Edit",
-            "Bash",
-            "Grep",
-            "Glob",
-            "WebSearch",
-            "WebFetch",
-            "Skill"
-          ],
-          "readonly": false
-        },
-        {
-          "name": "resume-auditor",
-          "description": "Read-only skeptical auditor for the moai-career plugin. Use to independently verify resume and cover-letter drafts, portfolio project descriptions, interview preparation kits, and hiring-market claims",
-          "tools": [
-            "Read",
-            "Grep",
-            "Glob"
-          ],
-          "readonly": true
-        }
-      ],
-      "mcp_servers": []
+     "name": "business-spec-writer",
+     "summary": "| 제품 기획 문서(PRD·기능 명세서)와 AI 도입 전략 보고서를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"PRD 작성해줘\" - \"기능 명세서 만들어줘\" - \"AI 도입 전략 보고서 써줘\" - \"제품 기능 우선순위 정리해줘\" - \"디지털 전환 로드맵 수립해줘\" 기획 의도와 요구사항을 검토 가능한 문서로 "
     },
     {
-      "id": "moai-tutor",
-      "displayName": "🎓 튜터",
-      "category": "전문직",
-      "version": "0.1.0",
-      "description": "교육 전담 AI 직원 — 커리큘럼 설계·학습 자료·평가 문항 제작·강좌 운영 매뉴얼·논문 검색/작성·연구 보조 스킬 11종. 강사와 학습자 양쪽 워크플로우를 지원합니다. 이런 분께 추천: 강사·교육 기획자·대학원생·연구자.",
-      "skill_count": 11,
-      "skills": [
-        {
-          "name": "education-assessment-creator",
-          "summary": "| 정답과 해설이 포함된 시험 문제지·모의고사·오답 분석표를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"정보처리기사 실기 모의문제 10개 만들어줘\" - \"이 단원에서 나올 만한 내신 예상 문제 출제해줘\" - \"수강생 이해도 확인할 형성평가 퀴즈 만들어줘\" - \"공무원 5지선다 모의고사 만들어줘\" - \"TOE"
-        },
-        {
-          "name": "education-course-followup-sequence",
-          "summary": "| 강의가 끝난 뒤 30일 동안 수강생 후기를 모으는 단계별 후기 요청 카피 5종(D+1·D+3·D+7·D+14·D+30)을 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"강의 끝났어, 수강생 후기 카피 만들어줘\" - \"D+1 후기 요청 카톡 만들어줘\" - \"D+3 적용 인증 요청 메시지 써줘\" - \"D+7 성"
-        },
-        {
-          "name": "education-course-operations-manual",
-          "summary": "| 강사·교수·교사 대상 강의·과정·연수·워크숍 운영 매뉴얼을 자동 생성해 드립니다 — 일자별 시간표·강사·조교 동선·D-N 사전 준비물·환경·설비 체크리스트·리스크 매트릭스 + Plan B. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: \"강의 운영 매뉴얼 만들어줘\", \"워크숍 시간표·동선 만들어줘\", \"연수 D-"
-        },
-        {
-          "name": "education-curriculum-designer",
-          "summary": "| 주차별 강의 목차와 학습 목표, 평가 방법이 담긴 커리큘럼 설계안을 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"Python 입문 온라인 강의 8주 커리큘럼 짜줘\" - \"영업직 신입사원 역량 모델 설계해줘\" - \"사내 AI 활용 교육 프로그램 기획해줘\" - \"TOEIC 900점 목표 3개월 학습 계획 세워"
-        },
-        {
-          "name": "education-grant-writer",
-          "summary": "| 한국연구재단(NRF)·IITP·KIAT·중소벤처기업부 양식에 맞춘 정부 연구비 신청서 초안을 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"기초연구과제 신청서 써줘. 주제는 딥러닝 의료 영상 진단이야\" - \"NRF 중견연구 제안서 작성해줘. 3년 프로젝트야\" - \"IITP ICT R&D 사업계획서 초안 만들"
-        },
-        {
-          "name": "education-learning-material",
-          "summary": "| 조사한 내용을 도식·차트·수식·코드 하이라이트가 들어간 단일 HTML 학습자료로 만들어 드립니다. 학습목표→핵심개념→도식→예제→복습으로 구조화해, 풍부한 설명과 시각화로 혼자서도 깊이 이해하게 돕습니다. 다음과 같은 요청 시 사용하세요: - \"방금 조사한 내용으로 HTML 학습자료 만들어줘\" - \"도식이랑 예제 들어간"
-        },
-        {
-          "name": "education-learning-project",
-          "summary": "| 스스로 공부할 나만의 학습 프로젝트를 만들어 드립니다. 학습 목표와 현재 수준을 진단해 단계별 로드맵을 짜고, 진도 추적과 학습 전용 CLAUDE.md를 자동으로 세팅합니다. 다음과 같은 요청 시 사용하세요: - \"claude code 공부할 학습 프로젝트 만들어줘\" - \"영어 회화 8주 학습 계획 세워줘. 초급이야\""
-        },
-        {
-          "name": "education-paper-search",
-          "summary": "| RISS·KCI·DBpia·Google Scholar에서 논문을 통합 검색해 서지정보와 인용 형식을 정리해 드립니다. 다음과 같은 요청 시 사용하세요: - \"딥러닝 이미지 분류 논문 찾아줘. 최근 5년 내로\" - \"자연어 처리 선행연구 조사해줘\" - \"KCI 등재 학술지에서 머신러닝 논문 검색해줘\" - \"이 주제 문헌"
-        },
-        {
-          "name": "education-paper-writer",
-          "summary": "| 서론-선행연구-방법론-결과-논의-결론 구조의 학술 논문 초안을 쓰고 APA·KCI·IEEE 참고문헌을 자동 생성해 드립니다. 다음과 같은 요청 시 사용하세요: - \"딥러닝 이미지 분류 논문 써줘. APA 7th 포맷으로\" - \"초록 작성해줘. 주제는 트랜스포머 감성 분석이야\" - \"참고문헌 KCI 포맷으로 정리해줘\" "
-        },
-        {
-          "name": "education-research-assistant",
-          "summary": "| 문헌 검토 보고서, 논문 초안, 연구 계획서, 참고문헌 목록을 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"AI 교육 효과에 관한 문헌 검토 보고서 작성해줘\" - \"설문 데이터 분석해서 인사이트 도출해줘\" - \"석사 논문 연구 계획서 구조 잡아줘\" - \"APA 형식으로 참고문헌 정리해줘\" - \"이 주제 선"
-        },
-        {
-          "name": "education-tutor-research",
-          "summary": "| 학습 질문을 받으면 공식 문서와 최신 웹 자료를 웹검색으로 병렬 조사해, 출처가 검증된 최신 학습 근거를 종합해 드립니다. 개인 튜터가 자료를 미리 조사해 오는 역할입니다. 다음과 같은 요청 시 사용하세요: - \"claude cowork의 Skills와 Sub-agents 차이를 최신 정보로 조사해줘\" - \"이 개념 "
-        }
-      ],
-      "agents": [
-        {
-          "name": "assessment-auditor",
-          "description": "Read-only skeptical auditor for the moai-tutor plugin. Use to independently verify curricula, assessment items, learning materials, and academic citations produced by curriculum-designer or education-",
-          "tools": [
-            "Read",
-            "Grep",
-            "Glob",
-            "Bash"
-          ],
-          "readonly": false
-        },
-        {
-          "name": "curriculum-designer",
-          "description": "Education design specialist for the moai-tutor plugin. Use when the user asks to design a curriculum or training program, produce learning materials or assessment items, build a course operations manu",
-          "tools": [
-            "Read",
-            "Write",
-            "Edit",
-            "Bash",
-            "Grep",
-            "Glob",
-            "WebSearch",
-            "WebFetch",
-            "Skill"
-          ],
-          "readonly": false
-        }
-      ],
-      "mcp_servers": []
+     "name": "business-status-reporter",
+     "summary": "> KPI 대시보드와 운영 현황 보고서를 자동으로 생성합니다. \"주간 보고서 작성해줘\", \"KPI 현황 정리해줘\", \"월간 성과 보고서 만들어줘\"라고 요청할 때 사용하세요. 주간·월간·분기 보고서, OKR 현황, 마일스톤 진행률, 이슈 및 리스크 매트릭스를 지원합니다."
     },
     {
-      "id": "moai-designer",
-      "displayName": "🎨 디자이너",
-      "category": "디자인",
-      "version": "0.3.0",
-      "description": "에이전틱 디자인 플러그인 — Claude Design 연동, 3계층 토큰 파이프라인(DTCG↔CSS↔shadcn)·DESIGN.md·브랜드 시스템·GAN 품질 루프. /design 으로 브리프부터, /upload 로 Claude Design 업로드까지.",
-      "skill_count": 13,
-      "skills": [
-        {
-          "name": "cd-brief",
-          "summary": "| Claude Design용 6요소 브리프(Project·Audience·Pages·Tone·Reference·Constraints)를 자동으로 작성해 주는 스킬. 자연어 한 줄 요청에서 시작해 누락된 요소를 차례로 채우고, AI 슬롭 회피 블록을 포함한 복붙용 프롬프트를 출력합니다. 완성된 프롬프트는 claude.ai"
-        },
-        {
-          "name": "cd-handoff-reader",
-          "summary": "| Claude Design → Claude Code 핸드오프 번들(공식 구성: README + 디자인 파일 + chat)을 방어적으로 분석해 요약 보고서와 Claude Code에 넘길 짧은 지시 1줄을 자동 생성합니다. README를 source of truth로 먼저 파싱하고, 토큰/컴포넌트 JSON은 있으면 사용·없"
-        },
-        {
-          "name": "cd-prompt-builder",
-          "summary": "| Claude Design용 시니어 UX 프롬프트를 10가지 전문 패턴(정보 구조·디자인 시스템·카피·온보딩·접근성·대시보드·폼·테스트·휴리스틱·리서치) 중 적합한 것을 골라 완성해 줍니다. 각 패턴은 구체적 역할(예: IDEO 시니어 UX 아키텍트 12년차)을 부여해 결과 분산을 30-40% 감소시킵니다. 다음과 같은"
-        },
-        {
-          "name": "cd-slop-check",
-          "summary": "| Claude Design에서 생성된 결과 카피(헤드라인·서브헤드·CTA·feature·푸터)를 AI 슬롭 패턴으로 검수합니다. 영문(Reimagine your·Unleash your potential 등)과 한국어(혁신적인·차세대·재정의하는 등) 진부 표현을 검출하고 수정안을 제안합니다. 후속으로 moai-writer"
-        },
-        {
-          "name": "cd-system-prep",
-          "summary": "| 브랜드 자산(로고·색·타이포·기존 사이트·PPTX 등)을 분석해 Claude Design 업로드용 DESIGN.md를 자동으로 합성합니다. Claude Design 디자인 시스템 셋업의 가장 흔한 실패(자산이 흩어져 있고 정리가 안 된 채 업로드)를 해결합니다. 결과는 그대로 claude.ai/design 온보딩에 업"
-        },
-        {
-          "name": "design-sync-upload",
-          "summary": "| 디자인 시스템 자산(DESIGN.md·토큰·로고)을 Claude Design에 업로드합니다. 자동 우선 + 수동 폴백 양경로. 자동 경로는 DesignSync MCP로 바로 등록하며(`list/read` → `finalize_plan` → `write_files` 순서 강제, `register_assets`는 lega"
-        },
-        {
-          "name": "design-system-library",
-          "summary": "| 75개 글로벌 브랜드 디자인 시스템(Claude · ClickHouse · Clay 포함)을 단일 파일 HTML 산출물에 적용합니다. 각 시스템의 토큰(색·타이포·radius·spacing·컴포넌트)을 Tailwind Play CDN config + shadcn 스타일 vanilla 컴포넌트로 변환해 렌더합니다. of"
-        },
-        {
-          "name": "design-tokens-transformer",
-          "summary": "| 하나의 브랜드 토큰을 3계층(DTCG SSOT ↔ 원시 CSS 변수 ↔ semantic/shadcn 롤)으로 양방향 변환합니다. L1 DTCG(W3C `$value`/`$type`/`$description`)를 진실 원천으로 삼아 L2 CSS custom properties와 L3 Tailwind v4 `@theme`"
-        },
-        {
-          "name": "moai-domain-brand-design",
-          "summary": "| Brand-aligned visual design system specialist for web projects. Enforces hero-first layout chaining, WCAG 2.1 AA accessibility, Lighthouse >= 80, and design token extraction from"
-        },
-        {
-          "name": "moai-domain-copywriting",
-          "summary": "| Brand-aligned content-copywriting specialist for marketing and product text. Enforces brand voice, anti-AI-slop rules, concrete numbers, and JSON section structure for downstream"
-        },
-        {
-          "name": "moai-domain-design-handoff",
-          "summary": "| Claude Design handoff package specialist for the /design Path A workflow. Assembles 5-file handoff bundle (prompt/context/references/acceptance/checklist) for paste-ready claude."
-        },
-        {
-          "name": "moai-workflow-design",
-          "summary": "| Unified design workflow skill — handles Path A (Claude Design handoff bundle import, via Figma extractor when needed) and design-brief context loading from .moai/design/ (researc"
-        },
-        {
-          "name": "moai-workflow-gan-loop",
-          "summary": "| Builder-Evaluator GAN loop workflow for iterative design quality improvement. Implements Sprint Contract negotiation, 4-dimension scoring (Design Quality, Originality, Completene"
-        }
-      ],
-      "agents": [],
-      "mcp_servers": []
+     "name": "business-ux-designer",
+     "summary": "| 우선순위별 UX 개선 권고안과 평가 보고서(휴리스틱·접근성·사용자 플로우)를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"UX 디자인 검토해줘\" - \"휴리스틱 평가해줘\" - \"접근성(WCAG) 검토해줘\" - \"사용자 플로우 분석해줘\" - \"와이어프레임 사용성 점검해줘\" - \"사용성 개선안 정리해줘\" 3개 "
     },
     {
-      "id": "moai-pm",
-      "displayName": "🚀 PM",
-      "category": "프로젝트 허브",
-      "version": "1.0.1",
-      "description": "프로젝트 초기화 허브 AI 직원 — goose(code를 제외한 모든 Claude Cowork 프로젝트: 전 직원 지침 설정 + .claude/agents/ 커스텀 에이전트 + CLAUDE.md 워크플로우 생성 + 재귀적 자가 개선)와 moai(개발 프로젝트 초기화 — moai-adk v3.0 철학, SPEC plan/run/sync, TRUST 5, DDD/TDD) 두 스킬로 18개 AI 직원 플러그인의 진입을 라우팅합니다. 비개발자도 자연어 한마디로 프로젝트를 시작할 수 있습니다. 이런 분께 추천: 비개발자·프로젝트 시작자.",
-      "skill_count": 2,
-      "skills": [
-        {
-          "name": "goose",
-          "summary": "| 18개 AI 직원 플러그인 패밀리('MoAI-Cowork, 모두의 코워크')를 대표하는 **Desktop 슈퍼 오케스트레이터/어드바이저**. `/goose --project <자연어 지시>`로 진입하며, 개발(`/moai --project`)을 제외한 **모든 Claude Cowork(Desktop) 작업**을 담당한"
-        },
-        {
-          "name": "moai",
-          "summary": "| **개발-프로젝트 초기화 어드바이저** — moai-adk v3.0 철학(SPEC plan/run/sync 워크플로우, TRUST 5 품질, DDD/TDD)을 담당한다. `/moai --project <지시>`로 진입하며, Claude Code 런타임을 전제로 소크라테스 인터뷰 + 스택 감지 후 `CLAUDE.md`·"
-        }
-      ],
-      "agents": [],
-      "mcp_servers": []
+     "name": "business-ux-researcher",
+     "summary": "| 사용자 인터뷰 가이드·페르소나 문서·VOC 분석 보고서·NPS 해석안 같은 UX 리서치 결과물을 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"사용자 인터뷰 질문지 만들어줘\" - \"VOC 분석해줘\" - \"페르소나 설계해줘\" - \"NPS 결과 해석해줘\" - \"유저빌리티 테스트 시나리오 만들어줘\" - \"고객 설"
+    },
+    {
+     "name": "business-vendor-manager",
+     "summary": "> 공급업체를 평가·선정하고 계약 및 리스크를 관리합니다. \"벤더 평가 기준 만들어줘\", \"공급업체 리스크 레지스터 작성해줘\", \"계약 관리 체계를 잡아줘\"라고 요청할 때 사용하세요. 벤더 선정 기준, 공급업체 평가표, 계약 관리 워크플로우, 리스크 식별 및 대응 계획을 지원합니다."
+    },
+    {
+     "name": "claude-prompting-basics",
+     "summary": "비개발자를 위한 Claude 대화 모범 사례 — 명확한 지시, 맥락 제공, 예시 활용, XML 태그 구조화. Claude 공식 프롬프트 엔지니어링 가이드 기반. \"Claude한테 어떻게 물어봐야 잘 답해줘?\" 질문에 즉시 활용."
+    },
+    {
+     "name": "general-ai-diagnostic",
+     "summary": "| AI 기반 다차원 진단 분석 스킬. 기술, 프로세스, 사람, 비즈니스 4차원 병렬 진단을 통해 근본 원인을 식별하고 우선순위별 해결책을 제시합니다. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: - \"시스템 진단\", \"문제 분석\", \"원인 파악\", \"diagnostic\", \"트러블슈팅\" - \"근본 원인\", \"현황"
+    },
+    {
+     "name": "general-ai-slop-reviewer",
+     "summary": "| AI가 생성한 텍스트에서 기계적 패턴(AI 슬롭)을 감지하고 인간적인 글쓰기로 수정하는 스킬. 모든 텍스트 산출물(블로그, 뉴스레터, 카피, 사업계획서, 계약서, 제안서, 보고서, 이메일, 랜딩 카피 등)의 필수 후처리 단계로 사용합니다. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: - \"AI 티 나는 부분 고"
+    },
+    {
+     "name": "general-event-planner",
+     "summary": "> 행사·이벤트·웨딩을 기획하고 준비 계획을 수립합니다. \"결혼 준비 체크리스트 만들어줘\", \"사내 세미나 기획해줘\", \"워크샵 진행 방식 설계해줘\"라고 요청할 때 사용하세요. 행사 기획, 예산 계획, 일정 관리, 웨딩 준비(스드메·예산·타임라인)를 지원합니다."
+    },
+    {
+     "name": "general-feedback",
+     "summary": "| 버그 리포트와 기능 요청을 수집하여 GitHub Issues에 자동 등록합니다. 다음과 같은 요청 시 이 스킬을 사용하세요: - \"버그 신고\", \"기능 요청\", \"피드백\", \"개선 제안\" - \"/project feedback\" 커맨드 실행 - \"이슈 등록\", \"문제 신고\", \"bug report\", \"feature r"
+    },
+    {
+     "name": "general-self-care",
+     "summary": "> 번아웃과 지친 마음을 점검하고 회복하도록 돕는 자기돌봄 스킬입니다. '번아웃인 것 같아', '쉬어도 쉰 것 같지 않아', '마음이 지쳤어', '회복하고 싶어', '제대로 쉬는 법'처럼 말하면 됩니다. 마음 기초체력 점검·회복 루틴·생활력 관리로, 무작정 버티기 대신 자신을 돌보며 다시 일어설 힘을 설계합니다."
+    },
+    {
+     "name": "general-skill-builder",
+     "summary": "| 6-Phase 스킬 생성 워크플로우. revfactory/harness 방법론을 기반으로 체계적으로 새 스킬을 생성합니다. 요구사항 분석부터 최종 검증까지 전체 생명주기를 관리합니다. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: - \"새 스킬 만들어줘\", \"스킬 생성\", \"general-skill-builder"
+    },
+    {
+     "name": "general-skill-template",
+     "summary": "| SKILL.md 표준 템플릿. 새 스킬 생성 시 이 템플릿을 기반으로 작성합니다. 스킬 작성 가이드라인과 필수 섹션 구조를 정의합니다. 다음과 같은 요청 시 이 스킬을 참조하세요: - \"새 스킬 만들고 싶어\", \"스킬 템플릿\", \"SKILL.md 템플릿\" - \"스킬 작성 방법\", \"스킬 구조\", \"스킬 포맷\""
+    },
+    {
+     "name": "general-skill-tester",
+     "summary": "| 스킬 품질 자동 검증 도구. 생성된 스킬의 테스트 케이스를 실행하고 baseline 대비 개선을 측정합니다. A/B 테스트, 회귀 테스트, 체인 테스트 + 4차원 스코어링 루브릭을 단일 스킬에 내장하여 self-contained로 동작합니다. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: - \"스킬 테스트해줘\","
+    },
+    {
+     "name": "general-travel-planner",
+     "summary": "| 여행 일정·맛집·숙소·예산을 한 번에 설계해주는 여행 플래너입니다. 다음과 같은 요청 시 사용하세요: - \"제주 3박 4일 일정 짜줘\" - \"도쿄 5박 6일 여행 코스와 예산 계획 세워줘\" - \"강릉 주말 여행 맛집·카페 추천해줘\" - \"부산 가족 여행 숙소 골라줘\" - \"유럽 배낭여행 2주 일정 만들어줘\" - \"제주"
+    },
+    {
+     "name": "general-wellness-coach",
+     "summary": "> 운동·식단·건강·육아·시니어 케어를 종합적으로 코칭합니다. \"운동 루틴 만들어줘\", \"다이어트 식단 짜줘\", \"아이 발달 단계 알려줘\", \"부모님 노인 복지 서비스 알려줘\"라고 요청할 때 사용하세요. 운동 계획, 영양 균형 식단, 육아 전략, 시니어 케어 계획을 지원합니다."
+    },
+    {
+     "name": "office-goal-planner",
+     "summary": "> 목표를 막연한 다짐이 아니라 실천 가능한 계획으로 바꿔주는 스킬입니다. '신년 목표 세워줘', '12주 계획법으로 쪼개줘', '만다라트 만들어줘', '개인 OKR', '목표를 실천으로'처럼 말하면 됩니다. 12주 계획·만다라트·개인 OKR 등으로 목표를 잘게 나누고 주간 루틴까지 연결해, \"세웠는데 안 하는\" 목표를 "
+    },
+    {
+     "name": "office-habit-routine",
+     "summary": "> 작심3일을 꾸준함으로 바꾸도록 습관과 루틴을 설계해주는 스킬입니다. '습관 만들고 싶어', '작심3일 극복', '모닝 루틴 짜줘', '습관 트래커', '꾸준히 하는 법'처럼 말하면 됩니다. 습관 쌓기·트리거 연결·트래커·회복 규칙으로, 의지에 기대지 않고 구조로 반복하게 만드는 루틴을 설계합니다."
+    },
+    {
+     "name": "office-retro-builder",
+     "summary": "> 한 주나 한 해를 가볍게 돌아보는 회고를 도와주는 스킬입니다. '이번 주 회고하고 싶어', 'KPT로 정리해줘', '연말 회고 템플릿', '한 줄 회고', '올해 돌아보기'처럼 말하면 됩니다. KPT·한 줄 회고·키워드 회고 등 부담 없는 템플릿으로, 반성·자책이 아니라 가볍게 돌아보고 다음을 정하는 회고를 설계합니다"
     }
-  ]
+   ],
+   "deprecated_skills": [],
+   "agents": [],
+   "mcp_servers": [
+    "dart"
+   ]
+  },
+  {
+   "id": "moai-writer",
+   "displayName": "✍️ 작가",
+   "category": "창작·출판",
+   "version": "1.0.0",
+   "description": "출판·텍스트 전담 AI 직원 — 출판 기획·집필·제안서·출판사 매칭(book-* 8종), 한국어 인문화 윤문과 맞춤법 검수까지 텍스트 창작 전 과정 스킬 10종. 스토리/IP 창작은 moai-story 플러그인으로 분리. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 작가·1인 출판인·실용서 저자.",
+   "skill_count": 10,
+   "skills": [
+    {
+     "name": "book-author-bio",
+     "summary": "| 도서 저자 약력·저자의 말·SNS·강연 통합 작성 — 저자가 타깃 페르소나에게 \"왜 이 사람이 이 책을 쓰는가\"를 1분 안에 설득하는 핵심 문서. book-target-reader의 페르소나·JTBD를 입력받아 4 장르별 신뢰 신호(학력·실무 경력·수상·팬덤·SNS·강연)를 자동 분기. 짧은 약력(50자)·중간(200"
+    },
+    {
+     "name": "book-chapter-writer",
+     "summary": "| 도서 본문 챕터 초고 집필 — 꼭지 단위 작성·매수 관리·인용 처리·4 장르 문체 자동 분기. book-outline-designer의 챕터 시놉시스를 입력받아 한 꼭지를 처음부터 끝까지 완결성 있게 작성. 실용서(명료·실습)·인문(서사·문체)·기술(코드·도표)·소설(묘사·시점) 프리셋. 200자 원고지 매수 자동 카"
+    },
+    {
+     "name": "book-concept-planner",
+     "summary": "| 한국 출판사 제출용 도서 컨셉서 작성 — 한 줄·30자·300자 요약, USP 3축, 타깃 페르소나, 시장 포지셔닝 매트릭스를 한 흐름으로 산출. 의도파악 → 리서치(데스크+필드) → 인사이트 도출 3단계. 실용서·인문·기술·소설 4 장르 프리셋 자동 분기. KPIPA 통계·교보문고/알라딘 베스트셀러·도서정가제 등 한"
+    },
+    {
+     "name": "book-outline-designer",
+     "summary": "| 도서 목차 설계 — 부·장·꼭지 3 레벨 구조 + 분량 배분 + 챕터 시놉시스. book-concept-planner와 book-target-reader의 산출물(USP·페르소나·JTBD)을 입력받아 4 장르별 목차 패턴 자동 적용. 실용서(Q&A·실습)·인문(서사)·기술(실습장)·소설(플롯) 프리셋. 한국 주요 출판"
+    },
+    {
+     "name": "book-proposal-writer",
+     "summary": "| 한국 출판사 투고용 제안서 작성 — 출판기획서 + 샘플 챕터 1-2개 + 마케팅 플랜 통합. book-concept-planner·book-target-reader·book-outline-designer·book-author-bio 4 스킬 산출물을 결합해 출판사 편집장이 1분 안에 통과 여부 판단할 수 있는 제안서로"
+    },
+    {
+     "name": "book-publisher-matcher",
+     "summary": "| 한국 출판사 매칭 — 장르·규모·계약 조건·투고 채널·평균 인세를 4 차원으로 평가해 책 컨셉서·페르소나·저자 약력에 가장 적합한 출판사 Top 5를 추천. 책의 가능성을 극대화할 출판사 선정 + 투고 우선순위 + 협상 포인트 + 거절 후 차순위 시나리오까지 일괄 산출. 30+ 한국 주요 출판사 라이브러리 내장 (IT"
+    },
+    {
+     "name": "book-revision-coach",
+     "summary": "| 도서 본문 퇴고·교열 코치 — 7 단계 점검(어법·문체·논리·인용·분량·시각자료·일관성)으로 출판 직전 원고를 다듬는 스킬. 국립국어원 어문규범 기준 + 한국 출판사 편집자 관점 + book-chapter-writer의 4 장르 문체 일관성 검증. korean-spell-check(맞춤법) + general-human"
+    },
+    {
+     "name": "book-target-reader",
+     "summary": "| 도서 타깃 독자 페르소나·JTBD(Jobs To Be Done)·페인포인트 매트릭스를 단계적으로 작성. book-concept-planner의 페르소나 1명을 입력으로 받아 4축 페르소나 카드 → JTBD 정의 → 페인포인트 매트릭스 → 독서 행동 데이터로 확장. 실용서·인문·기술·소설 4 장르 프리셋 자동 분기. K"
+    },
+    {
+     "name": "general-humanize-korean",
+     "summary": "| AI(ChatGPT·Claude·Gemini 등)가 쓴 한국어 텍스트의 \"AI 티\"를 정밀하게 제거해 사람이 쓴 글처럼 윤문하는 한국어 특화 스킬입니다. 번역투(~를 통해/~에 있어서/이중 피동), 영어 인용 과다, 기계적 병렬(첫째·둘째·셋째), AI 특유 관용구(결론적으로/시사하는 바가 크다/혁신적인), 피동태 남"
+    },
+    {
+     "name": "korean-spell-check",
+     "summary": "| 국립국어원 계열 규칙을 반영한 바른한글(구 부산대 맞춤법/문법 검사기) 표면을 이용해 한국어 문장의 띄어쓰기·맞춤법·문법을 최종 검수합니다. 긴 글은 청크 분할로 나눠 순차 검사하고, 결과를 원문·교정안·이유 중심으로 정리합니다. general-ai-slop-reviewer가 AI 패턴을 검수한 뒤 마지막 단계에서 호"
+    }
+   ],
+   "deprecated_skills": [],
+   "agents": [
+    {
+     "name": "manuscript-auditor",
+     "description": "Read-only skeptical auditor for the moai-writer plugin. Use to independently evaluate book manuscripts and publisher proposals produced by writer-director or book-* skills. Checks manuscript consisten",
+     "tools": [
+      "Read",
+      "Grep",
+      "Glob"
+     ],
+     "readonly": true
+    },
+    {
+     "name": "writer-director",
+     "description": "Book-publishing director for the moai-writer plugin. Use when the user asks to plan or write a book (concept, outline, chapters, publisher proposal, author bio, publisher matching) and finish Korean p",
+     "tools": [
+      "Read",
+      "Write",
+      "Edit",
+      "Bash",
+      "Grep",
+      "Glob",
+      "WebSearch",
+      "WebFetch",
+      "Skill"
+     ],
+     "readonly": false
+    }
+   ],
+   "mcp_servers": []
+  },
+  {
+   "id": "moai-story",
+   "displayName": "📖 스토리 크리에이터",
+   "category": "창작·IP",
+   "version": "1.0.1",
+   "description": "스토리/IP 창작 전담 AI 직원 — 웹툰 제작 체인(기획→캐릭터→회차→식자→작화→QC)·웹소설 연재(기획→집필)·영상 시나리오·콘티·표지·IP 사업화(story-* 17종) 스킬. 한국 웹툰 플랫폼 규격 SSOT와 연재 상태 원장을 내장하고, 이미지·영상 생성 실행은 moai-media에 위임합니다. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 웹툰/웹소설 창작자·시나리오 작가·IP 콘텐츠 기획자.",
+   "skill_count": 17,
+   "skills": [
+    {
+     "name": "story-character-sheet",
+     "summary": "| 캐릭터 시트 스킬 — 인물·동물의 비주얼 시트(외형 8항목)와 일관성 앵커를 설계하고, Soul ID 학습에 쓸 중립 기본형 참조 세트의 사양을 정한다. \"무엇을 학습시킬지\"만 책임지고, 실제 생성·학습 실행과 크레딧 고지는 moai-media에 위임한다. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: - \"캐릭"
+    },
+    {
+     "name": "story-conti",
+     "summary": "| 영상 콘티·스토리보드 스킬 — 씬을 정지 프레임 보드로 분해하고 화각·앵글·전환을 설계한다. 드라마·영화 프리셋과 광고 콘티 프리셋(15초/30초, TVC/디지털, 브랜드 가이드 준수)을 모두 다룬다. 생성 실행·크레딧·모델 선택은 moai-media에 위임한다. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: -"
+    },
+    {
+     "name": "story-cover-art",
+     "summary": "| 표지·썸네일 스킬 — 단행본 인쇄 표지 / 웹툰 썸네일·타이틀 카드 / 웹소설 표지 3분기로 구도·시선 유도·제목 자리를 설계한다. 규격 수치는 story-webtoon-spec 허브를, 폰트 라이선스는 moai-designer를 참조한다. 생성 실행·크레딧은 moai-media에 위임한다. 다음과 같은 요청 시 반드"
+    },
+    {
+     "name": "story-ip-pitch",
+     "summary": "| IP 사업화 스킬 — 완성작을 2차 저작(드라마화·영화화·게임·굿즈·웹툰↔웹소설 전환)으로 피칭하는 문서와 판권 제안서를 작성한다. 문체부 표준계약서 유형·2차적저작물작성권 유보·한국저작권위원회 등록 구조를 개요로 다룬다. 계약 심화는 moai-lawyer 라우팅. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: "
+    },
+    {
+     "name": "story-previz",
+     "summary": "| 시네마틱 프리비즈 스킬 — 카메라 무빙·렌즈·조명을 지정한 숏 리스트를 설계한다. 달리·팬·틸트·크레인·핸드헬드 같은 카메라 무빙 어휘로 촬영 전 프리비즈 릴을 구성한다. 콘티(정지 프레임) 다음 단계이며, 생성 실행·크레딧은 moai-media에 위임한다. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: - \"프"
+    },
+    {
+     "name": "story-project",
+     "summary": "| 작품 유형을 파악해 웹툰·웹소설·영상(시놉시스·시나리오·콘티·프리비즈)·표지·IP 사업화 파이프라인으로 라우팅하는 moai-story 플러그인의 진입점 스킬. 사용자의 한마디 요청에서 장르를 분류해 알맞은 story-* 스킬 체인으로 안내한다. 출판 도서는 moai-writer로 분기한다. 다음과 같은 요청 시 반드시"
+    },
+    {
+     "name": "story-screenplay",
+     "summary": "| 시나리오 대본 스킬 — 씬 넘버·지문·대사를 한국 드라마 대본 표기 관행과 영화 시나리오 국내 관행으로 작성한다. S# 넘버링, 지문/대사 들여쓰기, 원고 분량 환산, 회당 씬 수, 제출 시 표지/인물소개 구성을 다룬다. 시놉시스를 받아 촬영 가능한 단위의 대본으로 전개한다. 다음과 같은 요청 시 반드시 이 스킬을 사"
+    },
+    {
+     "name": "story-series-bible",
+     "summary": "| 연재 상태 원장 스킬. 마스터 기획서 파일을 소유하고, 회차를 만들 때마다 에피소드 현황표를 갱신해 \"이전 회차까지의 상태\"를 복원한다. 웹툰 주 1회·웹소설 일일 연재는 수개월~수년 이어지고 그 사이 세션이 수십 번 끊기므로, 원장이 없으면 5화쯤부터 캐릭터·복선·톤이 표류한다. 신규 기획과 시리즈 재호출 두 모드로"
+    },
+    {
+     "name": "story-synopsis",
+     "summary": "| 영상 시놉시스 스킬 — 로그라인·기획의도·인물·구성을 한 문서로 정리한다. 로그라인 패턴 유형과 장르별 분기, 한국 편성 관행(16부작·12부작), 방송사 극본공모·영화진흥위원회·한국콘텐츠진흥원 지원사업 제출 규격을 다룬다. story-screenplay의 선행 스킬. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요"
+    },
+    {
+     "name": "story-webnovel-planner",
+     "summary": "| 웹소설 연재 기획 스킬 — \"어느 플랫폼에, 어떤 구조로 연재할 것인가\"를 정하는 자리. 문피아·노벨피아·조아라·카카오페이지·네이버시리즈·리디 6개 플랫폼의 회차 분량 관행·결제 구조·태그 체계·독자층·프로모션 진입 조건·독점 여부를 비교해 타깃을 확정하고, 연재 구조 3분류와 레귤러/게스트 인원 예산을 설계한다. 회"
+    },
+    {
+     "name": "story-webnovel-writer",
+     "summary": "| 웹소설 회차 집필 스킬 — 한 회를 어떻게 쓰고 어디서 자를 것인가에 집중한다. 장르별 문법(현판·로판·무협·BL·미스터리)의 문단 길이·대사 비중·시점 관습·회귀/빙의/환생 클리셰 운용을 적용하고, 회차 절단(클리프행어) 강도를 등급으로 설계한다. 어느 플랫폼에 연재할지는 story-webnovel-planner에서"
+    },
+    {
+     "name": "story-webtoon-art",
+     "summary": "| 웹툰 작화 프롬프트 조립 스킬 — 화풍 앵커를 고정하고, 컷별 복붙 프롬프트를 조립하고, 첨부 이미지 서수를 1:1로 매핑하고, 멀티 이미지 세션 컨텍스트를 관리한다. 스타일 참조에서 피사체가 새어 그려지는 것을 내용물 가드로 막는다. 생성 실행·크레딧·모델 선택은 moai-media에 위임한다. 다음과 같은 요청 시"
+    },
+    {
+     "name": "story-webtoon-episode",
+     "summary": "| 웹툰 회차 스킬 — 회차 플롯을 짜고, 세로 스크롤 컷으로 분할하고, 컷마다 프레임 연출·인물 배치를 지시한다. 컷 수는 감정 비트가 정하고, 컷 높이와 여백 띠가 호흡을 만든다. 말풍선·식자는 story-webtoon-lettering으로 분리한다. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: - \"웹툰 회차"
+    },
+    {
+     "name": "story-webtoon-lettering",
+     "summary": "| 세로 스크롤 웹툰의 식자 전담 스킬. 말풍선 종류를 고르고, 한 원고 = 한 서체를 스킬이 결정하고, 한국어 효과음(SFX) 스타일을 지정하고, 2패스 오버레이로 SFX를 안전하게 얹는 워크플로우를 제공한다. 말풍선·SFX 사전은 '사람이 읽는 설명'이 아니라 AI 이미지 프롬프트에 그대로 복붙하는 작동 토큰이다. A"
+    },
+    {
+     "name": "story-webtoon-planner",
+     "summary": "| 웹툰 기획 스킬 — \"무엇을, 어떤 구조로 연재할 것인가\"를 정하는 자리. 세계관·연재구조 3분류(에피소드 독립형/연속 서사형/혼합형)·시리즈 아크·관통 주제 1문장·훅 전략·레귤러 인원 상한을 설계한다. 플랫폼 데뷔 경로·회차 분량 같은 규격 사실은 story-webtoon-spec 허브를 참조하고 복제하지 않는다."
+    },
+    {
+     "name": "story-webtoon-qc",
+     "summary": "| 웹툰 산출 이미지 검수 스킬 — 그려진 그림이 지시대로 나왔는지 판정한다. 결함 7종을 확인 위치·수정 문구와 함께 점검하고, 세로 스크롤 규격 적합성과 일관성 앵커 위반을 판정한다. 썸네일로 놓치는 결함은 의심 컷만 crop 확대해 확인하고, 한 결함을 고치다 다른 것을 놓치는 터널비전을 막는다. 다음과 같은 요청 "
+    },
+    {
+     "name": "story-webtoon-spec",
+     "summary": "| 한국 웹툰 플랫폼 규격의 단일 진실 원천(SSOT) 허브. 네이버웹툰 도전만화→베스트도전→정식연재 3단계 데뷔 경로, 세로 스크롤 원고 규격, 회차 분량 관행, 썸네일·표지 규격, 기다무·미리보기 수익화 훅, 실무 용어 사전을 한곳에 모은다. 단독으로도 답하고, 다른 story-* 스킬이 규격을 물어올 때 참조하는 상"
+    }
+   ],
+   "deprecated_skills": [
+    "story-ad-conti"
+   ],
+   "agents": [
+    {
+     "name": "story-continuity-auditor",
+     "description": "Read-only skeptical auditor for the moai-story plugin. Use to independently evaluate webtoon/webnovel episodes, screenplays, synopses, character sheets, conti/previz art, and IP pitch/rights packages ",
+     "tools": [
+      "Read",
+      "Grep",
+      "Glob"
+     ],
+     "readonly": true
+    },
+    {
+     "name": "story-director",
+     "description": "Story/IP creation director for the moai-story plugin. Use when the user asks to plan or write a webtoon or webnovel episode, a screenplay or synopsis, a storyboard/conti, cover art or character sheets",
+     "tools": [
+      "Read",
+      "Write",
+      "Edit",
+      "Bash",
+      "Grep",
+      "Glob",
+      "WebSearch",
+      "WebFetch",
+      "Skill"
+     ],
+     "readonly": false
+    }
+   ],
+   "mcp_servers": [
+    "higgsfield"
+   ]
+  },
+  {
+   "id": "moai-marketer",
+   "displayName": "📣 마케터",
+   "category": "마케팅",
+   "version": "1.0.0",
+   "description": "마케팅 전담 AI 직원 — 캠페인 기획·퍼포먼스 분석·키워드 리서치·그로스 실험·리텐션(marketing-* 14종), 블로그·뉴스레터·SNS 콘텐츠(content-* 7종) 스킬 21종. Meta Ads·게시 채널 MCP 연동. 미디어 생성(media-*)은 moai-media 플러그인으로 분리. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 마케터·콘텐츠 크리에이터·1인 브랜드.",
+   "skill_count": 21,
+   "skills": [
+    {
+     "name": "content-blog",
+     "summary": "| 네이버·티스토리·브런치·WordPress·Ghost에 바로 올릴 수 있는 블로그 포스팅(제목·목차·본문·CTA·SEO 메타)을 완성해 드립니다. 다음과 같은 요청 시 사용하세요: - \"네이버 블로그에 스타트업 자금 조달 글 써줘\" - \"티스토리에 SEO 최적화 블로그 글 작성해줘\" - \"브런치 스타일 회고 에세이 써줘"
+    },
+    {
+     "name": "content-card-news",
+     "summary": "| 인스타그램·스레드·카카오 채널용 카드뉴스 4장(본문 카피·디자인 가이드·이미지 생성 프롬프트·채널별 캡션·해시태그)을 한 번에 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"카드뉴스 만들어줘\" - \"인스타 슬라이드 기획해줘\" - \"캐러셀 콘텐츠 구성해줘\" - \"재택근무 도구 비교 카드뉴스 만들어줘\" - \"스"
+    },
+    {
+     "name": "content-copywriting",
+     "summary": "| 헤드라인·CTA·슬로건·광고 카피를 후보 여러 개로 뽑아 드립니다. 광고 캠페인 전략과 영상 스토리보드까지 확장할 수 있습니다. 다음과 같은 요청 시 사용하세요: - \"신제품 출시 헤드라인 5가지 만들어줘\" - \"앱 다운로드 유도 CTA 문구 써줘\" - \"카카오 광고 캠페인 카피 만들어줘\" - \"스타트업 브랜드 슬로건"
+    },
+    {
+     "name": "content-editorial-calendar",
+     "summary": "| 콘텐츠 발행 캘린더와 채널별 게시 일정을 기획해주는 스킬입니다. 다음과 같은 요청 시 사용하세요: - \"콘텐츠 캘린더 짜줘\" - \"이번 달 발행 일정 만들어줘\" - \"채널별 게시 주기 정해줘\" - \"콘텐츠 발행 계획표 만들어줘\" - \"3개월 편집 캘린더 설계해줘\" - \"블로그·유튜브·SNS 발행 스케줄 정리해줘\" 산출"
+    },
+    {
+     "name": "content-email-sequence",
+     "summary": "| 가입·구매 후 단계별로 자동 발송할 이메일 시퀀스(발송 시점·제목·본문 초안)를 한국 정보통신망법에 맞게 설계해 드립니다. 다음과 같은 요청 시 사용하세요: - \"신규 가입자 온보딩 이메일 7단계로 만들어줘\" - \"이메일 자동화 시퀀스 짜줘\" - \"드립 캠페인 설계해줘\" - \"90일 미접속 고객 재활성화 메일 써줘\" "
+    },
+    {
+     "name": "content-newsletter",
+     "summary": "| 이메일 뉴스레터(제목·프리헤더·본문·CTA)와 구독자 확보 전략·콘텐츠 캘린더를 만들어 드립니다. 오픈율을 높이는 제목 후보도 여러 개 뽑아 드립니다. 다음과 같은 요청 시 사용하세요: - \"스타트업 위클리 뉴스레터 첫 호 써줘\" - \"오픈율 높이는 이메일 제목 후보 10가지 만들어줘\" - \"구독자 1,000명 확보 "
+    },
+    {
+     "name": "content-sns-content",
+     "summary": "| 인스타·네이버 블로그·카카오부터 스레드·X·링크드인·페이스북·유튜브 쇼츠까지, 채널에 맞춘 SNS 게시글과 캡션·해시태그·스크립트를 써 드립니다. 다음과 같은 요청 시 사용하세요: - \"인스타 피드 글 5개 써줘\" - \"네이버 블로그 포스팅 해줘\" - \"링크드인 포스팅 만들어줘\" - \"유튜브 쇼츠 스크립트 써줘\" - "
+    },
+    {
+     "name": "marketing-campaign-planner",
+     "summary": "| 광고·SNS·이메일을 묶은 마케팅 캠페인 기획안(목표·채널·예산·KPI·크리에이티브 방향)을 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"신제품 런칭 캠페인 기획해줘, 예산 500만원에 2030 여성 타깃\" - \"A/B 테스트 설계해줘\" - \"인플루언서 마케팅 전략 짜줘, 마이크로 위주로\" - \"고객 여정"
+    },
+    {
+     "name": "marketing-growth-experiment",
+     "summary": "| A/B 테스트 설계, 실험 백로그 우선순위화(ICE/PIE), 바이럴·추천 루프, 무료 도구·공동 마케팅 같은 그로스 실험을 설계해 드립니다. 다음과 같은 요청 시 사용하세요: - \"A/B 테스트 가설이랑 설계 짜줘 (샘플 크기·유의성 포함)\" - \"실험 백로그 ICE 점수로 우선순위 매겨줘\" - \"추천(레퍼럴) 프로"
+    },
+    {
+     "name": "marketing-keyword-research",
+     "summary": "| 새 페이지·콘텐츠·캠페인을 위해 네이버·구글·AI 검색(GEO)에서 노릴 키워드를 발굴하고, 검색 의도·경쟁도·롱테일로 분류해 토픽 클러스터로 묶어 드립니다. 다음과 같은 요청 시 사용하세요: - \"이 주제로 뭐 쓸지 키워드 뽑아줘\" - \"검색 의도별로 키워드 분류해줘\" - \"롱테일 키워드 발굴해줘\" - \"토픽 클러스"
+    },
+    {
+     "name": "marketing-landing-page-conversion-audit",
+     "summary": "| 기존 랜딩페이지가 왜 안 팔리는지 진단하고 전환율을 올릴 우선순위 처방 리포트를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"랜딩페이지 진단해줘\" - \"전환율이 왜 낮은지 봐줘\" - \"광고 클릭은 많은데 구매가 안 일어나\" - \"장바구니에서 다들 이탈하는 이유 찾아줘\" - \"광고 문구랑 랜딩 첫 줄이 맞는"
+    },
+    {
+     "name": "marketing-landing-page",
+     "summary": "| 하나의 행동(가입·구매·신청)을 유도하는 단독 전환 랜딩 1페이지를 카피와 코드까지 만들어 드립니다. 히어로부터 최종 CTA까지 전환율을 높이도록 구성합니다. 다음과 같은 요청 시 사용하세요: - \"SaaS 제품 랜딩 페이지 구성해줘\" - \"이벤트 참가 신청 랜딩 만들어줘\" - \"무료 체험 유도 세일즈 페이지 기획해줘"
+    },
+    {
+     "name": "marketing-meta-ads-analyzer",
+     "summary": "| 메타 광고관리자에서 내려받은 엑셀(.xlsx) 보고서를 올리면 광고 성과를 진단하고, 무엇을 어떻게 손볼지 강도별(🟢보수 🟡중도 🔴적극)로 정리한 리포트를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"메타 광고 보고서 분석해줘\" - \"ROAS가 왜 낮은지 봐줘\" - \"지면별 성과 어떤지 봐줘, Audien"
+    },
+    {
+     "name": "marketing-meta-ads-manager",
+     "summary": "| 페이스북·인스타그램 광고를 자연어로 직접 만들고 켜고 끄고 예산까지 조정해 드립니다. Meta 공식 광고 AI 커넥터에 브라우저 로그인 한 번으로 연결되며, 신규 광고는 항상 꺼진(PAUSED) 상태로 만들고 켜기 전에 꼭 확인을 받습니다. 다음과 같은 요청 시 사용하세요: - \"메타 광고 만들어줘\", \"인스타 광고 "
+    },
+    {
+     "name": "marketing-performance-report",
+     "summary": "| GA4·네이버·메타·카카오·구글 광고 데이터를 묶어 채널별 ROAS·KPI를 분석하고, 인사이트와 다음 액션 플랜까지 담은 마케팅 성과 보고서를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"지난달 마케팅 성과 보고서 만들어줘\" - \"ROAS 분석해줘\" - \"GA4 데이터 해석해줘\" - \"네이버랑 메타 광고"
+    },
+    {
+     "name": "marketing-personal-branding",
+     "summary": "| 개인의 전문성과 경력을 브랜드로 정리해 포지셔닝·콘텐츠·채널 전략 문서를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"프리랜서 디자이너 개인 브랜딩 전략 세워줘\" - \"퍼스널 브랜딩 처음부터 도와줘\" - \"링크드인 프로필 최적화해줘\" - \"강연자·저자 포지셔닝 전략 만들어줘\" - \"유튜브 전문가 채널 기획"
+    },
+    {
+     "name": "marketing-pixel-audit",
+     "summary": "| 메타·구글 광고 추적 픽셀이 제대로 설치됐는지 점검하고, 광고비를 새게 만드는 설정 실수와 고객 데이터 활용도를 진단한 리포트를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"픽셀 설치 제대로 됐는지 점검해줘\" - \"메타 픽셀이랑 구글 픽셀 검증해줘\" - \"CAPI(전환 API) 설치 확인해줘\" - \"iOS"
+    },
+    {
+     "name": "marketing-retention",
+     "summary": "| 이탈을 막고 떠난 고객을 되돌리는 마케팅 측 리텐션 설계 — 이탈 방지 캠페인, 재참여·윈백(winback) 시퀀스, 라이프사이클 메시지, 리텐션 지표(리텐션 커브·코호트·이탈률)를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"이탈 방지 캠페인 설계해줘\" - \"떠난 고객 되돌리는 윈백 이메일 시퀀스 짜줘\""
+    },
+    {
+     "name": "marketing-seo-audit",
+     "summary": "| 네이버·구글·AI 검색(GEO)에서 잘 노출되는지 점검하고, 검색 순위를 올릴 개선안과 추천 키워드를 담은 SEO 감사 보고서를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"우리 블로그 SEO 감사해줘\" - \"네이버 상위 노출 전략 짜줘\" - \"키워드 분석해줘\" - \"구글 검색 최적화해줘\" - \"ChatG"
+    },
+    {
+     "name": "marketing-target-script",
+     "summary": "| 타겟 고객을 분석해 그들의 고민(페인포인트)을 짚고, 채널별로 바로 쓸 수 있는 맞춤 메시지·카피를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"타겟 고객 맞춤 메시지 만들어줘\" - \"타겟 메시징 전략 짜줘\" - \"우리 고객 페르소나 분석해서 카피 써줘\" - \"채널별 스크립트 생성해줘\" - \"이메일·SNS"
+    },
+    {
+     "name": "marketing-youtube-podcast-planner",
+     "summary": "| 유튜브 영상과 팟캐스트 에피소드를 기획하고 대본·쇼노트까지 구성해주는 스킬입니다. 다음과 같은 요청 시 사용하세요: - \"유튜브 영상 기획해줘\" - \"팟캐스트 에피소드 구성해줘\" - \"쇼노트 만들어줘\" - \"유튜브 대본 아웃라인 짜줘\" - \"유튜브 채널 기획서 만들어줘\" - \"팟캐스트 포맷 설계해줘\" 산출물은 에피소드"
+    }
+   ],
+   "deprecated_skills": [],
+   "agents": [
+    {
+     "name": "campaign-strategist",
+     "description": "Marketing campaign strategist for the moai-marketer plugin. Use when the user asks to plan, draft, or improve a marketing campaign, content calendar, creative brief, ad plan (Meta Ads), SEO/landing-pa",
+     "tools": [
+      "Read",
+      "Write",
+      "Edit",
+      "Bash",
+      "Grep",
+      "Glob",
+      "WebSearch",
+      "WebFetch",
+      "Skill"
+     ],
+     "readonly": false
+    },
+    {
+     "name": "performance-auditor",
+     "description": "Read-only skeptical auditor for the moai-marketer plugin. Use to independently verify campaign plans, budget allocations, ad copy, content calendars, and performance reports produced by campaign-strat",
+     "tools": [
+      "Read",
+      "Grep",
+      "Glob"
+     ],
+     "readonly": true
+    }
+   ],
+   "mcp_servers": [
+    "meta-ads",
+    "post-bridge",
+    "typefully",
+    "wordpress"
+   ]
+  },
+  {
+   "id": "moai-media",
+   "displayName": "🎬 미디어 크리에이터",
+   "category": "미디어 생성",
+   "version": "1.1.1",
+   "description": "미디어 생성 전담 AI 직원 — 이미지·영상·오디오 생성(media-* 13종) 스킬. Higgsfield 이미지·영상·3D·설명영상·제품촬영·캐릭터 일관성(Soul/Element), ElevenLabs TTS/보이스클로닝, GPT-image-2·Gemini 3·Midjourney v8 프롬프트 빌더, codex/NotebookLM 연동까지 멀티모달 생성 도구 모음. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 콘텐츠 크리에이터·마케터·디자이너·1인 브랜드.",
+   "skill_count": 13,
+   "skills": [
+    {
+     "name": "media-audio-gen",
+     "summary": "| 통합 오디오 생성 스킬. ElevenLabs MCP 기반 TTS(32개국어), 보이스 클로닝(1분 샘플), 다국어 더빙(립싱크), 효과음 생성을 지원. \"목소리 생성\", \"TTS\", \"음성 합성\", \"보이스 클로닝\", \"더빙\", \"나레이션\", \"효과음\", \"AI 음성\" 요청 시 사용."
+    },
+    {
+     "name": "media-codex-image",
+     "summary": "| codex CLI의 내장 image_gen 도구로 **gpt-image-2** 이미지를 생성합니다 — ChatGPT OAuth 인증으로 **API 키 불필요**, ChatGPT Plus/Team/Enterprise 구독 한도로 동작합니다. 다음과 같은 요청 시 사용하세요: - \"codex로 이미지 만들어줘\", \"cod"
+    },
+    {
+     "name": "media-gemini-3-image-prompt",
+     "summary": "| Google Gemini 3 Pro Image (a.k.a. Nano Banana Pro) 전용 이미지 프롬프트 빌더. 사용자 자연어 한 줄 + AskUserQuestion 프리셋·미세조정으로 컨텍스트를 수집해 Google AI Developers 공식 가이드의 5-component 구조([Subject+Adj] do"
+    },
+    {
+     "name": "media-gpt-image-2-prompt",
+     "summary": "| OpenAI GPT-image-2 모델 전용 이미지 프롬프트 텍스트 빌더. 사용자 자연어 한 줄 + AskUserQuestion 프리셋·미세조정 라운드로 컨텍스트를 수집하고, OpenAI Cookbook 공식 6-Block 구조(Subject·Action·Scene·Composition·Lighting·Style&Te"
+    },
+    {
+     "name": "media-higgsfield-assets",
+     "summary": "| Higgsfield MCP에서 이미지·영상 이외의 생성과 후처리를 다룹니다. 3D 메시(GLB) 생성·리깅·애니메이션, 오디오(효과음·앰비언스·음악·TTS), 완성 영상의 바이럴 점수 분석, 그리고 업스케일·리프레임·아웃페인팅· 배경 제거 같은 기존 에셋 후처리가 범위입니다. 다음과 같은 요청 시 사용하세요: - \"이"
+    },
+    {
+     "name": "media-higgsfield-core",
+     "summary": "| Higgsfield MCP 이미지·영상 생성의 공유 코어. media-higgsfield-image / media-higgsfield-video가 로드하는 SSOT(single source of truth)로, 호출 스키마·라이브 카탈로그 조회 프로토콜·공통 크래프트 규칙(R1–R5)·인터뷰 슬롯·잡 수명주기를 정의합"
+    },
+    {
+     "name": "media-higgsfield-explainer",
+     "summary": "| Higgsfield MCP로 내레이션이 깔린 비실사 설명 영상을 만듭니다. 10초 블록 단위로 내레이션 한 줄과 영상 한 컷을 짝지어 만든 뒤, 서버에서 순서대로 조립해 완성 MP4를 반환합니다. 다음과 같은 요청 시 사용하세요: - \"이 주제로 설명 영상 만들어줘\" - \"이 문서를 나레이션 영상으로\" - \"얼굴 안 "
+    },
+    {
+     "name": "media-higgsfield-identity",
+     "summary": "| Higgsfield MCP에서 재사용 가능한 인물·사물 일관성 참조를 만듭니다. Soul Character(학습형 identity 모델)와 Reference Element(즉시 생성형 참조) 중 어느 쪽을 써야 하는지 판정하고, 선택된 경로로 생성·조회합니다. 다음과 같은 요청 시 사용하세요: - \"내 얼굴로 Soul"
+    },
+    {
+     "name": "media-higgsfield-image",
+     "summary": "| Higgsfield MCP 기반 AI 이미지를 자연어 요청 한 줄로 생성합니다. 모델·파라미터를 하드코딩하지 않고 라이브 카탈로그(models_explore)를 조회해 호출하므로, 카탈로그가 바뀌어도 드리프트 없이 동작합니다. 다음과 같은 요청 시 사용하세요: - \"Higgsfield로 이미지 만들어 줘\" - \"Sou"
+    },
+    {
+     "name": "media-higgsfield-product",
+     "summary": "| 브랜드·제품 비주얼 요청을 10개 촬영 모드 중 하나로 판정하고, 그 모드에 맞는 프롬프트 구조를 조립해 Higgsfield MCP로 이미지를 생성합니다. 스튜디오 컷·라이프스타일·핀터레스트 핀·히어로 배너·캐러셀· 광고 크리에이티브 팩·가상 피팅·컨셉추얼·리스타일이 범위입니다. 다음과 같은 요청 시 사용하세요: - "
+    },
+    {
+     "name": "media-higgsfield-video",
+     "summary": "| Higgsfield MCP 기반 AI 영상을 자연어 요청 한 줄로 생성합니다. 모델·파라미터를 하드코딩하지 않고 라이브 카탈로그(models_explore)를 조회해 호출하므로, 카탈로그가 바뀌어도 드리프트 없이 동작합니다. 다음과 같은 요청 시 사용하세요: - \"Higgsfield 영상 만들어줘\" - \"Veo로 영상"
+    },
+    {
+     "name": "media-midjourney-v8-prompt",
+     "summary": "| Midjourney v8.1 (2026.03 Alpha) 전용 이미지 프롬프트 빌더. 사용자 자연어 한 줄 + AskUserQuestion 프리셋·미세조정으로 컨텍스트를 수집해 Midjourney 공식 Parameter List 기반 키워드+`--파라미터` 형식으로 변환합니다. Discord `/imagine` 또는 "
+    },
+    {
+     "name": "media-notebooklm-slide-prompt",
+     "summary": "| 강연·강의·세미나 본문 마크다운을 입력받아 (1) NotebookLM Studio에 그대로 붙여 넣을 슬라이드 데크 생성 프롬프트와 (2) 슬라이드별 나노바나나(Gemini 3 Pro Image, a.k.a. Nano Banana Pro) 5-Component 이미지 프롬프트를 동시 산출하는 prompt-builder"
+    }
+   ],
+   "deprecated_skills": [
+    "media-asset-production"
+   ],
+   "agents": [
+    {
+     "name": "media-brand-auditor",
+     "description": "Read-only skeptical auditor for the moai-media plugin. Use to independently evaluate image, video, and audio assets plus generation prompts produced by media-producer or media-* skills. Checks brand/s",
+     "tools": [
+      "Read",
+      "Grep",
+      "Glob"
+     ],
+     "readonly": true
+    },
+    {
+     "name": "media-producer",
+     "description": "Multimodal media generation producer for the moai-media plugin. Use when the user asks to generate images, video, or audio — an Higgsfield image/video, an ElevenLabs TTS/voice-clone/dub, or a build pr",
+     "tools": [
+      "Read",
+      "Write",
+      "Edit",
+      "Bash",
+      "Grep",
+      "Glob",
+      "WebSearch",
+      "WebFetch",
+      "Skill"
+     ],
+     "readonly": false
+    }
+   ],
+   "mcp_servers": [
+    "ElevenLabs",
+    "higgsfield"
+   ]
+  },
+  {
+   "id": "moai-seller",
+   "displayName": "🛒 셀러",
+   "category": "이커머스",
+   "version": "1.0.1",
+   "description": "이커머스 셀러 전담 AI 직원 — 스마트스토어·아임웹·카페24 MCP 연동과 상세페이지·마켓플레이스·광고·CRM 등 커머스 실무 스킬 30종. VOC·채널 메시지는 moai-cs(CS매니저)로 이관. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 온라인 셀러·이커머스 운영자.",
+   "skill_count": 30,
+   "skills": [
+    {
+     "name": "commerce-ad-claim-compliance-kr",
+     "summary": "| [책임 경계] 광고·상세페이지·리스팅 \"문구·표현\" 법규 검증 게이트 전담 — ① 표시광고법 부당표시 6유형 체크리스트 ② 식약처 건강기능식품·화장품 의약품-오인 표현 금지 목록 ③ 전자상거래법 필수 고지(청약철회 7일·통신판매업 신고번호·사업자정보·배송/반품 비용) 점검. 페어 commerce-message-comp"
+    },
+    {
+     "name": "commerce-automation-audit",
+     "summary": "| [책임 경계] 셀러 운영 자체 진단 + 자동화 우선순위 점수 산정 + 3 Phase 로드맵 자동 생성 전담. \"커머스 업무 자동화\" 프레임워크(6대 영역 A-F + 3 자동화 유형 + 4단계 설계 프로세스)를 자연어로 wrapping. 페어 스킬 commerce-integrated-strategy(매출 향상 전략 1장"
+    },
+    {
+     "name": "commerce-detail-page-copy",
+     "summary": "> [책임 경계] 카피 산출 (13섹션 감정여정 JSON + 마크다운 미리보기 — Hero→Pain→Problem→Story→Solution→How→Proof→Authority→Benefits→Risk→Compare→Filter→CTA) + 확장 모드 (`--mode diagnose`: 7단계 진단 점수 / `--mode"
+    },
+    {
+     "name": "commerce-detail-page-image",
+     "summary": "> 한국 이커머스 상세페이지 13섹션 이미지를 자동 생성하고 1080×12720 단일 PNG로 합성하는 스킬입니다. \"상세페이지 이미지 만들어줘\", \"13섹션 합성 이미지\", \"상폐 이미지\", \"1080 12720 합성\"처럼 말하면 됩니다. commerce-detail-page-copy의 13섹션 카피와 사용자 상품 사진"
+    },
+    {
+     "name": "commerce-detail-page-planner",
+     "summary": "| 한국 이커머스 상세페이지의 기획안(원 메시지·오프닝 유형·본문 뼈대·유통 채널 전략·사진 체크리스트)을 만들어 드립니다. 카피·코드·이미지를 만들기 전, 무엇을 어떤 구조와 톤으로 보여줄지 먼저 확정하는 단계입니다. 다음과 같은 요청 시 사용하세요: - \"상세페이지 기획해줘\" - \"상세페이지 구조 짜줘\" - \"이 제품"
+    },
+    {
+     "name": "commerce-early-fan-builder",
+     "summary": "| [책임 경계] 신생 브랜드의 충성 100명 부트스트랩 전담 — '잘 만든 충성 고객 100명, 1만 고객 부럽지 않다' 원칙 + 블랭크 사례 + 강아지 가방 케이스 분석 + 100명→1만 전환 로드맵. 페어 스킬 commerce-promotion-planner(전체 프로모션 기획)와 명확히 구분 — 본 스킬은 신생 부"
+    },
+    {
+     "name": "commerce-influencer-collab",
+     "summary": "| [책임 경계] 인플루언서·UGC 협업 가이드 전담 — 뒷광고 회피·체험단·UGC 리그램·굿즈 기획법. 페어 스킬 marketing-campaign-planner(전체 캠페인 기획)와 명확히 구분 — 본 스킬은 인플루언서 단일 협업 가이드, 페어는 전체 마케팅 캠페인. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요:"
+    },
+    {
+     "name": "commerce-integrated-strategy",
+     "summary": "| 선행 스킬 산출물(commerce-market-research·commerce-jtbd-persona·commerce-product-naming·commerce-channel-message·commerce-detail-page-copy 결과)과 매장 운영 데이터를 종합해 매출 향상 통합 전략 1장 + 실행 우선순위 T"
+    },
+    {
+     "name": "commerce-jtbd-persona",
+     "summary": "| [책임 경계] 1스킬 2모드 — `--mode jtbd`: JTBD 9개 + 시장 매칭 우선순위 자동 도출 / `--mode persona`: 리뷰·Q&A 분석 기반 페르소나 3명 자동 생성. 페어 스킬 moai-domain-copywriting과 명확히 구분 — 본 스킬은 고객 분석(Why), 페어는 카피 작성(Wh"
+    },
+    {
+     "name": "commerce-live-commerce",
+     "summary": "> 네이버 쇼핑라이브·카카오 쇼핑라이브·그립·쿠팡 라이브 등 한국 라이브 커머스 채널 가이드 + 라이브 스크립트 작성 스킬입니다. \"라이브 커머스 가이드\", \"쇼핑라이브 스크립트\", \"그립 방송\", \"라이브 방송 카피\"처럼 말하면 됩니다. 채널별 정책·노출·수수료를 정리하고, 30분/60분 라이브 방송용 진행 스크립트(오"
+    },
+    {
+     "name": "commerce-ltv-cac-architect",
+     "summary": "| [책임 경계] CAC→재구매율→구매주기→ARPU→공헌이익→LTV 6대 지표 연결 모델 + LTV/CAC ratio 진단 + 광고 의존도 진단 + 손익분기 ROAS 자동 계산 + 채널·세그먼트별 재구매율 분해 권장 액션. 페어 스킬 commerce-margin-calculator(단품 마진 계산)와 명확히 구분 — 본 "
+    },
+    {
+     "name": "commerce-margin-calculator",
+     "summary": "| [책임 경계] 상품별 마진·엔드 ROAS(본전 ROAS)·손익분기 광고비 자동 계산 전담. 부가세·플랫폼 수수료·쿠폰·할인 모두 반영한 정확한 마진 산출. 페어 스킬 moai-seller:commerce-marketplace-coupang-ads(쿠팡 광고 운영 의사결정)와 명확히 구분 — 본 스킬은 마진·ROAS 계"
+    },
+    {
+     "name": "commerce-market-research",
+     "summary": "| [책임 경계] 카테고리 시장조사 1장 자동 생성 — 거시·경쟁·검색 3축 리포트. 페어 스킬 moai-tutor:education-grant-writer와 명확히 구분 — 본 스킬은 이커머스 셀러 카테고리 진입 판단, 페어는 정책자금 리서치. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: \"내 카테고리 시장조사 "
+    },
+    {
+     "name": "commerce-marketplace-coupang-ads",
+     "summary": "| 쿠팡 광고 풀세트를 자연어로 분석·최적화합니다 — 3 캠페인 유형(AI스마트/매출최적화/수동키워드) 자동 분류 + 검색영역 vs 비검색영역 매출 분리 + 엔드 ROAS 계산 + 자동규칙 3종 + 상품별 의사결정 분기(ROAS·CTR·CVR). 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: \"쿠팡 광고 분석해줘\","
+    },
+    {
+     "name": "commerce-marketplace-coupang",
+     "summary": "> 쿠팡 상세페이지 정책과 검색최적화·우수상품 가이드라인을 적용하는 스킬입니다. \"쿠팡 상세페이지 가이드\", \"로켓배송 등록\", \"쿠팡 SEO\", \"쿠팡 우수상품\"처럼 말하면 됩니다. commerce-detail-page-copy/commerce-detail-page-image 출력물을 쿠팡 정책에 맞게 검토하고, 이미지"
+    },
+    {
+     "name": "commerce-marketplace-crowdfunding",
+     "summary": "> 와디즈·텀블벅 등 한국 크라우드펀딩 채널의 프로젝트 기획·심사·리워드 구성·후속 정산 가이드 스킬입니다. \"와디즈 펀딩\", \"텀블벅 프로젝트\", \"크라우드펀딩 기획\", \"리워드 구성\", \"선주문 펀딩\"처럼 말하면 됩니다. 신상품 출시 또는 한정판을 사전판매·검증 형식으로 런칭하고 싶을 때 유용합니다. 와디즈(리워드·투"
+    },
+    {
+     "name": "commerce-marketplace-curation",
+     "summary": "> 카카오 메이커스·무신사·29CM 등 한국 큐레이션 커머스 채널 입점 가이드 스킬입니다. \"카카오 메이커스 입점\", \"무신사 셀러\", \"29CM 입점\", \"큐레이션 셀렉션\", \"주문생산 펀딩\"처럼 말하면 됩니다. 일반 마켓·자사몰과 달리 채널이 큐레이팅·셀렉션하는 입점 모델로, 채널 정체성에 맞는 브랜드 콘셉트와 제품 "
+    },
+    {
+     "name": "commerce-marketplace-d2c",
+     "summary": "> 카페24·아임웹·메이크샵 등 한국 자사몰(D2C) 빌더 운영 가이드 스킬입니다. \"카페24 등록\", \"아임웹 쇼핑몰\", \"자사몰 만들기\", \"D2C 브랜드 쇼핑몰\", \"메이크샵 가이드\"처럼 말하면 됩니다. 마켓 수수료 없이 브랜드 단독으로 운영하는 자사몰 채널의 도메인·결제·배송·디자인 정책을 정리하고, 카페24(가장"
+    },
+    {
+     "name": "commerce-marketplace-naver-ads",
+     "summary": "| 네이버 검색광고 풀세트를 자연어로 분석·최적화합니다 — 4 캠페인 유형(쇼핑검색광고/파워링크/브랜드검색/GFA) 자동 분류 + 쇼핑검색 상품 소재·키워드·입찰가·확장소재 진단 + 파워링크 키워드 매칭·품질지수 개선 + 네이버 광고 보고서 업로드 기반 상품·키워드별 의사결정. 다음과 같은 요청 시 반드시 이 스킬을 사용"
+    },
+    {
+     "name": "commerce-marketplace-naver",
+     "summary": "> 네이버 스마트스토어 + 11번가/G마켓/옥션 오픈마켓 정책·검색최적화 가이드 스킬입니다. \"스마트스토어 등록\", \"네이버 쇼핑 SEO\", \"11번가 가이드\", \"옥션 등록\", \"오픈마켓 가이드\"처럼 말하면 됩니다. commerce-detail-page-copy/commerce-detail-page-image 출력물을 "
+    },
+    {
+     "name": "commerce-message-compliance-kr",
+     "summary": "| [책임 경계] 한국 정보통신망법(정통망법) 스팸 규정 전담 — 메시지 \"발송\" 규제만 다룹니다. 광고 \"문구·표현\"(표시광고법 부당표시, 식약처 의약품 오인, 전상법 필수 고지)은 moai-seller:commerce-ad-claim-compliance-kr 담당. 광고·정보성 메시지 자동 판정 + 야간 발송 차단 +"
+    },
+    {
+     "name": "commerce-morning-brief",
+     "summary": "| 매장 운영 데이터를 1줄로 통합 요약합니다. SCOPE에 따라 전체 아침 브리핑(어제 주문·신규 문의·트렌드·ROAS 4개 영역) 또는 주문 요약만(스마트스토어·카페24·아임웹 신규 주문 채널 통합)을 자연어로 선택합니다. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: \"아침 브리핑 만들어줘\", \"오늘 매장 현황"
+    },
+    {
+     "name": "commerce-product-detail",
+     "summary": "| 네이버 스마트스토어·쿠팡·카카오 규격에 맞는 제품 상세 페이지를 코드(HTML 또는 React 컴포넌트)로 만들어 드립니다. 전환율을 높이는 구조와 디자인 토큰까지 함께 산출합니다. 다음과 같은 요청 시 사용하세요: - \"스마트스토어 가습기 상세페이지 만들어줘\" - \"쿠팡에 올릴 화장품 상세 페이지 기획해줘\" - \"S"
+    },
+    {
+     "name": "commerce-product-image-pipeline",
+     "summary": "| [책임 경계] 상품 이미지·영상 풀스택 파이프라인 오케스트레이터. 캐릭터 일관성(선택) → media-higgsfield-image(Soul) → media-higgsfield-video(DOP) → 채널 규격 변환(Pillow 자체 처리) 체인을 단일 자연어 입력으로 자동 호출. 한국 이커머스 셀러가 \"상품 이미지·"
+    },
+    {
+     "name": "commerce-product-naming",
+     "summary": "| 상품명 3안 자동 생성 + 플랫폼 검증(스마트스토어·쿠팡·네이버쇼핑 25자·금지어)에 더해, 네이버 데이터랩 급상승 트렌드 검색어를 상품명 변형·해시태그 30개·블로그 제목 SEO 3안으로 변환합니다. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: \"상품명 뽑아줘\", \"상품명 3개 안 만들어줘\", \"키워드 넣어서"
+    },
+    {
+     "name": "commerce-product-photo-brief",
+     "summary": "> 사용자가 제공한 상품 사진을 분석하여 ProductDNA를 추출하고, 13섹션 상세페이지에 부족한 컷을 식별, 추가 촬영을 위한 구체적인 브리프를 작성해주는 스킬입니다. \"상품 사진 분석해줘\", \"촬영 브리프 만들어줘\", \"부족한 컷 알려줘\", \"어떤 사진이 더 필요해?\"처럼 말하면 됩니다. 형태·소재·색상·시그니처 "
+    },
+    {
+     "name": "commerce-promotion-planner",
+     "summary": "| [책임 경계] 3대 프로모션 기획법(이슈화·얼리버드·한정) 전담. 브랜드 단계·목표·할인율·시즌 입력 → 프로모션 타입 추천 + 명목·스토리·혜택 3종 세트 + 벤치마킹 포인트 + 실무 체크리스트 + 노션 템플릿 구조 자동 생성. 페어 스킬 commerce-integrated-strategy(매출 향상 통합 전략)와 "
+    },
+    {
+     "name": "commerce-repurchase-timer",
+     "summary": "| [책임 경계] 재구매 타이밍 엔진 — 구매주기 골든타임 3구간(리마인드 80% / 데드라인 110-120% / 휴면 진입 150%) + 구간별 메시지 톤 + 리드 스코어링 룰 + 리텐션 차트 cohort 분석 가이드 전담. 페어 스킬 commerce-ltv-cac-architect(고객 수익 구조)와 명확히 구분 — "
+    },
+    {
+     "name": "commerce-season-calendar",
+     "summary": "| [책임 경계] 연간 시즌 캘린더 전담 — 한국·글로벌 이커머스 시즌 이벤트 30+개 매핑(블프·솽스이·발렌타인·명절·여름·겨울 등) + 카테고리별 매출 피크 분석 + 분기 캠페인 계획 자동 생성. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: \"연간 시즌 캘린더\", \"블프 솽스이 일정\", \"한국 시즌 이벤트\", "
+    },
+    {
+     "name": "commerce-subscription-strategist",
+     "summary": "| [책임 경계] 구독 비즈니스 모델 설계 전담 — 5가지 질문 자기진단 + 구독 모델 분류(소비재·경험·관계·맞춤) + 한국 시장 적합성 진단 + 락인 vs 이탈 방지 메시지. 페어 스킬 moai-seller:commerce-integrated-strategy(거시 채널·사업 전략)와 명확히 구분 — 본 스킬은 단일 구"
+    }
+   ],
+   "deprecated_skills": [
+    "commerce-coupang-ad-optimizer"
+   ],
+   "agents": [
+    {
+     "name": "listing-builder",
+     "description": "E-commerce listing and store-operations specialist for the moai-seller plugin. Use when the user asks to plan, draft, or improve a product detail page, marketplace listing (SmartStore / Coupang / Imwe",
+     "tools": [
+      "Read",
+      "Write",
+      "Edit",
+      "Bash",
+      "Grep",
+      "Glob",
+      "WebSearch",
+      "WebFetch",
+      "Skill"
+     ],
+     "readonly": false
+    },
+    {
+     "name": "margin-auditor",
+     "description": "Read-only skeptical auditor for the moai-seller plugin. Use to independently verify listings, margin/pricing calculations, ad budget allocations, and campaign plans produced by listing-builder or comm",
+     "tools": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash"
+     ],
+     "readonly": false
+    }
+   ],
+   "mcp_servers": [
+    "moai-cafe24",
+    "moai-imweb",
+    "moai-smartstore"
+   ]
+  },
+  {
+   "id": "moai-officer",
+   "displayName": "📄 사무관",
+   "category": "문서·오피스",
+   "version": "1.0.1",
+   "description": "사무 문서 전담 AI 직원 — 한국형 오피스 문서(HWPX·DOCX·XLSX·PPTX·PDF)·HTML 리포트/슬라이드 생성, 공문서 파싱, 노션 템플릿·생산성 루틴 스킬 13종. kordoc MCP 연동. 공공데이터 조회·데이터 분석은 moai-analyst로, 라이프스타일은 moai-coworker로 분리. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 사무직·기획자·자영업 운영자.",
+   "skill_count": 13,
+   "skills": [
+    {
+     "name": "office-daily-briefing",
+     "summary": "| 업계 뉴스·시장 동향·경쟁사 소식·규제 변화·오늘 할 일을 한 장으로 묶은 아침 비즈니스 브리핑을 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"오늘 비즈니스 브리핑 해줘\" - \"아침 이슈 요약해줘\" - \"데일리 리포트 만들어줘\" - \"주간 시장 동향 알려줘\" - \"경쟁사 모니터링 보고서 써줘\" - \"업계 "
+    },
+    {
+     "name": "office-design-system-library",
+     "summary": "| 75개 글로벌 브랜드 디자인 시스템(Claude · ClickHouse · Clay 포함)의 토큰(색·타이포·radius·spacing·컴포넌트)을 단일 파일 HTML 산출물에 적용합니다. 본 스킬은 moai-designer 플러그인의 정본(canonical)을 가리키는 포인터입니다 — 실제 시스템 토큰·컴포넌트 정의"
+    },
+    {
+     "name": "office-document-reader",
+     "summary": "| 한국 공문서(HWP 3.0/5.x·HWPX·HWPML·PDF·XLSX·DOCX)를 마크다운으로 파싱해 드립니다 — 표 완벽 재현, 신구대조표, 양식 필드 추출/자동 채우기, 문서 비교, DRM 배포용 문서 복호화, OCR 연동까지. kordoc MCP의 8개 도구를 호출하므로 별도 설치·API 키가 필요 없습니다(No"
+    },
+    {
+     "name": "office-docx-generator",
+     "summary": "| 편집 가능한 워드(.docx) 문서를 만들어 드립니다 — 보고서, 계약서, 제안서, 공문서, 기획서를 한국형 디자인 톤으로 바로 쓸 수 있게 출력합니다. 다음과 같은 요청 시 사용하세요: - \"보고서 워드 파일로 만들어줘\" - \"계약서 DOCX로 작성해줘\" - \"공문서 양식대로 써줘\" - \"제안서 워드 문서 만들어줘\""
+    },
+    {
+     "name": "office-html-report",
+     "summary": "| 마크다운 보고서를 그대로 브라우저에서 열리는 단일 파일 HTML로 바꿔 드립니다. 외부 라이브러리 없이 한 파일로 완결돼 이메일 첨부·인쇄·오프라인 열람이 됩니다. 다음과 같은 요청 시 사용하세요: - \"이 보고서 HTML 파일로 만들어줘\" - \"주간 현황 보고서를 하나의 HTML로 렌더해줘\" - \"재무제표를 HTML"
+    },
+    {
+     "name": "office-html-slide",
+     "summary": "| 발표용 슬라이드 덱을 브라우저에서 바로 열리는 단일 파일·자체 완결형(self-contained) HTML로 만들어 드립니다. 인포그래픽(차트·다이어그램·KPI)은 한국어 숫자·라벨이 100% 정확한 인라인 SVG로 직접 렌더링하고, 실사 히어로·일러스트 이미지는 Higgsfield MCP 또는 codex(gpt-im"
+    },
+    {
+     "name": "office-hwpx-writer",
+     "summary": "| 아래아한글(.hwpx) 문서를 만들어 드립니다 — 한컴오피스에서 열리는 공문서·기안서·품의서·보고서를 작성하고, 기존 HWP 파일을 HWPX로 변환합니다. 다음과 같은 요청 시 사용하세요: - \"한글 파일로 공문서 만들어줘\" - \"HWP 문서 작성해줘\" - \"아래한글 기안서 써줘\" - \"한글로 품의서 작성해줘\" - \""
+    },
+    {
+     "name": "office-mcp-connector-setup",
+     "summary": "| [책임 경계] Drive·Notion·Higgsfield 3커넥터 인증·환경변수·트러블슈팅 가이드 전담. 페어 moai-seller:commerce-morning-brief(MCP 매장 데이터 호출)와 명확히 구분 — 본 스킬은 커넥터 설치·인증 단계, 페어는 인증 이후 실제 MCP 호출 결과물. 다음과 같은 요청 시"
+    },
+    {
+     "name": "office-notion-template-kit",
+     "summary": "> 노션 올인원 업무관리·목표·회고 템플릿의 구조를 설계해주는 스킬입니다. '노션 템플릿 만들어줘', '올인원 업무관리 대시보드', '노션 목표 관리', '노션 회고 템플릿', '노션 구조 짜줘'처럼 말하면 됩니다. 데이터베이스·뷰·속성 구조를 설계해, 흩어진 메모를 한곳에 모으는 노션 대시보드의 뼈대를 만들어줍니다."
+    },
+    {
+     "name": "office-pdf-writer",
+     "summary": "| 어떤 콘텐츠든 PDF 파일로 만들어 드립니다 — 스타일이 입혀진 HTML 리포트는 디자인을 그대로 보존해 변환하고, Markdown·구조화 JSON·일반 텍스트는 자동 서식으로 렌더합니다. weasyprint 단일 엔진으로 풀 CSS를 충실히 렌더하며, 번들 Noto Sans CJK 폰트를 임베딩해 한국어·일본어·중국"
+    },
+    {
+     "name": "office-pptx-designer",
+     "summary": "| 발표용 파워포인트(.pptx) 슬라이드를 디자인해 바로 열리는 파일로 만들어 드립니다 — 사내 보고, 투자 피칭, 교육자료, 컨퍼런스 키노트까지. 다음과 같은 요청 시 사용하세요: - \"발표자료 PPT로 만들어줘\" - \"파워포인트 슬라이드 디자인해줘\" - \"보고서를 발표용 PPT로 만들어줘\" - \"투자 피칭 덱 15장"
+    },
+    {
+     "name": "office-time-system",
+     "summary": "> 하루·한 주의 시간을 주도적으로 설계하도록 도와주는 시간관리 스킬입니다. '시간관리 어떻게 해', '야근 줄이고 싶어', '블록식스로 일정 짜줘', '덩어리 시간 만들기', '우선순위 정해줘'처럼 말하면 됩니다. 블록식스·덩어리 시간·우선순위 매트릭스로 일정을 구조화해, 끌려다니던 하루를 내가 짠 하루로 바꾸고 야근을"
+    },
+    {
+     "name": "office-xlsx-creator",
+     "summary": "| 엑셀(.xlsx) 문서를 만들어 드립니다 — 데이터 표, 차트, 수식, 조건부 서식이 들어간 KPI 대시보드·매출 분석표·예산표·간트차트를 바로 쓸 수 있게 출력합니다. 다음과 같은 요청 시 사용하세요: - \"KPI 대시보드 엑셀로 만들어줘\" - \"월간 매출 분석표 생성해줘\" - \"프로젝트 일정 간트차트 엑셀로 작성해"
+    }
+   ],
+   "deprecated_skills": [],
+   "agents": [
+    {
+     "name": "data-auditor",
+     "description": "Read-only skeptical auditor for the moai-officer plugin. Use to independently verify office documents (HWPX/DOCX/XLSX/PPTX/PDF/HTML), figures embedded in them, and calculations produced by doc-produce",
+     "tools": [
+      "Read",
+      "Grep",
+      "Glob"
+     ],
+     "readonly": true
+    },
+    {
+     "name": "doc-producer",
+     "description": "Korean office-document specialist for the moai-officer plugin. Use when the user asks to produce a report, slide deck, or form document (HWPX / DOCX / XLSX / PPTX / PDF / HTML report / HTML slide), pa",
+     "tools": [
+      "Read",
+      "Write",
+      "Edit",
+      "Bash",
+      "Grep",
+      "Glob",
+      "WebSearch",
+      "WebFetch",
+      "Skill"
+     ],
+     "readonly": false
+    }
+   ],
+   "mcp_servers": [
+    "kordoc"
+   ]
+  },
+  {
+   "id": "moai-analyst",
+   "displayName": "📊 데이터 애널리스트",
+   "category": "데이터·분석",
+   "version": "1.0.1",
+   "description": "데이터·공공데이터 분석 전담 AI 직원 — 데이터 프로파일링·시각화, 공공데이터 조회(부동산·경매·주식·KOSIS·건축물대장·DART 전자공시) 스킬 7종. KOSIS 통계·건축HUB·DART MCP 연동. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 데이터 애널리스트·사무직·기획자·자영업 운영자.",
+   "skill_count": 7,
+   "skills": [
+    {
+     "name": "office-building-ledger-search",
+     "summary": "| 국토교통부 건축HUB 건축물대장·건축인허가·주택인허가 실측 데이터로 한 필지의 용도지역·주용도·구조·규모·건폐율/용적률·세대/주차·사용승인일·내진·공시가격 시계열·노후도·철거멸실(석면)·인허가 파이프라인을 조회해 드립니다. archhub MCP의 11개 도구를 호출하므로 별도 설치·API 키가 필요 없습니다(공용키 h"
+    },
+    {
+     "name": "office-data-explorer",
+     "summary": "| CSV·Excel 데이터의 프로파일링·품질 보고서를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"이 데이터 분석해줘\" - \"CSV 요약해줘\" - \"이상값 찾아줘\" - \"데이터 품질 체크해줘\" 컬럼 요약·결측값/이상값 탐지·상관관계 분석을 거쳐 데이터 품질 보고서로 정리합니다."
+    },
+    {
+     "name": "office-data-visualizer",
+     "summary": "| 데이터를 한눈에 보여주는 인터랙티브 차트·대시보드(HTML)를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"차트 만들어줘\" - \"그래프 그려줘\" - \"시각화해줘\" - \"대시보드 만들어줘\" Mermaid·Recharts·Chart.js·Tremor·ECharts 중 적합한 스택으로 인터랙티브 대시보드를 제작"
+    },
+    {
+     "name": "office-public-data-court-auction-search",
+     "summary": "| 대법원 법원경매정보(courtauction.go.kr) 부동산 매각공고를 매각기일·법원·기일/기간 입찰 기준으로 조회하고, 각 공고를 사건번호·용도·주소·감정평가액·최저매각가로 펼쳐서 보여줍니다. 법원사무소 코드와 사건번호로 단건 직접 조회도 지원합니다. read-only이며 IP 차단 방지를 위해 호출당 약 2초 지"
+    },
+    {
+     "name": "office-public-data-korean-stock-search",
+     "summary": "| KRX(한국거래소) 상장 종목을 검색하고 종목 기본정보·일별 시세를 조회합니다. k-skill-proxy 경유로 호출하므로 사용자는 KRX_API_KEY 발급이나 별도 MCP 서버 설치가 필요 없습니다. read-only 일별 snapshot이며 실시간 호가·체결은 제공하지 않습니다. 투자 자문이 아닙니다. 다음과 같"
+    },
+    {
+     "name": "office-public-data-public-data",
+     "summary": "| 공공데이터포털(data.go.kr)·KOSIS 통계청의 실시간 통계를 정밀 조회·분석해 드립니다. 자연어 1줄 질문(인구·고용·출산·물가·미세먼지 등)은 korean-stats MCP(공용키 hosted, 발급 불필요)를 우선하고, 본 스킬은 data.go.kr OpenAPI 직접 제어·정밀 조회·고급 분석이 필요할 "
+    },
+    {
+     "name": "office-public-data-real-estate-search",
+     "summary": "| 국토교통부 실거래가 신고 데이터로 아파트·오피스텔·연립다세대·단독다가구·상업업무용 부동산의 매매·전월세 시세를 조회해 드립니다(별도 API 키 없이 바로 사용). 다음과 같은 요청 시 사용하세요: - \"잠실 리센츠 2024년 매매 실거래가 찾아줘\" - \"강남구 아파트 실거래가 알려줘\" - \"마포구 아파트 전세 실거래 "
+    }
+   ],
+   "deprecated_skills": [
+    "office-business-real-estate-search",
+    "office-data-public-data",
+    "office-finance-court-auction-search",
+    "office-finance-korean-stock-search"
+   ],
+   "agents": [
+    {
+     "name": "data-analyst",
+     "description": "Data and Korean public-data analyst for the moai-analyst plugin. Use when the user asks to research Korean public data (real estate transactions, court auctions, stocks, KOSIS statistics, building led",
+     "tools": [
+      "Read",
+      "Write",
+      "Edit",
+      "Bash",
+      "Grep",
+      "Glob",
+      "WebSearch",
+      "WebFetch",
+      "Skill"
+     ],
+     "readonly": false
+    },
+    {
+     "name": "data-provenance-auditor",
+     "description": "Read-only skeptical auditor for the moai-analyst plugin. Use to independently verify public-data research briefs, data citations, dataset profiles, charts/dashboards, and calculations produced by data",
+     "tools": [
+      "Read",
+      "Grep",
+      "Glob"
+     ],
+     "readonly": true
+    }
+   ],
+   "mcp_servers": [
+    "archhub",
+    "dart",
+    "korean-stats"
+   ]
+  },
+  {
+   "id": "moai-lawyer",
+   "displayName": "⚖️ 법무 담당",
+   "category": "전문직",
+   "version": "1.0.1",
+   "description": "법무 전담 AI 직원 — 계약 검토·NDA 트리아지·컴플라이언스 점검·법령/판례 리서치·특허 검색/분석·식약처 안전 기준 스킬 10종. 국가법령정보 MCP(korean-law) 연동으로 인용 검증까지 수행합니다. 이런 분께 추천: 1인 사업자·스타트업 운영자. ※ 법률 자문 대체가 아닌 참고 자료입니다.",
+   "skill_count": 10,
+   "skills": [
+    {
+     "name": "legal-compliance-check",
+     "summary": "> 규제 준수 점검, 내부 감사, ESG 보고, 인허가 서류를 지원합니다. '컴플라이언스 점검해줘', '내부 감사 보고서 작성해줘', 'ESG 보고서 만들어줘', '규제 갭 분석해줘', '인허가 서류 준비해줘'라고 요청하세요. 한국 주요 규제 기준 적용, 갭 분석, 시정 계획, ESG 지표 보고서를 제공합니다."
+    },
+    {
+     "name": "legal-contract-review",
+     "summary": "> 계약서 검토, 이용약관, 개인정보처리방침 등 법률 문서를 분석하고 작성합니다. '계약서 검토해줘', '위험 조항 찾아줘', '이용약관 만들어줘', '개인정보처리방침 작성해줘', 'SLA 계약서 써줘'라고 요청하세요. 한국 민법·상법 기반 10대 리스크 패턴 분석, 수정 권고안을 제공합니다."
+    },
+    {
+     "name": "legal-iros-registry-automation",
+     "summary": "| 대법원 인터넷등기소(IROS, iros.go.kr)에서 법인·부동산 등기부등본(등기사항증명서)을 여러 건 일괄 발급할 때 안전한 작업 순서와 로컬 자동화 방법을 안내합니다. 로그인·인증·결제는 사용자가 브라우저에서 직접 처리하고, 본 스킬은 장바구니 담기· 결제 후 열람·저장·종합 리포트 생성을 보조합니다. 다음과 같"
+    },
+    {
+     "name": "legal-law-research",
+     "summary": "| 법제처 법령·판례·행정규칙·자치법규·조약·해석례(국세청) 원문 조회와 LLM 환각방지 인용검증·판례 생사 확인·행위시법 판단·조문 영향 그래프·신구대조표를 전담합니다. korean-law MCP(법제처 42개 API → 9 도구) 사용. 다음과 같은 요청 시 사용하세요: - \"근로기준법 제74조 본문 알려줘\" - \"이"
+    },
+    {
+     "name": "legal-legal-risk",
+     "summary": "> 기업 법적 리스크를 분석하고 지적재산권 전략을 수립합니다. '법적 리스크 평가해줘', '특허 침해 위험 분석해줘', '개인정보 위반 리스크 체크해줘', 'IP 포트폴리오 분석해줘', '2026년 법령 변화 영향 분석해줘'라고 요청하세요. 판례·법령 리서치, IP 포트폴리오, 리스크 매트릭스, 대응 액션 플랜을 제공합니"
+    },
+    {
+     "name": "legal-mfds-safety",
+     "summary": "| 식품의약품안전처(MFDS) 공식 OpenAPI를 k-skill-proxy 경유로 조회해 의약품과 식품의 공식 안전 정보를 확인합니다. 의약품(e약은요·안전상비의약품)과 식품(건강기능식품 원료 인정현황·개별인정형·품목제조 신고·검사부적합·회수·판매중지)을 통합 조회합니다. 사용자가 증상·복용/섭취 상황을 말하면 절대 단"
+    },
+    {
+     "name": "legal-nda-triage",
+     "summary": "> 비밀유지계약서(NDA)를 빠르게 검토하고 리스크를 평가합니다. 'NDA 검토해줘', '비밀유지계약서 분석해줘', '기밀유지 조항 확인해줘', 'NDA 위험 조항 찾아줘', '비밀유지계약 수정 권고해줘'라고 요청하세요. 한국 민법·영업비밀보호법 기준 조항별 위험도 평가, 수정 권고안을 제공합니다."
+    },
+    {
+     "name": "legal-patent-analyzer",
+     "summary": "| 특허 동향 보고서·선행기술 조사 보고서·FTO(침해 가능성) 분석·특허 출원서 초안을 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"배터리 기술 특허 동향 분석해줘. 최근 10년 기준으로\" - \"이 발명의 선행기술 조사해줘. 핵심 구성요소는 A, B, C야\" - \"FTO 분석 해줘. 대상 기술은 AI 이상 "
+    },
+    {
+     "name": "legal-patent-search",
+     "summary": "| KIPRIS Plus로 특허·실용신안·디자인·상표를 검색해 출원 현황과 서지정보를 정리해 드립니다. 다음과 같은 요청 시 사용하세요: - \"딥러닝 이미지 분류 관련 특허 검색해줘\" - \"삼성전자 반도체 등록특허 찾아줘\" - \"최근 5년간 배터리 기술 출원 현황 조사해줘\" - \"자율주행 LiDAR 선행기술 조사해줘\" -"
+    },
+    {
+     "name": "legal-service-launch-checklist",
+     "summary": "> 앱, 웹, 이커머스 서비스 출시 직전 법적 컴플라이언스를 14종 체크리스트로 점검합니다. '출시 전 법적 점검해줘', '앱 출시 체크리스트 만들어줘', '서비스 런칭 전 검토해줘', '인공지능기본법 지키는지 봐줘', '과태료 항목 체크해줘'라고 요청하세요. 2026년 기준 인공지능기본법·개인정보·정보통신망·전자상거래 "
+    }
+   ],
+   "deprecated_skills": [],
+   "agents": [
+    {
+     "name": "legal-researcher",
+     "description": "Legal research and document-review specialist for the moai-lawyer plugin. Use when the user asks to review a contract or NDA, run a compliance check, research statutes or case law, search/analyze pate",
+     "tools": [
+      "Read",
+      "Write",
+      "Edit",
+      "Bash",
+      "Grep",
+      "Glob",
+      "WebSearch",
+      "WebFetch",
+      "Skill"
+     ],
+     "readonly": false
+    },
+    {
+     "name": "risk-auditor",
+     "description": "Read-only skeptical auditor for the moai-lawyer plugin. Use to independently verify contract reviews, compliance reports, statute/case-law research memos, and patent analyses produced by legal-researc",
+     "tools": [
+      "Read",
+      "Grep",
+      "Glob"
+     ],
+     "readonly": true
+    }
+   ],
+   "mcp_servers": [
+    "korean-law"
+   ]
+  },
+  {
+   "id": "moai-accountant",
+   "displayName": "💰 재무·세무 담당",
+   "category": "전문직",
+   "version": "1.0.0",
+   "description": "재무·세무 전담 AI 직원 — 재무제표 분석·결산 관리·차이 분석·IR, 개인 세금 절약·가계 예산·투자 입문·보험 적합성 스킬 11종. OpenDART 전자공시 MCP 연동. 이런 분께 추천: 사업자·재무 담당자·개인 재테크 입문자. ※ 세무사·회계사 자문 대체가 아닌 참고 자료입니다.",
+   "skill_count": 11,
+   "skills": [
+    {
+     "name": "finance-close-management",
+     "summary": "> 월말·분기·연간 결산을 도와주는 스킬입니다. '결산 체크리스트 만들어줘', '4대보험 정산해줘', '급여 마감해줘'처럼 말하면 됩니다. K-IFRS 기준 계정 마감, 급여 정산, 세무 일정 관리, 결산 보고서 자동 생성을 지원합니다. 2026년 최신 4대보험 요율과 노동법 변경사항을 반영합니다."
+    },
+    {
+     "name": "finance-econ-literacy",
+     "summary": "> 금리·환율·물가 같은 경제지표를 '내 돈' 관점에서 읽도록 도와주는 스킬입니다. '금리 오르면 어떻게 돼', '환율이 내 자산에 미치는 영향', '경제지표 읽는 법', 'GDP가 뭐야', '경기 사이클'처럼 말하면 됩니다. 금리·환율·물가(CPI)·GDP·고용·수출입 지표가 대출·예금·투자·소비에 어떻게 연결되는지 쉬"
+    },
+    {
+     "name": "finance-financial-statements",
+     "summary": "> 재무제표를 만들어주는 스킬입니다. '재무상태표 작성해줘', '손익계산서 분석해줘', 'K-IFRS 기준으로 재무제표 만들어줘'처럼 말하면 됩니다. 재무상태표·손익계산서·현금흐름표 전체 세트 작성, 2026년 K-IFRS 제1118호 변경 대응, 주석 공시, 재무비율 분석을 지원합니다."
+    },
+    {
+     "name": "finance-household-budget",
+     "summary": "> 월급 관리와 가계부, 예산 배분, 소비 회고를 도와주는 스킬입니다. '통장 쪼개기 해줘', '월급 관리법', '가계부 어떻게 써', '돈이 자꾸 새', '예산 짜줘'처럼 말하면 됩니다. 통장 쪼개기, 50/30/20 예산, 가계부 분류, 소비 회고 루틴으로 매달 저축 가능액을 확보하는 돈 관리 시스템을 설계합니다."
+    },
+    {
+     "name": "finance-insurance-fit",
+     "summary": "> 나에게 꼭 필요한 보험만 남기고 과보험·중복을 정리하도록 돕는 스킬입니다. '보험 점검해줘', '실손 꼭 들어야 해', '암보험 필요할까', '보험료가 너무 많아', '보험 리모델링'처럼 말하면 됩니다. 필요한 보험 진단(실손·암·종신·연금), 과보험·중복 점검, 생애주기별 우선순위, 보험 리모델링을 한국 보험 기준으"
+    },
+    {
+     "name": "finance-invest-primer",
+     "summary": "> 투자를 처음 시작하는 사람에게 기본 원칙과 자산군, 초보 포트폴리오를 안내하는 스킬입니다. '투자 어떻게 시작해', '주식 초보', 'ETF가 뭐야', '분산투자 방법', '초보 포트폴리오 짜줘'처럼 말하면 됩니다. 분산·장기·리스크 관리 원칙, 자산군(주식/ETF/채권/부동산/예적금) 비교, 초보 포트폴리오, 투자 "
+    },
+    {
+     "name": "finance-investor-relations",
+     "summary": "| 투자 유치를 위한 IR 피치덱과 3개년 재무 모델(매출 예측·손익·현금흐름·밸류에이션)을 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"IR 덱 만들어줘\" - \"투자자 피치 자료 써줘\" - \"재무 모델 만들어줘\" - \"매출 예측 좀 해줘\" - \"밸류에이션 계산해줘\" - \"시리즈 A 투자 유치 자료 준비해줘\""
+    },
+    {
+     "name": "finance-personal-tax-saver",
+     "summary": "> 근로자 연말정산에서 환급을 더 받도록 절세 전략을 짜주는 스킬입니다. '연말정산 환급 늘리는 법', '소득공제 뭐 챙겨', '연금저축 세액공제', '13월의 월급', '맞벌이 절세'처럼 말하면 됩니다. 소득공제 vs 세액공제 구조, 항목별 공제 전략(신용카드·연금·청약·의료·기부 등), 2026 변경점, 환급 극대화를"
+    },
+    {
+     "name": "finance-tax-helper",
+     "summary": "> 세금 관련 질문에 답해주는 스킬입니다. '3.3% 원천징수 계산해줘', '종합소득세 신고 방법 알려줘', '부가세 신고 어떻게 해줘'처럼 말하면 됩니다. 프리랜서 3.3% 원천징수, 종합소득세, 부가가치세, 홈택스 신고 절차를 한국 세법 기준으로 안내합니다."
+    },
+    {
+     "name": "finance-variance-analysis",
+     "summary": "> 예산과 실적 차이를 분석해주는 스킬입니다. '예산 대비 실적 분석해줘', '매출 미달 원인 찾아줘', '비용 초과 분석해줘'처럼 말하면 됩니다. 매출·비용·이익 항목별 분산 원인 분석, KPI 추적, 수익성 개선 권고안 도출을 지원합니다."
+    },
+    {
+     "name": "finance-wealth-roadmap",
+     "summary": "> 재테크를 어디서부터 시작할지 막막할 때 나만의 자산 관리 로드맵을 짜주는 스킬입니다. '재테크 어떻게 시작해', '종잣돈 모으는 법', '내 자산 관리 계획 세워줘', '월급으로 1억 모으기'처럼 말하면 됩니다. 재무 현황 진단 → 목표 설정 → 종잣돈 단계 → 자산 배분 → 자동화·점검의 5단계로 개인 맞춤 재테크 "
+    }
+   ],
+   "deprecated_skills": [],
+   "agents": [
+    {
+     "name": "close-auditor",
+     "description": "Read-only skeptical auditor for the moai-accountant plugin. Use to independently verify financial statements, close packages, variance analyses, tax calculations, and IR financial models produced by f",
+     "tools": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash"
+     ],
+     "readonly": false
+    },
+    {
+     "name": "finance-analyst",
+     "description": "Finance and tax analysis specialist for the moai-accountant plugin. Use when the user asks to build or analyze financial statements, run month/quarter/year-end close, analyze budget-vs-actual variance",
+     "tools": [
+      "Read",
+      "Write",
+      "Edit",
+      "Bash",
+      "Grep",
+      "Glob",
+      "WebSearch",
+      "WebFetch",
+      "Skill"
+     ],
+     "readonly": false
+    }
+   ],
+   "mcp_servers": [
+    "dart"
+   ]
+  },
+  {
+   "id": "moai-recruiter",
+   "displayName": "🤝 인사·채용 담당",
+   "category": "전문직",
+   "version": "1.0.1",
+   "description": "인사·채용 전담 AI 직원(고용주 편) — 채용 공고 분석·이력서 스크리닝·오퍼레터/근로계약서·성과평가·People Ops 스킬 6종. 구직자 편은 moai-career(커리어코치)로 분리되었습니다. 이런 분께 추천: 채용 담당자·인사 실무자.",
+   "skill_count": 6,
+   "skills": [
+    {
+     "name": "business-draft-offer",
+     "summary": "> 채용 제안서와 근로계약서를 작성해주는 스킬입니다. \"오퍼 레터 만들어줘\", \"근로계약서 초안 작성해줘\", \"연봉 협상 문서 써줘\"처럼 말하면 됩니다. 근로기준법 준수 기반 채용 제안서, 연봉 구조 최적화, 4대보험 공제 계산, 스톡옵션 조항 작성을 지원합니다. 2026년 기준 반영."
+    },
+    {
+     "name": "business-employment-manager",
+     "summary": "> 채용 프로세스 전반을 관리해주는 스킬입니다. \"JD 작성해줘\", \"면접 질문 만들어줘\", \"신입 온보딩 계획 짜줘\"처럼 말하면 됩니다. 채용 공고 작성, 면접 설계, 평가 기준 수립, 온보딩 체크리스트, 멘토링 프로그램 설계를 지원합니다."
+    },
+    {
+     "name": "business-job-analyzer",
+     "summary": "> 한국 취준생·재직 이직자를 위한 채용공고(JD) 분해·기업 리서치·헤드헌터 오퍼 검증 스킬입니다. \"채용공고 분석해줘\", \"JD 분석\", \"이 회사 어때?\", \"헤드헌터 오퍼 검토\"처럼 말하면 됩니다. JD에서 필수/우대 역량 추출 + 본인 경험 매칭 + DART·잡플래닛·블라인드·사람인 공고 이력 종합 분석 + 20"
+    },
+    {
+     "name": "business-people-operations",
+     "summary": "> 원격 근무와 팀 운영 정책을 설계해주는 스킬입니다. \"재택근무 정책 만들어줘\", \"협업 도구 추천해줘\", \"비동기 커뮤니케이션 가이드 만들어줘\"처럼 말하면 됩니다. 원격·하이브리드 근무 정책, 협업 도구 선정 기준, 생산성 관리 프레임워크, 직원 경험 설계를 지원합니다."
+    },
+    {
+     "name": "business-performance-review",
+     "summary": "> 성과평가 체계를 설계하고 실행을 도와주는 스킬입니다. \"OKR 설정해줘\", \"성과 리뷰 템플릿 만들어줘\", \"피드백 면담 스크립트 써줘\"처럼 말하면 됩니다. MBO·OKR·KPI 체계 구축, 360도 평가 설계, 인사 고과 가이드, 피드백 면담 스크립트 작성을 지원합니다."
+    },
+    {
+     "name": "business-resume-screener",
+     "summary": "| NCS 국가직무능력표준 기반 이력서·자기소개서 적합성 평가 스킬입니다. 인간 검토자가 사용할 점수표·근거·강점/약점 요약을 제공하며, 보호 계층 정보(사진·생년월일·출신지·가족관계 등) 자동 마스킹과 4년 결정 로그 보관 안내를 강제합니다. ⚠️ 본 스킬은 의사결정 보조 도구입니다. AI 자동 거절·자동 합격 기능을 "
+    }
+   ],
+   "deprecated_skills": [],
+   "agents": [
+    {
+     "name": "recruiter",
+     "description": "HR and recruiting specialist for the moai-recruiter plugin. Use when the user asks to analyze a job posting, build or screen a resume, prepare interview questions or coaching, design performance/compe",
+     "tools": [
+      "Read",
+      "Write",
+      "Edit",
+      "Bash",
+      "Grep",
+      "Glob",
+      "WebSearch",
+      "WebFetch",
+      "Skill"
+     ],
+     "readonly": false
+    },
+    {
+     "name": "screening-auditor",
+     "description": "Read-only skeptical auditor for the moai-recruiter plugin. Use to independently verify screening scorecards, evaluation rubrics, JDs, interview kits, and hiring-market claims produced by the recruiter",
+     "tools": [
+      "Read",
+      "Grep",
+      "Glob"
+     ],
+     "readonly": true
+    }
+   ],
+   "mcp_servers": []
+  },
+  {
+   "id": "moai-cs",
+   "displayName": "🎧 CS매니저",
+   "category": "고객지원",
+   "version": "1.0.1",
+   "description": "고객지원·CRM 전담 AI 직원 — 티켓 분류·응답 초안·에스컬레이션·지식베이스와 VOC 분석·채널 메시지까지 고객 접점 실무 스킬 6종. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 온라인 셀러·CS 담당자·1인 사업자.",
+   "skill_count": 6,
+   "skills": [
+    {
+     "name": "business-draft-response",
+     "summary": "> 고객 문의에 대한 응답 초안을 작성합니다. \"이 문의에 답변 초안 써줘\", \"환불 요청 이메일 답변 만들어줘\", \"카카오채널 응답 초안 작성해줘\"라고 요청할 때 사용하세요. 한국어 경어 기반 이메일·채팅·공식 답변서 초안을 채널별 어조에 맞게 생성합니다."
+    },
+    {
+     "name": "business-escalation-manager",
+     "summary": "> 고객 불만 에스컬레이션을 처리하고 VOC를 분석합니다. \"불만 고객 대응 전략 세워줘\", \"VIP 고객 특별 응대 방법 알려줘\", \"주간 CS 요약 보고서 만들어줘\"라고 요청할 때 사용하세요. 에스컬레이션 레벨 배정, VIP 응대, VOC 분석, 주간 CS 요약 보고서 생성을 지원합니다."
+    },
+    {
+     "name": "business-kb-article",
+     "summary": "> 고객지원 지식베이스 문서를 작성합니다. \"FAQ 만들어줘\", \"트러블슈팅 가이드 작성해줘\", \"헬프센터 아티클 써줘\"라고 요청할 때 사용하세요. FAQ, 사용자 가이드, 트러블슈팅 문서, 정책 안내문을 Zendesk·Freshdesk·카카오비즈니스 형식에 맞게 생성합니다."
+    },
+    {
+     "name": "business-ticket-triage",
+     "summary": "> 고객 지원 티켓을 신속하게 분류하고 우선순위를 배정합니다. \"이 문의를 어떻게 분류해야 하나요\", \"티켓 우선순위 정해줘\", \"고객 문의 긴급도 판단해줘\"라고 요청할 때 사용하세요. 유형 분류(기술/결제/배송/불만), 긴급도 등급(P1~P4), 담당팀 배정, 에스컬레이션 판단을 지원합니다."
+    },
+    {
+     "name": "commerce-channel-message",
+     "summary": "| NCM 프레임워크(Need→Channel→Moment→Message→CTA)로 검색·광고·CRM·앱 푸시 채널별 메시지를 자동 생성하는 단일 채널 메시지 엔진입니다 — 채널 분기 메시지 15종 + 채널별 운영 카피(광고·톡톡·푸시·이메일) + 앱 푸시 기획(4원칙·3요소·변형 3안)을 한 곳에서 처리합니다. 다음과 같"
+    },
+    {
+     "name": "commerce-voc-triage",
+     "summary": "| 고객의 소리(VOC) 전체를 다루는 엄브렐러 스킬 — 멀티채널 리뷰를 통합 분석하고(리뷰는 VOC의 한 원천), 폭주하는 VOC의 처리 우선순위를 3축 분류 + KTAS 응급실 5단계로 판별합니다. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: \"리뷰 모아서 분석해줘\", \"리뷰 분석해줘\", \"수백 개 리뷰 정리\""
+    }
+   ],
+   "deprecated_skills": [],
+   "agents": [
+    {
+     "name": "cs-responder",
+     "description": "Customer support and CRM specialist for the moai-cs plugin. Use when the user asks to triage support tickets, draft customer responses, handle escalations or VIP complaints, write knowledge-base artic",
+     "tools": [
+      "Read",
+      "Write",
+      "Edit",
+      "Bash",
+      "Grep",
+      "Glob",
+      "WebSearch",
+      "WebFetch",
+      "Skill"
+     ],
+     "readonly": false
+    },
+    {
+     "name": "voc-auditor",
+     "description": "Read-only skeptical auditor for the moai-cs plugin. Use to independently verify response-draft quality, escalation verdicts, VOC/review classification reports, KB article accuracy, and customer-sentim",
+     "tools": [
+      "Read",
+      "Grep",
+      "Glob"
+     ],
+     "readonly": true
+    }
+   ],
+   "mcp_servers": []
+  },
+  {
+   "id": "moai-consultant",
+   "displayName": "💼 컨설턴트",
+   "category": "경영 자문",
+   "version": "1.0.0",
+   "description": "경영·창업 컨설팅 전담 AI 직원 — 사업계획서·비즈니스 모델·시장 분석(TAM/SAM/SOM)·경영 진단 브리프·정부 지원사업 매칭·상권분석 보고서까지 전략 실무 스킬 6종. 이런 분께 추천: 예비 창업자·소상공인·스타트업 운영자.",
+   "skill_count": 6,
+   "skills": [
+    {
+     "name": "business-consulting-brief",
+     "summary": "| 현황 진단부터 30-60-90일 실행 계획까지 담은 전문 컨설팅 제안서(브리프)를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"컨설팅 제안서 만들어줘\" - \"경영 진단 보고서 써줘\" - \"우리 회사 컨설팅 브리프 작성해줘\" - \"전략 컨설팅 문서 정리해줘\" - \"경영 개선 제안서 만들어줘\" - \"비즈니스 "
+    },
+    {
+     "name": "business-kr-gov-grant",
+     "summary": "| 나에게 맞는 정부·공공기관 지원사업을 찾아주고, 심사 기준에 맞춘 사업계획서·신청서 초안을 만들어 드립니다(Word·한글·Excel 파일까지). 창업자·소상공인·중소기업·연구자·비영리단체·개인 누구나 쓸 수 있습니다. 다음과 같은 요청 시 사용하세요: - \"정부 지원사업 찾아줘\" - \"우리 상황에 맞는 지원금 있어?\""
+    },
+    {
+     "name": "business-market-analyst",
+     "summary": "| 시장 규모(TAM/SAM/SOM)·경쟁사 분석·가격 전략을 정리한 시장 분석 보고서를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"시장 규모 조사해줘\" - \"TAM SAM SOM 산출해줘\" - \"경쟁사 분석해줘\" - \"포지셔닝 맵 만들어줘\" - \"가격 전략 세워줘\" - \"고객 세분화 좀 해줘\" - \"시장 "
+    },
+    {
+     "name": "business-sbiz365-analyst",
+     "summary": "| 소상공인365(bigdata.sbiz.or.kr)에서 받은 상권분석 PDF를 첨부하면, 유동인구·경쟁 점포·예상 매출을 분석한 창업 타당성 보고서(Word)를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"이 상권 PDF 분석해줘\" - \"소상공인365 보고서 분석해줘\" - \"이 지역에서 창업해도 될까?\" -"
+    },
+    {
+     "name": "business-startup-launchpad",
+     "summary": "| 아이디어부터 사업계획서·비즈니스 모델 캔버스·피치덱·재무 모델·실행 로드맵까지, 스타트업 종합 계획서를 한 번에 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"스타트업 계획 짜줘\" - \"창업 사업계획서 써줘\" - \"비즈니스 모델 만들어줘\" - \"피치덱 구성해줘\" - \"BM 캔버스 설계해줘\" - \"시장 분석부"
+    },
+    {
+     "name": "business-strategy-planner",
+     "summary": "| 사업계획서·비즈니스 모델·신시장 진출 같은 전략 문서를 검증된 프레임워크(SWOT·린 캔버스·블루오션·OKR 등)로 정리해 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"사업계획서 써줘\" - \"비즈니스 모델 만들어줘\" - \"SWOT 분석해줘\" - \"린 캔버스 작성해줘\" - \"블루오션 전략 세워줘\" - \"OK"
+    }
+   ],
+   "deprecated_skills": [],
+   "agents": [
+    {
+     "name": "feasibility-auditor",
+     "description": "Read-only skeptical auditor for the moai-consultant plugin. Use to independently verify market-size calculations, revenue projections, grant-eligibility mappings, feasibility verdicts, and strategy cl",
+     "tools": [
+      "Read",
+      "Grep",
+      "Glob"
+     ],
+     "readonly": true
+    },
+    {
+     "name": "strategy-consultant",
+     "description": "Business and startup consulting specialist for the moai-consultant plugin. Use when the user asks to write a business plan, design a business model, analyze a market (TAM/SAM/SOM), produce a consultin",
+     "tools": [
+      "Read",
+      "Write",
+      "Edit",
+      "Bash",
+      "Grep",
+      "Glob",
+      "WebSearch",
+      "WebFetch",
+      "Skill"
+     ],
+     "readonly": false
+    }
+   ],
+   "mcp_servers": []
+  },
+  {
+   "id": "moai-career",
+   "displayName": "🧭 커리어코치",
+   "category": "커리어",
+   "version": "1.0.0",
+   "description": "구직자 편 커리어 코칭 전담 AI 직원 — 이력서·포트폴리오 첨삭, 면접 준비, 이직 전략까지 커리어 전환 실무 스킬. 인사채용(고용주 편)과 구분되는 구직자 관점입니다. 이런 분께 추천: 이직 준비자·취업 준비생·주니어 직장인.",
+   "skill_count": 5,
+   "skills": [
+    {
+     "name": "business-interview-coach",
+     "summary": "> 한국 취준생·재직 이직자를 위한 면접 준비·모의 면접·답변 코칭 스킬입니다. \"면접 준비해줘\", \"예상 질문 뽑아줘\", \"모의 면접 해줘\", \"팀핏 질문 대비\"처럼 말하면 됩니다. AI 역량검사, 역량 면접(BEI), PT, 토론, 임원, **2026 팀핏 면접**까지 유형별 대비 + 모의 면접 루프 (질문→답변→피드"
+    },
+    {
+     "name": "business-portfolio-guide",
+     "summary": "> 한국 신입 취준생·재직자를 위한 분야별 포트폴리오 구성과 프로젝트 기술서 작성 스킬입니다. \"포트폴리오 만들어줘\", \"프로젝트 정리해줘\", \"노션 포트폴리오 1시간 만에\"처럼 말하면 됩니다. 개발(GitHub·기술 블로그)/디자인(Figma·Behance)/마케팅/기획 분야별 + 검색되는 노션 포트폴리오 + 채용공고 "
+    },
+    {
+     "name": "business-resume-builder",
+     "summary": "> 한국 취준생·재직 이직자를 위한 자기소개서·이력서·경력기술서·영문 CV·링크드인 작성 스킬입니다. \"자소서 써줘\", \"이력서 만들어줘\", \"경력기술서 정리해줘\", \"1page 셀링 시트 만들어줘\"처럼 말하면 됩니다. KKK-STAR 자소서, USP+CAR 이력서, ATS·블라인드·NCS 모드, 2026 AI 진정성 검"
+    },
+    {
+     "name": "career-junior-onboarding",
+     "summary": "> 신입·주니어가 첫 90일을 스스로 설계하도록 돕는 온보딩 코칭 스킬입니다. \"신입인데 뭘 해야 할지 모르겠어\", \"첫 출근 준비\", \"질문하는 법 알려줘\", \"사수가 없어\", \"일 빨리 배우고 싶어\"처럼 요청할 때 사용하세요. 입사 전 준비 → 첫 90일 정보 비대칭 해소 → 질문 3요소 프레임 → 보고 기술 → 사수"
+    },
+    {
+     "name": "career-transition-strategist",
+     "summary": "> 이직·전직을 감정이 아닌 프로젝트로 설계하도록 돕는 커리어 전환 전략 스킬입니다. \"이직 준비 도와줘\", \"이직 타이밍인지 모르겠어\", \"연봉 협상 어떻게 하지\", \"경력기술서 서사 잡아줘\", \"퇴사 절차 알려줘\"처럼 요청할 때 사용하세요. 타이밍 진단 → 현황 분석 → 목표 설정 → 시장조사 → 갭 메우기 → 경력 "
+    }
+   ],
+   "deprecated_skills": [],
+   "agents": [
+    {
+     "name": "career-coach",
+     "description": "Candidate-side career coaching specialist for the moai-career plugin. Use when the user asks to write or improve a resume, cover letter, or career statement, build a portfolio, prepare for interviews ",
+     "tools": [
+      "Read",
+      "Write",
+      "Edit",
+      "Bash",
+      "Grep",
+      "Glob",
+      "WebSearch",
+      "WebFetch",
+      "Skill"
+     ],
+     "readonly": false
+    },
+    {
+     "name": "resume-auditor",
+     "description": "Read-only skeptical auditor for the moai-career plugin. Use to independently verify resume and cover-letter drafts, portfolio project descriptions, interview preparation kits, and hiring-market claims",
+     "tools": [
+      "Read",
+      "Grep",
+      "Glob"
+     ],
+     "readonly": true
+    }
+   ],
+   "mcp_servers": []
+  },
+  {
+   "id": "moai-tutor",
+   "displayName": "🎓 튜터",
+   "category": "전문직",
+   "version": "1.0.0",
+   "description": "교육 전담 AI 직원 — 커리큘럼 설계·학습 자료·평가 문항 제작·강좌 운영 매뉴얼·논문 검색/작성·연구 보조 스킬 11종. 강사와 학습자 양쪽 워크플로우를 지원합니다. 이런 분께 추천: 강사·교육 기획자·대학원생·연구자.",
+   "skill_count": 11,
+   "skills": [
+    {
+     "name": "education-assessment-creator",
+     "summary": "| 정답과 해설이 포함된 시험 문제지·모의고사·오답 분석표를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"정보처리기사 실기 모의문제 10개 만들어줘\" - \"이 단원에서 나올 만한 내신 예상 문제 출제해줘\" - \"수강생 이해도 확인할 형성평가 퀴즈 만들어줘\" - \"공무원 5지선다 모의고사 만들어줘\" - \"TOE"
+    },
+    {
+     "name": "education-course-followup-sequence",
+     "summary": "| 강의가 끝난 뒤 30일 동안 수강생 후기를 모으는 단계별 후기 요청 카피 5종(D+1·D+3·D+7·D+14·D+30)을 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"강의 끝났어, 수강생 후기 카피 만들어줘\" - \"D+1 후기 요청 카톡 만들어줘\" - \"D+3 적용 인증 요청 메시지 써줘\" - \"D+7 성"
+    },
+    {
+     "name": "education-course-operations-manual",
+     "summary": "| 강사·교수·교사 대상 강의·과정·연수·워크숍 운영 매뉴얼을 자동 생성해 드립니다 — 일자별 시간표·강사·조교 동선·D-N 사전 준비물·환경·설비 체크리스트·리스크 매트릭스 + Plan B. 다음과 같은 요청 시 반드시 이 스킬을 사용하세요: \"강의 운영 매뉴얼 만들어줘\", \"워크숍 시간표·동선 만들어줘\", \"연수 D-"
+    },
+    {
+     "name": "education-curriculum-designer",
+     "summary": "| 주차별 강의 목차와 학습 목표, 평가 방법이 담긴 커리큘럼 설계안을 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"Python 입문 온라인 강의 8주 커리큘럼 짜줘\" - \"영업직 신입사원 역량 모델 설계해줘\" - \"사내 AI 활용 교육 프로그램 기획해줘\" - \"TOEIC 900점 목표 3개월 학습 계획 세워"
+    },
+    {
+     "name": "education-grant-writer",
+     "summary": "| 한국연구재단(NRF)·IITP·KIAT·중소벤처기업부 양식에 맞춘 정부 연구비 신청서 초안을 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"기초연구과제 신청서 써줘. 주제는 딥러닝 의료 영상 진단이야\" - \"NRF 중견연구 제안서 작성해줘. 3년 프로젝트야\" - \"IITP ICT R&D 사업계획서 초안 만들"
+    },
+    {
+     "name": "education-learning-material",
+     "summary": "| 조사한 내용을 도식·차트·수식·코드 하이라이트가 들어간 단일 HTML 학습자료로 만들어 드립니다. 학습목표→핵심개념→도식→예제→복습으로 구조화해, 풍부한 설명과 시각화로 혼자서도 깊이 이해하게 돕습니다. 다음과 같은 요청 시 사용하세요: - \"방금 조사한 내용으로 HTML 학습자료 만들어줘\" - \"도식이랑 예제 들어간"
+    },
+    {
+     "name": "education-learning-project",
+     "summary": "| 스스로 공부할 나만의 학습 프로젝트를 만들어 드립니다. 학습 목표와 현재 수준을 진단해 단계별 로드맵을 짜고, 진도 추적과 학습 전용 CLAUDE.md를 자동으로 세팅합니다. 다음과 같은 요청 시 사용하세요: - \"claude code 공부할 학습 프로젝트 만들어줘\" - \"영어 회화 8주 학습 계획 세워줘. 초급이야\""
+    },
+    {
+     "name": "education-paper-search",
+     "summary": "| RISS·KCI·DBpia·Google Scholar에서 논문을 통합 검색해 서지정보와 인용 형식을 정리해 드립니다. 다음과 같은 요청 시 사용하세요: - \"딥러닝 이미지 분류 논문 찾아줘. 최근 5년 내로\" - \"자연어 처리 선행연구 조사해줘\" - \"KCI 등재 학술지에서 머신러닝 논문 검색해줘\" - \"이 주제 문헌"
+    },
+    {
+     "name": "education-paper-writer",
+     "summary": "| 서론-선행연구-방법론-결과-논의-결론 구조의 학술 논문 초안을 쓰고 APA·KCI·IEEE 참고문헌을 자동 생성해 드립니다. 다음과 같은 요청 시 사용하세요: - \"딥러닝 이미지 분류 논문 써줘. APA 7th 포맷으로\" - \"초록 작성해줘. 주제는 트랜스포머 감성 분석이야\" - \"참고문헌 KCI 포맷으로 정리해줘\" "
+    },
+    {
+     "name": "education-research-assistant",
+     "summary": "| 문헌 검토 보고서, 논문 초안, 연구 계획서, 참고문헌 목록을 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"AI 교육 효과에 관한 문헌 검토 보고서 작성해줘\" - \"설문 데이터 분석해서 인사이트 도출해줘\" - \"석사 논문 연구 계획서 구조 잡아줘\" - \"APA 형식으로 참고문헌 정리해줘\" - \"이 주제 선"
+    },
+    {
+     "name": "education-tutor-research",
+     "summary": "| 학습 질문을 받으면 공식 문서와 최신 웹 자료를 웹검색으로 병렬 조사해, 출처가 검증된 최신 학습 근거를 종합해 드립니다. 개인 튜터가 자료를 미리 조사해 오는 역할입니다. 다음과 같은 요청 시 사용하세요: - \"claude cowork의 Skills와 Sub-agents 차이를 최신 정보로 조사해줘\" - \"이 개념 "
+    }
+   ],
+   "deprecated_skills": [],
+   "agents": [
+    {
+     "name": "assessment-auditor",
+     "description": "Read-only skeptical auditor for the moai-tutor plugin. Use to independently verify curricula, assessment items, learning materials, and academic citations produced by curriculum-designer or education-",
+     "tools": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash"
+     ],
+     "readonly": false
+    },
+    {
+     "name": "curriculum-designer",
+     "description": "Education design specialist for the moai-tutor plugin. Use when the user asks to design a curriculum or training program, produce learning materials or assessment items, build a course operations manu",
+     "tools": [
+      "Read",
+      "Write",
+      "Edit",
+      "Bash",
+      "Grep",
+      "Glob",
+      "WebSearch",
+      "WebFetch",
+      "Skill"
+     ],
+     "readonly": false
+    }
+   ],
+   "mcp_servers": []
+  },
+  {
+   "id": "moai-designer",
+   "displayName": "🎨 디자이너",
+   "category": "디자인",
+   "version": "1.1.1",
+   "description": "에이전틱 디자인 플러그인 — Claude Design 연동, 3계층 토큰 파이프라인(DTCG↔CSS↔shadcn)·DESIGN.md·브랜드 시스템·GAN 품질 루프에 더해 Higgsfield 커넥터 기반 브랜드 정합 비주얼 생성. /design 으로 브리프부터, /upload 로 Claude Design 업로드까지.",
+   "skill_count": 14,
+   "skills": [
+    {
+     "name": "cd-brief",
+     "summary": "| Claude Design용 6요소 브리프(Project·Audience·Pages·Tone·Reference·Constraints)를 자동으로 작성해 주는 스킬. 자연어 한 줄 요청에서 시작해 누락된 요소를 차례로 채우고, AI 슬롭 회피 블록을 포함한 복붙용 프롬프트를 출력합니다. 완성된 프롬프트는 claude.ai"
+    },
+    {
+     "name": "cd-handoff-reader",
+     "summary": "| Claude Design → Claude Code 핸드오프 번들(공식 구성: README + 디자인 파일 + chat)을 방어적으로 분석해 요약 보고서와 Claude Code에 넘길 짧은 지시 1줄을 자동 생성합니다. README를 source of truth로 먼저 파싱하고, 토큰/컴포넌트 JSON은 있으면 사용·없"
+    },
+    {
+     "name": "cd-prompt-builder",
+     "summary": "| Claude Design용 시니어 UX 프롬프트를 10가지 전문 패턴(정보 구조·디자인 시스템·카피·온보딩·접근성·대시보드·폼·테스트·휴리스틱·리서치) 중 적합한 것을 골라 완성해 줍니다. 각 패턴은 구체적 역할(예: IDEO 시니어 UX 아키텍트 12년차)을 부여해 결과 분산을 30-40% 감소시킵니다. 다음과 같은"
+    },
+    {
+     "name": "cd-slop-check",
+     "summary": "| Claude Design에서 생성된 결과 카피(헤드라인·서브헤드·CTA·feature·푸터)를 AI 슬롭 패턴으로 검수합니다. 영문(Reimagine your·Unleash your potential 등)과 한국어(혁신적인·차세대·재정의하는 등) 진부 표현을 검출하고 수정안을 제안합니다. 후속으로 moai-writer"
+    },
+    {
+     "name": "cd-system-prep",
+     "summary": "| 브랜드 자산(로고·색·타이포·기존 사이트·PPTX 등)을 분석해 Claude Design 업로드용 DESIGN.md를 자동으로 합성합니다. Claude Design 디자인 시스템 셋업의 가장 흔한 실패(자산이 흩어져 있고 정리가 안 된 채 업로드)를 해결합니다. 결과는 그대로 claude.ai/design 온보딩에 업"
+    },
+    {
+     "name": "design-brand-visual",
+     "summary": "| 디자인 시스템에 맞는 브랜드 비주얼을 생성합니다. 프로젝트의 토큰(색·타이포·반경·여백)과 브랜드 보이스를 먼저 읽어 생성 프롬프트에 반영하므로, 만들어진 이미지가 디자인 시스템과 어긋나지 않습니다. 다음과 같은 요청 시 사용하세요: - \"히어로 이미지 만들어 줘\", \"랜딩 상단 비주얼\" - \"브랜드 톤에 맞는 일러스"
+    },
+    {
+     "name": "design-sync-upload",
+     "summary": "| 디자인 시스템 자산(DESIGN.md·토큰·로고)을 Claude Design에 업로드합니다. 자동 우선 + 수동 폴백 양경로. 자동 경로는 DesignSync MCP로 바로 등록하며(`list/read` → `finalize_plan` → `write_files` 순서 강제, `register_assets`는 lega"
+    },
+    {
+     "name": "design-system-library",
+     "summary": "| 75개 글로벌 브랜드 디자인 시스템(Claude · ClickHouse · Clay 포함)을 단일 파일 HTML 산출물에 적용합니다. 각 시스템의 토큰(색·타이포·radius·spacing·컴포넌트)을 Tailwind Play CDN config + shadcn 스타일 vanilla 컴포넌트로 변환해 렌더합니다. of"
+    },
+    {
+     "name": "design-tokens-transformer",
+     "summary": "| 하나의 브랜드 토큰을 3계층(DTCG SSOT ↔ 원시 CSS 변수 ↔ semantic/shadcn 롤)으로 양방향 변환합니다. L1 DTCG(W3C `$value`/`$type`/`$description`)를 진실 원천으로 삼아 L2 CSS custom properties와 L3 Tailwind v4 `@theme`"
+    },
+    {
+     "name": "moai-domain-brand-design",
+     "summary": "| Brand-aligned visual design system specialist for web projects. Enforces hero-first layout chaining, WCAG 2.1 AA accessibility, Lighthouse >= 80, and design token extraction from"
+    },
+    {
+     "name": "moai-domain-copywriting",
+     "summary": "| Brand-aligned content-copywriting specialist for marketing and product text. Enforces brand voice, anti-AI-slop rules, concrete numbers, and JSON section structure for downstream"
+    },
+    {
+     "name": "moai-domain-design-handoff",
+     "summary": "| Claude Design handoff package specialist for the /design Path A workflow. Assembles 5-file handoff bundle (prompt/context/references/acceptance/checklist) for paste-ready claude."
+    },
+    {
+     "name": "moai-workflow-design",
+     "summary": "| Unified design workflow skill — handles Path A (Claude Design handoff bundle import, via Figma extractor when needed) and design-brief context loading from .moai/design/ (researc"
+    },
+    {
+     "name": "moai-workflow-gan-loop",
+     "summary": "| Builder-Evaluator GAN loop workflow for iterative design quality improvement. Implements Sprint Contract negotiation, 4-dimension scoring (Design Quality, Originality, Completene"
+    }
+   ],
+   "deprecated_skills": [],
+   "agents": [],
+   "mcp_servers": [
+    "higgsfield"
+   ]
+  },
+  {
+   "id": "moai-pm",
+   "displayName": "🚀 PM",
+   "category": "프로젝트 허브",
+   "version": "1.0.1",
+   "description": "프로젝트 초기화 허브 AI 직원 — /project 단일 명령으로 진입합니다. Claude Cowork 프로젝트 초기화(전 직원 지침 설정 + .claude/agents/ 커스텀 에이전트 + CLAUDE.md 워크플로우 생성 + 재귀적 자가 개선)를 담당하며 17개 AI 직원 플러그인의 진입을 라우팅합니다. 비개발자도 자연어 한마디로 프로젝트를 시작할 수 있습니다. 이런 분께 추천: 비개발자·프로젝트 시작자.",
+   "skill_count": 1,
+   "skills": [
+    {
+     "name": "project",
+     "summary": "| 17개 AI 직원 플러그인 패밀리('MoAI-Cowork, 모두의 코워크')의 **프로젝트 초기화 단일 진입점**. `/project <자연어 지시>`로 진입한다 — Claude Cowork(Desktop) 작업을 담당하는 Desktop 슈퍼 오케스트레이터/어드바이저다. 소크라테스 인터뷰로 맥락을 파악하고, 설치된 플"
+    }
+   ],
+   "deprecated_skills": [],
+   "agents": [],
+   "mcp_servers": []
+  }
+ ]
 }
