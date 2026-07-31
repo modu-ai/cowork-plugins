@@ -12,7 +12,7 @@ description: |
   - "시장 조사 보고서 써줘"
   공개 데이터로 시장 규모·경쟁 구도·가격 모델을 분석하고, 인사이트와 권고안까지 정리합니다.
   [책임 경계] vs 오프라인 상권 단위는 moai-consultant:business-sbiz365-analyst, 온라인 카테고리·검색 키워드 단위는 moai-seller:commerce-market-research를 사용하세요. 이 스킬=산업·시장 단위 분석.
-version: "0.1.1"
+version: "1.0.0"
 ---
 
 # 시장 분석가 (Market Analyst)

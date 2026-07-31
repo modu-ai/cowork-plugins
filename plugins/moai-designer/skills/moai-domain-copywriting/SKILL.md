@@ -10,7 +10,7 @@ description: |
   microcopy, taglines, value propositions, marketing-landing-page and footer copy,
   with anti-AI-slop rules and concrete-number enforcement.
 user-invocable: false
-version: 0.2.2
+version: "1.0.0"
 ---
 
 > ⚠️ **개발 런타임 전용** — 이 스킬은 MoAI-ADK(Claude Code) 환경을 전제한다. Claude Cowork(Desktop)에서는 `.moai/config` 의존으로 동작하지 않을 수 있다. Desktop 사용자는 `moai-marketer:content-copywriting`을 사용한다.

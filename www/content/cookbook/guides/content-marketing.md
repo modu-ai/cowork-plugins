@@ -1,33 +1,33 @@
 ---
 title: "콘텐츠 마케팅 전략"
 weight: 60
-description: "블로그 · 캠페인 · 채널 믹스 · KPI를 moai-content와 moai-marketing 스킬로 운영하는 전략."
+description: "블로그 · 캠페인 · 채널 믹스 · KPI를 moai-marketer 스킬로 운영하는 전략."
 geekdocBreadcrumb: true
 ---
-> 콘텐츠 마케팅은 한 번의 히트가 아니라 *지속 가능한 발행 리듬*에서 효과가 나옵니다. cowork-plugins는 기획·작성·검수·게시 전 단계를 자동화해 그 리듬을 만들 수 있게 합니다.
+> 콘텐츠 마케팅은 한 번의 히트가 아니라 *지속 가능한 발행 리듬*에서 효과가 나옵니다. 모두의 코워크는 기획·작성·검수·게시 전 단계를 자동화해 그 리듬을 만들 수 있게 합니다.
 
 ```mermaid
 flowchart TD
-    A["campaign-planner<br/>캠페인 기획"] --> B["blog / copywriting<br/>콘텐츠 작성"]
-    B --> C["seo-audit<br/>SEO 최적화"]
-    C --> D["ai-slop-reviewer<br/>톤 검수"]
-    D --> E["performance-report<br/>성과 분석"]
-    E -- "피드백" --> A
+   A["campaign-planner<br/>캠페인 기획"] --> B["blog / copywriting<br/>콘텐츠 작성"]
+   B --> C["seo-audit<br/>SEO 최적화"]
+   C --> D["ai-slop-reviewer<br/>톤 검수"]
+   D --> E["performance-report<br/>성과 분석"]
+   E -- "피드백" --> A
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style E fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style E fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 ## 사용 스킬
 
 | 단계 | 스킬 | 용도 |
 |---|---|---|
-| 캠페인 기획 | `moai-marketing:campaign-planner` | 그로스해킹·인플루언서·A/B 테스트 |
-| 블로그 작성 | `moai-content:blog` | 네이버·티스토리·브런치·WordPress·Ghost |
-| 카피 작성 | `moai-content:copywriting` | 헤드라인·CTA·슬로건 |
-| SEO 최적화 | `moai-marketing:seo-audit` | 네이버·구글·AI 검색 통합 |
-| 성과 분석 | `moai-marketing:performance-report` | GA4·네이버 광고·메타·카카오모먼트 |
-| AI 슬롭 검수 | `moai-core:ai-slop-reviewer` | 발행 전 자연어 톤 검수 |
+| 캠페인 기획 | `moai-marketer:marketing-campaign-planner` | 그로스해킹·인플루언서·A/B 테스트 |
+| 블로그 작성 | `moai-marketer:content-blog` | 네이버·티스토리·브런치·WordPress·Ghost |
+| 카피 작성 | `moai-marketer:content-copywriting` | 헤드라인·CTA·슬로건 |
+| SEO 최적화 | `moai-marketer:marketing-seo-audit` | 네이버·구글·AI 검색 통합 |
+| 성과 분석 | `moai-marketer:marketing-performance-report` | GA4·네이버 광고·메타·카카오모먼트 |
+| AI 슬롭 검수 | `moai-coworker:general-ai-slop-reviewer` | 발행 전 자연어 톤 검수 |
 
 ## 콘텐츠 운영 4단계
 
@@ -38,7 +38,7 @@ flowchart TD
 > 첨부 파일 고객 인터뷰 데이터 참고.
 {{< /terminal >}}
 
-`campaign-planner` 스킬이 고객 여정 맵까지 한 번에 그립니다.
+`marketing-campaign-planner` 스킬이 고객 여정 맵까지 한 번에 그립니다.
 
 ### 2. 채널 믹스
 
@@ -71,10 +71,10 @@ flowchart TD
 {{< /terminal >}}
 
 체인:
-1. `campaign-planner` (앵글 기획)
-2. `blog` (본문 작성)
-3. `seo-audit` (SEO 점검)
-4. `ai-slop-reviewer` (검수)
+1. `marketing-campaign-planner` (앵글 기획)
+2. `content-blog` (본문 작성)
+3. `marketing-seo-audit` (SEO 점검)
+4. `general-ai-slop-reviewer` (검수)
 
 ## 한국 콘텐츠 마케팅 특이점
 
@@ -98,5 +98,5 @@ flowchart TD
 
 ### Sources
 
-- moai-marketing 플러그인 [`campaign-planner`](https://github.com/modu-ai/cowork-plugins/blob/main/moai-marketing/skills/campaign-planner/SKILL.md), [`seo-audit`](https://github.com/modu-ai/cowork-plugins/blob/main/moai-marketing/skills/seo-audit/SKILL.md), [`performance-report`](https://github.com/modu-ai/cowork-plugins/blob/main/moai-marketing/skills/performance-report/SKILL.md)
-- moai-content 플러그인 [`blog`](https://github.com/modu-ai/cowork-plugins/blob/main/moai-content/skills/blog/SKILL.md)
+- moai-marketer 플러그인 [`marketing-campaign-planner`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-marketer/skills/marketing-campaign-planner/SKILL.md), [`marketing-seo-audit`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-marketer/skills/marketing-seo-audit/SKILL.md), [`marketing-performance-report`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-marketer/skills/marketing-performance-report/SKILL.md)
+- moai-marketer 플러그인 [`content-blog`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-marketer/skills/content-blog/SKILL.md)

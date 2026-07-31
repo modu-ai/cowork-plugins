@@ -31,29 +31,29 @@ aliases: ["/cowork/schedule/"]
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    participant U as 사용자
-    participant CW as Cowork (데스크톱)
-    participant SCH as 스케줄러
-    participant CONN as 커넥터·MCP
-    participant FS as 작업 폴더
+   autonumber
+   participant U as 사용자
+   participant CW as Cowork (데스크톱)
+   participant SCH as 스케줄러
+   participant CONN as 커넥터·MCP
+   participant FS as 작업 폴더
 
-    U->>CW: "매주 금요일 17시에 주간 보고 작성"
-    CW->>SCH: 작업 등록 (cron + 입력 + 결과 경로)
-    SCH-->>U: 다음 실행 시각 표시
+   U->>CW: "매주 금요일 17시에 주간 보고 작성"
+   CW->>SCH: 작업 등록 (cron + 입력 + 결과 경로)
+   SCH-->>U: 다음 실행 시각 표시
 
-    Note over SCH: 시간 도래 (예: 금 17:00)
-    SCH->>CW: 트리거 발사
-    alt 데스크톱 켜짐 + 로그인 + 권한 OK
-        CW->>CONN: 데이터 조회 (Slack·Drive·DB)
-        CONN-->>CW: 결과 반환
-        CW->>CW: 본문 작성 + DOCX 변환
-        CW->>FS: 결과 파일 저장
-        CW-->>U: 완료 알림 (이메일·Slack 옵션)
-    else 데스크톱 꺼짐 / 토큰 만료
-        CW-->>SCH: 실행 실패
-        SCH-->>U: 실패 통지 + 재시도 옵션
-    end
+   Note over SCH: 시간 도래 (예: 금 17:00)
+   SCH->>CW: 트리거 발사
+   alt 데스크톱 켜짐 + 로그인 + 권한 OK
+       CW->>CONN: 데이터 조회 (Slack·Drive·DB)
+       CONN-->>CW: 결과 반환
+       CW->>CW: 본문 작성 + DOCX 변환
+       CW->>FS: 결과 파일 저장
+       CW-->>U: 완료 알림 (이메일·Slack 옵션)
+   else 데스크톱 꺼짐 / 토큰 만료
+       CW-->>SCH: 실행 실패
+       SCH-->>U: 실패 통지 + 재시도 옵션
+   end
 ```
 
 ### 등록 절차
@@ -88,23 +88,23 @@ sequenceDiagram
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    participant U as 사용자 (모바일·웹)
-    participant API as Claude API/Web
-    participant DESK as 데스크톱 Cowork
-    participant CONN as 커넥터·MCP
-    participant FS as 작업 폴더
+   autonumber
+   participant U as 사용자 (모바일·웹)
+   participant API as Claude API/Web
+   participant DESK as 데스크톱 Cowork
+   participant CONN as 커넥터·MCP
+   participant FS as 작업 폴더
 
-    U->>API: "이 NDA 검토 초안, 저녁 6시까지 끝내줘"
-    API-->>DESK: 사용자 계정으로 데스크톱에 전달
-    DESK->>U: 모바일 알림 — "수신함, 시작 예정 17:00"
+   U->>API: "이 NDA 검토 초안, 저녁 6시까지 끝내줘"
+   API-->>DESK: 사용자 계정으로 데스크톱에 전달
+   DESK->>U: 모바일 알림 — "수신함, 시작 예정 17:00"
 
-    Note over DESK: 데스크톱이 17:00에 작업 시작
-    DESK->>CONN: 입력 자료 수집
-    CONN-->>DESK: 결과
-    DESK->>DESK: 작업 수행
-    DESK->>FS: 결과 저장
-    DESK-->>U: 모바일 알림 — "완료, 결과는 작업 폴더 / 메일"
+   Note over DESK: 데스크톱이 17:00에 작업 시작
+   DESK->>CONN: 입력 자료 수집
+   CONN-->>DESK: 결과
+   DESK->>DESK: 작업 수행
+   DESK->>FS: 결과 저장
+   DESK-->>U: 모바일 알림 — "완료, 결과는 작업 폴더 / 메일"
 ```
 
 ### 등록 절차
@@ -127,24 +127,24 @@ sequenceDiagram
 
 ```mermaid
 flowchart TD
-    subgraph Routine["정기 운영"]
-        S1[월·금<br/>예약: 주간 보고]
-        S2[매월 1일<br/>예약: 매출 대시보드]
-    end
-    subgraph AdHoc["임시 지시"]
-        D1[지하철에서<br/>디스패치: NDA 검토]
-        D2[고객 미팅 중<br/>디스패치: 견적서 초안]
-    end
-    subgraph Desk["내 데스크톱 Cowork"]
-        Q[작업 큐]
-    end
-    Routine --> Q
-    AdHoc --> Q
-    Q --> Out["산출물 저장 → 알림"]
+   subgraph Routine["정기 운영"]
+       S1[월·금<br/>예약: 주간 보고]
+       S2[매월 1일<br/>예약: 매출 대시보드]
+   end
+   subgraph AdHoc["임시 지시"]
+       D1[지하철에서<br/>디스패치: NDA 검토]
+       D2[고객 미팅 중<br/>디스패치: 견적서 초안]
+   end
+   subgraph Desk["내 데스크톱 Cowork"]
+       Q[작업 큐]
+   end
+   Routine --> Q
+   AdHoc --> Q
+   Q --> Out["산출물 저장 → 알림"]
 
-    style Routine fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style AdHoc fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style Desk fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style Routine fill:#e6e6e6,stroke:#757575,color:#09110f
+   style AdHoc fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style Desk fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 권장 분리:

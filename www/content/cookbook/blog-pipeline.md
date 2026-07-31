@@ -9,35 +9,35 @@ tags: [cookbook, content]
 
 ## 블로그 파이프라인이란
 
-블로그 파이프라인은 "글 하나 써줘"라는 한 줄 요청이 여러 스킬(각자 한 가지 일에 특화된 절차 묶음)을 거치면서 완성된 글이 되기까지의 흐름을 말합니다. 처음에는 "스킬 하나면 충분히 글을 쓰지 않나?" 하겠지만 실제로는 두 가지 일이 별개로 일어납니다. 첫째, 글의 뼈대를 잡는 일 — 키워드를 본문 어디에 배치할지, 제목과 첫 문단을 어떻게 쓸지, 문단을 몇 단으로 나눌지를 정합니다. 둘째, 그렇게 쓴 글에서 AI 특유의 기계적인 어투를 걷어내는 일입니다. 한 스킬 안에서 두 일을 동시에 하면 어느 하나가 희생됩니다. 그래서 글을 쓰는 스킬(`blog`)과 어투를 다듬는 스킬(`ai-slop-reviewer`)을 나눠 세우고, 그 사이에 썸네일 이미지를 얹는 단계를 끼워 넣습니다.
+블로그 파이프라인은 "글 하나 써줘"라는 한 줄 요청이 여러 스킬(각자 한 가지 일에 특화된 절차 묶음)을 거치면서 완성된 글이 되기까지의 흐름을 말합니다. 처음에는 "스킬 하나면 충분히 글을 쓰지 않나?" 하겠지만 실제로는 두 가지 일이 별개로 일어납니다. 첫째, 글의 뼈대를 잡는 일 — 키워드를 본문 어디에 배치할지, 제목과 첫 문단을 어떻게 쓸지, 문단을 몇 단으로 나눌지를 정합니다. 둘째, 그렇게 쓴 글에서 AI 특유의 기계적인 어투를 걷어내는 일입니다. 한 스킬 안에서 두 일을 동시에 하면 어느 하나가 희생됩니다. 그래서 글을 쓰는 스킬(`content-blog`)과 어투를 다듬는 스킬(`general-ai-slop-reviewer`)을 나눠 세우고, 그 사이에 썸네일 이미지를 얹는 단계를 끼워 넣습니다.
 
-요리에 비유하면 이해가 쉽습니다. 손님에게 내놓기 전에 (1) 재료로 요리를 만들고 — `blog` 스킬이 맞춤법·문단 구조·검색 노출을 고려해 초안을 씁니다. (2) 플레이팅을 다듬고 — `ai-slop-reviewer`가 "AI가 쓴 것처럼 딱딱한 문장"을 "사람이 쓴 것처럼 매끄러운 문장"으로 솎아냅니다. (3) 필요하면 garnish(장식)로 썸네일 이미지를 얹습니다 — `higgsfield-image`가 한글 타이포가 들어간 썸네일을 만듭니다. 한 냄비에 다 때려 넣고 끓이는 게 아니라, 단계마다 맛을 점검하며 다듬는 구조입니다. 이때 끝 단계의 품질 검수(`ai-slop-reviewer`)가 항상 마지막에 와야 "사람이 쓴 글"처럼 보입니다. 이미지를 만든 뒤에 어투 검수를 거쳐야 이미지 설명 문구까지 자연스러워집니다.
+요리에 비유하면 이해가 쉽습니다. 손님에게 내놓기 전에 (1) 재료로 요리를 만들고 — `content-blog` 스킬이 맞춤법·문단 구조·검색 노출을 고려해 초안을 씁니다. (2) 플레이팅을 다듬고 — `general-ai-slop-reviewer`가 "AI가 쓴 것처럼 딱딱한 문장"을 "사람이 쓴 것처럼 매끄러운 문장"으로 솎아냅니다. (3) 필요하면 garnish(장식)로 썸네일 이미지를 얹습니다 — `media-higgsfield-image`가 한글 타이포가 들어간 썸네일을 만듭니다. 한 냄비에 다 때려 넣고 끓이는 게 아니라, 단계마다 맛을 점검하며 다듬는 구조입니다. 이때 끝 단계의 품질 검수(`general-ai-slop-reviewer`)가 항상 마지막에 와야 "사람이 쓴 글"처럼 보입니다. 이미지를 만든 뒤에 어투 검수를 거쳐야 이미지 설명 문구까지 자연스러워집니다.
 
 여기서 자주 보이는 용어를 먼저 짚고 가겠습니다. **SEO**(Search Engine Optimization, 검색 엔진 최적화)는 내 글이 네이버·구글 검색 결과 위쪽에 노출되도록 글을 구성하는 작업입니다. **C-Rank**는 네이버가 사용자의 체류시간(글에 들어와서 머무는 시간)을 보고 "이 글을 더 위로 올려주자"고 판단하는 알고리즘입니다. **D.I.A.**는 네이버의 딥러닝 기반 의미 분석이고, **GEO**(Generative Engine Optimization)는 최근 AI 검색 서비스가 답을 생성할 때 내 글을 인용하도록 만드는 최적화입니다. 이 셋 모두 "읽는 사람이 오래 머무르도록, 글이 무엇에 관한 것인지 명확하게" 써야 한다는 공통 원리를 가집니다.
 
 ```mermaid
 flowchart TD
-    A["사용자 입력<br/>(자연어 한 줄)"] --> B["키워드 분석<br/>검색 의도 파악 · 경쟁 글 스캔"]
-    B --> C["① blog 스킬<br/>SEO · C-Rank 구조<br/>도입-본론3단-결론 초안"]
-    C --> D{"썸네일 필요?"}
-    D -- "예" --> E["② higgsfield-image (선택)<br/>한글 타이포 썸네일 · 3:4 비율"]
-    D -- "아니오" --> F
-    E --> F["③ ai-slop-reviewer (핵심)<br/>AI 어투 제거 · 사람 문장 자연화<br/>★ 항상 마지막 단계"]
-    F --> G["④ 플랫폼별 저장<br/>네이버 / 티스토리 / 브런치<br/>줄바꿈 · 이미지 사이즈 조정"]
+   A["사용자 입력<br/>(자연어 한 줄)"] --> B["키워드 분석<br/>검색 의도 파악 · 경쟁 글 스캔"]
+   B --> C["① blog 스킬<br/>SEO · C-Rank 구조<br/>도입-본론3단-결론 초안"]
+   C --> D{"썸네일 필요?"}
+   D -- "예" --> E["② higgsfield-image (선택)<br/>한글 타이포 썸네일 · 3:4 비율"]
+   D -- "아니오" --> F
+   E --> F["③ ai-slop-reviewer (핵심)<br/>AI 어투 제거 · 사람 문장 자연화<br/> 항상 마지막 단계"]
+   F --> G["④ 플랫폼별 저장<br/>네이버 / 티스토리 / 브런치<br/>줄바꿈 · 이미지 사이즈 조정"]
 
-    classDef input fill:#FAF9F5,stroke:#87867F,color:#141413
-    classDef step fill:#FFFFFF,stroke:#D1CFC5,color:#141413
-    classDef core fill:#E3DACC,stroke:#C9BCA6,color:#141413,font-weight:bold
-    classDef review fill:#D97757,stroke:#B85C3E,color:#FFFFFF,font-weight:bold
-    classDef save fill:#788C5D,stroke:#5F6F4A,color:#FFFFFF,font-weight:bold
-    classDef opt fill:#FFFFFF,stroke:#D1CFC5,color:#141413,stroke-dasharray:5 5
+   classDef input fill:#ffffff,stroke:#757575,color:#141413
+   classDef step fill:#FFFFFF,stroke:#d1d1d1,color:#141413
+   classDef core fill:#e6e6e6,stroke:#d1d1d1,color:#141413,font-weight:bold
+   classDef review fill:#3d7d5f,stroke:#265240,color:#FFFFFF,font-weight:bold
+   classDef save fill:#2e8a63,stroke:#265240,color:#FFFFFF,font-weight:bold
+   classDef opt fill:#FFFFFF,stroke:#d1d1d1,color:#141413,stroke-dasharray:5 5
 
-    class A input
-    class B step
-    class C core
-    class E opt
-    class F review
-    class G save
+   class A input
+   class B step
+   class C core
+   class E opt
+   class F review
+   class G save
 ```
 
 ## 대상 독자
@@ -46,8 +46,8 @@ flowchart TD
 
 ## 사전 준비
 
-- 플러그인: `moai-content`, `moai-core:ai-slop-reviewer`
-- (선택) 이미지 — `moai-media`의 `higgsfield-image` (한국어 타이포 SOTA). 다른 스타일이 필요하면 `gpt-image-2-prompt`·`gemini-3-image-prompt`·`midjourney-v8-prompt` 프롬프트 스킬 활용
+- 플러그인: `moai-marketer`, `moai-coworker:general-ai-slop-reviewer`
+- (선택) 이미지 — `moai-media`의 `media-higgsfield-image` (한국어 타이포 SOTA). 다른 스타일이 필요하면 `media-gpt-image-2-prompt`·`media-gemini-3-image-prompt`·`media-midjourney-v8-prompt` 프롬프트 스킬 활용
 - 입력: **타깃 키워드**, **플랫폼**(네이버·티스토리·브런치 등), **대상 독자**
 
 ## 스킬 체인
@@ -56,7 +56,7 @@ flowchart TD
 blog → (이미지가 필요하면 higgsfield-image) → ai-slop-reviewer
 ```
 
-`blog` 스킬이 C-Rank/D.I.A./GEO 알고리즘을 고려한 글을 쓰고, 마지막에 `ai-slop-reviewer`로 AI 티를 벗겨냅니다.
+`content-blog` 스킬이 C-Rank/D.I.A./GEO 알고리즘을 고려한 글을 쓰고, 마지막에 `general-ai-slop-reviewer`로 AI 티를 벗겨냅니다.
 
 ## 단계별 실행
 
@@ -66,10 +66,10 @@ blog → (이미지가 필요하면 higgsfield-image) → ai-slop-reviewer
 > /plugin installed
 {{< /terminal >}}
 
-목록에 `moai-content`와 `moai-core:ai-slop-reviewer`가 보여야 합니다. 없다면:
+목록에 `moai-marketer`와 `moai-coworker:general-ai-slop-reviewer`가 보여야 합니다. 없다면:
 
 {{< terminal title="claude — cowork" >}}
-> /plugin install moai-content
+> /plugin install moai-marketer
 /plugin install moai
 {{< /terminal >}}
 
@@ -79,7 +79,7 @@ blog → (이미지가 필요하면 higgsfield-image) → ai-slop-reviewer
 
 식당에서 주문할 때를 생각해보면 직관적입니다. "된장찌개에 공기밥 추가, 밑반찬은 김치로, 매운맛 조금만 빼주세요"라고 한 번에 말하면 점원이 주방에 전체 조리 순서를 전달합니다. 손님이 된장찌개가 끝날 때마다 다시 주방에 와서 "이제 공기밥 주세요"라고 말하지 않습니다. 여기서도 "네이버 블로그에 올릴 포스팅, 키워드는 이것, 분량 2500자, 마지막에 ai-slop-reviewer로 다듬어"라고 한 줄로 던지면 Cowork가 각 지시를 스킬 단계로 자동 분해해 순서대로 실행합니다. 스킬 하나하나를 따로 부를 필요 없이 한 번의 주문으로 전체 요리 과정이 돌아갑니다.
 
-아래 예시에서 눈여겨볼 부분은 "C-Rank 친화, 도입-본론 3단-결론 구조"와 "다 쓰고 나서 ai-slop-reviewer로 마지막에 다듬어줘"라는 두 지시어입니다. 앞의 것은 글의 구조를 정하는 지시로 `blog` 스킬이 받아 처리하고, 뒤의 것은 품질 검수 단계를 트리거하는 지시로 `ai-slop-reviewer`가 받아 처리합니다. 이렇게 구조 지시와 품질 지시를 한 프롬프트에 함께 두면 자연어 한 줄이 자동으로 체인이 됩니다.
+아래 예시에서 눈여겨볼 부분은 "C-Rank 친화, 도입-본론 3단-결론 구조"와 "다 쓰고 나서 ai-slop-reviewer로 마지막에 다듬어줘"라는 두 지시어입니다. 앞의 것은 글의 구조를 정하는 지시로 `content-blog` 스킬이 받아 처리하고, 뒤의 것은 품질 검수 단계를 트리거하는 지시로 `general-ai-slop-reviewer`가 받아 처리합니다. 이렇게 구조 지시와 품질 지시를 한 프롬프트에 함께 두면 자연어 한 줄이 자동으로 체인이 됩니다.
 
 {{< terminal title="claude — cowork" >}}
 > 네이버 블로그에 올릴 포스팅 써줘.
@@ -126,21 +126,21 @@ higgsfield-image로 한글 타이포 들어가게. 3:4 비율.
 
 {{< hint type="note" >}}
 **이슈 2 — 브런치 업로드 시 이미지가 너무 큼.**
-`higgsfield-image`는 용도별 해상도를 자동 매핑하며, 인쇄·포스터(3:4) 프리셋은 `1536x2048`처럼 세로가 긴 고해상도로 나옵니다. 브런치처럼 가로폭이 좁은 에디터엔 "브런치용 1024px 로 리사이즈" 한 번 더 지시하세요.
+`media-higgsfield-image`는 용도별 해상도를 자동 매핑하며, 인쇄·포스터(3:4) 프리셋은 `1536x2048`처럼 세로가 긴 고해상도로 나옵니다. 브런치처럼 가로폭이 좁은 에디터엔 "브런치용 1024px 로 리사이즈" 한 번 더 지시하세요.
 {{< /hint >}}
 
 {{< hint type="note" >}}
 **이슈 3 — AI 어투가 남음.**
-`ai-slop-reviewer`가 생략된 경우가 많습니다. 최종본을 보고 나서 "이 글 ai-slop-reviewer로 한 번 더 돌려줘"라고 명시하세요.
+`general-ai-slop-reviewer`가 생략된 경우가 많습니다. 최종본을 보고 나서 "이 글 ai-slop-reviewer로 한 번 더 돌려줘"라고 명시하세요.
 {{< /hint >}}
 
 ## 응용 변형
 
-- **일괄 발행** — 같은 키워드로 네이버·티스토리·링크드인 3버전을 한 번에 뽑으려면 플랫폼별로 세 번 호출 후 마지막에 `ai-slop-reviewer`.
-- **시리즈 글** — `content-calendar` 스킬(`moai-content`)로 월간 계획을 먼저 짠 뒤 매주 이 파이프라인을 돌리세요.
+- **일괄 발행** — 같은 키워드로 네이버·티스토리·링크드인 3버전을 한 번에 뽑으려면 플랫폼별로 세 번 호출 후 마지막에 `general-ai-slop-reviewer`.
+- **시리즈 글** — `content-editorial-calendar` 스킬(`moai-marketer`)로 월간 계획을 먼저 짠 뒤 매주 이 파이프라인을 돌리세요.
 
 ---
 
 ### Sources
-- [modu-ai/cowork-plugins › moai-content](https://github.com/modu-ai/cowork-plugins)
+- [modu-ai/moai-cowork › moai-marketer](https://github.com/modu-ai/moai-cowork)
 - [네이버 서치어드바이저 — 검색 최적화 가이드](https://searchadvisor.naver.com/)

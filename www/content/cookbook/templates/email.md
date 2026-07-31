@@ -1,29 +1,29 @@
 ---
 title: "이메일 마케팅 템플릿"
 weight: 40
-description: "Welcome · Drip · Re-engagement 시퀀스를 moai-content:newsletter와 moai-marketing:email-sequence로 운영하는 템플릿."
+description: "Welcome · Drip · Re-engagement 시퀀스를 moai-marketer:newsletter와 moai-marketer:email-sequence로 운영하는 템플릿."
 geekdocBreadcrumb: true
 ---
-> 이메일은 "죽었다"는 말을 10년째 듣고 있지만 매출 ROAS 기준으로는 가장 안정적인 채널입니다. cowork-plugins는 한국 정보통신망법을 준수하면서 시퀀스를 자동 설계합니다.
+> 이메일은 "죽었다"는 말을 10년째 듣고 있지만 매출 ROAS 기준으로는 가장 안정적인 채널입니다. 모두의 코워크는 한국 정보통신망법을 준수하면서 시퀀스를 자동 설계합니다.
 
 ```mermaid
 flowchart TD
-    A["email-sequence<br/>시퀀스 설계"] --> B["newsletter<br/>콘텐츠 작성"]
-    B --> C["copywriting<br/>제목·CTA"]
-    C --> D["ai-slop-reviewer<br/>발송 전 검수"]
+   A["email-sequence<br/>시퀀스 설계"] --> B["newsletter<br/>콘텐츠 작성"]
+   B --> C["copywriting<br/>제목·CTA"]
+   C --> D["ai-slop-reviewer<br/>발송 전 검수"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style D fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style D fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 ## 사용 스킬
 
 | 스킬 | 용도 |
 |---|---|
-| `moai-content:newsletter` | 위클리 뉴스레터 기획·작성·구독자 분석 |
-| `moai-marketing:email-sequence` | 정보통신망법 준수 자동화 시퀀스 |
-| `moai-content:copywriting` | 제목·CTA 카피 |
-| `moai-core:ai-slop-reviewer` | 발송 전 검수 |
+| `moai-marketer:content-newsletter` | 위클리 뉴스레터 기획·작성·구독자 분석 |
+| `moai-marketer:content-email-sequence` | 정보통신망법 준수 자동화 시퀀스 |
+| `moai-marketer:content-copywriting` | 제목·CTA 카피 |
+| `moai-coworker:general-ai-slop-reviewer` | 발송 전 검수 |
 
 ## 4가지 표준 시퀀스
 
@@ -73,9 +73,9 @@ flowchart TD
 {{< /terminal >}}
 
 체인:
-1. `email-sequence` (뼈대)
-2. `copywriting` (제목·CTA)
-3. `ai-slop-reviewer` (검수)
+1. `content-email-sequence` (뼈대)
+2. `content-copywriting` (제목·CTA)
+3. `general-ai-slop-reviewer` (검수)
 
 ## 정보통신망법 준수 체크
 
@@ -86,7 +86,7 @@ flowchart TD
 - 수신거부(unsubscribe) 한 번 클릭으로
 - 야간(21시-익일 8시) 발송은 별도 동의
 
-`email-sequence` 스킬은 이 4가지를 자동으로 본문에 삽입합니다.
+`content-email-sequence` 스킬은 이 4가지를 자동으로 본문에 삽입합니다.
 
 ## 성과 지표
 
@@ -114,6 +114,6 @@ flowchart TD
 
 ### Sources
 
-- moai-content 플러그인 [`newsletter`](https://github.com/modu-ai/cowork-plugins/blob/main/moai-content/skills/newsletter/SKILL.md)
-- moai-marketing 플러그인 [`email-sequence`](https://github.com/modu-ai/cowork-plugins/blob/main/moai-marketing/skills/email-sequence/SKILL.md)
+- moai-marketer 플러그인 [`content-newsletter`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-marketer/skills/content-newsletter/SKILL.md)
+- moai-marketer 플러그인 [`content-email-sequence`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-marketer/skills/content-email-sequence/SKILL.md)
 - [방송통신위원회 — 정보통신망법 광고성 정보 발송 가이드](https://www.kcc.go.kr)

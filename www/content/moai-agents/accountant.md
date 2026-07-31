@@ -13,10 +13,10 @@ aliases: ["/agent-teams/accountant/"]
 
 ```mermaid
 flowchart LR
-    A["요청<br/>(분기 결산 정리해줘)"] --> B["스킬 매칭"]
-    B --> C["finance-analyst<br/>분석·작성"]
-    C --> D["close-auditor<br/>검산·검수"]
-    D --> E["산출물<br/>(재무 리포트·절세 플랜)"]
+   A["요청<br/>(분기 결산 정리해줘)"] --> B["스킬 매칭"]
+   B --> C["finance-analyst<br/>분석·작성"]
+   C --> D["close-auditor<br/>검산·검수"]
+   D --> E["산출물<br/>(재무 리포트·절세 플랜)"]
 ```
 
 ## 스킬 카탈로그

@@ -11,7 +11,7 @@ description: |
   - "디자인 토큰 추출"
   - "Claude Code 핸드오프 준비"
 user-invocable: true
-version: 0.2.0
+version: "1.0.0"
 ---
 
 # cd-handoff-reader — 핸드오프 번들 분석

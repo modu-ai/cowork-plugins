@@ -1,6 +1,6 @@
 # HWPX 기본 템플릿 (base)
 
-> moai-office v1.0.0 | HWPX 기본 스타일 스펙
+> moai-officer v1.0.0 | HWPX 기본 스타일 스펙
 
 ## 개요
 

@@ -7,7 +7,7 @@
   {{- range .agents }}
     <tr>
       <td><code>{{ .name }}</code></td>
-      <td>{{ .description }}</td>
+      <td>{{ partial "strip-emoji" .description }}</td>
       <td>{{ if .readonly }}검수 (읽기 전용){{ else }}실행 (worker){{ end }}</td>
     </tr>
   {{- end }}

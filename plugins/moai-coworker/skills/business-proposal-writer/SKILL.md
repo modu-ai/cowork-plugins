@@ -13,12 +13,12 @@ description: |
 
   주의: 정부 지원사업 신청서는 `moai-consultant:business-kr-gov-grant`를 사용하세요. 본 스킬은 **B2B 영업·공공조달 입찰 고객 대상** 제안서를 다룹니다.
   투자자 IR 자료는 `moai-accountant:finance-investor-relations`를 사용하세요.
-version: "6.0.2"
+version: "1.0.0"
 ---
 
 # Proposal Writer — B2B 영업 제안서 자동 생성
 
-> moai-sales | 한국 B2B 영업 워크플로우 첫 스킬
+> moai-coworker | 한국 B2B 영업 워크플로우 첫 스킬
 
 ## 개요
 

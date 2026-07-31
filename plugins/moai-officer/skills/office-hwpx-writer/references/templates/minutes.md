@@ -1,6 +1,6 @@
 # HWPX 회의록 양식 (minutes)
 
-> moai-office v1.0.0 | 회의록 표준 스펙
+> moai-officer v1.0.0 | 회의록 표준 스펙
 
 ## 개요
 

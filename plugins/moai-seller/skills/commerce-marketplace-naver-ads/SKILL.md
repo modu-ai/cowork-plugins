@@ -6,7 +6,7 @@ description: |
   "네이버 광고 분석해줘", "쇼핑검색광고 세팅", "파워링크 키워드 잡아줘", "네이버 입찰가 얼마로 해", "품질지수 올리는 법", "브랜드검색 할까", "GFA 돌릴까", "네이버 광고 보고서 진단", "스마트스토어 광고 최적화", "네이버 검색광고 ROAS".
   네이버 광고 보고서(엑셀)·마진계산기 결과를 입력받아 캠페인 분리안·키워드 제외안·입찰 조정안을 산출하며, 수치·표·의사결정 데이터 스킬이라 general-ai-slop-reviewer 체이닝은 제외합니다. end-ROAS 공식은 moai-seller:commerce-margin-calculator references/end-roas.md를 참조합니다.
   [책임 경계] 페어 moai-seller:commerce-marketplace-coupang-ads(쿠팡 광고)·moai-marketer:marketing-performance-report(다채널 종합)와 구분 — 본 스킬은 네이버 검색광고 단일 채널 광고관리 전담. 스마트스토어 입점·운영은 moai-seller:commerce-marketplace-naver, 오가닉 검색 노출(SEO)은 moai-marketer:marketing-seo-audit.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 네이버 검색광고 풀세트 최적화 (Marketplace Naver Ads)

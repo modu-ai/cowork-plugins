@@ -4,7 +4,7 @@ description: |
   [책임 경계] Drive·Notion·Higgsfield 3커넥터 인증·환경변수·트러블슈팅 가이드 전담. 페어 moai-seller:commerce-morning-brief(MCP 매장 데이터 호출)와 명확히 구분 — 본 스킬은 커넥터 설치·인증 단계, 페어는 인증 이후 실제 MCP 호출 결과물.
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   "MCP 커넥터 연결", "Drive 인증 방법", "Notion Integration Token 어디서", "Higgsfield 키 발급", "Windows MAX_PATH 오류", "한글 파일명 30자 오류", "computer:// 링크 안 열려요", "커넥터 3개 연결 방법", "MCP 3커넥터 인증", "커넥터 오류 해결".
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # MCP 커넥터 셋업 가이드
@@ -339,6 +339,6 @@ Cowork 플러그인은 한국 공공데이터·공문서·법령 처리를 위�
 ## 이 스킬을 사용하지 말아야 할 때
 
 - 이미 3커넥터가 모두 연결된 경우 → `moai-seller:commerce-morning-brief` 직접 호출 (전체 브리핑 또는 주문 요약 모드)
-- MCP 호출 결과물(아침 브리핑·주문 요약) 생성이 목적인 경우 → `moai-commerce` 스킬 사용
+- MCP 호출 결과물(아침 브리핑·주문 요약) 생성이 목적인 경우 → `moai-seller` 스킬 사용
 - Cowork 앱 설치 자체가 안 되는 경우 → Cowork 공식 지원 채널 문의 (본 스킬 범위 외)
 - 광고 플랫폼 커넥터 (Meta 광고 등) 연결 → `moai-marketer:marketing-meta-ads-manager` 스킬 참조

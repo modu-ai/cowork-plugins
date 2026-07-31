@@ -1,26 +1,26 @@
 ---
 title: "프레젠테이션 디자인 원칙"
 weight: 10
-description: "moai-office:pptx-designer로 만든 한국형 슬라이드를 더 잘 만드는 5개 원칙과 실전 팁."
+description: "moai-officer:pptx-designer로 만든 한국형 슬라이드를 더 잘 만드는 5개 원칙과 실전 팁."
 geekdocBreadcrumb: true
 ---
 > "디자인이 좋다"는 칭찬은 보통 "정보가 잘 정리되어 있다"는 뜻입니다. 슬라이드를 화려하게 만드는 게 아니라, 한 장에 한 가지 메시지가 명확하게 보이도록 다듬는 것이 핵심입니다.
 
 ```mermaid
 flowchart TD
-    A["한 장 한 메시지"] --> B["여백 과감히"]
-    B --> C["글자 수 최소화"]
-    C --> D["시각 강조 1곳"]
-    D --> E["일관된 그리드"]
-    E --> F["pptx-designer<br/>슬라이드 생성"]
+   A["한 장 한 메시지"] --> B["여백 과감히"]
+   B --> C["글자 수 최소화"]
+   C --> D["시각 강조 1곳"]
+   D --> E["일관된 그리드"]
+   E --> F["pptx-designer<br/>슬라이드 생성"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style F fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style F fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 ## 사용 스킬
 
-- **`moai-office:pptx-designer`** — 발표용 PPT 슬라이드 디자인. Pretendard + 명조 기반 한국형 디자인, 한글 깨짐 없음.
+- **`moai-officer:office-pptx-designer`** — 발표용 PPT 슬라이드 디자인. Pretendard + 명조 기반 한국형 디자인, 한글 깨짐 없음.
 
 ## 5가지 핵심 원칙
 
@@ -61,7 +61,7 @@ flowchart TD
 > 발표 시간 10분 기준.
 {{< /terminal >}}
 
-`pptx-designer` 스킬이 슬라이드 마스터를 자동 적용해 한국형 폰트로 출력합니다. PPTX 파일을 받은 뒤 PowerPoint·Keynote에서 미세 조정.
+`office-pptx-designer` 스킬이 슬라이드 마스터를 자동 적용해 한국형 폰트로 출력합니다. PPTX 파일을 받은 뒤 PowerPoint·Keynote에서 미세 조정.
 
 ## 한국 발표 환경 특이점
 
@@ -84,5 +84,5 @@ flowchart TD
 
 ### Sources
 
-- moai-office 플러그인 [`pptx-designer`](https://github.com/modu-ai/cowork-plugins/blob/main/moai-office/skills/pptx-designer/SKILL.md)
+- moai-officer 플러그인 [`office-pptx-designer`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-officer/skills/office-pptx-designer/SKILL.md)
 - [Pretendard 폰트](https://github.com/orioncactus/pretendard)

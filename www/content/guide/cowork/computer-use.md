@@ -15,21 +15,21 @@ Claude가 마우스 클릭, 키보드 입력, 화면 캡처로 데스크톱 앱�
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    participant U as 사용자
-    participant CW as Cowork
-    participant SCR as 화면 캡처
-    participant APP as 데스크톱 앱
+   autonumber
+   participant U as 사용자
+   participant CW as Cowork
+   participant SCR as 화면 캡처
+   participant APP as 데스크톱 앱
 
-    U->>CW: "이 앱에서 데이터 복사해줘"
-    CW->>SCR: 화면 스크린샷 캡처
-    SCR-->>CW: 화면 이미지 반환
-    CW->>CW: 화면 분석 (버튼·입력창 식별)
-    CW->>U: "이 버튼을 클릭하려 합니다. 허용?"
-    U->>CW: 허용
-    CW->>APP: 마우스 클릭·키보드 입력
-    APP-->>CW: 결과 화면
-    CW->>U: 작업 완료
+   U->>CW: "이 앱에서 데이터 복사해줘"
+   CW->>SCR: 화면 스크린샷 캡처
+   SCR-->>CW: 화면 이미지 반환
+   CW->>CW: 화면 분석 (버튼·입력창 식별)
+   CW->>U: "이 버튼을 클릭하려 합니다. 허용?"
+   U->>CW: 허용
+   CW->>APP: 마우스 클릭·키보드 입력
+   APP-->>CW: 결과 화면
+   CW->>U: 작업 완료
 ```
 
 ## 언제 쓰나

@@ -54,21 +54,21 @@ tags: [cookbook, projects, content]
 
 ```mermaid
 flowchart TD
-    U["수아 님<br/>3년 묵은 메모"] --> W1["작가<br/>story-synopsis"]
-    W1 --> R1["시놉시스"]
-    R1 --> W2["작가<br/>story-character-sheet"]
-    W2 --> R2["캐릭터 시트 4인"]
-    R2 --> W3["작가<br/>story-webnovel-writer"]
-    W3 --> W4["작가<br/>general-humanize-korean"]
-    W4 --> R3["연재 원고 (회차별)"]
-    R3 --> W5["작가<br/>story-cover-art"]
-    W5 --> OUT["투고 패키지 완성"]
+   U["수아 님<br/>3년 묵은 메모"] --> W1["작가<br/>story-synopsis"]
+   W1 --> R1["시놉시스"]
+   R1 --> W2["작가<br/>story-character-sheet"]
+   W2 --> R2["캐릭터 시트 4인"]
+   R2 --> W3["작가<br/>story-webnovel-writer"]
+   W3 --> W4["작가<br/>general-humanize-korean"]
+   W4 --> R3["연재 원고 (회차별)"]
+   R3 --> W5["작가<br/>story-cover-art"]
+   W5 --> OUT["투고 패키지 완성"]
 
-    style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style R1 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style R2 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style R3 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style OUT fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+   style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style R1 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style R2 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style R3 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style OUT fill:#d6e7de,stroke:#3d7d5f,stroke-width:2px,color:#09110f
 ```
 
 ## 4. 결과물

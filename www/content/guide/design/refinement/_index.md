@@ -79,17 +79,17 @@ aliases: ["/claude-design/refinement/"]
 
 ```mermaid
 flowchart TD
-    A["1. IA<br/>(Information Architecture)<br/>구조·내비·플로우"] --> B["2. 디자인 시스템<br/>(이미 등록되어 있어도<br/>이 프로젝트의 변형 선언)"]
-    B --> C["3. 핵심 화면<br/>(예: 온보딩)"]
-    C --> D["4. 보조 화면<br/>(대시보드·설정 등)"]
-    D --> E["5. 상태 화면<br/>(empty · error · loading)"]
-    E --> F["6. 반응형 변형<br/>(데스크톱→태블릿→모바일)"]
+   A["1. IA<br/>(Information Architecture)<br/>구조·내비·플로우"] --> B["2. 디자인 시스템<br/>(이미 등록되어 있어도<br/>이 프로젝트의 변형 선언)"]
+   B --> C["3. 핵심 화면<br/>(예: 온보딩)"]
+   C --> D["4. 보조 화면<br/>(대시보드·설정 등)"]
+   D --> E["5. 상태 화면<br/>(empty · error · loading)"]
+   E --> F["6. 반응형 변형<br/>(데스크톱→태블릿→모바일)"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style D fill:#dceee9,stroke:#2a8a8c,color:#09110f
-    style E fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style C fill:#e8f1ec,stroke:#265240,color:#09110f
+   style D fill:#e8f1ec,stroke:#2a8a8c,color:#09110f
+   style E fill:#d6e7de,stroke:#3d7d5f,color:#09110f
 ```
 
 **핵심**: 각 단계는 앞 단계의 결과를 활용합니다. "온보딩 디자인했던 이 스타일 그대로 설정 페이지에" 같은 짧은 지시로 일관성이 유지됩니다.

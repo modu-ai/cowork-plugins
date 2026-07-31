@@ -1,7 +1,10 @@
-<div class="screenshot-request" style="border: 2px dashed #D97757; border-radius: 12px; background: #FAF4F0; padding: 18px 20px; margin: 20px 0; display: flex; gap: 12px; align-items: flex-start;">
-  <span style="font-size: 22px; line-height: 1;">📷</span>
+{{- /* 스크린샷 자리 표시 — DS alert.html 패턴(rounded-lg · hairline · surface-card).
+       색은 전부 토큰에서 온다(하드코딩 금지). 아이콘은 DS 아이콘 세트.
+       CLAUDE.local.md § 디자인 시스템 규칙 */ -}}
+<div class="ds-note ds-note--placeholder">
+  {{ partial "ds-icon" (dict "name" "camera" "size" 20 "class" "tone-muted") }}
   <div>
-    <strong style="color: #B85C3E; display: block; margin-bottom: 4px;">스크린샷 추가 예정</strong>
-    <span style="color: #3D3D3A; font-size: 14.5px;">{{ .Get 0 }}</span>
+    <strong>스크린샷 추가 예정</strong>
+    <span>{{ .Get 0 }}</span>
   </div>
 </div>

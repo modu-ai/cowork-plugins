@@ -10,14 +10,14 @@ description: |
   - 특정 플러그인/스킬의 문제점 보고
 
   단순 불만 표출이나 일반 대화, 플러그인 사용법 질문에는 사용하지 마세요.
-version: "6.0.1"
+version: "1.0.0"
 ---
 
 # Feedback — 피드백 수집 및 GitHub Issues 등록
 
 ## 개요
 
-사용자의 버그 리포트 또는 기능 요청을 구조화된 인터뷰를 통해 수집하고, GitHub Issues에 자동 등록합니다. cowork-plugins 저장소(`modu-ai/cowork-plugins`)의 이슈를 관리하며, 명확한 문제 정의와 재현 가능한 정보를 수집하는 데 중점을 둡니다.
+사용자의 버그 리포트 또는 기능 요청을 구조화된 인터뷰를 통해 수집하고, GitHub Issues에 자동 등록합니다. 모두의 코워크 저장소(`modu-ai/moai-cowork`)의 이슈를 관리하며, 명확한 문제 정의와 재현 가능한 정보를 수집하는 데 중점을 둡니다.
 
 ## 트리거 키워드
 
@@ -104,7 +104,7 @@ gh CLI로 이슈를 생성합니다:
 
 ```bash
 gh issue create \
-  --repo modu-ai/cowork-plugins \
+  --repo modu-ai/moai-cowork \
   --title "[{레이블}] {제목}" \
   --body "{본문}" \
   --label "{레이블}"
@@ -126,7 +126,7 @@ gh issue create \
 
 gh CLI가 없거나 인증되지 않은 환경에서는:
 1. 이슈 본문을 마크다운으로 출력
-2. GitHub Issues 페이지 직접 링크 제공: `https://github.com/modu-ai/cowork-plugins/issues/new`
+2. GitHub Issues 페이지 직접 링크 제공: `https://github.com/modu-ai/moai-cowork/issues/new`
 3. "복사하여 직접 등록해 주세요" 안내
 
 ## 사용 예시
@@ -154,7 +154,7 @@ gh CLI가 없거나 인증되지 않은 환경에서는:
 ✅ 피드백이 등록되었습니다.
 
 이슈 #123: [bug] moai-coworker 한글 폰트 깨짐
-https://github.com/modu-ai/cowork-plugins/issues/123
+https://github.com/modu-ai/moai-cowork/issues/123
 
 감사합니다. 빠른 시일 내에 검토하겠습니다.
 ```
@@ -166,7 +166,7 @@ https://github.com/modu-ai/cowork-plugins/issues/123
 아래 내용을 복사하여 직접 등록해 주세요:
 [이슈 본문 마크다운]
 
-GitHub Issues: https://github.com/modu-ai/cowork-plugins/issues/new
+GitHub Issues: https://github.com/modu-ai/moai-cowork/issues/new
 ```
 
 ## 주의사항

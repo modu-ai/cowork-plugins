@@ -7,7 +7,7 @@ description: |
   4단계 체인: ① 캐릭터 등록 (선택, Higgsfield Soul Characters 브랜드 캐릭터 일관성) → ② media-higgsfield-image (상품 이미지 5-10장) → ③ media-higgsfield-video (시네마틱 영상 5-10초) → ④ 채널 규격 변환 (메타·네이버·카카오, Pillow 자체 처리).
   페어 스킬 commerce-detail-page-image(13섹션 합성 PNG)와 명확히 구분 — 본 스킬은 모델 체인 오케스트레이션, 페어는 단일 합성.
   general-ai-slop-reviewer 체이닝 제외 (이미지·영상 산출물).
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 상품 이미지·영상 풀스택 파이프라인 (Product Image Pipeline)

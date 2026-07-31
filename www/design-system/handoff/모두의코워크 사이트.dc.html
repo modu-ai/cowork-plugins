@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/ai-design-system-88ef5d01-91c6-4ad6-be37-2264a711ca54/colors_and_type.css">
+<link rel="stylesheet" href="_ds/ai-design-system-88ef5d01-91c6-4ad6-be37-2264a711ca54/styles.css">
+<script src="_ds/ai-design-system-88ef5d01-91c6-4ad6-be37-2264a711ca54/_ds_bundle.js"></script>
+<style>
+  body{margin:0;background:var(--color-bg);font-family:var(--font-sans);color:var(--fg-1)}
+  a{color:var(--color-primary);text-decoration:none}
+  a:hover{color:var(--color-primary-hover);text-decoration:underline}
+  .gnav-link[data-active="true"]{color:var(--color-primary)}
+  .gnav-link[data-active="true"]::after{content:"";position:absolute;left:0;right:0;bottom:-15px;height:2px;background:var(--color-primary);border-radius:2px}
+  .sb-link[data-active="true"]{background:var(--gradient-signature-soft);color:var(--fg-1) !important;font-weight:700}
+  .toc-link[data-active="true"]{color:var(--color-primary) !important;font-weight:700}
+  .moai-mermaid{display:flex;justify-content:center;width:100%}
+  .moai-mermaid svg{max-width:100%;height:auto}
+  details.faq > summary{list-style:none;cursor:pointer}
+  details.faq > summary::-webkit-details-marker{display:none}
+  details.faq[open] .faq-plus{transform:rotate(45deg)}
+  @keyframes pgFade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  @keyframes mascotIn{from{opacity:0;transform:translateY(10px) scale(0.96)}to{opacity:1;transform:none}}
+  .page-body{animation:pgFade 300ms cubic-bezier(0.4,0,0.2,1) both}
+  .mascot-img{animation:mascotIn 520ms cubic-bezier(0.34,1.56,0.64,1) both}
+  @media (max-width:1320px){
+    .docs-shell{grid-template-columns:264px minmax(0,1fr) !important}
+    .toc-rail{display:none !important}
+  }
+  @media (max-width:1180px){.gnav-prod{display:none !important}}
+  @media (max-width:1080px){
+    .gnav-search{display:none !important}
+    .docs-shell{grid-template-columns:1fr !important}
+    .docs-sidebar{display:none !important}
+    .hero-in{flex-direction:column-reverse !important;align-items:flex-start !important}
+    .hero-mascot-panel{width:132px !important;height:132px !important}
+    .grid-3,.grid-2{grid-template-columns:1fr !important}
+  }
+  @media (max-width:720px){.gnav-menu{gap:14px !important;overflow-x:auto}.hero-stats{gap:20px !important}}
+  @media (prefers-reduced-motion:reduce){*{animation-duration:1ms !important;transition-duration:1ms !important}}
+</style>
+</helmet>
+<div style="min-height:100vh;background:var(--color-bg);display:flex;flex-direction:column">
+
+  <header style="position:sticky;top:0;z-index:50;background:rgba(243,243,243,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border-2)">
+    <div style="max-width:1440px;margin:0 auto;padding:0 32px;height:64px;display:flex;align-items:center;gap:20px">
+      <a href="#" onClick="{{ goHome }}" style="display:flex;align-items:center;gap:10px;text-decoration:none;flex:none">
+        <span style="width:34px;height:34px;border-radius:8px;background:#fff;border:1px solid var(--border-1);display:flex;align-items:center;justify-content:center;flex:none;overflow:hidden"><img src="assets/moai-logo-1.png" alt="모두의AI" style="width:26px;height:26px;object-fit:contain;display:block"></span>
+        <span style="font-size:15.5px;font-weight:800;letter-spacing:-0.03em;color:var(--fg-1);white-space:nowrap">모두의 코워크</span>
+      </a>
+      <nav class="gnav-menu" aria-label="글로벌 메뉴" style="display:flex;align-items:center;gap:18px;margin-left:4px">
+        <sc-for list="{{ nav }}" as="item" hint-placeholder-count="8">
+          <a class="gnav-link" href="#{{ item.id }}" data-active="{{ item.active }}" onClick="{{ item.onClick }}" style="position:relative;white-space:nowrap;color:var(--fg-2);font-size:14px;font-weight:600;letter-spacing:-0.025em;padding:6px 2px;transition:color 150ms cubic-bezier(0.4,0,0.2,1)" style-hover="color:var(--fg-1)">{{ item.label }}</a>
+        </sc-for>
+      </nav>
+      <span style="flex:1"></span>
+      <nav class="gnav-prod" aria-label="제품" style="display:flex;align-items:center;gap:4px">
+        <a href="#" style="color:var(--fg-3);font-size:13px;font-weight:600;padding:5px 10px;border-radius:8px" style-hover="color:var(--fg-1);background:var(--neutral-100);text-decoration:none">Chat</a>
+        <a href="#" style="color:#fff;background:var(--color-primary);font-size:13px;font-weight:600;padding:5px 10px;border-radius:8px" style-hover="text-decoration:none">Cowork</a>
+        <a href="#" style="color:var(--fg-3);font-size:13px;font-weight:600;padding:5px 10px;border-radius:8px" style-hover="color:var(--fg-1);background:var(--neutral-100);text-decoration:none">Design</a>
+        <a href="#" style="color:var(--fg-3);font-size:13px;font-weight:600;padding:5px 10px;border-radius:8px" style-hover="color:var(--fg-1);background:var(--neutral-100);text-decoration:none">Code</a>
+      </nav>
+      <button class="gnav-search" type="button" aria-label="문서 검색" style="display:flex;align-items:center;gap:8px;height:34px;padding:0 12px;border:1px solid var(--border-1);border-radius:9px;background:var(--color-surface);color:var(--fg-3);font-size:13px;letter-spacing:-0.02em;cursor:pointer;font-family:var(--font-sans)" style-hover="border-color:var(--color-primary);color:var(--fg-1)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3" stroke-linecap="round"></path></svg>
+        <span>검색</span>
+        <kbd style="font-family:var(--font-mono);font-size:11px;background:var(--neutral-100);border:1px solid var(--border-2);border-radius:4px;padding:1px 5px;color:var(--fg-3)">⌘K</kbd>
+      </button>
+    </div>
+  </header>
+
+  <main style="flex:1;padding:32px 0 88px">
+    <div style="max-width:1440px;margin:0 auto;padding:0 32px">
+
+      <sc-if value="{{ showHero }}" hint-placeholder-val="{{ true }}">
+        <section style="position:relative;overflow:hidden;background:var(--gradient-signature);color:#fff;border-radius:24px;padding:48px 44px">
+          <div class="hero-in" style="display:flex;gap:40px;align-items:center;justify-content:space-between">
+            <div style="max-width:680px;min-width:0">
+              <div style="display:flex;align-items:center;gap:9px;font:600 12px/1 var(--font-mono);letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:18px">
+                <span style="width:6px;height:6px;border-radius:9999px;background:#fff;display:inline-block"></span>{{ hero.eyebrow }}
+              </div>
+              <h1 style="margin:0;font-size:42px;line-height:1.12;letter-spacing:-0.055em;font-weight:400;color:#fff">{{ hero.titleLead }}<br><strong style="font-weight:900">{{ hero.titleStrong }}</strong></h1>
+              <p style="margin:20px 0 0;font-size:17px;line-height:1.75;letter-spacing:-0.03em;color:rgba(255,255,255,0.9);text-wrap:pretty">{{ hero.lead }}</p>
+              <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:26px">
+                <a href="#{{ hero.cta1Id }}" onClick="{{ hero.onCta1 }}" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--color-primary);font-size:14.5px;font-weight:700;letter-spacing:-0.025em;padding:11px 22px;border-radius:32px" style-hover="text-decoration:none;box-shadow:0 8px 32px rgba(0,109,104,0.35)">{{ hero.cta1 }} →</a>
+                <a href="#{{ hero.cta2Id }}" onClick="{{ hero.onCta2 }}" style="display:inline-flex;align-items:center;gap:8px;color:#fff;border:1px solid rgba(255,255,255,0.35);font-size:14.5px;font-weight:600;letter-spacing:-0.025em;padding:11px 22px;border-radius:32px" style-hover="background:rgba(255,255,255,0.12);text-decoration:none">{{ hero.cta2 }}</a>
+              </div>
+            </div>
+            <sc-if value="{{ showMascots }}" hint-placeholder-val="{{ false }}">
+              <div class="hero-mascot-panel" style="flex:none;width:196px;height:196px;border-radius:24px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;padding:14px;box-sizing:border-box">
+                <sc-if value="{{ isHomeSec }}" hint-placeholder-val="{{ false }}"><img class="mascot-img" src="assets/characters/MoAI-Mascot-Explaining.png" alt="두 손 벌려 안내하는 모아이 마스코트" style="width:100%;height:100%;object-fit:contain;display:block"></sc-if>
+                <sc-if value="{{ isStartSec }}" hint-placeholder-val="{{ false }}"><img class="mascot-img" src="assets/characters/MoAI-Mascot-Teaching.png" alt="지시봉으로 설명하는 모아이 마스코트" style="width:100%;height:100%;object-fit:contain;display:block"></sc-if>
+                <sc-if value="{{ isGuideSec }}" hint-placeholder-val="{{ false }}"><img class="mascot-img" src="assets/characters/MoAI-Mascot-Thinking.png" alt="턱을 괸 생각하는 모아이 마스코트" style="width:100%;height:100%;object-fit:contain;display:block"></sc-if>
+                <sc-if value="{{ isAgentsSec }}" hint-placeholder-val="{{ false }}"><img class="mascot-img" src="assets/characters/MoAI-Mascot-Pointing.png" alt="손가락으로 가리키는 모아이 마스코트" style="width:100%;height:100%;object-fit:contain;display:block"></sc-if>
+                <sc-if value="{{ isPluginsSec }}" hint-placeholder-val="{{ false }}"><img class="mascot-img" src="assets/characters/MoAI-Mascot-Inspecting.png" alt="대상을 자세히 관찰하는 모아이 마스코트" style="width:100%;height:100%;object-fit:contain;display:block"></sc-if>
+                <sc-if value="{{ isCookbookSec }}" hint-placeholder-val="{{ false }}"><img class="mascot-img" src="assets/characters/MoAI-Mascot-Coffee.png" alt="커피 한 잔을 든 모아이 마스코트" style="width:100%;height:100%;object-fit:contain;display:block"></sc-if>
+                <sc-if value="{{ isTracksSec }}" hint-placeholder-val="{{ false }}"><img class="mascot-img" src="assets/characters/MoAI-Mascot-Celebrating.png" alt="두 주먹 올려 환호하는 모아이 마스코트" style="width:100%;height:100%;object-fit:contain;display:block"></sc-if>
+                <sc-if value="{{ isReleasesSec }}" hint-placeholder-val="{{ false }}"><img class="mascot-img" src="assets/characters/MoAI-Mascot-Searching.png" alt="돋보기로 탐색하는 모아이 마스코트" style="width:100%;height:100%;object-fit:contain;display:block"></sc-if>
+                <sc-if value="{{ isHelpSec }}" hint-placeholder-val="{{ false }}"><img class="mascot-img" src="assets/characters/MoAI-Mascot-Frustrated.png" alt="머리 숙이고 좌절한 모아이 마스코트" style="width:100%;height:100%;object-fit:contain;display:block"></sc-if>
+              </div>
+            </sc-if>
+          </div>
+          <div class="hero-stats" style="display:flex;flex-wrap:wrap;gap:40px;margin-top:36px;padding-top:26px;border-top:1px solid rgba(255,255,255,0.18)">
+            <sc-for list="{{ hero.stats }}" as="s" hint-placeholder-count="4">
+              <div>
+                <div style="font-family:var(--font-latin);font-size:26px;font-weight:800;letter-spacing:-0.04em;color:#fff;line-height:1.1">{{ s.num }}</div>
+                <div style="font-size:12.5px;letter-spacing:-0.02em;color:rgba(255,255,255,0.7);margin-top:4px">{{ s.lbl }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+        <div class="page-body">
+          <div style="margin:56px 0 0">
+            <div style="font:600 11px/1 var(--font-mono);letter-spacing:0.1em;text-transform:uppercase;color:var(--color-primary);margin-bottom:10px">Documentation</div>
+            <h2 style="margin:0 0 12px;font-size:30px;font-weight:800;letter-spacing:-0.05em;color:var(--fg-1)">어디서부터 볼까요</h2>
+            <p style="margin:0 0 26px;max-width:760px;font-size:16px;line-height:1.8;letter-spacing:-0.03em;color:var(--fg-2);text-wrap:pretty">모두의 코워크 한국어 문서는 8개 섹션 · 207개 문서로 구성됩니다. 처음이라면 시작하기부터, 제품별 기능을 찾는다면 가이드로 가세요.</p>
+            <div class="grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+              <sc-for list="{{ sectionCards }}" as="sc" hint-placeholder-count="8">
+                <a href="#{{ sc.id }}" onClick="{{ sc.onClick }}" style="display:block;background:var(--color-surface);border:1px solid var(--border-1);border-radius:16px;padding:24px;box-shadow:var(--shadow-sm);transition:transform 200ms cubic-bezier(0.4,0,0.2,1),box-shadow 200ms cubic-bezier(0.4,0,0.2,1)" style-hover="transform:translateY(-2px);box-shadow:var(--shadow-md);text-decoration:none">
+                  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px">
+                    <span style="font-family:var(--font-mono);font-size:11.5px;font-weight:600;color:var(--color-primary);background:var(--gradient-signature-soft);padding:3px 9px;border-radius:6px">{{ sc.count }}</span>
+                    <span style="color:var(--color-primary);font-size:15px;font-weight:700">→</span>
+                  </div>
+                  <div style="font-size:17px;font-weight:800;letter-spacing:-0.04em;color:var(--fg-1);margin-bottom:8px">{{ sc.title }}</div>
+                  <p style="margin:0;font-size:14px;line-height:1.65;letter-spacing:-0.025em;color:var(--fg-2)">{{ sc.desc }}</p>
+                </a>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="margin:64px 0 0">
+            <div style="font:600 11px/1 var(--font-mono);letter-spacing:0.1em;text-transform:uppercase;color:var(--color-primary);margin-bottom:10px">Plugin Family</div>
+            <h2 style="margin:0 0 12px;font-size:30px;font-weight:800;letter-spacing:-0.05em;color:var(--fg-1)">18-직원 플러그인 패밀리</h2>
+            <p style="margin:0 0 26px;max-width:760px;font-size:16px;line-height:1.8;letter-spacing:-0.03em;color:var(--fg-2);text-wrap:pretty">이름이 곧 직무입니다. 전부 설치할 필요는 없습니다 — 회사에서 필요한 직무만 채용하듯, 필요한 직원만 골라 담으세요.</p>
+            <div class="grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+              <sc-for list="{{ plugins }}" as="p" hint-placeholder-count="9">
+                <a href="#{{ p.id }}" onClick="{{ p.onClick }}" style="display:block;background:var(--color-surface);border:1px solid var(--border-1);border-radius:16px;padding:24px;box-shadow:var(--shadow-sm);transition:transform 200ms cubic-bezier(0.4,0,0.2,1),box-shadow 200ms cubic-bezier(0.4,0,0.2,1)" style-hover="transform:translateY(-2px);box-shadow:var(--shadow-md);text-decoration:none">
+                  <div style="font-family:var(--font-mono);font-size:11.5px;font-weight:600;color:var(--color-primary);background:var(--gradient-signature-soft);display:inline-block;padding:3px 9px;border-radius:6px;margin-bottom:14px">{{ p.pkg }}</div>
+                  <div style="font-size:17px;font-weight:800;letter-spacing:-0.04em;color:var(--fg-1);margin-bottom:8px">{{ p.name }}</div>
+                  <p style="margin:0 0 14px;font-size:14px;line-height:1.65;letter-spacing:-0.025em;color:var(--fg-2)">{{ p.desc }}</p>
+                  <div style="font-size:13px;font-weight:700;letter-spacing:-0.02em;color:var(--color-primary)">{{ p.cta }} →</div>
+                </a>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="margin:64px 0 0">
+            <div style="font:600 11px/1 var(--font-mono);letter-spacing:0.1em;text-transform:uppercase;color:var(--color-primary);margin-bottom:10px">Quick Start</div>
+            <h2 style="margin:0 0 26px;font-size:30px;font-weight:800;letter-spacing:-0.05em;color:var(--fg-1)">5분이면 충분합니다</h2>
+            <div class="grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px">
+              <sc-for list="{{ steps }}" as="st" hint-placeholder-count="3">
+                <div style="background:var(--color-surface);border:1px solid var(--border-1);border-radius:16px;padding:24px;box-shadow:var(--shadow-sm)">
+                  <div style="font-family:var(--font-mono);font-size:11.5px;font-weight:600;letter-spacing:0.06em;color:var(--fg-3);margin-bottom:12px">{{ st.step }}</div>
+                  <div style="font-size:16.5px;font-weight:800;letter-spacing:-0.04em;color:var(--fg-1);margin-bottom:8px">{{ st.title }}</div>
+                  <p style="margin:0 0 16px;font-size:14px;line-height:1.65;letter-spacing:-0.025em;color:var(--fg-2)">{{ st.desc }}</p>
+                  <pre style="margin:0;background:#040000;border-radius:8px;padding:14px 16px;overflow-x:auto"><code style="font-family:var(--font-mono);font-size:12.5px;line-height:1.6;color:#e6e6e6"><span style="color:#5ea885;font-weight:700">{{ st.sigil }}</span> {{ st.cmd }}</code></pre>
+                </div>
+              </sc-for>
+            </div>
+            <figure style="margin:0;background:var(--color-surface);border:1px solid var(--border-1);border-radius:16px;padding:30px;box-shadow:var(--shadow-sm)">
+              <x-import component-from-global-scope="AIDesignSystem_88ef5d.MermaidDiagram" chart="{{ c_home }}" hint-size="100%,160px"></x-import>
+              <figcaption style="margin-top:16px;font-size:13px;line-height:1.6;letter-spacing:-0.025em;color:var(--fg-2);text-align:center">마켓플레이스 등록 한 번, 그다음은 설치 → 요청 → 산출물의 반복입니다.</figcaption>
+            </figure>
+          </div>
+
+          <div style="margin:64px 0 0;background:var(--gradient-signature);border-radius:24px;padding:40px 44px;display:flex;gap:32px;align-items:center;justify-content:space-between;flex-wrap:wrap">
+            <div style="max-width:620px">
+              <h3 style="margin:0 0 10px;font-size:26px;font-weight:800;letter-spacing:-0.05em;color:#fff">어떤 직원을 뽑을지 고민되나요?</h3>
+              <p style="margin:0;font-size:15.5px;line-height:1.7;letter-spacing:-0.03em;color:rgba(255,255,255,0.88)">18명의 직원 소개와 설치·운용 매뉴얼을 한곳에서 — 빌드 과정 없이 바로 시작합니다.</p>
+            </div>
+            <a href="#agents" onClick="{{ goAgents }}" style="display:inline-flex;align-items:center;background:#fff;color:var(--color-primary);font-size:14.5px;font-weight:700;letter-spacing:-0.025em;padding:12px 24px;border-radius:32px;white-space:nowrap" style-hover="text-decoration:none;box-shadow:0 8px 32px rgba(0,109,104,0.35)">직원 소개 보기 →</a>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isDocs }}" hint-placeholder-val="{{ false }}">
+        <div class="docs-shell" style="display:grid;grid-template-columns:264px minmax(0,1fr) 200px;gap:36px;align-items:start;margin-top:32px">
+
+          <aside class="docs-sidebar" style="position:sticky;top:88px;background:var(--color-surface);border:1px solid var(--border-1);border-radius:16px;padding:20px 16px;box-shadow:var(--shadow-sm)">
+            <div style="font:600 11px/1 var(--font-mono);letter-spacing:0.1em;text-transform:uppercase;color:var(--color-primary);padding:0 10px;margin-bottom:14px">{{ sidebar.label }}</div>
+            <nav style="display:flex;flex-direction:column;gap:2px">
+              <sc-for list="{{ sidebar.items }}" as="it" hint-placeholder-count="5">
+                <a class="sb-link" href="#{{ it.id }}" data-active="{{ it.active }}" onClick="{{ it.onClick }}" style="display:flex;gap:10px;align-items:baseline;padding:9px 12px;border-radius:8px;color:var(--fg-2);font-size:13.5px;line-height:1.45;letter-spacing:-0.025em;transition:background 150ms cubic-bezier(0.4,0,0.2,1),color 150ms cubic-bezier(0.4,0,0.2,1)" style-hover="background:var(--neutral-100);color:var(--fg-1);text-decoration:none">
+                  <span style="font:600 11px var(--font-mono);color:var(--color-primary);opacity:0.7;flex:none">{{ it.num }}</span>
+                  <span>{{ it.label }}</span>
+                </a>
+              </sc-for>
+            </nav>
+            <div style="margin-top:18px;padding-top:16px;border-top:1px solid var(--border-2);display:flex;flex-direction:column;gap:10px">
+              <a href="https://github.com/modu-ai/cowork-plugins" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;padding:0 10px;font-size:12.5px;font-weight:600;letter-spacing:-0.02em;color:var(--fg-3)" style-hover="color:var(--color-primary);text-decoration:none">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-1-2.6c3-.3 6-1.5 6-6.5a5 5 0 0 0-1.4-3.5 4.6 4.6 0 0 0-.1-3.5s-1.4-.4-4.5 1.7a12 12 0 0 0-6 0C6 .9 4.6 1.3 4.6 1.3a4.6 4.6 0 0 0-.1 3.5A5 5 0 0 0 3 8.3c0 5 3 6.2 6 6.5a3.4 3.4 0 0 0-1 2.6V21" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                <span>GitHub에서 보기</span>
+              </a>
+              <div style="padding:0 10px;font-size:11.5px;line-height:1.6;letter-spacing:-0.02em;color:var(--fg-3);font-family:var(--font-mono)">{{ sidebar.srcPath }}</div>
+            </div>
+          </aside>
+
+          <div class="page-body" style="min-width:0">
+            <nav aria-label="breadcrumb" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px;letter-spacing:-0.02em;color:var(--fg-3);margin-bottom:18px">
+              <a href="#home" onClick="{{ goHome }}" style="color:var(--fg-3)" style-hover="color:var(--color-primary)">홈</a>
+              <span>/</span>
+              <a href="#{{ crumb.sectionId }}" onClick="{{ crumb.onSection }}" style="color:var(--fg-3)" style-hover="color:var(--color-primary)">{{ crumb.sectionLabel }}</a>
+              <sc-if value="{{ crumb.hasLeaf }}" hint-placeholder-val="{{ false }}">
+                <span style="display:inline-flex;gap:8px"><span>/</span><span style="color:var(--fg-2);font-weight:600">{{ crumb.leaf }}</span></span>
+              </sc-if>
+            </nav>
+
+            <sc-if value="{{ isDetail }}" hint-placeholder-val="{{ false }}">
+              <div style="background:var(--color-surface);border:1px solid var(--border-1);border-radius:16px;padding:32px 34px;box-shadow:var(--shadow-sm);display:flex;gap:26px;align-items:flex-start;justify-content:space-between;margin-bottom:8px">
+                <div style="min-width:0">
+                  <h1 style="margin:0 0 14px;font-size:32px;line-height:1.2;font-weight:800;letter-spacing:-0.055em;color:var(--fg-1);text-wrap:pretty">{{ page.title }}</h1>
+                  <p style="margin:0;font-size:16.5px;line-height:1.8;letter-spacing:-0.03em;color:var(--fg-2);text-wrap:pretty">{{ page.lead }}</p>
+                </div>
+                <sc-if value="{{ showMascots }}" hint-placeholder-val="{{ false }}">
+                  <div style="flex:none;width:96px;height:96px;border-radius:16px;background:var(--gradient-signature-soft);border:1px solid var(--border-1);display:flex;align-items:center;justify-content:center;padding:10px;box-sizing:border-box">
+                    <sc-if value="{{ isStartSec }}" hint-placeholder-val="{{ false }}"><img class="mascot-img" src="assets/characters/MoAI-Mascot-Teaching.png" alt="지시봉으로 설명하는 모아이 마스코트" style="width:100%;height:100%;object-fit:contain;display:block"></sc-if>
+                    <sc-if value="{{ isGuideSec }}" hint-placeholder-val="{{ false }}"><img class="mascot-img" src="assets/characters/MoAI-Mascot-Thinking.png" alt="턱을 괸 생각하는 모아이 마스코트" style="width:100%;height:100%;object-fit:contain;display:block"></sc-if>
+                    <sc-if value="{{ isAgentsSec }}" hint-placeholder-val="{{ false }}"><img class="mascot-img" src="assets/characters/MoAI-Mascot-Pointing.png" alt="손가락으로 가리키는 모아이 마스코트" style="width:100%;height:100%;object-fit:contain;display:block"></sc-if>
+                    <sc-if value="{{ isPluginsSec }}" hint-placeholder-val="{{ false }}"><img class="mascot-img" src="assets/characters/MoAI-Mascot-Inspecting.png" alt="대상을 자세히 관찰하는 모아이 마스코트" style="width:100%;height:100%;object-fit:contain;display:block"></sc-if>
+                    <sc-if value="{{ isCookbookSec }}" hint-placeholder-val="{{ false }}"><img class="mascot-img" src="assets/characters/MoAI-Mascot-Coffee.png" alt="커피 한 잔을 든 모아이 마스코트" style="width:100%;height:100%;object-fit:contain;display:block"></sc-if>
+                    <sc-if value="{{ isTracksSec }}" hint-placeholder-val="{{ false }}"><img class="mascot-img" src="assets/characters/MoAI-Mascot-Celebrating.png" alt="두 주먹 올려 환호하는 모아이 마스코트" style="width:100%;height:100%;object-fit:contain;display:block"></sc-if>
+                    <sc-if value="{{ isReleasesSec }}" hint-placeholder-val="{{ false }}"><img class="mascot-img" src="assets/characters/MoAI-Mascot-Searching.png" alt="돋보기로 탐색하는 모아이 마스코트" style="width:100%;height:100%;object-fit:contain;display:block"></sc-if>
+                    <sc-if value="{{ isHelpSec }}" hint-placeholder-val="{{ false }}"><img class="mascot-img" src="assets/characters/MoAI-Mascot-Frustrated.png" alt="머리 숙이고 좌절한 모아이 마스코트" style="width:100%;height:100%;object-fit:contain;display:block"></sc-if>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-if>
+
+            <sc-for list="{{ page.blocks }}" as="b" hint-placeholder-count="6">
+              <div style="margin-top:28px">
+                <sc-if value="{{ b.isH2 }}" hint-placeholder-val="{{ false }}">
+                  <h2 id="{{ b.anchor }}" style="margin:14px 0 14px;font-size:24px;line-height:1.3;font-weight:800;letter-spacing:-0.05em;color:var(--fg-1);text-wrap:pretty;scroll-margin-top:88px">{{ b.text }}</h2>
+                </sc-if>
+                <sc-if value="{{ b.isPara }}" hint-placeholder-val="{{ false }}">
+                  <p style="margin:0;font-size:16px;line-height:1.85;letter-spacing:-0.03em;color:var(--fg-1);text-wrap:pretty">{{ b.text }}</p>
+                </sc-if>
+                <sc-if value="{{ b.isList }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex;flex-direction:column;gap:10px">
+                    <sc-for list="{{ b.items }}" as="li" hint-placeholder-count="3">
+                      <div style="display:flex;gap:11px;align-items:flex-start;font-size:15.5px;line-height:1.75;letter-spacing:-0.03em;color:var(--fg-1)">
+                        <span style="color:var(--color-primary);font-weight:700;flex:none;line-height:1.6">·</span><span>{{ li }}</span>
+                      </div>
+                    </sc-for>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ b.isSteps }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex;flex-direction:column;gap:12px">
+                    <sc-for list="{{ b.items }}" as="sp" hint-placeholder-count="3">
+                      <div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:start;background:var(--color-surface);border:1px solid var(--border-1);border-radius:12px;padding:18px 20px;box-shadow:var(--shadow-xs)">
+                        <span style="width:26px;height:26px;border-radius:9999px;background:var(--color-primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex:none">{{ sp.n }}</span>
+                        <div style="min-width:0">
+                          <sc-if value="{{ sp.hasTitle }}" hint-placeholder-val="{{ false }}">
+                            <div style="font-size:15.5px;font-weight:700;letter-spacing:-0.03em;color:var(--fg-1);margin-bottom:5px">{{ sp.title }}</div>
+                          </sc-if>
+                          <div style="font-size:15px;line-height:1.75;letter-spacing:-0.03em;color:var(--fg-2)">{{ sp.desc }}</div>
+                        </div>
+                      </div>
+                    </sc-for>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ b.isTable }}" hint-placeholder-val="{{ false }}">
+                  <div style="background:var(--color-surface);border:1px solid var(--border-1);border-radius:16px;box-shadow:var(--shadow-sm);overflow:hidden">
+                    <div style="display:flex;gap:16px;padding:13px 22px;background:var(--neutral-100);border-bottom:1px solid var(--border-1)">
+                      <sc-for list="{{ b.head }}" as="h" hint-placeholder-count="3">
+                        <div style="flex:1;min-width:0;font-family:var(--font-mono);font-size:11.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--fg-3)">{{ h }}</div>
+                      </sc-for>
+                    </div>
+                    <sc-for list="{{ b.rows }}" as="r" hint-placeholder-count="4">
+                      <div style="display:flex;gap:16px;padding:14px 22px;border-bottom:1px solid var(--border-2)">
+                        <sc-for list="{{ r }}" as="c" hint-placeholder-count="3">
+                          <div style="flex:1;min-width:0;font-size:14px;line-height:1.65;letter-spacing:-0.025em;color:var(--fg-1)">{{ c }}</div>
+                        </sc-for>
+                      </div>
+                    </sc-for>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ b.isMermaid }}" hint-placeholder-val="{{ false }}">
+                  <figure style="margin:0;background:var(--color-surface);border:1px solid var(--border-1);border-radius:16px;padding:30px;box-shadow:var(--shadow-sm)">
+                    <x-import component-from-global-scope="AIDesignSystem_88ef5d.MermaidDiagram" chart="{{ b.chart }}" hint-size="100%,220px"></x-import>
+                    <figcaption style="margin-top:16px;font-size:13px;line-height:1.6;letter-spacing:-0.025em;color:var(--fg-2);text-align:center">{{ b.cap }}</figcaption>
+                  </figure>
+                </sc-if>
+                <sc-if value="{{ b.isCode }}" hint-placeholder-val="{{ false }}">
+                  <div style="background:#09110f;border:1px solid rgba(255,255,255,0.09);border-radius:12px;box-shadow:var(--shadow-md);overflow:hidden">
+                    <div style="display:flex;align-items:center;gap:8px;padding:11px 16px;background:rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.08)">
+                      <span style="width:11px;height:11px;border-radius:9999px;background:#ff5f57"></span>
+                      <span style="width:11px;height:11px;border-radius:9999px;background:#febc2e"></span>
+                      <span style="width:11px;height:11px;border-radius:9999px;background:#28c840"></span>
+                      <span style="margin-left:8px;font-family:var(--font-mono);font-size:12px;color:rgba(255,255,255,0.5)">{{ b.term }}</span>
+                    </div>
+                    <div style="padding:18px 22px;font-family:var(--font-mono);font-size:12.5px;line-height:1.95;overflow-x:auto">
+                      <sc-for list="{{ b.lines }}" as="ln" hint-placeholder-count="3">
+                        <div style="white-space:pre">
+                          <sc-if value="{{ ln.isCmd }}" hint-placeholder-val="{{ false }}"><span style="color:#e6e6e6"><span style="color:#5ea885;font-weight:700">{{ ln.sigil }}</span>{{ ln.text }}</span></sc-if>
+                          <sc-if value="{{ ln.isOut }}" hint-placeholder-val="{{ false }}"><span style="color:#9fa0a0">{{ ln.text }}</span></sc-if>
+                        </div>
+                      </sc-for>
+                    </div>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ b.isNote }}" hint-placeholder-val="{{ false }}">
+                  <div style="background:var(--gradient-signature-soft);border:1px solid var(--border-1);border-radius:12px;padding:20px 22px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:start">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.75" style="margin-top:3px"><circle cx="12" cy="12" r="9"></circle><path d="M12 16v-5M12 8h.01" stroke-linecap="round"></path></svg>
+                    <div style="min-width:0">
+                      <div style="font-size:13px;font-weight:700;letter-spacing:-0.02em;color:var(--color-primary);margin-bottom:8px">{{ b.title }}</div>
+                      <div style="font-size:15px;line-height:1.75;letter-spacing:-0.03em;color:var(--fg-1);text-wrap:pretty">{{ b.text }}</div>
+                    </div>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ b.isTip }}" hint-placeholder-val="{{ false }}">
+                  <div style="background:var(--gradient-signature-soft);border:1px solid var(--color-primary);border-radius:12px;padding:20px 22px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:start">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.75" style="margin-top:3px"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    <div style="min-width:0">
+                      <div style="font-size:13px;font-weight:700;letter-spacing:-0.02em;color:var(--color-primary);margin-bottom:8px">{{ b.title }}</div>
+                      <div style="font-size:15px;line-height:1.75;letter-spacing:-0.03em;color:var(--fg-1);text-wrap:pretty">{{ b.text }}</div>
+                    </div>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ b.isWarn }}" hint-placeholder-val="{{ false }}">
+                  <div style="background:rgba(212,160,23,0.1);border:1px solid rgba(212,160,23,0.4);border-radius:12px;padding:20px 22px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:start">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a8760a" stroke-width="1.75" style="margin-top:3px"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    <div style="min-width:0">
+                      <div style="font-size:13px;font-weight:700;letter-spacing:-0.02em;color:#8a6108;margin-bottom:8px">{{ b.title }}</div>
+                      <div style="font-size:15px;line-height:1.75;letter-spacing:-0.03em;color:var(--fg-1);text-wrap:pretty">{{ b.text }}</div>
+                    </div>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ b.isCards }}" hint-placeholder-val="{{ false }}">
+                  <div class="grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+                    <sc-for list="{{ b.items }}" as="cd" hint-placeholder-count="6">
+                      <a href="#{{ cd.id }}" onClick="{{ cd.onClick }}" style="display:block;background:var(--color-surface);border:1px solid var(--border-1);border-radius:16px;padding:22px;box-shadow:var(--shadow-sm);transition:transform 200ms cubic-bezier(0.4,0,0.2,1),box-shadow 200ms cubic-bezier(0.4,0,0.2,1)" style-hover="transform:translateY(-2px);box-shadow:var(--shadow-md);text-decoration:none">
+                        <sc-if value="{{ cd.hasTag }}" hint-placeholder-val="{{ false }}">
+                          <div style="font-family:var(--font-mono);font-size:11.5px;font-weight:600;color:var(--color-primary);background:var(--gradient-signature-soft);display:inline-block;padding:3px 9px;border-radius:6px;margin-bottom:12px">{{ cd.tag }}</div>
+                        </sc-if>
+                        <div style="font-size:16px;font-weight:800;letter-spacing:-0.04em;color:var(--fg-1);margin-bottom:7px;text-wrap:pretty">{{ cd.title }}</div>
+                        <p style="margin:0;font-size:13.5px;line-height:1.65;letter-spacing:-0.025em;color:var(--fg-2)">{{ cd.desc }}</p>
+                      </a>
+                    </sc-for>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ b.isChips }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex;flex-wrap:wrap;gap:8px">
+                    <sc-for list="{{ b.items }}" as="cp" hint-placeholder-count="8">
+                      <span style="font-family:var(--font-mono);font-size:12.5px;font-weight:600;letter-spacing:-0.01em;color:var(--color-primary);background:var(--gradient-signature-soft);border:1px solid var(--border-1);padding:5px 12px;border-radius:32px">{{ cp }}</span>
+                    </sc-for>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ b.isFaq }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex;flex-direction:column;gap:10px">
+                    <sc-for list="{{ b.items }}" as="fq" hint-placeholder-count="4">
+                      <details class="faq" style="background:var(--color-surface);border:1px solid var(--border-1);border-radius:12px;padding:0;box-shadow:var(--shadow-xs);overflow:hidden">
+                        <summary style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 22px;font-size:15.5px;font-weight:700;letter-spacing:-0.03em;color:var(--fg-1)">
+                          <span style="min-width:0">{{ fq.q }}</span>
+                          <span class="faq-plus" style="flex:none;color:var(--color-primary);font-size:18px;font-weight:400;transition:transform 200ms cubic-bezier(0.4,0,0.2,1)">+</span>
+                        </summary>
+                        <div style="padding:0 22px 20px;font-size:15px;line-height:1.8;letter-spacing:-0.03em;color:var(--fg-2);text-wrap:pretty">{{ fq.a }}</div>
+                      </details>
+                    </sc-for>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ b.isDeflist }}" hint-placeholder-val="{{ false }}">
+                  <div style="background:var(--color-surface);border:1px solid var(--border-1);border-radius:16px;box-shadow:var(--shadow-sm);overflow:hidden">
+                    <sc-for list="{{ b.items }}" as="df" hint-placeholder-count="4">
+                      <div style="display:grid;grid-template-columns:180px minmax(0,1fr);gap:20px;padding:16px 24px;border-bottom:1px solid var(--border-2)">
+                        <div style="font-size:14.5px;font-weight:700;letter-spacing:-0.03em;color:var(--fg-1)">{{ df.term }}</div>
+                        <div style="font-size:14.5px;line-height:1.7;letter-spacing:-0.03em;color:var(--fg-2)">{{ df.desc }}</div>
+                      </div>
+                    </sc-for>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ b.isIndex }}" hint-placeholder-val="{{ false }}">
+                  <div style="background:var(--color-surface);border:1px solid var(--border-1);border-radius:16px;box-shadow:var(--shadow-sm);overflow:hidden">
+                    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 22px;background:var(--neutral-100);border-bottom:1px solid var(--border-1)">
+                      <div style="font-family:var(--font-mono);font-size:11.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--fg-3)">{{ b.title }}</div>
+                      <div style="font-family:var(--font-mono);font-size:11.5px;font-weight:700;color:var(--color-primary)">{{ b.count }}</div>
+                    </div>
+                    <sc-for list="{{ b.items }}" as="ix" hint-placeholder-count="8">
+                      <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;padding:12px 22px;border-bottom:1px solid var(--border-2);align-items:center">
+                        <div style="font-size:14.5px;line-height:1.6;letter-spacing:-0.03em;color:var(--fg-1);min-width:0">{{ ix.title }}</div>
+                        <div style="font-family:var(--font-mono);font-size:11.5px;color:var(--fg-3);white-space:nowrap">{{ ix.note }}</div>
+                      </div>
+                    </sc-for>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ b.isSources }}" hint-placeholder-val="{{ false }}">
+                  <div style="border-top:1px solid var(--border-1);padding-top:20px">
+                    <div style="font:600 11px/1 var(--font-mono);letter-spacing:0.08em;text-transform:uppercase;color:var(--fg-3);margin-bottom:10px">Sources</div>
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                      <sc-for list="{{ b.items }}" as="sr" hint-placeholder-count="2">
+                        <div style="font-size:13px;line-height:1.7;letter-spacing:-0.02em;color:var(--fg-2)">{{ sr }}</div>
+                      </sc-for>
+                    </div>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-for>
+
+            <div style="margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <sc-if value="{{ pager.hasPrev }}" hint-placeholder-val="{{ false }}">
+                <a href="#{{ pager.prevId }}" onClick="{{ pager.onPrev }}" style="display:block;background:var(--color-surface);border:1px solid var(--border-1);border-radius:12px;padding:18px 22px;transition:transform 200ms cubic-bezier(0.4,0,0.2,1),box-shadow 200ms cubic-bezier(0.4,0,0.2,1)" style-hover="transform:translateY(-2px);box-shadow:var(--shadow-md);text-decoration:none">
+                  <div style="font-size:12px;font-weight:600;letter-spacing:-0.02em;color:var(--fg-3);margin-bottom:6px">← 이전</div>
+                  <div style="font-size:15px;font-weight:700;letter-spacing:-0.03em;color:var(--fg-1)">{{ pager.prevLabel }}</div>
+                </a>
+              </sc-if>
+              <sc-if value="{{ pager.hasNext }}" hint-placeholder-val="{{ false }}">
+                <a href="#{{ pager.nextId }}" onClick="{{ pager.onNext }}" style="display:block;background:var(--color-surface);border:1px solid var(--border-1);border-radius:12px;padding:18px 22px;text-align:right;transition:transform 200ms cubic-bezier(0.4,0,0.2,1),box-shadow 200ms cubic-bezier(0.4,0,0.2,1);grid-column:2" style-hover="transform:translateY(-2px);box-shadow:var(--shadow-md);text-decoration:none">
+                  <div style="font-size:12px;font-weight:600;letter-spacing:-0.02em;color:var(--fg-3);margin-bottom:6px">다음 →</div>
+                  <div style="font-size:15px;font-weight:700;letter-spacing:-0.03em;color:var(--fg-1)">{{ pager.nextLabel }}</div>
+                </a>
+              </sc-if>
+            </div>
+          </div>
+
+          <aside class="toc-rail" style="position:sticky;top:88px">
+            <div style="font:600 11px/1 var(--font-mono);letter-spacing:0.1em;text-transform:uppercase;color:var(--color-primary);margin-bottom:12px;padding-left:12px">이 페이지</div>
+            <nav style="display:flex;flex-direction:column;gap:1px;border-left:1px solid var(--border-1)">
+              <sc-for list="{{ toc }}" as="tc" hint-placeholder-count="5">
+                <a class="toc-link" href="#{{ tc.anchor }}" data-active="{{ tc.active }}" onClick="{{ tc.onClick }}" style="padding:7px 12px;margin-left:-1px;border-left:1px solid transparent;color:var(--fg-3);font-size:12.5px;line-height:1.5;letter-spacing:-0.025em;transition:color 150ms cubic-bezier(0.4,0,0.2,1)" style-hover="color:var(--fg-1);text-decoration:none">{{ tc.text }}</a>
+              </sc-for>
+            </nav>
+          </aside>
+
+        </div>
+      </sc-if>
+
+    </div>
+  </main>
+
+  <footer style="background:var(--color-surface);border-top:1px solid var(--border-1)">
+    <div style="max-width:1440px;margin:0 auto;padding:36px 32px 30px">
+      <div style="display:flex;align-items:flex-start;gap:28px;flex-wrap:wrap;margin-bottom:26px">
+        <div style="flex:none;width:56px;height:56px;border-radius:14px;background:#fff;border:1px solid var(--border-1);display:flex;align-items:center;justify-content:center;overflow:hidden"><img src="assets/moai-logo-1.png" alt="모두의AI" style="width:42px;height:42px;object-fit:contain;display:block"></div>
+        <div style="flex:1;min-width:260px">
+          <div style="font-size:14px;font-weight:700;letter-spacing:-0.03em;color:var(--fg-1);margin-bottom:6px">모두의 코워크 — 한국어 문서 (커뮤니티)</div>
+          <div style="font-size:12.5px;line-height:1.7;letter-spacing:-0.02em;color:var(--fg-2)">
+            <a href="https://github.com/modu-ai/cowork-plugins" target="_blank" rel="noopener" style="color:var(--fg-2)">GitHub</a> ·
+            <a href="https://github.com/modu-ai/cowork-plugins/blob/main/LICENSE" target="_blank" rel="noopener" style="color:var(--fg-2)">MIT License</a> ·
+            원문 저작권 © <a href="https://www.anthropic.com" target="_blank" rel="noopener" style="color:var(--fg-2)">Anthropic</a>, <a href="https://github.com/modu-ai" target="_blank" rel="noopener" style="color:var(--fg-2)">modu-ai</a>
+          </div>
+        </div>
+        <nav aria-label="푸터 메뉴" style="display:flex;gap:32px;flex-wrap:wrap">
+          <sc-for list="{{ footerNav }}" as="fg" hint-placeholder-count="3">
+            <div>
+              <div style="font-size:11.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--fg-3);font-family:var(--font-mono);margin-bottom:10px">{{ fg.label }}</div>
+              <div style="display:flex;flex-direction:column;gap:7px">
+                <sc-for list="{{ fg.items }}" as="fi" hint-placeholder-count="3">
+                  <a href="#{{ fi.id }}" onClick="{{ fi.onClick }}" style="font-size:13px;letter-spacing:-0.025em;color:var(--fg-2)" style-hover="color:var(--color-primary);text-decoration:none">{{ fi.label }}</a>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </nav>
+      </div>
+      <div style="border-top:1px solid var(--border-2);padding-top:18px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12px;letter-spacing:-0.02em;color:var(--fg-3)">
+        <span>모두를 위한 AI를, 모두와 함께</span>
+        <span style="font-family:var(--font-mono)">claude.mo.ai.kr · 8 섹션 · 207 문서</span>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;page&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;home&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;start&quot;,&quot;start/install&quot;,&quot;start/concepts&quot;,&quot;start/first-task&quot;,&quot;guide&quot;,&quot;guide/chat&quot;,&quot;guide/cowork&quot;,&quot;guide/design&quot;,&quot;guide/code&quot;,&quot;agents&quot;,&quot;agents/coworker&quot;,&quot;plugins&quot;,&quot;plugins/install&quot;,&quot;plugins/agents&quot;,&quot;plugins/teams&quot;,&quot;cookbook&quot;,&quot;cookbook/skill-chaining&quot;,&quot;cookbook/projects&quot;,&quot;tracks&quot;,&quot;tracks/documents&quot;,&quot;releases&quot;,&quot;releases/v2-27&quot;,&quot;help&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;페이지&quot;},&quot;showMascots&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;페이지&quot;}}">
+class Component extends DCLogic {
+  state = { route: null, activeAnchor: null };
+
+  go(id) {
+    return (e) => { if (e) e.preventDefault(); this.setState({ route: id, activeAnchor: null }); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+  }
+  jump(anchor) {
+    return (e) => {
+      if (e) e.preventDefault();
+      const el = document.getElementById(anchor);
+      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 84, behavior: 'smooth' });
+      this.setState({ activeAnchor: anchor });
+    };
+  }
+
+  renderVals() {
+    const p = this.props || {};
+    const route = this.state.route || p.page || 'home';
+    const showMascots = p.showMascots ?? true;
+    const go = (id) => this.go(id);
+
+    const SECTIONS = {
+      start: { label: '시작하기', src: 'content/getting-started/' },
+      guide: { label: '가이드', src: 'content/guide/' },
+      agents: { label: 'MoAI-Agents', src: 'content/moai-agents/' },
+      plugins: { label: '플러그인', src: 'content/plugins/' },
+      cookbook: { label: '쿡북', src: 'content/cookbook/' },
+      tracks: { label: '실전 트랙', src: 'content/cookbook/tracks/' },
+      releases: { label: '릴리스', src: 'content/releases/' },
+      help: { label: '도움말', src: 'content/help/' },
+    };
+
+    const TREE = {
+      start: [
+        { id: 'start', num: '00', label: '개요' },
+        { id: 'start/install', num: '01', label: '설치 가이드' },
+        { id: 'start/concepts', num: '02', label: '도구와 기능 개념 기초' },
+        { id: 'start/first-task', num: '03', label: '첫 작업' },
+      ],
+      guide: [
+        { id: 'guide', num: '00', label: '가이드 개요' },
+        { id: 'guide/chat', num: '01', label: 'Chat' },
+        { id: 'guide/cowork', num: '02', label: 'Cowork' },
+        { id: 'guide/design', num: '03', label: 'Design' },
+        { id: 'guide/code', num: '04', label: 'Code' },
+      ],
+      agents: [
+        { id: 'agents', num: '00', label: '18 직원 개요' },
+        { id: 'agents/coworker', num: '01', label: '코워커' },
+      ],
+      plugins: [
+        { id: 'plugins', num: '00', label: '개요' },
+        { id: 'plugins/install', num: '01', label: '설치와 관리' },
+        { id: 'plugins/agents', num: '02', label: '전문가 에이전트 이해' },
+        { id: 'plugins/teams', num: '03', label: '팀 구성 패턴' },
+      ],
+      cookbook: [
+        { id: 'cookbook', num: '00', label: '쿡북 홈' },
+        { id: 'cookbook/skill-chaining', num: '01', label: '스킬 체이닝 가이드' },
+        { id: 'cookbook/projects', num: '02', label: '코워크 프로젝트' },
+      ],
+      tracks: [
+        { id: 'tracks', num: '00', label: '트랙 개요' },
+        { id: 'tracks/documents', num: '01', label: '문서 트랙' },
+      ],
+      releases: [
+        { id: 'releases', num: '00', label: '릴리스 정보' },
+        { id: 'releases/v2-27', num: '01', label: 'v2.27.0 릴리스 노트' },
+      ],
+      help: [{ id: 'help', num: '00', label: '도움말 개요' }],
+    };
+
+    const ix = (arr) => arr.map(t => (typeof t === 'string' ? { title: t, note: '' } : t));
+
+    const PAGES = {
+      start: {
+        blocks: [
+          { t: 'h2', text: '데스크탑 앱으로 무엇을 할 수 있나요 — 4단계 여정' },
+          { t: 'para', text: '운전을 배우는 과정에 비유하면, 처음엔 동네 마트까지 가보고(챗), 다음엔 짐을 싣고 나르고(코워크), 그다음엔 차를 꾸미고(디자인), 마지막엔 정비까지 직접 하게 되는(코드) 흐름입니다. 중요한 것은 모든 단계를 다 배울 필요가 없다는 점입니다. 챗만 잘 써도 이메일·보고서·요약 같은 일상 업무의 절반이 해결됩니다.' },
+          { t: 'mermaid', cap: '챗에서 시작해 필요한 만큼만 넓혀 가면 됩니다.', chart: `flowchart LR
+  A["① 챗<br/>대화로 묻고 답 받기"] --> B["② 코워크<br/>내 폴더에 파일 산출"]
+  B --> C["③ 디자인<br/>시각 결과물 제작"]
+  C --> D["④ 코드<br/>프로그램 제작"]` },
+          { t: 'cards', items: [
+            { tag: '① 챗', title: 'Chat', desc: '대화창에 질문하고 답을 받는 기본 단계. 이메일 초안, 문서 요약, 아이디어 정리.', id: 'guide/chat' },
+            { tag: '② 코워크', title: 'Cowork', desc: '내 컴퓨터 작업 폴더에 직접 파일을 만들고 고칩니다. PPT·엑셀·보고서가 실제로 생깁니다.', id: 'guide/cowork' },
+            { tag: '③ 디자인', title: 'Design', desc: '카드뉴스, 발표 슬라이드, 웹 화면 시안 같은 시각 결과물을 만듭니다.', id: 'guide/design' },
+            { tag: '④ 코드', title: 'Code', desc: '프로그램과 웹사이트를 직접 만들고 고칩니다. 개발자가 아니어도 시작할 수 있습니다.', id: 'guide/code' },
+          ] },
+          { t: 'h2', text: '이 섹션의 읽는 순서' },
+          { t: 'para', text: '아래 순서대로 읽으시는 것을 권장합니다. 급하다면 ①과 ④만 읽어도 첫 결과물까지 도달할 수 있고, 중간에 용어가 낯설게 느껴질 때 ②로 돌아오면 됩니다.' },
+          { t: 'cards', items: [
+            { tag: '01', title: '설치 가이드', desc: 'Claude Desktop을 설치하고 로그인하기. 요금제 차이도 여기서 봅니다.', id: 'start/install' },
+            { tag: '02', title: '도구와 기능 개념 기초', desc: '스킬·플러그인·에이전트·MCP 등 아홉 가지 개념을 비유로 정리합니다.', id: 'start/concepts' },
+            { tag: '03', title: '첫 작업', desc: '첫 직원을 채용하고 실제 요청을 던져 결과물을 받아봅니다.', id: 'start/first-task' },
+          ] },
+          { t: 'h2', text: '기대 효과' },
+          { t: 'list', items: [
+            'Claude Desktop이 설치되어 있고 내 계정으로 로그인되어 있습니다.',
+            '"플러그인이 뭐예요?"라는 질문에 스스로 답할 수 있습니다.',
+            '마켓플레이스에서 내 일에 맞는 직원을 골라 채용할 수 있습니다.',
+            '첫 요청을 던져 실제 결과물(문서·표·슬라이드)을 받아본 경험이 생깁니다.',
+          ] },
+          { t: 'tip', title: '낯선 용어가 나와도 괜찮습니다', text: '이 가이드의 모든 용어는 처음 등장할 때 일상 비유와 함께 풀어서 설명합니다. 플러그인은 "회사에 새로 들어오는 직원 패키지", 스킬은 "그 직원이 가지고 온 업무 매뉴얼"이라고 생각하면 됩니다.' },
+        ],
+      },
+      'start/install': {
+        title: '설치 가이드',
+        lead: 'Claude Desktop을 처음 설치하는 분을 위한 안내서입니다. 프로그램 설치라고 하면 어렵게 느껴질 수 있지만, 실제 과정은 스마트폰에 앱을 하나 까는 것과 크게 다르지 않습니다. 보통 커피 한 잔 내리는 시간이면 충분합니다.',
+        blocks: [
+          { t: 'para', text: '설치는 크게 세 걸음입니다. ① 다운로드(공식 사이트에서 설치 파일 받기) → ② 설치·실행(파일을 열어 프로그램 앉히기) → ③ 로그인(내 계정으로 들어가기). 계정이 아직 없다면 로그인 화면에서 바로 새로 만들 수 있으니 미리 준비할 것은 이메일 주소 하나뿐입니다.' },
+          { t: 'mermaid', cap: '세 걸음이면 첫 화면까지 도달합니다.', chart: `flowchart LR
+  A["① 다운로드<br/>claude.com/download"] --> B["② 설치·실행<br/>파일 열기"]
+  B --> C["③ 로그인<br/>계정 만들기 포함"]
+  C --> D["✅ 첫 화면<br/>대화 시작 가능"]` },
+          { t: 'note', title: '시스템 요구사항', text: 'macOS 11 이상 또는 Windows 10 이상 · 8GB 이상 RAM 권장 · 안정적인 인터넷 연결 (Claude는 인터넷을 통해 동작합니다).' },
+          { t: 'h2', text: '1단계: 설치 파일 다운로드' },
+          { t: 'steps', items: [
+            { n: '1', desc: '웹 브라우저(크롬, 사파리, 엣지 등)를 열고 주소창에 claude.com/download를 입력해 접속합니다.' },
+            { n: '2', desc: '페이지에서 Desktop 앱 항목을 찾습니다. macOS와 Windows 버튼이 나란히 보입니다.' },
+            { n: '3', desc: '내 컴퓨터에 맞는 버튼을 클릭합니다. 애플 컴퓨터(맥북, 아이맥)라면 macOS, 그 외 대부분의 회사·가정용 PC라면 Windows입니다.' },
+            { n: '4', desc: '클릭하면 다운로드가 시작되고, 브라우저 하단이나 다운로드 폴더에 파일이 저장됩니다.' },
+          ] },
+          { t: 'tip', title: '내 컴퓨터가 뭔지 모르겠다면', text: '키보드에 ⌘(command) 키가 있으면 macOS, 윈도우 로고(⊞) 키가 있으면 Windows입니다.' },
+          { t: 'h2', text: '2단계: 설치 실행' },
+          { t: 'para', text: 'macOS는 다운로드한 Claude.dmg를 더블클릭하고, 창이 열리면 Claude 아이콘을 Applications 폴더로 끌어다 놓습니다. 이 동작이 곧 설치입니다. Windows는 Claude-Setup.exe를 더블클릭한 뒤 "이 앱이 디바이스를 변경하도록 허용하시겠어요?" 창에서 예를 클릭하면 설치가 자동으로 진행됩니다.' },
+          { t: 'warn', title: '보안 경고가 뜨면', text: 'macOS에서 "확인되지 않은 개발자" 경고가 뜨면 시스템 설정 → 개인정보 보호 및 보안에서 "그래도 열기"를 클릭하세요. Windows에서 Defender가 막으면 "추가 정보 → 실행"입니다. 반드시 claude.com에서 받은 파일인지 먼저 확인하세요.' },
+          { t: 'h2', text: '3단계: 로그인 (계정 만들기 포함)' },
+          { t: 'para', text: 'Claude를 처음 실행하면 로그인 화면이 나타납니다. 로그인은 "이 프로그램의 주인이 나"라는 것을 알려주는 절차로, 이걸 해야 대화 기록이 내 계정에 안전하게 저장됩니다.' },
+          { t: 'steps', items: [
+            { n: '1', desc: '로그인 화면에서 이메일 주소를 입력하거나 Continue with Google 버튼을 클릭합니다. 구글 계정이 있다면 이 방법이 가장 간단합니다.' },
+            { n: '2', desc: '이메일로 진행한 경우, 입력한 주소로 로그인 코드가 담긴 메일이 옵니다. 메일함에서 코드를 확인해 입력합니다. 비밀번호를 외울 필요가 없는 방식입니다.' },
+            { n: '3', desc: '처음 가입이라면 이름 입력과 약관 동의 화면이 이어집니다. 안내에 따라 진행합니다.' },
+            { n: '4', desc: '로그인이 끝나면 가운데에 입력창이 있는 첫 화면이 나타납니다. 여기까지 오면 설치 완료입니다.' },
+          ] },
+          { t: 'h2', text: '요금제 개요' },
+          { t: 'para', text: 'Claude는 무료로 시작할 수 있고, 더 많이 쓰고 싶을 때 유료로 올리는 구조입니다. 휴대폰 요금제처럼 "기본 제공량"의 차이라고 이해하면 쉽습니다.' },
+          { t: 'table', head: ['요금제', '대략의 성격', '이런 분에게'], rows: [
+            ['Free (무료)', '기본 대화 가능, 사용량 제한 있음', '일단 체험해 보고 싶은 분'],
+            ['Pro (유료)', '사용량 대폭 확대, 고성능 모델, Projects 등 부가 기능', '매일 업무에 쓰는 분'],
+            ['Max (유료 상위)', 'Pro보다 훨씬 큰 사용량', '하루 종일 붙어서 쓰는 분'],
+            ['Team / Enterprise', '팀 단위 계정·관리 기능', '회사에서 여럿이 함께 쓰는 경우'],
+          ] },
+          { t: 'tip', title: '처음엔 무료로 충분합니다', text: '이 가이드의 실습은 전부 무료 요금제로도 따라올 수 있습니다. "메시지 한도에 도달했습니다"라는 안내를 자주 만나게 되는 시점이 유료 전환을 고민할 때입니다.' },
+          { t: 'h2', text: '설치 확인' },
+          { t: 'para', text: '마지막으로 제대로 설치되었는지 확인해 봅니다. 입력창에 아래 한 줄을 넣고 엔터를 눌러보세요. Claude가 인사와 함께 답을 하면 모든 준비가 끝난 것입니다.' },
+          { t: 'code', term: 'claude desktop — 새 대화', lines: [{ sigil: '>', text: ' 안녕하세요! 설치가 잘 됐는지 확인하고 싶어요.' }] },
+          { t: 'sources', items: ['원문: www/content/getting-started/install.md', 'claude.com/download'] },
+        ],
+      },
+      'start/concepts': {
+        title: '도구와 기능 개념 기초',
+        lead: 'Claude Desktop을 쓰다 보면 스킬, 플러그인, 에이전트, MCP 같은 낯선 단어가 계속 등장합니다. 이 문서는 앞으로 반복해서 만날 아홉 가지 개념을 한 번에, 일상 비유와 함께 정리해 두는 사전입니다.',
+        blocks: [
+          { t: 'note', title: '큰 그림 한 줄', text: '회사에 비유하면 — 대화는 회의실, Projects는 부서 사무실, 플러그인은 채용한 직원, 스킬은 그 직원의 업무 매뉴얼, MCP는 외부 거래처와 연결된 전화선입니다. 전부 외울 필요는 없습니다.' },
+          { t: 'h2', text: '아홉 가지 개념 사전' },
+          { t: 'deflist', items: [
+            { term: '1. 대화(채팅)', desc: '회의실. 같은 대화 안에서는 앞서 한 말을 기억하고 이어갑니다. 주제가 바뀌면 새 대화를 여세요.' },
+            { term: '2. Projects', desc: '부서 사무실. 관련 대화와 참고 자료를 한데 묶는 작업 공간. 캐비닛에 올린 자료를 모든 대화가 참고합니다.' },
+            { term: '3. 스킬', desc: '업무 매뉴얼. 특정 업무를 잘 처리하는 방법을 적어둔 문서. 사용자가 펼칠 필요 없이 Claude가 알아서 꺼내 봅니다.' },
+            { term: '4. 플러그인', desc: '직원 패키지. 스킬·에이전트·MCP를 한 상자에 담은 것. 그래서 이 사이트는 플러그인을 "직원"이라 부릅니다.' },
+            { term: '5. 에이전트', desc: '일하는 담당자. 매뉴얼을 들고 실제로 일을 수행합니다. 복잡한 일은 조사·작성·검토 담당으로 나뉩니다.' },
+            { term: '6. MCP 커넥터', desc: '표준 어댑터. 지메일·캘린더·쇼핑몰 등 외부 서비스와 연결하는 통로. 말만 하는 존재에서 조작하는 존재로.' },
+            { term: '7. 아티팩트', desc: '결과물 카드. 문서·표·웹페이지를 대화 옆 독립 카드로 띄웁니다. "결과물은 카드로, 논의는 대화로".' },
+            { term: '8. 파일 업로드', desc: '자료 건네주기. 내 문서·이미지·표를 읽게 하는 기능. 그 대화 안에서만 참고됩니다.' },
+            { term: '9. 메모리', desc: '나를 기억하는 수첩. 대화가 끝나도 기억해 두는 정보. 설정에서 확인·삭제할 수 있습니다.' },
+          ] },
+          { t: 'h2', text: '네 가지 개념의 관계 한눈에 보기' },
+          { t: 'para', text: '마켓플레이스(직원 소개소)에서 플러그인(직원 패키지)을 채용하면, 그 안의 에이전트(직원)가 스킬(매뉴얼)대로 일하고, 필요하면 MCP 커넥터(외부 통로)로 바깥 서비스까지 다녀옵니다.' },
+          { t: 'mermaid', cap: '스킬 · 에이전트 · 플러그인 · MCP가 맞물리는 구조.', chart: `flowchart TD
+  M["마켓플레이스<br/>직원 소개소"] -->|채용| P["플러그인<br/>직원 패키지"]
+  P --> S["스킬<br/>업무 매뉴얼"]
+  P --> A["에이전트<br/>일하는 직원"]
+  P --> C["MCP 커넥터<br/>외부 통로"]
+  S -->|매뉴얼 제공| A
+  C -->|외부 서비스 연결| E["지메일 · 캘린더<br/>쇼핑몰 등"]
+  A -->|일 수행| R["결과물<br/>아티팩트 · 파일"]` },
+          { t: 'tip', title: '실제 사용 상황', text: '캘린더 MCP를 연결한 뒤 "다음 주에 김 부장님과 1시간 회의 가능한 시간 찾아서 잡아줘"라고 하면, Claude가 실제 내 캘린더를 열어 빈 시간을 찾고 일정을 등록합니다.' },
+          { t: 'sources', items: ['원문: www/content/getting-started/concepts.md'] },
+        ],
+      },
+      'start/first-task': {
+        title: '첫 작업',
+        lead: '설치와 개념 정리가 끝났다면 이제 실제로 일을 시켜볼 차례입니다. 할 일은 딱 세 가지 — ① 직원 소개소(마켓플레이스)를 등록하고 → ② 내 일에 맞는 직원을 한 명 채용하고 → ③ 첫 요청을 던져 결과물을 받아봅니다. 처음이라면 10분이면 충분합니다.',
+        blocks: [
+          { t: 'mermaid', cap: '세 단계로 첫 결과물까지.', chart: `flowchart LR
+  A["① 마켓플레이스 등록<br/>직원 소개소 방문"] --> B["② 직원 채용<br/>플러그인 설치"]
+  B --> C["③ 첫 요청<br/>한 줄 주문"]
+  C --> D["✅ 결과물 확인"]` },
+          { t: 'h2', text: '1단계: 마켓플레이스 등록' },
+          { t: 'para', text: '마켓플레이스 등록은 한 번만 하면 됩니다. 앱스토어에 계정을 연결해 두는 것과 같아서, 등록해 두면 이후에는 목록에서 직원을 골라 채용하기만 하면 됩니다. Claude Desktop에서는 설정(Settings) → 플러그인(Plugins) → 마켓플레이스 추가(Add marketplace)를 열고 modu-ai/moai-cowork를 입력합니다.' },
+          { t: 'code', term: 'terminal — claude code 사용자', lines: [
+            { sigil: '$', text: ' claude plugin marketplace add modu-ai/moai-cowork' },
+            { sigil: '', text: '  ✓ Added marketplace: moai-cowork (18 plugins)', out: true },
+          ] },
+          { t: 'h2', text: '2단계: 첫 직원 선택 — 어떤 일을 하고 싶으세요?' },
+          { t: 'para', text: '직원을 전부 채용할 필요는 없습니다. 오히려 처음에는 지금 가장 급한 일 하나에 맞는 직원 한 명만 데려오는 것이 좋습니다. 직원이 많아질수록 Claude가 참고할 매뉴얼도 많아져서 필요 없는 직원은 자리만 차지합니다.' },
+          { t: 'table', head: ['하고 싶은 일', '채용할 직원', '대표 업무'], rows: [
+            ['보고서·기획서·회의록 등 사무 문서 전반', 'moai-coworker (만능 사무직원)', '문서 작성, PPT·엑셀, 요약·정리'],
+            ['블로그·보도자료·뉴스레터 등 글쓰기', 'moai-writer (작가)', '원고 작성, 윤문, 어투 교정'],
+            ['SNS·광고·캠페인 마케팅', 'moai-marketer (마케터)', '카피, 콘텐츠 기획, 광고 운영'],
+            ['스마트스토어·카페24 쇼핑몰 운영', 'moai-seller (셀러)', '상품 등록, 주문·리뷰 관리, 매출 분석'],
+            ['계약서 검토·법령 확인', 'moai-lawyer (법무 담당)', '계약서 분석, 판례·법령 검색'],
+            ['여러 직원을 팀으로 묶어 큰 일 진행', 'moai-pm (팀장)', '프로젝트 설계, 직원 배정'],
+          ] },
+          { t: 'h2', text: '3단계: 첫 요청 예시' },
+          { t: 'para', text: '요청은 평소 동료에게 부탁하듯 자연스러운 문장이면 충분합니다. 그대로 복사해 붙여넣고, 상황만 내 것으로 바꿔보세요.' },
+          { t: 'code', term: 'claude — moai-coworker 채용 시', lines: [
+            { sigil: '>', text: ' 다음 주 월요일 팀 회의에서 쓸 \'상반기 업무 정리\' 보고서 초안을 만들어줘.' },
+            { sigil: '', text: '   우리 팀은 온라인 쇼핑몰 고객센터 5명이고, 상반기 주요 성과는', out: true },
+            { sigil: '', text: '   응답 시간 단축이랑 리뷰 평점 상승이야. A4 2장 분량으로.', out: true },
+          ] },
+          { t: 'code', term: 'claude — moai-writer 채용 시', lines: [
+            { sigil: '>', text: ' 우리 카페 인스타그램에 올릴 신메뉴 소개 글을 3가지 버전으로 써줘.' },
+            { sigil: '', text: '   신메뉴는 \'흑임자 크림 라떼\', 타깃은 20-30대 직장인, 어투는 친근하고 과장 없이.', out: true },
+          ] },
+          { t: 'tip', title: '결과가 너무 일반적이면', text: '상황·대상·분량을 한 문장씩 더 붙여보세요. 요청이 구체적일수록 결과도 구체적입니다. 마음에 들지 않으면 새로 시작할 필요 없이 같은 대화에서 "더 짧게", "어투를 격식 있게"처럼 이어서 고치면 됩니다.' },
+          { t: 'sources', items: ['원문: www/content/getting-started/first-task.md', 'github.com/modu-ai/moai-cowork'] },
+        ],
+      },
+      guide: {
+        blocks: [
+          { t: 'h2', text: '네 개의 제품, 하나의 앱' },
+          { t: 'para', text: 'Claude Desktop은 하나의 프로그램 안에 네 가지 일하는 방식이 들어 있는 "AI 사무실"입니다. 이 섹션은 제품별로 무엇을 할 수 있고 어떤 기능이 있는지를 다룹니다. 총 75개 문서로 구성되며, 제품 경계가 헷갈릴 때는 각 섹션의 비교 문서를 먼저 보세요.' },
+          { t: 'cards', items: [
+            { tag: '17 문서', title: 'Chat', desc: '첫 대화·프롬프트 작성법·Projects·메모리·아티팩트·리서치·확장 사고·요금제까지.', id: 'guide/chat' },
+            { tag: '25 문서', title: 'Cowork', desc: '격리 VM 아키텍처·폴더 권한·스킬·플러그인·커넥터·예약 작업·컴퓨터 사용.', id: 'guide/cowork' },
+            { tag: '13 문서', title: 'Design', desc: '시작하기·디자인 시스템 설정·리파인먼트·내보내기와 핸드오프·협업.', id: 'guide/design' },
+            { tag: '20 문서', title: 'Code', desc: '설치·슬래시 명령·워크플로우·CLAUDE.md 메모리·권한·샌드박스·GitHub Actions.', id: 'guide/code' },
+          ] },
+          { t: 'h2', text: '제품 경계 한눈에' },
+          { t: 'table', head: ['제품', '무엇을 하나', '결과물이 어디에'], rows: [
+            ['Chat', '대화로 묻고 답 받기', '대화창 · 아티팩트 카드'],
+            ['Cowork', '격리 VM에서 파일을 직접 만들고 고치기', '내 작업 폴더의 실제 파일'],
+            ['Design', '시각 시안·컴포넌트·토큰 제작', '디자인 문서 · 내보내기 핸드오프'],
+            ['Code', '프로그램·웹사이트 제작과 자동화', '코드 저장소 · CI'],
+          ] },
+          { t: 'note', title: '어디서부터 볼까요', text: '비개발자라면 Chat → Cowork 순서를 권합니다. Chat만 잘 써도 일상 업무의 절반이 해결되고, 파일 산출물이 필요해질 때 Cowork로 넘어가면 됩니다.' },
+        ],
+      },
+      'guide/chat': {
+        title: 'Chat', lead: '대화창에 질문하고 답을 받는 가장 기본 단계입니다. 이메일 초안, 문서 요약, 아이디어 정리가 여기서 이루어집니다. 이 섹션은 17개 문서로 첫 대화부터 요금제까지 다룹니다.',
+        blocks: [
+          { t: 'h2', text: '기초 — 처음 쓰는 분' },
+          { t: 'cards', items: [
+            { tag: 'w10', title: '첫 대화 시작하기', desc: '입력창에 무엇을 어떻게 쓰는지, 대화가 이어지는 원리.' },
+            { tag: 'w20', title: '프롬프트 작성법', desc: '같은 요청에서 더 좋은 결과를 받아내는 5원칙.' },
+            { tag: 'w25', title: '컨텍스트 엔지니어링 기초', desc: '파일·Projects·메모리를 언제 어떻게 쓸지.' },
+            { tag: 'w90', title: '시작하기 — 설치와 로그인', desc: '앱 설치와 계정 로그인 절차.' },
+          ] },
+          { t: 'h2', text: '기능' },
+          { t: 'cards', items: [
+            { tag: 'w40', title: 'Projects 기능', desc: '관련 대화와 참고 자료를 한데 묶는 작업 공간.' },
+            { tag: 'w45', title: '스킬과 플러그인', desc: '업무 매뉴얼과 직원 패키지를 Chat에서 쓰는 법.' },
+            { tag: 'w50', title: '주요 기능 살펴보기', desc: 'Chat에서 쓸 수 있는 기능 전반 개괄.' },
+            { tag: 'w55', title: '메모리', desc: '대화가 끝나도 나에 대해 기억해 두는 수첩.' },
+            { tag: 'w91', title: '아티팩트 (Artifacts)', desc: '결과물을 대화 옆 독립 카드로 띄우는 기능.' },
+            { tag: 'w35', title: '웹 검색·리서치·확장 사고', desc: '최신 정보 조회와 깊은 추론을 함께 쓰는 법.' },
+            { tag: 'w92', title: '리서치 (Research)', desc: '여러 출처를 종합해 조사 보고를 만드는 기능.' },
+            { tag: 'w93', title: '확장 사고 (Extended Thinking)', desc: '어려운 문제에 더 오래 생각하게 하는 옵션.' },
+          ] },
+          { t: 'h2', text: '계정·운영' },
+          { t: 'index', title: 'Chat 섹션 나머지 문서', count: '5', items: ix([
+            { title: '계정과 설정', note: 'w94' }, { title: '요금제와 사용 한도', note: 'w95' },
+            { title: '개인정보와 데이터', note: 'w96' }, { title: '문제 해결', note: 'w97' },
+            { title: 'Chat 섹션 개요', note: 'w10' },
+          ]) },
+          { t: 'sources', items: ['원문: www/content/guide/chat/ (17 문서)', 'docs.claude.com — Chat'] },
+        ],
+      },
+      'guide/cowork': {
+        title: 'Cowork', lead: 'Claude가 내 컴퓨터의 작업 폴더에 직접 파일을 만들고 고치는 단계입니다. PPT, 엑셀, 보고서 파일이 실제로 폴더에 생깁니다. 25개 문서로 아키텍처부터 트러블슈팅까지 다룹니다.',
+        blocks: [
+          { t: 'h2', text: '아키텍처 — 격리 VM' },
+          { t: 'para', text: 'Claude Cowork는 호스트 OS에 직접 실행하지 않고 격리된 가상머신(VM)에서 동작합니다. 내 컴퓨터의 다른 파일을 건드리지 않도록 작업 폴더만 연결해 주는 구조라, 권한과 폴더 설정이 첫 관문입니다.' },
+          { t: 'cards', items: [
+            { tag: 'w10', title: 'Cowork 소개', desc: '무엇을 하는 제품이고 어떤 일에 맞는지.' },
+            { tag: 'w94', title: '아키텍처 개요 — 격리 VM', desc: '호스트와 분리된 실행 환경의 구조.' },
+            { tag: 'w90', title: 'Chat vs Cowork vs Desktop', desc: '세 제품의 경계를 한눈에 비교.' },
+            { tag: 'w45', title: '폴더와 권한', desc: '어느 폴더를 열어 줄지, 무엇을 허용할지.' },
+          ] },
+          { t: 'h2', text: '설치와 첫 작업' },
+          { t: 'cards', items: [
+            { tag: 'w15', title: 'Cowork 공식 빠른 시작', desc: '공식 문서 기준 최단 경로.' },
+            { tag: 'w20', title: '설치와 요금제 요건', desc: '어떤 요금제에서 쓸 수 있는지.' },
+            { tag: 'w25', title: '설정하기', desc: '작업 폴더·모델·권한 초기 설정.' },
+            { tag: 'w30', title: '첫 작업 실행하기', desc: '첫 파일 산출물을 받아보는 실습.' },
+          ] },
+          { t: 'h2', text: '기능과 운용' },
+          { t: 'index', title: 'Cowork 기능·운용 문서', count: '17', items: ix([
+            { title: '용어집', note: 'w35' }, { title: '안전하게 사용하기', note: 'w40' },
+            { title: '사용 패턴 가이드 — 4가지 표준 패턴', note: 'w48' }, { title: '프로젝트와 메모리', note: 'w50' },
+            { title: '스킬 사용법', note: 'w60' }, { title: '플러그인 사용', note: 'w70' },
+            { title: '커넥터와 MCP', note: 'w80' }, { title: '예약 작업과 디스패치', note: 'w90' },
+            { title: '디스패치·원격 작업', note: 'w91' }, { title: '라이브 아티팩트', note: 'w92' },
+            { title: '웹·데스크톱·모바일 — 기기 간 사용', note: 'w93' }, { title: '컴퓨터 사용', note: 'w100' },
+            { title: '자주 묻는 질문', note: 'w110' }, { title: '트러블슈팅', note: 'w120' },
+            { title: '제약과 한도', note: 'w130' }, { title: 'Team·Enterprise 관리', note: 'w140' },
+            { title: 'Cowork 가이드 개요', note: 'w20' },
+          ]) },
+          { t: 'warn', title: '권한은 좁게 시작하세요', text: '작업 폴더를 넓게 열면 실수로 다른 파일이 수정될 수 있습니다. 프로젝트 폴더 하나만 연결해 시작하고, 필요할 때 넓히는 편이 안전합니다.' },
+          { t: 'sources', items: ['원문: www/content/guide/cowork/ (25 문서)', 'docs.claude.com — Cowork'] },
+        ],
+      },
+      'guide/design': {
+        title: 'Design', lead: '카드뉴스, 발표 슬라이드, 웹 화면 시안 같은 시각 결과물을 만드는 단계입니다. 13개 문서로 시작하기·디자인 시스템 설정·리파인먼트·핸드오프를 다룹니다.',
+        blocks: [
+          { t: 'h2', text: '섹션 구성' },
+          { t: 'cards', items: [
+            { tag: '입문', title: '시작하기', desc: 'Claude Design에서 첫 시안을 만드는 경로.' },
+            { tag: '설정', title: '디자인 시스템 설정', desc: '브랜드 토큰·컴포넌트를 등록해 일관성 확보.' },
+            { tag: '반복', title: '리파인먼트', desc: '시안을 반복 수정해 완성도를 올리는 방법.' },
+            { tag: '핸드오프', title: '내보내기와 핸드오프', desc: '개발자에게 넘기는 산출물 형식.' },
+            { tag: '협업', title: '협업과 공유', desc: '팀과 함께 시안을 검토하고 코멘트하기.' },
+            { tag: '사례', title: '역할별 사용 사례', desc: '기획·마케팅·개발 각 역할에서의 활용.' },
+          ] },
+          { t: 'h2', text: '심화와 운영' },
+          { t: 'index', title: 'Design 섹션 나머지 문서', count: '7', items: ix([
+            'Claude Design 공식 빠른 시작', '컴포넌트·토큰 생성', '베스트 프랙티스',
+            '제한 사항과 로드맵', '요금제와 한도', '관리자 가이드 — Team·Enterprise', 'Design 섹션 개요',
+          ]) },
+          { t: 'note', title: '디자인 시스템을 먼저 등록하세요', text: '토큰과 컴포넌트를 먼저 등록해 두면 이후 모든 시안이 같은 색·타입·간격으로 나옵니다. 이 문서 사이트도 모두의AI 디자인 시스템을 등록해 제작했습니다.' },
+          { t: 'sources', items: ['원문: www/content/guide/design/ (13 문서)'] },
+        ],
+      },
+      'guide/code': {
+        title: 'Code', lead: '프로그램과 웹사이트를 직접 만들고 고치는 단계입니다. 개발자가 아니어도 간단한 자동화부터 시작할 수 있습니다. 20개 문서로 설치부터 CI 연동까지 다룹니다.',
+        blocks: [
+          { t: 'h2', text: '기초' },
+          { t: 'cards', items: [
+            { tag: 'w10', title: '설치하기', desc: 'Claude Code를 내 컴퓨터에 설치하고 실행.' },
+            { tag: 'w20', title: '첫 작업 실행', desc: '첫 코드 변경을 맡겨 보는 실습.' },
+            { tag: 'w90', title: '어디서 쓰나요 — 6가지 진입면', desc: '터미널·IDE·웹·데스크톱 등 사용 지점.' },
+            { tag: 'w91', title: 'Chat·Cowork·Design과의 차이', desc: '어떤 일에 Code를 골라야 하는지.' },
+          ] },
+          { t: 'h2', text: '일상 사용' },
+          { t: 'cards', items: [
+            { tag: 'w92', title: '일반 워크플로우', desc: '기능 추가·버그 수정·리팩터링 흐름.' },
+            { tag: 'w93', title: '필수 슬래시 명령', desc: '자주 쓰는 명령만 골라 정리.' },
+            { tag: 'w94', title: '메모리 — CLAUDE.md', desc: '프로젝트 규칙을 파일로 기억시키기.' },
+            { tag: 'w95', title: '권한·안전 기초', desc: '무엇을 허용하고 무엇을 막을지.' },
+            { tag: 'w96', title: '모델·사고 레벨', desc: '작업 난이도에 맞는 모델과 사고 설정.' },
+            { tag: 'w97', title: 'IDE에서 쓰기', desc: '에디터 안에서 함께 작업하기.' },
+          ] },
+          { t: 'h2', text: '심화' },
+          { t: 'index', title: 'Code 심화·운영 문서', count: '10', items: ix([
+            { title: '웹·데스크톱', note: 'w98' }, { title: '비용·사용량', note: 'w99' },
+            { title: '문제 해결', note: 'w100' }, { title: '모범 사례', note: 'w101' },
+            { title: '심화 — MCP·서브에이전트·스킬·훅', note: 'w102' }, { title: '심화 — GitHub Actions·CI', note: 'w103' },
+            { title: '심화 — 자율 실행 /goal·/loop·auto', note: 'w104' }, { title: '심화 — 샌드박스', note: 'w105' },
+            { title: '공식 문서 안내', note: 'w106' }, { title: 'Code 섹션 개요', note: 'w40' },
+          ]) },
+          { t: 'sources', items: ['원문: www/content/guide/code/ (20 문서)', 'code.claude.com/docs'] },
+        ],
+      },
+      agents: {
+        blocks: [
+          { t: 'h2', text: '18명의 AI 직원, 네 개의 축' },
+          { t: 'para', text: '모두의 코워크 마켓플레이스 v6.2.0에는 18명의 AI 직원이 있습니다. 이름이 곧 직무입니다. 범용 축(PM·코워커)이 코어를 맡고, 전문가·크리에이티브·개발 축이 각 분야를 담당합니다.' },
+          { t: 'mermaid', cap: '18명의 직원 4축 구조 — 코워커와 PM이 범용 코어입니다.', chart: `flowchart TB
+  HUB["MoAI-Agents<br/>18 AI 직원"]
+  HUB --> G1
+  HUB --> G2
+  HUB --> G3
+  HUB --> G4
+  subgraph G1["범용"]
+    PM["PM"]
+    CW["코워커"]
+  end
+  subgraph G2["전문가"]
+    SE["셀러 · 사무관 · 애널리스트"]
+    LA["법무 · 재무 · 인사"]
+    CS["CS · 컨설턴트 · 커리어 · 튜터"]
+  end
+  subgraph G3["크리에이티브"]
+    CR["작가 · 스토리 · 마케터<br/>미디어 · 디자이너"]
+  end
+  subgraph G4["개발"]
+    CD["코더"]
+  end` },
+          { t: 'h2', text: '범용 — 어디서 시작할지 모르겠다면' },
+          { t: 'cards', items: [
+            { tag: 'moai-pm', title: '「PM」 — 프로젝트를 여는 첫 직원', desc: '프로젝트 초기화 허브. /project 한마디로 직원 플러그인의 진입을 라우팅합니다.' },
+            { tag: 'moai-coworker', title: '「코워커」 — 범용 비즈니스 실무 담당', desc: '브랜드·제안서·보고·협상·프로세스 등 비즈니스 실무 스킬을 갖춘 범용 코어 AI 직원.', id: 'agents/coworker' },
+          ] },
+          { t: 'h2', text: '전문가 축' },
+          { t: 'cards', items: [
+            { tag: 'moai-seller', title: '「셀러」 — 이커머스 운영 담당', desc: '스마트스토어·아임웹·카페24 연동과 상세페이지·광고·CRM까지 커머스 실무 29종.' },
+            { tag: 'moai-officer', title: '「사무관」 — 문서·오피스 담당', desc: 'HWPX·DOCX·XLSX·PPTX·PDF 한국형 오피스 문서와 HTML 리포트·슬라이드 생성.' },
+            { tag: 'moai-analyst', title: '「데이터 애널리스트」 — 공공데이터 담당', desc: '부동산·경매·주식·KOSIS·건축물대장·DART 조회와 데이터 시각화.' },
+            { tag: 'moai-lawyer', title: '「법무 담당」 — 계약·컴플라이언스', desc: '계약 검토·NDA 트리아지·법령/판례 리서치·특허 검색. 국가법령정보 MCP 연동.' },
+            { tag: 'moai-accountant', title: '「재무·세무 담당」 — 숫자와 세금', desc: '재무제표 분석·결산·세금 절약·가계 예산. OpenDART 연동.' },
+            { tag: 'moai-recruiter', title: '「인사·채용 담당」 — People Ops', desc: '채용 공고 분석·이력서 스크리닝·오퍼레터·성과평가 (고용주 편).' },
+            { tag: 'moai-cs', title: '「CS매니저」 — 고객 접점 담당', desc: '티켓 분류·응답 초안·에스컬레이션·VOC 분석까지 고객지원 실무.' },
+            { tag: 'moai-consultant', title: '「컨설턴트」 — 경영·창업 자문', desc: '사업계획서·시장 분석·정부 지원사업 매칭·상권분석.' },
+            { tag: 'moai-career', title: '「커리어코치」 — 이직·취업 담당', desc: '이력서·포트폴리오 첨삭, 면접 준비, 이직 전략 (구직자 편).' },
+            { tag: 'moai-tutor', title: '「튜터」 — 교육·연구 담당', desc: '커리큘럼 설계·학습 자료·평가 문항·논문 리서치.' },
+          ] },
+          { t: 'h2', text: '크리에이티브 축' },
+          { t: 'cards', items: [
+            { tag: 'moai-writer', title: '「작가」 — 출판·창작 담당', desc: '출판 기획·집필부터 웹툰·웹소설·시나리오·표지까지 창작 전 과정.' },
+            { tag: 'moai-story', title: '「스토리 크리에이터」 — IP 창작', desc: '웹툰·웹소설·시나리오·콘티·캐릭터 시트·시네마틱 프리비즈·IP 피칭.' },
+            { tag: 'moai-marketer', title: '「마케터」 — 캠페인·콘텐츠', desc: '캠페인 기획, 블로그·뉴스레터·SNS·카드뉴스, Meta 광고 관리·성과 분석.' },
+            { tag: 'moai-media', title: '「미디어 크리에이터」 — 멀티모달 생성', desc: 'Higgsfield 이미지·영상, ElevenLabs 오디오, GPT-image·Gemini·Midjourney 프롬프트.' },
+            { tag: 'moai-designer', title: '「디자이너」 — 에이전틱 디자인', desc: 'Claude Design 연동, 3계층 토큰 파이프라인, 브랜드 시스템, 품질 루프.' },
+          ] },
+          { t: 'note', title: '누구를 뽑을지 고민되면', text: 'PM에게 먼저 물어보세요. 프로젝트 성격에 맞는 직원 조합을 잡아 줍니다. 설치와 운용 방법은 플러그인 섹션에서 다룹니다.' },
+          { t: 'sources', items: ['원문: www/content/moai-agents/ (18 문서)', '마켓플레이스 진실 원본: marketplace.json (18 plugins, v6.2.0)'] },
+        ],
+      },
+      'agents/coworker': {
+        title: '「코워커」 — 범용 비즈니스 실무 담당',
+        lead: '혼자 일하는 사업자에게 가장 아쉬운 존재는 화려한 전문가가 아니라, 옆자리에서 궂은 실무를 같이 쳐내 주는 든든한 동료입니다. 코워커는 바로 그 "옆자리 동료" 포지션의 범용 코어 AI 직원입니다.',
+        blocks: [
+          { t: 'chips', items: ['moai-coworker', '범용 실무', '스킬 32종', 'DART 연동', 'v6.1.0'] },
+          { t: 'h2', text: '어떤 일을 맡기나' },
+          { t: 'para', text: '주간보고를 써야 하는데 한 주가 기억나지 않을 때, 제안서 마감이 코앞일 때, 까다로운 동료와의 대화를 준비해야 할 때 — 특정 직무로 딱 분류하기 애매한 비즈니스 실무 전반을 받아 줍니다. 스킬 이름을 외울 필요는 없습니다.' },
+          { t: 'table', head: ['이렇게 말하면', '이 스킬이 붙습니다'], rows: [
+            ['"이번 주 한 일로 주간보고 써줘"', 'productivity-weekly-report'],
+            ['"이 RFP 보고 제안서 본문 써줘"', 'business-proposal-writer'],
+            ['"내일 면담 어떻게 말하지?"', 'conflict-handler · negotiation-1on1'],
+            ['"AI 티 나는 부분 고쳐줘"', 'general-ai-slop-reviewer'],
+          ] },
+          { t: 'h2', text: '작동 원리' },
+          { t: 'mermaid', cap: '요청 → 스킬 매칭 → 초안 → AI 슬롭 점검 → 산출물.', chart: `flowchart LR
+  U["평소 말투 요청<br/>주간보고 써줘"] --> M["스킬 자동 매칭"]
+  M --> D["초안 작성"]
+  D --> R["AI 슬롭 점검<br/>자기 검수"]
+  R -->|다듬기| D
+  R --> O["산출물<br/>보고서 · 문서"]` },
+          { t: 'h2', text: '스킬 카탈로그 — 일곱 갈래' },
+          { t: 'mermaid', cap: '코워커 스킬 카탈로그 마인드맵.', chart: `mindmap
+  root((코워커<br/>32 스킬))
+    비즈니스 보고
+      주간·업무보고
+      임원 1페이지 요약
+      KPI·현황 보고
+    제안·영업
+      B2B 제안서
+      영업 플레이북
+      벤더·계약 관리
+    기획·전략
+      PRD·기능명세
+      로드맵·MOU
+      UX 리서치·설계
+    소통·협업
+      회의 진행
+      1:1 협상·면담
+      갈등·피드백·SOP
+    브랜드
+      브랜드 아이덴티티
+    라이프·자기계발
+      목표·습관·회고
+      여행·웰니스·행사
+    AI 도구
+      AI 슬롭 리뷰
+      진단·프롬프트 기초` },
+          { t: 'h2', text: '품질 — 왜 결과가 안정적인가' },
+          { t: 'para', text: '모두의 코워크 직원 다수는 산출물을 만드는 실행 직원(worker)과 결과를 의심하며 검사하는 검수 직원(auditor)을 분리해 둡니다. 코워커는 범용 코어 특성상 별도 에이전트 없이 스킬 단위로 동작하며, 품질 점검은 general-ai-slop-reviewer 같은 후처리 스킬이 맡습니다.' },
+          { t: 'h2', text: 'MCP 연동 — DART' },
+          { t: 'para', text: '코워커는 dart MCP를 지원합니다. 금융감독원 전자공시(DART)에서 기업 공시·재무 정보를 조회할 수 있습니다. 공개 데이터 기반이라 기본 조회는 별도 자격증명 없이 가능합니다.' },
+          { t: 'h2', text: '설치와 첫 지시' },
+          { t: 'code', term: 'terminal — zsh', lines: [
+            { sigil: '$', text: ' claude plugin install moai-coworker@moai-cowork' },
+            { sigil: '', text: '  ✓ 코워커 설치 완료 — 스킬 32종 사용 가능', out: true },
+          ] },
+          { t: 'code', term: 'claude code — moai-coworker', lines: [
+            { sigil: '>', text: ' 이번 주 한 일 정리해서 주간보고 만들어줘. 톤은 격식체로' },
+            { sigil: '', text: '  ⏺ productivity-weekly-report 스킬 실행…', out: true },
+            { sigil: '', text: '  ⏺ general-ai-slop-reviewer 후처리 점검', out: true },
+            { sigil: '', text: '  ✓ 주간보고 초안이 준비됐습니다.', out: true },
+          ] },
+          { t: 'faq', items: [
+            { q: '결과가 너무 "AI 티"가 납니다', a: '"AI 티 나는 부분 고쳐줘"라고 이어서 요청하세요. general-ai-slop-reviewer가 기계적 패턴을 잡아 자연스럽게 다듬습니다.' },
+            { q: '초안이 두루뭉술합니다', a: '대상 독자·목적·톤을 한 줄 더 붙이면 초안 품질이 크게 올라갑니다. "임원 보고용, 1페이지, 격식체"처럼 구체적으로 적어 보세요.' },
+            { q: '엉뚱한 스킬이 매칭됩니다', a: '원하는 산출물 형태(예: "1페이지 요약으로")를 명시하면 매칭이 정확해집니다.' },
+          ] },
+          { t: 'sources', items: ['원문: www/content/moai-agents/coworker.md', '마켓플레이스 v6.2.0'] },
+        ],
+      },
+      plugins: {
+        blocks: [
+          { t: 'h2', text: '플러그인 생애주기 한눈에 보기' },
+          { t: 'para', text: '플러그인은 Claude에게 새로운 직무 능력을 붙여 주는 확장 꾸러미입니다. 스마트폰에 앱을 설치하면 없던 기능이 생기듯, 플러그인을 설치하면 캠페인 기획·주문 관리·계약서 검토 같은 전문 업무를 바로 시킬 수 있습니다. 마켓플레이스를 한 번 등록해 두면, 이후에는 설치 → 확인 → 사용 → 업데이트를 반복하게 됩니다.' },
+          { t: 'mermaid', cap: '5단계 순환 — 새 버전이 나오면 ④↔⑤를 반복합니다.', chart: `flowchart LR
+  A["① 마켓플레이스 등록<br/>marketplace add"] --> B["② 플러그인 설치<br/>plugin install"]
+  B --> C["③ 설치 확인<br/>plugin list"]
+  C --> D["④ 사용<br/>스킬·에이전트 호출"]
+  D --> E["⑤ 업데이트<br/>plugin update"]
+  E -.->|새 버전이 나오면 반복| D` },
+          { t: 'h2', text: '이 섹션의 구성' },
+          { t: 'cards', items: [
+            { tag: '01', title: '설치와 관리', desc: '마켓플레이스 등록부터 설치·확인·업데이트·제거까지, 터미널에서 무엇을 치는가?', id: 'plugins/install' },
+            { tag: '02', title: '전문가 에이전트 이해', desc: 'worker와 auditor는 왜 나뉘어 있고, 어떻게 직접 호출하는가?', id: 'plugins/agents' },
+            { tag: '03', title: '팀 구성 패턴', desc: '직원 하나로 시작해서 여러 직원을 조합하는 실전 시나리오는 어떻게 짜는가?', id: 'plugins/teams' },
+          ] },
+          { t: 'h2', text: '18-직원 패밀리 개요' },
+          { t: 'table', head: ['플러그인', '직무', '한 줄 소개'], rows: [
+            ['moai-coworker', '코워커', '브랜드·제안서·보고·협상 등 비즈니스 범용 실무 + 라이프스타일'],
+            ['moai-writer', '작가', '출판 기획·집필·제안서, 한국어 인문화 윤문·맞춤법 검수'],
+            ['moai-story', '스토리 크리에이터', '웹툰·웹소설·시나리오·콘티·캐릭터 시트 (Higgsfield 연동)'],
+            ['moai-marketer', '마케터', '캠페인 기획·퍼포먼스 분석·콘텐츠·광고 (Meta Ads·ElevenLabs)'],
+            ['moai-media', '미디어 크리에이터', '이미지·영상·오디오 생성 (Higgsfield·ElevenLabs·Gemini)'],
+            ['moai-seller', '셀러', '스마트스토어·아임웹·카페24 운영(MCP)·상세페이지·CRM'],
+            ['moai-officer', '사무관', 'HWPX·DOCX·XLSX·PPTX·PDF 한국형 오피스 문서·HTML 리포트'],
+            ['moai-analyst', '데이터 애널리스트', '공공데이터·KOSIS·DART 조회, 데이터 시각화 (MCP 연동)'],
+            ['moai-lawyer', '법무 담당', '계약 검토·컴플라이언스·법령/판례 리서치'],
+            ['moai-accountant', '재무·세무 담당', '재무제표 분석·결산·세금 절약·가계 예산'],
+            ['moai-recruiter', '인사·채용 담당', '채용 공고·이력서 스크리닝·오퍼레터·성과평가'],
+            ['moai-cs', 'CS매니저', '티켓 분류·응답 초안·VOC 분석·지식베이스'],
+            ['moai-consultant', '컨설턴트', '사업계획서·시장 분석·정부 지원사업 매칭·상권분석'],
+            ['moai-career', '커리어코치', '이력서·포트폴리오 첨삭, 면접 준비, 이직 전략'],
+            ['moai-tutor', '튜터', '커리큘럼 설계·평가 문항·논문 검색/작성'],
+            ['moai-designer', '디자이너', 'Claude Design 연동, 토큰 파이프라인, 브랜드 시스템'],
+            ['moai-pm', 'PM', '/project 명령으로 프로젝트 단위 셋업·직원 배치'],
+          ] },
+          { t: 'note', title: '"무엇을 하나"는 에이전트 섹션에서', text: '이 섹션은 직원들을 어떻게 설치하고 부리나를 다루는 운용 매뉴얼입니다. 각 직원이 무엇을 하는지는 MoAI-Agents 섹션이 직원별 페이지로 안내합니다.' },
+          { t: 'sources', items: ['원문: www/content/plugins/ (5 문서)', 'code.claude.com/docs/en/plugins'] },
+        ],
+      },
+      'plugins/install': {
+        title: '설치와 관리',
+        lead: '플러그인 설치는 크게 두 단계입니다. 먼저 마켓플레이스를 한 번 등록하고(어느 가게에서 물건을 받아올지 Claude에게 알려 주는 일), 그다음 필요한 직원 플러그인만 골라 설치합니다. 등록은 컴퓨터당 한 번이면 됩니다.',
+        blocks: [
+          { t: 'h2', text: '1. 마켓플레이스 등록' },
+          { t: 'para', text: 'modu-ai/moai-cowork는 GitHub 저장소 주소의 줄임 표기입니다. 성공하면 확인 메시지가 출력되고, 이제 Claude가 이 가게의 플러그인 목록을 알게 됩니다.' },
+          { t: 'code', term: 'terminal — zsh', lines: [
+            { sigil: '$', text: ' claude plugin marketplace add modu-ai/moai-cowork' },
+            { sigil: '', text: '  ✓ Added marketplace: moai-cowork', out: true },
+            { sigil: '$', text: ' claude plugin marketplace list' },
+            { sigil: '', text: '  moai-cowork — 18 plugins', out: true },
+          ] },
+          { t: 'warn', title: 'command not found: claude', text: 'Claude Code 자체가 설치되지 않았거나 PATH에 없는 상태입니다. CLI 설치 안내를 따라 Claude Code부터 설치하세요. 네트워크 오류가 나오면 GitHub 접속이 가능한 환경인지(회사 프록시 등) 확인하세요.' },
+          { t: 'h2', text: '2. 필요한 직원만 설치' },
+          { t: 'para', text: '18개를 전부 설치할 필요는 없습니다. 설치 명령의 형식은 <플러그인 이름>@<마켓플레이스 이름>입니다.' },
+          { t: 'code', term: 'terminal — 직원 채용', lines: [
+            { sigil: '', text: '  # 예: 마케터 채용', out: true },
+            { sigil: '$', text: ' claude plugin install moai-marketer@moai-cowork' },
+            { sigil: '', text: '  # 예: 이커머스 셀러 채용', out: true },
+            { sigil: '$', text: ' claude plugin install moai-seller@moai-cowork' },
+            { sigil: '', text: '  # 예: 실무 범용 코워커 채용', out: true },
+            { sigil: '$', text: ' claude plugin install moai-coworker@moai-cowork' },
+          ] },
+          { t: 'h2', text: '3. 설치 확인' },
+          { t: 'para', text: 'details는 특정 플러그인의 상세 정보 — 버전, 설명, 포함된 명령·에이전트·스킬 목록, MCP 서버 선언 — 를 보여 줍니다. 설치 직후 한 번 훑어보면 이 직원이 어떤 도구를 들고 왔는지 감이 잡힙니다.' },
+          { t: 'code', term: 'terminal — 설치 확인', lines: [
+            { sigil: '$', text: ' claude plugin list' },
+            { sigil: '$', text: ' claude plugin details moai-seller@moai-cowork' },
+          ] },
+          { t: 'h2', text: '4. 업데이트·비활성화·제거' },
+          { t: 'para', text: '비활성화(disable)는 설치는 유지한 채 로드만 막는 것이라, 여러 직원을 설치해 두고 프로젝트에 따라 켜고 끄는 운용에 좋습니다. 제거 후에도 마켓플레이스 등록은 남아 있으므로 언제든 다시 설치할 수 있습니다.' },
+          { t: 'code', term: 'terminal — 관리 명령', lines: [
+            { sigil: '$', text: ' claude plugin marketplace update moai-cowork' },
+            { sigil: '$', text: ' claude plugin update moai-seller@moai-cowork' },
+            { sigil: '$', text: ' claude plugin disable moai-seller@moai-cowork' },
+            { sigil: '$', text: ' claude plugin enable moai-seller@moai-cowork' },
+            { sigil: '$', text: ' claude plugin uninstall moai-seller@moai-cowork' },
+          ] },
+          { t: 'h2', text: '5. MCP 자격증명 준비' },
+          { t: 'para', text: '일부 직원은 외부 서비스에 직접 접속해 일합니다. MCP(Claude가 외부 서비스의 도구를 표준 방식으로 부르는 규약) 연동은 외부 서비스 계정의 API 자격증명을 환경변수로 준비해 줘야 실제로 동작합니다.' },
+          { t: 'table', head: ['직원', '연동 서비스', '준비물'], rows: [
+            ['moai-seller', '스마트스토어 · 카페24 · 아임웹', '각 개발자센터 앱 클라이언트 ID·시크릿 환경변수'],
+            ['moai-marketer', 'Meta Ads · 게시 채널', 'Meta 비즈니스 계정 인증, 각 서비스 계정 연결'],
+            ['moai-media / moai-story', 'Higgsfield · ElevenLabs', 'Higgsfield OAuth(1회) · ElevenLabs API 키'],
+            ['moai-analyst', 'KOSIS · DART · 공공데이터포털', '각 공공 API 키 환경변수'],
+            ['moai-lawyer', '국가법령정보', '공공 API 키 환경변수'],
+            ['moai-officer', 'kordoc', '로컬 처리 (별도 자격증명 없음)'],
+          ] },
+          { t: 'warn', title: 'API 키는 비밀번호와 같습니다', text: '채팅창이나 문서에 붙여 넣지 말고, 환경변수나 셸 설정 파일로만 관리하세요. 자격증명이 없어도 플러그인의 일반 스킬(상세페이지 작성, 캠페인 기획 등)은 그대로 쓸 수 있습니다.' },
+          { t: 'sources', items: ['원문: www/content/plugins/install.md', 'code.claude.com/docs/en/plugins'] },
+        ],
+      },
+      'plugins/agents': {
+        title: '전문가 에이전트 이해',
+        lead: '플러그인을 설치하면 스킬(업무 지식 문서)만 오는 것이 아니라 에이전트도 함께 옵니다. 에이전트는 Claude 안에서 특정 역할을 맡아 독립적으로 일하는 "분신"이라고 생각하면 됩니다.',
+        blocks: [
+          { t: 'para', text: '모두의 코워크 플러그인 패밀리의 에이전트에는 한 가지 중요한 설계 원칙이 있습니다. 일하는 직원(worker)과 검수하는 직원(auditor)이 분리되어 있다는 점입니다. 회사에서 작성자와 결재자를 한 사람이 겸하지 않듯, 산출물을 만드는 에이전트와 그 품질을 평가하는 에이전트를 따로 두었습니다.' },
+          { t: 'note', title: '분리는 도구 권한으로 강제됩니다', text: 'worker 에이전트는 파일을 쓰고 고치는 도구(Write·Edit)를 갖지만 auditor 에이전트는 읽기·검색 도구만 갖습니다. 검수자가 산출물을 몰래 고쳐서 "통과"시키는 일이 구조적으로 불가능하도록 권한 자체를 좁혀 둔 것입니다.' },
+          { t: 'h2', text: '품질 루프 — worker와 auditor' },
+          { t: 'mermaid', cap: '한두 바퀴 돌리면 "그럴듯해 보이는 초안"이 "지적을 견딘 결과물"로 바뀝니다.', chart: `sequenceDiagram
+  participant U as 사용자
+  participant W as worker (작성 권한)
+  participant A as auditor (읽기 전용)
+  U->>W: 작업 지시 (상세페이지 초안 작성)
+  W->>W: 스킬 참조 + 산출물 작성
+  W-->>U: 산출물 1차 완성
+  U->>A: 검수 요청
+  A->>A: 결함 탐색 (수정 불가, 평가만)
+  A-->>U: 검수 보고 (지적 사항 목록)
+  U->>W: 지적 사항 반영 지시
+  W-->>U: 수정본 완성` },
+          { t: 'para', text: '검수를 반드시 돌려야 하는 것은 아니지만, 외부에 나가는 산출물(제안서, 광고 소재, 계약서 검토 의견 등)이라면 auditor 한 바퀴를 강하게 권합니다.' },
+          { t: 'h2', text: '에이전트 직접 호출하는 법' },
+          { t: 'para', text: '평소에는 에이전트를 의식할 필요가 없습니다. 하지만 특정 에이전트를 지목해 부르고 싶을 때는 정해진 문형이 있습니다 — "OO 서브에이전트를 사용해서 ~해줘".' },
+          { t: 'code', term: 'claude — 에이전트 명시 호출', lines: [
+            { sigil: '>', text: ' 캠페인 전략 worker 서브에이전트를 사용해서 신제품 런칭 캠페인 초안을 만들어줘.' },
+            { sigil: '>', text: ' 방금 만든 상세페이지를 auditor 서브에이전트를 사용해서 검수해줘.' },
+          ] },
+          { t: 'h2', text: '스킬 자동 매칭 vs 에이전트 명시 호출' },
+          { t: 'table', head: ['구분', '스킬 자동 매칭', '에이전트 명시 호출'], rows: [
+            ['쓰는 법', '그냥 자연어로 일을 시킨다', '"OO 서브에이전트를 사용해서 ~" 문형'],
+            ['동작', 'Claude가 알맞은 스킬·에이전트를 스스로 고름', '지목한 에이전트가 반드시 그 일을 맡음'],
+            ['적합한 상황', '일상 업무 대부분', '검수를 확실히 auditor에게 맡기고 싶을 때'],
+          ] },
+          { t: 'tip', title: '기본은 자동 매칭', text: '"스마트스토어 이번 주 주문 정리해줘"라고만 해도 셀러 플러그인의 스킬이 알아서 붙습니다. 명시 호출은 품질 게이트를 확실히 걸고 싶은 순간을 위한 수동 기어라고 생각하세요.' },
+          { t: 'sources', items: ['원문: www/content/plugins/agents.md', 'code.claude.com/docs/en/sub-agents'] },
+        ],
+      },
+      'plugins/teams': {
+        title: '팀 구성 패턴',
+        lead: '플러그인은 한 명씩 채용해도 충분히 일하지만 진짜 힘은 조합에서 나옵니다. 캠페인에는 기획과 디자인이, 쇼핑몰 운영에는 판매와 고객 응대가 같이 필요합니다 — 직원들도 짝을 지어 부릴 때 산출물의 완성도가 달라집니다.',
+        blocks: [
+          { t: 'tip', title: '시작은 단일 직원부터', text: '처음이라면 직원 한 명으로 시작하세요. 단일 직원 운용에 익숙해지면 — 스킬이 자동으로 붙는 감각, worker에게 시키고 auditor로 검수하는 리듬 — 그때 두 번째 직원을 채용하면 됩니다. 한 번에 18명을 다 설치하면 오히려 누구에게 뭘 시킬지 헷갈립니다.' },
+          { t: 'h2', text: '조합 사례 1 — 마케터 × 디자이너' },
+          { t: 'para', text: 'moai-marketer가 타깃 분석과 메시지 전략, 채널별 카피를 만들고, 그 결과물을 브리프 삼아 moai-designer가 비주얼 방향과 브랜드 토큰에 맞는 소재 시안을 잡습니다. 마지막으로 마케터의 auditor에게 교차 검수를 시키면 한 바퀴가 끝납니다. 전략 따로 디자인 따로 만들 때 흔한 "말과 그림이 따로 노는" 문제를 브리프를 사이에 끼운 릴레이로 예방하는 패턴입니다.' },
+          { t: 'mermaid', cap: '브리프를 사이에 끼운 릴레이 구조.', chart: `flowchart LR
+  A["moai-marketer<br/>타깃·메시지·카피"] --> B["캠페인 브리프"]
+  B --> C["moai-designer<br/>비주얼·소재 시안"]
+  C --> D["auditor 교차 검수<br/>메시지-비주얼 정합"]
+  D -.->|지적 반영| A` },
+          { t: 'h2', text: '조합 사례 2 — 셀러 × CS 매니저' },
+          { t: 'para', text: '셀러가 주문·재고·상품 문의를 MCP 연동으로 조회·처리하는 동안, CS 매니저는 쌓인 고객 문의를 유형별로 분류하고 응답 초안을 만들며 반복 문의를 지식베이스로 정리합니다. 주기적으로 CS 매니저의 VOC 분석을 셀러에게 넘겨 판매 쪽 개선으로 되먹임하면, 응대와 판매가 한 몸으로 돌기 시작합니다.' },
+          { t: 'mermaid', cap: '응대와 판매가 서로를 되먹이는 순환.', chart: `flowchart LR
+  A["moai-seller<br/>주문·재고·상품 (MCP)"] --> C["운영 현황"]
+  B["moai-cs<br/>문의 분류·응답 초안"] --> D["VOC 분석"]
+  D --> A
+  C --> B` },
+          { t: 'h2', text: '조합 사례 3 — 컨설턴트 × 회계사' },
+          { t: 'para', text: '컨설턴트가 시장 규모(TAM/SAM/SOM) 분석과 비즈니스 모델, 정부 지원사업 매칭까지 사업의 "바깥쪽" 타당성을 세우면, 회계사가 그 가정을 받아 손익 구조와 초기 자금 계획, 세무 관점의 "안쪽" 숫자를 검증합니다. 컨설턴트의 장밋빛 시나리오를 회계사의 숫자가 견제하는 구도 자체가 검증 장치입니다.' },
+          { t: 'mermaid', cap: '숫자가 안 맞으면 가정으로 되돌아갑니다.', chart: `flowchart LR
+  A["moai-consultant<br/>시장 분석·BM·지원사업"] --> B["사업 가정"]
+  B --> C["moai-accountant<br/>손익·자금·세무 검증"]
+  C --> D["검증된 사업계획서"]
+  C -.->|가정 수정| A` },
+          { t: 'h2', text: 'PM 허브로 프로젝트 단위 셋업' },
+          { t: 'para', text: '직원 조합이 프로젝트 단위로 반복된다면, 매번 손으로 지시를 짜는 대신 moai-pm 플러그인의 /project 명령으로 셋업을 자동화할 수 있습니다. 프로젝트 폴더에서 /project를 실행하면 성격을 묻는 인터뷰를 거쳐 직원 배치와 공통 지침 파일이 만들어집니다.' },
+          { t: 'code', term: 'terminal — PM 허브 설치', lines: [
+            { sigil: '$', text: ' claude plugin install moai-pm@moai-cowork' },
+            { sigil: '>', text: ' /project' },
+          ] },
+          { t: 'sources', items: ['원문: www/content/plugins/teams.md'] },
+        ],
+      },
+      cookbook: {
+        blocks: [
+          { t: 'h2', text: '한 줄이 산출물이 되기까지' },
+          { t: 'para', text: '고급 레스토랑에 앉은 것과 같습니다. 손님은 "오늘 해산물 코스로 부탁해"라는 한 줄만 말하면, 웨이터가 필요한 질문만 골라 묻고 주방이 재료 손질 → 조리 → 플레이팅을 차례로 진행해 완성된 요리를 내옵니다. 손님이 레시피를 외우거나 주방 순서를 직접 지시할 필요가 없습니다.' },
+          { t: 'mermaid', cap: 'AskUserQuestion이 맥락을 묻고, 스킬 체이닝이 파이프라인을 이어 산출물을 만듭니다.', chart: `flowchart TD
+  U["사용자 한 줄 요청<br/>'해산물 코스로 부탁해'"] --> W{"AskUserQuestion<br/>맥락 수집"}
+  W -->|"알러지? 매운 정도?"| K["주방 — 스킬 체인<br/>재료손질 → 조리 → 플레이팅"]
+  K --> P["완성된 산출물<br/>파일 · 문서"]` },
+          { t: 'h2', text: '같은 틀로 읽는 법 — 6단 레시피' },
+          { t: 'para', text: '매 예제마다 이 틀이 고정되어 있어, 한 번 익숙해지면 어떤 예제든 같은 자리에서 같은 정보를 찾을 수 있습니다. 산출물을 확인하고 싶으면 항상 네 번째 단락을, 실패 대처법이 필요하면 항상 마지막 단락을 보면 됩니다.' },
+          { t: 'deflist', items: [
+            { term: '① 사용자 입력', desc: '한 줄 자연어 요청 — 요리 주문에 해당합니다.' },
+            { term: '② 시스템 인터뷰', desc: 'AskUserQuestion이 묻는 항목 — 웨이터의 확인 질문.' },
+            { term: '③ 자동 체인', desc: '시스템이 호출하는 스킬 순서 — 조리 순서도(mermaid).' },
+            { term: '④ 산출물', desc: '최종 결과물 미리보기 — 완성 사진.' },
+            { term: '⑤ 변형 시나리오', desc: '한 줄 요청만 바꿔 다른 결과 얻기 — 다른 맛 내는 팁.' },
+            { term: '⑥ 자주 겪는 이슈', desc: '실패 케이스와 우회법 — 실패 대응서.' },
+          ] },
+          { t: 'h2', text: '어디서 시작하나요' },
+          { t: 'cards', items: [
+            { tag: '개념', title: '스킬 체이닝 가이드', desc: '쿡북 전반에서 공통으로 쓰는 체인 패턴 입문. 설계 3원칙과 12종 체인.', id: 'cookbook/skill-chaining' },
+            { tag: '12 프로젝트', title: '코워크 프로젝트', desc: '전문가 AI 직원 여러 명을 릴레이로 조합해 문제 하나를 끝까지 해결하는 여정.', id: 'cookbook/projects' },
+            { tag: '11 트랙', title: '실전 트랙', desc: '역할·도메인별 표준 워크플로우. 역할이 명확하면 여기서 시작하세요.', id: 'tracks' },
+          ] },
+          { t: 'h2', text: '쿡북 전체 문서' },
+          { t: 'index', title: '예제 · 가이드 · 템플릿', count: '32', items: ix([
+            { title: '베스트 프랙티스 — 핵심 기능·프롬프트 5원칙·실전 TOP 10', note: '예제' },
+            { title: '자동화 레시피 — Schedule·Dispatch 본부별', note: '예제' },
+            { title: '블로그 파이프라인 — 초안→검수→썸네일', note: '예제' },
+            { title: '주간 보고서 자동화 — 상태 집계→XLSX→DOCX', note: '예제' },
+            { title: '사업계획서 자동화 — 전략→산업분석→PPT', note: '예제' },
+            { title: 'IR 덱 제작 — 투자자 관점 슬라이드', note: '예제' },
+            { title: '계약서 검토 리포트 — NDA 트리아지·리스크 점검', note: '예제' },
+            { title: 'NDA 일괄 검토 파이프라인', note: '예제' },
+            { title: '트러블슈팅 — 체인 실패 진단·재시도', note: '예제' },
+            { title: '콘텐츠 마케팅 전략', note: '가이드' },
+            { title: '계약서 작성 가이드', note: '가이드' },
+            { title: '데이터 분석 가이드', note: '가이드' },
+            { title: '시각화 최적화 원칙', note: '가이드' },
+            { title: '투자 유치 가이드', note: '가이드' },
+            { title: '법률 리스크 관리', note: '가이드' },
+            { title: 'SNS 최적화 가이드', note: '가이드' },
+            { title: '이메일 마케팅 템플릿', note: '템플릿' },
+            { title: '컴플라이언스 체크리스트', note: '템플릿' },
+            { title: '엑셀 고급 기법', note: '템플릿' },
+            { title: '재무 모델링 템플릿', note: '템플릿' },
+            { title: '프레젠테이션 디자인 원칙', note: '디자인' },
+          ]) },
+          { t: 'h2', text: '공통 원칙 — 맡은 일만 하게 하기' },
+          { t: 'list', items: [
+            '텍스트 산출물은 무조건 ai-slop-reviewer로 마무리합니다. 보고서·블로그·이메일·자소서·계약서 수정안이 모두 해당합니다.',
+            '숫자·차트·코드는 ai-slop-reviewer를 생략합니다. 재무제표 엑셀, 차트 HTML, 스크립트는 검수 대상이 아닙니다.',
+            '포맷 변환은 moai-office에 위임합니다. 내용 생성 스킬은 초안만 만들고 docx-generator·xlsx-creator·pptx-designer·hwpx-writer가 실제 파일을 만듭니다.',
+            'Windows 사용자는 파일명을 짧게 유지합니다. MAX_PATH(260자) 제한 때문에 짧은 한글 이름을 권장합니다.',
+          ] },
+          { t: 'sources', items: ['원문: www/content/cookbook/ (32 문서)', 'modu-ai/cowork-plugins'] },
+        ],
+      },
+      'cookbook/skill-chaining': {
+        title: '스킬 체이닝 가이드',
+        lead: 'Cowork에서 가장 중요한 실무 기술. 단일 스킬보다 2-4개를 엮은 체인이 결과 품질을 크게 좌우합니다. 설계 3원칙과 자주 쓰는 체인을 정리했습니다.',
+        blocks: [
+          { t: 'h2', text: '왜 체인인가' },
+          { t: 'para', text: '스킬 하나하나는 한 분야에 특화되어 폭이 좁습니다. strategy-planner는 전략 초안을 잘 쓰지만 DOCX로 저장하지 못하고, docx-generator는 파일을 잘 만들지만 전략을 기획하지 못합니다. 그리고 생성된 글은 대부분 AI 특유의 기계적 어투가 남아 있습니다. 셋을 엮으면 각 스킬의 장점만 결합한 하나의 파이프라인이 됩니다.' },
+          { t: 'code', term: '체인 예시', lines: [{ sigil: '', text: '  strategy-planner → docx-generator → ai-slop-reviewer', out: true }] },
+          { t: 'h2', text: '체인 설계 3원칙' },
+          { t: 'para', text: '체인 설계는 한 줄 요청을 여러 스킬이 차례로 이어받는 파이프라인으로 설계하는 방법입니다. 요리에 비유하면 한 냄비에 다 넣고 끓이는 게 아니라, 재료 손질 → 볶기 → 플레이팅 → 맛보기 순서로 나누는 것과 같습니다. 순서가 있어야 결과가 일관되게 맛있듯, 스킬에도 순서가 있어야 산출물 품질이 흔들리지 않습니다.' },
+          { t: 'mermaid', cap: '도메인 → 포맷 → 품질. 품질 단계가 항상 마지막에 옵니다.', chart: `flowchart LR
+  subgraph Domain["① 도메인 스킬"]
+    D1["strategy-planner"]
+    D2["contract-review"]
+    D3["blog"]
+  end
+  subgraph Format["② 포맷 스킬"]
+    F1["docx-generator"]
+    F2["pptx-designer"]
+    F3["xlsx-creator"]
+  end
+  subgraph Quality["③ 품질 스킬"]
+    Q1["ai-slop-reviewer"]
+  end
+  Domain --> Format --> Quality` },
+          { t: 'steps', items: [
+            { n: '1', title: '도메인 → 포맷 → 품질', desc: '항상 도메인 스킬이 먼저, 포맷 변환이 중간, 품질 검수가 마지막입니다.' },
+            { n: '2', title: '숫자·차트·코드는 품질 스킬 생략', desc: '재무제표, 데이터 차트, 스크립트 코드는 AI 어투를 검출할 게 없으므로 ai-slop-reviewer를 생략합니다.' },
+            { n: '3', title: '같은 체인을 슬래시 명령으로 저장', desc: '자주 쓰는 체인은 슬래시 명령으로 만들면 한 번의 지시로 실행됩니다. 예: /weekly-report는 status-reporter → xlsx-creator → docx-generator → ai-slop-reviewer를 한 번에.' },
+          ] },
+          { t: 'h2', text: '자주 쓰는 체인' },
+          { t: 'table', head: ['용도', '체인', '사용 플러그인'], rows: [
+            ['블로그 글', 'blog → ai-slop-reviewer', 'moai-content, moai-core'],
+            ['보도자료', 'copywriting → docx-generator → ai-slop-reviewer', 'moai-content, moai-office'],
+            ['사업계획서', 'strategy-planner → docx-generator → ai-slop-reviewer', 'moai-business, moai-office'],
+            ['IR 덱', 'investor-relations → pptx-designer → ai-slop-reviewer', 'moai-business, moai-office'],
+            ['월말 결산', 'close-management → xlsx-creator → docx-generator', 'moai-finance, moai-office'],
+            ['NDA 검토', 'nda-triage → docx-generator → ai-slop-reviewer', 'moai-legal, moai-office'],
+            ['주간 보고서', 'status-reporter → xlsx-creator → docx-generator → ai-slop-reviewer', 'moai-operations, moai-office'],
+            ['카드뉴스', 'card-news → higgsfield-image → pptx-designer', 'moai-content, moai-media'],
+            ['연구 논문', 'paper-search → paper-writer → docx-generator → ai-slop-reviewer', 'moai-research, moai-office'],
+          ] },
+          { t: 'h2', text: '체인을 깨뜨리는 흔한 실수' },
+          { t: 'warn', title: '실수 1 — ai-slop-reviewer를 맨 앞에 둔다', text: '검수할 원문이 없으므로 의미가 없습니다. 마지막에 오는 스킬입니다.' },
+          { t: 'warn', title: '실수 2 — 포맷 스킬을 여러 번 호출한다', text: 'docx 생성 후 다시 docx로 변환하면 포맷이 깨집니다. 한 번만 통과시키세요.' },
+          { t: 'warn', title: '실수 3 — 도메인 스킬 2개를 같은 프롬프트에 섞는다', text: 'strategy-planner와 market-analyst를 동시에 요청하면 한쪽이 약해집니다. 필요하면 두 번 나눠 호출한 뒤 docx-generator에서 합치세요.' },
+          { t: 'h2', text: '디버깅 체크리스트' },
+          { t: 'list', items: [
+            '결과가 너무 짧다 → 도메인 스킬에 구체 맥락(독자·목적·분량)을 추가로 넣어 재실행.',
+            'AI 티가 난다 → ai-slop-reviewer 실행했는지 확인. 생략됐다면 마지막 산출물에 대해 수동 호출.',
+            '포맷이 이상하다 → docx-generator 로그에서 어느 섹션이 빠졌는지 확인 후 원문을 보강.',
+            '파일이 안 열린다 (Windows) → 파일명·폴더 경로가 260자 넘지 않는지 확인.',
+          ] },
+          { t: 'sources', items: ['원문: www/content/cookbook/skill-chaining.md', 'docs.claude.com — Skills'] },
+        ],
+      },
+      'cookbook/projects': {
+        title: '코워크 프로젝트',
+        lead: '기능 하나를 소개하는 레시피를 넘어, 전문가 AI 직원 여러 명을 릴레이로 조합해 실제 문제 하나를 끝까지 해결하는 여정을 담은 프로젝트 모음입니다. 구체적인 인물의 문제 상황에서 출발해 어느 직원의 어느 스킬을 어떤 순서로 투입하는지 따라갑니다.',
+        blocks: [
+          { t: 'h2', text: '창업·운영' },
+          { t: 'cards', items: [
+            { tag: '①', title: '상권분석으로 창업 타당성 검증하기', desc: '컨설턴트 × 회계사 조합으로 아이템을 이중 검증합니다.' },
+            { tag: '②', title: '정부 지원사업 신청서 완성하기', desc: '지원사업 매칭부터 신청서 문서화까지.' },
+            { tag: '③', title: '스마트스토어 신제품 런칭하기', desc: '셀러가 상품 등록·상세페이지·광고를 릴레이로.' },
+          ] },
+          { t: 'h2', text: '마케팅·콘텐츠' },
+          { t: 'cards', items: [
+            { tag: '④', title: '브랜드에서 랜딩 페이지까지', desc: '브랜드 아이덴티티 → 카피 → 랜딩 시안.' },
+            { tag: '⑤', title: '한 달치 SNS 콘텐츠 캘린더 만들기', desc: '주제 발굴부터 채널별 변형까지 한 번에.' },
+            { tag: '⑥', title: '웹소설 기획부터 연재·표지까지', desc: '스토리 크리에이터 × 미디어 크리에이터 조합.' },
+          ] },
+          { t: 'h2', text: '사무·문서' },
+          { t: 'cards', items: [
+            { tag: '⑦', title: '공공데이터로 시장 보고서 만들기', desc: '애널리스트가 KOSIS·DART를 조회해 리포트로.' },
+            { tag: '⑧', title: '주간보고 자동화 루틴 만들기', desc: '상태 집계 → XLSX → DOCX를 슬래시 명령으로.' },
+            { tag: '⑨', title: '계약서 검토와 리스크 보고', desc: '법무 담당이 트리아지하고 리스크를 문서화.' },
+          ] },
+          { t: 'h2', text: '사람·커리어' },
+          { t: 'cards', items: [
+            { tag: '⑩', title: '채용 공고부터 오퍼레터까지', desc: '인사 담당이 공고·스크리닝·오퍼를 일관되게.' },
+            { tag: '⑪', title: '이직 준비 4주 플랜 실행하기', desc: '커리어코치와 함께 이력서·면접을 4주로 나눠.' },
+            { tag: '⑫', title: 'VOC 분석으로 FAQ 지식베이스 구축하기', desc: 'CS매니저가 문의를 분류해 지식베이스로.' },
+          ] },
+          { t: 'note', title: '읽는 방법', text: '각 프로젝트는 인물의 문제 상황 → 투입 직원과 스킬 순서 → 산출물 순으로 이어집니다. 내 상황과 가까운 프로젝트를 골라 스킬 순서만 바꿔 쓰면 됩니다.' },
+          { t: 'sources', items: ['원문: www/content/cookbook/projects/ (13 문서)'] },
+        ],
+      },
+      tracks: {
+        blocks: [
+          { t: 'h2', text: '트랙 선택 가이드' },
+          { t: 'para', text: '트랙은 역할·도메인별 표준 워크플로우입니다. 각 트랙은 사용 패턴 가이드의 4가지 표준 패턴(단일 프롬프트·멀티턴·배치·스케줄)을 적용한 구체적 시나리오를 보여줍니다. 짧은 자연어 한 줄 → AskUserQuestion → 스킬 체이닝의 공통 패턴을 따릅니다.' },
+          { t: 'mermaid', cap: '역할에서 출발해 내 트랙을 찾습니다.', chart: `flowchart TD
+  S["당신의 역할·업무는?"] --> Doc{"문서·기획?"}
+  Doc -->|예| T1["문서 트랙"]
+  Doc -->|아니오| Sell{"판매·이커머스?"}
+  Sell -->|예| T2["이커머스 트랙"]
+  Sell -->|아니오| Mkt{"마케팅·콘텐츠?"}
+  Mkt -->|콘텐츠 위주| T3["콘텐츠 트랙"]
+  Mkt -->|광고 위주| T4["광고 트랙"]
+  Mkt -->|아니오| Ops{"운영·HR·CS?"}
+  Ops -->|HR·채용| T5["HR·커리어 트랙"]
+  Ops -->|운영·PM| T6["운영 트랙"]
+  Ops -->|아니오| Pro{"전문직?"}
+  Pro -->|법률| T7["법률 트랙"]
+  Pro -->|재무| T8["재무 트랙"]
+  Pro -->|데이터| T9["데이터 트랙"]
+  Pro -->|제품| T10["제품 개발 트랙"]` },
+          { t: 'h2', text: '11개 트랙 + 부록' },
+          { t: 'cards', items: [
+            { tag: '문서·기획', title: '문서 트랙', desc: 'Word·PPT·Excel·PDF·한글을 넘나드는 문서 업무를 옮기는 경로.', id: 'tracks/documents' },
+            { tag: '콘텐츠', title: '콘텐츠 트랙', desc: '블로그·SNS·뉴스레터 콘텐츠 파이프라인.' },
+            { tag: '광고', title: '광고 트랙', desc: 'Meta Ads 캠페인 설계·크리에이티브·성과 감사.' },
+            { tag: '이커머스', title: '이커머스 트랙', desc: '스마트스토어·상세페이지·CRM 운영.' },
+            { tag: '마케팅', title: '마케팅 트랙', desc: '브랜딩·SEO·캠페인 8주.' },
+            { tag: 'HR', title: 'HR·커리어 트랙', desc: '채용 공고·스크리닝·오퍼레터·성과평가.' },
+            { tag: '운영·PM', title: '운영 트랙', desc: '프로젝트 상태 집계·스케줄 자동화.' },
+            { tag: '법률', title: '법률 트랙', desc: '계약 검토·컴플라이언스·판례 리서치.' },
+            { tag: '재무', title: '재무 트랙', desc: '재무제표 분석·결산·세무 절감.' },
+            { tag: '데이터', title: '데이터 트랙', desc: '분석·공공데이터 8주 — KOSIS·DART.' },
+            { tag: '제품', title: '제품 개발 트랙', desc: 'PRD·기능명세·로드맵·UX 리서치.' },
+            { tag: '부록', title: '부록 트랙', desc: '공통 프롬프트·체인 레퍼런스 모음.' },
+          ] },
+          { t: 'note', title: '역할이 명확하면 트랙부터', text: '구체적 시나리오를 찾는다면 쿡북 예제 목록으로, 개념부터 익힌다면 스킬 체이닝 가이드로 가세요.' },
+          { t: 'sources', items: ['원문: www/content/cookbook/tracks/ (13 문서)'] },
+        ],
+      },
+      'tracks/documents': {
+        title: '문서 트랙',
+        lead: 'Word·PPT·Excel·PDF·한글(HWPX)을 넘나드는 문서 업무를 Cowork로 옮기는 경로를 정리합니다. 각 포맷마다 적합한 스킬과 회피해야 할 함정을 함께 다룹니다.',
+        blocks: [
+          { t: 'h2', text: '트랙 지도' },
+          { t: 'mermaid', cap: '출력 형식에 따라 담당 스킬이 갈리고, 교정을 거쳐 산출물이 됩니다.', chart: `flowchart TD
+  Need["업무 필요"] --> Choice{"출력 형식"}
+  Choice -->|보고서·제안서·계약서| Docx["docx-generator"]
+  Choice -->|발표·피치덱| Pptx["pptx-designer"]
+  Choice -->|표·대시보드·재무모델| Xlsx["xlsx-creator"]
+  Choice -->|기안서·관공서 제출| Hwpx["hwpx-writer"]
+  Choice -->|폼 작성·병합·추출| Pdf["pdf"]
+  Docx --> Review["ai-slop-reviewer"]
+  Pptx --> Review
+  Hwpx --> Review
+  Review --> Out["최종 산출물"]` },
+          { t: 'h2', text: '문서 자동화는 조립 라인입니다' },
+          { t: 'para', text: '"문서 하나 만들면 되지 왜 Word·PPT·Excel·한글·PDF 다섯 갈래로 갈라져 있나?"라는 의문이 듭니다. 이유는 목적이 다르기 때문입니다. 인쇄소에 비유하면 쉽습니다 — 손님이 원고를 들고 오면 직원이 먼저 "이걸 뭘로 만들 거냐" 묻습니다. 보고서면 워드 인쇄기로, 발표 자료면 슬라이드 인쇄기로, 표면 엑셀 인쇄기로 찍습니다. 기계가 다르듯 만드는 스킬도 다릅니다.' },
+          { t: 'para', text: '각 기계로 찍어낸 뒤에는 마지막으로 교정 전문가(ai-slop-reviewer)가 맞춤법과 어투를 점검합니다. 즉 문서 자동화는 "원본 재료 → 목적에 맞는 기계 선택 → 인쇄 → 교정 → 납품"의 조립 라인입니다. 다섯 포맷은 서로 경쟁하는 게 아니라, 각자 다른 목적에 대응하는 전용 기계일 뿐입니다.' },
+          { t: 'mermaid', cap: '목적에 따라 전용 기계를 고르는 구조.', chart: `flowchart LR
+  In["원본 재료<br/>데이터 · 원고"] --> Pick{"목적이 무엇인가"}
+  Pick -->|읽는 글| W["Word<br/>docx-generator"]
+  Pick -->|보여주는 발표| P["PPT<br/>pptx-designer"]
+  Pick -->|계산하는 표| X["Excel<br/>xlsx-creator"]
+  Pick -->|관공서 제출| H["한글<br/>hwpx-writer"]
+  Pick -->|편집 불가 배포| F["PDF<br/>pdf"]
+  W --> Q["교정<br/>ai-slop-reviewer"]
+  P --> Q
+  H --> Q
+  X --> Out["최종 산출물"]
+  F --> Out
+  Q --> Out` },
+          { t: 'h2', text: '포맷별 담당 스킬' },
+          { t: 'table', head: ['출력 형식', '담당 스킬', '쓰는 상황'], rows: [
+            ['Word (읽는 글)', 'docx-generator', '보고서·제안서·계약서 수정본'],
+            ['PPT (보여주는 발표)', 'pptx-designer', '발표 자료·피치덱·IR 덱'],
+            ['Excel (계산하는 표)', 'xlsx-creator', '표·대시보드·재무모델'],
+            ['한글 HWPX (관공서)', 'hwpx-writer', '기안서·관공서 제출 서식'],
+            ['PDF (편집 불가 배포)', 'pdf', '폼 작성·병합·추출'],
+          ] },
+          { t: 'note', title: '교정은 텍스트 문서만', text: 'Word·PPT·한글 산출물은 ai-slop-reviewer를 거치지만, Excel(숫자·표)과 PDF(병합·추출)는 검출할 어투가 없어 교정 단계를 건너뜁니다.' },
+          { t: 'sources', items: ['원문: www/content/cookbook/tracks/track-documents.md'] },
+        ],
+      },
+      releases: {
+        blocks: [
+          { t: 'h2', text: '최신 릴리스' },
+          { t: 'para', text: 'MoAI Cowork Plugins은 지속적인 개발로 새로운 기능을 추가하고 기존 기능을 개선합니다. 최신 버전은 v2.27.0(2026-06-19)이며, design-system-library의 브랜드 디자인 시스템이 56종에서 75종으로 확장됐습니다. 176 스킬, 기능적 비파괴.' },
+          { t: 'cards', items: [
+            { tag: 'v2.27.0 · 최신', title: 'design-system-library 56 → 75종 확장', desc: 'getdesign.md 74종 브랜드 쇼케이스에서 19개 신규 브랜드 토큰 추출·통합.', id: 'releases/v2-27' },
+          ] },
+          { t: 'h2', text: '버전 흐름' },
+          { t: 'mermaid', cap: 'v2.18 이후 최근 릴리스 흐름.', chart: `flowchart LR
+  A["v2.18<br/>에이전트 모델 전환"] --> B["v2.19<br/>humanize v2.0"]
+  B --> C["v2.20<br/>moai-tutor"]
+  C --> D["v2.21<br/>agent-aware"]
+  D --> E["v2.22<br/>56 브랜드"]
+  E --> F["v2.23<br/>mermaid 통일"]
+  F --> G["v2.27<br/>75 브랜드 · 최신"]` },
+          { t: 'h2', text: '전체 릴리스 노트' },
+          { t: 'index', title: '버전 · 하이라이트', count: '37', items: ix([
+            { title: 'design-system-library 56→75종 확장', note: 'v2.27.0' },
+            { title: 'drawio-diagram 제거 · mermaid 통일', note: 'v2.23.0' },
+            { title: 'design-system-library 56 브랜드', note: 'v2.22.0' },
+            { title: 'drawio · humanize K · agent-aware', note: 'v2.21.0' },
+            { title: 'moai-tutor 학습 튜터 신규', note: 'v2.20.0' },
+            { title: 'humanize v2.0 · 코디네이터 31', note: 'v2.19.0' },
+            { title: '에이전트 모델 전환', note: 'v2.18.0' },
+            { title: '공공데이터·코디네이터', note: 'v2.17.0' },
+            { title: '개인·일잘러 3종', note: 'v2.16.0' },
+            { title: 'Meta 광고·NotebookLM', note: 'v2.15.0' },
+            { title: 'Claude Design 정합성', note: 'v2.14.0' },
+            { title: 'Higgsfield 이미지·영상', note: 'v2.13.0' },
+            { title: 'moai-design 신규', note: 'v2.12.0' },
+            { title: 'media 정리·재정의', note: 'v2.11.0' },
+            { title: 'moai-book 신규', note: 'v2.10.0' },
+            { title: '프롬프트 빌더 3', note: 'v2.9.0' },
+            { title: 'D2C 35종 완결', note: 'v2.8.0' },
+            { title: '프로모션·재구매', note: 'v2.7.0' },
+            { title: 'vault grounding', note: 'v2.6.0' },
+            { title: '메타 광고 audit', note: 'v2.5.0' },
+            { title: '인사이트 통합', note: 'v2.4.0' },
+            { title: '커머스 통합', note: 'v2.3.0' },
+            { title: 'html-report', note: 'v2.2.0' },
+            { title: 'humanize-korean', note: 'v2.1.0' },
+            { title: 'B2B 6스킬', note: 'v2.0.0' },
+            { title: 'pdf-writer', note: 'v1.6.0' },
+            { title: '상권분석·문서', note: 'v1.5.0' },
+            { title: 'AI 슬롭·체이닝', note: 'v1.3.0' },
+            { title: '미디어·MCP', note: 'v1.2.0' },
+            { title: '초기 릴리스', note: 'v1.0.0' },
+          ]) },
+          { t: 'note', title: '업데이트 방법', text: '마켓플레이스 정보를 먼저 갱신하고, 그다음 개별 플러그인을 업데이트하세요. 업데이트 후 동작이 이상하면 세션을 재시작합니다.' },
+          { t: 'code', term: 'terminal — 업데이트', lines: [
+            { sigil: '$', text: ' claude plugin marketplace update moai-cowork' },
+            { sigil: '$', text: ' claude plugin update moai-coworker@moai-cowork' },
+          ] },
+          { t: 'sources', items: ['원문: www/content/releases/ (37 문서)'] },
+        ],
+      },
+      'releases/v2-27': {
+        title: 'v2.27.0 릴리스 노트',
+        lead: 'design-system-library 56종 → 75종 확장. getdesign.md의 74종 브랜드 쇼케이스에서 19개 신규 브랜드 토큰을 추출·통합했습니다. 176 스킬, 기능적 비파괴.',
+        blocks: [
+          { t: 'deflist', items: [
+            { term: '릴리스 날짜', desc: '2026-06-19' },
+            { term: '버전', desc: 'v2.27.0 (MINOR, 최신)' },
+            { term: '업데이트 명령', desc: '/plugin marketplace update cowork-plugins' },
+          ] },
+          { t: 'h2', text: '하이라이트' },
+          { t: 'para', text: 'moai-design:design-system-library의 브랜드 디자인 시스템이 56종에서 75종으로 확장됐습니다.' },
+          { t: 'list', items: [
+            '19개 신규 브랜드 추가 — getdesign.md의 74종 브랜드 쇼케이스에서 19개 신규 브랜드 토큰 추출·통합.',
+            '라이트 테마 10종 — Airbnb, Apple, Stripe, Webflow, Wired 등.',
+            '다크 테마 9종 — Binance, BMW, Vercel, Supabase, Linear 등.',
+            'frontmatter 정합 — 75개 시스템 모두 colors·typography·rounded YAML 필드 유효성 확인.',
+            '연동 스킬 업데이트 — html-slide·html-report의 design_system 파라미터가 75종 전체를 지원.',
+          ] },
+          { t: 'h2', text: '사용 예시' },
+          { t: 'code', term: 'claude — moai-design', lines: [
+            { sigil: '>', text: ' HTML 슬라이드를 Vercel 디자인 시스템으로 만들어줘.' },
+            { sigil: '>', text: ' Stripe 브랜드로 마케팅 리포트 HTML을 생성해줘.' },
+          ] },
+          { t: 'para', text: '업데이트 후 75개 브랜드 중 원하는 디자인 시스템을 지정할 수 있습니다. 강연 테마 추천(비개발자 → 라이트 안전 계열 안내)도 포함됩니다.' },
+          { t: 'sources', items: ['원문: www/content/releases/v2.27.md'] },
+        ],
+      },
+      help: {
+        blocks: [
+          { t: 'h2', text: '무엇을 도와드릴까요' },
+          { t: 'para', text: '계정·요금제·사용량처럼 제품 기능 밖의 운영 질문을 모았습니다. 기능 사용법은 가이드 섹션에서, 설치는 시작하기에서 다룹니다.' },
+          { t: 'cards', items: [
+            { tag: '계정', title: '계정 관리', desc: '로그인·이메일 변경·탈퇴 등 계정 전반.' },
+            { tag: '요금', title: '요금제와 결제', desc: '요금제 차이, 결제 수단, 영수증.' },
+            { tag: '한도', title: '사용량과 한도', desc: '메시지 한도에 걸렸을 때 확인할 것.' },
+            { tag: '대화', title: '대화 관리', desc: '대화 검색·삭제·내보내기.' },
+            { tag: '개인화', title: '개인화와 설정', desc: '어투·응답 스타일·기억 설정.' },
+            { tag: '문제', title: '문제 해결', desc: '접속·응답 오류가 났을 때 순서대로 점검.' },
+          ] },
+          { t: 'h2', text: '연동과 색인' },
+          { t: 'index', title: '도움말 나머지 문서', count: '5', items: ix([
+            { title: 'Claude 알아보기', note: '소개' },
+            { title: 'Office 통합', note: '연동' },
+            { title: 'Microsoft 365 연동', note: '연동' },
+            { title: '가이드 문서 색인', note: '색인' },
+            { title: '도움말 섹션 개요', note: '개요' },
+          ]) },
+          { t: 'h2', text: '자주 묻는 질문' },
+          { t: 'faq', items: [
+            { q: '"메시지 한도에 도달했습니다"가 자주 나옵니다', a: '무료 요금제는 하루에 보낼 수 있는 메시지 양이 제한적입니다. 이 안내를 자주 만나는 시점이 유료 전환을 고민할 때입니다. 정확한 제공량은 요금 안내 페이지에서 확인하세요.' },
+            { q: '로그인 코드 메일이 오지 않습니다', a: '스팸함을 확인하고, 1-2분 뒤 Resend(다시 보내기)를 눌러보세요. 회사(조직) 계정이라면 관리자 승인 설정이 필요할 수 있습니다.' },
+            { q: '"지역에서 사용할 수 없음"이 표시됩니다', a: '한국은 지원 지역입니다. VPN이 켜져 있는지 확인하고 꺼보세요.' },
+            { q: '플러그인을 설치했는데 적용되지 않습니다', a: '새 대화를 열어 요청해 보세요. 설치 전에 열려 있던 대화나 세션에는 적용되지 않을 수 있습니다.' },
+          ] },
+          { t: 'sources', items: ['원문: www/content/help/ (11 문서)'] },
+        ],
+      },
+    };
+
+    const sectionOf = (r) => (r === 'home' ? 'home' : r.split('/')[0]);
+    const sec = sectionOf(route);
+    const isDetail = route !== 'home' && route.indexOf('/') > -1;
+
+    const navDef = [
+      { id: 'home', label: '홈' }, { id: 'start', label: '시작하기' }, { id: 'guide', label: '가이드' },
+      { id: 'agents', label: '에이전트' }, { id: 'plugins', label: '플러그인' }, { id: 'cookbook', label: '쿡북' },
+      { id: 'tracks', label: '실전 트랙' }, { id: 'releases', label: '릴리스' },
+    ];
+    const nav = navDef.map(n => ({ ...n, active: n.id === sec, onClick: go(n.id) }));
+
+    const HEROES = {
+      home: { eyebrow: 'v6.2.0 · 2026-06-19 · claude.mo.ai.kr', titleLead: '필요한 일마다,', titleStrong: 'AI 직원을 채용하세요',
+        lead: '모두의 코워크 마켓플레이스의 18개 플러그인은 각각 한 명의 전문 직원입니다. 마케팅·셀러·법무·디자인 — 필요한 직무만 골라 설치하면, 자연어 한마디로 일이 시작됩니다.',
+        cta1: '직원 둘러보기', cta1Id: 'agents', cta2: '5분 설치 가이드', cta2Id: 'start/install',
+        stats: [{ num: '18', lbl: 'AI 직원' }, { num: '176', lbl: '스킬' }, { num: '207', lbl: '문서' }, { num: 'v6.2.0', lbl: '마켓플레이스' }] },
+      start: { eyebrow: 'Getting Started · 완전 초보자용', titleLead: '설치부터 첫 직원 채용까지,', titleStrong: '순서대로 안내합니다',
+        lead: 'Claude Desktop은 하나의 프로그램 안에 여러 일하는 방식이 들어 있는 "AI 사무실"입니다. 낯선 용어가 나와도 걱정하지 않으셔도 됩니다 — 모든 용어를 일상 비유와 함께 풀어서 설명합니다.',
+        cta1: '설치 가이드 시작', cta1Id: 'start/install', cta2: '개념 기초 먼저 보기', cta2Id: 'start/concepts',
+        stats: [{ num: '4', lbl: '단계 여정' }, { num: '9', lbl: '기초 개념' }, { num: '5', lbl: '문서' }, { num: '30분', lbl: '첫 결과물까지' }] },
+      guide: { eyebrow: 'Guide · 제품별 기능', titleLead: '네 개의 제품,', titleStrong: '하나의 AI 사무실',
+        lead: 'Chat · Cowork · Design · Code — 제품별로 무엇을 할 수 있고 어떤 기능이 있는지 75개 문서로 다룹니다. 제품 경계가 헷갈릴 때는 각 섹션의 비교 문서를 먼저 보세요.',
+        cta1: 'Chat부터 보기', cta1Id: 'guide/chat', cta2: 'Cowork 아키텍처', cta2Id: 'guide/cowork',
+        stats: [{ num: '17', lbl: 'Chat' }, { num: '25', lbl: 'Cowork' }, { num: '13', lbl: 'Design' }, { num: '20', lbl: 'Code' }] },
+      agents: { eyebrow: 'MoAI-Agents · v6.2.0', titleLead: '18명의 AI 직원,', titleStrong: '이름이 곧 직무입니다',
+        lead: '범용 코어부터 작가·마케터·법무·디자이너까지. 각 직원의 역할·스킬·연동을 한눈에 보고, 내 일에 맞는 직원만 골라 채용하세요.',
+        cta1: '코워커 살펴보기', cta1Id: 'agents/coworker', cta2: '설치 방법', cta2Id: 'plugins/install',
+        stats: [{ num: '18', lbl: 'AI 직원' }, { num: '4', lbl: '직무 축' }, { num: '176', lbl: '스킬' }, { num: '9+', lbl: 'MCP 연동' }] },
+      plugins: { eyebrow: 'Plugins · 설치·운용 매뉴얼', titleLead: '18명의 AI 직원을', titleStrong: '설치하고 부리는 법',
+        lead: '스마트폰에 앱을 설치하면 없던 기능이 생기듯, 플러그인을 설치하면 캠페인 기획·주문 관리·계약서 검토 같은 전문 업무를 바로 시킬 수 있습니다. 전부 설치할 필요는 없습니다.',
+        cta1: '설치와 관리 보기', cta1Id: 'plugins/install', cta2: '팀 구성 패턴', cta2Id: 'plugins/teams',
+        stats: [{ num: '18', lbl: '플러그인' }, { num: '5', lbl: '생애주기 단계' }, { num: '3', lbl: '운용 문서' }, { num: 'v6.2.0', lbl: '마켓플레이스' }] },
+      cookbook: { eyebrow: 'Cookbook · 시나리오 묶음', titleLead: '한 줄 요청이', titleStrong: '산출물이 되기까지',
+        lead: 'Claude Cowork와 moai 플러그인을 실제 업무에 어떻게 엮는지 시나리오 묶음으로 정리했습니다. 긴 옵션 프롬프트를 외울 필요 없이, 한 줄만 던지면 됩니다.',
+        cta1: '스킬 체이닝 가이드', cta1Id: 'cookbook/skill-chaining', cta2: '코워크 프로젝트', cta2Id: 'cookbook/projects',
+        stats: [{ num: '32', lbl: '쿡북 문서' }, { num: '12', lbl: '프로젝트' }, { num: '6', lbl: '단 레시피' }, { num: '4', lbl: '표준 패턴' }] },
+      tracks: { eyebrow: 'Tracks · 역할별 표준 워크플로우', titleLead: '내 역할에 맞는', titleStrong: '8주 실전 트랙',
+        lead: '역할·도메인별 표준 워크플로우 11개 + 부록. 문서·콘텐츠·광고·이커머스·마케팅·HR·운영·법률·재무·데이터·제품 — 역할이 명확하면 트랙부터 시작하세요.',
+        cta1: '문서 트랙 보기', cta1Id: 'tracks/documents', cta2: '쿡북 홈', cta2Id: 'cookbook',
+        stats: [{ num: '11', lbl: '트랙' }, { num: '8주', lbl: '트랙당 분량' }, { num: '4', lbl: '표준 패턴' }, { num: '+1', lbl: '부록' }] },
+      releases: { eyebrow: 'Releases · 버전 업데이트', titleLead: '무엇이 바뀌었는지,', titleStrong: '버전마다 기록합니다',
+        lead: 'MoAI Cowork Plugins는 지속적인 개발로 새로운 기능을 추가하고 기존 기능을 개선합니다. 버전 관리 정책과 릴리스 노트를 한곳에서 확인하세요.',
+        cta1: '최신 릴리스 보기', cta1Id: 'releases/v2-27', cta2: '업데이트 방법', cta2Id: 'plugins/install',
+        stats: [{ num: 'v2.27', lbl: '최신 버전' }, { num: '176', lbl: '스킬' }, { num: '37', lbl: '릴리스 노트' }, { num: '75', lbl: '브랜드 시스템' }] },
+      help: { eyebrow: 'Help · 운영 질문', titleLead: '막혔을 때,', titleStrong: '여기서 찾으세요',
+        lead: '계정·요금제·사용량처럼 제품 기능 밖의 운영 질문을 모았습니다. 기능 사용법은 가이드 섹션에서, 설치는 시작하기에서 다룹니다.',
+        cta1: '문제 해결 보기', cta1Id: 'help', cta2: '요금제 안내', cta2Id: 'start/install',
+        stats: [{ num: '11', lbl: '도움말 문서' }, { num: '4', lbl: '자주 묻는 질문' }, { num: '2', lbl: 'Office 연동' }, { num: '1', lbl: '문서 색인' }] },
+    };
+
+    const heroRaw = HEROES[sec] || HEROES.home;
+    const hero = { ...heroRaw, onCta1: go(heroRaw.cta1Id), onCta2: go(heroRaw.cta2Id) };
+
+    const tree = TREE[sec] || [];
+    const sidebarItems = tree.map(i => ({ ...i, active: i.id === route, onClick: go(i.id) }));
+    const idx = tree.findIndex(i => i.id === route);
+    const prev = idx > 0 ? tree[idx - 1] : null;
+    const next = idx > -1 && idx < tree.length - 1 ? tree[idx + 1] : null;
+
+    const raw = PAGES[route] || { blocks: [] };
+    const treeEntry = tree.find(i => i.id === route);
+    const anchorFor = (s, i) => 'sec-' + i + '-' + String(s).replace(/[^0-9A-Za-z가-힣]+/g, '-').slice(0, 24);
+
+    const blocks = (raw.blocks || []).map((b, i) => {
+      const anchor = b.t === 'h2' ? anchorFor(b.text, i) : '';
+      return {
+        ...b, anchor,
+        isH2: b.t === 'h2', isPara: b.t === 'para', isList: b.t === 'list', isSteps: b.t === 'steps',
+        isTable: b.t === 'table', isMermaid: b.t === 'mermaid', isCode: b.t === 'code',
+        isNote: b.t === 'note', isTip: b.t === 'tip', isWarn: b.t === 'warn',
+        isCards: b.t === 'cards', isChips: b.t === 'chips', isFaq: b.t === 'faq',
+        isDeflist: b.t === 'deflist', isIndex: b.t === 'index', isSources: b.t === 'sources',
+        items: b.t === 'steps' ? (b.items || []).map(s => ({ ...s, hasTitle: !!s.title }))
+          : b.t === 'cards' ? (b.items || []).map(c => ({ ...c, hasTag: !!c.tag, id: c.id || route, onClick: go(c.id || route) }))
+          : b.items,
+        lines: b.t === 'code' ? (b.lines || []).map(l => ({ ...l, isCmd: !l.out, isOut: !!l.out })) : b.lines,
+      };
+    });
+
+    const activeAnchor = this.state.activeAnchor;
+    const toc = blocks.filter(b => b.isH2).map((b, i) => ({
+      text: b.text, anchor: b.anchor, active: activeAnchor ? b.anchor === activeAnchor : i === 0, onClick: this.jump(b.anchor),
+    }));
+
+    return {
+      route, showMascots, nav, goHome: go('home'), goAgents: go('agents'), hero,
+      showHero: !isDetail,
+      isHome: sec === 'home', isDocs: sec !== 'home', isDetail,
+      isHomeSec: sec === 'home', isStartSec: sec === 'start', isGuideSec: sec === 'guide',
+      isAgentsSec: sec === 'agents', isPluginsSec: sec === 'plugins', isCookbookSec: sec === 'cookbook',
+      isTracksSec: sec === 'tracks', isReleasesSec: sec === 'releases', isHelpSec: sec === 'help',
+      sidebar: { label: (SECTIONS[sec] || {}).label || '문서', srcPath: (SECTIONS[sec] || {}).src || '', items: sidebarItems },
+      crumb: {
+        sectionId: sec, sectionLabel: (SECTIONS[sec] || {}).label || '', onSection: go(sec),
+        hasLeaf: isDetail, leaf: raw.title || (treeEntry || {}).label || '',
+      },
+      page: { title: raw.title || (treeEntry || {}).label || '', lead: raw.lead || '', blocks },
+      toc,
+      pager: {
+        hasPrev: !!prev, prevId: (prev || {}).id || '', prevLabel: (prev || {}).label || '', onPrev: go((prev || {}).id || route),
+        hasNext: !!next, nextId: (next || {}).id || '', nextLabel: (next || {}).label || '', onNext: go((next || {}).id || route),
+      },
+      footerNav: [
+        { label: '문서', items: [
+          { id: 'start', label: '시작하기', onClick: go('start') },
+          { id: 'guide', label: '가이드', onClick: go('guide') },
+          { id: 'agents', label: 'MoAI-Agents', onClick: go('agents') },
+        ] },
+        { label: '실전', items: [
+          { id: 'cookbook', label: '쿡북', onClick: go('cookbook') },
+          { id: 'tracks', label: '실전 트랙', onClick: go('tracks') },
+          { id: 'plugins', label: '플러그인', onClick: go('plugins') },
+        ] },
+        { label: '지원', items: [
+          { id: 'help', label: '도움말', onClick: go('help') },
+          { id: 'releases', label: '릴리스', onClick: go('releases') },
+        ] },
+      ],
+      sectionCards: [
+        { id: 'start', count: '5 문서', title: '시작하기', desc: 'Claude Desktop 설치부터 첫 직원 채용까지 — 완전 초보자용 경로.', onClick: go('start') },
+        { id: 'guide', count: '75 문서', title: '가이드', desc: 'Chat · Cowork · Design · Code 제품별 기능과 운영.', onClick: go('guide') },
+        { id: 'agents', count: '18 직원', title: 'MoAI-Agents', desc: '각 직원의 역할·스킬·연동을 한눈에. 누구를 뽑을지 정하는 곳.', onClick: go('agents') },
+        { id: 'plugins', count: '5 문서', title: '플러그인', desc: '설치·확인·업데이트와 에이전트 호출, 팀 구성 패턴.', onClick: go('plugins') },
+        { id: 'cookbook', count: '32 문서', title: '쿡북', desc: '한 줄 요청이 산출물이 되는 실전 시나리오 묶음.', onClick: go('cookbook') },
+        { id: 'tracks', count: '11 트랙', title: '실전 트랙', desc: '역할·도메인별 8주 표준 워크플로우.', onClick: go('tracks') },
+        { id: 'releases', count: '37 노트', title: '릴리스', desc: '버전마다 무엇이 바뀌었는지 기록.', onClick: go('releases') },
+        { id: 'help', count: '11 문서', title: '도움말', desc: '계정·요금제·사용량 등 운영 질문.', onClick: go('help') },
+      ],
+      plugins: [
+        { id: 'agents/coworker', pkg: 'moai-coworker', name: '코워커', desc: '브랜드·제안서·보고·협상 등 비즈니스 범용 실무와 라이프스타일까지.', cta: '범용 실무', onClick: go('agents/coworker') },
+        { id: 'agents', pkg: 'moai-writer', name: '작가', desc: '출판 기획·집필·제안서, 한국어 인문화 윤문과 맞춤법 검수.', cta: '창작·출판', onClick: go('agents') },
+        { id: 'agents', pkg: 'moai-story', name: '스토리 크리에이터', desc: '웹툰·웹소설·시나리오·콘티·캐릭터 시트까지 IP 창작 전 과정.', cta: '창작·IP', onClick: go('agents') },
+        { id: 'agents', pkg: 'moai-marketer', name: '마케터', desc: '캠페인 기획·퍼포먼스 분석·콘텐츠·광고 (Meta Ads 연동).', cta: '마케팅', onClick: go('agents') },
+        { id: 'agents', pkg: 'moai-seller', name: '셀러', desc: '스마트스토어·아임웹·카페24 운영, 상세페이지·CRM까지.', cta: '이커머스', onClick: go('agents') },
+        { id: 'agents', pkg: 'moai-officer', name: '사무관', desc: 'HWPX·DOCX·XLSX·PPTX·PDF 한국형 오피스 문서와 HTML 리포트.', cta: '문서·오피스', onClick: go('agents') },
+        { id: 'agents', pkg: 'moai-analyst', name: '데이터 애널리스트', desc: '공공데이터·KOSIS·DART 조회와 데이터 시각화.', cta: '데이터·분석', onClick: go('agents') },
+        { id: 'agents', pkg: 'moai-lawyer', name: '법무 담당', desc: '계약 검토·컴플라이언스, 법령/판례 리서치.', cta: '전문직', onClick: go('agents') },
+        { id: 'agents', pkg: 'moai-pm', name: 'PM', desc: '/project 명령 하나로 프로젝트 단위 셋업과 직원 배치를 라우팅.', cta: '프로젝트 허브', onClick: go('agents') },
+      ],
+      steps: [
+        { step: 'Step 01', title: '마켓플레이스 추가', desc: '모두의 코워크 마켓플레이스를 한 번 등록합니다.', sigil: '$', cmd: 'claude plugin marketplace add modu-ai/moai-cowork' },
+        { step: 'Step 02', title: '직원 채용(설치)', desc: '필요한 직원을 골라 담습니다 — 18명 중에서.', sigil: '$', cmd: 'claude plugin install moai-coworker@moai-cowork' },
+        { step: 'Step 03', title: '자연어로 일 맡기기', desc: '슬래시 명령 없이 요청하면 매칭 스킬이 자동 호출됩니다.', sigil: '>', cmd: '블로그 초안 작성해줘' },
+      ],
+      c_home: `flowchart LR
+  A["마켓플레이스 등록<br/>1회만"] --> B["직원 채용<br/>plugin install"]
+  B --> C["자연어 요청<br/>블로그 초안 작성해줘"]
+  C --> D["산출물<br/>문서 · 표 · 슬라이드"]
+  D -.->|다른 일이 생기면| B`,
+    };
+  }
+}
+</script>
+</body>
+</html>

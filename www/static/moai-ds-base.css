@@ -1,0 +1,211 @@
+/* 모두의AI Design System — base layer
+ * geekdoc main.scss 를 대체하는 뼈대. 로드 순서: tokens → **base** → moai-ds → docs → mascot
+ * SSOT: www/design-system/*.html  ·  규칙: CLAUDE.local.md § CSS 구조
+ *
+ * 여기에는 "구조"만 둔다 — 색/타이포 토큰은 tokens.css, 컴포넌트는 moai-ds.css.
+ * geekdoc이 제공하던 것 중 실제로 렌더되는 클래스만 이식했다(실측 26종).
+ */
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; }
+h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd { margin: 0; }
+ul[class], ol[class] { list-style: none; margin: 0; padding: 0; }
+img, picture, svg, video { max-width: 100%; display: block; }
+button, input, select, textarea { font: inherit; color: inherit; }
+a { color: inherit; text-decoration: none; }
+table { border-collapse: collapse; border-spacing: 0; }
+
+/* ── Scrollbar (DS reference) ── */
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-thumb {
+  background: var(--border-1);
+  border-radius: var(--radius-full);
+  border: 3px solid var(--color-canvas);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--border-strong); }
+
+/* ── Layout skeleton (geekdoc parity) ── */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: var(--color-body);
+  background: var(--color-canvas);
+  font-weight: var(--fw-regular);
+}
+.container {
+  width: 100%;
+  max-width: var(--container-page);
+  margin: 0 auto;
+  padding: 1.25rem;
+}
+
+/* ── Utilities (geekdoc parity — 렌더 HTML에서 실사용 확인됨) ── */
+.flex { display: flex; }
+.flex-even { flex: 1 1; }
+.flex-wrap { flex-wrap: wrap; }
+.align-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.w-full { width: 100%; }
+.text-center { text-align: center; }
+
+/* ── Skip-to-content 링크 ── */
+.gdoc-markdown__link { line-height: normal; }
+#gdoc-to-main {
+  position: absolute;
+  left: -9999px;
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--fw-medium);
+  z-index: 100;
+}
+#gdoc-to-main:focus { left: 50%; transform: translateX(-50%); top: 8px; }
+
+/* ── 헤딩 앵커 (호버 시 나타나는 링크 아이콘) ── */
+.gdoc-page__anchorwrap { gap: 0.5em; }
+.gdoc-page__anchor svg.gdoc-icon {
+  width: 1.1em;
+  height: 1.1em;
+  color: transparent;
+  transition: color var(--duration-normal) var(--easing-default);
+}
+.gdoc-page__anchorwrap:hover .gdoc-page__anchor svg.gdoc-icon,
+.gdoc-page__anchor:focus svg.gdoc-icon { color: var(--color-muted-soft); }
+
+/* ── 본문 기본 리듬 (geekdoc이 제공하던 마크다운 베이스) ── */
+.gdoc-markdown { color: var(--color-body); line-height: var(--lh-relaxed); }
+.gdoc-markdown p { margin: 0 0 16px; }
+.gdoc-markdown ul, .gdoc-markdown ol { margin: 0 0 16px; padding-left: 1.4em; }
+.gdoc-markdown li { margin: 4px 0; }
+.gdoc-markdown li > ul, .gdoc-markdown li > ol { margin: 4px 0; }
+.gdoc-markdown hr {
+  border: 0;
+  border-top: 1px solid var(--color-hairline);
+  margin: 32px 0;
+}
+.gdoc-markdown img { border-radius: var(--radius-lg); margin: 16px 0; }
+.gdoc-markdown strong { font-weight: var(--fw-semibold); color: var(--color-body-strong); }
+
+/* 표 — DS table.html: hairline 그리드, 헤더는 surface-card */
+.gdoc-markdown table {
+  width: 100%;
+  margin: 20px 0;
+  font-size: var(--text-sm);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.gdoc-markdown thead th {
+  background: var(--color-surface-card);
+  color: var(--color-ink);
+  font-weight: var(--fw-semibold);
+  text-align: left;
+}
+.gdoc-markdown th, .gdoc-markdown td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--color-hairline-soft);
+  vertical-align: top;
+}
+.gdoc-markdown tbody tr:last-child td { border-bottom: 0; }
+
+/* ── 모바일 (구 mobile.scss 중 살아있는 규칙만 이식) ── */
+@media screen and (max-width: 41rem) {
+  .hidden-mobile { display: none; }
+  .gdoc-page__header .breadcrumb { display: none; }
+  .flex-mobile-column { flex-direction: column; }
+  .container { padding: 1rem; }
+}
+
+/* ── 인쇄 (구 print.scss 이식 + DS 정합) ── */
+@media print {
+  .gdoc-nav, .gdoc-paging, .editpage, .cw-toc, .gnav, .ds-footer,
+  .cw-pg-nav { display: none; }
+  .wrapper, .wrapper main { display: block; }
+  .gdoc-markdown pre { white-space: pre-wrap; overflow-wrap: break-word; }
+  .gdoc-markdown code { font-weight: var(--fw-semibold); }
+  .chroma code { border: 1px solid var(--color-hairline); padding: 0.5rem !important; font-weight: normal !important; }
+  a, a:visited { color: inherit !important; text-decoration: none !important; }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   Chroma 코드 하이라이트 — hugo.toml markup.highlight.style = tokyonight-night
+   생성: hugo gen chromastyles --style=tokyonight-night
+   geekdoc main.css 가 제공하던 것을 대체. 재생성 시 이 블록만 갈아끼울 것.
+   ════════════════════════════════════════════════════════════════ */
+
+/* Background */ .bg { color:#c0caf5;background-color:#1a1b26; }
+/* PreWrapper */ .chroma { color:#c0caf5;background-color:#1a1b26;-webkit-text-size-adjust:none; }
+/* Error */ .chroma .err { color:#db4b4b }
+/* LineLink */ .chroma .lnlinks { outline:none;text-decoration:none;color:inherit }
+/* LineTableTD */ .chroma .lntd { vertical-align:top;padding:0;margin:0;border:0; }
+/* LineTable */ .chroma .lntable { border-spacing:0;padding:0;margin:0;border:0; }
+/* LineHighlight */ .chroma .hl { background-color:#414868 }
+/* LineNumbersTable */ .chroma .lnt { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#a9b1d6 }
+/* LineNumbers */ .chroma .ln { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#a9b1d6 }
+/* Line */ .chroma .line { display:flex; }
+/* Keyword */ .chroma .k { color:#bb9af7 }
+/* KeywordConstant */ .chroma .kc { color:#e0af68 }
+/* KeywordDeclaration */ .chroma .kd { color:#9d7cd8 }
+/* KeywordNamespace */ .chroma .kn { color:#7dcfff }
+/* KeywordPseudo */ .chroma .kp { color:#bb9af7 }
+/* KeywordReserved */ .chroma .kr { color:#bb9af7 }
+/* KeywordType */ .chroma .kt { color:#41a6b5 }
+/* NameAttribute */ .chroma .na { color:#7aa2f7 }
+/* NameClass */ .chroma .nc { color:#ff9e64 }
+/* NameConstant */ .chroma .no { color:#ff9e64 }
+/* NameDecorator */ .chroma .nd { color:#7aa2f7;font-weight:bold }
+/* NameEntity */ .chroma .ni { color:#7dcfff }
+/* NameException */ .chroma .ne { color:#e0af68 }
+/* NameLabel */ .chroma .nl { color:#9ece6a }
+/* NameNamespace */ .chroma .nn { color:#e0af68 }
+/* NameProperty */ .chroma .py { color:#e0af68 }
+/* NameTag */ .chroma .nt { color:#bb9af7 }
+/* NameBuiltin */ .chroma .nb { color:#9ece6a }
+/* NameBuiltinPseudo */ .chroma .bp { color:#9ece6a }
+/* NameFunction */ .chroma .nf { color:#7aa2f7 }
+/* NameFunctionMagic */ .chroma .fm { color:#7aa2f7 }
+/* LiteralString */ .chroma .s { color:#9ece6a }
+/* LiteralStringAffix */ .chroma .sa { color:#9d7cd8 }
+/* LiteralStringBacktick */ .chroma .sb { color:#9ece6a }
+/* LiteralStringChar */ .chroma .sc { color:#9ece6a }
+/* LiteralStringDelimiter */ .chroma .dl { color:#7aa2f7 }
+/* LiteralStringDoc */ .chroma .sd { color:#414868 }
+/* LiteralStringDouble */ .chroma .s2 { color:#9ece6a }
+/* LiteralStringEscape */ .chroma .se { color:#7aa2f7 }
+/* LiteralStringHeredoc */ .chroma .sh { color:#414868 }
+/* LiteralStringInterpol */ .chroma .si { color:#9ece6a }
+/* LiteralStringOther */ .chroma .sx { color:#9ece6a }
+/* LiteralStringRegex */ .chroma .sr { color:#7dcfff }
+/* LiteralStringSingle */ .chroma .s1 { color:#9ece6a }
+/* LiteralStringSymbol */ .chroma .ss { color:#9ece6a }
+/* LiteralNumber */ .chroma .m { color:#e0af68 }
+/* LiteralNumberBin */ .chroma .mb { color:#e0af68 }
+/* LiteralNumberFloat */ .chroma .mf { color:#e0af68 }
+/* LiteralNumberHex */ .chroma .mh { color:#e0af68 }
+/* LiteralNumberInteger */ .chroma .mi { color:#e0af68 }
+/* LiteralNumberIntegerLong */ .chroma .il { color:#e0af68 }
+/* LiteralNumberOct */ .chroma .mo { color:#e0af68 }
+/* Operator */ .chroma .o { color:#9ece6a;font-weight:bold }
+/* OperatorWord */ .chroma .ow { color:#9ece6a;font-weight:bold }
+/* Comment */ .chroma .c { color:#414868;font-style:italic }
+/* CommentHashbang */ .chroma .ch { color:#414868;font-style:italic }
+/* CommentMultiline */ .chroma .cm { color:#414868;font-style:italic }
+/* CommentSingle */ .chroma .c1 { color:#414868;font-style:italic }
+/* CommentSpecial */ .chroma .cs { color:#414868;font-style:italic }
+/* CommentPreproc */ .chroma .cp { color:#414868;font-style:italic }
+/* CommentPreprocFile */ .chroma .cpf { color:#414868;font-weight:bold;font-style:italic }
+/* GenericDeleted */ .chroma .gd { color:#db4b4b;background-color:#15161e }
+/* GenericEmph */ .chroma .ge { font-style:italic }
+/* GenericError */ .chroma .gr { color:#db4b4b }
+/* GenericHeading */ .chroma .gh { color:#e0af68;font-weight:bold }
+/* GenericInserted */ .chroma .gi { color:#9ece6a;background-color:#15161e }
+/* GenericStrong */ .chroma .gs { font-weight:bold }
+/* GenericSubheading */ .chroma .gu { color:#e0af68;font-weight:bold }
+/* GenericTraceback */ .chroma .gt { color:#db4b4b }
+/* GenericUnderline */ .chroma .gl { text-decoration:underline }

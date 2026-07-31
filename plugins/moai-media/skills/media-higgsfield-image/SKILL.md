@@ -14,7 +14,7 @@ description: |
   Soul·Nano Banana·GPT Image·Seedream·FLUX·Recraft·Marketing Studio 등 계열의 프롬프트 크래프트는
   references/prompt-craft/*.md에 출처와 함께 큐레이션돼 있고, 실제 파라미터(모델 id·해상도·비율·비용)는
   런타임에 라이브 조회합니다. 프롬프트만 필요하면 moai-coworker의 *-prompt 스킬을 사용하세요.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # Higgsfield 이미지 생성 (media-higgsfield-image)

@@ -12,7 +12,7 @@ description: |
   - "광고비 새는 픽셀 실수 있는지 찾아줘"
   자주 하는 픽셀 실수(구매자 미제외·이벤트 정보 누락·CAPI 미설치)와 고객 데이터·유사 타겟 활용도를 점수화해 개선 우선순위를 제시합니다. 진단 보고서 서술 부분은 moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean으로 다듬습니다.
   [책임 경계] vs moai-marketer:marketing-performance-report: 이 스킬=픽셀·데이터 인프라 검증, 저 스킬=광고 성과(ROAS) 분석.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 픽셀·1st Party 데이터 진단 (Pixel Audit)

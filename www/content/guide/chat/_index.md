@@ -23,15 +23,15 @@ Claude Chat은 생각을 정리하는 데 도움을 주는 똑똑한 친구 같�
 
 ```mermaid
 flowchart LR
-    A["당신의 질문<br/>텍스트 입력"] --> B["Claude Chat<br/>생각하기"]
-    B --> C["명확한 답변<br/>즉시 받기"]
-    C <-. 피드백 .-> A
-    C --> D["결과물<br/>복사·활용"]
+   A["당신의 질문<br/>텍스트 입력"] --> B["Claude Chat<br/>생각하기"]
+   B --> C["명확한 답변<br/>즉시 받기"]
+   C <-. 피드백 .-> A
+   C --> D["결과물<br/>복사·활용"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style B fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
-    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style D fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style B fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
+   style C fill:#e8f1ec,stroke:#265240,color:#09110f
+   style D fill:#d6e7de,stroke:#3d7d5f,color:#09110f
 ```
 
 ## 주요 기능

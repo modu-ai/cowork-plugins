@@ -1,2 +1,5 @@
-{{- /* 릴리스 날짜 shortcode — YYYY.MM.DD 형식 */ -}}
-{{ site.Params.releaseDate | replace "-" "." }}
+{{- /* 릴리스 날짜 shortcode — YYYY.MM.DD 형식.
+       주의: `X | replace "-" "."` 은 파이프 값이 마지막 인자로 붙어
+       `replace "-" "." X` 로 해석되므로 항상 "-" 만 출력된다(2026-07-31 수정).
+       인자 순서를 명시할 것. */ -}}
+{{- replace site.Params.releaseDate "-" "." -}}

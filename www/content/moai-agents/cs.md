@@ -13,10 +13,10 @@ aliases: ["/agent-teams/cs/"]
 
 ```mermaid
 flowchart LR
-    A["문의 도착"] --> B["ticket-triage<br/>분류·우선순위"]
-    B --> C["cs-responder<br/>응답 초안"]
-    C --> D["voc-auditor<br/>품질·톤 검수"]
-    D --> E["산출물<br/>(응답·KB 문서·VOC 리포트)"]
+   A["문의 도착"] --> B["ticket-triage<br/>분류·우선순위"]
+   B --> C["cs-responder<br/>응답 초안"]
+   C --> D["voc-auditor<br/>품질·톤 검수"]
+   D --> E["산출물<br/>(응답·KB 문서·VOC 리포트)"]
 ```
 
 ## 스킬 카탈로그

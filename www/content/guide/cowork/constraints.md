@@ -11,41 +11,41 @@ aliases: ["/cowork/constraints/"]
 
 ```mermaid
 flowchart TB
-    subgraph Plan["요금제 한도"]
-        FREE["Free: 미지원"]
-        PRO["Pro: 개인용"]
-        MAX["Max: 확장 한도"]
-        TEAM["Team: 관리자 콘솔"]
-        ENT["Enterprise: 전체 기능"]
-    end
+   subgraph Plan["요금제 한도"]
+       FREE["Free: 미지원"]
+       PRO["Pro: 개인용"]
+       MAX["Max: 확장 한도"]
+       TEAM["Team: 관리자 콘솔"]
+       ENT["Enterprise: 전체 기능"]
+   end
 
-    subgraph Session["세션·컨텍스트"]
-        CTX["대화 컨텍스트"]
-        COMP["자동 압축"]
-        TK["토큰 한도"]
-    end
+   subgraph Session["세션·컨텍스트"]
+       CTX["대화 컨텍스트"]
+       COMP["자동 압축"]
+       TK["토큰 한도"]
+   end
 
-    subgraph FileSystem["파일 시스템"]
-        PERM["폴더 권한 (명시적 선택)"]
-        PATH["Windows MAX_PATH 260자"]
-        FILES["동시 파일 수"]
-    end
+   subgraph FileSystem["파일 시스템"]
+       PERM["폴더 권한 (명시적 선택)"]
+       PATH["Windows MAX_PATH 260자"]
+       FILES["동시 파일 수"]
+   end
 
-    subgraph Plugin["플러그인·커넥터"]
-        MKT["마켓플레이스"]
-        OAUTH["OAuth scope"]
-        MCP["MCP 서버"]
-    end
+   subgraph Plugin["플러그인·커넥터"]
+       MKT["마켓플레이스"]
+       OAUTH["OAuth scope"]
+       MCP["MCP 서버"]
+   end
 
-    Plan --> Session
-    Session --> FileSystem
-    FileSystem --> Plugin
+   Plan --> Session
+   Session --> FileSystem
+   FileSystem --> Plugin
 
-    style FREE fill:#f5dcd7,stroke:#c44a3a,color:#09110f
-    style PRO fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style MAX fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style TEAM fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style ENT fill:#dceee9,stroke:#2a8a8c,color:#09110f
+   style FREE fill:#f5dcd7,stroke:#c44a3a,color:#09110f
+   style PRO fill:#e6e6e6,stroke:#757575,color:#09110f
+   style MAX fill:#e8f1ec,stroke:#265240,color:#09110f
+   style TEAM fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style ENT fill:#e8f1ec,stroke:#2a8a8c,color:#09110f
 ```
 
 ## 한눈에 보기
@@ -114,13 +114,13 @@ Cowork는 사용자가 토큰·컨텍스트를 직접 관리하지 않도록 설
 
 - **Claude 공식 카탈로그** ([claude.com/plugins](https://claude.com/plugins)) — 영업·재무·법무·마케팅·HR 등 기본 제공
 - **공식 오픈소스** ([anthropics/knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins))
-- **커뮤니티 마켓플레이스** — 예: [`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins) 같은 GitHub 저장소
+- **커뮤니티 마켓플레이스** — 예: [`modu-ai/moai-cowork`](https://github.com/modu-ai/moai-cowork) 같은 GitHub 저장소
 
 ### 4-2. 설치 흐름
 
 1. Cowork 좌측 사이드바 > **사용자 지정(Customize)** > **개인 플러그인**
 2. **플러그인 추가** > **마켓플레이스 추가**
-3. 마켓플레이스 URL 입력 (예: `modu-ai/cowork-plugins`) → **동기화**
+3. 마켓플레이스 URL 입력 (예: `modu-ai/moai-cowork`) → **동기화**
 4. 목록에서 원하는 플러그인 옆 **+** 클릭
 
 ### 4-3. 활성·비활성 정책
@@ -132,7 +132,7 @@ Cowork는 사용자가 토큰·컨텍스트를 직접 관리하지 않도록 설
 ### 4-4. 플러그인 자동 업데이트
 
 - Anthropic 공식 카탈로그: 자동 업데이트 ON
-- 서드파티(GitHub) 마켓플레이스: 사용자가 수동 갱신 (예: cowork-plugins는 신버전 후 사용자 측에서 마켓플레이스 갱신 필요)
+- 서드파티(GitHub) 마켓플레이스: 사용자가 수동 갱신 (예: 모두의 코워크는 신버전 후 사용자 측에서 마켓플레이스 갱신 필요)
 - 조직 정책에 의해 자동 업데이트가 제한될 수 있음
 
 ## 5. 커넥터와 MCP
@@ -203,7 +203,7 @@ Team·Enterprise 관리자는 다음을 제어할 수 있습니다 ([Manage plug
 | 문제 | 회피 |
 |---|---|
 | Free 플랜에서 Cowork 안 보임 | Pro 이상으로 업그레이드 |
-| Team에서 cowork-plugins 마켓플레이스 추가 안 됨 | 관리자에게 마켓플레이스 승인 요청 |
+| Team에서 모두의 코워크 마켓플레이스 추가 안 됨 | 관리자에게 마켓플레이스 승인 요청 |
 | 작업 폴더 권한 다이얼로그 거부 | OS 설정에서 수동 재허용 |
 | Windows 한국어 파일 저장 실패 | 짧은 경로(`C:\w\`)로 작업 폴더 이전 |
 | 긴 대화 품질 저하 | 핵심 결과물 파일 저장 후 새 대화 시작 |

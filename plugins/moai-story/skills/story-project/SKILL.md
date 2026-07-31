@@ -9,7 +9,7 @@ description: |
   - "콘티 만들어줘", "광고 스토리보드"
   - "캐릭터 시트", "책 표지 일러스트"
   - "프리비즈", "IP 피칭 문서"
-version: "0.2.0"
+version: "1.0.0"
 ---
 
 # story-project

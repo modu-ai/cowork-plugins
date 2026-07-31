@@ -1,38 +1,38 @@
 ---
 title: "운영 트랙"
 weight: 27
-description: "운영팀·PM·CS·B2B 영업을 위한 통합 워크플로우. moai-operations·moai-pm·moai-support·moai-sales를 한 줄 요청으로 자동 처리."
+description: "운영팀·PM·CS·B2B 영업을 위한 통합 워크플로우. moai-coworker·moai-pm·moai-cs를 한 줄 요청으로 자동 처리."
 geekdocBreadcrumb: true
 ---
 
 > **대상**: 운영팀, PM, 고객지원(CS) 매니저, B2B 영업 담당자, 사내 어시스턴트
-> **전제**: moai-core 활성화 + (선택) moai-operations · moai-pm · moai-support · moai-sales 중 필요한 것
+> **전제**: moai-coworker 활성화 + (선택) moai-pm · moai-cs 중 필요한 것
 > **소요**: 시나리오당 약 3-10분 (반복은 스케줄로 자동화)
 
 ## 무엇을 할 수 있나
 
 ```mermaid
 flowchart TD
-    subgraph 회의["회의·보고"]
-        A1["weekly-report<br/>주간 보고서"]
-        A2["status-reporter<br/>상태 보고"]
-        A3["process-manager<br/>SOP·회의록"]
-    end
-    subgraph CS["고객 지원"]
-        B1["ticket-triage<br/>티켓 분류"]
-        B2["draft-response<br/>응답 초안"]
-        B3["kb-article<br/>FAQ"]
-        B4["escalation-manager<br/>에스컬레이션"]
-    end
-    subgraph Sales["B2B 영업"]
-        C1["proposal-writer<br/>12섹션 제안서"]
-    end
-    subgraph Vendor["벤더 관리"]
-        D1["vendor-manager<br/>공급사 관리"]
-    end
-    회의 -.-> CS
-    회의 -.-> Sales
-    회의 -.-> Vendor
+   subgraph 회의["회의·보고"]
+       A1["weekly-report<br/>주간 보고서"]
+       A2["status-reporter<br/>상태 보고"]
+       A3["process-manager<br/>SOP·회의록"]
+   end
+   subgraph CS["고객 지원"]
+       B1["ticket-triage<br/>티켓 분류"]
+       B2["draft-response<br/>응답 초안"]
+       B3["kb-article<br/>FAQ"]
+       B4["escalation-manager<br/>에스컬레이션"]
+   end
+   subgraph Sales["B2B 영업"]
+       C1["proposal-writer<br/>12섹션 제안서"]
+   end
+   subgraph Vendor["벤더 관리"]
+       D1["vendor-manager<br/>공급사 관리"]
+   end
+   회의 -.-> CS
+   회의 -.-> Sales
+   회의 -.-> Vendor
 ```
 
 ## 한 줄 요청 예시 4종
@@ -66,12 +66,12 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    Cron["매주 금 16:00"] --> Fetch["MCP 자동 fetch<br/>Notion·Linear·Slack"]
-    Fetch --> Gen["weekly-report<br/>임원체·팀체 2 버전"]
-    Gen --> S1["docx-generator"]
-    S1 --> S2["ai-slop-reviewer"]
-    S2 --> Send["Slack #weekly 채널 발송"]
-    style Cron fill:#fbf0dc,stroke:#c47b2a
+   Cron["매주 금 16:00"] --> Fetch["MCP 자동 fetch<br/>Notion·Linear·Slack"]
+   Fetch --> Gen["weekly-report<br/>임원체·팀체 2 버전"]
+   Gen --> S1["docx-generator"]
+   S1 --> S2["ai-slop-reviewer"]
+   S2 --> Send["Slack #weekly 채널 발송"]
+   style Cron fill:#fbf0dc,stroke:#c47b2a
 ```
 
 ### 산출물
@@ -93,12 +93,12 @@ flowchart TD
 
 1. **티켓 소스**: Zendesk · Intercom · CSV / 자유 텍스트
 2. **분류 기준**: 긴급도 (KTAS 5단계) / 유형 (환불·배송·제품·기타)
-3. **응답 자동 작성**: 예/아니오 (예 시 `draft-response` 자동 호출)
+3. **응답 자동 작성**: 예/아니오 (예 시 `business-draft-response` 자동 호출)
 4. **에스컬레이션 기준**: VIP 고객 · 환불 거부 · 식약처 신고 위협
 
 ### 자동 체인
 
-`ticket-triage` (KTAS 5단계 분류) → `commerce-voc-triage` (3축 점수, 이커머스인 경우) → `draft-response` (응답 초안 50건) → `ai-slop-reviewer` → `escalation-manager` (Level 1-2 자동 알림)
+`business-ticket-triage` (KTAS 5단계 분류) → `commerce-voc-triage` (3축 점수, 이커머스인 경우) → `business-draft-response` (응답 초안 50건) → `general-ai-slop-reviewer` → `business-escalation-manager` (Level 1-2 자동 알림)
 
 ### 산출물
 
@@ -129,7 +129,7 @@ Level 5 (비응급, <1주): 6건 — 자동 응답 + 감사 표현
 
 ### 자동 체인
 
-`proposal-writer` (12섹션 표준 목차 + Three C's: Compliant · Complete · Compelling) → `docx-generator` 또는 `pptx-designer` → `ai-slop-reviewer`
+`business-proposal-writer` (12섹션 표준 목차 + Three C's: Compliant · Complete · Compelling) → `office-docx-generator` 또는 `office-pptx-designer` → `general-ai-slop-reviewer`
 
 ### 산출물
 
@@ -155,7 +155,7 @@ Level 5 (비응급, <1주): 6건 — 자동 응답 + 감사 표현
 
 ### 자동 체인
 
-`vendor-manager` (5축 평가 매트릭스) → `xlsx-creator` (조건부 서식 + 레이더 차트 + 종합 점수 순위)
+`business-vendor-manager` (5축 평가 매트릭스) → `office-xlsx-creator` (조건부 서식 + 레이더 차트 + 종합 점수 순위)
 
 ---
 
@@ -200,11 +200,11 @@ Level 5 (비응급, <1주): 6건 — 자동 응답 + 감사 표현
 
 ### Q. CS 티켓 응답을 사용자 검토 없이 자동 발송하면 위험하지 않나요?
 
-기본값: **Level 3-5 자동 발송 / Level 1-2 사용자 검토 후 발송**. AskUserQuestion에서 조정 가능. 모든 응답은 `ai-slop-reviewer` 후처리.
+기본값: **Level 3-5 자동 발송 / Level 1-2 사용자 검토 후 발송**. AskUserQuestion에서 조정 가능. 모든 응답은 `general-ai-slop-reviewer` 후처리.
 
 ### Q. B2B 제안서 12섹션이 우리 회사에 안 맞아요.
 
-`proposal-writer`는 표준 12섹션을 자동 채우지만 본인 회사 양식 .docx 첨부 시 그 구조를 따라 자동 생성합니다.
+`business-proposal-writer`는 표준 12섹션을 자동 채우지만 본인 회사 양식 .docx 첨부 시 그 구조를 따라 자동 생성합니다.
 
 ---
 
@@ -213,12 +213,12 @@ Level 5 (비응급, <1주): 6건 — 자동 응답 + 감사 표현
 - **[사용 패턴 가이드](../../../cowork/patterns/)** — 특히 패턴 4 (스케줄 자동화)
 - **[문서 트랙](../track-documents/)** — 사업계획서·IR
 - **[법무 트랙](../track-legal/)** — 계약·NDA
-- **[moai-pm 플러그인](../../../plugins/moai-pm/)** · **[moai-support](../../../plugins/moai-support/)** · **[moai-sales](../../../plugins/moai-sales/)**
+- **[moai-pm 플러그인](/moai-agents/pm/)** · **[moai-cs](/moai-agents/cs/)** · **[moai-coworker](/moai-agents/coworker/)**
 
 ---
 
 ### Sources
 
-- [moai-operations · moai-pm · moai-support · moai-sales 디렉터리](https://github.com/modu-ai/cowork-plugins)
+- [moai-coworker · moai-pm · moai-cs 디렉터리](https://github.com/modu-ai/moai-cowork)
 - KTAS 응급실 5단계 분류 체계
 - B2B 제안서 Three C's (Compliant · Complete · Compelling) 원칙

@@ -66,7 +66,7 @@ MCP가 연결되면 Claude는 단순히 "말만 하는" 존재에서 "실제로 
 
 ## 8. 파일 업로드 — 자료 건네주기
 
-**파일 업로드**는 내 컴퓨터의 문서·이미지·표를 Claude에게 건네 읽게 하는 기능입니다. 담당자에게 일을 맡길 때 참고 자료를 함께 건네는 것과 같습니다. 입력창 옆의 클립(📎) 모양 버튼을 누르거나, 파일을 대화창으로 끌어다 놓으면 됩니다. PDF, 워드, 엑셀, 이미지 등 대부분의 업무 파일을 읽을 수 있습니다.
+**파일 업로드**는 내 컴퓨터의 문서·이미지·표를 Claude에게 건네 읽게 하는 기능입니다. 담당자에게 일을 맡길 때 참고 자료를 함께 건네는 것과 같습니다. 입력창 옆의 클립({{< icon paperclip >}}) 모양 버튼을 누르거나, 파일을 대화창으로 끌어다 놓으면 됩니다. PDF, 워드, 엑셀, 이미지 등 대부분의 업무 파일을 읽을 수 있습니다.
 
 업로드한 파일은 그 대화 안에서만 참고됩니다. 여러 대화에서 계속 쓸 자료라면 매번 올리지 말고 Projects의 지식(캐비닛)에 넣어두는 편이 낫습니다 — 이 구분은 [컨텍스트 엔지니어링 기초](../../chat/context-engineering/)에서 자세히 다룹니다.
 
@@ -86,21 +86,21 @@ MCP가 연결되면 Claude는 단순히 "말만 하는" 존재에서 "실제로 
 
 ```mermaid
 flowchart TD
-    M["마켓플레이스<br/>(직원 소개소)"] -->|채용| P["플러그인<br/>(직원 패키지)"]
-    P --> S["스킬<br/>(업무 매뉴얼)"]
-    P --> A["에이전트<br/>(일하는 직원)"]
-    P --> C["MCP 커넥터<br/>(외부 통로)"]
-    S -->|매뉴얼 제공| A
-    C -->|외부 서비스 연결| E["지메일·캘린더·<br/>쇼핑몰 등"]
-    A -->|일 수행| R["결과물<br/>(아티팩트·파일)"]
+   M["마켓플레이스<br/>(직원 소개소)"] -->|채용| P["플러그인<br/>(직원 패키지)"]
+   P --> S["스킬<br/>(업무 매뉴얼)"]
+   P --> A["에이전트<br/>(일하는 직원)"]
+   P --> C["MCP 커넥터<br/>(외부 통로)"]
+   S -->|매뉴얼 제공| A
+   C -->|외부 서비스 연결| E["지메일·캘린더·<br/>쇼핑몰 등"]
+   A -->|일 수행| R["결과물<br/>(아티팩트·파일)"]
 
-    style M fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style P fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
-    style S fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style A fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style E fill:#dceee9,stroke:#2a8a8c,color:#09110f
-    style R fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+   style M fill:#e6e6e6,stroke:#757575,color:#09110f
+   style P fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
+   style S fill:#e8f1ec,stroke:#265240,color:#09110f
+   style A fill:#e8f1ec,stroke:#265240,color:#09110f
+   style C fill:#e8f1ec,stroke:#265240,color:#09110f
+   style E fill:#e8f1ec,stroke:#2a8a8c,color:#09110f
+   style R fill:#d6e7de,stroke:#3d7d5f,stroke-width:2px,color:#09110f
 ```
 
 ## 다음 단계

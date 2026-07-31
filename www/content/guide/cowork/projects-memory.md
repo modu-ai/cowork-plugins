@@ -23,48 +23,48 @@ aliases: ["/cowork/projects-memory/"]
 
 ```mermaid
 flowchart TB
-    subgraph OS["운영체제 (macOS / Windows)"]
-        FS["파일 시스템<br>전체 디스크"]
-        SYS["시스템 권한<br>(개인정보 보호 → 파일 및 폴더)"]
-    end
+   subgraph OS["운영체제 (macOS / Windows)"]
+       FS["파일 시스템<br>전체 디스크"]
+       SYS["시스템 권한<br>(개인정보 보호 → 파일 및 폴더)"]
+   end
 
-    subgraph CW["Claude Desktop · Cowork 모드"]
-        APP["앱 본체<br>(로그인 · 플랜 · 커넥터)"]
+   subgraph CW["Claude Desktop · Cowork 모드"]
+       APP["앱 본체<br>(로그인 · 플랜 · 커넥터)"]
 
-        subgraph P1["📁 프로젝트 A — '주간 보고'"]
-            FOLDER_A["작업 폴더<br>~/work/weekly-report/"]
-            CLAUDE_A["CLAUDE.md<br>(프로젝트 지침)"]
-            MEM_A["./memory/<br>(프로젝트 메모리)"]
-            PLUG_A["활성 플러그인<br>(moai-office · moai-content)"]
+       subgraph P1["프로젝트 A — '주간 보고'"]
+           FOLDER_A["작업 폴더<br>~/work/weekly-report/"]
+           CLAUDE_A["CLAUDE.md<br>(프로젝트 지침)"]
+           MEM_A["./memory/<br>(프로젝트 메모리)"]
+           PLUG_A["활성 플러그인<br>(moai-officer · moai-marketer)"]
 
-            subgraph T1A["새 태스크 1<br>(2026-04-15)"]
-                CHAT_1A["대화 컨텍스트<br>+ 자동 압축"]
-            end
-            subgraph T2A["새 태스크 2<br>(2026-04-22)"]
-                CHAT_2A["대화 컨텍스트<br>+ 자동 압축"]
-            end
-        end
+           subgraph T1A["새 태스크 1<br>(2026-04-15)"]
+               CHAT_1A["대화 컨텍스트<br>+ 자동 압축"]
+           end
+           subgraph T2A["새 태스크 2<br>(2026-04-22)"]
+               CHAT_2A["대화 컨텍스트<br>+ 자동 압축"]
+           end
+       end
 
-        subgraph P2["📁 프로젝트 B — '계약 검토'"]
-            FOLDER_B["작업 폴더<br>~/work/legal/"]
-            CLAUDE_B["CLAUDE.md"]
-            MEM_B["./memory/"]
-        end
-    end
+       subgraph P2["프로젝트 B — '계약 검토'"]
+           FOLDER_B["작업 폴더<br>~/work/legal/"]
+           CLAUDE_B["CLAUDE.md"]
+           MEM_B["./memory/"]
+       end
+   end
 
-    SYS -.허용.-> FOLDER_A
-    SYS -.허용.-> FOLDER_B
-    FOLDER_A --> T1A
-    FOLDER_A --> T2A
-    CLAUDE_A --> T1A
-    CLAUDE_A --> T2A
-    MEM_A <-.축적.-> T1A
-    MEM_A <-.축적.-> T2A
+   SYS -.허용.-> FOLDER_A
+   SYS -.허용.-> FOLDER_B
+   FOLDER_A --> T1A
+   FOLDER_A --> T2A
+   CLAUDE_A --> T1A
+   CLAUDE_A --> T2A
+   MEM_A <-.축적.-> T1A
+   MEM_A <-.축적.-> T2A
 
-    style P1 fill:#eaeaea,stroke:#6e6e6e,stroke-width:2px,color:#09110f
-    style P2 fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
-    style OS fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style CW fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style P1 fill:#e6e6e6,stroke:#757575,stroke-width:2px,color:#09110f
+   style P2 fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
+   style OS fill:#e6e6e6,stroke:#757575,color:#09110f
+   style CW fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 핵심:
@@ -103,22 +103,22 @@ A. Cowork는 "기본(default) 폴더"를 임시로 잡습니다. 그 대화의 �
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    participant U as 사용자
-    participant OS as 운영체제
-    participant CW as Cowork 앱
-    participant P as 프로젝트
-    participant T as 새 태스크
+   autonumber
+   participant U as 사용자
+   participant OS as 운영체제
+   participant CW as Cowork 앱
+   participant P as 프로젝트
+   participant T as 새 태스크
 
-    U->>CW: "이 폴더를 작업 폴더로 선택"
-    CW->>OS: 폴더 접근 권한 요청
-    OS->>U: "Claude가 ~/work/A에 접근하도록 허용?"
-    U->>OS: 허용
-    OS-->>CW: 권한 부여 (해당 폴더만)
-    CW->>P: 프로젝트에 폴더 바인딩
-    P->>T: 새 태스크 시작 시 폴더 상속
-    T->>T: 폴더 안 파일만 R/W
-    Note over T: 폴더 밖 파일은 보이지 않음
+   U->>CW: "이 폴더를 작업 폴더로 선택"
+   CW->>OS: 폴더 접근 권한 요청
+   OS->>U: "Claude가 ~/work/A에 접근하도록 허용?"
+   U->>OS: 허용
+   OS-->>CW: 권한 부여 (해당 폴더만)
+   CW->>P: 프로젝트에 폴더 바인딩
+   P->>T: 새 태스크 시작 시 폴더 상속
+   T->>T: 폴더 안 파일만 R/W
+   Note over T: 폴더 밖 파일은 보이지 않음
 ```
 
 층별 의미:
@@ -157,27 +157,27 @@ OS 층의 권한 설정·재허용·문제 진단은 [폴더와 권한 가이드
 
 ```mermaid
 flowchart TD
-    Q1{"같은 폴더의<br>파일을 다루는가?"}
-    Q2{"같은 지침<br>(CLAUDE.md)이<br>적용되는가?"}
-    Q3{"같은 플러그인<br>구성이 필요한가?"}
-    SAME[같은 프로젝트로 묶기]
-    SPLIT[새 프로젝트로 분리]
+   Q1{"같은 폴더의<br>파일을 다루는가?"}
+   Q2{"같은 지침<br>(CLAUDE.md)이<br>적용되는가?"}
+   Q3{"같은 플러그인<br>구성이 필요한가?"}
+   SAME[같은 프로젝트로 묶기]
+   SPLIT[새 프로젝트로 분리]
 
-    Q1 -- 예 --> Q2
-    Q1 -- 아니오 --> SPLIT
-    Q2 -- 예 --> Q3
-    Q2 -- 아니오 --> SPLIT
-    Q3 -- 예 --> SAME
-    Q3 -- 아니오 --> SPLIT
+   Q1 -- 예 --> Q2
+   Q1 -- 아니오 --> SPLIT
+   Q2 -- 예 --> Q3
+   Q2 -- 아니오 --> SPLIT
+   Q3 -- 예 --> SAME
+   Q3 -- 아니오 --> SPLIT
 
-    style SAME fill:#d6ebe7,stroke:#1c7c70,color:#09110f
-    style SPLIT fill:#f5dcd7,stroke:#c44a3a,color:#09110f
+   style SAME fill:#d6e7de,stroke:#3d7d5f,color:#09110f
+   style SPLIT fill:#f5dcd7,stroke:#c44a3a,color:#09110f
 ```
 
 ## 베스트 프랙티스 — 5가지 권장 습관
 
 1. **하나의 큰 일 = 하나의 프로젝트.** 작업 폴더는 짧은 경로(macOS: `~/w/<name>/`, Windows: `C:\w\<name>\`)에 두세요. 한국어 폴더명은 길지 않게 유지합니다.
-2. **`/project init` 한 번 실행.** `moai-core` 플러그인이 있다면 첫 진입 시 자연어로 "이 프로젝트 초기화해줘"라고 입력하세요. 산출물별 스킬 체인이 `CLAUDE.md`에 기록됩니다.
+2. **`/project` 한 번 실행.** `moai-pm` 플러그인이 있다면 첫 진입 시 자연어로 "이 프로젝트 초기화해줘"라고 입력하세요. 산출물별 스킬 체인이 `CLAUDE.md`에 기록됩니다.
 3. **민감 데이터는 격리 폴더에 따로.** 주민번호·계좌·계약 단가 같은 정보는 별도 프로젝트(별도 폴더)로 분리해 메모리 오염을 막습니다.
 4. **메모리는 정리하기.** 분기에 한 번 정도 `./memory/` 파일을 훑어 오래된 항목을 지웁니다. 메모리가 누적되면 라우터가 옛 결정을 따라가는 부작용이 있습니다.
 5. **새 대화로 자주 끊어가기.** 한 태스크가 너무 길어지면 자동 압축이 디테일을 요약해 품질이 흔들립니다. 핵심 산출물을 폴더에 저장한 뒤 새 태스크로 넘어가세요.

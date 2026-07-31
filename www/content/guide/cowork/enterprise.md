@@ -11,33 +11,33 @@ aliases: ["/cowork/enterprise/"]
 
 ```mermaid
 flowchart TB
-    subgraph Admin["관리자 콘솔"]
-        POL["플러그인·커넥터<br/>승인 목록"]
-        MON["OpenTelemetry<br/>모니터링"]
-        SSO["SSO·DLP 연동"]
-    end
+   subgraph Admin["관리자 콘솔"]
+       POL["플러그인·커넥터<br/>승인 목록"]
+       MON["OpenTelemetry<br/>모니터링"]
+       SSO["SSO·DLP 연동"]
+   end
 
-    subgraph Org["조직 구성원"]
-        U1["사용자 A"]
-        U2["사용자 B"]
-        U3["사용자 N"]
-    end
+   subgraph Org["조직 구성원"]
+       U1["사용자 A"]
+       U2["사용자 B"]
+       U3["사용자 N"]
+   end
 
-    subgraph Data["데이터 흐름"]
-        LOCAL["로컬 폴더"]
-        API["Anthropic API"]
-        SIEM["SIEM·Datadog<br/>감사 로그"]
-    end
+   subgraph Data["데이터 흐름"]
+       LOCAL["로컬 폴더"]
+       API["Anthropic API"]
+       SIEM["SIEM·Datadog<br/>감사 로그"]
+   end
 
-    Admin --> Org
-    Org --> LOCAL
-    LOCAL --> API
-    API --> SIEM
-    MON --> SIEM
+   Admin --> Org
+   Org --> LOCAL
+   LOCAL --> API
+   API --> SIEM
+   MON --> SIEM
 
-    style Admin fill:#dceee9,stroke:#2a8a8c,color:#09110f
-    style Org fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style Data fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style Admin fill:#e8f1ec,stroke:#2a8a8c,color:#09110f
+   style Org fill:#e6e6e6,stroke:#757575,color:#09110f
+   style Data fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 ## 요금제 특징
@@ -48,7 +48,7 @@ flowchart TB
 ## 플러그인 거버넌스
 
 - 관리자가 승인된 플러그인 목록을 지정해 구성원이 사용할 수 있는 범위를 제한합니다.
-- `modu-ai/cowork-plugins` 같은 커뮤니티 마켓플레이스도 조직 정책에 맞춰 선별 등록할 수 있습니다.
+- `modu-ai/moai-cowork` 같은 커뮤니티 마켓플레이스도 조직 정책에 맞춰 선별 등록할 수 있습니다.
 - 각 플러그인이 요구하는 API 키·MCP 권한은 조직 공용 자격 증명으로 관리하도록 합니다.
 
 ![Enterprise 관리자 콘솔 — 조직 정책 및 플러그인 관리](/screenshots/cowork/cowork-enterprise-admin.png)

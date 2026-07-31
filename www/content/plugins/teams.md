@@ -19,15 +19,15 @@ geekdocBreadcrumb: true
 
 ```mermaid
 flowchart LR
-    A["moai-marketer<br/>타깃·메시지·카피"] --> B["캠페인 브리프"]
-    B --> C["moai-designer<br/>비주얼·소재 시안"]
-    C --> D["auditor 교차 검수<br/>메시지-비주얼 정합"]
-    D -. 지적 반영 .-> A
+   A["moai-marketer<br/>타깃·메시지·카피"] --> B["캠페인 브리프"]
+   B --> C["moai-designer<br/>비주얼·소재 시안"]
+   C --> D["auditor 교차 검수<br/>메시지-비주얼 정합"]
+   D -. 지적 반영 .-> A
 
-    style A fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style B fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style D fill:#dceee9,stroke:#2a8a8c,color:#09110f
+   style A fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style B fill:#e6e6e6,stroke:#757575,color:#09110f
+   style C fill:#e8f1ec,stroke:#265240,color:#09110f
+   style D fill:#e8f1ec,stroke:#2a8a8c,color:#09110f
 ```
 
 ## 조합 사례 2 — 셀러 × CS 매니저: 쇼핑몰 운영
@@ -36,15 +36,15 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    A["moai-seller<br/>주문·재고·상품 (MCP)"] --> C["운영 현황"]
-    B["moai-cs<br/>문의 분류·응답 초안"] --> D["VOC 분석"]
-    D --> A
-    C --> B
+   A["moai-seller<br/>주문·재고·상품 (MCP)"] --> C["운영 현황"]
+   B["moai-cs<br/>문의 분류·응답 초안"] --> D["VOC 분석"]
+   D --> A
+   C --> B
 
-    style A fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style B fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style C fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style D fill:#dceee9,stroke:#2a8a8c,color:#09110f
+   style A fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style B fill:#e8f1ec,stroke:#265240,color:#09110f
+   style C fill:#e6e6e6,stroke:#757575,color:#09110f
+   style D fill:#e8f1ec,stroke:#2a8a8c,color:#09110f
 ```
 
 ## 조합 사례 3 — 컨설턴트 × 회계사: 창업 아이템 검증
@@ -53,15 +53,15 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    A["moai-consultant<br/>시장 분석·BM·지원사업"] --> B["사업 가정"]
-    B --> C["moai-accountant<br/>손익·자금·세무 검증"]
-    C --> D["검증된 사업계획서"]
-    C -. 숫자가 안 맞으면 가정 수정 .-> A
+   A["moai-consultant<br/>시장 분석·BM·지원사업"] --> B["사업 가정"]
+   B --> C["moai-accountant<br/>손익·자금·세무 검증"]
+   C --> D["검증된 사업계획서"]
+   C -. 숫자가 안 맞으면 가정 수정 .-> A
 
-    style A fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style B fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style D fill:#dceee9,stroke:#2a8a8c,color:#09110f
+   style A fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style B fill:#e6e6e6,stroke:#757575,color:#09110f
+   style C fill:#e8f1ec,stroke:#265240,color:#09110f
+   style D fill:#e8f1ec,stroke:#2a8a8c,color:#09110f
 ```
 
 ## 어떤 조합이든 — worker → auditor 품질 루프

@@ -9,7 +9,7 @@ description: |
   Design package (prompt, context, references, acceptance, checklist),
   brand-voice context, and paste-ready claude.com session bundles.
 user-invocable: false
-version: 0.2.1
+version: "1.0.0"
 ---
 
 > ⚠️ **개발 런타임 전용** — 이 스킬은 MoAI-ADK(Claude Code) 환경을 전제한다. Claude Cowork(Desktop)에서는 `.moai/config` 의존으로 동작하지 않을 수 있다. Desktop 사용자는 `moai-designer:cd-handoff-reader`를 사용한다.

@@ -1,6 +1,6 @@
 # project 스킬 references — 전체 인덱스
 
-`plugins/moai-pm/skills/project/references/`의 레퍼런스 파일 인덱스. project 스킬은 개발(`/project --code`)을 제외한 모든 Claude Cowork(Desktop) 작업의 슈퍼 오케스트레이터/어드바이저다.
+`plugins/moai-pm/skills/project/references/`의 레퍼런스 파일 인덱스. project 스킬은 개발을 제외한 모든 Claude Cowork(Desktop) 작업의 슈퍼 오케스트레이터/어드바이저다.
 
 ## 진입점
 

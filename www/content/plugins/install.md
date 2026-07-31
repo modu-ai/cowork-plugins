@@ -48,7 +48,7 @@ claude plugin install moai-seller@moai-cowork
 claude plugin install moai-coworker@moai-cowork
 ```
 
-각 명령이 성공하면 "Installed plugin: moai-marketer" 형태의 메시지가 출력됩니다. 어떤 직원이 있는지는 [플러그인 설치·운용 개요](../)의 18-직원 표를, 각 직원이 무엇을 하는지는 [에이전트 팀 소개](/moai-agents/)를 참고하세요.
+각 명령이 성공하면 "Installed plugin: moai-marketer" 형태의 메시지가 출력됩니다. 어떤 직원이 있는지는 [플러그인 설치·운용 개요](../)의 17-직원 표를, 각 직원이 무엇을 하는지는 [에이전트 팀 소개](/moai-agents/)를 참고하세요.
 
 > **잘 안 될 때** — "Plugin not found"가 나오면 이름 철자(`moai-` 접두사 포함)와 `@moai-cowork` 접미사를 확인하세요. 마켓플레이스 등록(1단계)을 건너뛴 경우에도 같은 오류가 납니다.
 

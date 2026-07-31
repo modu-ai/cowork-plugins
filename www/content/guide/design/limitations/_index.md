@@ -15,22 +15,22 @@ Claude Design의 **Beta** 단계가 바로 이런 공사 중 건물입니다. �
 
 ```mermaid
 flowchart TD
-    Start["Claude Design 도입 검토"]
-    Start --> Q1{"데이터 거주지 보장이<br/>필요한가?"}
-    Q1 -- "예" --> HOLD["도입 보류<br/>(정부·금융·헬스케어)"]
-    Q1 -- "아니오" --> Q2{"감사 로그·접근 추적이<br/>엄격히 필요한가?"}
-    Q2 -- "예" --> HOLD
-    Q2 -- "아니오" --> Q3{"모바일·외부 공개 링크가<br/>필수인가?"}
-    Q3 -- "예" --> ALT["대안 검토<br/>(Figma·Canva)"]
-    Q3 -- "아니오" --> GO["도입 진행 ★<br/>일반 SaaS·마케팅·스타트업"]
+   Start["Claude Design 도입 검토"]
+   Start --> Q1{"데이터 거주지 보장이<br/>필요한가?"}
+   Q1 -- "예" --> HOLD["도입 보류<br/>(정부·금융·헬스케어)"]
+   Q1 -- "아니오" --> Q2{"감사 로그·접근 추적이<br/>엄격히 필요한가?"}
+   Q2 -- "예" --> HOLD
+   Q2 -- "아니오" --> Q3{"모바일·외부 공개 링크가<br/>필수인가?"}
+   Q3 -- "예" --> ALT["대안 검토<br/>(Figma·Canva)"]
+   Q3 -- "아니오" --> GO["도입 진행 <br/>일반 SaaS·마케팅·스타트업"]
 
-    style Start fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style Q1 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style Q2 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style Q3 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style HOLD fill:#d6dbe0,stroke:#87867f,color:#09110f
-    style ALT fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style GO fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+   style Start fill:#e6e6e6,stroke:#757575,color:#09110f
+   style Q1 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style Q2 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style Q3 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style HOLD fill:#e6e6e6,stroke:#757575,color:#09110f
+   style ALT fill:#e8f1ec,stroke:#265240,color:#09110f
+   style GO fill:#d6e7de,stroke:#3d7d5f,color:#09110f
 ```
 
 ## 현재 상태 한눈에
@@ -211,7 +211,7 @@ Anthropic이 출시 공지에서 **직접 명시한** 단기 우선순위입니�
 
 ```
 디자이너 협업 + 정교한 시스템 운영           → Figma
-빠른 디자인 탐색 + Claude Code 핸드오프       → Claude Design ★
+빠른 디자인 탐색 + Claude Code 핸드오프       → Claude Design *
 같은 날 풀스택 앱 배포                       → Lovable·Bolt·v0
 마케팅 비주얼 다량 생산                      → Canva
 프로토타입 → 본격 디자인 도구로 옮기기        → Claude Design → Figma
@@ -245,13 +245,13 @@ Anthropic이 출시 공지에서 **직접 명시한** 단기 우선순위입니�
 이 중 하나라도 핵심 요구사항이면 **현재 Claude Design은 적합하지 않습니다**.
 
 ```
-✗ 데이터 거주지 보장이 필요한가
-✗ 감사 로그·접근 추적이 엄격하게 요구되는가
-✗ 디자이너 협업이 핵심이며 Figma 같은 양방향 도구가 필수인가
-✗ 모바일·태블릿에서 디자인 작업이 필요한가
-✗ 외부 공개 링크가 필요한가 (PR·이벤트 페이지를 공개 URL로)
-✗ 3D·AR·VR 콘텐츠가 주요 산출물인가
-✗ API로 디자인 생성을 자동화해야 하는가
+[x] 데이터 거주지 보장이 필요한가
+[x] 감사 로그·접근 추적이 엄격하게 요구되는가
+[x] 디자이너 협업이 핵심이며 Figma 같은 양방향 도구가 필수인가
+[x] 모바일·태블릿에서 디자인 작업이 필요한가
+[x] 외부 공개 링크가 필요한가 (PR·이벤트 페이지를 공개 URL로)
+[x] 3D·AR·VR 콘텐츠가 주요 산출물인가
+[x] API로 디자인 생성을 자동화해야 하는가
 ```
 
 위 7가지가 모두 No이면 도입 진행 가능. 1개라도 Yes이면 도입 보류·대안 검토.

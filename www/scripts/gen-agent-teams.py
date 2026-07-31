@@ -39,13 +39,21 @@ employees = []
 for p in mp['plugins']:
     pdir = os.path.join(ROOT, p['source'].lstrip('./'))
     skills = []
+    deprecated = []
     for sk in sorted(glob.glob(os.path.join(pdir, 'skills', '*', 'SKILL.md'))):
         f = fm(sk)
         desc = ' '.join((f.get('description') or '').split())
-        skills.append({
+        entry = {
             'name': f.get('name') or os.path.basename(os.path.dirname(sk)),
             'summary': desc[:180],
-        })
+        }
+        # 구명칭 호환 스텁 / 폐지된 스킬은 사이트 카탈로그에서 제외한다.
+        # 사용자가 호출할 수 없는 리디렉트 전용 항목이라 노출하면 카운트만 부풀린다.
+        if str(f.get('user-invocable', '')).lower() == 'false' and any(
+                k in desc for k in ('구명칭 호환 스텁', '폐지', '이름 변경됨', '이전됨', '분리됨')):
+            deprecated.append(entry['name'])
+            continue
+        skills.append(entry)
     agents = []
     for ag in sorted(glob.glob(os.path.join(pdir, 'agents', '*.md'))):
         f = fm(ag)
@@ -71,6 +79,7 @@ for p in mp['plugins']:
         'description': p.get('description', ''),
         'skill_count': len(skills),
         'skills': skills,
+        'deprecated_skills': deprecated,
         'agents': agents,
         'mcp_servers': mcp,
     })

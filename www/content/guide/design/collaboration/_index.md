@@ -58,28 +58,28 @@ Edit access를 받은 여러 멤버가 같은 문서에서 동시에 Claude와 �
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    participant D as 디자이너 (소유자)
-    participant P as PM (Edit)
-    participant E as 엔지니어 (Edit)
-    participant C as Claude Design
+   autonumber
+   participant D as 디자이너 (소유자)
+   participant P as PM (Edit)
+   participant E as 엔지니어 (Edit)
+   participant C as Claude Design
 
-    D->>C: 결제 플로우 3페이지 디자인
-    C-->>D: 초기 시안 생성
-    D->>P: Edit 권한 부여 + 링크 공유
+   D->>C: 결제 플로우 3페이지 디자인
+   C-->>D: 초기 시안 생성
+   D->>P: Edit 권한 부여 + 링크 공유
 
-    P->>C: "단계 2의 주소 입력에 이전 주문 자동 채움 추가"
-    C-->>P: 자동 채움 UI 추가
-    D->>C: "자동 채움 표시 방법을 토글로 — 사용자 선택"
-    C-->>D: 토글 추가
+   P->>C: "단계 2의 주소 입력에 이전 주문 자동 채움 추가"
+   C-->>P: 자동 채움 UI 추가
+   D->>C: "자동 채움 표시 방법을 토글로 — 사용자 선택"
+   C-->>D: 토글 추가
 
-    E->>D: Edit 권한 부여 요청 (소유자 승인)
-    D->>E: Edit 권한 부여
-    E->>C: "이 폼은 기존 useForm 훅과 호환되어야 함 — Edit field 컴포넌트 사용"
-    C-->>E: 컴포넌트 이름 매핑
+   E->>D: Edit 권한 부여 요청 (소유자 승인)
+   D->>E: Edit 권한 부여
+   E->>C: "이 폼은 기존 useForm 훅과 호환되어야 함 — Edit field 컴포넌트 사용"
+   C-->>E: 컴포넌트 이름 매핑
 
-    D->>C: "확인. 핸드오프 번들 만들어 줘"
-    C-->>D: Claude Code 핸드오프 번들
+   D->>C: "확인. 핸드오프 번들 만들어 줘"
+   C-->>D: Claude Code 핸드오프 번들
 ```
 
 ### 그룹 대화의 장점

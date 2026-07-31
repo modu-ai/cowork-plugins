@@ -1,6 +1,6 @@
 # HWPX 공문서 양식 (gonmun)
 
-> moai-office v1.0.0 | 행정·비즈니스 공문서 표준 스펙
+> moai-officer v1.0.0 | 행정·비즈니스 공문서 표준 스펙
 
 ## 개요
 

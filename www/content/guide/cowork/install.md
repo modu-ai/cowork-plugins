@@ -11,17 +11,17 @@ aliases: ["/cowork/install/"]
 
 ```mermaid
 flowchart TD
-    A["Claude Desktop<br/>실행"] --> B{"요금제 확인"}
-    B -- "Free" --> C["Cowork 미지원<br/>요금제 업그레이드 필요"]
-    B -- "Pro / Max" --> D["Cowork 모드 활성화<br/>개인 기능 사용"]
-    B -- "Team / Enterprise" --> E["관리자 Cowork 허용"]
-    E --> F["Cowork 모드 활성화<br/>관리 기능 포함"]
-    D --> G["작업 폴더 선택"]
-    F --> G
-    G --> H["Cowork 시작"]
+   A["Claude Desktop<br/>실행"] --> B{"요금제 확인"}
+   B -- "Free" --> C["Cowork 미지원<br/>요금제 업그레이드 필요"]
+   B -- "Pro / Max" --> D["Cowork 모드 활성화<br/>개인 기능 사용"]
+   B -- "Team / Enterprise" --> E["관리자 Cowork 허용"]
+   E --> F["Cowork 모드 활성화<br/>관리 기능 포함"]
+   D --> G["작업 폴더 선택"]
+   F --> G
+   G --> H["Cowork 시작"]
 
-    style C fill:#f5dcd7,stroke:#c44a3a,color:#09110f
-    style H fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style C fill:#f5dcd7,stroke:#c44a3a,color:#09110f
+   style H fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 ## 요금제 요건
@@ -70,7 +70,7 @@ Windows의 `MAX_PATH`(260자) 제한으로 Cowork 세션 경로가 길면 일부
 
 - [첫 작업 실행하기](../first-task/) — 5분 만에 결과물 만들기
 - [프로젝트와 메모리](../projects-memory/) — 반복 작업을 위한 프로젝트 구성
-- [플러그인 사용](../plugins/) — `cowork-plugins` 설치하기
+- [플러그인 사용](../plugins/) — `moai-cowork` 설치하기
 
 ---
 

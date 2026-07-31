@@ -14,12 +14,12 @@ description: |
   - "면접 대상자 선별 보조" (개별 후보 평가)
 
   주의: **per-candidate 평가**에 한정됩니다. 채용 프로세스 설계(JD 작성·면접 구조·온보딩)는 `moai-recruiter:business-employment-manager`를 사용하세요.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # Resume Screener — NCS 기반 이력서 스크리닝 (의사결정 보조)
 
-> moai-hr | 한국 채용 워크플로우. AI는 채점만, 결정은 사람.
+> moai-recruiter | 한국 채용 워크플로우. AI는 채점만, 결정은 사람.
 
 ## ⚠️ 필수 안전 원칙 (HARD)
 

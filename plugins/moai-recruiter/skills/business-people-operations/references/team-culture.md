@@ -1,6 +1,6 @@
 # 조직 문화 설계 및 직원 경험(EX) 가이드
 
-> moai-hr | business-people-operations 참조 가이드 | 2026 기준
+> moai-recruiter | business-people-operations 참조 가이드 | 2026 기준
 
 ## 개요
 

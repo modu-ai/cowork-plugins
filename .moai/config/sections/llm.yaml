@@ -1,72 +1,92 @@
 llm:
-    agent_overrides: {}
-    glm:
-        base_url: https://api.z.ai/api/anthropic
-        models:
-            fable: glm-5.2
-            high: glm-5.2
-            low: glm-4.5-air
-            medium: glm-4.7
-    glm_env_var: GLM_API_KEY
     mode: ""
+    team_mode: ""
+    glm_env_var: GLM_API_KEY
     performance_tier: medium
     profile: medium
     profiles:
         low:
             advisor:
+                model: opus
                 effort: high
-                model: opus
             design_harness_e2e:
-                effort: low
                 model: opus
+                effort: low
             develop:
-                effort: medium
                 model: opus
+                effort: medium
             docs:
+                model: sonnet
                 effort: medium
+            explore:
                 model: sonnet
+                effort: low
             git:
-                effort: low
                 model: sonnet
-            spec_auditors:
                 effort: low
+            spec_auditors:
                 model: opus
+                effort: low
         max:
             advisor:
-                effort: medium
                 model: fable
+                effort: medium
             design_harness_e2e:
-                effort: high
                 model: opus
+                effort: high
             develop:
-                effort: low
                 model: fable
+                effort: low
             docs:
-                effort: medium
                 model: sonnet
-            git:
+                effort: medium
+            explore:
+                model: sonnet
                 effort: low
+            git:
                 model: sonnet
+                effort: low
             spec_auditors:
-                effort: medium
                 model: fable
+                effort: medium
         medium:
             advisor:
-                effort: low
                 model: fable
-            design_harness_e2e:
-                effort: medium
-                model: opus
-            develop:
-                effort: high
-                model: opus
-            docs:
-                effort: medium
-                model: sonnet
-            git:
                 effort: low
-                model: sonnet
-            spec_auditors:
-                effort: high
+            design_harness_e2e:
                 model: opus
-    team_mode: glm
+                effort: medium
+            develop:
+                model: opus
+                effort: high
+            docs:
+                model: sonnet
+                effort: medium
+            explore:
+                model: sonnet
+                effort: low
+            git:
+                model: sonnet
+                effort: low
+            spec_auditors:
+                model: opus
+                effort: high
+    harness_agents: {}
+    agent_overrides: {}
+    claude_models:
+        high: ""
+        medium: ""
+        low: ""
+    glm:
+        base_url: https://api.z.ai/api/anthropic
+        models:
+            high: glm-5.2
+            medium: glm-4.7
+            low: glm-4.5-air
+            fable: glm-5.2
+            opus: glm-5.2
+            sonnet: glm-4.7
+            haiku: glm-4.5-air
+    default_model: ""
+    quality_model: ""
+    speed_model: ""

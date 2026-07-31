@@ -8,22 +8,22 @@ geekdocBreadcrumb: true
 
 ```mermaid
 flowchart TD
-    A["financial-statements<br/>K-IFRS 재무제표"] --> B["variance-analysis<br/>분산 분석"]
-    B --> C["close-management<br/>결산"]
-    C --> D["xlsx-creator<br/>5시트 통합 모델"]
+   A["financial-statements<br/>K-IFRS 재무제표"] --> B["variance-analysis<br/>분산 분석"]
+   B --> C["close-management<br/>결산"]
+   C --> D["xlsx-creator<br/>5시트 통합 모델"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style D fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style D fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 ## 사용 스킬
 
 | 스킬 | 역할 |
 |---|---|
-| `moai-finance:financial-statements` | K-IFRS 기준 재무상태표·손익계산서·현금흐름표 |
-| `moai-finance:variance-analysis` | 예산 대비 실적 분산 분석 |
-| `moai-finance:close-management` | 결산·급여 정산 |
-| `moai-office:xlsx-creator` | 5개 시트 통합 모델 출력 |
+| `moai-accountant:finance-financial-statements` | K-IFRS 기준 재무상태표·손익계산서·현금흐름표 |
+| `moai-accountant:finance-variance-analysis` | 예산 대비 실적 분산 분석 |
+| `moai-accountant:finance-close-management` | 결산·급여 정산 |
+| `moai-officer:office-xlsx-creator` | 5개 시트 통합 모델 출력 |
 
 ## 5개 시트 표준 구조
 
@@ -64,8 +64,8 @@ flowchart TD
 {{< /terminal >}}
 
 체인:
-1. `financial-statements`
-2. `xlsx-creator`
+1. `finance-financial-statements`
+2. `office-xlsx-creator`
 
 ## 가정 변경 테스트
 
@@ -101,5 +101,5 @@ flowchart TD
 
 ### Sources
 
-- moai-finance 플러그인 [`financial-statements`](https://github.com/modu-ai/cowork-plugins/blob/main/moai-finance/skills/financial-statements/SKILL.md), [`variance-analysis`](https://github.com/modu-ai/cowork-plugins/blob/main/moai-finance/skills/variance-analysis/SKILL.md)
-- moai-office 플러그인 [`xlsx-creator`](https://github.com/modu-ai/cowork-plugins/blob/main/moai-office/skills/xlsx-creator/SKILL.md)
+- moai-accountant 플러그인 [`finance-financial-statements`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-accountant/skills/finance-financial-statements/SKILL.md), [`finance-variance-analysis`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-accountant/skills/finance-variance-analysis/SKILL.md)
+- moai-officer 플러그인 [`office-xlsx-creator`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-officer/skills/office-xlsx-creator/SKILL.md)

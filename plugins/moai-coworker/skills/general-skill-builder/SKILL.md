@@ -11,7 +11,7 @@ description: |
   - general-skill-template으로 시작한 스킬의 체계적 생성이 필요할 때
   - /harness 커맨드의 new 단계로 진입할 때
 user-invocable: false
-version: "6.0.0"
+version: "1.0.0"
 ---
 
 # Skill Builder — 6-Phase 스킬 생성 워크플로우
@@ -20,7 +20,7 @@ version: "6.0.0"
 
 ## 개요
 
-harness 오픈소스의 6-Phase 스킬 생성 워크플로우를 MoAI cowork-plugins 컨텍스트에 맞게 변환한 스킬입니다. 수작업 스킬 작성의 품질 편차를 줄이고, 체계적인 생성 프로세스를 통해 일관된 품질의 스킬을 생산합니다.
+harness 오픈소스의 6-Phase 스킬 생성 워크플로우를 모두의 코워크 컨텍스트에 맞게 변환한 스킬입니다. 수작업 스킬 작성의 품질 편차를 줄이고, 체계적인 생성 프로세스를 통해 일관된 품질의 스킬을 생산합니다.
 
 > **이름 이력**: v1.3.x까지 `skill-forge`로 제공되던 스킬이 v1.5.x에서 `general-skill-builder`로 이름 변경되었습니다. 별칭은 유지되지 않으며 모든 참조는 `general-skill-builder`로 갱신해야 합니다.
 
@@ -219,7 +219,7 @@ tests:
 > "moai-coworker에 영업 제안서 자동 생성 스킬을 만들어줘. 회사명과 타겟 기업 입력하면 제안서 DOCX가 나오게"
 
 **예시 2: Vibe 갭 스킬 생성**
-> "general-skill-builder로 moai-product에 UX 디자인 분석 스킬을 만들어줘. Vibe Designing 기능 참고해서"
+> "general-skill-builder로 moai-coworker에 UX 디자인 분석 스킬을 만들어줘. Vibe Designing 기능 참고해서"
 
 ## 출력 형식
 

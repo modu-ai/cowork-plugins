@@ -1,7 +1,7 @@
 ---
 title: "마케팅 트랙"
 weight: 30
-description: "브랜드 전략·SNS·상세페이지·SEO까지 moai-marketing × moai-content 조합으로 마케팅 본부 자동화."
+description: "브랜드 전략·SNS·상세페이지·SEO까지 moai-marketer 스킬 조합으로 마케팅 본부 자동화."
 geekdocBreadcrumb: true
 tags: [cookbook, marketing]
 ---
@@ -10,7 +10,7 @@ tags: [cookbook, marketing]
 
 > **사용 방식**: 사용자가 짧은 한 줄 요청만 하면 시스템이 AskUserQuestion으로 맥락 수집 → 자동 체인 실행. [4가지 사용 패턴 참조](/cowork/patterns/)
 
-브랜드 전략부터 SNS 운영, 상세페이지 전환율, SEO 감사까지 — `moai-marketing`과 `moai-content` 플러그인 조합으로 마케팅 본부 하나를 덮는 트랙입니다.
+브랜드 전략부터 SNS 운영, 상세페이지 전환율, SEO 감사까지 — `moai-marketer` 플러그인으로 마케팅 본부 하나를 덮는 트랙입니다.
 
 ## 트랙이 무엇인가 — 한 줄 요청이 산출물이 되기까지
 
@@ -22,59 +22,59 @@ tags: [cookbook, marketing]
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    participant U as 사용자
-    participant S as 시스템
-    participant I as 인터뷰 (AskUserQuestion)
-    participant C as 스킬 체인
-    participant Q as 품질 스킬
+   autonumber
+   participant U as 사용자
+   participant S as 시스템
+   participant I as 인터뷰 (AskUserQuestion)
+   participant C as 스킬 체인
+   participant Q as 품질 스킬
 
-    U->>S: "B2B SaaS 브랜드 리뉴얼안 만들어줘"
-    S->>I: 맥락 부족 감지
-    I->>U: 타깃 고객·산출물·핵심 포인트 3-4문항
-    U->>I: 선택지 응답
-    I->>C: 맥락 전달
-    C->>C: brand-identity (브랜드 설계)
-    C->>C: docx-generator (문서 저장)
-    C->>Q: 원문 전달
-    Q->>Q: ai-slop-reviewer (AI 티 검수)
-    Q-->>U: 최종 산출물 (한 그릇 완성)
+   U->>S: "B2B SaaS 브랜드 리뉴얼안 만들어줘"
+   S->>I: 맥락 부족 감지
+   I->>U: 타깃 고객·산출물·핵심 포인트 3-4문항
+   U->>I: 선택지 응답
+   I->>C: 맥락 전달
+   C->>C: brand-identity (브랜드 설계)
+   C->>C: docx-generator (문서 저장)
+   C->>Q: 원문 전달
+   Q->>Q: ai-slop-reviewer (AI 티 검수)
+   Q-->>U: 최종 산출물 (한 그릇 완성)
 ```
 
 ```mermaid
 flowchart LR
-    S1["① 사용자 입력<br/>한 줄 자연어 요청<br/>예: B2B SaaS 브랜드 리뉴얼안 만들어줘"]
-    S2["② 시스템 인터뷰<br/>AskUserQuestion으로<br/>맥락 3-4문항 수집<br/>(타깃 고객·산출물 형식·핵심 포인트)"]
-    S3["③ 스킬 체인 자동 실행"]
-    S4["④ 최종 산출물<br/>완성된 한 그릇<br/>(브랜드 아이덴티티 문서 +<br/>검수 완료된 원고)"]
+   S1["① 사용자 입력<br/>한 줄 자연어 요청<br/>예: B2B SaaS 브랜드 리뉴얼안 만들어줘"]
+   S2["② 시스템 인터뷰<br/>AskUserQuestion으로<br/>맥락 3-4문항 수집<br/>(타깃 고객·산출물 형식·핵심 포인트)"]
+   S3["③ 스킬 체인 자동 실행"]
+   S4["④ 최종 산출물<br/>완성된 한 그릇<br/>(브랜드 아이덴티티 문서 +<br/>검수 완료된 원고)"]
 
-    S1 --> S2 --> S3 --> S4
+   S1 --> S2 --> S3 --> S4
 
-    subgraph chain["스킬 체인"]
-        direction LR
-        C1["brand-identity<br/>(브랜드 설계)"]
-        C2["docx-generator<br/>(문서 저장)"]
-        C3["ai-slop-reviewer<br/>(AI 티 검수 · 품질)"]
-        C1 --> C2 --> C3
-    end
+   subgraph chain["스킬 체인"]
+       direction LR
+       C1["brand-identity<br/>(브랜드 설계)"]
+       C2["docx-generator<br/>(문서 저장)"]
+       C3["ai-slop-reviewer<br/>(AI 티 검수 · 품질)"]
+       C1 --> C2 --> C3
+   end
 ```
 
 ## 트랙 지도
 
 ```mermaid
 flowchart TB
-    Brand["브랜드 아이덴티티<br/>brand-identity"] --> Voice["브랜드 보이스"]
-    Voice --> Channels{"배포 채널"}
-    Channels -->|블로그| Blog["blog"]
-    Channels -->|카드뉴스| Card["card-news"]
-    Channels -->|뉴스레터| News["newsletter"]
-    Channels -->|SNS 피드| Social["social-media"]
-    Channels -->|상세페이지| Detail["product-detail"]
-    Channels -->|랜딩| Landing["landing-page"]
+   Brand["브랜드 아이덴티티<br/>brand-identity"] --> Voice["브랜드 보이스"]
+   Voice --> Channels{"배포 채널"}
+   Channels -->|블로그| Blog["blog"]
+   Channels -->|카드뉴스| Card["card-news"]
+   Channels -->|뉴스레터| News["newsletter"]
+   Channels -->|SNS 피드| Social["social-media"]
+   Channels -->|상세페이지| Detail["product-detail"]
+   Channels -->|랜딩| Landing["landing-page"]
 
-    Blog --> SEO["seo-audit"]
-    Social --> Campaign["campaign-planner"]
-    Campaign --> Report["performance-report"]
+   Blog --> SEO["seo-audit"]
+   Social --> Campaign["campaign-planner"]
+   Campaign --> Report["performance-report"]
 ```
 
 ## 3단계 마케팅 파이프라인 — 왜 브랜드가 먼저이고 성과가 마지막인가
@@ -85,21 +85,21 @@ flowchart TB
 
 ```mermaid
 flowchart LR
-    P1["Part 1 — 브랜드·전략<br/>(뼈대 세우기)<br/><br/>brand-identity<br/>personal-branding"]
-    P2["Part 2 — 콘텐츠 제작<br/>(인테리어 입히기)<br/><br/>blog · card-news<br/>newsletter · social-media<br/>product-detail · landing-page"]
-    P3["Part 3 — 캠페인·성과<br/>(거주 만족도 측정)<br/><br/>campaign-planner<br/>performance-report<br/>seo-audit · email-sequence"]
+   P1["Part 1 — 브랜드·전략<br/>(뼈대 세우기)<br/><br/>brand-identity<br/>personal-branding"]
+   P2["Part 2 — 콘텐츠 제작<br/>(인테리어 입히기)<br/><br/>blog · card-news<br/>newsletter · social-media<br/>product-detail · landing-page"]
+   P3["Part 3 — 캠페인·성과<br/>(거주 만족도 측정)<br/><br/>campaign-planner<br/>performance-report<br/>seo-audit · email-sequence"]
 
-    P1 -->|"보이스·아이덴티티 전달"| P2
-    P2 -->|"만들어진 콘텐츠 전달"| P3
+   P1 -->|"보이스·아이덴티티 전달"| P2
+   P2 -->|"만들어진 콘텐츠 전달"| P3
 
-    style P1 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style P2 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style P3 fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style P1 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style P2 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style P3 fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 ---
 
-## Part 1 ✦ 브랜드·전략
+## Part 1 {{< icon sparkles >}} 브랜드·전략
 
 ### brand-identity — 아이덴티티 설계
 
@@ -127,7 +127,7 @@ CEO·임원·전문가 개인의 전문성을 브랜드화.
 
 ---
 
-## Part 2 ✦ 콘텐츠 제작
+## Part 2 {{< icon sparkles >}} 콘텐츠 제작
 
 ### blog — 포스팅 자동화
 
@@ -203,7 +203,7 @@ AI 이미지 생성 기반 캐러셀 10장.
 
 ---
 
-## Part 3 ✦ 캠페인·성과
+## Part 3 {{< icon sparkles >}} 캠페인·성과
 
 ### campaign-planner — 그로스해킹
 
@@ -257,24 +257,24 @@ AI 검색(GEO) 최적화까지 포함.
 
 ## 체인 읽는 법 — 화살표가 뜻하는 것과 품질 스킬이 항상 끝에 오는 이유
 
-이 트랙의 각 스킬 아래에는 `blog → ai-slop-reviewer → korean-spell-check → humanize-korean` 같은 **체인 표기**가 붙어 있습니다. 화살표(`→`)는 "왼쪽 스킬의 결과물을 오른쪽 스킬이 입력받아 이어 처리한다"는 뜻입니다. 즉 `blog`가 쓴 원고를 `ai-slop-reviewer`가 검수하고, 그 결과를 `korean-spell-check`가 맞춤법 점검하고, 마지막으로 `humanize-korean`이 사람이 쓴 것처럼 다듬는 식으로 한 방향으로 흘러갑니다.
+이 트랙의 각 스킬 아래에는 `blog → ai-slop-reviewer → korean-spell-check → humanize-korean` 같은 **체인 표기**가 붙어 있습니다. 화살표(`→`)는 "왼쪽 스킬의 결과물을 오른쪽 스킬이 입력받아 이어 처리한다"는 뜻입니다. 즉 `content-blog`가 쓴 원고를 `general-ai-slop-reviewer`가 검수하고, 그 결과를 `korean-spell-check`가 맞춤법 점검하고, 마지막으로 `general-humanize-korean`이 사람이 쓴 것처럼 다듬는 식으로 한 방향으로 흘러갑니다.
 
-이 화살표 끝에는 항상 같은 얼굴이 반복해 붙습니다 — `ai-slop-reviewer`, `korean-spell-check`, `humanize-korean` 같은 **품질 스킬**들입니다. 왜 끝인가. 세탁 라인에 비유하면 명확해집니다. 옷을 먼저 만들고(도메인 스킬) → 포장하고(포맷 스킬) → 마지막에 검수·다림질·보풀 제거(품질 스킬) 순서로 돌아갑니다. 다림질(품질)을 맨 앞에 하면 구겨진 옷을 다릴 수 없듯, 검수할 원문이 없는 상태에서 `ai-slop-reviewer`를 부르면 의미가 없습니다. 그래서 품질 스킬은 항상 체인의 맨 끝에 옵니다.
+이 화살표 끝에는 항상 같은 얼굴이 반복해 붙습니다 — `general-ai-slop-reviewer`, `korean-spell-check`, `general-humanize-korean` 같은 **품질 스킬**들입니다. 왜 끝인가. 세탁 라인에 비유하면 명확해집니다. 옷을 먼저 만들고(도메인 스킬) → 포장하고(포맷 스킬) → 마지막에 검수·다림질·보풀 제거(품질 스킬) 순서로 돌아갑니다. 다림질(품질)을 맨 앞에 하면 구겨진 옷을 다릴 수 없듯, 검수할 원문이 없는 상태에서 `general-ai-slop-reviewer`를 부르면 의미가 없습니다. 그래서 품질 스킬은 항상 체인의 맨 끝에 옵니다.
 
 아래 '자주 걸리는 지점' 절의 "AI 티 나는 문장" 항목이 바로 이 품질 스킬이 잡아내는 대상입니다. 품질 스킬을 체인 끝에 두는 이유와, 그것이 실제로 무엇을 잡아내는지를 함께 보면 체인 표기가 왜 저 모양으로 생겼는지 한눈에 들어옵니다.
 
 ```mermaid
 flowchart LR
-    D["도메인 스킬<br/>(내용 만들기)<br/><br/>blog · newsletter<br/>brand-identity"]
-    F["포맷 스킬<br/>(형태 갖추기)<br/><br/>docx-generator<br/>pptx-designer"]
-    Q["품질 스킬<br/>(검수·다듬기)<br/><br/>ai-slop-reviewer<br/>humanize-korean"]
+   D["도메인 스킬<br/>(내용 만들기)<br/><br/>blog · newsletter<br/>brand-identity"]
+   F["포맷 스킬<br/>(형태 갖추기)<br/><br/>docx-generator<br/>pptx-designer"]
+   Q["품질 스킬<br/>(검수·다듬기)<br/><br/>ai-slop-reviewer<br/>humanize-korean"]
 
-    D -->|"원문 전달"| F
-    F -->|"완성본 전달"| Q
+   D -->|"원문 전달"| F
+   F -->|"완성본 전달"| Q
 
-    style D fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style F fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style Q fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style D fill:#e6e6e6,stroke:#757575,color:#09110f
+   style F fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style Q fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 ## 자주 걸리는 지점
@@ -285,7 +285,7 @@ flowchart LR
 
 ### 이미지 생성 비용
 
-카드뉴스 10장 × 3세트 = 30장. `higgsfield-image`로 생성하며 장당 수 초 + 토큰이 소요됩니다. 시스템이 자동으로 배치 병렬 생성으로 속도 절감합니다.
+카드뉴스 10장 × 3세트 = 30장. `media-higgsfield-image`로 생성하며 장당 수 초 + 토큰이 소요됩니다. 시스템이 자동으로 배치 병렬 생성으로 속도 절감합니다.
 
 ### 채널별 분량 규정 위반
 
@@ -293,7 +293,7 @@ flowchart LR
 
 ### 법적 리스크
 
-의약·금융·건강 광고는 각 산업 표시 광고법 준수 필수. 시스템이 카피 생성 후 `compliance-check`를 체인에 자동 삽입합니다.
+의약·금융·건강 광고는 각 산업 표시 광고법 준수 필수. 시스템이 카피 생성 후 `legal-compliance-check`를 체인에 자동 삽입합니다.
 
 ## 다음 읽을거리
 
@@ -305,4 +305,4 @@ flowchart LR
 
 ### Sources
 - [Claude Docs — Cowork Marketing Use Cases](https://docs.claude.com/en/docs/claude-cowork)
-- [modu-ai/cowork-plugins — moai-marketing, moai-content](https://github.com/modu-ai/cowork-plugins)
+- [modu-ai/moai-cowork — moai-marketer](https://github.com/modu-ai/moai-cowork)

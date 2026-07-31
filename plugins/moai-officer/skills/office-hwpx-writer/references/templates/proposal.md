@@ -1,6 +1,6 @@
 # HWPX 제안서 양식 (proposal)
 
-> moai-office v1.0.0 | 비즈니스 제안서 스펙
+> moai-officer v1.0.0 | 비즈니스 제안서 스펙
 
 ## 개요
 

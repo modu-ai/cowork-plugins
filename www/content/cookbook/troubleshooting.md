@@ -31,25 +31,25 @@ tags: [cookbook, troubleshooting]
 
 ```mermaid
 flowchart TD
-    Start["체인 실패"] --> Q1{"어느 단계에서<br/>멈췄는가?"}
-    Q1 -- "스킬 미호출" --> A1["호출 누락"]
-    Q1 -- "중간 결과만" --> A2["중간 중단"]
-    Q1 -- "파일 생성됨" --> Q2{"어떤 증상인가?"}
-    Q2 -- "내용 부정확" --> A3["산출물 불일치"]
-    Q2 -- "파일 안 열림" --> A4["형식 깨짐"]
-    Q2 -- "AI 어투 남음" --> A5["검수 누락"]
+   Start["체인 실패"] --> Q1{"어느 단계에서<br/>멈췄는가?"}
+   Q1 -- "스킬 미호출" --> A1["호출 누락"]
+   Q1 -- "중간 결과만" --> A2["중간 중단"]
+   Q1 -- "파일 생성됨" --> Q2{"어떤 증상인가?"}
+   Q2 -- "내용 부정확" --> A3["산출물 불일치"]
+   Q2 -- "파일 안 열림" --> A4["형식 깨짐"]
+   Q2 -- "AI 어투 남음" --> A5["검수 누락"]
 
-    A1 --> R["원인 후보 1개씩 차단"]
-    A2 --> R
-    A3 --> R
-    A4 --> R
-    A5 --> R
+   A1 --> R["원인 후보 1개씩 차단"]
+   A2 --> R
+   A3 --> R
+   A4 --> R
+   A5 --> R
 
-    style Start fill:#f5dcd7,stroke:#c44a3a,color:#09110f
-    style R fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style Start fill:#f5dcd7,stroke:#c44a3a,color:#09110f
+   style R fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
-1. **어느 단계에서 멈췄는가** — 체인이 완결되지 않았다면 마지막으로 응답을 남긴 스킬이 무엇인지 먼저 특정합니다. 도메인 스킬이었는지, 포맷 스킬이었는지, `ai-slop-reviewer` 직전이었는지에 따라 대응이 다릅니다.
+1. **어느 단계에서 멈췄는가** — 체인이 완결되지 않았다면 마지막으로 응답을 남긴 스킬이 무엇인지 먼저 특정합니다. 도메인 스킬이었는지, 포맷 스킬이었는지, `general-ai-slop-reviewer` 직전이었는지에 따라 대응이 다릅니다.
 2. **어떤 증상인가**
    - **호출 누락** — 스킬이 아예 트리거되지 않음
    - **중간 중단** — 중간 단계에서 멈추고 결과 반환
@@ -61,46 +61,46 @@ flowchart TD
 ## 증상별 패턴 10선
 ## 증상 10선: 체인이 끊기는 세 지점
 
-10개 증상은 서로 달라 보이지만 대부분 체인의 세 지점 중 한 곳에서 멈춘 모습입니다. 공장 컨베이어 벨트에 비유하면 이해가 쉽습니다. 요청이 들어오면 **재료 손질**(도메인 스킬, 분야 전문 지식을 담은 스킬) → **포장**(포맷 스킬, DOCX·PPTX·XLSX 같은 문서 형식을 만드는 스킬) → **품질 검사**(`ai-slop-reviewer`, AI 특유의 기계적 어투를 솎아내는 검수 스킬) 순으로 벨트가 굴러갑니다.
+10개 증상은 서로 달라 보이지만 대부분 체인의 세 지점 중 한 곳에서 멈춘 모습입니다. 공장 컨베이어 벨트에 비유하면 이해가 쉽습니다. 요청이 들어오면 **재료 손질**(도메인 스킬, 분야 전문 지식을 담은 스킬) → **포장**(포맷 스킬, DOCX·PPTX·XLSX 같은 문서 형식을 만드는 스킬) → **품질 검사**(`general-ai-slop-reviewer`, AI 특유의 기계적 어투를 솎아내는 검수 스킬) 순으로 벨트가 굴러갑니다.
 
-초보자가 가장 자주 겪는 세 가지는 모두 이 벨트가 멈추는 순간입니다. **트리거 실패**는 첫 작업자가 작업 지시서를 못 받아 벨트 자체가 안 도는 것이고, **포맷 인계 실패**는 손질만 끝나고 포장 담당에게 물건이 안 넘어간 것이며, **`ai-slop-reviewer` 누락**은 검사 담당이 자리를 비껴 불량품이 그대로 출하된 것입니다. 아래 일러스트는 정상 흐름(위쪽)과 세 가지 끊김 지점(아래쪽)을 시간 순서대로 보여줍니다.
+초보자가 가장 자주 겪는 세 가지는 모두 이 벨트가 멈추는 순간입니다. **트리거 실패**는 첫 작업자가 작업 지시서를 못 받아 벨트 자체가 안 도는 것이고, **포맷 인계 실패**는 손질만 끝나고 포장 담당에게 물건이 안 넘어간 것이며, **`general-ai-slop-reviewer` 누락**은 검사 담당이 자리를 비껴 불량품이 그대로 출하된 것입니다. 아래 일러스트는 정상 흐름(위쪽)과 세 가지 끊김 지점(아래쪽)을 시간 순서대로 보여줍니다.
 
 ```mermaid
 sequenceDiagram
-    participant U as 사용자
-    participant D as 도메인 스킬
-    participant F as 포맷 스킬
-    participant Q as ai-slop-reviewer
+   participant U as 사용자
+   participant D as 도메인 스킬
+   participant F as 포맷 스킬
+   participant Q as ai-slop-reviewer
 
-    Note over U,Q: 정상 흐름
-    U->>D: 자연어 요청
-    D-->>F: 손질된 원고
-    F-->>Q: 생성된 파일
-    Q-->>U: 검수 완료 산출물
+   Note over U,Q: 정상 흐름
+   U->>D: 자연어 요청
+   D-->>F: 손질된 원고
+   F-->>Q: 생성된 파일
+   Q-->>U: 검수 완료 산출물
 
-    Note over U,Q: 끊김 지점 3종
+   Note over U,Q: 끊김 지점 3종
 
-    Note over U,D: ① 트리거 실패
-    U->>D: ❌ 스킬 미호출 (벨트 정지)
+   Note over U,D: ① 트리거 실패
+   U->>D:  스킬 미호출 (벨트 정지)
 
-    Note over D,F: ② 포맷 인계 실패
-    D-->>D: ⚠️ 다음 스킬로 안 넘어감
+   Note over D,F: ② 포맷 인계 실패
+   D-->>D:  다음 스킬로 안 넘어감
 
-    Note over F,Q: ③ 검수 누락
-    F-->>U: ❌ 검수 통과 안 한 채 반환
+   Note over F,Q: ③ 검수 누락
+   F-->>U:  검수 통과 안 한 채 반환
 ```
 
 ### 1. 스킬 트리거 실패
 
 - **원인 후보**: 트리거 키워드 부재 · 플러그인 미설치 · 다른 스킬과 경쟁
-- **다음 액션**: 요청문에 스킬 이름을 명시 (예: "사업계획서 써줘 — `strategy-planner` 사용")
+- **다음 액션**: 요청문에 스킬 이름을 명시 (예: "사업계획서 써줘 — `business-strategy-planner` 사용")
 
 ### 2. 포맷 스킬로 인계 안 됨
 
 - **원인 후보**: 도메인 스킬 응답이 너무 짧아 체인 연결 트리거가 약함
 - **다음 액션**: "방금 결과를 DOCX로 만들어줘"라고 후속 요청
 
-### 3. `ai-slop-reviewer` 누락
+### 3. `general-ai-slop-reviewer` 누락
 
 - **원인 후보**: 체인 마지막이 파일 생성에서 종료
 - **다음 액션**: "이 문서 AI 슬롭 검수해줘"라고 이어서 요청
@@ -137,7 +137,7 @@ sequenceDiagram
 
 ### 10. 검수 후 내용이 오히려 어색
 
-- **원인 후보**: `ai-slop-reviewer`가 도메인 전문 용어를 일반어로 치환
+- **원인 후보**: `general-ai-slop-reviewer`가 도메인 전문 용어를 일반어로 치환
 - **다음 액션**: 검수 전 "의학·법률·금융 용어는 보존"이라고 명시
 
 ## 롤백 가이드
@@ -149,18 +149,18 @@ sequenceDiagram
 
 ```mermaid
 flowchart LR
-    Start["요청 입력"] --> CP1["체크포인트 1<br/>도메인 완료"]
-    CP1 --> CP2["체크포인트 2<br/>포맷 완료"]
-    CP2 --> Fail["❌ 검수 실패"]
+   Start["요청 입력"] --> CP1["체크포인트 1<br/>도메인 완료"]
+   CP1 --> CP2["체크포인트 2<br/>포맷 완료"]
+   CP2 --> Fail["검수 실패"]
 
-    Fail --> Decide{"어디로<br/>되돌릴까?"}
-    Decide -- "처음부터" --> Start
-    Decide -- "체크포인트 2" --> CP2
-    CP2 -. 다시 시도 .-> Fail2["검수 재실행"]
+   Fail --> Decide{"어디로<br/>되돌릴까?"}
+   Decide -- "처음부터" --> Start
+   Decide -- "체크포인트 2" --> CP2
+   CP2 -. 다시 시도 .-> Fail2["검수 재실행"]
 
-    style CP1 fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style CP2 fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style Fail fill:#f5dcd7,stroke:#c44a3a,color:#09110f
+   style CP1 fill:#e8f1ec,stroke:#265240,color:#09110f
+   style CP2 fill:#e8f1ec,stroke:#265240,color:#09110f
+   style Fail fill:#f5dcd7,stroke:#c44a3a,color:#09110f
 ```
 
 {{< hint type="note" >}}
@@ -183,5 +183,5 @@ flowchart LR
 
 ### Sources
 
-- [modu-ai/cowork-plugins — Issues](https://github.com/modu-ai/cowork-plugins/issues)
+- [modu-ai/moai-cowork — Issues](https://github.com/modu-ai/moai-cowork/issues)
 - [Anthropic 지원센터](https://support.claude.com)

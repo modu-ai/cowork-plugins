@@ -26,7 +26,7 @@ weight: 95
 { "permissions": { "allow": ["Bash(npm test)"], "deny": ["Bash(rm -rf *)"] } }
 ```
 
-## ⚠️ 주의
+## {{< icon triangle-alert >}} 주의
 
 `--dangerously-skip-permissions`는 **모든 안전장치를 해제**합니다 — 파일 삭제·명령 실행이 무제한이 되므로 절대 쓰지 마세요.
 

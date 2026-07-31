@@ -1,7 +1,7 @@
 ---
 title: "「셀러」 — 이커머스 운영 담당"
 weight: 5
-description: "스마트스토어·아임웹·카페24 연동과 상세페이지·광고·CRM까지 커머스 실무 29종을 담당하는 AI 직원."
+description: "스마트스토어·아임웹·카페24 연동과 상세페이지·광고·CRM까지 커머스 실무 30종을 담당하는 AI 직원."
 aliases: ["/agent-teams/seller/"]
 ---
 
@@ -13,15 +13,15 @@ aliases: ["/agent-teams/seller/"]
 
 ```mermaid
 flowchart LR
-    A["요청<br/>(오늘 주문 정리해줘)"] --> B["스킬·MCP 매칭"]
-    B --> C["listing-builder<br/>실행"]
-    C --> D["margin-auditor<br/>수치 검수"]
-    D --> E["산출물<br/>(브리핑·상세페이지·리포트)"]
+   A["요청<br/>(오늘 주문 정리해줘)"] --> B["스킬·MCP 매칭"]
+   B --> C["listing-builder<br/>실행"]
+   C --> D["margin-auditor<br/>수치 검수"]
+   D --> E["산출물<br/>(브리핑·상세페이지·리포트)"]
 ```
 
 ## 스킬 카탈로그
 
-commerce-\* 계열 29종의 전체 목록입니다.
+commerce-\* 계열 30종의 전체 목록입니다.
 
 {{< employee-skills "moai-seller" >}}
 
@@ -35,9 +35,9 @@ commerce-\* 계열 29종의 전체 목록입니다.
 
 **1. 아침 브리핑.** "오늘 매장 상황 브리핑해줘"라고 하면 `commerce-morning-brief`가 스마트스토어 MCP로 신규 주문·문의·배송 지연을 모아 아침 회의 자료처럼 정리해 줍니다.
 
-**2. 상세페이지 리뉴얼.** "이 제품 상세페이지 다시 기획해줘"라고 요청하면 `commerce-detail-page-planner` → `commerce-detail-page-copy` → `commerce-detail-page-image` 순서로 구조·카피·이미지 기획이 나오고, `commerce-marketing-compliance-kr`이 한국 광고 표시 규정 위반 소지를 점검합니다.
+**2. 상세페이지 리뉴얼.** "이 제품 상세페이지 다시 기획해줘"라고 요청하면 `commerce-detail-page-planner` → `commerce-detail-page-copy` → `commerce-detail-page-image` 순서로 구조·카피·이미지 기획이 나오고, `commerce-ad-claim-compliance-kr`이 한국 광고 표시 규정 위반 소지를 점검합니다.
 
-**3. 쿠팡 광고 최적화.** "쿠팡 광고 수익률이 안 나와"라고 하면 `commerce-coupang-ad-optimizer`가 키워드·입찰 구조를 진단하고, `commerce-margin-calculator`가 광고비 포함 실마진을 다시 계산해 줍니다.
+**3. 쿠팡 광고 최적화.** "쿠팡 광고 수익률이 안 나와"라고 하면 `commerce-marketplace-coupang-ads`가 키워드·입찰 구조를 진단하고, `commerce-margin-calculator`가 광고비 포함 실마진을 다시 계산해 줍니다.
 
 **잘 안 될 때** — 채널 연동 오류의 대부분은 자격증명 문제입니다. 스마트스토어는 `smartstore_test_connection` 도구로 인증부터 확인하고, 아임웹·카페24는 API 키/OAuth 앱 설정이 유효한지 점검하세요.
 

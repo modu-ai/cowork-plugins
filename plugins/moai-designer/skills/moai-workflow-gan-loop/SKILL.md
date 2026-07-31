@@ -11,7 +11,7 @@ description: |
   Quality, Originality, Completeness, Functionality), stagnation
   detection, and escalation.
 user-invocable: false
-version: 0.2.1
+version: "1.0.0"
 ---
 
 > ⚠️ **개발 런타임 전용** — 이 스킬은 MoAI-ADK(Claude Code) 환경을 전제한다. Claude Cowork(Desktop)에서는 `.moai/config` 의존으로 동작하지 않을 수 있다. Desktop 사용자는 자체 체크리스트 기반 QC(예: `moai-story:story-webtoon-qc` 같은 자체 QC 경로)를 사용한다.

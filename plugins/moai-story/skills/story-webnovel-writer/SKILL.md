@@ -8,7 +8,7 @@ description: |
   - "웹소설 절단", "클리프행어 설계", "회차 끝 어떻게"
   - "현판 문법", "로판 문법", "무협 클리셰", "회귀/빙의/환생"
   - "연참 주기", "회차 분량 조율"
-version: "0.2.0"
+version: "1.0.0"
 ---
 
 # story-webnovel-writer: 웹소설 회차 집필
@@ -97,7 +97,7 @@ version: "0.2.0"
 - `story-series-bible` — 회차 현황표 갱신
 - `story-cover-art` — 웹소설 표지(부가)
 - `story-ip-pitch` — 웹툰화·드라마화(부가)
-- `moai-writer:book-project` — 단행본 전환(단방향 인계)
+- `moai-writer:book-concept-planner` — 단행본 전환(단방향 인계)
 
 ### Post (검수 — 텍스트 산출물 정규 체인)
 - `moai-coworker:general-ai-slop-reviewer` — AI 슬롭 검수 (필수)

@@ -10,7 +10,7 @@ description: |
   - "업계 트렌드 뉴스레터 구성 짜줘"
   - "구독자 늘리는 뉴스레터 기획해줘"
   완성 후 moai-coworker:general-ai-slop-reviewer로 AI 티를 정리합니다(필수 후처리).
-version: "0.1.2"
+version: "1.0.0"
 ---
 
 # 뉴스레터 (Newsletter)

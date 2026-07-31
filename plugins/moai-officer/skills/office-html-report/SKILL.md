@@ -11,7 +11,7 @@ description: |
   - "이메일에 붙일 수 있는 HTML 리포트 만들어줘"
   현황·인시던트·사업계획·설명서·재무·PR 6종 서식을 갖췄고, 보고서 종류에 맞춰 자동으로 골라 줍니다.
   PDF 파일이 필요하면 생성한 HTML을 moai-officer:office-pdf-writer로 넘겨 디자인 그대로 PDF로 변환하세요 (weasyprint를 직접 설치·호출하지 말 것).
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # office-html-report: 단일 파일 HTML 보고서 렌더러

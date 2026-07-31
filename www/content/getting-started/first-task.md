@@ -10,14 +10,14 @@ geekdocBreadcrumb: true
 
 ```mermaid
 flowchart LR
-    A["① 마켓플레이스 등록<br/>(직원 소개소 방문)"] --> B["② 직원 채용<br/>(플러그인 설치)"]
-    B --> C["③ 첫 요청<br/>(한 줄 주문)"]
-    C --> D["✅ 결과물 확인"]
+   A["① 마켓플레이스 등록<br/>(직원 소개소 방문)"] --> B["② 직원 채용<br/>(플러그인 설치)"]
+   B --> C["③ 첫 요청<br/>(한 줄 주문)"]
+   C --> D["결과물 확인"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style D fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style C fill:#e8f1ec,stroke:#265240,color:#09110f
+   style D fill:#d6e7de,stroke:#3d7d5f,stroke-width:2px,color:#09110f
 ```
 
 ## 1단계: 마켓플레이스 등록

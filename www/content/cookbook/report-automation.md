@@ -9,19 +9,19 @@ tags: [cookbook, operations]
 
 ```mermaid
 flowchart TD
-    subgraph Sources["데이터 소스"]
-        S1["KPI CSV"]
-        S2["Slack #ops"]
-        S3["Notion/Asana"]
-    end
-    A["status-reporter<br/>주간 리포트 골격"] --> B["data-explorer<br/>KPI 추출"]
-    B --> C["xlsx-creator<br/>대시보드"]
-    C --> D["docx-generator<br/>3페이지 DOCX"]
-    D --> E["ai-slop-reviewer<br/>문장 다듬기"]
-    Sources --> A
+   subgraph Sources["데이터 소스"]
+       S1["KPI CSV"]
+       S2["Slack #ops"]
+       S3["Notion/Asana"]
+   end
+   A["status-reporter<br/>주간 리포트 골격"] --> B["data-explorer<br/>KPI 추출"]
+   B --> C["xlsx-creator<br/>대시보드"]
+   C --> D["docx-generator<br/>3페이지 DOCX"]
+   D --> E["ai-slop-reviewer<br/>문장 다듬기"]
+   Sources --> A
 
-    style Sources fill:#dceee9,stroke:#2a8a8c,color:#09110f
-    style E fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style Sources fill:#e8f1ec,stroke:#2a8a8c,color:#09110f
+   style E fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 ## 대상 독자
@@ -32,67 +32,67 @@ flowchart TD
 
 완성된 주간 보고서 한 부를 만드는 데 스킬이 다섯 개나 필요합니다. 이는 한 냄비 요리가 아니라 공장 조립 라인에 가깝습니다. 하나의 완성품(3페이지 보고서)을 만들기 위해 다섯 개의 작업대를 차례로 거치는 셈입니다. 첫 작업대(기획자)는 보고서 뼈대를 잡고, 둘째(데이터 분석가)는 숫자를 채워 넣고, 셋째(표 담당)는 숫자를 차트로 정리하고, 넷째(문서 편집자)는 흩어진 조각을 3페이지 보고서로 묶고, 마지막(교정 편집자)은 임원이 읽기 좋게 문장을 다듬습니다. 한 작업대가 빠지면 완성품 어딘가에 빈 칸이 남습니다.
 
-각 스킬 이름이 영어 축약이라 의미가 바로 안 와닿을 수 있습니다. `status-reporter`는 '상태 보고 담당자', `data-explorer`는 '데이터 탐험가(원천 데이터에서 의미 있는 수치를 찾아내는 역할)', `xlsx-creator`는 '엑셀 생성기', `docx-generator`는 '워드 문서 생성기', `ai-slop-reviewer`는 'AI 특유 어투를 검수하는 편집자'로 풀어 읽으면 됩니다. 한 스킬이 다섯 역할을 모두 하면 정확도가 떨어집니다. 분야별로 특화된 스킬을 순서대로 통과시키는 편이 매주 같은 품질의 보고서를 만들어냅니다.
+각 스킬 이름이 영어 축약이라 의미가 바로 안 와닿을 수 있습니다. `business-status-reporter`는 '상태 보고 담당자', `office-data-explorer`는 '데이터 탐험가(원천 데이터에서 의미 있는 수치를 찾아내는 역할)', `office-xlsx-creator`는 '엑셀 생성기', `office-docx-generator`는 '워드 문서 생성기', `general-ai-slop-reviewer`는 'AI 특유 어투를 검수하는 편집자'로 풀어 읽으면 됩니다. 한 스킬이 다섯 역할을 모두 하면 정확도가 떨어집니다. 분야별로 특화된 스킬을 순서대로 통과시키는 편이 매주 같은 품질의 보고서를 만들어냅니다.
 
 순서가 고정된 이유는 앞 단계의 결과물이 뒷단계의 입력이 되기 때문입니다. 뼈대가 없는 상태에서 숫자만 채워 넣으면 어디에 둘지 알 수 없고, 문장 다듬기를 데이터 분석보다 먼저 하면 나중에 숫자가 바뀔 때 문장을 또 고쳐야 합니다. 콘베이어 벨트 위의 순차 조립이라고 생각하면, 스킬 순서를 바꾸는 것은 조립 순서를 뒤섞는 것과 같습니다.
 
 ```mermaid
 flowchart LR
-    subgraph Chain["주간 보고서 5단계 조립 라인"]
-        direction LR
-        A["① status-reporter<br/>뼈대 잡기"] --> B["② data-explorer<br/>숫자 채우기"]
-        B --> C["③ xlsx-creator<br/>차트 정리"]
-        C --> D["④ docx-generator<br/>문서로 묶기"]
-        D --> E["⑤ ai-slop-reviewer<br/>문장 다듬기"]
-    end
+   subgraph Chain["주간 보고서 5단계 조립 라인"]
+       direction LR
+       A["① status-reporter<br/>뼈대 잡기"] --> B["② data-explorer<br/>숫자 채우기"]
+       B --> C["③ xlsx-creator<br/>차트 정리"]
+       C --> D["④ docx-generator<br/>문서로 묶기"]
+       D --> E["⑤ ai-slop-reviewer<br/>문장 다듬기"]
+   end
 
-    style Chain fill:#faf9f5,stroke:#d1cfc5,color:#09110f
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style C fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style D fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style E fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style Chain fill:#ffffff,stroke:#d1d1d1,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style C fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style D fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style E fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 ```mermaid
 flowchart LR
-    SRC["데이터 소스 (재료)<br/>KPI CSV · Slack #ops · Notion/Asana"]
-    ST1["① 기획자<br/>status-reporter<br/>보고서 뼈대 · OKR 진행률"]
-    ST2["② 데이터 분석가<br/>data-explorer<br/>숫자 채우기 · KPI 추출"]
-    ST3["③ 표 담당<br/>xlsx-creator<br/>차트 정리 · 대시보드 시트"]
-    ST4["④ 문서 편집자<br/>docx-generator<br/>3페이지 묶기 · 최종 보고서"]
-    ST5["⑤ 교정 편집자<br/>ai-slop-reviewer<br/>문장 다듬기 · 임원체/팀체"]
-    OUT["완성품<br/>주간 보고서 3페이지 DOCX"]
+   SRC["데이터 소스 (재료)<br/>KPI CSV · Slack #ops · Notion/Asana"]
+   ST1["① 기획자<br/>status-reporter<br/>보고서 뼈대 · OKR 진행률"]
+   ST2["② 데이터 분석가<br/>data-explorer<br/>숫자 채우기 · KPI 추출"]
+   ST3["③ 표 담당<br/>xlsx-creator<br/>차트 정리 · 대시보드 시트"]
+   ST4["④ 문서 편집자<br/>docx-generator<br/>3페이지 묶기 · 최종 보고서"]
+   ST5["⑤ 교정 편집자<br/>ai-slop-reviewer<br/>문장 다듬기 · 임원체/팀체"]
+   OUT["완성품<br/>주간 보고서 3페이지 DOCX"]
 
-    SRC --> ST1 --> ST2 --> ST3 --> ST4 --> ST5 --> OUT
+   SRC --> ST1 --> ST2 --> ST3 --> ST4 --> ST5 --> OUT
 
-    subgraph seq["왜 순서가 고정인가 — 콘베이어 벨트 위 순차 조립"]
-        direction LR
-        R1["앞 단계 결과물이<br/>뒷단계 입력"]
-        R2["뼈대 없이 숫자부터<br/>넣으면 자리 없음"]
-        R3["문장 다듬기를 먼저 하면<br/>숫자 바뀔 때 다시 고쳐야"]
-        R4["한 작업대 빠지면<br/>완성품에 빈 칸"]
-        R1 ~~~ R2 ~~~ R3 ~~~ R4
-    end
+   subgraph seq["왜 순서가 고정인가 — 콘베이어 벨트 위 순차 조립"]
+       direction LR
+       R1["앞 단계 결과물이<br/>뒷단계 입력"]
+       R2["뼈대 없이 숫자부터<br/>넣으면 자리 없음"]
+       R3["문장 다듬기를 먼저 하면<br/>숫자 바뀔 때 다시 고쳐야"]
+       R4["한 작업대 빠지면<br/>완성품에 빈 칸"]
+       R1 ~~~ R2 ~~~ R3 ~~~ R4
+   end
 
-    classDef plan fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    classDef build fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    classDef qa fill:#e6f0ef,stroke:#144a46,color:#09110f
-    classDef src fill:#dceee9,stroke:#2a8a8c,color:#09110f
-    classDef out fill:#D97757,stroke:#B85C3E,color:#FFFFFF
-    classDef rule fill:#788C5D,stroke:#5F6F4A,color:#FFFFFF
+   classDef plan fill:#e6e6e6,stroke:#757575,color:#09110f
+   classDef build fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   classDef qa fill:#e8f1ec,stroke:#265240,color:#09110f
+   classDef src fill:#e8f1ec,stroke:#2a8a8c,color:#09110f
+   classDef out fill:#3d7d5f,stroke:#265240,color:#FFFFFF
+   classDef rule fill:#2e8a63,stroke:#265240,color:#FFFFFF
 
-    class SRC src
-    class ST1 plan
-    class ST2,ST3,ST4 build
-    class ST5 qa
-    class OUT out
-    class R1,R2,R3,R4 rule
+   class SRC src
+   class ST1 plan
+   class ST2,ST3,ST4 build
+   class ST5 qa
+   class OUT out
+   class R1,R2,R3,R4 rule
 ```
 
 ## 사전 준비
 
-- 플러그인: `moai-operations`, `moai-data`, `moai-office`, `moai-core:ai-slop-reviewer`
+- 플러그인: `moai-coworker`, `moai-analyst`, `moai-officer`
 - MCP 커넥터: Slack(이슈 수집) + Notion/Asana(할 일) — [커넥터·MCP](../../cowork/connectors-mcp/) 참고
 - (선택) GA4·광고 채널 데이터
 - `schedule` 스킬 — 스케줄링
@@ -111,11 +111,11 @@ flowchart LR
 status-reporter → data-explorer → xlsx-creator → docx-generator → ai-slop-reviewer
 ```
 
-- `status-reporter` — 주간 리포트 골격, OKR 진행률
-- `data-explorer` — 로우 데이터(CSV·Slack·Notion)에서 KPI 추출
-- `xlsx-creator` — KPI 대시보드 시트
-- `docx-generator` — 최종 3페이지 보고서
-- `ai-slop-reviewer` — 임원이 바로 읽을 수 있게 문장 다듬기
+- `business-status-reporter` — 주간 리포트 골격, OKR 진행률
+- `office-data-explorer` — 로우 데이터(CSV·Slack·Notion)에서 KPI 추출
+- `office-xlsx-creator` — KPI 대시보드 시트
+- `office-docx-generator` — 최종 3페이지 보고서
+- `general-ai-slop-reviewer` — 임원이 바로 읽을 수 있게 문장 다듬기
 
 ## 사용 방식 — 한 줄 요청 (패턴 4: 스케줄 자동화)
 
@@ -131,24 +131,24 @@ status-reporter → data-explorer → xlsx-creator → docx-generator → ai-slo
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    participant U as 사용자
-    participant S as Cowork(시스템)
-    participant T as 팀(수신자)
+   autonumber
+   participant U as 사용자
+   participant S as Cowork(시스템)
+   participant T as 팀(수신자)
 
-    U->>S: "매주 금요일 5시 자동화해줘"
-    S-->>U: 인터뷰 (데이터 소스·수신자·채널)
-    Note over S: 시범 실행 1회 (초안 생성)
-    rect rgb(250, 249, 245)
-        Note over U,S: W1·W2 — 사람이 직접 검토
-        S->>U: 사전 검토 요청 (Slack DM)
-        U-->>S: 수정 피드백 반영
-    end
-    rect rgb(230, 240, 239)
-        Note over S,T: W3+ — 자동 발송 (이상 시에만 알림)
-        S->>T: 주간 보고서 자동 발송
-        S->>U: 정상 완료 (이상 감지 시에만 알림)
-    end
+   U->>S: "매주 금요일 5시 자동화해줘"
+   S-->>U: 인터뷰 (데이터 소스·수신자·채널)
+   Note over S: 시범 실행 1회 (초안 생성)
+   rect rgb(250, 249, 245)
+       Note over U,S: W1·W2 — 사람이 직접 검토
+       S->>U: 사전 검토 요청 (Slack DM)
+       U-->>S: 수정 피드백 반영
+   end
+   rect rgb(230, 240, 239)
+       Note over S,T: W3+ — 자동 발송 (이상 시에만 알림)
+       S->>T: 주간 보고서 자동 발송
+       S->>U: 정상 완료 (이상 감지 시에만 알림)
+   end
 ```
 
 ### 사용자 입력
@@ -169,14 +169,14 @@ sequenceDiagram
 
 ```mermaid
 flowchart TD
-    Cron["매주 금 17:00"] --> Fetch["MCP 자동 fetch<br/>Slack·Notion·Linear"]
-    Fetch --> SR["status-reporter<br/>4분할 템플릿"]
-    SR --> DE["data-explorer<br/>KPI CSV 분석"]
-    DE --> XL["xlsx-creator<br/>차트 자동"]
-    XL --> DG["docx-generator<br/>본문"]
-    DG --> AI["ai-slop-reviewer<br/>임원체·팀체 2 버전"]
-    AI --> Send["Slack 발송<br/>+ 90_Output/weekly/"]
-    style Cron fill:#fbf0dc,stroke:#c47b2a
+   Cron["매주 금 17:00"] --> Fetch["MCP 자동 fetch<br/>Slack·Notion·Linear"]
+   Fetch --> SR["status-reporter<br/>4분할 템플릿"]
+   SR --> DE["data-explorer<br/>KPI CSV 분석"]
+   DE --> XL["xlsx-creator<br/>차트 자동"]
+   XL --> DG["docx-generator<br/>본문"]
+   DG --> AI["ai-slop-reviewer<br/>임원체·팀체 2 버전"]
+   AI --> Send["Slack 발송<br/>+ 90_Output/weekly/"]
+   style Cron fill:#fbf0dc,stroke:#c47b2a
 ```
 
 ### 산출물
@@ -196,7 +196,7 @@ flowchart TD
 
 {{< hint type="warning" >}}
 **이슈 1 — 데이터가 없는 주에 에러.**
-연휴·서버 이슈로 CSV가 비면 `data-explorer`가 멈춥니다. 프롬프트에 "CSV가 비면 지난 주 데이터 인용" 분기 지시를 추가하세요.
+연휴·서버 이슈로 CSV가 비면 `office-data-explorer`가 멈춥니다. 프롬프트에 "CSV가 비면 지난 주 데이터 인용" 분기 지시를 추가하세요.
 {{< /hint >}}
 
 {{< hint type="warning" >}}
@@ -206,14 +206,14 @@ MCP 기본 검색은 14일. 그 이상은 `slack_search_public` 사용권을 확
 
 {{< hint type="note" >}}
 **이슈 3 — 숫자 형식이 제각각.**
-매출·유저수 등 단위를 `xlsx-creator` 프롬프트에 "원 → 백만원, 명 → 천명"같이 고정하세요.
+매출·유저수 등 단위를 `office-xlsx-creator` 프롬프트에 "원 → 백만원, 명 → 천명"같이 고정하세요.
 {{< /hint >}}
 
 ## 응용 변형
 
 - **월간 보고서** — 같은 파이프라인을 "4주치 CSV" 입력으로 돌려 월간판 생성.
-- **대시보드 HTML** — `data-visualizer`로 사내 공유용 단일 HTML 대시보드 추가 발행 → 이메일 링크.
-- **마크다운 → HTML 변환** — `moai-content:html-report` 스킬로 마크다운 보고서를 단일 파일 HTML로 변환. 외부 의존성 0, 12-25KB 초경량 산출물.
+- **대시보드 HTML** — `office-data-visualizer`로 사내 공유용 단일 HTML 대시보드 추가 발행 → 이메일 링크.
+- **마크다운 → HTML 변환** — `moai-officer:office-html-report` 스킬로 마크다운 보고서를 단일 파일 HTML로 변환. 외부 의존성 0, 12-25KB 초경량 산출물.
 
 ### 마크다운 보고서 → HTML 변환
 
@@ -238,11 +238,11 @@ MCP 기본 검색은 14일. 그 이상은 `slack_search_public` 사용권을 확
 ```
 
 **관련 링크**:
-- [SKILL.md](https://github.com/modu-ai/cowork-plugins/blob/v2.2.0/moai-content/skills/html-report/SKILL.md)
+- [SKILL.md](https://github.com/modu-ai/moai-cowork/blob/v2.2.0/moai-marketer/skills/html-report/SKILL.md)
 - [Thariq Shihipar "The Unreasonable Effectiveness of HTML"](https://thariq.substack.com/p/the-unreasonable-effectiveness-of)
 
 ---
 
 ### Sources
-- [modu-ai/cowork-plugins › moai-operations](https://github.com/modu-ai/cowork-plugins)
+- [modu-ai/moai-cowork › moai-coworker](https://github.com/modu-ai/moai-cowork)
 - [docs.claude.com — Scheduled Tasks](https://docs.claude.com)

@@ -1,8 +1,6 @@
 {{ define "main" }}
-  {{- /* 홈은 hero가 첫 요소이므로 page-header(breadcrumb·edit) + 자동 h1 모두 출력 안 함 */ -}}
-  <div class="cw-mascot-hero" aria-hidden="true">
-    {{ partial "mascot.html" (dict "variant" "explaining" "size" "140" "alt" "모두의 코워크 마스코트") }}
-  </div>
+  {{- /* 홈은 hero가 첫 요소이므로 page-header(breadcrumb·edit) + 자동 h1 모두 출력 안 함.
+         마스코트는 DS v2 parity 로 hero 우측 패널 안에 들어간다 (content/_index.md). */ -}}
   <article
     class="gdoc-markdown gdoc-markdown__align--{{ default "left" (.Page.Params.geekdocAlign | lower) }}"
     id="main-content" tabindex="-1"

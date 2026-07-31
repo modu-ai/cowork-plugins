@@ -19,47 +19,47 @@ Schedule과 Dispatch는 각각 다른 축의 자동화를 담당합니다. Sched
 
 ```mermaid
 flowchart TD
-    U[실무자] -->|/schedule 또는 자연어| C[schedule skill]
-    C --> F[확인 폼<br/>Cron · 타임존 · 알림]
-    F --> R[예약 등록]
-    R -->|로컬 시계 도달| Exec{PC 켜짐?}
-    Exec -->|YES| Run[Skill 발동 → Slack·Gmail·Project]
-    Exec -->|NO| Skip[회차 건너뜀<br/>자동 보충 없음]
-    style Run fill:#cfe5e2,stroke:#144a46,color:#09110f
-    style Skip fill:#f5dcd7,stroke:#c44a3a,color:#09110f
+   U[실무자] -->|/schedule 또는 자연어| C[schedule skill]
+   C --> F[확인 폼<br/>Cron · 타임존 · 알림]
+   F --> R[예약 등록]
+   R -->|로컬 시계 도달| Exec{PC 켜짐?}
+   Exec -->|YES| Run[Skill 발동 → Slack·Gmail·Project]
+   Exec -->|NO| Skip[회차 건너뜀<br/>자동 보충 없음]
+   style Run fill:#cfe3d8,stroke:#265240,color:#09110f
+   style Skip fill:#f5dcd7,stroke:#c44a3a,color:#09110f
 ```
 
 ```mermaid
 flowchart TD
-    subgraph AXIS["두 축의 결합"]
-        direction LR
-        A1["🜂 시간축 Schedule<br/>알람시계 — 정해진 시각에 울린다"]
-        A2["🜄 공간축 Dispatch<br/>출장지 전화 — 멀리 비서에게 지시"]
-    end
+   subgraph AXIS["두 축의 결합"]
+       direction LR
+       A1["시간축 Schedule<br/>알람시계 — 정해진 시각에 울린다"]
+       A2["공간축 Dispatch<br/>출장지 전화 — 멀리 비서에게 지시"]
+   end
 
-    COMBINE["결합 = '내가 없어도 사무실이 계속 돈다'"]
+   COMBINE["결합 = '내가 없어도 사무실이 계속 돈다'"]
 
-    subgraph PIPE["자동화 한 회차 파이프라인"]
-        direction TB
-        S1["① 예약 등록<br/>(알람 맞추기)<br/>시간표 규칙 Cron + 타임존<br/>예: 매일 08:50 서울"]
-        S2{"② 로컬 시계가<br/>예약 시각 도달?"}
-        S3{"③ PC 켜져 있는가?<br/>(결정적 조건)"}
-        S4["④ 비서가 자동 출근<br/>Skill 발동<br/>→ Slack · Gmail · Project"]
-        S5["⑤ 결과 회신<br/>모바일 알림 · 메일 · Slack"]
-        SNO["✗ 회차 건너뜀<br/>자동 보충 없음<br/>다음 알람까지 대기"]
-    end
+   subgraph PIPE["자동화 한 회차 파이프라인"]
+       direction TB
+       S1["① 예약 등록<br/>(알람 맞추기)<br/>시간표 규칙 Cron + 타임존<br/>예: 매일 08:50 서울"]
+       S2{"② 로컬 시계가<br/>예약 시각 도달?"}
+       S3{"③ PC 켜져 있는가?<br/>(결정적 조건)"}
+       S4["④ 비서가 자동 출근<br/>Skill 발동<br/>→ Slack · Gmail · Project"]
+       S5["⑤ 결과 회신<br/>모바일 알림 · 메일 · Slack"]
+       SNO["회차 건너뜀<br/>자동 보충 없음<br/>다음 알람까지 대기"]
+   end
 
-    DISPATCH["Dispatch 보조 경로<br/>출장지 모바일에서 지시 →<br/>마지막 사용 PC에서 즉시 실행"]
+   DISPATCH["Dispatch 보조 경로<br/>출장지 모바일에서 지시 →<br/>마지막 사용 PC에서 즉시 실행"]
 
-    A1 --> COMBINE
-    A2 --> COMBINE
+   A1 --> COMBINE
+   A2 --> COMBINE
 
-    S1 -->|시간표 도달 대기| S2
-    S2 -->|예약 시각 도달| S3
-    S3 -->|YES| S4
-    S3 -->|NO PC 꺼짐| SNO
-    S4 --> S5
-    DISPATCH -.->|언제든 지시 쏘기| S4
+   S1 -->|시간표 도달 대기| S2
+   S2 -->|예약 시각 도달| S3
+   S3 -->|YES| S4
+   S3 -->|NO PC 꺼짐| SNO
+   S4 --> S5
+   DISPATCH -.->|언제든 지시 쏘기| S4
 ```
 
 ## Schedule — 예약을 걸 때 알아야 할 기본 용어
@@ -79,14 +79,14 @@ Schedule을 등록하려면 예약의 뼈대가 되는 몇 가지 용어를 먼�
 
 ```mermaid
 flowchart TB
-    Mobile[모바일 Claude 앱<br/>출장·저녁·주말] -->|지시 발송| Route{가장 최근 사용 PC}
-    Route -->|어제 사무실 PC 마지막 사용| Office[사무실 PC 수신]
-    Route -->|어제 집 PC로 전환| Home[집 PC 수신]
-    Office --> Exec1[Cowork 세션 자동 재개 → 작업 수행]
-    Home --> Exec2[Cowork 세션 자동 재개 → 작업 수행]
-    Exec1 --> Back[결과 → Slack·메일·모바일 알림]
-    Exec2 --> Back
-    style Route fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   Mobile[모바일 Claude 앱<br/>출장·저녁·주말] -->|지시 발송| Route{가장 최근 사용 PC}
+   Route -->|어제 사무실 PC 마지막 사용| Office[사무실 PC 수신]
+   Route -->|어제 집 PC로 전환| Home[집 PC 수신]
+   Office --> Exec1[Cowork 세션 자동 재개 → 작업 수행]
+   Home --> Exec2[Cowork 세션 자동 재개 → 작업 수행]
+   Exec1 --> Back[결과 → Slack·메일·모바일 알림]
+   Exec2 --> Back
+   style Route fill:#fbf0dc,stroke:#c47b2a,color:#09110f
 ```
 
 ### Dispatch 라우팅 원리: "가장 최근에 문을 연 사무실"로 배달된다
@@ -97,23 +97,23 @@ Dispatch는 사용자가 보낸 지시가 어느 PC로 갈지 **"가장 마지�
 
 ```mermaid
 sequenceDiagram
-    participant U as 실무자(모바일)
-    participant R as Dispatch 라우터
-    participant O as 사무실 PC
-    participant H as 집 PC
-    participant C as 결과 채널
-    U->>R: 출장지에서 지시 발송
-    R->>R: "마지막 사용 PC" 확인
-    alt 마지막이 사무실 PC
-        R->>O: 지시 전달
-        O->>O: 세션 재개 · 작업 수행
-        O->>C: 결과 (Slack·메일·알림)
-    else 저녁에 집 PC 잠깐 사용
-        R->>H: 지시 전달 (라우팅 변경됨)
-        H->>H: 세션 재개 · 작업 수행
-        H->>C: 결과
-    end
-    C-->>U: 결과 회신
+   participant U as 실무자(모바일)
+   participant R as Dispatch 라우터
+   participant O as 사무실 PC
+   participant H as 집 PC
+   participant C as 결과 채널
+   U->>R: 출장지에서 지시 발송
+   R->>R: "마지막 사용 PC" 확인
+   alt 마지막이 사무실 PC
+       R->>O: 지시 전달
+       O->>O: 세션 재개 · 작업 수행
+       O->>C: 결과 (Slack·메일·알림)
+   else 저녁에 집 PC 잠깐 사용
+       R->>H: 지시 전달 (라우팅 변경됨)
+       H->>H: 세션 재개 · 작업 수행
+       H->>C: 결과
+   end
+   C-->>U: 결과 회신
 ```
 
 ### 현장 규칙 3가지
@@ -135,38 +135,38 @@ sequenceDiagram
 
 ```mermaid
 flowchart LR
-    subgraph Trigger["① 트리거 (Schedule)"]
-        T1["재무: 매일 08:50"]
-        T2["품질: 매일 07:00"]
-        T3["SCM: 매주 월 08:00"]
-        T4["해외영업: 매일 06:00"]
-    end
+   subgraph Trigger["① 트리거 (Schedule)"]
+       T1["재무: 매일 08:50"]
+       T2["품질: 매일 07:00"]
+       T3["SCM: 매주 월 08:00"]
+       T4["해외영업: 매일 06:00"]
+   end
 
-    Trigger --> Route["② 라우팅<br/>(Dispatch) — 지시를 대기 중인 PC로"]
-    Route --> Exec["③ PC 실행<br/>Cowork 세션이 실제 작업 수행"]
-    Exec --> Notify["④ 결과 알림<br/>Slack · Gmail · 카톡 · Notion"]
+   Trigger --> Route["② 라우팅<br/>(Dispatch) — 지시를 대기 중인 PC로"]
+   Route --> Exec["③ PC 실행<br/>Cowork 세션이 실제 작업 수행"]
+   Exec --> Notify["④ 결과 알림<br/>Slack · Gmail · 카톡 · Notion"]
 
-    style Trigger fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style Route fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style Exec fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style Notify fill:#cfe5e2,stroke:#144a46,color:#09110f
+   style Trigger fill:#e6e6e6,stroke:#757575,color:#09110f
+   style Route fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style Exec fill:#e8f1ec,stroke:#265240,color:#09110f
+   style Notify fill:#cfe3d8,stroke:#265240,color:#09110f
 ```
 
 ```mermaid
 flowchart LR
-    subgraph T["① 트리거 (Schedule)"]
-        direction TB
-        T1["재무 — 매일 08:50\n환율 + 미결 메일"]
-        T2["품질 — 매일 07:00\n전일 불량 대시보드"]
-        T3["SCM — 매주 월 08:00\n벤더 리스크 스캔"]
-        T4["해외영업 — 매일 06:00\n현지 업계 뉴스 요약"]
-    end
+   subgraph T["① 트리거 (Schedule)"]
+       direction TB
+       T1["재무 — 매일 08:50\n환율 + 미결 메일"]
+       T2["품질 — 매일 07:00\n전일 불량 대시보드"]
+       T3["SCM — 매주 월 08:00\n벤더 리스크 스캔"]
+       T4["해외영업 — 매일 06:00\n현지 업계 뉴스 요약"]
+   end
 
-    T --> R["② 라우팅 (Dispatch)\n지시를 대기 중인 PC로 배달\n마지막으로 사용한 PC 기준"]
-    R --> E["③ PC 실행\nCowork 세션이 자동 재개\n조회·분석·보고서 작성"]
-    E --> N["④ 결과 알림\nSlack · Gmail · 카톡 · Notion"]
+   T --> R["② 라우팅 (Dispatch)\n지시를 대기 중인 PC로 배달\n마지막으로 사용한 PC 기준"]
+   R --> E["③ PC 실행\nCowork 세션이 자동 재개\n조회·분석·보고서 작성"]
+   E --> N["④ 결과 알림\nSlack · Gmail · 카톡 · Notion"]
 
-    N -.-> I["모든 부서 레시피는\n무엇·언제·어디서·결과는 어디로\n네 칸만 채우면 동일 틀"]
+   N -.-> I["모든 부서 레시피는\n무엇·언제·어디서·결과는 어디로\n네 칸만 채우면 동일 틀"]
 ```
 
 ### 재무
@@ -208,17 +208,17 @@ flowchart LR
 
 ```mermaid
 sequenceDiagram
-    participant U as 실무자
-    participant S as Schedule 해석기
-    participant R as 예약 등록부
-    participant C as 로컬 PC 시계
-    participant E as 스킬 발동
-    U->>S: "/schedule 매일 08:50에 환율 조회"
-    S->>S: 자연어 → 시간표 규칙(Cron) 변환
-    S->>R: 예약 등록 (08:50 반복)
-    R-->>C: "08:50 도달 시 알림" 대기
-    C->>E: 08:50 도달 — 발동
-    E->>U: 환율 조회 결과 (Slack·메일)
+   participant U as 실무자
+   participant S as Schedule 해석기
+   participant R as 예약 등록부
+   participant C as 로컬 PC 시계
+   participant E as 스킬 발동
+   U->>S: "/schedule 매일 08:50에 환율 조회"
+   S->>S: 자연어 → 시간표 규칙(Cron) 변환
+   S->>R: 예약 등록 (08:50 반복)
+   R-->>C: "08:50 도달 시 알림" 대기
+   C->>E: 08:50 도달 — 발동
+   E->>U: 환율 조회 결과 (Slack·메일)
 ```
 
 ### 재무 — 매일 아침 환율·미결 메일
@@ -268,27 +268,27 @@ sequenceDiagram
 
 ```mermaid
 flowchart TD
-    Order["사용자 지시 발송<br/>(모바일 Claude 앱)"]
-    Order --> P{"어느 패턴?"}
+   Order["사용자 지시 발송<br/>(모바일 Claude 앱)"]
+   Order --> P{"어느 패턴?"}
 
-    P -->|A 즉시| Now["결제/발송 즉시<br/>주방 불 ON"]
-    P -->|B 조건부| Cond{"조건 만족?<br/>(예: 오후 7시 퇴근 알림)"}
-    P -->|C 지연| Later["정해진 미래 시각<br/>(예: 오늘 밤 10시)"]
+   P -->|A 즉시| Now["결제/발송 즉시<br/>주방 불 ON"]
+   P -->|B 조건부| Cond{"조건 만족?<br/>(예: 오후 7시 퇴근 알림)"}
+   P -->|C 지연| Later["정해진 미래 시각<br/>(예: 오늘 밤 10시)"]
 
-    Now --> Run["PC 실행<br/>Cowork 세션 작업 수행"]
-    Cond -->|YES| Run
-    Cond -->|아직 NO| Wait["대기 — 조건 도달까지"]
-    Wait --> Cond
-    Later --> Run
+   Now --> Run["PC 실행<br/>Cowork 세션 작업 수행"]
+   Cond -->|YES| Run
+   Cond -->|아직 NO| Wait["대기 — 조건 도달까지"]
+   Wait --> Cond
+   Later --> Run
 
-    Run --> Result["결과 알림<br/>Slack · 메일 · 카톡"]
+   Run --> Result["결과 알림<br/>Slack · 메일 · 카톡"]
 
-    style Order fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style Now fill:#cfe5e2,stroke:#144a46,color:#09110f
-    style Cond fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style Later fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style Run fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style Result fill:#cfe5e2,stroke:#144a46,color:#09110f
+   style Order fill:#e6e6e6,stroke:#757575,color:#09110f
+   style Now fill:#cfe3d8,stroke:#265240,color:#09110f
+   style Cond fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style Later fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style Run fill:#e8f1ec,stroke:#265240,color:#09110f
+   style Result fill:#cfe3d8,stroke:#265240,color:#09110f
 ```
 
 Dispatch는 모바일 Claude 앱에서 이렇게 생깁니다.
@@ -364,4 +364,4 @@ Dispatch는 모바일 Claude 앱에서 이렇게 생깁니다.
 
 ### Sources
 - [Claude Docs — Scheduled Tasks](https://docs.claude.com/en/docs/claude-cowork/scheduled-tasks)
-- [modu-ai/cowork-plugins](https://github.com/modu-ai/cowork-plugins)
+- [modu-ai/moai-cowork](https://github.com/modu-ai/moai-cowork)

@@ -10,14 +10,14 @@ geekdocBreadcrumb: true
 
 ```mermaid
 flowchart LR
-    A["① 다운로드<br/>claude.com/download"] --> B["② 설치·실행<br/>파일 열기"]
-    B --> C["③ 로그인<br/>계정 만들기 포함"]
-    C --> D["✅ 첫 화면<br/>대화 시작 가능"]
+   A["① 다운로드<br/>claude.com/download"] --> B["② 설치·실행<br/>파일 열기"]
+   B --> C["③ 로그인<br/>계정 만들기 포함"]
+   C --> D["첫 화면<br/>대화 시작 가능"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style D fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style C fill:#e8f1ec,stroke:#265240,color:#09110f
+   style D fill:#d6e7de,stroke:#3d7d5f,stroke-width:2px,color:#09110f
 ```
 
 {{< hint "note" >}}

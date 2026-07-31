@@ -32,9 +32,9 @@ hook:
         enabled: false
     strict_mode: false
 moai:
-    template_version: v3.0.0
+    template_version: v3.0.1
     update_check_frequency: daily
-    version: v3.0.0
+    version: v3.0.1
     version_check:
         cache_ttl_hours: 24
         enabled: true

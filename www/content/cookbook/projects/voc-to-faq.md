@@ -45,24 +45,24 @@ CS매니저가 분류표를 만듭니다. "문의의 41%가 배송 관련, 그�
 
 ```mermaid
 flowchart TD
-    U["하람 님<br/>두 달치 문의 기록"] --> C1["CS매니저<br/>commerce-voc-triage"]
-    C1 --> R1["VOC 분류 리포트<br/>(유형 · 빈도 · 감정)"]
-    R1 --> C2["CS매니저<br/>business-kb-article"]
-    C2 --> R2["FAQ 지식베이스<br/>상위 10문항"]
-    R1 --> C3["CS매니저<br/>business-draft-response"]
-    C3 --> R3["응대 템플릿 세트"]
-    R1 --> C4["CS매니저<br/>business-escalation-manager"]
-    C4 --> R4["직접 응대 기준"]
-    R2 --> OUT["문의 감소 + 응대 체계"]
-    R3 --> OUT
-    R4 --> OUT
+   U["하람 님<br/>두 달치 문의 기록"] --> C1["CS매니저<br/>commerce-voc-triage"]
+   C1 --> R1["VOC 분류 리포트<br/>(유형 · 빈도 · 감정)"]
+   R1 --> C2["CS매니저<br/>business-kb-article"]
+   C2 --> R2["FAQ 지식베이스<br/>상위 10문항"]
+   R1 --> C3["CS매니저<br/>business-draft-response"]
+   C3 --> R3["응대 템플릿 세트"]
+   R1 --> C4["CS매니저<br/>business-escalation-manager"]
+   C4 --> R4["직접 응대 기준"]
+   R2 --> OUT["문의 감소 + 응대 체계"]
+   R3 --> OUT
+   R4 --> OUT
 
-    style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style R1 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style R2 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style R3 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style R4 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style OUT fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+   style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style R1 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style R2 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style R3 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style R4 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style OUT fill:#d6e7de,stroke:#3d7d5f,stroke-width:2px,color:#09110f
 ```
 
 ## 4. 결과물

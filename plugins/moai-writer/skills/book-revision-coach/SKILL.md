@@ -8,7 +8,7 @@ description: |
   - "출판 직전 검수", "투고 전 정리"
   - "문장 다듬기", "어법 점검", "문체 일관성"
   - "논리 흐름 검증", "분량 정리"
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # book-revision-coach

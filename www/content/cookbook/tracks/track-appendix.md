@@ -1,12 +1,12 @@
 ---
 title: "부록 트랙"
 weight: 90
-description: "연구·교육·라이프스타일을 위한 부록 워크플로우. moai-research · moai-education · moai-lifestyle 13스킬 한 줄 요청."
+description: "연구·교육·라이프스타일을 위한 부록 워크플로우. moai-tutor · moai-coworker 14스킬 한 줄 요청."
 geekdocBreadcrumb: true
 ---
 
 > **대상**: 연구자 (대학원생·교수·R&D), 교육자 (강사·튜터), 일반 사용자 (여행·이벤트·웰니스)
-> **전제**: moai-core 활성화 + 필요한 플러그인
+> **전제**: moai-coworker 활성화 + 필요한 플러그인
 > **소요**: 시나리오당 약 5-15분
 
 ## 왜 부록 트랙이 세 부문으로 나뉘나 — 도서관 참고실의 세 코너
@@ -17,17 +17,17 @@ geekdocBreadcrumb: true
 
 ```mermaid
 flowchart TD
-    Start["부록 트랙<br/>(연구·교육·라이프스타일)"]
-    Start --> Q{"지금 내 목표는?"}
-    Q -- "논문·특허·<br/>지원사업" --> R["연구 (moai-research 5스킬)<br/>paper-search · grant-writer · patent-*"]
-    Q -- "강의·커리큘럼·<br/>수강생 관리" --> ED["교육 (moai-education 5스킬)<br/>course-curriculum · assessment · followup"]
-    Q -- "여행·이벤트·<br/>건강" --> L["라이프스타일 (moai-lifestyle 3스킬)<br/>travel · event · wellness"]
+   Start["부록 트랙<br/>(연구·교육·라이프스타일)"]
+   Start --> Q{"지금 내 목표는?"}
+   Q -- "논문·특허·<br/>지원사업" --> R["연구 (moai-tutor 5스킬)<br/>paper-search · grant-writer · patent-*"]
+   Q -- "강의·커리큘럼·<br/>수강생 관리" --> ED["교육 (moai-tutor 5스킬)<br/>course-curriculum · assessment · followup"]
+   Q -- "여행·이벤트·<br/>건강" --> L["라이프스타일 (moai-coworker 3스킬)<br/>travel · event · wellness"]
 
-    style Start fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style Q fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style R fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style ED fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style L fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style Start fill:#e6e6e6,stroke:#757575,color:#09110f
+   style Q fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style R fill:#e8f1ec,stroke:#265240,color:#09110f
+   style ED fill:#e8f1ec,stroke:#265240,color:#09110f
+   style L fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 ## 한 줄 요청 예시 6종
@@ -43,7 +43,7 @@ flowchart TD
 
 ---
 
-## 연구 (moai-research 5스킬)
+## 연구 (moai-tutor 5스킬)
 
 ### 시나리오 ① 논문 검색 + 통합 (약 10분)
 
@@ -53,7 +53,7 @@ flowchart TD
 
 시스템 인터뷰: KCI/RISS/DBpia/Google Scholar 우선순위 · 언어(한국어/영문) · 분류 기준 · 출력 형식
 
-자동 체인: `paper-search` (4 DB 통합 검색) → `paper-writer` (구조화 요약) → `docx-generator` → `ai-slop-reviewer`
+자동 체인: `education-paper-search` (4 DB 통합 검색) → `education-paper-writer` (구조화 요약) → `office-docx-generator` → `general-ai-slop-reviewer`
 
 ### 시나리오 ② 정부지원사업 신청서
 
@@ -61,15 +61,15 @@ flowchart TD
 > 이공계 정부지원사업 신청서 만들어줘
 {{< /terminal >}}
 
-자동 체인: `grant-writer` (평가표 자동 매핑) → 한국 평가위원 톤 보강 → `docx-generator` → `humanize-korean`
+자동 체인: `education-grant-writer` (평가표 자동 매핑) → 한국 평가위원 톤 보강 → `office-docx-generator` → `general-humanize-korean`
 
 ### 시나리오 ③ 특허 분석
 
-자동 체인: `patent-search` (KIPRIS / USPTO 통합) → `patent-analyzer` (선행기술 분석 + 청구항 비교) → 회피 설계 가이드
+자동 체인: `legal-patent-search` (KIPRIS / USPTO 통합) → `legal-patent-analyzer` (선행기술 분석 + 청구항 비교) → 회피 설계 가이드
 
 ---
 
-## 교육 (moai-education 5스킬)
+## 교육 (moai-tutor 5스킬)
 
 ### 시나리오 ④ 강의 커리큘럼 자동 설계
 
@@ -79,15 +79,15 @@ flowchart TD
 
 시스템 인터뷰: 학습자 레벨 · 과목 · 주당 시간 · 평가 방식
 
-자동 체인: `curriculum-designer` (12주 차주별 학습 목표·실습·평가) → `assessment-creator` (퀴즈·과제·시험) → `pptx-designer` (강의 슬라이드 자동)
+자동 체인: `education-curriculum-designer` (12주 차주별 학습 목표·실습·평가) → `education-assessment-creator` (퀴즈·과제·시험) → `office-pptx-designer` (강의 슬라이드 자동)
 
 ### 시나리오 ⑤ 수강생 후속 시퀀스 (스케줄)
 
-자동 체인: `course-followup-sequence` → `email-sequence` (moai-marketing) → 매일 자동 발송
+자동 체인: `education-course-followup-sequence` → `content-email-sequence` (moai-marketer) → 매일 자동 발송
 
 ---
 
-## 라이프스타일 (moai-lifestyle 3스킬)
+## 라이프스타일 (moai-coworker 3스킬)
 
 ### 시나리오 ⑥ 여행 일정 자동 설계
 
@@ -97,15 +97,15 @@ flowchart TD
 
 시스템 인터뷰: 일정 길이 · 동행자 · 선호 (음식·문화·쇼핑) · 예산
 
-자동 체인: `travel-planner` (일자별 시간표 + 동선 최적화) → `docx-generator` (체크리스트 포함)
+자동 체인: `general-travel-planner` (일자별 시간표 + 동선 최적화) → `office-docx-generator` (체크리스트 포함)
 
 ### 시나리오 ⑦ 이벤트 기획
 
-자동 체인: `event-planner` (체크리스트 + 일정 + 예산) → `xlsx-creator` (RSVP·좌석 배치) → `docx-generator`
+자동 체인: `general-event-planner` (체크리스트 + 일정 + 예산) → `office-xlsx-creator` (RSVP·좌석 배치) → `office-docx-generator`
 
 ### 시나리오 ⑧ 웰니스 계획
 
-자동 체인: `wellness-coach` (식단·운동·수면 통합) → 주간 체크리스트
+자동 체인: `general-wellness-coach` (식단·운동·수면 통합) → 주간 체크리스트
 
 ---
 
@@ -129,18 +129,18 @@ flowchart TD
 
 ### Q. 정부지원사업 평가표가 정확한가요?
 
-`grant-writer` 내장 평가표는 일반 표준. 특정 사업(K-스타트업·IRIS·BTAS)별 양식은 사업 공고문 첨부 시 자동 매핑.
+`education-grant-writer` 내장 평가표는 일반 표준. 특정 사업(K-스타트업·IRIS·BTAS)별 양식은 사업 공고문 첨부 시 자동 매핑.
 
 ### Q. 여행 일정 동선 최적화는?
 
-`travel-planner`는 Google Maps API (선택) 또는 내장 지오코딩으로 동선 최적화. API 없어도 인기 코스 데이터로 기본 일정 생성.
+`general-travel-planner`는 Google Maps API (선택) 또는 내장 지오코딩으로 동선 최적화. API 없어도 인기 코스 데이터로 기본 일정 생성.
 
 ---
 
 ## 다음 단계
 
 - **[사용 패턴 가이드](../../../cowork/patterns/)**
-- **[moai-research 플러그인](../../../plugins/moai-research/)** · **[moai-education](../../../plugins/moai-education/)** · **[moai-lifestyle](../../../plugins/moai-lifestyle/)**
+- **[moai-tutor 플러그인](/moai-agents/tutor/)** · **[moai-tutor](/moai-agents/tutor/)** · **[moai-coworker](/moai-agents/coworker/)**
 
 ---
 

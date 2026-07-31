@@ -52,20 +52,20 @@ tags: [cookbook, projects, career]
 
 ```mermaid
 flowchart TD
-    U["지훈 님<br/>'이직하고 싶다 1년째'"] --> C1["1주 차<br/>career-transition-strategist"]
-    C1 --> R1["방향 진단<br/>+ 4주 로드맵"]
-    R1 --> C2["2주 차<br/>business-resume-builder"]
-    C2 --> R2["성과 중심 이력서"]
-    R2 --> C3["3주 차<br/>business-portfolio-guide"]
-    C3 --> R3["포트폴리오<br/>+ 지원 개시"]
-    R3 --> C4["4주 차<br/>business-interview-coach"]
-    C4 --> OUT["면접 준비 완료<br/>답변 노트 + 모의 면접"]
+   U["지훈 님<br/>'이직하고 싶다 1년째'"] --> C1["1주 차<br/>career-transition-strategist"]
+   C1 --> R1["방향 진단<br/>+ 4주 로드맵"]
+   R1 --> C2["2주 차<br/>business-resume-builder"]
+   C2 --> R2["성과 중심 이력서"]
+   R2 --> C3["3주 차<br/>business-portfolio-guide"]
+   C3 --> R3["포트폴리오<br/>+ 지원 개시"]
+   R3 --> C4["4주 차<br/>business-interview-coach"]
+   C4 --> OUT["면접 준비 완료<br/>답변 노트 + 모의 면접"]
 
-    style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style R1 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style R2 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style R3 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style OUT fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+   style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style R1 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style R2 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style R3 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style OUT fill:#d6e7de,stroke:#3d7d5f,stroke-width:2px,color:#09110f
 ```
 
 ## 4. 결과물

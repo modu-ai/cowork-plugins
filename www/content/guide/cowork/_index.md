@@ -15,21 +15,21 @@ Claude Cowork를 한국어 사용자가 빠르게 익히고 안전하게 사용�
 | <span style="white-space:nowrap">1. 입문</span> | [Cowork 소개](intro/), [설치와 요금제 요건](install/), **[설정하기](setup/)**, [첫 작업 실행하기](first-task/), [용어집](glossary/) | 첫 산출물 1건 생성 |
 | <span style="white-space:nowrap">2. 안전</span> | [안전하게 사용하기](safety/), [폴더와 권한](permissions/) | 사고 예방 원칙 이해 + 권한 흐름 파악 |
 | <span style="white-space:nowrap">3. 활용</span> | [사용 패턴 가이드](patterns/), [프로젝트와 메모리](projects-memory/), [스킬 사용법](skills/), [플러그인 사용](plugins/) | 표준 사용 패턴 + 프로젝트·메모리·스킬·플러그인 활용 |
-| <span style="white-space:nowrap">4. 확장</span> | [커넥터와 MCP](connectors-mcp/), [예약 작업과 디스패치](schedule/), [컴퓨터 사용](computer-use/) ⚠ | 외부 시스템 연동 + 자동·원격 트리거 (컴퓨터 사용 전 [안전하게 사용하기](safety/) 숙지 필수) |
+| <span style="white-space:nowrap">4. 확장</span> | [커넥터와 MCP](connectors-mcp/), [예약 작업과 디스패치](schedule/), [컴퓨터 사용](computer-use/) {{< icon triangle-alert >}} | 외부 시스템 연동 + 자동·원격 트리거 (컴퓨터 사용 전 [안전하게 사용하기](safety/) 숙지 필수) |
 | <span style="white-space:nowrap">5. 운영</span> | [자주 묻는 질문](faq/), [트러블슈팅](troubleshooting/), [제약과 한도](constraints/), [Team·Enterprise 관리](enterprise/) | 팀 도입 의사결정 |
 
 각 페이지 하단의 **Sources** 섹션은 원문 공식 문서로 연결됩니다. 본 사이트는 공식 문서의 대체가 아닌 **한국어 진입점**입니다.
 
 ```mermaid
 flowchart TD
-    A["1. 입문<br/>설치·설정"] --> B["2. 안전<br/>권한·사고예방"]
-    B --> C["3. 활용<br/>스킬·플러그인"]
-    C --> D["4. 확장<br/>커넥터·예약"]
-    D --> E["5. 운영<br/>FAQ·엔터프라이즈"]
+   A["1. 입문<br/>설치·설정"] --> B["2. 안전<br/>권한·사고예방"]
+   B --> C["3. 활용<br/>스킬·플러그인"]
+   C --> D["4. 확장<br/>커넥터·예약"]
+   D --> E["5. 운영<br/>FAQ·엔터프라이즈"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style D fill:#dceee9,stroke:#2a8a8c,color:#09110f
-    style E fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style C fill:#e8f1ec,stroke:#265240,color:#09110f
+   style D fill:#e8f1ec,stroke:#2a8a8c,color:#09110f
+   style E fill:#d6e7de,stroke:#3d7d5f,stroke-width:2px,color:#09110f
 ```

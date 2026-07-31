@@ -86,15 +86,15 @@ AI 슬롭 회피: 진부한 폰트(Inter·Roboto·Arial)·보라 그라데이션
 
 ```mermaid
 flowchart LR
-    A["IA<br/>구조·내비"] --> B["시스템<br/>(변형 선언)"]
-    B --> C["핵심 화면"]
-    C --> D["보조 화면"]
-    D --> E["엣지 상태<br/>empty·error·loading"]
-    E --> F["반응형 변형"]
+   A["IA<br/>구조·내비"] --> B["시스템<br/>(변형 선언)"]
+   B --> C["핵심 화면"]
+   C --> D["보조 화면"]
+   D --> E["엣지 상태<br/>empty·error·loading"]
+   E --> F["반응형 변형"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style C fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style E fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style C fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style E fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 각 단계는 앞 단계의 결과를 자연스럽게 상속합니다. 같은 프로젝트 내에서.

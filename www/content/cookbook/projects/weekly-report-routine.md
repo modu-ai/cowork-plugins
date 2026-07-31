@@ -51,18 +51,18 @@ tags: [cookbook, projects, office]
 
 ```mermaid
 flowchart TD
-    U["예린 님<br/>일주일치 메모 + 숫자"] --> W1["코워커<br/>business-productivity-weekly-report"]
-    W1 --> R1["주간보고 초안<br/>(표준 틀)"]
-    R1 --> O1["사무관<br/>office-xlsx-creator"]
-    O1 --> R2["누적 실적 XLSX"]
-    R1 --> O2["사무관<br/>office-docx-generator"]
-    O2 --> W2["코워커<br/>general-ai-slop-reviewer"]
-    W2 --> OUT["제출용 DOCX<br/>+ 누적 시트 갱신"]
+   U["예린 님<br/>일주일치 메모 + 숫자"] --> W1["코워커<br/>business-productivity-weekly-report"]
+   W1 --> R1["주간보고 초안<br/>(표준 틀)"]
+   R1 --> O1["사무관<br/>office-xlsx-creator"]
+   O1 --> R2["누적 실적 XLSX"]
+   R1 --> O2["사무관<br/>office-docx-generator"]
+   O2 --> W2["코워커<br/>general-ai-slop-reviewer"]
+   W2 --> OUT["제출용 DOCX<br/>+ 누적 시트 갱신"]
 
-    style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style R1 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style R2 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style OUT fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+   style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style R1 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style R2 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style OUT fill:#d6e7de,stroke:#3d7d5f,stroke-width:2px,color:#09110f
 ```
 
 ## 4. 결과물

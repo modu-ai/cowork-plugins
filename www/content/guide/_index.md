@@ -19,4 +19,4 @@ geekdocCollapseSection: true
 | 3 | [디자인 (Design)]({{< ref "/guide/design" >}}) | Claude Design으로 프로토타입·슬라이드·랜딩페이지 만들기 |
 | 4 | [코드 (Code)]({{< ref "/guide/code" >}}) | Claude Code로 개발하기 — 심화는 [클로드 코드 한국어 문서](https://adk.mo.ai.kr/ko)로 |
 
-트랙을 마친 뒤에는 [MoAI-Agents](/moai-agents/)에서 18명의 AI 직원을 살펴보고, [플러그인 설치·운용](/plugins/)으로 나만의 팀을 꾸린 다음, [쿡북](/cookbook/)의 실전 프로젝트 레시피로 이어가면 됩니다.
+트랙을 마친 뒤에는 [MoAI-Agents](/moai-agents/)에서 {{< catalog-count plugins >}}명의 AI 직원을 살펴보고, [플러그인 설치·운용](/plugins/)으로 나만의 팀을 꾸린 다음, [쿡북](/cookbook/)의 실전 프로젝트 레시피로 이어가면 됩니다.

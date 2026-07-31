@@ -19,14 +19,14 @@ Claude Desktop 활용은 보통 네 단계의 여정으로 넓어집니다. 운�
 
 ```mermaid
 flowchart LR
-    A["① 챗<br/>대화로 묻고 답 받기"] --> B["② 코워크<br/>내 폴더에 파일 산출"]
-    B --> C["③ 디자인<br/>시각 결과물 제작"]
-    C --> D["④ 코드<br/>프로그램 제작"]
+   A["① 챗<br/>대화로 묻고 답 받기"] --> B["② 코워크<br/>내 폴더에 파일 산출"]
+   B --> C["③ 디자인<br/>시각 결과물 제작"]
+   C --> D["④ 코드<br/>프로그램 제작"]
 
-    style A fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style B fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style C fill:#dceee9,stroke:#2a8a8c,color:#09110f
-    style D fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+   style A fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style B fill:#e8f1ec,stroke:#265240,color:#09110f
+   style C fill:#e8f1ec,stroke:#2a8a8c,color:#09110f
+   style D fill:#d6e7de,stroke:#3d7d5f,stroke-width:2px,color:#09110f
 ```
 
 각 단계에서 "직원"을 채용해 쓸 수 있습니다. 모두의 코워크 마켓플레이스에는 문서 직원(코워커), 마케터, 셀러, 디자이너 같은 전문 직원 플러그인이 준비되어 있어서, 필요한 직원만 골라 데려오면 됩니다. 직원 채용 방법은 [첫 작업](first-task/) 문서에서 다룹니다.

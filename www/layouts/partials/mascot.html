@@ -7,7 +7,7 @@
 {{- $variant := .variant | default "explaining" -}}
 {{- $size := .size | default "96" -}}
 {{- $alt := .alt | default "모두의AI 마스코트" -}}
-{{- $zipVariants := dict "thinking" "Thinking" "pointing" "Pointing" "searching" "Searching" "teaching" "Teaching" "explaining" "Explaining" "coffee" "Coffee" -}}
+{{- $zipVariants := dict "thinking" "Thinking" "pointing" "Pointing" "searching" "Searching" "teaching" "Teaching" "explaining" "Explaining" "coffee" "Coffee" "celebrating" "Celebrating" "frustrated" "Frustrated" "inspecting" "Inspecting" -}}
 {{- $src := printf "/mascots/mascot-%s.png" $variant -}}
 {{- $name := index $zipVariants $variant -}}
 {{- if $name -}}

@@ -1,7 +1,7 @@
 ---
 title: "플러그인 사용"
 weight: 70
-description: "플러그인을 어디서 찾고 어떻게 설치·관리하는지, 한국 실무용 cowork-plugins 마켓플레이스 사용법까지 정리합니다."
+description: "플러그인을 어디서 찾고 어떻게 설치·관리하는지, 한국 실무용 모두의 코워크 마켓플레이스 사용법까지 정리합니다."
 geekdocBreadcrumb: true
 aliases: ["/cowork/plugins/"]
 ---
@@ -13,22 +13,22 @@ aliases: ["/cowork/plugins/"]
 
 - **Claude 공식 플러그인 카탈로그**: [claude.com/plugins](https://claude.com/plugins) — 영업·재무·법무·마케팅·HR 등 기본 제공
 - **공식 오픈소스**: [anthropics/knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins)
-- **커뮤니티 마켓플레이스**: [`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins) — 한국 실무 환경 최적화(사업계획·IR·세무·법무·카드뉴스 등 17개)
+- **커뮤니티 마켓플레이스**: [`modu-ai/moai-cowork`](https://github.com/modu-ai/moai-cowork) — 한국 실무 환경 최적화(사업계획·IR·세무·법무·카드뉴스 등 17개)
 
 ## 설치 흐름
 
 ```mermaid
 flowchart TD
-    A["사이드바 > 사용자 지정<br/>> 개인 플러그인"] --> B["마켓플레이스 추가<br/>modu-ai/cowork-plugins"]
-    B --> C["목록에서<br/>플러그인 선택"]
-    C --> D["+ 버튼으로<br/>설치"]
-    D --> E["✅ 스킬 자동 활성화"]
+   A["사이드바 > 사용자 지정<br/>> 개인 플러그인"] --> B["마켓플레이스 추가<br/>modu-ai/moai-cowork"]
+   B --> C["목록에서<br/>플러그인 선택"]
+   C --> D["+ 버튼으로<br/>설치"]
+   D --> E["스킬 자동 활성화"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style D fill:#dceee9,stroke:#2a8a8c,color:#09110f
-    style E fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style C fill:#e8f1ec,stroke:#265240,color:#09110f
+   style D fill:#e8f1ec,stroke:#2a8a8c,color:#09110f
+   style E fill:#d6e7de,stroke:#3d7d5f,stroke-width:2px,color:#09110f
 ```
 
 커뮤니티 마켓플레이스를 예로 들면 아래 순서입니다.
@@ -40,11 +40,11 @@ flowchart TD
 플러그인 마켓플레이스에서 필요한 플러그인을 찾아 설치할 수 있습니다.
 
 2. **플러그인 추가 > 마켓플레이스 추가** 버튼
-3. URL 칸에 `modu-ai/cowork-plugins` 입력 → 동기화
+3. URL 칸에 `modu-ai/moai-cowork` 입력 → 동기화
 4. 목록에서 원하는 플러그인 옆 **+** 클릭해 설치
-5. `moai-core`가 있다면 반드시 가장 먼저 설치 — 프로젝트 초기화·라우터·AI 슬롭 검수가 여기에 있습니다.
+5. `moai-pm`을 가장 먼저 설치 — `/project` 한 명령으로 프로젝트 초기화와 나머지 직원 배치를 맡는 진입 허브입니다. AI 슬롭 검수(`general-ai-slop-reviewer`)는 `moai-coworker`에 있습니다.
 
-설치가 끝나면 [빠른 시작](../../plugins/quick-start/)의 `/project init`으로 프로젝트 맞춤 `CLAUDE.md`를 생성할 수 있습니다.
+설치가 끝나면 [빠른 시작](../../plugins/quick-start/)의 `/project`으로 프로젝트 맞춤 `CLAUDE.md`를 생성할 수 있습니다.
 
 ## 플러그인 관리
 

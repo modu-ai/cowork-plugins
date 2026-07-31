@@ -17,14 +17,14 @@ aliases: ["/cowork/first-task/"]
 
 ```mermaid
 flowchart TD
-    A["① 폴더 선택"] --> B["② 요청 입력"]
-    B --> C["③ 파일 분석·집계"]
-    C --> D["④ 초안 작성"]
-    D --> E["⑤ DOCX 저장"]
-    E --> F["⑥ 결과 확인·후속"]
+   A["① 폴더 선택"] --> B["② 요청 입력"]
+   B --> C["③ 파일 분석·집계"]
+   C --> D["④ 초안 작성"]
+   D --> E["⑤ DOCX 저장"]
+   E --> F["⑥ 결과 확인·후속"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style F fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style F fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 ## 단계별 진행
@@ -65,7 +65,7 @@ flowchart TD
 
 - 반복되는 요청은 [프로젝트와 메모리](../projects-memory/)에 맥락을 고정합니다.
 - 정형화된 절차는 [스킬 사용법](../skills/)으로 묶어둡니다.
-- 한국어 실무 양식·톤이 필요하면 [플러그인 카탈로그](../../plugins/)에서 `cowork-plugins`를 설치합니다.
+- 한국어 실무 양식·톤이 필요하면 [플러그인 카탈로그](../../plugins/)에서 `moai-cowork`를 설치합니다.
 
 ## 다음 단계
 

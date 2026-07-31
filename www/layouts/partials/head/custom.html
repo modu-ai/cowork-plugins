@@ -1,9 +1,39 @@
-{{- /* 모두의AI Design System — custom head (모아이 그린, 2026-07 zip 핸드오프 기준 복귀)
-       Pretendard: self-host (moai-brand.css 내 @font-face → /fonts/Pretendard-*.otf).
-       Goorm Sans Code (코드): CDN. serif/Inter/JetBrains Mono는 2026-06-23 제거. */ -}}
-<link rel="preconnect" href="https://statics.goorm.io" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://statics.goorm.io/fonts/GoormSansCode/v1.0.1/GoormSansCode.min.css" />
-<link rel="stylesheet" href="{{ "moai-brand.css" | relURL }}" />
-<link rel="stylesheet" href="{{ "moai-design.css" | relURL }}" />
-<link rel="stylesheet" href="{{ "mascot.css" | relURL }}" />
+{{- /* 모두의AI Design System v2 — custom head.
+       SSOT: www/design-system/handoff/  (colors_and_type.css + 모두의코워크 사이트.dc.html)
+
+       폰트는 DS v2가 지정한 3종을 **전부 CDN**으로만 로드한다:
+         Pretendard      — sans / display   (jsDelivr, Variable 100~900)
+         Inter           — latin 보조 (숫자·영문 지표)  (Google Fonts)
+         JetBrains Mono  — mono (eyebrow·chip·code·kbd) (Google Fonts)
+       셀프호스팅 @font-face(.otf/.ttf) 재도입 금지 — CDN만 사용한다.
+       픽셀 폰트(둥근모꼴)·GowunBatang은 DS에 없으므로 금지.
+
+       스타일시트 순서 고정:
+         moai-ds-tokens.css  토큰
+         moai-ds-base.css    뼈대(reset/layout/utility/표/print/chroma)
+         moai-ds.css         컴포넌트
+         moai-ds-docs.css    문서 전용
+         moai-ds-mascot.css  마스코트
+         moai-ds-v2.css      DS v2 handoff parity (최종 확정 레이어)
+       geekdoc main/mobile/print/custom CSS 는 partials/head/others.html
+       오버라이드에서 차단한다. */ -}}
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="stylesheet"
+  as="style"
+  crossorigin
+  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+/>
+<link rel="stylesheet" href="{{ "moai-ds-tokens.css" | relURL }}" />
+<link rel="stylesheet" href="{{ "moai-ds-base.css" | relURL }}" />
+<link rel="stylesheet" href="{{ "moai-ds.css" | relURL }}" />
+<link rel="stylesheet" href="{{ "moai-ds-docs.css" | relURL }}" />
+<link rel="stylesheet" href="{{ "moai-ds-mascot.css" | relURL }}" />
+<link rel="stylesheet" href="{{ "moai-ds-v2.css" | relURL }}" />
 <link rel="icon" type="image/png" href="{{ "logos/moai-logo-3.png" | relURL }}" />

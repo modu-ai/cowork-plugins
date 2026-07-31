@@ -1,6 +1,6 @@
 # 4대보험 라이프사이클 가이드 (취득 → 상실 → 퇴직급여)
 
-> moai-hr | business-employment-manager 참조 가이드 | 2026 기준
+> moai-recruiter | business-employment-manager 참조 가이드 | 2026 기준
 
 ## 개요
 

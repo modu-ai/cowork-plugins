@@ -1,0 +1,8 @@
+{{- /* 마크다운에서 DS 아이콘 호출 — 이모지 대체 전용.
+         {{< icon check >}}
+         {{< icon name="triangle-alert" size="18" class="tone-warning" >}}
+       CLAUDE.local.md § 아이콘 참조. */ -}}
+{{- $name := or (.Get "name") (.Get 0) -}}
+{{- $size := or (.Get "size") (.Get 1) 16 -}}
+{{- $class := or (.Get "class") "" -}}
+{{- partial "ds-icon" (dict "name" $name "size" (int $size) "class" $class) -}}

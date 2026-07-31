@@ -11,7 +11,7 @@ description: |
   - "전환 픽셀 캠페인에 연결해줘", "광고 타겟이랑 소재 수정해줘"
   실제 계정에 변경을 적용하는 라이브 운영 스킬이라, 쓰기·예산·결제 동작은 실행 전에 항상 사용자 확인을 거칩니다.
   [책임 경계] vs marketing-meta-ads-analyzer·marketing-pixel-audit·marketing-campaign-planner: 이 스킬=실제 광고 생성·수정·온오프(쓰기), 저 스킬=보고서 분석·픽셀 설치 검증·캠페인 기획.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # Meta 광고 운영 (Meta Ads AI Connectors)

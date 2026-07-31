@@ -11,15 +11,15 @@ aliases: ["/cowork/skills/"]
 
 ```mermaid
 flowchart TD
-    A["사용자 자연어 요청"] --> B{"description<br/>매칭"}
-    B -- 일치 --> C["스킬 자동 호출"]
-    B -- 불일치 --> D["Claude 기본 응답"]
-    C --> E["스킬 본문 실행"]
-    E --> F["결과물 반환"]
+   A["사용자 자연어 요청"] --> B{"description<br/>매칭"}
+   B -- 일치 --> C["스킬 자동 호출"]
+   B -- 불일치 --> D["Claude 기본 응답"]
+   C --> E["스킬 본문 실행"]
+   E --> F["결과물 반환"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style F fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style C fill:#e8f1ec,stroke:#265240,color:#09110f
+   style F fill:#d6e7de,stroke:#3d7d5f,color:#09110f
 ```
 
 ## 언제 트리거되나
@@ -28,9 +28,9 @@ flowchart TD
 
 예시:
 
-- "블로그 글 써줘" → `moai-content:blog`
-- "계약서 검토해줘" → `moai-legal:contract-review`
-- "사업계획서 만들어줘" → `moai-business:strategy-planner`
+- "블로그 글 써줘" → `moai-marketer:content-blog`
+- "계약서 검토해줘" → `moai-lawyer:legal-contract-review`
+- "사업계획서 만들어줘" → `moai-consultant:business-strategy-planner`
 
 ![스킬 자동 호출 — 슬래시 명령 자동완성](/screenshots/cowork/cowork-skills-invoke.png)
 
@@ -47,38 +47,38 @@ Progressive Disclosure(점진적 공개)는 복잡한 정보를 한 번에 쏟�
 
 ```mermaid
 flowchart LR
-    P["💡 핵심 원칙<br/>지금 당장 필요한 것만 먼저 보여주고<br/>더 궁금해질 때 단계적으로 펼친다"]
+   P["핵심 원칙<br/>지금 당장 필요한 것만 먼저 보여주고<br/>더 궁금해질 때 단계적으로 펼친다"]
 
-    P --> L1
+   P --> L1
 
-    subgraph L1["🔹 Level 1 — 메타데이터 (항상 보임)"]
-        direction TB
-        L1A["약 100 토큰 · 세션 시작 시 항상 로드<br/>이름 · 한 줄 설명<br/>비용: 거의 0 (가벼움)"]
-    end
+   subgraph L1["Level 1 — 메타데이터 (항상 보임)"]
+       direction TB
+       L1A["약 100 토큰 · 세션 시작 시 항상 로드<br/>이름 · 한 줄 설명<br/>비용: 거의 0 (가벼움)"]
+   end
 
-    L1 -->|"더 깊이 →"| L2
+   L1 -->|"더 깊이 →"| L2
 
-    subgraph L2["🔸 Level 2 — 본문 (호출 시 로드)"]
-        direction TB
-        L2A["약 5,000 토큰 · 사용자 호출 시 로드<br/>전체 스킬 본문 · 절차 · 사용 방법<br/>비용: 중간 (의미 있는 사용 시만)"]
-    end
+   subgraph L2["Level 2 — 본문 (호출 시 로드)"]
+       direction TB
+       L2A["약 5,000 토큰 · 사용자 호출 시 로드<br/>전체 스킬 본문 · 절차 · 사용 방법<br/>비용: 중간 (의미 있는 사용 시만)"]
+   end
 
-    L2 -->|"더 깊이 →"| L3
+   L2 -->|"더 깊이 →"| L3
 
-    subgraph L3["🔶 Level 3 — 번들 (온디맨드)"]
-        direction TB
-        L3A["온디맨드 · 더 깊이 파고들 때<br/>참고문서 · 예제 데이터 · 템플릿<br/>비용: 선택 (안 쓰면 안 듦)"]
-    end
+   subgraph L3["Level 3 — 번들 (온디맨드)"]
+       direction TB
+       L3A["온디맨드 · 더 깊이 파고들 때<br/>참고문서 · 예제 데이터 · 템플릿<br/>비용: 선택 (안 쓰면 안 듦)"]
+   end
 
-    L3 -.-> B
+   L3 -.-> B
 
-    subgraph B["이 원칙이 주는 결과"]
-        direction LR
-        B1["처음에 가볍다<br/>인지 부담 ↓"]
-        B2["필요한 만큼만<br/>비용 효율 ↑"]
-        B3["깊이 파고들수록<br/>정밀도 ↑"]
-        B4["67% 초기<br/>로드량 감소"]
-    end
+   subgraph B["이 원칙이 주는 결과"]
+       direction LR
+       B1["처음에 가볍다<br/>인지 부담 ↓"]
+       B2["필요한 만큼만<br/>비용 효율 ↑"]
+       B3["깊이 파고들수록<br/>정밀도 ↑"]
+       B4["67% 초기<br/>로드량 감소"]
+   end
 ```
 
 ```text
@@ -113,9 +113,9 @@ user-invocable: true
 
 | 종류 | 문서 표기 | 실제 입력 |
 |---|---|---|
-| 슬래시 명령 | `> /project init` | `/project init` |
+| 슬래시 명령 | `> /project` | `/project` |
 | 자연어 지시 | `> "블로그 글 써줘"` | `블로그 글 써줘` |
-| 마켓플레이스 URL | `> modu-ai/cowork-plugins` | `modu-ai/cowork-plugins` |
+| 마켓플레이스 URL | `> modu-ai/moai-cowork` | `modu-ai/moai-cowork` |
 
 `>`는 문서에서 "이건 사용자 입력"이라는 시각적 표식이며 **실제 대화창에 입력할 때는 `>`를 빼고 본문만** 입력하면 됩니다.
 {{< /hint >}}
@@ -139,9 +139,9 @@ user-invocable: true
 
 ## 제공된 스킬 활용하기
 
-modu-ai/cowork-plugins 마켓플레이스는 28개 플러그인 안에 177개 스킬을 묶어 제공합니다. 사용자는 스킬을 직접 만들 필요 없이 — 자연어 한 줄로 GOAL을 던지면 시스템이 적합한 스킬을 자동으로 선택·체이닝합니다.
+modu-ai/moai-cowork 마켓플레이스는 {{< catalog-count plugins >}}개 플러그인 안에 {{< catalog-count skills >}}개 스킬을 묶어 제공합니다. 사용자는 스킬을 직접 만들 필요 없이 — 자연어 한 줄로 GOAL을 던지면 시스템이 적합한 스킬을 자동으로 선택·체이닝합니다.
 
-- **카테고리별 스킬 모음**: 콘텐츠·디자인·재무·법무·운영·마케팅·이커머스 등 28개 플러그인 ([플러그인 카탈로그](../../plugins/))
+- **카테고리별 스킬 모음**: 콘텐츠·디자인·재무·법무·운영·마케팅·이커머스 등 {{< catalog-count plugins >}}개 플러그인 ([플러그인 카탈로그](../../plugins/))
 - **체인 예시 12종**: 자주 쓰는 스킬 조합 ([쿡북 — 스킬 체인 설계](../../cookbook/skill-chaining/))
 - **트랙별 시나리오**: 본부·업무 영역별 한 줄 요청 → 자동 체인 ([쿡북 트랙](../../cookbook/tracks/))
 
@@ -156,4 +156,4 @@ modu-ai/cowork-plugins 마켓플레이스는 28개 플러그인 안에 177개 �
 ### Sources
 
 - [Use Skills in Claude](https://support.claude.com/en/articles/12512180)
-- [modu-ai/cowork-plugins 마켓플레이스](https://github.com/modu-ai/cowork-plugins)
+- [modu-ai/moai-cowork 마켓플레이스](https://github.com/modu-ai/moai-cowork)

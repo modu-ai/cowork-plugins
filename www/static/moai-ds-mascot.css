@@ -1,0 +1,114 @@
+/* 모두의AI 마스코트 (handoff 디자인 시스템 — MascotCoding/Talking/Bubble 시각 대응)
+   Source: ai-design-system globals.css .mascot-float (청록 팔레트). */
+
+@keyframes mascot-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.mascot-float {
+  animation: mascot-float 6s ease-in-out infinite;
+}
+
+.moai-mascot {
+  display: inline-block;
+  vertical-align: middle;
+  filter: drop-shadow(0 8px 24px rgba(0, 109, 104, 0.15));
+}
+
+/* 홈 hero 마스코트 band */
+.cw-mascot-hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 28px 0 4px;
+  max-width: 1340px;
+  margin: 0 auto;
+}
+
+/* 404 페이지 */
+.cw-404 {
+  max-width: 480px;
+  margin: 80px auto;
+  text-align: center;
+  padding: 0 24px;
+}
+.cw-404 h1 {
+  margin: 24px 0 8px;
+  font-size: 32px;
+  letter-spacing: -0.03em;
+  color: var(--fg-1);
+}
+.cw-404 p {
+  color: var(--fg-3);
+  margin: 0 0 28px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.cw-404 .cw-404-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 22px;
+  border-radius: 9999px;
+  background: var(--color-primary);
+  color: var(--fg-on-primary);
+  font-size: 14.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 150ms ease;
+}
+.cw-404 .cw-404-home:hover {
+  background: var(--color-primary-hover);
+}
+
+/* footer 마스코트 브랜딩 */
+.cw-footer-mascot {
+  display: flex;
+  justify-content: center;
+  padding: 16px 0 8px;
+  opacity: 0.9;
+}
+
+/* 검색 empty-state 마스코트 */
+.cw-empty-mascot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 48px 24px;
+  color: var(--fg-3);
+  text-align: center;
+}
+
+/* reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .mascot-float { animation: none !important; }
+}
+
+/* 검색 / 목차 빈 결과 마스코트 (empty-state 정서 앵커) */
+.gdoc-search__list:empty::before,
+.gdoc-search__results:empty::before,
+.gdoc-toc__tree:empty::before {
+  content: "";
+  display: block;
+  width: 88px;
+  height: 88px;
+  margin: 20px auto 8px;
+  background-image: url("/mascots/MoAI-Mascot-Searching.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.6;
+}
+.gdoc-search__list:empty::after,
+.gdoc-search__results:empty::after {
+  content: "검색 결과가 없어요 — 다른 키워드로 찾아볼까요?";
+  display: block;
+  text-align: center;
+  color: var(--fg-3);
+  font-size: 13px;
+  line-height: 1.5;
+  padding: 0 16px 24px;
+}

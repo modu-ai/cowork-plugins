@@ -1,6 +1,6 @@
 # HWPX 보고서 양식 (report)
 
-> moai-office v1.0.0 | 기업·기관 보고서 스펙
+> moai-officer v1.0.0 | 기업·기관 보고서 스펙
 
 ## 개요
 

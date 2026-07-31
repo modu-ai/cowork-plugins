@@ -138,7 +138,6 @@ done
 | 이커머스 | 셀러(commerce-* 스킬군) |
 | 출판·원고·웹툰·IP | 작가(book-*), 스토리(story-*) |
 | 디자인 핸드오프·브랜드 | 디자이너(cd-*, moai-domain-design 스킬군) |
-| 개발·SPEC·품질 게이트 | `/project --code`로 안내 |
 
 라우터 허브는 project 스킬(`/project` 진입). 실무/콘텐츠/사무 도메인은 코워커로 수렴하며, 스토리는 `moai-story`, 출판은 `moai-writer`, 디자인은 `moai-designer`로 분기된다. `general-ai-slop-reviewer`·`general-humanize-korean`은 `moai-coworker` 소속으로 텍스트 후처리 체인에 항상 활용 가능하다.
 

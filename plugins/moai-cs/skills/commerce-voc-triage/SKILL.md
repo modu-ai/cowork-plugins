@@ -6,7 +6,7 @@ description: |
   "리뷰 모아서 분석해줘", "리뷰 분석해줘", "수백 개 리뷰 정리", "감정 분석 리뷰", "쿠팡 리뷰 키워드", "리뷰 인사이트 액션플랜", "멀티채널 리뷰 통합", "VOC 분류해줘", "VOC 처리 순서", "고객 문의 우선순위", "응급 VOC 분류", "VOC 트리아지", "KTAS 응급실 분류 VOC"
   2개 동작 모드가 자연어로 자동 선택됩니다 — ① 리뷰 집계 모드(4채널 리뷰 → 감정·키워드·인사이트·액션플랜 4단 분석) ② VOC 분류·트리아지 모드(고객 핏·빈도·핵심 가치 3축 × KTAS 5단계 응급도 → 처리 순서 + 응답 템플릿). 텍스트 산출물(인사이트·액션플랜·응답 템플릿)은 moai-coworker:general-ai-slop-reviewer를 자동 체이닝합니다.
   [책임 경계] 응답 메시지 카피 작성은 moai-cs:commerce-channel-message, 분석 결과 PPT는 moai-officer:office-pptx-designer로 위임.
-version: "0.1.1"
+version: "1.0.0"
 ---
 
 # 고객의 소리 통합 (Commerce VOC)

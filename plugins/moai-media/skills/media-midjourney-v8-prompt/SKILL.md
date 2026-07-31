@@ -11,7 +11,7 @@ description: |
   - "/media-midjourney-v8-prompt" (직접 호출)
 
   Midjourney는 공식 API 자동화가 제한적이므로 본 스킬은 프롬프트 텍스트만 산출하고, 실제 생성은 사용자가 Discord 또는 web alpha에서 직접 실행합니다.
-version: "0.1.1"
+version: "1.0.0"
 ---
 
 # Midjourney v8.1 Prompt Builder — 키워드+파라미터 + 3-모델 동시 출력

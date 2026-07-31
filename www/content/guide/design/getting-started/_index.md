@@ -173,19 +173,19 @@ Anthropic 공식 발표(2026-04-17)에서 강조된 *"code-based prototypes incl
 
 ```mermaid
 flowchart TD
-    A["0-5분<br/>요금제·활성화 확인<br/>+ claude.ai/design 진입"] --> B["5-10분<br/>예시 프롬프트 1개 복사·실행"]
-    B --> C["10-20분<br/>인라인 코멘트·자연어로<br/>2-3번 다듬기"]
-    C --> D{"결과 만족?"}
-    D -->|예| E["20-25분<br/>PDF·PPTX·HTML 중<br/>1개 형식으로 내보내기"]
-    D -->|아니오| F["20-25분<br/>'완전히 다른 방향으로'<br/>다시 한 번"]
-    E --> G["25-30분<br/>디자인 시스템 셋업 페이지로"]
-    F --> C
+   A["0-5분<br/>요금제·활성화 확인<br/>+ claude.ai/design 진입"] --> B["5-10분<br/>예시 프롬프트 1개 복사·실행"]
+   B --> C["10-20분<br/>인라인 코멘트·자연어로<br/>2-3번 다듬기"]
+   C --> D{"결과 만족?"}
+   D -->|예| E["20-25분<br/>PDF·PPTX·HTML 중<br/>1개 형식으로 내보내기"]
+   D -->|아니오| F["20-25분<br/>'완전히 다른 방향으로'<br/>다시 한 번"]
+   E --> G["25-30분<br/>디자인 시스템 셋업 페이지로"]
+   F --> C
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style E fill:#dceee9,stroke:#2a8a8c,color:#09110f
-    style G fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style C fill:#e8f1ec,stroke:#265240,color:#09110f
+   style E fill:#e8f1ec,stroke:#2a8a8c,color:#09110f
+   style G fill:#d6e7de,stroke:#3d7d5f,stroke-width:2px,color:#09110f
 ```
 
 처음 30분의 목표는 **완성된 결과물**이 아니라 **도구의 입력·출력 사이클 한 바퀴**를 도는 것입니다. 결과 품질을 본격적으로 끌어올리는 작업은 [디자인 시스템 설정](../design-system/) 페이지에서 시작됩니다.
@@ -209,7 +209,7 @@ A. Export 메뉴에서 "Hand off to Claude Code" 또는 "Hand off to Claude Code
 
 ## Cowork 플러그인 연계
 
-v2.12.0부터 Cowork에 [`moai-design`](../../plugins/moai-design/) 플러그인이 정식 등록되어 있습니다. Cowork 채팅에서 자연어로 호출하면 위 6요소를 자동으로 채워 줍니다.
+v2.12.0부터 Cowork에 [`moai-designer`](/moai-agents/designer/) 플러그인이 정식 등록되어 있습니다. Cowork 채팅에서 자연어로 호출하면 위 6요소를 자동으로 채워 줍니다.
 
 ```
 "마케팅 자동화 SaaS 가격 페이지 브리프 만들어 줘"
@@ -218,14 +218,14 @@ v2.12.0부터 Cowork에 [`moai-design`](../../plugins/moai-design/) 플러그인
 → 완성된 프롬프트를 claude.ai/design에 복붙
 ```
 
-자세한 동선은 [moai-design 플러그인 페이지](../../plugins/moai-design/) 참고.
+자세한 동선은 [moai-designer 플러그인 페이지](/moai-agents/designer/) 참고.
 
 ## 다음 단계
 
-- **다음 페이지**: [디자인 시스템 설정](../design-system/) ★ — 결과 품질이 한 단계 점프합니다
+- **다음 페이지**: [디자인 시스템 설정](../design-system/) {{< icon star >}} — 결과 품질이 한 단계 점프합니다
 - 참고: [한눈에 보기·작동 방식](../) — 섹션 홈
 - 깊이: [베스트 프랙티스 10가지](../best-practices/)
-- 자동화: [`moai-design` 플러그인](../../plugins/moai-design/) — 6요소를 자동으로 채워주는 Cowork 스킬
+- 자동화: [`moai-designer` 플러그인](/moai-agents/designer/) — 6요소를 자동으로 채워주는 Cowork 스킬
 
 ---
 

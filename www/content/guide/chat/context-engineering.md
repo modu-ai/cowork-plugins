@@ -16,21 +16,21 @@ aliases: ["/chat/context-engineering/"]
 
 ```mermaid
 flowchart TD
-    subgraph CTX["Claude의 작업 기억 (책상 위)"]
-        A["지금까지의 대화<br/>(이 대화방에서 주고받은 말)"]
-        B["첨부한 파일<br/>(이 대화에 올린 문서·이미지)"]
-        C["Projects 지식<br/>(프로젝트 캐비닛의 공용 자료)"]
-        D["메모리<br/>(나에 대해 기억해 둔 수첩)"]
-    end
-    CTX --> R["Claude의 답변"]
-    X["다른 대화방의 내용"] -. 들어오지 않음 .-> CTX
+   subgraph CTX["Claude의 작업 기억 (책상 위)"]
+       A["지금까지의 대화<br/>(이 대화방에서 주고받은 말)"]
+       B["첨부한 파일<br/>(이 대화에 올린 문서·이미지)"]
+       C["Projects 지식<br/>(프로젝트 캐비닛의 공용 자료)"]
+       D["메모리<br/>(나에 대해 기억해 둔 수첩)"]
+   end
+   CTX --> R["Claude의 답변"]
+   X["다른 대화방의 내용"] -. 들어오지 않음 .-> CTX
 
-    style A fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style B fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style D fill:#dceee9,stroke:#2a8a8c,color:#09110f
-    style R fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
-    style X fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+   style A fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style B fill:#e8f1ec,stroke:#265240,color:#09110f
+   style C fill:#e8f1ec,stroke:#265240,color:#09110f
+   style D fill:#e8f1ec,stroke:#2a8a8c,color:#09110f
+   style R fill:#d6e7de,stroke:#3d7d5f,stroke-width:2px,color:#09110f
+   style X fill:#e6e6e6,stroke:#757575,color:#09110f
 ```
 
 핵심은 마지막 회색 상자입니다. **다른 대화방의 내용은 기본적으로 컨텍스트에 들어오지 않습니다.** 어제 다른 대화에서 열심히 설명한 내용을 오늘 새 대화의 Claude는 모릅니다(메모리에 저장된 것 제외). "지난번에 말했잖아"가 통하지 않는 이유이고 아래 네 가지 도구를 구분해 쓰는 이유입니다.
@@ -39,7 +39,7 @@ flowchart TD
 
 ### 파일 첨부 — 이번 대화에서만 쓸 자료
 
-클립(📎) 버튼으로 올리는 파일은 **그 대화방 책상 위에만** 올라갑니다. 한 번 보고 말 자료 — 이번에 검토할 계약서, 오늘 요약할 회의록 — 에 알맞습니다. 다른 대화에서는 다시 올려야 합니다.
+클립({{< icon paperclip >}}) 버튼으로 올리는 파일은 **그 대화방 책상 위에만** 올라갑니다. 한 번 보고 말 자료 — 이번에 검토할 계약서, 오늘 요약할 회의록 — 에 알맞습니다. 다른 대화에서는 다시 올려야 합니다.
 
 **이럴 때**: "이 견적서(첨부) 검토해줘" — 검토가 끝나면 다시 볼 일 없는 일회성 자료.
 

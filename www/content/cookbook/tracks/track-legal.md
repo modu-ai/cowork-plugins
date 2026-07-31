@@ -1,36 +1,36 @@
 ---
 title: "법률 트랙"
 weight: 50
-description: "계약서·NDA·컴플라이언스 자동화. moai-legal + moai-office + moai-core를 한 줄 요청으로 자동 처리."
+description: "계약서·NDA·컴플라이언스 자동화. moai-lawyer + moai-officer + moai-coworker를 한 줄 요청으로 자동 처리."
 geekdocBreadcrumb: true
 ---
 
 > **대상**: 사내 법무팀, 컴플라이언스 담당자, 스타트업 대표·CXO, 외부 자문 변호사
-> **전제**: moai-core · moai-legal · moai-office 활성화
+> **전제**: moai-coworker · moai-lawyer · moai-officer 활성화
 > **소요**: 시나리오당 약 3-15분
 
 ## 무엇을 할 수 있나
 
 ```mermaid
 flowchart TD
-    subgraph 검토["1. 계약·NDA 검토"]
-        A1["nda-triage<br/>빠른 위험도 분류"]
-        A2["contract-review<br/>조항·리스크"]
-        A3["legal-risk<br/>리스크 등급 평가"]
-    end
-    subgraph 생성["2. 문서 생성"]
-        B1["contract-review<br/>계약 초안·개선안"]
-        B2["docx-generator<br/>워드 산출물"]
-    end
-    subgraph 규제["3. 컴플라이언스"]
-        C1["compliance-check<br/>국내·해외 규제"]
-        C2["commerce-marketing-compliance-kr<br/>정통망법·표시광고법"]
-    end
-    subgraph 검수["4. 검수"]
-        D1["ai-slop-reviewer"]
-    end
-    검토 --> 생성 --> 규제 --> 검수
-    style 검수 fill:#e6f0ef,stroke:#144a46
+   subgraph 검토["1. 계약·NDA 검토"]
+       A1["nda-triage<br/>빠른 위험도 분류"]
+       A2["contract-review<br/>조항·리스크"]
+       A3["legal-risk<br/>리스크 등급 평가"]
+   end
+   subgraph 생성["2. 문서 생성"]
+       B1["contract-review<br/>계약 초안·개선안"]
+       B2["docx-generator<br/>워드 산출물"]
+   end
+   subgraph 규제["3. 컴플라이언스"]
+       C1["compliance-check<br/>국내·해외 규제"]
+       C2["commerce-message-compliance-kr<br/>정통망법 발송 규제"]
+   end
+   subgraph 검수["4. 검수"]
+       D1["ai-slop-reviewer"]
+   end
+   검토 --> 생성 --> 규제 --> 검수
+   style 검수 fill:#e8f1ec,stroke:#265240
 ```
 
 ## 한 줄 요청 예시 4종
@@ -61,7 +61,7 @@ flowchart TD
 
 ### 자동 체인
 
-`nda-triage`(12건 배치 분류) → 위험도 A/B/C 그룹화 → `contract-review`(상세) → `legal-risk`(등급 평가) → `docx-generator` → `ai-slop-reviewer`
+`legal-nda-triage`(12건 배치 분류) → 위험도 A/B/C 그룹화 → `legal-contract-review`(상세) → `legal-legal-risk`(등급 평가) → `office-docx-generator` → `general-ai-slop-reviewer`
 
 ### 산출물
 
@@ -88,7 +88,7 @@ flowchart TD
 
 ### 자동 체인
 
-`contract-review`(조항별 리스크 분석) → `legal-risk`(A/B/C 등급) → `contract-review`(개선안·수정안 초안 작성) → `docx-generator` → `ai-slop-reviewer`
+`legal-contract-review`(조항별 리스크 분석) → `legal-legal-risk`(A/B/C 등급) → `legal-contract-review`(개선안·수정안 초안 작성) → `office-docx-generator` → `general-ai-slop-reviewer`
 
 ### 산출물
 
@@ -115,7 +115,7 @@ flowchart TD
 
 ### 자동 체인
 
-`compliance-check`(GDPR 7대 원칙 매핑) → `commerce-marketing-compliance-kr`(국내 정통망법·표시광고법 동시 검토) → `docx-generator` → `ai-slop-reviewer`
+`legal-compliance-check`(GDPR 7대 원칙 매핑) → `commerce-ad-claim-compliance-kr`(표시광고법·식약처 표현 검증) → `commerce-message-compliance-kr`(정통망법 발송 규제) → `office-docx-generator` → `general-ai-slop-reviewer`
 
 ### 산출물
 
@@ -142,7 +142,7 @@ flowchart TD
 
 ### 자동 체인
 
-`contract-review`(한·영 병렬 초안) → `docx-generator`(KR/EN 2 파일) → `ai-slop-reviewer`
+`legal-contract-review`(한·영 병렬 초안) → `office-docx-generator`(KR/EN 2 파일) → `general-ai-slop-reviewer`
 
 ### 산출물
 
@@ -168,7 +168,7 @@ flowchart TD
 
 ### Q. AI가 생성한 계약서를 그대로 서명해도 되나요?
 
-**아니오.** 모든 법률 산출물은 변호사 최종 검토 필수. AI는 1차 초안 + 협상 카드 + 리스크 지도 작성용. `ai-slop-reviewer`는 표현 검수일 뿐, 법적 효력 보증 아님.
+**아니오.** 모든 법률 산출물은 변호사 최종 검토 필수. AI는 1차 초안 + 협상 카드 + 리스크 지도 작성용. `general-ai-slop-reviewer`는 표현 검수일 뿐, 법적 효력 보증 아님.
 
 ### Q. NDA 12개 일괄 처리 시 개인정보 처리는?
 
@@ -176,7 +176,7 @@ flowchart TD
 
 ### Q. 한국 정통망법·표시광고법 자동 검출되나요?
 
-예. `commerce-marketing-compliance-kr`이 마케팅 메시지 발송 전 의무 통과 게이트로 동작. 야간 발송(21시-익일 8시) 차단·(광고) 표기 위치 검증·무료 수신거부 문구 점검을 자동으로 BLOCK/통과 시킵니다.
+예. `commerce-message-compliance-kr`이 마케팅 메시지 발송 전 의무 통과 게이트로 동작. 야간 발송(21시-익일 8시) 차단·(광고) 표기 위치 검증·무료 수신거부 문구 점검을 자동으로 BLOCK/통과 시킵니다.
 
 ---
 
@@ -198,13 +198,13 @@ flowchart TD
 - **[사용 패턴 가이드](../../../cowork/patterns/)** — 4가지 표준 패턴
 - **[운영 트랙](../track-operations/)** — 제안서·RFP 응답
 - **[이커머스 트랙](../track-commerce/)** — 마케팅 컴플라이언스 게이트
-- **[moai-legal 플러그인](../../../plugins/moai-legal/)**
+- **[moai-lawyer 플러그인](/moai-agents/lawyer/)**
 
 ---
 
 ### Sources
 
-- [moai-legal 디렉터리](https://github.com/modu-ai/cowork-plugins/tree/main/moai-legal)
+- [moai-lawyer 디렉터리](https://github.com/modu-ai/moai-cowork/tree/main/plugins/moai-lawyer)
 - [정보통신망법](https://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률)
 - [GDPR 공식 문서](https://gdpr.eu/)
 - [대한변호사협회 계약서 작성 가이드](https://www.koreanbar.or.kr/)

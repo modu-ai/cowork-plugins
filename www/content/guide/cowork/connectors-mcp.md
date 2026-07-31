@@ -11,31 +11,31 @@ aliases: ["/cowork/connectors-mcp/"]
 
 ```mermaid
 flowchart TB
-    subgraph CW["Claude Cowork"]
-        CONN["커넥터 설정"]
-    end
+   subgraph CW["Claude Cowork"]
+       CONN["커넥터 설정"]
+   end
 
-    subgraph BuiltIn["내장 커넥터"]
-        GDrive["Google Drive"]
-        Gmail["Gmail"]
-        Slack["Slack"]
-        GitHub["GitHub"]
-        Cal["Google Calendar"]
-    end
+   subgraph BuiltIn["내장 커넥터"]
+       GDrive["Google Drive"]
+       Gmail["Gmail"]
+       Slack["Slack"]
+       GitHub["GitHub"]
+       Cal["Google Calendar"]
+   end
 
-    subgraph Custom["커스텀 MCP 서버"]
-        Notion["Notion"]
-        Linear["Linear"]
-        DB["사내 DB"]
-        Wiki["사내 위키"]
-    end
+   subgraph Custom["커스텀 MCP 서버"]
+       Notion["Notion"]
+       Linear["Linear"]
+       DB["사내 DB"]
+       Wiki["사내 위키"]
+   end
 
-    CONN --> BuiltIn
-    CONN --> Custom
+   CONN --> BuiltIn
+   CONN --> Custom
 
-    style CW fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style BuiltIn fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style Custom fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style CW fill:#e8f1ec,stroke:#265240,color:#09110f
+   style BuiltIn fill:#e6e6e6,stroke:#757575,color:#09110f
+   style Custom fill:#fbf0dc,stroke:#c47b2a,color:#09110f
 ```
 
 ## 내장 커넥터
@@ -112,9 +112,9 @@ Meta는 2026-04-29 **Ads AI Connectors**(Meta 광고 AI 커넥터)를 오픈 베
 | read+write | 캠페인·광고세트·광고 생성/수정, 예산 조정 | 운영 시 |
 | financial | 결제·청구 관련 동작 | 필요 시에만 |
 
-쓰기·결제 동작은 실행할 때마다 사용자 승인이 필요하고 권한 철회는 Meta Business Suite에서 합니다. `moai-marketing` 플러그인의 **`meta-ads-manager`** 스킬이 이 커넥터를 사용해 광고를 운영합니다(신규 리소스는 항상 PAUSED로 생성).
+쓰기·결제 동작은 실행할 때마다 사용자 승인이 필요하고 권한 철회는 Meta Business Suite에서 합니다. `moai-marketer` 플러그인의 **`marketing-meta-ads-manager`** 스킬이 이 커넥터를 사용해 광고를 운영합니다(신규 리소스는 항상 PAUSED로 생성).
 
-> `moai-marketing` 플러그인을 설치하면 `.mcp.json`에 `meta-ads`가 미리 등록되어 있어 위 URL 입력이 생략됩니다 — Claude 재시작 후 첫 호출 시 OAuth 로그인만 진행하면 됩니다.
+> `moai-marketer` 플러그인을 설치하면 `.mcp.json`에 `meta-ads`가 미리 등록되어 있어 위 URL 입력이 생략됩니다 — Claude 재시작 후 첫 호출 시 OAuth 로그인만 진행하면 됩니다.
 
 ## 보안 체크
 

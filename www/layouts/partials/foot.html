@@ -1,86 +1,77 @@
 {{ if default false .Site.Params.geekdocMermaid }}
 <script>
 (function(){
-  // 페이지에 mermaid 다이어그램이 없으면 종료 (불필요한 ~640KB 로드 방지)
+  // ────────────────────────────────────────────────────────────────────
+  // Mermaid — 모두의AI DS v2 테마 적용
+  //
+  // geekdoc 이 번들한 mermaid 는 `window.mermaid` 를 노출하지 않고 로드 즉시
+  // 스스로 다이어그램을 그린다. 따라서 mermaid.initialize({themeVariables})
+  // 로는 테마를 바꿀 수 없다(이 경로는 실제로 한 번도 실행되지 않았고, 기본
+  // 보라·노랑 팔레트가 그대로 나왔다).
+  // → 렌더 후 번들이 주입한 <style> 의 기본 팔레트 색만 DS 값으로 바꾼다.
+  //   본문 classDef/style 로 지정한 색(의미색: 경고 앰버·위험 레드 등)은
+  //   건드리지 않는다.
+  // SSOT: www/design-system/handoff/colors_and_type.css
+  // ────────────────────────────────────────────────────────────────────
+
   function findBlocks() {
     return document.querySelectorAll('pre.gdoc-mermaid, pre.mermaid, .mermaid');
   }
 
-  // 라이트 테마 단일화 — 다크 분기 제거 (2026-05-13)
-  var lightTheme = {
-    primaryColor: '#144a46',
-    primaryTextColor: '#ffffff',
-    primaryBorderColor: '#0e3835',
-    lineColor: '#144a46',
-    secondaryColor: '#e6f0ef',
-    tertiaryColor: '#f3f3f3',
-    noteBkgColor: '#e6f0ef',
-    noteTextColor: '#09110f',
-    noteBorderColor: '#144a46',
-    edgeLabelBackground: '#ffffff',
-    clusterBkg: '#f3f3f3',
-    clusterBorder: '#144a46',
-    titleColor: '#09110f',
-    actorTextColor: '#09110f',
-    actorBorder: '#144a46',
-    actorBkg: '#e6f0ef',
-    signalColor: '#09110f',
-    signalTextColor: '#09110f',
-    labelBoxBkgColor: '#ffffff',
-    labelBoxBorderColor: '#144a46',
-    labelTextColor: '#09110f',
-    loopTextColor: '#09110f',
-    activationBorderColor: '#144a46',
-    activationBkgColor: '#e6f0ef',
-    sequenceNumberColor: '#ffffff'
-  };
-  var flowchartConfig = {
-    htmlLabels: true,
-    nodeSpacing: 50,
-    rankSpacing: 60,
-    padding: 14,
-    wrappingWidth: 260,
-    useMaxWidth: true,
-    curve: 'basis'
-  };
+  // mermaid 기본 팔레트 → DS v2
+  var SWAP = [
+    [/#ECECFF/gi, '#e8f1ec'],   // 노드 면      → 그린 8% 틴트
+    [/#9370DB/gi, '#3d7d5f'],   // 노드 테두리  → 마스코트 그린
+    [/#ffffde/gi, '#f4f4f4'],   // 클러스터 면  → 캔버스
+    [/#aaaa33/gi, '#d1d1d1'],   // 클러스터 선  → hairline
+    [/#552222/gi, '#c44a3a'],   // 에러         → DS danger
+    [/#000000\b/gi, '#060606'],
+    [/#000\b/gi, '#060606']
+  ];
+  // 속성별로 나눠야 하는 회색 — 글자는 잉크, 선은 중간 회색
+  function normalizeGray(css) {
+    css = css.replace(/(stroke\s*:\s*)#3{3}(?:3{3})?\b/gi, '$1#757575');
+    css = css.replace(/((?:fill|color|border-color)\s*:\s*)#3{3}(?:3{3})?\b/gi, '$1#060606');
+    return css.replace(/#3{3}(?:3{3})?\b/gi, '#565656');
+  }
 
-  function runMermaid() {
-    if (typeof window.mermaid === 'undefined') {
-      console.warn('[mermaid] bundle loaded but window.mermaid undefined');
-      return;
-    }
-    try {
-      window.mermaid.initialize({
-        startOnLoad: false,
-        securityLevel: 'loose',
-        theme: 'base',
-        themeVariables: lightTheme,
-        flowchart: flowchartConfig
-      });
-      // .mermaid 클래스를 가진 모든 <pre>를 SVG로 렌더링
-      window.mermaid.run({ querySelector: 'pre.gdoc-mermaid, pre.mermaid, .mermaid' });
-    } catch (e) {
-      console.error('[mermaid] render error:', e);
+  function restyle() {
+    var done = 0;
+    document.querySelectorAll('svg[id^="mermaid-"] style, style').forEach(function(st){
+      if (st.dataset.dsThemed) return;
+      var css = st.textContent;
+      if (css.indexOf('#mermaid-') === -1) return;   // mermaid 가 주입한 것만
+      SWAP.forEach(function(p){ css = css.replace(p[0], p[1]); });
+      css = normalizeGray(css);
+      st.textContent = css;
+      st.dataset.dsThemed = '1';
+      done++;
+    });
+    return done;
+  }
+
+  function watch() {
+    restyle();
+    // 번들이 비동기로 그리므로 잠시 동안 반복 확인한다.
+    var n = 0;
+    var timer = setInterval(function(){
+      restyle();
+      if (++n > 40) clearInterval(timer);   // 최대 ~8초
+    }, 200);
+    if (window.MutationObserver) {
+      new MutationObserver(function(){ restyle(); })
+        .observe(document.body, { childList: true, subtree: true });
     }
   }
 
   function loadMermaidBundle() {
-    var blocks = findBlocks();
-    if (!blocks.length) return; // 페이지에 다이어그램 없음
-
-    if (typeof window.mermaid !== 'undefined') {
-      runMermaid();
-      return;
-    }
-    // bundle 동적 로드 (head에 한 번만)
-    if (document.querySelector('script[data-mermaid-bundle]')) {
-      // 이미 로드 중 — onload 콜백 대기 (다른 script 태그가 이미 추가됨)
-      return;
-    }
+    if (!findBlocks().length) return;   // 페이지에 다이어그램 없음 (~640KB 로드 방지)
+    watch();
+    if (document.querySelector('script[data-mermaid-bundle]')) return;
     var s = document.createElement('script');
     s.src = '{{ index (index hugo.Data.assets "mermaid.js") "src" | relURL }}';
     s.setAttribute('data-mermaid-bundle', '1');
-    s.onload = runMermaid;
+    s.onload = watch;
     s.onerror = function() { console.error('[mermaid] bundle load failed'); };
     document.head.appendChild(s);
   }

@@ -11,27 +11,27 @@ aliases: ["/cowork/safety/"]
 
 ```mermaid
 flowchart LR
-    subgraph Safe["권장 영역"]
-        D1["초안·분석·요약"]
-        D2["반복 양식 작성"]
-        D3["리서치와 비교"]
-        D4["커뮤니케이션<br/>드래프트"]
-    end
+   subgraph Safe["권장 영역"]
+       D1["초안·분석·요약"]
+       D2["반복 양식 작성"]
+       D3["리서치와 비교"]
+       D4["커뮤니케이션<br/>드래프트"]
+   end
 
-    subgraph Danger["금지·주의 영역"]
-        X1["의료 진단·치료"]
-        X2["법률 최종 결론"]
-        X3["금융 거래 실행"]
-        X4["신원 인증"]
-        X5["생명·안전 제어"]
-    end
+   subgraph Danger["금지·주의 영역"]
+       X1["의료 진단·치료"]
+       X2["법률 최종 결론"]
+       X3["금융 거래 실행"]
+       X4["신원 인증"]
+       X5["생명·안전 제어"]
+   end
 
-    Safe -->|사람 승인 후| R["외부 공개"]
-    Danger -->|사람 직접 판단| R
+   Safe -->|사람 승인 후| R["외부 공개"]
+   Danger -->|사람 직접 판단| R
 
-    style Safe fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style Danger fill:#f5dcd7,stroke:#c44a3a,color:#09110f
-    style R fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+   style Safe fill:#e8f1ec,stroke:#265240,color:#09110f
+   style Danger fill:#f5dcd7,stroke:#c44a3a,color:#09110f
+   style R fill:#e6e6e6,stroke:#757575,color:#09110f
 ```
 
 ## 피해야 할 사용 영역
@@ -62,11 +62,11 @@ flowchart LR
 
 ## AI 티 제거 (AI Slop)
 
-AI가 작성한 초안은 종종 기계적인 톤 — 동어 반복, 과장된 수식어, 어색한 접속사 — 을 남깁니다. `cowork-plugins`의 [`ai-slop-reviewer`](../../plugins/moai-core/) 스킬은 이런 흔적을 탐지해 사람 톤으로 수정해 줍니다. 외부에 나가는 모든 텍스트는 이 단계를 거치는 것을 권장합니다.
+AI가 작성한 초안은 종종 기계적인 톤 — 동어 반복, 과장된 수식어, 어색한 접속사 — 을 남깁니다. `moai-cowork`의 [`general-ai-slop-reviewer`](../../moai-agents/coworker/) 스킬은 이런 흔적을 탐지해 사람 톤으로 수정해 줍니다. 외부에 나가는 모든 텍스트는 이 단계를 거치는 것을 권장합니다.
 
 ## 다음 단계
 
-- [플러그인 카탈로그](../../plugins/) — `moai-core`의 `ai-slop-reviewer`
+- [플러그인 카탈로그](../../plugins/) — `moai-coworker`의 `general-ai-slop-reviewer`
 - [쿡북 — 스킬 체인 설계](../../cookbook/skill-chaining/)
 
 ---

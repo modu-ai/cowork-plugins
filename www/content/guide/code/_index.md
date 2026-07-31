@@ -32,14 +32,14 @@ Claude Code는 Claude와 함께 직접 코드를 작성하고 실행할 수 있�
 
 ```mermaid
 flowchart LR
-    A["사용자<br/>요청을 입력"] --> B["Claude Code<br/>프로젝트 파일 읽음"]
-    B --> C["Claude<br/>변경사항 제안"]
-    C --> D["사용자<br/>결과 확인"]
-    D --> E["로컬에서<br/>테스트 실행"]
+   A["사용자<br/>요청을 입력"] --> B["Claude Code<br/>프로젝트 파일 읽음"]
+   B --> C["Claude<br/>변경사항 제안"]
+   C --> D["사용자<br/>결과 확인"]
+   D --> E["로컬에서<br/>테스트 실행"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style C fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style E fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style C fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style E fill:#d6e7de,stroke:#3d7d5f,color:#09110f
 ```
 
 사용자가 자연스러운 언어로 요청하면 Claude Code는 프로젝트의 파일을 읽고, 필요한 변경사항을 자동으로 적용합니다. 결과는 로컬 환경에서 바로 테스트할 수 있습니다.

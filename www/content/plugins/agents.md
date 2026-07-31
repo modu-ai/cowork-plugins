@@ -15,18 +15,18 @@ geekdocBreadcrumb: true
 
 ```mermaid
 sequenceDiagram
-    participant U as 사용자
-    participant W as worker 에이전트<br/>(작성 권한 있음)
-    participant A as auditor 에이전트<br/>(읽기 전용)
+   participant U as 사용자
+   participant W as worker 에이전트<br/>(작성 권한 있음)
+   participant A as auditor 에이전트<br/>(읽기 전용)
 
-    U->>W: 작업 지시 (예: 상세페이지 초안 작성)
-    W->>W: 스킬 참조 + 산출물 작성
-    W-->>U: 산출물 1차 완성
-    U->>A: 검수 요청
-    A->>A: 결함 탐색 (수정 불가, 평가만)
-    A-->>U: 검수 보고 (지적 사항 목록)
-    U->>W: 지적 사항 반영 지시
-    W-->>U: 수정본 완성
+   U->>W: 작업 지시 (예: 상세페이지 초안 작성)
+   W->>W: 스킬 참조 + 산출물 작성
+   W-->>U: 산출물 1차 완성
+   U->>A: 검수 요청
+   A->>A: 결함 탐색 (수정 불가, 평가만)
+   A-->>U: 검수 보고 (지적 사항 목록)
+   U->>W: 지적 사항 반영 지시
+   W-->>U: 수정본 완성
 ```
 
 이 루프를 한두 바퀴 돌리면 "그럴듯해 보이는 초안"이 "지적을 견딘 결과물"로 바뀝니다. 검수를 반드시 돌려야 하는 것은 아니지만 외부에 나가는 산출물(제안서, 광고 소재, 계약서 검토 의견 등)이라면 auditor 한 바퀴를 강하게 권합니다.
