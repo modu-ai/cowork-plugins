@@ -13,7 +13,7 @@ last_updated: 2026-07-09
 - **프로젝트명**: 모두의 클로드 (modu-ai/claude)
 - **배포 원천**: Claude Code 플러그인 마켓플레이스 (`moai-claude`, v5.0.0)
 - **설치 명령**: `claude plugin marketplace add modu-ai/claude`
-- **라이선스**: LicenseRef-MoAI-NC-ND-1.0
+- **라이선스**: Apache-2.0 (산출물은 이용자 소유 — LICENSE-OUTPUT.md)
 - **언어**: 한국어(ko)
 - **활발한 개발 상태**: 예. 현재 4-플러그인 재설계 및 moai 플러그인 v2 대개명 진행 중
 

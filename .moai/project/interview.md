@@ -9,7 +9,7 @@ Answer: 활발히 개발 중인 제품 — 문서는 현재 궤도와 로드맵�
 
 ## Round 2: Constraints and Non-Goals
 Question: 알려진 제약·기술 부채·의도적 비목표(non-goal)가 있나요?
-Answer: 알려진 주요 제약 없음 — 제약 주석 없이 코드베이스를 있는 그대로 문서화한다. (참고: 라이선스는 LicenseRef-MoAI-NC-ND-1.0, REMEDIATION 백로그·버전 드리프트 등은 SPEC 체계로 별도 추적 중)
+Answer: 알려진 주요 제약 없음 — 제약 주석 없이 코드베이스를 있는 그대로 문서화한다. (참고: 라이선스는 Apache-2.0, REMEDIATION 백로그·버전 드리프트 등은 SPEC 체계로 별도 추적 중)
 
 ## Round 3: Documentation Priority
 Question: 문서에서 가장 정확히 담아야 할 측면은 무엇인가요?

@@ -23,6 +23,11 @@ disablePathToLower = true
     lineNos = false
     noClasses = false
 
+# 최종 수정일 결정 순서 — frontmatter 의 lastmod 를 git 보다 우선한다.
+# (기본값은 :git 이 먼저라, 아직 커밋되지 않은 새 문서가 0001.01.01 로 표시됨)
+[frontmatter]
+  lastmod = ['lastmod', ':git', 'date', 'publishDate']
+
 # Geekdoc 권장 미디어 타입
 [outputs]
   home = ["HTML", "RSS", "SEARCH", "SITEMAP"]
@@ -47,17 +52,21 @@ disablePathToLower = true
 
 # Geekdoc 사이트 파라미터
 [params]
-  # ⚠️ SSOT (Single Source of Truth) — 버전 표기는 이 두 줄만 갱신하면
-  # 좌측 사이드바·footer·version-badge.html 등 모든 표시 위치에 자동 반영됨.
-  # 새 vX.Y.Z 릴리스 시 .claude-plugin/marketplace.json + plugin.json + SKILL.md 일괄 bump와 함께
-  # 반드시 이 두 줄을 동시에 갱신할 것 (feedback_version_bump_docs_checklist 참조).
-  version = "2.27.0"
-  releaseDate = "2026-06-19"
+  # ⚠️ SSOT — moai-cowork(마켓플레이스·문서) 자체 버전. 이 두 줄만 갱신하면
+  # 홈 히어로·version-badge 등 모든 표시 위치에 자동 반영된다.
+  #
+  # 이 버전은 **플러그인 버전과 독립**이다 (2026-07-31 체계 재정립).
+  #   · 사이트/문서/마켓플레이스 구조가 바뀔 때만 여기를 올린다
+  #   · 플러그인 하나를 고쳤다면 그 플러그인의 plugin.json +
+  #     .claude-plugin/marketplace.json 해당 entry 만 올린다 (여기는 그대로)
+  # 규칙 SSOT: CLAUDE.local.md § 버저닝 규칙
+  version = "1.1.0"
+  releaseDate = "2026-07-31"
   geekdocRepo = "https://github.com/modu-ai/moai-cowork"
   geekdocEditPath = "edit/main/content"
   geekdocSearch = true
   geekdocSearchShowParent = true
-  geekdocLegalNotice = "https://github.com/modu-ai/cowork-plugins"
+  geekdocLegalNotice = "https://github.com/modu-ai/moai-cowork"
   geekdocPrivacyPolicy = "/about/"
   geekdocToC = 3
   geekdocBreadcrumb = true

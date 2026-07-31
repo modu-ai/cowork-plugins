@@ -1,10 +1,11 @@
 {
   "name": "moai-cs",
   "displayName": "🎧 CS매니저",
-  "version": "0.1.2",
+  "version": "1.0.2",
   "description": "고객지원·CRM 전담 AI 직원 — 티켓 분류·응답 초안·에스컬레이션·지식베이스와 VOC 분석·채널 메시지까지 고객 접점 실무 스킬 6종. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 온라인 셀러·CS 담당자·1인 사업자.",
   "author": {
     "name": "모두의 AI",
     "email": "email@mo.ai.kr"
-  }
+  },
+  "license": "Apache-2.0"
 }

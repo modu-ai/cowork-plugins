@@ -11,7 +11,7 @@ description: |
   - "그로스 실험 로드맵 만들어줘 (월 4-8개 실험 사이클)"
   가설-설계-측정 실험 프레임과 성장 루프(추천/바이럴/무료도구/공동마케팅) 전술로 실험 설계서를 만들고, 서술형 부분은 moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean으로 다듬습니다.
   [책임 경계] vs moai-marketer:marketing-campaign-planner: 이 스킬=개별 실험 설계와 성장 루프 전술(가설·A/B·ICE·바이럴 계수), 저 스킬=목표·채널·예산·KPI를 묶은 전체 캠페인 기획. 실험은 캠페인의 하위 단위입니다.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 그로스 실험 (Growth Experiment)
@@ -22,7 +22,7 @@ version: "0.1.0"
 
 핵심 철학은 **연속 실험은 복리로 쌓인다**는 것입니다. 한 방의 대박이 아니라, 월 4-8개 실험을 돌려 20-30% 승률로 검증된 승리를 플레이북에 축적하는 사이클을 만듭니다.
 
-참고 원본: github.com/coreyhaines31/marketingskills (MIT) — ab-testing·referrals·free-tools·co-marketing 스킬의 방법론을 재구성했습니다.
+참고 원본: github.com/coreyhaines31/marketingskills (MIT — 전문 고지: 저장소 루트 `NOTICE`) — ab-testing·referrals·free-tools·co-marketing 스킬의 방법론을 재구성했습니다.
 
 ## 트리거 키워드
 

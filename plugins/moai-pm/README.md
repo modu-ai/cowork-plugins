@@ -130,4 +130,4 @@ PM이 먼저 인사하고 무엇을 할지 묻습니다. "온라인 클래스 �
 
 ## 라이선스
 
-LicenseRef-MoAI-NC-ND-1.0 · © modu-ai (email@mo.ai.kr)
+Apache-2.0 · © 2026 modu-ai (email@mo.ai.kr) — 산출물은 이용자 소유([LICENSE-OUTPUT.md](../../LICENSE-OUTPUT.md))

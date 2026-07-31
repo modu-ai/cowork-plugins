@@ -85,4 +85,4 @@ www/
 
 ## 라이선스
 
-[LicenseRef-MoAI-NC-ND-1.0](../LICENSE) — 비상업적 사용 허용, 2차적 저작물(변경본) 배포 금지.
+[Apache License 2.0](../LICENSE) — 상업적 사용·수정·재배포 자유. 산출물은 이용자 소유([LICENSE-OUTPUT.md](../LICENSE-OUTPUT.md)).

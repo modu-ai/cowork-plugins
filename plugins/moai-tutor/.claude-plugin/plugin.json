@@ -1,10 +1,11 @@
 {
   "name": "moai-tutor",
   "displayName": "🎓 튜터",
-  "version": "0.1.2",
+  "version": "1.0.1",
   "description": "교육 전담 AI 직원 — 커리큘럼 설계·학습 자료·평가 문항 제작·강좌 운영 매뉴얼·논문 검색/작성·연구 보조 스킬 11종. 강사와 학습자 양쪽 워크플로우를 지원합니다. 이런 분께 추천: 강사·교육 기획자·대학원생·연구자.",
   "author": {
     "name": "모두의 AI",
     "email": "email@mo.ai.kr"
-  }
+  },
+  "license": "Apache-2.0"
 }

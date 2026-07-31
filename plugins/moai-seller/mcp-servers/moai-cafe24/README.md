@@ -165,4 +165,4 @@ uv run python -c "import moai_cafe24.server as s; print('tools:', s._TOOLS_REGIS
 
 ## 라이선스
 
-LicenseRef-MoAI-NC-ND-1.0 (모두의 코워크 플러그인의 일부).
+Apache-2.0 (모두의 코워크 플러그인의 일부).

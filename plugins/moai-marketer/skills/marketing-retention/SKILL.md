@@ -12,7 +12,7 @@ description: |
   - "취소 플로우(cancel flow)에 세이브 오퍼 붙여줘"
   이탈 유형 분류·조기 신호·헬스 스코어·윈백 시퀀스·라이프사이클 메시지·리텐션 지표 프레임으로 리텐션 캠페인을 설계하고, 이메일·메시지 본문은 moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean으로 다듬습니다. 광고성 재참여 메일은 한국 정보통신망법(§50) 요건을 반영합니다.
   [책임 경계] vs moai-seller 커머스 스킬: 이 스킬=마케팅 측 라이프사이클·윈백·이탈방지 메시지와 지표. commerce-repurchase-timer=구매 주기 기반 재구매 타이밍, commerce-subscription-strategist=구독 운영·요금제 설계, commerce-ltv-cac-architect=단위경제(LTV/CAC) 모델링. 재구매 타이밍·구독 오퍼레이션·유닛이코노미 계산은 그쪽으로 넘깁니다.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 리텐션 (Retention)
@@ -23,7 +23,7 @@ version: "0.1.0"
 
 이 스킬은 **메시지·캠페인·지표** 측면에 집중합니다. 구매 주기 계산이나 구독 요금제 오퍼레이션, 단위경제 모델링은 다루지 않고 moai-seller 커머스 스킬로 위임합니다(아래 책임 경계 참고).
 
-참고 원본: github.com/coreyhaines31/marketingskills (MIT) — churn-prevention 스킬의 방법론을 마케팅 라이프사이클 관점으로 재구성했습니다.
+참고 원본: github.com/coreyhaines31/marketingskills (MIT — 전문 고지: 저장소 루트 `NOTICE`) — churn-prevention 스킬의 방법론을 마케팅 라이프사이클 관점으로 재구성했습니다.
 
 ## 트리거 키워드
 

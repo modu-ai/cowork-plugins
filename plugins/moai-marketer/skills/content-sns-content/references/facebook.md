@@ -104,4 +104,4 @@
 
 ---
 
-> 참고 원본: github.com/social-media-skills/skills (WoopSocial `facebook-strategy`·`facebook-groups` 플레이북, MIT License). 규격 수치는 2026년 각 플랫폼 공식·업계 가이드 기준으로 교차 검증. 플랫폼 알고리즘·규격은 수시로 변경되므로 발행 전 최신 공식 업데이트를 확인하세요.
+> 참고 원본: github.com/social-media-skills/skills (WoopSocial `facebook-strategy`·`facebook-groups` 플레이북, MIT License, 전문 고지는 저장소 루트 `NOTICE`). 규격 수치는 2026년 각 플랫폼 공식·업계 가이드 기준으로 교차 검증. 플랫폼 알고리즘·규격은 수시로 변경되므로 발행 전 최신 공식 업데이트를 확인하세요.

@@ -22,7 +22,7 @@
 
 ### 라이선스
 
-LicenseRef-MoAI-NC-ND-1.0 (cowork-plugins 저장소 정책 준용).
+Apache-2.0 (모두의 코워크 저장소 정책 준용).
 
 ### 상표
 

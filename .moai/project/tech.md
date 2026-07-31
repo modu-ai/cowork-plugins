@@ -102,7 +102,7 @@ last_updated: 2026-07-09
 "metadata": {
   "version": "5.0.0",   // ← 마켓 메타 버전 (모든 플러그인 공통)
   "language": "ko",
-  "license": "LicenseRef-MoAI-NC-ND-1.0"
+  "license": "Apache-2.0"
 }
 ```
 
@@ -196,7 +196,7 @@ make pr-merge PR=123  # GitHub PR 자동 병합 활성화
 ## 보안 및 라이선스
 
 ### 라이선스
-- **프로젝트 전체**: LicenseRef-MoAI-NC-ND-1.0
+- **프로젝트 전체**: Apache-2.0
   - NC: 비상업적 사용 (Non-Commercial)
   - ND: 파생 금지 (No Derivatives)
 

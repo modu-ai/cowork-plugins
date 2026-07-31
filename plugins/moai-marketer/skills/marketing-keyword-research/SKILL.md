@@ -12,7 +12,7 @@ description: |
   - "AI 검색이 인용할 만한 질의(query) 후보 뽑아줘"
   검색 의도 4분류·롱테일·키워드 난이도·쿼리 팬아웃(query fan-out)·토픽 클러스터 프레임으로 키워드 목록과 클러스터 맵을 만들고, 서술형 권고는 moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean으로 다듬습니다.
   [책임 경계] vs moai-marketer:marketing-seo-audit: 이 스킬=쓸 키워드·클러스터를 새로 발굴(discovery), 저 스킬=이미 있는 페이지·사이트의 SEO 건강도를 진단(audit). 키워드를 정한 뒤 페이지를 점검하려면 marketing-seo-audit로 넘어갑니다.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 키워드 리서치 (Keyword Research)
@@ -23,7 +23,7 @@ version: "0.1.0"
 
 2026년 검색은 단일 키워드 경쟁에서 **토픽·질의 묶음 경쟁**으로 이동했습니다. 구글 AI 검색은 하나의 질의를 여러 관련 질의로 확장(query fan-out)하고, AI 검색은 상위 3위가 아니어도 구조가 좋은 페이지를 인용합니다. 그래서 리서치 단계에서부터 낱개 키워드가 아니라 **클러스터 + 검색 의도**로 접근해야 합니다.
 
-참고 원본: github.com/coreyhaines31/marketingskills (MIT) — ai-seo·programmatic-seo·competitors 스킬의 방법론을 한국 검색 시장(네이버·구글·GEO)에 맞게 재구성했습니다.
+참고 원본: github.com/coreyhaines31/marketingskills (MIT — 전문 고지: 저장소 루트 `NOTICE`) — ai-seo·programmatic-seo·competitors 스킬의 방법론을 한국 검색 시장(네이버·구글·GEO)에 맞게 재구성했습니다.
 
 ## 트리거 키워드
 

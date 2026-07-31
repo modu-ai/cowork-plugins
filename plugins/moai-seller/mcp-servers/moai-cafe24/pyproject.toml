@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "카페24(Cafe24) 쇼핑몰 API MCP — Admin API(19 도메인) + Analytics API(cafe24data) 전 엔드포인트를 선언적 레지스트리 기반 도구로 제공. OAuth2 access(2h)/refresh(2w, 회전) 자동 갱신, Leaky Bucket + Usage 이중 레이트리밋 준수, X-Cafe24-Api-Version 2026-03-01."
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "LicenseRef-MoAI-NC-ND-1.0" }
+license = { text = "Apache-2.0" }
 authors = [{ name = "modu-ai" }]
 keywords = ["mcp", "cafe24", "카페24", "ecommerce", "model-context-protocol", "shopping-mall"]
 dependencies = [

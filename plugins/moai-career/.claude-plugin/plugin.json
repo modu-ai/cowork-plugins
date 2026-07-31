@@ -1,10 +1,11 @@
 {
   "name": "moai-career",
   "displayName": "🧭 커리어코치",
-  "version": "0.1.1",
+  "version": "1.0.1",
   "description": "구직자 편 커리어 코칭 전담 AI 직원 — 이력서·포트폴리오 첨삭, 면접 준비, 이직 전략까지 커리어 전환 실무 스킬. 인사채용(고용주 편)과 구분되는 구직자 관점입니다. 이런 분께 추천: 이직 준비자·취업 준비생·주니어 직장인.",
   "author": {
     "name": "모두의 AI",
     "email": "email@mo.ai.kr"
-  }
+  },
+  "license": "Apache-2.0"
 }
