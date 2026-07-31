@@ -40,13 +40,19 @@
 
 ---
 
-## 3. 한국어 음성
+## 3. 한국어 음성 — 두 목록은 서로 다른 곳에서 온다
 
-`inworld_text_to_speech`의 프리셋 보이스 목록에 한국어 4종이 관측된다: `Hyunwoo (ko)`, `Minji (ko)`, `Seojun (ko)`, `Yoona (ko)`.
+이 절은 실수하기 쉬운 지점이다. **보이스 목록이 한 곳에 모여 있지 않다.**
 
-`qwen_audio_tts`는 `language` 파라미터에 `ko`를 포함한 13개 언어 힌트를 받는다.
+| 경로 | 어디서 고르나 | 한국어 |
+|---|---|---|
+| `seed_audio` · `text2speech_v2` | 보이스 조회 도구가 주는 `voice_id` + `voice_type` 짝 | ❌ 관측된 57종 전부 영어권 이름 |
+| `inworld_text_to_speech` | **모델 자체의 `voice` enum** (`Hyunwoo (ko)`·`Minji (ko)`·`Seojun (ko)`·`Yoona (ko)`) | ✅ 4종 |
+| `qwen_audio_tts` | `voice_type`+`voice_id`, 별도로 `language: ko` 힌트 | 언어 힌트 지원 |
 
-한국어 내레이션이 필요하면 이 두 경로를 먼저 확인한다. 보이스 목록은 고정이 아니므로 실제 사용 가능한 목록은 보이스 조회 도구로 확인한다.
+**함정:** 한국어 음성을 찾겠다고 보이스 조회 도구만 뒤지면 못 찾는다 — 거기엔 없다. `inworld_text_to_speech`의 한국어는 `models_explore(action:'get')`로 그 모델의 `voice` 옵션 목록을 봐야 나온다.
+
+두 목록 모두 고정이 아니므로 호출 직전에 각자의 출처에서 확인한다.
 
 ---
 
