@@ -1,11 +1,17 @@
 ---
 title: "Higgsfield MCP 설정"
 weight: 20
-description: "moai-media·moai-story 플러그인의 생성형 스킬(이미지·영상)이 쓰는 Higgsfield 호스티드 MCP의 OAuth 인증·크레딧·폴백 안내."
+description: "moai-media·moai-story·moai-designer 플러그인의 생성형 스킬(이미지·영상·3D·오디오·설명영상)이 쓰는 Higgsfield 호스티드 MCP의 OAuth 인증·크레딧·폴백 안내."
 geekdocBreadcrumb: true
 ---
 
-[Higgsfield](https://higgsfield.ai)는 이미지·영상 생성 호스티드 MCP입니다. `moai-media`의 `media-higgsfield-image`·`media-higgsfield-video` 스킬과 `moai-story`의 `story-webtoon-art`·`story-conti`·`story-character-sheet`·`story-cover-art`·`story-previz` 스킬이 이 MCP를 통해 생성합니다. 최초 1회 OAuth 인증이 필요합니다.
+[Higgsfield](https://higgsfield.ai)는 이미지·영상·3D·오디오 생성 호스티드 MCP입니다. 세 플러그인이 이 MCP를 통해 생성하며, 최초 1회 OAuth 인증이 필요합니다.
+
+| 플러그인 | 이 MCP를 쓰는 스킬 |
+|---|---|
+| `moai-media` | `media-higgsfield-image`(이미지) · `media-higgsfield-video`(영상) · `media-higgsfield-identity`(캐릭터 일관성 참조) · `media-higgsfield-assets`(3D·오디오·영상분석·후처리) · `media-higgsfield-explainer`(내레이션 설명영상) · `media-higgsfield-product`(제품 촬영 10모드). 호출 계약·비용 고지의 정본은 `media-higgsfield-core` |
+| `moai-story` | `story-webtoon-art` · `story-conti` · `story-character-sheet` · `story-cover-art` · `story-previz` — 생성 실행은 `moai-media`에 위임 |
+| `moai-designer` | `design-brand-visual`(브랜드 정합 비주얼) · `design-landing-motion`(다이나믹 랜딩의 에셋 킷) — 생성 실행은 `moai-media`에 위임 |
 
 ## 1. MCP 서버 연결
 
@@ -18,11 +24,15 @@ geekdocBreadcrumb: true
 3. 접근 권한을 허용하면 액세스 토큰이 발급되어 Higgsfield 서버에 보관됩니다. API 키를 직접 다룰 필요가 없습니다.
 4. 토큰 만료 시 Claude Code가 자동으로 갱신합니다.
 
-인증 완료 후 생성형 스킬이 MCP 도구를 호출해 이미지·영상을 생성합니다.
+인증 완료 후 생성형 스킬이 MCP 도구를 호출해 결과물을 생성합니다.
 
 ## 3. 크레딧 안내
 
 Higgsfield 작업은 크레딧을 소모합니다. 각 생성형 스킬은 생성 전 예상 크레딧을 사용자에게 고지하고 확인을 받습니다 (패널 약 2크레딧, 시네마틱 숏 약 20~50크레딧 등). 크레딧 잔액은 Higgsfield 웹(https://higgsfield.ai)에서 확인합니다.
+
+이 사전 고지는 어림값이 아니라 **실제 청구액을 미리 조회한 값**입니다. 스킬은 생성 직전 비용 프리플라이트를 호출하는데, 이 조회 자체는 크레딧을 쓰지 않습니다. 실측 예: Soul 2.0 2K 이미지 1장은 프리플라이트가 `0.12` 크레딧을 예고했고 실제 차감도 정확히 `0.12`였습니다.
+
+비용은 모델·해상도·옵션에 따라 크게 달라집니다. 3D의 텍스처·리깅·애니메이션은 각각 비용이 더해지고, 설명 영상은 블록 수에 비례해 1분(6블록)과 10분(60블록)이 10배 차이 납니다. 어림짐작하지 말고 스킬이 알려주는 프리플라이트 값을 보고 판단하세요.
 
 ## 4. MCP 미연결 폴백
 

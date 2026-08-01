@@ -465,12 +465,12 @@ svg.svg-sprite { display: none !important; }
 }
 .cw-sec-title {
   margin: 0 0 12px;
-  font-family: var(--font-sans);
-  font-size: 30px;
-  font-weight: var(--fw-extrabold);
-  letter-spacing: var(--tracking-heading);
+  font-family: var(--font-serif);
+  font-size: 31px;
+  font-weight: var(--fw-heading-serif);
+  letter-spacing: var(--tracking-heading-serif);
   color: var(--fg-1);
-  line-height: 1.25;
+  line-height: 1.35;
 }
 .cw-sec-lead {
   margin: 0 0 26px;
@@ -625,66 +625,71 @@ svg.svg-sprite { display: none !important; }
 /* ════════════════════════════════════════════════════════════════════════
    5. 본문 타이포 (dc.html page blocks)
    ════════════════════════════════════════════════════════════════════════ */
+/* ── 「제목」은 마루부리(부리체), 그 외 전부 Pretendard ──
+   마루부리 상한이 700이라 제목에 800(ExtraBold)을 쓰지 않는다 — 쓰면 브라우저가
+   가짜 굵게를 합성해 부리 획이 뭉갠다. 자간도 Pretendard(-0.05em)보다 풀어준다.
+   CLAUDE.local.md § 폰트 — 역할 분담 표 참조. */
 .gdoc-page > article > h1:first-child,
 .gdoc-markdown h1 {
-  font-family: var(--font-sans);
-  font-size: 32px;
-  line-height: 1.2;
-  font-weight: var(--fw-extrabold);
-  letter-spacing: var(--tracking-display);
+  font-family: var(--font-serif);
+  font-size: 33px;
+  line-height: 1.32;
+  font-weight: var(--fw-heading-serif);
+  letter-spacing: var(--tracking-heading-serif);
   color: var(--fg-1);
   word-break: keep-all;
   text-wrap: pretty;
 }
 .gdoc-markdown h2 {
-  margin: 40px 0 14px;
-  font-family: var(--font-sans);
-  font-size: 24px;
-  line-height: 1.3;
-  font-weight: var(--fw-extrabold);
-  letter-spacing: var(--tracking-heading);
+  margin: 44px 0 14px;
+  font-family: var(--font-serif);
+  font-size: 25px;
+  line-height: 1.42;
+  font-weight: var(--fw-heading-serif);
+  letter-spacing: var(--tracking-heading-serif);
   color: var(--fg-1);
   scroll-margin-top: var(--shell-sticky-top);
   word-break: keep-all;
   text-wrap: pretty;
 }
 .gdoc-markdown h3 {
-  margin: 32px 0 12px;
-  font-size: 19px;
-  line-height: 1.35;
-  font-weight: var(--fw-bold);
-  letter-spacing: var(--tracking-heading);
+  margin: 34px 0 12px;
+  font-family: var(--font-serif);
+  font-size: 19.5px;
+  line-height: 1.45;
+  font-weight: var(--fw-title-serif);
+  letter-spacing: var(--tracking-title-serif);
   color: var(--fg-1);
   scroll-margin-top: var(--shell-sticky-top);
   word-break: keep-all;
 }
 .gdoc-markdown h4 {
-  margin: 24px 0 10px;
-  font-size: 16.5px;
-  font-weight: var(--fw-bold);
-  letter-spacing: var(--tracking-heading);
+  margin: 26px 0 10px;
+  font-family: var(--font-serif);
+  font-size: 17px;
+  line-height: 1.5;
+  font-weight: var(--fw-title-serif);
+  letter-spacing: var(--tracking-title-serif);
   color: var(--fg-1);
 }
-/* ── 「읽는 글」은 마루부리(부리체) ──
-   본문 문단·목록·인용은 부리체, 제목과 UI는 Pretendard로 남긴다.
-   CLAUDE.local.md § 폰트 — 역할 분담 표 참조. */
+/* 본문은 Pretendard — 「제목」만 부리체다 */
 .gdoc-markdown p {
   margin: 0 0 18px;
-  font-family: var(--font-serif);
-  font-size: var(--text-prose-serif);
-  line-height: var(--lh-prose-serif);
-  letter-spacing: var(--tracking-prose-serif);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: var(--lh-prose);
+  letter-spacing: -0.03em;
   color: var(--fg-1);
   word-break: keep-all;
   text-wrap: pretty;
 }
 .gdoc-markdown ul, .gdoc-markdown ol { margin: 0 0 18px; padding-left: 1.25em; }
 .gdoc-markdown li {
-  margin: 7px 0;
-  font-family: var(--font-serif);
-  font-size: var(--text-prose-serif-sm);
-  line-height: var(--lh-prose-serif);
-  letter-spacing: var(--tracking-prose-serif);
+  margin: 6px 0;
+  font-family: var(--font-sans);
+  font-size: 15.5px;
+  line-height: var(--lh-relaxed);
+  letter-spacing: -0.03em;
   color: var(--fg-1);
   word-break: keep-all;
 }
@@ -733,7 +738,7 @@ svg.svg-sprite { display: none !important; }
   font-weight: var(--fw-bold);
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--fg-3);
+  color: var(--fg-2);
   text-align: left;
 }
 .gdoc-markdown table:not(.lntable):not(.highlight) tbody td {
@@ -761,10 +766,10 @@ svg.svg-sprite { display: none !important; }
 }
 .gdoc-markdown blockquote p {
   margin: 0;
-  font-family: var(--font-serif);
-  font-size: var(--text-prose-serif-sm);
-  line-height: var(--lh-prose-serif);
-  letter-spacing: var(--tracking-prose-serif);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: var(--lh-relaxed);
+  letter-spacing: -0.03em;
   color: var(--fg-1);
 }
 
@@ -821,11 +826,14 @@ svg.svg-sprite { display: none !important; }
 .gdoc-hint.danger .gdoc-hint__title svg,
 .gdoc-hint.important .gdoc-hint__title svg { color: #a8760a; }
 
-/* ── 인라인 코드 / 칩 ── */
+/* ── 인라인 코드 / 칩 ──
+   글자색은 primary(#3d7d5f)가 아니라 primary-active(#265240)를 쓴다.
+   배경이 primary 8% 틴트라, primary 원색을 얹으면 대비가 3.58~4.42:1 로
+   WCAG AA(4.5:1)에 미달한다. primary-active 는 최악 6.51:1 로 여유가 있다. */
 .gdoc-markdown code {
   font-family: var(--font-mono);
   font-size: 0.88em;
-  color: var(--color-primary);
+  color: var(--color-primary-active);
   background: var(--gradient-signature-soft);
   border: 1px solid var(--border-2);
   border-radius: var(--radius-sm);
@@ -974,9 +982,7 @@ svg.svg-sprite { display: none !important; }
   .ds-footer-tag { text-align: left; }
   .gdoc-markdown h1, .gdoc-page > article > h1:first-child { font-size: 26px; }
   .gdoc-markdown h2 { font-size: 21px; }
-  /* 부리체는 같은 px에서 산세리프보다 작아 보인다 — 모바일에서도 한 단계 크게 유지 */
-  .gdoc-markdown p { font-size: 16px; }
-  .gdoc-markdown li { font-size: 15.5px; }
+  .gdoc-markdown p, .gdoc-markdown li { font-size: 15.5px; }
   /* 표·코드블록은 카드 안에서 개별 스크롤 */
   .gdoc-markdown .table-wrap,
   .gdoc-markdown table:not(.lntable):not(.highlight) { display: block; overflow-x: auto; }
@@ -989,44 +995,41 @@ svg.svg-sprite { display: none !important; }
 ::-webkit-scrollbar-thumb:hover { background: var(--border-strong); }
 
 /* ════════════════════════════════════════════════════════════════════════
-   §T  타이포 역할 분담 — 「읽는 글」 부리체 / 「보는 요소」 Pretendard
+   §T  타이포 역할 분담 — 「제목」 부리체 / 「그 외 전부」 Pretendard
    ────────────────────────────────────────────────────────────────────────
-   .gdoc-markdown p / li / blockquote 는 위에서 마루부리로 지정했다.
-   문제는 홈·랜딩의 UI 컴포넌트도 마크다운 안에서 <p> 로 렌더된다는 점 —
-   그대로 두면 카드 설명·히어로 리드까지 부리체로 딸려간다.
-   아래는 그 UI <p> 들을 산세리프로 되돌리는 명시적 재지정이다.
+   부리체(MaruBuri)를 쓰는 곳은 위에서 개별 지정했다:
+     .gdoc-markdown h1~h4   문서 제목
+     .cw-sec-title          홈 섹션 제목
+   그 외(본문·목록·인용·표·사이드바·카드·버튼·푸터)는 전부 Pretendard다.
 
-   새 UI 컴포넌트를 마크다운 안에 <p> 로 추가하면 여기에도 한 줄 더할 것.
-   (판단 기준: 사용자가 "읽는" 글인가, 훑어"보는" 요소인가)
+   예외 — .cw-hero h1 은 Pretendard로 남긴다.
+     히어로는 400(가는 획) + 900(굵은 강조)의 대비로 설계돼 있는데,
+     마루부리는 상한이 700이라 그 대비를 재현할 수 없다. 부리체로 바꾸려면
+     400/900을 흉내내지 말고 히어로 자체를 단일 굵기로 재설계해야 한다.
+
+   아래는 부리체 제목이 지켜야 할 두 가지 안전장치다.
    ════════════════════════════════════════════════════════════════════════ */
-.gdoc-markdown .lead-p,
-.gdoc-markdown .cw-sec-lead,
-.gdoc-markdown .cw-prodcard-desc,
-.gdoc-markdown .cw-qstart-desc,
-.gdoc-markdown .cw-coral-cta__sub,
-.gdoc-markdown .cw-card p,
-.gdoc-markdown .cw-prodcard p,
-.gdoc-markdown .cw-qstart-card p,
-.gdoc-markdown .ds-note span,
-.gdoc-markdown figcaption {
-  font-family: var(--font-sans);
-  letter-spacing: var(--tracking-body);
+
+/* ① 굵기 상한 — 마루부리에는 800·900이 없다.
+      상속이나 기존 규칙으로 800+가 들어오면 브라우저가 가짜 굵게를 합성해
+      부리 획이 뭉갠다. 부리체를 쓰는 제목은 700을 넘지 않게 잘라둔다. */
+.gdoc-markdown h1 strong, .gdoc-markdown h2 strong,
+.gdoc-markdown h3 strong, .gdoc-markdown h4 strong,
+.gdoc-markdown h1 b, .gdoc-markdown h2 b,
+.gdoc-markdown h3 b, .gdoc-markdown h4 b,
+.cw-sec-title strong, .cw-sec-title b {
+  font-family: inherit;
+  font-weight: var(--fw-title-serif);
 }
 
-/* 표 안의 문단도 UI 성격 — 산세리프 유지 (표는 훑어보는 요소) */
-.gdoc-markdown table:not(.lntable):not(.highlight) p {
-  font-family: var(--font-sans);
-  font-size: inherit;
-  line-height: inherit;
-  letter-spacing: var(--tracking-body-tight);
+/* ② 제목 안의 코드·칩은 mono 유지 (부리체 상속 차단) */
+.gdoc-markdown h1 code, .gdoc-markdown h2 code,
+.gdoc-markdown h3 code, .gdoc-markdown h4 code {
+  font-family: var(--font-mono);
+  font-weight: var(--fw-semibold);
 }
 
-/* 부리체 본문 안의 강조 — 마루부리 Bold(700). 산세리프로 튀지 않게 한다. */
-.gdoc-markdown p strong,
-.gdoc-markdown li strong,
-.gdoc-markdown blockquote strong { font-family: inherit; font-weight: 700; }
-
-/* 인라인 코드·키캡은 본문 안에서도 mono 유지 (부리체 상속 차단) */
-.gdoc-markdown p code,
-.gdoc-markdown li code,
-.gdoc-markdown blockquote code { font-family: var(--font-mono); }
+/* 목차·앵커에 제목이 다시 쓰이는 자리는 UI다 — Pretendard 유지 */
+.cw-toc a, .cw-toc li, .gdoc-page__header .breadcrumb {
+  font-family: var(--font-sans);
+}

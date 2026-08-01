@@ -106,6 +106,7 @@ claude plugin uninstall moai-seller@moai-cowork
 | `moai-marketer` | 게시 채널(post-bridge·typefully·wordpress) | 각 서비스 계정 연결 |
 | `moai-media` | Higgsfield·ElevenLabs | Higgsfield OAuth([설정 가이드](higgsfield-setup/))·ElevenLabs API 키 |
 | `moai-story` | Higgsfield | Higgsfield OAuth([설정 가이드](higgsfield-setup/)) |
+| `moai-designer` | Higgsfield | Higgsfield OAuth([설정 가이드](higgsfield-setup/)) |
 | `moai-analyst` | KOSIS·DART·공공데이터포털 | 각 공공 API 키 환경변수 |
 | `moai-lawyer` | 국가법령정보 | 공공 API 키 환경변수 |
 | `moai-officer` | kordoc | 로컬 처리(별도 자격증명 없음) |

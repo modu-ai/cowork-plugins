@@ -195,7 +195,7 @@ flowchart LR
 
 ## 보조 플러그인 — `moai-designer`
 
-이 섹션의 운영 원칙·베스트 프랙티스를 자동화한 [`moai-designer`](/moai-agents/designer/) 플러그인이 마켓플레이스에 정식 등록되어 있습니다(13개 스킬). Cowork에서 자연어로 호출하면 AskUserQuestion으로 정보를 모은 뒤 claude.ai/design 채팅에 그대로 붙여 넣을 수 있는 산출물을 만들어 줍니다.
+이 섹션의 운영 원칙·베스트 프랙티스를 자동화한 [`moai-designer`](/moai-agents/designer/) 플러그인이 마켓플레이스에 정식 등록되어 있습니다(15개 스킬). Cowork에서 자연어로 호출하면 AskUserQuestion으로 정보를 모은 뒤 claude.ai/design 채팅에 그대로 붙여 넣을 수 있는 산출물을 만들어 줍니다.
 
 특히 **`design-system-library`**는 우리 브랜드 가이드북이 없을 때 가장 먼저 손댈 곳입니다. Notion·Linear·Stripe·Vercel·Figma·Sentry 등 75개 글로벌 브랜드 디자인 시스템을 빌트인으로 품고 있어 밑바닥부터 토큰을 정의하지 않고도 검증된 시스템에서 출발할 수 있습니다. [디자인 시스템 설정](design-system/) 페이지의 "사전 빌트인 시스템에서 시작" 원칙(원칙 6)과 직결됩니다.
 
@@ -207,6 +207,7 @@ flowchart LR
 | 특정 영역 | `cd-prompt-builder` | 시니어 UX 10 패턴 프롬프트 |
 | 결과 검수 | `cd-slop-check` | AI 슬롭 검수 + 수정안 |
 | 핸드오프 | `cd-handoff-reader` | 번들 요약 + Claude Code 지시 |
+| 모션 구현 | `design-landing-motion` | 시안을 움직이는 랜딩으로 — 효과 1개 선택 + 에셋 킷 + 출시 전 게이트 |
 
 ## 다음 단계
 
