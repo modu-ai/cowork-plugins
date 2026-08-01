@@ -598,39 +598,18 @@ a:hover, a:focus-visible { text-decoration: underline; text-underline-offset: 0.
 .highlight pre::-webkit-scrollbar-thumb:hover,
 .cw-code__body::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.32); }
 
-/* ── 일반 코드블록 (체인 다이어그램·shell 명령 등) — 회색 톤 박스 ── */
-.gdoc-markdown .highlight {
-  position: relative;
-  margin: 20px 0;
-  border-radius: 14px;
-  background: var(--neutral-50);
-  border: 1px solid var(--border-1);
-  overflow: hidden;
-}
-.gdoc-markdown .highlight pre {
-  margin: 0 !important;
-  padding: 16px 20px 18px !important;
-  background: transparent !important;
-  color: var(--fg-1) !important;
-  font-family: var(--font-mono) !important;
-  font-size: 13px !important;
-  line-height: 1.6 !important;
-  overflow-x: auto;
-  border-radius: 0 !important;
-}
-.gdoc-markdown .highlight code {
-  background: transparent !important;
-  color: inherit !important;
-  border: 0 !important;
-  padding: 0 !important;
-  font-size: inherit !important;
-  white-space: pre;
-}
-[data-theme="dark"] .gdoc-markdown .highlight {
-  background: rgba(255,255,255,0.03);
-  border-color: rgba(255,255,255,0.08);
-}
-[data-theme="dark"] .gdoc-markdown .highlight pre { color: var(--fg-1) !important; }
+/* ── 일반 코드블록 — 폐기됨 (moai-ds-v2.css §코드 블록이 소유) ────────────
+   여기 있던 규칙은 geekdoc main.css 와 싸우던 시절의 잔재였다. geekdoc CSS 를
+   더 이상 로드하지 않으므로, 남은 !important 는 우리 v2 레이어와 싸울 뿐이었다.
+
+   실제 사고: 이 블록의  color: var(--fg-1) !important  (#060606, 거의 검정) 가
+   v2 의  .gdoc-markdown .highlight { background: #09110f }  (어두운 터미널) 위에
+   얹혀 "검정 배경 + 검정 글씨"가 됐다. 주석만 보였던 건 주석 토큰이 chroma 에서
+   자기 색을 따로 받기 때문. 명령어는 색 클래스가 없어 pre 색을 상속한다.
+
+   교훈: 배경은 한 레이어(v2)가, 글자색은 다른 레이어(레거시 !important)가 정하면
+   대비가 깨진다. 배경과 글자색은 반드시 같은 레이어에서 함께 정할 것.
+   ──────────────────────────────────────────────────────────────────────── */
 
 /* ── Cowork 지시 코드블록 (`>` 시작) — macOS chrome + 검정 ── */
 /* JS가 첫 줄 `>` 검사 후 .cw-instruction 클래스 부여 */
@@ -2239,7 +2218,7 @@ main a:hover {
   border: 0;
   border-radius: var(--radius-md);
   background: var(--color-primary);
-  color: var(--color-on-primary) !important;
+  color: var(--color-on-primary);
   font-size: var(--text-sm);
   font-weight: var(--fw-medium);
   box-shadow: none;
@@ -2276,7 +2255,9 @@ main a:hover {
   color: var(--color-on-dark) !important;
 }
 .cw-hero .btn--ghost:hover { background: var(--color-surface-dark-elevated); }
-.cw-hero .btn--primary { color: var(--color-on-primary) !important; }
+/* .cw-hero .btn--primary 의 흰 글씨 강제는 제거됨 — 히어로 버튼은 흰 배경 +
+   초록 글씨(위 .cw-hero .btn--primary 규칙)가 정본이다. 흰 글씨를 다시 넣으면
+   흰 배경 위 흰 글씨가 되어 버튼이 사라진다. */
 .cw-hero .btn--primary, .cw-hero .btn--ghost { height: 44px; padding: 0 24px; }
 .cw-hero-ctas { position: relative; }
 

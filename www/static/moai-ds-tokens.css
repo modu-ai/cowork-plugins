@@ -13,25 +13,28 @@
  * 셀프호스팅 @font-face(.otf/.ttf), 픽셀 폰트(NeoDunggeunmo), GowunBatang 재도입 금지.
  */
 
-/* ── MaruBuri (마루 부리) — 본문 전용 부리(세리프) 서체. 네이버 한글한글 아름답게 CDN ──
+/* ── MaruBuri (마루 부리) — 제목 전용 부리(세리프) 서체. 네이버 한글한글 아름답게 CDN ──
  *
- * 역할 분담: 「읽는 글」은 마루부리, 「보는 요소」는 Pretendard.
- *   마루부리    본문 문단 · 목록 · 인용 · 리드 문단
- *   Pretendard  제목(h1~h4) · 사이드바 · 표 · 버튼 · 카드 라벨 · TOC · 푸터
+ * 역할 분담: 「제목」은 마루부리, 「그 외 전부」는 Pretendard.
+ *   마루부리    문서 제목 h1~h4 · 히어로 타이틀 · 홈 섹션 타이틀
+ *   Pretendard  본문 · 목록 · 인용 · 사이드바 · 표 · 버튼 · 카드 · TOC · 푸터
  *   JetBrains   코드 · eyebrow · 칩
  *
- * 굵기는 400(본문) / 700(strong) 두 종만 로드한다. 마루부리는 Pretendard와 달리
- * dynamic-subset이 아닌 통짜 woff2(각 약 430KB)라, 굵기를 늘리면 그만큼 무거워진다.
+ * 굵기는 600(대제목) / 700(소제목) 두 종만 로드한다. 마루부리는 Pretendard와 달리
+ * dynamic-subset이 아닌 통짜 woff2(각 약 450KB)라, 굵기를 늘리면 그만큼 무거워진다.
  * 굵기를 추가하려면 반드시 실제 사용처가 있는지 먼저 확인할 것.
  *
+ * ★ 마루부리에는 800(ExtraBold)·900(Black)이 없다. 제목에 800을 주면 브라우저가
+ *   가짜 굵게(faux bold)를 합성해 부리 획이 뭉갠다. 제목 굵기는 700을 넘기지 말 것.
+ *
  * 주의: 배포된 예제 CSS 중에는 SemiBold·Bold·Light·ExtraLight를 전부
- * font-weight:400 으로 선언한 것이 돌아다닌다. 나중 선언이 이기므로 본문(400)이
+ * font-weight:400 으로 선언한 것이 돌아다닌다. 나중 선언이 이기므로 400이
  * ExtraLight로 렌더되는 버그다. 아래처럼 굵기를 1:1로 맞춰야 한다.
  */
 @font-face {
   font-family: "MaruBuri";
-  src: url("https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Regular.woff2") format("woff2");
-  font-weight: 400;
+  src: url("https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2") format("woff2");
+  font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
@@ -95,7 +98,7 @@
   --font-latin: "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
   --font-display: var(--font-sans);
-  /* 본문 부리체 — 「읽는 글」 전용. 로드 중 폴백도 부리 계열로 유지해 인상이 튀지 않게 한다. */
+  /* 제목 부리체 — 「제목」 전용. 로드 중 폴백도 부리 계열로 유지해 인상이 튀지 않게 한다. */
   --font-serif: "MaruBuri", "Nanum Myeongjo", Batang, serif;
 
   /* ── Weights ── */
@@ -137,14 +140,14 @@
   --lh-relaxed: 1.75;
   --lh-prose: 1.85;        /* dc.html 본문 문단 (산세리프 기준) */
 
-  /* ── 부리체 본문 지표 ──
-     부리(세리프)는 획 대비가 커서 산세리프와 같은 값을 주면 빽빽해 보인다.
-     행간은 한 단계 넓히고, 자간은 Pretendard의 -0.03em보다 크게 풀어준다.
-     (Pretendard는 자간을 조여야 정돈되지만, 마루부리는 조이면 부리가 뭉친다.) */
-  --lh-prose-serif: 1.9;
-  --tracking-prose-serif: -0.01em;
-  --text-prose-serif: 16.5px;    /* 산세리프 16px과 시각적 크기를 맞춘 값 */
-  --text-prose-serif-sm: 16px;   /* 목록·인용 */
+  /* ── 부리체 제목 지표 ──
+     Pretendard 제목은 자간을 -0.05em까지 조여야 정돈되지만, 마루부리는 조이면
+     부리(획 끝 장식)가 서로 뭉친다. 제목 자간은 한참 풀어준다.
+     굵기도 마루부리 상한이 700이므로 800(ExtraBold)을 쓰지 않는다. */
+  --tracking-heading-serif: -0.02em;   /* 대제목 h1·히어로 */
+  --tracking-title-serif: -0.015em;    /* 소제목 h3·h4 */
+  --fw-heading-serif: 600;             /* h1·h2 — 큰 활자는 600으로 충분히 강하다 */
+  --fw-title-serif: 700;               /* h3·h4 — 작은 활자는 700이라야 버틴다 */
 
   /* ── Spacing (4px base) ── */
   --space-0: 0;

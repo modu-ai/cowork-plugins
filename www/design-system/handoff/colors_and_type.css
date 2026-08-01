@@ -72,26 +72,30 @@
   --gradient-signature-dark: #316750; /* @kind color */
 
   /* ── Type families ──
-     역할 분담: 「읽는 글」은 부리체(MaruBuri), 「보는 요소」는 Pretendard.
-       serif  본문 문단 · 목록 · 인용            (장문 가독성)
-       sans   제목 h1~h4 · 네비 · 사이드바 · 표 · 버튼 · 카드 · 푸터
+     역할 분담: 「제목」은 부리체(MaruBuri), 「그 외 전부」는 Pretendard.
+       serif  문서 제목 h1~h4 · 홈 섹션 제목
+       sans   본문 · 목록 · 인용 · 네비 · 사이드바 · 표 · 버튼 · 카드 · 히어로 · 푸터
        latin  숫자 · 영문 지표
        mono   코드 · eyebrow · 칩 · kbd
-     MaruBuri 는 네이버 한글한글 아름답게 CDN(woff2)에서 400·700 두 종만 로드한다.
-     Pretendard 와 달리 dynamic-subset 이 아니라 통짜 파일(각 약 430KB)이므로
-     굵기를 늘리기 전에 실제 사용처가 있는지 반드시 확인할 것. */
+     MaruBuri 는 네이버 한글한글 아름답게 CDN(woff2)에서 600·700 두 종만 로드한다.
+     Pretendard 와 달리 dynamic-subset 이 아니라 통짜 파일(각 약 450KB)이므로
+     굵기를 늘리기 전에 실제 사용처가 있는지 반드시 확인할 것.
+     ★ MaruBuri 에는 800·900 이 없다 — 제목 굵기는 700 을 넘기지 않는다.
+       넘기면 브라우저가 가짜 굵게를 합성해 부리 획이 뭉갠다.
+     ★ 히어로 타이틀은 sans 로 남긴다 — 400(가는 획)+900(굵은 강조) 대비 설계라
+       MaruBuri 로는 재현되지 않는다. */
   --font-sans: "Pretendard", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-serif: "MaruBuri", "Nanum Myeongjo", Batang, serif;
   --font-latin: "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
-  /* ── 부리체 본문 지표 (산세리프와 값이 다르다) ──
-     부리는 획 대비가 커서 산세리프와 같은 값이면 빽빽하고 작아 보인다.
-     행간은 한 단계 넓히고, 자간은 Pretendard(-0.03em)보다 풀어준다. */
-  --lh-prose-serif: 1.9;
-  --tracking-prose-serif: -0.01em;
-  --text-prose-serif: 16.5px;
-  --text-prose-serif-sm: 16px;
+  /* ── 부리체 제목 지표 (산세리프와 값이 다르다) ──
+     Pretendard 제목은 자간을 -0.05em 까지 조여야 정돈되지만, 부리는 조이면
+     획 끝 장식이 서로 뭉친다. 자간을 풀고 행간도 한 단계 넓힌다. */
+  --tracking-heading-serif: -0.02em;   /* h1 · h2 · 섹션 제목 */
+  --tracking-title-serif: -0.015em;    /* h3 · h4 */
+  --fw-heading-serif: 600;             /* 큰 활자는 600 으로 충분히 강하다 */
+  --fw-title-serif: 700;               /* 작은 활자는 700 이라야 버틴다 */
 
   /* ── Weights ── */
   --fw-regular: 400; /* @kind font */
