@@ -152,3 +152,7 @@
 {"timestamp":"2026-07-31T09:44:24.878117Z","event_type":"tool_failure","subject":"Bash","context_hash":"UnknownFailure","tier_increment":0,"schema_version":"v2.1"}
 {"timestamp":"2026-07-31T10:03:31.215481Z","event_type":"tool_failure","subject":"mcp__claude-in-chrome__tabs_context_mcp","context_hash":"UnknownFailure","tier_increment":0,"schema_version":"v2.1"}
 {"timestamp":"2026-07-31T10:04:35.243446Z","event_type":"tool_failure","subject":"mcp__claude-in-chrome__tabs_context_mcp","context_hash":"UnknownFailure","tier_increment":0,"schema_version":"v2.1"}
+{"timestamp":"2026-08-01T07:25:21.456255Z","event_type":"tool_failure","subject":"mcp__claude_ai_higgsfield__get_website_creation_instructions","context_hash":"UnknownFailure","tier_increment":0,"schema_version":"v2.1"}
+{"timestamp":"2026-08-01T07:25:26.938275Z","event_type":"tool_failure","subject":"mcp__claude_ai_higgsfield__balance","context_hash":"UnknownFailure","tier_increment":0,"schema_version":"v2.1"}
+{"timestamp":"2026-08-01T07:25:41.629806Z","event_type":"tool_failure","subject":"mcp__claude_ai_higgsfield__get_website_creation_instructions","context_hash":"UnknownFailure","tier_increment":0,"schema_version":"v2.1"}
+{"timestamp":"2026-08-01T08:03:17.755252Z","event_type":"tool_failure","subject":"Bash","context_hash":"UnknownFailure","tier_increment":0,"schema_version":"v2.1"}

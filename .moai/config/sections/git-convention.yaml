@@ -1,10 +1,10 @@
 git_convention:
-    auto_detection:
-        confidence_threshold: 0.5
-        enabled: true
-        fallback: conventional-commits
-        sample_size: 100
     convention: auto
+    auto_detection:
+        enabled: true
+        sample_size: 100
+        confidence_threshold: 0.5
+        fallback: conventional-commits
     validation:
         enforce_on_push: false
         max_length: 100
