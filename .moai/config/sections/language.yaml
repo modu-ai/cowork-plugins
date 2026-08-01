@@ -1,0 +1,8 @@
+language:
+    agent_prompt_language: en
+    code_comments: en
+    conversation_language: en
+    conversation_language_name: English
+    documentation: en
+    error_messages: en
+    git_commit_messages: en

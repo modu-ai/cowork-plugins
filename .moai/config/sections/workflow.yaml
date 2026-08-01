@@ -1,0 +1,195 @@
+workflow:
+    agentic_loop:
+        max_iterations: 10
+    auto_clear:
+        after_plan: true
+        after_run: false
+        enabled: true
+        token_threshold: 150000
+    default_mode: ""
+    execution_mode: auto
+    loop_prevention:
+        failure_pattern_detection: true
+        max_iterations: 100
+        max_retries_per_operation: 3
+    model_routing:
+        L-mx:
+            effort: medium
+            model: sonnet
+        L-plan:
+            effort: high
+            model: opus
+        L-run:
+            effort: xhigh
+            model: sonnet
+        L-sync:
+            effort: high
+            model: sonnet
+        M-mx:
+            effort: low
+            model: sonnet
+        M-plan:
+            effort: medium
+            model: sonnet
+        M-run:
+            effort: xhigh
+            model: sonnet
+        M-sync:
+            effort: medium
+            model: sonnet
+        S-mx:
+            effort: low
+            model: sonnet
+        S-plan:
+            effort: medium
+            model: sonnet
+        S-run:
+            effort: high
+            model: sonnet
+        S-sync:
+            effort: low
+            model: sonnet
+    model_routing_profiles:
+        low:
+            L-mx:
+                effort: low
+                model: sonnet
+            L-plan:
+                effort: xhigh
+                model: sonnet
+            L-run:
+                effort: xhigh
+                model: sonnet
+            L-sync:
+                effort: medium
+                model: sonnet
+            M-mx:
+                effort: low
+                model: sonnet
+            M-plan:
+                effort: medium
+                model: sonnet
+            M-run:
+                effort: high
+                model: sonnet
+            M-sync:
+                effort: low
+                model: sonnet
+            S-mx:
+                effort: low
+                model: sonnet
+            S-plan:
+                effort: medium
+                model: sonnet
+            S-run:
+                effort: high
+                model: sonnet
+            S-sync:
+                effort: low
+                model: sonnet
+        max:
+            L-mx:
+                effort: medium
+                model: sonnet
+            L-plan:
+                effort: xhigh
+                model: opus
+            L-run:
+                effort: xhigh
+                model: sonnet
+            L-sync:
+                effort: high
+                model: sonnet
+            M-mx:
+                effort: low
+                model: sonnet
+            M-plan:
+                effort: xhigh
+                model: opus
+            M-run:
+                effort: xhigh
+                model: sonnet
+            M-sync:
+                effort: medium
+                model: sonnet
+            S-mx:
+                effort: low
+                model: sonnet
+            S-plan:
+                effort: high
+                model: opus
+            S-run:
+                effort: xhigh
+                model: sonnet
+            S-sync:
+                effort: medium
+                model: sonnet
+        medium:
+            L-mx:
+                effort: medium
+                model: sonnet
+            L-plan:
+                effort: high
+                model: opus
+            L-run:
+                effort: xhigh
+                model: sonnet
+            L-sync:
+                effort: high
+                model: sonnet
+            M-mx:
+                effort: low
+                model: sonnet
+            M-plan:
+                effort: medium
+                model: sonnet
+            M-run:
+                effort: xhigh
+                model: sonnet
+            M-sync:
+                effort: medium
+                model: sonnet
+            S-mx:
+                effort: low
+                model: sonnet
+            S-plan:
+                effort: medium
+                model: sonnet
+            S-run:
+                effort: high
+                model: sonnet
+            S-sync:
+                effort: low
+                model: sonnet
+    token_budget:
+        plan: 30000
+        run: 180000
+        sync: 40000
+    workflow_agents:
+        design-architecture:
+            effort: xhigh
+            model: opus
+        implement:
+            effort: xhigh
+            model: sonnet
+        mechanical-transform:
+            effort: medium
+            model: sonnet
+        read-only-extract:
+            effort: low
+            model: sonnet
+        research:
+            effort: high
+            model: sonnet
+        synthesize:
+            effort: high
+            model: sonnet
+        verify-judge:
+            effort: xhigh
+            model: sonnet
+    worktree:
+        auto_cleanup: true
+        auto_create: false
+        auto_merge: true
+        session_name_pattern: moai-{ProjectName}-{SPEC-ID}
+        tmux_preferred: true

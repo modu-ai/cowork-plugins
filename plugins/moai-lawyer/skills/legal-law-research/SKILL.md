@@ -13,7 +13,7 @@ description: |
   - "주택임대차보호법 5단계 안내" (legal_research action_plan)
   - "근로기준법 최근 개정 신구대조표" (amendment_track)
   법무팀·로펌·법률 연구자·공무원·계약서 검토자·학생 대상. 사전 준비: 법제처 OC 키(law.go.kr 무료), 환경변수 KOREAN_LAW_OC.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 법령 리서치 (Law Research)

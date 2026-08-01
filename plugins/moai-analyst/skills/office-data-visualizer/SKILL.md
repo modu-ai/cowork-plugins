@@ -8,7 +8,7 @@ description: |
   - "시각화해줘"
   - "대시보드 만들어줘"
   Mermaid·Recharts·Chart.js·Tremor·ECharts 중 적합한 스택으로 인터랙티브 대시보드를 제작하고, moai-officer:office-pptx-designer / moai-officer:office-docx-generator로 PPT·Word 변환까지 이어집니다.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 데이터 시각화 (Data Visualizer)
@@ -133,3 +133,9 @@ Word 보고서 요청 시:
 2. `moai-writer:general-humanize-korean` — 2차 한국어 정밀 윤문 (40+ 패턴 SSOT, 의미 불변)
 
 두 게이트는 대시 대비 헤드라인·조사·체언 종결 조각문·"A에서 B로" 전환 공식 S1 패턴을 잡아냅니다. 게이트 통과 없이 산출물을 바로 배포하지 않습니다.
+
+## References
+
+| 파일 | 로드 조건 |
+|------|-----------|
+| references/data-visualizer/guide.md | Chart.js HTML 템플릿, Mermaid 차트 종류, 한국 비즈니스 색상 팔레트가 필요할 때 |

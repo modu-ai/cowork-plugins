@@ -5,9 +5,9 @@ description: |
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   "자동화 진단해줘", "내 매장 자동화 우선순위", "ROI 자동화 영역 찾아줘", "자동화 로드맵 만들어줘", "Quick Wins Phase 진단", "반복형 판단형 창의형 분류", "RPA 도입 검토", "AI Copilot 적용", "HITL 검수 지점 설계", "조직 규모별 자동화 도구 추천".
   6대 영역 (A 상품운영 / B 가격&프로모션 / C 주문&정산 / D 재고&물류 / E 마케팅&고객 / F 데이터&경영) 진단 + 자동화 3분류 + 우선순위 점수 (빈도×시간×오류비용÷복잡도) + 5대 KPI + 3 Phase 로드맵.
-  general-ai-slop-reviewer 자동 체이닝 (진단 보고서 텍스트 산출물).
+  general-ai-slop-reviewer 자동 체이닝 (진단 보고서 텍스트 산출물). 슬롭 검수 직후 moai-writer:general-humanize-korean으로 한국어 AI 티를 제거합니다 (슬롭 검수 다음, 필수).
   이커머스 운영 자동화 가능성 자가 진단 + 우선순위·로드맵 생성.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 커머스 자동화 진단·로드맵 (Commerce Automation Audit)

@@ -11,41 +11,41 @@ aliases: ["/cowork/constraints/"]
 
 ```mermaid
 flowchart TB
-    subgraph Plan["요금제 한도"]
-        FREE["Free: 미지원"]
-        PRO["Pro: 개인용"]
-        MAX["Max: 확장 한도"]
-        TEAM["Team: 관리자 콘솔"]
-        ENT["Enterprise: 전체 기능"]
-    end
+   subgraph Plan["요금제 한도"]
+       FREE["Free: 미지원"]
+       PRO["Pro: 개인용"]
+       MAX["Max: 확장 한도"]
+       TEAM["Team: 관리자 콘솔"]
+       ENT["Enterprise: 전체 기능"]
+   end
 
-    subgraph Session["세션·컨텍스트"]
-        CTX["대화 컨텍스트"]
-        COMP["자동 압축"]
-        TK["토큰 한도"]
-    end
+   subgraph Session["세션·컨텍스트"]
+       CTX["대화 컨텍스트"]
+       COMP["자동 압축"]
+       TK["토큰 한도"]
+   end
 
-    subgraph FileSystem["파일 시스템"]
-        PERM["폴더 권한 (명시적 선택)"]
-        PATH["Windows MAX_PATH 260자"]
-        FILES["동시 파일 수"]
-    end
+   subgraph FileSystem["파일 시스템"]
+       PERM["폴더 권한 (명시적 선택)"]
+       PATH["Windows MAX_PATH 260자"]
+       FILES["동시 파일 수"]
+   end
 
-    subgraph Plugin["플러그인·커넥터"]
-        MKT["마켓플레이스"]
-        OAUTH["OAuth scope"]
-        MCP["MCP 서버"]
-    end
+   subgraph Plugin["플러그인·커넥터"]
+       MKT["마켓플레이스"]
+       OAUTH["OAuth scope"]
+       MCP["MCP 서버"]
+   end
 
-    Plan --> Session
-    Session --> FileSystem
-    FileSystem --> Plugin
+   Plan --> Session
+   Session --> FileSystem
+   FileSystem --> Plugin
 
-    style FREE fill:#f5dcd7,stroke:#c44a3a,color:#09110f
-    style PRO fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style MAX fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style TEAM fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style ENT fill:#dceee9,stroke:#2a8a8c,color:#09110f
+   style FREE fill:#f5dcd7,stroke:#c44a3a,color:#09110f
+   style PRO fill:#e6e6e6,stroke:#757575,color:#09110f
+   style MAX fill:#e8f1ec,stroke:#265240,color:#09110f
+   style TEAM fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style ENT fill:#e8f1ec,stroke:#2a8a8c,color:#09110f
 ```
 
 ## 한눈에 보기
@@ -101,7 +101,7 @@ Windows의 기본 경로 길이 한계는 260자입니다. 한국어 폴더명�
 
 Cowork는 사용자가 토큰·컨텍스트를 직접 관리하지 않도록 설계되어 있습니다. 다만 다음 동작이 알려져 있습니다.
 
-- 긴 대화는 일정 시점에 **자동 압축**(auto-compact)이 일어나며, 압축 중 일부 디테일이 요약되어 손실될 수 있습니다
+- 긴 대화는 일정 시점에 **자동 압축**(auto-compact)이 일어나며 압축 중 일부 디테일이 요약되어 손실될 수 있습니다
 - 압축이 잦으면 결과 품질이 저하 — **핵심 결과물을 파일로 저장한 뒤 새 대화로 이전**하는 편이 안정적
 - 1M 토큰 컨텍스트 모델(Opus·Sonnet 상위)은 Max·Team·Enterprise 플랜에서 제공되며, Pro 플랜은 추가 사용 토글이 필요할 수 있음 ([1M Context GA 공지](https://claude.com/blog/1m-context-ga))
 - Plan 모드 또는 일부 작업은 모델별 세부 한도가 다를 수 있으니 [공식 문서](https://support.claude.com)의 최신 안내를 따르세요
@@ -114,13 +114,13 @@ Cowork는 사용자가 토큰·컨텍스트를 직접 관리하지 않도록 설
 
 - **Claude 공식 카탈로그** ([claude.com/plugins](https://claude.com/plugins)) — 영업·재무·법무·마케팅·HR 등 기본 제공
 - **공식 오픈소스** ([anthropics/knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins))
-- **커뮤니티 마켓플레이스** — 예: [`modu-ai/cowork-plugins`](https://github.com/modu-ai/cowork-plugins) 같은 GitHub 저장소
+- **커뮤니티 마켓플레이스** — 예: [`modu-ai/moai-cowork`](https://github.com/modu-ai/moai-cowork) 같은 GitHub 저장소
 
 ### 4-2. 설치 흐름
 
 1. Cowork 좌측 사이드바 > **사용자 지정(Customize)** > **개인 플러그인**
 2. **플러그인 추가** > **마켓플레이스 추가**
-3. 마켓플레이스 URL 입력 (예: `modu-ai/cowork-plugins`) → **동기화**
+3. 마켓플레이스 URL 입력 (예: `modu-ai/moai-cowork`) → **동기화**
 4. 목록에서 원하는 플러그인 옆 **+** 클릭
 
 ### 4-3. 활성·비활성 정책
@@ -132,7 +132,7 @@ Cowork는 사용자가 토큰·컨텍스트를 직접 관리하지 않도록 설
 ### 4-4. 플러그인 자동 업데이트
 
 - Anthropic 공식 카탈로그: 자동 업데이트 ON
-- 서드파티(GitHub) 마켓플레이스: 사용자가 수동 갱신 (예: cowork-plugins는 신버전 후 사용자 측에서 마켓플레이스 갱신 필요)
+- 서드파티(GitHub) 마켓플레이스: 사용자가 수동 갱신 (예: 모두의 코워크는 신버전 후 사용자 측에서 마켓플레이스 갱신 필요)
 - 조직 정책에 의해 자동 업데이트가 제한될 수 있음
 
 ## 5. 커넥터와 MCP
@@ -147,7 +147,7 @@ Cowork 설정 > 커넥터에서 Google Drive·Gmail·Google Calendar·Slack·Git
 
 ### 5-2. 사용자 지정 MCP 서버
 
-내장 커넥터가 없는 서비스(사내 위키·내부 API·공공데이터 포털 등)는 **MCP(Model Context Protocol) 서버**를 통해 연결합니다 ([Get started with custom connectors using remote MCP](https://support.claude.com/en/articles/11175166)).
+내장 커넥터가 없는 서비스(사내 위키·내부 API·공공데이터 포털 등)는 **MCP(Model Context Protocol) 서버**로 연결합니다 ([Get started with custom connectors using remote MCP](https://support.claude.com/en/articles/11175166)).
 
 - Cowork 설정 > 커넥터 > **커스텀 커넥터 추가**에서 MCP 서버 URL과 인증 방식을 입력
 - 처음 보는 MCP URL은 **사용자가 책임지고 검증**해야 합니다 (악성 도구 노출 가능)
@@ -155,7 +155,7 @@ Cowork 설정 > 커넥터에서 Google Drive·Gmail·Google Calendar·Slack·Git
 
 ### 5-3. 커넥터 한도
 
-- 동시 연결 가능한 커넥터 수의 명시적 상한은 공개되지 않았으나, 너무 많이 연결하면 도구 선택의 모호성이 커져 결과 품질이 떨어집니다 — **작업별로 필요한 커넥터만 활성화** 권장
+- 동시 연결 가능한 커넥터 수의 명시적 상한은 공개되지 않았으나 너무 많이 연결하면 도구 선택의 모호성이 커져 결과 품질이 떨어집니다 — **작업별로 필요한 커넥터만 활성화** 권장
 - 일부 커넥터(예: WordPress)는 자동 발행 권한을 요구 — 데모 사이트에서 충분히 검증 후 운영 사이트에 적용
 
 ## 6. 예약 작업·자동화
@@ -203,7 +203,7 @@ Team·Enterprise 관리자는 다음을 제어할 수 있습니다 ([Manage plug
 | 문제 | 회피 |
 |---|---|
 | Free 플랜에서 Cowork 안 보임 | Pro 이상으로 업그레이드 |
-| Team에서 cowork-plugins 마켓플레이스 추가 안 됨 | 관리자에게 마켓플레이스 승인 요청 |
+| Team에서 모두의 코워크 마켓플레이스 추가 안 됨 | 관리자에게 마켓플레이스 승인 요청 |
 | 작업 폴더 권한 다이얼로그 거부 | OS 설정에서 수동 재허용 |
 | Windows 한국어 파일 저장 실패 | 짧은 경로(`C:\w\`)로 작업 폴더 이전 |
 | 긴 대화 품질 저하 | 핵심 결과물 파일 저장 후 새 대화 시작 |

@@ -53,4 +53,4 @@ claude plugin install moai-cs@moai-cowork
 
 ## 라이선스
 
-LicenseRef-MoAI-NC-ND-1.0 · © modu-ai (email@mo.ai.kr)
+Apache-2.0 · © 2026 modu-ai (email@mo.ai.kr) — 산출물은 이용자 소유([LICENSE-OUTPUT.md](../../LICENSE-OUTPUT.md))

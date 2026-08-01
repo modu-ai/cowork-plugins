@@ -15,7 +15,7 @@ description: |
   - "건강기능식품 1일 섭취량", "MFDS 공식 정보", "식약처 부적합"
   - "의약품 안전 체크", "식품 안전 체크", "회수·판매중지 식품 검색"
   - 헬스/F&B 커머스에서 상품 안전성 확인 시
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # MFDS 의약품·식품 안전 체크 (통합)
@@ -56,9 +56,9 @@ red flag 가 하나라도 있으면 **API 조회보다 즉시 119·응급실·�
 
 ## Prerequisites
 
-사용자 측 필수 시크릿 **없음**.
+사용자 측 필수 시크릿 **없음**. 인터넷 연결만 있으면 동작합니다.
 
-- `KSKILL_PROXY_BASE_URL` (선택): self-host 시
+- `KSKILL_PROXY_BASE_URL` (선택): self-host 프록시 사용 시. 비우면 기본 hosted `https://k-skill-proxy.nomadamas.org` 사용.
 - 운영 측: `DATA_GO_KR_API_KEY` (의약품 + 부적합), `FOODSAFETYKOREA_API_KEY` (건강기능식품 + 회수 live) — 프록시 서버에만 둡니다
 - `FOODSAFETYKOREA_API_KEY` 발급: `https://www.foodsafetykorea.go.kr` 회원가입 → OpenAPI 이용신청. 키 1개로 I-0040, I-0050, I0030, I0490, I2620 모두 사용
 
@@ -93,6 +93,23 @@ red flag 가 하나라도 있으면 **API 조회보다 즉시 119·응급실·�
 | 건강기능식품 원료 | `GET /v1/mfds/food-safety/health-food-ingredient` |
 | 건강기능식품 품목제조 | `GET /v1/mfds/food-safety/product-report` |
 | 검사부적합 | `GET /v1/mfds/food-safety/inspection-fail` |
+
+## 실행 예시 (curl)
+
+base URL은 `KSKILL_PROXY_BASE_URL`이 설정돼 있으면 그 값을, 없으면 기본 hosted `https://k-skill-proxy.nomadamas.org`를 사용합니다.
+
+```bash
+# 1) 의약품 통합 조회 — 제품명으로 e약은요·안전상비의약품 확인
+curl -s "https://k-skill-proxy.nomadamas.org/v1/mfds/drug-safety/lookup?q=타이레놀"
+
+# 2) 건강기능식품 기능성 원료 인정현황 — 원료명으로 1일 섭취량·주의사항 확인
+curl -s "https://k-skill-proxy.nomadamas.org/v1/mfds/food-safety/health-food-ingredient?q=차전자피"
+
+# 3) 식품 회수·부적합 공개 목록 검색 — 제품명/업체명으로 회수 이력 확인
+curl -s "https://k-skill-proxy.nomadamas.org/v1/mfds/food-safety/search?q=김밥"
+```
+
+응답은 JSON이며, 프록시가 `FOODSAFETYKOREA_API_KEY` 없이 동작하는 경우 결과가 sample feed 기반일 수 있습니다(`warnings` 필드 확인).
 
 ## Official surfaces
 

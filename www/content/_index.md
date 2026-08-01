@@ -1,101 +1,167 @@
 ---
 title: "모두의 코워크"
-description: "Claude Desktop으로 시작하는 AI 활용 완전 가이드 — Chat · Cowork · Design · Code 4가지 제품을 한곳에서. 한국어 학습 허브."
+description: "모두의 코워크 마켓플레이스 — 17개 AI 직원 플러그인. 마케팅·셀러·법무·디자인까지, 필요한 직무만 골라 설치하고 자연어로 일을 맡기세요."
 geekdocAnchor: false
 geekdocBreadcrumb: false
+# DS v2 parity — 홈은 사이드바/TOC 없이 전폭 랜딩 (design-system/handoff/*.dc.html isHome)
+geekdocNav: false
 ---
 
 <div class="cw-hero">
-  <img class="cw-hero-creature" src="/logo-creature.png" alt="" aria-hidden="true" />
+  <div class="cw-hero-in">
+  <div class="cw-hero-copy">
   <div class="eyebrow"><span class="dot"></span>{{< version >}} · {{< release-date >}} · claude.mo.ai.kr</div>
-  <h1>모두를 위한<br/><span class="accent">Claude 완전 가이드</span></h1>
+  <h1>필요한 일마다,<br/><span class="accent">AI 직원을 채용하세요</span></h1>
   <p class="lead-p">
-    Claude Desktop의 4가지 제품(Chat·Cowork·Design·Code)을 처음부터 끝까지 배웁니다. 코드를 몰라도, 디자이너가 아니어도, 누구나 따라할 수 있게 한국어로 정리했습니다.
+    모두의 코워크 마켓플레이스의 <strong>17개 플러그인</strong>은 각각 한 명의 전문 직원입니다. 마케팅·셀러·법무·디자인 — 필요한 직무만 골라 설치하면, 자연어 한마디로 일이 시작됩니다.
   </p>
   <div class="cw-hero-ctas">
-    <a class="btn btn--primary" href="/getting-started/first-task/">5분 만에 시작 →</a>
-    <a class="btn btn--ghost" href="/chat/">Chat부터 알아보기</a>
+    <a class="btn btn--primary" href="#plugin-family">플러그인 둘러보기 →</a>
+    <a class="btn btn--ghost" href="/plugins/install/">5분 설치 가이드</a>
+  </div>
+  </div>
+  <div class="cw-hero-mascot" aria-hidden="true">
+    {{< mascot variant="explaining" alt="두 손 벌려 안내하는 모아이 마스코트" >}}
+  </div>
   </div>
   <div class="cw-hero-meta">
-    <div class="item"><div class="num">4</div><div class="lbl">주요 제품</div></div>
-    <div class="item"><div class="num">10+</div><div class="lbl">가이드 섹션</div></div>
-    <div class="item"><div class="num">50+</div><div class="lbl">실전 예시</div></div>
+    <div class="item"><div class="num">17</div><div class="lbl">AI 직원</div></div>
+    <div class="item"><div class="num">8+</div><div class="lbl">직무 분야</div></div>
+    <div class="item"><div class="num">215</div><div class="lbl">스킬</div></div>
     <div class="item"><div class="num">{{< version >}}</div><div class="lbl">최신 버전</div></div>
   </div>
 </div>
 
-<div class="cw-academy-banner">
-  <div class="cw-academy-banner__inner">
-    <div class="cw-academy-banner__head">
-      <span class="cw-academy-banner__eyebrow">모두의 Claude 아카데미 · 모집 중</span>
-      <h3 class="cw-academy-banner__title">강의로 가장 빠르게 익히기</h3>
-    </div>
-    <p class="cw-academy-banner__lead">
-      <strong>Claude Desktop으로 시작하는 AI 생활 — 코드 없이 2일.</strong> Chat·Cowork·Design·Code를 한두 가지만 알아도 하루를 20% 더 효율적으로 쓸 수 있습니다. 이 강의에서는 정말 필요한 기능들을 골라 실전 워크플로우로 배웁니다.
-    </p>
-    <ul class="cw-academy-banner__points">
-      <li>2일 집중 (7월 19-20일 토·일 · 10:00-18:00) — Claude Desktop 설치부터 첫 결과물까지</li>
-      <li>직접 만드는 산출물 — 마크다운·슬라이드·이미지 생성·자동화 스크립트</li>
-      <li>오프라인 정원 30석 · 강사 구스 · 수강 후 30일 운영 지원</li>
-    </ul>
-    <div class="cw-academy-banner__ctas">
-      <a class="btn btn--primary" href="https://academy.mo.ai.kr/?utm_source=claude-docs&utm_medium=banner&utm_campaign=docs-home" target="_blank" rel="noopener noreferrer">강의 안내 보기 →</a>
-      <a class="btn btn--ghost" href="/chat/" >Chat부터 시작하기</a>
-    </div>
-  </div>
-</div>
-
-<section class="cw-redsec">
-  <div class="cw-sec-eyebrow">Products</div>
-  <div class="cw-sec-title">4가지 제품 — 누가, 언제 쓸까</div>
-  <div class="cw-prodgrid">
-    <a class="cw-prodcard" href="/chat/">
-      <span class="cw-prodcard-ico" style="background:#F1E7D9;color:#4A3D30"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></svg></span>
-      <div class="cw-prodcard-label">Chat</div>
-      <p class="cw-prodcard-desc">질문·설명·검토를 텍스트로. 한국어를 완벽 지원하는 가장 간단한 시작점.</p>
-      <div class="cw-prodcard-cta">첫 대화 →</div>
+<section class="cw-redsec" id="plugin-family">
+  <div class="cw-sec-eyebrow">Plugin Family</div>
+  <div class="cw-sec-title">17-직원 플러그인 패밀리</div>
+  <p class="cw-sec-lead">이름이 곧 직무입니다. 전부 설치할 필요는 없습니다 — 회사에서 필요한 직무만 채용하듯, 필요한 직원만 골라 담으세요. 각 카드를 누르면 직원 소개로 이동합니다.</p>
+  <div class="cw-prodgrid cw-plugrid">
+    <a class="cw-prodcard" href="/moai-agents/coworker/">
+      <span class="cw-prodcard-ico cw-plug-ico">{{< icon briefcase >}}</span>
+      <div class="cw-prodcard-label">코워커</div>
+      <p class="cw-prodcard-desc">브랜드·제안서·보고·협상 등 비즈니스 범용 실무와 라이프스타일까지.</p>
+      <div class="cw-prodcard-cta">범용 실무 →</div>
     </a>
-    <a class="cw-prodcard" href="/cowork/">
-      <span class="cw-prodcard-ico" style="background:#E6EFE4;color:#5B8C5A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.2"/><rect x="14" y="3" width="7" height="7" rx="1.2"/><rect x="14" y="14" width="7" height="7" rx="1.2"/><rect x="3" y="14" width="7" height="7" rx="1.2"/></svg></span>
-      <div class="cw-prodcard-label">Cowork</div>
-      <p class="cw-prodcard-desc">한국 업무 18개 플러그인. 사업계획·IR·계약서·이메일을 자동 생성.</p>
-      <div class="cw-prodcard-cta">플러그인 설치 →</div>
+    <a class="cw-prodcard" href="/moai-agents/writer/">
+      <span class="cw-prodcard-ico cw-plug-ico">{{< icon pen-line >}}</span>
+      <div class="cw-prodcard-label">작가</div>
+      <p class="cw-prodcard-desc">출판 기획·집필·제안서, 한국어 인문화 윤문과 맞춤법 검수.</p>
+      <div class="cw-prodcard-cta">창작·출판 →</div>
     </a>
-    <a class="cw-prodcard" href="/design/">
-      <span class="cw-prodcard-ico" style="background:#FBEEE7;color:#BC5F40"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".7" fill="currentColor" stroke="none"/><circle cx="17" cy="11" r=".7" fill="currentColor" stroke="none"/><circle cx="8" cy="7" r=".7" fill="currentColor" stroke="none"/><circle cx="6.5" cy="12" r=".7" fill="currentColor" stroke="none"/><path d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 10 10 4 4 0 0 1-4 4h-3a2 2 0 0 0-2 2c0 1.1.5 1.6.5 2 0 1.1-.5 2-2 2z"/></svg></span>
-      <div class="cw-prodcard-label">Design</div>
-      <p class="cw-prodcard-desc">클릭 가능한 프로토타입. 텍스트 설명만으로 UI·슬라이드·랜딩 시안.</p>
-      <div class="cw-prodcard-cta">시작하기 →</div>
+    <a class="cw-prodcard" href="/moai-agents/story/">
+      <span class="cw-prodcard-ico cw-plug-ico">{{< icon book-open >}}</span>
+      <div class="cw-prodcard-label">스토리 크리에이터</div>
+      <p class="cw-prodcard-desc">웹툰·웹소설·시나리오·콘티·캐릭터 시트까지 IP 창작 전 과정.</p>
+      <div class="cw-prodcard-cta">창작·IP →</div>
     </a>
-    <a class="cw-prodcard" href="/code/">
-      <span class="cw-prodcard-ico" style="background:#F7EBD4;color:#C98A2E"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 17 6-6-6-6"/><path d="M12 19h8"/></svg></span>
-      <div class="cw-prodcard-label">Code</div>
-      <p class="cw-prodcard-desc">터미널에서 코딩. 코드 설명·작성·리팩토링을 자연어로 요청.</p>
-      <div class="cw-prodcard-cta">첫 작업 →</div>
+    <a class="cw-prodcard" href="/moai-agents/marketer/">
+      <span class="cw-prodcard-ico cw-plug-ico">{{< icon megaphone >}}</span>
+      <div class="cw-prodcard-label">마케터</div>
+      <p class="cw-prodcard-desc">캠페인 기획·퍼포먼스 분석·콘텐츠·광고 (Meta Ads 연동).</p>
+      <div class="cw-prodcard-cta">마케팅 →</div>
+    </a>
+    <a class="cw-prodcard" href="/moai-agents/media/">
+      <span class="cw-prodcard-ico cw-plug-ico">{{< icon clapperboard >}}</span>
+      <div class="cw-prodcard-label">미디어 크리에이터</div>
+      <p class="cw-prodcard-desc">이미지·영상·오디오 생성 (Higgsfield·ElevenLabs·Gemini).</p>
+      <div class="cw-prodcard-cta">미디어 생성 →</div>
+    </a>
+    <a class="cw-prodcard" href="/moai-agents/seller/">
+      <span class="cw-prodcard-ico cw-plug-ico">{{< icon shopping-cart >}}</span>
+      <div class="cw-prodcard-label">셀러</div>
+      <p class="cw-prodcard-desc">스마트스토어·아임웹·카페24 운영, 상세페이지·CRM까지.</p>
+      <div class="cw-prodcard-cta">이커머스 →</div>
+    </a>
+    <a class="cw-prodcard" href="/moai-agents/officer/">
+      <span class="cw-prodcard-ico cw-plug-ico">{{< icon file-text >}}</span>
+      <div class="cw-prodcard-label">사무관</div>
+      <p class="cw-prodcard-desc">HWPX·DOCX·XLSX·PPTX·PDF 한국형 오피스 문서와 HTML 리포트.</p>
+      <div class="cw-prodcard-cta">문서·오피스 →</div>
+    </a>
+    <a class="cw-prodcard" href="/moai-agents/analyst/">
+      <span class="cw-prodcard-ico cw-plug-ico">{{< icon chart-column >}}</span>
+      <div class="cw-prodcard-label">데이터 애널리스트</div>
+      <p class="cw-prodcard-desc">공공데이터·KOSIS·DART 조회와 데이터 시각화.</p>
+      <div class="cw-prodcard-cta">데이터·분석 →</div>
+    </a>
+    <a class="cw-prodcard" href="/moai-agents/lawyer/">
+      <span class="cw-prodcard-ico cw-plug-ico">{{< icon scale >}}</span>
+      <div class="cw-prodcard-label">법무 담당</div>
+      <p class="cw-prodcard-desc">계약 검토·컴플라이언스, 법령/판례 리서치 (국가법령정보 연동).</p>
+      <div class="cw-prodcard-cta">전문직 →</div>
+    </a>
+    <a class="cw-prodcard" href="/moai-agents/accountant/">
+      <span class="cw-prodcard-ico cw-plug-ico">{{< icon wallet >}}</span>
+      <div class="cw-prodcard-label">재무·세무 담당</div>
+      <p class="cw-prodcard-desc">재무제표 분석·결산·세금 절약·가계 예산 관리.</p>
+      <div class="cw-prodcard-cta">전문직 →</div>
+    </a>
+    <a class="cw-prodcard" href="/moai-agents/recruiter/">
+      <span class="cw-prodcard-ico cw-plug-ico">{{< icon handshake >}}</span>
+      <div class="cw-prodcard-label">인사·채용 담당</div>
+      <p class="cw-prodcard-desc">채용 공고·이력서 스크리닝·오퍼레터·성과평가 (고용주 편).</p>
+      <div class="cw-prodcard-cta">전문직 →</div>
+    </a>
+    <a class="cw-prodcard" href="/moai-agents/cs/">
+      <span class="cw-prodcard-ico cw-plug-ico">{{< icon headphones >}}</span>
+      <div class="cw-prodcard-label">CS매니저</div>
+      <p class="cw-prodcard-desc">티켓 분류·응답 초안·VOC 분석·지식베이스 운영.</p>
+      <div class="cw-prodcard-cta">고객지원 →</div>
+    </a>
+    <a class="cw-prodcard" href="/moai-agents/consultant/">
+      <span class="cw-prodcard-ico cw-plug-ico">{{< icon briefcase >}}</span>
+      <div class="cw-prodcard-label">컨설턴트</div>
+      <p class="cw-prodcard-desc">사업계획서·시장 분석·정부 지원사업 매칭·상권분석.</p>
+      <div class="cw-prodcard-cta">경영 자문 →</div>
+    </a>
+    <a class="cw-prodcard" href="/moai-agents/career/">
+      <span class="cw-prodcard-ico cw-plug-ico">{{< icon compass >}}</span>
+      <div class="cw-prodcard-label">커리어코치</div>
+      <p class="cw-prodcard-desc">이력서·포트폴리오 첨삭, 면접 준비, 이직 전략 (구직자 편).</p>
+      <div class="cw-prodcard-cta">커리어 →</div>
+    </a>
+    <a class="cw-prodcard" href="/moai-agents/tutor/">
+      <span class="cw-prodcard-ico cw-plug-ico">{{< icon graduation-cap >}}</span>
+      <div class="cw-prodcard-label">튜터</div>
+      <p class="cw-prodcard-desc">커리큘럼 설계·평가 문항 작성·논문 검색과 작성 지원.</p>
+      <div class="cw-prodcard-cta">교육 →</div>
+    </a>
+    <a class="cw-prodcard" href="/moai-agents/designer/">
+      <span class="cw-prodcard-ico cw-plug-ico">{{< icon palette >}}</span>
+      <div class="cw-prodcard-label">디자이너</div>
+      <p class="cw-prodcard-desc">Claude Design 연동, 토큰 파이프라인, 브랜드 디자인 시스템.</p>
+      <div class="cw-prodcard-cta">디자인 →</div>
+    </a>
+    <a class="cw-prodcard" href="/moai-agents/pm/">
+      <span class="cw-prodcard-ico cw-plug-ico">{{< icon rocket >}}</span>
+      <div class="cw-prodcard-label">PM</div>
+      <p class="cw-prodcard-desc"><code>/project</code> 명령 하나로 프로젝트 단위 셋업과 직원 배치를 라우팅.</p>
+      <div class="cw-prodcard-cta">프로젝트 허브 →</div>
     </a>
   </div>
 </section>
 
-<section class="cw-redsec">
+<section class="cw-redsec" id="quickstart">
   <div class="cw-sec-eyebrow">Quick Start</div>
   <div class="cw-sec-title">5분이면 충분합니다</div>
   <div class="cw-qstart">
     <div class="cw-qstart-card">
       <div class="cw-qstart-step">Step 01</div>
       <div class="cw-qstart-title">마켓플레이스 추가</div>
-      <p class="cw-qstart-desc">모두의 코워크 마켓플레이스(moai-cowork)를 등록합니다.</p>
+      <p class="cw-qstart-desc">모두의 코워크 마켓플레이스(moai-cowork)를 한 번 등록합니다.</p>
       <pre class="cw-qstart-pre"><span class="p">$</span> claude plugin marketplace add modu-ai/moai-cowork</pre>
     </div>
     <div class="cw-qstart-card">
       <div class="cw-qstart-step">Step 02</div>
-      <div class="cw-qstart-title">플러그인 설치</div>
-      <p class="cw-qstart-desc">필요한 플러그인을 골라 담습니다 — 18개 중에서.</p>
+      <div class="cw-qstart-title">직원 채용(설치)</div>
+      <p class="cw-qstart-desc">필요한 직원을 골라 담습니다 — 17명 중에서.</p>
       <pre class="cw-qstart-pre"><span class="p">$</span> claude plugin install moai-coworker@moai-cowork</pre>
     </div>
     <div class="cw-qstart-card">
       <div class="cw-qstart-step">Step 03</div>
-      <div class="cw-qstart-title">워크플로우 실행</div>
-      <p class="cw-qstart-desc">자연어로 스킬을 호출하면 체인이 자동 연결됩니다.</p>
+      <div class="cw-qstart-title">자연어로 일 맡기기</div>
+      <p class="cw-qstart-desc">슬래시 명령 없이 요청하면 매칭 스킬이 자동 호출됩니다.</p>
       <pre class="cw-qstart-pre"><span class="p">&gt;</span> 블로그 초안 작성해줘</pre>
     </div>
   </div>
@@ -103,8 +169,8 @@ geekdocBreadcrumb: false
 
 <section class="cw-coral-cta">
   <div>
-    <h3 class="cw-coral-cta__title">지금 첫 산출물을 만들어 보세요</h3>
-    <p class="cw-coral-cta__sub">설치부터 첫 결과물까지 — 빌드 과정 없이 바로 시작합니다.</p>
+    <h3 class="cw-coral-cta__title">어떤 직원을 뽑을지 고민되나요?</h3>
+    <p class="cw-coral-cta__sub">설치·운용 매뉴얼과 직원별 소개를 한곳에서 — 빌드 과정 없이 바로 시작합니다.</p>
   </div>
-  <a class="cw-coral-cta__btn" href="/getting-started/">문서 열기 →</a>
+  <a class="cw-coral-cta__btn" href="/plugins/">플러그인 문서 열기 →</a>
 </section>

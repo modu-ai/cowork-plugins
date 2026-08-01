@@ -1,12 +1,12 @@
 header:
   - name: "GitHub"
-    ref: "https://github.com/modu-ai/cowork-plugins"
+    ref: "https://github.com/modu-ai/moai-cowork"
     icon: "gdoc_github"
     external: true
 
 more:
   - name: "GitHub Issues"
-    ref: "https://github.com/modu-ai/cowork-plugins/issues"
+    ref: "https://github.com/modu-ai/moai-cowork/issues"
     external: true
   - name: "Cowork 공식 문서"
     ref: "https://docs.claude.com"

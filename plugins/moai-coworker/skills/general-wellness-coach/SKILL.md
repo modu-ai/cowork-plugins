@@ -2,12 +2,12 @@
 name: general-wellness-coach
 description: >
   운동·식단·건강·육아·시니어 케어를 종합적으로 코칭합니다. "운동 루틴 만들어줘", "다이어트 식단 짜줘", "아이 발달 단계 알려줘", "부모님 노인 복지 서비스 알려줘"라고 요청할 때 사용하세요. 운동 계획, 영양 균형 식단, 육아 전략, 시니어 케어 계획을 지원합니다.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 웰니스 코치 (Wellness Coach)
 
-> moai-lifestyle | 건강/육아 전문 스킬
+> moai-coworker | 건강/육아 전문 스킬
 
 ## 전략 가이드
 
@@ -107,3 +107,12 @@ general-wellness-coach → moai-coworker:general-ai-slop-reviewer → moai-write
 - **정신건강 위기 또는 자해·자살 위험** → 자살예방상담전화 1393, 정신건강 위기상담전화 1577-0199로 즉시 연락하세요
 - **영유아 응급 상황** → 119 또는 소아응급실로 즉시 이동하세요
 - **노인 장기 요양 등급 신청** → 국민건강보험공단(1577-1000)에 직접 신청해야 합니다
+
+## References
+
+| 파일 | 로드 조건 |
+|------|----------|
+| references/fitness-program.md | 운동 코칭 요청 시 (건강 목표 설정→운동 프로그램 설계→진도 추적→동기 부여) |
+| references/meal-planner.md | 식단 코칭 요청 시 (영양 목표 설정→식단 설계→쇼핑 목록 작성→조리 계획) |
+| references/parenting-guide.md | 육아 코칭 요청 시 (양육 현황 파악→발달 단계 이해→양육 전략 수립→문제 해결) |
+| references/elderly-care-planning.md | 시니어 케어 요청 시 (건강 현황 파악→돌봄 필요도 평가→지원 계획→자산 관리) |

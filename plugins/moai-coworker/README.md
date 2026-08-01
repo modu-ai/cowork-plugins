@@ -1,6 +1,6 @@
 # 코워커 (moai-coworker)
 
-실무 범용 코어 AI 직원입니다. 브랜드·제안서·보고·협상·프로세스 관리 등 어느 업종에나 필요한 비즈니스 실무 스킬 25종을 제공합니다. 슬래시 명령을 외울 필요 없이 자연어로 요청하면 매칭되는 스킬이 자동 호출됩니다.
+실무 범용 코어 AI 직원입니다. 브랜드·제안서·보고·협상·프로세스 관리 등 어느 업종에나 필요한 비즈니스 실무 스킬 30종을 제공합니다. 슬래시 명령을 외울 필요 없이 자연어로 요청하면 매칭되는 스킬이 자동 호출됩니다.
 
 **이런 분께 추천**: 1인 사업자 · 스타트업 운영자 · 실무 전반을 혼자 처리하는 분
 
@@ -37,7 +37,7 @@ claude plugin install moai-coworker@moai-cowork
 /plugin install moai-coworker
 ```
 
-## 스킬 25종
+## 스킬 30종
 
 호출 형식: `/moai-coworker:<스킬명>` — 예: `/moai-coworker:business-proposal-writer`. 자연어 요청("제안서 써줘")으로도 자동 매칭됩니다.
 
@@ -99,4 +99,4 @@ claude plugin install moai-coworker@moai-cowork
 
 ## 라이선스
 
-LicenseRef-MoAI-NC-ND-1.0 · © modu-ai (email@mo.ai.kr)
+Apache-2.0 · © 2026 modu-ai (email@mo.ai.kr) — 산출물은 이용자 소유([LICENSE-OUTPUT.md](../../LICENSE-OUTPUT.md))

@@ -1,27 +1,27 @@
 ---
 title: "법률 리스크 관리"
 weight: 20
-description: "기업의 법적 리스크 평가·IP 포트폴리오·법령 변화 영향 분석을 moai-legal:legal-risk 스킬로 체계화."
+description: "기업의 법적 리스크 평가·IP 포트폴리오·법령 변화 영향 분석을 moai-lawyer:legal-risk 스킬로 체계화."
 geekdocBreadcrumb: true
 ---
 > 법적 리스크는 사고가 나기 전에는 보이지 않다가, 한 번 터지면 매출의 몇 분의 일이 날아갑니다. 정기적으로 점검 가능한 형태로 만들어 두는 것이 핵심입니다.
 
 ```mermaid
 flowchart TD
-    A["legal-risk<br/>종합 리스크 평가"] --> B{"위험 카테고리"}
-    B -- "계약" --> C["contract-review"]
-    B -- "규제" --> D["compliance-check"]
-    B -- "법령 변화" --> E["daily-briefing"]
-    C & D & E --> F["종합 보고서"]
+   A["legal-risk<br/>종합 리스크 평가"] --> B{"위험 카테고리"}
+   B -- "계약" --> C["contract-review"]
+   B -- "규제" --> D["compliance-check"]
+   B -- "법령 변화" --> E["daily-briefing"]
+   C & D & E --> F["종합 보고서"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style F fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style F fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 ## 사용 스킬
 
-- **`moai-legal:legal-risk`** — 기업 법적 리스크 평가, 특허 침해 위험 분석, 개인정보 위반 리스크 체크, IP 포트폴리오 분석, 2026년 법령 변화 영향 분석
-- 보조: `moai-legal:compliance-check` (규제 준수), `moai-legal:contract-review` (계약 리스크), `moai-business:daily-briefing` (법령 변화 모니터링)
+- **`moai-lawyer:legal-legal-risk`** — 기업 법적 리스크 평가, 특허 침해 위험 분석, 개인정보 위반 리스크 체크, IP 포트폴리오 분석, 2026년 법령 변화 영향 분석
+- 보조: `moai-lawyer:legal-compliance-check` (규제 준수), `moai-lawyer:legal-contract-review` (계약 리스크), `moai-officer:office-daily-briefing` (법령 변화 모니터링)
 
 ## 4가지 리스크 카테고리
 
@@ -43,7 +43,7 @@ flowchart TD
 > 각 카테고리당 상위 3개 리스크와 완화 방안을 표로 정리해줘.
 {{< /terminal >}}
 
-`legal-risk` 스킬이 4분면 매트릭스로 결과를 돌려줍니다. 위험도(저·중·고) × 발생 가능성(저·중·고) 9칸에 리스크가 매핑됩니다.
+`legal-legal-risk` 스킬이 4분면 매트릭스로 결과를 돌려줍니다. 위험도(저·중·고) × 발생 가능성(저·중·고) 9칸에 리스크가 매핑됩니다.
 
 ## IP 포트폴리오 점검
 
@@ -56,20 +56,20 @@ flowchart TD
 
 ## 2026년 한국 주요 법령 변화
 
-`legal-risk` 스킬이 추적하는 주요 변화 영역:
+`legal-legal-risk` 스킬이 추적하는 주요 변화 영역:
 
 - 개인정보보호법 시행령 개정 (CCTV·자동화 의사결정)
 - AI 기본법 시행 (생성형 AI 라벨링 의무)
 - 공정거래법 — 플랫폼 사업자 추가 규제
 - 노동법 — 주 4.5일제 시범, 외국인 고용 절차
 
-분기 1회 `daily-briefing`으로 변화를 받고, 영향이 큰 항목만 `legal-risk`로 깊이 분석합니다.
+분기 1회 `office-daily-briefing`으로 변화를 받고, 영향이 큰 항목만 `legal-legal-risk`로 깊이 분석합니다.
 
 ## 자주 겪는 실수
 
 - **리스크 점검을 사고 발생 후에만** — 정례화하지 않으면 의미가 없습니다. 캘린더에 분기별 일정을 박아두세요.
 - **점검 결과를 보고서로만 끝내고 액션 아이템 미할당** — 리스크 항목당 담당자·기한을 명시합니다.
-- **법령 변화를 모르고 운영** — `daily-briefing`을 [예약 작업](../../../cowork/schedule/)으로 등록해 매일 아침 받으세요.
+- **법령 변화를 모르고 운영** — `office-daily-briefing`을 [예약 작업](../../../cowork/schedule/)으로 등록해 매일 아침 받으세요.
 
 ## 다음 단계
 
@@ -81,5 +81,5 @@ flowchart TD
 
 ### Sources
 
-- moai-legal 플러그인 [`legal-risk`](https://github.com/modu-ai/cowork-plugins/blob/main/moai-legal/skills/legal-risk/SKILL.md)
+- moai-lawyer 플러그인 [`legal-legal-risk`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-lawyer/skills/legal-legal-risk/SKILL.md)
 - [개인정보보호위원회](https://www.pipc.go.kr) · [공정거래위원회](https://www.ftc.go.kr) · [특허청](https://www.kipo.go.kr)

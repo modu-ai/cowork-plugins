@@ -9,13 +9,13 @@ tags: [cookbook, legal]
 
 ```mermaid
 flowchart TD
-    A["nda-triage<br/>분류·분석"] --> B["contract-review<br/>조항 검토"]
-    B --> C["legal-risk<br/>위험도 평가"]
-    C --> D["docx-generator<br/>보고서 생성"]
-    D --> E["ai-slop-reviewer<br/>어투 정리"]
+   A["nda-triage<br/>분류·분석"] --> B["contract-review<br/>조항 검토"]
+   B --> C["legal-risk<br/>위험도 평가"]
+   C --> D["docx-generator<br/>보고서 생성"]
+   D --> E["ai-slop-reviewer<br/>어투 정리"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style E fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style E fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 ## 대상 독자
@@ -24,7 +24,7 @@ flowchart TD
 
 ## 사전 준비
 
-- 플러그인: `moai-legal`, `moai-office`, `moai-core:ai-slop-reviewer`
+- 플러그인: `moai-lawyer`, `moai-officer`, `moai-coworker:general-ai-slop-reviewer`
 - 입력: `./nda_inbox/` 폴더(NDA PDF 다수), 회사명·핵심 영업비밀 카테고리
 - 산출물 위치: `./90_Output/nda-report/`
 
@@ -38,51 +38,51 @@ NDA 검토를 한 번에 끝내는 스킬이 하나가 아니라 다섯 스킬�
 
 ```mermaid
 flowchart LR
-    RAW["NDA 원본<br/>12건 PDF<br/>(반제품 원료)"]
+   RAW["NDA 원본<br/>12건 PDF<br/>(반제품 원료)"]
 
-    subgraph PIPE["컨베이어 벨트 — 데이터가 한 방향으로 흐른다"]
-        direction LR
-        S1["① nda-triage<br/>역할: 분류<br/>───────────<br/>상호/일방 구분<br/>기간·손배 캡<br/>준거법 구분<br/>───────────<br/>→ 종류별로 묶음"]
-        S2["② contract-review<br/>역할: 조항 수정<br/>───────────<br/>조항별 정밀 검토<br/>수정 제안 마크업<br/>───────────<br/>→ 고쳐야 할 조항 표시"]
-        S3["③ legal-risk<br/>역할: 위험도 스티커<br/>───────────<br/>상/중/하 평가<br/>우선순위 부여<br/>───────────<br/>→ 위험 순위 매김"]
-        S4["④ docx-generator<br/>역할: 보고서 포장<br/>───────────<br/>1페이지 요약<br/>+ NDA별 상세<br/>한 권으로 합침<br/>───────────<br/>→ 통합 보고서 1권"]
-        S5["⑤ ai-slop-reviewer<br/>역할: 어투 닦기 (품질)<br/>───────────<br/>기계적 어투 제거<br/>사람이 쓴 듯 자연스럽게<br/>───────────<br/>→ 읽기 편한 문장"]
-        S1 --> S2 --> S3 --> S4 --> S5
-    end
+   subgraph PIPE["컨베이어 벨트 — 데이터가 한 방향으로 흐른다"]
+       direction LR
+       S1["① nda-triage<br/>역할: 분류<br/>───────────<br/>상호/일방 구분<br/>기간·손배 캡<br/>준거법 구분<br/>───────────<br/>→ 종류별로 묶음"]
+       S2["② contract-review<br/>역할: 조항 수정<br/>───────────<br/>조항별 정밀 검토<br/>수정 제안 마크업<br/>───────────<br/>→ 고쳐야 할 조항 표시"]
+       S3["③ legal-risk<br/>역할: 위험도 스티커<br/>───────────<br/>상/중/하 평가<br/>우선순위 부여<br/>───────────<br/>→ 위험 순위 매김"]
+       S4["④ docx-generator<br/>역할: 보고서 포장<br/>───────────<br/>1페이지 요약<br/>+ NDA별 상세<br/>한 권으로 합침<br/>───────────<br/>→ 통합 보고서 1권"]
+       S5["⑤ ai-slop-reviewer<br/>역할: 어투 닦기 (품질)<br/>───────────<br/>기계적 어투 제거<br/>사람이 쓴 듯 자연스럽게<br/>───────────<br/>→ 읽기 편한 문장"]
+       S1 --> S2 --> S3 --> S4 --> S5
+   end
 
-    FINAL["최종 위험 보고서<br/>.docx<br/>(완성품)"]
+   FINAL["최종 위험 보고서<br/>.docx<br/>(완성품)"]
 
-    RAW --> S1
-    S5 --> FINAL
+   RAW --> S1
+   S5 --> FINAL
 
-    subgraph MISS["한 단계가 빠지면?"]
-        M1["① 분류 없음<br/>상호·일방 구분 불가"]
-        M3["③ 위험평가 없음<br/>우선순위 사라짐"]
-        M5["⑤ 어투정리 없음<br/>기계처럼 딱딱한 문장"]
-    end
+   subgraph MISS["한 단계가 빠지면?"]
+       M1["① 분류 없음<br/>상호·일방 구분 불가"]
+       M3["③ 위험평가 없음<br/>우선순위 사라짐"]
+       M5["⑤ 어투정리 없음<br/>기계처럼 딱딱한 문장"]
+   end
 
-    subgraph PRIN["핵심 원칙"]
-        P1["순서 = 품질<br/>데이터는 한 방향"]
-        P2["앞 단계 결과가<br/>뒷 단계 입력"]
-    end
+   subgraph PRIN["핵심 원칙"]
+       P1["순서 = 품질<br/>데이터는 한 방향"]
+       P2["앞 단계 결과가<br/>뒷 단계 입력"]
+   end
 ```
 
 ```mermaid
 flowchart LR
-    R["NDA 원본<br/>(반제품 원료)"] --> S1["① nda-triage<br/>분류"]
-    S1 --> S2["② contract-review<br/>조항 수정"]
-    S2 --> S3["③ legal-risk<br/>위험도 스티커"]
-    S3 --> S4["④ docx-generator<br/>보고서 포장"]
-    S4 --> S5["⑤ ai-slop-reviewer<br/>어투 닦기"]
-    S5 --> O["최종 위험 보고서"]
+   R["NDA 원본<br/>(반제품 원료)"] --> S1["① nda-triage<br/>분류"]
+   S1 --> S2["② contract-review<br/>조항 수정"]
+   S2 --> S3["③ legal-risk<br/>위험도 스티커"]
+   S3 --> S4["④ docx-generator<br/>보고서 포장"]
+   S4 --> S5["⑤ ai-slop-reviewer<br/>어투 닦기"]
+   S5 --> O["최종 위험 보고서"]
 
-    style R fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style S1 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style S2 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style S3 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style S4 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style S5 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style O fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style R fill:#e6e6e6,stroke:#757575,color:#09110f
+   style S1 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style S2 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style S3 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style S4 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style S5 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style O fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 ## 스킬 체인
@@ -93,17 +93,17 @@ nda-triage → contract-review → legal-risk → docx-generator → ai-slop-rev
 
 | 단계 | 스킬 | 역할 |
 |---|---|---|
-| 1 | `nda-triage` | 분류 — 상호/일방, 기간, 손해배상 캡, 준거법 |
-| 2 | `contract-review` | 조항별 정밀 검토, 수정 제안 마크업 |
-| 3 | `legal-risk` | 종합 위험도 평가 (상/중/하), 우선순위 부여 |
-| 4 | `docx-generator` | 위험 보고서 docx 생성 |
-| 5 | `ai-slop-reviewer` | 보고서 어투 정리 |
+| 1 | `legal-nda-triage` | 분류 — 상호/일방, 기간, 손해배상 캡, 준거법 |
+| 2 | `legal-contract-review` | 조항별 정밀 검토, 수정 제안 마크업 |
+| 3 | `legal-legal-risk` | 종합 위험도 평가 (상/중/하), 우선순위 부여 |
+| 4 | `office-docx-generator` | 위험 보고서 docx 생성 |
+| 5 | `general-ai-slop-reviewer` | 보고서 어투 정리 |
 
 ## 사용 방식 — 한 줄 요청 (패턴 3: 배치 처리)
 
 > **위험한 안티 패턴**: 사용자가 모든 옵션(회사명·영업비밀·5단계 스킬·저장 경로·면책 문구)을 매번 직접 작성하는 것은 권장되지 않습니다. 시스템이 가진 자동 인터뷰 + 체이닝을 무력화합니다. ([4가지 사용 패턴 - 패턴 3](/cowork/patterns/#패턴-3--배치-처리-batch-processing))
 
-### ✅ 올바른 한 줄 요청
+### {{< icon circle-check >}} 올바른 한 줄 요청
 
 {{< terminal title="claude — cowork" >}}
 > ./nda_inbox/ 폴더의 NDA 12개 위험도 검토해서 한 페이지로 정리해줘
@@ -129,17 +129,17 @@ NDA 일괄 검토도 같은 원리입니다. nda-triage, contract-review, legal-
 
 ```mermaid
 flowchart TB
-    P["./nda_inbox/ 폴더<br/>NDA 12개 PDF"] --> Loop["파일별 분기 처리"]
-    Loop --> S1["nda-triage × 12<br/>상호/일방·기간·캡·준거법"]
-    Loop --> S2["contract-review × 12<br/>조항별 수정 제안"]
-    Loop --> S3["legal-risk × 12<br/>상/중/하 + 우선순위"]
-    S1 --> Agg["통합 위험 보고서"]
-    S2 --> Agg
-    S3 --> Agg
-    Agg --> D["docx-generator<br/>1페이지 요약 + 상세"]
-    D --> AI["ai-slop-reviewer<br/>어투 정리"]
-    AI --> Out["90_Output/nda-report/<br/>2026-Q2-nda-review.docx"]
-    style Out fill:#e6f0ef,stroke:#144a46
+   P["./nda_inbox/ 폴더<br/>NDA 12개 PDF"] --> Loop["파일별 분기 처리"]
+   Loop --> S1["nda-triage × 12<br/>상호/일방·기간·캡·준거법"]
+   Loop --> S2["contract-review × 12<br/>조항별 수정 제안"]
+   Loop --> S3["legal-risk × 12<br/>상/중/하 + 우선순위"]
+   S1 --> Agg["통합 위험 보고서"]
+   S2 --> Agg
+   S3 --> Agg
+   Agg --> D["docx-generator<br/>1페이지 요약 + 상세"]
+   D --> AI["ai-slop-reviewer<br/>어투 정리"]
+   AI --> Out["90_Output/nda-report/<br/>2026-Q2-nda-review.docx"]
+   style Out fill:#e8f1ec,stroke:#265240
 ```
 
 ### 산출물
@@ -166,7 +166,7 @@ flowchart TB
 
 {{< hint type="warning" >}}
 **이슈 2 — 한국 영업비밀보호법 §2 누락.**
-`contract-review`가 미국식 trade secret 기준을 적용하면 한국 영업비밀보호법(부정경쟁방지 및 영업비밀보호에 관한 법률) 기준 보호요건(비밀관리성·경제성·비공지성)이 빠질 수 있습니다. 프롬프트에 "한국 영업비밀보호법 §2 기준 적용"을 명시하세요.
+`legal-contract-review`가 미국식 trade secret 기준을 적용하면 한국 영업비밀보호법(부정경쟁방지 및 영업비밀보호에 관한 법률) 기준 보호요건(비밀관리성·경제성·비공지성)이 빠질 수 있습니다. 프롬프트에 "한국 영업비밀보호법 §2 기준 적용"을 명시하세요.
 {{< /hint >}}
 
 {{< hint type="warning" >}}
@@ -176,18 +176,18 @@ flowchart TB
 
 ## 응용 변형
 
-- **계약서 일괄 검토** — `nda-triage` 대신 `contract-review` 단독으로 시작, 계약 유형별 분류 필요 시 직접 폴더로 분리
-- **팀 합의 워크플로우** — 검토 후 `compliance-check`(개인정보보호법) 추가, 사내 정책 위반 여부 별도 점검
+- **계약서 일괄 검토** — `legal-nda-triage` 대신 `legal-contract-review` 단독으로 시작, 계약 유형별 분류 필요 시 직접 폴더로 분리
+- **팀 합의 워크플로우** — 검토 후 `legal-compliance-check`(개인정보보호법) 추가, 사내 정책 위반 여부 별도 점검
 - **반복 사용** — 슬래시 명령으로 저장: `/nda-batch`로 한 번에 전체 체인 실행
 
 ## 다음 단계
 
 - [계약서 검토](../contract-review/) — 단건 정밀 검토
-- [moai-legal 플러그인](../../plugins/moai-legal/)
+- [moai-lawyer 플러그인](/moai-agents/lawyer/)
 - [트러블슈팅](/cowork/troubleshooting/)
 
 ---
 
 ### Sources
-- [modu-ai/cowork-plugins — moai-legal](https://github.com/modu-ai/cowork-plugins/tree/main/moai-legal)
+- [modu-ai/moai-cowork — moai-lawyer](https://github.com/modu-ai/moai-cowork/tree/main/plugins/moai-lawyer)
 - 부정경쟁방지 및 영업비밀보호에 관한 법률 (국가법령정보센터)

@@ -8,7 +8,7 @@ description: |
   - "도서 본문", "장 본문", "초고 작성"
   - "장르별 문체", "출판 원고 작성"
   - "인용 처리", "각주 표기", "도표 삽입"
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # book-chapter-writer

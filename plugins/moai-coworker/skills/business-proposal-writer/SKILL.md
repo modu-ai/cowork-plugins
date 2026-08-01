@@ -9,15 +9,16 @@ description: |
   - "B2B 영업 제안서 작성", "RFP 답변 만들어줘", "고객사 제안서"
   - "솔루션 제안서 초안", "[고객사명] 제안서", "이 RFP 답변 초안"
   - "B2B SaaS 제안서", "엔터프라이즈 영업 제안서", "수주 제안서"
+  - "나라장터 입찰 제안서", "적격심사 서류", "기술평가서"
 
-  주의: 정부 지원사업 신청서는 `moai-consultant:business-kr-gov-grant`를 사용하세요. 본 스킬은 **B2B 영업 고객 대상** 제안서만 다룹니다.
+  주의: 정부 지원사업 신청서는 `moai-consultant:business-kr-gov-grant`를 사용하세요. 본 스킬은 **B2B 영업·공공조달 입찰 고객 대상** 제안서를 다룹니다.
   투자자 IR 자료는 `moai-accountant:finance-investor-relations`를 사용하세요.
-version: "6.0.0"
+version: "1.0.0"
 ---
 
 # Proposal Writer — B2B 영업 제안서 자동 생성
 
-> moai-sales | 한국 B2B 영업 워크플로우 첫 스킬
+> moai-coworker | 한국 B2B 영업 워크플로우 첫 스킬
 
 ## 개요
 
@@ -53,6 +54,14 @@ RFP가 제공된 경우, 모든 필수 항목을 추출해 체크리스트화합
 
 체크리스트는 출력 마지막에 별도 섹션으로 첨부하며, **누락 항목은 빨간색 `❌` 마커**로 강조합니다.
 
+**공공조달(나라장터) 입찰인 경우**: `references/nara-jangteo.md`를 로드해 전자입찰 절차·참가 자격(국세·지방세 완납, 부정당업자 제재 여부, 중소기업 확인서 가점)·제안 준비 워크플로우(요건 분석→역량 매칭→기술·가격 제안)를 함께 적용하고, 아래 **국가계약법 기준 필수 첨부 체크리스트**를 컴플라이언스 체크리스트에 추가합니다:
+
+- [ ] 사업자등록증 사본
+- [ ] 중소기업 확인서 (가점·분리 공고 대상 시)
+- [ ] 수행 실적증명서 (요구 실적 대비 매칭 표 포함)
+- [ ] 납세증명서 (국세·지방세 완납 — 유효기간 확인)
+- [ ] 입찰 보증보험증권 / 법인등기부등본 / 인감증명서 (공고문 요구 시)
+
 ### 3단계: 12섹션 본문 생성 (Complete)
 
 표준 한국 B2B 제안서 12섹션 구조:
@@ -70,7 +79,9 @@ RFP가 제공된 경우, 모든 필수 항목을 추출해 체크리스트화합
 | 9 | 레퍼런스·도입 사례 | 동종업계 사례 + 정량 효과 |
 | 10 | 가격·라이선스 모델 | VAT 별도/포함 명시, 결제 조건 |
 | 11 | 위험·완화 방안 | 도입 리스크 + 대응 전략 |
-| 12 | 부록·참고자료 | 자격증, 인증서, 추가 자료 |
+| 12 | 부록·참고자료 | 자격증, 인증서, 추가 자료 — 공공조달 입찰 시 국가계약법 기준 필수 첨부(사업자등록증·중소기업 확인서·실적증명·납세증명) 목록화 |
+
+공공조달 입찰이면 6번(기술 스펙)을 **기술평가서** 형식 — 공고 평가 기준표와 목차 1:1 대응 — 으로 작성합니다 (`references/nara-jangteo.md` 제안 준비 워크플로우 참조).
 
 ### 4단계: 한국 격식·톤 적용
 
@@ -152,9 +163,14 @@ RFP가 제공된 경우, 모든 필수 항목을 추출해 체크리스트화합
 
 **After (출력 후처리)**:
 - `moai-coworker:general-ai-slop-reviewer` — 본문 AI slop 검수 (필수)
+- `moai-writer:general-humanize-korean` — 한국어 AI 티 제거 (슬롭 검수 다음, 필수)
 - `moai-officer:office-docx-generator` — Word/PDF 출력
 - `moai-officer:office-pptx-designer` — 슬라이드 출력
 - `moai-officer:office-xlsx-creator` — 견적서 별도 발행 (본 스킬이 가격 섹션 기반 견적 명세 표를 작성한 뒤 스프레드시트로 출력)
+
+**공공조달 입찰 체이닝**:
+- `moai-accountant:finance-financial-statements` — 재무제표 첨부 준비 / 납세증명 등 세무 첨부는 `moai-accountant:finance-tax-helper` 안내
+- `moai-lawyer:legal-contract-review` — 낙찰 후·협상 단계 계약 조건 검토
 
 **Alternative (대체 스킬)**:
 - `moai-accountant:finance-investor-relations` — 투자자 대상 IR (B2B 고객 아님)
@@ -167,6 +183,12 @@ RFP가 제공된 경우, 모든 필수 항목을 추출해 체크리스트화합
   - B2B 영업 제안서: `moai-consultant:business-market-analyst → moai-coworker:business-proposal-writer → moai-coworker:general-ai-slop-reviewer → moai-officer:office-docx-generator`
   - B2B 영업 슬라이드: `moai-consultant:business-market-analyst → moai-coworker:business-proposal-writer → moai-coworker:general-ai-slop-reviewer → moai-officer:office-pptx-designer`
   - 견적서 분리: `moai-coworker:business-proposal-writer → moai-officer:office-xlsx-creator` (business-proposal-writer가 가격 섹션 기반 견적 명세 표를 직접 작성)
+
+## 상세 레퍼런스
+
+| 파일 | 로드 조건 |
+|------|-----------|
+| references/nara-jangteo.md | 나라장터(G2B) 공공조달 입찰 제안서·적격심사 서류·기술평가서 작성 시 (전자입찰 절차·참가 자격·필수 첨부·제안 준비 워크플로우) |
 
 ## 출처
 

@@ -9,7 +9,7 @@ description: |
   - Higgsfield 모델의 파라미터를 하드코딩하지 않고 런타임 조회해야 할 때
   - namespace(mcp__higgsfield__ vs mcp__claude_ai_higgsfield__)를 런타임 해석해야 할 때
   이 스킬은 단독 실행 스킬이 아니라 두 소비 스킬이 참조하는 공유 코어입니다.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # Higgsfield 코어 (media-higgsfield-core)
@@ -61,6 +61,12 @@ Higgsfield 도구의 namespace 접두사는 등록 방식에 따라 `mcp__higgsf
 |---|---|
 | `moai-media:media-higgsfield-image` | 소비: 이미지 생성 |
 | `moai-media:media-higgsfield-video` | 소비: 영상 생성 |
+| `moai-media:media-higgsfield-identity` | 소비: Soul·Element 일관성 참조 |
+| `moai-media:media-higgsfield-assets` | 소비: 3D·오디오·영상 분석·후처리 |
+| `moai-media:media-higgsfield-explainer` | 소비: 블록 조립형 설명 영상 |
+| `moai-media:media-higgsfield-product` | 소비: 제품 촬영 10모드 |
+| `moai-designer:design-brand-visual` | 소비(교차 플러그인): 브랜드 정합 비주얼 |
+| `moai-story:story-*` | 소비(교차 플러그인): 작화·콘티·표지·캐릭터 |
 
 ## 출처
 

@@ -4,7 +4,7 @@ description: >
   피드백을 건설적으로 주고, 받은 피드백을 감정 상하지 않게 소화하도록 도와주는 스킬입니다.
   '피드백 어떻게 줘야 해', '부정적 피드백 받았는데 속상해', '피드백 전달하는 법', '중간 점검 요청하고 싶어'처럼 말하면 됩니다.
   SBI 구조로 건설적 피드백을 설계하고, 받은 피드백을 사실과 감정으로 분리해 소화하며, 먼저 피드백을 요청하는 법까지 다룹니다.
-version: "6.0.0"
+version: "1.0.0"
 ---
 
 # 피드백 주고받기 (Feedback Loop)
@@ -97,10 +97,17 @@ version: "6.0.0"
 - **moai-coworker:business-conflict-handler**: 피드백이 갈등으로 번질 때 대응
 - **moai-recruiter:business-performance-review**: 공식 성과평가 피드백 면담
 
+### 후처리 체인 (SBI 피드백 스크립트·요청 멘트 등 서술형 산출물)
+
+SBI 피드백 스크립트·요청 멘트 등 문장 산출물을 작성한 뒤에는 아래 체인으로 마무리한다.
+
+- **moai-coworker:general-ai-slop-reviewer**: AI 티 나는 표현·과장·상투구 검수·수정 (필수)
+- **moai-writer:general-humanize-korean**: 한국어 자연스러움 보정 — 슬롭 검수 다음 (필수)
+
 ## 이 스킬을 사용하지 말아야 할 때
 
 - **공식 인사평가·고과 피드백**: 평가 면담은 `moai-recruiter:business-performance-review`를 사용한다.
-- **개인 회고·자기 점검**: 나 혼자 돌아보는 회고는 `moai-productivity`를 쓴다.
+- **개인 회고·자기 점검**: 나 혼자 돌아보는 회고는 `moai-coworker`를 쓴다.
 - **괴롭힘·차별 상황**: 단순 피드백이 아니라 직장 내 괴롭힘이면 인사·고충 채널과 공식 절차로 다룬다.
 
 ## 출처

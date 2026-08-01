@@ -1,6 +1,6 @@
 # 디자인 시스템 → getdesign.md 링크 매핑표
 
-[`moai-officer:office-design-system-library`](../../../moai-design/skills/design-system-library/SKILL.md)의 75개 브랜드 시스템을 [`getdesign.md`](https://getdesign.md) 상세 페이지에 매핑합니다. 스킬이 design_system 선택 안내 시 각 토큰 옆에 링크를 표시해, 사용자가 클릭(또는 복사)하여 팔레트·타이포그래피·무드를 직접 미리볼 수 있게 합니다.
+[`moai-officer:office-design-system-library`](../../../moai-designer/skills/design-system-library/SKILL.md)의 75개 브랜드 시스템을 [`getdesign.md`](https://getdesign.md) 상세 페이지에 매핑합니다. 스킬이 design_system 선택 안내 시 각 토큰 옆에 링크를 표시해, 사용자가 클릭(또는 복사)하여 팔레트·타이포그래피·무드를 직접 미리볼 수 있게 합니다.
 
 ## URL 패턴
 

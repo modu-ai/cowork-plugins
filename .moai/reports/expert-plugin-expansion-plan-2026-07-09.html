@@ -1,0 +1,2294 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>전문가 AI 플러그인 확장 계획서 — 모두의클로드 플러그인 패밀리 v6</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    /* ============================================================
+       CSS variable contract — html-report plan mode
+    ============================================================ */
+    :root {
+      --ivory:  #FAF9F5;
+      --paper:  #FFFFFF;
+      --slate:  #141413;
+      --clay:   #D97757;
+      --clay-d: #B85C3E;
+      --oat:    #E3DACC;
+      --olive:  #788C5D;
+
+      --g100: #F0EEE6;
+      --g300: #D1CFC5;
+      --g500: #87867F;
+      --g700: #3D3D3A;
+
+      --sans:  "Pretendard", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --serif: "Noto Serif KR", ui-serif, Georgia, serif;
+      --mono:  "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+      --max-width:    1100px;
+      --radius-panel: 12px;
+      --radius-row:   8px;
+      --border:       1.5px solid var(--g300);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--ivory);
+      color: var(--g700);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.65;
+      padding: 56px 32px 120px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page { max-width: var(--max-width); margin: 0 auto; }
+
+    /* header */
+    header.page-head { margin-bottom: 40px; max-width: 880px; }
+
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--g500);
+      margin-bottom: 12px;
+      font-family: var(--mono);
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 34px;
+      line-height: 1.2;
+      color: var(--slate);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .byline {
+      font-size: 13.5px;
+      color: var(--g500);
+      margin-bottom: 18px;
+    }
+
+    .goal-box {
+      background: var(--g100);
+      border: var(--border);
+      border-radius: var(--radius-panel);
+      padding: 16px 20px;
+      font-size: 14.5px;
+      color: var(--g700);
+    }
+
+    .goal-box .label {
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--g500);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    /* section common */
+    section { margin-bottom: 60px; }
+
+    .sec-head {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+
+    .sec-head .num {
+      font-family: var(--mono);
+      font-size: 12px;
+      background: var(--oat);
+      color: var(--slate);
+      padding: 3px 9px;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    .sec-head h2 {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 23px;
+      color: var(--slate);
+      letter-spacing: -0.01em;
+    }
+
+    .sec-intro {
+      font-size: 14.5px;
+      color: var(--g500);
+      max-width: 780px;
+      margin-bottom: 24px;
+    }
+
+    h3.sub {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 17px;
+      color: var(--slate);
+      margin: 28px 0 12px;
+    }
+
+    p.body-p {
+      max-width: 820px;
+      margin-bottom: 14px;
+      font-size: 14.5px;
+    }
+
+    /* summary strip */
+    .summary-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 56px;
+    }
+
+    @media (max-width: 900px) {
+      .summary-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .sum-cell {
+      background: var(--paper);
+      border: var(--border);
+      border-radius: var(--radius-panel);
+      padding: 18px 20px;
+    }
+
+    .sum-cell .k {
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--g500);
+      margin-bottom: 6px;
+    }
+
+    .sum-cell .v {
+      font-size: 17px;
+      color: var(--slate);
+      font-weight: 600;
+    }
+
+    .sum-cell .v.accent { color: var(--clay); }
+
+    /* generic table */
+    .tbl-wrap {
+      border: var(--border);
+      border-radius: var(--radius-panel);
+      overflow-x: auto;
+      background: var(--paper);
+      margin-bottom: 16px;
+    }
+
+    table.tbl {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+    }
+
+    table.tbl th {
+      background: var(--g100);
+      color: var(--slate);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: var(--border);
+      white-space: nowrap;
+    }
+
+    table.tbl td {
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--g100);
+      vertical-align: top;
+    }
+
+    table.tbl tr:last-child td { border-bottom: none; }
+
+    table.tbl td.center, table.tbl th.center { text-align: center; }
+
+    code, .code {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      background: var(--g100);
+      border: 1px solid var(--g300);
+      border-radius: 5px;
+      padding: 1px 6px;
+      color: var(--slate);
+      white-space: nowrap;
+    }
+
+    /* status pills */
+    .pill {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .pill.ok   { background: #E4E9DC; color: #4B5C39; }
+    .pill.warn { background: var(--oat); color: #7A5A2E; }
+    .pill.fail { background: #F3D9CC; color: #8A3B1E; }
+    .pill.info { background: var(--g100); color: var(--g700); border: 1px solid var(--g300); }
+    .pill.hi   { background: #F3D9CC; color: #8A3B1E; }
+    .pill.med  { background: var(--oat); color: var(--slate); }
+    .pill.lo   { background: #E4E9DC; color: #4B5C39; }
+
+    /* principle cards */
+    .prin-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 820px) {
+      .prin-grid { grid-template-columns: 1fr; }
+    }
+
+    .prin {
+      background: var(--paper);
+      border: var(--border);
+      border-radius: var(--radius-panel);
+      padding: 18px 20px;
+    }
+
+    .prin .p-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--clay);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .prin h4 {
+      font-size: 15px;
+      color: var(--slate);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .prin p { font-size: 13.5px; color: var(--g700); }
+    .prin .evid { font-size: 12.5px; color: var(--g500); margin-top: 8px; }
+
+    /* chart panel */
+    .chart-panel {
+      background: var(--paper);
+      border: var(--border);
+      border-radius: var(--radius-panel);
+      padding: 24px;
+      overflow-x: auto;
+      margin-bottom: 12px;
+    }
+
+    .chart-panel svg { display: block; min-width: 720px; }
+    .caption { font-size: 13px; color: var(--g500); margin-top: 10px; }
+
+    /* milestone timeline */
+    .milestones { display: flex; flex-direction: column; }
+
+    .milestone {
+      display: grid;
+      grid-template-columns: 130px 28px 1fr;
+      gap: 0 18px;
+      position: relative;
+    }
+
+    .milestone .when {
+      text-align: right;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--g500);
+      padding-top: 4px;
+    }
+
+    .milestone .dot-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .milestone .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--paper);
+      border: 3px solid var(--clay);
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+
+    .milestone .line {
+      width: 2px;
+      flex: 1;
+      background: var(--g300);
+      margin: 4px 0;
+    }
+
+    .milestone:last-child .line { display: none; }
+
+    .milestone .body { padding-bottom: 32px; }
+
+    .milestone .body h3 {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 17px;
+      color: var(--slate);
+      margin-bottom: 4px;
+    }
+
+    .milestone .body p {
+      font-size: 13.5px;
+      color: var(--g700);
+      margin-bottom: 10px;
+      max-width: 700px;
+    }
+
+    .tag-row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .tag {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      background: var(--g100);
+      border: 1px solid var(--g300);
+      border-radius: 6px;
+      padding: 3px 8px;
+      color: var(--g700);
+    }
+
+    .tag.pri-hi { background: #F3D9CC; border-color: #E0B49E; color: #8A3B1E; }
+    .tag.pri-med { background: var(--oat); border-color: var(--g300); color: var(--slate); }
+
+    /* risk matrix */
+    .risks {
+      border: var(--border);
+      border-radius: var(--radius-panel);
+      overflow: hidden;
+      background: var(--paper);
+    }
+
+    .risks .row {
+      display: grid;
+      grid-template-columns: 1.6fr 90px 1.6fr;
+    }
+
+    @media (max-width: 780px) {
+      .risks .row { grid-template-columns: 1fr; }
+    }
+
+    .risks .row + .row { border-top: var(--border); }
+
+    .risks .cell {
+      padding: 14px 18px;
+      font-size: 13.5px;
+    }
+
+    .risks .cell + .cell { border-left: var(--border); }
+
+    @media (max-width: 780px) {
+      .risks .cell + .cell {
+        border-left: none;
+        border-top: 1px dashed var(--g300);
+      }
+    }
+
+    .risks .head {
+      background: var(--g100);
+      font-weight: 600;
+      color: var(--slate);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* checklist */
+    .check-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 880px;
+    }
+
+    .check-item {
+      display: flex;
+      gap: 14px;
+      background: var(--paper);
+      border: var(--border);
+      border-radius: var(--radius-row);
+      padding: 14px 18px;
+      align-items: flex-start;
+    }
+
+    .check-item .cno {
+      font-family: var(--mono);
+      font-size: 12px;
+      background: var(--oat);
+      color: var(--slate);
+      padding: 2px 8px;
+      border-radius: 6px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .check-item .ct { font-size: 13.5px; }
+    .check-item .ct b { color: var(--slate); }
+
+    /* metrics */
+    .metrics-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 820px;
+    }
+
+    .metric-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--paper);
+      border: var(--border);
+      border-radius: var(--radius-row);
+      padding: 13px 18px;
+    }
+
+    .metric-indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background: var(--g300);
+    }
+
+    .metric-label { flex: 1; font-size: 14px; color: var(--slate); }
+
+    .metric-target {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--g500);
+      white-space: nowrap;
+    }
+
+    /* code block */
+    pre.codeblock {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      background: var(--g100);
+      border: 1px solid var(--g300);
+      border-radius: var(--radius-row);
+      padding: 14px 16px;
+      overflow-x: auto;
+      line-height: 1.55;
+      color: var(--slate);
+      margin: 8px 0 16px;
+      max-width: 860px;
+    }
+
+    /* catalog anchor links */
+    a.cat-link {
+      color: var(--clay-d);
+      text-decoration: underline dotted;
+      text-underline-offset: 3px;
+    }
+
+    a.cat-link:hover { color: var(--clay); }
+
+    @media print {
+      a.cat-link[href]::after { content: ""; }
+    }
+
+    /* core-value badges */
+    .value-badges {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 6px 0 10px;
+    }
+
+    .vb {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      background: var(--paper);
+      border: 1.5px solid var(--oat);
+      border-radius: 999px;
+      padding: 4px 13px;
+      color: var(--slate);
+    }
+
+    .vb b { color: var(--clay); font-weight: 600; }
+
+    /* agent loop 7-step flow */
+    .loop-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: stretch;
+      margin: 8px 0 6px;
+    }
+
+    .loop-step {
+      background: var(--paper);
+      border: var(--border);
+      border-radius: var(--radius-row);
+      padding: 10px 12px;
+      font-size: 12.5px;
+      flex: 1 1 150px;
+      min-width: 150px;
+    }
+
+    .loop-step .ln {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--clay);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .loop-step.verify { border-color: var(--olive); }
+    .loop-step.verify .ln { color: var(--olive); }
+
+    /* per-plugin harness composition line */
+    .harness-line {
+      font-size: 11.5px;
+      color: var(--g500);
+      margin-top: 5px;
+      font-family: var(--mono);
+    }
+
+    /* note box */
+    .note {
+      background: var(--g100);
+      border-left: 3px solid var(--clay);
+      border-radius: 0 var(--radius-row) var(--radius-row) 0;
+      padding: 12px 16px;
+      font-size: 13.5px;
+      color: var(--g700);
+      max-width: 860px;
+      margin: 16px 0;
+    }
+
+    footer {
+      margin-top: 64px;
+      padding-top: 20px;
+      border-top: 1px solid var(--g300);
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--g500);
+      line-height: 1.8;
+    }
+
+    /* print */
+    @media print {
+      body { background: white; color: black; padding: 0; font-size: 11pt; }
+      .page { max-width: none; }
+      h1, h2, h3 { page-break-after: avoid; }
+      table, .risks, .chart-panel, .prin, .check-item { page-break-inside: avoid; }
+      section { page-break-inside: auto; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- ==================== header ==================== -->
+    <header class="page-head">
+      <div class="eyebrow">Action Plan · Marketplace moai-claude v5.0.0 → v6.0.0 → v6.1.0 → v6.2.0 · 2026-07-09 (v6.2 refresh 2026-07-10)</div>
+      <h1>전문가 AI 플러그인 확장 계획서 — 모두의클로드 플러그인 패밀리 v6.2</h1>
+      <div class="byline">MoAI Orchestrator · manager-docs</div>
+      <div class="goal-box">
+        <span class="label">Goal</span>
+        moai-coworker의 스킬 모놀리스를 직군별 전문가 플러그인으로 분리해 플러그인 패밀리를 4종에서 18종으로
+        확장한다 (전문가 8종 + CS·컨설턴트·커리어 계열 3종 + v6.2 스토리·데이터·미디어 3종). v6.2.0에서는
+        writer·officer·marketer의 이질적 도메인을 story(스토리/IP)·analyst(데이터/공공데이터)·media(미디어 생성)
+        3종으로 재분리하고 라이프스타일 7종을 coworker general로 회수했다(스킬 총수 233 불변). 모든 전문가·역할
+        플러그인에는 실측으로 검증된 2-에이전트 표준 세트(worker + read-only auditor)를 탑재하고, 데스크탑 패리티
+        갭이 확인된 확장 메커니즘(hooks·LSP·output-styles)은 비개발자 플러그인에서 원천 배제한다. 코더 플러그인
+        moai는 moai-adk 3.0 구조를 그대로 유지하고 공식 LSP 서버 5종을 전면 제공하며(프로젝트 언어 감지 → 해당
+        서버 설치·활성화), 테스트 근거 기반 조정 체크리스트 5항목을 적용한다.
+      </div>
+    </header>
+
+    <!-- ==================== summary strip ==================== -->
+    <div class="summary-strip">
+      <div class="sum-cell">
+        <div class="k">플러그인 패밀리</div>
+        <div class="v accent">15종 → 18종 (v6.2)</div>
+      </div>
+      <div class="sum-cell">
+        <div class="k">전체 스킬 (SKILL.md 실측)</div>
+        <div class="v">233 스킬 (불변)</div>
+      </div>
+      <div class="sum-cell">
+        <div class="k">신설 에이전트</div>
+        <div class="v">28 (14 × worker + auditor)</div>
+      </div>
+      <div class="sum-cell">
+        <div class="k">Marketplace</div>
+        <div class="v">v6.1.0 → v6.2.0</div>
+      </div>
+    </div>
+
+    <!-- ==================== 01 요약 ==================== -->
+    <section aria-label="Executive summary">
+      <div class="sec-head"><span class="num">01</span><h2>요약 (Executive Summary)</h2></div>
+      <p class="body-p">
+        현재 marketplace <code>moai-claude</code> v6.2.0은 18개 플러그인으로 구성된다. 원래
+        <code>moai-coworker</code>가 단일 플러그인에 담고 있던 직군별 스킬을 전문가 플러그인
+        8종(<code>moai-writer</code>, <code>moai-marketer</code>, <code>moai-seller</code>, <code>moai-officer</code>,
+        <code>moai-lawyer</code>, <code>moai-accountant</code>, <code>moai-recruiter</code>, <code>moai-tutor</code>)으로
+        분리했고, v6.1.0에서 CS·컨설턴트·커리어 계열 3종(<code>moai-cs</code>, <code>moai-consultant</code>,
+        <code>moai-career</code>)을 추가했다. v6.2.0에서는 이질적 도메인 재분리를 통해
+        <code>moai-story</code>(스토리/IP 13종, writer에서 분리)·<code>moai-analyst</code>(데이터/공공데이터 11종,
+        officer에서 분리)·<code>moai-media</code>(미디어 생성 9종, marketer에서 분리) 3종을 신설했고,
+        라이프스타일·자기계발 7종은 <code>moai-coworker</code> general로 회수했다. 그 결과
+        <code>moai-writer</code>(10)·<code>moai-officer</code>(13)·<code>moai-marketer</code>(19)는 슬림화되고
+        <code>moai-coworker</code>는 32스킬로 확장됐다 (스킬 총수 233 불변 — 재배치만). 직군별 사용자는 이제
+        자신에게 필요한 스킬만 해당 전문가 플러그인에서 설치하면 된다.
+      </p>
+      <p class="body-p">
+        설계 근거는 2026-07-09에 수행된 두 건의 실측 테스트다. 보고서 1(Cowork 원격 샌드박스)은 에이전트
+        16종 중 15종의 정상 동작과 3계층 권한 구조(full-power / worker / read-only audit)의 정의 레벨 강제를
+        확인했고, 보고서 2(Claude Desktop Code 런타임, Claude Code 2.1.205 / macOS)는 Skills·Subagents·번들
+        MCP·Hooks·settings.json·dynamic Workflow의 동작과 함께 LSP·output-styles·Commands의 패리티 갭을
+        식별했다. 전문가 플러그인은 검증된 메커니즘(skills + agents + 선택적 .mcp.json)만 사용하도록
+        설계해 확인된 모든 갭을 회피한다.
+      </p>
+      <p class="body-p">
+        전체 설계는 <b>Agent Harness Engineering</b> 체계 — 에이전트가 루프를 돌며 스킬을 사용하고
+        오케스트레이션으로 목적을 달성하는 AI 실행 구조 — 를 따르며, 프레임워크의 5대 핵심 가치를
+        계획 요소에 직접 매핑한다(§04).
+      </p>
+      <div class="value-badges">
+        <span class="vb"><b>①</b> Reliability 신뢰성</span>
+        <span class="vb"><b>②</b> Safety 안전성</span>
+        <span class="vb"><b>③</b> Scalability 확장성</span>
+        <span class="vb"><b>④</b> Observability 관측성</span>
+        <span class="vb"><b>⑤</b> Maintainability 유지보수성</span>
+      </div>
+      <p class="body-p">
+        실행은 Phase 0(거버넌스)부터 Phase 4(최종 등록·검증)까지 5단계로 진행하며, 각 Phase는 스킬 로드
+        스모크 테스트 · 에이전트 스폰 카나리아 · cross-reference grep 0건 · marketplace.json 검증의 4중
+        게이트를 통과해야 다음 단계로 넘어간다. 시간 추정은 사용하지 않고 우선순위 라벨(Priority
+        High/Medium)과 단계 순서만으로 관리한다.
+      </p>
+    </section>
+
+    <!-- ==================== 02 테스트 근거 ==================== -->
+    <section aria-label="Test evidence">
+      <div class="sec-head"><span class="num">02</span><h2>테스트 근거 — 두 보고서 핵심 발견</h2></div>
+      <p class="sec-intro">
+        아래 표는 2026-07-09 실측 테스트 두 건의 발견 사항과 각 발견이 본 계획에 반영된 지점을 대응시킨 것이다.
+        모든 수치는 보고서 원문 기준이며 추정치가 아니다.
+      </p>
+
+      <h3 class="sub">보고서 1 — Cowork (Claude Desktop 원격 샌드박스)</h3>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead>
+            <tr><th>검증 항목</th><th class="center">결과</th><th>발견 내용</th><th>계획 반영</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>에이전트 타입 16종 실행</td>
+              <td class="center"><span class="pill ok">15/16 OK</span></td>
+              <td><code>manager-develop</code>만 차단 — worktree 격리가 원격 클라우드 샌드박스에서 불가.
+                  환경 요구사항이지 결함이 아니며, 로컬 Claude Code에서는 정상 동작.</td>
+              <td>§06 코더 체크리스트 #1 (graceful degrade 플래그 + local-first 안내)</td>
+            </tr>
+            <tr>
+              <td>에이전트 권한 3계층 구조</td>
+              <td class="center"><span class="pill ok">확인</span></td>
+              <td>(1) full-power: general-purpose, claude — container shell + local device bridge + 전체 MCP + 중첩 스폰
+                  / (2) worker: manager-spec·manager-git·manager-docs·builder-harness — Read/Write/Edit/Bash/Task/Web/Skill
+                  / (3) read-only audit: sync-auditor·plan-auditor·Explore·Plan — Write/Edit가 정의 레벨에서 제거됨.</td>
+              <td>§04 설계 원칙 2 — 전문가 플러그인 2-에이전트 표준 세트의 직접 근거</td>
+            </tr>
+            <tr>
+              <td>서브에이전트 도달 범위</td>
+              <td class="center"><span class="pill ok">≈ 메인</span></td>
+              <td>파일 I/O · 셸 · 외부 네트워크 · pip install · 웹 검색/페치 · 로컬 디바이스 브리지 ·
+                  OAuth MCP 커넥터(Gmail 등) · 중첩 에이전트 스폰 · 스킬 호출 전부 통과.</td>
+              <td>worker agent에 실무 수행 역할 전담 배치 가능</td>
+            </tr>
+            <tr>
+              <td>브라우저 / 컴퓨터 제어</td>
+              <td class="center"><span class="pill info">승인 게이트</span></td>
+              <td>사용자 승인으로 게이트됨 — 설계 의도.</td>
+              <td>전문가 플러그인 스킬 본문에 승인 흐름 안내 유지</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub">보고서 2 — Claude Desktop Code 런타임 (Claude Code 2.1.205 / macOS)</h3>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead>
+            <tr><th>확장 메커니즘</th><th class="center">상태</th><th>발견 내용</th><th>계획 반영</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Skills</td>
+              <td class="center"><span class="pill ok">동작</span></td>
+              <td>정상 로드·호출.</td>
+              <td>전 플러그인 공통 기반</td>
+            </tr>
+            <tr>
+              <td>Subagents</td>
+              <td class="center"><span class="pill ok">동작</span></td>
+              <td>file-trace 카나리아로 실행 검증.</td>
+              <td>§09 검증 방법론으로 채택</td>
+            </tr>
+            <tr>
+              <td>번들 MCP 서버</td>
+              <td class="center"><span class="pill ok">동작</span></td>
+              <td><code>korean-law</code>가 실제 법령 데이터 반환.</td>
+              <td>moai-lawyer에 korean-law 번들, moai-seller에 moai-smartstore 번들</td>
+            </tr>
+            <tr>
+              <td>Hooks</td>
+              <td class="center"><span class="pill ok">5/9 실측</span></td>
+              <td>SessionStart · UserPromptSubmit · PreToolUse · PostToolUse · Stop 라이브 관측.
+                  matcher 필터링 + <code>$CLAUDE_PROJECT_DIR</code> 확장 + stdin JSON 확인.
+                  잔여 4종은 fresh-session 1회 실행 대기.</td>
+              <td>코더(moai)만 사용 — 전문가 플러그인은 미사용</td>
+            </tr>
+            <tr>
+              <td>settings.json</td>
+              <td class="center"><span class="pill ok">동작</span></td>
+              <td>정상 반영.</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>dynamic Workflow</td>
+              <td class="center"><span class="pill ok">동작</span></td>
+              <td>parallel / pipeline / schema 전부 통과, 6 agents 0 errors.</td>
+              <td>대량 이관·검증 라운드의 오케스트레이션 수단</td>
+            </tr>
+            <tr>
+              <td>LSP 서버</td>
+              <td class="center"><span class="pill fail">미동작</span></td>
+              <td>툴 표면은 로드되나 언어 서버가 기동하지 않음 — <code>No LSP server available</code>.</td>
+              <td>전문가 플러그인은 LSP 비의존(§04 원칙 1). 코더(moai)는 정책 반전 — LSP 5종 전면 제공(§06 C-2 · §06.5),
+                  데스크탑 미기동 환경에서는 graceful skip으로 강등 (잔여 위험, §08)</td>
+            </tr>
+            <tr>
+              <td>output-styles</td>
+              <td class="center"><span class="pill warn">미확인</span></td>
+              <td>settings.json 등록은 되나 활성화 미확인, 전환 UI 없음.</td>
+              <td>§04 원칙 1 (비의존) + §06 체크리스트 #3 (카나리아 라인 검증)</td>
+            </tr>
+            <tr>
+              <td>Commands</td>
+              <td class="center"><span class="pill warn">부분</span></td>
+              <td>존재하지만 스킬로 표면화됨. 콜론형(<code>/moai:plan</code>)은 해석됨.</td>
+              <td>§06 체크리스트 #5 (유지 + 문서화, 동작 변경 불필요)</td>
+            </tr>
+            <tr>
+              <td>context7 / higgsfield / meta-ads MCP</td>
+              <td class="center"><span class="pill info">설정 게이트</span></td>
+              <td>context7 미연결, higgsfield·meta-ads는 OAuth 필요 — 기능 결함이 아닌 구성 게이트.</td>
+              <td>커넥터 설정 가이드 스킬로 대응 (자격증명 번들 금지)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==================== 03 현재 상태 실측 ==================== -->
+    <section aria-label="Current state">
+      <div class="sec-head"><span class="num">03</span><h2>현재 상태 실측</h2></div>
+      <p class="sec-intro">
+        리포지토리 <code>/Users/goos/MoAI/claude.mo.ai.kr</code> 실측(2026-07-10) 기준. marketplace
+        <code>moai-claude</code> v6.1.0, 플러그인 15종. 스킬 수는 <code>skills/*/SKILL.md</code> 단위,
+        에이전트 수는 <code>agents/**/*.md</code> 단위 실측이다.
+        <b>v6.2.0 재그룹핑 베이스라인</b> — 본 표는 v6.2 재분리 직전의 v6.1.0 상태 스냅샷이다. 이 베이스라인에서
+        writer(23)·officer(31)·marketer(28)의 이질적 도메인 과적이 식별되어 story·analyst·media 3종 분리와
+        라이프스타일 7종 coworker 회수가 결정됐다. 재분리 <b>이후</b> 상태는 §05(목표 패밀리 구성)와
+        §10(카탈로그, 18종 · 233 스킬)를 참조할 것.
+      </p>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead>
+            <tr><th>플러그인</th><th>버전</th><th>구성</th><th>비고</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>moai-coworker</code></td>
+              <td>v6.0.0</td>
+              <td>스킬 25 · 에이전트 0</td>
+              <td>분리 완료 후 슬림화된 범용 비즈니스 코어 (business 18 + general 6 + claude-prompting-basics 1).</td>
+            </tr>
+            <tr>
+              <td><code>moai-writer</code></td>
+              <td>v0.1.0</td>
+              <td>스킬 23 · 에이전트 2</td>
+              <td>작가 — worker + auditor. higgsfield 커넥터 가이드.</td>
+            </tr>
+            <tr>
+              <td><code>moai-marketer</code></td>
+              <td>v0.1.0</td>
+              <td>스킬 28 · 에이전트 2</td>
+              <td>마케터 — meta-ads·higgsfield 커넥터 가이드.</td>
+            </tr>
+            <tr>
+              <td><code>moai-seller</code></td>
+              <td>v0.1.0</td>
+              <td>스킬 29 · 에이전트 2</td>
+              <td>셀러 — vendored <code>moai-smartstore</code> MCP(네이버 커머스, 90 tools).</td>
+            </tr>
+            <tr>
+              <td><code>moai-officer</code></td>
+              <td>v0.1.0</td>
+              <td>스킬 31 · 에이전트 2</td>
+              <td>사무관 — 공공데이터 API·kordoc/archhub MCP.</td>
+            </tr>
+            <tr>
+              <td><code>moai-lawyer</code></td>
+              <td>v0.1.0</td>
+              <td>스킬 9 · 에이전트 2</td>
+              <td>법무 담당 — <code>korean-law</code> MCP 번들(보고서 2 실증).</td>
+            </tr>
+            <tr>
+              <td><code>moai-accountant</code></td>
+              <td>v0.1.0</td>
+              <td>스킬 11 · 에이전트 2</td>
+              <td>재무·세무 담당.</td>
+            </tr>
+            <tr>
+              <td><code>moai-recruiter</code></td>
+              <td>v0.1.0</td>
+              <td>스킬 6 · 에이전트 2</td>
+              <td>인사·채용 담당 — Saramin PlayMCP 커넥터 가이드.</td>
+            </tr>
+            <tr>
+              <td><code>moai-tutor</code></td>
+              <td>v0.1.0</td>
+              <td>스킬 11 · 에이전트 2</td>
+              <td>튜터.</td>
+            </tr>
+            <tr>
+              <td><code>moai-cs</code> <span class="pill info">v6.1.0 신설</span></td>
+              <td>v0.1.0</td>
+              <td>스킬 6 · 에이전트 2</td>
+              <td>CS 매니저 — 고객 응대·VOC 티켓 트리아지·채널 메시지.</td>
+            </tr>
+            <tr>
+              <td><code>moai-consultant</code> <span class="pill info">v6.1.0 신설</span></td>
+              <td>v0.1.0</td>
+              <td>스킬 6 · 에이전트 2</td>
+              <td>컨설턴트 — 진단·전략·사업계획·정부지원.</td>
+            </tr>
+            <tr>
+              <td><code>moai-career</code> <span class="pill info">v6.1.0 신설</span></td>
+              <td>v0.1.0</td>
+              <td>스킬 5 · 에이전트 2</td>
+              <td>커리어 코치 — 이력서·면접·포트폴리오·온보딩·이직.</td>
+            </tr>
+            <tr>
+              <td><code>moai-designer</code></td>
+              <td>v0.3.0</td>
+              <td>스킬 13 · 에이전트 0</td>
+              <td>디자인 전담. Claude Design 업로드 양경로 + cd-* 5종 이관 완료.</td>
+            </tr>
+            <tr>
+              <td><code>moai-pm</code></td>
+              <td>v0.4.0</td>
+              <td>스킬 1 · 에이전트 0</td>
+              <td>허브 — 직원(플러그인) 라우팅 담당.</td>
+            </tr>
+            <tr>
+              <td><code>moai</code> (코더)</td>
+              <td>v1.0.0</td>
+              <td>스킬 29 · 에이전트 8 · commands 14 · hooks 7 · output-styles 2 · .mcp.json · .lsp.json</td>
+              <td>moai-adk 3.0 전체 구조 + 공식 LSP 서버 5종 탑재.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub">moai-coworker 스킬 분포 (접두사별 실측, 합계 25)</h3>
+      <div class="chart-panel">
+        <svg viewBox="0 0 860 140" role="img" aria-label="moai-coworker 접두사별 스킬 분포 막대 차트">
+          <g font-family="Pretendard, sans-serif" font-size="12" fill="#3D3D3A">
+            <!-- rows: y = 20 + i*28, bar x=215, h=18, w = value*15 -->
+            <text x="205" y="33" text-anchor="end">business</text>
+            <rect x="215" y="20" width="270" height="18" rx="3" fill="#D97757"/>
+            <text x="493" y="33" fill="#87867F" font-family="JetBrains Mono, monospace">18</text>
+
+            <text x="205" y="61" text-anchor="end">general</text>
+            <rect x="215" y="48" width="90" height="18" rx="3" fill="#D97757"/>
+            <text x="313" y="61" fill="#87867F" font-family="JetBrains Mono, monospace">6</text>
+
+            <text x="205" y="89" text-anchor="end">claude</text>
+            <rect x="215" y="76" width="15" height="18" rx="3" fill="#D97757"/>
+            <text x="238" y="89" fill="#87867F" font-family="JetBrains Mono, monospace">1</text>
+          </g>
+        </svg>
+        <p class="caption">
+          moai-coworker v6.0.0 슬림 코어의 접두사별 스킬 개수 (실측, 합계 25). 전문가 플러그인 분리 완료 후
+          남은 범용 비즈니스 코어 — business 전략·운영 18 + general 도구 6 + claude-prompting-basics 1. 분리 전
+          모놀리스에 담겨 있던 직군별 스킬은 전문가 8종·CS계열 3종·designer(cd-*) 로 이관됐다.
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================== 04 설계 원칙 ==================== -->
+    <section aria-label="Design principles">
+      <div class="sec-head"><span class="num">04</span><h2>설계 원칙 — 하네스 엔지니어링 설계 체계 (Agent Harness Engineering)</h2></div>
+      <p class="sec-intro">
+        본 계획의 설계는 Agent Harness Engineering 체계를 따른다. 핵심 명제:
+        <b>에이전트(AGENT)가 루프를 돌며 스킬(SKILL)을 사용하고, 오케스트레이션(ORCHESTRATION)으로
+        목적을 달성하는 AI 실행 구조</b>. 아래에서 프레임워크의 3요소·에이전트 루프·오케스트레이션 엔진·
+        가드레일·5대 핵심 가치를 본 계획의 구성 요소에 1:1로 매핑한다. 모든 매핑은 §02 테스트 근거에
+        기반한다.
+      </p>
+
+      <h3 class="sub">4.1 &nbsp;3요소 매핑 — AGENT · SKILL · ORCHESTRATION</h3>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead>
+            <tr><th>프레임워크 요소</th><th>프레임워크 정의</th><th>본 계획 매핑</th><th>근거</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>AGENT</b><br>실행 주체</td>
+              <td>목표를 이해하고 다음 행동을 결정. 구성: 시스템 프롬프트/페르소나 · 메모리(단기/장기) ·
+                  지식(RAG) · 모델(LLM) · 행동 정책·가드레일</td>
+              <td>각 전문가 플러그인의 <b>2-에이전트 세트</b>. worker 에이전트 = 페르소나/시스템 프롬프트 +
+                  행동 정책의 실행 주체. auditor 에이전트 = 프레임워크의 검증(Verify) 단계를 <b>별도
+                  read-only 에이전트로 체화</b>한 정의 레벨 가드레일. 메모리 = Claude Code auto-memory +
+                  progress 파일. 지식 = 스킬 <code>references/</code> 디렉토리.</td>
+              <td>보고서 1 — 3계층 권한 구조의 정의 레벨 강제 확인</td>
+            </tr>
+            <tr>
+              <td><b>SKILL</b><br>재사용 능력</td>
+              <td>에이전트가 사용하는 재사용 가능한 능력(도구) 집합. 5속성: 재사용성 · 표준 인터페이스 ·
+                  검증 가능성 · 보안/권한 통제 · 메타데이터 관리</td>
+              <td>플러그인별 스킬 세트 — 5속성을 이미 충족 (하단 4.1a 속성별 매핑).</td>
+              <td>보고서 2 — Skills 로드·호출 실측</td>
+            </tr>
+            <tr>
+              <td><b>ORCHESTRATION</b><br>지휘 체계</td>
+              <td>에이전트와 스킬을 최적 흐름으로 연결. 패턴: Sequence · Parallel · Conditional ·
+                  Iterative · Plan-Do-Check · Multi-Agent</td>
+              <td><code>moai-pm</code> 허브(라우팅) + 메인 세션 오케스트레이터 + (코더 한정) dynamic
+                  Workflow 엔진. 보고서 2에서 입증된 parallel / pipeline / schema가 곧 프레임워크의
+                  Parallel / Sequence / Multi-Agent 패턴에 해당.</td>
+              <td>보고서 2 — dynamic Workflow 전 패턴 통과, 6 agents 0 errors</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub">4.1a &nbsp;SKILL 5속성 — 플러그인 스킬 세트의 속성별 충족 근거</h3>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead>
+            <tr><th>프레임워크 속성</th><th>본 계획에서의 구현</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>재사용성 (reusable)</td><td>스킬은 플러그인 단위로 패키징되어 어떤 세션·에이전트에서도 재호출 가능.</td></tr>
+            <tr><td>표준 인터페이스 (input/output/description)</td><td>표준 YAML frontmatter (name · description · trigger) — 전 스킬 동일 규격.</td></tr>
+            <tr><td>검증 가능성 (test &amp; evaluation)</td><td>카나리아 방법론(§09)으로 스킬 로드·에이전트 실행을 검증 — 보고서 2에서 입증된 방식.</td></tr>
+            <tr><td>보안/권한 통제</td><td>allowed-tools 권한 통제 + worker/auditor 도구 계층 분리.</td></tr>
+            <tr><td>메타데이터 관리 (비용·지연·정확도)</td><td>frontmatter 메타데이터 + marketplace.json 버전·구성 관리. KPI(§09)로 비용·품질 측정.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub">4.2 &nbsp;에이전트 루프 표준 템플릿 — "하네스의 심장" (신설 worker 에이전트 공통 필수)</h3>
+      <p class="body-p">
+        신설 전문가 플러그인 8종의 모든 worker 에이전트 본문은 아래 7단계 루프를 인코딩해야 한다.
+        목표 달성까지 반복 후 응답한다.
+      </p>
+      <div class="loop-flow">
+        <div class="loop-step"><span class="ln">① 목표 이해</span>사용자 의도 + 성공 기준 확정</div>
+        <div class="loop-step"><span class="ln">② 계획 (Reason/Plan)</span>다음 행동 추론·수립</div>
+        <div class="loop-step"><span class="ln">③ 스킬 선택</span>플러그인 skill registry에서 매칭</div>
+        <div class="loop-step"><span class="ln">④ 실행 (Execute)</span>선택 스킬·도구 수행</div>
+        <div class="loop-step"><span class="ln">⑤ 관찰 (Observe)</span>결과·로그 수집</div>
+        <div class="loop-step verify"><span class="ln">⑥ 검증 (Verify)</span>self-check + 고위험 산출물은 auditor 에이전트 위임</div>
+        <div class="loop-step"><span class="ln">⑦ 컨텍스트 갱신</span>반복 or 응답 (목표 달성 시 종료)</div>
+      </div>
+      <p class="caption">
+        ⑥ 검증 단계(올리브 테두리)가 본 설계의 차별점 — 프레임워크의 Verify를 별도 read-only auditor
+        에이전트로 분리해 정의 레벨에서 강제한다 (보고서 1의 3계층 권한 근거).
+      </p>
+
+      <h3 class="sub">4.3 &nbsp;오케스트레이션 엔진 = moai-pm v0.3 확장</h3>
+      <p class="body-p">프레임워크의 오케스트레이션 엔진 역할을 moai-pm v0.3과 주변 계층에 다음과 같이 배치한다.</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead>
+            <tr><th>엔진 역할</th><th>본 계획에서의 담당</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>전략 수립 · 라우팅/스케줄링</td><td>moai-pm <code>/project</code> 라우팅 플래그 → 15 플러그인 (--writer ~ --tutor 8종 + --cs · --consultant · --career 3종 확장)</td></tr>
+            <tr><td>스킬 레지스트리</td><td>marketplace.json + skill listing</td></tr>
+            <tr><td>상태 &amp; 체크포인트</td><td>progress / memory 파일</td></tr>
+            <tr><td>정책 엔진 (보안·권한·비용)</td><td>3계층 도구 권한 (full-power / worker / read-only audit — 보고서 1 실증)</td></tr>
+            <tr><td>로깅 &amp; 추적</td><td>코더(moai) hooks — 보고서 2에서 라이프사이클 이벤트 5종 실측</td></tr>
+            <tr><td>평가 &amp; 피드백</td><td>auditor 에이전트 + 카나리아 방법론(§09)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub">4.4 &nbsp;가드레일 표준 (신설 플러그인 공통)</h3>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead>
+            <tr><th>가드레일 계층</th><th>본 계획에서의 구현</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>입력 보안</td><td>스킬 트리거 스코핑(과잉 트리거 방지) + 자격증명 무번들 원칙 (meta-ads·higgsfield 등은 커넥터 가이드로만)</td></tr>
+            <tr><td>출력 검증 (정확성·유해성·근거)</td><td>auditor 에이전트 — 고위험 산출물의 독립 검증 게이트</td></tr>
+            <tr><td>정책 &amp; 권한 (사용자/스킬/데이터 접근)</td><td>worker vs read-only auditor 도구 계층 — 정의 레벨 강제 (보고서 1)</td></tr>
+            <tr><td>Human-in-the-loop</td><td>외부 발송·디바이스 쓰기 등 임계 결정의 사용자 승인 게이트 — 보고서 1에서 설계 의도대로 동작 확인</td></tr>
+            <tr><td>감사 &amp; 컴플라이언스</td><td>auditor 보고서 + 검증 증거 파일(카나리아 트레이스) 보존</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub">4.5 &nbsp;핵심 가치 5종 → 계획 요소 매핑</h3>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead>
+            <tr><th>핵심 가치 (WHY)</th><th>계획 요소</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><b>Reliability</b> 신뢰성</td><td>카나리아 검증(§09) + auditor 에이전트 검증 게이트</td></tr>
+            <tr><td><b>Safety</b> 안전성</td><td>3계층 도구 권한 + 사용자 승인 게이트 + 자격증명 무번들</td></tr>
+            <tr><td><b>Scalability</b> 확장성</td><td>모놀리스 분해 → 15 플러그인 패밀리 + move-not-copy 정책</td></tr>
+            <tr><td><b>Observability</b> 관측성</td><td>코더 hooks 로깅(5 이벤트 실측) + 검증 증거 파일 + KPI(§09)</td></tr>
+            <tr><td><b>Maintainability</b> 유지보수성</td><td>네임스페이스 접두사 불변 + marketplace 버저닝(v6.1.0) + SSOT 문서</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub">4.6 &nbsp;외부 생태계 매핑</h3>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead>
+            <tr><th>생태계 계층</th><th>본 계획 매핑</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>데이터 소스 (DB/문서/API)</td>
+              <td>번들 MCP: <code>korean-law</code>(법령, 보고서 2 실증) · <code>moai-smartstore</code>(네이버 커머스 90 tools) · 공공데이터 API</td>
+            </tr>
+            <tr>
+              <td>도구 &amp; 서비스 (Slack/Notion/메일/캘린더)</td>
+              <td>커넥터: Gmail 등 OAuth MCP(보고서 1 통과) · Notion · meta-ads · higgsfield · Saramin(PlayMCP) — 설정 가이드 스킬로 연결, 자격증명 번들 금지</td>
+            </tr>
+            <tr>
+              <td>코드 인텔리전스 (LSP)</td>
+              <td>코더(moai)가 <code>.lsp.json</code>으로 공식 LSP 서버 5종(gopls · pyright · rust-analyzer ·
+                  sourcekit-lsp · typescript-language-server) 선언 — 프로젝트 언어 감지 → 해당 서버 설치·활성화
+                  (§06 C-2 · §06.5). 편집 직후 자동 diagnostics + 코드 내비게이션이 에이전트 루프 ⑤ 관찰 단계의
+                  도구 계층으로 편입</td>
+            </tr>
+            <tr>
+              <td>모델 제공자 · 인프라 · 모니터링</td>
+              <td>Claude Desktop / Claude Code 런타임(2.1.205 실측 기준)이 담당 — 플러그인 계층 밖</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub">4.7 &nbsp;실행 원칙 4종 (테스트 근거 기반)</h3>
+      <div class="prin-grid">
+        <div class="prin">
+          <div class="p-num">PRINCIPLE 1</div>
+          <h4>비개발자 전문가 플러그인 = skills + agents 전용</h4>
+          <p>hooks · LSP · output-styles 의존을 두지 않는다. 이는 보고서 2에서 확인된 데스크탑 패리티 갭
+             전부(LSP 미동작, output-styles 활성화 미확인, Commands의 스킬 표면화)를 원천 회피하는 구성이다.
+             도메인 MCP가 존재하는 경우에 한해 <code>.mcp.json</code>을 선택 번들한다 — 번들 MCP는
+             korean-law 실데이터 반환으로 동작이 입증됐다.</p>
+          <div class="evid">근거: 보고서 2 (Skills ✅ · Subagents ✅ · 번들 MCP ✅ / LSP ❌ · output-styles ⚠️ · Commands 🟡)</div>
+        </div>
+        <div class="prin">
+          <div class="p-num">PRINCIPLE 2</div>
+          <h4>2-에이전트 표준 세트 — 검증된 3계층 권한 모델 준수</h4>
+          <p>모든 전문가 플러그인은 (1) worker-tier 에이전트
+             (Read/Write/Edit/Bash/Glob/Grep/WebSearch/WebFetch/Skill)와 (2) read-only auditor 에이전트
+             (Read/Grep/Glob/Bash만 — sync-auditor 패턴)를 1쌍 탑재한다. 정의 레벨에서 Write/Edit를 제거하면
+             read-only가 실제로 강제된다는 점이 보고서 1에서 확인됐다.</p>
+          <div class="evid">근거: 보고서 1 (3계층 권한 구조 — 정의 레벨 강제 확인)</div>
+        </div>
+        <div class="prin">
+          <div class="p-num">PRINCIPLE 3</div>
+          <h4>스킬 본문 이동(move) — 복사 금지, 네임스페이스 접두사 불변</h4>
+          <p>스킬 본문은 moai-coworker에서 새 플러그인으로 이동하며 복사본을 남기지 않는다. coworker는 범용
+             business/office 코어를 유지한다. 각 새 플러그인 내부에서 스킬 접두사는 변경하지 않는다 —
+             대량 rename은 하지 않는다.</p>
+          <div class="evid">근거: 한국어 슬롭 감사 교훈 — 대량 rename은 참조 파손(broken reference)을 양산</div>
+        </div>
+        <div class="prin">
+          <div class="p-num">PRINCIPLE 4</div>
+          <h4>검증 방법론 = 보고서 2 카나리아 방식 재사용</h4>
+          <p>플러그인 scaffold 완료 시마다 해당 worker 에이전트를 스폰해 카나리아 파일 + 타임스탬프를 쓰게
+             하고, 파일 트레이스를 독립 검증한다. 모든 스킬은 skill listing으로 로드 테스트한다.</p>
+          <div class="evid">근거: 보고서 2 (Subagents file-trace canary 검증 방식)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 05 목표 패밀리 구성 ==================== -->
+    <section aria-label="Target family">
+      <div class="sec-head"><span class="num">05</span><h2>목표 패밀리 구성 — 기존 4종 + 전문가 8종 + CS계열 3종 + v6.2 재분리 3종 = 18종</h2></div>
+      <p class="sec-intro">marketplace v6.2.0 기준 목표 구성. 기존 4종(코더·디자이너·PM·동료)에 전문가 8종,
+        CS·컨설턴트·커리어 계열 3종을 추가하고, v6.2.0에서 writer·officer·marketer의 이질적 도메인을 재분리한
+        story·analyst·media 3종을 추가해 18종 패밀리를 구성한다 (스킬 총수 233 불변 — 재배치만). 플러그인명을
+        클릭하면 부록(§10)의 플러그인·스킬 전체 카탈로그로 이동한다.</p>
+
+      <div class="note">
+        <b>명명 원칙 — AI 직원 의인화 (agent-noun)</b>: 모든 플러그인은 AI 직원 의인화 원칙(agent-noun)으로
+        명명한다 — 사용자는 도메인이 아니라 "직원"을 채용하는 개념. 도메인 명사형(office / counsel /
+        finance / hr)이 아닌 직원 명사형(<code>moai-officer</code> 사무관 / <code>moai-lawyer</code> 법무 담당 /
+        <code>moai-accountant</code> 재무·세무 담당 / <code>moai-recruiter</code> 인사·채용 담당 /
+        <code>moai-cs</code> CS 매니저 / <code>moai-consultant</code> 컨설턴트 / <code>moai-career</code> 커리어 코치)을
+        사용하며, 기존 의인화 명칭(writer 작가 / marketer 마케터 / seller 셀러 / tutor 튜터 / coworker 동료 /
+        designer 디자이너 / 코더 / PM)은 그대로 유지한다.
+      </div>
+
+      <h3 class="sub">기존 플러그인 (유지 · 슬림화)</h3>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead>
+            <tr><th>플러그인</th><th>역할</th><th>변경 내용</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a class="cat-link" href="#cat-pm"><code>moai-pm</code></a></td>
+              <td>PM (허브)</td>
+              <td>라우팅 플래그를 신설 플러그인으로 확장: <code>--writer</code> <code>--story</code>
+                  <code>--marketer</code> <code>--media</code> <code>--seller</code> <code>--officer</code>
+                  <code>--analyst</code> <code>--lawyer</code> <code>--accountant</code> <code>--recruiter</code>
+                  <code>--tutor</code> <code>--cs</code> <code>--consultant</code> <code>--career</code>
+                  (개별 플래그는 v0.4.0에서 <code>--cowork</code>로 흡수 — v6.2 18-plugin 패밀리 라우팅).</td>
+            </tr>
+            <tr>
+              <td><a class="cat-link" href="#cat-coder"><code>moai</code></a> (코더)</td>
+              <td>개발</td>
+              <td><b>moai-adk 3.0 구조 그대로 유지</b> — 조정 체크리스트는 §06 전용 섹션 참조.</td>
+            </tr>
+            <tr>
+              <td><a class="cat-link" href="#cat-designer"><code>moai-designer</code></a></td>
+              <td>디자이너</td>
+              <td>13개 디자인 스킬 보유. coworker의 <code>general-cd-*</code> 5종은 designer로 이관 완료
+                  (dedupe 정리됨 — designer에 <code>cd-*</code> 5종이 동명 스킬로 존재).</td>
+            </tr>
+            <tr>
+              <td><a class="cat-link" href="#cat-coworker"><code>moai-coworker</code></a></td>
+              <td>동료 (범용 코어 + 라이프스타일)</td>
+              <td>v6.2에서 라이프스타일·자기계발 7종(목표·습관·회고·여행·웰니스·자기돌봄·이벤트기획)을
+                  officer에서 회수해 <b>32개 스킬</b>로 확장: business 18 + general/생활 13 +
+                  <code>claude-prompting-basics</code> 1. 범용 비즈니스 코어와 생활 도메인을 함께 담당한다.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub">신설 전문가 플러그인 8종</h3>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead>
+            <tr><th>플러그인</th><th>한글명</th><th>이동 스킬</th><th class="center">개수</th><th>번들 MCP</th><th>에이전트 (worker + auditor)</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a class="cat-link" href="#cat-writer"><code>moai-writer</code></a></td>
+              <td>작가</td>
+              <td>book-* 8 + general-humanize-korean + korean-spell-check (v6.2: story-* 13은 moai-story로 분리, office-korean-spell-check은 무접두사 korean-spell-check로 rename)</td>
+              <td class="center">10</td>
+              <td>— (higgsfield는 moai-story로 이관)</td>
+              <td><code>writer-director</code> + <code>manuscript-auditor</code>
+                <div class="harness-line">하네스 구성: Worker(루프 실행) + Auditor(검증 게이트) + Skills(도구 레지스트리) + 커넥터(외부 생태계 연결)</div></td>
+            </tr>
+            <tr>
+              <td><a class="cat-link" href="#cat-marketer"><code>moai-marketer</code></a></td>
+              <td>마케터</td>
+              <td>marketing-* 11 + content-* 8 (v6.2: media-* 9는 moai-media로 분리)</td>
+              <td class="center">19</td>
+              <td>meta-ads·post-bridge·typefully·wordpress 커넥터</td>
+              <td><code>campaign-strategist</code> + <code>performance-auditor</code>
+                <div class="harness-line">하네스 구성: Worker(루프 실행) + Auditor(검증 게이트) + Skills(도구 레지스트리) + 커넥터(외부 생태계 연결)</div></td>
+            </tr>
+            <tr>
+              <td><a class="cat-link" href="#cat-seller"><code>moai-seller</code></a></td>
+              <td>셀러</td>
+              <td>commerce-* 29</td>
+              <td class="center">29</td>
+              <td><code>moai-smartstore</code> (vendored, 90 tools)</td>
+              <td><code>listing-builder</code> + <code>margin-auditor</code>
+                <div class="harness-line">하네스 구성: Worker(루프 실행) + Auditor(검증 게이트) + Skills(도구 레지스트리) + MCP(외부 생태계 연결)</div></td>
+            </tr>
+            <tr>
+              <td><a class="cat-link" href="#cat-officer"><code>moai-officer</code></a></td>
+              <td>사무관</td>
+              <td>office 문서 13종 (HWPX·DOCX·XLSX·PPTX·PDF·HTML 리포트/슬라이드·공문서 파싱·노션 템플릿·생산성 루틴). v6.2: 공공데이터 11종은 moai-analyst로, 라이프스타일 7종은 moai-coworker로 분리</td>
+              <td class="center">13</td>
+              <td><code>kordoc</code> (한국 공문서 파서 MCP)</td>
+              <td><code>doc-producer</code> + <code>data-auditor</code>
+                <div class="harness-line">하네스 구성: Worker(루프 실행) + Auditor(검증 게이트) + Skills(도구 레지스트리) + MCP(외부 생태계 연결)</div></td>
+            </tr>
+            <tr>
+              <td><a class="cat-link" href="#cat-lawyer"><code>moai-lawyer</code></a></td>
+              <td>법무 담당</td>
+              <td>legal-* 9</td>
+              <td class="center">9</td>
+              <td><code>korean-law</code> (보고서 2에서 동작 입증)</td>
+              <td><code>legal-researcher</code> + <code>risk-auditor</code>
+                <div class="harness-line">하네스 구성: Worker(루프 실행) + Auditor(검증 게이트) + Skills(도구 레지스트리) + MCP(외부 생태계 연결)</div></td>
+            </tr>
+            <tr>
+              <td><a class="cat-link" href="#cat-accountant"><code>moai-accountant</code></a></td>
+              <td>재무·세무 담당</td>
+              <td>finance-* 11</td>
+              <td class="center">11</td>
+              <td>—</td>
+              <td><code>finance-analyst</code> + <code>close-auditor</code>
+                <div class="harness-line">하네스 구성: Worker(루프 실행) + Auditor(검증 게이트) + Skills(도구 레지스트리)</div></td>
+            </tr>
+            <tr>
+              <td><a class="cat-link" href="#cat-recruiter"><code>moai-recruiter</code></a></td>
+              <td>인사·채용 담당</td>
+              <td>business HR 6종 (부록 §10 명세)</td>
+              <td class="center">6</td>
+              <td>Saramin (PlayMCP 커넥터 가이드)</td>
+              <td><code>recruiter</code> + <code>screening-auditor</code>
+                <div class="harness-line">하네스 구성: Worker(루프 실행) + Auditor(검증 게이트) + Skills(도구 레지스트리) + 커넥터(외부 생태계 연결)</div></td>
+            </tr>
+            <tr>
+              <td><a class="cat-link" href="#cat-tutor"><code>moai-tutor</code></a></td>
+              <td>튜터</td>
+              <td>education-* 11</td>
+              <td class="center">11</td>
+              <td>—</td>
+              <td><code>curriculum-designer</code> + <code>assessment-auditor</code>
+                <div class="harness-line">하네스 구성: Worker(루프 실행) + Auditor(검증 게이트) + Skills(도구 레지스트리)</div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub">CS·컨설턴트·커리어 계열 3종 (v6.1.0 신설)</h3>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead>
+            <tr><th>플러그인</th><th>한글명</th><th>스킬 출처</th><th class="center">개수</th><th>에이전트 (worker + auditor)</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a class="cat-link" href="#cat-cs"><code>moai-cs</code></a></td>
+              <td>CS 매니저</td>
+              <td>고객 응대·VOC 티켓·채널 메시지 — coworker(business-draft-response·escalation-manager·kb-article·ticket-triage) + seller(commerce-channel-message·voc-triage)</td>
+              <td class="center">6</td>
+              <td><code>cs-responder</code> + <code>voc-auditor</code>
+                <div class="harness-line">하네스 구성: Worker(루프 실행) + Auditor(검증 게이트) + Skills(도구 레지스트리)</div></td>
+            </tr>
+            <tr>
+              <td><a class="cat-link" href="#cat-consultant"><code>moai-consultant</code></a></td>
+              <td>컨설턴트</td>
+              <td>coworker business 전략·진단 6종(consulting-brief·kr-gov-grant·market-analyst·sbiz365-analyst·startup-launchpad·strategy-planner)</td>
+              <td class="center">6</td>
+              <td><code>strategy-consultant</code> + <code>feasibility-auditor</code>
+                <div class="harness-line">하네스 구성: Worker(루프 실행) + Auditor(검증 게이트) + Skills(도구 레지스트리)</div></td>
+            </tr>
+            <tr>
+              <td><a class="cat-link" href="#cat-career"><code>moai-career</code></a></td>
+              <td>커리어 코치</td>
+              <td>recruiter 이관 3종(resume-builder·interview-coach·portfolio-guide) + 신규 career-* 2종(junior-onboarding·transition-strategist)</td>
+              <td class="center">5</td>
+              <td><code>career-coach</code> + <code>resume-auditor</code>
+                <div class="harness-line">하네스 구성: Worker(루프 실행) + Auditor(검증 게이트) + Skills(도구 레지스트리)</div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub">v6.2 재분리 3종 (스토리·데이터·미디어 · 2026-07-10)</h3>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead>
+            <tr><th>플러그인</th><th>한글명</th><th>이동 스킬 (출처)</th><th class="center">개수</th><th>번들 MCP</th><th>에이전트 (worker + auditor)</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a class="cat-link" href="#cat-story"><code>moai-story</code></a></td>
+              <td>스토리 크리에이터</td>
+              <td>story-* 13 (writer에서 분리 — 웹툰·웹소설·시나리오·콘티·표지·IP)</td>
+              <td class="center">13</td>
+              <td><code>higgsfield</code> (이미지·영상)</td>
+              <td><code>story-director</code> + <code>story-continuity-auditor</code>
+                <div class="harness-line">하네스 구성: Worker(창작 루프) + Auditor(캐릭터·플롯·설정 연속성 검증) + Skills(도구 레지스트리) + MCP(외부 생태계 연결)</div></td>
+            </tr>
+            <tr>
+              <td><a class="cat-link" href="#cat-analyst"><code>moai-analyst</code></a></td>
+              <td>데이터 애널리스트</td>
+              <td>office-data-* / public-data-* / finance-* / building-ledger / business-real-estate 11종 (officer에서 분리)</td>
+              <td class="center">11</td>
+              <td><code>korean-stats</code>(KOSIS) · <code>archhub</code>(건축물대장) · <code>dart</code>(전자공시)</td>
+              <td><code>data-analyst</code> + <code>data-provenance-auditor</code>
+                <div class="harness-line">하네스 구성: Worker(조회·시각화 루프) + Auditor(출처·신뢰성 검증) + Skills(도구 레지스트리) + MCP(외부 생태계 연결)</div></td>
+            </tr>
+            <tr>
+              <td><a class="cat-link" href="#cat-media"><code>moai-media</code></a></td>
+              <td>미디어 크리에이터</td>
+              <td>media-* 9 (marketer에서 분리 — 이미지·영상·오디오 생성·프롬프트 빌더)</td>
+              <td class="center">9</td>
+              <td><code>higgsfield</code> · <code>ElevenLabs</code>(TTS)</td>
+              <td><code>media-producer</code> + <code>media-brand-auditor</code>
+                <div class="harness-line">하네스 구성: Worker(멀티모달 생성 루프) + Auditor(브랜드 정합·저작권·품질 검증) + Skills(도구 레지스트리) + MCP(외부 생태계 연결)</div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note">
+        v6.2 재분리 3종(story 13 + analyst 11 + media 9 = 33 스킬)은 writer·officer·marketer에서
+        이질적 도메인을 독립 직원으로 분리한 것이다. 라이프스타일·자기계발 7종은 coworker general로 회수돼
+        coworker는 32스킬로 확장됐다. 스킬 총수는 233으로 불변(재배치만). 모든 분리는 move-not-copy 원칙
+        (§04 원칙 3)을 따랐으며, 이동 전후 참조 grep·치환이 선행됐다.
+      </div>
+
+      <h3 class="sub">분리 전후 스킬 분포</h3>
+      <div class="chart-panel">
+        <svg viewBox="0 0 860 220" role="img" aria-label="분리 전후 스킬 분포 스택 막대 차트">
+          <g font-family="Pretendard, sans-serif" font-size="12" fill="#3D3D3A">
+            <text x="20" y="26" font-weight="600">coworker 코어 (v6.2, 32 스킬 — 라이프스타일 7종 회수)</text>
+            <!-- scale 2.66 px per skill → 32 = 85.1px -->
+            <rect x="20" y="34" width="85.1" height="26" rx="4" fill="#87867F"/>
+            <text x="112" y="52" fill="#87867F" font-family="JetBrains Mono, monospace">32</text>
+
+            <text x="20" y="98" font-weight="600">전체 패밀리 18종 (v6.2.0, 233 스킬)</text>
+            <!-- stacked segments, scale 2.66 px per skill; v6.2: 75 / 108 / 17 / 33 -->
+            <rect x="20"    y="106" width="199.5" height="26" fill="#87867F"/>
+            <rect x="219.5" y="106" width="287.3" height="26" fill="#D97757"/>
+            <rect x="506.8" y="106" width="45.2"  height="26" fill="#788C5D"/>
+            <rect x="552.0" y="106" width="87.8"  height="26" fill="#B4876A"/>
+            <text x="648" y="124" fill="#87867F" font-family="JetBrains Mono, monospace">233</text>
+
+            <!-- legend row 1 -->
+            <rect x="20"  y="162" width="12" height="12" fill="#87867F"/><text x="38"  y="173">기존 4종(coworker·designer·coder·pm) 75</text>
+            <rect x="320" y="162" width="12" height="12" fill="#D97757"/><text x="338" y="173">전문가 8종 108</text>
+            <rect x="470" y="162" width="12" height="12" fill="#788C5D"/><text x="488" y="173">CS계열 3종 17</text>
+            <rect x="600" y="162" width="12" height="12" fill="#B4876A"/><text x="618" y="173">v6.2 재분리 3종 33</text>
+          </g>
+        </svg>
+        <p class="caption">
+          v6.2.0 기준 18종 패밀리 스킬 분포(실측, 총 233). 회색 = 기존 4종(75 — coworker 32 라이프스타일 회수 포함),
+          클레이 = 전문가 8종(108 — writer·officer·marketer v6.2 슬림 반영), 올리브 = CS계열 3종(17),
+          갈색 = v6.2 재분리 3종(33 — story 13 + analyst 11 + media 9). 스킬 총수는 v6.1과 동일(233) —
+          v6.2는 재배치만 수행했다.
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================== 06 코더(moai) 플러그인 ==================== -->
+    <section aria-label="Coder plugin plan">
+      <div class="sec-head"><span class="num">06</span><h2>코더(moai) 플러그인 — moai-adk 3.0 그대로 적용 계획</h2></div>
+      <p class="sec-intro">
+        moai-adk 3.0의 전체 구조를 유지한다: 에이전트 8종(manager-spec·manager-develop·manager-docs·
+        manager-git·builder-harness·plan-auditor·sync-auditor·code-investigator), 스킬 29종, commands 14종
+        (콜론형 <code>/moai:plan</code> — 보고서 2에서 commands가 스킬로 표면화되지만 콜론형 해석은 유지됨),
+        hooks 7종(보고서 2에서 라이프사이클 이벤트 5종의 matcher 동작 입증), output-styles 2종, 번들
+        <code>.mcp.json</code>, 그리고 <b>공식 LSP 서버 5종 전면 제공</b>
+        (<code>.lsp.json</code> 선언 — 하단 C-2 및 §06.5 참조).
+      </p>
+
+      <h3 class="sub">테스트 근거 기반 조정 체크리스트 (컴플라이언스 5항목)</h3>
+      <div class="check-list">
+        <div class="check-item">
+          <span class="cno">C-1</span>
+          <div class="ct"><b>manager-develop worktree 격리</b> — 원격 Cowork 샌드박스에서 차단됨(보고서 1).
+            대응: "run-phase 구현에는 로컬 Claude Code 필요" 문서화 <b>또는</b> graceful degrade
+            (non-worktree fallback 모드) 추가. <b>권고안: degrade 플래그 + local-first 안내</b>를 채택한다.</div>
+        </div>
+        <div class="check-item">
+          <span class="cno">C-2</span>
+          <div class="ct"><b>LSP 전면 제공 (정책 반전, 사용자 결정)</b> — 공식 LSP 서버 5종(gopls · pyright ·
+            rust-analyzer · sourcekit-lsp(swift) · typescript-language-server — 보고서 2 실측 설치 세트)을
+            플러그인 <code>.lsp.json</code>에 선언하고, <b>프로젝트 언어 자동 감지 → 해당 언어의 LSP 서버
+            설치·활성화</b>로 프로비저닝한다. 공식 규격상 언어 서버 바이너리는 플러그인에 포함되지 않고 별도
+            설치 대상이므로(§06.5 F-5) 언어 감지 시 설치 커맨드(예: <code>npm install -g
+            typescript-language-server typescript</code>)를 안내·실행한다. <b>데스크탑 Code에서 언어 서버
+            미기동(<code>No LSP server available</code>, 보고서 2 실측)인 환경에서는 graceful skip으로
+            강등한다</b> — 잔여 위험으로 §08에 등재. 게이트 스크립트의 degrade 동작도 실측 검증한다.</div>
+        </div>
+        <div class="check-item">
+          <span class="cno">C-3</span>
+          <div class="ct"><b>output-styles</b> — 데스크탑에서 활성화가 미확인 상태(보고서 2)이므로,
+            릴리스 체크리스트에 카나리아 라인 검증 단계를 추가한다.</div>
+        </div>
+        <div class="check-item">
+          <span class="cno">C-4</span>
+          <div class="ct"><b>context7 MCP</b> — 번들 <code>.mcp.json</code>에 선언하거나, 커넥터 설정 가이드
+            스킬을 동봉한다 (데스크탑에서 미연결 상태로 확인됨).</div>
+        </div>
+        <div class="check-item">
+          <span class="cno">C-5</span>
+          <div class="ct"><b>Commands</b> — 유지한다. 단, 데스크탑에서는 commands가 스킬로 표면화된다는 점을
+            문서에 명기한다 (동작 변경 불필요).</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 06.5 공식 플러그인 규격 정합 ==================== -->
+    <section aria-label="Official plugin spec compliance">
+      <div class="sec-head"><span class="num">06.5</span><h2>공식 플러그인 규격 정합 (plugins-reference 기준)</h2></div>
+      <p class="sec-intro">
+        Claude Code 공식 플러그인 문서 3종(하단 Sources)에서 추출한 규격 사실만 반영한다 — 문서에 없는
+        필드·규칙은 도입하지 않는다. 공식 컴포넌트 모델: 플러그인은 skills · agents · hooks · MCP servers ·
+        <b>LSP servers</b> · monitors(+ 레거시 commands, output-styles, themes, bin/, settings.json)를 담는
+        자립형 디렉토리다 (plugins-reference).
+      </p>
+
+      <h3 class="sub">공식 컴포넌트 모델 → 15-플러그인 계층 매핑</h3>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead>
+            <tr><th>컴포넌트 (공식 기본 위치)</th><th>전문가·CS계열 11종 + coworker</th><th>designer · pm</th><th>moai (코더)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Skills — <code>skills/&lt;name&gt;/SKILL.md</code></td><td>사용 (핵심 표면)</td><td>사용</td><td>사용 (29종)</td></tr>
+            <tr><td>Agents — <code>agents/</code></td><td>사용 (worker + auditor 2종)</td><td>미사용 (0종)</td><td>사용 (8종)</td></tr>
+            <tr><td>Hooks — <code>hooks/hooks.json</code></td><td>미사용 (원칙 1)</td><td>미사용</td><td>사용 (보고서 2 실측 5 이벤트)</td></tr>
+            <tr><td>MCP servers — <code>.mcp.json</code></td><td>도메인 MCP 보유 시 선택 번들</td><td>미사용</td><td>사용 (context7 포함, C-4)</td></tr>
+            <tr><td>LSP servers — <code>.lsp.json</code></td><td>미사용 (원칙 1)</td><td>미사용</td><td><b>사용 — 공식 5종 전면 선언 (C-2)</b></td></tr>
+            <tr><td>commands — <code>commands/</code> (레거시 flat 스킬; 신규는 <code>skills/</code> 권장)</td><td>미사용</td><td>미사용</td><td>유지 (콜론형, C-5)</td></tr>
+            <tr><td>output-styles — <code>output-styles/</code></td><td>미사용 (원칙 1)</td><td>미사용</td><td>사용 (카나리아 검증, C-3)</td></tr>
+            <tr><td>monitors — <code>monitors/monitors.json</code></td><td>미사용</td><td>미사용</td><td>미사용 (v6 범위 외)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub">규격 준수 체크 — 공식 요구사항 vs v5 → v6 필수 변경</h3>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead>
+            <tr><th class="center">#</th><th>공식 요구사항 (정확한 필드·경로)</th><th>v6 조치</th><th>출처</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="center">F-1</td>
+              <td><code>.claude-plugin/plugin.json</code> manifest — 유일한 필수 필드는 <code>name</code>
+                  (kebab-case, 공백 금지). 메타 필드: <code>displayName</code>(v2.1.143+) · <code>description</code> ·
+                  <code>author</code> · <code>homepage</code> · <code>repository</code> · <code>license</code> ·
+                  <code>keywords</code> · <code>defaultEnabled</code>(v2.1.154+).</td>
+              <td>신설 8종에 manifest 생성 — <code>name</code>은 의인화 명칭(moai-writer 등, kebab-case 충족),
+                  <code>displayName</code>에 한글 직원명(작가, 마케터 등) 기재.</td>
+              <td>plugins-reference § Plugin manifest schema</td>
+            </tr>
+            <tr>
+              <td class="center">F-2</td>
+              <td><code>version</code>(semver)을 명시하면 그 버전으로 pin — 생략 시 git commit SHA가 버전으로
+                  간주되어 매 커밋이 새 버전. marketplace entry에도 있으면 <code>plugin.json</code>이 우선.</td>
+              <td>15종 전부 <code>version</code> semver 명시 (신설 11종 0.1.0 시작, 기존 4종 현행 유지·승격).</td>
+              <td>plugins-reference § Metadata fields / Version management</td>
+            </tr>
+            <tr>
+              <td class="center">F-3</td>
+              <td><code>.claude-plugin/</code> 안에는 <code>plugin.json</code>만 — <code>skills/</code> ·
+                  <code>agents/</code> · <code>hooks/</code> 등 모든 컴포넌트 디렉토리는 플러그인 루트에 위치
+                  (공식 "Common mistake" 경고). 플러그인 루트의 <code>CLAUDE.md</code>는 로드되지 않음.</td>
+              <td>신설 8종 scaffold 시 디렉토리 배치 규칙 준수 — Phase 게이트에서 구조 검사.</td>
+              <td>plugins § Plugin structure overview / plugins-reference § Plugin directory structure</td>
+            </tr>
+            <tr>
+              <td class="center">F-4</td>
+              <td>플러그인 스킬은 항상 네임스페이스드 — <code>/plugin-name:skill</code> 형태로 호출되며
+                  <code>plugin.json</code>의 <code>name</code>이 접두사.</td>
+              <td>의인화 개명은 <b>호출 네임스페이스 변경</b>을 의미 (예:
+                  <code>/moai-coworker:legal-law-research</code> → <code>/moai-lawyer:legal-law-research</code>).
+                  Phase 0 참조 grep 범위에 콜론형 호출부(<code>moai-coworker:</code>)를 포함 — 기존 §07 계획과 정합.</td>
+              <td>plugins § Quickstart (namespacing note)</td>
+            </tr>
+            <tr>
+              <td class="center">F-5</td>
+              <td><b>LSP servers</b> — 선언 위치는 플러그인 루트의 <code>.lsp.json</code> 또는
+                  <code>plugin.json</code>의 <code>lspServers</code> 인라인(string|array|object). 서버당 필수 필드
+                  <code>command</code>(PATH 내 LSP 바이너리) + <code>extensionToLanguage</code>(확장자→언어 매핑);
+                  선택 필드 <code>args</code> · <code>transport</code>(stdio 기본|socket) · <code>env</code> ·
+                  <code>initializationOptions</code> · <code>settings</code> · <code>workspaceFolder</code> ·
+                  <code>startupTimeout</code> · <code>maxRestarts</code> · <code>diagnostics</code>(기본 true).
+                  <b>언어 서버 바이너리는 플러그인에 포함되지 않으며 별도 설치</b>. LSP 서버는 workspace trust
+                  이후에만 기동.</td>
+              <td>코더 <code>.lsp.json</code>에 5종 선언 (하단 선언 예시) + 언어 감지 시 바이너리 설치 안내·실행 (C-2).</td>
+              <td>plugins-reference § LSP servers / plugins § Add LSP servers to your plugin</td>
+            </tr>
+            <tr>
+              <td class="center">F-6</td>
+              <td>marketplace 카탈로그는 <code>.claude-plugin/marketplace.json</code>에 위치. 등록:
+                  <code>/plugin marketplace add &lt;owner/repo | git URL | 로컬 경로 | 원격 URL&gt;</code>,
+                  설치: <code>/plugin install &lt;name&gt;@&lt;marketplace&gt;</code>, scope는 user / project / local.
+                  marketplace entry의 <code>name</code>이 plugin.json <code>name</code>과 다르면 entry name이
+                  <code>enabledPlugins</code> 키·<code>/plugin</code> 기준.</td>
+              <td>v6.0.0에서 <code>moai-claude</code> marketplace.json에 신설 8종 entry 추가, v6.1.0에서
+                  CS계열 3종 entry 추가(총 15종) — entry name과 plugin.json name을 동일하게 유지해 이름 이원화 회피.</td>
+              <td>discover-plugins § Add marketplaces / Install plugins · plugins-reference § Required fields</td>
+            </tr>
+            <tr>
+              <td class="center">F-7</td>
+              <td>검증 도구: <code>claude plugin validate [--strict]</code>(인식 불가 필드는 경고, --strict로
+                  에러 승격), <code>claude plugin details</code>(컴포넌트 인벤토리 + 토큰 비용 추정),
+                  <code>/reload-plugins</code>(skills·agents·hooks·plugin MCP·plugin LSP 재로드),
+                  <code>--plugin-dir</code>(로컬 테스트 로드).</td>
+              <td>§07 Phase 공통 게이트의 "marketplace.json 검증"을 <code>claude plugin validate --strict</code> +
+                  <code>claude plugin details</code> 인벤토리 확인으로 구체화.</td>
+              <td>plugins-reference § CLI commands / plugins § Test your plugins locally</td>
+            </tr>
+            <tr>
+              <td class="center">F-8</td>
+              <td>경로 변수 치환 — <code>${CLAUDE_PLUGIN_ROOT}</code> · <code>${CLAUDE_PLUGIN_DATA}</code> ·
+                  <code>${CLAUDE_PROJECT_DIR}</code> · <code>${user_config.*}</code>가 MCP·LSP 설정, hook·monitor
+                  커맨드에서 치환됨. marketplace 플러그인은 캐시(<code>~/.claude/plugins/cache</code>)로 복사되어
+                  실행되므로 플러그인 외부 경로 참조는 동작하지 않음.</td>
+              <td>moai-seller의 vendored <code>moai-smartstore</code> MCP 경로를
+                  <code>${CLAUDE_PLUGIN_ROOT}</code> 기준으로 선언 (절대 경로·저장소 상대 경로 금지).</td>
+              <td>plugins-reference § Environment variables / Plugin caching</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub">코더(moai) <code>.lsp.json</code> 선언 — 공식 포맷 기준 5종</h3>
+      <p class="body-p">
+        공식 <code>.lsp.json</code> 포맷(서버명 → 설정 매핑, 필수 <code>command</code> +
+        <code>extensionToLanguage</code>)에 따라 보고서 2 실측 설치 세트 5종을 선언한다:
+      </p>
+      <pre class="codeblock">{
+  "go":         { "command": "gopls",                      "args": ["serve"],   "extensionToLanguage": { ".go": "go" } },
+  "python":     { "command": "pyright-langserver",         "args": ["--stdio"], "extensionToLanguage": { ".py": "python" } },
+  "rust":       { "command": "rust-analyzer",                                   "extensionToLanguage": { ".rs": "rust" } },
+  "swift":      { "command": "sourcekit-lsp",                                   "extensionToLanguage": { ".swift": "swift" } },
+  "typescript": { "command": "typescript-language-server", "args": ["--stdio"], "extensionToLanguage": { ".ts": "typescript", ".tsx": "typescriptreact", ".js": "javascript", ".jsx": "javascriptreact" } }
+}</pre>
+      <div class="note">
+        공식 마켓플레이스(<code>claude-plugins-official</code>)의 Code intelligence 카테고리는 동일 5개 언어의
+        사전 빌드 LSP 플러그인(<code>gopls-lsp</code> · <code>pyright-lsp</code> · <code>rust-analyzer-lsp</code> ·
+        <code>swift-lsp</code> · <code>typescript-lsp</code>)을 제공하며, "언어 서버가 이미 설치돼 있으면 프로젝트를
+        열 때 해당 플러그인 설치를 제안"한다 — 본 계획의 언어 감지 → 설치·활성화 흐름의 공식 선례다
+        (discover-plugins § Code intelligence). v6 결정은 코더 단일 플러그인에 자체 <code>.lsp.json</code>을
+        선언하는 방식이며, 공식 5종 LSP 플러그인 <code>dependencies</code> 참조는 대안으로 기록해 둔다.
+      </div>
+
+      <div class="note">
+        <b>Sources</b>:<br>
+        · https://code.claude.com/docs/en/plugins-reference (manifest 스키마 · 디렉토리 구조 · LSP servers 필드 명세 · CLI 검증 도구 · 캐시/변수 치환)<br>
+        · https://code.claude.com/docs/en/plugins (플러그인 생성 · 구조 경고 · 네임스페이싱 · .lsp.json 추가 가이드)<br>
+        · https://code.claude.com/docs/en/discover-plugins (marketplace 등록·설치 플로우 · 공식 LSP 플러그인 표 · 언어 감지 설치 제안 · Executable not found 트러블슈팅)
+      </div>
+    </section>
+
+    <!-- ==================== 07 단계별 실행 계획 ==================== -->
+    <section aria-label="Phased rollout">
+      <div class="sec-head"><span class="num">07</span><h2>단계별 실행 계획 (Phase 0–4)</h2></div>
+      <p class="sec-intro">
+        우선순위 라벨(Priority High / Medium)과 단계 순서만 사용하며 시간 추정은 하지 않는다.
+        모든 Phase는 공통 게이트 4종 — 스킬 로드 스모크 테스트 · 에이전트 스폰 카나리아 ·
+        cross-reference grep 파손 0건 · marketplace.json 검증 — 을 통과해야 종료된다.
+      </p>
+
+      <div class="milestones">
+        <div class="milestone">
+          <div class="when">Phase 0</div>
+          <div class="dot-col"><span class="dot"></span><span class="line"></span></div>
+          <div class="body">
+            <h3>거버넌스</h3>
+            <p>marketplace v6.1.0 스키마 확정 · move-not-copy 정책 명문화 · 네임스페이스 규칙 확정 ·
+               cross-plugin 참조 전수조사 계획 수립 (이동 전 <code>moai-coworker:</code> 참조 grep) ·
+               README/설치 가이드 표준 블록 정의.</p>
+            <div class="tag-row"><span class="tag pri-hi">선행 필수</span><span class="tag">정책·스키마</span></div>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="when">Phase 1</div>
+          <div class="dot-col"><span class="dot"></span><span class="line"></span></div>
+          <div class="body">
+            <h3>moai-writer + moai-marketer 분리</h3>
+            <p>사용자 확정 1차 대상 2종 분리. coworker 슬림 패스 #1 수행. moai-pm 라우팅 플래그
+               (<code>--writer</code>, <code>--marketer</code> 포함 8종) 반영.</p>
+            <div class="tag-row"><span class="tag pri-hi">Priority High</span><span class="tag">writer 23</span><span class="tag">marketer 28</span></div>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="when">Phase 2</div>
+          <div class="dot-col"><span class="dot"></span><span class="line"></span></div>
+          <div class="body">
+            <h3>moai-seller + moai-officer 분리</h3>
+            <p>최대 볼륨 2종. moai-seller에는 <code>moai-smartstore</code> MCP 서버(90 tools) vendoring 포함.
+               moai-officer는 office-* 27 + general 4종 수용.</p>
+            <div class="tag-row"><span class="tag pri-hi">Priority High</span><span class="tag">seller 29</span><span class="tag">office 31</span><span class="tag">MCP vendoring</span></div>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="when">Phase 3</div>
+          <div class="dot-col"><span class="dot"></span><span class="line"></span></div>
+          <div class="body">
+            <h3>전문직 4종 분리 — moai-lawyer · moai-accountant · moai-recruiter · moai-tutor</h3>
+            <p>스킬 볼륨이 작은 전문직 플러그인 4종 일괄 분리. moai-lawyer은 korean-law MCP 번들,
+               moai-recruiter은 Saramin PlayMCP 커넥터 가이드 동봉.</p>
+            <div class="tag-row"><span class="tag pri-med">Priority Medium</span><span class="tag">lawyer 9</span><span class="tag">accountant 11</span><span class="tag">recruiter 6</span><span class="tag">tutor 11</span></div>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="when">Phase 4</div>
+          <div class="dot-col"><span class="dot"></span><span class="line"></span></div>
+          <div class="body">
+            <h3>coworker 최종 슬림 + 코더 LSP 프로비저닝 + v6.1.0 등록 + 전수 검증</h3>
+            <p>coworker 최종 슬림(25 잔류) · <b>코더(moai) LSP 프로비저닝</b> — <code>.lsp.json</code> 5종 선언
+               + 프로젝트 언어 감지 → 바이너리 설치·활성화 흐름 구현 + 언어별 LSP 스모크(§09) ·
+               v6.1.0 CS계열 3종(cs·consultant·career) 추가 · marketplace v6.1.0 등록
+               (<code>claude plugin validate --strict</code>, §06.5 F-7) ·
+               전 플러그인 카나리아 검증 라운드 (보고서 2 방법론, §09) · docs/설치 가이드 갱신.</p>
+            <div class="tag-row"><span class="tag pri-med">Priority Medium</span><span class="tag">v6.1.0 릴리스</span><span class="tag">LSP 5종</span><span class="tag">전수 카나리아</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 08 위험 및 완화 ==================== -->
+    <section aria-label="Risks">
+      <div class="sec-head"><span class="num">08</span><h2>위험 및 완화</h2></div>
+      <div class="risks">
+        <div class="row">
+          <div class="cell head">위험</div>
+          <div class="cell head">심각도</div>
+          <div class="cell head">완화</div>
+        </div>
+        <div class="row">
+          <div class="cell">스킬 이동 시 cross-plugin 스킬 참조 파손</div>
+          <div class="cell"><span class="pill hi">High</span></div>
+          <div class="cell">이동 전 참조 전수 grep sweep(Phase 0) + 필요 지점에 redirect stub 배치. Phase 게이트에서 broken 0건 확인.</div>
+        </div>
+        <div class="row">
+          <div class="cell">데스크탑 패리티 갭 (LSP · output-styles)</div>
+          <div class="cell"><span class="pill med">Med</span></div>
+          <div class="cell">설계 원칙 1(§04)로 전문가 플러그인에서 원천 회피. 코더는 §06 체크리스트 C-2/C-3으로 커버.</div>
+        </div>
+        <div class="row">
+          <div class="cell">데스크탑 Code에서 언어 서버 미기동 — 코더 LSP 5종이 무효화
+            (<code>No LSP server available</code>, 보고서 2 실측)</div>
+          <div class="cell"><span class="pill med">Med</span></div>
+          <div class="cell">로컬 Claude Code CLI를 LSP 1차 환경으로 지정(local-first). 데스크탑에서는 graceful skip
+            강등을 문서화(C-2)하고, 언어별 LSP 스모크(§09)는 CLI에서 수행.</div>
+        </div>
+        <div class="row">
+          <div class="cell">분리 후 coworker 사용자의 스킬 유실 체감</div>
+          <div class="cell"><span class="pill med">Med</span></div>
+          <div class="cell">moai-pm 라우팅 + coworker README에 "이 스킬은 X 플러그인으로 이동" 마이그레이션 표 제공.</div>
+        </div>
+        <div class="row">
+          <div class="cell">MCP OAuth 게이트 (meta-ads, higgsfield)</div>
+          <div class="cell"><span class="pill lo">Low</span></div>
+          <div class="cell">커넥터 설정 가이드 스킬로 대응 — 자격증명 번들 금지.</div>
+        </div>
+        <div class="row">
+          <div class="cell">마이그레이션 중 병렬 세션 파일 race</div>
+          <div class="cell"><span class="pill med">Med</span></div>
+          <div class="cell">Phase별 단일 소유자(single-owner) 실행 + 스폰 전 git fetch 규율(pre-spawn sync check) 준수.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 09 검증 계획 ==================== -->
+    <section aria-label="Validation plan">
+      <div class="sec-head"><span class="num">09</span><h2>검증 계획 — 카나리아 방법론 재사용</h2></div>
+      <p class="sec-intro">
+        보고서 2에서 Subagents 동작을 입증한 file-trace 카나리아 방식을 그대로 재사용한다.
+        각 플러그인 scaffold 직후와 Phase 4 전수 라운드에서 아래 절차를 반복한다.
+      </p>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead>
+            <tr><th class="center">단계</th><th>절차</th><th>합격 기준</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="center">1</td>
+              <td>플러그인 scaffold 완료 후 해당 worker 에이전트 스폰 → 카나리아 파일 + 타임스탬프 기록 지시</td>
+              <td>에이전트가 정상 스폰되고 파일 쓰기 수행</td>
+            </tr>
+            <tr>
+              <td class="center">2</td>
+              <td>파일 트레이스 독립 검증 (오케스트레이터가 직접 파일 존재·타임스탬프 확인)</td>
+              <td>카나리아 파일 실존 + 타임스탬프 일치 — 에이전트 자기 보고에 의존하지 않음</td>
+            </tr>
+            <tr>
+              <td class="center">3</td>
+              <td>auditor 에이전트 스폰 → 쓰기 시도 거부 확인 (read-only 정의 레벨 강제 검증)</td>
+              <td>Write/Edit 불가 — 보고서 1의 3계층 모델 재현</td>
+            </tr>
+            <tr>
+              <td class="center">4</td>
+              <td>skill listing으로 전 스킬 로드 테스트 + cross-reference grep + <code>claude plugin validate
+                  --strict</code> + <code>claude plugin details</code> 인벤토리 확인 (§06.5 F-7)</td>
+              <td>이동/잔류 스킬 전수 노출 · broken 참조 0건 · validate 통과 · 인벤토리 일치</td>
+            </tr>
+            <tr>
+              <td class="center">5</td>
+              <td>코더(moai) 언어별 LSP 스모크 — go / python / rust / swift / typescript 샘플 파일 1개씩에서
+                  편집 직후 diagnostics 수신 + hover 응답 확인 (로컬 Claude Code CLI에서 수행, §08 잔여 위험 참조)</td>
+              <td>5/5 언어에서 diagnostics·hover 정상 — 미기동 환경(데스크탑)은 graceful skip 확인으로 대체</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub">성공 지표 (v6.1.0 릴리스 게이트)</h3>
+      <div class="metrics-list">
+        <div class="metric-row">
+          <div class="metric-indicator"></div>
+          <div class="metric-label">신설 11종 worker 에이전트 카나리아 파일 트레이스 확인</div>
+          <div class="metric-target">Target: 11/11</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-indicator"></div>
+          <div class="metric-label">스킬 로드 스모크 — 전체 233 스킬 전수 listing 노출</div>
+          <div class="metric-target">Target: 100%</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-indicator"></div>
+          <div class="metric-label">cross-plugin 참조 grep 파손 건수</div>
+          <div class="metric-target">Target: 0</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-indicator"></div>
+          <div class="metric-label">marketplace.json v6.1.0 스키마 검증</div>
+          <div class="metric-target">Target: PASS</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-indicator"></div>
+          <div class="metric-label">코더(moai) 조정 체크리스트 C-1 ~ C-5 클로즈</div>
+          <div class="metric-target">Target: 5/5</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-indicator"></div>
+          <div class="metric-label">코더 LSP 언어별 스모크 — go·python·rust·swift·typescript hover/diagnostics (CLI)</div>
+          <div class="metric-target">Target: 5/5</div>
+        </div>
+      </div>
+
+      <h3 class="sub">하네스 KPI — 프레임워크 지표 → 측정 항목 매핑</h3>
+      <p class="body-p">
+        Agent Harness Engineering의 KPI 축을 본 계획의 측정 항목에 매핑한다. 릴리스 게이트(위 성공 지표)와
+        달리, 하네스 KPI는 v6.1.0 릴리스 이후에도 지속 추적하는 운영 지표다.
+      </p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead>
+            <tr><th>프레임워크 KPI</th><th>측정 항목</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>정확도 / 품질</td>
+              <td>카나리아 PASS율 + cross-plugin broken reference 0건 유지</td>
+            </tr>
+            <tr>
+              <td>업무 자동화율</td>
+              <td>자연어 요청 → 스킬 매칭 성공률 (moai-pm 라우팅 포함)</td>
+            </tr>
+            <tr>
+              <td>응답 시간 / 비용 최적화</td>
+              <td>스킬 주입 vs 에이전트 스폰 토큰 비교 — 태스크 유형별 저비용 경로 선택 근거</td>
+            </tr>
+            <tr>
+              <td>시스템 안정성 / 가용성</td>
+              <td>스킬 로드 스모크 테스트 통과율 (전 플러그인 listing 노출)</td>
+            </tr>
+            <tr>
+              <td>사용자 만족 / 비즈니스 성과</td>
+              <td>플러그인별 README 대표 시나리오 충족 여부</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==================== 10 부록 ==================== -->
+    <section aria-label="Appendix">
+      <div class="sec-head"><span class="num">10</span><h2>부록 — 플러그인·스킬 전체 카탈로그 (18종 · 233 스킬, v6.2.0)</h2></div>
+      <p class="sec-intro">
+        2026-07-10 리포지토리 <code>plugins/*/skills/*/SKILL.md</code> 단위 실측 카탈로그 (v6.2.0 재배치 반영).
+        추출 결과(스킬 합계 233 — v6.1과 동일, 재배치만): moai-coworker 32 · moai-writer 10 · moai-story 13 ·
+        moai-marketer 19 · moai-media 9 · moai-seller 29 · moai-officer 13 · moai-analyst 11 · moai-lawyer 9 ·
+        moai-accountant 11 · moai-recruiter 6 · moai-tutor 11 · moai-cs 6 · moai-consultant 6 · moai-career 5 ·
+        moai-designer 13 · moai-pm 1 · moai(코더) 29. 에이전트는 역할 플러그인 14종이 각 2종(worker + auditor),
+        코더가 8종, coworker·designer·pm은 0종이다.
+      </p>
+
+      <div class="note">
+        네임스페이스 접두사는 각 새 플러그인 내부에서 변경하지 않는다(§04 원칙 3). 이동 전
+        <code>moai-coworker:</code> 참조 전수 grep(Phase 0)으로 파손 지점을 선식별하고, 필요 지점에는
+        redirect stub을 남긴다. 표 내 [별칭]/[이전]/[DEPRECATED] 표기는 기존 리다이렉트 스텁 스킬로,
+        이동 시에도 스텁 형태를 유지한다.
+      </div>
+
+      <!-- ============ 신설 8종 ============ -->
+      <h3 class="sub" id="cat-writer">moai-writer — 작가 (10 스킬, v6.2 슬림)</h3>
+      <p class="body-p">단행본 출판의 기획부터 집필·퇴고·투고까지 담당하는 AI 작가 직원. v6.2에서 story-* 13종은 moai-story로,
+        office-korean-spell-check은 무접두사 korean-spell-check로 rename(스킬명만 정리, 본문 보존).</p>
+      <p class="harness-line">하네스 구성: Worker <code>writer-director</code>(루프 실행) + Auditor <code>manuscript-auditor</code>(검증 게이트) + Skills 10종(도구 레지스트리). higgsfield는 moai-story로 이관.</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>스킬</th><th>설명</th></tr></thead>
+          <tbody>
+            <tr><td><code>book-author-bio</code></td><td>도서 저자 약력·저자의 말을 3가지 길이로 산출 (장르별 신뢰 신호 자동 분기)</td></tr>
+            <tr><td><code>book-chapter-writer</code></td><td>꼭지 단위 본문 초고 집필 — 매수 관리·인용 처리·4 장르 문체 분기</td></tr>
+            <tr><td><code>book-concept-planner</code></td><td>한국 출판사 제출용 도서 컨셉서 (요약·USP·타깃·시장 포지셔닝)</td></tr>
+            <tr><td><code>book-outline-designer</code></td><td>부·장·꼭지 3레벨 목차 설계 + 분량 배분 + 챕터 시놉시스</td></tr>
+            <tr><td><code>book-proposal-writer</code></td><td>출판사 투고용 제안서 (기획서 + 샘플 챕터 + 마케팅 플랜, 출판사 양식별 분기)</td></tr>
+            <tr><td><code>book-publisher-matcher</code></td><td>장르·규모·계약 조건·투고 채널 4차원 평가로 한국 출판사 Top 5 매칭</td></tr>
+            <tr><td><code>book-revision-coach</code></td><td>7단계 점검(어법·문체·논리·인용·분량 등)으로 출판 직전 원고 퇴고·교열</td></tr>
+            <tr><td><code>book-target-reader</code></td><td>도서 타깃 독자 페르소나·JTBD·페인포인트 매트릭스 작성</td></tr>
+            <tr><td><code>general-humanize-korean</code></td><td>AI가 쓴 한국어의 "AI 티"를 10대 카테고리·40+ 패턴으로 탐지·윤문 (의미·수치 100% 보존)</td></tr>
+            <tr><td><code>korean-spell-check</code></td><td>국립국어원 계열 규칙 기반 한국어 맞춤법·문법 검사 (v6.2 rename: 구 office-korean-spell-check)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub" id="cat-story">moai-story — 스토리 크리에이터 (13 스킬, v6.2 신설)</h3>
+      <p class="body-p">웹툰·웹소설·시나리오·콘티·표지·IP 사업화의 창작 파이프라인을 담당하는 AI 스토리 직원. writer에서 story-* 13종 분리.</p>
+      <p class="harness-line">하네스 구성: Worker <code>story-director</code>(창작 루프) + Auditor <code>story-continuity-auditor</code>(캐릭터·플롯·설정 연속성 검증) + Skills 13종(도구 레지스트리) + <code>higgsfield</code> MCP(이미지·영상)</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>스킬</th><th>설명</th></tr></thead>
+          <tbody>
+            <tr><td><code>story-ad-conti</code></td><td>광고 콘티·스토리보드를 Higgsfield Marketing Studio·Ads 2.0으로 생성 (MCP 미연결 시 프롬프트 온리)</td></tr>
+            <tr><td><code>story-character-sheet</code></td><td>인물 설정(성격·관계·갈등)과 비주얼을 Soul ID로 학습시켜 일관 작화에 활용</td></tr>
+            <tr><td><code>story-conti</code></td><td>씬을 프레임 시퀀스로 분해하고 Popcorn(8프레임)·Shots(9앵글)로 콘티 이미지 생성</td></tr>
+            <tr><td><code>story-cover-art</code></td><td>단행본·웹툰 썸네일·웹소설 표지를 인쇄 해상도까지 생성</td></tr>
+            <tr><td><code>story-ip-pitch</code></td><td>작품의 2차 저작(드라마·영화·게임·굿즈) 피칭 문서·판권 제안서 작성</td></tr>
+            <tr><td><code>story-previz</code></td><td>카메라 무빙·렌즈·조명을 지정한 시네마틱 프리비즈 숏 생성</td></tr>
+            <tr><td><code>story-project</code></td><td>작품 유형을 분류해 알맞은 story-* 파이프라인으로 라우팅하는 진입점 스킬</td></tr>
+            <tr><td><code>story-screenplay</code></td><td>한국 방송·영화 표준 포맷 시나리오(씬 넘버·지문·대사) 작성</td></tr>
+            <tr><td><code>story-synopsis</code></td><td>로그라인·기획의도·인물·회차 구성을 담은 제작사 제출용 시놉시스</td></tr>
+            <tr><td><code>story-webnovel-writer</code></td><td>문피아·카카오페이지 플랫폼 문법과 회차 절단(클리프행어) 설계 기반 웹소설 집필</td></tr>
+            <tr><td><code>story-webtoon-art</code></td><td>Soul ID 캐릭터 일관성을 유지하며 웹툰 패널 컷 이미지 생성</td></tr>
+            <tr><td><code>story-webtoon-episode</code></td><td>한 회를 컷 단위로 분할하고 대사·연출·말친 배치까지 설계한 회차 대본</td></tr>
+            <tr><td><code>story-webtoon-planner</code></td><td>세계관·캐릭터·시즌 구성·플랫폼 문법을 한 흐름으로 설계하는 웹툰 기획</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub" id="cat-marketer">moai-marketer — 마케터 (19 스킬, v6.2 슬림)</h3>
+      <p class="body-p">캠페인 기획·콘텐츠 제작·광고 운영·성과 분석을 담당하는 AI 마케터 직원. v6.2에서 media-* 9종은 moai-media로 분리.</p>
+      <p class="harness-line">하네스 구성: Worker <code>campaign-strategist</code>(루프 실행) + Auditor <code>performance-auditor</code>(검증 게이트) + Skills 19종(도구 레지스트리) + meta-ads·post-bridge·typefully·wordpress 커넥터(외부 생태계 연결). 미디어 생성은 moai-media로 인계.</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>스킬</th><th>설명</th></tr></thead>
+          <tbody>
+            <tr><td><code>marketing-campaign-planner</code></td><td>광고·SNS·이메일 통합 마케팅 캠페인 기획안 (목표·채널·예산·KPI·크리에이티브)</td></tr>
+            <tr><td><code>marketing-landing-page</code></td><td>하나의 행동(가입·구매·신청)을 유도하는 전환 랜딩 1페이지를 카피+코드로 제작</td></tr>
+            <tr><td><code>marketing-landing-page-conversion-audit</code></td><td>기존 랜딩페이지의 전환 저해 요인 진단 + 우선순위 처방 리포트</td></tr>
+            <tr><td><code>marketing-meta-ads-analyzer</code></td><td>메타 광고관리자 엑셀 보고서 성과 진단 + 강도별(보수/중도/적극) 개선 리포트</td></tr>
+            <tr><td><code>marketing-meta-ads-manager</code></td><td>자연어로 페이스북·인스타 광고 생성·on/off·예산 조정 (신규 광고는 PAUSED로 생성 후 확인)</td></tr>
+            <tr><td><code>marketing-performance-report</code></td><td>GA4·네이버·메타·카카오·구글 데이터 통합 채널별 ROAS·KPI 성과 보고서</td></tr>
+            <tr><td><code>marketing-personal-branding</code></td><td>개인 전문성·경력 기반 포지셔닝·콘텐츠·채널 전략 문서</td></tr>
+            <tr><td><code>marketing-pixel-audit</code></td><td>메타·구글 추적 픽셀 설치·설정 점검 + 고객 데이터 활용도 진단 리포트</td></tr>
+            <tr><td><code>marketing-seo-audit</code></td><td>네이버·구글·AI 검색(GEO) 노출 점검 + 개선안·추천 키워드 SEO 감사 보고서</td></tr>
+            <tr><td><code>marketing-target-script</code></td><td>타겟 고객 페인포인트 분석 + 채널별 맞춤 메시지·카피 생성</td></tr>
+            <tr><td><code>marketing-youtube-podcast-planner</code></td><td>유튜브 영상·팟캐스트 에피소드 기획 + 대본·쇼노트 구성</td></tr>
+            <tr><td><code>content-blog</code></td><td>네이버·티스토리·브런치·WordPress·Ghost용 블로그 포스팅 (제목·목차·본문·CTA·SEO 메타)</td></tr>
+            <tr><td><code>content-card-news</code></td><td>인스타·스레드·카카오용 카드뉴스 4장 (카피 + 디자인 가이드 + 이미지 프롬프트 + 캡션)</td></tr>
+            <tr><td><code>content-copywriting</code></td><td>헤드라인·CTA·슬로건·광고 카피 다안 산출 + 캠페인 전략·스토리보드 확장</td></tr>
+            <tr><td><code>content-editorial-calendar</code></td><td>콘텐츠 발행 캘린더·채널별 게시 일정 기획</td></tr>
+            <tr><td><code>content-email-sequence</code></td><td>가입·구매 후 단계별 자동 발송 이메일 시퀀스 설계 (정통망법 준수)</td></tr>
+            <tr><td><code>content-newsletter</code></td><td>이메일 뉴스레터(제목·프리헤더·본문·CTA) + 구독자 확보 전략</td></tr>
+            <tr><td><code>content-sns-content</code></td><td>인스타·블로그·카카오·스레드·X·링크드인·쇼츠까지 채널 맞춤 SNS 게시글·캡션·스크립트</td></tr>
+            <tr><td><code>content-social-media</code></td><td>[DEPRECATED] content-sns-content로 흡수된 별칭 스텁</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub" id="cat-media">moai-media — 미디어 크리에이터 (9 스킬, v6.2 신설)</h3>
+      <p class="body-p">이미지·영상·오디오 생성과 프롬프트 빌더를 담당하는 범용 미디어 생성 AI 직원. marketer에서 media-* 9종 분리.</p>
+      <p class="harness-line">하네스 구성: Worker <code>media-producer</code>(멀티모달 생성 루프) + Auditor <code>media-brand-auditor</code>(브랜드 정합·저작권·품질 검증) + Skills 9종(도구 레지스트리) + <code>higgsfield</code>·<code>ElevenLabs</code> MCP(외부 생태계 연결)</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>스킬</th><th>설명</th></tr></thead>
+          <tbody>
+            <tr><td><code>media-asset-production</code></td><td>[별칭] 이미지·영상 2개 스킬로 분리된 리다이렉트 스텁</td></tr>
+            <tr><td><code>media-audio-gen</code></td><td>ElevenLabs MCP 기반 TTS(32개국어)·보이스 클로닝·다국어 더빙·효과음 생성</td></tr>
+            <tr><td><code>media-codex-image</code></td><td>codex CLI 내장 image_gen으로 gpt-image-2 이미지 생성 (ChatGPT OAuth, API 키 불필요)</td></tr>
+            <tr><td><code>media-gemini-3-image-prompt</code></td><td>Gemini 3 Pro Image(나노바나나) 5-component 이미지 프롬프트 빌더</td></tr>
+            <tr><td><code>media-gpt-image-2-prompt</code></td><td>GPT-image-2 공식 6-Block 구조 이미지 프롬프트 빌더</td></tr>
+            <tr><td><code>media-higgsfield-image</code></td><td>Higgsfield MCP 기반 AI 이미지를 자연어 한 줄로 생성</td></tr>
+            <tr><td><code>media-higgsfield-video</code></td><td>Higgsfield MCP 기반 AI 영상을 자연어 한 줄로 생성</td></tr>
+            <tr><td><code>media-midjourney-v8-prompt</code></td><td>Midjourney v8.1 키워드+파라미터 형식 이미지 프롬프트 빌더</td></tr>
+            <tr><td><code>media-notebooklm-slide-prompt</code></td><td>강연 마크다운 → NotebookLM 슬라이드 프롬프트 + 슬라이드별 이미지 프롬프트 동시 산출</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub" id="cat-seller">moai-seller — 셀러 (29 스킬)</h3>
+      <p class="body-p">한국 이커머스 셀러의 시장조사·상세페이지·광고·마진·리텐션 전 사이클을 담당하는 AI 셀러 직원.</p>
+      <p class="harness-line">하네스 구성: Worker <code>listing-builder</code>(루프 실행) + Auditor <code>margin-auditor</code>(검증 게이트) + Skills 29종(도구 레지스트리) + <code>moai-smartstore</code> MCP 90 tools(외부 생태계 연결)</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>스킬</th><th>설명</th></tr></thead>
+          <tbody>
+            <tr><td><code>commerce-automation-audit</code></td><td>셀러 운영 자체 진단 + 자동화 우선순위 점수 + 3 Phase 로드맵 자동 생성</td></tr>
+            <tr><td><code>commerce-coupang-ad-optimizer</code></td><td>[별칭] commerce-marketplace-coupang-ads로 개명된 리다이렉트 스텁</td></tr>
+            <tr><td><code>commerce-detail-page-copy</code></td><td>13섹션 감정여정 상세페이지 카피 + 진단·페르소나 카피 확장 모드</td></tr>
+            <tr><td><code>commerce-detail-page-image</code></td><td>상세페이지 13섹션 이미지 자동 생성 + 1080×12720 단일 PNG 합성</td></tr>
+            <tr><td><code>commerce-detail-page-planner</code></td><td>상세페이지 기획안 (원 메시지·오프닝 유형·본문 뼈대·유통 채널 전략·사진 체크리스트)</td></tr>
+            <tr><td><code>commerce-early-fan-builder</code></td><td>신생 브랜드의 충성 고객 100명 부트스트랩 전략 + 100명→1만 전환 로드맵</td></tr>
+            <tr><td><code>commerce-influencer-collab</code></td><td>인플루언서·UGC 협업 가이드 (뒷광고 회피·체험단·리그램·굿즈)</td></tr>
+            <tr><td><code>commerce-integrated-strategy</code></td><td>선행 스킬 산출물 종합 매출 향상 통합 전략 1장 + 실행 우선순위 Top 3</td></tr>
+            <tr><td><code>commerce-jtbd-persona</code></td><td>JTBD 9개 도출 + 리뷰·Q&amp;A 분석 기반 페르소나 3명 생성 (1스킬 2모드)</td></tr>
+            <tr><td><code>commerce-live-commerce</code></td><td>네이버·카카오·그립·쿠팡 라이브 커머스 채널 가이드 + 라이브 스크립트</td></tr>
+            <tr><td><code>commerce-ltv-cac-architect</code></td><td>CAC→재구매율→LTV 6대 지표 연결 모델 + 손익분기 ROAS 자동 계산</td></tr>
+            <tr><td><code>commerce-margin-calculator</code></td><td>상품별 마진·엔드 ROAS·손익분기 광고비 자동 계산 (수수료·쿠폰 반영)</td></tr>
+            <tr><td><code>commerce-market-research</code></td><td>거시·경쟁·검색 3축 카테고리 시장조사 리포트 1장 자동 생성</td></tr>
+            <tr><td><code>commerce-marketing-compliance-kr</code></td><td>정통망법 광고·정보성 메시지 자동 판정 — 전 채널 발송 전 법규 게이트</td></tr>
+            <tr><td><code>commerce-marketplace-coupang</code></td><td>쿠팡 상세페이지 정책·검색최적화·우수상품 가이드라인 적용</td></tr>
+            <tr><td><code>commerce-marketplace-coupang-ads</code></td><td>쿠팡 광고 풀세트 분석·최적화 (3 캠페인 분류 + 엔드 ROAS + 자동규칙 3종)</td></tr>
+            <tr><td><code>commerce-marketplace-crowdfunding</code></td><td>와디즈·텀블벅 크라우드펀딩 기획·심사·리워드·후속 정산 가이드</td></tr>
+            <tr><td><code>commerce-marketplace-curation</code></td><td>카카오 메이커스·무신사·29CM 큐레이션 커머스 입점 가이드</td></tr>
+            <tr><td><code>commerce-marketplace-d2c</code></td><td>카페24·아임웹·메이크샵 자사몰(D2C) 빌더 운영 가이드</td></tr>
+            <tr><td><code>commerce-marketplace-naver</code></td><td>네이버 스마트스토어 + 11번가/G마켓/옥션 정책·검색최적화 가이드</td></tr>
+            <tr><td><code>commerce-morning-brief</code></td><td>매장 운영 데이터(어제 주문·신규 문의·트렌드·ROAS) 아침 브리핑 통합 요약</td></tr>
+            <tr><td><code>commerce-product-detail</code></td><td>스마트스토어·쿠팡·카카오 규격 제품 상세 페이지 코드(HTML/React) 생성</td></tr>
+            <tr><td><code>commerce-product-image-pipeline</code></td><td>상품 이미지·영상 풀스택 파이프라인 오케스트레이터 (Higgsfield 체인 + 채널 규격 변환)</td></tr>
+            <tr><td><code>commerce-product-naming</code></td><td>상품명 3안 + 플랫폼 검증(25자·금지어) + 트렌드 검색어 해시태그·SEO 변환</td></tr>
+            <tr><td><code>commerce-product-photo-brief</code></td><td>상품 사진 분석 → ProductDNA 추출 + 13섹션 상세페이지 부족 컷 식별</td></tr>
+            <tr><td><code>commerce-promotion-planner</code></td><td>3대 프로모션 기획법(이슈화·얼리버드·한정) 기반 프로모션 기획서 산출</td></tr>
+            <tr><td><code>commerce-repurchase-timer</code></td><td>재구매 골든타임 3구간 타이밍 엔진 + 구간별 메시지 톤 + 리드 스코어링</td></tr>
+            <tr><td><code>commerce-season-calendar</code></td><td>한국·글로벌 시즌 이벤트 30+ 매핑 연간 캘린더 + 분기 캠페인 계획</td></tr>
+            <tr><td><code>commerce-subscription-strategist</code></td><td>구독 비즈니스 모델 설계 (자기진단 + 모델 분류 + 한국 시장 적합성)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub" id="cat-officer">moai-officer — 사무관 (13 스킬, v6.2 슬림)</h3>
+      <p class="body-p">한국형 오피스 문서 생산(HWP·Word·PPT·Excel·PDF·HTML)과 공문서 파싱·노션 템플릿·생산성 루틴을 담당하는 AI 사무관 직원. v6.2에서 공공데이터 11종은 moai-analyst로, 라이프스타일 7종은 moai-coworker로 분리.</p>
+      <p class="harness-line">하네스 구성: Worker <code>doc-producer</code>(루프 실행) + Auditor <code>data-auditor</code>(검증 게이트) + Skills 13종(도구 레지스트리) + <code>kordoc</code> MCP(한국 공문서 파서, 외부 생태계 연결)</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>스킬</th><th>설명</th></tr></thead>
+          <tbody>
+            <tr><td><code>office-daily-briefing</code></td><td>업계 뉴스·시장 동향·경쟁사·규제 변화·오늘 할 일 아침 브리핑 1장</td></tr>
+            <tr><td><code>office-design-system-library</code></td><td>75개 글로벌 브랜드 디자인 시스템 토큰을 단일 파일 HTML 산출물에 적용</td></tr>
+            <tr><td><code>office-document-reader</code></td><td>한국 공문서(HWP/HWPX/PDF/XLSX/DOCX) 마크다운 파싱 — 표 재현·양식 추출 (kordoc MCP 8도구)</td></tr>
+            <tr><td><code>office-docx-generator</code></td><td>편집 가능한 워드(.docx) 보고서·계약서·제안서·공문서·기획서 생성</td></tr>
+            <tr><td><code>office-html-report</code></td><td>마크다운 보고서 → 단일 파일 HTML 렌더링 (이메일 첨부·인쇄·오프라인)</td></tr>
+            <tr><td><code>office-html-slide</code></td><td>자체 완결형 HTML 슬라이드 덱 + 한국어 정확 인라인 SVG 인포그래픽</td></tr>
+            <tr><td><code>office-hwpx-writer</code></td><td>아래아한글(.hwpx) 공문서·기안서·품의서·보고서 생성 + HWP→HWPX 변환</td></tr>
+            <tr><td><code>office-mcp-connector-setup</code></td><td>Drive·Notion·Higgsfield 커넥터 인증·환경변수·트러블슈팅 가이드</td></tr>
+            <tr><td><code>office-notion-template-kit</code></td><td>노션 올인원 업무관리·목표·회고 템플릿 구조 설계</td></tr>
+            <tr><td><code>office-pdf-writer</code></td><td>어떤 콘텐츠든 PDF 파일로 변환 (스타일 HTML 리포트 디자인 보존)</td></tr>
+            <tr><td><code>office-pptx-designer</code></td><td>파워포인트(.pptx) 발표 슬라이드 디자인·생성 (보고·피칭·교육·키노트)</td></tr>
+            <tr><td><code>office-time-system</code></td><td>하루·한 주의 시간을 주도적으로 설계하는 시간관리</td></tr>
+            <tr><td><code>office-xlsx-creator</code></td><td>엑셀(.xlsx) KPI 대시보드·매출 분석표·예산표·간트차트 생성</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub" id="cat-analyst">moai-analyst — 데이터 애널리스트 (11 스킬, v6.2 신설)</h3>
+      <p class="body-p">데이터 프로파일링·시각화와 공공데이터 조회(부동산·경매·주식·KOSIS·건축물대장·DART)를 담당하는 AI 데이터
+        애널리스트 직원. officer에서 data/public-data 11종 분리.</p>
+      <p class="harness-line">하네스 구성: Worker <code>data-analyst</code>(조회·시각화 루프) + Auditor <code>data-provenance-auditor</code>(출처·신뢰성 검증) + Skills 11종(도구 레지스트리) + <code>korean-stats</code>(KOSIS)·<code>archhub</code>(건축물대장)·<code>dart</code>(전자공시) MCP(외부 생태계 연결)</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>스킬</th><th>설명</th></tr></thead>
+          <tbody>
+            <tr><td><code>office-building-ledger-search</code></td><td>건축HUB 건축물대장·인허가 실측 데이터 조회 (archhub MCP 11도구, API 키 불필요)</td></tr>
+            <tr><td><code>office-business-real-estate-search</code></td><td>[이전] office-public-data-real-estate-search로 이동된 스텁</td></tr>
+            <tr><td><code>office-data-explorer</code></td><td>CSV·Excel 데이터 프로파일링·품질 보고서</td></tr>
+            <tr><td><code>office-data-public-data</code></td><td>[이전] office-public-data-public-data로 이동된 스텁</td></tr>
+            <tr><td><code>office-data-visualizer</code></td><td>데이터를 한눈에 보여주는 인터랙티브 차트·대시보드(HTML) 생성</td></tr>
+            <tr><td><code>office-finance-court-auction-search</code></td><td>[이전] office-public-data-court-auction-search로 이동된 스텁</td></tr>
+            <tr><td><code>office-finance-korean-stock-search</code></td><td>[이전] office-public-data-korean-stock-search로 이동된 스텁</td></tr>
+            <tr><td><code>office-public-data-court-auction-search</code></td><td>대법원 법원경매정보 부동산 매각공고 조회</td></tr>
+            <tr><td><code>office-public-data-korean-stock-search</code></td><td>KRX 상장 종목 검색 + 종목 기본정보·일별 시세 조회</td></tr>
+            <tr><td><code>office-public-data-public-data</code></td><td>공공데이터포털(data.go.kr)·KOSIS 실시간 통계 정밀 조회·분석</td></tr>
+            <tr><td><code>office-public-data-real-estate-search</code></td><td>국토부 실거래가 데이터로 매매·전월세 시세 조회 (API 키 불필요)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub" id="cat-lawyer">moai-lawyer — 법무 담당 (9 스킬)</h3>
+      <p class="body-p">법령·판례 리서치, 계약 검토, 특허·컴플라이언스까지 담당하는 AI 법무 담당 직원. korean-law MCP는 보고서 2에서 실데이터 반환이 입증됐다.</p>
+      <p class="harness-line">하네스 구성: Worker <code>legal-researcher</code>(루프 실행) + Auditor <code>risk-auditor</code>(검증 게이트) + Skills 9종(도구 레지스트리) + <code>korean-law</code> MCP(외부 생태계 연결)</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>스킬</th><th>설명</th></tr></thead>
+          <tbody>
+            <tr><td><code>legal-compliance-check</code></td><td>규제 준수 점검·내부 감사·ESG 보고·인허가 서류 지원</td></tr>
+            <tr><td><code>legal-contract-review</code></td><td>계약서·이용약관·개인정보처리방침 등 법률 문서 분석·작성</td></tr>
+            <tr><td><code>legal-iros-registry-automation</code></td><td>대법원 인터넷등기소(IROS) 법인·부동산 등기부등본 조회 자동화</td></tr>
+            <tr><td><code>legal-law-research</code></td><td>법제처 법령·판례·해석례 원문 조회 + 인용검증·판례 생사 확인 (korean-law MCP 9도구)</td></tr>
+            <tr><td><code>legal-legal-risk</code></td><td>기업 법적 리스크 분석 + 지적재산권 전략 수립</td></tr>
+            <tr><td><code>legal-mfds-safety</code></td><td>식약처(MFDS) 공식 OpenAPI로 의약품·식품 안전 정보 조회</td></tr>
+            <tr><td><code>legal-nda-triage</code></td><td>비밀유지계약서(NDA) 신속 검토·리스크 평가</td></tr>
+            <tr><td><code>legal-patent-analyzer</code></td><td>특허 동향·선행기술 조사·FTO(침해 가능성) 분석·출원서 초안</td></tr>
+            <tr><td><code>legal-patent-search</code></td><td>KIPRIS Plus 특허·실용신안·디자인·상표 검색·서지 정리</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub" id="cat-accountant">moai-accountant — 재무·세무 담당 (11 스킬)</h3>
+      <p class="body-p">기업 결산·재무제표·IR과 개인 가계·절세·자산 관리까지 담당하는 AI 재무·세무 담당 직원.</p>
+      <p class="harness-line">하네스 구성: Worker <code>finance-analyst</code>(루프 실행) + Auditor <code>close-auditor</code>(검증 게이트) + Skills 11종(도구 레지스트리)</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>스킬</th><th>설명</th></tr></thead>
+          <tbody>
+            <tr><td><code>finance-close-management</code></td><td>월말·분기·연간 결산 지원</td></tr>
+            <tr><td><code>finance-econ-literacy</code></td><td>금리·환율·물가 경제지표를 '내 돈' 관점에서 해석</td></tr>
+            <tr><td><code>finance-financial-statements</code></td><td>재무제표 작성</td></tr>
+            <tr><td><code>finance-household-budget</code></td><td>월급 관리·가계부·예산 배분·소비 회고</td></tr>
+            <tr><td><code>finance-insurance-fit</code></td><td>과보험·중복 정리 — 꼭 필요한 보험만 남기는 리모델링</td></tr>
+            <tr><td><code>finance-invest-primer</code></td><td>투자 입문 원칙·자산군·초보 포트폴리오 안내</td></tr>
+            <tr><td><code>finance-investor-relations</code></td><td>IR 피치덱 + 3개년 재무 모델 (매출 예측·손익·현금흐름·밸류에이션)</td></tr>
+            <tr><td><code>finance-personal-tax-saver</code></td><td>근로자 연말정산 환급 극대화 절세 전략</td></tr>
+            <tr><td><code>finance-tax-helper</code></td><td>세금 관련 질문 답변</td></tr>
+            <tr><td><code>finance-variance-analysis</code></td><td>예산 vs 실적 차이 분석</td></tr>
+            <tr><td><code>finance-wealth-roadmap</code></td><td>개인 자산 관리(재테크) 로드맵 설계</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub" id="cat-recruiter">moai-recruiter — 인사·채용 담당 (6 스킬)</h3>
+      <p class="body-p">채용 프로세스·성과평가·팀 운영을 담당하는 AI 인사·채용 담당 직원. 구직자 코칭(이력서·면접·포트폴리오)은 moai-career로 분리됐다.</p>
+      <p class="harness-line">하네스 구성: Worker <code>recruiter</code>(루프 실행) + Auditor <code>screening-auditor</code>(검증 게이트) + Skills 6종(도구 레지스트리) + Saramin PlayMCP 커넥터 가이드(외부 생태계 연결)</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>스킬</th><th>설명</th></tr></thead>
+          <tbody>
+            <tr><td><code>business-draft-offer</code></td><td>채용 제안서(오퍼 레터)·근로계약서 초안 작성</td></tr>
+            <tr><td><code>business-employment-manager</code></td><td>채용 프로세스 전반 관리 (JD 작성·면접 질문 설계 등)</td></tr>
+            <tr><td><code>business-job-analyzer</code></td><td>채용공고(JD) 분해·기업 리서치·헤드헌터 오퍼 검증</td></tr>
+            <tr><td><code>business-people-operations</code></td><td>원격 근무·팀 운영 정책 설계 (재택 정책·협업 도구)</td></tr>
+            <tr><td><code>business-performance-review</code></td><td>성과평가 체계 설계·실행 (OKR 설정·리뷰 템플릿)</td></tr>
+            <tr><td><code>business-resume-screener</code></td><td>NCS 국가직무능력표준 기반 이력서·자소서 적합성 평가</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub" id="cat-tutor">moai-tutor — 튜터 (11 스킬)</h3>
+      <p class="body-p">커리큘럼 설계·학습자료·평가와 학술 연구(논문·연구비)까지 담당하는 AI 튜터 직원.</p>
+      <p class="harness-line">하네스 구성: Worker <code>curriculum-designer</code>(루프 실행) + Auditor <code>assessment-auditor</code>(검증 게이트) + Skills 11종(도구 레지스트리)</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>스킬</th><th>설명</th></tr></thead>
+          <tbody>
+            <tr><td><code>education-assessment-creator</code></td><td>정답·해설 포함 시험 문제지·모의고사·오답 분석표 제작</td></tr>
+            <tr><td><code>education-course-followup-sequence</code></td><td>강의 후 30일 수강생 후기 요청 카피 5종 (D+1~D+30)</td></tr>
+            <tr><td><code>education-course-operations-manual</code></td><td>강의·연수·워크숍 운영 매뉴얼 (시간표·체크리스트·리스크 매트릭스 + Plan B)</td></tr>
+            <tr><td><code>education-curriculum-designer</code></td><td>주차별 강의 목차·학습 목표·평가 방법 커리큘럼 설계안</td></tr>
+            <tr><td><code>education-grant-writer</code></td><td>NRF·IITP·KIAT·중기부 양식 정부 연구비 신청서 초안</td></tr>
+            <tr><td><code>education-learning-material</code></td><td>도식·차트·수식·코드 포함 단일 HTML 학습자료 제작</td></tr>
+            <tr><td><code>education-learning-project</code></td><td>개인 학습 프로젝트 로드맵 설계 + 진도 추적·학습용 CLAUDE.md 세팅</td></tr>
+            <tr><td><code>education-paper-search</code></td><td>RISS·KCI·DBpia·Google Scholar 논문 통합 검색·서지·인용 정리</td></tr>
+            <tr><td><code>education-paper-writer</code></td><td>학술 논문 초안 작성 + APA·KCI·IEEE 참고문헌 자동 생성</td></tr>
+            <tr><td><code>education-research-assistant</code></td><td>문헌 검토 보고서·논문 초안·연구 계획서·참고문헌 목록</td></tr>
+            <tr><td><code>education-tutor-research</code></td><td>학습 질문의 최신 근거를 웹 병렬 조사·종합하는 사전 조사 튜터</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ============ CS계열 3종 (v6.1.0 신설) ============ -->
+      <h3 class="sub" id="cat-cs">moai-cs — CS 매니저 (6 스킬, v6.1.0 신설)</h3>
+      <p class="body-p">고객 응대·VOC 트리아지·채널 메시지를 담당하는 AI CS 매니저 직원. coworker의 CS 계열 business-* 4종과 seller의 commerce 채널·VOC 2종을 묶어 독립시켰다.</p>
+      <p class="harness-line">하네스 구성: Worker <code>cs-responder</code>(루프 실행) + Auditor <code>voc-auditor</code>(검증 게이트) + Skills 6종(도구 레지스트리)</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>스킬</th><th>설명</th></tr></thead>
+          <tbody>
+            <tr><td><code>business-draft-response</code></td><td>고객 문의 응답 초안 (한국어 경어 기반 이메일·채팅·공식 답변)</td></tr>
+            <tr><td><code>business-escalation-manager</code></td><td>고객 불만 에스컬레이션 처리 + VOC 분석 + 주간 CS 요약</td></tr>
+            <tr><td><code>business-kb-article</code></td><td>FAQ·트러블슈팅·헬프센터 지식베이스 문서 작성</td></tr>
+            <tr><td><code>business-ticket-triage</code></td><td>고객 지원 티켓 분류·긴급도(P1~P4)·담당팀 배정·에스컬레이션 판단</td></tr>
+            <tr><td><code>commerce-channel-message</code></td><td>NCM 프레임워크로 검색·광고·CRM·앱 푸시 채널별 메시지 자동 생성</td></tr>
+            <tr><td><code>commerce-voc-triage</code></td><td>멀티채널 VOC 통합 분석 + 처리 우선순위 3축 분류·KTAS 5단계 판별</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub" id="cat-consultant">moai-consultant — 컨설턴트 (6 스킬, v6.1.0 신설)</h3>
+      <p class="body-p">현황 진단·전략 수립·사업계획·정부지원 매칭을 담당하는 AI 컨설턴트 직원. coworker의 business 전략·진단 계열 6종을 묶어 독립시켰다.</p>
+      <p class="harness-line">하네스 구성: Worker <code>strategy-consultant</code>(루프 실행) + Auditor <code>feasibility-auditor</code>(검증 게이트) + Skills 6종(도구 레지스트리)</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>스킬</th><th>설명</th></tr></thead>
+          <tbody>
+            <tr><td><code>business-consulting-brief</code></td><td>현황 진단 + 30-60-90일 실행 계획 컨설팅 제안서(브리프)</td></tr>
+            <tr><td><code>business-kr-gov-grant</code></td><td>정부·공공기관 지원사업 매칭 + 사업계획서·신청서 초안 (Word·한글·Excel)</td></tr>
+            <tr><td><code>business-market-analyst</code></td><td>TAM/SAM/SOM·경쟁사·가격 전략 시장 분석 보고서</td></tr>
+            <tr><td><code>business-sbiz365-analyst</code></td><td>소상공인365 상권분석 PDF → 창업 타당성 보고서(Word)</td></tr>
+            <tr><td><code>business-startup-launchpad</code></td><td>사업계획서·BM 캔버스·피치덱·재무 모델·로드맵 스타트업 종합 계획서</td></tr>
+            <tr><td><code>business-strategy-planner</code></td><td>SWOT·린 캔버스·블루오션·OKR 프레임워크 기반 전략 문서</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub" id="cat-career">moai-career — 커리어 코치 (5 스킬, v6.1.0 신설)</h3>
+      <p class="body-p">구직자 코칭(이력서·면접·포트폴리오)과 주니어 온보딩·이직 전략을 담당하는 AI 커리어 코치 직원. recruiter 이관 3종 + 신규 career-* 2종으로 구성.</p>
+      <p class="harness-line">하네스 구성: Worker <code>career-coach</code>(루프 실행) + Auditor <code>resume-auditor</code>(검증 게이트) + Skills 5종(도구 레지스트리)</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>스킬</th><th>설명</th></tr></thead>
+          <tbody>
+            <tr><td><code>business-resume-builder</code></td><td>자기소개서·이력서·경력기술서·영문 CV·링크드인 작성</td></tr>
+            <tr><td><code>business-interview-coach</code></td><td>면접 준비·모의 면접·답변 코칭 (취준생·이직자)</td></tr>
+            <tr><td><code>business-portfolio-guide</code></td><td>분야별 포트폴리오 구성·프로젝트 기술서 작성 가이드</td></tr>
+            <tr><td><code>career-junior-onboarding</code></td><td>신입·주니어의 첫 90일 온보딩 코칭 (입사 전 준비 → 90일 플랜 → 질문 프레임 → 보고 기술 → 셀프 성장)</td></tr>
+            <tr><td><code>career-transition-strategist</code></td><td>이직·전직을 감정이 아닌 프로젝트로 설계 (타이밍 진단 → 시장조사 → 경력 서사 → 연봉 협상 → 오프보딩 9단계)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ============ 기존 4종 ============ -->
+      <h3 class="sub" id="cat-coworker">moai-coworker — 동료 · 범용 코어 + 라이프스타일 (32 스킬, v6.2 확장)</h3>
+      <p class="body-p">비즈니스 전략·운영·커뮤니케이션과 스킬 제작 도구, 그리고 v6.2에서 officer에서 회수한 라이프스타일·자기계발 7종까지 담당하는 범용 AI 동료 직원. business 18 + general/생활 13 + claude-prompting-basics 1.</p>
+      <p class="harness-line">하네스 구성: Skills 32종(도구 레지스트리) — 에이전트 세트는 v6 슬림 과정에서 2-에이전트 표준 적용 여부 결정 (현재 에이전트 0)</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>스킬</th><th>설명</th></tr></thead>
+          <tbody>
+            <tr><td><code>business-brand-identity</code></td><td>브랜드 이름·슬로건·톤앤매너·색상 통합 브랜드 가이드 문서</td></tr>
+            <tr><td><code>business-conflict-handler</code></td><td>까다로운 동료·소통빌런 대응·거리 유지 커뮤니케이션 코치</td></tr>
+            <tr><td><code>business-executive-summary</code></td><td>복잡한 분석·재무·운영 보고를 경영진 1페이지 요약으로 변환</td></tr>
+            <tr><td><code>business-feedback-loop</code></td><td>피드백을 건설적으로 주고받도록 돕는 코치</td></tr>
+            <tr><td><code>business-meeting-facilitator</code></td><td>회의 아젠다 설계 + 결론 도출 퍼실리테이션</td></tr>
+            <tr><td><code>business-negotiation-1on1</code></td><td>1:1 면담·설득·요청·협상 대화 설계</td></tr>
+            <tr><td><code>business-pm-weekly-report</code></td><td>주간 비즈니스 리뷰(WBR) 보고서 자동 생성</td></tr>
+            <tr><td><code>business-process-manager</code></td><td>SOP·운영 매뉴얼·조달 문서·회의록 문서화·표준화</td></tr>
+            <tr><td><code>business-productivity-weekly-report</code></td><td>직장 제출용 주간업무보고 신속 작성</td></tr>
+            <tr><td><code>business-proposal-writer</code></td><td>RFP·고객 요구사항 기반 한국 B2B 영업 제안서 자동 생성</td></tr>
+            <tr><td><code>business-report-speak</code></td><td>결론부터 명확하게 전달하는 보고·설명 화법 코치</td></tr>
+            <tr><td><code>business-roadmap-manager</code></td><td>로드맵·마일스톤 계획 + MOU·ESG·DEI 전략 문서</td></tr>
+            <tr><td><code>business-sales-playbook</code></td><td>타겟 기업·접근 전략·이의처리·성공 지표 실전 영업 플레이북</td></tr>
+            <tr><td><code>business-spec-writer</code></td><td>제품 기획 문서(PRD·기능 명세서) + AI 도입 전략 보고서</td></tr>
+            <tr><td><code>business-status-reporter</code></td><td>KPI 대시보드·운영 현황·주간/월간/분기 보고서 자동 생성</td></tr>
+            <tr><td><code>business-ux-designer</code></td><td>휴리스틱·접근성·사용자 플로우 UX 평가·개선 권고안</td></tr>
+            <tr><td><code>business-ux-researcher</code></td><td>인터뷰 가이드·페르소나·VOC 분석·NPS 해석 UX 리서치 산출물</td></tr>
+            <tr><td><code>business-vendor-manager</code></td><td>벤더 평가·선정·계약 관리·리스크 레지스터</td></tr>
+            <tr><td><code>claude-prompting-basics</code></td><td>비개발자용 Claude 대화 모범 사례 (명확한 지시·맥락·예시·XML 구조화)</td></tr>
+            <tr><td><code>general-ai-diagnostic</code></td><td>기술·프로세스·사람·비즈니스 4차원 병렬 진단 + 우선순위별 해결책</td></tr>
+            <tr><td><code>general-ai-slop-reviewer</code></td><td>AI 슬롭 패턴 감지·수정 — 모든 텍스트 산출물의 필수 후처리</td></tr>
+            <tr><td><code>general-feedback</code></td><td>버그 리포트·기능 요청 수집 → GitHub Issues 자동 등록</td></tr>
+            <tr><td><code>general-skill-builder</code></td><td>6-Phase 스킬 생성 워크플로우</td></tr>
+            <tr><td><code>general-skill-template</code></td><td>SKILL.md 표준 템플릿</td></tr>
+            <tr><td><code>general-skill-tester</code></td><td>스킬 품질 자동 검증 + baseline 대비 개선 측정</td></tr>
+            <tr><td><code>general-event-planner</code></td><td>행사·이벤트·웨딩 기획 + 예산·일정 관리 (v6.2 officer에서 회수)</td></tr>
+            <tr><td><code>general-travel-planner</code></td><td>여행 일정·맛집·숙소·예산 통합 설계 (v6.2 officer에서 회수)</td></tr>
+            <tr><td><code>general-self-care</code></td><td>번아웃·지친 마음 점검·회복 자기돌봄 (v6.2 officer에서 회수)</td></tr>
+            <tr><td><code>general-wellness-coach</code></td><td>운동·식단·건강·육아·시니어 케어 종합 코칭 (v6.2 officer에서 회수)</td></tr>
+            <tr><td><code>office-goal-planner</code></td><td>목표를 실천 가능한 계획으로 설계 (v6.2 officer에서 회수)</td></tr>
+            <tr><td><code>office-habit-routine</code></td><td>작심3일을 꾸준함으로 바꾸는 습관·루틴 설계 (v6.2 officer에서 회수)</td></tr>
+            <tr><td><code>office-retro-builder</code></td><td>한 주·한 해를 가볍게 돌아보는 회고 빌더 (v6.2 officer에서 회수)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub" id="cat-designer">moai-designer — 디자이너 (13 스킬, 실측)</h3>
+      <p class="body-p">디자인 시스템·토큰·Claude Design 연동 워크플로우를 담당하는 AI 디자이너 직원. coworker의 general-cd-* 5종은 designer로 이관 완료 — cd-* 5종이 동명 스킬로 존재(중복 제거 정리됨).</p>
+      <p class="harness-line">하네스 구성: Skills 13종(도구 레지스트리) + Claude Design 업로드 양경로 · Higgsfield 커넥터(외부 생태계 연결)</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>스킬</th><th>설명</th></tr></thead>
+          <tbody>
+            <tr><td><code>cd-brief</code></td><td>Claude Design용 6요소 브리프(Project·Audience·Pages·Tone·Reference·Constraints) 자동 작성</td></tr>
+            <tr><td><code>cd-handoff-reader</code></td><td>Claude Design→Code 핸드오프 번들 방어적 분석 + 요약 보고서 + 지시 1줄 생성</td></tr>
+            <tr><td><code>cd-prompt-builder</code></td><td>Claude Design용 시니어 UX 프롬프트 10패턴(정보 구조·디자인 시스템·접근성 등) 빌더</td></tr>
+            <tr><td><code>cd-slop-check</code></td><td>Claude Design 산출 카피(헤드라인·CTA 등) AI 슬롭 패턴 검수</td></tr>
+            <tr><td><code>cd-system-prep</code></td><td>브랜드 자산(로고·색·타이포 등) 분석 → Claude Design 업로드용 DESIGN.md 합성</td></tr>
+            <tr><td><code>design-sync-upload</code></td><td>디자인 시스템 자산(DESIGN.md·토큰·로고)을 Claude Design에 업로드 (자동+수동 양경로)</td></tr>
+            <tr><td><code>design-system-library</code></td><td>75개 글로벌 브랜드 디자인 시스템을 단일 파일 HTML 산출물에 적용</td></tr>
+            <tr><td><code>design-tokens-transformer</code></td><td>브랜드 토큰을 3계층(DTCG SSOT↔원시 CSS 변수↔semantic/shadcn 롤)으로 양방향 변환</td></tr>
+            <tr><td><code>moai-domain-brand-design</code></td><td>웹 프로젝트용 브랜드 정렬 비주얼 디자인 시스템 스페셜리스트</td></tr>
+            <tr><td><code>moai-domain-copywriting</code></td><td>마케팅·프로덕트 텍스트의 브랜드 정렬 카피라이팅 스페셜리스트</td></tr>
+            <tr><td><code>moai-domain-design-handoff</code></td><td>/design Path A 워크플로우용 Claude Design 핸드오프 패키지 조립</td></tr>
+            <tr><td><code>moai-workflow-design</code></td><td>통합 디자인 워크플로우 (Path A 핸드오프 번들 임포트 등 분기 라우팅)</td></tr>
+            <tr><td><code>moai-workflow-gan-loop</code></td><td>Builder-Evaluator GAN 루프 기반 디자인 품질 반복 개선</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub" id="cat-coder">moai — 코더 (29 스킬, 실측)</h3>
+      <p class="body-p">SPEC 기반 개발 워크플로우(Plan-Run-Sync)와 도메인·보안 레퍼런스를 담당하는 AI 코더 직원. moai-adk 3.0 구조 그대로 유지 (§06) — 스킬 외에 에이전트 8종·commands 14종·hooks 7종·output-styles 2종·.mcp.json·.lsp.json(LSP 5종, §06.5) 동반.</p>
+      <p class="harness-line">하네스 구성: Worker/Auditor 에이전트 8종(manager-spec·manager-develop·manager-docs·manager-git·builder-harness·plan-auditor·sync-auditor·code-investigator) + Skills 29종(도구 레지스트리) + hooks(로깅&amp;추적) + .mcp.json(외부 생태계 연결) + .lsp.json(코드 인텔리전스 — LSP 5종)</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>스킬</th><th>설명</th></tr></thead>
+          <tbody>
+            <tr><td><code>moai</code></td><td>MoAI 통합 오케스트레이터 — 자연어·서브커맨드(plan/run/sync 등)를 전문 에이전트로 라우팅</td></tr>
+            <tr><td><code>claude-agentic-coding</code></td><td>개발자용 Claude agentic 코딩 (tool use·sub-agents·MCP 연동 자율 워크플로우)</td></tr>
+            <tr><td><code>moai-domain-backend</code></td><td>백엔드 개발 스페셜리스트 (API 설계·DB 연동·마이크로서비스)</td></tr>
+            <tr><td><code>moai-domain-database</code></td><td>데이터베이스 스페셜리스트 (PostgreSQL·MongoDB·Redis·클라우드 DB)</td></tr>
+            <tr><td><code>moai-domain-frontend</code></td><td>프론트엔드 스페셜리스트 (React 19·Next.js 16·Vue 3.5)</td></tr>
+            <tr><td><code>moai-domain-html-report</code></td><td>마크다운 → 단일 파일 HTML 보고서 렌더러 (6모드, 인라인 SVG)</td></tr>
+            <tr><td><code>moai-domain-humanize</code></td><td>AI 텍스트 인간화·윤문 스페셜리스트 (한·영·일·중, S1/S2/S3 심각도)</td></tr>
+            <tr><td><code>moai-foundation-cc</code></td><td>Claude Code 저작 킷 (Skills·서브에이전트·플러그인·훅·설정·샌드박싱)</td></tr>
+            <tr><td><code>moai-foundation-core</code></td><td>MoAI-ADK 기반 원칙 (TRUST 5·SPEC-First DDD·위임 패턴·토큰 예산)</td></tr>
+            <tr><td><code>moai-foundation-quality</code></td><td>코드 품질 오케스트레이터 (TRUST 5 검증·린트·커버리지·보안 점검)</td></tr>
+            <tr><td><code>moai-foundation-thinking</code></td><td>사고 툴킷 (비판적 평가·발산-수렴·제1원리·Adaptive Thinking)</td></tr>
+            <tr><td><code>moai-harness-learner</code></td><td>하네스 학습 서브시스템 코디네이터 (Tier 4 자동 업데이트 제안·Apply/Rollback)</td></tr>
+            <tr><td><code>moai-meta-harness</code></td><td>[DEPRECATED] v4 하네스 Builder(/moai:harness)로 리다이렉트되는 레거시 스텁</td></tr>
+            <tr><td><code>moai-ref-api-patterns</code></td><td>REST/GraphQL API 설계 패턴·에러 처리·입력 검증 레퍼런스</td></tr>
+            <tr><td><code>moai-ref-git-workflow</code></td><td>Git 워크플로우·브랜치 전략·컨벤셔널 커밋·PR 템플릿 레퍼런스</td></tr>
+            <tr><td><code>moai-ref-llm-security</code></td><td>AI/LLM 방어 보안 레퍼런스 (프롬프트 인젝션 방어·OWASP LLM Top 10)</td></tr>
+            <tr><td><code>moai-ref-owasp-checklist</code></td><td>OWASP Top 10 보안 체크리스트·인증 패턴·보안 헤더 레퍼런스</td></tr>
+            <tr><td><code>moai-ref-react-patterns</code></td><td>React/Next.js 컴포넌트 설계·상태관리 패턴 레퍼런스</td></tr>
+            <tr><td><code>moai-ref-secops</code></td><td>DevSecOps·컨테이너·API 운영 방어 보안 레퍼런스 (CI/CD 하드닝 등)</td></tr>
+            <tr><td><code>moai-ref-supply-chain</code></td><td>소프트웨어 공급망 방어 보안 레퍼런스 (SBOM·SLSA·Sigstore)</td></tr>
+            <tr><td><code>moai-ref-testing-pyramid</code></td><td>테스트 피라미드 전략·커버리지 목표·품질 지표 레퍼런스</td></tr>
+            <tr><td><code>moai-workflow-ci-loop</code></td><td>CI 감시 + 자동 수정 루프 (gh pr checks 폴링, 최대 3회 반복)</td></tr>
+            <tr><td><code>moai-workflow-ddd</code></td><td>DDD 워크플로우 (ANALYZE-PRESERVE-IMPROVE 동작 보존 변환)</td></tr>
+            <tr><td><code>moai-workflow-loop</code></td><td>Ralph Engine 자동 피드백 루프 (LSP 진단·AST-grep 연동)</td></tr>
+            <tr><td><code>moai-workflow-project</code></td><td>프로젝트 문서·언어 초기화·템플릿 최적화 통합 관리</td></tr>
+            <tr><td><code>moai-workflow-spec</code></td><td>SPEC 워크플로우 (GEARS/EARS 요구사항·수용 기준·Plan-Run-Sync)</td></tr>
+            <tr><td><code>moai-workflow-tdd</code></td><td>TDD 워크플로우 (RED-GREEN-REFACTOR 테스트 우선 개발)</td></tr>
+            <tr><td><code>moai-workflow-testing</code></td><td>종합 테스트·QA (특성화 테스트·프로파일링·TRUST 5 검증)</td></tr>
+            <tr><td><code>moai-workflow-worktree</code></td><td>Git worktree 병렬 SPEC 개발 관리 (격리 워크스페이스·브랜치 등록)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub" id="cat-pm">moai-pm — PM · 허브 (1 스킬, 실측)</h3>
+      <p class="body-p">AI 직원 플러그인들의 진입을 분기하는 허브 PM 직원. v6.1.0에서 신설 11종 라우팅 플래그(--writer ~ --tutor + --cs·--consultant·--career)로 확장했다.</p>
+      <p class="harness-line">하네스 구성: Skills 1종(라우터) — 오케스트레이션 엔진 역할 배치는 §4.3 참조</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>스킬</th><th>설명</th></tr></thead>
+          <tbody>
+            <tr><td><code>project</code></td><td>AI 직원 플러그인(코워커·디자이너·코더 등)의 진입을 분기하는 허브 라우터 — v6.1.0에서 15-플러그인 라우팅으로 확장</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      Sources: Cowork 원격 샌드박스 테스트 보고서 (2026-07-09) · Claude Desktop Code 런타임 테스트 보고서
+      (Claude Code 2.1.205 / macOS, 2026-07-09) · 리포지토리 실측 (/Users/goos/MoAI/claude.mo.ai.kr,
+      marketplace moai-claude v6.1.0, 15종 · 233 스킬)<br>
+      Generated: 2026-07-09 · Refreshed: 2026-07-10 (데이터 무결성 갱신 — 15종·233 스킬·v6.1.0 실측 반영) ·
+      MoAI Orchestrator · manager-docs · 본 문서는 계획서이며 git 커밋을 수반하지 않는다.
+    </footer>
+
+  </div>
+</body>
+</html>

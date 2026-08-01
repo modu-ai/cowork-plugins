@@ -11,7 +11,7 @@ description: |
   - "디자인 토큰 추출"
   - "Claude Code 핸드오프 준비"
 user-invocable: true
-version: 0.2.0
+version: "1.0.0"
 ---
 
 # cd-handoff-reader — 핸드오프 번들 분석
@@ -297,5 +297,5 @@ Page
 |---|---|
 | `moai-designer:cd-brief` | 선행: 핸드오프할 시안 자체를 만들 때 |
 | `moai-designer:cd-system-prep` | 선행: 디자인 시스템 셋업 |
-| `moai-core:project` | 후속: Claude Code 작업 폴더 초기화 |
-| `moai-product:business-spec-writer` | 보조: 핸드오프 후 코드 SPEC 작성 |
+| `moai-pm:project` | 후속: Claude Code 작업 폴더 초기화 |
+| `moai-coworker:business-spec-writer` | 보조: 핸드오프 후 코드 SPEC 작성 |

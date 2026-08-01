@@ -9,7 +9,7 @@ description: |
   - "페인포인트 매트릭스", "독자 고민 정리"
   - "독서 행동 분석", "책 구매 동기"
   - "독자 페르소나 카드 작성"
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # book-target-reader

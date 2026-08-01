@@ -10,8 +10,10 @@ description: |
   microcopy, taglines, value propositions, marketing-landing-page and footer copy,
   with anti-AI-slop rules and concrete-number enforcement.
 user-invocable: false
-version: 0.2.0
+version: "1.0.0"
 ---
+
+> ⚠️ **개발 런타임 전용** — 이 스킬은 MoAI-ADK(Claude Code) 환경을 전제한다. Claude Cowork(Desktop)에서는 `.moai/config` 의존으로 동작하지 않을 수 있다. Desktop 사용자는 `moai-marketer:content-copywriting`을 사용한다.
 
 # moai-domain-copywriting
 
@@ -252,6 +254,15 @@ dependency.
 - `moai-workflow-gan-loop`: GAN loop evaluates copy quality in Design Quality and Completeness dimensions
 - `expert-frontend`: Receives the JSON copy output for implementation
 - 카피 정확도 셀프체크: 본 스킬의 brand-voice 정렬 체크리스트로 카피 정확도를 검증합니다. MoAI harness(`moai`)의 `sync-auditor`가 함께 설치된 환경에서는 해당 agent로 평가를 보강할 수 있습니다.
+
+---
+
+## 관련 스킬
+
+| 단계 | 스킬 | 용도 |
+|---|---|---|
+| Post-검수 | `moai-coworker:general-ai-slop-reviewer` | AI 슬롭 검수 (필수) |
+| Post-검수 | `moai-writer:general-humanize-korean` | 한국어 AI 티 제거 (슬롭 검수 다음, 필수) |
 
 ---
 

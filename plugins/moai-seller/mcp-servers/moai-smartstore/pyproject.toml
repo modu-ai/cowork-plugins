@@ -5,16 +5,16 @@ build-backend = "hatchling.build"
 [project]
 name = "moai-smartstore-mcp"
 version = "0.1.0"
-description = "네이버 커머스(스마트스토어) 전 도메인 운영/관리 MCP 서버 — 상품·주문·정산·문의·물류·판매자정보·커머스솔루션·통계 API 연결 (cowork-plugins moai-smartstore)"
+description = "네이버 커머스(스마트스토어) 전 도메인 운영/관리 MCP 서버 — 상품·주문·정산·문의·물류·판매자정보·커머스솔루션·통계 API 연결 (moai-cowork moai-smartstore)"
 readme = "README.md"
-license = { text = "LicenseRef-MoAI-NC-ND-1.0" }
+license = { text = "Apache-2.0" }
 requires-python = ">=3.11"
 authors = [
     { name = "MoAI-ADK", email = "bobby@afamily.kr" }
 ]
 keywords = ["naver", "smartstore", "commerce", "mcp", "korea", "ecommerce"]
 classifiers = [
-    "License :: Other/Proprietary License",
+    "License :: OSI Approved :: Apache Software License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",

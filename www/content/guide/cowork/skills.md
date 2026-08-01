@@ -11,30 +11,30 @@ aliases: ["/cowork/skills/"]
 
 ```mermaid
 flowchart TD
-    A["사용자 자연어 요청"] --> B{"description<br/>매칭"}
-    B -- 일치 --> C["스킬 자동 호출"]
-    B -- 불일치 --> D["Claude 기본 응답"]
-    C --> E["스킬 본문 실행"]
-    E --> F["결과물 반환"]
+   A["사용자 자연어 요청"] --> B{"description<br/>매칭"}
+   B -- 일치 --> C["스킬 자동 호출"]
+   B -- 불일치 --> D["Claude 기본 응답"]
+   C --> E["스킬 본문 실행"]
+   E --> F["결과물 반환"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style F fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style C fill:#e8f1ec,stroke:#265240,color:#09110f
+   style F fill:#d6e7de,stroke:#3d7d5f,color:#09110f
 ```
 
 ## 언제 트리거되나
 
-각 스킬의 `description` 필드에 트리거 조건이 쓰여 있습니다. Cowork가 사용자의 요청을 읽고, 일치하는 스킬이 있으면 자동으로 호출합니다.
+각 스킬의 `description` 필드에 트리거 조건이 쓰여 있습니다. Cowork가 사용자의 요청을 읽고 일치하는 스킬이 있으면 자동으로 호출합니다.
 
 예시:
 
-- "블로그 글 써줘" → `moai-content:blog`
-- "계약서 검토해줘" → `moai-legal:contract-review`
-- "사업계획서 만들어줘" → `moai-business:strategy-planner`
+- "블로그 글 써줘" → `moai-marketer:content-blog`
+- "계약서 검토해줘" → `moai-lawyer:legal-contract-review`
+- "사업계획서 만들어줘" → `moai-consultant:business-strategy-planner`
 
 ![스킬 자동 호출 — 슬래시 명령 자동완성](/screenshots/cowork/cowork-skills-invoke.png)
 
-사용자 입력이 스킬의 트리거 조건과 일치하면, 관련 스킬이 자동으로 호출되고 슬래시 명령 자동완성이 나타납니다.
+사용자 입력이 스킬의 트리거 조건과 일치하면 관련 스킬이 자동으로 호출되고 슬래시 명령 자동완성이 나타납니다.
 
 ## 스킬의 구조
 ## 정보를 조금씩 펼치는 원칙 (Progressive Disclosure)
@@ -43,42 +43,42 @@ Progressive Disclosure(점진적 공개)는 복잡한 정보를 한 번에 쏟�
 
 음식점에 비유하면 쉽습니다. 문 앞 메뉴판에는 "오늘의 추천" 한 줄만 보입니다(Level 1). 손님이 그 메뉴를 고르면 점원이 재료·조리법·영양정보를 알려줍니다(Level 2). 여기서 더 "출처가 궁금하다"고 물으면 원산지 증명서와 셰프 레시피 영상까지 열어줍니다(Level 3).
 
-스킬 시스템도 똑같이 동작합니다. 처음에는 스킬 이름과 한 줄 설명만 가볍게 올려두고(약 100 토큰, 여기서 토큰이란 컴퓨터가 한 번에 읽는 텍스트 분량의 단위입니다), 실제로 그 스킬을 부를 때만 전체 본문(약 5,000 토큰)을 불러옵니다. 더 깊이 파고들 참고문서와 템플릿은 필요할 때만 추가로 가져옵니다. 이렇게 하면 처음 진입은 가볍고 빠르지만, 깊이 들수록 정밀한 정보가 단계적으로 채워지며, 전체를 처음부터 다 읽는 부담을 약 67% 줄여줍니다.
+스킬 시스템도 똑같이 동작합니다. 처음에는 스킬 이름과 한 줄 설명만 가볍게 올려두고(약 100 토큰, 여기서 토큰이란 컴퓨터가 한 번에 읽는 텍스트 분량의 단위입니다), 실제로 그 스킬을 부를 때만 전체 본문(약 5,000 토큰)을 불러옵니다. 더 깊이 파고들 참고문서와 템플릿은 필요할 때만 추가로 가져옵니다. 이렇게 하면 처음 진입은 가볍고 빠르지만 깊이 들수록 정밀한 정보가 단계적으로 채워지며 전체를 처음부터 다 읽는 부담을 약 67% 줄여줍니다.
 
 ```mermaid
 flowchart LR
-    P["💡 핵심 원칙<br/>지금 당장 필요한 것만 먼저 보여주고<br/>더 궁금해질 때 단계적으로 펼친다"]
+   P["핵심 원칙<br/>지금 당장 필요한 것만 먼저 보여주고<br/>더 궁금해질 때 단계적으로 펼친다"]
 
-    P --> L1
+   P --> L1
 
-    subgraph L1["🔹 Level 1 — 메타데이터 (항상 보임)"]
-        direction TB
-        L1A["약 100 토큰 · 세션 시작 시 항상 로드<br/>이름 · 한 줄 설명<br/>비용: 거의 0 (가벼움)"]
-    end
+   subgraph L1["Level 1 — 메타데이터 (항상 보임)"]
+       direction TB
+       L1A["약 100 토큰 · 세션 시작 시 항상 로드<br/>이름 · 한 줄 설명<br/>비용: 거의 0 (가벼움)"]
+   end
 
-    L1 -->|"더 깊이 →"| L2
+   L1 -->|"더 깊이 →"| L2
 
-    subgraph L2["🔸 Level 2 — 본문 (호출 시 로드)"]
-        direction TB
-        L2A["약 5,000 토큰 · 사용자 호출 시 로드<br/>전체 스킬 본문 · 절차 · 사용 방법<br/>비용: 중간 (의미 있는 사용 시만)"]
-    end
+   subgraph L2["Level 2 — 본문 (호출 시 로드)"]
+       direction TB
+       L2A["약 5,000 토큰 · 사용자 호출 시 로드<br/>전체 스킬 본문 · 절차 · 사용 방법<br/>비용: 중간 (의미 있는 사용 시만)"]
+   end
 
-    L2 -->|"더 깊이 →"| L3
+   L2 -->|"더 깊이 →"| L3
 
-    subgraph L3["🔶 Level 3 — 번들 (온디맨드)"]
-        direction TB
-        L3A["온디맨드 · 더 깊이 파고들 때<br/>참고문서 · 예제 데이터 · 템플릿<br/>비용: 선택 (안 쓰면 안 듦)"]
-    end
+   subgraph L3["Level 3 — 번들 (온디맨드)"]
+       direction TB
+       L3A["온디맨드 · 더 깊이 파고들 때<br/>참고문서 · 예제 데이터 · 템플릿<br/>비용: 선택 (안 쓰면 안 듦)"]
+   end
 
-    L3 -.-> B
+   L3 -.-> B
 
-    subgraph B["이 원칙이 주는 결과"]
-        direction LR
-        B1["처음에 가볍다<br/>인지 부담 ↓"]
-        B2["필요한 만큼만<br/>비용 효율 ↑"]
-        B3["깊이 파고들수록<br/>정밀도 ↑"]
-        B4["67% 초기<br/>로드량 감소"]
-    end
+   subgraph B["이 원칙이 주는 결과"]
+       direction LR
+       B1["처음에 가볍다<br/>인지 부담 ↓"]
+       B2["필요한 만큼만<br/>비용 효율 ↑"]
+       B3["깊이 파고들수록<br/>정밀도 ↑"]
+       B4["67% 초기<br/>로드량 감소"]
+   end
 ```
 
 ```text
@@ -113,11 +113,11 @@ user-invocable: true
 
 | 종류 | 문서 표기 | 실제 입력 |
 |---|---|---|
-| 슬래시 명령 | `> /project init` | `/project init` |
+| 슬래시 명령 | `> /project` | `/project` |
 | 자연어 지시 | `> "블로그 글 써줘"` | `블로그 글 써줘` |
-| 마켓플레이스 URL | `> modu-ai/cowork-plugins` | `modu-ai/cowork-plugins` |
+| 마켓플레이스 URL | `> modu-ai/moai-cowork` | `modu-ai/moai-cowork` |
 
-`>`는 문서에서 "이건 사용자 입력"이라는 시각적 표식이며, **실제 대화창에 입력할 때는 `>`를 빼고 본문만** 입력하면 됩니다.
+`>`는 문서에서 "이건 사용자 입력"이라는 시각적 표식이며 **실제 대화창에 입력할 때는 `>`를 빼고 본문만** 입력하면 됩니다.
 {{< /hint >}}
 
 ### 2. 슬래시 호출
@@ -130,7 +130,7 @@ user-invocable: true
 {{< /terminal >}}
 
 {{< hint type="note" >}}
-자연어 요청이 가장 안정적입니다. 슬래시 호출은 스킬별로 지원 여부가 다르고, 호출 가능 목록은 Cowork의 `/` 자동완성에서 직접 확인하는 게 가장 정확합니다.
+자연어 요청이 가장 안정적입니다. 슬래시 호출은 스킬별로 지원 여부가 다르고 호출 가능 목록은 Cowork의 `/` 자동완성에서 직접 확인하는 게 가장 정확합니다.
 {{< /hint >}}
 
 ### 3. 체이닝
@@ -139,9 +139,9 @@ user-invocable: true
 
 ## 제공된 스킬 활용하기
 
-modu-ai/cowork-plugins 마켓플레이스는 28개 플러그인 안에 177개 스킬을 묶어 제공합니다. 사용자는 스킬을 직접 만들 필요 없이 — 자연어 한 줄로 GOAL을 던지면 시스템이 적합한 스킬을 자동으로 선택·체이닝합니다.
+modu-ai/moai-cowork 마켓플레이스는 {{< catalog-count plugins >}}개 플러그인 안에 {{< catalog-count skills >}}개 스킬을 묶어 제공합니다. 사용자는 스킬을 직접 만들 필요 없이 — 자연어 한 줄로 GOAL을 던지면 시스템이 적합한 스킬을 자동으로 선택·체이닝합니다.
 
-- **카테고리별 스킬 모음**: 콘텐츠·디자인·재무·법무·운영·마케팅·이커머스 등 28개 플러그인 ([플러그인 카탈로그](../../plugins/))
+- **카테고리별 스킬 모음**: 콘텐츠·디자인·재무·법무·운영·마케팅·이커머스 등 {{< catalog-count plugins >}}개 플러그인 ([플러그인 카탈로그](../../plugins/))
 - **체인 예시 12종**: 자주 쓰는 스킬 조합 ([쿡북 — 스킬 체인 설계](../../cookbook/skill-chaining/))
 - **트랙별 시나리오**: 본부·업무 영역별 한 줄 요청 → 자동 체인 ([쿡북 트랙](../../cookbook/tracks/))
 
@@ -156,4 +156,4 @@ modu-ai/cowork-plugins 마켓플레이스는 28개 플러그인 안에 177개 �
 ### Sources
 
 - [Use Skills in Claude](https://support.claude.com/en/articles/12512180)
-- [modu-ai/cowork-plugins 마켓플레이스](https://github.com/modu-ai/cowork-plugins)
+- [modu-ai/moai-cowork 마켓플레이스](https://github.com/modu-ai/moai-cowork)

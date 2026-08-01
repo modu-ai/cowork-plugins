@@ -2,7 +2,7 @@
 name: business-status-reporter
 description: >
   KPI 대시보드와 운영 현황 보고서를 자동으로 생성합니다. "주간 보고서 작성해줘", "KPI 현황 정리해줘", "월간 성과 보고서 만들어줘"라고 요청할 때 사용하세요. 주간·월간·분기 보고서, OKR 현황, 마일스톤 진행률, 이슈 및 리스크 매트릭스를 지원합니다.
-version: "6.0.0"
+version: "1.0.0"
 ---
 
 # 운영 현황 보고자 (Status Reporter)
@@ -111,3 +111,10 @@ KPI 달성 현황 표, 마일스톤 진행률, 이슈·리스크 매트릭스 �
 - **재무제표 공식 작성** → moai-accountant:finance-financial-statements 스킬이 더 적합합니다
 - **인사 성과 평가 보고서** → moai-recruiter:business-performance-review 스킬을 사용하세요
 - **마케팅 성과 분석** → moai-marketer:marketing-performance-report 스킬이 더 적합합니다
+
+## References
+
+| 파일 | 로드 조건 |
+|------|----------|
+| references/kpi-dashboard.md | KPI 대시보드 설계 시 (대시보드 유형별 갱신 주기·SMART 기준 KPI 선정) |
+| references/reporting-standards.md | 운영 보고서 작성 시 (KPI 대시보드 구성 원칙·주간 보고 템플릿 등 표준 가이드) |

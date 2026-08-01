@@ -12,7 +12,7 @@ description: |
   - "어두운 테마 / 따뜻한 화이트 테마로"
   - "Claude Design에 올릴 디자인 시스템 자료 정리"
 user-invocable: true
-version: 0.2.0
+version: "1.0.0"
 ---
 
 # design-system-library — 75개 브랜드 디자인 시스템 SSOT
@@ -124,7 +124,7 @@ version: 0.2.0
 [텍스트 스킬] → general-ai-slop-reviewer → office-html-report (design_system: clickhouse)
 ```
 
-### Claude Design 핸드오프 (moai-design)
+### Claude Design 핸드오프 (moai-designer)
 
 `cd-system-prep`가 사용자가 지정한 시스템(또는 브랜드 무드 매칭)을 본 라이브러리에서 로드 → DESIGN.md 합성. `design-handoff`의 references.md / context.md에 design-system 지침으로 포함되어 claude.com Design 세션에 paste.
 
@@ -169,7 +169,9 @@ Claude Design에 올릴 디자인 시스템 자료를 Linear 스타일 기반으
 - 본 라이브러리는 렌더 로직을 소유하지 않습니다 — 렌더는 office-html-report가 담당
 - React / Vue / 빌드 단계를 도입하지 않습니다 — 단일 파일·CDN·vanilla 고수
 - 0의존 self-contained 출력을 요구하는 경우(이메일 첨부·오프라인·인쇄)는 기존 office-html-report 템플릿을 사용하세요 (design_system 미지정)
-- 브랜드 저작권 — 각 시스템은 분석·참고용 token이며, 상용 사용 시 원본 브랜드 가이드라인을 준수해야 합니다
+- 브랜드 저작권 — 각 시스템은 **분석·참고용 token**이며, 저장소 Apache-2.0 라이선스의 **적용 범위 밖**입니다.
+  각 브랜드의 디자인·상표·서체 권리는 해당 소유자에게 있습니다. 상업적 산출물에 적용하기 전
+  반드시 [`BRAND-NOTICE.md`](BRAND-NOTICE.md)의 사용 경계와 오픈 라이선스 대체 서체표를 확인하세요
 
 ---
 

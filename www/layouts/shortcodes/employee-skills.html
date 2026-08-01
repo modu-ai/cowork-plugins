@@ -5,7 +5,7 @@
   <thead><tr><th>스킬</th><th>무엇을 해주나</th></tr></thead>
   <tbody>
   {{- range .skills }}
-    <tr><td><code>{{ .name }}</code></td><td>{{ .summary }}</td></tr>
+    <tr><td><code>{{ .name }}</code></td><td>{{ partial "strip-emoji" .summary }}</td></tr>
   {{- end }}
   </tbody>
 </table>

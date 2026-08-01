@@ -11,7 +11,7 @@ description: |
   - "깔끔한 원페이지 만들어줘"
   코드 생성 전에 디자인 톤(색·모드·모서리·효과)을 먼저 물은 뒤, 최신 웹 스택으로 랜딩 페이지 전체 구성과 디자인 토큰·인터랙션을 산출합니다.
   [책임 경계] vs moai-seller:commerce-product-detail: 이 스킬=단독 전환 랜딩 1페이지(캠페인·이벤트·리드 수집), 저 스킬=카탈로그 제품 상세 페이지(스마트스토어·쿠팡·카카오 규격, 옵션·비교).
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 랜딩 페이지 (Landing Page)
@@ -291,3 +291,14 @@ AI가 생성한 랜딩 페이지 카피는 사실 확인 후 사용하세요.
 2. `moai-writer:general-humanize-korean` — 2차 한국어 정밀 윤문 (40+ 패턴 SSOT, 의미 불변)
 
 두 게이트는 대시 대비 헤드라인·조사·체언 종결 조각문·"A에서 B로" 전환 공식 S1 패턴을 잡아냅니다. 게이트 통과 없이 산출물을 바로 배포하지 않습니다.
+
+## References
+
+| 파일 | 로드 조건 |
+|------|-----------|
+| references/landing-page/shadcn-theme-interview.md | 0단계 shadcn 테마 인터뷰 시 — AskUserQuestion 인터뷰 설계·구현 계약 상세 |
+| references/landing-page/brand-context-template.md | 2단계 브랜드 컨텍스트 수집 시 — 브랜드 보이스·색상·톤 수집 템플릿 |
+| references/landing-page/design-principles.md | 코드·디자인 스펙 산출 시 — Design Spec 출력 계약(YAML) 형식 |
+| references/landing-page/copywriting-rules.md | 5단계 카피 작성 시 — AI 카피 안티패턴(HARD FAIL) 규칙 |
+| references/landing-page/ab-testing-guide.md | 전환율 A/B 테스트 설계 시 — 우선순위 테스트 항목·후보 수 |
+| references/landing-page/evaluation-checklist.md | 산출물 검수 시 — 카피 무결성 등 랜딩 평가 체크리스트 |

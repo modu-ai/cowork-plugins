@@ -1,0 +1,17 @@
+constitution:
+    approved_frameworks: []
+    approved_languages: []
+    architecture:
+        forbidden_dependencies: []
+        patterns: []
+    forbidden_patterns: []
+    naming_conventions:
+        exported: ""
+        files: ""
+        packages: ""
+    performance:
+        max_memory_mb: null
+        max_response_time_ms: null
+    security:
+        forbidden_practices: []
+        required_checks: []

@@ -4,7 +4,7 @@ description: |
   [책임 경계] 신생 브랜드의 충성 100명 부트스트랩 전담 — '잘 만든 충성 고객 100명, 1만 고객 부럽지 않다' 원칙 + 블랭크 사례 + 강아지 가방 케이스 분석 + 100명→1만 전환 로드맵. 페어 스킬 commerce-promotion-planner(전체 프로모션 기획)와 명확히 구분 — 본 스킬은 신생 부트스트랩 전용.
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   "충성 100명 만들기", "신생 브랜드 부트스트랩", "블랭크 사례", "강아지 가방 케이스", "얼리어답터 100명", "초기 팬 구축", "100명에서 1만명으로".
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 충성 100명 부트스트랩 (Commerce Early Fan Builder)
@@ -113,3 +113,4 @@ commerce-early-fan-builder → general-ai-slop-reviewer → (수기 옮기기 �
 - `commerce-ltv-cac-architect` — 1,000명 → 1만명 전환 시 LTV/CAC 진단
 - `commerce-influencer-collab` — UGC 협업
 - `general-ai-slop-reviewer` — 손편지·DM·라이브 스크립트 AI 슬롭 검수 (자동 체인, HARD)
+- `moai-writer:general-humanize-korean` — 한국어 AI 티 제거 (슬롭 검수 다음, 필수)

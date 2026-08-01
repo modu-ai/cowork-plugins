@@ -1,10 +1,11 @@
 {
   "name": "moai-media",
   "displayName": "🎬 미디어 크리에이터",
-  "version": "0.1.1",
-  "description": "미디어 생성 전담 AI 직원 — 이미지·영상·오디오 생성(media-* 9종) 스킬. Higgsfield 이미지·영상, ElevenLabs TTS/보이스클로닝, GPT-image-2·Gemini 3·Midjourney v8 프롬프트 빌더, codex/NotebookLM 연동까지 멀티모달 생성 도구 모음. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 콘텐츠 크리에이터·마케터·디자이너·1인 브랜드.",
+  "version": "1.1.2",
+  "description": "미디어 생성 전담 AI 직원 — 이미지·영상·오디오 생성(media-* 13종) 스킬. Higgsfield 이미지·영상·3D·설명영상·제품촬영·캐릭터 일관성(Soul/Element), ElevenLabs TTS/보이스클로닝, GPT-image-2·Gemini 3·Midjourney v8 프롬프트 빌더, codex/NotebookLM 연동까지 멀티모달 생성 도구 모음. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 콘텐츠 크리에이터·마케터·디자이너·1인 브랜드.",
   "author": {
     "name": "모두의 AI",
     "email": "email@mo.ai.kr"
-  }
+  },
+  "license": "Apache-2.0"
 }

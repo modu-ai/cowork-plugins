@@ -12,7 +12,7 @@ description: |
   - "AI 교정보다 규칙 기반 한국어 검사기로 한 번 더 확인"
   - "부산대 맞춤법", "바른한글 검사", "국립국어원 규칙"
   - 블로그·뉴스레터·카피·계약서 등 텍스트 산출물의 최종 교정 단계
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 한국어 맞춤법·문법 검수
@@ -52,19 +52,45 @@ version: "0.1.0"
 - 청크 사이 최소 **1초** 휴지
 - 한 번에 너무 많은 파일을 돌리지 않습니다.
 
-### 3. helper 실행
+### 3. 검사 요청 (인라인 stdlib 코드 직접 실행)
 
-본 스킬은 Python 표준 라이브러리만으로 동작합니다. 브라우저형 User-Agent + `urllib` POST가 Cloudflare를 우회하며, 응답 HTML의 `errInfo` JSON 배열을 파싱해 `원문 / 교정안 / 이유`로 정리합니다. 1500자 청크 분할 + 청크 간 1초 휴지가 helper 안에 내장되어 있습니다.
+별도 스크립트 없이 Python 표준 라이브러리만으로 동작합니다. 브라우저형 User-Agent + `urllib` POST가
+Cloudflare를 우회하며, 응답 HTML에 임베드된 `errInfo` JSON 배열을 파싱해 `원문 / 교정안 / 이유`로 정리합니다.
+아래 코드를 그대로 실행하되, 긴 글은 1500자 청크로 나눠 청크 간 1초 휴지를 둡니다(외부 의존성 불필요).
 
-```bash
-# 파일 검사 (JSON 출력)
-python3 scripts/korean_spell_check.py --file README.md --format json
+```python
+import json, re, time, urllib.request, urllib.parse
 
-# 짧은 문장 (텍스트 출력)
-python3 scripts/korean_spell_check.py --text "아버지가방에들어가신다." --format text
+URL = "https://nara-speller.co.kr/old_speller/results"
+UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36"
+
+def check_chunk(text: str) -> list[dict]:
+    body = urllib.parse.urlencode({"text1": text}).encode("utf-8")
+    req = urllib.request.Request(URL, data=body, headers={"User-Agent": UA,
+        "Content-Type": "application/x-www-form-urlencoded"})
+    html = urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "replace")
+    # 응답 HTML의 data 배열(errInfo)에서 원문/교정안/도움말 추출
+    m = re.search(r"data\s*=\s*(\[.*?\]);", html, re.S)
+    items = json.loads(m.group(1)) if m else []
+    return [{"original": it.get("orgStr", ""),
+             "suggestions": [c for c in (it.get("candWord") or "").split("|") if c],
+             "reason": it.get("help", "")} for it in items]
+
+def spell_check(text: str, size: int = 1500) -> list[dict]:
+    out = []
+    for i in range(0, len(text), size):
+        out += check_chunk(text[i:i+size])
+        if i + size < len(text):
+            time.sleep(1)   # 청크 간 1초 휴지 (저빈도 정책 준수)
+    return out
+
+# 파일 검사: text = open("README.md", encoding="utf-8").read()
+print(json.dumps(spell_check("아버지가방에들어가신다."), ensure_ascii=False, indent=2))
 ```
 
-helper는 `scripts/korean_spell_check.py`에 포함되어 있으며, 외부 의존성(`requests`, `BeautifulSoup` 등) 설치가 필요 없습니다.
+> 이 스킬은 부재 스크립트(korean_spell_check.py) 참조를 원칙 A(프롬프트/인라인 stdlib 코드)로 대체했습니다.
+> `errInfo`/`data` 필드명·응답 구조는 공개 검사기 변경에 따라 달라질 수 있으니, 파싱 실패 시 응답 HTML을
+> 확인해 필드명을 조정합니다. `requests`·`BeautifulSoup` 등 외부 패키지 설치는 필요 없습니다.
 
 ### 4. 변경점 중심 응답
 

@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>모두의 클로드 v6.0.0 — 온라인 문서 IA 재설계 &amp; 업데이트 계획</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    :root {
+      --ivory:  #FAF9F5; --paper: #FFFFFF; --slate: #141413;
+      --clay: #D97757; --clay-d: #B85C3E; --oat: #E3DACC; --olive: #788C5D;
+      --g100: #F0EEE6; --g150: #F0EEE6; --g300: #D1CFC5; --g500: #87867F; --g700: #3D3D3A;
+      --sans: "Pretendard", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --serif: "Noto Serif KR", ui-serif, Georgia, serif;
+      --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      --max-width: 1100px; --radius-panel: 12px; --radius-row: 8px;
+      --border: 1.5px solid var(--g300);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--ivory); color: var(--g700); font-family: var(--sans); font-size: 15px; line-height: 1.6; padding: 56px 32px 120px; -webkit-font-smoothing: antialiased; }
+    .page { max-width: var(--max-width); margin: 0 auto; }
+    header.page-head { margin-bottom: 48px; max-width: 860px; }
+    .eyebrow { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--g500); margin-bottom: 12px; }
+    h1 { font-family: var(--serif); font-weight: 700; font-size: 34px; line-height: 1.18; color: var(--slate); margin-bottom: 16px; letter-spacing: -0.01em; }
+    .goal-box { background: var(--g100); border: var(--border); border-radius: var(--radius-panel); padding: 16px 20px; font-size: 14.5px; color: var(--g700); }
+    .goal-box .label { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--g500); display: block; margin-bottom: 6px; }
+    section { margin-bottom: 64px; }
+    .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; }
+    .sec-head .num { font-family: var(--mono); font-size: 12px; background: var(--oat); color: var(--slate); padding: 3px 9px; border-radius: 8px; flex-shrink: 0; }
+    .sec-head h2 { font-family: var(--serif); font-weight: 700; font-size: 24px; color: var(--slate); letter-spacing: -0.01em; }
+    .sec-intro { font-size: 14.5px; color: var(--g500); max-width: 760px; margin-bottom: 28px; }
+    .summary-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 64px; }
+    @media (max-width: 900px) { .summary-strip { grid-template-columns: repeat(2, 1fr); } }
+    .sum-cell { background: var(--paper); border: var(--border); border-radius: var(--radius-panel); padding: 18px 20px; }
+    .sum-cell .k { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--g500); margin-bottom: 6px; }
+    .sum-cell .v { font-size: 17px; color: var(--slate); font-weight: 600; }
+    .sum-cell .v.accent { color: var(--clay); }
+    /* IA tables */
+    table.ia { width: 100%; border-collapse: collapse; background: var(--paper); border: var(--border); border-radius: var(--radius-panel); overflow: hidden; font-size: 13.5px; }
+    table.ia th { background: var(--g100); text-align: left; padding: 10px 14px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--slate); border-bottom: var(--border); }
+    table.ia td { padding: 10px 14px; border-bottom: 1px solid var(--g100); vertical-align: top; }
+    table.ia tr:last-child td { border-bottom: none; }
+    table.ia code, .mono { font-family: var(--mono); font-size: 12px; color: var(--slate); background: var(--g100); padding: 1px 5px; border-radius: 4px; }
+    .badge { display: inline-block; font-family: var(--mono); font-size: 10.5px; padding: 2px 7px; border-radius: 6px; font-weight: 600; }
+    .badge.new { background: #F3D9CC; color: #8A3B1E; }
+    .badge.keep { background: #E4E9DC; color: #4B5C39; }
+    .badge.move { background: var(--oat); color: var(--slate); }
+    .badge.retire { background: var(--g300); color: var(--g700); }
+    .toc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    @media (max-width: 900px) { .toc-grid { grid-template-columns: 1fr; } }
+    .toc-card { background: var(--paper); border: var(--border); border-radius: var(--radius-panel); padding: 16px 18px; }
+    .toc-card h4 { font-family: var(--serif); font-size: 15.5px; color: var(--slate); margin-bottom: 3px; }
+    .toc-card .sub { font-family: var(--mono); font-size: 11px; color: var(--g500); margin-bottom: 9px; }
+    .toc-card ul { list-style: none; }
+    .toc-card li { font-size: 13px; padding: 3px 0; border-bottom: 1px dashed var(--g100); }
+    .toc-card li:last-child { border-bottom: none; }
+    .toc-card li .n { font-family: var(--mono); font-size: 11px; color: var(--clay); margin-right: 6px; }
+    /* milestones */
+    .milestones { display: flex; flex-direction: column; }
+    .milestone { display: grid; grid-template-columns: 130px 28px 1fr; gap: 0 18px; position: relative; }
+    .milestone .when { text-align: right; font-family: var(--mono); font-size: 12px; color: var(--g500); padding-top: 4px; }
+    .milestone .dot-col { display: flex; flex-direction: column; align-items: center; }
+    .milestone .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--paper); border: 3px solid var(--clay); margin-top: 4px; flex-shrink: 0; }
+    .milestone .dot.done { background: var(--olive); border-color: var(--olive); }
+    .milestone .line { width: 2px; flex: 1; background: var(--g300); margin: 4px 0; }
+    .milestone:last-child .line { display: none; }
+    .milestone .body { padding-bottom: 36px; }
+    .milestone .body h3 { font-family: var(--serif); font-weight: 700; font-size: 18px; color: var(--slate); margin-bottom: 4px; }
+    .milestone .body p { font-size: 14px; color: var(--g500); margin-bottom: 10px; max-width: 680px; }
+    .tag-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { font-family: var(--mono); font-size: 11.5px; background: var(--g100); border: 1px solid var(--g300); border-radius: 6px; padding: 3px 8px; color: var(--g700); }
+    .diagram { background: var(--paper); border: var(--border); border-radius: var(--radius-panel); padding: 28px; overflow-x: auto; }
+    .diagram svg { display: block; min-width: 760px; }
+    .caption { font-size: 13px; color: var(--g500); margin-top: 12px; }
+    .risks { border: var(--border); border-radius: var(--radius-panel); overflow: hidden; background: var(--paper); }
+    .risks .row { display: grid; grid-template-columns: 1.6fr 90px 1.6fr; }
+    @media (max-width: 780px) { .risks .row { grid-template-columns: 1fr; } }
+    .risks .row + .row { border-top: var(--border); }
+    .risks .cell { padding: 14px 18px; font-size: 13.5px; }
+    .risks .cell + .cell { border-left: var(--border); }
+    .risks .head { background: var(--g100); font-weight: 600; color: var(--slate); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+    .sev { display: inline-block; font-family: var(--mono); font-size: 11px; padding: 2px 8px; border-radius: 6px; font-weight: 600; }
+    .sev.high { background: #F3D9CC; color: #8A3B1E; }
+    .sev.med  { background: var(--oat); color: var(--slate); }
+    .sev.low  { background: #E4E9DC; color: #4B5C39; }
+    .metrics-list { display: flex; flex-direction: column; gap: 10px; max-width: 800px; }
+    .metric-row { display: flex; align-items: center; gap: 16px; background: var(--paper); border: var(--border); border-radius: var(--radius-row); padding: 14px 18px; }
+    .metric-indicator { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .metric-indicator.met { background: var(--olive); }
+    .metric-indicator.unmet { background: var(--g300); }
+    .metric-label { flex: 1; font-size: 14px; color: var(--slate); }
+    .metric-target { font-family: var(--mono); font-size: 12px; color: var(--g500); }
+    footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--g300); font-family: var(--mono); font-size: 12px; color: var(--g500); }
+    @media print {
+      body { background: white; color: black; padding: 0; font-size: 12pt; }
+      .page { max-width: none; }
+      h1, h2, h3 { page-break-after: avoid; }
+      table, .risks, .diagram { page-break-inside: avoid; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <header class="page-head">
+      <div class="eyebrow">Action Plan · 모두의 클로드 (claude.mo.ai.kr)</div>
+      <h1>v6.0.0 12-Plugin 체제 온라인 문서<br>IA 재설계 &amp; 업데이트 계획</h1>
+      <div class="goal-box">
+        <span class="label">Goal</span>
+        현행 사이트(구세대 4-5 플러그인 카탈로그, moai-cowork 171스킬 기준)를 <b>v6.0.0 12-plugin AI-직원 패밀리</b> 체제로 전면 재편.
+        플러그인 카탈로그를 <b>"AI 직원 디렉토리"</b>로 승격하고, E2E 실측 인벤토리(스킬 257항목·에이전트 21·MCP 17·LSP 5)를 단일 정본(marketplace.json + <span class="mono">claude plugin details</span>)에서 자동 생성해 수치 드리프트를 구조적으로 차단한다.
+      </div>
+    </header>
+
+    <div class="summary-strip">
+      <div class="sum-cell"><div class="k">현행 사이트</div><div class="v">10섹션 · 161 md</div></div>
+      <div class="sum-cell"><div class="k">목표 체제</div><div class="v accent">12 AI 직원 + 4 공통</div></div>
+      <div class="sum-cell"><div class="k">신설 페이지</div><div class="v">직원 12 + LSP·PM 가이드</div></div>
+      <div class="sum-cell"><div class="k">실행 단위</div><div class="v">6 Phase (P0–P5)</div></div>
+    </div>
+
+    <!-- ==================== 00 현행 진단 ==================== -->
+    <section aria-label="현행 진단">
+      <div class="sec-head"><span class="num">00</span><h2>현행 구조 진단 (실측)</h2></div>
+      <p class="sec-intro">2026-07-10 <span class="mono">www/content/</span> 실측. 카탈로그가 v4.0.0 시점(4-5 플러그인)에 고정되어 v6.0.0 실체와 3세대 격차가 있습니다.</p>
+      <table class="ia">
+        <tr><th>섹션</th><th>페이지</th><th>상태 진단</th><th>처분</th></tr>
+        <tr><td><code>getting-started/</code></td><td>4</td><td>marketplace add 1회 설치 흐름은 유효하나 4-plugin 전제</td><td><span class="badge keep">KEEP</span> + 12-직원 개정</td></tr>
+        <tr><td><code>plugins/</code> 카탈로그</td><td>5</td><td><b>전면 불일치</b> — "4개 카테고리 + story", moai-cowork 171스킬, 구명칭(moai-cowork/moai-design/moai-story) 잔존</td><td><span class="badge new">REBUILD</span> → 직원 디렉토리</td></tr>
+        <tr><td><code>cowork/</code></td><td>20</td><td>구 moai-cowork(178스킬 시절) 가이드 — 스킬이 8개 전문가 플러그인으로 분산된 현실 미반영</td><td><span class="badge move">RE-MAP</span> 직원별 이관</td></tr>
+        <tr><td><code>design/</code></td><td>11</td><td>moai-designer v0.3.0 재설계(스킬 20) 이전 내용</td><td><span class="badge move">UPDATE</span></td></tr>
+        <tr><td><code>code/</code></td><td>3</td><td>코더(moai) 43항목·LSP 5종·hooks 20종 미문서화</td><td><span class="badge new">EXPAND</span></td></tr>
+        <tr><td><code>cli/</code></td><td>22</td><td>moai CLI(개발자용) — Tier 3 승격 관계 서술 필요</td><td><span class="badge keep">KEEP</span></td></tr>
+        <tr><td><code>chat/</code></td><td>8</td><td>Chat 문서 허브 — 플러그인 독립, 유효</td><td><span class="badge keep">KEEP</span></td></tr>
+        <tr><td><code>cookbook/</code></td><td>39</td><td>레시피 유효하나 직원 축 태깅 없음</td><td><span class="badge move">RE-TAG</span></td></tr>
+        <tr><td><code>help/</code> · <code>releases/</code></td><td>11 + 38</td><td>유효 — v6.0.0 릴리스 노트만 추가</td><td><span class="badge keep">KEEP</span></td></tr>
+      </table>
+    </section>
+
+    <!-- ==================== 01 새 IA ==================== -->
+    <section aria-label="새 정보구조">
+      <div class="sec-head"><span class="num">01</span><h2>새 정보구조(IA) — 최상위 7축</h2></div>
+      <p class="sec-intro">사용자 여정 축: <b>"어떤 직원을 고용할까"</b>가 1차 탐색 질문이 되도록 <code>/employees/</code>(AI 직원 디렉토리)를 사이트의 허리로 승격합니다. 제품 축(chat/code/cli)과 학습 축(cookbook/help)은 보존합니다.</p>
+      <table class="ia">
+        <tr><th>순서</th><th>경로</th><th>이름</th><th>내용 · 이관 원천</th></tr>
+        <tr><td class="mono">10</td><td><code>/getting-started/</code></td><td>시작하기</td><td>설치 1줄(<span class="mono">claude plugin marketplace add modu-ai/claude</span>) → PM <span class="mono">/project</span> 2-모드(--cowork/--code) 진입 → 첫 직원 선택. <span class="badge move">개정</span></td></tr>
+        <tr><td class="mono">20</td><td><code>/employees/</code></td><td><b>AI 직원 디렉토리</b> ★신설</td><td>12 직원 카드(역할·스킬 수·MCP·추천 대상) + 직원별 하위 섹션. 구 <code>/plugins/</code>·<code>/cowork/</code> 흡수, aliases 301</td></tr>
+        <tr><td class="mono">30</td><td><code>/code/</code></td><td>코더 딥다이브</td><td>SPEC plan·run·sync 방법론 + <b>LSP 5종 가이드(신설)</b> + Tier 1/2/3 + 14 명령. <span class="badge new">확장</span></td></tr>
+        <tr><td class="mono">40</td><td><code>/chat/</code></td><td>Chat 가이드</td><td>현행 유지 <span class="badge keep">KEEP</span></td></tr>
+        <tr><td class="mono">50</td><td><code>/cli/</code></td><td>moai CLI (개발자)</td><td>현행 유지 + Tier 3 승격 크로스링크 <span class="badge keep">KEEP</span></td></tr>
+        <tr><td class="mono">60</td><td><code>/cookbook/</code></td><td>쿡북</td><td>39 레시피에 직원 태그(<span class="mono">employee: seller</span> 등) 부여, 직원 페이지에서 역링크 <span class="badge move">RE-TAG</span></td></tr>
+        <tr><td class="mono">70</td><td><code>/help/</code> · <code>/releases/</code></td><td>도움말 · 릴리스</td><td>현행 유지 + v6.0.0 릴리스 노트(12-plugin·E2E 게이트 결과) <span class="badge keep">KEEP</span></td></tr>
+      </table>
+    </section>
+
+    <!-- ==================== 02 직원 디렉토리 목차 ==================== -->
+    <section aria-label="직원 디렉토리 목차">
+      <div class="sec-head"><span class="num">02</span><h2>/employees/ 상세 목차 (12 직원 × 공통 5장)</h2></div>
+      <p class="sec-intro">각 직원 페이지는 동일한 5장 골격을 갖습니다: ① 소개·추천 대상 ② 스킬 카탈로그(실측 자동 생성) ③ MCP 연동 ④ 대표 시나리오 3선 ⑤ 에이전트(worker/auditor). 스킬 수는 2026-07-10 <span class="mono">claude plugin details</span> 실측치입니다.</p>
+      <div class="toc-grid">
+        <div class="toc-card"><h4>진입 허브</h4><div class="sub">/employees/pm/ · 스킬 1</div>
+          <ul><li><span class="n">1</span>PM은 무엇을 하나</li><li><span class="n">2</span>/project --cowork 셋업</li><li><span class="n">3</span>/project --code 셋업</li><li><span class="n">4</span>재귀적 자가 개선</li></ul></div>
+        <div class="toc-card"><h4>코워커 (범용 실무)</h4><div class="sub">/employees/coworker/ · 스킬 41</div>
+          <ul><li><span class="n">1</span>범용 코어의 역할</li><li><span class="n">2</span>business-* 29 스킬</li><li><span class="n">3</span>general-* 12 스킬</li><li><span class="n">4</span>전문가 분리 이력(→8종)</li></ul></div>
+        <div class="toc-card"><h4>작가</h4><div class="sub">/employees/writer/ · 스킬 23 · MCP 1</div>
+          <ul><li><span class="n">1</span>출판 기획·집필 book-* 8</li><li><span class="n">2</span>웹툰·웹소설 story-* 13</li><li><span class="n">3</span>한국어 인문화 윤문</li><li><span class="n">4</span>Higgsfield 이미지·영상</li></ul></div>
+        <div class="toc-card"><h4>마케터</h4><div class="sub">/employees/marketer/ · 스킬 28 · MCP 6</div>
+          <ul><li><span class="n">1</span>캠페인·퍼포먼스 marketing-*</li><li><span class="n">2</span>콘텐츠 content-* 8</li><li><span class="n">3</span>미디어 생성 media-* 10</li><li><span class="n">4</span>Meta Ads·ElevenLabs 연동</li></ul></div>
+        <div class="toc-card"><h4>셀러</h4><div class="sub">/employees/seller/ · 스킬 31 · MCP 3</div>
+          <ul><li><span class="n">1</span>스마트스토어 90도구</li><li><span class="n">2</span>아임웹 136 action</li><li><span class="n">3</span>카페24 526도구</li><li><span class="n">4</span>상세페이지·광고·CRM 스킬</li></ul></div>
+        <div class="toc-card"><h4>사무관</h4><div class="sub">/employees/officer/ · 스킬 31 · MCP 4</div>
+          <ul><li><span class="n">1</span>한국형 오피스 문서 5종</li><li><span class="n">2</span>공공데이터 조회 6종</li><li><span class="n">3</span>HTML 리포트·슬라이드</li><li><span class="n">4</span>생산성 루틴</li></ul></div>
+        <div class="toc-card"><h4>법무</h4><div class="sub">/employees/lawyer/ · 스킬 9 · MCP 1</div>
+          <ul><li><span class="n">1</span>계약 검토·NDA 트리아지</li><li><span class="n">2</span>법령·판례 리서치(국가법령 MCP)</li><li><span class="n">3</span>특허 검색·분석</li><li><span class="n">4</span>면책 고지(자문 대체 아님)</li></ul></div>
+        <div class="toc-card"><h4>재무세무</h4><div class="sub">/employees/accountant/ · 스킬 11 · MCP 1</div>
+          <ul><li><span class="n">1</span>재무제표·결산·차이 분석</li><li><span class="n">2</span>OpenDART 전자공시</li><li><span class="n">3</span>개인 세금·가계 재테크</li><li><span class="n">4</span>면책 고지</li></ul></div>
+        <div class="toc-card"><h4>인사채용</h4><div class="sub">/employees/recruiter/ · 스킬 8</div>
+          <ul><li><span class="n">1</span>채용 공고·이력서 스크리닝</li><li><span class="n">2</span>면접 코칭·성과 리뷰</li><li><span class="n">3</span>피플 오퍼레이션</li></ul></div>
+        <div class="toc-card"><h4>튜터</h4><div class="sub">/employees/tutor/ · 스킬 11</div>
+          <ul><li><span class="n">1</span>커리큘럼·평가 설계</li><li><span class="n">2</span>논문 검색·연구 보조</li><li><span class="n">3</span>교육 운영 매뉴얼</li></ul></div>
+        <div class="toc-card"><h4>디자이너</h4><div class="sub">/employees/designer/ · 스킬 20</div>
+          <ul><li><span class="n">1</span>브랜드 디자인 시스템 준비</li><li><span class="n">2</span>Claude Design 핸드오프 양경로</li><li><span class="n">3</span>3계층 토큰 변환</li><li><span class="n">4</span>슬롭 검수(cd-slop-check)</li></ul></div>
+        <div class="toc-card"><h4>코더 (moai)</h4><div class="sub">/employees/coder/ → /code/ · 43항목 · LSP 5</div>
+          <ul><li><span class="n">1</span>요약 카드 + /code/ 딥다이브 링크</li><li><span class="n">2</span>스킬 29 + 명령 14</li><li><span class="n">3</span>LSP 5종(go·py·rust·swift·ts)</li><li><span class="n">4</span>hooks 20종·MCP context7</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ==================== 03 Milestones ==================== -->
+    <section aria-label="Milestones">
+      <div class="sec-head"><span class="num">03</span><h2>업데이트 계획 — 6 Phase</h2></div>
+      <p class="sec-intro">우선순위 순 실행. P0·P1이 정합성 골격(허위 정보 차단), P2–P4가 콘텐츠, P5가 릴리스 게이트입니다. 시간 예측 대신 우선순위·순서로만 관리합니다.</p>
+      <div class="milestones">
+        <div class="milestone">
+          <div class="when">P0 · Priority High</div>
+          <div class="dot-col"><span class="dot"></span><span class="line"></span></div>
+          <div class="body"><h3>카탈로그 긴급 정합 (허위 정보 차단)</h3>
+            <p><code>plugins/_index.md</code>를 12-직원 체제로 재작성 — 구명칭(moai-cowork·moai-design·moai-story)·구수치(171스킬) 전량 제거, marketplace.json v6.0.0 설명문 이식. 구 URL aliases(301) 유지.</p>
+            <div class="tag-row"><span class="tag">plugins/_index.md</span><span class="tag">aliases 301</span><span class="tag">1-2 파일</span></div></div>
+        </div>
+        <div class="milestone">
+          <div class="when">P1 · Priority High</div>
+          <div class="dot-col"><span class="dot"></span><span class="line"></span></div>
+          <div class="body"><h3>스킬 카탈로그 자동 생성 파이프라인 (SSOT)</h3>
+            <p>생성 스크립트 신설: <span class="mono">.claude-plugin/marketplace.json</span> + 각 플러그인 스킬 frontmatter → 직원별 스킬표 md/데이터 파일 생성. 수기 스킬표 금지 — 수치 드리프트(171 vs 41 사태)의 구조적 재발 방지. Hugo <span class="mono">data/</span> 디렉토리에 JSON 산출.</p>
+            <div class="tag-row"><span class="tag">scripts/gen-employee-catalog</span><span class="tag">www/data/employees.json</span><span class="tag">드리프트 차단</span></div></div>
+        </div>
+        <div class="milestone">
+          <div class="when">P2 · Priority High</div>
+          <div class="dot-col"><span class="dot"></span><span class="line"></span></div>
+          <div class="body"><h3>/employees/ 12 직원 페이지 스캐폴드 + 본문</h3>
+            <p>공통 5장 골격으로 12 페이지 생성(§02 목차). 스킬표는 P1 데이터 참조, 소개·시나리오는 marketplace.json description + 각 플러그인 README에서 발췌·윤문. <code>cowork/</code> 20페이지 중 직원 귀속 콘텐츠 이관 및 301 처리.</p>
+            <div class="tag-row"><span class="tag">신규 12+1 페이지</span><span class="tag">cowork/ 이관 맵</span><span class="tag">humanize 게이트</span></div></div>
+        </div>
+        <div class="milestone">
+          <div class="when">P3 · Priority Medium</div>
+          <div class="dot-col"><span class="dot"></span><span class="line"></span></div>
+          <div class="body"><h3>코더 문서 확장 — LSP·Tier·E2E 실측 반영</h3>
+            <p><code>/code/</code>에 LSP 5종 가이드 신설(언어 감지→설치→graceful skip, typescript@5 요건·PATH 주의 등 이번 E2E 교훈 포함), Tier 1/2/3 표, 14 명령 레퍼런스, hooks 20종 개요. v6.0.0 릴리스 노트에 E2E 게이트 결과(설치 12/12·카나리아 8/8·LSP 5/5) 기록.</p>
+            <div class="tag-row"><span class="tag">code/lsp.md 신설</span><span class="tag">releases/v6.0.0.md</span><span class="tag">plugins/moai/README 정합</span></div></div>
+        </div>
+        <div class="milestone">
+          <div class="when">P4 · Priority Medium</div>
+          <div class="dot-col"><span class="dot"></span><span class="line"></span></div>
+          <div class="body"><h3>학습 축 재태깅 — cookbook·getting-started</h3>
+            <p>쿡북 39 레시피에 직원 태그 부여 + 직원 페이지 역링크 섹션. 시작하기 4페이지를 12-직원·PM 2-모드 흐름으로 개정. design/ 11페이지를 moai-designer v0.3.0(스킬 20) 기준으로 갱신.</p>
+            <div class="tag-row"><span class="tag">cookbook 39 re-tag</span><span class="tag">getting-started 4</span><span class="tag">design 11</span></div></div>
+        </div>
+        <div class="milestone">
+          <div class="when">P5 · Priority High</div>
+          <div class="dot-col"><span class="dot"></span><span class="line"></span></div>
+          <div class="body"><h3>검증 게이트 + 배포</h3>
+            <p>Hugo build PASS → broken link 0(기존 pre-existing 10건 포함 해소 또는 명시 debt) → 구 URL 301 전수 확인 → 스킬 수 실측 대조(생성 데이터 vs <span class="mono">claude plugin details</span>) → Vercel 배포 → llms.txt 재생성.</p>
+            <div class="tag-row"><span class="tag">hugo build</span><span class="tag">link check 0</span><span class="tag">llms.txt v6.0.0</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 04 Data Flow ==================== -->
+    <section aria-label="Data flow">
+      <div class="sec-head"><span class="num">04</span><h2>정합성 데이터 흐름</h2></div>
+      <p class="sec-intro">수치·명칭의 단일 정본은 저장소의 marketplace.json과 플러그인 실체입니다. 문서는 항상 생성 파이프라인을 거쳐 파생됩니다.</p>
+      <div class="diagram">
+        <svg viewBox="0 0 860 300" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#87867F"/></marker></defs>
+          <rect x="20" y="30" width="220" height="70" rx="10" fill="#F0EEE6" stroke="#D1CFC5" stroke-width="1.5"/>
+          <text x="130" y="58" text-anchor="middle" font-family="Pretendard" font-size="14" font-weight="600" fill="#141413">.claude-plugin/marketplace.json</text>
+          <text x="130" y="80" text-anchor="middle" font-family="Pretendard" font-size="12" fill="#87867F">v6.0.0 · 12 plugins (SSOT)</text>
+          <rect x="20" y="130" width="220" height="70" rx="10" fill="#F0EEE6" stroke="#D1CFC5" stroke-width="1.5"/>
+          <text x="130" y="158" text-anchor="middle" font-family="Pretendard" font-size="14" font-weight="600" fill="#141413">plugins/*/skills · agents</text>
+          <text x="130" y="180" text-anchor="middle" font-family="Pretendard" font-size="12" fill="#87867F">frontmatter 실체 (details 대조)</text>
+          <rect x="330" y="80" width="200" height="70" rx="10" fill="#FFFFFF" stroke="#D97757" stroke-width="2"/>
+          <text x="430" y="108" text-anchor="middle" font-family="Pretendard" font-size="14" font-weight="600" fill="#141413">생성 스크립트 (P1)</text>
+          <text x="430" y="130" text-anchor="middle" font-family="Pretendard" font-size="12" fill="#87867F">gen-employee-catalog</text>
+          <rect x="330" y="190" width="200" height="60" rx="10" fill="#FFFFFF" stroke="#D1CFC5" stroke-width="1.5"/>
+          <text x="430" y="215" text-anchor="middle" font-family="Pretendard" font-size="13" font-weight="600" fill="#141413">claude plugin details</text>
+          <text x="430" y="235" text-anchor="middle" font-family="Pretendard" font-size="11.5" fill="#87867F">P5 검증 대조 (실측)</text>
+          <rect x="620" y="30" width="220" height="70" rx="10" fill="#F0EEE6" stroke="#D1CFC5" stroke-width="1.5"/>
+          <text x="730" y="58" text-anchor="middle" font-family="Pretendard" font-size="14" font-weight="600" fill="#141413">www/data/employees.json</text>
+          <text x="730" y="80" text-anchor="middle" font-family="Pretendard" font-size="12" fill="#87867F">+ /employees/ 12 페이지</text>
+          <rect x="620" y="130" width="220" height="70" rx="10" fill="#FFFFFF" stroke="#788C5D" stroke-width="2"/>
+          <text x="730" y="158" text-anchor="middle" font-family="Pretendard" font-size="14" font-weight="600" fill="#141413">Hugo build → Vercel</text>
+          <text x="730" y="180" text-anchor="middle" font-family="Pretendard" font-size="12" fill="#87867F">claude.mo.ai.kr · llms.txt</text>
+          <path d="M240 65 L322 105" stroke="#87867F" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+          <path d="M240 165 L322 125" stroke="#87867F" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+          <path d="M530 105 L612 70" stroke="#87867F" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+          <path d="M730 100 L730 122" stroke="#87867F" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+          <path d="M430 190 L430 158" stroke="#D97757" stroke-width="1.5" fill="none" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+        </svg>
+        <p class="caption">실선: 생성 경로(정본 → 데이터 → 사이트). 점선: P5 검증 대조 경로 — 생성 수치와 CLI 실측 인벤토리가 일치해야 배포 게이트 통과.</p>
+      </div>
+    </section>
+
+    <!-- ==================== 05 Risks ==================== -->
+    <section aria-label="Risks">
+      <div class="sec-head"><span class="num">05</span><h2>Risks &amp; Mitigation</h2></div>
+      <div class="risks">
+        <div class="row"><div class="cell head">Risk</div><div class="cell head">Severity</div><div class="cell head">Mitigation</div></div>
+        <div class="row"><div class="cell">스킬 수·명칭 드리프트 재발 (문서 수기 수치가 플러그인 진화를 못 따라감 — 171스킬 사태 재현)</div><div class="cell"><span class="sev high">HIGH</span></div><div class="cell">P1 생성 파이프라인을 유일 경로로 강제, P5에서 <span class="mono">claude plugin details</span> 실측 대조를 배포 게이트로 편입</div></div>
+        <div class="row"><div class="cell">구 URL 유입 파손 (외부 링크·검색엔진이 /plugins/cowork 등 구경로 참조)</div><div class="cell"><span class="sev high">HIGH</span></div><div class="cell">P0에서 aliases 301 선배치 후 콘텐츠 이동. P5 링크 체커로 내부 0건 확인</div></div>
+        <div class="row"><div class="cell">cowork/ 20페이지 이관 중 콘텐츠 유실 (직원 귀속이 모호한 페이지)</div><div class="cell"><span class="sev med">MED</span></div><div class="cell">이관 맵 문서를 P2 산출물로 고정(원천→목적지 전수표), 모호 건은 coworker 잔류가 기본값</div></div>
+        <div class="row"><div class="cell">병렬 세션 race (www와 plugins를 동시 편집하는 세션 존재 이력)</div><div class="cell"><span class="sev med">MED</span></div><div class="cell">Phase별 pathspec 커밋 + pre-spawn fetch 규율, www/ 단독 브랜치 작업</div></div>
+        <div class="row"><div class="cell">pre-existing broken link 10건이 신규 작업과 섞여 원인 추적 불능</div><div class="cell"><span class="sev low">LOW</span></div><div class="cell">P5 착수 시 기존 10건 베이스라인 스냅샷 → 신규 0건 기준으로 게이트, 기존 건은 별도 debt 목록</div></div>
+        <div class="row"><div class="cell">면책 고지 누락 (법무·재무세무 직원 페이지의 전문가 자문 대체 오인)</div><div class="cell"><span class="sev med">MED</span></div><div class="cell">P2 공통 골격에 면책 블록을 필수 장으로 포함 (marketplace.json 문안 이식)</div></div>
+      </div>
+    </section>
+
+    <!-- ==================== 06 Success Metrics ==================== -->
+    <section aria-label="Success metrics">
+      <div class="sec-head"><span class="num">06</span><h2>Success Metrics (배포 게이트)</h2></div>
+      <div class="metrics-list">
+        <div class="metric-row"><div class="metric-indicator unmet"></div><div class="metric-label">직원 페이지 발행 — 12 직원 × 공통 5장 골격</div><div class="metric-target">Target: 12/12</div></div>
+        <div class="metric-row"><div class="metric-indicator unmet"></div><div class="metric-label">스킬 카탈로그 실측 일치 — 생성 데이터 vs claude plugin details</div><div class="metric-target">Target: 257/257 항목</div></div>
+        <div class="metric-row"><div class="metric-indicator unmet"></div><div class="metric-label">구명칭·구수치 잔존 grep (moai-cowork·moai-story·171스킬 등)</div><div class="metric-target">Target: 0건</div></div>
+        <div class="metric-row"><div class="metric-indicator unmet"></div><div class="metric-label">신규 broken link (기존 10건 베이스라인 제외)</div><div class="metric-target">Target: 0건</div></div>
+        <div class="metric-row"><div class="metric-indicator unmet"></div><div class="metric-label">구 URL 301 리다이렉트 (plugins/cowork·story 등 aliases)</div><div class="metric-target">Target: 전수 PASS</div></div>
+        <div class="metric-row"><div class="metric-indicator unmet"></div><div class="metric-label">Hugo build + Vercel 배포 + llms.txt v6.0.0 재생성</div><div class="metric-target">Target: PASS</div></div>
+      </div>
+    </section>
+
+    <footer>
+      Sources: www/content/ 실측(2026-07-10) · .claude-plugin/marketplace.json v6.0.0 · claude plugin details 인벤토리(.moai/state/verify/e2e-63fce226/) · expert-plugin-expansion-plan-2026-07-09 &nbsp;&mdash;&nbsp; Generated: 2026-07-10
+    </footer>
+
+  </div>
+</body>
+</html>

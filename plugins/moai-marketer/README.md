@@ -1,6 +1,6 @@
 # 마케터 (moai-marketer)
 
-마케팅 전담 AI 직원입니다. 캠페인 기획·퍼포먼스 분석(marketing-* 11종), 블로그·뉴스레터·SNS 콘텐츠(content-* 8종) 스킬 19종과 Meta Ads·게시 채널 MCP 연동을 하나의 플러그인으로 제공합니다. 슬래시 명령을 외울 필요 없이 자연어로 요청하면 매칭되는 스킬이 자동 호출됩니다.
+마케팅 전담 AI 직원입니다. 캠페인 기획·퍼포먼스 분석(marketing-* 11종), 블로그·뉴스레터·SNS 콘텐츠(content-* 7종) 스킬 18종과 Meta Ads·게시 채널 MCP 연동을 하나의 플러그인으로 제공합니다. 슬래시 명령을 외울 필요 없이 자연어로 요청하면 매칭되는 스킬이 자동 호출됩니다.
 
 > **미디어 생성 분리 안내**: 이미지·오디오·영상 미디어 생성(media-* 9종)은 `moai-media` 플러그인으로 분리되었습니다. 미디어 생성 요청은 moai-media을 설치해 사용하세요.
 
@@ -22,7 +22,7 @@ claude plugin install moai-marketer@moai-cowork
 /plugin install moai-marketer
 ```
 
-## 스킬 19종
+## 스킬 18종
 
 호출 형식: `/moai-marketer:marketing-<스킬명>` — 예: `/moai-marketer:marketing-campaign-planner`. 자연어 요청("이번 달 인스타 광고 캠페인 기획해줘")으로도 자동 매칭됩니다.
 
@@ -42,7 +42,7 @@ claude plugin install moai-marketer@moai-cowork
 | `marketing-personal-branding` | 개인 브랜드 포지셔닝·콘텐츠·채널 전략 문서 |
 | `marketing-youtube-podcast-planner` | 유튜브·팟캐스트 기획·대본·쇼노트 구성 |
 
-### 콘텐츠 (8종)
+### 콘텐츠 (7종)
 
 | 스킬 | 역할 |
 |------|------|
@@ -53,7 +53,6 @@ claude plugin install moai-marketer@moai-cowork
 | `content-card-news` | 인스타·스레드·카카오 채널용 카드뉴스 4장(카피·디자인 가이드·이미지 프롬프트) |
 | `content-copywriting` | 헤드라인·CTA·슬로건·광고 카피 후보 다중 생성 |
 | `content-editorial-calendar` | 콘텐츠 발행 캘린더·채널별 게시 일정 기획 |
-| `content-social-media` | (DEPRECATED) `content-sns-content`로 흡수 — 신규 호출은 새 스킬 사용 |
 
 ## MCP 연동 4종
 
@@ -75,4 +74,4 @@ claude plugin install moai-marketer@moai-cowork
 
 ## 라이선스
 
-LicenseRef-MoAI-NC-ND-1.0 · © modu-ai (email@mo.ai.kr)
+Apache-2.0 · © 2026 modu-ai (email@mo.ai.kr) — 산출물은 이용자 소유([LICENSE-OUTPUT.md](../../LICENSE-OUTPUT.md))

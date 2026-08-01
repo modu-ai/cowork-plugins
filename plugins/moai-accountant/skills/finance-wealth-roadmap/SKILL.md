@@ -4,7 +4,7 @@ description: >
   재테크를 어디서부터 시작할지 막막할 때 나만의 자산 관리 로드맵을 짜주는 스킬입니다.
   '재테크 어떻게 시작해', '종잣돈 모으는 법', '내 자산 관리 계획 세워줘', '월급으로 1억 모으기'처럼 말하면 됩니다.
   재무 현황 진단 → 목표 설정 → 종잣돈 단계 → 자산 배분 → 자동화·점검의 5단계로 개인 맞춤 재테크 로드맵을 설계합니다.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 재테크 로드맵 (Wealth Roadmap)
@@ -94,10 +94,15 @@ version: "0.1.0"
 
 ## 관련 스킬
 
-- **moai-wealth/finance-household-budget**: 월 예산·소비 관리로 저축 가능액 확보
-- **moai-wealth/finance-invest-primer**: 종잣돈을 투자 자산으로 전환
-- **moai-wealth/finance-personal-tax-saver**: 연금·소득공제로 절세하며 자산 축적
-- **moai-productivity/office-goal-planner**: 재무 목표를 분기 실행으로 관리
+- **moai-accountant:finance-household-budget**: 월 예산·소비 관리로 저축 가능액 확보
+- **moai-accountant:finance-invest-primer**: 종잣돈을 투자 자산으로 전환
+- **moai-accountant:finance-personal-tax-saver**: 연금·소득공제로 절세하며 자산 축적
+- **moai-coworker:office-goal-planner**: 재무 목표를 분기 실행으로 관리
+
+| 단계 | 스킬 | 역할 |
+|------|------|------|
+| Post-검수 | `moai-coworker:general-ai-slop-reviewer` | AI 슬롭 검수 (필수) |
+| Post-검수 | `moai-writer:general-humanize-korean` | 한국어 AI 티 제거 (슬롭 검수 다음, 필수) |
 
 ## 이 스킬을 사용하지 말아야 할 때
 

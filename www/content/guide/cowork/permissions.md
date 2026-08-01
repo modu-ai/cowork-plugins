@@ -5,7 +5,7 @@ description: "Cowork가 어느 폴더를 어디까지 읽고 쓰는지, OS·앱�
 geekdocBreadcrumb: true
 aliases: ["/cowork/permissions/"]
 ---
-> Cowork가 가장 자주 막히는 곳은 "내 PC에서 어디까지 손을 댈 수 있는가"입니다. 권한이 어디서 어떻게 정해지는지 그림으로 보고, 막혔을 때 푸는 절차를 정리합니다.
+> Cowork가 가장 자주 막히는 곳은 "내 PC에서 어디까지 손을 댈 수 있는가"입니다. 권한이 어디서 어떻게 정해지는지 그림으로 보고 막혔을 때 푸는 절차를 정리합니다.
 
 ## 학습 목표
 
@@ -15,31 +15,31 @@ aliases: ["/cowork/permissions/"]
 
 ## 한 문장 요약
 
-Cowork는 **사용자가 명시적으로 선택한 폴더만** 읽고 씁니다. 그 폴더 밖은 보이지도 않고, 권한도 없습니다.
+Cowork는 **사용자가 명시적으로 선택한 폴더만** 읽고 씁니다. 그 폴더 밖은 보이지도 않고 권한도 없습니다.
 
 ## 4개 층 권한 모델
 
 ```mermaid
 flowchart TD
-    subgraph L1["① OS 권한<br/>(macOS · Windows)"]
-        OS[/"개인정보 보호 → 파일 및 폴더<br/>또는 폴더 ACL"/]
-    end
-    subgraph L2["② Cowork 앱 권한"]
-        APP[/"앱이 시스템에서 허락받은<br/>'접근 가능한 폴더 목록'"/]
-    end
-    subgraph L3["③ 프로젝트 바인딩"]
-        PRJ[/"이 프로젝트의 작업 폴더<br/>= ~/work/{name}/"/]
-    end
-    subgraph L4["④ 새 태스크 (대화)"]
-        TASK[/"이번 대화에서<br/>실제 R/W하는 파일"/]
-    end
+   subgraph L1["① OS 권한<br/>(macOS · Windows)"]
+       OS[/"개인정보 보호 → 파일 및 폴더<br/>또는 폴더 ACL"/]
+   end
+   subgraph L2["② Cowork 앱 권한"]
+       APP[/"앱이 시스템에서 허락받은<br/>'접근 가능한 폴더 목록'"/]
+   end
+   subgraph L3["③ 프로젝트 바인딩"]
+       PRJ[/"이 프로젝트의 작업 폴더<br/>= ~/work/{name}/"/]
+   end
+   subgraph L4["④ 새 태스크 (대화)"]
+       TASK[/"이번 대화에서<br/>실제 R/W하는 파일"/]
+   end
 
-    OS --> APP --> PRJ --> TASK
+   OS --> APP --> PRJ --> TASK
 
-    style L1 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style L2 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style L3 fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style L4 fill:#dceee9,stroke:#2a8a8c,color:#09110f
+   style L1 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style L2 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style L3 fill:#e8f1ec,stroke:#265240,color:#09110f
+   style L4 fill:#e8f1ec,stroke:#2a8a8c,color:#09110f
 ```
 
 | 층 | 누가 결정 | 사용자가 하는 일 | 막혔을 때 증상 |
@@ -49,7 +49,7 @@ flowchart TD
 | ③ 프로젝트 | 사용자가 프로젝트에 폴더 바인딩 | 프로젝트 생성·수정 시 폴더 지정 | 다른 프로젝트로 이동하면 다른 폴더가 보임 |
 | ④ 새 태스크 | Cowork가 대화 단위로 사용 | 자연어로 파일 요청 | 폴더 밖 경로 요청 시 "보이지 않음" 응답 |
 
-핵심 원칙: **위 층이 막히면 아래 층은 자동으로 무력화**됩니다. OS가 차단하면 앱이 폴더를 못 보고, 앱이 폴더를 못 보면 프로젝트도 새 태스크도 R/W가 안 됩니다.
+핵심 원칙: **위 층이 막히면 아래 층은 자동으로 무력화**됩니다. OS가 차단하면 앱이 폴더를 못 보고 앱이 폴더를 못 보면 프로젝트도 새 태스크도 R/W가 안 됩니다.
 
 ## 첫 폴더 허용 — 단계별 흐름
 
@@ -59,26 +59,26 @@ Cowork를 처음 실행할 때 시스템 권한 승인 대화가 나타납니다
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    participant U as 사용자
-    participant CW as Cowork 앱
-    participant OS as macOS / Windows
-    participant FS as 파일 시스템
+   autonumber
+   participant U as 사용자
+   participant CW as Cowork 앱
+   participant OS as macOS / Windows
+   participant FS as 파일 시스템
 
-    U->>CW: 우측 상단 "폴더 선택" 클릭
-    CW->>OS: 폴더 접근 권한 요청 (NSOpenPanel / IFileDialog)
-    OS->>U: "Claude가 ~/work/A에 접근하도록 허용하시겠습니까?"
-    alt 사용자 허용
-        U->>OS: 허용
-        OS->>FS: 권한 토큰 발급 (해당 폴더 한정)
-        OS-->>CW: 폴더 핸들 반환
-        CW->>U: 폴더 트리 표시 (R/W 가능)
-    else 사용자 거부
-        U->>OS: 거부
-        OS-->>CW: 권한 없음
-        CW->>U: 폴더가 비어 보이는 상태로 표시
-        Note over U,CW: ② 항목으로 이동해 재허용 필요
-    end
+   U->>CW: 우측 상단 "폴더 선택" 클릭
+   CW->>OS: 폴더 접근 권한 요청 (NSOpenPanel / IFileDialog)
+   OS->>U: "Claude가 ~/work/A에 접근하도록 허용하시겠습니까?"
+   alt 사용자 허용
+       U->>OS: 허용
+       OS->>FS: 권한 토큰 발급 (해당 폴더 한정)
+       OS-->>CW: 폴더 핸들 반환
+       CW->>U: 폴더 트리 표시 (R/W 가능)
+   else 사용자 거부
+       U->>OS: 거부
+       OS-->>CW: 권한 없음
+       CW->>U: 폴더가 비어 보이는 상태로 표시
+       Note over U,CW: ② 항목으로 이동해 재허용 필요
+   end
 ```
 
 이 흐름은 **폴더 단위로** 일어납니다. 새 폴더를 추가할 때마다 OS 다이얼로그가 한 번 더 뜨는 것이 정상입니다.
@@ -112,12 +112,12 @@ Windows의 기본 경로 길이 한계는 260자입니다. 한국어 폴더명�
 
 ```mermaid
 flowchart LR
-    A["C:\\Users\\홍길동\\Documents\\<br/>2026년_분기보고서_초안\\<br/>경영기획팀_리뷰완료\\<br/>최종_v3_FINAL.docx"]:::bad
-    B["C:\\w\\report\\Q2.docx"]:::good
-    A -.X.-> X["260자 초과 → 저장 실패"]
-    B --> Y["짧은 경로 → 안전"]
-    classDef bad fill:#f5dcd7,stroke:#c44a3a
-    classDef good fill:#d6ebe7,stroke:#1c7c70
+   A["C:\\Users\\홍길동\\Documents\\<br/>2026년_분기보고서_초안\\<br/>경영기획팀_리뷰완료\\<br/>최종_v3_FINAL.docx"]:::bad
+   B["C:\\w\\report\\Q2.docx"]:::good
+   A -.X.-> X["260자 초과 → 저장 실패"]
+   B --> Y["짧은 경로 → 안전"]
+   classDef bad fill:#f5dcd7,stroke:#c44a3a
+   classDef good fill:#d6e7de,stroke:#3d7d5f
 ```
 
 해결:
@@ -127,46 +127,46 @@ flowchart LR
 
 ## 프로젝트별 폴더 — 한 프로젝트에서 여러 위치를 다루고 싶을 때
 
-기본 원칙은 **한 프로젝트 = 한 작업 폴더**입니다. 디자인 자산(`~/Design/`)과 문서 출력(`~/Reports/`)을 동시에 다뤄야 한다면, 프로젝트당 폴더 수의 공식 사양은 [Anthropic 지원 문서](https://support.claude.com/en/articles/14116274)에서 최신본을 확인하세요. 실무에서는 다음 우회책이 안전합니다.
+기본 원칙은 **한 프로젝트 = 한 작업 폴더**입니다. 디자인 자산(`~/Design/`)과 문서 출력(`~/Reports/`)을 동시에 다뤄야 한다면 프로젝트당 폴더 수의 공식 사양은 [Anthropic 지원 문서](https://support.claude.com/en/articles/14116274)에서 최신본을 확인하세요. 실무에서는 다음 우회책이 안전합니다.
 
-- **단일 작업 폴더에 모으기** — 새 작업 폴더(`~/work/<project>/`)를 하나 만들고, 필요한 자산을 그 안에 복사하거나 OS 수준 심볼릭 링크/바로가기로 끌어옵니다. 권한 다이얼로그가 한 번만 뜨고 관리가 단순합니다.
-- **프로젝트를 분리** — 자산 정리 프로젝트와 산출물 작성 프로젝트를 별도로 운영하고, 결과물만 수동으로 이관합니다.
+- **단일 작업 폴더에 모으기** — 새 작업 폴더(`~/work/<project>/`)를 하나 만들고 필요한 자산을 그 안에 복사하거나 OS 수준 심볼릭 링크/바로가기로 끌어옵니다. 권한 다이얼로그가 한 번만 뜨고 관리가 단순합니다.
+- **프로젝트를 분리** — 자산 정리 프로젝트와 산출물 작성 프로젝트를 별도로 운영하고 결과물만 수동으로 이관합니다.
 
-심볼릭 링크는 macOS·Windows에서 모두 가능하지만, 일부 보안 정책이나 외장 디스크 환경에서는 끊길 수 있어 IT 친숙 사용자에게만 권장합니다.
+심볼릭 링크는 macOS·Windows에서 모두 가능하지만 일부 보안 정책이나 외장 디스크 환경에서는 끊길 수 있어 IT 친숙 사용자에게만 권장합니다.
 
 ## 컴퓨터 사용(Computer Use) — 또 다른 권한 층
 
-[컴퓨터 사용](../computer-use/)은 폴더가 아니라 **앱·화면**에 대한 권한입니다. 폴더 권한과 별개로 작동하며, 앱별로 read/click/full 3단계로 승인됩니다. 자세한 내용은 해당 페이지에서 다룹니다.
+[컴퓨터 사용](../computer-use/)은 폴더가 아니라 **앱·화면**에 대한 권한입니다. 폴더 권한과 별개로 작동하며 앱별로 read/click/full 3단계로 승인됩니다. 자세한 내용은 해당 페이지에서 다룹니다.
 
 ## 권한이 막혔을 때 — 5단계 진단
 
 ```mermaid
 flowchart TD
-    S0[증상 발견<br/>'폴더가 비어 보임' / '접근 거부']
-    S1{① OS 권한<br/>다이얼로그<br/>거부했나?}
-    S2{② Cowork 앱이<br/>이 폴더를<br/>선택했나?}
-    S3{③ 현재 프로젝트가<br/>이 폴더에<br/>바인딩됐나?}
-    S4{④ 요청한 경로가<br/>폴더 안에<br/>있나?}
-    FIX1[OS 설정에서<br/>Claude 허용 토글 ON]
-    FIX2[우측 상단<br/>'폴더 선택' 다시 클릭]
-    FIX3[프로젝트 설정에서<br/>폴더 추가/변경]
-    FIX4[폴더 안으로 파일 이동<br/>또는 폴더 추가 등록]
-    OK[정상 동작]
+   S0[증상 발견<br/>'폴더가 비어 보임' / '접근 거부']
+   S1{① OS 권한<br/>다이얼로그<br/>거부했나?}
+   S2{② Cowork 앱이<br/>이 폴더를<br/>선택했나?}
+   S3{③ 현재 프로젝트가<br/>이 폴더에<br/>바인딩됐나?}
+   S4{④ 요청한 경로가<br/>폴더 안에<br/>있나?}
+   FIX1[OS 설정에서<br/>Claude 허용 토글 ON]
+   FIX2[우측 상단<br/>'폴더 선택' 다시 클릭]
+   FIX3[프로젝트 설정에서<br/>폴더 추가/변경]
+   FIX4[폴더 안으로 파일 이동<br/>또는 폴더 추가 등록]
+   OK[정상 동작]
 
-    S0 --> S1
-    S1 -- 예 --> FIX1
-    S1 -- 아니오 --> S2
-    S2 -- 아니오 --> FIX2
-    S2 -- 예 --> S3
-    S3 -- 아니오 --> FIX3
-    S3 -- 예 --> S4
-    S4 -- 아니오 --> FIX4
-    S4 -- 예 --> OK
+   S0 --> S1
+   S1 -- 예 --> FIX1
+   S1 -- 아니오 --> S2
+   S2 -- 아니오 --> FIX2
+   S2 -- 예 --> S3
+   S3 -- 아니오 --> FIX3
+   S3 -- 예 --> S4
+   S4 -- 아니오 --> FIX4
+   S4 -- 예 --> OK
 
-    style FIX1 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style FIX2 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style FIX3 fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style FIX4 fill:#dceee9,stroke:#2a8a8c,color:#09110f
+   style FIX1 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style FIX2 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style FIX3 fill:#e8f1ec,stroke:#265240,color:#09110f
+   style FIX4 fill:#e8f1ec,stroke:#2a8a8c,color:#09110f
 ```
 
 ## 베스트 프랙티스 — 권한을 단순하게 유지하는 6가지

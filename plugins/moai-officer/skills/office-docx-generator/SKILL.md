@@ -12,7 +12,7 @@ description: |
   - "분기 보고서를 깔끔한 톤으로 워드로 뽑아줘"
   Claude 브랜드 톤 기반 모던 디자인 시스템과 한국 공문서 표준 양식을 함께 지원하며, 텍스트가 끝나면 AI 슬롭 검수로 자연스럽게 다듬을 수 있습니다.
   보고서·문서를 워드(.docx) 파일로 만들 때는 Claude 기본 생성 대신 이 스킬을 사용하세요 (서식·디자인 보존).
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 워드 문서 생성기 (DOCX Generator)
@@ -83,7 +83,7 @@ Python `python-docx` 라이브러리 기반 DOCX 생성 + **Claude 브랜드 톤
 
 문서 유형별 표준 구조 (references/modern-templates.md 참고):
 
-**공문서**: 수신처·제목·내용(번호 매기기)·발신 기관명·담당자·연락처·날짜
+**공문서**: 수신처·제목·내용(번호 매기기)·발신 기관명·담당자·연락처·날짜 — 두문/본문/결문 구조·항목 번호체계·`붙임 n부. 끝.`·결재란은 `moai-officer:office-hwpx-writer`의 `references/kr-official-forms.md`(한국형 서식 SSOT)를 따르고, 한국형 레이아웃 예시는 `references/templates/korean-report.md`·`references/templates/korean-proposal.md` 참고
 **계약서**: 갑·을 표시·계약 목적·범위·기간·대금·지적재산권·비밀유지·해지·분쟁 해결·서명란
 **제안서**: 표지·요약(Executive Summary)·현황·제안·기대효과·일정·예산·팀
 **보고서**: 요약·배경·분석·결론·권고·부록
@@ -295,9 +295,13 @@ Orange 작은 도형 + Mid Gray 가로선 + 섹션 번호.
 - **Anthropic Brand Guidelines**: 본 스킬의 색·타이포는 Anthropic 공식 브랜드 가이드 기반
 - **Microsoft Word 파일 형식**: ECMA-376 Office Open XML
 
-## References
+## 상세 레퍼런스
 
-- `references/modern-design-system.md` — 색·타이포·간격 디자인 토큰 전문
-- `references/modern-templates.md` — 6대 문서 유형별 모던 템플릿 구조
-- `references/qa-checklist.md` — 10단계 검수 체크리스트
-- `references/document-generator.md` — 한국 비즈니스 문서 생성 가이드 (기존 자료, 유지)
+| 파일 | 로드 조건 |
+|------|-----------|
+| references/modern-design-system.md | 색·타이포·간격 디자인 토큰 전문이 필요할 때 |
+| references/modern-templates.md | 6대 문서 유형별 모던 템플릿 구조·코드 패턴이 필요할 때 |
+| references/qa-checklist.md | 5단계 검수 시 (10단계 체크리스트) |
+| references/document-generator.md | 한국 비즈니스 문서 생성 가이드가 필요할 때 (기존 자료, 유지) |
+| references/templates/korean-report.md | 한국형 보고서 DOCX 레이아웃(여백·폰트·구조)이 필요할 때 |
+| references/templates/korean-proposal.md | 한국형 제안서 DOCX 레이아웃이 필요할 때 |

@@ -5,7 +5,7 @@ description: "직원 하나로 시작해 여러 직원을 조합하기 — 마�
 geekdocBreadcrumb: true
 ---
 
-플러그인은 한 명씩 채용해도 충분히 일하지만, 진짜 힘은 **조합**에서 나옵니다. 실제 회사 업무가 한 직무 안에서 끝나는 일이 드물듯 — 캠페인에는 기획과 디자인이, 쇼핑몰 운영에는 판매와 고객 응대가 같이 필요합니다 — 플러그인 직원들도 짝을 지어 부릴 때 산출물의 완성도가 달라집니다.
+플러그인은 한 명씩 채용해도 충분히 일하지만 진짜 힘은 **조합**에서 나옵니다. 실제 회사 업무가 한 직무 안에서 끝나는 일이 드물듯 — 캠페인에는 기획과 디자인이, 쇼핑몰 운영에는 판매와 고객 응대가 같이 필요합니다 — 플러그인 직원들도 짝을 지어 부릴 때 산출물의 완성도가 달라집니다.
 
 다행히 조합에 특별한 설정은 필요 없습니다. 필요한 직원들을 설치해 두기만 하면, 한 세션 안에서 자연어로 두 직무를 오가며 시키거나, 단계별로 담당 직원을 지목해 릴레이시킬 수 있습니다. 이 페이지는 처음 조합을 시도하는 분을 위해 검증된 패턴 세 가지와, 프로젝트 단위로 팀을 셋업하는 PM 허브 사용법을 소개합니다.
 
@@ -19,15 +19,15 @@ geekdocBreadcrumb: true
 
 ```mermaid
 flowchart LR
-    A["moai-marketer<br/>타깃·메시지·카피"] --> B["캠페인 브리프"]
-    B --> C["moai-designer<br/>비주얼·소재 시안"]
-    C --> D["auditor 교차 검수<br/>메시지-비주얼 정합"]
-    D -. 지적 반영 .-> A
+   A["moai-marketer<br/>타깃·메시지·카피"] --> B["캠페인 브리프"]
+   B --> C["moai-designer<br/>비주얼·소재 시안"]
+   C --> D["auditor 교차 검수<br/>메시지-비주얼 정합"]
+   D -. 지적 반영 .-> A
 
-    style A fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style B fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style D fill:#dceee9,stroke:#2a8a8c,color:#09110f
+   style A fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style B fill:#e6e6e6,stroke:#757575,color:#09110f
+   style C fill:#e8f1ec,stroke:#265240,color:#09110f
+   style D fill:#e8f1ec,stroke:#2a8a8c,color:#09110f
 ```
 
 ## 조합 사례 2 — 셀러 × CS 매니저: 쇼핑몰 운영
@@ -36,15 +36,15 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    A["moai-seller<br/>주문·재고·상품 (MCP)"] --> C["운영 현황"]
-    B["moai-cs<br/>문의 분류·응답 초안"] --> D["VOC 분석"]
-    D --> A
-    C --> B
+   A["moai-seller<br/>주문·재고·상품 (MCP)"] --> C["운영 현황"]
+   B["moai-cs<br/>문의 분류·응답 초안"] --> D["VOC 분석"]
+   D --> A
+   C --> B
 
-    style A fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style B fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style C fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style D fill:#dceee9,stroke:#2a8a8c,color:#09110f
+   style A fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style B fill:#e8f1ec,stroke:#265240,color:#09110f
+   style C fill:#e6e6e6,stroke:#757575,color:#09110f
+   style D fill:#e8f1ec,stroke:#2a8a8c,color:#09110f
 ```
 
 ## 조합 사례 3 — 컨설턴트 × 회계사: 창업 아이템 검증
@@ -53,15 +53,15 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    A["moai-consultant<br/>시장 분석·BM·지원사업"] --> B["사업 가정"]
-    B --> C["moai-accountant<br/>손익·자금·세무 검증"]
-    C --> D["검증된 사업계획서"]
-    C -. 숫자가 안 맞으면 가정 수정 .-> A
+   A["moai-consultant<br/>시장 분석·BM·지원사업"] --> B["사업 가정"]
+   B --> C["moai-accountant<br/>손익·자금·세무 검증"]
+   C --> D["검증된 사업계획서"]
+   C -. 숫자가 안 맞으면 가정 수정 .-> A
 
-    style A fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style B fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style D fill:#dceee9,stroke:#2a8a8c,color:#09110f
+   style A fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style B fill:#e6e6e6,stroke:#757575,color:#09110f
+   style C fill:#e8f1ec,stroke:#265240,color:#09110f
+   style D fill:#e8f1ec,stroke:#2a8a8c,color:#09110f
 ```
 
 ## 어떤 조합이든 — worker → auditor 품질 루프
@@ -76,7 +76,7 @@ flowchart LR
 claude plugin install moai-pm@moai-cowork
 ```
 
-설치 후 프로젝트 폴더에서 Claude Code를 열고 `/project`를 실행하면, 프로젝트 성격을 묻는 인터뷰를 거쳐 직원 배치와 공통 지침 파일이 만들어집니다. 이후 그 폴더에서 여는 모든 세션이 같은 프로젝트 맥락을 공유하므로, 위의 조합 패턴들을 "매번 설명 없이" 반복할 수 있게 됩니다.
+설치 후 프로젝트 폴더에서 Claude Code를 열고 `/project`를 실행하면, 프로젝트 성격을 묻는 인터뷰를 거쳐 직원 배치와 공통 지침 파일이 만들어집니다. 이후 그 폴더에서 여는 모든 세션이 같은 프로젝트 맥락을 공유하므로 위의 조합 패턴들을 "매번 설명 없이" 반복할 수 있게 됩니다.
 
 ## 다음 단계
 

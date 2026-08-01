@@ -11,7 +11,7 @@ description: |
   - "OKR 설정해줘"
   - "해외 진출 전략 짜줘"
   현황 분석·전략 프레임워크·전략 방향·실행 로드맵 구조로 작성하며, PPT 변환이나 AI 표현 다듬기로 이어집니다.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 전략 플래너 (Strategy Planner)
@@ -267,3 +267,14 @@ SWOT은 단순히 4칸을 채우는 도구가 아니라 **마케팅·사업 플�
 - **moai-consultant:business-market-analyst**: 심층 시장 조사 및 경쟁사 분석 필요 시
 - **moai-officer:office-pptx-designer**: 전략 문서를 PPT로 변환
 - **moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean**: 생성된 문서 AI 패턴 검수 후 한국어 표현을 자연스럽게 다듬습니다 (필수)
+
+## References
+
+| 파일 | 로드 조건 |
+|------|-----------|
+| references/startup-launcher.md | 시장분석·비즈니스 모델링·MVP·피치덱까지 스타트업 론칭 계획 수립 시 |
+| references/scenario-planner.md | 다양한 미래 시나리오 개발·전략적 준비·리스크 관리 시 |
+| references/strategy-framework.md | 비전·미션부터 실행 계획까지 일관된 전략 체계화 시 |
+| references/market-entry-strategy.md | 진입 방식·고객 획득 등 신시장 진입 전략 개발 시 |
+| references/business-model-canvas.md | Business Model Canvas 9개 블록 작성·검증 시 |
+| references/nonprofit-management.md | 비영리·미션 중심 조직 운영 설계 시 (자금 조성·기부자 관리·프로그램 영향 측정·이사회 거버넌스·자원봉사 조정) |

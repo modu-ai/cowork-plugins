@@ -1,0 +1,18 @@
+sunset:
+    conditions:
+        - action: advisor
+          description: Switch to advisory mode after 50 consecutive passes
+          gate: vet
+          metric: consecutive_passes
+          threshold: 50
+        - action: advisor
+          description: Switch to advisory mode after 30 consecutive passes
+          gate: lint
+          metric: consecutive_passes
+          threshold: 30
+        - action: advisor
+          description: Switch to advisory mode after 20 consecutive passes (never fully remove)
+          gate: test
+          metric: consecutive_passes
+          threshold: 20
+    enabled: true

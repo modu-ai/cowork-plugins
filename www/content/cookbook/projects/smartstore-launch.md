@@ -52,20 +52,20 @@ tags: [cookbook, projects, commerce]
 
 ```mermaid
 flowchart TD
-    U["지은 님<br/>'우드윅 캔들 런칭'"] --> S1["셀러<br/>시장조사 · 상품명"]
-    S1 --> R1["상세페이지<br/>구성안 + 문구"]
-    R1 --> M1["마케터<br/>content-sns-content"]
-    M1 --> R2["SNS 게시물 5종<br/>+ 홍보 이미지"]
-    R1 --> C1["CS매니저<br/>business-kb-article"]
-    C1 --> R3["FAQ 10문항<br/>+ 톡톡 응대 문구"]
-    R2 --> OUT["런칭 패키지 완성"]
-    R3 --> OUT
+   U["지은 님<br/>'우드윅 캔들 런칭'"] --> S1["셀러<br/>시장조사 · 상품명"]
+   S1 --> R1["상세페이지<br/>구성안 + 문구"]
+   R1 --> M1["마케터<br/>content-sns-content"]
+   M1 --> R2["SNS 게시물 5종<br/>+ 홍보 이미지"]
+   R1 --> C1["CS매니저<br/>business-kb-article"]
+   C1 --> R3["FAQ 10문항<br/>+ 톡톡 응대 문구"]
+   R2 --> OUT["런칭 패키지 완성"]
+   R3 --> OUT
 
-    style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style R1 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style R2 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style R3 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style OUT fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+   style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style R1 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style R2 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style R3 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style OUT fill:#d6e7de,stroke:#3d7d5f,stroke-width:2px,color:#09110f
 ```
 
 ## 4. 결과물
@@ -81,7 +81,7 @@ flowchart TD
 
 {{< hint type="note" >}}
 **잘 안 될 때 — SNS 문구가 상세페이지 톤과 따로 놉니다.**
-단계 사이에 시간이 지나 맥락이 끊긴 경우입니다. 마케터 단계에서 "위 상세페이지 문구의 톤 그대로"라고 명시하거나, 상세페이지 문구 파일을 다시 첨부해 기준을 고정하세요. 브랜드 말투 규칙(해요체, 금지 표현 등)을 한 줄로 정리해두면 어느 직원에게든 재사용할 수 있습니다.
+단계 사이에 시간이 지나 맥락이 끊긴 경우입니다. 마케터 단계에서 "위 상세페이지 문구의 톤 그대로"라고 명시하거나 상세페이지 문구 파일을 다시 첨부해 기준을 고정하세요. 브랜드 말투 규칙(해요체, 금지 표현 등)을 한 줄로 정리해두면 어느 직원에게든 재사용할 수 있습니다.
 {{< /hint >}}
 
 ## 6. 응용

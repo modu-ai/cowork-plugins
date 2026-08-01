@@ -9,26 +9,26 @@ tags: [cookbook, foundations]
 
 ```mermaid
 flowchart TD
-    A["① Cowork 정체성"] --> B["② 핵심 기능"]
-    B --> C["③ 프로젝트·메모리"]
-    C --> D["④ 플러그인·스킬"]
-    D --> E["⑤ MCP 커넥터"]
-    E --> F["⑥ 프롬프트 5원칙"]
-    F --> G["⑦ 예약 작업"]
-    G --> H["⑧ 실전 TOP 10"]
-    H --> I["⑨ 보안"]
-    I --> J["⑩ 비용 최적화"]
-    J --> K["⑪ 초기 설정"]
+   A["① Cowork 정체성"] --> B["② 핵심 기능"]
+   B --> C["③ 프로젝트·메모리"]
+   C --> D["④ 플러그인·스킬"]
+   D --> E["⑤ MCP 커넥터"]
+   E --> F["⑥ 프롬프트 5원칙"]
+   F --> G["⑦ 예약 작업"]
+   G --> H["⑧ 실전 TOP 10"]
+   H --> I["⑨ 보안"]
+   I --> J["⑩ 비용 최적화"]
+   J --> K["⑪ 초기 설정"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style K fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style K fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 검증된 11개 영역 — 정체성·기능·프로젝트·플러그인·MCP·프롬프트·스케줄·실전 사례·보안·비용·초기 설정 — 을 순서대로 다룹니다.
 
 ## 1. Cowork란 무엇인가
 
-Claude Cowork는 Claude Desktop에서 작동하는 **에이전틱 AI 작업 플랫폼**입니다. Claude Code의 에이전틱 아키텍처를 그대로 가져왔지만, 코딩이 아닌 **지식 업무(knowledge work)** 에 최적화된 사용자 경험을 얹었습니다.
+Claude Cowork는 Claude Desktop에서 작동하는 **에이전틱 AI 작업 플랫폼**입니다. Claude Code의 에이전틱 아키텍처를 그대로 가져왔지만 코딩이 아닌 **지식 업무(knowledge work)** 에 최적화된 사용자 경험을 얹었습니다.
 
 ### Chat 모드와의 핵심 차이
 
@@ -47,7 +47,7 @@ Cowork는 2026-01-30 리서치 프리뷰로 공개된 뒤 **2026-02 macOS/Window
 
 - [로컬 파일 접근](/cowork/first-task/)
 - [컴퓨터 제어](/cowork/computer-use/)
-- [문서 자동 생성](../../plugins/moai-office/)
+- [문서 자동 생성](/moai-agents/officer/)
 - [예약 작업](/cowork/schedule/)
 - [프로젝트 메모리](/cowork/projects-memory/)
 - [플러그인·MCP](/cowork/plugins/)
@@ -80,21 +80,21 @@ API 기반 커넥터가 가장 빠르고 안정적이며, Computer Use는 최후
 
 ```mermaid
 flowchart TD
-    H["👑 Cowork 본체<br/>(헤드 셰프)"] --> W1["서브 에이전트 A<br/>파일 1 분석"]
-    H --> W2["서브 에이전트 B<br/>파일 2 분석"]
-    H --> W3["서브 에이전트 C<br/>파일 3 분석"]
-    H --> WN["서브 에이전트 N<br/>파일 N 분석"]
-    W1 --> R["결과 합치기<br/>(헤드 셰프가 취합)"]
-    W2 --> R
-    W3 --> R
-    WN --> R
+   H["Cowork 본체<br/>(헤드 셰프)"] --> W1["서브 에이전트 A<br/>파일 1 분석"]
+   H --> W2["서브 에이전트 B<br/>파일 2 분석"]
+   H --> W3["서브 에이전트 C<br/>파일 3 분석"]
+   H --> WN["서브 에이전트 N<br/>파일 N 분석"]
+   W1 --> R["결과 합치기<br/>(헤드 셰프가 취합)"]
+   W2 --> R
+   W3 --> R
+   WN --> R
 
-    style H fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style W1 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style W2 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style W3 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style WN fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style R fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style H fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style W1 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style W2 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style W3 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style WN fill:#e6e6e6,stroke:#757575,color:#09110f
+   style R fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 ## 3. 프로젝트와 메모리
@@ -126,11 +126,11 @@ flowchart TD
 
 ### 플러그인 = 스킬 + 커넥터 + 서브 에이전트 패키지
 
-`cowork-plugins`는 이 패키지 모델을 따라 만들어진 28개 공식 플러그인(178 스킬) 저장소입니다.
+`moai-cowork`는 이 패키지 모델을 따라 만들어진 {{< catalog-count plugins >}}개 공식 플러그인({{< catalog-count skills >}} 스킬) 저장소입니다.
 
 설치 순서:
 
-1. **마켓플레이스 추가** — Cowork → **사용자 지정(Customize)** → **개인 플러그인(Plugins)** → "+" → URL 입력: `modu-ai/cowork-plugins`
+1. **마켓플레이스 추가** — Cowork → **사용자 지정(Customize)** → **개인 플러그인(Plugins)** → "+" → URL 입력: `modu-ai/moai-cowork`
 2. **플러그인 선택·설치** — 목록에서 필요한 플러그인에 "Add plugin" 버튼을 누릅니다.
 
 ### 스킬 vs 플러그인
@@ -146,7 +146,7 @@ flowchart TD
 
 ### MCP 커넥터: 외부 서비스에 안전하게 닿는 컨시어지 데스크
 
-MCP(Model Context Protocol) 커넥터는 Cowork가 외부 서비스에 접근하는 **유일한 공식 통로**입니다. "엔드포인트", "OAuth 인증" 같은 단어가 어렵게 들리지만, 호텔 컨시어지 데스크에 비유하면 한눈에 들어옵니다. Cowork는 호텔 투숙객이고, MCP 커넥터는 컨시어지 데스크입니다.
+MCP(Model Context Protocol) 커넥터는 Cowork가 외부 서비스에 접근하는 **유일한 공식 통로**입니다. "엔드포인트", "OAuth 인증" 같은 단어가 어렵게 들리지만 호텔 컨시어지 데스크에 비유하면 한눈에 들어옵니다. Cowork는 호텔 투숙객이고, MCP 커넥터는 컨시어지 데스크입니다.
 
 투숙객이 주방·세탁실·예약팀을 직접 돌아다니며 부탁하지 않듯, Cowork도 Slack 서버·Google 캘린더·Notion 데이터베이스 같은 외부 서비스에 직접 들어가지 않습니다. 대신 컨시어지에게 "Slack 메시지 좀 읽어줘", "캘린더 다음 주 회의 정리해줘"라고 말하면, 컨시어지가 각 부서(서비스)에 안전하게 연결해 줍니다. 이때 API 키와 비밀번호는 컨시어지 금고에 안전하게 보관되어, 투숙객(Cowork)이 직접 들고 다니지 않아도 됩니다. 이것이 "유일한 공식 통로"라는 말의 의미입니다 — 임의로 외부 서비스에 접근하는 게 아니라, 정해진 통로를 통해서만, 안전하게 접근한다는 뜻입니다.
 
@@ -154,26 +154,26 @@ OAuth(오스) 인증은 이 컨시어지 데스크에 투숙객 신원을 확인
 
 ```mermaid
 flowchart LR
-    G["🧑 Cowork<br/>(투숙객)"] -->|"요청"| C["🛎️ MCP 커넥터<br/>(컨시어지 데스크)"]
-    C -->|"금고 보관"| K["🔑 API 키·비밀번호"]
-    C --> S1["Slack<br/>(메시지)"]
-    C --> S2["Google Calendar<br/>(일정)"]
-    C --> S3["Notion<br/>(문서·DB)"]
-    C --> S4["Gmail<br/>(이메일)"]
-    S1 --> R["결과 반환"]
-    S2 --> R
-    S3 --> R
-    S4 --> R
-    R --> G
+   G["Cowork<br/>(투숙객)"] -->|"요청"| C["MCP 커넥터<br/>(컨시어지 데스크)"]
+   C -->|"금고 보관"| K["API 키·비밀번호"]
+   C --> S1["Slack<br/>(메시지)"]
+   C --> S2["Google Calendar<br/>(일정)"]
+   C --> S3["Notion<br/>(문서·DB)"]
+   C --> S4["Gmail<br/>(이메일)"]
+   S1 --> R["결과 반환"]
+   S2 --> R
+   S3 --> R
+   S4 --> R
+   R --> G
 
-    style G fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style C fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style K fill:#f4e4d4,stroke:#b06a3a,color:#09110f
-    style S1 fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style S2 fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style S3 fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style S4 fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style R fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+   style G fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style C fill:#e6e6e6,stroke:#757575,color:#09110f
+   style K fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style S1 fill:#e8f1ec,stroke:#265240,color:#09110f
+   style S2 fill:#e8f1ec,stroke:#265240,color:#09110f
+   style S3 fill:#e8f1ec,stroke:#265240,color:#09110f
+   style S4 fill:#e8f1ec,stroke:#265240,color:#09110f
+   style R fill:#d6e7de,stroke:#3d7d5f,color:#09110f
 ```
 
 설정 순서:
@@ -204,27 +204,27 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    subgraph Chat["Chat 사고방식 (마이크로매니저)"]
-        direction TB
-        C1["버튼을 누르고"]
-        C2["B열을 복사하고"]
-        C3["새 시트를 열고"]
-        C4["합계를 구하고"]
-        C5["차트를 만들어줘"]
-        C1 --> C2 --> C3 --> C4 --> C5
-    end
+   subgraph Chat["Chat 사고방식 (마이크로매니저)"]
+       direction TB
+       C1["버튼을 누르고"]
+       C2["B열을 복사하고"]
+       C3["새 시트를 열고"]
+       C4["합계를 구하고"]
+       C5["차트를 만들어줘"]
+       C1 --> C2 --> C3 --> C4 --> C5
+   end
 
-    subgraph Cowork["Cowork 사고방식 (위임)"]
-        W1["💬 결과만 한 줄<br/>'지출 범주별 Word 보고서'"]
-        W2["🤖 Cowork가<br/>어떻게는 스스로 결정"]
-        W3["📄 완성된 보고서"]
-        W1 --> W2 --> W3
-    end
+   subgraph Cowork["Cowork 사고방식 (위임)"]
+       W1["결과만 한 줄<br/>'지출 범주별 Word 보고서'"]
+       W2["Cowork가<br/>어떻게는 스스로 결정"]
+       W3["완성된 보고서"]
+       W1 --> W2 --> W3
+   end
 
-    style Chat fill:#f4e4e4,stroke:#b03a3a,color:#09110f
-    style Cowork fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style W1 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style W3 fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+   style Chat fill:#f5dcd7,stroke:#c44a3a,color:#09110f
+   style Cowork fill:#e8f1ec,stroke:#265240,color:#09110f
+   style W1 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style W3 fill:#d6e7de,stroke:#3d7d5f,color:#09110f
 ```
 
 ### 원칙 1 — 결과 지향
@@ -232,20 +232,20 @@ flowchart LR
 단계별 조작 명령은 Chat 시절의 유산입니다. Cowork에서는 목표만 쓰세요.
 
 {{< terminal title="claude — cowork" >}}
-> ❌ "파일을 열어 B열을 복사한 뒤 새 시트에 붙여넣고 합계를 구한 다음 차트를 만들어줘"
+> {{< icon circle-x >}} "파일을 열어 B열을 복사한 뒤 새 시트에 붙여넣고 합계를 구한 다음 차트를 만들어줘"
 
-> ✅ "이 스프레드시트를 분석해서 지출 범주별 Word 보고서를 만들어줘.
+> {{< icon circle-check >}} "이 스프레드시트를 분석해서 지출 범주별 Word 보고서를 만들어줘.
      요약과 상위 5개 항목 테이블을 포함해"
 {{< /terminal >}}
 
 ### 원칙 2 — 구체성
 
 {{< terminal title="claude — cowork" >}}
-> ❌ "내 파일 봐줘"
-> ✅ "~/Documents/sales_2026.xlsx 파일을 분석해줘"
+> {{< icon circle-x >}} "내 파일 봐줘"
+> {{< icon circle-check >}} "~/Documents/sales_2026.xlsx 파일을 분석해줘"
 
-> ❌ "템플릿 사용해줘"
-> ✅ "template_v3.docx 양식 사용해줘"
+> {{< icon circle-x >}} "템플릿 사용해줘"
+> {{< icon circle-check >}} "template_v3.docx 양식 사용해줘"
 {{< /terminal >}}
 
 ### 원칙 3 — 참고 자료 직접 연결
@@ -367,7 +367,7 @@ Cowork는 Chat보다 토큰 사용량이 많습니다. 아래 6가지 전략으�
 ### Step 3 — 확장 기능
 
 ```
-[ ] 필요 플러그인 설치 (cowork-plugins 마켓플레이스)
+[ ] 필요 플러그인 설치 (모두의 코워크 마켓플레이스)
 [ ] MCP 커넥터 연결 (Slack / Drive / Notion 등)
 [ ] Chrome 확장 설치 (웹 자동화 필요 시)
 [ ] 권한 검증·테스트
@@ -389,6 +389,6 @@ Cowork는 Chat보다 토큰 사용량이 많습니다. 아래 6가지 전략으�
 ---
 
 ### Sources
-- [modu-ai/cowork-plugins](https://github.com/modu-ai/cowork-plugins)
+- [modu-ai/moai-cowork](https://github.com/modu-ai/moai-cowork)
 - [Claude Docs — Cowork](https://docs.claude.com/en/docs/claude-cowork/overview)
 - [Anthropic — Claude Agent SDK](https://www.anthropic.com/claude-code)

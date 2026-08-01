@@ -13,10 +13,10 @@ aliases: ["/agent-teams/tutor/"]
 
 ```mermaid
 flowchart LR
-    A["요청<br/>(8주 커리큘럼 짜줘)"] --> B["스킬 매칭"]
-    B --> C["curriculum-designer<br/>설계·제작"]
-    C --> D["assessment-auditor<br/>문항·인용 검수"]
-    D --> E["산출물<br/>(커리큘럼·문항·논문 초고)"]
+   A["요청<br/>(8주 커리큘럼 짜줘)"] --> B["스킬 매칭"]
+   B --> C["curriculum-designer<br/>설계·제작"]
+   C --> D["assessment-auditor<br/>문항·인용 검수"]
+   D --> E["산출물<br/>(커리큘럼·문항·논문 초고)"]
 ```
 
 ## 스킬 카탈로그

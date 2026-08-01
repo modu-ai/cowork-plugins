@@ -13,10 +13,10 @@ aliases: ["/agent-teams/career/"]
 
 ```mermaid
 flowchart LR
-    A["요청<br/>(이력서 첨삭해줘)"] --> B["스킬 매칭"]
-    B --> C["career-coach<br/>작성·코칭"]
-    C --> D["resume-auditor<br/>과장·근거 검수"]
-    D --> E["산출물<br/>(이력서·면접 준비안)"]
+   A["요청<br/>(이력서 첨삭해줘)"] --> B["스킬 매칭"]
+   B --> C["career-coach<br/>작성·코칭"]
+   C --> D["resume-auditor<br/>과장·근거 검수"]
+   D --> E["산출물<br/>(이력서·면접 준비안)"]
 ```
 
 ## 스킬 카탈로그

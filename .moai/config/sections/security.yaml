@@ -1,0 +1,20 @@
+security:
+    extra_ask_patterns: []
+    extra_dangerous_bash_patterns:
+        - curl\s+.*\|\s*(ba)?sh
+        - wget\s+.*\|\s*(ba)?sh
+        - chmod\s+777
+        - rm\s+-rf\s+/[^.]
+        - mkfs\.
+        - dd\s+if=.*of=/dev/
+    extra_deny_patterns: []
+    extra_sensitive_content_patterns: []
+    permission:
+        pre_allowlist: []
+        session_rules: []
+        strict_mode: true
+    sandbox:
+        docker_image: alpine:latest
+        env_scrub_extra: []
+        network_allowlist: []
+        required: false

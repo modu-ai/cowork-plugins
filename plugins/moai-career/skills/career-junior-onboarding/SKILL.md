@@ -7,7 +7,7 @@ description: >
   입사 전 준비 → 첫 90일 정보 비대칭 해소 → 질문 3요소 프레임 → 보고 기술 →
   사수 없이 성장하기 → 생산성 로드맵까지 단계별 워크플로우와 90일 온보딩 플랜,
   질문 템플릿, 셀프 온보딩 체크리스트를 제공합니다.
-version: "0.1.0"
+version: "1.0.0"
 metadata:
   category: 커리어
 ---
@@ -134,3 +134,12 @@ metadata:
 ## 함께 쓰면 좋은 스킬
 
 이직·전직 전략은 `moai-career:career-transition-strategist`, 자소서·이력서는 `moai-career:business-resume-builder`, 면접 준비는 `moai-career:business-interview-coach`와 함께 사용하세요.
+
+## 관련 스킬 (후처리 체인)
+
+입력(근로계약서·급여명세서 등)에 개인정보가 포함되면 `moai-coworker:general-ai-slop-reviewer`의 `references/kr-pii-masking.md` 규칙으로 마스킹 후 처리한다.
+
+온보딩 코칭 서술·질문 카드 문안 등 문장 산출물을 작성한 뒤에는 아래 체인으로 마무리한다.
+
+- **moai-coworker:general-ai-slop-reviewer**: AI 티 나는 표현·과장·상투구 검수·수정 (필수)
+- **moai-writer:general-humanize-korean**: 한국어 자연스러움 보정 — 슬롭 검수 다음 (필수)

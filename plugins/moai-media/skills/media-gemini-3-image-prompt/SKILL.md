@@ -10,7 +10,7 @@ description: |
   - "/media-gemini-3-image-prompt" (직접 호출)
 
   이미지 자동 생성은 페어 스킬 media-higgsfield-image(Higgsfield MCP, Nano Banana Pro 포함)를 사용하세요. 본 스킬은 프롬프트 텍스트 산출 전용입니다.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # Gemini 3 Pro Image Prompt Builder — 5-Component + 3-모델 동시 출력
@@ -68,16 +68,18 @@ Gemini 이미지 프롬프트 나노바나나 프롬프트 Nano Banana Pro 프�
 
 `AskUserQuestion`을 호출해 4개 프리셋 중 1개를 선택받습니다.
 
-| 프리셋 | 적용 케이스 | references |
+프리셋 슬롯 정의는 3개 이미지 프롬프트 빌더(gpt-image-2·gemini·midjourney)가 **공유하는 단일 원본**을 사용합니다. 원본은 `media-gpt-image-2-prompt` 스킬에 있으며, 각 프리셋 파일 안에 GPT·Gemini·Midjourney 세 모델의 어조 변환 가이드가 모두 포함되어 있습니다.
+
+| 프리셋 | 적용 케이스 | 공유 슬롯 원본 |
 |---|---|---|
-| 제품샷 (권장) | 커머스 상품, 패키지 컷, 보석·시계 클로즈업 | `presets/product-shot.md` |
-| 인물·캐릭터 | 인물 포트레이트, 페르소나, 광고 모델 | `presets/portrait.md` |
-| 일러스트·아트 | 카드뉴스 일러스트, 책 표지, 컨셉 아트 | `presets/illustration.md` |
-| 풍경·환경 | 배경 이미지, 시네마틱 배경, 여행 컷 | `presets/landscape.md` |
+| 제품샷 (권장) | 커머스 상품, 패키지 컷, 보석·시계 클로즈업 | `${CLAUDE_PLUGIN_ROOT}/skills/media-gpt-image-2-prompt/presets/product-shot.md` |
+| 인물·캐릭터 | 인물 포트레이트, 페르소나, 광고 모델 | `${CLAUDE_PLUGIN_ROOT}/skills/media-gpt-image-2-prompt/presets/portrait.md` |
+| 일러스트·아트 | 카드뉴스 일러스트, 책 표지, 컨셉 아트 | `${CLAUDE_PLUGIN_ROOT}/skills/media-gpt-image-2-prompt/presets/illustration.md` |
+| 풍경·환경 | 배경 이미지, 시네마틱 배경, 여행 컷 | `${CLAUDE_PLUGIN_ROOT}/skills/media-gpt-image-2-prompt/presets/landscape.md` |
 
 ### Round 2 — 프리셋별 미세조정 (3-4 질문)
 
-`presets/<name>.md`의 슬롯 정의를 따릅니다. 본 스킬의 presets/는 media-gpt-image-2-prompt와 동일한 슬롯 데이터를 사용하지만, 모델별 어조 변환 가이드는 Gemini Creative Director 어조로 자동 변환됩니다.
+위 공유 슬롯 원본(`${CLAUDE_PLUGIN_ROOT}/skills/media-gpt-image-2-prompt/presets/<name>.md`)의 슬롯 정의를 따릅니다. 슬롯 데이터는 세 모델이 동일하게 사용하며, 본 스킬은 그중 Gemini Creative Director 어조 변환 가이드 섹션을 적용합니다.
 
 ### Round 3 — 화면비 + 텍스트 + 카메라 하드웨어(선택)
 
@@ -223,3 +225,9 @@ Component 5 — [Specific Constraint/Text]
 - [Medium — Testing Gemini 3 Pro Image](https://medium.com/google-cloud/testing-gemini-3-pro-image-f585236ae411)
 
 위 출처를 기반으로 5-component 구조, Thinking/Fast 모드 권장, aspect_ratio 범위, 14 reference images, SynthID 정책, 65K/32K 토큰 제한, Search Grounding 활용을 도출했습니다.
+
+## References
+
+| 파일 | 로드 조건 |
+|------|-----------|
+| references/search-grounding.md | 인포그래픽·지도·통계 그래프 등 실시간 사실 데이터가 필요한 이미지에서 Search Grounding 사용 여부를 판단할 때 |

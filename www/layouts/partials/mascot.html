@@ -1,0 +1,20 @@
+{{- /* 모두의AI 마스코트 (ai-design-system.zip 핸드오프 — 캐릭터 6종 + 기존 3종 하위호환)
+   정서 앵커: hero / empty-state / 404 / footer. 데이터 표·폼·결제 화면 금지 (FROZEN).
+   zip 6종: thinking(고민·로딩) / pointing(안내·CTA) / searching(검색·빈결과) /
+            teaching(튜토리얼·온보딩) / explaining(환웰·설명) / coffee(여유·성공)
+   기존 3종: main / global / alt
+   사용: {{ partial "mascot.html" (dict "variant" "explaining" "size" "120") }} */ -}}
+{{- $variant := .variant | default "explaining" -}}
+{{- $size := .size | default "96" -}}
+{{- $alt := .alt | default "모두의AI 마스코트" -}}
+{{- $zipVariants := dict "thinking" "Thinking" "pointing" "Pointing" "searching" "Searching" "teaching" "Teaching" "explaining" "Explaining" "coffee" "Coffee" "celebrating" "Celebrating" "frustrated" "Frustrated" "inspecting" "Inspecting" -}}
+{{- $src := printf "/mascots/mascot-%s.png" $variant -}}
+{{- $name := index $zipVariants $variant -}}
+{{- if $name -}}
+  {{- $src = printf "/mascots/MoAI-Mascot-%s.png" $name -}}
+{{- end -}}
+<img class="moai-mascot moai-mascot--{{ $variant }} mascot-float"
+     src="{{ $src | relURL }}"
+     alt="{{ $alt }}"
+     width="{{ $size }}" height="{{ $size }}"
+     loading="lazy" decoding="async" />

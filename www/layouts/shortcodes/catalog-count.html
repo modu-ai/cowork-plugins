@@ -1,0 +1,10 @@
+{{- /* 마켓플레이스 정본(data/agent_teams.json)에서 총계를 읽어 온다. 손으로 숫자를 적지 않는다. */ -}}
+{{- $what := .Get 0 | default "skills" -}}
+{{- $emp := hugo.Data.agent_teams.employees -}}
+{{- if eq $what "plugins" -}}
+{{- len $emp -}}
+{{- else if eq $what "agents" -}}
+{{- $n := 0 }}{{ range $emp }}{{ $n = add $n (len .agents) }}{{ end }}{{ $n -}}
+{{- else -}}
+{{- $n := 0 }}{{ range $emp }}{{ $n = add $n .skill_count }}{{ end }}{{ $n -}}
+{{- end -}}

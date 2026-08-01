@@ -1,0 +1,31 @@
+{{- /* ══════════════════════════════════════════════════════════════
+       geekdoc head/others 프로젝트 오버라이드 — 메인 CSS 차단.
+
+       테마 원본(themes/hugo-geekdoc/layouts/partials/head/others.html)은
+       main.scss / mobile.scss / print.scss / custom.css 를 로드한다.
+       이 오버라이드는 그 4개를 전부 로드하지 않는다 — 사이트 스타일의
+       뼈대는 디자인 시스템 CSS(head/custom.html)가 단독으로 제공한다.
+
+       주의: 테마 업데이트 후 이 파일이 살아있는지 반드시 확인할 것.
+         이 파일이 사라지면 geekdoc 뼈대 CSS가 되살아나 DS와 충돌한다.
+       SSOT: CLAUDE.local.md § CSS 구조
+
+       유지하는 것: geekdoc JS(검색·메뉴 동작), 출력 포맷 link, base href.
+       버리는 것  : main/mobile/print/custom CSS, Metropolis·LiberationSans
+                    폰트 preload(DS 폰트가 아님 — CLAUDE.local.md § 폰트).
+       ══════════════════════════════════════════════════════════════ */ -}}
+
+{{- if default true .Site.Params.geekdocDarkModeToggle }}
+  <script src="{{ index (index hugo.Data.assets "colortheme.js") "src" | relURL }}"></script>
+{{- end }}
+<script src="{{ index (index hugo.Data.assets "main.js") "src" | relURL }}"></script>
+
+{{- with .OutputFormats.Get "html" }}
+  {{ printf `<link href=%q rel=%q type=%q />` .Permalink .Rel .MediaType.Type | safeHTML }}
+{{- end }}
+
+{{- if (default false $.Site.Params.geekdocOverwriteHTMLBase) }}
+  <base href="{{ .Site.Home.Permalink }}" />
+{{- end }}
+
+{{ printf "<!-- %s -->" "Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc — stylesheet replaced by 모두의AI Design System" | safeHTML }}

@@ -11,31 +11,31 @@ aliases: ["/cowork/troubleshooting/"]
 
 ```mermaid
 flowchart TB
-    START["문제 발생"] --> Q1{"어떤 영역?"}
+   START["문제 발생"] --> Q1{"어떤 영역?"}
 
-    Q1 -- 앱·로그인 --> S1["§1 설치·로그인"]
-    Q1 -- 폴더·파일 --> S2["§2 작업 폴더"]
-    Q1 -- 산출물 품질 --> Q2{"원인?"}
-    Q1 -- 스킬·플러그인 --> Q3{"원인?"}
-    Q1 -- 커넥터·MCP --> S7["§7 커넥터·MCP"]
-    Q1 -- 세션 끊김 --> S8["§8 세션·대화"]
-    Q1 -- 회사 네트워크 --> S10["§10 프록시·방화벽"]
+   Q1 -- 앱·로그인 --> S1["§1 설치·로그인"]
+   Q1 -- 폴더·파일 --> S2["§2 작업 폴더"]
+   Q1 -- 산출물 품질 --> Q2{"원인?"}
+   Q1 -- 스킬·플러그인 --> Q3{"원인?"}
+   Q1 -- 커넥터·MCP --> S7["§7 커넥터·MCP"]
+   Q1 -- 세션 끊김 --> S8["§8 세션·대화"]
+   Q1 -- 회사 네트워크 --> S10["§10 프록시·방화벽"]
 
-    Q2 -- AI 어투 --> FIX1["ai-slop-reviewer 호출"]
-    Q2 -- 길이·부정확 --> FIX2["제약 조건 명시"]
-    Q2 -- 폰트 깨짐 --> FIX3["§4-3 폰트 확인"]
+   Q2 -- AI 어투 --> FIX1["ai-slop-reviewer 호출"]
+   Q2 -- 길이·부정확 --> FIX2["제약 조건 명시"]
+   Q2 -- 폰트 깨짐 --> FIX3["§4-3 폰트 확인"]
 
-    Q3 -- 트리거 약함 --> FIX4["도메인 키워드 포함"]
-    Q3 -- moai-core 누락 --> FIX5["moai-core 설치"]
-    Q3 -- 중복 스킬 --> FIX6["플러그인명 명시"]
+   Q3 -- 트리거 약함 --> FIX4["도메인 키워드 포함"]
+   Q3 -- moai-pm 누락 --> FIX5["moai-pm 설치"]
+   Q3 -- 중복 스킬 --> FIX6["플러그인명 명시"]
 
-    style START fill:#f5dcd7,stroke:#c44a3a,color:#09110f
-    style FIX1 fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style FIX2 fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style FIX3 fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style FIX4 fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style FIX5 fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style FIX6 fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style START fill:#f5dcd7,stroke:#c44a3a,color:#09110f
+   style FIX1 fill:#e8f1ec,stroke:#265240,color:#09110f
+   style FIX2 fill:#e8f1ec,stroke:#265240,color:#09110f
+   style FIX3 fill:#e8f1ec,stroke:#265240,color:#09110f
+   style FIX4 fill:#e8f1ec,stroke:#265240,color:#09110f
+   style FIX5 fill:#e8f1ec,stroke:#265240,color:#09110f
+   style FIX6 fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 ## 빠른 진단표
@@ -59,7 +59,7 @@ flowchart TB
 
 - 앱 버전이 Cowork 지원 버전인지 확인합니다. 메뉴 → "About Claude"에서 버전 확인 후 [공식 다운로드 페이지](https://support.claude.com/en/articles/10065433)에서 최신 빌드로 갱신
 - 앱을 완전 종료 후 재실행 (메뉴 막대 → Quit, Windows는 시스템 트레이 → 종료)
-- 로그인 계정의 요금제가 Cowork를 지원하는지 확인 — Pro·Max·Team·Enterprise. Free는 원칙적으로 미지원이며, 지역에 따라 순차 출시
+- 로그인 계정의 요금제가 Cowork를 지원하는지 확인 — Pro·Max·Team·Enterprise. Free는 원칙적으로 미지원이며 지역에 따라 순차 출시
 - Team·Enterprise 사용자는 관리자가 Admin Settings → Capabilities에서 **Cowork를 활성화**했는지 확인
 
 ### 1-2. 로그인 후 빈 화면 또는 무한 로딩
@@ -119,7 +119,7 @@ Windows는 기본 경로 길이 한계가 260자입니다. 한글 폴더명·긴
 
 ### 4-2. AI 어투가 남음
 
-체인 마지막에 `moai-core:ai-slop-reviewer`가 호출되지 않은 경우입니다. 후속 메시지로 명시합니다.
+체인 마지막에 `moai-coworker:general-ai-slop-reviewer`가 호출되지 않은 경우입니다. 후속 메시지로 명시합니다.
 
 {{< terminal title="claude — cowork" >}}
 > "방금 결과물을 ai-slop-reviewer로 한 번 더 다듬어줘."
@@ -127,10 +127,10 @@ Windows는 기본 경로 길이 한계가 260자입니다. 한글 폴더명·긴
 
 ### 4-3. 한글 폰트가 깨진 PPT/Word
 
-- `moai-office` 플러그인이 설치되어 있는지 확인 — 좌측 사이드바 → 사용자 지정 → 설치 목록
+- `moai-officer` 플러그인이 설치되어 있는지 확인 — 좌측 사이드바 → 사용자 지정 → 설치 목록
 - 시스템에 한국어 폰트(Pretendard, Noto Sans KR, 맑은 고딕)가 설치되어 있는지 확인 — 일부 PPT/HWPX는 시스템 폰트를 임베드
-- HWPX(한글)는 별도 의존성이 필요 — `moai-office` 페이지의 안내 참고
-- PDF는 `moai-office:pdf-writer`가 Noto Sans CJK를 자동 다운로드하므로 별도 폰트 설치 불필요
+- HWPX(한글)는 별도 의존성이 필요 — `moai-officer` 페이지의 안내 참고
+- PDF는 `moai-officer:office-pdf-writer`가 Noto Sans CJK를 자동 다운로드하므로 별도 폰트 설치 불필요
 
 ## 5. 스킬·플러그인이 자동으로 호출 안 됨
 
@@ -144,9 +144,9 @@ Windows는 기본 경로 길이 한계가 260자입니다. 한글 폴더명·긴
 - 그래도 안 되면 명시적 호출: "**반드시 strategy-planner 스킬을 사용해서 만들어줘**"
 - 일부 스킬은 슬래시로 직접 부를 수 있음 — 좌측 명령 팔레트에 노출되는 경우
 
-### 5-2. moai-core가 미설치
+### 5-2. moai-pm이 미설치
 
-`moai-core`에는 도메인 라우터·AI 슬롭 검수기가 포함됩니다. 다른 플러그인만 설치하고 라우터가 없으면 자동 체이닝이 약해집니다.
+`moai-pm`의 `/project`가 프로젝트 폴더에 어떤 직원을 배치할지와 스킬 체인을 `CLAUDE.md`에 기록합니다. 이 초기화를 건너뛰면 요청이 어느 직원에게 갈지 매번 다시 판단해야 해서 자동 체이닝이 약해집니다. AI 슬롭 검수는 `moai-coworker`의 `general-ai-slop-reviewer`입니다.
 
 - 사용자 지정 → 설치 목록에서 **moai**(코어)가 활성화되어 있는지 확인
 - 누락되어 있다면 설치 후 새 대화에서 다시 시도
@@ -156,7 +156,7 @@ Windows는 기본 경로 길이 한계가 260자입니다. 한글 폴더명·긴
 여러 마켓플레이스를 추가했거나 조직(enterprise)·개인(personal)·프로젝트 레벨에 동일 이름 스킬이 있으면 한쪽이 가려질 수 있습니다.
 
 - 사용자 지정 → 설치 목록에서 동일 이름 중복 확인
-- 명시적으로 부르려면 "moai-content의 blog 스킬로 작성해줘"처럼 **플러그인 이름**을 같이 명시
+- 명시적으로 부르려면 "moai-marketer의 blog 스킬로 작성해줘"처럼 **플러그인 이름**을 같이 명시
 
 ### 5-4. 요청문이 너무 짧거나 모호
 
@@ -169,22 +169,22 @@ Windows는 기본 경로 길이 한계가 260자입니다. 한글 폴더명·긴
 
 ### 6-1. 마켓플레이스 추가가 안 됨
 
-- 마켓플레이스 URL 형식 확인 — 커뮤니티는 보통 `org/repo` 형식 (예: `modu-ai/cowork-plugins`)
+- 마켓플레이스 URL 형식 확인 — 커뮤니티는 보통 `org/repo` 형식 (예: `modu-ai/moai-cowork`)
 - 회사 네트워크에서 GitHub가 차단된 경우 — IT 팀에 `github.com` 접근 요청 ([§10](#10-회사-프록시방화벽))
 - Team·Enterprise: 관리자가 마켓플레이스 추가를 제한했을 수 있음 — 관리자에게 승인 요청
 
 ### 6-2. 설치 후 슬래시 명령·기능이 안 보임
 
 - **앱을 완전 종료 후 재실행** — 일부 플러그인은 재기동 후 활성화
-- 마켓플레이스 갱신: 사용자 지정 → 마켓플레이스 → cowork-plugins 옆 **갱신** 버튼
+- 마켓플레이스 갱신: 사용자 지정 → 마켓플레이스 → moai-cowork 옆 **갱신** 버튼
 - 신규 버전이 적용되지 않으면 **플러그인 상세 페이지에 재진입**해 새 버전이 표시되는지 확인
 
 ### 6-3. 신버전 출시 후 신규 스킬이 안 나옴
 
-cowork-plugins는 커뮤니티 마켓플레이스이므로 자동 업데이트가 OFF입니다. 사용자 측에서 직접 갱신해야 합니다.
+모두의 코워크는 커뮤니티 마켓플레이스이므로 자동 업데이트가 OFF입니다. 사용자 측에서 직접 갱신해야 합니다.
 
 {{< terminal title="claude — cowork" raw="true" >}}
-> 사용자 지정 → 마켓플레이스 → cowork-plugins → 갱신
+> 사용자 지정 → 마켓플레이스 → moai-cowork → 갱신
 {{< /terminal >}}
 
 그래도 신규 스킬이 안 나타나면 해당 플러그인을 **삭제 후 재설치**합니다.
@@ -275,7 +275,7 @@ cowork-plugins는 커뮤니티 마켓플레이스이므로 자동 업데이트�
 - 시스템 한도(컨텍스트, 플랜 가용성, 권한 정책 등) 의심 시 [제약과 한도](../constraints/) 참조
 - 플러그인·체인 레이어 문제라면 [쿡북 — 트러블슈팅](../../cookbook/troubleshooting/)으로 이동
 - Anthropic 공식 지원: [support.claude.com](https://support.claude.com)
-- 커뮤니티 마켓플레이스 이슈: [modu-ai/cowork-plugins Issues](https://github.com/modu-ai/cowork-plugins/issues) — 증상·OS·앱 버전·플러그인 목록을 함께 등록
+- 커뮤니티 마켓플레이스 이슈: [modu-ai/moai-cowork Issues](https://github.com/modu-ai/moai-cowork/issues) — 증상·OS·앱 버전·플러그인 목록을 함께 등록
 
 ---
 
@@ -292,4 +292,4 @@ cowork-plugins는 커뮤니티 마켓플레이스이므로 자동 업데이트�
 - [Cowork research preview 공지](https://claude.com/blog/cowork-research-preview)
 - [1M Context GA 공지](https://claude.com/blog/1m-context-ga)
 - [Anthropic 지원센터](https://support.claude.com)
-- [modu-ai/cowork-plugins Issues](https://github.com/modu-ai/cowork-plugins/issues)
+- [modu-ai/moai-cowork Issues](https://github.com/modu-ai/moai-cowork/issues)

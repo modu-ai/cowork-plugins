@@ -14,7 +14,7 @@ tags: [cookbook]
 
 기능 하나를 소개하는 레시피를 넘어, 전문가 AI 직원 여러 명을 릴레이로 조합해 **실제 문제 하나를 끝까지 해결하는 여정**을 담은 프로젝트 모음이 추가되었습니다. 창업 타당성 검증, 스마트스토어 런칭, 계약서 리스크 보고, 이직 준비 4주 플랜까지 — 구체적인 인물의 문제 상황에서 출발해 어느 직원의 어느 스킬을 어떤 순서로 투입하는지 따라갑니다.
 
-➡️ **[코워크 프로젝트 (12개 프로젝트 레시피)](./projects/)** — 창업·운영 · 마케팅·콘텐츠 · 사무·문서 · 사람·커리어
+{{< icon arrow-right >}} **[코워크 프로젝트 (12개 프로젝트 레시피)](./projects/)** — 창업·운영 · 마케팅·콘텐츠 · 사무·문서 · 사람·커리어
 
 ## 사용 방식
 
@@ -30,24 +30,24 @@ tags: [cookbook]
 
 ```mermaid
 flowchart TD
-    U["사용자 한 줄 요청<br/>'해산물 코스로 부탁해'"] --> W{"AskUserQuestion<br/>맥락 수집"}
-    W -- "알러지? 매운 정도?" --> K["주방 — 스킬 체인<br/>재료손질 → 조리 → 플레이팅"]
-    K --> P["완성된 산출물<br/>(파일 · 문서)"]
+   U["사용자 한 줄 요청<br/>'해산물 코스로 부탁해'"] --> W{"AskUserQuestion<br/>맥락 수집"}
+   W -- "알러지? 매운 정도?" --> K["주방 — 스킬 체인<br/>재료손질 → 조리 → 플레이팅"]
+   K --> P["완성된 산출물<br/>(파일 · 문서)"]
 
-    style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style W fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style K fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style P fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+   style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style W fill:#e6e6e6,stroke:#757575,color:#09110f
+   style K fill:#e8f1ec,stroke:#265240,color:#09110f
+   style P fill:#d6e7de,stroke:#3d7d5f,stroke-width:2px,color:#09110f
 ```
 
 ```mermaid
 flowchart TD
-    A["1. 한 줄 자연어 요청"] --> B["2. AskUserQuestion"] --> C["3. 스킬 체이닝"] --> D["4. 산출물"]
-    style A fill:#fbf0dc,stroke:#c47b2a
-    style C fill:#e6f0ef,stroke:#144a46
+   A["1. 한 줄 자연어 요청"] --> B["2. AskUserQuestion"] --> C["3. 스킬 체이닝"] --> D["4. 산출물"]
+   style A fill:#fbf0dc,stroke:#c47b2a
+   style C fill:#e8f1ec,stroke:#265240
 ```
 
-➡️ **[사용 패턴 가이드 (4가지 표준 패턴)](../cowork/patterns/)** — 단일 프롬프트 · 멀티턴 대화 · 배치 처리 · 스케줄 자동화
+{{< icon arrow-right >}} **[사용 패턴 가이드 (4가지 표준 패턴)](../cowork/patterns/)** — 단일 프롬프트 · 멀티턴 대화 · 배치 처리 · 스케줄 자동화
 
 ## 어디서 시작하나요?
 
@@ -59,7 +59,7 @@ flowchart TD
 
 각 예제는 다음 구성으로 제공합니다.
 
-- **사용자 입력** — 한 줄 자연어 요청 (✅ 권장 패턴)
+- **사용자 입력** — 한 줄 자연어 요청 ({{< icon circle-check >}} 권장 패턴)
 - **시스템 인터뷰** — AskUserQuestion이 묻는 항목
 - **자동 체인** — 시스템이 호출하는 스킬 순서 (mermaid)
 - **산출물** — 최종 결과물 미리보기
@@ -74,21 +74,21 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    R["레시피 한 페이지<br/>(모든 쿡북 예제 공통)"]
-    R --> S1["① 사용자 입력<br/>요리 주문 (한 줄)"]
-    R --> S2["② 시스템 인터뷰<br/>웨이터 확인 질문"]
-    R --> S3["③ 자동 체인<br/>조리 순서도"]
-    R --> S4["④ 산출물<br/>완성 사진"]
-    R --> S5["⑤ 변형 시나리오<br/>다른 맛 내는 팁"]
-    R --> S6["⑥ 자주 겪는 이슈<br/>실패 대응서"]
+   R["레시피 한 페이지<br/>(모든 쿡북 예제 공통)"]
+   R --> S1["① 사용자 입력<br/>요리 주문 (한 줄)"]
+   R --> S2["② 시스템 인터뷰<br/>웨이터 확인 질문"]
+   R --> S3["③ 자동 체인<br/>조리 순서도"]
+   R --> S4["④ 산출물<br/>완성 사진"]
+   R --> S5["⑤ 변형 시나리오<br/>다른 맛 내는 팁"]
+   R --> S6["⑥ 자주 겪는 이슈<br/>실패 대응서"]
 
-    style R fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style S1 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style S2 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style S3 fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style S4 fill:#d6ebe7,stroke:#1c7c70,color:#09110f
-    style S5 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style S6 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
+   style R fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style S1 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style S2 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style S3 fill:#e8f1ec,stroke:#265240,color:#09110f
+   style S4 fill:#d6e7de,stroke:#3d7d5f,color:#09110f
+   style S5 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style S6 fill:#e6e6e6,stroke:#757575,color:#09110f
 ```
 
 ## 먼저 읽으면 좋은 글
@@ -112,9 +112,9 @@ flowchart TD
 
 ## 공통 원칙
 
-- **텍스트 산출물은 무조건 `ai-slop-reviewer`로 마무리합니다.** 보고서·블로그·이메일·자소서·계약서 수정안이 모두 해당합니다.
-- **숫자·차트·코드는 `ai-slop-reviewer`를 생략합니다.** 재무제표 엑셀, 차트 HTML, 스크립트는 검수 대상이 아닙니다.
-- **포맷 변환은 `moai-office`에 위임합니다.** 내용 생성 스킬은 초안만 만들고 `docx-generator` / `xlsx-creator` / `pptx-designer` / `hwpx-writer`가 실제 파일을 만듭니다.
+- **텍스트 산출물은 무조건 `general-ai-slop-reviewer`로 마무리합니다.** 보고서·블로그·이메일·자소서·계약서 수정안이 모두 해당합니다.
+- **숫자·차트·코드는 `general-ai-slop-reviewer`를 생략합니다.** 재무제표 엑셀, 차트 HTML, 스크립트는 검수 대상이 아닙니다.
+- **포맷 변환은 `moai-officer`에 위임합니다.** 내용 생성 스킬은 초안만 만들고 `office-docx-generator` / `office-xlsx-creator` / `office-pptx-designer` / `office-hwpx-writer`가 실제 파일을 만듭니다.
 - **Windows 사용자는 파일명을 짧게 유지합니다.** MAX_PATH(260자) 제한 때문에 `보고서.docx`처럼 짧은 한글 이름을 권장합니다.
 
 ## 세 규칙이 지키는 것 — 맡은 일만 하게 하기
@@ -123,47 +123,47 @@ flowchart TD
 
 첫째, 텍스트 산출물은 **ai-slop-reviewer**라는 맛보기 검수관을 반드시 거칩니다. AI가 쓴 글은 육수가 덜 우러난 듯한 기계적 어투가 남아 있어, 사람이 읽기 좋게 간을 다시 맞춰야 합니다. 보고서·블로그·이메일·자소서·계약서 수정안이 모두 이 단계를 거칩니다.
 
-둋째, 숫자·차트·코드는 맛이 아니라 영양표 같은 것이라 검수할 어투가 없습니다. 재무제표나 차트에 "사람 냄새"를 넣을 필요가 없으므로 `ai-slop-reviewer`를 생략합니다.
+둋째, 숫자·차트·코드는 맛이 아니라 영양표 같은 것이라 검수할 어투가 없습니다. 재무제표나 차트에 "사람 냄새"를 넣을 필요가 없으므로 `general-ai-slop-reviewer`를 생략합니다.
 
-셋째, 요리(내용 생성)와 플레이팅(포맷 변환)은 분업합니다. 내용 생성 스킬은 맛있는 요리 초안만 만들고, **moai-office**의 `docx-generator` / `xlsx-creator` / `pptx-designer` / `hwpx-writer`가 그릇에 담아 실제 파일로 완성합니다. 한 명이 요리와 플레이팅을 동시에 하면 둘 다 흐트러집니다.
+셋째, 요리(내용 생성)와 플레이팅(포맷 변환)은 분업합니다. 내용 생성 스킬은 맛있는 요리 초안만 만들고, **moai-officer**의 `office-docx-generator` / `office-xlsx-creator` / `office-pptx-designer` / `office-hwpx-writer`가 그릇에 담아 실제 파일로 완성합니다. 한 명이 요리와 플레이팅을 동시에 하면 둘 다 흐트러집니다.
 
 ```mermaid
 flowchart TD
-    REQ["자연어 요청"] --> DEC{"무엇을 만드나?"}
+   REQ["자연어 요청"] --> DEC{"무엇을 만드나?"}
 
-    DEC -- "글 · 텍스트" --> TXT["내용 생성 스킬<br/>(초안)"]
-    TXT --> REV["ai-slop-reviewer<br/>맛보기 검수 (간 맞추기)"]
-    REV --> FMT["moai-office 포맷 변환<br/>(그릇에 담기)"]
+   DEC -- "글 · 텍스트" --> TXT["내용 생성 스킬<br/>(초안)"]
+   TXT --> REV["ai-slop-reviewer<br/>맛보기 검수 (간 맞추기)"]
+   REV --> FMT["moai-officer 포맷 변환<br/>(그릇에 담기)"]
 
-    DEC -- "숫자 · 차트 · 코드" --> NUM["데이터 생성 스킬"]
-    NUM --> FMT2["moai-office 포맷 변환<br/>(검수 생략)"]
+   DEC -- "숫자 · 차트 · 코드" --> NUM["데이터 생성 스킬"]
+   NUM --> FMT2["moai-officer 포맷 변환<br/>(검수 생략)"]
 
-    FMT --> OUT["최종 산출물"]
-    FMT2 --> OUT
+   FMT --> OUT["최종 산출물"]
+   FMT2 --> OUT
 
-    style REQ fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style DEC fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style REV fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style FMT fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style FMT2 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style OUT fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+   style REQ fill:#e6e6e6,stroke:#757575,color:#09110f
+   style DEC fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style REV fill:#e8f1ec,stroke:#265240,color:#09110f
+   style FMT fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style FMT2 fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style OUT fill:#d6e7de,stroke:#3d7d5f,stroke-width:2px,color:#09110f
 ```
 
 ```mermaid
 flowchart TD
-    A["자연어 요청"] --> B{"스킬 라우터<br/>매칭"}
-    B --> C["텍스트 생성<br/>스킬"]
-    B --> D["포맷 변환<br/>moai-office"]
-    C --> E["ai-slop-reviewer<br/>후처리"]
-    E --> D
-    D --> F["최종 산출물"]
+   A["자연어 요청"] --> B{"스킬 라우터<br/>매칭"}
+   B --> C["텍스트 생성<br/>스킬"]
+   B --> D["포맷 변환<br/>moai-officer"]
+   C --> E["ai-slop-reviewer<br/>후처리"]
+   E --> D
+   D --> F["최종 산출물"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style F fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style F fill:#d6e7de,stroke:#3d7d5f,stroke-width:2px,color:#09110f
 ```
 
 ---
 
 ### Sources
-- [modu-ai/cowork-plugins](https://github.com/modu-ai/cowork-plugins)
+- [modu-ai/moai-cowork](https://github.com/modu-ai/moai-cowork)
 - [docs.claude.com — Cowork](https://docs.claude.com)

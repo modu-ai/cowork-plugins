@@ -4,20 +4,20 @@ weight: 10
 description: "macOS·Windows에 Claude Desktop을 설치하고 로그인하는 단계별 안내 + 요금제 개요"
 geekdocBreadcrumb: true
 ---
-이 문서는 Claude Desktop을 처음 설치하는 분을 위한 안내서입니다. 프로그램 설치라고 하면 어렵게 느껴질 수 있지만, 실제 과정은 스마트폰에 앱을 하나 까는 것과 크게 다르지 않습니다. 공식 사이트에서 파일을 내려받아 실행하고, 계정으로 로그인하면 끝입니다. 전체 소요 시간은 인터넷 속도에 따라 다르지만 보통 커피 한 잔 내리는 시간이면 충분합니다.
+이 문서는 Claude Desktop을 처음 설치하는 분을 위한 안내서입니다. 프로그램 설치라고 하면 어렵게 느껴질 수 있지만 실제 과정은 스마트폰에 앱을 하나 까는 것과 크게 다르지 않습니다. 공식 사이트에서 파일을 내려받아 실행하고, 계정으로 로그인하면 끝입니다. 전체 소요 시간은 인터넷 속도에 따라 다르지만 보통 커피 한 잔 내리는 시간이면 충분합니다.
 
 설치는 크게 세 걸음입니다. ① 다운로드(공식 사이트에서 설치 파일 받기) → ② 설치·실행(파일을 열어 프로그램 앉히기) → ③ 로그인(내 계정으로 들어가기). 계정이 아직 없다면 로그인 화면에서 바로 새로 만들 수 있으니 미리 준비할 것은 이메일 주소 하나뿐입니다. 각 단계마다 화면에 무엇이 보여야 정상인지, 잘 안 될 때 무엇을 확인해야 하는지 함께 적어두었습니다.
 
 ```mermaid
 flowchart LR
-    A["① 다운로드<br/>claude.com/download"] --> B["② 설치·실행<br/>파일 열기"]
-    B --> C["③ 로그인<br/>계정 만들기 포함"]
-    C --> D["✅ 첫 화면<br/>대화 시작 가능"]
+   A["① 다운로드<br/>claude.com/download"] --> B["② 설치·실행<br/>파일 열기"]
+   B --> C["③ 로그인<br/>계정 만들기 포함"]
+   C --> D["첫 화면<br/>대화 시작 가능"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style D fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style C fill:#e8f1ec,stroke:#265240,color:#09110f
+   style D fill:#d6e7de,stroke:#3d7d5f,stroke-width:2px,color:#09110f
 ```
 
 {{< hint "note" >}}

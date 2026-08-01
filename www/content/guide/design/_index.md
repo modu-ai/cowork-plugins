@@ -10,23 +10,23 @@ aliases: ["/claude-design/", "/design/"]
 
 ## Claude Design이란 — 눈으로 만드는 실시간 디자인 스튜디오
 
-인테리어 디자인 스튜디오를 떠올려 보세요. 손님이 "우리 매장 분위기에 맞는 카운터를 그려줘"라며 사진과 글로 요청하면, 디자이너는 그 자리에서 3D 모형과 견본을 만들어 보여줍니다. 손님이 "나무 톤을 좀 더 따뜻하게", "선반을 하나 더 달아줘" 같은 코멘트를 던지면 디자이너는 즉시 고쳐서 다시 보여줍니다. Claude Design이 바로 이런 **실시간 디자인 스튜디오**의 디지털 버전입니다.
+인테리어 디자인 스튜디오를 떠올려 보세요. 손님이 "우리 매장 분위기에 맞는 카운터를 그려줘"라며 사진과 글로 요청하면 디자이너는 그 자리에서 3D 모형과 견본을 만들어 보여줍니다. 손님이 "나무 톤을 좀 더 따뜻하게", "선반을 하나 더 달아줘" 같은 코멘트를 던지면 디자이너는 즉시 고쳐서 다시 보여줍니다. Claude Design이 바로 이런 **실시간 디자인 스튜디오**의 디지털 버전입니다.
 
 차이점은 디자이너가 사람이 아니라 Claude라는 점, 그리고 손님이 "텍스트와 이미지"로만 요청해도 Claude가 그것을 읽고(이것을 **비전 기반** — 그림·사진·문서를 눈으로 보듯 이해하는 능력이라 합니다) 클릭할 수 있는 화면 시안으로 만들어낸다는 점입니다. 결과물은 그림 파일이 아니라 **인터랙티브 프로토타입**(버튼을 누르면 화면이 넘어가는 등 실제로 조작해 볼 수 있는 시안)입니다. "랜딩 페이지 하나 만들어줘"라고 말하면 당장 브라우저에서 클릭해 볼 수 있는 화면이 뜹니다.
 
-"Anthropic Labs"와 "Beta"라는 표현이 자주 보입니다. **Anthropic Labs**는 Anthropic이 새 기능을 빠르게 실험해 보는 조직 단위이고, **Beta**는 "정식 출시는 되었지만 기능이 계속 추가되고 안정화 중"을 의미합니다 (2026년 6월 beta 단계 진입). 즉 Claude Design은 핵심 기능은 안정적이지만 거버넌스·모바일·데이터 거주지 같은 엔터프라이즈 기능은 계속 개선 중인 도구입니다.
+"Anthropic Labs"와 "Beta"라는 표현이 자주 보입니다. **Anthropic Labs**는 Anthropic이 새 기능을 빠르게 실험해 보는 조직 단위이고 **Beta**는 "정식 출시는 되었지만 기능이 계속 추가되고 안정화 중"을 의미합니다 (2026년 6월 beta 단계 진입). 즉 Claude Design은 핵심 기능은 안정적이지만 거버넌스·모바일·데이터 거주지 같은 엔터프라이즈 기능은 계속 개선 중인 도구입니다.
 
 ```mermaid
 flowchart LR
-    A["사용자 입력<br/>텍스트·이미지·문서"] --> B["Claude Design<br/>실시간 스튜디오"]
-    B --> C["인터랙티브 시안<br/>클릭 가능"]
-    B <-. 코멘트 .-> A
-    C --> D["내보내기<br/>Canva·PPTX·코드"]
+   A["사용자 입력<br/>텍스트·이미지·문서"] --> B["Claude Design<br/>실시간 스튜디오"]
+   B --> C["인터랙티브 시안<br/>클릭 가능"]
+   B <-. 코멘트 .-> A
+   C --> D["내보내기<br/>Canva·PPTX·코드"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style B fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
-    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style D fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style B fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
+   style C fill:#e8f1ec,stroke:#265240,color:#09110f
+   style D fill:#d6e7de,stroke:#3d7d5f,color:#09110f
 ```
 
 ## 학습 경로
@@ -34,7 +34,7 @@ flowchart LR
 | <span style="white-space:nowrap">단계</span> | 페이지 | 도달 역량 |
 |---|---|---|
 | <span style="white-space:nowrap">1. 입문</span> | [시작하기](getting-started/) | 첫 프로젝트 생성 + 입력 4종 활용 |
-| <span style="white-space:nowrap">2. 코어</span> | [디자인 시스템 설정](design-system/) ★ | 브랜드 일관성 확보 + Published 시스템 운영 |
+| <span style="white-space:nowrap">2. 코어</span> | [디자인 시스템 설정](design-system/) {{< icon star >}} | 브랜드 일관성 확보 + Published 시스템 운영 |
 | <span style="white-space:nowrap">3. 작업</span> | [리파인먼트](refinement/), [협업과 공유](collaboration/) | 시안 다듬기 + 팀 공동 작업 |
 | <span style="white-space:nowrap">4. 내보내기</span> | [내보내기와 핸드오프](export-handoff/) | Canva·PPTX·Claude Code 등 6가지 산출 경로 |
 | <span style="white-space:nowrap">5. 적용</span> | [역할별 사용 사례](use-cases/), [베스트 프랙티스](best-practices/) | 실전 워크플로우 + 10대 원칙 |
@@ -42,18 +42,18 @@ flowchart LR
 
 ```mermaid
 flowchart TD
-    A["1. 시작하기<br/>입력 4종"] --> B["2. 디자인 시스템<br/>★ 가장 중요"]
-    B --> C["3. 리파인먼트<br/>+ 협업"]
-    C --> D["4. 내보내기·핸드오프"]
-    D --> E["5. 사용 사례·BP"]
-    E --> F["6. 요금제·제한"]
+   A["1. 시작하기<br/>입력 4종"] --> B["2. 디자인 시스템<br/> 가장 중요"]
+   B --> C["3. 리파인먼트<br/>+ 협업"]
+   C --> D["4. 내보내기·핸드오프"]
+   D --> E["5. 사용 사례·BP"]
+   E --> F["6. 요금제·제한"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style B fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
-    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style D fill:#dceee9,stroke:#2a8a8c,color:#09110f
-    style E fill:#d6ebe7,stroke:#1c7c70,color:#09110f
-    style F fill:#cce4dc,stroke:#155a52,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style B fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
+   style C fill:#e8f1ec,stroke:#265240,color:#09110f
+   style D fill:#e8f1ec,stroke:#2a8a8c,color:#09110f
+   style E fill:#d6e7de,stroke:#3d7d5f,color:#09110f
+   style F fill:#d6e7de,stroke:#155a52,color:#09110f
 ```
 
 ## 한눈에 보기
@@ -72,13 +72,13 @@ flowchart TD
 | 양방향 동기화 | `/design-sync` (Claude Code 터미널)로 양방향 디자인 시스템 동기화 가능 |
 
 {{< hint type="note" >}}
-**플러그인과 다릅니다.** `claude.ai/design`(이 섹션의 주제)은 Anthropic의 비주얼 생성 제품이고, [`claude.com/plugins/design`](https://claude.com/plugins/design)은 Cowork에서 디자인 비평·UX 카피·접근성 감사를 돕는 **별도 플러그인**(MoAI 플러그인 `moai-design`과도 다름)입니다. 세 도구는 서로 다르며 같은 프로젝트 내에서 함께 쓸 수 있습니다.
+**플러그인과 다릅니다.** `claude.ai/design`(이 섹션의 주제)은 Anthropic의 비주얼 생성 제품이고 [`claude.com/plugins/design`](https://claude.com/plugins/design)은 Cowork에서 디자인 비평·UX 카피·접근성 감사를 돕는 **별도 플러그인**(MoAI 플러그인 `moai-designer`과도 다름)입니다. 세 도구는 서로 다르며 같은 프로젝트 내에서 함께 쓸 수 있습니다.
 {{< /hint >}}
 
 {{< hint type="note" >}}
 **2026년 6월 업데이트.** Claude Design은 4월 출시 후 6월에 크게 개편됐습니다 (개편 시점·초기 사용량 수치는 외부 보도 기준):
 - **양방향 동기화** — Claude Code `/design-sync`로 기존 코드베이스의 디자인 시스템을 Claude Design으로 가져옵니다 (코드 → 디자인). 완성된 시안은 다시 Claude Code로 핸드오프 (디자인 → 코드).
-- **디자인 시스템 import** — GitHub repo·디자인 파일·업로드에서 시스템을 불러오고, Claude가 출력을 시스템에 대조해 자가 수정합니다.
+- **디자인 시스템 import** — GitHub repo·디자인 파일·업로드에서 시스템을 불러오고 Claude가 출력을 시스템에 대조해 자가 수정합니다.
 - **엔터프라이즈 거버넌스** — 관리자가 표준 시스템 1개를 승인하고 편집을 잠금니다.
 - **토큰 효율** — 별도 주간 쿼터를 폐지하고 일반 채팅·Claude Code·Cowork와 **공유 풀**로 통합했습니다.
 {{< /hint >}}
@@ -87,41 +87,41 @@ flowchart TD
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    participant U as 사용자
-    participant CD as Claude Design (web)
-    participant DS as 디자인 시스템
-    participant CC as Claude Code
-    participant OUT as 내보내기
+   autonumber
+   participant U as 사용자
+   participant CD as Claude Design (web)
+   participant DS as 디자인 시스템
+   participant CC as Claude Code
+   participant OUT as 내보내기
 
-    U->>CD: 텍스트·이미지·DOCX·웹 캡처 입력
-    CD->>DS: 등록된 디자인 시스템 적용
-    DS-->>CD: 색·타이포·컴포넌트 주입
-    CD-->>U: 초기 시안 (인터랙티브)
+   U->>CD: 텍스트·이미지·DOCX·웹 캡처 입력
+   CD->>DS: 등록된 디자인 시스템 적용
+   DS-->>CD: 색·타이포·컴포넌트 주입
+   CD-->>U: 초기 시안 (인터랙티브)
 
-    loop 리파인먼트
-        U->>CD: 인라인 코멘트 · 슬라이더 · 자연어 수정
-        CD-->>U: 부분 또는 전체 적용
-    end
+   loop 리파인먼트
+       U->>CD: 인라인 코멘트 · 슬라이더 · 자연어 수정
+       CD-->>U: 부분 또는 전체 적용
+   end
 
-    alt 발표·공유
-        U->>OUT: PPTX · PDF · Canva · 조직 URL
-    else 코드로 빌드
-        U->>OUT: Claude Code 핸드오프 번들
-        OUT->>CC: 의도 + 토큰 + 컴포넌트 트리 전달
-        CC-->>U: 프로덕션 코드
-    end
+   alt 발표·공유
+       U->>OUT: PPTX · PDF · Canva · 조직 URL
+   else 코드로 빌드
+       U->>OUT: Claude Code 핸드오프 번들
+       OUT->>CC: 의도 + 토큰 + 컴포넌트 트리 전달
+       CC-->>U: 프로덕션 코드
+   end
 ```
 
 ## 왜 디자인 시스템이 필수인가 — 브랜드 가이드북이 없으면 매장마다 분위기가 제각각
 
 햄버거 프랜차이즈를 생각해 봅니다. 본사가 "우리 매장 톤은 따뜻한 갈색, 글씨체는 이것, 버튼은 둥근 형태"라고 정해둔 매뉴얼이 없으면 매장마다 분위기가 제각각이 됩니다. 어떤 곳은 차가운 파란색, 어떤 곳은 빨간 글씨. 손님은 같은 브랜드인지 헷갈립니다. 이 매뉴얼이 **브랜드 가이드북**입니다.
 
-Claude Design에서도 똑같습니다. 우리 회사의 색·글씨체·버튼 모양을 **디자인 시스템**(한 번 정해두면 모든 시안에 일관되게 적용되는 스타일 규칙 묶음)으로 미리 알려주지 않으면, Claude는 세상에 널린 수많은 디자인의 **"평균적인 모습"**을 뱉어냅니다. 쉽게 말해 인터넷에서 가장 흔하게 보이는 무난한 회색빛 디자인 — 누가 봐도 "AI가 만든 것 같은" 그 느낌입니다. 이를 **학습 데이터 평균값으로 수렴한다**고 표현합니다. Claude가 학습한 방대한 웹사이트들의 중간값으로 결과가 쏠린다는 뜻입니다.
+Claude Design에서도 똑같습니다. 우리 회사의 색·글씨체·버튼 모양을 **디자인 시스템**(한 번 정해두면 모든 시안에 일관되게 적용되는 스타일 규칙 묶음)으로 미리 알려주지 않으면 Claude는 세상에 널린 수많은 디자인의 **"평균적인 모습"**을 뱉어냅니다. 쉽게 말해 인터넷에서 가장 흔하게 보이는 무난한 회색빛 디자인 — 누가 봐도 "AI가 만든 것 같은" 그 느낌입니다. 이를 **학습 데이터 평균값으로 수렴한다**고 표현합니다. Claude가 학습한 방대한 웹사이트들의 중간값으로 결과가 쏠린다는 뜻입니다.
 
-반대로 디자인 시스템을 먼저 등록하면 어떻게 될까요. 우리 브랜드 색과 글씨체가 시안에 일관되게 묻어납니다. 매장마다 분위기가 같아지는 것처럼, 어떤 페이지를 만들든 우리 회사 느낌이 유지됩니다. 그래서 학습 경로 두 번째 단계에 ★ 표시가 붙어 있고, "디자인 시스템 페이지를 반드시 통과할 것"을 권장하는 것입니다. 한두 단계 건너뛰면 결과가 AI 냄새 나는 일반적 디자인으로 퇴색합니다.
+반대로 디자인 시스템을 먼저 등록하면 어떻게 될까요. 우리 브랜드 색과 글씨체가 시안에 일관되게 묻어납니다. 매장마다 분위기가 같아지는 것처럼, 어떤 페이지를 만들든 우리 회사 느낌이 유지됩니다. 그래서 학습 경로 두 번째 단계에 {{< icon star >}} 표시가 붙어 있고 "디자인 시스템 페이지를 반드시 통과할 것"을 권장하는 것입니다. 한두 단계 건너뛰면 결과가 AI 냄새 나는 일반적 디자인으로 퇴색합니다.
 
-> **가이드북이 아직 없다면** — 밑바닥부터 토큰을 정의하는 대신, [`moai-design` 플러그인](../plugins/moai-design/)의 `design-system-library` 스킬이 제공하는 75개 글로벌 브랜드 시스템(Notion·Linear·Stripe·Vercel·Figma·Sentry 등) 중 하나에서 시작하세요. 검증된 시스템을 DESIGN.md 소스로 가져오면 "학습 데이터 평균값으로 수렴"하는 함정을 피할 수 있습니다. 자세한 원칙은 [디자인 시스템 설정](design-system/) 페이지의 "사전 빌트인 시스템에서 시작"을 참고하세요.
+> **가이드북이 아직 없다면** — 밑바닥부터 토큰을 정의하는 대신, [`moai-designer` 플러그인](/moai-agents/designer/)의 `design-system-library` 스킬이 제공하는 75개 글로벌 브랜드 시스템(Notion·Linear·Stripe·Vercel·Figma·Sentry 등) 중 하나에서 시작하세요. 검증된 시스템을 DESIGN.md 소스로 가져오면 "학습 데이터 평균값으로 수렴"하는 함정을 피할 수 있습니다. 자세한 원칙은 [디자인 시스템 설정](design-system/) 페이지의 "사전 빌트인 시스템에서 시작"을 참고하세요.
 
 ## 누구를 위한 가이드인가
 
@@ -148,69 +148,69 @@ Claude 생태계도 이와 같습니다. 세 도구는 목적이 다르고 다�
 
 ```mermaid
 flowchart LR
-    A["아이디어<br/>텍스트·이미지·문서"] --> D["Claude Design<br/>설계 사무실"]
-    D -->|"시안 (인터랙티브)"| CC["Claude Code<br/>시공사"]
-    D -->|"핸드오프 번들"| CC
-    CC -->|"프로덕션 코드"| P["완성물"]
+   A["아이디어<br/>텍스트·이미지·문서"] --> D["Claude Design<br/>설계 사무실"]
+   D -->|"시안 (인터랙티브)"| CC["Claude Code<br/>시공사"]
+   D -->|"핸드오프 번들"| CC
+   CC -->|"프로덕션 코드"| P["완성물"]
 
-    CW["Cowork + MoAI 플러그인<br/>운영·자동화"] -.->|"UX 카피·접근성<br/>문서·반복 작업"| D
-    CW -.->|"검토·디자인 비평"| CC
+   CW["Cowork + MoAI 플러그인<br/>운영·자동화"] -.->|"UX 카피·접근성<br/>문서·반복 작업"| D
+   CW -.->|"검토·디자인 비평"| CC
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style D fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
-    style CC fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style P fill:#d6ebe7,stroke:#1c7c70,color:#09110f
-    style CW fill:#dceee9,stroke:#2a8a8c,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style D fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
+   style CC fill:#e8f1ec,stroke:#265240,color:#09110f
+   style P fill:#d6e7de,stroke:#3d7d5f,color:#09110f
+   style CW fill:#e8f1ec,stroke:#2a8a8c,color:#09110f
 ```
 
 ```mermaid
 flowchart LR
-    IDEA["아이디어<br/>텍스트 · 이미지 · 문서"]
-    DESIGN["Claude Design<br/>(설계 사무소)<br/><br/>시안을 만든다 — 비전 중심"]
-    CODE["Claude Code<br/>(시공사)<br/><br/>시안을 코드로 짓는다"]
-    PRODUCT["완성물<br/>프로덕션 빌드"]
-    COWORK["Cowork + MoAI 플러그인<br/>(운영 · 자동화 담당)<br/><br/>UX 카피 · 접근성 검사 · 디자인 비평 · 반복 문서 · 발행 자동화"]
+   IDEA["아이디어<br/>텍스트 · 이미지 · 문서"]
+   DESIGN["Claude Design<br/>(설계 사무소)<br/><br/>시안을 만든다 — 비전 중심"]
+   CODE["Claude Code<br/>(시공사)<br/><br/>시안을 코드로 짓는다"]
+   PRODUCT["완성물<br/>프로덕션 빌드"]
+   COWORK["Cowork + MoAI 플러그인<br/>(운영 · 자동화 담당)<br/><br/>UX 카피 · 접근성 검사 · 디자인 비평 · 반복 문서 · 발행 자동화"]
 
-    IDEA --> DESIGN
-    DESIGN -->|"시안 + 핸드오프 번들"| CODE
-    CODE --> PRODUCT
+   IDEA --> DESIGN
+   DESIGN -->|"시안 + 핸드오프 번들"| CODE
+   CODE --> PRODUCT
 
-    COWORK -.->|"보조"| DESIGN
-    COWORK -.->|"보조"| CODE
+   COWORK -.->|"보조"| DESIGN
+   COWORK -.->|"보조"| CODE
 
-    classDef ideaNode fill:#EAEAEA,stroke:#6E6E6E,color:#141413
-    classDef designNode fill:#FBF0DC,stroke:#C47B2A,stroke-width:3px,color:#141413
-    classDef codeNode fill:#E6F0EF,stroke:#144A46,stroke-width:2px,color:#141413
-    classDef productNode fill:#D6EBE7,stroke:#1C7C70,color:#141413
-    classDef coworkNode fill:#DCEEE9,stroke:#2A8A8C,stroke-width:2px,color:#141413
+   classDef ideaNode fill:#e6e6e6,stroke:#757575,color:#141413
+   classDef designNode fill:#FBF0DC,stroke:#C47B2A,stroke-width:3px,color:#141413
+   classDef codeNode fill:#e8f1ec,stroke:#265240,stroke-width:2px,color:#141413
+   classDef productNode fill:#d6e7de,stroke:#3d7d5f,color:#141413
+   classDef coworkNode fill:#e8f1ec,stroke:#2A8A8C,stroke-width:2px,color:#141413
 
-    class IDEA ideaNode
-    class DESIGN designNode
-    class CODE codeNode
-    class PRODUCT productNode
-    class COWORK coworkNode
+   class IDEA ideaNode
+   class DESIGN designNode
+   class CODE codeNode
+   class PRODUCT productNode
+   class COWORK coworkNode
 ```
 
 자세한 동선은 [내보내기와 핸드오프](export-handoff/)·[역할별 사용 사례](use-cases/) 페이지에서.
 
-## 보조 플러그인 — `moai-design`
+## 보조 플러그인 — `moai-designer`
 
-이 섹션의 운영 원칙·베스트 프랙티스를 자동화한 [`moai-design`](../plugins/moai-design/) 플러그인이 마켓플레이스에 정식 등록되어 있습니다(6개 스킬). Cowork에서 자연어로 호출하면 AskUserQuestion으로 정보를 모은 뒤 claude.ai/design 채팅에 그대로 붙여 넣을 수 있는 산출물을 만들어 줍니다.
+이 섹션의 운영 원칙·베스트 프랙티스를 자동화한 [`moai-designer`](/moai-agents/designer/) 플러그인이 마켓플레이스에 정식 등록되어 있습니다(13개 스킬). Cowork에서 자연어로 호출하면 AskUserQuestion으로 정보를 모은 뒤 claude.ai/design 채팅에 그대로 붙여 넣을 수 있는 산출물을 만들어 줍니다.
 
-특히 **`design-system-library`**는 우리 브랜드 가이드북이 없을 때 가장 먼저 손댈 곳입니다. Notion·Linear·Stripe·Vercel·Figma·Sentry 등 75개 글로벌 브랜드 디자인 시스템을 빌트인으로 품고 있어, 밑바닥부터 토큰을 정의하지 않고도 검증된 시스템에서 출발할 수 있습니다. [디자인 시스템 설정](design-system/) 페이지의 "사전 빌트인 시스템에서 시작" 원칙(원칙 6)과 직결됩니다.
+특히 **`design-system-library`**는 우리 브랜드 가이드북이 없을 때 가장 먼저 손댈 곳입니다. Notion·Linear·Stripe·Vercel·Figma·Sentry 등 75개 글로벌 브랜드 디자인 시스템을 빌트인으로 품고 있어 밑바닥부터 토큰을 정의하지 않고도 검증된 시스템에서 출발할 수 있습니다. [디자인 시스템 설정](design-system/) 페이지의 "사전 빌트인 시스템에서 시작" 원칙(원칙 6)과 직결됩니다.
 
 | 단계 | 스킬 | 결과물 |
 |---|---|---|
-| 디자인 시스템 셋업 | `claude-design-system-prep` | DESIGN.md + 자산 정리 |
+| 디자인 시스템 셋업 | `cd-system-prep` | DESIGN.md + 자산 정리 |
 | 디자인 시스템 소스 | `design-system-library` | 75개 글로벌 브랜드 디자인 시스템(Notion·Linear·Stripe 등) → Tailwind Play CDN + shadcn |
-| 시안 작성 | `claude-design-brief` | 6요소 복붙용 프롬프트 |
-| 특정 영역 | `claude-design-prompt-builder` | 시니어 UX 10 패턴 프롬프트 |
-| 결과 검수 | `claude-design-slop-check` | AI 슬롭 검수 + 수정안 |
-| 핸드오프 | `claude-design-handoff-reader` | 번들 요약 + Claude Code 지시 |
+| 시안 작성 | `cd-brief` | 6요소 복붙용 프롬프트 |
+| 특정 영역 | `cd-prompt-builder` | 시니어 UX 10 패턴 프롬프트 |
+| 결과 검수 | `cd-slop-check` | AI 슬롭 검수 + 수정안 |
+| 핸드오프 | `cd-handoff-reader` | 번들 요약 + Claude Code 지시 |
 
 ## 다음 단계
 
-먼저 [시작하기](getting-started/)에서 첫 프롬프트와 입력 4종을 익히세요. 그다음 [디자인 시스템 설정](design-system/) ★ 페이지를 반드시 통과하는 것을 권장합니다. 디자인 시스템 셋업을 건너뛰면 결과 품질이 학습 데이터 평균값으로 수렴해 "AI가 만든 것 같은" 일반적 디자인이 나옵니다. Beta 단계인 지금은 핵심 기능만 안정적이고 엔터프라이즈 기능은 계속 보강 중이므로, 정기적인 업데이트를 확인하시기 바랍니다.
+먼저 [시작하기](getting-started/)에서 첫 프롬프트와 입력 4종을 익히세요. 그다음 [디자인 시스템 설정](design-system/) {{< icon star >}} 페이지를 반드시 통과하는 것을 권장합니다. 디자인 시스템 셋업을 건너뛰면 결과 품질이 학습 데이터 평균값으로 수렴해 "AI가 만든 것 같은" 일반적 디자인이 나옵니다. Beta 단계인 지금은 핵심 기능만 안정적이고 엔터프라이즈 기능은 계속 보강 중이므로 정기적인 업데이트를 확인하시기 바랍니다.
 
 ---
 

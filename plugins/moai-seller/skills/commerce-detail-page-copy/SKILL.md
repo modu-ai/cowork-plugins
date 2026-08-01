@@ -7,7 +7,7 @@ description: >
   한국 이커머스 상세페이지(상폐)를 위한 13섹션 감정여정 카피를 자동 생성하는 스킬입니다.
   "상세페이지 카피 써줘", "상폐 만들어줘", "이커머스 상세페이지 글 작성해줘", "쇼핑몰 상품 카피 만들어줘", "현재 상세페이지 진단해줘", "상세페이지 점수 매겨줘", "페르소나별 카피 2세트 만들어줘"처럼 말하면 됩니다.
   좋은/피해야 할 예시 가이드 + PAS 카피 공식 매핑 + 혜택 언어 3단계 변환법 (광고 심리학 통합).
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 상세페이지 카피 (Detail Page Copy)
@@ -468,6 +468,7 @@ JSON 출력 후, 사용자 확인용 마크다운 미리보기를 섹션별로 �
 - `moai-marketer:content-copywriting` — 일반 광고 카피
 - `moai-seller:commerce-product-detail` — shadcn/ui 기반 웹 상세페이지
 - `moai-coworker:general-ai-slop-reviewer` — 텍스트 검수 (이 스킬에서 자동 호출)
+- `moai-writer:general-humanize-korean` — 한국어 AI 티 제거 (슬롭 검수 다음, 필수)
 
 ## 이 스킬을 사용하지 말아야 할 때
 

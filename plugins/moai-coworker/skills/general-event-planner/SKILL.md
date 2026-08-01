@@ -2,7 +2,7 @@
 name: general-event-planner
 description: >
   행사·이벤트·웨딩을 기획하고 준비 계획을 수립합니다. "결혼 준비 체크리스트 만들어줘", "사내 세미나 기획해줘", "워크샵 진행 방식 설계해줘"라고 요청할 때 사용하세요. 행사 기획, 예산 계획, 일정 관리, 웨딩 준비(스드메·예산·타임라인)를 지원합니다.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 이벤트 플래너 (Event Planner)
@@ -100,3 +100,10 @@ general-event-planner → moai-coworker:general-ai-slop-reviewer → moai-writer
 - **계약서 법적 검토** → moai-lawyer:legal-contract-review 스킬 또는 소비자원(1372)을 활용하세요
 - **여행·허니문 일정 기획** → moai-coworker:general-travel-planner 스킬이 더 적합합니다
 - **기업 대규모 컨퍼런스 전문 운영** → 전문 PCO(Professional Conference Organizer) 업체와 협력하세요
+
+## References
+
+| 파일 | 로드 조건 |
+|------|----------|
+| references/event-organizer.md | 행사·이벤트 기획 시 (행사 기획→예산 책정→공급업체 관리→당일 운영) |
+| references/wedding-planner.md | 결혼식 준비 요청 시 (기본 계획→예산 책정→공급업체 선정→세부 조정) |

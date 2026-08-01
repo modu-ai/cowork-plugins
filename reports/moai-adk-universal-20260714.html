@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>moai-adk 범용화 전략 — Claude Code 전용에서 멀티 에이전트 CLI로</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#FAF9F5;--paper:#FFFFFF;--slate:#141413;--clay:#D97757;--clay-d:#B85C3E;
+  --oat:#E3DACC;--olive:#788C5D;
+  --g100:#F0EEE6;--g300:#D1CFC5;--g500:#87867F;--g700:#3D3D3A;
+  --sans:"Noto Sans KR",system-ui,-apple-system,sans-serif;
+  --serif:"Noto Serif KR",ui-serif,Georgia,serif;
+  --mono:"JetBrains Mono",ui-monospace,"SF Mono",monospace;
+  --max-width:860px;--radius-panel:12px;--radius-row:8px;--border:1.5px solid var(--g300);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--ivory);color:var(--slate);font-family:var(--sans);font-size:15.5px;line-height:1.75}
+a{color:var(--clay);text-decoration:none}a:hover{color:var(--clay-d);text-decoration:underline}
+.layout{display:flex;max-width:1160px;margin:0 auto;gap:32px;padding:32px 20px}
+nav.side{position:sticky;top:24px;align-self:flex-start;width:220px;flex-shrink:0;font-size:13.5px}
+nav.side ol{list-style:none}
+nav.side li{margin:6px 0}
+nav.side a{color:var(--g700);display:block;padding:3px 10px;border-left:2.5px solid var(--g300);border-radius:0 6px 6px 0}
+nav.side a:hover{color:var(--clay);border-left-color:var(--clay);background:var(--g100);text-decoration:none}
+main{max-width:var(--max-width);min-width:0;flex:1}
+header.hero{background:var(--paper);border:var(--border);border-radius:var(--radius-panel);padding:34px 38px;margin-bottom:28px}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--clay);font-weight:600}
+h1{font-family:var(--serif);font-size:29px;line-height:1.35;margin:10px 0 14px}
+.lead{color:var(--g700);font-size:16px}
+.meta{margin-top:18px;font-size:12.5px;color:var(--g500);font-family:var(--mono)}
+section{background:var(--paper);border:var(--border);border-radius:var(--radius-panel);padding:30px 36px;margin-bottom:24px}
+h2{font-family:var(--serif);font-size:21px;margin-bottom:6px;scroll-margin-top:24px}
+h2 .no{color:var(--clay);font-family:var(--mono);font-size:15px;margin-right:8px}
+h3{font-size:16px;margin:22px 0 8px;color:var(--g700)}
+p{margin:10px 0}
+ul,ol{margin:10px 0 10px 22px}
+li{margin:5px 0}
+code{font-family:var(--mono);font-size:.86em;background:var(--g100);border:1px solid var(--g300);border-radius:4px;padding:1px 5px}
+pre{background:var(--g100);border:1px solid var(--g300);border-radius:var(--radius-row);padding:14px 16px;overflow-x:auto;margin:12px 0}
+pre code{background:none;border:none;padding:0;font-size:13px;line-height:1.6}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px}
+th{background:var(--g100);text-align:left;padding:8px 10px;border:1px solid var(--g300);font-weight:600}
+td{padding:8px 10px;border:1px solid var(--g300);vertical-align:top}
+.plain{background:#F5F1E8;border-left:4px solid var(--olive);border-radius:0 var(--radius-row) var(--radius-row) 0;padding:12px 16px;margin:14px 0;font-size:14px}
+.plain b:first-child{color:var(--olive)}
+.callout{background:#FBF3EF;border-left:4px solid var(--clay);border-radius:0 var(--radius-row) var(--radius-row) 0;padding:12px 16px;margin:14px 0;font-size:14px}
+.example{background:var(--g100);border:1px dashed var(--g500);border-radius:var(--radius-row);padding:12px 16px;margin:14px 0;font-size:13.5px}
+.example .tag{font-family:var(--mono);font-size:11px;color:var(--olive);font-weight:600;letter-spacing:.08em}
+details{border:1px solid var(--g300);border-radius:var(--radius-row);margin:10px 0;background:var(--ivory)}
+summary{cursor:pointer;padding:11px 15px;font-weight:600;font-size:14.5px}
+summary:hover{color:var(--clay)}
+details[open] summary{border-bottom:1px solid var(--g300)}
+details .body{padding:12px 16px}
+.pill{display:inline-block;font-family:var(--mono);font-size:11px;padding:2px 9px;border-radius:99px;margin:1px 2px;white-space:nowrap}
+.pill.ok{background:#EDF2E6;color:#4A6134;border:1px solid var(--olive)}
+.pill.part{background:#FBF0E4;color:#9A6B2F;border:1px solid #D9A757}
+.pill.no{background:#F7E9E4;color:#A04B32;border:1px solid var(--clay)}
+.split{display:flex;gap:14px;flex-wrap:wrap;margin:14px 0}
+.split>div{flex:1;min-width:230px;background:var(--ivory);border:var(--border);border-radius:var(--radius-row);padding:14px 16px}
+.split h4{font-size:13.5px;color:var(--clay);margin-bottom:6px;font-family:var(--mono)}
+.split ul{margin-left:18px;font-size:13.5px}
+figure.chart{margin:16px 0;text-align:center}
+figcaption{font-size:12.5px;color:var(--g500);margin-top:6px}
+.src{font-size:13px}
+.src li{margin:6px 0}
+footer{color:var(--g500);font-size:12px;font-family:var(--mono);text-align:center;padding:10px 0 30px}
+.mermaid{background:var(--paper);text-align:center}
+@media(max-width:900px){nav.side{display:none}.layout{padding:16px 12px}}
+@media print{nav.side{display:none}section{break-inside:avoid;border:none;padding:16px 0}body{background:#fff}}
+</style>
+</head>
+<body>
+<div class="layout">
+<nav class="side">
+<ol>
+<li><a href="#tldr">요약 (TL;DR)</a></li>
+<li><a href="#now">1. 현재 구조 진단</a></li>
+<li><a href="#standards">2. 3대 범용화 표준</a></li>
+<li><a href="#precedent">3. 선례: spec-kit</a></li>
+<li><a href="#arch">4. 권장 아키텍처</a></li>
+<li><a href="#matrix">5. 기능 이식성 매트릭스</a></li>
+<li><a href="#roadmap">6. 마이그레이션 로드맵</a></li>
+<li><a href="#risk">7. 리스크와 한계</a></li>
+<li><a href="#faq">FAQ</a></li>
+<li><a href="#sources">출처</a></li>
+</ol>
+</nav>
+<main>
+
+<header class="hero">
+<div class="kicker">Research Report · Explainer</div>
+<h1>moai-adk 범용화 전략<br>— Claude Code 전용에서 멀티 에이전트 CLI 툴킷으로</h1>
+<p class="lead">현재 Claude Code 전용으로 설치·사용 중인 moai-adk 바이너리를, OpenAI Codex·Gemini CLI 등 어떤 코딩 에이전트에서도 동일하게 쓸 수 있도록 구조를 개선하는 방안을 조사했다. 결론부터: <b>코드의 절반 이상은 이미 LLM 중립적</b>이며, 업계에는 이 문제를 정확히 풀기 위해 만들어진 3개의 공개 표준(AGENTS.md · Agent Skills · MCP)과 검증된 선례(GitHub spec-kit)가 존재한다.</p>
+<div class="meta">2026-07-14 · 대상: moai-adk-go (github.com/modu-ai/moai-adk) · 웹 리서치 + 코드베이스 스캔 기반</div>
+</header>
+
+<section id="tldr">
+<h2>요약 (TL;DR)</h2>
+<ul>
+<li><b>진단</b>: moai-adk-go의 약 55~65%(SPEC 엔진, 품질 게이트, git, LSP/ast-grep, MX 태그)는 이미 하네스 중립 코어다. 나머지 35~45%(hook JSON 프로토콜, settings.json, statusline, 런처, <code>.claude/</code> 템플릿)가 Claude Code 어댑터다. GLM 백엔드는 모델 교체이지 하네스 추상화가 아니다.</li>
+<li><b>기회</b>: 2025년 12월 Anthropic이 Agent Skills를 공개 표준화한 뒤 Codex·Gemini CLI·Copilot·Cursor 등 30개 이상 도구가 채택했다. 스킬은 <code>.agents/skills/</code>에 한 번 작성하면 대부분의 에이전트에서 그대로 동작한다. 지침 파일은 AGENTS.md(Linux Foundation 관할, 6만+ 저장소 채택)가 사실상 표준이다.</li>
+<li><b>권장 구조</b>: ① CLI-first 코어(어떤 에이전트든 셸로 <code>moai gate</code>를 호출 — 최소공배수 어댑터) ② 표준 자산 레이어(스킬은 Agent Skills 표준으로, 지침은 AGENTS.md 정본 + CLAUDE.md는 <code>@AGENTS.md</code> 임포트) ③ spec-kit 스타일 하네스 어댑터 레지스트리(<code>moai init --agent claude|codex|gemini</code>) ④ 선택적 <code>moai mcp serve</code>.</li>
+<li><b>한계 인지</b>: hooks·output styles·서브에이전트·AskUserQuestion은 Claude Code 고유 기능이라 이식이 안 된다. 전략은 "하향 평준화"가 아니라 <b>점진적 향상(progressive enhancement)</b> — 코어는 어디서나, 풀 오케스트레이션은 Claude Code에서.</li>
+</ul>
+</section>
+
+<section id="now">
+<h2><span class="no">1</span>현재 moai-adk 구조 진단</h2>
+<div class="plain"><b>쉽게 말하면</b> — moai-adk는 "엔진"과 "차체"로 나뉜다. 엔진(SPEC 워크플로우, 품질 검사, git 자동화)은 어떤 차에나 얹을 수 있는데, 지금은 차체(Claude Code 연결부)에 용접돼 있는 상태다. 용접을 볼트 체결로 바꾸는 것이 이번 과제다.</div>
+
+<p>moai-adk-go 저장소를 읽기 전용으로 스캔한 결과:</p>
+
+<div class="split">
+<div><h4>LLM 중립 코어 (~55–65%)</h4>
+<ul>
+<li><code>internal/spec</code> — SPEC 워크플로우</li>
+<li><code>internal/hook/quality·security</code>, <code>foundation/trust</code> — 품질·보안 게이트</li>
+<li><code>internal/git</code>, <code>worktree</code> — git 자동화</li>
+<li><code>internal/lsp</code>, <code>astgrep</code>, <code>mx</code> — 진단·주석</li>
+<li><code>internal/ciwatch</code>, <code>update</code>, <code>migration</code></li>
+</ul></div>
+<div><h4>Claude Code 어댑터 (~35–45%)</h4>
+<ul>
+<li><code>internal/cli/hook.go</code> + <code>internal/hook</code> 디스패처 — Claude hook JSON stdin/stdout 프로토콜에 결합</li>
+<li><code>internal/settings</code> — <code>.claude/settings.json</code> 병합 엔진</li>
+<li><code>internal/statusline</code> — Claude statusLine 계약</li>
+<li><code>cc.go / cg.go / glm.go / launcher.go</code> — Claude Code 실행기</li>
+<li><code>internal/template/templates/.claude/*</code> — 에이전트·스킬·규칙 템플릿</li>
+</ul></div>
+</div>
+
+<div class="callout"><b>중요한 발견</b> — 이미 존재하는 <code>moai glm</code> / <code>moai cg</code>의 멀티 백엔드 지원은 <b>Claude Code 하네스 안에서의 모델 공급자 교체</b>다(Anthropic 호환 엔드포인트로 GLM을 소비). Codex CLI나 Gemini CLI 같은 <b>다른 하네스</b>를 위한 어댑터 인터페이스는 아직 없다. 다만 <code>unifiedLaunchDefault(mode)</code> 같은 런처 추상화가 이미 있으므로, 하네스 축을 추가할 자리는 마련돼 있다.</div>
+
+<div class="example"><span class="tag">구체 예시</span><br>
+품질 게이트 <code>moai gate</code>(lint+format+type+test 병렬 실행)는 셸 명령이므로 이론상 Codex도 지금 당장 호출할 수 있다. 그러나 결과가 Claude hook 이벤트(PostToolUse 등)로 되돌아가도록 설계돼 있어, Codex에서는 "실행은 되지만 하네스에 피드백이 연결되지 않는" 상태가 된다. 코어는 살아 있고, 배선만 Claude 전용인 셈이다.</div>
+</section>
+
+<section id="standards">
+<h2><span class="no">2</span>생태계 지형: 3대 범용화 표준</h2>
+<div class="plain"><b>쉽게 말하면</b> — "어느 에이전트에서나 똑같이 쓰기"라는 문제를 업계가 이미 세 조각으로 나눠 표준화했다. <b>지침</b>(에이전트가 지켜야 할 규칙 문서)은 AGENTS.md, <b>스킬</b>(재사용 가능한 작업 절차 패키지)은 Agent Skills, <b>도구</b>(에이전트가 호출하는 외부 기능)는 MCP다. moai-adk가 새 표준을 발명할 필요가 없다.</div>
+
+<h3>2-1. AGENTS.md — 지침 파일 표준</h3>
+<ul>
+<li>"에이전트를 위한 README". Linux Foundation 산하 <b>Agentic AI Foundation</b>이 중립 관할하며, <b>60,000개 이상 저장소</b>, 20개 이상 도구(Codex, Copilot, Cursor, Jules, Amp, Zed, Windsurf 등)가 네이티브로 읽는다.</li>
+<li>Codex CLI는 AGENTS.md가 1차 지침 파일이며 git 루트→현재 디렉터리로 내려가며 계층적으로 읽는다. 기본 32KiB 제한(<code>project_doc_max_bytes</code>) 초과분은 조용히 잘린다.</li>
+<li>Claude Code는 CLAUDE.md를 읽는다. 업계 합의 패턴: <b>AGENTS.md를 정본(canonical)으로 두고, CLAUDE.md는 첫 줄 <code>@AGENTS.md</code> 임포트 한 줄짜리로</b> 만든다. 저장소와 함께 이동하므로 팀원 전원이 clone만으로 동일 동작을 얻는다. (역방향 — Codex가 CLAUDE.md를 읽게 하는 <code>project_doc_fallback_filenames</code> — 는 사용자 홈 설정이라 저장소와 함께 이동하지 않아 약하다.)</li>
+</ul>
+
+<h3>2-2. Agent Skills — 스킬 표준 (SKILL.md)</h3>
+<ul>
+<li>2025년 12월 18일 Anthropic이 공개 표준으로 릴리스(agentskills.io, Apache 2.0/CC-BY-4.0). 공개 48시간 안에 Microsoft(VS Code/Copilot)와 OpenAI(Codex)가 지원을 출시했고, 2026년 3월 기준 <b>30개 이상 도구</b>가 채택 — Claude Code, Codex, <b>Gemini CLI</b>, Copilot, Cursor, Goose, JetBrains Junie, Kiro, OpenCode, OpenHands, Roo Code, Mistral Vibe 등 (agentskills.io 클라이언트 쇼케이스에서 직접 확인).</li>
+<li>구조: 폴더 + <code>SKILL.md</code>(YAML frontmatter의 <code>name</code>/<code>description</code> + 지시문) + 선택적 <code>scripts/ references/ assets/</code>. 3단계 점진 공개(목록→본문→참조)로 컨텍스트를 아낀다 — moai-adk의 Progressive Disclosure 설계와 정확히 같은 철학이다.</li>
+<li>디렉터리 규약: <b><code>.agents/skills/</code>가 범용 위치</b>. Codex는 <code>./.agents/skills</code> → 저장소 루트 → <code>~/.agents/skills</code> → <code>/etc/codex/skills</code> 순으로 탐색하고, 스킬 목록에 컨텍스트의 최대 2%(또는 8,000자)만 쓴다. 벤더 확장(<code>agents/openai.yaml</code>)은 다른 에이전트가 무시하므로 공존 가능.</li>
+<li>이식성 실증: Claude Code용으로 쓴 스킬을 Codex 스킬 디렉터리에 복사하면 그대로 동작한다는 것이 커뮤니티에서 반복 확인됐다. 단, Claude 전용 기능(컨텍스트 포크, 서브에이전트 위임)에 의존하는 스킬은 예외.</li>
+</ul>
+
+<h3>2-3. MCP — 도구 노출 표준</h3>
+<ul>
+<li>하나의 MCP 서버를 만들면 Claude Code(<code>.mcp.json</code>), Codex(<code>config.toml</code> + <code>codex mcp</code> 서브커맨드), Gemini CLI(extensions의 <code>mcpServers</code>) 모두에서 소비 가능 — "도구를 한 번 만들어 모든 에이전트에 공급"하는 유일한 공식 통로다.</li>
+<li>베스트프랙티스: 도구는 좁고 예측 가능하게(최소 권한), 기본은 읽기 전용, 프로젝트 스코프 설정을 저장소에 커밋해 팀 전체가 clone만으로 동일 도구를 획득, 도구 수가 많아지면 온디맨드 로딩·코드 실행 패턴(Anthropic 권고)으로 토큰을 절약.</li>
+<li>Gemini CLI는 한 걸음 더 나아가 <b>extensions</b>(manifest <code>gemini-extension.json</code> + <code>GEMINI.md</code> 컨텍스트 + <code>commands/*.toml</code> + MCP 서버 묶음)라는 배포 단위를 제공한다 — moai-adk의 "플러그인" 개념과 거의 일대일 대응.</li>
+</ul>
+</section>
+
+<section id="precedent">
+<h2><span class="no">3</span>선례: GitHub spec-kit의 멀티 에이전트 아키텍처</h2>
+<div class="plain"><b>왜 이 선례인가</b> — spec-kit은 moai-adk와 같은 "SPEC 기반 개발 방법론 툴킷"이면서, 처음부터 30개 이상 에이전트(Claude Code, Copilot, Gemini CLI, Cursor, Codex CLI…)를 지원하도록 설계됐다. moai-adk가 가려는 길을 이미 가 본 프로젝트다.</div>
+<ul>
+<li><b>통합 레지스트리</b>: 에이전트마다 자기완결적 integration 서브패키지(<code>src/specify_cli/integrations/</code>)를 두고, 베이스 클래스를 형식별로 계층화 — <code>MarkdownIntegration</code>(Cursor류), <code>TomlIntegration</code>(Gemini), <code>SkillsIntegration</code>(Claude Code·Codex), 커스텀(<code>Copilot</code>). 레지스트리가 단일 진실 공급원이고, 새 에이전트 추가는 코드 복제가 아니라 <b>설정 추가</b>로 끝난다.</li>
+<li><b>초기화 어댑테이션</b>: <code>specify init</code>이 선택한 에이전트에 맞는 명령 파일·컨텍스트 규칙·디렉터리 구조를 깔아 준다. 인자 플레이스홀더($ARGUMENTS 등)도 에이전트별 설정에서 가져온다.</li>
+<li><b>커맨드의 이중 형태</b>: 같은 워크플로우가 대부분의 에이전트에선 슬래시 커맨드로, 스킬 지원 플랫폼에선 설치형 스킬로 배포된다(Claude Code는 <code>.claude/skills/</code>, Codex는 <code>$speckit-&lt;command&gt;</code>).</li>
+<li><b>멀티 설치 안전성</b>: 0.8.5부터 여러 에이전트 통합을 한 저장소에 공존 설치 가능 — 격리된 디렉터리 + 충돌 없는 컨텍스트 파일 + 독립 설치 매니페스트가 조건.</li>
+<li><b>설계 철학</b>: "방법론이지 제품 락인이 아니다(methodology, not a product lock-in)" — 에이전트 키를 실행 파일 이름과 일치시켜 <code>shutil.which()</code>로 감지하는 단순한 규약까지, 전부 moai-adk에 이식 가능한 패턴이다.</li>
+</ul>
+</section>
+
+<section id="arch">
+<h2><span class="no">4</span>권장 아키텍처: moai-adk Universal 4-레이어</h2>
+<div class="plain"><b>핵심 아이디어</b> — "모든 에이전트가 공통으로 할 수 있는 일"은 단 하나, <b>셸 명령 실행</b>이다. 그래서 범용화의 1번 어댑터는 화려한 프로토콜이 아니라 <b>CLI 그 자체</b>다. 그 위에 표준 자산(스킬·지침), 하네스별 어댑터, MCP를 차례로 얹는다.</div>
+
+<pre class="mermaid">
+flowchart TD
+  subgraph L0["Layer 0 — LLM 중립 코어 (Go 바이너리)"]
+    CORE["SPEC 엔진 · 품질 게이트(gate)<br/>git/worktree · LSP/ast-grep · MX"]
+  end
+  subgraph L1["Layer 1 — 표준 자산 (한 번 작성, 어디서나)"]
+    SK[".agents/skills/ (Agent Skills 표준)"]
+    AG["AGENTS.md 정본<br/>CLAUDE.md = @AGENTS.md 임포트"]
+  end
+  subgraph L2["Layer 2 — 하네스 어댑터 레지스트리"]
+    CC["claude 어댑터<br/>hooks·settings.json·statusline"]
+    CX["codex 어댑터<br/>config.toml·openai.yaml"]
+    GM["gemini 어댑터<br/>extension manifest·GEMINI.md"]
+  end
+  subgraph L3["Layer 3 — MCP 서버 (선택)"]
+    MCP["moai mcp serve<br/>spec/gate/mx 도구 노출"]
+  end
+  CORE --> SK
+  CORE --> AG
+  SK --> CC & CX & GM
+  AG --> CC & CX & GM
+  CORE -. "stdio/HTTP" .-> MCP
+  MCP -.-> CC & CX & GM
+</pre>
+<noscript><p><b>다이어그램 요약</b>: Layer 0(LLM 중립 코어: SPEC 엔진·품질 게이트·git·LSP·MX)가 Layer 1(표준 자산: <code>.agents/skills/</code> 스킬 + AGENTS.md 정본)을 생성하고, Layer 2의 세 어댑터(claude/codex/gemini)가 각 하네스 형식으로 이를 설치·배선한다. Layer 3(<code>moai mcp serve</code>)는 코어 기능을 MCP 도구로 노출해 세 하네스 모두에 선택적으로 공급한다.</p></noscript>
+
+<h3>Layer 0 — CLI-first 코어 (이미 절반 이상 완성)</h3>
+<ul>
+<li>코어 기능을 <b>하네스를 모르는 순수 CLI 명령</b>으로 정리: <code>moai gate</code>, <code>moai spec lint</code>, <code>moai mx scan</code> 등. 종료 코드 + 구조화된 JSON 출력이 계약.</li>
+<li>현재 Claude hook JSON에 결합된 <code>internal/hook</code> 디스패처에서 <b>이벤트 모델을 추상화</b>: "Claude PostToolUse JSON 파싱"과 "파일 변경 후 품질 검사 실행"을 분리하면, 후자는 어느 하네스에서도 재사용된다.</li>
+</ul>
+
+<h3>Layer 1 — 표준 자산: 한 번 작성, 어디서나 설치</h3>
+<ul>
+<li><b>스킬</b>: 현재 <code>.claude/skills/moai*</code>의 28개 스킬을 Agent Skills 표준 준수 형태로 정리해 <b><code>.agents/skills/</code>를 정본 위치</b>로 삼는다. Claude Code·Codex·Gemini CLI가 모두 이 위치(또는 복사/링크)를 읽는다. Claude 전용 기능(서브에이전트 위임, AskUserQuestion 언급 등)을 쓰는 스킬은 frontmatter 코어만으로 동작하도록 분리하거나 어댑터 오버레이로 남긴다.</li>
+<li><b>지침</b>: <code>moai init</code>이 AGENTS.md를 정본으로 생성하고, CLAUDE.md는 <code>@AGENTS.md</code> 한 줄 + Claude 전용 계층(rules, output styles 포인터)만 갖게 한다. 32KiB 이하 유지(Codex 절단 한계).</li>
+</ul>
+
+<h3>Layer 2 — 하네스 어댑터 레지스트리 (spec-kit 패턴)</h3>
+<ul>
+<li><code>moai init --agent claude|codex|gemini</code> (기본값 claude, 복수 지정 허용). 어댑터별 책임: 설정 파일 쓰기(settings.json vs config.toml vs gemini-extension.json), 이벤트 배선(Claude hooks는 풀 지원, 타 하네스는 지원 범위 명시), 런처(<code>moai cc</code>처럼 <code>moai cx</code>/<code>moai gm</code> 또는 통합 <code>moai launch --agent</code>).</li>
+<li>Go에선 spec-kit의 클래스 계층 대신 <b>인터페이스 + 레지스트리 맵</b>이 자연스럽다: <code>type HarnessAdapter interface { Detect() bool; Install(assets) error; WireEvents() error; Launch(opts) error }</code>.</li>
+</ul>
+
+<h3>Layer 3 — <code>moai mcp serve</code> (선택적, 후순위)</h3>
+<ul>
+<li>셸 접근이 약한 환경(IDE 에이전트, 웹 에이전트)이나 승인 정책이 엄격한 조직을 위해 코어 기능을 MCP 도구로 노출. 좁은 도구·읽기 전용 기본·프로젝트 스코프 설정 커밋이라는 MCP 베스트프랙티스를 따른다.</li>
+<li>단, CLI가 이미 통하는 터미널 에이전트에게 MCP는 중복이다 — "MCP를 먼저 만들지 말고, CLI로 안 되는 지점이 확인되면 만들라"가 Codex 공식 문서의 레이어링 권고(단순한 층부터 소진)와도 일치한다.</li>
+</ul>
+
+<div class="example"><span class="tag">동작 시나리오 (Codex 사용자)</span><br>
+① <code>moai init --agent codex</code> → AGENTS.md 생성, <code>.agents/skills/</code>에 moai 스킬 설치, <code>.codex/config.toml</code>에 프로젝트 스코프 설정 기록.<br>
+② 사용자가 Codex에서 <code>$moai-plan "로그인 기능"</code> 호출 → SKILL.md 지시에 따라 Codex가 <code>moai spec new</code>를 셸로 실행, SPEC 문서 생성.<br>
+③ 구현 후 스킬 지시에 따라 <code>moai gate</code> 실행 → 종료 코드/JSON으로 품질 판정을 받아 Codex가 다음 행동 결정.<br>
+Claude Code에서라면 같은 흐름이 hooks·서브에이전트·AskUserQuestion까지 얹힌 풀 오케스트레이션으로 동작한다 — 이것이 점진적 향상이다.</div>
+</section>
+
+<section id="matrix">
+<h2><span class="no">5</span>기능 이식성 매트릭스</h2>
+<div class="plain"><b>읽는 법</b> — <span class="pill ok">이식 가능</span>은 표준 경로가 존재, <span class="pill part">부분</span>은 하네스별 어댑터 작업 필요, <span class="pill no">Claude 전용</span>은 대체 UX를 설계해야 함.</div>
+<table>
+<tr><th>moai-adk 기능</th><th>범용화 경로</th><th>판정</th></tr>
+<tr><td>SPEC 워크플로우 (plan/run/sync)</td><td>CLI 명령 + Agent Skills 표준 스킬</td><td><span class="pill ok">이식 가능</span></td></tr>
+<tr><td>품질 게이트 (gate/fix/loop)</td><td>CLI 명령 (종료 코드 + JSON 계약)</td><td><span class="pill ok">이식 가능</span></td></tr>
+<tr><td>MX 태그 / codemaps / LSP 진단</td><td>CLI 명령, 필요 시 MCP 도구</td><td><span class="pill ok">이식 가능</span></td></tr>
+<tr><td>지침 (CLAUDE.md + rules)</td><td>AGENTS.md 정본 + 하네스별 임포트 (rules 계층은 Claude 전용이라 AGENTS.md로 압축 요약 필요)</td><td><span class="pill part">부분</span></td></tr>
+<tr><td>스킬 28종</td><td><code>.agents/skills/</code> — 단, Claude 전용 기능 의존 스킬은 분리 필요</td><td><span class="pill part">부분</span></td></tr>
+<tr><td>훅 기반 자동화 (11+ 이벤트)</td><td>Codex·Gemini에는 동등한 훅 체계 없음 — 스킬 지시문 내 명시적 CLI 호출로 강등</td><td><span class="pill no">Claude 전용</span></td></tr>
+<tr><td>서브에이전트 오케스트레이션 / output styles / AskUserQuestion / statusline</td><td>대응 개념 부재 — 하네스별 UX로 재설계하거나 Claude 전용으로 유지</td><td><span class="pill no">Claude 전용</span></td></tr>
+</table>
+</section>
+
+<section id="roadmap">
+<h2><span class="no">6</span>마이그레이션 로드맵 (단계 순서)</h2>
+<details open><summary>M1 — 코어/어댑터 경계 확정 (내부 리팩터링)</summary><div class="body">
+<code>internal/hook</code>의 이벤트 파싱(Claude JSON)과 비즈니스 로직(quality/security/mx)을 분리하고, 코어 명령의 JSON 출력 계약을 문서화한다. 외부 동작 변화 없음 — 순수 준비 단계. 이미 코어가 잘 분리된 패키지 구조라 리스크가 낮다.
+</div></details>
+<details><summary>M2 — 표준 자산 이중 배포 (가장 값싼 승리)</summary><div class="body">
+① AGENTS.md 생성기 추가, CLAUDE.md를 <code>@AGENTS.md</code> 임포트 구조로 전환. ② 스킬 정본을 <code>.agents/skills/</code>로 옮기고 <code>.claude/skills/</code>는 설치 시 링크/복사. 이 단계만 끝나도 Codex·Gemini 사용자가 moai 스킬과 지침을 "읽을 수" 있게 된다.
+</div></details>
+<details><summary>M3 — 어댑터 레지스트리 + <code>moai init --agent</code></summary><div class="body">
+spec-kit 패턴의 Go 인터페이스 레지스트리. 첫 타깃은 Codex(스킬 채택이 가장 성숙 + config.toml 단일 파일이라 어댑터가 얇음), 다음이 Gemini CLI(extension 매니페스트로 배포 단위까지 깔끔). 멀티 설치 안전성(디렉터리 격리, 매니페스트 분리)을 처음부터 설계.
+</div></details>
+<details><summary>M4 — <code>moai mcp serve</code> (수요 확인 후)</summary><div class="body">
+좁은 도구 세트(spec 조회, gate 실행, mx 스캔)로 시작, 읽기 전용 기본. CLI로 충분한 사용자는 건너뛰는 선택 계층.
+</div></details>
+<details><summary>M5 — 하네스별 UX 격차 보완</summary><div class="body">
+훅 부재 하네스를 위한 "게이트 리마인더"(스킬 지시문 강화), statusline 대체(프롬프트 내 상태 요약 명령 <code>moai status --brief</code>) 등. 완전 동등성이 아니라 "핵심 워크플로우의 신뢰 가능한 동작"이 목표.
+</div></details>
+
+<div class="callout"><b>스스로 확인해 볼 것</b> — M2가 끝난 시점에 Codex CLI를 설치하고 moai 프로젝트에서 <code>$moai-plan</code>이 뜨는지, <code>moai gate</code>가 셸에서 그대로 도는지 직접 확인해 보면 전략의 타당성을 가장 빨리 검증할 수 있다.</div>
+</section>
+
+<section id="risk">
+<h2><span class="no">7</span>리스크와 한계</h2>
+<ul>
+<li><b>기능 하향 평준화 유혹</b>: 모든 하네스에서 똑같이 만들려다 Claude Code의 강점(훅, 서브에이전트, output styles)을 깎아내리면 본말전도다. 원칙은 점진적 향상 — 코어는 어디서나, 최상 경험은 가장 능력 있는 하네스에서.</li>
+<li><b>테스트 매트릭스 확대</b>: 하네스 3종 × 기능 조합의 회귀 비용. spec-kit처럼 어댑터를 자기완결 패키지로 격리하고 어댑터별 스모크 테스트를 CI에 두는 것이 완화책.</li>
+<li><b>표준의 유동성</b>: Agent Skills는 표준화 1년 미만이고 벤더 확장(openai.yaml 등)이 계속 늘고 있다. 정본은 표준 코어(frontmatter + 본문)만 쓰고 벤더 확장은 어댑터 오버레이로 두면 표준 변화에 격리된다.</li>
+<li><b>지침 계층 압축 손실</b>: <code>.claude/rules/</code>의 경로 조건부 로딩 같은 정교한 계층은 AGENTS.md 단일 파일로 옮기면 뭉개진다(32KiB 제한 포함). AGENTS.md에는 핵심 계약만 싣고 상세는 스킬 참조 파일로 내리는 배분 설계가 필요하다.</li>
+<li><b>훅 의존 안전장치</b>: 현재 품질·보안 게이트 일부는 훅이 자동 실행을 보장한다. 훅 없는 하네스에서는 "에이전트가 지시를 따라야만 실행되는" 약한 보장으로 강등된다 — git pre-commit/pre-push 훅(하네스 무관)으로 최저선을 이중화하는 것을 권장.</li>
+</ul>
+</section>
+
+<section id="faq">
+<h2>FAQ</h2>
+<details><summary>Q. MCP만 만들면 되는 것 아닌가요? 제일 유명한 표준인데요.</summary><div class="body">
+MCP는 "도구 호출" 하나만 표준화한다. 지침(에이전트 행동 규칙)과 스킬(작업 절차)은 MCP로 전달되지 않는다. 그리고 터미널 에이전트는 이미 셸을 갖고 있어서 CLI 호출이 MCP보다 마찰이 적다. MCP는 3대 표준 중 한 조각이며, moai-adk에는 후순위 선택 계층(M4)이 적절하다.
+</div></details>
+<details><summary>Q. 바이너리를 하네스별로 따로 만들어야 하나요?</summary><div class="body">
+아니다. 단일 <code>moai</code> 바이너리에 어댑터 레지스트리를 내장하는 구조(spec-kit과 동일)가 배포·버전 관리 면에서 압도적으로 낫다. <code>moai init --agent codex</code>처럼 초기화 시점에 어댑터를 선택하고, 복수 하네스 공존 설치를 허용하면 된다.
+</div></details>
+<details><summary>Q. LLM이 다르면 (GPT vs Claude vs Gemini) 스킬 품질이 달라지지 않나요?</summary><div class="body">
+달라진다. SKILL.md는 자연어 지시문이라 모델의 지시 이행 성향에 따라 편차가 생긴다. 완화책은 ① 스킬 지시를 검증 가능한 CLI 호출 중심으로 쓰기(모델 재량 최소화) ② 종료 코드/JSON으로 기계 검증 가능한 계약 만들기 ③ 하네스별 스모크 테스트. "지시는 짧게, 검증은 기계로"가 원칙이다.
+</div></details>
+<details><summary>Q. 지금 쓰는 Claude Code 환경이 이 작업 때문에 나빠지지 않나요?</summary><div class="body">
+M1·M2는 Claude Code 관점에서 동작 동일(CLAUDE.md가 임포트 한 줄로 바뀌는 것뿐, 로딩 결과는 같음)이다. 어댑터 레지스트리(M3)도 claude 어댑터가 현재 코드를 그대로 감싸는 형태라 기존 경로는 보존된다.
+</div></details>
+</section>
+
+<section id="sources">
+<h2>출처 (Sources)</h2>
+<p style="font-size:13px;color:var(--g500)">핵심 URL은 WebFetch로 접속 검증함(✓ 표시). 나머지는 WebSearch 결과 기반.</p>
+<ul class="src">
+<li>✓ <a href="https://agentskills.io/home">Agent Skills — 공개 표준 개요 및 채택 클라이언트 쇼케이스</a></li>
+<li>✓ <a href="https://developers.openai.com/codex/skills">OpenAI Codex — Build skills (스킬 탐색 위치, 2%/8,000자 컨텍스트 예산, openai.yaml)</a></li>
+<li>✓ <a href="https://agents.md/">AGENTS.md — 공개 포맷 (Agentic AI Foundation/Linux Foundation, 60k+ 저장소)</a></li>
+<li><a href="https://github.com/agentskills/agentskills">agentskills/agentskills — 표준 스펙 저장소 (Apache 2.0 / CC-BY-4.0)</a></li>
+<li><a href="https://developers.openai.com/codex/mcp">OpenAI Codex — MCP 설정 (config.toml, codex mcp 서브커맨드)</a></li>
+<li><a href="https://developers.openai.com/codex/concepts/customization">OpenAI Codex — Customization 레이어링 (AGENTS.md → skills → MCP → subagents)</a></li>
+<li><a href="https://github.com/github/spec-kit">GitHub spec-kit — SPEC 기반 개발 툴킷 (30+ 에이전트 지원)</a></li>
+<li><a href="https://github.github.io/spec-kit/reference/integrations.html">spec-kit — Supported AI Coding Agent Integrations (통합 레지스트리 문서)</a></li>
+<li><a href="https://google-gemini.github.io/gemini-cli/docs/extensions/">Gemini CLI — Extensions (manifest + GEMINI.md + commands + mcpServers)</a></li>
+<li><a href="https://www.anthropic.com/engineering/code-execution-with-mcp">Anthropic Engineering — Code execution with MCP (도구 온디맨드 로딩·토큰 효율)</a></li>
+<li><a href="https://github.com/shakacode/claude-code-commands-skills-agents/blob/main/docs/claude-code-with-codex.md">ShakaCode — Using Claude Code with Codex CLI (AGENTS.md 정본 + CLAUDE.md 임포트 패턴)</a></li>
+<li><a href="https://agyn.io/blog/claude-md-agents-md-compatibility">agyn.io — AGENTS.md vs CLAUDE.md 상호 호환성 분석</a></li>
+<li><a href="https://www.unite.ai/anthropic-opens-agent-skills-standard-continuing-its-pattern-of-building-industry-infrastructure/">Unite.AI — Anthropic의 Agent Skills 표준 공개와 채택 타임라인</a></li>
+<li><a href="https://codex.danielvaughan.com/2026/05/05/agent-skills-open-standard-portable-skills-codex-cli-cross-agent/">Codex Knowledge Base — 크로스 에이전트 이식 가능한 SKILL.md 작성법</a></li>
+<li><a href="https://platform.uno/blog/mcp-configuration-across-ai-agents/">Uno Platform — 에이전트별 MCP 설정 위치 비교 (프로젝트 스코프 커밋 권장)</a></li>
+</ul>
+</section>
+
+<footer>moai-adk universal strategy · rendered by moai-domain-html-report (explainer · basic tier) · 2026-07-14</footer>
+</main>
+</div>
+
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+mermaid.initialize({
+  startOnLoad:true, theme:"base",
+  themeVariables:{
+    primaryColor:"#FAF9F5", primaryTextColor:"#141413", primaryBorderColor:"#D97757",
+    lineColor:"#87867F", secondaryColor:"#E3DACC", tertiaryColor:"#F0EEE6"
+  }
+});
+</script>
+</body>
+</html>

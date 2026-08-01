@@ -108,8 +108,8 @@
     {"variant": "오늘만 + 누구나 + 숫자", "title": "60일 만의 재구매 — 무료배송 + 추가 5%",
      "body": "지금 탭 → 4시간 남음. 휴면 진입 전 마지막 혜택", "predicted_ctr": "3~5%"}
   ],
-  "compliance_check": "정통망법 (광고) 표기·무료 수신거부·발신자 정보 필수 — moai-seller:commerce-marketing-compliance-kr 체이닝 권장"
+  "compliance_check": "정통망법 (광고) 표기·무료 수신거부·발신자 정보 필수 — moai-seller:commerce-message-compliance-kr 체이닝 권장"
 }
 ```
 
-> 푸시 모드 후속 체이닝: 발송 전 `moai-seller:commerce-marketing-compliance-kr`로 정통망법 게이트(야간 21:00-08:00 광고 발송 금지·수신거부·발신자 정보)를 통과시킨다.
+> 푸시 모드 후속 체이닝: 발송 전 `moai-seller:commerce-message-compliance-kr`로 정통망법 게이트(야간 21:00-08:00 광고 발송 금지·수신거부·발신자 정보)를 통과시킨다.

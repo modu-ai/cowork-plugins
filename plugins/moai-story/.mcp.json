@@ -1,12 +1,12 @@
 {
   "mcpServers": {
     "higgsfield": {
-      "$comment": "Higgsfield AI 영상·이미지 생성 MCP — 캐릭터 일관성 작화·콘티·프리비즈 생성. story-cover-art·story-previz·story-webtoon-art·story-character-sheet·story-conti·story-ad-conti 등 story-* 스킬이 사용. 인증: Higgsfield 계정 토큰(mcp.higgsfield.ai).",
+      "$comment": "Higgsfield AI 영상·이미지 생성 MCP — 캐릭터 일관성 작화·콘티·프리비즈 생성. story-cover-art·story-previz·story-webtoon-art·story-character-sheet·story-conti 등 story-* 스킬이 사용. 생성 실행·비용 조회 계약은 moai-media:media-higgsfield-core 참조. 인증: Higgsfield 계정 토큰(mcp.higgsfield.ai).",
       "type": "url",
       "url": "https://mcp.higgsfield.ai/mcp",
       "timeout": 120000,
       "headers": {
-        "User-Agent": "MoAI-Story/0.1.0"
+        "User-Agent": "MoAI-Story/0.2.0"
       }
     }
   }

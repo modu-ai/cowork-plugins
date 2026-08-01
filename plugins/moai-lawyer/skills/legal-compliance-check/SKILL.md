@@ -5,7 +5,7 @@ description: >
   '컴플라이언스 점검해줘', '내부 감사 보고서 작성해줘', 'ESG 보고서 만들어줘',
   '규제 갭 분석해줘', '인허가 서류 준비해줘'라고 요청하세요.
   한국 주요 규제 기준 적용, 갭 분석, 시정 계획, ESG 지표 보고서를 제공합니다.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 컴플라이언스 점검 (Compliance Check)
@@ -170,3 +170,13 @@ legal-compliance-check → moai-coworker:general-ai-slop-reviewer → moai-write
 - **법적 리스크 분석이나 지적재산 전략** → moai-lawyer:legal-legal-risk 사용
 - **실제 법적 분쟁이나 소송 대응** → 반드시 전문 변호사에게 의뢰하세요
 - **실제 세금 신고나 세무 조정** → 세무사에게 의뢰하세요
+
+## References
+
+| 파일 | 로드 조건 |
+|------|-----------|
+| references/audit-report.md | 내부 감사 계획·현장 조사·감사 보고서 작성 시 |
+| references/compliance-checker.md | 한국 법령(개보법·전자상거래법·공정거래법·근로기준법) PASS/FAIL 컴플라이언스 판정 필요 시 |
+| references/esg-reporting.md | ESG 전략 수립·지표 계산·ESG 보고서 작성 시 |
+| references/regulatory-filing.md | 규제 요구사항 파악·인허가/규제 서류 작성·제출 준비 시 |
+| references/ftc-standard-terms.md | 공정거래위원회 업종별 표준약관 기준 약관 검토 시 |

@@ -8,7 +8,7 @@ description: |
   - "이상값 찾아줘"
   - "데이터 품질 체크해줘"
   컬럼 요약·결측값/이상값 탐지·상관관계 분석을 거쳐 데이터 품질 보고서로 정리합니다.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 데이터 탐색기 (Data Explorer)
@@ -57,3 +57,9 @@ CSV/Excel 파일을 받아 데이터 프로파일링, 품질 검사, 기초 분�
 - **차트/그래프 생성** → moai-analyst:office-data-visualizer 사용
 - **공공데이터 조회** → moai-analyst:office-public-data-public-data 사용
 - **PPT/Word 변환** → moai-coworker 플러그인 사용
+
+## References
+
+| 파일 | 로드 조건 |
+|------|-----------|
+| references/data-explorer/guide.md | CSV 인코딩 자동 감지(UTF-8/CP949/EUC-KR), IQR·Z-score 이상값 탐지 기준이 필요할 때 |

@@ -13,20 +13,20 @@ Claude Desktop의 **Settings > Cowork**에서 Claude의 동작 방식을 제어�
 
 ```mermaid
 flowchart TD
-    subgraph Settings["Settings > Cowork"]
-        GI["전역 지시어<br/>(Global Instructions)"]
-        SK["스킬<br/>(Skills)"]
-        CN["커넥터<br/>(Connectors)"]
-        PM["권한<br/>(Permissions)"]
-    end
+   subgraph Settings["Settings > Cowork"]
+       GI["전역 지시어<br/>(Global Instructions)"]
+       SK["스킬<br/>(Skills)"]
+       CN["커넥터<br/>(Connectors)"]
+       PM["권한<br/>(Permissions)"]
+   end
 
-    GI -->|모든 세션에 적용| SESSION["Cowork 세션"]
-    SK -->|스킬 자동 호출| SESSION
-    CN -->|외부 서비스 연결| SESSION
-    PM -->|접근 범위 제어| SESSION
+   GI -->|모든 세션에 적용| SESSION["Cowork 세션"]
+   SK -->|스킬 자동 호출| SESSION
+   CN -->|외부 서비스 연결| SESSION
+   PM -->|접근 범위 제어| SESSION
 
-    style Settings fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style SESSION fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+   style Settings fill:#e6e6e6,stroke:#757575,color:#09110f
+   style SESSION fill:#d6e7de,stroke:#3d7d5f,color:#09110f
 ```
 
 ## 설정 메뉴 접근
@@ -47,7 +47,7 @@ Cowork 설정 화면에서 작업 폴더를 지정하고 필요한 스킬과 커
 
 ![Cowork 스킬 검증 — 설치된 스킬 목록 확인](/screenshots/cowork/cowork-setup-skills.png)
 
-설치된 스킬이 올바르게 로드되었는지 검증하고, 사용 가능한 모든 슬래시 명령을 확인할 수 있습니다.
+설치된 스킬이 올바르게 로드되었는지 검증하고 사용 가능한 모든 슬래시 명령을 확인할 수 있습니다.
 
 ## 전역 지시어 (Global Instructions)
 
@@ -92,7 +92,7 @@ Cowork 설정 화면에서 작업 폴더를 지정하고 필요한 스킬과 커
 
 ## 스킬 (Skills)
 
-스킬은 **재사용 가능한 절차적 지침 묶음**입니다. `/`로 시작하는 슬래시 명령으로 호출하며, 특정 작업(문서 작성, 콘텐츠 제작, 오피스 산출물 생성 등)을 단계별로 수행합니다.
+스킬은 **재사용 가능한 절차적 지침 묶음**입니다. `/`로 시작하는 슬래시 명령으로 호출하며 특정 작업(문서 작성, 콘텐츠 제작, 오피스 산출물 생성 등)을 단계별로 수행합니다.
 
 ### 스킬 마켓플레이스
 
@@ -122,7 +122,7 @@ Cowork 설정 화면에서 작업 폴더를 지정하고 필요한 스킬과 커
 | **오피스 산출물** | `/xlsx-creator`, `/hwpx-writer`, `/pdf-writer` |
 | **프로젝트** | `/project` |
 
-> 위 예시는 cowork-plugins 마켓플레이스에 실제로 배포된 스킬 이름입니다. 설치한 스킬에 따라 호출 가능한 명령이 달라지며, `/` 입력 시 자동완성 목록에서 확인할 수 있습니다.
+> 위 예시는 모두의 코워크 마켓플레이스에 실제로 배포된 스킬 이름입니다. 설치한 스킬에 따라 호출 가능한 명령이 달라지며 `/` 입력 시 자동완성 목록에서 확인할 수 있습니다.
 
 ## 커넥터 (Connectors)
 
@@ -221,7 +221,7 @@ Settings > Advanced:
 2. 아래 테스트 프롬프트 입력
 
 {{< terminal title="claude — cowork (테스트)" >}}
-> 내 전역 지시어를 읽고, 현재 설정된 스킬과 커넥터를 요약하세요.
+> 내 전역 지시어를 읽고 현재 설정된 스킬과 커넥터를 요약하세요.
 {{< /terminal >}}
 
 ## 문제 해결

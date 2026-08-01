@@ -1,31 +1,30 @@
 ---
 title: "SNS 최적화 가이드"
 weight: 70
-description: "인스타·LinkedIn·X·카카오·네이버 등 채널별 톤·해시태그·발행 시점을 moai-content:social-media와 moai-marketing:sns-content로 운영."
+description: "인스타·LinkedIn·X·카카오·네이버 등 채널별 톤·해시태그·발행 시점을 moai-marketer의 content-sns-content로 운영."
 geekdocBreadcrumb: true
 ---
-> 채널마다 사람이 다르고, 사람이 다르면 톤·길이·해시태그도 달라야 합니다. cowork-plugins의 SNS 스킬은 7개 채널의 알고리즘·관습을 미리 알고 있어 동일 메시지를 채널별로 자동 변형합니다.
+> 채널마다 사람이 다르고, 사람이 다르면 톤·길이·해시태그도 달라야 합니다. 마케터의 SNS 스킬은 7개 채널의 알고리즘·관습을 미리 알고 있어 동일 메시지를 채널별로 자동 변형합니다.
 
 ```mermaid
 flowchart TD
-    A["sns-content<br/>콘텐츠 달력"] --> B["social-media<br/>채널별 변형"]
-    B --> C{"포맷"}
-    C -- "카드뉴스" --> D["card-news"]
-    C -- "텍스트" --> E["ai-slop-reviewer"]
-    A -. "브랜드 가이드" .-> F["brand-identity"]
+   A["content-sns-content<br/>메시지 코어 + 채널별 변형"] --> C{"포맷"}
+   C -- "카드뉴스" --> D["content-card-news"]
+   C -- "텍스트" --> E["general-ai-slop-reviewer"]
+   A -. "브랜드 가이드" .-> F["business-brand-identity"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style E fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style E fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 ## 사용 스킬
 
 | 스킬 | 커버 채널 |
 |---|---|
-| `moai-content:social-media` | 인스타·스레드·X·LinkedIn·유튜브 쇼츠·카카오·네이버 7개 |
-| `moai-content:card-news` | 인스타 카드뉴스·캐러셀 |
-| `moai-marketing:sns-content` | 콘텐츠 달력·브랜드 보이스 가이드 |
-| `moai-marketing:brand-identity` | 톤앤매너·비주얼 가이드라인 |
+| `moai-marketer:content-sns-content` | 인스타·스레드·X·LinkedIn·유튜브 쇼츠·카카오·네이버 7개 + 콘텐츠 달력 |
+| `moai-marketer:content-card-news` | 인스타 카드뉴스·캐러셀 |
+| `moai-marketer:content-editorial-calendar` | 월간 발행 달력·시즌 이슈 배치 |
+| `moai-coworker:business-brand-identity` | 톤앤매너·비주얼 가이드라인 |
 
 ## 채널별 권장 패턴
 
@@ -47,10 +46,9 @@ flowchart TD
 {{< /terminal >}}
 
 체인:
-1. `sns-content` (메시지 코어)
-2. `social-media` (채널 변형)
-3. `card-news` (카드 디자인)
-4. `ai-slop-reviewer` (검수)
+1. `content-sns-content` (메시지 코어 + 채널 변형)
+2. `content-card-news` (카드 디자인)
+3. `general-ai-slop-reviewer` (검수)
 
 ## 콘텐츠 달력
 
@@ -84,5 +82,5 @@ flowchart TD
 
 ### Sources
 
-- moai-content 플러그인 [`social-media`](https://github.com/modu-ai/cowork-plugins/blob/main/moai-content/skills/social-media/SKILL.md), [`card-news`](https://github.com/modu-ai/cowork-plugins/blob/main/moai-content/skills/card-news/SKILL.md)
-- moai-marketing 플러그인 [`sns-content`](https://github.com/modu-ai/cowork-plugins/blob/main/moai-marketing/skills/sns-content/SKILL.md)
+- moai-marketer 플러그인 [`content-sns-content`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-marketer/skills/content-sns-content/SKILL.md), [`content-card-news`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-marketer/skills/content-card-news/SKILL.md)
+- moai-marketer 플러그인 [`content-editorial-calendar`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-marketer/skills/content-editorial-calendar/SKILL.md)

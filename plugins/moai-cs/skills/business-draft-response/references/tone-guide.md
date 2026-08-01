@@ -1,6 +1,6 @@
 # CS 응답 톤 가이드
 
-> moai-support | business-draft-response 참조 가이드 | 2026 기준
+> moai-cs | business-draft-response 참조 가이드 | 2026 기준
 
 ## 개요
 

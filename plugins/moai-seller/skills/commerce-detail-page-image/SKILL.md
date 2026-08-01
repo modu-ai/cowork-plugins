@@ -5,9 +5,9 @@ description: >
   "상세페이지 이미지 만들어줘", "13섹션 합성 이미지", "상폐 이미지", "1080 12720 합성"처럼 말하면 됩니다.
   commerce-detail-page-copy의 13섹션 카피와 사용자 상품 사진을 받아 섹션별 이미지 프롬프트를 작성하고,
   moai-media:media-higgsfield-image(Nano Banana Pro 등 11개 모델)로 13장의 이미지를 생성한 뒤
-  Pillow 기반 자체 합성 스크립트(scripts/compose.py)로 1080×12720 세로 합성 PNG를 만듭니다.
-  외부 패키지 설치 불필요 — 합성 로직은 cowork에 자체 구현되어 있습니다.
-version: "0.1.0"
+  Pillow로 1080×12720 세로 합성 PNG를 직접 조립합니다(합성 로직은 이 문서에 인라인 코드로 포함).
+  외부 패키지는 Pillow 하나만 필요합니다.
+version: "1.0.0"
 ---
 
 # 상세페이지 이미지 합성 (Detail Page Image Composer)
@@ -77,22 +77,49 @@ combined.png, 상폐 합성본, 이커머스 이미지 합성
 
 생성 실패 시: 해당 섹션은 다크 플레이스홀더(40,40,40)로 채워 합성을 진행합니다.
 
-### 4단계: 1080×12720 합성 (`scripts/compose.py`)
+### 4단계: 1080×12720 합성 (Pillow 인라인 조립)
 
-```bash
-python scripts/compose.py \
-  --sections-dir ./commerce-output/{job_id}/sections/ \
-  --output ./commerce-output/{job_id}/combined.png
+별도 스크립트 없이, 아래 Pillow 코드를 그대로 실행해 13장을 세로로 이어붙입니다.
+동작: (1) 01_hero~13_cta 순서 로드 → (2) 너비 1080으로 리사이즈(비율 유지 + 중앙 크롭) →
+(3) 섹션별 표준 높이로 조정 → (4) 세로 스택 → (5) 누락 섹션은 `(40,40,40)` 다크 플레이스홀더로 대체.
+
+```python
+from PIL import Image
+from pathlib import Path
+
+WIDTH = 1080
+# (파일명 슬러그, 표준 높이) — sections-spec.md 표와 동일
+SECTIONS = [
+    ("01_hero", 1600), ("02_pain", 800), ("03_problem", 900), ("04_story", 1000),
+    ("05_solution", 1100), ("06_how", 1000), ("07_proof", 1100), ("08_authority", 900),
+    ("09_benefits", 1000), ("10_risk", 800), ("11_compare", 900), ("12_filter", 700),
+    ("13_cta", 900),
+]
+PLACEHOLDER = (40, 40, 40)
+
+def fit(img, w, h):
+    # 비율 유지 리사이즈 후 중앙 크롭으로 정확히 w×h 맞춤
+    scale = max(w / img.width, h / img.height)
+    img = img.resize((round(img.width * scale), round(img.height * scale)), Image.LANCZOS)
+    left, top = (img.width - w) // 2, (img.height - h) // 2
+    return img.crop((left, top, left + w, top + h))
+
+sections_dir = Path("./commerce-output/JOB_ID/sections")   # 실제 job_id로 치환
+total_h = sum(h for _, h in SECTIONS)
+canvas = Image.new("RGB", (WIDTH, total_h), PLACEHOLDER)
+failed, y = [], 0
+for slug, h in SECTIONS:
+    p = sections_dir / f"{slug}.png"
+    if p.exists():
+        canvas.paste(fit(Image.open(p).convert("RGB"), WIDTH, h), (0, y))
+    else:
+        failed.append(slug)   # 누락 → 다크 플레이스홀더 그대로 유지
+    y += h
+canvas.save(sections_dir.parent / "combined.png")
+print({"size": f"{WIDTH}x{total_h}", "failed_sections": failed})
 ```
 
-스크립트 동작:
-1. 13장 섹션 PNG를 순서대로 로드
-2. 각 섹션을 표준 너비 1080으로 리사이즈 (비율 유지 + 중앙 크롭)
-3. 섹션별 표준 높이로 조정
-4. 세로로 이어붙여 1080×12720 단일 PNG 생성
-5. 누락된 섹션은 `(40,40,40)` 다크 플레이스홀더로 대체
-
-상세 알고리즘은 `scripts/compose.py`와 `scripts/README.md` 참조.
+높이 표준값은 `references/sections-spec.md`를, 섹션별 비주얼 언어는 `references/image-prompts.md`를 참조합니다.
 
 ### 5단계: 출력 보고
 
@@ -129,21 +156,16 @@ python scripts/compose.py \
 └── combined.png                # 1080×12720 세로 합성본
 ```
 
-## scripts/compose.py 사용법
+## 합성 코드 조정 포인트
 
-자세한 사용법은 `scripts/README.md` 참조. 핵심 명령:
+4단계 인라인 Pillow 코드에서 다음 값만 바꾸면 됩니다:
 
-```bash
-# 13장이 sections/ 폴더에 01_hero.png ~ 13_cta.png로 있을 때
-python scripts/compose.py \
-  --sections-dir ./commerce-output/abc12345/sections/ \
-  --output ./commerce-output/abc12345/combined.png
-```
+- `WIDTH`: 출력 너비 (기본 1080)
+- `PLACEHOLDER`: 누락 섹션 색 (기본 `(40, 40, 40)`)
+- `SECTIONS`: 섹션 순서·표준 높이 (기본 13섹션, `references/sections-spec.md`와 동일)
+- `sections_dir`: 실제 job_id 경로로 치환
 
-옵션:
-- `--width INT`: 출력 너비 (기본 1080)
-- `--placeholder-color "R,G,B"`: 누락 섹션 플레이스홀더 색 (기본 "40,40,40")
-- `--quiet`: 진행 로그 억제
+> 이 스킬은 부재 스크립트(compose.py) 참조를 원칙 A(프롬프트/인라인 코드 경로)로 대체했습니다 — 합성은 위 Pillow 코드를 직접 실행합니다.
 
 ## 사용 예시
 

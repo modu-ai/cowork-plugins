@@ -10,19 +10,19 @@ geekdocBreadcrumb: true
 
 ```mermaid
 flowchart LR
-    A["① 마켓플레이스 등록<br/>(직원 소개소 방문)"] --> B["② 직원 채용<br/>(플러그인 설치)"]
-    B --> C["③ 첫 요청<br/>(한 줄 주문)"]
-    C --> D["✅ 결과물 확인"]
+   A["① 마켓플레이스 등록<br/>(직원 소개소 방문)"] --> B["② 직원 채용<br/>(플러그인 설치)"]
+   B --> C["③ 첫 요청<br/>(한 줄 주문)"]
+   C --> D["결과물 확인"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style D fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style C fill:#e8f1ec,stroke:#265240,color:#09110f
+   style D fill:#d6e7de,stroke:#3d7d5f,stroke-width:2px,color:#09110f
 ```
 
 ## 1단계: 마켓플레이스 등록
 
-마켓플레이스 등록은 한 번만 하면 됩니다. 앱스토어에 계정을 연결해 두는 것과 같아서, 등록해 두면 이후에는 목록에서 직원을 골라 채용하기만 하면 됩니다.
+마켓플레이스 등록은 한 번만 하면 됩니다. 앱스토어에 계정을 연결해 두는 것과 같아서 등록해 두면 이후에는 목록에서 직원을 골라 채용하기만 하면 됩니다.
 
 **Claude Desktop(데스크탑 앱)에서는** 플러그인 설정 화면에서 등록합니다.
 
@@ -46,7 +46,7 @@ claude plugin marketplace add modu-ai/moai-cowork
 
 ## 2단계: 첫 직원 선택 — 어떤 일을 하고 싶으세요?
 
-직원을 전부 채용할 필요는 없습니다. 오히려 처음에는 **지금 가장 급한 일 하나에 맞는 직원 한 명**만 데려오는 것이 좋습니다. 직원이 많아질수록 Claude가 참고할 매뉴얼도 많아져서, 필요 없는 직원은 자리만 차지하기 때문입니다. 아래 표에서 내 일과 가장 가까운 줄을 찾아보세요.
+직원을 전부 채용할 필요는 없습니다. 오히려 처음에는 **지금 가장 급한 일 하나에 맞는 직원 한 명**만 데려오는 것이 좋습니다. 직원이 많아질수록 Claude가 참고할 매뉴얼도 많아져서 필요 없는 직원은 자리만 차지하기 때문입니다. 아래 표에서 내 일과 가장 가까운 줄을 찾아보세요.
 
 | 하고 싶은 일 | 채용할 직원 | 대표 업무 |
 |---|---|---|

@@ -1,0 +1,52 @@
+{
+  "name": "builder",
+  "domain": "Marketplace plugin (moai-coworker/moai/moai-designer/moai-pm/moai-seller + future expert plugins) core skill auto-generation from Claude official docs + qmd vault + web; target plugin resolved against .claude-plugin/marketplace.json",
+  "source_request": "qmd 하네스 스킬참고해서 /harness:plugin 하네스를 생성해주고 클로드 공식 문서를 기반으로 스킬을 생성하도록 코워크용, 코드용 2개 데스크탑 플러그인 설치용으로 생성하자. (자연어 진입 + qmd→공식문서→웹검색 3-Layer 리서치)",
+  "patterns": ["Pipeline", "Producer-Reviewer"],
+  "specialists": [
+    {
+      "role": "intent-parser",
+      "primitive": "sub-agent",
+      "isolation": "none",
+      "effort": "medium",
+      "model": "sonnet"
+    },
+    {
+      "role": "research-collector",
+      "primitive": "dynamic-workflow",
+      "isolation": "none",
+      "effort": "medium",
+      "model": "sonnet"
+    },
+    {
+      "role": "plugin-curator",
+      "primitive": "sub-agent",
+      "isolation": "none",
+      "effort": "medium",
+      "model": "sonnet"
+    },
+    {
+      "role": "skill-builder",
+      "primitive": "sub-agent",
+      "isolation": "none",
+      "effort": "high",
+      "model": "opus"
+    },
+    {
+      "role": "auditor",
+      "primitive": "sub-agent",
+      "isolation": "none",
+      "effort": "medium",
+      "model": "sonnet"
+    }
+  ],
+  "sprint_contract": {
+    "dimensions": ["relevance", "specificity", "practicality", "reusability", "constraint_compliance"],
+    "thresholds": {
+      "min_avg_score": 3.5,
+      "constraint_compliance": 1.0
+    }
+  },
+  "entry_command": "/harness:builder",
+  "runner_workflow": "harness-builder-run.js"
+}

@@ -4,7 +4,7 @@ description: >
   채용 프로세스 전반을 관리해주는 스킬입니다. "JD 작성해줘", "면접 질문 만들어줘",
   "신입 온보딩 계획 짜줘"처럼 말하면 됩니다. 채용 공고 작성, 면접 설계,
   평가 기준 수립, 온보딩 체크리스트, 멘토링 프로그램 설계를 지원합니다.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 채용 관리자 (business-employment-manager)
@@ -16,11 +16,13 @@ version: "0.1.0"
 | 채용 파이프라인 | JD 작성, 면접 설계, 평가 기준, 채용 프로세스 전반 |
 | 온보딩 시스템 | 신입 온보딩, 체크리스트, 멘토링 프로그램 |
 
-참조 가이드: `references/hiring-pipeline.md`, `references/onboarding-system.md`, `references/insurance-registration.md`
+참조 가이드: `references/hiring-pipeline.md`, `references/onboarding-system.md`, `references/insurance-lifecycle.md`
+
+> 입력에 지원자·직원의 개인정보(주민등록번호·연락처·계좌 등)가 포함되면 `moai-coworker:general-ai-slop-reviewer`의 `references/kr-pii-masking.md` 규칙으로 마스킹 후 처리합니다.
 
 ## 4대보험 취득신고 절차
 
-신규 직원 입사 시 사업주는 4대보험 취득신고를 기한 내 완료해야 합니다.
+신규 직원 입사 시 사업주는 4대보험 취득신고를 기한 내 완료해야 합니다. 퇴직 시에는 대칭 절차인 **상실신고**(+ 실업급여용 이직확인서, 퇴직연금 DC/DB)가 따릅니다 — `references/insurance-lifecycle.md` 참조.
 
 | 보험 | 신고 기한 | 신고 기관 |
 |------|-----------|-----------|
@@ -31,7 +33,7 @@ version: "0.1.0"
 
 4대보험 통합 신고: [4insure.kr](https://www.4insure.kr) (온라인 일괄 신고 가능)
 
-상세 절차 및 서류 목록: `references/insurance-registration.md`
+상세 절차 및 서류 목록 (취득·상실·퇴직연금): `references/insurance-lifecycle.md`
 
 ## 트리거 키워드
 
@@ -124,3 +126,10 @@ business-employment-manager → moai-coworker:general-ai-slop-reviewer → moai-
 - **오퍼 레터·근로계약서 작성**: 계약 문서는 `moai-recruiter:business-draft-offer` 스킬을 사용하세요.
 - **성과평가 체계 설계**: OKR/KPI 설정 및 평가 면담은 `moai-recruiter:business-performance-review` 스킬이 더 적합합니다.
 - **원격 근무 정책 수립**: 재택 정책, 협업 도구 선택은 `moai-recruiter:business-people-operations` 스킬을 사용하세요.
+
+## References
+
+| 파일 | 로드 조건 |
+|------|-----------|
+| references/korean-tone-reviewer.md | JD·온보딩 안내문 등 채용 문서의 직급별 경어·비즈니스 톤 적절성을 검토하는 공유 에이전트가 필요할 때 |
+| references/insurance-lifecycle.md | 4대보험 취득·상실 신고 절차, 이직확인서, 퇴직연금(DC/DB) 설정 의무가 필요할 때 |

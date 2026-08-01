@@ -1,0 +1,225 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$description": "모두의AI Design Tokens — Notion MoAI SNS 가이드라인 Ver 1.0 + visual-identity.md 흡수",
+  "$version": "1.0.0",
+  "$updatedAt": "2026-04-25",
+
+  "color": {
+    "brand": {
+      "primary": {
+        "$value": "#144a46",
+        "$type": "color",
+        "$description": "Notion 가이드라인 명시 — 어두운 청록색. 타이틀/CTA/아이콘"
+      },
+      "primary-hover": {
+        "$value": "#0e3835",
+        "$type": "color"
+      },
+      "primary-active": {
+        "$value": "#0a2825",
+        "$type": "color"
+      },
+      "ink": {
+        "$value": "#09110f",
+        "$type": "color",
+        "$description": "Notion 가이드라인 명시 — 본문 텍스트, #000 대체"
+      },
+      "background": {
+        "$value": "#f3f3f3",
+        "$type": "color",
+        "$description": "Notion 가이드라인 명시 — 페이지 배경"
+      },
+      "surface": {
+        "$value": "#ffffff",
+        "$type": "color"
+      }
+    },
+    "neutral": {
+      "50":  { "$value": "#f3f3f3", "$type": "color" },
+      "100": { "$value": "#eaeaea", "$type": "color" },
+      "200": { "$value": "#d4d4d4", "$type": "color" },
+      "300": { "$value": "#bcbcbc", "$type": "color" },
+      "400": { "$value": "#959595", "$type": "color" },
+      "500": { "$value": "#6e6e6e", "$type": "color" },
+      "600": { "$value": "#4c4c4c", "$type": "color" },
+      "700": { "$value": "#2e2e2e", "$type": "color" },
+      "800": { "$value": "#1a1f1d", "$type": "color" },
+      "900": { "$value": "#0e1513", "$type": "color" },
+      "950": { "$value": "#09110f", "$type": "color" }
+    },
+    "semantic": {
+      "success":   { "$value": "#1c7c70", "$type": "color" },
+      "warning":   { "$value": "#c47b2a", "$type": "color" },
+      "danger":    { "$value": "#c44a3a", "$type": "color" },
+      "info":      { "$value": "#2a8a8c", "$type": "color" }
+    },
+    "dark": {
+      "background":    { "$value": "#0e1513", "$type": "color" },
+      "surface":       { "$value": "#1a1f1d", "$type": "color" },
+      "primary":       { "$value": "#22938a", "$type": "color" },
+      "primary-hover": { "$value": "#2bafa3", "$type": "color" },
+      "foreground":    { "$value": "#e8eae9", "$type": "color" },
+      "muted":         { "$value": "#a8aeac", "$type": "color" },
+      "border":        { "$value": "rgba(255, 255, 255, 0.08)", "$type": "color" },
+      "border-strong": { "$value": "rgba(255, 255, 255, 0.16)", "$type": "color" }
+    },
+    "gradient": {
+      "signature": {
+        "$value": "linear-gradient(135deg, #144a46 0%, #09110f 100%)",
+        "$type": "gradient",
+        "$description": "시그니처 청록 그라디언트 — 헤더/CTA/디바이더"
+      },
+      "signature-soft": {
+        "$value": "linear-gradient(135deg, rgba(20,74,70,0.08) 0%, rgba(9,17,15,0.04) 100%)",
+        "$type": "gradient",
+        "$description": "백그라운드 미묘 톤"
+      },
+      "signature-dark": {
+        "$value": "linear-gradient(135deg, #22938a 0%, #144a46 100%)",
+        "$type": "gradient",
+        "$description": "다크모드 그라디언트"
+      }
+    }
+  },
+
+  "typography": {
+    "family": {
+      "sans": {
+        "$value": "'Pretendard Variable', 'Pretendard', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+        "$type": "fontFamily"
+      },
+      "latin": {
+        "$value": "'Inter Variable', 'Inter', system-ui, sans-serif",
+        "$type": "fontFamily"
+      },
+      "mono": {
+        "$value": "'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace",
+        "$type": "fontFamily"
+      }
+    },
+    "weight": {
+      "regular":  { "$value": 400, "$type": "fontWeight" },
+      "medium":   { "$value": 500, "$type": "fontWeight" },
+      "semibold": { "$value": 600, "$type": "fontWeight" },
+      "bold":     { "$value": 700, "$type": "fontWeight" },
+      "black":    { "$value": 900, "$type": "fontWeight" }
+    },
+    "size": {
+      "xs":      { "$value": "0.75rem",  "$type": "dimension" },
+      "sm":      { "$value": "0.875rem", "$type": "dimension" },
+      "base":    { "$value": "1rem",     "$type": "dimension" },
+      "lg":      { "$value": "1.125rem", "$type": "dimension" },
+      "xl":      { "$value": "1.25rem",  "$type": "dimension" },
+      "2xl":     { "$value": "1.5rem",   "$type": "dimension" },
+      "3xl":     { "$value": "1.875rem", "$type": "dimension" },
+      "4xl":     { "$value": "2.25rem",  "$type": "dimension" },
+      "5xl":     { "$value": "3rem",     "$type": "dimension" },
+      "6xl":     { "$value": "3.75rem",  "$type": "dimension" },
+      "display": { "$value": "clamp(2.25rem, 4.5vw, 4rem)", "$type": "dimension" }
+    },
+    "lineHeight": {
+      "tight":   { "$value": "1.05",   "$type": "number" },
+      "snug":    { "$value": "1.25",   "$type": "number" },
+      "normal":  { "$value": "1.5",    "$type": "number" },
+      "relaxed": { "$value": "1.75",   "$type": "number" }
+    },
+    "letterSpacing": {
+      "display":       { "$value": "-0.05em",  "$type": "dimension", "$description": "메인 타이틀 -50 (Notion)" },
+      "display-tight": { "$value": "-0.075em", "$type": "dimension", "$description": "히어로 강조 -75 (Notion)" },
+      "heading":       { "$value": "-0.05em",  "$type": "dimension" },
+      "body":          { "$value": "-0.025em", "$type": "dimension" },
+      "body-tight":    { "$value": "-0.05em",  "$type": "dimension" },
+      "caption":       { "$value": "0",        "$type": "dimension" }
+    }
+  },
+
+  "spacing": {
+    "0":  { "$value": "0",       "$type": "dimension" },
+    "1":  { "$value": "0.25rem", "$type": "dimension" },
+    "2":  { "$value": "0.5rem",  "$type": "dimension" },
+    "3":  { "$value": "0.75rem", "$type": "dimension" },
+    "4":  { "$value": "1rem",    "$type": "dimension" },
+    "5":  { "$value": "1.25rem", "$type": "dimension" },
+    "6":  { "$value": "1.5rem",  "$type": "dimension" },
+    "8":  { "$value": "2rem",    "$type": "dimension" },
+    "10": { "$value": "2.5rem",  "$type": "dimension" },
+    "12": { "$value": "3rem",    "$type": "dimension" },
+    "16": { "$value": "4rem",    "$type": "dimension" },
+    "20": { "$value": "5rem",    "$type": "dimension" },
+    "24": { "$value": "6rem",    "$type": "dimension" },
+    "32": { "$value": "8rem",    "$type": "dimension" }
+  },
+
+  "radius": {
+    "none": { "$value": "0",      "$type": "dimension" },
+    "sm":   { "$value": "4px",    "$type": "dimension" },
+    "md":   { "$value": "8px",    "$type": "dimension" },
+    "lg":   { "$value": "16px",   "$type": "dimension" },
+    "xl":   { "$value": "24px",   "$type": "dimension" },
+    "pill": { "$value": "32px",   "$type": "dimension" },
+    "full": { "$value": "9999px", "$type": "dimension" }
+  },
+
+  "shadow": {
+    "xs": {
+      "$value": "0 1px 2px rgba(9, 17, 15, 0.04)",
+      "$type": "shadow"
+    },
+    "sm": {
+      "$value": "0 2px 4px rgba(9, 17, 15, 0.06)",
+      "$type": "shadow"
+    },
+    "md": {
+      "$value": "0 4px 12px rgba(9, 17, 15, 0.08)",
+      "$type": "shadow"
+    },
+    "lg": {
+      "$value": "0 8px 24px rgba(9, 17, 15, 0.10)",
+      "$type": "shadow"
+    },
+    "xl": {
+      "$value": "0 16px 48px rgba(9, 17, 15, 0.12)",
+      "$type": "shadow"
+    },
+    "signature": {
+      "$value": "0 8px 32px rgba(20, 74, 70, 0.20)",
+      "$type": "shadow",
+      "$description": "청록 글로우 — 호버에서만 사용"
+    }
+  },
+
+  "motion": {
+    "duration": {
+      "instant": { "$value": "75ms",  "$type": "duration" },
+      "fast":    { "$value": "150ms", "$type": "duration" },
+      "normal":  { "$value": "250ms", "$type": "duration" },
+      "slow":    { "$value": "400ms", "$type": "duration" },
+      "page":    { "$value": "600ms", "$type": "duration" }
+    },
+    "easing": {
+      "default": { "$value": "cubic-bezier(0.4, 0, 0.2, 1)",      "$type": "cubicBezier" },
+      "bounce":  { "$value": "cubic-bezier(0.34, 1.56, 0.64, 1)", "$type": "cubicBezier" },
+      "smooth":  { "$value": "cubic-bezier(0.16, 1, 0.3, 1)",     "$type": "cubicBezier" }
+    }
+  },
+
+  "container": {
+    "sm":  { "$value": "640px",  "$type": "dimension" },
+    "md":  { "$value": "768px",  "$type": "dimension" },
+    "lg":  { "$value": "1024px", "$type": "dimension" },
+    "xl":  { "$value": "1280px", "$type": "dimension" },
+    "2xl": { "$value": "1440px", "$type": "dimension" }
+  },
+
+  "logo": {
+    "header":         { "$value": "/brand/moai-logo-4.png",     "$type": "asset" },
+    "header-dark":    { "$value": "/brand/moai-logo-4-WH.png",  "$type": "asset" },
+    "square":         { "$value": "/brand/moai-logo-1.png",     "$type": "asset" },
+    "square-dark":    { "$value": "/brand/moai-logo-1-WH.png",  "$type": "asset" },
+    "mascot":         { "$value": "/brand/moai-logo-3.png",     "$type": "asset" },
+    "mascot-alt":     { "$value": "/brand/moai-logo-5.png",     "$type": "asset" },
+    "global-mascot":  { "$value": "/brand/moai-logo-6.png",     "$type": "asset" },
+    "card":           { "$value": "/brand/moai-logo-2.png",     "$type": "asset" },
+    "card-mono":      { "$value": "/brand/moai-logo-2-1.png",   "$type": "asset" }
+  }
+}

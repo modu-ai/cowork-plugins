@@ -12,7 +12,7 @@ description: |
   - "광고 후크랑 카피 방향 잡아줘"
   소비자 심리(구매 동기·심리 방아쇠·인지 편향)와 광고 카피 공식을 적용해 캠페인 전략 문서를 만들고, 서술 부분은 moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean으로 다듬습니다.
   [책임 경계] vs moai-consultant:business-strategy-planner: 이 스킬=캠페인 단위 전술(1-3개월), 저 스킬=사업·전략 단위(1-5년). 상세페이지 카피·이미지·AI 영상은 moai-coworker:*·moai-coworker:* 사용.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 캠페인 플래너 (Campaign Planner)
@@ -198,3 +198,14 @@ P (Problem) → A (Agitate) → S (Solution)
 | 초기 (0-6개월) | 80:20 (PMF 검증) |
 | 성장 (6-18개월) | 65:35 (브랜딩 효율 시작) |
 | 성숙 (18개월+) | 50:50 (브랜드 직접 검색·팬덤) |
+
+## References
+
+| 파일 | 로드 조건 |
+|------|-----------|
+| references/customer-journey-map.md | 고객 여정 맵(인지→고려→구매→리텐션→옹호) 매핑·단계별 트리거 설계 시 |
+| references/growth-hacking.md | 그로스 해킹 — 데이터 기반 실험·바이럴 전략 수립 시 |
+| references/influencer-strategy.md | 인플루언서 티어 결정·선정 기준·협찬 제안·ROI 측정 시 |
+| references/crm-strategy.md | CRM 전략 — 고객 세분화·개인화·자동화 시퀀스 설계 시 |
+| references/ab-testing.md | A/B 테스트 가설 수립·변수 정의·통계 유의성 검증 시 |
+| references/sales-enablement.md | 영업 지원(sales enablement) 리소스·도구·프로세스 설계 시 |

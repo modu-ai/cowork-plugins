@@ -4,7 +4,7 @@ description: >
   월급 관리와 가계부, 예산 배분, 소비 회고를 도와주는 스킬입니다.
   '통장 쪼개기 해줘', '월급 관리법', '가계부 어떻게 써', '돈이 자꾸 새', '예산 짜줘'처럼 말하면 됩니다.
   통장 쪼개기, 50/30/20 예산, 가계부 분류, 소비 회고 루틴으로 매달 저축 가능액을 확보하는 돈 관리 시스템을 설계합니다.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 가계부·소비관리 (Household Budget)
@@ -88,10 +88,15 @@ version: "0.1.0"
 
 ## 관련 스킬
 
-- **moai-wealth/finance-wealth-roadmap**: 확보한 저축 가능액으로 자산 로드맵 설계
-- **moai-wealth/finance-insurance-fit**: 고정비 중 보험료 점검·다이어트
-- **moai-wealth/finance-personal-tax-saver**: 절세로 실질 가처분 소득 늘리기
-- **moai-productivity/office-retro-builder**: 소비 회고를 정기 회고 루틴에 통합
+- **moai-accountant:finance-wealth-roadmap**: 확보한 저축 가능액으로 자산 로드맵 설계
+- **moai-accountant:finance-insurance-fit**: 고정비 중 보험료 점검·다이어트
+- **moai-accountant:finance-personal-tax-saver**: 절세로 실질 가처분 소득 늘리기
+- **moai-coworker:office-retro-builder**: 소비 회고를 정기 회고 루틴에 통합
+
+| 단계 | 스킬 | 역할 |
+|------|------|------|
+| Post-검수 | `moai-coworker:general-ai-slop-reviewer` | AI 슬롭 검수 (필수) |
+| Post-검수 | `moai-writer:general-humanize-korean` | 한국어 AI 티 제거 (슬롭 검수 다음, 필수) |
 
 ## 이 스킬을 사용하지 말아야 할 때
 

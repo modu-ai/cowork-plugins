@@ -13,7 +13,7 @@ description: |
   - "네이버 블로그로 전문가 이미지 구축하고 싶어"
   자기 분석·포지셔닝·콘텐츠 주제·채널 운영 전략을 문서로 묶고, 텍스트 산출물은 moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean으로 다듬습니다. 채널별 콘텐츠 제작은 content-sns-content로 이어집니다.
   [책임 경계] vs moai-coworker:business-brand-identity: 이 스킬=개인·전문가 브랜드, 저 스킬=기업·제품 브랜드.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 개인 브랜딩 (Personal Branding)
@@ -207,3 +207,11 @@ version: "0.1.0"
 | `moai-coworker:general-ai-slop-reviewer` | 사후 체이닝(필수): 퍼스널 브랜딩 텍스트의 AI 패턴 검수 |
 | `moai-writer:general-humanize-korean` | 사후 체이닝(필수): general-ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |
 | `moai-marketer:content-blog` | 블로그 포스팅 작성 |
+
+## References
+
+| 파일 | 로드 조건 |
+|------|-----------|
+| references/personal-branding/self-assessment-framework.md | 1단계 자기 분석 시 — 전문성 인벤토리·기술 매트릭스·포지셔닝 프레임워크 상세 |
+| references/personal-branding/content-strategy.md | 4단계 콘텐츠 전략 시 — 핵심 주제(Pillar) 선정 매트릭스·콘텐츠 주제 체계 설계 |
+| references/personal-branding/channel-guide.md | 5단계 채널 전략 시 — 링크드인 등 채널별 프로필 최적화 체크리스트·운영 상세 |

@@ -1,32 +1,4 @@
 # ============================================
-# REPO TRACKING POLICY (authoritative)
-# ============================================
-# This public repo (modu-ai/moai-cowork) tracks ONLY:
-#   - plugins/                 marketplace plugins
-#   - www/                     online documentation site
-#   - LICENSE, README.md, .gitignore
-#
-# Everything below is internal development tooling/state
-# (Claude Code harness, MoAI-ADK internals) and must NEVER be
-# committed. Kept local-only. Anchored to repo root so plugins/
-# and www/ subdirs are never affected.
-# ============================================
-/CLAUDE.md
-/CLAUDE.local.md
-/.claude/
-/.claude-plugin/*
-!/.claude-plugin/marketplace.json
-/.claudeignore
-/.moai/
-plugins/**/.moai/
-/.mcp.json
-/Makefile
-/scripts/
-/.github/
-/.git_hooks/
-/CHANGELOG.md
-
-# ============================================
 # MoAI-ADK Package Distribution .gitignore
 # ============================================
 # Version: 0.33.0
@@ -185,6 +157,14 @@ secret-*.*
 .aws/config
 .aws/credentials
 
+# MoAI git-credential runtime files (defense-in-depth). The reconfigure wizard
+# delegates git provider credentials to the gh/glab CLI and never writes an
+# access token to a tracked config; these patterns ensure that if a
+# credential-bearing runtime file is ever introduced under .moai/, it is not
+# committed.
+.moai/**/credentials.yaml
+.moai/**/*.credentials
+
 # MINK agent credentials (plaintext API keys, per AC-CR-026).
 # Ignored anywhere in the tree so per-project auth dirs are never committed.
 **/.mink/auth/
@@ -260,3 +240,12 @@ dist-ssr/
 .vercel/
 .netlify/
 .firebase/
+
+# User Custom Patterns (preserved by moai update)
+CLAUDE.local.md
+.moai/logs/
+**/.moai/state/
+**/.moai/logs/
+
+# Session hook telemetry — local artifacts
+.moai/reports/session-*.md

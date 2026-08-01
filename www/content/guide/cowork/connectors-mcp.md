@@ -5,37 +5,37 @@ description: "내장 커넥터와 사용자 지정 MCP 서버로 외부 서비�
 geekdocBreadcrumb: true
 aliases: ["/cowork/connectors-mcp/"]
 ---
-> Cowork는 내장된 커넥터(connectors)와 사용자 지정 MCP 서버를 통해 외부 서비스와 데이터에 접근합니다.
+> Cowork는 내장된 커넥터(connectors)와 사용자 지정 MCP 서버로 외부 서비스와 데이터에 접근합니다.
 
 ## 연결 아키텍처
 
 ```mermaid
 flowchart TB
-    subgraph CW["Claude Cowork"]
-        CONN["커넥터 설정"]
-    end
+   subgraph CW["Claude Cowork"]
+       CONN["커넥터 설정"]
+   end
 
-    subgraph BuiltIn["내장 커넥터"]
-        GDrive["Google Drive"]
-        Gmail["Gmail"]
-        Slack["Slack"]
-        GitHub["GitHub"]
-        Cal["Google Calendar"]
-    end
+   subgraph BuiltIn["내장 커넥터"]
+       GDrive["Google Drive"]
+       Gmail["Gmail"]
+       Slack["Slack"]
+       GitHub["GitHub"]
+       Cal["Google Calendar"]
+   end
 
-    subgraph Custom["커스텀 MCP 서버"]
-        Notion["Notion"]
-        Linear["Linear"]
-        DB["사내 DB"]
-        Wiki["사내 위키"]
-    end
+   subgraph Custom["커스텀 MCP 서버"]
+       Notion["Notion"]
+       Linear["Linear"]
+       DB["사내 DB"]
+       Wiki["사내 위키"]
+   end
 
-    CONN --> BuiltIn
-    CONN --> Custom
+   CONN --> BuiltIn
+   CONN --> Custom
 
-    style CW fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style BuiltIn fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style Custom fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style CW fill:#e8f1ec,stroke:#265240,color:#09110f
+   style BuiltIn fill:#e6e6e6,stroke:#757575,color:#09110f
+   style Custom fill:#fbf0dc,stroke:#c47b2a,color:#09110f
 ```
 
 ## 내장 커넥터
@@ -48,7 +48,7 @@ Cowork 설정에서 "커넥터" 항목을 열면 Google Drive, Gmail, Google Cal
 
 ![커넥터 권한 승인 — OAuth 인증](/screenshots/cowork/cowork-connector-auth.png)
 
-커넥터 추가 시 각 서비스의 권한 승인 화면이 나타나며, OAuth를 통해 안전하게 인증합니다.
+커넥터 추가 시 각 서비스의 권한 승인 화면이 나타나며 OAuth로 안전하게 인증합니다.
 
 ### 2026-02 신규 12종 커넥터 (영업·분석·법무·마케팅)
 
@@ -83,7 +83,7 @@ Cowork 설정에서 "커넥터" 항목을 열면 Google Drive, Gmail, Google Cal
 
 ## MCP가 필요한 이유
 
-내장 커넥터가 없는 서비스 — 사내 위키, 사내 API, Notion, Linear, 공공데이터 포털 등 — 는 MCP(Model Context Protocol) 서버를 통해 연결합니다.
+내장 커넥터가 없는 서비스 — 사내 위키, 사내 API, Notion, Linear, 공공데이터 포털 등 — 는 MCP(Model Context Protocol) 서버로 연결합니다.
 
 MCP 서버는 "Claude가 이해할 수 있는 표준 인터페이스"로 도구를 노출합니다. 원격 URL을 등록하기만 하면 됩니다.
 
@@ -112,9 +112,9 @@ Meta는 2026-04-29 **Ads AI Connectors**(Meta 광고 AI 커넥터)를 오픈 베
 | read+write | 캠페인·광고세트·광고 생성/수정, 예산 조정 | 운영 시 |
 | financial | 결제·청구 관련 동작 | 필요 시에만 |
 
-쓰기·결제 동작은 실행할 때마다 사용자 승인이 필요하고, 권한 철회는 Meta Business Suite에서 합니다. `moai-marketing` 플러그인의 **`meta-ads-manager`** 스킬이 이 커넥터를 사용해 광고를 운영합니다(신규 리소스는 항상 PAUSED로 생성).
+쓰기·결제 동작은 실행할 때마다 사용자 승인이 필요하고 권한 철회는 Meta Business Suite에서 합니다. `moai-marketer` 플러그인의 **`marketing-meta-ads-manager`** 스킬이 이 커넥터를 사용해 광고를 운영합니다(신규 리소스는 항상 PAUSED로 생성).
 
-> `moai-marketing` 플러그인을 설치하면 `.mcp.json`에 `meta-ads`가 미리 등록되어 있어 위 URL 입력이 생략됩니다 — Claude 재시작 후 첫 호출 시 OAuth 로그인만 진행하면 됩니다.
+> `moai-marketer` 플러그인을 설치하면 `.mcp.json`에 `meta-ads`가 미리 등록되어 있어 위 URL 입력이 생략됩니다 — Claude 재시작 후 첫 호출 시 OAuth 로그인만 진행하면 됩니다.
 
 ## 보안 체크
 

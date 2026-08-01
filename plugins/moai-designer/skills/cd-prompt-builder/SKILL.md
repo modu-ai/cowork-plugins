@@ -12,7 +12,7 @@ description: |
   - "디자인 시스템 프롬프트"
   - "프롬프트 빌더"
 user-invocable: true
-version: 0.2.0
+version: "1.0.0"
 ---
 
 # cd-prompt-builder — 시니어 UX 패턴 프롬프트 빌더
@@ -327,5 +327,5 @@ Anthropic 공식 발표(2026-04-17)에서 강조한 **코드 기반 프로토타
 | `moai-designer:cd-brief` | 대안: 일반적 6요소 브리프 (시니어 패턴이 필요 없을 때) |
 | `moai-designer:cd-system-prep` | 선행: 디자인 시스템 자산 합성 |
 | `moai-designer:cd-slop-check` | 후속: 결과 카피 검수 |
-| `moai-product:business-ux-designer` | 보조: Claude Design 외 UX 분석 |
-| `moai-product:business-ux-researcher` | 보조: 사용자 리서치 단계 |
+| `moai-coworker:business-ux-designer` | 보조: Claude Design 외 UX 분석 |
+| `moai-coworker:business-ux-researcher` | 보조: 사용자 리서치 단계 |

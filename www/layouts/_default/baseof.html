@@ -111,34 +111,8 @@
           {{- end -}}
         </div>
 
-        {{- /* 우측 TOC rail (디자인 240px) */ -}}
+        {{- /* 우측 TOC rail — DS v2 parity: 200px, 문서 페이지에만 노출(홈은 전폭 랜딩) */ -}}
         {{- if eq .Kind "home" -}}
-        <aside class="cw-toc" aria-label="이 페이지에서">
-          <h6>이 페이지에서</h6>
-          <ul>
-            <li><a href="#quickstart" class="active" data-toc>5분 빠른 시작</a></li>
-            <li><a href="#plugins-grid" data-toc>분야별 플러그인</a></li>
-            <li><a href="#cookbook-tracks" data-toc>실전 트랙</a></li>
-            <li><a href="#release-summary" data-toc>최근 릴리스</a></li>
-          </ul>
-        </aside>
-        <script>
-        // 간단한 scroll spy — 가장 가까운 헤딩에 active 부여
-        (function(){
-          const links = document.querySelectorAll('.cw-toc a[data-toc]');
-          if (!links.length) return;
-          const sections = Array.from(links).map(a => document.getElementById(a.hash.slice(1))).filter(Boolean);
-          if (!sections.length) return;
-          const setActive = () => {
-            const y = window.scrollY + 120;
-            let i = 0;
-            for (let k = 0; k < sections.length; k++) if (sections[k].offsetTop <= y) i = k;
-            links.forEach((a, k) => a.classList.toggle('active', k === i));
-          };
-          window.addEventListener('scroll', setActive, { passive: true });
-          setActive();
-        })();
-        </script>
         {{- else if .TableOfContents -}}
         {{- $hasHeadings := gt (len (findRE "<h[23]" .Content)) 0 -}}
         {{- if $hasHeadings -}}
@@ -146,6 +120,25 @@
           <h6>이 페이지에서</h6>
           {{ .TableOfContents }}
         </aside>
+        <script>
+        // TOC scroll spy — 현재 화면 헤딩에 .active 부여 (DS v2: primary + 좌측 라인)
+        (function(){
+          var links = Array.prototype.slice.call(document.querySelectorAll('.cw-toc a[href^="#"]'));
+          if (!links.length) return;
+          var targets = links.map(function(a){
+            try { return document.getElementById(decodeURIComponent(a.hash.slice(1))); }
+            catch (e) { return null; }
+          });
+          var setActive = function(){
+            var y = window.scrollY + 120, idx = -1;
+            targets.forEach(function(el, k){ if (el && el.offsetTop <= y) idx = k; });
+            links.forEach(function(a, k){ a.classList.toggle('active', k === idx); });
+          };
+          window.addEventListener('scroll', setActive, { passive: true });
+          window.addEventListener('resize', setActive, { passive: true });
+          setActive();
+        })();
+        </script>
         {{- end -}}
         {{- end -}}
       </main>

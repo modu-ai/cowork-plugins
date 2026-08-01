@@ -2,7 +2,7 @@
 name: business-kb-article
 description: >
   고객지원 지식베이스 문서를 작성합니다. "FAQ 만들어줘", "트러블슈팅 가이드 작성해줘", "헬프센터 아티클 써줘"라고 요청할 때 사용하세요. FAQ, 사용자 가이드, 트러블슈팅 문서, 정책 안내문을 Zendesk·Freshdesk·카카오비즈니스 형식에 맞게 생성합니다.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 지식베이스 문서 작성 (KB Article)
@@ -121,9 +121,17 @@ business-kb-article → moai-coworker:general-ai-slop-reviewer → moai-writer:g
 - `moai-coworker:general-ai-slop-reviewer` — AI 티 나는 표현·과잉 수식·기계적 문장 패턴을 검수·수정
 - `moai-writer:general-humanize-korean` — 한국어 경어 자연스러움과 사람이 쓴 듯한 어조로 다듬기
 
+고객 대상 문서의 존댓말 문체(하십시오체 고정·사과/안내 화법)는 `moai-coworker:business-report-speak`의 `references/kr-honorific-tone.md` 공유 규격을 따릅니다.
+
 ## 이 스킬을 사용하지 말아야 할 때
 
 - **고객 문의 직접 응답** → moai-cs:business-draft-response 스킬이 더 적합합니다
 - **티켓 분류 및 우선순위 판단** → moai-cs:business-ticket-triage 스킬을 사용하세요
 - **에스컬레이션 처리** → moai-cs:business-escalation-manager 스킬을 사용하세요
 - **실제 Zendesk·Freshdesk 시스템에 문서 업로드** → 해당 헬프데스크 플랫폼에 직접 접속해야 합니다
+
+## References
+
+| 파일 | 로드 조건 |
+|------|-----------|
+| references/writing-standards.md | KB 문서 유형별 구조·작성 표준 등 지식베이스 문서 작성 규칙이 필요할 때 |

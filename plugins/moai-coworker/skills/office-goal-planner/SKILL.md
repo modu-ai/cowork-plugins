@@ -4,7 +4,7 @@ description: >
   목표를 막연한 다짐이 아니라 실천 가능한 계획으로 바꿔주는 스킬입니다.
   '신년 목표 세워줘', '12주 계획법으로 쪼개줘', '만다라트 만들어줘', '개인 OKR', '목표를 실천으로'처럼 말하면 됩니다.
   12주 계획·만다라트·개인 OKR 등으로 목표를 잘게 나누고 주간 루틴까지 연결해, "세웠는데 안 하는" 목표를 줄여줍니다.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 목표 플래너 (Goal Planner)
@@ -93,11 +93,18 @@ version: "0.1.0"
 - **moai-officer:office-notion-template-kit**: 목표·진척을 노션 대시보드로 관리
 - **moai-accountant:finance-wealth-roadmap**: 재무 목표를 분기 실행 계획으로 연결
 
+### 후처리 체인 (목표 서술·회고 문장 등 서술형 산출물)
+
+목표 서술·회고 문장 등 문장 산출물을 작성한 뒤에는 아래 체인으로 마무리한다.
+
+- **moai-coworker:general-ai-slop-reviewer**: AI 티 나는 표현·과장·상투구 검수·수정 (필수)
+- **moai-writer:general-humanize-korean**: 한국어 자연스러움 보정 — 슬롭 검수 다음 (필수)
+
 ## 이 스킬을 사용하지 말아야 할 때
 
-- **팀 OKR·로드맵·스프린트 백로그**: 조직 단위 목표 관리는 `moai-product`를 사용한다.
+- **팀 OKR·로드맵·스프린트 백로그**: 조직 단위 목표 관리는 `moai-coworker`를 사용한다.
 - **단발성 할 일 정리**: 목표가 아니라 오늘 할 일 정리면 `office-time-system`이 더 맞다.
-- **사업 KPI·매출 목표**: 사업 단위 지표는 `moai-product`·`moai-coworker` 계열로 보낸다.
+- **사업 KPI·매출 목표**: 사업 단위 지표는 `moai-coworker`·`moai-coworker` 계열로 보낸다.
 
 ## 출처
 

@@ -13,7 +13,7 @@ description: |
   - "기업 브랜딩 처음부터 도와줘"
   네이밍 후보 평가, 슬로건, 브랜드 스토리, 색상 시스템, 채널별 적용 가이드를 문서로 묶어 줍니다. 텍스트 산출물은 moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean으로 다듬습니다.
   [책임 경계] vs moai-marketer:marketing-personal-branding: 이 스킬=기업·제품 브랜드, 저 스킬=개인·전문가 브랜드.
-version: "6.0.0"
+version: "1.0.0"
 ---
 
 # 브랜드 아이덴티티 (Brand Identity)
@@ -26,7 +26,7 @@ version: "6.0.0"
 
 ## 책임 범위 (경계 계약)
 
-본 스킬은 **퍼스널 브랜딩 산출물 전용**입니다 — 브랜드 산출물(네이밍 후보, 슬로건, 톤앤매너 가이드, 브랜드 가이드 문서)을 만드는 데 집중합니다. 브랜드 시스템 구축(디자인 토큰 체계, DTCG 토큰 아키텍처, 브랜드 시스템 SSOT, Claude Design 연동)은 design 플러그인의 `moai-domain-brand-design` 스킬이 담당합니다(경계 계약: "산출물=cowork, 체계=design"). 시스템 구축이 필요하면 `moai-design:moai-domain-brand-design`으로 연결합니다.
+본 스킬은 **퍼스널 브랜딩 산출물 전용**입니다 — 브랜드 산출물(네이밍 후보, 슬로건, 톤앤매너 가이드, 브랜드 가이드 문서)을 만드는 데 집중합니다. 브랜드 시스템 구축(디자인 토큰 체계, DTCG 토큰 아키텍처, 브랜드 시스템 SSOT, Claude Design 연동)은 design 플러그인의 `moai-domain-brand-design` 스킬이 담당합니다(경계 계약: "산출물=cowork, 체계=design"). 시스템 구축이 필요하면 `moai-designer:moai-domain-brand-design`으로 연결합니다.
 
 ## 트리거 키워드
 
@@ -201,4 +201,13 @@ version: "6.0.0"
 | `moai-marketer:content-sns-content` | SNS 콘텐츠 제작 |
 | `moai-coworker:general-ai-slop-reviewer` | 사후 체이닝(필수): 브랜드 텍스트 산출물의 AI 패턴 검수 |
 | `moai-writer:general-humanize-korean` | 사후 체이닝(필수): general-ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |
-| `moai-design-system` | 디자인 시스템/컴포넌트 구축 |
+| `moai-designer:design-system-library` | 디자인 시스템/컴포넌트 구축 |
+
+## References
+
+| 파일 | 로드 조건 |
+|------|----------|
+| references/brand-identity/naming-methodology.md | 브랜드 네이밍 개발 시 (12가지 기법·SMILE 정량 평가·한국어 음운론 분석·도메인/상표 사전검증) |
+| references/brand-identity/archetype-framework.md | 브랜드 성격·톤앤보이스 설계 시 (융 12 아키타입 기반, 한국 브랜드 예시) |
+| references/brand-identity/color-psychology.md | 브랜드 컬러 시스템 설계 시 (색상별 심리 반응·한국 문화 색상 의미·팔레트·접근성 기준) |
+| references/brand-identity/brand-guide-template.md | 1-5단계 산출물을 통합 가이드라인 문서로 정리하는 6단계에서 (fill-in-the-blank 템플릿) |

@@ -1,6 +1,6 @@
 # project 스킬 references — 전체 인덱스
 
-`plugins/moai-pm/skills/project/references/`의 레퍼런스 파일 인덱스. project 스킬은 개발(`/project --code`)을 제외한 모든 Claude Cowork(Desktop) 작업의 슈퍼 오케스트레이터/어드바이저다.
+`plugins/moai-pm/skills/project/references/`의 레퍼런스 파일 인덱스. project 스킬은 개발을 제외한 모든 Claude Cowork(Desktop) 작업의 슈퍼 오케스트레이터/어드바이저다.
 
 ## 진입점
 
@@ -15,7 +15,7 @@
 | `cowork-setup.md` | 코워커·작가 8-Phase 정본(역할 자동 감지·체인 프리셋·커스텀 에이전트 생성·인용 가드) |
 | `designer-setup.md` | 디자인 자산 5-Phase 서브 프로토콜 |
 | `init-protocol.md` | 인터뷰 질문 스키마·인벤토리 스캔·Gap Detection·재개(Re-entry) 상세 |
-| `context-collector.md` | 맥락 등급(A/B/C)·심화 인터뷰·모호성 감지·맥락 적용 규칙 |
+| `context-collector.md` | 맥락 등급(A/B/C)·2-Stage 일괄 설문 플로우·모호성 감지·맥락 적용 규칙 |
 | `claudemd-generator.md` | CLAUDE.md 변수 치환·200라인 예산·HARD 블록 보존 정책 |
 | `execution-protocol.md` | 스킬 체인 순차 실행·검증 깊이 사다리·검색 스케일링 |
 | `evaluation-protocol.md` | 5차원 산출물 평가(정확성·완전성·실용성·톤·도메인) |

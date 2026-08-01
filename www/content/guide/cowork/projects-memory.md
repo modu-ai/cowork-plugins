@@ -23,53 +23,53 @@ aliases: ["/cowork/projects-memory/"]
 
 ```mermaid
 flowchart TB
-    subgraph OS["운영체제 (macOS / Windows)"]
-        FS["파일 시스템<br>전체 디스크"]
-        SYS["시스템 권한<br>(개인정보 보호 → 파일 및 폴더)"]
-    end
+   subgraph OS["운영체제 (macOS / Windows)"]
+       FS["파일 시스템<br>전체 디스크"]
+       SYS["시스템 권한<br>(개인정보 보호 → 파일 및 폴더)"]
+   end
 
-    subgraph CW["Claude Desktop · Cowork 모드"]
-        APP["앱 본체<br>(로그인 · 플랜 · 커넥터)"]
+   subgraph CW["Claude Desktop · Cowork 모드"]
+       APP["앱 본체<br>(로그인 · 플랜 · 커넥터)"]
 
-        subgraph P1["📁 프로젝트 A — '주간 보고'"]
-            FOLDER_A["작업 폴더<br>~/work/weekly-report/"]
-            CLAUDE_A["CLAUDE.md<br>(프로젝트 지침)"]
-            MEM_A["./memory/<br>(프로젝트 메모리)"]
-            PLUG_A["활성 플러그인<br>(moai-office · moai-content)"]
+       subgraph P1["프로젝트 A — '주간 보고'"]
+           FOLDER_A["작업 폴더<br>~/work/weekly-report/"]
+           CLAUDE_A["CLAUDE.md<br>(프로젝트 지침)"]
+           MEM_A["./memory/<br>(프로젝트 메모리)"]
+           PLUG_A["활성 플러그인<br>(moai-officer · moai-marketer)"]
 
-            subgraph T1A["새 태스크 1<br>(2026-04-15)"]
-                CHAT_1A["대화 컨텍스트<br>+ 자동 압축"]
-            end
-            subgraph T2A["새 태스크 2<br>(2026-04-22)"]
-                CHAT_2A["대화 컨텍스트<br>+ 자동 압축"]
-            end
-        end
+           subgraph T1A["새 태스크 1<br>(2026-04-15)"]
+               CHAT_1A["대화 컨텍스트<br>+ 자동 압축"]
+           end
+           subgraph T2A["새 태스크 2<br>(2026-04-22)"]
+               CHAT_2A["대화 컨텍스트<br>+ 자동 압축"]
+           end
+       end
 
-        subgraph P2["📁 프로젝트 B — '계약 검토'"]
-            FOLDER_B["작업 폴더<br>~/work/legal/"]
-            CLAUDE_B["CLAUDE.md"]
-            MEM_B["./memory/"]
-        end
-    end
+       subgraph P2["프로젝트 B — '계약 검토'"]
+           FOLDER_B["작업 폴더<br>~/work/legal/"]
+           CLAUDE_B["CLAUDE.md"]
+           MEM_B["./memory/"]
+       end
+   end
 
-    SYS -.허용.-> FOLDER_A
-    SYS -.허용.-> FOLDER_B
-    FOLDER_A --> T1A
-    FOLDER_A --> T2A
-    CLAUDE_A --> T1A
-    CLAUDE_A --> T2A
-    MEM_A <-.축적.-> T1A
-    MEM_A <-.축적.-> T2A
+   SYS -.허용.-> FOLDER_A
+   SYS -.허용.-> FOLDER_B
+   FOLDER_A --> T1A
+   FOLDER_A --> T2A
+   CLAUDE_A --> T1A
+   CLAUDE_A --> T2A
+   MEM_A <-.축적.-> T1A
+   MEM_A <-.축적.-> T2A
 
-    style P1 fill:#eaeaea,stroke:#6e6e6e,stroke-width:2px,color:#09110f
-    style P2 fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
-    style OS fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style CW fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style P1 fill:#e6e6e6,stroke:#757575,stroke-width:2px,color:#09110f
+   style P2 fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
+   style OS fill:#e6e6e6,stroke:#757575,color:#09110f
+   style CW fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 핵심:
 
-- **OS가 가장 바깥** — 파일 시스템 전체를 갖고 있고, Cowork에는 "허용한 폴더만" 내어줍니다.
+- **OS가 가장 바깥** — 파일 시스템 전체를 관리하며 Cowork에는 "허용한 폴더만" 내어줍니다.
 - **Cowork 앱 안에 프로젝트가 여러 개** — 각 프로젝트는 자기 폴더·지침·메모리·플러그인 구성을 따로 가집니다.
 - **새 태스크(새 대화)는 프로젝트 안에서 시작** — 같은 프로젝트의 다른 태스크끼리는 메모리를 공유합니다.
 - **프로젝트가 다르면 폴더도 메모리도 다릅니다** — A에서 본 파일을 B는 보지 못합니다.
@@ -95,7 +95,7 @@ A. 아닙니다. 같은 프로젝트 안에서는 이전 태스크들이 쌓아�
 A. 가능하지만 권장하지 않습니다. 메모리가 섞여서 라우터가 헷갈립니다. **하나의 큰 일 = 하나의 프로젝트** 원칙이 안전합니다 (예: "주간 보고서", "Q2 사업계획", "고객사 NDA 검토").
 
 **Q. 프로젝트를 만들지 않고 그냥 대화만 시작하면요?**
-A. Cowork는 "기본(default) 폴더"를 임시로 잡습니다. 그 대화의 결과물은 메모리에 영구 저장되지 않을 수 있고, 다음 대화에서 맥락이 사라질 수 있습니다. **반복 작업이라면 반드시 프로젝트로 묶으세요.**
+A. Cowork는 "기본(default) 폴더"를 임시로 잡습니다. 그 대화의 결과물은 메모리에 영구 저장되지 않을 수 있고 다음 대화에서 맥락이 사라질 수 있습니다. **반복 작업이라면 반드시 프로젝트로 묶으세요.**
 
 ## 작업 폴더 — 권한이 어디까지 미치나
 
@@ -103,22 +103,22 @@ A. Cowork는 "기본(default) 폴더"를 임시로 잡습니다. 그 대화의 �
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    participant U as 사용자
-    participant OS as 운영체제
-    participant CW as Cowork 앱
-    participant P as 프로젝트
-    participant T as 새 태스크
+   autonumber
+   participant U as 사용자
+   participant OS as 운영체제
+   participant CW as Cowork 앱
+   participant P as 프로젝트
+   participant T as 새 태스크
 
-    U->>CW: "이 폴더를 작업 폴더로 선택"
-    CW->>OS: 폴더 접근 권한 요청
-    OS->>U: "Claude가 ~/work/A에 접근하도록 허용?"
-    U->>OS: 허용
-    OS-->>CW: 권한 부여 (해당 폴더만)
-    CW->>P: 프로젝트에 폴더 바인딩
-    P->>T: 새 태스크 시작 시 폴더 상속
-    T->>T: 폴더 안 파일만 R/W
-    Note over T: 폴더 밖 파일은 보이지 않음
+   U->>CW: "이 폴더를 작업 폴더로 선택"
+   CW->>OS: 폴더 접근 권한 요청
+   OS->>U: "Claude가 ~/work/A에 접근하도록 허용?"
+   U->>OS: 허용
+   OS-->>CW: 권한 부여 (해당 폴더만)
+   CW->>P: 프로젝트에 폴더 바인딩
+   P->>T: 새 태스크 시작 시 폴더 상속
+   T->>T: 폴더 안 파일만 R/W
+   Note over T: 폴더 밖 파일은 보이지 않음
 ```
 
 층별 의미:
@@ -153,43 +153,43 @@ OS 층의 권한 설정·재허용·문제 진단은 [폴더와 권한 가이드
 
 ## 프로젝트 설계 — 어떤 단위로 묶을까
 
-같은 폴더·같은 지침·같은 플러그인을 쓰는 일이라면 한 프로젝트로 묶고, 그렇지 않으면 분리합니다. 결정 트리:
+같은 폴더·같은 지침·같은 플러그인을 쓰는 일이라면 한 프로젝트로 묶고 그렇지 않으면 분리합니다. 결정 트리:
 
 ```mermaid
 flowchart TD
-    Q1{"같은 폴더의<br>파일을 다루는가?"}
-    Q2{"같은 지침<br>(CLAUDE.md)이<br>적용되는가?"}
-    Q3{"같은 플러그인<br>구성이 필요한가?"}
-    SAME[같은 프로젝트로 묶기]
-    SPLIT[새 프로젝트로 분리]
+   Q1{"같은 폴더의<br>파일을 다루는가?"}
+   Q2{"같은 지침<br>(CLAUDE.md)이<br>적용되는가?"}
+   Q3{"같은 플러그인<br>구성이 필요한가?"}
+   SAME[같은 프로젝트로 묶기]
+   SPLIT[새 프로젝트로 분리]
 
-    Q1 -- 예 --> Q2
-    Q1 -- 아니오 --> SPLIT
-    Q2 -- 예 --> Q3
-    Q2 -- 아니오 --> SPLIT
-    Q3 -- 예 --> SAME
-    Q3 -- 아니오 --> SPLIT
+   Q1 -- 예 --> Q2
+   Q1 -- 아니오 --> SPLIT
+   Q2 -- 예 --> Q3
+   Q2 -- 아니오 --> SPLIT
+   Q3 -- 예 --> SAME
+   Q3 -- 아니오 --> SPLIT
 
-    style SAME fill:#d6ebe7,stroke:#1c7c70,color:#09110f
-    style SPLIT fill:#f5dcd7,stroke:#c44a3a,color:#09110f
+   style SAME fill:#d6e7de,stroke:#3d7d5f,color:#09110f
+   style SPLIT fill:#f5dcd7,stroke:#c44a3a,color:#09110f
 ```
 
 ## 베스트 프랙티스 — 5가지 권장 습관
 
 1. **하나의 큰 일 = 하나의 프로젝트.** 작업 폴더는 짧은 경로(macOS: `~/w/<name>/`, Windows: `C:\w\<name>\`)에 두세요. 한국어 폴더명은 길지 않게 유지합니다.
-2. **`/project init` 한 번 실행.** `moai-core` 플러그인이 있다면 첫 진입 시 자연어로 "이 프로젝트 초기화해줘"라고 입력하세요. 산출물별 스킬 체인이 `CLAUDE.md`에 기록됩니다.
+2. **`/project` 한 번 실행.** `moai-pm` 플러그인이 있다면 첫 진입 시 자연어로 "이 프로젝트 초기화해줘"라고 입력하세요. 산출물별 스킬 체인이 `CLAUDE.md`에 기록됩니다.
 3. **민감 데이터는 격리 폴더에 따로.** 주민번호·계좌·계약 단가 같은 정보는 별도 프로젝트(별도 폴더)로 분리해 메모리 오염을 막습니다.
 4. **메모리는 정리하기.** 분기에 한 번 정도 `./memory/` 파일을 훑어 오래된 항목을 지웁니다. 메모리가 누적되면 라우터가 옛 결정을 따라가는 부작용이 있습니다.
 5. **새 대화로 자주 끊어가기.** 한 태스크가 너무 길어지면 자동 압축이 디테일을 요약해 품질이 흔들립니다. 핵심 산출물을 폴더에 저장한 뒤 새 태스크로 넘어가세요.
 
 ## 가져오기·내보내기
 
-대화에 포함된 메모리는 **설정 → 데이터 → 메모리 내보내기**로 백업하고, 다른 프로젝트에 가져오기로 옮길 수 있습니다. 회사 PC를 교체할 때, 또는 같은 지침을 여러 프로젝트에서 재사용할 때 유용합니다.
+대화에 포함된 메모리는 **설정 → 데이터 → 메모리 내보내기**로 백업하고 다른 프로젝트에 가져오기로 옮길 수 있습니다. 회사 PC를 교체할 때 또는 같은 지침을 여러 프로젝트에서 재사용할 때 유용합니다.
 
 ## 자주 겪는 실수
 
 - **"새 대화"를 누른 뒤 폴더가 사라진 것 같다** — 사이드바를 보면 프로젝트 안에서 새 태스크가 시작된 것이고 폴더는 그대로입니다. 만약 진짜로 사라졌다면 프로젝트 밖에서 대화를 시작한 경우입니다.
-- **다른 프로젝트의 파일을 참조하라고 했는데 안 됨** — 현재 프로젝트의 작업 폴더 밖이라 권한이 없습니다. 필요한 파일을 현재 작업 폴더로 복사하거나, 그 파일이 있는 프로젝트에서 작업하세요. 한 프로젝트에서 여러 위치를 다루는 우회책은 [폴더와 권한 가이드](../permissions/#프로젝트별-폴더--한-프로젝트에서-여러-위치를-다루고-싶을-때)를 참고하세요.
+- **다른 프로젝트의 파일을 참조하라고 했는데 안 됨** — 현재 프로젝트의 작업 폴더 밖이라 권한이 없습니다. 필요한 파일을 현재 작업 폴더로 복사하거나 그 파일이 있는 프로젝트에서 작업하세요. 한 프로젝트에서 여러 위치를 다루는 우회책은 [폴더와 권한 가이드](../permissions/#프로젝트별-폴더--한-프로젝트에서-여러-위치를-다루고-싶을-때)를 참고하세요.
 - **메모리가 너무 보수적이다** — 같은 결정이 3번 이상 반복되면 메모리에 명시적으로 기록하라고 요청하세요: `> "이 결정 메모리에 feedback으로 저장해줘"`
 
 ## 다음 단계

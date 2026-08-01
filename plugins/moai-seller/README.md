@@ -1,6 +1,6 @@
 # 셀러 (moai-seller)
 
-이커머스 셀러 전담 AI 직원입니다. 스마트스토어·아임웹·카페24 MCP 연동과 상세페이지·마켓플레이스·광고·CRM 등 커머스 실무 스킬 29종을 하나의 플러그인으로 제공합니다. 슬래시 명령을 외울 필요 없이 자연어로 요청하면 매칭되는 스킬이 자동 호출됩니다. VOC 분류(`commerce-voc-triage`)와 채널 메시지(`commerce-channel-message`)는 `moai-cs`(CS매니저)로 이관되었습니다.
+이커머스 셀러 전담 AI 직원입니다. 스마트스토어·아임웹·카페24 MCP 연동과 상세페이지·마켓플레이스·광고·CRM 등 커머스 실무 스킬 31종을 하나의 플러그인으로 제공합니다. 슬래시 명령을 외울 필요 없이 자연어로 요청하면 매칭되는 스킬이 자동 호출됩니다. VOC 분류(`commerce-voc-triage`)와 채널 메시지(`commerce-channel-message`)는 `moai-cs`(CS매니저)로 이관되었습니다.
 
 **이런 분께 추천**: 온라인 셀러 · 이커머스 운영자 · 1인 브랜드 대표
 
@@ -20,7 +20,7 @@ claude plugin install moai-seller@moai-cowork
 /plugin install moai-seller
 ```
 
-## 스킬 29종
+## 스킬 31종
 
 호출 형식: `/moai-seller:commerce-<스킬명>` — 예: `/moai-seller:commerce-detail-page-planner`. 자연어 요청("우리 제품 상세페이지 기획해줘")으로도 자동 매칭됩니다.
 
@@ -46,11 +46,12 @@ claude plugin install moai-seller@moai-cowork
 | `commerce-marketplace-curation` | 큐레이션 커머스(카카오 등) 입점 |
 | `commerce-marketplace-d2c` | 자사몰(D2C) 구축·운영 전략 |
 
-### 광고·프로모션 (7종)
+### 광고·프로모션 (8종)
 
 | 스킬 | 역할 |
 |------|------|
 | `commerce-marketplace-coupang-ads` | 쿠팡 광고 운영 |
+| `commerce-marketplace-naver-ads` | 네이버 검색광고(쇼핑검색·파워링크·브랜드검색·GFA) 운영 |
 | `commerce-coupang-ad-optimizer` | 쿠팡 광고 최적화 |
 | `commerce-promotion-planner` | 프로모션·할인 기획 |
 | `commerce-live-commerce` | 라이브커머스 기획·운영 |
@@ -67,7 +68,7 @@ claude plugin install moai-seller@moai-cowork
 
 > 채널 메시지(`commerce-channel-message`)·VOC 분류(`commerce-voc-triage`)는 `moai-cs`(CS매니저)로 이관되었습니다.
 
-### 전략·분석 (8종)
+### 전략·분석 (9종)
 
 | 스킬 | 역할 |
 |------|------|
@@ -78,7 +79,8 @@ claude plugin install moai-seller@moai-cowork
 | `commerce-margin-calculator` | 마진·손익 계산 |
 | `commerce-morning-brief` | 셀러 모닝 브리프 |
 | `commerce-automation-audit` | 운영 자동화 진단 |
-| `commerce-marketing-compliance-kr` | 표시광고법 등 KR 마케팅 컴플라이언스 점검 |
+| `commerce-message-compliance-kr` | 정통망법 메시지 발송 규제(스팸) 게이트 |
+| `commerce-ad-claim-compliance-kr` | 표시광고법·식약처·전상법 광고 문구 검증 게이트 |
 
 ## MCP 연동 3종
 
@@ -103,4 +105,4 @@ claude plugin install moai-seller@moai-cowork
 
 ## 라이선스
 
-LicenseRef-MoAI-NC-ND-1.0 · © modu-ai (email@mo.ai.kr)
+Apache-2.0 · © 2026 modu-ai (email@mo.ai.kr) — 산출물은 이용자 소유([LICENSE-OUTPUT.md](../../LICENSE-OUTPUT.md))

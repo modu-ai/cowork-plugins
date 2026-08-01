@@ -1,6 +1,6 @@
 # 데이터 애널리스트 (moai-analyst)
 
-데이터·공공데이터 분석 전담 AI 직원입니다. 데이터 프로파일링·시각화, 공공데이터 조회(부동산·경매·주식·KOSIS 통계·건축물대장·DART 전자공시) 스킬 11종과 KOSIS 통계·건축HUB·DART MCP 연동을 하나의 플러그인으로 제공합니다. 슬래시 명령을 외울 필요 없이 자연어로 요청하면 매칭되는 스킬이 자동 호출됩니다.
+데이터·공공데이터 분석 전담 AI 직원입니다. 데이터 프로파일링·시각화, 공공데이터 조회(부동산·경매·주식·KOSIS 통계·건축물대장·DART 전자공시) 스킬 7종과 KOSIS 통계·건축HUB·DART MCP 연동을 하나의 플러그인으로 제공합니다. 슬래시 명령을 외울 필요 없이 자연어로 요청하면 매칭되는 스킬이 자동 호출됩니다.
 
 > **분리 안내**: 본 플러그인의 데이터·공공데이터 스킬들은 `moai-officer`에서 분리되었습니다(오피스 문서 생성 스킬은 moai-officer에 잔류). 신규 호출은 `moai-analyst:<스킬명>` 네임스페이스를 사용하세요.
 
@@ -20,7 +20,7 @@ claude plugin install moai-analyst@moai-cowork
 /plugin install moai-analyst
 ```
 
-## 스킬 11종
+## 스킬 7종
 
 호출 형식: `/moai-analyst:office-<스킬명>` — 예: `/moai-analyst:office-public-data-public-data`. 자연어 요청("지역별 인구통계 조회해줘", "이 CSV 분석해줘")으로도 자동 매칭됩니다.
 
@@ -69,4 +69,4 @@ claude plugin install moai-analyst@moai-cowork
 
 ## 라이선스
 
-LicenseRef-MoAI-NC-ND-1.0 · © modu-ai (email@mo.ai.kr)
+Apache-2.0 · © 2026 modu-ai (email@mo.ai.kr) — 산출물은 이용자 소유([LICENSE-OUTPUT.md](../../LICENSE-OUTPUT.md))

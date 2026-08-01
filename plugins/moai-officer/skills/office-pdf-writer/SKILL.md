@@ -13,10 +13,10 @@ description: |
   - "한글 PDF 만들어줘", "한국어 PDF", "일본어 PDF", "중국어 PDF", "다국어 PDF", "CJK PDF"
   - "한글 깨짐 없는 PDF", "한자 깨짐 없는 PDF", "폰트 임베딩 PDF"
   - "Markdown을 PDF로", "JSON 입력으로 PDF 문서 생성"
-  PDF 생성·변환 요청 시 weasyprint를 직접 설치·호출하거나 Claude 기본 도구로 처리하지 말고,
-  반드시 이 스킬(scripts/render_pdf.py)을 사용하세요. 이 스킬이 내부적으로 weasyprint를
-  올바른 CJK 폰트 설정과 함께 호출합니다.
-version: "0.1.0"
+  PDF 생성·변환 요청 시 이 스킬의 표준 경로(아래 인라인 weasyprint 코드)를 사용하세요.
+  입력 감지 → HTML 빌드 → Noto Sans CJK @font-face 주입 → weasyprint 렌더를
+  이 문서의 인라인 코드로 직접 수행하며, 올바른 CJK 폰트 설정을 함께 적용합니다.
+version: "1.0.0"
 ---
 
 # PDF 생성기 (office-pdf-writer)
@@ -41,7 +41,7 @@ CJK(한·중·일) 글리프는 번들 **Noto Sans CJK** 폰트를 `@font-face`�
 ## 워크플로우
 
 ```
-0. [폰트 확인]  → assets/fonts/ 에 Noto Sans CJK OTF 4종 존재 확인, 누락 시 download_fonts.py 자동 호출
+0. [폰트 확인]  → 시스템 Noto Sans CJK KR 존재 확인, 없으면 폰트 미지정 폴백 (weasyprint fontconfig 자동 폴백)
 1. [입력 감지]  → HTML(완성 문서) / Markdown / JSON / Text 자동 감지
 2. [HTML 빌드]  → 완성 HTML은 그대로, 그 외는 HTML로 변환 (+ 기본 문서 CSS)
 3. [폰트 주입]  → Noto Sans CJK @font-face CSS 결합 (CJK 깨짐 방지)
@@ -49,44 +49,24 @@ CJK(한·중·일) 글리프는 번들 **Noto Sans CJK** 폰트를 `@font-face`�
 5. [자체 검수]  → 산출 PDF 재확인 (페이지 수·CJK 표시·플레이스홀더 잔존)
 ```
 
-핵심 실행은 번들 스크립트 한 줄로 끝납니다:
+핵심 실행은 아래 인라인 weasyprint 코드로 직접 수행합니다(별도 스크립트 없음). 입력 파일 확장자·내용으로
+HTML / Markdown / JSON / Text를 감지해 분기하고, 완성 HTML은 자체 CSS를 보존한 채, 그 외는 기본 서식 +
+Noto Sans CJK를 적용합니다.
 
-```bash
-# HTML 리포트를 디자인 그대로 PDF로 (가장 흔한 케이스)
-python3 "${CLAUDE_PLUGIN_ROOT}/skills/office-pdf-writer/scripts/render_pdf.py" --in report.html --out report.pdf
+### 0단계: 폰트 보장 (조건부 경로)
 
-# Markdown / JSON / Text → PDF
-python3 "${CLAUDE_PLUGIN_ROOT}/skills/office-pdf-writer/scripts/render_pdf.py" --in doc.md   --out doc.pdf
-python3 "${CLAUDE_PLUGIN_ROOT}/skills/office-pdf-writer/scripts/render_pdf.py" --in data.json --out doc.pdf
-```
+CJK 폰트는 다음 우선순위로 해결합니다 — 별도 다운로드 스크립트 없이:
 
-`scripts/render_pdf.py`가 입력 종류를 자동 감지하고, 완성 HTML은 자체 CSS를 보존한 채 렌더하며,
-Markdown/JSON/Text는 기본 서식 + Noto Sans CJK를 적용합니다.
+1. **시스템 폰트 우선**: 시스템에 `Noto Sans CJK KR`이 설치돼 있으면 weasyprint fontconfig가 자동 폴백하므로
+   `@font-face` 없이도 CJK가 안전하게 표시됩니다. 대부분의 Cowork 샌드박스·Linux/macOS가 이에 해당합니다.
+2. **번들 폰트가 있으면 임베딩**: `${CLAUDE_PLUGIN_ROOT}/skills/office-pdf-writer/assets/fonts/`에 Noto Sans CJK
+   OTF가 있으면 아래 코드의 `@font-face`가 자동으로 임베딩합니다(있으면 사용, 없으면 1번 폴백).
+3. **둘 다 없을 때**: 사용자에게 시스템 `Noto Sans CJK KR` 설치를 안내합니다 (macOS `brew install --cask font-noto-sans-cjk-kr`,
+   Debian/Ubuntu `apt install fonts-noto-cjk`). 자동 대량 다운로드는 수행하지 않습니다.
 
-### 0단계: 폰트 자동 보장 (스킬 진입점)
+### 1~4단계: weasyprint 렌더링 인라인 코드
 
-```python
-import subprocess, sys
-from pathlib import Path
-
-SKILL_ROOT = Path(__file__).parent
-DOWNLOADER = SKILL_ROOT / "scripts" / "download_fonts.py"
-
-def ensure_fonts():
-    """Noto Sans CJK OTF 4종 존재 검증, 누락 시 자동 다운로드."""
-    if subprocess.run([sys.executable, str(DOWNLOADER), "--check"]).returncode != 0:
-        if subprocess.run([sys.executable, str(DOWNLOADER)]).returncode != 0:
-            raise RuntimeError("Noto Sans CJK 폰트 다운로드 실패. 네트워크/GitHub 접근 확인 필요.")
-
-ensure_fonts()  # PDF 생성 직전 호출
-```
-
-다운로드는 최초 1회(약 64MB)만 발생하며, 이후 `--check`가 즉시 통과합니다. 시스템에
-`Noto Sans CJK KR`이 이미 있으면 폰트가 없어도 weasyprint가 자동 폴백하므로 CJK는 안전하게 표시됩니다.
-
-### 1~4단계: weasyprint 렌더링 핵심 코드
-
-`scripts/render_pdf.py`의 핵심은 다음과 같습니다 (전체 구현은 스크립트 참조):
+아래 코드를 그대로 실행합니다:
 
 ```python
 from weasyprint import HTML, CSS
@@ -112,6 +92,8 @@ HTML(string=plain_html, base_url=".").write_pdf("out.pdf", stylesheets=[CSS(stri
 
 `BASE_CSS`는 `@page { size:A4; margin:20mm }` + 본문/제목/표 스타일로, `font-family`에
 `'Noto Sans CJK'`를 지정해 CJK가 항상 임베딩 폰트로 렌더되게 합니다.
+
+> 이 스킬은 부재 스크립트(render_pdf.py·download_fonts.py) 참조를 원칙 A(프롬프트/인라인 코드 경로)로 대체했습니다 — 위 weasyprint 코드를 직접 실행하고, 폰트는 시스템 폴백을 1차 경로로 씁니다.
 
 ## 의존성
 
@@ -188,7 +170,7 @@ PDF 생성 후 산출 `.pdf`를 다시 열어 **플레이스홀더 잔존·페�
 
 | 증상 | 원인 | 해결 방법 |
 |------|------|-----------|
-| 한글/한자가 □□□ 또는 공백 | CJK 폰트 미해결 | `download_fonts.py` 실행으로 번들 OTF 확보, 또는 시스템 `Noto Sans CJK KR` 설치 |
+| 한글/한자가 □□□ 또는 공백 | CJK 폰트 미해결 | 시스템 `Noto Sans CJK KR` 설치 (macOS `brew install --cask font-noto-sans-cjk-kr`, Debian/Ubuntu `apt install fonts-noto-cjk`), 또는 `assets/fonts/`에 Noto Sans CJK OTF 배치 후 재렌더 |
 | `ModuleNotFoundError: weasyprint` | weasyprint 미설치 | `pip install weasyprint` 실행 |
 | `cannot load library 'libpango...'` | 시스템 라이브러리 부재 | (Debian/Ubuntu) `apt install libpango-1.0-0 libpangocairo-1.0-0`, (macOS) `brew install pango` |
 | HTML 디자인이 PDF에서 깨짐 | 완성 HTML이 조각으로 오인됨 | 입력에 `<html>`/`<body>` 래퍼 포함, 또는 `--in *.html` 파일로 전달 |

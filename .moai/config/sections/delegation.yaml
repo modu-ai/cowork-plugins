@@ -1,0 +1,137 @@
+delegation:
+    agents:
+        e2e-tester:
+            - moai-foundation-quality
+            - moai-ref-testing-pyramid
+        manager-design:
+            - moai-ref-react-patterns
+            - moai-foundation-thinking
+        manager-develop:
+            - moai-workflow-tdd
+            - moai-workflow-ddd
+        manager-docs:
+            - moai-workflow-project
+        manager-spec:
+            - moai-workflow-spec
+            - moai-foundation-thinking
+        super-advisor:
+            - moai-foundation-thinking
+    domain_skills:
+        authoring:
+            - moai-foundation-cc
+        backend:
+            - moai-ref-api-patterns
+            - moai-domain-backend
+        database:
+            - moai-domain-database
+        frontend:
+            - moai-ref-react-patterns
+            - moai-domain-frontend
+        git:
+            - moai-ref-git-workflow
+        security:
+            - moai-ref-owasp-checklist
+            - moai-ref-llm-security
+            - moai-ref-secops
+            - moai-ref-supply-chain
+        testing:
+            - moai-ref-testing-pyramid
+            - moai-workflow-testing
+    learning:
+        auto_apply: false
+        observe: routing-ledger
+        propose_via: harness-tier-ladder
+    subcommands:
+        clean:
+            agents:
+                - manager-develop
+            skills:
+                - moai-workflow-ddd
+        codemaps:
+            agents:
+                - Explore
+                - manager-docs
+            skills:
+                - moai-workflow-project
+        default:
+            agents:
+                - Explore
+                - manager-spec
+                - plan-auditor
+                - manager-develop
+                - manager-docs
+                - sync-auditor
+            skills:
+                - moai-workflow-spec
+                - moai-workflow-tdd
+        e2e:
+            agents:
+                - e2e-tester
+            skills:
+                - moai-foundation-quality
+                - moai-ref-testing-pyramid
+        feedback:
+            agents: []
+            skills: []
+        fix:
+            agents:
+                - manager-develop
+            skills:
+                - moai-workflow-ddd
+                - moai-workflow-ci-loop
+        gate:
+            agents: []
+            skills: []
+        goal:
+            agents: []
+            skills: []
+        harness:
+            agents:
+                - builder-harness
+            skills:
+                - moai-meta-harness
+                - moai-harness-learner
+        loop:
+            agents:
+                - manager-develop
+            skills:
+                - moai-workflow-loop
+                - moai-workflow-ci-loop
+        mx:
+            agents:
+                - Explore
+            skills: []
+        plan:
+            agents:
+                - manager-spec
+                - plan-auditor
+                - Explore
+            skills:
+                - moai-workflow-spec
+                - moai-foundation-thinking
+        project:
+            agents:
+                - Explore
+                - manager-docs
+            skills:
+                - moai-workflow-project
+        review:
+            agents:
+                - sync-auditor
+            skills:
+                - moai-foundation-quality
+                - moai-ref-owasp-checklist
+        run:
+            agents:
+                - manager-develop
+            skills:
+                - moai-workflow-tdd
+                - moai-workflow-ddd
+        sync:
+            agents:
+                - manager-docs
+                - sync-auditor
+            skills:
+                - moai-workflow-project
+                - moai-workflow-ci-loop
+    version: 1

@@ -10,7 +10,7 @@ description: |
   - "GEO 최적화해서 AI 검색에 인용되는 가이드 글 써줘"
   - "제품 리뷰 블로그 포스팅 구성 짜줘"
   검색 상위 노출과 독자 전환을 함께 노리며, 완성 후 moai-coworker:general-ai-slop-reviewer로 AI 티를 정리합니다(필수 후처리).
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 블로그 (Blog)
@@ -195,3 +195,15 @@ ai-slop 검수 → humanize 체인까지 마친 완성 포스팅은, 이 플러�
 - `moai-marketer:content-newsletter` — 이메일 뉴스레터 기획·작성
 - `moai-marketer:content-copywriting` — 마케팅 카피·헤드라인·CTA 작성
 - `moai-coworker:general-ai-slop-reviewer` — AI 생성 텍스트 패턴 검수·수정
+- `moai-writer:general-humanize-korean` — 한국어 AI 티 제거 (슬롭 검수 다음, 필수)
+
+## References
+
+| 파일 | 로드 조건 |
+|------|-----------|
+| references/naver-blog.md | 네이버 블로그 작성 시 — C-Rank·D.I.A.+·E-E-A-T 최적화 상세 |
+| references/tistory.md | 티스토리 작성 시 — 구글 SEO·애드센스 수익화 최적화 |
+| references/brunch.md | 브런치 스토리 작성 시 — 작가 심사제·브랜딩·에세이 톤 가이드 |
+| references/wordpress.md | WordPress 포스팅 시 — 플러그인·한국 기업 블로그 SEO 설정 |
+| references/ghost.md | Ghost 퍼블리싱 시 — 뉴스레터 통합·멤버십 수익화 가이드 |
+| references/seo-geo.md | GEO/AI 검색 인용 최적화 시 — SEO vs GEO 전략 재정립 |

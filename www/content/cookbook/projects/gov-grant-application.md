@@ -52,17 +52,17 @@ tags: [cookbook, projects, startup]
 
 ```mermaid
 flowchart TD
-    U["서연 님<br/>공고 PDF + 회사 정보"] --> C1["컨설턴트<br/>business-kr-gov-grant"]
-    C1 --> R1["공고 분석 메모<br/>(자격 · 배점 · 전략)"]
-    R1 --> W1["코워커<br/>business-proposal-writer"]
-    W1 --> R2["사업계획서 초안"]
-    R2 --> W2["코워커<br/>general-ai-slop-reviewer"]
-    W2 --> OUT["제출용 신청서 세트"]
+   U["서연 님<br/>공고 PDF + 회사 정보"] --> C1["컨설턴트<br/>business-kr-gov-grant"]
+   C1 --> R1["공고 분석 메모<br/>(자격 · 배점 · 전략)"]
+   R1 --> W1["코워커<br/>business-proposal-writer"]
+   W1 --> R2["사업계획서 초안"]
+   R2 --> W2["코워커<br/>general-ai-slop-reviewer"]
+   W2 --> OUT["제출용 신청서 세트"]
 
-    style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style R1 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style R2 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style OUT fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+   style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style R1 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style R2 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style OUT fill:#d6e7de,stroke:#3d7d5f,stroke-width:2px,color:#09110f
 ```
 
 ## 4. 결과물

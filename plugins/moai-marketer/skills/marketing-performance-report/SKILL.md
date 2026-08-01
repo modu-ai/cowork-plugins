@@ -12,7 +12,7 @@ description: |
   - "광고비 어디서 새는지 분석해줘"
   경영진 요약과 실무용 상세 분석, 예산 재배분 권고를 함께 만들고, 서술 부분은 moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean으로 다듬습니다.
   [책임 경계] vs moai-coworker:business-executive-summary: 이 스킬=마케팅 풀 리포트(전체), 저 스킬=임원 1pager 요약(압축). 이 스킬 출력을 그대로 business-executive-summary에 넘겨 1pager로 만들 수 있습니다.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 퍼포먼스 리포트 (Performance Report)

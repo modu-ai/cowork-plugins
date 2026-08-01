@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>모두의 클로드 v6.1.0 — 온라인 문서 IA 재설계 v2 &amp; 업데이트 계획</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    :root {
+      --ivory:  #FAF9F5; --paper: #FFFFFF; --slate: #141413;
+      --clay: #D97757; --clay-d: #B85C3E; --oat: #E3DACC; --olive: #788C5D;
+      --g100: #F0EEE6; --g300: #D1CFC5; --g500: #87867F; --g700: #3D3D3A;
+      --sans: "Pretendard", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --serif: "Noto Serif KR", ui-serif, Georgia, serif;
+      --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      --max-width: 1100px; --radius-panel: 12px; --radius-row: 8px;
+      --border: 1.5px solid var(--g300);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--ivory); color: var(--g700); font-family: var(--sans); font-size: 15px; line-height: 1.6; padding: 56px 32px 120px; -webkit-font-smoothing: antialiased; }
+    .page { max-width: var(--max-width); margin: 0 auto; }
+    header.page-head { margin-bottom: 48px; max-width: 880px; }
+    .eyebrow { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--g500); margin-bottom: 12px; }
+    h1 { font-family: var(--serif); font-weight: 700; font-size: 34px; line-height: 1.18; color: var(--slate); margin-bottom: 16px; letter-spacing: -0.01em; }
+    .goal-box { background: var(--g100); border: var(--border); border-radius: var(--radius-panel); padding: 16px 20px; font-size: 14.5px; }
+    .goal-box .label { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--g500); display: block; margin-bottom: 6px; }
+    section { margin-bottom: 64px; }
+    .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; }
+    .sec-head .num { font-family: var(--mono); font-size: 12px; background: var(--oat); color: var(--slate); padding: 3px 9px; border-radius: 8px; flex-shrink: 0; }
+    .sec-head h2 { font-family: var(--serif); font-weight: 700; font-size: 24px; color: var(--slate); letter-spacing: -0.01em; }
+    .sec-intro { font-size: 14.5px; color: var(--g500); max-width: 780px; margin-bottom: 28px; }
+    .summary-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 64px; }
+    @media (max-width: 900px) { .summary-strip { grid-template-columns: repeat(2, 1fr); } }
+    .sum-cell { background: var(--paper); border: var(--border); border-radius: var(--radius-panel); padding: 18px 20px; }
+    .sum-cell .k { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--g500); margin-bottom: 6px; }
+    .sum-cell .v { font-size: 17px; color: var(--slate); font-weight: 600; }
+    .sum-cell .v.accent { color: var(--clay); }
+    table.ia { width: 100%; border-collapse: collapse; background: var(--paper); border: var(--border); border-radius: var(--radius-panel); overflow: hidden; font-size: 13.5px; }
+    table.ia th { background: var(--g100); text-align: left; padding: 10px 14px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--slate); border-bottom: var(--border); }
+    table.ia td { padding: 10px 14px; border-bottom: 1px solid var(--g100); vertical-align: top; }
+    table.ia tr:last-child td { border-bottom: none; }
+    code, .mono { font-family: var(--mono); font-size: 12px; color: var(--slate); background: var(--g100); padding: 1px 5px; border-radius: 4px; }
+    .badge { display: inline-block; font-family: var(--mono); font-size: 10.5px; padding: 2px 7px; border-radius: 6px; font-weight: 600; }
+    .badge.new { background: #F3D9CC; color: #8A3B1E; }
+    .badge.keep { background: #E4E9DC; color: #4B5C39; }
+    .badge.move { background: var(--oat); color: var(--slate); }
+    .badge.ext { background: #DCE4EC; color: #2F4A66; }
+    .toc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    @media (max-width: 900px) { .toc-grid { grid-template-columns: 1fr; } }
+    .toc-grid.two { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 780px) { .toc-grid.two { grid-template-columns: 1fr; } }
+    .toc-card { background: var(--paper); border: var(--border); border-radius: var(--radius-panel); padding: 16px 18px; }
+    .toc-card h4 { font-family: var(--serif); font-size: 15.5px; color: var(--slate); margin-bottom: 3px; }
+    .toc-card .sub { font-family: var(--mono); font-size: 11px; color: var(--g500); margin-bottom: 9px; }
+    .toc-card ul { list-style: none; }
+    .toc-card li { font-size: 13px; padding: 3px 0; border-bottom: 1px dashed var(--g100); }
+    .toc-card li:last-child { border-bottom: none; }
+    .toc-card li .n { font-family: var(--mono); font-size: 11px; color: var(--clay); margin-right: 6px; }
+    .milestones { display: flex; flex-direction: column; }
+    .milestone { display: grid; grid-template-columns: 130px 28px 1fr; gap: 0 18px; position: relative; }
+    .milestone .when { text-align: right; font-family: var(--mono); font-size: 12px; color: var(--g500); padding-top: 4px; }
+    .milestone .dot-col { display: flex; flex-direction: column; align-items: center; }
+    .milestone .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--paper); border: 3px solid var(--clay); margin-top: 4px; flex-shrink: 0; }
+    .milestone .line { width: 2px; flex: 1; background: var(--g300); margin: 4px 0; }
+    .milestone:last-child .line { display: none; }
+    .milestone .body { padding-bottom: 36px; }
+    .milestone .body h3 { font-family: var(--serif); font-weight: 700; font-size: 18px; color: var(--slate); margin-bottom: 4px; }
+    .milestone .body p { font-size: 14px; color: var(--g500); margin-bottom: 10px; max-width: 700px; }
+    .tag-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { font-family: var(--mono); font-size: 11.5px; background: var(--g100); border: 1px solid var(--g300); border-radius: 6px; padding: 3px 8px; color: var(--g700); }
+    .diagram { background: var(--paper); border: var(--border); border-radius: var(--radius-panel); padding: 28px; overflow-x: auto; }
+    .diagram svg { display: block; min-width: 780px; }
+    .caption { font-size: 13px; color: var(--g500); margin-top: 12px; }
+    .risks { border: var(--border); border-radius: var(--radius-panel); overflow: hidden; background: var(--paper); }
+    .risks .row { display: grid; grid-template-columns: 1.6fr 90px 1.6fr; }
+    @media (max-width: 780px) { .risks .row { grid-template-columns: 1fr; } }
+    .risks .row + .row { border-top: var(--border); }
+    .risks .cell { padding: 14px 18px; font-size: 13.5px; }
+    .risks .cell + .cell { border-left: var(--border); }
+    .risks .head { background: var(--g100); font-weight: 600; color: var(--slate); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+    .sev { display: inline-block; font-family: var(--mono); font-size: 11px; padding: 2px 8px; border-radius: 6px; font-weight: 600; }
+    .sev.high { background: #F3D9CC; color: #8A3B1E; }
+    .sev.med  { background: var(--oat); color: var(--slate); }
+    .sev.low  { background: #E4E9DC; color: #4B5C39; }
+    .metrics-list { display: flex; flex-direction: column; gap: 10px; max-width: 820px; }
+    .metric-row { display: flex; align-items: center; gap: 16px; background: var(--paper); border: var(--border); border-radius: var(--radius-row); padding: 14px 18px; }
+    .metric-indicator { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; background: var(--g300); }
+    .metric-label { flex: 1; font-size: 14px; color: var(--slate); }
+    .metric-target { font-family: var(--mono); font-size: 12px; color: var(--g500); }
+    footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--g300); font-family: var(--mono); font-size: 12px; color: var(--g500); }
+    @media print {
+      body { background: white; color: black; padding: 0; font-size: 12pt; }
+      .page { max-width: none; }
+      h1, h2, h3 { page-break-after: avoid; }
+      table, .risks, .diagram { page-break-inside: avoid; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <header class="page-head">
+      <div class="eyebrow">Action Plan v2 · 모두의 클로드 (claude.mo.ai.kr)</div>
+      <h1>v6.2.0 18-직원 체제 온라인 문서<br>IA 재설계 v2 &amp; 업데이트 계획</h1>
+      <div class="goal-box">
+        <span class="label">Goal</span>
+        v1 계획을 사용자 지시 5건으로 개정: ① <b>/moai-agents/ 독립 신설</b>(기존 섹션 흡수 없음) ② <b>/plugins/ → Agent Teams 재편</b>(설치→전문가 에이전트 소개·사용법) ③ <b>/cli → adk.mo.ai.kr/ko 외부 연결</b> ④ 데스크탑 앱 <b>챗→코워크→디자인→코드 4-트랙 상세 가이드</b> + 시작하기에 설치·설정·도구 개념 기초 + 챗에 프롬프트/컨텍스트 엔지니어링 ⑤ <b>쿡북 = 전문가 활용 코워크 프로젝트</b> 중심 재제작 ⑥ 직원 디렉토리 명칭 <b>MoAI-Agents (/moai-agents/)</b> [v2.1: /agent-teams/에서 개칭] ⑦ 전 하위 페이지 <b>초보자 산문 서술 원칙</b>(§00.5) 적용. 정본은 marketplace.json v6.2.0(18 플러그인) + 실측 인벤토리.
+      </div>
+    </header>
+
+    <div class="summary-strip">
+      <div class="sum-cell"><div class="k">직원 로스터</div><div class="v accent">18 (v6.2.0)</div></div>
+      <div class="sum-cell"><div class="k">최상위 IA</div><div class="v">8축 · /moai-agents/ 개칭 신설</div></div>
+      <div class="sum-cell"><div class="k">4-트랙 가이드</div><div class="v">챗·코워크·디자인·코드</div></div>
+      <div class="sum-cell"><div class="k">실행 단위</div><div class="v">7 Phase (P0–P6)</div></div>
+    </div>
+
+    <!-- ==================== 00 v1 대비 변경 ==================== -->
+    <section aria-label="v1 대비 변경">
+      <div class="sec-head"><span class="num">00</span><h2>v1 계획 대비 변경 사항</h2></div>
+      <table class="ia">
+        <tr><th>항목</th><th>v1 (폐기)</th><th>v2 (확정 지시)</th></tr>
+        <tr><td>/moai-agents/</td><td>/plugins/·/cowork/를 <b>흡수</b>해 신설</td><td><b>독립 신설</b> — 기존 섹션 흡수 없음, 직원 소개·역량 카탈로그 전담</td></tr>
+        <tr><td>/plugins/</td><td>직원 디렉토리로 대체 소멸</td><td><b>Agent Teams로 재편</b> — 플러그인 설치부터 18 전문가 에이전트(worker/auditor) 소개·사용법·팀 구성</td></tr>
+        <tr><td>/cli/</td><td>현행 유지 (22페이지)</td><td><b>adk.mo.ai.kr/ko 외부 연결</b> — 한국어 클로드 코드 문서로 위임, 로컬 22페이지는 리다이렉트 처리</td></tr>
+        <tr><td>사용법 축</td><td>제품 축 산재 (chat/code 등)</td><td>데스크탑 앱 <b>챗 → 코워크 → 디자인 → 코드 4-트랙</b> 상세 안내로 일원화</td></tr>
+        <tr><td>시작하기</td><td>설치 흐름 개정 수준</td><td>데스크탑 앱 <b>설치·설정 + 도구·기능 개념 기초</b>(Projects·스킬·MCP·아티팩트 등) 전면 수록</td></tr>
+        <tr><td>챗 콘텐츠</td><td>현행 유지</td><td><b>프롬프트/컨텍스트 엔지니어링 기초</b> 추가</td></tr>
+        <tr><td>쿡북</td><td>직원 태그 부여(RE-TAG)만</td><td><b>전문가 활용 코워크 프로젝트 중심 재제작</b> — 문제 해결·생산성·결과물 산출 주제</td></tr>
+        <tr><td>직원 수</td><td>12</td><td><b>18</b> (v6.1.0: CS매니저·컨설턴트·커리어코치 → v6.2.0: 스토리·미디어·애널리스트 분화)</td></tr>
+        <tr><td>디렉토리 명칭</td><td>/employees/ "AI 직원 디렉토리"</td><td><b>/moai-agents/ "MoAI-Agents"</b></td></tr>
+        <tr><td>서술 기준</td><td>목차 중심</td><td><b>초보자 산문 6원칙</b> 전 페이지 게이트 (§00.5)</td></tr>
+      </table>
+    </section>
+
+    <!-- ==================== 00.5 서술 원칙 ==================== -->
+    <section aria-label="콘텐츠 서술 원칙">
+      <div class="sec-head"><span class="num">00.5</span><h2>콘텐츠 서술 원칙 — 초보자 산문 기준 [전 페이지 공통]</h2></div>
+      <p class="sec-intro">모든 하위 페이지는 표·목록만으로 끝나지 않고, 처음 접하는 사람이 읽고 따라올 수 있는 <b>풍부한 산문 설명</b>을 갖춰야 합니다. 아래 6원칙은 P1~P5 전 콘텐츠 제작의 공통 게이트입니다.</p>
+      <table class="ia">
+        <tr><th>원칙</th><th>기준</th></tr>
+        <tr><td>1. 산문 우선</td><td>모든 페이지는 도입 산문 2~3문단으로 시작 — "이 페이지에서 무엇을 배우는지, 왜 필요한지"를 일상 언어로 설명. 표·목록은 산문이 세운 맥락 위에만 배치</td></tr>
+        <tr><td>2. 용어 즉석 풀이</td><td>전문 용어(MCP·에이전트·스킬·아티팩트 등)는 첫 등장 시 괄호나 한 문장으로 즉석 풀이. 예: "MCP(클로드가 외부 서비스에 연결되는 표준 통로)"</td></tr>
+        <tr><td>3. 비유·상황 예시</td><td>추상 개념은 직장 생활 비유로 설명 — "스킬은 직원의 업무 매뉴얼, 에이전트는 그 매뉴얼로 일하는 직원"처럼. 각 기능마다 실제 사용 상황 1개 이상 서술</td></tr>
+        <tr><td>4. 따라하기 완결성</td><td>절차는 화면에 보이는 그대로(버튼 이름·입력 문구·예상 결과) 단계별 서술 + 중간 확인 지점("여기까지 되면 ~가 보입니다") 포함</td></tr>
+        <tr><td>5. 실패 안내 동반</td><td>각 절차 끝에 "잘 안 될 때" 소절 — 흔한 막힘 2~3가지와 해결을 산문으로</td></tr>
+        <tr><td>6. 분량·검수 게이트</td><td>하위 페이지 최소 산문 비중 40% 이상(표·코드 제외 본문 기준), 발행 전 humanize·slop-reviewer 게이트 통과. 기계적 나열형 페이지는 반려</td></tr>
+      </table>
+    </section>
+
+    <!-- ==================== 01 새 IA ==================== -->
+    <section aria-label="새 정보구조">
+      <div class="sec-head"><span class="num">01</span><h2>새 정보구조(IA) — 최상위 8축</h2></div>
+      <p class="sec-intro">사용자 여정: <b>시작하기(개념·설치) → 사용법(4-트랙) → 직원 알기(/moai-agents/ MoAI-Agents) → 팀 꾸리기(/plugins/) → 실전(쿡북)</b>. 개발자는 /code 트랙에서 adk.mo.ai.kr/ko로 심화 이동.</p>
+      <table class="ia">
+        <tr><th>W</th><th>경로</th><th>이름</th><th>내용</th></tr>
+        <tr><td class="mono">10</td><td><code>/getting-started/</code></td><td>시작하기 <span class="badge new">전면 확장</span></td><td>데스크탑 앱 설치(macOS·Windows)·초기 설정·요금제 → 도구·기능 개념 기초(대화·Projects·스킬·플러그인·MCP 커넥터·아티팩트·파일 업로드·메모리) → 마켓플레이스 등록 1줄 → 첫 직원 선택 가이드</td></tr>
+        <tr><td class="mono">20</td><td><code>/guide/</code></td><td>사용법 4-트랙 <span class="badge new">신설</span></td><td>데스크탑 앱 사용 여정을 챗 → 코워크 → 디자인 → 코드 4단계로 상세 안내 (§02)</td></tr>
+        <tr><td class="mono">30</td><td><code>/moai-agents/</code></td><td>MoAI-Agents <span class="badge new">독립 신설</span></td><td>18 직원 카드 + 직원별 페이지(소개·스킬 카탈로그 실측·MCP·대표 시나리오·면책). 기존 섹션 흡수 없음 (§03)</td></tr>
+        <tr><td class="mono">40</td><td><code>/plugins/</code></td><td>플러그인 설치·운용 <span class="badge move">재편</span></td><td>플러그인 설치(marketplace add → install → 확인) → 18 플러그인별 전문가 에이전트(worker+auditor 쌍) 소개·호출법 → 다중 직원 팀 구성 패턴 (§04)</td></tr>
+        <tr><td class="mono">50</td><td><code>/cookbook/</code></td><td>쿡북 <span class="badge move">재제작</span></td><td>전문가 활용 코워크 프로젝트 레시피 — 문제 해결·생산성·결과물 중심 (§05)</td></tr>
+        <tr><td class="mono">60</td><td><code>/cli/</code></td><td>클로드 코드 문서 <span class="badge ext">외부 연결</span></td><td>adk.mo.ai.kr/ko 한국어 클로드 코드 문서로 연결. 기존 22페이지는 안내 랜딩 1페이지 + 리다이렉트로 축소</td></tr>
+        <tr><td class="mono">70</td><td><code>/help/</code></td><td>도움말 <span class="badge keep">KEEP</span></td><td>현행 유지 + 플러그인 설치 트러블슈팅 보강</td></tr>
+        <tr><td class="mono">80</td><td><code>/releases/</code></td><td>릴리스 <span class="badge keep">KEEP</span></td><td>현행 유지 + v6.1.0 노트(15직원·E2E 게이트 결과)</td></tr>
+      </table>
+    </section>
+
+    <!-- ==================== 02 4-트랙 ==================== -->
+    <section aria-label="4-트랙 가이드">
+      <div class="sec-head"><span class="num">02</span><h2>/guide/ — 데스크탑 앱 4-트랙 사용법 목차</h2></div>
+      <p class="sec-intro">클로드 데스크탑 앱의 사용 성숙도 순서(챗 → 코워크 → 디자인 → 코드)로 배치. 각 트랙은 "무엇을 할 수 있나 → 준비 → 따라하기 → 잘 쓰는 법" 4장 골격.</p>
+      <div class="toc-grid two">
+        <div class="toc-card"><h4>Track 1 — 챗 (Chat)</h4><div class="sub">/guide/chat/ · 기본기 + 엔지니어링</div>
+          <ul>
+            <li><span class="n">1</span>챗으로 할 수 있는 일 — 질문·요약·번역·작문·분석</li>
+            <li><span class="n">2</span>프롬프트 엔지니어링 기초 — 명확한 지시·맥락 제공·예시 활용·역할 부여·단계 요청</li>
+            <li><span class="n">3</span>컨텍스트 엔지니어링 기초 — 파일 첨부·Projects 지식·대화 이어가기·메모리·긴 문서 다루기</li>
+            <li><span class="n">4</span>모델·응답 길이·아티팩트 이해</li>
+            <li><span class="n">5</span>흔한 실패와 교정 — 모호한 요청·과적재 컨텍스트·환각 검증</li>
+          </ul></div>
+        <div class="toc-card"><h4>Track 2 — 코워크 (Cowork)</h4><div class="sub">/guide/cowork/ · AI 직원과 일하기</div>
+          <ul>
+            <li><span class="n">1</span>코워크란 — 스킬·플러그인으로 실무를 맡기는 방식</li>
+            <li><span class="n">2</span>PM /project --cowork로 프로젝트 셋업</li>
+            <li><span class="n">3</span>자연어 요청 → 스킬 자동 매칭 원리</li>
+            <li><span class="n">4</span>직원 조합 예시 — 마케터+디자이너, 셀러+CS매니저</li>
+            <li><span class="n">5</span>산출물 관리 — 문서·파일·반복 개선 루프</li>
+          </ul></div>
+        <div class="toc-card"><h4>Track 3 — 디자인 (Design)</h4><div class="sub">/guide/design/ · Claude Design 연동</div>
+          <ul>
+            <li><span class="n">1</span>Claude Design 개요와 디자이너 직원의 역할</li>
+            <li><span class="n">2</span>브랜드 자산 준비 — DESIGN.md 합성(cd-system-prep)</li>
+            <li><span class="n">3</span>브리프·프롬프트 작성(cd-brief·cd-prompt-builder)</li>
+            <li><span class="n">4</span>결과 검수 — 슬롭 체크·토큰 변환·핸드오프</li>
+            <li><span class="n">5</span>Claude Code로 구현 인계(cd-handoff-reader)</li>
+          </ul></div>
+        <div class="toc-card"><h4>Track 4 — 코드 (Code)</h4><div class="sub">/guide/code/ · 코더(moai)와 개발</div>
+          <ul>
+            <li><span class="n">1</span>코더 플러그인 개요 — 무설치 SPEC 방법론</li>
+            <li><span class="n">2</span>/moai plan → run → sync 워크플로우</li>
+            <li><span class="n">3</span>LSP 5종 코드 인텔리전스(go·python·rust·swift·ts)</li>
+            <li><span class="n">4</span>Tier 1/2/3 승격 경로 (플러그인 → git → moai CLI)</li>
+            <li><span class="n">5</span>심화: adk.mo.ai.kr/ko 클로드 코드 한국어 문서 →</li>
+          </ul></div>
+      </div>
+    </section>
+
+    <!-- ==================== 03 직원 디렉토리 ==================== -->
+    <section aria-label="직원 디렉토리">
+      <div class="sec-head"><span class="num">03</span><h2>/moai-agents/ — MoAI-Agents · 18 직원 디렉토리 (독립 섹션)</h2></div>
+      <p class="sec-intro">직원 "소개·역량" 전담 섹션. 설치·에이전트 운용은 /plugins/(설치·운용)가 담당 — 역할 분리로 두 섹션이 서로를 크로스링크. 공통 5장 골격: ① 소개·추천 대상 ② 스킬 카탈로그(자동 생성) ③ MCP 연동 ④ 대표 시나리오 3선 ⑤ 면책·주의(해당 직원). 스킬 수는 2026-07-13 실측 (marketplace v6.2.0).</p>
+      <table class="ia">
+        <tr><th>직원</th><th>경로</th><th>스킬</th><th>MCP</th><th>핵심 소개 포인트</th></tr>
+        <tr><td>PM (진입 허브)</td><td><code>/moai-agents/pm/</code></td><td class="mono">2</td><td class="mono">—</td><td>/project 2-모드 라우팅(goose 코워크 + moai 개발), 재귀적 자가 개선</td></tr>
+        <tr><td>코워커</td><td><code>/moai-agents/coworker/</code></td><td class="mono">32</td><td class="mono">1</td><td>범용 실무 코어 — 커뮤니케이션·보고·전략 문서 + 라이프스타일·자기계발</td></tr>
+        <tr><td>작가</td><td><code>/moai-agents/writer/</code></td><td class="mono">10</td><td class="mono">—</td><td>출판 기획·집필·출판사 매칭 + 한국어 인문화 윤문</td></tr>
+        <tr><td><b>스토리 크리에이터</b> <span class="badge new">v6.2.0</span></td><td><code>/moai-agents/story/</code></td><td class="mono">13</td><td class="mono">1</td><td>웹툰·웹소설·시나리오·IP 사업화, Higgsfield 연동</td></tr>
+        <tr><td>마케터</td><td><code>/moai-agents/marketer/</code></td><td class="mono">19</td><td class="mono">4</td><td>캠페인 기획·퍼포먼스 분석·콘텐츠, Meta Ads 연동</td></tr>
+        <tr><td><b>미디어 크리에이터</b> <span class="badge new">v6.2.0</span></td><td><code>/moai-agents/media/</code></td><td class="mono">10</td><td class="mono">2</td><td>이미지·영상·오디오 생성 — Higgsfield·ElevenLabs</td></tr>
+        <tr><td>셀러</td><td><code>/moai-agents/seller/</code></td><td class="mono">29</td><td class="mono">3</td><td>스마트스토어 90도구·아임웹 136·카페24 526</td></tr>
+        <tr><td>사무관</td><td><code>/moai-agents/officer/</code></td><td class="mono">13</td><td class="mono">1</td><td>한국형 오피스 문서(HWPX·DOCX·XLSX·PPTX·PDF)·HTML 리포트</td></tr>
+        <tr><td><b>데이터 애널리스트</b> <span class="badge new">v6.2.0</span></td><td><code>/moai-agents/analyst/</code></td><td class="mono">11</td><td class="mono">3</td><td>데이터 프로파일링·시각화 + 공공데이터(부동산·주식·KOSIS·DART)</td></tr>
+        <tr><td>법무</td><td><code>/moai-agents/lawyer/</code></td><td class="mono">9</td><td class="mono">1</td><td>계약·법령·특허, 국가법령 MCP + 면책 필수</td></tr>
+        <tr><td>재무세무</td><td><code>/moai-agents/accountant/</code></td><td class="mono">11</td><td class="mono">1</td><td>재무제표·결산·세금, OpenDART + 면책 필수</td></tr>
+        <tr><td>인사채용 (고용주 편)</td><td><code>/moai-agents/recruiter/</code></td><td class="mono">6</td><td class="mono">—</td><td>공고·스크리닝·오퍼레터·평가</td></tr>
+        <tr><td>CS매니저</td><td><code>/moai-agents/cs/</code></td><td class="mono">6</td><td class="mono">—</td><td>티켓 분류·응답·에스컬레이션·VOC·채널 메시지</td></tr>
+        <tr><td>컨설턴트</td><td><code>/moai-agents/consultant/</code></td><td class="mono">6</td><td class="mono">—</td><td>사업계획·시장분석·정부지원사업·상권분석</td></tr>
+        <tr><td>커리어코치 (구직자 편)</td><td><code>/moai-agents/career/</code></td><td class="mono">5</td><td class="mono">—</td><td>이력서·면접·이직 전략·주니어 온보딩</td></tr>
+        <tr><td>튜터</td><td><code>/moai-agents/tutor/</code></td><td class="mono">11</td><td class="mono">—</td><td>커리큘럼·평가·논문·교육 운영</td></tr>
+        <tr><td>디자이너</td><td><code>/moai-agents/designer/</code></td><td class="mono">13</td><td class="mono">—</td><td>Claude Design 연동·3계층 토큰 파이프라인·GAN 품질 루프</td></tr>
+        <tr><td>코더 (moai)</td><td><code>/moai-agents/coder/</code></td><td class="mono">29</td><td class="mono">1+LSP5</td><td>SPEC 방법론·LSP·hooks — /guide/code/ 딥링크</td></tr>
+      </table>
+    </section>
+
+    <!-- ==================== 04 Agent Teams ==================== -->
+    <section aria-label="Agent Teams">
+      <div class="sec-head"><span class="num">04</span><h2>/plugins/ — 플러그인 설치·운용 재편 목차</h2></div>
+      <p class="sec-intro">"설치 → 에이전트 이해 → 팀 구성"의 운영 매뉴얼 섹션. 18 플러그인이 각각 worker(실행)+auditor(read-only 검수) 에이전트 쌍을 갖는 구조를 전면에 세웁니다 (에이전트 수는 배포 전 claude plugin details 실측 대조).</p>
+      <div class="toc-grid">
+        <div class="toc-card"><h4>1. 설치와 관리</h4><div class="sub">/plugins/install/</div>
+          <ul>
+            <li><span class="n">1.1</span>marketplace add modu-ai/claude 등록</li>
+            <li><span class="n">1.2</span>plugin install — 필요한 직원만 골라 설치</li>
+            <li><span class="n">1.3</span>설치 확인 — details·스킬 로드 체크</li>
+            <li><span class="n">1.4</span>업데이트·비활성화·제거</li>
+            <li><span class="n">1.5</span>MCP 자격증명 설정 (셀러·마케터 등)</li>
+          </ul></div>
+        <div class="toc-card"><h4>2. 전문가 에이전트 소개</h4><div class="sub">/plugins/agents/ — 15 플러그인별</div>
+          <ul>
+            <li><span class="n">2.1</span>worker vs auditor — 실행과 검수의 분리 원리</li>
+            <li><span class="n">2.2</span>플러그인별 에이전트 카드 — 이름·역할·도구 권한·호출 예시 (cs-responder/voc-auditor, strategy-consultant/feasibility-auditor, career-coach/resume-auditor 등)</li>
+            <li><span class="n">2.3</span>에이전트 직접 호출 — "OO 서브에이전트로 ~해줘"</li>
+            <li><span class="n">2.4</span>스킬 자동 매칭 vs 에이전트 명시 호출 사용 구분</li>
+          </ul></div>
+        <div class="toc-card"><h4>3. 팀 구성 패턴</h4><div class="sub">/plugins/teams/</div>
+          <ul>
+            <li><span class="n">3.1</span>단일 직원 — 하나의 전문 영역 집중</li>
+            <li><span class="n">3.2</span>직원 조합 — 마케터×디자이너(캠페인), 셀러×CS(운영), 컨설턴트×재무세무(창업)</li>
+            <li><span class="n">3.3</span>worker 실행 → auditor 검수 품질 루프</li>
+            <li><span class="n">3.4</span>PM 허브로 프로젝트 단위 팀 셋업</li>
+          </ul></div>
+      </div>
+    </section>
+
+    <!-- ==================== 05 쿡북 ==================== -->
+    <section aria-label="쿡북 재제작">
+      <div class="sec-head"><span class="num">05</span><h2>/cookbook/ — 전문가 코워크 프로젝트 레시피</h2></div>
+      <p class="sec-intro">기존 39 레시피를 "전문가를 활용해 실제 문제를 해결하고 결과물을 만드는 프로젝트" 형식으로 재제작. 각 레시피 공통 골격: 문제 상황 → 투입 직원·스킬 → 단계별 진행 → 결과물 → 생산성 포인트. 초기 12선(카테고리별 3):</p>
+      <table class="ia">
+        <tr><th>카테고리</th><th>프로젝트 레시피 (투입 직원)</th></tr>
+        <tr><td>창업·운영</td><td>① 상권분석 PDF로 창업 타당성 검증 (컨설턴트→재무세무) ② 정부지원사업 신청서 일주일 완성 (컨설턴트→코워커) ③ 스마트스토어 신제품 런칭 파이프라인 (셀러→마케터→CS매니저)</td></tr>
+        <tr><td>마케팅·콘텐츠</td><td>④ 브랜드 아이덴티티→디자인 시스템→랜딩 (코워커→디자이너) ⑤ 한 달치 SNS 콘텐츠 캘린더+미디어 생성 (마케터) ⑥ 웹소설 기획→연재→표지 제작 (작가)</td></tr>
+        <tr><td>사무·문서</td><td>⑦ 공공데이터로 시장 보고서 HWPX 산출 (사무관) ⑧ 주간보고 자동화 루틴 (코워커→사무관) ⑨ 계약서 검토→리스크 보고 (법무→코워커)</td></tr>
+        <tr><td>사람·커리어</td><td>⑩ 채용 공고→스크리닝→오퍼레터 (인사채용) ⑪ 이직 준비 4주 플랜 (커리어코치) ⑫ VOC 분석→FAQ 지식베이스 구축 (CS매니저)</td></tr>
+      </table>
+      <p class="caption" style="margin-top:12px">기존 39 레시피 중 재사용 가능한 것은 새 골격으로 개정 이관, 성격이 다른 것(단순 기능 소개)은 /guide/ 트랙으로 이동 또는 폐기. 이관 맵을 P5 산출물로 고정.</p>
+    </section>
+
+    <!-- ==================== 06 사용자 여정 다이어그램 ==================== -->
+    <section aria-label="User journey">
+      <div class="sec-head"><span class="num">06</span><h2>사용자 여정 × IA 매핑</h2></div>
+      <div class="diagram">
+        <svg viewBox="0 0 880 260" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#87867F"/></marker></defs>
+          <rect x="15" y="40" width="150" height="64" rx="10" fill="#F0EEE6" stroke="#D1CFC5" stroke-width="1.5"/>
+          <text x="90" y="66" text-anchor="middle" font-family="Pretendard" font-size="13.5" font-weight="600" fill="#141413">시작하기</text>
+          <text x="90" y="86" text-anchor="middle" font-family="Pretendard" font-size="11.5" fill="#87867F">설치·설정·개념 기초</text>
+          <rect x="195" y="40" width="150" height="64" rx="10" fill="#FFFFFF" stroke="#D97757" stroke-width="2"/>
+          <text x="270" y="66" text-anchor="middle" font-family="Pretendard" font-size="13.5" font-weight="600" fill="#141413">사용법 4-트랙</text>
+          <text x="270" y="86" text-anchor="middle" font-family="Pretendard" font-size="11.5" fill="#87867F">챗→코워크→디자인→코드</text>
+          <rect x="375" y="40" width="150" height="64" rx="10" fill="#FFFFFF" stroke="#D1CFC5" stroke-width="1.5"/>
+          <text x="450" y="66" text-anchor="middle" font-family="Pretendard" font-size="13.5" font-weight="600" fill="#141413">직원 디렉토리</text>
+          <text x="450" y="86" text-anchor="middle" font-family="Pretendard" font-size="11.5" fill="#87867F">15 직원 소개·역량</text>
+          <rect x="555" y="40" width="150" height="64" rx="10" fill="#FFFFFF" stroke="#D1CFC5" stroke-width="1.5"/>
+          <text x="630" y="66" text-anchor="middle" font-family="Pretendard" font-size="13.5" font-weight="600" fill="#141413">플러그인 설치·운용</text>
+          <text x="630" y="86" text-anchor="middle" font-family="Pretendard" font-size="11.5" fill="#87867F">설치·에이전트·팀 구성</text>
+          <rect x="735" y="40" width="130" height="64" rx="10" fill="#FFFFFF" stroke="#788C5D" stroke-width="2"/>
+          <text x="800" y="66" text-anchor="middle" font-family="Pretendard" font-size="13.5" font-weight="600" fill="#141413">쿡북</text>
+          <text x="800" y="86" text-anchor="middle" font-family="Pretendard" font-size="11.5" fill="#87867F">코워크 프로젝트 실전</text>
+          <path d="M165 72 L187 72" stroke="#87867F" stroke-width="1.5" marker-end="url(#ar)"/>
+          <path d="M345 72 L367 72" stroke="#87867F" stroke-width="1.5" marker-end="url(#ar)"/>
+          <path d="M525 72 L547 72" stroke="#87867F" stroke-width="1.5" marker-end="url(#ar)"/>
+          <path d="M705 72 L727 72" stroke="#87867F" stroke-width="1.5" marker-end="url(#ar)"/>
+          <rect x="195" y="170" width="330" height="56" rx="10" fill="#F0EEE6" stroke="#D1CFC5" stroke-width="1.5"/>
+          <text x="360" y="193" text-anchor="middle" font-family="Pretendard" font-size="13" font-weight="600" fill="#141413">adk.mo.ai.kr/ko (외부)</text>
+          <text x="360" y="212" text-anchor="middle" font-family="Pretendard" font-size="11.5" fill="#87867F">클로드 코드 한국어 문서 — /guide/code·/cli에서 연결</text>
+          <path d="M280 104 L330 168" stroke="#D97757" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#ar)"/>
+          <rect x="555" y="170" width="310" height="56" rx="10" fill="#F0EEE6" stroke="#D1CFC5" stroke-width="1.5"/>
+          <text x="710" y="193" text-anchor="middle" font-family="Pretendard" font-size="13" font-weight="600" fill="#141413">www/data/agent_teams.json (자동 생성)</text>
+          <text x="710" y="212" text-anchor="middle" font-family="Pretendard" font-size="11.5" fill="#87867F">marketplace.json v6.2.0 → 직원·에이전트·스킬표 데이터</text>
+          <path d="M450 104 L640 168" stroke="#87867F" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#ar)"/>
+          <path d="M630 104 L690 168" stroke="#87867F" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#ar)"/>
+        </svg>
+        <p class="caption">실선: 사용자 학습 여정. 점선: 코드 트랙의 외부 문서 연결 + 직원·에이전트 데이터의 자동 생성 의존.</p>
+      </div>
+    </section>
+
+    <!-- ==================== 07 Milestones ==================== -->
+    <section aria-label="Milestones">
+      <div class="sec-head"><span class="num">07</span><h2>업데이트 계획 — 7 Phase</h2></div>
+      <div class="milestones">
+        <div class="milestone">
+          <div class="when">P0 · Priority High</div>
+          <div class="dot-col"><span class="dot"></span><span class="line"></span></div>
+          <div class="body"><h3>정합 골격 + 데이터 파이프라인</h3>
+            <p>구명칭·구수치 긴급 정합(현행 plugins/_index.md의 v4 잔재 제거) + 생성 스크립트 신설: marketplace.json v6.2.0 + 스킬 frontmatter + 에이전트 정의 → <code>www/data/agent_teams.json</code>(직원·스킬·에이전트·MCP). 수기 수치 금지.</p>
+            <div class="tag-row"><span class="tag">gen-agent-teams.py</span><span class="tag">데이터 SSOT</span></div></div>
+        </div>
+        <div class="milestone">
+          <div class="when">P1 · Priority High</div>
+          <div class="dot-col"><span class="dot"></span><span class="line"></span></div>
+          <div class="body"><h3>시작하기 전면 확장</h3>
+            <p>데스크탑 앱 설치·설정(macOS·Windows·요금제) + 도구·기능 개념 기초(Projects·스킬·플러그인·MCP·아티팩트·메모리) + 마켓플레이스 등록 + 첫 직원 선택. §00.5 산문 원칙의 기준 적용 사례가 되는 섹션 — 모든 개념을 비유·상황 예시와 함께 산문으로 풀고, 절차마다 "잘 안 될 때"를 동반. 스크린샷·그림 포함.</p>
+            <div class="tag-row"><span class="tag">getting-started 재작성</span><span class="tag">개념 기초 신설</span></div></div>
+        </div>
+        <div class="milestone">
+          <div class="when">P2 · Priority High</div>
+          <div class="dot-col"><span class="dot"></span><span class="line"></span></div>
+          <div class="body"><h3>/guide/ 4-트랙 신설</h3>
+            <p>챗(프롬프트/컨텍스트 엔지니어링 기초 포함)·코워크·디자인·코드 4트랙 각 5장. 기존 chat/ 8p·cowork/ 20p·design/ 11p·code/ 3p에서 사용법 성격 콘텐츠를 이관·개정하고 구경로 301 처리.</p>
+            <div class="tag-row"><span class="tag">guide/ 신설 ~20p</span><span class="tag">기존 4섹션 이관 맵</span></div></div>
+        </div>
+        <div class="milestone">
+          <div class="when">P3 · Priority High</div>
+          <div class="dot-col"><span class="dot"></span><span class="line"></span></div>
+          <div class="body"><h3>/moai-agents/ MoAI-Agents 18 직원 발행</h3>
+            <p>공통 5장 골격 × 18 페이지. 각 직원 페이지는 §00.5 산문 원칙 적용 — 직원 소개를 표가 아닌 이야기로 시작(어떤 사람에게, 어떤 상황에서, 무엇을 해주는지). 스킬표는 P0 데이터 참조, 법무·재무세무 면책 블록 필수. 코더는 요약 카드 + /guide/code/ 딥링크.</p>
+            <div class="tag-row"><span class="tag">신규 18+1 페이지</span><span class="tag">humanize 게이트</span></div></div>
+        </div>
+        <div class="milestone">
+          <div class="when">P4 · Priority High</div>
+          <div class="dot-col"><span class="dot"></span><span class="line"></span></div>
+          <div class="body"><h3>/plugins/ 설치·운용 재편</h3>
+            <p>설치 가이드(등록→선택 설치→확인→MCP 자격증명) + 18 플러그인 에이전트 카드(worker/auditor 쌍, 도구 권한·호출 예시) + 팀 구성 패턴 3장. /cli/는 adk.mo.ai.kr/ko 연결 랜딩으로 축소(22p→1p+리다이렉트).</p>
+            <div class="tag-row"><span class="tag">plugins/ 재작성</span><span class="tag">cli 외부 연결</span></div></div>
+        </div>
+        <div class="milestone">
+          <div class="when">P5 · Priority Medium</div>
+          <div class="dot-col"><span class="dot"></span><span class="line"></span></div>
+          <div class="body"><h3>쿡북 재제작 — 코워크 프로젝트 12선</h3>
+            <p>§05 초기 12 레시피 신규 제작(공통 골격: 문제→직원 투입→진행→결과물→생산성 포인트). 기존 39 레시피 이관 맵 작성 — 개정 이관/트랙 이동/폐기 3분류.</p>
+            <div class="tag-row"><span class="tag">신규 12 레시피</span><span class="tag">기존 39 이관 맵</span></div></div>
+        </div>
+        <div class="milestone">
+          <div class="when">P6 · Priority High</div>
+          <div class="dot-col"><span class="dot"></span><span class="line"></span></div>
+          <div class="body"><h3>검증 게이트 + 배포</h3>
+            <p>Hugo build PASS → 신규 broken link 0(기존 건 베이스라인 분리) → 구 URL 301 전수(plugins 구조·cowork·cli 22p) → 스킬·에이전트 수 실측 대조(agent_teams.json vs claude plugin details) → adk.mo.ai.kr/ko 링크 생존 확인 → Vercel 배포 → llms.txt v6.2.0 재생성.</p>
+            <div class="tag-row"><span class="tag">hugo build</span><span class="tag">301 전수</span><span class="tag">llms.txt</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 08 Risks ==================== -->
+    <section aria-label="Risks">
+      <div class="sec-head"><span class="num">08</span><h2>Risks &amp; Mitigation</h2></div>
+      <div class="risks">
+        <div class="row"><div class="cell head">Risk</div><div class="cell head">Severity</div><div class="cell head">Mitigation</div></div>
+        <div class="row"><div class="cell">/moai-agents/와 /plugins/(설치·운용)의 역할 경계 모호 — 콘텐츠 중복·독자 혼선</div><div class="cell"><span class="sev high">HIGH</span></div><div class="cell">경계 원칙 고정: moai-agents=직원 소개·역량(무엇을 하나), plugins=설치·에이전트 운용·팀 구성(어떻게 부리나). 각 페이지 상단 크로스링크 규격화</div></div>
+        <div class="row"><div class="cell">수치·명칭 드리프트 재발 (18직원·스킬 235+·에이전트 수기 관리 불가)</div><div class="cell"><span class="sev high">HIGH</span></div><div class="cell">P0 생성 파이프라인이 유일 경로, P6에서 claude plugin details 실측 대조를 배포 게이트로</div></div>
+        <div class="row"><div class="cell">cli 22페이지 축소로 기존 유입·북마크 파손</div><div class="cell"><span class="sev med">MED</span></div><div class="cell">페이지별 adk.mo.ai.kr/ko 대응 경로 매핑표 작성 후 개별 301, 대응 없는 페이지만 랜딩으로</div></div>
+        <div class="row"><div class="cell">adk.mo.ai.kr/ko 외부 의존 — 문서 이동·미구축 구간 발생 시 데드링크</div><div class="cell"><span class="sev med">MED</span></div><div class="cell">P6 게이트에 외부 링크 생존 확인 포함, 링크는 섹션 랜딩 수준(깊은 앵커 지양)으로 보수적으로</div></div>
+        <div class="row"><div class="cell">쿡북 12선 신규 제작 분량 — AI 슬롭·품질 편차</div><div class="cell"><span class="sev med">MED</span></div><div class="cell">공통 골격 템플릿 고정 + humanize/slop-reviewer 게이트 통과 후 발행, 3선씩 4배치 분할</div></div>
+        <div class="row"><div class="cell">기존 4섹션(chat·cowork·design·code) → /guide/ 이관 중 콘텐츠 유실</div><div class="cell"><span class="sev med">MED</span></div><div class="cell">P2 산출물로 42페이지 전수 이관 맵(원천→목적지→처분) 고정, 모호 건은 보류 목록으로</div></div>
+        <div class="row"><div class="cell">병렬 세션 race (www/ 동시 편집 이력)</div><div class="cell"><span class="sev low">LOW</span></div><div class="cell">Phase별 pathspec 커밋 + pre-spawn fetch, www 단독 브랜치</div></div>
+      </div>
+    </section>
+
+    <!-- ==================== 09 Success Metrics ==================== -->
+    <section aria-label="Success metrics">
+      <div class="sec-head"><span class="num">09</span><h2>Success Metrics (배포 게이트)</h2></div>
+      <div class="metrics-list">
+        <div class="metric-row"><div class="metric-indicator"></div><div class="metric-label">/moai-agents/ 18 직원 페이지 + /plugins/ 에이전트 카드 18 플러그인 발행</div><div class="metric-target">Target: 18/18 + 18/18</div></div>
+        <div class="metric-row"><div class="metric-indicator"></div><div class="metric-label">/guide/ 4-트랙 각 5장 발행 (챗 트랙에 프롬프트/컨텍스트 엔지니어링 포함)</div><div class="metric-target">Target: 4트랙 20장</div></div>
+        <div class="metric-row"><div class="metric-indicator"></div><div class="metric-label">시작하기 — 설치·설정 + 도구 개념 기초 수록</div><div class="metric-target">Target: 전 장 발행</div></div>
+        <div class="metric-row"><div class="metric-indicator"></div><div class="metric-label">쿡북 코워크 프로젝트 레시피 초기 발행</div><div class="metric-target">Target: 12선</div></div>
+        <div class="metric-row"><div class="metric-indicator"></div><div class="metric-label">초보자 산문 원칙 준수 — 하위 페이지 산문 비중 40%+ 및 humanize 게이트</div><div class="metric-target">Target: 전 페이지 PASS</div></div>
+        <div class="metric-row"><div class="metric-indicator"></div><div class="metric-label">스킬·에이전트 수 실측 일치 (agent_teams.json vs plugin details)</div><div class="metric-target">Target: 전수 일치</div></div>
+        <div class="metric-row"><div class="metric-indicator"></div><div class="metric-label">구 URL 301 (plugins 구조·cowork·cli 22p) + 신규 broken link</div><div class="metric-target">Target: 301 전수 · 신규 0건</div></div>
+        <div class="metric-row"><div class="metric-indicator"></div><div class="metric-label">adk.mo.ai.kr/ko 연결 링크 생존 + Hugo build + Vercel 배포 + llms.txt v6.1.0</div><div class="metric-target">Target: PASS</div></div>
+      </div>
+    </section>
+
+    <footer>
+      Sources: 사용자 지시(2026-07-10 v2 개정 5건) · www/content/ 실측 · .claude-plugin/marketplace.json v6.2.0 (18 plugins) · claude plugin details 실측 인벤토리 &nbsp;&mdash;&nbsp; Generated: 2026-07-10 · Revised v2.1: 2026-07-13 (/moai-agents/ 개칭 + v6.2.0 리베이스) · supersedes www-ia-update-plan-2026-07-10.html
+    </footer>
+
+  </div>
+</body>
+</html>

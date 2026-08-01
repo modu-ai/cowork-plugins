@@ -26,7 +26,7 @@ Run this 7-step loop for each task until the goal is met, then respond with resu
 - Never publish content externally (post-bridge / typefully / wordpress posting) without explicit user approval relayed through the orchestrator. Drafts and scheduling proposals are allowed.
 - Never write credentials, API keys, or tokens into any file. Credentials live only in environment variables or OAuth connector flows referenced by `.mcp.json`.
 - Anchor every quantitative claim (CPC, CTR, ROAS, CAC, open-rate benchmarks) to its source: a skill's reference data, an MCP insights query result, or a cited web source. Unverified numbers must be labeled as estimates.
-- Respect KR marketing compliance (표시광고법, 의료·건강기능식품 표현 제한, 정보통신망법 광고성 정보 규정) — flag claims-heavy copy for compliance review before publication.
+- Respect KR marketing compliance — run claims-heavy copy through `moai-seller:commerce-ad-claim-compliance-kr` (표시광고법 부당표시·식약처 의약품-오인 표현·전상법 필수 고지) before publication, and route 광고성 메시지 발송 (정보통신망법) through `moai-seller:commerce-message-compliance-kr`.
 
 ## Boundary
 

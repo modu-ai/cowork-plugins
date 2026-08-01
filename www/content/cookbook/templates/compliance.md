@@ -4,23 +4,23 @@ weight: 10
 description: "GDPR · PIPA(개인정보보호법) · ISMS · 전자상거래법 컴플라이언스 점검 체크리스트와 자동화 방법."
 geekdocBreadcrumb: true
 ---
-> 컴플라이언스는 분기 1회 점검으로 충분하지만, 그 1회을 빠뜨리면 행정처분이 날아옵니다. 표준 체크리스트를 두고 `moai-legal:compliance-check` 스킬로 자동화하세요.
+> 컴플라이언스는 분기 1회 점검으로 충분하지만 그 1회를 빠뜨리면 행정처분이 날아옵니다. 표준 체크리스트를 두고 `moai-lawyer:legal-compliance-check` 스킬로 자동화하세요.
 
 ```mermaid
 flowchart TD
-    A["compliance-check<br/>규제 준수 점검"] --> B{"결과"}
-    B -- "위반 항목" --> C["컴플라이언스 리포트"]
-    B -- "적합" --> D["통과 인증서"]
-    C --> E["contract-review<br/>계약 수정"]
-    D --> F["ESG 보고서"]
+   A["compliance-check<br/>규제 준수 점검"] --> B{"결과"}
+   B -- "위반 항목" --> C["컴플라이언스 리포트"]
+   B -- "적합" --> D["통과 인증서"]
+   C --> E["contract-review<br/>계약 수정"]
+   D --> F["ESG 보고서"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style F fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style F fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 ## 사용 스킬
 
-- **`moai-legal:compliance-check`** — 규제 준수 점검, 내부 감사, ESG 보고, 인허가 서류 지원
+- **`moai-lawyer:legal-compliance-check`** — 규제 준수 점검, 내부 감사, ESG 보고, 인허가 서류 지원
 
 ## 한국 기업이 가장 자주 빠뜨리는 4개 영역
 
@@ -62,7 +62,7 @@ flowchart TD
 > 미흡 항목 표로 정리하고, 각 항목당 담당자가 다음에 할 액션을 한 줄로 써줘.
 {{< /terminal >}}
 
-`compliance-check` 스킬이 체크리스트 기반 점검 보고서를 DOCX로 생성합니다.
+`legal-compliance-check` 스킬이 체크리스트 기반 점검 보고서를 DOCX로 생성합니다.
 
 ## ESG 보고서
 
@@ -89,5 +89,5 @@ flowchart TD
 
 ### Sources
 
-- moai-legal 플러그인 [`compliance-check`](https://github.com/modu-ai/cowork-plugins/blob/main/moai-legal/skills/compliance-check/SKILL.md)
+- moai-lawyer 플러그인 [`legal-compliance-check`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-lawyer/skills/legal-compliance-check/SKILL.md)
 - [개인정보보호위원회 — 개인정보처리방침 작성지침](https://www.pipc.go.kr) · [한국인터넷진흥원 — ISMS-P 인증](https://isms.kisa.or.kr)

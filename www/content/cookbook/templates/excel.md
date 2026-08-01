@@ -1,28 +1,28 @@
 ---
 title: "엑셀 고급 기법"
 weight: 30
-description: "Power Query · 피벗 테이블 · LAMBDA 등 cowork-plugins로 자동화 가능한 엑셀 고급 패턴."
+description: "Power Query · 피벗 테이블 · LAMBDA 등 모두의 코워크로 자동화 가능한 엑셀 고급 패턴."
 geekdocBreadcrumb: true
 ---
-> 엑셀의 90%는 SUM·VLOOKUP만으로 풀리지만, 나머지 10%가 사람의 시간을 다 잡아먹습니다. 그 10%를 cowork-plugins로 자동화합니다.
+> 엑셀의 90%는 SUM·VLOOKUP만으로 풀리지만 나머지 10%가 사람의 시간을 다 잡아먹습니다. 그 10%를 모두의 코워크로 자동화합니다.
 
 ```mermaid
 flowchart TD
-    A["데이터 입력<br/>(CSV·DB·API)"] --> B["xlsx-creator<br/>자동 생성"]
-    B --> C{"출력"}
-    C -- "대시보드" --> D["KPI 시트"]
-    C -- "피벗" --> E["분석 시트"]
-    C -- "템플릿" --> F["보고서"]
+   A["데이터 입력<br/>(CSV·DB·API)"] --> B["xlsx-creator<br/>자동 생성"]
+   B --> C{"출력"}
+   C -- "대시보드" --> D["KPI 시트"]
+   C -- "피벗" --> E["분석 시트"]
+   C -- "템플릿" --> F["보고서"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style D fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style E fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style F fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style D fill:#e8f1ec,stroke:#265240,color:#09110f
+   style E fill:#e8f1ec,stroke:#265240,color:#09110f
+   style F fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 ## 사용 스킬
 
-- **`moai-office:xlsx-creator`** — openpyxl 기반 엑셀 자동 생성. 데이터 표·차트·수식·서식·시트 보호까지 코드로 작성.
+- **`moai-officer:office-xlsx-creator`** — openpyxl 기반 엑셀 자동 생성. 데이터 표·차트·수식·서식·시트 보호까지 코드로 작성.
 
 ## 자동화하기 쉬운 5가지 작업
 
@@ -55,7 +55,7 @@ flowchart TD
 
 ### 4. 피벗 + 슬라이서 시뮬레이션
 
-cowork는 동적 피벗 슬라이서를 직접 만들지는 못하지만, 시나리오별 결과 시트를 미리 생성해 같은 효과를 냅니다:
+cowork는 동적 피벗 슬라이서를 직접 만들지는 못하지만 시나리오별 결과 시트를 미리 생성해 같은 효과를 냅니다:
 
 {{< terminal title="claude — cowork" >}}
 > 이 매출 데이터로 채널별·지역별 피벗 결과 시트 4개 미리 만들어줘.
@@ -73,14 +73,14 @@ cowork는 동적 피벗 슬라이서를 직접 만들지는 못하지만, 시나
 
 ## Power Query 대체 — 데이터 전처리
 
-`xlsx-creator`는 Power Query를 직접 호출하지 않지만 동일 결과를 코드로 만듭니다:
+`office-xlsx-creator`는 Power Query를 직접 호출하지 않지만 동일 결과를 코드로 만듭니다:
 
 - 여러 시트·파일 합치기 (UNION)
 - 컬럼 분할·결합
 - 결측·이상값 처리
 - 피벗·언피벗
 
-복잡한 변환은 [데이터 분석 가이드](../../guides/data-analysis/)의 `data-explorer` 스킬과 조합하세요.
+복잡한 변환은 [데이터 분석 가이드](../../guides/data-analysis/)의 `office-data-explorer` 스킬과 조합하세요.
 
 ## LAMBDA·동적 배열 함수
 
@@ -93,7 +93,7 @@ cowork는 동적 피벗 슬라이서를 직접 만들지는 못하지만, 시나
 
 ## 자주 겪는 실수
 
-- **수식이 깨질까 무서워서 값 복사** — `xlsx-creator`는 수식 그대로 쓰니 원본 셀 참조 보존됩니다.
+- **수식이 깨질까 무서워서 값 복사** — `office-xlsx-creator`는 수식 그대로 쓰니 원본 셀 참조 보존됩니다.
 - **차트가 너무 화려함** — 막대·꺾은선·도넛 3가지면 충분.
 - **머지 셀 남용** — 머지된 셀은 정렬·필터를 깨뜨립니다. 가능하면 피하세요.
 
@@ -107,5 +107,5 @@ cowork는 동적 피벗 슬라이서를 직접 만들지는 못하지만, 시나
 
 ### Sources
 
-- moai-office 플러그인 [`xlsx-creator`](https://github.com/modu-ai/cowork-plugins/blob/main/moai-office/skills/xlsx-creator/SKILL.md)
+- moai-officer 플러그인 [`office-xlsx-creator`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-officer/skills/office-xlsx-creator/SKILL.md)
 - [openpyxl 공식 문서](https://openpyxl.readthedocs.io)

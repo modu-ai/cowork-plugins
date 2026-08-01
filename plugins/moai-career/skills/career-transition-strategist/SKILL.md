@@ -7,7 +7,7 @@ description: >
   타이밍 진단 → 현황 분석 → 목표 설정 → 시장조사 → 갭 메우기 → 경력 서사 →
   면접 → 연봉 협상 → 오프보딩까지 9단계 워크플로우와 이직 전략 캔버스,
   연봉 협상 스크립트, 인수인계 체크리스트를 제공합니다.
-version: "0.1.0"
+version: "1.0.0"
 metadata:
   category: 커리어
 ---
@@ -81,7 +81,8 @@ metadata:
 
 ### STEP 8. 오프보딩
 - **직속 상사에게 먼저** 통보합니다(인사팀 먼저 금지).
-- **퇴직금·연차 정산**, **4대 보험 전환**을 확인합니다.
+- **퇴직금·연차 정산**, **4대 보험 전환**을 확인합니다 — 정산 항목·실업급여(구직급여) 수급 요건·고용24 신청 경로는 `references/kr-resignation-benefits.md` 참조.
+- 실업급여를 고려한다면 **이직 사유 코드와 이직확인서**를 퇴사 전에 챙깁니다(자발적 퇴사는 원칙적으로 수급 불가, 예외 사유는 증빙 필요).
 - 인수인계 문서는 3요소로 작성합니다: **① 의도-결과 차이 / ② 유지할 것·변경할 것 / ③ 예상 못한 문제**.
 
 ## 산출물 템플릿
@@ -128,6 +129,7 @@ metadata:
 - [ ] 시장가를 조사하고 연봉 밴드를 사전 설정했는가
 - [ ] 첫 오퍼를 시작점으로 두고 패키지까지 협상했는가
 - [ ] 직속 상사에게 먼저 통보하고 인수인계 3요소를 작성했는가
+- [ ] 퇴직금·연차 정산과 실업급여 수급 요건·이직확인서를 확인했는가 (`references/kr-resignation-benefits.md`)
 
 ## 흔한 실수 8
 
@@ -152,3 +154,18 @@ metadata:
 ## 함께 쓰면 좋은 스킬
 
 경력기술서·자소서 작성은 `moai-career:business-resume-builder`, 포트폴리오는 `moai-career:business-portfolio-guide`, 면접 실전 준비는 `moai-career:business-interview-coach`와 함께 사용하세요. 채용 담당자(고용주) 관점은 `moai-recruiter`에 있습니다.
+
+## 관련 스킬 (후처리 체인)
+
+이력서·경력기술서 등 입력에 개인정보(주민등록번호·연락처·계좌 등)가 포함되면 `moai-coworker:general-ai-slop-reviewer`의 `references/kr-pii-masking.md` 규칙으로 마스킹 후 처리한다.
+
+경력 서사·이직 전략 서술 등 문장 산출물을 작성한 뒤에는 아래 체인으로 마무리한다.
+
+- **moai-coworker:general-ai-slop-reviewer**: AI 티 나는 표현·과장·상투구 검수·수정 (필수)
+- **moai-writer:general-humanize-korean**: 한국어 자연스러움 보정 — 슬롭 검수 다음 (필수)
+
+## References
+
+| 파일 | 로드 조건 |
+|------|-----------|
+| references/kr-resignation-benefits.md | 퇴사 정산·실업급여(수급 요건·이직확인서·고용24 신청 경로) 안내가 필요할 때 |

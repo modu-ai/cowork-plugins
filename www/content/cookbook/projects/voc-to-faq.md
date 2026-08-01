@@ -10,7 +10,7 @@ tags: [cookbook, projects, cs]
 
 ## 1. 문제 상황
 
-반려동물 용품 쇼핑몰을 운영하는 하람 님의 하루는 문의 답장으로 시작해 문의 답장으로 끝납니다. 톡톡, 이메일, 상품 Q&A를 합치면 하루 서른 건. 그런데 가만 보면 절반 이상이 이미 답한 적 있는 질문입니다. "배송 언제 오나요", "사료 유통기한 어디 봐요", "교환은 어떻게 해요". 같은 답을 매번 새로 타이핑하면서, 정작 "이 제품 쓰고 알레르기가 생긴 것 같아요" 같은 진짜 손이 가야 할 문의는 밀립니다.
+반려동물 용품 쇼핑몰을 운영하는 하람 님의 하루는 문의 답장으로 시작해 문의 답장으로 끝납니다. 톡톡, 이메일, 상품 Q&A를 합치면 하루 서른 건. 그런데 가만 보면 절반 이상이 이미 답한 적 있는 질문입니다. "배송 언제 오나요", "사료 유통기한 어디 봐요", "교환은 어떻게 해요". 같은 답을 매번 새로 타이핑하면서 정작 "이 제품 쓰고 알레르기가 생긴 것 같아요" 같은 진짜 손이 가야 할 문의는 밀립니다.
 
 쌓인 문의 기록은 사실 보물입니다. **고객이 무엇에 걸려 넘어지는지의 데이터**이기 때문입니다. 업계에서 VOC(Voice of Customer, 고객의 소리 — 문의·불만·리뷰를 통칭)라 부르는 이 기록을 분석하면, 반복 질문은 FAQ로 만들어 문의 자체를 줄이고, 답변은 템플릿화해 응대를 빠르게 하고, 제품·페이지 개선점까지 찾을 수 있습니다. 전 과정이 CS매니저의 전문 영역입니다.
 
@@ -45,24 +45,24 @@ CS매니저가 분류표를 만듭니다. "문의의 41%가 배송 관련, 그�
 
 ```mermaid
 flowchart TD
-    U["하람 님<br/>두 달치 문의 기록"] --> C1["CS매니저<br/>commerce-voc-triage"]
-    C1 --> R1["VOC 분류 리포트<br/>(유형 · 빈도 · 감정)"]
-    R1 --> C2["CS매니저<br/>business-kb-article"]
-    C2 --> R2["FAQ 지식베이스<br/>상위 10문항"]
-    R1 --> C3["CS매니저<br/>business-draft-response"]
-    C3 --> R3["응대 템플릿 세트"]
-    R1 --> C4["CS매니저<br/>business-escalation-manager"]
-    C4 --> R4["직접 응대 기준"]
-    R2 --> OUT["문의 감소 + 응대 체계"]
-    R3 --> OUT
-    R4 --> OUT
+   U["하람 님<br/>두 달치 문의 기록"] --> C1["CS매니저<br/>commerce-voc-triage"]
+   C1 --> R1["VOC 분류 리포트<br/>(유형 · 빈도 · 감정)"]
+   R1 --> C2["CS매니저<br/>business-kb-article"]
+   C2 --> R2["FAQ 지식베이스<br/>상위 10문항"]
+   R1 --> C3["CS매니저<br/>business-draft-response"]
+   C3 --> R3["응대 템플릿 세트"]
+   R1 --> C4["CS매니저<br/>business-escalation-manager"]
+   C4 --> R4["직접 응대 기준"]
+   R2 --> OUT["문의 감소 + 응대 체계"]
+   R3 --> OUT
+   R4 --> OUT
 
-    style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style R1 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style R2 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style R3 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style R4 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style OUT fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+   style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style R1 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style R2 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style R3 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style R4 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style OUT fill:#d6e7de,stroke:#3d7d5f,stroke-width:2px,color:#09110f
 ```
 
 ## 4. 결과물
@@ -79,7 +79,7 @@ flowchart TD
 
 {{< hint type="note" >}}
 **잘 안 될 때 — FAQ를 올렸는데 같은 문의가 계속 옵니다.**
-FAQ가 틀린 게 아니라 고객 눈에 안 보이는 위치에 있는 경우가 대부분입니다. 문의가 발생하는 지점(주문 완료 화면, 상품 페이지 상단, 톡톡 자동 인사말)에 해당 FAQ 답을 직접 배치해달라고 요청 문구를 다시 짜세요. "배송 문의가 계속 오는데, 고객이 주문 직후에 보게 될 안내 문구로 다시 써줘"처럼 위치를 바꾸는 재요청이 답인 경우가 많습니다.
+FAQ가 틀린 게 아니라 고객 눈에 안 보이는 위치에 있는 경우가 대부분입니다. 문의가 발생하는 지점(주문 완료 화면, 상품 페이지 상단, 톡톡 자동 인사말)에 해당 FAQ 답을 직접 배치해달라고 요청 문구를 다시 짜세요. "배송 문의가 계속 오는데 고객이 주문 직후에 보게 될 안내 문구로 다시 써줘"처럼 위치를 바꾸는 재요청이 답인 경우가 많습니다.
 {{< /hint >}}
 
 ## 6. 응용

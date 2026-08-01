@@ -1,0 +1,9 @@
+{{- /* 마스코트 숏코드 — partials/mascot.html 래퍼.
+       사용: {{< mascot variant="explaining" size="196" alt="..." >}}
+       변형: thinking · pointing · searching · teaching · explaining · coffee ·
+             celebrating · frustrated · inspecting */ -}}
+{{- partial "mascot.html" (dict
+      "variant" (.Get "variant" | default "explaining")
+      "size"    (.Get "size"    | default "196")
+      "alt"     (.Get "alt"     | default "모두의AI 마스코트")
+) -}}

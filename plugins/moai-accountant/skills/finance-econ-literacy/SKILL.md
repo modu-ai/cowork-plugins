@@ -4,7 +4,7 @@ description: >
   금리·환율·물가 같은 경제지표를 '내 돈' 관점에서 읽도록 도와주는 스킬입니다.
   '금리 오르면 어떻게 돼', '환율이 내 자산에 미치는 영향', '경제지표 읽는 법', 'GDP가 뭐야', '경기 사이클'처럼 말하면 됩니다.
   금리·환율·물가(CPI)·GDP·고용·수출입 지표가 대출·예금·투자·소비에 어떻게 연결되는지 쉬운 언어로 설명합니다.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 경제지표 읽기 (Economic Literacy)
@@ -86,9 +86,14 @@ version: "0.1.0"
 
 ## 관련 스킬
 
-- **moai-wealth/finance-invest-primer**: 금리·물가 환경을 자산 배분에 반영
-- **moai-wealth/finance-wealth-roadmap**: 금리 방향에 따른 대출·저축 전략
+- **moai-accountant:finance-invest-primer**: 금리·물가 환경을 자산 배분에 반영
+- **moai-accountant:finance-wealth-roadmap**: 금리 방향에 따른 대출·저축 전략
 - **moai-analyst:office-public-data-korean-stock-search**: KRX 시세 등 시장 데이터(참고용)
+
+| 단계 | 스킬 | 역할 |
+|------|------|------|
+| Post-검수 | `moai-coworker:general-ai-slop-reviewer` | AI 슬롭 검수 (필수) |
+| Post-검수 | `moai-writer:general-humanize-korean` | 한국어 AI 티 제거 (슬롭 검수 다음, 필수) |
 
 ## 이 스킬을 사용하지 말아야 할 때
 

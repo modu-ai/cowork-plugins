@@ -54,20 +54,20 @@ tags: [cookbook, projects, people]
 
 ```mermaid
 flowchart TD
-    U["소연 님<br/>'첫 마케터 채용'"] --> H1["인사·채용<br/>business-job-analyzer"]
-    H1 --> R1["직무 정의서<br/>+ 채용 공고문"]
-    R1 --> POST["공고 게시 · 지원 접수"]
-    POST --> H2["인사·채용<br/>business-resume-screener"]
-    H2 --> R2["스크리닝 점수표<br/>+ 면접 질문"]
-    R2 --> INT["면접 (사람의 몫)"]
-    INT --> H3["인사·채용<br/>business-draft-offer"]
-    H3 --> OUT["오퍼레터 발송"]
+   U["소연 님<br/>'첫 마케터 채용'"] --> H1["인사·채용<br/>business-job-analyzer"]
+   H1 --> R1["직무 정의서<br/>+ 채용 공고문"]
+   R1 --> POST["공고 게시 · 지원 접수"]
+   POST --> H2["인사·채용<br/>business-resume-screener"]
+   H2 --> R2["스크리닝 점수표<br/>+ 면접 질문"]
+   R2 --> INT["면접 (사람의 몫)"]
+   INT --> H3["인사·채용<br/>business-draft-offer"]
+   H3 --> OUT["오퍼레터 발송"]
 
-    style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style R1 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style R2 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style INT fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style OUT fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+   style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style R1 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style R2 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style INT fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style OUT fill:#d6e7de,stroke:#3d7d5f,stroke-width:2px,color:#09110f
 ```
 
 ## 4. 결과물

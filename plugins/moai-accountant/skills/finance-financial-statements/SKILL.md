@@ -4,7 +4,7 @@ description: >
   재무제표를 만들어주는 스킬입니다.
   '재무상태표 작성해줘', '손익계산서 분석해줘', 'K-IFRS 기준으로 재무제표 만들어줘'처럼 말하면 됩니다.
   재무상태표·손익계산서·현금흐름표 전체 세트 작성, 2026년 K-IFRS 제1118호 변경 대응, 주석 공시, 재무비율 분석을 지원합니다.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 재무제표 작성 (Financial Statements)
@@ -190,3 +190,9 @@ finance-financial-statements (해설·코멘트 부분) → moai-coworker:genera
 - **예산 대비 실적 분석**: 분산 분석과 KPI 추적은 `moai-accountant:finance-variance-analysis` 스킬을 사용하세요.
 - **세금 신고·납부**: 부가가치세·법인세 신고 절차는 `moai-accountant:finance-tax-helper` 스킬을 먼저 확인하고 세무사에게 의뢰하세요.
 - **투자 판단용 실사(DD)**: 인수합병, 투자 결정을 위한 재무 실사는 공인회계사나 회계법인의 공식 실사가 필요합니다.
+
+## References
+
+| 파일 | 로드 조건 |
+| --- | --- |
+| references/invoice-mgmt.md | 송장 템플릿·미수금 추적·현금흐름 예측 등 매출채권 관리가 필요할 때 |

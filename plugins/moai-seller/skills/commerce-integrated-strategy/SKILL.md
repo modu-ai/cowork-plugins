@@ -6,7 +6,7 @@ description: |
   "오늘 배운 것 종합 전략으로 정리해줘", "통합 전략 뽑아줘", "실행 우선순위 정해줘", "매출 올리는 전략 1장", "지금 당장 해야 할 것 Top3", "ROAS 개선 전략", "채널별 매출 비교 분석", "커머스 전략 짜줘", "채널 믹스 추천해줘", "가격 전략 세워줘", "프로모션 캘린더 만들어줘", "리텐션 전략 추천", "이커머스 KPI 대시보드 설계"
   매크로 전략 모드(채널 믹스·3단계 가격·시즌 프로모션 캘린더·재구매 자동화·KPI 대시보드 references 제공) + 통합 1장 모드(선행 산출물 종합) 2계층으로 동작하며, 전략 1장 직후 moai-coworker:general-ai-slop-reviewer를 자동 체이닝합니다.
   [책임 경계] 본 스킬은 이커머스 셀러 즉시 실행 전술 + 채널 전략. 중장기 사업 전략은 moai-consultant:business-strategy-planner, 운영 자동화 진단은 moai-seller:commerce-automation-audit 사용.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 통합 전략 자동 생성 (Commerce Integrated Strategy)
@@ -174,6 +174,7 @@ version: "0.1.0"
 - `commerce-marketplace-coupang/naver/d2c/curation/crowdfunding` — 채널별 운영 실행
 - `commerce-automation-audit` — 운영 자동화 진단 (풀세트)
 - `moai-coworker:general-ai-slop-reviewer` — 전략 문서 AI 검수 (자동 체인)
+- `moai-writer:general-humanize-korean` — 한국어 AI 티 제거 (슬롭 검수 다음, 필수)
 - `moai-consultant:business-strategy-planner` — 중장기 사업 전략 (페어, 상위 레벨)
 
 ## 이 스킬을 사용하지 말아야 할 때
@@ -198,6 +199,8 @@ version: "0.1.0"
 | 런칭 (0-6개월) | 0-월 1천만 | 어디서 첫 매출? 트래픽 확보? |
 | 성장 (6-24개월) | 월 1천-3억 | 채널 다각화? 광고 ROI? |
 | 안정 (24개월+) | 월 3억+ | LTV·재구매? 브랜드 자산? |
+
+> 런칭 단계 전자상거래 스토어 오픈 종합 실행 순서(상품 기획→상품 페이지→가격 전략→마케팅→고객 지원 5개 역할 워크플로우)는 `references/ecommerce-launcher.md` 참조.
 
 ### 2단계: 채널 믹스 결정
 

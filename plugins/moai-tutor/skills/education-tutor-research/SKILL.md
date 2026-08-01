@@ -11,7 +11,7 @@ description: |
   - "튜터처럼 이 주제 깊이 조사해줘"
   질문을 리서치 축으로 분해해 공식 문서(WebSearch로 찾아 WebFetch로 본문 확인)와 최신 웹 자료(WebSearch)를 병렬 조사하고, 출처를 교차검증한 뒤 education-learning-material로 넘길 종합본을 만듭니다.
   [책임 경계] vs moai-tutor:education-research-assistant: 이 스킬=개인 학습용 최신 정보 빠른 조사, 저 스킬=학술 논문용 문헌 검토와 인용 관리.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 튜터 리서치 (Tutor Research)
@@ -32,24 +32,24 @@ version: "0.1.0"
 
 - **공식 문서 축**: 특정 라이브러리·SDK·도구·API가 등장하는가? (예: React 19, Next.js, claude code CLI, FastAPI) → 공식 문서 사이트·URL 후보 도출
 - **최신 정보 축(WebSearch 대상)**: 개념·트렌드·비교·"언제 무엇을 쓰나"·최근 변경 → 검색 쿼리 2-4개
-- **코드베이스 축(선택, Explore)**: 사용자 프로젝트 내부 코드를 학습 대상에 포함하는 경우
+- **코드베이스 축(선택)**: 사용자 프로젝트 내부 코드를 학습 대상에 포함하는 경우 — 환경이 서브에이전트(`Agent(Explore)`)를 지원하면 사용, 아니면 직접 파일을 읽어 조사
 
 ### 2단계: 병렬 리서치 실행
 
-[HARD] 독립적인 조사는 **한 턴에 병렬로** 실행한다(직렬 금지). 오케스트레이터는 다음을 동시에 호출한다.
+[HARD] 독립적인 조사는 **한 턴에 병렬로** 실행한다(직렬 금지). 다음을 동시에 호출한다.
 
 - 공식 문서: WebSearch로 공식 문서 URL을 찾고 → WebFetch로 해당 페이지 본문을 확인
 - WebSearch: 도출한 쿼리 2-4개 (최신 변경·비교·튜토리얼)
-- (광범위 주제일 때) `Agent(Explore)` 또는 `Agent(general-purpose)` 리서처를 하위 축마다 **병렬 fan-out** — 각 에이전트가 한 축을 맡아 조사 결과를 반환
+- (광범위 주제일 때, 환경이 서브에이전트를 지원하면) `Agent(Explore)`/`Agent(general-purpose)` 리서처를 하위 축마다 **병렬 fan-out**한다. 서브에이전트를 지원하지 않는 환경(예: Claude Cowork Desktop)에서는 WebSearch를 축별로 직접 병렬 실행한다.
 
-광범위·다면적 주제(소스 교차검증이 핵심)일 때는 번들된 `/deep-research <질문>` 워크플로우를 제안할 수 있다. 단, 토큰 비용이 단발 검색보다 크다는 점을 먼저 알린다.
+광범위·다면적 주제(소스 교차검증이 핵심)이고 환경이 `/deep-research`를 지원하면 번들된 `/deep-research <질문>` 워크플로우를 제안할 수 있다(토큰 비용이 단발 검색보다 크다는 점을 먼저 알린다). 지원하지 않으면 WebSearch 다중 쿼리로 직접 교차검증한다.
 
 ```
 [한 턴 안에서 병렬 호출]
   ├─ WebSearch: "<라이브러리> 공식 문서 <핵심 토픽>" → WebFetch: <공식 문서 URL>
   ├─ WebSearch: "<주제> 2026 최신"
   ├─ WebSearch: "<개념 A> vs <개념 B> 차이 언제 사용"
-  └─ (선택) Agent(Explore): 사용자 프로젝트 내 관련 코드 패턴
+  └─ (선택, 서브에이전트 지원 시) Agent(Explore): 사용자 프로젝트 내 관련 코드 패턴 — 미지원 시 직접 파일 읽기
 ```
 
 > **GLM 백엔드 주의**: `moai glm` 또는 `moai cg`의 GLM 페인에서는 WebSearch·WebFetch가 z.ai MCP 도구로 라우팅된다. `.claude/rules/moai/core/glm-web-tooling.md`의 라우팅 표를 따른다.
@@ -119,4 +119,4 @@ version: "0.1.0"
 
 - **학술 논문용 문헌 검토·인용 관리** → `moai-tutor:education-research-assistant`
 - **시장·비즈니스 조사** → `moai-consultant:business-market-analyst`
-- **깊은 다중 소스 교차검증 리포트(단일 질문, 비학습)** → 번들 `/deep-research` 워크플로우
+- **깊은 다중 소스 교차검증 리포트(단일 질문, 비학습)** → 환경이 지원하면 번들 `/deep-research` 워크플로우, 아니면 WebSearch 다중 쿼리 직접 조사

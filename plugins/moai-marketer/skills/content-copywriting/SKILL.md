@@ -13,7 +13,7 @@ description: |
   - "발표 슬라이드 카피 만들어줘", "슬라이드 문구 다듬어줘"
   AIDA·PAS·FAB 같은 검증된 틀로 작성하고, 공정거래법·표시광고법 금지 표현을 피합니다. 완성 후 moai-coworker:general-ai-slop-reviewer로 AI 티를 정리합니다(필수 후처리).
   [책임 경계] vs moai-cs:commerce-channel-message: 이 스킬=범용 카피(블로그·일반 광고·슬로건), 저 스킬=이커머스 운영 카피(광고·톡톡·푸시·이메일·카트 이탈) 전용.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 카피라이팅 (Copywriting)
@@ -217,7 +217,7 @@ version: "0.1.0"
 7. **헤드라인은 강한 끝맺음** — "네 가지" 같은 추상 명사로 끝내지 않음 ("~위임합니다", "~만듭니다")
 8. **비유 일관성** — 한 번 정한 비유("AI 직원")를 전 페이지에 일관 적용, "자동화/AI 팀/AI 직원" 혼용 금지
 
-> **HTML/웹 카피 윤문 절차 (정식화 완료)** — `references/copywriting.md` §4(작업 절차 6단계: 추출→매칭→맥락분석→개선안→일괄적용→검증) + §5(주의사항: head 메타·HTML 문법·정규식 lookahead·minmax(0,1fr))에 정식 본문화. 직역 부사 A-24·인칭 호회 A-25·before/after 뱅크는 `moai-writer:general-humanize-korean` references/rewriting-playbook.md 카피 레시피에 통합. 패턴 카탈로그 8종·교정 원칙 8조 원문은 `references/ai-tell-ko-copy-spec.md` (설계 노트 원본, 역사 기록). **윤문은 카피 모드**(변경률 가드 대신 사실 앵커 보존 — 수치·날짜·가격·고유명사·법적 표기 100%)로 수행하며, HTML 일괄 치환은 `general-humanize-korean` references/humanize_html.py(텍스트 노드만 치환, head 메타·JSON-LD 포함, 잔재 검증 내장)로 자동화할 수 있다.
+> **HTML/웹 카피 윤문 절차 (정식화 완료)** — `references/copywriting.md` §4(작업 절차 6단계: 추출→매칭→맥락분석→개선안→일괄적용→검증) + §5(주의사항: head 메타·HTML 문법·정규식 lookahead·minmax(0,1fr))에 정식 본문화. 직역 부사 A-24·인칭 호회 A-25·before/after 뱅크는 `moai-writer:general-humanize-korean` references/rewriting-playbook.md 카피 레시피에 통합. 패턴 카탈로그 8종·교정 원칙 8조 원문은 `references/ai-tell-ko-copy-spec.md` (설계 노트 원본, 역사 기록). **윤문은 카피 모드**(변경률 가드 대신 사실 앵커 보존 — 수치·날짜·가격·고유명사·법적 표기 100%)로 수행한다. HTML 일괄 치환(텍스트 노드만 치환, head 메타·JSON-LD 포함, 잔재 검증)이 필요하면 `moai-writer:general-humanize-korean` 스킬을 호출해 위임한다 — 해당 스킬이 HTML 윤문 도구를 자체 보유하므로 플러그인 경계를 넘는 직접 경로 대신 스킬 위임으로 처리한다.
 
 **브랜드 스토리·내러티브 작성 시 (L 가드)**: 스토리 고유 AI틱 8종을 피한다 — L-1 클리셰 도입부("어느 날/그렇게 시작되었습니다") · L-2 상투적 감정 표현(직접 명명형이든 신체 은유형이든) · L-3 교훈 강박 종결 · L-4 클리셰 전환구("하지만 그때/운명처럼") · L-5 지나치게 매끄러운 결말 · L-6 창업자 신화 템플릿 · L-7 가짜 구체성(검증 불가 통계·전문성) · L-8 광고형 고객 후기. 대신 고객을 주인공으로, 결핍·해결 과정을 본체로, 검증 가능한 구체성(숫자·실제 프로세스·실제 인용)으로 채운다. 상세: `moai-writer:general-humanize-korean` references/ai-tell-taxonomy.md L 카테고리 + [`references/visual-storytelling.md`](references/visual-storytelling.md) § 브랜드 내러티브 AI틱 가드.
 

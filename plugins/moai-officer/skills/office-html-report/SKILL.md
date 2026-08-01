@@ -11,7 +11,7 @@ description: |
   - "이메일에 붙일 수 있는 HTML 리포트 만들어줘"
   현황·인시던트·사업계획·설명서·재무·PR 6종 서식을 갖췄고, 보고서 종류에 맞춰 자동으로 골라 줍니다.
   PDF 파일이 필요하면 생성한 HTML을 moai-officer:office-pdf-writer로 넘겨 디자인 그대로 PDF로 변환하세요 (weasyprint를 직접 설치·호출하지 말 것).
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # office-html-report: 단일 파일 HTML 보고서 렌더러
@@ -37,7 +37,7 @@ version: "0.1.0"
 |------|------|--------|------|
 | `markdown` | ✓ | — | 변환할 마크다운 본문 |
 | `mode` | ✓ | — | `status` \| `incident` \| `plan` \| `explainer` \| `financial` \| `pr` |
-| `design_system` | — | (미지정 시 0의존 기본 템플릿) | `claude` \| `clickhouse` \| `clay` 또는 [`design-system-library`](../../moai-design/skills/design-system-library/SKILL.md)의 75개 시스템. **지정 시** Tailwind Play CDN + shadcn vanilla 컴포넌트로 해당 브랜드 토큰 적용 (인터넷 연결 필요) |
+| `design_system` | — | (미지정 시 0의존 기본 템플릿) | `claude` \| `clickhouse` \| `clay` 또는 [`design-system-library`](../../moai-designer/skills/design-system-library/SKILL.md)의 75개 시스템. **지정 시** Tailwind Play CDN + shadcn vanilla 컴포넌트로 해당 브랜드 토큰 적용 (인터넷 연결 필요) |
 | `slug` | — | 제목에서 자동 생성 | 출력 파일명 prefix |
 | `output_path` | — | `<cwd>/reports/<slug>-<YYYYMMDD>.html` | 출력 경로 |
 | `font_stack` | — | 모드별 기본값 | 폰트 매핑 오버라이드 |
@@ -138,7 +138,7 @@ version: "0.1.0"
 
 ## 디자인 시스템 적용 (`design_system` 파라미터)
 
-`design_system` 입력을 지정하면 [`moai-officer:office-design-system-library`](../../moai-design/skills/design-system-library/SKILL.md)에서 브랜드 토큰을 로드해 **Tailwind Play CDN + shadcn vanilla 컴포넌트**로 렌더합니다.
+`design_system` 입력을 지정하면 [`moai-officer:office-design-system-library`](../../moai-designer/skills/design-system-library/SKILL.md)에서 브랜드 토큰을 로드해 **Tailwind Play CDN + shadcn vanilla 컴포넌트**로 렌더합니다.
 
 **두 가지 렌더 엔진** (하위 호환 유지):
 
@@ -159,7 +159,7 @@ version: "0.1.0"
 ### 적용 절차
 
 1. `design_system` 값으로 `systems/<name>.md` 토큰 로드
-2. [`mapping/tailwind.md`](../../moai-design/skills/design-system-library/mapping/tailwind.md) 규칙으로 `tailwind.config` 객체 생성
+2. [`mapping/tailwind.md`](../../moai-designer/skills/design-system-library/mapping/tailwind.md) 규칙으로 `tailwind.config` 객체 생성
 3. shadcn vanilla 컴포넌트(card/button/table/badge)로 구조 치환
 4. 단일 파일 HTML로 출력 (CDN script + config + 마크업)
 

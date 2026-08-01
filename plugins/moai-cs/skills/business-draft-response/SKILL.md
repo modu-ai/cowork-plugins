@@ -2,7 +2,7 @@
 name: business-draft-response
 description: >
   고객 문의에 대한 응답 초안을 작성합니다. "이 문의에 답변 초안 써줘", "환불 요청 이메일 답변 만들어줘", "카카오채널 응답 초안 작성해줘"라고 요청할 때 사용하세요. 한국어 경어 기반 이메일·채팅·공식 답변서 초안을 채널별 어조에 맞게 생성합니다.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 응답 초안 작성 (Draft Response)
@@ -32,6 +32,7 @@ version: "0.1.0"
 1. 공감 인사: "고객님, 불편을 드려 진심으로 죄송합니다."
 2. 상황 확인: "말씀하신 [주문번호/문제]를 확인하였습니다."
 3. 해결책: 구체적인 처리 방안 또는 타임라인 명시
+   — 환불·교환·반품 문의는 `references/kr-ecommerce-cs-law.md`(청약철회 7일·하자 기한·반품비 부담·소비자분쟁해결기준)를 확인해 법정 기준보다 불리한 안내를 하지 않도록 합니다
 4. 다음 단계: 고객이 해야 할 행동 또는 처리 완료 예정일
 5. 마무리: 지속적인 지원 의사 표명
 ```
@@ -89,9 +90,19 @@ business-draft-response → moai-coworker:general-ai-slop-reviewer → moai-writ
 
 채널별 어조 기준 및 금지 표현 목록: `references/tone-guide.md`
 
+- 고객 문의 원문에 개인정보(주민등록번호·계좌·카드번호·연락처 등)가 포함되면 `moai-coworker:general-ai-slop-reviewer`의 `references/kr-pii-masking.md` 규칙으로 마스킹 후 처리합니다 (답변 초안에 원본 재출력 금지).
+- 수신자 위계별 종결어미·서명·사과/거절 화법의 공유 규격은 `moai-coworker:business-report-speak`의 `references/kr-honorific-tone.md`를 따릅니다.
+
 ## 이 스킬을 사용하지 말아야 할 때
 
 - **티켓 분류 및 우선순위 판단** → moai-cs:business-ticket-triage 스킬이 더 적합합니다
 - **에스컬레이션 처리** → moai-cs:business-escalation-manager 스킬을 사용하세요
 - **지식베이스 문서 작성** → moai-cs:business-kb-article 스킬을 사용하세요
 - **법적 공식 답변서 (소송·분쟁 관련)** → moai-coworker 스킬과 법무팀 검토를 활용하세요
+
+## References
+
+| 파일 | 로드 조건 |
+|------|-----------|
+| references/response-templates.md | 초기 접수·해결 완료·에스컬레이션·환불/교환 등 상황별 CS 응답 템플릿이 필요할 때 |
+| references/kr-ecommerce-cs-law.md | 환불·교환·반품 문의의 해결책 단계 — 청약철회 7일(전상법 제17조)·하자 시 기한·반품비 부담(제18조)·소비자분쟁해결기준을 확인할 때 |

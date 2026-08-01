@@ -1,0 +1,107 @@
+MoAI-Cowork (모두의 코워크)
+Copyright (c) 2026 modu-ai (모두의 AI)
+
+This product is licensed under the Apache License, Version 2.0.
+See the LICENSE file for the full license text.
+
+본 저장소의 산출물(사용자가 이 플러그인으로 생성한 문서·이미지·코드 등)에 대한
+권리는 전적으로 사용자에게 있습니다. 자세한 내용은 LICENSE-OUTPUT.md 를 보세요.
+"모두의 코워크" · "MoAI" 등 상표 사용 규칙은 TRADEMARKS.md 를 보세요.
+
+================================================================================
+1. 제3자 저작물 — MIT License
+================================================================================
+
+본 저장소의 아래 파일들은 MIT 라이선스로 배포된 외부 프로젝트의 방법론을
+참고·재구성해 작성되었습니다. MIT 라이선스가 요구하는 저작권 표시와 허가 문구를
+아래에 그대로 포함합니다.
+
+--------------------------------------------------------------------------------
+1.1 coreyhaines31/marketingskills  (https://github.com/coreyhaines31/marketingskills)
+
+해당 파일:
+  plugins/moai-marketer/skills/marketing-keyword-research/SKILL.md
+  plugins/moai-marketer/skills/marketing-growth-experiment/SKILL.md
+  plugins/moai-marketer/skills/marketing-retention/SKILL.md
+
+MIT License
+
+Copyright (c) 2025 Corey Haines
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+--------------------------------------------------------------------------------
+1.2 social-media-skills/skills  (https://github.com/social-media-skills/skills)
+
+해당 파일:
+  plugins/moai-marketer/skills/content-sns-content/references/facebook.md
+  plugins/moai-marketer/skills/content-sns-content/references/platform-specs.md
+    (Facebook 열에 한함)
+
+MIT License
+
+Copyright (c) 2026 Frank Heijdenrijk
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+================================================================================
+2. 제3자 API 규격 — 저작권 귀속
+================================================================================
+
+아래 MCP 서버는 각 사업자가 공개한 API 규격(엔드포인트·파라미터·응답 스키마)을
+호출하는 클라이언트 래퍼입니다. API 규격 자체의 저작권은 각 사업자에게 있으며,
+본 저장소의 Apache-2.0 라이선스는 그 규격에 미치지 않습니다.
+
+  plugins/moai-seller/mcp-servers/moai-smartstore  — 네이버 커머스 API (NAVER Corp.)
+                                                     https://apicenter.commerce.naver.com
+  plugins/moai-seller/mcp-servers/moai-cafe24      — 카페24 Admin API (Cafe24 Corp.)
+  plugins/moai-seller/mcp-servers/moai-imweb       — 아임웹 OPEN API v3 (Imweb Corp.)
+
+각 서비스의 API 이용약관은 이용자가 직접 확인하고 준수해야 합니다.
+
+================================================================================
+3. 라이선스 적용 제외 — 브랜드 디자인 시스템 참고 자료
+================================================================================
+
+  plugins/moai-designer/skills/design-system-library/systems/
+
+이 디렉터리는 제3자 브랜드의 공개된 디자인 표현을 관찰·분석한 참고 자료입니다.
+분석 서술은 본 저장소의 저작물이지만, 분석 대상이 된 각 브랜드의 디자인·상표·서체에
+대한 권리는 해당 브랜드 소유자에게 있습니다. 본 저장소의 Apache-2.0 라이선스는
+그 권리에 미치지 않으며, 이 디렉터리의 자료를 상업적 산출물에 적용하기 전에는
+이용자가 직접 해당 브랜드의 이용 조건을 확인해야 합니다.
+
+자세한 사용 경계는 다음 문서를 보세요:
+  plugins/moai-designer/skills/design-system-library/BRAND-NOTICE.md

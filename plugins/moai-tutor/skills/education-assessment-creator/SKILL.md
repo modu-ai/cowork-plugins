@@ -13,7 +13,7 @@ description: |
   - "자격증 시험 대비 퀴즈랑 해설 같이 만들어줘"
   난이도 배분과 정답·해설을 갖춘 평가 문항을 만들고, 오답 분석표로 보충 학습 방향까지 짚어 드립니다.
   [책임 경계] vs moai-tutor:education-curriculum-designer: 이 스킬=시험 문제 출제와 채점, 저 스킬=강의 커리큘럼과 학습 목표 설계.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 평가 도구 제작 (Assessment Creator)
@@ -160,9 +160,17 @@ version: "0.1.0"
 
 - **moai-coworker/education-curriculum-designer**: 커리큘럼 설계, 학습 목표 정의
 - **moai-coworker/education-research-assistant**: 학술 논문 작성, 데이터 분석
+- `moai-coworker:general-ai-slop-reviewer` — 최종 산출물 AI 슬롭 검수 (Post-검수, 필수)
+- `moai-writer:general-humanize-korean` — 한국어 AI 티 제거 (슬롭 검수 다음 필수)
 
 ## 이 스킬을 사용하지 말아야 할 때
 
 - **커리큘럼 및 강의 계획 설계** → moai-tutor:education-curriculum-designer 스킬이 더 적합합니다
 - **학술 논문·보고서 작성** → moai-tutor:education-research-assistant 스킬을 사용하세요
 - **실제 시험 응시 대행** → 자격증 시험은 해당 기관에서 직접 응시해야 합니다
+
+## References
+
+| 파일 | 로드 조건 |
+|------|-----------|
+| references/exam-prep.md | 시험 트렌드 분석·약점 진단·맞춤형 학습 계획·모의고사·오류 분석 시 |

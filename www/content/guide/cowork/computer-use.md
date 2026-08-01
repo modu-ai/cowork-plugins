@@ -11,25 +11,25 @@ aliases: ["/cowork/computer-use/"]
 
 ![컴퓨터 사용 기능 — Claude의 스크린샷 캡처와 클릭](/screenshots/cowork/cowork-computeruse.png)
 
-Claude가 마우스 클릭, 키보드 입력, 화면 캡처를 통해 데스크톱 앱과 브라우저를 직접 조작합니다.
+Claude가 마우스 클릭, 키보드 입력, 화면 캡처로 데스크톱 앱과 브라우저를 직접 조작합니다.
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    participant U as 사용자
-    participant CW as Cowork
-    participant SCR as 화면 캡처
-    participant APP as 데스크톱 앱
+   autonumber
+   participant U as 사용자
+   participant CW as Cowork
+   participant SCR as 화면 캡처
+   participant APP as 데스크톱 앱
 
-    U->>CW: "이 앱에서 데이터 복사해줘"
-    CW->>SCR: 화면 스크린샷 캡처
-    SCR-->>CW: 화면 이미지 반환
-    CW->>CW: 화면 분석 (버튼·입력창 식별)
-    CW->>U: "이 버튼을 클릭하려 합니다. 허용?"
-    U->>CW: 허용
-    CW->>APP: 마우스 클릭·키보드 입력
-    APP-->>CW: 결과 화면
-    CW->>U: 작업 완료
+   U->>CW: "이 앱에서 데이터 복사해줘"
+   CW->>SCR: 화면 스크린샷 캡처
+   SCR-->>CW: 화면 이미지 반환
+   CW->>CW: 화면 분석 (버튼·입력창 식별)
+   CW->>U: "이 버튼을 클릭하려 합니다. 허용?"
+   U->>CW: 허용
+   CW->>APP: 마우스 클릭·키보드 입력
+   APP-->>CW: 결과 화면
+   CW->>U: 작업 완료
 ```
 
 ## 언제 쓰나
@@ -52,7 +52,7 @@ sequenceDiagram
 
 - 이메일·메시지 안의 낯선 링크를 컴퓨터 사용으로 클릭하지 마세요. 브라우저 MCP로 안전하게 열도록 요청하는 편이 좋습니다.
 - 금융·결제 액션(매매 주문, 송금)은 사용자가 직접 수행합니다. Cowork에 맡기지 마세요.
-- 작업 중 예상 못 한 화면이 뜨면 즉시 중단시킬 수 있도록, 처음에는 짧은 단위로 시켜 보세요.
+- 작업 중 예상 못 한 화면이 뜨면 즉시 중단시킬 수 있도록 처음에는 짧은 단위로 시켜 보세요.
 
 ## 제한 사항
 

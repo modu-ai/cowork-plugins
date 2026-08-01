@@ -31,29 +31,29 @@ aliases: ["/cowork/schedule/"]
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    participant U as 사용자
-    participant CW as Cowork (데스크톱)
-    participant SCH as 스케줄러
-    participant CONN as 커넥터·MCP
-    participant FS as 작업 폴더
+   autonumber
+   participant U as 사용자
+   participant CW as Cowork (데스크톱)
+   participant SCH as 스케줄러
+   participant CONN as 커넥터·MCP
+   participant FS as 작업 폴더
 
-    U->>CW: "매주 금요일 17시에 주간 보고 작성"
-    CW->>SCH: 작업 등록 (cron + 입력 + 결과 경로)
-    SCH-->>U: 다음 실행 시각 표시
+   U->>CW: "매주 금요일 17시에 주간 보고 작성"
+   CW->>SCH: 작업 등록 (cron + 입력 + 결과 경로)
+   SCH-->>U: 다음 실행 시각 표시
 
-    Note over SCH: 시간 도래 (예: 금 17:00)
-    SCH->>CW: 트리거 발사
-    alt 데스크톱 켜짐 + 로그인 + 권한 OK
-        CW->>CONN: 데이터 조회 (Slack·Drive·DB)
-        CONN-->>CW: 결과 반환
-        CW->>CW: 본문 작성 + DOCX 변환
-        CW->>FS: 결과 파일 저장
-        CW-->>U: 완료 알림 (이메일·Slack 옵션)
-    else 데스크톱 꺼짐 / 토큰 만료
-        CW-->>SCH: 실행 실패
-        SCH-->>U: 실패 통지 + 재시도 옵션
-    end
+   Note over SCH: 시간 도래 (예: 금 17:00)
+   SCH->>CW: 트리거 발사
+   alt 데스크톱 켜짐 + 로그인 + 권한 OK
+       CW->>CONN: 데이터 조회 (Slack·Drive·DB)
+       CONN-->>CW: 결과 반환
+       CW->>CW: 본문 작성 + DOCX 변환
+       CW->>FS: 결과 파일 저장
+       CW-->>U: 완료 알림 (이메일·Slack 옵션)
+   else 데스크톱 꺼짐 / 토큰 만료
+       CW-->>SCH: 실행 실패
+       SCH-->>U: 실패 통지 + 재시도 옵션
+   end
 ```
 
 ### 등록 절차
@@ -70,7 +70,7 @@ sequenceDiagram
 예약 작업 설정 시 반복 주기(매일·매주·매월)를 선택하고 결과 수신 채널을 지정합니다.
 
 1. 작업을 한 번 **수동으로 실행**해 결과물이 원하는 형태로 나오는지 확인합니다.
-2. 같은 대화에서 자연어로 예약을 요청하거나, 대화 상단의 **예약** 메뉴에서 반복 주기를 선택합니다 (매일 · 매주 · 매월 · 커스텀 cron).
+2. 같은 대화에서 자연어로 예약을 요청하거나 대화 상단의 **예약** 메뉴에서 반복 주기를 선택합니다 (매일 · 매주 · 매월 · 커스텀 cron).
 3. 결과를 받을 경로를 지정 — 작업 폴더(필수), 이메일·Slack(선택).
 4. 저장하면 **다음 실행 시간**이 화면에 표시됩니다.
 
@@ -88,23 +88,23 @@ sequenceDiagram
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    participant U as 사용자 (모바일·웹)
-    participant API as Claude API/Web
-    participant DESK as 데스크톱 Cowork
-    participant CONN as 커넥터·MCP
-    participant FS as 작업 폴더
+   autonumber
+   participant U as 사용자 (모바일·웹)
+   participant API as Claude API/Web
+   participant DESK as 데스크톱 Cowork
+   participant CONN as 커넥터·MCP
+   participant FS as 작업 폴더
 
-    U->>API: "이 NDA 검토 초안, 저녁 6시까지 끝내줘"
-    API-->>DESK: 사용자 계정으로 데스크톱에 전달
-    DESK->>U: 모바일 알림 — "수신함, 시작 예정 17:00"
+   U->>API: "이 NDA 검토 초안, 저녁 6시까지 끝내줘"
+   API-->>DESK: 사용자 계정으로 데스크톱에 전달
+   DESK->>U: 모바일 알림 — "수신함, 시작 예정 17:00"
 
-    Note over DESK: 데스크톱이 17:00에 작업 시작
-    DESK->>CONN: 입력 자료 수집
-    CONN-->>DESK: 결과
-    DESK->>DESK: 작업 수행
-    DESK->>FS: 결과 저장
-    DESK-->>U: 모바일 알림 — "완료, 결과는 작업 폴더 / 메일"
+   Note over DESK: 데스크톱이 17:00에 작업 시작
+   DESK->>CONN: 입력 자료 수집
+   CONN-->>DESK: 결과
+   DESK->>DESK: 작업 수행
+   DESK->>FS: 결과 저장
+   DESK-->>U: 모바일 알림 — "완료, 결과는 작업 폴더 / 메일"
 ```
 
 ### 등록 절차
@@ -127,24 +127,24 @@ sequenceDiagram
 
 ```mermaid
 flowchart TD
-    subgraph Routine["정기 운영"]
-        S1[월·금<br/>예약: 주간 보고]
-        S2[매월 1일<br/>예약: 매출 대시보드]
-    end
-    subgraph AdHoc["임시 지시"]
-        D1[지하철에서<br/>디스패치: NDA 검토]
-        D2[고객 미팅 중<br/>디스패치: 견적서 초안]
-    end
-    subgraph Desk["내 데스크톱 Cowork"]
-        Q[작업 큐]
-    end
-    Routine --> Q
-    AdHoc --> Q
-    Q --> Out["산출물 저장 → 알림"]
+   subgraph Routine["정기 운영"]
+       S1[월·금<br/>예약: 주간 보고]
+       S2[매월 1일<br/>예약: 매출 대시보드]
+   end
+   subgraph AdHoc["임시 지시"]
+       D1[지하철에서<br/>디스패치: NDA 검토]
+       D2[고객 미팅 중<br/>디스패치: 견적서 초안]
+   end
+   subgraph Desk["내 데스크톱 Cowork"]
+       Q[작업 큐]
+   end
+   Routine --> Q
+   AdHoc --> Q
+   Q --> Out["산출물 저장 → 알림"]
 
-    style Routine fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style AdHoc fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style Desk fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style Routine fill:#e6e6e6,stroke:#757575,color:#09110f
+   style AdHoc fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style Desk fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 권장 분리:
@@ -155,7 +155,7 @@ flowchart TD
 
 1. **첫 실행은 손으로.** 예약·디스패치 등록 전에 같은 대화를 한 번 수동 실행해 결과 품질을 검증합니다.
 2. **결과 경로를 작업 폴더로 고정.** 메일·Slack은 부수 알림용으로만. 원본은 항상 폴더에 남겨야 추적이 됩니다.
-3. **OAuth 토큰 만료 알림을 메일로.** 커넥터 설정에서 토큰 만료 알림을 켜고, 분기 1회 재인증을 캘린더에 등록.
+3. **OAuth 토큰 만료 알림을 메일로.** 커넥터 설정에서 토큰 만료 알림을 켜고 분기 1회 재인증을 캘린더에 등록.
 4. **PC는 종료 대신 수면.** 예약과 디스패치 모두 데스크톱이 깨어 있어야 작동합니다. 절전 상태에서도 트리거가 깨우는 환경을 권장.
 5. **민감 데이터 작업은 디스패치 사용 금지.** 모바일 환경에서 자연어로 인사·재무 데이터에 영향을 주는 지시를 하지 마세요. 사람이 책상 앞에서 직접 검토합니다.
 6. **결과 폴더에 날짜 prefix.** 자동 생성물은 `2026-04-26_주간보고.docx`처럼 날짜 prefix로 누적되게 — 덮어쓰기보다 추적이 쉽습니다.

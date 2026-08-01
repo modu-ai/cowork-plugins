@@ -11,7 +11,7 @@ description: |
   - "모바일 전용 상세페이지 숏폼 스타일로 만들어줘"
   코드 생성 전에 디자인 톤(색·모드·모서리·효과)을 먼저 묻습니다. 기획은 moai-seller:commerce-detail-page-planner, 카피는 moai-seller:commerce-detail-page-copy, 이미지는 moai-seller:commerce-detail-page-image로 이어집니다.
   [책임 경계] vs 페어 스킬: 이 스킬=코드 산출, moai-seller:commerce-detail-page-copy=13섹션 카피 JSON, moai-marketer:marketing-landing-page=단독 전환 랜딩 1페이지.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 상세 페이지 (Product Detail)
@@ -239,6 +239,8 @@ AI가 생성한 상세 페이지 카피에 포함된 판매량, 평점, 고객 �
 - `moai-marketer:marketing-landing-page` — 랜딩 페이지 (단독 전환 목적)
 - `moai-marketer:content-sns-content` — 소셜미디어 콘텐츠
 - `moai-marketer:content-copywriting` — 광고 카피
+- `moai-coworker:general-ai-slop-reviewer` — 최종 산출물 AI 슬롭 검수 (Post-검수, 필수)
+- `moai-writer:general-humanize-korean` — 한국어 AI 티 제거 (슬롭 검수 다음 필수)
 
 ## 이 스킬을 사용하지 말아야 할 때
 
@@ -247,3 +249,12 @@ AI가 생성한 상세 페이지 카피에 포함된 판매량, 평점, 고객 �
 - 랜딩 페이지: `moai-marketer:marketing-landing-page` 스킬 사용
 - 광고 카피 단독 작성: `moai-marketer:content-copywriting` 스킬 사용
 - 카탈로그/리스트 페이지: 이 스킬의 범위 아님
+
+## References
+
+| 파일 | 로드 조건 |
+| --- | --- |
+| references/product-detail/structure-guide.md | 상세 페이지 레이아웃·디자인 시스템(데스크톱/모바일 구조)을 설계할 때 |
+| references/product-detail/section-templates.md | 히어로 등 섹션별 HTML/React 코드 템플릿이 필요할 때 |
+| references/product-detail/platform-specs.md | 스마트스토어·쿠팡·카카오 이미지·업로드 규격을 확인할 때 |
+| references/product-detail/conversion-formulas.md | AIDA 기반 전환율 극대화 공식·카피·체크리스트가 필요할 때 |

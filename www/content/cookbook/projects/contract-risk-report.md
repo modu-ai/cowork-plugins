@@ -54,19 +54,19 @@ tags: [cookbook, projects, legal]
 
 ```mermaid
 flowchart TD
-    U["준서 님<br/>계약서 18페이지"] --> L1["법무<br/>legal-contract-review"]
-    L1 --> R1["조항별 검토표"]
-    R1 --> L2["법무<br/>legal-legal-risk"]
-    L2 --> R2["리스크 등급표<br/>(상 · 중 · 하)"]
-    R2 --> W1["코워커<br/>business-executive-summary"]
-    W1 --> OUT["1페이지 리스크 보고서<br/>+ 수정 요청 문구"]
-    OUT --> EXP["변호사 확인<br/>('상' 조항만)"]
+   U["준서 님<br/>계약서 18페이지"] --> L1["법무<br/>legal-contract-review"]
+   L1 --> R1["조항별 검토표"]
+   R1 --> L2["법무<br/>legal-legal-risk"]
+   L2 --> R2["리스크 등급표<br/>(상 · 중 · 하)"]
+   R2 --> W1["코워커<br/>business-executive-summary"]
+   W1 --> OUT["1페이지 리스크 보고서<br/>+ 수정 요청 문구"]
+   OUT --> EXP["변호사 확인<br/>('상' 조항만)"]
 
-    style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style R1 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style R2 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style OUT fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
-    style EXP fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style R1 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style R2 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style OUT fill:#d6e7de,stroke:#3d7d5f,stroke-width:2px,color:#09110f
+   style EXP fill:#fbf0dc,stroke:#c47b2a,color:#09110f
 ```
 
 ## 4. 결과물

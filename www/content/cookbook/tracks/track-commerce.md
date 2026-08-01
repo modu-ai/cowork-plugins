@@ -1,46 +1,46 @@
 ---
 title: "이커머스 트랙"
 weight: 25
-description: "D2C 셀러·이커머스 운영자를 위한 풀스택 워크플로우. moai-commerce 30스킬 + moai-media 미디어 생성으로 신상품 출시부터 재구매·VOC·LTV까지 한 플러그인 안에서 자동화."
+description: "D2C 셀러·이커머스 운영자를 위한 풀스택 워크플로우. moai-seller 30스킬 + moai-media 미디어 생성으로 신상품 출시부터 재구매·VOC·LTV까지 한 플러그인 안에서 자동화."
 geekdocBreadcrumb: true
 ---
 
 > **대상**: 스마트스토어·쿠팡·자사몰·크라우드펀딩 운영자, D2C 브랜드 PM, 이커머스 마케터
-> **전제**: moai-core · moai-commerce · moai-media 활성화 + (선택) `GEMINI_API_KEY` · `HIGGSFIELD_API_KEY` 등록
+> **전제**: moai-coworker · moai-seller · moai-media 활성화 + (선택) `GEMINI_API_KEY` · `HIGGSFIELD_API_KEY` 등록
 > **소요**: 시나리오당 약 5-20분 (산출물 종류에 따라)
 
 ## 무엇을 할 수 있나
 
 ```mermaid
 flowchart TB
-    subgraph 시작["1. 시장조사"]
-        M1["commerce-market-research<br/>경쟁사·트렌드"]
-    end
-    subgraph 상품["2. 상품 기획"]
-        P1["commerce-jtbd-persona<br/>고객 분석"]
-        P2["commerce-product-naming<br/>상품명 3안"]
-        P3["commerce-promotion-planner<br/>프로모션 기획"]
-    end
-    subgraph 콘텐츠["3. 콘텐츠 자동화"]
-        C1["detail-page-planner<br/>13섹션 Brief"]
-        C2["detail-page-copy<br/>13섹션 카피"]
-        C3["detail-page-image<br/>1080×1270 PNG"]
-        C4["commerce-product-image-pipeline<br/>광고 영상 풀세트"]
-    end
-    subgraph 운영["4. 운영·CRM"]
-        O1["commerce-channel-message<br/>카톡·SMS·앱 푸시"]
-        O2["commerce-repurchase-timer<br/>재구매 골든타임"]
-        O3["commerce-voc-triage<br/>VOC 응대"]
-        O4["commerce-subscription-strategist<br/>구독 설계"]
-    end
-    subgraph 분석["5. 수익 분석"]
-        A1["commerce-margin-calculator<br/>마진"]
-        A2["commerce-ltv-cac-architect<br/>LTV/CAC"]
-        A3["coupang-ad-optimizer<br/>쿠팡 광고"]
-    end
-    시작 --> 상품 --> 콘텐츠 --> 운영 --> 분석
-    style 콘텐츠 fill:#fbf0dc,stroke:#c47b2a
-    style 운영 fill:#e6f0ef,stroke:#144a46
+   subgraph 시작["1. 시장조사"]
+       M1["commerce-market-research<br/>경쟁사·트렌드"]
+   end
+   subgraph 상품["2. 상품 기획"]
+       P1["commerce-jtbd-persona<br/>고객 분석"]
+       P2["commerce-product-naming<br/>상품명 3안"]
+       P3["commerce-promotion-planner<br/>프로모션 기획"]
+   end
+   subgraph 콘텐츠["3. 콘텐츠 자동화"]
+       C1["detail-page-planner<br/>13섹션 Brief"]
+       C2["detail-page-copy<br/>13섹션 카피"]
+       C3["detail-page-image<br/>1080×1270 PNG"]
+       C4["commerce-product-image-pipeline<br/>광고 영상 풀세트"]
+   end
+   subgraph 운영["4. 운영·CRM"]
+       O1["commerce-channel-message<br/>카톡·SMS·앱 푸시"]
+       O2["commerce-repurchase-timer<br/>재구매 골든타임"]
+       O3["commerce-voc-triage<br/>VOC 응대"]
+       O4["commerce-subscription-strategist<br/>구독 설계"]
+   end
+   subgraph 분석["5. 수익 분석"]
+       A1["commerce-margin-calculator<br/>마진"]
+       A2["commerce-ltv-cac-architect<br/>LTV/CAC"]
+       A3["coupang-ad-optimizer<br/>쿠팡 광고"]
+   end
+   시작 --> 상품 --> 콘텐츠 --> 운영 --> 분석
+   style 콘텐츠 fill:#fbf0dc,stroke:#c47b2a
+   style 운영 fill:#e8f1ec,stroke:#265240
 ```
 
 ## 한 줄 요청 예시 5종
@@ -77,12 +77,12 @@ flowchart TB
 
 ```mermaid
 flowchart TD
-    P1["detail-page-planner<br/>Brief 생성"] --> P2["detail-page-copy<br/>13섹션 감정 여정"]
-    P2 --> P3["detail-page-image<br/>1080×1270 PNG"]
-    P3 --> P4["ai-slop-reviewer<br/>카피 검수"]
-    P4 --> P5["humanize-korean<br/>AI 티 제거"]
-    P5 --> Out["산출물<br/>HTML·PNG·DOCX"]
-    style Out fill:#e6f0ef,stroke:#144a46
+   P1["detail-page-planner<br/>Brief 생성"] --> P2["detail-page-copy<br/>13섹션 감정 여정"]
+   P2 --> P3["detail-page-image<br/>1080×1270 PNG"]
+   P3 --> P4["ai-slop-reviewer<br/>카피 검수"]
+   P4 --> P5["humanize-korean<br/>AI 티 제거"]
+   P5 --> Out["산출물<br/>HTML·PNG·DOCX"]
+   style Out fill:#e8f1ec,stroke:#265240
 ```
 
 ### 산출물
@@ -111,7 +111,7 @@ flowchart TD
 
 ### 자동 체인
 
-`commerce-season-calendar` → `commerce-promotion-planner` → `commerce-channel-message` (AARRR 5단계, 카톡·SMS·앱 푸시) → `commerce-marketing-compliance-kr` (정통망법 게이트) → `ai-slop-reviewer`
+`commerce-season-calendar` → `commerce-promotion-planner` → `commerce-channel-message` (AARRR 5단계, 카톡·SMS·앱 푸시) → `commerce-message-compliance-kr` (정통망법 게이트) → `general-ai-slop-reviewer`
 
 ### 산출물
 
@@ -138,13 +138,13 @@ flowchart TD
 
 ### 자동 체인
 
-`commerce-repurchase-timer` → 3구간 산출 (D+36 리마인드 / D+50 데드라인 / D+68 휴면) → `commerce-channel-message` (구간별 톤) → `commerce-marketing-compliance-kr`
+`commerce-repurchase-timer` → 3구간 산출 (D+36 리마인드 / D+50 데드라인 / D+68 휴면) → `commerce-channel-message` (구간별 톤) → `commerce-message-compliance-kr`
 
 ### 산출물
 
 ```text
 [D+36 리마인드 — 앱 푸시, 0-5% 인센티브, 가벼운 톤]
-"세럼 다 쓰셨나요? 다음 주 신상 알려드릴게요 ✨"
+"세럼 다 쓰셨나요? 다음 주 신상 알려드릴게요 "
 
 [D+50 데드라인 — 카톡 친구톡, 10-15% 인센티브, 긴급 톤]
 "이번주만 — 단골 할인 15% 자동 적용 (~5/24)"
@@ -172,7 +172,7 @@ flowchart TD
 
 ### 자동 체인
 
-`commerce-voc-triage` (리뷰 집계 모드 — 5채널 감정·키워드·인사이트·액션플랜 4단 분석) → `docx-generator` → `ai-slop-reviewer`
+`commerce-voc-triage` (리뷰 집계 모드 — 5채널 감정·키워드·인사이트·액션플랜 4단 분석) → `office-docx-generator` → `general-ai-slop-reviewer`
 
 ### 산출물 미리보기
 
@@ -253,7 +253,7 @@ flowchart TD
 
 ### Q. 30개 스킬을 다 외워야 하나요?
 
-아니오. **사용자는 짧은 한 줄만 입력**하면 시스템이 자동으로 적절한 스킬을 선택해 체이닝합니다. 예: "재구매 메시지 짜줘" → 시스템이 `commerce-repurchase-timer + commerce-channel-message + commerce-marketing-compliance-kr`를 자동 호출.
+아니오. **사용자는 짧은 한 줄만 입력**하면 시스템이 자동으로 적절한 스킬을 선택해 체이닝합니다. 예: "재구매 메시지 짜줘" → 시스템이 `commerce-repurchase-timer + commerce-channel-message + commerce-message-compliance-kr`를 자동 호출.
 
 ### Q. 광고 영상 만들 때 비용이 걱정됩니다.
 
@@ -261,7 +261,7 @@ flowchart TD
 
 ### Q. 정통망법 위반 위험은 자동 차단되나요?
 
-예. **`commerce-marketing-compliance-kr`** 가 모든 마케팅 메시지 워크플로우에 자동 게이트로 들어갑니다. 야간 21시-익일 8시 발송, (광고) 표기 누락, 수신거부 미명시 등 6대 위반 자동 BLOCK. 과태료 1회 최대 3,000만원 회피.
+예. **`commerce-message-compliance-kr`** 가 모든 마케팅 메시지 워크플로우에 자동 게이트로 들어갑니다. 야간 21시-익일 8시 발송, (광고) 표기 누락, 수신거부 미명시 등 6대 위반 자동 BLOCK. 과태료 1회 최대 3,000만원 회피.
 
 ### Q. 시스템이 인터뷰하는 게 귀찮으면?
 
@@ -272,8 +272,8 @@ flowchart TD
 ## 다음 단계
 
 - **[사용 패턴 가이드](../../../cowork/patterns/)** — 4가지 표준 사용 패턴
-- **[moai-commerce 플러그인](../../../plugins/moai-commerce/)** — 30스킬 전체 카탈로그
-- **[moai-media 플러그인](../../../plugins/moai-media/)** — 이미지·영상 생성 미디어 6스킬
+- **[moai-seller 플러그인](/moai-agents/seller/)** — 30스킬 전체 카탈로그
+- **[moai-media 플러그인](/moai-agents/media/)** — 이미지·영상 생성 미디어 13스킬
 - **[광고 트랙](../track-advertising/)** — 메타·구글 광고 진단·최적화
 - **[법무 트랙](../track-legal/)** — 표시광고법·정통망법 컴플라이언스
 
@@ -281,7 +281,7 @@ flowchart TD
 
 ### Sources
 
-- [moai-commerce 디렉터리](https://github.com/modu-ai/cowork-plugins/tree/main/moai-commerce)
+- [moai-seller 디렉터리](https://github.com/modu-ai/moai-cowork/tree/main/plugins/moai-seller)
 - 커머스 실무 노트 기반 통합 가이드
 - [정보통신망법 제50조](https://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률)
 - 한국 D2C 카테고리 벤치마크: commerce-ltv-cac-architect 내장 데이터

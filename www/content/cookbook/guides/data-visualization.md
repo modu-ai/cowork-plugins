@@ -1,27 +1,27 @@
 ---
 title: "시각화 최적화 원칙"
 weight: 50
-description: "차트 선택 · 색·축·레전드 · 대시보드 구성을 moai-data:data-visualizer로 자동 생성하는 가이드."
+description: "차트 선택 · 색·축·레전드 · 대시보드 구성을 moai-analyst:data-visualizer로 자동 생성하는 가이드."
 geekdocBreadcrumb: true
 ---
 > 좋은 차트는 보는 사람이 0.5초 안에 메시지를 읽고, 나머지 시간은 디테일을 확인하는 데 쓰는 차트입니다. 화려한 색·3D·과한 레이블은 그 0.5초를 빼앗습니다.
 
 ```mermaid
 flowchart TD
-    A["데이터 형태 파악"] --> B{"어떤 비교인가?"}
-    B -- "시간 변화" --> C["꺾은선 / 영역"]
-    B -- "카테고리 비교" --> D["가로·세로 막대"]
-    B -- "구성 비율" --> E["도넛 / 트리맵"]
-    B -- "관계" --> F["산점도 / 히트맵"]
-    C & D & E & F --> G["data-visualizer<br/>대시보드 생성"]
+   A["데이터 형태 파악"] --> B{"어떤 비교인가?"}
+   B -- "시간 변화" --> C["꺾은선 / 영역"]
+   B -- "카테고리 비교" --> D["가로·세로 막대"]
+   B -- "구성 비율" --> E["도넛 / 트리맵"]
+   B -- "관계" --> F["산점도 / 히트맵"]
+   C & D & E & F --> G["data-visualizer<br/>대시보드 생성"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style G fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style G fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 ## 사용 스킬
 
-- **`moai-data:data-visualizer`** — shadcn/ui 기반 데이터 시각화·차트·대시보드 생성. HTML 대시보드 출력 전 소크라테스식 인터뷰로 메시지 명확화.
+- **`moai-analyst:office-data-visualizer`** — shadcn/ui 기반 데이터 시각화·차트·대시보드 생성. HTML 대시보드 출력 전 소크라테스식 인터뷰로 메시지 명확화.
 
 ## 차트 선택 룰
 
@@ -66,7 +66,7 @@ flowchart TD
 > shadcn/ui 기반 HTML로.
 {{< /terminal >}}
 
-`data-visualizer`가 인터뷰로 메시지를 정련한 뒤 HTML 대시보드를 생성합니다.
+`office-data-visualizer`가 인터뷰로 메시지를 정련한 뒤 HTML 대시보드를 생성합니다.
 
 ## 한국 시각화 함정
 
@@ -90,5 +90,5 @@ flowchart TD
 
 ### Sources
 
-- moai-data 플러그인 [`data-visualizer`](https://github.com/modu-ai/cowork-plugins/blob/main/moai-data/skills/data-visualizer/SKILL.md)
+- moai-analyst 플러그인 [`office-data-visualizer`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-analyst/skills/office-data-visualizer/SKILL.md)
 - [shadcn/ui charts](https://ui.shadcn.com/charts) · [Color Brewer](https://colorbrewer2.org)

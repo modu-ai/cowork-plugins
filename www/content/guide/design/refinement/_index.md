@@ -5,7 +5,7 @@ description: "4가지 조작 도구, 컨텍스트 누적 패턴, AI 슬롭 회�
 geekdocBreadcrumb: true
 aliases: ["/claude-design/refinement/"]
 ---
-> 첫 시안은 보통 70% 정도의 완성도로 나옵니다. 나머지 30%를 채우는 것이 리파인먼트입니다. 다섯 번째 라운드부터 효용 체감이 시작되므로, 그 안에 끝내는 효율적 패턴을 익히는 것이 핵심입니다.
+> 첫 시안은 보통 70% 정도의 완성도로 나옵니다. 나머지 30%를 채우는 것이 리파인먼트입니다. 다섯 번째 라운드부터 효용 체감이 시작되므로 그 안에 끝내는 효율적 패턴을 익히는 것이 핵심입니다.
 
 ## 4가지 조작 — 언제 어떤 도구를 쓰나
 
@@ -79,17 +79,17 @@ aliases: ["/claude-design/refinement/"]
 
 ```mermaid
 flowchart TD
-    A["1. IA<br/>(Information Architecture)<br/>구조·내비·플로우"] --> B["2. 디자인 시스템<br/>(이미 등록되어 있어도<br/>이 프로젝트의 변형 선언)"]
-    B --> C["3. 핵심 화면<br/>(예: 온보딩)"]
-    C --> D["4. 보조 화면<br/>(대시보드·설정 등)"]
-    D --> E["5. 상태 화면<br/>(empty · error · loading)"]
-    E --> F["6. 반응형 변형<br/>(데스크톱→태블릿→모바일)"]
+   A["1. IA<br/>(Information Architecture)<br/>구조·내비·플로우"] --> B["2. 디자인 시스템<br/>(이미 등록되어 있어도<br/>이 프로젝트의 변형 선언)"]
+   B --> C["3. 핵심 화면<br/>(예: 온보딩)"]
+   C --> D["4. 보조 화면<br/>(대시보드·설정 등)"]
+   D --> E["5. 상태 화면<br/>(empty · error · loading)"]
+   E --> F["6. 반응형 변형<br/>(데스크톱→태블릿→모바일)"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style D fill:#dceee9,stroke:#2a8a8c,color:#09110f
-    style E fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style C fill:#e8f1ec,stroke:#265240,color:#09110f
+   style D fill:#e8f1ec,stroke:#2a8a8c,color:#09110f
+   style E fill:#d6e7de,stroke:#3d7d5f,color:#09110f
 ```
 
 **핵심**: 각 단계는 앞 단계의 결과를 활용합니다. "온보딩 디자인했던 이 스타일 그대로 설정 페이지에" 같은 짧은 지시로 일관성이 유지됩니다.
@@ -125,7 +125,7 @@ AI 슬롭 회피: 진부한 폰트(Inter·Roboto·Arial)·보라 그라데이션
 
 ## 역할 부여 — 결과 분산 30-40% 감소
 
-프롬프트 첫 줄에 **구체적인 직업·연차·소속을 가진 디자이너 역할**을 부여하면 결과 일관성이 크게 올라갑니다.
+프롬프트 첫 줄에 **직업·연차·소속이 구체적인 디자이너 역할**을 부여하면 결과 일관성이 크게 올라갑니다.
 
 ### 효과적인 역할 부여 예시
 

@@ -11,7 +11,7 @@ description: |
   - "시리즈 A 투자 유치 자료 준비해줘"
   - "투자자 보고서 정리해줘"
   투자 단계(Pre-Seed~Series B)에 맞춘 12슬라이드 피치덱·재무 모델·예상 질문 Q&A를 만들고, PPT/엑셀 변환으로 이어집니다.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 투자자 관계 (Investor Relations)
@@ -361,3 +361,10 @@ AI옵틱스: 중가, 고기능 (차별화)
 - **moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean**: 생성된 IR 자료 AI 패턴 검수 후 한국어 표현을 자연스럽게 다듬습니다 (필수)
 
 > IR 덱의 재무 모델·매출 예측·밸류에이션 등 **표·수치 산출물은 humanize 대상이 아닙니다** — `moai-officer:office-xlsx-creator`로 라우팅하세요. 위 체인은 문제·솔루션·시장·비전 등 **서술(narrative) 슬라이드 본문**에만 적용합니다.
+
+## References
+
+| 파일 | 로드 조건 |
+| --- | --- |
+| references/financial-modeler.md | 수익 모델·비용 구조·시나리오 분석·밸류에이션 등 재무 모델링이 필요할 때 |
+| references/investor-report.md | 성과·재무·전략·리스크를 담은 정기 투자자 리포트를 작성할 때 |

@@ -1,13 +1,13 @@
 # 배포 런북 — `cowork.mo.ai.kr`
 
-이 문서는 `cowork-plugins/docs-site/` Hugo 사이트를 Vercel에 배포하고 `cowork.mo.ai.kr` 도메인에 연결하는 절차입니다. 모든 단계는 사용자(GOOS) 직접 수행이 필요합니다 (외부 서비스 콘솔 작업 포함).
+이 문서는 `moai-cowork/www/` Hugo 사이트를 Vercel에 배포하고 `cowork.mo.ai.kr` 도메인에 연결하는 절차입니다. 모든 단계는 사용자(GOOS) 직접 수행이 필요합니다 (외부 서비스 콘솔 작업 포함).
 
 ---
 
 ## 사전 점검
 
 ```bash
-cd cowork-plugins/docs-site
+cd moai-cowork/www
 hugo mod get -u                # Geekdoc 테마 동기화
 hugo --gc --minify             # 로컬 빌드 — 0 warning, public/ 생성 확인
 hugo server -D                 # 로컬 미리보기 → http://localhost:1313
@@ -25,7 +25,7 @@ hugo server -D                 # 로컬 미리보기 → http://localhost:1313
 ## 1단계 — Vercel 프로젝트 생성
 
 1. [vercel.com/new](https://vercel.com/new) 접속, GitHub 계정으로 로그인
-2. **Import Git Repository** 클릭 → `modu-ai/cowork-plugins` 선택
+2. **Import Git Repository** 클릭 → `modu-ai/moai-cowork` 선택
 3. **Configure Project** 화면:
    - **Project Name**: `cowork-docs` (또는 임의)
    - **Framework Preset**: `Hugo` (자동 감지됨)
@@ -121,7 +121,7 @@ PR/feature 브랜치 자동 프리뷰가 필요하면:
 - [ ] 외부 링크 점검 — `hugo --printPathWarnings`
 - [ ] 사이트맵 갱신 확인
 - [ ] Vercel Analytics에서 404 트래픽 검토
-- [ ] cowork-plugins 신규 플러그인·스킬을 사이트에 반영했는지 점검
+- [ ] 모두의 코워크 신규 플러그인·스킬을 사이트에 반영했는지 점검
 
 ---
 

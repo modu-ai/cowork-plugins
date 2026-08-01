@@ -5,7 +5,7 @@ description: |
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   "구독 모델 설계", "구독 비즈니스 5가지 질문", "오이식스 구독", "VIPS 구독", "맞춤 구독 모델", "락인 vs 이탈 방지", "한국 구독 시장 적합성".
   4 구독 모델: ① 소비재 (오이식스·롯데 새벽배송) ② 경험 (VIPS·CGM) ③ 관계 (배송 멤버십) ④ 맞춤 (영양제·화장품).
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 구독 비즈니스 모델 설계 (Commerce Subscription Strategist)
@@ -98,3 +98,4 @@ commerce-subscription-strategist → general-ai-slop-reviewer → (선택) comme
 - `commerce-ltv-cac-architect` — 구독 LTV 계산
 - `commerce-integrated-strategy` — 거시 채널·사업 전략 (페어)
 - `general-ai-slop-reviewer` — 메시지 매트릭스 AI 슬롭 검수 (자동 체인, HARD)
+- `moai-writer:general-humanize-korean` — 한국어 AI 티 제거 (슬롭 검수 다음, 필수)

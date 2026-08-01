@@ -3,6 +3,8 @@ description: "Design System Constitution — MoAI design pipeline FROZEN/EVOLVAB
 paths: ".moai/design/**,.moai/specs/SPEC-*-DESIGN-*/**,.moai/project/brand/**,.claude/skills/moai/**/design*.md,.claude/skills/moai/**/brand*.md"
 ---
 
+> ⚠️ **개발 런타임 전용** — 이 규약은 MoAI-ADK(Claude Code) 환경을 전제한다. Claude Cowork(Desktop)에서는 `.moai/config`·`.moai/design` 의존으로 동작하지 않을 수 있다. Desktop 사용자는 `moai-designer:cd-*` 체인을 사용한다.
+
 # Design System Constitution v3.2
 
 ## HISTORY

@@ -1,184 +1,20 @@
 main:
   # ============================================================
-  # 🖥️ 데스크탑 축 (Desktop axis) — 비개발자용
-  # 학습 난이도 상승 순서: 시작하기 → Chat → Cowork → Design → Code → MoAI 플러그인
-  # (Chat → Cowork → Design → Code = 학습 난이도 상승 경로)
+  # 플러그인 전용 목차 (2026-07 리뉴얼)
+  # 플러그인 외 섹션(시작하기·가이드·Chat·Cowork·Design·Code·CLI·도움말·쿡북·실전트랙)은
+  # 메뉴에서 제외했습니다. 콘텐츠 파일은 content/에 그대로 보존되어 URL 직접 접근과
+  # 기존 리다이렉트(aliases)는 계속 동작합니다. 필요 시 항목을 다시 추가하면 복원됩니다.
   # ============================================================
-  - name: 시작하기
+  - name: 모두의 코워크
     icon: home
     defaultOpen: true
     sub:
-      - name: 모두의 코워크 소개
+      - name: 홈 — 플러그인 패밀리
         ref: /
-      - name: 시작하기 홈
-        ref: /getting-started
-      - name: Claude Desktop 설치
-        ref: /getting-started/install
-      - name: 도구와 기능 개념 기초
-        ref: /getting-started/concepts
-      - name: 처음 실행하기
-        ref: /getting-started/first-task
-
-  - name: 사용법 가이드
-    icon: book
-    sub:
-      - name: 4-트랙 안내 홈
-        ref: /guide
-
-  - name: Chat
-    icon: chat
-    defaultOpen: true
-    sub:
-      - name: Chat 개요
-        ref: /guide/chat
-      - name: 첫 대화 시작하기
-        ref: /guide/chat/first-chat
-      - name: 프롬프트 작성법
-        ref: /guide/chat/prompts
-      - name: 컨텍스트 다루기
-        ref: /guide/chat/context-engineering
-      - name: Projects 기능
-        ref: /guide/chat/projects
-      - name: 웹 검색·리서치·확장 사고
-        ref: /guide/chat/search-research
-      - name: 주요 기능 살펴보기
-        ref: /guide/chat/features
-      - name: 스킬과 플러그인
-        ref: /guide/chat/skills-plugins
-      - name: 메모리
-        ref: /guide/chat/memory
-
-  - name: Cowork
-    icon: book
-    defaultOpen: false
-    sub:
-      - name: 개요
-        ref: /guide/cowork
-      - name: Cowork 소개
-        ref: /guide/cowork/intro
-      - name: 공식 빠른 시작
-        ref: /guide/cowork/official-quickstart
-      # ── 1. 입문 ──
-      - name: 설치와 요금제
-        ref: /guide/cowork/install
-      - name: 설정하기
-        ref: /guide/cowork/setup
-      - name: 사용 패턴 가이드
-        ref: /guide/cowork/patterns
-      - name: 첫 작업 실행
-        ref: /guide/cowork/first-task
-      - name: 용어집
-        ref: /guide/cowork/glossary
-      # ── 2. 안전 ──
-      - name: 안전하게 사용
-        ref: /guide/cowork/safety
-      - name: 폴더와 권한
-        ref: /guide/cowork/permissions
-      # ── 3. 활용 ──
-      - name: 프로젝트와 메모리
-        ref: /guide/cowork/projects-memory
-      - name: 스킬 사용법
-        ref: /guide/cowork/skills
-      - name: 플러그인 사용
-        ref: /guide/cowork/plugins
-      # ── 4. 확장 ──
-      - name: 커넥터·MCP
-        ref: /guide/cowork/connectors-mcp
-      - name: 예약 작업
-        ref: /guide/cowork/schedule
-      - name: 컴퓨터 사용
-        ref: /guide/cowork/computer-use
-      # ── 5. 운영 ──
-      - name: 자주 묻는 질문
-        ref: /guide/cowork/faq
-      - name: 트러블슈팅
-        ref: /guide/cowork/troubleshooting
-      - name: 시스템 한도
-        ref: /guide/cowork/constraints
-      - name: Team·Enterprise
-        ref: /guide/cowork/enterprise
-
-  - name: Design
-    icon: palette
-    defaultOpen: false
-    sub:
-      - name: Design 개요
-        ref: /guide/design
-      - name: 시작하기
-        ref: /guide/design/getting-started
-      - name: 디자인 시스템 설정
-        ref: /guide/design/design-system
-        badge: 핵심
-      - name: 리파인먼트
-        ref: /guide/design/refinement
-      - name: 협업과 공유
-        ref: /guide/design/collaboration
-      - name: 내보내기·핸드오프
-        ref: /guide/design/export-handoff
-      - name: 역할별 사용 사례
-        ref: /guide/design/use-cases
-      - name: 베스트 프랙티스
-        ref: /guide/design/best-practices
-      - name: 요금제와 한도
-        ref: /guide/design/pricing-limits
-      - name: 제한 사항·로드맵
-        ref: /guide/design/limitations
-      - name: Claude Design 공식 빠른 시작
-        ref: /guide/design/official-quickstart
-
-  - name: Code
-    icon: code
-    defaultOpen: false
-    sub:
-      - name: Code 개요
-        ref: /guide/code
-      - name: 설치하기
-        ref: /guide/code/install
-      - name: 첫 작업 실행
-        ref: /guide/code/first-task
-
-  - name: MoAI-Agents
-    icon: plug
-    defaultOpen: true
-    sub:
-      - name: 18 직원 한눈에
-        ref: /moai-agents
-      - name: PM (진입 허브)
-        ref: /moai-agents/pm
-      - name: 코워커
-        ref: /moai-agents/coworker
-      - name: 작가
-        ref: /moai-agents/writer
-      - name: 마케터
-        ref: /moai-agents/marketer
-      - name: 셀러
-        ref: /moai-agents/seller
-      - name: 사무관
-        ref: /moai-agents/officer
-      - name: 법무
-        ref: /moai-agents/lawyer
-      - name: 재무세무
-        ref: /moai-agents/accountant
-      - name: 인사채용
-        ref: /moai-agents/recruiter
-      - name: CS매니저
-        ref: /moai-agents/cs
-        isNew: true
-      - name: 컨설턴트
-        ref: /moai-agents/consultant
-        isNew: true
-      - name: 커리어코치
-        ref: /moai-agents/career
-        isNew: true
-      - name: 튜터
-        ref: /moai-agents/tutor
-      - name: 디자이너
-        ref: /moai-agents/designer
-      - name: 코더
-        ref: /moai-agents/coder
 
   - name: 플러그인 설치·운용
     icon: plug
+    defaultOpen: true
     sub:
       - name: 개요
         ref: /plugins
@@ -188,148 +24,65 @@ main:
         ref: /plugins/agents
       - name: 팀 구성 패턴
         ref: /plugins/teams
+      - name: Higgsfield MCP 설정
+        ref: /plugins/higgsfield-setup
+      - name: 라이선스와 산출물 권리
+        ref: /plugins/license
 
-  # ============================================================
-  # ⌨️ CLI 축 (CLI axis) — 개발자용
-  # 5개 섹션 (REQ-IA-003): 시작하기 · 핵심 개념 · 일상 사용 · MoAI-ADK · 레퍼런스
-  # /cli/ URL prefix (REQ-IA-012) — M4에서 실제 콘텐츠 충전 완료
-  # ============================================================
-  - name: CLI (개발자용)
-    icon: terminal
-    ref: /cli
-    defaultOpen: false
+  - name: AI 직원 소개
+    icon: plug
+    defaultOpen: true
     sub:
-      - name: CLI 안내 (외부 문서 연결)
-        ref: /cli
-      - name: 클로드 코드 한국어 문서
-        ref: https://adk.mo.ai.kr/ko
-        external: true
-
-  # ============================================================
-  # 🧩 공통 하단 (shared bottom) — 도움말 (Office 통합 포함) · 쿡북 · 실전 트랙 · 릴리스
-  # (두 축이 공유하는 영역 — REQ-IA-001; Office는 M3에서 도움말 하로 통합 — REQ-IA-016)
-  # ============================================================
-  - name: 도움말
-    icon: book
-    defaultOpen: false
-    sub:
-      - name: 도움말 홈
-        ref: /help
-      - name: Claude 알아보기
-        ref: /help/about-claude
-      - name: 요금제와 결제
-        ref: /help/plans-billing
-      - name: 계정 관리
-        ref: /help/account
-      - name: 대화 관리
-        ref: /help/conversations
-      - name: 개인화와 설정
-        ref: /help/personalization
-      - name: 사용량과 한도
-        ref: /help/usage-limits
-      - name: 문제 해결
-        ref: /help/troubleshooting
-      - name: Office 통합 개요
-        ref: /help/office
-      - name: Microsoft 365 연동
-        ref: /help/office/microsoft-365
-      - name: 가이드 문서 색인
-        ref: /help/source-index
-
-  - name: 쿡북
-    icon: chef
-    sub:
-      - name: 쿡북 홈
-        ref: /cookbook
-      - name: 코워크 프로젝트 (12선)
-        ref: /cookbook/projects
+      - name: 17 직원 한눈에
+        ref: /moai-agents
+      - name: PM (진입 허브)
+        ref: /moai-agents/pm
+      - name: 코워커
+        ref: /moai-agents/coworker
+      - name: 작가
+        ref: /moai-agents/writer
+      - name: 스토리 크리에이터
+        ref: /moai-agents/story
         isNew: true
-      - name: 스킬 체이닝
-        ref: /cookbook/skill-chaining
-      - name: 베스트 프랙티스
-        ref: /cookbook/best-practices
-      - name: 자동화 레시피
-        ref: /cookbook/automation-recipes
-      - name: 블로그 파이프라인
-        ref: /cookbook/blog-pipeline
-      - name: 보고서 자동화
-        ref: /cookbook/report-automation
-      - name: 사업계획서
-        ref: /cookbook/business-plan
-      - name: NDA 일괄 검토
-        ref: /cookbook/legal-nda-batch
-      - name: IR 덱 제작
-        ref: /cookbook/ir-deck
-      - name: 계약서 검토
-        ref: /cookbook/contract-review
-      - name: 트러블슈팅
-        ref: /cookbook/troubleshooting
+      - name: 마케터
+        ref: /moai-agents/marketer
+      - name: 미디어 크리에이터
+        ref: /moai-agents/media
+        isNew: true
+      - name: 셀러
+        ref: /moai-agents/seller
+      - name: 사무관
+        ref: /moai-agents/officer
+      - name: 데이터 애널리스트
+        ref: /moai-agents/analyst
+        isNew: true
+      - name: 법무
+        ref: /moai-agents/lawyer
+      - name: 재무세무
+        ref: /moai-agents/accountant
+      - name: 인사채용
+        ref: /moai-agents/recruiter
+      - name: CS매니저
+        ref: /moai-agents/cs
+      - name: 컨설턴트
+        ref: /moai-agents/consultant
+      - name: 커리어코치
+        ref: /moai-agents/career
+      - name: 튜터
+        ref: /moai-agents/tutor
+      - name: 디자이너
+        ref: /moai-agents/designer
 
-  - name: 실전 트랙
+  - name: 릴리스 노트
     icon: tag
-    sub:
-      - name: 트랙 홈
-        ref: /cookbook/tracks
-      - name: 데이터 트랙
-        ref: /cookbook/tracks/track-data
-      - name: 문서 트랙
-        ref: /cookbook/tracks/track-documents
-      - name: 재무 트랙
-        ref: /cookbook/tracks/track-finance
-      - name: 법무 트랙
-        ref: /cookbook/tracks/track-legal
-      - name: 마케팅 트랙
-        ref: /cookbook/tracks/track-marketing
-      - name: 제품 트랙
-        ref: /cookbook/tracks/track-product
-
-  - name: 릴리스
-    icon: tag
+    defaultOpen: false
     sub:
       - name: 릴리스 홈
         ref: /releases
-      - name: v2.27.0
-        ref: /releases/v2.27
+      - name: v1.1.0
+        ref: /releases/v1.1.0
         isNew: true
-      - name: v2.26.0
-        ref: /releases/v2.26
-      - name: v2.25.0
-        ref: /releases/v2.25
-      - name: v2.24.0
-        ref: /releases/v2.24
-      - name: v2.23.0
-        ref: /releases/v2.23
-      - name: v2.22.0
-        ref: /releases/v2.22
-      - name: v2.21.0
-        ref: /releases/v2.21
-      - name: v2.20.0
-        ref: /releases/v2.20
-      - name: v2.19.0
-        ref: /releases/v2.19
-      - name: v2.18.0
-        ref: /releases/v2.18
-      - name: v2.17.0
-        ref: /releases/v2.17
-      - name: v2.16.0
-        ref: /releases/v2.16
-      - name: v2.15.0
-        ref: /releases/v2.15
-      - name: v2.14.0
-        ref: /releases/v2.14
-      - name: v2.13.0
-        ref: /releases/v2.13
-      - name: v2.12.x
-        ref: /releases/v2.12
-      - name: v2.11.x
-        ref: /releases/v2.11
-      - name: v2.10.x
-        ref: /releases/v2.10
-      - name: v2.9.x
-        ref: /releases/v2.9
-      - name: v2.8.x
-        ref: /releases/v2.8
-      - name: v2.1~v2.7
-        ref: /releases/v2.1
-      - name: v1.x
-        ref: /releases/v1.0
+      - name: v1.0.0
+        ref: /releases/v1.0.0
+      - name: 이전 릴리스 아카이브
+        ref: /releases/archive

@@ -7,7 +7,7 @@ description: |
   공식 4요소: [브랜드] + [카테고리] + [키워드] + [차별점(선택)]. 3안 매핑 카테고리: 검색 최적화 / CTR 최적화 / 브랜드 강화. 금지 키워드 9종: 최저가·1위·베스트·재입고·인기상품·정품·당일배송·무료배송·특가.
   표준 상품명 3안·검증은 룰 통과 데이터 산출(ai-slop 체이닝 제외)이나, 트렌드 변환 모드의 해시태그·블로그 제목은 텍스트 산출물이므로 moai-coworker:general-ai-slop-reviewer를 체이닝합니다.
   [책임 경계] 페어 moai-domain-copywriting(광고·마케팅 카피)와 구분 — 본 스킬은 상품 등록용 상품명(SEO 최적화) + 트렌드 키워드 변환 전담.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 상품명 자동 생성 (Commerce Product Naming)
@@ -198,6 +198,7 @@ JTBD와 상품 정보를 기반으로 이커머스 플랫폼 최적화 상품명
 - `commerce-integrated-strategy` — 상품명 포함 전략 1장 종합
 - `commerce-season-calendar` — 연간 시즌 캘린더 (트렌드 변환 모드의 시즌 키워드 입력)
 - `moai-coworker:general-ai-slop-reviewer` — 트렌드 변환 모드 해시태그·블로그 제목 검수 (자동 체인)
+- `moai-writer:general-humanize-korean` — 트렌드 변환 모드 텍스트 한국어 AI 티 제거 (슬롭 검수 다음, 필수)
 
 ## 이 스킬을 사용하지 말아야 할 때
 

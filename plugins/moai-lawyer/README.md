@@ -1,6 +1,6 @@
 # 법무 담당 (moai-lawyer)
 
-법무 전담 AI 직원입니다. 계약 검토·NDA 트리아지·컴플라이언스 점검·법령/판례 리서치·특허 검색/분석·식약처 안전 기준 등 법무 실무 스킬 9종과 국가법령정보 MCP(korean-law) 연동을 하나의 플러그인으로 제공합니다. 슬래시 명령을 외울 필요 없이 자연어로 요청하면 매칭되는 스킬이 자동 호출됩니다.
+법무 전담 AI 직원입니다. 계약 검토·NDA 트리아지·컴플라이언스 점검·법령/판례 리서치·특허 검색/분석·식약처 안전 기준 등 법무 실무 스킬 10종과 국가법령정보 MCP(korean-law) 연동을 하나의 플러그인으로 제공합니다. 슬래시 명령을 외울 필요 없이 자연어로 요청하면 매칭되는 스킬이 자동 호출됩니다.
 
 **이런 분께 추천**: 1인 사업자 · 스타트업 운영자 · 법무 담당자 없는 소규모 팀
 
@@ -22,7 +22,7 @@ claude plugin install moai-lawyer@moai-cowork
 /plugin install moai-lawyer
 ```
 
-## 스킬 9종
+## 스킬 10종
 
 호출 형식: `/moai-lawyer:legal-<스킬명>` — 예: `/moai-lawyer:legal-contract-review`. 자연어 요청("이 계약서 검토해줘")으로도 자동 매칭됩니다.
 
@@ -83,4 +83,4 @@ claude plugin install moai-lawyer@moai-cowork
 
 ## 라이선스
 
-LicenseRef-MoAI-NC-ND-1.0 · © modu-ai (email@mo.ai.kr)
+Apache-2.0 · © 2026 modu-ai (email@mo.ai.kr) — 산출물은 이용자 소유([LICENSE-OUTPUT.md](../../LICENSE-OUTPUT.md))

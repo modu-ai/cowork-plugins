@@ -47,7 +47,7 @@ Thariq 사상은 JS/CSS CDN의 환각·런타임 비결정 문제를 차단하�
 - **preconnect 호스트**: `https://fonts.googleapis.com`, `https://fonts.gstatic.com`
 
 ### JetBrains Mono (Google Fonts)
-- **라이선스**: Apache 2.0 — cowork-plugins MIT와 호환
+- **라이선스**: Apache 2.0 — 저장소 Apache-2.0과 호환
 - **CDN**: Google Fonts API
 - **URL**: `https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap`
 - **preconnect 호스트**: `https://fonts.googleapis.com`, `https://fonts.gstatic.com`

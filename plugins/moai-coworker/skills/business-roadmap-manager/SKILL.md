@@ -11,7 +11,7 @@ description: |
   - "분기별 마일스톤과 담당자 정리해줘"
   일정·리소스·파트너십·지속가능성 계획을 실행 가능한 문서로 정리하고, general-ai-slop-reviewer·general-humanize-korean으로 마무리할 수 있습니다.
   [책임 경계] 운영 케이던스(주간보고·스탠드업·회고·OKR 추적)는 moai-pm, 본 스킬은 제품 발견·로드맵/마일스톤 기획
-version: "6.0.0"
+version: "1.0.0"
 ---
 
 # 로드맵 관리 (Roadmap Manager)
@@ -96,3 +96,12 @@ MOU 초안·지속가능성 감사 보고서·DEI 전략 문서 같은 서술형
 
 - `moai-coworker:general-ai-slop-reviewer`: AI 특유의 상투적 표현·과장·군더더기를 점검하고 다듬습니다.
 - `moai-writer:general-humanize-korean`: 자연스러운 한국어 문장으로 최종 정제합니다.
+
+## References
+
+| 파일 | 로드 조건 |
+|------|----------|
+| references/project-tracker.md | 프로젝트 관리 요청 시 (계획 수립→마일스톤 추적→리소스 할당→위험 관리→상태 보고) |
+| references/partnership-development.md | 파트너십 개발 요청 시 (파트너 식별→제안 작성→협상→거버넌스→공동 마케팅) |
+| references/sustainability-audit.md | ESG 지속가능성 감사 요청 시 (환경 분석→사회 평가→거버넌스 검토→ESG 보고→개선 계획) |
+| references/diversity-inclusion.md | DE&I 전략 요청 시 (전략 수립→정책 설계→편향 감시→ERG 운영→교육 프로그램) |

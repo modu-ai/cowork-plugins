@@ -13,7 +13,7 @@ description: |
   - "부동산 등기부등본 100건", "주소 목록으로 부동산 등기 한꺼번에"
   - "TouchEn nxKey", "공동인증서 등기 발급", "법인 결제 페이지당 10건"
   - 사업자등록번호 → 법인등기 매핑, 다운로드한 등기 PDF로 종합 리포트 만들기
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 인터넷등기소 등기부등본 자동화
@@ -56,6 +56,11 @@ cp config.json.example config.json
 
 업스트림 핀(SHA)을 변경할 때는 신뢰 경계가 바뀌므로 새 upstream diff를 검토하고 같은 PR에서 갱신합니다.
 
+> **스크립트 출처 주의**: 아래 워크플로우의 `iros_*.py`는 이 스킬(플러그인)에 번들된 파일이 **아니라**, 위에서 클론한
+> 업스트림 저장소(`iros-registry-automation`) 안의 스크립트입니다. 클론·핀 검토를 마친 경우에만 해당 디렉터리에서
+> 실행할 수 있으며, 클론하지 않았거나 자동화가 막히면 각 단계의 **IROS 웹 UI 수동 절차**로 대체합니다. 로그인·결제는
+> 어느 경로든 사용자가 브라우저에서 직접 처리합니다(원칙 C — 자동화 불가 구간은 수동 안내로 정직하게 처리).
+
 ## Workflow
 
 ### 1. 입력 파일을 저장소 밖 안전 폴더에 둔다
@@ -88,39 +93,58 @@ mkdir -p "$workdir/downloads" "$workdir/logs" "$workdir/output" "$workdir/tmp-do
 
 ### 3. 법인 등기부등본 장바구니 담기
 
-법인등록번호가 있으면 정확도가 높은 `iros_cart_by_corpnum.py`를 우선합니다. 상호명만 있으면 `iros_cart.py`를 사용하되 사명변경·특수문자 실패분은 법인등록번호로 재시도합니다.
+**업스트림을 클론한 경우** — 클론 디렉터리에서 아래 스크립트로 장바구니 담기를 보조할 수 있습니다.
+법인등록번호가 있으면 정확도가 높은 `iros_cart_by_corpnum.py`를, 상호명만 있으면 `iros_cart.py`를 쓰되
+사명변경·특수문자 실패분은 법인등록번호로 재시도합니다.
 
 ```bash
-python iros_cart_by_corpnum.py
-# 또는 상호명 기반
-python iros_cart.py
+# ↓ 클론한 iros-registry-automation 디렉터리 안에서 (플러그인 번들 파일 아님)
+python iros_cart_by_corpnum.py   # 또는 상호명 기반: python iros_cart.py
 ```
 
-브라우저에서 결제대상목록 → 페이지당 10건 단위로 직접 결제 → 결제 완료 후 터미널에 Enter.
+**클론하지 않았거나 자동화가 막힌 경우 (수동 절차)**: 브라우저에서 IROS 로그인 → 등기열람/발급 메뉴 →
+법인등록번호(또는 상호명)로 검색 → 발급 대상을 장바구니에 담기. 목록을 CSV/JSON으로 정리해 두면 순서 확인이 쉽습니다.
+
+어느 경로든, 브라우저에서 결제대상목록 → 페이지당 10건 단위로 사용자가 직접 결제 → 결제 완료 후 다음 단계로 진행합니다.
 
 ### 4. 법인 결제 후 열람·저장
 
+**클론한 경우** — 클론 디렉터리에서 `iros_download.py`로 결제 완료분 열람·저장을 보조할 수 있습니다.
+
 ```bash
+# ↓ 클론한 iros-registry-automation 디렉터리 안에서
 python iros_download.py
 ```
 
-저장 경로는 `config.json`의 `save_dir = $workdir/downloads`. 결제 전 `companies_list`가 `$workdir/companies-input.json`을 가리키는지 확인하면 `FileNotFoundError`를 예방합니다.
+저장 경로는 `config.json`의 `save_dir = $workdir/downloads`. 실행 전 `companies_list`가
+`$workdir/companies-input.json`을 가리키는지 확인하면 `FileNotFoundError`를 예방합니다.
+
+**수동 절차**: 결제 완료 후 IROS 웹 UI의 열람/발급 내역에서 각 등기사항증명서를 직접 열람·저장(PDF)하고
+`$workdir/downloads`에 모아 둡니다.
 
 ### 5. 부동산 등기부등본 장바구니 담기
 
+**클론한 경우** — 클론 디렉터리에서 `iros_cart_realty.py`로 부동산 장바구니 담기를 보조할 수 있습니다.
+
 ```bash
+# ↓ 클론한 iros-registry-automation 디렉터리 안에서
 python iros_cart_realty.py
 ```
 
-결제·열람·다운로드는 IROS 웹 UI의 일괄 결제·일괄열람출력·일괄저장이 보통 더 빠르고 안전합니다. 필요할 때만 `iros_download_realty.py`를 검토합니다.
+결제·열람·다운로드는 IROS 웹 UI의 일괄 결제·일괄열람출력·일괄저장이 보통 더 빠르고 안전하므로 **수동 UI를 우선**합니다.
+클론 디렉터리에 있는 `iros_download_realty.py`는 필요할 때만 보조로 검토합니다.
 
-### 6. 마법사 메뉴 (초보자 권장)
+### 6. 마법사 메뉴 (클론한 경우, 초보자 권장)
+
+업스트림을 클론했다면 대화형 메뉴 진입점 `iros_wizard.py`가 위 단계를 묶어 안내합니다.
 
 ```bash
+# ↓ 클론한 iros-registry-automation 디렉터리 안에서
 python iros_wizard.py
 ```
 
-메뉴: 법인 장바구니, 법인 결제 후 열람·저장, 부동산 장바구니, 부동산 결제 후 열람·저장, 사업자번호 → 법인정보 조회, PDF → 종합 리포트 엑셀 생성.
+메뉴: 법인 장바구니, 법인 결제 후 열람·저장, 부동산 장바구니, 부동산 결제 후 열람·저장, 사업자번호 → 법인정보 조회,
+PDF → 종합 리포트 엑셀 생성. 클론하지 않았다면 각 단계의 수동 절차(위 3~5단계)를 순서대로 따릅니다.
 
 ## Response policy
 

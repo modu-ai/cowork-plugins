@@ -1,40 +1,38 @@
-{{- /* Claude Design f22cdda7 redesign header — logo · 제품 nav · 검색 · 홈/문서 토글 · GitHub Star.
-       다크모드 토글/언어 스위치 제거(2026-06). 홈/문서 토글은 SPA 뷰가 아닌 네비 링크로 매핑. */ -}}
+{{- /* 모두의AI Design System — gnav header (dc.html handoff parity, green achromatic).
+       왼쪽: 로고+docs 뱃지 + 문서 메뉴 / 오른쪽: 모두의 패밀리 외부 링크 + ⌘K 검색.
+       검색 모달(⌘K) 기능 유지. GH stars·홈/문서 토글은 dc.html 정합 위해 제거(2026-07). */ -}}
 {{- $page := .Root -}}
 {{- $rel := $page.RelPermalink -}}
-<header class="gdoc-header" role="banner">
-  <div class="cw-header-inner">
-    <a class="cw-brand" href="/">
-      <img class="cw-brand-logo-img" src="/logo-1line-tight.png" alt="모두의 코워크" style="height:26px;width:auto;display:block" />
-      <span class="cw-brand-tag">docs</span>
+<header class="gnav" role="banner">
+  <div class="gnav-inner">
+    <a class="gnav-brand" href="/">
+      <span class="gnav-brand-mark"><img src="/logos/moai-logo-1.png" alt="모두의 코워크" /></span>
+      <span class="gnav-brand-name">모두의 코워크</span>
+      <span class="gnav-brand-tag">docs</span>
     </a>
 
-    <nav class="cw-prodnav" aria-label="제품">
-      <a href="/chat/" class="cw-prodnav-link{{ if hasPrefix $rel "/chat/" }} active{{ end }}">Chat</a>
-      <a href="/cowork/" class="cw-prodnav-link{{ if hasPrefix $rel "/cowork/" }} active{{ end }}">Cowork</a>
-      <a href="/design/" class="cw-prodnav-link{{ if hasPrefix $rel "/design/" }} active{{ end }}">Design</a>
-      <a href="/code/" class="cw-prodnav-link{{ if hasPrefix $rel "/code/" }} active{{ end }}">Code</a>
+    <nav class="gnav-menu" aria-label="문서 메뉴">
+      <a class="gnav-link{{ if hasPrefix $rel "/getting-started/" }} active{{ end }}" href="/getting-started/">시작하기</a>
+      <a class="gnav-link{{ if hasPrefix $rel "/plugins/" }} active{{ end }}" href="/plugins/">플러그인</a>
+      <a class="gnav-link{{ if hasPrefix $rel "/cookbook/" }} active{{ end }}" href="/cookbook/">쿡북</a>
+      <a class="gnav-link{{ if hasPrefix $rel "/moai-agents/" }} active{{ end }}" href="/moai-agents/">AI 직원</a>
+      <a class="gnav-link{{ if hasPrefix $rel "/releases/" }} active{{ end }}" href="/releases/">릴리스</a>
     </nav>
 
-    <span class="cw-header-spacer"></span>
+    <span class="gnav-spacer"></span>
 
-    <div class="cw-nav-search">
-      <button type="button" class="cw-search-input" data-search-trigger aria-label="문서 검색 (⌘K)">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg>
-        <span>문서 검색…</span>
-        <kbd>⌘K</kbd>
-      </button>
-    </div>
+    <nav class="gnav-prod" aria-label="모두의AI 패밀리">
+      <a class="prodnav-link" href="https://mo.ai.kr" target="_blank" rel="noopener">모두의 AI</a>
+      <a class="prodnav-link" href="https://news.mo.ai.kr" target="_blank" rel="noopener">모두의 뉴스</a>
+      <a class="prodnav-link" href="https://academy.mo.ai.kr" target="_blank" rel="noopener">모두의 아카데미</a>
+      <a class="prodnav-link" href="https://school.mo.ai.kr" target="_blank" rel="noopener">모두의 스쿨</a>
+    </nav>
 
-    <div class="cw-viewseg" role="group" aria-label="홈/문서 보기">
-      <a href="/" class="cw-viewseg-btn{{ if $page.IsHome }} active{{ end }}">홈</a>
-      <a href="/getting-started/" class="cw-viewseg-btn{{ if not $page.IsHome }} active{{ end }}">문서</a>
-    </div>
-
-    <a class="cw-gh-stars" href="https://github.com/modu-ai/cowork-plugins" target="_blank" rel="noopener noreferrer" aria-label="GitHub 저장소 (modu-ai/cowork-plugins) 새 창으로 열기">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>
-      <span class="cw-gh-count" data-gh-stars>—</span>
-    </a>
+    <button class="gnav-search" type="button" data-search-trigger aria-label="문서 검색 (⌘K)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg>
+      <span>문서 검색</span>
+      <kbd>⌘K</kbd>
+    </button>
   </div>
 </header>
 
@@ -54,25 +52,6 @@
 </div>
 
 <script>
-// GitHub stars 실시간 (24h 캐시)
-(function(){
-  const el = document.querySelector('[data-gh-stars]'); if (!el) return;
-  const KEY = 'cw-gh-stars'; const TTL = 24*60*60*1000;
-  const fmt = (n) => n >= 1000 ? (n/1000).toFixed(1).replace(/\.0$/, '') + 'k' : String(n);
-  try {
-    const c = JSON.parse(localStorage.getItem(KEY) || 'null');
-    if (c && Date.now() - c.t < TTL) { el.textContent = fmt(c.n); return; }
-  } catch(e) {}
-  fetch('https://api.github.com/repos/modu-ai/cowork-plugins')
-    .then(r => r.ok ? r.json() : Promise.reject())
-    .then(d => {
-      const n = d.stargazers_count;
-      el.textContent = fmt(n);
-      try { localStorage.setItem(KEY, JSON.stringify({ n, t: Date.now() })); } catch(e) {}
-    })
-    .catch(() => { el.textContent = ''; });
-})();
-
 // 검색 모달 — Geekdoc search.json 활용
 (function(){
   const modal = document.querySelector('[data-search-modal]');
@@ -99,11 +78,8 @@
     results.innerHTML = '<div class="cw-search-modal__hint">검색어를 입력하세요. 최소 2자 이상.</div>';
   };
 
-  // trigger button
   document.querySelectorAll('[data-search-trigger]').forEach(b => b.addEventListener('click', (e) => { e.preventDefault(); open(); }));
-  // close handlers
   document.querySelectorAll('[data-search-close]').forEach(b => b.addEventListener('click', close));
-  // ESC
   document.addEventListener('keydown', (e) => {
     if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
       e.preventDefault();
@@ -113,7 +89,6 @@
     }
   });
 
-  // search
   const escapeHtml = (s) => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const highlight = (text, q) => {
     const re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');

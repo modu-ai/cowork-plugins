@@ -52,18 +52,18 @@ tags: [cookbook, projects, marketing]
 
 ```mermaid
 flowchart TD
-    U["하늘 님<br/>'요가 클래스 브랜드'"] --> W1["코워커<br/>business-brand-identity"]
-    W1 --> R1["브랜드 가이드 문서"]
-    R1 --> D1["디자이너<br/>cd-brief"]
-    D1 --> D2["디자이너<br/>cd-system-prep"]
-    D2 --> R2["디자인 시스템<br/>(색 · 타이포 · 컴포넌트)"]
-    R2 --> D3["디자이너<br/>moai-workflow-design"]
-    D3 --> OUT["랜딩 페이지 시안"]
+   U["하늘 님<br/>'요가 클래스 브랜드'"] --> W1["코워커<br/>business-brand-identity"]
+   W1 --> R1["브랜드 가이드 문서"]
+   R1 --> D1["디자이너<br/>cd-brief"]
+   D1 --> D2["디자이너<br/>cd-system-prep"]
+   D2 --> R2["디자인 시스템<br/>(색 · 타이포 · 컴포넌트)"]
+   R2 --> D3["디자이너<br/>moai-workflow-design"]
+   D3 --> OUT["랜딩 페이지 시안"]
 
-    style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style R1 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style R2 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style OUT fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+   style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style R1 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style R2 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style OUT fill:#d6e7de,stroke:#3d7d5f,stroke-width:2px,color:#09110f
 ```
 
 ## 4. 결과물

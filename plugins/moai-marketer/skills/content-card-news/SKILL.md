@@ -10,7 +10,7 @@ description: |
   - "스타트업 시드 라운드 체크리스트 카드뉴스 써줘"
   - "프롬프트 엔지니어링 FAQ 카드뉴스 기획해줘"
   주제에 맞는 구성 패턴을 자동으로 골라 4장을 채우고, 이미지 생성은 moai-coworker 이미지 스킬로, 한국어 자연화는 moai-writer:general-humanize-korean으로 이어집니다.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 카드뉴스 (Card News)
@@ -272,6 +272,8 @@ CTA: [저장/공유/팔로우/링크/댓글/DM 중 1개]
 ## References
 
 - [`references/prompt-templates.md`](./references/prompt-templates.md) — 10 패턴 본문 골격 + 통합 프롬프트 + 디자인 톤 토큰 + 꿀팁
+- [`references/card-news/design-guide.md`](./references/card-news/design-guide.md) — 4단계 디자인 톤·색상 이론(3색 법칙)·레이아웃 상세 가이드
+- [`references/card-news/magazine-sop.md`](./references/card-news/magazine-sop.md) — 매거진형 카드뉴스 편집 SOP 템플릿(역할 분담·프로세스)
 
 ## 디자인 원칙 출처
 

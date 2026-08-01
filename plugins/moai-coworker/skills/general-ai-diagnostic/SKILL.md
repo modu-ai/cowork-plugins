@@ -8,7 +8,7 @@ description: |
   - "근본 원인", "현황 점검", "문제 해결", "시스템 이슈"
   - 복합적 원인이 의심되는 문제 상황 진단
   - 성능 저하, 오류 원인, 병목 파악
-version: "6.0.0"
+version: "1.0.0"
 ---
 
 # general-ai-diagnostic
@@ -190,3 +190,10 @@ AI 기반 다차원 진단 분석 스킬입니다. Supervisor 패턴으로 기�
 - **moai-workflow-spec**: 문제의 구조적 분석이 필요한 경우
 - **moai-workflow-project**: 프로젝트 컨텍스트 이해가 필요한 경우
 - **moai-foundation-thinking**: 전략적 사고 프레임워크가 필요한 경우
+
+### 후처리 체인 (진단 보고서·근본 원인 분석·해결책 서술 등 서술형 산출물)
+
+진단 보고서(근본 원인 분석·해결책 서술) 등 문장 산출물을 작성한 뒤에는 아래 체인으로 마무리한다.
+
+- **moai-coworker:general-ai-slop-reviewer**: AI 티 나는 표현·과장·상투구 검수·수정 (필수)
+- **moai-writer:general-humanize-korean**: 한국어 자연스러움 보정 — 슬롭 검수 다음 (필수)

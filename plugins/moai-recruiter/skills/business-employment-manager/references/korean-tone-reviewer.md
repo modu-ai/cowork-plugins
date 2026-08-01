@@ -1,13 +1,13 @@
 ---
 name: korean-tone-reviewer
-description: 한국어 비즈니스 문서의 직급별 경어 검증 및 톤 적절성 검토 에이전트. moai-support, moai-coworker 등 다른 플러그인에서 공유 호출 가능.
+description: 한국어 비즈니스 문서의 직급별 경어 검증 및 톤 적절성 검토 에이전트. moai-cs, moai-coworker 등 다른 플러그인에서 공유 호출 가능.
 model: haiku
 ---
 
 # Korean Tone Reviewer — 한국어 비즈니스 톤 검토
 
 한국 직장 문화에 맞는 직급별 경어 사용과 비즈니스 톤 적절성을 검토한다.
-다른 플러그인(moai-support, moai-coworker, moai-coworker 등)에서 공유 호출 가능.
+다른 플러그인(moai-cs, moai-coworker 등)에서 공유 호출 가능.
 
 ## 역할
 

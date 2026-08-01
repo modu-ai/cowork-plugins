@@ -1,8 +1,0 @@
----
-description: 보안 및 @MX 태그 준수 확인을 포함한 코드 리뷰
-argument-hint: "[--staged] [--branch] [--security]"
-allowed-tools: Skill
----
-<!-- parity-source: internal/template/templates/.claude/commands/moai/review.md.tmpl @ b8354304c -->
-
-Use Skill("moai:moai") with arguments: review $ARGUMENTS

@@ -11,13 +11,13 @@ aliases: ["/claude-design/export-handoff/"]
 
 | 형식 | 결과물 | 편집 가능성 | 인터랙티브 보존 | 추천 시점 |
 |---|---|---|---|---|
-| **조직 URL** | 내부 링크 | Edit 권한 시 가능 | ✓ | 사내 리뷰·승인 회람 |
-| **PDF** | 단일 PDF 파일 | 어려움 | ✗ | 외부 발송용 정적 산출물 |
-| **PPTX** | PowerPoint 파일 | PowerPoint·Keynote에서 가능 | ✗ (간소화됨) | 발표 직전 최종 손질 |
-| **표준 HTML** | 자립 HTML 폴더 | 코드 편집기에서 | ✓ | 단발성 랜딩·이벤트 사이트 |
-| **Canva** | Canva 디자인 | Canva에서 풍부하게 | ✗ | 마케팅 팀 후속 편집 |
-| **ZIP archive** | 모든 자산 압축 | — | ✓ | 백업·아카이브 |
-| **Claude Code 핸드오프** | spec 번들 | Claude Code에서 코드로 | ✓ | 프로덕션 코드 빌드 |
+| **조직 URL** | 내부 링크 | Edit 권한 시 가능 | {{< icon check >}} | 사내 리뷰·승인 회람 |
+| **PDF** | 단일 PDF 파일 | 어려움 | {{< icon x >}} | 외부 발송용 정적 산출물 |
+| **PPTX** | PowerPoint 파일 | PowerPoint·Keynote에서 가능 | {{< icon x >}} (간소화됨) | 발표 직전 최종 손질 |
+| **표준 HTML** | 자립 HTML 폴더 | 코드 편집기에서 | {{< icon check >}} | 단발성 랜딩·이벤트 사이트 |
+| **Canva** | Canva 디자인 | Canva에서 풍부하게 | {{< icon x >}} | 마케팅 팀 후속 편집 |
+| **ZIP archive** | 모든 자산 압축 | — | {{< icon check >}} | 백업·아카이브 |
+| **Claude Code 핸드오프** | spec 번들 | Claude Code에서 코드로 | {{< icon check >}} | 프로덕션 코드 빌드 |
 
 ## 형식별 상세
 
@@ -91,14 +91,14 @@ aliases: ["/claude-design/export-handoff/"]
 
 ```mermaid
 flowchart LR
-    A["1. Claude Design<br/>디자인 시스템 기반 시안"] --> B["2. Canva 네이티브 export<br/>색·폰트·레이아웃 보존"]
-    B --> C["3. 마케팅 팀<br/>채널별 변형<br/>(인스타·SNS·광고)"]
-    C --> D["4. Canva 공유 링크<br/>외부 클라이언트 회람"]
+   A["1. Claude Design<br/>디자인 시스템 기반 시안"] --> B["2. Canva 네이티브 export<br/>색·폰트·레이아웃 보존"]
+   B --> C["3. 마케팅 팀<br/>채널별 변형<br/>(인스타·SNS·광고)"]
+   C --> D["4. Canva 공유 링크<br/>외부 클라이언트 회람"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style C fill:#dceee9,stroke:#2a8a8c,color:#09110f
-    style D fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style C fill:#e8f1ec,stroke:#2a8a8c,color:#09110f
+   style D fill:#d6e7de,stroke:#3d7d5f,color:#09110f
 ```
 
 Canva 전송 후에는 **편집·협업이 가능**합니다. Canva의 자체 공유 링크로 외부 공유도 가능합니다 (Canva 정책 적용). Claude Code 핸드오프(프로덕션 코드 빌드)와는 **다른 경로**로 운영하세요 — 두 경로를 동시에 진행하면 디자인이 두 도구에서 동시에 변형돼 일관성이 깨집니다.
@@ -123,13 +123,13 @@ Claude Design과 Claude Code의 디자인 시스템은 **양방향 동기화**�
 
 ```mermaid
 flowchart TB
-    A["Claude Design<br/>디자인 시스템"] -->|export handoff| B["Claude Code<br/>구현"]
-    B -->|/design-sync| C["Claude Design<br/>시스템 import"]
-    C -->|반영 후 재검토| B
+   A["Claude Design<br/>디자인 시스템"] -->|export handoff| B["Claude Code<br/>구현"]
+   B -->|/design-sync| C["Claude Design<br/>시스템 import"]
+   C -->|반영 후 재검토| B
 
-    style A fill:#d6ebe7,stroke:#1c7c70,color:#09110f
-    style B fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style C fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+   style A fill:#d6e7de,stroke:#3d7d5f,color:#09110f
+   style B fill:#e8f1ec,stroke:#265240,color:#09110f
+   style C fill:#d6e7de,stroke:#3d7d5f,color:#09110f
 ```
 
 ### Claude Code에서 디자인 시스템 import (`/design-sync`)
@@ -143,14 +143,14 @@ Claude Design에 현재 코드베이스의 디자인 시스템을 import하시�
 
 ![Claude Code /design-sync — 코드베이스 디자인 시스템을 Claude Design으로 (코드→디자인)](/screenshots/design/cd-design-sync.png)
 
-터미널에서 `/design-sync`를 실행하면 코드베이스의 컴포넌트·토큰·색상이 Claude Design으로 들어와, 디자인 시작점이 실제 코드와 일치하게 됩니다.
+터미널에서 `/design-sync`를 실행하면 코드베이스의 컴포넌트·토큰·색상이 Claude Design으로 들어와 디자인 시작점이 실제 코드와 일치하게 됩니다.
 
-이를 통해:
+그 결과:
 - 기존 코드의 컴포넌트 라이브러리를 Claude Design에서 검색 가능
 - Claude Design에서 새 시안 작성 시 기존 컴포넌트 자동 인식
 - 코드와 디자인 시스템이 일관성 있게 유지
 
-**제약**: 자동 양방향 동기화는 아니며, 수동으로 import/export를 실행해야 합니다. 큰 디자인 변경이 필요하면 새로운 핸드오프를 권장합니다.
+**제약**: 자동 양방향 동기화는 아니며 수동으로 import/export를 실행해야 합니다. 큰 디자인 변경이 필요하면 새로운 핸드오프를 권장합니다.
 
 ## Claude Code 핸드오프 번들 — 상세
 
@@ -249,21 +249,21 @@ Claude Code Web을 쓰면 위 절차가 한 번의 클릭으로 자동화됩니�
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    participant U as 사용자
-    participant CC as Claude Code
-    participant FS as 로컬 코드베이스
-    participant LIB as UI 컴포넌트 라이브러리
+   autonumber
+   participant U as 사용자
+   participant CC as Claude Code
+   participant FS as 로컬 코드베이스
+   participant LIB as UI 컴포넌트 라이브러리
 
-    U->>CC: 핸드오프 번들 URL + 지시
-    CC->>CC: README.md · design-tokens.json · components.json 읽음
-    CC->>FS: 기존 코드베이스 스캔
-    CC->>LIB: 기존 컴포넌트 라이브러리 식별 (Button·Card·Modal 등)
-    CC->>CC: 디자인 의도 → 기존 컴포넌트 매핑
-    CC->>FS: 페이지·컴포넌트·스타일 생성
-    CC-->>U: 로컬 미리보기 명령
-    U->>FS: npm run dev 등으로 확인
-    U->>CC: 수정 요청 (자연어)
+   U->>CC: 핸드오프 번들 URL + 지시
+   CC->>CC: README.md · design-tokens.json · components.json 읽음
+   CC->>FS: 기존 코드베이스 스캔
+   CC->>LIB: 기존 컴포넌트 라이브러리 식별 (Button·Card·Modal 등)
+   CC->>CC: 디자인 의도 → 기존 컴포넌트 매핑
+   CC->>FS: 페이지·컴포넌트·스타일 생성
+   CC-->>U: 로컬 미리보기 명령
+   U->>FS: npm run dev 등으로 확인
+   U->>CC: 수정 요청 (자연어)
 ```
 
 ### 5. 핸드오프 이후의 원칙
@@ -291,20 +291,20 @@ Claude Code의 `/design-sync` 커맨드를 사용하면 기존 코드베이스�
 
 ```mermaid
 flowchart LR
-    A["기존 코드베이스<br/>(src/, components/)<br/>디자인 토큰·컴포넌트"] 
-    B["Claude Code<br/>/design-sync<br/>자동 분석"]
-    C["Claude Design<br/>Import 된<br/>디자인 시스템"]
-    D["시안 작성<br/>(시스템 적용 상태)"]
+   A["기존 코드베이스<br/>(src/, components/)<br/>디자인 토큰·컴포넌트"] 
+   B["Claude Code<br/>/design-sync<br/>자동 분석"]
+   C["Claude Design<br/>Import 된<br/>디자인 시스템"]
+   D["시안 작성<br/>(시스템 적용 상태)"]
     
-    A --> B
-    B --> C
-    C --> D
-    D -.->|"스크린샷 피드백<br/>또는<br/>새 핸드오프"| A
+   A --> B
+   B --> C
+   C --> D
+   D -.->|"스크린샷 피드백<br/>또는<br/>새 핸드오프"| A
     
-    style A fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style B fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
-    style C fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
-    style D fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+   style A fill:#e8f1ec,stroke:#265240,color:#09110f
+   style B fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
+   style C fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
+   style D fill:#d6e7de,stroke:#3d7d5f,color:#09110f
 ```
 
 ### Claude Code 터미널에서 직접 진입 (`/design`)
@@ -322,7 +322,7 @@ Claude Code 터미널에서 `/design` 커맨드를 입력하면 claude.ai/design
 
 ### 현재 양방향 제약
 
-`/design-sync`와 `/design` 커맨드를 통해 부분적 양방향 흐름은 지원되지만, 완전한 **양방향 자동 동기화** (디자인 변경 ↔ 코드 변경 자동 적용)는 현재 제한적입니다.
+`/design-sync`와 `/design` 커맨드로 부분적 양방향 흐름은 지원되지만 완전한 **양방향 자동 동기화** (디자인 변경 ↔ 코드 변경 자동 적용)는 현재 제한적입니다.
 
 ## 양방향(디자인 ↔ 코드) — 현재 제약
 

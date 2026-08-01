@@ -13,7 +13,7 @@ description: |
   한국형 폰트·색 팔레트 디자인 시스템과 비즈니스 슬라이드 구성안을 적용해 슬라이드를 만들고, 카피는 AI 슬롭 검수로 다듬을 수 있습니다.
   발표자료를 .pptx 파일로 만들 때는 Claude 기본 생성 대신 이 스킬을 사용하세요.
   [책임 경계] vs moai-media:media-notebooklm-slide-prompt: 이 스킬=지금 바로 열리는 .pptx 파일, 저 스킬=NotebookLM에 넣을 슬라이드 생성 프롬프트.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # PPT 디자이너 (PPTX Designer)
@@ -307,12 +307,15 @@ Pretendard·맑은 고딕은 상용·배포 자유. 발표 PC에 폰트 미설�
 - **Anthropic Brand Guidelines**: 본 스킬의 색·타이포는 Anthropic 공식 브랜드 기반
 - **NotebookLM**: https://notebooklm.google.com/
 
-## References
+## 상세 레퍼런스
 
-- `references/curated-palettes.md` — 10 큐레이션 팔레트 상세 (Claude 톤 변형 + 한국 톤 4종)
-- `references/slide-archetypes.md` — 9가지 비즈니스 슬라이드 아키타입 와이어프레임
-- `references/typography-pairings.md` — 5가지 폰트 페어링 + 사이즈 위계
-- `references/qa-checklist.md` — 자동·시각 검수 10단계
-- `references/pptxgen-code-patterns.md` — pptxgenjs 코드 패턴 (기존 자료, 612줄)
-- `references/guide.md` — 디자인 시스템 빌더 가이드 (기존 자료, 12개 레이아웃)
-- `references/report-generator.md` — 보고서 생성기 (기존 자료)
+| 파일 | 로드 조건 |
+|------|-----------|
+| references/curated-palettes.md | 2단계 팔레트 선택 시 (10 큐레이션 팔레트 상세 — Claude 톤 변형 + 한국 톤 4종) |
+| references/slide-archetypes.md | 3단계 아키타입 시퀀스 구성 시 (9가지 아키타입 와이어프레임) |
+| references/typography-pairings.md | 폰트 페어링·사이즈 위계 결정 시 (5가지 페어링) |
+| references/qa-checklist.md | 5단계 QA 검수 시 (자동·시각 검수 10단계) |
+| references/pptxgen-code-patterns.md | 4단계 pptxgenjs 코드 작성 시 (코드 패턴, 기존 자료) |
+| references/guide.md | 디자인 시스템 빌더 가이드가 필요할 때 (기존 자료, 12개 레이아웃) |
+| references/report-generator.md | 보고서형 덱 생성 시 (기존 자료) |
+| references/templates/minimal-business.md | 미니멀 비즈니스 스타일 팩(색·폰트·레이아웃 프리셋) 적용 시 |

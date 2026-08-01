@@ -1,6 +1,6 @@
 # 성과 피드백 템플릿 가이드
 
-> moai-hr | business-performance-review 참조 가이드 | 2026 기준
+> moai-recruiter | business-performance-review 참조 가이드 | 2026 기준
 
 ## 개요
 

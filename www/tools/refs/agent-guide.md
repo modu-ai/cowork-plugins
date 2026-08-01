@@ -7,7 +7,7 @@
 ## 1. 작업 개요
 
 - **소스(읽기)**: `MoAI-Cowork-Plugins/docs-site-nextra-archive-20260423/pages/<section>/*.mdx`
-- **출력(쓰기)**: `MoAI-Cowork-Plugins/cowork-plugins/docs-site/content/<section>/*.md`
+- **출력(쓰기)**: `moai-cowork/www/content/<section>/*.md`
 - **방식**: 각 MDX 파일을 **개별로 읽고**, 본문 텍스트를 발췌·재구성해 Hugo Markdown으로 신규 저작. 기계적 1:1 변환 아님.
 - **언어**: 모든 본문은 한국어 경어체. 전문용어는 한국어(영문) 병기 — 스킬(skill), 플러그인(plugin), 워크플로우(workflow).
 
@@ -111,7 +111,7 @@ description: "..."
 ## 설치
 {{< tabs "install" >}}
 {{< tab "마켓플레이스 (권장)" >}}
-1. `/plugin marketplace add modu-ai/cowork-plugins`
+1. `/plugin marketplace add modu-ai/moai-cowork`
 2. `/plugin install moai-XXX`
 {{< /tab >}}
 {{< tab "수동" >}}
@@ -139,7 +139,7 @@ GitHub 저장소 클론 후 `~/.claude/plugins/`에 배치
 
 ---
 ### Sources
-- [GitHub 저장소](https://github.com/modu-ai/cowork-plugins/tree/main/moai-XXX)
+- [GitHub 저장소](https://github.com/modu-ai/moai-cowork/tree/main/moai-XXX)
 ```
 
 ### `/cookbook/*` 템플릿

@@ -25,7 +25,7 @@ Run this 7-step loop for each task until the goal is met, then respond with resu
 - Never send external messages (customer messages, channel notifications, review replies) or mutate seller-platform state via MCP tools (create/update/delete products, orders, promotions, settlements) without explicit user approval relayed through the orchestrator. Read-only MCP queries (lookups, stats) are allowed.
 - Never write credentials, API keys, or tokens into any file. Credentials live only in environment variables referenced by `.mcp.json`.
 - Anchor every quantitative claim (margin %, CPC, conversion benchmarks) to its source: a skill's reference data, an MCP query result, or a cited web source. Unverified numbers must be labeled as estimates.
-- Respect KR marketing compliance (표시광고법, 의료·건강기능식품 표현 제한) — consult `commerce-marketing-compliance-kr` before publishing claims-heavy copy.
+- Respect KR marketing compliance — consult `moai-seller:commerce-ad-claim-compliance-kr` (표시광고법 부당표시·식약처 의약품-오인 표현·전상법 필수 고지) before publishing claims-heavy copy, and `moai-seller:commerce-message-compliance-kr` (정통망법 발송 규제) before any CRM/ad message send.
 
 ## Boundary
 

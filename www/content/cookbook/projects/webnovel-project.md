@@ -10,7 +10,7 @@ tags: [cookbook, projects, content]
 
 ## 1. 문제 상황
 
-간호사로 일하는 수아 님의 메모장에는 3년 묵은 이야기가 하나 있습니다. 회귀한 신입 간호사가 병원의 비리를 파헤치는 이야기 — 설정도, 주요 장면도, 결말도 머릿속엔 다 있습니다. 없는 건 "작품"입니다. 몇 번이나 1화를 쓰기 시작했지만, 쓰다 보면 설정이 꼬이고, 인물 말투가 화마다 달라지고, 결국 "내가 뭘 쓰려던 거지"에서 멈췄습니다.
+간호사로 일하는 수아 님의 메모장에는 3년 묵은 이야기가 하나 있습니다. 회귀한 신입 간호사가 병원의 비리를 파헤치는 이야기 — 설정도, 주요 장면도, 결말도 머릿속엔 다 있습니다. 없는 건 "작품"입니다. 몇 번이나 1화를 쓰기 시작했지만 쓰다 보면 설정이 꼬이고, 인물 말투가 화마다 달라지고, 결국 "내가 뭘 쓰려던 거지"에서 멈췄습니다.
 
 웹소설 플랫폼에 도전하려면 머릿속 이야기를 세 가지 물건으로 바꿔야 합니다. **시놉시스**(작품 전체의 줄거리 요약 — 플랫폼 투고와 방향 유지의 기준), **캐릭터 시트**(인물별 성격·말투·관계 정리표 — 화가 거듭돼도 인물이 흔들리지 않게 하는 장치), 그리고 **연재 원고**. 여기에 독자의 첫 클릭을 결정하는 표지까지. 전부 이야기 창작의 영역이라, 이번 프로젝트는 작가 직원 한 명과의 긴 협업입니다.
 
@@ -54,21 +54,21 @@ tags: [cookbook, projects, content]
 
 ```mermaid
 flowchart TD
-    U["수아 님<br/>3년 묵은 메모"] --> W1["작가<br/>story-synopsis"]
-    W1 --> R1["시놉시스"]
-    R1 --> W2["작가<br/>story-character-sheet"]
-    W2 --> R2["캐릭터 시트 4인"]
-    R2 --> W3["작가<br/>story-webnovel-writer"]
-    W3 --> W4["작가<br/>general-humanize-korean"]
-    W4 --> R3["연재 원고 (회차별)"]
-    R3 --> W5["작가<br/>story-cover-art"]
-    W5 --> OUT["투고 패키지 완성"]
+   U["수아 님<br/>3년 묵은 메모"] --> W1["작가<br/>story-synopsis"]
+   W1 --> R1["시놉시스"]
+   R1 --> W2["작가<br/>story-character-sheet"]
+   W2 --> R2["캐릭터 시트 4인"]
+   R2 --> W3["작가<br/>story-webnovel-writer"]
+   W3 --> W4["작가<br/>general-humanize-korean"]
+   W4 --> R3["연재 원고 (회차별)"]
+   R3 --> W5["작가<br/>story-cover-art"]
+   W5 --> OUT["투고 패키지 완성"]
 
-    style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style R1 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style R2 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style R3 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style OUT fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+   style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style R1 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style R2 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style R3 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style OUT fill:#d6e7de,stroke:#3d7d5f,stroke-width:2px,color:#09110f
 ```
 
 ## 4. 결과물

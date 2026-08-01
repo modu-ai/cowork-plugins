@@ -5,7 +5,7 @@ description: |
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   "인플루언서 협업", "뒷광고 회피", "체험단 운영", "UGC 리그램 가이드", "굿즈 기획법", "메가/매크로/마이크로 인플루언서", "표시광고법 인플루언서".
   표시광고법 + 공정거래위 가이드 준수. 5 인플루언서 티어 차등 협업 전략.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 인플루언서·UGC 협업 가이드 (Commerce Influencer Collaboration)
@@ -80,6 +80,7 @@ commerce-influencer-collab → general-ai-slop-reviewer → (선택) content-sns
 ## 관련 스킬
 
 - `marketing-campaign-planner` — 전체 캠페인 기획 (페어)
-- `commerce-marketing-compliance-kr` — 정통망법 (표시광고법 별개)
+- `commerce-message-compliance-kr` — 정통망법 (표시광고법 별개)
 - `content-sns-content` — 인플루언서용 콘텐츠
 - `general-ai-slop-reviewer` — 협업 제안 카피 AI 슬롭 검수 (자동 체인, HARD)
+- `moai-writer:general-humanize-korean` — 한국어 AI 티 제거 (슬롭 검수 다음, 필수)

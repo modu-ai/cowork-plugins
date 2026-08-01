@@ -7,7 +7,7 @@ description: |
   3구간 골든타임: ① 평균 주기 80% 시점 = 리마인드 (감성·정체성) ② 110-120% = 데드라인 (긴급성·할인) ③ 150% = 휴면 진입 (윈백·강한 인센티브).
   화장품·식품·반려동물·렌즈·면도기 등 정기 구매 카테고리 한국 D2C 표준 적용.
   general-ai-slop-reviewer 자동 체이닝 (텍스트 메시지 산출물).
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 재구매 타이밍 엔진 (Commerce Repurchase Timer)
@@ -170,6 +170,8 @@ version: "0.1.0"
 - 카테고리별 자연 어체 (화장품 = 감성 / 면도기 = 실용 / 반려동물 = 이모지 + 친근)
 - 인센티브 표현의 진정성 검증
 
+슬롭 검수 직후 `moai-writer:general-humanize-korean`으로 한국어 AI 티를 제거합니다 (슬롭 검수 다음, 필수).
+
 ## 사용 예시
 
 ```
@@ -199,11 +201,11 @@ version: "0.1.0"
 ## 관련 스킬
 
 체이닝:
-`commerce-repurchase-timer` (타이밍 계산) → `moai-cs:commerce-channel-message` (앱 푸시·카톡·이메일 카피) → `commerce-marketing-compliance-kr` (법규 게이트) → 실제 발송
+`commerce-repurchase-timer` (타이밍 계산) → `moai-cs:commerce-channel-message` (앱 푸시·카톡·이메일 카피) → `commerce-message-compliance-kr` (법규 게이트) → 실제 발송
 
 - `commerce-ltv-cac-architect` — 전체 LTV/CAC 모델 (페어, 다른 책임)
 - `commerce-channel-message` — 구간별 앱 푸시·카톡·이메일 카피 (앱 푸시 기획 모드 포함)
-- `commerce-marketing-compliance-kr` — 발송 전 정통망법 게이트
+- `commerce-message-compliance-kr` — 발송 전 정통망법 게이트
 
 ## 이 스킬을 사용하지 말아야 할 때
 

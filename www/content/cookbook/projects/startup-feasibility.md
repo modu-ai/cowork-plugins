@@ -51,19 +51,19 @@ tags: [cookbook, projects, startup]
 
 ```mermaid
 flowchart TD
-    U["민준 님<br/>'연남동 카페, 될까?'"] --> C1["컨설턴트<br/>business-sbiz365-analyst"]
-    C1 --> R1["상권분석 보고서 PDF<br/>(유동인구 · 경쟁 · 매출)"]
-    R1 --> C2["컨설턴트<br/>business-market-analyst"]
-    C2 --> R2["업종 시장 분석"]
-    R2 --> F1["재무·세무<br/>finance-financial-statements"]
-    F1 --> R3["추정 손익계산서<br/>3개 시나리오"]
-    R3 --> F2["재무·세무<br/>finance-tax-helper"]
-    F2 --> OUT["의사결정 자료 세트"]
+   U["민준 님<br/>'연남동 카페, 될까?'"] --> C1["컨설턴트<br/>business-sbiz365-analyst"]
+   C1 --> R1["상권분석 보고서 PDF<br/>(유동인구 · 경쟁 · 매출)"]
+   R1 --> C2["컨설턴트<br/>business-market-analyst"]
+   C2 --> R2["업종 시장 분석"]
+   R2 --> F1["재무·세무<br/>finance-financial-statements"]
+   F1 --> R3["추정 손익계산서<br/>3개 시나리오"]
+   R3 --> F2["재무·세무<br/>finance-tax-helper"]
+   F2 --> OUT["의사결정 자료 세트"]
 
-    style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style R1 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style R3 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style OUT fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+   style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style R1 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style R3 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style OUT fill:#d6e7de,stroke:#3d7d5f,stroke-width:2px,color:#09110f
 ```
 
 ## 4. 결과물

@@ -11,7 +11,7 @@ description: |
   - "고객 설문 인사이트 정리해줘"
   정성·정량 리서치 결과를 의사결정에 쓸 수 있는 인사이트로 정리하고, general-ai-slop-reviewer·general-humanize-korean으로 마무리할 수 있습니다.
   [책임 경계] vs moai-coworker:business-ux-designer: business-ux-researcher=정성/정량 리서치(인터뷰·페르소나·VOC), business-ux-designer=디자인 평가(휴리스틱·접근성·플로우)
-version: "6.0.0"
+version: "1.0.0"
 ---
 
 # UX 리서처 (UX Researcher)
@@ -100,3 +100,10 @@ VOC 분석 보고서·페르소나 문서·인터뷰 가이드·NPS 개선 제�
 
 - `moai-coworker:general-ai-slop-reviewer`: AI 특유의 상투적 표현·과장·군더더기를 점검하고 다듬습니다.
 - `moai-writer:general-humanize-korean`: 자연스러운 한국어 문장으로 최종 정제합니다.
+
+## References
+
+| 파일 | 로드 조건 |
+|------|----------|
+| references/ux-research.md | UX 연구 요청 시 (사용자 면접 설계→사용성 테스트→페르소나 개발→여정 매핑→인사이트 합성) |
+| references/user-feedback-analysis.md | 사용자 피드백 분석 요청 시 (설문 설계→NPS/CSAT 분석→감정 분석→피드백 분류→인사이트 추출) |

@@ -13,7 +13,7 @@ description: |
   - "피어 리뷰 대비해서 연구 방법 타당성 점검해줘"
   RISS·DBpia 등 국내외 학술 DB 검색 전략부터 정량·정성 분석, 인용 관리, 피어 리뷰 대비까지 지원합니다.
   [책임 경계] vs moai-consultant:business-market-analyst: 이 스킬=학술 논문과 연구 리서치, 저 스킬=시장 조사와 비즈니스 리서치.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 리서치 어시스턴트 (Research Assistant)
@@ -186,6 +186,8 @@ version: "0.1.0"
 
 - **moai-coworker/education-curriculum-designer**: 커리큘럼 설계, 학습 목표 정의
 - **moai-coworker/education-assessment-creator**: 시험·평가 문제 출제
+- `moai-coworker:general-ai-slop-reviewer` — 최종 산출물 AI 슬롭 검수 (Post-검수, 필수)
+- `moai-writer:general-humanize-korean` — 한국어 AI 티 제거 (슬롭 검수 다음 필수)
 
 ## 이 스킬을 사용하지 말아야 할 때
 
@@ -193,3 +195,11 @@ version: "0.1.0"
 - **시험 문제 출제** → moai-tutor:education-assessment-creator 스킬을 사용하세요
 - **시장 조사·비즈니스 리서치** → moai-consultant:business-market-analyst 스킬이 더 적합합니다
 - **실제 데이터 수집(설문 발송, 인터뷰 진행)** → 해당 도구(구글폼, 카카오폼 등)를 직접 사용하세요
+
+## References
+
+| 파일 | 로드 조건 |
+|------|-----------|
+| references/research-assistant.md | 문헌 검색·읽기 노트·비판적 종합·참고문헌 관리 등 학술 연구 지원 시 |
+| references/academic-paper.md | 연구설계·실험 관리·통계 분석·학술 논문 작성·제출 준비 시 |
+| references/thesis-advisor.md | 주제 선정·문헌 검토·연구방법론·논문 교정 지도 시 |

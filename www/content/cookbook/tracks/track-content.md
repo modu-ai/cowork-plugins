@@ -13,28 +13,28 @@ geekdocBreadcrumb: true
 
 ```mermaid
 flowchart TD
-    subgraph 입력["입력"]
-        A["주제 한 줄"]
-    end
-    subgraph 생성["콘텐츠 생성 (도메인별)"]
-        B1["blog<br/>6 플랫폼 SEO"]
-        B2["card-news<br/>인스타 캐러셀"]
-        B3["landing-page<br/>shadcn/ui 랜딩"]
-        B4["newsletter<br/>이메일 발행"]
-        B5["sns-content<br/>9채널 매트릭스"]
-    end
-    subgraph 검수["3중 후처리"]
-        C1["ai-slop-reviewer<br/>AI 슬롭 검수"]
-        C2["korean-spell-check<br/>맞춤법"]
-        C3["humanize-korean<br/>AI 티 정밀 윤문"]
-    end
-    subgraph 발행["발행 (외부 커넥터, 선택)"]
-        D1["WordPress MCP<br/>커넥터"]
-        D2["Post-Bridge MCP<br/>커넥터"]
-        D3["Typefully MCP<br/>커넥터"]
-    end
-    입력 --> 생성 --> 검수 --> 발행
-    style 검수 fill:#e6f0ef,stroke:#144a46
+   subgraph 입력["입력"]
+       A["주제 한 줄"]
+   end
+   subgraph 생성["콘텐츠 생성 (도메인별)"]
+       B1["blog<br/>6 플랫폼 SEO"]
+       B2["card-news<br/>인스타 캐러셀"]
+       B3["landing-page<br/>shadcn/ui 랜딩"]
+       B4["newsletter<br/>이메일 발행"]
+       B5["sns-content<br/>9채널 매트릭스"]
+   end
+   subgraph 검수["3중 후처리"]
+       C1["ai-slop-reviewer<br/>AI 슬롭 검수"]
+       C2["korean-spell-check<br/>맞춤법"]
+       C3["humanize-korean<br/>AI 티 정밀 윤문"]
+   end
+   subgraph 발행["발행 (외부 커넥터, 선택)"]
+       D1["WordPress MCP<br/>커넥터"]
+       D2["Post-Bridge MCP<br/>커넥터"]
+       D3["Typefully MCP<br/>커넥터"]
+   end
+   입력 --> 생성 --> 검수 --> 발행
+   style 검수 fill:#e8f1ec,stroke:#265240
 ```
 
 ## 한 줄 요청 예시 4종
@@ -66,7 +66,7 @@ flowchart TD
 
 ### 자동 체인
 
-`blog × 5편` → `ai-slop-reviewer` (1차 일반) → `korean-spell-check` (바른한글) → `humanize-korean` (한국어 정밀 윤문, A/B/C/D 등급) → (선택) WordPress MCP 커넥터 발행
+`blog × 5편` → `general-ai-slop-reviewer` (1차 일반) → `korean-spell-check` (바른한글) → `general-humanize-korean` (한국어 정밀 윤문, A/B/C/D 등급) → (선택) WordPress MCP 커넥터 발행
 
 ### 산출물
 
@@ -89,11 +89,11 @@ flowchart TD
 1. **슬라이드 수**: 6-10장
 2. **톤**: 친근 / 격식 / 유머
 3. **이미지 비율**: 1:1 / 4:5 / 9:16 (스토리)
-4. **AI 이미지 생성**: 예/아니오 (`higgsfield-image` 호출)
+4. **AI 이미지 생성**: 예/아니오 (`media-higgsfield-image` 호출)
 
 ### 자동 체인
 
-`card-news` → `higgsfield-image` (한국어 타이포 정확도 우수) → `ai-slop-reviewer`
+`content-card-news` → `media-higgsfield-image` (한국어 타이포 정확도 우수) → `general-ai-slop-reviewer`
 
 ---
 
@@ -114,7 +114,7 @@ flowchart TD
 
 ### 자동 체인
 
-`landing-page` (Next.js 15 + shadcn/ui + Tailwind v4 + OKLCH 토큰) → `ai-slop-reviewer` → `humanize-korean`
+`marketing-landing-page` (Next.js 15 + shadcn/ui + Tailwind v4 + OKLCH 토큰) → `general-ai-slop-reviewer` → `general-humanize-korean`
 
 ### 산출물
 
@@ -130,12 +130,12 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    Gen["콘텐츠 생성<br/>(blog·card-news·...)"] --> S1["ai-slop-reviewer<br/>일반 AI 패턴 검수"]
-    S1 --> S2["korean-spell-check<br/>바른한글 맞춤법"]
-    S2 --> S3["humanize-korean<br/>한국어 SSOT 40+ 패턴"]
-    S3 --> User["사용자 최종 검토"]
-    style S1 fill:#fbf0dc,stroke:#c47b2a
-    style S3 fill:#e6f0ef,stroke:#144a46
+   Gen["콘텐츠 생성<br/>(blog·card-news·...)"] --> S1["ai-slop-reviewer<br/>일반 AI 패턴 검수"]
+   S1 --> S2["korean-spell-check<br/>바른한글 맞춤법"]
+   S2 --> S3["humanize-korean<br/>한국어 SSOT 40+ 패턴"]
+   S3 --> User["사용자 최종 검토"]
+   style S1 fill:#fbf0dc,stroke:#c47b2a
+   style S3 fill:#e8f1ec,stroke:#265240
 ```
 
 | 후처리 | 범위 | 정량 메트릭 |
@@ -165,7 +165,7 @@ flowchart TD
 
 ### Q. 여러 스킬 중 어떤 걸 호출해야 할까요?
 
-**사용자는 호출 안 함**. 시스템이 한 줄 요청을 분석해 자동 선택. 예: "블로그" → `blog`, "랜딩" → `landing-page`, "카드뉴스" → `card-news`.
+**사용자는 호출 안 함**. 시스템이 한 줄 요청을 분석해 자동 선택. 예: "블로그" → `content-blog`, "랜딩" → `marketing-landing-page`, "카드뉴스" → `content-card-news`.
 
 ### Q. 윤문(humanize-korean)을 끄고 싶어요.
 

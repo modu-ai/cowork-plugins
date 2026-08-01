@@ -1,29 +1,29 @@
 ---
 title: "데이터 분석 가이드"
 weight: 40
-description: "EDA · 프로파일링 · 이상값 탐지를 moai-data:data-explorer 스킬로 자동화하는 절차."
+description: "EDA · 프로파일링 · 이상값 탐지를 moai-analyst:data-explorer 스킬로 자동화하는 절차."
 geekdocBreadcrumb: true
 ---
-> "이 데이터로 뭘 할 수 있을까?"라는 질문은 EDA(탐색적 데이터 분석)으로 답합니다. cowork-plugins의 `data-explorer`가 5분 안에 첫 인사이트를 돌려줍니다.
+> "이 데이터로 뭘 할 수 있을까?"라는 질문은 EDA(탐색적 데이터 분석)으로 답합니다. 모두의 코워크의 `office-data-explorer`가 5분 안에 첫 인사이트를 돌려줍니다.
 
 ```mermaid
 flowchart TD
-    A["data-explorer<br/>프로파일링"] --> B["public-data<br/>공공데이터 보강"]
-    B --> C["data-visualizer<br/>시각화"]
-    C --> D["xlsx-creator / docx-generator<br/>보고서 출력"]
+   A["data-explorer<br/>프로파일링"] --> B["public-data<br/>공공데이터 보강"]
+   B --> C["data-visualizer<br/>시각화"]
+   C --> D["xlsx-creator / docx-generator<br/>보고서 출력"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style D fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style D fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 ## 사용 스킬
 
 | 단계 | 스킬 | 용도 |
 |---|---|---|
-| 데이터 로드 + 프로파일링 | `moai-data:data-explorer` | 컬럼 요약, 결측·이상값, 상관관계 |
-| 통계·공공데이터 보강 | `moai-data:public-data` | KOSIS·data.go.kr |
-| 시각화 | `moai-data:data-visualizer` | 차트·대시보드 |
-| 결과 출력 | `moai-office:xlsx-creator` / `moai-office:docx-generator` | 엑셀·워드 보고서 |
+| 데이터 로드 + 프로파일링 | `moai-analyst:office-data-explorer` | 컬럼 요약, 결측·이상값, 상관관계 |
+| 통계·공공데이터 보강 | `moai-analyst:office-public-data-public-data` | KOSIS·data.go.kr |
+| 시각화 | `moai-analyst:office-data-visualizer` | 차트·대시보드 |
+| 결과 출력 | `moai-officer:office-xlsx-creator` / `moai-officer:office-docx-generator` | 엑셀·워드 보고서 |
 
 ## EDA 5단계
 
@@ -67,7 +67,7 @@ flowchart TD
 > 차이가 큰 분기를 표시하고 원인 후보를 정리.
 {{< /terminal >}}
 
-`public-data` 스킬이 KOSIS·data.go.kr API를 자동 호출합니다.
+`office-public-data-public-data` 스킬이 KOSIS·data.go.kr API를 자동 호출합니다.
 
 ## 데이터 품질 체크 5가지
 
@@ -97,5 +97,5 @@ flowchart TD
 
 ### Sources
 
-- moai-data 플러그인 [`data-explorer`](https://github.com/modu-ai/cowork-plugins/blob/main/moai-data/skills/data-explorer/SKILL.md), [`public-data`](https://github.com/modu-ai/cowork-plugins/blob/main/moai-data/skills/public-data/SKILL.md)
+- moai-analyst 플러그인 [`office-data-explorer`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-analyst/skills/office-data-explorer/SKILL.md), [`office-public-data-public-data`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-analyst/skills/office-public-data-public-data/SKILL.md)
 - [KOSIS 통계청](https://kosis.kr) · [공공데이터포털](https://www.data.go.kr)

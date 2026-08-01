@@ -5,7 +5,7 @@ description: "스킬·플러그인·체인·커넥터·MCP·서브에이전트 �
 geekdocBreadcrumb: true
 aliases: ["/cowork/glossary/"]
 ---
-> Cowork를 처음 쓸 때 가장 자주 혼동되는 6개 용어를 한 자리에 모았습니다. 현재 28개 플러그인·178개 스킬이 이 여섯 단어 안에서 어떻게 조직되는지 함께 봅니다.
+> Cowork를 처음 쓸 때 가장 자주 혼동되는 6개 용어를 한 자리에 모았습니다. 현재 {{< catalog-count plugins >}}개 플러그인·{{< catalog-count skills >}}개 스킬이 이 여섯 단어 안에서 어떻게 조직되는지 함께 봅니다.
 
 ## 학습 목표
 
@@ -21,25 +21,25 @@ aliases: ["/cowork/glossary/"]
 
 ```mermaid
 flowchart TB
-    subgraph Plugin["플러그인 (plugin)"]
-        direction TB
-        S1["스킬 A"]
-        S2["스킬 B"]
-        S3["스킬 C"]
-        Conn["커넥터 (MCP)"]
-    end
+   subgraph Plugin["플러그인 (plugin)"]
+       direction TB
+       S1["스킬 A"]
+       S2["스킬 B"]
+       S3["스킬 C"]
+       Conn["커넥터 (MCP)"]
+   end
 
-    Chain["스킬 체인<br/>skill chain"]
-    Chain --> S1
-    Chain --> S2
-    Chain --> S3
-    Sub["서브에이전트<br/>subagent"]
-    Sub -.->|지침 실행| S1
+   Chain["스킬 체인<br/>skill chain"]
+   Chain --> S1
+   Chain --> S2
+   Chain --> S3
+   Sub["서브에이전트<br/>subagent"]
+   Sub -.->|지침 실행| S1
 
-    style Plugin fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style Chain fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style Sub fill:#dceee9,stroke:#2a8a8c,color:#09110f
-    style Conn fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style Plugin fill:#e6e6e6,stroke:#757575,color:#09110f
+   style Chain fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style Sub fill:#e8f1ec,stroke:#2a8a8c,color:#09110f
+   style Conn fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 ### 스킬 (skill)
@@ -61,7 +61,7 @@ flowchart TB
 - 사업계획서: `strategy-planner → pptx-designer → ai-slop-reviewer`
 - 블로그 원고: `blog → ai-slop-reviewer → humanize-korean` (2차 후처리)
 
-**오개념**: 체인은 시스템이 자동으로 엮는 것이 아니라, 사용자 요청 문맥에 맞춰 Claude가 판단해 구성합니다.
+**오개념**: 체인은 시스템이 자동으로 엮는 것이 아니라 사용자 요청 문맥에 맞춰 Claude가 판단해 구성합니다.
 
 ### 커넥터 (connector)
 
@@ -81,7 +81,7 @@ Anthropic이 정의한 커넥터 표준 프로토콜입니다. 커넥터는 구�
 
 {{< hint type="note" >}}
 - Q1. 스킬과 플러그인의 관계를 한 문장으로 설명하세요. (쉬움·이해)
-- Q2. 체인 실행 중 `docx-generator`가 호출되지 않았다면 원인 후보 3가지는? (중간·적용)
+- Q2. 체인 실행 중 `office-docx-generator`가 호출되지 않았다면 원인 후보 3가지는? (중간·적용)
 - Q3. MCP와 커넥터는 같은 개념일까요, 아니면 다를까요? 근거와 함께 답하세요. (어려움·분석)
 {{< /hint >}}
 
@@ -106,4 +106,4 @@ Anthropic이 정의한 커넥터 표준 프로토콜입니다. 커넥터는 구�
 
 - [Claude Cowork 제품 페이지](https://claude.com/product/cowork)
 - [Anthropic MCP 소개](https://www.anthropic.com/news/model-context-protocol)
-- [modu-ai/cowork-plugins](https://github.com/modu-ai/cowork-plugins)
+- [modu-ai/moai-cowork](https://github.com/modu-ai/moai-cowork)

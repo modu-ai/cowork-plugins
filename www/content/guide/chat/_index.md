@@ -7,11 +7,11 @@ geekdocCollapseSection: false
 aliases: ["/chat/"]
 ---
 
-Claude Chat은 대화형 AI 어시스턴트로, 텍스트 기반의 자연스러운 상호작용을 통해 작성, 분석, 문제 해결, 브레인스토밍 등 다양한 작업을 수행할 수 있습니다.
+Claude Chat은 대화형 AI 어시스턴트로, 텍스트로 자연스럽게 대화하며 글쓰기, 분석, 문제 해결, 브레인스토밍 같은 다양한 작업을 할 수 있습니다.
 
 ## Claude Chat이란 — 살아 있는 백과사전 같은 AI 친구
 
-백과사전을 켜서 질문하면 일방적으로 답변을 읽는 것과 달리, Claude Chat은 당신과 실시간으로 대화합니다. "이메일 초안을 써 줄 수 있나요?", "이 계약서를 쉽게 설명해 줄 수 있나요?", "내일 회의에서 어떻게 설명할까?" 같은 질문에 바로 답변하고, 당신의 피드백에 따라 그 자리에서 다시 수정합니다.
+백과사전을 켜서 질문하면 일방적으로 답변을 읽는 것과 달리, Claude Chat은 당신과 실시간으로 대화합니다. "이메일 초안을 써 줄 수 있나요?", "이 계약서를 쉽게 설명해 줄 수 있나요?", "내일 회의에서 어떻게 설명할까?" 같은 질문에 바로 답변하고 당신의 피드백에 따라 그 자리에서 다시 수정합니다.
 
 Claude Chat의 특징:
 - **자연스러운 대화**: 일상의 말 그대로 입력하면 됨
@@ -23,15 +23,15 @@ Claude Chat은 생각을 정리하는 데 도움을 주는 똑똑한 친구 같�
 
 ```mermaid
 flowchart LR
-    A["당신의 질문<br/>텍스트 입력"] --> B["Claude Chat<br/>생각하기"]
-    B --> C["명확한 답변<br/>즉시 받기"]
-    C <-. 피드백 .-> A
-    C --> D["결과물<br/>복사·활용"]
+   A["당신의 질문<br/>텍스트 입력"] --> B["Claude Chat<br/>생각하기"]
+   B --> C["명확한 답변<br/>즉시 받기"]
+   C <-. 피드백 .-> A
+   C --> D["결과물<br/>복사·활용"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style B fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
-    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style D fill:#d6ebe7,stroke:#1c7c70,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style B fill:#fbf0dc,stroke:#c47b2a,stroke-width:2px,color:#09110f
+   style C fill:#e8f1ec,stroke:#265240,color:#09110f
+   style D fill:#d6e7de,stroke:#3d7d5f,color:#09110f
 ```
 
 ## 주요 기능

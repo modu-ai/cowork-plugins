@@ -11,11 +11,11 @@ aliases: ["/claude-design/pricing-limits/"]
 
 | 플랜 | Claude Design 접근 | 한도 메커니즘 | Extra usage | 비고 |
 |---|---|---|---|---|
-| Free | ✗ | — | — | — |
-| Pro | ✓ | 공유 풀(chat·Claude Code와 동일) | 옵션 활성화 시 가능 | — |
-| Max | ✓ | 공유 풀(chat·Claude Code와 동일, Pro보다 큼) | 옵션 활성화 시 가능 | — |
-| Team | ✓ | 공유 풀(멤버별 + 조직 합산) | 옵션 활성화 시 가능 | — |
-| Enterprise | ✓ (기본 OFF) | 공유 풀(조직 단위, 관리자 활성화 필요) | 옵션 활성화 시 가능 | — |
+| Free | {{< icon x >}} | — | — | — |
+| Pro | {{< icon check >}} | 공유 풀(chat·Claude Code와 동일) | 옵션 활성화 시 가능 | — |
+| Max | {{< icon check >}} | 공유 풀(chat·Claude Code와 동일, Pro보다 큼) | 옵션 활성화 시 가능 | — |
+| Team | {{< icon check >}} | 공유 풀(멤버별 + 조직 합산) | 옵션 활성화 시 가능 | — |
+| Enterprise | {{< icon check >}} (기본 OFF) | 공유 풀(조직 단위, 관리자 활성화 필요) | 옵션 활성화 시 가능 | — |
 
 {{< hint type="note" >}}
 정확한 한도 수치는 Anthropic이 공개하지 않으며 Beta 단계에서 변동될 수 있습니다. 한도 변화는 [공식 도움말](https://support.claude.com/en/articles/14604406-claude-design-admin-guide-for-team-and-enterprise-plans)을 주기적으로 확인하세요.
@@ -27,27 +27,27 @@ Claude Design은 **일반 채팅·Claude Code와 동일한 공유 풀**에서 �
 
 ```mermaid
 flowchart TB
-    subgraph Acc["사용자의 Anthropic 계정"]
-        direction LR
-        Pool["<b>공유 풀</b><br/>일반 채팅 + Claude Code + Claude Design<br/>같은 한도에서 함께 차감"]
-    end
+   subgraph Acc["사용자의 Anthropic 계정"]
+       direction LR
+       Pool["<b>공유 풀</b><br/>일반 채팅 + Claude Code + Claude Design<br/>같은 한도에서 함께 차감"]
+   end
 
-    subgraph Contrib["풀에서 차감되는 사용량"]
-        A["일반 채팅<br/>claude.ai"]
-        B["Claude Code<br/>(design 제외)"]
-        C["Claude Design<br/>claude.ai/design"]
-    end
+   subgraph Contrib["풀에서 차감되는 사용량"]
+       A["일반 채팅<br/>claude.ai"]
+       B["Claude Code<br/>(design 제외)"]
+       C["Claude Design<br/>claude.ai/design"]
+   end
 
-    A -.->|차감| Pool
-    B -.->|차감| Pool
-    C -.->|차감| Pool
+   A -.->|차감| Pool
+   B -.->|차감| Pool
+   C -.->|차감| Pool
 
-    style Acc fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style Pool fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
-    style Contrib fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style A fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style C fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style Acc fill:#e6e6e6,stroke:#757575,color:#09110f
+   style Pool fill:#d6e7de,stroke:#3d7d5f,stroke-width:2px,color:#09110f
+   style Contrib fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style A fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style C fill:#fbf0dc,stroke:#c47b2a,color:#09110f
 ```
 
 **중요**: Claude Design 사용량이 늘면 일반 채팅 한도가 줄어듭니다. 같은 풀이기 때문입니다. 한도를 초과하면 Extra usage를 활성화해야 계속 사용 가능합니다.
@@ -112,14 +112,14 @@ Enterprise는 **기본 OFF**입니다. 관리자가 명시적으로 활성화해
 
 ```mermaid
 flowchart LR
-    A["Phase 1<br/>2-4명 디자이너<br/>(시스템 셋업)"] --> B["Phase 2<br/>디자인팀 전체<br/>(스트레스 테스트)"]
-    B --> C["Phase 3<br/>PM·UX 역할<br/>(협업 패턴 확립)"]
-    C --> D["Phase 4<br/>전사 또는 선택 그룹<br/>(확산)"]
+   A["Phase 1<br/>2-4명 디자이너<br/>(시스템 셋업)"] --> B["Phase 2<br/>디자인팀 전체<br/>(스트레스 테스트)"]
+   B --> C["Phase 3<br/>PM·UX 역할<br/>(협업 패턴 확립)"]
+   C --> D["Phase 4<br/>전사 또는 선택 그룹<br/>(확산)"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style C fill:#e6f0ef,stroke:#144a46,color:#09110f
-    style D fill:#dceee9,stroke:#2a8a8c,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style B fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style C fill:#e8f1ec,stroke:#265240,color:#09110f
+   style D fill:#e8f1ec,stroke:#2a8a8c,color:#09110f
 ```
 
 각 단계 사이에 1-2주 관찰 기간을 두는 것을 권장합니다.
@@ -133,7 +133,7 @@ flowchart LR
 적용: 자동 — 별도 신청 불필요
 ```
 
-크레딧은 평가·도입 결정용입니다. 본격 도입 후에는 통상 사용량 정책이 적용됩니다. 정확한 크레딧 규모와 만료일은 Anthropic과 계약 시 협상되므로, 영업 팀에 문의하세요.
+크레딧은 평가·도입 결정용입니다. 본격 도입 후에는 통상 사용량 정책이 적용됩니다. 정확한 크레딧 규모와 만료일은 Anthropic과 계약 시 협상되므로 영업 팀에 문의하세요.
 
 ![Enterprise 관리자 콘솔 — Claude Design 기능 활성화](/screenshots/design/cd-admin-enable.png)
 
@@ -195,20 +195,20 @@ Enterprise 조직의 관리자는 Anthropic 콘솔에서 Claude Design 기능을
 다음 조건에 해당하면 도입을 강력히 추천합니다.
 
 ```
-✓ 디자이너 0-2명 또는 디자인 백로그가 항상 가득
-✓ 매주 비주얼 산출물(피치덱·랜딩·SNS·와이어프레임)이 필요
-✓ Claude Code를 이미 쓰고 있음 (핸드오프 효과 극대화)
-✓ 기존 디자인 시스템이 있음 (또는 시스템 만들 시간이 있음)
-✓ 외부 발송용 자료가 많음 (Canva·PPTX·PDF로 출력)
+[v] 디자이너 0-2명 또는 디자인 백로그가 항상 가득
+[v] 매주 비주얼 산출물(피치덱·랜딩·SNS·와이어프레임)이 필요
+[v] Claude Code를 이미 쓰고 있음 (핸드오프 효과 극대화)
+[v] 기존 디자인 시스템이 있음 (또는 시스템 만들 시간이 있음)
+[v] 외부 발송용 자료가 많음 (Canva·PPTX·PDF로 출력)
 ```
 
 다음 조건이면 도입을 보류·검토하세요.
 
 ```
-✗ 데이터 거주지 규제가 엄격한 산업(의료·금융·정부)
-✗ 디자인 시스템이 매우 정교하고 Figma·Storybook으로 잘 운영 중
-✗ 3D·음성·비디오 같은 프론티어 영역 위주 (아직 약함)
-✗ 전사 SSO·감사 로그가 엄격하게 요구되는 환경
+[x] 데이터 거주지 규제가 엄격한 산업(의료·금융·정부)
+[x] 디자인 시스템이 매우 정교하고 Figma·Storybook으로 잘 운영 중
+[x] 3D·음성·비디오 같은 프론티어 영역 위주 (아직 약함)
+[x] 전사 SSO·감사 로그가 엄격하게 요구되는 환경
 ```
 
 ## 다음 단계

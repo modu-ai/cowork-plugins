@@ -1,33 +1,33 @@
 ---
 title: "투자 유치 가이드"
 weight: 30
-description: "IR 덱 · 재무 모델 · 정부지원사업까지 자금 조달 전 단계를 cowork-plugins로 자동화하는 절차."
+description: "IR 덱 · 재무 모델 · 정부지원사업까지 자금 조달 전 단계를 모두의 코워크로 자동화하는 절차."
 geekdocBreadcrumb: true
 ---
-> 투자자가 보는 것은 "얼마나 큰 시장에서 얼마나 잘 팔 자신이 있는가"의 두 줄 답변입니다. 그 답변을 IR 덱·재무 모델·실적 데이터로 뒷받침하는 일련의 산출물을 cowork-plugins로 작성합니다.
+> 투자자가 보는 것은 "얼마나 큰 시장에서 얼마나 잘 팔 자신이 있는가"의 두 줄 답변입니다. 그 답변을 IR 덱·재무 모델·실적 데이터로 뒷받침하는 일련의 산출물을 모두의 코워크로 작성합니다.
 
 ```mermaid
 flowchart TD
-    A["market-analyst<br/>시장 분석"] --> B["strategy-planner<br/>사업 전략"]
-    B --> C["investor-relations<br/>IR 덱 + 재무"]
-    C --> D["pptx-designer<br/>슬라이드"]
-    D --> E["ai-slop-reviewer<br/>톤 검수"]
-    A -. "정부지원" .-> F["kr-gov-grant"]
+   A["market-analyst<br/>시장 분석"] --> B["strategy-planner<br/>사업 전략"]
+   B --> C["investor-relations<br/>IR 덱 + 재무"]
+   C --> D["pptx-designer<br/>슬라이드"]
+   D --> E["ai-slop-reviewer<br/>톤 검수"]
+   A -. "정부지원" .-> F["kr-gov-grant"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style E fill:#e6f0ef,stroke:#144a46,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style E fill:#e8f1ec,stroke:#265240,color:#09110f
 ```
 
 ## 사용 스킬
 
 | 단계 | 스킬 | 용도 |
 |---|---|---|
-| 시장 분석 | `moai-business:market-analyst` | TAM/SAM/SOM, 경쟁사 매핑 |
-| IR 덱 작성 | `moai-business:investor-relations` | 시리즈 A/B 피칭 덱 + 재무 모델 |
-| 사업 전략 | `moai-business:strategy-planner` | BMC, OKR, 5년 로드맵 |
-| 정부지원사업 | `moai-business:kr-gov-grant` | K-Startup, 창업도약, 기보·신보 |
-| 발표 자료화 | `moai-office:pptx-designer` | 한국형 IR 슬라이드 디자인 |
-| AI 슬롭 검수 | `moai-core:ai-slop-reviewer` | 발송 전 자연어 톤 검수 |
+| 시장 분석 | `moai-consultant:business-market-analyst` | TAM/SAM/SOM, 경쟁사 매핑 |
+| IR 덱 작성 | `moai-accountant:finance-investor-relations` | 시리즈 A/B 피칭 덱 + 재무 모델 |
+| 사업 전략 | `moai-consultant:business-strategy-planner` | BMC, OKR, 5년 로드맵 |
+| 정부지원사업 | `moai-consultant:business-kr-gov-grant` | K-Startup, 창업도약, 기보·신보 |
+| 발표 자료화 | `moai-officer:office-pptx-designer` | 한국형 IR 슬라이드 디자인 |
+| AI 슬롭 검수 | `moai-coworker:general-ai-slop-reviewer` | 발송 전 자연어 톤 검수 |
 
 ## 시리즈별 핵심 메시지
 
@@ -49,10 +49,10 @@ flowchart TD
 {{< /terminal >}}
 
 체인:
-1. `market-analyst`
-2. `investor-relations`
-3. `pptx-designer`
-4. `ai-slop-reviewer`
+1. `business-market-analyst`
+2. `finance-investor-relations`
+3. `office-pptx-designer`
+4. `general-ai-slop-reviewer`
 
 ## 재무 모델 — 3년 P&L
 
@@ -79,7 +79,7 @@ VC 투자와 별도로 정부지원사업은 비희석 자금으로 매년 검�
 > K-Startup, 창업도약패키지, 기보·신보 보증, 콘텐츠진흥원 등 — 마감일이 가까운 순으로 표로.
 {{< /terminal >}}
 
-`kr-gov-grant` 스킬이 K-Startup·BIZINFO·나라장터·창업진흥원을 통합 검색해 마감 임박 순으로 정리합니다.
+`business-kr-gov-grant` 스킬이 K-Startup·BIZINFO·나라장터·창업진흥원을 통합 검색해 마감 임박 순으로 정리합니다.
 
 ## 자주 겪는 실수
 
@@ -97,5 +97,5 @@ VC 투자와 별도로 정부지원사업은 비희석 자금으로 매년 검�
 
 ### Sources
 
-- moai-business 플러그인 [`investor-relations`](https://github.com/modu-ai/cowork-plugins/blob/main/moai-business/skills/investor-relations/SKILL.md), [`kr-gov-grant`](https://github.com/modu-ai/cowork-plugins/blob/main/moai-business/skills/kr-gov-grant/SKILL.md), [`market-analyst`](https://github.com/modu-ai/cowork-plugins/blob/main/moai-business/skills/market-analyst/SKILL.md)
+- moai-accountant 플러그인 [`finance-investor-relations`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-accountant/skills/finance-investor-relations/SKILL.md), [`business-kr-gov-grant`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-consultant/skills/business-kr-gov-grant/SKILL.md), [`business-market-analyst`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-consultant/skills/business-market-analyst/SKILL.md)
 - [K-Startup 창업지원포털](https://www.k-startup.go.kr) · [BIZINFO](https://www.bizinfo.go.kr)

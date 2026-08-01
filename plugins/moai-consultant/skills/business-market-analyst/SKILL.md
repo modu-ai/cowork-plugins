@@ -12,7 +12,7 @@ description: |
   - "시장 조사 보고서 써줘"
   공개 데이터로 시장 규모·경쟁 구도·가격 모델을 분석하고, 인사이트와 권고안까지 정리합니다.
   [책임 경계] vs 오프라인 상권 단위는 moai-consultant:business-sbiz365-analyst, 온라인 카테고리·검색 키워드 단위는 moai-seller:commerce-market-research를 사용하세요. 이 스킬=산업·시장 단위 분석.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 시장 분석가 (Market Analyst)
@@ -320,3 +320,12 @@ Customer / Competitor / Company를 각각 나열하면 더 이상 전략 도구�
 - **moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean**: 생성된 분석 보고서 AI 패턴 검수 후 한국어 표현을 자연스럽게 다듬습니다 (필수)
 
 > 포지셔닝 매트릭스·TAM/SAM/SOM 산식·경쟁사 비교 등 **표·수치 산출물은 humanize 대상이 아닙니다** — `moai-officer:office-xlsx-creator` 또는 `moai-analyst:office-data-visualizer`로 라우팅하세요. 위 체인은 인사이트·권고안 등 **서술(narrative) 본문**에만 적용합니다.
+
+## References
+
+| 파일 | 로드 조건 |
+|------|-----------|
+| references/market-research.md | 산업·경쟁사·소비자·트렌드 시장 조사 수행 시 |
+| references/market-researcher.md | DART·KOSIS·네이버 데이터랩 등 한국 공개 데이터 자율 수집·분석이 필요할 때 |
+| references/pricing-strategy.md | 가치 기반 가격 책정·가격 탄력성·할인 전략 개발 시 |
+| references/competitive-analysis.md | 경쟁사 맵핑·SWOT·포지셔닝·차별화 요소 분석 시 |

@@ -6,7 +6,7 @@ description: |
   "JTBD 분석해줘", "고객이 왜 사는지 분석", "구매 동기 9개 뽑아줘", "페르소나 만들어줘", "타겟 고객 프로필 생성", "리뷰 분석해서 페르소나", "고객 여정 분석", "구매결정요인 뽑아줘"
   JTBD 3분류(기능적/감성적/사회적) 예시 + 심리적 필요 4종 촉발 패턴(보상/불안/지루함/사회적 자극) + 타겟 온도 메타데이터(콜드/웜/핫/슈퍼, 광고 심리학).
   general-ai-slop-reviewer 자동 체이닝 (--mode persona 텍스트 산출물).
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # JTBD + 페르소나 분석 (Commerce JTBD & Persona)
@@ -135,7 +135,7 @@ WHILE 본인 상품 리뷰 < 10건:
 
 ### general-ai-slop-reviewer 자동 체이닝 (HARD)
 
-mode=persona 산출물은 텍스트 페르소나 프로필이므로 `moai-coworker:general-ai-slop-reviewer`를 자동 체인합니다.
+mode=persona 산출물은 텍스트 페르소나 프로필이므로 `moai-coworker:general-ai-slop-reviewer`를 자동 체인합니다. 슬롭 검수 직후 `moai-writer:general-humanize-korean`으로 한국어 AI 티를 제거합니다 (슬롭 검수 다음, 필수).
 
 검수 항목:
 - AI 특유 서술 패턴("~한 분", "~을 추구하는") 자연어화

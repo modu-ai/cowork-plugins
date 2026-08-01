@@ -4,7 +4,7 @@ description: |
   [책임 경계] 연간 시즌 캘린더 전담 — 한국·글로벌 이커머스 시즌 이벤트 30+개 매핑(블프·솽스이·발렌타인·명절·여름·겨울 등) + 카테고리별 매출 피크 분석 + 분기 캠페인 계획 자동 생성.
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   "연간 시즌 캘린더", "블프 솽스이 일정", "한국 시즌 이벤트", "분기 캠페인 계획", "시즌별 매출 피크", "명절 마케팅", "발렌타인 이벤트".
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 연간 시즌 캘린더 (Commerce Season Calendar)
@@ -116,3 +116,4 @@ commerce-season-calendar → general-ai-slop-reviewer → (선택) commerce-prom
 - `commerce-product-naming` — 시즌 트렌드 키워드 → 상품명·해시태그·블로그 제목 변환 (트렌드 변환 모드)
 - `commerce-promotion-planner` — 시즌 프로모션 기획
 - `general-ai-slop-reviewer` — 캠페인 계획·시즌 해설 AI 슬롭 검수 (자동 체인, HARD)
+- `moai-writer:general-humanize-korean` — 한국어 AI 티 제거 (슬롭 검수 다음, 필수)

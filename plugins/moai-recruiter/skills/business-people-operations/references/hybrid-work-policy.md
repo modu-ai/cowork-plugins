@@ -1,6 +1,6 @@
 # 하이브리드 근무 정책 프레임워크
 
-> moai-hr | business-people-operations 참조 가이드 | 2026 기준
+> moai-recruiter | business-people-operations 참조 가이드 | 2026 기준
 
 ## 개요
 

@@ -5,8 +5,8 @@ description: |
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   "채널별 메시지 만들어줘", "검색광고 카피 15종", "CRM 메시지 뽑아줘", "스마트스토어 배너 카피", "쿠팡 광고 문구", "카카오 알림톡 문구", "SNS 광고 카피 5종", "광고 헤드라인 만들어줘", "톡톡 응답 템플릿", "카트 이탈 메시지", "이메일 시퀀스 짜줘", "재구매 유도 알림톡", "앱 푸시 문구 만들어줘", "리텐션 푸시 카피 3안", "할인 푸시 알림", "게이미피케이션 푸시"
   3개 동작 모드(채널 분기 메시지 15종 / 운영 카피 / 앱 푸시 기획)가 자연어로 자동 선택되며, 6 심리 방아쇠 + 채널별 심리 상태 매트릭스 + 인지 편향 9종을 적용하고, 텍스트 산출물 직후 moai-coworker:general-ai-slop-reviewer를 자동 체이닝합니다.
-  [책임 경계] 페어 moai-domain-copywriting(도메인 비특정 단일 목적 카피)·moai-marketer:content-copywriting(이커머스 외 범용)과 구분 — 본 스킬은 이커머스 채널 운영 메시지 전용. 상세페이지 카피는 moai-seller:commerce-detail-page-copy, 발송 전 법규 게이트는 moai-seller:commerce-marketing-compliance-kr.
-version: "0.1.0"
+  [책임 경계] 페어 moai-domain-copywriting(도메인 비특정 단일 목적 카피)·moai-marketer:content-copywriting(이커머스 외 범용)과 구분 — 본 스킬은 이커머스 채널 운영 메시지 전용. 상세페이지 카피는 moai-seller:commerce-detail-page-copy, 발송 전 법규 게이트는 moai-seller:commerce-message-compliance-kr.
+version: "1.0.0"
 ---
 
 # 채널별 메시지 자동 생성 (Commerce Channel Message)
@@ -168,9 +168,10 @@ JTBD와 페르소나를 기반으로 NCM 프레임워크(Need → Channel → Mo
 - `commerce-jtbd-persona` — JTBD+페르소나 (이전 단계, Need 정의 입력)
 - `commerce-product-naming` — 확정 상품명 (메시지 내 상품명 활용)
 - `commerce-integrated-strategy` — 채널 메시지 포함 전략 1장 종합 (다음 단계)
-- `commerce-marketing-compliance-kr` — 발송 전 법규 게이트 (푸시·알림톡·이메일 광고)
+- `commerce-message-compliance-kr` — 발송 전 법규 게이트 (푸시·알림톡·이메일 광고)
 - `moai-marketer:content-sns-content` — SNS 콘텐츠 단독 심화 작업
 - `moai-coworker:general-ai-slop-reviewer` — AI 패턴 검수 (자동 체이닝)
+- `moai-writer:general-humanize-korean` — 한국어 AI 티 제거 (슬롭 검수 다음, 필수)
 
 ## 이 스킬을 사용하지 말아야 할 때
 
@@ -245,7 +246,7 @@ JTBD와 페르소나를 기반으로 NCM 프레임워크(Need → Channel → Mo
 | 핵심 혜택·콘텐츠 | 필수 | 비건 세럼 20% 할인 |
 | 톤앤매너 선호 | 권장 | 숫자 / 게이미피케이션 / 브랜딩 |
 
-푸시 기획 후속: 발송 직전 `moai-seller:commerce-marketing-compliance-kr`로 정통망법 게이트(야간 21:00-08:00 광고 발송 금지·수신거부·발신자 정보)를 통과시킵니다.
+푸시 기획 후속: 발송 직전 `moai-seller:commerce-message-compliance-kr`로 정통망법 게이트(야간 21:00-08:00 광고 발송 금지·수신거부·발신자 정보)를 통과시킵니다.
 
 ---
 

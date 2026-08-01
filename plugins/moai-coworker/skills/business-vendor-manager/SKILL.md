@@ -2,7 +2,7 @@
 name: business-vendor-manager
 description: >
   공급업체를 평가·선정하고 계약 및 리스크를 관리합니다. "벤더 평가 기준 만들어줘", "공급업체 리스크 레지스터 작성해줘", "계약 관리 체계를 잡아줘"라고 요청할 때 사용하세요. 벤더 선정 기준, 공급업체 평가표, 계약 관리 워크플로우, 리스크 식별 및 대응 계획을 지원합니다.
-version: "6.0.0"
+version: "1.0.0"
 ---
 
 # 벤더 관리자 (business-vendor-manager)
@@ -12,6 +12,9 @@ version: "6.0.0"
 | ID | 한국명 | 설명 |
 |----|--------|------|
 | risk-register | 리스크 레지스터 | 위험 식별, 영향 평가, 대응 계획 |
+| contract-management | 계약 관리 | 벤더 평가 기준, 계약 체크리스트, 하도급법 준수(대금지급기일 60일·부당 특약 금지·표준하도급계약서), 사업자등록 진위·전자세금계산서 확인 |
+| supply-chain | 공급망 | 공급업체 평가 점수카드, 조달 프로세스, 재고 최적화(EOQ·안전재고), 물류 계획, 공급 리스크 완화 |
+| import-export | 수출입 무역 | HS코드 분류·통관 문서, 관세/FTA, 무역금융(신용장·환어음), 환위험 관리 등 국경 간 조달·공급 |
 
 → 참조 파일: `references/{id}.md`
 
@@ -108,4 +111,13 @@ business-vendor-manager → moai-coworker:general-ai-slop-reviewer → moai-writ
 - **실제 계약서 법적 검토** → moai-lawyer:legal-contract-review 스킬을 사용하세요
 - **발주 시스템 직접 입력** → ERP·구매 시스템에 직접 접속해야 합니다
 - **회계·지급 처리** → moai-coworker 스킬이 더 적합합니다
-- **채용·인력 아웃소싱 업체 관리** → moai-hr 스킬을 사용하세요
+- **채용·인력 아웃소싱 업체 관리** → moai-recruiter 스킬을 사용하세요
+
+## References
+
+| 파일 | 로드 조건 |
+|------|----------|
+| references/risk-register.md | 프로젝트 위험 관리 시 (위험 식별→확률·영향 평가→대응 전략 수립→모니터링→상태 보고) |
+| references/contract-management.md | 벤더 계약 관리 시 (벤더 평가 기준 가중치·계약 체크리스트·하도급법 준수 사항·벤더 실사) |
+| references/supply-chain.md | 공급망 최적화 시 (공급업체 평가 점수카드·조달 워크플로우·재고 수준 계산·물류·공급 리스크 완화) |
+| references/import-export.md | 해외 공급처 수입·수출 무역 실무 시 (HS코드 분류·통관 문서·관세/FTA·신용장 결제·환위험 관리) |

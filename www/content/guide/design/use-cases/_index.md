@@ -65,15 +65,15 @@ PM의 가장 흔한 마찰: "글로만 적은 PRD를 디자이너가 와이어�
 
 ```mermaid
 flowchart LR
-    A["1. PRD 작성<br/>(글 위주)"] --> B["2. Claude Design에<br/>PRD 업로드"]
-    B --> C["3. 초기 와이어프레임<br/>3-5페이지 생성"]
-    C --> D["4. 디자이너와 그룹 대화<br/>리뷰·수정"]
-    D --> E["5. 핸드오프 번들"]
-    E --> F["6. Claude Code 또는<br/>디자이너에게"]
+   A["1. PRD 작성<br/>(글 위주)"] --> B["2. Claude Design에<br/>PRD 업로드"]
+   B --> C["3. 초기 와이어프레임<br/>3-5페이지 생성"]
+   C --> D["4. 디자이너와 그룹 대화<br/>리뷰·수정"]
+   D --> E["5. 핸드오프 번들"]
+   E --> F["6. Claude Code 또는<br/>디자이너에게"]
 
-    style A fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style C fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style E fill:#dceee9,stroke:#2a8a8c,color:#09110f
+   style A fill:#e6e6e6,stroke:#757575,color:#09110f
+   style C fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style E fill:#e8f1ec,stroke:#2a8a8c,color:#09110f
 ```
 
 **프롬프트 예시**:
@@ -246,7 +246,7 @@ Claude Design 패턴:
 |---|---|---|---|
 | 창업자 | [시작하기](../getting-started/) | [내보내기·핸드오프](../export-handoff/) | [협업·공유](../collaboration/) |
 | PM | [시작하기](../getting-started/) | [리파인먼트](../refinement/) | [내보내기·핸드오프](../export-handoff/) |
-| 디자이너 | [디자인 시스템](../design-system/) ★ | [리파인먼트](../refinement/) | [내보내기·핸드오프](../export-handoff/) |
+| 디자이너 | [디자인 시스템](../design-system/) {{< icon star >}} | [리파인먼트](../refinement/) | [내보내기·핸드오프](../export-handoff/) |
 | 마케터 | [시작하기](../getting-started/) | [디자인 시스템](../design-system/) | [협업·공유](../collaboration/) |
 | 엔지니어 (수신 측) | [내보내기·핸드오프](../export-handoff/) | [디자인 시스템](../design-system/) | [제한 사항](../limitations/) |
 | 조직 관리자 | [요금제·한도](../pricing-limits/) | [협업·공유](../collaboration/) | [제한 사항](../limitations/) |

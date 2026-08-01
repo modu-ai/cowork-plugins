@@ -4,7 +4,7 @@ description: >
   원격 근무와 팀 운영 정책을 설계해주는 스킬입니다. "재택근무 정책 만들어줘", "협업 도구 추천해줘",
   "비동기 커뮤니케이션 가이드 만들어줘"처럼 말하면 됩니다. 원격·하이브리드 근무 정책,
   협업 도구 선정 기준, 생산성 관리 프레임워크, 직원 경험 설계를 지원합니다.
-version: "0.1.0"
+version: "1.0.0"
 ---
 
 # 피플 오퍼레이션 (business-people-operations)
@@ -46,6 +46,8 @@ version: "0.1.0"
 - 플렉시블 타임: 코어 타임 외 자율 배치
 - 타임존 정책: 해외 팀원 포함 시 겹치는 시간대 최소 3시간 확보
 
+**법적 요건 선확인**: 코어 타임+플렉시블 타임 구조는 대부분 근로기준법 제52조 선택적 근로시간제에 해당해 근로자대표 서면합의가 필요하고, 10인 이상 사업장은 취업규칙 변경·신고 의무가 따릅니다 — 정책 확정 전 `references/kr-flexible-work-law.md`를 반드시 확인하세요.
+
 **3. 장비 및 환경 지원**
 - 홈오피스 지원금 (예: 연 50-100만원, 모니터·의자·인터넷 등)
 - 회사 지급 장비 기준 (노트북, 이어폰 등)
@@ -85,9 +87,11 @@ version: "0.1.0"
 
 | 팀 규모 | 커뮤니케이션 | 문서/지식 | 프로젝트 관리 | 화상회의 |
 |---------|------------|---------|------------|---------|
-| 1-10명 | Slack Free / 카카오워크 | Notion | Trello / Linear | Zoom / Google Meet |
-| 11-50명 | Slack Pro | Notion / Confluence | Linear / Jira | Zoom |
-| 51명 이상 | Slack Business+ | Confluence | Jira / Asana | Zoom Enterprise |
+| 1-10명 | Slack Free / 카카오워크 / 잔디 | Notion | Trello / Linear | Zoom / Google Meet |
+| 11-50명 | Slack Pro / 잔디 / 네이버웍스 | Notion / Confluence | Linear / Jira / 플로우 | Zoom / 네이버웍스 |
+| 51명 이상 | Slack Business+ / 네이버웍스 | Confluence / 두레이 | Jira / Asana / 두레이 | Zoom Enterprise |
+
+> 국내 도구 참고: **잔디**(국내 중소기업 채팅 표준), **플로우**(협업+PM 통합), **두레이**(NHN, 공공·대기업 레퍼런스), **네이버웍스**(메일·캘린더·메신저 통합, 국내 서버) — 국내 서버 보관이 요건(금융·의료·공공)이면 우선 검토합니다.
 
 **도구 선정 체크리스트**
 - [ ] 보안 인증 (SOC 2, ISO 27001) 보유 여부
@@ -164,3 +168,11 @@ business-people-operations → moai-coworker:general-ai-slop-reviewer → moai-w
 - **채용·온보딩 프로세스 설계**: 채용 파이프라인과 신입 온보딩 계획은 `moai-recruiter:business-employment-manager` 스킬이 더 적합합니다.
 - **성과평가 체계 설계**: OKR/KPI 설정 및 평가 면담은 `moai-recruiter:business-performance-review` 스킬을 사용하세요.
 - **오퍼 레터·근로계약서 작성**: 계약 문서는 `moai-recruiter:business-draft-offer` 스킬을 사용하세요.
+
+## References
+
+| 파일 | 로드 조건 |
+|------|-----------|
+| references/team-culture.md | 조직 문화 설계, 직원 경험(EX), 가치 도출·번아웃 예방 프레임워크가 필요할 때 |
+| references/hybrid-work-policy.md | 하이브리드 근무 유형 분류·정책 설계·운영 프레임워크가 필요할 때 |
+| references/kr-flexible-work-law.md | 유연근무 정책의 법적 요건 확인 시 (근로기준법 제52조 근로자대표 서면합의, 취업규칙 변경·신고, 근로시간 기록 보존, 재택 산재) |

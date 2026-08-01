@@ -12,7 +12,7 @@ description: |
   - "claude.ai/design 디자인 시스템 셋업 준비"
   - "DESIGN.md 만들어 줘"
 user-invocable: true
-version: 0.2.0
+version: "1.0.0"
 ---
 
 # cd-system-prep — 디자인 시스템 자산 합성

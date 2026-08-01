@@ -47,18 +47,18 @@ tags: [cookbook, projects, marketing]
 
 ```mermaid
 flowchart TD
-    U["도윤 님<br/>'한 달치 미리 만들자'"] --> M1["마케터<br/>content-editorial-calendar"]
-    M1 --> R1["월간 캘린더<br/>(12개 게시물 배치)"]
-    R1 --> M2["마케터<br/>content-sns-content"]
-    M2 --> R2["게시물 원고 12개"]
-    R2 --> M3["마케터<br/>content-card-news"]
-    M3 --> M4["마케터<br/>media-higgsfield-image"]
-    M4 --> OUT["발행 대기 콘텐츠<br/>한 달치 완성"]
+   U["도윤 님<br/>'한 달치 미리 만들자'"] --> M1["마케터<br/>content-editorial-calendar"]
+   M1 --> R1["월간 캘린더<br/>(12개 게시물 배치)"]
+   R1 --> M2["마케터<br/>content-sns-content"]
+   M2 --> R2["게시물 원고 12개"]
+   R2 --> M3["마케터<br/>content-card-news"]
+   M3 --> M4["마케터<br/>media-higgsfield-image"]
+   M4 --> OUT["발행 대기 콘텐츠<br/>한 달치 완성"]
 
-    style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
-    style R1 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style R2 fill:#eaeaea,stroke:#6e6e6e,color:#09110f
-    style OUT fill:#d6ebe7,stroke:#1c7c70,stroke-width:2px,color:#09110f
+   style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
+   style R1 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style R2 fill:#e6e6e6,stroke:#757575,color:#09110f
+   style OUT fill:#d6e7de,stroke:#3d7d5f,stroke-width:2px,color:#09110f
 ```
 
 ## 4. 결과물

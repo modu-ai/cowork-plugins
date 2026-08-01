@@ -1,6 +1,6 @@
 # KB(지식베이스) 문서 작성 표준
 
-> moai-support | business-kb-article 참조 가이드 | 2026 기준
+> moai-cs | business-kb-article 참조 가이드 | 2026 기준
 
 ## 개요
 
