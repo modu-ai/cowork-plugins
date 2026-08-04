@@ -240,7 +240,7 @@ m1_to_mN_commit_strategy: per-milestone (baseline + M1 + M2 + M3 + M4 + evidence
 
 ```yaml
 sync_complete_at: 2026-08-05
-sync_commit_sha: pending-backfill-2026-08-05  # SHA-backfill exemption: a commit cannot know its own SHA; this will be backfilled in a follow-up commit
+sync_commit_sha: 61231813d0115a32786d1322a8adb11eb723384c
 sync_status: pass
 # Sync deliverables completed:
 # - plugin.json: displayName → "소셜 포스터", description refreshed (removed launchd/milestone phrasing, added Instagram support)
