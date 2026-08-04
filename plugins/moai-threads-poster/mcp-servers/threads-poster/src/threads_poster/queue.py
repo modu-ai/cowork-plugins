@@ -9,6 +9,11 @@ dict 를 반환한다.
     PENDING → APPROVED → PUBLISHED
                        ↘ FAILED   (재시도 정책은 M3+, M2 에서는 FAILED 종단)
 
+축 (axes):
+  - ``platform`` (``threads`` | ``instagram``): 각 row 가 어느 플랫폼으로 발행되는지
+    구분. 기본 ``threads`` — 기존 Threads-only 호출자는 바꿀 필요 없음 (REQ-INST-023).
+    runner 가 row 의 platform 을 보고 ``ThreadsClient`` / ``InstagramClient`` 로 분기.
+
 설계 참고 (design notes):
   - DB 경로 해석은 호출자(server.py / runner.py) 책임이다 — 본 모듈은 ``db_path``
     생성자 인자만 받는다 (테스트는 tmp 경로 주입).
@@ -16,6 +21,10 @@ dict 를 반환한다.
     callable 에 의존한다 — 테스트는 고정 clock 을 주입해 결정적 결과를 얻는다.
   - 스키마 생성은 ``CREATE TABLE IF NOT EXISTS`` 로 멱등이다 (같은 경로를 다시
     열어도 에러 없음, 기존 데이터 보존).
+  - ``platform`` 컬럼은 PRAGMA-guarded ALTER 로 멱등 추가된다 — SQLite ALTER 는
+    ``IF NOT EXISTS`` 를 지원하지 않으므로 ``PRAGMA table_info`` 로 존재 확인 후 추가.
+    구(Threads-only) DB 를 열면 기존 row 전체가 ``platform='threads'`` 기본값으로
+    제자리 마이그레이션된다 (데이터 손실 없음, REQ-INST-012).
 """
 
 from __future__ import annotations
@@ -28,6 +37,9 @@ from typing import Any, Callable, Optional
 # 큐가 받아들이는 media_type (CAROUSEL 풀 플로우는 M2 범위 밖).
 _VALID_MEDIA_TYPES = {"TEXT", "IMAGE", "VIDEO"}
 _VALID_STATUSES = {"PENDING", "APPROVED", "PUBLISHED", "FAILED"}
+# 큐가 받아들이는 platform (SPEC-THREADS-POSTER-INSTAGRAM-001). 'threads' 가 기본값이라
+# 기존 Threads-only 호출자는 아무것도 바꾸지 않아도 그대로 동작한다 (REQ-INST-023).
+_VALID_PLATFORMS = {"threads", "instagram"}
 
 
 def now_iso() -> str:
@@ -68,7 +80,10 @@ class Queue:
         """멱등 스키마 마이그레이션 (idempotent schema setup).
 
         ``CREATE ... IF NOT EXISTS`` 로 보호되어 같은 DB 를 다시 열어도 안전하다.
-        컬럼 추가가 필요한 마이그레이션은 M3+ 에서 ALTER TABLE 추가로 확장한다.
+        ``platform`` 컬럼은 PRAGMA-guarded ALTER 로 추가한다 — SQLite 가
+        ``ALTER TABLE ... ADD COLUMN IF NOT EXISTS`` 를 지원하지 않기 때문에
+        ``PRAGMA table_info(posts)`` 로 컬럼 존재를 확인한 뒤 없을 때만 ADD COLUMN.
+        구(Threads-only) DB 의 기존 row 는 ``platform='threads'`` 기본값으로 채워진다.
         """
         self._conn.execute(
             """
@@ -95,6 +110,16 @@ class Queue:
         self._conn.execute(
             "CREATE INDEX IF NOT EXISTS idx_posts_status ON posts(status)"
         )
+        # platform 컬럼 멱등 추가 (REQ-INST-011). SQLite ALTER 는 IF NOT EXISTS 를
+        # 지원하지 않으므로 PRAGMA table_info 로 가드한다. NOT NULL + DEFAULT 'threads'
+        # 라 기존 row 전체가 안전하게 threads 로 제자리 마이그레이션된다.
+        existing_cols = {
+            row[1] for row in self._conn.execute("PRAGMA table_info(posts)").fetchall()
+        }
+        if "platform" not in existing_cols:
+            self._conn.execute(
+                "ALTER TABLE posts ADD COLUMN platform TEXT NOT NULL DEFAULT 'threads'"
+            )
         self._conn.commit()
 
     # ------------------------------------------------------------------ internal
@@ -112,6 +137,7 @@ class Queue:
         video_url: Optional[str] = None,
         scheduled_at: Optional[str] = None,
         status: str = "PENDING",
+        platform: str = "threads",
     ) -> int:
         """큐에 포스트 추가 → row id 반환 (add a post to the queue).
 
@@ -122,6 +148,9 @@ class Queue:
             video_url: 공개 비디오 URL (VIDEO 포스트 필수).
             scheduled_at: 발행 예정 시각(ISO-8601). 미지정 시 NULL (즉시 due).
             status: 초기 상태(기본 ``PENDING``). ``APPROVED`` 직접 enqueue 도 허용.
+            platform: ``threads`` (기본) | ``instagram``. runner 가 어느 플랫폼
+                클라이언트로 발행할지 결정. 기본 ``threads`` 로 기존 Threads-only
+                호출자는 바꿀 필요 없다 (REQ-INST-023).
 
         Returns:
             새 row 의 ``id``.
@@ -136,15 +165,20 @@ class Queue:
                 f"지원하지 않는 status 입니다 (unsupported status): {status!r}. "
                 f"허용값 (allowed): PENDING, APPROVED, PUBLISHED, FAILED"
             )
+        if platform not in _VALID_PLATFORMS:
+            raise ValueError(
+                f"지원하지 않는 platform 입니다 (unsupported platform): {platform!r}. "
+                f"허용값 (allowed): threads, instagram"
+            )
         now = self._now_iso()
         cur = self._conn.execute(
             """
             INSERT INTO posts
                 (media_type, text, image_url, video_url, status,
-                 scheduled_at, created_at, updated_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                 scheduled_at, platform, created_at, updated_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
-            (media_type, text, image_url, video_url, status, scheduled_at, now, now),
+            (media_type, text, image_url, video_url, status, scheduled_at, platform, now, now),
         )
         self._conn.commit()
         return int(cur.lastrowid)
@@ -181,21 +215,36 @@ class Queue:
         return dict(row) if row is not None else None
 
     def list(
-        self, status: Optional[str] = None, limit: int = 50
+        self,
+        status: Optional[str] = None,
+        limit: int = 50,
+        platform: Optional[str] = None,
     ) -> list[dict[str, Any]]:
-        """포스트 목록 (list posts, newest first by id desc)."""
+        """포스트 목록 (list posts, newest first by id desc).
+
+        Args:
+            status: 상태 필터(선택). 미지정 시 전체 상태.
+            limit: 최대 행 수.
+            platform: 플랫폼 필터(선택, ``threads`` | ``instagram``). 미지정 시 전체 플랫폼.
+        """
+        clauses: list[str] = []
+        params: list[Any] = []
         if status is not None:
-            cur = self._conn.execute(
-                "SELECT * FROM posts WHERE status = ? ORDER BY id DESC LIMIT ?",
-                (status, limit),
-            )
-        else:
-            cur = self._conn.execute(
-                "SELECT * FROM posts ORDER BY id DESC LIMIT ?", (limit,)
-            )
+            clauses.append("status = ?")
+            params.append(status)
+        if platform is not None:
+            clauses.append("platform = ?")
+            params.append(platform)
+        where = f" WHERE {' AND '.join(clauses)}" if clauses else ""
+        params.append(limit)
+        cur = self._conn.execute(
+            f"SELECT * FROM posts{where} ORDER BY id DESC LIMIT ?", params
+        )
         return [dict(r) for r in cur.fetchall()]
 
-    def due(self, now: Optional[str] = None) -> list[dict[str, Any]]:
+    def due(
+        self, now: Optional[str] = None, platform: Optional[str] = None
+    ) -> list[dict[str, Any]]:
         """발행 대기(``APPROVED``) 중 만료된 포스트 반환 (return due APPROVED posts).
 
         조건 (conditions):
@@ -205,20 +254,33 @@ class Queue:
 
         Args:
             now: 기준 시각 ISO-8601. 미지정 시 주입된 ``clock()`` 사용.
+            platform: 플랫폼 필터(선택, ``threads`` | ``instagram``). 미지정 시 전체 플랫폼.
 
         Returns:
             due 포스트 리스트 (id 오름차순 — 선입선출).
         """
         now_iso_value = now if now is not None else self._now_iso()
-        cur = self._conn.execute(
-            """
-            SELECT * FROM posts
-             WHERE status = 'APPROVED'
-               AND (scheduled_at IS NULL OR scheduled_at <= ?)
-             ORDER BY id ASC
-            """,
-            (now_iso_value,),
-        )
+        if platform is not None:
+            cur = self._conn.execute(
+                """
+                SELECT * FROM posts
+                 WHERE status = 'APPROVED'
+                   AND platform = ?
+                   AND (scheduled_at IS NULL OR scheduled_at <= ?)
+                 ORDER BY id ASC
+                """,
+                (platform, now_iso_value),
+            )
+        else:
+            cur = self._conn.execute(
+                """
+                SELECT * FROM posts
+                 WHERE status = 'APPROVED'
+                   AND (scheduled_at IS NULL OR scheduled_at <= ?)
+                 ORDER BY id ASC
+                """,
+                (now_iso_value,),
+            )
         return [dict(r) for r in cur.fetchall()]
 
     def mark_published(
