@@ -338,3 +338,189 @@ def test_process_integration_mark_failed_on_api_error(tmp_path):
     assert "권한 없음" in row["last_error"]
     queue.close()
     client.close()
+
+
+# === M3: platform dispatch (SPEC-THREADS-POSTER-INSTAGRAM-001) ====================
+# AC-M3-5..M3-8 + D1.a(skip-and-continue): client_resolver 주입, 혼합 큐 분기,
+# IG VIDEO/REELS 폴링, IG 레이트리밋, IG 자격증명 미설정 스킵.
+
+
+class FakeInstagramClient:
+    """가짜 InstagramClient — HTTP 없이 create_container/publish/wait_until_finished 시뮬레이션."""
+
+    def __init__(self, *, container_id: str = "IGC1", media_id: str = "IGM1", quota_remaining: int = 100):
+        self.container_id = container_id
+        self.media_id = media_id
+        self.calls: list[tuple] = []
+        self._quota_remaining = quota_remaining
+
+    def create_container(self, media_type, **kwargs):
+        self.calls.append(("create_container", media_type, kwargs))
+        return self.container_id
+
+    def publish(self, creation_id):
+        self.calls.append(("publish", creation_id))
+        return self.media_id
+
+    def wait_until_finished(self, creation_id, **kwargs):
+        self.calls.append(("wait_until_finished", creation_id))
+        return "FINISHED"
+
+    def get_publish_limit(self):
+        # Meta 봉투 형태: data[0].quota_usage / config.quota_total
+        used = max(0, 100 - self._quota_remaining)
+        return {"data": [{"quota_usage": used, "config": {"quota_total": 100}}]}
+
+    def close(self):
+        pass
+
+
+def _ig_post(pid: int = 10, **kw) -> dict:
+    """Instagram 큐 row 형태 (build an instagram queue-row dict)."""
+    base = {
+        "id": pid,
+        "media_type": "IMAGE",
+        "text": None,
+        "image_url": "https://example.com/i.jpg",
+        "video_url": None,
+        "status": "APPROVED",
+        "platform": "instagram",
+    }
+    base.update(kw)
+    return base
+
+
+def test_process_mixed_queue_dispatches_per_platform():
+    """AC-M3-5: 혼합 큐 — threads row 는 ThreadsClient, instagram row 는 InstagramClient."""
+    threads_client = FakeClient()
+    ig_client = FakeInstagramClient()
+    q = FakeQueue(due_posts=[
+        _post(1, media_type="TEXT", text="threads-post"),          # platform 기본 threads
+        _ig_post(2, media_type="IMAGE", image_url="https://example.com/a.jpg"),
+    ])
+
+    def resolver(platform, post):
+        return threads_client if platform == "threads" else ig_client
+
+    result = runner._process(q, client_resolver=resolver, delay=0.0)
+    assert result["published"] == 2
+    # threads row → ThreadsClient.create_container
+    assert any(c[0] == "create_container" for c in threads_client.calls)
+    # instagram row → InstagramClient.create_container
+    assert any(c[0] == "create_container" for c in ig_client.calls)
+    # 교차 오염 없음: threads_client 이 IG row 를, ig_client 이 threads row 를 처리하지 않았다
+    # threads row 는 TEXT 이고 IG row 는 IMAGE — create_container 의 media_type 으로 구분
+    threads_mts = {c[1] for c in threads_client.calls if c[0] == "create_container"}
+    ig_mts = {c[1] for c in ig_client.calls if c[0] == "create_container"}
+    assert threads_mts == {"TEXT"}
+    assert ig_mts == {"IMAGE"}
+
+
+def test_process_threads_only_queue_byte_identical_with_resolver():
+    """AC-M3-6 (load-bearing): 기본 리졸버 경로도 Threads-only 큐는 기존과 동일."""
+    # (1) legacy 경로 — raw client
+    q1 = FakeQueue(due_posts=[_post(1), _post(2)])
+    c1 = FakeClient()
+    legacy = runner._process(q1, c1, delay=0.0)
+    # (2) resolver 경로 — 같은 큐를 resolver 로
+    q2 = FakeQueue(due_posts=[_post(1), _post(2)])
+    c2 = FakeClient()
+    res = runner._process(q2, client_resolver=lambda platform, post: c2, delay=0.0)
+    assert res["published"] == legacy["published"] == 2
+    assert res["failed"] == legacy["failed"] == 0
+    assert res["skipped"] == legacy["skipped"] == 0
+    # mark_published 호출 수 동일
+    assert len(q1.published) == len(q2.published) == 2
+    # 같은 media_id / container_id
+    assert q1.published[0]["media_id"] == q2.published[0]["media_id"]
+
+
+def test_process_instagram_video_triggers_wait_until_finished():
+    """AC-M3-7: IG VIDEO row → wait_until_finished 가 create_container 와 publish 사이."""
+    ig_client = FakeInstagramClient()
+    q = FakeQueue(due_posts=[_ig_post(1, media_type="VIDEO", image_url=None, video_url="https://example.com/v.mp4")])
+    runner._process(q, client_resolver=lambda p, post: ig_client, delay=0.0)
+    names = [c[0] for c in ig_client.calls]
+    assert "create_container" in names and "wait_until_finished" in names and "publish" in names
+    assert names.index("wait_until_finished") > names.index("create_container")
+    assert names.index("publish") > names.index("wait_until_finished")
+
+
+def test_process_instagram_reels_triggers_wait_until_finished():
+    """REELS 도 VIDEO 와 같이 폴링한다."""
+    ig_client = FakeInstagramClient()
+    q = FakeQueue(due_posts=[_ig_post(1, media_type="REELS", image_url=None, video_url="https://example.com/r.mp4")])
+    runner._process(q, client_resolver=lambda p, post: ig_client, delay=0.0)
+    names = [c[0] for c in ig_client.calls]
+    assert "wait_until_finished" in names
+    assert "publish" in names
+
+
+def test_process_instagram_rate_limit_skips_and_continues():
+    """AC-M3-8: IG quota 소진 → IG row 스킵, 발행 시도 없음, 메시지 기록."""
+    ig_client = FakeInstagramClient(quota_remaining=0)  # 잔여 0
+    q = FakeQueue(due_posts=[_ig_post(1, media_type="IMAGE")])
+    result = runner._process(q, client_resolver=lambda p, post: ig_client, delay=0.0)
+    assert result["published"] == 0
+    assert result["skipped"] == 1
+    # 발행 시도 자체가 없었다 (create_container/publish 미호출)
+    assert ig_client.calls == []
+    # 메시지에 레이트리밋 스킵 기록
+    assert any("한도" in m or "rate-limit" in m.lower() or "limit" in m.lower() for m in result["messages"])
+
+
+def test_process_ig_row_without_resolver_skips_with_setup_required():
+    """D1.a(b): resolver 없이 raw Threads client 만 전달된 IG row → setup_required 스킵."""
+    threads_client = FakeClient()
+    q = FakeQueue(due_posts=[
+        _post(1, media_type="TEXT", text="threads-ok"),
+        _ig_post(2, media_type="IMAGE"),
+    ])
+    # client_resolver 없이 threads client 만 — IG row 는 row_client=None → 스킵
+    result = runner._process(q, threads_client, delay=0.0)
+    assert result["published"] == 1   # threads row 만 발행
+    assert result["skipped"] == 1     # IG row 스킵
+    # IG 스킵 메시지에 setup_required 언급
+    assert any("setup_required" in m or "자격증명" in m for m in result["messages"])
+
+
+def test_process_resolver_returns_none_for_ig_skips_but_continues_threads():
+    """D1.a(b): resolver 가 IG creds 부재로 None 반환 → IG row 스킵, threads row 는 계속 발행."""
+    threads_client = FakeClient()
+    ig_calls = []
+
+    def resolver(platform, post):
+        if platform == "threads":
+            return threads_client
+        # instagram → None (creds 부재)
+        ig_calls.append(("resolved_none", post["id"]))
+        return None
+
+    q = FakeQueue(due_posts=[
+        _post(1, media_type="TEXT", text="t"),
+        _ig_post(2, media_type="IMAGE"),
+        _post(3, media_type="TEXT", text="t2"),
+    ])
+    result = runner._process(q, client_resolver=resolver, delay=0.0)
+    assert result["published"] == 2   # threads row 2개 발행
+    assert result["skipped"] == 1     # IG row 1개 스킵
+    assert len(q.published) == 2
+
+
+def test_process_permalink_differs_per_platform():
+    """D4: threads 와 instagram 의 permalink 힌트가 다르다."""
+    threads_client = FakeClient(media_id="TM")
+    ig_client = FakeInstagramClient(media_id="IM")
+    q = FakeQueue(due_posts=[
+        _post(1, media_type="TEXT", text="t"),
+        _ig_post(2, media_type="IMAGE"),
+    ])
+    runner._process(
+        q,
+        client_resolver=lambda p, post: threads_client if p == "threads" else ig_client,
+        delay=0.0,
+    )
+    threads_link = q.published[0]["permalink_hint"]
+    ig_link = [p for p in q.published if p["id"] == 2][0]["permalink_hint"]
+    assert "threads.net" in threads_link
+    assert "instagram.com" in ig_link

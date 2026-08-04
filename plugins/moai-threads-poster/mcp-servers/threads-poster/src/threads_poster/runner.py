@@ -26,7 +26,7 @@ import argparse
 import os
 import sys
 import time
-from typing import Any, Optional
+from typing import Any, Callable, Optional
 
 from .queue import Queue
 from .threads_api import ThreadsClient
@@ -79,58 +79,137 @@ def _build_client(access_token: str, user_id: str) -> ThreadsClient:
     return ThreadsClient(access_token=access_token, threads_user_id=user_id)
 
 
-def _container_call(post: dict[str, Any], client: ThreadsClient) -> str:
-    """포스트 row → ``create_container`` 호출 (media_type → kwargs 매핑).
+def _container_call(post: dict[str, Any], client: Any) -> tuple[str, bool]:
+    """포스트 row → ``create_container`` 호출 + 폴링 필요 여부 (platform-aware mapping).
 
-    TEXT 는 ``text``, IMAGE 는 ``image_url``, VIDEO 는 ``video_url`` 을 건넨다.
-    캡션(text) 은 IMAGE/VIDEO 에서 존재할 때만 붙인다. TEXT 인데 text 가 None 이면
+    platform 별 media_type → kwargs 매핑 (D2):
+      - ``threads``   : TEXT/IMAGE/VIDEO (기존 그대로, 폴링 없음 — REQ-INST-023).
+      - ``instagram`` : IMAGE/VIDEO/REELS. VIDEO/REELS 은 ``wait_until_finished`` 폴링 필요.
+
+    캡션(text) 은 IMAGE/VIDEO/REELS 에서 존재할 때만 붙인다. TEXT 인데 text 가 None 이면
     ThreadsClient 가 ValueError → 호출자가 mark_failed 처리한다.
+
+    Returns:
+        ``(container_id, needs_poll)`` — ``needs_poll`` True 면 publish 전
+        ``client.wait_until_finished(container_id)`` 를 호출해야 한다 (IG VIDEO/REELS).
     """
+    platform = post.get("platform", "threads")
     media_type = post["media_type"]
-    kwargs: dict[str, Any] = {}
     text = post.get("text")
-    if media_type == "TEXT":
-        kwargs["text"] = text
-    elif media_type == "IMAGE":
-        if text:
+    kwargs: dict[str, Any] = {}
+    needs_poll = False
+    if platform == "instagram":
+        if media_type == "IMAGE":
+            if text:
+                kwargs["text"] = text
+            kwargs["image_url"] = post.get("image_url")
+        elif media_type == "VIDEO":
+            if text:
+                kwargs["text"] = text
+            kwargs["video_url"] = post.get("video_url")
+            needs_poll = True
+        elif media_type == "REELS":
+            if text:
+                kwargs["text"] = text
+            kwargs["video_url"] = post.get("video_url")
+            needs_poll = True
+        else:
+            # Instagram 은 TEXT-only 게시가 없다 (클라이언트가 ValueError 로 거부)
+            raise ValueError(
+                f"Instagram 은 {media_type} 게시를 지원하지 않습니다 "
+                f"(Instagram supports IMAGE/VIDEO/REELS only)"
+            )
+    else:  # threads (기존 동작 유지 — REQ-INST-023)
+        if media_type == "TEXT":
             kwargs["text"] = text
-        kwargs["image_url"] = post.get("image_url")
-    elif media_type == "VIDEO":
-        if text:
-            kwargs["text"] = text
-        kwargs["video_url"] = post.get("video_url")
-    return client.create_container(media_type, **kwargs)
+        elif media_type == "IMAGE":
+            if text:
+                kwargs["text"] = text
+            kwargs["image_url"] = post.get("image_url")
+        elif media_type == "VIDEO":
+            if text:
+                kwargs["text"] = text
+            kwargs["video_url"] = post.get("video_url")
+    container_id = client.create_container(media_type, **kwargs)
+    return container_id, needs_poll
+
+
+def _permalink_for(platform: str, media_id: str) -> str:
+    """플랫폼별 permalink 힌트 조합 (platform-specific permalink hint).
+
+    Threads: ``https://www.threads.net/@<username>/post/{media_id}``
+    Instagram: ``https://www.instagram.com/p/{shortcode}/`` (D4).
+    """
+    if platform == "instagram":
+        # @MX:TODO: [AUTO] Instagram permalink 는 media_id 가 아닌 shortcode 조합이어야 할 수 있다
+        #   (D4). 발행 응답에서 shortcode 를 얻을 수 있으면 이 조립을 교체한다. 임시로 media_id 사용.
+        return f"https://www.instagram.com/p/{media_id}/"
+    return f"https://www.threads.net/@<username>/post/{media_id}"
+
+
+def _ig_quota_remaining(ig_client: Any) -> int:
+    """Instagram 24h 발행 잔여 한도 (remaining 24h Instagram publish quota).
+
+    ``get_publish_limit()`` 의 Meta 봉투(``data[0].quota_usage`` / ``config.quota_total``)
+    에서 잔여 = ``total − used`` 를 계산한다. 조회 자체가 실패하면 발행을 차단하지 않도록
+    보수적 기본값 1(여유)을 반환한다 (레이트리밋 조회 실패가 발행 자체를 막아서는 안 된다).
+    """
+    try:
+        data = ig_client.get_publish_limit()
+        if isinstance(data, dict):
+            items = data.get("data") or []
+            if items:
+                used = int(items[0].get("quota_usage", 0))
+                cfg = items[0].get("config") or {}
+                total = int(cfg.get("quota_total", 100))
+                return max(0, total - used)
+    except Exception:
+        pass
+    return 1
 
 
 def _process(
     queue: Queue,
-    client: ThreadsClient,
+    client: Optional[Any] = None,
     *,
+    client_resolver: Optional[Callable[[str, dict[str, Any]], Any]] = None,
     limit: int = DEFAULT_LIMIT,
     dry_run: bool = False,
     once: Optional[int] = None,
     delay: float = 0.0,
+    platform: Optional[str] = None,
 ) -> dict[str, Any]:
-    """큐를 순회하며 발행 시도 (core processing loop).
+    """큐를 순회하며 발행 시도 (core processing loop — platform-aware dispatch).
 
-    server.py 의 ``threads_queue_publish_due`` 도 본 함수를 재사용한다.
+    server.py 의 ``threads_queue_publish_due`` / ``instagram_queue_publish_due`` 가 본 함수를
+    재사용한다. ``client_resolver`` 가 주어지면 row 의 ``platform`` 별로 클라이언트를 분기
+    (D1) 하고, 미주기 시 ``client`` (legacy Threads-only 경로) 를 threads row 에만 쓴다.
 
     Args:
         queue: 발행 큐.
-        client: Threads API 클라이언트.
+        client: (legacy) 단일 ThreadsClient. ``client_resolver`` 미제공 시 threads row 에 사용.
+            기존 ``_process(q, client, ...)`` 호출을 byte-identical 으로 보존한다 (REQ-INST-023).
+        client_resolver: platform 별 클라이언트 리졸버 (``platform: str``, ``row: dict`` → client).
+            threads row → ``ThreadsClient``, instagram row → ``InstagramClient``.
+            ``None`` 반환 시 해당 row 를 ``setup_required`` 스킵하고 다음 row 로 계속 (D1.a) —
+            IG 자격증명 미설정 시에도 크래시 없이 Threads row 를 계속 처리한다.
         limit: 1회 실행 최대 발행 수.
         dry_run: 참이면 상태 변경 없이 발행 대상만 나열.
-        once: 특정 post id — 주어지면 due/스케줄/레이트리밋 을 무시하고 강제 발행.
-        delay: create_container 와 publish 사이 대기(초). Threads 권장 ~30초.
+        once: 특정 post id — due/스케줄/레이트리밋 무시하고 강제 발행 (수동 kick).
+        delay: create_container 와 publish 사이 대기(초, threads 권장 ~30초). IG VIDEO/REELS
+            폴링 시에는 쓰지 않는다 (``wait_until_finished`` 가 대기를 책임진다).
+        platform: due 조회 플랫폼 필터(``threads`` | ``instagram``). MCP 도구가 한 플랫폼만
+            처리할 때 사용. 미지정 시 ``queue.due()`` 전체 (legacy 호환).
 
     Returns:
-        ``published`` / ``failed`` / ``skipped`` 카운트와 ``messages`` 리스트를
-        담은 dict. ``dry_run`` 플래그도 포함된다.
+        ``published`` / ``failed`` / ``skipped`` 카운트와 ``messages`` 리스트 dict.
+        ``dry_run`` 플래그도 포함.
     """
     messages: list[str] = []
     published = 0
     failed = 0
     skipped = 0
+    ig_quota_exhausted = False
 
     # --once: 특정 포스트 강제 발행 (due/스케줄 무시, 수동 kick 용)
     if once is not None:
@@ -158,7 +237,12 @@ def _process(
         posts = [post]
         rate_check = False  # --once 는 수동 override → 24h 한도 검사 생략
     else:
-        posts = queue.due()[:limit]
+        # platform 필터: 지정 시 queue.due(platform=...) (server.py MCP 도구용).
+        # 미지정 시 queue.due() (legacy FakeQueue 호환 — 키워드 인자 없이).
+        if platform is not None:
+            posts = queue.due(platform=platform)[:limit]
+        else:
+            posts = queue.due()[:limit]
         rate_check = True
 
     # --dry-run: 상태 변경 없이 발행 대상만 나열
@@ -177,8 +261,39 @@ def _process(
         }
 
     for idx, post in enumerate(posts):
-        # 24h 레이트리밋 검사 — 한도 도달 시 즉시 중단하고 남은 건은 skipped.
-        if rate_check and queue.published_in_last_24h() >= RATE_LIMIT_24H:
+        row_platform = post.get("platform", "threads")
+
+        # Instagram 24h quota 게이트 — 한도 소진 시 이후 IG row 모두 스킵 (continue, AC-M3-8)
+        if row_platform == "instagram" and ig_quota_exhausted:
+            skipped += 1
+            messages.append(
+                f"[rate-limit] post id={post['id']} Instagram 24h 한도 초과로 스킵"
+            )
+            continue
+
+        # 클라이언트 리졸브 (platform 별)
+        if client_resolver is not None:
+            row_client = client_resolver(row_platform, post)
+        elif row_platform == "threads":
+            row_client = client
+        else:
+            row_client = None  # resolver 없는 비-threads row → 발행 불가
+
+        # 자격증명 미설정 → setup_required 스킵, 다음 row 로 계속 (D1.a — 크래시 없음)
+        if row_client is None:
+            skipped += 1
+            messages.append(
+                f"post id={post['id']} platform={row_platform} 자격증명 미설정 "
+                f"(setup_required) — 스킵"
+            )
+            continue
+
+        # Threads 24h 레이트리밋 — threads row 에만, 기존 break 시맨틱 유지 (REQ-INST-023)
+        if (
+            rate_check
+            and row_platform == "threads"
+            and queue.published_in_last_24h() >= RATE_LIMIT_24H
+        ):
             remaining = len(posts) - idx
             skipped += remaining
             messages.append(
@@ -186,13 +301,31 @@ def _process(
                 f"중단 (skipped {remaining}건)"
             )
             break
+
+        # Instagram 24h 레이트리밋 — quota 엔드포인트 (AC-M3-8)
+        if (
+            rate_check
+            and row_platform == "instagram"
+            and _ig_quota_remaining(row_client) <= 0
+        ):
+            ig_quota_exhausted = True
+            skipped += 1
+            messages.append(
+                f"[rate-limit] post id={post['id']} Instagram 24h 발행 한도 초과 — 스킵"
+            )
+            continue
+
         try:
             queue.increment_attempt(post["id"])
-            container_id = _container_call(post, client)
-            if delay > 0:
+            container_id, needs_poll = _container_call(post, row_client)
+            if needs_poll and hasattr(row_client, "wait_until_finished"):
+                # IG VIDEO/REELS: 컨테이너가 FINISHED 될 때까지 폴링 후 발행
+                row_client.wait_until_finished(container_id)
+            elif delay > 0:
+                # Threads 권장: create_container 후 ~30초 대기
                 time.sleep(delay)
-            media_id = client.publish(container_id)
-            permalink = f"https://www.threads.net/@<username>/post/{media_id}"
+            media_id = row_client.publish(container_id)
+            permalink = _permalink_for(row_platform, media_id)
             queue.mark_published(
                 post["id"],
                 container_id=container_id,

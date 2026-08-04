@@ -43,6 +43,7 @@ from mcp.server.fastmcp import FastMCP
 from .queue import Queue
 from .runner import _default_db_path, _process as run_queue_once
 from .threads_api import ThreadsAPIError, ThreadsClient
+from .instagram_api import InstagramAPIError, InstagramClient
 
 # Threads 권장: container 생성 후 평균 ~30초 대기 후 publish.
 # Recommended: wait ~30s on average between create_container and publish.
@@ -112,6 +113,77 @@ def _reset_client_for_tests() -> None:
     if _client_singleton is not None:
         _client_singleton.close()
     _client_singleton = None
+
+
+# --- Instagram (Facebook Login for Business) 싱글톤 — SPEC-THREADS-POSTER-INSTAGRAM-001
+# Threads 자격증명과 *독립적인* 두 번째 자격증명 쌍(IG_ACCESS_TOKEN / IG_USER_ID).
+# lazy 싱글톤 — IG 도구가 호출될 때만 빌드된다 (Threads-only 세션은 IG 클라이언트를 절대
+# 만들지 않는다 → IG_ACCESS_TOKEN/IG_USER_ID 를 읽지 않음, REQ-INST-023).
+_ig_client_singleton: Optional[InstagramClient] = None
+
+
+def _load_ig_credentials() -> tuple[str, str]:
+    """Instagram 자격증명 읽기 (read IG credentials from env). Threads 쌍과 별개."""
+    return (
+        os.environ.get("IG_ACCESS_TOKEN", ""),
+        os.environ.get("IG_USER_ID", ""),
+    )
+
+
+def _ig_setup_required_error() -> dict[str, Any]:
+    """IG 자격증명 미설정 시 구조화 에러 (structured IG setup-required error).
+
+    Instagram Professional(Business/Creator) 계정 전용 — Personal 계정은 Graph API 미지원.
+    """
+    return {
+        "error": True,
+        "setup_required": True,
+        "message": (
+            "Instagram 자격증명이 설정되지 않았습니다 "
+            "(Instagram credentials not configured). "
+            "IG_ACCESS_TOKEN(Facebook Page 액세스 토큰), IG_USER_ID(Instagram Professional "
+            "계정 ID) 환경변수를 설정하세요. Instagram Professional(Business 또는 Creator) "
+            "계정만 지원됩니다 — Personal 계정은 Graph API 로 발행할 수 없습니다. "
+            "발급 절차는 mcp-servers/threads-poster/CONNECTORS.md 참조."
+        ),
+    }
+
+
+def _get_ig_client() -> Optional[InstagramClient]:
+    """IG 싱글톤 클라이언트 반환 (lazy). 자격증명 미설정 시 ``None``."""
+    global _ig_client_singleton
+    if _ig_client_singleton is not None:
+        return _ig_client_singleton
+    access_token, ig_user_id = _load_ig_credentials()
+    if not access_token or not ig_user_id:
+        return None
+    _ig_client_singleton = InstagramClient(
+        access_token=access_token, ig_user_id=ig_user_id
+    )
+    return _ig_client_singleton
+
+
+def _reset_ig_client_for_tests() -> None:
+    """테스트 전용: IG 싱글톤 캐시 초기화 (tests only: reset IG singleton cache)."""
+    global _ig_client_singleton
+    if _ig_client_singleton is not None:
+        _ig_client_singleton.close()
+    _ig_client_singleton = None
+
+
+def _server_client_resolver(platform: str, post: dict[str, Any]) -> Optional[Any]:
+    """server.py 큐 도구용 platform별 클라이언트 리졸버 (per-platform client resolver).
+
+    runner._process 에 주입된다. threads row → ``_get_client()``, instagram row →
+    ``_get_ig_client()``. lazy 싱글톤이므로 threads-only 큐는 IG 클라이언트를, ig-only 큐는
+    Threads 클라이언트를 절대 빌드하지 않는다 (D1.a). 자격증명 미설정 플랫폼의 row 는
+    ``None`` 을 반환 → _process 가 setup_required 스킵으로 처리한다.
+    """
+    if platform == "threads":
+        return _get_client()
+    if platform == "instagram":
+        return _get_ig_client()
+    return None
 
 
 # --- M2: 큐 싱글톤 (queue singleton, lazy, env-driven DB path) -----------------
@@ -575,22 +647,27 @@ def threads_queue_get(post_id: int) -> dict[str, Any]:
 
 @mcp.tool()
 def threads_queue_publish_due(limit: int = 10) -> dict[str, Any]:
-    r"""due 큐를 수동 처리 (process the due queue now, session-driven publishing).
+    r"""due 큐(Threads)를 수동 처리 (process due Threads rows now, session-driven publishing).
 
-    세션 안에서 분산 예약된 포스트들을 실제로 발행하기 위한 도구. 백그라운드 자동
-    발행(launchd/cron) 은 없으므로, 예약 시각이 도래한 포스트는 이 도구로 직접
-    flush 한다. 내부적으로 runner._process 를 재사용한다. 자격증명 필요(미설정 시
-    ``setup_required`` 에러).
+    세션 안에서 분산 예약된 **Threads** 포스트들을 실제로 발행하기 위한 도구. 백그라운드 자동
+    발행(launchd/cron) 은 없으므로, 예약 시각이 도래한 포스트는 이 도구로 직접 flush 한다.
+    내부적으로 runner._process 를 재사용한다(platform="threads" 필터 — Instagram row 는
+    건드리지 않는다, D8(a)). 자격증명 필요(미설정 시 ``setup_required`` 에러).
 
     Returns:
         ``published`` / ``failed`` / ``skipped`` 카운트와 ``messages`` 리스트 dict.
     """
-    client = _get_client()
-    if client is None:
+    # Threads 자격증명 게이트 — 기존 동작 byte-identical 보존 (REQ-INST-023).
+    if _get_client() is None:
         return _setup_required_error()
     q = _get_queue()
     return run_queue_once(
-        q, client, limit=limit, dry_run=False, once=None,
+        q,
+        client_resolver=_server_client_resolver,
+        platform="threads",
+        limit=limit,
+        dry_run=False,
+        once=None,
         delay=_publish_delay_seconds(),
     )
 
@@ -969,6 +1046,283 @@ def threads_format_multi_channel(
             if truncated:
                 out["x_truncated"] = True
     return out
+
+
+# ------------------------------------------------------------------ Instagram 도구 (SPEC-THREADS-POSTER-INSTAGRAM-001)
+# Threads 도구와 *평행한* Instagram 발행/예약/조회 도구. Facebook Login for Business 호스트
+# (graph.facebook.com), JPEG-only, REELS, VIDEO/REELS 컨테이너 폴링. 자격증명은 Threads 쌍과
+# 독립적인 IG_ACCESS_TOKEN/IG_USER_ID. Instagram Professional(Business/Creator) 계정 전용.
+#
+# [스케줄링 교정 — REQ-INST-009] Instagram Graph API 는 서버 측 스케줄링 파라미터가 *없다*.
+# 예약 = 큐에 intent(캡션+미디어 URL+예정 시각) 보관. 실제 발행은 예정 시각 도래 후 사용자가
+# 세션에서 instagram_queue_publish_due 를 호출할 때 일어난다 (백그라운드 자동 발행 없음).
+_VALID_IG_MEDIA_TYPES = ("IMAGE", "VIDEO", "REELS")
+
+
+def _ig_publish_result(media_id: str, container_id: str) -> dict[str, Any]:
+    return {
+        "media_id": media_id,
+        "container_id": container_id,
+        # @MX:TODO: [AUTO] permalink 은 media_id 가 아닌 shortcode 조합이어야 할 수 있다 (runner D4).
+        "permalink_hint": f"https://www.instagram.com/p/{media_id}/",
+        "platform": "instagram",
+    }
+
+
+@mcp.tool()
+def instagram_publish_image(text: str, image_url: str) -> dict[str, Any]:
+    r"""Instagram 에 이미지 발행 (publish an image — JPEG-only, immediate 2-stage).
+
+    JPEG 이미지(공개 URL) 컨테이너를 만들어 즉시 발행한다. PNG 는 거부된다(Threads 와 상이).
+    ``text`` 는 캡션(선택). Instagram 은 서버 측 스케줄링을 지원하지 않는다 — 예약하려면
+    ``instagram_schedule`` 로 큐에 intent 를 보관할 것.
+
+    Returns:
+        ``media_id``/``container_id``/``permalink_hint`` dict. 자격증명 미설정 시 ``setup_required``.
+    """
+    client = _get_ig_client()
+    if client is None:
+        return _ig_setup_required_error()
+    try:
+        kwargs: dict[str, Any] = {"image_url": image_url}
+        if text:
+            kwargs["text"] = text
+        container_id = client.create_container("IMAGE", **kwargs)
+        media_id = client.publish(container_id)  # IMAGE 는 폴링 불필요
+        return _ig_publish_result(media_id, container_id)
+    except (ValueError, InstagramAPIError) as exc:
+        return _error_dict(exc)
+
+
+@mcp.tool()
+def instagram_publish_video(text: str, video_url: str) -> dict[str, Any]:
+    r"""Instagram 에 비디오 발행 (publish a video — 2-stage + container polling).
+
+    비디오(공개 URL) 컨테이너 생성 후 ``FINISHED`` 될 때까지 폴링한 뒤 발행한다(REQ-INST-007).
+    """
+    client = _get_ig_client()
+    if client is None:
+        return _ig_setup_required_error()
+    try:
+        kwargs: dict[str, Any] = {"video_url": video_url}
+        if text:
+            kwargs["text"] = text
+        container_id = client.create_container("VIDEO", **kwargs)
+        client.wait_until_finished(container_id)
+        media_id = client.publish(container_id)
+        return _ig_publish_result(media_id, container_id)
+    except (ValueError, InstagramAPIError) as exc:
+        return _error_dict(exc)
+
+
+@mcp.tool()
+def instagram_publish_reel(
+    text: str, video_url: str, share_to_feed: bool = True
+) -> dict[str, Any]:
+    r"""Instagram 에 릴 발행 (publish a REEL — REELS container + polling).
+
+    REELS 컨테이너(``media_type=REELS`` + ``video_url`` + ``share_to_feed``) 생성 후 폴링 · 발행.
+    ``share_to_feed=True`` (기본) 면 피드에도 공유.
+    """
+    client = _get_ig_client()
+    if client is None:
+        return _ig_setup_required_error()
+    try:
+        kwargs: dict[str, Any] = {"video_url": video_url, "share_to_feed": share_to_feed}
+        if text:
+            kwargs["text"] = text
+        container_id = client.create_container("REELS", **kwargs)
+        client.wait_until_finished(container_id)
+        media_id = client.publish(container_id)
+        return _ig_publish_result(media_id, container_id)
+    except (ValueError, InstagramAPIError) as exc:
+        return _error_dict(exc)
+
+
+@mcp.tool()
+def instagram_schedule(
+    media_type: str,
+    text: Optional[str] = None,
+    image_url: Optional[str] = None,
+    video_url: Optional[str] = None,
+    scheduled_at: Optional[str] = None,
+    share_to_feed: Optional[bool] = None,
+) -> dict[str, Any]:
+    r"""Instagram 예약 발행 큐 등록 (enqueue an Instagram post — queue-only, NO API call).
+
+    **Instagram 은 서버 측 스케줄링을 지원하지 않는다 (REQ-INST-009).** 본 도구는 큐에
+    intent(캡션 + 미디어 URL + 예정 시각)를 ``platform='instagram'`` 으로 보관만 한다 —
+    API 는 일절 호출하지 않는다. 실제 발행은 예정 시각 도래 후 사용자가 세션에서
+    ``instagram_queue_publish_due`` 를 호출할 때 일어난다 (백그라운드 자동 발행 없음).
+
+    Args:
+        media_type: ``IMAGE`` | ``VIDEO`` | ``REELS`` (TEXT 불가 — Instagram 은 텍스트 전용 게시가 없다).
+        text: 캡션(선택).
+        image_url: 공개 이미지 URL (IMAGE 필수, JPEG 권장).
+        video_url: 공개 비디오 URL (VIDEO/REELS 필수).
+        scheduled_at: 발행 예정 시각(ISO-8601). 미지정 시 NULL (즉시 due).
+        share_to_feed: REELS 용. (현재 큐 스키마가 이 값을 보관하지 않는다 — 즉시 발행 도구인
+            ``instagram_publish_reel`` 에서만 적용된다. 예약 릴의 피드 공유는 @MX:DEBT.)
+
+    Returns:
+        ``post_id``/``status``/``media_type``/``platform``/``scheduled_at`` dict.
+        미지원 ``media_type``(TEXT 등) 은 ``error`` dict.
+    """
+    # @MX:DEBT: share_to_feed 가 큐에 보관되지 않는다 (posts 스키마에 해당 컬럼 없음).
+    #   예약 REELS 의 피드 공유 의도가 보존되려면 posts 테이블에 share_to_feed 컬럼 추가가 필요하다.
+    # @MX:CEILING: 현재 예약 REELS 은 publish-time 기본값(share_to_feed 없음) 으로 발행된다.
+    # @MX:UPGRADE: posts 스키마에 share_to_feed 컬럼을 추가하고 _container_call 이 이를 반영할 때.
+    if media_type not in _VALID_IG_MEDIA_TYPES:
+        return {
+            "error": True,
+            "message": (
+                f"Instagram 은 {media_type!r} 게시를 지원하지 않습니다 "
+                f"(Instagram supports IMAGE/VIDEO/REELS only — TEXT 불가)."
+            ),
+        }
+    try:
+        q = _get_queue()
+        post_id = q.enqueue(
+            media_type,
+            text=text or None,
+            image_url=image_url or None,
+            video_url=video_url or None,
+            scheduled_at=scheduled_at or None,
+            platform="instagram",
+        )
+        post = q.get(post_id)
+        return {
+            "post_id": post_id,
+            "status": post["status"],
+            "media_type": post["media_type"],
+            "platform": post["platform"],
+            "scheduled_at": post["scheduled_at"],
+        }
+    except ValueError as exc:
+        return _error_dict(exc)
+
+
+@mcp.tool()
+def instagram_queue_publish_due(limit: int = 10) -> dict[str, Any]:
+    r"""due Instagram 큐를 수동 처리 (process due Instagram rows — session-driven publishing).
+
+    예약 시각이 도래한 **Instagram** 포스트들을 실제로 발행한다. 이 도구가 Instagram 의
+    *유일한* 발행 트리거다 (서버 측 스케줄링도 백그라운드 자동 발행도 없다 — REQ-INST-009/022).
+
+    IG 자격증명이 미설정이어도 크래시하지 않는다 — 각 due IG row 를 ``setup_required`` 스킵하고
+    정상적으로 반환한다 (D1.a(b) skip-and-continue). 자격증명을 설정한 뒤 다시 호출하면 발행된다.
+
+    Returns:
+        ``published``/``failed``/``skipped`` 카운트와 ``messages`` 리스트 dict.
+    """
+    q = _get_queue()
+    return run_queue_once(
+        q,
+        client_resolver=_server_client_resolver,
+        platform="instagram",
+        limit=limit,
+        dry_run=False,
+        once=None,
+        delay=0.0,  # IG 는 컨테이너 폴링으로 대기 (threads 30s 지연 미적용)
+    )
+
+
+@mcp.tool()
+def instagram_get_profile() -> dict[str, Any]:
+    r"""Instagram 프로필 조회 (health check / who-am-I).
+
+    ``username``/``id``/``followers_count``/``media_count`` 반환. IG 자격증명이 유효한지
+    확인하는 용도로 가장 먼저 호출해 볼 것. 미설정 시 ``setup_required`` 에러.
+    """
+    client = _get_ig_client()
+    if client is None:
+        return _ig_setup_required_error()
+    try:
+        return client.get_profile()
+    except InstagramAPIError as exc:
+        return _error_dict(exc)
+
+
+@mcp.tool()
+def instagram_refresh_token() -> dict[str, Any]:
+    r"""Instagram 장기 Page 토큰 수동 갱신 (refresh long-lived Facebook Page token).
+
+    Returns:
+        새 ``access_token`` 을 담은 dict. 미설정 시 ``setup_required`` 에러.
+    """
+    client = _get_ig_client()
+    if client is None:
+        return _ig_setup_required_error()
+    try:
+        new_token = client.refresh_token()
+        return {"access_token": new_token, "refreshed": True}
+    except InstagramAPIError as exc:
+        return _error_dict(exc)
+
+
+@mcp.tool()
+def instagram_comments_list(media_id: str) -> dict[str, Any]:
+    r"""Instagram 미디어의 댓글 목록 (list comments on a media object).
+
+    ``manage_comments`` 권한 필요 (REQ-INST-018). 미설정 시 ``setup_required`` 에러.
+    """
+    client = _get_ig_client()
+    if client is None:
+        return _ig_setup_required_error()
+    try:
+        return client.comments_list(media_id)
+    except InstagramAPIError as exc:
+        return _error_dict(exc)
+
+
+@mcp.tool()
+def instagram_comments_reply(comment_id: str, text: str) -> dict[str, Any]:
+    r"""Instagram 댓글에 답글 작성 (reply to a comment).
+
+    ``manage_comments`` 권한 필요 (REQ-INST-018).
+    """
+    client = _get_ig_client()
+    if client is None:
+        return _ig_setup_required_error()
+    try:
+        return client.comments_reply(comment_id, text)
+    except (ValueError, InstagramAPIError) as exc:
+        return _error_dict(exc)
+
+
+@mcp.tool()
+def instagram_comments_hide(comment_id: str) -> dict[str, Any]:
+    r"""Instagram 댓글 숨김 (hide a comment).
+
+    ``manage_comments`` 권한 필요 (REQ-INST-018).
+    """
+    client = _get_ig_client()
+    if client is None:
+        return _ig_setup_required_error()
+    try:
+        return client.comments_hide(comment_id)
+    except InstagramAPIError as exc:
+        return _error_dict(exc)
+
+
+@mcp.tool()
+def instagram_insights(
+    metric: str = "reach,impressions",
+    period: str = "day",
+    media_id: Optional[str] = None,
+) -> dict[str, Any]:
+    r"""Instagram 인사이트 조회 (fetch account-level or media-level insights).
+
+    ``manage_insights`` 권한 필요 (REQ-INST-019). ``media_id`` 미지정 시 계정 수준,
+    지정 시 해당 미디어 수준 인사이트.
+    """
+    client = _get_ig_client()
+    if client is None:
+        return _ig_setup_required_error()
+    try:
+        return client.insights(metric=metric, period=period, media_id=media_id)
+    except InstagramAPIError as exc:
+        return _error_dict(exc)
 
 
 # ------------------------------------------------------------------ entrypoint

@@ -34,8 +34,10 @@ import sqlite3
 from datetime import datetime, timedelta
 from typing import Any, Callable, Optional
 
-# 큐가 받아들이는 media_type (CAROUSEL 풀 플로우는 M2 범위 밖).
-_VALID_MEDIA_TYPES = {"TEXT", "IMAGE", "VIDEO"}
+# 큐가 받아들이는 media_type. REELS 은 Instagram 전용 라벨 (Threads 에는 없음) 이지만
+# 통합 큐는 플랫폼 무관 저장소이므로 허용한다 — runner 가 platform 별로 발행 시맨틱을 결정한다.
+# CAROUSEL 풀 플로우는 범위 밖(spec §H).
+_VALID_MEDIA_TYPES = {"TEXT", "IMAGE", "VIDEO", "REELS"}
 _VALID_STATUSES = {"PENDING", "APPROVED", "PUBLISHED", "FAILED"}
 # 큐가 받아들이는 platform (SPEC-THREADS-POSTER-INSTAGRAM-001). 'threads' 가 기본값이라
 # 기존 Threads-only 호출자는 아무것도 바꾸지 않아도 그대로 동작한다 (REQ-INST-023).
@@ -158,7 +160,7 @@ class Queue:
         if media_type not in _VALID_MEDIA_TYPES:
             raise ValueError(
                 f"지원하지 않는 media_type 입니다 (unsupported media_type): {media_type!r}. "
-                f"허용값 (allowed): TEXT, IMAGE, VIDEO"
+                f"허용값 (allowed): TEXT, IMAGE, VIDEO, REELS"
             )
         if status not in _VALID_STATUSES:
             raise ValueError(
