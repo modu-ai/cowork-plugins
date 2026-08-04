@@ -11,7 +11,7 @@ geekdocBreadcrumb: true
 |---|---|
 | `moai-media` | `media-higgsfield-image`(이미지) · `media-higgsfield-video`(영상) · `media-higgsfield-identity`(캐릭터 일관성 참조) · `media-higgsfield-assets`(3D·오디오·영상분석·후처리) · `media-higgsfield-explainer`(내레이션 설명영상) · `media-higgsfield-product`(제품 촬영 10모드). 호출 계약·비용 고지의 정본은 `media-higgsfield-core` |
 | `moai-story` | `story-webtoon-art` · `story-conti` · `story-character-sheet` · `story-cover-art` · `story-previz` — 생성 실행은 `moai-media`에 위임 |
-| `moai-designer` | `design-brand-visual`(브랜드 정합 비주얼) · `design-landing-motion`(다이나믹 랜딩의 에셋 킷) — 생성 실행은 `moai-media`에 위임 |
+| `moai-designer` | `design-brand-visual`(브랜드 정합 비주얼) · `design-logo`(브랜드 정합 로고) · `design-landing-motion`(다이나믹 랜딩의 에셋 킷) — 생성 실행은 `moai-media`에 위임 |
 
 ## 1. MCP 서버 연결
 

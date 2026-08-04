@@ -44,10 +44,12 @@ cd-\*(Claude Design 연동)와 design-\*/moai-\*(시스템·토큰·워크플로
 
 **5. 움직이는 랜딩 만들기.** "스크롤하면 영상이 재생되는 랜딩 만들어줘"처럼 요청하면 `design-landing-motion`이 먼저 이 사이트가 말하려는 한 가지(컨셉 스파인)를 정하고, 12종 효과 카탈로그에서 **딱 하나**를 골라 끝까지 완성합니다. 화면에 들어갈 이미지는 브랜드 팔레트에 잠근 채 생성하고, 마지막에 초기 렌더·저감모션·모바일 열화·대비를 기계적으로 점검합니다. React면 R3F와 GSAP로, 정적 사이트면 바닐라 three.js로 갈라집니다. 배포와 호스팅은 다루지 않습니다.
 
+**6. 브랜드에 맞는 로고 뽑기.** "로고 만들어줘"라고 하면 `design-logo`가 먼저 프로젝트의 브랜드 컨텍스트(토큰·보이스)를 읽고 로고 타입을 정합니다. 로고는 히어로와 달리 작아도 보이고 컬러·흑백·단색으로 변형되어야 하므로 벡터/심볼로 다룹니다 — recraft 모델로 디자이너 용어 기반 프롬프트를 조립해 생성을 미디어 크리에이터에게 넘기고, 스케일러빌리티와 단색 실루엣 내성을 점검합니다.
+
 {{< screenshot-request "Claude Code에서 /design 명령 실행 후 브리프 질문이 시작된 대화 화면" >}}
 
 **잘 안 될 때** — 시안 톤이 계속 흔들리면 브리프를 건너뛰고 바로 생성부터 시작했을 가능성이 큽니다. `cd-brief`로 타깃·톤·금지 요소를 먼저 못 박은 뒤 생성 단계로 넘어가세요.
 
 ## MCP 연동
 
-- **higgsfield** — 브랜드 비주얼과 랜딩 에셋 킷 생성. `design-brand-visual`·`design-landing-motion`이 사용하며, 실제 생성 실행과 모델 선택, 크레딧 사전 고지는 미디어 크리에이터의 Higgsfield 계약에 위임합니다. Higgsfield OAuth 인증이 필요합니다 ([설정 가이드](/plugins/higgsfield-setup/)).
+- **higgsfield** — 브랜드 비주얼과 랜딩 에셋 킷 생성. `design-brand-visual`·`design-logo`·`design-landing-motion`이 사용하며, 실제 생성 실행과 모델 선택, 크레딧 사전 고지는 미디어 크리에이터의 Higgsfield 계약에 위임합니다. Higgsfield OAuth 인증이 필요합니다 ([설정 가이드](/plugins/higgsfield-setup/)).
