@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "moai-threads-poster": {
+      "$comment": "Threads(Meta) Graph API 자동 포스팅 MCP — 텍스트/이미지/비디오 2단계 발행(create container → publish). OAuth2 Bearer access_token. 사전 설치: uv (curl -LsSf https://astral.sh/uv/install.sh | sh). 소스를 플러그인에 자체 vendor(mcp-servers/threads-poster) — PyPI 불필요, 설치 즉시 작동. 자격증명 발급·인증 절차는 mcp-servers/threads-poster/CONNECTORS.md.",
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "${CLAUDE_PLUGIN_ROOT}/mcp-servers/threads-poster",
+        "threads-poster-mcp"
+      ],
+      "env": {
+        "THREADS_ACCESS_TOKEN": "${THREADS_ACCESS_TOKEN}",
+        "THREADS_USER_ID": "${THREADS_USER_ID}",
+        "THREADS_PUBLISH_DELAY": "${THREADS_PUBLISH_DELAY}"
+      }
+    }
+  }
+}

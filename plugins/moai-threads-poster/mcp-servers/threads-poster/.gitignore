@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# uv / venv
+.venv/
+.python-version
+
+# pytest / ruff / mypy 캐시
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# 런타임 큐 DB (M2 SQLite 발행 큐 + WAL/SHM 사이드카)
+.data/
+
+# OS
+.DS_Store
