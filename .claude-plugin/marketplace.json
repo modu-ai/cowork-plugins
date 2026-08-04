@@ -5,7 +5,7 @@
     "email": "email@mo.ai.kr"
   },
   "metadata": {
-    "description": "'MoAI-Cowork, 모두의 코워크' 17-plugin AI-직원 패밀리 — 코워커(범용 실무·라이프스타일)·작가(출판)·스토리(웹툰/웹소설/IP)·마케터(캠페인/콘텐츠)·미디어(이미지/영상/오디오 생성)·셀러·사무관(오피스 문서)·데이터 애널리스트(공공데이터/시각화)·법무·재무세무·인사채용·CS매니저·컨설턴트·커리어코치·튜터(전문가 14종)·디자이너(브랜드 디자인 시스템)·PM(진입 허브). 각 AI 직원은 슬래시 명령 없이 자연어 요청만으로 동작하며, PM의 /project 단일 명령(--cowork 기본: 코워크 전반 셋업 + 커스텀 에이전트 + 재귀적 자가 개선 / --code: 개발환경 셋업, 개발 중)이 진입을 라우팅합니다. Claude Code에서 `claude plugin marketplace add modu-ai/moai-cowork`로 한 번에 등록하세요.",
+    "description": "'MoAI-Cowork, 모두의 코워크' 18-plugin AI-직원 패밀리 — 코워커(범용 실무·라이프스타일)·작가(출판)·스토리(웹툰/웹소설/IP)·마케터(캠페인/콘텐츠)·미디어(이미지/영상/오디오 생성)·셀러·사무관(오피스 문서)·데이터 애널리스트(공공데이터/시각화)·법무·재무세무·인사채용·CS매니저·컨설턴트·커리어코치·튜터(전문가 14종)·디자이너(브랜드 디자인 시스템)·PM(진입 허브). 각 AI 직원은 슬래시 명령 없이 자연어 요청만으로 동작하며, PM의 /project 단일 명령(--cowork 기본: 코워크 전반 셋업 + 커스텀 에이전트 + 재귀적 자가 개선 / --code: 개발환경 셋업, 개발 중)이 진입을 라우팅합니다. Claude Code에서 `claude plugin marketplace add modu-ai/moai-cowork`로 한 번에 등록하세요.",
     "version": "1.1.0",
     "language": "ko",
     "license": "Apache-2.0",
@@ -152,8 +152,8 @@
       "name": "moai-threads-poster",
       "source": "./plugins/moai-threads-poster",
       "version": "1.1.0",
-      "description": "Threads(Meta) 자동 포스팅 전담 AI 직원 — 직접 Graph API 연결 MCP(월정액 없음)로 텍스트·이미지·비디오 2단계 발행. SQLite 발행 큐 + macOS launchd 매일 자동 발행으로 세션을 꺼도 정시 게시. '자동 아닌 자율' — 발행 직전 사용자 승인 필수. 페이스북 개인 계정은 API 미지원(정책)이라 Threads 전용. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 1인 브랜드·콘텐츠 크리에이터·Threads 정기 운영자.",
-      "displayName": "🧵 스레드 포스터",
+      "description": "Threads·Instagram(Meta) 자율 발행 전담 AI 직원 — 직접 Graph API 연결 MCP(월정액 없음)로 텍스트·이미지·비디오 2단계 발행. SQLite 발행 큐에 예약하고, 세션을 켜고 발행 직전 승인하면 게시. '자동 아닌 자율' — 백그라운드 스케줄러 없이 사용자가 승인할 때 발행합니다. Threads와 Instagram을 통합 큐로 운영하며, 플랫폼별 발행 처리를 분산합니다. Facebook 개인 계정은 API 미지원(정책)이라 복붙만 지원합니다. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 1인 브랜드·콘텐츠 크리에이터·Threads/Instagram 정기 운영자.",
+      "displayName": "소셜 포스터",
       "category": "소셜미디어"
     }
   ]

@@ -2,7 +2,7 @@
 id: SPEC-THREADS-POSTER-INSTAGRAM-001
 title: "Instagram Graph API support for moai-threads-poster — Progress"
 version: "0.1.0"
-status: in-progress
+status: completed
 created: 2026-08-05
 updated: 2026-08-05
 author: manager-spec
@@ -238,6 +238,36 @@ m1_to_mN_commit_strategy: per-milestone (baseline + M1 + M2 + M3 + M4 + evidence
 
 ## §E.4 Sync-phase Audit-Ready Signal
 
-_<pending sync-phase>_ — populated by manager-docs after the sync-phase
-deliverables (www/content/moai-agents/threads-poster.md Instagram section,
-marketplace.json description refresh, displayName decision) are complete.
+```yaml
+sync_complete_at: 2026-08-05
+sync_commit_sha: pending-backfill-2026-08-05  # SHA-backfill exemption: a commit cannot know its own SHA; this will be backfilled in a follow-up commit
+sync_status: pass
+# Sync deliverables completed:
+# - plugin.json: displayName → "소셜 포스터", description refreshed (removed launchd/milestone phrasing, added Instagram support)
+# - marketplace.json: displayName → "소셜 포스터", description refreshed, plugin count corrected (17 → 18)
+# - www/content/moai-agents/threads-poster.md: Instagram section added (Graph API, unified queue, platform-dispatch, scheduling correction, setup pointers)
+# - All SPEC frontmatter: status transitioned in-progress → completed, updated refreshed to 2026-08-05
+# Version sync verified: plugin.json == marketplace.json == 1.1.0
+```
+
+### Sync Deliverables Summary
+
+| Deliverable | Status | Details |
+|-------------|--------|---------|
+| **plugin.json displayName** | COMPLETE | `🧵 스레드 포스터` → `소셜 포스터` |
+| **plugin.json description** | COMPLETE | Removed launchd/milestone phrasing; added Instagram support; preserved brand voice "자동 아닌 자율" |
+| **marketplace.json displayName** | COMPLETE | `🧵 스레드 포스터` → `소셜 포스터` |
+| **marketplace.json description** | COMPLETE | Removed launchd/scheduler claims; updated to Threads AND Instagram; corrected plugin count 17→18 |
+| **marketplace.json metadata** | COMPLETE | Plugin count corrected: 17-plugin → 18-plugin (moai-threads-poster is newly added) |
+| **www Instagram section** | COMPLETE | Added comprehensive Instagram coverage (Graph API, unified queue, platform-dispatch, scheduling correction, Professional account requirement, setup) |
+| **Version sync** | VERIFIED | plugin.json 1.1.0 == marketplace.json 1.1.0 |
+| **Frontmatter transition** | COMPLETE | All 4 artifacts (spec.md, plan.md, acceptance.md, progress.md): `status: in-progress` → `completed`, `updated: 2026-08-05` |
+
+### Brand Voice Preserved
+
+- "자동 아닌 자율" retained in both descriptions
+- "1인 브랜드·콘텐츠 크리에이터·Threads/Instagram 정기 운영자" target audience preserved
+- Session-driven manual approval model emphasized
+- NO emoji in www content (per CLAUDE.local.md design rules)
+- Lucide icon convention documented for future additions
+

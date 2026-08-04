@@ -2,7 +2,7 @@
 id: SPEC-THREADS-POSTER-INSTAGRAM-001
 title: "Instagram Graph API support for moai-threads-poster (Option A — Threads + Instagram integrated social poster)"
 version: "0.1.0"
-status: in-progress
+status: completed
 created: 2026-08-05
 updated: 2026-08-05
 author: manager-spec

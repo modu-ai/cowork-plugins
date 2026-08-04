@@ -1,8 +1,8 @@
 {
   "name": "moai-threads-poster",
-  "displayName": "🧵 스레드 포스터",
+  "displayName": "소셜 포스터",
   "version": "1.1.0",
-  "description": "Threads(Meta) 자동 포스팅 전담 AI 직원 — MCP 서버로 Threads Graph API 에 텍스트·이미지·비디오 게시. M1: MCP 서버 + API 클라이언트(수동 발행 가능). 발행 큐·스케줄러·스킬은 M2-M4 에서 추가.",
+  "description": "Threads·Instagram(Meta) 자율 발행 전담 AI 직원 — MCP 서버로 직접 Graph API 연결. 텍스트·이미지·비디오 발행 큐에 예약하고, 세션을 켜고 발행 직전 승인하면 게시. '자동 아닌 자율' — 백그라운드 스케줄러 없이 사용자가 승인할 때 발행합니다. Threads와 Instagram을 통합 큐로 운영하며, 플랫폼별 발행 처리를 분산합니다.",
   "author": {
     "name": "모두의 AI",
     "email": "email@mo.ai.kr"
