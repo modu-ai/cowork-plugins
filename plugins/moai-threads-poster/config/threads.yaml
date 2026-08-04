@@ -47,3 +47,38 @@ x:
   # 기본 X tier. "free" = 280자 분할(무료), "premium" = 25,000자 단일(유료).
   # threads_format_multi_channel(x_tier=...) 의 기본 인자는 "free" 다.
   default_tier: "free"
+
+# Instagram (Facebook Login for Business) — SPEC-THREADS-POSTER-INSTAGRAM-001.
+# Threads 와 같은 통합 발행 큐를 공유하며 platform='instagram' 행으로 구분된다.
+# 자격증명은 Threads 쌍(THREADS_*) 과 *독립적인* 두 번째 쌍(IG_*) 을 쓴다.
+instagram:
+  # [스케줄링 교정 — REQ-INST-009, 본 설정에서 가장 중요]
+  # Instagram Graph API 는 서버 측 스케줄링 파라미터가 *없다*
+  # (scheduled_publish_time / published=false 어느 쪽도 불가).
+  # 예약 = 큐에 intent(캡션+미디어 URL+예정 시각) 보관. 실제 발행은 예정 시각 도래 후
+  # 사용자가 세션에서 instagram_queue_publish_due 를 호출할 때 일어난다.
+  # 백그라운드 자동 발행(launchd/cron) 은 없다 (Threads 와 동일 모델).
+  scheduling: "queue-only (Instagram API 에 서버 측 스케줄링 없음 — 큐가 유일한 예약 경로)"
+
+  # 이미지 형식 — Threads 와 상이 (Threads 는 JPEG/PNG 둘 다 허용).
+  image_format: "JPEG-only (PNG 거부됨 — 빠른 실패)"
+
+  # 컨테이너 24h EXPIRY 는 이 설계에서 non-issue 다 (REQ-INST-010).
+  # 큐가 intent 를 보관하지 container 를 들고 있지 않으므로, runner 가 예정 시각에
+  # container 생성 + 즉시 publish(수초) 하므로 24h 만료가 닿지 않는다.
+  container_expiry: "non-issue (큐는 intent 보관, container 수명은 수초)"
+
+  # 계정 유형 — Personal 불가.
+  account_type: "Instagram Professional (Business 또는 Creator) 만 지원. Personal 불가."
+
+  # 자격증명(환경변수) — Threads 와 별개. 발급 절차는 CONNECTORS.md Instagram 섹션.
+  #   IG_ACCESS_TOKEN (필수) — Facebook Page 장기 액세스 토큰
+  #   IG_USER_ID      (필수) — Instagram Professional 계정 ID (API 경로의 ig-user-id)
+  credentials:
+    IG_ACCESS_TOKEN: "${IG_ACCESS_TOKEN}"
+    IG_USER_ID: "${IG_USER_ID}"
+
+  # 케이던스 — Threads 의 weekly_3/weekly_5 를 재사용 (피크 시각은 유사).
+  # instagram_schedule + threads_queue_approve 로 베스트 슬롯에 예약.
+  cadence_ref: "threads_queue_add_batch 의 weekly_3/weekly_5 슬롯 재사용 가능"
+

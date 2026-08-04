@@ -1,7 +1,7 @@
 {
   "name": "moai-threads-poster",
   "displayName": "🧵 스레드 포스터",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Threads(Meta) 자동 포스팅 전담 AI 직원 — MCP 서버로 Threads Graph API 에 텍스트·이미지·비디오 게시. M1: MCP 서버 + API 클라이언트(수동 발행 가능). 발행 큐·스케줄러·스킬은 M2-M4 에서 추가.",
   "author": {
     "name": "모두의 AI",

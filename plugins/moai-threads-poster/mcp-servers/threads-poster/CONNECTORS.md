@@ -140,4 +140,113 @@ threads_get_profile
 
 ---
 
-버전: 0.1.0 · API SSOT: <https://developers.facebook.com/docs/threads> · 문의: 모두의 AI
+# Instagram 연동 가이드 (Facebook Login for Business)
+
+Instagram Graph API 는 Threads 와 다른 인증 경로를 쓴다 — **Facebook Login for Business** 로
+Facebook Page 장기 액세스 토큰을 발급받아 `graph.facebook.com` 호스트를 호출한다 (Threads 의
+`graph.threads.com` OAuth2 흐름과 상이). 자격증명은 Threads 쌍과 *독립적인* `IG_ACCESS_TOKEN` /
+`IG_USER_ID` 환경변수로 전달한다.
+
+> **Instagram Professional(Business 또는 Creator) 계정만 지원.** Personal 계정은 Graph API 로
+> 발행할 수 없다. 발급 전에 Instagram 계정을 Professional 로 전환해야 한다.
+
+> **스케줄링 참고 (REQ-INST-009)**: Instagram Graph API 는 서버 측 스케줄링 파라미터가 없다.
+> 예약은 통합 발행 큐에 intent 를 보관하고, 예정 시각 도래 후 `instagram_queue_publish_due` 로
+> 세션 안에서 발행한다 (백그라운드 자동 발행 없음).
+
+공식 문서: <https://developers.facebook.com/docs/instagram-api> (Content Publishing 섹션).
+
+## I-1. 사전 요구사항
+
+- **uv** 설치 (위 1절 참조).
+- **Instagram Professional 계정** (Business 또는 Creator). Personal 은 불가.
+- **Facebook Page** — Instagram 계정이 해당 Page 에 연결되어 있어야 한다.
+- Threads 연동과 *같은 Meta App* 을 재사용해도 되고, 별도 App 을 만들어도 된다.
+
+## I-2. 필요 권한(permissions)
+
+Meta App 에 다음 권한을 추가한다 (App Review 필요):
+
+| 권한 | 용도 |
+|---|---|
+| `instagram_basic` | 기본 베이스라인 |
+| `instagram_content_publish` | 2단계 발행(container → media_publish) |
+| `pages_read_engagement` | 발행에 필요 |
+| `pages_show_list` | Page 해석(setup) |
+| `manage_comments` | 댓글 모더레이션(`instagram_comments_*`) — 선택 |
+| `manage_insights` | 인사이트(`instagram_insights`) — 선택 |
+
+## I-3. Facebook Login for Business 로 장기 Page 토큰 발급
+
+1. Meta App 대시보드 → **Facebook Login for Business** 제품 추가(없으면).
+2. 유효한 OAuth 리다이렉트 URI 등록.
+3. 브라우저 인가 흐름으로 사용자 액세스 토큰을 발급받는다 (`pages_show_list`,
+   `pages_read_engagement`, `instagram_basic`, `instagram_content_publish` 스코프 포함).
+4. 단기 사용자 토큰을 **장기 Page 액세스 토큰**으로 교환한다:
+
+```bash
+# 1) 단기 사용자 토큰 → 장기 사용자 토큰 (60일)
+curl "https://graph.facebook.com/v23.0/oauth/access_token" \
+  -d "grant_type=fb_exchange_token" \
+  -d "client_id=<APP_ID>" \
+  -d "client_secret=<APP_SECRET>" \
+  -d "fb_exchange_token=<SHORT_USER_TOKEN>"
+
+# 2) 장기 사용자 토큰 → 장기 Page 토큰 (Page 권한이 포함된 비만료 토큰)
+curl "https://graph.facebook.com/v23.0/me/accounts?access_token=<LONG_USER_TOKEN>"
+# → { "data": [ { "access_token": "<PAGE_LONG_TOKEN>", "id": "<PAGE_ID>", ... } ] }
+```
+
+`PAGE_LONG_TOKEN` 이 **`IG_ACCESS_TOKEN`** 이다 (Instagram 발행에 쓰이는 것은 Page 토큰이다).
+
+> Graph API 버전 `v23.0` 은 2026-06-30 기준 pin 값이다 (런타임에 중앙화된
+> `GRAPH_API_VERSION` 상수로 관리 — 버전 drift 시 해당 상수 한 줄만 수정).
+
+## I-4. `IG_USER_ID` 해석 (instagram_business_account)
+
+Instagram 계정 ID 는 Page 에서 조회한다:
+
+```bash
+curl "https://graph.facebook.com/v23.0/me/accounts?fields=instagram_business_account&access_token=<PAGE_LONG_TOKEN>"
+# → { "data": [ { "instagram_business_account": { "id": "<IG_USER_ID>" }, "id": "<PAGE_ID>" } ] }
+```
+
+여기서 `instagram_business_account.id` 가 **`IG_USER_ID`** 다 (API 경로의 `/{ig-user-id}/...` 에
+쓰인다). 이 값은 Instagram Professional 계정만 반환된다 (Personal 은 필드가 비었다 → 계정 전환 필요).
+
+## I-5. PPA (Page Publishing Authorization) — 필요 시
+
+Meta 정책에 따라 발행 전 **Page Publishing Authorization** 완료가 요구될 수 있다. PPA 미완료 시
+발행이 거부되며, 이 경우 Meta Business Suite 에서 PPA 를 완료한 뒤 재시도한다.
+
+## I-6. 환경변수 설정
+
+```bash
+export IG_ACCESS_TOKEN="<PAGE_LONG_TOKEN>"
+export IG_USER_ID="<instagram_business_account ID>"
+```
+
+`.mcp.json` 의 `env` 블록이 `${IG_ACCESS_TOKEN}` / `${IG_USER_ID}` 보간으로 서버에 전달한다.
+
+## I-7. 동작 확인 (smoke test)
+
+```
+instagram_get_profile
+```
+
+→ `{ "username": "...", "id": "...", "followers_count": N, "media_count": N }` 가 돌아오면 연동 성공.
+
+## I-8. 트러블슈팅
+
+| 증상 | 원인 | 해결 |
+|---|---|---|
+| `setup_required` 에러 | `IG_ACCESS_TOKEN`/`IG_USER_ID` 미설정 | 두 환경변수 export (Threads 쌍과 별개) |
+| Personal 계정 오류 | Personal 계정은 Graph API 미지원 | Instagram Professional(Business/Creator) 로 전환 |
+| `instagram_business_account` 가 비었음 | Page-IG 연결 안 됨 | Meta Business Suite 에서 Instagram 을 Page 에 연결 |
+| PPA 미완료 오류 | Page Publishing Authorization 필요 | Meta Business Suite 에서 PPA 완료 후 재시도 |
+| 이미지 PNG 거부 | Instagram 은 JPEG-only | JPEG 변환 후 재시도 (Threads 와 상이) |
+| HTTP 24h 한도 | 100건/24h (media_publish 50) 초과 | 24h 후 재시도 — 큐가 한도 도달 시 남은 IG row 스킵 |
+
+---
+
+버전: 0.2.0 · API SSOT: Threads <https://developers.facebook.com/docs/threads> · Instagram <https://developers.facebook.com/docs/instagram-api> · 문의: 모두의 AI
