@@ -12,7 +12,7 @@ description: |
   - "디자인 시스템 프롬프트"
   - "프롬프트 빌더"
 user-invocable: true
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # cd-prompt-builder — 시니어 UX 패턴 프롬프트 빌더
@@ -33,7 +33,7 @@ Claude Design 프롬프트, 시니어 UX, UX 패턴, 정보 구조 프롬프트,
 |---|---|---|---|
 | 1 | 정보 구조 | IDEO 시니어 UX 아키텍트 12년차 | 콘텐츠 인벤토리·내비·플로우 |
 | 2 | 제로 예산 리서치 | Nielsen Norman 시니어 UX 리서처 | 인터뷰 가이드·5초 테스트·가드 테스트 |
-| 3 | 디자인 시스템 빌더 | Figma 시니어 디자인 시스템 엔지니어 (1M+ 사용자 경험) | 토큰·12 primitive 컴포넌트·라이브 React |
+| 3 | 디자인 시스템 빌더 | Figma 시니어 디자인 시스템 엔지니어 (1M+ 사용자 경험) | 토큰·shadcn 전체 컴포넌트×라이트/다크·라이브 React |
 | 4 | 마이크로카피 라이터 | Dropbox 시니어 UX 라이터 | 온보딩·empty state·에러·CTA |
 | 5 | 활성화·온보딩 | Intercom 시니어 프로덕트 디자이너 | 10분 AHA 모먼트·활성화 체크리스트·72시간 이메일 |
 | 6 | 사용성 감사 | Baymard Institute 시니어 UX 컨설턴트 | Nielsen 10 휴리스틱 5점 평가·심각도 매트릭스 |
@@ -198,16 +198,22 @@ Anthropic 공식 발표(2026-04-17)에서 강조한 **코드 기반 프로토타
 [CONSTRAINTS]
 - 라이브 React 컴포넌트 (Storybook 호환)
 - 시맨틱 토큰 명명 (primary/500 등)
-- WCAG 색 대비 준수
+- **라이트·다크 양 테마 의무 생성** — 모든 컴포넌트·토큰·팔레트를 라이트와 다크 양쪽으로 빠짐없이 제작. 한쪽이라도 누락되면 미완성으로 간주
+- WCAG 색 대비 — 본문 4.5:1, 큰 텍스트 3:1을 **양 테마 각각**에서 준수 (다크 텍스처 위 반투명 배경 주의)
 - 1-2명 디자이너가 유지보수 가능한 규모
 
 [OUTPUTS]
-1. 디자인 토큰 (primitives + semantics)
-2. 색 팔레트 (100-900 변형)
+1. 디자인 토큰 (primitives + semantics) × 라이트/다크
+2. 색 팔레트 (100-900 변형) × 라이트/다크
 3. 타입 스케일 (Display·Heading·Body·Mono)
 4. 간격 시스템 (4·8·12·16·24·32·48·64)
-5. 12 primitive 컴포넌트 (모든 상태 포함)
-6. 사용 가이드라인
+5. **shadcn 전체 컴포넌트 세트 — 아래 63종을 컴포넌트마다 라이트/다크 양 변형 + 모든 상태(default·hover·active·focus·disabled)로 제작. 목록에서 하나라도 빠지면 안 됨**
+   - 폼·입력(17): Input · Input Group · Input OTP · Textarea · Label · Checkbox · Radio Group · Select · Native Select · Combobox · Slider · Switch · Toggle · Toggle Group · Date Picker · Calendar · Field
+   - 오버레이·메뉴(13): Dialog · Alert Dialog · Sheet · Drawer · Popover · Hover Card · Tooltip · Dropdown Menu · Context Menu · Menubar · Navigation Menu · Command · Pagination
+   - 데이터 표시(16): Table · Data Table · Card · Avatar · Badge · Accordion · Collapsible · Tabs · Separator · Scroll Area · Resizable · Progress · Skeleton · Spinner · Chart · Carousel
+   - 피드백(6): Alert · Toast · Message · Message Scroller · Bubble · Empty
+   - 타이포·기타(11): Typography · Kbd · Item · Breadcrumb · Button · Button Group · Aspect Ratio · Attachment · Marker · Sidebar · Direction
+6. 사용 가이드라인 (라이트↔다크 전환 규칙 포함)
 7. 레이어 명명 규약
 
 [CONTEXT]
