@@ -15,7 +15,7 @@ due() 큐를 순회하며 :class:`ThreadsClient` 2단계 발행(create_container
     결정적으로 검증한다.
   - DB 경로 / publish delay / 자격증명은 모두 환경변수에서 읽는다.
 
-참고: launchd/cron 기반 백그라운드 자동 발행은 제거되었다. 본 CLI 는 셸에서의
+참고: OS 예약 스케줄러 기반 백그라운드 자동 발행은 제거되었다. 본 CLI 는 셸에서의
 수동 1회 킥(``--once`` / ``--dry-run``) 용도로 남아있으며, 일상적 발행은 세션 안에서
 ``threads_queue_publish_due`` MCP 도구로 이루어진다.
 """
