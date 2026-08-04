@@ -92,27 +92,12 @@ table { border-collapse: collapse; border-spacing: 0; }
 .gdoc-markdown img { border-radius: var(--radius-lg); margin: 16px 0; }
 .gdoc-markdown strong { font-weight: var(--fw-semibold); color: var(--color-body-strong); }
 
-/* 표 — DS table.html: hairline 그리드, 헤더는 surface-card */
-.gdoc-markdown table {
-  width: 100%;
-  margin: 20px 0;
-  font-size: var(--text-sm);
-  border: 1px solid var(--color-hairline);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-}
-.gdoc-markdown thead th {
-  background: var(--color-surface-card);
-  color: var(--color-ink);
-  font-weight: var(--fw-semibold);
-  text-align: left;
-}
+/* 표 — 카드 디자인은 moai-ds-v2.css 의 .table-wrap 이 담당(SSOT).
+   여기는 렌더 훅 미적용 폴백을 위한 셀 여백 기본만 남긴다. */
 .gdoc-markdown th, .gdoc-markdown td {
   padding: 10px 14px;
-  border-bottom: 1px solid var(--color-hairline-soft);
   vertical-align: top;
 }
-.gdoc-markdown tbody tr:last-child td { border-bottom: 0; }
 
 /* ── 모바일 (구 mobile.scss 중 살아있는 규칙만 이식) ── */
 @media screen and (max-width: 41rem) {

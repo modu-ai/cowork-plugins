@@ -215,11 +215,66 @@ svg.svg-sprite { display: none !important; }
 .wrapper > main.container:not(:has(.gdoc-nav)) .gdoc-page { max-width: none; }
 
 @media (max-width: 1320px) { .cw-toc { display: none; } }
+
+/* 햄버거 버튼·오버레이 — 데스크톱(>1080px)에서는 보이지 않는다. 모바일에서만 드로어로 작동. */
+.nav-drawer-btn, .nav-overlay { display: none; }
+
 @media (max-width: 1080px) {
   .wrapper > main.container { flex-direction: column; gap: 24px; padding: 24px 16px 64px; }
-  .gdoc-nav { display: none; }
   .gdoc-page { width: 100%; }
+
+  /* 햄버거(fixed, left 14px, 너비 40 → 14~54px)가 gnav 브랜드 마크와 겹치지
+     않도록 gnav 안쪽 왼쪽 여백을 확보한다. */
+  .gnav-inner { padding-left: 64px; }
+
+  /* 햄버거 버튼 — 왼쪽 상단 고정 */
+  .nav-drawer-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    position: fixed; top: 14px; left: 14px; z-index: 80;
+    width: 40px; height: 40px;
+    border: 1px solid var(--border-1); border-radius: var(--radius-md, 10px);
+    background: var(--color-surface); color: var(--fg-1);
+    box-shadow: var(--shadow-sm, 0 1px 2px rgba(0,0,0,.06)); cursor: pointer;
+  }
+  .nav-drawer-btn .ds-icon { width: 20px; height: 20px; }
+
+  /* 사이드바 → 왼쪽 슬라이드인 드로어 */
+  .gdoc-nav {
+    position: fixed; top: 0; left: 0; bottom: 0;
+    width: min(86vw, 320px);
+    margin: 0; padding: 16px 12px;
+    background: var(--color-surface);
+    box-shadow: var(--shadow-lg, 0 12px 32px rgba(0,0,0,.18));
+    transform: translateX(-100%);
+    visibility: hidden;            /* 닫힘: Tab/SR 탐색 차단(inert 와 이중 안전망) */
+    transition: transform var(--duration-normal, 200ms) var(--easing-default, ease),
+                visibility 0s linear var(--duration-normal, 200ms);
+    z-index: 90; overflow-y: auto;
+  }
+  body.nav-open .gdoc-nav {
+    transform: translateX(0);
+    visibility: visible;
+    transition: transform var(--duration-normal, 200ms) var(--easing-default, ease),
+                visibility 0s linear 0s;
+  }
+  /* 드로어 열림 동안 배경 스크롤 잠금 */
+  body.nav-open { overflow: hidden; }
+
+  /* 배경 오버레이 */
+  .nav-overlay {
+    display: block;
+    position: fixed; inset: 0; z-index: 70;
+    background: rgba(0, 0, 0, 0.42);
+    opacity: 0; pointer-events: none;
+    transition: opacity 200ms ease;
+  }
+  body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
 }
+
+/* 다크 모드 — 드로어·햄버거 배경. --color-surface 는 라이트(#ffffff) 전용이라
+   다크 재정의가 없어, 다크 전용 토큰으로 따로 처리한다. (데스크톱에선 display:none 이라 무해) */
+[data-theme="dark"] .gdoc-nav { background: var(--color-surface-dark-elevated); }
+[data-theme="dark"] .nav-drawer-btn { background: var(--color-surface-dark-elevated); color: var(--fg-1); }
 
 /* ── 사이드바 내부 (dc.html aside.docs-sidebar) ── */
 .cw-side { display: flex; flex-direction: column; gap: 2px; }
@@ -716,8 +771,9 @@ svg.svg-sprite { display: none !important; }
   font-weight: var(--fw-semibold);
 }
 
-/* ── 표 — dc.html isTable (radius 16 · 헤더 neutral-100 · mono 헤더) ── */
-.gdoc-markdown table:not(.lntable):not(.highlight),
+/* ── 표 — dc.html isTable (radius 16 · 헤더 neutral-100 · mono 헤더) ──
+   반응형: .table-wrap(렌더 훅이 모든 마크다운 표를 감쌈)이 카드+가로스크롤
+   컨테이너를 담당하고, 내부 table은 자연 너비를 유지해 세로 찌그러짐 방지. */
 .gdoc-markdown .table-wrap {
   width: 100%;
   margin: 20px 0;
@@ -725,7 +781,13 @@ svg.svg-sprite { display: none !important; }
   border: 1px solid var(--border-1);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
-  overflow: hidden;
+  overflow-x: auto;                    /* hidden이 아님 — 좁으면 옆으로 스크롤 */
+  -webkit-overflow-scrolling: touch;
+}
+.gdoc-markdown .table-wrap > table:not(.lntable):not(.highlight) {
+  width: 100%;
+  margin: 0;                           /* table-wrap이 바깥 여백 담당 */
+  border: 0;                           /* table-wrap이 테두리/반경 담당 */
   border-collapse: separate;
   border-spacing: 0;
 }
@@ -983,9 +1045,10 @@ svg.svg-sprite { display: none !important; }
   .gdoc-markdown h1, .gdoc-page > article > h1:first-child { font-size: 26px; }
   .gdoc-markdown h2 { font-size: 21px; }
   .gdoc-markdown p, .gdoc-markdown li { font-size: 15.5px; }
-  /* 표·코드블록은 카드 안에서 개별 스크롤 */
-  .gdoc-markdown .table-wrap,
-  .gdoc-markdown table:not(.lntable):not(.highlight) { display: block; overflow-x: auto; }
+  /* 표는 위 .table-wrap 카드 규칙이 항상 overflow-x:auto 를 담당 — 모바일 전용
+     display:block 을 제거했다. table 자체에 block 을 먹이면 셀이 컨테이너에 맞춰
+     찌그러져 세로로 길어지는 가독성 문제가 생긴다. 코드블록은 .highlight pre 가
+     이미 overflow-x:auto 를 가지므로 여기서 따로 건드릴 것이 없다. */
   .cw-pg-nav { grid-template-columns: 1fr; }
   .cw-pg-next { text-align: left; }
 }
