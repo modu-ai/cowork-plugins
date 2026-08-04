@@ -650,9 +650,9 @@ def threads_queue_publish_due(limit: int = 10) -> dict[str, Any]:
     r"""due 큐(Threads)를 수동 처리 (process due Threads rows now, session-driven publishing).
 
     세션 안에서 분산 예약된 **Threads** 포스트들을 실제로 발행하기 위한 도구. 백그라운드 자동
-    발행(launchd/cron) 은 없으므로, 예약 시각이 도래한 포스트는 이 도구로 직접 flush 한다.
-    내부적으로 runner._process 를 재사용한다(platform="threads" 필터 — Instagram row 는
-    건드리지 않는다, D8(a)). 자격증명 필요(미설정 시 ``setup_required`` 에러).
+    발행은 없으므로(수동 승인 모델, REQ-INST-022), 예약 시각이 도래한 포스트는 이 도구로 직접
+    flush 한다. 내부적으로 runner._process 를 재사용한다(platform="threads" 필터 — Instagram row
+    는 건드리지 않는다, D8(a)). 자격증명 필요(미설정 시 ``setup_required`` 에러).
 
     Returns:
         ``published`` / ``failed`` / ``skipped`` 카운트와 ``messages`` 리스트 dict.
