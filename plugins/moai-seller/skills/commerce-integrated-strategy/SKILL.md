@@ -181,7 +181,7 @@ version: "1.0.0"
 
 - **중장기 사업 전략 (분기·연간)**: `moai-consultant:consult-strategy` 사용
 - **운영 자동화 진단 풀세트**: `moai-seller:commerce-automation-audit` 사용
-- **IR 덱·투자 유치 전략**: `moai-officer:office-pptx-designer` + 별도 사업기획 스킬 사용
+- **IR 덱·투자 유치 전략**: `moai-officer:doc-pptx` + 별도 사업기획 스킬 사용
 - **광고 캠페인 집행 계획**: 광고 플랫폼에서 직접 관리
 - **단일 채널 등록 가이드**: `marketplace-*` 스킬 직접 호출
 - **특정 스킬 단독 산출물만 필요**: 해당 스킬 직접 호출 (통합 불필요)

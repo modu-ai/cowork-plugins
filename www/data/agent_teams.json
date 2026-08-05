@@ -127,15 +127,15 @@
      "summary": "> 운동·식단·건강·육아·시니어 케어를 종합적으로 코칭합니다. \"운동 루틴 만들어줘\", \"다이어트 식단 짜줘\", \"아이 발달 단계 알려줘\", \"부모님 노인 복지 서비스 알려줘\"라고 요청할 때 사용하세요. 운동 계획, 영양 균형 식단, 육아 전략, 시니어 케어 계획을 지원합니다."
     },
     {
-     "name": "office-goal-planner",
+     "name": "productivity-goal",
      "summary": "> 목표를 막연한 다짐이 아니라 실천 가능한 계획으로 바꿔주는 스킬입니다. '신년 목표 세워줘', '12주 계획법으로 쪼개줘', '만다라트 만들어줘', '개인 OKR', '목표를 실천으로'처럼 말하면 됩니다. 12주 계획·만다라트·개인 OKR 등으로 목표를 잘게 나누고 주간 루틴까지 연결해, \"세웠는데 안 하는\" 목표를 "
     },
     {
-     "name": "office-habit-routine",
+     "name": "productivity-habit",
      "summary": "> 작심3일을 꾸준함으로 바꾸도록 습관과 루틴을 설계해주는 스킬입니다. '습관 만들고 싶어', '작심3일 극복', '모닝 루틴 짜줘', '습관 트래커', '꾸준히 하는 법'처럼 말하면 됩니다. 습관 쌓기·트리거 연결·트래커·회복 규칙으로, 의지에 기대지 않고 구조로 반복하게 만드는 루틴을 설계합니다."
     },
     {
-     "name": "office-retro-builder",
+     "name": "productivity-retro",
      "summary": "> 한 주나 한 해를 가볍게 돌아보는 회고를 도와주는 스킬입니다. '이번 주 회고하고 싶어', 'KPT로 정리해줘', '연말 회고 템플릿', '한 줄 회고', '올해 돌아보기'처럼 말하면 됩니다. KPT·한 줄 회고·키워드 회고 등 부담 없는 템플릿으로, 반성·자책이 아니라 가볍게 돌아보고 다음을 정하는 회고를 설계합니다"
     }
    ],
@@ -739,7 +739,7 @@
    "skill_count": 13,
    "skills": [
     {
-     "name": "office-daily-briefing",
+     "name": "productivity-briefing",
      "summary": "| 업계 뉴스·시장 동향·경쟁사 소식·규제 변화·오늘 할 일을 한 장으로 묶은 아침 비즈니스 브리핑을 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"오늘 비즈니스 브리핑 해줘\" - \"아침 이슈 요약해줘\" - \"데일리 리포트 만들어줘\" - \"주간 시장 동향 알려줘\" - \"경쟁사 모니터링 보고서 써줘\" - \"업계 "
     },
     {
@@ -747,47 +747,47 @@
      "summary": "| 75개 글로벌 브랜드 디자인 시스템(Claude · ClickHouse · Clay 포함)의 토큰(색·타이포·radius·spacing·컴포넌트)을 단일 파일 HTML 산출물에 적용합니다. 본 스킬은 moai-designer 플러그인의 정본(canonical)을 가리키는 포인터입니다 — 실제 시스템 토큰·컴포넌트 정의"
     },
     {
-     "name": "office-document-reader",
+     "name": "doc-reader",
      "summary": "| 한국 공문서(HWP 3.0/5.x·HWPX·HWPML·PDF·XLSX·DOCX)를 마크다운으로 파싱해 드립니다 — 표 완벽 재현, 신구대조표, 양식 필드 추출/자동 채우기, 문서 비교, DRM 배포용 문서 복호화, OCR 연동까지. kordoc MCP의 8개 도구를 호출하므로 별도 설치·API 키가 필요 없습니다(No"
     },
     {
-     "name": "office-docx-generator",
+     "name": "doc-docx",
      "summary": "| 편집 가능한 워드(.docx) 문서를 만들어 드립니다 — 보고서, 계약서, 제안서, 공문서, 기획서를 한국형 디자인 톤으로 바로 쓸 수 있게 출력합니다. 다음과 같은 요청 시 사용하세요: - \"보고서 워드 파일로 만들어줘\" - \"계약서 DOCX로 작성해줘\" - \"공문서 양식대로 써줘\" - \"제안서 워드 문서 만들어줘\""
     },
     {
-     "name": "office-html-report",
+     "name": "doc-html-report",
      "summary": "| 마크다운 보고서를 그대로 브라우저에서 열리는 단일 파일 HTML로 바꿔 드립니다. 외부 라이브러리 없이 한 파일로 완결돼 이메일 첨부·인쇄·오프라인 열람이 됩니다. 다음과 같은 요청 시 사용하세요: - \"이 보고서 HTML 파일로 만들어줘\" - \"주간 현황 보고서를 하나의 HTML로 렌더해줘\" - \"재무제표를 HTML"
     },
     {
-     "name": "office-html-slide",
+     "name": "doc-html-slide",
      "summary": "| 발표용 슬라이드 덱을 브라우저에서 바로 열리는 단일 파일·자체 완결형(self-contained) HTML로 만들어 드립니다. 인포그래픽(차트·다이어그램·KPI)은 한국어 숫자·라벨이 100% 정확한 인라인 SVG로 직접 렌더링하고, 실사 히어로·일러스트 이미지는 Higgsfield MCP 또는 codex(gpt-im"
     },
     {
-     "name": "office-hwpx-writer",
+     "name": "doc-hwp",
      "summary": "| 아래아한글(.hwpx) 문서를 만들어 드립니다 — 한컴오피스에서 열리는 공문서·기안서·품의서·보고서를 작성하고, 기존 HWP 파일을 HWPX로 변환합니다. 다음과 같은 요청 시 사용하세요: - \"한글 파일로 공문서 만들어줘\" - \"HWP 문서 작성해줘\" - \"아래한글 기안서 써줘\" - \"한글로 품의서 작성해줘\" - \""
     },
     {
-     "name": "office-mcp-connector-setup",
+     "name": "setup-mcp-connector",
      "summary": "| [책임 경계] Drive·Notion·Higgsfield 3커넥터 인증·환경변수·트러블슈팅 가이드 전담. 페어 moai-seller:commerce-morning-brief(MCP 매장 데이터 호출)와 명확히 구분 — 본 스킬은 커넥터 설치·인증 단계, 페어는 인증 이후 실제 MCP 호출 결과물. 다음과 같은 요청 시"
     },
     {
-     "name": "office-notion-template-kit",
+     "name": "doc-notion-template",
      "summary": "> 노션 올인원 업무관리·목표·회고 템플릿의 구조를 설계해주는 스킬입니다. '노션 템플릿 만들어줘', '올인원 업무관리 대시보드', '노션 목표 관리', '노션 회고 템플릿', '노션 구조 짜줘'처럼 말하면 됩니다. 데이터베이스·뷰·속성 구조를 설계해, 흩어진 메모를 한곳에 모으는 노션 대시보드의 뼈대를 만들어줍니다."
     },
     {
-     "name": "office-pdf-writer",
+     "name": "doc-pdf",
      "summary": "| 어떤 콘텐츠든 PDF 파일로 만들어 드립니다 — 스타일이 입혀진 HTML 리포트는 디자인을 그대로 보존해 변환하고, Markdown·구조화 JSON·일반 텍스트는 자동 서식으로 렌더합니다. weasyprint 단일 엔진으로 풀 CSS를 충실히 렌더하며, 번들 Noto Sans CJK 폰트를 임베딩해 한국어·일본어·중국"
     },
     {
-     "name": "office-pptx-designer",
+     "name": "doc-pptx",
      "summary": "| 발표용 파워포인트(.pptx) 슬라이드를 디자인해 바로 열리는 파일로 만들어 드립니다 — 사내 보고, 투자 피칭, 교육자료, 컨퍼런스 키노트까지. 다음과 같은 요청 시 사용하세요: - \"발표자료 PPT로 만들어줘\" - \"파워포인트 슬라이드 디자인해줘\" - \"보고서를 발표용 PPT로 만들어줘\" - \"투자 피칭 덱 15장"
     },
     {
-     "name": "office-time-system",
+     "name": "productivity-time",
      "summary": "> 하루·한 주의 시간을 주도적으로 설계하도록 도와주는 시간관리 스킬입니다. '시간관리 어떻게 해', '야근 줄이고 싶어', '블록식스로 일정 짜줘', '덩어리 시간 만들기', '우선순위 정해줘'처럼 말하면 됩니다. 블록식스·덩어리 시간·우선순위 매트릭스로 일정을 구조화해, 끌려다니던 하루를 내가 짠 하루로 바꾸고 야근을"
     },
     {
-     "name": "office-xlsx-creator",
+     "name": "doc-xlsx",
      "summary": "| 엑셀(.xlsx) 문서를 만들어 드립니다 — 데이터 표, 차트, 수식, 조건부 서식이 들어간 KPI 대시보드·매출 분석표·예산표·간트차트를 바로 쓸 수 있게 출력합니다. 다음과 같은 요청 시 사용하세요: - \"KPI 대시보드 엑셀로 만들어줘\" - \"월간 매출 분석표 생성해줘\" - \"프로젝트 일정 간트차트 엑셀로 작성해"
     }
    ],
@@ -833,15 +833,15 @@
    "skill_count": 7,
    "skills": [
     {
-     "name": "office-building-ledger-search",
+     "name": "data-building-ledger",
      "summary": "| 국토교통부 건축HUB 건축물대장·건축인허가·주택인허가 실측 데이터로 한 필지의 용도지역·주용도·구조·규모·건폐율/용적률·세대/주차·사용승인일·내진·공시가격 시계열·노후도·철거멸실(석면)·인허가 파이프라인을 조회해 드립니다. archhub MCP의 11개 도구를 호출하므로 별도 설치·API 키가 필요 없습니다(공용키 h"
     },
     {
-     "name": "office-data-explorer",
+     "name": "data-explorer",
      "summary": "| CSV·Excel 데이터의 프로파일링·품질 보고서를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"이 데이터 분석해줘\" - \"CSV 요약해줘\" - \"이상값 찾아줘\" - \"데이터 품질 체크해줘\" 컬럼 요약·결측값/이상값 탐지·상관관계 분석을 거쳐 데이터 품질 보고서로 정리합니다."
     },
     {
-     "name": "office-data-visualizer",
+     "name": "data-visualizer",
      "summary": "| 데이터를 한눈에 보여주는 인터랙티브 차트·대시보드(HTML)를 만들어 드립니다. 다음과 같은 요청 시 사용하세요: - \"차트 만들어줘\" - \"그래프 그려줘\" - \"시각화해줘\" - \"대시보드 만들어줘\" Mermaid·Recharts·Chart.js·Tremor·ECharts 중 적합한 스택으로 인터랙티브 대시보드를 제작"
     },
     {
@@ -864,8 +864,8 @@
    "deprecated_skills": [
     "office-business-real-estate-search",
     "office-data-public-data",
-    "office-finance-court-auction-search",
-    "office-finance-korean-stock-search"
+    "data-court-auction",
+    "data-stock"
    ],
    "agents": [
     {

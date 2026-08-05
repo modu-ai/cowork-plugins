@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "kordoc": {
-      "$comment": "한국 공문서 파서 MCP (chrisryugj/kordoc, MIT, 949★) — HWP 3.0/5.x·HWPX·HWPML·PDF·XLSX·DOCX → Markdown. 8도구(parse_document·parse_table·parse_form·fill_form 등). DRM 배포용 복호화, 표 완벽 재현, 신구대조표, 양식 자동 채우기, OCR 연동. 사전 설치: Node.js 18+. 키 불필요. 라이브 스킬: moai-officer:office-document-reader. 포함 OSS: rhwp(MIT)·OpenDataLoader(Apache-2.0)·pdfjs(Apache-2.0)·cfb(Apache-2.0)·JSZip(MIT).",
+      "$comment": "한국 공문서 파서 MCP (chrisryugj/kordoc, MIT, 949★) — HWP 3.0/5.x·HWPX·HWPML·PDF·XLSX·DOCX → Markdown. 8도구(parse_document·parse_table·parse_form·fill_form 등). DRM 배포용 복호화, 표 완벽 재현, 신구대조표, 양식 자동 채우기, OCR 연동. 사전 설치: Node.js 18+. 키 불필요. 라이브 스킬: moai-officer:doc-reader. 포함 OSS: rhwp(MIT)·OpenDataLoader(Apache-2.0)·pdfjs(Apache-2.0)·cfb(Apache-2.0)·JSZip(MIT).",
       "command": "npx",
       "args": [
         "-y",

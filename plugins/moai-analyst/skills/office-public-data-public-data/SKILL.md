@@ -24,8 +24,8 @@ version: "1.0.0"
 | 자연어 KOSIS 통계 1줄 질문("광진구 고용률", "성남시 인구 추이", "전국 출산율 순위") | **korean-stats MCP** (공용키 hosted, 발급 불필요) | `quick_stats`·`quick_trend`·`quick_rank`·`chain_*` 14도구. 92 키워드 + 100+ 자연어 별칭. |
 | data.go.kr 정밀 조회·특정 API 엔드포인트 직접 호출 | **본 스킬** (BYOK: DATA_GO_KR_API_KEY) | OpenAPI 직접 제어. |
 | KOSIS OpenAPI 정밀 파라미터·고급 시계열 분석 | **본 스킬** (BYOK: KOSIS_API_KEY) | 통계표 ID·분류 코드 직접 지정. |
-| CSV/Excel 통계 파일 분석 | `moai-analyst:office-data-explorer` | 파싱된 파일 분석. |
-| 차트 시각화 | `moai-analyst:office-data-visualizer` | 차트 생성. |
+| CSV/Excel 통계 파일 분석 | `moai-analyst:data-explorer` | 파싱된 파일 분석. |
+| 차트 시각화 | `moai-analyst:data-visualizer` | 차트 생성. |
 
 > **자연어 KOSIS 통계 질문은 korean-stats MCP가 우선입니다.** 본 스킬은 (1) data.go.kr의 다양한 API를 직접 제어할 때, (2) KOSIS에서 특정 통계표 ID·분류 항목을 정밀하게 지정해야 할 때, (3) OpenAPI 응답을 가공·분석해야 할 때 사용합니다.
 
@@ -94,7 +94,7 @@ IF DATA_GO_KR_API_KEY 미설정 AND KOSIS_API_KEY 미설정:
 
 ### Step 4: 결과 정리
 - 마크다운 테이블로 데이터 표시
-- 시각화 필요 시 moai-analyst:office-data-visualizer 연계
+- 시각화 필요 시 moai-analyst:data-visualizer 연계
 
 ## 주요 KOSIS 통계 분류
 
@@ -108,8 +108,8 @@ IF DATA_GO_KR_API_KEY 미설정 AND KOSIS_API_KEY 미설정:
 ## 이 스킬을 사용하지 말아야 할 때
 
 - **자연어 KOSIS 통계 1줄 질문** → `korean-stats` MCP 우선 (`quick_stats`·`quick_trend`·`quick_rank`·`chain_*`). 공용키 hosted라 발급 불필요. 92 키워드 + 100+ 자연어 별칭, 17 시도 + 230+ 자치구 라우팅, 추계/잠정치 구분, 출처 자동 인용까지 지원.
-- **CSV/Excel 분석** → `moai-analyst:office-data-explorer` 사용
-- **차트 생성** → `moai-analyst:office-data-visualizer` 사용
+- **CSV/Excel 분석** → `moai-analyst:data-explorer` 사용
+- **차트 생성** → `moai-analyst:data-visualizer` 사용
 - **기업 공시·재무** → `dart` MCP(korean-dart-mcp) 사용 — 공시·재무·지분·XBRL + 버핏급 애널리스트 프레임(insider_signal·disclosure_anomaly·buffett_quality_snapshot)
 
 ## References

@@ -70,7 +70,7 @@ cases:
 
 chain_tests:
   - id: C01
-    name: "Happy: finance-variance-analysis → collab-exec-summary → office-pptx-designer"
+    name: "Happy: finance-variance-analysis → collab-exec-summary → doc-pptx"
     expected: "재무 분석 → 1pager → 이사회 슬라이드 1매"
   - id: C02
     name: "Happy: weekly-report → collab-exec-summary"

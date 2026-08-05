@@ -96,7 +96,7 @@ nda-triage → contract-review → legal-risk → docx-generator → ai-slop-rev
 | 1 | `legal-nda-triage` | 분류 — 상호/일방, 기간, 손해배상 캡, 준거법 |
 | 2 | `legal-contract-review` | 조항별 정밀 검토, 수정 제안 마크업 |
 | 3 | `legal-legal-risk` | 종합 위험도 평가 (상/중/하), 우선순위 부여 |
-| 4 | `office-docx-generator` | 위험 보고서 docx 생성 |
+| 4 | `doc-docx` | 위험 보고서 docx 생성 |
 | 5 | `general-ai-slop-reviewer` | 보고서 어투 정리 |
 
 ## 사용 방식 — 한 줄 요청 (패턴 3: 배치 처리)

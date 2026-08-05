@@ -9,8 +9,8 @@ description: |
   - "차트랑 코드 하이라이트 넣어서 학습자료 만들어줘"
   - "이 주제 시각적으로 풍부하게 설명 자료 만들어줘"
   - "브라우저에서 바로 보는 학습 노트 HTML로 만들어줘"
-  학습 전용 렌더러로, office-html-report design-token·폰트를 공유해 시각 일관성을 유지하되 mermaid·ECharts·KaTeX·highlight.js·AOS를 콘텐츠가 쓸 때만 조건부 로딩합니다.
-  [책임 경계] vs moai-officer:office-html-report: 이 스킬=도식·차트·코드가 풍부한 학습자료(JS 라이브러리 허용), 저 스킬=0-JS 단일파일 업무 보고서.
+  학습 전용 렌더러로, doc-html-report design-token·폰트를 공유해 시각 일관성을 유지하되 mermaid·ECharts·KaTeX·highlight.js·AOS를 콘텐츠가 쓸 때만 조건부 로딩합니다.
+  [책임 경계] vs moai-officer:doc-html-report: 이 스킬=도식·차트·코드가 풍부한 학습자료(JS 라이브러리 허용), 저 스킬=0-JS 단일파일 업무 보고서.
 version: "1.0.0"
 ---
 
@@ -18,7 +18,7 @@ version: "1.0.0"
 
 ## 개요
 
-`education-tutor-research`의 종합본(또는 임의의 학습 내용)을 받아, 학습에 최적화된 구조의 **단일 HTML 학습자료**로 렌더한다. mermaid 도식, ECharts 차트, KaTeX 수식, highlight.js 코드 하이라이트, AOS 스크롤 효과를 **콘텐츠가 실제로 쓸 때만** 주입한다(조건부 로딩 — 순수 텍스트 레슨은 JS 0). office-html-report의 디자인 토큰·폰트를 공유해 시각 일관성을 유지하지만, office-html-report의 0-JS 원칙은 건드리지 않는 별도 렌더러다.
+`education-tutor-research`의 종합본(또는 임의의 학습 내용)을 받아, 학습에 최적화된 구조의 **단일 HTML 학습자료**로 렌더한다. mermaid 도식, ECharts 차트, KaTeX 수식, highlight.js 코드 하이라이트, AOS 스크롤 효과를 **콘텐츠가 실제로 쓸 때만** 주입한다(조건부 로딩 — 순수 텍스트 레슨은 JS 0). doc-html-report의 디자인 토큰·폰트를 공유해 시각 일관성을 유지하지만, doc-html-report의 0-JS 원칙은 건드리지 않는 별도 렌더러다.
 
 ## 트리거 키워드
 
@@ -53,7 +53,7 @@ version: "1.0.0"
 ### 자체 완결 단일 파일
 
 - 외부 의존: 폰트 CDN + (콘텐츠가 쓸 때만) 라이브러리 CDN. 그 외 자산 인라인.
-- `:root` 디자인 토큰은 `moai-officer:office-html-report`의 `references/design-tokens.md`를 그대로 사용(Anthropic 영감 팔레트).
+- `:root` 디자인 토큰은 `moai-officer:doc-html-report`의 `references/design-tokens.md`를 그대로 사용(Anthropic 영감 팔레트).
 - 폰트는 explainer 매핑: 본문 Noto Sans KR · 제목 Noto Serif KR · 코드 JetBrains Mono (`references/cdn-libraries.md` 폰트 절 참조).
 - `@media print` 블록 포함(인쇄·PDF 저장 대비).
 
@@ -120,7 +120,7 @@ version: "1.0.0"
 - **조건부 로딩 준수** — 안 쓰는 라이브러리는 절대 주입하지 않는다(불필요한 무게·외부 의존 방지).
 - **CDN URL은 references/cdn-libraries.md를 인용** — 임의 버전·URL을 지어내지 않는다(메이저 핀: `@11`, `@5`, `@0.16`, `@2`).
 - **접근성**: 본문 대비 WCAG AA 유지(design-tokens.md 대비표), 도식·차트에 대체 텍스트·캡션 제공.
-- **office-html-report를 오염시키지 않는다** — 이 렌더러는 별도이며, 업무 보고서는 0-JS인 office-html-report를 사용한다.
+- **doc-html-report를 오염시키지 않는다** — 이 렌더러는 별도이며, 업무 보고서는 0-JS인 doc-html-report를 사용한다.
 - 학습 내용의 정확성은 입력(education-tutor-research 출처)에 의존한다. 출처 미검증 내용은 자료에 "확인 필요"로 표기한다.
 
 ## 관련 스킬
@@ -131,9 +131,9 @@ version: "1.0.0"
 
 ## 이 스킬을 사용하지 말아야 할 때
 
-- **0-JS 단일파일 업무 보고서**(현황·재무·인시던트·PR) → `moai-officer:office-html-report`
-- **발표용 슬라이드** → `moai-officer:office-pptx-designer`
-- **인쇄·제출용 문서(.docx)** → `moai-officer:office-docx-generator`
+- **0-JS 단일파일 업무 보고서**(현황·재무·인시던트·PR) → `moai-officer:doc-html-report`
+- **발표용 슬라이드** → `moai-officer:doc-pptx`
+- **인쇄·제출용 문서(.docx)** → `moai-officer:doc-docx`
 
 
 ## 한국어 카피 품질 게이트 (필수)

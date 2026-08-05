@@ -64,7 +64,7 @@ AskUserQuestion으로 분석 목적을 선택받습니다:
    - 대분류별 기술 분포
    - 세부 분야별 핵심 기술 식별
 
-4. 시각화 (moai-analyst:office-data-visualizer 스킬 연계)
+4. 시각화 (moai-analyst:data-visualizer 스킬 연계)
    - 연도별 출원 추이 차트
    - 출원인별 점유율 파이 차트
    - IPC 분포 트리맵
@@ -183,12 +183,12 @@ AskUserQuestion으로 분석 목적을 선택받습니다:
 - FTO 분석은 등록특허를 대상으로 하며, 출원 중인 특허는 등록 후 권리 범위가 확정됩니다.
 - 출원서 초안은 참고용이며, 실제 출원 전 반드시 변리사의 검토를 거치시기 바랍니다.
 - 특허 데이터가 부족한 경우 moai-lawyer:legal-patent-search 스킬을 먼저 실행하여 데이터를 수집한 뒤 연계 분석하는 것을 권장합니다.
-- 시각화가 필요한 경우 moai-analyst:office-data-visualizer 스킬을 연계하여 차트를 생성할 수 있습니다.
+- 시각화가 필요한 경우 moai-analyst:data-visualizer 스킬을 연계하여 차트를 생성할 수 있습니다.
 
 ## 관련 스킬
 
 - **moai-lawyer:legal-patent-search** - 특허 검색 및 서지정보 수집
-- **moai-analyst:office-data-visualizer** - 특허 동향 시각화 (연도별 추이, IPC 분포 차트)
+- **moai-analyst:data-visualizer** - 특허 동향 시각화 (연도별 추이, IPC 분포 차트)
 - **moai-tutor:education-grant-writer** - 연구비 신청서 선행기술 섹션 작성
 
 ### 후처리 체인 (본문/서술 산출물)
@@ -200,7 +200,7 @@ AskUserQuestion으로 분석 목적을 선택받습니다:
 - **moai-coworker:general-ai-slop-reviewer** - 작성된 보고서·출원서 AI 패턴 검수 및 후처리
 - **moai-writer:general-humanize-korean** - 한국어 문장 자연화(AI 티 제거, 의미 보존)
 
-> 연도별 출원 추이·IPC 분포·출원인 점유율 등 데이터/표·차트 산출물은 본 체인 대상이 아니며, 시각화는 **moai-analyst:office-data-visualizer**로 라우팅합니다(혼합 산출물은 서술 부분에만 체인 적용).
+> 연도별 출원 추이·IPC 분포·출원인 점유율 등 데이터/표·차트 산출물은 본 체인 대상이 아니며, 시각화는 **moai-analyst:data-visualizer**로 라우팅합니다(혼합 산출물은 서술 부분에만 체인 적용).
 
 ## 면책 조항
 

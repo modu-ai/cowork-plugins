@@ -317,7 +317,7 @@ Gartner: 2026 말 기업 앱의 40%가 AI 에이전트 포함. McKinsey: B2B 영
 ### 사후 체이닝 (순서대로 실행 권장)
 
 1. **moai-consultant:consult-strategy**: 영업 플레이북 생성 전, 제품/서비스의 전략적 포지셔닝을 먼저 수립
-2. **moai-officer:office-pptx-designer**: 생성된 영업 플레이북 Markdown 문서를 피치덱 형식의 PPT로 변환
+2. **moai-officer:doc-pptx**: 생성된 영업 플레이북 Markdown 문서를 피치덱 형식의 PPT로 변환
 3. **moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean**: 생성된 플레이북 문서의 AI 패턴을 검수·수정한 뒤 한국어 표현을 자연스럽게 다듬습니다 (필수)
 
 ### 대안 스킬

@@ -134,7 +134,7 @@ legal-service-launch-checklist → moai-coworker:general-ai-slop-reviewer → mo
 - **moai-coworker:general-ai-slop-reviewer**: AI 글쓰기 패턴(과장·상투구·획일적 구조) 검수
 - **moai-writer:general-humanize-korean**: 한국어 자연스러움 보정
 
-표·매트릭스 등 데이터 산출물은 이 체인 대상이 아니며, 별도로 **moai-officer:office-xlsx-creator**로 정리합니다.
+표·매트릭스 등 데이터 산출물은 이 체인 대상이 아니며, 별도로 **moai-officer:doc-xlsx**로 정리합니다.
 
 ## 이 스킬을 사용하지 말아야 할 때
 

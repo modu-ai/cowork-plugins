@@ -265,7 +265,7 @@ SWOT은 단순히 4칸을 채우는 도구가 아니라 **마케팅·사업 플�
 - **moai-consultant:consult-brief**: 컨설팅 제안서 형식의 구조화된 문서 필요 시
 - **moai-consultant:consult-startup**: 스타트업 종합 계획 (피치덱, 재무 모델 포함)
 - **moai-consultant:consult-market**: 심층 시장 조사 및 경쟁사 분석 필요 시
-- **moai-officer:office-pptx-designer**: 전략 문서를 PPT로 변환
+- **moai-officer:doc-pptx**: 전략 문서를 PPT로 변환
 - **moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean**: 생성된 문서 AI 패턴 검수 후 한국어 표현을 자연스럽게 다듬습니다 (필수)
 
 ## References

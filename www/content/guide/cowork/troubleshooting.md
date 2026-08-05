@@ -130,7 +130,7 @@ Windows는 기본 경로 길이 한계가 260자입니다. 한글 폴더명·긴
 - `moai-officer` 플러그인이 설치되어 있는지 확인 — 좌측 사이드바 → 사용자 지정 → 설치 목록
 - 시스템에 한국어 폰트(Pretendard, Noto Sans KR, 맑은 고딕)가 설치되어 있는지 확인 — 일부 PPT/HWPX는 시스템 폰트를 임베드
 - HWPX(한글)는 별도 의존성이 필요 — `moai-officer` 페이지의 안내 참고
-- PDF는 `moai-officer:office-pdf-writer`가 Noto Sans CJK를 자동 다운로드하므로 별도 폰트 설치 불필요
+- PDF는 `moai-officer:doc-pdf`가 Noto Sans CJK를 자동 다운로드하므로 별도 폰트 설치 불필요
 
 ## 5. 스킬·플러그인이 자동으로 호출 안 됨
 

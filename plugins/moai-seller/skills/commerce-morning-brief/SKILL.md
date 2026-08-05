@@ -5,7 +5,7 @@ description: |
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   "아침 브리핑 만들어줘", "오늘 매장 현황 보여줘", "ROAS 확인해줘", "매장 대시보드 요약", "아침에 매장 상황 한눈에 보기", "daily brief", "모닝 브리핑", "오늘 주문 요약해줘", "신규 주문 통합해줘", "스마트스토어 카페24 아임웹 주문 합쳐줘", "채널별 주문 한눈에", "대시보드 5개 왔다갔다 그만하고 싶어"
   2개 SCOPE 모드(전체 아침 브리핑 / 주문 요약만)가 발화로 자동 선택되며, 수치·데이터 1줄 통합 산출이므로 general-ai-slop-reviewer 체이닝은 제외합니다.
-  [책임 경계] 페어 moai-officer:office-daily-briefing(외부 뉴스·시장 정보)와 구분 — 본 스킬은 매장 운영 데이터 전용.
+  [책임 경계] 페어 moai-officer:productivity-briefing(외부 뉴스·시장 정보)와 구분 — 본 스킬은 매장 운영 데이터 전용.
 version: "1.0.0"
 ---
 
@@ -168,14 +168,14 @@ SCOPE는 발화로 자동 선택됩니다. "아침 브리핑"이면 전체 4개 
 
 ## 관련 스킬
 
-- `moai-officer:office-mcp-connector-setup` — 커넥터로 매장 데이터를 직접 조회하려는 경우 인증 가이드
+- `moai-officer:setup-mcp-connector` — 커넥터로 매장 데이터를 직접 조회하려는 경우 인증 가이드
 - `moai-seller:commerce-integrated-strategy` — 브리핑·주문 데이터 기반 전략 수립
 
 ---
 
 ## 이 스킬을 사용하지 말아야 할 때
 
-- 외부 뉴스·시장 트렌드·경쟁사 정보가 필요한 경우 → `moai-officer:office-daily-briefing` 사용
+- 외부 뉴스·시장 트렌드·경쟁사 정보가 필요한 경우 → `moai-officer:productivity-briefing` 사용
 - 채널별 신규 주문 상세가 필요한 경우 → 본 스킬의 **주문 요약 모드** 사용 ("오늘 주문 요약해줘")
 - 광고 캠페인 성과 분석 심층 리포트가 필요한 경우 → 별도 광고 분석 스킬 사용
-- MCP 커넥터로 직접 조회하려는데 인증이 완료되지 않은 경우 → `moai-officer:office-mcp-connector-setup` 먼저 실행
+- MCP 커넥터로 직접 조회하려는데 인증이 완료되지 않은 경우 → `moai-officer:setup-mcp-connector` 먼저 실행

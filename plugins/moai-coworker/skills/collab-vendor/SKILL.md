@@ -104,7 +104,7 @@ collab-vendor → moai-coworker:general-ai-slop-reviewer → moai-writer:general
 - `moai-coworker:general-ai-slop-reviewer` — 서술형 본문의 AI 티 패턴을 검수·수정합니다.
 - `moai-writer:general-humanize-korean` — 검수된 본문을 자연스러운 한국어 보고체로 다듬습니다.
 
-벤더 평가표, 리스크 평가 매트릭스 등 **점수·표 산출물**은 산문 후처리 대상이 아니며 `moai-officer:office-xlsx-creator` 또는 `moai-analyst:office-data-visualizer`로 라우팅합니다.
+벤더 평가표, 리스크 평가 매트릭스 등 **점수·표 산출물**은 산문 후처리 대상이 아니며 `moai-officer:doc-xlsx` 또는 `moai-analyst:data-visualizer`로 라우팅합니다.
 
 ## 이 스킬을 사용하지 말아야 할 때
 

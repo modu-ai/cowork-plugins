@@ -279,7 +279,7 @@ AI가 생성한 랜딩 페이지 카피는 사실 확인 후 사용하세요.
 - SNS 포스팅: `moai-marketer:content-sns-content` 스킬 사용
 - 이메일 뉴스레터: `moai-marketer:content-newsletter` 스킬 사용
 - 제품 상세페이지: `moai-seller:commerce-product-detail` 스킬 사용
-- 데이터 대시보드: `moai-analyst:office-data-visualizer` 스킬 사용
+- 데이터 대시보드: `moai-analyst:data-visualizer` 스킬 사용
 - 멀티 페이지 웹사이트: 별도 웹 에이전트 필요
 
 

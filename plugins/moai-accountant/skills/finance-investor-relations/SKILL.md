@@ -357,10 +357,10 @@ AI옵틱스: 중가, 고기능 (차별화)
 - **moai-consultant:consult-startup**: 스타트업 초기 IR 자료 및 재무 모델
 - **moai-consultant:consult-market**: 시장 규모 분석 및 TAM/SAM/SOM
 - **moai-consultant:consult-strategy**: 비즈니스 모델 및 성장 전략
-- **moai-officer:office-pptx-designer**: IR 덱 Markdown → PPT 변환
+- **moai-officer:doc-pptx**: IR 덱 Markdown → PPT 변환
 - **moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean**: 생성된 IR 자료 AI 패턴 검수 후 한국어 표현을 자연스럽게 다듬습니다 (필수)
 
-> IR 덱의 재무 모델·매출 예측·밸류에이션 등 **표·수치 산출물은 humanize 대상이 아닙니다** — `moai-officer:office-xlsx-creator`로 라우팅하세요. 위 체인은 문제·솔루션·시장·비전 등 **서술(narrative) 슬라이드 본문**에만 적용합니다.
+> IR 덱의 재무 모델·매출 예측·밸류에이션 등 **표·수치 산출물은 humanize 대상이 아닙니다** — `moai-officer:doc-xlsx`로 라우팅하세요. 위 체인은 문제·솔루션·시장·비전 등 **서술(narrative) 슬라이드 본문**에만 적용합니다.
 
 ## References
 

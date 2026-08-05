@@ -155,7 +155,7 @@ codex exec "Use \$imagegen. Text (verbatim, 한글): '2026년 분기 실적'. Ty
 | 모델 범위 | 11종(Soul·Nano Banana Pro·GPT Image 2·Seedream 등) | gpt-image-2 단일 |
 | MCP 의존 | 필요 (`moai-coworker/.mcp.json`) | 불필요 (codex CLI 별도 설치) |
 
-상세 백엔드 정책은 [`moai-officer:office-html-slide` references/image-backend-policy.md](../../../moai-coworker/skills/office-html-slide/references/image-backend-policy.md) 참조.
+상세 백엔드 정책은 [`moai-officer:doc-html-slide` references/image-backend-policy.md](../../../moai-coworker/skills/doc-html-slide/references/image-backend-policy.md) 참조.
 
 ## 출력
 

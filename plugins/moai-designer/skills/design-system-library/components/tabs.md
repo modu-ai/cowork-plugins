@@ -65,5 +65,5 @@ shadcn `Tabs` / `TabsList` / `TabsTrigger` / `TabsContent`를 React 없이 재�
 ## 토큰 메모
 
 - 선택 탭은 `bg-primary text-white`, 비선택은 `text-muted` → `text-ink` hover.
-- `<details>` 패턴은 `0-JS` 산출물(office-html-report 기본 템플릿)과 호환. ARIA 탭은 CDN 환경(office-html-report design_system 지정 시)에서만.
+- `<details>` 패턴은 `0-JS` 산출물(doc-html-report 기본 템플릿)과 호환. ARIA 탭은 CDN 환경(doc-html-report design_system 지정 시)에서만.
 - 키보드 접근성: ARIA 탭은 좌우 화살표로 탭 전환 권장(WAI-ARIA Authoring Practices).

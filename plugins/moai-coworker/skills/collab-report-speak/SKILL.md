@@ -103,7 +103,7 @@ version: "1.0.0"
 - **moai-coworker:collab-meeting**: 보고가 회의로 이어질 때 진행 설계
 - **moai-coworker:collab-feedback-loop**: 진행 중 중간 보고·피드백 요청
 - **moai-coworker:collab-conflict**: 까다로운 상사·반응에 대한 대응
-- **moai-officer:office-docx-generator**: 구두 보고를 문서 보고서로 정리
+- **moai-officer:doc-docx**: 구두 보고를 문서 보고서로 정리
 
 ### 후처리 체인 (보고 스크립트·설명문 등 서술형 산출물)
 

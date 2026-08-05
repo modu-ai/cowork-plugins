@@ -20,7 +20,7 @@ version: "1.0.0"
 
 ```yaml
 ---
-name: <skill-name>                          # 필수. 소문자 하이픈 (예: office-docx-generator)
+name: <skill-name>                          # 필수. 소문자 하이픈 (예: doc-docx)
 description: |                              # 필수. 목적 + 트리거 키워드
   <스킬 목적을 서술형으로 작성>
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:

@@ -84,4 +84,4 @@ Y2K 콘솔 크롬·앰버. 본 파일은 `테마_컴포넌트_쇼케이스_전�
 
 ## 사용
 
-`office-html-report` / `office-html-slide`에서 `design_system: nintendo-2001` 지정 시 본 토큰이 로드됩니다.
+`doc-html-report` / `doc-html-slide`에서 `design_system: nintendo-2001` 지정 시 본 토큰이 로드됩니다.

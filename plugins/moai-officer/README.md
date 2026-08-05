@@ -24,30 +24,30 @@ claude plugin install moai-officer@moai-cowork
 
 ## 스킬 13종
 
-호출 형식: `/moai-officer:office-<스킬명>` — 예: `/moai-officer:office-hwpx-writer`. 자연어 요청("주간 보고서 HWPX로 만들어줘")으로도 자동 매칭됩니다.
+호출 형식: `/moai-officer:office-<스킬명>` — 예: `/moai-officer:doc-hwp`. 자연어 요청("주간 보고서 HWPX로 만들어줘")으로도 자동 매칭됩니다.
 
 ### 문서 생성·파싱 (8종)
 
 | 스킬 | 역할 |
 |------|------|
-| `office-hwpx-writer` | 아래아한글(.hwpx) 공문서·기안서·품의서·보고서 작성, HWP→HWPX 변환 |
-| `office-docx-generator` | 워드(.docx) 보고서·계약서·제안서·공문서 생성 |
-| `office-xlsx-creator` | 엑셀(.xlsx) KPI 대시보드·매출 분석표·예산표·간트차트 생성 |
-| `office-pptx-designer` | 파워포인트(.pptx) 발표 슬라이드 디자인 |
-| `office-pdf-writer` | HTML/Markdown/JSON/텍스트 → PDF 변환 (디자인 보존) |
-| `office-html-report` | 마크다운 보고서 → 단일 파일 HTML 리포트 |
-| `office-html-slide` | 자체 완결형 단일 파일 HTML 슬라이드 덱 (인라인 SVG 인포그래픽) |
-| `office-document-reader` | 한국 공문서(HWP·HWPX·PDF·XLSX·DOCX) 마크다운 파싱 — kordoc MCP |
+| `doc-hwp` | 아래아한글(.hwpx) 공문서·기안서·품의서·보고서 작성, HWP→HWPX 변환 |
+| `doc-docx` | 워드(.docx) 보고서·계약서·제안서·공문서 생성 |
+| `doc-xlsx` | 엑셀(.xlsx) KPI 대시보드·매출 분석표·예산표·간트차트 생성 |
+| `doc-pptx` | 파워포인트(.pptx) 발표 슬라이드 디자인 |
+| `doc-pdf` | HTML/Markdown/JSON/텍스트 → PDF 변환 (디자인 보존) |
+| `doc-html-report` | 마크다운 보고서 → 단일 파일 HTML 리포트 |
+| `doc-html-slide` | 자체 완결형 단일 파일 HTML 슬라이드 덱 (인라인 SVG 인포그래픽) |
+| `doc-reader` | 한국 공문서(HWP·HWPX·PDF·XLSX·DOCX) 마크다운 파싱 — kordoc MCP |
 
 ### 문서 지원·생산성 (5종)
 
 | 스킬 | 역할 |
 |------|------|
 | `office-design-system-library` | 75개 브랜드 디자인 시스템 토큰을 HTML 산출물에 적용 (정본은 moai-designer) |
-| `office-notion-template-kit` | 노션 업무관리·목표·회고 템플릿 구조 설계 |
-| `office-mcp-connector-setup` | Drive·Notion·Higgsfield 커넥터 인증·환경변수 가이드 |
-| `office-time-system` | 하루·주간 시간 설계 (블록식스·우선순위) |
-| `office-daily-briefing` | 업계 뉴스·시장 동향·오늘 할 일 아침 브리핑 |
+| `doc-notion-template` | 노션 업무관리·목표·회고 템플릿 구조 설계 |
+| `setup-mcp-connector` | Drive·Notion·Higgsfield 커넥터 인증·환경변수 가이드 |
+| `productivity-time` | 하루·주간 시간 설계 (블록식스·우선순위) |
+| `productivity-briefing` | 업계 뉴스·시장 동향·오늘 할 일 아침 브리핑 |
 
 ## MCP 연동 1종
 
@@ -55,7 +55,7 @@ claude plugin install moai-officer@moai-cowork
 
 | 서버 | 역할 | 키 발급 | 비고 |
 |------|------|---------|------|
-| `kordoc` | 한국 공문서 파서 — HWP·HWPX·PDF·XLSX·DOCX → Markdown, 표 재현·양식 채우기·OCR (8도구) | 불필요 | Node.js 18+ 필요, `npx -y kordoc mcp` 자동 실행. 라이브 스킬: `office-document-reader` |
+| `kordoc` | 한국 공문서 파서 — HWP·HWPX·PDF·XLSX·DOCX → Markdown, 표 재현·양식 채우기·OCR (8도구) | 불필요 | Node.js 18+ 필요, `npx -y kordoc mcp` 자동 실행. 라이브 스킬: `doc-reader` |
 
 > 공공데이터 MCP(korean-stats KOSIS · archhub 건축물대장 · dart 전자공시)는 `moai-analyst` 플러그인으로 이관되었습니다.
 

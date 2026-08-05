@@ -97,7 +97,7 @@ version: "1.0.0"
 - **moai-coworker:collab-negotiation**: 갈등을 면담·요청·협상으로 풀 때
 - **moai-coworker:collab-feedback-loop**: 행동 변화가 필요할 때 건설적 피드백 전달
 - **moai-coworker:collab-report-speak**: 까다로운 상사에게 보고할 때 화법 설계
-- **moai-coworker:office-goal-planner**: 관계 스트레스 관리·경계 설정 루틴
+- **moai-coworker:productivity-goal**: 관계 스트레스 관리·경계 설정 루틴
 
 ### 후처리 체인 (대응 스크립트·거절 멘트 등 서술형 산출물)
 

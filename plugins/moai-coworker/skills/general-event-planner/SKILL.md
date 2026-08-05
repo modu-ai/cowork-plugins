@@ -92,7 +92,7 @@ general-event-planner → moai-coworker:general-ai-slop-reviewer → moai-writer
 - **moai-coworker:general-ai-slop-reviewer**: AI 티 나는 표현·과장 어조를 검수하고 다듬습니다
 - **moai-writer:general-humanize-korean**: 자연스러운 한국어 문장으로 마무리합니다
 
-예산 시트·비용 배분표 같은 **숫자·표 산출물**은 위 글 체인 대신 **moai-officer:office-xlsx-creator**로 정리하세요. (혼합 산출물은 글 부분만 체인에 태우고, 표는 그대로 xlsx로 보냅니다.)
+예산 시트·비용 배분표 같은 **숫자·표 산출물**은 위 글 체인 대신 **moai-officer:doc-xlsx**로 정리하세요. (혼합 산출물은 글 부분만 체인에 태우고, 표는 그대로 xlsx로 보냅니다.)
 
 ## 이 스킬을 사용하지 말아야 할 때
 

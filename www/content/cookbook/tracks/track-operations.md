@@ -129,7 +129,7 @@ Level 5 (비응급, <1주): 6건 — 자동 응답 + 감사 표현
 
 ### 자동 체인
 
-`collab-proposal` (12섹션 표준 목차 + Three C's: Compliant · Complete · Compelling) → `office-docx-generator` 또는 `office-pptx-designer` → `general-ai-slop-reviewer`
+`collab-proposal` (12섹션 표준 목차 + Three C's: Compliant · Complete · Compelling) → `doc-docx` 또는 `doc-pptx` → `general-ai-slop-reviewer`
 
 ### 산출물
 
@@ -155,7 +155,7 @@ Level 5 (비응급, <1주): 6건 — 자동 응답 + 감사 표현
 
 ### 자동 체인
 
-`collab-vendor` (5축 평가 매트릭스) → `office-xlsx-creator` (조건부 서식 + 레이더 차트 + 종합 점수 순위)
+`collab-vendor` (5축 평가 매트릭스) → `doc-xlsx` (조건부 서식 + 레이더 차트 + 종합 점수 순위)
 
 ---
 

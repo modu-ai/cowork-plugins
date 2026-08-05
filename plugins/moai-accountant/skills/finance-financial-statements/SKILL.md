@@ -182,7 +182,7 @@ finance-financial-statements (해설·코멘트 부분) → moai-coworker:genera
 - **moai-coworker:general-ai-slop-reviewer**: AI 티 나는 표현·과장·상투구 검수 및 수정
 - **moai-writer:general-humanize-korean**: 한국어 자연스러움 보정 (서술 산출물 한정)
 
-> 재무상태표·손익계산서·현금흐름표·재무비율 같은 표·숫자 산출물 자체는 체인 대상이 아니며, 엑셀화가 필요하면 `moai-officer:office-xlsx-creator`로 라우팅한다. 체인은 표를 둘러싼 해설·주석·코멘트 문장에만 적용한다.
+> 재무상태표·손익계산서·현금흐름표·재무비율 같은 표·숫자 산출물 자체는 체인 대상이 아니며, 엑셀화가 필요하면 `moai-officer:doc-xlsx`로 라우팅한다. 체인은 표를 둘러싼 해설·주석·코멘트 문장에만 적용한다.
 
 ## 이 스킬을 사용하지 말아야 할 때
 

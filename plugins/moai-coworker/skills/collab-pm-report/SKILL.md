@@ -183,7 +183,7 @@ MCP 가용 시 자동 우선 활용. 사용자가 명시적으로 텍스트 입�
 - **moai-coworker:general-ai-slop-reviewer**: AI 패턴·격식체 톤 검수 (텍스트 산출물 필수)
 - **moai-writer:general-humanize-korean**: 한국어 자연스러움 보정 (general-ai-slop-reviewer 다음 단계)
 - **moai-coworker:collab-exec-summary**: 1pager를 더 압축된 C-level 보고로 변환
-- **moai-officer:office-pptx-designer**: 슬라이드 발표 자료로 출력
+- **moai-officer:doc-pptx**: 슬라이드 발표 자료로 출력
 
 ## 출력 형식
 
@@ -269,17 +269,17 @@ MCP 가용 시 자동 우선 활용. 사용자가 명시적으로 텍스트 입�
 - `moai-coworker:general-ai-slop-reviewer` — AI 패턴 검수
 - `moai-writer:general-humanize-korean` — 한국어 자연스러움 보정 (general-ai-slop-reviewer 다음)
 - `moai-coworker:collab-exec-summary` — C-level 1pager로 더 압축
-- `moai-officer:office-pptx-designer` — 발표 슬라이드 출력
+- `moai-officer:doc-pptx` — 발표 슬라이드 출력
 
 **Alternative**:
-- `moai-officer:office-daily-briefing` — 일간 보고 (주간이 아닌 일일)
+- `moai-officer:productivity-briefing` — 일간 보고 (주간이 아닌 일일)
 
 ## 관련 커맨드
 
 - 등록된 스킬 체인:
   - 주간보고 본문 후처리(표준): `weekly-report → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean`
   - 주간보고 → 임원 1pager: `weekly-report → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean → moai-coworker:collab-exec-summary`
-  - 발표 슬라이드: `weekly-report → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean → moai-officer:office-pptx-designer`
+  - 발표 슬라이드: `weekly-report → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean → moai-officer:doc-pptx`
 
 ## 출처
 

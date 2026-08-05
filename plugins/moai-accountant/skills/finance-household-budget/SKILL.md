@@ -91,7 +91,7 @@ version: "1.0.0"
 - **moai-accountant:finance-wealth-roadmap**: 확보한 저축 가능액으로 자산 로드맵 설계
 - **moai-accountant:finance-insurance-fit**: 고정비 중 보험료 점검·다이어트
 - **moai-accountant:finance-personal-tax-saver**: 절세로 실질 가처분 소득 늘리기
-- **moai-coworker:office-retro-builder**: 소비 회고를 정기 회고 루틴에 통합
+- **moai-coworker:productivity-retro**: 소비 회고를 정기 회고 루틴에 통합
 
 | 단계 | 스킬 | 역할 |
 |------|------|------|

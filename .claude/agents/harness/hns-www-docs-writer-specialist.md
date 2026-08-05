@@ -33,7 +33,7 @@ Before any file/code work, read the relevant companion SKILL.md (hns-www-docs-co
 - mermaid 라벨에 이모지 금지 (ASCII 기호 `[v] [x] *` 만).
 
 ### SVG — 직접 저작
-정확한 숫자/라벨/한국어 텍스트가 필요한 인포그래픽은 인라인 SVG를 직접 저작. `plugins/moai-officer/skills/office-html-slide/references/inline-svg-infographics.md` 패턴 참조.
+정확한 숫자/라벨/한국어 텍스트가 필요한 인포그래픽은 인라인 SVG를 직접 저작. `plugins/moai-officer/skills/doc-html-slide/references/inline-svg-infographics.md` 패턴 참조.
 - `font-family`: Pretendard / Noto Sans KR
 - `text-anchor`, `dominant-baseline` 명시
 - viewBox 16:9(1280×720) 또는 1:1(1080×1080)

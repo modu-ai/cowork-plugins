@@ -4,7 +4,7 @@ weight: 40
 description: "EDA · 프로파일링 · 이상값 탐지를 moai-analyst:data-explorer 스킬로 자동화하는 절차."
 geekdocBreadcrumb: true
 ---
-> "이 데이터로 뭘 할 수 있을까?"라는 질문은 EDA(탐색적 데이터 분석)으로 답합니다. 모두의 코워크의 `office-data-explorer`가 5분 안에 첫 인사이트를 돌려줍니다.
+> "이 데이터로 뭘 할 수 있을까?"라는 질문은 EDA(탐색적 데이터 분석)으로 답합니다. 모두의 코워크의 `data-explorer`가 5분 안에 첫 인사이트를 돌려줍니다.
 
 ```mermaid
 flowchart TD
@@ -20,10 +20,10 @@ flowchart TD
 
 | 단계 | 스킬 | 용도 |
 |---|---|---|
-| 데이터 로드 + 프로파일링 | `moai-analyst:office-data-explorer` | 컬럼 요약, 결측·이상값, 상관관계 |
+| 데이터 로드 + 프로파일링 | `moai-analyst:data-explorer` | 컬럼 요약, 결측·이상값, 상관관계 |
 | 통계·공공데이터 보강 | `moai-analyst:office-public-data-public-data` | KOSIS·data.go.kr |
-| 시각화 | `moai-analyst:office-data-visualizer` | 차트·대시보드 |
-| 결과 출력 | `moai-officer:office-xlsx-creator` / `moai-officer:office-docx-generator` | 엑셀·워드 보고서 |
+| 시각화 | `moai-analyst:data-visualizer` | 차트·대시보드 |
+| 결과 출력 | `moai-officer:doc-xlsx` / `moai-officer:doc-docx` | 엑셀·워드 보고서 |
 
 ## EDA 5단계
 
@@ -97,5 +97,5 @@ flowchart TD
 
 ### Sources
 
-- moai-analyst 플러그인 [`office-data-explorer`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-analyst/skills/office-data-explorer/SKILL.md), [`office-public-data-public-data`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-analyst/skills/office-public-data-public-data/SKILL.md)
+- moai-analyst 플러그인 [`data-explorer`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-analyst/skills/data-explorer/SKILL.md), [`office-public-data-public-data`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-analyst/skills/office-public-data-public-data/SKILL.md)
 - [KOSIS 통계청](https://kosis.kr) · [공공데이터포털](https://www.data.go.kr)

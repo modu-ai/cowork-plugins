@@ -58,7 +58,7 @@ flowchart LR
 
 ### 자동 체인
 
-`hr-draft-offer` → `office-docx-generator` → `general-ai-slop-reviewer`
+`hr-draft-offer` → `doc-docx` → `general-ai-slop-reviewer`
 
 ### 산출물
 
@@ -85,7 +85,7 @@ flowchart LR
 
 ### 자동 체인
 
-`hr-resume-screener` (이력서 50개 × JD 매칭) → 등급별 분류 → `office-docx-generator` → `general-ai-slop-reviewer`
+`hr-resume-screener` (이력서 50개 × JD 매칭) → 등급별 분류 → `doc-docx` → `general-ai-slop-reviewer`
 
 ### 산출물
 

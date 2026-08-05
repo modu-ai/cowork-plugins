@@ -97,7 +97,7 @@ version: "1.0.0"
 - **moai-accountant:finance-household-budget**: 월 예산·소비 관리로 저축 가능액 확보
 - **moai-accountant:finance-invest-primer**: 종잣돈을 투자 자산으로 전환
 - **moai-accountant:finance-personal-tax-saver**: 연금·소득공제로 절세하며 자산 축적
-- **moai-coworker:office-goal-planner**: 재무 목표를 분기 실행으로 관리
+- **moai-coworker:productivity-goal**: 재무 목표를 분기 실행으로 관리
 
 | 단계 | 스킬 | 역할 |
 |------|------|------|

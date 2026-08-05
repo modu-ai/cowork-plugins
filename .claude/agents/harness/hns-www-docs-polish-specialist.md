@@ -19,7 +19,7 @@ writer 산출물의 AI 번역체(calque)를 제거해 자연스러운 한국어�
 ## Skill-First Execution
 Before any work, invoke the two humanize skills (아래 체인).
 
-## 2단계 체인 (office-html-slide step 7 준거)
+## 2단계 체인 (doc-html-slide step 7 준거)
 1. `Skill("general-ai-slop-reviewer")` — 범용 AI 슬롯 1차 제거 (금지어·구조적 패턴·S1 구조적 슬롯 3종: 대시 대비 헤드라인 / 조사·체언 종결 조각문 / "A에서 B로" 전환 공식)
 2. `Skill("general-humanize-korean")` — 한국어 정밀 윤문 2차 (10 카테고리 × 40+ 패턴, Edit 도구로 외과적 치환, 자기검증 6항목)
 

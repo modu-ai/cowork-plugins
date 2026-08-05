@@ -21,18 +21,18 @@ version: "1.0.0"
 
 세션 본문 마크다운을 한 번 입력하면, **NotebookLM Studio에 붙여 넣는 슬라이드 데크 프롬프트**와 **각 슬라이드의 시각 자료를 위한 나노바나나(Gemini 3 Pro Image) 이미지 프롬프트**를 동시에 산출합니다.
 
-## 이 스킬과 office-pptx-designer의 경계
+## 이 스킬과 doc-pptx의 경계
 
 같은 "발표자료"라도 산출물이 다릅니다. 호출 전 아래 표로 구분하세요.
 
-| 구분 | media-notebooklm-slide-prompt | office-pptx-designer |
+| 구분 | media-notebooklm-slide-prompt | doc-pptx |
 |---|---|---|
 | 산출물 | NotebookLM 소스 정리 + Studio Prompt 텍스트 + 슬라이드별 이미지 프롬프트 | 편집 가능한 `.pptx` 파일 (pptxgenjs 코드) |
 | 결과물을 어디서 보나 | NotebookLM Studio가 슬라이드를 생성 | PowerPoint·Keynote에서 바로 열림 |
 | 입력 | 강연·강의 본문 MD | 보고서·기획 내용 + 디자인 요구 |
 | 언제 쓰나 | "NotebookLM으로 발표자료 만들 프롬프트가 필요" | "지금 바로 열리는 PPT 파일이 필요" |
 
-요약: **NotebookLM에 넣을 준비물(소스·대본·구조·이미지 프롬프트)을 만드는 빌더**가 이 스킬입니다. 실제 `.pptx` 파일이 필요하면 `moai-officer:office-pptx-designer`를 호출하세요. "PPT 파일로 뽑아줘"는 `moai-officer:office-pptx-designer`, "NotebookLM 슬라이드 프롬프트 만들어줘"는 이 스킬입니다.
+요약: **NotebookLM에 넣을 준비물(소스·대본·구조·이미지 프롬프트)을 만드는 빌더**가 이 스킬입니다. 실제 `.pptx` 파일이 필요하면 `moai-officer:doc-pptx`를 호출하세요. "PPT 파일로 뽑아줘"는 `moai-officer:doc-pptx`, "NotebookLM 슬라이드 프롬프트 만들어줘"는 이 스킬입니다.
 
 ## 트리거 키워드
 

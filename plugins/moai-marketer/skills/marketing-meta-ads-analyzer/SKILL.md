@@ -203,7 +203,7 @@ Level 1-6: **모든 출력 형식 필수** / Level 7: 사용자 선택
 | **PPTX** | 3순위 | 발표·강의 | 10-15 슬라이드 |
 | **MD** | 보조 | 실무 체크 | 체크박스+우선순위, Notion·Slack 최적화 |
 
-**HTML 디자인 토큰** (`moai-officer:office-html-report` 공용 팔레트 — SSOT):
+**HTML 디자인 토큰** (`moai-officer:doc-html-report` 공용 팔레트 — SSOT):
 
 | 토큰 | 헥스 | 용도 |
 |------|------|------|

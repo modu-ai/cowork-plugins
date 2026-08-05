@@ -159,7 +159,7 @@ hr-performance-review → moai-coworker:general-ai-slop-reviewer → moai-writer
 - `moai-coworker:general-ai-slop-reviewer` — AI 티 패턴(기계적 어투, 상투적 피드백 표현) 검수·수정
 - `moai-writer:general-humanize-korean` — 자연스러운 한국어 문장으로 다듬기 (의미 100% 보존)
 
-> KPI/OKR 달성률 표·평가 등급 매트릭스·성과 대시보드 같은 **숫자·표 산출물**은 위 텍스트 체인 대상이 아닙니다. 표·대시보드가 필요하면 `moai-officer:office-xlsx-creator` 또는 `moai-analyst:office-data-visualizer`로 라우팅하세요. 혼합 산출물은 **서술 부분만** 체인을 적용하고 표는 데이터 라우팅을 유지합니다.
+> KPI/OKR 달성률 표·평가 등급 매트릭스·성과 대시보드 같은 **숫자·표 산출물**은 위 텍스트 체인 대상이 아닙니다. 표·대시보드가 필요하면 `moai-officer:doc-xlsx` 또는 `moai-analyst:data-visualizer`로 라우팅하세요. 혼합 산출물은 **서술 부분만** 체인을 적용하고 표는 데이터 라우팅을 유지합니다.
 
 ## 참고 사항
 

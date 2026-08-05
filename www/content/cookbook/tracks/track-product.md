@@ -62,7 +62,7 @@ flowchart TD
 
 ### 자동 체인
 
-`consult-strategy`(제품 전략 정의) → `collab-spec`(PRD: 문제·해결·요구사항·인수기준) → `collab-ux-research`(5-7개 핵심 질문 + STAR 후속 질문) → `office-docx-generator` → `general-ai-slop-reviewer`
+`consult-strategy`(제품 전략 정의) → `collab-spec`(PRD: 문제·해결·요구사항·인수기준) → `collab-ux-research`(5-7개 핵심 질문 + STAR 후속 질문) → `doc-docx` → `general-ai-slop-reviewer`
 
 ### 산출물
 
@@ -89,7 +89,7 @@ flowchart TD
 
 ### 자동 체인
 
-`collab-roadmap`(MoSCoW 우선순위) → 마일스톤·의존성 매핑 → `office-xlsx-creator`(간트 차트) → `office-docx-generator` 또는 `office-pptx-designer` → `general-ai-slop-reviewer`
+`collab-roadmap`(MoSCoW 우선순위) → 마일스톤·의존성 매핑 → `doc-xlsx`(간트 차트) → `doc-docx` 또는 `doc-pptx` → `general-ai-slop-reviewer`
 
 ### 산출물
 
@@ -145,7 +145,7 @@ flowchart TD
 
 ### 자동 체인
 
-`consult-strategy`(엘리베이터 피치) → `collab-spec`(12장 표준 목차) → `office-pptx-designer`(시각화) → `general-ai-slop-reviewer`
+`consult-strategy`(엘리베이터 피치) → `collab-spec`(12장 표준 목차) → `doc-pptx`(시각화) → `general-ai-slop-reviewer`
 
 ### 산출물
 

@@ -61,7 +61,7 @@ flowchart TD
 
 ### 자동 체인
 
-`legal-nda-triage`(12건 배치 분류) → 위험도 A/B/C 그룹화 → `legal-contract-review`(상세) → `legal-legal-risk`(등급 평가) → `office-docx-generator` → `general-ai-slop-reviewer`
+`legal-nda-triage`(12건 배치 분류) → 위험도 A/B/C 그룹화 → `legal-contract-review`(상세) → `legal-legal-risk`(등급 평가) → `doc-docx` → `general-ai-slop-reviewer`
 
 ### 산출물
 
@@ -88,7 +88,7 @@ flowchart TD
 
 ### 자동 체인
 
-`legal-contract-review`(조항별 리스크 분석) → `legal-legal-risk`(A/B/C 등급) → `legal-contract-review`(개선안·수정안 초안 작성) → `office-docx-generator` → `general-ai-slop-reviewer`
+`legal-contract-review`(조항별 리스크 분석) → `legal-legal-risk`(A/B/C 등급) → `legal-contract-review`(개선안·수정안 초안 작성) → `doc-docx` → `general-ai-slop-reviewer`
 
 ### 산출물
 
@@ -115,7 +115,7 @@ flowchart TD
 
 ### 자동 체인
 
-`legal-compliance-check`(GDPR 7대 원칙 매핑) → `commerce-ad-claim-compliance-kr`(표시광고법·식약처 표현 검증) → `commerce-message-compliance-kr`(정통망법 발송 규제) → `office-docx-generator` → `general-ai-slop-reviewer`
+`legal-compliance-check`(GDPR 7대 원칙 매핑) → `commerce-ad-claim-compliance-kr`(표시광고법·식약처 표현 검증) → `commerce-message-compliance-kr`(정통망법 발송 규제) → `doc-docx` → `general-ai-slop-reviewer`
 
 ### 산출물
 
@@ -142,7 +142,7 @@ flowchart TD
 
 ### 자동 체인
 
-`legal-contract-review`(한·영 병렬 초안) → `office-docx-generator`(KR/EN 2 파일) → `general-ai-slop-reviewer`
+`legal-contract-review`(한·영 병렬 초안) → `doc-docx`(KR/EN 2 파일) → `general-ai-slop-reviewer`
 
 ### 산출물
 

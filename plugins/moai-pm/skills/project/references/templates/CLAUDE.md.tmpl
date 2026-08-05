@@ -46,10 +46,10 @@
 
 | 산출물 | 사용 스킬 |
 |---|---|
-| DOCX / Word 문서 | `moai-officer:office-docx-generator` |
-| PPTX / 발표자료 | `moai-officer:office-pptx-designer` |
-| XLSX / Excel | `moai-officer:office-xlsx-creator` |
-| HWPX / 한글 | `moai-officer:office-hwpx-writer` |
+| DOCX / Word 문서 | `moai-officer:doc-docx` |
+| PPTX / 발표자료 | `moai-officer:doc-pptx` |
+| XLSX / Excel | `moai-officer:doc-xlsx` |
+| HWPX / 한글 | `moai-officer:doc-hwp` |
 | HTML / 웹페이지 / 랜딩 | `moai-marketer:marketing-landing-page` |
 | 블로그 포스트 | `moai-marketer:content-blog` |
 | 카드뉴스 | `moai-marketer:content-card-news` |
@@ -102,7 +102,7 @@
 
 ### 사업계획서 작성
 - 요청 예시: "초기 스타트업 사업계획서 써줘"
-- 체인: `consult-strategy` → `consult-market` → `office-docx-generator` → `general-ai-slop-reviewer`
+- 체인: `consult-strategy` → `consult-market` → `doc-docx` → `general-ai-slop-reviewer`
 - 입력: 사업 아이템, 타겟 시장, 자금 조달 목표
 - 출력: `.docx` 파일 + AI 슬롭 검수 리포트
 -->

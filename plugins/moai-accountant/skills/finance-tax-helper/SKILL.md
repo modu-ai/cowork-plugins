@@ -182,7 +182,7 @@ finance-tax-helper → moai-coworker:general-ai-slop-reviewer → moai-writer:ge
 - **moai-coworker:general-ai-slop-reviewer**: AI 티 나는 표현·과장·상투구 검수 및 수정
 - **moai-writer:general-humanize-korean**: 한국어 자연스러움 보정 (서술 산출물 한정)
 
-> 원천징수 계산 내역·세율표·신고 일정 캘린더 같은 표·숫자 산출물은 체인 대상이 아니며, 엑셀화가 필요하면 `moai-officer:office-xlsx-creator`로 라우팅한다.
+> 원천징수 계산 내역·세율표·신고 일정 캘린더 같은 표·숫자 산출물은 체인 대상이 아니며, 엑셀화가 필요하면 `moai-officer:doc-xlsx`로 라우팅한다.
 
 ## 이 스킬을 사용하지 말아야 할 때
 

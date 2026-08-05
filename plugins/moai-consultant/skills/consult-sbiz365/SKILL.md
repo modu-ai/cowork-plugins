@@ -136,9 +136,9 @@ PDF를 읽어 아래 항목을 항목별로 추출합니다.
 
 ---
 
-### Step 4: 보고서 생성 (moai-officer:office-docx-generator)
+### Step 4: 보고서 생성 (moai-officer:doc-docx)
 
-**반드시 `moai-officer:office-docx-generator` 스킬을 사용**합니다 (Anthropic 공식 `docx` 스킬이 설치되어 있으면 그쪽을 우선 사용해도 됩니다).
+**반드시 `moai-officer:doc-docx` 스킬을 사용**합니다 (Anthropic 공식 `docx` 스킬이 설치되어 있으면 그쪽을 우선 사용해도 됩니다).
 Claude 기본 Word 생성 금지.
 
 보고서 구조 및 각 섹션 작성 가이드 → `references/report-template.md` 참조

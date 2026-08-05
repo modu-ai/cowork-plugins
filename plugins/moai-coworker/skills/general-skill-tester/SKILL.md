@@ -162,7 +162,7 @@ chain:
 
 | Chain | Steps | Status |
 |-------|-------|--------|
-| 사업계획서(PPT) | consult-strategy → office-pptx-designer → general-ai-slop-reviewer | 검증 대상 |
+| 사업계획서(PPT) | consult-strategy → doc-pptx → general-ai-slop-reviewer | 검증 대상 |
 | 블로그 발행 | content-blog → general-ai-slop-reviewer → (optional) media-higgsfield-image | 검증 대상 |
 | 제품 랜딩 | content-copywriting → marketing-landing-page → general-ai-slop-reviewer | 검증 대상 |
 

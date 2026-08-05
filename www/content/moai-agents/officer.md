@@ -33,13 +33,13 @@ office-\* 문서/데이터 스킬과 general-\* 생산성 스킬의 전체 목�
 
 ## 대표 시나리오 3선
 
-**1. 한글 보고서 정리.** "이 회의록을 한글 보고서로 정리해줘"라고 하면 `office-document-reader`가 원문을 읽고 `office-hwpx-writer`가 HWPX 보고서를 만들어 줍니다. 워드가 필요하면 `office-docx-generator`, PDF면 `office-pdf-writer`로 같은 흐름이 이어집니다.
+**1. 한글 보고서 정리.** "이 회의록을 한글 보고서로 정리해줘"라고 하면 `doc-reader`가 원문을 읽고 `doc-hwp`가 HWPX 보고서를 만들어 줍니다. 워드가 필요하면 `doc-docx`, PDF면 `doc-pdf`로 같은 흐름이 이어집니다.
 
-**2. 발표 슬라이드 제작.** "이 기획안을 10장 슬라이드로 만들어줘"라고 하면 `office-pptx-designer`가 파워포인트를, `office-html-slide`가 웹 슬라이드를 만들어 줍니다.
+**2. 발표 슬라이드 제작.** "이 기획안을 10장 슬라이드로 만들어줘"라고 하면 `doc-pptx`가 파워포인트를, `doc-html-slide`가 웹 슬라이드를 만들어 줍니다.
 
-**3. 노션 템플릿·HTML 리포트.** "이 프로젝트 관리용 노션 템플릿 짜줘"라고 하면 `office-notion-template-kit`이 보드를 구성하고, "주간 리포트를 웹 페이지로" 요청엔 `office-html-report`가 응답합니다.
+**3. 노션 템플릿·HTML 리포트.** "이 프로젝트 관리용 노션 템플릿 짜줘"라고 하면 `doc-notion-template`이 보드를 구성하고, "주간 리포트를 웹 페이지로" 요청엔 `doc-html-report`가 응답합니다.
 
-**잘 안 될 때** — HWPX 생성이 실패하면 kordoc MCP 연동 상태를 확인하세요. `office-mcp-connector-setup` 스킬이 연동 설정을 안내합니다.
+**잘 안 될 때** — HWPX 생성이 실패하면 kordoc MCP 연동 상태를 확인하세요. `setup-mcp-connector` 스킬이 연동 설정을 안내합니다.
 
 ## MCP 연동
 

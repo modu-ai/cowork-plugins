@@ -163,7 +163,7 @@ version: "1.0.0"
 | `moai-media:media-higgsfield-core` | 코어: 호출 계약·비용·namespace |
 | `moai-media:media-higgsfield-assets` | 구성: 오디오 파라미터 상세 |
 | `moai-media:media-higgsfield-video` | 대안: 단발 클립·실사·광고 영상 |
-| `moai-officer:office-html-slide` | 대안: 같은 내용을 슬라이드로 |
+| `moai-officer:doc-html-slide` | 대안: 같은 내용을 슬라이드로 |
 | `moai-story:story-screenplay` | 선행: 서사 구조 설계 |
 | `moai-marketer:marketing-youtube-podcast-planner` | 선행: 채널 기획 |
 

@@ -33,9 +33,9 @@ office-data-\* / office-public-data-\* / office-finance-\* 계열 공공데이�
 
 ## 대표 시나리오 3선
 
-**1. 부동산 시세·경매 조사.** "이 주소 건축물대장이랑 최근 경매 이력 확인해줘"라고 하면 `office-building-ledger-search`와 `office-public-data-court-auction-search`가 공공데이터를 조회해 조사 노트로 정리합니다.
+**1. 부동산 시세·경매 조사.** "이 주소 건축물대장이랑 최근 경매 이력 확인해줘"라고 하면 `data-building-ledger`와 `office-public-data-court-auction-search`가 공공데이터를 조회해 조사 노트로 정리합니다.
 
-**2. KOSIS 통계 시각화.** "우리 지역 인구 추이를 KOSIS에서 찾아서 차트로 만들어줘"라고 하면 korean-stats MCP가 통계를 조회하고 `office-data-visualizer`가 차트로 시각화합니다.
+**2. KOSIS 통계 시각화.** "우리 지역 인구 추이를 KOSIS에서 찾아서 차트로 만들어줘"라고 하면 korean-stats MCP가 통계를 조회하고 `data-visualizer`가 차트로 시각화합니다.
 
 **3. 기업 공시 분석.** "이 회사 최근 DART 공시 요약해줘"라고 하면 dart MCP로 전자공시를 조회해 요약합니다.
 

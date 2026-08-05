@@ -84,4 +84,4 @@ rounded:
 
 ## 사용
 
-`office-html-report` / `office-html-slide`에서 `design_system: hp` 지정 시 본 토큰이 로드됩니다.
+`doc-html-report` / `doc-html-slide`에서 `design_system: hp` 지정 시 본 토큰이 로드됩니다.

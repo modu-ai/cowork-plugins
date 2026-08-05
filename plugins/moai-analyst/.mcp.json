@@ -6,7 +6,7 @@
       "url": "https://mcp.gomdori.app/stats"
     },
     "archhub": {
-      "$comment": "국토교통부 건축HUB MCP (chrisryugj/archhub-mcp, MIT) — 11도구. 건축물대장·건축인허가·주택인허가 + 법정동코드 + 한 필지 종합카드(building_profile)·층별 구성·동 단위 통계·노후건축물·철거멸실(석면)·인허가 파이프라인·공시가격 시계열. 공용키 탑재 remote 커넥터(URL만 등록). data.go.kr 공식 API 실측값, 출처 명시, [NOT_FOUND] 환각방지. 라이브 스킬: moai-analyst:office-building-ledger-search.",
+      "$comment": "국토교통부 건축HUB MCP (chrisryugj/archhub-mcp, MIT) — 11도구. 건축물대장·건축인허가·주택인허가 + 법정동코드 + 한 필지 종합카드(building_profile)·층별 구성·동 단위 통계·노후건축물·철거멸실(석면)·인허가 파이프라인·공시가격 시계열. 공용키 탑재 remote 커넥터(URL만 등록). data.go.kr 공식 API 실측값, 출처 명시, [NOT_FOUND] 환각방지. 라이브 스킬: moai-analyst:data-building-ledger.",
       "type": "http",
       "url": "https://archhub-mcp.fly.dev/mcp"
     },

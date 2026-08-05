@@ -126,7 +126,7 @@ AskUserQuestion으로 다음 정보를 수집합니다:
 ## 관련 스킬
 
 - **moai-tutor:education-paper-search** - 선행연구 조사 및 논문 검색
-- **moai-analyst:office-data-visualizer** - 결과 섹션 차트 및 테이블 시각화
+- **moai-analyst:data-visualizer** - 결과 섹션 차트 및 테이블 시각화
 
 ### 후처리 체인 (본문/서술 산출물)
 
@@ -137,7 +137,7 @@ AskUserQuestion으로 다음 정보를 수집합니다:
 - **moai-coworker:general-ai-slop-reviewer** - 작성된 논문 AI 패턴 검수 및 후처리
 - **moai-writer:general-humanize-korean** - 한국어 문장 자연화(AI 티 제거, 의미 보존)
 
-> 참고문헌 리스트·통계 테이블 등 데이터/표 산출물은 본 체인 대상이 아니며, 시각화가 필요하면 **moai-analyst:office-data-visualizer**로 라우팅합니다.
+> 참고문헌 리스트·통계 테이블 등 데이터/표 산출물은 본 체인 대상이 아니며, 시각화가 필요하면 **moai-analyst:data-visualizer**로 라우팅합니다.
 
 ## 인용 포맷 참조
 

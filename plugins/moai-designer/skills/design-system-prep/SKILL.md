@@ -319,4 +319,4 @@ DESIGN.md와 함께 **claude.ai/design에 무엇을 어떻게 올릴지** 가이
 | `moai-designer:design-prompt-builder` | 후속: 특정 영역 디자인 |
 | `moai-coworker:collab-brand-identity` | 선행: 브랜드 정체성이 모호할 때 |
 | `moai-marketer:content-copywriting` | 보조: voice·copy 패턴 정리 |
-| `moai-officer:office-pptx-designer` | 보조: 잘 만든 자사 PPTX가 없으면 |
+| `moai-officer:doc-pptx` | 보조: 잘 만든 자사 PPTX가 없으면 |

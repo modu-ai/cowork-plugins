@@ -126,7 +126,7 @@ flowchart TD
 ### 추천 스킬
 
 1순위 — `anthropic-skills:docx` (Anthropic 공식)
-2순위 — `moai-officer:office-docx-generator` (한국 양식 최적화)
+2순위 — `moai-officer:doc-docx` (한국 양식 최적화)
 
 ### 실무 흐름
 
@@ -161,7 +161,7 @@ flowchart TD
 ### 추천 스킬
 
 1순위 — `anthropic-skills:pptx`
-2순위 — `moai-officer:office-pptx-designer` (Pretendard + 명조 한국형 디자인)
+2순위 — `moai-officer:doc-pptx` (Pretendard + 명조 한국형 디자인)
 
 ### 실무 흐름
 
@@ -197,7 +197,7 @@ flowchart TD
 ### 추천 스킬
 
 1순위 — `anthropic-skills:xlsx`
-2순위 — `moai-officer:office-xlsx-creator` (한국 비즈니스 서식 최적화)
+2순위 — `moai-officer:doc-xlsx` (한국 비즈니스 서식 최적화)
 
 ### 실무 흐름
 
@@ -231,7 +231,7 @@ flowchart TD
 
 ### 추천 스킬
 
-`moai-officer:office-hwpx-writer` (Anthropic 공식 없음)
+`moai-officer:doc-hwp` (Anthropic 공식 없음)
 
 ### 실무 흐름
 

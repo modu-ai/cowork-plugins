@@ -139,7 +139,7 @@ curl -fsS --get 'https://k-skill-proxy.nomadamas.org/v1/korean-stock/trade-info'
 - **before**: `moai-accountant:finance-investor-relations` — IR 자료 작성 시 KRX 공식 시세 필요
 - **before**: DART MCP (`moai-coworker/.mcp.json`) — 공시·재무 분석과 결합
 - **after**: `moai-accountant:finance-variance-analysis` — 시세 변동 분석
-- **after**: `moai-officer:office-xlsx-creator` — 시세 데이터 엑셀화
+- **after**: `moai-officer:doc-xlsx` — 시세 데이터 엑셀화
 - **after**: `moai-coworker:collab-exec-summary` — 경영진 1pager에 시세 요약
 
 ## Done when

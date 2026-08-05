@@ -98,7 +98,7 @@ version: "1.0.0"
 - **moai-coworker:collab-report-speak**: 회의에서 결론 먼저 발제·보고
 - **moai-coworker:collab-negotiation**: 회의 전 핵심 인물과 사전 정렬·설득
 - **moai-coworker:collab-conflict**: 회의 중 충돌·발언 독점 대응
-- **moai-officer:office-docx-generator**: 회의록을 정식 문서로 정리
+- **moai-officer:doc-docx**: 회의록을 정식 문서로 정리
 
 ### 후처리 체인 (회의록·진행 멘트 등 서술형 산출물)
 

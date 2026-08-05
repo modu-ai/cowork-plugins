@@ -24,5 +24,5 @@ design_system 토큰이 필요하면 **`moai-designer:design-system-library`** �
 ## 연결
 
 - 정본: `moai-designer:design-system-library` (75개 시스템 토큰 SSOT)
-- 적용처: `moai-officer:office-html-report` · `moai-officer:office-html-slide` (design_system 파라미터로 토큰 로드)
+- 적용처: `moai-officer:doc-html-report` · `moai-officer:doc-html-slide` (design_system 파라미터로 토큰 로드)
 - Claude Design 핸드오프: DESIGN.md 지침 소스는 정본에서 제공

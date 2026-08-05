@@ -87,7 +87,7 @@ collab-status-report → moai-coworker:general-ai-slop-reviewer → moai-writer:
 - `moai-coworker:general-ai-slop-reviewer` — 서술형 본문의 AI 티 패턴을 검수·수정합니다.
 - `moai-writer:general-humanize-korean` — 검수된 본문을 자연스러운 한국어 보고체로 다듬습니다.
 
-KPI 달성 현황 표, 마일스톤 진행률, 이슈·리스크 매트릭스 등 **수치·표 산출물**은 산문 후처리 대상이 아니며 `moai-officer:office-xlsx-creator`(엑셀 연동) 또는 `moai-analyst:office-data-visualizer`(대시보드 시각화)로 라우팅합니다.
+KPI 달성 현황 표, 마일스톤 진행률, 이슈·리스크 매트릭스 등 **수치·표 산출물**은 산문 후처리 대상이 아니며 `moai-officer:doc-xlsx`(엑셀 연동) 또는 `moai-analyst:data-visualizer`(대시보드 시각화)로 라우팅합니다.
 
 ## 참고 사항
 

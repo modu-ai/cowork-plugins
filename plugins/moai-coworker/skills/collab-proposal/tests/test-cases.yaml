@@ -82,12 +82,12 @@ cases:
     input: |
       RFP 답변 초안 작성 완료
     assertions:
-      - suggests_chain: ["general-ai-slop-reviewer", "office-docx-generator"]
+      - suggests_chain: ["general-ai-slop-reviewer", "doc-docx"]
       - mentions_human_review: true
 
 chain_tests:
   - id: C01
-    name: "Happy path: consult-market → collab-proposal → general-ai-slop-reviewer → office-docx-generator"
+    name: "Happy path: consult-market → collab-proposal → general-ai-slop-reviewer → doc-docx"
     expected: "최종 docx 파일 + 컴플라이언스 체크리스트 + AI slop APPROVE"
 
   - id: C02

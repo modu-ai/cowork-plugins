@@ -119,7 +119,7 @@ Phase 6: Review         → 품질 게이트 통과 확인, 파일 배치
 
 | 패턴 | 적용 시나리오 | 스킬 예시 |
 |------|-------------|-----------|
-| Pipeline | 순차 처리, 각 단계 출력이 다음 입력 | office-docx-generator, content-blog |
+| Pipeline | 순차 처리, 각 단계 출력이 다음 입력 | doc-docx, content-blog |
 | Fan-out/Fan-in | 병렬 분석 후 결과 통합 | collab-ux-design, market-analysis |
 | Expert Pool | 다 도메인 전문 지식 결합 | consult-brief, consult-startup |
 | Producer-Reviewer | 생성 + 품질 검토 순환 | collab-sales-playbook, content-copywriting |

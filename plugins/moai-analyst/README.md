@@ -32,23 +32,23 @@ claude plugin install moai-analyst@moai-cowork
 | `office-public-data-real-estate-search` | 국토교통부 실거래가·전월세 시세 조회 |
 | `office-public-data-court-auction-search` | 대법원 법원경매 매각공고·사건번호 조회 |
 | `office-public-data-korean-stock-search` | KRX 상장 종목 검색·기본정보·일별 시세 조회 |
-| `office-building-ledger-search` | 건축물대장·건축인허가·공시가격·노후도 조회 — archhub MCP |
+| `data-building-ledger` | 건축물대장·건축인허가·공시가격·노후도 조회 — archhub MCP |
 | `office-business-real-estate-search` | 상업업무용 부동산 실거래 조회 (→ real-estate-search 경유) |
 
 ### 데이터 분석·시각화 (3종)
 
 | 스킬 | 역할 |
 |------|------|
-| `office-data-explorer` | CSV·Excel 데이터 프로파일링·품질 보고서 |
-| `office-data-visualizer` | 인터랙티브 차트·대시보드(HTML) 생성 |
+| `data-explorer` | CSV·Excel 데이터 프로파일링·품질 보고서 |
+| `data-visualizer` | 인터랙티브 차트·대시보드(HTML) 생성 |
 | `office-data-public-data` | 공공데이터 조회 라우터 (→ public-data-public-data 경유) |
 
 ### 조회 라우터 (2종 · 구명칭 호환)
 
 | 스킬 | 역할 |
 |------|------|
-| `office-finance-court-auction-search` | 법원경매 조회 라우터 (→ public-data-court-auction-search 경유) |
-| `office-finance-korean-stock-search` | 국내주식 조회 라우터 (→ public-data-korean-stock-search 경유) |
+| `data-court-auction` | 법원경매 조회 라우터 (→ public-data-court-auction-search 경유) |
+| `data-stock` | 국내주식 조회 라우터 (→ public-data-korean-stock-search 경유) |
 
 ## MCP 연동 3종
 

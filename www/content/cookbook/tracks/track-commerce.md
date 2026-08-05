@@ -172,7 +172,7 @@ flowchart TD
 
 ### 자동 체인
 
-`cs-voc-triage` (리뷰 집계 모드 — 5채널 감정·키워드·인사이트·액션플랜 4단 분석) → `office-docx-generator` → `general-ai-slop-reviewer`
+`cs-voc-triage` (리뷰 집계 모드 — 5채널 감정·키워드·인사이트·액션플랜 4단 분석) → `doc-docx` → `general-ai-slop-reviewer`
 
 ### 산출물 미리보기
 

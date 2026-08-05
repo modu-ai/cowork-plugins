@@ -278,8 +278,8 @@ Most productivity tools promise to save you time. Most of them don't. But after 
 - `moai-marketer:marketing-landing-page` — 랜딩 페이지 카피라이팅
 - `moai-marketer:content-newsletter` — 뉴스레터 작성
 - `moai-marketer:content-copywriting` — 마케팅 카피 작성
-- `moai-officer:office-docx-generator` — DOCX 문서 생성
-- `moai-officer:office-pptx-designer` — PPTX 발표자료 생성
+- `moai-officer:doc-docx` — DOCX 문서 생성
+- `moai-officer:doc-pptx` — PPTX 발표자료 생성
 
 ### 후속 스킬 (선택적)
 - `moai-media:media-higgsfield-image` — (선택) 블로그 발행 체인의 이미지 생성 단계
@@ -292,7 +292,7 @@ Most productivity tools promise to save you time. Most of them don't. But after 
   content-blog → general-ai-slop-reviewer → (선택) media-higgsfield-image
 
 사업계획서(PPT):
-  consult-strategy → office-pptx-designer → general-ai-slop-reviewer
+  consult-strategy → doc-pptx → general-ai-slop-reviewer
 
 제품 랜딩:
   content-copywriting → marketing-landing-page → general-ai-slop-reviewer

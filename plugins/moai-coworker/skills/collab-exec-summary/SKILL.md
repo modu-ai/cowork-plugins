@@ -6,7 +6,7 @@ description: |
   - "임원 보고용 1페이지 요약 만들어줘" / "이사회 보고서 요약해줘" / "경영진 브리핑 1장으로 정리해줘"
   - "이 리포트 핵심만 요약해줘" / "긴 보고서 1페이지로 줄여줘" / "C레벨 요약 작성해줘"
   - "What/So What/Now What 구조로 정리해줘" / "카톡·이메일로 보낼 단일 HTML 1pager 만들어줘"
-  기본 출력은 moai-officer:office-html-report로 단일 HTML(이미지·CSS·JS 인라인, 카톡·이메일 바로 공유)이며, pdf/docx/pptx/hwpx 변환은 옵션 체이닝. 입력 가능: moai-marketer:marketing-performance-report 출력 · moai-accountant:finance-financial-statements · moai-accountant:finance-variance-analysis · moai-coworker:collab-pm-report · 외부 보고서. 한국 임원/이사회 표준 What/So What/Now What + K-IFRS 재무 지표 우선.
+  기본 출력은 moai-officer:doc-html-report로 단일 HTML(이미지·CSS·JS 인라인, 카톡·이메일 바로 공유)이며, pdf/docx/pptx/hwpx 변환은 옵션 체이닝. 입력 가능: moai-marketer:marketing-performance-report 출력 · moai-accountant:finance-financial-statements · moai-accountant:finance-variance-analysis · moai-coworker:collab-pm-report · 외부 보고서. 한국 임원/이사회 표준 What/So What/Now What + K-IFRS 재무 지표 우선.
   [책임 경계] vs moai-marketer:marketing-performance-report: collab-exec-summary=임원 압축 요약(≤500단어), marketing-performance-report=마케팅 풀 리포트(전체).
 version: "1.0.0"
 ---
@@ -23,7 +23,7 @@ version: "1.0.0"
 
 ## 기본 출력 = 단일 HTML 파일 (카톡 즉시 공유)
 
-본 스킬의 **기본 출력은 마크다운 + `moai-officer:office-html-report` 렌더링한 단일 HTML 파일**입니다.
+본 스킬의 **기본 출력은 마크다운 + `moai-officer:doc-html-report` 렌더링한 단일 HTML 파일**입니다.
 
 - **1개 HTML 파일**: 이미지(base64/SVG)·CSS(`<style>`)·JS(`<script>`) 전부 인라인
 - **외부 의존성 0**: 폰트 CDN 1건 제외(한국어 가독성 단일 예외)
@@ -31,11 +31,11 @@ version: "1.0.0"
 - **변환 옵션 체이닝**: 동일 마크다운에서 pdf/docx/pptx/hwpx로 분기 변환
 
 ```text
-collab-exec-summary → office-html-report (mode=status, 기본)
-                  → (선택) office-pdf-writer       — 인쇄·결재용 PDF
-                  → (선택) office-docx-generator   — 편집 가능한 .docx
-                  → (선택) office-pptx-designer    — 이사회 슬라이드 1매
-                  → (선택) office-hwpx-writer      — 한국 공공기관 .hwpx
+collab-exec-summary → doc-html-report (mode=status, 기본)
+                  → (선택) doc-pdf       — 인쇄·결재용 PDF
+                  → (선택) doc-docx   — 편집 가능한 .docx
+                  → (선택) doc-pptx    — 이사회 슬라이드 1매
+                  → (선택) doc-hwp      — 한국 공공기관 .hwpx
 ```
 
 ## 트리거 키워드
@@ -146,22 +146,22 @@ collab-exec-summary → office-html-report (mode=status, 기본)
 사용자: "이번 분기 변동분석 보고서를 임원 1pager 만들어서 카톡으로 보낼 수 있게 해줘."
 → moai-coworker/finance-variance-analysis 결과 입력
 → collab-exec-summary가 K-IFRS 지표 우선 + What/So What/Now What 마크다운 생성
-→ moai-officer:office-html-report (mode=status)로 단일 HTML 렌더링
+→ moai-officer:doc-html-report (mode=status)로 단일 HTML 렌더링
 → 결과: 1개 .html 파일 (이미지·CSS·JS 인라인) → 카톡 첨부 가능
 ```
 
 **예시 2 — 변동분석 → 이사회 슬라이드 (변환 옵션)**
 ```
 사용자: "이번 분기 변동분석을 이사회 PPT 1매로 만들어줘."
-→ collab-exec-summary → office-html-report (기본)
-→ office-pptx-designer로 변환 분기 → .pptx 슬라이드 1매
+→ collab-exec-summary → doc-html-report (기본)
+→ doc-pptx로 변환 분기 → .pptx 슬라이드 1매
 ```
 
 **예시 3 — 주간 → C-level HTML + 결재용 PDF 동시 출력**
 ```
 사용자: "이번 주 weekly-report를 C레벨 보고로 압축하고 HTML·PDF 둘 다 줘."
 → weekly-report 6섹션 → collab-exec-summary 1pager 6섹션
-→ office-html-report (기본 HTML) + office-pdf-writer (변환 PDF) 병렬 출력
+→ doc-html-report (기본 HTML) + doc-pdf (변환 PDF) 병렬 출력
 ```
 
 ## 주의사항
@@ -181,13 +181,13 @@ collab-exec-summary → office-html-report (mode=status, 기본)
 - (외부 보고서)
 
 **Renderer (기본 출력 = 단일 HTML)**:
-- `moai-coworker/office-html-report` — **기본 렌더러**, mode=status (이미지·CSS·JS 인라인, 카톡 공유 가능)
+- `moai-coworker/doc-html-report` — **기본 렌더러**, mode=status (이미지·CSS·JS 인라인, 카톡 공유 가능)
 
 **Converter (선택 변환 분기)**:
-- `moai-coworker/office-pdf-writer` — 인쇄·결재용 PDF
-- `moai-coworker/office-docx-generator` — 편집 가능한 .docx
-- `moai-coworker/office-pptx-designer` — 이사회 슬라이드 1매
-- `moai-coworker/office-hwpx-writer` — 한국 공공기관 .hwpx
+- `moai-coworker/doc-pdf` — 인쇄·결재용 PDF
+- `moai-coworker/doc-docx` — 편집 가능한 .docx
+- `moai-coworker/doc-pptx` — 이사회 슬라이드 1매
+- `moai-coworker/doc-hwp` — 한국 공공기관 .hwpx
 
 **Post-process**:
 - `moai-coworker:general-ai-slop-reviewer` — 격식체·정량 출처 검수
@@ -199,12 +199,12 @@ collab-exec-summary → office-html-report (mode=status, 기본)
 
 ## 관련 커맨드
 
-대표 체인 (기본 = office-html-report 단일 HTML):
-- 재무 → 경영진 카톡 공유: `finance-variance-analysis → collab-exec-summary → general-ai-slop-reviewer → office-html-report (mode=status)`
-- 재무 → 이사회 슬라이드: `finance-variance-analysis → collab-exec-summary → office-html-report → office-pptx-designer`
-- 재무 → 결재용 PDF: `finance-variance-analysis → collab-exec-summary → office-html-report → office-pdf-writer`
-- 주간 → C-level HTML: `weekly-report → collab-exec-summary → office-html-report (mode=status)`
-- 주간 → 공공기관 hwpx: `weekly-report → collab-exec-summary → office-html-report → office-hwpx-writer`
+대표 체인 (기본 = doc-html-report 단일 HTML):
+- 재무 → 경영진 카톡 공유: `finance-variance-analysis → collab-exec-summary → general-ai-slop-reviewer → doc-html-report (mode=status)`
+- 재무 → 이사회 슬라이드: `finance-variance-analysis → collab-exec-summary → doc-html-report → doc-pptx`
+- 재무 → 결재용 PDF: `finance-variance-analysis → collab-exec-summary → doc-html-report → doc-pdf`
+- 주간 → C-level HTML: `weekly-report → collab-exec-summary → doc-html-report (mode=status)`
+- 주간 → 공공기관 hwpx: `weekly-report → collab-exec-summary → doc-html-report → doc-hwp`
 
 ## 출처
 

@@ -203,9 +203,9 @@ NRF 기초·응용연구, IITP 정보통신방송기술, KIAT 산업기술혁신
 신청서 초안 작성 후 파일로 원하면 아래 스킬을 체인합니다.
 우선순위: Anthropic 공식 스킬 > `moai-coworker:*`.
 
-- **Word(.docx)**: `anthropic-skills:docx` 우선, 없으면 `moai-officer:office-docx-generator`
-- **한글(.hwpx)**: `moai-officer:office-hwpx-writer` (Anthropic 공식 미제공)
-- **Excel(.xlsx)** (일정표·예산표): `anthropic-skills:xlsx` 우선, 없으면 `moai-officer:office-xlsx-creator`
+- **Word(.docx)**: `anthropic-skills:docx` 우선, 없으면 `moai-officer:doc-docx`
+- **한글(.hwpx)**: `moai-officer:doc-hwp` (Anthropic 공식 미제공)
+- **Excel(.xlsx)** (일정표·예산표): `anthropic-skills:xlsx` 우선, 없으면 `moai-officer:doc-xlsx`
 
 ---
 

@@ -102,8 +102,8 @@ RFP가 제공된 경우, 모든 필수 항목을 추출해 체크리스트화합
 산출 직후 다음 후속 단계를 사용자에게 안내합니다:
 
 1. `moai-coworker:general-ai-slop-reviewer`로 본문 검수
-2. `moai-officer:office-docx-generator`(워드/PDF) 또는 `moai-officer:office-pptx-designer`(슬라이드) 출력
-3. 견적서를 분리 발행하려면, 본 스킬이 가격 섹션(10번)을 기반으로 항목·수량·단가·소계·VAT·합계 표(견적 명세)를 직접 작성한 뒤 `moai-officer:office-xlsx-creator`로 스프레드시트 출력하세요
+2. `moai-officer:doc-docx`(워드/PDF) 또는 `moai-officer:doc-pptx`(슬라이드) 출력
+3. 견적서를 분리 발행하려면, 본 스킬이 가격 섹션(10번)을 기반으로 항목·수량·단가·소계·VAT·합계 표(견적 명세)를 직접 작성한 뒤 `moai-officer:doc-xlsx`로 스프레드시트 출력하세요
 4. 발송 전 **반드시 사람이 최종 검토** (HubSpot Best Practice: Human-in-the-Loop)
 
 ## 출력 형식
@@ -128,8 +128,8 @@ RFP가 제공된 경우, 모든 필수 항목을 추출해 체크리스트화합
 
 ## 🔍 다음 단계
 1. moai-coworker:general-ai-slop-reviewer로 본문 검수
-2. moai-officer:office-docx-generator로 PDF 출력
-3. 견적서 분리 발행 시 — 가격 섹션 기반 견적 명세 표 작성 후 moai-officer:office-xlsx-creator로 출력
+2. moai-officer:doc-docx로 PDF 출력
+3. 견적서 분리 발행 시 — 가격 섹션 기반 견적 명세 표 작성 후 moai-officer:doc-xlsx로 출력
 ```
 
 ## 사용 예시
@@ -138,7 +138,7 @@ RFP가 제공된 경우, 모든 필수 항목을 추출해 체크리스트화합
 ```
 사용자: "이 RFP 답변 초안 만들어줘. 고객사는 ABC물류, 우리는 AcmeAI WMS 솔루션. 예산 5000만원/년."
 → collab-proposal 가 RFP 분석 + 12섹션 초안 + 컴플라이언스 체크리스트 생성
-→ 이어서 general-ai-slop-reviewer → office-docx-generator 체이닝 안내
+→ 이어서 general-ai-slop-reviewer → doc-docx 체이닝 안내
 ```
 
 **예시 2 — 솔루션 제안서 (RFP 없이 자유 제안)**
@@ -164,9 +164,9 @@ RFP가 제공된 경우, 모든 필수 항목을 추출해 체크리스트화합
 **After (출력 후처리)**:
 - `moai-coworker:general-ai-slop-reviewer` — 본문 AI slop 검수 (필수)
 - `moai-writer:general-humanize-korean` — 한국어 AI 티 제거 (슬롭 검수 다음, 필수)
-- `moai-officer:office-docx-generator` — Word/PDF 출력
-- `moai-officer:office-pptx-designer` — 슬라이드 출력
-- `moai-officer:office-xlsx-creator` — 견적서 별도 발행 (본 스킬이 가격 섹션 기반 견적 명세 표를 작성한 뒤 스프레드시트로 출력)
+- `moai-officer:doc-docx` — Word/PDF 출력
+- `moai-officer:doc-pptx` — 슬라이드 출력
+- `moai-officer:doc-xlsx` — 견적서 별도 발행 (본 스킬이 가격 섹션 기반 견적 명세 표를 작성한 뒤 스프레드시트로 출력)
 
 **공공조달 입찰 체이닝**:
 - `moai-accountant:finance-financial-statements` — 재무제표 첨부 준비 / 납세증명 등 세무 첨부는 `moai-accountant:finance-tax-helper` 안내
@@ -180,9 +180,9 @@ RFP가 제공된 경우, 모든 필수 항목을 추출해 체크리스트화합
 
 - `/harness` — 본 스킬 자체의 추가 개선·재생성
 - 등록된 스킬 체인:
-  - B2B 영업 제안서: `moai-consultant:consult-market → moai-coworker:collab-proposal → moai-coworker:general-ai-slop-reviewer → moai-officer:office-docx-generator`
-  - B2B 영업 슬라이드: `moai-consultant:consult-market → moai-coworker:collab-proposal → moai-coworker:general-ai-slop-reviewer → moai-officer:office-pptx-designer`
-  - 견적서 분리: `moai-coworker:collab-proposal → moai-officer:office-xlsx-creator` (collab-proposal가 가격 섹션 기반 견적 명세 표를 직접 작성)
+  - B2B 영업 제안서: `moai-consultant:consult-market → moai-coworker:collab-proposal → moai-coworker:general-ai-slop-reviewer → moai-officer:doc-docx`
+  - B2B 영업 슬라이드: `moai-consultant:consult-market → moai-coworker:collab-proposal → moai-coworker:general-ai-slop-reviewer → moai-officer:doc-pptx`
+  - 견적서 분리: `moai-coworker:collab-proposal → moai-officer:doc-xlsx` (collab-proposal가 가격 섹션 기반 견적 명세 표를 직접 작성)
 
 ## 상세 레퍼런스
 
