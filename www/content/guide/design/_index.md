@@ -208,6 +208,7 @@ flowchart LR
 | 결과 검수 | `cd-slop-check` | AI 슬롭 검수 + 수정안 |
 | 핸드오프 | `cd-handoff-reader` | 번들 요약 + Claude Code 지시 |
 | 모션 구현 | `design-landing-motion` | 시안을 움직이는 랜딩으로 — 효과 1개 선택 + 에셋 킷 + 출시 전 게이트 |
+| 로고 생성 | `design-logo` | 브랜드 컨텍스트 → 로고 타입 선택 → recraft 벡터 제약 → 스케일 정합 검증 |
 
 ## 다음 단계
 

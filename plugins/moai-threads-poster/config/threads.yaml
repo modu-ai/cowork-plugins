@@ -1,0 +1,84 @@
+# moai-threads-poster — 분산 발행 케이던스 참조 (documentation / reference only).
+#
+# [주의] 이 파일은 더 이상 스케줄러 설정이 아닙니다. launchd/cron 기반 자동 발행은
+# 제거되었습니다(cowork 의 세션 단위 스케줄링 · write-금지 cadence-bridge 원칙과
+# 충돌하기 때문입니다). 이제 발행은 "수동 승인 + 분산 등록(batch)" 모델을 따릅니다:
+#   - 세션 안에서 초안을 작성 → 승인 → 분산 등록(threads_queue_add_batch) →
+#     세션 안에서 threads_queue_publish_due 로 발행.
+#   - 자동 백그라운드 발행(launchd) 은 없습니다 — 반드시 세션을 켜고 승인/발행해야 합니다.
+#
+# 아래 값은 "언제 올리면 좋은가"에 대한 베스트 프랙티스 가이드이며,
+# threads_queue_add_batch(cadence=...) 가 예약 시각을 정할 때 참조하는 기준값입니다.
+
+cadence:
+  # 권장 주간 발행 수 (Threads 알고리즘 기준 무난한 빈도).
+  weekly_posts: 3-5
+
+  # 베스트 요일 — 화·수·목 이 업무시간대 노출이 가장 안정적.
+  best_days: [화, 수, 목]
+
+  # 베스트 슬롯(Asia/Seoul) — 출근 전 · 점심 · 퇴근 후 트래픽 피크.
+  best_slots: [07:00-09:00, 12:00-14:00, 19:00-21:00]
+
+  # 단일 피크 슬롯 — 수요일 점심. threads_queue_add_batch(cadence="weekly_3") 가
+  # 화·수·목 12:00 슬롯을 기본으로 사용할 때의 정점(peak).
+  peak: "수 12:00-14:00"
+
+# 자격증명(env) — 자동 발행용 env 파일/로그 디렉토리 키는 제거되었습니다.
+# 자격증명은 세션의 환경변수로만 전달합니다:
+#   THREADS_ACCESS_TOKEN (필수) · THREADS_USER_ID (필수) · THREADS_PUBLISH_DELAY (선택, 기본 30)
+# 발급 절차: mcp-servers/threads-poster/CONNECTORS.md
+
+# 문체 학습 (style learning) — threads-style-learn 스킬이 분석한 프로필의 저장 경로.
+# threads_style_save / threads_style_load MCP 도구가 참조한다. Threads 자격증명 불필요.
+style:
+  # 기본 저장 경로. $CLAUDE_PLUGIN_ROOT/mcp-servers/threads-poster/.data/style-profile.md
+  # (.data/ 는 gitignored — 개인 문체가 저장소에 올라가지 않는다).
+  # path= 미지정 시 이 경로를 사용한다. 명시적 path= 로 다른 위치 지정 가능.
+  profile_path: "${CLAUDE_PLUGIN_ROOT}/mcp-servers/threads-poster/.data/style-profile.md"
+
+# 멀티 채널 배포 (multi-channel) — threads_format_multi_channel 의 기본값 참조.
+# 이 파일은 documentation/reference 용이며, 도구의 실제 기본값은 server.py 에 하드코딩.
+#   - Threads: 500 UTF-8 바이트
+#   - X free  : 트윗당 280자 (긴 글은 1/ · 2/ 번호 트윗 체인으로 자동 분할)
+#   - X premium: 25,000자 (단일 문자열)
+#   - Facebook: 개인 계정 글자 수 제한 없음 (단, API 발행 불가 → 복붙용 텍스트만 제공)
+x:
+  # 기본 X tier. "free" = 280자 분할(무료), "premium" = 25,000자 단일(유료).
+  # threads_format_multi_channel(x_tier=...) 의 기본 인자는 "free" 다.
+  default_tier: "free"
+
+# Instagram (Facebook Login for Business) — SPEC-THREADS-POSTER-INSTAGRAM-001.
+# Threads 와 같은 통합 발행 큐를 공유하며 platform='instagram' 행으로 구분된다.
+# 자격증명은 Threads 쌍(THREADS_*) 과 *독립적인* 두 번째 쌍(IG_*) 을 쓴다.
+instagram:
+  # [스케줄링 교정 — REQ-INST-009, 본 설정에서 가장 중요]
+  # Instagram Graph API 는 서버 측 스케줄링 파라미터가 *없다*
+  # (scheduled_publish_time / published=false 어느 쪽도 불가).
+  # 예약 = 큐에 intent(캡션+미디어 URL+예정 시각) 보관. 실제 발행은 예정 시각 도래 후
+  # 사용자가 세션에서 instagram_queue_publish_due 를 호출할 때 일어난다.
+  # 백그라운드 자동 발행(launchd/cron) 은 없다 (Threads 와 동일 모델).
+  scheduling: "queue-only (Instagram API 에 서버 측 스케줄링 없음 — 큐가 유일한 예약 경로)"
+
+  # 이미지 형식 — Threads 와 상이 (Threads 는 JPEG/PNG 둘 다 허용).
+  image_format: "JPEG-only (PNG 거부됨 — 빠른 실패)"
+
+  # 컨테이너 24h EXPIRY 는 이 설계에서 non-issue 다 (REQ-INST-010).
+  # 큐가 intent 를 보관하지 container 를 들고 있지 않으므로, runner 가 예정 시각에
+  # container 생성 + 즉시 publish(수초) 하므로 24h 만료가 닿지 않는다.
+  container_expiry: "non-issue (큐는 intent 보관, container 수명은 수초)"
+
+  # 계정 유형 — Personal 불가.
+  account_type: "Instagram Professional (Business 또는 Creator) 만 지원. Personal 불가."
+
+  # 자격증명(환경변수) — Threads 와 별개. 발급 절차는 CONNECTORS.md Instagram 섹션.
+  #   IG_ACCESS_TOKEN (필수) — Facebook Page 장기 액세스 토큰
+  #   IG_USER_ID      (필수) — Instagram Professional 계정 ID (API 경로의 ig-user-id)
+  credentials:
+    IG_ACCESS_TOKEN: "${IG_ACCESS_TOKEN}"
+    IG_USER_ID: "${IG_USER_ID}"
+
+  # 케이던스 — Threads 의 weekly_3/weekly_5 를 재사용 (피크 시각은 유사).
+  # instagram_schedule + threads_queue_approve 로 베스트 슬롯에 예약.
+  cadence_ref: "threads_queue_add_batch 의 weekly_3/weekly_5 슬롯 재사용 가능"
+

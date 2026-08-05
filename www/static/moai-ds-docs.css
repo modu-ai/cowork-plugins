@@ -368,34 +368,10 @@
 [data-theme="dark"] .callout--tip .ico { color: #3d7d5f; }
 .callout b { font-weight: 700; }
 
-/* ── Table ────────────────────────────────────── */
-.tbl-wrap {
-  margin: 20px 0;
-  border-radius: 12px;
-  border: 1px solid var(--border-1);
-  overflow: hidden;
-  background: var(--color-surface);
-}
-.tbl { width: 100%; border-collapse: collapse; font-size: 14.5px; }
-.tbl th, .tbl td {
-  text-align: left;
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--border-2);
-  vertical-align: top;
-}
-.tbl th {
-  font-weight: 600;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--fg-3);
-  font-family: var(--font-mono);
-  background: var(--neutral-50);
-}
-[data-theme="dark"] .tbl th { background: rgba(255,255,255,0.03); }
-.tbl tr:last-child td { border-bottom: 0; }
-.tbl tr:hover td { background: rgba(61, 125, 95,0.025); }
-[data-theme="dark"] .tbl tr:hover td { background: rgba(61, 125, 95,0.06); }
+/* ── Table ──────────────────────────────────────
+   (제거) .tbl / .tbl-wrap — 사용처 0건이던 죽은 코드.
+   마크다운 표는 모두 .gdoc-markdown table → moai-ds-v2.css 의 .table-wrap
+   카드 디자인으로 렌더링된다. */
 
 /* ── macOS Code block ─────────────────────────── */
 .code-card {

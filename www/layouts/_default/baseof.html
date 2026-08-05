@@ -36,6 +36,15 @@
       {{ $navEnabled := default true .Page.Params.geekdocNav }}
       {{ partial "site-header" (dict "Root" . "MenuEnabled" $navEnabled) }}
 
+      {{- /* 모바일 사이드바 드로어 — 햄버거 버튼 + 오버레이. 데스크톱(>1080px)에서는
+             CSS 가 display:none 처리한다. 사이드바가 있는 페이지에서만 출력. */ -}}
+      {{ if $navEnabled }}
+        <button class="nav-drawer-btn" type="button"
+                aria-label="메뉴 열기" aria-expanded="false" aria-controls="gdoc-nav">
+          {{ partial "ds-icon" (dict "name" "menu" "size" 20) }}
+        </button>
+        <div class="nav-overlay" aria-hidden="true"></div>
+      {{ end }}
 
       <main class="container flex flex-even">
         {{ if $navEnabled }}
@@ -235,6 +244,86 @@
       } else {
         init();
       }
+    })();
+    </script>
+
+    {{- /* 반응형 표 — 마크다운 표를 .table-wrap 으로 감싸 가로스크롤 컨테이너를 부여한다.
+           Hugo 의 render-table 훅은 .Inner 를 지원하지 않아(행 단위 구조 데이터만 줌)
+           클라이언트 JS 로 감싸는 쪽이 가장 단순·견고하다. 표가 세로로 찌그러지지 않고
+           좁은 화면에서는 .table-wrap 이 옆으로 스크롤된다. */ -}}
+    <script>
+    (function () {
+      document.querySelectorAll('.gdoc-markdown table:not(.lntable):not(.highlight)').forEach(function (t) {
+        var parent = t.parentElement;
+        if (parent && parent.classList.contains('table-wrap')) return;
+        var wrap = document.createElement('div');
+        wrap.className = 'table-wrap';
+        t.parentNode.insertBefore(wrap, t);
+        wrap.appendChild(t);
+      });
+    })();
+    </script>
+
+    {{- /* 모바일 사이드바 드로어 제어 — 햄버거 토글·오버레이 클릭·ESC·링크 클릭 시 닫기 */ -}}
+    <script>
+    (function () {
+      var btn = document.querySelector('.nav-drawer-btn');
+      if (!btn) return;
+      var nav = document.getElementById('gdoc-nav');
+      var overlay = document.querySelector('.nav-overlay');
+      var lastFocused = null;
+
+      {{- /* 닫힌 드로어를 포커스·클릭·SR 탐색에서 완전히 제외(inert).
+             미지원 브라우저는 tabIndex 폴백. */ -}}
+      function setNavLocked(locked) {
+        if (!nav) return;
+        if ('inert' in nav) { nav.inert = locked; return; }
+        nav.querySelectorAll('a,button,[href],input,select,textarea').forEach(function (el) {
+          if (locked) { if (el.tabIndex !== -1) el.dataset.prevTab = el.tabIndex; el.tabIndex = -1; }
+          else { if ('prevTab' in el.dataset) { el.tabIndex = Number(el.dataset.prevTab); delete el.dataset.prevTab; } else el.removeAttribute('tabindex'); }
+        });
+      }
+      setNavLocked(true); {{- /* 초기: 닫힘 */ -}}
+
+      function focusables() {
+        return nav ? Array.prototype.slice.call(nav.querySelectorAll('a,button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])')) : [];
+      }
+      function open() {
+        lastFocused = document.activeElement;
+        document.body.classList.add('nav-open');
+        btn.setAttribute('aria-expanded', 'true');
+        if (overlay) overlay.setAttribute('aria-hidden', 'false');
+        setNavLocked(false);
+        var f = focusables();
+        if (f.length) f[0].focus(); else btn.focus();
+      }
+      function close() {
+        document.body.classList.remove('nav-open');
+        btn.setAttribute('aria-expanded', 'false');
+        if (overlay) overlay.setAttribute('aria-hidden', 'true');
+        setNavLocked(true);
+        var t = lastFocused && lastFocused.focus ? lastFocused : btn;
+        t.focus();
+      }
+      btn.addEventListener('click', function () {
+        document.body.classList.contains('nav-open') ? close() : open();
+      });
+      if (overlay) overlay.addEventListener('click', close);
+      {{- /* ESC 닫기 + Tab 포커스 트랩(드로어 안에서 순환) */ -}}
+      document.addEventListener('keydown', function (e) {
+        if (!document.body.classList.contains('nav-open')) return;
+        if (e.key === 'Escape') { close(); return; }
+        if (e.key !== 'Tab' || !nav) return;
+        var f = focusables();
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      });
+      {{- /* 드로어 안 링크 클릭 시 닫기(모바일에서 이동 후 닫힘) */ -}}
+      if (nav) nav.addEventListener('click', function (e) {
+        if (e.target.closest('a')) close();
+      });
     })();
     </script>
   </body>
