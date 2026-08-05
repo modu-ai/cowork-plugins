@@ -12,7 +12,7 @@ description: |
   - "디자인 시스템 프롬프트"
   - "프롬프트 빌더"
 user-invocable: true
-version: "1.1.0"
+version: "1.2.0"
 ---
 
 # cd-prompt-builder — 시니어 UX 패턴 프롬프트 빌더
@@ -36,7 +36,7 @@ Claude Design 프롬프트, 시니어 UX, UX 패턴, 정보 구조 프롬프트,
 | 3 | 디자인 시스템 빌더 | Figma 시니어 디자인 시스템 엔지니어 (1M+ 사용자 경험) | 토큰·shadcn 전체 컴포넌트×라이트/다크·라이브 React |
 | 4 | 마이크로카피 라이터 | Dropbox 시니어 UX 라이터 | 온보딩·empty state·에러·CTA |
 | 5 | 활성화·온보딩 | Intercom 시니어 프로덕트 디자이너 | 10분 AHA 모먼트·활성화 체크리스트·72시간 이메일 |
-| 6 | 사용성 감사 | Baymard Institute 시니어 UX 컨설턴트 | Nielsen 10 휴리스틱 5점 평가·심각도 매트릭스 |
+| 6 | 사용성 감사 | Baymard Institute 시니어 UX 컨설턴트 | Nielsen 10 휴리스틱 5점 평가·심각도 매트릭스·컴포넌트별 86 가이드라인(cd-gui-guidelines) |
 | 7 | 데이터 대시보드 | Tableau 시니어 데이터 시각화 디자이너 | 10초 의사결정·시맨틱 색·KPI 1-3개 |
 | 8 | WCAG·EAA 접근성 | Level Access 시니어 접근성 컨설턴트 | WCAG 2.1 AA 감사·키보드 내비·NVDA/VoiceOver |
 | 9 | 폼 컨버전 | CXL Institute 시니어 컨버전 옵티마이저 | 필드 감축·심리 순서·GDPR 동의 |
@@ -200,6 +200,7 @@ Anthropic 공식 발표(2026-04-17)에서 강조한 **코드 기반 프로토타
 - 시맨틱 토큰 명명 (primary/500 등)
 - **라이트·다크 양 테마 의무 생성** — 모든 컴포넌트·토큰·팔레트를 라이트와 다크 양쪽으로 빠짐없이 제작. 한쪽이라도 누락되면 미완성으로 간주
 - WCAG 색 대비 — 본문 4.5:1, 큰 텍스트 3:1을 **양 테마 각각**에서 준수 (다크 텍스처 위 반투명 배경 주의)
+- **컴포넌트별 사용성 준거** — 각 컴포넌트는 `cd-gui-guidelines`의 해당 GUI 요소 가이드라인(동사 라벨·필드 세금·modal 범위·아이콘+라벨 짝·1×1cm 터치·토글=즉시·탭 1행 등 86종)을 준수해 설계
 - 1-2명 디자이너가 유지보수 가능한 규모
 
 [OUTPUTS]
@@ -332,6 +333,7 @@ Anthropic 공식 발표(2026-04-17)에서 강조한 **코드 기반 프로토타
 |---|---|
 | `moai-designer:cd-brief` | 대안: 일반적 6요소 브리프 (시니어 패턴이 필요 없을 때) |
 | `moai-designer:cd-system-prep` | 선행: 디자인 시스템 자산 합성 |
+| `moai-designer:cd-gui-guidelines` | 참조: 패턴 3·6이 컴포넌트별 사용성 가이드라인(86종)으로 준거 |
 | `moai-designer:cd-slop-check` | 후속: 결과 카피 검수 |
 | `moai-coworker:business-ux-designer` | 보조: Claude Design 외 UX 분석 |
 | `moai-coworker:business-ux-researcher` | 보조: 사용자 리서치 단계 |
