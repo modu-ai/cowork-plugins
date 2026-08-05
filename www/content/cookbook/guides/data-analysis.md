@@ -21,7 +21,7 @@ flowchart TD
 | 단계 | 스킬 | 용도 |
 |---|---|---|
 | 데이터 로드 + 프로파일링 | `moai-analyst:data-explorer` | 컬럼 요약, 결측·이상값, 상관관계 |
-| 통계·공공데이터 보강 | `moai-analyst:office-public-data-public-data` | KOSIS·data.go.kr |
+| 통계·공공데이터 보강 | `moai-analyst:data-public` | KOSIS·data.go.kr |
 | 시각화 | `moai-analyst:data-visualizer` | 차트·대시보드 |
 | 결과 출력 | `moai-officer:doc-xlsx` / `moai-officer:doc-docx` | 엑셀·워드 보고서 |
 
@@ -67,7 +67,7 @@ flowchart TD
 > 차이가 큰 분기를 표시하고 원인 후보를 정리.
 {{< /terminal >}}
 
-`office-public-data-public-data` 스킬이 KOSIS·data.go.kr API를 자동 호출합니다.
+`data-public` 스킬이 KOSIS·data.go.kr API를 자동 호출합니다.
 
 ## 데이터 품질 체크 5가지
 
@@ -97,5 +97,5 @@ flowchart TD
 
 ### Sources
 
-- moai-analyst 플러그인 [`data-explorer`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-analyst/skills/data-explorer/SKILL.md), [`office-public-data-public-data`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-analyst/skills/office-public-data-public-data/SKILL.md)
+- moai-analyst 플러그인 [`data-explorer`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-analyst/skills/data-explorer/SKILL.md), [`data-public`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-analyst/skills/data-public/SKILL.md)
 - [KOSIS 통계청](https://kosis.kr) · [공공데이터포털](https://www.data.go.kr)

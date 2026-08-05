@@ -1,5 +1,5 @@
 ---
-name: project
+name: project-manager
 description: |
   17개 AI 직원 플러그인 패밀리('MoAI-Cowork, 모두의 코워크')의 **프로젝트 초기화 단일 진입점**.
   `/project <자연어 지시>`로 진입한다 — Claude Cowork(Desktop) 작업을 담당하는

@@ -1,5 +1,5 @@
 ---
-name: office-public-data-real-estate-search
+name: data-realestate
 description: |
   국토교통부 실거래가 신고 데이터로 아파트·오피스텔·연립다세대·단독다가구·상업업무용 부동산의 매매·전월세 시세를 조회해 드립니다(별도 API 키 없이 바로 사용).
   다음과 같은 요청 시 사용하세요:
@@ -139,7 +139,7 @@ curl -fsS --get 'https://k-skill-proxy.nomadamas.org/v1/real-estate/officetel/re
 
 ## 관련 스킬 체이닝
 
-- **before**: `moai-analyst:office-public-data-public-data` — 인구·가구 통계로 입지 분석 보조
+- **before**: `moai-analyst:data-public` — 인구·가구 통계로 입지 분석 보조
 - **after**: `moai-consultant:consult-market` — 시세 데이터 기반 시장 분석
 - **after**: `moai-accountant:finance-investor-relations` → `moai-officer:doc-pptx` — 투자 IR 자료
 - **after**: `moai-marketer:marketing-landing-page` — 부동산 마케팅 페이지 데이터 입력

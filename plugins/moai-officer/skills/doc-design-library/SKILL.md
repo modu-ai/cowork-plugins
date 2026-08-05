@@ -1,5 +1,5 @@
 ---
-name: office-design-system-library
+name: doc-design-library
 description: |
   75개 글로벌 브랜드 디자인 시스템(Claude · ClickHouse · Clay 포함)의 토큰(색·타이포·radius·spacing·컴포넌트)을 단일 파일 HTML 산출물에 적용합니다.
   본 스킬은 moai-designer 플러그인의 정본(canonical)을 가리키는 포인터입니다 — 실제 시스템 토큰·컴포넌트 정의·샘플은 `moai-designer:design-system-library`에서 관리합니다(cowork 중복 사본은 경계 계약 "산출물=cowork, 체계=design"에 따라 제거됨).
@@ -9,9 +9,9 @@ description: |
 version: "1.0.0"
 ---
 
-# office-design-system-library — moai-designer 정본 포인터
+# doc-design-library — moai-designer 정본 포인터
 
-본 스킬(`moai-officer:office-design-system-library`)은 **moai-designer 플러그인의 정본**을 가리키는 포인터입니다.
+본 스킬(`moai-officer:doc-design-library`)은 **moai-designer 플러그인의 정본**을 가리키는 포인터입니다.
 
 ## 왜 포인터인가
 

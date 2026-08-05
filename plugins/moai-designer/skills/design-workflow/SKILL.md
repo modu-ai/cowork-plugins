@@ -25,7 +25,7 @@ Unified `/moai design` workflow skill. Handles two complementary responsibilitie
    `.moai/design/tokens.json` for `expert-frontend` consumption.
 2. **Design-brief context loading** — Auto-loads human-authored briefs from `.moai/design/`
    (`spec.md`, `system.md`, `research.md`) into the orchestrator prompt before
-   `expert-frontend` or `moai-domain-brand-design` runs.
+   `expert-frontend` or `design-brand-system` runs.
 
 Brand context (`.moai/project/brand/`) is the constitutional parent across all paths — no
 path may override brand constraints (design constitution §3.1, §3.3).
@@ -157,7 +157,7 @@ Log `design_docs not configured — using defaults` when key absent.
 - `DESIGN_IMPORT_MISSING_MANIFEST` — ZIP without `manifest.json` → guide to Path B
 
 **Fallback guidance** appended to every error: instruct user to run `/moai design` and
-select "Code-based brand design (moai-domain-brand-design)" after ensuring
+select "Code-based brand design (design-brand-system)" after ensuring
 `.moai/project/brand/visual-identity.md` is complete.
 
 ### Partial Bundle Recovery
@@ -167,8 +167,8 @@ Valid bundle missing optional components → extract what's available, log warni
 
 ## Works Well With
 
-`moai-domain-brand-design` (Path B fallback / context consumer), `design-handoff`
-(produces `claude-design-handoff/` for Path A), `moai-workflow-gan-loop` (uses tokens +
+`design-brand-system` (Path B fallback / context consumer), `design-handoff`
+(produces `claude-design-handoff/` for Path A), `design-iteration-loop` (uses tokens +
 context as baseline), `moai-meta-harness` (generates figma extractor for Path B1),
 `expert-frontend` (primary consumer), `.claude/rules/moai/design/constitution.md` (brand
 priority + reserved paths).

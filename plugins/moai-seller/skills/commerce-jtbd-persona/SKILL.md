@@ -247,6 +247,6 @@ mode=persona 산출물은 텍스트 페르소나 프로필이므로 `moai-cowork
 ## 이 스킬을 사용하지 말아야 할 때
 
 - **카피 작성 (Why 아닌 What)**: `design-copywriting` 또는 `commerce-detail-page-copy` 사용
-- **브랜드 아이덴티티 설계**: `moai-domain-brand-design` 사용
+- **브랜드 아이덴티티 설계**: `design-brand-system` 사용
 - **광고 타겟팅 설정 (실집행)**: 광고 플랫폼에서 직접 설정
 - **정성 인터뷰 / UX 리서치**: 별도 사용자 리서치 프로세스 활용

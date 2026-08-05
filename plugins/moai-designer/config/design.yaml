@@ -53,7 +53,7 @@ design:
   # Figma integration (Phase 2 roadmap — disabled by default in current release)
   figma:
     enabled: false
-    # When enabled, moai-domain-brand-design can extract tokens from a public Figma file URL.
+    # When enabled, design-brand-system can extract tokens from a public Figma file URL.
     # Requires figma.enabled: true and a valid public Figma file URL provided by user.
     # Phase 2 release criteria apply.
 

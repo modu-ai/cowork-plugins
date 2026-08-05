@@ -26,7 +26,7 @@ version: "1.0.0"
 
 ## 책임 범위 (경계 계약)
 
-본 스킬은 **퍼스널 브랜딩 산출물 전용**입니다 — 브랜드 산출물(네이밍 후보, 슬로건, 톤앤매너 가이드, 브랜드 가이드 문서)을 만드는 데 집중합니다. 브랜드 시스템 구축(디자인 토큰 체계, DTCG 토큰 아키텍처, 브랜드 시스템 SSOT, Claude Design 연동)은 design 플러그인의 `moai-domain-brand-design` 스킬이 담당합니다(경계 계약: "산출물=cowork, 체계=design"). 시스템 구축이 필요하면 `moai-designer:moai-domain-brand-design`으로 연결합니다.
+본 스킬은 **퍼스널 브랜딩 산출물 전용**입니다 — 브랜드 산출물(네이밍 후보, 슬로건, 톤앤매너 가이드, 브랜드 가이드 문서)을 만드는 데 집중합니다. 브랜드 시스템 구축(디자인 토큰 체계, DTCG 토큰 아키텍처, 브랜드 시스템 SSOT, Claude Design 연동)은 design 플러그인의 `design-brand-system` 스킬이 담당합니다(경계 계약: "산출물=cowork, 체계=design"). 시스템 구축이 필요하면 `moai-designer:design-brand-system`으로 연결합니다.
 
 ## 트리거 키워드
 

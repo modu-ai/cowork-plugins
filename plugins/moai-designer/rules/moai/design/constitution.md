@@ -27,7 +27,7 @@ Core principles governing the MoAI design production system. These rules define 
 
 ## 1. Identity and Purpose
 
-The MoAI design production system is a creative production capability built on top of MoAI-ADK. It orchestrates a pipeline of specialized skills and agents (`design-copywriting`, `moai-domain-brand-design`, `design-workflow`, `moai-workflow-gan-loop`, `expert-frontend`, `sync-auditor`) to produce high-quality web experiences from natural language briefs.
+The MoAI design production system is a creative production capability built on top of MoAI-ADK. It orchestrates a pipeline of specialized skills and agents (`design-copywriting`, `design-brand-system`, `design-workflow`, `design-iteration-loop`, `expert-frontend`, `sync-auditor`) to produce high-quality web experiences from natural language briefs.
 
 The design system is NOT a replacement for MoAI. It is a vertical specialization domain that:
 - Inherits MoAI's orchestration infrastructure, quality gates, and agent runtime
@@ -58,7 +58,7 @@ The following elements are immutable and can only be changed by human developers
 
 The following elements can be modified through the graduation protocol:
 
-- [EVOLVABLE] Skill body content for design-copywriting, moai-domain-brand-design, moai-workflow-gan-loop
+- [EVOLVABLE] Skill body content for design-copywriting, design-brand-system, design-iteration-loop
 - [EVOLVABLE] Pipeline adaptation weights (.moai/config/sections/design.yaml adaptation.phase_weights)
 - [EVOLVABLE] Evaluation rubric criteria (within bounds set by frozen rules)
 - [EVOLVABLE] Design tokens and brand heuristics (.moai/project/brand/)
@@ -74,7 +74,7 @@ Brand context is not optional decoration. It is a constitutional constraint that
 
 - [ZONE:Frozen] [HARD] manager-spec MUST load brand context before generating BRIEF documents
 - [ZONE:Frozen] [HARD] design-copywriting MUST adhere to brand voice, tone, and terminology from brand-voice.md
-- [ZONE:Frozen] [HARD] moai-domain-brand-design MUST use brand color palette, typography, and visual language from visual-identity.md
+- [ZONE:Frozen] [HARD] design-brand-system MUST use brand color palette, typography, and visual language from visual-identity.md
 - [ZONE:Frozen] [HARD] expert-frontend MUST implement design tokens derived from brand context
 - [ZONE:Frozen] [HARD] sync-auditor MUST score brand consistency as a must-pass criterion
 
@@ -106,14 +106,14 @@ Iteration-specific design briefs are stored in `.moai/design/`:
 ### Phase Ordering
 
 ```
-manager-spec -> [design-copywriting, moai-domain-brand-design] (parallel) -> expert-frontend -> sync-auditor
+manager-spec -> [design-copywriting, design-brand-system] (parallel) -> expert-frontend -> sync-auditor
                                                                                           ^                  |
                                                                                           |__________________|
                                                                                      GAN Loop (max 5 iterations)
-                                                                                     (via moai-workflow-gan-loop)
+                                                                                     (via design-iteration-loop)
 ```
 
-Path A (Claude Design import): design-workflow replaces moai-domain-brand-design for the design artifact phase.
+Path A (Claude Design import): design-workflow replaces design-brand-system for the design artifact phase.
 
 ### Phase Contracts
 
@@ -123,7 +123,7 @@ Each phase produces typed artifacts consumed by downstream phases:
 |-------|-------|--------|----------|
 | manager-spec | User request + brand context | BRIEF document (Goal/Audience/Brand sections) | Always |
 | design-copywriting | BRIEF + brand voice | Copy JSON (hero/features/cta/etc.) | Path B |
-| moai-domain-brand-design | BRIEF + visual identity | Design tokens JSON + component spec | Path B |
+| design-brand-system | BRIEF + visual identity | Design tokens JSON + component spec | Path B |
 | design-workflow | Handoff bundle path | .moai/design/ reserved artifacts (see Section 3.2) | Path A |
 | expert-frontend | Copy JSON + design tokens | Working code (pages, components, styles) | Always |
 | sync-auditor | Built code + BRIEF | Score card + feedback | Always |

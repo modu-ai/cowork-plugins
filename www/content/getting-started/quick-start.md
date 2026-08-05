@@ -189,7 +189,7 @@ sequenceDiagram
    13. **형식 지정** — 산출물 형식을 세부 지정합니다
    14. **완료 확인** — 모든 인터뷰 항목 입력 후 완료를 확인합니다
 
-   `moai-pm:project` 스킬이 실행되어 **7단계 흐름**(Interview → Detect → Chain → Confirm → Generate → APIKey → First Run)을 진행합니다. 자세한 내용은 [PM 직원 페이지](../../moai-agents/pm/)에서 확인할 수 있습니다. 약 3-5분 안에 프로젝트용 `CLAUDE.md`가 루트에 생성됩니다.
+   `moai-pm:project-manager` 스킬이 실행되어 **7단계 흐름**(Interview → Detect → Chain → Confirm → Generate → APIKey → First Run)을 진행합니다. 자세한 내용은 [PM 직원 페이지](../../moai-agents/pm/)에서 확인할 수 있습니다. 약 3-5분 안에 프로젝트용 `CLAUDE.md`가 루트에 생성됩니다.
 
 ## 한 줄을 쓰면 체인이 저절로 조립되는 원리
 

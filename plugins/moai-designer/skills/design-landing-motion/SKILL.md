@@ -130,7 +130,7 @@ version: "1.0.0"
 | 스킬 | 시점 |
 |---|---|
 | `moai-designer:design-brand-visual` | 대안: 이미지 한 장만 필요할 때 |
-| `moai-designer:moai-domain-brand-design` | 선행: 팔레트·타이포 기준 수립 |
+| `moai-designer:design-brand-system` | 선행: 팔레트·타이포 기준 수립 |
 | `moai-designer:design-tokens-transformer` | 선행: 토큰을 CSS로 |
 | `moai-designer:design-slop-check` | 후속: 카피 AI 슬롭 점검 |
 | `moai-media:media-higgsfield-image` | 위임: 이미지 생성 |

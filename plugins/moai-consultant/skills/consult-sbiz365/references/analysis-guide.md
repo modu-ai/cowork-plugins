@@ -186,7 +186,7 @@
 → 해당 분석은 "간단분석 기준, 제한된 데이터" 명시 후 가용 데이터로 부분 분석
 
 ### KOSIS 공공데이터 보완 필요 시
-moai-analyst:office-data-public-data 스킬 활용:
+moai-analyst:data-public 스킬 활용:
 - 행정동별 인구 통계 (KOSIS)
 - 사업체 수 통계 (소상공인 부문)
 - 매출 및 카드 거래 데이터

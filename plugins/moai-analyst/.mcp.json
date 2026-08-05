@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "korean-stats": {
-      "$comment": "KOSIS 국가데이터처 통계 MCP (chrisryugj/korean-stats-mcp, MIT) — 14도구. 92 키워드 + 100+ 자연어 별칭, 17 시도 + 230+ 자치구 시군 라우팅, 시계열 추세/순위, 출처(통계표 ID) 자동 인용, 추계/잠정치 구분. 공용키 탑재 remote 커넥터(URL만 등록, 사용자 API 키 발급 불필요). 라이브 스킬: moai-analyst:office-public-data-public-data(KOSIS 자연어 조회 우선 라우팅).",
+      "$comment": "KOSIS 국가데이터처 통계 MCP (chrisryugj/korean-stats-mcp, MIT) — 14도구. 92 키워드 + 100+ 자연어 별칭, 17 시도 + 230+ 자치구 시군 라우팅, 시계열 추세/순위, 출처(통계표 ID) 자동 인용, 추계/잠정치 구분. 공용키 탑재 remote 커넥터(URL만 등록, 사용자 API 키 발급 불필요). 라이브 스킬: moai-analyst:data-public(KOSIS 자연어 조회 우선 라우팅).",
       "type": "http",
       "url": "https://mcp.gomdori.app/stats"
     },

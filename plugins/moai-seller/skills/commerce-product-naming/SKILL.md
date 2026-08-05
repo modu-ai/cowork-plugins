@@ -203,7 +203,7 @@ JTBD와 상품 정보를 기반으로 이커머스 플랫폼 최적화 상품명
 ## 이 스킬을 사용하지 말아야 할 때
 
 - **광고 카피·헤드라인 생성**: `design-copywriting` 또는 `commerce-detail-page-copy` 사용
-- **브랜드 네이밍 (회사명·서비스명)**: `moai-domain-brand-design` 사용
+- **브랜드 네이밍 (회사명·서비스명)**: `design-brand-system` 사용
 - **태그·검색어 등록 최적화**: 플랫폼별 SEO 스킬 (`commerce-marketplace-*`) 사용
 - **도메인·앱 이름 생성**: 별도 네이밍 프로세스 활용
 

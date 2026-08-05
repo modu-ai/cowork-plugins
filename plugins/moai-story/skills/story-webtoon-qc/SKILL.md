@@ -13,7 +13,7 @@ version: "1.0.0"
 
 # story-webtoon-qc: 산출 이미지 검수
 
-`story-webtoon-art`로 생성한 이미지가 **지시대로 나왔는지 판정**하는 스킬이다. 결함 7종을 위치·수정 문구와 함께 점검하고, 세로 스크롤 규격 적합성과 일관성 앵커 위반을 확인한다. 기본 경로는 자체 체크리스트 1패스이고, 채점 엔진(`moai-designer:moai-workflow-gan-loop`)은 가용할 때만 선택으로 붙인다.
+`story-webtoon-art`로 생성한 이미지가 **지시대로 나왔는지 판정**하는 스킬이다. 결함 7종을 위치·수정 문구와 함께 점검하고, 세로 스크롤 규격 적합성과 일관성 앵커 위반을 확인한다. 기본 경로는 자체 체크리스트 1패스이고, 채점 엔진(`moai-designer:design-iteration-loop`)은 가용할 때만 선택으로 붙인다.
 
 ## 1. 개요
 
@@ -52,7 +52,7 @@ version: "1.0.0"
 
 ### Step 4-2 — 채점 엔진 (선택 · 가용 시)
 
-가용하면 `moai-designer:moai-workflow-gan-loop` + `rubric-image.md` 반복 채점에 Must-Pass 4항목을 제출한다. 제출 항목·미가용 폴백 절차는 `references/rubric-bridge.md`.
+가용하면 `moai-designer:design-iteration-loop` + `rubric-image.md` 반복 채점에 Must-Pass 4항목을 제출한다. 제출 항목·미가용 폴백 절차는 `references/rubric-bridge.md`.
 
 > ⚠️ gan-loop은 현재 Desktop 환경에서 동작하지 않을 수 있다(`.moai/config` 의존·user-invocable:false). **필수 의존이 아니다** — 미가용/호출 실패 시 조용히 기본 경로(Step 1~4 자체 체크리스트 1패스)로 폴백하고, 사용자에게 "채점 엔진 미가용 → 자체 체크리스트로 검수함" 1줄만 고지한다.
 
@@ -95,7 +95,7 @@ version: "1.0.0"
 - `story-series-bible` — 검수 통과 후 회차 상태 갱신
 
 ### 선택 위임
-- `moai-designer:moai-workflow-gan-loop` — 반복 채점(가용 시) · 미가용 시 자체 폴백
+- `moai-designer:design-iteration-loop` — 반복 채점(가용 시) · 미가용 시 자체 폴백
 
 ## 8. References
 
@@ -108,5 +108,5 @@ version: "1.0.0"
 ## 9. 출처
 
 - 결함 7종 표·crop 확대·터널비전 방지·쌍검 2단 방어: aitoon-comic(내부 자산 이식, 세로 스크롤로 치환).
-- 채점 엔진 경계·Must-Pass 4항목: `moai-designer:moai-workflow-gan-loop` 위임 규약(설계 핸드오프).
+- 채점 엔진 경계·Must-Pass 4항목: `moai-designer:design-iteration-loop` 위임 규약(설계 핸드오프).
 - 원작 카피라이터: **조남경** (https://www.facebook.com/Bmisty)

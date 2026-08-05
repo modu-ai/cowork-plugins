@@ -99,7 +99,7 @@
 - **두 갈래 경로** — `/design`(bare)이 Path A(Claude Design import)와 Path B(코드 기반 브랜드 디자인)를 1라운드 인터뷰로 선택
 - **GAN 품질 루프** — Design Quality(30%)·Originality(25%)·Completeness(25%)·Functionality(20%) 4차원 회의적 채점 + `config/design.yaml`의 `max_iterations`/`pass_threshold`/`escalation_after`로 반복 제어
 - **파이프라인** — `manager-spec`(BRIEF) → 카피·비주얼 토큰 병렬 생성 → frontend 구현 → `sync-auditor`(GAN 루프)
-- **스킬 15종** — 도메인/워크플로우 5종(`moai-domain-brand-design`, `design-copywriting`, `design-workflow`, `moai-workflow-gan-loop`, `design-handoff`) + Claude Design 전처리·라이브러리 6종(`design-brief`, `design-system-prep`, `design-prompt-builder`, `design-handoff-reader`, `design-slop-check`, `design-system-library`) + 토큰·업로드 2종(`design-tokens-transformer`, `design-sync-upload`) + 비주얼·로고·모션 3종(`design-brand-visual`, `design-logo`, `design-landing-motion`)
+- **스킬 15종** — 도메인/워크플로우 5종(`design-brand-system`, `design-copywriting`, `design-workflow`, `design-iteration-loop`, `design-handoff`) + Claude Design 전처리·라이브러리 6종(`design-brief`, `design-system-prep`, `design-prompt-builder`, `design-handoff-reader`, `design-slop-check`, `design-system-library`) + 토큰·업로드 2종(`design-tokens-transformer`, `design-sync-upload`) + 비주얼·로고·모션 3종(`design-brand-visual`, `design-logo`, `design-landing-motion`)
 - **MCP 연동 1종** — `higgsfield`(mcp.higgsfield.ai). `design-brand-visual`·`design-logo`가 사용하며, 생성 실행·모델 선택·크레딧 사전 고지 계약은 `moai-media:media-higgsfield-core`에 위임한다. 인증은 Higgsfield 계정 토큰(파일에 키를 적지 않음)
 - **에이전트 3종** — `manager-spec`(BRIEF), `sync-auditor`(GAN 4차원 평가), `builder-harness`(Path B 동적 생성). 조사는 Anthropic 내장 `Explore`
 - **anti-slop 정본** — 디자인 카피 AI 슬롭 사전(영문·한국어 Tier 1/2)은 `design-copywriting`이 정본, `design-slop-check`는 다운스트림 QA 게이트

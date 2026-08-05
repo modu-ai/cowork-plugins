@@ -1,5 +1,5 @@
 ---
-name: general-feedback
+name: meta-feedback
 description: |
   버그 리포트와 기능 요청을 수집하여 GitHub Issues에 자동 등록합니다.
 

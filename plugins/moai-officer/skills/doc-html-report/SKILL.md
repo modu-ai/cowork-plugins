@@ -138,7 +138,7 @@ version: "1.0.0"
 
 ## 디자인 시스템 적용 (`design_system` 파라미터)
 
-`design_system` 입력을 지정하면 [`moai-officer:office-design-system-library`](../../moai-designer/skills/design-system-library/SKILL.md)에서 브랜드 토큰을 로드해 **Tailwind Play CDN + shadcn vanilla 컴포넌트**로 렌더합니다.
+`design_system` 입력을 지정하면 [`moai-officer:doc-design-library`](../../moai-designer/skills/design-system-library/SKILL.md)에서 브랜드 토큰을 로드해 **Tailwind Play CDN + shadcn vanilla 컴포넌트**로 렌더합니다.
 
 **두 가지 렌더 엔진** (하위 호환 유지):
 
@@ -183,7 +183,7 @@ version: "1.0.0"
 [텍스트 스킬] → ai-slop-reviewer → doc-html-report (design_system: clickhouse)
 ```
 
-> `design_system` 지정 시 `moai-officer:office-design-system-library`에서 토큰을 자동 로드합니다 — 별도 선행 스킬 호출 불필요.
+> `design_system` 지정 시 `moai-officer:doc-design-library`에서 토큰을 자동 로드합니다 — 별도 선행 스킬 호출 불필요.
 
 ---
 

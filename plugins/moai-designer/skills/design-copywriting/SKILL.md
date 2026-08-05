@@ -145,12 +145,12 @@ If any `_TBD_` markers are present in `brand-voice.md`, stop and request complet
 
 ---
 
-### Integration with moai-domain-brand-design
+### Integration with design-brand-system
 
 When both content-copywriting and design work are in scope (path B of `/moai design`):
 
 1. Complete copy sections first and output structured JSON.
-2. Pass the JSON copy output to `moai-domain-brand-design` as the content contract.
+2. Pass the JSON copy output to `design-brand-system` as the content contract.
 3. Design tokens and layout must accommodate copy length constraints (headline character counts, CTA button text length).
 
 ---
@@ -250,8 +250,8 @@ dependency.
 
 ## Works Well With
 
-- `moai-domain-brand-design`: Visual design must accommodate copy constraints
-- `moai-workflow-gan-loop`: GAN loop evaluates copy quality in Design Quality and Completeness dimensions
+- `design-brand-system`: Visual design must accommodate copy constraints
+- `design-iteration-loop`: GAN loop evaluates copy quality in Design Quality and Completeness dimensions
 - `expert-frontend`: Receives the JSON copy output for implementation
 - 카피 정확도 셀프체크: 본 스킬의 brand-voice 정렬 체크리스트로 카피 정확도를 검증합니다. MoAI harness(`moai`)의 `sync-auditor`가 함께 설치된 환경에서는 해당 agent로 평가를 보강할 수 있습니다.
 

@@ -147,7 +147,7 @@ Cowork 플러그인은 한국 공공데이터·공문서·법령 처리를 위�
 
 ### Connector F — korean-stats (KOSIS 국가데이터처 통계)
 
-**목적**: KOSIS 통계를 자연어 한 줄로 조회. 14도구, 92 키워드 + 100+ 자연어 별칭, 17 시도 + 230+ 자치구·시군 라우팅, 시계열 추세/순위, 출처(통계표 ID) 자동 인용, 추계/잠정치 구분. `moai-analyst:office-public-data-public-data`가 자연어 조회 우선 라우팅.
+**목적**: KOSIS 통계를 자연어 한 줄로 조회. 14도구, 92 키워드 + 100+ 자연어 별칭, 17 시도 + 230+ 자치구·시군 라우팅, 시계열 추세/순위, 출처(통계표 ID) 자동 인용, 추계/잠정치 구분. `moai-analyst:data-public`가 자연어 조회 우선 라우팅.
 
 **사전 준비물**: **API 키 불필요**. 공용키가 탑재된 remote 커넥터(URL만 등록).
 
@@ -330,7 +330,7 @@ Cowork 플러그인은 한국 공공데이터·공문서·법령 처리를 위�
 - `moai-seller:commerce-morning-brief` — 인증 완료 후 매장 데이터 아침 브리핑 + 신규 주문 통합 요약 (주문 요약 모드)
 - `moai-media:media-higgsfield-image` / `moai-media:media-higgsfield-video` — Higgsfield 커넥터 인증 완료 후 이미지·영상 생성
 - `moai-officer:doc-reader` — kordoc MCP 인증 완료 후 HWP/HWPX/PDF/XLSX/DOCX 파싱
-- `moai-analyst:office-public-data-public-data` — korean-stats MCP 자연어 KOSIS 통계 우선 라우팅 + dart MCP 연계
+- `moai-analyst:data-public` — korean-stats MCP 자연어 KOSIS 통계 우선 라우팅 + dart MCP 연계
 - `moai-analyst:data-building-ledger` — archhub MCP 건축물대장·인허가 실체 데이터 조회
 - `moai-lawyer:legal-law-research` — korean-law MCP 법령·판례·인용검증·행위시법 조회
 

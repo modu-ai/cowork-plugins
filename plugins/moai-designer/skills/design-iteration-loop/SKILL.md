@@ -1,5 +1,5 @@
 ---
-name: moai-workflow-gan-loop
+name: design-iteration-loop
 description: |
   Builder-Evaluator GAN loop workflow for iterative design quality improvement.
   Implements Sprint Contract negotiation, 4-dimension scoring (Design Quality,
@@ -16,7 +16,7 @@ version: "1.0.0"
 
 > ⚠️ **개발 런타임 전용** — 이 스킬은 MoAI-ADK(Claude Code) 환경을 전제한다. Claude Cowork(Desktop)에서는 `.moai/config` 의존으로 동작하지 않을 수 있다. Desktop 사용자는 자체 체크리스트 기반 QC(예: `moai-story:story-webtoon-qc` 같은 자체 QC 경로)를 사용한다.
 
-# moai-workflow-gan-loop
+# design-iteration-loop
 
 Implements the Builder-Evaluator GAN loop for iterative design quality improvement. Absorbed from the retired v2.x design constitution Section 11 and Section 12 (per the design constitution absorption policy). Integrates Sprint Contract Protocol, 4-dimension scoring, stagnation detection, and Evaluator Leniency Prevention.
 
@@ -88,7 +88,7 @@ Builder implements based on:
 - Accepted Sprint Contract (if present)
 - BRIEF document
 - Copy JSON from `design-copywriting`
-- Design tokens from `moai-domain-brand-design` or `design-workflow` (Path A handler)
+- Design tokens from `design-brand-system` or `design-workflow` (Path A handler)
 
 Builder outputs: code files, rendered previews (if Playwright available), implementation notes.
 
@@ -258,7 +258,7 @@ When testing tools are unavailable, fall back to static code analysis only, and 
 
 ## Works Well With
 
-- `moai-domain-brand-design`: Provides design tokens that Evaluator validates in Design Quality dimension
+- `design-brand-system`: Provides design tokens that Evaluator validates in Design Quality dimension
 - `design-copywriting`: Copy JSON is the reference for Completeness dimension
 - 자체 Evaluator: GAN 루프는 매 스코어링 패스마다 본 스킬의 4-dimension scoring으로 평가합니다. MoAI harness(`moai`)의 `sync-auditor`가 함께 설치된 환경에서는 해당 agent로 평가를 보강할 수 있습니다.
 - `design-workflow`: Extracted tokens (Path A) serve as the design reference baseline

@@ -88,7 +88,7 @@ version: "1.0.0"
 
 - **moai-accountant:finance-invest-primer**: 금리·물가 환경을 자산 배분에 반영
 - **moai-accountant:finance-wealth-roadmap**: 금리 방향에 따른 대출·저축 전략
-- **moai-analyst:office-public-data-korean-stock-search**: KRX 시세 등 시장 데이터(참고용)
+- **moai-analyst:data-stock**: KRX 시세 등 시장 데이터(참고용)
 
 | 단계 | 스킬 | 역할 |
 |------|------|------|

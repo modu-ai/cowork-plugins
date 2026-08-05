@@ -1,5 +1,5 @@
 ---
-name: office-public-data-public-data
+name: data-public
 description: |
   공공데이터포털(data.go.kr)·KOSIS 통계청의 실시간 통계를 정밀 조회·분석해 드립니다. 자연어 1줄 질문(인구·고용·출산·물가·미세먼지 등)은 korean-stats MCP(공용키 hosted, 발급 불필요)를 우선하고, 본 스킬은 data.go.kr OpenAPI 직접 제어·정밀 조회·고급 분석이 필요할 때 사용합니다.
   다음과 같은 요청 시 사용하세요:

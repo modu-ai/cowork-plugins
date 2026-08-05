@@ -13,8 +13,8 @@ Route the request into the `/design` hybrid workflow (03 §5.2). The orchestrato
 3. Skill("design-handoff") — assemble 5-file handoff package when a handoff is the deliverable
 
 **Path B — Code-based brand design** (no bundle; design from brand directly):
-1. Skill("design-system-prep") + Skill("moai-domain-brand-design") in parallel — brand assets → DESIGN.md + DTCG tokens (WCAG 2.1 AA)
+1. Skill("design-system-prep") + Skill("design-brand-system") in parallel — brand assets → DESIGN.md + DTCG tokens (WCAG 2.1 AA)
 2. Skill("design-copywriting") — brand-aligned copy (anti-AI-slop, generation-time avoidance)
-3. Skill("moai-workflow-gan-loop") — Builder-Evaluator quality loop (max 5, pass_threshold 0.75, Sprint Contract, 4-dimension scoring)
+3. Skill("design-iteration-loop") — Builder-Evaluator quality loop (max 5, pass_threshold 0.75, Sprint Contract, 4-dimension scoring)
 
 (UX prompt pattern advisor available via Skill("design-prompt-builder").)

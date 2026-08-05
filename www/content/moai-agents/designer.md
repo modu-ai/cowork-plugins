@@ -28,13 +28,13 @@ cd-\*(Claude Design 연동)와 design-\*/moai-\*(시스템·토큰·워크플로
 
 ## 에이전트
 
-디자이너는 별도의 worker/auditor 에이전트 대신 **GAN 품질 루프 스킬**(moai-workflow-gan-loop)이 검수 역할을 겸합니다. 생성한 시안을 비평자 관점으로 다시 뜯어보고 고치는 반복이 스킬 파이프라인 안에 내장되어 있는 구조입니다.
+디자이너는 별도의 worker/auditor 에이전트 대신 **GAN 품질 루프 스킬**(design-iteration-loop)이 검수 역할을 겸합니다. 생성한 시안을 비평자 관점으로 다시 뜯어보고 고치는 반복이 스킬 파이프라인 안에 내장되어 있는 구조입니다.
 
 {{< employee-agents "moai-designer" >}}
 
 ## 대표 시나리오 5선
 
-**1. 브랜드 디자인 시스템 만들기.** "우리 브랜드 컬러랑 폰트 기준 잡아줘"라고 하면 `moai-domain-brand-design`과 `design-system-prep`이 브랜드 시스템 문서(DESIGN.md)를 만들어, 이후 어떤 산출물이든 같은 톤을 유지하게 합니다.
+**1. 브랜드 디자인 시스템 만들기.** "우리 브랜드 컬러랑 폰트 기준 잡아줘"라고 하면 `design-brand-system`과 `design-system-prep`이 브랜드 시스템 문서(DESIGN.md)를 만들어, 이후 어떤 산출물이든 같은 톤을 유지하게 합니다.
 
 **2. 디자인 토큰을 코드로.** "이 디자인 토큰을 우리 웹사이트 CSS로 변환해줘"라고 요청하면 `design-tokens-transformer`가 DTCG 표준 토큰을 CSS 변수와 shadcn 테마로 변환합니다. 디자이너와 개발자 사이의 수작업 전달이 사라집니다.
 

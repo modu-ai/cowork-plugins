@@ -110,7 +110,7 @@ design_system 지정 시 `systems/<name>.md` 토큰 → Tailwind Play CDN config
 
 ## 디자인 시스템 적용 (`design_system` 파라미터)
 
-`design_system` 입력으로 [`moai-officer:office-design-system-library`](../../../moai-designer/skills/design-system-library/SKILL.md)에서 브랜드 토큰을 로드해 **Tailwind Play CDN + shadcn vanilla 컴포넌트**로 렌더합니다. doc-html-report와 동일한 두 렌더 엔진을 제공합니다.
+`design_system` 입력으로 [`moai-officer:doc-design-library`](../../../moai-designer/skills/design-system-library/SKILL.md)에서 브랜드 토큰을 로드해 **Tailwind Play CDN + shadcn vanilla 컴포넌트**로 렌더합니다. doc-html-report와 동일한 두 렌더 엔진을 제공합니다.
 
 | `design_system` | 엔진 | 외부 의존 | 산출물 특성 |
 |-----------------|------|-----------|-------------|
@@ -211,7 +211,7 @@ AI 슬라이드 스킬 스타트업 사업계획서 10장 슬라이드로 만들
 - [`samples/deck-sample.html`](samples/deck-sample.html) — 완성 단일 파일 HTML 덱 (design_system: claude 적용)
 
 ### 이웃 스킬 (체이닝)
-- `moai-officer:office-design-system-library` — 75개 브랜드 토큰 SSOT
+- `moai-officer:doc-design-library` — 75개 브랜드 토큰 SSOT
 - `moai-officer:doc-pptx` — 편집 가능 .pptx 생성 (체이닝)
 - `moai-media:media-higgsfield-image` — Higgsfield MCP 이미지 (기본 백엔드)
 - `moai-media:media-gpt-image-2-prompt` — 한국어 verbatim 이미지 프롬프트 빌더

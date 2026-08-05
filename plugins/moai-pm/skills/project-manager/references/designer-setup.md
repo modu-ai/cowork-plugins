@@ -1,6 +1,6 @@
 # designer-setup.md — 디자이너 분기 (project 스킬 서브 프로토콜)
 
-> **project 스킬(18-plugin 패밀리 허브)의 디자이너 분기 정본.** 흩어진 브랜드 자산(로고·색·타이포·기존 사이트·PPTX)을 수집해 `.moai/project/brand/` 브랜드 컨텍스트와 Claude Design 업로드용 `DESIGN.md`를 합성한다. `moai-designer` 플러그인의 `design-system-prep` + `moai-domain-brand-design` 체인으로 실행한다.
+> **project 스킬(18-plugin 패밀리 허브)의 디자이너 분기 정본.** 흩어진 브랜드 자산(로고·색·타이포·기존 사이트·PPTX)을 수집해 `.moai/project/brand/` 브랜드 컨텍스트와 Claude Design 업로드용 `DESIGN.md`를 합성한다. `moai-designer` 플러그인의 `design-system-prep` + `design-brand-system` 체인으로 실행한다.
 
 ---
 
@@ -22,7 +22,7 @@
 - **브랜드 자산 합성** — 흩어진 자산(코드·Figma·로고·실물·사전 빌트인) → `DESIGN.md`
 - **디자인 시스템 셋업** — `.moai/project/brand/visual-identity.md` + 토큰 추출
 - **Claude Design 온보딩 준비** — `DESIGN.md` 업로드 또는 `/design-sync` 네이티브 경로 안내
-- **디자인 품질 루프** — GAN 루프(`moai-workflow-gan-loop`)로 시안 반복
+- **디자인 품질 루프** — GAN 루프(`design-iteration-loop`)로 시안 반복
 
 모든 스킬은 `moai-designer` 플러그인 소속이다.
 
@@ -35,8 +35,8 @@
 | 브랜드 자산 정리·DESIGN.md 합성 | `design-system-prep` |
 | design-brief 작성 | `design-brief` |
 | Claude Design 핸드오프 리더 | `design-handoff-reader` |
-| 브랜드 정렬 비주얼 디자인 시스템 | `moai-domain-brand-design` |
-| 디자인 시안 GAN 품질 루프 | `moai-workflow-gan-loop` |
+| 브랜드 정렬 비주얼 디자인 시스템 | `design-brand-system` |
+| 디자인 시안 GAN 품질 루프 | `design-iteration-loop` |
 | 큐레이션된 디자인 토큰 출발점 | `design-system-library` |
 
 ---
@@ -71,7 +71,7 @@ Phase 1 자산 인터뷰 → Phase 2 designer 설치 확인 → Phase 3 DESIGN.m
 
 ### Phase 5: Claude Design 온보딩 안내
 
-`DESIGN.md`를 claude.ai/design 온보딩에 업로드하거나, 깔끔한 코드 repo가 있으면 `/design-sync`로 코드베이스 직접 전송. 이후 project 스킬로 콘텐츠·실무 산출물 체인을 설계하고, 디자인 시안 품질 루프는 `moai-designer:moai-workflow-gan-loop`로 반복한다.
+`DESIGN.md`를 claude.ai/design 온보딩에 업로드하거나, 깔끔한 코드 repo가 있으면 `/design-sync`로 코드베이스 직접 전송. 이후 project 스킬로 콘텐츠·실무 산출물 체인을 설계하고, 디자인 시안 품질 루프는 `moai-designer:design-iteration-loop`로 반복한다.
 
 ---
 
@@ -104,10 +104,10 @@ Phase 1 자산 인터뷰 → Phase 2 designer 설치 확인 → Phase 3 DESIGN.m
 |------|------|
 | DESIGN.md 합성 상세 | `design-system-prep` |
 | design-brief 작성 | `design-brief` |
-| 브랜드 정렬 비주얼 시스템 | `moai-domain-brand-design` |
+| 브랜드 정렬 비주얼 시스템 | `design-brand-system` |
 | 큐레이션된 디자인 토큰 출발점 | `design-system-library` |
 | Claude Design 핸드오프 | `design-handoff`, `design-handoff-reader` |
-| 디자인 시안 GAN 품질 루프 | `moai-workflow-gan-loop` |
+| 디자인 시안 GAN 품질 루프 | `design-iteration-loop` |
 | 디자인 슬롭 점검 | `design-slop-check` |
 
 전체 인덱스: `references/INDEX.md`

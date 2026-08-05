@@ -55,7 +55,7 @@ CSV/Excel 파일을 받아 데이터 프로파일링, 품질 검사, 기초 분�
 
 ## 이 스킬을 사용하지 말아야 할 때
 - **차트/그래프 생성** → moai-analyst:data-visualizer 사용
-- **공공데이터 조회** → moai-analyst:office-public-data-public-data 사용
+- **공공데이터 조회** → moai-analyst:data-public 사용
 - **PPT/Word 변환** → moai-coworker 플러그인 사용
 
 ## References

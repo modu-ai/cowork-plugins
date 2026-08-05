@@ -1,5 +1,5 @@
 ---
-name: moai-domain-brand-design
+name: design-brand-system
 description: |
   Brand-aligned visual design system specialist for web projects. Enforces
   hero-first layout chaining, WCAG 2.1 AA accessibility, Lighthouse >= 80,
@@ -15,7 +15,7 @@ version: "1.0.0"
 
 > ⚠️ **개발 런타임 전용** — 이 스킬은 MoAI-ADK(Claude Code) 환경을 전제한다. Claude Cowork(Desktop)에서는 `.moai/config` 의존으로 동작하지 않을 수 있다. Desktop 사용자는 `moai-coworker:collab-brand-identity`(브랜드 아이덴티티 산출물)를 사용한다.
 
-# moai-domain-brand-design
+# design-brand-system
 
 Visual design system skill for brand-aligned web projects. Absorbed from the retired v2.x `*-design-system` capability (per the design-system absorption policy) at v1.0.0. Enforces hero-first chaining, WCAG 2.1 AA contrast, and structured design token output for downstream implementation.
 
@@ -232,7 +232,7 @@ Generated design must meet:
 
 - `design-copywriting`: Copy length constraints inform layout choices
 - `design-workflow`: Replaces code-based design when Claude Design bundle is available (Path A handler)
-- `moai-workflow-gan-loop`: Design Quality dimension evaluates token compliance and WCAG
+- `design-iteration-loop`: Design Quality dimension evaluates token compliance and WCAG
 - `moai-domain-uiux`: Extends with accessibility audit patterns
 
 ---

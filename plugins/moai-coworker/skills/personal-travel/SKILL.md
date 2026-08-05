@@ -11,7 +11,7 @@ description: |
   - "제주 겨울 여행 예산 얼마나 들까"
   - "혼자 떠나는 국내 힐링 여행지 추천해줘"
   여행 일정표·예산표를 산출합니다.
-  [책임 경계] 개인 재무는 moai-accountant:finance-household-budget, 부동산 조회·분석은 moai-analyst:office-public-data-real-estate-search, 사이드 프로젝트·부업은 moai-consultant:consult-startup
+  [책임 경계] 개인 재무는 moai-accountant:finance-household-budget, 부동산 조회·분석은 moai-analyst:data-realestate, 사이드 프로젝트·부업은 moai-consultant:consult-startup
 version: "1.0.0"
 ---
 
@@ -95,6 +95,6 @@ personal-travel → moai-coworker:ai-slop-reviewer → moai-writer:korean-humani
 
 - **항공권·숙소 실제 예약** → 해당 예약 플랫폼에서 직접 진행해야 합니다
 - **개인 재무·가계부·저축 계획** → moai-accountant:finance-household-budget 스킬이 더 적합합니다
-- **부동산 시세 조회·투자 분석** → moai-analyst:office-public-data-real-estate-search 스킬을 활용하세요
+- **부동산 시세 조회·투자 분석** → moai-analyst:data-realestate 스킬을 활용하세요
 - **사이드 프로젝트·부업 기획** → moai-consultant:consult-startup 스킬이 더 적합합니다
 - **웨딩·대규모 이벤트 기획** → moai-coworker:personal-event 스킬이 더 적합합니다

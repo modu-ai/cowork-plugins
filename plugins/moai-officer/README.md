@@ -43,7 +43,7 @@ claude plugin install moai-officer@moai-cowork
 
 | 스킬 | 역할 |
 |------|------|
-| `office-design-system-library` | 75개 브랜드 디자인 시스템 토큰을 HTML 산출물에 적용 (정본은 moai-designer) |
+| `doc-design-library` | 75개 브랜드 디자인 시스템 토큰을 HTML 산출물에 적용 (정본은 moai-designer) |
 | `doc-notion-template` | 노션 업무관리·목표·회고 템플릿 구조 설계 |
 | `setup-mcp-connector` | Drive·Notion·Higgsfield 커넥터 인증·환경변수 가이드 |
 | `productivity-time` | 하루·주간 시간 설계 (블록식스·우선순위) |

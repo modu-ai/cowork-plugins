@@ -12,7 +12,7 @@ description: |
   - "자양동 24-28번지 공시가격 추이", "공시가격 시계열"
   - "건축물대장 원본 보여줘", "건축인허가 이력"
   건축사·시공·중개·감정평가·디벨로퍼·공무원이 실무에서 바로 쓰는 건축물 실체 데이터입니다.
-  본 스킬은 "건축물 실체(용도·구조·규모·규제·인허가·노후·철거)" 전담입니다. "실거래가/전월세 시세"는 office-public-data-real-estate-search를 사용하세요.
+  본 스킬은 "건축물 실체(용도·구조·규모·규제·인허가·노후·철거)" 전담입니다. "실거래가/전월세 시세"는 data-realestate를 사용하세요.
 version: "1.0.0"
 ---
 
@@ -99,16 +99,16 @@ version: "1.0.0"
 
 | 작업 | 스킬 | 데이터 소스 |
 | --- | --- | --- |
-| 실거래가·전월세 시세 | `moai-analyst:office-public-data-real-estate-search` | 국토교통부 실거래가 신고 |
+| 실거래가·전월세 시세 | `moai-analyst:data-realestate` | 국토교통부 실거래가 신고 |
 | **건축물 실체(용도·구조·규모·규제·인허가·노후·철거)** | **`moai-analyst:data-building-ledger` (본 스킬)** | 국토교통부 건축HUB |
-| 인구·가구 통계 | `moai-analyst:office-public-data-public-data` | KOSIS |
-| 법원 경매 매각공고 | `moai-analyst:office-public-data-court-auction-search` | 대법원 경매정보 |
+| 인구·가구 통계 | `moai-analyst:data-public` | KOSIS |
+| 법원 경매 매각공고 | `moai-analyst:data-court-auction` | 대법원 경매정보 |
 
 ## 이 스킬을 사용하지 말아야 할 때
 
-- **실거래가·전월세 시세** → `moai-analyst:office-public-data-real-estate-search`
-- **인구·고용·물가 등 통계** → `moai-analyst:office-public-data-public-data` (KOSIS 자연어 우선)
-- **법원 경매 매각공고·감정평가액·최저매각가** → `moai-analyst:office-public-data-court-auction-search`
+- **실거래가·전월세 시세** → `moai-analyst:data-realestate`
+- **인구·고용·물가 등 통계** → `moai-analyst:data-public` (KOSIS 자연어 우선)
+- **법원 경매 매각공고·감정평가액·최저매각가** → `moai-analyst:data-court-auction`
 - **소유자·소유정보(개인정보)** → 건축HUB API에 소유자 필드가 없으므로 본 스킬 범위 밖(등기부등본 조회 권장)
 - **위반건축물 조회** → 표제부/기본개요/총괄표제부 어디에도 위반건축물 필드가 없음(API 실측 확인) → 조회 불가
 - **부동산 세금·법률 자문** → 세무사·법무사 전문가 안내
@@ -130,9 +130,9 @@ version: "1.0.0"
 
 ## 관련 스킬 체이닝
 
-- **before**: `moai-analyst:office-public-data-real-estate-search` — 실거래가 시세로 입지 검토 선행
+- **before**: `moai-analyst:data-realestate` — 실거래가 시세로 입지 검토 선행
 - **after**: `moai-consultant:consult-market` — 건축물 + 시세 데이터 기반 시장 분석
-- **after**: `moai-analyst:office-public-data-court-auction-search` — 경매 매각공고와 건축물대장 교차 검토
+- **after**: `moai-analyst:data-court-auction` — 경매 매각공고와 건축물대장 교차 검토
 - **after**: `moai-officer:doc-pdf` — 건축물 종합카드·통계 PDF 보고서 생성
 - **after**: `moai-officer:doc-xlsx` — 노후건물·인허카 파이프라인 엑셀 정리
 - **pair**: `moai-officer:setup-mcp-connector` — archhub MCP 사전 준비 가이드

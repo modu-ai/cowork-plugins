@@ -120,7 +120,7 @@ Word 보고서 요청 시:
 
 ## 이 스킬을 사용하지 말아야 할 때
 - **데이터 탐색/프로파일링** → `moai-analyst:data-explorer` 사용
-- **공공데이터 조회** → `moai-analyst:office-public-data-public-data` 사용
+- **공공데이터 조회** → `moai-analyst:data-public` 사용
 - **랜딩 페이지 내 차트 섹션** → `moai-marketer:marketing-landing-page`에서 Q4 효과 선택 시 통합 산출
 - **상세페이지 내 가격 비교 차트** → `moai-seller:commerce-product-detail`에서 직접 처리
 
