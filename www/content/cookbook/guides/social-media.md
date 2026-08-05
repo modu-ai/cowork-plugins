@@ -10,7 +10,7 @@ geekdocBreadcrumb: true
 flowchart TD
    A["content-sns-content<br/>메시지 코어 + 채널별 변형"] --> C{"포맷"}
    C -- "카드뉴스" --> D["content-card-news"]
-   C -- "텍스트" --> E["general-ai-slop-reviewer"]
+   C -- "텍스트" --> E["ai-slop-reviewer"]
    A -. "브랜드 가이드" .-> F["collab-brand-identity"]
 
    style A fill:#e6e6e6,stroke:#757575,color:#09110f
@@ -48,7 +48,7 @@ flowchart TD
 체인:
 1. `content-sns-content` (메시지 코어 + 채널 변형)
 2. `content-card-news` (카드 디자인)
-3. `general-ai-slop-reviewer` (검수)
+3. `ai-slop-reviewer` (검수)
 
 ## 콘텐츠 달력
 

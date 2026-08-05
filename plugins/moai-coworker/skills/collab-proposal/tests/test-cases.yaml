@@ -1,4 +1,4 @@
-# collab-proposal test cases — general-skill-tester 4 차원 루브릭 호환
+# collab-proposal test cases — meta-skill-tester 4 차원 루브릭 호환
 # Pass threshold: 가중 평균 ≥ 0.70, 모든 차원 ≥ 0.50
 
 skill: collab-proposal
@@ -82,16 +82,16 @@ cases:
     input: |
       RFP 답변 초안 작성 완료
     assertions:
-      - suggests_chain: ["general-ai-slop-reviewer", "doc-docx"]
+      - suggests_chain: ["ai-slop-reviewer", "doc-docx"]
       - mentions_human_review: true
 
 chain_tests:
   - id: C01
-    name: "Happy path: consult-market → collab-proposal → general-ai-slop-reviewer → doc-docx"
+    name: "Happy path: consult-market → collab-proposal → ai-slop-reviewer → doc-docx"
     expected: "최종 docx 파일 + 컴플라이언스 체크리스트 + AI slop APPROVE"
 
   - id: C02
-    name: "Failure propagation: general-ai-slop-reviewer NEEDS revision → 사용자 결정 대기"
+    name: "Failure propagation: ai-slop-reviewer NEEDS revision → 사용자 결정 대기"
     expected: "체인 일시 정지 + AskUserQuestion으로 수정 적용 여부 확인"
 
 anti_patterns:

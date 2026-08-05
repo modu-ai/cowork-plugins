@@ -116,11 +116,11 @@ Zendesk·Medallia 2026 CX 연구 반영:
 서술형 산출물(에스컬레이션 대응 계획서, VIP 응대 스크립트, 개선 권고안, VOC 인사이트 서술)은 다음 체인으로 마무리합니다:
 
 ```
-cs-escalation → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean
+cs-escalation → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
 ```
 
-- `moai-coworker:general-ai-slop-reviewer` — AI 티 나는 표현·과잉 수식·기계적 문장 패턴을 검수·수정
-- `moai-writer:general-humanize-korean` — 한국어 경어 자연스러움과 사람이 쓴 듯한 어조로 다듬기
+- `moai-coworker:ai-slop-reviewer` — AI 티 나는 표현·과잉 수식·기계적 문장 패턴을 검수·수정
+- `moai-writer:korean-humanize` — 한국어 경어 자연스러움과 사람이 쓴 듯한 어조로 다듬기
 
 VIP 응대 스크립트·사과문의 종결어미·사과/독촉 화법은 `moai-coworker:collab-report-speak`의 `references/kr-honorific-tone.md` 공유 규격을 따릅니다.
 

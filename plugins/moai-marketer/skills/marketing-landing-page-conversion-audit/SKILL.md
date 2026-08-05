@@ -10,7 +10,7 @@ description: |
   - "광고 문구랑 랜딩 첫 줄이 맞는지 점검해줘"
   - "히어로 섹션이랑 CTA 개선점 알려줘"
   - "결제 단계가 너무 복잡한 것 같아"
-  히어로·공감·증명·사회증거·CTA·FAQ 6섹션을 점수화하고, 광고/랜딩/결제 중 어디가 문제인지 짚어 빠른 개선안을 제시합니다. 진단 보고서 서술 부분은 moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean으로 다듬습니다.
+  히어로·공감·증명·사회증거·CTA·FAQ 6섹션을 점수화하고, 광고/랜딩/결제 중 어디가 문제인지 짚어 빠른 개선안을 제시합니다. 진단 보고서 서술 부분은 moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize으로 다듬습니다.
   [책임 경계] vs moai-marketer:marketing-landing-page: 이 스킬=기존 랜딩 진단·개선 처방, 저 스킬=신규 랜딩 코드 생성.
 version: "1.0.0"
 ---
@@ -141,7 +141,7 @@ moai-marketer:content-copywriting (헤드라인·CTA 카피)
 moai-marketer:marketing-landing-page (shadcn/ui 신규 랜딩 코드 생성)
 ```
 
-> 진단 보고서의 서술형 텍스트는 발행 전 `moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean`으로 후처리합니다. 점수·체크리스트 표는 대상이 아닙니다.
+> 진단 보고서의 서술형 텍스트는 발행 전 `moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`으로 후처리합니다. 점수·체크리스트 표는 대상이 아닙니다.
 
 ## 페어 분리
 

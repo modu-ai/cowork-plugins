@@ -70,8 +70,8 @@ phase('Polish')
 const polished = await agent(
   `다음 www 문서 원고를 한국어 윤문하라 — AI 번역체(AI tell)를 제거하되 의미·사실·고유명사는 불변.\n` +
     `hns-www-docs-polish-specialist 역할. 2단계 체인:\n` +
-    `  1) Skill("general-ai-slop-reviewer") — 범용 AI 슬롯 1차 제거\n` +
-    `  2) Skill("general-humanize-korean") — 한국어 정밀 윤문 2차\n` +
+    `  1) Skill("ai-slop-reviewer") — 범용 AI 슬롯 1차 제거\n` +
+    `  2) Skill("korean-humanize") — 한국어 정밀 윤문 2차\n` +
     `과교정 가드레일: prose 변경률 30% WARN / 50% HALT. mermaid 코드블록은 건드리지 말 것(라벨 자연어는 본문 일부로 다듬기).\n\n원고:\n${written}`,
   { phase: 'Polish', agentType: 'hns-www-docs-polish-specialist' }
 )

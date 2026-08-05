@@ -63,7 +63,7 @@ version: "1.0.0"
 
 - **이슈에 요청 붙이기**: 막힌 점은 "무엇을 도와달라"까지 명시
 - **차주 계획 우선순위**: 3개로 좁히고 `productivity-time`으로 블록 배치
-- **AI 티 다듬기**: 어색한 번역 투·과한 미사여구 제거 → `moai-coworker:general-ai-slop-reviewer` 후처리 권장
+- **AI 티 다듬기**: 어색한 번역 투·과한 미사여구 제거 → `moai-coworker:ai-slop-reviewer` 후처리 권장
 - → 한 주 회고가 필요하면 `productivity-retro`로 가볍게 이어간다
 
 ## 사용 예시
@@ -89,7 +89,7 @@ version: "1.0.0"
 - "한 일 나열"이 아니라 "결과·영향" 중심으로 — 받는 사람 관점에서 쓴다.
 - 길수록 안 읽힌다. 핵심만, 1분 안에 읽히게.
 - 보고 톤·양식은 조직마다 다르다. 받는 사람·기존 양식에 맞춘다.
-- 텍스트 산출물이므로 제출 전 `general-ai-slop-reviewer`로 AI 패턴을 다듬는 것을 권장한다.
+- 텍스트 산출물이므로 제출 전 `ai-slop-reviewer`로 AI 패턴을 다듬는 것을 권장한다.
 
 ## 관련 스킬
 
@@ -97,8 +97,8 @@ version: "1.0.0"
 - **moai-officer:doc-notion-template**: 업무일지 DB로 보고 작성 자동화
 - **moai-officer:productivity-time**: 차주 계획을 시간 블록에 배치
 - **moai-coworker**: 보고 대화·구두 보고·피드백 등 대인 커뮤니케이션
-- **moai-coworker:general-ai-slop-reviewer**: 보고서 초안의 AI 티 후처리
-- **moai-writer:general-humanize-korean**: 한국어 AI 티 제거 (슬롭 검수 다음, 필수)
+- **moai-coworker:ai-slop-reviewer**: 보고서 초안의 AI 티 후처리
+- **moai-writer:korean-humanize**: 한국어 AI 티 제거 (슬롭 검수 다음, 필수)
 
 ## 이 스킬을 사용하지 말아야 할 때
 

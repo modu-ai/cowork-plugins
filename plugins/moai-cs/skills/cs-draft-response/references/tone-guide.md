@@ -4,7 +4,7 @@
 
 ## 개요
 
-고객 응대 품질은 어조(tone)에서 결정됩니다. 동일한 정보라도 어조에 따라 고객 만족도가 크게 달라집니다. 이 가이드는 한국 CS 환경에 최적화된 채널별 어조 기준을 제공하며, 응답 초안 완성 후 적용하는 후처리 체인(`moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean`) 연동 방법을 안내합니다.
+고객 응대 품질은 어조(tone)에서 결정됩니다. 동일한 정보라도 어조에 따라 고객 만족도가 크게 달라집니다. 이 가이드는 한국 CS 환경에 최적화된 채널별 어조 기준을 제공하며, 응답 초안 완성 후 적용하는 후처리 체인(`moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`) 연동 방법을 안내합니다.
 
 ---
 
@@ -79,18 +79,18 @@
 응답 초안을 완성한 뒤에는 다음 체인으로 어조·표현 품질을 마무리합니다:
 
 ```
-cs-draft-response → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean
+cs-draft-response → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
 ```
 
-- `moai-coworker:general-ai-slop-reviewer` — AI 티 나는 표현·과잉 수식·기계적 문장 패턴을 검수·수정
-- `moai-writer:general-humanize-korean` — 한국어 경어 자연스러움과 사람이 쓴 듯한 어조로 다듬기
+- `moai-coworker:ai-slop-reviewer` — AI 티 나는 표현·과잉 수식·기계적 문장 패턴을 검수·수정
+- `moai-writer:korean-humanize` — 한국어 경어 자연스러움과 사람이 쓴 듯한 어조로 다듬기
 
 ### 호출 방법
 
 ```
 [초안 응답 내용]을 작성한 뒤,
-moai-coworker:general-ai-slop-reviewer로 AI 패턴을 검수하고
-moai-writer:general-humanize-korean으로 자연스러운 한국어 어조로 다듬어줘.
+moai-coworker:ai-slop-reviewer로 AI 패턴을 검수하고
+moai-writer:korean-humanize으로 자연스러운 한국어 어조로 다듬어줘.
 
 맥락:
 - 채널: [이메일/채팅/전화/공문서]

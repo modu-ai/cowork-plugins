@@ -132,10 +132,10 @@ AskUserQuestion으로 다음 정보를 수집합니다:
 
 논문 초안 등 서술형 텍스트를 작성한 뒤에는 다음 체인으로 마무리합니다:
 
-`education-paper-writer → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean`
+`education-paper-writer → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
 
-- **moai-coworker:general-ai-slop-reviewer** - 작성된 논문 AI 패턴 검수 및 후처리
-- **moai-writer:general-humanize-korean** - 한국어 문장 자연화(AI 티 제거, 의미 보존)
+- **moai-coworker:ai-slop-reviewer** - 작성된 논문 AI 패턴 검수 및 후처리
+- **moai-writer:korean-humanize** - 한국어 문장 자연화(AI 티 제거, 의미 보존)
 
 > 참고문헌 리스트·통계 테이블 등 데이터/표 산출물은 본 체인 대상이 아니며, 시각화가 필요하면 **moai-analyst:data-visualizer**로 라우팅합니다.
 

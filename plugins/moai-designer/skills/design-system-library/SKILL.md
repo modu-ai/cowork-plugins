@@ -121,7 +121,7 @@ version: "1.0.0"
 
 체인 예시:
 ```
-[텍스트 스킬] → general-ai-slop-reviewer → doc-html-report (design_system: clickhouse)
+[텍스트 스킬] → ai-slop-reviewer → doc-html-report (design_system: clickhouse)
 ```
 
 ### Claude Design 핸드오프 (moai-designer)

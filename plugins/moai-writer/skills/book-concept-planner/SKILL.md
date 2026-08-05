@@ -378,10 +378,10 @@ USP의 핵심은 "다름". 일본·미국 출판 사례에서 반복 확인된 �
 
 ### Post (검수 — 정규 체인)
 - `moai-writer:korean-spell-check` — 한국어 맞춤법
-- `moai-coworker:general-ai-slop-reviewer` — AI 슬롭 검수 (필수)
-- `moai-writer:general-humanize-korean` — AI 티 정밀 윤문 (필수)
+- `moai-coworker:ai-slop-reviewer` — AI 슬롭 검수 (필수)
+- `moai-writer:korean-humanize` — AI 티 정밀 윤문 (필수)
 
-> 컨셉서 산문(한 줄·30자·300자 카피, USP 서술)은 정규 체인 **`book-concept-planner → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean`**으로 마무리. 경쟁작·포지셔닝 매트릭스 같은 표는 데이터 출력이므로 체인 대상이 아닙니다.
+> 컨셉서 산문(한 줄·30자·300자 카피, USP 서술)은 정규 체인 **`book-concept-planner → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`**으로 마무리. 경쟁작·포지셔닝 매트릭스 같은 표는 데이터 출력이므로 체인 대상이 아닙니다.
 
 ## 10. 출처
 

@@ -8,7 +8,7 @@ description: |
   - "AI 도입 전략 보고서 써줘"
   - "제품 기능 우선순위 정리해줘"
   - "디지털 전환 로드맵 수립해줘"
-  기획 의도와 요구사항을 검토 가능한 문서로 정리하고, general-ai-slop-reviewer·general-humanize-korean으로 마무리할 수 있습니다.
+  기획 의도와 요구사항을 검토 가능한 문서로 정리하고, ai-slop-reviewer·korean-humanize으로 마무리할 수 있습니다.
   [책임 경계] 정부·지원사업 신청서는 moai-consultant:consult-gov-grant, R&D·연구비 과제는 moai-tutor:education-grant-writer로 라우팅
 version: "1.0.0"
 ---
@@ -99,10 +99,10 @@ PRD, 기능명세, 스펙, 제품 기획, AI 전략, 디지털전환, 프로덕�
 
 PRD·AI 전략 보고서 같은 서술형 문서를 완성한 뒤에는 다음 체인으로 마무리합니다(표·수치 데이터는 제외, 본문 서술 부분에만 적용):
 
-`moai-coworker:collab-spec → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean`
+`moai-coworker:collab-spec → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
 
-- `moai-coworker:general-ai-slop-reviewer`: AI 특유의 상투적 표현·과장·군더더기를 점검하고 다듬습니다.
-- `moai-writer:general-humanize-korean`: 자연스러운 한국어 문장으로 최종 정제합니다.
+- `moai-coworker:ai-slop-reviewer`: AI 특유의 상투적 표현·과장·군더더기를 점검하고 다듬습니다.
+- `moai-writer:korean-humanize`: 자연스러운 한국어 문장으로 최종 정제합니다.
 
 ## References
 

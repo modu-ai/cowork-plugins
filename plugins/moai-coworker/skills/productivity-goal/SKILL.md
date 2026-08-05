@@ -97,8 +97,8 @@ version: "1.0.0"
 
 목표 서술·회고 문장 등 문장 산출물을 작성한 뒤에는 아래 체인으로 마무리한다.
 
-- **moai-coworker:general-ai-slop-reviewer**: AI 티 나는 표현·과장·상투구 검수·수정 (필수)
-- **moai-writer:general-humanize-korean**: 한국어 자연스러움 보정 — 슬롭 검수 다음 (필수)
+- **moai-coworker:ai-slop-reviewer**: AI 티 나는 표현·과장·상투구 검수·수정 (필수)
+- **moai-writer:korean-humanize**: 한국어 자연스러움 보정 — 슬롭 검수 다음 (필수)
 
 ## 이 스킬을 사용하지 말아야 할 때
 

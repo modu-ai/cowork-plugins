@@ -10,7 +10,7 @@ description: |
   - "CRM 전략이랑 자동화 시퀀스 짜줘"
   - "퍼널이랑 채널별 예산 배분 해줘"
   - "광고 후크랑 카피 방향 잡아줘"
-  소비자 심리(구매 동기·심리 방아쇠·인지 편향)와 광고 카피 공식을 적용해 캠페인 전략 문서를 만들고, 서술 부분은 moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean으로 다듬습니다.
+  소비자 심리(구매 동기·심리 방아쇠·인지 편향)와 광고 카피 공식을 적용해 캠페인 전략 문서를 만들고, 서술 부분은 moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize으로 다듬습니다.
   [책임 경계] vs moai-consultant:consult-strategy: 이 스킬=캠페인 단위 전술(1-3개월), 저 스킬=사업·전략 단위(1-5년). 상세페이지 카피·이미지·AI 영상은 moai-coworker:*·moai-coworker:* 사용.
 version: "1.0.0"
 ---
@@ -78,7 +78,7 @@ version: "1.0.0"
 
 캠페인 전략 문서·인플루언서 협찬 제안서·고객 여정 맵 설명·CRM 전략 등 **서술형(prose) 산출물**은 발행 전 후처리 체인을 거칩니다. A/B 테스트 설계표·예산 배분표·매트릭스 등 **수치·표 산출물은 대상이 아닙니다**.
 
-**권장 체인(서술 부분)**: `marketing-campaign-planner(서술) → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean`
+**권장 체인(서술 부분)**: `marketing-campaign-planner(서술) → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
 
 ## 관련 스킬
 
@@ -90,8 +90,8 @@ version: "1.0.0"
 | `moai-marketer:marketing-performance-report` | 마케팅 성과 분석 보고서 |
 | `moai-marketer:content-email-sequence` | 이메일 시퀀스·드립 캠페인 카피 |
 | `moai-marketer:marketing-target-script` | 타겟별 핵심 메시지 분석 (페인포인트→메시지) |
-| `moai-coworker:general-ai-slop-reviewer` | 사후 체이닝(필수, 서술 부분): 캠페인 전략 문서의 AI 패턴 검수 |
-| `moai-writer:general-humanize-korean` | 사후 체이닝(필수, 서술 부분): general-ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |
+| `moai-coworker:ai-slop-reviewer` | 사후 체이닝(필수, 서술 부분): 캠페인 전략 문서의 AI 패턴 검수 |
+| `moai-writer:korean-humanize` | 사후 체이닝(필수, 서술 부분): ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |
 | `moai-seller:commerce-detail-page-copy` | 이커머스 상세페이지 카피 (13섹션 감정여정) |
 | `moai-seller:commerce-detail-page-image` | 이커머스 상세페이지 합성 이미지 (1080×12720 PNG) |
 | `moai-media:media-higgsfield-image` | AI 이미지 생성 |

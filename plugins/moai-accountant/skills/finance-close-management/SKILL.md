@@ -159,11 +159,11 @@ version: "1.0.0"
 결산 보고서, 경영진 요약, 비용 분석 코멘트처럼 문장 산출물을 작성한 뒤에는 반드시 아래 체인으로 마무리한다.
 
 ```
-finance-close-management → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean
+finance-close-management → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
 ```
 
-- **moai-coworker:general-ai-slop-reviewer**: AI 티 나는 표현·과장·상투구 검수 및 수정
-- **moai-writer:general-humanize-korean**: 한국어 자연스러움 보정 (서술 산출물 한정)
+- **moai-coworker:ai-slop-reviewer**: AI 티 나는 표현·과장·상투구 검수 및 수정
+- **moai-writer:korean-humanize**: 한국어 자연스러움 보정 (서술 산출물 한정)
 
 > 급여 대장·4대보험 계산 내역·세무 일정 캘린더 같은 표·숫자 산출물은 체인 대상이 아니며, 엑셀화가 필요하면 `moai-officer:doc-xlsx`로 라우팅한다.
 

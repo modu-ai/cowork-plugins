@@ -115,11 +115,11 @@ version: "1.0.0"
 KB 아티클(FAQ·가이드·트러블슈팅) 본문을 작성한 뒤에는 다음 체인으로 마무리합니다:
 
 ```
-cs-kb-article → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean
+cs-kb-article → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
 ```
 
-- `moai-coworker:general-ai-slop-reviewer` — AI 티 나는 표현·과잉 수식·기계적 문장 패턴을 검수·수정
-- `moai-writer:general-humanize-korean` — 한국어 경어 자연스러움과 사람이 쓴 듯한 어조로 다듬기
+- `moai-coworker:ai-slop-reviewer` — AI 티 나는 표현·과잉 수식·기계적 문장 패턴을 검수·수정
+- `moai-writer:korean-humanize` — 한국어 경어 자연스러움과 사람이 쓴 듯한 어조로 다듬기
 
 고객 대상 문서의 존댓말 문체(하십시오체 고정·사과/안내 화법)는 `moai-coworker:collab-report-speak`의 `references/kr-honorific-tone.md` 공유 규격을 따릅니다.
 

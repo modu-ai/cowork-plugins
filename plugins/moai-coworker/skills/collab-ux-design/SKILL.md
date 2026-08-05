@@ -9,7 +9,7 @@ description: |
   - "사용자 플로우 분석해줘"
   - "와이어프레임 사용성 점검해줘"
   - "사용성 개선안 정리해줘"
-  3개 차원(휴리스틱·접근성·플로우)을 분석해 심각도·우선순위가 매겨진 개선 로드맵으로 정리하고, general-ai-slop-reviewer·general-humanize-korean으로 마무리할 수 있습니다.
+  3개 차원(휴리스틱·접근성·플로우)을 분석해 심각도·우선순위가 매겨진 개선 로드맵으로 정리하고, ai-slop-reviewer·korean-humanize으로 마무리할 수 있습니다.
   [책임 경계] vs moai-coworker:collab-ux-research: collab-ux-design=휴리스틱·접근성·플로우 평가, collab-ux-research=인터뷰·페르소나·VOC 리서치
 version: "1.0.0"
 ---
@@ -112,7 +112,7 @@ UX 분석 보고서는 다음 섹션들을 포함합니다:
 
 UX 분석 보고서의 **서술형 권고안 부분**(통합 UX 권고안 P0~P3 설명, 개선 로드맵 서술)만 다음 체인으로 마무리합니다. 심각도·RICE·우선순위 매트릭스 같은 표·점수 데이터는 정제 대상이 아닙니다:
 
-`moai-coworker:collab-ux-design → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean`
+`moai-coworker:collab-ux-design → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
 
-- `moai-coworker:general-ai-slop-reviewer`: AI 특유의 상투적 표현·과장·군더더기를 점검하고 다듬습니다.
-- `moai-writer:general-humanize-korean`: 자연스러운 한국어 문장으로 최종 정제합니다.
+- `moai-coworker:ai-slop-reviewer`: AI 특유의 상투적 표현·과장·군더더기를 점검하고 다듬습니다.
+- `moai-writer:korean-humanize`: 자연스러운 한국어 문장으로 최종 정제합니다.

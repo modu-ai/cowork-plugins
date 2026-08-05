@@ -68,7 +68,7 @@ flowchart LR
 
 2. **숫자·차트·코드는 품질 스킬 생략**
 
-   재무제표, 데이터 차트, 스크립트 코드는 AI 어투를 검출할 게 없으므로 `general-ai-slop-reviewer`를 생략합니다.
+   재무제표, 데이터 차트, 스크립트 코드는 AI 어투를 검출할 게 없으므로 `ai-slop-reviewer`를 생략합니다.
 
 3. **같은 체인을 슬래시 명령으로 저장**
 
@@ -109,23 +109,23 @@ flowchart TD
 
 | 용도 | 체인 | 사용 플러그인 |
 |---|---|---|
-| 블로그 글 | 1. `content-blog`<br>2. `general-ai-slop-reviewer` | moai-marketer, moai-coworker |
-| 보도자료 | 1. `content-copywriting`(헤드라인·본문 카피)<br>2. `doc-docx`<br>3. `general-ai-slop-reviewer` | moai-marketer, moai-officer, moai-coworker |
-| 사업계획서 | 1. `consult-strategy`<br>2. `doc-docx`<br>3. `general-ai-slop-reviewer` | moai-consultant, moai-officer, moai-coworker |
-| IR 덱 | 1. `finance-investor-relations`<br>2. `doc-pptx`<br>3. `general-ai-slop-reviewer` | moai-consultant, moai-officer, moai-coworker |
+| 블로그 글 | 1. `content-blog`<br>2. `ai-slop-reviewer` | moai-marketer, moai-coworker |
+| 보도자료 | 1. `content-copywriting`(헤드라인·본문 카피)<br>2. `doc-docx`<br>3. `ai-slop-reviewer` | moai-marketer, moai-officer, moai-coworker |
+| 사업계획서 | 1. `consult-strategy`<br>2. `doc-docx`<br>3. `ai-slop-reviewer` | moai-consultant, moai-officer, moai-coworker |
+| IR 덱 | 1. `finance-investor-relations`<br>2. `doc-pptx`<br>3. `ai-slop-reviewer` | moai-consultant, moai-officer, moai-coworker |
 | 월말 결산 | 1. `finance-close-management`<br>2. `doc-xlsx`<br>3. `doc-docx` | moai-accountant, moai-officer |
-| NDA 검토 | 1. `legal-nda-triage`<br>2. `docx-generator(수정본)`<br>3. `general-ai-slop-reviewer` | moai-lawyer, moai-officer, moai-coworker |
+| NDA 검토 | 1. `legal-nda-triage`<br>2. `docx-generator(수정본)`<br>3. `ai-slop-reviewer` | moai-lawyer, moai-officer, moai-coworker |
 | 계약서 리뷰 | 1. `legal-contract-review`<br>2. `legal-legal-risk`<br>3. `doc-docx` | moai-lawyer, moai-officer |
-| 주간 보고서 | 1. `collab-status-report`<br>2. `doc-xlsx`<br>3. `doc-docx`<br>4. `general-ai-slop-reviewer` | moai-coworker, moai-officer |
+| 주간 보고서 | 1. `collab-status-report`<br>2. `doc-xlsx`<br>3. `doc-docx`<br>4. `ai-slop-reviewer` | moai-coworker, moai-officer |
 | 카드뉴스 | 1. `content-card-news`<br>2. `higgsfield-image(이미지)`<br>3. `doc-pptx` | moai-marketer, moai-media, moai-officer |
 | 쇼츠 영상 | 1. `social-media(스크립트)`<br>2. `audio-gen(TTS)`<br>3. `higgsfield-video(영상)` | moai-marketer, moai-media |
-| 연구 논문 | 1. `education-paper-search`<br>2. `education-paper-writer`<br>3. `doc-docx`<br>4. `general-ai-slop-reviewer` | moai-tutor, moai-officer, moai-coworker |
+| 연구 논문 | 1. `education-paper-search`<br>2. `education-paper-writer`<br>3. `doc-docx`<br>4. `ai-slop-reviewer` | moai-tutor, moai-officer, moai-coworker |
 | 면접 준비 | 1. `hr-job-analysis`<br>2. `career-interview`<br>3. `interview-coach(모의)` | moai-career |
 
 ## 체인을 깨뜨리는 흔한 실수
 
 {{< hint type="warning" >}}
-**실수 1 — `general-ai-slop-reviewer`를 맨 앞에 둔다.**
+**실수 1 — `ai-slop-reviewer`를 맨 앞에 둔다.**
 검수할 원문이 없으므로 의미가 없습니다. 마지막에 오는 스킬입니다.
 {{< /hint >}}
 
@@ -142,7 +142,7 @@ docx 생성 후 다시 docx로 변환하면 포맷이 깨집니다. 한 번만 �
 ## 디버깅 체크리스트
 
 - 결과가 너무 짧다 → 도메인 스킬에 **구체 맥락**(독자·목적·분량)을 추가로 넣어 재실행.
-- AI 티가 난다 → `general-ai-slop-reviewer` 실행했는지 확인. 생략됐다면 마지막 산출물에 대해 수동 호출.
+- AI 티가 난다 → `ai-slop-reviewer` 실행했는지 확인. 생략됐다면 마지막 산출물에 대해 수동 호출.
 - 포맷이 이상하다 → `doc-docx` 로그에서 어느 섹션이 빠졌는지 확인 후 원문을 보강.
 - 파일이 안 열린다 (Windows) → 파일명·폴더 경로가 260자 넘지 않는지 확인.
 

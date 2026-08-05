@@ -317,7 +317,7 @@ Customer / Competitor / Company를 각각 나열하면 더 이상 전략 도구�
 - **moai-consultant:consult-strategy**: 시장 분석 결과를 바탕으로 전략 수립
 - **moai-consultant:consult-startup**: 스타트업 시장 분석 및 진입 전략
 - **moai-consultant:consult-brief**: 컨설팅 제안서에 시장 분석 포함
-- **moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean**: 생성된 분석 보고서 AI 패턴 검수 후 한국어 표현을 자연스럽게 다듬습니다 (필수)
+- **moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize**: 생성된 분석 보고서 AI 패턴 검수 후 한국어 표현을 자연스럽게 다듬습니다 (필수)
 
 > 포지셔닝 매트릭스·TAM/SAM/SOM 산식·경쟁사 비교 등 **표·수치 산출물은 humanize 대상이 아닙니다** — `moai-officer:doc-xlsx` 또는 `moai-analyst:data-visualizer`로 라우팅하세요. 위 체인은 인사이트·권고안 등 **서술(narrative) 본문**에만 적용합니다.
 

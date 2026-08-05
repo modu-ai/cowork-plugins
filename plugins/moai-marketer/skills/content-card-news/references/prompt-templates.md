@@ -304,7 +304,7 @@
   ↓
 moai-coworker 이미지 프롬프트 빌더로 위임
   ↓
-카피 검수 (general-humanize-korean · general-ai-slop-reviewer)
+카피 검수 (korean-humanize · ai-slop-reviewer)
   ↓
 채널별 캡션 + 해시태그 추가
   ↓
@@ -332,8 +332,8 @@ moai-coworker 이미지 프롬프트 빌더로 위임
 | `moai-media:media-gemini-3-image-prompt` | 통합 프롬프트 → 실제 이미지 생성 (★ 권장) |
 | `moai-media:media-gpt-image-2-prompt` | 일러스트 강조 시 |
 | `moai-media:media-midjourney-v8-prompt` | 비주얼 임팩트 중심 |
-| `moai-writer:general-humanize-korean` | 한국어 카피 AI 티 자연화 (검수 단계) |
-| `moai-coworker:general-ai-slop-reviewer` | 전반 AI 슬롭 표현 검수 |
+| `moai-writer:korean-humanize` | 한국어 카피 AI 티 자연화 (검수 단계) |
+| `moai-coworker:ai-slop-reviewer` | 전반 AI 슬롭 표현 검수 |
 | `moai-marketer:content-sns-content` | 채널 단위 운영 전략 |
 | `moai-marketer:marketing-campaign-planner` | 캠페인 시리즈 카드뉴스 |
 | `moai-designer:design-slop-check` | 디자인 카피 슬롭 검수 |

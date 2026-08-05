@@ -172,7 +172,7 @@ IF KOREAN_LAW_OC 미설정 (또는 .mcp.json URL 의 ?oc= 이 빈 값):
 - **moai-lawyer:legal-iros-registry-automation**: 대법원 등기부등본 (iros, 본 스킬과 데이터 소스 상이)
 - **moai-lawyer:legal-mfds-safety**: 식약처 규제 (식약처 소스, 본 스킬과 데이터 소스 상이)
 - **moai-lawyer:legal-nda-triage**: NDA 비밀유지계약 전문 검토
-- **moai-coworker:general-ai-slop-reviewer** / **moai-writer:general-humanize-korean**: 서술형 산출물 후처리 체인 (법령 본문·표는 제외)
+- **moai-coworker:ai-slop-reviewer** / **moai-writer:korean-humanize**: 서술형 산출물 후처리 체인 (법령 본문·표는 제외)
 
 ## 이 스킬을 사용하지 말아야 할 때 (책임 분담)
 

@@ -888,7 +888,7 @@ class Component extends DCLogic {
             ['"이번 주 한 일로 주간보고 써줘"', 'productivity-weekly-report'],
             ['"이 RFP 보고 제안서 본문 써줘"', 'collab-proposal'],
             ['"내일 면담 어떻게 말하지?"', 'conflict-handler · negotiation-1on1'],
-            ['"AI 티 나는 부분 고쳐줘"', 'general-ai-slop-reviewer'],
+            ['"AI 티 나는 부분 고쳐줘"', 'ai-slop-reviewer'],
           ] },
           { t: 'h2', text: '작동 원리' },
           { t: 'mermaid', cap: '요청 → 스킬 매칭 → 초안 → AI 슬롭 점검 → 산출물.', chart: `flowchart LR
@@ -925,7 +925,7 @@ class Component extends DCLogic {
       AI 슬롭 리뷰
       진단·프롬프트 기초` },
           { t: 'h2', text: '품질 — 왜 결과가 안정적인가' },
-          { t: 'para', text: '모두의 코워크 직원 다수는 산출물을 만드는 실행 직원(worker)과 결과를 의심하며 검사하는 검수 직원(auditor)을 분리해 둡니다. 코워커는 범용 코어 특성상 별도 에이전트 없이 스킬 단위로 동작하며, 품질 점검은 general-ai-slop-reviewer 같은 후처리 스킬이 맡습니다.' },
+          { t: 'para', text: '모두의 코워크 직원 다수는 산출물을 만드는 실행 직원(worker)과 결과를 의심하며 검사하는 검수 직원(auditor)을 분리해 둡니다. 코워커는 범용 코어 특성상 별도 에이전트 없이 스킬 단위로 동작하며, 품질 점검은 ai-slop-reviewer 같은 후처리 스킬이 맡습니다.' },
           { t: 'h2', text: 'MCP 연동 — DART' },
           { t: 'para', text: '코워커는 dart MCP를 지원합니다. 금융감독원 전자공시(DART)에서 기업 공시·재무 정보를 조회할 수 있습니다. 공개 데이터 기반이라 기본 조회는 별도 자격증명 없이 가능합니다.' },
           { t: 'h2', text: '설치와 첫 지시' },
@@ -936,11 +936,11 @@ class Component extends DCLogic {
           { t: 'code', term: 'claude code — moai-coworker', lines: [
             { sigil: '>', text: ' 이번 주 한 일 정리해서 주간보고 만들어줘. 톤은 격식체로' },
             { sigil: '', text: '  ⏺ productivity-weekly-report 스킬 실행…', out: true },
-            { sigil: '', text: '  ⏺ general-ai-slop-reviewer 후처리 점검', out: true },
+            { sigil: '', text: '  ⏺ ai-slop-reviewer 후처리 점검', out: true },
             { sigil: '', text: '  ✓ 주간보고 초안이 준비됐습니다.', out: true },
           ] },
           { t: 'faq', items: [
-            { q: '결과가 너무 "AI 티"가 납니다', a: '"AI 티 나는 부분 고쳐줘"라고 이어서 요청하세요. general-ai-slop-reviewer가 기계적 패턴을 잡아 자연스럽게 다듬습니다.' },
+            { q: '결과가 너무 "AI 티"가 납니다', a: '"AI 티 나는 부분 고쳐줘"라고 이어서 요청하세요. ai-slop-reviewer가 기계적 패턴을 잡아 자연스럽게 다듬습니다.' },
             { q: '초안이 두루뭉술합니다', a: '대상 독자·목적·톤을 한 줄 더 붙이면 초안 품질이 크게 올라갑니다. "임원 보고용, 1페이지, 격식체"처럼 구체적으로 적어 보세요.' },
             { q: '엉뚱한 스킬이 매칭됩니다', a: '원하는 산출물 형태(예: "1페이지 요약으로")를 명시하면 매칭이 정확해집니다.' },
           ] },

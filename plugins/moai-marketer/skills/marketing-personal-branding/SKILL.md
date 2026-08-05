@@ -11,7 +11,7 @@ description: |
   - "커리어 전환하는데 개인 브랜드 전략 짜줘"
   - "직장인인데 부업으로 개인 브랜드 만들고 싶어"
   - "네이버 블로그로 전문가 이미지 구축하고 싶어"
-  자기 분석·포지셔닝·콘텐츠 주제·채널 운영 전략을 문서로 묶고, 텍스트 산출물은 moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean으로 다듬습니다. 채널별 콘텐츠 제작은 content-sns-content로 이어집니다.
+  자기 분석·포지셔닝·콘텐츠 주제·채널 운영 전략을 문서로 묶고, 텍스트 산출물은 moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize으로 다듬습니다. 채널별 콘텐츠 제작은 content-sns-content로 이어집니다.
   [책임 경계] vs moai-coworker:collab-brand-identity: 이 스킬=개인·전문가 브랜드, 저 스킬=기업·제품 브랜드.
 version: "1.0.0"
 ---
@@ -196,7 +196,7 @@ version: "1.0.0"
 
 태그라인·포지셔닝 스테이트먼트·콘텐츠 전략 원고·프로필 소개 문구 등 **텍스트 산출물**은 발행 전 반드시 후처리 체인을 거칩니다. 포지셔닝 맵·KPI 표 등 표·수치 산출물은 대상이 아닙니다.
 
-**권장 체인**: `marketing-personal-branding → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean`
+**권장 체인**: `marketing-personal-branding → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
 
 ## 관련 스킬
 
@@ -204,8 +204,8 @@ version: "1.0.0"
 |------|----------|
 | `moai-coworker:collab-brand-identity` | 기업/제품 브랜딩 |
 | `moai-marketer:content-sns-content` | SNS 콘텐츠 단독 작성 |
-| `moai-coworker:general-ai-slop-reviewer` | 사후 체이닝(필수): 퍼스널 브랜딩 텍스트의 AI 패턴 검수 |
-| `moai-writer:general-humanize-korean` | 사후 체이닝(필수): general-ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |
+| `moai-coworker:ai-slop-reviewer` | 사후 체이닝(필수): 퍼스널 브랜딩 텍스트의 AI 패턴 검수 |
+| `moai-writer:korean-humanize` | 사후 체이닝(필수): ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |
 | `moai-marketer:content-blog` | 블로그 포스팅 작성 |
 
 ## References

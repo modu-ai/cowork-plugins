@@ -81,11 +81,11 @@ version: "1.0.0"
 보고서의 **서술형 본문**(핵심 요약, 이슈·리스크 설명, 액션 아이템 등 산문 부분)은 다음 체인으로 마무리합니다.
 
 ```
-collab-status-report → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean
+collab-status-report → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
 ```
 
-- `moai-coworker:general-ai-slop-reviewer` — 서술형 본문의 AI 티 패턴을 검수·수정합니다.
-- `moai-writer:general-humanize-korean` — 검수된 본문을 자연스러운 한국어 보고체로 다듬습니다.
+- `moai-coworker:ai-slop-reviewer` — 서술형 본문의 AI 티 패턴을 검수·수정합니다.
+- `moai-writer:korean-humanize` — 검수된 본문을 자연스러운 한국어 보고체로 다듬습니다.
 
 KPI 달성 현황 표, 마일스톤 진행률, 이슈·리스크 매트릭스 등 **수치·표 산출물**은 산문 후처리 대상이 아니며 `moai-officer:doc-xlsx`(엑셀 연동) 또는 `moai-analyst:data-visualizer`(대시보드 시각화)로 라우팅합니다.
 

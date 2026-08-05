@@ -157,12 +157,12 @@ metadata:
 
 ## 관련 스킬 (후처리 체인)
 
-이력서·경력기술서 등 입력에 개인정보(주민등록번호·연락처·계좌 등)가 포함되면 `moai-coworker:general-ai-slop-reviewer`의 `references/kr-pii-masking.md` 규칙으로 마스킹 후 처리한다.
+이력서·경력기술서 등 입력에 개인정보(주민등록번호·연락처·계좌 등)가 포함되면 `moai-coworker:ai-slop-reviewer`의 `references/kr-pii-masking.md` 규칙으로 마스킹 후 처리한다.
 
 경력 서사·이직 전략 서술 등 문장 산출물을 작성한 뒤에는 아래 체인으로 마무리한다.
 
-- **moai-coworker:general-ai-slop-reviewer**: AI 티 나는 표현·과장·상투구 검수·수정 (필수)
-- **moai-writer:general-humanize-korean**: 한국어 자연스러움 보정 — 슬롭 검수 다음 (필수)
+- **moai-coworker:ai-slop-reviewer**: AI 티 나는 표현·과장·상투구 검수·수정 (필수)
+- **moai-writer:korean-humanize**: 한국어 자연스러움 보정 — 슬롭 검수 다음 (필수)
 
 ## References
 

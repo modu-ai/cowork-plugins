@@ -10,7 +10,7 @@ description: |
   - "브랜드 보이스 가이드 만들어줘"
   - "한 달치 콘텐츠 달력 짜줘"
   - "내 유튜브 강의를 인스타·블로그·뉴스레터로 리퍼포징해줘"
-  채널별 심리와 알고리즘에 맞춰 게시글을 만들고 콘텐츠를 여러 채널로 재활용하며, 텍스트 산출물은 moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean으로 다듬습니다.
+  채널별 심리와 알고리즘에 맞춰 게시글을 만들고 콘텐츠를 여러 채널로 재활용하며, 텍스트 산출물은 moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize으로 다듬습니다.
   [책임 경계] vs 형제 스킬: 범용 광고 카피는 moai-marketer:content-copywriting, 이커머스 광고·톡톡·푸시 카피는 moai-cs:cs-channel-message, 기업 브랜드 전략은 moai-coworker:collab-brand-identity, 개인 브랜드 전략은 moai-marketer:marketing-personal-branding.
 version: "1.0.0"
 ---
@@ -170,7 +170,7 @@ CTA: 의견을 댓글로 남겨주세요 / 공감하시면 리포스트
 
 인스타 캡션·블로그 본문·카카오 메시지·링크드인 포스트·쇼츠 스크립트 등 **텍스트 산출물**은 발행 전 반드시 후처리 체인을 거칩니다. 해시태그 표·콘텐츠 달력 등 표 산출물은 대상이 아닙니다.
 
-**권장 체인**: `content-sns-content → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean`
+**권장 체인**: `content-sns-content → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
 
 ## 관련 스킬
 
@@ -181,8 +181,8 @@ CTA: 의견을 댓글로 남겨주세요 / 공감하시면 리포스트
 | `moai-marketer:content-email-sequence` | 이메일 시퀀스·드립 캠페인 |
 | `moai-marketer:marketing-personal-branding` | 개인 브랜딩 단독 전략 (전문가·창업자) |
 | `moai-coworker:collab-brand-identity` | 기업·제품 브랜드 전략 |
-| `moai-coworker:general-ai-slop-reviewer` | 사후 체이닝(필수): SNS 텍스트 산출물의 AI 패턴 검수 |
-| `moai-writer:general-humanize-korean` | 사후 체이닝(필수): general-ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |
+| `moai-coworker:ai-slop-reviewer` | 사후 체이닝(필수): SNS 텍스트 산출물의 AI 패턴 검수 |
+| `moai-writer:korean-humanize` | 사후 체이닝(필수): ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |
 | `moai-marketer:content-blog` | 블로그 포스팅 단건 작성 |
 | `moai-marketer:content-card-news` | 카드뉴스·슬라이드 |
 | `moai-marketer:content-newsletter` | 이메일 뉴스레터 |

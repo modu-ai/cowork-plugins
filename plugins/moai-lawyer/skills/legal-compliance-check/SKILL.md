@@ -148,18 +148,18 @@ version: "1.0.0"
 - **moai-lawyer:legal-legal-risk**: 법적 리스크 분석, 지적재산권 전략
 - **moai-lawyer:legal-law-research** (korean-law MCP): 현행 법령 원문 조회·인용검증이 필요하면 연계
 - **moai-accountant:finance-tax-helper**: 세금 신고, 홈택스 안내
-- **moai-coworker:general-ai-slop-reviewer**: 텍스트 산출물(감사 보고서·체크리스트) AI 패턴 검수
+- **moai-coworker:ai-slop-reviewer**: 텍스트 산출물(감사 보고서·체크리스트) AI 패턴 검수
 
 ### 후처리 체인 (텍스트 산출물)
 
 감사 보고서·갭 분석·ESG 보고서 등 서술형 산출물은 작성 후 반드시 다음 체인으로 마무리합니다.
 
 ```
-legal-compliance-check → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean
+legal-compliance-check → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
 ```
 
-- **moai-coworker:general-ai-slop-reviewer**: AI 글쓰기 패턴(과장·상투구·획일적 구조) 검수
-- **moai-writer:general-humanize-korean**: 한국어 자연스러움 보정으로 사람이 쓴 듯한 문장으로 다듬기
+- **moai-coworker:ai-slop-reviewer**: AI 글쓰기 패턴(과장·상투구·획일적 구조) 검수
+- **moai-writer:korean-humanize**: 한국어 자연스러움 보정으로 사람이 쓴 듯한 문장으로 다듬기
 
 표·점수 매트릭스 등 데이터 산출물은 이 체인 대상이 아니며, 별도로 **moai-officer:doc-xlsx**로 정리합니다.
 

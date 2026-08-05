@@ -284,8 +284,8 @@ Orange 작은 도형 + Mid Gray 가로선 + 섹션 번호.
 | `moai-officer:doc-hwp` | 한컴 한글 문서 생성 (HWPX) |
 | `moai-officer:doc-xlsx` | 엑셀 데이터 시트 |
 | `moai-officer:doc-pdf` | PDF 변환·다국어 PDF |
-| `moai-writer:general-humanize-korean` | 카피 AI 슬롭 자연화 |
-| `moai-coworker:general-ai-slop-reviewer` | 텍스트 산출물 슬롭 검수 |
+| `moai-writer:korean-humanize` | 카피 AI 슬롭 자연화 |
+| `moai-coworker:ai-slop-reviewer` | 텍스트 산출물 슬롭 검수 |
 | `moai-designer:design-slop-check` | Claude Design 톤과 일관성 검수 |
 
 ## 기술 참조

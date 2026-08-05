@@ -145,18 +145,18 @@ NDA, 비밀유지계약, 기밀유지계약, 비밀유지협약, NDA 검토, 계
 - **moai-lawyer:legal-contract-review**: 일반 용역·공급 계약서 검토
 - **moai-lawyer:legal-compliance-check**: 규제 준수 점검, ESG 보고
 - **moai-lawyer:legal-legal-risk**: 법적 리스크 전반 분석, IP 전략
-- **moai-coworker:general-ai-slop-reviewer**: NDA 평가 보고서 AI 패턴 검수
+- **moai-coworker:ai-slop-reviewer**: NDA 평가 보고서 AI 패턴 검수
 
 ### 후처리 체인 (텍스트 산출물)
 
 NDA 트리아지 평가서·조항별 수정 권고안·표준 NDA 초안 등 서술형 산출물은 작성 후 반드시 다음 체인으로 마무리합니다.
 
 ```
-legal-nda-triage → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean
+legal-nda-triage → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
 ```
 
-- **moai-coworker:general-ai-slop-reviewer**: AI 글쓰기 패턴(과장·상투구·획일적 구조) 검수
-- **moai-writer:general-humanize-korean**: 한국어 자연스러움 보정으로 사람이 쓴 듯한 문장으로 다듬기
+- **moai-coworker:ai-slop-reviewer**: AI 글쓰기 패턴(과장·상투구·획일적 구조) 검수
+- **moai-writer:korean-humanize**: 한국어 자연스러움 보정으로 사람이 쓴 듯한 문장으로 다듬기
 
 ## 이 스킬을 사용하지 말아야 할 때
 

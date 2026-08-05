@@ -55,7 +55,7 @@ Phase 1 인터뷰 → Phase 2 인벤토리 → Phase 3 체인 설계 → Phase 4
 |-------|------|--------|
 | **1 인터뷰** | 2-Stage 일괄 설문 — S1 한 라운드에 최대 4질문 묶음 배치, 부족 시에만 S2 보강(글로벌 프로필은 묻지 않음) | interview 답변 |
 | **2 인벤토리** | `~/.claude/plugins/`에서 설치 여부 + 활성 스킬 스캔 | `.moai/config.json` 스냅샷 |
-| **3 체인 설계** | 인터뷰 + 인벤토리 + 재진입 시 기존 맥락, 3종 입력을 종합해 산출물별 스킬 체인 설계(§3 프리셋). 텍스트 체인은 `general-ai-slop-reviewer` 종료 | chain_design + 설계 근거 |
+| **3 체인 설계** | 인터뷰 + 인벤토리 + 재진입 시 기존 맥락, 3종 입력을 종합해 산출물별 스킬 체인 설계(§3 프리셋). 텍스트 체인은 `ai-slop-reviewer` 종료 | chain_design + 설계 근거 |
 | **4 Gap Detection** | 체인 스킬 ↔ 인벤토리 대조 → 누락 시 설치 안내 + `/project resume` 재개 | 진행 상태 |
 | **5 확인** | 설계된 체인 `AskUserQuestion` 승인 — 요약에 설계 근거 표시 | 승인/수정/취소 |
 | **6 CLAUDE.md 생성** | `references/templates/CLAUDE.md.tmpl` 치환, ≤200라인, HARD 블록 8종 고정 | `./CLAUDE.md` |
@@ -78,26 +78,26 @@ Phase 3 체인 설계는 인터뷰 답변→프리셋 매칭으로 직행하지 
 
 ## 3. 스킬 체인 프리셋 (주요 산출물)
 
-텍스트 산출물 체인은 **반드시 `general-ai-slop-reviewer`로 종료**하며, 한국어 최종본은 직후 `general-humanize-korean` 2차 패스를 추가한다. 비텍스트(차트·데이터·숫자·미디어)는 ai-slop 단계를 생략한다.
+텍스트 산출물 체인은 **반드시 `ai-slop-reviewer`로 종료**하며, 한국어 최종본은 직후 `korean-humanize` 2차 패스를 추가한다. 비텍스트(차트·데이터·숫자·미디어)는 ai-slop 단계를 생략한다.
 
 ### 3-1. 실무 체인
 
 | 산출물 | 권장 체인 |
 |---|---|
-| 사업계획서(PPT) | `consult-strategy` → `doc-pptx` → `general-ai-slop-reviewer` |
-| 사업계획서(Word) | `consult-strategy` → `consult-market` → `doc-docx` → `general-ai-slop-reviewer` |
-| IR 피칭덱 | `finance-investor-relations` → `doc-pptx` → `general-ai-slop-reviewer` |
-| 시장조사 리포트 | `consult-market` → `doc-docx` → `general-ai-slop-reviewer` |
-| 블로그 | `content-blog` → `general-ai-slop-reviewer` → `general-humanize-korean` |
-| 카드뉴스 | `content-card-news` → `general-ai-slop-reviewer` |
-| 뉴스레터 | `content-newsletter` → `general-ai-slop-reviewer` |
-| 랜딩(HTML) | `content-copywriting` → `marketing-landing-page` → `general-ai-slop-reviewer` |
-| 계약서 초안 | `legal-contract-review` / `legal-nda-triage` → `doc-docx` → `general-ai-slop-reviewer` |
+| 사업계획서(PPT) | `consult-strategy` → `doc-pptx` → `ai-slop-reviewer` |
+| 사업계획서(Word) | `consult-strategy` → `consult-market` → `doc-docx` → `ai-slop-reviewer` |
+| IR 피칭덱 | `finance-investor-relations` → `doc-pptx` → `ai-slop-reviewer` |
+| 시장조사 리포트 | `consult-market` → `doc-docx` → `ai-slop-reviewer` |
+| 블로그 | `content-blog` → `ai-slop-reviewer` → `korean-humanize` |
+| 카드뉴스 | `content-card-news` → `ai-slop-reviewer` |
+| 뉴스레터 | `content-newsletter` → `ai-slop-reviewer` |
+| 랜딩(HTML) | `content-copywriting` → `marketing-landing-page` → `ai-slop-reviewer` |
+| 계약서 초안 | `legal-contract-review` / `legal-nda-triage` → `doc-docx` → `ai-slop-reviewer` |
 | 부가세 신고 | `finance-tax-helper` (숫자 — ai-slop 생략) |
 | 재무제표 | `finance-financial-statements` → `doc-xlsx` (숫자 — ai-slop 생략) |
-| 한글 공문 | `doc-hwp` → `general-ai-slop-reviewer` |
-| 상세페이지 | `commerce-product-detail` → `general-ai-slop-reviewer` |
-| 주간보고 | `collab-pm-report` → `general-ai-slop-reviewer` |
+| 한글 공문 | `doc-hwp` → `ai-slop-reviewer` |
+| 상세페이지 | `commerce-product-detail` → `ai-slop-reviewer` |
+| 주간보고 | `collab-pm-report` → `ai-slop-reviewer` |
 
 ### 3-2. 글쓰기 작가 체인 (story·book)
 
@@ -163,7 +163,7 @@ Phase 3 체인의 스킬이 인벤토리에 없으면 누락으로 간주한다.
 
 1. **≤200라인**, 스킬 체인은 최대 10개(나머지는 `/project catalog` 참조)
 2. **역할 라벨** — 감지된 역할(실무/글쓰기 작가)을 페르소나에 명시
-3. **HARD 규칙 고정** — office 스킬 우선 + 텍스트 산출물 `general-ai-slop-reviewer` 종료 + 요청 평가 사다리·파일 생성 기준·인용·저작권 가드(§3.5)·톤 규칙·맥락 적용 규칙. 200라인 초과 시 축소 대상은 체인만이다.
+3. **HARD 규칙 고정** — office 스킬 우선 + 텍스트 산출물 `ai-slop-reviewer` 종료 + 요청 평가 사다리·파일 생성 기준·인용·저작권 가드(§3.5)·톤 규칙·맥락 적용 규칙. 200라인 초과 시 축소 대상은 체인만이다.
 4. **스킬 참조 정합** — 모든 스킬 참조는 소속 플러그인 접두어를 사용한다.
 5. **작가 분기 시** — `story-project` 라우팅 규칙을 워크플로우에 명시한다.
 

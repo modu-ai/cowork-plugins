@@ -304,7 +304,7 @@ Gartner: 2026 말 기업 앱의 40%가 AI 에이전트 포함. McKinsey: B2B 영
 
 ### AI 슬롭 후처리
 
-생성된 영업 플레이북은 반드시 `moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean` 체인을 통해 후처리해야 합니다. `moai-coworker:general-ai-slop-reviewer`로 AI 패턴(반복적 표현, 과도한 형용사, 추상적 문장)을 제거하고 `moai-writer:general-humanize-korean`으로 한국어 표현을 자연스럽게 다듬어 실전 즉시 활용 가능한 구체적이고 명확한 문서로 변환합니다.
+생성된 영업 플레이북은 반드시 `moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize` 체인을 통해 후처리해야 합니다. `moai-coworker:ai-slop-reviewer`로 AI 패턴(반복적 표현, 과도한 형용사, 추상적 문장)을 제거하고 `moai-writer:korean-humanize`으로 한국어 표현을 자연스럽게 다듬어 실전 즉시 활용 가능한 구체적이고 명확한 문서로 변환합니다.
 
 **후처리 체크포인트:**
 - [ ] 반복적 표현 제거 ("혁신적인", "최첨단" 등 남용 방지)
@@ -318,7 +318,7 @@ Gartner: 2026 말 기업 앱의 40%가 AI 에이전트 포함. McKinsey: B2B 영
 
 1. **moai-consultant:consult-strategy**: 영업 플레이북 생성 전, 제품/서비스의 전략적 포지셔닝을 먼저 수립
 2. **moai-officer:doc-pptx**: 생성된 영업 플레이북 Markdown 문서를 피치덱 형식의 PPT로 변환
-3. **moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean**: 생성된 플레이북 문서의 AI 패턴을 검수·수정한 뒤 한국어 표현을 자연스럽게 다듬습니다 (필수)
+3. **moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize**: 생성된 플레이북 문서의 AI 패턴을 검수·수정한 뒤 한국어 표현을 자연스럽게 다듬습니다 (필수)
 
 ### 대안 스킬
 

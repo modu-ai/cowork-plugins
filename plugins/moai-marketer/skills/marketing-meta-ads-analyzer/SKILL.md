@@ -11,7 +11,7 @@ description: |
   - "예산이 적정한지, 광고비 누수 있는지 찾아줘"
   - "이번 달이랑 지난 달 추세 비교해줘"
   - "광고 보고서 엑셀 올릴게, 분석해줘"
-  퍼널·KPI·지면·연령·성별·누수까지 분석해 HTML·DOCX·PPTX·MD 중 원하는 형식으로 보고서를 만들고, 문서 텍스트는 moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean으로 다듬습니다.
+  퍼널·KPI·지면·연령·성별·누수까지 분석해 HTML·DOCX·PPTX·MD 중 원하는 형식으로 보고서를 만들고, 문서 텍스트는 moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize으로 다듬습니다.
   [책임 경계] vs marketing-pixel-audit·marketing-landing-page-conversion-audit: 이 스킬=광고관리자 데이터 사후 분석, 저 스킬=픽셀 인프라 진단·랜딩 진단.
 version: "1.0.0"
 ---
@@ -67,7 +67,7 @@ version: "1.0.0"
    ↓
 [Step 8] 선택 출력 형식 (HTML / DOCX / PPTX / MD) 생성
    ↓
-[Step 9] DOCX/PPTX/MD → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean 자동 체이닝
+[Step 9] DOCX/PPTX/MD → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize 자동 체이닝
    ↓
 [Step 10] 면책 문구 포함하여 최종 산출물 제공
 ```
@@ -256,16 +256,16 @@ Level 1-6: **모든 출력 형식 필수** / Level 7: 사용자 선택
 ```
 marketing-meta-ads-analyzer (보고서 분석)
        ↓ DOCX/PPTX/MD 텍스트 산출물
-moai-coworker:general-ai-slop-reviewer (AI 슬롭 검수)
+moai-coworker:ai-slop-reviewer (AI 슬롭 검수)
        ↓
-moai-writer:general-humanize-korean (한국어 AI 티 제거)
+moai-writer:korean-humanize (한국어 AI 티 제거)
        ↓ 인프라 문제 발견 시
 moai-marketer:marketing-pixel-audit (픽셀·1st Party 데이터 인프라 진단)
        ↓ 랜딩 문제 발견 시
 moai-marketer:marketing-landing-page-conversion-audit (랜딩 6섹션 전환율 진단)
 ```
 
-> HTML 대시보드는 React 컴포넌트+차트가 주 산출물이므로 `moai-coworker:general-ai-slop-reviewer`·`moai-writer:general-humanize-korean` 체이닝 대상에서 제외 (본문 카피·해석 텍스트만 해당).
+> HTML 대시보드는 React 컴포넌트+차트가 주 산출물이므로 `moai-coworker:ai-slop-reviewer`·`moai-writer:korean-humanize` 체이닝 대상에서 제외 (본문 카피·해석 텍스트만 해당).
 
 ---
 

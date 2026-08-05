@@ -83,12 +83,12 @@ claude plugin install moai-coworker@moai-cowork
 
 | 스킬 | 역할 |
 |------|------|
-| `general-ai-slop-reviewer` | AI 티 나는 문장 검수 (모든 텍스트 산출물 마지막 단계) |
-| `general-ai-diagnostic` | AI 산출물 품질 진단 |
+| `ai-slop-reviewer` | AI 티 나는 문장 검수 (모든 텍스트 산출물 마지막 단계) |
+| `ai-diagnostic` | AI 산출물 품질 진단 |
 | `general-feedback` | 피드백 정리·반영 |
-| `general-skill-builder` | 커스텀 스킬 제작 |
-| `general-skill-template` | 스킬 템플릿 |
-| `general-skill-tester` | 스킬 테스트 |
+| `meta-skill-builder` | 커스텀 스킬 제작 |
+| `meta-skill-template` | 스킬 템플릿 |
+| `meta-skill-tester` | 스킬 테스트 |
 | `ai-prompting-basics` | 클로드 프롬프팅 기본기 |
 
 ## MCP 연동 1종

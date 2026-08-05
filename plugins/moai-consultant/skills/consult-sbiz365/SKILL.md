@@ -185,13 +185,13 @@ Claude 기본 Word 생성 금지.
 
 ---
 
-### Step 5: AI 슬롭 검수 + 한국어 다듬기 (moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean)
+### Step 5: AI 슬롭 검수 + 한국어 다듬기 (moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize)
 
-**반드시 마지막 단계**로 체인 `moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean`을 실행합니다.
-우선순위: `anthropic-skills:general-ai-slop-reviewer` > `moai-coworker:general-ai-slop-reviewer`.
+**반드시 마지막 단계**로 체인 `moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`을 실행합니다.
+우선순위: `anthropic-skills:ai-slop-reviewer` > `moai-coworker:ai-slop-reviewer`.
 
-- `moai-coworker:general-ai-slop-reviewer`: AI 기계적 문어체 → 현장감 있는 소상공인 언어로 변환, 과도한 수식어 제거, 핵심 메시지 강화
-- `moai-writer:general-humanize-korean`: AI 티가 남은 한국어 표현을 자연스럽게 다듬습니다
+- `moai-coworker:ai-slop-reviewer`: AI 기계적 문어체 → 현장감 있는 소상공인 언어로 변환, 과도한 수식어 제거, 핵심 메시지 강화
+- `moai-writer:korean-humanize`: AI 티가 남은 한국어 표현을 자연스럽게 다듬습니다
 - 진단 요약 → 수정 텍스트 → 주요 변경사항 순서로 출력
 - **적용 범위**: 보고서의 **서술(narrative) 섹션 본문**에만 적용. 4축 평가 점수표·유동인구 수치표·매출 데이터 표 등 **표·수치 산출물은 대상에서 제외**합니다.
 

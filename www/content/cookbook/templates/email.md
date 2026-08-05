@@ -23,7 +23,7 @@ flowchart TD
 | `moai-marketer:content-newsletter` | 위클리 뉴스레터 기획·작성·구독자 분석 |
 | `moai-marketer:content-email-sequence` | 정보통신망법 준수 자동화 시퀀스 |
 | `moai-marketer:content-copywriting` | 제목·CTA 카피 |
-| `moai-coworker:general-ai-slop-reviewer` | 발송 전 검수 |
+| `moai-coworker:ai-slop-reviewer` | 발송 전 검수 |
 
 ## 4가지 표준 시퀀스
 
@@ -75,7 +75,7 @@ flowchart TD
 체인:
 1. `content-email-sequence` (뼈대)
 2. `content-copywriting` (제목·CTA)
-3. `general-ai-slop-reviewer` (검수)
+3. `ai-slop-reviewer` (검수)
 
 ## 정보통신망법 준수 체크
 

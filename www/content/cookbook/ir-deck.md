@@ -28,7 +28,7 @@ IR 덱(Investor Relations Deck)은 투자자에게 보여주는 발표 자료, �
 
 - **`finance-investor-relations` — 극작가.** 재무 숫자와 밸류에이션(기업 가치 평가), 설득 스토리라인을 설계합니다. "어떤 장면 순서로 이야기를 전개할지, 각 장에 어떤 숫자를 올릴지" 대본을 씁니다.
 - **`doc-pptx` — 무대 미술가.** 그 대본을 무대 위 15개 장면(슬라이드)으로 시각화합니다. 폰트, 여백, 차트, 색 배합을 다룹니다. 글을 잘 쓴다고 무대 세트를 잘 만드는 게 아니듯, 재무를 잘한다고 디자인까지 잘하는 건 아닙니다.
-- **`general-ai-slop-reviewer` — 대사 연기 코치.** 만들어진 문장에서 기계 티(AI가 쓴 듯한 딱딱한 어투)를 솎아내고, 사람이 무대에서 직접 말하는 듯한 발화로 바꿉니다. 발표용 문장은 짧고 자연스러워야 듣는 투자자가 귀에 꽂힙니다.
+- **`ai-slop-reviewer` — 대사 연기 코치.** 만들어진 문장에서 기계 티(AI가 쓴 듯한 딱딱한 어투)를 솎아내고, 사람이 무대에서 직접 말하는 듯한 발화로 바꿉니다. 발표용 문장은 짧고 자연스러워야 듣는 투자자가 귀에 꽂힙니다.
 
 한 사람이 극작·무대 미술·연기 코칭을 다 잘할 수 없듯, 하나의 스킬도 세 역할을 동시에 소화하지 못합니다. 그래서 각 전문가(스킬)를 차례로 부르는 파이프라인, 즉 **체인**으로 조립합니다. 도메인(내용 기획) → 포맷(문서 생성) → 품질(문장 다듬기) 순서로 흘러가는 이 흐름은 [스킬 체인 설계 3원칙](/cookbook/skill-chaining/#체인-설계-3원칙)과 같은 맥락입니다.
 
@@ -38,7 +38,7 @@ Seed·Series A·B 투자 유치를 준비하는 스타트업 창업가.
 
 ## 사전 준비
 
-- 플러그인: `moai-consultant`, `moai-officer`, `moai-coworker:general-ai-slop-reviewer`
+- 플러그인: `moai-consultant`, `moai-officer`, `moai-coworker:ai-slop-reviewer`
 - (선택) `moai-media` — 히어로 이미지·아이콘 커스텀
 - 입력: 사업계획서(DOCX 또는 텍스트), **시리즈 단계**(Seed / Series A / B), **목표 조달액**, **밸류에이션 가정**
 
@@ -50,7 +50,7 @@ investor-relations → pptx-designer → ai-slop-reviewer
 
 - `finance-investor-relations` — 재무 모델·밸류에이션·스토리라인
 - `doc-pptx` — Pretendard + 명조 한국형 PPT 코드
-- `general-ai-slop-reviewer` — 발표용 문장 다듬기(짧고 자연스럽게)
+- `ai-slop-reviewer` — 발표용 문장 다듬기(짧고 자연스럽게)
 
 ## 15장 표준 구조
 

@@ -210,7 +210,7 @@ Consistency tag: series="harness-lecture", palette="teal-amber-dim", lighting="v
   3. **Part B — 슬라이드별 나노바나나 이미지 프롬프트 (5~8슬라이드)**
   4. 사용 절차 (NotebookLM에 본문 업로드 → Prompt 붙여넣기 → 생성 → 표지·핵심 슬라이드 이미지는 별도 Gemini/Nano Banana Pro로 생성 후 NotebookLM에서 revise로 교체)
 
-체인 종료 직전 `moai-coworker:general-ai-slop-reviewer`를 호출해 클리셰·번역투를 제거한다.
+체인 종료 직전 `moai-coworker:ai-slop-reviewer`를 호출해 클리셰·번역투를 제거한다.
 
 ## 사용 예시
 
@@ -249,17 +249,17 @@ Consistency tag: series="harness-lecture", palette="teal-amber-dim", lighting="v
 - [ ] 종횡비가 16:9로 통일되었는가? (강연 슬라이드 기본)
 - [ ] 실존 인물 얼굴, 저작권 캐릭터, 브랜드 로고가 직접 묘사되지 않았는가?
 - [ ] 클리셰("혁신적", "차세대", "재정의하는", "결론적으로")가 NotebookLM Prompt에 없는가?
-- [ ] AI 슬롭 후처리(general-ai-slop-reviewer) 실행 예정인가?
+- [ ] AI 슬롭 후처리(ai-slop-reviewer) 실행 예정인가?
 
 ## 체이닝 권장
 
 ```
 media-notebooklm-slide-prompt
   ↓
-moai-coworker:general-ai-slop-reviewer
+moai-coworker:ai-slop-reviewer
 ```
 
-본 스킬은 텍스트 산출물이므로 체인 종료 직전 `moai-coworker:general-ai-slop-reviewer`로 후처리한다.
+본 스킬은 텍스트 산출물이므로 체인 종료 직전 `moai-coworker:ai-slop-reviewer`로 후처리한다.
 
 실제 이미지 생성은 별도 단계로 분리되어 있다. 사용자는 산출된 5-Component 프롬프트를 다음 도구 중 하나로 실행한다:
 

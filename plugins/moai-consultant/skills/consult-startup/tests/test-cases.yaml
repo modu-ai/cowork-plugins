@@ -97,7 +97,7 @@ test_cases:
       - 문서 길이가 250+ 라인 (복잡한 입력값 반영)
 
 test_execution_notes:
-  - 모든 테스트 케이스는 `moai-coworker:general-ai-slop-reviewer` 후처리 전을 기준으로 평가합니다.
+  - 모든 테스트 케이스는 `moai-coworker:ai-slop-reviewer` 후처리 전을 기준으로 평가합니다.
   - 후처리 후 최종 출력물 품질은 별도 점검이 필요합니다.
   - TC-001은 표준 B2B SaaS 스타트업 시나리오를 커버합니다.
   - TC-002는 최소 입력값 경계 조건(1인 창업, 소액 자본)을 테스트합니다.

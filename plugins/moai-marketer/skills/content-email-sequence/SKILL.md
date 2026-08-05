@@ -10,7 +10,7 @@ description: |
   - "뉴스레터 시리즈 짜줘"
   - "웰컴 이메일 본문 써줘"
   - "(광고) 표시랑 수신거부 같은 법적 요건 맞춰서 메일 만들어줘"
-  발송 시점별 시퀀스 흐름, 제목·본문 초안, 수신거부 등 법적 체크리스트를 함께 만들고, 본문 텍스트는 moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean으로 다듬습니다.
+  발송 시점별 시퀀스 흐름, 제목·본문 초안, 수신거부 등 법적 체크리스트를 함께 만들고, 본문 텍스트는 moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize으로 다듬습니다.
 version: "1.0.0"
 ---
 
@@ -192,7 +192,7 @@ AIDA 원칙(Attention-Interest-Desire-Action)을 적용하여 제목(30자 이�
 
 각 단계 이메일 본문·제목·프리헤더 등 **텍스트 산출물**은 발송 전 반드시 후처리 체인을 거칩니다. 시퀀스 플로우 다이어그램·KPI 표 등 구조·수치 산출물은 대상이 아닙니다.
 
-**권장 체인**: `content-email-sequence → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean`
+**권장 체인**: `content-email-sequence → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
 
 ## 관련 스킬
 
@@ -200,5 +200,5 @@ AIDA 원칙(Attention-Interest-Desire-Action)을 적용하여 제목(30자 이�
 |------|----------|
 | `moai-marketer:content-sns-content` | SNS 콘텐츠나 소셜 미디어 캠페인 |
 | `moai-marketer:marketing-performance-report` | 마케팅 성과 분석 보고서 |
-| `moai-coworker:general-ai-slop-reviewer` | 사후 체이닝(필수): 이메일 본문의 AI 패턴 검수 |
-| `moai-writer:general-humanize-korean` | 사후 체이닝(필수): general-ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |
+| `moai-coworker:ai-slop-reviewer` | 사후 체이닝(필수): 이메일 본문의 AI 패턴 검수 |
+| `moai-writer:korean-humanize` | 사후 체이닝(필수): ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |

@@ -190,8 +190,8 @@ titleSlide.addText("2026 Q1 사업 보고", {
 슬라이드의 **카피(헤드라인·서브헤드라인·CTA·바디 문장)만 따로 떼어내어** 게이트 검수를 거칩니다. 현재까지 이 스킬에는 카피 전용 스테이지가 없어 헤드라인이 게이트를 통과하지 않았습니다 — 이 스테이지가 그 갭을 메웁니다. 시각 QA(5단계)와 별개로, **모든 슬라이드 카피 텍스트**는 아래 두 게이트를 의무로 통과합니다.
 
 **의무 체인**:
-1. `moai-coworker:general-ai-slop-reviewer` — 1차 일반 AI 슬롭 검수 (금지어, 구조 패턴, 리듬)
-2. `moai-writer:general-humanize-korean` — 2차 한국어 정밀 윤문 (40+ 패턴 SSOT, 의미 불변)
+1. `moai-coworker:ai-slop-reviewer` — 1차 일반 AI 슬롭 검수 (금지어, 구조 패턴, 리듬)
+2. `moai-writer:korean-humanize` — 2차 한국어 정밀 윤문 (40+ 패턴 SSOT, 의미 불변)
 
 **이 게이트가 반드시 잡아야 할 구조적 슬롭 S1 패턴 3종** (슬라이드 헤드라인에서 최빈):
 
@@ -201,7 +201,7 @@ titleSlide.addText("2026 Q1 사업 보고", {
 | 2 | **조사·체언 종결 조각문** | 조사·체언 종결 조각문 (조사/체언으로 끝남) | [나쁜 예] "성공의 열쇠 — 자동화" (조사·체언 종결) | 서술어 포함 완전문으로 재작성 |
 | 3 | **"A에서 B로" 전환 공식** | "X에서 Y로" 전환 공식 도입 | [나쁜 예] "엑셀에서 노션으로, 바뀐 것" (전환 공식) | 전환 공식 대신 구체적 사례로 시작 |
 
-> 카피가 위 3종 중 하나라도 포함하면 게이트 FAIL → 카피 재작성 후 재검수. `general-ai-slop-reviewer`와 `general-humanize-korean` 둘 다 이 3종을 체크리스트에 등록했으므로 어느 쪽이든 잡아냅니다. 시각 검수(5단계) 전에 이 카피 전용 게이트를 먼저 통과해야 합니다.
+> 카피가 위 3종 중 하나라도 포함하면 게이트 FAIL → 카피 재작성 후 재검수. `ai-slop-reviewer`와 `korean-humanize` 둘 다 이 3종을 체크리스트에 등록했으므로 어느 쪽이든 잡아냅니다. 시각 검수(5단계) 전에 이 카피 전용 게이트를 먼저 통과해야 합니다.
 
 ## 사용 예시
 
@@ -295,7 +295,7 @@ Pretendard·맑은 고딕은 상용·배포 자유. 발표 PC에 폰트 미설�
 | `moai-officer:doc-xlsx` | 엑셀 데이터 시트 (차트 데이터 소스) |
 | `moai-officer:doc-pdf` | 다국어 PDF 변환 |
 | `moai-marketer:content-copywriting` | 슬라이드 카피 작성 |
-| `moai-writer:general-humanize-korean` | 한국어 카피 자연화 |
+| `moai-writer:korean-humanize` | 한국어 카피 자연화 |
 | `moai-designer:design-slop-check` | 슬라이드 카피 AI 슬롭 검수 |
 | `moai-designer:design-prompt-builder` | Claude Design에 동시 시안 요청 시 |
 | `moai-media:media-gemini-3-image-prompt` | 슬라이드 일러스트·배경 이미지 프롬프트 |

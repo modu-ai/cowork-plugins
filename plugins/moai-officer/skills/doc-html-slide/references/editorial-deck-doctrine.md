@@ -75,7 +75,7 @@ eyebrow (대문자·accent, 앞에 짧은 rule)
 
 ## 3. 의무 슬롭 체인과의 관계 (보완)
 
-doc-html-slide는 모든 카피에 **의무 슬롭 체인**(`general-ai-slop-reviewer` → `general-humanize-korean`)을 적용합니다([`SKILL.md`](../SKILL.md) §7). 그 체인은 **부정형 탐지**(나쁜 패턴 제거)에 특화되어 있고, 특히 구조적 슬롭 S1 3종을 잡습니다:
+doc-html-slide는 모든 카피에 **의무 슬롭 체인**(`ai-slop-reviewer` → `korean-humanize`)을 적용합니다([`SKILL.md`](../SKILL.md) §7). 그 체인은 **부정형 탐지**(나쁜 패턴 제거)에 특화되어 있고, 특히 구조적 슬롭 S1 3종을 잡습니다:
 
 1. **대시 대비 헤드라인** — "X — Y" 대시 분할
 2. **조사·체언 종결 조각문** — 서술어 없이 조사/체언으로 끝남

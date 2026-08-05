@@ -9,7 +9,7 @@ description: |
   - "먼슬리 뉴스레터 콘텐츠 캘린더 만들어줘"
   - "업계 트렌드 뉴스레터 구성 짜줘"
   - "구독자 늘리는 뉴스레터 기획해줘"
-  완성 후 moai-coworker:general-ai-slop-reviewer로 AI 티를 정리합니다(필수 후처리).
+  완성 후 moai-coworker:ai-slop-reviewer로 AI 티를 정리합니다(필수 후처리).
 version: "1.0.0"
 ---
 
@@ -200,8 +200,8 @@ ai-slop 검수 → humanize 체인까지 마친 완성 뉴스레터 본문은, �
 - `moai-marketer:content-blog` — SEO 블로그 포스팅 작성
 - `moai-marketer:content-copywriting` — 마케팅 카피·헤드라인 작성
 - `moai-marketer:content-card-news` — 인스타그램 카드뉴스 제작
-- `moai-coworker:general-ai-slop-reviewer` — AI 생성 텍스트 패턴 검수
-- `moai-writer:general-humanize-korean` — 한국어 AI 티 제거 (슬롭 검수 다음, 필수)
+- `moai-coworker:ai-slop-reviewer` — AI 생성 텍스트 패턴 검수
+- `moai-writer:korean-humanize` — 한국어 AI 티 제거 (슬롭 검수 다음, 필수)
 
 ## References
 

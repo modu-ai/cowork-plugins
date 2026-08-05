@@ -115,7 +115,7 @@ unoconv -f pdf output.pptx
 
 ### 8. AI 슬롭 카피 검출
 
-`moai-designer:design-slop-check` 또는 `moai-writer:general-humanize-korean` 체이닝.
+`moai-designer:design-slop-check` 또는 `moai-writer:korean-humanize` 체이닝.
 
 영문 Tier 1 슬롭 — 발견 시 수정 권장:
 - "Reimagine your X"

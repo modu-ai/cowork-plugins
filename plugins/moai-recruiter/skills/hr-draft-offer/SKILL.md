@@ -24,7 +24,7 @@ version: "1.0.0"
 
 ### 1단계: 채용 정보 수집
 
-> 입력에 지원자 개인정보(주민등록번호·계좌·연락처 등)가 포함되면 `moai-coworker:general-ai-slop-reviewer`의 `references/kr-pii-masking.md` 규칙으로 마스킹 후 처리합니다 (초안에 원본 재출력 금지).
+> 입력에 지원자 개인정보(주민등록번호·계좌·연락처 등)가 포함되면 `moai-coworker:ai-slop-reviewer`의 `references/kr-pii-masking.md` 규칙으로 마스킹 후 처리합니다 (초안에 원본 재출력 금지).
 
 - 지원자 이름, 직급/직책
 - 근무 형태: 정규직 / 계약직 / 파트타임 / 프리랜서
@@ -167,11 +167,11 @@ version: "1.0.0"
 **텍스트 후처리 체인 (오퍼 레터·근로계약서 본문 등 산문 산출물)**:
 
 ```
-hr-draft-offer → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean
+hr-draft-offer → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
 ```
 
-- `moai-coworker:general-ai-slop-reviewer` — AI 티 패턴(기계적 어투, 과장 표현) 검수·수정
-- `moai-writer:general-humanize-korean` — 자연스러운 한국어 문장으로 다듬기 (의미 100% 보존)
+- `moai-coworker:ai-slop-reviewer` — AI 티 패턴(기계적 어투, 과장 표현) 검수·수정
+- `moai-writer:korean-humanize` — 자연스러운 한국어 문장으로 다듬기 (의미 100% 보존)
 
 > 연봉 실수령액 계산 내역·4대보험 공제표 같은 **숫자 표**는 위 텍스트 체인 대상이 아닙니다. 표 산출물이 필요하면 `moai-officer:doc-xlsx`로 라우팅하세요.
 

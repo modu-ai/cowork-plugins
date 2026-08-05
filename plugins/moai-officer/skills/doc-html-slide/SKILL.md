@@ -90,7 +90,7 @@ design_system 지정 시 `systems/<name>.md` 토큰 → Tailwind Play CDN config
 16:9 슬라이드 컨테이너 + 자체 vanilla JS 덱 런타임(키보드 내비·풀스크린·`?print-pdf` 인쇄 모드·speaker notes 토글·progress bar)을 단일 `.html`로 산출. 런타임 구현: [`references/html-runtime.md`](references/html-runtime.md).
 
 ### 7. AI 슬롭 후처리 (의무)
-모든 슬라이드 카피·speaker notes 텍스트에 `general-ai-slop-reviewer` → `general-humanize-korean` 체인 적용. 본 스킬의 필수 후처리 규칙(배포 전 반드시 통과).
+모든 슬라이드 카피·speaker notes 텍스트에 `ai-slop-reviewer` → `korean-humanize` 체인 적용. 본 스킬의 필수 후처리 규칙(배포 전 반드시 통과).
 
 **슬라이드 카피 QA 체크리스트 — 구조적 슬롭 S1 패턴 3종 (헤드라인·카피 필수 탐지)**: 두 게이트가 반드시 잡아야 할 한국어 구조 패턴. 단어 사전이 아닌 문장 구조 수준에서 탐지합니다.
 
@@ -138,7 +138,7 @@ design_system 지정 시 `systems/<name>.md` 토큰 → Tailwind Play CDN config
 ## 체인 통합
 
 ```
-[원고/콘텐츠 스킬] → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean → moai-officer:doc-html-slide
+[원고/콘텐츠 스킬] → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → moai-officer:doc-html-slide
                                                                             ↓ (export_pptx: true)
                                                                 moai-officer:doc-pptx
 ```
@@ -215,7 +215,7 @@ AI 슬라이드 스킬 스타트업 사업계획서 10장 슬라이드로 만들
 - `moai-officer:doc-pptx` — 편집 가능 .pptx 생성 (체이닝)
 - `moai-media:media-higgsfield-image` — Higgsfield MCP 이미지 (기본 백엔드)
 - `moai-media:media-gpt-image-2-prompt` — 한국어 verbatim 이미지 프롬프트 빌더
-- `moai-coworker:general-ai-slop-reviewer` → `moai-writer:general-humanize-korean` — 의무 후처리 체인
+- `moai-coworker:ai-slop-reviewer` → `moai-writer:korean-humanize` — 의무 후처리 체인
 
 ## 자체 검수
 

@@ -23,7 +23,7 @@ version: "1.0.0"
 
 ### 0단계: 입력 개인정보 마스킹
 
-입력에 주민등록번호·계좌번호·연락처 등 개인정보가 포함되면 `moai-coworker:general-ai-slop-reviewer`의 `references/kr-pii-masking.md` 규칙으로 마스킹한 뒤 처리한다 (산출물 재출력 금지).
+입력에 주민등록번호·계좌번호·연락처 등 개인정보가 포함되면 `moai-coworker:ai-slop-reviewer`의 `references/kr-pii-masking.md` 규칙으로 마스킹한 뒤 처리한다 (산출물 재출력 금지).
 
 ### 1단계: 세무 유형 확인
 
@@ -176,11 +176,11 @@ version: "1.0.0"
 세무 안내문, 신고 절차 설명, 절세 가이드, 고객 회신문처럼 문장 산출물을 작성한 뒤에는 아래 체인으로 마무리한다.
 
 ```
-finance-tax-helper → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean
+finance-tax-helper → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
 ```
 
-- **moai-coworker:general-ai-slop-reviewer**: AI 티 나는 표현·과장·상투구 검수 및 수정
-- **moai-writer:general-humanize-korean**: 한국어 자연스러움 보정 (서술 산출물 한정)
+- **moai-coworker:ai-slop-reviewer**: AI 티 나는 표현·과장·상투구 검수 및 수정
+- **moai-writer:korean-humanize**: 한국어 자연스러움 보정 (서술 산출물 한정)
 
 > 원천징수 계산 내역·세율표·신고 일정 캘린더 같은 표·숫자 산출물은 체인 대상이 아니며, 엑셀화가 필요하면 `moai-officer:doc-xlsx`로 라우팅한다.
 

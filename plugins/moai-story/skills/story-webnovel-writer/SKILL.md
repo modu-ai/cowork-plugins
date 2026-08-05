@@ -100,8 +100,8 @@ version: "1.0.0"
 - `moai-writer:book-concept-planner` — 단행본 전환(단방향 인계)
 
 ### Post (검수 — 텍스트 산출물 정규 체인)
-- `moai-coworker:general-ai-slop-reviewer` — AI 슬롭 검수 (필수)
-- `moai-writer:general-humanize-korean` — AI 티 정밀 윤문 (필수)
+- `moai-coworker:ai-slop-reviewer` — AI 슬롭 검수 (필수)
+- `moai-writer:korean-humanize` — AI 티 정밀 윤문 (필수)
 
 > ⚠️ 웹소설 회차는 독자가 AI 티에 가장 민감한 장르다. 정규 체인은 **필수**.
 

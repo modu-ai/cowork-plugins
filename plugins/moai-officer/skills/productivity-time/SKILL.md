@@ -97,15 +97,15 @@ version: "1.0.0"
 
 - **moai-coworker:productivity-goal**: 목표의 주간 행동을 시간 블록에 배치
 - **moai-coworker:productivity-habit**: 블록 안에 들어가는 반복 행동을 습관화
-- **moai-coworker:general-self-care**: 과도한 업무량으로 인한 번아웃 점검·조정
+- **moai-coworker:personal-self-care**: 과도한 업무량으로 인한 번아웃 점검·조정
 - **moai-coworker:productivity-retro**: 주간 시간 사용을 가볍게 복기
 
 ### 검수 체인 (서술형 산출물)
 
 | 단계 | 스킬 | 목적 |
 |------|------|------|
-| Post-검수 | `moai-coworker:general-ai-slop-reviewer` | AI 슬롭 검수 (필수) |
-| Post-검수 | `moai-writer:general-humanize-korean` | 한국어 AI 티 제거 (슬롭 검수 다음, 필수) |
+| Post-검수 | `moai-coworker:ai-slop-reviewer` | AI 슬롭 검수 (필수) |
+| Post-검수 | `moai-writer:korean-humanize` | 한국어 AI 티 제거 (슬롭 검수 다음, 필수) |
 
 ## 이 스킬을 사용하지 말아야 할 때
 

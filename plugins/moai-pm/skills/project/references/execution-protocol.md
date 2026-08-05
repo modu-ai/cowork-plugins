@@ -65,7 +65,7 @@ project 스킬은 사용자에게 진행 중인 작업을 투명하게 보고한
 
 ### 검증 의무 (HARD)
 
-파일 산출물(HWPX/DOCX/PPTX/XLSX)은 전달 전 `quality-evaluator.md`의 Layer 1(파일 유효성) 검증을 통과해야 한다. 텍스트 산출물은 §6 AI 슬롭 후처리(`general-ai-slop-reviewer`)를 통과해야 한다.
+파일 산출물(HWPX/DOCX/PPTX/XLSX)은 전달 전 `quality-evaluator.md`의 Layer 1(파일 유효성) 검증을 통과해야 한다. 텍스트 산출물은 §6 AI 슬롭 후처리(`ai-slop-reviewer`)를 통과해야 한다.
 
 상세 검증 레이어(파일 유효성 · 마크다운 렌더링 · AI 작문 패턴 · 근거 검증)는 `quality-evaluator.md` 참조.
 

@@ -4,7 +4,7 @@ description: |
   선행 스킬 산출물(commerce-market-research·commerce-jtbd-persona·commerce-product-naming·cs-channel-message·commerce-detail-page-copy 결과)과 매장 운영 데이터를 종합해 매출 향상 통합 전략 1장 + 실행 우선순위 Top 3을 자동 생성하고, 채널 믹스·가격·프로모션 캘린더·리텐션·KPI까지 단계별(런칭/성장/안정)로 설계합니다.
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   "오늘 배운 것 종합 전략으로 정리해줘", "통합 전략 뽑아줘", "실행 우선순위 정해줘", "매출 올리는 전략 1장", "지금 당장 해야 할 것 Top3", "ROAS 개선 전략", "채널별 매출 비교 분석", "커머스 전략 짜줘", "채널 믹스 추천해줘", "가격 전략 세워줘", "프로모션 캘린더 만들어줘", "리텐션 전략 추천", "이커머스 KPI 대시보드 설계"
-  매크로 전략 모드(채널 믹스·3단계 가격·시즌 프로모션 캘린더·재구매 자동화·KPI 대시보드 references 제공) + 통합 1장 모드(선행 산출물 종합) 2계층으로 동작하며, 전략 1장 직후 moai-coworker:general-ai-slop-reviewer를 자동 체이닝합니다.
+  매크로 전략 모드(채널 믹스·3단계 가격·시즌 프로모션 캘린더·재구매 자동화·KPI 대시보드 references 제공) + 통합 1장 모드(선행 산출물 종합) 2계층으로 동작하며, 전략 1장 직후 moai-coworker:ai-slop-reviewer를 자동 체이닝합니다.
   [책임 경계] 본 스킬은 이커머스 셀러 즉시 실행 전술 + 채널 전략. 중장기 사업 전략은 moai-consultant:consult-strategy, 운영 자동화 진단은 moai-seller:commerce-automation-audit 사용.
 version: "1.0.0"
 ---
@@ -62,9 +62,9 @@ version: "1.0.0"
    선행 스킬 산출물 + 매장 운영 데이터 교차 → 우선순위 Top 3 선정
 ```
 
-### general-ai-slop-reviewer 자동 체이닝 (HARD)
+### ai-slop-reviewer 자동 체이닝 (HARD)
 
-전략 1장 생성 직후 `moai-coworker:general-ai-slop-reviewer`를 자동 체인합니다.
+전략 1장 생성 직후 `moai-coworker:ai-slop-reviewer`를 자동 체인합니다.
 
 검수 항목:
 - 전략 문서 AI 패턴 제거 ("시너지", "혁신적 접근" 등 클리셰)
@@ -79,7 +79,7 @@ version: "1.0.0"
 "/commerce-integrated-strategy — 선행 스킬 산출물 전체 첨부"
 → 오늘 매출 현황 + 채널 비교 + ROAS + 선행 산출물 종합
    실행 우선순위 Top 3: 1) 검색 키워드 조정 2) CRM 발송 3) 상품명 변경
-   → general-ai-slop-reviewer 자동 검수 후 최종 전략 1장 출력
+   → ai-slop-reviewer 자동 검수 후 최종 전략 1장 출력
 
 "/commerce-integrated-strategy Top3 지금 당장 해야 할 것만"
 → 간소화 모드: 실행 우선순위 Top 3 + 각 실행 방법 1줄씩
@@ -151,7 +151,7 @@ version: "1.0.0"
 
 ---
 
-> general-ai-slop-reviewer 검수 완료 | 변경 {N}건
+> ai-slop-reviewer 검수 완료 | 변경 {N}건
 ```
 
 ## 품질 체크리스트
@@ -159,7 +159,7 @@ version: "1.0.0"
 - **모든 선행 산출물 요약**: 시장조사·JTBD·페르소나·상세페이지 카피·상품명·채널 메시지 핵심 인사이트 각각 1줄 이상
 - **실시간 데이터 반영**: 대시보드 수치 포함 (없으면 "실시간 데이터 미반영" 명시)
 - **실행 우선순위 Top 3**: 구체 실행 내용 + 데이터 근거 + 실행 방법
-- **general-ai-slop-reviewer 검수 흔적**: 마지막 줄에 검수 완료 표기
+- **ai-slop-reviewer 검수 흔적**: 마지막 줄에 검수 완료 표기
 
 ## 관련 스킬
 
@@ -173,8 +173,8 @@ version: "1.0.0"
 - `commerce-margin-calculator` — 단일 상품 마진·가격 검증 (매크로 가격 전략 입력)
 - `commerce-marketplace-coupang/naver/d2c/curation/crowdfunding` — 채널별 운영 실행
 - `commerce-automation-audit` — 운영 자동화 진단 (풀세트)
-- `moai-coworker:general-ai-slop-reviewer` — 전략 문서 AI 검수 (자동 체인)
-- `moai-writer:general-humanize-korean` — 한국어 AI 티 제거 (슬롭 검수 다음, 필수)
+- `moai-coworker:ai-slop-reviewer` — 전략 문서 AI 검수 (자동 체인)
+- `moai-writer:korean-humanize` — 한국어 AI 티 제거 (슬롭 검수 다음, 필수)
 - `moai-consultant:consult-strategy` — 중장기 사업 전략 (페어, 상위 레벨)
 
 ## 이 스킬을 사용하지 말아야 할 때

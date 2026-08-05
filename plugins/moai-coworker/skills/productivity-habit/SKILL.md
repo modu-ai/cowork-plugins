@@ -95,14 +95,14 @@ version: "1.0.0"
 - **moai-coworker:productivity-goal**: 목표의 주간 행동을 습관으로 정착
 - **moai-officer:productivity-time**: 습관을 시간 블록에 배치해 실행 보장
 - **moai-coworker:productivity-retro**: 끊긴 습관을 가볍게 점검·재설계
-- **moai-coworker:general-self-care**: 무리한 루틴이 번아웃으로 가지 않게 점검
+- **moai-coworker:personal-self-care**: 무리한 루틴이 번아웃으로 가지 않게 점검
 
 ### 후처리 체인 (루틴 설계 설명 등 서술형 산출물)
 
 루틴 설계 설명 등 문장 산출물을 작성한 뒤에는 아래 체인으로 마무리한다.
 
-- **moai-coworker:general-ai-slop-reviewer**: AI 티 나는 표현·과장·상투구 검수·수정 (필수)
-- **moai-writer:general-humanize-korean**: 한국어 자연스러움 보정 — 슬롭 검수 다음 (필수)
+- **moai-coworker:ai-slop-reviewer**: AI 티 나는 표현·과장·상투구 검수·수정 (필수)
+- **moai-writer:korean-humanize**: 한국어 자연스러움 보정 — 슬롭 검수 다음 (필수)
 
 ## 이 스킬을 사용하지 말아야 할 때
 

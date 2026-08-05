@@ -10,7 +10,7 @@ description: |
   - "채널별 KPI 리포트 써줘"
   - "분기 마케팅 성과를 경영진 보고용으로 정리해줘"
   - "광고비 어디서 새는지 분석해줘"
-  경영진 요약과 실무용 상세 분석, 예산 재배분 권고를 함께 만들고, 서술 부분은 moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean으로 다듬습니다.
+  경영진 요약과 실무용 상세 분석, 예산 재배분 권고를 함께 만들고, 서술 부분은 moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize으로 다듬습니다.
   [책임 경계] vs moai-coworker:collab-exec-summary: 이 스킬=마케팅 풀 리포트(전체), 저 스킬=임원 1pager 요약(압축). 이 스킬 출력을 그대로 collab-exec-summary에 넘겨 1pager로 만들 수 있습니다.
 version: "1.0.0"
 ---
@@ -220,7 +220,7 @@ ROAS 단일 지표만 보지 말고 **누적 이익 = LTV × 재구매**까지 �
 
 경영진 요약·핵심 발견·인사이트·다음 액션 플랜 등 **서술형(prose) 산출물**은 발행 전 후처리 체인을 거칩니다. 채널별 성과표·ROAS/LTV·CAC·NSM 표 등 **수치·표 산출물은 대상이 아니며**, 시각화가 필요하면 `moai-officer:doc-xlsx` 또는 `moai-analyst:data-visualizer`로 라우팅합니다.
 
-**권장 체인(서술 부분)**: `marketing-performance-report(서술) → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean`
+**권장 체인(서술 부분)**: `marketing-performance-report(서술) → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
 
 ## 관련 스킬
 
@@ -229,7 +229,7 @@ ROAS 단일 지표만 보지 말고 **누적 이익 = LTV × 재구매**까지 �
 | `moai-marketer:marketing-campaign-planner` | 마케팅 캠페인 기획이나 새 캠페인 전략 수립 |
 | `moai-marketer:marketing-seo-audit` | SEO 감사나 검색 최적화 |
 | `moai-coworker:collab-exec-summary` | 풀 리포트 → 임원 1pager 요약 압축 |
-| `moai-coworker:general-ai-slop-reviewer` | 사후 체이닝(필수, 서술 부분): 리포트 내러티브의 AI 패턴 검수 |
-| `moai-writer:general-humanize-korean` | 사후 체이닝(필수, 서술 부분): general-ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |
+| `moai-coworker:ai-slop-reviewer` | 사후 체이닝(필수, 서술 부분): 리포트 내러티브의 AI 패턴 검수 |
+| `moai-writer:korean-humanize` | 사후 체이닝(필수, 서술 부분): ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |
 | `moai-officer:doc-xlsx` | 성과표·KPI 표 산출물 (수치·표 라우팅) |
 | `moai-analyst:data-visualizer` | 성과 대시보드·차트 시각화 (수치·표 라우팅) |

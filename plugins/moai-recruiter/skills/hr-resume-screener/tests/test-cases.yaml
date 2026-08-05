@@ -1,4 +1,4 @@
-# hr-resume-screener test cases — general-skill-tester 4 차원 루브릭
+# hr-resume-screener test cases — meta-skill-tester 4 차원 루브릭
 # Pass threshold: 가중 평균 ≥ 0.70, 모든 차원 ≥ 0.50
 
 skill: hr-resume-screener

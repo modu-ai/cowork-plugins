@@ -16,14 +16,14 @@ tags: [cookbook, projects, office]
 
 ## 2. 투입 직원과 스킬
 
-코워커의 `collab-productivity-report`가 핵심 엔진입니다. 일주일치 메모·완료 목록을 던지면 "한 일 / 진행 중 / 다음 주 계획 / 이슈"의 표준 주간보고 구조로 정리해줍니다. 임원 보고 급으로 격식을 갖춰야 하면 `collab-pm-report`(KPI 기반 주간 비즈니스 리뷰)로 바꿔 탈 수 있습니다. 형식 작업은 사무관 몫입니다. `doc-xlsx`가 주차별 실적 숫자를 누적 시트로 집계하고, `doc-docx`가 팀 서식에 맞는 워드 문서를 만듭니다. 문장 산출물이므로 마지막에 코워커의 `general-ai-slop-reviewer`를 한 번 태워 보고서 어투를 자연스럽게 만듭니다.
+코워커의 `collab-productivity-report`가 핵심 엔진입니다. 일주일치 메모·완료 목록을 던지면 "한 일 / 진행 중 / 다음 주 계획 / 이슈"의 표준 주간보고 구조로 정리해줍니다. 임원 보고 급으로 격식을 갖춰야 하면 `collab-pm-report`(KPI 기반 주간 비즈니스 리뷰)로 바꿔 탈 수 있습니다. 형식 작업은 사무관 몫입니다. `doc-xlsx`가 주차별 실적 숫자를 누적 시트로 집계하고, `doc-docx`가 팀 서식에 맞는 워드 문서를 만듭니다. 문장 산출물이므로 마지막에 코워커의 `ai-slop-reviewer`를 한 번 태워 보고서 어투를 자연스럽게 만듭니다.
 
 | 순서 | 직원 | 스킬 | 역할 |
 |------|------|------|------|
 | 1 | 코워커 | `collab-productivity-report` | 메모 → 주간보고 구조화 |
 | 2 | 사무관 | `doc-xlsx` | 주차별 실적 XLSX 누적 집계 |
 | 3 | 사무관 | `doc-docx` | 팀 서식 DOCX 산출 |
-| 4 | 코워커 | `general-ai-slop-reviewer` | 보고 문장 어투 다듬기 |
+| 4 | 코워커 | `ai-slop-reviewer` | 보고 문장 어투 다듬기 |
 
 ## 3. 진행 단계
 
@@ -56,7 +56,7 @@ flowchart TD
    R1 --> O1["사무관<br/>doc-xlsx"]
    O1 --> R2["누적 실적 XLSX"]
    R1 --> O2["사무관<br/>doc-docx"]
-   O2 --> W2["코워커<br/>general-ai-slop-reviewer"]
+   O2 --> W2["코워커<br/>ai-slop-reviewer"]
    W2 --> OUT["제출용 DOCX<br/>+ 누적 시트 갱신"]
 
    style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f

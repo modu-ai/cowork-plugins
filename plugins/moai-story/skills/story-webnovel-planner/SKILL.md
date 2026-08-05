@@ -124,8 +124,8 @@ version: "1.0.0"
 - `moai-lawyer` — 독점/정산 계약 심화 자문
 
 ### Post (검수 — 텍스트 산출물 정규 체인)
-- `moai-coworker:general-ai-slop-reviewer` — AI 슬롭 검수 (필수)
-- `moai-writer:general-humanize-korean` — AI 티 정밀 윤문 (필수)
+- `moai-coworker:ai-slop-reviewer` — AI 슬롭 검수 (필수)
+- `moai-writer:korean-humanize` — AI 티 정밀 윤문 (필수)
 
 ## 8. References
 

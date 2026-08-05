@@ -296,11 +296,11 @@ NRF 기초·응용연구, IITP 정보통신방송기술, KIAT 산업기술혁신
 
 ## 마지막 단계 — AI 슬롭 검수 + 한국어 다듬기
 
-사용자에게 전달되는 **사업계획서·신청서·검토 피드백 본문**은 마지막에 체인 `moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean`을 거칩니다.
-우선순위: `anthropic-skills:general-ai-slop-reviewer` > `moai-coworker:general-ai-slop-reviewer`.
+사용자에게 전달되는 **사업계획서·신청서·검토 피드백 본문**은 마지막에 체인 `moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`을 거칩니다.
+우선순위: `anthropic-skills:ai-slop-reviewer` > `moai-coworker:ai-slop-reviewer`.
 
-- `moai-coworker:general-ai-slop-reviewer`: AI 패턴 검수·수정
-- `moai-writer:general-humanize-korean`: AI 티가 남은 한국어 표현을 자연스럽게 다듬기
+- `moai-coworker:ai-slop-reviewer`: AI 패턴 검수·수정
+- `moai-writer:korean-humanize`: AI 티가 남은 한국어 표현을 자연스럽게 다듬기
 - 대상: 사업계획서 본문, 신청서 초안, 검토 피드백 내러티브
 - 제외: 공통 서류 체크리스트, 일정표, 평가 기준 표, 공고 링크 목록 (표·수치 산출물)
 - 출력: 진단 요약 → 수정 텍스트 → 주요 변경사항 3블록

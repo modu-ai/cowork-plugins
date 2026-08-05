@@ -261,8 +261,8 @@ dependency.
 
 | 단계 | 스킬 | 용도 |
 |---|---|---|
-| Post-검수 | `moai-coworker:general-ai-slop-reviewer` | AI 슬롭 검수 (필수) |
-| Post-검수 | `moai-writer:general-humanize-korean` | 한국어 AI 티 제거 (슬롭 검수 다음, 필수) |
+| Post-검수 | `moai-coworker:ai-slop-reviewer` | AI 슬롭 검수 (필수) |
+| Post-검수 | `moai-writer:korean-humanize` | 한국어 AI 티 제거 (슬롭 검수 다음, 필수) |
 
 ---
 

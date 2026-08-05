@@ -239,8 +239,8 @@ AI가 생성한 상세 페이지 카피에 포함된 판매량, 평점, 고객 �
 - `moai-marketer:marketing-landing-page` — 랜딩 페이지 (단독 전환 목적)
 - `moai-marketer:content-sns-content` — 소셜미디어 콘텐츠
 - `moai-marketer:content-copywriting` — 광고 카피
-- `moai-coworker:general-ai-slop-reviewer` — 최종 산출물 AI 슬롭 검수 (Post-검수, 필수)
-- `moai-writer:general-humanize-korean` — 한국어 AI 티 제거 (슬롭 검수 다음 필수)
+- `moai-coworker:ai-slop-reviewer` — 최종 산출물 AI 슬롭 검수 (Post-검수, 필수)
+- `moai-writer:korean-humanize` — 한국어 AI 티 제거 (슬롭 검수 다음 필수)
 
 ## 이 스킬을 사용하지 말아야 할 때
 

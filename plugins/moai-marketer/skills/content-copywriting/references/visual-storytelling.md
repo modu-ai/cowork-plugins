@@ -46,7 +46,7 @@
 
 ## 브랜드 내러티브 AI틱 가드 (L-1~L-8)
 
-스토리 텍스트 작성(작성자)·검수(검수자) 단계에서 아래 8종 AI틱을 회피·검출한다. SSOT: `moai-writer:general-humanize-korean` references/ai-tell-taxonomy.md L 카테고리.
+스토리 텍스트 작성(작성자)·검수(검수자) 단계에서 아래 8종 AI틱을 회피·검출한다. SSOT: `moai-writer:korean-humanize` references/ai-tell-taxonomy.md L 카테고리.
 
 | ID | 패턴 | 처방 방향 |
 |----|------|----------|
@@ -59,4 +59,4 @@
 | L-7 | 가짜 구체성 (검증 불가 통계·전문성 어필) | 출처·모수 있는 실측 |
 | L-8 | 광고형 고객 후기 스토리 | 구체 행동 중심 서술 |
 
-**양성 원칙 (더할 것)**: ① 고객을 주인공으로(브랜드는 가이드) ② 완벽 대신 갈등·결핍 ③ 검증 가능한 구체성 ④ TMI 나열 금지 ⑤ 기승전결 강박 버리기 ⑥ 창업자 서사→고객 중심 확장 ⑦ 실패 공유는 톤 관리와 함께 ⑧ 지킬 수 있는 약속만 ⑨ 스토리 버전 A/B 테스트. 상세 레시피: `general-humanize-korean` references/rewriting-playbook.md § L.
+**양성 원칙 (더할 것)**: ① 고객을 주인공으로(브랜드는 가이드) ② 완벽 대신 갈등·결핍 ③ 검증 가능한 구체성 ④ TMI 나열 금지 ⑤ 기승전결 강박 버리기 ⑥ 창업자 서사→고객 중심 확장 ⑦ 실패 공유는 톤 관리와 함께 ⑧ 지킬 수 있는 약속만 ⑨ 스토리 버전 A/B 테스트. 상세 레시피: `korean-humanize` references/rewriting-playbook.md § L.

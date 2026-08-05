@@ -184,7 +184,7 @@ PDF 생성 후 산출 `.pdf`를 다시 열어 **플레이스홀더 잔존·페�
 | `moai-officer:doc-html-report` | before (HTML 리포트 생성 → 이 스킬로 PDF 변환) | "리포트 만들고 PDF로도" 흐름 |
 | `moai-officer:doc-html-slide` | before (HTML 슬라이드 생성 → PDF 변환) | 슬라이드 덱을 PDF 배포본으로 |
 | `moai-officer:doc-docx` | alternative (편집 가능한 Word 산출물) | 수신자가 편집 가능 파일 필요 시 |
-| `moai-coworker:general-ai-slop-reviewer` | after (텍스트 산출물 AI 패턴 검수) | 텍스트 PDF 생성 전 원고 검수 |
+| `moai-coworker:ai-slop-reviewer` | after (텍스트 산출물 AI 패턴 검수) | 텍스트 PDF 생성 전 원고 검수 |
 
 ## 기술 참조
 

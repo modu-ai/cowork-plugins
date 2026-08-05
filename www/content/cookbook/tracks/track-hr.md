@@ -58,7 +58,7 @@ flowchart LR
 
 ### 자동 체인
 
-`hr-draft-offer` → `doc-docx` → `general-ai-slop-reviewer`
+`hr-draft-offer` → `doc-docx` → `ai-slop-reviewer`
 
 ### 산출물
 
@@ -85,7 +85,7 @@ flowchart LR
 
 ### 자동 체인
 
-`hr-resume-screener` (이력서 50개 × JD 매칭) → 등급별 분류 → `doc-docx` → `general-ai-slop-reviewer`
+`hr-resume-screener` (이력서 50개 × JD 매칭) → 등급별 분류 → `doc-docx` → `ai-slop-reviewer`
 
 ### 산출물
 
@@ -113,7 +113,7 @@ flowchart LR
 
 ### 자동 체인
 
-`career-resume` (KKK-STAR 프레임워크 + ATS 최적화) → `career-portfolio` → `general-ai-slop-reviewer` → `general-humanize-korean`
+`career-resume` (KKK-STAR 프레임워크 + ATS 최적화) → `career-portfolio` → `ai-slop-reviewer` → `korean-humanize`
 
 ### 산출물
 

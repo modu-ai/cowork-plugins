@@ -11,7 +11,7 @@ description: |
   - "브랜드 포지셔닝이랑 전략 정리해줘"
   - "브랜드 가이드라인 문서로 만들어줘"
   - "기업 브랜딩 처음부터 도와줘"
-  네이밍 후보 평가, 슬로건, 브랜드 스토리, 색상 시스템, 채널별 적용 가이드를 문서로 묶어 줍니다. 텍스트 산출물은 moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean으로 다듬습니다.
+  네이밍 후보 평가, 슬로건, 브랜드 스토리, 색상 시스템, 채널별 적용 가이드를 문서로 묶어 줍니다. 텍스트 산출물은 moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize으로 다듬습니다.
   [책임 경계] vs moai-marketer:marketing-personal-branding: 이 스킬=기업·제품 브랜드, 저 스킬=개인·전문가 브랜드.
 version: "1.0.0"
 ---
@@ -190,7 +190,7 @@ version: "1.0.0"
 
 슬로건·태그라인·브랜드 스토리·매니페스토·톤앤매너 가이드 등 **텍스트 산출물**은 발행 전 반드시 후처리 체인을 거칩니다. 색상 시스템·SMILE 평가표 등 표·수치 산출물은 대상이 아닙니다.
 
-**권장 체인**: `collab-brand-identity → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean`
+**권장 체인**: `collab-brand-identity → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
 
 ## 관련 스킬
 
@@ -199,8 +199,8 @@ version: "1.0.0"
 | `moai-marketer:marketing-personal-branding` | 개인 브랜딩, 퍼스널 브랜딩 |
 | `moai-marketer:marketing-campaign-planner` | 광고 캠페인 기획, 미디어 플래닝 |
 | `moai-marketer:content-sns-content` | SNS 콘텐츠 제작 |
-| `moai-coworker:general-ai-slop-reviewer` | 사후 체이닝(필수): 브랜드 텍스트 산출물의 AI 패턴 검수 |
-| `moai-writer:general-humanize-korean` | 사후 체이닝(필수): general-ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |
+| `moai-coworker:ai-slop-reviewer` | 사후 체이닝(필수): 브랜드 텍스트 산출물의 AI 패턴 검수 |
+| `moai-writer:korean-humanize` | 사후 체이닝(필수): ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |
 | `moai-designer:design-system-library` | 디자인 시스템/컴포넌트 구축 |
 
 ## References

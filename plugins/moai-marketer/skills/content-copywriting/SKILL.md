@@ -11,7 +11,7 @@ description: |
   - "광고 카피 써줘"
   - "브랜드 스토리 써줘", "창업 스토리 다듬어줘"
   - "발표 슬라이드 카피 만들어줘", "슬라이드 문구 다듬어줘"
-  AIDA·PAS·FAB 같은 검증된 틀로 작성하고, 공정거래법·표시광고법 금지 표현을 피합니다. 완성 후 moai-coworker:general-ai-slop-reviewer로 AI 티를 정리합니다(필수 후처리).
+  AIDA·PAS·FAB 같은 검증된 틀로 작성하고, 공정거래법·표시광고법 금지 표현을 피합니다. 완성 후 moai-coworker:ai-slop-reviewer로 AI 티를 정리합니다(필수 후처리).
   [책임 경계] vs moai-cs:cs-channel-message: 이 스킬=범용 카피(블로그·일반 광고·슬로건), 저 스킬=이커머스 운영 카피(광고·톡톡·푸시·이메일·카트 이탈) 전용.
 version: "1.0.0"
 ---
@@ -193,18 +193,18 @@ version: "1.0.0"
 | **"무엇으로 굴러가나요"** (의문사 직역) | "어떻게 작동하나요" |
 | **"당사는/저희는 + ~합니다/드립니다"** (비즈니스 공식) | "우리는" 또는 주어 생략 + 종결어미 다양화 |
 
-> **SSOT**: 패턴 상세 정의·다업종 예시(뷰티/식품/금융/SaaS/교육/이커머스/공공)·검출 임계의 단일 원천은 `moai-writer:general-humanize-korean` references/ai-tell-taxonomy.md (A-20~A-25 + L 스토리텔링 + M 슬라이드). 위 표는 생성 단계 예방용 요약이다.
+> **SSOT**: 패턴 상세 정의·다업종 예시(뷰티/식품/금융/SaaS/교육/이커머스/공공)·검출 임계의 단일 원천은 `moai-writer:korean-humanize` references/ai-tell-taxonomy.md (A-20~A-25 + L 스토리텔링 + M 슬라이드). 위 표는 생성 단계 예방용 요약이다.
 
 **한국인 정서 카피 — 생성 단계 4원칙 (직역투·비유·과장·의인화 예방):**
 
-카피를 *처음 쓸 때*부터 아래 원칙을 지키면 윤문(humanize) 단계에서 잡아낼 AI 티를 원천 차단합니다. 완성 후 `moai-writer:general-humanize-korean` 2차 윤문으로 잔여 티를 정리합니다.
+카피를 *처음 쓸 때*부터 아래 원칙을 지키면 윤문(humanize) 단계에서 잡아낼 AI 티를 원천 차단합니다. 완성 후 `moai-writer:korean-humanize` 2차 윤문으로 잔여 티를 정리합니다.
 
 1. **직역투 금지 (A-20·A-21·A-22)** — 영어 구문(run/roll·works for me·be/become+명사)을 한국어에 억지 끼우지 않는다. 기계·자동화 주어는 "굴러가다"가 아니라 "작동하다/움직이다". 문장은 명사("흐름으로")가 아니라 동사("이어집니다")로 닫는다.
 2. **직역 비유 금지 (A-23)** — "엔진/심장/날개/촉매" 같은 영어 은유를 그대로 옮기지 않는다. 한국어 관용구가 있으면 그것으로, 없으면 구체 동사로 푼다. 상징 슬로건 1회까지만 허용.
 3. **과장은 절제·곡언으로 (D-4·K-2)** — "압도적/혁신적/전례 없는" 대신 "기대를 적잖이 넘겼다/전과는 분명히 달랐다" 식의 이중부정·완서법이 한국인 정서에 무게가 실린다. 강조어는 문단당 1개 이하.
 4. **의인화는 사람·기관 주어로 (D-5)** — "기술이/시대가/가격전쟁이"를 사람처럼 서술하지 않는다. 실제 행위자(담당자·회사·팀)를 주어로, 또는 의인화 동사를 약화한다.
 
-> **핵심**: 비유·과장·의인화를 *지우기만* 하면 밋밋해진다. 반드시 **구체 사실·장면·수치로 채운다**(humanize K-1 정서 온도). 예: "압도적 효율" → "40분 걸리던 일이 12분으로". 상세 패턴 분류는 `moai-writer:general-humanize-korean` references/ai-tell-taxonomy.md A-20~A-23 · I-7 · D-4/D-5 · K-1~K-4 참조.
+> **핵심**: 비유·과장·의인화를 *지우기만* 하면 밋밋해진다. 반드시 **구체 사실·장면·수치로 채운다**(humanize K-1 정서 온도). 예: "압도적 효율" → "40분 걸리던 일이 12분으로". 상세 패턴 분류는 `moai-writer:korean-humanize` references/ai-tell-taxonomy.md A-20~A-23 · I-7 · D-4/D-5 · K-1~K-4 참조.
 
 **카피 톤 가이드 — 윤문 단계 8조 (펀치 + 정보성 보존)** — 자연화(생성 4원칙)를 넘어 카피에 펀치를 넣고 정보성을 보존하는 교정 원칙. 출처: 사용자 스펙 `references/ai-tell-ko-copy-spec.md` §2 교정 원칙 8조. **관계**: 4원칙은 카피를 처음 쓸 때의 예방 원칙, 8조는 완성 카피를 윤문할 때의 교정 원칙 — 예방(4원칙) 후 교정(8조) 순으로 적용한다.
 
@@ -217,11 +217,11 @@ version: "1.0.0"
 7. **헤드라인은 강한 끝맺음** — "네 가지" 같은 추상 명사로 끝내지 않음 ("~위임합니다", "~만듭니다")
 8. **비유 일관성** — 한 번 정한 비유("AI 직원")를 전 페이지에 일관 적용, "자동화/AI 팀/AI 직원" 혼용 금지
 
-> **HTML/웹 카피 윤문 절차 (정식화 완료)** — `references/copywriting.md` §4(작업 절차 6단계: 추출→매칭→맥락분석→개선안→일괄적용→검증) + §5(주의사항: head 메타·HTML 문법·정규식 lookahead·minmax(0,1fr))에 정식 본문화. 직역 부사 A-24·인칭 호회 A-25·before/after 뱅크는 `moai-writer:general-humanize-korean` references/rewriting-playbook.md 카피 레시피에 통합. 패턴 카탈로그 8종·교정 원칙 8조 원문은 `references/ai-tell-ko-copy-spec.md` (설계 노트 원본, 역사 기록). **윤문은 카피 모드**(변경률 가드 대신 사실 앵커 보존 — 수치·날짜·가격·고유명사·법적 표기 100%)로 수행한다. HTML 일괄 치환(텍스트 노드만 치환, head 메타·JSON-LD 포함, 잔재 검증)이 필요하면 `moai-writer:general-humanize-korean` 스킬을 호출해 위임한다 — 해당 스킬이 HTML 윤문 도구를 자체 보유하므로 플러그인 경계를 넘는 직접 경로 대신 스킬 위임으로 처리한다.
+> **HTML/웹 카피 윤문 절차 (정식화 완료)** — `references/copywriting.md` §4(작업 절차 6단계: 추출→매칭→맥락분석→개선안→일괄적용→검증) + §5(주의사항: head 메타·HTML 문법·정규식 lookahead·minmax(0,1fr))에 정식 본문화. 직역 부사 A-24·인칭 호회 A-25·before/after 뱅크는 `moai-writer:korean-humanize` references/rewriting-playbook.md 카피 레시피에 통합. 패턴 카탈로그 8종·교정 원칙 8조 원문은 `references/ai-tell-ko-copy-spec.md` (설계 노트 원본, 역사 기록). **윤문은 카피 모드**(변경률 가드 대신 사실 앵커 보존 — 수치·날짜·가격·고유명사·법적 표기 100%)로 수행한다. HTML 일괄 치환(텍스트 노드만 치환, head 메타·JSON-LD 포함, 잔재 검증)이 필요하면 `moai-writer:korean-humanize` 스킬을 호출해 위임한다 — 해당 스킬이 HTML 윤문 도구를 자체 보유하므로 플러그인 경계를 넘는 직접 경로 대신 스킬 위임으로 처리한다.
 
-**브랜드 스토리·내러티브 작성 시 (L 가드)**: 스토리 고유 AI틱 8종을 피한다 — L-1 클리셰 도입부("어느 날/그렇게 시작되었습니다") · L-2 상투적 감정 표현(직접 명명형이든 신체 은유형이든) · L-3 교훈 강박 종결 · L-4 클리셰 전환구("하지만 그때/운명처럼") · L-5 지나치게 매끄러운 결말 · L-6 창업자 신화 템플릿 · L-7 가짜 구체성(검증 불가 통계·전문성) · L-8 광고형 고객 후기. 대신 고객을 주인공으로, 결핍·해결 과정을 본체로, 검증 가능한 구체성(숫자·실제 프로세스·실제 인용)으로 채운다. 상세: `moai-writer:general-humanize-korean` references/ai-tell-taxonomy.md L 카테고리 + [`references/visual-storytelling.md`](references/visual-storytelling.md) § 브랜드 내러티브 AI틱 가드.
+**브랜드 스토리·내러티브 작성 시 (L 가드)**: 스토리 고유 AI틱 8종을 피한다 — L-1 클리셰 도입부("어느 날/그렇게 시작되었습니다") · L-2 상투적 감정 표현(직접 명명형이든 신체 은유형이든) · L-3 교훈 강박 종결 · L-4 클리셰 전환구("하지만 그때/운명처럼") · L-5 지나치게 매끄러운 결말 · L-6 창업자 신화 템플릿 · L-7 가짜 구체성(검증 불가 통계·전문성) · L-8 광고형 고객 후기. 대신 고객을 주인공으로, 결핍·해결 과정을 본체로, 검증 가능한 구체성(숫자·실제 프로세스·실제 인용)으로 채운다. 상세: `moai-writer:korean-humanize` references/ai-tell-taxonomy.md L 카테고리 + [`references/visual-storytelling.md`](references/visual-storytelling.md) § 브랜드 내러티브 AI틱 가드.
 
-**슬라이드·프레젠테이션 카피 작성 시 (M 가드)**: M-1 대시 대비 헤드라인("X — Y") · M-2 조사·체언 종결 조각문("성공의 열쇠 — 자동화") · M-3 "A에서 B로" 전환 공식 3종은 1회 등장만으로 S1(무조건 제거). 완결형 명사구 제목("2026년 Q1 사업 보고")은 허용. 장당 1메시지, 불릿 3±1개. 상세: `moai-writer:general-humanize-korean` references/ai-tell-taxonomy.md M 카테고리.
+**슬라이드·프레젠테이션 카피 작성 시 (M 가드)**: M-1 대시 대비 헤드라인("X — Y") · M-2 조사·체언 종결 조각문("성공의 열쇠 — 자동화") · M-3 "A에서 B로" 전환 공식 3종은 1회 등장만으로 S1(무조건 제거). 완결형 명사구 제목("2026년 Q1 사업 보고")은 허용. 장당 1메시지, 불릿 3±1개. 상세: `moai-writer:korean-humanize` references/ai-tell-taxonomy.md M 카테고리.
 
 **공정거래법/표시광고법 금지 표현:**
 - **허위 표시**: 실제와 다른 성능/효과 주장 (과태료 최대 5천만원)
@@ -239,4 +239,4 @@ version: "1.0.0"
 - `moai-marketer:content-blog` — SEO 블로그 포스팅 작성
 - `moai-marketer:content-card-news` — 인스타그램 카드뉴스 제작
 - `moai-marketer:content-newsletter` — 이메일 뉴스레터 기획
-- `moai-coworker:general-ai-slop-reviewer` — AI 생성 텍스트 패턴 검수
+- `moai-coworker:ai-slop-reviewer` — AI 생성 텍스트 패턴 검수

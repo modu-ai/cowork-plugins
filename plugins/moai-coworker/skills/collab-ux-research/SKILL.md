@@ -9,7 +9,7 @@ description: |
   - "NPS 결과 해석해줘"
   - "유저빌리티 테스트 시나리오 만들어줘"
   - "고객 설문 인사이트 정리해줘"
-  정성·정량 리서치 결과를 의사결정에 쓸 수 있는 인사이트로 정리하고, general-ai-slop-reviewer·general-humanize-korean으로 마무리할 수 있습니다.
+  정성·정량 리서치 결과를 의사결정에 쓸 수 있는 인사이트로 정리하고, ai-slop-reviewer·korean-humanize으로 마무리할 수 있습니다.
   [책임 경계] vs moai-coworker:collab-ux-design: collab-ux-research=정성/정량 리서치(인터뷰·페르소나·VOC), collab-ux-design=디자인 평가(휴리스틱·접근성·플로우)
 version: "1.0.0"
 ---
@@ -96,10 +96,10 @@ UX, UX 리서치, 사용자 인터뷰, 유저빌리티, 페르소나, VOC, NPS, 
 
 VOC 분석 보고서·페르소나 문서·인터뷰 가이드·NPS 개선 제안 같은 서술형 결과물을 완성한 뒤에는 다음 체인으로 마무리합니다(설문 응답 표·정량 수치는 제외, 본문 서술 부분에만 적용):
 
-`moai-coworker:collab-ux-research → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean`
+`moai-coworker:collab-ux-research → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
 
-- `moai-coworker:general-ai-slop-reviewer`: AI 특유의 상투적 표현·과장·군더더기를 점검하고 다듬습니다.
-- `moai-writer:general-humanize-korean`: 자연스러운 한국어 문장으로 최종 정제합니다.
+- `moai-coworker:ai-slop-reviewer`: AI 특유의 상투적 표현·과장·군더더기를 점검하고 다듬습니다.
+- `moai-writer:korean-humanize`: 자연스러운 한국어 문장으로 최종 정제합니다.
 
 ## References
 

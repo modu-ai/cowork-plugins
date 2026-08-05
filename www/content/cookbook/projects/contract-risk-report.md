@@ -25,7 +25,7 @@ tags: [cookbook, projects, legal]
 | 1 | 법무 | `legal-contract-review` | 조항별 검토 · 독소조항 식별 |
 | 2 | 법무 | `legal-legal-risk` | 리스크 등급 분류 (가능성 × 피해) |
 | 3 | 코워커 | `collab-exec-summary` | 1페이지 의사결정 요약 |
-| 4 | 코워커 | `general-ai-slop-reviewer` | 수정 요청 문구 어투 다듬기 |
+| 4 | 코워커 | `ai-slop-reviewer` | 수정 요청 문구 어투 다듬기 |
 
 ## 3. 진행 단계
 

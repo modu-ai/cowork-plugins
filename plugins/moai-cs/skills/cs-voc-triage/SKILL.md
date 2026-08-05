@@ -4,7 +4,7 @@ description: |
   고객의 소리(VOC) 전체를 다루는 엄브렐러 스킬 — 멀티채널 리뷰를 통합 분석하고(리뷰는 VOC의 한 원천), 폭주하는 VOC의 처리 우선순위를 3축 분류 + KTAS 응급실 5단계로 판별합니다.
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   "리뷰 모아서 분석해줘", "리뷰 분석해줘", "수백 개 리뷰 정리", "감정 분석 리뷰", "쿠팡 리뷰 키워드", "리뷰 인사이트 액션플랜", "멀티채널 리뷰 통합", "VOC 분류해줘", "VOC 처리 순서", "고객 문의 우선순위", "응급 VOC 분류", "VOC 트리아지", "KTAS 응급실 분류 VOC"
-  2개 동작 모드가 자연어로 자동 선택됩니다 — ① 리뷰 집계 모드(4채널 리뷰 → 감정·키워드·인사이트·액션플랜 4단 분석) ② VOC 분류·트리아지 모드(고객 핏·빈도·핵심 가치 3축 × KTAS 5단계 응급도 → 처리 순서 + 응답 템플릿). 텍스트 산출물(인사이트·액션플랜·응답 템플릿)은 moai-coworker:general-ai-slop-reviewer를 자동 체이닝합니다.
+  2개 동작 모드가 자연어로 자동 선택됩니다 — ① 리뷰 집계 모드(4채널 리뷰 → 감정·키워드·인사이트·액션플랜 4단 분석) ② VOC 분류·트리아지 모드(고객 핏·빈도·핵심 가치 3축 × KTAS 5단계 응급도 → 처리 순서 + 응답 템플릿). 텍스트 산출물(인사이트·액션플랜·응답 템플릿)은 moai-coworker:ai-slop-reviewer를 자동 체이닝합니다.
   [책임 경계] 응답 메시지 카피 작성은 moai-cs:cs-channel-message, 분석 결과 PPT는 moai-officer:doc-pptx로 위임.
 version: "1.0.0"
 ---
@@ -158,16 +158,16 @@ VIP 고객 + 반복 + USP 직격 = 3×3×3 = 27 (최우선)
 
 ## 후속 체인 (텍스트 산출물 검수)
 
-두 모드의 텍스트 산출물(리뷰 집계 모드의 인사이트·액션플랜·서비스 평가, VOC 분류 모드의 응답 템플릿 Level 1-5·처리 순서 안내)은 `moai-coworker:general-ai-slop-reviewer`로 자동 후처리 체이닝됩니다. VIP·응급 대응 메시지나 외부 보고서가 AI 패턴(과한 형용사·번역체)을 포함하면 신뢰도가 무너지므로 검수 필수.
+두 모드의 텍스트 산출물(리뷰 집계 모드의 인사이트·액션플랜·서비스 평가, VOC 분류 모드의 응답 템플릿 Level 1-5·처리 순서 안내)은 `moai-coworker:ai-slop-reviewer`로 자동 후처리 체이닝됩니다. VIP·응급 대응 메시지나 외부 보고서가 AI 패턴(과한 형용사·번역체)을 포함하면 신뢰도가 무너지므로 검수 필수.
 
 ```text
-리뷰 집계 모드 → moai-coworker:general-ai-slop-reviewer → (선택) moai-officer:doc-pptx
-VOC 분류·트리아지 모드 → moai-coworker:general-ai-slop-reviewer → 사용자 검토 → CS 발송
+리뷰 집계 모드 → moai-coworker:ai-slop-reviewer → (선택) moai-officer:doc-pptx
+VOC 분류·트리아지 모드 → moai-coworker:ai-slop-reviewer → 사용자 검토 → CS 발송
 ```
 
 ## 관련 스킬
 
 - `cs-channel-message` — 응답 메시지·액션플랜 기반 카피 작성
 - `moai-officer:doc-pptx` — 리뷰 분석 결과 PPT 자동화
-- `moai-coworker:general-ai-slop-reviewer` — 텍스트 산출물 AI 슬롭 검수 (자동 체인, HARD)
-- `moai-writer:general-humanize-korean` — 한국어 AI 티 제거 (슬롭 검수 다음, 필수)
+- `moai-coworker:ai-slop-reviewer` — 텍스트 산출물 AI 슬롭 검수 (자동 체인, HARD)
+- `moai-writer:korean-humanize` — 한국어 AI 티 제거 (슬롭 검수 다음, 필수)

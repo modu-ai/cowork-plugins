@@ -179,6 +179,6 @@ GitHub Issues: https://github.com/modu-ai/moai-cowork/issues/new
 ## 관련 스킬
 
 - **moai:project** — 프로젝트 문서 생성 및 카탈로그 관리
-- **moai-coworker:general-ai-slop-reviewer** — 텍스트 산출물 품질 검수
-- **moai-writer:general-humanize-korean** — 한국어 AI 티 제거 (슬롭 검수 다음, 필수)
+- **moai-coworker:ai-slop-reviewer** — 텍스트 산출물 품질 검수
+- **moai-writer:korean-humanize** — 한국어 AI 티 제거 (슬롭 검수 다음, 필수)
 - **moai-foundation-cc** — 스킬 제작 가이드라인

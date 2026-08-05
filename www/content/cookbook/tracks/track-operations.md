@@ -98,7 +98,7 @@ flowchart TD
 
 ### 자동 체인
 
-`cs-ticket-triage` (KTAS 5단계 분류) → `cs-voc-triage` (3축 점수, 이커머스인 경우) → `cs-draft-response` (응답 초안 50건) → `general-ai-slop-reviewer` → `cs-escalation` (Level 1-2 자동 알림)
+`cs-ticket-triage` (KTAS 5단계 분류) → `cs-voc-triage` (3축 점수, 이커머스인 경우) → `cs-draft-response` (응답 초안 50건) → `ai-slop-reviewer` → `cs-escalation` (Level 1-2 자동 알림)
 
 ### 산출물
 
@@ -129,7 +129,7 @@ Level 5 (비응급, <1주): 6건 — 자동 응답 + 감사 표현
 
 ### 자동 체인
 
-`collab-proposal` (12섹션 표준 목차 + Three C's: Compliant · Complete · Compelling) → `doc-docx` 또는 `doc-pptx` → `general-ai-slop-reviewer`
+`collab-proposal` (12섹션 표준 목차 + Three C's: Compliant · Complete · Compelling) → `doc-docx` 또는 `doc-pptx` → `ai-slop-reviewer`
 
 ### 산출물
 
@@ -200,7 +200,7 @@ Level 5 (비응급, <1주): 6건 — 자동 응답 + 감사 표현
 
 ### Q. CS 티켓 응답을 사용자 검토 없이 자동 발송하면 위험하지 않나요?
 
-기본값: **Level 3-5 자동 발송 / Level 1-2 사용자 검토 후 발송**. AskUserQuestion에서 조정 가능. 모든 응답은 `general-ai-slop-reviewer` 후처리.
+기본값: **Level 3-5 자동 발송 / Level 1-2 사용자 검토 후 발송**. AskUserQuestion에서 조정 가능. 모든 응답은 `ai-slop-reviewer` 후처리.
 
 ### Q. B2B 제안서 12섹션이 우리 회사에 안 맞아요.
 

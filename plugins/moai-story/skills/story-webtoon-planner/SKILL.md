@@ -133,8 +133,8 @@ version: "1.0.0"
 - `story-webtoon-episode` — 회차 플롯·컷 분할
 
 ### Post (검수 — 텍스트 산출물 정규 체인)
-- `moai-coworker:general-ai-slop-reviewer` — AI 슬롭 검수 (필수)
-- `moai-writer:general-humanize-korean` — AI 티 정밀 윤문 (필수)
+- `moai-coworker:ai-slop-reviewer` — AI 슬롭 검수 (필수)
+- `moai-writer:korean-humanize` — AI 티 정밀 윤문 (필수)
 
 > ⚠️ 기획서 산문(세계관·주제·아크 서술)은 독자가 아니라 협업자가 읽지만, 이후 회차 대사·내레이션으로 이어지므로 텍스트 정규 체인을 태운다.
 

@@ -170,7 +170,7 @@ version: "1.0.0"
 ## 체인 통합 권장
 
 ```
-[텍스트 스킬] → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean → moai-officer:doc-html-report (서식 선택)
+[텍스트 스킬] → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → moai-officer:doc-html-report (서식 선택)
 ```
 
 최소 체인 (빠른 렌더링):
@@ -180,7 +180,7 @@ version: "1.0.0"
 
 브랜드 디자인 시스템 적용 체인:
 ```
-[텍스트 스킬] → general-ai-slop-reviewer → doc-html-report (design_system: clickhouse)
+[텍스트 스킬] → ai-slop-reviewer → doc-html-report (design_system: clickhouse)
 ```
 
 > `design_system` 지정 시 `moai-officer:office-design-system-library`에서 토큰을 자동 로드합니다 — 별도 선행 스킬 호출 불필요.

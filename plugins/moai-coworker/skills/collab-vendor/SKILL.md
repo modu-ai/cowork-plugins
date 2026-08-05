@@ -98,11 +98,11 @@ version: "1.0.0"
 리스크 대응 계획, 벤더 위험 요소 설명, 계약 관리 절차 설명 등 **서술형 보고 본문**은 다음 체인으로 마무리합니다.
 
 ```
-collab-vendor → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean
+collab-vendor → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
 ```
 
-- `moai-coworker:general-ai-slop-reviewer` — 서술형 본문의 AI 티 패턴을 검수·수정합니다.
-- `moai-writer:general-humanize-korean` — 검수된 본문을 자연스러운 한국어 보고체로 다듬습니다.
+- `moai-coworker:ai-slop-reviewer` — 서술형 본문의 AI 티 패턴을 검수·수정합니다.
+- `moai-writer:korean-humanize` — 검수된 본문을 자연스러운 한국어 보고체로 다듬습니다.
 
 벤더 평가표, 리스크 평가 매트릭스 등 **점수·표 산출물**은 산문 후처리 대상이 아니며 `moai-officer:doc-xlsx` 또는 `moai-analyst:data-visualizer`로 라우팅합니다.
 

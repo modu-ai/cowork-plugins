@@ -147,11 +147,11 @@ version: "1.0.0"
 **텍스트 후처리 체인 (정책 문서·가이드라인 등 산문 산출물)**:
 
 ```
-hr-operations → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean
+hr-operations → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
 ```
 
-- `moai-coworker:general-ai-slop-reviewer` — AI 티 패턴(기계적 어투, 상투적 정책 표현) 검수·수정
-- `moai-writer:general-humanize-korean` — 자연스러운 한국어 문장으로 다듬기 (의미 100% 보존)
+- `moai-coworker:ai-slop-reviewer` — AI 티 패턴(기계적 어투, 상투적 정책 표현) 검수·수정
+- `moai-writer:korean-humanize` — 자연스러운 한국어 문장으로 다듬기 (의미 100% 보존)
 
 > 협업 도구 비교표·생산성 지표 표 같은 **표 산출물**은 위 텍스트 체인 대상이 아닙니다. 표가 필요하면 `moai-officer:doc-xlsx`로 라우팅하세요.
 

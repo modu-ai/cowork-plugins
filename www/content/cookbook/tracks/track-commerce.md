@@ -111,7 +111,7 @@ flowchart TD
 
 ### 자동 체인
 
-`commerce-season-calendar` → `commerce-promotion-planner` → `cs-channel-message` (AARRR 5단계, 카톡·SMS·앱 푸시) → `commerce-message-compliance-kr` (정통망법 게이트) → `general-ai-slop-reviewer`
+`commerce-season-calendar` → `commerce-promotion-planner` → `cs-channel-message` (AARRR 5단계, 카톡·SMS·앱 푸시) → `commerce-message-compliance-kr` (정통망법 게이트) → `ai-slop-reviewer`
 
 ### 산출물
 
@@ -172,7 +172,7 @@ flowchart TD
 
 ### 자동 체인
 
-`cs-voc-triage` (리뷰 집계 모드 — 5채널 감정·키워드·인사이트·액션플랜 4단 분석) → `doc-docx` → `general-ai-slop-reviewer`
+`cs-voc-triage` (리뷰 집계 모드 — 5채널 감정·키워드·인사이트·액션플랜 4단 분석) → `doc-docx` → `ai-slop-reviewer`
 
 ### 산출물 미리보기
 

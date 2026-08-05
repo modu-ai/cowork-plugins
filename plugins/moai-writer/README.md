@@ -43,7 +43,7 @@ claude plugin install moai-writer@moai-cowork
 
 | 스킬 | 역할 |
 |------|------|
-| `general-humanize-korean` | AI가 쓴 한국어의 "AI 티"를 제거하는 인문화 윤문 (의미·수치·인용 100% 보존, 변경률 30%/50% 가드) |
+| `korean-humanize` | AI가 쓴 한국어의 "AI 티"를 제거하는 인문화 윤문 (의미·수치·인용 100% 보존, 변경률 30%/50% 가드) |
 | `korean-spell-check` | 바른한글 기반 띄어쓰기·맞춤법·문법 최종 검수 |
 
 ## 에이전트 2종

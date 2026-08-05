@@ -5,7 +5,7 @@ description: |
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   "JTBD 분석해줘", "고객이 왜 사는지 분석", "구매 동기 9개 뽑아줘", "페르소나 만들어줘", "타겟 고객 프로필 생성", "리뷰 분석해서 페르소나", "고객 여정 분석", "구매결정요인 뽑아줘"
   JTBD 3분류(기능적/감성적/사회적) 예시 + 심리적 필요 4종 촉발 패턴(보상/불안/지루함/사회적 자극) + 타겟 온도 메타데이터(콜드/웜/핫/슈퍼, 광고 심리학).
-  general-ai-slop-reviewer 자동 체이닝 (--mode persona 텍스트 산출물).
+  ai-slop-reviewer 자동 체이닝 (--mode persona 텍스트 산출물).
 version: "1.0.0"
 ---
 
@@ -133,9 +133,9 @@ WHILE 본인 상품 리뷰 < 10건:
   → 출력 시 "(대체 데이터: {상품명} 리뷰 기반)" 명시
 ```
 
-### general-ai-slop-reviewer 자동 체이닝 (HARD)
+### ai-slop-reviewer 자동 체이닝 (HARD)
 
-mode=persona 산출물은 텍스트 페르소나 프로필이므로 `moai-coworker:general-ai-slop-reviewer`를 자동 체인합니다. 슬롭 검수 직후 `moai-writer:general-humanize-korean`으로 한국어 AI 티를 제거합니다 (슬롭 검수 다음, 필수).
+mode=persona 산출물은 텍스트 페르소나 프로필이므로 `moai-coworker:ai-slop-reviewer`를 자동 체인합니다. 슬롭 검수 직후 `moai-writer:korean-humanize`으로 한국어 AI 티를 제거합니다 (슬롭 검수 다음, 필수).
 
 검수 항목:
 - AI 특유 서술 패턴("~한 분", "~을 추구하는") 자연어화
@@ -152,7 +152,7 @@ mode=persona 산출물은 텍스트 페르소나 프로필이므로 `moai-cowork
 
 "/commerce-jtbd-persona --mode persona"
 → 메인 페르소나: 박지연(32세, 직장인, ...) + 보조 1: ... + 보조 2: ...
-→ 마지막에 general-ai-slop-reviewer 자동 검수
+→ 마지막에 ai-slop-reviewer 자동 검수
 
 "/commerce-jtbd-persona 반려견 간식 — JTBD부터 페르소나까지 한 번에"
 → JTBD 9개 → 페르소나 3명 순차 실행
@@ -219,7 +219,7 @@ mode=persona 산출물은 텍스트 페르소나 프로필이므로 `moai-cowork
   "slop_review": {
     "status": "passed",
     "changes_made": 0,
-    "notes": "general-ai-slop-reviewer 검수 결과"
+    "notes": "ai-slop-reviewer 검수 결과"
   }
 }
 ```
@@ -233,7 +233,7 @@ mode=persona 산출물은 텍스트 페르소나 프로필이므로 `moai-cowork
 **mode=persona**:
 - 페르소나 3명 (메인 1 + 보조 2)
 - 8필드 모두 채움: 이름·나이·직업·일상·니즈·불만·가치관·구매결정요인
-- general-ai-slop-reviewer 검수 흔적 (slop_review 블록)
+- ai-slop-reviewer 검수 흔적 (slop_review 블록)
 
 ## 관련 스킬
 

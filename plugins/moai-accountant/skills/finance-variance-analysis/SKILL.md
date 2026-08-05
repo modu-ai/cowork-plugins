@@ -165,11 +165,11 @@ version: "1.0.0"
 경영진 요약, 원인 분석 코멘트, 개선 권고안, 수정 전망 설명문처럼 문장 산출물을 작성한 뒤에는 아래 체인으로 마무리한다.
 
 ```
-finance-variance-analysis (보고서 서술 부분) → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean
+finance-variance-analysis (보고서 서술 부분) → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
 ```
 
-- **moai-coworker:general-ai-slop-reviewer**: AI 티 나는 표현·과장·상투구 검수 및 수정
-- **moai-writer:general-humanize-korean**: 한국어 자연스러움 보정 (서술 산출물 한정)
+- **moai-coworker:ai-slop-reviewer**: AI 티 나는 표현·과장·상투구 검수 및 수정
+- **moai-writer:korean-humanize**: 한국어 자연스러움 보정 (서술 산출물 한정)
 
 > 분산 분석 요약표·KPI 대시보드 같은 표·숫자 산출물 자체는 체인 대상이 아니며, 엑셀화가 필요하면 `moai-officer:doc-xlsx`, 시각화가 필요하면 `moai-analyst:data-visualizer`로 라우팅한다. 체인은 표를 둘러싼 해설·권고·요약 문장에만 적용한다.
 

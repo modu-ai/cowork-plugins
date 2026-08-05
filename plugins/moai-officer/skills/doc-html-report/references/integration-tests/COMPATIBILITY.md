@@ -32,7 +32,7 @@
 ### 권장 사용법
 
 ```
-moai-coworker:collab-exec-summary → moai-coworker:general-ai-slop-reviewer → moai-officer:doc-html-report mode=status
+moai-coworker:collab-exec-summary → moai-coworker:ai-slop-reviewer → moai-officer:doc-html-report mode=status
 ```
 
 재무 수치 4개를 `{{#metrics}}` 슬롯에 수동 지정하거나, `collab-exec-summary` 출력의 `## What` 섹션에서 굵은 수치를 자동 추출하도록 프롬프트 지정 권장.
@@ -111,7 +111,7 @@ moai-accountant:finance-financial-statements → moai-officer:doc-html-report mo
 ### 권장 사용법
 
 ```
-moai-consultant:consult-sbiz365 → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean → moai-officer:doc-html-report mode=plan
+moai-consultant:consult-sbiz365 → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → moai-officer:doc-html-report mode=plan
 ```
 
 sbiz365 보고서의 "Executive Summary" + "창업 타당성 평가" + "리스크" + "결론" 핵심 섹션만 추출하여 plan 모드 렌더링 권장. 5개 상세 분석 섹션은 마크다운 원본 보고서(docx)에서 참조하도록 안내.
@@ -152,7 +152,7 @@ sbiz365 보고서의 "Executive Summary" + "창업 타당성 평가" + "리스�
 moai-officer:productivity-briefing → moai-officer:doc-html-report mode=status
 ```
 
-간단 체인: general-ai-slop-reviewer 없이도 구조가 명확하여 직접 렌더링 가능. 경쟁사 동향·규제 섹션은 highlights에 1-2줄 요약 삽입. 시장 지표 4개를 메트릭 카드로 우선 배치.
+간단 체인: ai-slop-reviewer 없이도 구조가 명확하여 직접 렌더링 가능. 경쟁사 동향·규제 섹션은 highlights에 1-2줄 요약 삽입. 시장 지표 4개를 메트릭 카드로 우선 배치.
 
 ### 향후 개선 메모
 

@@ -10,7 +10,7 @@ description: |
   - "이탈 조기 신호로 헬스 스코어 만들어줘"
   - "리텐션 커브·코호트로 이탈 패턴 분석해줘"
   - "취소 플로우(cancel flow)에 세이브 오퍼 붙여줘"
-  이탈 유형 분류·조기 신호·헬스 스코어·윈백 시퀀스·라이프사이클 메시지·리텐션 지표 프레임으로 리텐션 캠페인을 설계하고, 이메일·메시지 본문은 moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean으로 다듬습니다. 광고성 재참여 메일은 한국 정보통신망법(§50) 요건을 반영합니다.
+  이탈 유형 분류·조기 신호·헬스 스코어·윈백 시퀀스·라이프사이클 메시지·리텐션 지표 프레임으로 리텐션 캠페인을 설계하고, 이메일·메시지 본문은 moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize으로 다듬습니다. 광고성 재참여 메일은 한국 정보통신망법(§50) 요건을 반영합니다.
   [책임 경계] vs moai-seller 커머스 스킬: 이 스킬=마케팅 측 라이프사이클·윈백·이탈방지 메시지와 지표. commerce-repurchase-timer=구매 주기 기반 재구매 타이밍, commerce-subscription-strategist=구독 운영·요금제 설계, commerce-ltv-cac-architect=단위경제(LTV/CAC) 모델링. 재구매 타이밍·구독 오퍼레이션·유닛이코노미 계산은 그쪽으로 넘깁니다.
 version: "1.0.0"
 ---
@@ -180,7 +180,7 @@ version: "1.0.0"
 
 재참여·윈백 이메일 본문·제목, 세이브 오퍼 카피, 라이프사이클 메시지 등 **텍스트 산출물**은 발송 전 반드시 후처리 체인을 거칩니다. 헬스 스코어 표·리텐션 커브·이탈률 KPI 등 구조·수치 산출물은 대상이 아닙니다.
 
-**권장 체인(텍스트)**: `marketing-retention(텍스트) → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean`
+**권장 체인(텍스트)**: `marketing-retention(텍스트) → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
 
 ## 관련 스킬
 
@@ -192,8 +192,8 @@ version: "1.0.0"
 | `moai-seller:commerce-repurchase-timer` | 구매 주기 기반 재구매 타이밍(커머스 구매 시점 예측) |
 | `moai-seller:commerce-subscription-strategist` | 구독 운영·요금제·플랜 설계 |
 | `moai-seller:commerce-ltv-cac-architect` | 단위경제(LTV/CAC) 모델링 |
-| `moai-coworker:general-ai-slop-reviewer` | 사후 체이닝(필수, 텍스트): 리텐션 메시지의 AI 패턴 검수 |
-| `moai-writer:general-humanize-korean` | 사후 체이닝(필수, 텍스트): general-ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |
+| `moai-coworker:ai-slop-reviewer` | 사후 체이닝(필수, 텍스트): 리텐션 메시지의 AI 패턴 검수 |
+| `moai-writer:korean-humanize` | 사후 체이닝(필수, 텍스트): ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |
 
 ## 이 스킬을 사용하지 말아야 할 때
 

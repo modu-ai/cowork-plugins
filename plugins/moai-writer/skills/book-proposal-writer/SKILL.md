@@ -468,10 +468,10 @@ version: "1.0.0"
 
 ### Post (검수 — 정규 체인)
 - `moai-writer:korean-spell-check` — 한국어 맞춤법
-- `moai-coworker:general-ai-slop-reviewer` — AI 슬롭 검수 (필수)
-- `moai-writer:general-humanize-korean` — AI 티 정밀 윤문 (필수)
+- `moai-coworker:ai-slop-reviewer` — AI 슬롭 검수 (필수)
+- `moai-writer:korean-humanize` — AI 티 정밀 윤문 (필수)
 
-> 제안서 산문(개요·시장 분석·샘플 챕터·마케팅 플랜 서술)은 정규 체인 **`book-proposal-writer → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean`**으로 마무리. 신뢰 신호 매트릭스·경쟁작 매트릭스 같은 표는 데이터 출력이므로 체인 대상이 아닙니다.
+> 제안서 산문(개요·시장 분석·샘플 챕터·마케팅 플랜 서술)은 정규 체인 **`book-proposal-writer → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`**으로 마무리. 신뢰 신호 매트릭스·경쟁작 매트릭스 같은 표는 데이터 출력이므로 체인 대상이 아닙니다.
 
 ## 10. 출처
 

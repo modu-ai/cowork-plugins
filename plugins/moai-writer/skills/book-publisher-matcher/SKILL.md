@@ -408,7 +408,7 @@ Top 5에 대해 다음 정보 정리:
 - `moai-accountant:finance-investor-relations` — 출판 펀딩 (텀블벅 등)
 
 ### 산출물 라우팅 (데이터 출력)
-- 본 스킬의 핵심 산출물은 **Top 5 출판사 점수 매트릭스**(4 차원 가중 점수 표)로, 산문이 아닌 **데이터·표 출력**입니다. 따라서 AI 슬롭 검수(`moai-coworker:general-ai-slop-reviewer`)·윤문(`moai-writer:general-humanize-korean`) 체인 대상이 아닙니다.
+- 본 스킬의 핵심 산출물은 **Top 5 출판사 점수 매트릭스**(4 차원 가중 점수 표)로, 산문이 아닌 **데이터·표 출력**입니다. 따라서 AI 슬롭 검수(`moai-coworker:ai-slop-reviewer`)·윤문(`moai-writer:korean-humanize`) 체인 대상이 아닙니다.
 - 점수표·비교표를 엑셀로 정리하려면 `moai-officer:doc-xlsx`로 라우팅하세요.
 
 ## 10. 출처

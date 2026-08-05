@@ -190,8 +190,8 @@ collab-exec-summary → doc-html-report (mode=status, 기본)
 - `moai-coworker/doc-hwp` — 한국 공공기관 .hwpx
 
 **Post-process**:
-- `moai-coworker:general-ai-slop-reviewer` — 격식체·정량 출처 검수
-- `moai-coworker/general-humanize-korean` — 한국어 자연스러움 보강
+- `moai-coworker:ai-slop-reviewer` — 격식체·정량 출처 검수
+- `moai-coworker/korean-humanize` — 한국어 자연스러움 보강
 
 **Alternative**:
 - `moai-pm/weekly-report` — 팀 단위 주간 (1pager 아닌 6섹션)
@@ -200,7 +200,7 @@ collab-exec-summary → doc-html-report (mode=status, 기본)
 ## 관련 커맨드
 
 대표 체인 (기본 = doc-html-report 단일 HTML):
-- 재무 → 경영진 카톡 공유: `finance-variance-analysis → collab-exec-summary → general-ai-slop-reviewer → doc-html-report (mode=status)`
+- 재무 → 경영진 카톡 공유: `finance-variance-analysis → collab-exec-summary → ai-slop-reviewer → doc-html-report (mode=status)`
 - 재무 → 이사회 슬라이드: `finance-variance-analysis → collab-exec-summary → doc-html-report → doc-pptx`
 - 재무 → 결재용 PDF: `finance-variance-analysis → collab-exec-summary → doc-html-report → doc-pdf`
 - 주간 → C-level HTML: `weekly-report → collab-exec-summary → doc-html-report (mode=status)`

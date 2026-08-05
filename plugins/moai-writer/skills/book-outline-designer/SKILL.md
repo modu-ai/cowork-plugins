@@ -322,10 +322,10 @@ book-concept-planner와 book-target-reader 결과 입력.
 
 ### Post (검수 — 정규 체인)
 - `moai-writer:korean-spell-check` — 한국어 맞춤법
-- `moai-coworker:general-ai-slop-reviewer` — AI 슬롭 검수 (필수)
-- `moai-writer:general-humanize-korean` — AI 티 정밀 윤문 (필수)
+- `moai-coworker:ai-slop-reviewer` — AI 슬롭 검수 (필수)
+- `moai-writer:korean-humanize` — AI 티 정밀 윤문 (필수)
 
-> 목차 트리·분량 배분은 데이터 출력이지만 **챕터 시놉시스(5요소 서술)**는 산문입니다. 시놉시스 산문은 정규 체인 **`book-outline-designer → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean`**으로 마무리합니다.
+> 목차 트리·분량 배분은 데이터 출력이지만 **챕터 시놉시스(5요소 서술)**는 산문입니다. 시놉시스 산문은 정규 체인 **`book-outline-designer → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`**으로 마무리합니다.
 
 ## 10. 출처
 

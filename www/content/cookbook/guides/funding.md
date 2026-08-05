@@ -27,7 +27,7 @@ flowchart TD
 | 사업 전략 | `moai-consultant:consult-strategy` | BMC, OKR, 5년 로드맵 |
 | 정부지원사업 | `moai-consultant:consult-gov-grant` | K-Startup, 창업도약, 기보·신보 |
 | 발표 자료화 | `moai-officer:doc-pptx` | 한국형 IR 슬라이드 디자인 |
-| AI 슬롭 검수 | `moai-coworker:general-ai-slop-reviewer` | 발송 전 자연어 톤 검수 |
+| AI 슬롭 검수 | `moai-coworker:ai-slop-reviewer` | 발송 전 자연어 톤 검수 |
 
 ## 시리즈별 핵심 메시지
 
@@ -52,7 +52,7 @@ flowchart TD
 1. `consult-market`
 2. `finance-investor-relations`
 3. `doc-pptx`
-4. `general-ai-slop-reviewer`
+4. `ai-slop-reviewer`
 
 ## 재무 모델 — 3년 P&L
 

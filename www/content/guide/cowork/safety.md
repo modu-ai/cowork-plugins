@@ -62,11 +62,11 @@ flowchart LR
 
 ## AI 티 제거 (AI Slop)
 
-AI가 작성한 초안은 종종 기계적인 톤 — 동어 반복, 과장된 수식어, 어색한 접속사 — 을 남깁니다. `moai-cowork`의 [`general-ai-slop-reviewer`](../../moai-agents/coworker/) 스킬은 이런 흔적을 탐지해 사람 톤으로 수정해 줍니다. 외부에 나가는 모든 텍스트는 이 단계를 거치는 것을 권장합니다.
+AI가 작성한 초안은 종종 기계적인 톤 — 동어 반복, 과장된 수식어, 어색한 접속사 — 을 남깁니다. `moai-cowork`의 [`ai-slop-reviewer`](../../moai-agents/coworker/) 스킬은 이런 흔적을 탐지해 사람 톤으로 수정해 줍니다. 외부에 나가는 모든 텍스트는 이 단계를 거치는 것을 권장합니다.
 
 ## 다음 단계
 
-- [플러그인 카탈로그](../../plugins/) — `moai-coworker`의 `general-ai-slop-reviewer`
+- [플러그인 카탈로그](../../plugins/) — `moai-coworker`의 `ai-slop-reviewer`
 - [쿡북 — 스킬 체인 설계](../../cookbook/skill-chaining/)
 
 ---

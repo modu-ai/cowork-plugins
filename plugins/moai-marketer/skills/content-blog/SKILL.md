@@ -9,7 +9,7 @@ description: |
   - "검색 상위 노출되는 블로그 포스팅 만들어줘"
   - "GEO 최적화해서 AI 검색에 인용되는 가이드 글 써줘"
   - "제품 리뷰 블로그 포스팅 구성 짜줘"
-  검색 상위 노출과 독자 전환을 함께 노리며, 완성 후 moai-coworker:general-ai-slop-reviewer로 AI 티를 정리합니다(필수 후처리).
+  검색 상위 노출과 독자 전환을 함께 노리며, 완성 후 moai-coworker:ai-slop-reviewer로 AI 티를 정리합니다(필수 후처리).
 version: "1.0.0"
 ---
 
@@ -194,8 +194,8 @@ ai-slop 검수 → humanize 체인까지 마친 완성 포스팅은, 이 플러�
 - `moai-marketer:content-card-news` — 비주얼 중심 카드뉴스·캐러셀 제작
 - `moai-marketer:content-newsletter` — 이메일 뉴스레터 기획·작성
 - `moai-marketer:content-copywriting` — 마케팅 카피·헤드라인·CTA 작성
-- `moai-coworker:general-ai-slop-reviewer` — AI 생성 텍스트 패턴 검수·수정
-- `moai-writer:general-humanize-korean` — 한국어 AI 티 제거 (슬롭 검수 다음, 필수)
+- `moai-coworker:ai-slop-reviewer` — AI 생성 텍스트 패턴 검수·수정
+- `moai-writer:korean-humanize` — 한국어 AI 티 제거 (슬롭 검수 다음, 필수)
 
 ## References
 

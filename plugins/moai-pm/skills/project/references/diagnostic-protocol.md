@@ -35,7 +35,7 @@ project 스킬 환경과 프로젝트 설정 상태를 진단하고 문제를 �
 │ [Phase 3] 설치 플러그인 + 스킬 체인 상태
 │ ├─ 인벤토리 스캔 결과: ✓ (marketplace.json 로스터 대조)
 │ ├─ 설계된 스킬 체인: N개
-│ └─ general-ai-slop-reviewer 체인 말미 포함율: 100%
+│ └─ ai-slop-reviewer 체인 말미 포함율: 100%
 │
 │ [Phase 4] API 키 / 커넥터 상태
 │ ├─ .moai/credentials.env 로드: ✓
@@ -61,7 +61,7 @@ project 스킬 환경과 프로젝트 설정 상태를 진단하고 문제를 �
 
 **플러그인 인벤토리 검사**: 설치된 `moai-*` 플러그인을 `.claude-plugin/marketplace.json` 로스터와 대조한다(하드코딩 화이트리스트 아님 — 동적 도출). 로스터에 없는 `moai-*` 접두 디렉터리는 경고한다.
 
-**스킬 체인 정의 유효성**: `CLAUDE.md` "프로젝트 워크플로우"의 각 체인이 설치된 플러그인에 실재하는지 검증하고, 텍스트 산출물 체인 말미에 `general-ai-slop-reviewer` 포함 여부를 확인한다.
+**스킬 체인 정의 유효성**: `CLAUDE.md` "프로젝트 워크플로우"의 각 체인이 설치된 플러그인에 실재하는지 검증하고, 텍스트 산출물 체인 말미에 `ai-slop-reviewer` 포함 여부를 확인한다.
 
 ---
 

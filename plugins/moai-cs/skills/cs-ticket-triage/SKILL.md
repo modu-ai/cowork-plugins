@@ -87,7 +87,7 @@ Zendesk 2026 CX 트렌드 보고서 기반:
 | 분류 기준 내부 규정과 충돌 | 내부 분류 체계를 공유해 주시면 그에 맞춰 조정합니다 |
 | 멀티채널 통합 필요 | 채널별 우선순위 매핑표를 함께 설계해 드립니다 |
 
-> 티켓 분류는 분류·우선순위 판정 작업으로, 별도 서술형 산출물을 생성하지 않습니다. 분류 결과를 바탕으로 **고객 응답 초안**을 작성할 때는 `moai-cs:cs-draft-response`를 호출하며, 해당 스킬이 `moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean` 후처리 체인을 담당합니다.
+> 티켓 분류는 분류·우선순위 판정 작업으로, 별도 서술형 산출물을 생성하지 않습니다. 분류 결과를 바탕으로 **고객 응답 초안**을 작성할 때는 `moai-cs:cs-draft-response`를 호출하며, 해당 스킬이 `moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize` 후처리 체인을 담당합니다.
 
 ## 이 스킬을 사용하지 말아야 할 때
 

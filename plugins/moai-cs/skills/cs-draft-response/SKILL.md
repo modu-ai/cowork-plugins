@@ -82,15 +82,15 @@ version: "1.0.0"
 응답 초안을 작성한 뒤에는 다음 체인으로 마무리합니다:
 
 ```
-cs-draft-response → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean
+cs-draft-response → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
 ```
 
-- `moai-coworker:general-ai-slop-reviewer` — AI 티 나는 표현·과잉 수식·기계적 문장 패턴을 검수·수정
-- `moai-writer:general-humanize-korean` — 한국어 경어 자연스러움과 사람이 쓴 듯한 어조로 다듬기
+- `moai-coworker:ai-slop-reviewer` — AI 티 나는 표현·과잉 수식·기계적 문장 패턴을 검수·수정
+- `moai-writer:korean-humanize` — 한국어 경어 자연스러움과 사람이 쓴 듯한 어조로 다듬기
 
 채널별 어조 기준 및 금지 표현 목록: `references/tone-guide.md`
 
-- 고객 문의 원문에 개인정보(주민등록번호·계좌·카드번호·연락처 등)가 포함되면 `moai-coworker:general-ai-slop-reviewer`의 `references/kr-pii-masking.md` 규칙으로 마스킹 후 처리합니다 (답변 초안에 원본 재출력 금지).
+- 고객 문의 원문에 개인정보(주민등록번호·계좌·카드번호·연락처 등)가 포함되면 `moai-coworker:ai-slop-reviewer`의 `references/kr-pii-masking.md` 규칙으로 마스킹 후 처리합니다 (답변 초안에 원본 재출력 금지).
 - 수신자 위계별 종결어미·서명·사과/거절 화법의 공유 규격은 `moai-coworker:collab-report-speak`의 `references/kr-honorific-tone.md`를 따릅니다.
 
 ## 이 스킬을 사용하지 말아야 할 때

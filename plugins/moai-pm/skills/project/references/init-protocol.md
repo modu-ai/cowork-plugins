@@ -120,7 +120,7 @@ done
   "plugins_installed": ["moai-pm", "moai-coworker", "..."],
   "skills_available": {
     "content-blog": "moai-coworker",
-    "general-ai-slop-reviewer": "moai-coworker",
+    "ai-slop-reviewer": "moai-coworker",
     "design-brief": "moai-designer"
   },
   "confidence": { "moai-pm": "HIGH" }
@@ -139,7 +139,7 @@ done
 | 출판·원고·웹툰·IP | 작가(book-*), 스토리(story-*) |
 | 디자인 핸드오프·브랜드 | 디자이너(cd-*, moai-domain-design 스킬군) |
 
-라우터 허브는 project 스킬(`/project` 진입). 실무/콘텐츠/사무 도메인은 코워커로 수렴하며, 스토리는 `moai-story`, 출판은 `moai-writer`, 디자인은 `moai-designer`로 분기된다. `general-ai-slop-reviewer`·`general-humanize-korean`은 `moai-coworker` 소속으로 텍스트 후처리 체인에 항상 활용 가능하다.
+라우터 허브는 project 스킬(`/project` 진입). 실무/콘텐츠/사무 도메인은 코워커로 수렴하며, 스토리는 `moai-story`, 출판은 `moai-writer`, 디자인은 `moai-designer`로 분기된다. `ai-slop-reviewer`·`korean-humanize`은 `moai-coworker` 소속으로 텍스트 후처리 체인에 항상 활용 가능하다.
 
 ---
 
@@ -148,10 +148,10 @@ done
 ### 3-1. 체인 구성 규칙
 
 ```
-[기획/분석 스킬] → [생성 스킬] → [포맷 변환/미디어 스킬] → general-ai-slop-reviewer
+[기획/분석 스킬] → [생성 스킬] → [포맷 변환/미디어 스킬] → ai-slop-reviewer
 ```
 
-텍스트 산출물 체인은 **반드시 `general-ai-slop-reviewer`로 종료**. 한국어 최종본은 직후 `general-humanize-korean` 2차 패스를 추가. 비텍스트는 ai-slop 단계 생략. Inventory에 없는 스킬은 체인에서 제외하거나 Gap Detection으로 넘긴다.
+텍스트 산출물 체인은 **반드시 `ai-slop-reviewer`로 종료**. 한국어 최종본은 직후 `korean-humanize` 2차 패스를 추가. 비텍스트는 ai-slop 단계 생략. Inventory에 없는 스킬은 체인에서 제외하거나 Gap Detection으로 넘긴다.
 
 ### 3-2. 체인 프리셋 테이블
 
@@ -165,7 +165,7 @@ Phase 5(확인 단계)에서 사용자에게 보여줄 요약:
 이 프로젝트의 실행 체인 설계
 
 [주 산출물 1] 사업계획서(PPT)
-  체인: consult-strategy → doc-pptx → general-ai-slop-reviewer
+  체인: consult-strategy → doc-pptx → ai-slop-reviewer
   트리거 예시: "사업계획서 만들어줘"
 ```
 
@@ -225,7 +225,7 @@ for each skill in chain_skills:
   "phase_completed": 3,
   "interview_answers": { "work_type": ["사업 기획·전략"] },
   "chain_design": [
-    { "deliverable": "사업계획서(PPT)", "chain": ["consult-strategy", "doc-pptx", "general-ai-slop-reviewer"] }
+    { "deliverable": "사업계획서(PPT)", "chain": ["consult-strategy", "doc-pptx", "ai-slop-reviewer"] }
   ],
   "missing_skills": [],
   "missing_plugins": []

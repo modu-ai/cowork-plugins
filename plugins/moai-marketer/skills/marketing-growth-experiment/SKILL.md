@@ -9,7 +9,7 @@ description: |
   - "무료 도구(free tool)로 리드 모으는 성장 전략 짜줘"
   - "공동 마케팅(co-marketing) 파트너십 기획해줘"
   - "그로스 실험 로드맵 만들어줘 (월 4-8개 실험 사이클)"
-  가설-설계-측정 실험 프레임과 성장 루프(추천/바이럴/무료도구/공동마케팅) 전술로 실험 설계서를 만들고, 서술형 부분은 moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean으로 다듬습니다.
+  가설-설계-측정 실험 프레임과 성장 루프(추천/바이럴/무료도구/공동마케팅) 전술로 실험 설계서를 만들고, 서술형 부분은 moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize으로 다듬습니다.
   [책임 경계] vs moai-marketer:marketing-campaign-planner: 이 스킬=개별 실험 설계와 성장 루프 전술(가설·A/B·ICE·바이럴 계수), 저 스킬=목표·채널·예산·KPI를 묶은 전체 캠페인 기획. 실험은 캠페인의 하위 단위입니다.
 version: "1.0.0"
 ---
@@ -176,7 +176,7 @@ version: "1.0.0"
 
 가설 설명·성장 루프 설계 서술·파트너십 제안 등 **서술형(prose) 산출물**은 발행 전 후처리 체인을 거칩니다. 샘플 크기 계산·ICE 점수표·지표 위계 표 등 **수치·표 산출물은 대상이 아닙니다**.
 
-**권장 체인(서술형 부분)**: `marketing-growth-experiment(서술형) → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean`
+**권장 체인(서술형 부분)**: `marketing-growth-experiment(서술형) → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
 
 ## 관련 스킬
 
@@ -186,8 +186,8 @@ version: "1.0.0"
 | `moai-marketer:marketing-landing-page-conversion-audit` | A/B 대상 랜딩 페이지의 전환 저해 요소 진단 |
 | `moai-marketer:marketing-performance-report` | 실험 결과·성과 분석 보고서 |
 | `moai-marketer:content-email-sequence` | 무료 도구·추천 이후 너처링·초대 이메일 시퀀스 |
-| `moai-coworker:general-ai-slop-reviewer` | 사후 체이닝(필수, 서술형 부분): 실험 설계 서술의 AI 패턴 검수 |
-| `moai-writer:general-humanize-korean` | 사후 체이닝(필수, 서술형 부분): general-ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |
+| `moai-coworker:ai-slop-reviewer` | 사후 체이닝(필수, 서술형 부분): 실험 설계 서술의 AI 패턴 검수 |
+| `moai-writer:korean-humanize` | 사후 체이닝(필수, 서술형 부분): ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |
 
 ## 이 스킬을 사용하지 말아야 할 때
 

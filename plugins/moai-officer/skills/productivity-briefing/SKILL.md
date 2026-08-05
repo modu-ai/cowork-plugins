@@ -368,4 +368,4 @@ version: "1.0.0"
 - **moai-consultant:consult-market**: 심층 시장 분석이나 TAM/SAM/SOM 산출
 - **moai-accountant:finance-investor-relations**: 투자자 보고서나 IR 덱 작성
 - **moai-consultant:consult-brief**: 경쟁사 분석 포함 컨설팅 제안서
-- **moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean**: 생성된 브리핑 AI 패턴 검수 후 한국어 표현을 자연스럽게 다듬습니다 (필수)
+- **moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize**: 생성된 브리핑 AI 패턴 검수 후 한국어 표현을 자연스럽게 다듬습니다 (필수)
