@@ -13,10 +13,10 @@ aliases: ["/agent-teams/designer/"]
 
 ```mermaid
 flowchart LR
-   A["요청<br/>(/design 브리프)"] --> B["cd-brief<br/>브리프 정리"]
+   A["요청<br/>(/design 브리프)"] --> B["design-brief<br/>브리프 정리"]
    B --> C["시스템·토큰 생성"]
    C --> D["GAN 루프<br/>생성↔비평 반복"]
-   D --> E["cd-slop-check<br/>품질 점검"]
+   D --> E["design-slop-check<br/>품질 점검"]
    E --> F["산출물<br/>(DESIGN.md·토큰·업로드)"]
 ```
 
@@ -34,11 +34,11 @@ cd-\*(Claude Design 연동)와 design-\*/moai-\*(시스템·토큰·워크플로
 
 ## 대표 시나리오 5선
 
-**1. 브랜드 디자인 시스템 만들기.** "우리 브랜드 컬러랑 폰트 기준 잡아줘"라고 하면 `moai-domain-brand-design`과 `cd-system-prep`이 브랜드 시스템 문서(DESIGN.md)를 만들어, 이후 어떤 산출물이든 같은 톤을 유지하게 합니다.
+**1. 브랜드 디자인 시스템 만들기.** "우리 브랜드 컬러랑 폰트 기준 잡아줘"라고 하면 `moai-domain-brand-design`과 `design-system-prep`이 브랜드 시스템 문서(DESIGN.md)를 만들어, 이후 어떤 산출물이든 같은 톤을 유지하게 합니다.
 
 **2. 디자인 토큰을 코드로.** "이 디자인 토큰을 우리 웹사이트 CSS로 변환해줘"라고 요청하면 `design-tokens-transformer`가 DTCG 표준 토큰을 CSS 변수와 shadcn 테마로 변환합니다. 디자이너와 개발자 사이의 수작업 전달이 사라집니다.
 
-**3. Claude Design 왕복 작업.** `/design`으로 브리프를 정리해 Claude Design에서 시안을 만들고, 결과를 `cd-handoff-reader`로 읽어 와 `cd-slop-check`로 어색한 부분을 점검한 뒤 `/upload`로 다시 올리는 왕복 루프를 돕습니다.
+**3. Claude Design 왕복 작업.** `/design`으로 브리프를 정리해 Claude Design에서 시안을 만들고, 결과를 `design-handoff-reader`로 읽어 와 `design-slop-check`로 어색한 부분을 점검한 뒤 `/upload`로 다시 올리는 왕복 루프를 돕습니다.
 
 **4. 브랜드에 맞는 이미지 뽑기.** "랜딩 히어로 이미지 만들어줘"라고 하면 `design-brand-visual`이 먼저 프로젝트의 디자인 토큰과 브랜드 규칙을 읽습니다. 그 값을 프롬프트 제약으로 바꾼 뒤 생성을 미디어 크리에이터에게 넘기고, 돌아온 이미지가 팔레트와 형태 언어를 벗어나지 않았는지 다시 확인합니다. 근거가 될 토큰이 없으면 색을 지어내지 않고 "근거 없음"이라고 적습니다.
 
@@ -48,7 +48,7 @@ cd-\*(Claude Design 연동)와 design-\*/moai-\*(시스템·토큰·워크플로
 
 {{< screenshot-request "Claude Code에서 /design 명령 실행 후 브리프 질문이 시작된 대화 화면" >}}
 
-**잘 안 될 때** — 시안 톤이 계속 흔들리면 브리프를 건너뛰고 바로 생성부터 시작했을 가능성이 큽니다. `cd-brief`로 타깃·톤·금지 요소를 먼저 못 박은 뒤 생성 단계로 넘어가세요.
+**잘 안 될 때** — 시안 톤이 계속 흔들리면 브리프를 건너뛰고 바로 생성부터 시작했을 가능성이 큽니다. `design-brief`로 타깃·톤·금지 요소를 먼저 못 박은 뒤 생성 단계로 넘어가세요.
 
 ## MCP 연동
 

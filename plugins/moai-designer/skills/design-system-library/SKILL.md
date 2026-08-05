@@ -23,7 +23,7 @@ version: "1.0.0"
 
 **두 가지 소비 경로**:
 1. **office-html-report / HTML 문서 렌더** — `design_system` 파라미터로 시스템 선택 → Tailwind Play CDN config + shadcn vanilla 컴포넌트로 단일 파일 HTML 렌더
-2. **Claude Design 핸드오프** — `cd-system-prep`가 본 라이브러리 시스템을 DESIGN.md 합성 소스로 사용 → `design-handoff`의 references/context에 지침 포함
+2. **Claude Design 핸드오프** — `design-system-prep`가 본 라이브러리 시스템을 DESIGN.md 합성 소스로 사용 → `design-handoff`의 references/context에 지침 포함
 
 **핵심 원칙**:
 - 라이브러리는 데이터(token + 분석) SSOT — 렌더 로직은 소비자(office-html-report)가 소유
@@ -126,7 +126,7 @@ version: "1.0.0"
 
 ### Claude Design 핸드오프 (moai-designer)
 
-`cd-system-prep`가 사용자가 지정한 시스템(또는 브랜드 무드 매칭)을 본 라이브러리에서 로드 → DESIGN.md 합성. `design-handoff`의 references.md / context.md에 design-system 지침으로 포함되어 claude.com Design 세션에 paste.
+`design-system-prep`가 사용자가 지정한 시스템(또는 브랜드 무드 매칭)을 본 라이브러리에서 로드 → DESIGN.md 합성. `design-handoff`의 references.md / context.md에 design-system 지침으로 포함되어 claude.com Design 세션에 paste.
 
 ---
 

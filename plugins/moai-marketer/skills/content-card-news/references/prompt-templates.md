@@ -336,4 +336,4 @@ moai-coworker 이미지 프롬프트 빌더로 위임
 | `moai-coworker:general-ai-slop-reviewer` | 전반 AI 슬롭 표현 검수 |
 | `moai-marketer:content-sns-content` | 채널 단위 운영 전략 |
 | `moai-marketer:marketing-campaign-planner` | 캠페인 시리즈 카드뉴스 |
-| `moai-designer:cd-slop-check` | 디자인 카피 슬롭 검수 |
+| `moai-designer:design-slop-check` | 디자인 카피 슬롭 검수 |

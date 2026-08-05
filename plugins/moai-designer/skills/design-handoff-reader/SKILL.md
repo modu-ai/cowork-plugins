@@ -1,5 +1,5 @@
 ---
-name: cd-handoff-reader
+name: design-handoff-reader
 description: |
   Claude Design → Claude Code 핸드오프 번들(공식 구성: README + 디자인 파일 + chat)을 방어적으로 분석해 요약 보고서와 Claude Code에 넘길 짧은 지시 1줄을 자동 생성합니다.
   README를 source of truth로 먼저 파싱하고, 토큰/컴포넌트 JSON은 있으면 사용·없으면 코드(HTML/CSS)에서 유도하는 best-effort 방식입니다(하드 5-파일 요구 없음).
@@ -14,7 +14,7 @@ user-invocable: true
 version: "1.0.0"
 ---
 
-# cd-handoff-reader — 핸드오프 번들 분석
+# design-handoff-reader — 핸드오프 번들 분석
 
 ## 개요
 
@@ -55,7 +55,7 @@ Claude Design 핸드오프, handoff 번들, design-tokens 분석, components.jso
 | chat 맥락 | `chat-history.md` (또는 README 내 chat 요약) | 코드 주석·README에서 결정 맥락 유도 |
 | 자산 | `assets/` | 없으면 생략 |
 
-3. **파일명 분열 정규화**: 토큰 파일이 `design-tokens.json`이든 `tokens.json`이든 수용하고, `.moai/design/` 출력 시 한 이름(`tokens.json`)으로 정규화합니다(`moai-workflow-design`과 정합).
+3. **파일명 분열 정규화**: 토큰 파일이 `design-tokens.json`이든 `tokens.json`이든 수용하고, `.moai/design/` 출력 시 한 이름(`tokens.json`)으로 정규화합니다(`design-workflow`과 정합).
 4. **version gating 완화**: 알 수 없거나 없는 bundle version은 **hard-reject하지 않고** best-effort 파싱 + 경고로 처리합니다(공식 version-stamp 증거 없음 — `supported_bundle_versions`는 MoAI 내부 placeholder).
 5. **2개 진입 모드**: **.zip 다운로드**(unzip 후 위 절차) + **붙여넣기 프롬프트 + 번들 URL**(Claude Code가 URL fetch 후 컨텍스트에 로드된 것을 분석).
 
@@ -295,7 +295,7 @@ Page
 
 | 스킬 | 사용 시점 |
 |---|---|
-| `moai-designer:cd-brief` | 선행: 핸드오프할 시안 자체를 만들 때 |
-| `moai-designer:cd-system-prep` | 선행: 디자인 시스템 셋업 |
+| `moai-designer:design-brief` | 선행: 핸드오프할 시안 자체를 만들 때 |
+| `moai-designer:design-system-prep` | 선행: 디자인 시스템 셋업 |
 | `moai-pm:project` | 후속: Claude Code 작업 폴더 초기화 |
 | `moai-coworker:business-spec-writer` | 보조: 핸드오프 후 코드 SPEC 작성 |

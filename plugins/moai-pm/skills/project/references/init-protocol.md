@@ -121,7 +121,7 @@ done
   "skills_available": {
     "content-blog": "moai-coworker",
     "general-ai-slop-reviewer": "moai-coworker",
-    "cd-brief": "moai-designer"
+    "design-brief": "moai-designer"
   },
   "confidence": { "moai-pm": "HIGH" }
 }

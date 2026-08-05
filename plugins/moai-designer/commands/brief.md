@@ -5,4 +5,4 @@ allowed-tools: Skill
 ---
 <!-- source-spec: docs/plugin-family-design/03-moai-design-processing.md §5.1 -->
 
-Use Skill("cd-brief") with arguments: $ARGUMENTS
+Use Skill("design-brief") with arguments: $ARGUMENTS

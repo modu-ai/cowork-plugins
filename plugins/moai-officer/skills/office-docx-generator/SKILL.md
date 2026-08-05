@@ -151,7 +151,7 @@ for run in title.runs:
 7. 이미지 캡션 일관 (위치·형식)
 8. 단락 간 여백 일관 (수동 빈 줄 사용 금지)
 9. 표 셀 텍스트 줄바꿈 정상 (overflow 없음)
-10. AI 슬롭 표현 없음 (혁신적인·차세대·재정의하는 등 — `moai-designer:cd-slop-check` 체이닝 권장)
+10. AI 슬롭 표현 없음 (혁신적인·차세대·재정의하는 등 — `moai-designer:design-slop-check` 체이닝 권장)
 
 ## 모던 디자인 패턴 6종
 
@@ -286,7 +286,7 @@ Orange 작은 도형 + Mid Gray 가로선 + 섹션 번호.
 | `moai-officer:office-pdf-writer` | PDF 변환·다국어 PDF |
 | `moai-writer:general-humanize-korean` | 카피 AI 슬롭 자연화 |
 | `moai-coworker:general-ai-slop-reviewer` | 텍스트 산출물 슬롭 검수 |
-| `moai-designer:cd-slop-check` | Claude Design 톤과 일관성 검수 |
+| `moai-designer:design-slop-check` | Claude Design 톤과 일관성 검수 |
 
 ## 기술 참조
 

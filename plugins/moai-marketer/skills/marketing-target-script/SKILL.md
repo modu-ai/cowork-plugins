@@ -225,4 +225,4 @@ Markdown 형식의 구조화된 문서로 출력됩니다:
 | `moai-marketer:content-sns-content` | 사후 체이닝: 생성된 SNS 스크립트를 바탕으로 실제 SNS 포스트를 생성 |
 | `moai-coworker:general-ai-slop-reviewer` | 사후 체이닝(필수): 생성된 타겟 스크립트의 AI 패턴을 검수하고 수정 |
 | `moai-writer:general-humanize-korean` | 사후 체이닝(필수): general-ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |
-| `moai-domain-copywriting` | 대안: 브랜드 중심의 카피라이팅이 필요한 경우 |
+| `design-copywriting` | 대안: 브랜드 중심의 카피라이팅이 필요한 경우 |

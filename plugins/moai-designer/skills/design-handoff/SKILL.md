@@ -1,5 +1,5 @@
 ---
-name: moai-domain-design-handoff
+name: design-handoff
 description: |
   Claude Design handoff package specialist for the /design Path A workflow. Assembles 5-file
   handoff bundle (prompt/context/references/acceptance/checklist) for paste-ready
@@ -12,7 +12,7 @@ user-invocable: false
 version: "1.0.0"
 ---
 
-> ⚠️ **개발 런타임 전용** — 이 스킬은 MoAI-ADK(Claude Code) 환경을 전제한다. Claude Cowork(Desktop)에서는 `.moai/config` 의존으로 동작하지 않을 수 있다. Desktop 사용자는 `moai-designer:cd-handoff-reader`를 사용한다.
+> ⚠️ **개발 런타임 전용** — 이 스킬은 MoAI-ADK(Claude Code) 환경을 전제한다. Claude Cowork(Desktop)에서는 `.moai/config` 의존으로 동작하지 않을 수 있다. Desktop 사용자는 `moai-designer:design-handoff-reader`를 사용한다.
 
 <!-- Verifies: prompt.md is paste-ready (no MoAI tokens) -->
 <!-- Verifies: Brand voice integrated when present; graceful default when absent -->
@@ -51,8 +51,8 @@ Key guarantees:
 
 ### Input
 
-- Bundle summary from `cd-handoff-reader` (the preceding Path A step) — what the user wants designed, target users, value propositions
-- Brief from `cd-brief` when the request originates from a design brief (Lean Canvas / evaluation context)
+- Bundle summary from `design-handoff-reader` (the preceding Path A step) — what the user wants designed, target users, value propositions
+- Brief from `design-brief` when the request originates from a design brief (Lean Canvas / evaluation context)
 - Optional: `.moai/project/brand/brand-voice.md` (brand context)
 - Optional: `.moai/project/brand/visual-identity.md` (design tokens, colors)
 
@@ -96,7 +96,7 @@ See [5-section prompt template + brand branches detail](references/prompt-templa
 
 - References to `SPEC-` identifiers (e.g., `SPEC-AUTH-001`)
 - References to `.moai/` paths (e.g., `.moai/design/`, `.moai/project/`)
-- References to internal skill / agent names (e.g., `manager-spec`, `cd-brief`, `cd-handoff-reader`)
+- References to internal skill / agent names (e.g., `manager-spec`, `design-brief`, `design-handoff-reader`)
 - References to internal workflow step identifiers
 - References to MoAI-specific commands (e.g., `/design`, `/moai plan`)
 - Internal implementation details (file structures, Go code, database schemas)
@@ -150,10 +150,10 @@ For non-Korean conversation_language, translate option labels and descriptions a
 
 ## Works Well With
 
-- `cd-brief`: Produces the design brief (Lean Canvas + value propositions) consumed as primary input when the request originates from a brief
-- `cd-system-prep` / `design-system-library`: Provides reference URLs and visual inspiration for the references.md Sources
-- `cd-handoff-reader`: Preceding Path A step — summarizes the imported bundle into the inputs this skill consumes
-- `moai-workflow-design`: Downstream consumer of the `.moai/design/handoff/` directory after the user completes the external Claude Design session (Path A handler)
+- `design-brief`: Produces the design brief (Lean Canvas + value propositions) consumed as primary input when the request originates from a brief
+- `design-system-prep` / `design-system-library`: Provides reference URLs and visual inspiration for the references.md Sources
+- `design-handoff-reader`: Preceding Path A step — summarizes the imported bundle into the inputs this skill consumes
+- `design-workflow`: Downstream consumer of the `.moai/design/handoff/` directory after the user completes the external Claude Design session (Path A handler)
 
 ---
 

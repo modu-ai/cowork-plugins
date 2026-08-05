@@ -7,6 +7,6 @@ allowed-tools: Skill
 
 Synthesize brand assets into DESIGN.md, then derive the DTCG design token set.
 
-Use Skill("cd-system-prep") with arguments: $ARGUMENTS
+Use Skill("design-system-prep") with arguments: $ARGUMENTS
 
 Then Skill("moai-domain-brand-design") to produce the WCAG 2.1 AA-compliant tokens.

@@ -1,5 +1,5 @@
 ---
-name: cd-brief
+name: design-brief
 description: |
   Claude Design용 6요소 브리프(Project·Audience·Pages·Tone·Reference·Constraints)를 자동으로 작성해 주는 스킬.
   자연어 한 줄 요청에서 시작해 누락된 요소를 차례로 채우고, AI 슬롭 회피 블록을 포함한 복붙용 프롬프트를 출력합니다.
@@ -15,7 +15,7 @@ user-invocable: true
 version: "1.0.0"
 ---
 
-# cd-brief — Claude Design 6요소 브리프 빌더
+# design-brief — Claude Design 6요소 브리프 빌더
 
 ## 개요
 
@@ -151,10 +151,10 @@ Claude Design 브리프, 클로드 디자인 프롬프트, 디자인 브리프 6
 
 ```
 다음 단계 추천:
-- 디자인 시스템 셋업이 안 됐다면 → moai-designer:cd-system-prep
-- 특정 영역(IA·접근성·온보딩)에 집중 → moai-designer:cd-prompt-builder
-- 결과 카피 검수 → moai-designer:cd-slop-check
-- 핸드오프 번들 분석 → moai-designer:cd-handoff-reader
+- 디자인 시스템 셋업이 안 됐다면 → moai-designer:design-system-prep
+- 특정 영역(IA·접근성·온보딩)에 집중 → moai-designer:design-prompt-builder
+- 결과 카피 검수 → moai-designer:design-slop-check
+- 핸드오프 번들 분석 → moai-designer:design-handoff-reader
 ```
 
 ## 출력 형식
@@ -229,9 +229,9 @@ Claude Design 브리프, 클로드 디자인 프롬프트, 디자인 브리프 6
 
 | 스킬 | 사용 시점 |
 |---|---|
-| `moai-designer:cd-system-prep` | 선행: 디자인 시스템이 아직 셋업 안 됐을 때 |
-| `moai-designer:cd-prompt-builder` | 대안: 특정 UX 영역(IA·접근성·온보딩 등)에 집중하고 싶을 때 |
-| `moai-designer:cd-slop-check` | 후속: 시안 결과 카피 검수 |
-| `moai-designer:cd-handoff-reader` | 후속: Claude Code 핸드오프 번들 분석 |
+| `moai-designer:design-system-prep` | 선행: 디자인 시스템이 아직 셋업 안 됐을 때 |
+| `moai-designer:design-prompt-builder` | 대안: 특정 UX 영역(IA·접근성·온보딩 등)에 집중하고 싶을 때 |
+| `moai-designer:design-slop-check` | 후속: 시안 결과 카피 검수 |
+| `moai-designer:design-handoff-reader` | 후속: Claude Code 핸드오프 번들 분석 |
 | `moai-marketer:marketing-landing-page` | 대안: 코드 기반 랜딩 페이지 직접 제작 |
 | `moai-coworker:business-brand-identity` | 보조: 브랜드 정체성이 모호할 때 먼저 정리 |

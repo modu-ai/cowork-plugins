@@ -16,14 +16,14 @@ tags: [cookbook, projects, marketing]
 
 ## 2. 투입 직원과 스킬
 
-코워커의 `business-brand-identity`가 출발점입니다. 브랜드 이름·슬로건·톤앤매너·색상 방향까지 한 벌의 브랜드 가이드 문서로 정리해줍니다. 이 문서가 디자이너에게 넘어가면, `cd-brief`가 디자인 작업 지시서(브리프)로 번역하고, `cd-system-prep`이 색상·글꼴·간격 규칙을 묶은 디자인 시스템(모든 화면에서 재사용하는 시각 규칙 모음)을 준비합니다. `moai-domain-brand-design`이 브랜드 시각 언어를 다듬고, `moai-workflow-design`이 랜딩 페이지 시안 제작 흐름을 끌고 갑니다. `cd-slop-check`가 "AI가 만든 티가 나는 어색한 디자인 문구"를 점검합니다. 여기까지가 시안입니다. 시안을 실제로 움직이는 페이지로 만들려면 `design-landing-motion`이 이어받아, 스크롤·시차·WebGL 중 효과 하나를 골라 완성하고 화면에 들어갈 이미지까지 브랜드 색에 맞춰 생성합니다.
+코워커의 `business-brand-identity`가 출발점입니다. 브랜드 이름·슬로건·톤앤매너·색상 방향까지 한 벌의 브랜드 가이드 문서로 정리해줍니다. 이 문서가 디자이너에게 넘어가면, `design-brief`가 디자인 작업 지시서(브리프)로 번역하고, `design-system-prep`이 색상·글꼴·간격 규칙을 묶은 디자인 시스템(모든 화면에서 재사용하는 시각 규칙 모음)을 준비합니다. `moai-domain-brand-design`이 브랜드 시각 언어를 다듬고, `design-workflow`이 랜딩 페이지 시안 제작 흐름을 끌고 갑니다. `design-slop-check`가 "AI가 만든 티가 나는 어색한 디자인 문구"를 점검합니다. 여기까지가 시안입니다. 시안을 실제로 움직이는 페이지로 만들려면 `design-landing-motion`이 이어받아, 스크롤·시차·WebGL 중 효과 하나를 골라 완성하고 화면에 들어갈 이미지까지 브랜드 색에 맞춰 생성합니다.
 
 | 순서 | 직원 | 스킬 | 역할 |
 |------|------|------|------|
 | 1 | 코워커 | `business-brand-identity` | 브랜드 가이드 (이름 · 슬로건 · 톤앤매너 · 색) |
-| 2 | 디자이너 | `cd-brief` | 브랜드 가이드 → 디자인 브리프 변환 |
-| 3 | 디자이너 | `cd-system-prep` + `moai-domain-brand-design` | 디자인 시스템 (색 · 타이포 · 컴포넌트) |
-| 4 | 디자이너 | `moai-workflow-design` + `cd-slop-check` | 랜딩 페이지 시안 · 품질 점검 |
+| 2 | 디자이너 | `design-brief` | 브랜드 가이드 → 디자인 브리프 변환 |
+| 3 | 디자이너 | `design-system-prep` + `moai-domain-brand-design` | 디자인 시스템 (색 · 타이포 · 컴포넌트) |
+| 4 | 디자이너 | `design-workflow` + `design-slop-check` | 랜딩 페이지 시안 · 품질 점검 |
 | 5 | 디자이너 | `design-landing-motion` | 시안 → 움직이는 랜딩 (효과 1개 · 에셋 생성 · 출시 전 점검) |
 
 ## 3. 진행 단계
@@ -48,7 +48,7 @@ tags: [cookbook, projects, marketing]
 {{< terminal title="claude — cowork" >}}
 > 이 디자인 시스템으로 클래스 신청 랜딩 페이지 시안 만들어줘.
 > 구성: 첫 화면(핵심 약속) → 커리큘럼 → 수강 후기 → 신청 버튼.
-> 완성되면 cd-slop-check로 어색한 문구 점검까지.
+> 완성되면 design-slop-check로 어색한 문구 점검까지.
 {{< /terminal >}}
 
 **5단계 — 움직이는 페이지로.** 시안이 마음에 들면 마지막 요청입니다. 여기서 히어로 이미지도 브랜드 색에 맞춰 생성됩니다.
@@ -64,10 +64,10 @@ tags: [cookbook, projects, marketing]
 flowchart TD
    U["하늘 님<br/>'요가 클래스 브랜드'"] --> W1["코워커<br/>business-brand-identity"]
    W1 --> R1["브랜드 가이드 문서"]
-   R1 --> D1["디자이너<br/>cd-brief"]
-   D1 --> D2["디자이너<br/>cd-system-prep"]
+   R1 --> D1["디자이너<br/>design-brief"]
+   D1 --> D2["디자이너<br/>design-system-prep"]
    D2 --> R2["디자인 시스템<br/>(색 · 타이포 · 컴포넌트)"]
-   R2 --> D3["디자이너<br/>moai-workflow-design"]
+   R2 --> D3["디자이너<br/>design-workflow"]
    D3 --> R3["랜딩 페이지 시안"]
    R3 --> D4["디자이너<br/>design-landing-motion"]
    D4 --> OUT["움직이는 랜딩<br/>(효과 1개 · 생성 에셋)"]

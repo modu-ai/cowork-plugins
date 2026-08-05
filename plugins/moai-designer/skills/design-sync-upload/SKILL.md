@@ -31,7 +31,7 @@ Claude Design 업로드, DesignSync MCP, design-login, 디자인 시스템 동�
 
 | 입력 | 형태 |
 |---|---|
-| DESIGN.md | `cd-system-prep` 산출물 |
+| DESIGN.md | `design-system-prep` 산출물 |
 | 토큰 | `design-tokens-transformer` 산출물(DTCG/CSS/shadcn) |
 | 자산 | 로고 변형(가로/정사각/마스코트/WH), 폰트, 이미지 |
 
@@ -251,7 +251,7 @@ MCP가 없거나 미인증이면 사용자가 직접 업로드할 수 있는 산
 
 | 스킬 | 사용 시점 |
 |---|---|
-| `moai-designer:cd-system-prep` | 선행: DESIGN.md 합성 |
+| `moai-designer:design-system-prep` | 선행: DESIGN.md 합성 |
 | `moai-designer:design-tokens-transformer` | 선행: 업로드할 3계층 토큰 생성 |
-| `moai-designer:moai-domain-design-handoff` | 대안: 핸드오프 패키지가 산출물일 때 |
-| `moai-designer:cd-handoff-reader` | 역방향: Claude Design → Claude Code 인계 분석 |
+| `moai-designer:design-handoff` | 대안: 핸드오프 패키지가 산출물일 때 |
+| `moai-designer:design-handoff-reader` | 역방향: Claude Design → Claude Code 인계 분석 |

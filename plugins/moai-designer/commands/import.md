@@ -7,6 +7,6 @@ allowed-tools: Skill
 
 Import and analyze a Claude Design handoff bundle (README-first, defensive glob).
 
-Use Skill("moai-workflow-design") with arguments: $ARGUMENTS
+Use Skill("design-workflow") with arguments: $ARGUMENTS
 
-Then Skill("cd-handoff-reader") to summarize the bundle and emit the paste-ready Claude Code instruction.
+Then Skill("design-handoff-reader") to summarize the bundle and emit the paste-ready Claude Code instruction.

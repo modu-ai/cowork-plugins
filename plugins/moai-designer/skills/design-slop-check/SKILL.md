@@ -1,5 +1,5 @@
 ---
-name: cd-slop-check
+name: design-slop-check
 description: |
   Claude Design에서 생성된 결과 카피(헤드라인·서브헤드·CTA·feature·푸터)를 AI 슬롭 패턴으로 검수합니다.
   영문(Reimagine your·Unleash your potential 등)과 한국어(혁신적인·차세대·재정의하는 등) 진부 표현을 검출하고 수정안을 제안합니다.
@@ -15,9 +15,9 @@ user-invocable: true
 version: "1.0.0"
 ---
 
-# cd-slop-check — Claude Design 카피 AI 슬롭 검수
+# design-slop-check — Claude Design 카피 AI 슬롭 검수
 
-> **역할 축소 (P1 — docs 03 §3.3)**: 본 스킬은 **다운스트림 QA 게이트**입니다. AI 슬롭 패턴 사전(영문·한국어 Tier 1/2 + 구조 안티패턴)의 **정본(canonical owner)은 이제 `moai-domain-copywriting`**이며, 카피 생성 단계에서 선제적으로 준수됩니다. 본 스킬은 그 사전을 참조해 결과 카피를 사후 검수하며, 카피 스코어링 기준도 이 사전을 SSOT로 삼습니다. 아래 패턴 사전은 편의를 위해 유지되나, 갱신의 SSOT는 `moai-domain-copywriting` 본문의 "Anti-Slop Pattern Dictionary" 섹션입니다.
+> **역할 축소 (P1 — docs 03 §3.3)**: 본 스킬은 **다운스트림 QA 게이트**입니다. AI 슬롭 패턴 사전(영문·한국어 Tier 1/2 + 구조 안티패턴)의 **정본(canonical owner)은 이제 `design-copywriting`**이며, 카피 생성 단계에서 선제적으로 준수됩니다. 본 스킬은 그 사전을 참조해 결과 카피를 사후 검수하며, 카피 스코어링 기준도 이 사전을 SSOT로 삼습니다. 아래 패턴 사전은 편의를 위해 유지되나, 갱신의 SSOT는 `design-copywriting` 본문의 "Anti-Slop Pattern Dictionary" 섹션입니다.
 
 ## 개요
 
@@ -99,7 +99,7 @@ Claude Design 카피, AI 슬롭, AI 티, 진부 표현, humanize 직전, 디자�
 | 2 | **조사·체언 종결 조각문** | 조사(~은/에/로)나 체언(명사형)으로 끝나는 조사·체언 종결 조각문 | [나쁜 예] "성공의 열쇠 — 자동화" (조사·체언 종결) | 서술어 포함 완전문으로 재작성 |
 | 3 | **"A에서 B로" 전환 공식** | "X에서 Y로" 전환 공식으로 도입을 여는 상투문 | [나쁜 예] "엑셀에서 노션으로, 바뀐 것" (전환 공식) | 전환 공식 대신 구체적 사례·근거로 시작 |
 
-> 탐지 원본: `plugins/moai-writer/skills/general-humanize-korean/references/ai-tell-taxonomy.md` D/J 카테고리. general-ai-slop-reviewer 및 general-humanize-korean에도 동일 3종이 등록되어 있어, cd-slop-check가 잡지 못한 경우 후속 게이트가 보완합니다.
+> 탐지 원본: `plugins/moai-writer/skills/general-humanize-korean/references/ai-tell-taxonomy.md` D/J 카테고리. general-ai-slop-reviewer 및 general-humanize-korean에도 동일 3종이 등록되어 있어, design-slop-check가 잡지 못한 경우 후속 게이트가 보완합니다.
 
 ## 워크플로우
 
@@ -274,6 +274,6 @@ Tier 2 표현은 **문맥**에 따라 슬롭 여부가 달라집니다. 다음�
 |---|---|
 | `moai-writer:general-humanize-korean` | 후속: 한국어 카피 자연화 (10대 카테고리 × 40+ AI 티 패턴 SSOT) |
 | `moai-coworker:general-ai-slop-reviewer` | 후속: 모든 텍스트 산출물의 일반 AI 슬롭 검수 |
-| `moai-designer:cd-brief` | 선행: 더 좋은 카피가 나오도록 브리프 정돈 |
+| `moai-designer:design-brief` | 선행: 더 좋은 카피가 나오도록 브리프 정돈 |
 | `moai-marketer:marketing-campaign-planner` | 보조: 캠페인 카피의 톤·메시지 일관성 검토 |
 | `moai-marketer:content-copywriting` | 대안: Claude Design 외부에서 카피 직접 생성 |

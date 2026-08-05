@@ -352,7 +352,7 @@ DTCG 토큰 변환, 3계층 토큰 매핑, CSS custom properties 생성, shadcn 
 
 | 스킬 | 사용 시점 |
 |---|---|
-| `moai-designer:cd-handoff-reader` | 선행: 번들에서 3계층 토큰 소스 추출 |
-| `moai-designer:cd-system-prep` | 선행: 자산→DESIGN.md 합성(토큰 원천) |
+| `moai-designer:design-handoff-reader` | 선행: 번들에서 3계층 토큰 소스 추출 |
+| `moai-designer:design-system-prep` | 선행: 자산→DESIGN.md 합성(토큰 원천) |
 | `moai-designer:design-system-library` | 보조: 75개 브랜드 토큰을 변환 입력으로 |
 | `moai-designer:design-sync-upload` | 후속: 변환된 토큰을 Claude Design에 업로드 |

@@ -267,7 +267,7 @@ CTA: [저장/공유/팔로우/링크/댓글/DM 중 1개]
 | `moai-marketer:content-sns-content` | 인스타·스레드·페북 채널별 콘텐츠 |
 | `moai-marketer:marketing-campaign-planner` | 캠페인 단위 시리즈 카드뉴스 |
 | `moai-coworker:general-ai-slop-reviewer` | 텍스트 AI 슬롭 검수 |
-| `moai-designer:cd-slop-check` | 디자인 카피 슬롭 검수 |
+| `moai-designer:design-slop-check` | 디자인 카피 슬롭 검수 |
 
 ## References
 

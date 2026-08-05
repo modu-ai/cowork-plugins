@@ -173,7 +173,7 @@ titleSlide.addText("2026 Q1 사업 보고", {
 1. LibreOffice로 PDF/JPEG 변환 후 시각 확인
 2. 겹친 요소·잘린 텍스트·중첩 확인
 3. 색 일관성 (한 팔레트 안에서만)
-4. AI 슬롭 카피 검출 (`moai-designer:cd-slop-check` 체이닝)
+4. AI 슬롭 카피 검출 (`moai-designer:design-slop-check` 체이닝)
 5. 청중·톤 적합성 (사람 검수)
 
 ### 6단계: 출력
@@ -296,8 +296,8 @@ Pretendard·맑은 고딕은 상용·배포 자유. 발표 PC에 폰트 미설�
 | `moai-officer:office-pdf-writer` | 다국어 PDF 변환 |
 | `moai-marketer:content-copywriting` | 슬라이드 카피 작성 |
 | `moai-writer:general-humanize-korean` | 한국어 카피 자연화 |
-| `moai-designer:cd-slop-check` | 슬라이드 카피 AI 슬롭 검수 |
-| `moai-designer:cd-prompt-builder` | Claude Design에 동시 시안 요청 시 |
+| `moai-designer:design-slop-check` | 슬라이드 카피 AI 슬롭 검수 |
+| `moai-designer:design-prompt-builder` | Claude Design에 동시 시안 요청 시 |
 | `moai-media:media-gemini-3-image-prompt` | 슬라이드 일러스트·배경 이미지 프롬프트 |
 
 ## 기술 참조

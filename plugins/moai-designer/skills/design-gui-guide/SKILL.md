@@ -1,9 +1,9 @@
 ---
-name: cd-gui-guidelines
+name: design-gui-guide
 description: |
   모든 화면을 구성하는 10개 GUI 요소(버튼·폼·메뉴·링크·다이얼로그·알림·아이콘·체크박스/라디오·탭·검색)와 보너스 2(윈도우·포인터)에 대한 증거 기반 사용성 가이드라인 86종.
   UX Tigers(Jakob Nielsen, 2026-07-29) "10 GUI Design Elements"를 shadcn 컴포넌트와 1:1로 매핑해 한국어 실용 지침으로 증류.
-  cd-prompt-builder 패턴 3(디자인 시스템 생성)·패턴 6(사용성 감사)이 컴포넌트별 체크리스트로 참조.
+  design-prompt-builder 패턴 3(디자인 시스템 생성)·패턴 6(사용성 감사)이 컴포넌트별 체크리스트로 참조.
 
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   - "컴포넌트 사용성 가이드라인"
@@ -15,7 +15,7 @@ user-invocable: true
 version: "1.0.0"
 ---
 
-# cd-gui-guidelines — 10 GUI 요소 사용성 가이드라인 SSOT
+# design-gui-guide — 10 GUI 요소 사용성 가이드라인 SSOT
 
 ## 목적과 근거
 
@@ -32,10 +32,10 @@ version: "1.0.0"
 
 | 소비자 | 사용 방법 |
 |---|---|
-| `cd-prompt-builder` 패턴 3 | 디자인 시스템 생성 시 각 컴포넌트를 해당 요소 가이드라인에 맞춰 설계 |
-| `cd-prompt-builder` 패턴 6 | 사용성 감사 시 Nielsen 10 휴리스틱 + 본 86개 지침(컴포넌트 단위)으로 평가 |
-| `cd-system-prep` | DESIGN.md Component recipes 품질 기준 |
-| `cd-slop-check` | 카피 중심 검수의 보완 — 컴포넌트 동작·레이아웃 품질은 본 스킬 |
+| `design-prompt-builder` 패턴 3 | 디자인 시스템 생성 시 각 컴포넌트를 해당 요소 가이드라인에 맞춰 설계 |
+| `design-prompt-builder` 패턴 6 | 사용성 감사 시 Nielsen 10 휴리스틱 + 본 86개 지침(컴포넌트 단위)으로 평가 |
+| `design-system-prep` | DESIGN.md Component recipes 품질 기준 |
+| `design-slop-check` | 카피 중심 검수의 보완 — 컴포넌트 동작·레이아웃 품질은 본 스킬 |
 
 ---
 
@@ -256,7 +256,7 @@ Modal은 모든 작업을 차단하고 사용자의 작업 기억에 세금을 �
 
 | 스킬 | 사용 시점 |
 |---|---|
-| `moai-designer:cd-prompt-builder` | 패턴 3(생성)·6(감사)이 본 가이드라인을 컴포넌트별 체크리스트로 참조 |
-| `moai-designer:cd-system-prep` | DESIGN.md Component recipes 품질 기준 |
-| `moai-designer:cd-slop-check` | 카피 중심 검수의 보완 — 컴포넌트 동작·레이아웃 품질은 본 스킬 |
+| `moai-designer:design-prompt-builder` | 패턴 3(생성)·6(감사)이 본 가이드라인을 컴포넌트별 체크리스트로 참조 |
+| `moai-designer:design-system-prep` | DESIGN.md Component recipes 품질 기준 |
+| `moai-designer:design-slop-check` | 카피 중심 검수의 보완 — 컴포넌트 동작·레이아웃 품질은 본 스킬 |
 | `moai-designer:design-system-library` | shadcn vanilla 컴포넌트 참조 마크업과 본 가이드라인의 짝 |

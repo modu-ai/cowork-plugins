@@ -1,5 +1,5 @@
 ---
-name: moai-workflow-design
+name: design-workflow
 description: |
   Unified design workflow skill — handles Path A (Claude Design handoff bundle import,
   via Figma extractor when needed) and design-brief context loading from .moai/design/
@@ -14,9 +14,9 @@ user-invocable: false
 version: "1.0.0"
 ---
 
-> ⚠️ **개발 런타임 전용** — 이 스킬은 MoAI-ADK(Claude Code) 환경을 전제한다. Claude Cowork(Desktop)에서는 `.moai/config` 의존으로 동작하지 않을 수 있다. Desktop 사용자는 `cd-*` 체인(cd-brief → cd-prompt-builder → cd-slop-check)을 사용한다.
+> ⚠️ **개발 런타임 전용** — 이 스킬은 MoAI-ADK(Claude Code) 환경을 전제한다. Claude Cowork(Desktop)에서는 `.moai/config` 의존으로 동작하지 않을 수 있다. Desktop 사용자는 `cd-*` 체인(design-brief → design-prompt-builder → design-slop-check)을 사용한다.
 
-# Design Workflow (`moai-workflow-design`)
+# Design Workflow (`design-workflow`)
 
 Unified `/moai design` workflow skill. Handles two complementary responsibilities:
 
@@ -167,7 +167,7 @@ Valid bundle missing optional components → extract what's available, log warni
 
 ## Works Well With
 
-`moai-domain-brand-design` (Path B fallback / context consumer), `moai-domain-design-handoff`
+`moai-domain-brand-design` (Path B fallback / context consumer), `design-handoff`
 (produces `claude-design-handoff/` for Path A), `moai-workflow-gan-loop` (uses tokens +
 context as baseline), `moai-meta-harness` (generates figma extractor for Path B1),
 `expert-frontend` (primary consumer), `.claude/rules/moai/design/constitution.md` (brand
@@ -204,4 +204,4 @@ priority + reserved paths).
 
 REQ coverage: (internal provenance omitted)..003, (Path A); REQ-1..16 (context).
 
-<!-- absorbed from moai-workflow-design-import + moai-workflow-design-context per the skill consolidation policy -->
+<!-- absorbed from design-workflow-import + design-workflow-context per the skill consolidation policy -->

@@ -28,7 +28,7 @@ Visual design system skill for brand-aligned web projects. Absorbed from the ret
 Before generating design output, verify:
 
 1. `.moai/project/brand/visual-identity.md` exists and contains no `_TBD_` markers.
-2. Copy scope is defined (from `moai-domain-copywriting` JSON output or inline brief).
+2. Copy scope is defined (from `design-copywriting` JSON output or inline brief).
 3. Target framework is confirmed (from `.moai/config/sections/design.yaml` `default_framework`).
 
 If `visual-identity.md` has unresolved `_TBD_` markers, stop and request brand interview completion.
@@ -230,8 +230,8 @@ Generated design must meet:
 
 ## Works Well With
 
-- `moai-domain-copywriting`: Copy length constraints inform layout choices
-- `moai-workflow-design`: Replaces code-based design when Claude Design bundle is available (Path A handler)
+- `design-copywriting`: Copy length constraints inform layout choices
+- `design-workflow`: Replaces code-based design when Claude Design bundle is available (Path A handler)
 - `moai-workflow-gan-loop`: Design Quality dimension evaluates token compliance and WCAG
 - `moai-domain-uiux`: Extends with accessibility audit patterns
 

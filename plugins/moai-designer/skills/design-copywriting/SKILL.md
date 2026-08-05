@@ -1,5 +1,5 @@
 ---
-name: moai-domain-copywriting
+name: design-copywriting
 description: |
   Brand-aligned content-copywriting specialist for marketing and product text.
   Enforces brand voice, anti-AI-slop rules, concrete numbers, and JSON section
@@ -15,7 +15,7 @@ version: "1.0.0"
 
 > ⚠️ **개발 런타임 전용** — 이 스킬은 MoAI-ADK(Claude Code) 환경을 전제한다. Claude Cowork(Desktop)에서는 `.moai/config` 의존으로 동작하지 않을 수 있다. Desktop 사용자는 `moai-marketer:content-copywriting`을 사용한다.
 
-# moai-domain-copywriting
+# design-copywriting
 
 Brand-aligned content-copywriting skill for marketing and product websites. Absorbed from the retired v2.x `*-copywriting` capability (per the content-copywriting absorption policy) at v3.2.0. Enforces anti-AI-slop rules, requires brand voice context, and outputs structured JSON per section.
 
@@ -184,12 +184,12 @@ When testimonials or case study data are available in brand context:
 
 ---
 
-## Anti-Slop Pattern Dictionary (absorbed from cd-slop-check)
+## Anti-Slop Pattern Dictionary (absorbed from design-slop-check)
 
 This dictionary is the canonical anti-AI-slop reference for the design pipeline. It was
-absorbed from the `cd-slop-check` skill per `docs/plugin-family-design/03-moai-design-processing.md`
+absorbed from the `design-slop-check` skill per `docs/plugin-family-design/03-moai-design-processing.md`
 §3.3 — content-copywriting is the canonical owner (proactive avoidance at generation time), while
-`cd-slop-check` remains a downstream QA gate that references this dictionary. Reject or flag
+`design-slop-check` remains a downstream QA gate that references this dictionary. Reject or flag
 copy matching these patterns before delivery, and replace with concrete numbers / reader
 outcomes.
 

@@ -605,7 +605,7 @@
     },
     {
      "name": "commerce-jtbd-persona",
-     "summary": "| [책임 경계] 1스킬 2모드 — `--mode jtbd`: JTBD 9개 + 시장 매칭 우선순위 자동 도출 / `--mode persona`: 리뷰·Q&A 분석 기반 페르소나 3명 자동 생성. 페어 스킬 moai-domain-copywriting과 명확히 구분 — 본 스킬은 고객 분석(Why), 페어는 카피 작성(Wh"
+     "summary": "| [책임 경계] 1스킬 2모드 — `--mode jtbd`: JTBD 9개 + 시장 매칭 우선순위 자동 도출 / `--mode persona`: 리뷰·Q&A 분석 기반 페르소나 3명 자동 생성. 페어 스킬 design-copywriting과 명확히 구분 — 본 스킬은 고객 분석(Why), 페어는 카피 작성(Wh"
     },
     {
      "name": "commerce-live-commerce",
@@ -1416,23 +1416,23 @@
    "skill_count": 15,
    "skills": [
     {
-     "name": "cd-brief",
+     "name": "design-brief",
      "summary": "| Claude Design용 6요소 브리프(Project·Audience·Pages·Tone·Reference·Constraints)를 자동으로 작성해 주는 스킬. 자연어 한 줄 요청에서 시작해 누락된 요소를 차례로 채우고, AI 슬롭 회피 블록을 포함한 복붙용 프롬프트를 출력합니다. 완성된 프롬프트는 claude.ai"
     },
     {
-     "name": "cd-handoff-reader",
+     "name": "design-handoff-reader",
      "summary": "| Claude Design → Claude Code 핸드오프 번들(공식 구성: README + 디자인 파일 + chat)을 방어적으로 분석해 요약 보고서와 Claude Code에 넘길 짧은 지시 1줄을 자동 생성합니다. README를 source of truth로 먼저 파싱하고, 토큰/컴포넌트 JSON은 있으면 사용·없"
     },
     {
-     "name": "cd-prompt-builder",
+     "name": "design-prompt-builder",
      "summary": "| Claude Design용 시니어 UX 프롬프트를 10가지 전문 패턴(정보 구조·디자인 시스템·카피·온보딩·접근성·대시보드·폼·테스트·휴리스틱·리서치) 중 적합한 것을 골라 완성해 줍니다. 각 패턴은 구체적 역할(예: IDEO 시니어 UX 아키텍트 12년차)을 부여해 결과 분산을 30-40% 감소시킵니다. 다음과 같은"
     },
     {
-     "name": "cd-slop-check",
+     "name": "design-slop-check",
      "summary": "| Claude Design에서 생성된 결과 카피(헤드라인·서브헤드·CTA·feature·푸터)를 AI 슬롭 패턴으로 검수합니다. 영문(Reimagine your·Unleash your potential 등)과 한국어(혁신적인·차세대·재정의하는 등) 진부 표현을 검출하고 수정안을 제안합니다. 후속으로 moai-writer"
     },
     {
-     "name": "cd-system-prep",
+     "name": "design-system-prep",
      "summary": "| 브랜드 자산(로고·색·타이포·기존 사이트·PPTX 등)을 분석해 Claude Design 업로드용 DESIGN.md를 자동으로 합성합니다. Claude Design 디자인 시스템 셋업의 가장 흔한 실패(자산이 흩어져 있고 정리가 안 된 채 업로드)를 해결합니다. 결과는 그대로 claude.ai/design 온보딩에 업"
     },
     {
@@ -1464,15 +1464,15 @@
      "summary": "| Brand-aligned visual design system specialist for web projects. Enforces hero-first layout chaining, WCAG 2.1 AA accessibility, Lighthouse >= 80, and design token extraction from"
     },
     {
-     "name": "moai-domain-copywriting",
+     "name": "design-copywriting",
      "summary": "| Brand-aligned content-copywriting specialist for marketing and product text. Enforces brand voice, anti-AI-slop rules, concrete numbers, and JSON section structure for downstream"
     },
     {
-     "name": "moai-domain-design-handoff",
+     "name": "design-handoff",
      "summary": "| Claude Design handoff package specialist for the /design Path A workflow. Assembles 5-file handoff bundle (prompt/context/references/acceptance/checklist) for paste-ready claude."
     },
     {
-     "name": "moai-workflow-design",
+     "name": "design-workflow",
      "summary": "| Unified design workflow skill — handles Path A (Claude Design handoff bundle import, via Figma extractor when needed) and design-brief context loading from .moai/design/ (researc"
     },
     {

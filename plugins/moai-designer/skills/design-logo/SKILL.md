@@ -150,7 +150,7 @@ version: "1.0.0"
 | `moai-media:media-higgsfield-image` | 인접: recraft 프롬프트 크래프트 SSOT |
 | `moai-designer:design-brand-visual` | 형제: 히어로·OG·목업 비주얼 |
 | `moai-designer:moai-domain-brand-design` | 선행: 브랜드 디자인 시스템 정의 |
-| `moai-designer:cd-slop-check` | 후속: AI 슬롭 점검 |
+| `moai-designer:design-slop-check` | 후속: AI 슬롭 점검 |
 
 ## 출처
 

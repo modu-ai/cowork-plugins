@@ -1,6 +1,6 @@
 # designer-setup.md — 디자이너 분기 (project 스킬 서브 프로토콜)
 
-> **project 스킬(18-plugin 패밀리 허브)의 디자이너 분기 정본.** 흩어진 브랜드 자산(로고·색·타이포·기존 사이트·PPTX)을 수집해 `.moai/project/brand/` 브랜드 컨텍스트와 Claude Design 업로드용 `DESIGN.md`를 합성한다. `moai-designer` 플러그인의 `cd-system-prep` + `moai-domain-brand-design` 체인으로 실행한다.
+> **project 스킬(18-plugin 패밀리 허브)의 디자이너 분기 정본.** 흩어진 브랜드 자산(로고·색·타이포·기존 사이트·PPTX)을 수집해 `.moai/project/brand/` 브랜드 컨텍스트와 Claude Design 업로드용 `DESIGN.md`를 합성한다. `moai-designer` 플러그인의 `design-system-prep` + `moai-domain-brand-design` 체인으로 실행한다.
 
 ---
 
@@ -32,9 +32,9 @@
 
 | 발화 힌트 | 진입 스킬 |
 |---|---|
-| 브랜드 자산 정리·DESIGN.md 합성 | `cd-system-prep` |
-| design-brief 작성 | `cd-brief` |
-| Claude Design 핸드오프 리더 | `cd-handoff-reader` |
+| 브랜드 자산 정리·DESIGN.md 합성 | `design-system-prep` |
+| design-brief 작성 | `design-brief` |
+| Claude Design 핸드오프 리더 | `design-handoff-reader` |
 | 브랜드 정렬 비주얼 디자인 시스템 | `moai-domain-brand-design` |
 | 디자인 시안 GAN 품질 루프 | `moai-workflow-gan-loop` |
 | 큐레이션된 디자인 토큰 출발점 | `design-system-library` |
@@ -56,9 +56,9 @@ Phase 1 자산 인터뷰 → Phase 2 designer 설치 확인 → Phase 3 DESIGN.m
 
 `~/.claude/plugins/`에서 `moai-designer` 설치 여부 확인. 미설치 시 `/plugin install moai-designer` 안내 후 `/project resume` 재개.
 
-### Phase 3: DESIGN.md 합성 (`cd-system-prep` 위임)
+### Phase 3: DESIGN.md 합성 (`design-system-prep` 위임)
 
-수집된 자산을 `moai-designer:cd-system-prep`에 전달해 **DESIGN.md**를 합성한다. 깔끔한 코드 repo가 있으면 `/design-sync` 네이티브 경로가 가장 빠르며, 이 분기는 자산이 흩어져 있을 때 네이티브 경로를 보완한다(대체가 아니다).
+수집된 자산을 `moai-designer:design-system-prep`에 전달해 **DESIGN.md**를 합성한다. 깔끔한 코드 repo가 있으면 `/design-sync` 네이티브 경로가 가장 빠르며, 이 분기는 자산이 흩어져 있을 때 네이티브 경로를 보완한다(대체가 아니다).
 
 ### Phase 4: brand 컨텍스트 스캐폴드
 
@@ -102,12 +102,12 @@ Phase 1 자산 인터뷰 → Phase 2 designer 설치 확인 → Phase 3 DESIGN.m
 
 | 주제 | 스킬 (`moai-designer`) |
 |------|------|
-| DESIGN.md 합성 상세 | `cd-system-prep` |
-| design-brief 작성 | `cd-brief` |
+| DESIGN.md 합성 상세 | `design-system-prep` |
+| design-brief 작성 | `design-brief` |
 | 브랜드 정렬 비주얼 시스템 | `moai-domain-brand-design` |
 | 큐레이션된 디자인 토큰 출발점 | `design-system-library` |
-| Claude Design 핸드오프 | `moai-domain-design-handoff`, `cd-handoff-reader` |
+| Claude Design 핸드오프 | `design-handoff`, `design-handoff-reader` |
 | 디자인 시안 GAN 품질 루프 | `moai-workflow-gan-loop` |
-| 디자인 슬롭 점검 | `cd-slop-check` |
+| 디자인 슬롭 점검 | `design-slop-check` |
 
 전체 인덱스: `references/INDEX.md`
