@@ -181,7 +181,7 @@ version: "1.0.0"
 
 - **실제 시험 문제 출제 및 채점** → moai-tutor:education-assessment-creator 스킬이 더 적합합니다
 - **논문 작성이나 학술 리서치** → moai-tutor:education-research-assistant 스킬을 사용하세요
-- **기업 인사 평가 기준 설계** → moai-recruiter:business-performance-review 스킬이 더 적합합니다
+- **기업 인사 평가 기준 설계** → moai-recruiter:hr-performance-review 스킬이 더 적합합니다
 - **교육 관련 법적 인허가 사항** → 교육부·한국직업능력연구원 등 공식 기관에 문의하세요
 
 ## References

@@ -234,4 +234,4 @@ Claude Design 브리프, 클로드 디자인 프롬프트, 디자인 브리프 6
 | `moai-designer:design-slop-check` | 후속: 시안 결과 카피 검수 |
 | `moai-designer:design-handoff-reader` | 후속: Claude Code 핸드오프 번들 분석 |
 | `moai-marketer:marketing-landing-page` | 대안: 코드 기반 랜딩 페이지 직접 제작 |
-| `moai-coworker:business-brand-identity` | 보조: 브랜드 정체성이 모호할 때 먼저 정리 |
+| `moai-coworker:collab-brand-identity` | 보조: 브랜드 정체성이 모호할 때 먼저 정리 |

@@ -89,7 +89,7 @@ version: "1.0.0"
 본 스킬의 가입·온보딩·유지·휴면·이탈 메시지 매트릭스 6단계 카피는 `moai-coworker:general-ai-slop-reviewer`로 자동 후처리 체이닝됩니다. 구독 메시지는 신규 가입·이탈 방지·윈백 등 사용자 의사결정에 직접 영향을 주므로 AI 슬롭 제거가 필수.
 
 ```text
-commerce-subscription-strategist → general-ai-slop-reviewer → (선택) commerce-channel-message
+commerce-subscription-strategist → general-ai-slop-reviewer → (선택) cs-channel-message
 ```
 
 ## 관련 스킬

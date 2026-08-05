@@ -1,4 +1,4 @@
-# 브랜드 아이덴티티 (business-brand-identity)
+# 브랜드 아이덴티티 (collab-brand-identity)
 
 > MoAI-Cowork v1.0.0 하네스 참고자료
 

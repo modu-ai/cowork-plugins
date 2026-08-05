@@ -463,7 +463,7 @@ version: "1.0.0"
 - `book-chapter-writer` — 본문 챕터 집필 (제안서 통과 후)
 
 ### Alternative
-- `moai-consultant:business-strategy-planner` — 사업 제안서 (책 아님)
+- `moai-consultant:consult-strategy` — 사업 제안서 (책 아님)
 - `moai-tutor:education-grant-writer` — 정부지원사업 신청
 
 ### Post (검수 — 정규 체인)

@@ -133,7 +133,7 @@ metadata:
 
 ## 함께 쓰면 좋은 스킬
 
-이직·전직 전략은 `moai-career:career-transition-strategist`, 자소서·이력서는 `moai-career:business-resume-builder`, 면접 준비는 `moai-career:business-interview-coach`와 함께 사용하세요.
+이직·전직 전략은 `moai-career:career-transition`, 자소서·이력서는 `moai-career:career-resume`, 면접 준비는 `moai-career:career-interview`와 함께 사용하세요.
 
 ## 관련 스킬 (후처리 체인)
 

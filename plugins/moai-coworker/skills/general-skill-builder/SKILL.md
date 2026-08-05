@@ -120,11 +120,11 @@ Phase 6: Review         → 품질 게이트 통과 확인, 파일 배치
 | 패턴 | 적용 시나리오 | 스킬 예시 |
 |------|-------------|-----------|
 | Pipeline | 순차 처리, 각 단계 출력이 다음 입력 | office-docx-generator, content-blog |
-| Fan-out/Fan-in | 병렬 분석 후 결과 통합 | business-ux-designer, market-analysis |
-| Expert Pool | 다 도메인 전문 지식 결합 | business-consulting-brief, business-startup-launchpad |
-| Producer-Reviewer | 생성 + 품질 검토 순환 | business-sales-playbook, content-copywriting |
+| Fan-out/Fan-in | 병렬 분석 후 결과 통합 | collab-ux-design, market-analysis |
+| Expert Pool | 다 도메인 전문 지식 결합 | consult-brief, consult-startup |
+| Producer-Reviewer | 생성 + 품질 검토 순환 | collab-sales-playbook, content-copywriting |
 | Supervisor | 다수 전문 스킬 오케스트레이션 | moai-coworker:general-ai-diagnostic, project |
-| Hierarchical Delegation | 복잡 작업 계층적 분해 | business-startup-launchpad |
+| Hierarchical Delegation | 복잡 작업 계층적 분해 | consult-startup |
 
 **선택 기준:** 스킬의 워크플로우 단계 수, 병렬성 여부, 품질 검증 필요성을 기준으로 판단합니다.
 

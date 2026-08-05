@@ -104,7 +104,7 @@ version: "1.0.0"
 본 스킬의 1:1 손편지 초안·DM 메시지·비공개 채널 안내·100명 라이브 스크립트 등 모든 진심 메시지 텍스트는 `moai-coworker:general-ai-slop-reviewer`로 자동 후처리 체이닝됩니다. "잘 만든 충성 고객 100명" 원칙은 진정성에 좌우되므로 AI 패턴(과한 형용사·번역체·hype 어휘) 제거가 특히 중요. 손편지는 ai-slop 검수 후 손글씨로 옮기는 흐름 권장.
 
 ```text
-commerce-early-fan-builder → general-ai-slop-reviewer → (수기 옮기기 또는) commerce-channel-message
+commerce-early-fan-builder → general-ai-slop-reviewer → (수기 옮기기 또는) cs-channel-message
 ```
 
 ## 관련 스킬

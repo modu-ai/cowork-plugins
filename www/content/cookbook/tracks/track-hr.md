@@ -58,7 +58,7 @@ flowchart LR
 
 ### 자동 체인
 
-`business-draft-offer` → `office-docx-generator` → `general-ai-slop-reviewer`
+`hr-draft-offer` → `office-docx-generator` → `general-ai-slop-reviewer`
 
 ### 산출물
 
@@ -85,12 +85,12 @@ flowchart LR
 
 ### 자동 체인
 
-`business-resume-screener` (이력서 50개 × JD 매칭) → 등급별 분류 → `office-docx-generator` → `general-ai-slop-reviewer`
+`hr-resume-screener` (이력서 50개 × JD 매칭) → 등급별 분류 → `office-docx-generator` → `general-ai-slop-reviewer`
 
 ### 산출물
 
 - 등급별 분류표 + 핵심 요약 (역량·경력·교육·자격증)
-- A 등급 면접 질문 자동 생성 (`business-interview-coach` 자동 체인)
+- A 등급 면접 질문 자동 생성 (`career-interview` 자동 체인)
 - 거절 사유 표준 메시지
 
 ---
@@ -113,7 +113,7 @@ flowchart LR
 
 ### 자동 체인
 
-`business-resume-builder` (KKK-STAR 프레임워크 + ATS 최적화) → `business-portfolio-guide` → `general-ai-slop-reviewer` → `general-humanize-korean`
+`career-resume` (KKK-STAR 프레임워크 + ATS 최적화) → `career-portfolio` → `general-ai-slop-reviewer` → `general-humanize-korean`
 
 ### 산출물
 
@@ -140,7 +140,7 @@ flowchart LR
 
 ### 자동 체인
 
-`business-job-analyzer` (JD 분석) → `business-interview-coach` (예상 질문 15-20개 + 모범 답안 가이드 + STAR 기법) → 모의 면접 Q&A 라이브
+`hr-job-analysis` (JD 분석) → `career-interview` (예상 질문 15-20개 + 모범 답안 가이드 + STAR 기법) → 모의 면접 Q&A 라이브
 
 ### 산출물
 
@@ -170,7 +170,7 @@ flowchart LR
 
 ### Q. ATS(이력서 자동 분류 시스템) 최적화란?
 
-지원사 인사팀이 사용하는 ATS가 키워드 매칭으로 이력서를 1차 분류합니다. `business-resume-builder`는 JD 키워드를 자동 매핑해 매칭률을 높입니다.
+지원사 인사팀이 사용하는 ATS가 키워드 매칭으로 이력서를 1차 분류합니다. `career-resume`는 JD 키워드를 자동 매핑해 매칭률을 높입니다.
 
 ### Q. 한국 + 영문 동시 작성 가능?
 

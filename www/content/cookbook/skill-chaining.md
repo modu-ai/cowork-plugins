@@ -11,7 +11,7 @@ tags: [cookbook, skills]
 
 스킬 하나하나는 한 분야에 특화되어 폭이 좁습니다. 예를 들어:
 
-- `business-strategy-planner`는 **전략 초안**을 잘 쓰지만 DOCX로 저장하지 못합니다.
+- `consult-strategy`는 **전략 초안**을 잘 쓰지만 DOCX로 저장하지 못합니다.
 - `office-docx-generator`는 **파일을 잘 만들지만** 전략을 기획하지 못합니다.
 - 생성된 글은 대부분 **AI 특유의 기계적 어투**가 남아 있습니다.
 
@@ -111,16 +111,16 @@ flowchart TD
 |---|---|---|
 | 블로그 글 | 1. `content-blog`<br>2. `general-ai-slop-reviewer` | moai-marketer, moai-coworker |
 | 보도자료 | 1. `content-copywriting`(헤드라인·본문 카피)<br>2. `office-docx-generator`<br>3. `general-ai-slop-reviewer` | moai-marketer, moai-officer, moai-coworker |
-| 사업계획서 | 1. `business-strategy-planner`<br>2. `office-docx-generator`<br>3. `general-ai-slop-reviewer` | moai-consultant, moai-officer, moai-coworker |
+| 사업계획서 | 1. `consult-strategy`<br>2. `office-docx-generator`<br>3. `general-ai-slop-reviewer` | moai-consultant, moai-officer, moai-coworker |
 | IR 덱 | 1. `finance-investor-relations`<br>2. `office-pptx-designer`<br>3. `general-ai-slop-reviewer` | moai-consultant, moai-officer, moai-coworker |
 | 월말 결산 | 1. `finance-close-management`<br>2. `office-xlsx-creator`<br>3. `office-docx-generator` | moai-accountant, moai-officer |
 | NDA 검토 | 1. `legal-nda-triage`<br>2. `docx-generator(수정본)`<br>3. `general-ai-slop-reviewer` | moai-lawyer, moai-officer, moai-coworker |
 | 계약서 리뷰 | 1. `legal-contract-review`<br>2. `legal-legal-risk`<br>3. `office-docx-generator` | moai-lawyer, moai-officer |
-| 주간 보고서 | 1. `business-status-reporter`<br>2. `office-xlsx-creator`<br>3. `office-docx-generator`<br>4. `general-ai-slop-reviewer` | moai-coworker, moai-officer |
+| 주간 보고서 | 1. `collab-status-report`<br>2. `office-xlsx-creator`<br>3. `office-docx-generator`<br>4. `general-ai-slop-reviewer` | moai-coworker, moai-officer |
 | 카드뉴스 | 1. `content-card-news`<br>2. `higgsfield-image(이미지)`<br>3. `office-pptx-designer` | moai-marketer, moai-media, moai-officer |
 | 쇼츠 영상 | 1. `social-media(스크립트)`<br>2. `audio-gen(TTS)`<br>3. `higgsfield-video(영상)` | moai-marketer, moai-media |
 | 연구 논문 | 1. `education-paper-search`<br>2. `education-paper-writer`<br>3. `office-docx-generator`<br>4. `general-ai-slop-reviewer` | moai-tutor, moai-officer, moai-coworker |
-| 면접 준비 | 1. `business-job-analyzer`<br>2. `business-interview-coach`<br>3. `interview-coach(모의)` | moai-career |
+| 면접 준비 | 1. `hr-job-analysis`<br>2. `career-interview`<br>3. `interview-coach(모의)` | moai-career |
 
 ## 체인을 깨뜨리는 흔한 실수
 
@@ -136,7 +136,7 @@ docx 생성 후 다시 docx로 변환하면 포맷이 깨집니다. 한 번만 �
 
 {{< hint type="warning" >}}
 **실수 3 — 도메인 스킬 2개를 같은 프롬프트에 섞는다.**
-`business-strategy-planner`와 `business-market-analyst`를 동시에 요청하면 한쪽이 약해집니다. 필요하면 두 번 나눠 호출한 뒤 `office-docx-generator`에서 합치세요.
+`consult-strategy`와 `consult-market`를 동시에 요청하면 한쪽이 약해집니다. 필요하면 두 번 나눠 호출한 뒤 `office-docx-generator`에서 합치세요.
 {{< /hint >}}
 
 ## 디버깅 체크리스트

@@ -131,7 +131,7 @@ version: "1.0.0"
 ## 관련 스킬 체이닝
 
 - **before**: `moai-analyst:office-public-data-real-estate-search` — 실거래가 시세로 입지 검토 선행
-- **after**: `moai-consultant:business-market-analyst` — 건축물 + 시세 데이터 기반 시장 분석
+- **after**: `moai-consultant:consult-market` — 건축물 + 시세 데이터 기반 시장 분석
 - **after**: `moai-analyst:office-public-data-court-auction-search` — 경매 매각공고와 건축물대장 교차 검토
 - **after**: `moai-officer:office-pdf-writer` — 건축물 종합카드·통계 PDF 보고서 생성
 - **after**: `moai-officer:office-xlsx-creator` — 노후건물·인허카 파이프라인 엑셀 정리

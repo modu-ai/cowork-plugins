@@ -13,7 +13,7 @@ user-invocable: false
 version: "1.0.0"
 ---
 
-> ⚠️ **개발 런타임 전용** — 이 스킬은 MoAI-ADK(Claude Code) 환경을 전제한다. Claude Cowork(Desktop)에서는 `.moai/config` 의존으로 동작하지 않을 수 있다. Desktop 사용자는 `moai-coworker:business-brand-identity`(브랜드 아이덴티티 산출물)를 사용한다.
+> ⚠️ **개발 런타임 전용** — 이 스킬은 MoAI-ADK(Claude Code) 환경을 전제한다. Claude Cowork(Desktop)에서는 `.moai/config` 의존으로 동작하지 않을 수 있다. Desktop 사용자는 `moai-coworker:collab-brand-identity`(브랜드 아이덴티티 산출물)를 사용한다.
 
 # moai-domain-brand-design
 

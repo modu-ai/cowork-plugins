@@ -404,7 +404,7 @@ Top 5에 대해 다음 정보 정리:
 - `book-chapter-writer` — 본문 챕터 집필 (출판사 통과 후)
 
 ### Alternative
-- `moai-consultant:business-kr-gov-grant` — 한국출판문화산업진흥원 지원사업 (출판 자금 지원)
+- `moai-consultant:consult-gov-grant` — 한국출판문화산업진흥원 지원사업 (출판 자금 지원)
 - `moai-accountant:finance-investor-relations` — 출판 펀딩 (텀블벅 등)
 
 ### 산출물 라우팅 (데이터 출력)

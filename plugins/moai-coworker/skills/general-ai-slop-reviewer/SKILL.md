@@ -292,7 +292,7 @@ Most productivity tools promise to save you time. Most of them don't. But after 
   content-blog → general-ai-slop-reviewer → (선택) media-higgsfield-image
 
 사업계획서(PPT):
-  business-strategy-planner → office-pptx-designer → general-ai-slop-reviewer
+  consult-strategy → office-pptx-designer → general-ai-slop-reviewer
 
 제품 랜딩:
   content-copywriting → marketing-landing-page → general-ai-slop-reviewer

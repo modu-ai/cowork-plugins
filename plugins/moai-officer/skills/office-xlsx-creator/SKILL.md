@@ -174,7 +174,7 @@ openpyxl 차트는 기본 형식만 지원합니다. 고급 차트(히스토그�
 - `moai-officer:office-docx-generator` - DOCX(Word) 문서 생성
 - `moai-officer:office-pptx-designer` - 발표용 PPT 슬라이드 생성
 - `moai-officer:office-hwpx-writer` - 한글(HWPX) 문서 생성
-- `moai-consultant:business-sbiz365-analyst` - 소상공인 상권·매출 데이터 분석 (엑셀 변환 가능)
+- `moai-consultant:consult-sbiz365` - 소상공인 상권·매출 데이터 분석 (엑셀 변환 가능)
 
 ## 기술 참조
 

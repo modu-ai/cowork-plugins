@@ -335,5 +335,5 @@ Anthropic 공식 발표(2026-04-17)에서 강조한 **코드 기반 프로토타
 | `moai-designer:design-system-prep` | 선행: 디자인 시스템 자산 합성 |
 | `moai-designer:design-gui-guide` | 참조: 패턴 3·6이 컴포넌트별 사용성 가이드라인(86종)으로 준거 |
 | `moai-designer:design-slop-check` | 후속: 결과 카피 검수 |
-| `moai-coworker:business-ux-designer` | 보조: Claude Design 외 UX 분석 |
-| `moai-coworker:business-ux-researcher` | 보조: 사용자 리서치 단계 |
+| `moai-coworker:collab-ux-design` | 보조: Claude Design 외 UX 분석 |
+| `moai-coworker:collab-ux-research` | 보조: 사용자 리서치 단계 |

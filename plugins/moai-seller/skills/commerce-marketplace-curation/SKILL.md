@@ -145,7 +145,7 @@ version: "1.0.0"
 - `moai-seller:commerce-product-photo-brief` — 라이프스타일 사진 컷 기획
 - `moai-seller:commerce-integrated-strategy` — 채널 믹스 전략
 - `moai-marketer:marketing-landing-page` — 브랜드 소개 자사몰
-- `moai-consultant:business-strategy-planner` — 사업 계획서 (입점 제안서 베이스)
+- `moai-consultant:consult-strategy` — 사업 계획서 (입점 제안서 베이스)
 
 ## 이 스킬을 사용하지 말아야 할 때
 

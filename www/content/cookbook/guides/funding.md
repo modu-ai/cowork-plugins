@@ -22,10 +22,10 @@ flowchart TD
 
 | 단계 | 스킬 | 용도 |
 |---|---|---|
-| 시장 분석 | `moai-consultant:business-market-analyst` | TAM/SAM/SOM, 경쟁사 매핑 |
+| 시장 분석 | `moai-consultant:consult-market` | TAM/SAM/SOM, 경쟁사 매핑 |
 | IR 덱 작성 | `moai-accountant:finance-investor-relations` | 시리즈 A/B 피칭 덱 + 재무 모델 |
-| 사업 전략 | `moai-consultant:business-strategy-planner` | BMC, OKR, 5년 로드맵 |
-| 정부지원사업 | `moai-consultant:business-kr-gov-grant` | K-Startup, 창업도약, 기보·신보 |
+| 사업 전략 | `moai-consultant:consult-strategy` | BMC, OKR, 5년 로드맵 |
+| 정부지원사업 | `moai-consultant:consult-gov-grant` | K-Startup, 창업도약, 기보·신보 |
 | 발표 자료화 | `moai-officer:office-pptx-designer` | 한국형 IR 슬라이드 디자인 |
 | AI 슬롭 검수 | `moai-coworker:general-ai-slop-reviewer` | 발송 전 자연어 톤 검수 |
 
@@ -49,7 +49,7 @@ flowchart TD
 {{< /terminal >}}
 
 체인:
-1. `business-market-analyst`
+1. `consult-market`
 2. `finance-investor-relations`
 3. `office-pptx-designer`
 4. `general-ai-slop-reviewer`
@@ -79,7 +79,7 @@ VC 투자와 별도로 정부지원사업은 비희석 자금으로 매년 검�
 > K-Startup, 창업도약패키지, 기보·신보 보증, 콘텐츠진흥원 등 — 마감일이 가까운 순으로 표로.
 {{< /terminal >}}
 
-`business-kr-gov-grant` 스킬이 K-Startup·BIZINFO·나라장터·창업진흥원을 통합 검색해 마감 임박 순으로 정리합니다.
+`consult-gov-grant` 스킬이 K-Startup·BIZINFO·나라장터·창업진흥원을 통합 검색해 마감 임박 순으로 정리합니다.
 
 ## 자주 겪는 실수
 
@@ -97,5 +97,5 @@ VC 투자와 별도로 정부지원사업은 비희석 자금으로 매년 검�
 
 ### Sources
 
-- moai-accountant 플러그인 [`finance-investor-relations`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-accountant/skills/finance-investor-relations/SKILL.md), [`business-kr-gov-grant`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-consultant/skills/business-kr-gov-grant/SKILL.md), [`business-market-analyst`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-consultant/skills/business-market-analyst/SKILL.md)
+- moai-accountant 플러그인 [`finance-investor-relations`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-accountant/skills/finance-investor-relations/SKILL.md), [`consult-gov-grant`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-consultant/skills/consult-gov-grant/SKILL.md), [`consult-market`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-consultant/skills/consult-market/SKILL.md)
 - [K-Startup 창업지원포털](https://www.k-startup.go.kr) · [BIZINFO](https://www.bizinfo.go.kr)

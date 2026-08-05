@@ -36,7 +36,7 @@ flowchart TD
 
 이 가이드에서는 사업계획서 한 권을 만들기 위해 네 개의 스킬을 차례로 통과시킵니다. 한 스킬로 끝내지 않는 이유는, 집을 짓는 일에 비유하면 쉽게 이해됩니다. 건축은 혼자 다 하는 게 아닙니다. 먼저 **설계도**(전략)를 그리는 설계사가 있고, 다음 **부지 조사**(시장 분석)를 하는 측량 전문가가 있고, 그 위에 **시공사**(문서 변환)가 도면대로 실제 집을 세우고, 마지막으로 **감리**(품질 검수)가 다 된 집을 돌며 흠집을 잡습니다. 사업계획서도 똑같습니다.
 
-각 단계는 서로 다른 일을 가장 잘하는 전문가에게 맡기는 구조입니다. `business-strategy-planner`는 "이 사업의 뼈대는 무엇인가"를 짜는 데 강하지만 파일로 저장하지는 못합니다. `business-market-analyst`는 시장 규모와 경쟁사를 조사하는 데 강하지만 글을 다듬지는 못합니다. `office-docx-generator`는 심사 양식에 맞춰 문서 파일로 뽑아내는 데 강하지만 전략을 기획하지는 못합니다. `general-ai-slop-reviewer`는 기계가 쓴 흔적을 사람 글처럼 다듬는 데만 쓰입니다. 한 스킬이 이 네 가지를 다 잘할 수는 없기 때문에, 각자의 장점만 순서대로 이어받는 파이프라인(작업이 한 방향으로 흘러가는 연결선)으로 조립합니다.
+각 단계는 서로 다른 일을 가장 잘하는 전문가에게 맡기는 구조입니다. `consult-strategy`는 "이 사업의 뼈대는 무엇인가"를 짜는 데 강하지만 파일로 저장하지는 못합니다. `consult-market`는 시장 규모와 경쟁사를 조사하는 데 강하지만 글을 다듬지는 못합니다. `office-docx-generator`는 심사 양식에 맞춰 문서 파일로 뽑아내는 데 강하지만 전략을 기획하지는 못합니다. `general-ai-slop-reviewer`는 기계가 쓴 흔적을 사람 글처럼 다듬는 데만 쓰입니다. 한 스킬이 이 네 가지를 다 잘할 수는 없기 때문에, 각자의 장점만 순서대로 이어받는 파이프라인(작업이 한 방향으로 흘러가는 연결선)으로 조립합니다.
 
 ```mermaid
 flowchart LR
@@ -79,8 +79,8 @@ flowchart LR
 strategy-planner → market-analyst → docx-generator → ai-slop-reviewer
 ```
 
-- `business-strategy-planner` — BMC·SWOT·OKR로 뼈대 작성
-- `business-market-analyst` — TAM/SAM/SOM·경쟁사·가격 전략
+- `consult-strategy` — BMC·SWOT·OKR로 뼈대 작성
+- `consult-market` — TAM/SAM/SOM·경쟁사·가격 전략
 - `office-docx-generator` — 심사 양식에 맞는 DOCX 변환
 - `general-ai-slop-reviewer` — 기계적 문장 제거
 
@@ -112,7 +112,7 @@ strategy-planner → market-analyst → docx-generator → ai-slop-reviewer
 - **OKR**(목표·핵심 결과) — "이번 분기에 무엇을, 어떤 숫자로 달성할 것인가"를 적는 목표 설정 틀.
 {{< /hint >}}
 
-이 약자들이 어려워 보여도 `business-strategy-planner`와 `business-market-analyst`가 알아서 칸을 채워줍니다. 초보자는 "어떤 질문에 답하고 있는지"만 이해해도 뼈대가 믿을 수 있는 이유가 보입니다.
+이 약자들이 어려워 보여도 `consult-strategy`와 `consult-market`가 알아서 칸을 채워줍니다. 초보자는 "어떤 질문에 답하고 있는지"만 이해해도 뼈대가 믿을 수 있는 이유가 보입니다.
 
 ### 2. 뼈대 생성
 
@@ -171,7 +171,7 @@ AI가 쓴 사업계획서 글도 똑같습니다. 내용은 충실해도 문장 
 
 {{< hint type="warning" >}}
 **이슈 2 — 재무 추정이 비현실적.**
-`business-strategy-planner`는 낙관적 가정을 쓰는 경향이 있습니다. 월 성장률 10%를 넘는 가정은 심사에서 감점 요인이므로 직접 조정하세요.
+`consult-strategy`는 낙관적 가정을 쓰는 경향이 있습니다. 월 성장률 10%를 넘는 가정은 심사에서 감점 요인이므로 직접 조정하세요.
 {{< /hint >}}
 
 {{< hint type="note" >}}
@@ -181,7 +181,7 @@ AI가 쓴 사업계획서 글도 똑같습니다. 내용은 충실해도 문장 
 
 ## 응용 변형
 
-- **정부 지원사업 매칭** — `business-kr-gov-grant` 스킬로 내 아이템에 맞는 공고를 먼저 찾고 그 양식에 맞춰 진행합니다.
+- **정부 지원사업 매칭** — `consult-gov-grant` 스킬로 내 아이템에 맞는 공고를 먼저 찾고 그 양식에 맞춰 진행합니다.
 - **피칭 덱 변환** — 완성된 DOCX를 `investor-relations + pptx-designer`로 IR 덱으로 변환 → [IR 덱 제작](../ir-deck/) 참고.
 
 ---

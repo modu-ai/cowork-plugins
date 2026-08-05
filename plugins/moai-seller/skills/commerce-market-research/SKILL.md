@@ -135,7 +135,7 @@ version: "1.0.0"
 
 ## 관련 스킬
 
-체이닝 순서: **commerce-market-research** → `commerce-jtbd-persona --mode jtbd` → `commerce-jtbd-persona --mode persona` → `commerce-detail-page-copy --mode diagnose/copy` → `commerce-product-naming` → `commerce-channel-message` → `commerce-integrated-strategy`
+체이닝 순서: **commerce-market-research** → `commerce-jtbd-persona --mode jtbd` → `commerce-jtbd-persona --mode persona` → `commerce-detail-page-copy --mode diagnose/copy` → `commerce-product-naming` → `cs-channel-message` → `commerce-integrated-strategy`
 
 - `commerce-jtbd-persona` — 시장조사 결과를 입력으로 JTBD 9개 도출 (다음 단계)
 - `commerce-product-naming` — 키워드 기반 상품명 3안 생성
@@ -257,7 +257,7 @@ USP "100% 비건 + 한국 농가 직거래 + 30일 환불"
   ↓
 [commerce-product-naming] "[비건 인증] 한국 농가 직거래 비건 세럼 [30일 환불]"
   ↓
-[commerce-channel-message] 검색광고 "비건 세럼 한국 농가 직거래"
+[cs-channel-message] 검색광고 "비건 세럼 한국 농가 직거래"
                              CRM "지연 회원님, 동물 실험 0건 + 30일 환불"
   ↓
 [commerce-detail-page-copy] Hero "비건 인증 + 한국 농가" / Risk "30일 이유 불문 환불"
@@ -280,6 +280,6 @@ USP "100% 비건 + 한국 농가 직거래 + 30일 환불"
   ↓
 [4] commerce-jtbd-persona → 페르소나 segment 매칭
   ↓
-[5] commerce-product-naming + commerce-channel-message + commerce-detail-page-copy
+[5] commerce-product-naming + cs-channel-message + commerce-detail-page-copy
     모두 USP 일관성 검증
 ```

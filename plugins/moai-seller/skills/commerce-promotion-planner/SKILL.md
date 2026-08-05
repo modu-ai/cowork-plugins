@@ -233,9 +233,9 @@ version: "1.0.0"
 ## 관련 스킬
 
 체이닝 순서:
-`commerce-promotion-planner` (프로모션 기획) → `commerce-channel-message` (메시지 카피) → `commerce-message-compliance-kr` (법규 게이트) → 실제 발송
+`commerce-promotion-planner` (프로모션 기획) → `cs-channel-message` (메시지 카피) → `commerce-message-compliance-kr` (법규 게이트) → 실제 발송
 
-- `commerce-channel-message` — 프로모션 채널 메시지 15종 + 앱 푸시 채널 카피 (앱 푸시 기획 모드 포함)
+- `cs-channel-message` — 프로모션 채널 메시지 15종 + 앱 푸시 채널 카피 (앱 푸시 기획 모드 포함)
 - `commerce-message-compliance-kr` — 발송 전 정통망법 게이트 (필수)
 - `commerce-integrated-strategy` — 매출 향상 1장에 본 프로모션 포함
 - `commerce-jtbd-persona` — 타겟 세그먼트 페르소나
@@ -243,7 +243,7 @@ version: "1.0.0"
 ## 이 스킬을 사용하지 말아야 할 때
 
 - **거시 매출 전략 (분기·연간)**: `commerce-integrated-strategy` 사용
-- **메시지 카피 작성**: `commerce-channel-message` 사용
+- **메시지 카피 작성**: `cs-channel-message` 사용
 - **광고 캠페인 기획 (광고 운영)**: `marketing-campaign-planner` 사용
 - **이메일 시퀀스 자체**: `content-email-sequence` 사용
 

@@ -191,10 +191,10 @@ JTBD와 상품 정보를 기반으로 이커머스 플랫폼 최적화 상품명
 
 ## 관련 스킬
 
-체이닝 순서: `commerce-jtbd-persona --mode jtbd` → **commerce-product-naming** → `commerce-channel-message` → `commerce-integrated-strategy`
+체이닝 순서: `commerce-jtbd-persona --mode jtbd` → **commerce-product-naming** → `cs-channel-message` → `commerce-integrated-strategy`
 
 - `commerce-jtbd-persona --mode jtbd` — JTBD (이전 단계, 상품명 방향성 입력)
-- `commerce-channel-message` — 상품명 확정 후 채널별 메시지 15종 생성 (다음 단계)
+- `cs-channel-message` — 상품명 확정 후 채널별 메시지 15종 생성 (다음 단계)
 - `commerce-integrated-strategy` — 상품명 포함 전략 1장 종합
 - `commerce-season-calendar` — 연간 시즌 캘린더 (트렌드 변환 모드의 시즌 키워드 입력)
 - `moai-coworker:general-ai-slop-reviewer` — 트렌드 변환 모드 해시태그·블로그 제목 검수 (자동 체인)

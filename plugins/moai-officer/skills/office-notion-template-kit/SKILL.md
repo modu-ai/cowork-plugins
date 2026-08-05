@@ -97,7 +97,7 @@ version: "1.0.0"
 - **moai-coworker:office-goal-planner**: 목표·핵심 결과를 노션 DB로 관리
 - **moai-coworker:office-retro-builder**: 회고 양식을 노션 회고 DB로 구조화
 - **moai-coworker:office-habit-routine**: 습관 트래커를 노션 뷰로 시각화
-- **moai-coworker:business-productivity-weekly-report**: 업무일지 DB를 주간보고 작성에 활용
+- **moai-coworker:collab-productivity-report**: 업무일지 DB를 주간보고 작성에 활용
 
 ## 이 스킬을 사용하지 말아야 할 때
 

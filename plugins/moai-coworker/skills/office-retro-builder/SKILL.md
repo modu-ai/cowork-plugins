@@ -93,7 +93,7 @@ version: "1.0.0"
 
 - **moai-coworker:office-goal-planner**: 회고에서 나온 다음 행동을 목표·계획으로 전환
 - **moai-coworker:office-habit-routine**: 회고 루틴 자체를 습관으로 정착
-- **moai-coworker:business-productivity-weekly-report**: 업무 주간보고와 한 주 회고를 함께 운영
+- **moai-coworker:collab-productivity-report**: 업무 주간보고와 한 주 회고를 함께 운영
 - **moai-accountant:finance-household-budget**: 소비 회고를 개인 회고 루틴에 통합
 
 ### 후처리 체인 (회고문(한 줄·키워드 회고) 등 서술형 산출물)

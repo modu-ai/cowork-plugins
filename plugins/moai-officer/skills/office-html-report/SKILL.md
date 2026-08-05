@@ -19,7 +19,7 @@ version: "1.0.0"
 ## 목적과 범위
 
 `moai-officer:office-html-report`는 cowork 텍스트 산출 파이프라인의 **터미널 렌더러**입니다.
-`moai-coworker:business-executive-summary`, `moai-accountant:finance-financial-statements`, `moai-consultant:business-sbiz365-analyst` 등이 생성한 마크다운 보고서를 **단일 파일·자체 완결형(self-contained) HTML**로 변환합니다.
+`moai-coworker:collab-exec-summary`, `moai-accountant:finance-financial-statements`, `moai-consultant:consult-sbiz365` 등이 생성한 마크다운 보고서를 **단일 파일·자체 완결형(self-contained) HTML**로 변환합니다.
 
 **핵심 원칙**:
 - 외부 JS 라이브러리(Chart.js, D3, htmx) 0 의존
@@ -59,9 +59,9 @@ version: "1.0.0"
 
 | 모드 | 구조 섹션 | 대상 스킬 |
 |------|-----------|-----------|
-| **`status`** | 메트릭 카드 4개 · 하이라이트 · 완료 테이블 · Velocity SVG 막대 차트 · Carryover | `moai-coworker:business-executive-summary`, `moai-officer:office-daily-briefing` |
+| **`status`** | 메트릭 카드 4개 · 하이라이트 · 완료 테이블 · Velocity SVG 막대 차트 · Carryover | `moai-coworker:collab-exec-summary`, `moai-officer:office-daily-briefing` |
 | **`incident`** | TL;DR 다크 배너 · 타임라인 · 로그 발췌 `<details>` · 코드 diff 패널 · 영향 테이블 · 액션 체크리스트 | `moai-lawyer:legal-compliance-check` |
-| **`plan`** | 요약 KPI 스트립 · 마일스톤 수직 타임라인 · 데이터 플로우 SVG · 슬라이스 테이블 · 리스크 그리드 · 성공 지표 | `moai-consultant:business-sbiz365-analyst` |
+| **`plan`** | 요약 KPI 스트립 · 마일스톤 수직 타임라인 · 데이터 플로우 SVG · 슬라이스 테이블 · 리스크 그리드 · 성공 지표 | `moai-consultant:consult-sbiz365` |
 | **`explainer`** | 사이드 네비 · `<details>` 접이식 단계 · 탭 코드 블록(vanilla JS) · FAQ 아코디언 · 콜아웃 박스 | `moai-coworker:*`, `moai-coworker:*` |
 | **`financial`** | KPI 카드 4개 · 손익계산서 테이블(항목/당기/전기/증감/증감률) · Variance SVG 수평 막대 차트 · 주석 패널 | `moai-accountant:finance-financial-statements` |
 | **`pr`** | TL;DR · PR 메타 행(파일수·+/−·브랜치) · Before/After 2단 카드 · 파일 투어 `<details>` · 핵심 포인트 · 테스트 체크리스트 · 롤아웃 단계 | `moai-accountant:finance-investor-relations` |
@@ -253,9 +253,9 @@ PR #312 실시간 알림 채널 통합 내용을 HTML 리뷰 문서로 만들어
 
 | 컨슈머 스킬 | 적합 모드 | 입력 파일 | 렌더링 출력 | 호환성 |
 |-------------|-----------|-----------|-------------|--------|
-| `moai-coworker:business-executive-summary` | `status` | [`references/integration-tests/executive-summary-input.md`](references/integration-tests/executive-summary-input.md) | [`references/integration-tests/executive-summary-rendered.html`](references/integration-tests/executive-summary-rendered.html) | ★★★★☆ (4/5) |
+| `moai-coworker:collab-exec-summary` | `status` | [`references/integration-tests/executive-summary-input.md`](references/integration-tests/executive-summary-input.md) | [`references/integration-tests/executive-summary-rendered.html`](references/integration-tests/executive-summary-rendered.html) | ★★★★☆ (4/5) |
 | `moai-accountant:finance-financial-statements` | `financial` | [`references/integration-tests/financial-statements-input.md`](references/integration-tests/financial-statements-input.md) | [`references/integration-tests/financial-statements-rendered.html`](references/integration-tests/financial-statements-rendered.html) | ★★★★☆ (4/5) |
-| `moai-consultant:business-sbiz365-analyst` | `plan` | [`references/integration-tests/sbiz365-analyst-input.md`](references/integration-tests/sbiz365-analyst-input.md) | [`references/integration-tests/sbiz365-analyst-rendered.html`](references/integration-tests/sbiz365-analyst-rendered.html) | ★★★★☆ (4/5) |
+| `moai-consultant:consult-sbiz365` | `plan` | [`references/integration-tests/sbiz365-analyst-input.md`](references/integration-tests/sbiz365-analyst-input.md) | [`references/integration-tests/sbiz365-analyst-rendered.html`](references/integration-tests/sbiz365-analyst-rendered.html) | ★★★★☆ (4/5) |
 | `moai-officer:office-daily-briefing` | `status` (daily variant) | [`references/integration-tests/daily-briefing-input.md`](references/integration-tests/daily-briefing-input.md) | [`references/integration-tests/daily-briefing-rendered.html`](references/integration-tests/daily-briefing-rendered.html) | ★★★★☆ (4/5) |
 
 상세 호환성 분석: [`references/integration-tests/COMPATIBILITY.md`](references/integration-tests/COMPATIBILITY.md)

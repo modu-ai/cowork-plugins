@@ -140,7 +140,7 @@ curl -fsS --get 'https://k-skill-proxy.nomadamas.org/v1/real-estate/officetel/re
 ## 관련 스킬 체이닝
 
 - **before**: `moai-analyst:office-public-data-public-data` — 인구·가구 통계로 입지 분석 보조
-- **after**: `moai-consultant:business-market-analyst` — 시세 데이터 기반 시장 분석
+- **after**: `moai-consultant:consult-market` — 시세 데이터 기반 시장 분석
 - **after**: `moai-accountant:finance-investor-relations` → `moai-officer:office-pptx-designer` — 투자 IR 자료
 - **after**: `moai-marketer:marketing-landing-page` — 부동산 마케팅 페이지 데이터 입력
 

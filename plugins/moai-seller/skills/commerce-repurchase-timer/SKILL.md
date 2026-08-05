@@ -111,7 +111,7 @@ version: "1.0.0"
 ```
 
 **해석 기준**:
-- 코호트 M+1이 40% 이하 → onboarding 시퀀스 부족 (commerce-channel-message Activation 보강)
+- 코호트 M+1이 40% 이하 → onboarding 시퀀스 부족 (cs-channel-message Activation 보강)
 - M+3에서 25% 이하 → 골든타임 트리거 미작동 (본 스킬 도입 필요)
 - M+12에서 10% 이하 → 휴면 진입 후 윈백 실패 (loyalty 프로그램 검토)
 
@@ -201,18 +201,18 @@ version: "1.0.0"
 ## 관련 스킬
 
 체이닝:
-`commerce-repurchase-timer` (타이밍 계산) → `moai-cs:commerce-channel-message` (앱 푸시·카톡·이메일 카피) → `commerce-message-compliance-kr` (법규 게이트) → 실제 발송
+`commerce-repurchase-timer` (타이밍 계산) → `moai-cs:cs-channel-message` (앱 푸시·카톡·이메일 카피) → `commerce-message-compliance-kr` (법규 게이트) → 실제 발송
 
 - `commerce-ltv-cac-architect` — 전체 LTV/CAC 모델 (페어, 다른 책임)
-- `commerce-channel-message` — 구간별 앱 푸시·카톡·이메일 카피 (앱 푸시 기획 모드 포함)
+- `cs-channel-message` — 구간별 앱 푸시·카톡·이메일 카피 (앱 푸시 기획 모드 포함)
 - `commerce-message-compliance-kr` — 발송 전 정통망법 게이트
 
 ## 이 스킬을 사용하지 말아야 할 때
 
 - **전체 LTV/CAC 분석**: `commerce-ltv-cac-architect` 사용
 - **신규 고객 획득**: 본 스킬은 재구매 전용. 신규는 `marketing-campaign-planner` 사용
-- **단순 메시지 카피 작성**: `commerce-channel-message` 사용 (앱 푸시 기획 모드 포함)
-- **첫 구매 onboarding**: `commerce-channel-message` Activation 단계 사용
+- **단순 메시지 카피 작성**: `cs-channel-message` 사용 (앱 푸시 기획 모드 포함)
+- **첫 구매 onboarding**: `cs-channel-message` Activation 단계 사용
 
 ## 참고 자료
 

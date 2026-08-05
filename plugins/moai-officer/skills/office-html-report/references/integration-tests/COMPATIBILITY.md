@@ -5,7 +5,7 @@
 
 ---
 
-## 1. moai-coworker:business-executive-summary → mode=status
+## 1. moai-coworker:collab-exec-summary → mode=status
 
 ### 적합 모드
 
@@ -25,21 +25,21 @@
 
 ### 매핑되지 않은 섹션
 
-- **의사결정 옵션 레이아웃**: Now What의 옵션 A/B 구조는 status 템플릿의 Carryover 슬롯을 재활용했으나, 원본 `shipped_table`(완료 테이블)이 business-executive-summary 출력에는 존재하지 않아 빈 슬롯으로 남음.
-- **Velocity 차트 원본 데이터**: business-executive-summary는 시계열 주간 데이터를 출력하지 않아 차트 데이터를 수동으로 재구성해야 함.
-- **담당자(author) 컬럼**: shipped_table의 담당자 정보가 business-executive-summary 출력에는 없음.
+- **의사결정 옵션 레이아웃**: Now What의 옵션 A/B 구조는 status 템플릿의 Carryover 슬롯을 재활용했으나, 원본 `shipped_table`(완료 테이블)이 collab-exec-summary 출력에는 존재하지 않아 빈 슬롯으로 남음.
+- **Velocity 차트 원본 데이터**: collab-exec-summary는 시계열 주간 데이터를 출력하지 않아 차트 데이터를 수동으로 재구성해야 함.
+- **담당자(author) 컬럼**: shipped_table의 담당자 정보가 collab-exec-summary 출력에는 없음.
 
 ### 권장 사용법
 
 ```
-moai-coworker:business-executive-summary → moai-coworker:general-ai-slop-reviewer → moai-officer:office-html-report mode=status
+moai-coworker:collab-exec-summary → moai-coworker:general-ai-slop-reviewer → moai-officer:office-html-report mode=status
 ```
 
-재무 수치 4개를 `{{#metrics}}` 슬롯에 수동 지정하거나, `business-executive-summary` 출력의 `## What` 섹션에서 굵은 수치를 자동 추출하도록 프롬프트 지정 권장.
+재무 수치 4개를 `{{#metrics}}` 슬롯에 수동 지정하거나, `collab-exec-summary` 출력의 `## What` 섹션에서 굵은 수치를 자동 추출하도록 프롬프트 지정 권장.
 
 ### 향후 개선 메모
 
-- business-executive-summary가 K-IFRS 재무 지표를 정형화된 표로 출력할 경우 status 템플릿의 `metrics` 슬롯 자동 추출 가능.
+- collab-exec-summary가 K-IFRS 재무 지표를 정형화된 표로 출력할 경우 status 템플릿의 `metrics` 슬롯 자동 추출 가능.
 - "Now What" 옵션 패턴을 위한 `decisions` 전용 섹션 추가 검토 (status 템플릿 v2 대상).
 - 헤드라인 1줄을 `eyebrow`가 아닌 별도 call-out 배너로 강조하는 변형 검토.
 
@@ -85,11 +85,11 @@ moai-accountant:finance-financial-statements → moai-officer:office-html-report
 
 ---
 
-## 3. moai-consultant:business-sbiz365-analyst → mode=plan
+## 3. moai-consultant:consult-sbiz365 → mode=plan
 
 ### 적합 모드
 
-`plan` 모드 — business-sbiz365-analyst의 9개 섹션 보고서 구조(Executive Summary/분석 개요/각 분석/타당성 평가/리스크/결론)가 plan 템플릿의 마일스톤·데이터흐름·리스크·성공지표 구조에 잘 대응됨.
+`plan` 모드 — consult-sbiz365의 9개 섹션 보고서 구조(Executive Summary/분석 개요/각 분석/타당성 평가/리스크/결론)가 plan 템플릿의 마일스톤·데이터흐름·리스크·성공지표 구조에 잘 대응됨.
 
 ### 매핑된 입력 슬롯
 
@@ -111,14 +111,14 @@ moai-accountant:finance-financial-statements → moai-officer:office-html-report
 ### 권장 사용법
 
 ```
-moai-consultant:business-sbiz365-analyst → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean → moai-officer:office-html-report mode=plan
+moai-consultant:consult-sbiz365 → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean → moai-officer:office-html-report mode=plan
 ```
 
 sbiz365 보고서의 "Executive Summary" + "창업 타당성 평가" + "리스크" + "결론" 핵심 섹션만 추출하여 plan 모드 렌더링 권장. 5개 상세 분석 섹션은 마크다운 원본 보고서(docx)에서 참조하도록 안내.
 
 ### 향후 개선 메모
 
-- business-sbiz365-analyst의 4축 평가 점수(100점 만점)를 `summary_cells`의 accent 스타일로 자동 강조하는 프롬프트 패턴 문서화 권장.
+- consult-sbiz365의 4축 평가 점수(100점 만점)를 `summary_cells`의 accent 스타일로 자동 강조하는 프롬프트 패턴 문서화 권장.
 - 분석 섹션별 수치 표를 컴팩트하게 표현하는 "data-table" 컴포넌트 슬롯 추가 검토.
 - 소상공인365 공공데이터 상권 영역을 SVG 지도 인라인으로 시각화하는 확장 검토 (오픈 데이터 좌표 활용).
 
@@ -168,9 +168,9 @@ moai-officer:office-daily-briefing → moai-officer:office-html-report mode=stat
 
 | 컨슈머 스킬 | 적합 모드 | 핵심 슬롯 매핑 수 | 미매핑 섹션 수 | 호환성 점수 (0-5) |
 |---|---|---|---|---|
-| moai-coworker:business-executive-summary | status | 7개 | 3개 | **4** |
+| moai-coworker:collab-exec-summary | status | 7개 | 3개 | **4** |
 | moai-accountant:finance-financial-statements | financial | 6개 | 4개 | **4** |
-| moai-consultant:business-sbiz365-analyst | plan | 6개 | 3개 | **4** |
+| moai-consultant:consult-sbiz365 | plan | 6개 | 3개 | **4** |
 | moai-officer:office-daily-briefing | status | 5개 | 3개 | **4** |
 
 **점수 기준**:
@@ -188,8 +188,8 @@ moai-officer:office-daily-briefing → moai-officer:office-html-report mode=stat
 
 **주요 제약 사항**:
 - finance-financial-statements의 재무제표 전체 세트(상태표+현금흐름표)는 financial 템플릿 단일 파일 50KB 제한으로 손익계산서 핵심 항목 위주로 압축 필요.
-- business-sbiz365-analyst의 5대 상세 분석 수치표는 plan 모드 내에 전부 수용하기 어렵고, 핵심 요약 + 타당성 판정 + 리스크 + 결론 중심 렌더링 권장.
-- business-executive-summary의 Now What 의사결정 옵션 구조는 carryover 슬롯 재활용으로 표현하나, 향후 `decisions` 전용 컴포넌트 추가 시 더 자연스러운 렌더링 가능.
+- consult-sbiz365의 5대 상세 분석 수치표는 plan 모드 내에 전부 수용하기 어렵고, 핵심 요약 + 타당성 판정 + 리스크 + 결론 중심 렌더링 권장.
+- collab-exec-summary의 Now What 의사결정 옵션 구조는 carryover 슬롯 재활용으로 표현하나, 향후 `decisions` 전용 컴포넌트 추가 시 더 자연스러운 렌더링 가능.
 - office-daily-briefing은 경쟁사·규제 상세 섹션을 위한 status 템플릿 확장 여지가 있으나, 현재 구조로도 핵심 정보 전달에 충분.
 
 ---

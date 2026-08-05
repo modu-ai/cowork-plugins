@@ -237,12 +237,12 @@ mode=persona 산출물은 텍스트 페르소나 프로필이므로 `moai-cowork
 
 ## 관련 스킬
 
-체이닝 순서: `commerce-market-research` → **commerce-jtbd-persona --mode jtbd** → **commerce-jtbd-persona --mode persona** → `commerce-detail-page-copy --mode copy` → `commerce-product-naming` → `commerce-channel-message`
+체이닝 순서: `commerce-market-research` → **commerce-jtbd-persona --mode jtbd** → **commerce-jtbd-persona --mode persona** → `commerce-detail-page-copy --mode copy` → `commerce-product-naming` → `cs-channel-message`
 
 - `commerce-market-research` — 시장조사 1장 (이전 단계, mode=jtbd 입력)
 - `commerce-detail-page-copy --mode copy` — 페르소나 기반 카피 2세트 생성
 - `commerce-product-naming` — JTBD 기반 상품명 3안
-- `commerce-channel-message` — JTBD·페르소나 기반 NCM 채널별 메시지 15종
+- `cs-channel-message` — JTBD·페르소나 기반 NCM 채널별 메시지 15종
 
 ## 이 스킬을 사용하지 말아야 할 때
 

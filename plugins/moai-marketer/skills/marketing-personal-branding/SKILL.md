@@ -12,7 +12,7 @@ description: |
   - "직장인인데 부업으로 개인 브랜드 만들고 싶어"
   - "네이버 블로그로 전문가 이미지 구축하고 싶어"
   자기 분석·포지셔닝·콘텐츠 주제·채널 운영 전략을 문서로 묶고, 텍스트 산출물은 moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean으로 다듬습니다. 채널별 콘텐츠 제작은 content-sns-content로 이어집니다.
-  [책임 경계] vs moai-coworker:business-brand-identity: 이 스킬=개인·전문가 브랜드, 저 스킬=기업·제품 브랜드.
+  [책임 경계] vs moai-coworker:collab-brand-identity: 이 스킬=개인·전문가 브랜드, 저 스킬=기업·제품 브랜드.
 version: "1.0.0"
 ---
 
@@ -202,7 +202,7 @@ version: "1.0.0"
 
 | 스킬 | 사용 시점 |
 |------|----------|
-| `moai-coworker:business-brand-identity` | 기업/제품 브랜딩 |
+| `moai-coworker:collab-brand-identity` | 기업/제품 브랜딩 |
 | `moai-marketer:content-sns-content` | SNS 콘텐츠 단독 작성 |
 | `moai-coworker:general-ai-slop-reviewer` | 사후 체이닝(필수): 퍼스널 브랜딩 텍스트의 AI 패턴 검수 |
 | `moai-writer:general-humanize-korean` | 사후 체이닝(필수): general-ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |

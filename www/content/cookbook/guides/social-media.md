@@ -11,7 +11,7 @@ flowchart TD
    A["content-sns-content<br/>메시지 코어 + 채널별 변형"] --> C{"포맷"}
    C -- "카드뉴스" --> D["content-card-news"]
    C -- "텍스트" --> E["general-ai-slop-reviewer"]
-   A -. "브랜드 가이드" .-> F["business-brand-identity"]
+   A -. "브랜드 가이드" .-> F["collab-brand-identity"]
 
    style A fill:#e6e6e6,stroke:#757575,color:#09110f
    style E fill:#e8f1ec,stroke:#265240,color:#09110f
@@ -24,7 +24,7 @@ flowchart TD
 | `moai-marketer:content-sns-content` | 인스타·스레드·X·LinkedIn·유튜브 쇼츠·카카오·네이버 7개 + 콘텐츠 달력 |
 | `moai-marketer:content-card-news` | 인스타 카드뉴스·캐러셀 |
 | `moai-marketer:content-editorial-calendar` | 월간 발행 달력·시즌 이슈 배치 |
-| `moai-coworker:business-brand-identity` | 톤앤매너·비주얼 가이드라인 |
+| `moai-coworker:collab-brand-identity` | 톤앤매너·비주얼 가이드라인 |
 
 ## 채널별 권장 패턴
 

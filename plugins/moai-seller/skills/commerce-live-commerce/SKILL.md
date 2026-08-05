@@ -132,7 +132,7 @@ version: "1.0.0"
 ## 관련 스킬
 
 - `moai-seller:commerce-detail-page-copy` — 상세페이지 카피
-- `moai-cs:commerce-channel-message` — 광고·이메일 카피
+- `moai-cs:cs-channel-message` — 광고·이메일 카피
 - `moai-seller:commerce-integrated-strategy` — 전체 채널 전략
 - `moai-marketer:content-sns-content` — SNS 콘텐츠 (라이브 클립 재가공)
 - 라이브 후 짧은 영상 콘텐츠 — **Higgsfield MCP**(DOP·Soul) 직접 호출

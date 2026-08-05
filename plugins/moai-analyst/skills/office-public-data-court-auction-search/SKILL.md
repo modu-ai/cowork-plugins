@@ -120,7 +120,7 @@ node scripts/court_auction_example.js
 
 - **before**: `moai-analyst:office-public-data-real-estate-search` — 매물 시세 비교 (인근 실거래가)
 - **after**: `moai-accountant:finance-financial-statements` — 경매 투자 타당성 분석
-- **after**: `moai-coworker:business-executive-summary` — 경매 후보 1pager
+- **after**: `moai-coworker:collab-exec-summary` — 경매 후보 1pager
 - **after**: `moai-officer:office-xlsx-creator` — 매각공고 일괄 엑셀화
 
 ## Done when

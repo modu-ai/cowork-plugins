@@ -373,7 +373,7 @@ USP의 핵심은 "다름". 일본·미국 출판 사례에서 반복 확인된 �
 
 ### Alternative
 - `moai-marketer:content-copywriting` — 도서 외 일반 카피 (광고·랜딩 페이지)
-- `moai-consultant:business-strategy-planner` — 전략 컨셉 (사업·서비스 대상, 책 아님)
+- `moai-consultant:consult-strategy` — 전략 컨셉 (사업·서비스 대상, 책 아님)
 - `moai-marketer:marketing-campaign-planner` — 마케팅 캠페인 컨셉
 
 ### Post (검수 — 정규 체인)

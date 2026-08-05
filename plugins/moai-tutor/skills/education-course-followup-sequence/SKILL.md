@@ -186,7 +186,7 @@ Step 4: .md 파일 저장 + 발송 가이드 출력
 - 우수 후기 → 차기 모집 랜딩·블로그·SNS 1순위 자산
 - 영상 후기 → 인스타·릴스·유튜브 쇼츠로 재가공 (`moai-coworker` 활용)
 - 심층 인터뷰 → 블로그 사례 기사 (`moai-marketer:content-blog`) → SEO 누적
-- 정량 후기 → 사업계획서·IR·강의 소개서 신뢰 지표 (`moai-consultant:business-strategy-planner`)
+- 정량 후기 → 사업계획서·IR·강의 소개서 신뢰 지표 (`moai-consultant:consult-strategy`)
 
 ---
 

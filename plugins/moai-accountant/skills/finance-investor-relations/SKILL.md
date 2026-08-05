@@ -354,9 +354,9 @@ AI옵틱스: 중가, 고기능 (차별화)
 
 ## 관련 스킬
 
-- **moai-consultant:business-startup-launchpad**: 스타트업 초기 IR 자료 및 재무 모델
-- **moai-consultant:business-market-analyst**: 시장 규모 분석 및 TAM/SAM/SOM
-- **moai-consultant:business-strategy-planner**: 비즈니스 모델 및 성장 전략
+- **moai-consultant:consult-startup**: 스타트업 초기 IR 자료 및 재무 모델
+- **moai-consultant:consult-market**: 시장 규모 분석 및 TAM/SAM/SOM
+- **moai-consultant:consult-strategy**: 비즈니스 모델 및 성장 전략
 - **moai-officer:office-pptx-designer**: IR 덱 Markdown → PPT 변환
 - **moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean**: 생성된 IR 자료 AI 패턴 검수 후 한국어 표현을 자연스럽게 다듬습니다 (필수)
 

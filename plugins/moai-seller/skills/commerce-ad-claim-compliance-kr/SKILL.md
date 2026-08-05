@@ -78,7 +78,7 @@ version: "1.0.0"
 | 5 | 배송비·반품비 부담 주체 고지 | 전상법 제13조 + 제18조 | 반품 배송비 금액·부담 주체 미고지 시 WARN |
 | 6 | 재화 공급(배송) 시기 고지 | 전상법 제13조 | 배송 예정 기간 미표기 시 WARN |
 
-> 단순 변심 반품 시 반품비는 소비자 부담이 가능하지만, **금액과 부담 주체를 사전에 고지한 경우에 한합니다**. 하자·오배송 반품비는 판매자 부담입니다(전상법 제18조 취지, 세부 분쟁 기준은 소비자분쟁해결기준 — `moai-cs:business-draft-response` references/kr-ecommerce-cs-law.md 참조).
+> 단순 변심 반품 시 반품비는 소비자 부담이 가능하지만, **금액과 부담 주체를 사전에 고지한 경우에 한합니다**. 하자·오배송 반품비는 판매자 부담입니다(전상법 제18조 취지, 세부 분쟁 기준은 소비자분쟁해결기준 — `moai-cs:cs-draft-response` references/kr-ecommerce-cs-law.md 참조).
 
 ## 워크플로우
 
@@ -169,7 +169,7 @@ version: "1.0.0"
 - `moai-lawyer:legal-mfds-safety` — 식약처 기능성 원료·회수·부적합 실측 조회
 - `moai-lawyer:legal-compliance-check` — 사업 전반 컴플라이언스 점검
 - `commerce-detail-page-copy` — 상세페이지 카피 작성 (이전 단계)
-- `moai-cs:business-draft-response` — 청약철회·반품 CS 응답 (references/kr-ecommerce-cs-law.md 공유)
+- `moai-cs:cs-draft-response` — 청약철회·반품 CS 응답 (references/kr-ecommerce-cs-law.md 공유)
 
 ## 참고 자료
 

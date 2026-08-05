@@ -155,7 +155,7 @@ version: "1.0.0"
 [광고 운영] commerce-marketplace-coupang-ads ← ← 본 스킬 ← ←
             ↓ (광고 분석 결과 기반)
         commerce-detail-page-copy --mode diagnose (CTR/CVR 진단)
-        commerce-channel-message (NCM 15종 재생성)
+        cs-channel-message (NCM 15종 재생성)
         commerce-margin-calculator (엔드 ROAS 재산정)
 ```
 

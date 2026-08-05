@@ -162,7 +162,7 @@ chain:
 
 | Chain | Steps | Status |
 |-------|-------|--------|
-| 사업계획서(PPT) | business-strategy-planner → office-pptx-designer → general-ai-slop-reviewer | 검증 대상 |
+| 사업계획서(PPT) | consult-strategy → office-pptx-designer → general-ai-slop-reviewer | 검증 대상 |
 | 블로그 발행 | content-blog → general-ai-slop-reviewer → (optional) media-higgsfield-image | 검증 대상 |
 | 제품 랜딩 | content-copywriting → marketing-landing-page → general-ai-slop-reviewer | 검증 대상 |
 
@@ -340,7 +340,7 @@ test_cases:
 ## 사용 예시
 
 **예시 1: 신규 스킬 A/B 테스트**
-> "general-skill-tester로 business-sales-playbook 스킬 A/B 테스트해줘"
+> "general-skill-tester로 collab-sales-playbook 스킬 A/B 테스트해줘"
 
 **예시 2: 회귀 테스트**
 > "content-blog 스킬 수정했는데 회귀 테스트해줘"
@@ -349,7 +349,7 @@ test_cases:
 > "content-blog → general-ai-slop-reviewer 체인 테스트 실행해줘"
 
 **예시 4: 루브릭 단독 평가**
-> "business-kr-gov-grant 스킬을 4차원 루브릭으로만 평가해줘"
+> "consult-gov-grant 스킬을 4차원 루브릭으로만 평가해줘"
 
 ## 출력 형식
 

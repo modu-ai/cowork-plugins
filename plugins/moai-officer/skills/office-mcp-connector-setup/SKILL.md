@@ -256,7 +256,7 @@ Cowork 플러그인은 한국 공공데이터·공문서·법령 처리를 위�
 
 - `/morning-brief` — 아침 브리핑 (commerce-morning-brief)
 - `/detail-copy` — 상세페이지 카피 (commerce-detail-page-copy)
-- `/channel-msg` — 채널 메시지 (commerce-channel-message)
+- `/channel-msg` — 채널 메시지 (cs-channel-message)
 ```
 
 프로젝트 폴더의 `CLAUDE.md`에 위 블록을 붙여넣어 등록합니다.

@@ -143,5 +143,5 @@
 
 ---
 
-*분석: moai-consultant:business-sbiz365-analyst | 데이터 출처: 소상공인365 bigdata.sbiz.or.kr*
+*분석: moai-consultant:consult-sbiz365 | 데이터 출처: 소상공인365 bigdata.sbiz.or.kr*
 *주의: 이 분석은 의사결정 참고자료입니다. 최종 창업 결정은 현장 방문·전문가 상담을 병행하세요.*

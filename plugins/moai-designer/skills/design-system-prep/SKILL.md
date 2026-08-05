@@ -78,7 +78,7 @@ Claude Design 디자인 시스템, 디자인 시스템 자산, DESIGN.md, 브랜
 
 | # | 섹션 | 원천 자산에서 도출하는 법 |
 |---|---|---|
-| 1 | Brand voice & personality | About·랜딩 카피·PPTX 문구를 읽어 형용사 추출. 불명확하면 `moai-coworker:business-brand-identity` 선행 후 AskUserQuestion으로 확정 |
+| 1 | Brand voice & personality | About·랜딩 카피·PPTX 문구를 읽어 형용사 추출. 불명확하면 `moai-coworker:collab-brand-identity` 선행 후 AskUserQuestion으로 확정 |
 | 2 | Color palette | 이미지·스크린샷 비전 분석 + CSS/Tailwind 토큰 파싱으로 hex 수집 → 50–950 스케일 보간, 상태색·시그니처 자산 분리. 각 색에 **출처 표기** |
 | 3 | Typography | `@font-face`·CSS·Figma 텍스트 스타일에서 family/weight/size 추출. 한국어면 letter-spacing 규칙 부여, 제목↔본문 굵기 대비 관찰 |
 | 4 | Spacing/Radius/Shadow/Motion | Tailwind config·CSS 변수에서 스케일 추출. 없으면 4px 베이스 표준 스캐폴드 제시 |
@@ -317,6 +317,6 @@ DESIGN.md와 함께 **claude.ai/design에 무엇을 어떻게 올릴지** 가이
 | `moai-designer:design-sync-upload` | 후속: 10번 자동/수동 업로드 실행 |
 | `moai-designer:design-brief` | 후속: 시스템 셋업 후 첫 시안 작성 |
 | `moai-designer:design-prompt-builder` | 후속: 특정 영역 디자인 |
-| `moai-coworker:business-brand-identity` | 선행: 브랜드 정체성이 모호할 때 |
+| `moai-coworker:collab-brand-identity` | 선행: 브랜드 정체성이 모호할 때 |
 | `moai-marketer:content-copywriting` | 보조: voice·copy 패턴 정리 |
 | `moai-officer:office-pptx-designer` | 보조: 잘 만든 자사 PPTX가 없으면 |

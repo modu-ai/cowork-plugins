@@ -22,23 +22,23 @@ claude plugin install moai-consultant@moai-cowork
 
 ## 스킬 6종
 
-호출 형식: `/moai-consultant:business-<스킬명>` — 예: `/moai-consultant:business-market-analyst`. 자연어 요청("시장 규모 조사해줘")으로도 자동 매칭됩니다.
+호출 형식: `/moai-consultant:business-<스킬명>` — 예: `/moai-consultant:consult-market`. 자연어 요청("시장 규모 조사해줘")으로도 자동 매칭됩니다.
 
 ### 전략·계획 (3종)
 
 | 스킬 | 역할 |
 |------|------|
-| `business-strategy-planner` | 사업계획서·비즈니스 모델·신시장 진출 전략 (SWOT·린 캔버스·블루오션·OKR 프레임워크) |
-| `business-startup-launchpad` | 아이디어→사업계획서·BM 캔버스·피치덱·재무 모델·실행 로드맵 스타트업 종합 계획 |
-| `business-consulting-brief` | 현황 진단 + 30-60-90일 실행 계획을 담은 전문 컨설팅 제안서(브리프) |
+| `consult-strategy` | 사업계획서·비즈니스 모델·신시장 진출 전략 (SWOT·린 캔버스·블루오션·OKR 프레임워크) |
+| `consult-startup` | 아이디어→사업계획서·BM 캔버스·피치덱·재무 모델·실행 로드맵 스타트업 종합 계획 |
+| `consult-brief` | 현황 진단 + 30-60-90일 실행 계획을 담은 전문 컨설팅 제안서(브리프) |
 
 ### 분석·지원사업 (3종)
 
 | 스킬 | 역할 |
 |------|------|
-| `business-market-analyst` | 시장 규모(TAM/SAM/SOM)·경쟁사 분석·가격 전략 시장 분석 보고서 |
-| `business-kr-gov-grant` | 정부·공공기관 지원사업 매칭 + 심사 기준 맞춤 사업계획서·신청서 초안 (Word·한글·Excel) |
-| `business-sbiz365-analyst` | 소상공인365 상권분석 PDF 기반 유동인구·경쟁 점포·예상 매출 창업 타당성 보고서 |
+| `consult-market` | 시장 규모(TAM/SAM/SOM)·경쟁사 분석·가격 전략 시장 분석 보고서 |
+| `consult-gov-grant` | 정부·공공기관 지원사업 매칭 + 심사 기준 맞춤 사업계획서·신청서 초안 (Word·한글·Excel) |
+| `consult-sbiz365` | 소상공인365 상권분석 PDF 기반 유동인구·경쟁 점포·예상 매출 창업 타당성 보고서 |
 
 ## 에이전트 2종
 

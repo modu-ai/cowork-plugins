@@ -22,14 +22,14 @@ claude plugin install moai-career@moai-cowork
 
 ## 스킬 5종
 
-호출 형식: `/moai-career:<스킬명>` — 예: `/moai-career:business-resume-builder`. 자연어 요청("자소서 써줘")으로도 자동 매칭됩니다.
+호출 형식: `/moai-career:<스킬명>` — 예: `/moai-career:career-resume`. 자연어 요청("자소서 써줘")으로도 자동 매칭됩니다.
 
 | 스킬 | 역할 |
 |------|------|
-| `business-resume-builder` | 자소서·이력서·경력기술서·영문 CV·링크드인 작성 (KKK-STAR 자소서 · USP+CAR 이력서 · ATS·블라인드·NCS 모드) |
-| `business-portfolio-guide` | 분야별(개발·디자인·마케팅·기획) 포트폴리오 구성 · 프로젝트 기술서 · 노션 포트폴리오 |
-| `business-interview-coach` | 유형별 면접 대비(AI 역량검사·BEI·PT·토론·임원·팀핏) + 모의 면접 루프 + 역질문 |
-| `career-transition-strategist` | 이직·전직 전략 9단계(타이밍 진단→시장조사→경력 서사→연봉 협상→오프보딩) + 이직 전략 캔버스·연봉 협상 스크립트·인수인계 체크리스트 |
+| `career-resume` | 자소서·이력서·경력기술서·영문 CV·링크드인 작성 (KKK-STAR 자소서 · USP+CAR 이력서 · ATS·블라인드·NCS 모드) |
+| `career-portfolio` | 분야별(개발·디자인·마케팅·기획) 포트폴리오 구성 · 프로젝트 기술서 · 노션 포트폴리오 |
+| `career-interview` | 유형별 면접 대비(AI 역량검사·BEI·PT·토론·임원·팀핏) + 모의 면접 루프 + 역질문 |
+| `career-transition` | 이직·전직 전략 9단계(타이밍 진단→시장조사→경력 서사→연봉 협상→오프보딩) + 이직 전략 캔버스·연봉 협상 스크립트·인수인계 체크리스트 |
 | `career-junior-onboarding` | 신입·주니어 첫 90일 온보딩 코칭(셀프 온보딩·질문 3요소·보고 기술·사수 없이 성장) + 90일 온보딩 플랜·질문 카드 템플릿 |
 
 ## 에이전트 2종

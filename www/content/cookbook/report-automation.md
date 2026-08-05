@@ -32,7 +32,7 @@ flowchart TD
 
 완성된 주간 보고서 한 부를 만드는 데 스킬이 다섯 개나 필요합니다. 이는 한 냄비 요리가 아니라 공장 조립 라인에 가깝습니다. 하나의 완성품(3페이지 보고서)을 만들기 위해 다섯 개의 작업대를 차례로 거치는 셈입니다. 첫 작업대(기획자)는 보고서 뼈대를 잡고, 둘째(데이터 분석가)는 숫자를 채워 넣고, 셋째(표 담당)는 숫자를 차트로 정리하고, 넷째(문서 편집자)는 흩어진 조각을 3페이지 보고서로 묶고, 마지막(교정 편집자)은 임원이 읽기 좋게 문장을 다듬습니다. 한 작업대가 빠지면 완성품 어딘가에 빈 칸이 남습니다.
 
-각 스킬 이름이 영어 축약이라 의미가 바로 안 와닿을 수 있습니다. `business-status-reporter`는 '상태 보고 담당자', `office-data-explorer`는 '데이터 탐험가(원천 데이터에서 의미 있는 수치를 찾아내는 역할)', `office-xlsx-creator`는 '엑셀 생성기', `office-docx-generator`는 '워드 문서 생성기', `general-ai-slop-reviewer`는 'AI 특유 어투를 검수하는 편집자'로 풀어 읽으면 됩니다. 한 스킬이 다섯 역할을 모두 하면 정확도가 떨어집니다. 분야별로 특화된 스킬을 순서대로 통과시키는 편이 매주 같은 품질의 보고서를 만들어냅니다.
+각 스킬 이름이 영어 축약이라 의미가 바로 안 와닿을 수 있습니다. `collab-status-report`는 '상태 보고 담당자', `office-data-explorer`는 '데이터 탐험가(원천 데이터에서 의미 있는 수치를 찾아내는 역할)', `office-xlsx-creator`는 '엑셀 생성기', `office-docx-generator`는 '워드 문서 생성기', `general-ai-slop-reviewer`는 'AI 특유 어투를 검수하는 편집자'로 풀어 읽으면 됩니다. 한 스킬이 다섯 역할을 모두 하면 정확도가 떨어집니다. 분야별로 특화된 스킬을 순서대로 통과시키는 편이 매주 같은 품질의 보고서를 만들어냅니다.
 
 순서가 고정된 이유는 앞 단계의 결과물이 뒷단계의 입력이 되기 때문입니다. 뼈대가 없는 상태에서 숫자만 채워 넣으면 어디에 둘지 알 수 없고, 문장 다듬기를 데이터 분석보다 먼저 하면 나중에 숫자가 바뀔 때 문장을 또 고쳐야 합니다. 콘베이어 벨트 위의 순차 조립이라고 생각하면, 스킬 순서를 바꾸는 것은 조립 순서를 뒤섞는 것과 같습니다.
 
@@ -111,7 +111,7 @@ flowchart LR
 status-reporter → data-explorer → xlsx-creator → docx-generator → ai-slop-reviewer
 ```
 
-- `business-status-reporter` — 주간 리포트 골격, OKR 진행률
+- `collab-status-report` — 주간 리포트 골격, OKR 진행률
 - `office-data-explorer` — 로우 데이터(CSV·Slack·Notion)에서 KPI 추출
 - `office-xlsx-creator` — KPI 대시보드 시트
 - `office-docx-generator` — 최종 3페이지 보고서

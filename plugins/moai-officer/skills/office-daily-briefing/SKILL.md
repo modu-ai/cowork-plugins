@@ -354,7 +354,7 @@ version: "1.0.0"
 
 - `.moai/config.json`에 `industry`, `competitors`, `keywords` 설정 시 맞춤 브리핑 자동화
 - 사용자가 "매일 아침 브리핑" 요청 시 이전 브리핑과 비교하여 변화 포인트를 강조
-- TAM·SAM·SOM 기반 시장 동향 분석 가능 (moai-consultant:business-market-analyst 스킬과 연동)
+- TAM·SAM·SOM 기반 시장 동향 분석 가능 (moai-consultant:consult-market 스킬과 연동)
 
 ### TAM·SAM·SOM 시장 규모 분석 (투자자 브리핑 모드)
 
@@ -365,7 +365,7 @@ version: "1.0.0"
 
 ## 관련 스킬
 
-- **moai-consultant:business-market-analyst**: 심층 시장 분석이나 TAM/SAM/SOM 산출
+- **moai-consultant:consult-market**: 심층 시장 분석이나 TAM/SAM/SOM 산출
 - **moai-accountant:finance-investor-relations**: 투자자 보고서나 IR 덱 작성
-- **moai-consultant:business-consulting-brief**: 경쟁사 분석 포함 컨설팅 제안서
+- **moai-consultant:consult-brief**: 경쟁사 분석 포함 컨설팅 제안서
 - **moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean**: 생성된 브리핑 AI 패턴 검수 후 한국어 표현을 자연스럽게 다듬습니다 (필수)

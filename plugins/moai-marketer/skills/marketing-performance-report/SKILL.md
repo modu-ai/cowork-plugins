@@ -11,7 +11,7 @@ description: |
   - "분기 마케팅 성과를 경영진 보고용으로 정리해줘"
   - "광고비 어디서 새는지 분석해줘"
   경영진 요약과 실무용 상세 분석, 예산 재배분 권고를 함께 만들고, 서술 부분은 moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean으로 다듬습니다.
-  [책임 경계] vs moai-coworker:business-executive-summary: 이 스킬=마케팅 풀 리포트(전체), 저 스킬=임원 1pager 요약(압축). 이 스킬 출력을 그대로 business-executive-summary에 넘겨 1pager로 만들 수 있습니다.
+  [책임 경계] vs moai-coworker:collab-exec-summary: 이 스킬=마케팅 풀 리포트(전체), 저 스킬=임원 1pager 요약(압축). 이 스킬 출력을 그대로 collab-exec-summary에 넘겨 1pager로 만들 수 있습니다.
 version: "1.0.0"
 ---
 
@@ -228,7 +228,7 @@ ROAS 단일 지표만 보지 말고 **누적 이익 = LTV × 재구매**까지 �
 |------|----------|
 | `moai-marketer:marketing-campaign-planner` | 마케팅 캠페인 기획이나 새 캠페인 전략 수립 |
 | `moai-marketer:marketing-seo-audit` | SEO 감사나 검색 최적화 |
-| `moai-coworker:business-executive-summary` | 풀 리포트 → 임원 1pager 요약 압축 |
+| `moai-coworker:collab-exec-summary` | 풀 리포트 → 임원 1pager 요약 압축 |
 | `moai-coworker:general-ai-slop-reviewer` | 사후 체이닝(필수, 서술 부분): 리포트 내러티브의 AI 패턴 검수 |
 | `moai-writer:general-humanize-korean` | 사후 체이닝(필수, 서술 부분): general-ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |
 | `moai-officer:office-xlsx-creator` | 성과표·KPI 표 산출물 (수치·표 라우팅) |

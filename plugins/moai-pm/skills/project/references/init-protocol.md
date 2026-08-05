@@ -165,7 +165,7 @@ Phase 5(확인 단계)에서 사용자에게 보여줄 요약:
 이 프로젝트의 실행 체인 설계
 
 [주 산출물 1] 사업계획서(PPT)
-  체인: business-strategy-planner → office-pptx-designer → general-ai-slop-reviewer
+  체인: consult-strategy → office-pptx-designer → general-ai-slop-reviewer
   트리거 예시: "사업계획서 만들어줘"
 ```
 
@@ -225,7 +225,7 @@ for each skill in chain_skills:
   "phase_completed": 3,
   "interview_answers": { "work_type": ["사업 기획·전략"] },
   "chain_design": [
-    { "deliverable": "사업계획서(PPT)", "chain": ["business-strategy-planner", "office-pptx-designer", "general-ai-slop-reviewer"] }
+    { "deliverable": "사업계획서(PPT)", "chain": ["consult-strategy", "office-pptx-designer", "general-ai-slop-reviewer"] }
   ],
   "missing_skills": [],
   "missing_plugins": []

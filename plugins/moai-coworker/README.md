@@ -39,45 +39,45 @@ claude plugin install moai-coworker@moai-cowork
 
 ## 스킬 30종
 
-호출 형식: `/moai-coworker:<스킬명>` — 예: `/moai-coworker:business-proposal-writer`. 자연어 요청("제안서 써줘")으로도 자동 매칭됩니다.
+호출 형식: `/moai-coworker:<스킬명>` — 예: `/moai-coworker:collab-proposal`. 자연어 요청("제안서 써줘")으로도 자동 매칭됩니다.
 
 ### 전략·기획 (2종)
 
 | 스킬 | 역할 |
 |------|------|
-| `business-brand-identity` | 브랜드 아이덴티티 설계 |
-| `business-roadmap-manager` | 로드맵·마일스톤 관리 |
+| `collab-brand-identity` | 브랜드 아이덴티티 설계 |
+| `collab-roadmap` | 로드맵·마일스톤 관리 |
 
 ### 문서·커뮤니케이션 (7종)
 
 | 스킬 | 역할 |
 |------|------|
-| `business-proposal-writer` | 제안서 작성 |
-| `business-spec-writer` | 요구사항·기획 명세 작성 |
-| `business-executive-summary` | 경영진 요약 보고 |
-| `business-status-reporter` | 진행 상황 보고 |
-| `business-pm-weekly-report` | PM 주간 보고 |
-| `business-productivity-weekly-report` | 생산성 주간 회고 |
-| `business-report-speak` | 보고 스피치 스크립트 |
+| `collab-proposal` | 제안서 작성 |
+| `collab-spec` | 요구사항·기획 명세 작성 |
+| `collab-exec-summary` | 경영진 요약 보고 |
+| `collab-status-report` | 진행 상황 보고 |
+| `collab-pm-report` | PM 주간 보고 |
+| `collab-productivity-report` | 생산성 주간 회고 |
+| `collab-report-speak` | 보고 스피치 스크립트 |
 
 ### 고객·관계 관리 (5종)
 
 | 스킬 | 역할 |
 |------|------|
-| `business-conflict-handler` | 갈등 상황 대응 |
-| `business-negotiation-1on1` | 1:1 협상 준비 |
-| `business-vendor-manager` | 협력사·벤더 관리 |
-| `business-sales-playbook` | 영업 플레이북 |
-| `business-feedback-loop` | 피드백 수집·개선 루프 |
+| `collab-conflict` | 갈등 상황 대응 |
+| `collab-negotiation` | 1:1 협상 준비 |
+| `collab-vendor` | 협력사·벤더 관리 |
+| `collab-sales-playbook` | 영업 플레이북 |
+| `collab-feedback-loop` | 피드백 수집·개선 루프 |
 
 ### 운영·UX (4종)
 
 | 스킬 | 역할 |
 |------|------|
-| `business-process-manager` | 업무 프로세스 설계·개선 |
-| `business-meeting-facilitator` | 회의 설계·퍼실리테이션 |
-| `business-ux-researcher` | UX 리서치 |
-| `business-ux-designer` | UX 설계 |
+| `collab-process` | 업무 프로세스 설계·개선 |
+| `collab-meeting` | 회의 설계·퍼실리테이션 |
+| `collab-ux-research` | UX 리서치 |
+| `collab-ux-design` | UX 설계 |
 
 ### 품질·범용 도구 (7종)
 
@@ -89,13 +89,13 @@ claude plugin install moai-coworker@moai-cowork
 | `general-skill-builder` | 커스텀 스킬 제작 |
 | `general-skill-template` | 스킬 템플릿 |
 | `general-skill-tester` | 스킬 테스트 |
-| `claude-prompting-basics` | 클로드 프롬프팅 기본기 |
+| `ai-prompting-basics` | 클로드 프롬프팅 기본기 |
 
 ## MCP 연동 1종
 
 | 서버 | 플랫폼 | 필요 환경변수 | 비고 |
 |------|--------|---------------|------|
-| `dart` | OpenDART 전자공시 (83 API → 15 도구) | `DART_API_KEY` | 시장·공시 분석에 사용 (`business-market-analyst`는 `moai-consultant`로 이관됨). 키 발급: opendart.fss.or.kr (무료) |
+| `dart` | OpenDART 전자공시 (83 API → 15 도구) | `DART_API_KEY` | 시장·공시 분석에 사용 (`consult-market`는 `moai-consultant`로 이관됨). 키 발급: opendart.fss.or.kr (무료) |
 
 ## 라이선스
 

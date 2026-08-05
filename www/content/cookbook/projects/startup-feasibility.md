@@ -16,12 +16,12 @@ tags: [cookbook, projects, startup]
 
 ## 2. 투입 직원과 스킬
 
-먼저 컨설턴트가 나섭니다. `business-sbiz365-analyst` 스킬은 소상공인시장진흥공단의 상권정보 시스템(소상공인365) 데이터를 바탕으로 상권분석 보고서를 만드는 스킬입니다. 여기에 `business-market-analyst`로 카페 업종 자체의 시장 흐름을 겹쳐 보면 "이 자리"와 "이 업종" 두 축의 그림이 나옵니다. 그다음 바통은 재무·세무 담당에게 넘어갑니다. `finance-financial-statements`가 초기 투자·고정비·예상 매출을 추정 손익계산서(일정 기간의 수입과 지출을 정리한 표)로 정리하고, `finance-tax-helper`가 개인사업자 등록 시 세금 부담까지 짚어줍니다.
+먼저 컨설턴트가 나섭니다. `consult-sbiz365` 스킬은 소상공인시장진흥공단의 상권정보 시스템(소상공인365) 데이터를 바탕으로 상권분석 보고서를 만드는 스킬입니다. 여기에 `consult-market`로 카페 업종 자체의 시장 흐름을 겹쳐 보면 "이 자리"와 "이 업종" 두 축의 그림이 나옵니다. 그다음 바통은 재무·세무 담당에게 넘어갑니다. `finance-financial-statements`가 초기 투자·고정비·예상 매출을 추정 손익계산서(일정 기간의 수입과 지출을 정리한 표)로 정리하고, `finance-tax-helper`가 개인사업자 등록 시 세금 부담까지 짚어줍니다.
 
 | 순서 | 직원 | 스킬 | 역할 |
 |------|------|------|------|
-| 1 | 컨설턴트 | `business-sbiz365-analyst` | 상권분석 보고서 (유동인구·경쟁 점포·업종 매출) |
-| 2 | 컨설턴트 | `business-market-analyst` | 카페 업종 시장 분석 |
+| 1 | 컨설턴트 | `consult-sbiz365` | 상권분석 보고서 (유동인구·경쟁 점포·업종 매출) |
+| 2 | 컨설턴트 | `consult-market` | 카페 업종 시장 분석 |
 | 3 | 재무·세무 | `finance-financial-statements` | 추정 손익계산서·손익분기 계산 |
 | 4 | 재무·세무 | `finance-tax-helper` | 사업자 형태별 세금 시뮬레이션 |
 
@@ -51,9 +51,9 @@ tags: [cookbook, projects, startup]
 
 ```mermaid
 flowchart TD
-   U["민준 님<br/>'연남동 카페, 될까?'"] --> C1["컨설턴트<br/>business-sbiz365-analyst"]
+   U["민준 님<br/>'연남동 카페, 될까?'"] --> C1["컨설턴트<br/>consult-sbiz365"]
    C1 --> R1["상권분석 보고서 PDF<br/>(유동인구 · 경쟁 · 매출)"]
-   R1 --> C2["컨설턴트<br/>business-market-analyst"]
+   R1 --> C2["컨설턴트<br/>consult-market"]
    C2 --> R2["업종 시장 분석"]
    R2 --> F1["재무·세무<br/>finance-financial-statements"]
    F1 --> R3["추정 손익계산서<br/>3개 시나리오"]

@@ -33,7 +33,7 @@ Phase 1 인터뷰 첫 질문 전, 사용자 발화에서 역할 힌트를 빠르
 
 | 발화 힌트 | 감지 역할 | 주요 체인 진입 스킬 |
 |---|---|---|
-| 사업계획·IR·시장조사·전략·창업·정부지원 | 실무 | `business-strategy-planner` → `office-pptx-designer` |
+| 사업계획·IR·시장조사·전략·창업·정부지원 | 실무 | `consult-strategy` → `office-pptx-designer` |
 | 블로그·카드뉴스·뉴스레터·카피·SNS·랜딩 | 실무 | `content-blog` / `content-card-news` / `marketing-landing-page` |
 | PPT·한글·Word·Excel·공문·계약서·부가세 | 실무 | `office-*` / `legal-*` / `finance-tax-helper` |
 | 상세페이지·스마트스토어·쿠팡·이커머스 | 실무 | `commerce-product-detail` → `commerce-marketplace-*` |
@@ -84,10 +84,10 @@ Phase 3 체인 설계는 인터뷰 답변→프리셋 매칭으로 직행하지 
 
 | 산출물 | 권장 체인 |
 |---|---|
-| 사업계획서(PPT) | `business-strategy-planner` → `office-pptx-designer` → `general-ai-slop-reviewer` |
-| 사업계획서(Word) | `business-strategy-planner` → `business-market-analyst` → `office-docx-generator` → `general-ai-slop-reviewer` |
+| 사업계획서(PPT) | `consult-strategy` → `office-pptx-designer` → `general-ai-slop-reviewer` |
+| 사업계획서(Word) | `consult-strategy` → `consult-market` → `office-docx-generator` → `general-ai-slop-reviewer` |
 | IR 피칭덱 | `finance-investor-relations` → `office-pptx-designer` → `general-ai-slop-reviewer` |
-| 시장조사 리포트 | `business-market-analyst` → `office-docx-generator` → `general-ai-slop-reviewer` |
+| 시장조사 리포트 | `consult-market` → `office-docx-generator` → `general-ai-slop-reviewer` |
 | 블로그 | `content-blog` → `general-ai-slop-reviewer` → `general-humanize-korean` |
 | 카드뉴스 | `content-card-news` → `general-ai-slop-reviewer` |
 | 뉴스레터 | `content-newsletter` → `general-ai-slop-reviewer` |
@@ -97,7 +97,7 @@ Phase 3 체인 설계는 인터뷰 답변→프리셋 매칭으로 직행하지 
 | 재무제표 | `finance-financial-statements` → `office-xlsx-creator` (숫자 — ai-slop 생략) |
 | 한글 공문 | `office-hwpx-writer` → `general-ai-slop-reviewer` |
 | 상세페이지 | `commerce-product-detail` → `general-ai-slop-reviewer` |
-| 주간보고 | `business-pm-weekly-report` → `general-ai-slop-reviewer` |
+| 주간보고 | `collab-pm-report` → `general-ai-slop-reviewer` |
 
 ### 3-2. 글쓰기 작가 체인 (story·book)
 

@@ -317,7 +317,7 @@ book-concept-planner와 book-target-reader 결과 입력.
 - `book-chapter-writer` — 본문 챕터 집필 (꼭지 단위 반복)
 
 ### Alternative
-- `moai-consultant:business-strategy-planner` — 사업·서비스 구조 설계 (책 아님)
+- `moai-consultant:consult-strategy` — 사업·서비스 구조 설계 (책 아님)
 - `moai-marketer:content-blog` — 블로그 시리즈 구조 (책 분량 미만)
 
 ### Post (검수 — 정규 체인)
