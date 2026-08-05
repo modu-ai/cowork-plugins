@@ -16,7 +16,7 @@ tags: [cookbook, projects, legal]
 
 ## 2. 투입 직원과 스킬
 
-법무 담당의 `legal-contract-review`가 계약서를 조항 단위로 검토해 불리한 조항·모호한 문구·누락된 보호 장치를 찾아냅니다. 이어서 `legal-legal-risk`가 발견된 문제를 발생 가능성과 피해 크기 기준의 리스크 등급으로 정리합니다. NDA(비밀유지계약)가 여러 건 쌓여 있다면 `legal-nda-triage`로 위험한 것부터 골라내는 선별 작업도 가능합니다. 바통을 받은 코워커는 `business-executive-summary`로 검토 결과를 1페이지 의사결정 요약으로 압축하고, 협력사에 보낼 수정 요청 문구까지 다듬습니다.
+법무 담당의 `legal-contract-review`가 계약서를 조항 단위로 검토해 불리한 조항·모호한 문구·누락된 보호 장치를 찾아냅니다. 이어서 `legal-legal-risk`가 발견된 문제를 발생 가능성과 피해 크기 기준의 리스크 등급으로 정리합니다. NDA(비밀유지계약)가 여러 건 쌓여 있다면 `legal-nda-triage`로 위험한 것부터 골라내는 선별 작업도 가능합니다. 바통을 받은 코워커는 `collab-exec-summary`로 검토 결과를 1페이지 의사결정 요약으로 압축하고, 협력사에 보낼 수정 요청 문구까지 다듬습니다.
 
 한 가지를 분명히 해두겠습니다 — 이 검토는 **변호사의 법률 자문을 대체하지 않습니다**. 어느 조항을 전문가에게 물어야 하는지 모르는 상태에서, 질문 목록을 만들어주는 사전 검토입니다.
 
@@ -24,8 +24,8 @@ tags: [cookbook, projects, legal]
 |------|------|------|------|
 | 1 | 법무 | `legal-contract-review` | 조항별 검토 · 독소조항 식별 |
 | 2 | 법무 | `legal-legal-risk` | 리스크 등급 분류 (가능성 × 피해) |
-| 3 | 코워커 | `business-executive-summary` | 1페이지 의사결정 요약 |
-| 4 | 코워커 | `general-ai-slop-reviewer` | 수정 요청 문구 어투 다듬기 |
+| 3 | 코워커 | `collab-exec-summary` | 1페이지 의사결정 요약 |
+| 4 | 코워커 | `ai-slop-reviewer` | 수정 요청 문구 어투 다듬기 |
 
 ## 3. 진행 단계
 
@@ -58,7 +58,7 @@ flowchart TD
    L1 --> R1["조항별 검토표"]
    R1 --> L2["법무<br/>legal-legal-risk"]
    L2 --> R2["리스크 등급표<br/>(상 · 중 · 하)"]
-   R2 --> W1["코워커<br/>business-executive-summary"]
+   R2 --> W1["코워커<br/>collab-exec-summary"]
    W1 --> OUT["1페이지 리스크 보고서<br/>+ 수정 요청 문구"]
    OUT --> EXP["변호사 확인<br/>('상' 조항만)"]
 

@@ -133,18 +133,18 @@ JTBD·페르소나(commerce-jtbd-persona 산출물)와 현재 상세페이지를
   "slop_review": {
     "status": "passed",
     "changes_made": 3,
-    "notes": "general-ai-slop-reviewer 검수 완료"
+    "notes": "ai-slop-reviewer 검수 완료"
   }
 }
 ```
 
-**general-ai-slop-reviewer 자동 체이닝 (HARD)**: `--mode copy` 산출물은 모든 카피 생성 이후 `moai-coworker:general-ai-slop-reviewer`를 자동 체인합니다.
+**ai-slop-reviewer 자동 체이닝 (HARD)**: `--mode copy` 산출물은 모든 카피 생성 이후 `moai-coworker:ai-slop-reviewer`를 자동 체인합니다.
 
 ---
 
 ## 기존 모드 (13섹션, 하위 호환 유지)
 
-**플래그 없이 호출 시 기존 13섹션 감정여정 카피 모드가 실행됩니다.** 기존 워크플로우, 출력 형식, general-ai-slop-reviewer 체이닝 모두 동일하게 유지됩니다.
+**플래그 없이 호출 시 기존 13섹션 감정여정 카피 모드가 실행됩니다.** 기존 워크플로우, 출력 형식, ai-slop-reviewer 체이닝 모두 동일하게 유지됩니다.
 
 ---
 
@@ -280,9 +280,9 @@ ProductDNA:
 | 12 | **Filter** | 추천 대상 3개 + 비추천 대상 3개 |
 | 13 | **CTA** | 최종 헤드라인 + 긴급성 카피 + 가격/혜택 표현 + CTA 버튼 + 마감 태그라인 |
 
-### 4단계: general-ai-slop-reviewer 자동 체이닝 (HARD)
+### 4단계: ai-slop-reviewer 자동 체이닝 (HARD)
 
-**모든 텍스트 카피 산출 직전에 `moai-coworker:general-ai-slop-reviewer`를 호출합니다.**
+**모든 텍스트 카피 산출 직전에 `moai-coworker:ai-slop-reviewer`를 호출합니다.**
 
 검수 항목:
 - AI 특유 반복 표현 ("물론입니다", "훌륭한", "혁신적인" 등) 제거
@@ -421,7 +421,7 @@ ProductDNA:
   "slop_review": {
     "status": "passed",
     "changes_made": 0,
-    "notes": "general-ai-slop-reviewer 검수 결과"
+    "notes": "ai-slop-reviewer 검수 결과"
   }
 }
 ```
@@ -455,7 +455,7 @@ JSON 출력 후, 사용자 확인용 마크다운 미리보기를 섹션별로 �
 - 7단계 모두 포함 (섹션 누락 없음)
 - 메인·보조 페르소나용 각 1세트 = 총 2세트
 - 비율 25/50/25 준수 (문제·공감 / 핵심·증명 / FAQ·CTA)
-- general-ai-slop-reviewer 검수 흔적 (slop_review 블록)
+- ai-slop-reviewer 검수 흔적 (slop_review 블록)
 
 ## 관련 스킬
 
@@ -467,8 +467,8 @@ JSON 출력 후, 사용자 확인용 마크다운 미리보기를 섹션별로 �
 - `moai-seller:commerce-marketplace-naver` — 스마트스토어/오픈마켓 최적화
 - `moai-marketer:content-copywriting` — 일반 광고 카피
 - `moai-seller:commerce-product-detail` — shadcn/ui 기반 웹 상세페이지
-- `moai-coworker:general-ai-slop-reviewer` — 텍스트 검수 (이 스킬에서 자동 호출)
-- `moai-writer:general-humanize-korean` — 한국어 AI 티 제거 (슬롭 검수 다음, 필수)
+- `moai-coworker:ai-slop-reviewer` — 텍스트 검수 (이 스킬에서 자동 호출)
+- `moai-writer:korean-humanize` — 한국어 AI 티 제거 (슬롭 검수 다음, 필수)
 
 ## 이 스킬을 사용하지 말아야 할 때
 

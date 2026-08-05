@@ -5,7 +5,7 @@ description: |
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   "프로모션 기획해줘", "이슈화 캠페인", "얼리버드 프로모션", "한정 판매 기획", "신생 브랜드 매출 12배", "스몰 D2C 프로모션", "비플레인 케이스 참고", "노션 프로모션 템플릿", "할인 캠페인 명목 만들어줘", "스토리 혜택 3종 세트".
   3가지 프로모션 타입: ① 이슈화(브랜드 인지도 폭발) ② 얼리버드(충성 고객 확보) ③ 한정(즉각 매출). 한국 스몰 D2C 12배 매출 케이스 실전 매뉴얼.
-  general-ai-slop-reviewer 자동 체이닝 (기획서 텍스트 산출물).
+  ai-slop-reviewer 자동 체이닝 (기획서 텍스트 산출물).
 version: "1.0.0"
 ---
 
@@ -192,14 +192,14 @@ version: "1.0.0"
 [Step 7] 노션 템플릿 페이지 자동 생성
 ```
 
-### general-ai-slop-reviewer 자동 체이닝
+### ai-slop-reviewer 자동 체이닝
 
-기획서 산출 직후 `moai-coworker:general-ai-slop-reviewer` 자동 호출:
+기획서 산출 직후 `moai-coworker:ai-slop-reviewer` 자동 호출:
 - AI 클리셰 제거 ("혁신적인"·"놀라운"·"특별한")
 - 명목·스토리의 식상함 제거 ("여름맞이 세일" 등)
 - 한국 D2C 자연스러운 표현 조정
 
-슬롭 검수 직후 `moai-writer:general-humanize-korean`으로 한국어 AI 티를 제거합니다 (슬롭 검수 다음, 필수).
+슬롭 검수 직후 `moai-writer:korean-humanize`으로 한국어 AI 티를 제거합니다 (슬롭 검수 다음, 필수).
 
 ## 사용 예시
 
@@ -228,14 +228,14 @@ version: "1.0.0"
 - 벤치마킹 케이스 3개 (명목·스토리·혜택 각 1개)
 - 실무 체크리스트 6항목 모두 PASS
 - 노션 템플릿 페이지 구조 (1-8 섹션) 자동 생성
-- general-ai-slop-reviewer 검수 흔적
+- ai-slop-reviewer 검수 흔적
 
 ## 관련 스킬
 
 체이닝 순서:
-`commerce-promotion-planner` (프로모션 기획) → `commerce-channel-message` (메시지 카피) → `commerce-message-compliance-kr` (법규 게이트) → 실제 발송
+`commerce-promotion-planner` (프로모션 기획) → `cs-channel-message` (메시지 카피) → `commerce-message-compliance-kr` (법규 게이트) → 실제 발송
 
-- `commerce-channel-message` — 프로모션 채널 메시지 15종 + 앱 푸시 채널 카피 (앱 푸시 기획 모드 포함)
+- `cs-channel-message` — 프로모션 채널 메시지 15종 + 앱 푸시 채널 카피 (앱 푸시 기획 모드 포함)
 - `commerce-message-compliance-kr` — 발송 전 정통망법 게이트 (필수)
 - `commerce-integrated-strategy` — 매출 향상 1장에 본 프로모션 포함
 - `commerce-jtbd-persona` — 타겟 세그먼트 페르소나
@@ -243,7 +243,7 @@ version: "1.0.0"
 ## 이 스킬을 사용하지 말아야 할 때
 
 - **거시 매출 전략 (분기·연간)**: `commerce-integrated-strategy` 사용
-- **메시지 카피 작성**: `commerce-channel-message` 사용
+- **메시지 카피 작성**: `cs-channel-message` 사용
 - **광고 캠페인 기획 (광고 운영)**: `marketing-campaign-planner` 사용
 - **이메일 시퀀스 자체**: `content-email-sequence` 사용
 

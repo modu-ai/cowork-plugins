@@ -1,0 +1,137 @@
+test_suite: ai-diagnostic
+version: "1.0.0"
+description: "AI 기반 다차원 진단 분석 스킬 테스트 케이스"
+
+test_cases:
+  - id: TC-001
+    name: happy-path
+    description: "웹 앱 성능 이슈에 대한 4차원 진단과 근본 원인 분석"
+    input:
+      problem_description: |
+        웹 앱 로그인 속도가 지난 2주간 0.5초에서 4초로 악화됨.
+        특히 새벽 1시~3시에 심각 (최대 10초).
+        고객센터 문의 150건/일 접수 중 40%가 로그인 관련.
+      context:
+        system_type: "Web Application (React + FastAPI)"
+        recent_changes: "2주 전 인증 서버 리뉴얼 (JWT 도입)"
+        environment: "AWS, PostgreSQL, Redis"
+        team_size: "프론트엔드 3명, 백엔드 4명"
+      symptoms:
+        - "로그인 API 응답 시간 0.5초 → 4초"
+        - "새벽 1-3시에 최대 10초 지연"
+        - "고객센터 문의 60건/일 (로그인 관련 40%)"
+    expected_output:
+      contains_sections:
+        - "증상 요약"
+        - "가설 목록"
+        - "차원별 진단 결과"
+        - "근본 원인 분석"
+        - "해결책 우선순위"
+        - "실행 계획"
+      contains_dimensions:
+        - "기술 차원"
+        - "프로세스 차원"
+        - "사람 차원"
+        - "비즈니스 차원"
+      contains_keywords:
+        - "JWT"
+        - "응답 시간"
+        - "로그인"
+        - "근본 원인"
+        - "5 Whys"
+      has_hypotheses_with_priority: true
+      has_solutions_with_timeframe: true
+      has_root_cause_analysis: true
+
+  - id: TC-002
+    name: edge-case
+    description: "최소 정보로 기본 진단 수행"
+    input:
+      problem_description: "앱이 자주 죽는 문제가 있음."
+      context: {}
+      symptoms:
+        - "앱 크래시"
+    expected_output:
+      contains_sections:
+        - "증상 요약"
+        - "가설 목록"
+        - "차원별 진단 결과"
+        - "해결책 우선순위"
+      contains_keywords:
+        - "크래시"
+        - "원인"
+      has_hypotheses_with_priority: true
+      has_information_request: true  # 추가 정보 요청
+      has_initial_diagnostic: true   # 초기 진단은 제공
+
+  - id: TC-003
+    name: complex-input
+    description: "복합적 다차원 문제 상황에서的高级 진단 (Supervisor 패턴 완전 활용)"
+    input:
+      problem_description: |
+        (1) 배송 시간이 2일에서 5일로 지연 (고객 불만 급증)
+        (2) 재고 부족으로 주문 취소율 15% (이전 3%)
+        (3) 창고 직원 이탈률 40% (번아웃)
+        (4) IT 시스템 다운타임 10시간/월 (이전 2시간)
+        (5) 물류 비용이 매출의 25% (업계 평균 18%)
+      context:
+        system_type: "이커머스 물류 시스템 (WMS + OMS)"
+        recent_changes: |
+          - 3개월 전 창고 이전 (용량 2배 확장)
+          - 신규 WMS 도입 (구현 불완전 상태)
+          - 고용주 세제 혜택 종료로 직원 사기 저하
+        environment: "On-premise 창고 시스템, Cloud OMS"
+        team_size: |
+          - 창고 직원: 50명 (신규 30명, 경력 20명)
+          - IT: 5명 (WMS 2명, OMS 3명)
+        business_impact: |
+          - NPS: +40 → -15 (고객 불만 급증)
+          - 재고 회전율: 12회/년 → 6회/년
+          - 매출: 전월 대비 8% 감소
+      symptoms:
+        - "배송 지연 (2일 → 5일)"
+        - "주문 취소율 15% (이전 3%)"
+        - "창고 직원 이탈률 40%"
+        - "시스템 다운타임 10시간/월"
+        - "물류 비용 25% (업평 18%)"
+    expected_output:
+      contains_sections:
+        - "증상 요약"
+        - "가설 목록"
+        - "차원별 진단 결과"
+        - "근본 원인 분석"
+        - "해결책 우선순위"
+        - "실행 계획"
+        - "위험도 평가"  # 복잡한 상황에서 리스크 분석 추가
+      contains_dimensions:
+        - "기술 차원"
+        - "프로세스 차원"
+        - "사람 차원"
+        - "비즈니스 차원"
+      contains_keywords:
+        - "WMS"
+        - "OMS"
+        - "배송 지연"
+        - "재고 부족"
+        - "직원 이탈"
+        - "다운타임"
+        - "물류 비용"
+        - "상관관계"  # 차원 간 상관관계 분석
+      frameworks_used:
+        - "5 Whys"
+        - "Fishbone Diagram"
+        - "Iceberg Model"
+      has_hypotheses_with_priority: true
+      has_cross_dimensional_analysis: true
+      has_risk_assessment: true
+      has_30_60_90_day_plan: true
+      supervisor_pattern_evident: true  # 4차원 조율과 결과 통합 명시
+      root_cause_identified: true
+      has_quantitative_impact_analysis: true  # 정량적 영향 분석
+
+# TC-003의 복잡성 특성:
+# - 5개의 서로 다른 증상 (기술, 프로세스, 사람, 비즈니스 모두 포함)
+# - 3개의 최근 변경사항 (창고 이전, WMS 도입, 세제 혜택 종료)
+# - 정량적 비즈니스 영향 (NPS, 재고 회전율, 매출)
+# - Supervisor 패턴의 4차원 병렬 진단과 결과 통합 필요
+# - 차원 간 상관관계 분석 (예: WMS 도입 → 시스템 불안정 → 배송 지연 → 고객 불만 → 매출 감소)

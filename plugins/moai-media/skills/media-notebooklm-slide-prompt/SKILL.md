@@ -21,18 +21,18 @@ version: "1.0.0"
 
 세션 본문 마크다운을 한 번 입력하면, **NotebookLM Studio에 붙여 넣는 슬라이드 데크 프롬프트**와 **각 슬라이드의 시각 자료를 위한 나노바나나(Gemini 3 Pro Image) 이미지 프롬프트**를 동시에 산출합니다.
 
-## 이 스킬과 office-pptx-designer의 경계
+## 이 스킬과 doc-pptx의 경계
 
 같은 "발표자료"라도 산출물이 다릅니다. 호출 전 아래 표로 구분하세요.
 
-| 구분 | media-notebooklm-slide-prompt | office-pptx-designer |
+| 구분 | media-notebooklm-slide-prompt | doc-pptx |
 |---|---|---|
 | 산출물 | NotebookLM 소스 정리 + Studio Prompt 텍스트 + 슬라이드별 이미지 프롬프트 | 편집 가능한 `.pptx` 파일 (pptxgenjs 코드) |
 | 결과물을 어디서 보나 | NotebookLM Studio가 슬라이드를 생성 | PowerPoint·Keynote에서 바로 열림 |
 | 입력 | 강연·강의 본문 MD | 보고서·기획 내용 + 디자인 요구 |
 | 언제 쓰나 | "NotebookLM으로 발표자료 만들 프롬프트가 필요" | "지금 바로 열리는 PPT 파일이 필요" |
 
-요약: **NotebookLM에 넣을 준비물(소스·대본·구조·이미지 프롬프트)을 만드는 빌더**가 이 스킬입니다. 실제 `.pptx` 파일이 필요하면 `moai-officer:office-pptx-designer`를 호출하세요. "PPT 파일로 뽑아줘"는 `moai-officer:office-pptx-designer`, "NotebookLM 슬라이드 프롬프트 만들어줘"는 이 스킬입니다.
+요약: **NotebookLM에 넣을 준비물(소스·대본·구조·이미지 프롬프트)을 만드는 빌더**가 이 스킬입니다. 실제 `.pptx` 파일이 필요하면 `moai-officer:doc-pptx`를 호출하세요. "PPT 파일로 뽑아줘"는 `moai-officer:doc-pptx`, "NotebookLM 슬라이드 프롬프트 만들어줘"는 이 스킬입니다.
 
 ## 트리거 키워드
 
@@ -210,7 +210,7 @@ Consistency tag: series="harness-lecture", palette="teal-amber-dim", lighting="v
   3. **Part B — 슬라이드별 나노바나나 이미지 프롬프트 (5~8슬라이드)**
   4. 사용 절차 (NotebookLM에 본문 업로드 → Prompt 붙여넣기 → 생성 → 표지·핵심 슬라이드 이미지는 별도 Gemini/Nano Banana Pro로 생성 후 NotebookLM에서 revise로 교체)
 
-체인 종료 직전 `moai-coworker:general-ai-slop-reviewer`를 호출해 클리셰·번역투를 제거한다.
+체인 종료 직전 `moai-coworker:ai-slop-reviewer`를 호출해 클리셰·번역투를 제거한다.
 
 ## 사용 예시
 
@@ -249,17 +249,17 @@ Consistency tag: series="harness-lecture", palette="teal-amber-dim", lighting="v
 - [ ] 종횡비가 16:9로 통일되었는가? (강연 슬라이드 기본)
 - [ ] 실존 인물 얼굴, 저작권 캐릭터, 브랜드 로고가 직접 묘사되지 않았는가?
 - [ ] 클리셰("혁신적", "차세대", "재정의하는", "결론적으로")가 NotebookLM Prompt에 없는가?
-- [ ] AI 슬롭 후처리(general-ai-slop-reviewer) 실행 예정인가?
+- [ ] AI 슬롭 후처리(ai-slop-reviewer) 실행 예정인가?
 
 ## 체이닝 권장
 
 ```
 media-notebooklm-slide-prompt
   ↓
-moai-coworker:general-ai-slop-reviewer
+moai-coworker:ai-slop-reviewer
 ```
 
-본 스킬은 텍스트 산출물이므로 체인 종료 직전 `moai-coworker:general-ai-slop-reviewer`로 후처리한다.
+본 스킬은 텍스트 산출물이므로 체인 종료 직전 `moai-coworker:ai-slop-reviewer`로 후처리한다.
 
 실제 이미지 생성은 별도 단계로 분리되어 있다. 사용자는 산출된 5-Component 프롬프트를 다음 도구 중 하나로 실행한다:
 

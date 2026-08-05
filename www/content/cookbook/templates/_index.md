@@ -21,6 +21,6 @@ flowchart TD
 ## 템플릿 목록
 
 - [컴플라이언스 체크리스트](./compliance/) — `moai-lawyer:legal-compliance-check`
-- [재무 모델링 템플릿](./financial/) — `moai-accountant:finance-financial-statements` + `moai-officer:office-xlsx-creator`
-- [엑셀 고급 기법](./excel/) — `moai-officer:office-xlsx-creator`
+- [재무 모델링 템플릿](./financial/) — `moai-accountant:finance-financial-statements` + `moai-officer:doc-xlsx`
+- [엑셀 고급 기법](./excel/) — `moai-officer:doc-xlsx`
 - [이메일 마케팅 템플릿](./email/) — `moai-marketer:content-newsletter` + `moai-marketer:content-email-sequence`

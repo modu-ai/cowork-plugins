@@ -90,8 +90,8 @@ IP 피칭은 **무엇을 제안할지(2차 저작 형태)**와 **누구에게 �
 - `moai-lawyer` — 표준계약서·저작권 심화 자문(필수 인계)
 
 ### Post (검수 — 텍스트 산출물 정규 체인)
-- `moai-coworker:general-ai-slop-reviewer` — AI 슬롭 검수 (필수)
-- `moai-writer:general-humanize-korean` — AI 티 정밀 윤문 (필수)
+- `moai-coworker:ai-slop-reviewer` — AI 슬롭 검수 (필수)
+- `moai-writer:korean-humanize` — AI 티 정밀 윤문 (필수)
 
 ## 8. References
 

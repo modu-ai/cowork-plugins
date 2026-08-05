@@ -4,7 +4,7 @@ description: |
   국립국어원 계열 규칙을 반영한 바른한글(구 부산대 맞춤법/문법 검사기) 표면을 이용해
   한국어 문장의 띄어쓰기·맞춤법·문법을 최종 검수합니다. 긴 글은 청크 분할로 나눠
   순차 검사하고, 결과를 원문·교정안·이유 중심으로 정리합니다.
-  general-ai-slop-reviewer가 AI 패턴을 검수한 뒤 마지막 단계에서 호출하는 것을 권장합니다.
+  ai-slop-reviewer가 AI 패턴을 검수한 뒤 마지막 단계에서 호출하는 것을 권장합니다.
 
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   - "이 한국어 문장 맞춤법 검사해줘", "띄어쓰기 검사"
@@ -111,16 +111,16 @@ print(json.dumps(spell_check("아버지가방에들어가신다."), ensure_ascii
 }
 ```
 
-## 관련 스킬 체이닝 — general-ai-slop-reviewer 직전 권장
+## 관련 스킬 체이닝 — ai-slop-reviewer 직전 권장
 
 표준 텍스트 산출물 체인:
 
 ```
-{콘텐츠 생성 스킬} → general-ai-slop-reviewer → korean-spell-check → 사용자 최종 검토
+{콘텐츠 생성 스킬} → ai-slop-reviewer → korean-spell-check → 사용자 최종 검토
 ```
 
 - **before**: `moai-marketer:content-blog`, `moai-marketer:content-newsletter`, `moai-marketer:content-copywriting`, `moai-marketer:content-sns-content`
-- **before**: `moai-coworker:general-ai-slop-reviewer` — AI 패턴(과한 형용사·반복·번역체) 먼저 검수
+- **before**: `moai-coworker:ai-slop-reviewer` — AI 패턴(과한 형용사·반복·번역체) 먼저 검수
 - **after**: 사용자가 최종 문맥 검토 후 발행
 
 ## Done when

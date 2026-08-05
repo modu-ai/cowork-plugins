@@ -126,7 +126,7 @@ GET https://plus.kipris.or.kr/openapi/rest/patentSearchInfo
 
 - **moai-lawyer:legal-patent-analyzer** - 선행기술 조사, FTO 분석, 출원서 작성
 - **moai-tutor:education-grant-writer** - 연구비 신청서 선행기술 섹션 작성
-- **moai-analyst:office-data-visualizer** - 특허 동향 시각화 (연도별 추이, IPC 분포 차트)
+- **moai-analyst:data-visualizer** - 특허 동향 시각화 (연도별 추이, IPC 분포 차트)
 
 ## KIPRIS Plus API 안내
 

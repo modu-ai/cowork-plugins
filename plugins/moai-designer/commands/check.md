@@ -7,6 +7,6 @@ allowed-tools: Skill
 
 Audit design copy for AI slop and return a review report with alternatives.
 
-Use Skill("cd-slop-check") with arguments: $ARGUMENTS
+Use Skill("design-slop-check") with arguments: $ARGUMENTS
 
-The anti-slop pattern dictionary is owned by Skill("moai-domain-copywriting") (generation-time avoidance).
+The anti-slop pattern dictionary is owned by Skill("design-copywriting") (generation-time avoidance).

@@ -29,7 +29,7 @@
 
 ## 폰트 (항상 로드)
 
-explainer 매핑 — 한국어 학습 가독성 우선. `moai-officer:office-html-report` `references/fonts.md`와 동일 정책.
+explainer 매핑 — 한국어 학습 가독성 우선. `moai-officer:doc-html-report` `references/fonts.md`와 동일 정책.
 
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>

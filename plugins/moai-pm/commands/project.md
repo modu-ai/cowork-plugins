@@ -5,4 +5,4 @@ allowed-tools: Skill
 ---
 <!-- moai-pm /project v1.0.0 · 단일 진입점 (skills/project) -->
 
-Use Skill("moai-pm:project") with arguments: $ARGUMENTS
+Use Skill("moai-pm:project-manager") with arguments: $ARGUMENTS

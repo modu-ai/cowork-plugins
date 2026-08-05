@@ -16,7 +16,7 @@ tags: [cookbook, projects, commerce]
 
 ## 2. 투입 직원과 스킬
 
-첫 주자는 셀러입니다. `commerce-market-research`로 경쟁 상품과 가격대를 훑고, `commerce-product-naming`으로 검색에 걸리는 상품명을 뽑고, `commerce-detail-page-planner`와 `commerce-detail-page-copy`로 상세페이지 구성안과 문구를 만듭니다. 네이버 입점 실무는 `commerce-marketplace-naver`가 챙깁니다. 두 번째 주자 마케터는 `content-sns-content`로 런칭 주간 SNS 게시물을 만들고, `media-higgsfield-image`로 홍보 이미지를 뽑습니다. 마지막 주자 CS매니저는 `business-kb-article`로 예상 문의 FAQ를 미리 만들고, `commerce-channel-message`로 톡톡·문자 응대 문구를 준비합니다. 문의가 오기 전에 답을 준비해두는 것이 런칭 CS의 핵심입니다.
+첫 주자는 셀러입니다. `commerce-market-research`로 경쟁 상품과 가격대를 훑고, `commerce-product-naming`으로 검색에 걸리는 상품명을 뽑고, `commerce-detail-page-planner`와 `commerce-detail-page-copy`로 상세페이지 구성안과 문구를 만듭니다. 네이버 입점 실무는 `commerce-marketplace-naver`가 챙깁니다. 두 번째 주자 마케터는 `content-sns-content`로 런칭 주간 SNS 게시물을 만들고, `media-higgsfield-image`로 홍보 이미지를 뽑습니다. 마지막 주자 CS매니저는 `cs-kb-article`로 예상 문의 FAQ를 미리 만들고, `cs-channel-message`로 톡톡·문자 응대 문구를 준비합니다. 문의가 오기 전에 답을 준비해두는 것이 런칭 CS의 핵심입니다.
 
 | 순서 | 직원 | 스킬 | 역할 |
 |------|------|------|------|
@@ -24,7 +24,7 @@ tags: [cookbook, projects, commerce]
 | 2 | 셀러 | `commerce-product-naming` | 검색 최적화 상품명 |
 | 3 | 셀러 | `commerce-detail-page-planner` + `commerce-detail-page-copy` | 상세페이지 구성 · 문구 |
 | 4 | 마케터 | `content-sns-content` + `media-higgsfield-image` | 런칭 SNS 콘텐츠 · 이미지 |
-| 5 | CS매니저 | `business-kb-article` + `commerce-channel-message` | FAQ · 채널 응대 문구 |
+| 5 | CS매니저 | `cs-kb-article` + `cs-channel-message` | FAQ · 채널 응대 문구 |
 
 ## 3. 진행 단계
 
@@ -56,7 +56,7 @@ flowchart TD
    S1 --> R1["상세페이지<br/>구성안 + 문구"]
    R1 --> M1["마케터<br/>content-sns-content"]
    M1 --> R2["SNS 게시물 5종<br/>+ 홍보 이미지"]
-   R1 --> C1["CS매니저<br/>business-kb-article"]
+   R1 --> C1["CS매니저<br/>cs-kb-article"]
    C1 --> R3["FAQ 10문항<br/>+ 톡톡 응대 문구"]
    R2 --> OUT["런칭 패키지 완성"]
    R3 --> OUT

@@ -16,14 +16,14 @@ tags: [cookbook, projects, startup]
 
 ## 2. 투입 직원과 스킬
 
-공고 해석은 컨설턴트가 맡습니다. `business-kr-gov-grant` 스킬은 한국 정부 지원사업 공고를 분석해 자격 요건·평가 기준·필수 서류를 정리하고 신청 전략을 세우는 스킬입니다. 사업 아이템 자체를 다듬어야 한다면 `business-startup-launchpad`로 사업 모델을 먼저 정리할 수 있습니다. 문장 완성은 코워커 몫입니다. `business-proposal-writer`가 평가 항목별 배점에 맞춰 제안서 본문을 쓰고, 마지막에 `general-ai-slop-reviewer`가 AI 특유의 딱딱한 어투를 걷어냅니다. 심사위원도 사람이라, 기계 냄새가 나는 문장은 감점 요인입니다.
+공고 해석은 컨설턴트가 맡습니다. `consult-gov-grant` 스킬은 한국 정부 지원사업 공고를 분석해 자격 요건·평가 기준·필수 서류를 정리하고 신청 전략을 세우는 스킬입니다. 사업 아이템 자체를 다듬어야 한다면 `consult-startup`로 사업 모델을 먼저 정리할 수 있습니다. 문장 완성은 코워커 몫입니다. `collab-proposal`가 평가 항목별 배점에 맞춰 제안서 본문을 쓰고, 마지막에 `ai-slop-reviewer`가 AI 특유의 딱딱한 어투를 걷어냅니다. 심사위원도 사람이라, 기계 냄새가 나는 문장은 감점 요인입니다.
 
 | 순서 | 직원 | 스킬 | 역할 |
 |------|------|------|------|
-| 1 | 컨설턴트 | `business-kr-gov-grant` | 공고 분석 · 평가 기준 역산 · 신청 전략 |
-| 2 | 컨설턴트 | `business-startup-launchpad` | (필요시) 사업 모델 정리 |
-| 3 | 코워커 | `business-proposal-writer` | 평가 항목별 사업계획서 본문 작성 |
-| 4 | 코워커 | `general-ai-slop-reviewer` | AI 어투 제거 · 최종 윤문 |
+| 1 | 컨설턴트 | `consult-gov-grant` | 공고 분석 · 평가 기준 역산 · 신청 전략 |
+| 2 | 컨설턴트 | `consult-startup` | (필요시) 사업 모델 정리 |
+| 3 | 코워커 | `collab-proposal` | 평가 항목별 사업계획서 본문 작성 |
+| 4 | 코워커 | `ai-slop-reviewer` | AI 어투 제거 · 최종 윤문 |
 
 ## 3. 진행 단계
 
@@ -52,11 +52,11 @@ tags: [cookbook, projects, startup]
 
 ```mermaid
 flowchart TD
-   U["서연 님<br/>공고 PDF + 회사 정보"] --> C1["컨설턴트<br/>business-kr-gov-grant"]
+   U["서연 님<br/>공고 PDF + 회사 정보"] --> C1["컨설턴트<br/>consult-gov-grant"]
    C1 --> R1["공고 분석 메모<br/>(자격 · 배점 · 전략)"]
-   R1 --> W1["코워커<br/>business-proposal-writer"]
+   R1 --> W1["코워커<br/>collab-proposal"]
    W1 --> R2["사업계획서 초안"]
-   R2 --> W2["코워커<br/>general-ai-slop-reviewer"]
+   R2 --> W2["코워커<br/>ai-slop-reviewer"]
    W2 --> OUT["제출용 신청서 세트"]
 
    style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
@@ -83,5 +83,5 @@ AI가 빈칸을 그럴듯한 숫자로 메꾸는 경우입니다. "네가 지어
 
 ## 6. 응용
 
-- **입찰 제안서(RFP 대응)** — 공고 대신 발주처 RFP(제안요청서)를 넣으면 같은 체인이 B2B 입찰 제안서 파이프라인이 됩니다. `business-proposal-writer`는 원래 RFP 대응이 주특기입니다.
+- **입찰 제안서(RFP 대응)** — 공고 대신 발주처 RFP(제안요청서)를 넣으면 같은 체인이 B2B 입찰 제안서 파이프라인이 됩니다. `collab-proposal`는 원래 RFP 대응이 주특기입니다.
 - **은행 대출용 사업계획서** — 평가 기준을 "심사역이 보는 상환 능력"으로 바꿔 같은 흐름을 돌리고, ①번 프로젝트의 추정 손익계산서를 근거 자료로 붙이면 대출 심사용 버전이 나옵니다.

@@ -5,7 +5,7 @@ paths: ".moai/specs/SPEC-*-DESIGN-*/**,.moai/project/brand/**,.claude/skills/moa
 
 # Design System Constitution v3.5.0
 
-> **RETIRED — historical reference.** The MoAI design production system described in this file (the `/moai design` route, the design pipeline, and the named design skills `moai-domain-copywriting`, `moai-domain-brand-design`, `moai-workflow-design`, `moai-workflow-gan-loop`) has been **retired** per the design-system retirement. None of those four skills exist in the current catalog, and `/moai design` is no longer a routed subcommand — design-language requests route to `/moai plan`, and quality/security review routes to `/moai review`. This file is preserved for two reasons only: (1) as the FROZEN-clause source mirrored by the constitution registry, and (2) as a historical record of the design pipeline contract. The `expert-frontend` name throughout resolves to a per-spawn `Agent(general-purpose)` with frontend instructions per the carve-out note below. Do not treat any pipeline, route, or skill named below as a live capability.
+> **RETIRED — historical reference.** The MoAI design production system described in this file (the `/moai design` route, the design pipeline, and the named design skills `design-copywriting`, `moai-domain-brand-design`, `design-workflow`, `moai-workflow-gan-loop`) has been **retired** per the design-system retirement. None of those four skills exist in the current catalog, and `/moai design` is no longer a routed subcommand — design-language requests route to `/moai plan`, and quality/security review routes to `/moai review`. This file is preserved for two reasons only: (1) as the FROZEN-clause source mirrored by the constitution registry, and (2) as a historical record of the design pipeline contract. The `expert-frontend` name throughout resolves to a per-spawn `Agent(general-purpose)` with frontend instructions per the carve-out note below. Do not treat any pipeline, route, or skill named below as a live capability.
 
 ## HISTORY
 
@@ -25,7 +25,7 @@ Core principles governing the MoAI design production system. These rules define 
 
 ## 1. Identity and Purpose
 
-The MoAI design production system is a creative production capability built on top of MoAI-ADK. It orchestrates a pipeline of specialized skills and agents (`moai-domain-copywriting`, `moai-domain-brand-design`, `moai-workflow-design`, `moai-workflow-gan-loop`, `expert-frontend`, `sync-auditor`) to produce high-quality web experiences from natural language briefs.
+The MoAI design production system is a creative production capability built on top of MoAI-ADK. It orchestrates a pipeline of specialized skills and agents (`design-copywriting`, `moai-domain-brand-design`, `design-workflow`, `moai-workflow-gan-loop`, `expert-frontend`, `sync-auditor`) to produce high-quality web experiences from natural language briefs.
 
 The design system is NOT a replacement for MoAI. It is a vertical specialization domain that:
 - Inherits MoAI's orchestration infrastructure, quality gates, and agent runtime
@@ -56,7 +56,7 @@ The following elements are immutable and can only be changed by human developers
 
 The following elements can be modified through the graduation protocol:
 
-- [EVOLVABLE] Skill body content for moai-domain-copywriting, moai-domain-brand-design, moai-workflow-gan-loop
+- [EVOLVABLE] Skill body content for design-copywriting, moai-domain-brand-design, moai-workflow-gan-loop
 - [EVOLVABLE] Pipeline adaptation weights (.moai/config/sections/design.yaml adaptation.phase_weights)
 - [EVOLVABLE] Evaluation rubric criteria (within bounds set by frozen rules)
 - [EVOLVABLE] Design tokens and brand heuristics (.moai/project/brand/)
@@ -71,7 +71,7 @@ The following elements can be modified through the graduation protocol:
 Brand context is not optional decoration. It is a constitutional constraint that flows through every phase:
 
 - [ZONE:Frozen] [HARD] manager-spec MUST load brand context before generating BRIEF documents
-- [ZONE:Frozen] [HARD] moai-domain-copywriting MUST adhere to brand voice, tone, and terminology from brand-voice.md
+- [ZONE:Frozen] [HARD] design-copywriting MUST adhere to brand voice, tone, and terminology from brand-voice.md
 - [ZONE:Frozen] [HARD] moai-domain-brand-design MUST use brand color palette, typography, and visual language from visual-identity.md
 - [ZONE:Frozen] [HARD] [ARCHIVED] expert-frontend MUST implement design tokens derived from brand context (archived agent — resolves to Agent(general-purpose) with frontend whitelist per the line 22 carve-out note; historical design-pipeline clause preserved for the constitution registry mirror)
 - [ZONE:Frozen] [HARD] sync-auditor MUST score brand consistency as a must-pass criterion
@@ -86,7 +86,7 @@ Historical iteration-specific design briefs were stored in `.moai/design/`:
 
 - [ZONE:Frozen] [HARD] `/moai design` MUST auto-load human-authored design documents (research.md, system.md, spec.md) when present and not _TBD_ (RETIRED route — `/moai design` is no longer a routed subcommand; design-language requests route to `/moai plan`. See the retirement banner at the top of this file. Clause text preserved verbatim for the FROZEN constitution registry mirror.)
 - [ZONE:Frozen] [HARD] Design briefs MUST NOT override brand context — brand remains the constitutional parent
-- [ZONE:Frozen] [HARD] `moai-workflow-design` continues to write machine-generated artifacts to `.moai/design/`; the exact set of reserved file paths is enumerated below — human-authored files must not collide with them (historical — the `moai-workflow-design` skill is retired and the `.moai/design/` directory is no longer created)
+- [ZONE:Frozen] [HARD] `design-workflow` continues to write machine-generated artifacts to `.moai/design/`; the exact set of reserved file paths is enumerated below — human-authored files must not collide with them (historical — the `design-workflow` skill is retired and the `.moai/design/` directory is no longer created)
 - [ZONE:Frozen] [HARD] Reserved file paths (canonical list): `tokens.json`, `components.json`, `assets/`, `import-warnings.json`, `brief/BRIEF-*.md` (historical — enforcement code path removed)
 - [ZONE:Frozen] [HARD] Token budget for auto-loading is bounded by `.moai/config/sections/design.yaml` `design_docs.token_budget`; when the key is absent, the system MUST default to 20000 (historical — the `design_docs` config block was removed)
 - [ZONE:Frozen] [HARD] Priority order when truncation is needed: spec.md > system.md > research.md (historical)
@@ -108,14 +108,14 @@ Historical iteration-specific design briefs were stored in `.moai/design/`:
 ### Phase Ordering
 
 ```
-manager-spec -> [moai-domain-copywriting, moai-domain-brand-design] (parallel) -> expert-frontend -> sync-auditor
+manager-spec -> [design-copywriting, moai-domain-brand-design] (parallel) -> expert-frontend -> sync-auditor
                                                                                           ^                  |
                                                                                           |__________________|
                                                                                      GAN Loop (max 5 iterations)
                                                                                      (via moai-workflow-gan-loop)
 ```
 
-Path A (Claude Design import): moai-workflow-design replaces moai-domain-brand-design for the design artifact phase.
+Path A (Claude Design import): design-workflow replaces moai-domain-brand-design for the design artifact phase.
 
 ### Phase Contracts
 
@@ -124,9 +124,9 @@ Each phase produces typed artifacts consumed by downstream phases:
 | Phase | Input | Output | Required |
 |-------|-------|--------|----------|
 | manager-spec | User request + brand context | BRIEF document (Goal/Audience/Brand sections) | Always |
-| moai-domain-copywriting | BRIEF + brand voice | Copy JSON (hero/features/cta/etc.) | Path B |
+| design-copywriting | BRIEF + brand voice | Copy JSON (hero/features/cta/etc.) | Path B |
 | moai-domain-brand-design | BRIEF + visual identity | Design tokens JSON + component spec | Path B |
-| moai-workflow-design | Handoff bundle path | .moai/design/ reserved artifacts (see Section 3.2) | Path A |
+| design-workflow | Handoff bundle path | .moai/design/ reserved artifacts (see Section 3.2) | Path A |
 | expert-frontend *(archived — see line 22)* | Copy JSON + design tokens | Working code (pages, components, styles) | Always (historical) |
 | sync-auditor | Built code + BRIEF | Score card + feedback | Always |
 | figma-extractor (Path B1) | BRIEF + Figma file ID + page selectors | tokens.json + components.json | Path B1 |

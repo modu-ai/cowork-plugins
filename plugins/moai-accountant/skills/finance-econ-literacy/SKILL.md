@@ -88,12 +88,12 @@ version: "1.0.0"
 
 - **moai-accountant:finance-invest-primer**: 금리·물가 환경을 자산 배분에 반영
 - **moai-accountant:finance-wealth-roadmap**: 금리 방향에 따른 대출·저축 전략
-- **moai-analyst:office-public-data-korean-stock-search**: KRX 시세 등 시장 데이터(참고용)
+- **moai-analyst:data-stock**: KRX 시세 등 시장 데이터(참고용)
 
 | 단계 | 스킬 | 역할 |
 |------|------|------|
-| Post-검수 | `moai-coworker:general-ai-slop-reviewer` | AI 슬롭 검수 (필수) |
-| Post-검수 | `moai-writer:general-humanize-korean` | 한국어 AI 티 제거 (슬롭 검수 다음, 필수) |
+| Post-검수 | `moai-coworker:ai-slop-reviewer` | AI 슬롭 검수 (필수) |
+| Post-검수 | `moai-writer:korean-humanize` | 한국어 AI 티 제거 (슬롭 검수 다음, 필수) |
 
 ## 이 스킬을 사용하지 말아야 할 때
 

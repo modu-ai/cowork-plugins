@@ -201,12 +201,12 @@ flowchart LR
 
 | 단계 | 스킬 | 결과물 |
 |---|---|---|
-| 디자인 시스템 셋업 | `cd-system-prep` | DESIGN.md + 자산 정리 |
+| 디자인 시스템 셋업 | `design-system-prep` | DESIGN.md + 자산 정리 |
 | 디자인 시스템 소스 | `design-system-library` | 75개 글로벌 브랜드 디자인 시스템(Notion·Linear·Stripe 등) → Tailwind Play CDN + shadcn |
-| 시안 작성 | `cd-brief` | 6요소 복붙용 프롬프트 |
-| 특정 영역 | `cd-prompt-builder` | 시니어 UX 10 패턴 프롬프트 |
-| 결과 검수 | `cd-slop-check` | AI 슬롭 검수 + 수정안 |
-| 핸드오프 | `cd-handoff-reader` | 번들 요약 + Claude Code 지시 |
+| 시안 작성 | `design-brief` | 6요소 복붙용 프롬프트 |
+| 특정 영역 | `design-prompt-builder` | 시니어 UX 10 패턴 프롬프트 |
+| 결과 검수 | `design-slop-check` | AI 슬롭 검수 + 수정안 |
+| 핸드오프 | `design-handoff-reader` | 번들 요약 + Claude Code 지시 |
 | 모션 구현 | `design-landing-motion` | 시안을 움직이는 랜딩으로 — 효과 1개 선택 + 에셋 킷 + 출시 전 게이트 |
 | 로고 생성 | `design-logo` | 브랜드 컨텍스트 → 로고 타입 선택 → recraft 벡터 제약 → 스케일 정합 검증 |
 

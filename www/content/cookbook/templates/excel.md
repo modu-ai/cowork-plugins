@@ -22,7 +22,7 @@ flowchart TD
 
 ## 사용 스킬
 
-- **`moai-officer:office-xlsx-creator`** — openpyxl 기반 엑셀 자동 생성. 데이터 표·차트·수식·서식·시트 보호까지 코드로 작성.
+- **`moai-officer:doc-xlsx`** — openpyxl 기반 엑셀 자동 생성. 데이터 표·차트·수식·서식·시트 보호까지 코드로 작성.
 
 ## 자동화하기 쉬운 5가지 작업
 
@@ -73,14 +73,14 @@ cowork는 동적 피벗 슬라이서를 직접 만들지는 못하지만 시나�
 
 ## Power Query 대체 — 데이터 전처리
 
-`office-xlsx-creator`는 Power Query를 직접 호출하지 않지만 동일 결과를 코드로 만듭니다:
+`doc-xlsx`는 Power Query를 직접 호출하지 않지만 동일 결과를 코드로 만듭니다:
 
 - 여러 시트·파일 합치기 (UNION)
 - 컬럼 분할·결합
 - 결측·이상값 처리
 - 피벗·언피벗
 
-복잡한 변환은 [데이터 분석 가이드](../../guides/data-analysis/)의 `office-data-explorer` 스킬과 조합하세요.
+복잡한 변환은 [데이터 분석 가이드](../../guides/data-analysis/)의 `data-explorer` 스킬과 조합하세요.
 
 ## LAMBDA·동적 배열 함수
 
@@ -93,7 +93,7 @@ cowork는 동적 피벗 슬라이서를 직접 만들지는 못하지만 시나�
 
 ## 자주 겪는 실수
 
-- **수식이 깨질까 무서워서 값 복사** — `office-xlsx-creator`는 수식 그대로 쓰니 원본 셀 참조 보존됩니다.
+- **수식이 깨질까 무서워서 값 복사** — `doc-xlsx`는 수식 그대로 쓰니 원본 셀 참조 보존됩니다.
 - **차트가 너무 화려함** — 막대·꺾은선·도넛 3가지면 충분.
 - **머지 셀 남용** — 머지된 셀은 정렬·필터를 깨뜨립니다. 가능하면 피하세요.
 
@@ -107,5 +107,5 @@ cowork는 동적 피벗 슬라이서를 직접 만들지는 못하지만 시나�
 
 ### Sources
 
-- moai-officer 플러그인 [`office-xlsx-creator`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-officer/skills/office-xlsx-creator/SKILL.md)
+- moai-officer 플러그인 [`doc-xlsx`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-officer/skills/doc-xlsx/SKILL.md)
 - [openpyxl 공식 문서](https://openpyxl.readthedocs.io)

@@ -1,6 +1,6 @@
 # 셀러 (moai-seller)
 
-이커머스 셀러 전담 AI 직원입니다. 스마트스토어·아임웹·카페24 MCP 연동과 상세페이지·마켓플레이스·광고·CRM 등 커머스 실무 스킬 31종을 하나의 플러그인으로 제공합니다. 슬래시 명령을 외울 필요 없이 자연어로 요청하면 매칭되는 스킬이 자동 호출됩니다. VOC 분류(`commerce-voc-triage`)와 채널 메시지(`commerce-channel-message`)는 `moai-cs`(CS매니저)로 이관되었습니다.
+이커머스 셀러 전담 AI 직원입니다. 스마트스토어·아임웹·카페24 MCP 연동과 상세페이지·마켓플레이스·광고·CRM 등 커머스 실무 스킬 31종을 하나의 플러그인으로 제공합니다. 슬래시 명령을 외울 필요 없이 자연어로 요청하면 매칭되는 스킬이 자동 호출됩니다. VOC 분류(`cs-voc-triage`)와 채널 메시지(`cs-channel-message`)는 `moai-cs`(CS매니저)로 이관되었습니다.
 
 **이런 분께 추천**: 온라인 셀러 · 이커머스 운영자 · 1인 브랜드 대표
 
@@ -66,7 +66,7 @@ claude plugin install moai-seller@moai-cowork
 | `commerce-repurchase-timer` | 재구매 주기 기반 리텐션 설계 |
 | `commerce-subscription-strategist` | 구독 모델 전략 |
 
-> 채널 메시지(`commerce-channel-message`)·VOC 분류(`commerce-voc-triage`)는 `moai-cs`(CS매니저)로 이관되었습니다.
+> 채널 메시지(`cs-channel-message`)·VOC 분류(`cs-voc-triage`)는 `moai-cs`(CS매니저)로 이관되었습니다.
 
 ### 전략·분석 (9종)
 

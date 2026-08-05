@@ -317,15 +317,15 @@ book-concept-planner와 book-target-reader 결과 입력.
 - `book-chapter-writer` — 본문 챕터 집필 (꼭지 단위 반복)
 
 ### Alternative
-- `moai-consultant:business-strategy-planner` — 사업·서비스 구조 설계 (책 아님)
+- `moai-consultant:consult-strategy` — 사업·서비스 구조 설계 (책 아님)
 - `moai-marketer:content-blog` — 블로그 시리즈 구조 (책 분량 미만)
 
 ### Post (검수 — 정규 체인)
 - `moai-writer:korean-spell-check` — 한국어 맞춤법
-- `moai-coworker:general-ai-slop-reviewer` — AI 슬롭 검수 (필수)
-- `moai-writer:general-humanize-korean` — AI 티 정밀 윤문 (필수)
+- `moai-coworker:ai-slop-reviewer` — AI 슬롭 검수 (필수)
+- `moai-writer:korean-humanize` — AI 티 정밀 윤문 (필수)
 
-> 목차 트리·분량 배분은 데이터 출력이지만 **챕터 시놉시스(5요소 서술)**는 산문입니다. 시놉시스 산문은 정규 체인 **`book-outline-designer → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean`**으로 마무리합니다.
+> 목차 트리·분량 배분은 데이터 출력이지만 **챕터 시놉시스(5요소 서술)**는 산문입니다. 시놉시스 산문은 정규 체인 **`book-outline-designer → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`**으로 마무리합니다.
 
 ## 10. 출처
 

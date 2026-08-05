@@ -83,7 +83,7 @@ flowchart TD
 
 ### 자동 체인
 
-`finance-close-management`(자동 조정 항목 처리) → `finance-financial-statements`(손익·대차·현금흐름 3종) → `finance-variance-analysis`(전기·예산 대비) → `office-xlsx-creator`(차트 + 피벗) → `office-docx-generator`(경영진 요약) → `general-ai-slop-reviewer`
+`finance-close-management`(자동 조정 항목 처리) → `finance-financial-statements`(손익·대차·현금흐름 3종) → `finance-variance-analysis`(전기·예산 대비) → `doc-xlsx`(차트 + 피벗) → `doc-docx`(경영진 요약) → `ai-slop-reviewer`
 
 ### 산출물
 
@@ -110,7 +110,7 @@ flowchart TD
 
 ### 자동 체인
 
-`finance-tax-helper`(법인세 모드, 세율 자동 적용) → 세액공제 매핑 → `office-xlsx-creator`(신고서 표준 양식) → `office-docx-generator`(임원 보고용 요약) → `general-ai-slop-reviewer`
+`finance-tax-helper`(법인세 모드, 세율 자동 적용) → 세액공제 매핑 → `doc-xlsx`(신고서 표준 양식) → `doc-docx`(임원 보고용 요약) → `ai-slop-reviewer`
 
 ### 산출물
 
@@ -174,7 +174,7 @@ flowchart TD
 
 ### 자동 체인
 
-`finance-financial-statements`(3개년 통합 + 비율 분석: ROA·ROE·부채비율·유동비율 등) → `finance-variance-analysis`(YoY 변동률) → `office-docx-generator` 또는 `office-pptx-designer` → `general-ai-slop-reviewer`
+`finance-financial-statements`(3개년 통합 + 비율 분석: ROA·ROE·부채비율·유동비율 등) → `finance-variance-analysis`(YoY 변동률) → `doc-docx` 또는 `doc-pptx` → `ai-slop-reviewer`
 
 ### 산출물
 

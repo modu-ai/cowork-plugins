@@ -118,5 +118,5 @@ version: "1.0.0"
 ## 이 스킬을 사용하지 말아야 할 때
 
 - **학술 논문용 문헌 검토·인용 관리** → `moai-tutor:education-research-assistant`
-- **시장·비즈니스 조사** → `moai-consultant:business-market-analyst`
+- **시장·비즈니스 조사** → `moai-consultant:consult-market`
 - **깊은 다중 소스 교차검증 리포트(단일 질문, 비학습)** → 환경이 지원하면 번들 `/deep-research` 워크플로우, 아니면 WebSearch 다중 쿼리 직접 조사

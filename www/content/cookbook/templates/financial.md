@@ -23,7 +23,7 @@ flowchart TD
 | `moai-accountant:finance-financial-statements` | K-IFRS 기준 재무상태표·손익계산서·현금흐름표 |
 | `moai-accountant:finance-variance-analysis` | 예산 대비 실적 분산 분석 |
 | `moai-accountant:finance-close-management` | 결산·급여 정산 |
-| `moai-officer:office-xlsx-creator` | 5개 시트 통합 모델 출력 |
+| `moai-officer:doc-xlsx` | 5개 시트 통합 모델 출력 |
 
 ## 5개 시트 표준 구조
 
@@ -65,7 +65,7 @@ flowchart TD
 
 체인:
 1. `finance-financial-statements`
-2. `office-xlsx-creator`
+2. `doc-xlsx`
 
 ## 가정 변경 테스트
 
@@ -102,4 +102,4 @@ flowchart TD
 ### Sources
 
 - moai-accountant 플러그인 [`finance-financial-statements`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-accountant/skills/finance-financial-statements/SKILL.md), [`finance-variance-analysis`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-accountant/skills/finance-variance-analysis/SKILL.md)
-- moai-officer 플러그인 [`office-xlsx-creator`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-officer/skills/office-xlsx-creator/SKILL.md)
+- moai-officer 플러그인 [`doc-xlsx`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-officer/skills/doc-xlsx/SKILL.md)

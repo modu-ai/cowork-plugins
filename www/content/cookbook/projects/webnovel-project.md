@@ -16,14 +16,14 @@ tags: [cookbook, projects, content]
 
 ## 2. 투입 직원과 스킬
 
-작가의 `story-synopsis`가 머릿속 설정을 시놉시스로 구조화하고, `story-character-sheet`가 주요 인물의 성격·말투·욕망·관계를 시트로 고정합니다. 이 두 문서가 준비되면 `story-webnovel-writer`가 회차별 연재 원고를 씁니다 — 웹소설 특유의 문법(짧은 호흡, 회차 끝 절단감, 모바일 가독성)을 아는 스킬입니다. 초고의 번역투를 걷어내는 건 `general-humanize-korean`(한국어 자연화 윤문) 몫이고, 마지막으로 `story-cover-art`가 장르 관습에 맞는 표지 시안을 준비합니다.
+작가의 `story-synopsis`가 머릿속 설정을 시놉시스로 구조화하고, `story-character-sheet`가 주요 인물의 성격·말투·욕망·관계를 시트로 고정합니다. 이 두 문서가 준비되면 `story-webnovel-writer`가 회차별 연재 원고를 씁니다 — 웹소설 특유의 문법(짧은 호흡, 회차 끝 절단감, 모바일 가독성)을 아는 스킬입니다. 초고의 번역투를 걷어내는 건 `korean-humanize`(한국어 자연화 윤문) 몫이고, 마지막으로 `story-cover-art`가 장르 관습에 맞는 표지 시안을 준비합니다.
 
 | 순서 | 스킬 | 역할 |
 |------|------|------|
 | 1 | `story-synopsis` | 시놉시스 (기승전결 · 투고용 요약) |
 | 2 | `story-character-sheet` | 인물별 성격 · 말투 · 관계 시트 |
 | 3 | `story-webnovel-writer` | 회차별 연재 원고 집필 |
-| 4 | `general-humanize-korean` | 번역투 · AI 어투 제거 윤문 |
+| 4 | `korean-humanize` | 번역투 · AI 어투 제거 윤문 |
 | 5 | `story-cover-art` | 장르 맞춤 표지 시안 |
 
 ## 3. 진행 단계
@@ -59,7 +59,7 @@ flowchart TD
    R1 --> W2["작가<br/>story-character-sheet"]
    W2 --> R2["캐릭터 시트 4인"]
    R2 --> W3["작가<br/>story-webnovel-writer"]
-   W3 --> W4["작가<br/>general-humanize-korean"]
+   W3 --> W4["작가<br/>korean-humanize"]
    W4 --> R3["연재 원고 (회차별)"]
    R3 --> W5["작가<br/>story-cover-art"]
    W5 --> OUT["투고 패키지 완성"]

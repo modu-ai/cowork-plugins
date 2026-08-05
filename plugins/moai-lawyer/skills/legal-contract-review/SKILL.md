@@ -45,7 +45,7 @@ version: "1.0.0"
 
 **한국법 또는 외국법 적용 여부 확인**
 
-**입력 개인정보 마스킹**: 계약서 원본에 주민등록번호·계좌·연락처 등 개인정보가 포함되면 `moai-coworker:general-ai-slop-reviewer`의 `references/kr-pii-masking.md` 규칙으로 마스킹 후 검토를 진행합니다 (검토 보고서에 원본 재출력 금지).
+**입력 개인정보 마스킹**: 계약서 원본에 주민등록번호·계좌·연락처 등 개인정보가 포함되면 `moai-coworker:ai-slop-reviewer`의 `references/kr-pii-masking.md` 규칙으로 마스킹 후 검토를 진행합니다 (검토 보고서에 원본 재출력 금지).
 
 ### 2단계: 계약서 검토 (10대 리스크 체크)
 
@@ -175,19 +175,19 @@ version: "1.0.0"
 - **moai-lawyer:legal-nda-triage**: NDA 비밀유지계약 전문 검토
 - **moai-lawyer:legal-compliance-check**: 규제 준수 점검, ESG 보고
 - **moai-lawyer:legal-legal-risk**: 법적 리스크 분석, 지적재산권 전략
-- **moai-coworker:general-ai-slop-reviewer**: 계약서 초안·수정 권고안 AI 패턴 검수
+- **moai-coworker:ai-slop-reviewer**: 계약서 초안·수정 권고안 AI 패턴 검수
 
 ### 후처리 체인 (텍스트 산출물)
 
 계약서 초안·수정 권고안·이용약관·개인정보처리방침·SLA 등 서술형 산출물은 작성 후 반드시 다음 체인으로 마무리합니다.
 
 ```
-legal-contract-review → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean
+legal-contract-review → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
 > **정형 서식 보호** — 이 스킬의 산출물은 정형 문서다. 슬롭 검수는 금지어 치환만 수행하고, 구조(개조식·항목 번호 체계·두문/본문/결문)는 재작성하지 않는다.
 ```
 
-- **moai-coworker:general-ai-slop-reviewer**: AI 글쓰기 패턴(과장·상투구·획일적 구조) 검수
-- **moai-writer:general-humanize-korean**: 한국어 자연스러움 보정으로 사람이 쓴 듯한 문장으로 다듬기
+- **moai-coworker:ai-slop-reviewer**: AI 글쓰기 패턴(과장·상투구·획일적 구조) 검수
+- **moai-writer:korean-humanize**: 한국어 자연스러움 보정으로 사람이 쓴 듯한 문장으로 다듬기
 
 ## 이 스킬을 사용하지 말아야 할 때
 

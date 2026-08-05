@@ -351,15 +351,15 @@ AskUserQuestion으로 저자에 대한 다음 5 영역 자료 수집:
 - `book-publisher-matcher` — 한국 출판사 매칭 (저자 신뢰 신호 기반)
 
 ### Alternative
-- `moai-career:business-resume-builder` — 일반 이력서 (책 외)
-- `moai-consultant:business-strategy-planner` — 사업 자기소개
+- `moai-career:career-resume` — 일반 이력서 (책 외)
+- `moai-consultant:consult-strategy` — 사업 자기소개
 
 ### Post (검수 — 정규 체인)
 - `moai-writer:korean-spell-check` — 한국어 맞춤법
-- `moai-coworker:general-ai-slop-reviewer` — AI 슬롭 검수 (필수)
-- `moai-writer:general-humanize-korean` — AI 티 정밀 윤문 (저자의 말은 특히 사람 냄새 필수)
+- `moai-coworker:ai-slop-reviewer` — AI 슬롭 검수 (필수)
+- `moai-writer:korean-humanize` — AI 티 정밀 윤문 (저자의 말은 특히 사람 냄새 필수)
 
-> 약력·저자의 말 산문은 정규 체인 **`book-author-bio → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean`**으로 마무리합니다.
+> 약력·저자의 말 산문은 정규 체인 **`book-author-bio → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`**으로 마무리합니다.
 
 ## 10. 출처
 

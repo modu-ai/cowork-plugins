@@ -1,4 +1,4 @@
-# commerce-detail-page-planner 테스트 케이스 (general-skill-tester 호환)
+# commerce-detail-page-planner 테스트 케이스 (meta-skill-tester 호환)
 # 4-dimension rubric: Correctness / Completeness / Clarity / Efficiency
 
 cases:
@@ -93,7 +93,7 @@ cases:
       clarity: 5
       efficiency: 5
 
-# 기대 평균 (general-skill-builder Phase 6 통과 기준)
+# 기대 평균 (meta-skill-builder Phase 6 통과 기준)
 expected_avg:
   correctness: 4.8
   completeness: 4.2

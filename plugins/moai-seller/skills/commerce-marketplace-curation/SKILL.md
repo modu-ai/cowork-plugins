@@ -145,7 +145,7 @@ version: "1.0.0"
 - `moai-seller:commerce-product-photo-brief` — 라이프스타일 사진 컷 기획
 - `moai-seller:commerce-integrated-strategy` — 채널 믹스 전략
 - `moai-marketer:marketing-landing-page` — 브랜드 소개 자사몰
-- `moai-consultant:business-strategy-planner` — 사업 계획서 (입점 제안서 베이스)
+- `moai-consultant:consult-strategy` — 사업 계획서 (입점 제안서 베이스)
 
 ## 이 스킬을 사용하지 말아야 할 때
 
@@ -165,8 +165,8 @@ version: "1.0.0"
 
 본 스킬이 산출하는 한국어 텍스트는 배포 전 의무 게이트를 통과합니다:
 
-1. `moai-coworker:general-ai-slop-reviewer` — 1차 일반 AI 슬롭 검수 (금지어, 구조 패턴, 리듬)
-2. `moai-writer:general-humanize-korean` — 2차 한국어 정밀 윤문 (40+ 패턴 SSOT, 의미 불변)
+1. `moai-coworker:ai-slop-reviewer` — 1차 일반 AI 슬롭 검수 (금지어, 구조 패턴, 리듬)
+2. `moai-writer:korean-humanize` — 2차 한국어 정밀 윤문 (40+ 패턴 SSOT, 의미 불변)
 
 두 게이트는 대시 대비 헤드라인·조사·체언 종결 조각문·"A에서 B로" 전환 공식 S1 패턴을 잡아냅니다. 게이트 통과 없이 산출물을 바로 배포하지 않습니다.
 

@@ -16,14 +16,14 @@ tags: [cookbook, projects, cs]
 
 ## 2. 투입 직원과 스킬
 
-첫 단계는 `commerce-voc-triage`입니다. 흩어진 문의 기록을 유형별로 분류하고(트리아지 — 응급실처럼 심각도와 유형으로 나누는 선별 작업), 반복 빈도와 감정 강도를 집계해 "무엇부터 해결해야 하는지"의 우선순위를 만듭니다. 상위 반복 질문은 `business-kb-article`이 FAQ 문서(지식베이스 아티클)로 바꿉니다 — 고객이 읽는 버전과 상담자가 참조하는 버전을 나눠 쓸 수 있습니다. 남은 개별 응대는 `business-draft-response`가 상황별 답변 템플릿으로 준비하고, 불만이 격해진 건은 `business-escalation-manager`가 에스컬레이션(윗선 이관) 기준과 대응 절차를 잡아줍니다.
+첫 단계는 `cs-voc-triage`입니다. 흩어진 문의 기록을 유형별로 분류하고(트리아지 — 응급실처럼 심각도와 유형으로 나누는 선별 작업), 반복 빈도와 감정 강도를 집계해 "무엇부터 해결해야 하는지"의 우선순위를 만듭니다. 상위 반복 질문은 `cs-kb-article`이 FAQ 문서(지식베이스 아티클)로 바꿉니다 — 고객이 읽는 버전과 상담자가 참조하는 버전을 나눠 쓸 수 있습니다. 남은 개별 응대는 `cs-draft-response`가 상황별 답변 템플릿으로 준비하고, 불만이 격해진 건은 `cs-escalation`가 에스컬레이션(윗선 이관) 기준과 대응 절차를 잡아줍니다.
 
 | 순서 | 스킬 | 역할 |
 |------|------|------|
-| 1 | `commerce-voc-triage` | 문의 분류 · 빈도 집계 · 우선순위 |
-| 2 | `business-kb-article` | 반복 질문 → FAQ 지식베이스 문서 |
-| 3 | `business-draft-response` | 상황별 응대 답변 템플릿 |
-| 4 | `business-escalation-manager` | 격앙 건 이관 기준 · 대응 절차 |
+| 1 | `cs-voc-triage` | 문의 분류 · 빈도 집계 · 우선순위 |
+| 2 | `cs-kb-article` | 반복 질문 → FAQ 지식베이스 문서 |
+| 3 | `cs-draft-response` | 상황별 응대 답변 템플릿 |
+| 4 | `cs-escalation` | 격앙 건 이관 기준 · 대응 절차 |
 
 ## 3. 진행 단계
 
@@ -45,13 +45,13 @@ CS매니저가 분류표를 만듭니다. "문의의 41%가 배송 관련, 그�
 
 ```mermaid
 flowchart TD
-   U["하람 님<br/>두 달치 문의 기록"] --> C1["CS매니저<br/>commerce-voc-triage"]
+   U["하람 님<br/>두 달치 문의 기록"] --> C1["CS매니저<br/>cs-voc-triage"]
    C1 --> R1["VOC 분류 리포트<br/>(유형 · 빈도 · 감정)"]
-   R1 --> C2["CS매니저<br/>business-kb-article"]
+   R1 --> C2["CS매니저<br/>cs-kb-article"]
    C2 --> R2["FAQ 지식베이스<br/>상위 10문항"]
-   R1 --> C3["CS매니저<br/>business-draft-response"]
+   R1 --> C3["CS매니저<br/>cs-draft-response"]
    C3 --> R3["응대 템플릿 세트"]
-   R1 --> C4["CS매니저<br/>business-escalation-manager"]
+   R1 --> C4["CS매니저<br/>cs-escalation"]
    C4 --> R4["직접 응대 기준"]
    R2 --> OUT["문의 감소 + 응대 체계"]
    R3 --> OUT

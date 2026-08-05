@@ -62,7 +62,7 @@ flowchart TD
 
 ### 자동 체인
 
-`business-strategy-planner`(제품 전략 정의) → `business-spec-writer`(PRD: 문제·해결·요구사항·인수기준) → `business-ux-researcher`(5-7개 핵심 질문 + STAR 후속 질문) → `office-docx-generator` → `general-ai-slop-reviewer`
+`consult-strategy`(제품 전략 정의) → `collab-spec`(PRD: 문제·해결·요구사항·인수기준) → `collab-ux-research`(5-7개 핵심 질문 + STAR 후속 질문) → `doc-docx` → `ai-slop-reviewer`
 
 ### 산출물
 
@@ -89,7 +89,7 @@ flowchart TD
 
 ### 자동 체인
 
-`business-roadmap-manager`(MoSCoW 우선순위) → 마일스톤·의존성 매핑 → `office-xlsx-creator`(간트 차트) → `office-docx-generator` 또는 `office-pptx-designer` → `general-ai-slop-reviewer`
+`collab-roadmap`(MoSCoW 우선순위) → 마일스톤·의존성 매핑 → `doc-xlsx`(간트 차트) → `doc-docx` 또는 `doc-pptx` → `ai-slop-reviewer`
 
 ### 산출물
 
@@ -116,7 +116,7 @@ flowchart TD
 
 ### 자동 체인
 
-`marketing-landing-page` (Next.js 15 + shadcn/ui + Tailwind v4 + OKLCH 토큰) → `general-ai-slop-reviewer` → `general-humanize-korean`
+`marketing-landing-page` (Next.js 15 + shadcn/ui + Tailwind v4 + OKLCH 토큰) → `ai-slop-reviewer` → `korean-humanize`
 
 ### 산출물
 
@@ -145,7 +145,7 @@ flowchart TD
 
 ### 자동 체인
 
-`business-strategy-planner`(엘리베이터 피치) → `business-spec-writer`(12장 표준 목차) → `office-pptx-designer`(시각화) → `general-ai-slop-reviewer`
+`consult-strategy`(엘리베이터 피치) → `collab-spec`(12장 표준 목차) → `doc-pptx`(시각화) → `ai-slop-reviewer`
 
 ### 산출물
 
@@ -176,11 +176,11 @@ flowchart TD
 
 ### Q. UX 와이어프레임·디자인 평가도 자동으로 되나요?
 
-`marketing-landing-page`로 코드 기반 프로토타입 즉시 생성 가능. `business-ux-researcher`(moai-coworker)로 페르소나·사용자 흐름을 설계하고, `business-ux-designer`(moai-coworker)로 휴리스틱·접근성(WCAG)·사용자 플로우 평가 보고서를 받을 수 있습니다. Figma·Sketch 연동은 [커넥터 설정 가이드](../../../cowork/connectors-mcp/) 참조.
+`marketing-landing-page`로 코드 기반 프로토타입 즉시 생성 가능. `collab-ux-research`(moai-coworker)로 페르소나·사용자 흐름을 설계하고, `collab-ux-design`(moai-coworker)로 휴리스틱·접근성(WCAG)·사용자 플로우 평가 보고서를 받을 수 있습니다. Figma·Sketch 연동은 [커넥터 설정 가이드](../../../cowork/connectors-mcp/) 참조.
 
 ### Q. PRD 표준 양식은?
 
-`business-spec-writer`는 EARS 형식 + 8섹션 표준 PRD (제품·시장·페르소나·요구사항·인수기준·KPI·로드맵·리스크). 회사 표준 양식 .docx 첨부 시 자동 매핑.
+`collab-spec`는 EARS 형식 + 8섹션 표준 PRD (제품·시장·페르소나·요구사항·인수기준·KPI·로드맵·리스크). 회사 표준 양식 .docx 첨부 시 자동 매핑.
 
 ### Q. 투자자 피칭 데크는 어떤 양식?
 

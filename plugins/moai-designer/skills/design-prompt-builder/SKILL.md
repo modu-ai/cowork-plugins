@@ -1,0 +1,339 @@
+---
+name: design-prompt-builder
+description: |
+  Claude Design용 시니어 UX 프롬프트를 10가지 전문 패턴(정보 구조·디자인 시스템·카피·온보딩·접근성·대시보드·폼·테스트·휴리스틱·리서치) 중 적합한 것을 골라 완성해 줍니다.
+  각 패턴은 구체적 역할(예: IDEO 시니어 UX 아키텍트 12년차)을 부여해 결과 분산을 30-40% 감소시킵니다.
+
+  다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
+  - "Claude Design 시니어 프롬프트"
+  - "UX 패턴 프롬프트"
+  - "정보 구조 프롬프트 만들어 줘"
+  - "접근성 디자인 프롬프트"
+  - "디자인 시스템 프롬프트"
+  - "프롬프트 빌더"
+user-invocable: true
+version: "1.2.0"
+---
+
+# design-prompt-builder — 시니어 UX 패턴 프롬프트 빌더
+
+## 개요
+
+[리파인먼트 페이지](https://cowork.mo.ai.kr/claude-design/refinement/)에서 정리한 10가지 시니어 UX 프롬프트 패턴 중 사용자의 작업에 가장 적합한 패턴을 선택하고, ROLE·GOAL·CONSTRAINTS·OUTPUTS를 자동으로 채워 줍니다. 사용자는 CONTEXT만 보완하면 됩니다.
+
+> **진입 경로 (2026-06 업데이트)**: 완성된 프롬프트는 claude.ai/design 채팅에 붙여 넣는 것이 기본입니다. 그 외에 Claude Code 터미널에서 `/design`으로 직접 진입하거나, `/design-sync`로 코드베이스의 디자인 시스템을 먼저 import한 뒤 이 프롬프트를 사용하면 결과가 실제 코드 컴포넌트와 더 잘 맞습니다.
+
+## 트리거 키워드
+
+Claude Design 프롬프트, 시니어 UX, UX 패턴, 정보 구조 프롬프트, 디자인 시스템 프롬프트, 접근성 프롬프트, 폼 컨버전 프롬프트, 휴리스틱 평가, 디자인 스프린트, prompt builder
+
+## 10가지 시니어 UX 패턴
+
+| # | 패턴 | 역할 | 적합 작업 |
+|---|---|---|---|
+| 1 | 정보 구조 | IDEO 시니어 UX 아키텍트 12년차 | 콘텐츠 인벤토리·내비·플로우 |
+| 2 | 제로 예산 리서치 | Nielsen Norman 시니어 UX 리서처 | 인터뷰 가이드·5초 테스트·가드 테스트 |
+| 3 | 디자인 시스템 빌더 | Figma 시니어 디자인 시스템 엔지니어 (1M+ 사용자 경험) | 토큰·shadcn 전체 컴포넌트×라이트/다크·라이브 React |
+| 4 | 마이크로카피 라이터 | Dropbox 시니어 UX 라이터 | 온보딩·empty state·에러·CTA |
+| 5 | 활성화·온보딩 | Intercom 시니어 프로덕트 디자이너 | 10분 AHA 모먼트·활성화 체크리스트·72시간 이메일 |
+| 6 | 사용성 감사 | Baymard Institute 시니어 UX 컨설턴트 | Nielsen 10 휴리스틱 5점 평가·심각도 매트릭스·컴포넌트별 86 가이드라인(design-gui-guide) |
+| 7 | 데이터 대시보드 | Tableau 시니어 데이터 시각화 디자이너 | 10초 의사결정·시맨틱 색·KPI 1-3개 |
+| 8 | WCAG·EAA 접근성 | Level Access 시니어 접근성 컨설턴트 | WCAG 2.1 AA 감사·키보드 내비·NVDA/VoiceOver |
+| 9 | 폼 컨버전 | CXL Institute 시니어 컨버전 옵티마이저 | 필드 감축·심리 순서·GDPR 동의 |
+| 10 | 프로토타입 테스트 | Google Ventures 시니어 UX 리서처 | think-aloud·24h 모집·2h 합성·10분 발표 |
+
+## 보조 패턴 — 프론티어 미디어 프로토타입
+
+Anthropic 공식 발표(2026-04-17)에서 강조한 **코드 기반 프로토타입** 영역(음성·비디오·셰이더·3D). 10대 패턴과 별개로, 사용자가 명시적으로 "셰이더·3D·웹 오디오·캔버스 애니메이션" 키워드를 입력할 때만 활성화합니다.
+
+| 영역 | 권장 ROLE | 핵심 CONSTRAINTS |
+|---|---|---|
+| WebGL 셰이더 데모 | Pixar 시니어 테크니컬 아티스트 | 30 FPS 유지·모바일 fallback·React 컴포넌트 추출 가능·prefers-reduced-motion 존중 |
+| Three.js 3D 씬 | Disney Research 시니어 3D 엔지니어 | .glb 모델 호환·OrbitControls·LOD·모바일 30 FPS |
+| Web Audio API 사운드 UI | Ableton 시니어 오디오 UX 디자이너 | 8 패드 이내·라텐시 50ms 이하·키보드 단축키·접근성 라벨 |
+| 캔버스·CSS 애니메이션 인터랙션 | Stripe 시니어 모션 디자이너 | 60 FPS·prefers-reduced-motion 존중·0.3s 이내 트랜지션 |
+
+이 보조 패턴은 11번째 정식 패턴이 아닙니다. 사용자 입력에 명시적 미디어 키워드가 없으면 1-10 패턴 안에서 매칭하고 이 표는 호출하지 않습니다. 출력 한계(독립 .mp4 파일 미지원, 인터랙티브 HTML+JS만 출력)는 [제한 사항 문서](https://cowork.mo.ai.kr/claude-design/limitations/#4-코드-기반-프로토타입--공식-지원-vs-실제-한계) 참고.
+
+## 워크플로우
+
+### 1단계 — 패턴 선택
+
+사용자가 작업을 자연어로 설명하면 키워드 매칭 + AskUserQuestion으로 확정합니다.
+
+```
+작업 유형 키워드 → 추천 패턴:
+
+"네비게이션·정보 구조·콘텐츠 정리" → 패턴 1
+"사용자 인터뷰·리서치" → 패턴 2
+"디자인 시스템·토큰·컴포넌트" → 패턴 3
+"카피·마이크로카피·empty state·에러 메시지" → 패턴 4
+"온보딩·활성화·웰컴·체크리스트" → 패턴 5
+"사용성 평가·휴리스틱·UX 감사" → 패턴 6
+"대시보드·KPI·차트·시각화" → 패턴 7
+"접근성·WCAG·키보드·스크린리더" → 패턴 8
+"폼·결제·회원가입·컨버전" → 패턴 9
+"사용자 테스트·프로토타입 검증" → 패턴 10
+```
+
+매칭 결과가 모호하면 AskUserQuestion으로 사용자에게 확정 요청.
+
+### 2단계 — 패턴 템플릿 로드
+
+선택된 패턴의 ROLE·GOAL 스타일·CONSTRAINTS·OUTPUTS 템플릿을 로드합니다.
+
+### 3단계 — CONTEXT 보완
+
+사용자에게 CONTEXT 항목만 묻습니다. AskUserQuestion 1-2라운드.
+
+#### 패턴별 CONTEXT 요구 항목
+
+| 패턴 | CONTEXT 필수 항목 |
+|---|---|
+| 1. 정보 구조 | 제품 설명, 주 사용자 액션, 시장 제약 |
+| 2. 리서치 | 제품 유형, 타깃 페르소나, 검증할 디자인 가설 3개 |
+| 3. 디자인 시스템 | 제품 유형, 브랜드 personality, 기존 비주얼 요소 |
+| 4. 마이크로카피 | 주요 기능, 브랜드 톤, 제품 이탈 모먼트 3개 |
+| 5. 활성화 | 제품 가치 제안, 활성화 모먼트, 현재 활성화율 |
+| 6. 사용성 감사 | 감사할 화면/플로우, 제품 목표, 현재 컨버전율 |
+| 7. 대시보드 | 사용자 역할, 의사결정 유형, 기존 지표, 샘플 데이터 |
+| 8. 접근성 | 제품 유형, 기술 스택(웹·iOS·안드), 이전 감사 보고서 |
+| 9. 폼 | 폼 목적, 현재 필드 전체, 현재 이탈률 |
+| 10. 테스트 | 테스트할 플로우/화면, 검증할 가설, 타깃 사용자 |
+
+### 4단계 — 프롬프트 합성
+
+```
+다음 프롬프트를 claude.ai/design 채팅에 그대로 복사·붙여넣기 하세요:
+
+---
+[ROLE]
+당신은 12년차 시니어 UX 아키텍트, IDEO 출신.
+이 작업을 당신의 관점에서 접근하세요.
+
+[GOAL]
+[패턴 GOAL 템플릿 + 사용자 CONTEXT의 GOAL]
+
+[CONSTRAINTS]
+- 네비게이션 깊이 최대 2-3 단계
+- 사용 빈도순으로 콘텐츠 그룹핑
+- [기타 패턴별 제약]
+
+[OUTPUTS]
+1) 콘텐츠 인벤토리
+2) 내비게이션 계층
+3) 1차 사용자 플로우
+4) 마찰 지점
+5) 분류 체계
+6) 화면 맵
+7) 우선순위 매트릭스
+
+[CONTEXT]
+- 제품: [사용자가 답한 제품]
+- 주 사용자 액션: [사용자가 답한 액션]
+- 시장 제약: [사용자가 답한 제약]
+
+[AI 슬롭 회피]
+진부한 폰트(Inter·Roboto·Arial)·보라 그라데이션·천편일률
+3-카드 그리드 금지. 우리 브랜드 고유 비주얼로.
+---
+```
+
+### 5단계 — 활용 가이드 동봉
+
+```
+## 이 프롬프트 활용법
+
+1. claude.ai/design 채팅에 그대로 붙여 넣기
+2. 추가 자료가 있다면 첨부 (참고 URL·스크린샷·이전 보고서)
+3. 첫 결과를 받고 인라인 코멘트로 디테일 수정
+4. 5라운드 한계 안에서 마무리
+
+## 후속 추천
+
+- 결과를 PDF·PPTX·HTML 중 어느 것으로 내보낼지
+- 코드로 빌드하려면 → Claude Code 핸드오프
+- 카피 검수 필요 → moai-designer:design-slop-check
+```
+
+## 패턴별 템플릿 상세
+
+### 패턴 1 — 정보 구조 (IA)
+
+```
+[ROLE] 12년차 시니어 UX 아키텍트 IDEO 출신.
+
+[GOAL] 이 제품의 정보 구조를 정리해, 사용자가 핵심 작업을
+       3 클릭 안에 도달할 수 있게 한다.
+
+[CONSTRAINTS]
+- 네비게이션 깊이 최대 2-3 단계
+- 사용 빈도순으로 콘텐츠 그룹핑
+- 모바일 우선
+
+[OUTPUTS]
+1. 콘텐츠 인벤토리 (모든 페이지·섹션 목록)
+2. 네비게이션 계층 (1·2·3차)
+3. 1차 사용자 플로우 (3-5개 핵심 경로)
+4. 마찰 지점 (사용자가 멈출 만한 곳)
+5. 분류 체계 (taxonomy)
+6. 화면 맵 (페이지 간 연결)
+7. 우선순위 매트릭스 (영향도 × 노력)
+
+[CONTEXT]
+- 제품: [필수]
+- 주 사용자 액션: [필수]
+- 시장 제약: [필수]
+```
+
+### 패턴 3 — 디자인 시스템 빌더
+
+```
+[ROLE] Figma 시니어 디자인 시스템 엔지니어,
+       1M+ 사용자 컴포넌트 경험.
+
+[GOAL] 우리 제품 전체에 적용 가능한 디자인 시스템을 처음부터
+       구축한다.
+
+[CONSTRAINTS]
+- 라이브 React 컴포넌트 (Storybook 호환)
+- 시맨틱 토큰 명명 (primary/500 등)
+- **라이트·다크 양 테마 의무 생성** — 모든 컴포넌트·토큰·팔레트를 라이트와 다크 양쪽으로 빠짐없이 제작. 한쪽이라도 누락되면 미완성으로 간주
+- WCAG 색 대비 — 본문 4.5:1, 큰 텍스트 3:1을 **양 테마 각각**에서 준수 (다크 텍스처 위 반투명 배경 주의)
+- **컴포넌트별 사용성 준거** — 각 컴포넌트는 `design-gui-guide`의 해당 GUI 요소 가이드라인(동사 라벨·필드 세금·modal 범위·아이콘+라벨 짝·1×1cm 터치·토글=즉시·탭 1행 등 86종)을 준수해 설계
+- 1-2명 디자이너가 유지보수 가능한 규모
+
+[OUTPUTS]
+1. 디자인 토큰 (primitives + semantics) × 라이트/다크
+2. 색 팔레트 (100-900 변형) × 라이트/다크
+3. 타입 스케일 (Display·Heading·Body·Mono)
+4. 간격 시스템 (4·8·12·16·24·32·48·64)
+5. **shadcn 전체 컴포넌트 세트 — 아래 63종을 컴포넌트마다 라이트/다크 양 변형 + 모든 상태(default·hover·active·focus·disabled)로 제작. 목록에서 하나라도 빠지면 안 됨**
+   - 폼·입력(17): Input · Input Group · Input OTP · Textarea · Label · Checkbox · Radio Group · Select · Native Select · Combobox · Slider · Switch · Toggle · Toggle Group · Date Picker · Calendar · Field
+   - 오버레이·메뉴(13): Dialog · Alert Dialog · Sheet · Drawer · Popover · Hover Card · Tooltip · Dropdown Menu · Context Menu · Menubar · Navigation Menu · Command · Pagination
+   - 데이터 표시(16): Table · Data Table · Card · Avatar · Badge · Accordion · Collapsible · Tabs · Separator · Scroll Area · Resizable · Progress · Skeleton · Spinner · Chart · Carousel
+   - 피드백(6): Alert · Toast · Message · Message Scroller · Bubble · Empty
+   - 타이포·기타(11): Typography · Kbd · Item · Breadcrumb · Button · Button Group · Aspect Ratio · Attachment · Marker · Sidebar · Direction
+6. 사용 가이드라인 (라이트↔다크 전환 규칙 포함)
+7. 레이어 명명 규약
+
+[CONTEXT]
+- 제품 유형: [필수]
+- 브랜드 personality: [필수]
+- 기존 비주얼 요소: [필수]
+```
+
+### 패턴 4 — 마이크로카피 라이터
+
+```
+[ROLE] Dropbox 시니어 UX 라이터, 제품 마이크로카피 전문.
+
+[GOAL] 모든 인터페이스 텍스트가 12단어 이내·툴팁 20단어 이내·
+       전문 용어 없이, 사용자 액션을 명확히 이끈다.
+
+[CONSTRAINTS]
+- 지시문 최대 12 단어
+- 툴팁 최대 20 단어
+- 전문 용어·약어 사용 금지 (필요 시 정의 동봉)
+- 친근하지만 과도하게 가볍지 않은 톤
+
+[OUTPUTS]
+1. 온보딩 카피
+2. Empty state 메시지
+3. 에러 메시지 (회복 행동 포함)
+4. 확인 메시지
+5. 폼 라벨
+6. 전략적 툴팁
+7. 컨텍스트별 CTA
+8. 트랜잭션 이메일 본문
+
+[CONTEXT]
+- 주요 기능: [필수]
+- 브랜드 톤: [필수]
+- 제품 이탈 모먼트 3개: [필수]
+```
+
+### 패턴 8 — 접근성 (WCAG·EAA)
+
+```
+[ROLE] Level Access 시니어 접근성 컨설턴트, WCAG 인증.
+
+[GOAL] 우리 제품을 WCAG 2.1 AA 수준에 도달시킨다. 한국 접근성
+       시행령·EAA(2025-06-28 시행)도 함께 고려한다.
+
+[CONSTRAINTS]
+- WCAG 2.1 AA 준수
+- 본문 텍스트 4.5:1, 큰 텍스트 3:1 대비
+- 키보드만으로 모든 인터랙티브 요소 접근 가능
+- 스크린리더(NVDA·VoiceOver) 호환
+
+[OUTPUTS]
+1. WCAG 2.1 AA 감사 (실패 항목·심각도)
+2. 색 대비 검토 (현재값·권장값)
+3. 키보드 내비 tab order
+4. alt-text 가이드라인
+5. 접근 가능한 폼 12-point 체크리스트
+6. 스크린리더 최적화 (NVDA·VoiceOver)
+7. 빠른 수정(Quick wins)
+8. 접근성 선언문(Accessibility Statement)
+
+[CONTEXT]
+- 제품 유형: [필수]
+- 기술 스택 (웹·iOS·안드): [필수]
+- 이전 감사 보고서: [있으면]
+```
+
+(패턴 1·3·4·8의 상세 템플릿을 수록했으며, 나머지 패턴 2·5·6·7·9·10은 위 §10가지 패턴 표의 역할·적합 작업을 기준으로 동일 구조로 합성합니다)
+
+## 출력 형식
+
+```
+## 패턴 선택
+- 선택된 패턴: [번호 + 이름]
+- ROLE: [구체적 역할]
+- 사용자 작업과의 적합도: [근거]
+
+## CONTEXT 보완 결과
+- [수집한 항목들]
+
+## 완성된 프롬프트 (복붙 가능)
+```
+[프롬프트 본문]
+```
+
+## 후속 추천
+- [내보내기·연계 스킬]
+```
+
+## 사용 예시
+
+### 예시 1 — 접근성 감사 요청
+
+```
+사용자: "우리 헬스케어 앱이 WCAG AA 통과해야 하는데 디자인 단계에서 미리 점검하고 싶다"
+
+→ 패턴 8 자동 선택
+→ CONTEXT 보완: 제품 유형(헬스케어 모바일 앱), 기술 스택(iOS+안드)
+→ 완성된 프롬프트 출력
+```
+
+### 예시 2 — 폼 컨버전
+
+```
+사용자: "회원가입 폼 컨버전이 낮아. 필드 줄이고 GDPR도 맞추고 싶다"
+
+→ 패턴 9 자동 선택
+→ CONTEXT 보완: 폼 목적, 현재 필드 12개, 이탈률 65%
+→ 완성된 프롬프트 출력
+```
+
+## 관련 스킬
+
+| 스킬 | 사용 시점 |
+|---|---|
+| `moai-designer:design-brief` | 대안: 일반적 6요소 브리프 (시니어 패턴이 필요 없을 때) |
+| `moai-designer:design-system-prep` | 선행: 디자인 시스템 자산 합성 |
+| `moai-designer:design-gui-guide` | 참조: 패턴 3·6이 컴포넌트별 사용성 가이드라인(86종)으로 준거 |
+| `moai-designer:design-slop-check` | 후속: 결과 카피 검수 |
+| `moai-coworker:collab-ux-design` | 보조: Claude Design 외 UX 분석 |
+| `moai-coworker:collab-ux-research` | 보조: 사용자 리서치 단계 |

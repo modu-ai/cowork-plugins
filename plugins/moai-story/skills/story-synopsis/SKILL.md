@@ -94,8 +94,8 @@ version: "1.0.0"
 - `story-ip-pitch` — 2차 저작 피칭(부가)
 
 ### Post (검수 — 텍스트 산출물 정규 체인)
-- `moai-coworker:general-ai-slop-reviewer` — AI 슬롭 검수 (필수)
-- `moai-writer:general-humanize-korean` — AI 티 정밀 윤문 (필수)
+- `moai-coworker:ai-slop-reviewer` — AI 슬롭 검수 (필수)
+- `moai-writer:korean-humanize` — AI 티 정밀 윤문 (필수)
 
 ## 8. References
 

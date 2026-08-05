@@ -10,8 +10,8 @@ description: |
   - "이메일·SNS·랜딩 페이지용 메시지 다 만들어줘"
   - "광고 카피 A/B 테스트 안 만들어줘"
   - "고객 고민에 딱 맞는 헤드라인 뽑아줘"
-  고객 분석 → 페인포인트 → 핵심 메시지 → 채널별 변환 → A/B 테스트 순서로 정리하고, 결과 스크립트는 moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean으로 다듬어 바로 쓸 수 있게 만듭니다.
-  [책임 경계] vs moai-cs:commerce-channel-message: 이 스킬=메시지 전략 분석(앞단), 저 스킬=채널별 카피 산출(뒷단). 이 스킬 분석 결과를 moai-cs:commerce-channel-message나 moai-marketer:content-copywriting에 넘겨 카피를 완성합니다.
+  고객 분석 → 페인포인트 → 핵심 메시지 → 채널별 변환 → A/B 테스트 순서로 정리하고, 결과 스크립트는 moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize으로 다듬어 바로 쓸 수 있게 만듭니다.
+  [책임 경계] vs moai-cs:cs-channel-message: 이 스킬=메시지 전략 분석(앞단), 저 스킬=채널별 카피 산출(뒷단). 이 스킬 분석 결과를 moai-cs:cs-channel-message나 moai-marketer:content-copywriting에 넘겨 카피를 완성합니다.
 version: "1.0.0"
 ---
 
@@ -213,9 +213,9 @@ Markdown 형식의 구조화된 문서로 출력됩니다:
 
 ### AI 슬롭 후처리 + 한국어 휴머나이징 (필수 체인)
 
-생성된 타겟 스크립트는 반드시 후처리 체인을 거쳐야 합니다: `moai-coworker:general-ai-slop-reviewer`로 AI 패턴(반복적 표현, 과장된 어조, 추상적 문장)을 제거한 뒤, `moai-writer:general-humanize-korean`으로 한국어 어투의 AI 티를 다듬어 실전 즉시 활용 가능한 구체적이고 자연스러운 스크립트로 변환합니다.
+생성된 타겟 스크립트는 반드시 후처리 체인을 거쳐야 합니다: `moai-coworker:ai-slop-reviewer`로 AI 패턴(반복적 표현, 과장된 어조, 추상적 문장)을 제거한 뒤, `moai-writer:korean-humanize`으로 한국어 어투의 AI 티를 다듬어 실전 즉시 활용 가능한 구체적이고 자연스러운 스크립트로 변환합니다.
 
-**권장 체인**: `marketing-target-script → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean`
+**권장 체인**: `marketing-target-script → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
 
 ## 관련 스킬
 
@@ -223,6 +223,6 @@ Markdown 형식의 구조화된 문서로 출력됩니다:
 |------|----------|
 | `moai-marketer:marketing-campaign-planner` | 선행 체이닝: 타겟 스크립트 생성 전, 전체 캠페인 전략이 필요한 경우 |
 | `moai-marketer:content-sns-content` | 사후 체이닝: 생성된 SNS 스크립트를 바탕으로 실제 SNS 포스트를 생성 |
-| `moai-coworker:general-ai-slop-reviewer` | 사후 체이닝(필수): 생성된 타겟 스크립트의 AI 패턴을 검수하고 수정 |
-| `moai-writer:general-humanize-korean` | 사후 체이닝(필수): general-ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |
-| `moai-domain-copywriting` | 대안: 브랜드 중심의 카피라이팅이 필요한 경우 |
+| `moai-coworker:ai-slop-reviewer` | 사후 체이닝(필수): 생성된 타겟 스크립트의 AI 패턴을 검수하고 수정 |
+| `moai-writer:korean-humanize` | 사후 체이닝(필수): ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |
+| `design-copywriting` | 대안: 브랜드 중심의 카피라이팅이 필요한 경우 |

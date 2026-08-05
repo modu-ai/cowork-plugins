@@ -16,14 +16,14 @@ tags: [cookbook, projects, people]
 
 ## 2. 투입 직원과 스킬
 
-출발은 `business-job-analyzer`입니다. 막연한 "마케터 뽑고 싶다"를 주요 업무·필수 역량·우대 역량·성과 기준으로 구조화한 직무 정의서로 바꿔줍니다. 이 정의서가 공고문의 뼈대가 되고, 동시에 스크리닝 기준표가 됩니다. 지원서가 모이면 `business-resume-screener`가 이력서를 그 기준표에 대고 평가해 후보를 추립니다 — 기준이 먼저 있고 평가가 나중이라는 순서가 공정성의 핵심입니다. 최종 후보가 정해지면 `business-draft-offer`가 연봉·직급·입사일·조건을 담은 오퍼레터(채용 제안서)를 격식에 맞게 작성합니다. 입사 후 온보딩까지 내다본다면 `business-people-operations`가 이어받을 수 있습니다.
+출발은 `hr-job-analysis`입니다. 막연한 "마케터 뽑고 싶다"를 주요 업무·필수 역량·우대 역량·성과 기준으로 구조화한 직무 정의서로 바꿔줍니다. 이 정의서가 공고문의 뼈대가 되고, 동시에 스크리닝 기준표가 됩니다. 지원서가 모이면 `hr-resume-screener`가 이력서를 그 기준표에 대고 평가해 후보를 추립니다 — 기준이 먼저 있고 평가가 나중이라는 순서가 공정성의 핵심입니다. 최종 후보가 정해지면 `hr-draft-offer`가 연봉·직급·입사일·조건을 담은 오퍼레터(채용 제안서)를 격식에 맞게 작성합니다. 입사 후 온보딩까지 내다본다면 `hr-operations`가 이어받을 수 있습니다.
 
 | 순서 | 스킬 | 역할 |
 |------|------|------|
-| 1 | `business-job-analyzer` | 직무 분석 · 역량 기준 정의 → 공고문 |
-| 2 | `business-resume-screener` | 기준표 대비 이력서 스크리닝 |
-| 3 | `business-draft-offer` | 오퍼레터 작성 |
-| 4 | `business-people-operations` | (선택) 입사 준비 · 온보딩 체크리스트 |
+| 1 | `hr-job-analysis` | 직무 분석 · 역량 기준 정의 → 공고문 |
+| 2 | `hr-resume-screener` | 기준표 대비 이력서 스크리닝 |
+| 3 | `hr-draft-offer` | 오퍼레터 작성 |
+| 4 | `hr-operations` | (선택) 입사 준비 · 온보딩 체크리스트 |
 
 ## 3. 진행 단계
 
@@ -54,13 +54,13 @@ tags: [cookbook, projects, people]
 
 ```mermaid
 flowchart TD
-   U["소연 님<br/>'첫 마케터 채용'"] --> H1["인사·채용<br/>business-job-analyzer"]
+   U["소연 님<br/>'첫 마케터 채용'"] --> H1["인사·채용<br/>hr-job-analysis"]
    H1 --> R1["직무 정의서<br/>+ 채용 공고문"]
    R1 --> POST["공고 게시 · 지원 접수"]
-   POST --> H2["인사·채용<br/>business-resume-screener"]
+   POST --> H2["인사·채용<br/>hr-resume-screener"]
    H2 --> R2["스크리닝 점수표<br/>+ 면접 질문"]
    R2 --> INT["면접 (사람의 몫)"]
-   INT --> H3["인사·채용<br/>business-draft-offer"]
+   INT --> H3["인사·채용<br/>hr-draft-offer"]
    H3 --> OUT["오퍼레터 발송"]
 
    style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
@@ -89,5 +89,5 @@ flowchart TD
 
 ## 6. 응용
 
-- **평가·연봉 협상 시즌** — 채용 때 만든 직무 정의서를 기준으로 `business-performance-review`를 돌리면 입사 후 성과 평가 문서로 이어집니다. 채용-평가가 같은 기준을 쓰는 회사가 됩니다.
+- **평가·연봉 협상 시즌** — 채용 때 만든 직무 정의서를 기준으로 `hr-performance-review`를 돌리면 입사 후 성과 평가 문서로 이어집니다. 채용-평가가 같은 기준을 쓰는 회사가 됩니다.
 - **아르바이트·계약직 버전** — 같은 체인을 가볍게 돌려(직무 정의 간소화 + 근로 조건 명시 강화) 단기 채용에 쓰면, 구두 약속으로 뽑던 알바 채용에도 조건 문서가 남습니다.

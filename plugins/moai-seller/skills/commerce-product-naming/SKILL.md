@@ -5,8 +5,8 @@ description: |
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   "상품명 뽑아줘", "상품명 3개 안 만들어줘", "키워드 넣어서 상품명", "스마트스토어 상품명 최적화", "쿠팡 상품명 금지어 체크", "검색 최적화 상품명", "브랜드 상품명 후보", "CTR 높은 상품명", "트렌드 키워드 상품명", "데이터랩 검색어 변환", "이번주 트렌드 해시태그", "시즌 트렌드 블로그 제목", "급상승 키워드 상품명"
   공식 4요소: [브랜드] + [카테고리] + [키워드] + [차별점(선택)]. 3안 매핑 카테고리: 검색 최적화 / CTR 최적화 / 브랜드 강화. 금지 키워드 9종: 최저가·1위·베스트·재입고·인기상품·정품·당일배송·무료배송·특가.
-  표준 상품명 3안·검증은 룰 통과 데이터 산출(ai-slop 체이닝 제외)이나, 트렌드 변환 모드의 해시태그·블로그 제목은 텍스트 산출물이므로 moai-coworker:general-ai-slop-reviewer를 체이닝합니다.
-  [책임 경계] 페어 moai-domain-copywriting(광고·마케팅 카피)와 구분 — 본 스킬은 상품 등록용 상품명(SEO 최적화) + 트렌드 키워드 변환 전담.
+  표준 상품명 3안·검증은 룰 통과 데이터 산출(ai-slop 체이닝 제외)이나, 트렌드 변환 모드의 해시태그·블로그 제목은 텍스트 산출물이므로 moai-coworker:ai-slop-reviewer를 체이닝합니다.
+  [책임 경계] 페어 design-copywriting(광고·마케팅 카피)와 구분 — 본 스킬은 상품 등록용 상품명(SEO 최적화) + 트렌드 키워드 변환 전담.
 version: "1.0.0"
 ---
 
@@ -191,19 +191,19 @@ JTBD와 상품 정보를 기반으로 이커머스 플랫폼 최적화 상품명
 
 ## 관련 스킬
 
-체이닝 순서: `commerce-jtbd-persona --mode jtbd` → **commerce-product-naming** → `commerce-channel-message` → `commerce-integrated-strategy`
+체이닝 순서: `commerce-jtbd-persona --mode jtbd` → **commerce-product-naming** → `cs-channel-message` → `commerce-integrated-strategy`
 
 - `commerce-jtbd-persona --mode jtbd` — JTBD (이전 단계, 상품명 방향성 입력)
-- `commerce-channel-message` — 상품명 확정 후 채널별 메시지 15종 생성 (다음 단계)
+- `cs-channel-message` — 상품명 확정 후 채널별 메시지 15종 생성 (다음 단계)
 - `commerce-integrated-strategy` — 상품명 포함 전략 1장 종합
 - `commerce-season-calendar` — 연간 시즌 캘린더 (트렌드 변환 모드의 시즌 키워드 입력)
-- `moai-coworker:general-ai-slop-reviewer` — 트렌드 변환 모드 해시태그·블로그 제목 검수 (자동 체인)
-- `moai-writer:general-humanize-korean` — 트렌드 변환 모드 텍스트 한국어 AI 티 제거 (슬롭 검수 다음, 필수)
+- `moai-coworker:ai-slop-reviewer` — 트렌드 변환 모드 해시태그·블로그 제목 검수 (자동 체인)
+- `moai-writer:korean-humanize` — 트렌드 변환 모드 텍스트 한국어 AI 티 제거 (슬롭 검수 다음, 필수)
 
 ## 이 스킬을 사용하지 말아야 할 때
 
-- **광고 카피·헤드라인 생성**: `moai-domain-copywriting` 또는 `commerce-detail-page-copy` 사용
-- **브랜드 네이밍 (회사명·서비스명)**: `moai-domain-brand-design` 사용
+- **광고 카피·헤드라인 생성**: `design-copywriting` 또는 `commerce-detail-page-copy` 사용
+- **브랜드 네이밍 (회사명·서비스명)**: `design-brand-system` 사용
 - **태그·검색어 등록 최적화**: 플랫폼별 SEO 스킬 (`commerce-marketplace-*`) 사용
 - **도메인·앱 이름 생성**: 별도 네이밍 프로세스 활용
 
@@ -298,10 +298,10 @@ JTBD와 상품 정보를 기반으로 이커머스 플랫폼 최적화 상품명
 
 ### ai-slop 체이닝 (트렌드 변환 모드만 HARD)
 
-표준 상품명 3안·검증은 룰 통과 데이터라 ai-slop 체이닝에서 제외되지만, **트렌드 변환 모드의 해시태그 세트·블로그 제목은 검색 노출·CTR에 직접 영향을 주는 텍스트 산출물**이므로 `moai-coworker:general-ai-slop-reviewer`로 자동 후처리합니다. 트렌드 키워드를 그대로 차용한 부자연스러운 결합은 검수에서 정정됩니다.
+표준 상품명 3안·검증은 룰 통과 데이터라 ai-slop 체이닝에서 제외되지만, **트렌드 변환 모드의 해시태그 세트·블로그 제목은 검색 노출·CTR에 직접 영향을 주는 텍스트 산출물**이므로 `moai-coworker:ai-slop-reviewer`로 자동 후처리합니다. 트렌드 키워드를 그대로 차용한 부자연스러운 결합은 검수에서 정정됩니다.
 
 ```text
-트렌드 변환 모드 → moai-coworker:general-ai-slop-reviewer (해시태그·블로그 제목) → 표준 상품명 검증
+트렌드 변환 모드 → moai-coworker:ai-slop-reviewer (해시태그·블로그 제목) → 표준 상품명 검증
 ```
 
 ---

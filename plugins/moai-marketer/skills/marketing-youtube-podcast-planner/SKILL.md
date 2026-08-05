@@ -9,7 +9,7 @@ description: |
   - "유튜브 대본 아웃라인 짜줘"
   - "유튜브 채널 기획서 만들어줘"
   - "팟캐스트 포맷 설계해줘"
-  산출물은 에피소드 기획서·스크립트·쇼노트이며, 대본·쇼노트 같은 산문 텍스트는 moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean 체인으로 마무리하세요.
+  산출물은 에피소드 기획서·스크립트·쇼노트이며, 대본·쇼노트 같은 산문 텍스트는 moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize 체인으로 마무리하세요.
 version: "1.0.0"
 ---
 
@@ -186,8 +186,8 @@ AI가 생성한 기획안과 스크립트는 사실 확인 후 사용하세요.
 - `content-editorial-calendar` — 콘텐츠 발행 캘린더·일정 기획
 - `moai-marketer:content-sns-content` — 소셜미디어 콘텐츠
 - `content-copywriting` — 카피라이팅
-- `moai-coworker:general-ai-slop-reviewer` — 텍스트 산출물 AI 패턴 검수 (1차)
-- `moai-writer:general-humanize-korean` — 한국어 자연스러움 보정 (2차)
+- `moai-coworker:ai-slop-reviewer` — 텍스트 산출물 AI 패턴 검수 (1차)
+- `moai-writer:korean-humanize` — 한국어 자연스러움 보정 (2차)
 
 ## 이 스킬을 사용하지 말아야 할 때
 

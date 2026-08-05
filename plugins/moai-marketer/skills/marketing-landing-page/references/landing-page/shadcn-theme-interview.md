@@ -8,7 +8,7 @@ HTML·웹 산출물을 생성하기 전, MoAI 오케스트레이터가 **AskUser
 
 ## 1. 원칙 (HARD)
 
-- [HARD] HTML/웹 산출물을 생성하는 모든 스킬(`marketing-landing-page`, `commerce-product-detail`, `office-data-visualizer`)은 코드 생성 전에 **이 인터뷰를 먼저 실행**한다.
+- [HARD] HTML/웹 산출물을 생성하는 모든 스킬(`marketing-landing-page`, `commerce-product-detail`, `data-visualizer`)은 코드 생성 전에 **이 인터뷰를 먼저 실행**한다.
 - [HARD] 사용자가 명시적으로 다른 프레임워크를 지정하지 않는 한 기본 스택은 **shadcn/ui + Tailwind CSS v4 + React/Next.js**다.
 - [HARD] 모든 색상 토큰은 **OKLCH 포맷**으로 `:root` + `.dark` 블록에 출력한다.
 - [HARD] AskUserQuestion 호출 규칙을 따른다:
@@ -210,7 +210,7 @@ design-spec:
 |------|---------|--------|
 | `marketing-landing-page` | 카피 수집 전/후 모두 가능하나 **코드 생성 직전 필수** | 섹션 템플릿을 shadcn 블록(Hero, Features, Pricing, FAQ)으로 맵핑 |
 | `commerce-product-detail` | 플랫폼 선택 직후 | 스마트스토어/쿠팡용 HTML 단일 파일 모드에서도 CSS 변수는 shadcn 스펙 준수 |
-| `office-data-visualizer` | 차트 방식 결정 후 | Q5에서 선택된 라이브러리가 대시보드 HTML의 기본 차트 라이브러리가 됨 |
+| `data-visualizer` | 차트 방식 결정 후 | Q5에서 선택된 라이브러리가 대시보드 HTML의 기본 차트 라이브러리가 됨 |
 
 ---
 

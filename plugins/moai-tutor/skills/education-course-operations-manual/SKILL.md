@@ -4,7 +4,7 @@ description: |
   강사·교수·교사 대상 강의·과정·연수·워크숍 운영 매뉴얼을 자동 생성해 드립니다 — 일자별 시간표·강사·조교 동선·D-N 사전 준비물·환경·설비 체크리스트·리스크 매트릭스 + Plan B.
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   "강의 운영 매뉴얼 만들어줘", "워크숍 시간표·동선 만들어줘", "연수 D-N 사전 준비물 메일", "강사·조교 동선표", "수업 리스크 Plan B 매트릭스", "교시별·세션별 시간표", "D-N 운영 준비 체크리스트", "강의실 설비·환경 체크리스트".
-  체인: education-course-operations-manual → moai-coworker:general-ai-slop-reviewer (운영 매뉴얼 텍스트 검수) → moai-writer:general-humanize-korean (한국어 AI 티 제거) → moai-officer:office-docx-generator (Word .docx 출력).
+  체인: education-course-operations-manual → moai-coworker:ai-slop-reviewer (운영 매뉴얼 텍스트 검수) → moai-writer:korean-humanize (한국어 AI 티 제거) → moai-officer:doc-docx (Word .docx 출력).
   [책임 경계] vs moai-tutor:education-curriculum-designer: operations-manual=운영 절차·체크리스트, education-curriculum-designer=커리큘럼·학습설계
 version: "1.0.0"
 ---
@@ -22,7 +22,7 @@ version: "1.0.0"
 - **혼합**: 온라인+오프라인 블렌디드, 야간·주말 분산 수업
 
 **체이닝 출력**
-운영 매뉴얼 생성 후 `moai-officer:office-docx-generator`를 자동 체이닝하여 Word(.docx) 형식으로 저장합니다.
+운영 매뉴얼 생성 후 `moai-officer:doc-docx`를 자동 체이닝하여 Word(.docx) 형식으로 저장합니다.
 
 **합격 기준**
 모든 산출물 섹션(시간표·동선·사전 준비물·체크리스트·리스크·운영 원칙)을 포함하며 Plan B 시나리오 5건 이상을 제공합니다.
@@ -73,7 +73,7 @@ version: "1.0.0"
 Step 1: 입력 파싱 (PDF 첨부 또는 한 줄 컨셉 + 운영 파라미터)
 Step 2: 일수·세션·운영 인력 기반 섹션별 콘텐츠 생성
 Step 3: 운영 매뉴얼 .md 생성
-Step 4: moai-officer:office-docx-generator 자동 체이닝 → .docx 출력
+Step 4: moai-officer:doc-docx 자동 체이닝 → .docx 출력
 ```
 
 ---
@@ -281,13 +281,13 @@ Step 4: moai-officer:office-docx-generator 자동 체이닝 → .docx 출력
 | §4 환경·설비 | Wi-Fi·프로젝터·녹화·간식 체크리스트 |
 | §5 리스크 매트릭스 | Plan B 시나리오 5건 이상 |
 | §6 운영 원칙 | 학습 부담 최소화 원칙 명시 |
-| 출력 형식 | .md + .docx (moai-officer:office-docx-generator 체이닝) |
+| 출력 형식 | .md + .docx (moai-officer:doc-docx 체이닝) |
 
 ---
 
 ## 관련 스킬
 
-- `moai-officer:office-docx-generator` — 체이닝: 운영 매뉴얼 .docx 생성
+- `moai-officer:doc-docx` — 체이닝: 운영 매뉴얼 .docx 생성
 - `moai-tutor:education-course-followup-sequence` — 강의 종료 후 후기 자산화 시퀀스
 - `moai-tutor:education-curriculum-designer` — 학습 목표·역량 갭 중심 커리큘럼 설계
 - `moai-tutor:education-assessment-creator` — 평가·시험·퀴즈 출제

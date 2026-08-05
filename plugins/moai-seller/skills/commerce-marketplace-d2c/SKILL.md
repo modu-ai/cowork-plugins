@@ -152,7 +152,7 @@ version: "1.0.0"
 - `moai-seller:commerce-detail-page-copy` — 상세페이지 카피 (자사몰에도 그대로 사용)
 - `moai-seller:commerce-detail-page-image` — 1080×12720 합성 이미지
 - `moai-seller:commerce-integrated-strategy` — 채널 믹스, 광고 ROI, 리텐션 전략
-- `moai-cs:commerce-channel-message` — 광고·이메일·푸시 카피
+- `moai-cs:cs-channel-message` — 광고·이메일·푸시 카피
 - `moai-marketer:marketing-campaign-planner` — 캠페인 기획
 - `moai-marketer:marketing-landing-page` — shadcn/ui 기반 마케팅 랜딩 (자사몰 보조 페이지)
 

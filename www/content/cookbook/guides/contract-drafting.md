@@ -23,7 +23,7 @@ flowchart TD
 | 빠른 NDA 검토 | `moai-lawyer:legal-nda-triage` | 받은 NDA를 5분 내 위험도 분류 |
 | 본격 검토·작성 | `moai-lawyer:legal-contract-review` | 위험 조항 분석 + 수정 권고 |
 | 컴플라이언스 체크 | `moai-lawyer:legal-compliance-check` | 개인정보·전자상거래법 적합성 |
-| AI 슬롭 검수 | `moai-coworker:general-ai-slop-reviewer` | 외부 발송 전 마지막 검수 |
+| AI 슬롭 검수 | `moai-coworker:ai-slop-reviewer` | 외부 발송 전 마지막 검수 |
 
 ## 한국 실무 체크포인트
 
@@ -42,7 +42,7 @@ flowchart TD
 > 이 NDA 검토해줘. 위험 조항만 표로 뽑아주고, 우리 측에 불리한 부분만 빨갛게 표시해서 DOCX로 저장해줘.
 {{< /terminal >}}
 
-`legal-nda-triage` → `legal-contract-review` → `office-docx-generator` 체인이 자동으로 흘러갑니다.
+`legal-nda-triage` → `legal-contract-review` → `doc-docx` 체인이 자동으로 흘러갑니다.
 
 ## 표준 조항 라이브러리 만들기
 

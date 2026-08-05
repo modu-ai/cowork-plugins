@@ -53,7 +53,7 @@ flowchart TD
 
 시스템 인터뷰: KCI/RISS/DBpia/Google Scholar 우선순위 · 언어(한국어/영문) · 분류 기준 · 출력 형식
 
-자동 체인: `education-paper-search` (4 DB 통합 검색) → `education-paper-writer` (구조화 요약) → `office-docx-generator` → `general-ai-slop-reviewer`
+자동 체인: `education-paper-search` (4 DB 통합 검색) → `education-paper-writer` (구조화 요약) → `doc-docx` → `ai-slop-reviewer`
 
 ### 시나리오 ② 정부지원사업 신청서
 
@@ -61,7 +61,7 @@ flowchart TD
 > 이공계 정부지원사업 신청서 만들어줘
 {{< /terminal >}}
 
-자동 체인: `education-grant-writer` (평가표 자동 매핑) → 한국 평가위원 톤 보강 → `office-docx-generator` → `general-humanize-korean`
+자동 체인: `education-grant-writer` (평가표 자동 매핑) → 한국 평가위원 톤 보강 → `doc-docx` → `korean-humanize`
 
 ### 시나리오 ③ 특허 분석
 
@@ -79,7 +79,7 @@ flowchart TD
 
 시스템 인터뷰: 학습자 레벨 · 과목 · 주당 시간 · 평가 방식
 
-자동 체인: `education-curriculum-designer` (12주 차주별 학습 목표·실습·평가) → `education-assessment-creator` (퀴즈·과제·시험) → `office-pptx-designer` (강의 슬라이드 자동)
+자동 체인: `education-curriculum-designer` (12주 차주별 학습 목표·실습·평가) → `education-assessment-creator` (퀴즈·과제·시험) → `doc-pptx` (강의 슬라이드 자동)
 
 ### 시나리오 ⑤ 수강생 후속 시퀀스 (스케줄)
 
@@ -97,15 +97,15 @@ flowchart TD
 
 시스템 인터뷰: 일정 길이 · 동행자 · 선호 (음식·문화·쇼핑) · 예산
 
-자동 체인: `general-travel-planner` (일자별 시간표 + 동선 최적화) → `office-docx-generator` (체크리스트 포함)
+자동 체인: `personal-travel` (일자별 시간표 + 동선 최적화) → `doc-docx` (체크리스트 포함)
 
 ### 시나리오 ⑦ 이벤트 기획
 
-자동 체인: `general-event-planner` (체크리스트 + 일정 + 예산) → `office-xlsx-creator` (RSVP·좌석 배치) → `office-docx-generator`
+자동 체인: `personal-event` (체크리스트 + 일정 + 예산) → `doc-xlsx` (RSVP·좌석 배치) → `doc-docx`
 
 ### 시나리오 ⑧ 웰니스 계획
 
-자동 체인: `general-wellness-coach` (식단·운동·수면 통합) → 주간 체크리스트
+자동 체인: `personal-wellness` (식단·운동·수면 통합) → 주간 체크리스트
 
 ---
 
@@ -133,7 +133,7 @@ flowchart TD
 
 ### Q. 여행 일정 동선 최적화는?
 
-`general-travel-planner`는 Google Maps API (선택) 또는 내장 지오코딩으로 동선 최적화. API 없어도 인기 코스 데이터로 기본 일정 생성.
+`personal-travel`는 Google Maps API (선택) 또는 내장 지오코딩으로 동선 최적화. API 없어도 인기 코스 데이터로 기본 일정 생성.
 
 ---
 

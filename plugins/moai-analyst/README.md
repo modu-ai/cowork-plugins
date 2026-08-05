@@ -22,33 +22,24 @@ claude plugin install moai-analyst@moai-cowork
 
 ## 스킬 7종
 
-호출 형식: `/moai-analyst:office-<스킬명>` — 예: `/moai-analyst:office-public-data-public-data`. 자연어 요청("지역별 인구통계 조회해줘", "이 CSV 분석해줘")으로도 자동 매칭됩니다.
+호출 형식: `/moai-analyst:<스킬명>` — 예: `/moai-analyst:data-public`. 자연어 요청("지역별 인구통계 조회해줘", "이 CSV 분석해줘")으로도 자동 매칭됩니다.
 
-### 공공데이터 조회 (6종)
-
-| 스킬 | 역할 |
-|------|------|
-| `office-public-data-public-data` | 공공데이터포털(data.go.kr)·KOSIS 통계 정밀 조회·분석 — korean-stats MCP 우선 |
-| `office-public-data-real-estate-search` | 국토교통부 실거래가·전월세 시세 조회 |
-| `office-public-data-court-auction-search` | 대법원 법원경매 매각공고·사건번호 조회 |
-| `office-public-data-korean-stock-search` | KRX 상장 종목 검색·기본정보·일별 시세 조회 |
-| `office-building-ledger-search` | 건축물대장·건축인허가·공시가격·노후도 조회 — archhub MCP |
-| `office-business-real-estate-search` | 상업업무용 부동산 실거래 조회 (→ real-estate-search 경유) |
-
-### 데이터 분석·시각화 (3종)
+### 공공데이터 조회 (5종)
 
 | 스킬 | 역할 |
 |------|------|
-| `office-data-explorer` | CSV·Excel 데이터 프로파일링·품질 보고서 |
-| `office-data-visualizer` | 인터랙티브 차트·대시보드(HTML) 생성 |
-| `office-data-public-data` | 공공데이터 조회 라우터 (→ public-data-public-data 경유) |
+| `data-public` | 공공데이터포털(data.go.kr)·KOSIS 통계 정밀 조회·분석 — korean-stats MCP 우선 |
+| `data-realestate` | 국토교통부 실거래가·전월세 시세 조회 |
+| `data-court-auction` | 대법원 법원경매 매각공고·사건번호 조회 |
+| `data-stock` | KRX 상장 종목 검색·기본정보·일별 시세 조회 |
+| `data-building-ledger` | 건축물대장·건축인허가·공시가격·노후도 조회 — archhub MCP |
 
-### 조회 라우터 (2종 · 구명칭 호환)
+### 데이터 분석·시각화 (2종)
 
 | 스킬 | 역할 |
 |------|------|
-| `office-finance-court-auction-search` | 법원경매 조회 라우터 (→ public-data-court-auction-search 경유) |
-| `office-finance-korean-stock-search` | 국내주식 조회 라우터 (→ public-data-korean-stock-search 경유) |
+| `data-explorer` | CSV·Excel 데이터 프로파일링·품질 보고서 |
+| `data-visualizer` | 인터랙티브 차트·대시보드(HTML) 생성 |
 
 ## MCP 연동 3종
 
@@ -64,7 +55,7 @@ claude plugin install moai-analyst@moai-cowork
 
 | 에이전트 | 등급 | 역할 |
 |----------|------|------|
-| `data-analyst` | worker | 공공데이터 조사·데이터 프로파일링·시각화 산출물을 만드는 실무 에이전트. 목표 이해 → 계획 → office-data-*/public-data-* 스킬 선택 → 실행 → 검증의 에이전트 루프로 동작. 수치는 출처(통계표 ID·공시 번호·data.go.kr 데이터셋) 인용 필수, 조회 실패 시 `[NOT_FOUND]` 명시, 개인정보 마스킹 |
+| `data-analyst` | worker | 공공데이터 조사·데이터 프로파일링·시각화 산출물을 만드는 실무 에이전트. 목표 이해 → 계획 → data-* 스킬 선택 → 실행 → 검증의 에이전트 루프로 동작. 수치는 출처(통계표 ID·공시 번호·data.go.kr 데이터셋) 인용 필수, 조회 실패 시 `[NOT_FOUND]` 명시, 개인정보 마스킹 |
 | `data-provenance-auditor` | read-only audit | 수치 출처(provenance)·표/차트-원데이터 정합·산술 재계산·개인정보 누출을 회의적으로 재검증하는 감사 에이전트. 증거 기반 PASS/FAIL 판정만 반환하며 파일을 수정하지 않음 |
 
 ## 라이선스
