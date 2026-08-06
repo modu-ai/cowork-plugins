@@ -9,14 +9,14 @@ description: |
 
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   - "새 프로젝트 시작", "프로젝트 설정 도와줘", "CLAUDE.md 만들어줘" (개발 프로젝트가 아닐 때)
-  - "/project ...", "/project resume", "/project catalog", "/project status", "/project apikey", "/project evolve"
+  - "/project ...", "/project resume", "/project catalog", "/project status", "/project apikey", "/project evolve", "/project --update"
   - "이어서 진행", "설치 완료", "다시 진행" — 설치 완료 후 재개 요청
-  - "에이전트 개선해줘", "CLAUDE.md 업데이트해줘" — 재귀적 자가 개선 진입
+  - "에이전트 개선해줘", "CLAUDE.md 업데이트해줘", "플러그인 업데이트됐어", "새 스킬/MCP 동기화해줘" — 재귀적 자가 개선·플러그인 업데이트 동기화 진입
   - 사업·콘텐츠·디자인·커머스·법무·재무·인사 등 비개발 자연어 요청을 적합한 AI 직원 플러그인으로 라우팅해야 할 때
 
   이 스킬은 **이름·회사 같은 글로벌 프로필을 재질문하지 않는다.** 프로젝트마다 "이번에 뭘 할 건지"만 인터뷰한다.
 user-invocable: true
-version: "1.0.0"
+version: "1.1.0"
 ---
 <!-- moai-pm project v1.0.0 · 17-plugin 패밀리 · 프로젝트 초기화 단일 진입점 -->
 
@@ -147,6 +147,29 @@ Phase 5 확인 이후 이 스킬은 다음을 생성한다:
 
 ---
 
+## Plugin Update Synchronization (`--update`)
+
+`/project --update`는 **외부에서 플러그인이 업데이트된 직후** 프로젝트를 최신 인벤토리에 동기화하는 수동 스위치다. §Recursive Self-Improvement의 `inventory drift` 트리거를 "감지 대기"가 아니라 **즉시·전수조사로 강제 실행**하는 모드다. 자가 개선 가드레일(수정 대상·3파일 상한·파괴적 변경 사전 확인)을 그대로 계승한다.
+
+**`evolve` vs `--update` (발동 조건으로 구분)**:
+
+| 모드 | 발동 | 입력 |
+|---|---|---|
+| `/project evolve` | 사용 중 신호(`repeated correction`·`chain failure`)가 `.moai/evolution/signals.md`에 **누적**되어 발동 | 대화 맥락 + 누적 신호 |
+| `/project --update` | **사용자가 플러그인 업데이트 직후 수동 호출** — drift를 기다리지 않음 | 설치된 전체 플러그인 전수조사 + 누적 신호 |
+
+**`--update` 실행 절차 (5단계)** — 상세 정본은 `references/update-protocol.md`:
+
+1. **전수조사(Full Census)** — `~/.claude/plugins/moai-*` 전체를 스캔해 각 플러그인의 `plugin.json` + `skills/` + MCP 정의를 조사. 기존 `.moai/config.json` 스냅샷과 비교해 **새 스킬·새 MCP·변경된 스킬**의 diff를 도출한다.
+2. **세션 신호 분석** — `.moai/evolution/signals.md`(누적 교정·체인 실패 신호) + `.moai/context.md`(프로젝트 맥락)를 읽어, 업데이트된 스킬이 기존 신호를 해소할 수 있는지 교차 확인한다(이게 "기존 대화 세션 분석 + 재귀적 자가 학습"의 실체다).
+3. **CLAUDE.md·에이전트 동기화** — diff에 맞춰 `CLAUDE.md` §워크플로우 표와 `.claude/agents/*.md`의 스킬 체인을 최소 diff로 갱신. 200라인 예산·8개 HARD 블록 보존 정책은 `references/claudemd-generator.md`를 그대로 따른다.
+4. **스냅샷 갱신** — `.moai/config.json`의 `plugins_installed` + `skills_available` 스냅샷을 새 인벤토리로 갱신(`inventory drift`를 0으로 리셋). `<!-- evolution-log -->`에 1줄 기록(트리거 토큰 `inventory drift` + 동기화 요지).
+5. **검증 + 롤백** — 동일한 `inventory drift` 신호가 다시 발동하면 실패한 동기화로 판정해 `.moai/evolution/` 원문 조각으로 롤백(§Recursive Self-Improvement의 검증·롤백 메커니즘 재사용).
+
+**미설치 프로젝트 (HARD)**: `CLAUDE.md`·`.moai/`가 없으면 `--update`는 동기화 대상이 없다 — `AskUserQuestion`으로 `/project`(최초 셋업)로 안내한다. 침묵 생성 금지.
+
+---
+
 ## Desktop Parity Constraints
 
 이 스킬이 생성하는 프로젝트는 **Claude Cowork(Desktop)** 런타임을 전제한다. 다음 세 클래스는 Desktop에서 동작하지 않으므로 어떤 생성 경로에서도 이를 만들지 않는다:
@@ -234,6 +257,7 @@ Phase 1 인터뷰 → Phase 2 인벤토리 → Phase 3 체인 설계 → Phase 4
 | `/project <지시>` | 진입 — 인터뷰 후 에이전트/체인 설계 + 생성. **PRIMARY 기본 동작.** |
 | `/project resume` | 설치 완료 후 재개 |
 | `/project evolve` | 재귀적 자가 개선 수동 발동(레거시 단일-슬래시 폼) |
+| `/project --update` | 플러그인 업데이트 후 전수조사→CLAUDE.md·에이전트 재동기화(§Plugin Update Synchronization) |
 | `/project catalog` | 17-plugin 패밀리 · 스킬 카탈로그 |
 | `/project status` | 현재 설정 상태 |
 | `/project apikey` | API 키 관리 |
@@ -268,6 +292,7 @@ Phase 1 인터뷰 → Phase 2 인벤토리 → Phase 3 체인 설계 → Phase 4
 | `evaluation-protocol.md` | 5차원 산출물 평가(정확성·완전성·실용성·톤·도메인) |
 | `quality-evaluator.md` | 결정론적 품질 게이트(파일 유효성·마크다운 렌더링·AI 작문 패턴·근거 검증) |
 | `diagnostic-protocol.md` | 환경 진단(`/project doctor`, `/project status`) |
+| `update-protocol.md` | 플러그인 업데이트 동기화(`/project --update` — 전수조사·세션 신호 분석·동기화·검증) |
 | `INDEX.md` | 레퍼런스 전체 인덱스 |
 
 ---

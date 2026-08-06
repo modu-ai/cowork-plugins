@@ -21,6 +21,7 @@
 | `evaluation-protocol.md` | 5차원 산출물 평가(정확성·완전성·실용성·톤·도메인) |
 | `quality-evaluator.md` | 결정론적 품질 게이트(파일 유효성·마크다운 렌더링·AI 작문 패턴·근거 검증) |
 | `diagnostic-protocol.md` | 환경 진단(`/project doctor`, `/project status`) |
+| `update-protocol.md` | 플러그인 업데이트 동기화(`/project --update` — 전수조사·세션 신호 분석·동기화·검증·롤백) |
 | `templates/CLAUDE.md.tmpl` | 생성 CLAUDE.md 템플릿(Desktop 변형, 8개 HARD 블록 고정) |
 
 ## 패밀리 로스터
