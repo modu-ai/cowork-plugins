@@ -27,7 +27,7 @@
 | 커리어 코치 | `moai-career` | 이력서·면접·포트폴리오·커리어 전환 |
 | 튜터 | `moai-tutor` | 학습 자료·평가·논문·교육과정 |
 | 디자이너 | `moai-designer` | 브랜드·로고·디자인 시스템·Claude Design 연동 |
-| 스레드 포스터 | `moai-threads-poster` | 소셜 자동 발행 (Threads·Instagram) |
+| 스레드 포스터 | `moai-threads-poster` | 소셜 발행 (Threads·Instagram) |
 
 직원별 상세 소개는 [AI 직원](https://cowork.mo.ai.kr/moai-agents/)에서 볼 수 있습니다.
 
