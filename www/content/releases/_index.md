@@ -51,24 +51,6 @@ flowchart LR
 
 각 자리는 100을 넘기지 않습니다. PATCH가 100에 닿으면 MINOR를 올리고 PATCH를 0으로 되돌립니다.
 
-### 업데이트 방법
-
-최신 버전을 받으려면 Claude에서 아래를 입력하세요.
-
-```
-> /plugin marketplace update moai-cowork
-```
-
-업데이트 후 Claude Desktop을 한 번 재시작하면 새 버전이 적용됩니다.
-
-### 버전 확인
-
-현재 설치된 버전을 보려면:
-
-```
-> /plugin info moai-cowork
-```
-
 ## 릴리스 노트
 
 | 버전 | 날짜 | 내용 |
