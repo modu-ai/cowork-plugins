@@ -160,8 +160,8 @@ sequenceDiagram
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 첨부 계약서 검토해서 위험도 + 1페이지 결재용 요약 만들어줘
+{{< terminal title="claude — cowork" raw="true" >}}
+첨부 계약서 검토해서 위험도 + 1페이지 결재용 요약 만들어줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰 (AskUserQuestion)

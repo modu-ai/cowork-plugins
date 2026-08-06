@@ -78,7 +78,7 @@ flowchart TD
 
 ### 기본 프롬프트
 
-{{< terminal title="claude — cowork" >}}
+{{< terminal title="claude — cowork" raw="true" >}}
 
 D:/Input/customer-transactions-2026.csv를 분석해줘.
 
@@ -110,8 +110,8 @@ D:/Input/customer-transactions-2026.csv를 분석해줘.
 
 ### 기본 프롬프트
 
-{{< terminal title="claude — cowork" >}}
-> 방금 생성한 data-quality.md 분석 결과를 시각화해줘.
+{{< terminal title="claude — cowork" raw="true" >}}
+방금 생성한 data-quality.md 분석 결과를 시각화해줘.
 
   - 월별 매출 추이: 선 그래프 (Chart.js HTML)
   - 카테고리별 매출 비중: 도넛 차트
@@ -168,8 +168,8 @@ D:/Input/customer-transactions-2026.csv를 분석해줘.
 
 ### 기본 프롬프트
 
-{{< terminal title="claude — cowork" >}}
-> KOSIS에서 "소비자물가지수 최근 24개월"을 조회해서
+{{< terminal title="claude — cowork" raw="true" >}}
+KOSIS에서 "소비자물가지수 최근 24개월"을 조회해서
 내 회사 매출 데이터(Q1-sales.xlsx)와 함께 분석해줘.
 
 - CPI 원계열 데이터 확보

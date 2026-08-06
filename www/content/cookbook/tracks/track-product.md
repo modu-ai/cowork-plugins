@@ -51,8 +51,8 @@ flowchart TD
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 결제 모듈 PRD 초안 + 사용자 인터뷰 가이드 만들어줘
+{{< terminal title="claude — cowork" raw="true" >}}
+결제 모듈 PRD 초안 + 사용자 인터뷰 가이드 만들어줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰 (AskUserQuestion)
@@ -78,8 +78,8 @@ flowchart TD
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 향후 4분기 제품 로드맵 짜줘
+{{< terminal title="claude — cowork" raw="true" >}}
+향후 4분기 제품 로드맵 짜줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰
@@ -105,8 +105,8 @@ flowchart TD
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> AI 영어 회화 SaaS 랜딩 프로토타입 만들어줘
+{{< terminal title="claude — cowork" raw="true" >}}
+AI 영어 회화 SaaS 랜딩 프로토타입 만들어줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰 (소크라테스식 테마)
@@ -134,8 +134,8 @@ flowchart TD
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 시리즈A 피칭 데크 12장 만들어줘
+{{< terminal title="claude — cowork" raw="true" >}}
+시리즈A 피칭 데크 12장 만들어줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰

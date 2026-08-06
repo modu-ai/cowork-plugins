@@ -121,10 +121,10 @@ sequenceDiagram
 - **원인 후보**: 시스템에 `Pretendard`·한글 명조 미설치
 - **다음 액션**: 폰트 설치 또는 기본 폰트로 재생성 요청
 
-### 7. 이미지 생성 API 키 없음
+### 7. 이미지 생성 인증 누락
 
-- **원인 후보**: `GEMINI_API_KEY` 미설정
-- **다음 액션**: `moai-media/CONNECTORS.md` 참고해 `.moai/credentials.env`에 등록
+- **원인 후보**: Higgsfield OAuth 로그인 미완료 (최초 1회 필요)
+- **다음 액션**: [Higgsfield MCP 설정](/plugins/higgsfield-setup/)에서 로그인 절차 진행
 
 ### 8. 긴 작업 중단
 

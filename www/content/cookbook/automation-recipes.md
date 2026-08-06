@@ -225,8 +225,8 @@ sequenceDiagram
 
 ### 재무 — 매일 아침 환율·미결 메일
 
-{{< terminal title="claude — cowork" >}}
-> /schedule
+{{< terminal title="claude — cowork" raw="true" >}}
+/schedule
 
 매일 08:50에 다음을 실행해줘:
 1. 네이버 금융에서 KRW/USD, KRW/JPY, KRW/EUR 환율 조회
@@ -237,8 +237,8 @@ sequenceDiagram
 
 ### 품질 — 불량 대시보드
 
-{{< terminal title="claude — cowork" >}}
-> /schedule
+{{< terminal title="claude — cowork" raw="true" >}}
+/schedule
 
 매일 07:00에 다음을 실행해줘:
 1. D:/QMS/daily_inspection.xlsx에서 어제자 불량 데이터 추출
@@ -249,8 +249,8 @@ sequenceDiagram
 
 ### 해외영업 — 조기 뉴스 브리핑
 
-{{< terminal title="claude — cowork" >}}
-> /schedule
+{{< terminal title="claude — cowork" raw="true" >}}
+/schedule
 
 매일 06:00에 다음을 실행해줘:
 1. WebSearch로 "반도체 산업 어제자 주요 뉴스" 검색 (미국·유럽 소스 우선)
@@ -297,26 +297,26 @@ Dispatch는 모바일 Claude 앱에서 이렇게 생깁니다.
 
 ### 패턴 A — 즉시 실행
 
-{{< terminal title="claude — cowork (모바일 앱)" >}}
-> 사무실 PC에서 지금 다음 작업을 실행해줘:
-> D:/Sales/Q1_report.xlsx를 분석해서 임원 요약 PPT 5장을 만들어
-> 90_Output/IR/Q1-summary.pptx로 저장. 완료되면 카톡으로 알려줘.
+{{< terminal title="claude — cowork (모바일 앱)" raw="true" >}}
+사무실 PC에서 지금 다음 작업을 실행해줘:
+D:/Sales/Q1_report.xlsx를 분석해서 임원 요약 PPT 5장을 만들어
+90_Output/IR/Q1-summary.pptx로 저장. 완료되면 카톡으로 알려줘.
 {{< /terminal >}}
 
 ### 패턴 B — 조건부 실행
 
-{{< terminal title="claude — cowork (모바일 앱)" >}}
-> 집 PC에 지시 — 오후 7시 이후 퇴근 알림이 뜨면
-> 내일 아침 회의 자료를 취합해서 이메일 초안을 준비해둬.
-> 실제 발송은 내일 아침 내가 확인한 뒤 수동으로 하겠다.
+{{< terminal title="claude — cowork (모바일 앱)" raw="true" >}}
+집 PC에 지시 — 오후 7시 이후 퇴근 알림이 뜨면
+내일 아침 회의 자료를 취합해서 이메일 초안을 준비해둬.
+실제 발송은 내일 아침 내가 확인한 뒤 수동으로 하겠다.
 {{< /terminal >}}
 
 ### 패턴 C — 지연 실행
 
-{{< terminal title="claude — cowork (모바일 앱)" >}}
-> 사무실 PC에서 오늘 밤 10시에 실행:
-> Downloads 폴더의 어제 이후 파일을 Project_YYYY-MM 폴더로 분류하고
-> 30일 이상 안 쓴 파일은 Archive로 이동해줘.
+{{< terminal title="claude — cowork (모바일 앱)" raw="true" >}}
+사무실 PC에서 오늘 밤 10시에 실행:
+Downloads 폴더의 어제 이후 파일을 Project_YYYY-MM 폴더로 분류하고
+30일 이상 안 쓴 파일은 Archive로 이동해줘.
 {{< /terminal >}}
 
 ## 운영 체크리스트

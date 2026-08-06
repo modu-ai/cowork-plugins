@@ -69,9 +69,9 @@ flowchart TD
 
 ## 워크플로우 예시 — Welcome 시퀀스 30분에 만들기
 
-{{< terminal title="claude — cowork" >}}
-> 신규 가입자 Welcome 7일 시퀀스 만들어줘. 우리 제품은 노션 템플릿 SaaS, 타겟은 30대 직장인.
-> 제목·본문·CTA·발송 시점 포함. 정보통신망법 준수 — 광고 표시·수신거부 링크 필수.
+{{< terminal title="claude — cowork" raw="true" >}}
+신규 가입자 Welcome 7일 시퀀스 만들어줘. 우리 제품은 노션 템플릿 SaaS, 타겟은 30대 직장인.
+제목·본문·CTA·발송 시점 포함. 정보통신망법 준수 — 광고 표시·수신거부 링크 필수.
 {{< /terminal >}}
 
 체인:

@@ -39,8 +39,8 @@ flowchart TD
 
 재무 자동화는 첫 사용 시 `/project`으로 프로젝트 메모리를 한 번 세팅해 두면 이후 모든 시나리오에서 회사 정보·산업·회계 기간·데이터 소스를 자동 참조합니다. 매 시나리오마다 같은 인터뷰를 반복하지 않습니다.
 
-{{< terminal title="claude — cowork" >}}
-> /project "재무 자동화 프로젝트 시작"
+{{< terminal title="claude — cowork" raw="true" >}}
+/project "재무 자동화 프로젝트 시작"
 {{< /terminal >}}
 
 시스템이 한 번 묻고 `.moai/project/profile.md`에 저장합니다.
@@ -70,8 +70,8 @@ flowchart TD
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> Q1 결산 + K-IFRS 재무제표 + 변동분석 만들어줘
+{{< terminal title="claude — cowork" raw="true" >}}
+Q1 결산 + K-IFRS 재무제표 + 변동분석 만들어줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰 (AskUserQuestion)
@@ -99,8 +99,8 @@ flowchart TD
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 2025 사업연도 법인세 신고서 작성해줘
+{{< terminal title="claude — cowork" raw="true" >}}
+2025 사업연도 법인세 신고서 작성해줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰
@@ -128,8 +128,8 @@ flowchart TD
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 매월 5일 오전 9시에 전월 결산 자동 처리하고 결과 슬랙으로 보내줘
+{{< terminal title="claude — cowork" raw="true" >}}
+매월 5일 오전 9시에 전월 결산 자동 처리하고 결과 슬랙으로 보내줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰
@@ -163,8 +163,8 @@ flowchart TD
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 시리즈A IR용 재무 분석 보고서 만들어줘. 직전 3개년
+{{< terminal title="claude — cowork" raw="true" >}}
+시리즈A IR용 재무 분석 보고서 만들어줘. 직전 3개년
 {{< /terminal >}}
 
 ### 시스템 인터뷰

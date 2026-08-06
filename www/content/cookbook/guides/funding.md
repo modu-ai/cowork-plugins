@@ -44,10 +44,10 @@ flowchart TD
 
 ## 워크플로우 예시 — 시리즈 A IR 덱 1주 만에 완성
 
-{{< terminal title="claude — cowork" >}}
-> 우리 회사 시리즈 A IR 덱 만들어줘. 회사 정보는 첨부 파일 회사 소개서 참고.
-> 12장 분량으로 — 문제·솔루션·시장(TAM/SAM/SOM)·경쟁우위·트랙션·비즈니스 모델·고객·로드맵·팀·재무·요청 라운드·연락처 순서.
-> 발표 자료 PPT로 저장해줘.
+{{< terminal title="claude — cowork" raw="true" >}}
+우리 회사 시리즈 A IR 덱 만들어줘. 회사 정보는 첨부 파일 회사 소개서 참고.
+12장 분량으로 — 문제·솔루션·시장(TAM/SAM/SOM)·경쟁우위·트랙션·비즈니스 모델·고객·로드맵·팀·재무·요청 라운드·연락처 순서.
+발표 자료 PPT로 저장해줘.
 {{< /terminal >}}
 
 체인:
@@ -66,19 +66,19 @@ flowchart TD
 4. Cohort (고객 코호트별 매출)
 5. Funding need (자금 소요 + 사용 계획)
 
-{{< terminal title="claude — cowork" >}}
-> 시리즈 A 투자 받기 위한 3년 P&L 모델 만들어줘. 월별로 36개월.
-> assumptions 시트에 단가·MAU·CAC·인건비·임대료를 분리.
-> P&L·cash-flow·cohort·funding need 5개 시트로 xlsx 저장.
+{{< terminal title="claude — cowork" raw="true" >}}
+시리즈 A 투자 받기 위한 3년 P&L 모델 만들어줘. 월별로 36개월.
+assumptions 시트에 단가·MAU·CAC·인건비·임대료를 분리.
+P&L·cash-flow·cohort·funding need 5개 시트로 xlsx 저장.
 {{< /terminal >}}
 
 ## 정부지원사업 병행
 
 VC 투자와 별도로 정부지원사업은 비희석 자금으로 매년 검토할 가치가 있습니다:
 
-{{< terminal title="claude — cowork" >}}
-> 지금 시점에서 우리 회사가 받을 수 있는 정부지원사업 정리해줘.
-> K-Startup, 창업도약패키지, 기보·신보 보증, 콘텐츠진흥원 등 — 마감일이 가까운 순으로 표로.
+{{< terminal title="claude — cowork" raw="true" >}}
+지금 시점에서 우리 회사가 받을 수 있는 정부지원사업 정리해줘.
+K-Startup, 창업도약패키지, 기보·신보 보증, 콘텐츠진흥원 등 — 마감일이 가까운 순으로 표로.
 {{< /terminal >}}
 
 `consult-gov-grant` 스킬이 K-Startup·BIZINFO·나라장터·창업진흥원을 통합 검색해 마감 임박 순으로 정리합니다.

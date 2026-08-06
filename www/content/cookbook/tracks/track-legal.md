@@ -50,8 +50,8 @@ flowchart TD
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> ./nda_inbox/ 폴더의 NDA 12개 위험도 검토해서 한 페이지로 정리해줘
+{{< terminal title="claude — cowork" raw="true" >}}
+./nda_inbox/ 폴더의 NDA 12개 위험도 검토해서 한 페이지로 정리해줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰 (AskUserQuestion)
@@ -77,8 +77,8 @@ flowchart TD
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 공급 계약서 리뷰하고 우리에게 유리한 개선안 만들어줘
+{{< terminal title="claude — cowork" raw="true" >}}
+공급 계약서 리뷰하고 우리에게 유리한 개선안 만들어줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰
@@ -104,8 +104,8 @@ flowchart TD
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 우리 SaaS EU 진출 전 GDPR 준수 보고서 만들어줘
+{{< terminal title="claude — cowork" raw="true" >}}
+우리 SaaS EU 진출 전 GDPR 준수 보고서 만들어줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰
@@ -131,8 +131,8 @@ flowchart TD
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> B2B SaaS 표준 NDA 한·영 동시에 만들어줘
+{{< terminal title="claude — cowork" raw="true" >}}
+B2B SaaS 표준 NDA 한·영 동시에 만들어줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰

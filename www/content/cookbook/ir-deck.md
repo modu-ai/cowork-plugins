@@ -101,8 +101,8 @@ flowchart TD
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 시리즈 A IR 덱 15장 만들고 싶어
+{{< terminal title="claude — cowork" raw="true" >}}
+시리즈 A IR 덱 15장 만들고 싶어
 {{< /terminal >}}
 
 ### 시스템 인터뷰 (AskUserQuestion)
@@ -143,8 +143,8 @@ sequenceDiagram
 
 ### Turn 2 — 사용자 수정 요청
 
-{{< terminal title="claude — cowork" >}}
-> Slide 4(BM)에 SaaS 매출 모델 추가하고, Slide 7(팀)에 자문단 1장 추가해줘
+{{< terminal title="claude — cowork" raw="true" >}}
+Slide 4(BM)에 SaaS 매출 모델 추가하고, Slide 7(팀)에 자문단 1장 추가해줘
 {{< /terminal >}}
 
 시스템이 스토리라인 수정 → 사용자 확정.

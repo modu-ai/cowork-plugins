@@ -155,8 +155,8 @@ sequenceDiagram
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 매주 금요일 오후 5시에 우리 팀 주간보고 자동 발송해줘
+{{< terminal title="claude — cowork" raw="true" >}}
+매주 금요일 오후 5시에 우리 팀 주간보고 자동 발송해줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰 (AskUserQuestion)
@@ -219,8 +219,8 @@ MCP 기본 검색은 14일. 그 이상은 `slack_search_public` 사용권을 확
 
 ### 마크다운 보고서 → HTML 변환
 
-{{< terminal title="claude — cowork" >}}
-> 이번 주 주간 현황 보고서 HTML로 변환해줘.
+{{< terminal title="claude — cowork" raw="true" >}}
+이번 주 주간 현황 보고서 HTML로 변환해줘.
   - 모드: status
   - 입력: /weekly/주간보고-20260510.md
 

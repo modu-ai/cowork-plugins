@@ -107,8 +107,8 @@ nda-triage → contract-review → legal-risk → docx-generator → ai-slop-rev
 
 ### {{< icon circle-check >}} 올바른 한 줄 요청
 
-{{< terminal title="claude — cowork" >}}
-> ./nda_inbox/ 폴더의 NDA 12개 위험도 검토해서 한 페이지로 정리해줘
+{{< terminal title="claude — cowork" raw="true" >}}
+./nda_inbox/ 폴더의 NDA 12개 위험도 검토해서 한 페이지로 정리해줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰 (AskUserQuestion)

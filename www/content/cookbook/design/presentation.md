@@ -57,10 +57,10 @@ flowchart TD
 
 ## 워크플로우 예시 — IR 덱 디자인
 
-{{< terminal title="claude — cowork" >}}
-> 이 사업계획서를 IR 덱 PPT로 만들어줘. 우리 브랜드 메인 컬러는 #2C5FBC, 폰트는 Pretendard.
-> 12장 분량, 한 장에 한 메시지. 차트가 들어가는 슬라이드는 표 대신 막대·도넛 차트로.
-> 발표 시간 10분 기준.
+{{< terminal title="claude — cowork" raw="true" >}}
+이 사업계획서를 IR 덱 PPT로 만들어줘. 우리 브랜드 메인 컬러는 #2C5FBC, 폰트는 Pretendard.
+12장 분량, 한 장에 한 메시지. 차트가 들어가는 슬라이드는 표 대신 막대·도넛 차트로.
+발표 시간 10분 기준.
 {{< /terminal >}}
 
 `doc-pptx` 스킬이 슬라이드 마스터를 자동 적용해 한국형 폰트로 출력합니다. PPTX 파일을 받은 뒤 PowerPoint·Keynote에서 미세 조정.

@@ -35,9 +35,9 @@ flowchart TD
 
 ### 1. 페르소나·여정 정의
 
-{{< terminal title="claude — cowork" >}}
-> 우리 타겟 고객 페르소나 3개 만들어줘. 각각 페인 포인트·정보 수집 채널·구매 결정 트리거.
-> 첨부 파일 고객 인터뷰 데이터 참고.
+{{< terminal title="claude — cowork" raw="true" >}}
+우리 타겟 고객 페르소나 3개 만들어줘. 각각 페인 포인트·정보 수집 채널·구매 결정 트리거.
+첨부 파일 고객 인터뷰 데이터 참고.
 {{< /terminal >}}
 
 `marketing-campaign-planner` 스킬이 고객 여정 맵까지 한 번에 그립니다.
@@ -53,23 +53,23 @@ flowchart TD
 
 ### 3. 콘텐츠 캘린더
 
-{{< terminal title="claude — cowork" >}}
-> 다음 달 콘텐츠 캘린더 짜줘. 월~금 발행, 채널별 키워드 + 톤 + CTA 명시.
-> 시즌 이슈(추석·단풍)도 반영.
+{{< terminal title="claude — cowork" raw="true" >}}
+다음 달 콘텐츠 캘린더 짜줘. 월~금 발행, 채널별 키워드 + 톤 + CTA 명시.
+시즌 이슈(추석·단풍)도 반영.
 {{< /terminal >}}
 
 ### 4. 성과 분석
 
-{{< terminal title="claude — cowork" >}}
-> 지난달 마케팅 성과 보고서 만들어줘. GA4·네이버 광고·메타 통합.
-> 채널별 ROAS·전환율·LTV/CAC, 인사이트 5개.
+{{< terminal title="claude — cowork" raw="true" >}}
+지난달 마케팅 성과 보고서 만들어줘. GA4·네이버 광고·메타 통합.
+채널별 ROAS·전환율·LTV/CAC, 인사이트 5개.
 {{< /terminal >}}
 
 ## 워크플로우 예시 — 블로그 1편 발행
 
-{{< terminal title="claude — cowork" >}}
-> 노션 활용법 블로그 1편 써줘. 30대 직장인 대상, 2500자, SEO 키워드 '노션 템플릿'.
-> 네이버 블로그 발행 형식. AI 슬롭 검수까지 마쳐서.
+{{< terminal title="claude — cowork" raw="true" >}}
+노션 활용법 블로그 1편 써줘. 30대 직장인 대상, 2500자, SEO 키워드 '노션 템플릿'.
+네이버 블로그 발행 형식. AI 슬롭 검수까지 마쳐서.
 {{< /terminal >}}
 
 체인:

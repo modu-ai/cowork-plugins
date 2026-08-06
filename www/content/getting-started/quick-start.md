@@ -88,14 +88,14 @@ flowchart TD
 
    **Claude Cowork**에서는 좌측 사이드바 → **사용자 지정(Customize) → 개인 플러그인 → 플러그인 추가 → 마켓플레이스 추가**에서 다음 URL을 입력합니다.
 
-   {{< terminal title="claude — cowork" >}}
-> modu-ai/moai-cowork
+   {{< terminal title="claude — cowork" raw="true" >}}
+modu-ai/moai-cowork
    {{< /terminal >}}
 
    **ChatGPT Work**에서는 좌측 사이드바 → **Plugins → Plugin Marketplace → Add**에서 다음 URL을 입력합니다.
 
-   {{< terminal title="chatgpt — work" >}}
-> modu-ai/moai-cowork
+   {{< terminal title="chatgpt — work" raw="true" >}}
+modu-ai/moai-cowork
    {{< /terminal >}}
 
    또는 터미널이 익숙하다면 CLI를 사용할 수도 있습니다(Claude Cowork, ChatGPT Work 공통):
@@ -125,7 +125,7 @@ codex plugin marketplace add modu-ai/moai-cowork
    - 사업계획서 → `moai-consultant`, `moai-officer`
    - 블로그 발행 → `moai-marketer`, `moai-media`
    - 계약서 검토 → `moai-lawyer`, `moai-officer`
-   - 이미지 생성 → `moai-media` (+ `GEMINI_API_KEY` 필요)
+   - 이미지 생성 → `moai-media` (+ [Higgsfield 로그인](/plugins/higgsfield-setup/), 최초 1회)
 
    {{< catalog-count plugins >}}개 모두를 한 번에 설치할 필요는 없습니다.
 
@@ -170,8 +170,8 @@ sequenceDiagram
 
    프로젝트·폴더 개념이 낯설다면 Cowork 문서를 먼저 참고하세요. 이후 대화창에 다음을 입력합니다.
 
-   {{< terminal title="claude — cowork" >}}
-> /project
+   {{< terminal title="claude — cowork" raw="true" >}}
+/project
    {{< /terminal >}}
 
    ![/project 실행 화면](/screenshots/getting-started/quick-start-project-3.png)
@@ -235,8 +235,8 @@ flowchart LR
 
    이제 자연어로 요청하면 적합한 스킬이 자동으로 호출됩니다. **본 문서의 모든 사용자 입력은 `> ` prefix와 함께 표기**합니다(실제 입력 시 `>` 제외).
 
-   {{< terminal title="claude — cowork" >}}
-> "우리 SaaS의 Series A용 IR 덱 초안 만들어줘. 타깃 고객은 한국 중소제조업체야."
+   {{< terminal title="claude — cowork" raw="true" >}}
+"우리 SaaS의 Series A용 IR 덱 초안 만들어줘. 타깃 고객은 한국 중소제조업체야."
    {{< /terminal >}}
 
    체인 예시: `investor-relations → pptx-designer → ai-slop-reviewer`
@@ -251,7 +251,7 @@ flowchart LR
 
 | 플러그인 | 필요한 키·커넥터 |
 |---|---|
-| `moai-media` | `GEMINI_API_KEY`, `HIGGSFIELD_API_KEY`, `HIGGSFIELD_SECRET`, `ELEVENLABS_API_KEY` |
+| `moai-media` | Higgsfield [로그인](/plugins/higgsfield-setup/)(최초 1회, OAuth) · `ELEVENLABS_API_KEY`(오디오) |
 | `moai-consultant` (DART 공시 연동) | DART MCP |
 | `moai-analyst` | 공공데이터포털·KOSIS API 키 |
 | `moai-marketer:content-blog` (WordPress 자동 업로드) | WordPress MCP |

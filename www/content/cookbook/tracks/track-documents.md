@@ -132,7 +132,7 @@ flowchart TD
 
 ### 실무 흐름
 
-{{< terminal title="claude — cowork (예시 지시)" >}}
+{{< terminal title="claude — cowork (예시 지시)" raw="true" >}}
 D:/Input/Q2-sales-raw.xlsx를 분석해서
 Q2 매출 보고서를 Word로 작성해줘.
 
@@ -167,7 +167,7 @@ Q2 매출 보고서를 Word로 작성해줘.
 
 ### 실무 흐름
 
-{{< terminal title="claude — cowork (예시)" >}}
+{{< terminal title="claude — cowork (예시)" raw="true" >}}
 Q2 매출 데이터를 분석해서 임원 대상 PPT 7장을 만들어줘.
 
 - 1장: 타이틀 + 요약 수치 3개
@@ -203,7 +203,7 @@ Q2 매출 데이터를 분석해서 임원 대상 PPT 7장을 만들어줘.
 
 ### 실무 흐름
 
-{{< terminal title="claude — cowork (예시)" >}}
+{{< terminal title="claude — cowork (예시)" raw="true" >}}
 
 D:/Input/raw-transactions.csv(5만건)를 분석해서
 월별·카테고리별 피벗을 만들어줘.
@@ -239,7 +239,7 @@ D:/Input/raw-transactions.csv(5만건)를 분석해서
 
 ### 실무 흐름
 
-{{< terminal title="claude — cowork (예시)" >}}
+{{< terminal title="claude — cowork (예시)" raw="true" >}}
 
 중소기업청 지원사업 신청서 초안을 한글 문서로 만들어줘.
 
@@ -272,7 +272,7 @@ D:/Input/raw-transactions.csv(5만건)를 분석해서
 
 ### 실무 흐름
 
-{{< terminal title="claude — cowork (예시)" >}}
+{{< terminal title="claude — cowork (예시)" raw="true" >}}
 
 D:/Contracts/에 있는 40페이지짜리 계약서 PDF를
 열어서 다음 작업을 해줘:

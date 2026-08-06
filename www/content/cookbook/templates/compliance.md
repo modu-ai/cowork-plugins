@@ -59,9 +59,9 @@ flowchart TD
 
 ## 워크플로우 예시 — 분기 컴플라이언스 점검
 
-{{< terminal title="claude — cowork" >}}
-> 우리 회사 분기 컴플라이언스 점검해줘. 위 4개 영역 체크리스트를 기준으로
-> 미흡 항목 표로 정리하고, 각 항목당 담당자가 다음에 할 액션을 한 줄로 써줘.
+{{< terminal title="claude — cowork" raw="true" >}}
+우리 회사 분기 컴플라이언스 점검해줘. 위 4개 영역 체크리스트를 기준으로
+미흡 항목 표로 정리하고, 각 항목당 담당자가 다음에 할 액션을 한 줄로 써줘.
 {{< /terminal >}}
 
 `legal-compliance-check` 스킬이 체크리스트 기반 점검 보고서를 DOCX로 생성합니다.
@@ -70,9 +70,9 @@ flowchart TD
 
 상장 준비 중이거나 대기업 협력사라면 ESG 보고서가 정기 의무입니다:
 
-{{< terminal title="claude — cowork" >}}
-> 2026년 ESG 보고서 초안 작성해줘. GRI Standards 기준으로, 환경·사회·지배구조 3개 섹션.
-> 우리 회사 1년치 데이터는 첨부 파일에 있어.
+{{< terminal title="claude — cowork" raw="true" >}}
+2026년 ESG 보고서 초안 작성해줘. GRI Standards 기준으로, 환경·사회·지배구조 3개 섹션.
+우리 회사 1년치 데이터는 첨부 파일에 있어.
 {{< /terminal >}}
 
 ## 자주 겪는 실수

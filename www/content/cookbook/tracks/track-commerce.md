@@ -8,7 +8,7 @@ lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 > **대상**: 스마트스토어·쿠팡·자사몰·크라우드펀딩 운영자, D2C 브랜드 PM, 이커머스 마케터
-> **전제**: moai-coworker · moai-seller · moai-media 활성화 + (선택) `GEMINI_API_KEY` · `HIGGSFIELD_API_KEY` 등록
+> **전제**: moai-coworker · moai-seller · moai-media 활성화 + (선택) [Higgsfield 로그인](/plugins/higgsfield-setup/)(이미지·영상 생성 시, 최초 1회)
 > **소요**: 시나리오당 약 5-20분 (산출물 종류에 따라)
 
 ## 무엇을 할 수 있나
@@ -63,8 +63,8 @@ flowchart TB
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 무선 이어폰 상세페이지 만들어줘
+{{< terminal title="claude — cowork" raw="true" >}}
+무선 이어폰 상세페이지 만들어줘
 {{< /terminal >}}
 
 ### 시스템이 묻는 항목 (AskUserQuestion)
@@ -99,8 +99,8 @@ flowchart TD
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 11월 빼빼로 데이 프로모션 기획해줘
+{{< terminal title="claude — cowork" raw="true" >}}
+11월 빼빼로 데이 프로모션 기획해줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰
@@ -127,8 +127,8 @@ flowchart TD
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 화장품 재구매 메시지 시퀀스 설계해줘
+{{< terminal title="claude — cowork" raw="true" >}}
+화장품 재구매 메시지 시퀀스 설계해줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰
@@ -161,8 +161,8 @@ flowchart TD
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 우리 비건 세럼 5채널 리뷰 통합 분석해줘
+{{< terminal title="claude — cowork" raw="true" >}}
+우리 비건 세럼 5채널 리뷰 통합 분석해줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰
@@ -199,8 +199,8 @@ flowchart TD
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 우리 D2C 광고비 30% 의존도 탈출 전략 짜줘
+{{< terminal title="claude — cowork" raw="true" >}}
+우리 D2C 광고비 30% 의존도 탈출 전략 짜줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰
@@ -226,8 +226,8 @@ flowchart TD
 
 이커머스 셀러가 상품 광고 영상까지 한 번에 만드는 시나리오. `commerce-product-image-pipeline`이 Higgsfield MCP 기반 4단계 체인을 자동 실행합니다.
 
-{{< terminal title="claude — cowork" >}}
-> 스킨케어 상품 광고 영상 풀세트 만들어줘. 메타 + 네이버 GFA + 카카오 채널 변환까지
+{{< terminal title="claude — cowork" raw="true" >}}
+스킨케어 상품 광고 영상 풀세트 만들어줘. 메타 + 네이버 GFA + 카카오 채널 변환까지
 {{< /terminal >}}
 
 자동 체인: `commerce-product-image-pipeline` — 캐릭터 일관성(선택) → 이미지 생성 (Soul, 5축: Hero·Lifestyle·Detail·Use-case·Result) → 영상 생성 (DOP, 모션 프리셋 자동) → 메타·네이버·카카오 채널 규격 변환

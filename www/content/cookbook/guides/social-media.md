@@ -42,9 +42,9 @@ flowchart TD
 
 ## 워크플로우 예시 — 한 메시지, 5개 채널 동시 발행
 
-{{< terminal title="claude — cowork" >}}
-> 이번 주 신제품 출시 메시지를 인스타·LinkedIn·X·카카오·네이버 5개 채널로 변형해줘.
-> 각 채널 톤·해시태그·길이에 맞춰. 인스타는 카드뉴스 5장 슬라이드도 함께.
+{{< terminal title="claude — cowork" raw="true" >}}
+이번 주 신제품 출시 메시지를 인스타·LinkedIn·X·카카오·네이버 5개 채널로 변형해줘.
+각 채널 톤·해시태그·길이에 맞춰. 인스타는 카드뉴스 5장 슬라이드도 함께.
 {{< /terminal >}}
 
 체인:
@@ -56,9 +56,9 @@ flowchart TD
 
 월간 달력으로 발행 리듬 고정:
 
-{{< terminal title="claude — cowork" >}}
-> 다음 달 SNS 콘텐츠 달력 만들어줘. 인스타 주 5회, LinkedIn 주 3회, X 주 7회.
-> 시즌 이슈(추석·할로윈) 반영, 채널별 톤 가이드 포함.
+{{< terminal title="claude — cowork" raw="true" >}}
+다음 달 SNS 콘텐츠 달력 만들어줘. 인스타 주 5회, LinkedIn 주 3회, X 주 7회.
+시즌 이슈(추석·할로윈) 반영, 채널별 톤 가이드 포함.
 {{< /terminal >}}
 
 ## 한국 SNS 특이점

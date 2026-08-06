@@ -64,14 +64,14 @@ blog → (이미지가 필요하면 higgsfield-image) → ai-slop-reviewer
 
 ### 1. 플러그인이 설치되어 있는지 확인
 
-{{< terminal title="claude — cowork" >}}
-> /plugin installed
+{{< terminal title="claude — cowork" raw="true" >}}
+/plugin installed
 {{< /terminal >}}
 
 목록에 `moai-marketer`와 `moai-coworker:ai-slop-reviewer`가 보여야 합니다. 없다면:
 
-{{< terminal title="claude — cowork" >}}
-> /plugin install moai-marketer
+{{< terminal title="claude — cowork" raw="true" >}}
+/plugin install moai-marketer
 /plugin install moai
 {{< /terminal >}}
 
@@ -83,7 +83,7 @@ blog → (이미지가 필요하면 higgsfield-image) → ai-slop-reviewer
 
 아래 예시에서 눈여겨볼 부분은 "C-Rank 친화, 도입-본론 3단-결론 구조"와 "다 쓰고 나서 ai-slop-reviewer로 마지막에 다듬어줘"라는 두 지시어입니다. 앞의 것은 글의 구조를 정하는 지시로 `content-blog` 스킬이 받아 처리하고, 뒤의 것은 품질 검수 단계를 트리거하는 지시로 `ai-slop-reviewer`가 받아 처리합니다. 이렇게 구조 지시와 품질 지시를 한 프롬프트에 함께 두면 자연어 한 줄이 자동으로 체인이 됩니다.
 
-{{< terminal title="claude — cowork" >}}
+{{< terminal title="claude — cowork" raw="true" >}}
 
 네이버 블로그에 올릴 포스팅 써줘.
 - 키워드: "노션 프로젝트 관리 템플릿"
@@ -110,15 +110,15 @@ Claude가 초안을 보여주면 다음 두 가지를 체크합니다:
 
 ### 4. (옵션) 썸네일 이미지 추가
 
-{{< terminal title="claude — cowork" >}}
-> 방금 글 제목으로 카드뉴스 썸네일 한 장 만들어줘.
+{{< terminal title="claude — cowork" raw="true" >}}
+방금 글 제목으로 카드뉴스 썸네일 한 장 만들어줘.
 higgsfield-image로 한글 타이포 들어가게. 3:4 비율.
 {{< /terminal >}}
 
 ### 5. 최종본 저장
 
-{{< terminal title="claude — cowork" >}}
-> 완성본을 my-blog-post.md 로 저장해줘.
+{{< terminal title="claude — cowork" raw="true" >}}
+완성본을 my-blog-post.md 로 저장해줘.
 {{< /terminal >}}
 
 ## 자주 겪는 이슈

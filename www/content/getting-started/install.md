@@ -175,13 +175,13 @@ ChatGPT도 무료로 시작할 수 있고, Work 모드의 고급 기능은 유�
 
 마지막으로 제대로 설치되었는지 확인해 봅니다. 입력창에 아래 한 줄을 넣고 엔터를 눌러보세요.
 
-{{< terminal title="claude — cowork" >}}
+{{< terminal title="claude — cowork" raw="true" >}}
 안녕하세요! 설치가 잘 됐는지 확인하고 싶어요.
 {{< /terminal >}}
 
 또는 ChatGPT Work에서:
 
-{{< terminal title="chatgpt — work" >}}
+{{< terminal title="chatgpt — work" raw="true" >}}
 안녕하세요! 설치가 잘 됐는지 확인하고 싶어요.
 {{< /terminal >}}
 

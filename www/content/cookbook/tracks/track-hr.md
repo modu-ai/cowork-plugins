@@ -46,8 +46,8 @@ flowchart LR
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 데이터분석가 채용공고 만들어줘
+{{< terminal title="claude — cowork" raw="true" >}}
+데이터분석가 채용공고 만들어줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰
@@ -74,8 +74,8 @@ flowchart LR
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> ./resumes/ 폴더 데이터분석가 이력서 50개 분류해줘
+{{< terminal title="claude — cowork" raw="true" >}}
+./resumes/ 폴더 데이터분석가 이력서 50개 분류해줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰
@@ -101,8 +101,8 @@ flowchart LR
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 데이터분석가 이력서 만들어줘
+{{< terminal title="claude — cowork" raw="true" >}}
+데이터분석가 이력서 만들어줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰
@@ -129,8 +129,8 @@ flowchart LR
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 내일 네이버 데이터분석가 면접 대비 시켜줘
+{{< terminal title="claude — cowork" raw="true" >}}
+내일 네이버 데이터분석가 면접 대비 시켜줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰

@@ -49,8 +49,8 @@ flowchart TD
 
 ### 시나리오 ① 논문 검색 + 통합 (약 10분)
 
-{{< terminal title="claude — cowork" >}}
-> AI 윤리 분야 최근 3년 논문 정리해줘
+{{< terminal title="claude — cowork" raw="true" >}}
+AI 윤리 분야 최근 3년 논문 정리해줘
 {{< /terminal >}}
 
 시스템 인터뷰: KCI/RISS/DBpia/Google Scholar 우선순위 · 언어(한국어/영문) · 분류 기준 · 출력 형식
@@ -59,8 +59,8 @@ flowchart TD
 
 ### 시나리오 ② 정부지원사업 신청서
 
-{{< terminal title="claude — cowork" >}}
-> 이공계 정부지원사업 신청서 만들어줘
+{{< terminal title="claude — cowork" raw="true" >}}
+이공계 정부지원사업 신청서 만들어줘
 {{< /terminal >}}
 
 자동 체인: `education-grant-writer` (평가표 자동 매핑) → 한국 평가위원 톤 보강 → `doc-docx` → `korean-humanize`
@@ -75,8 +75,8 @@ flowchart TD
 
 ### 시나리오 ④ 강의 커리큘럼 자동 설계
 
-{{< terminal title="claude — cowork" >}}
-> 코딩 부트캠프 12주 커리큘럼 짜줘
+{{< terminal title="claude — cowork" raw="true" >}}
+코딩 부트캠프 12주 커리큘럼 짜줘
 {{< /terminal >}}
 
 시스템 인터뷰: 학습자 레벨 · 과목 · 주당 시간 · 평가 방식
@@ -93,8 +93,8 @@ flowchart TD
 
 ### 시나리오 ⑥ 여행 일정 자동 설계
 
-{{< terminal title="claude — cowork" >}}
-> 도쿄 4박 5일 일정 만들어줘. 부모님 동반
+{{< terminal title="claude — cowork" raw="true" >}}
+도쿄 4박 5일 일정 만들어줘. 부모님 동반
 {{< /terminal >}}
 
 시스템 인터뷰: 일정 길이 · 동행자 · 선호 (음식·문화·쇼핑) · 예산

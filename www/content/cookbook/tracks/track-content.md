@@ -54,8 +54,8 @@ flowchart TD
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 비건 카페 오픈 시리즈 블로그 5편 써줘
+{{< terminal title="claude — cowork" raw="true" >}}
+비건 카페 오픈 시리즈 블로그 5편 써줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰
@@ -82,8 +82,8 @@ flowchart TD
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 프리랜서 3.3% 원천징수 카드뉴스 8장 만들어줘
+{{< terminal title="claude — cowork" raw="true" >}}
+프리랜서 3.3% 원천징수 카드뉴스 8장 만들어줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰
@@ -103,8 +103,8 @@ flowchart TD
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> AI 영어 회화 앱 랜딩 페이지 만들어줘
+{{< terminal title="claude — cowork" raw="true" >}}
+AI 영어 회화 앱 랜딩 페이지 만들어줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰 (소크라테스식 테마 인터뷰)

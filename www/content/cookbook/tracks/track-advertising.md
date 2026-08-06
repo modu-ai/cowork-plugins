@@ -60,8 +60,8 @@ flowchart TB
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 내 브랜드 3개월 메타 광고 보고서 분석해줘. .xlsx 첨부.
+{{< terminal title="claude — cowork" raw="true" >}}
+내 브랜드 3개월 메타 광고 보고서 분석해줘. .xlsx 첨부.
 {{< /terminal >}}
 
 ### 시스템 인터뷰
@@ -87,8 +87,8 @@ flowchart TB
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 메타 광고 CTR 1% 미만 떨어졌어. 원인 찾아줘
+{{< terminal title="claude — cowork" raw="true" >}}
+메타 광고 CTR 1% 미만 떨어졌어. 원인 찾아줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰
@@ -122,8 +122,8 @@ flowchart TD
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 스킨케어 메타 광고 영상 풀세트 만들어줘. 의심차단형 후크
+{{< terminal title="claude — cowork" raw="true" >}}
+스킨케어 메타 광고 영상 풀세트 만들어줘. 의심차단형 후크
 {{< /terminal >}}
 
 ### 시스템 인터뷰
@@ -155,8 +155,8 @@ AI 생성 소재는 채널별 "AI 생성" 표기 정책에 맞춰 캡션·메타
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 쿠팡 광고 최적화 가이드 짜줘. 우리 광고비 3.6억
+{{< terminal title="claude — cowork" raw="true" >}}
+쿠팡 광고 최적화 가이드 짜줘. 우리 광고비 3.6억
 {{< /terminal >}}
 
 ### 시스템 인터뷰
@@ -193,8 +193,8 @@ Meta 공식 Ads AI Connectors(2026-04-29 오픈 베타)를 OAuth로 연결한다
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 신상품 비타민 메타 광고 캠페인 만들어서 운영해줘. 일예산 5만원, 전환 목표.
+{{< terminal title="claude — cowork" raw="true" >}}
+신상품 비타민 메타 광고 캠페인 만들어서 운영해줘. 일예산 5만원, 전환 목표.
 {{< /terminal >}}
 
 ### 시스템 인터뷰

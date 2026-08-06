@@ -240,10 +240,10 @@ flowchart LR
 
 단계별 조작 명령은 Chat 시절의 유산입니다. Cowork에서는 목표만 쓰세요.
 
-{{< terminal title="claude — cowork" >}}
-> {{< icon circle-x >}} "파일을 열어 B열을 복사한 뒤 새 시트에 붙여넣고 합계를 구한 다음 차트를 만들어줘"
+{{< terminal title="claude — cowork" raw="true" >}}
+{{< icon circle-x >}} "파일을 열어 B열을 복사한 뒤 새 시트에 붙여넣고 합계를 구한 다음 차트를 만들어줘"
 
-> {{< icon circle-check >}} "이 스프레드시트를 분석해서 지출 범주별 Word 보고서를 만들어줘.
+{{< icon circle-check >}} "이 스프레드시트를 분석해서 지출 범주별 Word 보고서를 만들어줘.
      요약과 상위 5개 항목 테이블을 포함해"
 {{< /terminal >}}
 
@@ -260,8 +260,8 @@ flowchart LR
 
 ### 원칙 4 — 출력 형식·위치 명시
 
-{{< terminal title="claude — cowork" >}}
-> Q1 매출 데이터를 분석해서:
+{{< terminal title="claude — cowork" raw="true" >}}
+Q1 매출 데이터를 분석해서:
   1. Excel 피벗 테이블로 월별·제품별 정리
   2. 주요 인사이트 3가지를 포함한 Word 보고서
   3. 경영진 발표용 PPT 5장

@@ -62,10 +62,10 @@ flowchart TD
 
 ## 워크플로우 예시 — 주간 KPI 대시보드
 
-{{< terminal title="claude — cowork" >}}
-> 주간 KPI 대시보드 만들어줘. 좌상단에 이번 주 매출·전주 대비.
-> 우상단에 신규 고객 수, NPS, Churn. 중간에 4주 매출 추이, 하단에 카테고리별 매출.
-> shadcn/ui 기반 HTML로.
+{{< terminal title="claude — cowork" raw="true" >}}
+주간 KPI 대시보드 만들어줘. 좌상단에 이번 주 매출·전주 대비.
+우상단에 신규 고객 수, NPS, Churn. 중간에 4주 매출 추이, 하단에 카테고리별 매출.
+shadcn/ui 기반 HTML로.
 {{< /terminal >}}
 
 `data-visualizer`가 인터뷰로 메시지를 정련한 뒤 HTML 대시보드를 생성합니다.

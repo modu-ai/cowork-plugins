@@ -40,8 +40,8 @@ flowchart TD
 
 이메일로 NDA가 도착했을 때:
 
-{{< terminal title="claude — cowork" >}}
-> 이 NDA 검토해줘. 위험 조항만 표로 뽑아주고, 우리 측에 불리한 부분만 빨갛게 표시해서 DOCX로 저장해줘.
+{{< terminal title="claude — cowork" raw="true" >}}
+이 NDA 검토해줘. 위험 조항만 표로 뽑아주고, 우리 측에 불리한 부분만 빨갛게 표시해서 DOCX로 저장해줘.
 {{< /terminal >}}
 
 `legal-nda-triage` → `legal-contract-review` → `doc-docx` 체인이 자동으로 흘러갑니다.
@@ -50,9 +50,9 @@ flowchart TD
 
 자주 쓰는 조항(보안 책임 한도, 데이터 반환·파기 절차, 손해배상 상한)을 회사 표준으로 고정하려면:
 
-{{< terminal title="claude — cowork" >}}
-> 이 NDA에서 '데이터 파기' 조항 표현을 우리 회사 표준으로 만들어 메모리에 저장해줘.
-> 다음부터는 자동으로 이 표현 사용해줘.
+{{< terminal title="claude — cowork" raw="true" >}}
+이 NDA에서 '데이터 파기' 조항 표현을 우리 회사 표준으로 만들어 메모리에 저장해줘.
+다음부터는 자동으로 이 표현 사용해줘.
 {{< /terminal >}}
 
 의 `general-feedback` 종류로 저장되어, 같은 프로젝트의 다음 NDA 검토에서 자동 적용됩니다.

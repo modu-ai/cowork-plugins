@@ -95,7 +95,7 @@ codex plugin marketplace add modu-ai/moai-cowork
 
 **예시 1 — 사무 문서 (moai-coworker 채용 시)**
 
-{{< terminal title="claude — cowork" >}}
+{{< terminal title="claude — cowork" raw="true" >}}
 다음 주 월요일 팀 회의에서 쓸 '상반기 업무 정리' 보고서 초안을 만들어줘.
 우리 팀은 온라인 쇼핑몰 고객센터 5명이고, 상반기 주요 성과는
 응답 시간 단축이랑 리뷰 평점 상승이야. A4 2장 분량으로.
@@ -103,7 +103,7 @@ codex plugin marketplace add modu-ai/moai-cowork
 
 **예시 2 — 글쓰기 (moai-writer 채용 시)**
 
-{{< terminal title="claude — cowork" >}}
+{{< terminal title="claude — cowork" raw="true" >}}
 우리 카페 인스타그램에 올릴 신메뉴 소개 글을 3가지 버전으로 써줘.
 신메뉴는 '흑임자 크림 라떼', 타깃은 20-30대 직장인,
 어투는 친근하고 과장 없이.
@@ -111,7 +111,7 @@ codex plugin marketplace add modu-ai/moai-cowork
 
 **예시 3 — 쇼핑몰 운영 (moai-seller 채용 시)**
 
-{{< terminal title="claude — cowork" >}}
+{{< terminal title="claude — cowork" raw="true" >}}
 스마트스토어에 올릴 '프리미엄 곱창김' 상품 상세페이지 문구를 만들어줘.
 특징은 두 번 구운 바삭함, 국내산 김, 선물 포장 가능.
 구매를 망설이는 사람이 자주 묻는 질문 3개와 답변도 함께.

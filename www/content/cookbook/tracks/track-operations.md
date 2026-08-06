@@ -52,8 +52,8 @@ flowchart TD
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 매주 금요일 오후 4시에 우리 팀 주간보고 자동 발송해줘
+{{< terminal title="claude — cowork" raw="true" >}}
+매주 금요일 오후 4시에 우리 팀 주간보고 자동 발송해줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰
@@ -87,8 +87,8 @@ flowchart TD
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 오늘 들어온 CS 티켓 50개 분류해줘
+{{< terminal title="claude — cowork" raw="true" >}}
+오늘 들어온 CS 티켓 50개 분류해줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰
@@ -118,8 +118,8 @@ Level 5 (비응급, <1주): 6건 — 자동 응답 + 감사 표현
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> [고객사명] RFP 첨부했어. 제안서 만들어줘
+{{< terminal title="claude — cowork" raw="true" >}}
+[고객사명] RFP 첨부했어. 제안서 만들어줘
 {{< /terminal >}}
 
 ### 시스템 인터뷰
@@ -144,8 +144,8 @@ Level 5 (비응급, <1주): 6건 — 자동 응답 + 감사 표현
 
 ### 사용자 입력
 
-{{< terminal title="claude — cowork" >}}
-> 1분기 공급사 평가표 만들어줘. 공급사 12곳
+{{< terminal title="claude — cowork" raw="true" >}}
+1분기 공급사 평가표 만들어줘. 공급사 12곳
 {{< /terminal >}}
 
 ### 시스템 인터뷰
@@ -186,8 +186,8 @@ Level 5 (비응급, <1주): 6건 — 자동 응답 + 감사 표현
 
 ### 자동화 추가 명령
 
-{{< terminal title="claude — cowork" >}}
-> 매일 오전 8시 우리 매장 어제 주문·문의·트렌드·ROAS 4영역 1줄 브리핑 슬랙으로 보내줘
+{{< terminal title="claude — cowork" raw="true" >}}
+매일 오전 8시 우리 매장 어제 주문·문의·트렌드·ROAS 4영역 1줄 브리핑 슬랙으로 보내줘
 {{< /terminal >}}
 
 → `commerce-morning-brief` (어제 주문·신규 문의·트렌드·ROAS 4영역 1줄 통합) 매일 자동 실행
