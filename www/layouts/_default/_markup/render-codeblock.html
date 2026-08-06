@@ -1,0 +1,21 @@
+{{- /*
+  일반 코드펜스(```lang)를 macOS 스타일 코드카드로 통일 렌더.
+  terminal shortcode(.code-card.term-card)와 동일한 크롬(traffic lights + 언어 라벨 + 복사 버튼)을 입히고,
+  내부는 Hugo chroma 하이라이트(tokyonight-night)로 출력한다.
+  복사 버튼은 foot.html의 .copy-btn[data-copy-target] 스크립트가 자동 처리(카드 내 첫 <pre>를 복사).
+  mermaid는 별도 render-codeblock-mermaid.html 훅이 있으므로 여기는 제외된다.
+*/ -}}
+{{- $lang := .Type | default "text" -}}
+<div class="code-card">
+  <div class="code-chrome">
+    <div class="traffic"><span class="red"></span><span class="yellow"></span><span class="green"></span></div>
+    <div class="code-title">{{ with $lang }}<span class="lang">{{ $lang }}</span>{{ end }}</div>
+    <div class="code-spacer"></div>
+    <button class="copy-btn" type="button" aria-label="코드 복사" data-copy-target>
+      <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+      <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><polyline points="20 6 9 17 4 12"></polyline></svg>
+      <span class="copy-label">복사</span>
+    </button>
+  </div>
+  {{- highlight .Inner $lang .Options -}}
+</div>

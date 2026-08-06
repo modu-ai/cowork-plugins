@@ -546,6 +546,8 @@ svg.svg-sprite { display: none !important; }
   gap: 16px;
   margin-top: 24px;
 }
+/* Quick Start STEP 카드(4개)는 2×2 배치 */
+.cw-qstart { grid-template-columns: repeat(2, 1fr); }
 .cw-prodcard, .cw-qstart-card {
   display: flex;
   flex-direction: column;

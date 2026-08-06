@@ -1955,7 +1955,7 @@ main a:hover {
 }
 
 /* ── 홈: 퀵스타트 3단계 (터미널) ── */
-.cw-qstart { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+.cw-qstart { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 24px; }
 .cw-qstart-card {
   border: 1px solid var(--border-1); border-radius: 16px;
   background: var(--color-surface-card); padding: 26px;

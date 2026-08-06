@@ -504,6 +504,17 @@
   overflow-x: auto;
 }
 
+/* 일반 코드펜스(.highlight)가 code-card 안에 들어갈 때 자기 자신을 또 카드처럼
+   꾸미지 않도록 중화 — 크롬(traffic lights·제목·복사)은 바깥 .code-card가 담당.
+   v2 .highlight pre 의 폰트/여백(tokyonight 가독) 값은 그대로 존중한다. */
+.code-card .highlight {
+  margin: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
 /* prompt prefix `> ` 강조 (cyan, 사용자 자연어 지시 표식) */
 .term-pre {
   /* "> " 패턴 자체는 텍스트로 유지하되, ::before 트릭 대신 자연 노출 */
