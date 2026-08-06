@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developers.openai.com/plugins/build/plugins",
+  "$comment": "OpenAI/Codex 플러그인 매니페스트. Claude용 .claude-plugin/plugin.json과 나란히 공존. 본체(skills/SKILL.md, .mcp.json)는 양쪽 공유.",
+  "name": "moai-lawyer",
+  "version": "1.0.2",
+  "description": "법무 전담 AI 직원 — 계약 검토·NDA 트리아지·컴플라이언스 점검·법령/판례 리서치·특허 검색/분석·식약처 안전 기준 스킬 10종. 국가법령정보 MCP(korean-law) 연동으로 인용 검증까지 수행합니다. 이런 분께 추천: 1인 사업자·스타트업 운영자. ※ 법률 자문 대체가 아닌 참고 자료입니다.",
+  "author": {
+    "name": "모두의 AI",
+    "email": "email@mo.ai.kr",
+    "url": "https://cowork.mo.ai.kr"
+  },
+  "homepage": "https://cowork.mo.ai.kr/plugins/",
+  "repository": "https://github.com/modu-ai/moai-cowork",
+  "license": "Apache-2.0",
+  "keywords": ["moai", "lawyer", "legal", "contract", "compliance", "법무", "계약"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "⚖️ 법무 담당",
+    "shortDescription": "⚖️ 법무 담당 — 계약 검토·컴플라이언스·법령 리서치",
+    "longDescription": "법무 전담 AI 직원 — 계약 검토·NDA 트리아지·컴플라이언스 점검·법령/판례 리서치·특허 검색/분석·식약처 안전 기준 스킬 10종. 국가법령정보 MCP(korean-law) 연동으로 인용 검증까지 수행합니다. 이런 분께 추천: 1인 사업자·스타트업 운영자. ※ 법률 자문 대체가 아닌 참고 자료입니다.",
+    "developerName": "모두의 AI",
+    "category": "Legal",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://cowork.mo.ai.kr",
+    "defaultPrompt": ["표준 NDA 초안 검토해줘", "특허 선행기술 검색해줘"],
+    "brandColor": "#3d7d5f"
+  }
+}

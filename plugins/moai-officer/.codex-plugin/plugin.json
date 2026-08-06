@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developers.openai.com/plugins/build/plugins",
+  "$comment": "OpenAI/Codex 플러그인 매니페스트. Claude용 .claude-plugin/plugin.json과 나란히 공존. 본체(skills/SKILL.md, .mcp.json)는 양쪽 공유.",
+  "name": "moai-officer",
+  "version": "1.0.2",
+  "description": "사무 문서 전담 AI 직원 — 한국형 오피스 문서(HWPX·DOCX·XLSX·PPTX·PDF)·HTML 리포트/슬라이드 생성, 공문서 파싱, 노션 템플릿·생산성 루틴 스킬 13종. kordoc MCP 연동. 공공데이터 조회·데이터 분석은 moai-analyst로, 라이프스타일·자기계발은 moai-coworker로 분리. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 사무직·기획자·자영업 운영자.",
+  "author": {
+    "name": "모두의 AI",
+    "email": "email@mo.ai.kr",
+    "url": "https://cowork.mo.ai.kr"
+  },
+  "homepage": "https://cowork.mo.ai.kr/plugins/",
+  "repository": "https://github.com/modu-ai/moai-cowork",
+  "license": "Apache-2.0",
+  "keywords": ["moai", "officer", "document", "hwpx", "office", "문서", "오피스"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "📄 사무관",
+    "shortDescription": "📄 사무관 — HWPX·DOCX·XLSX·PPTX 오피스 문서 생성",
+    "longDescription": "사무 문서 전담 AI 직원 — 한국형 오피스 문서(HWPX·DOCX·XLSX·PPTX·PDF)·HTML 리포트/슬라이드 생성, 공문서 파싱, 노션 템플릿·생산성 루틴 스킬 13종. kordoc MCP 연동. 공공데이터 조회·데이터 분석은 moai-analyst로, 라이프스타일·자기계발은 moai-coworker로 분리. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 사무직·기획자·자영업 운영자.",
+    "developerName": "모두의 AI",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://cowork.mo.ai.kr",
+    "defaultPrompt": ["HWPX 보고서 초안 작성해줘", "엑셀 예산 템플릿 만들어줘"],
+    "brandColor": "#3d7d5f"
+  }
+}

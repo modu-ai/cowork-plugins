@@ -1,0 +1,137 @@
+{
+  "$schema": "https://developers.openai.com/plugins/build/plugins",
+  "$comment": "OpenAI/Codex 마켓플레이스 매니페스트. Claude용 .claude-plugin/marketplace.json과 나란히 공존. 등록: codex plugin marketplace add ./  |  카탈로그 source:local(로컬 테스트) → 추후 git로 공개 전환.",
+  "name": "moai-cowork",
+  "interface": {
+    "displayName": "모두의 코워크 — 한국 실무 AI 직원 18종",
+    "websiteURL": "https://cowork.mo.ai.kr"
+  },
+  "plugins": [
+    {
+      "name": "moai-coworker",
+      "source": { "source": "local", "path": "./plugins/moai-coworker" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Productivity",
+      "version": "1.0.2"
+    },
+    {
+      "name": "moai-writer",
+      "source": { "source": "local", "path": "./plugins/moai-writer" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Writing",
+      "version": "1.0.1"
+    },
+    {
+      "name": "moai-story",
+      "source": { "source": "local", "path": "./plugins/moai-story" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Creative",
+      "version": "1.0.2"
+    },
+    {
+      "name": "moai-marketer",
+      "source": { "source": "local", "path": "./plugins/moai-marketer" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Marketing",
+      "version": "1.0.1"
+    },
+    {
+      "name": "moai-media",
+      "source": { "source": "local", "path": "./plugins/moai-media" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Media",
+      "version": "1.1.2"
+    },
+    {
+      "name": "moai-seller",
+      "source": { "source": "local", "path": "./plugins/moai-seller" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Commerce",
+      "version": "1.0.2"
+    },
+    {
+      "name": "moai-officer",
+      "source": { "source": "local", "path": "./plugins/moai-officer" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Productivity",
+      "version": "1.0.2"
+    },
+    {
+      "name": "moai-analyst",
+      "source": { "source": "local", "path": "./plugins/moai-analyst" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Data",
+      "version": "1.0.2"
+    },
+    {
+      "name": "moai-lawyer",
+      "source": { "source": "local", "path": "./plugins/moai-lawyer" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Legal",
+      "version": "1.0.2"
+    },
+    {
+      "name": "moai-accountant",
+      "source": { "source": "local", "path": "./plugins/moai-accountant" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Finance",
+      "version": "1.0.1"
+    },
+    {
+      "name": "moai-recruiter",
+      "source": { "source": "local", "path": "./plugins/moai-recruiter" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "HR",
+      "version": "1.0.2"
+    },
+    {
+      "name": "moai-cs",
+      "source": { "source": "local", "path": "./plugins/moai-cs" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Support",
+      "version": "1.0.2"
+    },
+    {
+      "name": "moai-consultant",
+      "source": { "source": "local", "path": "./plugins/moai-consultant" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Business",
+      "version": "1.0.1"
+    },
+    {
+      "name": "moai-career",
+      "source": { "source": "local", "path": "./plugins/moai-career" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Career",
+      "version": "1.0.1"
+    },
+    {
+      "name": "moai-tutor",
+      "source": { "source": "local", "path": "./plugins/moai-tutor" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Education",
+      "version": "1.0.1"
+    },
+    {
+      "name": "moai-designer",
+      "source": { "source": "local", "path": "./plugins/moai-designer" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Design",
+      "version": "1.3.0"
+    },
+    {
+      "name": "moai-pm",
+      "source": { "source": "local", "path": "./plugins/moai-pm" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Productivity",
+      "version": "1.0.2"
+    },
+    {
+      "name": "moai-threads-poster",
+      "source": { "source": "local", "path": "./plugins/moai-threads-poster" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Social",
+      "version": "1.1.0"
+    }
+  ]
+}

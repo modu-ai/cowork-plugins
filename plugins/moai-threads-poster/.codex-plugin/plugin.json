@@ -7,9 +7,9 @@
   "author": {
     "name": "모두의 AI",
     "email": "email@mo.ai.kr",
-    "url": "https://claude.mo.ai.kr"
+    "url": "https://cowork.mo.ai.kr"
   },
-  "homepage": "https://claude.mo.ai.kr/plugins/",
+  "homepage": "https://cowork.mo.ai.kr/plugins/",
   "repository": "https://github.com/modu-ai/moai-cowork",
   "license": "Apache-2.0",
   "keywords": ["moai", "threads", "meta", "poster", "mcp", "스레드", "자동포스팅"],
@@ -22,7 +22,7 @@
     "developerName": "모두의 AI",
     "category": "Social",
     "capabilities": ["Read", "Write"],
-    "websiteURL": "https://claude.mo.ai.kr",
+    "websiteURL": "https://cowork.mo.ai.kr",
     "defaultPrompt": ["Threads에 포스트 올려줘", "이번 주 콘텐츠 초안 작성해줘"],
     "brandColor": "#3d7d5f"
   }

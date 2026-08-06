@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developers.openai.com/plugins/build/plugins",
+  "$comment": "OpenAI/Codex 플러그인 매니페스트. Claude용 .claude-plugin/plugin.json과 나란히 공존. 본체(skills/SKILL.md, .mcp.json)는 양쪽 공유.",
+  "name": "moai-career",
+  "version": "1.0.1",
+  "description": "구직자 편 커리어 코칭 전담 AI 직원 — 이력서·포트폴리오 첨삭, 면접 준비, 이직 전략까지 커리어 전환 실무 스킬. 인사채용(고용주 편)과 구분되는 구직자 관점입니다. 이런 분께 추천: 이직 준비자·취업 준비생·주니어 직장인.",
+  "author": {
+    "name": "모두의 AI",
+    "email": "email@mo.ai.kr",
+    "url": "https://cowork.mo.ai.kr"
+  },
+  "homepage": "https://cowork.mo.ai.kr/plugins/",
+  "repository": "https://github.com/modu-ai/moai-cowork",
+  "license": "Apache-2.0",
+  "keywords": ["moai", "career", "resume", "interview", "job", "커리어", "이력서"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "🧭 커리어코치",
+    "shortDescription": "🧭 커리어코치 — 이력서 첨삭·면접 준비·이직 전략",
+    "longDescription": "구직자 편 커리어 코칭 전담 AI 직원 — 이력서·포트폴리오 첨삭, 면접 준비, 이직 전략까지 커리어 전환 실무 스킬. 인사채용(고용주 편)과 구분되는 구직자 관점입니다. 이런 분께 추천: 이직 준비자·취업 준비생·주니어 직장인.",
+    "developerName": "모두의 AI",
+    "category": "Career",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://cowork.mo.ai.kr",
+    "defaultPrompt": ["이력서 첨삭해줘", "면접 예상 질문 정리해줘"],
+    "brandColor": "#3d7d5f"
+  }
+}

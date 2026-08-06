@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developers.openai.com/plugins/build/plugins",
+  "$comment": "OpenAI/Codex 플러그인 매니페스트. Claude용 .claude-plugin/plugin.json과 나란히 공존. 본체(skills/SKILL.md, .mcp.json)는 양쪽 공유.",
+  "name": "moai-seller",
+  "version": "1.0.2",
+  "description": "이커머스 셀러 전담 AI 직원 — 스마트스토어·아임웹·카페24 MCP 연동과 상세페이지·마켓플레이스·광고·CRM 등 커머스 실무 스킬 30종. VOC·채널 메시지는 moai-cs(CS매니저)로 이관. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 온라인 셀러·이커머스 운영자.",
+  "author": {
+    "name": "모두의 AI",
+    "email": "email@mo.ai.kr",
+    "url": "https://cowork.mo.ai.kr"
+  },
+  "homepage": "https://cowork.mo.ai.kr/plugins/",
+  "repository": "https://github.com/modu-ai/moai-cowork",
+  "license": "Apache-2.0",
+  "keywords": ["moai", "seller", "ecommerce", "smartstore", "commerce", "이커머스", "셀러"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "🛒 셀러",
+    "shortDescription": "🛒 셀러 — 이커머스 상세페이지·광고·CRM 실무",
+    "longDescription": "이커머스 셀러 전담 AI 직원 — 스마트스토어·아임웹·카페24 MCP 연동과 상세페이지·마켓플레이스·광고·CRM 등 커머스 실무 스킬 30종. VOC·채널 메시지는 moai-cs(CS매니저)로 이관. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 온라인 셀러·이커머스 운영자.",
+    "developerName": "모두의 AI",
+    "category": "Commerce",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://cowork.mo.ai.kr",
+    "defaultPrompt": ["스마트스토어 상세페이지 작성해줘", "네이버 쇼핑 광고 소스 만들어줘"],
+    "brandColor": "#3d7d5f"
+  }
+}
