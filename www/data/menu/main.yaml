@@ -27,19 +27,6 @@ main:
       - name: 첫 작업
         ref: /getting-started/first-task
 
-  - name: 모두의 코워크 가이드
-    icon: users
-    defaultOpen: true
-    sub:
-      - name: Cowork 소개
-        ref: /guide/cowork
-      - name: Chat (데스크톱 앱)
-        ref: /guide/chat
-      - name: Design
-        ref: /guide/design
-      - name: Code (CLI)
-        ref: /guide/code
-
   - name: 플러그인 설치·운용
     icon: plug
     defaultOpen: true
