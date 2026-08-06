@@ -12,6 +12,34 @@ main:
       - name: 홈 — 플러그인 패밀리
         ref: /
 
+  - name: 시작하기
+    icon: lightbulb
+    defaultOpen: true
+    sub:
+      - name: 개요
+        ref: /getting-started
+      - name: 빠른 시작
+        ref: /getting-started/quick-start
+      - name: 핵심 개념
+        ref: /getting-started/concepts
+      - name: 플러그인 설치
+        ref: /getting-started/install
+      - name: 첫 작업
+        ref: /getting-started/first-task
+
+  - name: 모두의 코워크 가이드
+    icon: users
+    defaultOpen: true
+    sub:
+      - name: Cowork 소개
+        ref: /guide/cowork
+      - name: Chat (데스크톱 앱)
+        ref: /guide/chat
+      - name: Design
+        ref: /guide/design
+      - name: Code (CLI)
+        ref: /guide/code
+
   - name: 플러그인 설치·운용
     icon: plug
     defaultOpen: true
@@ -89,3 +117,26 @@ main:
         ref: /releases/v1.0.0
       - name: 이전 릴리스 아카이브
         ref: /releases/archive
+
+  - name: 쿡북
+    icon: book
+    defaultOpen: false
+    sub:
+      - name: 개요
+        ref: /cookbook
+
+  - name: 도움말
+    icon: question
+    defaultOpen: false
+    sub:
+      - name: 개요
+        ref: /help
+      - name: 트러블슈팅
+        ref: /help/troubleshooting
+
+  - name: CLI
+    icon: terminal
+    defaultOpen: false
+    sub:
+      - name: 개요
+        ref: /cli

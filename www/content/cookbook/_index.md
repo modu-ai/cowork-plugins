@@ -94,7 +94,7 @@ flowchart TD
 ## 먼저 읽으면 좋은 글
 
 - [스킬 체이닝 가이드](/cookbook/skill-chaining/) — 쿡북 전반에서 공통으로 쓰는 체인 패턴 입문
-- [플러그인 빠른 시작](../plugins/quick-start/) — 마켓플레이스 등록부터 첫 호출까지
+- [플러그인 빠른 시작](../plugins/install/) — 마켓플레이스 등록부터 첫 호출까지
 
 ## 예제 목록
 

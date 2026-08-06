@@ -44,7 +44,7 @@ flowchart TD
 4. 목록에서 원하는 플러그인 옆 **+** 클릭해 설치
 5. `moai-pm`을 가장 먼저 설치 — `/project` 한 명령으로 프로젝트 초기화와 나머지 직원 배치를 맡는 진입 허브입니다. AI 슬롭 검수(`ai-slop-reviewer`)는 `moai-coworker`에 있습니다.
 
-설치가 끝나면 [빠른 시작](../../plugins/quick-start/)의 `/project`으로 프로젝트 맞춤 `CLAUDE.md`를 생성할 수 있습니다.
+설치가 끝나면 [빠른 시작](../../plugins/install/)의 `/project`으로 프로젝트 맞춤 `CLAUDE.md`를 생성할 수 있습니다.
 
 ## 플러그인 관리
 
@@ -59,7 +59,7 @@ flowchart TD
 ## 다음 단계
 
 - [플러그인 카탈로그](../../plugins/) — 실제 설치 가능한 플러그인 모음
-- [빠른 시작](../../plugins/quick-start/) — 설치 후 5분 안에 첫 체인 돌리기
+- [빠른 시작](../../plugins/install/) — 설치 후 5분 안에 첫 체인 돌리기
 
 ---
 
