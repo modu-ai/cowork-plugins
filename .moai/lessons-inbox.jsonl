@@ -182,3 +182,5 @@
 {"timestamp":"2026-08-06T18:03:10Z","event_key":"tool_failure:Bash:UnknownFailure","summary":"Exit code 1\n(eval):12: unmatched \"","source":"tool:Bash"}
 {"timestamp":"2026-08-06T18:29:44Z","event_key":"tool_failure:Bash:UnknownFailure","summary":"Exit code 2\n=== terminal 숏코드 쓰는 파일 ===\n   content/releases/archive/v2.15.md\n   content/releases/archive/v2.10.md\n   content/releases/archive/v2.11.md\n   content/releases/archive/v2.5.md\n   content/rel…","source":"tool:Bash"}
 {"timestamp":"2026-08-06T20:50:09Z","event_key":"tool_failure:Bash:UnknownFailure","summary":"Exit code 1\n=== 제거 직전 CSS에서 cw-gh-stars 규칙 (파일 탐색) ===\n\n=== 각 css에서 cw-gh-stars 규칙 블록 출력 ===\n\u003e\u003e\u003e www/static/moai-ds.css:\n.cw-search-input:hover, .cw-gh-stars:hover, .cw-header-nav a:hover,\n.cw-rel a:h…","source":"tool:Bash"}
+{"timestamp":"2026-08-06T22:04:28Z","event_key":"tool_failure:Bash:UnknownFailure","summary":"Exit code 1\n(eval):17: unmatched \"","source":"tool:Bash"}
+{"timestamp":"2026-08-06T22:05:14Z","event_key":"tool_failure:Bash:UnknownFailure","summary":"Exit code 1\n(eval):13: unmatched \"","source":"tool:Bash"}
