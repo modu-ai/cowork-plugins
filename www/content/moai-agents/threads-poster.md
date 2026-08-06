@@ -3,6 +3,8 @@ title: "스레드 포스터 — Threads·Instagram 직접 발행 담당"
 weight: 18
 description: "Threads(Meta)·Instagram 직접 발행 전담 AI 직원 — MCP 도구로 즉시 발행, 문체 학습, 멀티 채널 포맷까지. 예약·정기 발행은 Claude Cowork 이 담당합니다."
 aliases: ["/agent-teams/threads-poster/"]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 1인 브랜드·콘텐츠 크리에이터가 Threads·Instagram 을 운영할 때 가장 큰 병목은 **"규칙적인 게시"** 와 **"쓰는 손글씨(문체)의 일관성"** 입니다. 스레드 포스터 직원은 이 둘을 돕습니다. 주제를 받아 저장된 문체를 적용해 초안을 작성하고, 사용자에게 보여드린 뒤 승인하면 **즉시** Graph API 로 발행합니다. 큐·예약·승인 상태머신은 없습니다 — 세션 안에서 한 흐름으로 작성 → 확인 → 발행합니다.

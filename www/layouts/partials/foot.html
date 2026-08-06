@@ -84,3 +84,74 @@
 })();
 </script>
 {{ end }}
+
+<script>
+(function () {
+  // ────────────────────────────────────────────────────────────────────
+  // code-card 복사 버튼 — 클릭 시 해당 블록 코드를 클립보드에 복사.
+  // 사용자 요구: "$ 명령어 복사시 $는 제외" → 각 라인의 선행 `$ ` 프롬프트 제거.
+  // 표적: .copy-btn[data-copy-target] (terminal shortcode 및 code-card 전체).
+  // ────────────────────────────────────────────────────────────────────
+  function ready(fn) {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
+  }
+
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.top = '-9999px';
+    ta.setAttribute('readonly', '');
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+
+  // 각 라인의 선행 `$ ` 프롬프트 제거 — 복사 시 명령어만 담기도록.
+  function stripPrompt(text) {
+    return text.split('\n').map(function (line) {
+      return line.replace(/^\$\s?/, '');
+    }).join('\n').replace(/\s+$/, '');
+  }
+
+  function markCopied(btn) {
+    var label = btn.querySelector('.copy-label');
+    var copyIcon = btn.querySelector('.copy-icon');
+    var checkIcon = btn.querySelector('.check-icon');
+    btn.classList.add('copied');
+    if (label) label.textContent = '복사됨';
+    if (copyIcon) copyIcon.setAttribute('hidden', '');
+    if (checkIcon) checkIcon.removeAttribute('hidden');
+    setTimeout(function () {
+      btn.classList.remove('copied');
+      if (label) label.textContent = '복사';
+      if (copyIcon) copyIcon.removeAttribute('hidden');
+      if (checkIcon) checkIcon.setAttribute('hidden', '');
+    }, 1800);
+  }
+
+  ready(function () {
+    document.querySelectorAll('.copy-btn[data-copy-target]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var card = btn.closest('.code-card');
+        var pre = card && (card.querySelector('.code-pre') || card.querySelector('pre'));
+        if (!pre) return;
+        var text = stripPrompt(pre.innerText || pre.textContent);
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () {
+            markCopied(btn);
+          }).catch(function () {
+            fallbackCopy(text);
+            markCopied(btn);
+          });
+        } else {
+          fallbackCopy(text);
+          markCopied(btn);
+        }
+      });
+    });
+  });
+})();
+</script>

@@ -58,6 +58,11 @@
     <div class="traffic"><span class="red"></span><span class="yellow"></span><span class="green"></span></div>
     <div class="code-title">{{ $title }}{{ with $lang }} <span class="lang">{{ . }}</span>{{ end }}</div>
     <div class="code-spacer"></div>
+    <button class="copy-btn" type="button" aria-label="코드 복사" data-copy-target>
+      <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+      <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><polyline points="20 6 9 17 4 12"></polyline></svg>
+      <span class="copy-label">복사</span>
+    </button>
   </div>
   <pre class="code-pre term-pre">{{ $out }}</pre>
 </div>
