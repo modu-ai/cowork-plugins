@@ -4,6 +4,8 @@ weight: 30
 description: "브랜드 전략·SNS·상세페이지·SEO까지 moai-marketer 스킬 조합으로 마케팅 본부 자동화."
 geekdocBreadcrumb: true
 tags: [cookbook, marketing]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 # 트랙 — 마케팅·콘텐츠

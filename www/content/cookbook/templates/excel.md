@@ -3,6 +3,8 @@ title: "엑셀 고급 기법"
 weight: 30
 description: "Power Query · 피벗 테이블 · LAMBDA 등 모두의 코워크로 자동화 가능한 엑셀 고급 패턴."
 geekdocBreadcrumb: true
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 > 엑셀의 90%는 SUM·VLOOKUP만으로 풀리지만 나머지 10%가 사람의 시간을 다 잡아먹습니다. 그 10%를 모두의 코워크로 자동화합니다.
 

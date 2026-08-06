@@ -4,6 +4,8 @@ weight: 150
 description: "스킬 체인 실패를 증상별로 진단·재시도·롤백하는 방법."
 geekdocBreadcrumb: true
 tags: [cookbook, troubleshooting]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 > 스킬 체인이 기대대로 흘러가지 않을 때 읽는 페이지입니다. 증상 → 원인 후보 → 다음 액션 순서로 정리했습니다.
 

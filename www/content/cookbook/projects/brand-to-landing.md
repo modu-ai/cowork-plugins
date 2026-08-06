@@ -4,6 +4,8 @@ weight: 40
 description: "브랜드 아이덴티티 → 디자인 시스템 → 랜딩 시안 — 코워커가 브랜드의 뼈대를 세우고 디자이너가 눈에 보이는 결과로 바꿉니다."
 geekdocBreadcrumb: true
 tags: [cookbook, projects, marketing]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 > **투입 직원** — 코워커(`moai-coworker`) → 디자이너(`moai-designer`)

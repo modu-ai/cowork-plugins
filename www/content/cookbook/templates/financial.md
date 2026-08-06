@@ -3,6 +3,8 @@ title: "재무 모델링 템플릿"
 weight: 20
 description: "3년 P&L · cash-flow · cohort · funding need 5개 시트 표준 재무 모델 템플릿."
 geekdocBreadcrumb: true
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 > 투자 검토에서 통하는 재무 모델은 *복잡함이 아니라 검증 가능함*에서 신뢰를 얻습니다. 5개 시트, 가정과 결과의 명확한 분리, 가정을 바꾸면 결과가 자동으로 따라가는 구조 — 이 셋이면 충분합니다.
 

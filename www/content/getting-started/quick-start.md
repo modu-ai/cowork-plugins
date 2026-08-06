@@ -3,6 +3,8 @@ title: "빠른 시작"
 weight: 30
 description: "modu-ai/moai-cowork 마켓플레이스 등록부터 첫 스킬 체인 실행까지 약 10분 완성 가이드"
 geekdocBreadcrumb: true
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 `modu-ai/moai-cowork` 마켓플레이스를 Claude Cowork에 등록하고 첫 스킬 체인을 실행하기까지의 전체 흐름을 정리한 페이지입니다. 처음부터 끝까지 약 **10분** 소요됩니다.
 

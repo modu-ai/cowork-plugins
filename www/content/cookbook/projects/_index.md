@@ -5,6 +5,8 @@ description: "전문가 AI 직원들을 조합해 실제 문제를 끝까지 해
 geekdocBreadcrumb: true
 geekdocCollapseSection: true
 tags: [cookbook, projects]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 # 코워크 프로젝트

@@ -4,6 +4,8 @@ weight: 90
 description: "아이템 한 줄에서 심사용 DOCX 사업계획서까지 1-2시간 안에 완성하는 스킬 체인."
 geekdocBreadcrumb: true
 tags: [cookbook, business]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 > **목표** — 아이템 아이디어에서 시작해 심사위원이 받을 수 있는 수준의 DOCX 사업계획서까지, 1-2시간 이내로 완성합니다.
 

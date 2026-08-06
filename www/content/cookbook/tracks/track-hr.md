@@ -3,6 +3,8 @@ title: "HR·커리어 트랙"
 weight: 26
 description: "인사 담당자와 구직자를 위한 채용·평가·온보딩·자기소개서 워크플로우. moai-recruiter 6스킬 + moai-career 5스킬을 한 줄 요청으로 자동 처리."
 geekdocBreadcrumb: true
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 > **대상**: 인사 담당자, HR 매니저, 구직자, 취준생, 경력 전환자

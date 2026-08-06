@@ -4,6 +4,8 @@ weight: 60
 description: "머릿속 이야기를 연재 가능한 작품으로 — 작가 직원 한 명이 시놉시스, 캐릭터 시트, 연재 원고, 표지 시안까지 함께 만듭니다."
 geekdocBreadcrumb: true
 tags: [cookbook, projects, content]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 > **투입 직원** — 작가(`moai-writer`)

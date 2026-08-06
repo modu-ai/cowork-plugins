@@ -4,6 +4,8 @@ weight: 90
 description: "서명 전에 독소조항 잡아내기 — 법무 담당이 조항별로 검토하고 코워커가 의사결정자용 리스크 보고서로 정리합니다."
 geekdocBreadcrumb: true
 tags: [cookbook, projects, legal]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 > **투입 직원** — 법무 담당(`moai-lawyer`) → 코워커(`moai-coworker`)

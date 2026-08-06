@@ -3,6 +3,8 @@ title: "법률 트랙"
 weight: 50
 description: "계약서·NDA·컴플라이언스 자동화. moai-lawyer + moai-officer + moai-coworker를 한 줄 요청으로 자동 처리."
 geekdocBreadcrumb: true
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 > **대상**: 사내 법무팀, 컴플라이언스 담당자, 스타트업 대표·CXO, 외부 자문 변호사

@@ -5,6 +5,8 @@ description: "Microsoft 365에서 Claude 활용하기 — Excel, Word, PowerPoin
 geekdocBreadcrumb: false
 geekdocCollapseSection: false
 aliases: ["/office/", "/office"]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 Claude는 익숙한 **Microsoft Office** 앱 안에서도 함께 일할 수 있습니다. 스프레드시트를 분석하고, 문서 초안을 잡고, 슬라이드를 만들고, 메일을 정리하는 일을 Excel·Word·PowerPoint·Outlook에서 바로 맡길 수 있습니다. 이 섹션은 Claude의 **Office 에이전트**와 Microsoft 365 연동을 한국어로 정리합니다.

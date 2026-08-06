@@ -14,7 +14,7 @@ description: |
   호스팅·배포·도메인·DB는 범위 밖입니다. 코드는 사용자 프로젝트 안에 만들며 외부 호스팅에 올리지
   않습니다. 브랜드 이미지 한 장만 필요하면 design-brand-visual을 쓰세요.
 user-invocable: true
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # design-landing-motion — 다이나믹 랜딩 제작

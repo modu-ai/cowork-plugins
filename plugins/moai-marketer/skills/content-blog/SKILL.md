@@ -10,7 +10,7 @@ description: |
   - "GEO 최적화해서 AI 검색에 인용되는 가이드 글 써줘"
   - "제품 리뷰 블로그 포스팅 구성 짜줘"
   검색 상위 노출과 독자 전환을 함께 노리며, 완성 후 moai-coworker:ai-slop-reviewer로 AI 티를 정리합니다(필수 후처리).
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # 블로그 (Blog)

@@ -3,6 +3,8 @@ title: "제품 개발 트랙"
 weight: 70
 description: "PRD·로드맵·UX·발표 자료 자동화. moai-consultant(strategy-planner) + moai-coworker + moai-officer + 사용자 정의 스킬 체이닝."
 geekdocBreadcrumb: true
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 > **대상**: 제품 매니저(PM), UX 디자이너, 개발 매니저, 스타트업 창업자

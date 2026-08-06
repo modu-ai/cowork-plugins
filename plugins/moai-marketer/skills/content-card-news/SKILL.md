@@ -10,7 +10,7 @@ description: |
   - "스타트업 시드 라운드 체크리스트 카드뉴스 써줘"
   - "프롬프트 엔지니어링 FAQ 카드뉴스 기획해줘"
   주제에 맞는 구성 패턴을 자동으로 골라 4장을 채우고, 이미지 생성은 moai-coworker 이미지 스킬로, 한국어 자연화는 moai-writer:korean-humanize으로 이어집니다.
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # 카드뉴스 (Card News)

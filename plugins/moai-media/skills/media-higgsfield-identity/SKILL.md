@@ -12,7 +12,7 @@ description: |
   Soul은 한 사람의 identity에 충실하지만 한 생성에 1개만·soul 계열 모델 전용이고, Element는 즉시 만들어지며
   한 프롬프트에 여러 개를 배치할 수 있고 사람이 아닌 대상도 됩니다. 이 분기를 잘못 고르면 되돌릴 수 없는
   학습 비용이 발생하므로, 경로가 불명확하면 생성하지 않고 blocker를 반환합니다.
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # Higgsfield 일관성 참조 (media-higgsfield-identity)

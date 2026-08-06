@@ -11,7 +11,7 @@ description: |
   - "/media-codex-image" (직접 호출)
 
   프롬프트가 복잡하거나 한국어 텍스트가 들어가면 `moai-media:media-gpt-image-2-prompt`(6-Block 프롬프트 빌더)로 먼저 프롬프트를 빌드한 뒤 이 스킬로 생성하세요. Higgsfield MCP가 연결돼 있지 않거나 로컬 개발·ChatGPT 구독 한도 재사용이 목적이면 이 스킬을 사용합니다 (프로덕션·CI·멱등은 `media-higgsfield-image` 권장).
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # media-codex-image — codex CLI(gpt-image-2) 이미지 생성기

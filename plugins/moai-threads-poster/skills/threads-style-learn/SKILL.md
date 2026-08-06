@@ -10,7 +10,7 @@ description: |
   - "이전 스레드/페이스북 글로 문체 학습해줘"
   - "내 톤앤매너 분석해줘"
   [책임 경계] vs 형제 스킬: 문체 *분석* 과 프로필 *저장* 만 담당합니다. 저장된 프로필을 적용해 초안을 작성·발행하는 건 threads-post-draft, 여러 채널(Threads/Facebook/X) 포맷은 threads-multichannel 이 담당합니다. 이 스킬은 발행을 하지 않습니다.
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # Threads 문체 학습 (threads-style-learn)

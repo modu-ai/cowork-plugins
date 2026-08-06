@@ -4,6 +4,8 @@ weight: 30
 description: "Schedule(시간 자동화)과 Dispatch(공간 확장)를 결합한 본부별 자동화 레시피."
 geekdocBreadcrumb: true
 tags: [cookbook, automation]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 > Schedule은 **시간의 자동화**, Dispatch는 **공간의 확장**입니다. 둘을 결합하면 "내가 자리에 없어도 내 AI 직원은 계속 일하는" 상태가 만들어집니다.
 

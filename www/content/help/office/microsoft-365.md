@@ -4,6 +4,8 @@ weight: 10
 description: "Excel·Word·PowerPoint·Outlook에서 Claude를 바로 사용하고, M365 앱 사이를 오가며 작업하고 받아쓰기로 입력하는 법을 안내합니다."
 geekdocBreadcrumb: true
 aliases: ["/office/microsoft-365/"]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 매일 쓰는 엑셀이나 워드 창을 떠나지 않고도 옆자리 동료에게 "이 표 좀 봐 줄래?", "이 보고서 톤만 다듬어 줘"라고 부탁하듯 Claude에게 일을 맡길 수 있다면 어떨까요? Claude의 Microsoft 365 추가 기능(add-in)은 바로 그런 경험을 제공합니다. Excel, Word, PowerPoint, Outlook 안에 Claude를 사이드바로 띄워 두고 평소 작업 흐름을 끊지 않으면서 질문하고 수정하고 정리할 수 있습니다.

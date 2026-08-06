@@ -12,7 +12,7 @@ description: |
   - "AI 검색이 인용할 만한 질의(query) 후보 뽑아줘"
   검색 의도 4분류·롱테일·키워드 난이도·쿼리 팬아웃(query fan-out)·토픽 클러스터 프레임으로 키워드 목록과 클러스터 맵을 만들고, 서술형 권고는 moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize으로 다듬습니다.
   [책임 경계] vs moai-marketer:marketing-seo-audit: 이 스킬=쓸 키워드·클러스터를 새로 발굴(discovery), 저 스킬=이미 있는 페이지·사이트의 SEO 건강도를 진단(audit). 키워드를 정한 뒤 페이지를 점검하려면 marketing-seo-audit로 넘어갑니다.
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # 키워드 리서치 (Keyword Research)

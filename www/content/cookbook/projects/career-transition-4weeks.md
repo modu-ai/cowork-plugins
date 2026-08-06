@@ -4,6 +4,8 @@ weight: 110
 description: "막연한 '이직하고 싶다'를 실행 계획으로 — 커리어코치가 4주 로드맵, 이력서, 포트폴리오, 면접 준비까지 함께 뜁니다."
 geekdocBreadcrumb: true
 tags: [cookbook, projects, career]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 > **투입 직원** — 커리어코치(`moai-career`)

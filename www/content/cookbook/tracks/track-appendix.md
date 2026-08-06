@@ -3,6 +3,8 @@ title: "부록 트랙"
 weight: 90
 description: "연구·교육·라이프스타일을 위한 부록 워크플로우. moai-tutor · moai-coworker 14스킬 한 줄 요청."
 geekdocBreadcrumb: true
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 > **대상**: 연구자 (대학원생·교수·R&D), 교육자 (강사·튜터), 일반 사용자 (여행·이벤트·웰니스)

@@ -5,6 +5,8 @@ description: "Claude Code CLI 개발자 문서는 클로드 코드 한국어 공
 geekdocBreadcrumb: true
 geekdocCollapseSection: false
 aliases: ["/cli/concepts/", "/cli/concepts/ddd-tdd/", "/cli/concepts/harness/", "/cli/concepts/spec-system/", "/cli/concepts/trust5/", "/cli/daily/", "/cli/daily/daily-flow/", "/cli/daily/debugging/", "/cli/daily/prompts/", "/cli/daily/tokens-cost/", "/cli/moai-adk/", "/cli/moai-adk/bridge/", "/cli/moai-adk/quality-commands/", "/cli/moai-adk/workflow-commands/", "/cli/reference/", "/cli/reference/advanced/", "/cli/reference/cli-reference/", "/cli/reference/multi-llm/", "/cli/start/", "/cli/start/first-spec/", "/cli/start/install/"]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 터미널에서 Claude Code와 MoAI-ADK를 다루는 개발자를 위한 축입니다. 명령어 한 줄로 코드를 짜고, 테스트를 돌리고, 개발 사이클 전체를 자동화하는 세계 — 그 심화 학습은 이제 전용 사이트에서 이어집니다.

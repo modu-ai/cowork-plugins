@@ -4,6 +4,8 @@ weight: 40
 description: "moai-analyst 세 스킬과 공공데이터 API를 조합해 보고서 수준의 데이터 분석을 자동화."
 geekdocBreadcrumb: true
 tags: [cookbook, data]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 # 트랙 — 데이터 분석

@@ -4,6 +4,8 @@ weight: 80
 description: "금요일 오후를 잡아먹던 주간보고를 루틴으로 — 코워커가 초안을 짜고 사무관이 XLSX 집계와 DOCX 보고서로 완성합니다."
 geekdocBreadcrumb: true
 tags: [cookbook, projects, office]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 > **투입 직원** — 코워커(`moai-coworker`) → 사무관(`moai-officer`)

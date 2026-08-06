@@ -8,7 +8,7 @@ description: |
   - "동물 캐릭터 외형", "펫 캐릭터 시트"
   - "일관성 앵커", "캐릭터 일관성 어떻게"
   - "Soul ID 학습 세트", "레퍼런스 이미지 사양"
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # story-character-sheet: 캐릭터 비주얼 시트 + 일관성 앵커

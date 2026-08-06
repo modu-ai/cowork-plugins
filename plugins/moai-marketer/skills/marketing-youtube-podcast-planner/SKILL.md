@@ -10,7 +10,7 @@ description: |
   - "유튜브 채널 기획서 만들어줘"
   - "팟캐스트 포맷 설계해줘"
   산출물은 에피소드 기획서·스크립트·쇼노트이며, 대본·쇼노트 같은 산문 텍스트는 moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize 체인으로 마무리하세요.
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # 유튜브·팟캐스트 기획 (YouTube & Podcast Planner)

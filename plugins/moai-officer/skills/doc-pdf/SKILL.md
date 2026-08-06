@@ -16,7 +16,7 @@ description: |
   PDF 생성·변환 요청 시 이 스킬의 표준 경로(아래 인라인 weasyprint 코드)를 사용하세요.
   입력 감지 → HTML 빌드 → Noto Sans CJK @font-face 주입 → weasyprint 렌더를
   이 문서의 인라인 코드로 직접 수행하며, 올바른 CJK 폰트 설정을 함께 적용합니다.
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # PDF 생성기 (doc-pdf)

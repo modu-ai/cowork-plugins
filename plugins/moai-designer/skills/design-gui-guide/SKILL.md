@@ -12,7 +12,7 @@ description: |
   - "Nielsen GUI 가이드라인"
   - "디자인 시스템 컴포넌트 감사 체크리스트"
 user-invocable: true
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # design-gui-guide — 10 GUI 요소 사용성 가이드라인 SSOT

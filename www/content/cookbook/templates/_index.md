@@ -4,6 +4,8 @@ weight: 85
 description: "재무 모델·이메일·엑셀·컴플라이언스 등 즉시 복사해 변형할 수 있는 실무 템플릿."
 geekdocBreadcrumb: true
 geekdocCollapseSection: true
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 복사 → 변형 → 즉시 활용. 각 템플릿은 관련 모두의 코워크 스킬과 함께 동작하도록 설계되어 있습니다.
 

@@ -10,7 +10,7 @@ description: |
   - "SFX 나중에 얹기", "2패스로 효과음", "효과음만 추가"
   - "식자 어떻게", "타이틀 서체", "간판 글씨 서체"
   - (체인 중간 호출) story-webtoon-episode·art·qc가 말풍선·서체·SFX 규격을 확인하려 할 때
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # story-webtoon-lettering: 세로 스크롤 웹툰 식자 허브

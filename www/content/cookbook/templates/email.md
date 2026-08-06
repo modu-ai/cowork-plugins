@@ -3,6 +3,8 @@ title: "이메일 마케팅 템플릿"
 weight: 40
 description: "Welcome · Drip · Re-engagement 시퀀스를 moai-marketer:newsletter와 moai-marketer:email-sequence로 운영하는 템플릿."
 geekdocBreadcrumb: true
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 > 이메일은 "죽었다"는 말을 10년째 듣고 있지만 매출 ROAS 기준으로는 가장 안정적인 채널입니다. 모두의 코워크는 한국 정보통신망법을 준수하면서 시퀀스를 자동 설계합니다.
 

@@ -6,7 +6,7 @@ description: |
   "채널별 메시지 만들어줘", "검색광고 카피 15종", "CRM 메시지 뽑아줘", "스마트스토어 배너 카피", "쿠팡 광고 문구", "카카오 알림톡 문구", "SNS 광고 카피 5종", "광고 헤드라인 만들어줘", "톡톡 응답 템플릿", "카트 이탈 메시지", "이메일 시퀀스 짜줘", "재구매 유도 알림톡", "앱 푸시 문구 만들어줘", "리텐션 푸시 카피 3안", "할인 푸시 알림", "게이미피케이션 푸시"
   3개 동작 모드(채널 분기 메시지 15종 / 운영 카피 / 앱 푸시 기획)가 자연어로 자동 선택되며, 6 심리 방아쇠 + 채널별 심리 상태 매트릭스 + 인지 편향 9종을 적용하고, 텍스트 산출물 직후 moai-coworker:ai-slop-reviewer를 자동 체이닝합니다.
   [책임 경계] 페어 design-copywriting(도메인 비특정 단일 목적 카피)·moai-marketer:content-copywriting(이커머스 외 범용)과 구분 — 본 스킬은 이커머스 채널 운영 메시지 전용. 상세페이지 카피는 moai-seller:commerce-detail-page-copy, 발송 전 법규 게이트는 moai-seller:commerce-message-compliance-kr.
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # 채널별 메시지 자동 생성 (Commerce Channel Message)

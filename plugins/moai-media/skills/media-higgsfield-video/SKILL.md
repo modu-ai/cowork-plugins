@@ -14,7 +14,7 @@ description: |
   Veo·Kling·Seedance·Cinema Studio·Marketing Studio·Wan·Gemini Omni·Grok 등 계열의 프롬프트 크래프트는
   references/prompt-craft/*.md에 출처와 함께 큐레이션돼 있고(계열마다 규칙이 다름 — 범용 공식 없음),
   실제 파라미터(모델 id·해상도·비율·길이·비용)는 런타임에 라이브 조회합니다.
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # Higgsfield 영상 생성 (media-higgsfield-video)

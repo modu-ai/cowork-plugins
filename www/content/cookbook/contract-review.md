@@ -4,6 +4,8 @@ weight: 110
 description: "상대측 계약서·NDA를 리스크 항목별로 표 정리 → 수정본 DOCX → 결재용 1페이지 요약까지."
 geekdocBreadcrumb: true
 tags: [cookbook, legal]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 > **목표** — 상대측이 보낸 계약서·NDA를 **리스크 항목별로 표 정리** → 수정본 DOCX → 1페이지 결재용 요약까지 자동으로 만듭니다.
 

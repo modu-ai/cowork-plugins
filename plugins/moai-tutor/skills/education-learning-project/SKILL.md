@@ -11,7 +11,7 @@ description: |
   - "지금 수준 진단하고 단계별 학습 단계 만들어줘"
   학습자(수강생) 본인이 쓰는 도구입니다. 주제·수준·가용 시간을 받아 마일스톤 로드맵과 프로젝트 폴더를 만들고, education-tutor-research·education-learning-material 체인으로 연결합니다.
   [책임 경계] vs moai-tutor:education-curriculum-designer: 이 스킬=배우는 사람 본인의 자기주도 학습 프로젝트, 저 스킬=강사가 남을 가르치려고 만드는 강의 커리큘럼.
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # 학습 프로젝트 (Learning Project)

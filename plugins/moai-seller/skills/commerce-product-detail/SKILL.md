@@ -11,7 +11,7 @@ description: |
   - "모바일 전용 상세페이지 숏폼 스타일로 만들어줘"
   코드 생성 전에 디자인 톤(색·모드·모서리·효과)을 먼저 묻습니다. 기획은 moai-seller:commerce-detail-page-planner, 카피는 moai-seller:commerce-detail-page-copy, 이미지는 moai-seller:commerce-detail-page-image로 이어집니다.
   [책임 경계] vs 페어 스킬: 이 스킬=코드 산출, moai-seller:commerce-detail-page-copy=13섹션 카피 JSON, moai-marketer:marketing-landing-page=단독 전환 랜딩 1페이지.
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # 상세 페이지 (Product Detail)

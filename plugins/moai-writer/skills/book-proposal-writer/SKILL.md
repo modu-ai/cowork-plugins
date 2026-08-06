@@ -9,7 +9,7 @@ description: |
   - "샘플 챕터 첨부", "원고 미리보기"
   - "출판 마케팅 플랜", "저자 마케팅 활동"
   - "출판사별 양식 변환"
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # book-proposal-writer

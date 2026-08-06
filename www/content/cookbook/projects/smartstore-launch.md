@@ -4,6 +4,8 @@ weight: 30
 description: "상세페이지·홍보 콘텐츠·고객 응대까지 — 셀러, 마케터, CS매니저 세 직원이 릴레이로 신제품 런칭을 완주합니다."
 geekdocBreadcrumb: true
 tags: [cookbook, projects, commerce]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 > **투입 직원** — 셀러(`moai-seller`) → 마케터(`moai-marketer`) → CS매니저(`moai-cs`)

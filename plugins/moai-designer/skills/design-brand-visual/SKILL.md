@@ -13,7 +13,7 @@ description: |
   이미지 생성 실행·모델 선택·비용 고지는 moai-media:media-higgsfield-core 계약에 위임하고, 이 스킬은
   "무엇을 만들지"(브랜드 정합·구도·용도 규격)까지만 정합니다.
 user-invocable: true
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # design-brand-visual — 브랜드 정합 비주얼 생성

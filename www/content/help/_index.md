@@ -4,6 +4,8 @@ weight: 65
 description: "Claude 공식 고객지원 가이드를 한국어로 정리 — 계정, 요금제, 대화 관리, 개인화, 사용량, 문제 해결을 한곳에서."
 geekdocBreadcrumb: false
 geekdocCollapseSection: false
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 Claude를 쓰다 보면 "계정 이메일을 어떻게 바꾸지?", "요금제는 뭘 골라야 하지?", "응답이 이상한데 왜 그러지?" 같은 질문이 생깁니다. 이 도움말 섹션은 Claude **공식 고객지원 센터**([support.claude.com](https://support.claude.com/en/collections/4078531-claude))의 가이드 문서를 한국어로 정리해 제품 기능 설명이 아니라 **계정·결제·운영**에 대한 실질적인 답을 모았습니다.

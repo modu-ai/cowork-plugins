@@ -11,7 +11,7 @@ description: |
   - "브라우저에서 바로 보는 학습 노트 HTML로 만들어줘"
   학습 전용 렌더러로, doc-html-report design-token·폰트를 공유해 시각 일관성을 유지하되 mermaid·ECharts·KaTeX·highlight.js·AOS를 콘텐츠가 쓸 때만 조건부 로딩합니다.
   [책임 경계] vs moai-officer:doc-html-report: 이 스킬=도식·차트·코드가 풍부한 학습자료(JS 라이브러리 허용), 저 스킬=0-JS 단일파일 업무 보고서.
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # 학습자료 렌더러 (Learning Material)

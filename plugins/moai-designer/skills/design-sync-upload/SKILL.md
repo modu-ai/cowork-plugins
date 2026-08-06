@@ -12,7 +12,7 @@ description: |
   - "업로드 가이드 만들어 줘 (수동)"
   - "claude.ai/design에 올릴 자료 스테이징"
 user-invocable: true
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # design-sync-upload — Claude Design 업로드 (자동 + 수동 폴백)

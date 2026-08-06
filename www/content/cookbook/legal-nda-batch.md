@@ -4,6 +4,8 @@ weight: 90
 description: "스타트업 법무팀이 인박스에 쌓인 NDA 12건을 한 번의 지시로 분류·검토·위험보고서까지 자동 처리합니다."
 geekdocBreadcrumb: true
 tags: [cookbook, legal]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 > **목표** — `./nda_inbox/` 폴더의 NDA PDF 12건을 분류·검토하고, 건별 위험도(상/중/하)와 수정 제안이 들어간 위험 보고서를 docx로 생성합니다.
 

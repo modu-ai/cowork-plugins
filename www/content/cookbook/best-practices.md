@@ -4,6 +4,8 @@ weight: 20
 description: "정체성·기능·프로젝트·플러그인·MCP·프롬프트·스케줄·실전 사례·보안·비용·초기 설정 11개 영역 가이드."
 geekdocBreadcrumb: true
 tags: [cookbook, foundations]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 > Claude Cowork의 모든 핵심 기능을 한 번에 정리합니다. 실무 투입 전 이 페이지 한 장만 훑어도 충분합니다.
 

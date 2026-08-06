@@ -3,6 +3,8 @@ title: "운영 트랙"
 weight: 27
 description: "운영팀·PM·CS·B2B 영업을 위한 통합 워크플로우. moai-coworker·moai-pm·moai-cs를 한 줄 요청으로 자동 처리."
 geekdocBreadcrumb: true
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 > **대상**: 운영팀, PM, 고객지원(CS) 매니저, B2B 영업 담당자, 사내 어시스턴트

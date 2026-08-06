@@ -5,6 +5,8 @@ geekdocAnchor: false
 geekdocBreadcrumb: false
 # DS v2 parity — 홈은 사이드바/TOC 없이 전폭 랜딩 (design-system/handoff/*.dc.html isHome)
 geekdocNav: false
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 <div class="cw-hero">

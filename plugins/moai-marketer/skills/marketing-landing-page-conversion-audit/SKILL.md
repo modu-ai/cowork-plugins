@@ -12,7 +12,7 @@ description: |
   - "결제 단계가 너무 복잡한 것 같아"
   히어로·공감·증명·사회증거·CTA·FAQ 6섹션을 점수화하고, 광고/랜딩/결제 중 어디가 문제인지 짚어 빠른 개선안을 제시합니다. 진단 보고서 서술 부분은 moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize으로 다듬습니다.
   [책임 경계] vs moai-marketer:marketing-landing-page: 이 스킬=기존 랜딩 진단·개선 처방, 저 스킬=신규 랜딩 코드 생성.
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # 랜딩페이지 전환율 진단 (Landing Page Conversion Audit)

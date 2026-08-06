@@ -3,6 +3,8 @@ title: "가이드 문서 색인"
 weight: 90
 description: "Claude 공식 고객지원 센터의 모든 가이드 문서와 모두의 코워크 페이지 매핑 색인."
 geekdocBreadcrumb: true
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 이 색인은 두 축으로 구성됩니다. **데스크탑 축**은 Claude 공식 고객지원 센터 [Claude 컬렉션](https://support.claude.com/en/collections/4078531-claude)의 가이드 문서를 모두의 코워크의 어느 페이지에서 한국어로 다루는지 매핑합니다 — 총 69개 문서를 15개 주제 페이지로 정리했으며 비개발자 은유 톤으로 작성했습니다. **CLI 축**은 `/cli/` prefix 하의 Claude Code CLI(MoAI-ADK) 입문자 가이드 5개 섹션 22페이지를 안내합니다 — 친화적 기술 용어 톤으로 재저작했습니다. 원문 확인이나 CLI 심화 학습이 필요할 때 출발점으로 활용하세요.

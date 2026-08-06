@@ -12,7 +12,7 @@ description: |
   1~10분(블록 = 분×6)을 지원하고, 스타일 프리셋 라이브 카탈로그·마스코트/무인물 모드·16:9와 9:16·
   선택적 자막을 다룹니다. 실사 영상, 광고·UGC, 토킹헤드, 팟캐스트, 단발 클립은 범위 밖이며
   media-higgsfield-video를 사용하세요.
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # Higgsfield 설명 영상 (media-higgsfield-explainer)

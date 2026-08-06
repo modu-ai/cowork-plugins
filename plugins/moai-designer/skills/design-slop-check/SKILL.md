@@ -12,7 +12,7 @@ description: |
   - "디자인 카피 후처리"
   - "humanize 직전 검수"
 user-invocable: true
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # design-slop-check — Claude Design 카피 AI 슬롭 검수

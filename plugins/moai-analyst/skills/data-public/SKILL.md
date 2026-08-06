@@ -8,7 +8,7 @@ description: |
   - "공공데이터포털 특정 API 엔드포인트 호출"
   - "통계 찾아줘", "공공데이터 정밀 조회", "KOSIS 고급 분석"
   자연어 KOSIS 통계 1줄 질문(예: "광진구 고용률")은 korean-stats MCP(14도구·92 키워드·17 시도·230+ 자치구, 공용키 hosted)를 우선하고, 본 스킬은 BYOK(DATA_GO_KR_API_KEY/KOSIS_API_KEY) 기반 정밀 제어 경로를 담당합니다.
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # 공공데이터 정밀 조회 (Public Data Advanced)

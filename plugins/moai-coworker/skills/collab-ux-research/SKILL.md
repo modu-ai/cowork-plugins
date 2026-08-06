@@ -11,7 +11,7 @@ description: |
   - "고객 설문 인사이트 정리해줘"
   정성·정량 리서치 결과를 의사결정에 쓸 수 있는 인사이트로 정리하고, ai-slop-reviewer·korean-humanize으로 마무리할 수 있습니다.
   [책임 경계] vs moai-coworker:collab-ux-design: collab-ux-research=정성/정량 리서치(인터뷰·페르소나·VOC), collab-ux-design=디자인 평가(휴리스틱·접근성·플로우)
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # UX 리서처 (UX Researcher)

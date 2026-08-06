@@ -4,6 +4,8 @@ weight: 20
 description: "공고문 해석부터 사업계획서 제출본까지 — 컨설턴트가 공고를 분석하고 코워커가 제안서 문장을 완성합니다."
 geekdocBreadcrumb: true
 tags: [cookbook, projects, startup]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 > **투입 직원** — 컨설턴트(`moai-consultant`) → 코워커(`moai-coworker`)

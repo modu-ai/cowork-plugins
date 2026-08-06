@@ -3,6 +3,8 @@ title: "Higgsfield MCP 설정"
 weight: 20
 description: "moai-media·moai-story·moai-designer 플러그인의 생성형 스킬(이미지·영상·3D·오디오·설명영상)이 쓰는 Higgsfield 호스티드 MCP의 OAuth 인증·크레딧·폴백 안내."
 geekdocBreadcrumb: true
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 [Higgsfield](https://higgsfield.ai)는 이미지·영상·3D·오디오 생성 호스티드 MCP입니다. 세 플러그인이 이 MCP를 통해 생성하며, 최초 1회 OAuth 인증이 필요합니다.

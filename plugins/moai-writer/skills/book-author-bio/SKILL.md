@@ -9,7 +9,7 @@ description: |
   - "저자 신뢰 신호", "출판 프로필"
   - "북스타그래머 프로필", "SNS 약력"
   - "강연·강의 약력"
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # book-author-bio

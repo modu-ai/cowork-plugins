@@ -8,7 +8,7 @@ description: |
   - "시각화해줘"
   - "대시보드 만들어줘"
   Mermaid·Recharts·Chart.js·Tremor·ECharts 중 적합한 스택으로 인터랙티브 대시보드를 제작하고, moai-officer:doc-pptx / moai-officer:doc-docx로 PPT·Word 변환까지 이어집니다.
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # 데이터 시각화 (Data Visualizer)

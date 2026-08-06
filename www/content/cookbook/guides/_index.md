@@ -4,6 +4,8 @@ weight: 80
 description: "트랙 학습을 보완하는 주제별 심화 가이드 모음. 계약서·법률 리스크·투자 유치·데이터 분석·콘텐츠 마케팅·SNS 등."
 geekdocBreadcrumb: true
 geekdocCollapseSection: true
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 각 [트랙](../tracks/)이 끝날 때 권장하는 심화 가이드입니다. 한 가지 도메인을 더 깊이 파고들고 싶을 때 여기서 시작하세요.
 

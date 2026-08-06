@@ -10,7 +10,7 @@ description: |
   - "디지털 전환 로드맵 수립해줘"
   기획 의도와 요구사항을 검토 가능한 문서로 정리하고, ai-slop-reviewer·korean-humanize으로 마무리할 수 있습니다.
   [책임 경계] 정부·지원사업 신청서는 moai-consultant:consult-gov-grant, R&D·연구비 과제는 moai-tutor:education-grant-writer로 라우팅
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # 스펙 작성 (Spec Writer)

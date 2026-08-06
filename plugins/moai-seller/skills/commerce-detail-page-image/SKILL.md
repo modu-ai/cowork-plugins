@@ -7,7 +7,7 @@ description: >
   moai-media:media-higgsfield-image(Nano Banana Pro 등 11개 모델)로 13장의 이미지를 생성한 뒤
   Pillow로 1080×12720 세로 합성 PNG를 직접 조립합니다(합성 로직은 이 문서에 인라인 코드로 포함).
   외부 패키지는 Pillow 하나만 필요합니다.
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # 상세페이지 이미지 합성 (Detail Page Image Composer)

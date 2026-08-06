@@ -4,6 +4,8 @@ weight: 100
 description: "사업계획서를 받아 투자자 앞에서 15분 안에 끝낼 수 있는 15장 IR 피칭 덱으로 변환."
 geekdocBreadcrumb: true
 tags: [cookbook, business]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 > **목표** — 사업계획서 내용을 받아 투자자 앞에서 15분 안에 끝낼 수 있는 **15장 PPT 피칭 덱**을 만듭니다.
 

@@ -3,7 +3,7 @@ name: media-asset-production
 description: |
   (구명칭 호환 스텁) 콘텐츠 캘린더는 `moai-marketer:content-editorial-calendar`, 유튜브·팟캐스트 기획은 `moai-marketer:marketing-youtube-podcast-planner`로 분리됨. 직접 호출하지 않는다.
 user-invocable: false
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # 미디어 프로덕션 (별칭 → 분리됨)

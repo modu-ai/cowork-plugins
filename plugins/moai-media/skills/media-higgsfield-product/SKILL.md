@@ -13,7 +13,7 @@ description: |
   - "이 이미지 크리스마스 버전으로 바꿔줘"
   주의: Higgsfield 공식 CLI가 쓰는 백엔드 프롬프트 강화기는 MCP에 노출되지 않습니다. 이 스킬은 모드
   판정과 프롬프트 구조까지 담당하며, 최고 충실도가 필요하면 공식 CLI 경로를 안내합니다.
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # Higgsfield 제품 촬영 (media-higgsfield-product)

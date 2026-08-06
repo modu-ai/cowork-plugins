@@ -4,6 +4,8 @@ weight: 120
 description: "같은 문의에 같은 답을 매번 새로 쓰지 않도록 — CS매니저가 고객의 소리를 분류하고 FAQ 지식베이스와 응대 템플릿으로 바꿉니다."
 geekdocBreadcrumb: true
 tags: [cookbook, projects, cs]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 > **투입 직원** — CS매니저(`moai-cs`)

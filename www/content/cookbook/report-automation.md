@@ -4,6 +4,8 @@ weight: 50
 description: "매주 금요일 자동으로 KPI 대시보드 + 이슈 요약 + 다음 주 액션을 담은 3페이지 DOCX 생성."
 geekdocBreadcrumb: true
 tags: [cookbook, operations]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 > **목표** — 매주 금요일 오후 5시에 자동으로 시작해 **KPI 대시보드 + 이슈 요약 + 다음 주 액션**까지 담긴 3페이지 DOCX를 팀 공유 폴더에 저장합니다.
 

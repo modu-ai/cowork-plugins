@@ -3,6 +3,8 @@ title: "SNS 최적화 가이드"
 weight: 70
 description: "인스타·LinkedIn·X·카카오·네이버 등 채널별 톤·해시태그·발행 시점을 moai-marketer의 content-sns-content로 운영."
 geekdocBreadcrumb: true
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 > 채널마다 사람이 다르고, 사람이 다르면 톤·길이·해시태그도 달라야 합니다. 마케터의 SNS 스킬은 7개 채널의 알고리즘·관습을 미리 알고 있어 동일 메시지를 채널별로 자동 변형합니다.
 

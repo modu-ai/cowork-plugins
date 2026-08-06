@@ -12,7 +12,7 @@ description: |
   - meta-skill-builder Phase 5 이후 검증이 필요할 때
   - /harness 커맨드의 test 단계로 진입할 때
 user-invocable: false
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # Skill Tester — 스킬 품질 검증 도구 (루브릭 + 체인 내장)

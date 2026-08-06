@@ -9,7 +9,7 @@ description: |
   - Higgsfield 모델의 파라미터를 하드코딩하지 않고 런타임 조회해야 할 때
   - namespace(mcp__higgsfield__ vs mcp__claude_ai_higgsfield__)를 런타임 해석해야 할 때
   이 스킬은 단독 실행 스킬이 아니라 두 소비 스킬이 참조하는 공유 코어입니다.
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # Higgsfield 코어 (media-higgsfield-core)

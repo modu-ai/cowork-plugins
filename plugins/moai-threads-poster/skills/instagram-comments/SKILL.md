@@ -9,7 +9,7 @@ description: |
   - "최근 포스트 댓글 정리해줘"
   - "특정 댓글 숨김 처리해줘"
   [책임 경계] vs 형제 스킬: Instagram 댓글 *조회/답글/숨김* 만 담당합니다. 포스트 발행은 instagram-post 스킬, 인사이트 조회는 instagram_insights 도구를 직접 사용하세요.
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # Instagram 댓글 관리 (instagram-comments)

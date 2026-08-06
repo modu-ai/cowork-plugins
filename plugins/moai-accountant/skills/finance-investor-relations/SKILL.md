@@ -11,7 +11,7 @@ description: |
   - "시리즈 A 투자 유치 자료 준비해줘"
   - "투자자 보고서 정리해줘"
   투자 단계(Pre-Seed~Series B)에 맞춘 12슬라이드 피치덱·재무 모델·예상 질문 Q&A를 만들고, PPT/엑셀 변환으로 이어집니다.
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # 투자자 관계 (Investor Relations)

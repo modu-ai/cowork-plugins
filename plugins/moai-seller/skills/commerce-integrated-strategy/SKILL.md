@@ -6,7 +6,7 @@ description: |
   "오늘 배운 것 종합 전략으로 정리해줘", "통합 전략 뽑아줘", "실행 우선순위 정해줘", "매출 올리는 전략 1장", "지금 당장 해야 할 것 Top3", "ROAS 개선 전략", "채널별 매출 비교 분석", "커머스 전략 짜줘", "채널 믹스 추천해줘", "가격 전략 세워줘", "프로모션 캘린더 만들어줘", "리텐션 전략 추천", "이커머스 KPI 대시보드 설계"
   매크로 전략 모드(채널 믹스·3단계 가격·시즌 프로모션 캘린더·재구매 자동화·KPI 대시보드 references 제공) + 통합 1장 모드(선행 산출물 종합) 2계층으로 동작하며, 전략 1장 직후 moai-coworker:ai-slop-reviewer를 자동 체이닝합니다.
   [책임 경계] 본 스킬은 이커머스 셀러 즉시 실행 전술 + 채널 전략. 중장기 사업 전략은 moai-consultant:consult-strategy, 운영 자동화 진단은 moai-seller:commerce-automation-audit 사용.
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # 통합 전략 자동 생성 (Commerce Integrated Strategy)

@@ -4,6 +4,8 @@ weight: 100
 description: "첫 직원 뽑기, 인사팀 없이 — 인사·채용 담당이 공고문, 이력서 스크리닝, 오퍼레터까지 채용 전 과정을 함께합니다."
 geekdocBreadcrumb: true
 tags: [cookbook, projects, people]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 > **투입 직원** — 인사·채용 담당(`moai-recruiter`)

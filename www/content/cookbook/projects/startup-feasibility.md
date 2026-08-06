@@ -4,6 +4,8 @@ weight: 10
 description: "카페 창업, 감이 아니라 숫자로 — 컨설턴트의 상권분석 PDF와 재무·세무 담당의 손익 추정으로 창업 결정을 검증합니다."
 geekdocBreadcrumb: true
 tags: [cookbook, projects, startup]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 > **투입 직원** — 컨설턴트(`moai-consultant`) → 재무·세무 담당(`moai-accountant`)

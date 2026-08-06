@@ -4,6 +4,8 @@ weight: 50
 description: "매일 아침 '오늘 뭐 올리지' 고민 끝 — 마케터 한 명이 월간 캘린더부터 게시물 원고와 카드뉴스 이미지까지 한 달치를 미리 만듭니다."
 geekdocBreadcrumb: true
 tags: [cookbook, projects, marketing]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 > **투입 직원** — 마케터(`moai-marketer`)

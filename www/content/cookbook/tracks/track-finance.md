@@ -3,6 +3,8 @@ title: "재무 트랙"
 weight: 60
 description: "재무제표·세무·결산·예산 분석 자동화. moai-accountant + moai-officer를 한 줄 요청으로 자동 처리."
 geekdocBreadcrumb: true
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 > **대상**: 사내 재무팀, 회계사, 재무 분석가, CFO, 스타트업 대표

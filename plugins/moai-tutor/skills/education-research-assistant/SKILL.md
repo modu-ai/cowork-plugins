@@ -13,7 +13,7 @@ description: |
   - "피어 리뷰 대비해서 연구 방법 타당성 점검해줘"
   RISS·DBpia 등 국내외 학술 DB 검색 전략부터 정량·정성 분석, 인용 관리, 피어 리뷰 대비까지 지원합니다.
   [책임 경계] vs moai-consultant:consult-market: 이 스킬=학술 논문과 연구 리서치, 저 스킬=시장 조사와 비즈니스 리서치.
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # 리서치 어시스턴트 (Research Assistant)

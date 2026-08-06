@@ -4,6 +4,8 @@ weight: 70
 description: "통계청 데이터를 그래프와 함께 HWPX 보고서로 — 사무관 직원이 데이터 수집·분석·시각화·한글 문서 산출까지 한 번에 처리합니다."
 geekdocBreadcrumb: true
 tags: [cookbook, projects, office]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 > **투입 직원** — 사무관(`moai-officer`)

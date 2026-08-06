@@ -4,6 +4,8 @@ weight: 10
 description: "단일 스킬보다 2-4개 체인이 결과 품질을 좌우합니다. 설계 3원칙과 자주 쓰는 12종 체인 정리."
 geekdocBreadcrumb: true
 tags: [cookbook, skills]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 > Cowork에서 가장 중요한 실무 기술. 단일 스킬보다 2-4개를 엮은 체인이 결과 품질을 10배 좌우합니다.
 

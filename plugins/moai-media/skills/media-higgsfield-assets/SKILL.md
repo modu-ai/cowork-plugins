@@ -11,7 +11,7 @@ description: |
   - "이 이미지 4K로 키워줘", "세로 영상으로 리프레임", "배경 지워줘", "캔버스 넓혀줘"
   모델 id·파라미터는 하드코딩하지 않고 models_explore로 라이브 조회합니다. 새 이미지·영상을 처음부터
   만드는 요청은 media-higgsfield-image / media-higgsfield-video를 사용하세요.
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # Higgsfield 에셋·후처리 (media-higgsfield-assets)

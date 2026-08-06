@@ -4,6 +4,8 @@ weight: 1
 description: "Cowork와 moai 플러그인을 실제 업무에 엮는 쿡북 — 시나리오·체인·프롬프트를 한곳에서."
 geekdocBreadcrumb: true
 tags: [cookbook]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 # Cowork 쿡북

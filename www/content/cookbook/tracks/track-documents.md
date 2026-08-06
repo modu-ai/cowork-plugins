@@ -4,6 +4,8 @@ weight: 20
 description: "Word·PPT·Excel·PDF·한글(HWPX)을 넘나드는 문서 업무를 Cowork로 옮기는 경로."
 geekdocBreadcrumb: true
 tags: [cookbook, documents]
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 
 # 트랙 — 문서 자동화

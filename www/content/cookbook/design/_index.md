@@ -4,6 +4,8 @@ weight: 90
 description: "프레젠테이션·랜딩 페이지·시각 자료 디자인 원칙."
 geekdocBreadcrumb: true
 geekdocCollapseSection: true
+date: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-07T00:00:00+09:00
 ---
 모두의 코워크의 디자인 계열 스킬을 사용할 때 참고할 수 있는 원칙 모음입니다.
 
