@@ -86,19 +86,7 @@ flowchart TD
 
 1. **마켓플레이스 등록**
 
-   **Claude Cowork**에서는 좌측 사이드바 → **사용자 지정(Customize) → 개인 플러그인 → 플러그인 추가 → 마켓플레이스 추가**에서 다음 URL을 입력합니다.
-
-   {{< terminal title="claude — cowork" raw="true" >}}
-modu-ai/moai-cowork
-   {{< /terminal >}}
-
-   **ChatGPT Work**에서는 좌측 사이드바 → **Plugins → Plugin Marketplace → Add**에서 다음 URL을 입력합니다.
-
-   {{< terminal title="chatgpt — work" raw="true" >}}
-modu-ai/moai-cowork
-   {{< /terminal >}}
-
-   또는 터미널이 익숙하다면 CLI를 사용할 수도 있습니다(Claude Cowork, ChatGPT Work 공통):
+   두 앱 중 하나에서 마켓플레이스 주소 `modu-ai/moai-cowork`를 추가합니다. UI 클릭 경로와 잘 안 될 때 대처까지는 [플러그인 설치와 관리](/plugins/install/) 1절에 정리해 두었어요. 가장 빠른 길은 터미널 한 줄입니다(Claude Cowork·ChatGPT Work 공통).
 
    {{< terminal title="Terminal" lang="bash" raw="true" >}}
 # Claude Cowork
@@ -247,16 +235,9 @@ flowchart LR
 
 ## API 키·커넥터 등록 (선택)
 
-일부 플러그인은 외부 서비스 키가 필요합니다.
+일부 직원은 외부 서비스 연동을 위해 API 키나 OAuth 로그인이 필요합니다(예: `moai-media`의 Higgsfield 로그인·ElevenLabs 키, `moai-seller`의 쇼핑몰 API, `moai-analyst`의 공공데이터 키). 어떤 직원이 무엇을 필요로 하는지는 [플러그인 설치와 관리 > MCP 자격증명 준비](/plugins/install/)의 표에 정리해 두었으니 그쪽을 참고하세요.
 
-| 플러그인 | 필요한 키·커넥터 |
-|---|---|
-| `moai-media` | Higgsfield [로그인](/plugins/higgsfield-setup/)(최초 1회, OAuth) · `ELEVENLABS_API_KEY`(오디오) |
-| `moai-consultant` (DART 공시 연동) | DART MCP |
-| `moai-analyst` | 공공데이터포털·KOSIS API 키 |
-| `moai-marketer:content-blog` (WordPress 자동 업로드) | WordPress MCP |
-
-키는 프로젝트 루트의 `.moai/credentials.env`에 저장됩니다. 절대 외부 저장소에 커밋하지 마세요.
+키는 프로젝트 루트의 `.moai/credentials.env`에만 저장하고 절대 외부 저장소에 커밋하지 마세요.
 
 ## 잘 안 될 때
 

@@ -22,7 +22,7 @@ main:
         ref: /getting-started/quick-start
       - name: 핵심 개념
         ref: /getting-started/concepts
-      - name: 플러그인 설치
+      - name: 데스크톱 앱 설치
         ref: /getting-started/install
       - name: 첫 작업
         ref: /getting-started/first-task
@@ -48,7 +48,7 @@ main:
     icon: plug
     defaultOpen: true
     sub:
-      - name: 18 직원 한눈에
+      - name: 직원 한눈에
         ref: /moai-agents
       - name: PM (진입 허브)
         ref: /moai-agents/pm
