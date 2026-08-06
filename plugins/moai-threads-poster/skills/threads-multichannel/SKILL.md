@@ -1,7 +1,7 @@
 ---
 name: threads-multichannel
 description: |
-  하나의 텍스트를 Threads(직접 발행) / Facebook(복붙) / X(복붙, free=스레드 분할·premium=단일) 용으로 각각 포맷합니다. 발행은 하지 않고 포맷만 — Facebook·X 출력은 사용자가 직접 복붙합니다.
+  하나의 텍스트를 Threads(직접 발행) / Facebook(복붙) / X(복붙, free=스레드 분할·premium=단일) 용으로 각각 포맷합니다. 발행은 하지 않고 포맷만 — Facebook·X 출력은 사용자가 직접 복붙하고, Threads 출력은 승인 시 threads_publish_text 로 즉시 발행합니다.
   다음과 같은 요청 시 사용하세요:
   - "이 글 페이스북/엑스에도 올릴 수 있게 해줘"
   - "X 스레드로 쪼개줘" (무료 tier 280자 분할)
@@ -9,8 +9,8 @@ description: |
   - "Facebook 이랑 X 용으로도 포맷해줘"
   - "이 초안 멀티 채널로 변환해줘"
   - "X premium 으로 한 번에 올릴 수 있게 해줘"
-  [책임 경계] vs 형제 스킬: *포맷만* 담당합니다 — Facebook/X 로 발행하지 않습니다 (사용자가 복붙). Threads 큐 등록은 threads-post-draft, 승인·예약은 threads-schedule, 상태 조회는 threads-status 가 담당합니다.
-version: "1.0.0"
+  [책임 경계] vs 형제 스킬: *포맷만* 담당합니다 — Facebook/X 로 발행하지 않습니다 (사용자가 복붙). Threads 직접 발행은 threads-post-draft / threads_publish_* 도구가 담당합니다.
+version: "1.1.0"
 ---
 
 # 멀티 채널 포맷 (threads-multichannel)
@@ -21,7 +21,7 @@ version: "1.0.0"
 
 | 채널 | 제약 | 출력 | 발행 경로 |
 |------|------|------|----------|
-| **Threads** | 500 UTF-8 바이트 | 다듬은 텍스트 + 바이트 수 | 직접 발행 (queue 도구로 넘김) |
+| **Threads** | 500 UTF-8 바이트 | 다듬은 텍스트 + 바이트 수 | 직접 발행 (threads_publish_text 등) |
 | **Facebook** | 글자 수 제한 없음 (개인 계정) | 대화체 텍스트 | **복붙 only** (API 발행 불가) |
 | **X (free)** | 트윗당 280자 | `1/ `·`2/ ` 번호 트윗 리스트 | **복붙 only** |
 | **X (premium)** | 25,000자 | 단일 문자열 | **복붙 only** |
@@ -58,14 +58,14 @@ threads_format_multi_channel(
 {
   "channels": ["threads", "facebook", "x"],
   "x_tier": "free",
-  "note": "Threads 출력은 queue 도구로... Facebook·X 출력은 *복붙용*...",
+  "note": "Threads 출력은 threads_publish_text 로 직접 발행하세요. Facebook·X 출력은 *복붙용*...",
   "threads": {"text": "<≤500바이트 텍스트>", "bytes": 412, "max_bytes": 500},
   "facebook": "<복붙용 텍스트 문자열>",
   "x": ["1/ ...", "2/ ...", "3/ ..."],   # free → 리스트 / premium → 문자열
 }
 ```
 
-- `threads` 출력은 `threads_queue_add` / `threads_queue_add_batch` 에 바로 넘길 수 있는 형태다.
+- `threads` 출력은 `threads_publish_text` (또는 `threads_publish_image` / `threads_publish_video`) 에 바로 넘길 수 있는 형태다.
 - `facebook` / `x` 출력은 *사용자에게 보여줄 복붙용* 이다 — 본 도구는 발행하지 않는다.
 - X 가 `free` 면 `out["x"]` 가 리스트(각 트윗 ≤280자, 번호 붙음). `premium` 이면 문자열(≤25,000자).
 
@@ -74,14 +74,14 @@ threads_format_multi_channel(
 결과를 채널별로 **펜스드 코드 블록** 으로 나눠 보여줍니다. 각 블록 위에 한 줄 안내를 붙입니다:
 
 ```markdown
-## Threads (직접 발행 — queue 도구로 넘기기)
+## Threads (직접 발행 가능)
 <412 / 500 바이트>
 
 \```
 <threads.text>
 \```
 
-→ `threads_queue_add(media_type="TEXT", text="<위 텍스트>")` 로 큐에 등록 가능.
+→ 승인하시면 `threads_publish_text(media_type="TEXT", text="<위 텍스트>")` 로 즉시 발행할 수 있습니다.
 
 ## Facebook (복붙해서 올리세요)
 
@@ -103,15 +103,15 @@ threads_format_multi_channel(
 → 각 트윗을 순서대로 복붙해 스레드로 올려주세요 (280자 제한 자동 분할됨).
 ```
 
-- Threads 만 따로 빼서 "이건 제가 발행해 드릴 수 있습니다" 라고 안내 (승인 절차: `threads-schedule`).
+- Threads 만 따로 빼서 "승인하시면 제가 발행해 드릴 수 있습니다" 라고 안내.
 - Facebook·X 는 명시적으로 "복붙해서 올리세요" 라고 안내 — 본 스킬이 발행하지 않음을 분명히.
 
-### 4단계 (선택): Threads 큐 등록
+### 4단계 (선택): Threads 즉시 발행
 
-사용자가 원하면 `threads` 출력 텍스트를 큐에 등록합니다 (이건 발행이 아니라 PENDING 등록):
+사용자가 Threads 발행까지 원하면 `threads` 출력 텍스트를 승인받아 즉시 발행합니다 (이것은 포맷이 아니라 발행 — `threads-post-draft` 스킬 또는 `threads_publish_text` 도구로):
 
 ```python
-threads_queue_add(media_type="TEXT", text=out["threads"]["text"])
+threads_publish_text(text=out["threads"]["text"])
 ```
 
 Facebook·X 까지 한 번에 "올려달라" 고 하면 **거절** 합니다 — 본 스킬은 Facebook/X 발행을 하지 않습니다. 복붙 블록을 드린 것으로 끝입니다.
@@ -133,7 +133,7 @@ Facebook·X 까지 한 번에 "올려달라" 고 하면 **거절** 합니다 —
 오늘 점심에 먹은 김치찌개가 진짜 맛있었습니다. ...
 \```
 
-→ `threads_queue_add(media_type="TEXT", text="...")` 로 등록 가능. 승인은 threads-schedule.
+→ 승인 시 `threads_publish_text` 로 즉시 발행 가능.
 
 ---
 
@@ -177,22 +177,18 @@ Facebook·X 까지 한 번에 "올려달라" 고 하면 **거절** 합니다 —
 
 | 스킬 | 사용 시점 |
 |------|----------|
-| `threads-post-draft` | 원본 초안 작성 (저장된 문체 적용) |
+| `threads-post-draft` | 원본 초안 작성·Threads 직접 발행 (저장된 문체 적용) |
 | `threads-style-learn` | 문체 프로필 분석·저장 |
-| `threads-schedule` | Threads PENDING 초안 승인·예약 |
-| `threads-status` | 큐 상태 조회 |
 
 ## 이 스킬을 사용하지 말아야 할 때
 
-- Threads 초안 작성만: `threads-post-draft` 스킬
+- Threads 초안 작성·발행: `threads-post-draft` 스킬
 - Facebook/X 에 *자동 발행* — **불가**. 이 스킬은 복붙용 텍스트만 만든다.
-- Threads 승인/예약: `threads-schedule` 스킬
-- 큐 상태 조회: `threads-status` 스킬
 
 ---
 
 ## 발행 경로 요약
 
-- **Threads**: 본 스킨 포맷 → `threads_queue_add` 등록 → `threads-schedule` 승인 → (세션 안) `threads_queue_publish_due` 발행.
+- **Threads**: 본 스킨 포맷 → (승인 시) `threads_publish_text` 로 즉시 발행.
 - **Facebook**: 본 스킨 포맷 → **사용자가 직접 복붙** (API 발행 불가).
 - **X**: 본 스킨 포맷(free 분할/premium 단일) → **사용자가 직접 복붙**.

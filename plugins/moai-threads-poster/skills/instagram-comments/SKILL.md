@@ -8,7 +8,7 @@ description: |
   - "스팸 댓글 숨겨줘"
   - "최근 포스트 댓글 정리해줘"
   - "특정 댓글 숨김 처리해줘"
-  [책임 경계] vs 형제 스킬: Instagram 댓글 *조회/답글/숨김* 만 담당합니다. 포스트 발행·예약은 instagram-post 스킬, 인사이트 조회는 instagram_insights 도구를 직접 사용하세요.
+  [책임 경계] vs 형제 스킬: Instagram 댓글 *조회/답글/숨김* 만 담당합니다. 포스트 발행은 instagram-post 스킬, 인사이트 조회는 instagram_insights 도구를 직접 사용하세요.
 version: "1.0.0"
 ---
 
@@ -91,10 +91,10 @@ Threads 와 동일한 Instagram 자격증명(`IG_ACCESS_TOKEN` / `IG_USER_ID`) �
 
 | 스킬 | 사용 시점 |
 |------|----------|
-| `instagram-post` | 포스트 발행·예약 (댓글 관리 전에 발행이 선행) |
+| `instagram-post` | 포스트 발행 (댓글 관리 전에 발행이 선행) |
 
 ## 이 스킬을 사용하지 말아야 할 때
 
-- 포스트 발행·예약: `instagram-post` 스킬
+- 포스트 발행: `instagram-post` 스킬
 - 인사이트 조회: `instagram_insights` 도구 직접 호출
 - Threads 댓글: Threads API 는 본 플러그인 범위 밖
