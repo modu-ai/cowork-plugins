@@ -10,10 +10,10 @@ geekdocNav: false
 <div class="cw-hero">
   <div class="cw-hero-in">
   <div class="cw-hero-copy">
-  <div class="eyebrow"><span class="dot"></span>{{< version >}} · {{< release-date >}} · cowork.mo.ai.kr</div>
+  <div class="eyebrow"><span class="dot"></span>{{< version >}} · cowork.mo.ai.kr</div>
   <h1>필요한 일마다,<br/><span class="accent">AI 직원을 채용하세요</span></h1>
   <p class="lead-p">
-    모두의 코워크 마켓플레이스의 <strong>17개 플러그인</strong>은 각각 한 명의 전문 직원입니다. 마케팅·셀러·법무·디자인 — 필요한 직무만 골라 설치하면, 자연어 한마디로 일이 시작됩니다.
+    내 업무에 맞는 AI 직원을 골라 설치하세요. 자연어로 말하면, 그 일을 맡은 직원이 바로 시작합니다.
   </p>
   <div class="cw-hero-ctas">
     <a class="btn btn--primary" href="#plugin-family">플러그인 둘러보기 →</a>
@@ -34,8 +34,8 @@ geekdocNav: false
 
 <section class="cw-redsec" id="plugin-family">
   <div class="cw-sec-eyebrow">Plugin Family</div>
-  <div class="cw-sec-title">17-직원 플러그인 패밀리</div>
-  <p class="cw-sec-lead">이름이 곧 직무입니다. 전부 설치할 필요는 없습니다 — 회사에서 필요한 직무만 채용하듯, 필요한 직원만 골라 담으세요. 각 카드를 누르면 직원 소개로 이동합니다.</p>
+  <div class="cw-sec-title">모두의 AI-Coworker를 소개합니다.</div>
+  <p class="cw-sec-lead">필요한 직무만 골라 담으세요 — 각 카드를 누르면 그 직원의 소개로 이동합니다.</p>
   <div class="cw-prodgrid cw-plugrid">
     <a class="cw-prodcard" href="/moai-agents/coworker/">
       <span class="cw-prodcard-ico cw-plug-ico">{{< icon briefcase >}}</span>
@@ -154,14 +154,20 @@ geekdocNav: false
     </div>
     <div class="cw-qstart-card">
       <div class="cw-qstart-step">Step 02</div>
-      <div class="cw-qstart-title">직원 채용(설치)</div>
-      <p class="cw-qstart-desc">필요한 직원을 골라 담습니다 — 17명 중에서.</p>
+      <div class="cw-qstart-title">직원 채용</div>
+      <p class="cw-qstart-desc">필요한 직원을 골라 담습니다.</p>
       <pre class="cw-qstart-pre"><span class="p">$</span> claude plugin install moai-coworker@moai-cowork</pre>
     </div>
     <div class="cw-qstart-card">
       <div class="cw-qstart-step">Step 03</div>
-      <div class="cw-qstart-title">자연어로 일 맡기기</div>
-      <p class="cw-qstart-desc">슬래시 명령 없이 요청하면 매칭 스킬이 자동 호출됩니다.</p>
+      <div class="cw-qstart-title">프로젝트 지침 셋팅</div>
+      <p class="cw-qstart-desc"><code>/project</code>로 프로젝트 맥락과 지침을 세팅합니다.</p>
+      <pre class="cw-qstart-pre"><span class="p">&gt;</span> /project</pre>
+    </div>
+    <div class="cw-qstart-card">
+      <div class="cw-qstart-step">Step 04</div>
+      <div class="cw-qstart-title">자연어로 일 위임</div>
+      <p class="cw-qstart-desc">지침이 세팅되면, 자연어로 일을 맡기면 됩니다.</p>
       <pre class="cw-qstart-pre"><span class="p">&gt;</span> 블로그 초안 작성해줘</pre>
     </div>
   </div>

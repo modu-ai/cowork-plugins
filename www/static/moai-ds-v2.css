@@ -64,7 +64,7 @@ svg.svg-sprite { display: none !important; }
   width: 34px; height: 34px;
   border-radius: var(--radius-md);
   background: #fff;
-  border: 1px solid var(--border-1);
+  border: none;
   display: flex; align-items: center; justify-content: center;
   flex: none; overflow: hidden;
 }
@@ -657,7 +657,7 @@ svg.svg-sprite { display: none !important; }
   font-size: 15.5px;
   line-height: 1.7;
   letter-spacing: -0.03em;
-  color: rgba(255, 255, 255, 0.88);
+  color: #fff;
 }
 .cw-coral-cta__btn {
   display: inline-flex;
