@@ -33,7 +33,7 @@ main:
     icon: plug
     defaultOpen: true
     sub:
-      - name: 17 직원 한눈에
+      - name: 18 직원 한눈에
         ref: /moai-agents
       - name: PM (진입 허브)
         ref: /moai-agents/pm
@@ -72,6 +72,9 @@ main:
         ref: /moai-agents/tutor
       - name: 디자이너
         ref: /moai-agents/designer
+      - name: 스레드 포스터
+        ref: /moai-agents/threads-poster
+        isNew: true
 
   - name: 릴리스 노트
     icon: tag

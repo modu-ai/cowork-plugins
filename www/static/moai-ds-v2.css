@@ -272,7 +272,8 @@ svg.svg-sprite { display: none !important; }
 }
 
 /* 다크 모드 — 드로어·햄버거 배경. --color-surface 는 라이트(#ffffff) 전용이라
-   다크 재정의가 없어, 다크 전용 토큰으로 따로 처리한다. (데스크톱에선 display:none 이라 무해) */
+   다크 재정의가 없어, 다크 전용 토큰으로 따로 처리한다. (.gdoc-nav 는 데스크톱에서도
+   보이는 사이드바이므로, 이 규칙은 데스크톱 다크 사이드바 배경도 함께 교정한다.) */
 [data-theme="dark"] .gdoc-nav { background: var(--color-surface-dark-elevated); }
 [data-theme="dark"] .nav-drawer-btn { background: var(--color-surface-dark-elevated); color: var(--fg-1); }
 
