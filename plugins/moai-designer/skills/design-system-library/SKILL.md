@@ -2,7 +2,7 @@
 name: design-system-library
 description: |
   75개 글로벌 브랜드 디자인 시스템(Claude · ClickHouse · Clay 포함)을 단일 파일 HTML 산출물에 적용합니다. 각 시스템의 토큰(색·타이포·radius·spacing·컴포넌트)을 Tailwind Play CDN config + shadcn 스타일 vanilla 컴포넌트로 변환해 렌더합니다.
-  office-html-report · 랜딩 페이지 · 각종 문서 생성 시 design_system을 지정하면 해당 브랜드 무드가 즉시 적용됩니다. Claude Design 핸드오프 시에는 DESIGN.md 지침 소스로 제공됩니다.
+  doc-html-report · 랜딩 페이지 · 각종 문서 생성 시 design_system을 지정하면 해당 브랜드 무드가 즉시 적용됩니다. Claude Design 핸드오프 시에는 DESIGN.md 지침 소스로 제공됩니다.
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   - "Claude 스타일로 HTML 보고서 만들어줘"
   - "ClickHouse 다크 테마로 랜딩 만들어줘"
@@ -22,14 +22,14 @@ version: "1.0.0"
 글로벌 브랜드 75종(56개 풍부 분석 + 19개 경량 토큰)의 디자인 시스템(token 기반 분석 결과)을 단일 진실 원천(single source of truth)으로 보관하고, HTML 산출물에 적용 가능한 형태로 제공합니다.
 
 **두 가지 소비 경로**:
-1. **office-html-report / HTML 문서 렌더** — `design_system` 파라미터로 시스템 선택 → Tailwind Play CDN config + shadcn vanilla 컴포넌트로 단일 파일 HTML 렌더
-2. **Claude Design 핸드오프** — `cd-system-prep`가 본 라이브러리 시스템을 DESIGN.md 합성 소스로 사용 → `design-handoff`의 references/context에 지침 포함
+1. **doc-html-report / HTML 문서 렌더** — `design_system` 파라미터로 시스템 선택 → Tailwind Play CDN config + shadcn vanilla 컴포넌트로 단일 파일 HTML 렌더
+2. **Claude Design 핸드오프** — `design-system-prep`가 본 라이브러리 시스템을 DESIGN.md 합성 소스로 사용 → `design-handoff`의 references/context에 지침 포함
 
 **핵심 원칙**:
-- 라이브러리는 데이터(token + 분석) SSOT — 렌더 로직은 소비자(office-html-report)가 소유
+- 라이브러리는 데이터(token + 분석) SSOT — 렌더 로직은 소비자(doc-html-report)가 소유
 - Tailwind Play CDN으로 단일 파일·외부 빌드 없이 브랜드 토큰 적용 (인터넷 연결 필요)
 - shadcn 컴포넌트는 React가 아닌 **vanilla HTML/CSS로 재현** (단일 파일·React 불필요)
-- 기존 office-html-report 0의존 템플릿은 유지 — design_system 미지정 시 하위 호환
+- 기존 doc-html-report 0의존 템플릿은 유지 — design_system 미지정 시 하위 호환
 
 ---
 
@@ -113,20 +113,20 @@ version: "1.0.0"
 
 ## 소비자 연동
 
-### office-html-report (moai-coworker)
+### doc-html-report (moai-coworker)
 
-`moai-officer:office-html-report`에 `design_system` 입력 파라미터 추가:
+`moai-officer:doc-html-report`에 `design_system` 입력 파라미터 추가:
 - 미지정 → 기존 0의존 템플릿 (Anthropic 영감 ivory/slate/clay, 하위 호환)
 - `design_system: claude|clickhouse|clay|<75개 중>` → 본 라이브러리에서 토큰 로드 → Tailwind Play CDN + shadcn vanilla 렌더
 
 체인 예시:
 ```
-[텍스트 스킬] → general-ai-slop-reviewer → office-html-report (design_system: clickhouse)
+[텍스트 스킬] → ai-slop-reviewer → doc-html-report (design_system: clickhouse)
 ```
 
 ### Claude Design 핸드오프 (moai-designer)
 
-`cd-system-prep`가 사용자가 지정한 시스템(또는 브랜드 무드 매칭)을 본 라이브러리에서 로드 → DESIGN.md 합성. `design-handoff`의 references.md / context.md에 design-system 지침으로 포함되어 claude.com Design 세션에 paste.
+`design-system-prep`가 사용자가 지정한 시스템(또는 브랜드 무드 매칭)을 본 라이브러리에서 로드 → DESIGN.md 합성. `design-handoff`의 references.md / context.md에 design-system 지침으로 포함되어 claude.com Design 세션에 paste.
 
 ---
 
@@ -166,9 +166,9 @@ Claude Design에 올릴 디자인 시스템 자료를 Linear 스타일 기반으
 
 ## 하지 않는 것
 
-- 본 라이브러리는 렌더 로직을 소유하지 않습니다 — 렌더는 office-html-report가 담당
+- 본 라이브러리는 렌더 로직을 소유하지 않습니다 — 렌더는 doc-html-report가 담당
 - React / Vue / 빌드 단계를 도입하지 않습니다 — 단일 파일·CDN·vanilla 고수
-- 0의존 self-contained 출력을 요구하는 경우(이메일 첨부·오프라인·인쇄)는 기존 office-html-report 템플릿을 사용하세요 (design_system 미지정)
+- 0의존 self-contained 출력을 요구하는 경우(이메일 첨부·오프라인·인쇄)는 기존 doc-html-report 템플릿을 사용하세요 (design_system 미지정)
 - 브랜드 저작권 — 각 시스템은 **분석·참고용 token**이며, 저장소 Apache-2.0 라이선스의 **적용 범위 밖**입니다.
   각 브랜드의 디자인·상표·서체 권리는 해당 소유자에게 있습니다. 상업적 산출물에 적용하기 전
   반드시 [`BRAND-NOTICE.md`](BRAND-NOTICE.md)의 사용 경계와 오픈 라이선스 대체 서체표를 확인하세요

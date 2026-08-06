@@ -22,23 +22,23 @@ claude plugin install moai-cs@moai-cowork
 
 ## 스킬 6종
 
-호출 형식: `/moai-cs:business-<스킬명>` — 예: `/moai-cs:business-ticket-triage`. 자연어 요청("이 문의 분류해줘")으로도 자동 매칭됩니다.
+호출 형식: `/moai-cs:business-<스킬명>` — 예: `/moai-cs:cs-ticket-triage`. 자연어 요청("이 문의 분류해줘")으로도 자동 매칭됩니다.
 
 ### 티켓·응대 (4종)
 
 | 스킬 | 역할 |
 |------|------|
-| `business-ticket-triage` | 문의 유형 분류(기술/결제/배송/불만) · 긴급도 P1~P4 배정 · 담당팀 배정 · 에스컬레이션 판단 |
-| `business-draft-response` | 한국어 경어 기반 이메일·채팅·공식 답변서 응답 초안 (채널별 어조 맞춤) |
-| `business-escalation-manager` | 불만 에스컬레이션 레벨 배정 · VIP 응대 · 주간 CS 요약 보고서 |
-| `business-kb-article` | FAQ · 사용자 가이드 · 트러블슈팅 문서 · 정책 안내문 (Zendesk·Freshdesk·카카오비즈니스 형식) |
+| `cs-ticket-triage` | 문의 유형 분류(기술/결제/배송/불만) · 긴급도 P1~P4 배정 · 담당팀 배정 · 에스컬레이션 판단 |
+| `cs-draft-response` | 한국어 경어 기반 이메일·채팅·공식 답변서 응답 초안 (채널별 어조 맞춤) |
+| `cs-escalation` | 불만 에스컬레이션 레벨 배정 · VIP 응대 · 주간 CS 요약 보고서 |
+| `cs-kb-article` | FAQ · 사용자 가이드 · 트러블슈팅 문서 · 정책 안내문 (Zendesk·Freshdesk·카카오비즈니스 형식) |
 
 ### VOC·채널 메시지 (2종)
 
 | 스킬 | 역할 |
 |------|------|
-| `commerce-voc-triage` | 멀티채널 리뷰 통합 분석 + VOC 3축 분류 · KTAS 5단계 우선순위 트리아지 |
-| `commerce-channel-message` | NCM 프레임워크 기반 검색·광고·CRM·앱 푸시 채널별 메시지 15종 + 운영 카피 생성 |
+| `cs-voc-triage` | 멀티채널 리뷰 통합 분석 + VOC 3축 분류 · KTAS 5단계 우선순위 트리아지 |
+| `cs-channel-message` | NCM 프레임워크 기반 검색·광고·CRM·앱 푸시 채널별 메시지 15종 + 운영 카피 생성 |
 
 ## 에이전트 2종
 

@@ -95,7 +95,7 @@ flowchart TD
 2. **`moai-pm` 설치**
 
    {{< hint type="warning" >}}
-   **먼저 `moai-pm`을 설치**하세요. `/project` 한 명령으로 프로젝트를 초기화하고 나머지 직원을 배치해 주는 진입 허브입니다. 텍스트 산출물 검수에 쓰이는 `general-ai-slop-reviewer`는 `moai-coworker`에 있으니 함께 설치해 두면 편합니다.
+   **먼저 `moai-pm`을 설치**하세요. `/project` 한 명령으로 프로젝트를 초기화하고 나머지 직원을 배치해 주는 진입 허브입니다. 텍스트 산출물 검수에 쓰이는 `ai-slop-reviewer`는 `moai-coworker`에 있으니 함께 설치해 두면 편합니다.
    {{< /hint >}}
 
    `moai-pm` 옆의 **+** 버튼을 클릭하면 설치가 완료됩니다.
@@ -189,13 +189,13 @@ sequenceDiagram
    13. **형식 지정** — 산출물 형식을 세부 지정합니다
    14. **완료 확인** — 모든 인터뷰 항목 입력 후 완료를 확인합니다
 
-   `moai-pm:project` 스킬이 실행되어 **7단계 흐름**(Interview → Detect → Chain → Confirm → Generate → APIKey → First Run)을 진행합니다. 자세한 내용은 [PM 직원 페이지](../../moai-agents/pm/)에서 확인할 수 있습니다. 약 3-5분 안에 프로젝트용 `CLAUDE.md`가 루트에 생성됩니다.
+   `moai-pm:project-manager` 스킬이 실행되어 **7단계 흐름**(Interview → Detect → Chain → Confirm → Generate → APIKey → First Run)을 진행합니다. 자세한 내용은 [PM 직원 페이지](../../moai-agents/pm/)에서 확인할 수 있습니다. 약 3-5분 안에 프로젝트용 `CLAUDE.md`가 루트에 생성됩니다.
 
 ## 한 줄을 쓰면 체인이 저절로 조립되는 원리
 
 `/project`가 끝나면 이후에는 자연어 한 줄만 던지면 됩니다. "IR 덱 만들어줘"라고 쓰면 마치 "오늘 비즈니스 점심으로" 한마디만 했는데 점원이 알아서 적합한 세트메뉴를 조립해 오는 것과 같습니다. 사용자는 어떤 스킬을, 어떤 순서로 부를지 직접 정하지 않아도 됩니다.
 
-이게 작동하는 까닭은 각 스킬이 "어떤 요청일 때 나를 부르라"는 설명을 스스로 달고 있어서, Claude가 한 줄 요청의 맥락을 읽어 "이 일은 도메인 → 포맷 → 품질 순서로 흘러가겠구나"를 판단하기 때문입니다. 도메인 스킬(예: `finance-investor-relations`)이 내용을 만들면, 포맷 스킬(예: `office-pptx-designer`)이 PPTX로 옮기고, 품질 스킬(`general-ai-slop-reviewer`)이 마지막에 AI 특유 어투를 솎아냅니다. 이 세 단계가 한 줄에서 자동으로 연쇄 실행되므로, 사용자는 "무엇을 만들까"에만 집중하면 됩니다.
+이게 작동하는 까닭은 각 스킬이 "어떤 요청일 때 나를 부르라"는 설명을 스스로 달고 있어서, Claude가 한 줄 요청의 맥락을 읽어 "이 일은 도메인 → 포맷 → 품질 순서로 흘러가겠구나"를 판단하기 때문입니다. 도메인 스킬(예: `finance-investor-relations`)이 내용을 만들면, 포맷 스킬(예: `doc-pptx`)이 PPTX로 옮기고, 품질 스킬(`ai-slop-reviewer`)이 마지막에 AI 특유 어투를 솎아냅니다. 이 세 단계가 한 줄에서 자동으로 연쇄 실행되므로, 사용자는 "무엇을 만들까"에만 집중하면 됩니다.
 
 ```mermaid
 flowchart LR

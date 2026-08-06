@@ -183,8 +183,8 @@ version: "1.0.0"
 - `moai-seller:commerce-integrated-strategy` — 펀딩 후 채널 확장 전략
 - `moai-seller:commerce-product-photo-brief` — 시연 영상·사진 컷 기획
 - `moai-marketer:marketing-campaign-planner` — 펀딩 외부 캠페인
-- `moai-coworker:general-ai-slop-reviewer` — 최종 산출물 AI 슬롭 검수 (Post-검수, 필수)
-- `moai-writer:general-humanize-korean` — 한국어 AI 티 제거 (슬롭 검수 다음 필수)
+- `moai-coworker:ai-slop-reviewer` — 최종 산출물 AI 슬롭 검수 (Post-검수, 필수)
+- `moai-writer:korean-humanize` — 한국어 AI 티 제거 (슬롭 검수 다음 필수)
 
 ## 이 스킬을 사용하지 말아야 할 때
 

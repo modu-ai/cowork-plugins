@@ -163,7 +163,7 @@
             <figcaption style="margin-top:16px;font-size:13px;line-height:1.6;color:var(--fg-2);letter-spacing:-0.025em;text-align:center">그림 2. 요청 → 스킬 매칭 → 초안 → AI 슬롭 점검 → 산출물. 점검 단계에서 다시 다듬을 수 있습니다.</figcaption>
           </figure>
           <div class="callout" style="background:var(--gradient-signature-soft);border:1px solid var(--border-1);border-radius:12px;padding:18px 22px">
-            <p style="margin:0;font-size:14.5px;line-height:1.7;letter-spacing:-0.025em;color:var(--fg-1)"><strong style="font-weight:700;color:var(--color-primary)">팁 →</strong> 결과가 너무 "AI 티"가 나면 <strong style="font-weight:700">"AI 티 나는 부분 고쳐줘"</strong>라고 이어서 요청하세요. <code style="font-family:var(--font-mono);font-size:13px;background:var(--neutral-100);padding:1px 6px;border-radius:4px">general-ai-slop-reviewer</code>가 기계적 패턴을 잡아 자연스럽게 다듬습니다.</p>
+            <p style="margin:0;font-size:14.5px;line-height:1.7;letter-spacing:-0.025em;color:var(--fg-1)"><strong style="font-weight:700;color:var(--color-primary)">팁 →</strong> 결과가 너무 "AI 티"가 나면 <strong style="font-weight:700">"AI 티 나는 부분 고쳐줘"</strong>라고 이어서 요청하세요. <code style="font-family:var(--font-mono);font-size:13px;background:var(--neutral-100);padding:1px 6px;border-radius:4px">ai-slop-reviewer</code>가 기계적 패턴을 잡아 자연스럽게 다듬습니다.</p>
           </div>
         </section>
 
@@ -211,7 +211,7 @@
             <x-import component-from-global-scope="AIDesignSystem_88ef5d.MermaidDiagram" chart="{{ c_audit }}" hint-size="100%,320px"></x-import>
             <figcaption style="margin-top:16px;font-size:13px;line-height:1.6;color:var(--fg-2);letter-spacing:-0.025em;text-align:center">그림 5. 일반 직원의 worker → auditor 구조와, 코워커의 스킬 단위 + 후처리 점검 구조.</figcaption>
           </figure>
-          <p style="margin:0;font-size:16px;line-height:1.85;letter-spacing:-0.025em;color:var(--fg-1)">코워커는 범용 코어 특성상 별도 에이전트 없이 <strong style="font-weight:700">스킬 단위</strong>로 동작하며, 품질 점검은 <code style="font-family:var(--font-mono);font-size:13px;background:var(--neutral-100);padding:1px 6px;border-radius:4px">general-ai-slop-reviewer</code> 같은 후처리 스킬이 맡습니다.</p>
+          <p style="margin:0;font-size:16px;line-height:1.85;letter-spacing:-0.025em;color:var(--fg-1)">코워커는 범용 코어 특성상 별도 에이전트 없이 <strong style="font-weight:700">스킬 단위</strong>로 동작하며, 품질 점검은 <code style="font-family:var(--font-mono);font-size:13px;background:var(--neutral-100);padding:1px 6px;border-radius:4px">ai-slop-reviewer</code> 같은 후처리 스킬이 맡습니다.</p>
         </section>
 
         <section id="start" data-sec="" style="margin-bottom:56px">
@@ -278,9 +278,9 @@
                 </div>
                 <div style="padding:20px 22px;font-family:var(--font-mono);font-size:13px;line-height:1.95;color:#e6e6e6">
                   <div><span style="color:#5ea885;font-weight:700">&gt;</span> 이번 주 한 일 정리해서 주간보고 만들어줘. 톤은 격식체로</div>
-                  <div style="color:#9fa0a0;margin-top:8px">⏺ business-productivity-weekly-report 스킬 실행…</div>
+                  <div style="color:#9fa0a0;margin-top:8px">⏺ collab-productivity-report 스킬 실행…</div>
                   <div style="color:#9fa0a0">⏺ 성과 · 진행 중 업무 · 이슈 · 다음 주 계획 정리</div>
-                  <div style="color:#9fa0a0">⏺ general-ai-slop-reviewer 후처리 점검</div>
+                  <div style="color:#9fa0a0">⏺ ai-slop-reviewer 후처리 점검</div>
                   <div style="color:#e6e6e6;margin-top:8px">✓ 주간보고 초안이 준비됐습니다.</div>
                 </div>
               </div>
@@ -299,7 +299,7 @@
             <figcaption style="margin-top:16px;font-size:13px;line-height:1.6;color:var(--fg-2);letter-spacing:-0.025em;text-align:center">그림 6. 주간보고 요청이 산출물이 되기까지의 흐름(시퀀스).</figcaption>
           </figure>
           <h3 style="margin:0 0 10px;font-size:19px;font-weight:700;letter-spacing:-0.04em;color:var(--fg-1)">2. B2B 제안서 초안</h3>
-          <p style="margin:0 0 24px;font-size:16px;line-height:1.85;letter-spacing:-0.025em;color:var(--fg-1)">"이 RFP 보고 제안서 본문 써줘"라고 하면 <code style="font-family:var(--font-mono);font-size:13px;background:var(--neutral-100);padding:1px 6px;border-radius:4px">business-proposal-writer</code>가 12섹션 표준 목차(표지부터 가격·리스크·부록까지)로 컴플라이언스를 지킨 초안을 뽑아 줍니다. 사람이 할 일은 회사 고유 정보와 가격 검토입니다.</p>
+          <p style="margin:0 0 24px;font-size:16px;line-height:1.85;letter-spacing:-0.025em;color:var(--fg-1)">"이 RFP 보고 제안서 본문 써줘"라고 하면 <code style="font-family:var(--font-mono);font-size:13px;background:var(--neutral-100);padding:1px 6px;border-radius:4px">collab-proposal</code>가 12섹션 표준 목차(표지부터 가격·리스크·부록까지)로 컴플라이언스를 지킨 초안을 뽑아 줍니다. 사람이 할 일은 회사 고유 정보와 가격 검토입니다.</p>
           <h3 style="margin:0 0 10px;font-size:19px;font-weight:700;letter-spacing:-0.04em;color:var(--fg-1)">3. 어려운 대화 준비</h3>
           <p style="margin:0;font-size:16px;line-height:1.85;letter-spacing:-0.025em;color:var(--fg-1)">"자꾸 일을 떠넘기는 동료가 있는데 내일 면담에서 어떻게 말하지?"라고 물으면 <code style="font-family:var(--font-mono);font-size:13px;background:var(--neutral-100);padding:1px 6px;border-radius:4px">conflict-handler</code>와 <code style="font-family:var(--font-mono);font-size:13px;background:var(--neutral-100);padding:1px 6px;border-radius:4px">negotiation-1on1</code>이 감정과 사안을 분리한 대화를 설계합니다.</p>
         </section>

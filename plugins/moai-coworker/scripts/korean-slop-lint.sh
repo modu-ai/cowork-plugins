@@ -108,7 +108,7 @@ run_selftest() {
   fi
 
   # Class 3: old-ns
-  printf 'see moai-office:office-pdf-writer\n' > "$tmp/oldns.md"
+  printf 'see moai-office:doc-pdf\n' > "$tmp/oldns.md"
   if grep -E "$OldNsPattern" "$tmp/oldns.md" >/dev/null 2>&1; then
     echo "PASS [self-test/old-ns]: deprecated-namespace detector fires" >&2; fired=$((fired+1))
   else

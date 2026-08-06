@@ -63,6 +63,19 @@ Supported Project Types: web applications, mobile applications, CLI tools, libra
 
 ---
 
+## After Plugin Install/Update — Refresh CLAUDE.md
+
+When plugins are installed, updated, renamed, or restructured (e.g., a new plugin ships such as `moai-coder`, or an existing plugin's skill set changes), the project's CLAUDE.md / project-doc instructions MUST be refreshed so downstream agents see the current plugin surface. Proactively guide the user to run:
+
+> `/project 업데이트 된 플러그인 기반으로 CLAUDE.md 폴더 지침 업데이트 진행해줘`
+> (EN equivalent: `/project update CLAUDE.md instructions based on the updated plugins`)
+
+This regenerates/updates the project-doc scaffolding (product/structure/tech context + plugin inventory) to match the live plugin set. Document this step on every install/update page so users know to run it after any plugin change.
+
+> **Maintainer note (template distribution):** this `moai-workflow-project` skill is template-distributed under the `moai-*` namespace. Edits made in an installed project are overwritten by the next `moai update`. To ship this guidance to all projects, apply it in the template source (`moai-adk-go` → `internal/template/templates/.claude/skills/moai-workflow-project/SKILL.md`).
+
+---
+
 ## Implementation Guide
 
 ### Module Architecture

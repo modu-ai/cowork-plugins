@@ -148,20 +148,20 @@ version: "1.0.0"
 - **moai-lawyer:legal-nda-triage**: NDA 비밀유지계약 검토
 - **moai-lawyer:legal-compliance-check**: 규제 준수 점검, ESG 보고
 - **moai-lawyer:legal-law-research** (korean-law MCP): 2026년 법령 변화의 현행 원문·개정 추적·행위시법 판단은 연계
-- **moai-coworker:general-ai-slop-reviewer**: 리스크 분석 보고서 AI 패턴 검수
+- **moai-coworker:ai-slop-reviewer**: 리스크 분석 보고서 AI 패턴 검수
 
 ### 후처리 체인 (텍스트 산출물)
 
 법적 리스크 평가 보고서·법령 변화 영향 분석·대응 액션 플랜 등 서술형 산출물은 작성 후 반드시 다음 체인으로 마무리합니다.
 
 ```
-legal-legal-risk → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean
+legal-legal-risk → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
 ```
 
-- **moai-coworker:general-ai-slop-reviewer**: AI 글쓰기 패턴(과장·상투구·획일적 구조) 검수
-- **moai-writer:general-humanize-korean**: 한국어 자연스러움 보정으로 사람이 쓴 듯한 문장으로 다듬기
+- **moai-coworker:ai-slop-reviewer**: AI 글쓰기 패턴(과장·상투구·획일적 구조) 검수
+- **moai-writer:korean-humanize**: 한국어 자연스러움 보정으로 사람이 쓴 듯한 문장으로 다듬기
 
-리스크 매트릭스 표 등 데이터 산출물은 이 체인 대상이 아니며, 별도로 **moai-officer:office-xlsx-creator**로 정리합니다.
+리스크 매트릭스 표 등 데이터 산출물은 이 체인 대상이 아니며, 별도로 **moai-officer:doc-xlsx**로 정리합니다.
 
 ## 이 스킬을 사용하지 말아야 할 때
 

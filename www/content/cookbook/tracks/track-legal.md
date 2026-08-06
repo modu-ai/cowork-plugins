@@ -61,7 +61,7 @@ flowchart TD
 
 ### 자동 체인
 
-`legal-nda-triage`(12건 배치 분류) → 위험도 A/B/C 그룹화 → `legal-contract-review`(상세) → `legal-legal-risk`(등급 평가) → `office-docx-generator` → `general-ai-slop-reviewer`
+`legal-nda-triage`(12건 배치 분류) → 위험도 A/B/C 그룹화 → `legal-contract-review`(상세) → `legal-legal-risk`(등급 평가) → `doc-docx` → `ai-slop-reviewer`
 
 ### 산출물
 
@@ -88,7 +88,7 @@ flowchart TD
 
 ### 자동 체인
 
-`legal-contract-review`(조항별 리스크 분석) → `legal-legal-risk`(A/B/C 등급) → `legal-contract-review`(개선안·수정안 초안 작성) → `office-docx-generator` → `general-ai-slop-reviewer`
+`legal-contract-review`(조항별 리스크 분석) → `legal-legal-risk`(A/B/C 등급) → `legal-contract-review`(개선안·수정안 초안 작성) → `doc-docx` → `ai-slop-reviewer`
 
 ### 산출물
 
@@ -115,7 +115,7 @@ flowchart TD
 
 ### 자동 체인
 
-`legal-compliance-check`(GDPR 7대 원칙 매핑) → `commerce-ad-claim-compliance-kr`(표시광고법·식약처 표현 검증) → `commerce-message-compliance-kr`(정통망법 발송 규제) → `office-docx-generator` → `general-ai-slop-reviewer`
+`legal-compliance-check`(GDPR 7대 원칙 매핑) → `commerce-ad-claim-compliance-kr`(표시광고법·식약처 표현 검증) → `commerce-message-compliance-kr`(정통망법 발송 규제) → `doc-docx` → `ai-slop-reviewer`
 
 ### 산출물
 
@@ -142,7 +142,7 @@ flowchart TD
 
 ### 자동 체인
 
-`legal-contract-review`(한·영 병렬 초안) → `office-docx-generator`(KR/EN 2 파일) → `general-ai-slop-reviewer`
+`legal-contract-review`(한·영 병렬 초안) → `doc-docx`(KR/EN 2 파일) → `ai-slop-reviewer`
 
 ### 산출물
 
@@ -168,7 +168,7 @@ flowchart TD
 
 ### Q. AI가 생성한 계약서를 그대로 서명해도 되나요?
 
-**아니오.** 모든 법률 산출물은 변호사 최종 검토 필수. AI는 1차 초안 + 협상 카드 + 리스크 지도 작성용. `general-ai-slop-reviewer`는 표현 검수일 뿐, 법적 효력 보증 아님.
+**아니오.** 모든 법률 산출물은 변호사 최종 검토 필수. AI는 1차 초안 + 협상 카드 + 리스크 지도 작성용. `ai-slop-reviewer`는 표현 검수일 뿐, 법적 효력 보증 아님.
 
 ### Q. NDA 12개 일괄 처리 시 개인정보 처리는?
 

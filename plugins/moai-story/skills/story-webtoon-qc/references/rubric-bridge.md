@@ -1,13 +1,13 @@
 # 채점 엔진 브리지 — gan-loop Must-Pass 4항목 + 미가용 폴백
 
-> `story-webtoon-qc` Step 4-2에서 로드한다. 가용할 때 `moai-designer:moai-workflow-gan-loop`의 반복 채점(`rubric-image.md`)에 제출할 Must-Pass 항목과, 미가용 시 자체 폴백 절차. **채점 엔진은 선택 확장이지 필수 의존이 아니다.**
+> `story-webtoon-qc` Step 4-2에서 로드한다. 가용할 때 `moai-designer:design-iteration-loop`의 반복 채점(`rubric-image.md`)에 제출할 Must-Pass 항목과, 미가용 시 자체 폴백 절차. **채점 엔진은 선택 확장이지 필수 의존이 아니다.**
 
 ## 실행 경로
 
 ```
 story-webtoon-qc 실행 경로
 ├─ 기본(항상 동작): 자체 defect-checklist.md 1패스 판정
-└─ 선택(가용 시): moai-designer:moai-workflow-gan-loop + rubric-image.md 반복 채점
+└─ 선택(가용 시): moai-designer:design-iteration-loop + rubric-image.md 반복 채점
    → 미가용/호출 실패 시 조용히 기본 경로로 폴백 + 사용자에게 1줄 고지
 ```
 
@@ -24,7 +24,7 @@ story-webtoon-qc 실행 경로
 
 ## 미가용 시 폴백 절차
 
-`moai-workflow-gan-loop`은 현재 Desktop 환경에서 동작하지 않을 수 있다(`.moai/config/sections/design.yaml` 의존·`user-invocable:false`·영문). 필수 의존으로 걸지 않는다.
+`design-iteration-loop`은 현재 Desktop 환경에서 동작하지 않을 수 있다(`.moai/config/sections/design.yaml` 의존·`user-invocable:false`·영문). 필수 의존으로 걸지 않는다.
 
 1. gan-loop 호출을 시도하지 않거나 실패하면 → **조용히 자체 경로로 폴백**한다(Step 1~4 defect-checklist 1패스).
 2. 사용자에게 **1줄만** 고지한다: "채점 엔진(gan-loop) 미가용 → 자체 체크리스트로 검수했습니다."
@@ -38,4 +38,4 @@ story-webtoon-qc 실행 경로
 
 ## 출처
 
-- Must-Pass 4항목·실행 경로·폴백 규약: `moai-designer:moai-workflow-gan-loop` 위임 설계 핸드오프(내부 자산).
+- Must-Pass 4항목·실행 경로·폴백 규약: `moai-designer:design-iteration-loop` 위임 설계 핸드오프(내부 자산).

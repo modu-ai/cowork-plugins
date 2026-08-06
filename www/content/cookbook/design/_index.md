@@ -20,4 +20,4 @@ flowchart TD
 
 ## 가이드
 
-- [프레젠테이션 디자인 원칙](./presentation/) — `moai-officer:office-pptx-designer`로 만든 슬라이드를 더 좋게 만드는 룰
+- [프레젠테이션 디자인 원칙](./presentation/) — `moai-officer:doc-pptx`로 만든 슬라이드를 더 좋게 만드는 룰

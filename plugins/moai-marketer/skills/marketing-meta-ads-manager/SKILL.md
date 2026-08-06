@@ -139,14 +139,14 @@ OAuth 로그인 중 사용자가 등급을 선택합니다. 쓰기·결제 동�
 ## 7. 체이닝
 
 - 마지막 단계에서 한국 시장 audit이 필요하면 **`moai-ads-audit` MCP**(자체 50-check) 또는 **`moai-marketer:marketing-meta-ads-analyzer`** 스킬로 체이닝.
-- 운영 결과를 진단 텍스트 산출물로 정리하면 **`moai-coworker:general-ai-slop-reviewer` → `moai-writer:general-humanize-korean`** 체이닝으로 AI 패턴 검수 + 한국어 AI 티 제거. (수치·대시보드 산출물은 대상 아님)
+- 운영 결과를 진단 텍스트 산출물로 정리하면 **`moai-coworker:ai-slop-reviewer` → `moai-writer:korean-humanize`** 체이닝으로 AI 패턴 검수 + 한국어 AI 티 제거. (수치·대시보드 산출물은 대상 아님)
 
 권장 체인 예:
 ```
 marketing-meta-ads-manager (생성·운영)
   → moai-marketer:marketing-meta-ads-analyzer / moai-ads-audit MCP (진단)
-  → moai-coworker:general-ai-slop-reviewer (진단 텍스트 검수)
-  → moai-writer:general-humanize-korean (한국어 AI 티 제거)
+  → moai-coworker:ai-slop-reviewer (진단 텍스트 검수)
+  → moai-writer:korean-humanize (한국어 AI 티 제거)
 ```
 
 ---

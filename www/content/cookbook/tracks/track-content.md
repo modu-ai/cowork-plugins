@@ -66,7 +66,7 @@ flowchart TD
 
 ### 자동 체인
 
-`blog × 5편` → `general-ai-slop-reviewer` (1차 일반) → `korean-spell-check` (바른한글) → `general-humanize-korean` (한국어 정밀 윤문, A/B/C/D 등급) → (선택) WordPress MCP 커넥터 발행
+`blog × 5편` → `ai-slop-reviewer` (1차 일반) → `korean-spell-check` (바른한글) → `korean-humanize` (한국어 정밀 윤문, A/B/C/D 등급) → (선택) WordPress MCP 커넥터 발행
 
 ### 산출물
 
@@ -93,7 +93,7 @@ flowchart TD
 
 ### 자동 체인
 
-`content-card-news` → `media-higgsfield-image` (한국어 타이포 정확도 우수) → `general-ai-slop-reviewer`
+`content-card-news` → `media-higgsfield-image` (한국어 타이포 정확도 우수) → `ai-slop-reviewer`
 
 ---
 
@@ -114,7 +114,7 @@ flowchart TD
 
 ### 자동 체인
 
-`marketing-landing-page` (Next.js 15 + shadcn/ui + Tailwind v4 + OKLCH 토큰) → `general-ai-slop-reviewer` → `general-humanize-korean`
+`marketing-landing-page` (Next.js 15 + shadcn/ui + Tailwind v4 + OKLCH 토큰) → `ai-slop-reviewer` → `korean-humanize`
 
 ### 산출물
 

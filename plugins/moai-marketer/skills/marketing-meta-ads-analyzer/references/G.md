@@ -1,6 +1,6 @@
 # 부록 G — 4 출력 형식 명세
 
-HTML 디자인 토큰: `moai-officer:office-html-report` references/design-tokens.md SSOT 적용.
+HTML 디자인 토큰: `moai-officer:doc-html-report` references/design-tokens.md SSOT 적용.
 
 ---
 
@@ -40,7 +40,7 @@ HTML 디자인 토큰: `moai-officer:office-html-report` references/design-token
 - 액션 옵션 선택 → 해당 시뮬레이션 연동 (Level 7 선택 시)
 - 다크/라이트 모드 토글
 
-### 디자인 토큰 CSS 변수 (SSOT: moai-officer:office-html-report/references/design-tokens.md)
+### 디자인 토큰 CSS 변수 (SSOT: moai-officer:doc-html-report/references/design-tokens.md)
 
 ```css
 :root {

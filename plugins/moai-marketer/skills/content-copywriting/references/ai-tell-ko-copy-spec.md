@@ -1,10 +1,10 @@
 # AI 틱 윤문 카피 스킬 — 생성 지시서 (설계 노트)
 
-> **Status**: 설계 노트(v0.1, 2026-07-08) → **정식 구현 완료**(2026-07-08, v2.5 콘텐츠 6항 + v2.6 재설계: 다업종 예시 확장·L 스토리텔링/M 슬라이드 카테고리 신설·카피 모드 가드(사실 앵커 보존)·metrics_v2 v2.1 카피 탐지·humanize_html.py). 본 문서는 사용자 제공 원 설계 노트의 역사 기록으로 보존한다. 운영 SSOT는 `general-humanize-korean` references/ai-tell-taxonomy.md + SKILL.md. 박스 그림은 마크다운 표로 변환; 내용은 원문 축실 보존.
+> **Status**: 설계 노트(v0.1, 2026-07-08) → **정식 구현 완료**(2026-07-08, v2.5 콘텐츠 6항 + v2.6 재설계: 다업종 예시 확장·L 스토리텔링/M 슬라이드 카테고리 신설·카피 모드 가드(사실 앵커 보존)·metrics_v2 v2.1 카피 탐지·humanize_html.py). 본 문서는 사용자 제공 원 설계 노트의 역사 기록으로 보존한다. 운영 SSOT는 `korean-humanize` references/ai-tell-taxonomy.md + SKILL.md. 박스 그림은 마크다운 표로 변환; 내용은 원문 축실 보존.
 
 ## 스킬 개요
 
-- **이름 제안**: `moai-domain-ai-tell-ko-copy` (또는 기존 `general-humanize-korean`의 한국 카피 확장)
+- **이름 제안**: `moai-domain-ai-tell-ko-copy` (또는 기존 `korean-humanize`의 한국 카피 확장)
 - **목적**: AI가 생성한 한국어 마케팅 카피에서 번역투·직역 비유·의인화·AI 텔을 식별해, 브랜드 톤을 유지하면서 자연스럽고 펀치 있는 한국 카피로 윤문
 - **입력**: HTML/마크다운 카피 텍스트 (헤드라인·본문·CTA·메타 description)
 - **출력**: 동일 구조/정보 유지 + 카피만 자연화 (before/after 표 + 일괄 치환 가능 형태)
@@ -70,9 +70,9 @@
 
 본 설계 노트를 정식 스킬로 구현할 때의 작업 항목:
 
-1. **taxonomy 패턴 정식 등재** — ✅ 완료(v2.4/v2.5): `A-24` 직역 부사 [S2] + `A-25` 인칭 호회 [S2] 등재, v2.6에서 다업종 예시 확장 — `general-humanize-korean/references/ai-tell-taxonomy.md`
+1. **taxonomy 패턴 정식 등재** — ✅ 완료(v2.4/v2.5): `A-24` 직역 부사 [S2] + `A-25` 인칭 호회 [S2] 등재, v2.6에서 다업종 예시 확장 — `korean-humanize/references/ai-tell-taxonomy.md`
 2. **교정 원칙 8조 본문화** — ✅ 완료(v2.5): `content-copywriting/SKILL.md` 8조 수록
 3. **HTML 카피 윤문 절차 정식화** — ✅ 완료(v2.5): `copywriting.md` §4 작업 절차 + §5 주의사항 본문화
 4. **before/after 예시 뱅크** — ✅ 완료(v2.5, v2.6 확장): `rewriting-playbook.md` 카피 레시피 + 업종 확장 행
-5. **(옵션) 정규식 자동화 스크립트** — ✅ 완료(v2.6): `general-humanize-korean/references/humanize_html.py` 구현 (텍스트 노드 치환·head 메타·JSON-LD·잔재 검증 내장, 테스트 13건)
-6. **스킬 이름 결정** — ✅ 확정(2026-07-08): 기존 2스킬(`general-humanize-korean` + `content-copywriting`) 확장, 별도 스킬 신설 안 함 (4-plugin 재설계 수렴, 메모리 [[project_moc_plugin_hierarchical_hybrid]])
+5. **(옵션) 정규식 자동화 스크립트** — ✅ 완료(v2.6): `korean-humanize/references/humanize_html.py` 구현 (텍스트 노드 치환·head 메타·JSON-LD·잔재 검증 내장, 테스트 13건)
+6. **스킬 이름 결정** — ✅ 확정(2026-07-08): 기존 2스킬(`korean-humanize` + `content-copywriting`) 확장, 별도 스킬 신설 안 함 (4-plugin 재설계 수렴, 메모리 [[project_moc_plugin_hierarchical_hybrid]])

@@ -122,9 +122,9 @@ version: "1.0.0"
 | `moai-media:media-higgsfield-core` | 위임: 생성 실행·비용·모델 |
 | `moai-media:media-higgsfield-identity` | 선행: 마스코트·모델 일관성 참조 |
 | `moai-media:media-higgsfield-product` | 인접: 제품 중심 비주얼 10모드 |
-| `moai-designer:moai-domain-brand-design` | 선행: 브랜드 디자인 시스템 정의 |
+| `moai-designer:design-brand-system` | 선행: 브랜드 디자인 시스템 정의 |
 | `moai-designer:design-tokens-transformer` | 선행: 토큰 파이프라인 |
-| `moai-designer:cd-slop-check` | 후속: AI 슬롭 점검 |
+| `moai-designer:design-slop-check` | 후속: AI 슬롭 점검 |
 
 ## 출처
 

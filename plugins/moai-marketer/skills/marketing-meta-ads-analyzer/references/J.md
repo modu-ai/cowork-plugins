@@ -28,7 +28,7 @@ marketing-meta-ads-analyzer (소재 노후화 감지 + 방향 제시)
        ↓ 모듈 6 결과 전달
 meta-ads-creative-generator (신규 소재 카피 생성)
        ↓
-moai-coworker:general-ai-slop-reviewer (AI 슬롭 검수)
+moai-coworker:ai-slop-reviewer (AI 슬롭 검수)
 ```
 
 **포함될 기능 (계획)**:

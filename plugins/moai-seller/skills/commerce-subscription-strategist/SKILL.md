@@ -86,10 +86,10 @@ version: "1.0.0"
 
 ## 후속 체인 (텍스트 산출물 검수)
 
-본 스킬의 가입·온보딩·유지·휴면·이탈 메시지 매트릭스 6단계 카피는 `moai-coworker:general-ai-slop-reviewer`로 자동 후처리 체이닝됩니다. 구독 메시지는 신규 가입·이탈 방지·윈백 등 사용자 의사결정에 직접 영향을 주므로 AI 슬롭 제거가 필수.
+본 스킬의 가입·온보딩·유지·휴면·이탈 메시지 매트릭스 6단계 카피는 `moai-coworker:ai-slop-reviewer`로 자동 후처리 체이닝됩니다. 구독 메시지는 신규 가입·이탈 방지·윈백 등 사용자 의사결정에 직접 영향을 주므로 AI 슬롭 제거가 필수.
 
 ```text
-commerce-subscription-strategist → general-ai-slop-reviewer → (선택) commerce-channel-message
+commerce-subscription-strategist → ai-slop-reviewer → (선택) cs-channel-message
 ```
 
 ## 관련 스킬
@@ -97,5 +97,5 @@ commerce-subscription-strategist → general-ai-slop-reviewer → (선택) comme
 - `commerce-repurchase-timer` — 정기 구매 카테고리 (구독 직전 단계)
 - `commerce-ltv-cac-architect` — 구독 LTV 계산
 - `commerce-integrated-strategy` — 거시 채널·사업 전략 (페어)
-- `general-ai-slop-reviewer` — 메시지 매트릭스 AI 슬롭 검수 (자동 체인, HARD)
-- `moai-writer:general-humanize-korean` — 한국어 AI 티 제거 (슬롭 검수 다음, 필수)
+- `ai-slop-reviewer` — 메시지 매트릭스 AI 슬롭 검수 (자동 체인, HARD)
+- `moai-writer:korean-humanize` — 한국어 AI 티 제거 (슬롭 검수 다음, 필수)

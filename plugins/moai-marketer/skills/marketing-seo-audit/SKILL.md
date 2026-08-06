@@ -10,7 +10,7 @@ description: |
   - "ChatGPT·Perplexity 같은 AI 검색에 잘 노출되게 GEO 전략 만들어줘"
   - "네이버 C-Rank 떨어졌는데 개선 방법 알려줘"
   - "이커머스 사이트 SEO 로드맵 만들어줘"
-  네이버(C-Rank·D.I.A.)·구글(E-E-A-T·Core Web Vitals)·AI 검색 인용까지 점검해 개선 우선순위와 키워드 목록을 정리하고, 서술 권고는 moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean으로 다듬습니다.
+  네이버(C-Rank·D.I.A.)·구글(E-E-A-T·Core Web Vitals)·AI 검색 인용까지 점검해 개선 우선순위와 키워드 목록을 정리하고, 서술 권고는 moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize으로 다듬습니다.
 version: "1.0.0"
 ---
 
@@ -226,7 +226,7 @@ ChatGPT·Perplexity·Claude·네이버 AI 브리핑·구글 AI Overview가 답�
 
 감사 보고서의 서술형 권고·개선 전략·인사이트 등 **prose 산출물**은 발행 전 후처리 체인을 거칩니다. 추천 키워드 목록·기술 SEO 체크리스트·점수 표 등 **수치·표 산출물은 대상이 아닙니다**.
 
-**권장 체인(서술 권고)**: `marketing-seo-audit(서술 권고) → moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean`
+**권장 체인(서술 권고)**: `marketing-seo-audit(서술 권고) → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
 
 ## 관련 스킬
 
@@ -234,5 +234,5 @@ ChatGPT·Perplexity·Claude·네이버 AI 브리핑·구글 AI Overview가 답�
 |------|----------|
 | `moai-marketer:content-sns-content` | SNS 콘텐츠 작성이나 브랜드 전략 |
 | `moai-marketer:marketing-campaign-planner` | 마케팅 캠페인 기획이나 광고 집행 |
-| `moai-coworker:general-ai-slop-reviewer` | 사후 체이닝(필수, 서술 권고): 감사 보고서 내러티브의 AI 패턴 검수 |
-| `moai-writer:general-humanize-korean` | 사후 체이닝(필수, 서술 권고): general-ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |
+| `moai-coworker:ai-slop-reviewer` | 사후 체이닝(필수, 서술 권고): 감사 보고서 내러티브의 AI 패턴 검수 |
+| `moai-writer:korean-humanize` | 사후 체이닝(필수, 서술 권고): ai-slop-reviewer 다음 단계로 한국어 AI 티 제거 |

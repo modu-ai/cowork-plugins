@@ -27,7 +27,7 @@ flowchart TD
 | 카피 작성 | `moai-marketer:content-copywriting` | 헤드라인·CTA·슬로건 |
 | SEO 최적화 | `moai-marketer:marketing-seo-audit` | 네이버·구글·AI 검색 통합 |
 | 성과 분석 | `moai-marketer:marketing-performance-report` | GA4·네이버 광고·메타·카카오모먼트 |
-| AI 슬롭 검수 | `moai-coworker:general-ai-slop-reviewer` | 발행 전 자연어 톤 검수 |
+| AI 슬롭 검수 | `moai-coworker:ai-slop-reviewer` | 발행 전 자연어 톤 검수 |
 
 ## 콘텐츠 운영 4단계
 
@@ -74,7 +74,7 @@ flowchart TD
 1. `marketing-campaign-planner` (앵글 기획)
 2. `content-blog` (본문 작성)
 3. `marketing-seo-audit` (SEO 점검)
-4. `general-ai-slop-reviewer` (검수)
+4. `ai-slop-reviewer` (검수)
 
 ## 한국 콘텐츠 마케팅 특이점
 

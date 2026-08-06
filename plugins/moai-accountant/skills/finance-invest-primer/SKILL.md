@@ -95,12 +95,12 @@ version: "1.0.0"
 - **moai-accountant:finance-wealth-roadmap**: 투자 시드 확보·자산 배분 맥락
 - **moai-accountant:finance-personal-tax-saver**: 연금·ISA로 절세하며 투자
 - **moai-accountant:finance-econ-literacy**: 금리·환율이 자산에 미치는 영향 이해
-- **moai-analyst:office-public-data-korean-stock-search**: KRX 종목·시세 조회(참고용 데이터)
+- **moai-analyst:data-stock**: KRX 종목·시세 조회(참고용 데이터)
 
 | 단계 | 스킬 | 역할 |
 |------|------|------|
-| Post-검수 | `moai-coworker:general-ai-slop-reviewer` | AI 슬롭 검수 (필수) |
-| Post-검수 | `moai-writer:general-humanize-korean` | 한국어 AI 티 제거 (슬롭 검수 다음, 필수) |
+| Post-검수 | `moai-coworker:ai-slop-reviewer` | AI 슬롭 검수 (필수) |
+| Post-검수 | `moai-writer:korean-humanize` | 한국어 AI 티 제거 (슬롭 검수 다음, 필수) |
 
 ## 이 스킬을 사용하지 말아야 할 때
 

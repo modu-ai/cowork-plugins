@@ -48,7 +48,7 @@
 
       <main class="container flex flex-even">
         {{ if $navEnabled }}
-          <aside class="gdoc-nav">
+          <aside class="gdoc-nav" id="gdoc-nav">
             {{ partial "menu" . }}
           </aside>
         {{ end }}
@@ -283,7 +283,9 @@
           else { if ('prevTab' in el.dataset) { el.tabIndex = Number(el.dataset.prevTab); delete el.dataset.prevTab; } else el.removeAttribute('tabindex'); }
         });
       }
-      setNavLocked(true); {{- /* 초기: 닫힘 */ -}}
+      {{- /* 초기 격리는 모바일(드로어)에서만 — 데스크톱(>1080px) 사이드바는 항상
+             보이므로 inert 하면 안 된다(아코디언·포커스가 멈추는 회귀). */ -}}
+      if (window.matchMedia('(max-width: 1080px)').matches) setNavLocked(true);
 
       function focusables() {
         return nav ? Array.prototype.slice.call(nav.querySelectorAll('a,button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])')) : [];

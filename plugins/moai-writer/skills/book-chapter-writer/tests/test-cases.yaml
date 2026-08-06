@@ -103,8 +103,8 @@ test_cases:
       - chain:
         - korean-spell-check
         - book-revision-coach
-        - general-humanize-korean (필수)
-        - general-ai-slop-reviewer (필수)
+        - korean-humanize (필수)
+        - ai-slop-reviewer (필수)
     pass_criteria:
       - chain_emphasized: true
 

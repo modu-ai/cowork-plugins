@@ -20,7 +20,7 @@ flowchart TD
 
 ## 사용 스킬
 
-- **`moai-officer:office-pptx-designer`** — 발표용 PPT 슬라이드 디자인. Pretendard + 명조 기반 한국형 디자인, 한글 깨짐 없음.
+- **`moai-officer:doc-pptx`** — 발표용 PPT 슬라이드 디자인. Pretendard + 명조 기반 한국형 디자인, 한글 깨짐 없음.
 
 ## 5가지 핵심 원칙
 
@@ -61,7 +61,7 @@ flowchart TD
 > 발표 시간 10분 기준.
 {{< /terminal >}}
 
-`office-pptx-designer` 스킬이 슬라이드 마스터를 자동 적용해 한국형 폰트로 출력합니다. PPTX 파일을 받은 뒤 PowerPoint·Keynote에서 미세 조정.
+`doc-pptx` 스킬이 슬라이드 마스터를 자동 적용해 한국형 폰트로 출력합니다. PPTX 파일을 받은 뒤 PowerPoint·Keynote에서 미세 조정.
 
 ## 한국 발표 환경 특이점
 
@@ -84,5 +84,5 @@ flowchart TD
 
 ### Sources
 
-- moai-officer 플러그인 [`office-pptx-designer`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-officer/skills/office-pptx-designer/SKILL.md)
+- moai-officer 플러그인 [`doc-pptx`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-officer/skills/doc-pptx/SKILL.md)
 - [Pretendard 폰트](https://github.com/orioncactus/pretendard)

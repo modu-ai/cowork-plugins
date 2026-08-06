@@ -135,8 +135,8 @@ version: "1.0.0"
 - `moai-seller:commerce-detail-page-image` — 이미지 합성
 - `moai-seller:commerce-marketplace-naver` — 네이버/오픈마켓 비교
 - `moai-marketer:marketing-seo-audit` — 채널 SEO 일반
-- `moai-coworker:general-ai-slop-reviewer` — 최종 산출물 AI 슬롭 검수 (Post-검수, 필수)
-- `moai-writer:general-humanize-korean` — 한국어 AI 티 제거 (슬롭 검수 다음 필수)
+- `moai-coworker:ai-slop-reviewer` — 최종 산출물 AI 슬롭 검수 (Post-검수, 필수)
+- `moai-writer:korean-humanize` — 한국어 AI 티 제거 (슬롭 검수 다음 필수)
 
 ## 이 스킬을 사용하지 말아야 할 때
 

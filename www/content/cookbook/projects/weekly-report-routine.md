@@ -16,14 +16,14 @@ tags: [cookbook, projects, office]
 
 ## 2. 투입 직원과 스킬
 
-코워커의 `business-productivity-weekly-report`가 핵심 엔진입니다. 일주일치 메모·완료 목록을 던지면 "한 일 / 진행 중 / 다음 주 계획 / 이슈"의 표준 주간보고 구조로 정리해줍니다. 임원 보고 급으로 격식을 갖춰야 하면 `business-pm-weekly-report`(KPI 기반 주간 비즈니스 리뷰)로 바꿔 탈 수 있습니다. 형식 작업은 사무관 몫입니다. `office-xlsx-creator`가 주차별 실적 숫자를 누적 시트로 집계하고, `office-docx-generator`가 팀 서식에 맞는 워드 문서를 만듭니다. 문장 산출물이므로 마지막에 코워커의 `general-ai-slop-reviewer`를 한 번 태워 보고서 어투를 자연스럽게 만듭니다.
+코워커의 `collab-productivity-report`가 핵심 엔진입니다. 일주일치 메모·완료 목록을 던지면 "한 일 / 진행 중 / 다음 주 계획 / 이슈"의 표준 주간보고 구조로 정리해줍니다. 임원 보고 급으로 격식을 갖춰야 하면 `collab-pm-report`(KPI 기반 주간 비즈니스 리뷰)로 바꿔 탈 수 있습니다. 형식 작업은 사무관 몫입니다. `doc-xlsx`가 주차별 실적 숫자를 누적 시트로 집계하고, `doc-docx`가 팀 서식에 맞는 워드 문서를 만듭니다. 문장 산출물이므로 마지막에 코워커의 `ai-slop-reviewer`를 한 번 태워 보고서 어투를 자연스럽게 만듭니다.
 
 | 순서 | 직원 | 스킬 | 역할 |
 |------|------|------|------|
-| 1 | 코워커 | `business-productivity-weekly-report` | 메모 → 주간보고 구조화 |
-| 2 | 사무관 | `office-xlsx-creator` | 주차별 실적 XLSX 누적 집계 |
-| 3 | 사무관 | `office-docx-generator` | 팀 서식 DOCX 산출 |
-| 4 | 코워커 | `general-ai-slop-reviewer` | 보고 문장 어투 다듬기 |
+| 1 | 코워커 | `collab-productivity-report` | 메모 → 주간보고 구조화 |
+| 2 | 사무관 | `doc-xlsx` | 주차별 실적 XLSX 누적 집계 |
+| 3 | 사무관 | `doc-docx` | 팀 서식 DOCX 산출 |
+| 4 | 코워커 | `ai-slop-reviewer` | 보고 문장 어투 다듬기 |
 
 ## 3. 진행 단계
 
@@ -51,12 +51,12 @@ tags: [cookbook, projects, office]
 
 ```mermaid
 flowchart TD
-   U["예린 님<br/>일주일치 메모 + 숫자"] --> W1["코워커<br/>business-productivity-weekly-report"]
+   U["예린 님<br/>일주일치 메모 + 숫자"] --> W1["코워커<br/>collab-productivity-report"]
    W1 --> R1["주간보고 초안<br/>(표준 틀)"]
-   R1 --> O1["사무관<br/>office-xlsx-creator"]
+   R1 --> O1["사무관<br/>doc-xlsx"]
    O1 --> R2["누적 실적 XLSX"]
-   R1 --> O2["사무관<br/>office-docx-generator"]
-   O2 --> W2["코워커<br/>general-ai-slop-reviewer"]
+   R1 --> O2["사무관<br/>doc-docx"]
+   O2 --> W2["코워커<br/>ai-slop-reviewer"]
    W2 --> OUT["제출용 DOCX<br/>+ 누적 시트 갱신"]
 
    style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
@@ -83,5 +83,5 @@ flowchart TD
 
 ## 6. 응용
 
-- **임원 버전 병행** — 같은 재료를 `business-pm-weekly-report`로도 돌려 팀용(상세)과 임원용(KPI 요약) 두 버전을 함께 뽑을 수 있습니다. 코워커의 `business-executive-summary`를 붙이면 1페이지 요약판도 나옵니다.
-- **회의록 루틴 전환** — 같은 "틀 고정 → 매회 내용만 주입" 패턴을 `business-process-manager`의 회의록 정리에 적용하면 주간회의록 루틴이 됩니다. 반복 문서라면 무엇이든 이 패턴이 통합니다.
+- **임원 버전 병행** — 같은 재료를 `collab-pm-report`로도 돌려 팀용(상세)과 임원용(KPI 요약) 두 버전을 함께 뽑을 수 있습니다. 코워커의 `collab-exec-summary`를 붙이면 1페이지 요약판도 나옵니다.
+- **회의록 루틴 전환** — 같은 "틀 고정 → 매회 내용만 주입" 패턴을 `collab-process`의 회의록 정리에 적용하면 주간회의록 루틴이 됩니다. 반복 문서라면 무엇이든 이 패턴이 통합니다.

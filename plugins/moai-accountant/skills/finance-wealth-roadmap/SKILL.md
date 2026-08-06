@@ -97,12 +97,12 @@ version: "1.0.0"
 - **moai-accountant:finance-household-budget**: 월 예산·소비 관리로 저축 가능액 확보
 - **moai-accountant:finance-invest-primer**: 종잣돈을 투자 자산으로 전환
 - **moai-accountant:finance-personal-tax-saver**: 연금·소득공제로 절세하며 자산 축적
-- **moai-coworker:office-goal-planner**: 재무 목표를 분기 실행으로 관리
+- **moai-coworker:productivity-goal**: 재무 목표를 분기 실행으로 관리
 
 | 단계 | 스킬 | 역할 |
 |------|------|------|
-| Post-검수 | `moai-coworker:general-ai-slop-reviewer` | AI 슬롭 검수 (필수) |
-| Post-검수 | `moai-writer:general-humanize-korean` | 한국어 AI 티 제거 (슬롭 검수 다음, 필수) |
+| Post-검수 | `moai-coworker:ai-slop-reviewer` | AI 슬롭 검수 (필수) |
+| Post-검수 | `moai-writer:korean-humanize` | 한국어 AI 티 제거 (슬롭 검수 다음, 필수) |
 
 ## 이 스킬을 사용하지 말아야 할 때
 

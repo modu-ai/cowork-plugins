@@ -60,7 +60,7 @@
 
 ## 한국어 자연성 (AI 티 예방)
 
-한국어 카피는 영어 직역투·비유·과장·의인화를 피하고 한국인 정서에 맞아야 합니다. 생성 단계 4원칙과 안티패턴 표는 SKILL.md "한국인 정서 카피 — 생성 단계 4원칙" 섹션을 따르며, 완성 후 `moai-writer:general-humanize-korean` 스킬로 2차 윤문합니다.
+한국어 카피는 영어 직역투·비유·과장·의인화를 피하고 한국인 정서에 맞아야 합니다. 생성 단계 4원칙과 안티패턴 표는 SKILL.md "한국인 정서 카피 — 생성 단계 4원칙" 섹션을 따르며, 완성 후 `moai-writer:korean-humanize` 스킬로 2차 윤문합니다.
 
 **핵심 금지 패턴 (humanize 분류 체계 연계):**
 
@@ -90,9 +90,9 @@ HTML/마크다운 카피(헤드라인·본문·CTA·메타 description)의 AI �
 3. **맥락 분석**: 정보성/호소성 구간 분류 — **정보성은 보존**(교정 원칙 6).
    - **정보성** (톤 변경 금지, 사실 앵커): 날짜·가격·수치·제품 사양·FAQ 사실 답변·사업자/법적 고지·직접 인용
    - **호소성** (카피 모드 재작성 허용): 헤드라인·서브헤드·CTA·혜택 서술·브랜드 스토리·고객 후기 프레이밍
-   - **경계 사례**: 혜택+수치 혼합 문장은 수치만 앵커로 보존하고 문장 구조는 재작성 가능. 판정 절차 SSOT: `general-humanize-korean` SKILL.md Phase 3-2b.
-4. **개선안 작성**: 교정 원칙 8조 적용, before/after 쌍 생성 (`general-humanize-korean` references/rewriting-playbook.md 카피 레시피 참조).
-5. **일괄 적용**: `general-humanize-korean` references/humanize_html.py로 HTML 내 텍스트 노드만 치환 (태그·속성·style 보존, head 메타·JSON-LD 포함, 잔재 검증 내장). CLI: `python3 humanize_html.py --input page.html --replacements map.json --output out.html [--check-only]`
+   - **경계 사례**: 혜택+수치 혼합 문장은 수치만 앵커로 보존하고 문장 구조는 재작성 가능. 판정 절차 SSOT: `korean-humanize` SKILL.md Phase 3-2b.
+4. **개선안 작성**: 교정 원칙 8조 적용, before/after 쌍 생성 (`korean-humanize` references/rewriting-playbook.md 카피 레시피 참조).
+5. **일괄 적용**: `korean-humanize` references/humanize_html.py로 HTML 내 텍스트 노드만 치환 (태그·속성·style 보존, head 메타·JSON-LD 포함, 잔재 검증 내장). CLI: `python3 humanize_html.py --input page.html --replacements map.json --output out.html [--check-only]`
 6. **검증**: 잔재 패턴 grep 카운트 0 확인 + strong/em 구조 유지 + HTML 문법(따옴표·태그 밸런스) 점검.
 
 ### §5 주의사항 (실패 사례 기반)

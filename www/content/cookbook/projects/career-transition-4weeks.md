@@ -16,14 +16,14 @@ tags: [cookbook, projects, career]
 
 ## 2. 투입 직원과 스킬
 
-1주 차의 엔진은 `career-transition-strategist`입니다. 지금 경력의 강점을 진단하고, 갈 수 있는 방향(동종 업계 상위 포지션 / 인접 직무 / 산업 전환)을 비교해 타깃을 좁히고, 4주 로드맵을 세웁니다. 2주 차엔 `business-resume-builder`가 "구매 업무 담당"식의 밋밋한 경력 기술을 성과 중심 문장으로 다시 씁니다. 3주 차엔 `business-portfolio-guide`가 경력직 포트폴리오 — 프로젝트별 문제·행동·성과 정리 — 를 구성합니다. 4주 차엔 `business-interview-coach`가 예상 질문과 답변 구조를 잡고 모의 면접을 돌립니다.
+1주 차의 엔진은 `career-transition`입니다. 지금 경력의 강점을 진단하고, 갈 수 있는 방향(동종 업계 상위 포지션 / 인접 직무 / 산업 전환)을 비교해 타깃을 좁히고, 4주 로드맵을 세웁니다. 2주 차엔 `career-resume`가 "구매 업무 담당"식의 밋밋한 경력 기술을 성과 중심 문장으로 다시 씁니다. 3주 차엔 `career-portfolio`가 경력직 포트폴리오 — 프로젝트별 문제·행동·성과 정리 — 를 구성합니다. 4주 차엔 `career-interview`가 예상 질문과 답변 구조를 잡고 모의 면접을 돌립니다.
 
 | 주차 | 스킬 | 산출물 |
 |------|------|--------|
-| 1주 | `career-transition-strategist` | 방향 진단 + 타깃 포지션 + 4주 로드맵 |
-| 2주 | `business-resume-builder` | 성과 중심 이력서 · 경력기술서 |
-| 3주 | `business-portfolio-guide` | 경력 포트폴리오 + 지원 시작 |
-| 4주 | `business-interview-coach` | 예상 질문 답변 노트 + 모의 면접 |
+| 1주 | `career-transition` | 방향 진단 + 타깃 포지션 + 4주 로드맵 |
+| 2주 | `career-resume` | 성과 중심 이력서 · 경력기술서 |
+| 3주 | `career-portfolio` | 경력 포트폴리오 + 지원 시작 |
+| 4주 | `career-interview` | 예상 질문 답변 노트 + 모의 면접 |
 
 ## 3. 진행 단계
 
@@ -52,13 +52,13 @@ tags: [cookbook, projects, career]
 
 ```mermaid
 flowchart TD
-   U["지훈 님<br/>'이직하고 싶다 1년째'"] --> C1["1주 차<br/>career-transition-strategist"]
+   U["지훈 님<br/>'이직하고 싶다 1년째'"] --> C1["1주 차<br/>career-transition"]
    C1 --> R1["방향 진단<br/>+ 4주 로드맵"]
-   R1 --> C2["2주 차<br/>business-resume-builder"]
+   R1 --> C2["2주 차<br/>career-resume"]
    C2 --> R2["성과 중심 이력서"]
-   R2 --> C3["3주 차<br/>business-portfolio-guide"]
+   R2 --> C3["3주 차<br/>career-portfolio"]
    C3 --> R3["포트폴리오<br/>+ 지원 개시"]
-   R3 --> C4["4주 차<br/>business-interview-coach"]
+   R3 --> C4["4주 차<br/>career-interview"]
    C4 --> OUT["면접 준비 완료<br/>답변 노트 + 모의 면접"]
 
    style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
@@ -88,4 +88,4 @@ flowchart TD
 ## 6. 응용
 
 - **신입·주니어 버전** — 경력 진단 대신 `career-junior-onboarding`을 축으로 첫 취업 4주 플랜을 짤 수 있습니다. 포트폴리오 주차는 학교·사이드 프로젝트 정리로 대체됩니다.
-- **연봉 협상 연장전** — 오퍼를 받으면 코워커의 `business-negotiation-1on1`으로 연봉 협상 시나리오(희망 연봉 근거, 양보선, 대안)를 준비해 마지막 관문까지 이어갈 수 있습니다.
+- **연봉 협상 연장전** — 오퍼를 받으면 코워커의 `collab-negotiation`으로 연봉 협상 시나리오(희망 연봉 근거, 양보선, 대안)를 준비해 마지막 관문까지 이어갈 수 있습니다.

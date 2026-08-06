@@ -30,7 +30,7 @@ flowchart TD
 
 - "블로그 글 써줘" → `moai-marketer:content-blog`
 - "계약서 검토해줘" → `moai-lawyer:legal-contract-review`
-- "사업계획서 만들어줘" → `moai-consultant:business-strategy-planner`
+- "사업계획서 만들어줘" → `moai-consultant:consult-strategy`
 
 ![스킬 자동 호출 — 슬래시 명령 자동완성](/screenshots/cowork/cowork-skills-invoke.png)
 

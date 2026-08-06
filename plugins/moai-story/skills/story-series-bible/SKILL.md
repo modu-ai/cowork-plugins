@@ -116,8 +116,8 @@ Step 3. 현황표 갱신 (불변식 — 반드시)
 회차 원고는 텍스트 산출물이므로, 완성 후 정규 검수 체인을 태운다.
 
 ```
-원고 초고 → moai-coworker:general-ai-slop-reviewer (1차 일반 후처리)
-          → moai-writer:general-humanize-korean (2차 한국어 정밀 윤문)
+원고 초고 → moai-coworker:ai-slop-reviewer (1차 일반 후처리)
+          → moai-writer:korean-humanize (2차 한국어 정밀 윤문)
 ```
 
 윤문은 **의미·고유명사·수치·인용을 보존**하며 AI 티만 제거한다(내용 재작성 아님).
@@ -131,7 +131,7 @@ Step 3. 현황표 갱신 (불변식 — 반드시)
 | 규격 참조 | `story-webtoon-spec` | 데뷔 경로·회차 분량·수익화 훅 확인 |
 | 식자 참조 | `story-webtoon-lettering` | 회차 원고의 말풍선·서체·SFX |
 | 연속성 감사 | `story-continuity-auditor` (에이전트) | 다회차 캐릭터·플롯·설정 연속성(Soul-ID 포함)을 원장 대비로 검증 |
-| Post-검수 (텍스트 산출) | `moai-coworker:general-ai-slop-reviewer` → `moai-writer:general-humanize-korean` | 원고 텍스트 1차 후처리 → 2차 한국어 정밀 윤문 |
+| Post-검수 (텍스트 산출) | `moai-coworker:ai-slop-reviewer` → `moai-writer:korean-humanize` | 원고 텍스트 1차 후처리 → 2차 한국어 정밀 윤문 |
 
 ## 11. References
 

@@ -157,9 +157,9 @@ PDF → 종합 리포트 엑셀 생성. 클론하지 않았다면 각 단계의 
 
 ## 관련 스킬 체이닝
 
-- **before**: `moai-consultant:business-consulting-brief` — 실사 대상 법인 목록 정리
+- **before**: `moai-consultant:consult-brief` — 실사 대상 법인 목록 정리
 - **after**: `moai-lawyer:legal-legal-risk` — 발급된 등기부등본 기반 법적 리스크 분석
-- **after**: `moai-officer:office-xlsx-creator` — 종합 리포트 Excel화
+- **after**: `moai-officer:doc-xlsx` — 종합 리포트 Excel화
 - **alternative**: 단건이면 IROS 웹에서 직접 발급
 
 ## Done when

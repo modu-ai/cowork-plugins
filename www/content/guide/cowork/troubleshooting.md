@@ -119,7 +119,7 @@ Windows는 기본 경로 길이 한계가 260자입니다. 한글 폴더명·긴
 
 ### 4-2. AI 어투가 남음
 
-체인 마지막에 `moai-coworker:general-ai-slop-reviewer`가 호출되지 않은 경우입니다. 후속 메시지로 명시합니다.
+체인 마지막에 `moai-coworker:ai-slop-reviewer`가 호출되지 않은 경우입니다. 후속 메시지로 명시합니다.
 
 {{< terminal title="claude — cowork" >}}
 > "방금 결과물을 ai-slop-reviewer로 한 번 더 다듬어줘."
@@ -130,7 +130,7 @@ Windows는 기본 경로 길이 한계가 260자입니다. 한글 폴더명·긴
 - `moai-officer` 플러그인이 설치되어 있는지 확인 — 좌측 사이드바 → 사용자 지정 → 설치 목록
 - 시스템에 한국어 폰트(Pretendard, Noto Sans KR, 맑은 고딕)가 설치되어 있는지 확인 — 일부 PPT/HWPX는 시스템 폰트를 임베드
 - HWPX(한글)는 별도 의존성이 필요 — `moai-officer` 페이지의 안내 참고
-- PDF는 `moai-officer:office-pdf-writer`가 Noto Sans CJK를 자동 다운로드하므로 별도 폰트 설치 불필요
+- PDF는 `moai-officer:doc-pdf`가 Noto Sans CJK를 자동 다운로드하므로 별도 폰트 설치 불필요
 
 ## 5. 스킬·플러그인이 자동으로 호출 안 됨
 
@@ -146,7 +146,7 @@ Windows는 기본 경로 길이 한계가 260자입니다. 한글 폴더명·긴
 
 ### 5-2. moai-pm이 미설치
 
-`moai-pm`의 `/project`가 프로젝트 폴더에 어떤 직원을 배치할지와 스킬 체인을 `CLAUDE.md`에 기록합니다. 이 초기화를 건너뛰면 요청이 어느 직원에게 갈지 매번 다시 판단해야 해서 자동 체이닝이 약해집니다. AI 슬롭 검수는 `moai-coworker`의 `general-ai-slop-reviewer`입니다.
+`moai-pm`의 `/project`가 프로젝트 폴더에 어떤 직원을 배치할지와 스킬 체인을 `CLAUDE.md`에 기록합니다. 이 초기화를 건너뛰면 요청이 어느 직원에게 갈지 매번 다시 판단해야 해서 자동 체이닝이 약해집니다. AI 슬롭 검수는 `moai-coworker`의 `ai-slop-reviewer`입니다.
 
 - 사용자 지정 → 설치 목록에서 **moai**(코어)가 활성화되어 있는지 확인
 - 누락되어 있다면 설치 후 새 대화에서 다시 시도

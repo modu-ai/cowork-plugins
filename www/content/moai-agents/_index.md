@@ -15,7 +15,7 @@ aliases: ["/employees/", "/agent-teams/"]
 
 ```mermaid
 flowchart LR
-   HUB["MoAI-Agents<br/>17 AI 직원"]
+   HUB["MoAI-Agents<br/>{{< catalog-count plugins >}} AI 직원"]
 
    subgraph G1["범용"]
        PM["PM"]
@@ -39,6 +39,7 @@ flowchart LR
        MK["마케터"]
        MD["미디어"]
        DE["디자이너"]
+       TP["스레드 포스터"]
    end
 
    HUB --> G1
@@ -67,5 +68,6 @@ flowchart LR
 | [커리어코치](career/) | 커리어 | 이력서 첨삭·면접 준비·이직 전략 | 5 |
 | [튜터](tutor/) | 전문직 | 커리큘럼·평가 문항·논문 리서치 | 11 |
 | [디자이너](designer/) | 디자인 | Claude Design 연동·토큰·브랜드 시스템·비주얼 생성·모션 랜딩 | 15 |
+| [스레드 포스터](threads-poster/) | 소셜 미디어 | Threads 자율 발행·문체 학습·멀티 채널 포맷·분할 등록 | 5 |
 
 어디서부터 시작할지 모르겠다면 [PM](pm/) 페이지부터 읽어보세요. 프로젝트 성격에 맞는 직원 조합을 잡아 주는 것이 PM의 역할입니다. 설치 방법과 마켓플레이스 등록은 [플러그인 가이드](/plugins/)에서 다룹니다.

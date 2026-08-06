@@ -16,14 +16,14 @@ tags: [cookbook, projects, office]
 
 ## 2. 투입 직원과 스킬
 
-사무관의 `office-public-data-public-data`가 공공데이터포털·KOSIS 계열 데이터를 찾아 가져오는 입구입니다. 가져온 데이터는 `office-data-explorer`가 추세·비교 분석을 하고, `office-data-visualizer`가 보고서에 넣을 차트로 그립니다. 마지막 `office-hwpx-writer`가 분석 내용과 차트를 공공기관 보고서 서식(개요–현황–분석–시사점)에 맞춰 HWPX 파일로 만들어냅니다. 쿡북 공통 원칙대로 숫자·차트는 어투 검수 대상이 아니므로, 이 체인엔 ai-slop-reviewer가 없습니다 — 대신 서술형 시사점 문단이 길어지면 그 부분만 검수를 붙이면 됩니다.
+사무관의 `data-public`가 공공데이터포털·KOSIS 계열 데이터를 찾아 가져오는 입구입니다. 가져온 데이터는 `data-explorer`가 추세·비교 분석을 하고, `data-visualizer`가 보고서에 넣을 차트로 그립니다. 마지막 `doc-hwp`가 분석 내용과 차트를 공공기관 보고서 서식(개요–현황–분석–시사점)에 맞춰 HWPX 파일로 만들어냅니다. 쿡북 공통 원칙대로 숫자·차트는 어투 검수 대상이 아니므로, 이 체인엔 ai-slop-reviewer가 없습니다 — 대신 서술형 시사점 문단이 길어지면 그 부분만 검수를 붙이면 됩니다.
 
 | 순서 | 스킬 | 역할 |
 |------|------|------|
-| 1 | `office-public-data-public-data` | KOSIS · 공공데이터포털 데이터 수집 |
-| 2 | `office-data-explorer` | 추세 분석 · 지역 비교 |
-| 3 | `office-data-visualizer` | 보고서용 차트 생성 |
-| 4 | `office-hwpx-writer` | HWPX(한글 문서) 보고서 산출 |
+| 1 | `data-public` | KOSIS · 공공데이터포털 데이터 수집 |
+| 2 | `data-explorer` | 추세 분석 · 지역 비교 |
+| 3 | `data-visualizer` | 보고서용 차트 생성 |
+| 4 | `doc-hwp` | HWPX(한글 문서) 보고서 산출 |
 
 ## 3. 진행 단계
 
@@ -52,13 +52,13 @@ tags: [cookbook, projects, office]
 
 ```mermaid
 flowchart TD
-   U["태호 님<br/>'청년 고용 보고서'"] --> O1["사무관<br/>office-data-public-data"]
+   U["태호 님<br/>'청년 고용 보고서'"] --> O1["사무관<br/>data-public"]
    O1 --> R1["KOSIS 데이터<br/>(출처 포함)"]
-   R1 --> O2["사무관<br/>office-data-explorer"]
+   R1 --> O2["사무관<br/>data-explorer"]
    O2 --> R2["추세 분석 3논지"]
-   R2 --> O3["사무관<br/>office-data-visualizer"]
+   R2 --> O3["사무관<br/>data-visualizer"]
    O3 --> R3["차트 세트"]
-   R3 --> O4["사무관<br/>office-hwpx-writer"]
+   R3 --> O4["사무관<br/>doc-hwp"]
    O4 --> OUT["HWPX 보고서<br/>3페이지"]
 
    style U fill:#fbf0dc,stroke:#c47b2a,color:#09110f
@@ -86,5 +86,5 @@ flowchart TD
 
 ## 6. 응용
 
-- **부동산·경매 리서치** — 같은 흐름에서 데이터 입구만 `office-public-data-real-estate-search`나 `office-public-data-court-auction-search`로 바꾸면 관내 부동산 동향 보고서가 됩니다.
-- **발표용 전환** — 완성된 보고서를 `office-pptx-designer`에 넘겨 "이 보고서를 5장 발표 자료로"라고 요청하면, 같은 내용의 보고회용 PPT가 나옵니다.
+- **부동산·경매 리서치** — 같은 흐름에서 데이터 입구만 `data-realestate`나 `data-court-auction`로 바꾸면 관내 부동산 동향 보고서가 됩니다.
+- **발표용 전환** — 완성된 보고서를 `doc-pptx`에 넘겨 "이 보고서를 5장 발표 자료로"라고 요청하면, 같은 내용의 보고회용 PPT가 나옵니다.

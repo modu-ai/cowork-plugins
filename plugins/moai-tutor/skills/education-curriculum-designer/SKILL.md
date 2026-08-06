@@ -174,14 +174,14 @@ version: "1.0.0"
 
 - **moai-coworker/education-assessment-creator**: 시험·평가 문제 출제
 - **moai-coworker/education-research-assistant**: 학술 논문 작성, 데이터 분석
-- `moai-coworker:general-ai-slop-reviewer` — 최종 산출물 AI 슬롭 검수 (Post-검수, 필수)
-- `moai-writer:general-humanize-korean` — 한국어 AI 티 제거 (슬롭 검수 다음 필수)
+- `moai-coworker:ai-slop-reviewer` — 최종 산출물 AI 슬롭 검수 (Post-검수, 필수)
+- `moai-writer:korean-humanize` — 한국어 AI 티 제거 (슬롭 검수 다음 필수)
 
 ## 이 스킬을 사용하지 말아야 할 때
 
 - **실제 시험 문제 출제 및 채점** → moai-tutor:education-assessment-creator 스킬이 더 적합합니다
 - **논문 작성이나 학술 리서치** → moai-tutor:education-research-assistant 스킬을 사용하세요
-- **기업 인사 평가 기준 설계** → moai-recruiter:business-performance-review 스킬이 더 적합합니다
+- **기업 인사 평가 기준 설계** → moai-recruiter:hr-performance-review 스킬이 더 적합합니다
 - **교육 관련 법적 인허가 사항** → 교육부·한국직업능력연구원 등 공식 기관에 문의하세요
 
 ## References

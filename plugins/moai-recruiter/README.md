@@ -22,25 +22,25 @@ claude plugin install moai-recruiter@moai-cowork
 
 ## 스킬 6종
 
-호출 형식: `/moai-recruiter:business-<스킬명>` — 예: `/moai-recruiter:business-resume-screener`. 자연어 요청("이 채용공고 분석해줘")으로도 자동 매칭됩니다.
+호출 형식: `/moai-recruiter:business-<스킬명>` — 예: `/moai-recruiter:hr-resume-screener`. 자연어 요청("이 채용공고 분석해줘")으로도 자동 매칭됩니다.
 
 | 스킬 | 역할 |
 |------|------|
-| `business-employment-manager` | 채용 공고(JD) 작성 · 면접 설계 · 평가 기준 · 온보딩 등 채용 프로세스 전반 관리 |
-| `business-resume-screener` | NCS 기반 이력서·자소서 적합성 평가(인간 검토 보조 — 자동 합격/거절 없음, 보호 정보 마스킹) |
-| `business-draft-offer` | 오퍼레터·근로계약서 작성 (근로기준법 준수 · 연봉 구조 · 4대보험 공제 · 스톡옵션 조항) |
-| `business-performance-review` | MBO·OKR·KPI 성과평가 체계 설계 · 360도 평가 · 피드백 면담 스크립트 |
-| `business-people-operations` | 원격·하이브리드 근무 정책 · 협업 도구 선정 · 직원 경험 설계 |
-| `business-job-analyzer` | 채용공고(JD) 분해 · 기업 리서치 · 오퍼 검증 |
+| `hr-employment` | 채용 공고(JD) 작성 · 면접 설계 · 평가 기준 · 온보딩 등 채용 프로세스 전반 관리 |
+| `hr-resume-screener` | NCS 기반 이력서·자소서 적합성 평가(인간 검토 보조 — 자동 합격/거절 없음, 보호 정보 마스킹) |
+| `hr-draft-offer` | 오퍼레터·근로계약서 작성 (근로기준법 준수 · 연봉 구조 · 4대보험 공제 · 스톡옵션 조항) |
+| `hr-performance-review` | MBO·OKR·KPI 성과평가 체계 설계 · 360도 평가 · 피드백 면담 스크립트 |
+| `hr-operations` | 원격·하이브리드 근무 정책 · 협업 도구 선정 · 직원 경험 설계 |
+| `hr-job-analysis` | 채용공고(JD) 분해 · 기업 리서치 · 오퍼 검증 |
 
-> 구직자용 스킬 3종(`business-resume-builder`·`business-interview-coach`·`business-portfolio-guide`)은 `moai-career`(커리어코치)로 이관되었습니다.
+> 구직자용 스킬 3종(`career-resume`·`career-interview`·`career-portfolio`)은 `moai-career`(커리어코치)로 이관되었습니다.
 
 ## 사람인 채용검색 연동 (Saramin PlayMCP)
 
 이 플러그인은 자체 MCP 서버를 포함하지 않습니다. 다만 **claude.ai 커넥터**에서 카카오 PlayMCP를 등록하면 사람인 채용검색 도구(공고 검색·직무 카테고리·기업 정보·지역/지하철 코드 조회 등)를 함께 사용할 수 있습니다.
 
 - 등록 위치: claude.ai → 설정 → 커넥터 → PlayMCP 추가
-- 연동 후 `business-job-analyzer` 등의 스킬과 조합해 실시간 공고 기반 분석이 가능합니다
+- 연동 후 `hr-job-analysis` 등의 스킬과 조합해 실시간 공고 기반 분석이 가능합니다
 
 ## 에이전트 2종
 

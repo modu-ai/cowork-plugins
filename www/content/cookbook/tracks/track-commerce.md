@@ -28,9 +28,9 @@ flowchart TB
        C4["commerce-product-image-pipeline<br/>광고 영상 풀세트"]
    end
    subgraph 운영["4. 운영·CRM"]
-       O1["commerce-channel-message<br/>카톡·SMS·앱 푸시"]
+       O1["cs-channel-message<br/>카톡·SMS·앱 푸시"]
        O2["commerce-repurchase-timer<br/>재구매 골든타임"]
-       O3["commerce-voc-triage<br/>VOC 응대"]
+       O3["cs-voc-triage<br/>VOC 응대"]
        O4["commerce-subscription-strategist<br/>구독 설계"]
    end
    subgraph 분석["5. 수익 분석"]
@@ -49,8 +49,8 @@ flowchart TB
 |---|---|---|
 | 1 | "신상품 상세페이지 만들어줘" | detail-page-planner → copy → image → ai-slop-reviewer |
 | 2 | "이번 시즌 프로모션 기획해줘" | commerce-promotion-planner → channel-message → marketing-compliance-kr |
-| 3 | "재구매 캠페인 자동 설계해줘" | commerce-repurchase-timer → commerce-channel-message |
-| 4 | "리뷰 5채널 통합 분석해줘" | commerce-voc-triage (리뷰 집계 모드) → docx-generator → ai-slop-reviewer |
+| 3 | "재구매 캠페인 자동 설계해줘" | commerce-repurchase-timer → cs-channel-message |
+| 4 | "리뷰 5채널 통합 분석해줘" | cs-voc-triage (리뷰 집계 모드) → docx-generator → ai-slop-reviewer |
 | 5 | "우리 D2C 광고비 30% 의존도 탈출 전략 짜줘" | commerce-ltv-cac-architect → margin-calculator → integrated-strategy |
 
 ---
@@ -111,7 +111,7 @@ flowchart TD
 
 ### 자동 체인
 
-`commerce-season-calendar` → `commerce-promotion-planner` → `commerce-channel-message` (AARRR 5단계, 카톡·SMS·앱 푸시) → `commerce-message-compliance-kr` (정통망법 게이트) → `general-ai-slop-reviewer`
+`commerce-season-calendar` → `commerce-promotion-planner` → `cs-channel-message` (AARRR 5단계, 카톡·SMS·앱 푸시) → `commerce-message-compliance-kr` (정통망법 게이트) → `ai-slop-reviewer`
 
 ### 산출물
 
@@ -138,7 +138,7 @@ flowchart TD
 
 ### 자동 체인
 
-`commerce-repurchase-timer` → 3구간 산출 (D+36 리마인드 / D+50 데드라인 / D+68 휴면) → `commerce-channel-message` (구간별 톤) → `commerce-message-compliance-kr`
+`commerce-repurchase-timer` → 3구간 산출 (D+36 리마인드 / D+50 데드라인 / D+68 휴면) → `cs-channel-message` (구간별 톤) → `commerce-message-compliance-kr`
 
 ### 산출물
 
@@ -172,7 +172,7 @@ flowchart TD
 
 ### 자동 체인
 
-`commerce-voc-triage` (리뷰 집계 모드 — 5채널 감정·키워드·인사이트·액션플랜 4단 분석) → `office-docx-generator` → `general-ai-slop-reviewer`
+`cs-voc-triage` (리뷰 집계 모드 — 5채널 감정·키워드·인사이트·액션플랜 4단 분석) → `doc-docx` → `ai-slop-reviewer`
 
 ### 산출물 미리보기
 
@@ -253,7 +253,7 @@ flowchart TD
 
 ### Q. 30개 스킬을 다 외워야 하나요?
 
-아니오. **사용자는 짧은 한 줄만 입력**하면 시스템이 자동으로 적절한 스킬을 선택해 체이닝합니다. 예: "재구매 메시지 짜줘" → 시스템이 `commerce-repurchase-timer + commerce-channel-message + commerce-message-compliance-kr`를 자동 호출.
+아니오. **사용자는 짧은 한 줄만 입력**하면 시스템이 자동으로 적절한 스킬을 선택해 체이닝합니다. 예: "재구매 메시지 짜줘" → 시스템이 `commerce-repurchase-timer + cs-channel-message + commerce-message-compliance-kr`를 자동 호출.
 
 ### Q. 광고 영상 만들 때 비용이 걱정됩니다.
 

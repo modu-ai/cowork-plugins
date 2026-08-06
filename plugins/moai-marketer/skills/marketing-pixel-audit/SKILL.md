@@ -10,7 +10,7 @@ description: |
   - "Lookalike 씨앗 품질 봐줘", "VIP 구매자로 유사 타겟 만들어도 되나"
   - "이메일 리스트 광고에 잘 쓰고 있는지 진단해줘"
   - "광고비 새는 픽셀 실수 있는지 찾아줘"
-  자주 하는 픽셀 실수(구매자 미제외·이벤트 정보 누락·CAPI 미설치)와 고객 데이터·유사 타겟 활용도를 점수화해 개선 우선순위를 제시합니다. 진단 보고서 서술 부분은 moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean으로 다듬습니다.
+  자주 하는 픽셀 실수(구매자 미제외·이벤트 정보 누락·CAPI 미설치)와 고객 데이터·유사 타겟 활용도를 점수화해 개선 우선순위를 제시합니다. 진단 보고서 서술 부분은 moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize으로 다듬습니다.
   [책임 경계] vs moai-marketer:marketing-performance-report: 이 스킬=픽셀·데이터 인프라 검증, 저 스킬=광고 성과(ROAS) 분석.
 version: "1.0.0"
 ---
@@ -181,7 +181,7 @@ moai-marketer:content-sns-content (채널별 심리 상태 매트릭스 + CAPI �
 moai-seller:commerce-marketplace-coupang-ads (메타·구글 픽셀 아닌 쿠팡 전용 자동규칙)
 ```
 
-> 진단 보고서의 서술형 텍스트는 발행 전 `moai-coworker:general-ai-slop-reviewer → moai-writer:general-humanize-korean`으로 후처리합니다. 점수·체크리스트 표는 대상이 아닙니다.
+> 진단 보고서의 서술형 텍스트는 발행 전 `moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`으로 후처리합니다. 점수·체크리스트 표는 대상이 아닙니다.
 
 ## 페어 분리
 

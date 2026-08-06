@@ -71,10 +71,10 @@ version: "1.0.0"
 
 ## 후속 체인 (텍스트 산출물 검수)
 
-본 스킬의 협업 제안서·뒷광고 회피 안내·UGC 리그램 동의 요청 메시지·굿즈 기획서 텍스트는 `moai-coworker:general-ai-slop-reviewer`로 자동 후처리 체이닝됩니다. 인플루언서 제안 카피는 외부 발송 텍스트이므로 검수 필수.
+본 스킬의 협업 제안서·뒷광고 회피 안내·UGC 리그램 동의 요청 메시지·굿즈 기획서 텍스트는 `moai-coworker:ai-slop-reviewer`로 자동 후처리 체이닝됩니다. 인플루언서 제안 카피는 외부 발송 텍스트이므로 검수 필수.
 
 ```text
-commerce-influencer-collab → general-ai-slop-reviewer → (선택) content-sns-content
+commerce-influencer-collab → ai-slop-reviewer → (선택) content-sns-content
 ```
 
 ## 관련 스킬
@@ -82,5 +82,5 @@ commerce-influencer-collab → general-ai-slop-reviewer → (선택) content-sns
 - `marketing-campaign-planner` — 전체 캠페인 기획 (페어)
 - `commerce-message-compliance-kr` — 정통망법 (표시광고법 별개)
 - `content-sns-content` — 인플루언서용 콘텐츠
-- `general-ai-slop-reviewer` — 협업 제안 카피 AI 슬롭 검수 (자동 체인, HARD)
-- `moai-writer:general-humanize-korean` — 한국어 AI 티 제거 (슬롭 검수 다음, 필수)
+- `ai-slop-reviewer` — 협업 제안 카피 AI 슬롭 검수 (자동 체인, HARD)
+- `moai-writer:korean-humanize` — 한국어 AI 티 제거 (슬롭 검수 다음, 필수)

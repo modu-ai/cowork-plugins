@@ -4,7 +4,7 @@ description: |
   쿠팡 광고 풀세트를 자연어로 분석·최적화합니다 — 3 캠페인 유형(AI스마트/매출최적화/수동키워드) 자동 분류 + 검색영역 vs 비검색영역 매출 분리 + 엔드 ROAS 계산 + 자동규칙 3종 + 상품별 의사결정 분기(ROAS·CTR·CVR).
   다음과 같은 요청 시 반드시 이 스킬을 사용하세요:
   "쿠팡 광고 분석해줘", "쿠팡 AI스마트광고 세팅", "쿠팡 매출최적화 캠페인", "쿠팡 수동키워드 광고", "쿠팡 검색영역 비검색영역", "쿠팡 골든타임 자동규칙", "목표 ROAS 설정", "키워드 제외 500개", "오디언스 플러스 끄기", "쿠팡 캠페인 분리"
-  쿠팡 광고보고서·마진계산기 결과 엑셀을 입력받아 상품별 의사결정·캠페인 분리안을 산출하며, 수치·표·의사결정 데이터 스킬이라 general-ai-slop-reviewer 체이닝은 제외합니다. end-ROAS 공식은 moai-seller:commerce-margin-calculator references/end-roas.md를 참조합니다.
+  쿠팡 광고보고서·마진계산기 결과 엑셀을 입력받아 상품별 의사결정·캠페인 분리안을 산출하며, 수치·표·의사결정 데이터 스킬이라 ai-slop-reviewer 체이닝은 제외합니다. end-ROAS 공식은 moai-seller:commerce-margin-calculator references/end-roas.md를 참조합니다.
   [책임 경계] 페어 moai-marketer:marketing-performance-report(GA4·메타·네이버 다채널 ROAS 종합)와 구분 — 본 스킬은 쿠팡 단일 채널 광고관리 전담. 마진·엔드 ROAS 계산은 moai-seller:commerce-margin-calculator, 채널 등록·운영은 moai-seller:commerce-marketplace-coupang.
 version: "1.0.0"
 ---
@@ -155,7 +155,7 @@ version: "1.0.0"
 [광고 운영] commerce-marketplace-coupang-ads ← ← 본 스킬 ← ←
             ↓ (광고 분석 결과 기반)
         commerce-detail-page-copy --mode diagnose (CTR/CVR 진단)
-        commerce-channel-message (NCM 15종 재생성)
+        cs-channel-message (NCM 15종 재생성)
         commerce-margin-calculator (엔드 ROAS 재산정)
 ```
 

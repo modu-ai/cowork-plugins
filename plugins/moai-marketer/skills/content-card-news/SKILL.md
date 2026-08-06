@@ -9,7 +9,7 @@ description: |
   - "재택근무 도구 비교 카드뉴스 만들어줘"
   - "스타트업 시드 라운드 체크리스트 카드뉴스 써줘"
   - "프롬프트 엔지니어링 FAQ 카드뉴스 기획해줘"
-  주제에 맞는 구성 패턴을 자동으로 골라 4장을 채우고, 이미지 생성은 moai-coworker 이미지 스킬로, 한국어 자연화는 moai-writer:general-humanize-korean으로 이어집니다.
+  주제에 맞는 구성 패턴을 자동으로 골라 4장을 채우고, 이미지 생성은 moai-coworker 이미지 스킬로, 한국어 자연화는 moai-writer:korean-humanize으로 이어집니다.
 version: "1.0.0"
 ---
 
@@ -104,7 +104,7 @@ version: "1.0.0"
 
 ### 7단계 — 카피 검수 체이닝
 
-- AI 슬롭 표현 회피: `moai-coworker:general-ai-slop-reviewer` 또는 `moai-writer:general-humanize-korean`
+- AI 슬롭 표현 회피: `moai-coworker:ai-slop-reviewer` 또는 `moai-writer:korean-humanize`
 - 사실 확인: 통계·수치·인물 정보는 원출처 검증 필수
 - 한국어 가독성: 한 줄 24자 이내·줄간격 1.5배
 
@@ -224,7 +224,7 @@ CTA: [저장/공유/팔로우/링크/댓글/DM 중 1개]
 
 - AI가 만든 통계·수치·인물·인용 정보는 **반드시 원출처 검증** 후 게시
 - 출처가 불확실한 내용은 "예시", "가설" 등으로 명시
-- AI 슬롭 표현 (혁신적인·차세대·재정의하는 등) 회피 → `moai-writer:general-humanize-korean` 체이닝 권장
+- AI 슬롭 표현 (혁신적인·차세대·재정의하는 등) 회피 → `moai-writer:korean-humanize` 체이닝 권장
 
 ### 분량 초과 시
 
@@ -263,11 +263,11 @@ CTA: [저장/공유/팔로우/링크/댓글/DM 중 1개]
 | `moai-media:media-midjourney-v8-prompt` | 비주얼 임팩트 중심 |
 | `moai-media:media-audio-gen` | 카드뉴스 영상화 시 보이스오버 |
 | `moai-marketer:content-copywriting` | 마케팅 카피·헤드라인 |
-| `moai-writer:general-humanize-korean` | 한국어 AI 티 정밀 자연화 |
+| `moai-writer:korean-humanize` | 한국어 AI 티 정밀 자연화 |
 | `moai-marketer:content-sns-content` | 인스타·스레드·페북 채널별 콘텐츠 |
 | `moai-marketer:marketing-campaign-planner` | 캠페인 단위 시리즈 카드뉴스 |
-| `moai-coworker:general-ai-slop-reviewer` | 텍스트 AI 슬롭 검수 |
-| `moai-designer:cd-slop-check` | 디자인 카피 슬롭 검수 |
+| `moai-coworker:ai-slop-reviewer` | 텍스트 AI 슬롭 검수 |
+| `moai-designer:design-slop-check` | 디자인 카피 슬롭 검수 |
 
 ## References
 

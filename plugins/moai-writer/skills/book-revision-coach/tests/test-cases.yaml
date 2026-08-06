@@ -92,8 +92,8 @@ test_cases:
     expected:
       - chain:
         - korean-spell-check (정밀 맞춤법)
-        - general-humanize-korean (AI 티 — 필수)
-        - general-ai-slop-reviewer (최종 — 필수)
+        - korean-humanize (AI 티 — 필수)
+        - ai-slop-reviewer (최종 — 필수)
         - book-proposal-writer (투고 제안서)
     pass_criteria:
       - chain_explicit: true

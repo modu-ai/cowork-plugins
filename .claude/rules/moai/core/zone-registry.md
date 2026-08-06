@@ -542,7 +542,7 @@ moai constitution list --format json
   zone_class: frozen-canonical
   file: .claude/rules/moai/design/constitution.md
   anchor: "#31-brand-context-constitutional-parent"
-  clause: "[HARD] moai-domain-copywriting MUST adhere to brand voice, tone, and terminology from brand-voice.md"
+  clause: "[HARD] design-copywriting MUST adhere to brand voice, tone, and terminology from brand-voice.md"
   canary_gate: true
 
 - id: CONST-V3R2-063
@@ -590,7 +590,7 @@ moai constitution list --format json
   zone_class: frozen-canonical
   file: .claude/rules/moai/design/constitution.md
   anchor: "#32-design-brief-execution-scope"
-  clause: "[HARD] moai-workflow-design continues to write machine-generated artifacts to .moai/design/"
+  clause: "[HARD] design-workflow continues to write machine-generated artifacts to .moai/design/"
   canary_gate: true
 
 - id: CONST-V3R2-069

@@ -21,7 +21,7 @@ flowchart TD
 
 ## 사용 스킬
 
-- **`moai-analyst:office-data-visualizer`** — shadcn/ui 기반 데이터 시각화·차트·대시보드 생성. HTML 대시보드 출력 전 소크라테스식 인터뷰로 메시지 명확화.
+- **`moai-analyst:data-visualizer`** — shadcn/ui 기반 데이터 시각화·차트·대시보드 생성. HTML 대시보드 출력 전 소크라테스식 인터뷰로 메시지 명확화.
 
 ## 차트 선택 룰
 
@@ -66,7 +66,7 @@ flowchart TD
 > shadcn/ui 기반 HTML로.
 {{< /terminal >}}
 
-`office-data-visualizer`가 인터뷰로 메시지를 정련한 뒤 HTML 대시보드를 생성합니다.
+`data-visualizer`가 인터뷰로 메시지를 정련한 뒤 HTML 대시보드를 생성합니다.
 
 ## 한국 시각화 함정
 
@@ -90,5 +90,5 @@ flowchart TD
 
 ### Sources
 
-- moai-analyst 플러그인 [`office-data-visualizer`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-analyst/skills/office-data-visualizer/SKILL.md)
+- moai-analyst 플러그인 [`data-visualizer`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-analyst/skills/data-visualizer/SKILL.md)
 - [shadcn/ui charts](https://ui.shadcn.com/charts) · [Color Brewer](https://colorbrewer2.org)

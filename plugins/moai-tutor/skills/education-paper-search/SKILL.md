@@ -113,7 +113,7 @@ GET https://open.kci.go.kr/po/openapi/openApiSearch.kci
 
 - **moai-tutor:education-paper-writer** - 논문 작성 및 참고문헌 포맷팅
 - **moai-tutor:education-grant-writer** - 연구비 신청서 선행연구 조사 섹션 작성
-- **moai-analyst:office-data-visualizer** - 연구 동향 시각화 (연도별 추세 차트)
+- **moai-analyst:data-visualizer** - 연구 동향 시각화 (연도별 추세 차트)
 
 ## API 발급 안내
 

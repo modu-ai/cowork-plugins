@@ -279,7 +279,7 @@ AI가 생성한 랜딩 페이지 카피는 사실 확인 후 사용하세요.
 - SNS 포스팅: `moai-marketer:content-sns-content` 스킬 사용
 - 이메일 뉴스레터: `moai-marketer:content-newsletter` 스킬 사용
 - 제품 상세페이지: `moai-seller:commerce-product-detail` 스킬 사용
-- 데이터 대시보드: `moai-analyst:office-data-visualizer` 스킬 사용
+- 데이터 대시보드: `moai-analyst:data-visualizer` 스킬 사용
 - 멀티 페이지 웹사이트: 별도 웹 에이전트 필요
 
 
@@ -287,8 +287,8 @@ AI가 생성한 랜딩 페이지 카피는 사실 확인 후 사용하세요.
 
 본 스킬이 산출하는 한국어 텍스트는 배포 전 의무 게이트를 통과합니다:
 
-1. `moai-coworker:general-ai-slop-reviewer` — 1차 일반 AI 슬롭 검수 (금지어, 구조 패턴, 리듬)
-2. `moai-writer:general-humanize-korean` — 2차 한국어 정밀 윤문 (40+ 패턴 SSOT, 의미 불변)
+1. `moai-coworker:ai-slop-reviewer` — 1차 일반 AI 슬롭 검수 (금지어, 구조 패턴, 리듬)
+2. `moai-writer:korean-humanize` — 2차 한국어 정밀 윤문 (40+ 패턴 SSOT, 의미 불변)
 
 두 게이트는 대시 대비 헤드라인·조사·체언 종결 조각문·"A에서 B로" 전환 공식 S1 패턴을 잡아냅니다. 게이트 통과 없이 산출물을 바로 배포하지 않습니다.
 

@@ -71,7 +71,7 @@ Team·Enterprise의 경우 관리자가 Admin settings → Capabilities에서 Co
 
 ### Q7. 산출물에 AI 특유의 어투가 남아 있습니다
 
-체인 마지막에 `general-ai-slop-reviewer`가 실행됐는지 확인하세요. 누락됐다면 "이 문서 AI 슬롭 검수해줘"라고 이어서 요청하면 됩니다.
+체인 마지막에 `ai-slop-reviewer`가 실행됐는지 확인하세요. 누락됐다면 "이 문서 AI 슬롭 검수해줘"라고 이어서 요청하면 됩니다.
 
 ## 성능·제한
 
