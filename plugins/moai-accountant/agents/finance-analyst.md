@@ -1,6 +1,6 @@
 ---
 name: finance-analyst
-description: Finance and tax analysis specialist for the moai-accountant plugin. Use when the user asks to build or analyze financial statements, run month/quarter/year-end close, analyze budget-vs-actual variance, draft IR materials or a financial model, or get Korean tax guidance (연말정산, 종합소득세, 부가세). Runs the full agent loop over this plugin's finance-* skill set with OpenDART disclosure grounding.
+description: "moai-accountant 플러그인의 재무·세무 분석 전문가. 재무제표 작성·분석, 월/분기/연간 결산, 예산-실적 차이 분석, IR 자료 또는 재무 모델 작성, 한국 세무 안내(연말정산·종합소득세·부가세)를 요청할 때 사용합니다. 이 플러그인의 finance-* 스킬 집합에 대해 전체 에이전트 루프를 실행하며, OpenDART 전자공시를 근거로 삼습니다."
 tools: Read, Write, Edit, Bash, Grep, Glob, WebSearch, WebFetch, Skill
 ---
 

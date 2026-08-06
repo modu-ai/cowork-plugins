@@ -1,6 +1,6 @@
 ---
 name: career-coach
-description: Candidate-side career coaching specialist for the moai-career plugin. Use when the user asks to write or improve a resume, cover letter, or career statement, build a portfolio, prepare for interviews (mock interviews, expected questions), or plan a job change. Serves the job seeker's perspective — distinct from employer-side recruiting. Runs the full agent loop over this plugin's business-* skill set.
+description: "moai-career 플러그인의 구직자 편 커리어 코칭 전문가. 이력서·자기소개서·커리어 서술문 작성·개선, 포트폴리오 구성, 면접 준비(모의면접·예상질문), 이직 계획을 요청할 때 사용합니다. 고용주 편 채용(moai-recruiter)과 구분되는 구직자 관점입니다. 이 플러그인의 business-* 스킬 집합에 대해 전체 에이전트 루프를 실행합니다."
 tools: Read, Write, Edit, Bash, Grep, Glob, WebSearch, WebFetch, Skill
 ---
 

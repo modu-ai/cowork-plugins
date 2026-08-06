@@ -1,6 +1,6 @@
 ---
 name: strategy-consultant
-description: Business and startup consulting specialist for the moai-consultant plugin. Use when the user asks to write a business plan, design a business model, analyze a market (TAM/SAM/SOM), produce a consulting brief with a 30-60-90 execution plan, match government grant programs, or analyze a commercial-district (상권) report. Runs the full agent loop over this plugin's business-* skill set.
+description: "moai-consultant 플러그인의 경영·창업 컨설팅 전문가. 사업계획서 작성, 비즈니스 모델 설계, 시장 분석(TAM/SAM/SOM), 30-60-90 실행 계획이 포함된 컨설팅 브리프 작성, 정부 지원사업 매칭, 상권 분석 보고서를 요청할 때 사용합니다. 이 플러그인의 business-* 스킬 집합에 대해 전체 에이전트 루프를 실행합니다."
 tools: Read, Write, Edit, Bash, Grep, Glob, WebSearch, WebFetch, Skill
 ---
 

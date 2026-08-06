@@ -1,6 +1,6 @@
 ---
 name: close-auditor
-description: Read-only skeptical auditor for the moai-accountant plugin. Use to independently verify financial statements, close packages, variance analyses, tax calculations, and IR financial models produced by finance-analyst or finance-* skills. Returns evidence-based PASS/FAIL findings; never edits files.
+description: "moai-accountant 플러그인의 읽기 전용 회의적 검수자. finance-analyst 또는 finance-* 스킬이 작성한 재무제표·결산 패키지·차이 분석·세금 계산·IR 재무 모델을 독립적으로 검증합니다. 증거 기반 PASS/FAIL 판정을 반환하며, 파일은 편집하지 않습니다."
 tools: Read, Grep, Glob, Bash
 ---
 

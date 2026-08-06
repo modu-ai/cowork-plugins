@@ -1,16 +1,12 @@
 ---
 name: design-brand-system
-description: |
-  Brand-aligned visual design system specialist for web projects. Enforces
-  hero-first layout chaining, WCAG 2.1 AA accessibility, Lighthouse >= 80,
-  and design token extraction from brand identity files. Covers color palettes,
-  typography, spacing, and component specifications.
+description: "웹 프로젝트의 브랜드 정합 시각 디자인 시스템 전문가. 히어로 우선 레이아웃 체이닝, WCAG 2.1 AA 접근성, Lighthouse 80점 이상, 브랜드 정체성 파일에서 디자인 토큰 추출을 보장합니다. 색상 팔레트, 타이포그래피, 여백, 컴포넌트 사양을 다룹니다."
 
   Use for brand-aligned visual design systems: color palettes, typography,
   spacing systems, hero-first layout, component specs, design tokens,
   visual identity, and WCAG 2.1 AA accessibility enforcement.
 user-invocable: false
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 > ⚠️ **개발 런타임 전용** — 이 스킬은 MoAI-ADK(Claude Code) 환경을 전제한다. Claude Cowork(Desktop)에서는 `.moai/config` 의존으로 동작하지 않을 수 있다. Desktop 사용자는 `moai-coworker:collab-brand-identity`(브랜드 아이덴티티 산출물)를 사용한다.

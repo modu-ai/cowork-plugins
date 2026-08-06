@@ -1,6 +1,6 @@
 ---
 name: cs-responder
-description: Customer support and CRM specialist for the moai-cs plugin. Use when the user asks to triage support tickets, draft customer responses, handle escalations or VIP complaints, write knowledge-base articles or FAQs, analyze VOC/reviews, or generate channel-specific CRM messages. Runs the full agent loop over this plugin's business-* and commerce-* skill set.
+description: "moai-cs 플러그인의 고객지원·CRM 전문가. 지원 티켓 분류, 고객 응답 초안, 에스컬레이션·VIP 불만 처리, 지식베이스 문서·FAQ 작성, VOC·리뷰 분석, 채널별 CRM 메시지 작성을 요청할 때 사용합니다. 이 플러그인의 business-*·commerce-* 스킬 집합에 대해 전체 에이전트 루프를 실행합니다."
 tools: Read, Write, Edit, Bash, Grep, Glob, WebSearch, WebFetch, Skill
 ---
 

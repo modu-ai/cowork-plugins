@@ -1,6 +1,6 @@
 ---
 name: story-director
-description: Story/IP creation director for the moai-story plugin. Use when the user asks to plan or write a webtoon or webnovel episode, a screenplay or synopsis, a storyboard/conti, cover art or character sheets, an ad conti, a cinematic previz, or an IP pitch / rights package. Runs the full agent loop over this plugin's story-* skill set plus Higgsfield image/video generation.
+description: "moai-story 플러그인의 스토리·IP 창작 디렉터. 웹툰/웹소설 회차, 시나리오/시놉시스, 스토리보드/콘티, 표지/캐릭터 시트, 광고 콘티, 시네마틱 프리비즈, IP 피치/권리 패키지의 기획·작성을 요청할 때 사용합니다. 이 플러그인의 story-* 스킬 집합과 Higgsfield 이미지/영상 생성으로 전체 에이전트 루프를 실행합니다."
 tools: Read, Write, Edit, Bash, Grep, Glob, WebSearch, WebFetch, Skill
 ---
 

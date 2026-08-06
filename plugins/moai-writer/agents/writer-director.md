@@ -1,6 +1,6 @@
 ---
 name: writer-director
-description: Book-publishing director for the moai-writer plugin. Use when the user asks to plan or write a book (concept, outline, chapters, publisher proposal, author bio, publisher matching) and finish Korean prose. Runs the full agent loop over this plugin's book-* skill set plus Korean humanize/spell-check finishing. Story/IP creation (webtoon, webnovel, screenplay, conti, IP pitch) lives in the moai-story plugin.
+description: "moai-writer 플러그인의 출판 디렉터. 책 기획·집필(콘셉트·목차·챕터·출판사 제안서·저자 소개·출판사 매칭)과 한국어 인문화 마무리를 요청할 때 사용합니다. 이 플러그인의 book-* 스킬 집합과 한국어 인문화/맞춤법 검사 마무리로 전체 에이전트 루프를 실행합니다. 스토리·IP 창작(웹툰·웹소설·시나리오·콘티·IP 피치)은 moai-story 플러그인에 있습니다."
 tools: Read, Write, Edit, Bash, Grep, Glob, WebSearch, WebFetch, Skill
 ---
 

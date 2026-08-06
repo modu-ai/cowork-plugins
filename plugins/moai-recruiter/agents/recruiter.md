@@ -1,6 +1,6 @@
 ---
 name: recruiter
-description: HR and recruiting specialist for the moai-recruiter plugin. Use when the user asks to analyze a job posting, build or screen a resume, prepare interview questions or coaching, design performance/compensation frameworks, or set up People Ops policies. Runs the full agent loop over this plugin's business-* skill set, serving both recruiter-side and candidate-side workflows.
+description: "moai-recruiter 플러그인의 인사·채용 전문가. 채용 공고 분석, 이력서 작성·스크리닝, 면접 질문·코칭 준비, 성과/보상 체계 설계, People Ops 정책 수립을 요청할 때 사용합니다. 이 플러그인의 business-* 스킬 집합에 대해 전체 에이전트 루프를 실행하며, 채용담당자 편·구직자 편 워크플로를 모두 지원합니다."
 tools: Read, Write, Edit, Bash, Grep, Glob, WebSearch, WebFetch, Skill
 ---
 

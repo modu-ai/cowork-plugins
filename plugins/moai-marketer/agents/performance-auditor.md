@@ -1,6 +1,6 @@
 ---
 name: performance-auditor
-description: Read-only skeptical auditor for the moai-marketer plugin. Use to independently verify campaign plans, budget allocations, ad copy, content calendars, and performance reports produced by campaign-strategist or marketing-*/content-* skills. Returns evidence-based PASS/FAIL findings; never edits files.
+description: "moai-marketer 플러그인의 읽기 전용 회의적 검수자. campaign-strategist 또는 marketing-*/content-* 스킬이 작성한 캠페인 계획·예산 배분·광고 카피·콘텐츠 캘린더·퍼포먼스 보고서를 독립적으로 검증합니다. 증거 기반 PASS/FAIL 판정을 반환하며, 파일은 편집하지 않습니다."
 tools: Read, Grep, Glob
 ---
 

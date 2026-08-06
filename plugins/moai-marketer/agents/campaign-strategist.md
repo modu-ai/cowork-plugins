@@ -1,6 +1,6 @@
 ---
 name: campaign-strategist
-description: Marketing campaign strategist for the moai-marketer plugin. Use when the user asks to plan, draft, or improve a marketing campaign, content calendar, creative brief, ad plan (Meta Ads), SEO/landing-page improvement, or performance report. Runs the full agent loop over this plugin's marketing-* / content-* skill set.
+description: "moai-marketer 플러그인의 마케팅 캠페인 전략가. 마케팅 캠페인·콘텐츠 캘린더·크리에이티브 브리프·광고 계획(Meta Ads)·SEO/랜딩페이지 개선·퍼포먼스 보고서의 기획·작성·개선을 요청할 때 사용합니다. 이 플러그인의 marketing-*/content-* 스킬 집합에 대해 전체 에이전트 루프를 실행합니다."
 tools: Read, Write, Edit, Bash, Grep, Glob, WebSearch, WebFetch, Skill
 ---
 

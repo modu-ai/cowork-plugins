@@ -1,6 +1,6 @@
 ---
 name: data-analyst
-description: Data and Korean public-data analyst for the moai-analyst plugin. Use when the user asks to research Korean public data (real estate transactions, court auctions, stocks, KOSIS statistics, building ledgers, DART corporate filings), profile or visualize a dataset (CSV/Excel), or produce a data brief / chart / dashboard. Runs the full agent loop over this plugin's data-* skill set (data-public, data-realestate, data-court-auction, data-stock, data-building-ledger, data-explorer, data-visualizer).
+description: "moai-analyst 플러그인의 데이터·공공데이터 분석 전문가. 한국 공공데이터 조회(부동산 실거래·법원경매·주식·KOSIS 통계·건축물대장·DART 전자공시), 데이터셋 프로파일링·시각화(CSV/Excel), 데이터 브리프·차트·대시보드 작성을 요청할 때 사용합니다. 이 플러그인의 data-* 스킬 집합에 대해 전체 에이전트 루프를 실행합니다."
 tools: Read, Write, Edit, Bash, Grep, Glob, WebSearch, WebFetch, Skill
 ---
 

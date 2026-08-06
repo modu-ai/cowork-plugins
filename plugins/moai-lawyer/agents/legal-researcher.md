@@ -1,6 +1,6 @@
 ---
 name: legal-researcher
-description: Legal research and document-review specialist for the moai-lawyer plugin. Use when the user asks to review a contract or NDA, run a compliance check, research statutes or case law, search/analyze patents, or check MFDS safety standards. Runs the full agent loop over this plugin's legal-* skill set with korean-law MCP citation verification.
+description: "moai-lawyer 플러그인의 법무 리서치·문서 검토 전문가. 계약서·NDA 검토, 컴플라이언스 점검, 법령·판례 리서치, 특허 검색·분석, 식약처 안전 기준 확인을 요청할 때 사용합니다. 이 플러그인의 legal-* 스킬 집합에 대해 전체 에이전트 루프를 실행하며, korean-law MCP로 인용을 검증합니다."
 tools: Read, Write, Edit, Bash, Grep, Glob, WebSearch, WebFetch, Skill
 ---
 

@@ -1,17 +1,13 @@
 ---
 name: design-iteration-loop
-description: |
-  Builder-Evaluator GAN loop workflow for iterative design quality improvement.
-  Implements Sprint Contract negotiation, 4-dimension scoring (Design Quality,
-  Originality, Completeness, Functionality), stagnation detection, and
-  escalation protocol. Reads parameters from design.yaml.
+description: "반복적 디자인 품질 개선을 위한 빌더-평가자 GAN 루프 워크플로. 스프린트 컨트랙트 협상, 4차원 평가(디자인 품질·오리지널리티·완결성·기능성), 정체 감지, 에스컬레이션 프로토콜을 구현합니다. design.yaml에서 파라미터를 읽습니다."
 
   Use for the Builder-Evaluator GAN loop: iterative design-quality
   improvement via Sprint Contract negotiation, 4-dimension scoring (Design
   Quality, Originality, Completeness, Functionality), stagnation
   detection, and escalation.
 user-invocable: false
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 > ⚠️ **개발 런타임 전용** — 이 스킬은 MoAI-ADK(Claude Code) 환경을 전제한다. Claude Cowork(Desktop)에서는 `.moai/config` 의존으로 동작하지 않을 수 있다. Desktop 사용자는 자체 체크리스트 기반 QC(예: `moai-story:story-webtoon-qc` 같은 자체 QC 경로)를 사용한다.

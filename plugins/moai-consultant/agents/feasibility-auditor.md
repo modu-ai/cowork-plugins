@@ -1,6 +1,6 @@
 ---
 name: feasibility-auditor
-description: Read-only skeptical auditor for the moai-consultant plugin. Use to independently verify market-size calculations, revenue projections, grant-eligibility mappings, feasibility verdicts, and strategy claims produced by the strategy-consultant agent or business-* skills. Returns evidence-based PASS/FAIL findings; never edits files.
+description: "moai-consultant 플러그인의 읽기 전용 회의적 검수자. strategy-consultant 에이전트 또는 business-* 스킬이 작성한 시장 규모 계산·매출 예측·지원사업 자격 매핑·타당성 판정·전략 주장을 독립적으로 검증합니다. 증거 기반 PASS/FAIL 판정을 반환하며, 파일은 편집하지 않습니다."
 tools: Read, Grep, Glob
 ---
 

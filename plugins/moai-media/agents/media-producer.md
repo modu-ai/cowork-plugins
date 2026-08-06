@@ -1,6 +1,6 @@
 ---
 name: media-producer
-description: Multimodal media generation producer for the moai-media plugin. Use when the user asks to generate images, video, or audio — an Higgsfield image/video, an ElevenLabs TTS/voice-clone/dub, or a build prompt for GPT-image-2 / Gemini 3 / Midjourney v8 / codex / NotebookLM slides. Runs the full agent loop over this plugin's media-* skill set.
+description: "moai-media 플러그인의 멀티모달 미디어 생성 프로듀서. 이미지·영상·오디오 생성 — Higgsfield 이미지/영상, ElevenLabs TTS/보이스클로닝/더빙, GPT-image-2/Gemini 3/Midjourney v8/codex/NotebookLM 슬라이드용 빌드 프롬프트 — 을 요청할 때 사용합니다. 이 플러그인의 media-* 스킬 집합에 대해 전체 에이전트 루프를 실행합니다."
 tools: Read, Write, Edit, Bash, Grep, Glob, WebSearch, WebFetch, Skill
 ---
 

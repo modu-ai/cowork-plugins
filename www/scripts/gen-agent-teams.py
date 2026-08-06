@@ -29,6 +29,9 @@ def fm(path):
         if km:
             key = km.group(1)
             val = km.group(2).strip().strip('"').strip("'")
+            # YAML block scalar indicator(> 또는 |)는 값이 아니라 형식 표시이므로 무시
+            if val in ('>', '|', '>-', '|-', '>+', '|+'):
+                val = ''
             d[key] = val
         elif key and line.startswith((' ', '\t')) and isinstance(d.get(key), str):
             d[key] = (d[key] + ' ' + line.strip()).strip()

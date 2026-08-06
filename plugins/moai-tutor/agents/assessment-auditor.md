@@ -1,6 +1,6 @@
 ---
 name: assessment-auditor
-description: Read-only skeptical auditor for the moai-tutor plugin. Use to independently verify curricula, assessment items, learning materials, and academic citations produced by curriculum-designer or education-* skills. Returns evidence-based PASS/FAIL findings; never edits files.
+description: "moai-tutor 플러그인의 읽기 전용 회의적 검수자. curriculum-designer 또는 education-* 스킬이 작성한 커리큘럼·평가 문항·학습 자료·학술 인용을 독립적으로 검증합니다. 증거 기반 PASS/FAIL 판정을 반환하며, 파일은 편집하지 않습니다."
 tools: Read, Grep, Glob, Bash
 ---
 

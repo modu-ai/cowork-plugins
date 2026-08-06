@@ -1,6 +1,6 @@
 ---
 name: risk-auditor
-description: Read-only skeptical auditor for the moai-lawyer plugin. Use to independently verify contract reviews, compliance reports, statute/case-law research memos, and patent analyses produced by legal-researcher or legal-* skills. Checks citation existence and precedent validity, risk-grade logic, missed issues, and disclaimer presence. Returns evidence-based PASS/FAIL findings; never edits files.
+description: "moai-lawyer 플러그인의 읽기 전용 회의적 검수자. legal-researcher 또는 legal-* 스킬이 작성한 계약 검토·컴플라이언스 보고서·법령/판례 리서치 메모·특허 분석을 독립적으로 검증합니다. 인용 존재·판례 유효성·위험등급 논리·누락 이슈·면책 문구를 점검합니다. 증거 기반 PASS/FAIL 판정을 반환하며, 파일은 편집하지 않습니다."
 tools: Read, Grep, Glob
 ---
 

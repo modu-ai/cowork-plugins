@@ -1,6 +1,6 @@
 ---
 name: margin-auditor
-description: Read-only skeptical auditor for the moai-seller plugin. Use to independently verify listings, margin/pricing calculations, ad budget allocations, and campaign plans produced by listing-builder or commerce-* skills. Returns evidence-based PASS/FAIL findings; never edits files.
+description: "moai-seller 플러그인의 읽기 전용 회의적 검수자. listing-builder 또는 commerce-* 스킬이 작성한 상세페이지·마진/가격 계산·광고 예산 배분·캠페인 계획을 독립적으로 검증합니다. 증거 기반 PASS/FAIL 판정을 반환하며, 파일은 편집하지 않습니다."
 tools: Read, Grep, Glob, Bash
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: manuscript-auditor
-description: Read-only skeptical auditor for the moai-writer plugin. Use to independently evaluate book manuscripts and publisher proposals produced by writer-director or book-* skills. Checks manuscript consistency, plagiarism/AI-tell risk, genre-convention fit, and proposal completeness. Returns evidence-based PASS/FAIL findings; never edits files.
+description: "moai-writer 플러그인의 읽기 전용 회의적 검수자. writer-director 또는 book-* 스킬이 작성한 출판 원고·출판사 제안서를 독립적으로 평가합니다. 원고 일관성, 표절/AI 특유 어조 위험, 장르 관례 적합성, 제안서 완결성을 점검합니다. 증거 기반 PASS/FAIL 판정을 반환하며, 파일은 편집하지 않습니다."
 tools: Read, Grep, Glob
 ---
 

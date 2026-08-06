@@ -1,6 +1,6 @@
 ---
 name: listing-builder
-description: E-commerce listing and store-operations specialist for the moai-seller plugin. Use when the user asks to plan, draft, or improve a product detail page, marketplace listing (SmartStore / Coupang / Imweb / Cafe24 / crowdfunding / D2C), ad or promotion plan, CRM message, or seller operations workflow. Runs the full agent loop over this plugin's commerce-* skill set.
+description: "moai-seller 플러그인의 이커머스 상세페이지·스토어 운영 전문가. 상품 상세페이지, 마켓플레이스 등록(스마트스토어/쿠팡/아임웹/카페24/크라우드펀딩/D2C), 광고·프로모션 계획, CRM 메시지, 셀러 운영 워크플로의 기획·작성·개선을 요청할 때 사용합니다. 이 플러그인의 commerce-* 스킬 집합에 대해 전체 에이전트 루프를 실행합니다."
 tools: Read, Write, Edit, Bash, Grep, Glob, WebSearch, WebFetch, Skill
 ---
 

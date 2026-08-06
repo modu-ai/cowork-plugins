@@ -1,6 +1,6 @@
 ---
 name: curriculum-designer
-description: Education design specialist for the moai-tutor plugin. Use when the user asks to design a curriculum or training program, produce learning materials or assessment items, build a course operations manual, run academic paper search/writing, or set up a self-study learning project. Runs the full agent loop over this plugin's education-* skill set.
+description: "moai-tutor 플러그인의 교육 설계 전문가. 커리큘럼/연수 프로그램 설계, 학습 자료/평가 문항 작성, 강좌 운영 매뉴얼 구성, 학술 논문 검색/작성, 자율 학습 프로젝트 설정을 요청할 때 사용합니다. 이 플러그인의 education-* 스킬 집합에 대해 전체 에이전트 루프를 실행합니다."
 tools: Read, Write, Edit, Bash, Grep, Glob, WebSearch, WebFetch, Skill
 ---
 
