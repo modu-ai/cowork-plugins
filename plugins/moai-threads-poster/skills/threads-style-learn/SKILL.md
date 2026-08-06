@@ -9,7 +9,7 @@ description: |
   - "스타일 프로필 만들어줘"
   - "이전 스레드/페이스북 글로 문체 학습해줘"
   - "내 톤앤매너 분석해줘"
-  [책임 경계] vs 형제 스킬: 문체 *분석* 과 프로필 *저장* 만 담당합니다. 저장된 프로필을 적용해 초안을 작성하는 건 threads-post-draft, 여러 채널(Threads/Facebook/X) 포맷은 threads-multichannel, 승인·예약은 threads-schedule, 상태 조회는 threads-status 가 담당합니다. 이 스킬은 발행/승인/조회를 하지 않습니다.
+  [책임 경계] vs 형제 스킬: 문체 *분석* 과 프로필 *저장* 만 담당합니다. 저장된 프로필을 적용해 초안을 작성·발행하는 건 threads-post-draft, 여러 채널(Threads/Facebook/X) 포맷은 threads-multichannel 이 담당합니다. 이 스킬은 발행을 하지 않습니다.
 version: "1.0.0"
 ---
 
@@ -133,17 +133,13 @@ threads_style_save(
 
 | 스킬 | 사용 시점 |
 |------|----------|
-| `threads-post-draft` | 저장된 프로필을 적용해 초안 작성 |
+| `threads-post-draft` | 저장된 프로필을 적용해 초안 작성·즉시 발행 |
 | `threads-multichannel` | 작성된 초안을 Threads/Facebook/X 용으로 포맷 |
-| `threads-schedule` | PENDING 초안 승인·예약 |
-| `threads-status` | 큐 상태 조회 |
 
 ## 이 스킬을 사용하지 말아야 할 때
 
-- 초안 작성: `threads-post-draft` 스킬 사용 (이 스킨은 프로필 저장까지)
+- 초안 작성·발행: `threads-post-draft` 스킬 사용 (이 스킨은 프로필 저장까지)
 - 멀티 채널 포맷(Facebook/X): `threads-multichannel` 스킬 사용
-- 승인/예약: `threads-schedule` 스킬 사용
-- 상태 조회: `threads-status` 스킬 사용
 - 프로필 없이 한 번만 글 쓰기: `threads-post-draft` 가 프로필 없을 때 기본 톤으로 작성하므로 이 스킬은 생략 가능
 
 ---

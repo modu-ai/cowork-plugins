@@ -16,7 +16,6 @@ dependencies = [
 
 [project.scripts]
 threads-poster-mcp = "threads_poster.server:main"
-threads-poster-runner = "threads_poster.runner:main"
 
 [build-system]
 requires = ["hatchling"]

@@ -134,7 +134,7 @@ threads_get_profile
 | `setup_required` 에러 | 토큰/USER_ID 미설정 | `THREADS_ACCESS_TOKEN`, `THREADS_USER_ID` export |
 | HTTP 190 `OAuthException` | 토큰 만료 | `threads_refresh_token` 호출 후 토큰 갱신; 만료 시 4~6단계 재수행 |
 | HTTP 4 / 10 `permission` | 스코프 부족 / 테스터 미등록 | `threads_content_publish` 스코프 + 테스터 초대 확인 |
-| HTTP 613 `rate limit` | 24시간 250 포스트 초과 | 24시간 후 재시도 (M2 큐가 레이트리밋 관리 예정) |
+| HTTP 613 `rate limit` | 24시간 250 포스트 초과 | 24시간 후 재시도 |
 | `text exceeds 500-byte` | 본문 500 UTF-8 바이트 초과 | 본문 줄이기 (이모지·한글은 멀티바이트) |
 | 이미지/비디오 400 | URL 이 비공개 또는 스펙 초과 | 공개 URL 확인 (이미지 ≤8MB JPEG/PNG, 비디오 ≤1GB MOV/MP4 ≤5분) |
 
@@ -151,8 +151,8 @@ Facebook Page 장기 액세스 토큰을 발급받아 `graph.facebook.com` 호�
 > 발행할 수 없다. 발급 전에 Instagram 계정을 Professional 로 전환해야 한다.
 
 > **스케줄링 참고 (REQ-INST-009)**: Instagram Graph API 는 서버 측 스케줄링 파라미터가 없다.
-> 예약은 통합 발행 큐에 intent 를 보관하고, 예정 시각 도래 후 `instagram_queue_publish_due` 로
-> 세션 안에서 발행한다 (백그라운드 자동 발행 없음).
+> 본 플러그인은 `instagram_publish_image/video/reel` 로 세션 안에서 즉시 발행만 한다.
+> 예약·정기 발행은 Claude Cowork 이 담당한다 (백그라운드 자동 발행 없음).
 
 공식 문서: <https://developers.facebook.com/docs/instagram-api> (Content Publishing 섹션).
 
@@ -245,7 +245,7 @@ instagram_get_profile
 | `instagram_business_account` 가 비었음 | Page-IG 연결 안 됨 | Meta Business Suite 에서 Instagram 을 Page 에 연결 |
 | PPA 미완료 오류 | Page Publishing Authorization 필요 | Meta Business Suite 에서 PPA 완료 후 재시도 |
 | 이미지 PNG 거부 | Instagram 은 JPEG-only | JPEG 변환 후 재시도 (Threads 와 상이) |
-| HTTP 24h 한도 | 100건/24h (media_publish 50) 초과 | 24h 후 재시도 — 큐가 한도 도달 시 남은 IG row 스킵 |
+| HTTP 24h 한도 | 100건/24h (media_publish 50) 초과 | 24h 후 재시도 |
 
 ---
 

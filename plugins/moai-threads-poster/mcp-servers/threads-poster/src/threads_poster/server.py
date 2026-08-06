@@ -1,24 +1,21 @@
 """moai-threads-poster MCP 서버 — stdio 진입점 (stdio MCP server, entry point).
 
-Threads(Meta) Graph API 로 텍스트·이미지·비디오를 발행하는 즉시 발행 도구 5종과
-SQLite 발행 큐 관리 도구 5종(M2) 을 노출한다. 자격증명은 환경변수
-(``THREADS_ACCESS_TOKEN``, ``THREADS_USER_ID``) 에서 읽는다 — 미설정 시 서버는
+Threads(Meta) Graph API 로 텍스트·이미지·비디오를 발행하는 **직접 발행** 도구와
+Instagram 발행·댓글 도구, 문체 프로필·멀티 채널 포맷 도구를 노출한다. 자격증명은
+환경변수(``THREADS_ACCESS_TOKEN``, ``THREADS_USER_ID``) 에서 읽는다 — 미설정 시 서버는
 크래시하지 않고, 각 도구가 설정 안내(setup_required) 에러를 반환한다.
 
-즉시 발행 도구 (immediate-publish tools):
+직접 발행 모델 (direct-publish model):
+  - 세션 안에서 초안을 작성해 사용자에게 보여주고, 승인하면 **즉시** Graph API 로
+    발행한다. 큐·예약·승인 상태머신은 없다.
+  - 예약·정기 발행은 Claude Cowork 이 담당한다 (본 플러그인은 즉시 발행만).
+
+Threads 직접 발행 도구 (immediate-publish tools):
   - ``threads_publish_text``   : 텍스트 게시
   - ``threads_publish_image``  : 이미지 게시
   - ``threads_publish_video``  : 비디오 게시
   - ``threads_get_profile``    : 프로필 조회 (health check)
   - ``threads_refresh_token``  : 장기 토큰 수동 갱신
-
-큐 관리 도구 (queue-management tools, M2 + 분산 등록):
-  - ``threads_queue_add``          : 큐에 PENDING 포스트 추가
-  - ``threads_queue_add_batch``    : 초안 여러 개를 베스트 슬롯에 분산 등록(batch)
-  - ``threads_queue_approve``      : PENDING → APPROVED 승인
-  - ``threads_queue_list``         : 큐 목록 조회
-  - ``threads_queue_get``          : 단일 포스트 상세
-  - ``threads_queue_publish_due``  : due 큐 수동 처리 (세션 안 발행 — runner._process 재사용)
 
 문체 프로필 도구 (style profile tools — Threads 자격증명 불필요, 로컬 파일 I/O):
   - ``threads_style_save``         : 문체 프로필 마크다운을 디스크에 저장
@@ -26,7 +23,13 @@ SQLite 발행 큐 관리 도구 5종(M2) 을 노출한다. 자격증명은 환�
 
 멀티 채널 포맷 도구 (multi-channel formatter — 발행 안 함, 포맷만):
   - ``threads_format_multi_channel`` : Threads/Facebook/X 용으로 텍스트 변형.
-    Threads=큐 도구용, Facebook·X=복붙용. X 는 x_tier(free/premium) 에 따라 분할.
+    Threads=직접 발행 도구용, Facebook·X=복붙용. X 는 x_tier(free/premium) 에 따라 분할.
+
+Instagram 도구 (SPEC-THREADS-POSTER-INSTAGRAM-001 — Facebook Login for Business):
+  - ``instagram_publish_image/video/reel`` : 즉시 2단계 발행
+  - ``instagram_get_profile`` / ``instagram_refresh_token``
+  - ``instagram_comments_list/reply/hide``  : 댓글 모더레이션
+  - ``instagram_insights``                  : 인사이트 조회
 """
 
 from __future__ import annotations
@@ -34,30 +37,16 @@ from __future__ import annotations
 import os
 import re
 import time
-from datetime import date, datetime, timedelta
 from typing import Any, Callable, Optional
-from zoneinfo import ZoneInfo
 
 from mcp.server.fastmcp import FastMCP
 
-from .queue import Queue
-from .runner import _default_db_path, _process as run_queue_once
 from .threads_api import ThreadsAPIError, ThreadsClient
 from .instagram_api import InstagramAPIError, InstagramClient
 
 # Threads 권장: container 생성 후 평균 ~30초 대기 후 publish.
 # Recommended: wait ~30s on average between create_container and publish.
 DEFAULT_PUBLISH_DELAY = 30.0
-
-# 분산 발행 케이던스 — Asia/Seoul 표준시, 베스트 프랙티스 주 3-5회 화/수/목.
-# Distributed-publishing cadence constants (Asia/Seoul, best-practice Tue/Wed/Thu).
-SEOUL_TZ = ZoneInfo("Asia/Seoul")
-# Python weekday(): 월=0, 화=1, 수=2, 목=3, 금=4, 토=5, 일=6.
-_BATCH_SLOT_HOUR = 12  # 피크 점심 슬롯 12:00 (cadence.peak 참고).
-_WEEKLY_3_DAYS = (1, 2, 3)  # 화·수·목 — 주 3회 기본 케이던스.
-_WEEKLY_5_DAYS = (0, 1, 2, 3, 4)  # 월-금 — 주 5회(매일 평일) 케이던스.
-_VALID_BATCH_CADENCES = ("weekly_3", "weekly_5", "manual")
-_VALID_BATCH_MEDIA_TYPES = ("TEXT", "IMAGE", "VIDEO")
 
 _INSTRUCTIONS = (
     "Threads(Meta) Graph API 자동 포스팅 MCP. "
@@ -171,42 +160,6 @@ def _reset_ig_client_for_tests() -> None:
     _ig_client_singleton = None
 
 
-def _server_client_resolver(platform: str, post: dict[str, Any]) -> Optional[Any]:
-    """server.py 큐 도구용 platform별 클라이언트 리졸버 (per-platform client resolver).
-
-    runner._process 에 주입된다. threads row → ``_get_client()``, instagram row →
-    ``_get_ig_client()``. lazy 싱글톤이므로 threads-only 큐는 IG 클라이언트를, ig-only 큐는
-    Threads 클라이언트를 절대 빌드하지 않는다 (D1.a). 자격증명 미설정 플랫폼의 row 는
-    ``None`` 을 반환 → _process 가 setup_required 스킵으로 처리한다.
-    """
-    if platform == "threads":
-        return _get_client()
-    if platform == "instagram":
-        return _get_ig_client()
-    return None
-
-
-# --- M2: 큐 싱글톤 (queue singleton, lazy, env-driven DB path) -----------------
-_queue_singleton: Optional[Queue] = None
-
-
-def _get_queue() -> Queue:
-    """큐 싱글톤 반환 (lazy). DB 경로는 환경변수에서 해석한다 (creds 불필요)."""
-    global _queue_singleton
-    if _queue_singleton is not None:
-        return _queue_singleton
-    _queue_singleton = Queue(_default_db_path())
-    return _queue_singleton
-
-
-def _reset_queue_for_tests() -> None:
-    """테스트 전용: 큐 싱글톤 캐시 초기화 (tests only: reset queue singleton)."""
-    global _queue_singleton
-    if _queue_singleton is not None:
-        _queue_singleton.close()
-    _queue_singleton = None
-
-
 def _publish_delay_seconds() -> float:
     """``THREADS_PUBLISH_DELAY`` 환경변수 읽기 (기본 30초, 테스트는 0)."""
     raw = os.environ.get("THREADS_PUBLISH_DELAY")
@@ -235,75 +188,6 @@ def _publish_result(media_id: str, container_id: str) -> dict[str, Any]:
         "permalink_hint": f"https://www.threads.net/@<username>/post/{media_id}",
         "note": "permalink 은 username 확인 후 조합. threads_get_profile 로 username 조회 가능.",
     }
-
-
-# --- 분산 발행: 스케줄 계산 (distributed-publishing schedule helpers) --------------
-def _now_seoul() -> datetime:
-    """현재 시각을 Asia/Seoul aware datetime 으로 반환 (clock seam — 테스트가 monkeypatch)."""
-    return datetime.now(SEOUL_TZ)
-
-
-def _compute_batch_schedule(
-    n: int,
-    cadence: str,
-    start_date: Optional[str],
-    now: datetime,
-) -> list[Optional[str]]:
-    """분산 발행 예약 시각 계산 (pure schedule calculator — no I/O, no datetime.now()).
-
-    ``n`` 개 포스트를 ``cadence`` 프리셋에 따라 Asia/Seoul 12:00 슬롯에 분산한다.
-    ``now`` 는 주입된 clock(aware datetime 권장) 이며, 함수 본문은 절대 ``datetime.now()``
-    를 호출하지 않는다 — 테스트는 고정 ``now`` 로 결정적 결과를 얻는다.
-
-    Args:
-        n: 예약할 슬롯 수.
-        cadence: ``weekly_3`` | ``weekly_5`` | ``manual``.
-        start_date: 첫 후보 날짜(ISO ``YYYY-MM-DD``). ``None`` 이면 ``now`` 의 날짜.
-        now: 기준 시각(aware datetime). 각 슬롯은 이 시각 이후여야 한다.
-
-    Returns:
-        ISO-8601 datetime 문자열 리스트(길이 ``n``). ``manual`` 케이던스는 전부 ``None``.
-
-    Raises:
-        ValueError: 지원하지 않는 ``cadence``.
-    """
-    if n <= 0:
-        return []
-    if cadence == "manual":
-        return [None] * n
-    if cadence == "weekly_3":
-        target_weekdays = _WEEKLY_3_DAYS
-    elif cadence == "weekly_5":
-        target_weekdays = _WEEKLY_5_DAYS
-    else:
-        raise ValueError(
-            f"지원하지 않는 cadence 입니다 (unsupported cadence): {cadence!r}. "
-            f"허용값 (allowed): weekly_3, weekly_5, manual"
-        )
-
-    # now 를 Seoul 로 정규화 — naive 면 Seoul 인 것으로 간주.
-    now_seoul = now.astimezone(SEOUL_TZ) if now.tzinfo is not None else now.replace(
-        tzinfo=SEOUL_TZ
-    )
-    start = date.fromisoformat(start_date) if start_date else now_seoul.date()
-
-    out: list[Optional[str]] = []
-    cursor = start
-    # 안전 상한: 2년치 평일을 넘게 탐색하지 않는다 (무한루프 방지).
-    for _day in range(366 * 2):
-        if len(out) == n:
-            break
-        if cursor.weekday() in target_weekdays:
-            slot = datetime(
-                cursor.year, cursor.month, cursor.day,
-                _BATCH_SLOT_HOUR, 0, 0, tzinfo=SEOUL_TZ,
-            )
-            # 오늘이 대상 요일이라도 정오가 지났으면(슬롯 <= now) 건너뛴다.
-            # 과거 대상 요일들도 자동으로 스킵된다(slot < now).
-            if slot > now_seoul:
-                out.append(slot.isoformat())
-        cursor += timedelta(days=1)
-    return out
 
 
 # ------------------------------------------------------------------ tools
@@ -433,245 +317,6 @@ def threads_refresh_token() -> dict[str, Any]:
         return _error_dict(exc)
 
 
-# ------------------------------------------------------------------ M2: 큐 관리 도구 (queue-management tools)
-# 세션 안에서 전체 플로우(enqueue → approve → publish) 를 구동할 수 있도록 큐 조작
-# 도구를 둔다. 순수 큐 조작(add/add_batch/approve/list/get) 은 자격증명 없이도
-# 동작하며(로컬 SQLite), publish_due 만 자격증명이 필요하다.
-
-
-@mcp.tool()
-def threads_queue_add(
-    media_type: str,
-    text: Optional[str] = None,
-    image_url: Optional[str] = None,
-    video_url: Optional[str] = None,
-    scheduled_at: Optional[str] = None,
-) -> dict[str, Any]:
-    r"""발행 큐에 포스트 추가 (enqueue a post as PENDING).
-
-    ``media_type`` ∈ ``TEXT`` | ``IMAGE`` | ``VIDEO``. 즉시 발행 예정으로
-    넣려면 ``scheduled_at`` 에 ISO-8601 시각을 전달한다 (미지정 시 NULL = due 즉시).
-
-    Returns:
-        ``post_id`` / ``status`` / ``media_type`` / ``scheduled_at`` dict.
-        미지원 ``media_type`` 은 ``error`` dict.
-    """
-    try:
-        q = _get_queue()
-        post_id = q.enqueue(
-            media_type,
-            text=text or None,
-            image_url=image_url or None,
-            video_url=video_url or None,
-            scheduled_at=scheduled_at or None,
-        )
-        post = q.get(post_id)
-        return {
-            "post_id": post_id,
-            "status": post["status"],
-            "media_type": post["media_type"],
-            "scheduled_at": post["scheduled_at"],
-        }
-    except ValueError as exc:
-        return _error_dict(exc)
-
-
-@mcp.tool()
-def threads_queue_add_batch(
-    posts: list[dict[str, Any]],
-    cadence: str = "weekly_3",
-    start_date: Optional[str] = None,
-    approve: bool = False,
-) -> dict[str, Any]:
-    r"""초안 여러 개를 베스트 슬롯에 분산 등록 (batch-enqueue drafts across best slots).
-
-    승인된(또는 승인 대기) 초안 N 개를 받아 ``cadence`` 프리셋에 따라 Asia/Seoul
-    12:00 슬롯에 자동 분산 예약한다. 한 주 치 포스트를 한 번에 예약할 때 쓴다.
-
-    Args:
-        posts: ``{media_type, text?, image_url?, video_url?}`` 초안 dict 리스트 (≥1).
-            ``media_type`` 기본값 ``TEXT``.
-        cadence: 분산 프리셋 — ``weekly_3`` (화/수/목, 기본) · ``weekly_5`` (월-금)
-            · ``manual`` (scheduled_at 미지정, 호출자가 나중에 설정).
-        start_date: 첫 후보 날짜(ISO ``YYYY-MM-DD``). 기본 오늘(Seoul).
-        approve: ``True`` 면 계산된 예약으로 바로 ``APPROVED`` 로 등록
-            (이 호출 안에서 이미 초안을 검토했을 때). 기본 ``False`` = ``PENDING``.
-
-    Returns:
-        ``count`` · ``post_ids`` · ``schedules`` ({post_id, scheduled_at} 리스트)
-        · ``cadence`` dict. 입력 검증 실패 시 ``error`` dict.
-    """
-    # --- 입력 검증 (enqueue 전에 전체 선검증 — 부분 실패 방지) ---
-    if not isinstance(posts, list) or len(posts) == 0:
-        return {
-            "error": True,
-            "message": (
-                "posts 는 최소 1개 이상의 초안 dict 리스트여야 합니다 "
-                "(posts must be a non-empty list of draft dicts)."
-            ),
-        }
-    if cadence not in _VALID_BATCH_CADENCES:
-        return {
-            "error": True,
-            "message": (
-                f"지원하지 않는 cadence 입니다 (unsupported cadence): {cadence!r}. "
-                f"허용값 (allowed): weekly_3, weekly_5, manual"
-            ),
-        }
-    normalized: list[tuple[str, Optional[str], Optional[str], Optional[str]]] = []
-    for idx, p in enumerate(posts):
-        if not isinstance(p, dict):
-            return {
-                "error": True,
-                "message": f"posts[{idx}] 가 dict 가 아닙니다 (not a dict): {type(p).__name__}",
-            }
-        media_type = p.get("media_type", "TEXT")
-        if media_type not in _VALID_BATCH_MEDIA_TYPES:
-            return {
-                "error": True,
-                "message": (
-                    f"posts[{idx}] 의 media_type 이 지원하지 않는 값입니다 "
-                    f"(unsupported media_type): {media_type!r}. "
-                    f"허용값 (allowed): TEXT, IMAGE, VIDEO"
-                ),
-            }
-        normalized.append(
-            (
-                media_type,
-                p.get("text") or None,
-                p.get("image_url") or None,
-                p.get("video_url") or None,
-            )
-        )
-
-    # --- 예약 시각 계산 (pure helper, 주입 clock) ---
-    try:
-        schedules_iso = _compute_batch_schedule(
-            len(normalized), cadence, start_date, _now_seoul()
-        )
-    except ValueError as exc:
-        return _error_dict(exc)
-
-    # --- 일괄 enqueue (검증 통과했으므로 여기서 ValueError 발생 안 함) ---
-    q = _get_queue()
-    status = "APPROVED" if approve else "PENDING"
-    post_ids: list[int] = []
-    schedules: list[dict[str, Any]] = []
-    for (media_type, text, image_url, video_url), sched in zip(
-        normalized, schedules_iso, strict=True
-    ):
-        pid = q.enqueue(
-            media_type,
-            text=text,
-            image_url=image_url,
-            video_url=video_url,
-            scheduled_at=sched,
-            status=status,
-        )
-        post_ids.append(pid)
-        schedules.append({"post_id": pid, "scheduled_at": sched})
-
-    return {
-        "count": len(post_ids),
-        "post_ids": post_ids,
-        "schedules": schedules,
-        "cadence": cadence,
-    }
-
-
-@mcp.tool()
-def threads_queue_approve(
-    post_id: int, scheduled_at: Optional[str] = None
-) -> dict[str, Any]:
-    r"""PENDING 포스트를 APPROVED 로 승인 (approve a queued post).
-
-    ``scheduled_at`` 미지정 시 현재 시각으로 예약(즉시 due). 이미 예약된 시각을
-    덮어쓰려면 명시적으로 전달.
-
-    Returns:
-        갱신된 ``status`` / ``approved_at`` / ``scheduled_at`` dict.
-        해당 post 가 없으면 ``error`` dict.
-    """
-    q = _get_queue()
-    ok = q.approve(post_id, scheduled_at=scheduled_at or None)
-    if not ok:
-        return {
-            "error": True,
-            "not_found": True,
-            "message": f"post id={post_id} 를 찾을 수 없습니다 (not found)",
-        }
-    post = q.get(post_id)
-    return {
-        "post_id": post_id,
-        "status": post["status"],
-        "approved_at": post["approved_at"],
-        "scheduled_at": post["scheduled_at"],
-    }
-
-
-@mcp.tool()
-def threads_queue_list(
-    status: Optional[str] = None, limit: int = 50
-) -> dict[str, Any]:
-    r"""큐 포스트 목록 조회 (list queued posts, newest first).
-
-    Args:
-        status: 필터(PENDING|APPROVED|PUBLISHED|FAILED). 미지정 시 전체.
-        limit: 최대 행 수(기본 50).
-
-    Returns:
-        ``count`` 와 ``posts`` 리스트를 담은 dict.
-    """
-    q = _get_queue()
-    posts = q.list(status=status, limit=limit)
-    return {"count": len(posts), "posts": posts}
-
-
-@mcp.tool()
-def threads_queue_get(post_id: int) -> dict[str, Any]:
-    r"""단일 큐 포스트 상세 조회 (fetch one queued post).
-
-    Returns:
-        포스트 row dict. 해당 post 가 없으면 ``not_found`` 에러 dict.
-    """
-    q = _get_queue()
-    post = q.get(post_id)
-    if post is None:
-        return {
-            "error": True,
-            "not_found": True,
-            "message": f"post id={post_id} 를 찾을 수 없습니다 (not found)",
-        }
-    return post
-
-
-@mcp.tool()
-def threads_queue_publish_due(limit: int = 10) -> dict[str, Any]:
-    r"""due 큐(Threads)를 수동 처리 (process due Threads rows now, session-driven publishing).
-
-    세션 안에서 분산 예약된 **Threads** 포스트들을 실제로 발행하기 위한 도구. 백그라운드 자동
-    발행은 없으므로(수동 승인 모델, REQ-INST-022), 예약 시각이 도래한 포스트는 이 도구로 직접
-    flush 한다. 내부적으로 runner._process 를 재사용한다(platform="threads" 필터 — Instagram row
-    는 건드리지 않는다, D8(a)). 자격증명 필요(미설정 시 ``setup_required`` 에러).
-
-    Returns:
-        ``published`` / ``failed`` / ``skipped`` 카운트와 ``messages`` 리스트 dict.
-    """
-    # Threads 자격증명 게이트 — 기존 동작 byte-identical 보존 (REQ-INST-023).
-    if _get_client() is None:
-        return _setup_required_error()
-    q = _get_queue()
-    return run_queue_once(
-        q,
-        client_resolver=_server_client_resolver,
-        platform="threads",
-        limit=limit,
-        dry_run=False,
-        once=None,
-        delay=_publish_delay_seconds(),
-    )
-
-
 # ------------------------------------------------------------------ 문체 프로필 (style profile — 로컬 파일 I/O, Threads 자격증명 불필요)
 # threads-style-learn 스킬이 분석한 문체 프로필을 안정적인 경로에 저장하고,
 # threads-post-draft 스킬이 초안 작성 시 불러와 적용한다. Threads API 자격증명과
@@ -683,7 +328,7 @@ _STYLE_PROFILE_FILENAME = "style-profile.md"
 def _default_style_path() -> str:
     r"""스타일 프로필 기본 경로 해석 (resolve default style-profile path from env).
 
-    우선순위 (precedence) — ``runner._default_db_path`` 와 동일한 패턴/동일 ``.data/`` 디렉토리:
+    우선순위 (precedence):
       1. ``$CLAUDE_PLUGIN_ROOT/mcp-servers/threads-poster/.data/style-profile.md``
       2. 패키지 기준 상대 경로 폴백 (``../../.data/style-profile.md``)
     """
@@ -764,7 +409,7 @@ def threads_style_load(path: Optional[str] = None) -> dict[str, Any]:
 # ------------------------------------------------------------------ 멀티 채널 포맷 (multi-channel formatter — 발행 안 함, 포맷만)
 # Threads(직접 발행) / Facebook(복붙 전용) / X(free=스레드 분할 · premium=단일) 용으로
 # 텍스트를 변형한다. Facebook 개인 계정은 API 발행이 정책상 불가하므로 본 도구는
-# Facebook/X 로 발행하지 않고 *복붙용* 텍스트만 만든다. Threads 결과는 queue 도구로 넘긴다.
+# Facebook/X 로 발행하지 않고 *복붙용* 텍스트만 만든다. Threads 결과는 직접 발행 도구로 넘긴다.
 #
 # 길이 제한 참고 (2026 baseline):
 #   - Threads  : 500 UTF-8 바이트
@@ -984,8 +629,8 @@ def threads_format_multi_channel(
 
     **발행은 하지 않는다 — 포맷만 한다.**
 
-      - **Threads**: 500 UTF-8 바이트 이하로 다듬어 ``threads_queue_add`` /
-        ``threads_queue_add_batch`` 에 넘길 수 있는 형태로 반환 (바이트 수 포함).
+      - **Threads**: 500 UTF-8 바이트 이하로 다듬어 ``threads_publish_text`` 등 직접 발행
+        도구에 넘길 수 있는 형태로 반환 (바이트 수 포함).
       - **Facebook**: 개인 계정은 API 발행이 정책상 불가하므로 *복붙용* 텍스트를 반환한다
         (본 도구는 Facebook 으로 발행하지 않는다). 가벼운 정규화만 적용.
       - **X**: ``x_tier`` 에 따라 —
@@ -1000,7 +645,7 @@ def threads_format_multi_channel(
 
     Returns:
         채널별 포맷 결과 dict:
-          - ``threads``: ``{"text", "bytes", "max_bytes"}`` — queue 도구용.
+          - ``threads``: ``{"text", "bytes", "max_bytes"}`` — 직접 발행 도구용.
           - ``facebook``: 복붙용 텍스트 *문자열*.
           - ``x``: ``free`` → 번호 트윗 *리스트* · ``premium`` → 단일 *문자열*.
           - 최상위: ``channels`` · ``x_tier`` · ``note`` (복붙 안내).
@@ -1028,7 +673,7 @@ def threads_format_multi_channel(
         "channels": selected,
         "x_tier": x_tier,
         "note": (
-            "Threads 출력은 threads_queue_add / threads_queue_add_batch 로 큐에 넘기세요. "
+            "Threads 출력은 threads_publish_text/image/video 로 직접 발행하세요. "
             "Facebook·X 출력은 *복붙용* 입니다 — 본 도구는 Facebook/X 로 발행하지 않습니다."
         ),
     }
@@ -1049,13 +694,12 @@ def threads_format_multi_channel(
 
 
 # ------------------------------------------------------------------ Instagram 도구 (SPEC-THREADS-POSTER-INSTAGRAM-001)
-# Threads 도구와 *평행한* Instagram 발행/예약/조회 도구. Facebook Login for Business 호스트
+# Threads 도구와 *평행한* Instagram 즉시 발행/조회/댓글 도구. Facebook Login for Business 호스트
 # (graph.facebook.com), JPEG-only, REELS, VIDEO/REELS 컨테이너 폴링. 자격증명은 Threads 쌍과
 # 독립적인 IG_ACCESS_TOKEN/IG_USER_ID. Instagram Professional(Business/Creator) 계정 전용.
 #
-# [스케줄링 교정 — REQ-INST-009] Instagram Graph API 는 서버 측 스케줄링 파라미터가 *없다*.
-# 예약 = 큐에 intent(캡션+미디어 URL+예정 시각) 보관. 실제 발행은 예정 시각 도래 후 사용자가
-# 세션에서 instagram_queue_publish_due 를 호출할 때 일어난다 (백그라운드 자동 발행 없음).
+# 직접 발행 모델 — Instagram Graph API 는 서버 측 스케줄링 파라미터가 없다. 본 플러그인은
+# 즉시 발행만 담당하고, 예약·정기 발행은 Claude Cowork 이 맡는다.
 _VALID_IG_MEDIA_TYPES = ("IMAGE", "VIDEO", "REELS")
 
 
@@ -1063,7 +707,7 @@ def _ig_publish_result(media_id: str, container_id: str) -> dict[str, Any]:
     return {
         "media_id": media_id,
         "container_id": container_id,
-        # @MX:TODO: [AUTO] permalink 은 media_id 가 아닌 shortcode 조합이어야 할 수 있다 (runner D4).
+        # @MX:TODO: [AUTO] permalink 은 media_id 가 아닌 shortcode 조합이어야 할 수 있다.
         "permalink_hint": f"https://www.instagram.com/p/{media_id}/",
         "platform": "instagram",
     }
@@ -1074,8 +718,8 @@ def instagram_publish_image(text: str, image_url: str) -> dict[str, Any]:
     r"""Instagram 에 이미지 발행 (publish an image — JPEG-only, immediate 2-stage).
 
     JPEG 이미지(공개 URL) 컨테이너를 만들어 즉시 발행한다. PNG 는 거부된다(Threads 와 상이).
-    ``text`` 는 캡션(선택). Instagram 은 서버 측 스케줄링을 지원하지 않는다 — 예약하려면
-    ``instagram_schedule`` 로 큐에 intent 를 보관할 것.
+    ``text`` 는 캡션(선택). Instagram 은 서버 측 스케줄링을 지원하지 않는다 — 예약·정기 발행은
+    Claude Cowork 이 담당한다.
 
     Returns:
         ``media_id``/``container_id``/``permalink_hint`` dict. 자격증명 미설정 시 ``setup_required``.
@@ -1137,94 +781,6 @@ def instagram_publish_reel(
         return _ig_publish_result(media_id, container_id)
     except (ValueError, InstagramAPIError) as exc:
         return _error_dict(exc)
-
-
-@mcp.tool()
-def instagram_schedule(
-    media_type: str,
-    text: Optional[str] = None,
-    image_url: Optional[str] = None,
-    video_url: Optional[str] = None,
-    scheduled_at: Optional[str] = None,
-    share_to_feed: Optional[bool] = None,
-) -> dict[str, Any]:
-    r"""Instagram 예약 발행 큐 등록 (enqueue an Instagram post — queue-only, NO API call).
-
-    **Instagram 은 서버 측 스케줄링을 지원하지 않는다 (REQ-INST-009).** 본 도구는 큐에
-    intent(캡션 + 미디어 URL + 예정 시각)를 ``platform='instagram'`` 으로 보관만 한다 —
-    API 는 일절 호출하지 않는다. 실제 발행은 예정 시각 도래 후 사용자가 세션에서
-    ``instagram_queue_publish_due`` 를 호출할 때 일어난다 (백그라운드 자동 발행 없음).
-
-    Args:
-        media_type: ``IMAGE`` | ``VIDEO`` | ``REELS`` (TEXT 불가 — Instagram 은 텍스트 전용 게시가 없다).
-        text: 캡션(선택).
-        image_url: 공개 이미지 URL (IMAGE 필수, JPEG 권장).
-        video_url: 공개 비디오 URL (VIDEO/REELS 필수).
-        scheduled_at: 발행 예정 시각(ISO-8601). 미지정 시 NULL (즉시 due).
-        share_to_feed: REELS 용. (현재 큐 스키마가 이 값을 보관하지 않는다 — 즉시 발행 도구인
-            ``instagram_publish_reel`` 에서만 적용된다. 예약 릴의 피드 공유는 @MX:DEBT.)
-
-    Returns:
-        ``post_id``/``status``/``media_type``/``platform``/``scheduled_at`` dict.
-        미지원 ``media_type``(TEXT 등) 은 ``error`` dict.
-    """
-    # @MX:DEBT: share_to_feed 가 큐에 보관되지 않는다 (posts 스키마에 해당 컬럼 없음).
-    #   예약 REELS 의 피드 공유 의도가 보존되려면 posts 테이블에 share_to_feed 컬럼 추가가 필요하다.
-    # @MX:CEILING: 현재 예약 REELS 은 publish-time 기본값(share_to_feed 없음) 으로 발행된다.
-    # @MX:UPGRADE: posts 스키마에 share_to_feed 컬럼을 추가하고 _container_call 이 이를 반영할 때.
-    if media_type not in _VALID_IG_MEDIA_TYPES:
-        return {
-            "error": True,
-            "message": (
-                f"Instagram 은 {media_type!r} 게시를 지원하지 않습니다 "
-                f"(Instagram supports IMAGE/VIDEO/REELS only — TEXT 불가)."
-            ),
-        }
-    try:
-        q = _get_queue()
-        post_id = q.enqueue(
-            media_type,
-            text=text or None,
-            image_url=image_url or None,
-            video_url=video_url or None,
-            scheduled_at=scheduled_at or None,
-            platform="instagram",
-        )
-        post = q.get(post_id)
-        return {
-            "post_id": post_id,
-            "status": post["status"],
-            "media_type": post["media_type"],
-            "platform": post["platform"],
-            "scheduled_at": post["scheduled_at"],
-        }
-    except ValueError as exc:
-        return _error_dict(exc)
-
-
-@mcp.tool()
-def instagram_queue_publish_due(limit: int = 10) -> dict[str, Any]:
-    r"""due Instagram 큐를 수동 처리 (process due Instagram rows — session-driven publishing).
-
-    예약 시각이 도래한 **Instagram** 포스트들을 실제로 발행한다. 이 도구가 Instagram 의
-    *유일한* 발행 트리거다 (서버 측 스케줄링도 백그라운드 자동 발행도 없다 — REQ-INST-009/022).
-
-    IG 자격증명이 미설정이어도 크래시하지 않는다 — 각 due IG row 를 ``setup_required`` 스킵하고
-    정상적으로 반환한다 (D1.a(b) skip-and-continue). 자격증명을 설정한 뒤 다시 호출하면 발행된다.
-
-    Returns:
-        ``published``/``failed``/``skipped`` 카운트와 ``messages`` 리스트 dict.
-    """
-    q = _get_queue()
-    return run_queue_once(
-        q,
-        client_resolver=_server_client_resolver,
-        platform="instagram",
-        limit=limit,
-        dry_run=False,
-        once=None,
-        delay=0.0,  # IG 는 컨테이너 폴링으로 대기 (threads 30s 지연 미적용)
-    )
 
 
 @mcp.tool()

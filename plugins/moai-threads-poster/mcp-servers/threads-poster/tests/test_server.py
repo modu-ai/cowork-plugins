@@ -20,42 +20,25 @@ from threads_poster import server
 
 @pytest.fixture(autouse=True)
 def _clean_env(monkeypatch):
-    """각 테스트마다 Threads/Instagram 자격증명/딜레이/큐 환경변수를 비우고 싱글톤을 초기화.
+    """각 테스트마다 Threads/Instagram 자격증명/딜레이 환경변수를 비우고 싱글톤을 초기화.
 
-    M2 큐 싱글톤과 큐 DB 환경변수(THREADS_POSTER_DB / CLAUDE_PLUGIN_ROOT) 도 함께
-    정리한다. Instagram 자격증명(IG_ACCESS_TOKEN / IG_USER_ID) 과 IG 싱글톤도 정리(additive).
+    CLAUDE_PLUGIN_ROOT(스타일 프로필 기본 경로 해석용) 도 함께 정리한다.
+    Instagram 자격증명(IG_ACCESS_TOKEN / IG_USER_ID) 과 IG 싱글톤도 정리.
     """
     for key in (
         "THREADS_ACCESS_TOKEN",
         "THREADS_USER_ID",
         "THREADS_PUBLISH_DELAY",
-        "THREADS_POSTER_DB",
         "CLAUDE_PLUGIN_ROOT",
         "IG_ACCESS_TOKEN",
         "IG_USER_ID",
     ):
         monkeypatch.delenv(key, raising=False)
     server._reset_client_for_tests()
-    server._reset_queue_for_tests()
     server._reset_ig_client_for_tests()
     yield
     server._reset_client_for_tests()
-    server._reset_queue_for_tests()
     server._reset_ig_client_for_tests()
-
-
-@pytest.fixture
-def queue_db(tmp_path, monkeypatch):
-    """M2 큐 도구 테스트용: DB 를 tmp_path 로 격리하고 큐 싱글톤을 초기화.
-
-    autouse _clean_env(THREADS_POSTER_DB 삭제) 보다 나중에 설정되어 안전하게
-    tmp 경로를 가리킨다.
-    """
-    db = tmp_path / "queue.db"
-    monkeypatch.setenv("THREADS_POSTER_DB", str(db))
-    server._reset_queue_for_tests()
-    yield db
-    server._reset_queue_for_tests()
 
 
 # --- 자격증명 게이트 -------------------------------------------------------------
@@ -133,66 +116,6 @@ def test_partial_creds_token_only_still_none(monkeypatch):
     # THREADS_USER_ID 만 빠진 경우 → None
     server._reset_client_for_tests()
     assert server._get_client() is None
-
-
-# === M2: 큐 관리 도구 (additive) =================================================
-def test_queue_add_returns_id_and_pending(queue_db):
-    out = server.threads_queue_add("TEXT", text="안녕")
-    assert "post_id" in out
-    assert isinstance(out["post_id"], int)
-    assert out["status"] == "PENDING"
-    assert out["media_type"] == "TEXT"
-    assert out["scheduled_at"] is None
-
-
-def test_queue_approve_flips_status_to_approved(queue_db):
-    added = server.threads_queue_add("TEXT", text="hi")
-    pid = added["post_id"]
-    out = server.threads_queue_approve(pid)
-    assert out["status"] == "APPROVED"
-    assert out["approved_at"] is not None
-    # scheduled_at 기본 = now (즉시 due)
-    assert out["scheduled_at"] is not None
-
-
-def test_queue_approve_with_explicit_schedule(queue_db):
-    added = server.threads_queue_add("TEXT", text="hi")
-    out = server.threads_queue_approve(added["post_id"], scheduled_at="2099-01-01T00:00:00")
-    assert out["scheduled_at"] == "2099-01-01T00:00:00"
-
-
-def test_queue_approve_missing_post_returns_error(queue_db):
-    out = server.threads_queue_approve(99999)
-    assert out["error"] is True
-    assert out["not_found"] is True
-
-
-def test_queue_list_and_get_roundtrip(queue_db):
-    added = server.threads_queue_add("TEXT", text="first")
-    pid = added["post_id"]
-    listed = server.threads_queue_list()
-    assert listed["count"] >= 1
-    detail = server.threads_queue_get(pid)
-    assert detail["id"] == pid
-    assert detail["text"] == "first"
-
-
-def test_queue_get_missing_returns_not_found(queue_db):
-    out = server.threads_queue_get(99999)
-    assert out["error"] is True
-    assert out["not_found"] is True
-
-
-def test_queue_add_rejects_bad_media_type(queue_db):
-    out = server.threads_queue_add("GIF")
-    assert out["error"] is True
-    assert "media_type" in out["message"]
-
-
-def test_queue_publish_due_requires_creds(queue_db):
-    """큐 수동 발행 도구는 자격증명이 필요하다 — setup_required 에러."""
-    out = server.threads_queue_publish_due()
-    assert out["setup_required"] is True
 
 
 # === 문체 프로필 도구 (style profile — additive) ==================================
@@ -280,8 +203,8 @@ def test_style_tools_do_not_require_threads_creds():
 
 
 # === M3: Instagram MCP 도구 (SPEC-THREADS-POSTER-INSTAGRAM-001) ====================
-# AC-M3-1..M3-12: IG 싱글톤, setup_required, instagram_schedule (queue-only),
-# instagram_queue_publish_due (세션 구동 발행), threads 도구 byte-identical 보존.
+# AC-M3-1..M3-12: IG 싱글톤, setup_required, 즉시 발행 도구(image/video/reel),
+# 댓글·인사이트 도구, threads 도구 보존.
 
 
 class StubInstagramClient:
@@ -452,130 +375,3 @@ def test_instagram_comments_and_insights_tools_callable(monkeypatch):
     assert server.instagram_comments_reply("CID", "답글")["id"] == "c"
     assert server.instagram_comments_hide("CID")["hidden"] is True
     assert "data" in server.instagram_insights()
-
-
-# --- instagram_schedule (queue-only, AC-M3-3 / AC-M3-4) -------------------------
-def test_instagram_schedule_enqueues_platform_instagram(queue_db):
-    out = server.instagram_schedule(
-        media_type="IMAGE",
-        image_url="https://example.com/x.jpg",
-        scheduled_at="2026-08-10T12:00:00+09:00",
-    )
-    assert out["post_id"] is not None
-    assert out["platform"] == "instagram"
-    assert out["status"] == "PENDING"
-    assert out["scheduled_at"] == "2026-08-10T12:00:00+09:00"
-    # 실제 row 확인
-    detail = server.threads_queue_get(out["post_id"])
-    assert detail["platform"] == "instagram"
-    assert detail["media_type"] == "IMAGE"
-
-
-def test_instagram_schedule_does_not_call_api(monkeypatch, queue_db):
-    """AC-M3-4: 예약은 큐에만 쓴다 — InstagramClient.create_container/publish 미호출."""
-    stub = StubInstagramClient()
-    monkeypatch.setattr(server, "_get_ig_client", lambda: stub)
-    server.instagram_schedule(media_type="IMAGE", image_url="https://example.com/x.jpg")
-    assert stub.calls == []  # API 호출 전무
-
-
-def test_instagram_schedule_rejects_text(monkeypatch, queue_db):
-    """Instagram 은 TEXT-only 게시가 없다 — schedule 도 TEXT 를 거부한다."""
-    out = server.instagram_schedule(media_type="TEXT", text="hi")
-    assert out["error"] is True
-
-
-# --- instagram_queue_publish_due (AC-M3-12, 세션 구동 발행) ----------------------
-def test_instagram_queue_publish_due_processes_due_rows(monkeypatch, queue_db):
-    """AC-M3-12: due IG row 만 발행, not-due row 는 미건드림."""
-    stub = StubInstagramClient()
-    monkeypatch.setattr(server, "_get_ig_client", lambda: stub)
-    # row A: due (APPROVED, scheduled_at=과거)
-    a = server.instagram_schedule(
-        media_type="IMAGE", image_url="https://example.com/a.jpg",
-        scheduled_at="2020-01-01T00:00:00",
-    )
-    server.threads_queue_approve(a["post_id"], scheduled_at="2020-01-01T00:00:00")
-    # row B: not-due (미래)
-    b = server.instagram_schedule(
-        media_type="IMAGE", image_url="https://example.com/b.jpg",
-        scheduled_at="2099-01-01T00:00:00",
-    )
-    server.threads_queue_approve(b["post_id"], scheduled_at="2099-01-01T00:00:00")
-
-    out = server.instagram_queue_publish_due(limit=10)
-    # row A 발행됨
-    assert out["published"] == 1
-    assert stub.calls  # create_container + publish 호출됨
-    row_a = server.threads_queue_get(a["post_id"])
-    assert row_a["status"] == "PUBLISHED"
-    # row B 는 미건드림
-    row_b = server.threads_queue_get(b["post_id"])
-    assert row_b["status"] == "APPROVED"
-    assert row_b["published_at"] is None
-
-
-def test_instagram_queue_publish_due_no_creds_skips(monkeypatch, queue_db):
-    """D1.a(b): IG 자격증명 없이 호출 → due IG row 들이 setup_required 스킵, 정상 반환."""
-    a = server.instagram_schedule(
-        media_type="IMAGE", image_url="https://example.com/a.jpg",
-        scheduled_at="2020-01-01T00:00:00",
-    )
-    # schedule 은 PENDING 으로 넣으므로 due 만들려면 승인 필요.
-    server.threads_queue_approve(a["post_id"], scheduled_at="2020-01-01T00:00:00")
-    # due IG row 가 있지만 creds 없음 → _get_ig_client() 는 None
-    out = server.instagram_queue_publish_due(limit=10)
-    # 크래시 없이 정상 반환 — 발행 0건, 스킵 카운트에 기록
-    assert out["published"] == 0
-    assert out["skipped"] >= 1
-    assert any("setup_required" in m or "자격증명" in m for m in out["messages"])
-
-
-# --- threads 도구 byte-identical 보존 (AC-M3-6 서버 레벨) -----------------------
-def test_threads_queue_publish_due_still_requires_threads_creds(queue_db):
-    """threads_queue_publish_due 는 IG 도구 추가 후에도 Threads 자격증명을 요구한다."""
-    out = server.threads_queue_publish_due()
-    assert out["setup_required"] is True
-
-
-def test_threads_queue_publish_due_does_not_touch_ig_rows(monkeypatch, queue_db):
-    """D8(a): threads_queue_publish_due 는 IG row 를 건드리지 않는다 (Threads-only)."""
-    # IG creds 설정 (resolver 가 IG client 를 빌들일 수 있게) — 하지만 threads 도구는 IG row 무시
-    monkeypatch.setenv("IG_ACCESS_TOKEN", "tok")
-    monkeypatch.setenv("IG_USER_ID", "IGID")
-    ig_stub = StubInstagramClient()
-    monkeypatch.setattr(server, "_get_ig_client", lambda: ig_stub)
-    # threads creds 도 설정 + stub. publish 지연 0 (실제 sleep 회피).
-    monkeypatch.setenv("THREADS_PUBLISH_DELAY", "0")
-    th_stub_calls = []
-    monkeypatch.setenv("THREADS_ACCESS_TOKEN", "tok")
-    monkeypatch.setenv("THREADS_USER_ID", "UID")
-
-    class _ThStub:
-        def create_container(self, mt, **kw):
-            th_stub_calls.append(("create", mt))
-            return "TC"
-
-        def publish(self, cid):
-            th_stub_calls.append(("publish", cid))
-            return "TM"
-
-        def close(self):
-            pass
-
-    monkeypatch.setattr(server, "_get_client", lambda: _ThStub())
-    # threads row + IG row 둘 다 due
-    th_add = server.threads_queue_add("TEXT", text="threads-post")
-    server.threads_queue_approve(th_add["post_id"], scheduled_at="2020-01-01T00:00:00")
-    ig_add = server.instagram_schedule(
-        media_type="IMAGE", image_url="https://example.com/a.jpg",
-        scheduled_at="2020-01-01T00:00:00",
-    )
-    server.threads_queue_approve(ig_add["post_id"], scheduled_at="2020-01-01T00:00:00")
-
-    out = server.threads_queue_publish_due(limit=10)
-    # threads row 만 발행
-    assert out["published"] == 1
-    assert any(c[0] == "create" for c in th_stub_calls)
-    # IG stub 은 전혀 호출되지 않았다 (threads 도구가 IG row 를 안 본다)
-    assert ig_stub.calls == []

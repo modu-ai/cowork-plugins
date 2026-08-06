@@ -151,8 +151,8 @@
     {
       "name": "moai-threads-poster",
       "source": "./plugins/moai-threads-poster",
-      "version": "1.1.0",
-      "description": "Threads·Instagram(Meta) 자율 발행 전담 AI 직원 — 직접 Graph API 연결 MCP(월정액 없음)로 텍스트·이미지·비디오 2단계 발행. SQLite 발행 큐에 예약하고, 세션을 켜고 발행 직전 승인하면 게시. '자동 아닌 자율' — 백그라운드 스케줄러 없이 사용자가 승인할 때 발행합니다. Threads와 Instagram을 통합 큐로 운영하며, 플랫폼별 발행 처리를 분산합니다. Facebook 개인 계정은 API 미지원(정책)이라 복붙만 지원합니다. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 1인 브랜드·콘텐츠 크리에이터·Threads/Instagram 정기 운영자.",
+      "version": "1.2.0",
+      "description": "Threads·Instagram(Meta) 자율 발행 전담 AI 직원 — 직접 Graph API 연결 MCP(월정액 없음)로 텍스트·이미지·비디오 2단계 발행. 세션 안에서 직접 발행. 예약·정기 발행은 Claude Cowork이 담당. Facebook 개인 계정은 API 미지원(정책)이라 복붙만 지원합니다. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 1인 브랜드·콘텐츠 크리에이터·Threads/Instagram 정기 운영자.",
       "displayName": "소셜 포스터",
       "category": "소셜미디어"
     }
