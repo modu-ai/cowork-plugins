@@ -23,7 +23,11 @@ triggers:
 - 팔레트: `foot.html` 자동 치환 — 작성자가 색 하드코딩 금지
 
 ## SVG — 직접 저작
+<<<<<<< HEAD
 `plugins/moai-officer/skills/doc-html-slide/references/inline-svg-infographics.md` 패턴 참조.
+=======
+`plugins/moai-officer/skills/office-html-slide/references/inline-svg-infographics.md` 패턴 참조.
+>>>>>>> origin/main
 - `font-family`: Pretendard / Noto Sans KR
 - `text-anchor`, `dominant-baseline` 명시
 - viewBox 16:9(1280×720) 또는 1:1(1080×1080)
