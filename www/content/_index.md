@@ -10,7 +10,7 @@ geekdocNav: false
 <div class="cw-hero">
   <div class="cw-hero-in">
   <div class="cw-hero-copy">
-  <div class="eyebrow"><span class="dot"></span>{{< version >}} · {{< release-date >}} · claude.mo.ai.kr</div>
+  <div class="eyebrow"><span class="dot"></span>{{< version >}} · {{< release-date >}} · cowork.mo.ai.kr</div>
   <h1>필요한 일마다,<br/><span class="accent">AI 직원을 채용하세요</span></h1>
   <p class="lead-p">
     모두의 코워크 마켓플레이스의 <strong>17개 플러그인</strong>은 각각 한 명의 전문 직원입니다. 마케팅·셀러·법무·디자인 — 필요한 직무만 골라 설치하면, 자연어 한마디로 일이 시작됩니다.

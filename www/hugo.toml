@@ -1,4 +1,4 @@
-baseURL = "https://claude.mo.ai.kr/"
+baseURL = "https://cowork.mo.ai.kr/"
 title = "모두의 코워크"
 languageCode = "ko-KR"
 defaultContentLanguage = "ko"

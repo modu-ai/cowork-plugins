@@ -1,6 +1,6 @@
 # 모두의 코워크 — 한국어 문서 사이트
 
-`claude.mo.ai.kr` — Claude의 4가지 제품(Chat · Cowork · Design · Code) 활용 완전 가이드. 10~60대 비개발자 입문자를 위한 한국어 학습 허브.
+`cowork.mo.ai.kr` — Claude의 4가지 제품(Chat · Cowork · Design · Code) 활용 완전 가이드. 10~60대 비개발자 입문자를 위한 한국어 학습 허브.
 
 ## 기술 스택
 
@@ -9,7 +9,7 @@
 - **폰트**: Pretendard(self-host, 9 weights — `static/fonts/`) + Goorm Sans Code(CDN)
 - **디자인 시스템**: 모두의AI Design System — 모아이 그린(`#3d7d5f`) 시그니처 + 마스코트 6종. `ai-design-system.zip`(Claude Design 핸드오프) 기반. 운영 CSS = `static/moai-brand.css`(단일 진실 소스).
 - **호스팅**: Vercel
-- **도메인**: claude.mo.ai.kr
+- **도메인**: cowork.mo.ai.kr
 
 ## 로컬 실행
 
@@ -28,7 +28,7 @@ hugo --gc --minify
 
 ```
 www/
-├── hugo.toml             # 사이트 설정 (제목: 모두의 코워크, baseURL: claude.mo.ai.kr)
+├── hugo.toml             # 사이트 설정 (제목: 모두의 코워크, baseURL: cowork.mo.ai.kr)
 ├── go.mod                # Hugo 모듈 (Geekdoc 테마)
 ├── vercel.json           # Vercel 빌드 설정
 ├── content/              # 마크다운 콘텐츠 (176+ 페이지)
@@ -73,7 +73,7 @@ www/
 4. **Build Command**: `hugo --gc --minify` (vercel.json에서 자동 적용)
 5. **Output Directory**: `public`
 6. **Environment Variables**: vercel.json에서 자동 적용 (HUGO_VERSION=0.160.1)
-7. 배포 후 **Domains**에서 `claude.mo.ai.kr` 추가, DNS CNAME 레코드 등록
+7. 배포 후 **Domains**에서 `cowork.mo.ai.kr` 추가, DNS CNAME 레코드 등록
 
 ## 콘텐츠 작성 규약
 
