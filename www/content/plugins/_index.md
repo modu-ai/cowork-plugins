@@ -4,13 +4,12 @@ weight: 50
 description: "모두의 코워크 플러그인 패밀리를 설치하고 부리는 법 — 마켓플레이스 등록부터 설치 확인, 에이전트 호출, 팀 구성 패턴까지."
 geekdocBreadcrumb: true
 geekdocCollapseSection: true
-ia_in_scope: true
 aliases: ["/plugins/moai-design-system-library", "/plugins/moai-ads", "/plugins/moai-tech", "/plugins/moai-devops", "/plugins/cowork-plugins", "/plugins/moai-cowork-plugins", "/plugins/chat", "/plugins/cowork", "/plugins/design", "/plugins/code"]
 date: 2026-08-07T00:00:00+09:00
 lastmod: 2026-08-07T00:00:00+09:00
 ---
 
-플러그인은 Claude에게 새로운 직무 능력을 붙여 주는 확장 꾸러미입니다. 스마트폰에 앱을 설치하면 없던 기능이 생기듯, Claude Code나 Claude Desktop에 플러그인을 설치하면 마케팅 캠페인 기획, 쇼핑몰 주문 관리, 계약서 검토 같은 전문 업무를 바로 시킬 수 있게 됩니다. 그리고 이런 플러그인을 받아오는 곳이 **마켓플레이스**입니다 — 앱스토어가 앱을 모아 두는 곳이라면, 마켓플레이스는 플러그인을 모아 두는 곳이라고 생각하면 정확합니다.
+플러그인은 Claude에게 새로운 직무 능력을 붙여 주는 확장 꾸러미입니다. 스마트폰에 앱을 설치하면 없던 기능이 생기듯, **Claude Cowork와 ChatGPT Work 두 데스크톱 앱**에 플러그인을 설치하면 마케팅 캠페인 기획, 쇼핑몰 주문 관리, 계약서 검토 같은 전문 업무를 바로 시킬 수 있게 됩니다. 그리고 이런 플러그인을 받아오는 곳이 **마켓플레이스**입니다 — 앱스토어가 앱을 모아 두는 곳이라면, 마켓플레이스는 플러그인을 모아 두는 곳이라고 생각하면 정확합니다. 같은 플러그인이 Claude Cowork와 ChatGPT Work 양쪽에서 작동합니다.
 
 `모두의 코워크`가 운영하는 마켓플레이스(`modu-ai/moai-cowork`)에는 **{{< catalog-count plugins >}}명의 AI 직원**이 올라와 있습니다. 실무 범용 코워커부터 작가·스토리 크리에이터, 마케터·미디어 크리에이터, 셀러, 사무관·데이터 애널리스트, 법무·재무세무·인사채용 담당, CS 매니저, 컨설턴트, 커리어 코치, 튜터, 디자이너, 개발 방법론(moai), 그리고 프로젝트 허브(PM)까지 — 각 플러그인이 한 명의 전문 직원처럼 자기 분야의 스킬과 에이전트, 필요하면 외부 서비스 연동(MCP)까지 갖추고 있습니다. 전부 설치할 필요는 없습니다. 회사에서 필요한 직무만 채용하듯, 필요한 직원만 골라 설치하면 됩니다.
 
@@ -22,10 +21,10 @@ lastmod: 2026-08-07T00:00:00+09:00
 
 ```mermaid
 flowchart LR
-   A["① 마켓플레이스 등록<br/>claude plugin marketplace add"] --> B["② 플러그인 설치<br/>claude plugin install"]
-   B --> C["③ 설치 확인<br/>claude plugin list"]
+   A["① 마켓 등록<br/>앱에서 modu-ai/moai-cowork 추가"] --> B["② 직원 설치<br/>Plugins에서 선택"]
+   B --> C["③ 설치 확인<br/>Plugins 목록에서 enabled 확인"]
    C --> D["④ 사용<br/>스킬·에이전트 호출"]
-   D --> E["⑤ 업데이트<br/>claude plugin update"]
+   D --> E["⑤ 업데이트<br/>Plugins에서 Update"]
    E -. 새 버전이 나오면 반복 .-> D
 
    style A fill:#fbf0dc,stroke:#c47b2a,color:#09110f
@@ -47,7 +46,7 @@ flowchart LR
 
 ## 플러그인 패밀리 개요
 
-마켓플레이스 `moai-cowork`(v1.0.0)에 등록된 {{< catalog-count plugins >}}개 플러그인입니다. 이름이 곧 직무입니다.
+마켓플레이스 `moai-cowork`(v1.1.0)에 등록된 {{< catalog-count plugins >}}개 플러그인입니다. 이름이 곧 직무입니다.
 
 | 플러그인 | 직무 | 한 줄 소개 |
 |----------|------|-----------|
@@ -88,5 +87,8 @@ flowchart LR
 
 ### Sources
 
-- 마켓플레이스 진실 원본: [`/.claude-plugin/marketplace.json`](https://github.com/modu-ai/moai-cowork/blob/main/.claude-plugin/marketplace.json) (18 plugins, v1.0.0)
+- 마켓플레이스 진실 원본: [`/.claude-plugin/marketplace.json`](https://github.com/modu-ai/moai-cowork/blob/main/.claude-plugin/marketplace.json) (18 plugins, v1.1.0)
 - Claude Code 플러그인 공식 문서: <https://code.claude.com/docs/en/plugins>
+- OpenAI 플러그인 빌드 가이드: <https://developers.openai.com/plugins/build/plugins>
+- OpenAI 플러그인 사용 가이드: <https://learn.chatgpt.com/docs/plugins?surface=app>
+- OpenAI 서브에이전트 설정: <https://learn.chatgpt.com/docs/agent-configuration/subagents>
