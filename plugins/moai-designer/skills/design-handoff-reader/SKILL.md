@@ -297,5 +297,5 @@ Page
 |---|---|
 | `moai-designer:design-brief` | 선행: 핸드오프할 시안 자체를 만들 때 |
 | `moai-designer:design-system-prep` | 선행: 디자인 시스템 셋업 |
-| `moai-pm:project-manager` | 후속: Claude Code 작업 폴더 초기화 |
+| `moai-pm:project` | 후속: Claude Code 작업 폴더 초기화 |
 | `moai-coworker:collab-spec` | 보조: 핸드오프 후 코드 SPEC 작성 |

@@ -20,8 +20,8 @@
 | `execution-protocol.md` | 스킬 체인 순차 실행·검증 깊이 사다리·검색 스케일링 |
 | `evaluation-protocol.md` | 5차원 산출물 평가(정확성·완전성·실용성·톤·도메인) |
 | `quality-evaluator.md` | 결정론적 품질 게이트(파일 유효성·마크다운 렌더링·AI 작문 패턴·근거 검증) |
-| `diagnostic-protocol.md` | 환경 진단(`/project doctor`, `/project status`) |
-| `update-protocol.md` | 플러그인 업데이트 동기화(`/project --update` — 전수조사·세션 신호 분석·동기화·검증·롤백) |
+| `diagnostic-protocol.md` | 환경 진단(`/project doctor`) · 상태 조회(자연어) |
+| `update-protocol.md` | 플러그인 업데이트 동기화(`/project update` — 전수조사·세션 신호 분석·동기화·검증·롤백) |
 | `templates/CLAUDE.md.tmpl` | 생성 CLAUDE.md 템플릿(Desktop 변형, 8개 HARD 블록 고정) |
 
 ## 패밀리 로스터
@@ -31,9 +31,9 @@
 ## 아키텍처
 
 ```
-계층 1: 플러그인(Read-Only) — 18개 AI 직원 플러그인(moai-pm 허브 포함)
+계층 1: 플러그인(Read-Only) — AI 직원 플러그인(moai-pm 허브 포함)
          ↑ Gap Detection: Bash ~/.claude/plugins/ + system reminder 교차 검증
-         ↑ 누락 플러그인 감지 → 설치 안내 → /project resume 재개
+         ↑ 누락 플러그인 감지 → 설치 안내 → "이어서 진행" 재개
 계층 2: ./CLAUDE.md(자동 로딩) — 프로젝트별 맞춤형 페르소나 + 스킬 체인 정의
          + ./.claude/agents/ — 프로젝트 전용 커스텀 에이전트
          + ./.moai/ — 설정, 컨텍스트, API 키 가이던스, evolution/

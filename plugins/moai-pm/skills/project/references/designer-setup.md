@@ -1,6 +1,6 @@
 # designer-setup.md — 디자이너 분기 (project 스킬 서브 프로토콜)
 
-> **project 스킬(18-plugin 패밀리 허브)의 디자이너 분기 정본.** 흩어진 브랜드 자산(로고·색·타이포·기존 사이트·PPTX)을 수집해 `.moai/project/brand/` 브랜드 컨텍스트와 Claude Design 업로드용 `DESIGN.md`를 합성한다. `moai-designer` 플러그인의 `design-system-prep` + `design-brand-system` 체인으로 실행한다.
+> **project 스킬(플러그인 패밀리 허브)의 디자이너 분기 정본.** 흩어진 브랜드 자산(로고·색·타이포·기존 사이트·PPTX)을 수집해 `.moai/project/brand/` 브랜드 컨텍스트와 Claude Design 업로드용 `DESIGN.md`를 합성한다. `moai-designer` 플러그인의 `design-system-prep` + `design-brand-system` 체인으로 실행한다.
 
 ---
 

@@ -83,7 +83,7 @@ for f in ./.codex/agents/*.toml ~/.codex/agents/*.toml; do [ -f "$f" ] && basena
 
 ### Phase 4 Gap Detection
 
-체인 스킬이 인벤토리에 없으면 누락으로 간주합니다. `AskUserQuestion` 4옵션(설치 안내+재개 권장 / 제외하고 진행 / 대체 스킬 / 중단)을 제시하고, 재개는 `/project resume`로 받습니다.
+체인 스킬이 인벤토리에 없으면 누락으로 간주합니다. `AskUserQuestion` 4옵션(설치 안내+재개 권장 / 제외하고 진행 / 대체 스킬 / 중단)을 제시합니다. 재개는 사용자가 "설치 완료"·"이어서 진행"으로 말하면 같은 흐름으로 이어 받습니다.
 
 ### Phase 5 확인
 
@@ -91,15 +91,15 @@ for f in ./.codex/agents/*.toml ~/.codex/agents/*.toml; do [ -f "$f" ] && basena
 
 ### Phase 6 CLAUDE.md 생성
 
-`references/templates/CLAUDE.md.tmpl` 치환, **≤200라인**, **8개 HARD 블록 고정** — 동일 내용을 `CLAUDE.md`(Claude Cowork용)와 `AGENTS.md`(ChatGPT Work용) 두 파일로 저장합니다. 소스 템플릿의 8개 `## N. … (HARD)` 블록을 전부 보존합니다(라인 예산 초과 시 축소 대상은 스킬 체인 나열뿐이며 HARD 블록은 절대 축소·删除하지 않습니다).
+`references/templates/CLAUDE.md.tmpl` 치환, **≤200라인**, **8개 HARD 블록 고정** — 동일 내용을 `CLAUDE.md`(Claude Cowork용)와 `AGENTS.md`(ChatGPT Work용) 두 파일로 저장합니다. 소스 템플릿의 8개 `## N. … (HARD)` 블록을 전부 보존합니다(라인 예산 초과 시 축소 대상은 스킬 체인 나열뿐이며 HARD 블록은 절대 축소·삭제하지 않습니다).
 
 ### Phase 7 커스텀 에이전트 생성
 
-반복 작업 유형별 **Claude Cowork용 `.claude/agents/*.md`**(markdown+YAML frontmatter)와 **ChatGPT Work용 `.codex/agents/*.toml`**(TOML: `name`·`description`·`developer_instructions`, `model`·`sandbox_mode` 선택) 양쪽**으로 생성합니다. 둘 다 7-step 루프 + 프로젝트 맥락을 동일 내장합니다.
+반복 작업 유형별 **Claude Cowork용 `.claude/agents/*.md`**(markdown+YAML frontmatter)와 **ChatGPT Work용 `.codex/agents/*.toml`**(TOML: `name`·`description`·`developer_instructions`, `model`·`sandbox_mode` 선택) 양쪽으로 생성합니다. 둘 다 7-step 루프 + 프로젝트 맥락을 동일 내장합니다.
 
 ### Phase 8 API 키 + 첫 실행 안내
 
-체인이 요구하는 키만 선택적 등록 안내를 하고, 상위 체인 3개 예시를 제시합니다. 전체 목록은 `/project catalog`로 참조합니다.
+체인이 요구하는 키만 선택적 등록 안내를 하고, 상위 체인 3개 예시를 제시합니다. 전체 직원 목록이 궁금하면 "어떤 직원 있어?"라고 물으면 안내합니다.
 
 ## 재귀적 자가 개선
 
@@ -109,7 +109,7 @@ for f in ./.codex/agents/*.toml ~/.codex/agents/*.toml; do [ -f "$f" ] && basena
 
 1. **`repeated correction`** — 같은 행동에 대한 사용자 수정 요청이 2회 이상 반복
 2. **`chain failure`** — 스킬 체인이 반복적으로 같은 단계에서 실패·우회
-3. 명시적 요청 `/project evolve` (단일 슬래시 — 레거시 수동 발동 커맨드)
+3. 명시적 요청 `/project evolve` (수동 발동)
 4. **`inventory drift`** — 설치 플러그인 인벤토리가 `.moai/config.json` 스냅샷과 어긋남
 
 **신호 영속화 (HARD)**: 사용자 수정 요청·체인 실패를 감지한 **즉시** `.moai/evolution/signals.md`에 1줄을 기록합니다(`날짜 | 트리거 토큰 | 대상 | 요지`). 트리거 1·2의 "반복" 판정은 대화 기억이 아니라 **이 파일을 세어서** 합니다 — 세션이 바뀌어도 1회차 신호가 유실되지 않습니다.
@@ -120,18 +120,18 @@ for f in ./.codex/agents/*.toml ~/.codex/agents/*.toml; do [ -f "$f" ] && basena
 
 **가드레일 (HARD)**: 자가 개선은 **`CLAUDE.md`와 `.claude/agents/` 파일만** 수정합니다(`.moai/evolution/`의 신호·진단·이관 기록 파일은 예외). 스킬 본문·플러그인 파일은 건드리지 않습니다. 개선 1회당 수정 파일은 **최대 3개**까지입니다(evolution 기록 파일은 카운트 제외).
 
-## 플러그인 업데이트 동기화 (`--update`)
+## 플러그인 업데이트 동기화 (`update`)
 
-`/project --update`는 **외부에서 플러그인이 업데이트된 직후** 프로젝트를 최신 인벤토리에 동기화하는 수동 스위치입니다. §재귀적 자가 개선의 `inventory drift` 트리거를 "감지 대기"가 아니라 **즉시·전수조사로 강제 실행**하는 모드입니다. 자가 개선 가드레일(수정 대상·3파일 상한·파괴적 변경 사전 확인)을 그대로 계승합니다.
+`/project update`는 **외부에서 플러그인이 업데이트된 직후** 프로젝트를 최신 인벤토리에 동기화하는 수동 스위치입니다. §재귀적 자가 개선의 `inventory drift` 트리거를 "감지 대기"가 아니라 **즉시·전수조사로 강제 실행**하는 모드입니다. 자가 개선 가드레일(수정 대상·3파일 상한·파괴적 변경 사전 확인)을 그대로 계승합니다.
 
-**`evolve` vs `--update` (발동 조건으로 구분)**:
+**`evolve` vs `update` (발동 조건으로 구분)**:
 
 | 모드 | 발동 | 입력 |
 |---|---|---|
 | `/project evolve` | 사용 중 신호(`repeated correction`·`chain failure`)가 `.moai/evolution/signals.md`에 **누적**되어 발동 | 대화 맥락 + 누적 신호 |
-| `/project --update` | **사용자가 플러그인 업데이트 직후 수동 호출** — drift를 기다리지 않음 | 설치된 전체 플러그인 전수조사 + 누적 신호 |
+| `/project update` | **사용자가 플러그인 업데이트 직후 수동 호출** — drift를 기다리지 않음 | 설치된 전체 플러그인 전수조사 + 누적 신호 |
 
-**`--update` 실행 절차 (5단계)**:
+**`update` 실행 절차 (5단계)**:
 
 1. **전수조사(Full Census)** — `~/.claude/plugins/moai-*`와 `~/.codex/plugins/` 양쪽을 전체 스캔해 각 플러그인의 `plugin.json`(ChatGPT Work는 `.codex-plugin/plugin.json`) + `skills/` + MCP 정의를 조사. 기존 `.moai/config.json` 스냅샷과 비교해 **새 스킬·새 MCP·변경된 스킬**의 diff를 도출합니다.
 2. **세션 신호 분석** — `.moai/evolution/signals.md`(누적 교정·체인 실패 신호) + `.moai/context.md`(프로젝트 맥락)를 읽어, 업데이트된 스킬이 기존 신호를 해소할 수 있는지 교차 확인합니다.
@@ -139,17 +139,15 @@ for f in ./.codex/agents/*.toml ~/.codex/agents/*.toml; do [ -f "$f" ] && basena
 4. **스냅샷 갱신** — `.moai/config.json`의 `plugins_installed` + `skills_available` 스냅샷을 새 인벤토리로 갱신(`inventory drift`를 0으로 리셋). `<!-- evolution-log -->`에 1줄 기록(트리거 토큰 `inventory drift` + 동기화 요지).
 5. **검증 + 롤백** — 동일한 `inventory drift` 신호가 다시 발동하면 실패한 동기화로 판정해 `.moai/evolution/` 원문 조각으로 롤백합니다.
 
-## 커맨드
+## 사용법
+
+`/project`는 자연어 단일 진입 스킬입니다. "이런 일 할 거야"라고 말하면 인터뷰→설계→생성을 한 흐름으로 끝내고, 아래 3가지 액션만 명시적 서브커맨드로 씁니다. 그 외(재개·카탈로그·상태 조회·API 키)는 자연어로 요청하면 알아서 라우팅합니다 — "설치 완료했어"(재개)·"어떤 직원 있어?"(카탈로그)·"지금 상태 어때?"(상태)·"API 키 설정할래"(Phase 8 안내).
 
 | 커맨드 | 동작 |
 |--------|------|
-| `/project <지시>` | 진입 — 인터뷰 후 에이전트/체인 설계 + 생성. **PRIMARY 기본 동작.** |
-| `/project resume` | 설치 완료 후 재개 |
-| `/project evolve` | 재귀적 자가 개선 수동 발동(레거시 단일-슬래시 폼) |
-| `/project --update` | 플러그인 업데이트 후 전수조사→CLAUDE.md·에이전트 재동기화 |
-| `/project catalog` | 17-plugin 패밀리 · 스킬 카탈로그 |
-| `/project status` | 현재 설정 상태 |
-| `/project apikey` | API 키 관리 |
+| `/project <지시>` | 진입 — 인터뷰 후 에이전트/체인 설계 + 생성. **기본 동작.** |
+| `/project update` | 플러그인 업데이트 후 전수조사 → CLAUDE.md·에이전트 재동기화 |
+| `/project evolve` | 재귀적 자가 개선 수동 발동 |
 | `/project doctor` | 환경 진단 |
 
 ## 스킬 카탈로그
@@ -170,7 +168,7 @@ PM은 라우팅 허브이므로 별도의 실행 직원(worker)·검수 직원(a
 
 **2. 여러 직원을 함께 쓰는 세팅.** 쇼핑몰 운영자가 "셀러랑 CS랑 마케터 같이 쓸 거야"라고 요청하면, PM이 세 직원의 역할 분담이 담긴 CLAUDE.md를 생성해 요청이 서로 엉키지 않게 정리합니다. {{< catalog-count plugins >}}의 AI 직원 플러그인이 있습니다.
 
-**3. 쓰면서 다듬기.** 프로젝트를 한동안 쓰다 보면 실제 작업 방식이 처음 세팅과 달라집니다. `/project evolve`라고 말하면 PM이 그동안의 사용 신호를 살펴 워크플로우와 커스텀 에이전트를 다시 손봐 줍니다. 플러그인이 업데이트되면 `/project --update`로 전체 인벤토리를 다시 조사해 CLAUDE.md와 에이전트를 최신 상태로 동기화합니다.
+**3. 쓰면서 다듬기.** 프로젝트를 한동안 쓰다 보면 실제 작업 방식이 처음 세팅과 달라집니다. `/project evolve`라고 말하면 PM이 그동안의 사용 신호를 살펴 워크플로우와 커스텀 에이전트를 다시 손봐 줍니다. 플러그인이 업데이트되면 `/project update`로 전체 인벤토리를 다시 조사해 CLAUDE.md와 에이전트를 최신 상태로 동기화합니다.
 
 ## 설치 확인
 
@@ -178,7 +176,7 @@ PM은 라우팅 허브이므로 별도의 실행 직원(worker)·검수 직원(a
 
 **잘 안 될 때** — `/project`가 인식되지 않으면 마켓플레이스 등록과 플러그인 설치가 끝났는지 먼저 확인하세요. 설치 절차는 [플러그인 가이드](/plugins/)에 있습니다. 등록 방법은 양쪽 앱에서 다릅니다:
 - **Claude Cowork**: Cowork 탭 → 사용자 지정(Customize) → 개인 플러그인(Plugins) → "+" → URL: `modu-ai/moai-cowork`
-- **ChatGPT Work**: `codex plugin marketplace add modu-ai/moai-cowork` CLI 명령
+- **ChatGPT Work**: Cowork처럼 GUI 메뉴가 없으므로 터미널에서 한 줄 명령으로 등록합니다 — 터미널(Terminal·명령 프롬프트)을 열고 `codex plugin marketplace add modu-ai/moai-cowork`를 실행하세요.
 
 ## Sources
 

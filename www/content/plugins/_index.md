@@ -87,7 +87,7 @@ flowchart LR
 
 ### Sources
 
-- 마켓플레이스 진실 원본: [`/.claude-plugin/marketplace.json`](https://github.com/modu-ai/moai-cowork/blob/main/.claude-plugin/marketplace.json) (18 plugins, v1.1.0)
+- 마켓플레이스 진실 원본: [`/.claude-plugin/marketplace.json`](https://github.com/modu-ai/moai-cowork/blob/main/.claude-plugin/marketplace.json) (플러그인 패밀리 로스터 정본)
 - Claude Code 플러그인 공식 문서: <https://code.claude.com/docs/en/plugins>
 - OpenAI 플러그인 빌드 가이드: <https://developers.openai.com/plugins/build/plugins>
 - OpenAI 플러그인 사용 가이드: <https://learn.chatgpt.com/docs/plugins?surface=app>

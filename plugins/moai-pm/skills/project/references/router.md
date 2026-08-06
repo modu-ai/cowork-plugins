@@ -1,8 +1,8 @@
-# router.md — project 스킬 라우팅 프로토콜 (17-plugin 패밀리, 전 직원)
+# router.md — project 스킬 라우팅 프로토콜 (플러그인 패밀리, 전 직원)
 
 ## 개요
 
-사용자의 자연어 요청을 분석해 project 스킬이 다룰 **16개 AI 직원(플러그인)** 중 어느 스킬 체인이 중심이 될지 결정하는 프로토콜. 단일 'MoAI-Cowork, 모두의 코워크'(`modu-ai/moai-cowork`) 마켓플레이스의 17-plugin 패밀리가 대상이며, 개발 프로젝트 초기화는 이 마켓플레이스의 범위 밖이다. 플러그인 수·스킬 수는 하드코딩하지 않는다 — `.claude-plugin/marketplace.json`이 로스터 정본이다.
+사용자의 자연어 요청을 분석해 project 스킬이 다룰 **AI 직원(플러그인)** 중 어느 스킬 체인이 중심이 될지 결정하는 프로토콜. 단일 'MoAI-Cowork, 모두의 코워크'(`modu-ai/moai-cowork`) 마켓플레이스의 플러그인 패밀리가 대상이며, 개발 프로젝트 초기화는 이 마켓플레이스의 범위 밖이다. 플러그인 수·스킬 수는 하드코딩하지 않는다 — `.claude-plugin/marketplace.json`이 로스터 정본이다.
 
 ---
 
@@ -49,7 +49,7 @@
 | 도메인 | 키워드 |
 |--------|--------|
 | 초기화·라우팅 | 프로젝트 초기화, /project, CLAUDE.md 생성 |
-| 관리 | /project catalog, status, apikey, doctor, /project evolve |
+| 관리 | /project doctor, /project evolve, /project update (+ 카탈로그·상태·API 키는 자연어) |
 
 ---
 
@@ -84,7 +84,7 @@
 | 상황 | 대응 |
 |------|------|
 | 키워드 매칭 0개 | 기본 코워커 제안 후 확인(대다수 사용자) |
-| 중심 직원 미설치 | Gap Detection → 설치 안내 → `/project resume` 재개 |
+| 중심 직원 미설치 | Gap Detection → 설치 안내 → "이어서 진행" 재개 |
 | 개발 환경 셋업 요청 | 이 마켓플레이스 범위 밖임을 안내하고 비개발 영역만 설계 |
 
 ---

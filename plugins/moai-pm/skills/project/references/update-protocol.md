@@ -2,23 +2,23 @@
 
 ## 개요
 
-`/project --update`의 상세 정본이다. 외부에서 AI 직원 플러그인이 업데이트된 직후, 프로젝트(`CLAUDE.md` + `.claude/agents/` + `.moai/config.json` 스냅샷)를 **최신 설치 인벤토리에 동기화**한다.
+`/project update`의 상세 정본이다. 외부에서 AI 직원 플러그인이 업데이트된 직후, 프로젝트(`CLAUDE.md` + `.claude/agents/` + `.moai/config.json` 스냅샷)를 **최신 설치 인벤토리에 동기화**한다.
 
 project 스킬 SKILL.md의 §Recursive Self-Improvement가 정의하는 `inventory drift` 트리거를 "감지 대기"가 아니라 **즉시·전수조사로 강제 실행**하는 모드다. 따라서 자가 개선의 진단→최소 diff→검증→롤백 사이클과 가드레일을 그대로 계승하며, 본 프로토콜은 그중 **드리프트 동기화 특화 절차**만 다룬다.
 
-**`evolve` vs `--update` 재확인** — `/project evolve`는 사용 중 신호(`repeated correction`·`chain failure`)가 `.moai/evolution/signals.md`에 누적되어 발동하지만, `/project --update`는 사용자가 **수동으로** 호출해 drift를 기다리지 않고 즉시 전수조사한다. 둘은 같은 자가 개선 파이프라인의 서로 다른 진입점이다.
+**`evolve` vs `update` 재확인** — `/project evolve`는 사용 중 신호(`repeated correction`·`chain failure`)가 `.moai/evolution/signals.md`에 누적되어 발동하지만, `/project update`는 사용자가 **수동으로** 호출해 drift를 기다리지 않고 즉시 전수조사한다. 둘은 같은 자가 개선 파이프라인의 서로 다른 진입점이다.
 
 ---
 
 ## 1. 발동 전 검문 (HARD)
 
-`--update` 절차에 들어가기 전 반드시 확인한다.
+`update` 절차에 들어가기 전 반드시 확인한다.
 
 1. **프로젝트 존재 여부** — `./CLAUDE.md` 또는 `./.moai/config.json`이 없으면 동기화 대상이 없다.
    - 침묵 생성 금지. `AskUserQuestion`으로 `/project`(최초 셋업)로 안내한다.
-   - 옵션: `/project 시작으로 안내` / `--update 중단`.
+   - 옵션: `/project 시작으로 안내` / `update 중단`.
 2. **스냅샷 존재 여부** — `.moai/config.json`에 `plugins_installed` + `skills_available` 스냅샷이 없으면(최초 셋업 직후 미저장 등), 현재 인벤토리를 그대로 최초 스냅샷으로 저장하고 "이미 최신 상태"로 보고한다(비교 기준이 없으므로 diff는 공집합).
-3. **진입 발화 인자** — `/project --update` 외 추가 자연어 지시가 있으면 1줄 요약으로 `context.md`에 누적한다(인터뷰는 생략 — `--update`는 맥락 수집이 아니라 동기화가 목적).
+3. **진입 발화 인자** — `/project update` 외 추가 자연어 지시가 있으면 1줄 요약으로 `context.md`에 누적한다(인터뷰는 생략 — `update`는 맥락 수집이 아니라 동기화가 목적).
 
 검문 1에서 중단이 아니면 §2로 진입한다.
 
@@ -74,7 +74,7 @@ diff가 공집합이면 "이미 최신 상태"로 보고하고 종료한다(스�
 3. **교차 매칭** — §2-2의 diff와 신호를 교차:
    - **추가된 스킬이 기존 `chain failure` 신호를 해소할 수 있는가?** → 그 스킬을 관련 체인에 편입(우선 동기화).
    - **제거된 스킬에 대해 과거 `repeated correction`이 있었는가?** → 이미 쓰지 않는 스킬이면 안전 제거.
-4. 매칭 결과를 `.moai/evolution/` 진단 기록에 1줄로 남긴다(`날짜 | --update | 대상 | 신호-스킬 매칭 요지`).
+4. 매칭 결과를 `.moai/evolution/` 진단 기록에 1줄로 남긴다(`날짜 | update | 대상 | 신호-스킬 매칭 요지`).
 
 신호 파일이 비어 있어도 정상이다 — 이 경우 §2 diff만으로 동기화를 진행한다.
 
@@ -106,7 +106,7 @@ diff에 맞춰 프로젝트 산출물을 갱신한다. **전면 재작성 금지
 
 1. **스냅샷 리셋** — `.moai/config.json`의 `plugins_installed` + `skills_available`을 `new_inventory`로 갱신. 이로써 `inventory drift`는 0이 된다(다음 drift 감지의 새 기준).
 2. **evolution-log 기록** — `CLAUDE.md` 말미 `<!-- evolution-log -->`에 1줄 추가:
-   - 형식: `inventory drift | --update | <추가 N / 변경 N / 제거 N> | <신호-매칭 요지>`
+   - 형식: `inventory drift | update | <추가 N / 변경 N / 제거 N> | <신호-매칭 요지>`
 3. **evolution-log 큐레이션** — 최근 10건 유지, 초과분은 `.moai/evolution/log.md`로 이관(SKILL.md §Recursive Self-Improvement 큐레이션 규칙).
 
 ---

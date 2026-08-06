@@ -1,6 +1,6 @@
-# moai-pm (PM) — 17개 AI 직원을 부르는 진입점
+# moai-pm (PM) — AI 직원을 부르는 진입점
 
-> **PM**은 프로젝트를 시작할 때 **어떤 AI 직원이 필요한지 판단해 팀을 꾸려 주는** 허브 플러그인입니다. 진입점은 단 하나 — `/project` 명령이며, 스킬도 하나(`project`)로 통합되어 있습니다.
+> **PM**은 프로젝트를 시작할 때 **어떤 AI 직원이 필요한지 판단해 팀을 꾸려 주는** 허브 플러그인입니다. 진입점은 단 하나 — `/project` 스킬 하나로 통합되어 있습니다.
 
 ---
 
@@ -32,9 +32,9 @@ Claude Cowork(Desktop) 프로젝트 초기화 — 소크라테스 인터뷰 → 
 
 ---
 
-## 17개 AI 직원 ('MoAI-Cowork, 모두의 코워크')
+## AI 직원 ('MoAI-Cowork, 모두의 코워크')
 
-전부 `modu-ai/moai-cowork` 마켓플레이스 하나에서 설치합니다. 정확한 로스터·스킬 수는 마켓플레이스 카탈로그(`/project catalog`)가 정본입니다 — 아래는 역할 요약입니다.
+전부 `modu-ai/moai-cowork` 마켓플레이스 하나에서 설치합니다. 정확한 로스터·스킬 수는 마켓플레이스 카탈로그(`.claude-plugin/marketplace.json`)가 정본입니다 — 아래는 역할 요약입니다.
 
 | AI 직원 | 플러그인 | 무엇을 하나요 |
 |---------|---------|---------------|
@@ -54,6 +54,7 @@ Claude Cowork(Desktop) 프로젝트 초기화 — 소크라테스 인터뷰 → 
 | 🎯 커리어코치 | `moai-career` | 이력서·면접·이직(구직자 편) |
 | 🎓 튜터 | `moai-tutor` | 커리큘럼·평가·논문 |
 | 🎨 디자이너 | `moai-designer` | 브랜드·디자인 시스템·Claude Design |
+| 📸 SNS 크리에이터 | `moai-threads-poster` | Threads·Instagram 자율 발행 |
 | 📋 PM | `moai-pm`(본 플러그인) | `/project` 단일 진입점 제공 |
 
 PM은 직접 일하지 않습니다. **누가 이 일에 맞는지 찾아 팀을 꾸리는 안내자** 역할만 합니다.
@@ -64,7 +65,7 @@ PM은 직접 일하지 않습니다. **누가 이 일에 맞는지 찾아 팀을
 
 ### ① 마켓플레이스 등록 (최초 1회만)
 
-'MoAI-Cowork, 모두의 코워크' 17개 AI 직원은 `modu-ai/moai-cowork` 마켓플레이스 하나에 들어있습니다:
+'MoAI-Cowork, 모두의 코워크' AI 직원은 `modu-ai/moai-cowork` 마켓플레이스 하나에 들어있습니다:
 
     /plugin marketplace add modu-ai/moai-cowork
 
@@ -78,9 +79,10 @@ PM은 직접 일하지 않습니다. **누가 이 일에 맞는지 찾아 팀을
     /plugin install moai-coworker@moai-cowork       # 범용 실무 코어 (권장)
     # 필요한 전문가 직원 추가: moai-writer / moai-story / moai-marketer / moai-media /
     # moai-seller / moai-officer / moai-analyst / moai-lawyer / moai-accountant /
-    # moai-recruiter / moai-cs / moai-consultant / moai-career / moai-tutor / moai-designer
+    # moai-recruiter / moai-cs / moai-consultant / moai-career / moai-tutor /
+    # moai-designer / moai-threads-poster
 
-> 처음엔 PM + 코워커만 설치해도 충분합니다. 나중에 다른 직원이 필요해지면 셋업 중 **Gap Detection**이 감지해 설치를 안내한 뒤, 완료 시 `/project resume`으로 이어서 진행합니다.
+> 처음엔 PM + 코워커만 설치해도 충분합니다. 나중에 다른 직원이 필요해지면 셋업 중 **Gap Detection**이 감지해 설치를 안내한 뒤, 완료되면 "이어서 진행"이라고 말해 이어서 진행합니다.
 
 ---
 
@@ -92,16 +94,15 @@ PM은 직접 일하지 않습니다. **누가 이 일에 맞는지 찾아 팀을
 
 PM이 먼저 인사하고 무엇을 할지 묻습니다. "온라인 클래스 런칭 준비할 거야"처럼 답하면 프로젝트 전용 커스텀 에이전트와 스킬 체인을 설계해 `CLAUDE.md`를 생성합니다.
 
-### 커맨드
+### 서브커맨드
+
+`/project`는 자연어 단일 진입 스킬입니다. 기본 동작은 `<자연어 지시>`로 진입하는 것이고, 아래 3가지 액션만 명시적 서브커맨드로 씁니다. 그 외(재개·카탈로그·상태·API 키)는 자연어로 요청하면 알아서 라우팅합니다.
 
 | 커맨드 | 동작 |
 |--------|------|
-| `/project <지시>` | 진입 — 인터뷰 후 에이전트/체인 설계 + 생성 |
-| `/project resume` | 플러그인 설치 후 이어서 진행 |
+| `/project <지시>` | 진입 — 인터뷰 후 에이전트/체인 설계 + 생성. **기본 동작.** |
+| `/project update` | 플러그인 업데이트 후 전수조사 → CLAUDE.md·에이전트 재동기화 |
 | `/project evolve` | 재귀적 자가 개선 수동 발동 |
-| `/project catalog` | 17-plugin·스킬 카탈로그 |
-| `/project status` | 현재 설정 상태 |
-| `/project apikey` | API 키 관리 |
 | `/project doctor` | 환경 진단 |
 
 ### 재귀적 자가 개선

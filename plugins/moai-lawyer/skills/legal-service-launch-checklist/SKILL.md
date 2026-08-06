@@ -79,7 +79,7 @@ version: "1.1.0"
 
 ### 4단계: 서비스별 리스크 매핑 (선택)
 
-> mo.ai.kr 18개 AI 직원 서비스 중 사용하는 기능의 법적 노출 매핑은 `references/service-risk-matrix.md`를 참조한다. 특히 AI 생성물을 외부에 서비스하는 경우(moai-media·moai-story·moai-marketer) 1번 의무가 발생한다.
+> mo.ai.kr AI 직원 서비스 중 사용하는 기능의 법적 노출 매핑은 `references/service-risk-matrix.md`를 참조한다. 특히 AI 생성물을 외부에 서비스하는 경우(moai-media·moai-story·moai-marketer) 1번 의무가 발생한다.
 
 ## 사용 예시
 
