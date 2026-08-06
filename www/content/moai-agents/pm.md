@@ -1,7 +1,7 @@
 ---
 title: "「PM」 — 프로젝트를 여는 첫 직원"
 weight: 1
-description: "프로젝트 초기화 허브 AI 직원. /project 한마디로 17개 AI 직원 플러그인의 진입을 라우팅합니다."
+description: "프로젝트 초기화 허브 AI 직원. /project 한마디로 AI 직원 플러그인의 진입을 라우팅합니다."
 aliases: ["/agent-teams/pm/"]
 ---
 

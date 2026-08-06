@@ -1,7 +1,7 @@
 ---
 title: "MoAI-Agents"
 weight: 45
-description: "17명의 AI 직원으로 구성된 모두의 코워크 에이전트 팀. 각 직원의 역할·스킬·연동을 한눈에."
+description: "모두의 코워크 에이전트 팀. 각 직원의 역할·스킬·연동을 한눈에."
 geekdocBreadcrumb: true
 geekdocCollapseSection: true
 aliases: ["/employees/", "/agent-teams/"]
@@ -47,7 +47,7 @@ flowchart LR
    HUB --> G3
 ```
 
-## 17명의 직원 한눈에 보기
+## AI 직원 한눈에 보기
 
 | 직원 | 분류 | 무엇을 해 주나 | 스킬 |
 |---|---|---|---|

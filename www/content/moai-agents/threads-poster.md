@@ -33,7 +33,7 @@ flowchart LR
 
 {{< employee-skills "moai-threads-poster" >}}
 
-## MCP 도구 17종
+## MCP 도구
 
 MCP 서버가 노출하는 도구들입니다. 큐·예약 도구는 없습니다 — 전부 직접 발행·조회·포맷 도구입니다.
 
@@ -100,12 +100,12 @@ Instagram Graph API를 통한 직접 발행도 지원합니다. Threads와 동�
 ### 셋업
 
 환경변수:
-```bash
+{{< terminal title="Terminal" lang="bash" raw="true" >}}
 export THREADS_ACCESS_TOKEN="<Threads 장기 액세스 토큰(60일)>"
 export THREADS_USER_ID="<Threads 사용자 ID>"
 export IG_ACCESS_TOKEN="<Instagram 장기 액세스 토큰(무기한)>"
 export IG_USER_ID="<Instagram Business 계정 ID>"
-```
+{{< /terminal >}}
 
 `IG_USER_ID`는 Instagram Graph API `get_profile` 응답의 `id` 필드 또는 Facebook Login 콜백에서 제공되는 사용자 ID입니다. Professional 계정 요건은 `CONNECTORS.md`를 참조하세요.
 
@@ -125,7 +125,7 @@ export IG_USER_ID="<Instagram Business 계정 ID>"
 이 플러그인을 사용하려면 Meta App 등록과 토큰 발급이 필요합니다. 자세한 절차는 `mcp-servers/threads-poster/CONNECTORS.md`를 참조하세요.
 
 환경변수:
-```bash
+{{< terminal title="Terminal" lang="bash" raw="true" >}}
 export THREADS_ACCESS_TOKEN="<장기 액세스 토큰(60일)>"
 export THREADS_USER_ID="<Threads 사용자 ID>"
-```
+{{< /terminal >}}

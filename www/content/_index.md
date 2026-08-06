@@ -1,6 +1,6 @@
 ---
 title: "모두의 코워크"
-description: "모두의 코워크 마켓플레이스 — 17개 AI 직원 플러그인. 마케팅·셀러·법무·디자인까지, 필요한 직무만 골라 설치하고 자연어로 일을 맡기세요."
+description: "모두의 코워크 마켓플레이스 — 마케팅·셀러·법무·디자인까지, 필요한 직무의 AI 직원만 골라 설치하고 자연어로 일을 맡기세요."
 geekdocAnchor: false
 geekdocBreadcrumb: false
 # DS v2 parity — 홈은 사이드바/TOC 없이 전폭 랜딩 (design-system/handoff/*.dc.html isHome)

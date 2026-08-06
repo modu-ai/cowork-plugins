@@ -13,17 +13,17 @@ geekdocBreadcrumb: true
 
 터미널에 아래 한 줄을 입력합니다.
 
-```bash
+{{< terminal title="Terminal" lang="bash" raw="true" >}}
 claude plugin marketplace add modu-ai/moai-cowork
-```
+{{< /terminal >}}
 
 `modu-ai/moai-cowork`는 GitHub 저장소 주소의 줄임 표기입니다. 성공하면 "Added marketplace: moai-cowork" 같은 확인 메시지가 출력되고, 이제 Claude가 이 가게의 플러그인 목록을 알게 됩니다. 등록된 마켓플레이스는 다음 명령으로 확인할 수 있습니다.
 
-```bash
+{{< terminal title="Terminal" lang="bash" raw="true" >}}
 claude plugin marketplace list
-```
+{{< /terminal >}}
 
-출력에 `moai-cowork`라는 이름과 플러그인 개수(18개)가 보이면 정상입니다.
+출력에 `moai-cowork`라는 이름과 플러그인 목록이 보이면 정상입니다.
 
 {{< screenshot-request "터미널에서 claude plugin marketplace add modu-ai/moai-cowork 실행 후 성공 메시지와 marketplace list 출력이 보이는 화면" >}}
 
@@ -35,9 +35,9 @@ Claude Desktop 앱에서는 설정 → 플러그인(Plugins) 화면에서 마켓
 
 ## 2. 필요한 직원만 설치
 
-18개를 전부 설치할 필요는 없습니다. 지금 필요한 직무만 골라 설치하세요. 설치 명령의 형식은 `<플러그인 이름>@<마켓플레이스 이름>`입니다.
+전부 설치할 필요는 없습니다. 지금 필요한 직무만 골라 설치하세요. 설치 명령의 형식은 `<플러그인 이름>@<마켓플레이스 이름>`입니다.
 
-```bash
+{{< terminal title="Terminal" lang="bash" raw="true" >}}
 # 예: 마케터 채용
 claude plugin install moai-marketer@moai-cowork
 
@@ -46,9 +46,9 @@ claude plugin install moai-seller@moai-cowork
 
 # 예: 실무 범용 코워커 채용
 claude plugin install moai-coworker@moai-cowork
-```
+{{< /terminal >}}
 
-각 명령이 성공하면 "Installed plugin: moai-marketer" 형태의 메시지가 출력됩니다. 어떤 직원이 있는지는 [플러그인 설치·운용 개요](../)의 17-직원 표를, 각 직원이 무엇을 하는지는 [에이전트 팀 소개](/moai-agents/)를 참고하세요.
+각 명령이 성공하면 "Installed plugin: moai-marketer" 형태의 메시지가 출력됩니다. 어떤 직원이 있는지는 [플러그인 설치·운용 개요](../)의 직원 표를, 각 직원이 무엇을 하는지는 [에이전트 팀 소개](/moai-agents/)를 참고하세요.
 
 > **잘 안 될 때** — "Plugin not found"가 나오면 이름 철자(`moai-` 접두사 포함)와 `@moai-cowork` 접미사를 확인하세요. 마켓플레이스 등록(1단계)을 건너뛴 경우에도 같은 오류가 납니다.
 
@@ -56,15 +56,15 @@ claude plugin install moai-coworker@moai-cowork
 
 설치가 실제로 반영됐는지 두 가지 명령으로 확인합니다.
 
-```bash
+{{< terminal title="Terminal" lang="bash" raw="true" >}}
 claude plugin list
-```
+{{< /terminal >}}
 
 설치된 플러그인 이름·버전·활성 상태가 표 형태로 출력됩니다. 방금 설치한 직원이 `enabled` 상태로 보이면 성공입니다.
 
-```bash
+{{< terminal title="Terminal" lang="bash" raw="true" >}}
 claude plugin details moai-seller@moai-cowork
-```
+{{< /terminal >}}
 
 `details`는 특정 플러그인의 상세 정보 — 버전, 설명, 포함된 명령·에이전트·스킬 목록, MCP 서버 선언 — 를 보여 줍니다. 설치 직후 한 번 훑어보면 이 직원이 어떤 도구를 들고 왔는지 감이 잡힙니다.
 
@@ -76,7 +76,7 @@ claude plugin details moai-seller@moai-cowork
 
 플러그인은 마켓플레이스에서 계속 개선됩니다. 관리 명령 세 가지만 기억하면 됩니다.
 
-```bash
+{{< terminal title="Terminal" lang="bash" raw="true" >}}
 # 마켓플레이스 최신 정보 받아오기 + 플러그인 업데이트
 claude plugin marketplace update moai-cowork
 claude plugin update moai-seller@moai-cowork
@@ -87,7 +87,7 @@ claude plugin enable moai-seller@moai-cowork
 
 # 완전히 내보내기(제거)
 claude plugin uninstall moai-seller@moai-cowork
-```
+{{< /terminal >}}
 
 비활성화(`disable`)는 설치는 유지한 채 로드만 막는 것이라, 여러 직원을 설치해 두고 프로젝트에 따라 켜고 끄는 운용에 좋습니다. 제거(`uninstall`) 후에도 마켓플레이스 등록은 남아 있으므로 언제든 다시 설치할 수 있습니다.
 
