@@ -17,14 +17,14 @@ lastmod: 2026-08-07T00:00:00+09:00
 
 ## 1. MCP 서버 연결
 
-각 플러그인의 `.mcp.json`이 Higgsfield 공식 호스티드 엔드포인트(`https://mcp.higgsfield.ai/mcp`)를 가리킵니다. Claude Code가 플러그인을 로드할 때 자동으로 등록합니다.
+각 플러그인의 `.mcp.json`이 Higgsfield 공식 호스티드 엔드포인트(`https://mcp.higgsfield.ai/mcp`)를 가리킵니다. Claude Cowork가 플러그인을 로드할 때 자동으로 등록합니다.
 
 ## 2. OAuth 1회 인증
 
-1. Claude Code → Settings → MCP Servers에서 Higgsfield 항목을 선택합니다.
+1. Claude Cowork → Settings → MCP Servers에서 Higgsfield 항목을 선택합니다.
 2. 브라우저가 열리면 Higgsfield 계정으로 로그인합니다 (OAuth 2.0 커넥터 흐름).
 3. 접근 권한을 허용하면 액세스 토큰이 발급되어 Higgsfield 서버에 보관됩니다. API 키를 직접 다룰 필요가 없습니다.
-4. 토큰 만료 시 Claude Code가 자동으로 갱신합니다.
+4. 토큰 만료 시 Claude Cowork가 자동으로 갱신합니다.
 
 인증 완료 후 생성형 스킬이 MCP 도구를 호출해 결과물을 생성합니다.
 

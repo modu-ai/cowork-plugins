@@ -1,12 +1,12 @@
 ---
 title: "빠른 시작"
 weight: 30
-description: "modu-ai/moai-cowork 마켓플레이스 등록부터 첫 스킬 체인 실행까지 약 10분 완성 가이드"
+description: "modu-ai/moai-cowork 마켓플레이스 등록부터 첫 스킬 체인 실행까지 약 10분 완성 가이드 — Claude Cowork, ChatGPT Work"
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
 lastmod: 2026-08-07T00:00:00+09:00
 ---
-`modu-ai/moai-cowork` 마켓플레이스를 Claude Cowork에 등록하고 첫 스킬 체인을 실행하기까지의 전체 흐름을 정리한 페이지입니다. 처음부터 끝까지 약 **10분** 소요됩니다.
+`modu-ai/moai-cowork` 마켓플레이스를 **Claude Cowork와 ChatGPT Work** 두 데스크톱 앱에 등록하고 첫 스킬 체인을 실행하기까지의 전체 흐름을 정리한 페이지입니다. 처음부터 끝까지 약 **10분** 소요됩니다.
 
 ## 사전 체크
 
@@ -64,7 +64,7 @@ flowchart TD
 
 ## 마켓플레이스, 플러그인, PM — 세 단어 정리
 
-아래 1-3단계로 넘어가기 전에 처음 만나는 용어 네 개를 스마트폰에 빗대어 잡아둡니다. **마켓플레이스**는 앱 스토어(플레이스토어·앱스토어)처럼 "설치할 수 있는 앱 목록이 모여 있는 곳"입니다. **플러그인**은 그 스토어에서 하나하나 다운로드하는 앱 한 개입니다 — 사진 편집 앱, 배달 앱처럼 각자 쓰임이 정해져 있습니다. 여기서 **moai-pm**은 이사 업체 팀장 같은 역할입니다. 짐을 직접 나르기 전에 "어느 방 짐부터, 어떤 순서로"를 잡아 주듯, `/project` 한 명령으로 이 프로젝트에 어떤 직원을 배치하고 어떤 순서로 일할지를 `CLAUDE.md`에 정리해 줍니다. 그래서 `moai-pm`을 먼저 설치합니다.
+아래 1-3단계로 넘어가기 전에 처음 만나는 용어 네 개를 스마트폰에 빗대어 잡아둡니다. **마켓플레이스**는 앱 스토어(플레이스토어·앱스토어)처럼 "설치할 수 있는 앱 목록이 모여 있는 곳"입니다. **플러그인**은 그 스토어에서 하나하나 다운로드하는 앱 한 개입니다 — 사진 편집 앱, 배달 앱처럼 각자 쓰임이 정해져 있습니다. 여기서 **moai-pm**은 이사 업체 팀장 같은 역할입니다. 짐을 직접 나르기 전에 "어느 방 짐부터, 어떤 순서로"를 잡아 주듯, `/project` 한 명령으로 이 프로젝트에 어떤 직원을 배치하고 어떤 순서로 일할지를 `CLAUDE.md`(Claude Cowork) 또는 `AGENTS.md`(ChatGPT Work)에 정리해 줍니다. 그래서 `moai-pm`을 먼저 설치합니다.
 
 **도메인 플러그인**은 일을 분야별로 묶어 둔 앱 묶음입니다(비즈니스 묶음, 콘텐츠 묶음, 법무 묶음 등). 사진 편집을 안 한다면 그 앱은 내려받지 않아도 되듯, {{< catalog-count plugins >}}개 플러그인 중 지금 진행할 작업에 맞는 것만 골라 설치하면 됩니다. 토큰이란 컴퓨터가 한 번에 읽는 텍스트 분량의 단위인데, 설치를 최소한으로 유지하면 대화창이 한 번에 읽어야 할 분량도 줄어들어 반응이 가벼워집니다.
 
@@ -86,10 +86,26 @@ flowchart TD
 
 1. **마켓플레이스 등록**
 
-   Cowork **좌측 사이드바 → 사용자 지정(Customize) → 개인 플러그인 → 플러그인 추가 → 마켓플레이스 추가**에서 다음 URL을 입력합니다.
+   **Claude Cowork**에서는 좌측 사이드바 → **사용자 지정(Customize) → 개인 플러그인 → 플러그인 추가 → 마켓플레이스 추가**에서 다음 URL을 입력합니다.
 
    {{< terminal title="claude — cowork" >}}
 > modu-ai/moai-cowork
+   {{< /terminal >}}
+
+   **ChatGPT Work**에서는 좌측 사이드바 → **Plugins → Plugin Marketplace → Add**에서 다음 URL을 입력합니다.
+
+   {{< terminal title="chatgpt — work" >}}
+> modu-ai/moai-cowork
+   {{< /terminal >}}
+
+   또는 터미널이 익숙하다면 CLI를 사용할 수도 있습니다(Claude Cowork, ChatGPT Work 공통):
+
+   {{< terminal title="Terminal" lang="bash" raw="true" >}}
+# Claude Cowork
+claude plugin marketplace add modu-ai/moai-cowork
+
+# ChatGPT Work CLI
+codex plugin marketplace add modu-ai/moai-cowork
    {{< /terminal >}}
 
    동기화가 끝나면 {{< catalog-count plugins >}}개 플러그인 목록이 표시됩니다.
@@ -117,7 +133,7 @@ flowchart TD
 
 프로젝트를 만들고 `/project`를 실행하는 단계는 식당에 들어가서 **점원이 인터뷰를 시작하는 순간**에 해당합니다. 손님이 자리에 앉으면 점원이 "몇 명이세요, 매운 거 괜찮으세요, 예산이 어떻게 되세요"라고 차례로 묻습니다. 점원은 그 답을 모아 알아서 앞채 → 메인 → 디저트 순서(체인)를 정하고 주방에 넘깁니다. 손님이 직접 요리 순서를 정하지 않아도 됩니다. `/project`가 바로 이 점원 역할을 합니다.
 
-구체적으로는 7단계 흐름(질문 → 감지 → 체인 조립 → 확인 → 생성 → API키 → 첫 실행)을 거칩니다. 먼저 프로젝트의 목적과 산출물을 **인터뷰**(질문)로 듣고, 그 답에서 **무슨 일인지를 감지**한 뒤, 알맞은 스킬들을 순서대로 이어 **체인**으로 조립합니다. 사용자가 **확인**하면 프로젝트 루트에 `CLAUDE.md`(이 프로젝트에서 일할 때 지켜야 할 규칙 모음)를 **생성**하고, 외부 서비스가 필요하면 **API 키** 등록을 안내한 뒤 **첫 실행**까지 이어갑니다. 이 일곱 단계가 끝나면 "어떤 일을, 어떤 순서로, 어떤 품질 기준으로"가 한 번에 정리됩니다.
+구체적으로는 7단계 흐름(질문 → 감지 → 체인 조립 → 확인 → 생성 → API키 → 첫 실행)을 거칩니다. 먼저 프로젝트의 목적과 산출물을 **인터뷰**(질문)로 듣고, 그 답에서 **무슨 일인지를 감지**한 뒤, 알맞은 스킬들을 순서대로 이어 **체인**으로 조립합니다. 사용자가 **확인**하면 프로젝트 루트에 `CLAUDE.md`(Claude Cowork) 또는 `AGENTS.md`(ChatGPT Work) — 이 프로젝트에서 일할 때 지켜야 할 규칙 모음 — 를 **생성**하고, 외부 서비스가 필요하면 **API 키** 등록을 안내한 뒤 **첫 실행**까지 이어갑니다. 이 일곱 단계가 끝나면 "어떤 일을, 어떤 순서로, 어떤 품질 기준으로"가 한 번에 정리됩니다.
 
 ```mermaid
 sequenceDiagram
@@ -131,7 +147,7 @@ sequenceDiagram
    W->>W: 감지 → 체인 조립
    W->>U: 조립된 체인 확인 요청
    U-->>W: 승인
-   W->>K: CLAUDE.md 생성 + 체인 전달
+   W->>K: 규칙 파일 생성 + 체인 전달
    K-->>U: 첫 실행 결과
 ```
 
@@ -191,7 +207,7 @@ sequenceDiagram
    13. **형식 지정** — 산출물 형식을 세부 지정합니다
    14. **완료 확인** — 모든 인터뷰 항목 입력 후 완료를 확인합니다
 
-   `moai-pm:project-manager` 스킬이 실행되어 **7단계 흐름**(Interview → Detect → Chain → Confirm → Generate → APIKey → First Run)을 진행합니다. 자세한 내용은 [PM 직원 페이지](../../moai-agents/pm/)에서 확인할 수 있습니다. 약 3-5분 안에 프로젝트용 `CLAUDE.md`가 루트에 생성됩니다.
+   `moai-pm:project-manager` 스킬이 실행되어 **7단계 흐름**(Interview → Detect → Chain → Confirm → Generate → APIKey → First Run)을 진행합니다. 자세한 내용은 [PM 직원 페이지](../../moai-agents/pm/)에서 확인할 수 있습니다. 약 3-5분 안에 프로젝트용 `CLAUDE.md`(Claude Cowork) 또는 `AGENTS.md`(ChatGPT Work)가 루트에 생성됩니다.
 
 ## 한 줄을 쓰면 체인이 저절로 조립되는 원리
 

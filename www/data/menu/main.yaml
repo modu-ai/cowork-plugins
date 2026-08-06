@@ -87,7 +87,7 @@ main:
         ref: /moai-agents/tutor
       - name: 디자이너
         ref: /moai-agents/designer
-      - name: 스레드 포스터
+      - name: SNS 크리에이터
         ref: /moai-agents/threads-poster
         isNew: true
 
@@ -111,6 +111,26 @@ main:
     sub:
       - name: 개요
         ref: /cookbook
+      - name: 스킬 체이닝 가이드
+        ref: /cookbook/skill-chaining
+      - name: 베스트 프랙티스
+        ref: /cookbook/best-practices
+      - name: 자동화 레시피
+        ref: /cookbook/automation-recipes
+      - name: 블로그 파이프라인
+        ref: /cookbook/blog-pipeline
+      - name: 주간 보고서 자동화
+        ref: /cookbook/report-automation
+      - name: 사업계획서 자동화
+        ref: /cookbook/business-plan
+      - name: IR 덱 제작
+        ref: /cookbook/ir-deck
+      - name: 계약서 검토 리포트
+        ref: /cookbook/contract-review
+      - name: NDA 일괄 검토 파이프라인
+        ref: /cookbook/legal-nda-batch
+      - name: 트러블슈팅
+        ref: /cookbook/troubleshooting
 
   - name: 도움말
     icon: question
@@ -118,12 +138,19 @@ main:
     sub:
       - name: 개요
         ref: /help
-      - name: 트러블슈팅
+      - name: Claude 알아보기
+        ref: /help/about-claude
+      - name: 요금제와 결제
+        ref: /help/plans-billing
+      - name: 계정 관리
+        ref: /help/account
+      - name: 대화 관리
+        ref: /help/conversations
+      - name: 개인화와 설정
+        ref: /help/personalization
+      - name: 사용량과 한도
+        ref: /help/usage-limits
+      - name: 문제 해결
         ref: /help/troubleshooting
-
-  - name: CLI
-    icon: terminal
-    defaultOpen: false
-    sub:
-      - name: 개요
-        ref: /cli
+      - name: 가이드 문서 색인
+        ref: /help/source-index

@@ -1,8 +1,8 @@
 {
   "$schema": "https://developers.openai.com/plugins/build/plugins",
-  "$comment": "OpenAI/Codex 플러그인 매니페스트. Claude용 .claude-plugin/plugin.json과 나란히 공존. 본체(skills/SKILL.md, .mcp.json)는 양쪽 공유.",
+  "$comment": "OpenAI/Codex 플러그인 매니페스트. Claude용 .claude-plugin/plugin.json과 나란히 공존. 본체(skills/SKILL.md)는 양쪽 공유. PM은 MCP를 사용하지 않으므로 mcpServers 참조가 없다.",
   "name": "moai-pm",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "프로젝트 초기화 허브 AI 직원 — /project 단일 명령으로 진입합니다. Claude Cowork 프로젝트 초기화(전 직원 지침 설정 + .claude/agents/ 커스텀 에이전트 + CLAUDE.md 워크플로우 생성 + 재귀적 자가 개선)를 담당하며 17개 AI 직원 플러그인의 진입을 라우팅합니다. 비개발자도 자연어 한마디로 프로젝트를 시작할 수 있습니다. 이런 분께 추천: 비개발자·프로젝트 시작자.",
   "author": {
     "name": "모두의 AI",
@@ -12,18 +12,30 @@
   "homepage": "https://cowork.mo.ai.kr/plugins/",
   "repository": "https://github.com/modu-ai/moai-cowork",
   "license": "Apache-2.0",
-  "keywords": ["moai", "pm", "project", "허브", "라우터", "초기화"],
+  "keywords": [
+    "moai",
+    "pm",
+    "project",
+    "허브",
+    "라우터",
+    "초기화"
+  ],
   "skills": "./skills/",
-  "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "🚀 PM",
     "shortDescription": "🚀 PM — 프로젝트 초기화 허브, 17개 AI 직원 라우팅",
     "longDescription": "프로젝트 초기화 허브 AI 직원 — /project 단일 명령으로 진입합니다. Claude Cowork 프로젝트 초기화(전 직원 지침 설정 + .claude/agents/ 커스텀 에이전트 + CLAUDE.md 워크플로우 생성 + 재귀적 자가 개선)를 담당하며 17개 AI 직원 플러그인의 진입을 라우팅합니다. 비개발자도 자연어 한마디로 프로젝트를 시작할 수 있습니다. 이런 분께 추천: 비개발자·프로젝트 시작자.",
     "developerName": "모두의 AI",
     "category": "Productivity",
-    "capabilities": ["Read", "Write"],
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
     "websiteURL": "https://cowork.mo.ai.kr",
-    "defaultPrompt": ["프로젝트 초기화해줘", "/project --cowork로 코워크 셋업해줘"],
+    "defaultPrompt": [
+      "프로젝트 초기화해줘",
+      "/project --cowork로 코워크 셋업해줘"
+    ],
     "brandColor": "#3d7d5f"
   }
 }

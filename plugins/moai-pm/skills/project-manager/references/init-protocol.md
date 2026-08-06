@@ -30,7 +30,7 @@ Phase 5: 설계 확인 (AskUserQuestion)
     ↓
 Phase 6: CLAUDE.md 생성 (CLAUDE.md.tmpl 기반, ≤200라인)
     ↓
-Phase 7: 커스텀 에이전트 생성 (.claude/agents/*.md)
+Phase 7: 커스텀 에이전트 생성 (.claude/agents/*.md + .codex/agents/*.toml)
     ↓
 Phase 8: API 키 / 커넥터 + 첫 실행 안내
 ```
@@ -86,24 +86,28 @@ Phase 8: API 키 / 커넥터 + 첫 실행 안내
 
 ### 2-1. 인벤토리 소스
 
-**[HARD] 스캔 필터링 — moai-cowork 출처만 인정 (동적 도출)**: `~/.claude/plugins/`에는 여러 마켓플레이스 플러그인이 섞여있을 수 있다. project 스킬은 **moai-cowork(modu-ai/moai-cowork) 마켓플레이스 출처 플러그인만** 인벤토리에 포함하고, 그 외는 완전히 제외한다.
+**[HARD] 스캔 필터링 — moai-cowork 출처만 인정 (동적 도출)**: `~/.claude/plugins/`(Claude)와 `~/.codex/plugins/`(Codex)에는 여러 마켓플레이스 플러그인이 섞여있을 수 있다. project 스킬은 **양쪽을 모두 스캔**해 **moai-cowork(modu-ai/moai-cowork) 마켓플레이스 출처 플러그인만** 인벤토리에 포함하고, 그 외는 완전히 제외한다.
 
 **[HARD] 플러그인 집합은 하드코딩 화이트리스트가 아니라 동적으로 도출한다.** `moai-*` 접두어이면서 moai-cowork 마켓플레이스 출처인 플러그인을 `plugin.json` 스캔으로 식별한다. 마켓플레이스에 신규 플러그인이 추가되면 자동으로 포함된다. **카운트(플러그인 수·스킬 수)는 하드코딩하지 않는다** — `.claude-plugin/marketplace.json`이 로스터 정본이다.
 
 **소스 A — Bash 디렉터리 스캔**:
 
 ```bash
-PLUGIN_DIR=~/.claude/plugins
+# Claude(~/.claude/plugins) + Codex(~/.codex/plugins/cache) 양쪽 스캔
 INSTALLED_MOAI_PLUGINS=()
-for dir in "$PLUGIN_DIR"/moai-*; do
+for dir in ~/.claude/plugins/moai-* ~/.codex/plugins/cache/*/moai-*; do
   p=$(basename "$dir")
-  if [ -d "$dir" ] && [ -f "$dir/.claude-plugin/plugin.json" ]; then
+  if [ -d "$dir" ] && { [ -f "$dir/.claude-plugin/plugin.json" ] || [ -f "$dir/.codex-plugin/plugin.json" ]; }; then
     INSTALLED_MOAI_PLUGINS+=("$p")
   fi
 done
 for plugin in "${INSTALLED_MOAI_PLUGINS[@]}"; do
-  find "$PLUGIN_DIR/$plugin/skills" -maxdepth 2 -name SKILL.md 2>/dev/null
+  for base in ~/.claude/plugins ~/.codex/plugins/cache/*; do
+    find "$base/$plugin/skills" -maxdepth 2 -name SKILL.md 2>/dev/null
+  done
 done
+# Codex 커스텀 에이전트(.codex/agents/*.toml)도 인벤토리에 포함
+for f in ./.codex/agents/*.toml ~/.codex/agents/*.toml; do [ -f "$f" ] && basename "$f" .toml; done 2>/dev/null
 ```
 
 각 SKILL.md frontmatter의 `name:` 필드를 추출해 `<skill-name> → <plugin>` 매핑을 구성한다.
@@ -256,7 +260,7 @@ for each skill in chain_skills:
 
 ## Phase 7: 커스텀 에이전트 생성
 
-Phase 3-6 결과를 바탕으로 `.claude/agents/*.md`를 생성한다. 절차·frontmatter·7-step 루프는 project 스킬 SKILL.md §Custom Agent & Skill-Chain Design 참조.
+Phase 3-6 결과를 바탕으로 커스텀 에이전트를 **Claude용 `.claude/agents/*.md`(markdown+YAML frontmatter)와 Codex용 `.codex/agents/*.toml`(TOML: `name`·`description`·`developer_instructions`, `model`·`sandbox_mode` 선택) 양쪽**으로 생성한다. 절차·frontmatter·7-step 루프는 project 스킬 SKILL.md §Custom Agent & Skill-Chain Design 참조.
 
 ---
 

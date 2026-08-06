@@ -30,7 +30,7 @@ flowchart TD
 
 ## 1. Cowork란 무엇인가
 
-Claude Cowork는 Claude Desktop에서 작동하는 **에이전틱 AI 작업 플랫폼**입니다. Claude Code의 에이전틱 아키텍처를 그대로 가져왔지만 코딩이 아닌 **지식 업무(knowledge work)** 에 최적화된 사용자 경험을 얹었습니다.
+Claude Cowork는 Claude Cowork 앱에서 작동하는 **에이전틱 AI 작업 플랫폼**입니다. Claude Cowork의 에이전틱 아키텍처를 그대로 가져왔지만 코딩이 아닌 **지식 업무(knowledge work)** 에 최적화된 사용자 경험을 얹었습니다.
 
 ### Chat 모드와의 핵심 차이
 
@@ -117,7 +117,7 @@ flowchart TD
 | 메커니즘 | 적용 범위 | 설명 |
 |---|---|---|
 | 전역 지시사항 | 모든 세션 | Settings → Cowork에서 설정. 200줄 이내 유지 |
-| CLAUDE.md | 프로젝트·폴더 단위 | 매 세션 시작 시 자동 로드. 영구 규칙 |
+| 프로젝트 지침 파일 | 프로젝트·폴더 단위 | Claude Cowork는 `CLAUDE.md`, ChatGPT Work는 `AGENTS.md`를 매 세션 시작 시 자동 로드. 영구 규칙 |
 | Auto Memory | 프로젝트 내 | 사용자 선호·수정 이력을 자동 학습 |
 
 {{< hint type="warning" >}}
@@ -132,14 +132,21 @@ flowchart TD
 
 설치 순서:
 
-1. **마켓플레이스 추가** — Cowork → **사용자 지정(Customize)** → **개인 플러그인(Plugins)** → "+" → URL 입력: `modu-ai/moai-cowork`
-2. **플러그인 선택·설치** — 목록에서 필요한 플러그인에 "Add plugin" 버튼을 누릅니다.
+**Claude Cowork 앱 UI**:
+1. Cowork → **사용자 지정(Customize)** → **개인 플러그인(Plugins)** → "+" → URL: `modu-ai/moai-cowork`
+2. 목록에서 필요한 플러그인에 "Add plugin" 버튼 클릭
+
+**ChatGPT Work CLI**:
+1. `codex plugin marketplace add modu-ai/moai-cowork`
+2. `codex plugin install moai-coworker@moai-cowork`
+
+또는 Claude Cowork/ChatGPT Work 공통 CLI: `claude/codex plugin marketplace add modu-ai/moai-cowork`
 
 ### 스킬 vs 플러그인
 
 | 구분 | 스킬 | 플러그인 |
 |---|---|---|
-| 위치 | 프로젝트 폴더 내부 | Claude 마켓플레이스 |
+| 위치 | 프로젝트 폴더 내부 | Claude Cowork/ChatGPT Work 마켓플레이스 |
 | 설치 | 폴더 선택만으로 즉시 사용 | 별도 설치 필요 |
 | 커스텀 | `SKILL.md` 직접 수정 | **사용자 지정(Customize)** 버튼으로 편집 |
 | 공유 | `.skill` 파일 복사 | `.plugin` 파일 배포 |
@@ -242,13 +249,10 @@ flowchart LR
 
 ### 원칙 2 — 구체성
 
-{{< terminal title="claude — cowork" >}}
-> {{< icon circle-x >}} "내 파일 봐줘"
-> {{< icon circle-check >}} "~/Documents/sales_2026.xlsx 파일을 분석해줘"
-
-> {{< icon circle-x >}} "템플릿 사용해줘"
-> {{< icon circle-check >}} "template_v3.docx 양식 사용해줘"
-{{< /terminal >}}
+- {{< icon name="circle-x" class="tone-error" >}} "**내 파일 봐줘**" — 파일을 안 가르쳐주면 Cowork가 뭘 열지 모릅니다.
+- {{< icon name="circle-check" class="tone-success" >}} "**~/Documents/sales_2026.xlsx 파일을 분석해줘**" — 정확한 경로를 줍니다.
+- {{< icon name="circle-x" class="tone-error" >}} "**템플릿 사용해줘**" — 어떤 템플릿인지 모릅니다.
+- {{< icon name="circle-check" class="tone-success" >}} "**template_v3.docx 양식 사용해줘**" — 파일명을 정해줍니다.
 
 ### 원칙 3 — 참고 자료 직접 연결
 
@@ -352,7 +356,7 @@ Cowork는 Chat보다 토큰 사용량이 많습니다. 아래 6가지 전략으�
 ### Step 1 — 기본 환경
 
 ```
-[ ] Claude Desktop 최신 버전 설치
+[ ] Claude Cowork 앱 최신 버전 설치
 [ ] Pro·Max 플랜 활성화 확인
 [ ] Cowork 탭 접근 가능 확인
 ```
@@ -362,14 +366,14 @@ Cowork는 Chat보다 토큰 사용량이 많습니다. 아래 6가지 전략으�
 ```
 [ ] 메인 작업 폴더 생성·선택
 [ ] 전역 지시사항 설정 (Settings → Cowork)
-[ ] CLAUDE.md 작성 (프로젝트 규칙)
+[ ] 프로젝트 지침 파일 작성 (Claude Cowork는 CLAUDE.md, ChatGPT Work는 AGENTS.md, 프로젝트 규칙)
 [ ] 폴더 구조 정리 (Input / Output / Scratch)
 ```
 
 ### Step 3 — 확장 기능
 
 ```
-[ ] 필요 플러그인 설치 (모두의 코워크 마켓플레이스)
+[ ] 필요 플러그인 설치 (Claude Cowork 또는 ChatGPT Work 마켓플레이스)
 [ ] MCP 커넥터 연결 (Slack / Drive / Notion 등)
 [ ] Chrome 확장 설치 (웹 자동화 필요 시)
 [ ] 권한 검증·테스트
@@ -392,5 +396,5 @@ Cowork는 Chat보다 토큰 사용량이 많습니다. 아래 6가지 전략으�
 
 ### Sources
 - [modu-ai/moai-cowork](https://github.com/modu-ai/moai-cowork)
-- [Claude Docs — Cowork](https://docs.claude.com/en/docs/claude-cowork/overview)
+- [Claude — Cowork](https://claude.com/product/cowork)
 - [Anthropic — Claude Agent SDK](https://www.anthropic.com/claude-code)

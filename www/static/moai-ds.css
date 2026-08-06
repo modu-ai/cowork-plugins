@@ -212,6 +212,9 @@ pre {
   box-shadow: var(--shadow-md);
   border: 1px solid rgba(255,255,255,0.06);
   font-family: var(--font-mono);
+  padding: 18px 22px;
+  color: #e6e6e6;
+  overflow-x: auto;
 }
 pre code {
   background: transparent;

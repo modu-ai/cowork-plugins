@@ -157,4 +157,4 @@ docx 생성 후 다시 docx로 변환하면 포맷이 깨집니다. 한 번만 �
 
 ### Sources
 - [modu-ai/moai-cowork](https://github.com/modu-ai/moai-cowork)
-- [docs.claude.com — Skills](https://docs.claude.com/en/docs/agents/skills)
+- [code.claude.com — Skills](https://code.claude.com/docs/en/skills)

@@ -58,8 +58,8 @@ Phase 1 인터뷰 → Phase 2 인벤토리 → Phase 3 체인 설계 → Phase 4
 | **3 체인 설계** | 인터뷰 + 인벤토리 + 재진입 시 기존 맥락, 3종 입력을 종합해 산출물별 스킬 체인 설계(§3 프리셋). 텍스트 체인은 `ai-slop-reviewer` 종료 | chain_design + 설계 근거 |
 | **4 Gap Detection** | 체인 스킬 ↔ 인벤토리 대조 → 누락 시 설치 안내 + `/project resume` 재개 | 진행 상태 |
 | **5 확인** | 설계된 체인 `AskUserQuestion` 승인 — 요약에 설계 근거 표시 | 승인/수정/취소 |
-| **6 CLAUDE.md 생성** | `references/templates/CLAUDE.md.tmpl` 치환, ≤200라인, HARD 블록 8종 고정 | `./CLAUDE.md` |
-| **7 커스텀 에이전트 생성** | 반복 작업 유형별 `.claude/agents/*.md` 생성(project 스킬 SKILL.md §Custom Agent & Skill-Chain Design 절차) | `.claude/agents/*.md` |
+| **6 지침 생성** | `references/templates/CLAUDE.md.tmpl` 치환, ≤200라인, HARD 블록 8종 고정 — 동일 내용을 CLAUDE.md(Claude)+AGENTS.md(Codex) 두 파일로 | `./CLAUDE.md` + `./AGENTS.md` |
+| **7 커스텀 에이전트 생성** | 반복 작업 유형별 Claude `.claude/agents/*.md`(markdown+frontmatter) + Codex `.codex/agents/*.toml`(TOML) 양쪽 생성 | `.claude/agents/*.md` + `.codex/agents/*.toml` |
 | **8 API 키 + 첫 실행 안내** | 체인이 요구하는 키만 선택적 등록 안내 + 상위 체인 3개 예시 | 안내 메시지 |
 
 각 Phase의 `AskUserQuestion` 스키마·`.moai/config.json` 상세·재개(Re-entry) 흐름은 `references/init-protocol.md` 참조.
@@ -157,9 +157,9 @@ Phase 3 체인의 스킬이 인벤토리에 없으면 누락으로 간주한다.
 
 ---
 
-## 5. CLAUDE.md 생성 규칙 (코워커 분기)
+## 5. 프로젝트 지침(CLAUDE.md + AGENTS.md) 생성 규칙 (코워커 분기)
 
-`references/templates/CLAUDE.md.tmpl` 변수 치환. 규칙:
+`references/templates/CLAUDE.md.tmpl` 변수 치환 후, **동일 내용을 CLAUDE.md(Claude)와 AGENTS.md(Codex·ChatGPT Work) 두 파일로 저장**. 규칙:
 
 1. **≤200라인**, 스킬 체인은 최대 10개(나머지는 `/project catalog` 참조)
 2. **역할 라벨** — 감지된 역할(실무/글쓰기 작가)을 페르소나에 명시

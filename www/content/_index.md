@@ -27,9 +27,9 @@ lastmod: 2026-08-07T00:00:00+09:00
   </div>
   </div>
   <div class="cw-hero-meta">
-    <div class="item"><div class="num">17</div><div class="lbl">AI 직원</div></div>
+    <div class="item"><div class="num">{{< catalog-count plugins >}}</div><div class="lbl">AI 직원</div></div>
     <div class="item"><div class="num">8+</div><div class="lbl">직무 분야</div></div>
-    <div class="item"><div class="num">215</div><div class="lbl">스킬</div></div>
+    <div class="item"><div class="num">{{< catalog-count skills >}}</div><div class="lbl">스킬</div></div>
     <div class="item"><div class="num">{{< version >}}</div><div class="lbl">최신 버전</div></div>
   </div>
 </div>
@@ -141,6 +141,12 @@ lastmod: 2026-08-07T00:00:00+09:00
       <p class="cw-prodcard-desc"><code>/project</code> 명령 하나로 프로젝트 단위 셋업과 직원 배치를 라우팅.</p>
       <div class="cw-prodcard-cta">프로젝트 허브 →</div>
     </a>
+    <a class="cw-prodcard" href="/moai-agents/threads-poster/">
+      <span class="cw-prodcard-ico cw-plug-ico">{{< icon send >}}</span>
+      <div class="cw-prodcard-label">SNS 크리에이터</div>
+      <p class="cw-prodcard-desc">Threads 자율 발행, 문체 학습, 멀티 채널 포맷, 분할 등록.</p>
+      <div class="cw-prodcard-cta">소셜 미디어 →</div>
+    </a>
   </div>
 </section>
 
@@ -151,14 +157,17 @@ lastmod: 2026-08-07T00:00:00+09:00
     <div class="cw-qstart-card">
       <div class="cw-qstart-step">Step 01</div>
       <div class="cw-qstart-title">마켓플레이스 추가</div>
-      <p class="cw-qstart-desc">모두의 코워크 마켓플레이스(moai-cowork)를 한 번 등록합니다.</p>
-      <pre class="cw-qstart-pre"><span class="p">$</span> claude plugin marketplace add modu-ai/moai-cowork</pre>
+      <p class="cw-qstart-desc">Claude Cowork(ChatGPT Work도 지원) 앱 UI 또는 CLI로 마켓플레이스를 등록합니다.</p>
+      <pre class="cw-qstart-pre"><span class="p">#</span> Claude Cowork 앱 UI 안내:
+<span class="p">#</span> Cowork 탭 → 사용자 지정(Customize) → 개인 플러그인(Plugins) → "+" → URL: <code>modu-ai/moai-cowork</code>
+<span class="p">$</span> claude plugin marketplace add modu-ai/moai-cowork  <span class="c"># 또는 CLI(Claude Cowork/ChatGPT Work)</span></pre>
     </div>
     <div class="cw-qstart-card">
       <div class="cw-qstart-step">Step 02</div>
       <div class="cw-qstart-title">직원 채용</div>
       <p class="cw-qstart-desc">필요한 직원을 골라 담습니다.</p>
-      <pre class="cw-qstart-pre"><span class="p">$</span> claude plugin install moai-coworker@moai-cowork</pre>
+      <pre class="cw-qstart-pre"><span class="p">#</span> Claude Cowork 앱 UI: 목록에서 "Add plugin" 버튼 클릭
+<span class="p">$</span> claude plugin add moai-coworker@moai-cowork  <span class="c"># 또는 CLI(Claude Cowork/ChatGPT Work)</span></pre>
     </div>
     <div class="cw-qstart-card">
       <div class="cw-qstart-step">Step 03</div>

@@ -42,13 +42,6 @@ flowchart TD
    style P fill:#d6e7de,stroke:#3d7d5f,stroke-width:2px,color:#09110f
 ```
 
-```mermaid
-flowchart TD
-   A["1. 한 줄 자연어 요청"] --> B["2. AskUserQuestion"] --> C["3. 스킬 체이닝"] --> D["4. 산출물"]
-   style A fill:#fbf0dc,stroke:#c47b2a
-   style C fill:#e8f1ec,stroke:#265240
-```
-
 
 ## 어디서 시작하나요?
 

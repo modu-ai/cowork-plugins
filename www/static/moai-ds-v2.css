@@ -925,6 +925,16 @@ svg.svg-sprite { display: none !important; }
   color: var(--terminal-fg);
   overflow-x: auto;
 }
+/* 언어 미지정 plain 코드블록(<pre><code>) 가독성 — chroma·terminal·mermaid는 제외하고
+   어두운 배경에 밝은 글씨+패딩 보장. v2 확정 레이어에서 소유권 명시. */
+.gdoc-markdown pre:not(.chroma):not(.term-pre):not(.gdoc-mermaid):not(.mermaid) {
+  padding: 18px 22px;
+  color: #e6e6e6;
+  overflow-x: auto;
+}
+.gdoc-markdown pre:not(.chroma):not(.term-pre):not(.gdoc-mermaid):not(.mermaid) code {
+  color: #e6e6e6;
+}
 .gdoc-markdown .highlight.cw-instruction::before {
   content: "";
   display: block;

@@ -26,23 +26,34 @@ flowchart LR
 
 마켓플레이스 등록은 한 번만 하면 됩니다. 앱스토어에 계정을 연결해 두는 것과 같아서 등록해 두면 이후에는 목록에서 직원을 골라 채용하기만 하면 됩니다.
 
-**Claude Desktop(데스크탑 앱)에서는** 플러그인 설정 화면에서 등록합니다.
+**Claude Cowork(데스크톱 앱)에서는** 플러그인 설정 화면에서 등록합니다.
 
 1. 사이드바 하단의 **설정(Settings)** 을 열고 **플러그인(Plugins)** 항목으로 이동합니다.
 2. **마켓플레이스 추가(Add marketplace)** 버튼을 클릭합니다.
 3. 입력란에 `modu-ai/moai-cowork` 를 입력하고 추가를 확인합니다.
-4. 목록에 "MoAI-Cowork(모두의 코워크)" 마켓플레이스와 직원 플러그인들이 나타나면 성공입니다.
+4. 목록에 "MoAI-Cowork(모두의 코워크)" 마켓플레이스와 직원 플러그인들이 나타나면 성공합니다.
 
-{{< screenshot-request "Claude Desktop 플러그인 설정 화면 — 마켓플레이스 추가 버튼과 modu-ai/moai-cowork 입력란" >}}
+{{< screenshot-request "Claude Cowork 플러그인 설정 화면 — 마켓플레이스 추가 버튼과 modu-ai/moai-cowork 입력란" >}}
 
-터미널(명령어 창)을 쓰는 Claude Code 사용자라면 아래 한 줄이면 됩니다. 데스크탑 앱만 쓰는 분은 이 줄을 건너뛰어도 됩니다.
+**ChatGPT Work(데스크톱 앱)에서는** 플러그인 설정 화면에서 등록합니다.
+
+1. 좌측 사이드바에서 **Plugins**를 열고 **Plugin Marketplace** 항목으로 이동합니다.
+2. **Add marketplace** 버튼을 클릭합니다.
+3. 입력란에 `modu-ai/moai-cowork` 를 입력하고 추가를 확인합니다.
+4. 목록에 "MoAI-Cowork(모두의 코워크)" 마켓플레이스와 직원 플러그인들이 나타나면 성공합니다.
+
+터미널(명령어 창)이 익숙하다면 CLI를 사용할 수도 있습니다(Claude Cowork, ChatGPT Work 공통):
 
 {{< terminal title="Terminal" lang="bash" raw="true" >}}
+# Claude Cowork
 claude plugin marketplace add modu-ai/moai-cowork
+
+# ChatGPT Work CLI
+codex plugin marketplace add modu-ai/moai-cowork
 {{< /terminal >}}
 
 **잘 안 될 때**
-- 마켓플레이스 메뉴가 안 보이면: Claude Desktop을 최신 버전으로 업데이트한 뒤 다시 확인하세요.
+- 마켓플레이스 메뉴가 안 보이면: Claude Cowork 앱을 최신 버전으로 업데이트한 뒤 다시 확인하세요.
 - 추가 버튼을 눌러도 목록이 비어 있으면: 인터넷 연결을 확인하고 앱을 재시작해 보세요.
 - 조직(회사) 계정이라면: 관리자가 플러그인 사용을 허용해야 할 수 있습니다.
 
@@ -62,7 +73,6 @@ claude plugin marketplace add modu-ai/moai-cowork
 | 장부·세금·재무 정리 | **moai-accountant** (경리·회계) | 정산, 재무표, 세무 일정 |
 | 채용 공고·면접 준비 | **moai-recruiter** (인사 담당) | 공고 작성, 지원서 검토 |
 | 공부·자격증·자녀 학습 | **moai-tutor** (과외 선생님) | 학습 계획, 문제 풀이, 개념 설명 |
-| 프로그램·웹사이트 개발 | **moai** (개발자) | 코드 작성, 자동화, 웹 제작 |
 | 여러 직원을 팀으로 묶어 큰 일 진행 | **moai-pm** (팀장) | 프로젝트 설계, 직원 배정 |
 
 각 직원이 데리고 있는 세부 에이전트(담당자) 구성이 궁금하다면 [직원 에이전트 카탈로그](/moai-agents/)를 참고하세요.

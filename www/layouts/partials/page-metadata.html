@@ -2,7 +2,7 @@
        single.html이 h1 뒤에 호출. 전역(모든 single 문서 페이지) 적용.
        읽는 시간(.ReadingTime, CJK 글자수 기반) · 최종 업데이트(.Lastmod, enableGitInfo) · 검수 배지(.Params.reviewed). */ -}}
 <div class="cw-doc-meta">
-  {{- $reviewer := or .Params.reviewer "구스" -}}
+  {{- $reviewer := or .Params.reviewer "Goos Kim" -}}
   <span class="cw-doc-meta__avatar" aria-hidden="true">{{ substr $reviewer 0 1 }}</span>
   <span class="cw-doc-meta__item">검수자 · {{ $reviewer }}</span>
   <span class="cw-doc-meta__sep">·</span>

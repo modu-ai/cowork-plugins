@@ -79,14 +79,16 @@ flowchart TD
 ### 기본 프롬프트
 
 {{< terminal title="claude — cowork" >}}
-> D:/Input/customer-transactions-2026.csv를 분석해줘.
->
->   - 총 행수·결측률·중복 건수
->   - 수치형 컬럼 요약 통계 (평균·중앙값·표준편차·분위수)
->   - 범주형 컬럼 Top 10 빈도
->   - 이상값 탐지 (IQR 기준)
->   - 주요 상관관계 (Pearson > 0.5)
->   - 결과는 Markdown 리포트로, 90_Output/data-quality.md에 저장
+
+D:/Input/customer-transactions-2026.csv를 분석해줘.
+
+  - 총 행수·결측률·중복 건수
+  - 수치형 컬럼 요약 통계 (평균·중앙값·표준편차·분위수)
+  - 범주형 컬럼 Top 10 빈도
+  - 이상값 탐지 (IQR 기준)
+  - 주요 상관관계 (Pearson > 0.5)
+  - 결과는 Markdown 리포트로, 90_Output/data-quality.md에 저장
+
 {{< /terminal >}}
 
 ### 실전 팁

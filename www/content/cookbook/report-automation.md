@@ -240,11 +240,11 @@ MCP 기본 검색은 14일. 그 이상은 `slack_search_public` 사용권을 확
 ```
 
 **관련 링크**:
-- [SKILL.md](https://github.com/modu-ai/moai-cowork/blob/v2.2.0/moai-marketer/skills/html-report/SKILL.md)
-- [Thariq Shihipar "The Unreasonable Effectiveness of HTML"](https://thariq.substack.com/p/the-unreasonable-effectiveness-of)
+- [SKILL.md](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-officer/skills/doc-html-report/SKILL.md)
+- [Thariq Shihipar "The Unreasonable Effectiveness of HTML"](https://simonwillison.net/2026/May/8/unreasonable-effectiveness-of-html/)
 
 ---
 
 ### Sources
 - [modu-ai/moai-cowork › moai-coworker](https://github.com/modu-ai/moai-cowork)
-- [docs.claude.com — Scheduled Tasks](https://docs.claude.com)
+- [code.claude.com — Scheduled Tasks](https://code.claude.com/docs/en/scheduled-tasks)

@@ -14,13 +14,13 @@ Claude를 쓰다 보면 "계정 이메일을 어떻게 바꾸지?", "요금제�
 
 | 주제 | 이런 분께 |
 |---|---|
-| **[Claude 알아보기](/help/about-claude/)** | Claude가 무엇이고 어디서·어떻게 쓰는지 처음 살펴보는 분 |
-| **[요금제와 결제](/help/plans-billing/)** | Free·Pro·Max 중 무엇을 고를지, 결제·선물·사용량 번들이 궁금한 분 |
-| **[계정 관리](/help/account/)** | 로그인, 이메일 변경, 세션 보안, 데이터 내보내기·계정 삭제가 필요한 분 |
-| **[대화 관리](/help/conversations/)** | 대화 정리·공유, 시크릿 대화, 검색·메모리를 활용하려는 분 |
-| **[개인화와 설정](/help/personalization/)** | 외형·언어·모델·사고 설정을 내 취향에 맞추려는 분 |
-| **[사용량과 한도](/help/usage-limits/)** | 사용 한도가 어떻게 작동하는지, 한도를 아껴 쓰는 법이 궁금한 분 |
-| **[문제 해결](/help/troubleshooting/)** | 오류 메시지, 부정확한 응답, 깨진 링크 등 문제를 겪는 분 |
+| {{< icon sparkles >}} **[Claude 알아보기](/help/about-claude/)** | Claude가 무엇이고 어디서·어떻게 쓰는지 처음 살펴보는 분 |
+| {{< icon wallet >}} **[요금제와 결제](/help/plans-billing/)** | Free·Pro·Max 중 무엇을 고를지, 결제·선물·사용량 번들이 궁금한 분 |
+| {{< icon user >}} **[계정 관리](/help/account/)** | 로그인, 이메일 변경, 세션 보안, 데이터 내보내기·계정 삭제가 필요한 분 |
+| {{< icon message-circle >}} **[대화 관리](/help/conversations/)** | 대화 정리·공유, 시크릿 대화, 검색·메모리를 활용하려는 분 |
+| {{< icon lightbulb >}} **[개인화와 설정](/help/personalization/)** | 외형·언어·모델·사고 설정을 내 취향에 맞추려는 분 |
+| {{< icon chart-column >}} **[사용량과 한도](/help/usage-limits/)** | 사용 한도가 어떻게 작동하는지, 한도를 아껴 쓰는 법이 궁금한 분 |
+| {{< icon compass >}} **[문제 해결](/help/troubleshooting/)** | 오류 메시지, 부정확한 응답, 깨진 링크 등 문제를 겪는 분 |
 
 {{< hint type="note" >}}
 이 문서는 Claude 공식 고객지원 내용을 한국어 사용자를 위해 다시 쓴 것입니다. 정확한 최신 정보는 각 페이지 하단의 **원문 출처** 링크에서 확인할 수 있습니다.

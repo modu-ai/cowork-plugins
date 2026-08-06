@@ -1,8 +1,8 @@
-# claudemd-generator.md — CLAUDE.md 생성 프로토콜 (project 스킬 Desktop 변형)
+# claudemd-generator.md — CLAUDE.md + AGENTS.md 생성 프로토콜 (project 스킬, Claude·Codex 겸용)
 
 ## 개요
 
-`/project` Phase 6에서 호출되는 `CLAUDE.md` 자동 생성 프로토콜. 사용자 맞춤형 `./CLAUDE.md`를 생성하되, **200라인 이내**로 제한한다. 스킬 상세 내용은 `CLAUDE.md`에 복사하지 않고, 실행 시 해당 스킬(SKILL.md)을 런타임에 로드하여 사용한다.
+`/project` Phase 6에서 호출되는 프로젝트 지침 생성 프로토콜. 사용자 맞춤형 지침을 `./CLAUDE.md`(Claude용)와 `./AGENTS.md`(Codex·ChatGPT Work용) **두 파일로 동일 내용** 생성하되, 각 **200라인 이내**로 제한한다. 두 파일은 같은 템플릿 치환 결과를 파일명만 바꿔 저장한다 — `CLAUDE.md`는 Claude(Cowork/Code)가, `AGENTS.md`는 Codex가 자동 로드하며 기능 동등(상호 운용). 스킬 상세 내용은 두 파일에 복사하지 않고, 실행 시 해당 스킬(SKILL.md)을 런타임에 로드하여 사용한다.
 
 **핵심 원칙**:
 - 템플릿은 **외부 파일(`references/templates/CLAUDE.md.tmpl`)로 분리**. 인라인 하드코딩 금지.
@@ -17,7 +17,8 @@
 
 ```
 <프로젝트>/
-├── CLAUDE.md              ← 이 파일만 생성(≤200라인)
+├── CLAUDE.md              ← Claude용(≤200라인)
+├── AGENTS.md              ← Codex(ChatGPT Work)용, CLAUDE.md와 동일 내용
 └── .moai/
     ├── config.json         ← 플러그인·커넥터·API 키 참조
     ├── context.md           ← 프로젝트 맥락 누적
@@ -65,7 +66,7 @@ Phase 3에서 설계된 각 산출물 체인을 `{workflow_chains}` 슬롯에 �
 
 ## 3. CLAUDE.md 템플릿
 
-템플릿은 외부 파일 `references/templates/CLAUDE.md.tmpl`로 분리되어 있다. 이 파일을 Read하여 변수 치환을 수행한 결과를 `./CLAUDE.md`로 Write한다.
+템플릿은 외부 파일 `references/templates/CLAUDE.md.tmpl`로 분리되어 있다. 이 파일을 Read하여 변수 치환을 수행한 결과를 `./CLAUDE.md`(Claude용)와 `./AGENTS.md`(Codex·ChatGPT Work용) **두 파일에 동일 내용**으로 Write한다. `AGENTS.md`는 Codex가 자동 로드하며 `CLAUDE.md`와 기능 동등이다. 단, 생성된 산출물 내부의 스킬 참조는 `moai-*:` 접두어를 그대로 쓴다(Claude·Codex 공통 포맷).
 
 ---
 
@@ -110,14 +111,14 @@ Phase 3에서 설계된 각 산출물 체인을 `{workflow_chains}` 슬롯에 �
 2. 변수 수집: Phase 1 인터뷰 결과 + Phase 2 인벤토리 + Phase 3 체인 설계 + Phase 8 등록 키.
 3. 치환: 각 `{변수}`를 수집된 값으로 치환한다.
 4. 길이 검증: `wc -l`이 200라인 이하인지 확인. 초과 시 스킬 체인 나열을 최대 10개로 자동 축소한다. **8개 HARD 규칙 블록은 축소·삭제 대상이 아니다.**
-5. 주석 제거 + Write: 템플릿의 HTML 주석(출처 표기 포함)은 생성 결과에서 전부 제거한 뒤 `./CLAUDE.md`에 저장한다.
+5. 주석 제거 + Write: 템플릿의 HTML 주석(출처 표기 포함)은 생성 결과에서 전부 제거한 뒤, **동일 내용을 `./CLAUDE.md`(Claude)와 `./AGENTS.md`(Codex) 두 파일에 저장**한다.
 6. 보조 파일 생성: `./.moai/config.json`, `./.moai/context.md`(빈 파일).
 
 ---
 
 ## 6. 검증 체크리스트
 
-- [ ] `./CLAUDE.md` 파일 존재
+- [ ] `./CLAUDE.md` 와 `./AGENTS.md` 파일 존재(동일 내용)
 - [ ] 200라인 이내(`wc -l` 확인)
 - [ ] 프로젝트명·산출물·톤 제약이 올바르게 치환됨
 - [ ] 스킬 체인 블록이 `{workflow_chains}` 자리에 주입됨

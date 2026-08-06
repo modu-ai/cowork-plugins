@@ -2,7 +2,7 @@
   "$schema": "https://developers.openai.com/plugins/build/plugins",
   "$comment": "OpenAI/Codex 플러그인 매니페스트. Claude용 .claude-plugin/plugin.json과 나란히 공존. 본체(skills/SKILL.md, .mcp.json)는 양쪽 공유.",
   "name": "moai-accountant",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "재무·세무 전담 AI 직원 — 재무제표 분석·결산 관리·차이 분석·IR, 개인 세금 절약·가계 예산·투자 입문·보험 적합성 스킬 11종. OpenDART 전자공시 MCP 연동. 이런 분께 추천: 사업자·재무 담당자·개인 재테크 입문자. ※ 세무사·회계사 자문 대체가 아닌 참고 자료입니다.",
   "author": {
     "name": "모두의 AI",
@@ -12,7 +12,15 @@
   "homepage": "https://cowork.mo.ai.kr/plugins/",
   "repository": "https://github.com/modu-ai/moai-cowork",
   "license": "Apache-2.0",
-  "keywords": ["moai", "accountant", "finance", "tax", "accounting", "재무", "세무"],
+  "keywords": [
+    "moai",
+    "accountant",
+    "finance",
+    "tax",
+    "accounting",
+    "재무",
+    "세무"
+  ],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
@@ -21,9 +29,15 @@
     "longDescription": "재무·세무 전담 AI 직원 — 재무제표 분석·결산 관리·차이 분석·IR, 개인 세금 절약·가계 예산·투자 입문·보험 적합성 스킬 11종. OpenDART 전자공시 MCP 연동. 이런 분께 추천: 사업자·재무 담당자·개인 재테크 입문자. ※ 세무사·회계사 자문 대체가 아닌 참고 자료입니다.",
     "developerName": "모두의 AI",
     "category": "Finance",
-    "capabilities": ["Read", "Write"],
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
     "websiteURL": "https://cowork.mo.ai.kr",
-    "defaultPrompt": ["이번 분기 재무제표 분석해줘", "종합소득세 절세 방안 정리해줘"],
+    "defaultPrompt": [
+      "이번 분기 재무제표 분석해줘",
+      "종합소득세 절세 방안 정리해줘"
+    ],
     "brandColor": "#3d7d5f"
   }
 }

@@ -7,7 +7,7 @@ date: 2026-08-07T00:00:00+09:00
 lastmod: 2026-08-07T00:00:00+09:00
 ---
 
-이 색인은 두 축으로 구성됩니다. **데스크탑 축**은 Claude 공식 고객지원 센터 [Claude 컬렉션](https://support.claude.com/en/collections/4078531-claude)의 가이드 문서를 모두의 코워크의 어느 페이지에서 한국어로 다루는지 매핑합니다 — 총 69개 문서를 15개 주제 페이지로 정리했으며 비개발자 은유 톤으로 작성했습니다. **CLI 축**은 `/cli/` prefix 하의 Claude Code CLI(MoAI-ADK) 입문자 가이드 5개 섹션 22페이지를 안내합니다 — 친화적 기술 용어 톤으로 재저작했습니다. 원문 확인이나 CLI 심화 학습이 필요할 때 출발점으로 활용하세요.
+이 색인은 Claude 공식 고객지원 센터 [Claude 컬렉션](https://support.claude.com/en/collections/4078531-claude)의 가이드 문서를 모두의 코워크의 어느 페이지에서 한국어로 다루는지 매핑합니다 — 총 69개 문서를 15개 주제 페이지로 정리했으며 비개발자 은유 톤으로 작성했습니다.
 
 ## 도움말 — 계정·운영
 
@@ -47,7 +47,7 @@ lastmod: 2026-08-07T00:00:00+09:00
 
 ### [개인화와 설정](/help/personalization/)
 - [Understanding Claude's personalization features](https://support.claude.com/en/articles/10185728-understanding-claude-s-personalization-features)
-- [Styles are moving to skills](https://support.claude.com/en/articles/10181068-styles-are-moving-to-skills)
+- [What are skills](https://support.claude.com/en/articles/12512176-what-are-skills)
 - [Customizing your appearance settings](https://support.claude.com/en/articles/8887527-customizing-your-appearance-settings)
 - [How to use Claude in your preferred language](https://support.claude.com/en/articles/10769299-how-to-use-claude-in-your-preferred-language)
 - [Change the model, effort, and thinking settings](https://support.claude.com/en/articles/8664678-change-the-model-effort-and-thinking-settings)
@@ -81,41 +81,6 @@ Claude 공식 고객지원 센터에서 Chat 관련 문서를 직접 확인하�
 - [Work across Microsoft 365 apps](https://support.claude.com/en/articles/13892150-work-across-microsoft-365-apps)
 - [Use Claude for Microsoft 365 with third-party platforms](https://support.claude.com/en/articles/13945233-use-claude-for-microsoft-365-with-third-party-platforms)
 - [Use dictation in Office agents](https://support.claude.com/en/articles/14479591-use-dictation-in-office-agents)
-
-## CLI 축 — Claude Code CLI (MoAI-ADK) 안내
-
-`/cli/` 축은 Claude Code CLI(MoAI-ADK)를 처음 사용하는 개발자를 위한 입문자 톤 가이드입니다. 개발자 문체의 moai-adk-go 원문을 친화적 한국어 prose로 재저작했으며 5개 섹션 22페이지로 구성됩니다. 각 섹션의 진입 페이지(`/cli/<section>/`)에서 시작하세요.
-
-### [CLI 시작하기](/cli/start/)
-- [CLI (개발자용) 축 소개](/cli/) · [CLI 시작하기 진입](/cli/start/)
-- [CLI 설치하기 — 로컬 바이너리 1분 설정](/cli/start/install/)
-- [첫 SPEC 사이클 실행 — PLAN→RUN→SYNC 10분 흐름](/cli/start/first-spec/)
-
-### [핵심 개념](/cli/concepts/)
-- [핵심 개념 진입](/cli/concepts/)
-- [SPEC 기반 개발 — 요구사항을 코드로](/cli/concepts/spec-system/)
-- [DDD와 TDD — 두 개발 방법론](/cli/concepts/ddd-tdd/)
-- [TRUST 5 품질 게이트 — 품질 5축 프레임워크](/cli/concepts/trust5/)
-- [하네스 엔지니어링 — 품질 게이트 자동화](/cli/concepts/harness/)
-
-### [일상 사용](/cli/daily/)
-- [일상 사용 진입](/cli/daily/)
-- [일일 작업 흐름 — 새 SPEC부터 머지까지](/cli/daily/daily-flow/)
-- [효과적 프롬프트](/cli/daily/prompts/)
-- [토큰과 비용 — 컨텍스트 윈도우 관리](/cli/daily/tokens-cost/)
-- [문제 해결 — 오류 분류와 복구](/cli/daily/debugging/)
-
-### [MoAI-ADK](/cli/moai-adk/)
-- [MoAI-ADK 진입](/cli/moai-adk/) — PLAN→RUN→SYNC 라이프사이클 stateDiagram
-- [데스크탑과 CLI — Tier 1~3 브리지](/cli/moai-adk/bridge/) — 플러그인에서 바이너리로 심화
-- [워크플로우 명령어 깊이 (`/moai plan`, `run`, `sync`)](/cli/moai-adk/workflow-commands/)
-- [품질 명령어 (`/moai review`, `gate`)](/cli/moai-adk/quality-commands/)
-
-### [레퍼런스](/cli/reference/)
-- [레퍼런스 진입](/cli/reference/)
-- [CLI 명령어 색인](/cli/reference/cli-reference/)
-- [다중 LLM 안내 (Claude + GLM)](/cli/reference/multi-llm/)
-- [고급 주제](/cli/reference/advanced/)
 
 ## 정리에서 제외한 문서
 

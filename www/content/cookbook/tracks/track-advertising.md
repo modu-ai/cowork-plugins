@@ -289,7 +289,7 @@ meta-ads-manager (생성·운영, PAUSED)
 - **[콘텐츠 트랙](../track-content/)** — 광고용 콘텐츠 생성
 - **[이커머스 트랙](../track-commerce/)** — 광고 + 상품 통합
 - **[moai-marketer 플러그인](/moai-agents/marketer/)**
-- **[moai-ads-audit-mcp 서버](https://github.com/modu-ai/moai-cowork/tree/main/mcp-servers/moai-ads-audit)**
+- **[moai-ads-audit-mcp 서버](https://github.com/modu-ai/cowork-plugins/tree/main/mcp-servers/moai-ads-audit)**
 
 ---
 

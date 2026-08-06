@@ -306,5 +306,5 @@ flowchart LR
 ---
 
 ### Sources
-- [Claude Docs — Cowork Marketing Use Cases](https://docs.claude.com/en/docs/claude-cowork)
+- [Claude — Cowork](https://claude.com/product/cowork)
 - [modu-ai/moai-cowork — moai-marketer](https://github.com/modu-ai/moai-cowork)

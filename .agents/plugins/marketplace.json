@@ -124,7 +124,7 @@
       "source": { "source": "local", "path": "./plugins/moai-pm" },
       "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
       "category": "Productivity",
-      "version": "1.0.2"
+      "version": "1.1.0"
     },
     {
       "name": "moai-threads-poster",

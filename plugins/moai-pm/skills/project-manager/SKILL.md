@@ -81,13 +81,15 @@ version: "1.1.0"
 
 ## Plugin Inventory Scan
 
-에이전트/스킬 체인을 설계하기 **전에** 반드시 `~/.claude/plugins/`를 스캔해 실제 설치된 AI 직원 플러그인을 확인한다. 카탈로그(플러그인 목록·스킬 수)는 **하드코딩하지 않는다** — `.claude-plugin/marketplace.json`이 패밀리 로스터의 유일한 정본이다.
+에이전트/스킬 체인을 설계하기 **전에** 반드시 `~/.claude/plugins/`(Claude)와 `~/.codex/plugins/`+`.codex/agents/`(Codex)를 모두 스캔해 실제 설치된 AI 직원 플러그인을 확인한다. 카탈로그(플러그인 목록·스킬 수)는 **하드코딩하지 않는다** — `.claude-plugin/marketplace.json`이 패밀리 로스터의 유일한 정본이다.
 
 ```bash
-# 소스 A: 디렉터리 스캔 (moai-* 글롭 + plugin.json 존재 확인)
-for dir in ~/.claude/plugins/moai-*; do
-  [ -d "$dir" ] && [ -f "$dir/.claude-plugin/plugin.json" ] && basename "$dir"
+# 소스 A: 디렉터리 스캔 — Claude(~/.claude/plugins/) + Codex(~/.codex/plugins/cache/) 양쪽, moai-* 글롭
+for dir in ~/.claude/plugins/moai-* ~/.codex/plugins/cache/*/moai-*; do
+  [ -d "$dir" ] && { [ -f "$dir/.claude-plugin/plugin.json" ] || [ -f "$dir/.codex-plugin/plugin.json" ]; } && basename "$dir"
 done
+# Codex 프로젝트/전역 커스텀 에이전트(.codex/agents/*.toml)도 인벤토리에 포함
+for f in ./.codex/agents/*.toml ~/.codex/agents/*.toml; do [ -f "$f" ] && basename "$f" .toml; done 2>/dev/null
 
 # 소스 B: 현재 세션 system reminder의 "user-invocable skills" 목록 파싱(moai-* 접두 스킬만)
 ```
@@ -118,8 +120,8 @@ done
 
 Phase 5 확인 이후 이 스킬은 다음을 생성한다:
 
-1. **`CLAUDE.md`** (프로젝트 루트, ≤200라인) — Desktop 변형 템플릿(`references/templates/CLAUDE.md.tmpl`)을 치환. 소스 템플릿의 **8개 `## N. … (HARD)` 블록을 전부 보존**한다(§Desktop Parity Constraints 아래 표 참조). 라인 예산 초과 시 축소 대상은 스킬 체인 나열뿐이며 HARD 블록은 절대 축소·삭제하지 않는다(상세: `references/claudemd-generator.md`).
-2. **`.claude/agents/*.md`** — 반복 작업 유형별 1개, 최소 권한 frontmatter + 7-step 루프 + 프로젝트 맥락.
+1. **`CLAUDE.md` + `AGENTS.md`** (프로젝트 루트, 각 ≤200라인) — **같은 내용을 두 파일로** 출력한다. `CLAUDE.md`는 Claude(Cowork/Code)가, `AGENTS.md`는 Codex(ChatGPT Work)가 자동 로드하며 둘은 기능 동등(상호 운용). Desktop 변형 템플릿(`references/templates/CLAUDE.md.tmpl`)을 치환해 두 파일에 동일 적용. 소스 템플릿의 **8개 `## N. … (HARD)` 블록을 전부 보존**한다(§Desktop Parity Constraints 아래 표 참조). 라인 예산 초과 시 축소 대상은 스킬 체인 나열뿐이며 HARD 블록은 절대 축소·삭제하지 않는다(상세: `references/claudemd-generator.md`).
+2. **`.claude/agents/*.md` + `.codex/agents/*.toml`** — 반복 작업 유형별 1개씩 양쪽 생성. Claude용은 markdown+YAML frontmatter(`name`·`description`·`tools`), Codex용은 TOML(`name`·`description`·`developer_instructions`, `model`·`sandbox_mode` 선택). 둘 다 7-step 루프 + 프로젝트 맥락을 동일 내장. Codex `.codex/agents/`는 프로젝트 로컬 git 커밋 가능.
 3. **`.moai/` 스캐폴드** — `config.json`(프로젝트 메타 + 언어 + 설치 플러그인 스냅샷) · `context.md`(인터뷰 요약) · `credentials.env`(GUIDANCE 전용 — 안내 문구만, 실제 값은 절대 기록하지 않음) · `cache/`(빈 디렉터리) · `evolution/`(자가 개선 진단 기록).
 
 ---
@@ -172,7 +174,7 @@ Phase 5 확인 이후 이 스킬은 다음을 생성한다:
 
 ## Desktop Parity Constraints
 
-이 스킬이 생성하는 프로젝트는 **Claude Cowork(Desktop)** 런타임을 전제한다. 다음 세 클래스는 Desktop에서 동작하지 않으므로 어떤 생성 경로에서도 이를 만들지 않는다:
+이 스킬이 생성하는 프로젝트는 **Claude Cowork(Desktop)** 런타임을 전제하되, 산출물(`CLAUDE.md`+`AGENTS.md`, `.claude/agents/`+`.codex/agents/`)을 Claude와 Codex(ChatGPT Work) 양쪽으로 내놓아 어느 런타임에서도 작동한다. `AGENTS.md`는 Codex가, `CLAUDE.md`는 Claude가 자동 로드하며 기능 동등이다(상세: `references/claudemd-generator.md`). 다음 세 클래스는 Desktop/Codex 런타임에서 동작하지 않으므로 어떤 생성 경로에서도 이를 만들지 않는다:
 
 - **hooks** — 훅 배선을 생성하지 않는다.
 - **LSP** — LSP 설정을 생성하지 않는다.
@@ -269,8 +271,8 @@ Phase 1 인터뷰 → Phase 2 인벤토리 → Phase 3 체인 설계 → Phase 4
 
 ## 저장 위치
 
-- **프로젝트 작업 지침**: `./CLAUDE.md` (≤200라인, `<!-- evolution-log -->` 이력 포함)
-- **커스텀 에이전트**: `./.claude/agents/*.md`
+- **프로젝트 작업 지침**: `./CLAUDE.md` + `./AGENTS.md` (각 ≤200라인, `<!-- evolution-log -->` 이력 포함 — Claude는 CLAUDE.md, Codex는 AGENTS.md 로드)
+- **커스텀 에이전트**: `./.claude/agents/*.md` (Claude) + `./.codex/agents/*.toml` (Codex)
 - **프로젝트 설정**: `./.moai/config.json`
 - **프로젝트 맥락**: `./.moai/context.md`
 - **API 키**: `./.moai/credentials.env` (프로젝트 격리, GUIDANCE 전용)
