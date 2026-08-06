@@ -24,7 +24,7 @@
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
-    "displayName": "SNS 크리에이터",
+    "displayName": "📸 SNS 크리에이터",
     "shortDescription": "SNS 크리에이터 — Threads·Instagram 직접 발행",
     "longDescription": "Threads·Instagram(Meta) 자율 발행 전담 AI 직원 — 직접 Graph API 연결 MCP(월정액 없음). 세션 안에서 초안을 작성해 보여드리고 승인하면 텍스트·이미지·비디오를 즉시 발행합니다. 큐·예약·승인 상태머신은 없습니다 — 직접 발행만 하고, 예약·정기 발행은 Claude Cowork 이 담당합니다. Facebook 개인 계정은 API 미지원(정책)이라 복붙만 지원합니다.",
     "developerName": "모두의 AI",
