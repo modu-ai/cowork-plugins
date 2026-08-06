@@ -182,7 +182,7 @@ flowchart LR
 
 ## 다음 단계
 
-- **[사용 패턴 가이드](../../../cowork/patterns/)**
+- ****
 - **[운영 트랙](../track-operations/)** — HR 외 운영팀 워크플로우
 - **[moai-recruiter 플러그인](/moai-agents/recruiter/)** — 6스킬
 - **[moai-career 플러그인](/moai-agents/career/)** — 5스킬

@@ -174,11 +174,11 @@ flowchart TD
 
 ### Q. 사용자 정의 product-assistant 플러그인을 직접 만들어야 하나요?
 
-**아니오.** 기본 `moai-consultant` (strategy-planner) + `moai-coworker` (spec-writer·ux-researcher·roadmap-manager) + `moai-officer` (pptx·docx) + `moai-marketer` (landing-page)만으로 모든 시나리오 처리 가능. 더 깊은 자동화가 필요하면 [사용자 정의 플러그인 설정 가이드](../../../cowork/setup/)로 빌드.
+**아니오.** 기본 `moai-consultant` (strategy-planner) + `moai-coworker` (spec-writer·ux-researcher·roadmap-manager) + `moai-officer` (pptx·docx) + `moai-marketer` (landing-page)만으로 모든 시나리오 처리 가능. 더 깊은 자동화가 필요하면 로 빌드.
 
 ### Q. UX 와이어프레임·디자인 평가도 자동으로 되나요?
 
-`marketing-landing-page`로 코드 기반 프로토타입 즉시 생성 가능. `collab-ux-research`(moai-coworker)로 페르소나·사용자 흐름을 설계하고, `collab-ux-design`(moai-coworker)로 휴리스틱·접근성(WCAG)·사용자 플로우 평가 보고서를 받을 수 있습니다. Figma·Sketch 연동은 [커넥터 설정 가이드](../../../cowork/connectors-mcp/) 참조.
+`marketing-landing-page`로 코드 기반 프로토타입 즉시 생성 가능. `collab-ux-research`(moai-coworker)로 페르소나·사용자 흐름을 설계하고, `collab-ux-design`(moai-coworker)로 휴리스틱·접근성(WCAG)·사용자 플로우 평가 보고서를 받을 수 있습니다. Figma·Sketch 연동은  참조.
 
 ### Q. PRD 표준 양식은?
 
@@ -192,7 +192,7 @@ flowchart TD
 
 ## 다음 단계
 
-- **[사용 패턴 가이드](../../../cowork/patterns/)** — 4가지 표준 패턴
+- **** — 4가지 표준 패턴
 - **[문서 트랙](../track-documents/)** — 사업계획서·IR
 - **[콘텐츠 트랙](../track-content/)** — 랜딩 페이지 심화
 - **[운영 트랙](../track-operations/)** — RFP·제안서

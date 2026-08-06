@@ -68,13 +68,13 @@ flowchart LR
 | `moai-tutor` | {{< icon graduation-cap >}} 튜터 | 커리큘럼 설계·평가 문항·논문 검색/작성 |
 | `moai-designer` | {{< icon palette >}} 디자이너 | Claude Design 연동, 토큰 파이프라인, 브랜드 시스템 |
 | `moai-pm` | {{< icon rocket >}} PM | `/project` 명령으로 프로젝트 단위 셋업·직원 배치 |
-| `moai-threads-poster` | {{< icon message-circle >}} 스레드 포스터 | Threads 자율 발행·문체 학습·멀티 채널 포맷·분할 등록 |
+| `moai-threads-poster` | {{< icon message-circle >}} SNS 크리에이터 | Threads 자율 발행·문체 학습·멀티 채널 포맷·분할 등록 |
 
 각 직원의 스킬 목록과 활용 예시는 [에이전트 팀 소개](/moai-agents/)의 직원별 페이지에서 확인하세요.
 
 ## 예전 페이지를 찾아오셨다면
 
-이 섹션은 과거 "플러그인 카탈로그"(chat / cowork / design / code 4-카테고리 시절)를 대체합니다. `moai-cowork` 단일 통합 플러그인은 이전 버전에서 전문가 플러그인으로 분화됐고, 이후 스토리·미디어·데이터 애널리스트·스레드 포스터가 더해져 지금의 패밀리로 자리 잡았으며, 예전 하위 페이지 URL(`/plugins/cowork/` 등)은 모두 이 페이지로 리다이렉트됩니다. 옛 문서에서 보던 스킬들은 이름이 바뀌지 않은 채 담당 직원 플러그인으로 이사했다고 생각하면 됩니다.
+이 섹션은 과거 "플러그인 카탈로그"(chat / cowork / design / code 4-카테고리 시절)를 대체합니다. `moai-cowork` 단일 통합 플러그인은 이전 버전에서 전문가 플러그인으로 분화됐고, 이후 스토리·미디어·데이터 애널리스트·SNS 크리에이터가 더해져 지금의 패밀리로 자리 잡았으며, 예전 하위 페이지 URL(`/plugins/cowork/` 등)은 모두 이 페이지로 리다이렉트됩니다. 옛 문서에서 보던 스킬들은 이름이 바뀌지 않은 채 담당 직원 플러그인으로 이사했다고 생각하면 됩니다.
 
 ## 다음 단계
 

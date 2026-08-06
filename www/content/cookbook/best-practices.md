@@ -47,12 +47,12 @@ Cowork는 2026-01-30 리서치 프리뷰로 공개된 뒤 **2026-02 macOS/Window
 
 ### 6가지 기본 기능
 
-- [로컬 파일 접근](/cowork/first-task/)
-- [컴퓨터 제어](/cowork/computer-use/)
-- [문서 자동 생성](/moai-agents/officer/)
-- [예약 작업](/cowork/schedule/)
-- [프로젝트 메모리](/cowork/projects-memory/)
-- [플러그인·MCP](/cowork/plugins/)
+- 로컬 파일 접근
+- 컴퓨터 제어
+- 문서 자동 생성
+- 예약 작업
+- 프로젝트 메모리
+- 플러그인·MCP
 
 ## 2. 핵심 기능 네 가지
 
@@ -332,7 +332,7 @@ flowchart LR
 [ ] API 키·비밀번호는 환경변수 또는 별도 파일로 관리
 ```
 
-자세한 가이드는 [안전하게 사용하기](/cowork/safety/) 페이지를 참고하세요.
+자세한 내용은 보안 체크리스트를 참고하세요.
 
 ## 10. 비용 최적화 6선
 

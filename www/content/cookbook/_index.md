@@ -49,7 +49,6 @@ flowchart TD
    style C fill:#e8f1ec,stroke:#265240
 ```
 
-{{< icon arrow-right >}} **[사용 패턴 가이드 (4가지 표준 패턴)](../cowork/patterns/)** — 단일 프롬프트 · 멀티턴 대화 · 배치 처리 · 스케줄 자동화
 
 ## 어디서 시작하나요?
 

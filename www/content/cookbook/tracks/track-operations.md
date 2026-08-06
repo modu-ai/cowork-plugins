@@ -212,7 +212,7 @@ Level 5 (비응급, <1주): 6건 — 자동 응답 + 감사 표현
 
 ## 다음 단계
 
-- **[사용 패턴 가이드](../../../cowork/patterns/)** — 특히 패턴 4 (스케줄 자동화)
+- **** — 특히 패턴 4 (스케줄 자동화)
 - **[문서 트랙](../track-documents/)** — 사업계획서·IR
 - **[법무 트랙](../track-legal/)** — 계약·NDA
 - **[moai-pm 플러그인](/moai-agents/pm/)** · **[moai-cs](/moai-agents/cs/)** · **[moai-coworker](/moai-agents/coworker/)**

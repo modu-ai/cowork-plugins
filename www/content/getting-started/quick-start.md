@@ -152,7 +152,7 @@ sequenceDiagram
    6. **파일 추가** — 프로젝트에 참고 파일을 추가합니다
    7. **저장 위치** — 프로젝트가 저장될 경로를 확인합니다
 
-   프로젝트·폴더 개념이 낯설다면 [프로젝트와 메모리](../../cowork/projects-memory/) 페이지를 먼저 참고하세요. 이후 대화창에 다음을 입력합니다.
+   프로젝트·폴더 개념이 낯설다면 Cowork 문서를 먼저 참고하세요. 이후 대화창에 다음을 입력합니다.
 
    {{< terminal title="claude — cowork" >}}
 > /project
@@ -217,7 +217,7 @@ flowchart LR
 
 5. **첫 요청**
 
-   이제 자연어로 요청하면 적합한 스킬이 자동으로 호출됩니다. **본 문서의 모든 사용자 입력은 `> ` prefix와 함께 표기**합니다(실제 입력 시 `>` 제외 — [표기 규약](../../cowork/skills/#스킬-호출-방식)).
+   이제 자연어로 요청하면 적합한 스킬이 자동으로 호출됩니다. **본 문서의 모든 사용자 입력은 `> ` prefix와 함께 표기**합니다(실제 입력 시 `>` 제외).
 
    {{< terminal title="claude — cowork" >}}
 > "우리 SaaS의 Series A용 IR 덱 초안 만들어줘. 타깃 고객은 한국 중소제조업체야."
@@ -262,7 +262,6 @@ flowchart LR
 
 - [PM 상세](../../moai-agents/pm/)
 - [코워커 상세](../../moai-agents/coworker/)
-- [Cowork 플러그인 사용](../../cowork/plugins/) — Cowork 환경 통합 가이드
 
 ### Sources
 

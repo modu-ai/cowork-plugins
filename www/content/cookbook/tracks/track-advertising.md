@@ -189,7 +189,7 @@ Meta 공식 Ads AI Connectors(2026-04-29 오픈 베타)를 OAuth로 연결한다
 2. 브라우저에서 **Meta Business OAuth 로그인** (필요 시 2FA)
 3. 공유할 광고 계정·페이지 + 권한 등급 선택 (read-only로 시작 권장)
 
-> `moai-marketer` 설치 시 `meta-ads`가 `.mcp.json`에 미리 등록되어 있어 URL 입력이 생략된다. Claude 재시작 후 첫 호출 시 OAuth 로그인만 진행하면 된다. 자세히는 [커넥터와 MCP](../../../cowork/connectors-mcp/).
+> `moai-marketer` 설치 시 `meta-ads`가 `.mcp.json`에 미리 등록되어 있어 URL 입력이 생략된다. Claude 재시작 후 첫 호출 시 OAuth 로그인만 진행하면 된다. 자세히는 .
 
 ### 사용자 입력
 
@@ -285,7 +285,7 @@ meta-ads-manager (생성·운영, PAUSED)
 
 ## 다음 단계
 
-- **[사용 패턴 가이드](../../../cowork/patterns/)**
+- ****
 - **[콘텐츠 트랙](../track-content/)** — 광고용 콘텐츠 생성
 - **[이커머스 트랙](../track-commerce/)** — 광고 + 상품 통합
 - **[moai-marketer 플러그인](/moai-agents/marketer/)**

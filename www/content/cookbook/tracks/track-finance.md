@@ -229,7 +229,7 @@ flowchart TD
 
 ## 다음 단계
 
-- **[사용 패턴 가이드](../../../cowork/patterns/)** — 특히 패턴 4 (스케줄 자동화)
+- **** — 특히 패턴 4 (스케줄 자동화)
 - **[운영 트랙](../track-operations/)** — 주간보고·예산 운영
 - **[문서 트랙](../track-documents/)** — IR Deck·사업계획서
 - **[moai-accountant 플러그인](/moai-agents/accountant/)** · **[moai-officer](/moai-agents/officer/)**

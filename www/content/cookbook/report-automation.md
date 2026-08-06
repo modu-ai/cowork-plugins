@@ -95,7 +95,7 @@ flowchart LR
 ## 사전 준비
 
 - 플러그인: `moai-coworker`, `moai-analyst`, `moai-officer`
-- MCP 커넥터: Slack(이슈 수집) + Notion/Asana(할 일) — [커넥터·MCP](../../cowork/connectors-mcp/) 참고
+- MCP 커넥터: Slack(이슈 수집) + Notion/Asana(할 일) — Cowork 환경 설정에서 커넥터를 추가하세요
 - (선택) GA4·광고 채널 데이터
 - `schedule` 스킬 — 스케줄링
 
@@ -121,7 +121,7 @@ status-reporter → data-explorer → xlsx-creator → docx-generator → ai-slo
 
 ## 사용 방식 — 한 줄 요청 (패턴 4: 스케줄 자동화)
 
-> **핵심**: 사용자가 "수동 실행 → 스케줄 등록" 2 단계로 분리하지 않습니다. 한 줄로 "매주 N요일 X시 주간보고 자동화" 요청 → 시스템이 인터뷰 후 1회 시범 실행 + 스케줄 등록까지 자동. ([4가지 사용 패턴 - 패턴 4](../../cowork/patterns/#패턴-4--스케줄-자동화-scheduled-automation))
+> **핵심**: 사용자가 "수동 실행 → 스케줄 등록" 2 단계로 분리하지 않습니다. 한 줄로 "매주 N요일 X시 주간보고 자동화" 요청 → 시스템이 인터뷰 후 1회 시범 실행 + 스케줄 등록까지 자동.
 
 ## 왜 처음에는 사람이 검토할까
 

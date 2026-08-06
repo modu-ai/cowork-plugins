@@ -175,13 +175,13 @@ AskUserQuestion에서 "AI 검수 강도" 선택 시 "기본" (3중) / "약함" (
 
 ### Q. WordPress 자동 발행이 안 됩니다.
 
-발행은 cowork 스킬이 아닌 **외부 MCP 커넥터**(선택)로 동작합니다. [WordPress MCP](https://mcp.wordpress.com/mcp) 외에도 Post-Bridge(뉴스레터·브런치 동시 발행)·Typefully(X/Threads 스레드 예약) 커넥터를 같은 절차로 등록할 수 있습니다. Settings → Connectors → 해당 커넥터 활성화. 등록 절차는 [커넥터 가이드](../../../cowork/patterns/)를 참조하세요.
+발행은 cowork 스킬이 아닌 **외부 MCP 커넥터**(선택)로 동작합니다. [WordPress MCP](https://mcp.wordpress.com/mcp) 외에도 Post-Bridge(뉴스레터·브런치 동시 발행)·Typefully(X/Threads 스레드 예약) 커넥터를 같은 절차로 등록할 수 있습니다. Settings → Connectors → 해당 커넥터 활성화. 등록 절차는 를 참조하세요.
 
 ---
 
 ## 다음 단계
 
-- **[사용 패턴 가이드](../../../cowork/patterns/)**
+- ****
 - **[광고 트랙](../track-advertising/)** — 콘텐츠 + 광고 결합
 - **[마케터 직원](../../../moai-agents/marketer/)** — content·marketing 스킬 전체
 - **[블로그 파이프라인 쿡북](../../blog-pipeline/)** — 발행 시퀀스 심화

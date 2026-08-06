@@ -359,7 +359,6 @@ Dispatch는 모바일 Claude 앱에서 이렇게 생깁니다.
 
 ## 다음 읽을거리
 
-- [예약 작업 기본](/cowork/schedule/)
 - [스킬 체이닝 가이드](/cookbook/skill-chaining/)
 
 ---

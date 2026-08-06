@@ -103,7 +103,7 @@ nda-triage → contract-review → legal-risk → docx-generator → ai-slop-rev
 
 ## 사용 방식 — 한 줄 요청 (패턴 3: 배치 처리)
 
-> **위험한 안티 패턴**: 사용자가 모든 옵션(회사명·영업비밀·5단계 스킬·저장 경로·면책 문구)을 매번 직접 작성하는 것은 권장되지 않습니다. 시스템이 가진 자동 인터뷰 + 체이닝을 무력화합니다. ([4가지 사용 패턴 - 패턴 3](/cowork/patterns/#패턴-3--배치-처리-batch-processing))
+> **위험한 안티 패턴**: 사용자가 모든 옵션(회사명·영업비밀·5단계 스킬·저장 경로·면책 문구)을 매번 직접 작성하는 것은 권장되지 않습니다. 시스템이 가진 자동 인터뷰 + 체이닝을 무력화합니다.
 
 ### {{< icon circle-check >}} 올바른 한 줄 요청
 
@@ -155,7 +155,7 @@ flowchart TB
 
 {{< hint type="warning" >}}
 **이슈 1 — PDF가 10페이지를 넘으면 Read가 느림.**
-대용량 NDA는 페이지 범위를 명시하세요: "이 PDF는 1-15 페이지만 검토". 자세한 파일 읽기 한도는 [제약과 한도](/cowork/constraints/)를 참고.
+대용량 NDA는 페이지 범위를 명시하세요: "이 PDF는 1-15 페이지만 검토". 자세한 파일 읽기 한도는 [사용량 한도](/help/usage-limits/)를 참고.
 {{< /hint >}}
 
 ## 왜 "한국 영업비밀보호법 §2 기준"을 한 줄 더 써야 하는가
@@ -186,7 +186,7 @@ flowchart TB
 
 - [계약서 검토](../contract-review/) — 단건 정밀 검토
 - [moai-lawyer 플러그인](/moai-agents/lawyer/)
-- [트러블슈팅](/cowork/troubleshooting/)
+- [체인 트러블슈팅](../troubleshooting/)
 
 ---
 

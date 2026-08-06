@@ -197,7 +197,7 @@ flowchart TD
 
 ## 다음 단계
 
-- **[사용 패턴 가이드](../../../cowork/patterns/)** — 4가지 표준 패턴
+- **** — 4가지 표준 패턴
 - **[운영 트랙](../track-operations/)** — 제안서·RFP 응답
 - **[이커머스 트랙](../track-commerce/)** — 마케팅 컴플라이언스 게이트
 - **[moai-lawyer 플러그인](/moai-agents/lawyer/)**

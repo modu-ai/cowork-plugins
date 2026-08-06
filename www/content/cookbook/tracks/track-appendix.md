@@ -141,7 +141,7 @@ flowchart TD
 
 ## 다음 단계
 
-- **[사용 패턴 가이드](../../../cowork/patterns/)**
+- ****
 - **[moai-tutor 플러그인](/moai-agents/tutor/)** · **[moai-tutor](/moai-agents/tutor/)** · **[moai-coworker](/moai-agents/coworker/)**
 
 ---

@@ -273,7 +273,7 @@ flowchart TD
 
 ## 다음 단계
 
-- **[사용 패턴 가이드](../../../cowork/patterns/)** — 4가지 표준 사용 패턴
+- **** — 4가지 표준 사용 패턴
 - **[moai-seller 플러그인](/moai-agents/seller/)** — 30스킬 전체 카탈로그
 - **[moai-media 플러그인](/moai-agents/media/)** — 이미지·영상 생성 미디어 13스킬
 - **[광고 트랙](../track-advertising/)** — 메타·구글 광고 진단·최적화
