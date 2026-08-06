@@ -23,4 +23,4 @@ CLI 개발 문서는 한국어 클로드 코드 공식 안내 사이트로 통�
 | MoAI-ADK (브리지·워크플로우·품질 명령어) | [adk.mo.ai.kr/ko](https://adk.mo.ai.kr/ko) MoAI-ADK 문서 |
 | 레퍼런스 (명령어 색인·다중 LLM·고급) | [adk.mo.ai.kr/ko](https://adk.mo.ai.kr/ko) 레퍼런스 |
 
-데스크탑 앱에서 코드를 다루는 방법이 궁금하다면 [사용법 가이드의 코드 트랙](/guide/code/)부터 시작하세요. 개발이 처음이라면 코드 트랙 → CLI 순서를 권합니다.
+데스크탑 앱에서 코드를 다루는 방법이 궁금하다면 [Claude 공식 고객지원 센터](https://support.claude.com)를 참고하세요.

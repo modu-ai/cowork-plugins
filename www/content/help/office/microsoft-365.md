@@ -217,7 +217,6 @@ LiteLLM 버전 1.82.7과 1.82.8에는 악성코드가 포함되어 있었습니�
 ## 다음 단계
 
 - **[Office 통합 개요](/help/office/)** — Office에서 Claude를 쓰는 전체 그림 살펴보기
-- **[스킬과 플러그인](/guide/chat/skills-plugins/)** — Office 추가 기능과 함께 쓰는 스킬·커넥터 알아보기
 - **[요금제와 결제](/help/plans-billing/)** — Pro·Max·Team·Enterprise 요금제 비교
 
 ## 원문 출처

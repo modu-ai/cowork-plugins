@@ -109,8 +109,6 @@ Claude for Word(Word 플러그인), Claude in Chrome(브라우저 확장), GitHu
 
 ## 다음 단계
 
-- **[첫 대화 시작하기](/guide/chat/first-chat/)** — Claude를 열고 처음 말을 거는 단계별 가이드
-- **[Claude Chat 둘러보기](/guide/chat/)** — 대화형 AI로 할 수 있는 일 한눈에 보기
 - **[요금제와 결제](/help/plans-billing/)** — 무료·유료 플랜 비교와 결제 안내
 
 ## 원문 출처

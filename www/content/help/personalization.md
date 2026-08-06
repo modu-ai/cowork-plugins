@@ -122,7 +122,7 @@ Claude는 화면(인터페이스) 언어를 한국어를 포함한 11개 언어�
 2. 그 프로젝트 안에서 프로젝트 지침을 추가합니다.
 3. 해당 작업에 필요한 맥락(말투, 배경 정보, 규칙 등)을 적어둡니다.
 
-프로젝트 자체에 대한 자세한 내용은 [Projects 기능](/guide/chat/projects/) 페이지를 참고하세요.
+프로젝트 기능은 [Claude 공식 고객지원 센터](https://support.claude.com/en/articles/9517075-what-are-projects)를 참고하세요.
 
 ## 스타일에서 스킬로의 전환
 
@@ -150,8 +150,6 @@ Claude는 화면(인터페이스) 언어를 한국어를 포함한 11개 언어�
 
 ## 다음 단계
 
-- **[Projects 기능](/guide/chat/projects/)** — 대화와 파일을 주제별로 정리하고 프로젝트 지침 활용하기
-- **[스킬과 플러그인](/guide/chat/skills-plugins/)** — 스킬로 Claude의 능력 확장하기
 - **[계정 설정](/help/account/)** — 계정과 프로필 관리하기
 
 ## 원문 출처

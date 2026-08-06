@@ -31,5 +31,4 @@ Claude를 쓰다 보면 "계정 이메일을 어떻게 바꾸지?", "요금제�
 ## 다음 단계
 
 - **[Claude 알아보기](/help/about-claude/)** — Claude가 무엇인지부터 시작하기
-- **[Chat 개요](/guide/chat/)** — Claude로 실제 대화를 시작하는 법
 - **[요금제와 결제](/help/plans-billing/)** — 나에게 맞는 플랜 고르기

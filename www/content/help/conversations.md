@@ -160,8 +160,6 @@ Team·Enterprise에서는 시크릿 대화라도 조직의 데이터 내보내�
 
 ## 다음 단계
 
-- **[채팅 검색과 리서치](/guide/chat/search-research/)** — 지난 대화에서 정보를 찾고 활용하는 법
-- **[메모리 활용](/guide/chat/memory/)** — Claude가 맥락을 기억하도록 돕는 법
 - **[개인화 설정](/help/personalization/)** — Claude를 내 스타일에 맞게 조정하기
 - **[요금제와 결제](/help/plans-billing/)** — 요금제별로 쓸 수 있는 기능 비교
 

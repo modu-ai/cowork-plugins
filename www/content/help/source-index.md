@@ -62,41 +62,12 @@ geekdocBreadcrumb: true
 
 ## Chat — 기능
 
-### [주요 기능 살펴보기](/guide/chat/features/)
+Claude 공식 고객지원 센터에서 Chat 관련 문서를 직접 확인하세요:
 - [What are artifacts and how do I use them?](https://support.claude.com/en/articles/9487310-what-are-artifacts-and-how-do-i-use-them)
-- [Publish and share artifacts](https://support.claude.com/en/articles/9547008-publish-and-share-artifacts)
-- [Can Claude produce images?](https://support.claude.com/en/articles/9002504-can-claude-produce-images)
-- [Upload files to Claude](https://support.claude.com/en/articles/8241126-upload-files-to-claude)
-- [Create and edit files with Claude](https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude)
-- [How does Claude handle mathematical equations and calculations?](https://support.claude.com/en/articles/10366421-how-does-claude-handle-mathematical-equations-and-calculations)
-- [Visual and interactive content](https://support.claude.com/en/articles/13641943-visual-and-interactive-content)
-- [Custom visuals in chat and Cowork](https://support.claude.com/en/articles/13979539-custom-visuals-in-chat-and-cowork)
-- [Use Claude Security](https://support.claude.com/en/articles/14661296-use-claude-security)
-
-### [웹 검색·리서치·확장 사고](/guide/chat/search-research/)
 - [When should I use web search, extended thinking, and research?](https://support.claude.com/en/articles/11095361-when-should-i-use-web-search-extended-thinking-and-research)
-- [Enable and use web search](https://support.claude.com/en/articles/10684626-enable-and-use-web-search)
-- [Use research on Claude](https://support.claude.com/en/articles/11088861-use-research-on-claude)
-
-### [Projects 기능](/guide/chat/projects/)
 - [What are projects?](https://support.claude.com/en/articles/9517075-what-are-projects)
-- [Retrieval augmented generation (RAG) for projects](https://support.claude.com/en/articles/11473015-retrieval-augmented-generation-rag-for-projects)
-
-### [스킬과 플러그인](/guide/chat/skills-plugins/)
 - [What are skills?](https://support.claude.com/en/articles/12512176-what-are-skills)
-- [Use skills in Claude](https://support.claude.com/en/articles/12512180-use-skills-in-claude)
-- [How to create custom skills](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills)
 - [Browse skills, connectors, and plugins in one directory](https://support.claude.com/en/articles/14328846-browse-skills-connectors-and-plugins-in-one-directory)
-- [Use plugins in Claude](https://support.claude.com/en/articles/13837440-use-plugins-in-claude)
-- [Install financial services plugins](https://support.claude.com/en/articles/13851150-install-financial-services-plugins)
-
-### [메모리](/guide/chat/memory/)
-- [Import and export your memory from Claude](https://support.claude.com/en/articles/12123587-import-and-export-your-memory-from-claude)
-
-## Cowork
-
-### [Cowork 공식 빠른 시작](/guide/cowork/official-quickstart/)
-- [Get started with Claude Cowork](https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork)
 
 ## Office 통합
 
@@ -108,12 +79,6 @@ geekdocBreadcrumb: true
 - [Work across Microsoft 365 apps](https://support.claude.com/en/articles/13892150-work-across-microsoft-365-apps)
 - [Use Claude for Microsoft 365 with third-party platforms](https://support.claude.com/en/articles/13945233-use-claude-for-microsoft-365-with-third-party-platforms)
 - [Use dictation in Office agents](https://support.claude.com/en/articles/14479591-use-dictation-in-office-agents)
-
-## Design
-
-### [Claude Design 공식 빠른 시작](/guide/design/official-quickstart/)
-- [Get started with Claude Design](https://support.claude.com/en/articles/14604416-get-started-with-claude-design)
-- [Set up your design system in Claude Design](https://support.claude.com/en/articles/14604397-set-up-your-design-system-in-claude-design)
 
 ## CLI 축 — Claude Code CLI (MoAI-ADK) 안내
 

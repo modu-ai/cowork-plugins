@@ -125,7 +125,6 @@ Claude가 "외부 작업을 완료했다"고 자신 있게 말하더라도 그�
 
 - **[사용량 한도](/help/usage-limits/)** — 한도를 효율적으로 쓰는 방법
 - **[개인화](/help/personalization/)** — 스타일과 메모리로 Claude 다듬기
-- **[Projects 기능](/guide/chat/projects/)** — 맞춤 지침과 맥락으로 일관성 유지
 - **[대화 관리](/help/conversations/)** — 대화 검색과 정리
 
 ## 원문 출처

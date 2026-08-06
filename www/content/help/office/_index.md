@@ -22,5 +22,3 @@ Office 연동 기능은 플랜·지역·앱 버전에 따라 제공 범위가 �
 ## 다음 단계
 
 - **[Microsoft 365 연동](/help/office/microsoft-365/)** — Office 앱에서 Claude 시작하기
-- **[주요 기능 살펴보기](/guide/chat/features/)** — 파일 업로드·생성 등 핵심 기능
-- **[Cowork 개요](/guide/cowork/)** — 더 복잡한 문서 자동화 워크플로우

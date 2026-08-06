@@ -110,8 +110,6 @@ Claude의 한도는 크게 두 가지로 나뉩니다. 하나는 **사용 한도
 ## 다음 단계
 
 - **[플랜과 요금](/help/plans-billing/)** — 플랜별 사용량과 업그레이드 옵션 살펴보기
-- **[Projects 기능](/guide/chat/projects/)** — 자료를 캐싱해 사용량을 아끼는 법
-- **[검색과 리서치](/guide/chat/search-research/)** — 검색·메모리 기능 활용하기
 - **[문제 해결](/help/troubleshooting/)** — 자주 묻는 문제와 해결법
 
 ## 원문 출처
