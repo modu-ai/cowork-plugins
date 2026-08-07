@@ -1,6 +1,6 @@
 ---
 title: "모두의 코워크"
-description: "모두의 코워크 마켓플레이스 — 마케팅·셀러·법무·디자인까지, 필요한 직무의 AI 직원만 골라 설치하고 자연어로 일을 맡기세요."
+description: "모두의 코워크 마켓플레이스 — 마케팅·셀러·법무·디자인까지, 필요한 직무의 AI 코워커만 골라 설치하고 자연어로 일을 맡기세요."
 geekdocAnchor: false
 geekdocBreadcrumb: false
 # DS v2 parity — 홈은 사이드바/TOC 없이 전폭 랜딩 (design-system/handoff/*.dc.html isHome)
@@ -13,9 +13,13 @@ lastmod: 2026-08-07T00:00:00+09:00
   <div class="cw-hero-in">
   <div class="cw-hero-copy">
   <div class="eyebrow"><span class="dot"></span>{{< version >}} · cowork.mo.ai.kr</div>
-  <h1>필요한 일마다,<br/><span class="accent">AI 직원을 채용하세요</span></h1>
+  <h1>하는 작업마다,<br/><span class="accent">알맞은 AI 코워커를 두세요</span></h1>
   <p class="lead-p">
-    내 업무에 맞는 AI 직원을 골라 설치하세요. 자연어로 말하면, 그 일을 맡은 직원이 바로 시작합니다.
+    검증된 대한민국 일잘러 스킬로 무장한 모두의 코워커(MoAI-Coworker)를 영입하세요.
+  </p>
+  <hr class="cw-hero-rule" />
+  <p class="lead-p">
+    이제 원하는 결과물을(Goal) 자연어로 지시만 하세요.
   </p>
   <div class="cw-hero-ctas">
     <a class="btn btn--primary" href="#plugin-family">플러그인 둘러보기 →</a>
@@ -27,7 +31,7 @@ lastmod: 2026-08-07T00:00:00+09:00
   </div>
   </div>
   <div class="cw-hero-meta">
-    <div class="item"><div class="num">{{< catalog-count plugins >}}</div><div class="lbl">AI 직원</div></div>
+    <div class="item"><div class="num">{{< catalog-count plugins >}}</div><div class="lbl">AI 코워커</div></div>
     <div class="item"><div class="num">8+</div><div class="lbl">직무 분야</div></div>
     <div class="item"><div class="num">{{< catalog-count skills >}}</div><div class="lbl">스킬</div></div>
     <div class="item"><div class="num">{{< version >}}</div><div class="lbl">최신 버전</div></div>
@@ -158,28 +162,28 @@ lastmod: 2026-08-07T00:00:00+09:00
       <div class="cw-qstart-step">Step 01</div>
       <div class="cw-qstart-title">마켓플레이스 추가</div>
       <p class="cw-qstart-desc">Claude Cowork(ChatGPT Work도 지원) 앱 UI 또는 CLI로 마켓플레이스를 등록합니다.</p>
-      <pre class="cw-qstart-pre"><span class="p">#</span> Claude Cowork 앱 UI 안내:
-<span class="p">#</span> Cowork 탭 → 사용자 지정(Customize) → 개인 플러그인(Plugins) → "+" → URL: <code>modu-ai/moai-cowork</code>
+      <pre class="cw-qstart-pre"><span class="p">#</span> Claude Cowork / ChatGPT Work 앱 UI 안내:
+<span class="p">#</span> Claude Cowork 탭 또는 ChatGPT Work 탭 → 사용자 지정(Customize) → 개인 플러그인(Plugins) → "+" → URL: <code>modu-ai/moai-cowork</code>
 <span class="p">$</span> claude plugin marketplace add modu-ai/moai-cowork  <span class="c"># 또는 CLI(Claude Cowork/ChatGPT Work)</span></pre>
     </div>
     <div class="cw-qstart-card">
       <div class="cw-qstart-step">Step 02</div>
       <div class="cw-qstart-title">직원 채용</div>
       <p class="cw-qstart-desc">필요한 직원을 골라 담습니다.</p>
-      <pre class="cw-qstart-pre"><span class="p">#</span> Claude Cowork 앱 UI: 목록에서 "Add plugin" 버튼 클릭
+      <pre class="cw-qstart-pre"><span class="p">#</span> Claude Cowork / ChatGPT Work 앱 UI: 목록에서 "Add plugin" 버튼 클릭
 <span class="p">$</span> claude plugin add moai-coworker@moai-cowork  <span class="c"># 또는 CLI(Claude Cowork/ChatGPT Work)</span></pre>
     </div>
     <div class="cw-qstart-card">
       <div class="cw-qstart-step">Step 03</div>
       <div class="cw-qstart-title">프로젝트 지침 셋팅</div>
       <p class="cw-qstart-desc"><code>/project</code>로 프로젝트 맥락과 지침을 세팅합니다.</p>
-      <pre class="cw-qstart-pre"><span class="p">&gt;</span> /project</pre>
+      <pre class="cw-qstart-pre">/project {프로젝트 폴더 지침 생성지시}</pre>
     </div>
     <div class="cw-qstart-card">
       <div class="cw-qstart-step">Step 04</div>
       <div class="cw-qstart-title">자연어로 일 위임</div>
-      <p class="cw-qstart-desc">지침이 세팅되면, 자연어로 일을 맡기면 됩니다.</p>
-      <pre class="cw-qstart-pre"><span class="p">&gt;</span> 블로그 초안 작성해줘</pre>
+      <p class="cw-qstart-desc">프로젝트 지침(CLAUDE.md, AGENTS.md) 셋팅이 완료되면, 자연어로 일을 지시하세요.</p>
+      <pre class="cw-qstart-pre">블로그 초안 작성해줘</pre>
     </div>
   </div>
 </section>

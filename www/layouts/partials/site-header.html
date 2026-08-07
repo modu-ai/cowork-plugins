@@ -1,12 +1,12 @@
 {{- /* 모두의AI Design System — gnav header (dc.html handoff parity, green achromatic).
        왼쪽: 로고+docs 뱃지 + 문서 메뉴 / 오른쪽: 모두의 패밀리 외부 링크 + ⌘K 검색.
-       검색 모달(⌘K) 기능 유지. GH stars·홈/문서 토글은 dc.html 정합 위해 제거(2026-07). */ -}}
+       검색 모달(⌘K) 기능 유지. GH stars 버튼 복원(2026-08) — 스타 수는 방문자 브라우저에서 실시간 fetch. */ -}}
 {{- $page := .Root -}}
 {{- $rel := $page.RelPermalink -}}
 <header class="gnav" role="banner">
   <div class="gnav-inner">
     <a class="gnav-brand" href="/">
-      <span class="gnav-brand-mark"><img src="/logos/moai-logo-1.png" alt="모두의 코워크" /></span>
+      <span class="gnav-brand-mark"><img src="/logos/moai-logo-1-WH.png" alt="모두의 코워크" /></span>
       <span class="gnav-brand-name">모두의 코워크</span>
       <span class="gnav-brand-tag">docs</span>
     </a>
@@ -20,6 +20,11 @@
     </nav>
 
     <span class="gnav-spacer"></span>
+
+    <a class="gnav-gh" href="https://github.com/modu-ai/moai-cowork" target="_blank" rel="noopener" aria-label="GitHub 저장소 모두의 코워크 — 스타 수">
+      {{ partial "ds-icon" (dict "name" "github" "size" 16) }}
+      <span class="gnav-gh-count">{{ partial "ds-icon" (dict "name" "star" "size" 13 "class" "gnav-gh-star") }}<span data-gh-stars>·</span></span>
+    </a>
 
     <button class="gnav-search" type="button" data-search-trigger aria-label="문서 검색 (⌘K)">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg>
@@ -122,5 +127,15 @@
     clearTimeout(t);
     t = setTimeout(() => search(input.value.trim()), 80);
   });
+})();
+
+// GitHub 스타 수 — 방문자 브라우저에서 실시간 fetch (실패 시 '·' 표시 유지)
+(function(){
+  const el = document.querySelector('[data-gh-stars]');
+  if (!el) return;
+  fetch('https://api.github.com/repos/modu-ai/moai-cowork', { cache: 'no-store' })
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){ if (d && typeof d.stargazers_count === 'number') el.textContent = d.stargazers_count; })
+    .catch(function(){});
 })();
 </script>

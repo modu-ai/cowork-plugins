@@ -10,8 +10,8 @@ lastmod: 2026-08-07T00:00:00+09:00
 
 ## 사전 체크
 
-- [Cowork 설치](../install/) 완료
-- 작업할 **로컬 폴더** 하나 준비 (Windows에서는 짧은 경로를 권장합니다)
+- [Cowork 또는 ChatGPT](../install/) 설치 완료
+- 작업할 **프로젝트 로컬 폴더** 하나 준비 (Windows에서는 짧은 경로를 권장합니다)
 
 ## 6단계가 한 줄로 이어지는 이유
 
@@ -86,17 +86,9 @@ flowchart TD
 
 1. **마켓플레이스 등록**
 
-   두 앱 중 하나에서 마켓플레이스 주소 `modu-ai/moai-cowork`를 추가합니다. UI 클릭 경로와 잘 안 될 때 대처까지는 [플러그인 설치와 관리](/plugins/install/) 1절에 정리해 두었어요. 가장 빠른 길은 터미널 한 줄입니다(Claude Cowork·ChatGPT Work 공통).
+   두 앱 중 하나에서 마켓플레이스 주소 `modu-ai/moai-cowork`를 추가합니다. UI 클릭 경로와 잘 안 될 때 대처까지는 [플러그인 설치와 관리](/plugins/install/) 1절에 정리해 두었어요.
 
-   {{< terminal title="Terminal" lang="bash" raw="true" >}}
-# Claude Cowork
-claude plugin marketplace add modu-ai/moai-cowork
-
-# ChatGPT Work CLI
-codex plugin marketplace add modu-ai/moai-cowork
-   {{< /terminal >}}
-
-   동기화가 끝나면 {{< catalog-count plugins >}}개 플러그인 목록이 표시됩니다.
+   동기화가 끝나면 플러그인 목록이 표시됩니다.
 
 2. **`moai-pm` 설치**
 
@@ -249,7 +241,7 @@ flowchart LR
 
 플러그인 {{< catalog-count plugins >}}개에 스킬 {{< catalog-count skills >}}종이 담겨 있습니다. 스킬 목록은 페이지마다 손으로 적어두지 않고 **마켓플레이스 정본에서 자동 생성**합니다. 그래야 플러그인이 바뀌어도 문서가 어긋나지 않습니다.
 
-- 직원별 전체 스킬 표 → [AI 직원](../../moai-agents/) 각 페이지
+- 직원별 전체 스킬 표 → [AI 코워커](../../moai-agents/) 각 페이지
 - 설치·운용 방법 → [플러그인 가이드](../../plugins/)
 - 스킬을 어떻게 이어 쓰는지 → [쿡북 — 스킬 체인 설계](../../cookbook/skill-chaining/)
 
