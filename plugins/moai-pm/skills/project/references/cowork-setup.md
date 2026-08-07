@@ -56,7 +56,7 @@ Phase 1 인터뷰 → Phase 2 인벤토리 → Phase 3 체인 설계 → Phase 4
 | **1 인터뷰** | 2-Stage 일괄 설문 — S1 한 라운드에 최대 4질문 묶음 배치, 부족 시에만 S2 보강(글로벌 프로필은 묻지 않음) | interview 답변 |
 | **2 인벤토리** | `~/.claude/plugins/`에서 설치 여부 + 활성 스킬 스캔 | `.moai/config.json` 스냅샷 |
 | **3 체인 설계** | 인터뷰 + 인벤토리 + 재진입 시 기존 맥락, 3종 입력을 종합해 산출물별 스킬 체인 설계(§3 프리셋). 텍스트 체인은 `ai-slop-reviewer` 종료 | chain_design + 설계 근거 |
-| **4 Gap Detection** | 체인 스킬 ↔ 인벤토리 대조 → 누락 시 설치 안내 + `/project resume` 재개 | 진행 상태 |
+| **4 Gap Detection** | 체인 스킬 ↔ 인벤토리 대조 → 누락 시 설치 안내 + "이어서 진행" 재개 | 진행 상태 |
 | **5 확인** | 설계된 체인 `AskUserQuestion` 승인 — 요약에 설계 근거 표시 | 승인/수정/취소 |
 | **6 지침 생성** | `references/templates/CLAUDE.md.tmpl` 치환, ≤200라인, HARD 블록 8종 고정 — 동일 내용을 CLAUDE.md(Claude)+AGENTS.md(Codex) 두 파일로 | `./CLAUDE.md` + `./AGENTS.md` |
 | **7 커스텀 에이전트 생성** | 반복 작업 유형별 Claude `.claude/agents/*.md`(markdown+frontmatter) + Codex `.codex/agents/*.toml`(TOML) 양쪽 생성 | `.claude/agents/*.md` + `.codex/agents/*.toml` |
@@ -147,7 +147,7 @@ Phase 3 체인의 스킬이 인벤토리에 없으면 누락으로 간주한다.
 체인 스킬 중 인벤토리에 없는 것이 1개+
   → 누락 스킬 → 소속 플러그인 매핑
   → AskUserQuestion 4옵션:
-      1. (권장) 설치 안내 + 완료 후 /project resume 재개
+      1. (권장) 설치 안내 + 완료 후 "이어서 진행" 재개
       2. 누락 스킬 제외하고 진행
       3. 대체 스킬로 변경
       4. 중단
@@ -161,7 +161,7 @@ Phase 3 체인의 스킬이 인벤토리에 없으면 누락으로 간주한다.
 
 `references/templates/CLAUDE.md.tmpl` 변수 치환 후, **동일 내용을 CLAUDE.md(Claude)와 AGENTS.md(Codex·ChatGPT Work) 두 파일로 저장**. 규칙:
 
-1. **≤200라인**, 스킬 체인은 최대 10개(나머지는 `/project catalog` 참조)
+1. **≤200라인**, 스킬 체인은 최대 10개(나머지는 사용자가 "어떤 직원 있어?"로 물을 때 안내)
 2. **역할 라벨** — 감지된 역할(실무/글쓰기 작가)을 페르소나에 명시
 3. **HARD 규칙 고정** — office 스킬 우선 + 텍스트 산출물 `ai-slop-reviewer` 종료 + 요청 평가 사다리·파일 생성 기준·인용·저작권 가드(§3.5)·톤 규칙·맥락 적용 규칙. 200라인 초과 시 축소 대상은 체인만이다.
 4. **스킬 참조 정합** — 모든 스킬 참조는 소속 플러그인 접두어를 사용한다.

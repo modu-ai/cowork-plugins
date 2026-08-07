@@ -149,4 +149,4 @@ diff에 맞춰 프로젝트 산출물을 갱신한다. **전면 재작성 금지
 - SKILL.md §Plugin Inventory Scan — 2소스 교차 검증 베이스(본 프로토콜 §2-1이 확장)
 - `init-protocol.md` — 인터뷰·인벤토리 스캔·Gap Detection(최초 셋업 절차)
 - `claudemd-generator.md` — CLAUDE.md 200라인 예산·8 HARD 블록 보존 정책
-- `diagnostic-protocol.md` — `/project status`로 동기화 결과를 확인하는 진단 경로
+- `diagnostic-protocol.md` — 환경 진단(`/project doctor`)과 상태 조회("지금 상태 어때?" 자연어) 경로
