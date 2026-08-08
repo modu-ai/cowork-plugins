@@ -102,7 +102,7 @@ export IG_ACCESS_TOKEN="<Facebook Page 장기 액세스 토큰>"
 export IG_USER_ID="<Instagram Professional 계정 ID>"
 ```
 
-발급 절차(Meta App → Facebook Login → 장기 Page 토큰 → IG_USER_ID 해석) 는 `mcp-servers/moai-threads-poster/CONNECTORS.md` 의 Instagram 섹션 참조.
+발급 절차(Meta App → Facebook Login → 장기 Page 토큰 → IG_USER_ID 해석) 는 `mcp-servers/moai-mcp-threads-poster/CONNECTORS.md` 의 Instagram 섹션 참조.
 
 **동작 확인**: `instagram_get_profile` 도구 호출 → 프로필 정보 반환되면 연동 성공.
 

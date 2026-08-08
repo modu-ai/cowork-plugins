@@ -134,7 +134,7 @@ export THREADS_USER_ID="<Threads 사용자 ID>"
 export THREADS_PUBLISH_DELAY="30"
 ```
 
-발급 절차: `mcp-servers/moai-threads-poster/CONNECTORS.md` 참조 (브라우저 인가 → 단기 토큰 → 장기 토큰 교환)
+발급 절차: `mcp-servers/moai-mcp-threads-poster/CONNECTORS.md` 참조 (브라우저 인가 → 단기 토큰 → 장기 토큰 교환)
 
 Instagram 발행에는 추가로 `IG_ACCESS_TOKEN` / `IG_USER_ID` 가 필요합니다 (CONNECTORS.md 의 Instagram 섹션).
 
@@ -174,8 +174,8 @@ Instagram 발행에는 추가로 `IG_ACCESS_TOKEN` / `IG_USER_ID` 가 필요합�
 
 ## Cross-References
 
-- **MCP 서버**: `mcp-servers/moai-threads-poster/src/threads_poster/server.py` — 도구 정의 (직접 발행 모델)
-- **API 클라이언트**: `mcp-servers/moai-threads-poster/src/threads_poster/threads_api.py`, `instagram_api.py`
+- **MCP 서버**: `mcp-servers/moai-mcp-threads-poster/src/moai_mcp_threads_poster/server.py` — 도구 정의 (직접 발행 모델)
+- **API 클라이언트**: `mcp-servers/moai-mcp-threads-poster/src/moai_mcp_threads_poster/threads_api.py`, `instagram_api.py`
 - **스킬**: `skills/threads-post-draft/`, `skills/threads-multichannel/`, `skills/instagram-post/`, `skills/instagram-comments/`, `skills/threads-style-learn/` — 현재 위치 (5종)
 - **마켓플레이스**: `.claude-plugin/marketplace.json` entry 등록
 

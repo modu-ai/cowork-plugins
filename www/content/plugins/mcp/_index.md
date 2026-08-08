@@ -36,7 +36,7 @@ flowchart LR
 | 구분 | 누가 만들었나 | 이름 | 예 |
 |---|---|---|---|
 | **공식·제3자 MCP** | 서비스 회사 또는 다른 개발자 | 원래 이름 그대로 | Higgsfield · ElevenLabs · 국가법령정보 |
-| **자체 제작 MCP** | 모두의 AI | `moai-` 로 시작 | `moai-youtube` · `moai-smartstore` |
+| **자체 제작 MCP** | 모두의 AI | `moai-mcp-` 로 시작 | `moai-mcp-youtube` · `moai-mcp-smartstore` |
 
 **공식 MCP가 있으면 무조건 그걸 씁니다.** 직접 만드는 것은 공식 MCP가 없을 때뿐입니다 —
 유튜브에는 Google이 관리하는 공식 MCP가 없어서 직접 만들었습니다.

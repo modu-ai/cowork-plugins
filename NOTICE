@@ -84,10 +84,10 @@ SOFTWARE.
 호출하는 클라이언트 래퍼입니다. API 규격 자체의 저작권은 각 사업자에게 있으며,
 본 저장소의 Apache-2.0 라이선스는 그 규격에 미치지 않습니다.
 
-  plugins/moai-seller/mcp-servers/moai-smartstore  — 네이버 커머스 API (NAVER Corp.)
+  plugins/moai-seller/mcp-servers/moai-mcp-smartstore  — 네이버 커머스 API (NAVER Corp.)
                                                      https://apicenter.commerce.naver.com
-  plugins/moai-seller/mcp-servers/moai-cafe24      — 카페24 Admin API (Cafe24 Corp.)
-  plugins/moai-seller/mcp-servers/moai-imweb       — 아임웹 OPEN API v3 (Imweb Corp.)
+  plugins/moai-seller/mcp-servers/moai-mcp-cafe24      — 카페24 Admin API (Cafe24 Corp.)
+  plugins/moai-seller/mcp-servers/moai-mcp-imweb       — 아임웹 OPEN API v3 (Imweb Corp.)
 
 각 서비스의 API 이용약관은 이용자가 직접 확인하고 준수해야 합니다.
 

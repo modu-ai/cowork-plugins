@@ -1,13 +1,13 @@
 {
   "mcpServers": {
-    "moai-smartstore": {
-      "$comment": "네이버 커머스(스마트스토어) 전 도메인 운영/관리 MCP — 상품·주문·정산·문의·물류/N배송·판매자정보·커머스솔루션·통계(API데이터솔루션) 9 영역 90 도구. OAuth2 Client Credentials + bcrypt 전자서명(client_secret=salt). 401 GW.AUTHN 자동 재발급. 사전 설치: uv (curl -LsSf https://astral.sh/uv/install.sh | sh). MCP 소스는 플러그인에 자체 vendor(mcp-servers/moai-smartstore) — PyPI 불필요, 설치 즉시 작동. 자격증명 발급·인증 절차는 mcp-servers/moai-smartstore/CONNECTORS.md. 통계(stats_*)는 API데이터솔루션 별도 사용신청 선행. 소스는 메인 트리 + main 브랜치에 vendor됨(mcp-servers/moai-smartstore) — uv run으로 기동.",
+    "moai-mcp-smartstore": {
+      "$comment": "네이버 커머스(스마트스토어) 전 도메인 운영/관리 MCP — 상품·주문·정산·문의·물류/N배송·판매자정보·커머스솔루션·통계(API데이터솔루션) 9 영역 90 도구. OAuth2 Client Credentials + bcrypt 전자서명(client_secret=salt). 401 GW.AUTHN 자동 재발급. 사전 설치: uv (curl -LsSf https://astral.sh/uv/install.sh | sh). MCP 소스는 플러그인에 자체 vendor(mcp-servers/moai-mcp-smartstore) — PyPI 불필요, 설치 즉시 작동. 자격증명 발급·인증 절차는 mcp-servers/moai-mcp-smartstore/CONNECTORS.md. 통계(stats_*)는 API데이터솔루션 별도 사용신청 선행. 소스는 메인 트리 + main 브랜치에 vendor됨(mcp-servers/moai-mcp-smartstore) — uv run으로 기동.",
       "command": "uv",
       "args": [
         "run",
         "--directory",
-        "${CLAUDE_PLUGIN_ROOT}/mcp-servers/moai-smartstore",
-        "moai-smartstore-mcp"
+        "${CLAUDE_PLUGIN_ROOT}/mcp-servers/moai-mcp-smartstore",
+        "moai-mcp-smartstore"
       ],
       "env": {
         "NAVER_COMMERCE_CLIENT_ID": "${NAVER_COMMERCE_CLIENT_ID}",
@@ -16,14 +16,14 @@
         "NAVER_COMMERCE_TYPE": "${NAVER_COMMERCE_TYPE}"
       }
     },
-    "moai-imweb": {
-      "$comment": "아임웹(Imweb) OPEN API v3 MCP — 쇼핑몰 운영 전 도메인 136 엔드포인트를 8 카테고리 도구로 (order·product·member·community·promotion·site·script·payment). OAuth2 authorizationCode + JWT access token(자동 갱신). 사전 설치: uv (curl -LsSf https://astral.sh/uv/install.sh | sh). 소스를 플러그인에 자체 vendor(mcp-servers/moai-imweb) — PyPI 불필요, 설치 즉시 작동. 도구는 OpenAPI 스펙에서 자동 생성(tools/_generator.py + tools/openapi.json). 자격증명 발급·인증 절차는 mcp-servers/moai-imweb/CONNECTORS.md.",
+    "moai-mcp-imweb": {
+      "$comment": "아임웹(Imweb) OPEN API v3 MCP — 쇼핑몰 운영 전 도메인 136 엔드포인트를 8 카테고리 도구로 (order·product·member·community·promotion·site·script·payment). OAuth2 authorizationCode + JWT access token(자동 갱신). 사전 설치: uv (curl -LsSf https://astral.sh/uv/install.sh | sh). 소스를 플러그인에 자체 vendor(mcp-servers/moai-mcp-imweb) — PyPI 불필요, 설치 즉시 작동. 도구는 OpenAPI 스펙에서 자동 생성(tools/_generator.py + tools/openapi.json). 자격증명 발급·인증 절차는 mcp-servers/moai-mcp-imweb/CONNECTORS.md.",
       "command": "uv",
       "args": [
         "run",
         "--directory",
-        "${CLAUDE_PLUGIN_ROOT}/mcp-servers/moai-imweb",
-        "moai-imweb-mcp"
+        "${CLAUDE_PLUGIN_ROOT}/mcp-servers/moai-mcp-imweb",
+        "moai-mcp-imweb"
       ],
       "env": {
         "IMWEB_CLIENT_ID": "${IMWEB_CLIENT_ID}",
@@ -33,14 +33,14 @@
         "IMWEB_UNIT_CODE": "${IMWEB_UNIT_CODE}"
       }
     },
-    "moai-cafe24": {
-      "$comment": "카페24(Cafe24) 쇼핑몰 API MCP — Admin API(19 도메인) + Analytics API(cafe24data) 전 엔드포인트를 선언적 레지스트리 기반 도구로 제공. OAuth2 access(2h)/refresh(2w, 회전) 자동 갱신, Leaky Bucket + Usage 이중 레이트리밋 준수, X-Cafe24-Api-Version 2025-09-01. 사전 설치: uv (curl -LsSf https://astral.sh/uv/install.sh | sh). 소스를 플러그인에 자체 vendor(mcp-servers/moai-cafe24) — PyPI 불필요, 설치 즉시 작동. 자격증명 발급·인증 절차는 mcp-servers/moai-cafe24/README.md.",
+    "moai-mcp-cafe24": {
+      "$comment": "카페24(Cafe24) 쇼핑몰 API MCP — Admin API(19 도메인) + Analytics API(cafe24data) 전 엔드포인트를 선언적 레지스트리 기반 도구로 제공. OAuth2 access(2h)/refresh(2w, 회전) 자동 갱신, Leaky Bucket + Usage 이중 레이트리밋 준수, X-Cafe24-Api-Version 2025-09-01. 사전 설치: uv (curl -LsSf https://astral.sh/uv/install.sh | sh). 소스를 플러그인에 자체 vendor(mcp-servers/moai-mcp-cafe24) — PyPI 불필요, 설치 즉시 작동. 자격증명 발급·인증 절차는 mcp-servers/moai-mcp-cafe24/README.md.",
       "command": "uv",
       "args": [
         "run",
         "--directory",
-        "${CLAUDE_PLUGIN_ROOT}/mcp-servers/moai-cafe24",
-        "moai-cafe24-mcp"
+        "${CLAUDE_PLUGIN_ROOT}/mcp-servers/moai-mcp-cafe24",
+        "moai-mcp-cafe24"
       ],
       "env": {
         "CAFE24_MALL_ID": "${CAFE24_MALL_ID}",

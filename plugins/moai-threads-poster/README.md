@@ -6,7 +6,7 @@ Threads(Meta) · Instagram 자동 포스팅 전담 플러그인 — Claude Code 
 
 ## 범위
 
-- **MCP 서버** (`mcp-servers/moai-threads-poster/`) — stdio 트랜스포트, 17개 도구 노출 (Threads 직접 발행·조회 5종 + Instagram 발행·조회·댓글·인사이트 8종 + 문체 프로필 2종 + 멀티 채널 포맷 1종 + IG 토큰 갱신 1종).
+- **MCP 서버** (`mcp-servers/moai-mcp-threads-poster/`) — stdio 트랜스포트, 17개 도구 노출 (Threads 직접 발행·조회 5종 + Instagram 발행·조회·댓글·인사이트 8종 + 문체 프로필 2종 + 멀티 채널 포맷 1종 + IG 토큰 갱신 1종).
 - **Threads API 클라이언트** — `ThreadsClient` (2단계 발행: container 생성 → publish).
 - **Instagram API 클라이언트** — `InstagramClient` (Facebook Login for Business, JPEG-only, VIDEO/REELS 컨테이너 폴링).
 - **스킬 5종** — 초안 작성(문체 적용) · 문체 학습 · 멀티 채널 포맷 · Instagram 포스트 발행 · Instagram 댓글 관리.
@@ -15,7 +15,7 @@ Threads(Meta) · Instagram 자동 포스팅 전담 플러그인 — Claude Code 
 
 ## 설치 (플러그인 등록)
 
-`.claude-plugin/marketplace.json` entry 가 플러그인을 가리킨다. Claude Code 의 `/plugin` 명령으로 활성화. 자격증명(토큰) 발급 절차는 **[`mcp-servers/moai-threads-poster/CONNECTORS.md`](mcp-servers/moai-threads-poster/CONNECTORS.md)** 참조.
+`.claude-plugin/marketplace.json` entry 가 플러그인을 가리킨다. Claude Code 의 `/plugin` 명령으로 활성화. 자격증명(토큰) 발급 절차는 **[`mcp-servers/moai-mcp-threads-poster/CONNECTORS.md`](mcp-servers/moai-mcp-threads-poster/CONNECTORS.md)** 참조.
 
 ## 환경변수
 
@@ -32,9 +32,9 @@ Threads 자격증명과 Instagram 자격증명은 *독립적*이다 — Threads-
 ## 로컬 서버 단독 실행
 
 ```bash
-cd plugins/moai-threads-poster/mcp-servers/moai-threads-poster
+cd plugins/moai-threads-poster/mcp-servers/moai-mcp-threads-poster
 export THREADS_ACCESS_TOKEN=... THREADS_USER_ID=...
-uv run moai-threads-poster-mcp   # stdio MCP 서버 기동
+uv run moai-mcp-threads-poster   # stdio MCP 서버 기동
 ```
 
 ## 발행 워크플로 (직접 발행 모델)

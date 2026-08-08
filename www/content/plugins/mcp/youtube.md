@@ -38,8 +38,25 @@ lastmod: 2026-08-08T00:00:00+09:00
 5. 브라우저에서 한 번 동의하고 **리프레시 토큰** 받기
 6. 세 값을 설정에 넣기
 
+### 연결됐는지 먼저 확인하세요
+
+값을 다 넣었으면 **Claude나 ChatGPT에 붙이기 전에** 터미널에서 한 번 불러 보는 편이 좋습니다. 어디서 막혔는지 훨씬 정확하게 알려 줍니다.
+
+플러그인이 설치된 폴더(보통 `~/.claude/plugins/moai-youtuber`)에서:
+
+```
+cd <플러그인경로>/mcp-servers/moai-mcp-youtube
+uv run python -m moai_mcp_youtube.selftest
+```
+
+자격증명은 같은 창에서 환경변수로 넣어 주세요 — macOS는 `export YOUTUBE_CLIENT_ID="..."`, Windows PowerShell은 `$env:YOUTUBE_CLIENT_ID="..."` 형태입니다.
+
+**읽기만 합니다.** 올리거나 바꾸는 것 없이 할당량도 3 units 안쪽만 씁니다. 채널 이름과 최근 영상 제목이 나오면 성공입니다.
+
+멈춘 단계가 곧 원인입니다 — 토큰 발급에서 막히면 동의 절차 문제, 채널 조회에서 403이면 API가 꺼져 있거나 권한 부족입니다. 단계별 원인표는 아래 `CONNECTORS.md`에 있습니다.
+
 각 단계의 화면과 붙여 넣을 명령은 플러그인의
-[`CONNECTORS.md`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-youtuber/mcp-servers/moai-youtube/CONNECTORS.md)에
+[`CONNECTORS.md`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-youtuber/mcp-servers/moai-mcp-youtube/CONNECTORS.md)에
 macOS·Windows 양쪽으로 정리해 두었습니다.
 
 {{< hint type="warning" >}}

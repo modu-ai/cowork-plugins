@@ -69,8 +69,8 @@ Live Streaming API + Analytics API를 감싼 **자체 MCP 서버**를 함께 넣
 가장 빨리 한도를 태웁니다. 그래서 검색은 캐시를 강제하고, 내 영상 목록은 검색 대신 업로드
 재생목록(2 units)으로 받습니다. 모든 응답에 잔량 추정치가 함께 담깁니다.
 
-설정 방법은 [`mcp-servers/moai-youtube/CONNECTORS.md`](mcp-servers/moai-youtube/CONNECTORS.md),
-서버 상세는 [`mcp-servers/moai-youtube/README.md`](mcp-servers/moai-youtube/README.md)를 보세요.
+설정 방법은 [`mcp-servers/moai-mcp-youtube/CONNECTORS.md`](mcp-servers/moai-mcp-youtube/CONNECTORS.md),
+서버 상세는 [`mcp-servers/moai-mcp-youtube/README.md`](mcp-servers/moai-mcp-youtube/README.md)를 보세요.
 
 **연결하지 않아도 스킬은 작동합니다.** 자격증명이 없으면 각 도구가 설정 안내를 돌려주고,
 점검표·큐시트·편집 지시서·설명란 원고·답글 초안까지는 그대로 만들어 드립니다. 실제 버튼을

@@ -85,7 +85,7 @@ instagram_comments_hide(comment_id="<댓글 ID>")
 
 ## 발행 전 설정 (최초 1회)
 
-Threads 와 동일한 Instagram 자격증명(`IG_ACCESS_TOKEN` / `IG_USER_ID`) 에 추가로 Meta 앱에 `manage_comments` 권한이 부여되어야 한다. 발급 절차는 `mcp-servers/moai-threads-poster/CONNECTORS.md` 의 Instagram 섹션 참조.
+Threads 와 동일한 Instagram 자격증명(`IG_ACCESS_TOKEN` / `IG_USER_ID`) 에 추가로 Meta 앱에 `manage_comments` 권한이 부여되어야 한다. 발급 절차는 `mcp-servers/moai-mcp-threads-poster/CONNECTORS.md` 의 Instagram 섹션 참조.
 
 ## 관련 스킬
 

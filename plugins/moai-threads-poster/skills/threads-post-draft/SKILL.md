@@ -70,7 +70,7 @@ threads_publish_text(text="<승인된 초안>")
 
 - 텍스트 전용 발행만 본 스킬이 담당합니다.
 - 이미지/비디오 포스트는 `threads_publish_image(text, image_url)` / `threads_publish_video(text, video_url)` 도구를 직접 호출하세요.
-- 자격증명(`THREADS_ACCESS_TOKEN`, `THREADS_USER_ID`) 이 미설정이면 `setup_required` 에러를 반환합니다 — 서버는 크래시하지 않습니다. 발급 절차는 `mcp-servers/moai-threads-poster/CONNECTORS.md` 참조.
+- 자격증명(`THREADS_ACCESS_TOKEN`, `THREADS_USER_ID`) 이 미설정이면 `setup_required` 에러를 반환합니다 — 서버는 크래시하지 않습니다. 발급 절차는 `mcp-servers/moai-mcp-threads-poster/CONNECTORS.md` 참조.
 
 > 발행은 세션 안에서 즉시 일어납니다. 백그라운드 자동 발행은 없습니다. 예약이 필요하면 Claude Cowork 에게 맡기세요.
 
@@ -164,6 +164,6 @@ export THREADS_USER_ID="<Threads 사용자 ID>"
 export THREADS_PUBLISH_DELAY="30"
 ```
 
-발급 절차: `mcp-servers/moai-threads-poster/CONNECTORS.md` 참조 (브라우저 인가 → 단기 토큰 → 장기 토큰 교환)
+발급 절차: `mcp-servers/moai-mcp-threads-poster/CONNECTORS.md` 참조 (브라우저 인가 → 단기 토큰 → 장기 토큰 교환)
 
 **동작 확인**: `threads_get_profile` 도구 호출 → 프로필 정보 반환되면 연동 성공.

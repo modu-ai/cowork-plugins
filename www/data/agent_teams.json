@@ -1,5 +1,5 @@
 {
- "marketplace_version": "1.3.0",
+ "marketplace_version": "1.4.0",
  "generated_from": "marketplace.json + plugin frontmatter (SSOT)",
  "employees": [
   {
@@ -567,7 +567,7 @@
    "id": "moai-youtuber",
    "displayName": "🎥 유튜버",
    "category": "미디어 운영",
-   "version": "1.1.0",
+   "version": "1.2.0",
    "description": "유튜브 채널 운영 전담 AI 코워커 — 라이브 방송 운영(사전 리허설·송출·실시간 채팅·종료 후 다시보기 정리), 녹화 촬영 셋업과 편집 지시서, 썸네일·제목 패키징, 업로드와 메타데이터·챕터·재생목록 발행, 성과 리뷰, 댓글·커뮤니티 운영, 롱폼에서 쇼츠 뽑기까지. 영상 기획·대본은 moai-marketer, 이미지·영상 생성은 moai-media에 위임합니다. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 유튜브 채널 운영자·라이브 스트리머·1인 크리에이터.",
    "skill_count": 8,
    "skills": [
@@ -607,14 +607,14 @@
    "deprecated_skills": [],
    "agents": [],
    "mcp_servers": [
-    "moai-youtube"
+    "moai-mcp-youtube"
    ]
   },
   {
    "id": "moai-seller",
    "displayName": "🛒 셀러",
    "category": "이커머스",
-   "version": "1.1.1",
+   "version": "1.2.0",
    "description": "이커머스 셀러 전담 AI 코워커 — 스마트스토어·아임웹·카페24 MCP 연동과 상세페이지·마켓플레이스·광고·CRM 등 커머스 실무 스킬 30종. VOC·채널 메시지는 moai-cs(CS매니저)로 이관. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 온라인 셀러·이커머스 운영자.",
    "skill_count": 30,
    "skills": [
@@ -772,9 +772,9 @@
     }
    ],
    "mcp_servers": [
-    "moai-cafe24",
-    "moai-imweb",
-    "moai-smartstore"
+    "moai-mcp-cafe24",
+    "moai-mcp-imweb",
+    "moai-mcp-smartstore"
    ]
   },
   {
@@ -1553,7 +1553,7 @@
    "id": "moai-threads-poster",
    "displayName": "📸 SNS 크리에이터",
    "category": "소셜미디어",
-   "version": "1.1.1",
+   "version": "1.2.0",
    "description": "Threads·Instagram(Meta) 자율 발행 전담 AI 코워커 — 직접 Graph API 연결 MCP(월정액 없음)로 텍스트·이미지·비디오 2단계 발행. 세션 안에서 직접 발행. 예약·정기 발행은 Claude Cowork이 담당. Facebook 개인 계정은 API 미지원(정책)이라 복붙만 지원합니다. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 1인 브랜드·콘텐츠 크리에이터·Threads/Instagram 정기 운영자.",
    "skill_count": 5,
    "skills": [
@@ -1581,7 +1581,7 @@
    "deprecated_skills": [],
    "agents": [],
    "mcp_servers": [
-    "moai-threads-poster"
+    "moai-mcp-threads-poster"
    ]
   }
  ]

@@ -1,0 +1,51 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "moai-mcp-smartstore"
+version = "0.1.0"
+description = "네이버 커머스(스마트스토어) 전 도메인 운영/관리 MCP 서버 — 상품·주문·정산·문의·물류·판매자정보·커머스솔루션·통계 API 연결 (moai-cowork moai-smartstore)"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.11"
+authors = [
+    { name = "MoAI-ADK", email = "bobby@afamily.kr" }
+]
+keywords = ["naver", "smartstore", "commerce", "mcp", "korea", "ecommerce"]
+classifiers = [
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Internet :: WWW/HTTP",
+]
+dependencies = [
+    # Anthropic 공식 MCP Python SDK (FastMCP)
+    "mcp>=1.0.0",
+    # 입출력 스키마 검증
+    "pydantic>=2.0.0",
+    # HTTP 클라이언트 (네이버 커머스 API 게이트웨이 호출)
+    "requests>=2.31.0",
+    # 인증 전자서명 (bcrypt hashpw)
+    "bcrypt>=4.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "requests-mock>=1.12.1",
+]
+
+[project.scripts]
+# uvx 진입점 — `uvx moai-mcp-smartstore` 명령으로 stdio 실행
+moai-mcp-smartstore = "moai_mcp_smartstore.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/moai_mcp_smartstore"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"

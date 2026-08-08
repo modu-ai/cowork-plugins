@@ -171,7 +171,7 @@ Facebook·X 까지 한 번에 "올려달라" 고 하면 **거절** 합니다 —
 
 ## References
 
-이 스킬은 참조 파일 없이 본 문서만으로 자족합니다. 채널 제약값(500바이트/280자/25000자) 은 `threads_format_multi_channel` 도구(`mcp-servers/moai-threads-poster/src/threads_poster/server.py`) 에 하드코딩된 baseline 이다.
+이 스킬은 참조 파일 없이 본 문서만으로 자족합니다. 채널 제약값(500바이트/280자/25000자) 은 `threads_format_multi_channel` 도구(`mcp-servers/moai-mcp-threads-poster/src/moai_mcp_threads_poster/server.py`) 에 하드코딩된 baseline 이다.
 
 ## 관련 스킬
 

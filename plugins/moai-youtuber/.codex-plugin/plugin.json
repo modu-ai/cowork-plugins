@@ -2,7 +2,7 @@
   "$schema": "https://developers.openai.com/plugins/build/plugins",
   "$comment": "OpenAI/Codex 플러그인 매니페스트. Claude용 .claude-plugin/plugin.json과 나란히 공존. 본체(skills/SKILL.md)는 양쪽 공유. macOS/Windows × Claude Cowork/ChatGPT Work 4조합에서 동일 동작.",
   "name": "moai-youtuber",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "유튜브 채널 운영 전담 AI 코워커 — 라이브 방송 운영(사전 리허설·송출·실시간 채팅·종료 후 다시보기 정리), 녹화 촬영 셋업과 편집 지시서, 썸네일·제목 패키징, 업로드와 메타데이터·챕터·재생목록 발행, 성과 리뷰, 댓글·커뮤니티 운영, 롱폼에서 쇼츠 뽑기까지. 영상 기획·대본은 moai-marketer, 이미지·영상 생성은 moai-media에 위임합니다. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 유튜브 채널 운영자·라이브 스트리머·1인 크리에이터.",
   "author": {
     "name": "모두의 AI",

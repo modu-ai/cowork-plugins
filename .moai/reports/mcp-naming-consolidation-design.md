@@ -1,7 +1,7 @@
 # 자체 제작 MCP — 작명 통일 · 공통 코어 통합 설계서
 
 > 작성 2026-08-08 · 정본. 자체 제작 MCP 서버의 이름 규칙과 코드 통합 방향, 그리고 신규
-> `moai-youtube` 서버의 구현 계약을 확정한다. 원칙 요약본은 `CLAUDE.local.md`
+> `moai-mcp-youtube` 서버의 구현 계약을 확정한다. 원칙 요약본은 `CLAUDE.local.md`
 > §자체 제작 MCP 작명·구조 규칙 / §범용성 원칙에 있고, 이 문서가 근거와 상세를 담는다.
 
 ## 1. 전수조사 결과 (실측)
@@ -10,14 +10,17 @@
 
 ### 1-1. 자체 제작 서버
 
-| 서버 키 | 소속 플러그인 | 디렉터리 | 배포 패키지 | 모듈 | 엔트리포인트 | 등록 도구 | 코드량 |
-|---|---|---|---|---|---|---|---|
-| `moai-smartstore` | moai-seller | `moai-smartstore` | `moai-smartstore-mcp` | `moai_smartstore` | `moai-smartstore-mcp` | 93 | 1,323줄 |
-| `moai-imweb` | moai-seller | `moai-imweb` | `moai-imweb-mcp` | `moai_imweb` | `moai-imweb-mcp` | 10 | 1,650줄 |
-| `moai-cafe24` | moai-seller | `moai-cafe24` | `moai-cafe24-mcp` | `moai_cafe24` | `moai-cafe24-mcp` | 4(디스패치형) | 3,133줄 |
-| `moai-threads-poster` | moai-threads-poster | `threads-poster` ❌ | `moai-threads-poster-mcp` | `threads_poster` ❌ | `threads-poster-mcp` ❌ | 17 | 1,625줄 |
+| 서버 키 | 소속 플러그인 | 모듈 | 등록 도구 | 코드량 |
+|---|---|---|---|---|
+| `moai-mcp-smartstore` | moai-seller | `moai_mcp_smartstore` | 93 | 1,323줄 |
+| `moai-mcp-imweb` | moai-seller | `moai_mcp_imweb` | 10 | 1,650줄 |
+| `moai-mcp-cafe24` | moai-seller | `moai_mcp_cafe24` | 4(디스패치형) | 3,133줄 |
+| `moai-mcp-threads-poster` | moai-threads-poster | `moai_mcp_threads_poster` | 17 | 1,625줄 |
+| `moai-mcp-youtube` | moai-youtuber | `moai_mcp_youtube` | 28 | 신규 |
 
-커머스 3종은 5축이 이미 정합하다. **어긋난 것은 threads-poster의 3축**(디렉터리·모듈·엔트리포인트)뿐이다.
+디렉터리·배포 패키지·엔트리포인트는 모두 서버 키와 같은 문자열이다(§2). 최초 조사 시점에는
+`moai-<서비스>` / `moai-<서비스>-mcp` 가 섞여 있었고 threads-poster는 3축이 어긋나 있었는데,
+2026-08-08 전면 개명으로 다섯 서버 모두 정합 상태가 되었다.
 
 ### 1-2. 제3자 서버 (이름 변경 대상 아님)
 
@@ -36,33 +39,38 @@
 
 | 축 | 규칙 | 예 |
 |---|---|---|
-| `.mcp.json` 서버 키 | `moai-<서비스>` | `moai-youtube` |
-| 디렉터리 | `mcp-servers/moai-<서비스>` | `mcp-servers/moai-youtube` |
-| 배포 패키지명 | `moai-<서비스>-mcp` | `moai-youtube-mcp` |
-| 파이썬 모듈 | `moai_<서비스>` | `moai_youtube` |
-| 엔트리포인트 | `moai-<서비스>-mcp` | `moai-youtube-mcp` |
+| `.mcp.json` 서버 키 | `moai-mcp-<서비스>` | `moai-mcp-youtube` |
+| 디렉터리 | `mcp-servers/moai-mcp-<서비스>` | `mcp-servers/moai-mcp-youtube` |
+| 배포 패키지명 | `moai-mcp-<서비스>` | `moai-mcp-youtube` |
+| 파이썬 모듈 | `moai_mcp_<서비스>` | `moai_mcp_youtube` |
+| 엔트리포인트 | `moai-mcp-<서비스>` | `moai-mcp-youtube` |
+
+**다섯 축이 같은 문자열**이다(모듈만 밑줄 표기). 접두어를 `moai-mcp-` 로 잡은 이유는 공유
+코어가 `moai-mcp-core` 이기 때문이다 — 코어와 서버가 한 계열로 읽힌다. `-mcp` 를 뒤에 붙이던
+옛 형태(`moai-youtube-mcp` 꼴)는 폐기했다.
 
 `<서비스>`는 **연동 대상 서비스 이름**이다(플러그인 이름이 아니다). 한 플러그인이 서버를
 여러 개 가질 수 있기 때문이다 — `moai-seller`가 smartstore·imweb·cafe24 셋을 갖는 것처럼.
 
-### 2-1. threads-poster 정합 작업
+### 2-1. 전면 개명 결과 (2026-08-08)
 
-| 축 | 현재 | 변경 후 | 단계 |
-|---|---|---|---|
-| 서버 키 | `moai-threads-poster` | (동일) | — |
-| 디렉터리 | `mcp-servers/threads-poster` | `mcp-servers/moai-threads-poster` | 1단계 |
-| 엔트리포인트 | `threads-poster-mcp` | `moai-threads-poster-mcp` | 1단계 |
-| 배포 패키지 | `moai-threads-poster-mcp` | (동일) | — |
-| 모듈 | `threads_poster` | `moai_threads_poster` | 2단계(코어 추출과 함께) |
+| 서비스 | 옛 이름 (서버키 / 패키지·EP / 모듈) | 새 이름 |
+|---|---|---|
+| youtube | `moai-youtube` / `moai-youtube-mcp` / `moai_youtube` | `moai-mcp-youtube` / `moai_mcp_youtube` |
+| imweb | `moai-imweb` / `moai-imweb-mcp` / `moai_imweb` | `moai-mcp-imweb` / `moai_mcp_imweb` |
+| cafe24 | `moai-cafe24` / `moai-cafe24-mcp` / `moai_cafe24` | `moai-mcp-cafe24` / `moai_mcp_cafe24` |
+| smartstore | `moai-smartstore` / `moai-smartstore-mcp` / `moai_smartstore` | `moai-mcp-smartstore` / `moai_mcp_smartstore` |
+| threads-poster | `moai-threads-poster` / `threads-poster-mcp` / `threads_poster` | `moai-mcp-threads-poster` / `moai_mcp_threads_poster` |
 
-모듈 개명은 `import` 경로와 테스트 파일 전체가 걸린다. 디렉터리·엔트리포인트는 외부 계약
-(`.mcp.json`)만 바꾸면 되므로 먼저 처리하고, 모듈은 코어 추출 작업에서 같이 옮긴다.
+**서버 키가 바뀌면 도구 네임스페이스도 바뀐다** (`mcp__moai-youtube__*` →
+`mcp__moai-mcp-youtube__*`). `.mcp.json` 은 플러그인에 동봉돼 함께 갱신되므로 사용자가 할
+일은 없다. 환경변수 이름은 그대로다.
 
 ## 3. 통합 설계 — 서버 병합이 아니라 코어 추출
 
 ### 3-1. 근거 (실측)
 
-`moai-imweb/_base.py`와 `moai-cafe24/_base.py`를 대조한 결과, 두 서버가 **같은 구조를 각자
+`moai-mcp-imweb/_base.py`와 `moai-mcp-cafe24/_base.py`를 대조한 결과, 두 서버가 **같은 구조를 각자
 복제**하고 있었다.
 
 - OAuth2 `access_token` + `refresh_token`, HTTP 401 시 자동 재발급
@@ -90,7 +98,7 @@ plugins/_shared/mcp-core/            # 신규 (위치는 4-1에서 확정)
     errors.py     공통 예외 → MCP 오류 응답 매핑
     cache.py      읽기 응답 TTL 캐시 (쿼터 절약)
         ↑ 의존
-  moai-smartstore   moai-imweb   moai-cafe24   moai-threads-poster   moai-youtube
+  moai-mcp-smartstore  moai-mcp-imweb  moai-mcp-cafe24  moai-mcp-threads-poster  moai-mcp-youtube
 ```
 
 각 서버는 자기 도메인(엔드포인트 매핑·도구 정의)만 갖는다. 서버 개수·`.mcp.json` 구조·
@@ -103,11 +111,11 @@ plugins/_shared/mcp-core/            # 신규 (위치는 4-1에서 확정)
 
 | 서버 | 인증 모델 | 토큰 저장 | 코어 적합 | 상태 |
 |---|---|---|---|---|
-| `moai-imweb` | OAuth2 refresh_token (camelCase 키 + Basic 병행) | 파일 | 적합 | **이관 완료** |
-| `moai-cafe24` | OAuth2 refresh_token (리프레시 회전) | 파일 | 적합 | **이관 완료** |
-| `moai-youtube` | OAuth2 refresh_token (표준) | 파일 | 적합 | **처음부터 코어 위** |
-| `moai-smartstore` | `client_credentials` + bcrypt 전자서명 | **메모리 전용** | 부적합 | 현행 유지 |
-| `moai-threads-poster` | Meta 장기 토큰 **연장**(`th_refresh_token` / `fb_exchange_token`) | **환경변수** | 부적합 | 현행 유지 |
+| `moai-mcp-imweb` | OAuth2 refresh_token (camelCase 키 + Basic 병행) | 파일 | 적합 | **이관 완료** |
+| `moai-mcp-cafe24` | OAuth2 refresh_token (리프레시 회전) | 파일 | 적합 | **이관 완료** |
+| `moai-mcp-youtube` | OAuth2 refresh_token (표준) | 파일 | 적합 | **처음부터 코어 위** |
+| `moai-mcp-smartstore` | `client_credentials` + bcrypt 전자서명 | **메모리 전용** | 부적합 | 현행 유지 |
+| `moai-mcp-threads-poster` | Meta 장기 토큰 **연장**(`th_refresh_token` / `fb_exchange_token`) | **환경변수** | 부적합 | 현행 유지 |
 
 **왜 뒤 둘은 옮기지 않는가.** 코어의 `OAuth2Refresher` 는 리프레시 그랜트를 전제한다.
 스마트스토어는 매 호출마다 전자서명을 새로 만들어 `client_credentials` 로 토큰을 받고
@@ -161,7 +169,7 @@ B안의 유일한 위험은 **복제본 드리프트**다. 이를 기계적으�
 | 동기화 도구 | `scripts/sync-mcp-core.py` |
 | 복제본 표시 | 각 복제 파일 첫 줄에 자동 생성 배너 — 직접 수정 금지 |
 | 드리프트 검사 | `python3 scripts/sync-mcp-core.py --check` (종료코드 1이면 불일치) |
-| 서버 pyproject | `packages = ["src/moai_<서비스>", "src/moai_mcp_core"]` |
+| 서버 pyproject | `packages = ["src/moai_mcp_<서비스>", "src/moai_mcp_core"]` |
 
 **정본만 고친다.** 복제본을 직접 수정하면 다음 동기화에서 덮어써진다. 커밋 전에 `--check`를
 돌려 불일치를 잡는다.
@@ -176,7 +184,7 @@ B안의 유일한 위험은 **복제본 드리프트**다. 이를 기계적으�
 | `cache.py` | 읽기 응답 TTL 캐시 (할당량 절약) |
 | `errors.py` | 예외 → MCP 구조화 오류 응답 매핑 |
 
-## 5. `moai-youtube` 서버 구현 계약 (2단계 착수용)
+## 5. `moai-mcp-youtube` 서버 구현 계약 (2단계 착수용)
 
 풀세트 범위 — YouTube Data API v3 + Live Streaming API + Analytics API 읽기.
 
@@ -185,11 +193,11 @@ B안의 유일한 위험은 **복제본 드리프트**다. 이를 기계적으�
 | 항목 | 값 |
 |---|---|
 | 소속 플러그인 | `moai-youtuber` |
-| 서버 키 | `moai-youtube` |
-| 디렉터리 | `plugins/moai-youtuber/mcp-servers/moai-youtube` |
-| 배포 패키지 · 엔트리포인트 | `moai-youtube-mcp` |
-| 모듈 | `moai_youtube` |
-| 기동 | `uv run --directory ${CLAUDE_PLUGIN_ROOT}/mcp-servers/moai-youtube moai-youtube-mcp` |
+| 서버 키 | `moai-mcp-youtube` |
+| 디렉터리 | `plugins/moai-youtuber/mcp-servers/moai-mcp-youtube` |
+| 배포 패키지 · 엔트리포인트 | `moai-mcp-youtube` |
+| 모듈 | `moai_mcp_youtube` |
+| 기동 | `uv run --directory ${CLAUDE_PLUGIN_ROOT}/mcp-servers/moai-mcp-youtube moai-mcp-youtube` |
 
 ### 5-2. 인증
 

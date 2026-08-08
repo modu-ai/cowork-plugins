@@ -88,7 +88,7 @@ claude plugin install moai-seller@moai-cowork
 
 | 서버 | 플랫폼 | 필요 환경변수 | 상태 |
 |------|--------|---------------|------|
-| `moai-smartstore` | 네이버 스마트스토어 (9 영역 90 도구) | `NAVER_COMMERCE_CLIENT_ID`, `NAVER_COMMERCE_CLIENT_SECRET`, `NAVER_COMMERCE_ACCOUNT_ID`, `NAVER_COMMERCE_TYPE` | ⚠️ 소스 복원 대기 — 선언은 유지되어 있으나 `mcp-servers/moai-smartstore` 소스 디렉토리 복원 전까지 기동 불가 |
+| `moai-smartstore` | 네이버 스마트스토어 (9 영역 90 도구) | `NAVER_COMMERCE_CLIENT_ID`, `NAVER_COMMERCE_CLIENT_SECRET`, `NAVER_COMMERCE_ACCOUNT_ID`, `NAVER_COMMERCE_TYPE` | ⚠️ 소스 복원 대기 — 선언은 유지되어 있으나 `mcp-servers/moai-mcp-smartstore` 소스 디렉토리 복원 전까지 기동 불가 |
 | `moai-imweb` | 아임웹 OPEN API v3 (136 엔드포인트 → 8 카테고리 도구) | `IMWEB_CLIENT_ID`, `IMWEB_CLIENT_SECRET`, `IMWEB_ACCESS_TOKEN`, `IMWEB_REFRESH_TOKEN`, `IMWEB_UNIT_CODE` | 정상 (vendored) |
 | `moai-cafe24` | 카페24 Admin API 19 도메인 + Analytics | `CAFE24_MALL_ID`, `CAFE24_CLIENT_ID`, `CAFE24_CLIENT_SECRET`, `CAFE24_ACCESS_TOKEN`, `CAFE24_REFRESH_TOKEN` | 정상 (vendored) |
 

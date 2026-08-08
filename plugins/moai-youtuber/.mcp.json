@@ -1,13 +1,13 @@
 {
   "mcpServers": {
-    "moai-youtube": {
-      "$comment": "YouTube Data API v3 + Live Streaming API + Analytics API MCP — 라이브 방송(생성·스트림 연결·상태 전환·실시간 채팅), 발행(업로드·메타데이터·썸네일·재생목록·자막·예약), 성과 조회(채널·영상·유입경로·시청 유지), 댓글 관리. 유튜브는 공식 MCP가 없어 자체 제작. OAuth2 authorization_code + refresh token 자동 갱신. 할당량 방어 내장(하루 10,000 units, search는 1회 100 units라 캐시 강제 + 내 영상 목록은 업로드 재생목록 경유로 2 units). 사전 설치: uv (macOS/Linux는 astral.sh/uv 설치 스크립트, Windows는 winget install astral-sh.uv 또는 pip install uv). 소스를 플러그인에 자체 vendor(mcp-servers/moai-youtube) — PyPI 불필요, 설치 즉시 작동. 자격증명 발급 절차는 mcp-servers/moai-youtube/CONNECTORS.md. 자격증명이 없어도 서버는 기동하며 각 도구가 setup_required 안내를 반환한다.",
+    "moai-mcp-youtube": {
+      "$comment": "YouTube Data API v3 + Live Streaming API + Analytics API MCP — 라이브 방송(생성·스트림 연결·상태 전환·실시간 채팅), 발행(업로드·메타데이터·썸네일·재생목록·자막·예약), 성과 조회(채널·영상·유입경로·시청 유지), 댓글 관리. 유튜브는 공식 MCP가 없어 자체 제작. OAuth2 authorization_code + refresh token 자동 갱신. 할당량 방어 내장(하루 10,000 units, search는 1회 100 units라 캐시 강제 + 내 영상 목록은 업로드 재생목록 경유로 2 units). 사전 설치: uv (macOS/Linux는 astral.sh/uv 설치 스크립트, Windows는 winget install astral-sh.uv 또는 pip install uv). 소스를 플러그인에 자체 vendor(mcp-servers/moai-mcp-youtube) — PyPI 불필요, 설치 즉시 작동. 자격증명 발급 절차는 mcp-servers/moai-mcp-youtube/CONNECTORS.md. 자격증명이 없어도 서버는 기동하며 각 도구가 setup_required 안내를 반환한다.",
       "command": "uv",
       "args": [
         "run",
         "--directory",
-        "${CLAUDE_PLUGIN_ROOT}/mcp-servers/moai-youtube",
-        "moai-youtube-mcp"
+        "${CLAUDE_PLUGIN_ROOT}/mcp-servers/moai-mcp-youtube",
+        "moai-mcp-youtube"
       ],
       "env": {
         "YOUTUBE_CLIENT_ID": "${YOUTUBE_CLIENT_ID}",

@@ -12,7 +12,7 @@
 # 자격증명(env) — 자격증명은 세션의 환경변수로만 전달한다:
 #   THREADS_ACCESS_TOKEN (필수) · THREADS_USER_ID (필수) · THREADS_PUBLISH_DELAY (선택, 기본 30)
 #   IG_ACCESS_TOKEN (Instagram 발행 시 필수) · IG_USER_ID (Instagram 발행 시 필수)
-# 발급 절차: mcp-servers/moai-threads-poster/CONNECTORS.md
+# 발급 절차: mcp-servers/moai-mcp-threads-poster/CONNECTORS.md
 
 # Threads 발행 제한 (Graph API baseline):
 #   - 텍스트: 500 UTF-8 바이트 (ASCII 1B · 한글 3B · 이모지 4B)
@@ -23,10 +23,10 @@
 # 문체 학습 (style learning) — threads-style-learn 스킬이 분석한 프로필의 저장 경로.
 # threads_style_save / threads_style_load MCP 도구가 참조한다. Threads 자격증명 불필요.
 style:
-  # 기본 저장 경로. $CLAUDE_PLUGIN_ROOT/mcp-servers/moai-threads-poster/.data/style-profile.md
+  # 기본 저장 경로. $CLAUDE_PLUGIN_ROOT/mcp-servers/moai-mcp-threads-poster/.data/style-profile.md
   # (.data/ 는 gitignored — 개인 문체가 저장소에 올라가지 않는다).
   # path= 미지정 시 이 경로를 사용한다. 명시적 path= 로 다른 위치 지정 가능.
-  profile_path: "${CLAUDE_PLUGIN_ROOT}/mcp-servers/moai-threads-poster/.data/style-profile.md"
+  profile_path: "${CLAUDE_PLUGIN_ROOT}/mcp-servers/moai-mcp-threads-poster/.data/style-profile.md"
 
 # 멀티 채널 배포 (multi-channel) — threads_format_multi_channel 의 기본값 참조.
 # 이 파일은 documentation/reference 용이며, 도구의 실제 기본값은 server.py 에 하드코딩.
