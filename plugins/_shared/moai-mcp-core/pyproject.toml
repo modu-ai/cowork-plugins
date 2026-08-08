@@ -1,0 +1,28 @@
+[project]
+name = "moai-mcp-core"
+version = "0.1.0"
+description = "자체 제작 MoAI MCP 서버 공통 코어 — OAuth2 갱신·토큰 영속화·HTTP 재시도·TTL 캐시·오류 매핑"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+authors = [{ name = "모두의 AI", email = "email@mo.ai.kr" }]
+keywords = ["mcp", "moai", "oauth2", "model-context-protocol"]
+dependencies = [
+    # 자체 제작 MCP 서버들과 같은 선상으로 고정.
+    "httpx>=0.27.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["moai_mcp_core"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
