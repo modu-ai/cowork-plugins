@@ -24,12 +24,13 @@ in-memory only when the path is not writable.
 
 from __future__ import annotations
 
-import json
 import os
 import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import TYPE_CHECKING, Optional
+
+from moai_mcp_core import TokenStore
 
 if TYPE_CHECKING:
     from .client import Cafe24Client
@@ -68,39 +69,38 @@ class Cafe24Config:
         return bool(self.client_id and self.client_secret and self.refresh_token and self.mall_id)
 
 
+def token_store(path: Optional[Path]) -> TokenStore:
+    """공통 코어의 토큰 저장소. 경로가 없으면 기본 위치를 쓴다."""
+    return TokenStore("cafe24", path=path) if path else TokenStore("cafe24")
+
+
 def _load_persisted_tokens(path: Optional[Path]) -> tuple[Optional[str], Optional[str]]:
-    if not path or not path.exists():
+    """저장된 토큰을 읽는다. 손상·부재는 (None, None).
+
+    파일 입출력은 공통 코어(`moai_mcp_core.TokenStore`)가 담당한다.
+    """
+    if not path:
         return None, None
-    try:
-        data = json.loads(path.read_text("utf-8"))
-        return data.get("access_token"), data.get("refresh_token")
-    except Exception:
-        return None, None
+    data = token_store(path).load()
+    return data.get("access_token"), data.get("refresh_token")
 
 
 def _persist_tokens(path: Optional[Path], access: Optional[str], refresh: Optional[str]) -> None:
+    """토큰을 저장한다. 실패는 치명적이지 않지만 **조용하지도 않다.**
+
+    카페24는 갱신할 때마다 리프레시 토큰을 회전시키고 이전 것을 즉시 무효화한다.
+    저장에 실패하면 회전된 토큰이 메모리에만 남고, 다음 프로세스는 환경변수의
+    이미 죽은 토큰을 다시 쓰다가 인증에 실패한다. 그 실패는 auth.py 의 메시지
+    때문에 "리프레시 만료"로 오진되기 쉬우므로, 저장 실패는 stderr 로 알린다.
+    """
     if not path:
         return
-    try:
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(
-            json.dumps({"access_token": access, "refresh_token": refresh}, ensure_ascii=False),
-            "utf-8",
-        )
-        try:
-            os.chmod(path, 0o600)
-        except OSError:
-            pass
-    except Exception as exc:
-        # Persistence is best-effort but NOT silent — a write miss leaves the
-        # rotated refresh token in memory only, so the next process reuses the
-        # now-invalidated token from env and fails auth. Surface to stderr so the
-        # silent-write-fail failure mode (mistaken for "refresh expired" by
-        # auth.py's message) is diagnosable. Never fatal.
+    if not token_store(path).save({"access_token": access, "refresh_token": refresh}):
         import sys
 
         print(
-            f"[moai-cafe24] WARN: token persistence failed ({path}): {exc!r}",
+            f"[moai-cafe24] WARN: token persistence failed ({path}) — "
+            "회전된 refresh token 이 메모리에만 남았습니다. 다음 실행에서 인증이 실패할 수 있습니다.",
             file=sys.stderr,
         )
 

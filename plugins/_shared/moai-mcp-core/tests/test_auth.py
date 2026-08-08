@@ -152,3 +152,72 @@ def test_access_token_이_없는_응답은_auth_error(tmp_path):
     )
     with pytest.raises(AuthError):
         ref.refresh()
+
+
+def test_camelCase_키를_요구하는_서비스_지원(tmp_path):
+    """아임웹은 grantType/refreshToken/clientId/clientSecret 표기를 쓴다."""
+    seen: dict = {}
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        seen["body"] = request.content.decode()
+        return httpx.Response(200, json={"accessToken": "a1", "refreshToken": "r1"})
+
+    store = TokenStore("svc", path=tmp_path / "t.json")
+    ref = OAuth2Refresher(
+        _config(key_style="camel"), store, transport=httpx.MockTransport(handler)
+    )
+    assert ref.refresh() == "a1"
+
+    assert "grantType=refresh_token" in seen["body"]
+    assert "clientId=cid" in seen["body"]
+    assert "grant_type=" not in seen["body"]
+    # camelCase 응답도 읽어야 한다
+    assert ref.refresh_token == "r1"
+
+
+def test_snake_와_camel_응답을_모두_읽는다(tmp_path):
+    for payload, expected in (
+        ({"access_token": "s1", "expires_in": 100}, "s1"),
+        ({"accessToken": "c1", "expiresIn": 100}, "c1"),
+    ):
+        ref = OAuth2Refresher(
+            _config(),
+            TokenStore("svc", path=tmp_path / f"{expected}.json"),
+            transport=httpx.MockTransport(lambda r, p=payload: httpx.Response(200, json=p)),
+        )
+        assert ref.refresh() == expected
+
+
+def test_basic_auth_헤더를_함께_보낸다(tmp_path):
+    """요구하는 서버는 통과하고, 무시하는 서버는 그냥 넘어간다."""
+    seen: dict = {}
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        seen["auth"] = request.headers.get("Authorization")
+        return httpx.Response(200, json={"access_token": "a1"})
+
+    ref = OAuth2Refresher(
+        _config(basic_auth=True),
+        TokenStore("svc", path=tmp_path / "t.json"),
+        transport=httpx.MockTransport(handler),
+    )
+    ref.refresh()
+
+    import base64 as _b64
+
+    assert seen["auth"] == "Basic " + _b64.b64encode(b"cid:secret").decode()
+
+
+def test_basic_auth_는_기본으로_꺼져_있다(tmp_path):
+    seen: dict = {}
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        seen["auth"] = request.headers.get("Authorization")
+        return httpx.Response(200, json={"access_token": "a1"})
+
+    OAuth2Refresher(
+        _config(),
+        TokenStore("svc", path=tmp_path / "t.json"),
+        transport=httpx.MockTransport(handler),
+    ).refresh()
+    assert seen["auth"] is None

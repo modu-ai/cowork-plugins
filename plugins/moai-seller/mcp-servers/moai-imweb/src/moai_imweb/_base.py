@@ -12,12 +12,13 @@ in-memory only when the path is not writable.
 
 from __future__ import annotations
 
-import json
 import os
 import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import TYPE_CHECKING, Optional
+
+from moai_mcp_core import TokenStore
 
 if TYPE_CHECKING:
     from .client import ImwebClient
@@ -44,29 +45,28 @@ class ImwebConfig:
         return bool(self.client_id and self.client_secret and self.refresh_token)
 
 
+def token_store(path: Optional[Path]) -> TokenStore:
+    """공통 코어의 토큰 저장소. 경로가 없으면 기본 위치를 쓴다."""
+    return TokenStore("imweb", path=path) if path else TokenStore("imweb")
+
+
 def _load_persisted_tokens(path: Optional[Path]) -> tuple[Optional[str], Optional[str]]:
-    if not path or not path.exists():
+    """저장된 토큰을 읽는다. 손상·부재는 (None, None).
+
+    실제 파일 입출력은 공통 코어(`moai_mcp_core.TokenStore`)가 담당한다 —
+    쓰기 불가 환경의 인메모리 폴백, utf-8 고정, 임시 파일 후 교체가 거기에 있다.
+    """
+    if not path:
         return None, None
-    try:
-        data = json.loads(path.read_text("utf-8"))
-        return data.get("access_token"), data.get("refresh_token")
-    except Exception:
-        return None, None
+    data = token_store(path).load()
+    return data.get("access_token"), data.get("refresh_token")
 
 
 def _persist_tokens(path: Optional[Path], access: Optional[str], refresh: Optional[str]) -> None:
+    """토큰을 저장한다. 실패는 치명적이지 않다(최선 노력)."""
     if not path:
         return
-    try:
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(json.dumps({"access_token": access, "refresh_token": refresh}, ensure_ascii=False), "utf-8")
-        try:
-            os.chmod(path, 0o600)
-        except OSError:
-            pass
-    except Exception:
-        # Persistence is best-effort; never fatal.
-        pass
+    token_store(path).save({"access_token": access, "refresh_token": refresh})
 
 
 def load_config() -> ImwebConfig:

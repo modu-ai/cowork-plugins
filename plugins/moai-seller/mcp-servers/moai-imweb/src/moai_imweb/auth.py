@@ -1,13 +1,15 @@
-"""OAuth2 token acquisition + refresh for the Imweb OPEN API.
+"""아임웹 OPEN API OAuth2 토큰 갱신.
 
-Imweb uses an OAuth2 ``authorizationCode`` flow. The MCP server does NOT drive
-the interactive browser authorization (that is a one-time step documented in
-``CONNECTORS.md``); it consumes an ``access_token`` and, when available, silently
-refreshes it via ``grant_type=refresh_token`` against ``POST /oauth2/token``.
+갱신 로직 자체는 공통 코어(`moai_mcp_core.OAuth2Refresher`)가 담당한다. 이 모듈은
+아임웹 고유의 두 가지만 설정으로 표현한다.
 
-Token rotation: Imweb may or may not return a new ``refresh_token`` on refresh.
-When a new one is supplied it replaces the stored value; otherwise the existing
-refresh token is retained.
+1. **camelCase 키** — 아임웹은 `grantType` / `refreshToken` / `clientId` /
+   `clientSecret` 표기를 쓴다(`/oauth2/authorize` 파라미터와 같은 계열). 문법 값
+   (`refresh_token`)은 OAuth2 표준 그대로다.
+2. **HTTP Basic 병행** — 요구하는 배포본은 통과하고, 무시하는 배포본은 그냥 넘어간다.
+
+최초 브라우저 인가는 이 서버가 수행하지 않는다 — `CONNECTORS.md` 의 1회 절차다.
+토큰 회전(아임웹은 줄 수도, 안 줄 수도 있다)은 코어가 처리한다.
 """
 
 from __future__ import annotations
@@ -16,13 +18,16 @@ from dataclasses import dataclass
 from typing import TYPE_CHECKING, Optional
 
 import httpx
+from moai_mcp_core import AuthError, OAuth2Config, OAuth2Refresher, SetupRequired
+
+from ._base import token_store
 
 if TYPE_CHECKING:
     from ._base import ImwebConfig
 
 
 class ImwebAuthError(RuntimeError):
-    """Raised when token refresh fails."""
+    """토큰 갱신 실패."""
 
 
 @dataclass
@@ -31,64 +36,43 @@ class TokenPair:
     refresh_token: str
 
 
-def refresh_access_token(config: "ImwebConfig", client: Optional[httpx.Client] = None) -> TokenPair:
-    """Exchange ``refresh_token`` for a fresh ``access_token``.
+def refresh_access_token(
+    config: "ImwebConfig", client: Optional[httpx.Client] = None
+) -> TokenPair:
+    """리프레시 토큰으로 액세스 토큰을 새로 받는다 (RFC 6749 §6).
 
-    Uses the standard OAuth2 refresh-token grant (RFC 6749 §6) against the Imweb
-    token endpoint. Credentials are sent as a form-encoded body (the Imweb docs
-    accept ``client_id`` / ``client_secret`` in the body); Basic auth is layered
-    on top as a harmless fallback for stricter deployments.
+    Args:
+        client: 예전 시그니처 호환용. 코어가 자체 클라이언트를 쓰므로 사용되지 않는다.
     """
-    from ._base import DEFAULT_API_BASE  # noqa: F401  (kept for future base override)
-    import base64
-
     if not config.can_refresh:
         raise ImwebAuthError(
             "토큰 갱신 불가 — IMWEB_CLIENT_ID / IMWEB_CLIENT_SECRET / IMWEB_REFRESH_TOKEN 중 누락. "
             "CONNECTORS.md 의 절차에 따라 토큰을 (재)발급 받아 .mcp.json env 에 설정하세요."
         )
 
-    url = f"{config.api_base}/oauth2/token"
-    # Imweb uses camelCase keys (matching its /oauth2/authorize params:
-    # responseType, clientId, redirectUri, ...). Grant *values* stay OAuth2-standard.
-    form = {
-        "grantType": "refresh_token",
-        "refreshToken": config.refresh_token,
-        "clientId": config.client_id,
-        "clientSecret": config.client_secret,
-    }
-    headers = {"Accept": "application/json"}
-    # Layer HTTP Basic as well; servers that require it win, servers that ignore it pass.
-    try:
-        basic = base64.b64encode(f"{config.client_id}:{config.client_secret}".encode()).decode()
-        headers["Authorization"] = f"Basic {basic}"
-    except Exception:
-        pass
+    refresher = OAuth2Refresher(
+        OAuth2Config(
+            token_url=f"{config.api_base}/oauth2/token",
+            client_id=config.client_id,
+            client_secret=config.client_secret,
+            refresh_token=config.refresh_token,
+            key_style="camel",
+            basic_auth=True,
+            setup_guide="CONNECTORS.md",
+        ),
+        token_store(config.token_file),
+    )
 
-    owns_client = client is None
-    if owns_client:
-        client = httpx.Client(timeout=config.timeout)
     try:
-        resp = client.post(url, data=form, headers=headers)
-        data = _safe_json(resp)
-        # Tolerate both camelCase (Imweb convention) and snake_case (OAuth2 std) keys.
-        new_access = data.get("accessToken") or data.get("access_token")
-        if resp.status_code >= 400 or not new_access:
-            raise ImwebAuthError(
-                f"토큰 갱신 실패 (HTTP {resp.status_code}): {data}. "
-                "refresh_token 이 만료되었을 수 있습니다 — CONNECTORS.md 재발급 절차 참고."
-            )
-        new_refresh = data.get("refreshToken") or data.get("refresh_token") or config.refresh_token
-        return TokenPair(access_token=new_access, refresh_token=new_refresh)
-    finally:
-        if owns_client:
-            client.close()
+        access = refresher.refresh()
+    except (AuthError, SetupRequired) as exc:
+        # 호출부(client.py)와 기존 테스트가 기대하는 예외 타입을 유지한다.
+        raise ImwebAuthError(
+            f"토큰 갱신 실패: {exc}. "
+            "refresh_token 이 만료되었을 수 있습니다 — CONNECTORS.md 재발급 절차 참고."
+        ) from exc
 
-
-def _safe_json(resp: httpx.Response) -> dict:
-    try:
-        if resp.headers.get("content-type", "").startswith("application/json"):
-            return resp.json()
-    except Exception:
-        pass
-    return {"_raw": resp.text}
+    return TokenPair(
+        access_token=access,
+        refresh_token=refresher.refresh_token or config.refresh_token,
+    )

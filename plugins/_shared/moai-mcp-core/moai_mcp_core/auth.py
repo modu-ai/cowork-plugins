@@ -11,6 +11,7 @@
 
 from __future__ import annotations
 
+import base64
 import time
 from collections.abc import Callable
 from dataclasses import dataclass, field
@@ -20,6 +21,24 @@ import httpx
 
 from .errors import AuthError, SetupRequired
 from .tokenstore import TokenStore
+
+
+#: 갱신 요청 본문의 키 이름. 표준은 snake_case지만 camelCase를 요구하는 서비스가 있다
+#: (아임웹이 그렇다 — `grantType` / `refreshToken` / `clientId` / `clientSecret`).
+KEY_STYLES: dict[str, dict[str, str]] = {
+    "snake": {
+        "grant_type": "grant_type",
+        "refresh_token": "refresh_token",
+        "client_id": "client_id",
+        "client_secret": "client_secret",
+    },
+    "camel": {
+        "grant_type": "grantType",
+        "refresh_token": "refreshToken",
+        "client_id": "clientId",
+        "client_secret": "clientSecret",
+    },
+}
 
 
 @dataclass
@@ -36,6 +55,11 @@ class OAuth2Config:
     setup_guide: str | None = None
     #: 만료 몇 초 전부터 미리 갱신할지. 요청 도중 만료되는 사고를 막는다.
     leeway_seconds: float = 60.0
+    #: 요청 본문 키 표기 — `snake`(표준) 또는 `camel`.
+    key_style: str = "snake"
+    #: HTTP Basic 인증 헤더를 함께 보낼지. 요구하는 서버는 통과하고,
+    #: 무시하는 서버는 그냥 넘어가므로 켜도 해롭지 않다.
+    basic_auth: bool = False
 
 
 class OAuth2Refresher:
@@ -85,19 +109,25 @@ class OAuth2Refresher:
         """리프레시 토큰으로 액세스 토큰을 새로 받는다."""
         self._require_credentials()
 
+        keys = KEY_STYLES.get(self.config.key_style, KEY_STYLES["snake"])
         data = {
-            "grant_type": "refresh_token",
-            "refresh_token": self._refresh_token,
+            keys["grant_type"]: "refresh_token",
+            keys["refresh_token"]: self._refresh_token,
             **self.config.extra_params,
         }
         if self.config.client_id:
-            data["client_id"] = self.config.client_id
+            data[keys["client_id"]] = self.config.client_id
         if self.config.client_secret:
-            data["client_secret"] = self.config.client_secret
+            data[keys["client_secret"]] = self.config.client_secret
+
+        headers = {"Accept": "application/json"}
+        if self.config.basic_auth and self.config.client_id:
+            raw = f"{self.config.client_id}:{self.config.client_secret or ''}".encode()
+            headers["Authorization"] = f"Basic {base64.b64encode(raw).decode()}"
 
         try:
             with httpx.Client(transport=self._transport, timeout=30.0) as client:
-                response = client.post(self.config.token_url, data=data)
+                response = client.post(self.config.token_url, data=data, headers=headers)
         except httpx.HTTPError as exc:
             raise AuthError(f"토큰 갱신 요청이 실패했습니다: {exc}") from exc
 
@@ -112,7 +142,9 @@ class OAuth2Refresher:
         except ValueError as exc:
             raise AuthError("토큰 갱신 응답을 해석할 수 없습니다.") from exc
 
-        access = payload.get("access_token")
+        # 응답 키는 관대하게 읽는다 — 같은 서비스가 문서와 실제 응답에서
+        # 다른 표기를 쓰는 경우가 있어, 둘 다 받아들이는 편이 안전하다.
+        access = payload.get("access_token") or payload.get("accessToken")
         if not access:
             raise AuthError(
                 "토큰 갱신 응답에 access_token 이 없습니다.",
@@ -120,14 +152,14 @@ class OAuth2Refresher:
             )
 
         self._access_token = str(access)
-        expires_in = payload.get("expires_in")
+        expires_in = payload.get("expires_in") or payload.get("expiresIn")
         try:
             self._expires_at = self._clock() + float(expires_in) if expires_in else 0.0
         except (TypeError, ValueError):
             self._expires_at = 0.0
 
         # 회전형 서비스는 새 리프레시 토큰을 함께 준다. 놓치면 다음 갱신이 영구 실패한다.
-        rotated = payload.get("refresh_token")
+        rotated = payload.get("refresh_token") or payload.get("refreshToken")
         if rotated:
             self._refresh_token = str(rotated)
 

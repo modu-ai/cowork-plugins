@@ -21,7 +21,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/moai_imweb"]
+packages = ["src/moai_mcp_core", "src/moai_imweb"]
 
 [dependency-groups]
 dev = [
