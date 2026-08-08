@@ -99,7 +99,7 @@ flowchart TD
 ## 다음 단계
 
 - **[쿡북](../)** — 트랙 외의 30+ 구체적 시나리오
-- **[플러그인 카탈로그](../../plugins/)** — {{< catalog-count plugins >}} 플러그인 {{< catalog-count skills >}} 스킬 전체
+- **[플러그인 카탈로그](../../plugins/)** — 플러그인·스킬 전체
 
 ---
 

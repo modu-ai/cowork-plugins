@@ -3,7 +3,7 @@
   "$comment": "OpenAI/Codex 플러그인 매니페스트. Claude용 .claude-plugin/plugin.json과 나란히 공존. 본체(skills/SKILL.md, .mcp.json)는 양쪽 공유.",
   "name": "moai-consultant",
   "version": "1.1.0",
-  "description": "경영·창업 컨설팅 전담 AI 직원 — 사업계획서·비즈니스 모델·시장 분석(TAM/SAM/SOM)·경영 진단 브리프·정부 지원사업 매칭·상권분석 보고서까지 전략 실무 스킬 6종. 이런 분께 추천: 예비 창업자·소상공인·스타트업 운영자.",
+  "description": "경영·창업 컨설팅 전담 AI 코워커 — 사업계획서·비즈니스 모델·시장 분석(TAM/SAM/SOM)·경영 진단 브리프·정부 지원사업 매칭·상권분석 보고서까지 전략 실무 스킬 6종. 이런 분께 추천: 예비 창업자·소상공인·스타트업 운영자.",
   "author": {
     "name": "모두의 AI",
     "email": "email@mo.ai.kr",
@@ -26,7 +26,7 @@
   "interface": {
     "displayName": "💼 컨설턴트",
     "shortDescription": "💼 컨설턴트 — 사업계획서·시장분석·창업 컨설팅",
-    "longDescription": "경영·창업 컨설팅 전담 AI 직원 — 사업계획서·비즈니스 모델·시장 분석(TAM/SAM/SOM)·경영 진단 브리프·정부 지원사업 매칭·상권분석 보고서까지 전략 실무 스킬 6종. 이런 분께 추천: 예비 창업자·소상공인·스타트업 운영자.",
+    "longDescription": "경영·창업 컨설팅 전담 AI 코워커 — 사업계획서·비즈니스 모델·시장 분석(TAM/SAM/SOM)·경영 진단 브리프·정부 지원사업 매칭·상권분석 보고서까지 전략 실무 스킬 6종. 이런 분께 추천: 예비 창업자·소상공인·스타트업 운영자.",
     "developerName": "모두의 AI",
     "category": "Business",
     "capabilities": [

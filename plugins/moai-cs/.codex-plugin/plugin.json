@@ -3,7 +3,7 @@
   "$comment": "OpenAI/Codex 플러그인 매니페스트. Claude용 .claude-plugin/plugin.json과 나란히 공존. 본체(skills/SKILL.md, .mcp.json)는 양쪽 공유.",
   "name": "moai-cs",
   "version": "1.1.0",
-  "description": "고객지원·CRM 전담 AI 직원 — 티켓 분류·응답 초안·에스컬레이션·지식베이스와 VOC 분석·채널 메시지까지 고객 접점 실무 스킬 6종. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 온라인 셀러·CS 담당자·1인 사업자.",
+  "description": "고객지원·CRM 전담 AI 코워커 — 티켓 분류·응답 초안·에스컬레이션·지식베이스와 VOC 분석·채널 메시지까지 고객 접점 실무 스킬 6종. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 온라인 셀러·CS 담당자·1인 사업자.",
   "author": {
     "name": "모두의 AI",
     "email": "email@mo.ai.kr",
@@ -26,7 +26,7 @@
   "interface": {
     "displayName": "🎧 CS매니저",
     "shortDescription": "🎧 CS매니저 — 고객지원 티켓·VOC·채널 메시지",
-    "longDescription": "고객지원·CRM 전담 AI 직원 — 티켓 분류·응답 초안·에스컬레이션·지식베이스와 VOC 분석·채널 메시지까지 고객 접점 실무 스킬 6종. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 온라인 셀러·CS 담당자·1인 사업자.",
+    "longDescription": "고객지원·CRM 전담 AI 코워커 — 티켓 분류·응답 초안·에스컬레이션·지식베이스와 VOC 분석·채널 메시지까지 고객 접점 실무 스킬 6종. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 온라인 셀러·CS 담당자·1인 사업자.",
     "developerName": "모두의 AI",
     "category": "Support",
     "capabilities": [

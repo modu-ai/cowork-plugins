@@ -1,7 +1,6 @@
 # 자체 제작 MCP — 작명 통일 · 공통 코어 통합 설계서
 
-> 작성 2026-08-08 · 정본. 자체 제작 MCP 서버의 이름 규칙과 코드 통합 방향, 그리고 신규
-> `moai-mcp-youtube` 서버의 구현 계약을 확정한다. 원칙 요약본은 `CLAUDE.local.md`
+> 작성 2026-08-08 · 정본. 자체 제작 MCP 서버의 이름 규칙과 코드 통합 방향을 확정한다. 원칙 요약본은 `CLAUDE.local.md`
 > §자체 제작 MCP 작명·구조 규칙 / §범용성 원칙에 있고, 이 문서가 근거와 상세를 담는다.
 
 ## 1. 전수조사 결과 (실측)
@@ -16,7 +15,6 @@
 | `moai-mcp-imweb` | moai-seller | `moai_mcp_imweb` | 10 | 1,650줄 |
 | `moai-mcp-cafe24` | moai-seller | `moai_mcp_cafe24` | 4(디스패치형) | 3,133줄 |
 | `moai-mcp-threads-poster` | moai-threads-poster | `moai_mcp_threads_poster` | 17 | 1,625줄 |
-| `moai-mcp-youtube` | moai-youtuber | `moai_mcp_youtube` | 28 | 신규 |
 
 디렉터리·배포 패키지·엔트리포인트는 모두 서버 키와 같은 문자열이다(§2). 최초 조사 시점에는
 `moai-<서비스>` / `moai-<서비스>-mcp` 가 섞여 있었고 threads-poster는 3축이 어긋나 있었는데,
@@ -39,15 +37,15 @@
 
 | 축 | 규칙 | 예 |
 |---|---|---|
-| `.mcp.json` 서버 키 | `moai-mcp-<서비스>` | `moai-mcp-youtube` |
-| 디렉터리 | `mcp-servers/moai-mcp-<서비스>` | `mcp-servers/moai-mcp-youtube` |
-| 배포 패키지명 | `moai-mcp-<서비스>` | `moai-mcp-youtube` |
-| 파이썬 모듈 | `moai_mcp_<서비스>` | `moai_mcp_youtube` |
-| 엔트리포인트 | `moai-mcp-<서비스>` | `moai-mcp-youtube` |
+| `.mcp.json` 서버 키 | `moai-mcp-<서비스>` | `moai-mcp-imweb` |
+| 디렉터리 | `mcp-servers/moai-mcp-<서비스>` | `mcp-servers/moai-mcp-imweb` |
+| 배포 패키지명 | `moai-mcp-<서비스>` | `moai-mcp-imweb` |
+| 파이썬 모듈 | `moai_mcp_<서비스>` | `moai_mcp_imweb` |
+| 엔트리포인트 | `moai-mcp-<서비스>` | `moai-mcp-imweb` |
 
 **다섯 축이 같은 문자열**이다(모듈만 밑줄 표기). 접두어를 `moai-mcp-` 로 잡은 이유는 공유
 코어가 `moai-mcp-core` 이기 때문이다 — 코어와 서버가 한 계열로 읽힌다. `-mcp` 를 뒤에 붙이던
-옛 형태(`moai-youtube-mcp` 꼴)는 폐기했다.
+옛 형태(`moai-imweb-mcp` 꼴)는 폐기했다.
 
 `<서비스>`는 **연동 대상 서비스 이름**이다(플러그인 이름이 아니다). 한 플러그인이 서버를
 여러 개 가질 수 있기 때문이다 — `moai-seller`가 smartstore·imweb·cafe24 셋을 갖는 것처럼.
@@ -56,14 +54,13 @@
 
 | 서비스 | 옛 이름 (서버키 / 패키지·EP / 모듈) | 새 이름 |
 |---|---|---|
-| youtube | `moai-youtube` / `moai-youtube-mcp` / `moai_youtube` | `moai-mcp-youtube` / `moai_mcp_youtube` |
 | imweb | `moai-imweb` / `moai-imweb-mcp` / `moai_imweb` | `moai-mcp-imweb` / `moai_mcp_imweb` |
 | cafe24 | `moai-cafe24` / `moai-cafe24-mcp` / `moai_cafe24` | `moai-mcp-cafe24` / `moai_mcp_cafe24` |
 | smartstore | `moai-smartstore` / `moai-smartstore-mcp` / `moai_smartstore` | `moai-mcp-smartstore` / `moai_mcp_smartstore` |
 | threads-poster | `moai-threads-poster` / `threads-poster-mcp` / `threads_poster` | `moai-mcp-threads-poster` / `moai_mcp_threads_poster` |
 
-**서버 키가 바뀌면 도구 네임스페이스도 바뀐다** (`mcp__moai-youtube__*` →
-`mcp__moai-mcp-youtube__*`). `.mcp.json` 은 플러그인에 동봉돼 함께 갱신되므로 사용자가 할
+**서버 키가 바뀌면 도구 네임스페이스도 바뀐다** (`mcp__moai-smartstore__*` →
+`mcp__moai-mcp-smartstore__*`). `.mcp.json` 은 플러그인에 동봉돼 함께 갱신되므로 사용자가 할
 일은 없다. 환경변수 이름은 그대로다.
 
 ## 3. 통합 설계 — 서버 병합이 아니라 코어 추출
@@ -98,7 +95,7 @@ plugins/_shared/mcp-core/            # 신규 (위치는 4-1에서 확정)
     errors.py     공통 예외 → MCP 오류 응답 매핑
     cache.py      읽기 응답 TTL 캐시 (쿼터 절약)
         ↑ 의존
-  moai-mcp-smartstore  moai-mcp-imweb  moai-mcp-cafe24  moai-mcp-threads-poster  moai-mcp-youtube
+  moai-mcp-smartstore  moai-mcp-imweb  moai-mcp-cafe24  moai-mcp-threads-poster
 ```
 
 각 서버는 자기 도메인(엔드포인트 매핑·도구 정의)만 갖는다. 서버 개수·`.mcp.json` 구조·
@@ -113,7 +110,6 @@ plugins/_shared/mcp-core/            # 신규 (위치는 4-1에서 확정)
 |---|---|---|---|---|
 | `moai-mcp-imweb` | OAuth2 refresh_token (camelCase 키 + Basic 병행) | 파일 | 적합 | **이관 완료** |
 | `moai-mcp-cafe24` | OAuth2 refresh_token (리프레시 회전) | 파일 | 적합 | **이관 완료** |
-| `moai-mcp-youtube` | OAuth2 refresh_token (표준) | 파일 | 적합 | **처음부터 코어 위** |
 | `moai-mcp-smartstore` | `client_credentials` + bcrypt 전자서명 | **메모리 전용** | 부적합 | 현행 유지 |
 | `moai-mcp-threads-poster` | Meta 장기 토큰 **연장**(`th_refresh_token` / `fb_exchange_token`) | **환경변수** | 부적합 | 현행 유지 |
 
@@ -184,77 +180,21 @@ B안의 유일한 위험은 **복제본 드리프트**다. 이를 기계적으�
 | `cache.py` | 읽기 응답 TTL 캐시 (할당량 절약) |
 | `errors.py` | 예외 → MCP 구조화 오류 응답 매핑 |
 
-## 5. `moai-mcp-youtube` 서버 구현 계약 (2단계 착수용)
-
-풀세트 범위 — YouTube Data API v3 + Live Streaming API + Analytics API 읽기.
-
-### 5-1. 배치
-
-| 항목 | 값 |
-|---|---|
-| 소속 플러그인 | `moai-youtuber` |
-| 서버 키 | `moai-mcp-youtube` |
-| 디렉터리 | `plugins/moai-youtuber/mcp-servers/moai-mcp-youtube` |
-| 배포 패키지 · 엔트리포인트 | `moai-mcp-youtube` |
-| 모듈 | `moai_mcp_youtube` |
-| 기동 | `uv run --directory ${CLAUDE_PLUGIN_ROOT}/mcp-servers/moai-mcp-youtube moai-mcp-youtube` |
-
-### 5-2. 인증
-
-Data API의 업로드·수정, Live Streaming 전체, Analytics 조회는 **API 키로 불가능**하고 OAuth2
-사용자 동의가 필요하다. 따라서 OAuth2 authorization_code + refresh token 자동 갱신을 기본으로
-한다(`moai-imweb`·`moai-cafe24`와 같은 패턴).
-
-| 환경변수 | 용도 | 필수 |
-|---|---|---|
-| `YOUTUBE_CLIENT_ID` | Google Cloud OAuth 클라이언트 | 필수 |
-| `YOUTUBE_CLIENT_SECRET` | 〃 | 필수 |
-| `YOUTUBE_REFRESH_TOKEN` | 최초 동의 후 발급 | 필수 |
-| `YOUTUBE_CHANNEL_ID` | 기본 대상 채널 | 선택 |
-| `YOUTUBE_API_KEY` | 공개 데이터 읽기 전용 경로 | 선택 |
-
-필요 스코프: `youtube.readonly` · `youtube.upload` · `youtube.force-ssl`(라이브 채팅·댓글) ·
-`yt-analytics.readonly`.
-
-### 5-3. 도구 묶음 (초안)
-
-| 묶음 | 도구 | 근거 API |
-|---|---|---|
-| 채널·조회 | `channel_profile` · `list_my_videos` · `video_details` · `search_videos` | Data v3 |
-| 발행 | `upload_video` · `update_video_metadata` · `set_thumbnail` · `set_publish_schedule` | Data v3 |
-| 재생목록 | `list_playlists` · `create_playlist` · `add_to_playlist` · `reorder_playlist` | Data v3 |
-| 라이브 | `create_broadcast` · `bind_stream` · `transition_broadcast` · `list_broadcasts` · `end_broadcast` | Live Streaming |
-| 라이브 채팅 | `read_live_chat` · `send_live_chat` · `moderate_live_chat` | Live Streaming |
-| 댓글 | `list_comments` · `reply_comment` · `moderate_comment` | Data v3 |
-| 분석 | `channel_report` · `video_report` · `traffic_source_report` · `audience_retention` | Analytics |
-| 캡션 | `list_captions` · `upload_caption` | Data v3 |
-
-### 5-4. 쿼터 방어 (필수 설계)
-
-기본 할당량은 하루 10,000 units다. `search.list`가 **1회 100 units**여서 하루 100회면 소진되고,
-`videos.list`는 1 unit이다. 업로드는 2025-12-04 개정으로 약 1,600 → 약 100 units로 내려가,
-이제 쿼터를 가장 빨리 태우는 것은 업로드가 아니라 **검색**이다.
-
-- `search_videos`는 TTL 캐시를 강제하고, 캐시 미스일 때만 호출한다.
-- 채널 자기 영상 목록은 `search`가 아니라 `playlistItems.list`(업로드 재생목록, 1 unit)로 받는다.
-- 모든 도구 응답에 소모 units를 함께 반환해 사용자가 잔량을 인지하게 한다.
-- 일일 누적이 임계에 닿으면 도구가 실패 대신 **경고 + 캐시 응답**을 돌려준다.
-
-### 5-5. 라이브 방송 순서 (도구 호출 체인)
-
-```
-create_broadcast (제목·시작시각·공개범위)
-    → bind_stream (인코더 스트림 키 연결)
-    → transition_broadcast: testing → live
-    → read_live_chat / send_live_chat (방송 중)
-    → transition_broadcast: complete
-    → update_video_metadata (다시보기 제목·설명·챕터)
-```
-
 ## 6. 참고 자료
 
-- [YouTube Data API 개요](https://developers.google.com/youtube/v3/getting-started)
 - [YouTube Live Streaming API](https://developers.google.com/youtube/v3/live/getting-started)
-- [YouTube Analytics API](https://developers.google.com/youtube/analytics)
-- 공식 MCP 부재 확인: [YouTube MCP: No Official Server, Community Ones Work](https://www.usecarly.com/blog/youtube-mcp/) · [YouTube MCP Server Comparison 2026](https://www.ekamoira.com/blog/youtube-mcp-server-comparison-2026-which-one-should-you-use)
-- 쿼터 단가: [YouTube API Pricing 2026](https://www.blotato.com/blog/youtube-api-pricing)
+
+## 7. 유튜브 서버 — 철회 기록 (2026-08-08)
+
+`moai-mcp-youtube` 서버와 유튜버 플러그인을 만들었다가 **배포 전에 철회**했다.
+
+철회 사유: 유튜브 연동은 Google Cloud 프로젝트 생성 → API 두 종 활성화 → 동의 화면
+권한 등록 → OAuth 클라이언트 발급 → 브라우저 동의 → 인증 코드를 토큰으로 교환, 여섯
+단계를 사용자가 직접 밟아야 한다. 이 마켓플레이스의 대상은 비개발자이고, 그 절차는
+감당할 수 있는 수준을 넘는다. 자동화할 수도 없다 — 브라우저 동의는 본인이 해야 한다.
+
+남긴 것: `moai-mcp-core` 공통 코어는 아임웹·카페24가 쓰고 있어 그대로 유지한다.
+MCP 안내 문서(개요·설치·문제 해결)도 다른 서버에 그대로 적용되므로 유지한다.
+
+같은 판단이 필요한 다음 연동을 위해: **인증 절차가 여섯 단계를 넘고 브라우저 동의가
+끼면, 비개발자용 연동으로는 부적합하다.** 붙이기 전에 이 기준으로 먼저 걸러야 한다.

@@ -34,7 +34,7 @@ content-copywriting/ai-tell-ko-copy-spec.md §4(작업 절차 5단계 일괄 적
   태그 시퀀스와 문자열 외 값은 보존된다.
 
 치환 규칙 JSON 형식(ordered list, longest-before-first로 적용):
-    [{"before": "굴러가는 자동화", "after": "작동하는 AI 직원"},
+    [{"before": "굴러가는 자동화", "after": "작동하는 AI 코워커"},
      {"before": "굴러가[는고]", "after": "작동하는", "regex": true}]
     regex 항목이 아니면 순수 리터럴 부분 문자열 치환이다(기본).
 

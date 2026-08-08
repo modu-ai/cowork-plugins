@@ -3,7 +3,7 @@
   "$comment": "OpenAI/Codex 플러그인 매니페스트. Claude용 .claude-plugin/plugin.json과 나란히 공존. 본체(skills/SKILL.md, .mcp.json)는 양쪽 공유.",
   "name": "moai-recruiter",
   "version": "1.1.0",
-  "description": "인사·채용 전담 AI 직원(고용주 편) — 채용 공고 분석·이력서 스크리닝·오퍼레터/근로계약서·성과평가·People Ops 스킬 6종. 구직자 편은 moai-career(커리어코치)로 분리되었습니다. 이런 분께 추천: 채용 담당자·인사 실무자.",
+  "description": "인사·채용 전담 AI 코워커(고용주 편) — 채용 공고 분석·이력서 스크리닝·오퍼레터/근로계약서·성과평가·People Ops 스킬 6종. 구직자 편은 moai-career(커리어코치)로 분리되었습니다. 이런 분께 추천: 채용 담당자·인사 실무자.",
   "author": {
     "name": "모두의 AI",
     "email": "email@mo.ai.kr",
@@ -26,7 +26,7 @@
   "interface": {
     "displayName": "🤝 인사·채용 담당",
     "shortDescription": "🤝 인사·채용 담당 — 채용 공고·이력서 스크리닝·근로계약서",
-    "longDescription": "인사·채용 전담 AI 직원(고용주 편) — 채용 공고 분석·이력서 스크리닝·오퍼레터/근로계약서·성과평가·People Ops 스킬 6종. 구직자 편은 moai-career(커리어코치)로 분리되었습니다. 이런 분께 추천: 채용 담당자·인사 실무자.",
+    "longDescription": "인사·채용 전담 AI 코워커(고용주 편) — 채용 공고 분석·이력서 스크리닝·오퍼레터/근로계약서·성과평가·People Ops 스킬 6종. 구직자 편은 moai-career(커리어코치)로 분리되었습니다. 이런 분께 추천: 채용 담당자·인사 실무자.",
     "developerName": "모두의 AI",
     "category": "HR",
     "capabilities": [

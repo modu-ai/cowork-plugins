@@ -39,7 +39,6 @@ Phase 1 인터뷰 첫 질문 전, 사용자 발화에서 역할 힌트를 빠르
 | 상세페이지·스마트스토어·쿠팡·이커머스 | 실무 | `commerce-product-detail` → `commerce-marketplace-*` |
 | 소설·웹툰·웹소설·시나리오·콘티·출판·원고 | **글쓰기 작가** | `book-concept-planner` / `story-webtoon-planner` / `story-webnovel-writer` |
 | 캐릭터 시트·표지 일러스트·프리비즈·IP 피칭 | **글쓰기 작가** | `story-character-sheet` / `story-cover-art` / `story-ip-pitch` |
-| 유튜브 채널·라이브 방송·편집 지시·업로드·쇼츠 | 실무 | `youtube-channel-ops` / `youtube-live-ops` / `youtube-production` |
 
 감지된 역할은 `CLAUDE.md` 페르소나에 `[실무 동료 모자]` / `[글쓰기 작가 모자]` 라벨로 기록된다.
 
@@ -121,28 +120,6 @@ Phase 3 체인 설계는 인터뷰 답변→프리셋 매칭으로 직행하지 
 | 이미지 | `media-higgsfield-image` | Higgsfield MCP — ai-slop 생략 |
 | 영상 | `media-higgsfield-video` | Higgsfield MCP — ai-slop 생략 |
 | 음성·TTS·더빙 | `media-audio-gen` | ElevenLabs MCP — ai-slop 생략 |
-
-### 3-4. 유튜브 채널 운영 체인 (`moai-youtuber`)
-
-유튜브는 **기획(마케터) → 제작·운영(유튜버) → 생성(미디어)** 세 직원이 이어 붙는 크로스 직원
-체인이다. 유튜버 플러그인은 기획·대본 스킬을 갖지 않으므로, 체인 앞단은 반드시 마케터로 건다.
-
-| 산출물 | 권장 체인 |
-|---|---|
-| 채널 운영 체계 | `youtube-channel-ops` → `ai-slop-reviewer` → `korean-humanize` |
-| 녹화 영상 1편 | `marketing-youtube-podcast-planner` → `youtube-production` → `youtube-thumbnail-title` → `media-higgsfield-image` → `youtube-publish-ops` |
-| 라이브 방송 1회 | `marketing-youtube-podcast-planner` → `youtube-live-ops` → `youtube-publish-ops`(다시보기 정리) |
-| 쇼츠 (기존 영상 재활용) | `youtube-shorts-repurpose` → `youtube-publish-ops` |
-| 쇼츠 (신규 기획) | `content-sns-content` → `youtube-production` → `youtube-publish-ops` |
-| 성과 리뷰 | `youtube-analytics-review` → `youtube-channel-ops`(다음 분기 반영) |
-| 댓글·커뮤니티 운영 | `youtube-community-cs` → `ai-slop-reviewer` |
-
-체인 설계 규칙:
-
-- **기획·대본을 유튜버 스킬로 설계하지 않는다** — `moai-marketer:marketing-youtube-podcast-planner`(롱폼·팟캐스트) 또는 `moai-marketer:content-sns-content`(숏폼)가 담당한다.
-- 썸네일·B롤·내레이션의 **실제 생성**은 `moai-media`로 위임한다. 유튜버 스킬은 생성 요청문까지만 만든다.
-- 편집 지시서·큐시트·점검표는 사람이 그대로 따라 하는 문서이므로 ai-slop 단계를 거치되, 표·시각 목록은 원형을 보존한다.
-- `moai-youtube` MCP가 미설치·미연결이면 Gap Detection에서 **체인을 빼지 않고** 유지하되, 발행·라이브·분석 단계는 "초안 생성 + 수동 실행 안내"로 축약해 설계한다(스킬 본문이 이 축약 모드를 이미 지원한다).
 
 ---
 

@@ -45,7 +45,7 @@ lastmod: 2026-08-07T00:00:00+09:00
 
 ## 조심해야 할 것 하나 — 브랜드 디자인 시스템
 
-디자이너 직원의 `design-system-library`에는 Nike·Apple·Mastercard 등 **80개 글로벌 브랜드의
+디자이너 코워커의 `design-system-library`에는 Nike·Apple·Mastercard 등 **80개 글로벌 브랜드의
 디자인을 분석한 참고 자료**가 들어 있습니다. 이 디렉터리는 **Apache-2.0 적용 범위 밖**입니다.
 
 각 브랜드의 디자인·상표·서체 권리는 그 브랜드 소유자에게 있고, 모두의 AI가 그 권리를

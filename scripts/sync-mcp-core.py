@@ -7,7 +7,7 @@
 
     python3 scripts/sync-mcp-core.py            # 정본 → 채택한 서버 전체로 복제
     python3 scripts/sync-mcp-core.py --check    # 드리프트 검사 (불일치면 종료코드 1)
-    python3 scripts/sync-mcp-core.py --adopt plugins/moai-youtuber/mcp-servers/moai-youtube
+    python3 scripts/sync-mcp-core.py --adopt plugins/moai-seller/mcp-servers/moai-mcp-imweb
 
 **채택(adopt)은 명시적이다.** 서버의 pyproject `packages` 에 `src/moai_mcp_core` 가
 들어 있는 서버만 동기화 대상이 된다. 아직 코어로 이관하지 않은 서버를 건드리지 않기 위해서다.

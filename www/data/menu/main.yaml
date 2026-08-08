@@ -45,9 +45,6 @@ main:
       - name: MCP 설치와 설정
         ref: /plugins/mcp/install
         isNew: true
-      - name: 유튜브 연동
-        ref: /plugins/mcp/youtube
-        isNew: true
       - name: MCP 문제 해결
         ref: /plugins/mcp/troubleshooting
         isNew: true
@@ -78,9 +75,6 @@ main:
         ref: /moai-agents/marketer
       - name: 미디어 크리에이터
         ref: /moai-agents/media
-        isNew: true
-      - name: 유튜버
-        ref: /moai-agents/youtuber
         isNew: true
       - name: 셀러
         ref: /moai-agents/seller
@@ -165,13 +159,9 @@ main:
     sub:
       - name: 릴리스 홈
         ref: /releases
-      - name: v1.4.0
-        ref: /releases/v1.4.0
-        isNew: true
-      - name: v1.3.0
-        ref: /releases/v1.3.0
       - name: v1.2.0
         ref: /releases/v1.2.0
+        isNew: true
       - name: v1.1.0
         ref: /releases/v1.1.0
       - name: v1.0.0

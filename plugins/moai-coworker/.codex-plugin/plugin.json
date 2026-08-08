@@ -3,7 +3,7 @@
   "$comment": "OpenAI/Codex 플러그인 매니페스트. Claude용 .claude-plugin/plugin.json과 나란히 공존. 본체(skills/SKILL.md, .mcp.json)는 양쪽 공유.",
   "name": "moai-coworker",
   "version": "1.1.0",
-  "description": "실무 범용 코어 AI 직원 — 브랜드·제안서·보고·협상·프로세스 등 비즈니스 실무 + 라이프스타일·자기계발 스킬 32종. 자연어 요청 시 매칭 스킬이 자동 호출됩니다.",
+  "description": "실무 범용 코어 AI 코워커 — 브랜드·제안서·보고·협상·프로세스 등 비즈니스 실무 + 라이프스타일·자기계발 스킬 32종. 자연어 요청 시 매칭 스킬이 자동 호출됩니다.",
   "author": {
     "name": "모두의 AI",
     "email": "email@mo.ai.kr",
@@ -26,7 +26,7 @@
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "🧑‍💼 코워커",
-    "shortDescription": "실무 범용 코어 AI 직원 — 비즈니스 + 라이프스타일 올인원",
+    "shortDescription": "실무 범용 코어 AI 코워커 — 비즈니스 + 라이프스타일 올인원",
     "longDescription": "브랜드·제안서·보고·협상·프로세스 등 비즈니스 실무와 목표·습관·회고·여행·웰니스·행사기획 같은 라이프스타일·자기계발 스킬 32종. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 1인 사업자·스타트업 운영자에게 추천합니다.",
     "developerName": "모두의 AI",
     "category": "Productivity",

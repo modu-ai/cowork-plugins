@@ -64,8 +64,8 @@ console.log("굴러가는 자동화");
 """
 
 _RULES = [
-    {"before": "굴러가는 자동화", "after": "작동하는 AI 직원"},
-    {"before": "자동화가 나 대신 일합니다", "after": "AI 직원이 대신 일해 줍니다"},
+    {"before": "굴러가는 자동화", "after": "작동하는 AI 코워커"},
+    {"before": "자동화가 나 대신 일합니다", "after": "AI 코워커가 대신 일해 줍니다"},
     {"before": "더는", "after": "이제는"},
     {"before": "한 흐름으로 손발을 맞춥니다", "after": "한 번에 맞물려 움직입니다"},
 ]
@@ -78,17 +78,17 @@ class HumanizeHtmlTransformTests(unittest.TestCase):
         self.result, self.summary = humanize_html.humanize_html(_FIXTURE_HTML, _RULES)
 
     def test_body_text_and_title_replaced(self) -> None:
-        self.assertIn("<title>말 한마디에 작동하는 AI 직원</title>", self.result)
-        self.assertIn("<strong>작동하는 AI 직원</strong>", self.result)
+        self.assertIn("<title>말 한마디에 작동하는 AI 코워커</title>", self.result)
+        self.assertIn("<strong>작동하는 AI 코워커</strong>", self.result)
         self.assertIn(
-            "<p>AI 직원이 대신 일해 줍니다. 이제는 혼자가 아닙니다.</p>", self.result
+            "<p>AI 코워커가 대신 일해 줍니다. 이제는 혼자가 아닙니다.</p>", self.result
         )
 
     def test_meta_and_og_attributes_replaced(self) -> None:
         self.assertIn(
-            'content="AI 직원이 대신 일해 줍니다. 이제는 혼자가 아닙니다."', self.result
+            'content="AI 코워커가 대신 일해 줍니다. 이제는 혼자가 아닙니다."', self.result
         )
-        self.assertIn('property="og:title" content="작동하는 AI 직원"', self.result)
+        self.assertIn('property="og:title" content="작동하는 AI 코워커"', self.result)
         self.assertIn(
             'property="og:description" content="네 가지가 한 번에 맞물려 움직입니다"',
             self.result,
@@ -100,8 +100,8 @@ class HumanizeHtmlTransformTests(unittest.TestCase):
         )
         self.assertIsNotNone(match)
         data = json.loads(match.group(1))
-        self.assertEqual(data["name"], "작동하는 AI 직원")
-        self.assertEqual(data["description"], "AI 직원이 대신 일해 줍니다")
+        self.assertEqual(data["name"], "작동하는 AI 코워커")
+        self.assertEqual(data["description"], "AI 코워커가 대신 일해 줍니다")
         # 문자열 값만 치환 — 구조 키·비대상 값은 보존.
         self.assertEqual(data["@context"], "https://schema.org")
         self.assertEqual(data["@type"], "Course")
@@ -217,7 +217,7 @@ class HumanizeHtmlCliTests(unittest.TestCase):
             self.assertEqual(summary["replacements_applied"], 10)
             with open(dst, "r", encoding="utf-8") as handle:
                 out = handle.read()
-            self.assertIn("작동하는 AI 직원", out)
+            self.assertIn("작동하는 AI 코워커", out)
             self.assertIn('console.log("굴러가는 자동화");', out)
 
 

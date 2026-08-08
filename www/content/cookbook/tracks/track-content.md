@@ -183,7 +183,7 @@ AskUserQuestion에서 "AI 검수 강도" 선택 시 "기본" (3중) / "약함" (
 
 - ****
 - **[광고 트랙](../track-advertising/)** — 콘텐츠 + 광고 결합
-- **[마케터 직원](../../../moai-agents/marketer/)** — content·marketing 스킬 전체
+- **[마케터 코워커](../../../moai-agents/marketer/)** — content·marketing 스킬 전체
 - **[블로그 파이프라인 쿡북](../../blog-pipeline/)** — 발행 시퀀스 심화
 
 ---

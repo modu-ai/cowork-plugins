@@ -13,10 +13,7 @@ lastmod: 2026-08-07T00:00:00+09:00
   <div class="cw-hero-in">
   <div class="cw-hero-copy">
   <div class="eyebrow"><span class="dot"></span>{{< version >}} · cowork.mo.ai.kr</div>
-  <h1>하는 작업마다,<br/><span class="accent">알맞은 AI 코워커를 두세요</span></h1>
-  <p class="lead-p">
-    검증된 대한민국 일잘러 스킬로 무장한 모두의 코워커(MoAI-Coworker)를 영입하세요.
-  </p>
+  <h1><span class="accent">일잘러 스킬로 무장한,<br/>모두의 코워커(MoAI-Coworker)를 무료로 영입하세요</span></h1>
   <hr class="cw-hero-rule" />
   <p class="lead-p">
     이제 원하는 결과물을(Goal) 자연어로 지시만 하세요.
@@ -41,7 +38,7 @@ lastmod: 2026-08-07T00:00:00+09:00
 <section class="cw-redsec" id="plugin-family">
   <div class="cw-sec-eyebrow">Plugin Family</div>
   <div class="cw-sec-title">모두의 AI-Coworker를 소개합니다.</div>
-  <p class="cw-sec-lead">필요한 직무만 골라 담으세요 — 각 카드를 누르면 그 직원의 소개로 이동합니다.</p>
+  <p class="cw-sec-lead">필요한 직무만 골라 담으세요 — 각 카드를 누르면 그 코워커의 소개로 이동합니다.</p>
   <div class="cw-prodgrid cw-plugrid">
     <a class="cw-prodcard" href="/moai-agents/coworker/">
       <span class="cw-prodcard-ico cw-plug-ico">{{< icon briefcase >}}</span>
@@ -142,7 +139,7 @@ lastmod: 2026-08-07T00:00:00+09:00
     <a class="cw-prodcard" href="/moai-agents/pm/">
       <span class="cw-prodcard-ico cw-plug-ico">{{< icon rocket >}}</span>
       <div class="cw-prodcard-label">PM</div>
-      <p class="cw-prodcard-desc"><code>/project</code> 명령 하나로 프로젝트 단위 셋업과 직원 배치를 라우팅.</p>
+      <p class="cw-prodcard-desc"><code>/project</code> 명령 하나로 프로젝트 단위 셋업과 코워커 배치를 라우팅.</p>
       <div class="cw-prodcard-cta">프로젝트 허브 →</div>
     </a>
     <a class="cw-prodcard" href="/moai-agents/threads-poster/">
@@ -160,27 +157,12 @@ lastmod: 2026-08-07T00:00:00+09:00
   <div class="cw-qstart">
     <div class="cw-qstart-card">
       <div class="cw-qstart-step">Step 01</div>
-      <div class="cw-qstart-title">마켓플레이스 추가</div>
-      <p class="cw-qstart-desc">Claude Cowork(ChatGPT Work도 지원) 앱 UI 또는 CLI로 마켓플레이스를 등록합니다.</p>
-      <pre class="cw-qstart-pre"><span class="p">#</span> Claude Cowork / ChatGPT Work 앱 UI 안내:
-<span class="p">#</span> Claude Cowork 탭 또는 ChatGPT Work 탭 → 사용자 지정(Customize) → 개인 플러그인(Plugins) → "+" → URL: <code>modu-ai/moai-cowork</code>
-<span class="p">$</span> claude plugin marketplace add modu-ai/moai-cowork  <span class="c"># 또는 CLI(Claude Cowork/ChatGPT Work)</span></pre>
-    </div>
-    <div class="cw-qstart-card">
-      <div class="cw-qstart-step">Step 02</div>
-      <div class="cw-qstart-title">직원 채용</div>
-      <p class="cw-qstart-desc">필요한 직원을 골라 담습니다.</p>
-      <pre class="cw-qstart-pre"><span class="p">#</span> Claude Cowork / ChatGPT Work 앱 UI: 목록에서 "Add plugin" 버튼 클릭
-<span class="p">$</span> claude plugin add moai-coworker@moai-cowork  <span class="c"># 또는 CLI(Claude Cowork/ChatGPT Work)</span></pre>
-    </div>
-    <div class="cw-qstart-card">
-      <div class="cw-qstart-step">Step 03</div>
       <div class="cw-qstart-title">프로젝트 지침 셋팅</div>
       <p class="cw-qstart-desc"><code>/project</code>로 프로젝트 맥락과 지침을 세팅합니다.</p>
       <pre class="cw-qstart-pre">/project {프로젝트 폴더 지침 생성지시}</pre>
     </div>
     <div class="cw-qstart-card">
-      <div class="cw-qstart-step">Step 04</div>
+      <div class="cw-qstart-step">Step 02</div>
       <div class="cw-qstart-title">자연어로 일 위임</div>
       <p class="cw-qstart-desc">프로젝트 지침(CLAUDE.md, AGENTS.md) 셋팅이 완료되면, 자연어로 일을 지시하세요.</p>
       <pre class="cw-qstart-pre">블로그 초안 작성해줘</pre>
@@ -190,8 +172,8 @@ lastmod: 2026-08-07T00:00:00+09:00
 
 <section class="cw-coral-cta">
   <div>
-    <h3 class="cw-coral-cta__title">어떤 직원을 뽑을지 고민되나요?</h3>
-    <p class="cw-coral-cta__sub">설치·운용 매뉴얼과 직원별 소개를 한곳에서 — 빌드 과정 없이 바로 시작합니다.</p>
+    <h3 class="cw-coral-cta__title">어떤 코워커를 뽑을지 고민되나요?</h3>
+    <p class="cw-coral-cta__sub">설치·운용 매뉴얼과 코워커별 소개를 한곳에서 — 빌드 과정 없이 바로 시작합니다.</p>
   </div>
   <a class="cw-coral-cta__btn" href="/plugins/">플러그인 문서 열기 →</a>
 </section>

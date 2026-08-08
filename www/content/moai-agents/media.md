@@ -1,17 +1,17 @@
 ---
 title: "「미디어 크리에이터」 — 이미지·영상·오디오 생성 담당"
 weight: 5
-description: "Higgsfield 이미지·영상, ElevenLabs 오디오, GPT-image·Gemini·Midjourney 프롬프트 빌더까지 멀티모달 생성을 담당하는 미디어 AI 직원."
+description: "Higgsfield 이미지·영상, ElevenLabs 오디오, GPT-image·Gemini·Midjourney 프롬프트 빌더까지 멀티모달 생성을 담당하는 미디어 AI 코워커."
 aliases: ["/agent-teams/media/"]
 date: 2026-08-07T00:00:00+09:00
 lastmod: 2026-08-07T00:00:00+09:00
 ---
 
-콘텐츠에 이미지·영상·음성이 들어가면 퀄리티가 확 달라집니다. 하지만 생성 도구마다 프롬프트 문법이 다르고, 계정도 따로입니다. 미디어 크리에이터는 이 멀티모달 생성을 한 직원 안에 모아 둔 역할입니다. 스튜디오의 크리에이티브 디렉터처럼, 무엇을 만들지 정하고 알맞은 도구를 골라 호출합니다.
+콘텐츠에 이미지·영상·음성이 들어가면 퀄리티가 확 달라집니다. 하지만 생성 도구마다 프롬프트 문법이 다르고, 계정도 따로입니다. 미디어 크리에이터는 이 멀티모달 생성을 한 코워커 안에 모아 둔 역할입니다. 스튜디오의 크리에이티브 디렉터처럼, 무엇을 만들지 정하고 알맞은 도구를 골라 호출합니다.
 
 스킬은 13종입니다. Higgsfield 계열(media-higgsfield-*)은 이미지·영상에 더해 3D 메시(GLB)·오디오·완성 영상 분석, 10초 블록 조립형 설명 영상, 제품 촬영 10모드, 그리고 같은 인물·캐릭터를 여러 컷에 일관되게 넣는 참조 학습(Soul / Element)까지 다룹니다. 오디오 계열(media-audio-gen)은 ElevenLabs 음성 생성을, 프롬프트 빌더 계열(media-gpt-image-2 / media-gemini-3 / media-midjourney-v8 / media-codex-image)은 각 모델에 맞춘 완성 프롬프트를 만들어 줍니다. 이전 버전에서 마케터로부터 미디어 생성 도메인이 분리되어 신설되었습니다. Higgsfield·ElevenLabs MCP가 연동됩니다.
 
-브랜드 톤과 시각 일관성이 중요한 작업인 만큼, 산출물이 브랜드에 맞는지 검수하는 직원이 붙어 있습니다.
+브랜드 톤과 시각 일관성이 중요한 작업인 만큼, 산출물이 브랜드에 맞는지 검수하는 코워커가 붙어 있습니다.
 
 ```mermaid
 flowchart LR
@@ -29,7 +29,7 @@ media-* 계열 생성 스킬의 전체 목록입니다.
 
 ## 에이전트
 
-**media-producer**(실행 직원)가 이미지·영상·오디오를 생성하고, **media-brand-auditor**(검수 직원)가 산출물이 브랜드 톤·일관성 기준에 맞는지 검수합니다.
+**media-producer**(실행 코워커)가 이미지·영상·오디오를 생성하고, **media-brand-auditor**(검수 코워커)가 산출물이 브랜드 톤·일관성 기준에 맞는지 검수합니다.
 
 {{< employee-agents "moai-media" >}}
 
