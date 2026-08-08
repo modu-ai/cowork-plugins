@@ -39,6 +39,18 @@ main:
         ref: /plugins/agents
       - name: 팀 구성 패턴
         ref: /plugins/teams
+      - name: MCP 연동
+        ref: /plugins/mcp
+        isNew: true
+      - name: MCP 설치와 설정
+        ref: /plugins/mcp/install
+        isNew: true
+      - name: 유튜브 연동
+        ref: /plugins/mcp/youtube
+        isNew: true
+      - name: MCP 문제 해결
+        ref: /plugins/mcp/troubleshooting
+        isNew: true
       - name: Higgsfield MCP 설정
         ref: /plugins/higgsfield-setup
       - name: 라이선스와 산출물 권리

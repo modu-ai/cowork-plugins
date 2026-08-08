@@ -53,12 +53,10 @@
 `/project`로 프로젝트를 초기화하면 이 흐름이 프로젝트 맥락에 맞게 재설계되어
 `CLAUDE.md` 워크플로우 표에 배선됩니다.
 
-## MCP 연동 — `moai-youtube` (준비 중)
+## MCP 연동 — `moai-youtube`
 
 유튜브에는 Google이 관리하는 공식 MCP 서버가 없습니다. 그래서 YouTube Data API v3 +
-Live Streaming API + Analytics API를 감싼 **자체 MCP 서버 `moai-youtube`** 를 준비하고 있습니다.
-
-연결되면 다음이 가능해집니다.
+Live Streaming API + Analytics API를 감싼 **자체 MCP 서버**를 함께 넣었습니다.
 
 | 묶음 | 할 수 있는 일 |
 |---|---|
@@ -67,12 +65,17 @@ Live Streaming API + Analytics API를 감싼 **자체 MCP 서버 `moai-youtube`*
 | 분석 | 채널·영상 지표 · 유입 경로 · 시청 유지 곡선 |
 | 커뮤니티 | 댓글 조회 · 답글 · 숨김 처리 |
 
-구현 계약(도구 목록·환경변수·인증·할당량 방어)은
-[`.moai/reports/mcp-naming-consolidation-design.md`](../../.moai/reports/mcp-naming-consolidation-design.md) §5에 확정돼 있습니다.
+**할당량 방어가 들어 있습니다.** 유튜브 API는 하루 10,000 units인데 검색이 1회 100 units라
+가장 빨리 한도를 태웁니다. 그래서 검색은 캐시를 강제하고, 내 영상 목록은 검색 대신 업로드
+재생목록(2 units)으로 받습니다. 모든 응답에 잔량 추정치가 함께 담깁니다.
 
-**연결 전에도 스킬은 작동합니다.** 점검표·큐시트·편집 지시서·설명란 원고·답글 초안까지
-전부 만들어 드리고, 실제 API 호출이 필요한 단계는 유튜브 스튜디오에서 직접 하실 수 있도록
-절차를 안내합니다. 하지 않은 일을 했다고 보고하지 않습니다.
+설정 방법은 [`mcp-servers/moai-youtube/CONNECTORS.md`](mcp-servers/moai-youtube/CONNECTORS.md),
+서버 상세는 [`mcp-servers/moai-youtube/README.md`](mcp-servers/moai-youtube/README.md)를 보세요.
+
+**연결하지 않아도 스킬은 작동합니다.** 자격증명이 없으면 각 도구가 설정 안내를 돌려주고,
+점검표·큐시트·편집 지시서·설명란 원고·답글 초안까지는 그대로 만들어 드립니다. 실제 버튼을
+누르는 단계는 유튜브 스튜디오에서 하실 수 있도록 순서를 안내합니다. 하지 않은 일을 했다고
+보고하지 않습니다.
 
 ## 어디서 쓸 수 있나
 
