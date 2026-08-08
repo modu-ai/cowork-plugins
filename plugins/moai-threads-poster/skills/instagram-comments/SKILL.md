@@ -9,7 +9,7 @@ description: |
   - "최근 포스트 댓글 정리해줘"
   - "특정 댓글 숨김 처리해줘"
   [책임 경계] vs 형제 스킬: Instagram 댓글 *조회/답글/숨김* 만 담당합니다. 포스트 발행은 instagram-post 스킬, 인사이트 조회는 instagram_insights 도구를 직접 사용하세요.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # Instagram 댓글 관리 (instagram-comments)
@@ -85,7 +85,7 @@ instagram_comments_hide(comment_id="<댓글 ID>")
 
 ## 발행 전 설정 (최초 1회)
 
-Threads 와 동일한 Instagram 자격증명(`IG_ACCESS_TOKEN` / `IG_USER_ID`) 에 추가로 Meta 앱에 `manage_comments` 권한이 부여되어야 한다. 발급 절차는 `mcp-servers/threads-poster/CONNECTORS.md` 의 Instagram 섹션 참조.
+Threads 와 동일한 Instagram 자격증명(`IG_ACCESS_TOKEN` / `IG_USER_ID`) 에 추가로 Meta 앱에 `manage_comments` 권한이 부여되어야 한다. 발급 절차는 `mcp-servers/moai-threads-poster/CONNECTORS.md` 의 Instagram 섹션 참조.
 
 ## 관련 스킬
 

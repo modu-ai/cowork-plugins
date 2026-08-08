@@ -10,7 +10,7 @@ description: |
   - "내 문체로 초안 작성해줘" (저장된 프로필 자동 적용)
   - "이 초안 그대로 Threads에 올려줘" (승인 → 즉시 발행)
   [책임 경계] vs 형제 스킬: 초안 작성(저장된 문체 프로필 적용 포함) 과 즉시 발행만 담당합니다. 문체 *분석·저장* 은 threads-style-learn, 멀티 채널(Facebook/X) 포맷은 threads-multichannel, 이미지/비디오 발행은 MCP 도구(threads_publish_image, threads_publish_video)를 직접 사용하세요. 예약·정기 발행은 Claude Cowork 에게 맡깁니다.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # Threads 초안 작성·직접 발행 (threads-post-draft)
@@ -70,7 +70,7 @@ threads_publish_text(text="<승인된 초안>")
 
 - 텍스트 전용 발행만 본 스킬이 담당합니다.
 - 이미지/비디오 포스트는 `threads_publish_image(text, image_url)` / `threads_publish_video(text, video_url)` 도구를 직접 호출하세요.
-- 자격증명(`THREADS_ACCESS_TOKEN`, `THREADS_USER_ID`) 이 미설정이면 `setup_required` 에러를 반환합니다 — 서버는 크래시하지 않습니다. 발급 절차는 `mcp-servers/threads-poster/CONNECTORS.md` 참조.
+- 자격증명(`THREADS_ACCESS_TOKEN`, `THREADS_USER_ID`) 이 미설정이면 `setup_required` 에러를 반환합니다 — 서버는 크래시하지 않습니다. 발급 절차는 `mcp-servers/moai-threads-poster/CONNECTORS.md` 참조.
 
 > 발행은 세션 안에서 즉시 일어납니다. 백그라운드 자동 발행은 없습니다. 예약이 필요하면 Claude Cowork 에게 맡기세요.
 
@@ -164,6 +164,6 @@ export THREADS_USER_ID="<Threads 사용자 ID>"
 export THREADS_PUBLISH_DELAY="30"
 ```
 
-발급 절차: `mcp-servers/threads-poster/CONNECTORS.md` 참조 (브라우저 인가 → 단기 토큰 → 장기 토큰 교환)
+발급 절차: `mcp-servers/moai-threads-poster/CONNECTORS.md` 참조 (브라우저 인가 → 단기 토큰 → 장기 토큰 교환)
 
 **동작 확인**: `threads_get_profile` 도구 호출 → 프로필 정보 반환되면 연동 성공.

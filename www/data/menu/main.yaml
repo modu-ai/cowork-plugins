@@ -43,12 +43,15 @@ main:
         ref: /plugins/higgsfield-setup
       - name: 라이선스와 산출물 권리
         ref: /plugins/license
+      - name: 오픈소스 크레딧
+        ref: /plugins/open-source
+        isNew: true
 
-  - name: AI 직원 소개
-    icon: plug
+  - name: AI 코워커 소개
+    icon: bot
     defaultOpen: true
     sub:
-      - name: 직원 한눈에
+      - name: 코워커 한눈에
         ref: /moai-agents
       - name: PM (진입 허브)
         ref: /moai-agents/pm
@@ -63,6 +66,9 @@ main:
         ref: /moai-agents/marketer
       - name: 미디어 크리에이터
         ref: /moai-agents/media
+        isNew: true
+      - name: 유튜버
+        ref: /moai-agents/youtuber
         isNew: true
       - name: 셀러
         ref: /moai-agents/seller
@@ -90,20 +96,6 @@ main:
       - name: SNS 크리에이터
         ref: /moai-agents/threads-poster
         isNew: true
-
-  - name: 릴리스 노트
-    icon: tag
-    defaultOpen: false
-    sub:
-      - name: 릴리스 홈
-        ref: /releases
-      - name: v1.1.0
-        ref: /releases/v1.1.0
-        isNew: true
-      - name: v1.0.0
-        ref: /releases/v1.0.0
-      - name: 이전 릴리스 아카이브
-        ref: /releases/archive
 
   - name: 쿡북
     icon: book
@@ -154,3 +146,19 @@ main:
         ref: /help/troubleshooting
       - name: 가이드 문서 색인
         ref: /help/source-index
+
+  - name: 릴리스 노트
+    icon: tag
+    defaultOpen: false
+    sub:
+      - name: 릴리스 홈
+        ref: /releases
+      - name: v1.2.0
+        ref: /releases/v1.2.0
+        isNew: true
+      - name: v1.1.0
+        ref: /releases/v1.1.0
+      - name: v1.0.0
+        ref: /releases/v1.0.0
+      - name: 이전 릴리스 아카이브
+        ref: /releases/archive

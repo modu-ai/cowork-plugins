@@ -10,7 +10,7 @@ description: |
   - "이 초안 멀티 채널로 변환해줘"
   - "X premium 으로 한 번에 올릴 수 있게 해줘"
   [책임 경계] vs 형제 스킬: *포맷만* 담당합니다 — Facebook/X 로 발행하지 않습니다 (사용자가 복붙). Threads 직접 발행은 threads-post-draft / threads_publish_* 도구가 담당합니다.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # 멀티 채널 포맷 (threads-multichannel)
@@ -171,7 +171,7 @@ Facebook·X 까지 한 번에 "올려달라" 고 하면 **거절** 합니다 —
 
 ## References
 
-이 스킬은 참조 파일 없이 본 문서만으로 자족합니다. 채널 제약값(500바이트/280자/25000자) 은 `threads_format_multi_channel` 도구(`mcp-servers/threads-poster/src/threads_poster/server.py`) 에 하드코딩된 baseline 이다.
+이 스킬은 참조 파일 없이 본 문서만으로 자족합니다. 채널 제약값(500바이트/280자/25000자) 은 `threads_format_multi_channel` 도구(`mcp-servers/moai-threads-poster/src/threads_poster/server.py`) 에 하드코딩된 baseline 이다.
 
 ## 관련 스킬
 

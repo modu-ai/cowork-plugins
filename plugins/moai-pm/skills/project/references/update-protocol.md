@@ -2,7 +2,7 @@
 
 ## 개요
 
-`/project update`의 상세 정본이다. 외부에서 AI 직원 플러그인이 업데이트된 직후, 프로젝트(`CLAUDE.md` + `.claude/agents/` + `.moai/config.json` 스냅샷)를 **최신 설치 인벤토리에 동기화**한다.
+`/project update`의 상세 정본이다. 외부에서 AI 코워커 플러그인이 업데이트된 직후, 프로젝트(`CLAUDE.md` + `.claude/agents/` + `.moai/config.json` 스냅샷)를 **최신 설치 인벤토리에 동기화**한다.
 
 project 스킬 SKILL.md의 §Recursive Self-Improvement가 정의하는 `inventory drift` 트리거를 "감지 대기"가 아니라 **즉시·전수조사로 강제 실행**하는 모드다. 따라서 자가 개선의 진단→최소 diff→검증→롤백 사이클과 가드레일을 그대로 계승하며, 본 프로토콜은 그중 **드리프트 동기화 특화 절차**만 다룬다.
 

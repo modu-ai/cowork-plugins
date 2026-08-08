@@ -13,4 +13,4 @@ allowed-tools: Skill
 3. **승인 게이트** — 초안을 사용자에게 보여주고 승인을 받는다. 승인 없이는 발행되지 않는다 ("자동 아닌 자율"). 수정 요청 시 2단계로 돌아가 다듬는다.
 4. **즉시 발행** — 승인된 초안을 `threads_publish_text` (또는 이미지/비디오는 `threads_publish_image` / `threads_publish_video`) 로 즉시 발행. 결과(`media_id`, `permalink`) 를 반환한다.
 
-주의: 자격증명(`THREADS_ACCESS_TOKEN`, `THREADS_USER_ID`) 이 없으면 발행 단계에서 `setup_required` 스킵된다 (서버는 크래시하지 않는다). 발급 절차는 `mcp-servers/threads-poster/CONNECTORS.md`.
+주의: 자격증명(`THREADS_ACCESS_TOKEN`, `THREADS_USER_ID`) 이 없으면 발행 단계에서 `setup_required` 스킵된다 (서버는 크래시하지 않는다). 발급 절차는 `mcp-servers/moai-threads-poster/CONNECTORS.md`.

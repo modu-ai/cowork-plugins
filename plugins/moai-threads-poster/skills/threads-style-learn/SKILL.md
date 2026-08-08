@@ -10,7 +10,7 @@ description: |
   - "이전 스레드/페이스북 글로 문체 학습해줘"
   - "내 톤앤매너 분석해줘"
   [책임 경계] vs 형제 스킬: 문체 *분석* 과 프로필 *저장* 만 담당합니다. 저장된 프로필을 적용해 초안을 작성·발행하는 건 threads-post-draft, 여러 채널(Threads/Facebook/X) 포맷은 threads-multichannel 이 담당합니다. 이 스킬은 발행을 하지 않습니다.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # Threads 문체 학습 (threads-style-learn)
@@ -80,7 +80,7 @@ threads_style_save(
 - "~ 어떻게 생각하세요?" (질문으로 마무리)
 ...
 """,
-    path=None  # 기본 경로: $CLAUDE_PLUGIN_ROOT/mcp-servers/threads-poster/.data/style-profile.md
+    path=None  # 기본 경로: $CLAUDE_PLUGIN_ROOT/mcp-servers/moai-threads-poster/.data/style-profile.md
 )
 ```
 
@@ -146,6 +146,6 @@ threads_style_save(
 
 ## 저장 경로·자격증명
 
-- **저장 경로(기본)**: `$CLAUDE_PLUGIN_ROOT/mcp-servers/threads-poster/.data/style-profile.md` (`.data/` 는 gitignored — 개인 문체가 저장소에 올라가지 않습니다).
+- **저장 경로(기본)**: `$CLAUDE_PLUGIN_ROOT/mcp-servers/moai-threads-poster/.data/style-profile.md` (`.data/` 는 gitignored — 개인 문체가 저장소에 올라가지 않습니다).
 - **자격증명 불필요**: 이 스킬의 저장 도구(`threads_style_save`/`threads_style_load`)는 Threads API 자격증명 없이 동작합니다 — 로컬 파일 I/O 전용입니다.
 - **발행 전 설정**(Threads 자격증명)은 초안 *발행* 시에만 필요 — `threads-post-draft` 의 "발행 전 설정" 섹션 참조.

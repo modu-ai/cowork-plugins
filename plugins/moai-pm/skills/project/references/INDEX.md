@@ -31,7 +31,7 @@
 ## 아키텍처
 
 ```
-계층 1: 플러그인(Read-Only) — AI 직원 플러그인(moai-pm 허브 포함)
+계층 1: 플러그인(Read-Only) — AI 코워커 플러그인(moai-pm 허브 포함)
          ↑ Gap Detection: Bash ~/.claude/plugins/ + system reminder 교차 검증
          ↑ 누락 플러그인 감지 → 설치 안내 → "이어서 진행" 재개
 계층 2: ./CLAUDE.md(자동 로딩) — 프로젝트별 맞춤형 페르소나 + 스킬 체인 정의

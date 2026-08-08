@@ -29,10 +29,10 @@ Threads(Meta) Graph API 자동 포스팅 MCP 서버. Claude Code 의 stdio MCP �
 ## 개발
 
 ```bash
-cd plugins/moai-threads-poster/mcp-servers/threads-poster
+cd plugins/moai-threads-poster/mcp-servers/moai-threads-poster
 uv sync                    # 의존성 설치
 uv run pytest              # 테스트 실행
-uv run threads-poster-mcp  # stdio MCP 서버 기동
+uv run moai-threads-poster-mcp  # stdio MCP 서버 기동
 ```
 
 ## 구조
