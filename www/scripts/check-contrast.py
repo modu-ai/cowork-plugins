@@ -17,7 +17,9 @@
 반투명 배경(rgba alpha<0.6)은 판정을 보류한다 — 합성색은 부모에 따라 달라지므로
 필요하면 손으로 계산할 것.
 """
-import re, pathlib, sys
+import re
+import pathlib
+import sys
 ORDER=["moai-ds-tokens.css","moai-ds-base.css","moai-ds.css","moai-ds-docs.css","moai-ds-mascot.css","moai-ds-v2.css"]
 def spec(s): return (len(re.findall(r"#[\w-]+",s)),len(re.findall(r"[.:\[][\w-]+",s)),len(re.findall(r"(?:^|[\s>+~])([a-z][\w-]*)",s)))
 
@@ -81,7 +83,7 @@ def win(sels,prop):
     if not ms: return None,None
     imp=[r for r in ms if r[6]]
     pool=imp if imp else ms
-    w=max(pool,key=lambda r:(r[3],r[0]))
+    w=sorted(pool,key=lambda r:(r[3],r[0]))[-1]   # cascade: 같은 특이도·같은 파일이면 문서 순 마지막이 승자
     return resolve(w[5]), f"{w[1]}{' !important' if w[6] else ''}"
 
 PAIRS=[
@@ -94,6 +96,7 @@ PAIRS=[
  ("인라인 코드",        {".gdoc-markdown code"}, {".gdoc-markdown code"}),
  ("primary 버튼",      {".btn--primary"}, {".btn--primary"}),
  ("히어로",            {".cw-hero"}, {".cw-hero h1"}),
+ ("헤더",             {".gnav"}, {".gnav-link"}),
  ("푸터",             {".ds-footer"}, {".ds-footer-links"}),
 ]
 print(f"{'표면':<20}{'배경':<10}{'글자':<10}{'대비':>7}  판정")

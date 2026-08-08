@@ -313,7 +313,7 @@ svg.svg-sprite { display: none !important; }
   color: var(--fg-1);
 }
 .cw-side-head:hover { background: var(--neutral-100); }
-.cw-side-list { padding-left: 0; margin: 2px 0 6px; }
+.cw-side-list { padding-left: 22px !important; margin: 2px 0 6px; }
 .cw-side-link {
   display: flex;
   gap: 10px;
@@ -502,8 +502,8 @@ svg.svg-sprite { display: none !important; }
   flex-wrap: wrap;
   gap: 40px;
   margin: 36px 0 0;
-  padding: 26px 0 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 0;
+  border-top: 0;
   background: none;
   border-radius: 0;
   overflow: visible;
@@ -677,7 +677,7 @@ svg.svg-sprite { display: none !important; }
   font-size: 26px;
   font-weight: var(--fw-extrabold);
   letter-spacing: var(--tracking-heading);
-  color: #fff;
+  color: #fff !important;
 }
 .cw-coral-cta__sub {
   margin: 0;
@@ -685,7 +685,7 @@ svg.svg-sprite { display: none !important; }
   font-size: 15.5px;
   line-height: 1.7;
   letter-spacing: -0.03em;
-  color: #fff;
+  color: #fff !important;
 }
 .cw-coral-cta__btn {
   display: inline-flex;
@@ -1155,6 +1155,8 @@ svg.svg-sprite { display: none !important; }
 .prodnav-link.active { color: #fff; background: rgba(255,255,255,0.16); }
 .gnav-search { background: transparent; color: rgba(255,255,255,0.92); border-color: rgba(255,255,255,0.28); }
 .gnav-search kbd { background: rgba(255,255,255,0.14); color: rgba(255,255,255,0.9); }
+.gnav-gh { background: #fff; color: #09110f !important; }
+.gnav-gh:hover { color: #09110f; border-color: var(--color-primary); }
 
 /* 푸터(.ds-footer) — 배경 다크 그린 + 내부 흰색 */
 .ds-footer { background: var(--color-primary-active); border-top-color: rgba(255,255,255,0.14); }
