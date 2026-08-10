@@ -9,7 +9,7 @@ description: |
   - "콘티 만들어줘", "광고 스토리보드"
   - "캐릭터 시트", "책 표지 일러스트"
   - "프리비즈", "IP 피칭 문서"
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # story-project
@@ -32,7 +32,7 @@ version: "1.1.0"
 | 광고 영상 | `story-conti` | moai-story | (광고 콘티 프리셋 내장) → `story-previz` |
 | 표지·일러스트 | `story-cover-art` | moai-story | (단일) |
 | IP 사업화·판권 | `story-ip-pitch` | moai-story | (단일) |
-| 출판 도서 | `moai-writer:book-concept-planner` | moai-writer | moai-writer 미설치 시 `/plugin install moai-writer` 설치 안내 후 진행 |
+| 출판 도서 | `moai-writer:book-concept-planner` | moai-writer | moai-writer 미설치 시 Plugins에서 `moai-writer` Install(또는 `claude/codex plugin install moai-writer@moai-cowork`) 안내 후 진행 |
 
 **규격·연재 관리 참조 (진입점이 아닌 상시 참조 허브):**
 
