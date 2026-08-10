@@ -4,7 +4,7 @@ weight: 1
 description: "모두의 코워크 버전 관리 정책과 릴리스 노트 — v1.0.0에서 새로 시작합니다."
 geekdocBreadcrumb: true
 date: 2026-07-31
-lastmod: 2026-08-08T00:00:00+09:00
+lastmod: 2026-08-10T00:00:00+09:00
 ---
 
 모두의 코워크는 **v1.0.0**에서 새로 출발합니다. 이 페이지는 버전 번호가 어떻게 매겨지고 언제 올라가는지, 그리고 각 릴리스에 무엇이 담겼는지를 안내합니다.
@@ -69,7 +69,7 @@ v1.0 ~ v2.27의 옛 릴리스 노트는 [이전 릴리스 아카이브](/release
 ### 안전하게 올리는 순서
 
 1. **백업** — 작업 중인 폴더를 복사해 둡니다
-2. **업데이트** — Claude Cowork에서 `/plugin marketplace update moai-cowork`, ChatGPT Work에서 `codex plugin marketplace upgrade` 또는 `codex plugin add moai-cowork` 실행
+2. **업데이트** — 두 데스크톱 앱 모두 **플러그인(Plugins) 메뉴 → 해당 코워커 → Update**. 터미널 명령은 [플러그인 설치와 관리](/plugins/install/) 4절 참고
 3. **재시작** — 데스크톱 앱을 껐다 켭니다
 4. **확인** — 평소 쓰던 요청을 하나 던져 정상 동작을 확인합니다
 
