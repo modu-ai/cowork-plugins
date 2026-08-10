@@ -10,7 +10,7 @@
 /project <자연어 지시>
 ```
 
-Claude Cowork(Desktop) 프로젝트 초기화 — 소크라테스 인터뷰 → 설치된 AI 코워커 인벤토리 스캔 → **프로젝트 전용 커스텀 에이전트·스킬 체인 설계** → `CLAUDE.md`(≤200라인) + `.claude/agents/` + `.moai/` 스캐폴드 생성 → **사용하면서 재귀적 자가 개선**
+Claude Cowork(Desktop) 프로젝트 초기화 — 소크라테스 인터뷰 → 설치된 AI 코워커 인벤토리 스캔 → **프로젝트 전용 커스텀 에이전트·스킬 체인 설계** → `AGENTS.md`(폴더 지침 정본, ≤200라인) + `CLAUDE.md`(`@AGENTS.md` 포인터) + `.claude/agents/` + `.moai/` 스캐폴드 생성 → **사용하면서 재귀적 자가 개선**
 
 ```
                         ┌───────────────────────┐
@@ -65,18 +65,27 @@ PM은 직접 일하지 않습니다. **누가 이 일에 맞는지 찾아 팀을
 
 ### ① 마켓플레이스 등록 (최초 1회만)
 
-'MoAI-Cowork, 모두의 코워크' AI 코워커는 `modu-ai/moai-cowork` 마켓플레이스 하나에 들어있습니다:
+'MoAI-Cowork, 모두의 코워크' AI 코워커는 `modu-ai/moai-cowork` 마켓플레이스 하나에 들어있습니다. **Claude Cowork**와 **ChatGPT Work** 두 데스크톱 앱 모두 설정(Settings) 또는 플러그인(Plugins) 메뉴 → 마켓플레이스(Marketplace)에서 이 주소를 추가하면 됩니다.
 
-    /plugin marketplace add modu-ai/moai-cowork
+터미널에 익숙하다면:
+
+    claude plugin marketplace add modu-ai/moai-cowork   # Claude Cowork CLI
+    codex plugin marketplace add modu-ai/moai-cowork    # ChatGPT Work CLI
 
 ### ② 플러그인 추가
 
-**가장 쉬운 방법** — `/plugin`이라고 치면 나오는 창에서 **"Browse Plugins"**을 누르고 원하는 직원을 선택하세요.
+**가장 쉬운 방법** — 플러그인(Plugins) 메뉴를 열고 `moai-cowork` 마켓플레이스에서 원하는 직원을 찾아 **Install**을 누르세요.
 
-**직접 명령으로** 설치하려면:
+**터미널에서 직접** 설치하려면:
 
-    /plugin install moai-pm@moai-cowork            # PM 허브 (필수)
-    /plugin install moai-coworker@moai-cowork       # 범용 실무 코어 (권장)
+    # Claude Cowork CLI
+    claude plugin install moai-pm@moai-cowork           # PM 허브 (필수)
+    claude plugin install moai-coworker@moai-cowork     # 범용 실무 코어 (권장)
+
+    # ChatGPT Work CLI
+    codex plugin add moai-pm@moai-cowork
+    codex plugin add moai-coworker@moai-cowork
+
     # 필요한 전문가 직원 추가: moai-writer / moai-story / moai-marketer / moai-media /
     # moai-seller / moai-officer / moai-analyst / moai-lawyer / moai-accountant /
     # moai-recruiter / moai-cs / moai-consultant / moai-career / moai-tutor /
@@ -84,7 +93,7 @@ PM은 직접 일하지 않습니다. **누가 이 일에 맞는지 찾아 팀을
 
 > 처음엔 PM + 코워커만 설치해도 충분합니다. 나중에 다른 직원이 필요해지면 셋업 중 **Gap Detection**이 감지해 설치를 안내한 뒤, 완료되면 "이어서 진행"이라고 말해 이어서 진행합니다.
 
----
+> 앱별 정확한 클릭 경로와 잘 안 될 때 대처법은 [플러그인 설치와 관리](https://cowork.mo.ai.kr/plugins/install/)에 정리해 두었습니다.
 
 ## 사용법
 
@@ -92,7 +101,7 @@ PM은 직접 일하지 않습니다. **누가 이 일에 맞는지 찾아 팀을
 /project
 ```
 
-PM이 먼저 인사하고 무엇을 할지 묻습니다. "온라인 클래스 런칭 준비할 거야"처럼 답하면 프로젝트 전용 커스텀 에이전트와 스킬 체인을 설계해 `CLAUDE.md`를 생성합니다.
+PM이 먼저 인사하고 무엇을 할지 묻습니다. "온라인 클래스 런칭 준비할 거야"처럼 답하면 프로젝트 전용 커스텀 에이전트와 스킬 체인을 설계해 `AGENTS.md`를 생성합니다.
 
 ### 서브커맨드
 
@@ -101,20 +110,20 @@ PM이 먼저 인사하고 무엇을 할지 묻습니다. "온라인 클래스 �
 | 커맨드 | 동작 |
 |--------|------|
 | `/project <지시>` | 진입 — 인터뷰 후 에이전트/체인 설계 + 생성. **기본 동작.** |
-| `/project update` | 플러그인 업데이트 후 전수조사 → CLAUDE.md·에이전트 재동기화 |
+| `/project update` | 플러그인 업데이트 후 전수조사 → AGENTS.md·에이전트 재동기화 |
 | `/project evolve` | 재귀적 자가 개선 수동 발동 |
 | `/project doctor` | 환경 진단 |
 
 ### 재귀적 자가 개선
 
-셋업이 끝난 뒤에도 PM의 역할은 끝나지 않습니다. 사용 중 아래 신호가 감지되면 에이전트와 `CLAUDE.md`를 **자율적으로 개선**합니다:
+셋업이 끝난 뒤에도 PM의 역할은 끝나지 않습니다. 사용 중 아래 신호가 감지되면 에이전트와 `AGENTS.md`를 **자율적으로 개선**합니다:
 
 - 같은 유형의 수정 요청이 2회 이상 반복될 때(톤·형식 불일치)
 - 스킬 체인이 반복적으로 같은 단계에서 실패·우회할 때
 - 플러그인 설치·제거로 인벤토리가 실제와 어긋날 때(inventory drift)
 - 사용자가 직접 요청할 때(`/project evolve`)
 
-개선은 최소 diff(최대 3개 파일) 단위로만 이루어지고, 변경 요지를 1-3줄로 보고한 뒤 적용하며, 이력은 `CLAUDE.md` 말미 `<!-- evolution-log -->`에 기록됩니다. 자가 개선은 `CLAUDE.md`와 `.claude/agents/`만 수정합니다.
+개선은 최소 diff(최대 3개 파일) 단위로만 이루어지고, 변경 요지를 1-3줄로 보고한 뒤 적용하며, 이력은 `AGENTS.md` 말미 `<!-- evolution-log -->`에 기록됩니다. 자가 개선은 `AGENTS.md`와 `.claude/agents/`만 수정합니다.
 
 ---
 
@@ -122,7 +131,8 @@ PM이 먼저 인사하고 무엇을 할지 묻습니다. "온라인 클래스 �
 
 | 파일 | 내용 |
 |------|------|
-| `./CLAUDE.md` | 프로젝트 지침(≤200라인) — 워크플로우 표 + 8개 HARD 규칙 + evolution-log |
+| `./AGENTS.md` | 프로젝트 지침 정본(≤200라인) — 워크플로우 표 + 8개 HARD 규칙 + evolution-log |
+| `./CLAUDE.md` | Claude용 포인터 — `@AGENTS.md` 임포트 한 줄(본문 복제 없음) |
 | `./.claude/agents/*.md` | 프로젝트 전용 커스텀 에이전트(자가 개선 대상) |
 | `./.moai/config.json` | 플러그인·커넥터·API 키 참조 |
 | `./.moai/credentials.env` | API 키 안내(프로젝트 격리, GUIDANCE 전용 — 실제 값은 기록하지 않음) |

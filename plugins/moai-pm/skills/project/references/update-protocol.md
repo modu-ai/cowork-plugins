@@ -2,7 +2,7 @@
 
 ## 개요
 
-`/project update`의 상세 정본이다. 외부에서 AI 코워커 플러그인이 업데이트된 직후, 프로젝트(`CLAUDE.md` + `.claude/agents/` + `.moai/config.json` 스냅샷)를 **최신 설치 인벤토리에 동기화**한다.
+`/project update`의 상세 정본이다. 외부에서 AI 코워커 플러그인이 업데이트된 직후, 프로젝트(`AGENTS.md` + `.claude/agents/` + `.moai/config.json` 스냅샷)를 **최신 설치 인벤토리에 동기화**한다. `CLAUDE.md`는 `@AGENTS.md` 포인터이므로 동기화 대상이 아니다 — 포인터가 깨져 있을 때만 재작성한다.
 
 project 스킬 SKILL.md의 §Recursive Self-Improvement가 정의하는 `inventory drift` 트리거를 "감지 대기"가 아니라 **즉시·전수조사로 강제 실행**하는 모드다. 따라서 자가 개선의 진단→최소 diff→검증→롤백 사이클과 가드레일을 그대로 계승하며, 본 프로토콜은 그중 **드리프트 동기화 특화 절차**만 다룬다.
 
@@ -14,7 +14,7 @@ project 스킬 SKILL.md의 §Recursive Self-Improvement가 정의하는 `invento
 
 `update` 절차에 들어가기 전 반드시 확인한다.
 
-1. **프로젝트 존재 여부** — `./CLAUDE.md` 또는 `./.moai/config.json`이 없으면 동기화 대상이 없다.
+1. **프로젝트 존재 여부** — `./AGENTS.md`·`./CLAUDE.md`·`./.moai/config.json`이 모두 없으면 동기화 대상이 없다.
    - 침묵 생성 금지. `AskUserQuestion`으로 `/project`(최초 셋업)로 안내한다.
    - 옵션: `/project 시작으로 안내` / `update 중단`.
 2. **스냅샷 존재 여부** — `.moai/config.json`에 `plugins_installed` + `skills_available` 스냅샷이 없으면(최초 셋업 직후 미저장 등), 현재 인벤토리를 그대로 최초 스냅샷으로 저장하고 "이미 최신 상태"로 보고한다(비교 기준이 없으므로 diff는 공집합).
@@ -59,7 +59,7 @@ done
 |---|---|---|
 | **추가(added)** | 스냅샷에 없는 새 스킬/MCP | 높음 — 워크플로우 표·체인 후보에 반영 |
 | **변경(changed)** | 같은 name이지만 버전/설명이 다른 스킬 | 중간 — 체인 본문이 구버전 시그니처를 참조하면 갱신 |
-| **제거(removed)** | 스냅샷에는 있으나 인벤토리에 없는 스킬 | 높음 — CLAUDE.md·에이전트가 더 이상 존재하지 않는 스킬을 호출하면 안 됨 |
+| **제거(removed)** | 스냅샷에는 있으나 인벤토리에 없는 스킬 | 높음 — AGENTS.md·에이전트가 더 이상 존재하지 않는 스킬을 호출하면 안 됨 |
 
 diff가 공집합이면 "이미 최신 상태"로 보고하고 종료한다(스냅샷 리셋만 수행).
 
@@ -80,15 +80,16 @@ diff가 공집합이면 "이미 최신 상태"로 보고하고 종료한다(스�
 
 ---
 
-## 4. CLAUDE.md·에이전트 동기화 (최소 diff)
+## 4. AGENTS.md·에이전트 동기화 (최소 diff)
 
 diff에 맞춰 프로젝트 산출물을 갱신한다. **전면 재작성 금지** — 최소 diff 원칙(SKILL.md §Recursive Self-Improvement).
 
-### 4-1. CLAUDE.md
+### 4-1. AGENTS.md
 
 - **워크플로우 표** — 추가된 스킬을 적합한 산출물 행에 편성, 제거된 스킬 행은 삭제 또는 대체 스킬로 교체.
-- **200라인 예산 준수** — 갱신 후 `wc -l`로 재검증. 초과 시 스킬 체인 나열만 축소(HARD 블록 8개는 절대 축소·삭제하지 않는다 — `claudemd-generator.md` §5).
+- **200라인 예산 준수** — 갱신 후 `wc -l`로 재검증. 초과 시 스킬 체인 나열만 축소(HARD 블록 8개는 절대 축소·삭제하지 않는다 — `agentsmd-generator.md` §5).
 - **diff 적용 전 원문 조각 보존** — 수정 지점의 원문을 `.moai/evolution/`에 남겨 롤백 가능 상태를 유지.
+- **포인터 무결성 확인** — `./CLAUDE.md`의 첫 비어있지 않은 줄이 `@AGENTS.md`인지 점검한다. 아니면 레거시 복제 프로젝트이므로 `agentsmd-generator.md` §7.1 마이그레이션을 먼저 적용한다(evolution-log 이력 이관 포함).
 
 ### 4-2. `.claude/agents/*.md`
 
@@ -98,14 +99,14 @@ diff에 맞춰 프로젝트 산출물을 갱신한다. **전면 재작성 금지
 
 ### 4-3. 파괴적 변경 (사전 확인)
 
-제거된 스킬로 인해 **에이전트 1개 이상을 통째로 폐기**해야 하거나, CLAUDE.md HARD 블록 외의 섹션을 재구조해야 하는 경우 — 적용 전 `AskUserQuestion`으로 1-3줄 요지를 보고하고 승인받는다. 비파괴적 최소 diff는 보고 후 적용한다.
+제거된 스킬로 인해 **에이전트 1개 이상을 통째로 폐기**해야 하거나, AGENTS.md HARD 블록 외의 섹션을 재구조해야 하는 경우 — 적용 전 `AskUserQuestion`으로 1-3줄 요지를 보고하고 승인받는다. 비파괴적 최소 diff는 보고 후 적용한다.
 
 ---
 
 ## 5. 스냅샷 갱신 + evolution-log
 
 1. **스냅샷 리셋** — `.moai/config.json`의 `plugins_installed` + `skills_available`을 `new_inventory`로 갱신. 이로써 `inventory drift`는 0이 된다(다음 drift 감지의 새 기준).
-2. **evolution-log 기록** — `CLAUDE.md` 말미 `<!-- evolution-log -->`에 1줄 추가:
+2. **evolution-log 기록** — `AGENTS.md` 말미 `<!-- evolution-log -->`에 1줄 추가:
    - 형식: `inventory drift | update | <추가 N / 변경 N / 제거 N> | <신호-매칭 요지>`
 3. **evolution-log 큐레이션** — 최근 10건 유지, 초과분은 `.moai/evolution/log.md`로 이관(SKILL.md §Recursive Self-Improvement 큐레이션 규칙).
 
@@ -123,7 +124,7 @@ diff에 맞춰 프로젝트 산출물을 갱신한다. **전면 재작성 금지
 
 ## 가드레일 (HARD — SKILL.md §Recursive Self-Improvement 계승)
 
-- **수정 대상**: `CLAUDE.md`와 `.claude/agents/` 파일만. `.moai/evolution/`·`.moai/config.json`의 진단·스냅샷 기록은 예외. **스킬 본문·플러그인 파일은 건드리지 않는다.**
+- **수정 대상**: `AGENTS.md`와 `.claude/agents/` 파일만(레거시 마이그레이션 시의 `CLAUDE.md` 포인터 교체는 예외). `.moai/evolution/`·`.moai/config.json`의 진단·스냅샷 기록은 예외. **스킬 본문·플러그인 파일은 건드리지 않는다.**
 - **1회 동기화당 수정 파일 상한**: 최대 3개(evolution 기록 파일은 카운트 제외). diff가 상한을 넘으면 우선순위(추가 > 제거 > 변경)로 나눠 여러 번에 걸쳐 적용한다.
 - **파괴적 변경**: 사전 확인 없이 적용하지 않는다(§4-3).
 - **Desktop Parity**: hooks·LSP·output-styles는 생성하지 않는다(SKILL.md §Desktop Parity Constraints).
@@ -138,7 +139,8 @@ diff에 맞춰 프로젝트 산출물을 갱신한다. **전면 재작성 금지
 | `.moai/context.md` | 프로젝트 맥락 — §3 세션 신호 분석 입력 |
 | `.moai/evolution/signals.md` | 누적 교정·체인 실패 신호 — §3 세션 신호 분석 입력 |
 | `.moai/evolution/log.md` | evolution-log 이관 대상(10건 초과분) |
-| `./CLAUDE.md` | 워크플로우 표·HARD 블록 — §4-1 동기화 대상 |
+| `./AGENTS.md` | 워크플로우 표·HARD 블록 — §4-1 동기화 대상 |
+| `./CLAUDE.md` | `@AGENTS.md` 포인터 — 무결성만 점검, 내용 동기화 대상 아님 |
 | `./.claude/agents/*.md` | 스킬 체인 에이전트 — §4-2 동기화 대상 |
 
 ---
@@ -148,5 +150,5 @@ diff에 맞춰 프로젝트 산출물을 갱신한다. **전면 재작성 금지
 - SKILL.md §Recursive Self-Improvement — 자가 개선 사이클·검증·롤백·가드레일 정본
 - SKILL.md §Plugin Inventory Scan — 2소스 교차 검증 베이스(본 프로토콜 §2-1이 확장)
 - `init-protocol.md` — 인터뷰·인벤토리 스캔·Gap Detection(최초 셋업 절차)
-- `claudemd-generator.md` — CLAUDE.md 200라인 예산·8 HARD 블록 보존 정책
+- `agentsmd-generator.md` — AGENTS.md 200라인 예산·8 HARD 블록 보존 정책·CLAUDE.md 포인터 규칙·레거시 마이그레이션(§7.1)
 - `diagnostic-protocol.md` — 환경 진단(`/project doctor`)과 상태 조회("지금 상태 어때?" 자연어) 경로

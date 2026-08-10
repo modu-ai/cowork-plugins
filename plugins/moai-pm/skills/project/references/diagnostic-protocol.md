@@ -20,16 +20,19 @@ project 스킬 환경과 프로젝트 설정 상태를 진단하고 문제를 �
 ┌─ project 스킬 환경 진단 ──────────────────────────────┐
 │
 │ [Phase 1] 파일 시스템 검사
-│ ├─ ./CLAUDE.md 존재: ✓
+│ ├─ ./AGENTS.md 존재: ✓ (폴더 지침 정본)
+│ ├─ ./CLAUDE.md 존재 + @AGENTS.md 포인터: ✓
 │ ├─ .moai/ 디렉터리: ✓
 │ ├─ .moai/credentials.env: ✓ (프로젝트 격리, GUIDANCE 전용)
 │ ├─ skills/project/references/: ✓ (references + templates 포함)
 │ └─ 설치 플러그인 상태: ✓ (marketplace.json 로스터 대조)
 │
-│ [Phase 2] 프로젝트 CLAUDE.md 검사
-│ ├─ CLAUDE.md 라인 수: N / 200 (한도 내 ✓)
+│ [Phase 2] 프로젝트 지침 검사
+│ ├─ AGENTS.md 라인 수: N / 200 (한도 내 ✓)
 │ ├─ 8개 HARD 규칙 블록 포함: ✓
 │ ├─ 스킬 체인 블록 포함: ✓
+│ ├─ CLAUDE.md 첫 줄 = @AGENTS.md (백틱 없음): ✓
+│ ├─ 지침 본문 중복 저장: 없음 ✓ (정본은 AGENTS.md 한 곳)
 │ └─ 레거시 전역 변수 흔적: 없음 ✓
 │
 │ [Phase 3] 설치 플러그인 + 스킬 체인 상태
@@ -43,7 +46,7 @@ project 스킬 환경과 프로젝트 설정 상태를 진단하고 문제를 �
 │ └─ 누락 키: 0개
 │
 │ [Phase 5] 시스템 지침 검사
-│ ├─ ./CLAUDE.md 로드: ✓
+│ ├─ ./AGENTS.md 로드(Codex 직접 / Claude는 임포트 경유): ✓
 │ └─ 스킬 체인 모델 활성: ✓
 │
 │ ═════════════════════════════════════════════
@@ -55,13 +58,15 @@ project 스킬 환경과 프로젝트 설정 상태를 진단하고 문제를 �
 
 ### 1-3. 진단 항목별 상세
 
-**파일 시스템 검사**: `./CLAUDE.md`, `.moai/config.json` 존재 + 크기 > 0 확인.
+**파일 시스템 검사**: `./AGENTS.md`, `./CLAUDE.md`, `.moai/config.json` 존재 + 크기 > 0 확인.
 
-**CLAUDE.md 유효성**: "프로젝트 개요" 섹션 존재, 8개 HARD 규칙 블록 포함, "프로젝트 워크플로우" 스킬 체인 블록 존재, 라인 수 한도(200) 준수.
+**AGENTS.md 유효성**: "프로젝트 개요" 섹션 존재, 8개 HARD 규칙 블록 포함, "프로젝트 워크플로우" 스킬 체인 블록 존재, 라인 수 한도(200) 준수.
+
+**CLAUDE.md 포인터 유효성**: 첫 비어있지 않은 줄이 정확히 `@AGENTS.md`이고 백틱·코드 블록 안에 있지 않은지 확인한다. 포인터가 아니라 전체 지침을 담고 있으면 **레거시 복제 프로젝트**로 판정하고 `agentsmd-generator.md` §7.1 마이그레이션을 권고한다(임포트가 깨지면 에러 없이 지침이 통째로 누락되므로 반드시 검사한다).
 
 **플러그인 인벤토리 검사**: 설치된 `moai-*` 플러그인을 `.claude-plugin/marketplace.json` 로스터와 대조한다(하드코딩 화이트리스트 아님 — 동적 도출). 로스터에 없는 `moai-*` 접두 디렉터리는 경고한다.
 
-**스킬 체인 정의 유효성**: `CLAUDE.md` "프로젝트 워크플로우"의 각 체인이 설치된 플러그인에 실재하는지 검증하고, 텍스트 산출물 체인 말미에 `ai-slop-reviewer` 포함 여부를 확인한다.
+**스킬 체인 정의 유효성**: `AGENTS.md` "프로젝트 워크플로우"의 각 체인이 설치된 플러그인에 실재하는지 검증하고, 텍스트 산출물 체인 말미에 `ai-slop-reviewer` 포함 여부를 확인한다.
 
 ---
 
@@ -78,7 +83,8 @@ project 스킬 환경과 프로젝트 설정 상태를 진단하고 문제를 �
 ═════════════════════════════════════════════════
 
 프로젝트:
-  CLAUDE.md: ✓ (프로젝트 개요 + 워크플로우 포함)
+  AGENTS.md: ✓ (프로젝트 개요 + 워크플로우 포함)
+  CLAUDE.md: ✓ (@AGENTS.md 포인터)
   스킬 체인: N개 설계됨
 
 설치된 플러그인:
@@ -104,7 +110,7 @@ API 키 / 커넥터:
 ## 3. 문제 감지 및 진단
 
 ```
-IF CLAUDE.md 없음 OR "프로젝트 개요" 섹션 부재:
+IF AGENTS.md 없음 OR "프로젝트 개요" 섹션 부재:
   ERROR: "프로젝트가 초기화되지 않았습니다. /project 실행 필요"
 
 IF 설치 플러그인 == 0:
@@ -139,7 +145,7 @@ doctor-report-YYYY-MM-DD-HHMM.md 생성됨
 
 ```
 환경 상태:
-  └─ CLAUDE.md 유효성: ✓
+  └─ AGENTS.md 유효성 + CLAUDE.md 포인터: ✓
   └─ 플러그인 인벤토리: marketplace.json 로스터 대조 ✓
 
 설정 상태:
@@ -155,7 +161,7 @@ doctor-report-YYYY-MM-DD-HHMM.md 생성됨
 
 ## 5. 재설정 및 복구
 
-**부분 재설정**: `CLAUDE.md`만 재생성(스킬 체인 재설계) — `/project` 재실행. 커넥터 키만 재등록 — "API 키 설정할래" 자연어 안내.
+**부분 재설정**: `AGENTS.md`만 재생성(스킬 체인 재설계) — `/project` 재실행. 커넥터 키만 재등록 — "API 키 설정할래" 자연어 안내.
 
 **전체 재설정**: `/project` 재실행(Phase 1 인터뷰 재실행, S3 재진입 확인 후 진행).
 
@@ -167,7 +173,7 @@ doctor-report-YYYY-MM-DD-HHMM.md 생성됨
 /project --debug {command}
 
 출력:
-[DEBUG] CLAUDE.md 로드 중...
+[DEBUG] AGENTS.md 로드 중...
 [DEBUG] 플러그인 인벤토리 스캔 중...
 [DEBUG] 스킬 체인 정의 검증 중...
 [DEBUG] 커넥터 키 점검 중...
@@ -181,7 +187,7 @@ doctor-report-YYYY-MM-DD-HHMM.md 생성됨
 Health Score = Σ(component_score × weight)
 
 Components:
-  CLAUDE.md 유효성: 30% × (충족_항목 / 전체_항목)
+  지침 유효성(AGENTS.md + CLAUDE.md 포인터): 30% × (충족_항목 / 전체_항목)
   플러그인 인벤토리: 25% × (일치_플러그인 / marketplace.json 로스터)
   스킬 체인 유효성: 25% × (유효_체인 / 전체_체인)
   커넥터 키 완비: 20% × (등록_키 / 필요_키)

@@ -4,12 +4,12 @@ weight: 1
 description: "프로젝트 초기화 허브 AI 코워커. /project 한마디로 AI 코워커 플러그인의 진입을 라우팅합니다."
 aliases: ["/agent-teams/pm/"]
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-10T00:00:00+09:00
 ---
 
 새 프로젝트를 시작할 때 가장 어려운 것은 일 자체가 아니라 "무엇부터 세팅해야 하지?"라는 질문입니다. PM은 바로 그 질문을 대신 받아 주는 코워커입니다. 이사 갈 때 짐을 직접 나르기 전에 이사 업체 팀장이 먼저 와서 "어느 방 짐부터, 어떤 순서로"를 잡아 주는 것처럼, PM은 프로젝트 폴더에 어떤 코워커(플러그인)의 지침을 깔고 어떤 워크플로우를 쓸지 먼저 정리해 줍니다.
 
-PM이 담당하는 것은 개발을 제외한 모든 협업 프로젝트입니다. 전 코워커 지침 설정과 커스텀 에이전트(`.claude/agents/*.md`는 Claude Cowork용, `.codex/agents/*.toml`은 ChatGPT Work용), 그리고 프로젝트 지침 파일(`CLAUDE.md`는 Claude Cowork용, `AGENTS.md`는 ChatGPT Work용) 워크플로우까지 생성하고 스스로 개선해 나갑니다. 비개발자도 자연어 한마디로 프로젝트를 시작할 수 있게 하는 것이 존재 이유입니다. 소프트웨어 개발 환경 셋업은 이 마켓플레이스의 범위 밖입니다.
+PM이 담당하는 것은 개발을 제외한 모든 협업 프로젝트입니다. 전 코워커 지침 설정과 커스텀 에이전트(`.claude/agents/*.md`는 Claude Cowork용, `.codex/agents/*.toml`은 ChatGPT Work용), 그리고 프로젝트 지침 파일(정본은 `AGENTS.md`, `CLAUDE.md`는 이를 불러오는 포인터) 워크플로우까지 생성하고 스스로 개선해 나갑니다. 비개발자도 자연어 한마디로 프로젝트를 시작할 수 있게 하는 것이 존재 이유입니다. 소프트웨어 개발 환경 셋업은 이 마켓플레이스의 범위 밖입니다.
 
 AI 코워커 플러그인 패밀리가 있습니다.
 
@@ -19,16 +19,16 @@ PM은 Claude Cowork와 ChatGPT Work 양쪽 런타임에서 동작합니다. 생�
 
 | 산출물 | Claude Cowork용 경로 | ChatGPT Work용 경로 |
 |--------|---------------|---------------|
-| 프로젝트 지침 | `./CLAUDE.md` | `./AGENTS.md` (동일 내용) |
+| 프로젝트 지침 | `./CLAUDE.md` (`@AGENTS.md` 포인터) | `./AGENTS.md` (정본) |
 | 커스텀 에이전트 | `./.claude/agents/*.md` (markdown+YAML frontmatter) | `./.codex/agents/*.toml` (TOML) |
 
-`CLAUDE.md`와 `AGENTS.md`는 같은 내용을 두 파일로 저장하며, Claude Cowork는 `CLAUDE.md`를, ChatGPT Work는 `AGENTS.md`를 자동 로드합니다. 에이전트도 마찬가지로 양쪽에 각각 생성됩니다.
+지침의 정본은 `AGENTS.md` 한 파일입니다. ChatGPT Work는 이 파일을 직접 읽고, Claude Cowork는 `CLAUDE.md`에 담긴 `@AGENTS.md` 임포트 한 줄을 통해 같은 정본을 세션 시작 시 불러옵니다. 같은 내용을 두 파일에 복제하지 않으므로 한쪽만 고쳐 어긋날 일이 없습니다. 에이전트는 런타임 형식이 달라 양쪽에 각각 생성됩니다.
 
 ## 8-Phase 워크플로우
 
 ```
 Phase 1 인터뷰 → Phase 2 인벤토리 → Phase 3 체인 설계 → Phase 4 Gap Detection
-  → Phase 5 확인 → Phase 6 CLAUDE.md 생성 → Phase 7 커스텀 에이전트 생성 → Phase 8 API 키 + 첫 실행 안내
+  → Phase 5 확인 → Phase 6 지침 생성(AGENTS.md + CLAUDE.md 포인터) → Phase 7 커스텀 에이전트 생성 → Phase 8 API 키 + 첫 실행 안내
 ```
 
 ```mermaid
@@ -37,7 +37,7 @@ flowchart LR
    B --> C["Phase 3<br/>체인 설계<br/>(스킬 파이프라인)"]
    C --> D["Phase 4<br/>Gap Detection<br/>(누락 감지)"]
    D --> E["Phase 5<br/>확인<br/>(승인)"]
-   E --> F["Phase 6<br/>프로젝트 지침 파일 생성<br/>(CLAUDE.md/AGENTS.md, ≤200라인)"]
+   E --> F["Phase 6<br/>프로젝트 지침 생성<br/>(AGENTS.md 정본 ≤200라인<br/>+ CLAUDE.md 포인터)"]
    F --> G["Phase 7<br/>커스텀 에이전트 생성<br/>(Claude Cowork·ChatGPT Work 양쪽)"]
    G --> H["Phase 8<br/>API 키 + 첫 실행 안내"]
 
@@ -54,7 +54,7 @@ flowchart LR
 | **S1 일괄 진단** | 프로젝트 설계에 필요한 맥락을 한 번에 확보 | `AskUserQuestion` 1회 (최대 4질문 × 각 4옵션) |
 | **S2 보강** | S1의 공백·모호성만 메움 | 조건부 추가 호출 (부족분을 다시 한 번에 배치) |
 
-질문 풀: 업무 유형·주요 산출물·대상 독자·톤 제약·산출물 포맷·작업 주기·기존 자료·반드시 피해야 할 것·판단 배경(소크라테스 축). 이미 확립된 축(진입 발화·기존 `CLAUDE.md`·`.moai/context.md`)은 질문에서 제외합니다.
+질문 풀: 업무 유형·주요 산출물·대상 독자·톤 제약·산출물 포맷·작업 주기·기존 자료·반드시 피해야 할 것·판단 배경(소크라테스 축). 이미 확립된 축(진입 발화·기존 `AGENTS.md`·`.moai/context.md`)은 질문에서 제외합니다.
 
 ### Phase 2 인벤토리
 
@@ -89,9 +89,9 @@ for f in ./.codex/agents/*.toml ~/.codex/agents/*.toml; do [ -f "$f" ] && basena
 
 설계된 체인을 `AskUserQuestion`으로 승인받습니다(승인/수정/취소).
 
-### Phase 6 CLAUDE.md 생성
+### Phase 6 지침 생성 (AGENTS.md 정본 + CLAUDE.md 포인터)
 
-`references/templates/CLAUDE.md.tmpl` 치환, **≤200라인**, **8개 HARD 블록 고정** — 동일 내용을 `CLAUDE.md`(Claude Cowork용)와 `AGENTS.md`(ChatGPT Work용) 두 파일로 저장합니다. 소스 템플릿의 8개 `## N. … (HARD)` 블록을 전부 보존합니다(라인 예산 초과 시 축소 대상은 스킬 체인 나열뿐이며 HARD 블록은 절대 축소·삭제하지 않습니다).
+`references/templates/AGENTS.md.tmpl` 치환, **≤200라인**, **8개 HARD 블록 고정** — 결과를 `AGENTS.md` 한 파일에 저장하고, `CLAUDE.md`에는 `@AGENTS.md` 포인터를 씁니다. 소스 템플릿의 8개 `## N. … (HARD)` 블록을 전부 보존합니다(라인 예산 초과 시 축소 대상은 스킬 체인 나열뿐이며 HARD 블록은 절대 축소·삭제하지 않습니다).
 
 ### Phase 7 커스텀 에이전트 생성
 
@@ -114,11 +114,11 @@ for f in ./.codex/agents/*.toml ~/.codex/agents/*.toml; do [ -f "$f" ] && basena
 
 **신호 영속화 (HARD)**: 사용자 수정 요청·체인 실패를 감지한 **즉시** `.moai/evolution/signals.md`에 1줄을 기록합니다(`날짜 | 트리거 토큰 | 대상 | 요지`). 트리거 1·2의 "반복" 판정은 대화 기억이 아니라 **이 파일을 세어서** 합니다 — 세션이 바뀌어도 1회차 신호가 유실되지 않습니다.
 
-**개선 사이클**: 신호 감지 → 진단(무엇이 어긋났는가) → 최소 diff 작성(전면 재작성 금지) → 사용자에게 변경 요지 1-3줄 보고(파괴적 변경만 사전 확인) → `CLAUDE.md` 말미 `<!-- evolution-log -->` 주석에 1줄 기록(트리거 토큰 + 수정 대상 포함). diff 적용 전 수정 지점의 **원문 조각을 `.moai/evolution/` 진단 기록에 함께 남겨** 되돌리기가 가능해야 합니다.
+**개선 사이클**: 신호 감지 → 진단(무엇이 어긋났는가) → 최소 diff 작성(전면 재작성 금지) → 사용자에게 변경 요지 1-3줄 보고(파괴적 변경만 사전 확인) → `AGENTS.md` 말미 `<!-- evolution-log -->` 주석에 1줄 기록(트리거 토큰 + 수정 대상 포함). diff 적용 전 수정 지점의 **원문 조각을 `.moai/evolution/` 진단 기록에 함께 남겨** 되돌리기가 가능해야 합니다.
 
 **개선 검증 + 롤백 (HARD)**: 개선은 적용으로 끝나지 않습니다 — 적용 이후 **같은 트리거 토큰 + 같은 대상**의 신호가 다시 발동하면 그 개선은 **실패한 개선**로 판정합니다. 실패한 개선은 `.moai/evolution/`에 남긴 원문 조각으로 해당 diff를 되돌리고, 같은 지점을 자동으로 재수정하는 대신 사용자에게 상황을 1-3줄로 보고해 방향을 확인받습니다(동일 지점 자동 재수정 반복 금지).
 
-**가드레일 (HARD)**: 자가 개선은 **`CLAUDE.md`와 `.claude/agents/` 파일만** 수정합니다(`.moai/evolution/`의 신호·진단·이관 기록 파일은 예외). 스킬 본문·플러그인 파일은 건드리지 않습니다. 개선 1회당 수정 파일은 **최대 3개**까지입니다(evolution 기록 파일은 카운트 제외).
+**가드레일 (HARD)**: 자가 개선은 **`AGENTS.md`와 `.claude/agents/` 파일만** 수정합니다(`.moai/evolution/`의 신호·진단·이관 기록 파일은 예외). 스킬 본문·플러그인 파일은 건드리지 않습니다. 개선 1회당 수정 파일은 **최대 3개**까지입니다(evolution 기록 파일은 카운트 제외).
 
 ## 플러그인 업데이트 동기화 (`update`)
 
@@ -135,7 +135,7 @@ for f in ./.codex/agents/*.toml ~/.codex/agents/*.toml; do [ -f "$f" ] && basena
 
 1. **전수조사(Full Census)** — `~/.claude/plugins/moai-*`와 `~/.codex/plugins/` 양쪽을 전체 스캔해 각 플러그인의 `plugin.json`(ChatGPT Work는 `.codex-plugin/plugin.json`) + `skills/` + MCP 정의를 조사. 기존 `.moai/config.json` 스냅샷과 비교해 **새 스킬·새 MCP·변경된 스킬**의 diff를 도출합니다.
 2. **세션 신호 분석** — `.moai/evolution/signals.md`(누적 교정·체인 실패 신호) + `.moai/context.md`(프로젝트 맥락)를 읽어, 업데이트된 스킬이 기존 신호를 해소할 수 있는지 교차 확인합니다.
-3. **CLAUDE.md·에이전트 동기화** — diff에 맞춰 `CLAUDE.md`/`AGENTS.md` §워크플로우 표와 `.claude/agents/*.md`·`.codex/agents/*.toml`의 스킬 체인을 최소 diff로 갱신. 200라인 예산·8개 HARD 블록 보존 정책은 그대로 따릅니다.
+3. **AGENTS.md·에이전트 동기화** — diff에 맞춰 `AGENTS.md` §워크플로우 표와 `.claude/agents/*.md`·`.codex/agents/*.toml`의 스킬 체인을 최소 diff로 갱신. 200라인 예산·8개 HARD 블록 보존 정책은 그대로 따릅니다.
 4. **스냅샷 갱신** — `.moai/config.json`의 `plugins_installed` + `skills_available` 스냅샷을 새 인벤토리로 갱신(`inventory drift`를 0으로 리셋). `<!-- evolution-log -->`에 1줄 기록(트리거 토큰 `inventory drift` + 동기화 요지).
 5. **검증 + 롤백** — 동일한 `inventory drift` 신호가 다시 발동하면 실패한 동기화로 판정해 `.moai/evolution/` 원문 조각으로 롤백합니다.
 
@@ -146,7 +146,7 @@ for f in ./.codex/agents/*.toml ~/.codex/agents/*.toml; do [ -f "$f" ] && basena
 | 커맨드 | 동작 |
 |--------|------|
 | `/project <지시>` | 진입 — 인터뷰 후 에이전트/체인 설계 + 생성. **기본 동작.** |
-| `/project update` | 플러그인 업데이트 후 전수조사 → CLAUDE.md·에이전트 재동기화 |
+| `/project update` | 플러그인 업데이트 후 전수조사 → AGENTS.md·에이전트 재동기화 |
 | `/project evolve` | 재귀적 자가 개선 수동 발동 |
 | `/project doctor` | 환경 진단 |
 
@@ -166,9 +166,9 @@ PM은 라우팅 허브이므로 별도의 실행 코워커(worker)·검수 코�
 
 **1. 비개발자의 첫 프로젝트.** 온라인 강의를 준비하는 강사가 "강의 준비 프로젝트 시작하고 싶어"라고 말합니다. PM이 폴더에 튜터·마케터 지침과 워크플로우를 깔아 주고, 이후에는 "커리큘럼 짜줘" 같은 요청이 바로 튜터에게 연결됩니다.
 
-**2. 여러 코워커를 함께 쓰는 세팅.** 쇼핑몰 운영자가 "셀러랑 CS랑 마케터 같이 쓸 거야"라고 요청하면, PM이 세 코워커의 역할 분담이 담긴 CLAUDE.md를 생성해 요청이 서로 엉키지 않게 정리합니다. AI 코워커 플러그인이 있습니다.
+**2. 여러 코워커를 함께 쓰는 세팅.** 쇼핑몰 운영자가 "셀러랑 CS랑 마케터 같이 쓸 거야"라고 요청하면, PM이 세 코워커의 역할 분담이 담긴 지침을 생성해 요청이 서로 엉키지 않게 정리합니다. AI 코워커 플러그인이 있습니다.
 
-**3. 쓰면서 다듬기.** 프로젝트를 한동안 쓰다 보면 실제 작업 방식이 처음 세팅과 달라집니다. `/project evolve`라고 말하면 PM이 그동안의 사용 신호를 살펴 워크플로우와 커스텀 에이전트를 다시 손봐 줍니다. 플러그인이 업데이트되면 `/project update`로 전체 인벤토리를 다시 조사해 CLAUDE.md와 에이전트를 최신 상태로 동기화합니다.
+**3. 쓰면서 다듬기.** 프로젝트를 한동안 쓰다 보면 실제 작업 방식이 처음 세팅과 달라집니다. `/project evolve`라고 말하면 PM이 그동안의 사용 신호를 살펴 워크플로우와 커스텀 에이전트를 다시 손봐 줍니다. 플러그인이 업데이트되면 `/project update`로 전체 인벤토리를 다시 조사해 지침과 에이전트를 최신 상태로 동기화합니다.
 
 ## 설치 확인
 

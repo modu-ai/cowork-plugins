@@ -2,14 +2,14 @@
 
 ## 개요
 
-`/project`는 모두의 코워크 프로젝트를 초기화하고, 사용자의 업무 워크플로우를 인터뷰한 뒤, **스킬 체이닝 + 프로젝트 전용 커스텀 에이전트 기반 CLAUDE.md**를 생성한다.
+`/project`는 모두의 코워크 프로젝트를 초기화하고, 사용자의 업무 워크플로우를 인터뷰한 뒤, **스킬 체이닝 + 프로젝트 전용 커스텀 에이전트 기반 AGENTS.md**(폴더 지침 정본)와 이를 불러오는 `CLAUDE.md` 포인터를 생성한다.
 
 **현재 상태**:
 - Phase 2 인벤토리는 설치된 플러그인을 **동적으로 도출**(plugin.json 스캔)하여 신규 플러그인을 자동 포함한다.
 - Phase 4 Gap Detection: 체인 스킬 ↔ 인벤토리 대조 → 누락 감지 → 설치 안내 → Re-entry.
 - 설치 완료 후 사용자가 "이어서 진행"·"설치 완료"라고 하면 저장된 진행 상태에서 재개한다(자연어 단일 경로).
 - 글로벌 프로필 시스템은 사용하지 않는다(이름·회사·역할 재질문 없음).
-- 생성 `CLAUDE.md`에 8개 HARD 규칙 블록이 고정 포함된다.
+- 생성 `AGENTS.md`에 8개 HARD 규칙 블록이 고정 포함된다.
 
 ---
 
@@ -28,7 +28,7 @@ Phase 4: Gap Detection — 누락 플러그인/스킬 감지 + 설치 안내
     ↓ (누락 0건이거나 옵션 2/3 선택 시)
 Phase 5: 설계 확인 (AskUserQuestion)
     ↓
-Phase 6: CLAUDE.md 생성 (CLAUDE.md.tmpl 기반, ≤200라인)
+Phase 6: 지침 생성 (AGENTS.md.tmpl 기반 AGENTS.md ≤200라인 + CLAUDE.md 포인터)
     ↓
 Phase 7: 커스텀 에이전트 생성 (.claude/agents/*.md + .codex/agents/*.toml)
     ↓
@@ -59,7 +59,7 @@ Phase 8: API 키 / 커넥터 + 첫 실행 안내
 | ⑧ | 반드시 피할 것 | 4옵션(+Other) | 과장·단정 표현 / 특정 경쟁사 언급 / 개인정보 노출 / 없음 |
 | ⑨ | 배경·동기 (소크라테스 축) | 4옵션(+Other) | 신규 사업 착수 / 기존 업무 자동화 / 품질 편차 해소 / 인력 부족 보완 |
 
-**슬롯 채우기 규칙 (HARD)**: 진입 발화·기존 `./CLAUDE.md`·`.moai/context.md`에서 **이미 확보된 축은 질문 목록에서 제거**하고, 빈 슬롯은 다음 순위 축으로 채워 **항상 4슬롯을 채운다**. 남은 축이 4개 미만이면 그만큼만 낸다.
+**슬롯 채우기 규칙 (HARD)**: 진입 발화·기존 `./AGENTS.md`·`.moai/context.md`에서 **이미 확보된 축은 질문 목록에서 제거**하고, 빈 슬롯은 다음 순위 축으로 채워 **항상 4슬롯을 채운다**. 남은 축이 4개 미만이면 그만큼만 낸다.
 
 **작성 규칙**: 모든 옵션에 `description`(선택 시 무엇이 달라지는지)을 붙인다. 첫 옵션에만 `(권장)` 라벨. 자유 서술이 필요한 축은 `Other`로 흡수한다(별도 텍스트 질문을 만들지 않는다).
 
@@ -78,7 +78,7 @@ Phase 8: API 키 / 커넥터 + 첫 실행 안내
 
 ### 종료 판정
 
-라운드 수를 미리 정하지 않는다. **A등급 + 필수 B등급이 채워지면 종료**한다. 수집 결과는 메모리에 임시 저장되며, Phase 6에서 `CLAUDE.md`에 직접 기록된다. 별도 `moai-profile.md`를 생성하지 않는다.
+라운드 수를 미리 정하지 않는다. **A등급 + 필수 B등급이 채워지면 종료**한다. 수집 결과는 메모리에 임시 저장되며, Phase 6에서 `AGENTS.md`에 직접 기록된다. 별도 `moai-profile.md`를 생성하지 않는다.
 
 ---
 
@@ -210,9 +210,10 @@ for each skill in chain_skills:
 ### 4-4. 옵션 1 선택 시: 설치 안내 흐름
 
 ```
-1. 누락 플러그인별 설치 명령 안내:
-   /plugin install moai-coworker@moai-cowork   (또는 해당 플러그인)
-   (최초 1회 마켓 등록: /plugin marketplace add modu-ai/moai-cowork)
+1. 누락 플러그인별 설치 안내 (데스크톱 앱 — /plugin 슬래시 명령은 Claude Code 전용이라 안내하지 않음):
+   - 앱 UI: Plugins 메뉴 → 해당 플러그인 Install
+   - 터미널: claude plugin install <플러그인>@moai-cowork (Claude Cowork) / codex plugin add <플러그인>@moai-cowork (ChatGPT Work)
+   (최초 1회 마켓 등록: Marketplace에서 modu-ai/moai-cowork 추가, 또는 claude/codex plugin marketplace add modu-ai/moai-cowork)
 
 2. .moai/cache/init-progress.json 저장
 
@@ -238,7 +239,7 @@ for each skill in chain_skills:
 
 ### 4-6. 옵션 2/3 선택 시
 
-옵션 2(제외): `missing_skills`에 해당하는 체인 단계를 제거하고 Phase 5로 진행하며, `CLAUDE.md`의 해당 체인에 미설치 주석을 삽입한다. 옵션 3(대체): `inventory.skills_available`에서 유사 기능 스킬을 검색해 재설계 후 Phase 5로 진행한다.
+옵션 2(제외): `missing_skills`에 해당하는 체인 단계를 제거하고 Phase 5로 진행하며, `AGENTS.md`의 해당 체인에 미설치 주석을 삽입한다. 옵션 3(대체): `inventory.skills_available`에서 유사 기능 스킬을 검색해 재설계 후 Phase 5로 진행한다.
 
 ### 4-7. 누락 0건이면
 
@@ -252,9 +253,9 @@ for each skill in chain_skills:
 
 ---
 
-## Phase 6: CLAUDE.md 생성
+## Phase 6: 지침 생성 (AGENTS.md 정본 + CLAUDE.md 포인터)
 
-`references/templates/CLAUDE.md.tmpl`을 로드하여 변수를 치환한다. 상세 변수 치환 테이블·생성 절차는 `claudemd-generator.md` 참조. 생성 원칙: ≤200라인, 스킬 체인 최대 10개, 8개 HARD 규칙 블록 항상 포함, UTF-8/LF/한국어.
+`references/templates/AGENTS.md.tmpl`을 로드하여 변수를 치환하고 `./AGENTS.md`에 쓴다. 이어서 `references/templates/CLAUDE.md.tmpl`을 **치환 없이 그대로** `./CLAUDE.md`에 복사해 `@AGENTS.md` 포인터를 만든다(본문 복제 금지). 상세 변수 치환 테이블·생성 절차·포인터 규칙은 `agentsmd-generator.md` 참조. 생성 원칙: AGENTS.md ≤200라인, 스킬 체인 최대 10개, 8개 HARD 규칙 블록 항상 포함, UTF-8/LF/한국어.
 
 ---
 

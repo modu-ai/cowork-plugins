@@ -6,7 +6,7 @@ geekdocBreadcrumb: false
 # DS v2 parity — 홈은 사이드바/TOC 없이 전폭 랜딩 (design-system/handoff/*.dc.html isHome)
 geekdocNav: false
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-10T00:00:00+09:00
 ---
 
 <div class="cw-hero">
@@ -164,7 +164,7 @@ lastmod: 2026-08-07T00:00:00+09:00
     <div class="cw-qstart-card">
       <div class="cw-qstart-step">Step 02</div>
       <div class="cw-qstart-title">자연어로 일 위임</div>
-      <p class="cw-qstart-desc">프로젝트 지침(CLAUDE.md, AGENTS.md) 셋팅이 완료되면, 자연어로 일을 지시하세요.</p>
+      <p class="cw-qstart-desc">프로젝트 지침(AGENTS.md) 셋팅이 완료되면, 자연어로 일을 지시하세요.</p>
       <pre class="cw-qstart-pre">블로그 초안 작성해줘</pre>
     </div>
   </div>

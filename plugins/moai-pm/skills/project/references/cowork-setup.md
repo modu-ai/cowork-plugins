@@ -1,6 +1,6 @@
 # cowork-setup.md — 코워커·작가 8-Phase 정본 (cowork 분기)
 
-> **project 스킬(플러그인 패밀리 허브)의 코워커·작가 분기 정본.** 실무(business·content·office·법무·세무·이커머스·미디어)와 글쓰기 작가(story·book·웹툰·웹소설·시나리오) 두 역할을 자동 감지해, 대상 직원 플러그인의 스킬 체인으로 `CLAUDE.md`와 프로젝트 전용 커스텀 에이전트를 생성한다. 생성된 `CLAUDE.md`는 런타임에 작업을 **워크플로우 체인과 스킬 호출로 라우팅**한다: 산출물 요청 → 체인 매칭 → 순차 실행 → ai-slop 종료.
+> **project 스킬(플러그인 패밀리 허브)의 코워커·작가 분기 정본.** 실무(business·content·office·법무·세무·이커머스·미디어)와 글쓰기 작가(story·book·웹툰·웹소설·시나리오) 두 역할을 자동 감지해, 대상 직원 플러그인의 스킬 체인으로 `AGENTS.md`(정본)와 프로젝트 전용 커스텀 에이전트를 생성한다. 생성된 `AGENTS.md`는 런타임에 작업을 **워크플로우 체인과 스킬 호출로 라우팅**한다: 산출물 요청 → 체인 매칭 → 순차 실행 → ai-slop 종료.
 
 ---
 
@@ -16,7 +16,7 @@
 
 ## 0. 이 분기가 담당하는 것
 
-사용자가 "새 프로젝트 시작", "프로젝트 설정 도와줘", "CLAUDE.md 만들어줘"처럼 **실무·콘텐츠·작업 자동화** 맥락으로 진입할 때 이 분기가 동작한다. 디자인은 `designer-setup.md`로 라우팅된다(project 스킬 SKILL.md §라우팅 참조). 개발 환경 셋업은 이 마켓플레이스의 범위 밖이다.
+사용자가 "새 프로젝트 시작", "프로젝트 설정 도와줘", "AGENTS.md 만들어줘"처럼 **실무·콘텐츠·작업 자동화** 맥락으로 진입할 때 이 분기가 동작한다. 디자인은 `designer-setup.md`로 라우팅된다(project 스킬 SKILL.md §라우팅 참조). 개발 환경 셋업은 이 마켓플레이스의 범위 밖이다.
 
 **담당 역할 2종** (Phase 3 역할 라벨 — 내부 모자 교체):
 
@@ -40,7 +40,7 @@ Phase 1 인터뷰 첫 질문 전, 사용자 발화에서 역할 힌트를 빠르
 | 소설·웹툰·웹소설·시나리오·콘티·출판·원고 | **글쓰기 작가** | `book-concept-planner` / `story-webtoon-planner` / `story-webnovel-writer` |
 | 캐릭터 시트·표지 일러스트·프리비즈·IP 피칭 | **글쓰기 작가** | `story-character-sheet` / `story-cover-art` / `story-ip-pitch` |
 
-감지된 역할은 `CLAUDE.md` 페르소나에 `[실무 동료 모자]` / `[글쓰기 작가 모자]` 라벨로 기록된다.
+감지된 역할은 `AGENTS.md` 페르소나에 `[실무 동료 모자]` / `[글쓰기 작가 모자]` 라벨로 기록된다.
 
 ---
 
@@ -48,7 +48,7 @@ Phase 1 인터뷰 첫 질문 전, 사용자 발화에서 역할 힌트를 빠르
 
 ```
 Phase 1 인터뷰 → Phase 2 인벤토리 → Phase 3 체인 설계 → Phase 4 Gap Detection
-  → Phase 5 확인 → Phase 6 CLAUDE.md 생성 → Phase 7 커스텀 에이전트 생성 → Phase 8 API 키 + 첫 실행 안내
+  → Phase 5 확인 → Phase 6 지침 생성(AGENTS.md + CLAUDE.md 포인터) → Phase 7 커스텀 에이전트 생성 → Phase 8 API 키 + 첫 실행 안내
 ```
 
 | Phase | 핵심 | 산출물 |
@@ -58,7 +58,7 @@ Phase 1 인터뷰 → Phase 2 인벤토리 → Phase 3 체인 설계 → Phase 4
 | **3 체인 설계** | 인터뷰 + 인벤토리 + 재진입 시 기존 맥락, 3종 입력을 종합해 산출물별 스킬 체인 설계(§3 프리셋). 텍스트 체인은 `ai-slop-reviewer` 종료 | chain_design + 설계 근거 |
 | **4 Gap Detection** | 체인 스킬 ↔ 인벤토리 대조 → 누락 시 설치 안내 + "이어서 진행" 재개 | 진행 상태 |
 | **5 확인** | 설계된 체인 `AskUserQuestion` 승인 — 요약에 설계 근거 표시 | 승인/수정/취소 |
-| **6 지침 생성** | `references/templates/CLAUDE.md.tmpl` 치환, ≤200라인, HARD 블록 8종 고정 — 동일 내용을 CLAUDE.md(Claude)+AGENTS.md(Codex) 두 파일로 | `./CLAUDE.md` + `./AGENTS.md` |
+| **6 지침 생성** | `references/templates/AGENTS.md.tmpl` 치환, ≤200라인, HARD 블록 8종 고정 — 정본은 AGENTS.md 한 파일. `CLAUDE.md`는 `CLAUDE.md.tmpl` 그대로 복사한 `@AGENTS.md` 포인터 | `./AGENTS.md` + `./CLAUDE.md`(포인터) |
 | **7 커스텀 에이전트 생성** | 반복 작업 유형별 Claude `.claude/agents/*.md`(markdown+frontmatter) + Codex `.codex/agents/*.toml`(TOML) 양쪽 생성 | `.claude/agents/*.md` + `.codex/agents/*.toml` |
 | **8 API 키 + 첫 실행 안내** | 체인이 요구하는 키만 선택적 등록 안내 + 상위 체인 3개 예시 | 안내 메시지 |
 
@@ -70,7 +70,7 @@ Phase 3 체인 설계는 인터뷰 답변→프리셋 매칭으로 직행하지 
 
 1. **Phase 1 인터뷰 답변** — 업무 유형·주 산출물·톤 제약
 2. **Phase 2 인벤토리** — 설치된 스킬 실측(없는 스킬로 체인을 설계하지 않는다)
-3. **재진입 시 기존 맥락** — `./CLAUDE.md` 프로젝트 개요 + `.moai/context.md` 누적 맥락(신규 프로젝트면 인터뷰 답변이 유일한 맥락 소스)
+3. **재진입 시 기존 맥락** — `./AGENTS.md` 프로젝트 개요 + `.moai/context.md` 누적 맥락(신규 프로젝트면 인터뷰 답변이 유일한 맥락 소스)
 
 기록 규칙: 각 체인에 근거를 1줄로 남긴다 — 예: `사업계획서(PPT) 체인 ← 인터뷰 Q2 "투자유치 문서" + 맥락: 기존 IR 덱 산출 이력`.
 
@@ -111,7 +111,7 @@ Phase 3 체인 설계는 인터뷰 답변→프리셋 매칭으로 직행하지 
 | 표지·일러스트 | `story-cover-art` (Higgsfield 생성) |
 | IP 사업화·판권 | `story-ip-pitch` (단일) |
 
-스토리 분기의 진입 분류는 `moai-story` 플러그인의 `story-project` 스킬이 담당한다. `CLAUDE.md` 생성 시 `story-project` 라우팅 규칙을 워크플로우 섹션에 명시하여, 실행 시점에 `moai-story:story-project`가 장르 파이프라인으로 자동 분기한다.
+스토리 분기의 진입 분류는 `moai-story` 플러그인의 `story-project` 스킬이 담당한다. `AGENTS.md` 생성 시 `story-project` 라우팅 규칙을 워크플로우 섹션에 명시하여, 실행 시점에 `moai-story:story-project`가 장르 파이프라인으로 자동 분기한다.
 
 ### 3-3. 미디어 체인 (Higgsfield / ElevenLabs MCP)
 
@@ -126,9 +126,9 @@ Phase 3 체인 설계는 인터뷰 답변→프리셋 매칭으로 직행하지 
 ## 3.5 인용·저작권 가드 (HARD — content/book/story 체인)
 
 <!-- @MX:WARN: [AUTO] 법적 위험 영역 — 인용·저작권 가드 규칙 블록. 완화·삭제 시 content/book/story 체인 산출물이 저작권 침해에 노출된다 -->
-<!-- @MX:REASON: content-*·book-*·story-* 체인은 외부 자료(기사·서적·가사·시)를 다루는 빈도가 가장 높다. 생성 CLAUDE.md의 인용·저작권 가드 HARD 블록과 쌍으로 유지해야 한다 -->
+<!-- @MX:REASON: content-*·book-*·story-* 체인은 외부 자료(기사·서적·가사·시)를 다루는 빈도가 가장 높다. 생성 AGENTS.md의 인용·저작권 가드 HARD 블록과 쌍으로 유지해야 한다 -->
 
-코워커 체인이 외부 자료(기사·서적·가사·시 등)를 인용하거나 요약할 때 — 특히 `content-*`·`book-*`·`story-*` 체인 — 다음 규칙이 HARD로 적용된다. Phase 6에서 생성되는 `CLAUDE.md`에도 동일 블록이 고정 포함된다(`claudemd-generator.md` 참조).
+코워커 체인이 외부 자료(기사·서적·가사·시 등)를 인용하거나 요약할 때 — 특히 `content-*`·`book-*`·`story-*` 체인 — 다음 규칙이 HARD로 적용된다. Phase 6에서 생성되는 `AGENTS.md`에도 동일 블록이 고정 포함된다(`agentsmd-generator.md` 참조).
 
 - **직접 인용은 원문 15단어 미만, 출처당 최대 1회**
 - **가사·시는 한 줄도 전문 재현하지 않는다**
@@ -157,17 +157,18 @@ Phase 3 체인의 스킬이 인벤토리에 없으면 누락으로 간주한다.
 
 ---
 
-## 5. 프로젝트 지침(CLAUDE.md + AGENTS.md) 생성 규칙 (코워커 분기)
+## 5. 프로젝트 지침(AGENTS.md 정본 + CLAUDE.md 포인터) 생성 규칙 (코워커 분기)
 
-`references/templates/CLAUDE.md.tmpl` 변수 치환 후, **동일 내용을 CLAUDE.md(Claude)와 AGENTS.md(Codex·ChatGPT Work) 두 파일로 저장**. 규칙:
+`references/templates/AGENTS.md.tmpl` 변수 치환 후 **`AGENTS.md` 한 파일에만 저장**하고, `references/templates/CLAUDE.md.tmpl`을 치환 없이 복사해 `CLAUDE.md` 포인터를 만든다(본문 복제 금지). 규칙:
 
 1. **≤200라인**, 스킬 체인은 최대 10개(나머지는 사용자가 "어떤 직원 있어?"로 물을 때 안내)
 2. **역할 라벨** — 감지된 역할(실무/글쓰기 작가)을 페르소나에 명시
 3. **HARD 규칙 고정** — office 스킬 우선 + 텍스트 산출물 `ai-slop-reviewer` 종료 + 요청 평가 사다리·파일 생성 기준·인용·저작권 가드(§3.5)·톤 규칙·맥락 적용 규칙. 200라인 초과 시 축소 대상은 체인만이다.
 4. **스킬 참조 정합** — 모든 스킬 참조는 소속 플러그인 접두어를 사용한다.
 5. **작가 분기 시** — `story-project` 라우팅 규칙을 워크플로우에 명시한다.
+6. **포인터 무결성** — `CLAUDE.md`의 첫 비어있지 않은 줄은 정확히 `@AGENTS.md`이며 백틱으로 감싸지 않는다(감싸면 조용히 실패한다).
 
-상세 변수 치환 테이블·HARD 규칙 블록은 `references/claudemd-generator.md` 참조.
+상세 변수 치환 테이블·HARD 규칙 블록·포인터 규칙은 `references/agentsmd-generator.md` 참조.
 
 ---
 
@@ -177,7 +178,7 @@ Phase 3 체인의 스킬이 인벤토리에 없으면 누락으로 간주한다.
 |------|------|
 | 인터뷰 스키마·인벤토리·Re-entry 상세 | `init-protocol.md` |
 | 맥락 수집 등급(A/B/C)·S1/S2 라운드 기준 | `context-collector.md` |
-| CLAUDE.md 변수 치환·200라인 예산·HARD 규칙 블록 | `claudemd-generator.md` |
+| AGENTS.md 변수 치환·200라인 예산·HARD 규칙 블록·CLAUDE.md 포인터 | `agentsmd-generator.md` |
 | 스킬 체인 순차 실행·검증 깊이 사다리 | `execution-protocol.md` |
 | 5차원 평가(정확성·완전성·실용성·톤·도메인) | `evaluation-protocol.md` |
 | 환경 진단(`/project doctor`) | `diagnostic-protocol.md` |
