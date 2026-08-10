@@ -13,14 +13,14 @@ description: |
   - "부동산 등기부등본 100건", "주소 목록으로 부동산 등기 한꺼번에"
   - "TouchEn nxKey", "공동인증서 등기 발급", "법인 결제 페이지당 10건"
   - 사업자등록번호 → 법인등기 매핑, 다운로드한 등기 PDF로 종합 리포트 만들기
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # 인터넷등기소 등기부등본 자동화
 
 대법원 인터넷등기소(IROS)에서 **법인·부동산 등기부등본**을 묶음 단위로 발급해야 할 때, 사용자가 직접 로그인·결제하는 흐름 안에서 장바구니·열람·저장을 안전하게 보조합니다. 실사·법무 검토·법인 일괄 관리에 사용합니다.
 
-> 본 스킬은 [`NomaDamas/k-skill`](https://github.com/NomaDamas/k-skill) (MIT) 경유 포팅이며, 원 저작자는 [`challengekim/iros-registry-automation`](https://github.com/challengekim/iros-registry-automation) (MIT) 참고 구현입니다. cowork 컨벤션을 입혀 정리한 가이드이며, 어트리뷰션은 프로젝트 루트 `NOTICE.md`에 기록됩니다.
+> 본 스킬은 [`NomaDamas/k-skill`](https://github.com/NomaDamas/k-skill) (MIT) 경유 포팅이며, 원 저작자는 [`challengekim/iros-registry-automation`](https://github.com/challengekim/iros-registry-automation) (MIT) 참고 구현입니다. cowork 컨벤션을 입혀 정리한 가이드이며, 어트리뷰션은 저장소 루트 `NOTICE` §1.4·§1.5에 기록되어 있습니다.
 
 ## Hard Limits — 사용자가 반드시 직접 수행
 

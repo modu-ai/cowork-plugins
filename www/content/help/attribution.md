@@ -41,9 +41,14 @@ lastmod: 2026-08-10T00:00:00+09:00
 | 마케터 | 메타 광고 진단 체크 매트릭스 | [AgriciDaniel/claude-ads](https://github.com/AgriciDaniel/claude-ads) | MIT |
 | 미디어 크리에이터 | GPT 이미지 프롬프트 빌더 | [openai/openai-cookbook](https://github.com/openai/openai-cookbook) | MIT |
 | 작가 | 한국어 윤문 | [epoko77-ai/im-not-ai](https://github.com/epoko77-ai/im-not-ai) | MIT |
+| 데이터 애널리스트 · 법무 · 작가 | 주식 · 법원경매 · 부동산 · 등기 · 식약처 · 맞춤법 스킬 | [NomaDamas/k-skill](https://github.com/NomaDamas/k-skill) | MIT |
+| 법무 담당 | 등기 열람 자동화 절차 | [challengekim/iros-registry-automation](https://github.com/challengekim/iros-registry-automation) | MIT |
+| 데이터 애널리스트 | 부동산 데이터 | [tae0y/real-estate-mcp](https://github.com/tae0y/real-estate-mcp) | MIT |
 | 사무관 | PDF 생성용 한글 폰트 | [notofonts/noto-cjk](https://github.com/notofonts/noto-cjk) | SIL OFL 1.1 |
 
-라이선스 전문은 저장소 루트의 [NOTICE](https://github.com/modu-ai/moai-cowork/blob/main/NOTICE) 파일에 그대로 들어 있습니다. 재배포하실 때는 이 파일을 함께 가져가시면 표기 의무가 충족됩니다.
+MIT 항목의 저작권 문구와 허가 문구 전문은 저장소 루트의 [NOTICE](https://github.com/modu-ai/moai-cowork/blob/main/NOTICE) §1에 항목별로 들어 있습니다. 재배포하실 때 이 파일을 함께 가져가시면 표기 의무가 충족됩니다.
+
+폰트는 사정이 조금 다릅니다. Noto Sans CJK KR의 바이너리는 저장소에 들어 있지 않고 스킬을 처음 실행할 때 내려받습니다. 따라서 내려받은 폰트를 산출물과 **함께 재배포할 때만** OFL 고지 의무가 생기며, 그 라이선스 전문은 `plugins/moai-officer/skills/doc-pdf/assets/fonts/LICENSE.txt`에 있습니다.
 
 ### 라이선스가 요구하지는 않지만 밝히는 것이 좋은 참고처
 
@@ -54,9 +59,7 @@ lastmod: 2026-08-10T00:00:00+09:00
 | 미디어 크리에이터 · 디자이너 | Higgsfield 프롬프트 크래프트 | [higgsfield-ai/skills](https://github.com/higgsfield-ai/skills) |
 | 미디어 크리에이터 | Codex 이미지 연동 | [wjb127/codex-image](https://github.com/wjb127/codex-image) |
 | 사무관 | 한글 문서(HWPX) 처리 | [airmang/python-hwpx](https://github.com/airmang/python-hwpx) |
-| 법무 담당 | 등기 열람 자동화 절차 | [challengekim/iros-registry-automation](https://github.com/challengekim/iros-registry-automation) |
-| 법무 담당 · 데이터 애널리스트 | 한국 실무 스킬 구성 | [NomaDamas/k-skill](https://github.com/NomaDamas/k-skill) |
-| 데이터 애널리스트 | 부동산 · 국내 주식 데이터 | [tae0y/real-estate-mcp](https://github.com/tae0y/real-estate-mcp) · [jjlabsio/korea-stock-mcp](https://github.com/jjlabsio/korea-stock-mcp) |
+| 데이터 애널리스트 | 국내 주식 데이터 설계 참고 | [jjlabsio/korea-stock-mcp](https://github.com/jjlabsio/korea-stock-mcp) |
 | 디자이너 | 한국 디자인 시스템 레퍼런스 | [daangn/seed-design](https://github.com/daangn/seed-design) · [kakao/kakao-font](https://github.com/kakao/kakao-font) · [KRDS-uiux/krds-uiux](https://github.com/KRDS-uiux/krds-uiux) |
 
 ## 3. 밝히기 권장 — 외부 데이터와 생성 서비스가 섞인 경우

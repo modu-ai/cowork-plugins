@@ -16,10 +16,12 @@ description: |
   적용 제외 — 단순 맞춤법·오탈자 교정(직접 처리), 번역(번역 스킬), 내용 추가·삭제 동반 재작성(별도 집필 스킬), 코드·JSON·CSV·차트·표.
 
   한국 번역학계 8유형 번역투 계보를 통합한 10대 카테고리 분류 + 신규 패턴 A-16/A-18/A-19/E-7 + post-editese 14메트릭 기반 한국어 정밀 윤문 스킬입니다.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # Humanize Korean: 한국어 AI 티 제거 (Fast 모드)
+
+> 본 스킬은 [`epoko77-ai/im-not-ai`](https://github.com/epoko77-ai/im-not-ai) (MIT)의 AI 문체 분류 체계에서 출발해 한국 번역학계 계보와 post-editese 메트릭으로 확장한 것입니다. 어트리뷰션은 저장소 루트 `NOTICE` §1.8에 기록되어 있습니다.
 
 ## 개요
 

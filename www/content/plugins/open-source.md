@@ -4,7 +4,7 @@ weight: 50
 description: "모두의 코워크가 어깨를 빌린 오픈소스 프로젝트 목록입니다. 스킬이 참고한 방법론, 함께 쓰는 MCP 서버, 문서 사이트를 떠받치는 도구까지 전부 밝힙니다."
 geekdocBreadcrumb: true
 date: 2026-08-08T00:00:00+09:00
-lastmod: 2026-08-08T00:00:00+09:00
+lastmod: 2026-08-10T00:00:00+09:00
 ---
 
 모두의 코워크는 처음부터 끝까지 혼자 만든 물건이 아닙니다. 남이 먼저 정리해 둔 방법론을
@@ -32,15 +32,17 @@ lastmod: 2026-08-08T00:00:00+09:00
 | [wjb127/codex-image](https://github.com/wjb127/codex-image) | 원저작자 공개 | 미디어 — Codex 이미지 연동 |
 | [airmang/python-hwpx](https://github.com/airmang/python-hwpx) | 원저작자 공개 | 사무관 — 한글 문서(HWPX) 처리 |
 | [notofonts/noto-cjk](https://github.com/notofonts/noto-cjk) | SIL OFL 1.1 | 사무관 — PDF 생성용 한글 폰트 |
-| [challengekim/iros-registry-automation](https://github.com/challengekim/iros-registry-automation) | 원저작자 공개 | 법무 — 등기 열람 자동화 절차 |
-| [NomaDamas/k-skill](https://github.com/NomaDamas/k-skill) | 원저작자 공개 | 법무 — 한국 실무 스킬 구성 참고 |
-| [tae0y/real-estate-mcp](https://github.com/tae0y/real-estate-mcp) | 원저작자 공개 | 데이터 애널리스트 — 부동산 데이터 |
+| [challengekim/iros-registry-automation](https://github.com/challengekim/iros-registry-automation) | MIT | 법무 — 등기 열람 자동화 절차 |
+| [NomaDamas/k-skill](https://github.com/NomaDamas/k-skill) | MIT | 데이터 애널리스트 · 법무 · 작가 — 한국 실무 스킬 6종의 포팅 원본 |
+| [tae0y/real-estate-mcp](https://github.com/tae0y/real-estate-mcp) | MIT | 데이터 애널리스트 — 부동산 데이터 |
 | [jjlabsio/korea-stock-mcp](https://github.com/jjlabsio/korea-stock-mcp) | 원저작자 공개 | 데이터 애널리스트 — 국내 주식 데이터 |
 | [daangn/seed-design](https://github.com/daangn/seed-design) · [kakao/kakao-font](https://github.com/kakao/kakao-font) · [KRDS-uiux/krds-uiux](https://github.com/KRDS-uiux/krds-uiux) | 각 프로젝트 라이선스 | 디자이너 — 한국 디자인 시스템 레퍼런스 |
 | [epoko77-ai/im-not-ai](https://github.com/epoko77-ai/im-not-ai) | MIT | 작가 — 한국어 윤문(`korean-humanize`)의 원본 계보 |
 
-한국어 윤문 스킬은 릴리스 기록상 위 프로젝트의 분류 체계에서 출발해 확장된 것입니다.
-현재 스킬 본문에는 출처 표기가 빠져 있어 이 페이지에서 함께 밝힙니다.
+위 표에서 MIT로 표기된 항목은 라이선스가 저작권 고지를 요구하므로, 저작권 문구와 허가
+문구 전문이 저장소 루트 [`NOTICE`](https://github.com/modu-ai/moai-cowork/blob/main/NOTICE)
+§1에 항목별로 들어 있습니다. 각 스킬 본문에도 원본 링크와 NOTICE 절 번호를 함께 적어
+두었습니다.
 
 ## 함께 쓰는 제3자 MCP 서버
 

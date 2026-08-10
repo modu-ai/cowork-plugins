@@ -8,55 +8,128 @@ See the LICENSE file for the full license text.
 권리는 전적으로 사용자에게 있습니다. 자세한 내용은 LICENSE-OUTPUT.md 를 보세요.
 "모두의 코워크" · "MoAI" 등 상표 사용 규칙은 TRADEMARKS.md 를 보세요.
 
+이 파일의 정확한 이름은 `NOTICE` 입니다(확장자 없음). 일부 문서가 `NOTICE.md` 로
+표기한 적이 있으나 그런 파일은 저장소 루트에 존재하지 않습니다.
+
+사람이 읽기 쉽게 정리한 출처 목록은 다음 문서에 있습니다.
+  https://cowork.mo.ai.kr/plugins/open-source/   (제작자 관점 — 무엇에 빚졌는가)
+  https://cowork.mo.ai.kr/help/attribution/      (사용자 관점 — 무엇을 밝혀야 하는가)
+
+================================================================================
+0. 색인
+================================================================================
+
+  1.1  coreyhaines31/marketingskills            MIT
+  1.2  social-media-skills/skills               MIT
+  1.3  agricidaniel/claude-ads                  MIT
+  1.4  NomaDamas/k-skill                        MIT
+  1.5  challengekim/iros-registry-automation    MIT
+  1.6  tae0y/real-estate-mcp                    MIT
+  1.7  openai/openai-cookbook                   MIT
+  1.8  epoko77-ai/im-not-ai                     MIT
+  2.   notofonts/noto-cjk                       SIL Open Font License 1.1
+  3.   제3자 API 규격 — 저작권 귀속
+  4.   라이선스 적용 제외 — 브랜드 디자인 시스템 참고 자료
+  5.   라이선스 고지 의무가 없는 참고 출처
+
 ================================================================================
 1. 제3자 저작물 — MIT License
 ================================================================================
 
 본 저장소의 아래 파일들은 MIT 라이선스로 배포된 외부 프로젝트의 방법론을
-참고·재구성해 작성되었습니다. MIT 라이선스가 요구하는 저작권 표시와 허가 문구를
-아래에 그대로 포함합니다.
+참고·재구성해 작성되었습니다. MIT 라이선스가 요구하는 저작권 표시를 각 항목에,
+허가 문구를 이 절 끝에 그대로 포함합니다. 허가 문구는 1.1부터 1.8까지 모든
+항목에 공통으로 적용됩니다.
 
 --------------------------------------------------------------------------------
 1.1 coreyhaines31/marketingskills  (https://github.com/coreyhaines31/marketingskills)
+
+Copyright (c) 2025 Corey Haines
 
 해당 파일:
   plugins/moai-marketer/skills/marketing-keyword-research/SKILL.md
   plugins/moai-marketer/skills/marketing-growth-experiment/SKILL.md
   plugins/moai-marketer/skills/marketing-retention/SKILL.md
 
-MIT License
-
-Copyright (c) 2025 Corey Haines
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
 --------------------------------------------------------------------------------
 1.2 social-media-skills/skills  (https://github.com/social-media-skills/skills)
+
+Copyright (c) 2026 Frank Heijdenrijk
 
 해당 파일:
   plugins/moai-marketer/skills/content-sns-content/references/facebook.md
   plugins/moai-marketer/skills/content-sns-content/references/platform-specs.md
     (Facebook 열에 한함)
 
-MIT License
+--------------------------------------------------------------------------------
+1.3 agricidaniel/claude-ads  (https://github.com/AgriciDaniel/claude-ads)
 
-Copyright (c) 2026 Frank Heijdenrijk
+Copyright (c) 2026 agricidaniel
+
+해당 파일:
+  plugins/moai-marketer/skills/marketing-meta-ads-analyzer/SKILL.md
+  plugins/moai-marketer/skills/marketing-meta-ads-analyzer/references/*.md
+
+v1.5.1 의 50개 점검 매트릭스·가중 스코어링·Quick Wins 판정 방법론을 한국 시장에
+맞게 재구성했습니다.
+
+--------------------------------------------------------------------------------
+1.4 NomaDamas/k-skill  (https://github.com/NomaDamas/k-skill)
+
+Copyright (c) 2026
+
+  (원본 LICENSE 파일의 저작권 줄에 이름이 비어 있어 위와 같이 그대로 옮깁니다.
+   권리자는 NomaDamas 프로젝트입니다.)
+
+해당 파일:
+  plugins/moai-analyst/skills/data-stock/SKILL.md
+  plugins/moai-analyst/skills/data-court-auction/SKILL.md
+  plugins/moai-analyst/skills/data-realestate/SKILL.md
+  plugins/moai-lawyer/skills/legal-iros-registry-automation/SKILL.md
+  plugins/moai-lawyer/skills/legal-mfds-safety/SKILL.md
+  plugins/moai-writer/skills/korean-spell-check/SKILL.md
+
+--------------------------------------------------------------------------------
+1.5 challengekim/iros-registry-automation
+    (https://github.com/challengekim/iros-registry-automation)
+
+Copyright (c) 2026 challengekim
+
+해당 파일:
+  plugins/moai-lawyer/skills/legal-iros-registry-automation/SKILL.md
+
+등기 열람 자동화 절차의 참고 구현입니다. 1.4 의 k-skill 을 경유해 포팅했습니다.
+
+--------------------------------------------------------------------------------
+1.6 tae0y/real-estate-mcp  (https://github.com/tae0y/real-estate-mcp)
+
+Copyright 2026 tae0y
+
+해당 파일:
+  plugins/moai-analyst/skills/data-realestate/SKILL.md
+
+--------------------------------------------------------------------------------
+1.7 openai/openai-cookbook  (https://github.com/openai/openai-cookbook)
+
+Copyright (c) 2025 OpenAI
+
+해당 파일:
+  plugins/moai-media/skills/media-gpt-image-2-prompt/SKILL.md
+
+image-gen-models-prompting-guide 의 프롬프트 설계 방법론을 참고했습니다.
+
+--------------------------------------------------------------------------------
+1.8 epoko77-ai/im-not-ai  (https://github.com/epoko77-ai/im-not-ai)
+
+Copyright (c) 2026 epoko77-ai
+
+해당 파일:
+  plugins/moai-writer/skills/korean-humanize/
+
+한국어 윤문 스킬은 이 프로젝트의 AI 문체 분류 체계에서 출발해 확장한 것입니다.
+
+--------------------------------------------------------------------------------
+MIT License 허가 문구 (위 1.1 ~ 1.8 공통)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -77,7 +150,22 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ================================================================================
-2. 제3자 API 규격 — 저작권 귀속
+2. 제3자 폰트 — SIL Open Font License 1.1
+================================================================================
+
+2.1 notofonts/noto-cjk  (https://github.com/notofonts/noto-cjk)
+
+  Noto Sans CJK KR — doc-pdf 스킬의 한국어 PDF 렌더링용 서체입니다.
+
+  라이선스 전문:
+    plugins/moai-officer/skills/doc-pdf/assets/fonts/LICENSE.txt
+
+  폰트 바이너리(*.otf)는 용량 문제로 저장소에 포함하지 않으며, 스킬 최초 실행 시
+  자동으로 내려받습니다. 내려받은 폰트를 산출물과 함께 재배포하는 경우 위 LICENSE.txt
+  를 함께 배포해야 합니다.
+
+================================================================================
+3. 제3자 API 규격 — 저작권 귀속
 ================================================================================
 
 아래 MCP 서버는 각 사업자가 공개한 API 규격(엔드포인트·파라미터·응답 스키마)을
@@ -88,11 +176,13 @@ SOFTWARE.
                                                      https://apicenter.commerce.naver.com
   plugins/moai-seller/mcp-servers/moai-mcp-cafe24      — 카페24 Admin API (Cafe24 Corp.)
   plugins/moai-seller/mcp-servers/moai-mcp-imweb       — 아임웹 OPEN API v3 (Imweb Corp.)
+  plugins/moai-threads-poster/mcp-servers/moai-mcp-threads-poster
+                                                     — Threads API (Meta Platforms, Inc.)
 
 각 서비스의 API 이용약관은 이용자가 직접 확인하고 준수해야 합니다.
 
 ================================================================================
-3. 라이선스 적용 제외 — 브랜드 디자인 시스템 참고 자료
+4. 라이선스 적용 제외 — 브랜드 디자인 시스템 참고 자료
 ================================================================================
 
   plugins/moai-designer/skills/design-system-library/systems/
@@ -105,3 +195,23 @@ SOFTWARE.
 
 자세한 사용 경계는 다음 문서를 보세요:
   plugins/moai-designer/skills/design-system-library/BRAND-NOTICE.md
+
+================================================================================
+5. 라이선스 고지 의무가 없는 참고 출처
+================================================================================
+
+아래는 원저작자가 공개한 자료를 참고했으나 라이선스가 고지를 요구하지 않는
+경우입니다. 의무는 아니지만 출처를 밝혀 둡니다. 전체 목록과 각 항목이 쓰인
+위치는 https://cowork.mo.ai.kr/plugins/open-source/ 에 있습니다.
+
+  higgsfield-ai/skills                 미디어 · 디자이너 — 프롬프트 크래프트
+  wjb127/codex-image                   미디어 — Codex 이미지 연동
+  airmang/python-hwpx                  사무관 — 한글 문서(HWPX) 처리
+  jjlabsio/korea-stock-mcp             데이터 애널리스트 — 국내 주식 데이터 설계 참고
+  daangn/seed-design                   디자이너 — 한국 디자인 시스템 레퍼런스
+  kakao/kakao-font                     디자이너 — 한국 디자인 시스템 레퍼런스
+  KRDS-uiux/krds-uiux                  디자이너 — 한국 디자인 시스템 레퍼런스
+  Agents365-ai/drawio-skill            (해당 스킬은 현재 제공하지 않음)
+
+빠뜨렸거나 잘못 적은 출처가 있다면 아래로 알려 주세요. 확인하는 대로 고칩니다.
+  https://github.com/modu-ai/moai-cowork/issues

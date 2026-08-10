@@ -2,7 +2,7 @@
   "$schema": "https://developers.openai.com/plugins/build/plugins",
   "$comment": "OpenAI/Codex 플러그인 매니페스트. Claude용 .claude-plugin/plugin.json과 나란히 공존. 본체(skills/SKILL.md, .mcp.json)는 양쪽 공유.",
   "name": "moai-lawyer",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "법무 전담 AI 코워커 — 계약 검토·NDA 트리아지·컴플라이언스 점검·법령/판례 리서치·특허 검색/분석·식약처 안전 기준 스킬 10종. 국가법령정보 MCP(korean-law) 연동으로 인용 검증까지 수행합니다. 이런 분께 추천: 1인 사업자·스타트업 운영자. ※ 법률 자문 대체가 아닌 참고 자료입니다.",
   "author": {
     "name": "모두의 AI",

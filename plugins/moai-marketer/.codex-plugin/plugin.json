@@ -2,7 +2,7 @@
   "$schema": "https://developers.openai.com/plugins/build/plugins",
   "$comment": "OpenAI/Codex 플러그인 매니페스트. Claude용 .claude-plugin/plugin.json과 나란히 공존. 본체(skills/SKILL.md, .mcp.json)는 양쪽 공유.",
   "name": "moai-marketer",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "마케팅 전담 AI 코워커 — 캠페인 기획·퍼포먼스 분석·키워드 리서치·그로스 실험·리텐션(marketing-* 14종), 블로그·뉴스레터·SNS 콘텐츠(content-* 7종) 스킬 21종. Meta Ads·게시 채널 MCP 연동. 미디어 생성(media-*)은 moai-media 플러그인으로 분리. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 마케터·콘텐츠 크리에이터·1인 브랜드.",
   "author": {
     "name": "모두의 AI",

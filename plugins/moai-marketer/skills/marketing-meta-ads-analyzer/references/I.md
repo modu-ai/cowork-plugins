@@ -96,7 +96,7 @@
 
 ```
 Methodology adapted from agricidaniel/claude-ads v1.5.1 (MIT).
-Korean market adaptation by MoAI-ADK. See NOTICE.md (project root).
+Korean market adaptation by MoAI-ADK. See NOTICE §1.3 (project root).
 ```
 
 HTML 대시보드: Footer에 소문자로 표기.

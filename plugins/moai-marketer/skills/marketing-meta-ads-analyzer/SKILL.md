@@ -13,7 +13,7 @@ description: |
   - "광고 보고서 엑셀 올릴게, 분석해줘"
   퍼널·KPI·지면·연령·성별·누수까지 분석해 HTML·DOCX·PPTX·MD 중 원하는 형식으로 보고서를 만들고, 문서 텍스트는 moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize으로 다듬습니다.
   [책임 경계] vs marketing-pixel-audit·marketing-landing-page-conversion-audit: 이 스킬=광고관리자 데이터 사후 분석, 저 스킬=픽셀 인프라 진단·랜딩 진단.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # 메타 광고 보고서 분석기 (Meta Ads Analyzer)
@@ -30,7 +30,7 @@ version: "1.1.0"
 4. **가독성 우선 출력** — 7-Level 계층형 구조로 요약부터 시뮬레이션까지 단계적 공개
 5. **인구통계 차원 통합 분석** — 노출지면 × 연령 × 성별 4차원 교차 분석 지원
 
-> **Attribution**: Methodology adapted from agricidaniel/claude-ads v1.5.1 (MIT). 50-check audit matrix, weighted scoring, Quick Wins logic → 한국 시장 적용 (Korean market adaptation). 상세: `NOTICE.md §agricidaniel/claude-ads`.
+> **Attribution**: Methodology adapted from agricidaniel/claude-ads v1.5.1 (MIT). 50-check audit matrix, weighted scoring, Quick Wins logic → 한국 시장 적용 (Korean market adaptation). 상세: 저장소 루트 `NOTICE` §1.3.
 
 ---
 
