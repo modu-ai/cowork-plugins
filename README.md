@@ -120,40 +120,39 @@ MoAI-Cowork는 이 분들이 "**하고 싶은 일만 말하면 시작**" 할 수
 
 마켓플레이스 주소를 추가합니다. (마켓플레이스 = "설치할 수 있는 앱 목록이 모여 있는 곳", 앱 스토어처럼 생각하시면 됩니다.)
 
+두 데스크톱 앱 모두 같은 방식입니다 — **설정(Settings) 또는 플러그인(Plugins) 메뉴 → 마켓플레이스(Marketplace)**에서 주소 `modu-ai/moai-cowork`를 추가합니다. 등록이 끝나면 직원 목록이 표시됩니다.
+
 <!-- ▼ 이미지 삽입 자리 — 마켓플레이스 등록 화면. 링크를 주시면 아래 줄의 TODO를 실제 이미지로 교체합니다. -->
 <!-- ![마켓플레이스 등록 화면](TODO-사용자-제공-이미지-링크) -->
 
+**터미널에 익숙하다면 (대안)** — 명령 한 줄로도 등록할 수 있습니다.
+
 ```bash
-# Claude Cowork 또는 ChatGPT Work 앱 안에서
-/plugin marketplace add modu-ai/moai-cowork
+claude plugin marketplace add modu-ai/moai-cowork   # Claude Cowork CLI
+codex plugin marketplace add modu-ai/moai-cowork    # ChatGPT Work CLI
 ```
 
-> 앱별 정확한 클릭 경로와 잘 안 될 때 대처법은 [플러그인 설치와 관리](https://cowork.mo.ai.kr/plugins/install/) 1절에 정리해 두었습니다. 동기화가 끝나면 직원 목록이 표시됩니다.
+> 앱별 정확한 클릭 경로와 잘 안 될 때 대처법은 [플러그인 설치와 관리](https://cowork.mo.ai.kr/plugins/install/) 1절에 정리해 두었습니다.
 
 ### 2. 플러그인 설치
 
-**가장 쉬운 방법** — `/plugin`이라고 치면 나오는 창에서 "**Browse Plugins**"을 누르고 원하는 직원을 선택하세요.
+**가장 쉬운 방법** — **플러그인(Plugins) 메뉴**를 열고 `moai-cowork` 마켓플레이스에서 원하는 직원을 찾아 **Install**을 누르세요. 먼저 **PM 허브(`moai-pm`)**와 **범용 코어(`moai-coworker`)**를 설치하는 것을 권장합니다.
 
 <!-- ▼ 이미지 삽입 자리 — 플러그인 설치 화면. 링크를 주시면 아래 줄의 TODO를 실제 이미지로 교체합니다. -->
 <!-- ![플러그인 설치 화면](TODO-사용자-제공-이미지-링크) -->
 
-**명령으로 직접 설치**하려면:
+**터미널에 익숙하다면 (대안)** — 명령으로 직접 설치할 수 있습니다. 형식은 `<플러그인 이름>@moai-cowork`입니다.
 
 ```bash
-/plugin install moai-pm@moai-cowork            # PM 허브 (먼저 설치 — 필수)
-/plugin install moai-coworker@moai-cowork       # 범용 실무 코어 (권장)
-```
+# Claude Cowork CLI
+claude plugin install moai-pm@moai-cowork          # PM 허브 (먼저 설치 — 필수)
+claude plugin install moai-coworker@moai-cowork     # 범용 실무 코어 (권장)
+claude plugin install moai-marketer@moai-cowork     # 예: 마케팅·콘텐츠 작업
 
-필요한 전문가 직원을 추가로 설치합니다:
-
-```bash
-# 예: 마케팅·콘텐츠 작업
-/plugin install moai-marketer@moai-cowork
-/plugin install moai-media@moai-cowork
-
-# 예: 법무·문서 작업
-/plugin install moai-lawyer@moai-cowork
-/plugin install moai-officer@moai-cowork
+# ChatGPT Work CLI
+codex plugin add moai-pm@moai-cowork
+codex plugin add moai-coworker@moai-cowork
+codex plugin add moai-marketer@moai-cowork
 ```
 
 > 처음엔 **PM + 코워커**만 설치해도 충분합니다. 나중에 다른 직원이 필요해지면 셋업 중 자동으로 감지해 설치를 안내합니다.

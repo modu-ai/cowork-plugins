@@ -64,21 +64,25 @@
 
 ## 설치
 
-모두의 코워크는 `modu-ai/moai-cowork` 마켓플레이스 하나에서 4명의 AI 코워커를 설치합니다.
+모두의 코워크 AI 코워커는 `modu-ai/moai-cowork` 마켓플레이스 하나에 모여 있습니다. **Claude Cowork**와 **ChatGPT Work** 두 데스크톱 앱 모두 같은 방식입니다.
 
-**① 마켓 등록 (최초 1회)**
+**① 마켓 등록 (최초 1회)** — 설정(Settings) 또는 플러그인(Plugins) 메뉴 → 마켓플레이스(Marketplace)에서 주소 `modu-ai/moai-cowork`를 추가합니다.
 
-    /plugin marketplace add modu-ai/moai-cowork
+**② 이 직원 추가** — 플러그인(Plugins) 메뉴에서 `moai-designer`를 찾아 **Install**을 누르세요.
 
-**② 이 직원 추가**
+**터미널에 익숙하다면 (대안)**
 
-    /plugin install moai-designer@moai-cowork
+    # Claude Cowork CLI
+    claude plugin marketplace add modu-ai/moai-cowork
+    claude plugin install moai-designer@moai-cowork
 
-또는 `/plugin` 입력 → **"Browse Plugins"** → moai-designer 선택.
+    # ChatGPT Work CLI
+    codex plugin marketplace add modu-ai/moai-cowork
+    codex plugin add moai-designer@moai-cowork
 
 > 브랜드·디자인 시스템 작업이 필요할 때 설치하세요.
 
----
+> 앱별 정확한 클릭 경로와 잘 안 될 때 대처법은 [플러그인 설치와 관리](https://cowork.mo.ai.kr/plugins/install/)에 정리해 두었습니다.
 
 ## 다른 AI 코워커과 함께 쓰기
 

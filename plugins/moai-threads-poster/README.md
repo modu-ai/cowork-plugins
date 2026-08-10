@@ -15,7 +15,7 @@ Threads(Meta) · Instagram 자동 포스팅 전담 플러그인 — Claude Code 
 
 ## 설치 (플러그인 등록)
 
-`.claude-plugin/marketplace.json` entry 가 플러그인을 가리킨다. Claude Code 의 `/plugin` 명령으로 활성화. 자격증명(토큰) 발급 절차는 **[`mcp-servers/moai-mcp-threads-poster/CONNECTORS.md`](mcp-servers/moai-mcp-threads-poster/CONNECTORS.md)** 참조.
+`.claude-plugin/marketplace.json` entry 가 플러그인을 가리킨다. 데스크톱 앱(Claude Cowork·ChatGPT Work)에서는 설정(Settings) 또는 플러그인(Plugins) 메뉴 → 마켓플레이스(Marketplace)에 `modu-ai/moai-cowork`를 추가한 뒤 목록에서 **Install**로 활성화한다. 터미널을 쓴다면 `claude plugin install moai-threads-poster@moai-cowork`(Claude Cowork CLI) 또는 `codex plugin add moai-threads-poster@moai-cowork`(ChatGPT Work CLI). 자격증명(토큰) 발급 절차는 **[`mcp-servers/moai-mcp-threads-poster/CONNECTORS.md`](mcp-servers/moai-mcp-threads-poster/CONNECTORS.md)** 참조.
 
 ## 환경변수
 
