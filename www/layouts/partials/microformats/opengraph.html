@@ -1,0 +1,50 @@
+{{- /* 모두의 코워크 — opengraph 오버라이드.
+       geekdoc 원본(themes/hugo-geekdoc/.../microformats/opengraph.html)에서
+       두 가지를 고쳤다:
+         1) og:title 을 홈(.Kind == "home")에서도 출력 — 원본은 홈 제외라
+            홈 URL의 OG 미리보기에 제목이 없었다 (검사기 "og:title 누락" 경고).
+         2) fb:app_id 메타 추가 (params.fbAppID). Facebook Insight 연동 시 사용.
+       나머지는 geekdoc 원본 동작을 유지한다. geekdoc 업데이트 시 이 파일 살아있는지 확인. */ -}}
+{{ $isPage := or (and (ne .Type "posts") (in "section page" .Kind )) (and (eq .Type "posts") (eq .Kind "page")) }}
+
+<meta property="og:title" {{ partial "utils/title" . | printf "content=%q" | safeHTMLAttr }} />
+{{- with .Site.Title }}
+  <meta property="og:site_name" {{ . | printf "content=%q" | safeHTMLAttr }} />
+{{- end }}
+{{- with partial "utils/featured" . }}
+  <meta property="og:image" content="{{ . }}" />
+{{- end }}
+{{- with partial "utils/description" . }}
+  <meta property="og:description" content="{{ . | plainify | htmlUnescape | chomp }}" />
+{{- end }}
+<meta property="og:type" content="{{ if $isPage }}article{{ else }}website{{ end }}" />
+<meta property="og:url" content="{{ .Permalink }}" />
+{{- with .Site.Params.fbAppID }}
+  <meta property="fb:app_id" content="{{ . }}" />
+{{- end }}
+{{- with .Site.Params.facebook_admin }}
+  <meta property="fb:admins" content="{{ . }}" />
+{{- end }}
+<meta property="og:locale" content="ko_KR" />
+{{- with .Params.videos }}
+  {{- range . }}
+    <meta property="og:video" content="{{ . | absURL }}" />
+  {{- end }}
+{{- end }}
+
+{{ if $isPage -}}
+  {{- $iso8601 := "2006-01-02T15:04:05-07:00" -}}
+  <meta property="article:section" content="{{ .Section | humanize | title }}" />
+  {{- with .PublishDate }}
+    <meta
+      property="article:published_time"
+      {{ .Format $iso8601 | printf "content=%q" | safeHTMLAttr }}
+    />
+  {{- end }}
+  {{- with .Lastmod }}
+    <meta
+      property="article:modified_time"
+      {{ .Format $iso8601 | printf "content=%q" | safeHTMLAttr }}
+    />
+  {{- end }}
+{{- end }}
