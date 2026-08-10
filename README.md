@@ -15,6 +15,8 @@ PM이 프로젝트 성격을 파악해 알맞은 코워커를 배치하고, 나�
 
 MoAI-Cowork(모두의 코워크)는 **비개발자도 AI와 함께 실무를 풀 수 있게 만든 AI 코워커 패밀리**입니다.
 
+![모두의 코워크를 중심으로 마케터, 작가, 셀러, 법무, 디자이너, 사무관이 각자의 영역을 맡는 구조](./www/static/infographics/coworker-concept.png)
+
 "AI 코워커"는 한 가지 일에 깊이 특화된 전문가 AI입니다. 거대한 AI 하나가 모든 걸 다루는 게 아니라, 마케터·작가·셀러·법무 담당·디자이너처럼 **직무별로 나뉜 전문가 AI**가 각자의 영역을 맡습니다. 마치 회사에 부서가 있고 부서마다 담당자가 있는 것과 같습니다.
 
 ### 왜 만들었나요?
@@ -47,18 +49,13 @@ MoAI-Cowork는 이 분들이 "**하고 싶은 일만 말하면 시작**" 할 수
 
 `/project`를 실행하면 PM이 목적과 산출물을 **인터뷰**로 묻습니다. 그 답에서 필요한 일을 **감지**해 알맞은 코워커와 스킬을 순서대로 이은 **체인**으로 조립합니다. 확인을 받으면 프로젝트 규칙 파일을 생성합니다.
 
-```
-/project (최초 1회)
-      │
-      ▼
-  PM이 인터뷰 ──▶ 필요한 일 감지 ──▶ 스킬 체인 조립 ──▶ 확인
-      │
-      ▼
-  규칙 파일 생성: CLAUDE.md (Claude Cowork) / AGENTS.md (ChatGPT Work)
-      │  + 커스텀 에이전트·스킬 체인 설계
-      ▼
-  (필요 시) 외부 서비스 API 키 안내
-```
+![PM이 인터뷰로 목적을 묻고, 필요한 일을 감지해 스킬 체인을 조립한 뒤 프로젝트 지침 파일을 만드는 네 단계 흐름](./www/static/infographics/project-flow.png)
+
+마지막 "지침 생성" 단계에서 만들어지는 것은 다음과 같습니다.
+
+- 프로젝트 지침 파일 — `AGENTS.md`가 정본이고, `CLAUDE.md`는 이를 가리키는 임포트 한 줄만 담습니다
+- 프로젝트 전용 커스텀 에이전트와 스킬 체인 설계
+- 필요한 경우 외부 서비스 API 키 안내
 
 이 단계가 끝나면 "어떤 일을, 어떤 순서로, 어떤 품질 기준으로 만들지"가 한 번에 정리됩니다.
 
@@ -66,24 +63,17 @@ MoAI-Cowork는 이 분들이 "**하고 싶은 일만 말하면 시작**" 할 수
 
 준비가 끝나면 스킬 이름을 몰라도 됩니다. 한 줄을 쓰면 맥락을 읽고 알맞은 스킬들이 자동으로 연쇄 실행됩니다.
 
-```
-"IR 덱 만들어줘"  ──▶  ① 도메인 스킬(내용 생성)
-                         │
-                         ▼
-                      ② 포맷 스킬(PPTX로 변환)
-                         │
-                         ▼
-                      ③ 품질 스킬(AI 특유 어투 솎아내기)
-                         │
-                         ▼
-                      완성된 PPTX
-```
+![자연어 한 줄이 내용 생성, 문서 변환, 품질 검수를 거쳐 완성된 문서가 되는 흐름](./www/static/infographics/skill-chain-flow.png)
+
+위 예에서 "문서 변환"은 PPTX 생성을, "품질 검수"는 AI 특유의 어투를 솎아내는 윤문을 맡습니다.
 
 > PM은 직접 일하지 않습니다. **누가 이 일에 맞는지 찾아 팀을 꾸리는 안내자** 역할만 합니다.
 
 ---
 
 ## AI 코워커 명단
+
+![PM 아래 비즈니스, 크리에이티브, 전문직, 운영 네 갈래로 나뉜 코워커 패밀리 구성도](./www/static/infographics/coworker-family-map.png)
 
 전부 `modu-ai/moai-cowork` 마켓플레이스 하나에서 설치합니다. 정확한 최신 로스터는 [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json)이 정본이고, 아래는 역할 요약입니다.
 
@@ -115,6 +105,8 @@ MoAI-Cowork는 이 분들이 "**하고 싶은 일만 말하면 시작**" 할 수
 ## 시작하기 — 두 데스크톱 앱에서 설치
 
 두 데스크톱 앱 **Claude Cowork**와 **ChatGPT Work** 중 평소 쓰는 쪽에 설치합니다. 두 앱 모두 같은 마켓플레이스 주소 `modu-ai/moai-cowork`를 사용합니다. 설치는 전부 앱 안에서 마우스 클릭으로 진행합니다 — 터미널은 필요하지 않습니다.
+
+![마켓플레이스 등록, 코워커 설치, 프로젝트 시작으로 이어지는 세 단계](./www/static/infographics/install-3steps.png)
 
 ### 1. 마켓플레이스 등록 (최초 1회)
 
@@ -154,30 +146,27 @@ MoAI-Cowork는 이 분들이 "**하고 싶은 일만 말하면 시작**" 할 수
 
 ---
 
-## 문서 사이트 — 4트랙 구조
+## 문서 사이트 — 무엇이 어디에 있나
 
-문서 사이트 [cowork.mo.ai.kr](https://cowork.mo.ai.kr)는 비개발자(10~60대)를 위한 한국어 Claude Cowork·ChatGPT Work 실무 가이드입니다. 학습 난이도 순서대로 3개 트랙을 제공하며, 각 트랙은 Anthropic 공식 자료(support.claude.com / docs.claude.com)를 따릅니다.
+문서 사이트 [cowork.mo.ai.kr](https://cowork.mo.ai.kr)는 비개발자(10~60대)를 위한 한국어 Claude Cowork·ChatGPT Work 실무 가이드입니다. 목차의 진실 출처(SSOT)는 [`www/data/menu/main.yaml`](www/data/menu/main.yaml)이고, 아래는 그 요약입니다.
 
-| 트랙 | 제품 | 학습 범위 | 가이드 |
-|------|------|-----------|------|
-| **Chat** | Claude Desktop App | 첫 대화·프롬프트·아티팩트·프로젝트·웹검색·리서치·확장사고·메모리·스킬·커넥터 | [Chat 트랙](https://cowork.mo.ai.kr/guide/chat/) |
-| **Cowork** | Claude Cowork | 비개발자 실무를 위한 자율 실행 데스크톱 앱 — 자율 실행·프로젝트·스킬·플러그인·디스패치·컴퓨터사용·아키텍처 | [Cowork 트랙](https://cowork.mo.ai.kr/guide/cowork/) |
-| **Design** | Claude Design | 디자인 시스템·컴포넌트·토큰·핸드오프 (Anthropic Labs 제품) | [Design 트랙](https://cowork.mo.ai.kr/guide/design/) |
+| 섹션 | 무엇을 다루나 | 링크 |
+|------|---------------|------|
+| **시작하기** | 빠른 시작 · 핵심 개념 · 데스크톱 앱 설치 · 첫 작업 | [getting-started](https://cowork.mo.ai.kr/getting-started/) |
+| **플러그인 설치·운용** | 설치와 관리 · 전문가 에이전트 이해 · 팀 구성 패턴 · MCP 연동 · Higgsfield 설정 · 라이선스 · 오픈소스 크레딧 | [plugins](https://cowork.mo.ai.kr/plugins/) |
+| **AI 코워커 소개** | 코워커별 역할 · 스킬 · 외부 서비스 연동 상세 | [moai-agents](https://cowork.mo.ai.kr/moai-agents/) |
+| **쿡북** | 스킬 체이닝 · 베스트 프랙티스 · 자동화 레시피 · 실무 시나리오 | [cookbook](https://cowork.mo.ai.kr/cookbook/) |
+| **도움말** | 요금제 · 계정 · 대화 관리 · 개인화 · 사용량 · 문제 해결 · 출처 표기 | [help](https://cowork.mo.ai.kr/help/) |
+| **릴리스 노트** | 버전별 변경 이력 | [releases](https://cowork.mo.ai.kr/releases/) |
 
-### 문서 사이트 섹션
+![문서 사이트를 중심으로 시작하기, 플러그인, AI 코워커, 쿡북, 도움말, 릴리스 여섯 갈래로 뻗은 지도](./www/static/infographics/docsite-map.png)
 
-| 섹션 | 내용 | 링크 |
-|------|------|------|
-| **시작하기** | 첫 설치·등록·빠른 시작 | [getting-started](https://cowork.mo.ai.kr/getting-started/) |
-| **가이드** | 4트랙(Chat/Cowork/Design/Code) 학습 경로 | [guide](https://cowork.mo.ai.kr/guide/) |
-| **쿡북** | 실전 레시피·워크플로우 예제 | [cookbook](https://cowork.mo.ai.kr/cookbook/) |
-| **AI 코워커** | AI 코워커 상세 소개 | [moai-agents](https://cowork.mo.ai.kr/moai-agents/) |
-| **플러그인** | 설치·설정·팀즈·Higgsfield 연동 | [plugins](https://cowork.mo.ai.kr/plugins/) |
-| **릴리스** | 버전별 변경 이력 | [releases](https://cowork.mo.ai.kr/releases/) |
-| **도움말** | FAQ·트러블슈팅 | [help](https://cowork.mo.ai.kr/help/) |
-| **CLI** | `moai` 명령행 도구 | [cli](https://cowork.mo.ai.kr/cli/) |
+### 자주 찾는 문서
 
-목차의 진실 출처(SSOT)는 [`www/data/menu/main.yaml`](www/data/menu/main.yaml)입니다.
+- **MCP 연동** — AI 코워커가 외부 서비스와 실제로 연결되는 통로입니다. [개요](https://cowork.mo.ai.kr/plugins/mcp/) · [설치와 설정](https://cowork.mo.ai.kr/plugins/mcp/install/) · [문제 해결](https://cowork.mo.ai.kr/plugins/mcp/troubleshooting/)
+- **실전 트랙** — 역할·도메인별 표준 워크플로우 모음입니다. [실전 트랙](https://cowork.mo.ai.kr/cookbook/tracks/)
+- **프로젝트 레시피** — 처음부터 끝까지 따라 하는 실전 프로젝트입니다. [프로젝트](https://cowork.mo.ai.kr/cookbook/projects/)
+- **출처와 저작권** — [오픈소스 크레딧](https://cowork.mo.ai.kr/plugins/open-source/) · [출처 표기 안내](https://cowork.mo.ai.kr/help/attribution/)
 
 ---
 
@@ -222,14 +211,13 @@ modu-ai/moai-cowork/
 ├── www/                              # 문서 사이트 (cowork.mo.ai.kr, Hugo)
 │   ├── content/
 │   │   ├── getting-started/          # 시작하기
-│   │   ├── guide/                    # 4-트랙 가이드 (chat·cowork·design·code)
-│   │   ├── cookbook/                 # 쿡북·실전 트랙
+│   │   ├── plugins/                  # 플러그인 설치·운용 (mcp/ 포함)
 │   │   ├── moai-agents/              # AI 코워커 소개
-│   │   ├── plugins/                  # 플러그인 설치·설정
-│   │   ├── releases/                 # 릴리스 노트
-│   │   ├── help/                     # 도움말·FAQ
-│   │   └── cli/                      # CLI 도구
-│   ├── data/menu/main.yaml           # 목차 SSOT (3축: 데스크탑·CLI·공통하단)
+│   │   ├── cookbook/                 # 쿡북 (tracks/·projects/·guides/·templates/)
+│   │   ├── help/                     # 도움말 (office/·attribution 포함)
+│   │   └── releases/                 # 릴리스 노트 (archive/ 포함)
+│   ├── static/infographics/          # 문서용 한국어 인포그래픽
+│   ├── data/menu/main.yaml           # 목차 SSOT
 │   └── hugo.toml
 ├── README.md
 └── LICENSE

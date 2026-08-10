@@ -150,6 +150,9 @@ main:
         ref: /help/usage-limits
       - name: 문제 해결
         ref: /help/troubleshooting
+      - name: 출처와 저작권 표기
+        ref: /help/attribution
+        isNew: true
       - name: 가이드 문서 색인
         ref: /help/source-index
 

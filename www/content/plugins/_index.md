@@ -6,10 +6,12 @@ geekdocBreadcrumb: true
 geekdocCollapseSection: true
 aliases: ["/plugins/moai-design-system-library", "/plugins/moai-ads", "/plugins/moai-tech", "/plugins/moai-devops", "/plugins/cowork-plugins", "/plugins/moai-cowork-plugins", "/plugins/chat", "/plugins/cowork", "/plugins/design", "/plugins/code"]
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-10T00:00:00+09:00
 ---
 
 플러그인은 Claude에게 새로운 직무 능력을 붙여 주는 확장 꾸러미입니다. 스마트폰에 앱을 설치하면 없던 기능이 생기듯, **Claude Cowork와 ChatGPT Work 두 데스크톱 앱**에 플러그인을 설치하면 마케팅 캠페인 기획, 쇼핑몰 주문 관리, 계약서 검토 같은 전문 업무를 바로 시킬 수 있게 됩니다. 그리고 이런 플러그인을 받아오는 곳이 **마켓플레이스**입니다 — 앱스토어가 앱을 모아 두는 곳이라면, 마켓플레이스는 플러그인을 모아 두는 곳이라고 생각하면 정확합니다. 같은 플러그인이 Claude Cowork와 ChatGPT Work 양쪽에서 작동합니다.
+
+![마켓플레이스 등록, 코워커 설치, 프로젝트 시작으로 이어지는 세 단계](/infographics/install-3steps.png)
 
 `모두의 코워크`가 운영하는 마켓플레이스(`modu-ai/moai-cowork`)에는 **AI 코워커**가 올라와 있습니다. 실무 범용 코워커부터 작가·스토리 크리에이터, 마케터·미디어 크리에이터, 셀러, 사무관·데이터 애널리스트, 법무·재무세무·인사채용 담당, CS 매니저, 컨설턴트, 커리어 코치, 튜터, 디자이너, 개발 방법론(moai), 그리고 프로젝트 허브(PM)까지 — 각 플러그인이 한 명의 전문 코워커처럼 자기 분야의 스킬과 에이전트, 필요하면 외부 서비스 연동(MCP)까지 갖추고 있습니다. 전부 설치할 필요는 없습니다. 회사에서 필요한 직무만 채용하듯, 필요한 코워커만 골라 설치하면 됩니다.
 

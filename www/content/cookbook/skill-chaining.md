@@ -5,9 +5,11 @@ description: "단일 스킬보다 2-4개 체인이 결과 품질을 좌우합니
 geekdocBreadcrumb: true
 tags: [cookbook, skills]
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-10T00:00:00+09:00
 ---
 > Cowork에서 가장 중요한 실무 기술. 단일 스킬보다 2-4개를 엮은 체인이 결과 품질을 10배 좌우합니다.
+
+![도메인 스킬, 포맷 스킬, 품질 스킬이 사슬처럼 이어지는 체이닝 기본 패턴](/infographics/skill-chaining-pattern.png)
 
 ## 왜 체인인가
 

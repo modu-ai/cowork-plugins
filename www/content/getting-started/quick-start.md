@@ -8,6 +8,8 @@ lastmod: 2026-08-10T00:00:00+09:00
 ---
 `modu-ai/moai-cowork` 마켓플레이스를 **Claude Cowork와 ChatGPT Work** 두 데스크톱 앱에 등록하고 첫 스킬 체인을 실행하기까지의 전체 흐름을 정리한 페이지입니다. 처음부터 끝까지 약 **10분** 소요됩니다.
 
+![프로젝트 지침을 설정하고 자연어로 일을 지시하는 두 단계로 5분 만에 시작하는 흐름](/infographics/quickstart-5min.png)
+
 ## 사전 체크
 
 - [Cowork 또는 ChatGPT](../install/) 설치 완료

@@ -5,12 +5,14 @@ description: "Cowork와 moai 플러그인을 실제 업무에 엮는 쿡북 — 
 geekdocBreadcrumb: true
 tags: [cookbook]
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-10T00:00:00+09:00
 ---
 
 # Cowork 쿡북
 
 > Claude Cowork와 moai 플러그인을 **실제 업무에 어떻게 엮는지** 시나리오 묶음으로 정리한 쿡북입니다.
+
+![자연어 한 줄이 내용 생성, 문서 변환, 품질 검수를 거쳐 완성된 문서가 되는 흐름](/infographics/skill-chain-flow.png)
 
 ## 새로 나온 코워크 프로젝트
 

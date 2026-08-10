@@ -5,12 +5,14 @@ description: "MCP는 AI 코워커가 외부 서비스와 실제로 연결되는 
 geekdocBreadcrumb: true
 geekdocCollapseSection: true
 date: 2026-08-08T00:00:00+09:00
-lastmod: 2026-08-08T00:00:00+09:00
+lastmod: 2026-08-10T00:00:00+09:00
 ---
 
 지금까지는 AI 코워커가 **글을 써 주는** 일을 했습니다. MCP를 붙이면 여기서 한 걸음
 더 나갑니다 — 실제로 **스마트스토어 주문을 조회하고, 아임웹·카페24 상품을 다루고,
 Threads에 글을 발행**합니다.
+
+![AI 코워커가 MCP라는 통로를 지나 스마트스토어, 국가법령, 공공데이터, 이미지 생성 서비스로 연결되는 구조](/infographics/mcp-bridge.png)
 
 ## MCP가 뭔가요
 

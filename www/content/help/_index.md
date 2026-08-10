@@ -21,6 +21,7 @@ Claude를 쓰다 보면 "계정 이메일을 어떻게 바꾸지?", "요금제�
 | {{< icon lightbulb >}} **[개인화와 설정](/help/personalization/)** | 외형·언어·모델·사고 설정을 내 취향에 맞추려는 분 |
 | {{< icon chart-column >}} **[사용량과 한도](/help/usage-limits/)** | 사용 한도가 어떻게 작동하는지, 한도를 아껴 쓰는 법이 궁금한 분 |
 | {{< icon compass >}} **[문제 해결](/help/troubleshooting/)** | 오류 메시지, 부정확한 응답, 깨진 링크 등 문제를 겪는 분 |
+| {{< icon scale >}} **[출처와 저작권 표기](/help/attribution/)** | 만든 결과물에 출처를 밝혀야 하는지 확인이 필요한 분 |
 
 {{< hint type="note" >}}
 이 문서는 Claude 공식 고객지원 내용을 한국어 사용자를 위해 다시 쓴 것입니다. 정확한 최신 정보는 각 페이지 하단의 **원문 출처** 링크에서 확인할 수 있습니다.
