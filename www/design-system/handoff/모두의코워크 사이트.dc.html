@@ -137,8 +137,8 @@
 
           <div style="margin:64px 0 0">
             <div style="font:600 11px/1 var(--font-mono);letter-spacing:0.1em;text-transform:uppercase;color:var(--color-primary);margin-bottom:10px">Plugin Family</div>
-            <h2 style="margin:0 0 12px;font-size:30px;font-weight:800;letter-spacing:-0.05em;color:var(--fg-1)">18-직원 플러그인 패밀리</h2>
-            <p style="margin:0 0 26px;max-width:760px;font-size:16px;line-height:1.8;letter-spacing:-0.03em;color:var(--fg-2);text-wrap:pretty">이름이 곧 직무입니다. 전부 설치할 필요는 없습니다 — 회사에서 필요한 직무만 채용하듯, 필요한 직원만 골라 담으세요.</p>
+            <h2 style="margin:0 0 12px;font-size:30px;font-weight:800;letter-spacing:-0.05em;color:var(--fg-1)">코워커 플러그인 패밀리</h2>
+            <p style="margin:0 0 26px;max-width:760px;font-size:16px;line-height:1.8;letter-spacing:-0.03em;color:var(--fg-2);text-wrap:pretty">이름이 곧 직무입니다. 전부 설치할 필요는 없습니다 — 회사에서 필요한 직무만 채용하듯, 필요한 코워커만 골라 담으세요.</p>
             <div class="grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
               <sc-for list="{{ plugins }}" as="p" hint-placeholder-count="9">
                 <a href="#{{ p.id }}" onClick="{{ p.onClick }}" style="display:block;background:var(--color-surface);border:1px solid var(--border-1);border-radius:16px;padding:24px;box-shadow:var(--shadow-sm);transition:transform 200ms cubic-bezier(0.4,0,0.2,1),box-shadow 200ms cubic-bezier(0.4,0,0.2,1)" style-hover="transform:translateY(-2px);box-shadow:var(--shadow-md);text-decoration:none">
@@ -172,10 +172,10 @@
 
           <div style="margin:64px 0 0;background:var(--gradient-signature);border-radius:24px;padding:40px 44px;display:flex;gap:32px;align-items:center;justify-content:space-between;flex-wrap:wrap">
             <div style="max-width:620px">
-              <h3 style="margin:0 0 10px;font-size:26px;font-weight:800;letter-spacing:-0.05em;color:#fff">어떤 직원을 뽑을지 고민되나요?</h3>
-              <p style="margin:0;font-size:15.5px;line-height:1.7;letter-spacing:-0.03em;color:rgba(255,255,255,0.88)">18명의 직원 소개와 설치·운용 매뉴얼을 한곳에서 — 빌드 과정 없이 바로 시작합니다.</p>
+              <h3 style="margin:0 0 10px;font-size:26px;font-weight:800;letter-spacing:-0.05em;color:#fff">어떤 코워커를 뽑을지 고민되나요?</h3>
+              <p style="margin:0;font-size:15.5px;line-height:1.7;letter-spacing:-0.03em;color:rgba(255,255,255,0.88)">코워커 소개와 설치·운용 매뉴얼을 한곳에서 — 빌드 과정 없이 바로 시작합니다.</p>
             </div>
-            <a href="#agents" onClick="{{ goAgents }}" style="display:inline-flex;align-items:center;background:#fff;color:var(--color-primary);font-size:14.5px;font-weight:700;letter-spacing:-0.025em;padding:12px 24px;border-radius:32px;white-space:nowrap" style-hover="text-decoration:none;box-shadow:0 8px 32px rgba(0,109,104,0.35)">직원 소개 보기 →</a>
+            <a href="#agents" onClick="{{ goAgents }}" style="display:inline-flex;align-items:center;background:#fff;color:var(--color-primary);font-size:14.5px;font-weight:700;letter-spacing:-0.025em;padding:12px 24px;border-radius:32px;white-space:nowrap" style-hover="text-decoration:none;box-shadow:0 8px 32px rgba(0,109,104,0.35)">코워커 소개 보기 →</a>
           </div>
         </div>
       </sc-if>
@@ -514,7 +514,7 @@ class Component extends DCLogic {
         { id: 'guide/code', num: '04', label: 'Code' },
       ],
       agents: [
-        { id: 'agents', num: '00', label: '18 직원 개요' },
+        { id: 'agents', num: '00', label: '코워커 개요' },
         { id: 'agents/coworker', num: '01', label: '코워커' },
       ],
       plugins: [
@@ -561,16 +561,16 @@ class Component extends DCLogic {
           { t: 'cards', items: [
             { tag: '01', title: '설치 가이드', desc: 'Claude Desktop을 설치하고 로그인하기. 요금제 차이도 여기서 봅니다.', id: 'start/install' },
             { tag: '02', title: '도구와 기능 개념 기초', desc: '스킬·플러그인·에이전트·MCP 등 아홉 가지 개념을 비유로 정리합니다.', id: 'start/concepts' },
-            { tag: '03', title: '첫 작업', desc: '첫 직원을 채용하고 실제 요청을 던져 결과물을 받아봅니다.', id: 'start/first-task' },
+            { tag: '03', title: '첫 작업', desc: '첫 코워커를 채용하고 실제 요청을 던져 결과물을 받아봅니다.', id: 'start/first-task' },
           ] },
           { t: 'h2', text: '기대 효과' },
           { t: 'list', items: [
             'Claude Desktop이 설치되어 있고 내 계정으로 로그인되어 있습니다.',
             '"플러그인이 뭐예요?"라는 질문에 스스로 답할 수 있습니다.',
-            '마켓플레이스에서 내 일에 맞는 직원을 골라 채용할 수 있습니다.',
+            '마켓플레이스에서 내 일에 맞는 코워커를 골라 채용할 수 있습니다.',
             '첫 요청을 던져 실제 결과물(문서·표·슬라이드)을 받아본 경험이 생깁니다.',
           ] },
-          { t: 'tip', title: '낯선 용어가 나와도 괜찮습니다', text: '이 가이드의 모든 용어는 처음 등장할 때 일상 비유와 함께 풀어서 설명합니다. 플러그인은 "회사에 새로 들어오는 직원 패키지", 스킬은 "그 직원이 가지고 온 업무 매뉴얼"이라고 생각하면 됩니다.' },
+          { t: 'tip', title: '낯선 용어가 나와도 괜찮습니다', text: '이 가이드의 모든 용어는 처음 등장할 때 일상 비유와 함께 풀어서 설명합니다. 플러그인은 "회사에 새로 들어오는 코워커 패키지", 스킬은 "그 코워커가 가지고 온 업무 매뉴얼"이라고 생각하면 됩니다.' },
         ],
       },
       'start/install': {
@@ -621,13 +621,13 @@ class Component extends DCLogic {
         title: '도구와 기능 개념 기초',
         lead: 'Claude Desktop을 쓰다 보면 스킬, 플러그인, 에이전트, MCP 같은 낯선 단어가 계속 등장합니다. 이 문서는 앞으로 반복해서 만날 아홉 가지 개념을 한 번에, 일상 비유와 함께 정리해 두는 사전입니다.',
         blocks: [
-          { t: 'note', title: '큰 그림 한 줄', text: '회사에 비유하면 — 대화는 회의실, Projects는 부서 사무실, 플러그인은 채용한 직원, 스킬은 그 직원의 업무 매뉴얼, MCP는 외부 거래처와 연결된 전화선입니다. 전부 외울 필요는 없습니다.' },
+          { t: 'note', title: '큰 그림 한 줄', text: '회사에 비유하면 — 대화는 회의실, Projects는 부서 사무실, 플러그인은 채용한 코워커, 스킬은 그 코워커의 업무 매뉴얼, MCP는 외부 거래처와 연결된 전화선입니다. 전부 외울 필요는 없습니다.' },
           { t: 'h2', text: '아홉 가지 개념 사전' },
           { t: 'deflist', items: [
             { term: '1. 대화(채팅)', desc: '회의실. 같은 대화 안에서는 앞서 한 말을 기억하고 이어갑니다. 주제가 바뀌면 새 대화를 여세요.' },
             { term: '2. Projects', desc: '부서 사무실. 관련 대화와 참고 자료를 한데 묶는 작업 공간. 캐비닛에 올린 자료를 모든 대화가 참고합니다.' },
             { term: '3. 스킬', desc: '업무 매뉴얼. 특정 업무를 잘 처리하는 방법을 적어둔 문서. 사용자가 펼칠 필요 없이 Claude가 알아서 꺼내 봅니다.' },
-            { term: '4. 플러그인', desc: '직원 패키지. 스킬·에이전트·MCP를 한 상자에 담은 것. 그래서 이 사이트는 플러그인을 "직원"이라 부릅니다.' },
+            { term: '4. 플러그인', desc: '코워커 패키지. 스킬·에이전트·MCP를 한 상자에 담은 것. 그래서 이 사이트는 플러그인을 "코워커"이라 부릅니다.' },
             { term: '5. 에이전트', desc: '일하는 담당자. 매뉴얼을 들고 실제로 일을 수행합니다. 복잡한 일은 조사·작성·검토 담당으로 나뉩니다.' },
             { term: '6. MCP 커넥터', desc: '표준 어댑터. 지메일·캘린더·쇼핑몰 등 외부 서비스와 연결하는 통로. 말만 하는 존재에서 조작하는 존재로.' },
             { term: '7. 아티팩트', desc: '결과물 카드. 문서·표·웹페이지를 대화 옆 독립 카드로 띄웁니다. "결과물은 카드로, 논의는 대화로".' },
@@ -635,11 +635,11 @@ class Component extends DCLogic {
             { term: '9. 메모리', desc: '나를 기억하는 수첩. 대화가 끝나도 기억해 두는 정보. 설정에서 확인·삭제할 수 있습니다.' },
           ] },
           { t: 'h2', text: '네 가지 개념의 관계 한눈에 보기' },
-          { t: 'para', text: '마켓플레이스(직원 소개소)에서 플러그인(직원 패키지)을 채용하면, 그 안의 에이전트(직원)가 스킬(매뉴얼)대로 일하고, 필요하면 MCP 커넥터(외부 통로)로 바깥 서비스까지 다녀옵니다.' },
+          { t: 'para', text: '마켓플레이스(코워커 소개소)에서 플러그인(코워커 패키지)을 채용하면, 그 안의 에이전트(코워커)가 스킬(매뉴얼)대로 일하고, 필요하면 MCP 커넥터(외부 통로)로 바깥 서비스까지 다녀옵니다.' },
           { t: 'mermaid', cap: '스킬 · 에이전트 · 플러그인 · MCP가 맞물리는 구조.', chart: `flowchart TD
-  M["마켓플레이스<br/>직원 소개소"] -->|채용| P["플러그인<br/>직원 패키지"]
+  M["마켓플레이스<br/>코워커 소개소"] -->|채용| P["플러그인<br/>코워커 패키지"]
   P --> S["스킬<br/>업무 매뉴얼"]
-  P --> A["에이전트<br/>일하는 직원"]
+  P --> A["에이전트<br/>일하는 코워커"]
   P --> C["MCP 커넥터<br/>외부 통로"]
   S -->|매뉴얼 제공| A
   C -->|외부 서비스 연결| E["지메일 · 캘린더<br/>쇼핑몰 등"]
@@ -650,27 +650,27 @@ class Component extends DCLogic {
       },
       'start/first-task': {
         title: '첫 작업',
-        lead: '설치와 개념 정리가 끝났다면 이제 실제로 일을 시켜볼 차례입니다. 할 일은 딱 세 가지 — ① 직원 소개소(마켓플레이스)를 등록하고 → ② 내 일에 맞는 직원을 한 명 채용하고 → ③ 첫 요청을 던져 결과물을 받아봅니다. 처음이라면 10분이면 충분합니다.',
+        lead: '설치와 개념 정리가 끝났다면 이제 실제로 일을 시켜볼 차례입니다. 할 일은 딱 세 가지 — ① 코워커 소개소(마켓플레이스)를 등록하고 → ② 내 일에 맞는 코워커를 한 명 채용하고 → ③ 첫 요청을 던져 결과물을 받아봅니다. 처음이라면 10분이면 충분합니다.',
         blocks: [
           { t: 'mermaid', cap: '세 단계로 첫 결과물까지.', chart: `flowchart LR
-  A["① 마켓플레이스 등록<br/>직원 소개소 방문"] --> B["② 직원 채용<br/>플러그인 설치"]
+  A["① 마켓플레이스 등록<br/>코워커 소개소 방문"] --> B["② 코워커 채용<br/>플러그인 설치"]
   B --> C["③ 첫 요청<br/>한 줄 주문"]
   C --> D["✅ 결과물 확인"]` },
           { t: 'h2', text: '1단계: 마켓플레이스 등록' },
-          { t: 'para', text: '마켓플레이스 등록은 한 번만 하면 됩니다. 앱스토어에 계정을 연결해 두는 것과 같아서, 등록해 두면 이후에는 목록에서 직원을 골라 채용하기만 하면 됩니다. Claude Desktop에서는 설정(Settings) → 플러그인(Plugins) → 마켓플레이스 추가(Add marketplace)를 열고 modu-ai/moai-cowork를 입력합니다.' },
+          { t: 'para', text: '마켓플레이스 등록은 한 번만 하면 됩니다. 앱스토어에 계정을 연결해 두는 것과 같아서, 등록해 두면 이후에는 목록에서 코워커를 골라 채용하기만 하면 됩니다. Claude Desktop에서는 설정(Settings) → 플러그인(Plugins) → 마켓플레이스 추가(Add marketplace)를 열고 modu-ai/moai-cowork를 입력합니다.' },
           { t: 'code', term: 'terminal — claude code 사용자', lines: [
             { sigil: '$', text: ' claude plugin marketplace add modu-ai/moai-cowork' },
-            { sigil: '', text: '  ✓ Added marketplace: moai-cowork (18 plugins)', out: true },
+            { sigil: '', text: '  ✓ Added marketplace: moai-cowork (plugins)', out: true },
           ] },
-          { t: 'h2', text: '2단계: 첫 직원 선택 — 어떤 일을 하고 싶으세요?' },
-          { t: 'para', text: '직원을 전부 채용할 필요는 없습니다. 오히려 처음에는 지금 가장 급한 일 하나에 맞는 직원 한 명만 데려오는 것이 좋습니다. 직원이 많아질수록 Claude가 참고할 매뉴얼도 많아져서 필요 없는 직원은 자리만 차지합니다.' },
-          { t: 'table', head: ['하고 싶은 일', '채용할 직원', '대표 업무'], rows: [
-            ['보고서·기획서·회의록 등 사무 문서 전반', 'moai-coworker (만능 사무직원)', '문서 작성, PPT·엑셀, 요약·정리'],
+          { t: 'h2', text: '2단계: 첫 코워커 선택 — 어떤 일을 하고 싶으세요?' },
+          { t: 'para', text: '코워커를 전부 채용할 필요는 없습니다. 오히려 처음에는 지금 가장 급한 일 하나에 맞는 코워커 한 명만 데려오는 것이 좋습니다. 코워커가 많아질수록 Claude가 참고할 매뉴얼도 많아져서 필요 없는 코워커는 자리만 차지합니다.' },
+          { t: 'table', head: ['하고 싶은 일', '채용할 코워커', '대표 업무'], rows: [
+            ['보고서·기획서·회의록 등 사무 문서 전반', 'moai-coworker (만능 사무코워커)', '문서 작성, PPT·엑셀, 요약·정리'],
             ['블로그·보도자료·뉴스레터 등 글쓰기', 'moai-writer (작가)', '원고 작성, 윤문, 어투 교정'],
             ['SNS·광고·캠페인 마케팅', 'moai-marketer (마케터)', '카피, 콘텐츠 기획, 광고 운영'],
             ['스마트스토어·카페24 쇼핑몰 운영', 'moai-seller (셀러)', '상품 등록, 주문·리뷰 관리, 매출 분석'],
             ['계약서 검토·법령 확인', 'moai-lawyer (법무 담당)', '계약서 분석, 판례·법령 검색'],
-            ['여러 직원을 팀으로 묶어 큰 일 진행', 'moai-pm (팀장)', '프로젝트 설계, 직원 배정'],
+            ['여러 코워커를 팀으로 묶어 큰 일 진행', 'moai-pm (팀장)', '프로젝트 설계, 코워커 배정'],
           ] },
           { t: 'h2', text: '3단계: 첫 요청 예시' },
           { t: 'para', text: '요청은 평소 동료에게 부탁하듯 자연스러운 문장이면 충분합니다. 그대로 복사해 붙여넣고, 상황만 내 것으로 바꿔보세요.' },
@@ -720,7 +720,7 @@ class Component extends DCLogic {
           { t: 'h2', text: '기능' },
           { t: 'cards', items: [
             { tag: 'w40', title: 'Projects 기능', desc: '관련 대화와 참고 자료를 한데 묶는 작업 공간.' },
-            { tag: 'w45', title: '스킬과 플러그인', desc: '업무 매뉴얼과 직원 패키지를 Chat에서 쓰는 법.' },
+            { tag: 'w45', title: '스킬과 플러그인', desc: '업무 매뉴얼과 코워커 패키지를 Chat에서 쓰는 법.' },
             { tag: 'w50', title: '주요 기능 살펴보기', desc: 'Chat에서 쓸 수 있는 기능 전반 개괄.' },
             { tag: 'w55', title: '메모리', desc: '대화가 끝나도 나에 대해 기억해 두는 수첩.' },
             { tag: 'w91', title: '아티팩트 (Artifacts)', desc: '결과물을 대화 옆 독립 카드로 띄우는 기능.' },
@@ -824,10 +824,10 @@ class Component extends DCLogic {
       },
       agents: {
         blocks: [
-          { t: 'h2', text: '18명의 AI 직원, 네 개의 축' },
-          { t: 'para', text: '모두의 코워크 마켓플레이스 v6.2.0에는 18명의 AI 직원이 있습니다. 이름이 곧 직무입니다. 범용 축(PM·코워커)이 코어를 맡고, 전문가·크리에이티브·개발 축이 각 분야를 담당합니다.' },
-          { t: 'mermaid', cap: '18명의 직원 4축 구조 — 코워커와 PM이 범용 코어입니다.', chart: `flowchart TB
-  HUB["MoAI-Agents<br/>18 AI 직원"]
+          { t: 'h2', text: 'AI 코워커, 네 개의 축' },
+          { t: 'para', text: '모두의 코워크 마켓플레이스 v6.2.0에는 AI 코워커이 있습니다. 이름이 곧 직무입니다. 범용 축(PM·코워커)이 코어를 맡고, 전문가·크리에이티브·개발 축이 각 분야를 담당합니다.' },
+          { t: 'mermaid', cap: '코워커 4축 구조 — 코워커와 PM이 범용 코어입니다.', chart: `flowchart TB
+  HUB["MoAI-Agents<br/>18 AI 코워커"]
   HUB --> G1
   HUB --> G2
   HUB --> G3
@@ -849,8 +849,8 @@ class Component extends DCLogic {
   end` },
           { t: 'h2', text: '범용 — 어디서 시작할지 모르겠다면' },
           { t: 'cards', items: [
-            { tag: 'moai-pm', title: '「PM」 — 프로젝트를 여는 첫 직원', desc: '프로젝트 초기화 허브. /project 한마디로 직원 플러그인의 진입을 라우팅합니다.' },
-            { tag: 'moai-coworker', title: '「코워커」 — 범용 비즈니스 실무 담당', desc: '브랜드·제안서·보고·협상·프로세스 등 비즈니스 실무 스킬을 갖춘 범용 코어 AI 직원.', id: 'agents/coworker' },
+            { tag: 'moai-pm', title: '「PM」 — 프로젝트를 여는 첫 코워커', desc: '프로젝트 초기화 허브. /project 한마디로 코워커 플러그인의 진입을 라우팅합니다.' },
+            { tag: 'moai-coworker', title: '「코워커」 — 범용 비즈니스 실무 담당', desc: '브랜드·제안서·보고·협상·프로세스 등 비즈니스 실무 스킬을 갖춘 범용 코어 AI 코워커.', id: 'agents/coworker' },
           ] },
           { t: 'h2', text: '전문가 축' },
           { t: 'cards', items: [
@@ -873,13 +873,13 @@ class Component extends DCLogic {
             { tag: 'moai-media', title: '「미디어 크리에이터」 — 멀티모달 생성', desc: 'Higgsfield 이미지·영상, ElevenLabs 오디오, GPT-image·Gemini·Midjourney 프롬프트.' },
             { tag: 'moai-designer', title: '「디자이너」 — 에이전틱 디자인', desc: 'Claude Design 연동, 3계층 토큰 파이프라인, 브랜드 시스템, 품질 루프.' },
           ] },
-          { t: 'note', title: '누구를 뽑을지 고민되면', text: 'PM에게 먼저 물어보세요. 프로젝트 성격에 맞는 직원 조합을 잡아 줍니다. 설치와 운용 방법은 플러그인 섹션에서 다룹니다.' },
-          { t: 'sources', items: ['원문: www/content/moai-agents/ (18 문서)', '마켓플레이스 진실 원본: marketplace.json (18 plugins, v6.2.0)'] },
+          { t: 'note', title: '누구를 뽑을지 고민되면', text: 'PM에게 먼저 물어보세요. 프로젝트 성격에 맞는 코워커 조합을 잡아 줍니다. 설치와 운용 방법은 플러그인 섹션에서 다룹니다.' },
+          { t: 'sources', items: ['원문: www/content/moai-agents/ (문서)', '마켓플레이스 진실 원본: marketplace.json (plugins, v6.2.0)'] },
         ],
       },
       'agents/coworker': {
         title: '「코워커」 — 범용 비즈니스 실무 담당',
-        lead: '혼자 일하는 사업자에게 가장 아쉬운 존재는 화려한 전문가가 아니라, 옆자리에서 궂은 실무를 같이 쳐내 주는 든든한 동료입니다. 코워커는 바로 그 "옆자리 동료" 포지션의 범용 코어 AI 직원입니다.',
+        lead: '혼자 일하는 사업자에게 가장 아쉬운 존재는 화려한 전문가가 아니라, 옆자리에서 궂은 실무를 같이 쳐내 주는 든든한 동료입니다. 코워커는 바로 그 "옆자리 동료" 포지션의 범용 코어 AI 코워커입니다.',
         blocks: [
           { t: 'chips', items: ['moai-coworker', '범용 실무', '스킬 32종', 'DART 연동', 'v6.1.0'] },
           { t: 'h2', text: '어떤 일을 맡기나' },
@@ -925,7 +925,7 @@ class Component extends DCLogic {
       AI 슬롭 리뷰
       진단·프롬프트 기초` },
           { t: 'h2', text: '품질 — 왜 결과가 안정적인가' },
-          { t: 'para', text: '모두의 코워크 직원 다수는 산출물을 만드는 실행 직원(worker)과 결과를 의심하며 검사하는 검수 직원(auditor)을 분리해 둡니다. 코워커는 범용 코어 특성상 별도 에이전트 없이 스킬 단위로 동작하며, 품질 점검은 ai-slop-reviewer 같은 후처리 스킬이 맡습니다.' },
+          { t: 'para', text: '모두의 코워크 코워커 다수는 산출물을 만드는 실행 코워커(worker)과 결과를 의심하며 검사하는 검수 코워커(auditor)을 분리해 둡니다. 코워커는 범용 코어 특성상 별도 에이전트 없이 스킬 단위로 동작하며, 품질 점검은 ai-slop-reviewer 같은 후처리 스킬이 맡습니다.' },
           { t: 'h2', text: 'MCP 연동 — DART' },
           { t: 'para', text: '코워커는 dart MCP를 지원합니다. 금융감독원 전자공시(DART)에서 기업 공시·재무 정보를 조회할 수 있습니다. 공개 데이터 기반이라 기본 조회는 별도 자격증명 없이 가능합니다.' },
           { t: 'h2', text: '설치와 첫 지시' },
@@ -961,9 +961,9 @@ class Component extends DCLogic {
           { t: 'cards', items: [
             { tag: '01', title: '설치와 관리', desc: '마켓플레이스 등록부터 설치·확인·업데이트·제거까지, 터미널에서 무엇을 치는가?', id: 'plugins/install' },
             { tag: '02', title: '전문가 에이전트 이해', desc: 'worker와 auditor는 왜 나뉘어 있고, 어떻게 직접 호출하는가?', id: 'plugins/agents' },
-            { tag: '03', title: '팀 구성 패턴', desc: '직원 하나로 시작해서 여러 직원을 조합하는 실전 시나리오는 어떻게 짜는가?', id: 'plugins/teams' },
+            { tag: '03', title: '팀 구성 패턴', desc: '코워커 하나로 시작해서 여러 코워커를 조합하는 실전 시나리오는 어떻게 짜는가?', id: 'plugins/teams' },
           ] },
-          { t: 'h2', text: '18-직원 패밀리 개요' },
+          { t: 'h2', text: '코워커 패밀리 개요' },
           { t: 'table', head: ['플러그인', '직무', '한 줄 소개'], rows: [
             ['moai-coworker', '코워커', '브랜드·제안서·보고·협상 등 비즈니스 범용 실무 + 라이프스타일'],
             ['moai-writer', '작가', '출판 기획·집필·제안서, 한국어 인문화 윤문·맞춤법 검수'],
@@ -981,15 +981,15 @@ class Component extends DCLogic {
             ['moai-career', '커리어코치', '이력서·포트폴리오 첨삭, 면접 준비, 이직 전략'],
             ['moai-tutor', '튜터', '커리큘럼 설계·평가 문항·논문 검색/작성'],
             ['moai-designer', '디자이너', 'Claude Design 연동, 토큰 파이프라인, 브랜드 시스템'],
-            ['moai-pm', 'PM', '/project 명령으로 프로젝트 단위 셋업·직원 배치'],
+            ['moai-pm', 'PM', '/project 명령으로 프로젝트 단위 셋업·코워커 배치'],
           ] },
-          { t: 'note', title: '"무엇을 하나"는 에이전트 섹션에서', text: '이 섹션은 직원들을 어떻게 설치하고 부리나를 다루는 운용 매뉴얼입니다. 각 직원이 무엇을 하는지는 MoAI-Agents 섹션이 직원별 페이지로 안내합니다.' },
+          { t: 'note', title: '"무엇을 하나"는 에이전트 섹션에서', text: '이 섹션은 코워커들을 어떻게 설치하고 부리나를 다루는 운용 매뉴얼입니다. 각 코워커가 무엇을 하는지는 MoAI-Agents 섹션이 코워커별 페이지로 안내합니다.' },
           { t: 'sources', items: ['원문: www/content/plugins/ (5 문서)', 'code.claude.com/docs/en/plugins'] },
         ],
       },
       'plugins/install': {
         title: '설치와 관리',
-        lead: '플러그인 설치는 크게 두 단계입니다. 먼저 마켓플레이스를 한 번 등록하고(어느 가게에서 물건을 받아올지 Claude에게 알려 주는 일), 그다음 필요한 직원 플러그인만 골라 설치합니다. 등록은 컴퓨터당 한 번이면 됩니다.',
+        lead: '플러그인 설치는 크게 두 단계입니다. 먼저 마켓플레이스를 한 번 등록하고(어느 가게에서 물건을 받아올지 Claude에게 알려 주는 일), 그다음 필요한 코워커 플러그인만 골라 설치합니다. 등록은 컴퓨터당 한 번이면 됩니다.',
         blocks: [
           { t: 'h2', text: '1. 마켓플레이스 등록' },
           { t: 'para', text: 'modu-ai/moai-cowork는 GitHub 저장소 주소의 줄임 표기입니다. 성공하면 확인 메시지가 출력되고, 이제 Claude가 이 가게의 플러그인 목록을 알게 됩니다.' },
@@ -997,12 +997,12 @@ class Component extends DCLogic {
             { sigil: '$', text: ' claude plugin marketplace add modu-ai/moai-cowork' },
             { sigil: '', text: '  ✓ Added marketplace: moai-cowork', out: true },
             { sigil: '$', text: ' claude plugin marketplace list' },
-            { sigil: '', text: '  moai-cowork — 18 plugins', out: true },
+            { sigil: '', text: '  moai-cowork — plugins', out: true },
           ] },
           { t: 'warn', title: 'command not found: claude', text: 'Claude Code 자체가 설치되지 않았거나 PATH에 없는 상태입니다. CLI 설치 안내를 따라 Claude Code부터 설치하세요. 네트워크 오류가 나오면 GitHub 접속이 가능한 환경인지(회사 프록시 등) 확인하세요.' },
-          { t: 'h2', text: '2. 필요한 직원만 설치' },
-          { t: 'para', text: '18개를 전부 설치할 필요는 없습니다. 설치 명령의 형식은 <플러그인 이름>@<마켓플레이스 이름>입니다.' },
-          { t: 'code', term: 'terminal — 직원 채용', lines: [
+          { t: 'h2', text: '2. 필요한 코워커만 설치' },
+          { t: 'para', text: '전부 설치할 필요는 없습니다. 설치 명령의 형식은 <플러그인 이름>@<마켓플레이스 이름>입니다.' },
+          { t: 'code', term: 'terminal — 코워커 채용', lines: [
             { sigil: '', text: '  # 예: 마케터 채용', out: true },
             { sigil: '$', text: ' claude plugin install moai-marketer@moai-cowork' },
             { sigil: '', text: '  # 예: 이커머스 셀러 채용', out: true },
@@ -1011,13 +1011,13 @@ class Component extends DCLogic {
             { sigil: '$', text: ' claude plugin install moai-coworker@moai-cowork' },
           ] },
           { t: 'h2', text: '3. 설치 확인' },
-          { t: 'para', text: 'details는 특정 플러그인의 상세 정보 — 버전, 설명, 포함된 명령·에이전트·스킬 목록, MCP 서버 선언 — 를 보여 줍니다. 설치 직후 한 번 훑어보면 이 직원이 어떤 도구를 들고 왔는지 감이 잡힙니다.' },
+          { t: 'para', text: 'details는 특정 플러그인의 상세 정보 — 버전, 설명, 포함된 명령·에이전트·스킬 목록, MCP 서버 선언 — 를 보여 줍니다. 설치 직후 한 번 훑어보면 이 코워커가 어떤 도구를 들고 왔는지 감이 잡힙니다.' },
           { t: 'code', term: 'terminal — 설치 확인', lines: [
             { sigil: '$', text: ' claude plugin list' },
             { sigil: '$', text: ' claude plugin details moai-seller@moai-cowork' },
           ] },
           { t: 'h2', text: '4. 업데이트·비활성화·제거' },
-          { t: 'para', text: '비활성화(disable)는 설치는 유지한 채 로드만 막는 것이라, 여러 직원을 설치해 두고 프로젝트에 따라 켜고 끄는 운용에 좋습니다. 제거 후에도 마켓플레이스 등록은 남아 있으므로 언제든 다시 설치할 수 있습니다.' },
+          { t: 'para', text: '비활성화(disable)는 설치는 유지한 채 로드만 막는 것이라, 여러 코워커를 설치해 두고 프로젝트에 따라 켜고 끄는 운용에 좋습니다. 제거 후에도 마켓플레이스 등록은 남아 있으므로 언제든 다시 설치할 수 있습니다.' },
           { t: 'code', term: 'terminal — 관리 명령', lines: [
             { sigil: '$', text: ' claude plugin marketplace update moai-cowork' },
             { sigil: '$', text: ' claude plugin update moai-seller@moai-cowork' },
@@ -1026,8 +1026,8 @@ class Component extends DCLogic {
             { sigil: '$', text: ' claude plugin uninstall moai-seller@moai-cowork' },
           ] },
           { t: 'h2', text: '5. MCP 자격증명 준비' },
-          { t: 'para', text: '일부 직원은 외부 서비스에 직접 접속해 일합니다. MCP(Claude가 외부 서비스의 도구를 표준 방식으로 부르는 규약) 연동은 외부 서비스 계정의 API 자격증명을 환경변수로 준비해 줘야 실제로 동작합니다.' },
-          { t: 'table', head: ['직원', '연동 서비스', '준비물'], rows: [
+          { t: 'para', text: '일부 코워커는 외부 서비스에 직접 접속해 일합니다. MCP(Claude가 외부 서비스의 도구를 표준 방식으로 부르는 규약) 연동은 외부 서비스 계정의 API 자격증명을 환경변수로 준비해 줘야 실제로 동작합니다.' },
+          { t: 'table', head: ['코워커', '연동 서비스', '준비물'], rows: [
             ['moai-seller', '스마트스토어 · 카페24 · 아임웹', '각 개발자센터 앱 클라이언트 ID·시크릿 환경변수'],
             ['moai-marketer', 'Meta Ads · 게시 채널', 'Meta 비즈니스 계정 인증, 각 서비스 계정 연결'],
             ['moai-media / moai-story', 'Higgsfield · ElevenLabs', 'Higgsfield OAuth(1회) · ElevenLabs API 키'],
@@ -1043,7 +1043,7 @@ class Component extends DCLogic {
         title: '전문가 에이전트 이해',
         lead: '플러그인을 설치하면 스킬(업무 지식 문서)만 오는 것이 아니라 에이전트도 함께 옵니다. 에이전트는 Claude 안에서 특정 역할을 맡아 독립적으로 일하는 "분신"이라고 생각하면 됩니다.',
         blocks: [
-          { t: 'para', text: '모두의 코워크 플러그인 패밀리의 에이전트에는 한 가지 중요한 설계 원칙이 있습니다. 일하는 직원(worker)과 검수하는 직원(auditor)이 분리되어 있다는 점입니다. 회사에서 작성자와 결재자를 한 사람이 겸하지 않듯, 산출물을 만드는 에이전트와 그 품질을 평가하는 에이전트를 따로 두었습니다.' },
+          { t: 'para', text: '모두의 코워크 플러그인 패밀리의 에이전트에는 한 가지 중요한 설계 원칙이 있습니다. 일하는 코워커(worker)과 검수하는 코워커(auditor)이 분리되어 있다는 점입니다. 회사에서 작성자와 결재자를 한 사람이 겸하지 않듯, 산출물을 만드는 에이전트와 그 품질을 평가하는 에이전트를 따로 두었습니다.' },
           { t: 'note', title: '분리는 도구 권한으로 강제됩니다', text: 'worker 에이전트는 파일을 쓰고 고치는 도구(Write·Edit)를 갖지만 auditor 에이전트는 읽기·검색 도구만 갖습니다. 검수자가 산출물을 몰래 고쳐서 "통과"시키는 일이 구조적으로 불가능하도록 권한 자체를 좁혀 둔 것입니다.' },
           { t: 'h2', text: '품질 루프 — worker와 auditor' },
           { t: 'mermaid', cap: '한두 바퀴 돌리면 "그럴듯해 보이는 초안"이 "지적을 견딘 결과물"로 바뀝니다.', chart: `sequenceDiagram
@@ -1077,9 +1077,9 @@ class Component extends DCLogic {
       },
       'plugins/teams': {
         title: '팀 구성 패턴',
-        lead: '플러그인은 한 명씩 채용해도 충분히 일하지만 진짜 힘은 조합에서 나옵니다. 캠페인에는 기획과 디자인이, 쇼핑몰 운영에는 판매와 고객 응대가 같이 필요합니다 — 직원들도 짝을 지어 부릴 때 산출물의 완성도가 달라집니다.',
+        lead: '플러그인은 한 명씩 채용해도 충분히 일하지만 진짜 힘은 조합에서 나옵니다. 캠페인에는 기획과 디자인이, 쇼핑몰 운영에는 판매와 고객 응대가 같이 필요합니다 — 코워커들도 짝을 지어 부릴 때 산출물의 완성도가 달라집니다.',
         blocks: [
-          { t: 'tip', title: '시작은 단일 직원부터', text: '처음이라면 직원 한 명으로 시작하세요. 단일 직원 운용에 익숙해지면 — 스킬이 자동으로 붙는 감각, worker에게 시키고 auditor로 검수하는 리듬 — 그때 두 번째 직원을 채용하면 됩니다. 한 번에 18명을 다 설치하면 오히려 누구에게 뭘 시킬지 헷갈립니다.' },
+          { t: 'tip', title: '시작은 단일 코워커부터', text: '처음이라면 코워커 한 명으로 시작하세요. 단일 코워커 운용에 익숙해지면 — 스킬이 자동으로 붙는 감각, worker에게 시키고 auditor로 검수하는 리듬 — 그때 두 번째 코워커를 채용하면 됩니다. 한 번에 다 설치하면 오히려 누구에게 뭘 시킬지 헷갈립니다.' },
           { t: 'h2', text: '조합 사례 1 — 마케터 × 디자이너' },
           { t: 'para', text: 'moai-marketer가 타깃 분석과 메시지 전략, 채널별 카피를 만들고, 그 결과물을 브리프 삼아 moai-designer가 비주얼 방향과 브랜드 토큰에 맞는 소재 시안을 잡습니다. 마지막으로 마케터의 auditor에게 교차 검수를 시키면 한 바퀴가 끝납니다. 전략 따로 디자인 따로 만들 때 흔한 "말과 그림이 따로 노는" 문제를 브리프를 사이에 끼운 릴레이로 예방하는 패턴입니다.' },
           { t: 'mermaid', cap: '브리프를 사이에 끼운 릴레이 구조.', chart: `flowchart LR
@@ -1102,7 +1102,7 @@ class Component extends DCLogic {
   C --> D["검증된 사업계획서"]
   C -.->|가정 수정| A` },
           { t: 'h2', text: 'PM 허브로 프로젝트 단위 셋업' },
-          { t: 'para', text: '직원 조합이 프로젝트 단위로 반복된다면, 매번 손으로 지시를 짜는 대신 moai-pm 플러그인의 /project 명령으로 셋업을 자동화할 수 있습니다. 프로젝트 폴더에서 /project를 실행하면 성격을 묻는 인터뷰를 거쳐 직원 배치와 공통 지침 파일이 만들어집니다.' },
+          { t: 'para', text: '코워커 조합이 프로젝트 단위로 반복된다면, 매번 손으로 지시를 짜는 대신 moai-pm 플러그인의 /project 명령으로 셋업을 자동화할 수 있습니다. 프로젝트 폴더에서 /project를 실행하면 성격을 묻는 인터뷰를 거쳐 코워커 배치와 공통 지침 파일이 만들어집니다.' },
           { t: 'code', term: 'terminal — PM 허브 설치', lines: [
             { sigil: '$', text: ' claude plugin install moai-pm@moai-cowork' },
             { sigil: '>', text: ' /project' },
@@ -1131,7 +1131,7 @@ class Component extends DCLogic {
           { t: 'h2', text: '어디서 시작하나요' },
           { t: 'cards', items: [
             { tag: '개념', title: '스킬 체이닝 가이드', desc: '쿡북 전반에서 공통으로 쓰는 체인 패턴 입문. 설계 3원칙과 12종 체인.', id: 'cookbook/skill-chaining' },
-            { tag: '12 프로젝트', title: '코워크 프로젝트', desc: '전문가 AI 직원 여러 명을 릴레이로 조합해 문제 하나를 끝까지 해결하는 여정.', id: 'cookbook/projects' },
+            { tag: '12 프로젝트', title: '코워크 프로젝트', desc: '전문가 AI 코워커 여러 명을 릴레이로 조합해 문제 하나를 끝까지 해결하는 여정.', id: 'cookbook/projects' },
             { tag: '11 트랙', title: '실전 트랙', desc: '역할·도메인별 표준 워크플로우. 역할이 명확하면 여기서 시작하세요.', id: 'tracks' },
           ] },
           { t: 'h2', text: '쿡북 전체 문서' },
@@ -1225,7 +1225,7 @@ class Component extends DCLogic {
       },
       'cookbook/projects': {
         title: '코워크 프로젝트',
-        lead: '기능 하나를 소개하는 레시피를 넘어, 전문가 AI 직원 여러 명을 릴레이로 조합해 실제 문제 하나를 끝까지 해결하는 여정을 담은 프로젝트 모음입니다. 구체적인 인물의 문제 상황에서 출발해 어느 직원의 어느 스킬을 어떤 순서로 투입하는지 따라갑니다.',
+        lead: '기능 하나를 소개하는 레시피를 넘어, 전문가 AI 코워커 여러 명을 릴레이로 조합해 실제 문제 하나를 끝까지 해결하는 여정을 담은 프로젝트 모음입니다. 구체적인 인물의 문제 상황에서 출발해 어느 코워커의 어느 스킬을 어떤 순서로 투입하는지 따라갑니다.',
         blocks: [
           { t: 'h2', text: '창업·운영' },
           { t: 'cards', items: [
@@ -1251,7 +1251,7 @@ class Component extends DCLogic {
             { tag: '⑪', title: '이직 준비 4주 플랜 실행하기', desc: '커리어코치와 함께 이력서·면접을 4주로 나눠.' },
             { tag: '⑫', title: 'VOC 분석으로 FAQ 지식베이스 구축하기', desc: 'CS매니저가 문의를 분류해 지식베이스로.' },
           ] },
-          { t: 'note', title: '읽는 방법', text: '각 프로젝트는 인물의 문제 상황 → 투입 직원과 스킬 순서 → 산출물 순으로 이어집니다. 내 상황과 가까운 프로젝트를 골라 스킬 순서만 바꿔 쓰면 됩니다.' },
+          { t: 'note', title: '읽는 방법', text: '각 프로젝트는 인물의 문제 상황 → 투입 코워커와 스킬 순서 → 산출물 순으로 이어집니다. 내 상황과 가까운 프로젝트를 골라 스킬 순서만 바꿔 쓰면 됩니다.' },
           { t: 'sources', items: ['원문: www/content/cookbook/projects/ (13 문서)'] },
         ],
       },
@@ -1311,7 +1311,7 @@ class Component extends DCLogic {
   Hwpx --> Review
   Review --> Out["최종 산출물"]` },
           { t: 'h2', text: '문서 자동화는 조립 라인입니다' },
-          { t: 'para', text: '"문서 하나 만들면 되지 왜 Word·PPT·Excel·한글·PDF 다섯 갈래로 갈라져 있나?"라는 의문이 듭니다. 이유는 목적이 다르기 때문입니다. 인쇄소에 비유하면 쉽습니다 — 손님이 원고를 들고 오면 직원이 먼저 "이걸 뭘로 만들 거냐" 묻습니다. 보고서면 워드 인쇄기로, 발표 자료면 슬라이드 인쇄기로, 표면 엑셀 인쇄기로 찍습니다. 기계가 다르듯 만드는 스킬도 다릅니다.' },
+          { t: 'para', text: '"문서 하나 만들면 되지 왜 Word·PPT·Excel·한글·PDF 다섯 갈래로 갈라져 있나?"라는 의문이 듭니다. 이유는 목적이 다르기 때문입니다. 인쇄소에 비유하면 쉽습니다 — 손님이 원고를 들고 오면 코워커가 먼저 "이걸 뭘로 만들 거냐" 묻습니다. 보고서면 워드 인쇄기로, 발표 자료면 슬라이드 인쇄기로, 표면 엑셀 인쇄기로 찍습니다. 기계가 다르듯 만드는 스킬도 다릅니다.' },
           { t: 'para', text: '각 기계로 찍어낸 뒤에는 마지막으로 교정 전문가(ai-slop-reviewer)가 맞춤법과 어투를 점검합니다. 즉 문서 자동화는 "원본 재료 → 목적에 맞는 기계 선택 → 인쇄 → 교정 → 납품"의 조립 라인입니다. 다섯 포맷은 서로 경쟁하는 게 아니라, 각자 다른 목적에 대응하는 전용 기계일 뿐입니다.' },
           { t: 'mermaid', cap: '목적에 따라 전용 기계를 고르는 구조.', chart: `flowchart LR
   In["원본 재료<br/>데이터 · 원고"] --> Pick{"목적이 무엇인가"}
@@ -1465,11 +1465,11 @@ class Component extends DCLogic {
     const nav = navDef.map(n => ({ ...n, active: n.id === sec, onClick: go(n.id) }));
 
     const HEROES = {
-      home: { eyebrow: 'v6.2.0 · 2026-06-19 · cowork.mo.ai.kr', titleLead: '필요한 일마다,', titleStrong: 'AI 직원을 채용하세요',
-        lead: '모두의 코워크 마켓플레이스의 18개 플러그인은 각각 한 명의 전문 직원입니다. 마케팅·셀러·법무·디자인 — 필요한 직무만 골라 설치하면, 자연어 한마디로 일이 시작됩니다.',
-        cta1: '직원 둘러보기', cta1Id: 'agents', cta2: '5분 설치 가이드', cta2Id: 'start/install',
-        stats: [{ num: '18', lbl: 'AI 직원' }, { num: '176', lbl: '스킬' }, { num: '207', lbl: '문서' }, { num: 'v6.2.0', lbl: '마켓플레이스' }] },
-      start: { eyebrow: 'Getting Started · 완전 초보자용', titleLead: '설치부터 첫 직원 채용까지,', titleStrong: '순서대로 안내합니다',
+      home: { eyebrow: 'v6.2.0 · 2026-06-19 · cowork.mo.ai.kr', titleLead: '필요한 일마다,', titleStrong: 'AI 코워커을 채용하세요',
+        lead: '모두의 코워크 마켓플레이스의 플러그인은 각각 한 명의 전문 코워커입니다. 마케팅·셀러·법무·디자인 — 필요한 직무만 골라 설치하면, 자연어 한마디로 일이 시작됩니다.',
+        cta1: '코워커 둘러보기', cta1Id: 'agents', cta2: '5분 설치 가이드', cta2Id: 'start/install',
+        stats: [{ num: '18', lbl: 'AI 코워커' }, { num: '176', lbl: '스킬' }, { num: '207', lbl: '문서' }, { num: 'v6.2.0', lbl: '마켓플레이스' }] },
+      start: { eyebrow: 'Getting Started · 완전 초보자용', titleLead: '설치부터 첫 코워커 채용까지,', titleStrong: '순서대로 안내합니다',
         lead: 'Claude Desktop은 하나의 프로그램 안에 여러 일하는 방식이 들어 있는 "AI 사무실"입니다. 낯선 용어가 나와도 걱정하지 않으셔도 됩니다 — 모든 용어를 일상 비유와 함께 풀어서 설명합니다.',
         cta1: '설치 가이드 시작', cta1Id: 'start/install', cta2: '개념 기초 먼저 보기', cta2Id: 'start/concepts',
         stats: [{ num: '4', lbl: '단계 여정' }, { num: '9', lbl: '기초 개념' }, { num: '5', lbl: '문서' }, { num: '30분', lbl: '첫 결과물까지' }] },
@@ -1477,11 +1477,11 @@ class Component extends DCLogic {
         lead: 'Chat · Cowork · Design · Code — 제품별로 무엇을 할 수 있고 어떤 기능이 있는지 75개 문서로 다룹니다. 제품 경계가 헷갈릴 때는 각 섹션의 비교 문서를 먼저 보세요.',
         cta1: 'Chat부터 보기', cta1Id: 'guide/chat', cta2: 'Cowork 아키텍처', cta2Id: 'guide/cowork',
         stats: [{ num: '17', lbl: 'Chat' }, { num: '25', lbl: 'Cowork' }, { num: '13', lbl: 'Design' }, { num: '20', lbl: 'Code' }] },
-      agents: { eyebrow: 'MoAI-Agents · v6.2.0', titleLead: '18명의 AI 직원,', titleStrong: '이름이 곧 직무입니다',
-        lead: '범용 코어부터 작가·마케터·법무·디자이너까지. 각 직원의 역할·스킬·연동을 한눈에 보고, 내 일에 맞는 직원만 골라 채용하세요.',
+      agents: { eyebrow: 'MoAI-Agents · v6.2.0', titleLead: 'AI 코워커,', titleStrong: '이름이 곧 직무입니다',
+        lead: '범용 코어부터 작가·마케터·법무·디자이너까지. 각 코워커의 역할·스킬·연동을 한눈에 보고, 내 일에 맞는 코워커만 골라 채용하세요.',
         cta1: '코워커 살펴보기', cta1Id: 'agents/coworker', cta2: '설치 방법', cta2Id: 'plugins/install',
-        stats: [{ num: '18', lbl: 'AI 직원' }, { num: '4', lbl: '직무 축' }, { num: '176', lbl: '스킬' }, { num: '9+', lbl: 'MCP 연동' }] },
-      plugins: { eyebrow: 'Plugins · 설치·운용 매뉴얼', titleLead: '18명의 AI 직원을', titleStrong: '설치하고 부리는 법',
+        stats: [{ num: '18', lbl: 'AI 코워커' }, { num: '4', lbl: '직무 축' }, { num: '176', lbl: '스킬' }, { num: '9+', lbl: 'MCP 연동' }] },
+      plugins: { eyebrow: 'Plugins · 설치·운용 매뉴얼', titleLead: 'AI 코워커을', titleStrong: '설치하고 부리는 법',
         lead: '스마트폰에 앱을 설치하면 없던 기능이 생기듯, 플러그인을 설치하면 캠페인 기획·주문 관리·계약서 검토 같은 전문 업무를 바로 시킬 수 있습니다. 전부 설치할 필요는 없습니다.',
         cta1: '설치와 관리 보기', cta1Id: 'plugins/install', cta2: '팀 구성 패턴', cta2Id: 'plugins/teams',
         stats: [{ num: '18', lbl: '플러그인' }, { num: '5', lbl: '생애주기 단계' }, { num: '3', lbl: '운용 문서' }, { num: 'v6.2.0', lbl: '마켓플레이스' }] },
@@ -1572,9 +1572,9 @@ class Component extends DCLogic {
         ] },
       ],
       sectionCards: [
-        { id: 'start', count: '5 문서', title: '시작하기', desc: 'Claude Desktop 설치부터 첫 직원 채용까지 — 완전 초보자용 경로.', onClick: go('start') },
+        { id: 'start', count: '5 문서', title: '시작하기', desc: 'Claude Desktop 설치부터 첫 코워커 채용까지 — 완전 초보자용 경로.', onClick: go('start') },
         { id: 'guide', count: '75 문서', title: '가이드', desc: 'Chat · Cowork · Design · Code 제품별 기능과 운영.', onClick: go('guide') },
-        { id: 'agents', count: '18 직원', title: 'MoAI-Agents', desc: '각 직원의 역할·스킬·연동을 한눈에. 누구를 뽑을지 정하는 곳.', onClick: go('agents') },
+        { id: 'agents', count: '코워커', title: 'MoAI-Agents', desc: '각 코워커의 역할·스킬·연동을 한눈에. 누구를 뽑을지 정하는 곳.', onClick: go('agents') },
         { id: 'plugins', count: '5 문서', title: '플러그인', desc: '설치·확인·업데이트와 에이전트 호출, 팀 구성 패턴.', onClick: go('plugins') },
         { id: 'cookbook', count: '32 문서', title: '쿡북', desc: '한 줄 요청이 산출물이 되는 실전 시나리오 묶음.', onClick: go('cookbook') },
         { id: 'tracks', count: '11 트랙', title: '실전 트랙', desc: '역할·도메인별 8주 표준 워크플로우.', onClick: go('tracks') },
@@ -1590,15 +1590,15 @@ class Component extends DCLogic {
         { id: 'agents', pkg: 'moai-officer', name: '사무관', desc: 'HWPX·DOCX·XLSX·PPTX·PDF 한국형 오피스 문서와 HTML 리포트.', cta: '문서·오피스', onClick: go('agents') },
         { id: 'agents', pkg: 'moai-analyst', name: '데이터 애널리스트', desc: '공공데이터·KOSIS·DART 조회와 데이터 시각화.', cta: '데이터·분석', onClick: go('agents') },
         { id: 'agents', pkg: 'moai-lawyer', name: '법무 담당', desc: '계약 검토·컴플라이언스, 법령/판례 리서치.', cta: '전문직', onClick: go('agents') },
-        { id: 'agents', pkg: 'moai-pm', name: 'PM', desc: '/project 명령 하나로 프로젝트 단위 셋업과 직원 배치를 라우팅.', cta: '프로젝트 허브', onClick: go('agents') },
+        { id: 'agents', pkg: 'moai-pm', name: 'PM', desc: '/project 명령 하나로 프로젝트 단위 셋업과 코워커 배치를 라우팅.', cta: '프로젝트 허브', onClick: go('agents') },
       ],
       steps: [
         { step: 'Step 01', title: '마켓플레이스 추가', desc: '모두의 코워크 마켓플레이스를 한 번 등록합니다.', sigil: '$', cmd: 'claude plugin marketplace add modu-ai/moai-cowork' },
-        { step: 'Step 02', title: '직원 채용(설치)', desc: '필요한 직원을 골라 담습니다 — 18명 중에서.', sigil: '$', cmd: 'claude plugin install moai-coworker@moai-cowork' },
+        { step: 'Step 02', title: '코워커 채용(설치)', desc: '필요한 코워커를 골라 담습니다.', sigil: '$', cmd: 'claude plugin install moai-coworker@moai-cowork' },
         { step: 'Step 03', title: '자연어로 일 맡기기', desc: '슬래시 명령 없이 요청하면 매칭 스킬이 자동 호출됩니다.', sigil: '>', cmd: '블로그 초안 작성해줘' },
       ],
       c_home: `flowchart LR
-  A["마켓플레이스 등록<br/>1회만"] --> B["직원 채용<br/>plugin install"]
+  A["마켓플레이스 등록<br/>1회만"] --> B["코워커 채용<br/>plugin install"]
   B --> C["자연어 요청<br/>블로그 초안 작성해줘"]
   C --> D["산출물<br/>문서 · 표 · 슬라이드"]
   D -.->|다른 일이 생기면| B`,

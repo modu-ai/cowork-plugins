@@ -4,7 +4,7 @@ weight: 27
 description: "운영팀·PM·CS·B2B 영업을 위한 통합 워크플로우. moai-coworker·moai-pm·moai-cs를 한 줄 요청으로 자동 처리."
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-10T00:00:00+09:00
 ---
 
 > **대상**: 운영팀, PM, 고객지원(CS) 매니저, B2B 영업 담당자, 사내 어시스턴트
@@ -212,7 +212,7 @@ Level 5 (비응급, <1주): 6건 — 자동 응답 + 감사 표현
 
 ## 다음 단계
 
-- **** — 특히 패턴 4 (스케줄 자동화)
+- [**표준 패턴**](../) — 특히 패턴 4 (스케줄 자동화)
 - **[문서 트랙](../track-documents/)** — 사업계획서·IR
 - **[법무 트랙](../track-legal/)** — 계약·NDA
 - **[moai-pm 플러그인](/moai-agents/pm/)** · **[moai-cs](/moai-agents/cs/)** · **[moai-coworker](/moai-agents/coworker/)**

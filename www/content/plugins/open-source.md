@@ -47,7 +47,7 @@ lastmod: 2026-08-08T00:00:00+09:00
 우리가 만들지 않았고, 원저작자의 이름을 그대로 쓰는 서버입니다. 자체 제작 서버와 구분하기
 위해 **이름을 바꾸지 않는 것이 원칙**입니다.
 
-| 서버 | 만든 곳 | 연결한 직원 |
+| 서버 | 만든 곳 | 연결한 코워커 |
 |---|---|---|
 | [Higgsfield](https://mcp.higgsfield.ai/mcp) | Higgsfield AI | 미디어 · 디자이너 · 스토리 |
 | [ElevenLabs](https://github.com/elevenlabs/elevenlabs-mcp) | ElevenLabs | 미디어 |

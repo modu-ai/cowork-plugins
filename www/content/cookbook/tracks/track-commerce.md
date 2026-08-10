@@ -4,7 +4,7 @@ weight: 25
 description: "D2C 셀러·이커머스 운영자를 위한 풀스택 워크플로우. moai-seller 30스킬 + moai-media 미디어 생성으로 신상품 출시부터 재구매·VOC·LTV까지 한 플러그인 안에서 자동화."
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-10T00:00:00+09:00
 ---
 
 > **대상**: 스마트스토어·쿠팡·자사몰·크라우드펀딩 운영자, D2C 브랜드 PM, 이커머스 마케터
@@ -273,7 +273,7 @@ flowchart TD
 
 ## 다음 단계
 
-- **** — 4가지 표준 사용 패턴
+- [**표준 패턴**](../) — 4가지 표준 사용 패턴
 - **[moai-seller 플러그인](/moai-agents/seller/)** — 30스킬 전체 카탈로그
 - **[moai-media 플러그인](/moai-agents/media/)** — 이미지·영상 생성 미디어 13스킬
 - **[광고 트랙](../track-advertising/)** — 메타·구글 광고 진단·최적화

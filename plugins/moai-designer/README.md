@@ -68,7 +68,7 @@
 
 **① 마켓 등록 (최초 1회)** — 설정(Settings) 또는 플러그인(Plugins) 메뉴 → 마켓플레이스(Marketplace)에서 주소 `modu-ai/moai-cowork`를 추가합니다.
 
-**② 이 직원 추가** — 플러그인(Plugins) 메뉴에서 `moai-designer`를 찾아 **Install**을 누르세요.
+**② 이 코워커 추가** — 플러그인(Plugins) 메뉴에서 `moai-designer`를 찾아 **Install**을 누르세요.
 
 **터미널에 익숙하다면 (대안)**
 

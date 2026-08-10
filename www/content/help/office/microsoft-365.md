@@ -5,7 +5,7 @@ description: "Excel·Word·PowerPoint·Outlook에서 Claude를 바로 사용하�
 geekdocBreadcrumb: true
 aliases: ["/office/microsoft-365/"]
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-10T00:00:00+09:00
 ---
 
 매일 쓰는 엑셀이나 워드 창을 떠나지 않고도 옆자리 동료에게 "이 표 좀 봐 줄래?", "이 보고서 톤만 다듬어 줘"라고 부탁하듯 Claude에게 일을 맡길 수 있다면 어떨까요? Claude의 Microsoft 365 추가 기능(add-in)은 바로 그런 경험을 제공합니다. Excel, Word, PowerPoint, Outlook 안에 Claude를 사이드바로 띄워 두고 평소 작업 흐름을 끊지 않으면서 질문하고 수정하고 정리할 수 있습니다.
@@ -57,7 +57,7 @@ Excel용 Claude는 워크북에 대해 질문하면 **셀 단위 인용**과 함
 관리자가 조직 전체에 배포하는 경우는 다음과 같습니다.
 
 1. Microsoft 365 관리 센터에 접속합니다.
-2. 설정에서 **Let users access the Office Store(사용자가 Office 스토어에 접근하도록 허용)**를 켭니다.
+2. 설정에서 <strong>Let users access the Office Store(사용자가 Office 스토어에 접근하도록 허용)</strong>를 켭니다.
 3. **Integrated apps > Add-ins**에서 배포하거나 커스텀 매니페스트 XML 파일을 업로드합니다.
 
 {{< hint type="warning" >}}
@@ -91,7 +91,7 @@ PowerPoint용 Claude는 발표 자료를 만드는 과정을 도와줍니다. �
 
 ## Word에서 Claude 사용하기 (베타)
 
-Word용 Claude는 문서 작업에 Claude를 붙여 주는 추가 기능으로, 현재 베타 단계입니다. 문서에 대해 질문하면 해당 섹션을 인용해 답하고 텍스트를 고칠 때는 모든 수정이 Word의 **변경 내용 추적(tracked changes)**으로 표시되어 검토 창에서 그대로 확인하고 수락하거나 거절할 수 있습니다.
+Word용 Claude는 문서 작업에 Claude를 붙여 주는 추가 기능으로, 현재 베타 단계입니다. 문서에 대해 질문하면 해당 섹션을 인용해 답하고 텍스트를 고칠 때는 모든 수정이 Word의 <strong>변경 내용 추적(tracked changes)</strong>으로 표시되어 검토 창에서 그대로 확인하고 수락하거나 거절할 수 있습니다.
 
 ### 무엇을 할 수 있나요
 
@@ -105,7 +105,7 @@ Word용 Claude는 문서 작업에 Claude를 붙여 주는 추가 기능으로, 
 
 지원 플랫폼은 Word 웹, Windows(Microsoft 365 버전 2205 / 빌드 15202.10000 이상), Mac(버전 16.61 / 빌드 22040100 이상)입니다. Word 2016/2019, iPad, Android에서는 사용할 수 없습니다.
 
-1. Microsoft Marketplace에서 **'Claude by Anthropic for Word'**를 검색합니다.
+1. Microsoft Marketplace에서 <strong>'Claude by Anthropic for Word'</strong>를 검색합니다.
 2. **Get it now**를 클릭해 설치합니다.
 3. 관리자는 **Microsoft 365 관리 센터 > Settings > Integrated apps**에서 배포하거나 admin.microsoft.com에서 커스텀 매니페스트 XML을 업로드합니다.
 4. Word 문서를 열고 추가 기능 메뉴로 이동합니다.(Mac은 **Tools > Add-ins**, Windows는 **Home > Add-ins**)
@@ -132,7 +132,7 @@ Outlook용 Claude는 메일 관리, 초안 작성, 일정 조율, 첨부 문서 
 
 개인 사용자는 다음과 같이 설치합니다.
 
-1. Microsoft AppSource에서 **'Claude by Anthropic for Outlook'**을 검색합니다.
+1. Microsoft AppSource에서 <strong>'Claude by Anthropic for Outlook'</strong>을 검색합니다.
 2. **Get it now**를 클릭합니다.
 3. Outlook을 열고 아무 메일이나 선택합니다.
 4. **Claude 버튼**을 클릭한 뒤 Claude 계정으로 로그인합니다.
@@ -155,7 +155,7 @@ Claude는 Excel, PowerPoint, Word, Outlook을 **오가며** 데이터를 직접 
 
 1. Microsoft Marketplace에서 네 가지 추가 기능을 모두 설치합니다.(Claude for Microsoft 365 + Claude for Outlook)
 2. 각 추가 기능을 사용하기 전에 최소 한 번 활성화합니다.
-3. 각 추가 기능의 **Settings(설정)**로 들어갑니다.
+3. 각 추가 기능의 <strong>Settings(설정)</strong>로 들어갑니다.
 4. **Let Claude work across files(Claude가 파일 간에 작업하도록 허용)** 토글을 켭니다.
 5. Team·Enterprise는 조직 관리자가 먼저 조직 설정에서 이 기능을 활성화해야 개별 구성원이 사용할 수 있습니다.
 

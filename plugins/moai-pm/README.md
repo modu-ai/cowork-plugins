@@ -74,7 +74,7 @@ PM은 직접 일하지 않습니다. **누가 이 일에 맞는지 찾아 팀을
 
 ### ② 플러그인 추가
 
-**가장 쉬운 방법** — 플러그인(Plugins) 메뉴를 열고 `moai-cowork` 마켓플레이스에서 원하는 직원을 찾아 **Install**을 누르세요.
+**가장 쉬운 방법** — 플러그인(Plugins) 메뉴를 열고 `moai-cowork` 마켓플레이스에서 원하는 코워커를 찾아 **Install**을 누르세요.
 
 **터미널에서 직접** 설치하려면:
 
@@ -86,12 +86,12 @@ PM은 직접 일하지 않습니다. **누가 이 일에 맞는지 찾아 팀을
     codex plugin add moai-pm@moai-cowork
     codex plugin add moai-coworker@moai-cowork
 
-    # 필요한 전문가 직원 추가: moai-writer / moai-story / moai-marketer / moai-media /
+    # 필요한 전문가 코워커 추가: moai-writer / moai-story / moai-marketer / moai-media /
     # moai-seller / moai-officer / moai-analyst / moai-lawyer / moai-accountant /
     # moai-recruiter / moai-cs / moai-consultant / moai-career / moai-tutor /
     # moai-designer / moai-threads-poster
 
-> 처음엔 PM + 코워커만 설치해도 충분합니다. 나중에 다른 직원이 필요해지면 셋업 중 **Gap Detection**이 감지해 설치를 안내한 뒤, 완료되면 "이어서 진행"이라고 말해 이어서 진행합니다.
+> 처음엔 PM + 코워커만 설치해도 충분합니다. 나중에 다른 코워커가 필요해지면 셋업 중 **Gap Detection**이 감지해 설치를 안내한 뒤, 완료되면 "이어서 진행"이라고 말해 이어서 진행합니다.
 
 > 앱별 정확한 클릭 경로와 잘 안 될 때 대처법은 [플러그인 설치와 관리](https://cowork.mo.ai.kr/plugins/install/)에 정리해 두었습니다.
 

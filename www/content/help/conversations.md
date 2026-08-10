@@ -4,7 +4,7 @@ weight: 40
 description: "대화 삭제·이름변경·공유, 시크릿 대화, 그리고 검색과 메모리로 이전 맥락을 이어가는 방법을 정리했어요."
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-10T00:00:00+09:00
 ---
 
 Claude와 대화를 나누다 보면 채팅 목록이 점점 쌓입니다. 책상 위에 메모지가 늘어나는 것과 비슷해요. 어떤 메모는 잘 보이게 이름을 붙여 두고 싶고, 어떤 건 정리해서 버리고 싶고, 또 어떤 건 동료에게 그대로 보여 주고 싶죠.
@@ -19,7 +19,7 @@ Claude와 대화를 나누다 보면 채팅 목록이 점점 쌓입니다. 책�
 
 1. 관리하고 싶은 대화로 이동합니다.
 2. 화면 위쪽의 **대화 이름**을 클릭합니다.
-3. 표시되는 메뉴에서 **이름 바꾸기(Rename)** 또는 **삭제(Delete)**를 선택합니다.
+3. 표시되는 메뉴에서 **이름 바꾸기(Rename)** 또는 <strong>삭제(Delete)</strong>를 선택합니다.
 
 ### 여러 대화를 한 번에 삭제하기
 
@@ -47,13 +47,13 @@ Claude와 대화를 나누다 보면 채팅 목록이 점점 쌓입니다. 책�
 
 1. 다시 **Share 메뉴**로 들어갑니다.
 2. **공개 범위(Visibility) 드롭다운**을 엽니다.
-3. **Public(공개)**에서 **Private(비공개)**로 바꾸면 링크가 비활성화됩니다.
+3. <strong>Public(공개)</strong>에서 <strong>Private(비공개)</strong>로 바꾸면 링크가 비활성화됩니다.
 
 ### 공유한 대화 한곳에서 관리하기
 
 공유한 대화의 제목, 날짜, 링크를 한 화면에서 확인하고 개별적으로 접근을 취소할 수 있습니다.
 
-1. **Settings(설정) > Privacy(개인정보)**로 이동합니다.
+1. <strong>Settings(설정) > Privacy(개인정보)</strong>로 이동합니다.
 2. **Shared chats**(공유된 대화) 항목에서 **Manage**(관리)를 클릭합니다.
 3. 목록을 살펴보고 필요 없는 공유 링크의 접근을 취소합니다.
 
@@ -120,9 +120,9 @@ Team·Enterprise에서는 시크릿 대화라도 조직의 데이터 내보내�
 
 ### 검색·메모리 설정하기
 
-1. Claude에서 **Settings(설정) > Memory(메모리)**를 엽니다.
+1. Claude에서 <strong>Settings(설정) > Memory(메모리)</strong>를 엽니다.
 2. 채팅 검색은 **'Search and reference chats'** 토글로 켜고 끕니다(Pro 이상).
-3. 메모리는 **'Generate memory from chats'** 토글로 켜고, **'View and edit memory'**를 눌러 저장된 내용을 확인하고 편집합니다.
+3. 메모리는 **'Generate memory from chats'** 토글로 켜고, <strong>'View and edit memory'</strong>를 눌러 저장된 내용을 확인하고 편집합니다.
 4. Enterprise는 **Organization settings(조직 설정) > Capabilities**에서 조직 전체 정책을 관리합니다.
 
 ### Claude가 기억하는 것과 기억하지 않는 것
@@ -152,7 +152,7 @@ Team·Enterprise에서는 시크릿 대화라도 조직의 데이터 내보내�
 
 자동 전환은 Fable 5를 처음 선택할 때 기본으로 켜지며, 끄려면 다음과 같이 합니다.
 
-1. **Settings(설정) > Capabilities(기능)**로 이동합니다(Claude Code에서는 **Config > MODEL & OUTPUT**).
+1. <strong>Settings(설정) > Capabilities(기능)</strong>로 이동합니다(Claude Code에서는 **Config > MODEL & OUTPUT**).
 2. **'Switch models when a message is flagged'** 토글을 끕니다. 자동 전환을 끄면 차단된 요청은 모델을 바꾸지 않고 대화가 일시 정지돼요.
 
 {{< hint type="note" >}}

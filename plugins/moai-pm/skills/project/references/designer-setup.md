@@ -83,7 +83,7 @@ Phase 1 자산 인터뷰 → Phase 2 designer 설치 확인 → Phase 3 DESIGN.m
 | 브랜드 컨텍스트 | `.moai/project/brand/` | visual-identity.md · voice.md · tokens.json |
 | 디자인 설정 | `.moai/config/sections/design.yaml` | default_framework 등 |
 
-`AGENTS.md`에는 **디자인 시스템 참조 섹션**을 추가한다(`DESIGN.md` + `.moai/project/brand/` 경로 명시, 스킬 체인 하드코딩 금지 — 사용자가 "어떤 직원 있어?"로 물을 때 안내).
+`AGENTS.md`에는 **디자인 시스템 참조 섹션**을 추가한다(`DESIGN.md` + `.moai/project/brand/` 경로 명시, 스킬 체인 하드코딩 금지 — 사용자가 "어떤 코워커 있어?"로 물을 때 안내).
 
 ### 3-1. 파일 생성 기준 (디자이너 산출물 규칙)
 

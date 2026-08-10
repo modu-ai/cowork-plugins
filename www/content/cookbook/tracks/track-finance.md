@@ -4,7 +4,7 @@ weight: 60
 description: "재무제표·세무·결산·예산 분석 자동화. moai-accountant + moai-officer를 한 줄 요청으로 자동 처리."
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-10T00:00:00+09:00
 ---
 
 > **대상**: 사내 재무팀, 회계사, 재무 분석가, CFO, 스타트업 대표
@@ -229,7 +229,7 @@ flowchart TD
 
 ## 다음 단계
 
-- **** — 특히 패턴 4 (스케줄 자동화)
+- [**표준 패턴**](../) — 특히 패턴 4 (스케줄 자동화)
 - **[운영 트랙](../track-operations/)** — 주간보고·예산 운영
 - **[문서 트랙](../track-documents/)** — IR Deck·사업계획서
 - **[moai-accountant 플러그인](/moai-agents/accountant/)** · **[moai-officer](/moai-agents/officer/)**
