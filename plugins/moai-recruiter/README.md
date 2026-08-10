@@ -6,19 +6,23 @@
 
 ## 설치
 
-Claude Code에서 두 단계로 설치합니다:
+`modu-ai/moai-cowork` 마켓플레이스 하나에서 설치합니다. **Claude Cowork**와 **ChatGPT Work** 두 데스크톱 앱 모두 같은 방식입니다.
 
-```
+**가장 쉬운 방법** — 설정(Settings) 또는 플러그인(Plugins) 메뉴 → 마켓플레이스(Marketplace)에서 주소 `modu-ai/moai-cowork`를 추가한 뒤, 플러그인 목록에서 `moai-recruiter`를 찾아 **Install**을 누르세요.
+
+**터미널에 익숙하다면 (대안)**
+
+```bash
+# Claude Cowork CLI
 claude plugin marketplace add modu-ai/moai-cowork
 claude plugin install moai-recruiter@moai-cowork
+
+# ChatGPT Work CLI
+codex plugin marketplace add modu-ai/moai-cowork
+codex plugin add moai-recruiter@moai-cowork
 ```
 
-또는 Claude Code 세션 안에서:
-
-```
-/plugin marketplace add modu-ai/moai-cowork
-/plugin install moai-recruiter
-```
+> 앱별 정확한 클릭 경로와 잘 안 될 때 대처법은 [플러그인 설치와 관리](https://cowork.mo.ai.kr/plugins/install/)에 정리해 두었습니다.
 
 ## 스킬 6종
 
