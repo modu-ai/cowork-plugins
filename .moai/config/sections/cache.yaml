@@ -1,3 +1,0 @@
-cacheStrategy:
-    enabled: true
-    session_ttl: 1h

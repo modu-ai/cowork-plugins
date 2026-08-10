@@ -2,7 +2,6 @@
 # MoAI-ADK Package Distribution .gitignore
 # ============================================
 # Version: 0.33.0
-# Updated: 2026-01-10
 # Purpose: Essential patterns for user projects
 # ============================================
 
@@ -246,6 +245,19 @@ CLAUDE.local.md
 .moai/logs/
 **/.moai/state/
 **/.moai/logs/
-
-# Session hook telemetry — local artifacts
 .moai/reports/session-*.md
+
+# ===========================================
+# Claude Code / MoAI-ADK 개발 하네스 — 저장소에서 제외
+# 이 저장소는 마켓플레이스(plugins/) + 문서(www/)만 다룬다.
+# 루트 앵커 "/" 필수 — 없으면 plugins/*/.claude-plugin,
+# plugins/*/.codex-plugin, plugins/moai-threads-poster/.moai 같은
+# 제품 자산까지 함께 제외된다.
+# ===========================================
+/.claude/
+/.moai/
+/CLAUDE.md
+/.claudeignore
+/.mcp.json
+/.git_hooks/
+/.worktreeinclude
