@@ -4,7 +4,7 @@ weight: 27
 description: "운영팀·PM·CS·B2B 영업을 위한 통합 워크플로우. moai-coworker·moai-pm·moai-cs를 한 줄 요청으로 자동 처리."
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-10T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 
 > **대상**: 운영팀, PM, 고객지원(CS) 매니저, B2B 영업 담당자, 사내 어시스턴트
@@ -16,21 +16,21 @@ lastmod: 2026-08-10T00:00:00+09:00
 ```mermaid
 flowchart TD
    subgraph 회의["회의·보고"]
-       A1["weekly-report<br/>주간 보고서"]
-       A2["status-reporter<br/>상태 보고"]
-       A3["process-manager<br/>SOP·회의록"]
+       A1["collab-pm-report<br/>주간 보고서"]
+       A2["collab-status-report<br/>상태 보고"]
+       A3["collab-meeting<br/>SOP·회의록"]
    end
    subgraph CS["고객 지원"]
-       B1["ticket-triage<br/>티켓 분류"]
-       B2["draft-response<br/>응답 초안"]
-       B3["kb-article<br/>FAQ"]
-       B4["escalation-manager<br/>에스컬레이션"]
+       B1["cs-ticket-triage<br/>티켓 분류"]
+       B2["cs-draft-response<br/>응답 초안"]
+       B3["cs-kb-article<br/>FAQ"]
+       B4["cs-escalation<br/>에스컬레이션"]
    end
    subgraph Sales["B2B 영업"]
-       C1["proposal-writer<br/>12섹션 제안서"]
+       C1["collab-proposal<br/>12섹션 제안서"]
    end
    subgraph Vendor["벤더 관리"]
-       D1["vendor-manager<br/>공급사 관리"]
+       D1["collab-vendor<br/>공급사 관리"]
    end
    회의 -.-> CS
    회의 -.-> Sales
@@ -41,10 +41,10 @@ flowchart TD
 
 | # | 한 줄 요청 | 자동 체인 |
 |---|---|---|
-| 1 | "매주 금요일 우리 팀 주간보고 자동화해줘" | weekly-report → docx → ai-slop → Slack 발송 (스케줄) |
-| 2 | "오늘 들어온 CS 티켓 50개 분류해줘" | ticket-triage → 우선순위 → draft-response |
-| 3 | "RFP 첨부했어. B2B 제안서 만들어줘" | proposal-writer → docx-generator → ai-slop |
-| 4 | "공급사 평가표 1분기 만들어줘" | vendor-manager → xlsx-creator |
+| 1 | "매주 금요일 우리 팀 주간보고 자동화해줘" | collab-pm-report → doc-docx → ai-slop-reviewer → Slack 발송 (스케줄) |
+| 2 | "오늘 들어온 CS 티켓 50개 분류해줘" | cs-ticket-triage → 우선순위 → cs-draft-response |
+| 3 | "RFP 첨부했어. B2B 제안서 만들어줘" | collab-proposal → doc-docx → ai-slop-reviewer |
+| 4 | "공급사 평가표 1분기 만들어줘" | collab-vendor → doc-xlsx |
 
 ---
 
@@ -69,8 +69,8 @@ flowchart TD
 ```mermaid
 flowchart TD
    Cron["매주 금 16:00"] --> Fetch["MCP 자동 fetch<br/>Notion·Linear·Slack"]
-   Fetch --> Gen["weekly-report<br/>임원체·팀체 2 버전"]
-   Gen --> S1["docx-generator"]
+   Fetch --> Gen["collab-pm-report<br/>임원체·팀체 2 버전"]
+   Gen --> S1["doc-docx"]
    S1 --> S2["ai-slop-reviewer"]
    S2 --> Send["Slack #weekly 채널 발송"]
    style Cron fill:#fbf0dc,stroke:#c47b2a
@@ -179,9 +179,9 @@ Level 5 (비응급, <1주): 6건 — 자동 응답 + 감사 표현
 
 ```text
 일일: 모닝 브리핑 (commerce-morning-brief) + 신규 주문 요약
-매주: 주간보고 (weekly-report) + KPI 대시보드
-매월: 월간 성과 (status-reporter) + 공급사 평가
-분기: 인사평가 (performance-review) + OKR 점검
+매주: 주간보고 (collab-pm-report) + KPI 대시보드
+매월: 월간 성과 (collab-status-report) + 공급사 평가
+분기: 인사평가 (hr-performance-review) + OKR 점검
 ```
 
 ### 자동화 추가 명령

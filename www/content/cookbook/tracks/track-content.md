@@ -4,7 +4,7 @@ weight: 22
 description: "콘텐츠 크리에이터·블로거·SNS 운영자를 위한 워크플로우. moai-marketer(content·marketing 스킬) + moai-media + moai-writer(한국어 검수)로 블로그·카드뉴스·랜딩·뉴스레터를 한 줄 요청으로 자동 생성."
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 
 > **대상**: 1인 콘텐츠 크리에이터, 마케터, 블로거, 인플루언서, 뉴스레터 발행자
@@ -19,16 +19,16 @@ flowchart TD
        A["주제 한 줄"]
    end
    subgraph 생성["콘텐츠 생성 (도메인별)"]
-       B1["blog<br/>6 플랫폼 SEO"]
-       B2["card-news<br/>인스타 캐러셀"]
-       B3["landing-page<br/>shadcn/ui 랜딩"]
-       B4["newsletter<br/>이메일 발행"]
-       B5["sns-content<br/>9채널 매트릭스"]
+       B1["content-blog<br/>6 플랫폼 SEO"]
+       B2["content-card-news<br/>인스타 캐러셀"]
+       B3["marketing-landing-page<br/>shadcn/ui 랜딩"]
+       B4["content-newsletter<br/>이메일 발행"]
+       B5["content-sns-content<br/>9채널 매트릭스"]
    end
    subgraph 검수["3중 후처리"]
        C1["ai-slop-reviewer<br/>AI 슬롭 검수"]
        C2["korean-spell-check<br/>맞춤법"]
-       C3["humanize-korean<br/>AI 티 정밀 윤문"]
+       C3["korean-humanize<br/>AI 티 정밀 윤문"]
    end
    subgraph 발행["발행 (외부 커넥터, 선택)"]
        D1["WordPress MCP<br/>커넥터"]
@@ -43,10 +43,10 @@ flowchart TD
 
 | # | 한 줄 요청 | 자동 체인 |
 |---|---|---|
-| 1 | "비건 카페 오픈 블로그 시리즈 5편 써줘" | blog × 5 → ai-slop → korean-spell-check → humanize-korean |
-| 2 | "프리랜서 세금 카드뉴스 8장 만들어줘" | card-news → higgsfield-image → ai-slop |
-| 3 | "AI 영어 회화 앱 랜딩 페이지 만들어줘" | landing-page (shadcn/ui 인터뷰) → ai-slop |
-| 4 | "월간 뉴스레터 발행해줘. 구독자 500명" | newsletter → ai-slop → korean-spell-check → 이메일 발송 |
+| 1 | "비건 카페 오픈 블로그 시리즈 5편 써줘" | content-blog × 5 → ai-slop-reviewer → korean-spell-check → korean-humanize |
+| 2 | "프리랜서 세금 카드뉴스 8장 만들어줘" | content-card-news → media-higgsfield-image → ai-slop-reviewer |
+| 3 | "AI 영어 회화 앱 랜딩 페이지 만들어줘" | marketing-landing-page (shadcn/ui 인터뷰) → ai-slop-reviewer |
+| 4 | "월간 뉴스레터 발행해줘. 구독자 500명" | content-newsletter → ai-slop-reviewer → korean-spell-check → 이메일 발송 |
 
 ---
 
@@ -68,7 +68,7 @@ flowchart TD
 
 ### 자동 체인
 
-`blog × 5편` → `ai-slop-reviewer` (1차 일반) → `korean-spell-check` (바른한글) → `korean-humanize` (한국어 정밀 윤문, A/B/C/D 등급) → (선택) WordPress MCP 커넥터 발행
+`content-blog × 5편` → `ai-slop-reviewer` (1차 일반) → `korean-spell-check` (바른한글) → `korean-humanize` (한국어 정밀 윤문, A/B/C/D 등급) → (선택) WordPress MCP 커넥터 발행
 
 ### 산출물
 
@@ -132,9 +132,9 @@ AI 영어 회화 앱 랜딩 페이지 만들어줘
 
 ```mermaid
 flowchart TD
-   Gen["콘텐츠 생성<br/>(blog·card-news·...)"] --> S1["ai-slop-reviewer<br/>일반 AI 패턴 검수"]
+   Gen["콘텐츠 생성<br/>(content-blog·content-card-news·...)"] --> S1["ai-slop-reviewer<br/>일반 AI 패턴 검수"]
    S1 --> S2["korean-spell-check<br/>바른한글 맞춤법"]
-   S2 --> S3["humanize-korean<br/>한국어 SSOT 40+ 패턴"]
+   S2 --> S3["korean-humanize<br/>한국어 SSOT 40+ 패턴"]
    S3 --> User["사용자 최종 검토"]
    style S1 fill:#fbf0dc,stroke:#c47b2a
    style S3 fill:#e8f1ec,stroke:#265240
@@ -144,9 +144,9 @@ flowchart TD
 |---|---|---|
 | ai-slop-reviewer | 일반 AI 슬롭 (영어 표현, 과한 형용사, hype 어휘) | — |
 | korean-spell-check | 띄어쓰기·맞춤법 (부산대 바른한글 표면) | 오류 N건 |
-| humanize-korean | 10대 카테고리 × 40+ 패턴 (번역투·관용구·형식명사) | 변경률 % + A/B/C/D 등급 |
+| korean-humanize | 10대 카테고리 × 40+ 패턴 (번역투·관용구·형식명사) | 변경률 % + A/B/C/D 등급 |
 
-**안전 가드**: humanize-korean은 변경률 30% 초과 시 경고, 50% 초과 시 강제 중단·전체 롤백하여 의미를 100% 보존합니다.
+**안전 가드**: korean-humanize은 변경률 30% 초과 시 경고, 50% 초과 시 강제 중단·전체 롤백하여 의미를 100% 보존합니다.
 
 ---
 
@@ -158,7 +158,7 @@ flowchart TD
 | 분량 | 1500/2000/3000자 |
 | 톤 | 친근·격식·유머·전문 |
 | 키워드 | 자동 추출 + 사용자 추가 |
-| 이미지 자동 생성 | 예/아니오 (higgsfield-image 호출) |
+| 이미지 자동 생성 | 예/아니오 (media-higgsfield-image 호출) |
 | 발행 자동화 | WordPress MCP / Post-Bridge MCP / Typefully MCP / 수동 (외부 커넥터, 선택) |
 
 ---
@@ -169,7 +169,7 @@ flowchart TD
 
 **사용자는 호출 안 함**. 시스템이 한 줄 요청을 분석해 자동 선택. 예: "블로그" → `content-blog`, "랜딩" → `marketing-landing-page`, "카드뉴스" → `content-card-news`.
 
-### Q. 윤문(humanize-korean)을 끄고 싶어요.
+### Q. 윤문(korean-humanize)을 끄고 싶어요.
 
 AskUserQuestion에서 "AI 검수 강도" 선택 시 "기본" (3중) / "약함" (ai-slop만) / "끄기" 옵션 제공.
 
@@ -191,5 +191,5 @@ AskUserQuestion에서 "AI 검수 강도" 선택 시 "기본" (3중) / "약함" (
 ### Sources
 
 - [moai-marketer 플러그인](https://github.com/modu-ai/moai-cowork/tree/main/plugins/moai-marketer)
-- humanize-korean — 한국 번역학계 8유형 번역투 계보 기반 cowork 자체 저작
+- korean-humanize — 한국 번역학계 8유형 번역투 계보 기반 cowork 자체 저작
 - [NomaDamas/k-skill (MIT)](https://github.com/NomaDamas/k-skill) — korean-spell-check 원본

@@ -1,10 +1,10 @@
 ---
 title: "부록 트랙"
 weight: 90
-description: "연구·교육·라이프스타일을 위한 부록 워크플로우. moai-tutor · moai-coworker 14스킬 한 줄 요청."
+description: "연구·교육·라이프스타일을 위한 부록 워크플로우. moai-tutor · moai-coworker 스킬 한 줄 요청."
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 
 > **대상**: 연구자 (대학원생·교수·R&D), 교육자 (강사·튜터), 일반 사용자 (여행·이벤트·웰니스)
@@ -21,9 +21,9 @@ lastmod: 2026-08-07T00:00:00+09:00
 flowchart TD
    Start["부록 트랙<br/>(연구·교육·라이프스타일)"]
    Start --> Q{"지금 내 목표는?"}
-   Q -- "논문·특허·<br/>지원사업" --> R["연구 (moai-tutor 5스킬)<br/>paper-search · grant-writer · patent-*"]
-   Q -- "강의·커리큘럼·<br/>수강생 관리" --> ED["교육 (moai-tutor 5스킬)<br/>course-curriculum · assessment · followup"]
-   Q -- "여행·이벤트·<br/>건강" --> L["라이프스타일 (moai-coworker 3스킬)<br/>travel · event · wellness"]
+   Q -- "논문·특허·<br/>지원사업" --> R["연구 (moai-tutor)<br/>paper-search · grant-writer · patent-*"]
+   Q -- "강의·커리큘럼·<br/>수강생 관리" --> ED["교육 (moai-tutor)<br/>course-curriculum · assessment · followup"]
+   Q -- "여행·이벤트·<br/>건강" --> L["라이프스타일 (moai-coworker)<br/>travel · event · wellness"]
 
    style Start fill:#e6e6e6,stroke:#757575,color:#09110f
    style Q fill:#fbf0dc,stroke:#c47b2a,color:#09110f
@@ -36,16 +36,16 @@ flowchart TD
 
 | # | 한 줄 요청 | 자동 체인 | 도메인 |
 |---|---|---|---|
-| 1 | "AI 윤리 논문 정리해줘. 최근 3년" | paper-search → paper-writer → docx | 연구 |
-| 2 | "이공계 정부지원사업 신청서 만들어줘" | grant-writer → 평가표 매핑 → docx | 연구 |
-| 3 | "코딩 부트캠프 12주 커리큘럼 짜줘" | curriculum-designer → assessment-creator → pptx | 교육 |
-| 4 | "수강생 후속 시퀀스 30일 자동화해줘" | course-followup-sequence → email-sequence | 교육 |
-| 5 | "도쿄 4박 5일 일정 만들어줘. 부모님 동반" | travel-planner → docx | 라이프스타일 |
-| 6 | "사내 송년회 100명 기획해줘" | event-planner → docx + xlsx (예산) | 라이프스타일 |
+| 1 | "AI 윤리 논문 정리해줘. 최근 3년" | education-paper-search → education-paper-writer → doc-docx | 연구 |
+| 2 | "이공계 정부지원사업 신청서 만들어줘" | education-grant-writer → 평가표 매핑 → doc-docx | 연구 |
+| 3 | "코딩 부트캠프 12주 커리큘럼 짜줘" | education-curriculum-designer → education-assessment-creator → doc-pptx | 교육 |
+| 4 | "수강생 후속 시퀀스 30일 자동화해줘" | education-course-followup-sequence → content-email-sequence | 교육 |
+| 5 | "도쿄 4박 5일 일정 만들어줘. 부모님 동반" | personal-travel → doc-docx | 라이프스타일 |
+| 6 | "사내 송년회 100명 기획해줘" | personal-event → doc-docx + doc-xlsx (예산) | 라이프스타일 |
 
 ---
 
-## 연구 (moai-tutor 5스킬)
+## 연구 (moai-tutor)
 
 ### 시나리오 ① 논문 검색 + 통합 (약 10분)
 
@@ -71,7 +71,7 @@ AI 윤리 분야 최근 3년 논문 정리해줘
 
 ---
 
-## 교육 (moai-tutor 5스킬)
+## 교육 (moai-tutor)
 
 ### 시나리오 ④ 강의 커리큘럼 자동 설계
 
@@ -89,7 +89,7 @@ AI 윤리 분야 최근 3년 논문 정리해줘
 
 ---
 
-## 라이프스타일 (moai-coworker 3스킬)
+## 라이프스타일 (moai-coworker)
 
 ### 시나리오 ⑥ 여행 일정 자동 설계
 

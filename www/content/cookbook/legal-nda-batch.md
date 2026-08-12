@@ -5,7 +5,7 @@ description: "스타트업 법무팀이 인박스에 쌓인 NDA 12건을 한 번
 geekdocBreadcrumb: true
 tags: [cookbook, legal]
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 > **목표** — `./nda_inbox/` 폴더의 NDA PDF 12건을 분류·검토하고, 건별 위험도(상/중/하)와 수정 제안이 들어간 위험 보고서를 docx로 생성합니다.
 
@@ -13,7 +13,7 @@ lastmod: 2026-08-07T00:00:00+09:00
 flowchart TD
    A["nda-triage<br/>분류·분석"] --> B["contract-review<br/>조항 검토"]
    B --> C["legal-risk<br/>위험도 평가"]
-   C --> D["docx-generator<br/>보고서 생성"]
+   C --> D["doc-docx<br/>보고서 생성"]
    D --> E["ai-slop-reviewer<br/>어투 정리"]
 
    style A fill:#e6e6e6,stroke:#757575,color:#09110f
@@ -32,7 +32,7 @@ flowchart TD
 
 ## 왜 다섯 단계인가 — 조립 라인으로 이해하기
 
-NDA 검토를 한 번에 끝내는 스킬이 하나가 아니라 다섯 스킬로 나뉘어 있다는 점이 처음엔 낯설게 느껴집니다. 하지만 공장 조립 라인을 떠올리면 이유가 명확해집니다. NDA라는 반제품 원료가 컨베이어 벨트를 타고 5개의 작업대를 차례로 통과합니다. 첫 작업대(nda-triage)에서 종류별로 분류하고, 둘째(contract-review)에서 문제 조항을 뜯어고치고, 셋째(legal-risk)에서 위험도 스티커를 붙이고, 넷째(docx-generator)에서 보고서로 포장하고, 다섯째(ai-slop-reviewer)에서 마지막 품질 검사로 기계 어투를 닦아냅니다.
+NDA 검토를 한 번에 끝내는 스킬이 하나가 아니라 다섯 스킬로 나뉘어 있다는 점이 처음엔 낯설게 느껴집니다. 하지만 공장 조립 라인을 떠올리면 이유가 명확해집니다. NDA라는 반제품 원료가 컨베이어 벨트를 타고 5개의 작업대를 차례로 통과합니다. 첫 작업대(nda-triage)에서 종류별로 분류하고, 둘째(contract-review)에서 문제 조항을 뜯어고치고, 셋째(legal-risk)에서 위험도 스티커를 붙이고, 넷째(doc-docx)에서 보고서로 포장하고, 다섯째(ai-slop-reviewer)에서 마지막 품질 검사로 기계 어투를 닦아냅니다.
 
 한 작업대를 건너뛰면 불량품이 나오는 것과 같습니다. 분류(triage) 없이 검토하면 상호·일방 NDA를 구분하지 못하고, 위험 평가(legal-risk) 없이 보고서를 만들면 우선순위가 사라지고, 마지막 어투 정리(ai-slop-reviewer)를 빼면 보고서가 기계가 쓴 것처럼 딱딱해집니다. 각 단계는 앞 단계의 결과를 입력으로 받아 한 단계 더 가공하는 구조입니다. 이렇게 역할을 나누면 한 스킬이 모든 일을 억지로 처리할 때보다 각 단계의 품질이 훨씬 높아집니다.
 
@@ -47,7 +47,7 @@ flowchart LR
        S1["① nda-triage<br/>역할: 분류<br/>───────────<br/>상호/일방 구분<br/>기간·손배 캡<br/>준거법 구분<br/>───────────<br/>→ 종류별로 묶음"]
        S2["② contract-review<br/>역할: 조항 수정<br/>───────────<br/>조항별 정밀 검토<br/>수정 제안 마크업<br/>───────────<br/>→ 고쳐야 할 조항 표시"]
        S3["③ legal-risk<br/>역할: 위험도 스티커<br/>───────────<br/>상/중/하 평가<br/>우선순위 부여<br/>───────────<br/>→ 위험 순위 매김"]
-       S4["④ docx-generator<br/>역할: 보고서 포장<br/>───────────<br/>1페이지 요약<br/>+ NDA별 상세<br/>한 권으로 합침<br/>───────────<br/>→ 통합 보고서 1권"]
+       S4["④ doc-docx<br/>역할: 보고서 포장<br/>───────────<br/>1페이지 요약<br/>+ NDA별 상세<br/>한 권으로 합침<br/>───────────<br/>→ 통합 보고서 1권"]
        S5["⑤ ai-slop-reviewer<br/>역할: 어투 닦기 (품질)<br/>───────────<br/>기계적 어투 제거<br/>사람이 쓴 듯 자연스럽게<br/>───────────<br/>→ 읽기 편한 문장"]
        S1 --> S2 --> S3 --> S4 --> S5
    end
@@ -74,7 +74,7 @@ flowchart LR
    R["NDA 원본<br/>(반제품 원료)"] --> S1["① nda-triage<br/>분류"]
    S1 --> S2["② contract-review<br/>조항 수정"]
    S2 --> S3["③ legal-risk<br/>위험도 스티커"]
-   S3 --> S4["④ docx-generator<br/>보고서 포장"]
+   S3 --> S4["④ doc-docx<br/>보고서 포장"]
    S4 --> S5["⑤ ai-slop-reviewer<br/>어투 닦기"]
    S5 --> O["최종 위험 보고서"]
 
@@ -90,7 +90,7 @@ flowchart LR
 ## 스킬 체인
 
 ```
-nda-triage → contract-review → legal-risk → docx-generator → ai-slop-reviewer
+nda-triage → contract-review → legal-risk → doc-docx → ai-slop-reviewer
 ```
 
 | 단계 | 스킬 | 역할 |
@@ -123,7 +123,7 @@ nda-triage → contract-review → legal-risk → docx-generator → ai-slop-rev
 
 NDA가 12건일 때 한 건씩 따로 처리하면, 매번 스킬이 켜졌다 꺼지는 대기 시간이 12번 반복됩니다. 대형 세탁소에 비유하면 한 벌씩 세탁기를 12번 도는 것과 같습니다. 대신 세탁소는 옷을 종류별로 포대에 담아 여러 기계에 동시에 돌린 뒤, 다 깨끗해진 옷을 한 묶음으로 접어 고객에게 돌려줍니다. 한 번에 여러 기계를 돌리면 전체 소요 시간이 가장 느린 한 기계 분량으로 줄어듭니다.
 
-NDA 일괄 검토도 같은 원리입니다. nda-triage, contract-review, legal-risk 세 스킬이 각각 12건을 동시에 훑고 넘어갑니다(이런 식으로 여러 건을 한 번에 처리하는 방식을 배치 처리, 영어로 batch processing이라고 부릅니다). 그 뒤 docx-generator가 12건의 분석 결과를 한 권의 보고서로 합쳐줍니다. 분류는 분류끼리, 검토는 검토끼리 모아서 돌리기 때문에 맥락이 끊기지 않고, 마지막 통합 단계에서야 비로소 12건이 하나로 엮입니다.
+NDA 일괄 검토도 같은 원리입니다. nda-triage, contract-review, legal-risk 세 스킬이 각각 12건을 동시에 훑고 넘어갑니다(이런 식으로 여러 건을 한 번에 처리하는 방식을 배치 처리, 영어로 batch processing이라고 부릅니다). 그 뒤 doc-docx가 12건의 분석 결과를 한 권의 보고서로 합쳐줍니다. 분류는 분류끼리, 검토는 검토끼리 모아서 돌리기 때문에 맥락이 끊기지 않고, 마지막 통합 단계에서야 비로소 12건이 하나로 엮입니다.
 
 왜 한 번에 한 건이 아니라 12건을 묶는 게 효율적인가를 한마디로 요약하면, "같은 종류의 일은 모아서 한 번에 하는 게 한 건씩 나눠 하는 것보다 전체 시간이 짧다"입니다. 아래 다이어그램은 12건이 세 스킬을 병렬로 통과한 뒤 통합 보고서로 합쳐지는 구조를 보여줍니다.
 
@@ -138,7 +138,7 @@ flowchart TB
    S1 --> Agg["통합 위험 보고서"]
    S2 --> Agg
    S3 --> Agg
-   Agg --> D["docx-generator<br/>1페이지 요약 + 상세"]
+   Agg --> D["doc-docx<br/>1페이지 요약 + 상세"]
    D --> AI["ai-slop-reviewer<br/>어투 정리"]
    AI --> Out["90_Output/nda-report/<br/>2026-Q2-nda-review.docx"]
    style Out fill:#e8f1ec,stroke:#265240

@@ -4,7 +4,7 @@ weight: 25
 description: "D2C 셀러·이커머스 운영자를 위한 풀스택 워크플로우. moai-seller 30스킬 + moai-media 미디어 생성으로 신상품 출시부터 재구매·VOC·LTV까지 한 플러그인 안에서 자동화."
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-10T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 
 > **대상**: 스마트스토어·쿠팡·자사몰·크라우드펀딩 운영자, D2C 브랜드 PM, 이커머스 마케터
@@ -24,9 +24,9 @@ flowchart TB
        P3["commerce-promotion-planner<br/>프로모션 기획"]
    end
    subgraph 콘텐츠["3. 콘텐츠 자동화"]
-       C1["detail-page-planner<br/>13섹션 Brief"]
-       C2["detail-page-copy<br/>13섹션 카피"]
-       C3["detail-page-image<br/>1080×1270 PNG"]
+       C1["commerce-detail-page-planner<br/>13섹션 Brief"]
+       C2["commerce-detail-page-copy<br/>13섹션 카피"]
+       C3["commerce-detail-page-image<br/>1080×1270 PNG"]
        C4["commerce-product-image-pipeline<br/>광고 영상 풀세트"]
    end
    subgraph 운영["4. 운영·CRM"]
@@ -38,7 +38,7 @@ flowchart TB
    subgraph 분석["5. 수익 분석"]
        A1["commerce-margin-calculator<br/>마진"]
        A2["commerce-ltv-cac-architect<br/>LTV/CAC"]
-       A3["coupang-ad-optimizer<br/>쿠팡 광고"]
+       A3["commerce-coupang-ad-optimizer<br/>쿠팡 광고"]
    end
    시작 --> 상품 --> 콘텐츠 --> 운영 --> 분석
    style 콘텐츠 fill:#fbf0dc,stroke:#c47b2a
@@ -49,11 +49,11 @@ flowchart TB
 
 | # | 한 줄 요청 (사용자) | 자동 체인 (시스템) |
 |---|---|---|
-| 1 | "신상품 상세페이지 만들어줘" | detail-page-planner → copy → image → ai-slop-reviewer |
-| 2 | "이번 시즌 프로모션 기획해줘" | commerce-promotion-planner → channel-message → marketing-compliance-kr |
+| 1 | "신상품 상세페이지 만들어줘" | commerce-detail-page-planner → commerce-detail-page-copy → commerce-detail-page-image → ai-slop-reviewer |
+| 2 | "이번 시즌 프로모션 기획해줘" | commerce-promotion-planner → cs-channel-message → commerce-marketing-compliance-kr |
 | 3 | "재구매 캠페인 자동 설계해줘" | commerce-repurchase-timer → cs-channel-message |
-| 4 | "리뷰 5채널 통합 분석해줘" | cs-voc-triage (리뷰 집계 모드) → docx-generator → ai-slop-reviewer |
-| 5 | "우리 D2C 광고비 30% 의존도 탈출 전략 짜줘" | commerce-ltv-cac-architect → margin-calculator → integrated-strategy |
+| 4 | "리뷰 5채널 통합 분석해줘" | cs-voc-triage (리뷰 집계 모드) → doc-docx → ai-slop-reviewer |
+| 5 | "우리 D2C 광고비 30% 의존도 탈출 전략 짜줘" | commerce-ltv-cac-architect → commerce-margin-calculator → commerce-integrated-strategy |
 
 ---
 
@@ -79,10 +79,10 @@ flowchart TB
 
 ```mermaid
 flowchart TD
-   P1["detail-page-planner<br/>Brief 생성"] --> P2["detail-page-copy<br/>13섹션 감정 여정"]
-   P2 --> P3["detail-page-image<br/>1080×1270 PNG"]
+   P1["commerce-detail-page-planner<br/>Brief 생성"] --> P2["commerce-detail-page-copy<br/>13섹션 감정 여정"]
+   P2 --> P3["commerce-detail-page-image<br/>1080×1270 PNG"]
    P3 --> P4["ai-slop-reviewer<br/>카피 검수"]
-   P4 --> P5["humanize-korean<br/>AI 티 제거"]
+   P4 --> P5["korean-humanize<br/>AI 티 제거"]
    P5 --> Out["산출물<br/>HTML·PNG·DOCX"]
    style Out fill:#e8f1ec,stroke:#265240
 ```
@@ -275,7 +275,7 @@ flowchart TD
 
 - [**표준 패턴**](../) — 4가지 표준 사용 패턴
 - **[moai-seller 플러그인](/moai-agents/seller/)** — 30스킬 전체 카탈로그
-- **[moai-media 플러그인](/moai-agents/media/)** — 이미지·영상 생성 미디어 13스킬
+- **[moai-media 플러그인](/moai-agents/media/)** — 이미지·영상 생성 미디어 14스킬
 - **[광고 트랙](../track-advertising/)** — 메타·구글 광고 진단·최적화
 - **[법무 트랙](../track-legal/)** — 표시광고법·정통망법 컴플라이언스
 

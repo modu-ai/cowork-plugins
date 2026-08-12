@@ -1,36 +1,38 @@
 ---
 title: "제품 개발 트랙"
 weight: 70
-description: "PRD·로드맵·UX·발표 자료 자동화. moai-consultant(strategy-planner) + moai-coworker + moai-officer + 사용자 정의 스킬 체이닝."
+description: "PRD·로드맵·UX·발표 자료 자동화. moai-pm·moai-consultant·moai-designer·moai-officer 스킬 체이닝."
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-10T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 
 > **대상**: 제품 매니저(PM), UX 디자이너, 개발 매니저, 스타트업 창업자
-> **전제**: moai-consultant · moai-coworker 활성화 + (선택) moai-officer · moai-marketer · 사용자 정의 product-assistant 플러그인
+> **전제**: moai-pm · moai-consultant · moai-designer · moai-officer 플러그인 활성화
 > **소요**: 시나리오당 약 5-20분
 
 ## 무엇을 할 수 있나
 
 ```mermaid
 flowchart TD
-   subgraph 기획["1. PRD·로드맵"]
-       A1["strategy-planner<br/>제품 전략"]
-       A2["spec-writer<br/>PRD 작성"]
-       A3["roadmap-manager<br/>분기 로드맵"]
+   subgraph 기획["1. 기획"]
+       A1["consult-strategy<br/>제품·사업 전략"]
+       A2["consult-brief<br/>요건 정리·PRD 초안"]
+       A3["project<br/>8단계 워크플로우 허브"]
    end
-   subgraph 리서치["2. UX 리서치"]
-       B1["ux-researcher<br/>인터뷰 가이드·페르소나·VOC·NPS"]
+   subgraph 리서치["2. 리서치"]
+       B1["consult-market<br/>시장 검증"]
+       B2["UX 리서치(수동)<br/>인터뷰 가이드·페르소나"]
    end
-   subgraph 디자인["3. UX 디자인"]
-       C1["landing-page<br/>shadcn/ui 프로토타입"]
-       C2["ux-designer<br/>휴리스틱·접근성·플로우 평가"]
+   subgraph 디자인["3. 디자인"]
+       C1["design-brief<br/>디자인 요건"]
+       C2["design-landing-motion<br/>랜딩 프로토타입"]
+       C3["design-gui-guide<br/>UX·접근성 가이드"]
    end
    subgraph 발표["4. 발표 자료"]
-       D1["pptx-designer<br/>피칭 데크"]
-       D2["docx-generator<br/>PRD 문서"]
-       D3["ai-slop-reviewer"]
+       D1["doc-pptx<br/>피칭 데크"]
+       D2["doc-docx<br/>PRD 문서"]
+       D3["원고 검토(수동)"]
    end
    기획 --> 리서치 --> 디자인 --> 발표
    style 발표 fill:#e8f1ec,stroke:#265240
@@ -40,10 +42,10 @@ flowchart TD
 
 | # | 한 줄 요청 | 자동 체인 |
 |---|---|---|
-| 1 | "결제 모듈 PRD 초안 + 인터뷰 가이드 만들어줘" | strategy-planner → spec-writer → ux-researcher → docx |
-| 2 | "분기 로드맵 짜줘. 향후 12개월" | roadmap-manager → docx + xlsx (마일스톤) |
-| 3 | "SaaS 랜딩 프로토타입 만들어줘" | landing-page → ai-slop → humanize-korean |
-| 4 | "투자자용 피칭 데크 12장 만들어줘" | strategy-planner → pptx-designer → ai-slop |
+| 1 | "결제 모듈 PRD 초안 + 인터뷰 가이드 만들어줘" | consult-strategy → consult-brief → UX 리서치(수동) → doc-docx |
+| 2 | "분기 로드맵 짜줘. 향후 12개월" | project → doc-docx (마일스톤 표) |
+| 3 | "SaaS 랜딩 프로토타입 만들어줘" | design-landing-motion → 원고 검토(수동) → korean-humanize |
+| 4 | "투자자용 피칭 데크 12장 만들어줘" | consult-strategy → doc-pptx → 원고 검토(수동) |
 
 ---
 
@@ -64,7 +66,7 @@ flowchart TD
 
 ### 자동 체인
 
-`consult-strategy`(제품 전략 정의) → `collab-spec`(PRD: 문제·해결·요구사항·인수기준) → `collab-ux-research`(5-7개 핵심 질문 + STAR 후속 질문) → `doc-docx` → `ai-slop-reviewer`
+`consult-strategy`(제품 전략 정의) → `consult-brief`(PRD: 문제·해결·요구사항·인수기준) → UX 리서치(수동: 5-7개 핵심 질문 + STAR 후속 질문) → `doc-docx` → 원고 검토(수동)
 
 ### 산출물
 
@@ -91,7 +93,7 @@ flowchart TD
 
 ### 자동 체인
 
-`collab-roadmap`(MoSCoW 우선순위) → 마일스톤·의존성 매핑 → `doc-xlsx`(간트 차트) → `doc-docx` 또는 `doc-pptx` → `ai-slop-reviewer`
+`project`(8단계 허브: MoSCoW 우선순위·마일스톤·의존성 매핑) → `doc-docx`(로드맵 문서) 또는 `doc-pptx`(발표용) → 원고 검토(수동)
 
 ### 산출물
 
@@ -118,7 +120,7 @@ AI 영어 회화 SaaS 랜딩 프로토타입 만들어줘
 
 ### 자동 체인
 
-`marketing-landing-page` (Next.js 15 + shadcn/ui + Tailwind v4 + OKLCH 토큰) → `ai-slop-reviewer` → `korean-humanize`
+`design-landing-motion` (Next.js 15 + shadcn/ui + Tailwind v4 + OKLCH 토큰) → 원고 검토(수동) → `korean-humanize`
 
 ### 산출물
 
@@ -147,7 +149,7 @@ AI 영어 회화 SaaS 랜딩 프로토타입 만들어줘
 
 ### 자동 체인
 
-`consult-strategy`(엘리베이터 피치) → `collab-spec`(12장 표준 목차) → `doc-pptx`(시각화) → `ai-slop-reviewer`
+`consult-strategy`(엘리베이터 피치) → `consult-brief`(12장 표준 목차) → `doc-pptx`(시각화) → 원고 검토(수동)
 
 ### 산출물
 
@@ -174,15 +176,15 @@ AI 영어 회화 SaaS 랜딩 프로토타입 만들어줘
 
 ### Q. 사용자 정의 product-assistant 플러그인을 직접 만들어야 하나요?
 
-**아니오.** 기본 `moai-consultant` (strategy-planner) + `moai-coworker` (spec-writer·ux-researcher·roadmap-manager) + `moai-officer` (pptx·docx) + `moai-marketer` (landing-page)만으로 모든 시나리오 처리 가능. 더 깊은 자동화가 필요하면 로 빌드.
+**아니오.** 기본 `moai-consultant`(consult-strategy·consult-brief·consult-market) + `moai-pm`(project) + `moai-designer`(design-landing-motion·design-brief·design-gui-guide) + `moai-officer`(doc-docx·doc-pptx)만으로 모든 시나리오 처리 가능. 더 깊은 자동화가 필요하면 `/harness:builder`로 커스텀 스킬을 만들 수 있습니다.
 
 ### Q. UX 와이어프레임·디자인 평가도 자동으로 되나요?
 
-`marketing-landing-page`로 코드 기반 프로토타입 즉시 생성 가능. `collab-ux-research`(moai-coworker)로 페르소나·사용자 흐름을 설계하고, `collab-ux-design`(moai-coworker)로 휴리스틱·접근성(WCAG)·사용자 플로우 평가 보고서를 받을 수 있습니다. Figma·Sketch 연동은  참조.
+`design-landing-motion`(moai-designer)으로 코드 기반 프로토타입을 즉시 생성할 수 있습니다. `design-gui-guide`(moai-designer)로 휴리스틱·접근성(WCAG)·사용자 플로우 평가 가이드를 받을 수 있습니다. 페르소나·사용자 흐름 설계와 Figma·Sketch 연동은 수동 영역입니다.
 
 ### Q. PRD 표준 양식은?
 
-`collab-spec`는 EARS 형식 + 8섹션 표준 PRD (제품·시장·페르소나·요구사항·인수기준·KPI·로드맵·리스크). 회사 표준 양식 .docx 첨부 시 자동 매핑.
+`consult-brief`(moai-consultant)가 EARS 형식 + 8섹션 표준 PRD(제품·시장·페르소나·요구사항·인수기준·KPI·로드맵·리스크) 초안을 만들고, `doc-docx`(moai-officer)로 문서화합니다. 회사 표준 양식 .docx를 첨부하면 자동 매핑됩니다.
 
 ### Q. 투자자 피칭 데크는 어떤 양식?
 
@@ -201,7 +203,9 @@ AI 영어 회화 SaaS 랜딩 프로토타입 만들어줘
 
 ### Sources
 
-- [moai-coworker 디렉터리](https://github.com/modu-ai/moai-cowork/tree/main/plugins/moai-coworker)
+- [moai-pm 디렉터리](https://github.com/modu-ai/moai-cowork/tree/main/plugins/moai-pm)
+- [moai-consultant 디렉터리](https://github.com/modu-ai/moai-cowork/tree/main/plugins/moai-consultant)
+- [moai-designer 디렉터리](https://github.com/modu-ai/moai-cowork/tree/main/plugins/moai-designer)
 - [moai-officer 디렉터리](https://github.com/modu-ai/moai-cowork/tree/main/plugins/moai-officer)
 - [Nielsen Norman Group UX 리서치](https://www.nngroup.com/)
 - [Marty Cagan Inspired Product Management](https://www.svpg.com/)

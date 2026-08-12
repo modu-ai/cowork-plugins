@@ -6,7 +6,7 @@ geekdocBreadcrumb: true
 geekdocCollapseSection: true
 tags: [cookbook, projects]
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 
 # 코워크 프로젝트
@@ -22,6 +22,40 @@ lastmod: 2026-08-07T00:00:00+09:00
 모든 프로젝트는 같은 6단 구성을 따릅니다 — ① 문제 상황 ② 투입 코워커와 스킬 ③ 진행 단계 ④ 결과물 ⑤ 생산성 포인트 ⑥ 응용. 한 편을 읽고 나면 나머지 열한 편도 같은 자리에서 같은 정보를 찾을 수 있습니다.
 
 ## 12개 프로젝트 한눈에 보기
+
+아래 그림은 여러 코워커가 릴레이로 이어지는 프로젝트의 흐름을 그린 것입니다. 한 코워커가 만든 중간 산출물을 다음 코워커가 받아 마무리하는 구조를 한눈에 보여줍니다. 화살표 위 숫자는 해당 프로젝트 번호입니다.
+
+```mermaid
+flowchart LR
+    A["컨설턴트"] -->|"① 손익 추정"| B["재무·세무"]
+    A -->|"② 사업계획서"| C["코워커"]
+    D["셀러"] -->|"③ 상세페이지"| E["마케터"]
+    E -->|"③ 응대 매뉴얼"| F["CS매니저"]
+    C -->|"④ 랜딩 시안"| G["디자이너"]
+    C -->|"⑧ 보고 루틴"| H["사무관"]
+    I["법무"] -->|"⑨ 리스크 보고"| C
+
+    subgraph 단독["단독 진행"]
+        J["작가 ⑥"]
+        K["인사·채용 ⑩"]
+        L["커리어코치 ⑪"]
+    end
+
+    style A fill:#e8f1ec,stroke:#265240,color:#09110f
+    style B fill:#d6e7de,stroke:#3d7d5f,color:#09110f
+    style C fill:#e8f1ec,stroke:#265240,color:#09110f
+    style D fill:#e8f1ec,stroke:#265240,color:#09110f
+    style E fill:#e8f1ec,stroke:#265240,color:#09110f
+    style F fill:#d6e7de,stroke:#3d7d5f,color:#09110f
+    style G fill:#d6e7de,stroke:#3d7d5f,color:#09110f
+    style H fill:#d6e7de,stroke:#3d7d5f,color:#09110f
+    style I fill:#e8f1ec,stroke:#265240,color:#09110f
+    style J fill:#e6e6e6,stroke:#757575,color:#09110f
+    style K fill:#e6e6e6,stroke:#757575,color:#09110f
+    style L fill:#e6e6e6,stroke:#757575,color:#09110f
+```
+
+릴레이에 등장한 코워커 가운데 마케터·사무관·CS매니저는 단독 프로젝트(⑤·⑦·⑫)도 맡습니다. 각 코워커가 정확히 어느 프로젝트에 참여하는지는 아래 표에서 확인하세요.
 
 | # | 프로젝트 | 카테고리 | 투입 코워커 | 결과물 |
 |---|---------|---------|----------|--------|

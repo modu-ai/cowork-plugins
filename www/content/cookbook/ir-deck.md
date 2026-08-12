@@ -5,14 +5,14 @@ description: "사업계획서를 받아 투자자 앞에서 15분 안에 끝낼 
 geekdocBreadcrumb: true
 tags: [cookbook, business]
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 > **목표** — 사업계획서 내용을 받아 투자자 앞에서 15분 안에 끝낼 수 있는 **15장 PPT 피칭 덱**을 만듭니다.
 
 ```mermaid
 flowchart TD
    A["사업계획서<br/>입력"] --> B["investor-relations<br/>스토리라인 + 재무"]
-   B --> C["pptx-designer<br/>15장 PPTX"]
+   B --> C["doc-pptx<br/>15장 PPTX"]
    C --> D["ai-slop-reviewer<br/>발표용 문장 압축"]
    D --> E{"추가"}
    E -- "히어로 이미지" --> F["higgsfield-image"]
@@ -47,7 +47,7 @@ Seed·Series A·B 투자 유치를 준비하는 스타트업 창업가.
 ## 스킬 체인
 
 ```
-investor-relations → pptx-designer → ai-slop-reviewer
+investor-relations → doc-pptx → ai-slop-reviewer
 ```
 
 - `finance-investor-relations` — 재무 모델·밸류에이션·스토리라인
@@ -123,7 +123,7 @@ flowchart TD
 sequenceDiagram
    participant U as 사용자
    participant IR as investor-relations
-   participant PPT as pptx-designer
+   participant PPT as doc-pptx
    participant SLP as ai-slop-reviewer
 
    U->>IR: Turn 1 — 한 줄 요청 + 인터뷰 답변
@@ -153,7 +153,7 @@ Slide 4(BM)에 SaaS 매출 모델 추가하고, Slide 7(팀)에 자문단 1장 �
 
 ```mermaid
 flowchart TD
-   SL["확정 스토리라인"] --> PP["pptx-designer<br/>15장 + 차트 자동"]
+   SL["확정 스토리라인"] --> PP["doc-pptx<br/>15장 + 차트 자동"]
    PP --> NB["higgsfield-image<br/>커버 히어로 이미지"]
    NB --> SL2["ai-slop-reviewer<br/>슬라이드 압축<br/>(한 줄 12자, 불릿 3개)"]
    SL2 --> PDF["PDF 내보내기"]

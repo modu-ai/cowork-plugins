@@ -4,7 +4,7 @@ weight: 10
 description: "역할·도메인별 실전 워크플로우 10개 + 부록. 각 트랙은 '짧은 자연어 한 줄 → AskUserQuestion → 스킬 체이닝'의 공통 패턴을 따릅니다."
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 
 > 트랙은 **역할·도메인별 표준 워크플로우**입니다. 각 트랙은 4가지 표준 패턴(단일 프롬프트·멀티턴·배치·스케줄)을 적용한 구체적 시나리오를 보여줍니다.
@@ -45,7 +45,7 @@ flowchart TD
 | 트랙 | 대상 | 한 줄 요청 예시 | 주요 플러그인 |
 |---|---|---|---|
 | [콘텐츠 트랙](track-content/) | 콘텐츠 크리에이터·블로거 | "비건 카페 오픈 블로그 시리즈 5편 써줘" | moai-marketer · moai-media |
-| [광고 트랙](track-advertising/) | 퍼포먼스 마케터 | "신상품 메타 광고 3주차 보고서 분석해줘" | moai-marketer · moai-media · moai-ads-audit-mcp |
+| [광고 트랙](track-advertising/) | 퍼포먼스 마케터 | "신상품 메타 광고 3주차 보고서 분석해줘" | moai-marketer · moai-media · marketing-meta-ads-analyzer (+ Meta Ads MCP 커넥터) |
 
 ### 이커머스
 

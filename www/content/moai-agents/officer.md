@@ -4,7 +4,7 @@ weight: 6
 description: "HWPX·DOCX·XLSX·PPTX·PDF 등 한국형 오피스 문서와 HTML 리포트·슬라이드 생성을 담당하는 사무 AI 코워커. 공공데이터·데이터 분석은 데이터 애널리스트가 전담합니다."
 aliases: ["/agent-teams/officer/"]
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 
 사무실의 하루 절반은 문서와 씨름하는 시간입니다. 한글(HWPX) 공문, 엑셀 정리, 파워포인트 보고, 그리고 "이 통계 어디서 찾지?"라는 검색까지. 사무관은 이 모든 서류 업무를 받아 주는 코워커입니다. 관공서 민원실의 베테랑 주무관처럼, 어떤 서식이 와도 당황하지 않고 형식에 맞춰 처리해 주는 것이 강점입니다.
@@ -23,7 +23,7 @@ flowchart LR
 
 ## 스킬 카탈로그
 
-office-\* 문서/데이터 스킬과 general-\* 생산성 스킬의 전체 목록입니다.
+doc-\* 문서 스킬과 productivity-\* 생산성 스킬(및 setup-\* 커넥터 스킬)의 전체 목록입니다.
 
 {{< employee-skills "moai-officer" >}}
 
@@ -41,7 +41,7 @@ office-\* 문서/데이터 스킬과 general-\* 생산성 스킬의 전체 목�
 
 **3. 노션 템플릿·HTML 리포트.** "이 프로젝트 관리용 노션 템플릿 짜줘"라고 하면 `doc-notion-template`이 보드를 구성하고, "주간 리포트를 웹 페이지로" 요청엔 `doc-html-report`가 응답합니다.
 
-**잘 안 될 때** — HWPX 생성이 실패하면 kordoc MCP 연동 상태를 확인하세요. `setup-mcp-connector` 스킬이 연동 설정을 안내합니다.
+**잘 안 될 때** — HWPX 생성이 실패하면 kordoc MCP 구동 상태를 확인하세요. kordoc은 별도의 API 키 없이 npx로 구동되므로 연동 설정 스킬은 필요 없고, 문서 파싱 문제는 kordoc MCP를 래핑하는 `doc-reader` 스킬이 처리합니다.
 
 ## MCP 연동
 

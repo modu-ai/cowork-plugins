@@ -4,7 +4,7 @@ weight: 26
 description: "인사 담당자와 구직자를 위한 채용·평가·온보딩·자기소개서 워크플로우. moai-recruiter 6스킬 + moai-career 5스킬을 한 줄 요청으로 자동 처리."
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 
 > **대상**: 인사 담당자, HR 매니저, 구직자, 취준생, 경력 전환자
@@ -16,17 +16,17 @@ lastmod: 2026-08-07T00:00:00+09:00
 ```mermaid
 flowchart LR
    subgraph HR["채용 측 (moai-recruiter)"]
-       H1["draft-offer<br/>채용공고·JD"]
-       H2["resume-screener<br/>이력서 분류"]
-       H3["employment-manager<br/>온보딩"]
-       H4["performance-review<br/>인사평가"]
-       H5["people-operations<br/>HR 정책"]
+       H1["hr-draft-offer<br/>채용공고·JD"]
+       H2["hr-resume-screener<br/>이력서 분류"]
+       H3["hr-employment<br/>온보딩·프로세스"]
+       H4["hr-performance-review<br/>인사평가"]
+       H5["hr-operations<br/>HR 정책"]
    end
    subgraph Career["구직 측 (moai-career)"]
-       C1["resume-builder<br/>이력서"]
-       C2["interview-coach<br/>면접 대비"]
-       C3["job-analyzer<br/>JD 분석"]
-       C4["portfolio-guide<br/>포트폴리오"]
+       C1["career-resume<br/>이력서"]
+       C2["career-interview<br/>면접 대비"]
+       C3["hr-job-analysis<br/>JD 분석"]
+       C4["career-portfolio<br/>포트폴리오"]
    end
    HR <--> Career
 ```
@@ -35,10 +35,10 @@ flowchart LR
 
 | # | 한 줄 요청 (HR 또는 구직자) | 자동 체인 |
 |---|---|---|
-| 1 | "데이터분석가 채용공고 + JD 만들어줘" | draft-offer → docx-generator → ai-slop |
-| 2 | "이력서 50개 분류해줘" | resume-screener → 등급별 분류 → docx |
-| 3 | "데이터분석가 이력서 + 포트폴리오 만들어줘" | resume-builder → portfolio-guide → ai-slop |
-| 4 | "내일 네이버 면접 대비 시켜줘" | job-analyzer → interview-coach → 모의 Q&A |
+| 1 | "데이터분석가 채용공고 + JD 만들어줘" | hr-draft-offer → doc-docx → ai-slop-reviewer |
+| 2 | "이력서 50개 분류해줘" | hr-resume-screener → 등급별 분류 → doc-docx |
+| 3 | "데이터분석가 이력서 + 포트폴리오 만들어줘" | career-resume → career-portfolio → ai-slop-reviewer |
+| 4 | "내일 네이버 면접 대비 시켜줘" | hr-job-analysis → career-interview → 모의 Q&A |
 
 ---
 

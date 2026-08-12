@@ -4,7 +4,7 @@ weight: 50
 description: "계약서·NDA·컴플라이언스 자동화. moai-lawyer + moai-officer + moai-coworker를 한 줄 요청으로 자동 처리."
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-10T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 
 > **대상**: 사내 법무팀, 컴플라이언스 담당자, 스타트업 대표·CXO, 외부 자문 변호사
@@ -16,16 +16,16 @@ lastmod: 2026-08-10T00:00:00+09:00
 ```mermaid
 flowchart TD
    subgraph 검토["1. 계약·NDA 검토"]
-       A1["nda-triage<br/>빠른 위험도 분류"]
-       A2["contract-review<br/>조항·리스크"]
-       A3["legal-risk<br/>리스크 등급 평가"]
+       A1["legal-nda-triage<br/>빠른 위험도 분류"]
+       A2["legal-contract-review<br/>조항·리스크"]
+       A3["legal-legal-risk<br/>리스크 등급 평가"]
    end
    subgraph 생성["2. 문서 생성"]
-       B1["contract-review<br/>계약 초안·개선안"]
-       B2["docx-generator<br/>워드 산출물"]
+       B1["legal-contract-review<br/>계약 초안·개선안"]
+       B2["doc-docx<br/>워드 산출물"]
    end
    subgraph 규제["3. 컴플라이언스"]
-       C1["compliance-check<br/>국내·해외 규제"]
+       C1["legal-compliance-check<br/>국내·해외 규제"]
        C2["commerce-message-compliance-kr<br/>정통망법 발송 규제"]
    end
    subgraph 검수["4. 검수"]
@@ -39,10 +39,10 @@ flowchart TD
 
 | # | 한 줄 요청 | 자동 체인 |
 |---|---|---|
-| 1 | "./nda_inbox/ 폴더 NDA 12개 위험도 검토해줘" | nda-triage(배치) → contract-review → legal-risk → docx |
-| 2 | "공급 계약서 리뷰하고 개선안 만들어줘" | contract-review(리뷰) → contract-review(개선안 초안) → docx → ai-slop |
-| 3 | "GDPR 준수 보고서 생성해줘" | compliance-check → docx-generator → ai-slop |
-| 4 | "B2B SaaS 표준 NDA 한·영 동시에 만들어줘" | contract-review(한·영 초안) → docx (KR/EN 병렬) → ai-slop |
+| 1 | "./nda_inbox/ 폴더 NDA 12개 위험도 검토해줘" | legal-nda-triage(배치) → legal-contract-review → legal-legal-risk → doc-docx |
+| 2 | "공급 계약서 리뷰하고 개선안 만들어줘" | legal-contract-review(리뷰) → legal-contract-review(개선안 초안) → doc-docx → ai-slop-reviewer |
+| 3 | "GDPR 준수 보고서 생성해줘" | legal-compliance-check → doc-docx → ai-slop-reviewer |
+| 4 | "B2B SaaS 표준 NDA 한·영 동시에 만들어줘" | legal-contract-review(한·영 초안) → doc-docx (KR/EN 병렬) → ai-slop-reviewer |
 
 ---
 

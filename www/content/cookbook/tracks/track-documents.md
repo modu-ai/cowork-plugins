@@ -5,7 +5,7 @@ description: "Word·PPT·Excel·PDF·한글(HWPX)을 넘나드는 문서 업무�
 geekdocBreadcrumb: true
 tags: [cookbook, documents]
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 
 # 트랙 — 문서 자동화
@@ -17,10 +17,10 @@ lastmod: 2026-08-07T00:00:00+09:00
 ```mermaid
 flowchart TD
    Need[업무 필요] --> Choice{출력 형식}
-   Choice -->|보고서·제안서·계약서| Docx[moai-officer docx-generator]
-   Choice -->|발표·피치덱| Pptx[moai-officer pptx-designer]
-   Choice -->|표·대시보드·재무모델| Xlsx[moai-officer xlsx-creator]
-   Choice -->|기안서·관공서 제출| Hwpx[moai-officer hwpx-writer]
+   Choice -->|보고서·제안서·계약서| Docx[moai-officer doc-docx]
+   Choice -->|발표·피치덱| Pptx[moai-officer doc-pptx]
+   Choice -->|표·대시보드·재무모델| Xlsx[moai-officer doc-xlsx]
+   Choice -->|기안서·관공서 제출| Hwpx[moai-officer doc-hwp]
    Choice -->|폼 작성·병합·추출| Pdf[anthropic-skills pdf]
 
    Docx --> Review[anthropic-skills ai-slop-reviewer]
@@ -38,10 +38,10 @@ flowchart TD
 ```mermaid
 flowchart LR
    In["원본 재료<br/>(데이터 · 원고)"] --> Pick{"목적이 무엇인가"}
-   Pick -->|읽는 글| W["Word<br/>(docx-generator)"]
-   Pick -->|보여주는 발표| P["PPT<br/>(pptx-designer)"]
-   Pick -->|계산하는 표| X["Excel<br/>(xlsx-creator)"]
-   Pick -->|관공서 제출| H["한글<br/>(hwpx-writer)"]
+   Pick -->|읽는 글| W["Word<br/>(doc-docx)"]
+   Pick -->|보여주는 발표| P["PPT<br/>(doc-pptx)"]
+   Pick -->|계산하는 표| X["Excel<br/>(doc-xlsx)"]
+   Pick -->|관공서 제출| H["한글<br/>(doc-hwp)"]
    Pick -->|편집 불가 배포| F["PDF<br/>(pdf)"]
    W --> Q["교정<br/>(ai-slop-reviewer)"]
    P --> Q
@@ -67,10 +67,10 @@ flowchart LR
 
    PICK{"목적 분기<br/>이걸 뭘로 만들 거냐?"}
 
-   W["Word — 읽는 글<br/>docx-generator"]
-   P["PPT — 보여주는 발표<br/>pptx-designer"]
-   H["한글 — 관공서 제출<br/>hwpx-writer"]
-   X["Excel — 계산하는 표<br/>xlsx-creator"]
+   W["Word — 읽는 글<br/>doc-docx"]
+   P["PPT — 보여주는 발표<br/>doc-pptx"]
+   H["한글 — 관공서 제출<br/>doc-hwp"]
+   X["Excel — 계산하는 표<br/>doc-xlsx"]
    F["PDF — 편집 불가 배포<br/>pdf"]
 
    REV["ai-slop-reviewer<br/>어투·표현 다듬기<br/>(텍스트 산출물만)"]

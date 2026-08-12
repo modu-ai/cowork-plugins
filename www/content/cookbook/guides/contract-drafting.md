@@ -4,7 +4,7 @@ weight: 10
 description: "NDA · SLA · 공급계약 · 이용약관을 moai-lawyer 스킬로 작성하는 절차와 한국 실무 체크포인트."
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 > 계약서는 한 번 잘못 보내면 회수가 어렵습니다. 모두의 코워크의 `moai-lawyer` 스킬을 활용해 초안 작성·위험 조항 식별·표준 조항 적용까지 안전하게 진행합니다.
 
@@ -55,7 +55,7 @@ flowchart TD
 다음부터는 자동으로 이 표현 사용해줘.
 {{< /terminal >}}
 
-의 `general-feedback` 종류로 저장되어, 같은 프로젝트의 다음 NDA 검토에서 자동 적용됩니다.
+의 `meta-feedback` 종류로 저장되어, 같은 프로젝트의 다음 NDA 검토에서 자동 적용됩니다.
 
 ## 자주 겪는 실수
 

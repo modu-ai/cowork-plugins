@@ -1,14 +1,14 @@
 ---
 title: "광고 트랙"
 weight: 23
-description: "퍼포먼스 마케터를 위한 메타·쿠팡 광고 진단·최적화 풀세트. moai-marketer 21스킬 + moai-ads-audit-mcp + moai-media 광고 영상으로 광고 리포트 분석부터 픽셀·랜딩 진단까지 한 줄 요청."
+description: "퍼포먼스 마케터를 위한 메타·쿠팡 광고 진단·최적화 풀세트. moai-marketer 21스킬 + moai-media 광고 영상으로 광고 리포트 분석부터 픽셀·랜딩 진단까지 한 줄 요청."
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 
 > **대상**: 메타·구글·쿠팡 광고 운영자, 퍼포먼스 마케터, 광고 대행사
-> **전제**: moai-coworker · moai-marketer 활성화 + (선택) Meta 광고 AI 커넥터(공식 OAuth) 또는 `META_ACCESS_TOKEN` · moai-ads-audit-mcp 자동 설치
+> **전제**: moai-coworker · moai-marketer 활성화 + (선택) Meta 광고 AI 커넥터(공식 OAuth) 또는 `META_ACCESS_TOKEN`
 > **소요**: 시나리오당 약 5-15분
 
 ## 무엇을 할 수 있나
@@ -16,26 +16,26 @@ lastmod: 2026-08-07T00:00:00+09:00
 ```mermaid
 flowchart TB
    subgraph 진단["1. 진단"]
-       D1["meta-ads-analyzer<br/>.xlsx 보고서 9 모듈"]
-       D2["pixel-audit<br/>픽셀·1st Party"]
-       D3["landing-page-conversion-audit<br/>랜딩 6섹션"]
+       D1["marketing-meta-ads-analyzer<br/>.xlsx 보고서 9 모듈"]
+       D2["marketing-pixel-audit<br/>픽셀·1st Party"]
+       D3["marketing-landing-page-conversion-audit<br/>랜딩 6섹션"]
    end
    subgraph 기획["2. 캠페인 기획"]
-       P1["campaign-planner<br/>광고 심리학 풀세트"]
-       P2["target-script<br/>타깃·예산 분배"]
+       P1["marketing-campaign-planner<br/>광고 심리학 풀세트"]
+       P2["marketing-target-script<br/>타깃·예산 분배"]
    end
    subgraph 콘텐츠["3. 광고 크리에이티브"]
-       C1["higgsfield-image<br/>광고 이미지 11 모델"]
-       C2["higgsfield-video<br/>광고 영상 11 모델 + 6 프리셋"]
-       C3["gpt-image-2-prompt<br/>외부 도구 프롬프트 빌더"]
+       C1["media-higgsfield-image<br/>광고 이미지 11 모델"]
+       C2["media-higgsfield-video<br/>광고 영상 11 모델 + 6 프리셋"]
+       C3["media-gpt-image-2-prompt<br/>외부 도구 프롬프트 빌더"]
    end
    subgraph 채널["4. 채널 카피·검수"]
-       Pkg["sns-content<br/>9채널 매트릭스 카피"]
+       Pkg["content-sns-content<br/>9채널 매트릭스 카피"]
        Disc["ai-slop-reviewer<br/>카피 검수"]
    end
    subgraph 분석["5. 성과 분석"]
-       R1["performance-report<br/>주간·월간 성과"]
-       R2["coupang-ad-optimizer<br/>쿠팡 광고 풀세트"]
+       R1["marketing-performance-report<br/>주간·월간 성과"]
+       R2["commerce-coupang-ad-optimizer<br/>쿠팡 광고 풀세트"]
    end
    진단 --> 기획 --> 콘텐츠 --> 채널 --> 분석
    style 진단 fill:#fbf0dc,stroke:#c47b2a
@@ -46,11 +46,11 @@ flowchart TB
 
 | # | 한 줄 요청 | 자동 체인 |
 |---|---|---|
-| 1 | "신상품 메타 광고 3주차 보고서 분석해줘" | meta-ads-analyzer → 9 모듈 분석 → DOCX |
-| 2 | "광고 떨어지는데 뭐가 문제야? 픽셀·랜딩 진단해줘" | pixel-audit → landing-page-conversion-audit → 진단 리포트 |
-| 3 | "스킨케어 메타 광고 영상 풀세트 만들어줘" | higgsfield-image → higgsfield-video → sns-content → ai-slop-reviewer |
-| 4 | "쿠팡 광고 최적화 가이드 짜줘" | coupang-ad-optimizer → 3 캠페인 분류 → 자동규칙 3종 |
-| 5 | "신상품 메타 광고 캠페인 만들어서 운영해줘" | meta-ads-manager → OAuth 연결 → 캠페인·광고세트 생성(PAUSED) → 승인 → 활성화 |
+| 1 | "신상품 메타 광고 3주차 보고서 분석해줘" | marketing-meta-ads-analyzer → 9 모듈 분석 → DOCX |
+| 2 | "광고 떨어지는데 뭐가 문제야? 픽셀·랜딩 진단해줘" | marketing-pixel-audit → marketing-landing-page-conversion-audit → 진단 리포트 |
+| 3 | "스킨케어 메타 광고 영상 풀세트 만들어줘" | media-higgsfield-image → media-higgsfield-video → content-sns-content → ai-slop-reviewer |
+| 4 | "쿠팡 광고 최적화 가이드 짜줘" | commerce-coupang-ad-optimizer → 3 캠페인 분류 → 자동규칙 3종 |
+| 5 | "신상품 메타 광고 캠페인 만들어서 운영해줘" | marketing-meta-ads-manager → OAuth 연결 → 캠페인·광고세트 생성(PAUSED) → 승인 → 활성화 |
 
 ---
 
@@ -73,7 +73,7 @@ flowchart TB
 
 ### 자동 체인
 
-`marketing-meta-ads-analyzer` → 9 모듈 (퍼널·KPI·차원·매트릭스·누수·라이프사이클·학습·예산·시뮬레이션) → 4D 교차 (광고×지면×연령×성별) → `moai-ads-audit-mcp` (43 check matrix) → 출력 4 형식
+`marketing-meta-ads-analyzer` → 9 모듈 (퍼널·KPI·차원·매트릭스·누수·라이프사이클·학습·예산·시뮬레이션) → 4D 교차 (광고×지면×연령×성별) → 50-check audit matrix → 출력 4 형식
 
 ### 산출물
 
@@ -102,9 +102,9 @@ flowchart TB
 ```mermaid
 flowchart TD
    Q["증상 입력"] --> D1{"CTR↓?"}
-   D1 -->|예| AD["광고 진단<br/>pixel-audit"]
+   D1 -->|예| AD["광고 진단<br/>marketing-pixel-audit"]
    D1 -->|아니오| D2{"CVR↓?"}
-   D2 -->|예| LP["랜딩 진단<br/>landing-page-conversion-audit"]
+   D2 -->|예| LP["랜딩 진단<br/>marketing-landing-page-conversion-audit"]
    D2 -->|아니오| D3{"장바구니 이탈↑?"}
    D3 -->|예| Pay["결제 진단<br/>간편결제·불안 해소"]
    AD --> Fix["빠른 처방<br/>3종 액션"]
@@ -136,10 +136,10 @@ flowchart TD
 ### 자동 체인 (광고 풀세트)
 
 ```text
-higgsfield-image  → 광고 이미지 세트 (Hero·인포·라이프스타일·CTA — Soul·DOP·Character 계열, Higgsfield 22 모델)
-higgsfield-video  → 메인 영상 5-10초 + 보조 2컷 (Kling·Veo 3·Seedance 등 11 모델 + 6 프리셋)
-sns-content       → 메타 1:1·9:16 / 네이버 GFA / 카카오모먼트 1:1·16:9 채널별 카피
-ai-slop-reviewer  → 카피 검수 (AI 티 제거)
+media-higgsfield-image  → 광고 이미지 세트 (Hero·인포·라이프스타일·CTA — Soul·DOP·Character 계열, Higgsfield 22 모델)
+media-higgsfield-video  → 메인 영상 5-10초 + 보조 2컷 (Kling·Veo 3·Seedance 등 11 모델 + 6 프리셋)
+content-sns-content     → 메타 1:1·9:16 / 네이버 GFA / 카카오모먼트 1:1·16:9 채널별 카피
+ai-slop-reviewer        → 카피 검수 (AI 티 제거)
 ```
 
 AI 생성 소재는 채널별 "AI 생성" 표기 정책에 맞춰 캡션·메타데이터에 명시하세요 (광고심의·소비자보호법 대응).
@@ -233,8 +233,8 @@ flowchart TD
 ### 자동 체인
 
 ```text
-meta-ads-manager (생성·운영, PAUSED)
-  → (성과 누적 후) meta-ads-analyzer / moai-ads-audit-mcp (진단)
+marketing-meta-ads-manager (생성·운영, PAUSED)
+  → (성과 누적 후) marketing-meta-ads-analyzer (진단)
   → ai-slop-reviewer (진단 텍스트 검수)
 ```
 
@@ -267,7 +267,7 @@ meta-ads-manager (생성·운영, PAUSED)
 
 ### Q. 한국 벤치마크 출처는 정확한가요?
 
-`moai-ads-audit-mcp` 내장 한국 벤치마크는 일반 참고용. 자사 카테고리·시장 데이터로 보정 권장.
+`marketing-meta-ads-analyzer` 내장 한국 벤치마크는 일반 참고용. 자사 카테고리·시장 데이터로 보정 권장.
 
 ### Q. 식약처 광고 심의 자동 검출되나요?
 
@@ -288,7 +288,7 @@ meta-ads-manager (생성·운영, PAUSED)
 - **[콘텐츠 트랙](../track-content/)** — 광고용 콘텐츠 생성
 - **[이커머스 트랙](../track-commerce/)** — 광고 + 상품 통합
 - **[moai-marketer 플러그인](/moai-agents/marketer/)**
-- **[moai-ads-audit-mcp 서버](https://github.com/modu-ai/cowork-plugins/tree/main/mcp-servers/moai-ads-audit)**
+- **[marketing-meta-ads-analyzer 스킬](https://github.com/modu-ai/moai-cowork/tree/main/plugins/moai-marketer/skills/marketing-meta-ads-analyzer)**
 
 ---
 

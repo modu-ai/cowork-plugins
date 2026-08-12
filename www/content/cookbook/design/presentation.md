@@ -1,10 +1,10 @@
 ---
 title: "프레젠테이션 디자인 원칙"
 weight: 10
-description: "moai-officer:pptx-designer로 만든 한국형 슬라이드를 더 잘 만드는 5개 원칙과 실전 팁."
+description: "moai-officer:doc-pptx로 만든 한국형 슬라이드를 더 잘 만드는 5개 원칙과 실전 팁."
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 > "디자인이 좋다"는 칭찬은 보통 "정보가 잘 정리되어 있다"는 뜻입니다. 슬라이드를 화려하게 만드는 게 아니라, 한 장에 한 가지 메시지가 명확하게 보이도록 다듬는 것이 핵심입니다.
 
@@ -14,7 +14,7 @@ flowchart TD
    B --> C["글자 수 최소화"]
    C --> D["시각 강조 1곳"]
    D --> E["일관된 그리드"]
-   E --> F["pptx-designer<br/>슬라이드 생성"]
+   E --> F["doc-pptx<br/>슬라이드 생성"]
 
    style A fill:#e6e6e6,stroke:#757575,color:#09110f
    style F fill:#e8f1ec,stroke:#265240,color:#09110f

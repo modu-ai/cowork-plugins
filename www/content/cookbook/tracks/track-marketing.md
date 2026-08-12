@@ -5,7 +5,7 @@ description: "브랜드 전략·SNS·상세페이지·SEO까지 moai-marketer �
 geekdocBreadcrumb: true
 tags: [cookbook, marketing]
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 
 # 트랙 — 마케팅·콘텐츠
@@ -36,8 +36,8 @@ sequenceDiagram
    I->>U: 타깃 고객·산출물·핵심 포인트 3-4문항
    U->>I: 선택지 응답
    I->>C: 맥락 전달
-   C->>C: brand-identity (브랜드 설계)
-   C->>C: docx-generator (문서 저장)
+   C->>C: collab-brand-identity (브랜드 설계)
+   C->>C: doc-docx (문서 저장)
    C->>Q: 원문 전달
    Q->>Q: ai-slop-reviewer (AI 티 검수)
    Q-->>U: 최종 산출물 (한 그릇 완성)
@@ -54,8 +54,8 @@ flowchart LR
 
    subgraph chain["스킬 체인"]
        direction LR
-       C1["brand-identity<br/>(브랜드 설계)"]
-       C2["docx-generator<br/>(문서 저장)"]
+       C1["collab-brand-identity<br/>(브랜드 설계)"]
+       C2["doc-docx<br/>(문서 저장)"]
        C3["ai-slop-reviewer<br/>(AI 티 검수 · 품질)"]
        C1 --> C2 --> C3
    end
@@ -65,18 +65,18 @@ flowchart LR
 
 ```mermaid
 flowchart TB
-   Brand["브랜드 아이덴티티<br/>brand-identity"] --> Voice["브랜드 보이스"]
+   Brand["브랜드 아이덴티티<br/>collab-brand-identity"] --> Voice["브랜드 보이스"]
    Voice --> Channels{"배포 채널"}
-   Channels -->|블로그| Blog["blog"]
-   Channels -->|카드뉴스| Card["card-news"]
-   Channels -->|뉴스레터| News["newsletter"]
-   Channels -->|SNS 피드| Social["social-media"]
-   Channels -->|상세페이지| Detail["product-detail"]
-   Channels -->|랜딩| Landing["landing-page"]
+   Channels -->|블로그| Blog["content-blog"]
+   Channels -->|카드뉴스| Card["content-card-news"]
+   Channels -->|뉴스레터| News["content-newsletter"]
+   Channels -->|SNS 피드| Social["content-sns-content"]
+   Channels -->|상세페이지| Detail["commerce-product-detail"]
+   Channels -->|랜딩| Landing["marketing-landing-page"]
 
-   Blog --> SEO["seo-audit"]
-   Social --> Campaign["campaign-planner"]
-   Campaign --> Report["performance-report"]
+   Blog --> SEO["marketing-seo-audit"]
+   Social --> Campaign["marketing-campaign-planner"]
+   Campaign --> Report["marketing-performance-report"]
 ```
 
 ## 3단계 마케팅 파이프라인 — 왜 브랜드가 먼저이고 성과가 마지막인가
@@ -87,9 +87,9 @@ flowchart TB
 
 ```mermaid
 flowchart LR
-   P1["Part 1 — 브랜드·전략<br/>(뼈대 세우기)<br/><br/>brand-identity<br/>personal-branding"]
-   P2["Part 2 — 콘텐츠 제작<br/>(인테리어 입히기)<br/><br/>blog · card-news<br/>newsletter · social-media<br/>product-detail · landing-page"]
-   P3["Part 3 — 캠페인·성과<br/>(거주 만족도 측정)<br/><br/>campaign-planner<br/>performance-report<br/>seo-audit · email-sequence"]
+   P1["Part 1 — 브랜드·전략<br/>(뼈대 세우기)<br/><br/>collab-brand-identity<br/>marketing-personal-branding"]
+   P2["Part 2 — 콘텐츠 제작<br/>(인테리어 입히기)<br/><br/>content-blog · content-card-news<br/>content-newsletter · content-sns-content<br/>commerce-product-detail · marketing-landing-page"]
+   P3["Part 3 — 캠페인·성과<br/>(거주 만족도 측정)<br/><br/>marketing-campaign-planner<br/>marketing-performance-report<br/>marketing-seo-audit · content-email-sequence"]
 
    P1 -->|"보이스·아이덴티티 전달"| P2
    P2 -->|"만들어진 콘텐츠 전달"| P3
@@ -113,7 +113,7 @@ B2B SaaS 브랜드 리뉴얼안 만들어줘
 
 시스템 인터뷰: ① 현재 브랜드명·피드백 ② 타깃 고객(B2B/B2C, 연령·직무) ③ 산출물(네이밍 후보 수·로고 컨셉·컬러 팔레트) ④ 출력 형식(DOCX/PPTX)
 
-체인: `brand-identity → docx-generator → ai-slop-reviewer`
+체인: `collab-brand-identity → doc-docx → ai-slop-reviewer`
 
 ### personal-branding — 개인 전문가 포지셔닝
 
@@ -125,7 +125,7 @@ CEO·임원·전문가 개인의 전문성을 브랜드화.
 
 시스템 인터뷰: ① 전문 영역·경력 ② 타깃 포지션 ③ 채널(링크드인·브런치·유튜브) ④ 콘텐츠 빈도
 
-체인: `personal-branding → docx-generator → ai-slop-reviewer`
+체인: `marketing-personal-branding → doc-docx → ai-slop-reviewer`
 
 ---
 
@@ -141,7 +141,7 @@ CEO·임원·전문가 개인의 전문성을 브랜드화.
 
 시스템 인터뷰: ① 플랫폼·SEO 키워드 ② 분량·톤 ③ 타깃 독자 ④ 발행 여부
 
-체인: `blog → ai-slop-reviewer → korean-spell-check → humanize-korean`
+체인: `content-blog → ai-slop-reviewer → korean-spell-check → korean-humanize`
 
 ### card-news — 인스타 카드뉴스
 
@@ -153,7 +153,7 @@ AI 이미지 생성 기반 캐러셀 10장.
 
 시스템 인터뷰: ① 플랫폼 비율(인스타 1080×1350·페북 1080×1080) ② 스타일·포인트 컬러 ③ 장수 ④ CTA 문구
 
-체인: `card-news → higgsfield-image → ai-slop-reviewer`
+체인: `content-card-news → media-higgsfield-image → ai-slop-reviewer`
 
 ### newsletter — 뉴스레터
 
@@ -165,9 +165,9 @@ AI 이미지 생성 기반 캐러셀 10장.
 
 시스템 인터뷰: ① 브랜드·타깃 구독자 ② 이번 호 주제 ③ 분량·CTA ④ A/B 테스트 제목 후보 수
 
-체인: `newsletter → ai-slop-reviewer → korean-spell-check`
+체인: `content-newsletter → ai-slop-reviewer → korean-spell-check`
 
-### social-media — SNS 콘텐츠
+### content-sns-content — SNS 콘텐츠
 
 인스타·스레드·X·링크드인·유튜브쇼츠·카카오·네이버 7개 플랫폼 개별 최적화.
 
@@ -177,7 +177,7 @@ AI 이미지 생성 기반 캐러셀 10장.
 
 시스템 인터뷰: ① 대상 플랫폼 ② 톤(전문가/친근) ③ 해시태그 전략 ④ 이미지 동반 여부
 
-체인: `social-media → higgsfield-image(이미지 필요 시) → ai-slop-reviewer`
+체인: `content-sns-content → media-higgsfield-image(이미지 필요 시) → ai-slop-reviewer`
 
 ### product-detail — 상세페이지
 
@@ -189,7 +189,7 @@ AI 이미지 생성 기반 캐러셀 10장.
 
 시스템 인터뷰: ① 제품 카테고리·가격대 ② 타깃 고객 ③ 핵심 USP 3가지 ④ 구매 혜택
 
-체인: `product-detail → higgsfield-image(제품 이미지) → ai-slop-reviewer`
+체인: `commerce-product-detail → media-higgsfield-image(제품 이미지) → ai-slop-reviewer`
 
 ### landing-page — 단독 랜딩
 
@@ -201,7 +201,7 @@ AI 이미지 생성 기반 캐러셀 10장.
 
 시스템 인터뷰: ① 목적(가입·예약·구매) ② 타깃 전환율 ③ 구성 요소(강사·후기·FAQ 포함 여부) ④ HTML 단일 vs 멀티페이지
 
-체인: `landing-page → ai-slop-reviewer`
+체인: `marketing-landing-page → ai-slop-reviewer`
 
 ---
 
@@ -217,7 +217,7 @@ A/B 테스트 설계·인플루언서 전략·CRM 자동화.
 
 시스템 인터뷰: ① 목표(가입·매출·인지도) ② 예산·기간 ③ 채널 믹스 ④ A/B 테스트 세트 수
 
-체인: `campaign-planner → docx-generator → ai-slop-reviewer`
+체인: `marketing-campaign-planner → doc-docx → ai-slop-reviewer`
 
 ### performance-report — 성과 보고서
 
@@ -229,7 +229,7 @@ GA4·네이버 광고·메타 광고·카카오모먼트 데이터 통합 분석
 
 시스템 인터뷰: ① 데이터 소스(CSV 경로) ② 분석 차원(채널·캠페인·퍼널) ③ 수신자(경영진/실무) ④ 출력 형식(PPTX/DOCX)
 
-체인: `performance-report → data-visualizer → pptx-designer → ai-slop-reviewer`
+체인: `marketing-performance-report → data-visualizer → doc-pptx → ai-slop-reviewer`
 
 ### seo-audit — 네이버·구글·GEO 통합 감사
 
@@ -241,7 +241,7 @@ blog.smartflow.co.kr SEO 종합 감사해줘
 
 시스템 인터뷰: ① 도메인 ② 감사 범위(온페이지·기술·GEO) ③ 경쟁사 도메인 ④ 우선순위 항목 수
 
-체인: `seo-audit → docx-generator → ai-slop-reviewer`
+체인: `marketing-seo-audit → doc-docx → ai-slop-reviewer`
 
 ### email-sequence — 이메일 드립
 
@@ -253,13 +253,13 @@ blog.smartflow.co.kr SEO 종합 감사해줘
 
 시스템 인터뷰: ① 시퀀스 주기(Day 0/1/3/7/14/21/30) ② 톤·CTA 강도 ③ 발신자 정보 ④ 수신거부 처리
 
-체인: `email-sequence → ai-slop-reviewer → korean-spell-check`
+체인: `content-email-sequence → ai-slop-reviewer → korean-spell-check`
 
 ---
 
 ## 체인 읽는 법 — 화살표가 뜻하는 것과 품질 스킬이 항상 끝에 오는 이유
 
-이 트랙의 각 스킬 아래에는 `blog → ai-slop-reviewer → korean-spell-check → humanize-korean` 같은 **체인 표기**가 붙어 있습니다. 화살표(`→`)는 "왼쪽 스킬의 결과물을 오른쪽 스킬이 입력받아 이어 처리한다"는 뜻입니다. 즉 `content-blog`가 쓴 원고를 `ai-slop-reviewer`가 검수하고, 그 결과를 `korean-spell-check`가 맞춤법 점검하고, 마지막으로 `korean-humanize`이 사람이 쓴 것처럼 다듬는 식으로 한 방향으로 흘러갑니다.
+이 트랙의 각 스킬 아래에는 `content-blog → ai-slop-reviewer → korean-spell-check → korean-humanize` 같은 **체인 표기**가 붙어 있습니다. 화살표(`→`)는 "왼쪽 스킬의 결과물을 오른쪽 스킬이 입력받아 이어 처리한다"는 뜻입니다. 즉 `content-blog`가 쓴 원고를 `ai-slop-reviewer`가 검수하고, 그 결과를 `korean-spell-check`가 맞춤법 점검하고, 마지막으로 `korean-humanize`이 사람이 쓴 것처럼 다듬는 식으로 한 방향으로 흘러갑니다.
 
 이 화살표 끝에는 항상 같은 얼굴이 반복해 붙습니다 — `ai-slop-reviewer`, `korean-spell-check`, `korean-humanize` 같은 **품질 스킬**들입니다. 왜 끝인가. 세탁 라인에 비유하면 명확해집니다. 옷을 먼저 만들고(도메인 스킬) → 포장하고(포맷 스킬) → 마지막에 검수·다림질·보풀 제거(품질 스킬) 순서로 돌아갑니다. 다림질(품질)을 맨 앞에 하면 구겨진 옷을 다릴 수 없듯, 검수할 원문이 없는 상태에서 `ai-slop-reviewer`를 부르면 의미가 없습니다. 그래서 품질 스킬은 항상 체인의 맨 끝에 옵니다.
 
@@ -267,9 +267,9 @@ blog.smartflow.co.kr SEO 종합 감사해줘
 
 ```mermaid
 flowchart LR
-   D["도메인 스킬<br/>(내용 만들기)<br/><br/>blog · newsletter<br/>brand-identity"]
-   F["포맷 스킬<br/>(형태 갖추기)<br/><br/>docx-generator<br/>pptx-designer"]
-   Q["품질 스킬<br/>(검수·다듬기)<br/><br/>ai-slop-reviewer<br/>humanize-korean"]
+   D["도메인 스킬<br/>(내용 만들기)<br/><br/>content-blog · content-newsletter<br/>collab-brand-identity"]
+   F["포맷 스킬<br/>(형태 갖추기)<br/><br/>doc-docx<br/>doc-pptx"]
+   Q["품질 스킬<br/>(검수·다듬기)<br/><br/>ai-slop-reviewer<br/>korean-humanize"]
 
    D -->|"원문 전달"| F
    F -->|"완성본 전달"| Q
@@ -283,7 +283,7 @@ flowchart LR
 
 ### AI 티 나는 문장
 
-특히 블로그·뉴스레터는 [AI 슬롭 검수](/cookbook/skill-chaining/)가 필수입니다. 시스템이 본문 완성 → `ai-slop-reviewer → humanize-korean` 자동 호출로 처리합니다.
+특히 블로그·뉴스레터는 [AI 슬롭 검수](/cookbook/skill-chaining/)가 필수입니다. 시스템이 본문 완성 → `ai-slop-reviewer → korean-humanize` 자동 호출로 처리합니다.
 
 ### 이미지 생성 비용
 

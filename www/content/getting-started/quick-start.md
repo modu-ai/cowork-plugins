@@ -4,7 +4,7 @@ weight: 30
 description: "modu-ai/moai-cowork 마켓플레이스 등록부터 첫 스킬 체인 실행까지 약 10분 완성 가이드 — Claude Cowork, ChatGPT Work"
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-10T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 `modu-ai/moai-cowork` 마켓플레이스를 **Claude Cowork와 ChatGPT Work** 두 데스크톱 앱에 등록하고 첫 스킬 체인을 실행하기까지의 전체 흐름을 정리한 페이지입니다. 처음부터 끝까지 약 **10분** 소요됩니다.
 
@@ -200,8 +200,8 @@ sequenceDiagram
 ```mermaid
 flowchart LR
    O["한 줄 요청<br/>IR 덱 만들어줘"] --> R{"스킬 자동 매칭<br/>맥락 판단"}
-   R --> S1["① 도메인<br/>investor-relations"]
-   S1 --> S2["② 포맷<br/>pptx-designer"]
+   R --> S1["① 도메인<br/>finance-investor-relations"]
+   S1 --> S2["② 포맷<br/>doc-pptx"]
    S2 --> S3["③ 품질<br/>ai-slop-reviewer"]
    S3 --> P["완성된 PPTX"]
 
@@ -221,7 +221,7 @@ flowchart LR
 "우리 SaaS의 Series A용 IR 덱 초안 만들어줘. 타깃 고객은 한국 중소제조업체야."
    {{< /terminal >}}
 
-   체인 예시: `investor-relations → pptx-designer → ai-slop-reviewer`
+   체인 예시: `finance-investor-relations → doc-pptx → ai-slop-reviewer`
 
 6. **산출물 확인**
 

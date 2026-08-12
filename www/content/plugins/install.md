@@ -4,12 +4,12 @@ weight: 10
 description: "마켓플레이스 등록 → 필요한 코워커 설치 → 확인 → 업데이트·비활성화·제거, 그리고 MCP 자격증명 준비까지 따라 하기."
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-10T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 
 플러그인 설치는 크게 두 단계입니다. 먼저 **마켓플레이스를 한 번 등록**하고(어느 가게에서 물건을 받아올지 Claude 또는 ChatGPT에게 알려 주는 일), 그다음 **필요한 코워커 플러그인만 골라 설치**합니다. 마켓플레이스 등록은 컴퓨터당 한 번이면 되고 이후에는 설치·업데이트·제거만 반복하면 됩니다.
 
-이 페이지는 **Claude Cowork 또는 ChatGPT Work 데스크톱 앱**을 쓴다는 전제로 안내합니다. 두 앱이 같은 마켓플레이스를 공유하므로, 어느 쪽이든 편한 앱으로 등록하면 됩니다. 모든 단계는 앱 안에서 마우스 클릭으로 진행합니다 — 터미널은 필요하지 않습니다.
+이 페이지는 **Claude Cowork 또는 ChatGPT Work 데스크톱 앱**을 쓴다는 전제로 안내합니다. 두 앱이 같은 마켓플레이스를 공유하므로, 어느 쪽이든 편한 앱으로 등록하면 됩니다. 기본 설치·업데이트는 앱 클릭만으로 됩니다(터미널 불필요). 다만 MCP 연동이나 고급 확인 일부는 터미널을 쓰며, 해당 문서에 안내합니다.
 
 ![마켓플레이스 등록에서 설치, 확인, 업데이트로 이어지는 네 단계 흐름](/infographics/install-manage-flow.png)
 
@@ -96,7 +96,7 @@ Plugins 화면에서 각 코워커별로 업데이트·비활성화·제거를 �
 | `moai-media` | Higgsfield·ElevenLabs | Higgsfield OAuth ([설정 가이드](higgsfield-setup/))·ElevenLabs API 키 |
 | `moai-story` | Higgsfield | Higgsfield OAuth ([설정 가이드](higgsfield-setup/)) |
 | `moai-designer` | Higgsfield | Higgsfield OAuth ([설정 가이드](higgsfield-setup/)) |
-| `moai-analyst` | KOSIS·DART·공공데이터포털 | 각 공공 API 키 환경변수 |
+| `moai-analyst` | KOSIS·DART·건축물대장(archhub) | 각 공공 API 키 환경변수 |
 | `moai-lawyer` | 국가법령정보 | 공공 API 키 환경변수 |
 | `moai-officer` | kordoc | 로컬 처리 (별도 자격증명 없음) |
 

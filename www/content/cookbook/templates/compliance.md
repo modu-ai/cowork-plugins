@@ -4,7 +4,7 @@ weight: 10
 description: "GDPR · PIPA(개인정보보호법) · ISMS · 전자상거래법 컴플라이언스 점검 체크리스트와 자동화 방법."
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 > 컴플라이언스는 분기 1회 점검으로 충분하지만 그 1회를 빠뜨리면 행정처분이 날아옵니다. 표준 체크리스트를 두고 `moai-lawyer:legal-compliance-check` 스킬로 자동화하세요.
 
@@ -92,4 +92,4 @@ flowchart TD
 ### Sources
 
 - moai-lawyer 플러그인 [`legal-compliance-check`](https://github.com/modu-ai/moai-cowork/blob/main/plugins/moai-lawyer/skills/legal-compliance-check/SKILL.md)
-- [개인정보보호위원회 — 개인정보처리방침 작성지침](https://www.pipc.go.kr) · [한국인터넷진흥원 — ISMS-P 인증](https://isms.kisa.or.kr)
+- [개인정보보호위원회 — 개인정보처리방침 작성지침](https://www.pipc.go.kr) · [한국인터넷진흥원 — ISMS-P 인증](https://isms-p.or.kr)

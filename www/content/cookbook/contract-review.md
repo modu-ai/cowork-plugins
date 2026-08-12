@@ -5,18 +5,18 @@ description: "상대측 계약서·NDA를 리스크 항목별로 표 정리 → 
 geekdocBreadcrumb: true
 tags: [cookbook, legal]
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 > **목표** — 상대측이 보낸 계약서·NDA를 **리스크 항목별로 표 정리** → 수정본 DOCX → 1페이지 결재용 요약까지 자동으로 만듭니다.
 
 ```mermaid
 flowchart TD
    subgraph Fast["NDA 빠른 검토"]
-       N["nda-triage"] --> D1["docx-generator"]
+       N["nda-triage"] --> D1["doc-docx"]
    end
    subgraph Full["일반 계약서 검토"]
        A["contract-review<br/>조항 분석"] --> B["legal-risk<br/>리스크 매트릭스"]
-       B --> C["docx-generator<br/>수정본 DOCX"]
+       B --> C["doc-docx<br/>수정본 DOCX"]
    end
    D1 --> R["ai-slop-reviewer"]
    C --> R
@@ -43,7 +43,7 @@ sequenceDiagram
    participant F as 빠른 길
    participant G as 긴 길
    participant M as 리스크 매트릭스<br/>2×2
-   participant D as docx-generator
+   participant D as doc-docx
    participant A as ai-slop-reviewer
 
    U->>T: 계약서 원문
@@ -76,7 +76,7 @@ flowchart TD
    end
 
    MAT["2×2 리스크 매트릭스<br/>가로: 일어날 가능성 / 세로: 피해 규모<br/>고위험 상위 3 → 협상 포인트 자동 선정"]
-   DOCX["docx-generator<br/>수정본 DOCX (추적 변경 표)"]
+   DOCX["doc-docx<br/>수정본 DOCX (추적 변경 표)"]
    AI["ai-slop-reviewer<br/>어투 정리 (결재용 다듬기)"]
    SUM["결재용 1페이지 요약<br/>핵심 리스크 3 + 권장 액션 + 승인 사항"]
 
@@ -103,10 +103,10 @@ flowchart TD
 ## 스킬 체인
 
 ```
-contract-review → legal-risk → docx-generator → ai-slop-reviewer
+contract-review → legal-risk → doc-docx → ai-slop-reviewer
 ```
 
-(NDA 빠른 검토만 필요하면: `nda-triage → docx-generator → ai-slop-reviewer`)
+(NDA 빠른 검토만 필요하면: `nda-triage → doc-docx → ai-slop-reviewer`)
 
 ## 왜 한 스킬로 끝내지 않고 4단계로 쪼개나
 
@@ -118,7 +118,7 @@ contract-review → legal-risk → docx-generator → ai-slop-reviewer
 flowchart LR
    S1["① 재료 손질<br/>contract-review<br/>조항 발췌·분석"]
    S2["② 맛보기 검수<br/>legal-risk<br/>위험도 매트릭스"]
-   S3["③ 접시에 담기<br/>docx-generator<br/>수정본 DOCX"]
+   S3["③ 접시에 담기<br/>doc-docx<br/>수정본 DOCX"]
    S4["④ 플레이팅 점검<br/>ai-slop-reviewer<br/>어투 정리"]
 
    S1 --> S2 --> S3 --> S4
@@ -180,7 +180,7 @@ flowchart TD
    B --> C["contract-review<br/>조항별 리스크"]
    C --> D["legal-risk<br/>발생가능성·영향도 매트릭스"]
    D --> E["compliance-check<br/>규제 검증"]
-   E --> F["docx-generator<br/>수정안 + 1페이지 요약"]
+   E --> F["doc-docx<br/>수정안 + 1페이지 요약"]
    F --> G["ai-slop-reviewer<br/>어투 정리"]
    style F fill:#fbf0dc,stroke:#c47b2a
 ```
@@ -198,7 +198,7 @@ flowchart TD
 | 한 줄 요청 | 자동 체인 분기 |
 |---|---|
 | "이 NDA 위험도만 알려줘" | nda-triage → legal-risk (요약만) |
-| "조항별 표만 만들어줘" | contract-review → docx-generator |
+| "조항별 표만 만들어줘" | contract-review → doc-docx |
 | "협상용 수정안만 필요해" | contract-review → 수정안 DOCX |
 | "경영진 결재용 1페이지" | 1페이지 요약만 |
 

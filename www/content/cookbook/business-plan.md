@@ -5,18 +5,18 @@ description: "아이템 한 줄에서 심사용 DOCX 사업계획서까지 1-2�
 geekdocBreadcrumb: true
 tags: [cookbook, business]
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 > **목표** — 아이템 아이디어에서 시작해 심사위원이 받을 수 있는 수준의 DOCX 사업계획서까지, 1-2시간 이내로 완성합니다.
 
 ```mermaid
 flowchart TD
    A["strategy-planner<br/>BMC·SWOT·OKR"] --> B["market-analyst<br/>TAM·경쟁사·가격"]
-   B --> C["docx-generator<br/>심사 양식 DOCX"]
+   B --> C["doc-docx<br/>심사 양식 DOCX"]
    C --> D["ai-slop-reviewer<br/>기계적 문장 제거"]
    D --> E{"추가 보강"}
    E -- "시장 통계" --> F["moai-analyst<br/>KOSIS 데이터"]
-   E -- "재무 추정" --> G["xlsx-creator<br/>3년 추정표"]
+   E -- "재무 추정" --> G["doc-xlsx<br/>3년 추정표"]
    F --> E
    G --> E
 
@@ -44,7 +44,7 @@ flowchart TD
 flowchart LR
    A["① strategy-planner<br/>설계도 · 뼈대"]
    B["② market-analyst<br/>부지 조사 · 시장"]
-   C["③ docx-generator<br/>시공 · 문서 변환"]
+   C["③ doc-docx<br/>시공 · 문서 변환"]
    D["④ ai-slop-reviewer<br/>감리 · 품질 검수"]
 
    A --> B --> C --> D
@@ -61,12 +61,12 @@ flowchart LR
 flowchart LR
    Start["한 줄 아이템 입력"] --> S1["① strategy-planner<br/>설계도 · 뼈대<br/>BMC·SWOT·OKR"]
    S1 --> S2["② market-analyst<br/>부지 조사 · 시장<br/>TAM·경쟁사"]
-   S2 --> S3["③ docx-generator<br/>시공 · 문서 변환<br/>심사 양식 DOCX"]
+   S2 --> S3["③ doc-docx<br/>시공 · 문서 변환<br/>심사 양식 DOCX"]
    S3 --> S4["④ ai-slop-reviewer<br/>감리 · 품질 검수<br/>기계 냄새 제거"]
    S4 --> Result["심사용 DOCX 완성"]
 
    S3 -.보강.-> D1["moai-analyst<br/>KOSIS 시장 통계"]
-   S3 -.보강.-> D2["xlsx-creator<br/>3년 재무 추정표"]
+   S3 -.보강.-> D2["doc-xlsx<br/>3년 재무 추정표"]
    D1 -.환류.-> S3
    D2 -.환류.-> S3
 
@@ -78,7 +78,7 @@ flowchart LR
 ## 스킬 체인
 
 ```
-strategy-planner → market-analyst → docx-generator → ai-slop-reviewer
+strategy-planner → market-analyst → doc-docx → ai-slop-reviewer
 ```
 
 - `consult-strategy` — BMC·SWOT·OKR로 뼈대 작성
@@ -133,7 +133,7 @@ strategy-planner 와 market-analyst 를 순서대로 써.
   - 표·그림 포함
   - 폰트는 맑은고딕, 본문 10pt
 
-docx-generator 스킬로 실제 파일 만들어줘.
+doc-docx 스킬로 실제 파일 만들어줘.
 {{< /terminal >}}
 
 ## 왜 마지막 검수가 빠지면 안 되는가
@@ -154,14 +154,14 @@ AI가 쓴 사업계획서 글도 똑같습니다. 내용은 충실해도 문장 
 ### 5. (선택) 시장 통계 보강
 
 {{< terminal title="claude — cowork" raw="true" >}}
-1인 가구 통계가 필요해. moai-analyst 의 public-data 로 KOSIS에서
+1인 가구 통계가 필요해. moai-analyst 의 data-public 로 KOSIS에서
 최근 5년 서울 1인 가구 추이 가져와서 5장 "시장 분석" 에 표와 그래프로 추가해줘.
 {{< /terminal >}}
 
 ### 6. 재무 추정표 별도 엑셀
 
 {{< terminal title="claude — cowork" raw="true" >}}
-3년 매출·비용 추정 엑셀 만들어줘. xlsx-creator 로.
+3년 매출·비용 추정 엑셀 만들어줘. doc-xlsx 로.
   - 가정: 월 500명 출발, 월 10% 성장, CAC 4만원, LTV 36만원
   - 손익계산서·월별 현금흐름·BEP 시트 포함
 {{< /terminal >}}
@@ -186,7 +186,7 @@ AI가 쓴 사업계획서 글도 똑같습니다. 내용은 충실해도 문장 
 ## 응용 변형
 
 - **정부 지원사업 매칭** — `consult-gov-grant` 스킬로 내 아이템에 맞는 공고를 먼저 찾고 그 양식에 맞춰 진행합니다.
-- **피칭 덱 변환** — 완성된 DOCX를 `investor-relations + pptx-designer`로 IR 덱으로 변환 → [IR 덱 제작](../ir-deck/) 참고.
+- **피칭 덱 변환** — 완성된 DOCX를 `finance-investor-relations + doc-pptx`로 IR 덱으로 변환 → [IR 덱 제작](../ir-deck/) 참고.
 
 ---
 

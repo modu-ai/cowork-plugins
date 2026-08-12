@@ -4,15 +4,15 @@ weight: 40
 description: "EDA · 프로파일링 · 이상값 탐지를 moai-analyst:data-explorer 스킬로 자동화하는 절차."
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 > "이 데이터로 뭘 할 수 있을까?"라는 질문은 EDA(탐색적 데이터 분석)으로 답합니다. 모두의 코워크의 `data-explorer`가 5분 안에 첫 인사이트를 돌려줍니다.
 
 ```mermaid
 flowchart TD
-   A["data-explorer<br/>프로파일링"] --> B["public-data<br/>공공데이터 보강"]
+   A["data-explorer<br/>프로파일링"] --> B["data-public<br/>공공데이터 보강"]
    B --> C["data-visualizer<br/>시각화"]
-   C --> D["xlsx-creator / docx-generator<br/>보고서 출력"]
+   C --> D["doc-xlsx / doc-docx<br/>보고서 출력"]
 
    style A fill:#e6e6e6,stroke:#757575,color:#09110f
    style D fill:#e8f1ec,stroke:#265240,color:#09110f

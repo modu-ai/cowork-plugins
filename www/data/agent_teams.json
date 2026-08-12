@@ -149,7 +149,7 @@
    "id": "moai-writer",
    "displayName": "✍️ 작가",
    "category": "창작·출판",
-   "version": "1.1.0",
+   "version": "1.1.1",
    "description": "출판·텍스트 전담 AI 코워커 — 출판 기획·집필·제안서·출판사 매칭(book-* 8종), 한국어 인문화 윤문과 맞춤법 검수까지 텍스트 창작 전 과정 스킬 10종. 스토리/IP 창작은 moai-story 플러그인으로 분리. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 작가·1인 출판인·실용서 저자.",
    "skill_count": 10,
    "skills": [
@@ -341,7 +341,7 @@
    "id": "moai-marketer",
    "displayName": "📣 마케터",
    "category": "마케팅",
-   "version": "1.1.0",
+   "version": "1.1.1",
    "description": "마케팅 전담 AI 코워커 — 캠페인 기획·퍼포먼스 분석·키워드 리서치·그로스 실험·리텐션(marketing-* 14종), 블로그·뉴스레터·SNS 콘텐츠(content-* 7종) 스킬 21종. Meta Ads·게시 채널 MCP 연동. 미디어 생성(media-*)은 moai-media 플러그인으로 분리. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 마케터·콘텐츠 크리에이터·1인 브랜드.",
    "skill_count": 21,
    "skills": [
@@ -900,7 +900,7 @@
    "id": "moai-lawyer",
    "displayName": "⚖️ 법무 담당",
    "category": "전문직",
-   "version": "1.1.0",
+   "version": "1.1.1",
    "description": "법무 전담 AI 코워커 — 계약 검토·NDA 트리아지·컴플라이언스 점검·법령/판례 리서치·특허 검색/분석·식약처 안전 기준 스킬 10종. 국가법령정보 MCP(korean-law) 연동으로 인용 검증까지 수행합니다. 이런 분께 추천: 1인 사업자·스타트업 운영자. ※ 법률 자문 대체가 아닌 참고 자료입니다.",
    "skill_count": 10,
    "skills": [

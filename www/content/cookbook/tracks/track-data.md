@@ -5,7 +5,7 @@ description: "moai-analyst 세 스킬과 공공데이터 API를 조합해 보고
 geekdocBreadcrumb: true
 tags: [cookbook, data]
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 
 # 트랙 — 데이터 분석
@@ -63,7 +63,7 @@ flowchart TD
    Clean --> Visual
    Visual --> Report[보고서 변환<br/>moai-officer]
 
-   Public[공공데이터 API] --> PublicData[③ public-data]
+   Public[공공데이터 API] --> PublicData[③ data-public]
    PublicData --> Explore
 ```
 
@@ -140,7 +140,7 @@ D:/Input/customer-transactions-2026.csv를 분석해줘.
 2. Cowork에 "이 HTML 대시보드의 각 차트를 PNG로 캡처해줘" 지시
 3. PNG를 `moai-officer:doc-pptx`로 임베드
 
-## Part 3 — public-data
+## Part 3 — data-public
 
 ### 언제 쓰나
 
@@ -196,20 +196,20 @@ SKILL.md 본문에는 환경변수 참조만 넣습니다. 예: `.env`의 `KOSIS
 
 1. **탐색 — data-explorer** — Q1 매출 CSV의 품질 진단. 결측·이상·중복 체크.
 2. **정제 — 수동 프롬프트** — 이상값·결측 처리 규칙을 Cowork에 지시하여 정제 버전 생성.
-3. **거시 지표 결합 — public-data** — KOSIS에서 CPI·GDP·가계소비 지출 추이 확보.
+3. **거시 지표 결합 — data-public** — KOSIS에서 CPI·GDP·가계소비 지출 추이 확보.
 4. **시각화 — data-visualizer** — 매출 추이 + 거시 지표 비교 차트 HTML 대시보드.
-5. **PPT 변환 — pptx-designer** — 임원 보고용 7장 PPT. 차트는 PNG로 임베드.
-6. **Word 요약 — docx-generator** — 경영진 3페이지 요약본. 핵심 수치 + 그래프 + 제언.
+5. **PPT 변환 — doc-pptx** — 임원 보고용 7장 PPT. 차트는 PNG로 임베드.
+6. **Word 요약 — doc-docx** — 경영진 3페이지 요약본. 핵심 수치 + 그래프 + 제언.
 
 이 여섯 단계는 식당의 코스 요리 완성에 비유하면 흐름이 보입니다. 재료를 검수하고(①탐색), 불량 재료를 골라내고(②정제), 시장 시세표를 받아옵니다(③거시 지표 — CPI로 실질 매출을 계산하는 것은 "물가 상승분을 빼고 진짜 늘었는지 보는" 작업입니다). 요리를 완성하고(④시각화), 고급 접시에 담아 내고(⑤PPT, 임원용), 마지막으로 한 페이지 요약 카드를 만듭니다(⑥Word). 중요한 점은 각 단계의 산출물이 곧 다음 단계의 재료가 된다는 것입니다. 아래 그래프에서 화살표를 따라가며 데이터가 어떻게 가공되며 흘러가는지 확인해 보세요.
 
 ```mermaid
 flowchart LR
    S1["① 탐색<br/>data-explorer"] --> S2["② 정제<br/>수동 지시"]
-   S2 --> S3["③ 거시 지표 결합<br/>public-data (CPI)"]
+   S2 --> S3["③ 거시 지표 결합<br/>data-public (CPI)"]
    S3 --> S4["④ 시각화<br/>data-visualizer"]
-   S4 --> S5["⑤ PPT 변환<br/>pptx-designer"]
-   S5 --> S6["⑥ Word 요약<br/>docx-generator"]
+   S4 --> S5["⑤ PPT 변환<br/>doc-pptx"]
+   S5 --> S6["⑥ Word 요약<br/>doc-docx"]
 
    S3 -.->|물가 거품 제거| S4
 

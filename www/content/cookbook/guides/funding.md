@@ -4,7 +4,7 @@ weight: 30
 description: "IR 덱 · 재무 모델 · 정부지원사업까지 자금 조달 전 단계를 모두의 코워크로 자동화하는 절차."
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 > 투자자가 보는 것은 "얼마나 큰 시장에서 얼마나 잘 팔 자신이 있는가"의 두 줄 답변입니다. 그 답변을 IR 덱·재무 모델·실적 데이터로 뒷받침하는 일련의 산출물을 모두의 코워크로 작성합니다.
 
@@ -12,7 +12,7 @@ lastmod: 2026-08-07T00:00:00+09:00
 flowchart TD
    A["market-analyst<br/>시장 분석"] --> B["strategy-planner<br/>사업 전략"]
    B --> C["investor-relations<br/>IR 덱 + 재무"]
-   C --> D["pptx-designer<br/>슬라이드"]
+   C --> D["doc-pptx<br/>슬라이드"]
    D --> E["ai-slop-reviewer<br/>톤 검수"]
    A -. "정부지원" .-> F["kr-gov-grant"]
 

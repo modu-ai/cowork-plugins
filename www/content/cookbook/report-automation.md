@@ -5,7 +5,7 @@ description: "매주 금요일 자동으로 KPI 대시보드 + 이슈 요약 + �
 geekdocBreadcrumb: true
 tags: [cookbook, operations]
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 > **목표** — 매주 금요일 오후 5시에 자동으로 시작해 **KPI 대시보드 + 이슈 요약 + 다음 주 액션**까지 담긴 3페이지 DOCX를 팀 공유 폴더에 저장합니다.
 
@@ -17,8 +17,8 @@ flowchart TD
        S3["Notion/Asana"]
    end
    A["status-reporter<br/>주간 리포트 골격"] --> B["data-explorer<br/>KPI 추출"]
-   B --> C["xlsx-creator<br/>대시보드"]
-   C --> D["docx-generator<br/>3페이지 DOCX"]
+   B --> C["doc-xlsx<br/>대시보드"]
+   C --> D["doc-docx<br/>3페이지 DOCX"]
    D --> E["ai-slop-reviewer<br/>문장 다듬기"]
    Sources --> A
 
@@ -43,8 +43,8 @@ flowchart LR
    subgraph Chain["주간 보고서 5단계 조립 라인"]
        direction LR
        A["① status-reporter<br/>뼈대 잡기"] --> B["② data-explorer<br/>숫자 채우기"]
-       B --> C["③ xlsx-creator<br/>차트 정리"]
-       C --> D["④ docx-generator<br/>문서로 묶기"]
+       B --> C["③ doc-xlsx<br/>차트 정리"]
+       C --> D["④ doc-docx<br/>문서로 묶기"]
        D --> E["⑤ ai-slop-reviewer<br/>문장 다듬기"]
    end
 
@@ -61,8 +61,8 @@ flowchart LR
    SRC["데이터 소스 (재료)<br/>KPI CSV · Slack #ops · Notion/Asana"]
    ST1["① 기획자<br/>status-reporter<br/>보고서 뼈대 · OKR 진행률"]
    ST2["② 데이터 분석가<br/>data-explorer<br/>숫자 채우기 · KPI 추출"]
-   ST3["③ 표 담당<br/>xlsx-creator<br/>차트 정리 · 대시보드 시트"]
-   ST4["④ 문서 편집자<br/>docx-generator<br/>3페이지 묶기 · 최종 보고서"]
+   ST3["③ 표 담당<br/>doc-xlsx<br/>차트 정리 · 대시보드 시트"]
+   ST4["④ 문서 편집자<br/>doc-docx<br/>3페이지 묶기 · 최종 보고서"]
    ST5["⑤ 교정 편집자<br/>ai-slop-reviewer<br/>문장 다듬기 · 임원체/팀체"]
    OUT["완성품<br/>주간 보고서 3페이지 DOCX"]
 
@@ -97,7 +97,6 @@ flowchart LR
 - 플러그인: `moai-coworker`, `moai-analyst`, `moai-officer`
 - MCP 커넥터: Slack(이슈 수집) + Notion/Asana(할 일) — Cowork 환경 설정에서 커넥터를 추가하세요
 - (선택) GA4·광고 채널 데이터
-- `schedule` 스킬 — 스케줄링
 
 ## 외부 데이터는 어떻게 들어오나
 
@@ -110,7 +109,7 @@ flowchart LR
 ## 스킬 체인
 
 ```
-status-reporter → data-explorer → xlsx-creator → docx-generator → ai-slop-reviewer
+status-reporter → data-explorer → doc-xlsx → doc-docx → ai-slop-reviewer
 ```
 
 - `collab-status-report` — 주간 리포트 골격, OKR 진행률
@@ -174,8 +173,8 @@ flowchart TD
    Cron["매주 금 17:00"] --> Fetch["MCP 자동 fetch<br/>Slack·Notion·Linear"]
    Fetch --> SR["status-reporter<br/>4분할 템플릿"]
    SR --> DE["data-explorer<br/>KPI CSV 분석"]
-   DE --> XL["xlsx-creator<br/>차트 자동"]
-   XL --> DG["docx-generator<br/>본문"]
+   DE --> XL["doc-xlsx<br/>차트 자동"]
+   XL --> DG["doc-docx<br/>본문"]
    DG --> AI["ai-slop-reviewer<br/>임원체·팀체 2 버전"]
    AI --> Send["Slack 발송<br/>+ 90_Output/weekly/"]
    style Cron fill:#fbf0dc,stroke:#c47b2a
@@ -224,11 +223,11 @@ MCP 기본 검색은 14일. 그 이상은 `slack_search_public` 사용권을 확
   - 모드: status
   - 입력: /weekly/주간보고-20260510.md
 
-체인: (기존 보고서 생성) → html-report mode=status
+체인: (기존 보고서 생성) → doc-html-report mode=status
 출력: /weekly/주간보고-20260510.html
 {{< /terminal >}}
 
-**html-report 스킬 특징**:
+**doc-html-report 스킬 특징**:
 - **6개 보고서 모드**: status, incident, plan, explainer, financial, pr
 - **인라인 SVG + vanilla JS**: 외부 의존성 0, 12-25KB 초경량
 - **한글 폰트 6종**: Pretendard(기본), Noto Serif KR, Noto Sans KR, 조선일보명조, KoPubWorld 명조, JetBrains Mono
@@ -236,7 +235,7 @@ MCP 기본 검색은 14일. 그 이상은 `slack_search_public` 사용권을 확
 
 **권장 체인**:
 ```
-{텍스트 생성 스킬} → ai-slop-reviewer → humanize-korean → html-report mode=<X>
+{텍스트 생성 스킬} → ai-slop-reviewer → korean-humanize → doc-html-report mode=<X>
 ```
 
 **관련 링크**:

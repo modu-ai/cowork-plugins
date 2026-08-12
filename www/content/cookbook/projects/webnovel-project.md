@@ -5,7 +5,7 @@ description: "머릿속 이야기를 연재 가능한 작품으로 — 작가 �
 geekdocBreadcrumb: true
 tags: [cookbook, projects, content]
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-07T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 
 > **투입 코워커** — 작가(`moai-writer`)
@@ -47,7 +47,7 @@ lastmod: 2026-08-07T00:00:00+09:00
 {{< terminal title="claude — cowork" raw="true" >}}
 시놉시스와 캐릭터 시트 기준으로 1화 써줘.
 회차 분량 5000자, 끝은 다음 화가 궁금해지는 절단으로.
-초고 나오면 humanize-korean으로 문장 다듬어줘.
+초고 나오면 korean-humanize으로 문장 다듬어줘.
 {{< /terminal >}}
 
 이후엔 "2화 써줘"의 반복입니다. 매 화 시트와 시놉시스를 기준 삼기 때문에 설정 꼬임이 구조적으로 줄어듭니다. 다만 이야기의 판단 — 이 전개가 재미있는가 — 은 끝까지 수아 님의 몫입니다.

@@ -4,7 +4,7 @@ weight: 60
 description: "재무제표·세무·결산·예산 분석 자동화. moai-accountant + moai-officer를 한 줄 요청으로 자동 처리."
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-10T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 
 > **대상**: 사내 재무팀, 회계사, 재무 분석가, CFO, 스타트업 대표
@@ -16,19 +16,19 @@ lastmod: 2026-08-10T00:00:00+09:00
 ```mermaid
 flowchart TD
    subgraph 결산["1. 결산·재무제표"]
-       A1["close-management<br/>월·분기·연 결산"]
-       A2["financial-statements<br/>K-IFRS 재무제표"]
+       A1["finance-close-management<br/>월·분기·연 결산"]
+       A2["finance-financial-statements<br/>K-IFRS 재무제표"]
    end
    subgraph 세무["2. 세무"]
-       B1["tax-helper<br/>법인세·부가세·소득세"]
+       B1["finance-tax-helper<br/>법인세·부가세·소득세"]
    end
    subgraph 분석["3. 분석"]
-       C1["variance-analysis<br/>예산 대비 실적"]
-       C2["financial-statements<br/>재무비율 분석 (수익성·안정성)"]
+       C1["finance-variance-analysis<br/>예산 대비 실적"]
+       C2["finance-financial-statements<br/>재무비율 분석 (수익성·안정성)"]
    end
    subgraph 산출["4. 산출"]
-       D1["xlsx-creator<br/>엑셀 리포트"]
-       D2["docx-generator<br/>워드 보고서"]
+       D1["doc-xlsx<br/>엑셀 리포트"]
+       D2["doc-docx<br/>워드 보고서"]
        D3["ai-slop-reviewer"]
    end
    결산 --> 세무 --> 분석 --> 산출
@@ -59,10 +59,10 @@ flowchart TD
 
 | # | 한 줄 요청 | 자동 체인 |
 |---|---|---|
-| 1 | "Q1 변동분석 + K-IFRS 보고서 만들어줘" | close-management → financial-statements → variance-analysis → xlsx → docx → ai-slop |
-| 2 | "법인세 신고서 작성해줘" | tax-helper(법인세 모드) → xlsx-creator → ai-slop |
-| 3 | "월간 결산 자동화해줘" | close-management → financial-statements → xlsx (매월 자동) |
-| 4 | "투자자용 재무 분석 보고서 만들어줘" | financial-statements(재무비율 분석) → variance-analysis → docx → ai-slop |
+| 1 | "Q1 변동분석 + K-IFRS 보고서 만들어줘" | finance-close-management → finance-financial-statements → finance-variance-analysis → doc-xlsx → doc-docx → ai-slop-reviewer |
+| 2 | "법인세 신고서 작성해줘" | finance-tax-helper(법인세 모드) → doc-xlsx → ai-slop-reviewer |
+| 3 | "월간 결산 자동화해줘" | finance-close-management → finance-financial-statements → doc-xlsx (매월 자동) |
+| 4 | "투자자용 재무 분석 보고서 만들어줘" | finance-financial-statements(재무비율 분석) → finance-variance-analysis → doc-docx → ai-slop-reviewer |
 
 ---
 
@@ -144,9 +144,9 @@ Q1 결산 + K-IFRS 재무제표 + 변동분석 만들어줘
 ```mermaid
 flowchart TD
    Cron["매월 5일 09:00"] --> Fetch["MCP fetch<br/>회계 SaaS / CSV"]
-   Fetch --> Close["close-management<br/>자동 조정"]
-   Close --> Stmt["financial-statements"]
-   Stmt --> Xlsx["xlsx-creator"]
+   Fetch --> Close["finance-close-management<br/>자동 조정"]
+   Close --> Stmt["finance-financial-statements"]
+   Stmt --> Xlsx["doc-xlsx"]
    Xlsx --> Slop["ai-slop-reviewer"]
    Slop --> Send["Slack #finance 발송"]
    style Cron fill:#fbf0dc,stroke:#c47b2a

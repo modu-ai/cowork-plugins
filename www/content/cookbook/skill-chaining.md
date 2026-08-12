@@ -5,7 +5,7 @@ description: "단일 스킬보다 2-4개 체인이 결과 품질을 좌우합니
 geekdocBreadcrumb: true
 tags: [cookbook, skills]
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-10T00:00:00+09:00
+lastmod: 2026-08-13T00:00:00+09:00
 ---
 > Cowork에서 가장 중요한 실무 기술. 단일 스킬보다 2-4개를 엮은 체인이 결과 품질을 10배 좌우합니다.
 
@@ -22,7 +22,7 @@ lastmod: 2026-08-10T00:00:00+09:00
 셋을 엮으면 각 스킬의 장점만 결합한 하나의 파이프라인이 됩니다.
 
 ```
-strategy-planner → docx-generator → ai-slop-reviewer
+strategy-planner → doc-docx → ai-slop-reviewer
 ```
 
 ## 체인 설계 3원칙
@@ -33,7 +33,7 @@ strategy-planner → docx-generator → ai-slop-reviewer
 
 설계는 다섯 단계로 진행됩니다. 먼저 **입력 분석**으로 "무엇을, 누구에게 만들 것인가"를 정합니다. 그다음 **단계 분해**로 큰 일을 작업 조각으로 쪼갭니다(예: 블로그 발행 → 주제 선정 → 원고 작성 → 발행 → 품질 점검). 셋째 **스킬 선택**에서 각 조각에 맞는 스킬을 골라 매칭합니다 — 이때 3원칙인 "도메인(분야 전문) → 포맷(문서 형식) → 품질(검수)" 순서를 따릅니다. 넷째 **흐름 구성**으로 스킬들을 화살표로 연결해 하나의 체인으로 조립합니다. 마지막 **테스트**에서 결과를 검증하고, 부족하면 스킬 선택 단계로 돌아가 조정합니다.
 
-예를 들어 블로그 발행 체인은 `blog → copywriting → landing-page → ai-slop-reviewer → humanize-korean`처럼 조립됩니다. 도메인 스킬(blog)이 내용을 만들고, 포맷 스킬(landing-page)이 형태를 갖추고, 품질 스킬(ai-slop-reviewer, humanize-korean)이 AI 특유 어투를 솎아내는 구조입니다. 이 3원칙 순서를 지키면 품질 단계가 항상 마지막에 와 산출물이 사람이 쓴 것처럼 자연스러워집니다.
+예를 들어 블로그 발행 체인은 `content-blog → content-copywriting → marketing-landing-page → ai-slop-reviewer → korean-humanize`처럼 조립됩니다. 도메인 스킬(content-blog)이 내용을 만들고, 포맷 스킬(marketing-landing-page)이 형태를 갖추고, 품질 스킬(ai-slop-reviewer, korean-humanize)이 AI 특유 어투를 솎아내는 구조입니다. 이 3원칙 순서를 지키면 품질 단계가 항상 마지막에 와 산출물이 사람이 쓴 것처럼 자연스러워집니다.
 
 ```mermaid
 flowchart LR
@@ -44,9 +44,9 @@ flowchart LR
    end
 
    subgraph Format["② 포맷 스킬"]
-       F1["docx-generator"]
-       F2["pptx-designer"]
-       F3["xlsx-creator"]
+       F1["doc-docx"]
+       F2["doc-pptx"]
+       F3["doc-xlsx"]
    end
 
    subgraph Quality["③ 품질 스킬"]
@@ -76,7 +76,7 @@ flowchart LR
 
 3. **같은 체인을 슬래시 명령으로 저장**
 
-   자주 쓰는 체인은 슬래시 명령으로 만들면 한 번의 지시로 실행됩니다. 예: `/weekly-report`는 `status-reporter → xlsx-creator → docx-generator → ai-slop-reviewer`를 한 번에.
+   자주 쓰는 체인은 슬래시 명령으로 만들면 한 번의 지시로 실행됩니다. 예: `/weekly-report`는 `status-reporter → doc-xlsx → doc-docx → ai-slop-reviewer`를 한 번에.
 
 
 ```mermaid
@@ -85,7 +85,7 @@ flowchart TD
    s2["② 단계 분해<br/>(작업 쪼개기)"]
    s3{"③ 스킬 선택<br/>(도메인 → 포맷 → 품질)"}
    s4["④ 흐름 구성<br/>(체인 조립)"]
-   chain["조립된 체인<br/>blog → copywriting → landing-page<br/>→ ai-slop-reviewer → humanize-korean"]
+   chain["조립된 체인<br/>blog → copywriting → landing-page<br/>→ ai-slop-reviewer → korean-humanize"]
    s5{"⑤ 테스트<br/>(결과 검증)"}
    s6["완성된 산출물<br/>(배포)"]
 
@@ -102,7 +102,7 @@ flowchart TD
        sk2["copywriting<br/>(카피)"]
        sk3["landing-page<br/>(발행)"]
        sk4["ai-slop-reviewer<br/>(품질 점검)"]
-       sk5["humanize-korean<br/>(자연스러움)"]
+       sk5["korean-humanize<br/>(자연스러움)"]
        sk1 ~~~ sk2 ~~~ sk3 ~~~ sk4 ~~~ sk5
    end
 ```
@@ -118,13 +118,13 @@ flowchart TD
 | 사업계획서 | 1. `consult-strategy`<br>2. `doc-docx`<br>3. `ai-slop-reviewer` | moai-consultant, moai-officer, moai-coworker |
 | IR 덱 | 1. `finance-investor-relations`<br>2. `doc-pptx`<br>3. `ai-slop-reviewer` | moai-consultant, moai-officer, moai-coworker |
 | 월말 결산 | 1. `finance-close-management`<br>2. `doc-xlsx`<br>3. `doc-docx` | moai-accountant, moai-officer |
-| NDA 검토 | 1. `legal-nda-triage`<br>2. `docx-generator(수정본)`<br>3. `ai-slop-reviewer` | moai-lawyer, moai-officer, moai-coworker |
+| NDA 검토 | 1. `legal-nda-triage`<br>2. `doc-docx(수정본)`<br>3. `ai-slop-reviewer` | moai-lawyer, moai-officer, moai-coworker |
 | 계약서 리뷰 | 1. `legal-contract-review`<br>2. `legal-legal-risk`<br>3. `doc-docx` | moai-lawyer, moai-officer |
 | 주간 보고서 | 1. `collab-status-report`<br>2. `doc-xlsx`<br>3. `doc-docx`<br>4. `ai-slop-reviewer` | moai-coworker, moai-officer |
-| 카드뉴스 | 1. `content-card-news`<br>2. `higgsfield-image(이미지)`<br>3. `doc-pptx` | moai-marketer, moai-media, moai-officer |
-| 쇼츠 영상 | 1. `social-media(스크립트)`<br>2. `audio-gen(TTS)`<br>3. `higgsfield-video(영상)` | moai-marketer, moai-media |
+| 카드뉴스 | 1. `content-card-news`<br>2. `media-higgsfield-image(이미지)`<br>3. `doc-pptx` | moai-marketer, moai-media, moai-officer |
+| 쇼츠 영상 | 1. `content-sns-content(스크립트)`<br>2. `media-audio-gen(TTS)`<br>3. `media-higgsfield-video(영상)` | moai-marketer, moai-media |
 | 연구 논문 | 1. `education-paper-search`<br>2. `education-paper-writer`<br>3. `doc-docx`<br>4. `ai-slop-reviewer` | moai-tutor, moai-officer, moai-coworker |
-| 면접 준비 | 1. `hr-job-analysis`<br>2. `career-interview`<br>3. `interview-coach(모의)` | moai-career |
+| 면접 준비 | 1. `hr-job-analysis`<br>2. `career-interview`(실전·모의) | moai-career |
 
 ## 체인을 깨뜨리는 흔한 실수
 
