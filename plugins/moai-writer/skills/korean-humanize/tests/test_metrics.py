@@ -298,7 +298,7 @@ class V2ReportTests(unittest.TestCase):
         self.assertEqual(report["version"], "v2.1")
         self.assertIn("v2_metrics", report)
         self.assertIn("v2_interference_index", report)
-        self.assertEqual(len(report["v2_metrics"]), 14)
+        self.assertEqual(len(report["v2_metrics"]), 18)  # v2.4에서 실증 지표 4종 추가
         # 모든 placeholder 셀이 경고로 표시됨
         self.assertEqual(len(report["v2_baseline_warnings"]), 14)
         # interference index 구조
@@ -476,7 +476,7 @@ class V21ReportTests(unittest.TestCase):
         self.assertIn("v2_interference_index", report)
         self.assertIn("v2_z_scores", report)
         self.assertIn("v2_baseline_warnings", report)
-        self.assertEqual(len(report["v2_metrics"]), 14)
+        self.assertEqual(len(report["v2_metrics"]), 18)  # v2.4에서 실증 지표 4종 추가
         # v2.1 추가 키
         self.assertEqual(metrics_v2.VERSION, "v2.1")
         self.assertEqual(report["version"], "v2.1")

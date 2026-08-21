@@ -34,6 +34,8 @@ CLI:
 from __future__ import annotations
 
 import argparse
+import difflib
+from collections import Counter
 import json
 import os
 import re
@@ -802,6 +804,171 @@ _COPY_INTERFERENCE_WEIGHTS = {
 }
 
 
+# ---------------------------------------------------------------------------
+# v2.4 신규 — 실증 대조 코퍼스에서 판별력이 확인된 지표 4종
+# (근거: references/empirical-validation.md)
+# ---------------------------------------------------------------------------
+
+# C-8 대구. 두 계열을 각각 잡는다.
+#
+# (a) 부정-긍정 대구 "A가 아니라 B" — 실측 최강 신호.
+#     `아니라는`(관형형)은 대구가 아니므로 제외한다: "문제가 아니라는 점"은
+#     평범한 서술이지 이항 대립이 아니다. 뒤에 실제 대립항이 와야 대구다.
+# (b) 원형 대칭 대구 "A인가, B인가" — taxonomy가 C-8 본문으로 정의한 형태.
+#     (a)만 세면 고전형을 전부 놓치고, 그 상태로 전량 삭제해도 전멸 게이트가
+#     통과한다. 실제로 그 구멍이 감사에서 재현됐다.
+#
+# 제외한 것: "이기 이전에 / 되기 이전에"는 시간 표현("문제가 되기 이전에
+# 예방한다")과 구분되지 않아 뺐다. 모호한 신호를 세는 것보다 안 세는 편이 낫다.
+_ANTITHESIS_NEG_RE = re.compile(r"(?:가|이)\s*아니라(?![는니])\s*\S")
+_ANTITHESIS_CMP_RE = re.compile(r"(?:이기|라기)보다\s*\S")
+_ANTITHESIS_SYM_RE = re.compile(r"[가-힣]인가[,?]?\s+\S{1,14}?인가")
+
+# 철칙 #4 게이트 임계 — change_rate() 반환값과 직접 비교한다.
+CHANGE_RATE_WARN = 0.30
+CHANGE_RATE_ABORT = 0.50
+
+# 장문 기준 글자 수. E-1의 실체("장문 부재")를 재는 문턱.
+LONG_SENTENCE_CHARS = 100
+
+# final.md 말미의 메타데이터 주석 블록 — 변경률 비교 전에 제거한다.
+# **완결된 종단 블록만** 제거한다. 예전에는 마커부터 파일 끝까지 무조건 잘랐는데,
+# 그러면 본문 중간에 마커를 하나 끼워 넣는 것만으로 그 뒤의 모든 변경이
+# 변경률 계산에서 사라진다(감사에서 재현됨). 닫는 `-->`까지 갖춘 채
+# 파일 끝에 있는 블록만 제거한다 — 그 외에는 본문으로 취급해 그대로 잰다.
+_SUMMARY_BLOCK_RE = re.compile(
+    r"\n*<!--\s*HUMANIZE-SUMMARY\b.*?-->\s*$", re.DOTALL)
+
+# 마크업 전용 줄 / 줄머리 장식 — ignore_markup 모드에서 벗긴다.
+_MARKUP_ONLY_LINE_RE = re.compile(
+    r"^\s*(?:```.*|~~~.*|-{3,}|\*{3,}|={3,}|\|[\s:|-]*)\s*$"
+)
+_MARKUP_PREFIX_RE = re.compile(r"^\s*(?:#{1,6}\s+|>\s?|[-*+]\s+|\d{1,3}[.)]\s+)")
+
+
+def antithesis_count(text: str) -> int:
+    """C-8 부정-긍정 대구 개수. 실측 최강 신호(AI 5.8 vs 사람 0.6, 9.2배).
+
+    **절대치로 판정하지 않는다.** 대구는 사람 글에도 흔한 정상 수사다.
+    이 값의 용도는 두 가지다 — (a) 반복(3회 이상) 탐지, (b) 윤문 뒤
+    ``before >= 5 AND after == 0``인 '전멸' 판정. 문자 diff가 못 보는
+    구조 편집을 잡는 앵커다(verify_gates.py P2축).
+    """
+    if not text.strip():
+        return 0
+    return (len(_ANTITHESIS_NEG_RE.findall(text))
+            + len(_ANTITHESIS_CMP_RE.findall(text))
+            + len(_ANTITHESIS_SYM_RE.findall(text)))
+
+
+def antithesis_rate(text: str) -> float:
+    """C-8 부정 대구가 전체 문장에서 차지하는 비율. baseline 대비 z 산출용.
+
+    ``antithesis_count``는 순수 개수이며 전멸 판정(P2축)에 쓴다. 문서 길이에
+    무관한 비교가 필요한 z-score는 이 비율을 쓴다 — 개수와 비율을 같은
+    baseline 셀에 물리면 짧은 글이 과대 평가된다.
+    """
+    sents = _segment_sentences(text)
+    if not sents:
+        return 0.0
+    hit = sum(1 for s in sents if (_ANTITHESIS_NEG_RE.search(s)
+                                   or _ANTITHESIS_CMP_RE.search(s)
+                                   or _ANTITHESIS_SYM_RE.search(s)))
+    return hit / len(sents)
+
+
+def long_sentence_rate(text: str) -> float:
+    """E-1의 실체 — 100자 이상 장문이 전체 문장에서 차지하는 비율.
+
+    **낮을수록 AI**다(AI 8.1 vs 사람 91.3, 1000문장당 11배 차이). 모델은
+    짧은 문장만 찍어내고 긴 호흡을 만들지 못한다. 처방은 **인접 문장을
+    잇는 것**이며, 길이를 채우려고 내용을 덧붙이는 것은 의미 드리프트다.
+    """
+    sents = _segment_sentences(text)
+    if not sents:
+        return 0.0
+    return sum(1 for s in sents if len(s) >= LONG_SENTENCE_CHARS) / len(sents)
+
+
+def geosida_rate(text: str) -> float:
+    """I-1 `~것이다` 종결이 전체 문장에서 차지하는 비율.
+
+    **낮을수록 AI**다(AI 20.4 vs 사람 43.0, 1000문장당 — 사람이 두 배).
+    한국어 논설문의 일반 종결이지 AI 티가 아니다. 무조건 평서화 처방이
+    이 측정으로 기각됐다(empirical-validation.md#기각). 남은 판정 대상은
+    연속 3회 이상 남발뿐이다.
+    """
+    sents = _segment_sentences(text)
+    if not sents:
+        return 0.0
+    # 종결 위치만 센다. "그것이다는 말은"처럼 문중에 박힌 것은 I-1이 아니다.
+    hit = sum(1 for s in sents if re.search(r"것이[다]\s*[.!?]?\s*$", s))
+    return hit / len(sents)
+
+
+def strip_summary_block(text: str) -> str:
+    """final.md 말미의 HUMANIZE-SUMMARY 주석 블록을 제거한다.
+
+    블록을 떼면 그 앞의 구분 개행이 남는다. 그대로 두면 본문이 동일한데도
+    변경률이 0이 아니게 되므로(실제로 9%가 잡혔다) 끝 공백까지 정리한다.
+    """
+    return _SUMMARY_BLOCK_RE.sub("", text).rstrip()
+
+
+def _strip_markup(text: str) -> str:
+    """마크업 전용 줄을 버리고 줄머리 장식을 벗긴다. 본문은 보존."""
+    kept: list[str] = []
+    for line in text.splitlines():
+        if _MARKUP_ONLY_LINE_RE.match(line):
+            continue
+        kept.append(_MARKUP_PREFIX_RE.sub("", line))
+    return "\n".join(kept)
+
+
+def change_rate(before: str, after: str, ignore_markup: bool = False) -> float:
+    """윤문 전후 문자 기반 변경률 — 철칙 #4 게이트의 단일 진실 원천.
+
+    반환값 0.0(동일) ~ 1.0(전면 교체). 판정은 이 값을 ``CHANGE_RATE_WARN``
+    (0.30 경고) / ``CHANGE_RATE_ABORT``(0.50 강제 중단)와 비교해 내린다.
+    **에이전트의 눈대중 자가 산출을 대체한다.**
+
+    ``ignore_markup=True``면 헤딩·불릿·표 구분선 같은 마크업을 벗기고
+    비교한다 — 마크업 삭제가 본문 변경률을 부풀리는 경우의 교차 확인용.
+    판정을 뒤집는 근거로 쓸 때는 두 수치를 모두 보고해야 한다.
+    """
+    before = strip_summary_block(before)
+    after = strip_summary_block(after)
+    if ignore_markup:
+        before = _strip_markup(before)
+        after = _strip_markup(after)
+    if not before and not after:
+        return 0.0
+    return 1.0 - difflib.SequenceMatcher(None, before, after, autojunk=False).ratio()
+
+
+def sentence_touch_rate(before: str, after: str) -> tuple[float, int, int]:
+    """원문 문장 중 윤문본에 그대로 남지 않은 비율.
+
+    **게이트가 아니라 보고용이다.** 정상적인 구조 편집도 문자 diff가
+    거의 못 잡는 수준에서 문장을 많이 건드린다(실측: change_rate 2.77%
+    뒤에 문장 터치율 29.7%가 은닉).
+    """
+    src = [re.sub(r"\s+", "", s) for s in _segment_sentences(strip_summary_block(before))]
+    dst_list = [re.sub(r"\s+", "", s) for s in _segment_sentences(strip_summary_block(after))]
+    if not src:
+        return 0.0, 0, 0
+    # 다중집합으로 센다. 집합을 쓰면 같은 문장이 둘 있다가 하나 지워져도
+    # "그대로 있다"로 읽혀 삭제가 통째로 안 보인다.
+    remaining = Counter(dst_list)
+    touched = 0
+    for s in src:
+        if remaining.get(s, 0) > 0:
+            remaining[s] -= 1
+        else:
+            touched += 1
+    return touched / len(src), touched, len(src)
+
+
 def copy_interference_index(text: str) -> dict[str, Any]:
     """A-20~A-25 + I-7 카피 번역투 가중 합성 신호.
 
@@ -895,6 +1062,11 @@ def compute_all_v2(
         "have_make_literal_count": have_make_literal_count(text),
         "double_particle_count": double_particle_count(text),
         "progressive_aspect_rate": progressive_aspect_rate(text),
+        # v2.4 — 실증 대조 코퍼스에서 판별력이 확인된 지표
+        "antithesis_count": antithesis_count(text),
+        "antithesis_rate": antithesis_rate(text),
+        "long_sentence_rate": long_sentence_rate(text),
+        "geosida_rate": geosida_rate(text),
     }
     interference = interference_index(text)
     copy_metrics: dict[str, Any] = {
