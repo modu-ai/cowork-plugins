@@ -165,7 +165,7 @@ version: "1.1.0"
 경영진 요약, 원인 분석 코멘트, 개선 권고안, 수정 전망 설명문처럼 문장 산출물을 작성한 뒤에는 아래 체인으로 마무리한다.
 
 ```
-finance-variance-analysis (보고서 서술 부분) → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+finance-variance-analysis (보고서 서술 부분) → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - **moai-coworker:ai-slop-reviewer**: AI 티 나는 표현·과장·상투구 검수 및 수정

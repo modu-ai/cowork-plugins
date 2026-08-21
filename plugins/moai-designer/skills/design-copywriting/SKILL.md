@@ -259,6 +259,7 @@ dependency.
 |---|---|---|
 | Post-검수 | `moai-coworker:ai-slop-reviewer` | AI 슬롭 검수 (필수) |
 | Post-검수 | `moai-writer:korean-humanize` | 한국어 AI 티 제거 (슬롭 검수 다음, 필수) |
+| Post-검수 | 최종 검수 (`korean-humanize` Phase 6) | 원문↔윤문본 직접 대조 — 의미 보존·과윤문 역방향 (필수, 생략 불가) |
 
 ---
 

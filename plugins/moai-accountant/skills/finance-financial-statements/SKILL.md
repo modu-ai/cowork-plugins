@@ -176,7 +176,7 @@ K-IFRS(한국채택국제회계기준)에 따른 재무제표 작성을 지원�
 재무제표 분석 코멘트, 주석 초안의 서술 문단, 재무비율 해설, 경영진 보고용 설명문처럼 문장 산출물을 작성한 뒤에는 아래 체인으로 마무리한다.
 
 ```
-finance-financial-statements (해설·코멘트 부분) → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+finance-financial-statements (해설·코멘트 부분) → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - **moai-coworker:ai-slop-reviewer**: AI 티 나는 표현·과장·상투구 검수 및 수정

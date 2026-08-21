@@ -195,7 +195,7 @@ Tier 2 표현은 **문맥**에 따라 슬롭 여부가 달라집니다. 다음�
 ## 후속 처리 추천
 
 1. 위 수정을 Claude Design 채팅에 다시 요청
-2. 한국어 카피 자연화 → moai-writer:korean-humanize
+2. 한국어 카피 자연화 → moai-writer:korean-humanize → 최종 검수
 3. 영문 카피 후속 검수 → 영문 카피 베스트 프랙티스 가이드
 ```
 

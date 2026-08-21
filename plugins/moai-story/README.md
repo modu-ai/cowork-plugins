@@ -97,7 +97,7 @@ codex plugin add moai-story@moai-cowork
 
 모든 텍스트 산출물은 다음 검수 체인으로 마무리를 권장합니다.
 
-- AI 티 제거 → `moai-coworker:ai-slop-reviewer` → `moai-writer:korean-humanize`
+- AI 티 제거 → `moai-coworker:ai-slop-reviewer` → `moai-writer:korean-humanize` → 최종 검수
 
 ## 라이선스
 

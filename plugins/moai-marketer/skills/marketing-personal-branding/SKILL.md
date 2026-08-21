@@ -196,7 +196,7 @@ version: "1.1.0"
 
 태그라인·포지셔닝 스테이트먼트·콘텐츠 전략 원고·프로필 소개 문구 등 **텍스트 산출물**은 발행 전 반드시 후처리 체인을 거칩니다. 포지셔닝 맵·KPI 표 등 표·수치 산출물은 대상이 아닙니다.
 
-**권장 체인**: `marketing-personal-branding → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
+**권장 체인**: `marketing-personal-branding → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수`
 
 ## 관련 스킬
 

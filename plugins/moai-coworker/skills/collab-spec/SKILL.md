@@ -99,7 +99,7 @@ PRD, 기능명세, 스펙, 제품 기획, AI 전략, 디지털전환, 프로덕�
 
 PRD·AI 전략 보고서 같은 서술형 문서를 완성한 뒤에는 다음 체인으로 마무리합니다(표·수치 데이터는 제외, 본문 서술 부분에만 적용):
 
-`moai-coworker:collab-spec → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
+`moai-coworker:collab-spec → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수`
 
 - `moai-coworker:ai-slop-reviewer`: AI 특유의 상투적 표현·과장·군더더기를 점검하고 다듬습니다.
 - `moai-writer:korean-humanize`: 자연스러운 한국어 문장으로 최종 정제합니다.

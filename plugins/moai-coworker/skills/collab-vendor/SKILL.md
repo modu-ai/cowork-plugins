@@ -98,7 +98,7 @@ version: "1.1.0"
 리스크 대응 계획, 벤더 위험 요소 설명, 계약 관리 절차 설명 등 **서술형 보고 본문**은 다음 체인으로 마무리합니다.
 
 ```
-collab-vendor → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+collab-vendor → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - `moai-coworker:ai-slop-reviewer` — 서술형 본문의 AI 티 패턴을 검수·수정합니다.

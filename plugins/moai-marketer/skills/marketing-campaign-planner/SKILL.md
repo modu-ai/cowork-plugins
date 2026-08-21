@@ -78,7 +78,7 @@ version: "1.1.0"
 
 캠페인 전략 문서·인플루언서 협찬 제안서·고객 여정 맵 설명·CRM 전략 등 **서술형(prose) 산출물**은 발행 전 후처리 체인을 거칩니다. A/B 테스트 설계표·예산 배분표·매트릭스 등 **수치·표 산출물은 대상이 아닙니다**.
 
-**권장 체인(서술 부분)**: `marketing-campaign-planner(서술) → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
+**권장 체인(서술 부분)**: `marketing-campaign-planner(서술) → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수`
 
 ## 관련 스킬
 

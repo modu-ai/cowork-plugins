@@ -105,7 +105,7 @@ JD·면접 질문·온보딩 계획·멘토링 커리큘럼 본문은 사람이 
 **텍스트 후처리 체인 (JD·면접 질문·온보딩 계획 등 산문 산출물)**:
 
 ```
-hr-employment → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+hr-employment → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - `moai-coworker:ai-slop-reviewer` — AI 티 패턴(기계적 어투, 상투적 채용 표현) 검수·수정

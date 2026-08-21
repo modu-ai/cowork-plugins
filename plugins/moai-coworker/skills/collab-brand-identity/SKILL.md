@@ -190,7 +190,7 @@ version: "1.1.0"
 
 슬로건·태그라인·브랜드 스토리·매니페스토·톤앤매너 가이드 등 **텍스트 산출물**은 발행 전 반드시 후처리 체인을 거칩니다. 색상 시스템·SMILE 평가표 등 표·수치 산출물은 대상이 아닙니다.
 
-**권장 체인**: `collab-brand-identity → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
+**권장 체인**: `collab-brand-identity → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수`
 
 ## 관련 스킬
 

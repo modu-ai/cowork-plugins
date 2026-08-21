@@ -92,7 +92,7 @@ version: "1.1.0"
 
 MOU 초안·지속가능성 감사 보고서·DEI 전략 문서 같은 서술형 결과물을 완성한 뒤에는 다음 체인으로 마무리합니다(로드맵 일정표·RACI 매트릭스 같은 표·데이터는 제외, 본문 서술 부분에만 적용):
 
-`moai-coworker:collab-roadmap → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
+`moai-coworker:collab-roadmap → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수`
 
 - `moai-coworker:ai-slop-reviewer`: AI 특유의 상투적 표현·과장·군더더기를 점검하고 다듬습니다.
 - `moai-writer:korean-humanize`: 자연스러운 한국어 문장으로 최종 정제합니다.

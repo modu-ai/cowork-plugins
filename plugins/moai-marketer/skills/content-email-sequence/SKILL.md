@@ -192,7 +192,7 @@ AIDA 원칙(Attention-Interest-Desire-Action)을 적용하여 제목(30자 이�
 
 각 단계 이메일 본문·제목·프리헤더 등 **텍스트 산출물**은 발송 전 반드시 후처리 체인을 거칩니다. 시퀀스 플로우 다이어그램·KPI 표 등 구조·수치 산출물은 대상이 아닙니다.
 
-**권장 체인**: `content-email-sequence → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
+**권장 체인**: `content-email-sequence → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수`
 
 ## 관련 스킬
 

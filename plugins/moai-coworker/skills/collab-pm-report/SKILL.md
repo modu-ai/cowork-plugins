@@ -277,7 +277,7 @@ MCP 가용 시 자동 우선 활용. 사용자가 명시적으로 텍스트 입�
 ## 관련 커맨드
 
 - 등록된 스킬 체인:
-  - 주간보고 본문 후처리(표준): `weekly-report → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
+  - 주간보고 본문 후처리(표준): `weekly-report → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수`
   - 주간보고 → 임원 1pager: `weekly-report → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → moai-coworker:collab-exec-summary`
   - 발표 슬라이드: `weekly-report → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → moai-officer:doc-pptx`
 

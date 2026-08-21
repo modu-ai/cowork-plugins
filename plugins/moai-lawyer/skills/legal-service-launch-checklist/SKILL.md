@@ -128,7 +128,7 @@ version: "1.1.0"
 출시 판정서·체크리스트 보고서 등 서술형 산출물은 작성 후 반드시 다음 체인으로 마무리합니다.
 
 ```
-legal-service-launch-checklist → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+legal-service-launch-checklist → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - **moai-coworker:ai-slop-reviewer**: AI 글쓰기 패턴(과장·상투구·획일적 구조) 검수

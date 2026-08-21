@@ -79,7 +79,7 @@
 응답 초안을 완성한 뒤에는 다음 체인으로 어조·표현 품질을 마무리합니다:
 
 ```
-cs-draft-response → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+cs-draft-response → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - `moai-coworker:ai-slop-reviewer` — AI 티 나는 표현·과잉 수식·기계적 문장 패턴을 검수·수정

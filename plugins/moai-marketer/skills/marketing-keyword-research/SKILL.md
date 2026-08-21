@@ -158,7 +158,7 @@ version: "1.1.0"
 
 키워드 전략 설명·클러스터 근거·채널 전략 등 **서술형(prose) 산출물**은 발행 전 후처리 체인을 거칩니다. 키워드 목록표·검색량 수치·우선순위 점수표 등 **수치·표 산출물은 대상이 아닙니다**.
 
-**권장 체인(서술형 권고)**: `marketing-keyword-research(서술형 권고) → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
+**권장 체인(서술형 권고)**: `marketing-keyword-research(서술형 권고) → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수`
 
 ## 관련 스킬
 

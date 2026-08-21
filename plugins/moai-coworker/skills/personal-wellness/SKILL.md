@@ -93,7 +93,7 @@ version: "1.1.0"
 이 스킬은 운동 코칭 계획·육아 활동 안내·시니어 케어 계획·건강 가이드 같은 **글(텍스트) 산출물**을 만듭니다. 글 산출물은 발행 전 다음 체인으로 후처리하세요.
 
 ```
-personal-wellness → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+personal-wellness → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - **moai-coworker:ai-slop-reviewer**: AI 티 나는 표현·과장 어조를 검수하고 다듬습니다

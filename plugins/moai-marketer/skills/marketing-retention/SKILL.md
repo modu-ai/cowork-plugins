@@ -180,7 +180,7 @@ version: "1.1.0"
 
 재참여·윈백 이메일 본문·제목, 세이브 오퍼 카피, 라이프사이클 메시지 등 **텍스트 산출물**은 발송 전 반드시 후처리 체인을 거칩니다. 헬스 스코어 표·리텐션 커브·이탈률 KPI 등 구조·수치 산출물은 대상이 아닙니다.
 
-**권장 체인(텍스트)**: `marketing-retention(텍스트) → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
+**권장 체인(텍스트)**: `marketing-retention(텍스트) → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수`
 
 ## 관련 스킬
 

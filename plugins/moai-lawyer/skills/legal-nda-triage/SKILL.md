@@ -152,7 +152,7 @@ NDA, 비밀유지계약, 기밀유지계약, 비밀유지협약, NDA 검토, 계
 NDA 트리아지 평가서·조항별 수정 권고안·표준 NDA 초안 등 서술형 산출물은 작성 후 반드시 다음 체인으로 마무리합니다.
 
 ```
-legal-nda-triage → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+legal-nda-triage → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - **moai-coworker:ai-slop-reviewer**: AI 글쓰기 패턴(과장·상투구·획일적 구조) 검수

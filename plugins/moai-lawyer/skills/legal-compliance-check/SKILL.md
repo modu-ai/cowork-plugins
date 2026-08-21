@@ -155,7 +155,7 @@ version: "1.1.0"
 감사 보고서·갭 분석·ESG 보고서 등 서술형 산출물은 작성 후 반드시 다음 체인으로 마무리합니다.
 
 ```
-legal-compliance-check → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+legal-compliance-check → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - **moai-coworker:ai-slop-reviewer**: AI 글쓰기 패턴(과장·상투구·획일적 구조) 검수

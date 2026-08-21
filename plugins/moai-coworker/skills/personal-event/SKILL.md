@@ -86,7 +86,7 @@ version: "1.1.0"
 이 스킬은 기획서·진행 순서표·MC 스크립트·품의서 같은 **글(텍스트) 산출물**을 만듭니다. 글 산출물은 발행 전 다음 체인으로 후처리하세요.
 
 ```
-personal-event → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+personal-event → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - **moai-coworker:ai-slop-reviewer**: AI 티 나는 표현·과장 어조를 검수하고 다듬습니다

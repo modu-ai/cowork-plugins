@@ -226,7 +226,7 @@ ChatGPT·Perplexity·Claude·네이버 AI 브리핑·구글 AI Overview가 답�
 
 감사 보고서의 서술형 권고·개선 전략·인사이트 등 **prose 산출물**은 발행 전 후처리 체인을 거칩니다. 추천 키워드 목록·기술 SEO 체크리스트·점수 표 등 **수치·표 산출물은 대상이 아닙니다**.
 
-**권장 체인(서술 권고)**: `marketing-seo-audit(서술 권고) → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
+**권장 체인(서술 권고)**: `marketing-seo-audit(서술 권고) → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수`
 
 ## 관련 스킬
 

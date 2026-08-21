@@ -159,7 +159,7 @@ version: "1.1.0"
 결산 보고서, 경영진 요약, 비용 분석 코멘트처럼 문장 산출물을 작성한 뒤에는 반드시 아래 체인으로 마무리한다.
 
 ```
-finance-close-management → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+finance-close-management → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - **moai-coworker:ai-slop-reviewer**: AI 티 나는 표현·과장·상투구 검수 및 수정

@@ -41,7 +41,7 @@ version: "1.1.1"
 
 **후속 검수 체인 (모든 산출물 공통):**
 
-- AI 티 제거 검수 → `moai-coworker:ai-slop-reviewer` → `moai-writer:korean-humanize`
+- AI 티 제거 검수 → `moai-coworker:ai-slop-reviewer` → `moai-writer:korean-humanize` → 최종 검수
 
 ## 3. 워크플로우
 

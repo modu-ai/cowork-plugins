@@ -176,7 +176,7 @@ version: "1.1.0"
 세무 안내문, 신고 절차 설명, 절세 가이드, 고객 회신문처럼 문장 산출물을 작성한 뒤에는 아래 체인으로 마무리한다.
 
 ```
-finance-tax-helper → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+finance-tax-helper → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - **moai-coworker:ai-slop-reviewer**: AI 티 나는 표현·과장·상투구 검수 및 수정

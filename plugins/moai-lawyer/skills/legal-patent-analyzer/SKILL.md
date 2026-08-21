@@ -195,7 +195,7 @@ AskUserQuestion으로 분석 목적을 선택받습니다:
 
 선행기술 조사 보고서·FTO 분석 보고서·특허 출원서 초안 등 서술형 텍스트를 작성한 뒤에는 다음 체인으로 마무리합니다:
 
-`legal-patent-analyzer → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
+`legal-patent-analyzer → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수`
 
 - **moai-coworker:ai-slop-reviewer** - 작성된 보고서·출원서 AI 패턴 검수 및 후처리
 - **moai-writer:korean-humanize** - 한국어 문장 자연화(AI 티 제거, 의미 보존)

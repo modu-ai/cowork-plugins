@@ -78,7 +78,7 @@ version: "1.1.0"
 SOP, 운영 매뉴얼, 회의록, 조달 문서 등 **서술형 산출물**은 다음 체인으로 마무리합니다.
 
 ```
-collab-process → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+collab-process → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - `moai-coworker:ai-slop-reviewer` — 문서 본문의 AI 티 패턴을 검수·수정합니다.

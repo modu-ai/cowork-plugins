@@ -220,7 +220,7 @@ ROAS 단일 지표만 보지 말고 **누적 이익 = LTV × 재구매**까지 �
 
 경영진 요약·핵심 발견·인사이트·다음 액션 플랜 등 **서술형(prose) 산출물**은 발행 전 후처리 체인을 거칩니다. 채널별 성과표·ROAS/LTV·CAC·NSM 표 등 **수치·표 산출물은 대상이 아니며**, 시각화가 필요하면 `moai-officer:doc-xlsx` 또는 `moai-analyst:data-visualizer`로 라우팅합니다.
 
-**권장 체인(서술 부분)**: `marketing-performance-report(서술) → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
+**권장 체인(서술 부분)**: `marketing-performance-report(서술) → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수`
 
 ## 관련 스킬
 

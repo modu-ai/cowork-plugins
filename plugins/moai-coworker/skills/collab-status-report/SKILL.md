@@ -81,7 +81,7 @@ version: "1.1.0"
 보고서의 **서술형 본문**(핵심 요약, 이슈·리스크 설명, 액션 아이템 등 산문 부분)은 다음 체인으로 마무리합니다.
 
 ```
-collab-status-report → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+collab-status-report → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - `moai-coworker:ai-slop-reviewer` — 서술형 본문의 AI 티 패턴을 검수·수정합니다.

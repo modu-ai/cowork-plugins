@@ -176,7 +176,7 @@ version: "1.1.0"
 
 가설 설명·성장 루프 설계 서술·파트너십 제안 등 **서술형(prose) 산출물**은 발행 전 후처리 체인을 거칩니다. 샘플 크기 계산·ICE 점수표·지표 위계 표 등 **수치·표 산출물은 대상이 아닙니다**.
 
-**권장 체인(서술형 부분)**: `marketing-growth-experiment(서술형) → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
+**권장 체인(서술형 부분)**: `marketing-growth-experiment(서술형) → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수`
 
 ## 관련 스킬
 

@@ -242,7 +242,7 @@ STAR보다 더 짧고 인상적. 임원 면접 권장.
 모범 답변 스크립트·자기소개 1분 원고·역질문 문안 등 면접 준비물의 서술 텍스트는 사람이 읽고 말하는 산출물입니다. 답변 초안을 다듬을 때 다음 체인을 거쳐 AI 패턴을 제거하고 자연스러운 구어체 한국어로 만듭니다.
 
 ```
-moai-career:career-interview → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+moai-career:career-interview → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - `moai-coworker:ai-slop-reviewer` — "최선을 다했습니다" 류 추상 답변·클리셰 등 AI 패턴 1차 검수·교정

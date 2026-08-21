@@ -155,7 +155,7 @@ version: "1.1.0"
 법적 리스크 평가 보고서·법령 변화 영향 분석·대응 액션 플랜 등 서술형 산출물은 작성 후 반드시 다음 체인으로 마무리합니다.
 
 ```
-legal-legal-risk → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+legal-legal-risk → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - **moai-coworker:ai-slop-reviewer**: AI 글쓰기 패턴(과장·상투구·획일적 구조) 검수

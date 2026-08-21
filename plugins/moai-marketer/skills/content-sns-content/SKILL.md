@@ -170,7 +170,7 @@ CTA: 의견을 댓글로 남겨주세요 / 공감하시면 리포스트
 
 인스타 캡션·블로그 본문·카카오 메시지·링크드인 포스트·쇼츠 스크립트 등 **텍스트 산출물**은 발행 전 반드시 후처리 체인을 거칩니다. 해시태그 표·콘텐츠 달력 등 표 산출물은 대상이 아닙니다.
 
-**권장 체인**: `content-sns-content → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
+**권장 체인**: `content-sns-content → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수`
 
 ## 관련 스킬
 
