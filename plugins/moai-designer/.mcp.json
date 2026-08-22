@@ -2,7 +2,7 @@
   "mcpServers": {
     "higgsfield": {
       "$comment": "Higgsfield AI 이미지·영상 생성 MCP — 브랜드 비주얼·목업·히어로 이미지·마스코트 일관성 생성. design-brand-visual 스킬이 사용. 생성 실행·비용 조회·모델 선택 계약은 moai-media:media-higgsfield-core 참조(이 플러그인은 브랜드 정합만 담당). 인증: Higgsfield 계정 토큰(mcp.higgsfield.ai).",
-      "type": "url",
+      "type": "http",
       "url": "https://mcp.higgsfield.ai/mcp",
       "timeout": 120000,
       "headers": {

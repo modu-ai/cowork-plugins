@@ -18,3 +18,12 @@ Route the request into the `/design` hybrid workflow (03 §5.2). The orchestrato
 3. Skill("design-iteration-loop") — Builder-Evaluator quality loop (max 5, pass_threshold 0.75, Sprint Contract, 4-dimension scoring)
 
 (UX prompt pattern advisor available via Skill("design-prompt-builder").)
+
+---
+
+> **ChatGPT Work(Codex)에서는** 슬래시 명령이 없습니다 — Codex 플러그인 규격은 `skills/`·`hooks/`·
+> `.mcp.json`만 지원하고 `commands/`는 지원하지 않습니다. 기능은 그대로 있으니 자연어로 부르세요:
+>
+> > 디자인 작업 시작해줘
+>
+> 이 커맨드는 Claude Cowork 전용 단축키이며, 실제 일은 위 `Skill(...)`이 합니다.

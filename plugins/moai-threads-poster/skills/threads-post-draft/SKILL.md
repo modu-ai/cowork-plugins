@@ -10,7 +10,7 @@ description: |
   - "내 문체로 초안 작성해줘" (저장된 프로필 자동 적용)
   - "이 초안 그대로 Threads에 올려줘" (승인 → 즉시 발행)
   [책임 경계] vs 형제 스킬: 초안 작성(저장된 문체 프로필 적용 포함) 과 즉시 발행만 담당합니다. 문체 *분석·저장* 은 threads-style-learn, 멀티 채널(Facebook/X) 포맷은 threads-multichannel, 이미지/비디오 발행은 MCP 도구(threads_publish_image, threads_publish_video)를 직접 사용하세요. 예약·정기 발행은 Claude Cowork 에게 맡깁니다.
-version: "1.1.1"
+version: "1.1.2"
 ---
 
 # Threads 초안 작성·직접 발행 (threads-post-draft)
@@ -155,13 +155,35 @@ Threads 텍스트 제한은 **문자 수가 아니라 UTF-8 바이트 수**입�
 
 이 스킬을 사용하려면 Threads OAuth 자격증명이 필요합니다. 최초 1회 설정:
 
+**토큰은 `.mcp.json`에 직접 쓰지 마세요.** `.mcp.json`은 저장소에 커밋되는 파일이라,
+값을 그대로 넣으면 토큰이 git 이력·diff·배포 패키지에 남습니다. 이 파일에는 **참조만** 둡니다
+(저장소의 `.mcp.json`이 이미 이 형태입니다).
+
+```json
+{
+  "env": {
+    "THREADS_ACCESS_TOKEN": "${THREADS_ACCESS_TOKEN}",
+    "THREADS_USER_ID": "${THREADS_USER_ID}"
+  }
+}
+```
+
+실제 값은 **운영체제 환경변수**로만 넣습니다. 셸에 따라 형식이 다릅니다.
+
+**macOS / Linux** (bash·zsh):
+
 ```bash
-# 환경변수 설정
 export THREADS_ACCESS_TOKEN="<장기 토큰(60일)>"
 export THREADS_USER_ID="<Threads 사용자 ID>"
+export THREADS_PUBLISH_DELAY="30"   # 선택: 발행 전 대기 시간(초), 기본 30초
+```
 
-# 선택: 발행 전 대기 시간(초), 기본 30초
-export THREADS_PUBLISH_DELAY="30"
+**Windows** (PowerShell):
+
+```powershell
+$env:THREADS_ACCESS_TOKEN = "<장기 토큰(60일)>"
+$env:THREADS_USER_ID = "<Threads 사용자 ID>"
+$env:THREADS_PUBLISH_DELAY = "30"   # 선택: 발행 전 대기 시간(초), 기본 30초
 ```
 
 발급 절차: `mcp-servers/moai-mcp-threads-poster/CONNECTORS.md` 참조 (브라우저 인가 → 단기 토큰 → 장기 토큰 교환)

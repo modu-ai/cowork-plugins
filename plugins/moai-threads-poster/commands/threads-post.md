@@ -14,3 +14,12 @@ allowed-tools: Skill
 4. **즉시 발행** — 승인된 초안을 `threads_publish_text` (또는 이미지/비디오는 `threads_publish_image` / `threads_publish_video`) 로 즉시 발행. 결과(`media_id`, `permalink`) 를 반환한다.
 
 주의: 자격증명(`THREADS_ACCESS_TOKEN`, `THREADS_USER_ID`) 이 없으면 발행 단계에서 `setup_required` 스킵된다 (서버는 크래시하지 않는다). 발급 절차는 `mcp-servers/moai-mcp-threads-poster/CONNECTORS.md`.
+
+---
+
+> **ChatGPT Work(Codex)에서는** 슬래시 명령이 없습니다 — Codex 플러그인 규격은 `skills/`·`hooks/`·
+> `.mcp.json`만 지원하고 `commands/`는 지원하지 않습니다. 기능은 그대로 있으니 자연어로 부르세요:
+>
+> > Threads에 올릴 글 초안 써줘
+>
+> 이 커맨드는 Claude Cowork 전용 단축키이며, 실제 일은 위 `Skill(...)`이 합니다.

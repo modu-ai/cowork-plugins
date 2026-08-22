@@ -113,7 +113,7 @@ window.addEventListener('resize', fit); fit();
 ## 인쇄(PDF) 워크플로우
 
 1. 완성된 `.html`을 Chrome/Edge에서 오픈
-2. URL에 `?print-pdf` 추가 (예: `file:///...deck.html?print-pdf`)
+2. URL에 `?print-pdf` 추가 — macOS `file:///Users/이름/deck.html?print-pdf`, Windows `file:///C:/Users/이름/deck.html?print-pdf` (Windows도 슬래시 3개 + 정방향 슬래시)
 3. 각 슬라이드가 1페이지로 강제 개행
 4. `Ctrl/Cmd+P` → "PDF로 저장" → 16:9 페이지 PDF 산출
 

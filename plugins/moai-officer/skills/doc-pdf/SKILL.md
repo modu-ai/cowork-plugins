@@ -16,7 +16,7 @@ description: |
   PDF 생성·변환 요청 시 이 스킬의 표준 경로(아래 인라인 weasyprint 코드)를 사용하세요.
   입력 감지 → HTML 빌드 → Noto Sans CJK @font-face 주입 → weasyprint 렌더를
   이 문서의 인라인 코드로 직접 수행하며, 올바른 CJK 폰트 설정을 함께 적용합니다.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # PDF 생성기 (doc-pdf)
@@ -61,8 +61,14 @@ CJK 폰트는 다음 우선순위로 해결합니다 — 별도 다운로드 스
    `@font-face` 없이도 CJK가 안전하게 표시됩니다. 대부분의 Cowork 샌드박스·Linux/macOS가 이에 해당합니다.
 2. **번들 폰트가 있으면 임베딩**: `${CLAUDE_PLUGIN_ROOT}/skills/doc-pdf/assets/fonts/`에 Noto Sans CJK
    OTF가 있으면 아래 코드의 `@font-face`가 자동으로 임베딩합니다(있으면 사용, 없으면 1번 폴백).
-3. **둘 다 없을 때**: 사용자에게 시스템 `Noto Sans CJK KR` 설치를 안내합니다 (macOS `brew install --cask font-noto-sans-cjk-kr`,
-   Debian/Ubuntu `apt install fonts-noto-cjk`). 자동 대량 다운로드는 수행하지 않습니다.
+3. **둘 다 없을 때**: 사용자에게 시스템 `Noto Sans CJK KR` 설치를 안내합니다. 운영체제별 명령은 아래와 같으며,
+   자동 대량 다운로드는 수행하지 않습니다.
+
+   | OS | 설치 |
+   |---|---|
+   | Windows | [fonts.google.com/noto/specimen/Noto+Sans+KR](https://fonts.google.com/noto/specimen/Noto+Sans+KR)에서 받아 압축 해제 → 폰트 파일 전체 선택 → 우클릭 → **설치** |
+   | macOS | `brew install --cask font-noto-sans-cjk-kr` |
+   | Debian/Ubuntu | `apt install fonts-noto-cjk` |
 
 ### 1~4단계: weasyprint 렌더링 인라인 코드
 
@@ -73,12 +79,14 @@ from weasyprint import HTML, CSS
 from pathlib import Path
 import os
 
-FONT_DIR = Path(os.environ.get("CLAUDE_PLUGIN_ROOT", str(Path(__file__).parent.parent))) / "assets/fonts"
+FONT_DIR = Path(os.environ.get("CLAUDE_PLUGIN_ROOT", str(Path(__file__).parent.parent))) / "assets" / "fonts"
 
 # 번들 Noto Sans CJK를 @font-face로 등록 (weight별)
+# 경로 → URL 변환은 반드시 Path.as_uri()로 한다. 문자열 "file://" + 경로 조립은
+# Windows에서 file://C:\... 형태의 잘못된 URL이 되어 폰트 로드에 실패한다.
 FONT_FACE = "".join(
     f"@font-face{{font-family:'Noto Sans CJK';font-weight:{w};"
-    f"src:url('file://{FONT_DIR}/NotoSansCJK-{n}.otf');}}"
+    f"src:url('{(FONT_DIR / f'NotoSansCJK-{n}.otf').as_uri()}');}}"
     for w, n in {300: "Light", 400: "Regular", 500: "Medium", 700: "Bold"}.items()
     if (FONT_DIR / f"NotoSansCJK-{n}.otf").exists()
 )
@@ -104,6 +112,11 @@ pip install markdown     # Markdown → HTML 변환 (선택, 없으면 최소 �
 
 > weasyprint는 시스템 라이브러리 `cairo` / `pango` / `gdk-pixbuf`를 사용합니다. 대부분의
 > Cowork 샌드박스 및 Linux/macOS 환경에 기본 포함돼 있어 `pip install weasyprint`만으로 동작합니다.
+>
+> **Windows에서 로컬 실행할 때는 이 라이브러리들이 기본 제공되지 않습니다.** `pip install weasyprint`가
+> 성공해도 `import weasyprint` 단계에서 `cannot load library 'libpango...'`로 실패합니다. GTK 런타임을
+> 먼저 설치해야 합니다 — 아래 §문제 해결의 Windows 행 참조. 설치가 어려운 환경이면 PDF 대신
+> `moai-officer:doc-html-report` 산출물을 브라우저에서 "PDF로 인쇄"하는 경로를 안내하세요.
 
 ## 입력 포맷 명세
 
@@ -170,9 +183,10 @@ PDF 생성 후 산출 `.pdf`를 다시 열어 **플레이스홀더 잔존·페�
 
 | 증상 | 원인 | 해결 방법 |
 |------|------|-----------|
-| 한글/한자가 □□□ 또는 공백 | CJK 폰트 미해결 | 시스템 `Noto Sans CJK KR` 설치 (macOS `brew install --cask font-noto-sans-cjk-kr`, Debian/Ubuntu `apt install fonts-noto-cjk`), 또는 `assets/fonts/`에 Noto Sans CJK OTF 배치 후 재렌더 |
+| 한글/한자가 □□□ 또는 공백 | CJK 폰트 미해결 | 시스템 `Noto Sans CJK KR` 설치 (Windows: [Google Fonts에서 받아 우클릭 설치](https://fonts.google.com/noto/specimen/Noto+Sans+KR), macOS `brew install --cask font-noto-sans-cjk-kr`, Debian/Ubuntu `apt install fonts-noto-cjk`), 또는 `assets/fonts/`에 Noto Sans CJK OTF 배치 후 재렌더 |
 | `ModuleNotFoundError: weasyprint` | weasyprint 미설치 | `pip install weasyprint` 실행 |
-| `cannot load library 'libpango...'` | 시스템 라이브러리 부재 | (Debian/Ubuntu) `apt install libpango-1.0-0 libpangocairo-1.0-0`, (macOS) `brew install pango` |
+| `cannot load library 'libpango...'` **(Windows)** | GTK 런타임 부재 — Windows는 `pip install`만으로 해결되지 않음 | ① MSYS2 설치 후 **UCRT64 셸**에서 `pacman -S mingw-w64-ucrt-x86_64-pango` (WeasyPrint 공식 안내 기준 — MINGW64 셸의 `mingw-w64-x86_64-pango`가 아님), 그다음 `$env:WEASYPRINT_DLL_DIRECTORIES="C:\msys64\ucrt64\bin"`을 설정하고 **새 터미널**에서 재시도. DLL 경로를 지정하지 않으면 설치해도 Pango를 못 찾는다. ② 또는 [GTK for Windows Runtime 설치본](https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases). ③ 둘 다 어려우면 `moai-officer:doc-html-report`로 HTML을 만든 뒤 브라우저 "PDF로 인쇄"(Ctrl+P → 대상: PDF로 저장)로 대체 |
+| `cannot load library 'libpango...'` (macOS/Linux) | 시스템 라이브러리 부재 | (Debian/Ubuntu) `apt install libpango-1.0-0 libpangocairo-1.0-0`, (macOS) `brew install pango` |
 | HTML 디자인이 PDF에서 깨짐 | 완성 HTML이 조각으로 오인됨 | 입력에 `<html>`/`<body>` 래퍼 포함, 또는 `--in *.html` 파일로 전달 |
 | 웹폰트(CDN) 미적용 | 오프라인/CDN 차단 | HTML에 폰트를 인라인하거나 시스템 폰트로 대체 (오프라인 PDF는 CDN 의존 회피 권장) |
 | 표가 페이지 경계에서 분리 | CSS 미지정 | `tr { page-break-inside: avoid; }` 추가 |

@@ -16,7 +16,7 @@ description: |
   적용 제외 — 단순 맞춤법·오탈자 교정(직접 처리), 번역(번역 스킬), 내용 추가·삭제 동반 재작성(별도 집필 스킬), 코드·JSON·CSV·차트·표.
 
   한국 번역학계 8유형 번역투 계보를 통합한 10대 카테고리 분류 + 신규 패턴 A-16/A-18/A-19/E-7 + post-editese 14메트릭 기반 한국어 정밀 윤문 스킬입니다.
-version: "1.3.0"
+version: "1.3.1"
 ---
 
 # Humanize Korean: 한국어 AI 티 제거 (Fast 모드)
@@ -61,6 +61,28 @@ korean-humanize — fast 모드 / run_id: {YYYY-MM-DD-NNN}
 - `모드: 산문|카피` — 과윤문 가드 모드 선택(생략 시 장르에서 자동 추론: 칼럼/리포트/블로그/공적→산문, 카피/헤드라인/CTA/랜딩/슬라이드→카피)
 - `강도: 보수|기본|적극` — 윤문 강도(기본값: 기본)
 - `최소심각도: S1|S2|S3` — 탐지 임계값(기본값: S2)
+
+### 실행 환경 (OS별 — 아래 모든 Bash 예시에 동일 적용)
+
+이 스킬의 Phase 1~4 예시는 전부 **Bash 문법**입니다. 세 가지가 Bash 전용이라 PowerShell에
+그대로 붙여넣으면 동작하지 않습니다 — 명령 이름만 바꾸는 것으로는 부족합니다.
+
+| Bash 표기 | PowerShell에서는 |
+|---|---|
+| `python3` | `python` (없으면 `py -3`). macOS 12.3+에는 반대로 `python`이 없다 |
+| `${CLAUDE_PLUGIN_ROOT}` | `$env:CLAUDE_PLUGIN_ROOT` — `${...}`는 PowerShell 변수 문법이 아니다 |
+| 줄 끝 `\` (줄 잇기) | 백틱 `` ` `` — `\`는 PowerShell에서 줄 잇기가 아니다 |
+
+**권장 실행 경로 (Windows)**: Git Bash에서 예시를 **그대로** 실행합니다. Claude Cowork·ChatGPT Work의
+Windows 설치에는 Git Bash가 함께 오므로 별도 준비가 필요 없고, `python3`만 `python`으로 바꾸면 됩니다.
+
+PowerShell에서 실행해야 한다면 한 줄로 펴고 변수 문법을 바꿉니다.
+
+```powershell
+python "$env:CLAUDE_PLUGIN_ROOT/skills/korean-humanize/references/metrics.py" --input "_workspace/{run_id}/01_input.txt" --genre 칼럼 --output "_workspace/{run_id}/00_metrics.json"
+```
+
+이 규칙은 아래 Phase 1~4의 **모든** 예시에 적용되며, 첫 예시에만 해당하는 것이 아닙니다.
 
 ## Phase 1: 입력 저장
 

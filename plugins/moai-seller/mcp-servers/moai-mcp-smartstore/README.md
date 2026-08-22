@@ -73,11 +73,22 @@ pytest tests/
 
 자격증명은 반드시 환경변수로 주입. 코드·manifest·로그에 하드코딩 절대 금지.
 
+**macOS / Linux**:
+
 ```bash
 export NAVER_COMMERCE_CLIENT_ID="<애플리케이션 ID>"
 export NAVER_COMMERCE_CLIENT_SECRET="<애플리케이션 시크릿(bcrypt salt)>"
 export NAVER_COMMERCE_ACCOUNT_ID="<판매자 계정 ID>"   # type=SELLER 시 필수
 export NAVER_COMMERCE_TYPE="SELF"                       # SELF(기본) | SELLER
+```
+
+**Windows** (PowerShell):
+
+```powershell
+$env:NAVER_COMMERCE_CLIENT_ID = "<애플리케이션 ID>"
+$env:NAVER_COMMERCE_CLIENT_SECRET = "<애플리케이션 시크릿(bcrypt salt)>"
+$env:NAVER_COMMERCE_ACCOUNT_ID = "<판매자 계정 ID>"   # type=SELLER 시 필수
+$env:NAVER_COMMERCE_TYPE = "SELF"                      # SELF(기본) | SELLER
 ```
 
 발급 절차는 `CONNECTORS.md` 참고.

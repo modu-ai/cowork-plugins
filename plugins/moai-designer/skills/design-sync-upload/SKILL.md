@@ -11,8 +11,7 @@ description: |
   - "디자인 시스템 자동 동기화"
   - "업로드 가이드 만들어 줘 (수동)"
   - "claude.ai/design에 올릴 자료 스테이징"
-user-invocable: true
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # design-sync-upload — Claude Design 업로드 (자동 + 수동 폴백)

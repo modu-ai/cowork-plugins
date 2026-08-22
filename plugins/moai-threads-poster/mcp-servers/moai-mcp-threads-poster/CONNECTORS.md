@@ -106,13 +106,20 @@ curl "https://graph.threads.net/refresh_access_token"
 
 ## 8. 환경변수 설정
 
-셸 프로필(`~/.zshrc` / `~/.bashrc`) 또는 Claude Code 환경에:
+**macOS / Linux** — 셸 프로필(`~/.zshrc` / `~/.bashrc`)에:
 
 ```bash
 export THREADS_ACCESS_TOKEN="<LONG_LIVED_TOKEN>"
 export THREADS_USER_ID="<THREADS_USER_ID>"
-# 선택: 발행 전 대기(초), 기본 30
-export THREADS_PUBLISH_DELAY="30"
+export THREADS_PUBLISH_DELAY="30"   # 선택: 발행 전 대기(초), 기본 30
+```
+
+**Windows** — PowerShell 프로필(`$PROFILE`)에, 또는 영구 설정하려면 `setx`:
+
+```powershell
+$env:THREADS_ACCESS_TOKEN = "<LONG_LIVED_TOKEN>"
+$env:THREADS_USER_ID = "<THREADS_USER_ID>"
+$env:THREADS_PUBLISH_DELAY = "30"   # 선택: 발행 전 대기(초), 기본 30
 ```
 
 `.mcp.json` 의 `env` 블록은 `${VAR}` 보간으로 이 환경변수를 서버에 전달한다.
@@ -221,9 +228,18 @@ Meta 정책에 따라 발행 전 **Page Publishing Authorization** 완료가 요
 
 ## I-6. 환경변수 설정
 
+**macOS / Linux**:
+
 ```bash
 export IG_ACCESS_TOKEN="<PAGE_LONG_TOKEN>"
 export IG_USER_ID="<instagram_business_account ID>"
+```
+
+**Windows** (PowerShell):
+
+```powershell
+$env:IG_ACCESS_TOKEN = "<PAGE_LONG_TOKEN>"
+$env:IG_USER_ID = "<instagram_business_account ID>"
 ```
 
 `.mcp.json` 의 `env` 블록이 `${IG_ACCESS_TOKEN}` / `${IG_USER_ID}` 보간으로 서버에 전달한다.

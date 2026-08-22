@@ -11,8 +11,7 @@ description: |
   - "AI 티 나는 카피 확인"
   - "디자인 카피 후처리"
   - "humanize 직전 검수"
-user-invocable: true
-version: "1.1.1"
+version: "1.1.2"
 ---
 
 # design-slop-check — Claude Design 카피 AI 슬롭 검수

@@ -11,8 +11,7 @@ description: |
   - "버튼/폼/다이얼로그 잘 만드는 법"
   - "Nielsen GUI 가이드라인"
   - "디자인 시스템 컴포넌트 감사 체크리스트"
-user-invocable: true
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # design-gui-guide — 10 GUI 요소 사용성 가이드라인 SSOT

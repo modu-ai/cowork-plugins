@@ -10,7 +10,7 @@ description: |
   - "이 뉴스를 Instagram 용으로 요약해줘"
   - "이 초안 인스타에 바로 올려줘" (승인 → 즉시 발행)
   [책임 경계] vs 형제 스킬: Instagram 이미지/비디오/릴 *초안 작성·즉시 발행* 만 담당합니다. 댓글 관리는 instagram-comments 스킬, Threads 발행은 threads-* 스킬, 멀티 채널 포맷은 threads-multichannel 스킬을 사용하세요. 예약·정기 발행은 Claude Cowork 에게 맡깁니다.
-version: "1.1.1"
+version: "1.1.2"
 ---
 
 # Instagram 포스트 작성·직접 발행 (instagram-post)
@@ -97,9 +97,32 @@ instagram_publish_reel(text="<캡션>", video_url="https://example.com/reel.mp4"
 
 Instagram 자격증명(Threads 와 별개) 이 필요하다:
 
+**토큰은 `.mcp.json`에 직접 쓰지 않는다.** 이 파일은 저장소에 커밋되므로 값을 그대로 넣으면
+토큰이 git 이력·diff·배포 패키지에 남는다. 파일에는 **참조만** 둔다.
+
+```json
+{
+  "env": {
+    "IG_ACCESS_TOKEN": "${IG_ACCESS_TOKEN}",
+    "IG_USER_ID": "${IG_USER_ID}"
+  }
+}
+```
+
+실제 값은 운영체제 환경변수로만 넣는다.
+
+**macOS / Linux**:
+
 ```bash
 export IG_ACCESS_TOKEN="<Facebook Page 장기 액세스 토큰>"
 export IG_USER_ID="<Instagram Professional 계정 ID>"
+```
+
+**Windows** (PowerShell):
+
+```powershell
+$env:IG_ACCESS_TOKEN = "<Facebook Page 장기 액세스 토큰>"
+$env:IG_USER_ID = "<Instagram Professional 계정 ID>"
 ```
 
 발급 절차(Meta App → Facebook Login → 장기 Page 토큰 → IG_USER_ID 해석) 는 `mcp-servers/moai-mcp-threads-poster/CONNECTORS.md` 의 Instagram 섹션 참조.

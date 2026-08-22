@@ -19,6 +19,8 @@
 
 자격증명은 **반드시 환경변수로만** 주입한다. 코드·manifest·로그·채팅에 하드코딩 절대 금지.
 
+**macOS / Linux**:
+
 ```bash
 export NAVER_COMMERCE_CLIENT_ID="<애플리케이션 ID>"
 export NAVER_COMMERCE_CLIENT_SECRET="<애플리케이션 시크릿(bcrypt salt)>"
@@ -27,6 +29,18 @@ export NAVER_COMMERCE_TYPE="SELF"                       # SELF(기본) | SELLER
 # 선택
 export NAVER_COMMERCE_BASE_URL="https://api.commerce.naver.com/external"
 export NAVER_COMMERCE_TIMEOUT="30"
+```
+
+**Windows** (PowerShell):
+
+```powershell
+$env:NAVER_COMMERCE_CLIENT_ID = "<애플리케이션 ID>"
+$env:NAVER_COMMERCE_CLIENT_SECRET = "<애플리케이션 시크릿(bcrypt salt)>"
+$env:NAVER_COMMERCE_ACCOUNT_ID = "<판매자 계정 ID>"   # type=SELLER 시 필수
+$env:NAVER_COMMERCE_TYPE = "SELF"                      # SELF(기본) | SELLER
+# 선택
+$env:NAVER_COMMERCE_BASE_URL = "https://api.commerce.naver.com/external"
+$env:NAVER_COMMERCE_TIMEOUT = "30"
 ```
 
 | 변수 | 필수 | 설명 |

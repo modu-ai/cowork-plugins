@@ -31,9 +31,20 @@ Threads 자격증명과 Instagram 자격증명은 *독립적*이다 — Threads-
 
 ## 로컬 서버 단독 실행
 
+**macOS / Linux**:
+
 ```bash
 cd plugins/moai-threads-poster/mcp-servers/moai-mcp-threads-poster
 export THREADS_ACCESS_TOKEN=... THREADS_USER_ID=...
+uv run moai-mcp-threads-poster   # stdio MCP 서버 기동
+```
+
+**Windows** (PowerShell):
+
+```powershell
+cd plugins\moai-threads-poster\mcp-servers\moai-mcp-threads-poster
+$env:THREADS_ACCESS_TOKEN = "..."
+$env:THREADS_USER_ID = "..."
 uv run moai-mcp-threads-poster   # stdio MCP 서버 기동
 ```
 

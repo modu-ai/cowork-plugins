@@ -125,14 +125,22 @@
 
 이 스킬들을 사용하려면 Threads OAuth 자격증명이 필요합니다. 최초 1회 설정:
 
+**macOS / Linux** (bash·zsh):
+
 ```bash
-# 환경변수 설정
 export THREADS_ACCESS_TOKEN="<장기 토큰(60일)>"
 export THREADS_USER_ID="<Threads 사용자 ID>"
-
-# 선택: 발행 전 대기 시간(초), 기본 30초
-export THREADS_PUBLISH_DELAY="30"
+export THREADS_PUBLISH_DELAY="30"   # 선택: 발행 전 대기 시간(초), 기본 30초
 ```
+
+**Windows** (PowerShell):
+
+```powershell
+$env:THREADS_ACCESS_TOKEN = "<장기 토큰(60일)>"
+$env:THREADS_USER_ID = "<Threads 사용자 ID>"
+$env:THREADS_PUBLISH_DELAY = "30"   # 선택: 발행 전 대기 시간(초), 기본 30초
+```
+
 
 발급 절차: `mcp-servers/moai-mcp-threads-poster/CONNECTORS.md` 참조 (브라우저 인가 → 단기 토큰 → 장기 토큰 교환)
 

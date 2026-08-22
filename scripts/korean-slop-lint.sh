@@ -22,9 +22,16 @@
 set -u
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
+# 저장소 루트는 git 에게 묻는다. 상대 경로(../..)로 세면 스크립트를 옮길 때마다
+# 조용히 엉뚱한 곳을 가리키고, 아래 존재성 검사에 걸려 스캔 없이 종료코드 0 을 낸다.
+REPO_ROOT="$(git -C "$SCRIPT_DIR" rev-parse --show-toplevel 2>/dev/null || { cd "$SCRIPT_DIR/.." && pwd; })"
 COWORK_SKILLS="$REPO_ROOT/plugins/moai-coworker/skills"
-DESIGN_SKILLS="$REPO_ROOT/plugins/moai-design/skills"
+DESIGN_SKILLS="$REPO_ROOT/plugins/moai-designer/skills"
+
+# 스캔 대상이 하나도 없으면 조용히 통과시키지 않고 사용자에게 알린다.
+for _s in "$COWORK_SKILLS" "$DESIGN_SKILLS"; do
+  [ -d "$_s" ] || echo "korean-slop-lint: 경고 — 스캔 대상 없음: $_s" >&2
+done
 
 # Pattern class 2: Korean marketing clichés (Tier-1 slop phrases)
 ClichePattern='혁신적인|차세대|재정의하는|새로운 패러다임|한 차원 높은|지금까지 없던|결론적으로|시사하는 바가 크다'

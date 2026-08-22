@@ -12,8 +12,7 @@ description: |
   - "Tailwind v4 @theme 토큰 만들어 줘"
   - "CSS 변수에서 DTCG SSOT 역추출"
   - "토큰 라운드트립 무결성 검사"
-user-invocable: true
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # design-tokens-transformer — 3계층 토큰 양방향 변환

@@ -11,8 +11,7 @@ description: |
   - "디자인 시스템 자산 업로드 준비"
   - "claude.ai/design 디자인 시스템 셋업 준비"
   - "DESIGN.md 만들어 줘"
-user-invocable: true
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # design-system-prep — 디자인 시스템 자산 합성

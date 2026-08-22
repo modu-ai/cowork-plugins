@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "ElevenLabs": {
-      "$comment": "ElevenLabs 공식 MCP (github.com/elevenlabs/elevenlabs-mcp) — TTS·보이스 클로닝·다국어 더빙·효과음. media-audio-gen 스킬 전용. 사전 설치: curl -LsSf https://astral.sh/uv/install.sh | sh. ELEVENLABS_API_KEY 필수 (elevenlabs.io/app/settings/api-keys 발급). 옵션: ELEVENLABS_MCP_BASE_PATH (기본 ~/Desktop), ELEVENLABS_MCP_OUTPUT_MODE (files/resources/both), ELEVENLABS_API_RESIDENCY (us 등).",
+      "$comment": "ElevenLabs 공식 MCP (github.com/elevenlabs/elevenlabs-mcp) — TTS·보이스 클로닝·다국어 더빙·효과음. media-audio-gen 스킬 전용. 사전 준비: uv 설치 필요 — macOS/Windows 양쪽 설치 방법은 cowork.mo.ai.kr/plugins/mcp/install/ 1단계 참조. ELEVENLABS_API_KEY 필수 (elevenlabs.io/app/settings/api-keys 발급). 옵션: ELEVENLABS_MCP_BASE_PATH (기본값은 바탕화면 — macOS ~/Desktop, Windows C:\\Users\\사용자이름\\Desktop), ELEVENLABS_MCP_OUTPUT_MODE (files/resources/both), ELEVENLABS_API_RESIDENCY (us 등).",
       "command": "uvx",
       "args": [
         "elevenlabs-mcp"
@@ -12,7 +12,7 @@
     },
     "higgsfield": {
       "$comment": "Higgsfield AI 영상·이미지 생성 MCP — media-higgsfield-image·media-higgsfield-video 스킬이 사용. 인증: Higgsfield 계정 토큰(mcp.higgsfield.ai).",
-      "type": "url",
+      "type": "http",
       "url": "https://mcp.higgsfield.ai/mcp",
       "timeout": 120000,
       "headers": {

@@ -11,8 +11,7 @@ description: |
   - "Notion / Linear / Stripe 스타일로 리포트"
   - "어두운 테마 / 따뜻한 화이트 테마로"
   - "Claude Design에 올릴 디자인 시스템 자료 정리"
-user-invocable: true
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # design-system-library — 75개 브랜드 디자인 시스템 SSOT

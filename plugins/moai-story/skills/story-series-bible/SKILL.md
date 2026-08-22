@@ -9,7 +9,7 @@ description: |
   - "지금까지 몇 화 나왔지", "에피소드 현황표 갱신", "연재 상태 정리"
   - "회차 파일명 어떻게", "제목 공백 처리"
   - (체인 시작/종료) 회차 작성 전 상태 확립, 회차 완료 후 상태 갱신
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # story-series-bible: 연재 상태 원장
@@ -130,7 +130,7 @@ Step 3. 현황표 갱신 (불변식 — 반드시)
 | Before/After | `story-webnovel-writer` | 웹소설 창작 — 동일 원장 메커니즘 |
 | 규격 참조 | `story-webtoon-spec` | 데뷔 경로·회차 분량·수익화 훅 확인 |
 | 식자 참조 | `story-webtoon-lettering` | 회차 원고의 말풍선·서체·SFX |
-| 연속성 감사 | `story-continuity-auditor` (에이전트) | 다회차 캐릭터·플롯·설정 연속성(Soul-ID 포함)을 원장 대비로 검증 |
+| 연속성 감사 | `story-continuity-auditor` (에이전트, Claude Cowork 전용) | 다회차 캐릭터·플롯·설정 연속성(Soul-ID 포함)을 원장 대비로 검증. ChatGPT Work에는 에이전트 레이어가 없으므로 "원장 대비로 연속성만 검수해줘, 고치지 말고 지적만"처럼 요청을 나눠 같은 검수를 수행 |
 | Post-검수 (텍스트 산출) | `moai-coworker:ai-slop-reviewer` → `moai-writer:korean-humanize` | 원고 텍스트 1차 후처리 → 2차 한국어 정밀 윤문 |
 
 ## 11. References

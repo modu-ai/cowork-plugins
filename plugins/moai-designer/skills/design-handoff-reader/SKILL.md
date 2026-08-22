@@ -10,8 +10,7 @@ description: |
   - "핸드오프 번들 읽어 줘"
   - "디자인 토큰 추출"
   - "Claude Code 핸드오프 준비"
-user-invocable: true
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # design-handoff-reader — 핸드오프 번들 분석

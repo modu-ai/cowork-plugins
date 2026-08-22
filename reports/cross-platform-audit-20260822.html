@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>크로스플랫폼 전수 조사 — 플러그인·스킬·MCP</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+:root{
+  --ivory:#FAF9F5; --paper:#FFFFFF; --slate:#141413;
+  --clay:#D97757; --clay-d:#B85C3E; --oat:#E3DACC; --olive:#788C5D;
+  --g100:#F0EEE6; --g300:#D1CFC5; --g500:#87867F; --g700:#3D3D3A;
+  --red:#C0492F; --amber:#B57A16;
+  --sans:"Pretendard Variable","Pretendard",system-ui,-apple-system,sans-serif;
+  --serif:"Pretendard Variable","Pretendard",ui-serif,Georgia,serif;
+  --mono:"JetBrains Mono",ui-monospace,"SF Mono",monospace;
+  --max-width:860px; --radius-panel:12px; --radius-row:8px;
+  --border:1.5px solid var(--g300);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ivory);color:var(--slate);font-family:var(--sans);
+  font-size:16px;line-height:1.72;-webkit-font-smoothing:antialiased;letter-spacing:-0.005em}
+.wrap{max-width:var(--max-width);margin:0 auto;padding:56px 24px 96px}
+header.top{border-bottom:3px solid var(--slate);padding-bottom:22px;margin-bottom:36px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--clay-d);font-weight:700;margin:0 0 10px}
+h1{font-family:var(--serif);font-size:33px;font-weight:800;line-height:1.28;
+  letter-spacing:-0.03em;margin:0 0 12px}
+.meta{font-family:var(--mono);font-size:12.5px;color:var(--g500);margin:0}
+.meta b{color:var(--g700);font-weight:500}
+h2{font-family:var(--serif);font-size:23px;font-weight:800;letter-spacing:-0.025em;
+  margin:52px 0 6px;padding-top:22px;border-top:var(--border)}
+h3{font-family:var(--serif);font-size:17.5px;font-weight:700;letter-spacing:-0.02em;margin:34px 0 8px}
+p{margin:0 0 15px}
+.lead{color:var(--g700);background:var(--g100);border-left:3px solid var(--oat);
+  padding:13px 17px;border-radius:0 var(--radius-row) var(--radius-row) 0;margin:0 0 22px;font-size:15px}
+.lead b{color:var(--slate)}
+code{font-family:var(--mono);font-size:.87em;background:var(--g100);
+  padding:2px 6px;border-radius:4px;color:var(--clay-d);word-break:break-word}
+.term{border-bottom:1.5px dotted var(--g500);cursor:help}
+/* metric cards */
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:26px 0 8px}
+.card{background:var(--paper);border:var(--border);border-radius:var(--radius-panel);
+  padding:17px 15px;text-align:center}
+.card .n{font-family:var(--serif);font-size:31px;font-weight:800;line-height:1.1;letter-spacing:-0.03em}
+.card .l{font-size:12px;color:var(--g500);margin-top:5px;letter-spacing:-0.01em}
+.card.ok .n{color:var(--olive)} .card.hi .n{color:var(--red)} .card.mid .n{color:var(--amber)}
+/* tables */
+table{width:100%;border-collapse:collapse;margin:18px 0 8px;font-size:14.5px}
+th{text-align:left;font-weight:700;font-size:12px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--g500);border-bottom:2px solid var(--g300);padding:9px 10px}
+td{padding:10px;border-bottom:1px solid var(--g300);vertical-align:top}
+tbody tr:nth-child(even){background:var(--g100)}
+.tbl-scroll{overflow-x:auto}
+/* badges */
+.b{display:inline-block;font-family:var(--mono);font-size:10.5px;font-weight:700;
+  padding:2.5px 8px;border-radius:20px;letter-spacing:.04em;white-space:nowrap}
+.b-hi{background:#F7E2DC;color:var(--red)}
+.b-mid{background:#F6ECD4;color:var(--amber)}
+.b-lo{background:var(--g100);color:var(--g500)}
+.b-ok{background:#E6EDDD;color:#4C6238}
+/* finding panels */
+.f{background:var(--paper);border:var(--border);border-radius:var(--radius-panel);
+  padding:20px 22px;margin:20px 0}
+.f.hi{border-left:5px solid var(--red)}
+.f.mid{border-left:5px solid var(--amber)}
+.f.lo{border-left:5px solid var(--g300)}
+.f h3{margin-top:0}
+.f ul{margin:10px 0 0;padding-left:19px} .f li{margin-bottom:7px}
+.ex{background:var(--g100);border-radius:var(--radius-row);padding:13px 16px;margin:14px 0 0;font-size:14px}
+.ex .h{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--clay-d);margin-bottom:6px}
+pre{background:var(--slate);color:#EDEBE4;font-family:var(--mono);font-size:12.5px;line-height:1.6;
+  padding:13px 15px;border-radius:var(--radius-row);overflow-x:auto;margin:12px 0}
+/* chart */
+.chart{background:var(--paper);border:var(--border);border-radius:var(--radius-panel);padding:22px 20px 14px;margin:22px 0}
+.chart .cap{font-size:12.5px;color:var(--g500);margin:8px 0 0;text-align:center}
+/* mermaid */
+pre.mermaid{background:var(--paper);border:var(--border);color:var(--slate);
+  padding:20px;text-align:center;font-size:13px}
+noscript p{background:var(--g100);border-left:3px solid var(--oat);padding:13px 16px;
+  border-radius:0 var(--radius-row) var(--radius-row) 0;font-size:14.5px}
+/* check list */
+.chk{background:var(--paper);border:var(--border);border-radius:var(--radius-panel);padding:20px 24px}
+.chk ul{list-style:none;padding:0;margin:0}
+.chk li{padding-left:26px;position:relative;margin-bottom:11px;font-size:15px}
+.chk li::before{content:"□";position:absolute;left:0;top:-1px;color:var(--clay);font-size:16px;font-weight:700}
+footer{margin-top:56px;padding-top:20px;border-top:var(--border);
+  font-family:var(--mono);font-size:11.5px;color:var(--g500);line-height:1.8}
+@media (max-width:640px){.cards{grid-template-columns:repeat(2,1fr)}h1{font-size:26px}.wrap{padding:36px 16px 64px}}
+@media print{body{background:#fff}.f,.card,.chart,.chk{break-inside:avoid}pre.mermaid{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <p class="eyebrow">Cross-Platform Audit · Status Report</p>
+  <h1>맥·윈도우 어디서나 똑같이 되는가<br>— 플러그인·스킬·MCP 전수 조사</h1>
+  <p class="meta">조사일 <b>2026-08-22</b> · 대상 <b>main @ 624a3a7d</b> · 방식 <b>정적 코드·문서 분석</b> · 기준 <b>CLAUDE.local.md §범용성 원칙</b></p>
+</header>
+
+<p class="lead"><b>이 리포트가 답하는 질문 한 줄:</b> 우리가 만든 것들을 윈도우 쓰는 비개발자가 설치했을 때, 맥에서와 똑같이 동작하는가?<br>
+검사 기준은 <b>4조합</b>입니다 — 운영체제 두 가지(macOS·Windows) × 실행 환경 두 가지(Claude Cowork·ChatGPT Work). 한 조합에서만 되는 기능은 "미완성"으로 봅니다.</p>
+
+<div class="cards">
+  <div class="card ok"><div class="n">18</div><div class="l">플러그인</div></div>
+  <div class="card ok"><div class="n">224</div><div class="l">스킬</div></div>
+  <div class="card hi"><div class="n">2</div><div class="l">높음 결함</div></div>
+  <div class="card mid"><div class="n">2</div><div class="l">중간 결함</div></div>
+</div>
+<p class="meta" style="text-align:center;margin-top:10px">
+자체 제작 MCP 서버 4종(+공유 코어 1) · 에이전트 32개 · 낮음 결함 4건
+</p>
+
+<h2>한눈에 보는 결론</h2>
+<p class="lead"><b>MCP</b>(Model Context Protocol) — AI가 외부 서비스(쇼핑몰·회계·문서변환 등)와 대화하기 위한 표준 연결 규격입니다. 우리 플러그인 중 12개가 이 연결을 씁니다.</p>
+
+<p><b>맥 쪽은 깨끗합니다.</b> macOS × Claude, macOS × Codex 두 조합에서 발견된 실사용 결함이 없습니다.
+문제는 전부 <b>윈도우 축</b>과 <b>사전 준비물 안내</b>에 몰려 있습니다.</p>
+
+<div class="tbl-scroll">
+<table>
+<thead><tr><th style="width:88px">심각도</th><th>무엇이 문제인가</th><th style="width:150px">누가 막히나</th></tr></thead>
+<tbody>
+<tr><td><span class="b b-hi">높음</span></td><td><b>F-1</b> · PDF 만들기(<code>doc-pdf</code>)가 윈도우에서 실패</td><td>윈도우 사용자 전원</td></tr>
+<tr><td><span class="b b-hi">높음</span></td><td><b>F-2</b> · Node.js 설치 안내가 문서 어디에도 없음</td><td>맥·윈도우 <b>공통</b></td></tr>
+<tr><td><span class="b b-mid">중간</span></td><td><b>F-3</b> · 등기부 자동화 스킬이 맥 전용 명령 안내</td><td>윈도우 사용자</td></tr>
+<tr><td><span class="b b-mid">중간</span></td><td><b>F-4</b> · 한국어 윤문 스킬의 <code>python3</code> 명령 5곳</td><td>윈도우 사용자</td></tr>
+<tr><td><span class="b b-lo">낮음</span></td><td><b>F-5~F-8</b> · 잠복 결함 1, 미검증 1, 정리 대상 2</td><td>지금은 영향 없음</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>어디서 갈라지는가</h2>
+<p class="lead">아래 그림은 사용자가 기능을 실행했을 때 <b>어느 갈림길에서 윈도우만 막히는지</b> 보여 줍니다. 초록 경로는 통과, 붉은 경로가 이번에 찾은 결함입니다.</p>
+
+<pre class="mermaid">
+flowchart TD
+  U["사용자가 기능 실행"] --> T{"이 기능이<br>무엇을 필요로 하나?"}
+
+  T -->|"원격 HTTP MCP<br>(8종)"| R["서버가 대신 처리<br>→ OS 무관"]
+  T -->|"uv 필요<br>(seller·threads·media)"| V{"uv 설치됨?"}
+  T -->|"npx 필요<br>(accountant·analyst·<br>coworker·officer)"| N{"Node.js 설치됨?"}
+  T -->|"weasyprint 필요<br>(doc-pdf)"| W{"OS?"}
+
+  V -->|"예"| OK1["정상 동작"]
+  V -->|"아니오"| G1["설치 문서에<br>맥·윈도우 안내 있음<br>→ 사용자 자력 해결"]
+
+  N -->|"예"| OK2["정상 동작"]
+  N -->|"아니오"| F2["F-2 · 설치 안내 없음<br>도구가 조용히 사라짐"]
+
+  W -->|"macOS"| OK3["정상 동작"]
+  W -->|"Windows"| F1["F-1 · GTK 라이브러리 부재<br>렌더 실패"]
+
+  classDef ok fill:#E6EDDD,stroke:#788C5D,color:#141413;
+  classDef bad fill:#F7E2DC,stroke:#C0492F,color:#141413;
+  classDef warn fill:#F6ECD4,stroke:#B57A16,color:#141413;
+  class R,OK1,OK2,OK3 ok;
+  class F1,F2 bad;
+  class G1 warn;
+</pre>
+
+<noscript>
+<p><b>흐름 요약:</b> 기능은 필요한 준비물에 따라 네 갈래로 갈립니다. ① 원격 HTTP MCP 8종은 서버가 처리하므로 OS와 무관하게 동작합니다. ② <code>uv</code>가 필요한 갈래는 설치 문서에 맥·윈도우 안내가 모두 있어 사용자가 스스로 해결할 수 있습니다. ③ <code>npx</code>가 필요한 갈래는 Node.js 설치 안내가 없어(F-2) 도구가 조용히 사라집니다. ④ <code>weasyprint</code>가 필요한 PDF 갈래는 윈도우에서만 네이티브 라이브러리 부재로 실패합니다(F-1).</p>
+</noscript>
+
+<h2>통과한 검사 — 잘 지켜지고 있는 것</h2>
+<p class="lead">먼저 좋은 소식부터. 규칙에서 가장 위험하다고 못 박아 둔 항목들은 <b>전부 통과</b>했습니다. 특히 자체 제작 MCP 서버 코드는 이식성 면에서 흠잡을 데가 없습니다.</p>
+
+<div class="tbl-scroll">
+<table>
+<thead><tr><th>검사 항목</th><th style="width:104px">결과</th><th>근거</th></tr></thead>
+<tbody>
+<tr><td>매니페스트 쌍 (Claude ↔ Codex)</td><td><span class="b b-ok">18/18</span></td><td><code>.claude-plugin</code>·<code>.codex-plugin</code> 양쪽 존재</td></tr>
+<tr><td>금지 런처 <code>/bin/bash</code>·<code>sh -c</code></td><td><span class="b b-ok">0건</span></td><td>플러그인 <code>.mcp.json</code> 12개 전수</td></tr>
+<tr><td><code>args</code> 내 셸 연산자</td><td><span class="b b-ok">0건</span></td><td><code>&amp;&amp;</code>·파이프·백틱 무매치</td></tr>
+<tr><td>절대경로·<code>~</code>·<code>/tmp</code> 하드코딩</td><td><span class="b b-ok">0건</span></td><td>실행 필드 기준 (주석 1건 제외)</td></tr>
+<tr><td>MCP 서버 경로 처리</td><td><span class="b b-ok">통과</span></td><td><code>Path.home()</code> 사용 — <code>tokenstore.py:22</code></td></tr>
+<tr><td>MCP 서버 파일 인코딩</td><td><span class="b b-ok">6/6</span></td><td><code>open()</code> 전부 <code>encoding="utf-8"</code></td></tr>
+<tr><td>MCP 서버 <code>subprocess</code>/<code>shell=True</code></td><td><span class="b b-ok">0건</span></td><td>셸 의존 없음</td></tr>
+<tr><td>경로 문자열 이어붙이기</td><td><span class="b b-ok">0건</span></td><td>매치 3건은 스레드 번호, 경로 아님</td></tr>
+<tr><td>MCP 5축 작명 정합</td><td><span class="b b-ok">4/4</span></td><td>서버키·디렉터리·패키지·모듈·엔트리포인트</td></tr>
+<tr><td><code>hooks</code>/LSP/<code>output-styles</code></td><td><span class="b b-ok">0건</span></td><td>데스크톱 앱 미지원 기능 미포함</td></tr>
+<tr><td>CRLF(윈도우 줄바꿈) 처리</td><td><span class="b b-ok">구현됨</span></td><td><code>sanitize_text.py:91-93</code> 명시적 정규화</td></tr>
+<tr><td><code>uv</code> 설치 안내 윈도우 커버</td><td><span class="b b-ok">완비</span></td><td>winget + PowerShell 두 경로 제시</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="ex">
+<div class="h">확인해 본 예 — 토큰 저장 경로</div>
+쇼핑몰 연동 MCP는 로그인 토큰을 파일로 저장합니다. 코드가 <code>Path.home() / ".moai" / "mcp"</code>로 쓰여 있어,
+맥에서는 <code>~/.moai/mcp/</code>, 윈도우에서는 <code>C:\Users\사용자이름\.moai\mcp\</code>로 <b>자동으로 갈라집니다</b>.
+문자열로 <code>"/"</code>를 이어붙였다면 윈도우에서 깨졌을 자리인데, 규칙대로 <code>pathlib</code>을 썼습니다.
+온라인 문서 <code>plugins/mcp/install.md</code> 113–115행에도 두 경로가 표로 안내돼 있습니다.
+</div>
+
+<h2>결함 — 높음</h2>
+
+<div class="f hi">
+<h3>F-1 · <code>doc-pdf</code>가 윈도우에서 PDF를 못 만든다 <span class="b b-hi">높음</span></h3>
+<p class="lead" style="margin-bottom:12px"><b>weasyprint</b>(위지프린트) — HTML을 PDF로 바꿔 주는 파이썬 도구입니다. 그런데 이 도구는 파이썬만으로 돌아가지 않고, <span class="term" title="운영체제에 미리 깔려 있어야 하는 시스템 라이브러리">글자를 실제로 그려 주는 시스템 라이브러리(Pango/GTK)</span>를 따로 요구합니다. 맥·리눅스에는 대개 있지만 <b>윈도우에는 없습니다.</b></p>
+<ul>
+<li><b>근거</b> — <code>doc-pdf/SKILL.md:175</code>의 트러블슈팅 행이 <code>cannot load library 'libpango...'</code> 오류에 대해 Debian/Ubuntu와 macOS 해법만 제시합니다. 윈도우 행이 없습니다.</li>
+<li><b>근거</b> — 같은 파일 64·173행의 한글 폰트 설치 안내도 <code>brew</code>(맥)와 <code>apt</code>(리눅스)뿐입니다.</li>
+<li><b>영향</b> — 윈도우 사용자가 "PDF로 만들어줘"라고 하면 모듈 로드 실패로 끝납니다. 오류 메시지가 영문 라이브러리 이름이라 비개발자는 원인을 짚을 수 없습니다.</li>
+<li><b>조치</b> — 트러블슈팅 표에 윈도우 행 추가(GTK for Windows 런타임), 또는 윈도우에서는 headless Chromium 경로로 폴백.</li>
+</ul>
+<div class="ex">
+<div class="h">worked example — 윈도우 사용자 홍길동 씨의 경우</div>
+① 앱에서 "이 보고서 PDF로 저장해줘" 입력 → ② <code>doc-pdf</code> 스킬 발동 → ③ <code>from weasyprint import HTML</code> 실행 →
+④ <code>OSError: cannot load library 'libpango-1.0-0'</code> → ⑤ 스킬이 문서의 트러블슈팅 표를 읽음 →
+⑥ 표에 있는 건 <code>apt install ...</code>(리눅스)과 <code>brew install pango</code>(맥)뿐 → ⑦ <b>안내할 수 있는 해법이 없음.</b>
+</div>
+</div>
+
+<div class="f hi">
+<h3>F-2 · Node.js 설치 안내가 문서 어디에도 없다 <span class="b b-hi">높음</span></h3>
+<p class="lead" style="margin-bottom:12px"><b>npx</b>(엔피엑스) — Node.js에 딸려 오는 실행 도구입니다. 우리 플러그인 4종이 이걸로 MCP 서버를 띄웁니다. 즉 <b>Node.js가 없으면 그 4종의 연동 기능이 통째로 안 뜹니다.</b> 그런데 온라인 문서 어디에도 Node.js를 깔라는 말이 없습니다.</p>
+<ul>
+<li><b>해당 플러그인</b> — <code>moai-accountant</code>, <code>moai-analyst</code>, <code>moai-coworker</code>(서버 <code>dart</code>), <code>moai-officer</code>(서버 <code>kordoc</code>)</li>
+<li><b>근거</b> — <code>www/content</code> 전체를 훑었을 때 <code>Node.js</code>/<code>nodejs.org</code> 매치는 <code>moai-agents/officer.md</code>와 아카이브 릴리스 노트뿐. 설치 문서 3종은 전부 0건입니다.</li>
+<li><b>대조군</b> — 같은 성격의 준비물인 <code>uv</code>는 <code>plugins/mcp/install.md</code>에 맥(설치 스크립트)·윈도우(winget, PowerShell) 안내가 모두 있습니다. Node.js만 같은 대접을 못 받고 있습니다.</li>
+<li><b>영향</b> — OS 축이 아니라 <b>맥·윈도우 공통</b> 결함입니다. 그래서 심각도가 높습니다.</li>
+<li><b>조치</b> — <code>plugins/mcp/install.md</code>에 "Node.js 설치" 절을 <code>uv</code> 절과 같은 형식으로 추가 (윈도우는 <code>winget install OpenJS.NodeJS.LTS</code>).</li>
+</ul>
+<div class="ex">
+<div class="h">왜 이게 특히 위험한가</div>
+Node.js가 없으면 오류가 <b>뜨지 않습니다.</b> MCP 서버가 그냥 목록에서 빠질 뿐이라, 사용자는
+"전자공시 조회가 원래 안 되는 기능인가 보다"라고 오해합니다. 실패보다 <b>조용한 실패</b>가 진단하기 어렵습니다.
+</div>
+</div>
+
+<h2>결함 — 중간</h2>
+
+<div class="f mid">
+<h3>F-3 · 등기부 자동화 스킬이 맥 전용 명령을 안내 <span class="b b-mid">중간</span></h3>
+<ul>
+<li><b>근거</b> — <code>legal-iros-registry-automation/SKILL.md:51</code>
+<pre>python3 -m venv .venv &amp;&amp; source .venv/bin/activate</pre></li>
+<li><b>문제 ①</b> — <code>source .venv/bin/activate</code>는 맥·리눅스 전용입니다. 윈도우는 <code>.venv\Scripts\activate</code>.</li>
+<li><b>문제 ②</b> — <code>python3</code>라는 이름의 명령은 python.org의 윈도우 설치본에 <b>생기지 않습니다</b>. 윈도우는 <code>python</code> 또는 <code>py</code>입니다.</li>
+<li><b>조치</b> — 맥용·윈도우용 두 줄을 나란히 표기.</li>
+</ul>
+</div>
+
+<div class="f mid">
+<h3>F-4 · 한국어 윤문 스킬의 <code>python3</code> 5곳 <span class="b b-mid">중간</span></h3>
+<ul>
+<li><b>근거</b> — <code>korean-humanize/SKILL.md</code> 72·89·108·212·247행이 모두 <code>python3</code>로 시작합니다.</li>
+<li><b>문제</b> — F-3과 같은 원인. 윈도우 python.org 설치본에는 <code>python3.exe</code>가 없습니다(마이크로소프트 스토어 배포본에만 있습니다).</li>
+<li><b>좋은 소식</b> — 불려 가는 파이썬 스크립트 6종 자체는 이식성 문제가 <b>전혀 없습니다.</b> 경로는 <code>os.path</code> 기반, 파일 열기 12곳 전부 인코딩 명시, 윈도우 줄바꿈(CRLF)도 <code>sanitize_text.py:91-93</code>에서 명시적으로 정규화합니다. 껍데기 명령어 이름만 고치면 됩니다.</li>
+<li><b>조치</b> — <code>python3</code> → <code>python</code> (또는 <code>uv run python</code>)으로 통일.</li>
+</ul>
+</div>
+
+<h2>결함 — 낮음</h2>
+
+<div class="f lo">
+<h3>F-5 · 폰트 <code>file://</code> 주소 조립 — 지금은 안 터지는 잠복 결함</h3>
+<ul>
+<li><code>doc-pdf/SKILL.md:81</code>이 <code>f"src:url('file://{FONT_DIR}/...')"</code>로 주소를 만듭니다. 윈도우에서 <code>FONT_DIR</code>은 <code>C:\Users\...</code> 형태라, <code>file://C:\...</code>는 유효하지 않은 주소가 됩니다.</li>
+<li><b>지금은 발화하지 않습니다</b> — <code>assets/fonts/</code>에 실제 폰트 파일이 없고(<code>LICENSE.txt</code>·<code>README.md</code>뿐) 코드에 <code>.exists()</code> 가드가 있어 이 줄이 실행되지 않습니다. <b>폰트를 번들하는 순간 터집니다.</b></li>
+<li><b>조치</b> — 번들 전에 <code>Path(...).as_uri()</code>로 교체.</li>
+</ul>
+</div>
+
+<div class="f lo">
+<h3>F-6 · Codex 매니페스트가 <code>agents/</code>를 선언하지 않음 <span class="b b-lo">미검증</span></h3>
+<ul>
+<li><b>확인한 사실</b> — 18개 플러그인 모두 <code>agents/*.md</code>를 2개씩(총 32개) 갖고 있는데, <code>.codex-plugin/plugin.json</code>은 <code>"skills"</code>·<code>"mcpServers"</code>만 선언하고 <code>"agents"</code> 키가 없습니다. (Claude 쪽도 같지만, Claude는 규약상 자동 탐지합니다.)</li>
+<li><b>단정하지 않는 이유</b> — Codex 런타임이 <code>agents/</code>를 자동으로 찾는지 <b>실제로 실행해 확인하지 않았습니다.</b> 확인 없이 "결함"이라고 부르면 근거 없는 주장이 됩니다.</li>
+<li><b>조치</b> — Codex에서 플러그인 1종을 실제로 로드해 에이전트가 노출되는지 눈으로 확인.</li>
+</ul>
+</div>
+
+<div class="f lo">
+<h3>F-7 · 배포 패키지에 유지보수용 bash 스크립트 1개</h3>
+<ul>
+<li><code>plugins/moai-coworker/scripts/korean-slop-lint.sh</code> — 실행 비트가 걸린 bash 스크립트입니다. 어떤 <code>SKILL.md</code>도 이걸 부르지 않으므로 동작에는 영향이 없습니다.</li>
+<li><b>조치</b> — 저장소 <code>scripts/</code>로 옮기거나 배포에서 제외.</li>
+</ul>
+</div>
+
+<div class="f lo">
+<h3>F-8 · 문서 안에 남은 맥 전용 표기 4곳</h3>
+<ul>
+<li><code>moai-media/.mcp.json:4</code> 주석 — uv 설치 명령이 맥·리눅스 셸 형태만 (윈도우 병기 없음)</li>
+<li><code>doc-html-slide/references/html-runtime.md:116</code> — <code>file:///...</code> 유닉스 형태 예시</li>
+<li><code>doc-html-slide/references/image-backend-policy.md:80</code> — <code>/tmp/hero.png</code></li>
+<li><code>doc-html-report/references/design-tokens.md:10</code> — <code>/tmp/html-eff/</code></li>
+</ul>
+</div>
+
+<h2>참고 — 개발 저장소 한정 (사용자 영향 없음)</h2>
+<p>루트 <code>.mcp.json</code>의 <code>chrome-devtools</code>·<code>context7</code>·<code>playwright</code> 3종이 <code>"command": "/bin/bash"</code>와 <code>-l -c</code>를 씁니다.
+이 파일은 <b>개발 저장소 전용</b>이라 마켓플레이스로 배포되지 않으므로 사용자에게 영향이 없습니다.
+다만 §범용성 원칙의 검사 명령이 여기서 매치를 내므로, 검사 범위를 <code>plugins/*/.mcp.json</code>으로 한정하거나 루트도 <code>npx</code> 직접 호출로 정리하면 검사 신호가 깨끗해집니다.</p>
+
+<h2>준비물별 플러그인 분포</h2>
+<div class="chart">
+<svg viewBox="0 0 620 200" width="100%" height="200" role="img" aria-label="준비물별 플러그인 수 막대그래프">
+  <line x1="118" y1="16" x2="118" y2="172" stroke="#D1CFC5" stroke-width="1.5"/>
+  <!-- 원격 HTTP 8 -->
+  <text x="110" y="38" text-anchor="end" font-family="Pretendard,sans-serif" font-size="13" fill="#3D3D3A">원격 HTTP</text>
+  <rect x="118" y="24" width="352" height="20" rx="4" fill="#788C5D"/>
+  <text x="480" y="38" font-family="JetBrains Mono,monospace" font-size="12" fill="#87867F">8 · OS 무관</text>
+  <!-- npx 4 -->
+  <text x="110" y="76" text-anchor="end" font-family="Pretendard,sans-serif" font-size="13" fill="#3D3D3A">npx (Node.js)</text>
+  <rect x="118" y="62" width="176" height="20" rx="4" fill="#C0492F"/>
+  <text x="304" y="76" font-family="JetBrains Mono,monospace" font-size="12" fill="#C0492F">4 · 설치 안내 없음</text>
+  <!-- uv 4 -->
+  <text x="110" y="114" text-anchor="end" font-family="Pretendard,sans-serif" font-size="13" fill="#3D3D3A">uv / uvx</text>
+  <rect x="118" y="100" width="176" height="20" rx="4" fill="#788C5D"/>
+  <text x="304" y="114" font-family="JetBrains Mono,monospace" font-size="12" fill="#87867F">4 · 양 OS 안내 완비</text>
+  <!-- 없음 1 -->
+  <text x="110" y="152" text-anchor="end" font-family="Pretendard,sans-serif" font-size="13" fill="#3D3D3A">준비물 없음</text>
+  <rect x="118" y="138" width="44" height="20" rx="4" fill="#D1CFC5"/>
+  <text x="172" y="152" font-family="JetBrains Mono,monospace" font-size="12" fill="#87867F">1</text>
+  <line x1="118" y1="172" x2="600" y2="172" stroke="#D1CFC5" stroke-width="1.5"/>
+</svg>
+<p class="cap">MCP 서버 정의를 가진 플러그인 12종 기준 (한 플러그인이 두 종류를 함께 쓰는 경우 중복 계상)</p>
+</div>
+<p>붉은 막대 하나가 F-2입니다. <code>uv</code> 갈래(초록)와 개수가 같은데 문서 대접만 다릅니다 — 그래서 고치기도 어렵지 않습니다. <code>uv</code> 절 옆에 같은 형식으로 한 절 추가하면 됩니다.</p>
+
+<h2>조치 우선순위</h2>
+<div class="tbl-scroll">
+<table>
+<thead><tr><th style="width:44px">순서</th><th>할 일</th><th>대상 파일</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Node.js 설치 절 추가</td><td><code>www/content/plugins/mcp/install.md</code></td></tr>
+<tr><td>2</td><td><code>doc-pdf</code> 윈도우 경로 보강</td><td><code>moai-officer/skills/doc-pdf/SKILL.md</code></td></tr>
+<tr><td>3</td><td><code>python3</code> → <code>python</code> 통일 + venv 활성화 양 OS 병기</td><td><code>korean-humanize</code>, <code>legal-iros-registry-automation</code></td></tr>
+<tr><td>4</td><td><code>file://</code> → <code>Path.as_uri()</code></td><td><code>doc-pdf/SKILL.md:81</code></td></tr>
+<tr><td>5</td><td>Codex <code>agents/</code> 탐지 실측</td><td>플러그인 1종 실제 로드</td></tr>
+<tr><td>6</td><td>잔여 문서 표기 정리</td><td>F-7, F-8</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>확인하지 못한 것 (미검증)</h2>
+<p class="lead">이 리포트는 <b>코드와 문서를 읽어서</b> 낸 결론입니다. 실제 윈도우 컴퓨터에서 설치해 돌려 본 결과가 아닙니다. 그래서 아래는 "문제 없음"이 아니라 "확인 안 함"입니다.</p>
+<ul>
+<li>실제 Windows 머신에서의 설치·기동 검증 — 전부 정적 분석</li>
+<li>Codex 런타임 실제 로드 검증 (F-6을 단정하지 않은 이유)</li>
+<li>원격 HTTP MCP 8종의 실접속 — OS와 무관하지만 가용성 자체는 확인 안 함</li>
+<li>스킬 224개 전문 정독 — 패턴 검색으로 훑었으므로 패턴 밖 하자는 남아 있을 수 있음</li>
+<li>제3자 MCP(<code>dart</code>, <code>kordoc</code>, <code>elevenlabs-mcp</code>)의 윈도우 동작 — 원저작자 책임 영역</li>
+</ul>
+
+<h2>잔여 위험</h2>
+<ul>
+<li><code>npx</code> 계열은 Node.js 유무에 따라 <b>조용히</b> 실패합니다 — 오류 없이 도구 목록에서 빠지므로 사용자가 "원래 없는 기능"으로 오인합니다.</li>
+<li><code>uv</code>·<code>npx</code>는 첫 실행 때 패키지를 내려받으므로, 사내망·오프라인 환경에서는 OS와 무관하게 기동에 실패합니다.</li>
+</ul>
+
+<h2>직접 확인해 보실 것</h2>
+<div class="chk">
+<ul>
+<li>윈도우 PC 한 대에서 <code>moai-officer</code>를 설치하고 "PDF로 만들어줘"를 시켜 보기 — F-1이 실제로 재현되는지</li>
+<li>Node.js 없는 머신에서 <code>moai-accountant</code>를 설치하고 전자공시 조회를 요청해 보기 — 오류가 뜨는지, 조용히 빠지는지</li>
+<li>ChatGPT Work(Codex)에서 아무 플러그인이나 하나 열어 에이전트 2종이 보이는지 — F-6 판정의 유일한 방법</li>
+<li>루트 <code>.mcp.json</code>의 <code>/bin/bash</code> 3건이 실제 배포본에 포함되지 않는지, 마켓플레이스 설치 결과물로 재확인</li>
+</ul>
+</div>
+
+<footer>
+크로스플랫폼 전수 조사 · 2026-08-22 · main @ 624a3a7d<br>
+기준: CLAUDE.local.md §범용성 원칙 (OS × 런타임 4조합) · §자체 제작 MCP 작명·구조 규칙<br>
+방식: 정적 코드·문서 분석 — 실제 Windows/Codex 실행 검증 없음 (§미검증 참조)
+</footer>
+
+</div>
+
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "base",
+    themeVariables: {
+      primaryColor:      "#FAF9F5",
+      primaryTextColor:  "#141413",
+      primaryBorderColor:"#D97757",
+      lineColor:         "#87867F",
+      secondaryColor:    "#E3DACC",
+      tertiaryColor:     "#F0EEE6",
+      fontFamily:        "Pretendard Variable, Pretendard, sans-serif"
+    }
+  });
+</script>
+</body>
+</html>

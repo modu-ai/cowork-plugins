@@ -77,7 +77,7 @@ agy 1.0.2 실측으로 이미지 생성(1024×1024 PNG, 한국어 히어로 배�
 
 ```bash
 # 로컬 단발 프로토타이핑 only (artifactReviewPolicy: always-proceed 전제)
-agy -p "Generate a 1024x1024 hero banner, teal-to-navy gradient. Save to /tmp/hero.png"
+agy -p "Generate a 1024x1024 hero banner, teal-to-navy gradient. Save to ./hero.png"
 ```
 
 동일 Imagen/Nano Banana 백엔드를 Higgsfield MCP로 호출하는 것이 정책·멱등성·CI 면에서 우월합니다.

@@ -13,8 +13,7 @@ description: |
   이미지 생성 실행·모델 선택·비용 고지는 moai-media:media-higgsfield-core 계약에 위임하고, 이 스킬은
   "무엇을 만들지"(로고 타입·브랜드 정합·제약)까지만 정합니다. 로고는 recraft_v4_1 벡터 계열로
   생성합니다. 브랜드 비주얼(히어로·OG·목업)은 design-brand-visual을 쓰세요.
-user-invocable: true
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # design-logo — 브랜드 정합 로고 생성
