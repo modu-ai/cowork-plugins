@@ -4,7 +4,7 @@ description: >
   원격 근무와 팀 운영 정책을 설계해주는 스킬입니다. "재택근무 정책 만들어줘", "협업 도구 추천해줘",
   "비동기 커뮤니케이션 가이드 만들어줘"처럼 말하면 됩니다. 원격·하이브리드 근무 정책,
   협업 도구 선정 기준, 생산성 관리 프레임워크, 직원 경험 설계를 지원합니다.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # 피플 오퍼레이션 (hr-operations)
@@ -147,7 +147,7 @@ version: "1.1.0"
 **텍스트 후처리 체인 (정책 문서·가이드라인 등 산문 산출물)**:
 
 ```
-hr-operations → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+hr-operations → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - `moai-coworker:ai-slop-reviewer` — AI 티 패턴(기계적 어투, 상투적 정책 표현) 검수·수정

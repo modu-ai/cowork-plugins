@@ -2,7 +2,7 @@
 name: personal-event
 description: >
   행사·이벤트·웨딩을 기획하고 준비 계획을 수립합니다. "결혼 준비 체크리스트 만들어줘", "사내 세미나 기획해줘", "워크샵 진행 방식 설계해줘"라고 요청할 때 사용하세요. 행사 기획, 예산 계획, 일정 관리, 웨딩 준비(스드메·예산·타임라인)를 지원합니다.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # 이벤트 플래너 (Event Planner)
@@ -86,7 +86,7 @@ version: "1.1.0"
 이 스킬은 기획서·진행 순서표·MC 스크립트·품의서 같은 **글(텍스트) 산출물**을 만듭니다. 글 산출물은 발행 전 다음 체인으로 후처리하세요.
 
 ```
-personal-event → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+personal-event → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - **moai-coworker:ai-slop-reviewer**: AI 티 나는 표현·과장 어조를 검수하고 다듬습니다

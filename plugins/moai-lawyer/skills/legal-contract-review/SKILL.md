@@ -5,7 +5,7 @@ description: >
   '계약서 검토해줘', '위험 조항 찾아줘', '이용약관 만들어줘',
   '개인정보처리방침 작성해줘', 'SLA 계약서 써줘'라고 요청하세요.
   한국 민법·상법 기반 10대 리스크 패턴 분석, 수정 권고안을 제공합니다.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # 계약서 검토 (Contract Review)
@@ -182,7 +182,7 @@ version: "1.1.0"
 계약서 초안·수정 권고안·이용약관·개인정보처리방침·SLA 등 서술형 산출물은 작성 후 반드시 다음 체인으로 마무리합니다.
 
 ```
-legal-contract-review → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+legal-contract-review → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 > **정형 서식 보호** — 이 스킬의 산출물은 정형 문서다. 슬롭 검수는 금지어 치환만 수행하고, 구조(개조식·항목 번호 체계·두문/본문/결문)는 재작성하지 않는다.
 ```
 

@@ -2,7 +2,7 @@
 name: cs-escalation
 description: >
   고객 불만 에스컬레이션을 처리하고 VOC를 분석합니다. "불만 고객 대응 전략 세워줘", "VIP 고객 특별 응대 방법 알려줘", "주간 CS 요약 보고서 만들어줘"라고 요청할 때 사용하세요. 에스컬레이션 레벨 배정, VIP 응대, VOC 분석, 주간 CS 요약 보고서 생성을 지원합니다.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # 에스컬레이션 관리자 (Escalation Manager)
@@ -116,7 +116,7 @@ Zendesk·Medallia 2026 CX 연구 반영:
 서술형 산출물(에스컬레이션 대응 계획서, VIP 응대 스크립트, 개선 권고안, VOC 인사이트 서술)은 다음 체인으로 마무리합니다:
 
 ```
-cs-escalation → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+cs-escalation → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - `moai-coworker:ai-slop-reviewer` — AI 티 나는 표현·과잉 수식·기계적 문장 패턴을 검수·수정

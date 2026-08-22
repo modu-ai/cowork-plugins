@@ -5,7 +5,7 @@ description: >
   "포트폴리오 만들어줘", "프로젝트 정리해줘", "노션 포트폴리오 1시간 만에"처럼 말하면 됩니다.
   개발(GitHub·기술 블로그)/디자인(Figma·Behance)/마케팅/기획 분야별 + 검색되는 노션
   포트폴리오 + 채용공고 맞춤형 1page 셀링 + 877건 노하우 기반 비중 배분을 지원합니다.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # 포트폴리오 가이드 (career-portfolio)
@@ -296,7 +296,7 @@ AX(AI Transformation) 시대의 디자이너는 화면을 예쁘게 만드는 �
 프로젝트 기술서·About 단락·케이스 스터디·README 본문 등 포트폴리오의 서술 텍스트는 모두 사람이 읽는 산출물입니다. 초안 완성 후 다음 체인을 거쳐 AI 패턴을 제거하고 자연스러운 한국어로 다듬습니다.
 
 ```
-moai-career:career-portfolio → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+moai-career:career-portfolio → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - `moai-coworker:ai-slop-reviewer` — AI 생성 패턴(범용 표현·클리셰·형용사 남발) 1차 검수·교정

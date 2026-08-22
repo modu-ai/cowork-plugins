@@ -5,7 +5,7 @@ description: "머릿속 이야기를 연재 가능한 작품으로 — 작가 �
 geekdocBreadcrumb: true
 tags: [cookbook, projects, content]
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-13T00:00:00+09:00
+lastmod: 2026-08-22T00:00:00+09:00
 ---
 
 > **투입 코워커** — 작가(`moai-writer`)
@@ -18,14 +18,14 @@ lastmod: 2026-08-13T00:00:00+09:00
 
 ## 2. 투입 코워커와 스킬
 
-작가의 `story-synopsis`가 머릿속 설정을 시놉시스로 구조화하고, `story-character-sheet`가 주요 인물의 성격·말투·욕망·관계를 시트로 고정합니다. 이 두 문서가 준비되면 `story-webnovel-writer`가 회차별 연재 원고를 씁니다 — 웹소설 특유의 문법(짧은 호흡, 회차 끝 절단감, 모바일 가독성)을 아는 스킬입니다. 초고의 번역투를 걷어내는 건 `korean-humanize`(한국어 자연화 윤문) 몫이고, 마지막으로 `story-cover-art`가 장르 관습에 맞는 표지 시안을 준비합니다.
+작가의 `story-synopsis`가 머릿속 설정을 시놉시스로 구조화하고, `story-character-sheet`가 주요 인물의 성격·말투·욕망·관계를 시트로 고정합니다. 이 두 문서가 준비되면 `story-webnovel-writer`가 회차별 연재 원고를 씁니다 — 웹소설 특유의 문법(짧은 호흡, 회차 끝 절단감, 모바일 가독성)을 아는 스킬입니다. 초고의 번역투를 걷어내는 건 `korean-humanize`(한국어 자연화 윤문) 몫이고, 다듬은 원고는 원문과 대조하는 최종 검수를 거쳐 뜻이 그대로인지 확인합니다. 마지막으로 `story-cover-art`가 장르 관습에 맞는 표지 시안을 준비합니다.
 
 | 순서 | 스킬 | 역할 |
 |------|------|------|
 | 1 | `story-synopsis` | 시놉시스 (기승전결 · 투고용 요약) |
 | 2 | `story-character-sheet` | 인물별 성격 · 말투 · 관계 시트 |
 | 3 | `story-webnovel-writer` | 회차별 연재 원고 집필 |
-| 4 | `korean-humanize` | 번역투 · AI 어투 제거 윤문 |
+| 4 | `korean-humanize` | 번역투 · AI 어투 제거 윤문 + 최종 검수(원문 대조) |
 | 5 | `story-cover-art` | 장르 맞춤 표지 시안 |
 
 ## 3. 진행 단계

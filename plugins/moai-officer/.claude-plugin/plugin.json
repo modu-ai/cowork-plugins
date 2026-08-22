@@ -1,7 +1,7 @@
 {
   "name": "moai-officer",
   "displayName": "📄 사무관",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "사무 문서 전담 AI 코워커 — 한국형 오피스 문서(HWPX·DOCX·XLSX·PPTX·PDF)·HTML 리포트/슬라이드 생성, 공문서 파싱, 노션 템플릿·생산성 루틴 스킬 13종. kordoc MCP 연동. 공공데이터 조회·데이터 분석은 moai-analyst로, 라이프스타일·자기계발은 moai-coworker로 분리되었습니다. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 사무직·기획자·자영업 운영자.",
   "author": {
     "name": "모두의 AI",

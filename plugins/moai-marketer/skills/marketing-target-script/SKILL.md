@@ -12,7 +12,7 @@ description: |
   - "고객 고민에 딱 맞는 헤드라인 뽑아줘"
   고객 분석 → 페인포인트 → 핵심 메시지 → 채널별 변환 → A/B 테스트 순서로 정리하고, 결과 스크립트는 moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize으로 다듬어 바로 쓸 수 있게 만듭니다.
   [책임 경계] vs moai-cs:cs-channel-message: 이 스킬=메시지 전략 분석(앞단), 저 스킬=채널별 카피 산출(뒷단). 이 스킬 분석 결과를 moai-cs:cs-channel-message나 moai-marketer:content-copywriting에 넘겨 카피를 완성합니다.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # 타겟 스크립트 (Target Script)
@@ -215,7 +215,7 @@ Markdown 형식의 구조화된 문서로 출력됩니다:
 
 생성된 타겟 스크립트는 반드시 후처리 체인을 거쳐야 합니다: `moai-coworker:ai-slop-reviewer`로 AI 패턴(반복적 표현, 과장된 어조, 추상적 문장)을 제거한 뒤, `moai-writer:korean-humanize`으로 한국어 어투의 AI 티를 다듬어 실전 즉시 활용 가능한 구체적이고 자연스러운 스크립트로 변환합니다.
 
-**권장 체인**: `marketing-target-script → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
+**권장 체인**: `marketing-target-script → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수`
 
 ## 관련 스킬
 

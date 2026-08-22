@@ -4,7 +4,7 @@ description: >
   채용 프로세스 전반을 관리해주는 스킬입니다. "JD 작성해줘", "면접 질문 만들어줘",
   "신입 온보딩 계획 짜줘"처럼 말하면 됩니다. 채용 공고 작성, 면접 설계,
   평가 기준 수립, 온보딩 체크리스트, 멘토링 프로그램 설계를 지원합니다.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # 채용 관리자 (hr-employment)
@@ -105,7 +105,7 @@ JD·면접 질문·온보딩 계획·멘토링 커리큘럼 본문은 사람이 
 **텍스트 후처리 체인 (JD·면접 질문·온보딩 계획 등 산문 산출물)**:
 
 ```
-hr-employment → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+hr-employment → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - `moai-coworker:ai-slop-reviewer` — AI 티 패턴(기계적 어투, 상투적 채용 표현) 검수·수정

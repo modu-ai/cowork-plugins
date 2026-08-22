@@ -5,7 +5,7 @@ description: >
   'NDA 검토해줘', '비밀유지계약서 분석해줘', '기밀유지 조항 확인해줘',
   'NDA 위험 조항 찾아줘', '비밀유지계약 수정 권고해줘'라고 요청하세요.
   한국 민법·영업비밀보호법 기준 조항별 위험도 평가, 수정 권고안을 제공합니다.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # NDA 트리아지 (NDA Triage)
@@ -152,7 +152,7 @@ NDA, 비밀유지계약, 기밀유지계약, 비밀유지협약, NDA 검토, 계
 NDA 트리아지 평가서·조항별 수정 권고안·표준 NDA 초안 등 서술형 산출물은 작성 후 반드시 다음 체인으로 마무리합니다.
 
 ```
-legal-nda-triage → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+legal-nda-triage → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - **moai-coworker:ai-slop-reviewer**: AI 글쓰기 패턴(과장·상투구·획일적 구조) 검수

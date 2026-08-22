@@ -4,7 +4,7 @@ description: >
   성과평가 체계를 설계하고 실행을 도와주는 스킬입니다. "OKR 설정해줘", "성과 리뷰 템플릿 만들어줘",
   "피드백 면담 스크립트 써줘"처럼 말하면 됩니다. MBO·OKR·KPI 체계 구축,
   360도 평가 설계, 인사 고과 가이드, 피드백 면담 스크립트 작성을 지원합니다.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # 성과평가 (Performance Review)
@@ -153,7 +153,7 @@ version: "1.1.0"
 **텍스트 후처리 체인 (면담 스크립트·평가 보고서 서술 부분 등 산문 산출물)**:
 
 ```
-hr-performance-review → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+hr-performance-review → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - `moai-coworker:ai-slop-reviewer` — AI 티 패턴(기계적 어투, 상투적 피드백 표현) 검수·수정

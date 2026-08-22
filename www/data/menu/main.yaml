@@ -41,20 +41,16 @@ main:
         ref: /plugins/teams
       - name: MCP 연동
         ref: /plugins/mcp
-        isNew: true
       - name: MCP 설치와 설정
         ref: /plugins/mcp/install
-        isNew: true
       - name: MCP 문제 해결
         ref: /plugins/mcp/troubleshooting
-        isNew: true
       - name: Higgsfield MCP 설정
         ref: /plugins/higgsfield-setup
       - name: 라이선스와 산출물 권리
         ref: /plugins/license
       - name: 오픈소스 크레딧
         ref: /plugins/open-source
-        isNew: true
 
   - name: AI 코워커 소개
     icon: bot
@@ -70,19 +66,16 @@ main:
         ref: /moai-agents/writer
       - name: 스토리 크리에이터
         ref: /moai-agents/story
-        isNew: true
       - name: 마케터
         ref: /moai-agents/marketer
       - name: 미디어 크리에이터
         ref: /moai-agents/media
-        isNew: true
       - name: 셀러
         ref: /moai-agents/seller
       - name: 사무관
         ref: /moai-agents/officer
       - name: 데이터 애널리스트
         ref: /moai-agents/analyst
-        isNew: true
       - name: 법무
         ref: /moai-agents/lawyer
       - name: 재무세무
@@ -101,7 +94,6 @@ main:
         ref: /moai-agents/designer
       - name: SNS 크리에이터
         ref: /moai-agents/threads-poster
-        isNew: true
 
   - name: 쿡북
     icon: book
@@ -152,7 +144,6 @@ main:
         ref: /help/troubleshooting
       - name: 출처와 저작권 표기
         ref: /help/attribution
-        isNew: true
       - name: 가이드 문서 색인
         ref: /help/source-index
 
@@ -162,9 +153,11 @@ main:
     sub:
       - name: 릴리스 홈
         ref: /releases
+      - name: v1.2.1
+        ref: /releases/v1.2.1
+        isNew: true
       - name: v1.2.0
         ref: /releases/v1.2.0
-        isNew: true
       - name: v1.1.0
         ref: /releases/v1.1.0
       - name: v1.0.0

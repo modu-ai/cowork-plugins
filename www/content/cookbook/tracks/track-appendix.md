@@ -4,7 +4,7 @@ weight: 90
 description: "연구·교육·라이프스타일을 위한 부록 워크플로우. moai-tutor · moai-coworker 스킬 한 줄 요청."
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-13T00:00:00+09:00
+lastmod: 2026-08-22T00:00:00+09:00
 ---
 
 > **대상**: 연구자 (대학원생·교수·R&D), 교육자 (강사·튜터), 일반 사용자 (여행·이벤트·웰니스)
@@ -63,7 +63,7 @@ AI 윤리 분야 최근 3년 논문 정리해줘
 이공계 정부지원사업 신청서 만들어줘
 {{< /terminal >}}
 
-자동 체인: `education-grant-writer` (평가표 자동 매핑) → 한국 평가위원 톤 보강 → `doc-docx` → `korean-humanize`
+자동 체인: `education-grant-writer` (평가표 자동 매핑) → 한국 평가위원 톤 보강 → `doc-docx` → `korean-humanize` → `최종 검수`
 
 ### 시나리오 ③ 특허 분석
 

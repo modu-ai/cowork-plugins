@@ -12,7 +12,7 @@ description: |
   - "국가 R&D 사업 신청서 양식대로 써줘"
   연구 목표·내용·방법론·기대효과·예산 섹션을 기관 양식에 맞춰 구성하고, 평가 기준 대비 자체 점검표까지 만들어 ai-slop 검수 체인으로 마무리합니다.
   [책임 경계] 정부 일반 지원사업은 moai-consultant:consult-gov-grant
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # 연구비 신청서 작성 (Grant Writer)
@@ -120,7 +120,7 @@ AskUserQuestion으로 지원 기관과 사업 유형을 선택받습니다:
 
 연구비 신청서 본문 등 서술형 텍스트를 작성한 뒤에는 다음 체인으로 마무리합니다:
 
-`education-grant-writer → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
+`education-grant-writer → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수`
 
 - **moai-coworker:ai-slop-reviewer** - 작성된 신청서 AI 패턴 검수 및 후처리
 - **moai-writer:korean-humanize** - 한국어 문장 자연화(AI 티 제거, 의미 보존)

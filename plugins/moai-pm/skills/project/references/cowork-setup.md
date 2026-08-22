@@ -33,12 +33,12 @@ Phase 1 인터뷰 첫 질문 전, 사용자 발화에서 역할 힌트를 빠르
 
 | 발화 힌트 | 감지 역할 | 주요 체인 진입 스킬 |
 |---|---|---|
-| 사업계획·IR·시장조사·전략·창업·정부지원 | 실무 | `consult-strategy` → `doc-pptx` |
-| 블로그·카드뉴스·뉴스레터·카피·SNS·랜딩 | 실무 | `content-blog` / `content-card-news` / `marketing-landing-page` |
-| PPT·한글·Word·Excel·공문·계약서·부가세 | 실무 | `office-*` / `legal-*` / `finance-tax-helper` |
-| 상세페이지·스마트스토어·쿠팡·이커머스 | 실무 | `commerce-product-detail` → `commerce-marketplace-*` |
-| 소설·웹툰·웹소설·시나리오·콘티·출판·원고 | **글쓰기 작가** | `book-concept-planner` / `story-webtoon-planner` / `story-webnovel-writer` |
-| 캐릭터 시트·표지 일러스트·프리비즈·IP 피칭 | **글쓰기 작가** | `story-character-sheet` / `story-cover-art` / `story-ip-pitch` |
+| 사업계획·IR·시장조사·전략·창업·정부지원 | 실무 | `moai-consultant:consult-strategy` → `moai-officer:doc-pptx` |
+| 블로그·카드뉴스·뉴스레터·카피·SNS·랜딩 | 실무 | `moai-marketer:content-blog` / `moai-marketer:content-card-news` / `moai-marketer:marketing-landing-page` |
+| PPT·한글·Word·Excel·공문·계약서·부가세 | 실무 | `office-*` / `legal-*` / `moai-accountant:finance-tax-helper` |
+| 상세페이지·스마트스토어·쿠팡·이커머스 | 실무 | `moai-seller:commerce-product-detail` → `commerce-marketplace-*` |
+| 소설·웹툰·웹소설·시나리오·콘티·출판·원고 | **글쓰기 작가** | `moai-writer:book-concept-planner` / `moai-story:story-webtoon-planner` / `moai-story:story-webnovel-writer` |
+| 캐릭터 시트·표지 일러스트·프리비즈·IP 피칭 | **글쓰기 작가** | `moai-story:story-character-sheet` / `moai-story:story-cover-art` / `moai-story:story-ip-pitch` |
 
 감지된 역할은 `AGENTS.md` 페르소나에 `[실무 동료 모자]` / `[글쓰기 작가 모자]` 라벨로 기록된다.
 
@@ -55,7 +55,7 @@ Phase 1 인터뷰 → Phase 2 인벤토리 → Phase 3 체인 설계 → Phase 4
 |-------|------|--------|
 | **1 인터뷰** | 2-Stage 일괄 설문 — S1 한 라운드에 최대 4질문 묶음 배치, 부족 시에만 S2 보강(글로벌 프로필은 묻지 않음) | interview 답변 |
 | **2 인벤토리** | `~/.claude/plugins/`에서 설치 여부 + 활성 스킬 스캔 | `.moai/config.json` 스냅샷 |
-| **3 체인 설계** | 인터뷰 + 인벤토리 + 재진입 시 기존 맥락, 3종 입력을 종합해 산출물별 스킬 체인 설계(§3 프리셋). 텍스트 체인은 `ai-slop-reviewer` 종료 | chain_design + 설계 근거 |
+| **3 체인 설계** | 인터뷰 + 인벤토리 + 재진입 시 기존 맥락, 3종 입력을 종합해 산출물별 스킬 체인 설계(§3 프리셋). 텍스트 체인은 `moai-coworker:ai-slop-reviewer` 종료 | chain_design + 설계 근거 |
 | **4 Gap Detection** | 체인 스킬 ↔ 인벤토리 대조 → 누락 시 설치 안내 + "이어서 진행" 재개 | 진행 상태 |
 | **5 확인** | 설계된 체인 `AskUserQuestion` 승인 — 요약에 설계 근거 표시 | 승인/수정/취소 |
 | **6 지침 생성** | `references/templates/AGENTS.md.tmpl` 치환, ≤200라인, HARD 블록 8종 고정 — 정본은 AGENTS.md 한 파일. `CLAUDE.md`는 `CLAUDE.md.tmpl` 그대로 복사한 `@AGENTS.md` 포인터 | `./AGENTS.md` + `./CLAUDE.md`(포인터) |
@@ -78,55 +78,53 @@ Phase 3 체인 설계는 인터뷰 답변→프리셋 매칭으로 직행하지 
 
 ## 3. 스킬 체인 프리셋 (주요 산출물)
 
-텍스트 산출물 체인은 **반드시 `ai-slop-reviewer`로 종료**하며, 한국어 최종본은 직후 `korean-humanize` 2차 패스를 추가한다. 비텍스트(차트·데이터·숫자·미디어)는 ai-slop 단계를 생략한다.
+텍스트 산출물 체인은 **반드시 `moai-coworker:ai-slop-reviewer`로 종료**하며, 한국어 최종본은 직후 `moai-writer:korean-humanize` 2차 패스를 추가한다. 비텍스트(차트·데이터·숫자·미디어)는 ai-slop 단계를 생략한다.
 
 ### 3-1. 실무 체인
 
 | 산출물 | 권장 체인 |
 |---|---|
-| 사업계획서(PPT) | `consult-strategy` → `doc-pptx` → `ai-slop-reviewer` |
-| 사업계획서(Word) | `consult-strategy` → `consult-market` → `doc-docx` → `ai-slop-reviewer` |
-| IR 피칭덱 | `finance-investor-relations` → `doc-pptx` → `ai-slop-reviewer` |
-| 시장조사 리포트 | `consult-market` → `doc-docx` → `ai-slop-reviewer` |
-| 블로그 | `content-blog` → `ai-slop-reviewer` → `korean-humanize` |
-| 카드뉴스 | `content-card-news` → `ai-slop-reviewer` |
-| 뉴스레터 | `content-newsletter` → `ai-slop-reviewer` |
-| 랜딩(HTML) | `content-copywriting` → `marketing-landing-page` → `ai-slop-reviewer` |
-| 계약서 초안 | `legal-contract-review` / `legal-nda-triage` → `doc-docx` → `ai-slop-reviewer` |
-| 부가세 신고 | `finance-tax-helper` (숫자 — ai-slop 생략) |
-| 재무제표 | `finance-financial-statements` → `doc-xlsx` (숫자 — ai-slop 생략) |
-| 한글 공문 | `doc-hwp` → `ai-slop-reviewer` |
-| 상세페이지 | `commerce-product-detail` → `ai-slop-reviewer` |
-| 주간보고 | `collab-pm-report` → `ai-slop-reviewer` |
+| 사업계획서(PPT) | `moai-consultant:consult-strategy` → `moai-officer:doc-pptx` → `moai-coworker:ai-slop-reviewer` |
+| 사업계획서(Word) | `moai-consultant:consult-strategy` → `moai-consultant:consult-market` → `moai-officer:doc-docx` → `moai-coworker:ai-slop-reviewer` |
+| IR 피칭덱 | `moai-accountant:finance-investor-relations` → `moai-officer:doc-pptx` → `moai-coworker:ai-slop-reviewer` |
+| 시장조사 리포트 | `moai-consultant:consult-market` → `moai-officer:doc-docx` → `moai-coworker:ai-slop-reviewer` |
+| 블로그 | `moai-marketer:content-blog` → `moai-coworker:ai-slop-reviewer` → `moai-writer:korean-humanize` |
+| 카드뉴스 | `moai-marketer:content-card-news` → `moai-coworker:ai-slop-reviewer` |
+| 뉴스레터 | `moai-marketer:content-newsletter` → `moai-coworker:ai-slop-reviewer` |
+| 랜딩(HTML) | `moai-marketer:content-copywriting` → `moai-marketer:marketing-landing-page` → `moai-coworker:ai-slop-reviewer` |
+| 계약서 초안 | `moai-lawyer:legal-contract-review` / `moai-lawyer:legal-nda-triage` → `moai-officer:doc-docx` → `moai-coworker:ai-slop-reviewer` |
+| 부가세 신고 | `moai-accountant:finance-tax-helper` (숫자 — ai-slop 생략) |
+| 재무제표 | `moai-accountant:finance-financial-statements` → `moai-officer:doc-xlsx` (숫자 — ai-slop 생략) |
+| 한글 공문 | `moai-officer:doc-hwp` → `moai-coworker:ai-slop-reviewer` |
+| 상세페이지 | `moai-seller:commerce-product-detail` → `moai-coworker:ai-slop-reviewer` |
+| 주간보고 | `moai-coworker:collab-pm-report` → `moai-coworker:ai-slop-reviewer` |
 
 ### 3-2. 글쓰기 작가 체인 (story·book)
 
 | 산출물 | 권장 체인 |
 |---|---|
-| 출판 도서 | `book-concept-planner` → `book-outline-designer` → `book-chapter-writer` → `book-revision-coach` |
-| 웹툰 기획 | `story-webtoon-planner` → `story-character-sheet` → `story-webtoon-episode` → `story-webtoon-lettering` → `story-webtoon-art` → `story-webtoon-qc` |
-| 웹소설 연재 | `story-webnovel-planner` → `story-webnovel-writer` |
-| 드라마/영화 시놉 | `story-synopsis` → `story-screenplay` |
-| 캐릭터 시트 | `story-character-sheet` (Higgsfield 생성) |
-| 표지·일러스트 | `story-cover-art` (Higgsfield 생성) |
-| IP 사업화·판권 | `story-ip-pitch` (단일) |
+| 출판 도서 | `moai-writer:book-concept-planner` → `moai-writer:book-outline-designer` → `moai-writer:book-chapter-writer` → `moai-writer:book-revision-coach` |
+| 웹툰 기획 | `moai-story:story-webtoon-planner` → `moai-story:story-character-sheet` → `moai-story:story-webtoon-episode` → `moai-story:story-webtoon-lettering` → `moai-story:story-webtoon-art` → `moai-story:story-webtoon-qc` |
+| 웹소설 연재 | `moai-story:story-webnovel-planner` → `moai-story:story-webnovel-writer` |
+| 드라마/영화 시놉 | `moai-story:story-synopsis` → `moai-story:story-screenplay` |
+| 캐릭터 시트 | `moai-story:story-character-sheet` (Higgsfield 생성) |
+| 표지·일러스트 | `moai-story:story-cover-art` (Higgsfield 생성) |
+| IP 사업화·판권 | `moai-story:story-ip-pitch` (단일) |
 
-스토리 분기의 진입 분류는 `moai-story` 플러그인의 `story-project` 스킬이 담당한다. `AGENTS.md` 생성 시 `story-project` 라우팅 규칙을 워크플로우 섹션에 명시하여, 실행 시점에 `moai-story:story-project`가 장르 파이프라인으로 자동 분기한다.
+스토리 분기의 진입 분류는 `moai-story` 플러그인의 `moai-story:story-project` 스킬이 담당한다. `AGENTS.md` 생성 시 `moai-story:story-project` 라우팅 규칙을 워크플로우 섹션에 명시하여, 실행 시점에 `moai-story:story-project`가 장르 파이프라인으로 자동 분기한다.
 
 ### 3-3. 미디어 체인 (Higgsfield / ElevenLabs MCP)
 
 | 산출물 | 스킬 | 비고 |
 |---|---|---|
-| 이미지 | `media-higgsfield-image` | Higgsfield MCP — ai-slop 생략 |
-| 영상 | `media-higgsfield-video` | Higgsfield MCP — ai-slop 생략 |
-| 음성·TTS·더빙 | `media-audio-gen` | ElevenLabs MCP — ai-slop 생략 |
+| 이미지 | `moai-media:media-higgsfield-image` | Higgsfield MCP — ai-slop 생략 |
+| 영상 | `moai-media:media-higgsfield-video` | Higgsfield MCP — ai-slop 생략 |
+| 음성·TTS·더빙 | `moai-media:media-audio-gen` | ElevenLabs MCP — ai-slop 생략 |
 
 ---
 
 ## 3.5 인용·저작권 가드 (HARD — content/book/story 체인)
 
-<!-- @MX:WARN: [AUTO] 법적 위험 영역 — 인용·저작권 가드 규칙 블록. 완화·삭제 시 content/book/story 체인 산출물이 저작권 침해에 노출된다 -->
-<!-- @MX:REASON: content-*·book-*·story-* 체인은 외부 자료(기사·서적·가사·시)를 다루는 빈도가 가장 높다. 생성 AGENTS.md의 인용·저작권 가드 HARD 블록과 쌍으로 유지해야 한다 -->
 
 코워커 체인이 외부 자료(기사·서적·가사·시 등)를 인용하거나 요약할 때 — 특히 `content-*`·`book-*`·`story-*` 체인 — 다음 규칙이 HARD로 적용된다. Phase 6에서 생성되는 `AGENTS.md`에도 동일 블록이 고정 포함된다(`agentsmd-generator.md` 참조).
 
@@ -163,9 +161,9 @@ Phase 3 체인의 스킬이 인벤토리에 없으면 누락으로 간주한다.
 
 1. **≤200라인**, 스킬 체인은 최대 10개(나머지는 사용자가 "어떤 코워커 있어?"로 물을 때 안내)
 2. **역할 라벨** — 감지된 역할(실무/글쓰기 작가)을 페르소나에 명시
-3. **HARD 규칙 고정** — office 스킬 우선 + 텍스트 산출물 `ai-slop-reviewer` 종료 + 요청 평가 사다리·파일 생성 기준·인용·저작권 가드(§3.5)·톤 규칙·맥락 적용 규칙. 200라인 초과 시 축소 대상은 체인만이다.
+3. **HARD 규칙 고정** — office 스킬 우선 + 텍스트 산출물 `moai-coworker:ai-slop-reviewer` 종료 + 요청 평가 사다리·파일 생성 기준·인용·저작권 가드(§3.5)·톤 규칙·맥락 적용 규칙. 200라인 초과 시 축소 대상은 체인만이다.
 4. **스킬 참조 정합** — 모든 스킬 참조는 소속 플러그인 접두어를 사용한다.
-5. **작가 분기 시** — `story-project` 라우팅 규칙을 워크플로우에 명시한다.
+5. **작가 분기 시** — `moai-story:story-project` 라우팅 규칙을 워크플로우에 명시한다.
 6. **포인터 무결성** — `CLAUDE.md`의 첫 비어있지 않은 줄은 정확히 `@AGENTS.md`이며 백틱으로 감싸지 않는다(감싸면 조용히 실패한다).
 
 상세 변수 치환 테이블·HARD 규칙 블록·포인터 규칙은 `references/agentsmd-generator.md` 참조.

@@ -4,7 +4,7 @@ description: >
   세금 관련 질문에 답해주는 스킬입니다.
   '3.3% 원천징수 계산해줘', '종합소득세 신고 방법 알려줘', '부가세 신고 어떻게 해줘'처럼 말하면 됩니다.
   프리랜서 3.3% 원천징수, 종합소득세, 부가가치세, 홈택스 신고 절차를 한국 세법 기준으로 안내합니다.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # 세무 도우미 (Tax Helper)
@@ -176,7 +176,7 @@ version: "1.1.0"
 세무 안내문, 신고 절차 설명, 절세 가이드, 고객 회신문처럼 문장 산출물을 작성한 뒤에는 아래 체인으로 마무리한다.
 
 ```
-finance-tax-helper → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+finance-tax-helper → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - **moai-coworker:ai-slop-reviewer**: AI 티 나는 표현·과장·상투구 검수 및 수정

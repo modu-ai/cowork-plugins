@@ -4,7 +4,7 @@ weight: 22
 description: "콘텐츠 크리에이터·블로거·SNS 운영자를 위한 워크플로우. moai-marketer(content·marketing 스킬) + moai-media + moai-writer(한국어 검수)로 블로그·카드뉴스·랜딩·뉴스레터를 한 줄 요청으로 자동 생성."
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-13T00:00:00+09:00
+lastmod: 2026-08-22T00:00:00+09:00
 ---
 
 > **대상**: 1인 콘텐츠 크리에이터, 마케터, 블로거, 인플루언서, 뉴스레터 발행자
@@ -43,7 +43,7 @@ flowchart TD
 
 | # | 한 줄 요청 | 자동 체인 |
 |---|---|---|
-| 1 | "비건 카페 오픈 블로그 시리즈 5편 써줘" | content-blog × 5 → ai-slop-reviewer → korean-spell-check → korean-humanize |
+| 1 | "비건 카페 오픈 블로그 시리즈 5편 써줘" | content-blog × 5 → ai-slop-reviewer → korean-spell-check → korean-humanize → 최종 검수 |
 | 2 | "프리랜서 세금 카드뉴스 8장 만들어줘" | content-card-news → media-higgsfield-image → ai-slop-reviewer |
 | 3 | "AI 영어 회화 앱 랜딩 페이지 만들어줘" | marketing-landing-page (shadcn/ui 인터뷰) → ai-slop-reviewer |
 | 4 | "월간 뉴스레터 발행해줘. 구독자 500명" | content-newsletter → ai-slop-reviewer → korean-spell-check → 이메일 발송 |
@@ -68,7 +68,7 @@ flowchart TD
 
 ### 자동 체인
 
-`content-blog × 5편` → `ai-slop-reviewer` (1차 일반) → `korean-spell-check` (바른한글) → `korean-humanize` (한국어 정밀 윤문, A/B/C/D 등급) → (선택) WordPress MCP 커넥터 발행
+`content-blog × 5편` → `ai-slop-reviewer` (1차 일반) → `korean-spell-check` (바른한글) → `korean-humanize` (한국어 정밀 윤문, A/B/C/D 등급) → `최종 검수` (원문 대조) → (선택) WordPress MCP 커넥터 발행
 
 ### 산출물
 
@@ -145,8 +145,9 @@ flowchart TD
 | ai-slop-reviewer | 일반 AI 슬롭 (영어 표현, 과한 형용사, hype 어휘) | — |
 | korean-spell-check | 띄어쓰기·맞춤법 (부산대 바른한글 표면) | 오류 N건 |
 | korean-humanize | 10대 카테고리 × 40+ 패턴 (번역투·관용구·형식명사) | 변경률 % + A/B/C/D 등급 |
+| 최종 검수 | 원문↔윤문본 대조 — 의미 보존·과윤문 여부 | 통과/보류 판정 |
 
-**안전 가드**: korean-humanize은 변경률 30% 초과 시 경고, 50% 초과 시 강제 중단·전체 롤백하여 의미를 100% 보존합니다.
+**안전 가드**: korean-humanize은 변경률 30% 초과 시 경고, 50% 초과 시 강제 중단·전체 롤백하여 의미를 100% 보존합니다. 윤문이 끝나면 최종 검수가 원문과 윤문본을 직접 대조해 뜻이 그대로인지, 윤문이 과하지 않았는지 마지막으로 확인합니다 — 판정이 보류면 전달되지 않고 다시 고쳐집니다.
 
 ---
 

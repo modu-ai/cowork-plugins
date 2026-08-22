@@ -12,7 +12,7 @@ description: |
   - "혼자 떠나는 국내 힐링 여행지 추천해줘"
   여행 일정표·예산표를 산출합니다.
   [책임 경계] 개인 재무는 moai-accountant:finance-household-budget, 부동산 조회·분석은 moai-analyst:data-realestate, 사이드 프로젝트·부업은 moai-consultant:consult-startup
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # 여행 플래너 (Travel Planner)
@@ -83,7 +83,7 @@ version: "1.1.0"
 이 스킬은 여행 일정 설명 같은 **글(텍스트) 산출물**을 만듭니다. 글 산출물은 발행 전 다음 체인으로 후처리하세요.
 
 ```
-personal-travel → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+personal-travel → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - **moai-coworker:ai-slop-reviewer**: AI 티 나는 표현·과장 어조를 검수하고 다듬습니다

@@ -89,7 +89,7 @@ diff에 맞춰 프로젝트 산출물을 갱신한다. **전면 재작성 금지
 - **워크플로우 표** — 추가된 스킬을 적합한 산출물 행에 편성, 제거된 스킬 행은 삭제 또는 대체 스킬로 교체.
 - **200라인 예산 준수** — 갱신 후 `wc -l`로 재검증. 초과 시 스킬 체인 나열만 축소(HARD 블록 8개는 절대 축소·삭제하지 않는다 — `agentsmd-generator.md` §5).
 - **diff 적용 전 원문 조각 보존** — 수정 지점의 원문을 `.moai/evolution/`에 남겨 롤백 가능 상태를 유지.
-- **포인터 무결성 확인** — `./CLAUDE.md`의 첫 비어있지 않은 줄이 `@AGENTS.md`인지 점검한다. 아니면 레거시 복제 프로젝트이므로 `agentsmd-generator.md` §7.1 마이그레이션을 먼저 적용한다(evolution-log 이력 이관 포함).
+- **포인터 무결성 확인** — `./CLAUDE.md`의 첫 비어있지 않은 줄이 `@AGENTS.md`인지 점검한다. 아니면 레거시 복제 프로젝트이므로 `agentsmd-generator.md` §7.1 마이그레이션을 먼저 적용한다(구 evolution-log 주석의 이력 이관 포함).
 
 ### 4-2. `.claude/agents/*.md`
 
@@ -103,12 +103,12 @@ diff에 맞춰 프로젝트 산출물을 갱신한다. **전면 재작성 금지
 
 ---
 
-## 5. 스냅샷 갱신 + evolution-log
+## 5. 스냅샷 갱신 + 개선 이력 기록
 
 1. **스냅샷 리셋** — `.moai/config.json`의 `plugins_installed` + `skills_available`을 `new_inventory`로 갱신. 이로써 `inventory drift`는 0이 된다(다음 drift 감지의 새 기준).
-2. **evolution-log 기록** — `AGENTS.md` 말미 `<!-- evolution-log -->`에 1줄 추가:
+2. **개선 이력 기록** — `.moai/evolution/log.md` 맨 위에 1줄 추가:
    - 형식: `inventory drift | update | <추가 N / 변경 N / 제거 N> | <신호-매칭 요지>`
-3. **evolution-log 큐레이션** — 최근 10건 유지, 초과분은 `.moai/evolution/log.md`로 이관(SKILL.md §Recursive Self-Improvement 큐레이션 규칙).
+3. **이력 큐레이션** — `.moai/evolution/log.md`는 최신순 누적이다. 파일이 길어지면 오래된 항목부터 접되 지우지 않는다(SKILL.md §Recursive Self-Improvement 큐레이션 규칙).
 
 ---
 
@@ -138,7 +138,7 @@ diff에 맞춰 프로젝트 산출물을 갱신한다. **전면 재작성 금지
 | `.moai/config.json` | `plugins_installed` + `skills_available` 스냅샷 — diff 비교 기준이자 갱신 대상 |
 | `.moai/context.md` | 프로젝트 맥락 — §3 세션 신호 분석 입력 |
 | `.moai/evolution/signals.md` | 누적 교정·체인 실패 신호 — §3 세션 신호 분석 입력 |
-| `.moai/evolution/log.md` | evolution-log 이관 대상(10건 초과분) |
+| `.moai/evolution/log.md` | 개선 이력 정본(최신순 누적) |
 | `./AGENTS.md` | 워크플로우 표·HARD 블록 — §4-1 동기화 대상 |
 | `./CLAUDE.md` | `@AGENTS.md` 포인터 — 무결성만 점검, 내용 동기화 대상 아님 |
 | `./.claude/agents/*.md` | 스킬 체인 에이전트 — §4-2 동기화 대상 |

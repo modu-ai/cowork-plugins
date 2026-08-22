@@ -12,7 +12,7 @@ description: |
   - "취소 플로우(cancel flow)에 세이브 오퍼 붙여줘"
   이탈 유형 분류·조기 신호·헬스 스코어·윈백 시퀀스·라이프사이클 메시지·리텐션 지표 프레임으로 리텐션 캠페인을 설계하고, 이메일·메시지 본문은 moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize으로 다듬습니다. 광고성 재참여 메일은 한국 정보통신망법(§50) 요건을 반영합니다.
   [책임 경계] vs moai-seller 커머스 스킬: 이 스킬=마케팅 측 라이프사이클·윈백·이탈방지 메시지와 지표. commerce-repurchase-timer=구매 주기 기반 재구매 타이밍, commerce-subscription-strategist=구독 운영·요금제 설계, commerce-ltv-cac-architect=단위경제(LTV/CAC) 모델링. 재구매 타이밍·구독 오퍼레이션·유닛이코노미 계산은 그쪽으로 넘깁니다.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # 리텐션 (Retention)
@@ -180,7 +180,7 @@ version: "1.1.0"
 
 재참여·윈백 이메일 본문·제목, 세이브 오퍼 카피, 라이프사이클 메시지 등 **텍스트 산출물**은 발송 전 반드시 후처리 체인을 거칩니다. 헬스 스코어 표·리텐션 커브·이탈률 KPI 등 구조·수치 산출물은 대상이 아닙니다.
 
-**권장 체인(텍스트)**: `marketing-retention(텍스트) → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
+**권장 체인(텍스트)**: `marketing-retention(텍스트) → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수`
 
 ## 관련 스킬
 

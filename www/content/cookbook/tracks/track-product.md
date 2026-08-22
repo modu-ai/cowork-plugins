@@ -4,7 +4,7 @@ weight: 70
 description: "PRD·로드맵·UX·발표 자료 자동화. moai-pm·moai-consultant·moai-designer·moai-officer 스킬 체이닝."
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-13T00:00:00+09:00
+lastmod: 2026-08-22T00:00:00+09:00
 ---
 
 > **대상**: 제품 매니저(PM), UX 디자이너, 개발 매니저, 스타트업 창업자
@@ -44,7 +44,7 @@ flowchart TD
 |---|---|---|
 | 1 | "결제 모듈 PRD 초안 + 인터뷰 가이드 만들어줘" | consult-strategy → consult-brief → UX 리서치(수동) → doc-docx |
 | 2 | "분기 로드맵 짜줘. 향후 12개월" | project → doc-docx (마일스톤 표) |
-| 3 | "SaaS 랜딩 프로토타입 만들어줘" | design-landing-motion → 원고 검토(수동) → korean-humanize |
+| 3 | "SaaS 랜딩 프로토타입 만들어줘" | design-landing-motion → 원고 검토(수동) → korean-humanize → 최종 검수 |
 | 4 | "투자자용 피칭 데크 12장 만들어줘" | consult-strategy → doc-pptx → 원고 검토(수동) |
 
 ---

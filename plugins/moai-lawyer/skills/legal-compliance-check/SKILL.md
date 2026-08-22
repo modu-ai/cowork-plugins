@@ -5,7 +5,7 @@ description: >
   '컴플라이언스 점검해줘', '내부 감사 보고서 작성해줘', 'ESG 보고서 만들어줘',
   '규제 갭 분석해줘', '인허가 서류 준비해줘'라고 요청하세요.
   한국 주요 규제 기준 적용, 갭 분석, 시정 계획, ESG 지표 보고서를 제공합니다.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # 컴플라이언스 점검 (Compliance Check)
@@ -155,7 +155,7 @@ version: "1.1.0"
 감사 보고서·갭 분석·ESG 보고서 등 서술형 산출물은 작성 후 반드시 다음 체인으로 마무리합니다.
 
 ```
-legal-compliance-check → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+legal-compliance-check → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - **moai-coworker:ai-slop-reviewer**: AI 글쓰기 패턴(과장·상투구·획일적 구조) 검수

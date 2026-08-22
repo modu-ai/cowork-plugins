@@ -11,7 +11,7 @@ description: |
   - "이 연구 결과로 Results 섹션 써줘"
   - "국문·영문 초록 200자로 작성해줘"
   국문·영문 초록과 본문 전체 섹션을 구성하고, 작성 후 ai-slop 검수 체인으로 마무리합니다.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # 학술 논문 작성 (Paper Writer)
@@ -132,7 +132,7 @@ AskUserQuestion으로 다음 정보를 수집합니다:
 
 논문 초안 등 서술형 텍스트를 작성한 뒤에는 다음 체인으로 마무리합니다:
 
-`education-paper-writer → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
+`education-paper-writer → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수`
 
 - **moai-coworker:ai-slop-reviewer** - 작성된 논문 AI 패턴 검수 및 후처리
 - **moai-writer:korean-humanize** - 한국어 문장 자연화(AI 티 제거, 의미 보존)

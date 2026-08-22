@@ -5,7 +5,7 @@ description: "키워드 한 줄에서 시작해 네이버·티스토리·브런�
 geekdocBreadcrumb: true
 tags: [cookbook, content]
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-10T00:00:00+09:00
+lastmod: 2026-08-22T00:00:00+09:00
 ---
 > **목표** — 키워드 한 줄에서 시작해 네이버·티스토리·브런치에 바로 올릴 수 있는 2500자 블로그 글까지, 한 번의 지시로 완성합니다.
 
@@ -64,20 +64,9 @@ blog → (이미지가 필요하면 higgsfield-image) → ai-slop-reviewer
 
 ### 1. 플러그인이 설치되어 있는지 확인
 
-**Plugins 메뉴**에서 `moai-marketer`와 `moai-coworker`의 `ai-slop-reviewer` 스킬이 보이는지 확인하세요.
+**Plugins 메뉴**에서 `moai-marketer`와 `moai-coworker`가 보이는지 확인하세요.
 
-터미널로 확인하려면:
-
-{{< terminal title="Terminal (Claude Cowork)" lang="bash" raw="true" >}}
-claude plugin list
-{{< /terminal >}}
-
-설치돼 있지 않다면 Plugins 화면에서 **Install**을 누르거나, 터미널로 설치합니다:
-
-{{< terminal title="Terminal (Claude Cowork)" lang="bash" raw="true" >}}
-claude plugin install moai-marketer@moai-cowork
-claude plugin install moai-coworker@moai-cowork
-{{< /terminal >}}
+설치돼 있지 않다면 Plugins 화면에서 코워커를 선택해 **Install**(또는 **+**)을 누릅니다. 마켓플레이스 등록이 아직이라면 [플러그인 설치와 관리](/plugins/install/) 1단계부터 따라 하세요.
 
 ### 2. 단일 프롬프트로 파이프라인 지시
 

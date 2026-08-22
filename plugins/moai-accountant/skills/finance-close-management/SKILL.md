@@ -5,7 +5,7 @@ description: >
   '결산 체크리스트 만들어줘', '4대보험 정산해줘', '급여 마감해줘'처럼 말하면 됩니다.
   K-IFRS 기준 계정 마감, 급여 정산, 세무 일정 관리, 결산 보고서 자동 생성을 지원합니다.
   2026년 최신 4대보험 요율과 노동법 변경사항을 반영합니다.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # 결산 관리 (Close Management)
@@ -159,7 +159,7 @@ version: "1.1.0"
 결산 보고서, 경영진 요약, 비용 분석 코멘트처럼 문장 산출물을 작성한 뒤에는 반드시 아래 체인으로 마무리한다.
 
 ```
-finance-close-management → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+finance-close-management → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - **moai-coworker:ai-slop-reviewer**: AI 티 나는 표현·과장·상투구 검수 및 수정

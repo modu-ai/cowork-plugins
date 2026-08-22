@@ -4,7 +4,7 @@ description: >
   예산과 실적 차이를 분석해주는 스킬입니다.
   '예산 대비 실적 분석해줘', '매출 미달 원인 찾아줘', '비용 초과 분석해줘'처럼 말하면 됩니다.
   매출·비용·이익 항목별 분산 원인 분석, KPI 추적, 수익성 개선 권고안 도출을 지원합니다.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # 분산 분석 (Variance Analysis)
@@ -165,7 +165,7 @@ version: "1.1.0"
 경영진 요약, 원인 분석 코멘트, 개선 권고안, 수정 전망 설명문처럼 문장 산출물을 작성한 뒤에는 아래 체인으로 마무리한다.
 
 ```
-finance-variance-analysis (보고서 서술 부분) → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+finance-variance-analysis (보고서 서술 부분) → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - **moai-coworker:ai-slop-reviewer**: AI 티 나는 표현·과장·상투구 검수 및 수정

@@ -4,7 +4,7 @@ description: >
   채용 제안서와 근로계약서를 작성해주는 스킬입니다. "오퍼 레터 만들어줘", "근로계약서 초안 작성해줘",
   "연봉 협상 문서 써줘"처럼 말하면 됩니다. 근로기준법 준수 기반 채용 제안서,
   연봉 구조 최적화, 4대보험 공제 계산, 스톡옵션 조항 작성을 지원합니다. 2026년 기준 반영.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # 오퍼 레터 작성 (Draft Offer)
@@ -167,7 +167,7 @@ version: "1.1.0"
 **텍스트 후처리 체인 (오퍼 레터·근로계약서 본문 등 산문 산출물)**:
 
 ```
-hr-draft-offer → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+hr-draft-offer → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - `moai-coworker:ai-slop-reviewer` — AI 티 패턴(기계적 어투, 과장 표현) 검수·수정

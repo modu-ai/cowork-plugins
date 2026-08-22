@@ -12,7 +12,7 @@ description: |
   - "내 유튜브 강의를 인스타·블로그·뉴스레터로 리퍼포징해줘"
   채널별 심리와 알고리즘에 맞춰 게시글을 만들고 콘텐츠를 여러 채널로 재활용하며, 텍스트 산출물은 moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize으로 다듬습니다.
   [책임 경계] vs 형제 스킬: 범용 광고 카피는 moai-marketer:content-copywriting, 이커머스 광고·톡톡·푸시 카피는 moai-cs:cs-channel-message, 기업 브랜드 전략은 moai-coworker:collab-brand-identity, 개인 브랜드 전략은 moai-marketer:marketing-personal-branding.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # SNS 콘텐츠 제작 (SNS Content) — 한국 + 글로벌 통합
@@ -170,7 +170,7 @@ CTA: 의견을 댓글로 남겨주세요 / 공감하시면 리포스트
 
 인스타 캡션·블로그 본문·카카오 메시지·링크드인 포스트·쇼츠 스크립트 등 **텍스트 산출물**은 발행 전 반드시 후처리 체인을 거칩니다. 해시태그 표·콘텐츠 달력 등 표 산출물은 대상이 아닙니다.
 
-**권장 체인**: `content-sns-content → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
+**권장 체인**: `content-sns-content → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수`
 
 ## 관련 스킬
 

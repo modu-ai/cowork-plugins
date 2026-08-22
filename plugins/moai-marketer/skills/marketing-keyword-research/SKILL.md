@@ -12,7 +12,7 @@ description: |
   - "AI 검색이 인용할 만한 질의(query) 후보 뽑아줘"
   검색 의도 4분류·롱테일·키워드 난이도·쿼리 팬아웃(query fan-out)·토픽 클러스터 프레임으로 키워드 목록과 클러스터 맵을 만들고, 서술형 권고는 moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize으로 다듬습니다.
   [책임 경계] vs moai-marketer:marketing-seo-audit: 이 스킬=쓸 키워드·클러스터를 새로 발굴(discovery), 저 스킬=이미 있는 페이지·사이트의 SEO 건강도를 진단(audit). 키워드를 정한 뒤 페이지를 점검하려면 marketing-seo-audit로 넘어갑니다.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # 키워드 리서치 (Keyword Research)
@@ -158,7 +158,7 @@ version: "1.1.0"
 
 키워드 전략 설명·클러스터 근거·채널 전략 등 **서술형(prose) 산출물**은 발행 전 후처리 체인을 거칩니다. 키워드 목록표·검색량 수치·우선순위 점수표 등 **수치·표 산출물은 대상이 아닙니다**.
 
-**권장 체인(서술형 권고)**: `marketing-keyword-research(서술형 권고) → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize`
+**권장 체인(서술형 권고)**: `marketing-keyword-research(서술형 권고) → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수`
 
 ## 관련 스킬
 

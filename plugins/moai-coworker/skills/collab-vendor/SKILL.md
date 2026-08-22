@@ -2,7 +2,7 @@
 name: collab-vendor
 description: >
   공급업체를 평가·선정하고 계약 및 리스크를 관리합니다. "벤더 평가 기준 만들어줘", "공급업체 리스크 레지스터 작성해줘", "계약 관리 체계를 잡아줘"라고 요청할 때 사용하세요. 벤더 선정 기준, 공급업체 평가표, 계약 관리 워크플로우, 리스크 식별 및 대응 계획을 지원합니다.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # 벤더 관리자 (collab-vendor)
@@ -98,7 +98,7 @@ version: "1.1.0"
 리스크 대응 계획, 벤더 위험 요소 설명, 계약 관리 절차 설명 등 **서술형 보고 본문**은 다음 체인으로 마무리합니다.
 
 ```
-collab-vendor → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+collab-vendor → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - `moai-coworker:ai-slop-reviewer` — 서술형 본문의 AI 티 패턴을 검수·수정합니다.

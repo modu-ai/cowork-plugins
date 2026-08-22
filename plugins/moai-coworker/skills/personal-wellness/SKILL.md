@@ -2,7 +2,7 @@
 name: personal-wellness
 description: >
   운동·식단·건강·육아·시니어 케어를 종합적으로 코칭합니다. "운동 루틴 만들어줘", "다이어트 식단 짜줘", "아이 발달 단계 알려줘", "부모님 노인 복지 서비스 알려줘"라고 요청할 때 사용하세요. 운동 계획, 영양 균형 식단, 육아 전략, 시니어 케어 계획을 지원합니다.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # 웰니스 코치 (Wellness Coach)
@@ -93,7 +93,7 @@ version: "1.1.0"
 이 스킬은 운동 코칭 계획·육아 활동 안내·시니어 케어 계획·건강 가이드 같은 **글(텍스트) 산출물**을 만듭니다. 글 산출물은 발행 전 다음 체인으로 후처리하세요.
 
 ```
-personal-wellness → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize
+personal-wellness → moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize → 최종 검수
 ```
 
 - **moai-coworker:ai-slop-reviewer**: AI 티 나는 표현·과장 어조를 검수하고 다듬습니다
