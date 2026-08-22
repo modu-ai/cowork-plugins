@@ -11,7 +11,7 @@ description: |
   - "접근성 디자인 프롬프트"
   - "디자인 시스템 프롬프트"
   - "프롬프트 빌더"
-version: "1.1.1"
+version: "1.1.2"
 ---
 
 # design-prompt-builder — 시니어 UX 패턴 프롬프트 빌더
@@ -20,7 +20,7 @@ version: "1.1.1"
 
 [리파인먼트 페이지](https://cowork.mo.ai.kr/claude-design/refinement/)에서 정리한 10가지 시니어 UX 프롬프트 패턴 중 사용자의 작업에 가장 적합한 패턴을 선택하고, ROLE·GOAL·CONSTRAINTS·OUTPUTS를 자동으로 채워 줍니다. 사용자는 CONTEXT만 보완하면 됩니다.
 
-> **진입 경로 (2026-06 업데이트)**: 완성된 프롬프트는 claude.ai/design 채팅에 붙여 넣는 것이 기본입니다. 그 외에 Claude Code 터미널에서 `/design`으로 직접 진입하거나, `/design-sync`로 코드베이스의 디자인 시스템을 먼저 import한 뒤 이 프롬프트를 사용하면 결과가 실제 코드 컴포넌트와 더 잘 맞습니다.
+> **진입 경로 (2026-06 업데이트)**: 완성된 프롬프트는 claude.ai/design 채팅에 붙여 넣는 것이 기본입니다. 그 외에 Claude Cowork에서 "디자인 작업 시작해줘"라고 말해 직접 진입하거나, `design-workflow` 스킬로 코드베이스의 디자인 시스템을 먼저 import한 뒤 이 프롬프트를 사용하면 결과가 실제 코드 컴포넌트와 더 잘 맞습니다.
 
 ## 트리거 키워드
 

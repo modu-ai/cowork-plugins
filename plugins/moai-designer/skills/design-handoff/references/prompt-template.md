@@ -84,7 +84,7 @@ Typography:
 > NOTE: This project does not yet have a defined brand voice. The placeholders below
 > are generic suggestions. Before using this prompt in Claude Design, either:
 > (a) Edit this section with your actual brand voice, OR
-> (b) Run `/design` and choose the brand-interview path (when available) to define brand context
+> (b) Ask for a design session in natural language and choose the brand-interview path (when available) to define brand context
 
 Brand personality: professional, approachable, modern
 

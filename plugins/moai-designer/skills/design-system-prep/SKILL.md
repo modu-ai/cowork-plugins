@@ -11,7 +11,7 @@ description: |
   - "디자인 시스템 자산 업로드 준비"
   - "claude.ai/design 디자인 시스템 셋업 준비"
   - "DESIGN.md 만들어 줘"
-version: "1.1.1"
+version: "1.1.2"
 ---
 
 # design-system-prep — 디자인 시스템 자산 합성
@@ -20,7 +20,7 @@ version: "1.1.1"
 
 [docs-site 디자인 시스템 페이지](https://cowork.mo.ai.kr/claude-design/design-system/)에서 정리한 대로, Claude Design 결과 품질을 가장 크게 좌우하는 것은 **디자인 시스템 셋업**입니다. 이 스킬은 흩어진 브랜드 자산을 분석해 Claude Design이 한 번에 흡수할 수 있는 **DESIGN.md**로 합성합니다.
 
-> **네이티브 경로와의 관계 (2026-06 업데이트)**: Claude Design은 이제 GitHub repo·디자인 파일·업로드에서 디자인 시스템을 직접 import하고, 출력을 등록된 시스템에 대조해 자가 수정합니다. Claude Code 터미널에서는 `/design-sync`로 코드베이스 디자인 시스템을 바로 보낼 수도 있습니다. 깔끔한 코드 repo가 있으면 그 네이티브 경로가 가장 빠릅니다. 이 스킬은 **자산이 흩어져 있거나, 깔끔한 코드 repo가 없거나, `design-system-library`의 큐레이션된 토큰을 출발점으로 쓰고 싶을 때** DESIGN.md로 합성해 네이티브 경로를 보완합니다(대체가 아니라 보완).
+> **네이티브 경로와의 관계 (2026-06 업데이트)**: Claude Design은 이제 GitHub repo·디자인 파일·업로드에서 디자인 시스템을 직접 import하고, 출력을 등록된 시스템에 대조해 자가 수정합니다. Claude Code 터미널에서는 `design-workflow` 스킬로 코드베이스 디자인 시스템을 바로 보낼 수도 있습니다. 깔끔한 코드 repo가 있으면 그 네이티브 경로가 가장 빠릅니다. 이 스킬은 **자산이 흩어져 있거나, 깔끔한 코드 repo가 없거나, `design-system-library`의 큐레이션된 토큰을 출발점으로 쓰고 싶을 때** DESIGN.md로 합성해 네이티브 경로를 보완합니다(대체가 아니라 보완).
 
 ## 트리거 키워드
 

@@ -35,16 +35,19 @@
 → 디자인 카피 AI 슬롭 감사 → 자연스러운 대안
 ```
 
-### `/design` 명령 (6개)
+### 이렇게 말하면 됩니다
 
-| 명령 | 무슨 일 |
+슬래시 명령은 두지 않습니다 — Claude Cowork에서만 동작해서 ChatGPT Work 사용자가 못 쓰기 때문입니다.
+아래처럼 자연어로 말하면 같은 스킬이 붙고, 두 앱에서 똑같이 동작합니다.
+
+| 이렇게 말하면 | 무슨 일 |
 |------|--------|
-| `/design` | 브리프부터 핸드오프까지 (Path A/B 자동 선택) |
-| `/design:brief` | 6요소 브리프(Project·Audience·Pages·Tone·Reference·Constraints) |
-| `/design:tokens` | 브랜드 자산 → DESIGN.md + DTCG 토큰(색·타이포·spacing·radii·shadows) |
-| `/design:import` | Claude Design 핸드오프 번들(.zip·URL) import·분석 |
-| `/design:check` | 디자인 카피 AI 슬롭 감사 → 검수 보고서 + 대안 |
-| `/design:system` | 75종 브랜드 디자인 시스템 라이브러리 + Tailwind CDN 매핑 |
+| "디자인 작업 시작해줘" | 브리프부터 핸드오프까지 (Path A/B 자동 선택) |
+| "디자인 브리프 만들어줘" | 6요소 브리프(Project·Audience·Pages·Tone·Reference·Constraints) |
+| "브랜드 디자인 토큰 만들어줘" | 브랜드 자산 → DESIGN.md + DTCG 토큰(색·타이포·spacing·radii·shadows) |
+| "핸드오프 번들 읽어줘" | Claude Design 핸드오프 번들(.zip·URL) import·분석 |
+| "이 카피 AI 티 나는지 봐줘" | 디자인 카피 AI 슬롭 감사 → 검수 보고서 + 대안 |
+| "디자인 시스템 라이브러리 보여줘" | 75종 브랜드 디자인 시스템 라이브러리 + Tailwind CDN 매핑 |
 
 ---
 
@@ -100,7 +103,7 @@
 
 ## 더 알아보기 (개발자·디자이너 기술)
 
-- **두 갈래 경로** — `/design`(bare)이 Path A(Claude Design import)와 Path B(코드 기반 브랜드 디자인)를 1라운드 인터뷰로 선택
+- **두 갈래 경로** — 디자인 작업 요청이 Path A(Claude Design import)와 Path B(코드 기반 브랜드 디자인)를 1라운드 인터뷰로 선택
 - **GAN 품질 루프** — Design Quality(30%)·Originality(25%)·Completeness(25%)·Functionality(20%) 4차원 회의적 채점 + `config/design.yaml`의 `max_iterations`/`pass_threshold`/`escalation_after`로 반복 제어
 - **파이프라인** — `manager-spec`(BRIEF) → 카피·비주얼 토큰 병렬 생성 → frontend 구현 → `sync-auditor`(GAN 루프)
 - **스킬 15종** — 도메인/워크플로우 5종(`design-brand-system`, `design-copywriting`, `design-workflow`, `design-iteration-loop`, `design-handoff`) + Claude Design 전처리·라이브러리 6종(`design-brief`, `design-system-prep`, `design-prompt-builder`, `design-handoff-reader`, `design-slop-check`, `design-system-library`) + 토큰·업로드 2종(`design-tokens-transformer`, `design-sync-upload`) + 비주얼·로고·모션 3종(`design-brand-visual`, `design-logo`, `design-landing-motion`)

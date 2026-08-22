@@ -21,7 +21,7 @@
 **담당 영역**:
 - **브랜드 자산 합성** — 흩어진 자산(코드·Figma·로고·실물·사전 빌트인) → `DESIGN.md`
 - **디자인 시스템 셋업** — `.moai/project/brand/visual-identity.md` + 토큰 추출
-- **Claude Design 온보딩 준비** — `DESIGN.md` 업로드 또는 `/design-sync` 네이티브 경로 안내
+- **Claude Design 온보딩 준비** — `DESIGN.md` 업로드 또는 `design-workflow` 스킬 네이티브 경로 안내
 - **디자인 품질 루프** — GAN 루프(`moai-designer:design-iteration-loop`)로 시안 반복
 
 모든 스킬은 `moai-designer` 플러그인 소속이다.
@@ -58,7 +58,7 @@ Phase 1 자산 인터뷰 → Phase 2 designer 설치 확인 → Phase 3 DESIGN.m
 
 ### Phase 3: DESIGN.md 합성 (`moai-designer:design-system-prep` 위임)
 
-수집된 자산을 `moai-designer:design-system-prep`에 전달해 **DESIGN.md**를 합성한다. 깔끔한 코드 repo가 있으면 `/design-sync` 네이티브 경로가 가장 빠르며, 이 분기는 자산이 흩어져 있을 때 네이티브 경로를 보완한다(대체가 아니다).
+수집된 자산을 `moai-designer:design-system-prep`에 전달해 **DESIGN.md**를 합성한다. 깔끔한 코드 repo가 있으면 `design-workflow` 스킬 네이티브 경로가 가장 빠르며, 이 분기는 자산이 흩어져 있을 때 네이티브 경로를 보완한다(대체가 아니다).
 
 ### Phase 4: brand 컨텍스트 스캐폴드
 
@@ -71,7 +71,7 @@ Phase 1 자산 인터뷰 → Phase 2 designer 설치 확인 → Phase 3 DESIGN.m
 
 ### Phase 5: Claude Design 온보딩 안내
 
-`DESIGN.md`를 claude.ai/design 온보딩에 업로드하거나, 깔끔한 코드 repo가 있으면 `/design-sync`로 코드베이스 직접 전송. 이후 project 스킬로 콘텐츠·실무 산출물 체인을 설계하고, 디자인 시안 품질 루프는 `moai-designer:design-iteration-loop`로 반복한다.
+`DESIGN.md`를 claude.ai/design 온보딩에 업로드하거나, 깔끔한 코드 repo가 있으면 `design-workflow` 스킬로 코드베이스 직접 전송. 이후 project 스킬로 콘텐츠·실무 산출물 체인을 설계하고, 디자인 시안 품질 루프는 `moai-designer:design-iteration-loop`로 반복한다.
 
 ---
 

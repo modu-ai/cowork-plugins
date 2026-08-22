@@ -10,7 +10,7 @@ description: |
   - "핸드오프 번들 읽어 줘"
   - "디자인 토큰 추출"
   - "Claude Code 핸드오프 준비"
-version: "1.1.1"
+version: "1.1.2"
 ---
 
 # design-handoff-reader — 핸드오프 번들 분석
@@ -21,7 +21,7 @@ Claude Design의 **Export → "Handoff to Claude Code"**(로컬 터미널 또는
 
 > **공식 규격 vs 추론 (anti-hallucination — docs 03 §5.4)**: 공식 문서가 보장하는 것은 3요소 triad(디자인 파일 + chat + README)뿐입니다. `design-tokens.json`/`tokens.json`, `components.json`, `layout-hierarchy.json`, `chat-history.md` 같은 **구체 파일명은 MoAI 작업 가정이며 Anthropic 문서화 규격이 아닙니다**. 따라서 하드 5-파일 존재 검사를 하지 않고, 존재하는 것만 best-effort로 파싱하며 없으면 코드(HTML/CSS)에서 유도합니다.
 
-> **핸드오프 방향 + 진입 모드 (2026-06)**: 번들은 Claude Design 캔버스의 **Export → Handoff to Claude Code**(local/web)에서 생성됩니다. 반대 방향(코드→디자인)은 Claude Code 터미널의 `/design-sync`로 코드베이스 디자인 시스템을 Claude Design에 import — 핸드오프는 양방향입니다. 두 진입 모드를 지원합니다: (1) **.zip 다운로드**(확정 오프라인 컨테이너), (2) **붙여넣기 프롬프트 + 번들 URL**(실제 메인 흐름 — Claude Code가 URL을 fetch).
+> **핸드오프 방향 + 진입 모드 (2026-06)**: 번들은 Claude Design 캔버스의 **Export → Handoff to Claude Code**(local/web)에서 생성됩니다. 반대 방향(코드→디자인)은 Claude Code 터미널의 `design-workflow` 스킬로 코드베이스 디자인 시스템을 Claude Design에 import — 핸드오프는 양방향입니다. 두 진입 모드를 지원합니다: (1) **.zip 다운로드**(확정 오프라인 컨테이너), (2) **붙여넣기 프롬프트 + 번들 URL**(실제 메인 흐름 — Claude Code가 URL을 fetch).
 
 ## 트리거 키워드
 

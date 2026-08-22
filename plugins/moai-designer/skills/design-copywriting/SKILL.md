@@ -5,7 +5,7 @@ description: |
 
   Use for brand-aligned marketing and product copy: headlines, CTAs, microcopy, taglines, value propositions, marketing-landing-page and footer copy, with anti-AI-slop rules and concrete-number enforcement.
 user-invocable: false
-version: "1.1.1"
+version: "1.1.2"
 ---
 
 > ⚠️ **개발 런타임 전용** — 이 스킬은 MoAI-ADK(Claude Code) 환경을 전제한다. Claude Cowork(Desktop)에서는 `.moai/config` 의존으로 동작하지 않을 수 있다. Desktop 사용자는 `moai-marketer:content-copywriting`을 사용한다.
@@ -26,7 +26,7 @@ Before generating copy, verify all three conditions are met:
 2. Target page or section scope is explicitly stated (landing page, about, pricing, etc.).
 3. Anti-AI-slop checklist is active (see below).
 
-If `brand-voice.md` does not exist, stop and instruct the user to run the brand interview via `/design` (Path B brand-interview).
+If `brand-voice.md` does not exist, stop and instruct the user to run the brand interview via `design-brand-system` (Path B 브랜드 인터뷰).
 
 ### Output Format
 
