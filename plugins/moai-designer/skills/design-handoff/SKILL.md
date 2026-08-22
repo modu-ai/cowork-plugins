@@ -1,12 +1,11 @@
 ---
 name: design-handoff
-description: "/design Path A 워크플로의 Claude Design 핸드오프 패키지 전문가. 붙여넣기 바로 쓰는 claude.com Design 세션용 5파일 핸드오프 번들(prompt/context/references/acceptance/checklist)을 조립합니다. 브랜드 미비 폴백과 섹션 재생성을 처리합니다."
+description: |
+  /design Path A 워크플로의 Claude Design 핸드오프 패키지 전문가. 붙여넣기 바로 쓰는 claude.com Design 세션용 5파일 핸드오프 번들(prompt/context/references/acceptance/checklist)을 조립합니다. 브랜드 미비 폴백과 섹션 재생성을 처리합니다.
 
-  Use for /design Path A design handoff: assembling the 5-file Claude
-  Design package (prompt, context, references, acceptance, checklist),
-  brand-voice context, and paste-ready claude.com session bundles.
+  Use for /design Path A design handoff: assembling the 5-file Claude Design package (prompt, context, references, acceptance, checklist), brand-voice context, and paste-ready claude.com session bundles.
 user-invocable: false
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 > ⚠️ **개발 런타임 전용** — 이 스킬은 MoAI-ADK(Claude Code) 환경을 전제한다. Claude Cowork(Desktop)에서는 `.moai/config` 의존으로 동작하지 않을 수 있다. Desktop 사용자는 `moai-designer:design-handoff-reader`를 사용한다.

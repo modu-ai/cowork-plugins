@@ -1,12 +1,11 @@
 ---
 name: design-copywriting
-description: "마케팅·제품 텍스트의 브랜드 정합 카피라이팅 전문가. 브랜드 보이스, AI 특유 어조 배제 규칙, 구체적 숫자, 다운스트림 에이전트 소비를 위한 JSON 섹션 구조를 보장합니다. 히어로, 기능, 소셜 증명, CTA, 푸터 섹션을 A/B 변형 출력으로 다룹니다."
+description: |
+  마케팅·제품 텍스트의 브랜드 정합 카피라이팅 전문가. 브랜드 보이스, AI 특유 어조 배제 규칙, 구체적 숫자, 다운스트림 에이전트 소비를 위한 JSON 섹션 구조를 보장합니다. 히어로, 기능, 소셜 증명, CTA, 푸터 섹션을 A/B 변형 출력으로 다룹니다.
 
-  Use for brand-aligned marketing and product copy: headlines, CTAs,
-  microcopy, taglines, value propositions, marketing-landing-page and footer copy,
-  with anti-AI-slop rules and concrete-number enforcement.
+  Use for brand-aligned marketing and product copy: headlines, CTAs, microcopy, taglines, value propositions, marketing-landing-page and footer copy, with anti-AI-slop rules and concrete-number enforcement.
 user-invocable: false
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 > ⚠️ **개발 런타임 전용** — 이 스킬은 MoAI-ADK(Claude Code) 환경을 전제한다. Claude Cowork(Desktop)에서는 `.moai/config` 의존으로 동작하지 않을 수 있다. Desktop 사용자는 `moai-marketer:content-copywriting`을 사용한다.

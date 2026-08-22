@@ -1,13 +1,11 @@
 ---
 name: design-workflow
-description: "통합 디자인 워크플로 스킬 — Path A(Claude Design 핸드오프 번들 가져오기, 필요시 Figma 추출기 경유)와 .moai/design/(research·system·spec)에서 design-brief 컨텍스트 로딩을 처리합니다. DTCG 토큰을 검증하고 브랜드 컨텍스트 헌법 우선순위를 보장합니다. /moai design 워크플로에 사용 — 일반 디자인 시스템 문서용이 아닙니다."
+description: |
+  통합 디자인 워크플로 스킬 — Path A(Claude Design 핸드오프 번들 가져오기, 필요시 Figma 추출기 경유)와 .moai/design/(research·system·spec)에서 design-brief 컨텍스트 로딩을 처리합니다. DTCG 토큰을 검증하고 브랜드 컨텍스트 헌법 우선순위를 보장합니다. /moai design 워크플로에 사용 — 일반 디자인 시스템 문서용이 아닙니다.
 
-  Use for the /moai design workflow: Path A Claude Design handoff-bundle
-  import (via Figma extractor when needed), design-brief context loading
-  from .moai/design/, DTCG token validation, and brand-context
-  constitutional priority.
+  Use for the /moai design workflow: Path A Claude Design handoff-bundle import (via Figma extractor when needed), design-brief context loading from .moai/design/, DTCG token validation, and brand-context constitutional priority.
 user-invocable: false
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 > ⚠️ **개발 런타임 전용** — 이 스킬은 MoAI-ADK(Claude Code) 환경을 전제한다. Claude Cowork(Desktop)에서는 `.moai/config` 의존으로 동작하지 않을 수 있다. Desktop 사용자는 `cd-*` 체인(design-brief → design-prompt-builder → design-slop-check)을 사용한다.

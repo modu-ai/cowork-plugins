@@ -16,7 +16,7 @@ description: |
 
   이 스킬은 **이름·회사 같은 글로벌 프로필을 재질문하지 않는다.** 프로젝트마다 "이번에 뭘 할 건지"만 인터뷰한다.
 user-invocable: true
-version: "1.4.0"
+version: "1.4.1"
 ---
 <!-- moai-pm project · 플러그인 패밀리 · 프로젝트 초기화 단일 진입점 -->
 
@@ -104,11 +104,11 @@ for f in ./.codex/agents/*.toml ~/.codex/agents/*.toml; do [ -f "$f" ] && basena
 
 **설계 절차**:
 1. 인터뷰 답변(무엇을·어떻게) + 인벤토리(무엇이 설치됐는가) + 재진입 시 기존 `.moai/context.md` 누적 맥락, 3종 입력을 종합한다.
-2. 산출물별 스킬 체인을 설계한다: `[기획/분석] → [생성] → [포맷 변환/미디어] → ai-slop-reviewer`. 한국어 최종 텍스트 산출물은 `korean-humanize` 2차 패스를 추가하고, **그 뒤에 최종 검수를 반드시 붙인다** — 체인은 윤문에서 끝나지 않는다(`korean-humanize` Phase 6). 최종 검수는 원문↔윤문본 직접 대조로 의미 보존과 과윤문을 양방향으로 보며, 판정이 `hold_and_report`면 전달하지 않는다. 비텍스트(차트·숫자·미디어) 산출물은 ai-slop 단계를 생략한다.
+2. 산출물별 스킬 체인을 설계한다: `[기획/분석] → [생성] → [포맷 변환/미디어] → ai-slop-reviewer`. 한국어 최종 텍스트 산출물은 `moai-writer:korean-humanize` 2차 패스를 추가하고, **그 뒤에 최종 검수를 반드시 붙인다** — 체인은 윤문에서 끝나지 않는다(`moai-writer:korean-humanize` Phase 6). 최종 검수는 원문↔윤문본 직접 대조로 의미 보존과 과윤문을 양방향으로 보며, 판정이 `hold_and_report`면 전달하지 않는다. 비텍스트(차트·숫자·미디어) 산출물은 ai-slop 단계를 생략한다.
 3. **반복될 작업 유형별 에이전트 1개**를 생성한다(과잉 생성 금지 — 근거 없는 에이전트는 만들지 않는다). 본문은 아래 7-step 루프 + 프로젝트 맥락(톤·산출물 규격·금지 사항)을 내장한다.
 4. 각 에이전트/체인을 `AGENTS.md` §워크플로우 표에 기록해, 실행 시점에 자연어 요청이 표를 따라 에이전트/스킬 호출로 라우팅되게 배선한다.
 
-**7-step 에이전트 루프** (모든 생성 에이전트 공통 본문 구조): ① 요청 평가(대화/스킬/파일 3단) → ② 소크라테스 인터뷰(빠진 맥락) → ③ 맥락 요약 확인 → ④ 체인 실행 계획 + 완료 기준 제시 → ⑤ `AskUserQuestion` 승인 → ⑥ 체인 순차 실행(단계별 요약 보고) → ⑦ `ai-slop-reviewer` 검수 → (한국어 텍스트면) `korean-humanize` 윤문 → **최종 검수** → 「확인 필요 항목」 명시 후 전달. **검수를 건너뛰었다면 그 사실과 이유를 결과에 적는다.**
+**7-step 에이전트 루프** (모든 생성 에이전트 공통 본문 구조): ① 요청 평가(대화/스킬/파일 3단) → ② 소크라테스 인터뷰(빠진 맥락) → ③ 맥락 요약 확인 → ④ 체인 실행 계획 + 완료 기준 제시 → ⑤ `AskUserQuestion` 승인 → ⑥ 체인 순차 실행(단계별 요약 보고) → ⑦ `moai-coworker:ai-slop-reviewer` 검수 → (한국어 텍스트면) `moai-writer:korean-humanize` 윤문 → **최종 검수** → 「확인 필요 항목」 명시 후 전달. **검수를 건너뛰었다면 그 사실과 이유를 결과에 적는다.**
 
 **frontmatter 최소 권한**: `name`(kebab-case) · `description`(호출 트리거 명시) · `tools`(작업에 필요한 최소 목록만 — `Agent` 툴은 포함하지 않아 중첩 스폰을 차단한다). 생성된 에이전트는 subagent 경계를 지킨다: 사용자에게 직접 질문하지 않고, 부족한 입력이 있으면 blocker report를 반환한다.
 
@@ -139,11 +139,11 @@ Phase 5 확인 이후 이 스킬은 다음을 생성한다:
 
 **신호 영속화 (HARD)**: 사용자 수정 요청·체인 실패를 감지한 **즉시** `.moai/evolution/signals.md`에 1줄을 기록한다(`날짜 | 트리거 토큰 | 대상(에이전트/체인/지침 앵커) | 요지`). 트리거 1·2의 "반복" 판정은 대화 기억이 아니라 **이 파일을 세어서** 한다 — 세션이 바뀌어도 1회차 신호가 유실되지 않는다.
 
-**개선 사이클**: 신호 감지 → 진단(무엇이 어긋났는가: `AGENTS.md` 지침 vs 에이전트 본문 vs 스킬 체인) → 최소 diff 작성(전면 재작성 금지) → 사용자에게 변경 요지 1-3줄 보고(파괴적 변경만 사전 확인) → `AGENTS.md` 말미 `<!-- evolution-log -->` 주석에 1줄 기록(트리거 토큰 + 수정 대상 포함). diff 적용 전 수정 지점의 **원문 조각을 `.moai/evolution/` 진단 기록에 함께 남겨** 되돌리기가 가능해야 한다.
+**개선 사이클**: 신호 감지 → 진단(무엇이 어긋났는가: `AGENTS.md` 지침 vs 에이전트 본문 vs 스킬 체인) → 최소 diff 작성(전면 재작성 금지) → 사용자에게 변경 요지 1-3줄 보고(파괴적 변경만 사전 확인) → `.moai/evolution/log.md` 맨 위에 1줄 기록(트리거 토큰 + 수정 대상 포함). diff 적용 전 수정 지점의 **원문 조각을 `.moai/evolution/` 진단 기록에 함께 남겨** 되돌리기가 가능해야 한다.
 
 **개선 검증 + 롤백 (HARD)**: 개선은 적용으로 끝나지 않는다 — 적용 이후 **같은 트리거 토큰 + 같은 대상**의 신호가 다시 발동하면 그 개선은 **실패한 개선**으로 판정한다. 실패한 개선은 `.moai/evolution/`에 남긴 원문 조각으로 해당 diff를 되돌리고, 같은 지점을 자동으로 재수정하는 대신 사용자에게 상황을 1-3줄로 보고해 방향을 확인받는다(동일 지점 자동 재수정 반복 금지).
 
-**evolution-log 큐레이션**: `<!-- evolution-log -->`에는 **최근 10건만** 유지하고, 초과분은 `.moai/evolution/log.md`로 이관한다. 자가 개선 diff 적용 후에도 `AGENTS.md`가 200라인 이내인지 재검증한다(`references/agentsmd-generator.md` §5 길이 검증은 생성 시뿐 아니라 개선 시에도 적용).
+**개선 이력 큐레이션**: 이력 정본은 `.moai/evolution/log.md` 한 곳이며 최신순으로 누적한다. `AGENTS.md`에는 이력을 적지 않는다 — 생성 시 HTML 주석이 제거되므로 거기 적은 이력은 남지 않는다. 자가 개선 diff 적용 후에도 `AGENTS.md`가 200라인 이내인지 재검증한다(`references/agentsmd-generator.md` §5 길이 검증은 생성 시뿐 아니라 개선 시에도 적용).
 
 **가드레일 (HARD)**: 자가 개선은 **`AGENTS.md`와 `.claude/agents/` 파일만** 수정한다(`.moai/evolution/`의 신호·진단·이관 기록 파일은 예외). 스킬 본문·플러그인 파일은 건드리지 않는다. 개선 1회당 수정 파일은 **최대 3개**까지다(evolution 기록 파일은 카운트 제외).
 
@@ -165,7 +165,7 @@ Phase 5 확인 이후 이 스킬은 다음을 생성한다:
 1. **전수조사(Full Census)** — `~/.claude/plugins/moai-*` 전체를 스캔해 각 플러그인의 `plugin.json` + `skills/` + MCP 정의를 조사. 기존 `.moai/config.json` 스냅샷과 비교해 **새 스킬·새 MCP·변경된 스킬**의 diff를 도출한다.
 2. **세션 신호 분석** — `.moai/evolution/signals.md`(누적 교정·체인 실패 신호) + `.moai/context.md`(프로젝트 맥락)를 읽어, 업데이트된 스킬이 기존 신호를 해소할 수 있는지 교차 확인한다(이게 "기존 대화 세션 분석 + 재귀적 자가 학습"의 실체다).
 3. **AGENTS.md·에이전트 동기화** — diff에 맞춰 `AGENTS.md` §워크플로우 표와 `.claude/agents/*.md`의 스킬 체인을 최소 diff로 갱신. 200라인 예산·8개 HARD 블록 보존 정책은 `references/agentsmd-generator.md`를 그대로 따른다. 레거시 복제 프로젝트(전체 지침을 담은 `CLAUDE.md`)를 만나면 같은 문서 §7.1 마이그레이션을 먼저 적용한다.
-4. **스냅샷 갱신** — `.moai/config.json`의 `plugins_installed` + `skills_available` 스냅샷을 새 인벤토리로 갱신(`inventory drift`를 0으로 리셋). `<!-- evolution-log -->`에 1줄 기록(트리거 토큰 `inventory drift` + 동기화 요지).
+4. **스냅샷 갱신** — `.moai/config.json`의 `plugins_installed` + `skills_available` 스냅샷을 새 인벤토리로 갱신(`inventory drift`를 0으로 리셋). `.moai/evolution/log.md`에 1줄 기록(트리거 토큰 `inventory drift` + 동기화 요지).
 5. **검증 + 롤백** — 동일한 `inventory drift` 신호가 다시 발동하면 실패한 동기화로 판정해 `.moai/evolution/` 원문 조각으로 롤백(§Recursive Self-Improvement의 검증·롤백 메커니즘 재사용).
 
 **미설치 프로젝트 (HARD)**: `AGENTS.md`·`CLAUDE.md`·`.moai/`가 모두 없으면 `update`는 동기화 대상이 없다 — `AskUserQuestion`으로 `/project`(최초 셋업)로 안내한다. 침묵 생성 금지.
@@ -247,7 +247,7 @@ Phase 1 인터뷰 → Phase 2 인벤토리 → Phase 3 체인 설계 → Phase 4
 
 ## 저장 위치
 
-- **프로젝트 작업 지침(정본)**: `./AGENTS.md` (≤200라인, `<!-- evolution-log -->` 이력 포함 — Codex가 직접 로드)
+- **프로젝트 작업 지침(정본)**: `./AGENTS.md` (≤200라인 — Codex가 직접 로드)
 - **Claude용 포인터**: `./CLAUDE.md` (`@AGENTS.md` 임포트 한 줄 + 안내 주석. 지침 본문을 복제하지 않는다)
 - **커스텀 에이전트**: `./.claude/agents/*.md` (Claude) + `./.codex/agents/*.toml` (Codex)
 - **프로젝트 설정**: `./.moai/config.json`

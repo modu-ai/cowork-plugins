@@ -10,7 +10,7 @@ description: |
   - 특정 플러그인/스킬의 문제점 보고
 
   단순 불만 표출이나 일반 대화, 플러그인 사용법 질문에는 사용하지 마세요.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # Feedback — 피드백 수집 및 GitHub Issues 등록

@@ -4,7 +4,7 @@ weight: 26
 description: "인사 담당자와 구직자를 위한 채용·평가·온보딩·자기소개서 워크플로우. moai-recruiter 6스킬 + moai-career 5스킬을 한 줄 요청으로 자동 처리."
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-13T00:00:00+09:00
+lastmod: 2026-08-22T00:00:00+09:00
 ---
 
 > **대상**: 인사 담당자, HR 매니저, 구직자, 취준생, 경력 전환자
@@ -115,7 +115,7 @@ flowchart LR
 
 ### 자동 체인
 
-`career-resume` (KKK-STAR 프레임워크 + ATS 최적화) → `career-portfolio` → `ai-slop-reviewer` → `korean-humanize`
+`career-resume` (KKK-STAR 프레임워크 + ATS 최적화) → `career-portfolio` → `ai-slop-reviewer` → `korean-humanize` → `최종 검수`
 
 ### 산출물
 

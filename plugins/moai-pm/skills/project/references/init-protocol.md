@@ -143,7 +143,7 @@ for f in ./.codex/agents/*.toml ~/.codex/agents/*.toml; do [ -f "$f" ] && basena
 | 출판·원고·웹툰·IP | 작가(book-*), 스토리(story-*) |
 | 디자인 핸드오프·브랜드 | 디자이너(cd-*, moai-domain-design 스킬군) |
 
-라우터 허브는 project 스킬(`/project` 진입). 실무/콘텐츠/사무 도메인은 코워커로 수렴하며, 스토리는 `moai-story`, 출판은 `moai-writer`, 디자인은 `moai-designer`로 분기된다. `ai-slop-reviewer`·`korean-humanize`은 `moai-coworker` 소속으로 텍스트 후처리 체인에 항상 활용 가능하다.
+라우터 허브는 project 스킬(`/project` 진입). 실무/콘텐츠/사무 도메인은 코워커로 수렴하며, 스토리는 `moai-story`, 출판은 `moai-writer`, 디자인은 `moai-designer`로 분기된다. `moai-coworker:ai-slop-reviewer`·`moai-writer:korean-humanize`은 `moai-coworker` 소속으로 텍스트 후처리 체인에 항상 활용 가능하다.
 
 ---
 
@@ -155,7 +155,7 @@ for f in ./.codex/agents/*.toml ~/.codex/agents/*.toml; do [ -f "$f" ] && basena
 [기획/분석 스킬] → [생성 스킬] → [포맷 변환/미디어 스킬] → ai-slop-reviewer
 ```
 
-텍스트 산출물 체인은 **반드시 `ai-slop-reviewer`로 종료**. 한국어 최종본은 직후 `korean-humanize` 2차 패스를 추가. 비텍스트는 ai-slop 단계 생략. Inventory에 없는 스킬은 체인에서 제외하거나 Gap Detection으로 넘긴다.
+텍스트 산출물 체인은 **반드시 `moai-coworker:ai-slop-reviewer`로 종료**. 한국어 최종본은 직후 `moai-writer:korean-humanize` 2차 패스를 추가. 비텍스트는 ai-slop 단계 생략. Inventory에 없는 스킬은 체인에서 제외하거나 Gap Detection으로 넘긴다.
 
 ### 3-2. 체인 프리셋 테이블
 

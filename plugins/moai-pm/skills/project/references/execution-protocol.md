@@ -65,7 +65,7 @@ project 스킬은 사용자에게 진행 중인 작업을 투명하게 보고한
 
 ### 검증 의무 (HARD)
 
-파일 산출물(HWPX/DOCX/PPTX/XLSX)은 전달 전 `quality-evaluator.md`의 Layer 1(파일 유효성) 검증을 통과해야 한다. 텍스트 산출물은 §6 AI 슬롭 후처리(`ai-slop-reviewer`)를 통과해야 한다.
+파일 산출물(HWPX/DOCX/PPTX/XLSX)은 전달 전 `quality-evaluator.md`의 Layer 1(파일 유효성) 검증을 통과해야 한다. 텍스트 산출물은 §6 AI 슬롭 후처리(`moai-coworker:ai-slop-reviewer`)를 통과해야 한다.
 
 상세 검증 레이어(파일 유효성 · 마크다운 렌더링 · AI 작문 패턴 · 근거 검증)는 `quality-evaluator.md` 참조.
 
@@ -105,7 +105,6 @@ project 스킬은 사용자에게 진행 중인 작업을 투명하게 보고한
 
 ### 6-5. 검색 스케일링 (외부 사실 확인)
 
-<!-- @MX:NOTE: [AUTO] 검색 스케일링은 §6-4 검증 깊이 사다리의 보완 축이다 — 6-4가 "얼마나 깊게 검증할 것인가"를 정하면, 6-5는 "몇 번 찾을 것인가"를 정한다. -->
 
 체인 실행이 외부 사실 확인(WebSearch/WebFetch)을 요구할 때, 도구 호출 횟수는 요청 복잡도에 비례한다.
 

@@ -11,7 +11,7 @@ description: |
   - "웰컴 이메일 본문 써줘"
   - "(광고) 표시랑 수신거부 같은 법적 요건 맞춰서 메일 만들어줘"
   발송 시점별 시퀀스 흐름, 제목·본문 초안, 수신거부 등 법적 체크리스트를 함께 만들고, 본문 텍스트는 moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize으로 다듬습니다.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # 이메일 시퀀스 (Email Sequence)

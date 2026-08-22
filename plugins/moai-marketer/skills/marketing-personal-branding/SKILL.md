@@ -13,7 +13,7 @@ description: |
   - "네이버 블로그로 전문가 이미지 구축하고 싶어"
   자기 분석·포지셔닝·콘텐츠 주제·채널 운영 전략을 문서로 묶고, 텍스트 산출물은 moai-coworker:ai-slop-reviewer → moai-writer:korean-humanize으로 다듬습니다. 채널별 콘텐츠 제작은 content-sns-content로 이어집니다.
   [책임 경계] vs moai-coworker:collab-brand-identity: 이 스킬=개인·전문가 브랜드, 저 스킬=기업·제품 브랜드.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # 개인 브랜딩 (Personal Branding)

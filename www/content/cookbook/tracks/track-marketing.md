@@ -5,7 +5,7 @@ description: "브랜드 전략·SNS·상세페이지·SEO까지 moai-marketer �
 geekdocBreadcrumb: true
 tags: [cookbook, marketing]
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-13T00:00:00+09:00
+lastmod: 2026-08-22T00:00:00+09:00
 ---
 
 # 트랙 — 마케팅·콘텐츠
@@ -141,7 +141,7 @@ CEO·임원·전문가 개인의 전문성을 브랜드화.
 
 시스템 인터뷰: ① 플랫폼·SEO 키워드 ② 분량·톤 ③ 타깃 독자 ④ 발행 여부
 
-체인: `content-blog → ai-slop-reviewer → korean-spell-check → korean-humanize`
+체인: `content-blog → ai-slop-reviewer → korean-spell-check → korean-humanize → 최종 검수`
 
 ### card-news — 인스타 카드뉴스
 
@@ -259,7 +259,7 @@ blog.smartflow.co.kr SEO 종합 감사해줘
 
 ## 체인 읽는 법 — 화살표가 뜻하는 것과 품질 스킬이 항상 끝에 오는 이유
 
-이 트랙의 각 스킬 아래에는 `content-blog → ai-slop-reviewer → korean-spell-check → korean-humanize` 같은 **체인 표기**가 붙어 있습니다. 화살표(`→`)는 "왼쪽 스킬의 결과물을 오른쪽 스킬이 입력받아 이어 처리한다"는 뜻입니다. 즉 `content-blog`가 쓴 원고를 `ai-slop-reviewer`가 검수하고, 그 결과를 `korean-spell-check`가 맞춤법 점검하고, 마지막으로 `korean-humanize`이 사람이 쓴 것처럼 다듬는 식으로 한 방향으로 흘러갑니다.
+이 트랙의 각 스킬 아래에는 `content-blog → ai-slop-reviewer → korean-spell-check → korean-humanize → 최종 검수` 같은 **체인 표기**가 붙어 있습니다. 화살표(`→`)는 "왼쪽 스킬의 결과물을 오른쪽 스킬이 입력받아 이어 처리한다"는 뜻입니다. 즉 `content-blog`가 쓴 원고를 `ai-slop-reviewer`가 검수하고, 그 결과를 `korean-spell-check`가 맞춤법 점검하고, 마지막으로 `korean-humanize`이 사람이 쓴 것처럼 다듬고, 원문과 대조하는 `최종 검수`를 통과해야 산출물이 나가는 식으로 한 방향으로 흘러갑니다.
 
 이 화살표 끝에는 항상 같은 얼굴이 반복해 붙습니다 — `ai-slop-reviewer`, `korean-spell-check`, `korean-humanize` 같은 **품질 스킬**들입니다. 왜 끝인가. 세탁 라인에 비유하면 명확해집니다. 옷을 먼저 만들고(도메인 스킬) → 포장하고(포맷 스킬) → 마지막에 검수·다림질·보풀 제거(품질 스킬) 순서로 돌아갑니다. 다림질(품질)을 맨 앞에 하면 구겨진 옷을 다릴 수 없듯, 검수할 원문이 없는 상태에서 `ai-slop-reviewer`를 부르면 의미가 없습니다. 그래서 품질 스킬은 항상 체인의 맨 끝에 옵니다.
 
@@ -283,7 +283,7 @@ flowchart LR
 
 ### AI 티 나는 문장
 
-특히 블로그·뉴스레터는 [AI 슬롭 검수](/cookbook/skill-chaining/)가 필수입니다. 시스템이 본문 완성 → `ai-slop-reviewer → korean-humanize` 자동 호출로 처리합니다.
+특히 블로그·뉴스레터는 [AI 슬롭 검수](/cookbook/skill-chaining/)가 필수입니다. 시스템이 본문 완성 → `ai-slop-reviewer → korean-humanize → 최종 검수` 자동 호출로 처리합니다.
 
 ### 이미지 생성 비용
 

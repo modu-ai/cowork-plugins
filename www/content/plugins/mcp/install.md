@@ -4,7 +4,7 @@ weight: 1
 description: "사전 준비물 uv 설치부터 자격증명 입력, 연결 확인까지. macOS와 Windows 양쪽 안내를 함께 담았습니다."
 geekdocBreadcrumb: true
 date: 2026-08-08T00:00:00+09:00
-lastmod: 2026-08-10T00:00:00+09:00
+lastmod: 2026-08-22T00:00:00+09:00
 ---
 
 자체 제작 MCP 서버(`moai-mcp-` 로 시작하는 것들)를 쓰려면 준비물이 하나 필요합니다.
@@ -56,14 +56,7 @@ uv --version
 MCP 서버는 플러그인 안에 함께 들어 있습니다. 플러그인을 설치하면 서버도 같이 옵니다.
 따로 받을 것이 없습니다.
 
-Claude Cowork에서:
-
-```
-claude plugin marketplace add modu-ai/moai-cowork
-```
-
-그다음 **Plugins 메뉴**에서 원하는 코워커를 설치하면 됩니다. ChatGPT Work는
-[설치와 관리](../install/) 문서를 보세요.
+Claude Cowork 앱의 설정(또는 플러그인) 화면에서 마켓플레이스 주소 `modu-ai/moai-cowork`를 추가하세요. 그다음 **Plugins 메뉴**에서 원하는 코워커를 설치하면 됩니다. ChatGPT Work도 같은 방식이며, 자세한 화면 흐름은 [설치와 관리](../install/) 문서를 보세요.
 
 ## 3단계 — 자격증명 넣기
 

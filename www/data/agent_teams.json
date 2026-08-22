@@ -1,12 +1,12 @@
 {
- "marketplace_version": "1.2.0",
+ "marketplace_version": "1.2.1",
  "generated_from": "marketplace.json + plugin frontmatter (SSOT)",
  "employees": [
   {
    "id": "moai-coworker",
    "displayName": "🧑‍💼 코워커",
    "category": "범용 실무",
-   "version": "1.1.0",
+   "version": "1.1.1",
    "description": "실무 범용 코어 AI 코워커 — 브랜드·제안서·보고·협상·프로세스 등 비즈니스 실무 + 라이프스타일·자기계발(목표·습관·회고·여행·웰니스·행사기획) 스킬 32종. 전문 영역은 전문가 플러그인으로 분리되었으며, 코워커는 범용 비즈니스 코어와 생활 도메인을 담당합니다. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 1인 사업자·스타트업 운영자.",
    "skill_count": 32,
    "skills": [
@@ -149,7 +149,7 @@
    "id": "moai-writer",
    "displayName": "✍️ 작가",
    "category": "창작·출판",
-   "version": "1.1.1",
+   "version": "1.3.0",
    "description": "출판·텍스트 전담 AI 코워커 — 출판 기획·집필·제안서·출판사 매칭(book-* 8종), 한국어 인문화 윤문과 맞춤법 검수까지 텍스트 창작 전 과정 스킬 10종. 스토리/IP 창작은 moai-story 플러그인으로 분리. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 작가·1인 출판인·실용서 저자.",
    "skill_count": 10,
    "skills": [
@@ -229,7 +229,7 @@
    "id": "moai-story",
    "displayName": "📖 스토리 크리에이터",
    "category": "창작·IP",
-   "version": "1.1.1",
+   "version": "1.1.2",
    "description": "스토리/IP 창작 전담 AI 코워커 — 웹툰 제작 체인(기획→캐릭터→회차→식자→작화→QC)·웹소설 연재(기획→집필)·영상 시나리오·콘티·표지·IP 사업화(story-* 17종) 스킬. 한국 웹툰 플랫폼 규격 SSOT와 연재 상태 원장을 내장하고, 이미지·영상 생성 실행은 moai-media에 위임합니다. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 웹툰/웹소설 창작자·시나리오 작가·IP 콘텐츠 기획자.",
    "skill_count": 17,
    "skills": [
@@ -341,7 +341,7 @@
    "id": "moai-marketer",
    "displayName": "📣 마케터",
    "category": "마케팅",
-   "version": "1.1.1",
+   "version": "1.1.2",
    "description": "마케팅 전담 AI 코워커 — 캠페인 기획·퍼포먼스 분석·키워드 리서치·그로스 실험·리텐션(marketing-* 14종), 블로그·뉴스레터·SNS 콘텐츠(content-* 7종) 스킬 21종. Meta Ads·게시 채널 MCP 연동. 미디어 생성(media-*)은 moai-media 플러그인으로 분리. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 마케터·콘텐츠 크리에이터·1인 브랜드.",
    "skill_count": 21,
    "skills": [
@@ -470,7 +470,7 @@
    "id": "moai-media",
    "displayName": "🎬 미디어 크리에이터",
    "category": "미디어 생성",
-   "version": "1.1.0",
+   "version": "1.1.1",
    "description": "미디어 생성 전담 AI 코워커 — 이미지·영상·오디오 생성(media-* 13종) 스킬. Higgsfield 이미지·영상·3D·설명영상·제품촬영·캐릭터 일관성(Soul/Element), ElevenLabs TTS/보이스클로닝, GPT-image-2·Gemini 3·Midjourney v8 프롬프트 빌더, codex/NotebookLM 연동까지 멀티모달 생성 도구 모음. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 콘텐츠 크리에이터·마케터·디자이너·1인 브랜드.",
    "skill_count": 13,
    "skills": [
@@ -567,7 +567,7 @@
    "id": "moai-seller",
    "displayName": "🛒 셀러",
    "category": "이커머스",
-   "version": "1.2.0",
+   "version": "1.2.1",
    "description": "이커머스 셀러 전담 AI 코워커 — 스마트스토어·아임웹·카페24 MCP 연동과 상세페이지·마켓플레이스·광고·CRM 등 커머스 실무 스킬 30종. VOC·채널 메시지는 moai-cs(CS매니저)로 이관. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 온라인 셀러·이커머스 운영자.",
    "skill_count": 30,
    "skills": [
@@ -734,7 +734,7 @@
    "id": "moai-officer",
    "displayName": "📄 사무관",
    "category": "문서·오피스",
-   "version": "1.1.0",
+   "version": "1.1.1",
    "description": "사무 문서 전담 AI 코워커 — 한국형 오피스 문서(HWPX·DOCX·XLSX·PPTX·PDF)·HTML 리포트/슬라이드 생성, 공문서 파싱, 노션 템플릿·생산성 루틴 스킬 13종. kordoc MCP 연동. 공공데이터 조회·데이터 분석은 moai-analyst로, 라이프스타일은 moai-coworker로 분리. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 사무직·기획자·자영업 운영자.",
    "skill_count": 13,
    "skills": [
@@ -828,7 +828,7 @@
    "id": "moai-analyst",
    "displayName": "📊 데이터 애널리스트",
    "category": "데이터·분석",
-   "version": "1.1.0",
+   "version": "1.1.1",
    "description": "데이터·공공데이터 분석 전담 AI 코워커 — 데이터 프로파일링·시각화, 공공데이터 조회(부동산·경매·주식·KOSIS·건축물대장·DART 전자공시) 스킬 7종. KOSIS 통계·건축HUB·DART MCP 연동. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 데이터 애널리스트·사무직·기획자·자영업 운영자.",
    "skill_count": 7,
    "skills": [
@@ -900,7 +900,7 @@
    "id": "moai-lawyer",
    "displayName": "⚖️ 법무 담당",
    "category": "전문직",
-   "version": "1.1.1",
+   "version": "1.1.2",
    "description": "법무 전담 AI 코워커 — 계약 검토·NDA 트리아지·컴플라이언스 점검·법령/판례 리서치·특허 검색/분석·식약처 안전 기준 스킬 10종. 국가법령정보 MCP(korean-law) 연동으로 인용 검증까지 수행합니다. 이런 분께 추천: 1인 사업자·스타트업 운영자. ※ 법률 자문 대체가 아닌 참고 자료입니다.",
    "skill_count": 10,
    "skills": [
@@ -982,7 +982,7 @@
    "id": "moai-accountant",
    "displayName": "💰 재무·세무 담당",
    "category": "전문직",
-   "version": "1.1.0",
+   "version": "1.1.1",
    "description": "재무·세무 전담 AI 코워커 — 재무제표 분석·결산 관리·차이 분석·IR, 개인 세금 절약·가계 예산·투자 입문·보험 적합성 스킬 11종. OpenDART 전자공시 MCP 연동. 이런 분께 추천: 사업자·재무 담당자·개인 재테크 입문자. ※ 세무사·회계사 자문 대체가 아닌 참고 자료입니다.",
    "skill_count": 11,
    "skills": [
@@ -1069,7 +1069,7 @@
    "id": "moai-recruiter",
    "displayName": "🤝 인사·채용 담당",
    "category": "전문직",
-   "version": "1.1.0",
+   "version": "1.1.1",
    "description": "인사·채용 전담 AI 코워커(고용주 편) — 채용 공고 분석·이력서 스크리닝·오퍼레터/근로계약서·성과평가·People Ops 스킬 6종. 구직자 편은 moai-career(커리어코치)로 분리되었습니다. 이런 분께 추천: 채용 담당자·인사 실무자.",
    "skill_count": 6,
    "skills": [
@@ -1133,7 +1133,7 @@
    "id": "moai-cs",
    "displayName": "🎧 CS매니저",
    "category": "고객지원",
-   "version": "1.1.0",
+   "version": "1.1.1",
    "description": "고객지원·CRM 전담 AI 코워커 — 티켓 분류·응답 초안·에스컬레이션·지식베이스와 VOC 분석·채널 메시지까지 고객 접점 실무 스킬 6종. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 온라인 셀러·CS 담당자·1인 사업자.",
    "skill_count": 6,
    "skills": [
@@ -1197,7 +1197,7 @@
    "id": "moai-consultant",
    "displayName": "💼 컨설턴트",
    "category": "경영 자문",
-   "version": "1.1.0",
+   "version": "1.1.1",
    "description": "경영·창업 컨설팅 전담 AI 코워커 — 사업계획서·비즈니스 모델·시장 분석(TAM/SAM/SOM)·경영 진단 브리프·정부 지원사업 매칭·상권분석 보고서까지 전략 실무 스킬 6종. 이런 분께 추천: 예비 창업자·소상공인·스타트업 운영자.",
    "skill_count": 6,
    "skills": [
@@ -1261,7 +1261,7 @@
    "id": "moai-career",
    "displayName": "🧭 커리어코치",
    "category": "커리어",
-   "version": "1.1.0",
+   "version": "1.1.1",
    "description": "구직자 편 커리어 코칭 전담 AI 코워커 — 이력서·포트폴리오 첨삭, 면접 준비, 이직 전략까지 커리어 전환 실무 스킬. 인사채용(고용주 편)과 구분되는 구직자 관점입니다. 이런 분께 추천: 이직 준비자·취업 준비생·주니어 직장인.",
    "skill_count": 5,
    "skills": [
@@ -1321,7 +1321,7 @@
    "id": "moai-tutor",
    "displayName": "🎓 튜터",
    "category": "전문직",
-   "version": "1.1.0",
+   "version": "1.1.1",
    "description": "교육 전담 AI 코워커 — 커리큘럼 설계·학습 자료·평가 문항 제작·강좌 운영 매뉴얼·논문 검색/작성·연구 보조 스킬 11종. 강사와 학습자 양쪽 워크플로우를 지원합니다. 이런 분께 추천: 강사·교육 기획자·대학원생·연구자.",
    "skill_count": 11,
    "skills": [
@@ -1406,7 +1406,7 @@
    "id": "moai-designer",
    "displayName": "🎨 디자이너",
    "category": "디자인",
-   "version": "1.1.0",
+   "version": "1.1.1",
    "description": "에이전틱 디자인 플러그인 — Claude Design 연동, 3계층 토큰 파이프라인(DTCG↔CSS↔shadcn)·DESIGN.md·브랜드 시스템·GAN 품질 루프에 더해 Higgsfield 커넥터 기반 브랜드 정합 비주얼 생성과 three.js·스크롤 모션 랜딩 제작. /design 으로 브리프부터, /upload 로 Claude Design 업로드까지.",
    "skill_count": 17,
    "skills": [
@@ -1489,7 +1489,7 @@
    "id": "moai-pm",
    "displayName": "🚀 PM",
    "category": "프로젝트 허브",
-   "version": "1.3.0",
+   "version": "1.4.0",
    "description": "프로젝트 초기화 허브 AI 코워커 — /project로 진입합니다. Claude Cowork 프로젝트 초기화(전 직원 지침 설정 + .claude/agents/ 커스텀 에이전트 + AGENTS.md 워크플로우 생성 + 재귀적 자가 개선)를 담당하며 AI 코워커 플러그인 패밀리의 진입을 라우팅합니다. 비개발자도 자연어 한마디로 프로젝트를 시작할 수 있습니다. 이런 분께 추천: 비개발자·프로젝트 시작자.",
    "skill_count": 1,
    "skills": [
@@ -1506,7 +1506,7 @@
    "id": "moai-threads-poster",
    "displayName": "📸 SNS 크리에이터",
    "category": "소셜미디어",
-   "version": "1.2.0",
+   "version": "1.2.1",
    "description": "Threads·Instagram(Meta) 자율 발행 전담 AI 코워커 — 직접 Graph API 연결 MCP(월정액 없음)로 텍스트·이미지·비디오 2단계 발행. 세션 안에서 직접 발행. 예약·정기 발행은 Claude Cowork이 담당. Facebook 개인 계정은 API 미지원(정책)이라 복붙만 지원합니다. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 1인 브랜드·콘텐츠 크리에이터·Threads/Instagram 정기 운영자.",
    "skill_count": 5,
    "skills": [

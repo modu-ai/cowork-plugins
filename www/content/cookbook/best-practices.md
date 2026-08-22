@@ -5,7 +5,7 @@ description: "정체성·기능·프로젝트·플러그인·MCP·프롬프트·
 geekdocBreadcrumb: true
 tags: [cookbook, foundations]
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-10T00:00:00+09:00
+lastmod: 2026-08-22T00:00:00+09:00
 ---
 > Claude Cowork의 모든 핵심 기능을 한 번에 정리합니다. 실무 투입 전 이 페이지 한 장만 훑어도 충분합니다.
 
@@ -132,15 +132,15 @@ flowchart TD
 
 설치 순서:
 
-**Claude Cowork 앱 UI**:
-1. Cowork → **사용자 지정(Customize)** → **개인 플러그인(Plugins)** → "+" → URL: `modu-ai/moai-cowork`
-2. 목록에서 필요한 플러그인에 "Add plugin" 버튼 클릭
+**Claude Cowork 앱**:
+1. 설정(또는 플러그인) 화면 → 마켓플레이스 **+** → 주소 `modu-ai/moai-cowork`
+2. 목록에서 필요한 코워커를 선택해 설치
 
-**ChatGPT Work CLI**:
-1. `codex plugin marketplace add modu-ai/moai-cowork`
-2. `codex plugin install moai-coworker@moai-cowork`
+**ChatGPT Work 앱**:
+1. Work 모드 → Plugins 메뉴 → 마켓플레이스 **+** → 주소 `modu-ai/moai-cowork`
+2. 목록에서 필요한 코워커를 선택해 설치
 
-또는 Claude Cowork/ChatGPT Work 공통 CLI: `claude/codex plugin marketplace add modu-ai/moai-cowork`
+자세한 화면 흐름은 [플러그인 설치와 관리](/plugins/install/)를 참고하세요.
 
 ### 스킬 vs 플러그인
 

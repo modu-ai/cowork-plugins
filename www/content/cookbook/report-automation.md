@@ -5,7 +5,7 @@ description: "매주 금요일 자동으로 KPI 대시보드 + 이슈 요약 + �
 geekdocBreadcrumb: true
 tags: [cookbook, operations]
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-13T00:00:00+09:00
+lastmod: 2026-08-22T00:00:00+09:00
 ---
 > **목표** — 매주 금요일 오후 5시에 자동으로 시작해 **KPI 대시보드 + 이슈 요약 + 다음 주 액션**까지 담긴 3페이지 DOCX를 팀 공유 폴더에 저장합니다.
 
@@ -235,7 +235,7 @@ MCP 기본 검색은 14일. 그 이상은 `slack_search_public` 사용권을 확
 
 **권장 체인**:
 ```
-{텍스트 생성 스킬} → ai-slop-reviewer → korean-humanize → doc-html-report mode=<X>
+{텍스트 생성 스킬} → ai-slop-reviewer → korean-humanize → 최종 검수 → doc-html-report mode=<X>
 ```
 
 **관련 링크**:
