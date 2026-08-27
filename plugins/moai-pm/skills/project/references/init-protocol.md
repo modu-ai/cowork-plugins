@@ -28,7 +28,7 @@ Phase 4: Gap Detection — 누락 플러그인/스킬 감지 + 설치 안내
     ↓ (누락 0건이거나 옵션 2/3 선택 시)
 Phase 5: 설계 확인 (AskUserQuestion)
     ↓
-Phase 6: 지침 생성 (AGENTS.md.tmpl 기반 AGENTS.md ≤200라인 + CLAUDE.md 포인터)
+Phase 6: 지침 생성 (AGENTS.md.tmpl 기반 AGENTS.md ≤500라인 + CLAUDE.md 포인터)
     ↓
 Phase 7: 커스텀 에이전트 생성 (.claude/agents/*.md + .codex/agents/*.toml)
     ↓
@@ -74,7 +74,7 @@ Phase 8: API 키 / 커넥터 + 첫 실행 안내
 | (c) 답변 상충 | 예: 산출물=공문인데 톤=캐주얼 |
 | (d) 슬롯 초과 | S1의 4슬롯에 못 담은 필수 축이 남음 |
 
-해당 없으면 **S2를 건너뛰고 즉시 Phase 2로 진행**한다. 실행할 때도 질문을 쪼개지 않고 **부족분을 한 번에 묶어** 배치한다. S2가 2회를 넘어가면 그 라운드에 「지금 아는 것으로 진행」 옵션을 함께 넣어 사용자가 종료할 수 있게 한다.
+해당 없으면 **S2를 건너뛰지 않고 즉시 Phase 2로 진행**한다. 실행할 때도 질문을 쪼개지 않고 **부족분을 한 번에 묶어** 배치한다. S2가 2회를 넘어가면 그 라운드에 「지금 아는 것으로 진행」 옵션을 함께 넣어 사용자가 종료할 수 있게 한다.
 
 ### 종료 판정
 
@@ -93,22 +93,30 @@ Phase 8: API 키 / 커넥터 + 첫 실행 안내
 **소스 A — Bash 디렉터리 스캔**:
 
 ```bash
-# Claude(~/.claude/plugins) + Codex(~/.codex/plugins/cache) 양쪽 스캔
-INSTALLED_MOAI_PLUGINS=()
-for dir in ~/.claude/plugins/moai-* ~/.codex/plugins/cache/*/moai-*; do
-  p=$(basename "$dir")
-  if [ -d "$dir" ] && { [ -f "$dir/.claude-plugin/plugin.json" ] || [ -f "$dir/.codex-plugin/plugin.json" ]; }; then
-    INSTALLED_MOAI_PLUGINS+=("$p")
-  fi
-done
-for plugin in "${INSTALLED_MOAI_PLUGINS[@]}"; do
-  for base in ~/.claude/plugins ~/.codex/plugins/cache/*; do
-    find "$base/$plugin/skills" -maxdepth 2 -name SKILL.md 2>/dev/null
-  done
+# [HARD] 설치 깊이를 가정하지 않는다. 매니페스트를 먼저 찾고 거기서 플러그인
+# 루트를 역산한다. 실측(2026-08-27): Claude는 ~/.claude/plugins/<plugin>/,
+# Codex는 ~/.codex/plugins/cache/<marketplace>/<plugin>/<version>/ 로 깊이가
+# 두 단계 다르다. 고정 glob(`cache/*/moai-*`)을 쓰면 Codex 설치에서 0개가
+# 잡히고, 전수 탐색·Gap Detection·체인 설계가 빈 인벤토리로 돌아간다.
+ROOTS="$HOME/.claude/plugins $HOME/.codex/plugins/cache"
+SEEN=""
+for m in $(find $ROOTS -maxdepth 6 -type f \
+             \( -path '*/.claude-plugin/plugin.json' -o -path '*/.codex-plugin/plugin.json' \) 2>/dev/null); do
+  name=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1])).get('name',''))" "$m" 2>/dev/null)
+  case "$name" in moai-*) ;; *) continue ;; esac
+  root=$(dirname "$(dirname "$m")")          # <plugin>/<version> 또는 <plugin>
+  # 같은 폴더에 .claude-plugin과 .codex-plugin이 둘 다 있으면 두 번 잡힌다 — 루트로 중복 제거
+  case "$SEEN" in *"|$root|"*) continue ;; esac
+  SEEN="$SEEN|$root|"
+  ver=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1])).get('version',''))" "$m" 2>/dev/null)
+  echo "PLUGIN $name $ver $root"
+  find "$root/skills" -maxdepth 2 -name SKILL.md 2>/dev/null
 done
 # Codex 커스텀 에이전트(.codex/agents/*.toml)도 인벤토리에 포함
 for f in ./.codex/agents/*.toml ~/.codex/agents/*.toml; do [ -f "$f" ] && basename "$f" .toml; done 2>/dev/null
 ```
+
+**[HARD] 0개는 실패다.** 위 스캔이 플러그인 0개를 반환했는데 사용자가 설치했다고 말하거나 세션 스킬 목록에 `moai-*`가 보이면, **빈 인벤토리로 진행하지 않는다.** 경로 구조가 또 바뀐 것이므로 그 사실을 보고하고 소스 B(세션 스킬 목록)로 대체한다.
 
 각 SKILL.md frontmatter의 `name:` 필드를 추출해 `<skill-name> → <plugin>` 매핑을 구성한다.
 
@@ -118,15 +126,19 @@ for f in ./.codex/agents/*.toml ~/.codex/agents/*.toml; do [ -f "$f" ] && basena
 
 ### 2-2. `.moai/config.json` 인벤토리 스냅샷 스키마
 
+**[HARD] 아래 네 필드는 없으면 후속 기능이 통째로 죽는다.** `plugins_installed`의 **버전**과 `skills_available`의 **digest**가 없으면 `update`가 "변경된 스킬"을 영영 검출하지 못하고, `template_version`·`hard_block_digests`가 없으면 HARD 블록 재동기화가 사용자 편집과 구 템플릿을 구분하지 못한다(`update-protocol.md` §4-1). `sensitivity`가 없으면 맞춤법 단계가 fail-open 된다.
+
 ```json
 {
   "scanned_at": "2026-07-11T00:00:00+09:00",
-  "plugins_installed": ["moai-pm", "moai-coworker", "..."],
+  "plugins_installed": { "moai-pm": "1.5.0", "moai-coworker": "1.2.0" },
   "skills_available": {
-    "content-blog": "moai-coworker",
-    "ai-slop-reviewer": "moai-coworker",
-    "design-brief": "moai-designer"
+    "content-blog": { "plugin": "moai-coworker", "digest": "sha256:..." },
+    "ai-slop-reviewer": { "plugin": "moai-coworker", "digest": "sha256:..." }
   },
+  "template_version": "1.5.0",
+  "hard_block_digests": { "6. 한국어 품질 체인 (HARD)": "sha256:...", "...": "..." },
+  "sensitivity": "public | sensitive | unknown",
   "confidence": { "moai-pm": "HIGH" }
 }
 ```
@@ -152,10 +164,10 @@ for f in ./.codex/agents/*.toml ~/.codex/agents/*.toml; do [ -f "$f" ] && basena
 ### 3-1. 체인 구성 규칙
 
 ```
-[기획/분석 스킬] → [생성 스킬] → [포맷 변환/미디어 스킬] → ai-slop-reviewer
+[기획/분석 스킬] → [생성 스킬] → [포맷 변환/미디어 스킬] → ⟨한국어 감사 3단⟩
 ```
 
-텍스트 산출물 체인은 **반드시 `moai-coworker:ai-slop-reviewer`로 종료**. 한국어 최종본은 직후 `moai-writer:korean-humanize` 2차 패스를 추가. 비텍스트는 ai-slop 단계 생략. Inventory에 없는 스킬은 체인에서 제외하거나 Gap Detection으로 넘긴다.
+한국어 텍스트 산출물 체인은 **반드시 ⟨한국어 감사 3단⟩(`moai-coworker:ai-slop-reviewer` → `moai-writer:korean-spell-check` → `moai-writer:korean-humanize`)으로 종료**한다 — 정본은 `cowork-setup.md` §3이며 `korean-humanize`가 마지막이어야 한다(Phase 6 최종 검수가 판정한 산출물이 그대로 전달되도록). 비텍스트는 감사 단계 생략. Inventory에 없는 스킬은 체인에서 제외하거나 Gap Detection으로 넘긴다.
 
 ### 3-2. 체인 프리셋 테이블
 
@@ -169,7 +181,7 @@ Phase 5(확인 단계)에서 사용자에게 보여줄 요약:
 이 프로젝트의 실행 체인 설계
 
 [주 산출물 1] 사업계획서(PPT)
-  체인: consult-strategy → doc-pptx → ai-slop-reviewer
+  체인: consult-strategy → doc-pptx → ⟨한국어 감사 3단⟩
   트리거 예시: "사업계획서 만들어줘"
 ```
 
@@ -230,7 +242,7 @@ for each skill in chain_skills:
   "phase_completed": 3,
   "interview_answers": { "work_type": ["사업 기획·전략"] },
   "chain_design": [
-    { "deliverable": "사업계획서(PPT)", "chain": ["consult-strategy", "doc-pptx", "ai-slop-reviewer"] }
+    { "deliverable": "사업계획서(PPT)", "chain": ["consult-strategy", "doc-pptx", "ai-slop-reviewer", "korean-spell-check", "korean-humanize"] }
   ],
   "missing_skills": [],
   "missing_plugins": []
@@ -255,7 +267,7 @@ for each skill in chain_skills:
 
 ## Phase 6: 지침 생성 (AGENTS.md 정본 + CLAUDE.md 포인터)
 
-`references/templates/AGENTS.md.tmpl`을 로드하여 변수를 치환하고 `./AGENTS.md`에 쓴다. 이어서 `references/templates/CLAUDE.md.tmpl`을 **치환 없이 그대로** `./CLAUDE.md`에 복사해 `@AGENTS.md` 포인터를 만든다(본문 복제 금지). 상세 변수 치환 테이블·생성 절차·포인터 규칙은 `agentsmd-generator.md` 참조. 생성 원칙: AGENTS.md ≤200라인, 스킬 체인 최대 10개, 8개 HARD 규칙 블록 항상 포함, UTF-8/LF/한국어.
+`references/templates/AGENTS.md.tmpl`을 로드하여 변수를 치환하고 `./AGENTS.md`에 쓴다. 이어서 `references/templates/CLAUDE.md.tmpl`을 **치환 없이 그대로** `./CLAUDE.md`에 복사해 `@AGENTS.md` 포인터를 만든다(본문 복제 금지). 상세 변수 치환 테이블·생성 절차·포인터 규칙은 `agentsmd-generator.md` 참조. 생성 원칙: AGENTS.md ≤500라인, 스킬 체인 최대 10개, 8개 HARD 규칙 블록 항상 포함, UTF-8/LF/한국어.
 
 ---
 

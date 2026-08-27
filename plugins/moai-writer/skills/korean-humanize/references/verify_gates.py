@@ -57,6 +57,22 @@ ANNIHILATION_BEFORE_MIN = 5
 # 불변식(수치·인용·고유명사)이 맡는다.
 COPY_GENRES = {"copy", "headline", "cta", "landing", "slide", "social", "sns", "story"}
 
+# [HARD] 사용자 옵션은 한국어로 들어온다(`장르: 카피|슬라이드`). 영어 값만
+# 비교하면 `슬라이드`가 카피 가드를 못 타고 산문으로 판정된다 — 실측:
+# slide → SKIP, 슬라이드 → FAIL. 경계에서 정규화해 같은 값으로 만든다.
+GENRE_ALIASES = {
+    "카피": "copy", "헤드라인": "headline", "랜딩": "landing", "슬라이드": "slide",
+    "소셜": "social", "에스엔에스": "sns", "스토리": "story", "광고": "copy",
+    "칼럼": "essay", "리포트": "report", "보고서": "report", "블로그": "blog",
+    "공적": "official", "공문": "official", "산문": "essay", "안내문": "official",
+}
+
+
+def canonical_genre(genre: str) -> str:
+    """한국어·영어 장르값을 하나의 표기로 모은다."""
+    g = (genre or "").strip()
+    return GENRE_ALIASES.get(g, g.lower())
+
 # z 산출이 quantization 노이즈가 되는 하한. 원 코퍼스 표본이 400~900자였다.
 MIN_SENTENCES_FOR_Z = 15
 
@@ -157,12 +173,104 @@ def judge_invariants(ck, before: str, after: str, genre: str) -> tuple[str, str,
     return "PASS", "수치·인용·이모지·격식 이상 없음", out
 
 
+# ── R축 참고 기준선 (산문 전용 · REPORT 전용) ────────────────────────
+# [HARD] 이 수치는 **게이트가 아니라 참고선**이다. 표본이 한 프로젝트의
+# 코퍼스와 논문 1편이라 절단점을 보편 임계로 쓸 근거가 못 된다(2026-08-27
+# codex 감사 finding 5). 넘었다고 실패가 아니라 "정독할 때 여기를 보라"는
+# 신호이며, 최종 판정은 Phase 2.5 정독 소견과 Phase 6 정독 재판정이 한다.
+# 실측 기준선(2026-08-27, 한국어 34만 자 + 국립국어원 새국어생활 22-1):
+#   사람이 쓴 모집 카피 단락 45.5자 · 25자 미만 13.7% · 물음표 4
+#   사람이 쓴 학술 산문        62.7자
+#   C-11을 S1로 강제한 파이프라인 산출물 26.9~37.2자 · 27.4~61.1% · 물음표 0
+RHYTHM_MIN_AVG   = 33.0   # 평균 문장길이 하한
+RHYTHM_MAX_SHORT = 0.40   # 25자 미만 단문 비율 상한
+RHYTHM_MAX_RUN   = 3      # 단문 3연속 구간 허용 개수
+SHORT_CHARS      = 25
+
+
+def judge_rhythm(m2, before: str, after: str, genre: str) -> tuple[str, str, dict[str, Any]]:
+    """P5 — 문장 리듬. **C-11이 문장을 쪼개 단문화시키는 것을 막는다.**
+
+    왜 이 축이 있는가: C-11(연결어미 뒤 쉼표 제거)은 S1이고 E-1·E-4(이웃한
+    단문을 연결어미로 다시 묶기)는 S2다. `최소심각도: S1` 실행에서는 쪼개는
+    규칙만 돌고 잇는 규칙은 안 돈다. 그 결과 개별 문장은 모두 자연스러운데
+    글 전체가 26~31자 단문으로 수렴해 기계로 읽힌다 — 문장 단위 검사로는
+    절대 잡히지 않는 실패 모드다.
+
+    **E-5·C-12와 충돌하지 않는다.** E-5는 8어절 이상 절을, C-12는 쉼표
+    과다 문장을 마침표로 나누라고 한다. 그 분리는 정당하므로, 문장 수 증가를
+    무조건 실패로 보지 않고 **원문 장문(100자 이상)이 몇 개였는지로 귀속**해
+    설명되지 않는 초과분만 잡는다.
+
+    **카피·슬라이드 장르는 면제**한다(COPY_GENRES). 화면에 조각으로 뜨는
+    글은 단문이 정상이며, 여기에 평균 33자를 들이대면 장르를 부순다.
+    """
+    # run()이 이미 정규화하지만, 이 함수를 직접 호출하는 경로도 있으므로
+    # 여기서도 정규화한다(canonical_genre는 멱등이라 이중 적용이 무해하다).
+    if canonical_genre(genre) in COPY_GENRES:
+        return "SKIP", f"장르 '{genre}' — 의도적 단문이 정상이라 리듬 축을 적용하지 않는다", {}
+
+    seg = m2._segment_sentences
+    b, a = seg(before), seg(after)
+    if len(a) < 12:
+        return "SKIP", "문장 12개 미만 — 리듬을 판정할 표본이 아니다", {}
+
+    L = [len(x) for x in a]
+    avg = sum(L) / len(L)
+    short = sum(1 for x in L if x < SHORT_CHARS) / len(L)
+    run = runs = 0
+    for x in L:
+        if x < SHORT_CHARS:
+            run += 1
+        else:
+            if run >= 3: runs += 1
+            run = 0
+    if run >= 3: runs += 1
+
+    longest_run = 0
+    cur = 0
+    for x in L:
+        cur = cur + 1 if x < SHORT_CHARS else 0
+        longest_run = max(longest_run, cur)
+
+    d = {"평균문장길이": round(avg, 1), "단문비율": round(short, 3),
+         "스타카토구간": runs, "최장단문연속": longest_run,
+         "문장수": [len(b), len(a)],
+         "기준선": {"사람_모집카피_단락": [45.5, 0.137], "사람_학술산문": [62.7, None]}}
+
+    # [HARD] 문장 수가 늘었다는 사실만으로 단문화라 부르지 않는다. E-5(8어절
+    # 이상 절 분리)와 C-12(쉼표 과다 문장 분리)의 분리는 정당하고, before/after
+    # 두 파일만으로는 어느 규칙이 나눴는지 귀속할 수 없다(codex finding 1).
+    # 문장 수 변화는 사실로만 싣고, '의심'은 리듬 지표가 실제로 짧을 때만 단다.
+    hint = []
+    if avg < RHYTHM_MIN_AVG:
+        hint.append(f"평균 {avg:.1f}자 < 참고 하한 {RHYTHM_MIN_AVG}자")
+    if short > RHYTHM_MAX_SHORT:
+        hint.append(f"25자 미만 {short:.1%} > 참고 상한 {RHYTHM_MAX_SHORT:.0%}")
+    if longest_run > RHYTHM_MAX_RUN:
+        hint.append(f"단문 최장 {longest_run}연속")
+    if hint and len(a) > len(b):
+        hint.append(f"문장이 {len(b)}→{len(a)}개로 늘었다(원인 귀속은 정독이 한다)")
+
+    d["단문화_의심"] = bool(hint)
+    note = (f"평균 {avg:.1f}자 · 단문 {short:.1%} · 최장 {longest_run}연속"
+            + (f" — 단문화 의심: {' / '.join(hint)}. **판정은 Phase 2.5 정독 소견과 "
+               f"Phase 6 정독 재판정이 한다**(이 축은 그쪽이 볼 곳을 가리킬 뿐이다)."
+               if hint else " — 참고 기준선 안"))
+    return "REPORT", note, d
+
+
 def run(before: str, after: str, genre: str = "essay",
         ignore_markup: bool = False,
         baseline: Optional[str] = None,
         baseline_v2: Optional[str] = None) -> dict[str, Any]:
     m2 = _load("metrics_v2")
     ck = _load("checks")
+    # [HARD] 여기서 한 번만 정규화한다. 축마다 따로 하면 축마다 다른 장르가
+    # 된다 — 실측: `카피`가 P0/P5에서는 카피로, P3에서는 산문으로 판정돼
+    # emoji_residue FAIL이 났다(2026-08-27 codex finding 4).
+    display_genre = genre
+    genre = canonical_genre(genre)
 
     rate = m2.change_rate(before, after, ignore_markup)
     rate_nm = m2.change_rate(before, after, True)
@@ -177,11 +285,18 @@ def run(before: str, after: str, genre: str = "essay",
     p2_s, p2_n = judge_annihilation(m2, before, after)
     p3_s, p3_n, p3_d = judge_invariants(ck, before, after, genre)
     touch, touched, total = m2.sentence_touch_rate(before, after)
+    p5_s, p5_n, p5_d = judge_rhythm(m2, before, after, genre)
 
     if p0_s == "ABORT":
         verdict, code = "ABORT", EXIT_ABORT
     elif "WARN" in (p0_s, p1_s, p3_s) or "FAIL" in (p2_s, p3_s):
         verdict, code = "WARN", EXIT_WARN
+    elif p5_d.get("단문화_의심"):
+        # [HARD] fail-closed. P5는 보편 임계 게이트가 아니지만(표본 부족),
+        # 의심이 뜬 글을 "게이트가 봤고 괜찮다더라"로 흘려보내지도 않는다.
+        # 통과시키려면 Phase 6 정독 재판정이 근거를 적고 accept를 내야 한다.
+        # 앞선 감사에서 문장 20→40 반례가 PASS/exit 0을 받은 경로가 여기다.
+        verdict, code = "INCONCLUSIVE", EXIT_WARN
     elif p1_s in ("SKIP", "NO_BASELINE"):
         # **검사하지 못한 것을 통과로 읽지 않는다.** 표본이 짧거나 baseline이
         # 없으면 P1은 아무 말도 하지 못하는데, 그걸 PASS로 흘리면 "게이트가
@@ -195,6 +310,7 @@ def run(before: str, after: str, genre: str = "essay",
         "verdict": verdict,
         "exit_code": code,
         "genre": genre,
+        "genre_input": display_genre,
         "axes": {
             "P0_문자율": {"status": p0_s, "note": p0_n,
                           "value": round(rate, 4), "마크업제외": round(rate_nm, 4)},
@@ -203,6 +319,7 @@ def run(before: str, after: str, genre: str = "essay",
             "P3_불변식": {"status": p3_s, "note": p3_n, "detail": p3_d},
             "P4_터치율": {"status": "REPORT",
                           "note": f"원문 문장 {touched}/{total}개가 그대로 남지 않았다 ({touch:.1%})"},
+            "P5_리듬": {"status": p5_s, "note": p5_n, "detail": p5_d},
         },
         "caveat": (
             "P1은 stdev가 추정치인 z에 기대므로 지시적 수치다. P0·P2는 정확한 셈이다. "
@@ -225,7 +342,7 @@ class _GateArgParser(argparse.ArgumentParser):
 
 
 def main(argv: Optional[list[str]] = None) -> int:
-    ap = _GateArgParser(description="korean-humanize 구조 게이트 (4축)")
+    ap = _GateArgParser(description="korean-humanize 구조 게이트 (5축)")
     ap.add_argument("--before", required=True, help="윤문 전 원문")
     ap.add_argument("--after", required=True, help="윤문본")
     ap.add_argument("--genre", default="essay")

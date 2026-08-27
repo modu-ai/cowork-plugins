@@ -4,7 +4,7 @@
 
 ## 진입점
 
-- 진입점은 `/project <자연어 지시>`. 소크라테스 인터뷰 → 플러그인 인벤토리 스캔 → 커스텀 에이전트/스킬 체인 설계 → `AGENTS.md`(폴더 지침 정본, ≤200라인) + `CLAUDE.md`(`@AGENTS.md` 포인터) + `.claude/agents/` + `.moai/` 스캐폴드 생성.
+- 진입점은 `/project <자연어 지시>`. 소크라테스 인터뷰 → 플러그인 인벤토리 스캔 → 커스텀 에이전트/스킬 체인 설계 → `AGENTS.md`(폴더 지침 정본, ≤500라인) + `CLAUDE.md`(`@AGENTS.md` 포인터) + `.claude/agents/` + `.moai/` 스캐폴드 생성.
 - 자연어 의도 감지 불가 시 `AskUserQuestion`으로 확인(`router.md`).
 
 ## 파일 인덱스
@@ -16,7 +16,7 @@
 | `designer-setup.md` | 디자인 자산 5-Phase 서브 프로토콜 |
 | `init-protocol.md` | 인터뷰 질문 스키마·인벤토리 스캔·Gap Detection·재개(Re-entry) 상세 |
 | `context-collector.md` | 맥락 등급(A/B/C)·2-Stage 일괄 설문 플로우·모호성 감지·맥락 적용 규칙 |
-| `agentsmd-generator.md` | AGENTS.md 변수 치환·200라인 예산·HARD 블록 보존·CLAUDE.md 포인터 규칙·레거시 마이그레이션 |
+| `agentsmd-generator.md` | AGENTS.md 변수 치환·500라인 예산·HARD 블록 보존·CLAUDE.md 포인터 규칙·레거시 마이그레이션 |
 | `execution-protocol.md` | 스킬 체인 순차 실행·검증 깊이 사다리·검색 스케일링 |
 | `evaluation-protocol.md` | 5차원 산출물 평가(정확성·완전성·실용성·톤·도메인) |
 | `quality-evaluator.md` | 결정론적 품질 게이트(파일 유효성·마크다운 렌더링·AI 작문 패턴·근거 검증) |

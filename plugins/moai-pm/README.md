@@ -10,7 +10,7 @@
 /project <자연어 지시>
 ```
 
-Claude Cowork(Desktop) 프로젝트 초기화 — 소크라테스 인터뷰 → 설치된 AI 코워커 인벤토리 스캔 → **프로젝트 전용 커스텀 에이전트·스킬 체인 설계** → `AGENTS.md`(폴더 지침 정본, ≤200라인) + `CLAUDE.md`(`@AGENTS.md` 포인터) + `.claude/agents/` + `.moai/` 스캐폴드 생성 → **사용하면서 재귀적 자가 개선**
+Claude Cowork(Desktop) 프로젝트 초기화 — 소크라테스 인터뷰 → 설치된 AI 코워커 인벤토리 스캔 → **프로젝트 전용 커스텀 에이전트·스킬 체인 설계** → `AGENTS.md`(폴더 지침 정본, ≤500라인) + `CLAUDE.md`(`@AGENTS.md` 포인터) + `.claude/agents/` + `.moai/` 스캐폴드 생성 → **사용하면서 재귀적 자가 개선**
 
 ```
                         ┌───────────────────────┐
@@ -131,7 +131,7 @@ PM이 먼저 인사하고 무엇을 할지 묻습니다. "온라인 클래스 �
 
 | 파일 | 내용 |
 |------|------|
-| `./AGENTS.md` | 프로젝트 지침 정본(≤200라인) — 워크플로우 표 + 8개 HARD 규칙 + evolution-log |
+| `./AGENTS.md` | 프로젝트 지침 정본(≤500라인) — 워크플로우 표 + 8개 HARD 규칙 + evolution-log |
 | `./CLAUDE.md` | Claude용 포인터 — `@AGENTS.md` 임포트 한 줄(본문 복제 없음) |
 | `./.claude/agents/*.md` | 프로젝트 전용 커스텀 에이전트(자가 개선 대상) |
 | `./.moai/config.json` | 플러그인·커넥터·API 키 참조 |
