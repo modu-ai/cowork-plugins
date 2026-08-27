@@ -39,12 +39,25 @@
       "chart": {
         "type": "bar",
         "data": {
-          "labels": ["Q1", "Q2", "Q3", "Q4"],
-          "values": [320, 480, 610, 920],
+          "labels": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4"
+          ],
+          "values": [
+            320,
+            480,
+            610,
+            920
+          ],
           "unit": "천 명"
         }
       },
-      "bullets": ["신규 고객 217% 증가", "엔터프라이즈 확장이 핵심 동력"],
+      "bullets": [
+        "신규 고객 217% 증가",
+        "엔터프라이즈 확장이 핵심 동력"
+      ],
       "notes": "Q3~Q4 가파른 성장의 원인인 엔터프라이즈 계약 3건을 강조. 숫자는 deck.json 원고와 정확히 일치해야 한다."
     },
     {
@@ -70,6 +83,24 @@
         "75개 브랜드 토큰 — getdesign.md 미리보기",
         "doc-pptx 체이닝 — 편집 가능 PPTX"
       ],
+      "icons": [
+        {
+          "icon": "app-window",
+          "icon_reason": "'브라우저 즉시 오픈' — 창을 여는 행위"
+        },
+        {
+          "icon": "bar-chart-3",
+          "icon_reason": "'인포그래픽' — 수치를 그림으로 보여주는 산출물"
+        },
+        {
+          "icon": "globe",
+          "icon_reason": "'getdesign.md 미리보기' — 웹에서 열어 확인하는 행위"
+        },
+        {
+          "icon": "file-output",
+          "icon_reason": "'편집 가능 PPTX' — 편집할 수 있는 파일로 내보내는 행위"
+        }
+      ],
       "notes": "4가지 차별점. 인포그래픽 정확도와 편집 가능 PPTX를 핵심 세일즈 포인트로."
     },
     {
@@ -82,9 +113,18 @@
         "type": "donut",
         "data": {
           "segments": [
-            { "label": "B2B SaaS", "value": 60 },
-            { "label": "엔터프라이즈", "value": 25 },
-            { "label": "기타", "value": 15 }
+            {
+              "label": "B2B SaaS",
+              "value": 60
+            },
+            {
+              "label": "엔터프라이즈",
+              "value": 25
+            },
+            {
+              "label": "기타",
+              "value": 15
+            }
           ]
         }
       },
@@ -96,7 +136,9 @@
       "layout_key": "cta",
       "title": "다음 단계",
       "subtitle": "v2.24.0 출시를 함께 만들어 갑시다",
-      "bullets": ["이번 주 베타 오픈 · 다음 주 정식 릴리스"],
+      "bullets": [
+        "이번 주 베타 오픈 · 다음 주 정식 릴리스"
+      ],
       "notes": "행동 요청. 베타 참여 링크와 타임라인 명확히 전달."
     },
     {
