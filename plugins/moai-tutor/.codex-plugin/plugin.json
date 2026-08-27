@@ -2,7 +2,7 @@
   "$schema": "https://developers.openai.com/plugins/build/plugins",
   "$comment": "OpenAI/Codex 플러그인 매니페스트. Claude용 .claude-plugin/plugin.json과 나란히 공존. 본체(skills/SKILL.md, .mcp.json)는 양쪽 공유.",
   "name": "moai-tutor",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "교육 전담 AI 코워커 — 커리큘럼 설계·학습 자료·평가 문항 제작·강좌 운영 매뉴얼·논문 검색/작성·연구 보조 스킬 11종. 강사와 학습자 양쪽 워크플로우를 지원합니다. 이런 분께 추천: 강사·교육 기획자·대학원생·연구자.",
   "author": {
     "name": "모두의 AI",
