@@ -14,7 +14,7 @@ description: |
   Soul·Nano Banana·GPT Image·Seedream·FLUX·Recraft·Marketing Studio 등 계열의 프롬프트 크래프트는
   references/prompt-craft/*.md에 출처와 함께 큐레이션돼 있고, 실제 파라미터(모델 id·해상도·비율·비용)는
   런타임에 라이브 조회합니다. 프롬프트만 필요하면 moai-coworker의 *-prompt 스킬을 사용하세요.
-version: "1.1.0"
+version: "1.2.0"
 ---
 
 # Higgsfield 이미지 생성 (media-higgsfield-image)
@@ -74,11 +74,20 @@ Higgsfield 이미지, Soul, Nano Banana, Nano Banana Pro, GPT Image, Seedream, F
 
 같은 파라미터에 `get_cost: true`를 넣어 `credits`를 확인합니다(크레딧 0 소모). 응답의 `adjustments`가 있으면 서버가 채운 기본값이므로 리드백해 둡니다. 잔액 정지 규칙은 core `job-lifecycle.md`.
 
-### 4단계 — 생성 (generate_image)
+### 4단계 — 승인 게이트 (크레딧 소진 전)
 
-조회된 값으로만 실제 `generate_image`를 호출합니다. namespace는 런타임 해석(→ core `call-schema.md`). 참조 이미지는 `media_id`/`job_id`로만 전달합니다(URL 거부).
+`get_cost`는 비용을 **조회**할 뿐 승인을 받지 않습니다. 크레딧이 실제로 나가기 전 마지막 정지선이며, 코어 §유료 생성 승인 게이트를 그대로 따릅니다 — 프롬프트 전문·모델 id·입력 미디어·확정 옵션·생성 개수·`adjustments`·견적 크레딧·잔액을 보여주고 승인을 받습니다.
 
-### 5단계 — 폴링·리드백
+- **[HARD] 3단계에서 확보한 `adjustments`를 여기서 보여줍니다.** 6단계 리드백은 이미 돈이 나간 뒤입니다 — 서버가 요청을 바꿨다는 사실은 취소할 수 있을 때 알아야 합니다.
+- 이 스킬은 사용자에게 직접 묻지 않으므로, 게이트에 도달하면 blocker로 반환하고 오케스트레이터가 `AskUserQuestion`으로 묻습니다.
+
+### 5단계 — 생성 (generate_image)
+
+승인된 값으로만 실제 `generate_image`를 호출합니다. namespace는 런타임 해석(→ core `call-schema.md`). 참조 이미지는 `media_id`/`job_id`로만 전달합니다(URL 거부).
+
+- **[HARD] 실패해도 새 잡을 만들지 않습니다.** 애매하게 실패하면 반환된 job ID를 `job_status`로 먼저 확인하고, ID조차 없으면 **생성 이력 조회 도구가 실제로 노출돼 있는지 먼저 확인합니다** — 코어 계약에 있는 것은 `job_status`·`job_display`뿐입니다. 없으면 사용자에게 Higgsfield 대시보드 확인을 요청합니다. 없다는 것이 확인된 뒤에만 다시 호출합니다.
+
+### 6단계 — 폴링·리드백
 
 `job_status`로 `completed`까지 폴링하고, 결과 URL과 함께 반환된 `adjustments`를 사용자에게 보고합니다 — 요청과 다르게 서버가 치환한 것이 있으면 숨기지 않습니다.
 

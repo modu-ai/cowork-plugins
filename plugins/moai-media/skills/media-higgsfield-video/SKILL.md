@@ -14,7 +14,7 @@ description: |
   Veo·Kling·Seedance·Cinema Studio·Marketing Studio·Wan·Gemini Omni·Grok 등 계열의 프롬프트 크래프트는
   references/prompt-craft/*.md에 출처와 함께 큐레이션돼 있고(계열마다 규칙이 다름 — 범용 공식 없음),
   실제 파라미터(모델 id·해상도·비율·길이·비용)는 런타임에 라이브 조회합니다.
-version: "1.1.0"
+version: "1.2.0"
 ---
 
 # Higgsfield 영상 생성 (media-higgsfield-video)
@@ -72,11 +72,21 @@ Higgsfield MCP의 영상 생성 도구를 호출하는 스킬입니다. 사용�
 
 같은 파라미터에 `get_cost: true`를 넣어 `credits`를 확인합니다(크레딧 0). `adjustments`가 있으면 서버가 채운 기본값이므로 리드백해 둡니다(예: 오디오를 요청했는데 `generate_audio: false`로 치환됐다면 보고). 잔액 정지 규칙은 core `job-lifecycle.md`.
 
-### 4단계 — 생성 (generate_video)
+### 4단계 — 승인 게이트 (크레딧 소진 전)
 
-조회된 값으로만 실제 `generate_video`를 호출합니다. namespace는 런타임 해석. 참조 미디어는 `media_id`/`job_id`로만 전달합니다.
+`get_cost`는 비용을 **조회**할 뿐 승인을 받지 않습니다. 크레딧이 실제로 나가기 전 마지막 정지선이며, 코어 §유료 생성 승인 게이트를 그대로 따릅니다 — 프롬프트 전문·모델 id·입력 미디어·확정 옵션·길이·생성 개수·`adjustments`·견적 크레딧·잔액을 보여주고 승인을 받습니다.
 
-### 5단계 — 폴링·리드백
+- **[HARD] 3단계에서 확보한 `adjustments`를 여기서 보여줍니다.** 3단계의 예(오디오를 요청했는데 `generate_audio: false`로 치환)가 바로 이 게이트가 필요한 이유입니다 — 오디오 없는 영상에 영상 값 크레딧을 낸 뒤에 알게 되면 늦습니다.
+- 위 §위험 블록에 해당하는 모델(`gemini_omni` video-references·`minimax_hailuo` 카메라 명령)이면 **그 경고를 승인 화면에 함께 띄웁니다.** 알려진 위험을 아는 채로 돈을 쓸지 사용자가 고르게 합니다.
+- 이 스킬은 사용자에게 직접 묻지 않으므로, 게이트에 도달하면 blocker로 반환하고 오케스트레이터가 `AskUserQuestion`으로 묻습니다.
+
+### 5단계 — 생성 (generate_video)
+
+승인된 값으로만 실제 `generate_video`를 호출합니다. namespace는 런타임 해석. 참조 미디어는 `media_id`/`job_id`로만 전달합니다.
+
+- **[HARD] 실패해도 새 잡을 만들지 않습니다.** 애매하게 실패하면 반환된 job ID를 `job_status`로 먼저 확인하고, ID조차 없으면 **생성 이력 조회 도구가 실제로 노출돼 있는지 먼저 확인합니다** — 코어 계약에 있는 것은 `job_status`·`job_display`뿐입니다. 없으면 사용자에게 Higgsfield 대시보드 확인을 요청합니다. 없다는 것이 확인된 뒤에만 다시 호출합니다. 영상은 이미지보다 단가가 높아 중복 비용이 큽니다.
+
+### 6단계 — 폴링·리드백
 
 `job_status`로 `completed`까지 폴링하고, 결과 URL과 함께 반환된 `adjustments`를 사용자에게 보고합니다.
 
