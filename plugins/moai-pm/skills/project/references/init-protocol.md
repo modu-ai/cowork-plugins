@@ -37,7 +37,7 @@ Phase 8: API 키 / 커넥터 + 첫 실행 안내
 
 ---
 
-## Phase 1: 워크플로우 인터뷰 (2-Stage 일괄 설문)
+## Phase 1: 워크플로우 인터뷰 (커버리지 기반 · 라운드 무제한)
 
 사용자의 **이 프로젝트 맥락**만 수집한다. 이름·회사·역할 같은 **글로벌 프로필 정보는 묻지 않는다**.
 
@@ -126,7 +126,7 @@ for f in ./.codex/agents/*.toml ~/.codex/agents/*.toml; do [ -f "$f" ] && basena
 
 ### 2-2. `.moai/config.json` 인벤토리 스냅샷 스키마
 
-**[HARD] 아래 네 필드는 없으면 후속 기능이 통째로 죽는다.** `plugins_installed`의 **버전**과 `skills_available`의 **digest**가 없으면 `update`가 "변경된 스킬"을 영영 검출하지 못하고, `template_version`·`hard_block_digests`가 없으면 HARD 블록 재동기화가 사용자 편집과 구 템플릿을 구분하지 못한다(`update-protocol.md` §4-1). `sensitivity`가 없으면 맞춤법 단계가 fail-open 된다.
+**[HARD] 아래 네 필드는 없으면 후속 기능이 통째로 죽는다.** `plugins_installed`의 **버전**과 `skills_available`의 **digest**가 없으면 `update`가 "변경된 스킬"을 영영 검출하지 못하고, `template_version`·`hard_block_digests`가 없으면 HARD 블록 재동기화가 사용자 편집과 구 템플릿을 구분하지 못한다(`update-protocol.md` §4-1). `sensitivity`가 없으면 맞춤법 단계가 fail-open 된다. `coverage`가 없으면 재개(resume) 시 이미 답한 축을 **다시 묻게 된다** — 커버리지 표(SKILL.md §Socratic Interview)의 24축 상태를 그대로 저장한다.
 
 ```json
 {
@@ -139,6 +139,10 @@ for f in ./.codex/agents/*.toml ~/.codex/agents/*.toml; do [ -f "$f" ] && basena
   "template_version": "1.5.0",
   "hard_block_digests": { "6. 한국어 품질 체인 (HARD)": "sha256:...", "...": "..." },
   "sensitivity": "public | sensitive | unknown",
+  "coverage": {
+    "A": { "1": "충족", "2": "충족", "3": "유예" },
+    "H": { "22": "충족", "23": "미확인", "24": "유예" }
+  },
   "confidence": { "moai-pm": "HIGH" }
 }
 ```
@@ -325,7 +329,7 @@ Phase 2에서 선택된 플러그인이 API 키를 요구하면 등록 안내.
 | Phase | 호출 | 한 호출에 담는 질문 수 | 옵션 수 |
 |-------|------|------------------------|---------|
 | Phase 1 · S1 일괄 진단 | 1 | **최대 4 (묶음 배치)** | 각 ≤4 (+Other) |
-| Phase 1 · S2 보강(조건부) | 0-N | 부족분 전부 묶어 최대 4 | 각 ≤4 (+Other) |
+| Phase 1 · 후속 라운드(커버리지 미충족 시) | 0-N (상한 없음) | 미확인 축을 정보 이득 순 최대 4 | 각 ≤4 (+Other) |
 | Phase 4 Gap Detection(조건부) | 0-1 | 1 | 4 |
 | Phase 5 설계 확인 | 1 | 1 | 3 |
 | Phase 8 API 키(조건부) | 0-1 | 1-2 | 최대 4(multiSelect) |

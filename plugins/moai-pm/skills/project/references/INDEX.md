@@ -15,7 +15,7 @@
 | `cowork-setup.md` | 코워커·작가 8-Phase 정본(역할 자동 감지·체인 프리셋·커스텀 에이전트 생성·인용 가드) |
 | `designer-setup.md` | 디자인 자산 5-Phase 서브 프로토콜 |
 | `init-protocol.md` | 인터뷰 질문 스키마·인벤토리 스캔·Gap Detection·재개(Re-entry) 상세 |
-| `context-collector.md` | 맥락 등급(A/B/C)·2-Stage 일괄 설문 플로우·모호성 감지·맥락 적용 규칙 |
+| `context-collector.md` | 맥락 등급(A/B/C)·커버리지 기반 라운드 설문 플로우·모호성 감지·맥락 적용 규칙 |
 | `agentsmd-generator.md` | AGENTS.md 변수 치환·500라인 예산·HARD 블록 보존·CLAUDE.md 포인터 규칙·레거시 마이그레이션 |
 | `execution-protocol.md` | 스킬 체인 순차 실행·검증 깊이 사다리·검색 스케일링 |
 | `evaluation-protocol.md` | 5차원 산출물 평가(정확성·완전성·실용성·톤·도메인) |
