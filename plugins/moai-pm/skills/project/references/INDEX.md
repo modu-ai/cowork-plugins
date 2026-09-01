@@ -5,7 +5,7 @@
 ## 진입점
 
 - 진입점은 `/project <자연어 지시>`. 소크라테스 인터뷰 → 플러그인 인벤토리 스캔 → 커스텀 에이전트/스킬 체인 설계 → `AGENTS.md`(폴더 지침 정본, ≤500라인) + `CLAUDE.md`(`@AGENTS.md` 포인터) + `.claude/agents/` + `.moai/` 스캐폴드 생성.
-- 자연어 의도 감지 불가 시 `AskUserQuestion`으로 확인(`router.md`).
+- 자연어 의도 감지 불가 시 런타임의 구조화 질문 도구로 확인(`router.md`) — Claude `AskUserQuestion` · ChatGPT Work `request_user_input`.
 
 ## 파일 인덱스
 

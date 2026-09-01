@@ -1,7 +1,7 @@
 {
   "name": "moai-marketer",
   "displayName": "📣 마케터",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "마케팅 전담 AI 코워커 — 캠페인 기획·퍼포먼스 분석·키워드 리서치·그로스 실험·리텐션(marketing-* 14종), 블로그·뉴스레터·SNS 콘텐츠(content-* 7종) 스킬 21종. Meta Ads·게시 채널 MCP 연동. 이미지·오디오·영상 미디어 생성(media-*)은 moai-media 플러그인으로 분리되었습니다. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 마케터·콘텐츠 크리에이터·1인 브랜드.",
   "author": {
     "name": "모두의 AI",

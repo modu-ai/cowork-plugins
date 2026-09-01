@@ -15,7 +15,7 @@ description: |
   - 사업·콘텐츠·디자인·커머스·법무·재무·인사 등 비개발 자연어 요청을 적합한 AI 코워커 플러그인으로 라우팅해야 할 때
 
   이 스킬은 **이름·회사 같은 글로벌 프로필을 재질문하지 않는다.** 프로젝트마다 "이번에 뭘 할 건지"만 인터뷰한다.
-version: "1.5.0"
+version: "1.6.0"
 ---
 <!-- moai-pm project · 플러그인 패밀리 · 프로젝트 초기화 단일 진입점 -->
 
@@ -41,16 +41,63 @@ version: "1.5.0"
 
 **[HARD] 질문 총량에 상한을 두지 않는다.** 종료를 정하는 것은 라운드 수가 아니라 **커버리지**다 — 아래 8개 영역이 채워지거나 명시적으로 유예될 때까지 계속 묻는다. 맥락을 얕게 잡으면 그 얕음이 폴더 지침·스킬 체인·이후 모든 산출물에 그대로 복제되고, 되돌리려면 프로젝트를 다시 세워야 한다.
 
-**단, 한 번의 `AskUserQuestion` 호출은 1~4질문 × 각 2~4옵션이다.** 이것은 [Agent SDK 공식 사양](https://code.claude.com/docs/en/agent-sdk/user-input)의 **기계적 상한**이지 우리가 정한 정책이 아니다. 그래서 질문을 늘리는 방법은 **한 화면에 더 넣는 것이 아니라 라운드를 더 도는 것**이다. 질문을 1개씩 쪼개 연속 호출하지 않고, **매 라운드 4슬롯을 꽉 채운다.**
+**단, 한 번의 호출에 담을 수 있는 양은 런타임이 정한다.** 아래 상한은 **기계적 제약**이지 우리가 정한 정책이 아니다. 그래서 질문을 늘리는 방법은 **한 화면에 더 넣는 것이 아니라 라운드를 더 도는 것**이다. 질문을 1개씩 쪼개 연속 호출하지 않고, **매 라운드 슬롯을 꽉 채운다.**
 
-### 런타임별 사실관계 (2026-08-27 확인)
+### 런타임별 질문 채널 (2026-08-28 확인)
 
-| 런타임 | AskUserQuestion | 근거 |
-|---|---|---|
-| **Claude Code** | 네이티브 | [Tools reference](https://code.claude.com/docs/en/tools-reference) |
-| **Claude Cowork(Desktop)** | 있음 — Agent SDK 기본 도구 | 같은 SDK 위에서 돈다. 다만 **렌더링 버그가 열려 있다**(아래) |
-| **서브에이전트** | **없음** | 공식: *"AskUserQuestion is not currently available in subagents spawned via the Agent tool"* |
-| **Codex(ChatGPT Work)** | 네이티브 아님 | [openai/codex #9926](https://github.com/openai/codex/issues/9926) 기능 요청 상태 |
+**[HARD] 질문 채널은 런타임마다 다르다. 도구 이름을 하드코딩하지 않는다.** 현재 세션에 실제로 노출된 도구를 쓴다.
+
+| 런타임 | 질문 도구 | 한 호출 상한 | 근거 |
+|---|---|---|---|
+| **Claude Code** | `AskUserQuestion` | 1~4질문 × 각 2~4옵션 | [Tools reference](https://code.claude.com/docs/en/tools-reference) · [Agent SDK](https://code.claude.com/docs/en/agent-sdk/user-input) |
+| **Claude Cowork(Desktop)** | `AskUserQuestion` | 동일 | 같은 SDK 위에서 돈다. 다만 **렌더링 버그가 열려 있다**(아래) |
+| **ChatGPT Work(Codex)** | **`request_user_input`** | **1질문 권장·3 초과 금지 × 각 2~3옵션** | [request_user_input_spec.rs](https://github.com/openai/codex/blob/main/codex-rs/core/src/tools/handlers/request_user_input_spec.rs) |
+| **서브에이전트** | **없음** | — | 공식: *"AskUserQuestion is not currently available in subagents spawned via the Agent tool"* |
+
+#### ChatGPT Work — `request_user_input`
+
+Codex의 질문 도구다. 사용자에게는 선택지 카드(picker)로 뜬다. **`AskUserQuestion`과 스키마가 다르므로 그대로 옮겨 쓰면 거부된다.**
+
+```json
+{
+  "questions": [
+    {
+      "id": "deploy_target",
+      "header": "배포 대상",
+      "question": "이 프로젝트를 어디에 올리실 계획인가요?",
+      "options": [
+        { "label": "아직 미정 (권장)", "description": "지금 정하지 않고 나중에 골라도 됩니다. 폴더 지침에는 '미정'으로 적힙니다." },
+        { "label": "웹 호스팅",       "description": "Vercel·Cloudflare 같은 곳. 배포 스킬을 체인에 넣습니다." },
+        { "label": "사내 서버",       "description": "외부로 나가지 않습니다. 보안 문항을 한 번 더 여쭙니다." }
+      ]
+    }
+  ]
+}
+```
+
+**[HARD] `AskUserQuestion`과 다른 점 — 옮겨 쓸 때 반드시 맞춘다:**
+
+| 항목 | 차이 |
+|---|---|
+| `id` | **필수 신설.** snake_case 안정 식별자. 응답이 `answers[id]` 로 돌아오므로 없으면 매핑이 안 된다 |
+| 질문 수 | **1개 권장, 3개 초과 금지** (Claude는 4개). 4질문 라운드를 그대로 옮기면 안 된다 |
+| 옵션 수 | **2~3개** (Claude는 2~4개). 4번째 옵션은 잘라낸다 |
+| `header` | 12자 이하 — Claude와 같다 |
+| "기타" | 클라이언트가 자동으로 붙인다. **직접 넣지 않는다** (`is_other` 가 강제로 `true` 가 된다) |
+| 권장 표기 | 첫 옵션 라벨 끝에 `(권장)` — Claude와 같다 |
+| 빈 옵션 | **거부된다.** 모든 질문에 옵션이 최소 1개 있어야 한다 |
+
+**[HARD] Plan 모드가 아니면 이 도구는 쓸 수 없다.** `allows_request_user_input()` 이 `Plan` 에만 `true` 다([config_types.rs:699](https://github.com/openai/codex/blob/main/codex-rs/protocol/src/config_types.rs)). Default 모드에서는 실험 플래그(`DefaultModeRequestUserInput`)가 켜져 있지 않으면 런타임이 `request_user_input is unavailable in Default mode` 로 거부한다([#24750](https://github.com/openai/codex/issues/24750)).
+
+Codex 공식 Default 모드 지침 원문: *"In Default mode, strongly prefer making reasonable assumptions and executing the user's request rather than stopping to ask questions."* 즉 **Default 모드는 애초에 인터뷰를 하지 말라는 모드다.**
+
+그래서 `/project` 의 deep interview 는 이렇게 다룬다:
+
+1. **도구가 노출돼 있으면 그대로 쓴다** — 위 스키마로, 라운드를 나눠 커버리지를 채운다.
+2. **노출돼 있지 않으면(Default 모드) 사용자에게 알리고 고르게 한다.** "지금 모드에서는 선택지 카드를 띄울 수 없습니다. Plan 모드로 바꾸시면 카드로 여쭙고, 아니면 글로 여쭙겠습니다." — 임의로 가정하고 진행하지 않는다. 프로젝트 셋업은 그 얕음이 이후 모든 산출물에 복제되는 자리다.
+3. **글로 묻게 되면 번호 매긴 선택지를 응답 본문에 낸다.** Codex 지침이 금지하는 것은 *도구를 쓸 수 있는데도* 텍스트로 객관식을 내는 것이다. 도구가 없어 글로 묻는 것은 그 금지 대상이 아니다.
+
+**[HARD] 라운드 설계는 상한이 작은 쪽에 맞춘다.** 같은 인터뷰를 두 런타임에서 돌리려면 **1질문 × 3옵션**을 공통 단위로 잡는다. Claude에서만 4질문을 채우고 Codex에서 잘라내면, 잘려 나간 질문이 어느 쪽에서는 물어지고 어느 쪽에서는 안 물어진다 — 같은 프로젝트가 런타임에 따라 다른 깊이로 세워진다.
 
 **[HARD] 응답이 없다고 「거절」로 읽지 않는다.** Cowork 데스크톱에는 미해결 버그가 있다([anthropics/claude-code #58750](https://github.com/anthropics/claude-code/issues/58750), open) — 질문 카드가 렌더러에 도달하지 못해 **사용자가 질문을 본 적도 없는데** 앱 종료 시 `behavior=deny`로 강제 처리되고 "Dismissed"로 기록된다. 8일간 35건 보고됐고 공식 해결책도 회피책도 없다.
 
@@ -116,7 +163,7 @@ version: "1.5.0"
 | **B** | 핵심 맥락(산출물별 도메인 정보) — 80% 이상 충족 권장 | S1 배치에 포함, 부족분만 S2 |
 | **C** | 보강 맥락(배경·동기·제약·일정 등) — 고위험 산출물일 때만 수집 | S2 슬롯에 합류(별도 텍스트 대화 없음) |
 
-**재질문 금지**: 이미 A/B등급으로 확립된 답은 다시 묻지 않는다. 질문 채널은 항상 `AskUserQuestion`이다.
+**재질문 금지**: 이미 A/B등급으로 확립된 답은 다시 묻지 않는다. 질문 채널은 §런타임별 질문 채널을 따른다 — Claude는 `AskUserQuestion`, ChatGPT Work는 `request_user_input`이다.
 
 **재개(resume) 인터뷰**: `.moai/context.md` + 기존 `AGENTS.md` 프로젝트 개요를 먼저 읽어 이미 확립된 맥락을 재사용한다. 상세 질문 축 풀·슬롯 채우기·모호성 감지는 `references/init-protocol.md` §Phase 1 + `references/context-collector.md` 참조.
 
