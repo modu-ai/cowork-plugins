@@ -8,7 +8,7 @@
     "archhub": {
       "$comment": "국토교통부 건축HUB MCP (chrisryugj/archhub-mcp, MIT) — 11도구. 건축물대장·건축인허가·주택인허가 + 법정동코드 + 한 필지 종합카드(building_profile)·층별 구성·동 단위 통계·노후건축물·철거멸실(석면)·인허가 파이프라인·공시가격 시계열. 공용키 탑재 remote 커넥터(URL만 등록). data.go.kr 공식 API 실측값, 출처 명시, [NOT_FOUND] 환각방지. 라이브 스킬: moai-analyst:data-building-ledger.",
       "type": "http",
-      "url": "https://archhub-mcp.fly.dev/mcp"
+      "url": "https://mcp.gomdori.app/archhub"
     },
     "dart": {
       "$comment": "OpenDART 전자공시 MCP (chrisryugj/korean-dart-mcp, MIT) — 83개 API를 15 도구로 압축. 공시·재무·지분·XBRL(markdown_full 전체 계정 + 계산 검증) + 버핏급 애널리스트 프레임(insider_signal·disclosure_anomaly·buffett_quality_snapshot) + HWP/PDF 첨부 마크다운화(kordoc 엔진) + 90일 자동분할. 사전 설치: Node.js 20.19+(LTS 권장). 회사명/종목코드/corp_code 자동 해결(SQLite FTS, 첫 기동 시 11.6만건 덤프 약 5-10초). 키 발급: opendart.fss.or.kr 회원가입 → 인증키 신청(이메일 즉시, 40자, 일 20,000건 무료).",

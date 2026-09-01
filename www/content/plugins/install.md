@@ -4,7 +4,7 @@ weight: 10
 description: "마켓플레이스 등록 → 필요한 코워커 설치 → 확인 → 업데이트·비활성화·제거, 그리고 MCP 자격증명 준비까지 따라 하기."
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-13T00:00:00+09:00
+lastmod: 2026-09-01T00:00:00+09:00
 ---
 
 플러그인 설치는 크게 두 단계입니다. 먼저 **마켓플레이스를 한 번 등록**하고(어느 가게에서 물건을 받아올지 Claude 또는 ChatGPT에게 알려 주는 일), 그다음 **필요한 코워커 플러그인만 골라 설치**합니다. 마켓플레이스 등록은 컴퓨터당 한 번이면 되고 이후에는 설치·업데이트·제거만 반복하면 됩니다.
@@ -92,7 +92,7 @@ Plugins 화면에서 각 코워커별로 업데이트·비활성화·제거를 �
 | `moai-seller` | 카페24 | 개발자센터 앱 클라이언트 ID·시크릿 등 환경변수 |
 | `moai-seller` | 아임웹 | OPEN API 키 발급 후 환경변수 |
 | `moai-marketer` | Meta Ads | Meta 비즈니스 계정 인증 |
-| `moai-marketer` | 게시 채널 (post-bridge·typefully·wordpress) | 각 서비스 계정 연결 |
+| `moai-marketer` | 게시 채널 (typefully·wordpress) | 각 서비스 계정 연결 |
 | `moai-media` | Higgsfield·ElevenLabs | Higgsfield OAuth ([설정 가이드](higgsfield-setup/))·ElevenLabs API 키 |
 | `moai-story` | Higgsfield | Higgsfield OAuth ([설정 가이드](higgsfield-setup/)) |
 | `moai-designer` | Higgsfield | Higgsfield OAuth ([설정 가이드](higgsfield-setup/)) |

@@ -461,7 +461,6 @@
    ],
    "mcp_servers": [
     "meta-ads",
-    "post-bridge",
     "typefully",
     "wordpress"
    ]

@@ -4,7 +4,7 @@ weight: 22
 description: "콘텐츠 크리에이터·블로거·SNS 운영자를 위한 워크플로우. moai-marketer(content·marketing 스킬) + moai-media + moai-writer(한국어 검수)로 블로그·카드뉴스·랜딩·뉴스레터를 한 줄 요청으로 자동 생성."
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-08-22T00:00:00+09:00
+lastmod: 2026-09-01T00:00:00+09:00
 ---
 
 > **대상**: 1인 콘텐츠 크리에이터, 마케터, 블로거, 인플루언서, 뉴스레터 발행자
@@ -32,8 +32,7 @@ flowchart TD
    end
    subgraph 발행["발행 (외부 커넥터, 선택)"]
        D1["WordPress MCP<br/>커넥터"]
-       D2["Post-Bridge MCP<br/>커넥터"]
-       D3["Typefully MCP<br/>커넥터"]
+       D2["Typefully MCP<br/>커넥터"]
    end
    입력 --> 생성 --> 검수 --> 발행
    style 검수 fill:#e8f1ec,stroke:#265240
@@ -160,7 +159,7 @@ flowchart TD
 | 톤 | 친근·격식·유머·전문 |
 | 키워드 | 자동 추출 + 사용자 추가 |
 | 이미지 자동 생성 | 예/아니오 (media-higgsfield-image 호출) |
-| 발행 자동화 | WordPress MCP / Post-Bridge MCP / Typefully MCP / 수동 (외부 커넥터, 선택) |
+| 발행 자동화 | WordPress MCP / Typefully MCP / 수동 (외부 커넥터, 선택) |
 
 ---
 
@@ -176,7 +175,7 @@ AskUserQuestion에서 "AI 검수 강도" 선택 시 "기본" (3중) / "약함" (
 
 ### Q. WordPress 자동 발행이 안 됩니다.
 
-발행은 cowork 스킬이 아닌 **외부 MCP 커넥터**(선택)로 동작합니다. [WordPress MCP](https://mcp.wordpress.com/mcp) 외에도 Post-Bridge(뉴스레터·브런치 동시 발행)·Typefully(X/Threads 스레드 예약) 커넥터를 같은 절차로 등록할 수 있습니다. Settings → Connectors → 해당 커넥터 활성화. 등록 절차는 를 참조하세요.
+발행은 cowork 스킬이 아닌 **외부 MCP 커넥터**(선택)로 동작합니다. WordPress MCP 외에 Typefully(X/Threads 스레드 예약) 커넥터도 같은 절차로 등록할 수 있습니다. Settings → Connectors → 해당 커넥터 활성화.
 
 ---
 

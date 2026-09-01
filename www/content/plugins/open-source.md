@@ -4,7 +4,7 @@ weight: 50
 description: "모두의 코워크가 어깨를 빌린 오픈소스 프로젝트 목록입니다. 스킬이 참고한 방법론, 함께 쓰는 MCP 서버, 문서 사이트를 떠받치는 도구까지 전부 밝힙니다."
 geekdocBreadcrumb: true
 date: 2026-08-08T00:00:00+09:00
-lastmod: 2026-08-10T00:00:00+09:00
+lastmod: 2026-09-01T00:00:00+09:00
 ---
 
 모두의 코워크는 처음부터 끝까지 혼자 만든 물건이 아닙니다. 남이 먼저 정리해 둔 방법론을
@@ -58,7 +58,7 @@ lastmod: 2026-08-10T00:00:00+09:00
 | [korean-stats-mcp](https://github.com/chrisryugj/korean-stats-mcp) | chrisryugj (MIT) | 데이터 애널리스트 |
 | [archhub-mcp](https://github.com/chrisryugj/archhub-mcp) | chrisryugj (MIT) | 데이터 애널리스트 |
 | korean-law-mcp | chrisryugj (MIT) | 법무 |
-| Meta Ads · WordPress · Typefully · post-bridge | 각 서비스 | 마케터 |
+| Meta Ads · WordPress · Typefully | 각 서비스 | 마케터 |
 | [Context7](https://github.com/upstash/context7) | Upstash | 개발 저장소 전용 |
 
 ## 자체 제작 MCP 서버가 쓰는 것

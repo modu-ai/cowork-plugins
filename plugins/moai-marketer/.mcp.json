@@ -5,17 +5,15 @@
       "type": "http",
       "url": "https://mcp.facebook.com/ads"
     },
-    "post-bridge": {
-      "type": "http",
-      "url": "https://app.post-bridge.com/mcp"
-    },
     "typefully": {
+      "$comment": "Typefully 공식 원격 MCP (support.typefully.com/en/articles/13128440) — X/Threads 스레드 작성·예약·큐 관리. 인증: OAuth 2.0 (RFC 9728 protected-resource discovery). API 키 불필요 — 커넥터 등록 시 브라우저에서 Typefully 계정 승인. 구 주소 api.typefully.com/mcp 는 404 이므로 사용 금지.",
       "type": "http",
-      "url": "https://api.typefully.com/mcp"
+      "url": "https://mcp.typefully.com/mcp"
     },
     "wordpress": {
+      "$comment": "WordPress.com 공식 원격 MCP (wordpress.com/support/model-context-protocol-mcp-settings/) — 포스트 발행·미디어·사이트 관리. 인증: OAuth 2.0 Bearer (WWW-Authenticate resource_metadata 디스커버리). 사전 준비: my.wordpress.com/me/preferences/mcp 에서 MCP 접근 허용 + 대상 사이트 지정. 구 주소 mcp.wordpress.com/mcp 는 존재하지 않는 서브도메인이므로 사용 금지.",
       "type": "http",
-      "url": "https://mcp.wordpress.com/mcp"
+      "url": "https://public-api.wordpress.com/wpcom/v2/mcp/v1"
     }
   }
 }

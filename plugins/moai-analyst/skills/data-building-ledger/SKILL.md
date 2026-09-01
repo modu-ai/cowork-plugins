@@ -13,7 +13,7 @@ description: |
   - "건축물대장 원본 보여줘", "건축인허가 이력"
   건축사·시공·중개·감정평가·디벨로퍼·공무원이 실무에서 바로 쓰는 건축물 실체 데이터입니다.
   본 스킬은 "건축물 실체(용도·구조·규모·규제·인허가·노후·철거)" 전담입니다. "실거래가/전월세 시세"는 data-realestate를 사용하세요.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # 국토교통부 건축HUB 조회 (data-building-ledger)
@@ -117,7 +117,7 @@ version: "1.1.0"
 
 사용자 측 필수 시크릿 **없음**. API 키 발급 불필요.
 
-- archhub MCP는 공용키가 탑재된 remote 커넥터(`https://archhub-mcp.fly.dev/mcp`)로, URL만 `.mcp.json`에 등록하면 바로 사용합니다.
+- archhub MCP는 공용키가 탑재된 remote 커넥터(`https://mcp.gomdori.app/archhub`)로, URL만 `.mcp.json`에 등록하면 바로 사용합니다.
 - 인터넷 연결만 있으면 동작합니다.
 - 로컬 실행(stdio)이 필요한 경우에만 `ARCHHUB_SERVICE_KEY`(data.go.kr 건축HUB 서비스 Decoding 인증키)가 필요합니다. 일반적인 사용은 remote 커넥터로 충분합니다.
 

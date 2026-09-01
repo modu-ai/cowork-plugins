@@ -4,7 +4,7 @@ weight: 80
 description: "모두의 코워크로 만든 결과물에 출처를 밝혀야 하는지, 어떤 스킬과 MCP가 표기 대상인지 상황별로 정리했습니다."
 geekdocBreadcrumb: true
 date: 2026-08-10T00:00:00+09:00
-lastmod: 2026-08-10T00:00:00+09:00
+lastmod: 2026-09-01T00:00:00+09:00
 ---
 
 "이걸로 만든 보고서를 회사에 제출해도 되나요?", "블로그에 올릴 때 출처를 적어야 하나요?" 자주 들어오는 질문입니다. 결론부터 말씀드리면 대부분의 경우 **적지 않으셔도 됩니다.** 다만 예외가 있고, 그 예외가 정확히 어디인지를 이 페이지에 정리했습니다.
@@ -79,7 +79,7 @@ MIT 항목의 저작권 문구와 허가 문구 전문은 저장소 루트의 [N
 | korean-stats-mcp | chrisryugj | 데이터 애널리스트 | MIT |
 | archhub-mcp | chrisryugj | 데이터 애널리스트 | MIT |
 | korean-law-mcp | chrisryugj | 법무 담당 | MIT |
-| Meta Ads · WordPress · Typefully · post-bridge | 각 서비스 | 마케터 | 각 서비스 약관 |
+| Meta Ads · WordPress · Typefully | 각 서비스 | 마케터 | 각 서비스 약관 |
 
 ### 우리가 직접 만든 MCP 서버
 

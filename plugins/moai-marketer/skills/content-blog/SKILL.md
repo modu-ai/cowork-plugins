@@ -10,7 +10,7 @@ description: |
   - "GEO 최적화해서 AI 검색에 인용되는 가이드 글 써줘"
   - "제품 리뷰 블로그 포스팅 구성 짜줘"
   검색 상위 노출과 독자 전환을 함께 노리며, 완성 후 moai-coworker:ai-slop-reviewer로 AI 티를 정리합니다(필수 후처리).
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # 블로그 (Blog)
@@ -182,12 +182,12 @@ version: "1.1.0"
 
 ## 발행 (WordPress MCP)
 
-ai-slop 검수 → humanize 체인까지 마친 완성 포스팅은, 이 플러그인의 `.mcp.json`에 등록된 WordPress MCP 커넥터(mcp.wordpress.com)로 바로 발행할 수 있습니다.
+ai-slop 검수 → humanize 체인까지 마친 완성 포스팅은, 이 플러그인의 `.mcp.json`에 등록된 WordPress MCP 커넥터로 바로 발행할 수 있습니다.
 
 - 흐름: **draft 저장 → 사용자 검토 → 발행** (제목·본문·카테고리·태그·특성 이미지 반영)
 - 커넥터 미연결 시 마크다운 카피만 반환하고 "Settings > Connectors에서 WordPress 연결" 안내
 - 네이버·티스토리·브런치·Ghost는 발행 자동화 대상이 아니므로 플랫폼 최적화 마크다운을 생성합니다(발행은 수동)
-- SNS 동시 발행이 필요하면 같은 `.mcp.json`의 post-bridge·typefully 커넥터로 크로스포스트할 수 있습니다
+- SNS 동시 발행이 필요하면 같은 `.mcp.json`의 typefully 커넥터로 크로스포스트할 수 있습니다
 
 ## 관련 스킬
 

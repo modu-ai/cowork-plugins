@@ -60,13 +60,12 @@ codex plugin add moai-marketer@moai-cowork
 
 ## MCP 연동 4종
 
-플러그인 루트 `.mcp.json`에 4개 MCP 서버가 선언되어 있습니다. 자격증명은 **환경변수 또는 OAuth 로그인으로만** 설정하세요(파일에 키를 적지 않습니다).
+플러그인 루트 `.mcp.json`에 MCP 서버가 선언되어 있습니다. 자격증명은 **환경변수 또는 OAuth 로그인으로만** 설정하세요(파일에 키를 적지 않습니다).
 
 | 서버 | 역할 | 인증 방법 |
 |------|------|-----------|
 | `meta-ads` | Meta 공식 Ads AI Connectors — 광고 생성·인사이트·카탈로그·픽셀 | 브라우저 Meta Business OAuth 2.0 (URL 등록 시 자동 발급, 정적 토큰 불필요) |
-| `post-bridge` | 멀티채널 SNS 게시 브리지 | 원격 HTTP MCP — 최초 연결 시 계정 인증 |
-| `typefully` | X·스레드 게시글 작성·예약 발행 | 원격 HTTP MCP — Typefully 계정 인증 |
+| `typefully` | X·스레드 게시글 작성·예약 발행 | 원격 HTTP MCP — Typefully 계정 OAuth 인증 |
 | `wordpress` | WordPress.com 블로그 게시 | 원격 HTTP MCP — WordPress.com 계정 인증 |
 
 ## 에이전트 2종
