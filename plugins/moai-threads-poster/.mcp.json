@@ -10,11 +10,10 @@
         "moai-mcp-threads-poster"
       ],
       "env": {
-        "THREADS_ACCESS_TOKEN": "${THREADS_ACCESS_TOKEN}",
-        "THREADS_USER_ID": "${THREADS_USER_ID}",
-        "THREADS_PUBLISH_DELAY": "${THREADS_PUBLISH_DELAY}",
-        "IG_ACCESS_TOKEN": "${IG_ACCESS_TOKEN}",
-        "IG_USER_ID": "${IG_USER_ID}"
+        "THREADS_ACCESS_TOKEN": "${user_config.THREADS_ACCESS_TOKEN}",
+        "THREADS_USER_ID": "${user_config.THREADS_USER_ID}",
+        "IG_ACCESS_TOKEN": "${user_config.IG_ACCESS_TOKEN}",
+        "IG_USER_ID": "${user_config.IG_USER_ID}"
       }
     }
   }

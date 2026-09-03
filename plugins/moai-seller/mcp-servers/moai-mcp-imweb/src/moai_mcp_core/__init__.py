@@ -12,6 +12,7 @@
 
 from .auth import OAuth2Config, OAuth2Refresher
 from .cache import TTLCache
+from .credentials import CredentialStore, is_unset, load as load_credentials
 from .errors import (
     AuthError,
     McpToolError,
@@ -29,6 +30,7 @@ __version__ = "0.1.0"
 __all__ = [
     "DEFAULT_DIR",
     "AuthError",
+    "CredentialStore",
     "HttpClient",
     "McpToolError",
     "OAuth2Config",
@@ -39,5 +41,7 @@ __all__ = [
     "TTLCache",
     "TokenStore",
     "UpstreamError",
+    "is_unset",
+    "load_credentials",
     "to_tool_result",
 ]

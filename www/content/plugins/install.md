@@ -4,7 +4,7 @@ weight: 10
 description: "마켓플레이스 등록 → 필요한 코워커 설치 → 확인 → 업데이트·비활성화·제거, 그리고 MCP 자격증명 준비까지 따라 하기."
 geekdocBreadcrumb: true
 date: 2026-08-07T00:00:00+09:00
-lastmod: 2026-09-01T00:00:00+09:00
+lastmod: 2026-09-03T00:00:00+09:00
 ---
 
 플러그인 설치는 크게 두 단계입니다. 먼저 **마켓플레이스를 한 번 등록**하고(어느 가게에서 물건을 받아올지 Claude 또는 ChatGPT에게 알려 주는 일), 그다음 **필요한 코워커 플러그인만 골라 설치**합니다. 마켓플레이스 등록은 컴퓨터당 한 번이면 되고 이후에는 설치·업데이트·제거만 반복하면 됩니다.
@@ -84,23 +84,28 @@ Plugins 화면에서 각 코워커별로 업데이트·비활성화·제거를 �
 
 ## 5. MCP 자격증명 준비 (외부 서비스 연동 코워커)
 
-일부 코워커는 외부 서비스에 직접 접속해 일합니다. 이런 연동을 **MCP** (Model Context Protocol — Claude가 외부 서비스의 도구를 표준 방식으로 부르는 규약) 라고 부르는데, 외부 서비스 계정의 **API 자격증명** (아이디·비밀키 등) 을 환경변수로 준비해 줘야 실제로 동작합니다.
+일부 코워커는 외부 서비스에 직접 접속해 일합니다. 이런 연동을 **MCP** (Model Context Protocol — 앱이 외부 서비스의 도구를 표준 방식으로 부르는 규약) 라고 부르는데, 서비스에 따라 **API 키**가 있어야 실제로 동작합니다.
 
 | 코워커 | 연동 서비스 | 준비물 |
 |------|------------|--------|
-| `moai-seller` | 네이버 스마트스토어 | 커머스API센터 애플리케이션 ID·시크릿 등 환경변수 |
-| `moai-seller` | 카페24 | 개발자센터 앱 클라이언트 ID·시크릿 등 환경변수 |
-| `moai-seller` | 아임웹 | OPEN API 키 발급 후 환경변수 |
-| `moai-marketer` | Meta Ads | Meta 비즈니스 계정 인증 |
-| `moai-marketer` | 게시 채널 (typefully·wordpress) | 각 서비스 계정 연결 |
-| `moai-media` | Higgsfield·ElevenLabs | Higgsfield OAuth ([설정 가이드](higgsfield-setup/))·ElevenLabs API 키 |
-| `moai-story` | Higgsfield | Higgsfield OAuth ([설정 가이드](higgsfield-setup/)) |
-| `moai-designer` | Higgsfield | Higgsfield OAuth ([설정 가이드](higgsfield-setup/)) |
-| `moai-analyst` | KOSIS·DART·건축물대장(archhub) | 각 공공 API 키 환경변수 |
-| `moai-lawyer` | 국가법령정보 | 공공 API 키 환경변수 |
-| `moai-officer` | kordoc | 로컬 처리 (별도 자격증명 없음) |
+| `moai-seller` | 네이버 스마트스토어 | 커머스API센터 애플리케이션 ID·시크릿 |
+| `moai-seller` | 카페24 | 개발자센터 앱 클라이언트 ID·시크릿 |
+| `moai-seller` | 아임웹 | OPEN API 클라이언트 ID·시크릿·토큰 |
+| `moai-threads-poster` | Threads·Instagram | Meta 개발자센터 액세스 토큰 |
+| `moai-marketer` | Meta Ads | 브라우저 로그인 (키 불필요) |
+| `moai-marketer` | 게시 채널 (typefully·wordpress) | 브라우저 로그인 (키 불필요) |
+| `moai-media` | Higgsfield·ElevenLabs | Higgsfield는 브라우저 로그인 ([설정 가이드](higgsfield-setup/)) · ElevenLabs는 API 키 |
+| `moai-story` · `moai-designer` | Higgsfield | 브라우저 로그인 ([설정 가이드](higgsfield-setup/)) |
+| `moai-accountant` · `moai-analyst` · `moai-coworker` | DART 전자공시 | OpenDART 인증키 |
+| `moai-analyst` | KOSIS·건축물대장(archhub) | 없음 (공용키 탑재) |
+| `moai-lawyer` | 국가법령정보 | 법제처 OC 키 |
+| `moai-officer` | kordoc | 없음 (로컬 처리) |
 
-자격증명이 없어도 플러그인의 일반 스킬 (상세페이지 작성, 캠페인 기획 등) 은 그대로 쓸 수 있습니다. 연동 도구를 쓰려는 시점에 해당 서비스의 개발자센터에서 키를 발급받아 환경변수로 넣어 주면 됩니다 — 구체적인 변수 이름과 발급 절차는 각 코워커 카드의 상세 정보와 코워커별 문서를 참고하세요. **API 키는 비밀번호와 같습니다.** 채팅창이나 문서에 붙여 넣지 말고, 환경변수나 셸 설정 파일로만 관리하세요.
+자격증명이 없어도 코워커의 일반 스킬 (상세페이지 작성, 캠페인 기획 등) 은 그대로 쓸 수 있습니다. 연동 도구를 쓰려는 시점에 넣으면 됩니다.
+
+**키를 넣는 방법은 두 가지입니다.** Claude Cowork는 키가 필요한 코워커를 켤 때 **입력 폼**을 띄우고 안전한 곳에 보관합니다. ChatGPT Work를 쓰거나 두 앱에서 같은 키를 쓰고 싶다면 **자격증명 파일**(`~/.moai/mcp/<서비스>.json`)에 넣으면 되는데, 코워커에게 키를 알려 주면 파일도 대신 만들어 줍니다. 서비스별 항목 이름과 안전 수칙은 [API 키 넣는 법](mcp/credentials/)에 정리해 두었습니다.
+
+**API 키는 비밀번호와 같습니다.** 채팅창에 그대로 붙여 넣지 말고, 앱 입력창이나 자격증명 파일로만 넘기세요.
 
 ## 다음 단계
 

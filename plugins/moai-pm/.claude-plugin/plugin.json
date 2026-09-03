@@ -1,7 +1,7 @@
 {
   "name": "moai-pm",
   "displayName": "🚀 PM",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "프로젝트 초기화 허브 AI 코워커 — /project로 진입합니다. Claude Cowork 프로젝트 초기화(전 코워커 지침 설정 + .claude/agents/ 커스텀 에이전트 + AGENTS.md 워크플로우 생성 + 재귀적 자가 개선)를 담당하며 AI 코워커 플러그인 패밀리의 진입을 라우팅합니다. 비개발자도 자연어 한마디로 프로젝트를 시작할 수 있습니다. 이런 분께 추천: 비개발자·프로젝트 시작자.",
   "author": {
     "name": "모두의 AI",

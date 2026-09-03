@@ -10,10 +10,10 @@
         "moai-mcp-smartstore"
       ],
       "env": {
-        "NAVER_COMMERCE_CLIENT_ID": "${NAVER_COMMERCE_CLIENT_ID}",
-        "NAVER_COMMERCE_CLIENT_SECRET": "${NAVER_COMMERCE_CLIENT_SECRET}",
-        "NAVER_COMMERCE_ACCOUNT_ID": "${NAVER_COMMERCE_ACCOUNT_ID}",
-        "NAVER_COMMERCE_TYPE": "${NAVER_COMMERCE_TYPE}"
+        "NAVER_COMMERCE_CLIENT_ID": "${user_config.NAVER_COMMERCE_CLIENT_ID}",
+        "NAVER_COMMERCE_CLIENT_SECRET": "${user_config.NAVER_COMMERCE_CLIENT_SECRET}",
+        "NAVER_COMMERCE_ACCOUNT_ID": "${user_config.NAVER_COMMERCE_ACCOUNT_ID}",
+        "NAVER_COMMERCE_TYPE": "${user_config.NAVER_COMMERCE_TYPE}"
       }
     },
     "moai-mcp-imweb": {
@@ -26,11 +26,11 @@
         "moai-mcp-imweb"
       ],
       "env": {
-        "IMWEB_CLIENT_ID": "${IMWEB_CLIENT_ID}",
-        "IMWEB_CLIENT_SECRET": "${IMWEB_CLIENT_SECRET}",
-        "IMWEB_ACCESS_TOKEN": "${IMWEB_ACCESS_TOKEN}",
-        "IMWEB_REFRESH_TOKEN": "${IMWEB_REFRESH_TOKEN}",
-        "IMWEB_UNIT_CODE": "${IMWEB_UNIT_CODE}"
+        "IMWEB_CLIENT_ID": "${user_config.IMWEB_CLIENT_ID}",
+        "IMWEB_CLIENT_SECRET": "${user_config.IMWEB_CLIENT_SECRET}",
+        "IMWEB_ACCESS_TOKEN": "${user_config.IMWEB_ACCESS_TOKEN}",
+        "IMWEB_REFRESH_TOKEN": "${user_config.IMWEB_REFRESH_TOKEN}",
+        "IMWEB_UNIT_CODE": "${user_config.IMWEB_UNIT_CODE}"
       }
     },
     "moai-mcp-cafe24": {
@@ -43,11 +43,11 @@
         "moai-mcp-cafe24"
       ],
       "env": {
-        "CAFE24_MALL_ID": "${CAFE24_MALL_ID}",
-        "CAFE24_CLIENT_ID": "${CAFE24_CLIENT_ID}",
-        "CAFE24_CLIENT_SECRET": "${CAFE24_CLIENT_SECRET}",
-        "CAFE24_ACCESS_TOKEN": "${CAFE24_ACCESS_TOKEN}",
-        "CAFE24_REFRESH_TOKEN": "${CAFE24_REFRESH_TOKEN}"
+        "CAFE24_MALL_ID": "${user_config.CAFE24_MALL_ID}",
+        "CAFE24_CLIENT_ID": "${user_config.CAFE24_CLIENT_ID}",
+        "CAFE24_CLIENT_SECRET": "${user_config.CAFE24_CLIENT_SECRET}",
+        "CAFE24_ACCESS_TOKEN": "${user_config.CAFE24_ACCESS_TOKEN}",
+        "CAFE24_REFRESH_TOKEN": "${user_config.CAFE24_REFRESH_TOKEN}"
       }
     }
   }

@@ -5,7 +5,7 @@ description: "MCP는 AI 코워커가 외부 서비스와 실제로 연결되는 
 geekdocBreadcrumb: true
 geekdocCollapseSection: true
 date: 2026-08-08T00:00:00+09:00
-lastmod: 2026-08-10T00:00:00+09:00
+lastmod: 2026-09-03T00:00:00+09:00
 ---
 
 지금까지는 AI 코워커가 **글을 써 주는** 일을 했습니다. MCP를 붙이면 여기서 한 걸음
@@ -57,6 +57,7 @@ macOS와 Windows, Claude Cowork(데스크톱)와 ChatGPT Work — **네 조합 �
 | 문서 | 내용 |
 |---|---|
 | [설치와 설정](install/) | 사전 준비(uv)부터 자격증명 입력, 연결 확인까지 |
+| [API 키 넣는 법](credentials/) | 앱 입력창과 자격증명 파일 — 서비스별 항목 이름과 안전 수칙 |
 | [문제 해결](troubleshooting/) | 연결이 안 될 때 순서대로 확인할 것 |
 
 {{< hint type="note" >}}

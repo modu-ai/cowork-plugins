@@ -43,6 +43,8 @@ main:
         ref: /plugins/mcp
       - name: MCP 설치와 설정
         ref: /plugins/mcp/install
+      - name: API 키 넣는 법
+        ref: /plugins/mcp/credentials
       - name: MCP 문제 해결
         ref: /plugins/mcp/troubleshooting
       - name: Higgsfield MCP 설정
@@ -153,9 +155,11 @@ main:
     sub:
       - name: 릴리스 홈
         ref: /releases
+      - name: v1.2.5
+        ref: /releases/v1.2.5
+        isNew: true
       - name: v1.2.4
         ref: /releases/v1.2.4
-        isNew: true
       - name: v1.2.3
         ref: /releases/v1.2.3
       - name: v1.2.2

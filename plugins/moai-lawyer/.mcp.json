@@ -3,7 +3,7 @@
     "korean-law": {
       "$comment": "국가법령정보 MCP (chrisryugj/korean-law-mcp v4.4, MIT) — 법제처 42개 API → 9개 도구. 법령·판례·행정규칙·자치법규·조약·해석례(국세청 포함) + LLM 환각방지 인용검증(legal_analysis verify_citations) + 판례 생사 확인(cite_check) + 행위시법 판단(applicable_law) + 조문 영향그래프(impact_map). 최신 hosted 엔드포인트 https://mcp.gomdori.app/law (구 korean-law-mcp.fly.dev/mcp 도 하위호환 유지). 인증: 법제처 Open API OC 키 — 사용자마다 발급 필수(law.go.kr 무료), URL ?oc= 에 보간. 공용키 모덜 아님(stats/archhub와 상이).",
       "type": "http",
-      "url": "https://mcp.gomdori.app/law?oc=${KOREAN_LAW_OC}"
+      "url": "https://mcp.gomdori.app/law?oc=${user_config.KOREAN_LAW_OC}"
     }
   }
 }

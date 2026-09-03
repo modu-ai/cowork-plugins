@@ -9,8 +9,11 @@ Cafe24 exposes TWO API surfaces with distinct base hosts:
     Paths are root-level (``/visitors/pageview``, ``/products/sales`` ...).
     Requires the ``mall.analytics`` scope (a.k.a. 접속통계 읽기권한).
 
-Credentials are sourced from environment variables (interpolated by the MCP
-host from ``.mcp.json`` ``env``). A refreshable ``access_token`` is mandatory;
+Credentials are resolved by ``moai_mcp_core.CredentialStore``: environment first,
+then ``~/.moai/mcp/cafe24.json``. Environment alone is not enough — the Claude and
+Codex desktop apps do not interpolate ``${KEY}`` in ``.mcp.json`` ``env`` and hand
+the placeholder through verbatim (see ``moai_mcp_core/credentials.py``).
+A refreshable ``access_token`` is mandatory;
 ``CLIENT_ID`` + ``CLIENT_SECRET`` + ``REFRESH_TOKEN`` enable automatic renewal
 on HTTP 401. The access token lives 2 hours; the refresh token lives 2 weeks
 and **rotates on every refresh** (Cafe24 invalidates the old refresh token and
@@ -24,18 +27,21 @@ in-memory only when the path is not writable.
 
 from __future__ import annotations
 
-import os
 import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import TYPE_CHECKING, Optional
 
-from moai_mcp_core import TokenStore
+from moai_mcp_core import CredentialStore, TokenStore
 
 if TYPE_CHECKING:
     from .client import Cafe24Client
 
+#: 자격증명 파일 슬러그 — `~/.moai/mcp/cafe24.json`.
+SERVICE = "cafe24"
+
 ANALYTICS_API_BASE = "https://ca-api.cafe24data.com"
+
 DEFAULT_API_VERSION = "2026-03-01"  # Cafe24 app-default version (2025-09-01 retired → HTTP 400)
 DEFAULT_TIMEOUT = 30.0
 DEFAULT_SHOP_NO = 1
@@ -106,8 +112,9 @@ def _persist_tokens(path: Optional[Path], access: Optional[str], refresh: Option
 
 
 def load_config() -> Cafe24Config:
-    mall_id = os.environ.get("CAFE24_MALL_ID", "").strip()
-    token_file_str = os.environ.get("CAFE24_TOKEN_FILE")
+    creds = CredentialStore(SERVICE)
+    mall_id = creds.get("CAFE24_MALL_ID")
+    token_file_str = creds.get("CAFE24_TOKEN_FILE")
     token_file = Path(token_file_str).expanduser() if token_file_str else DEFAULT_TOKEN_FILE
 
     # Bootstrap from env (static .mcp.json values), then prefer persisted tokens.
@@ -117,28 +124,35 @@ def load_config() -> Cafe24Config:
     # triggers auth.refresh_access_token. A fresh process that falls back to the
     # stale env refresh token reuses an invalidated credential and fails auth —
     # persisted wins, env only bootstraps the very first run before any rotation.
-    access = os.environ.get("CAFE24_ACCESS_TOKEN") or ""
-    refresh = os.environ.get("CAFE24_REFRESH_TOKEN") or ""
+    access = creds.get("CAFE24_ACCESS_TOKEN")
+    refresh = creds.get("CAFE24_REFRESH_TOKEN")
     p_access, p_refresh = _load_persisted_tokens(token_file)
     access = p_access or access
     refresh = p_refresh or refresh
 
     return Cafe24Config(
         mall_id=mall_id,
-        client_id=os.environ.get("CAFE24_CLIENT_ID", ""),
-        client_secret=os.environ.get("CAFE24_CLIENT_SECRET", ""),
+        client_id=creds.get("CAFE24_CLIENT_ID"),
+        client_secret=creds.get("CAFE24_CLIENT_SECRET"),
         access_token=access,
         refresh_token=refresh,
-        api_version=os.environ.get("CAFE24_API_VERSION", DEFAULT_API_VERSION),
-        shop_no=_int_env("CAFE24_SHOP_NO", DEFAULT_SHOP_NO),
-        timeout=_float_env("CAFE24_TIMEOUT", DEFAULT_TIMEOUT),
+        api_version=creds.get("CAFE24_API_VERSION", DEFAULT_API_VERSION),
+        shop_no=_int_setting(creds, "CAFE24_SHOP_NO", DEFAULT_SHOP_NO),
+        timeout=_float_setting(creds, "CAFE24_TIMEOUT", DEFAULT_TIMEOUT),
         token_file=token_file,
-        request_delay=_float_env("CAFE24_REQUEST_DELAY", 0.0),
+        request_delay=_float_setting(creds, "CAFE24_REQUEST_DELAY", 0.0),
     )
 
 
-def _float_env(name: str, default: float) -> float:
-    raw = os.environ.get(name)
+def setup_hint() -> str:
+    """자격증명이 비었을 때 보여줄 안내. 다 있으면 빈 문자열."""
+    return CredentialStore(SERVICE).setup_hint(
+        ["CAFE24_MALL_ID", "CAFE24_CLIENT_ID", "CAFE24_CLIENT_SECRET"]
+    )
+
+
+def _float_setting(creds: CredentialStore, name: str, default: float) -> float:
+    raw = creds.get(name)
     if not raw:
         return default
     try:
@@ -147,8 +161,8 @@ def _float_env(name: str, default: float) -> float:
         return default
 
 
-def _int_env(name: str, default: int) -> int:
-    raw = os.environ.get(name)
+def _int_setting(creds: CredentialStore, name: str, default: int) -> int:
+    raw = creds.get(name)
     if not raw:
         return default
     try:

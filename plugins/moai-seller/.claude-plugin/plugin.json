@@ -1,11 +1,98 @@
 {
   "name": "moai-seller",
   "displayName": "🛒 셀러",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "description": "이커머스 셀러 전담 AI 코워커 — 스마트스토어·아임웹·카페24 MCP 연동과 상세페이지·마켓플레이스·광고·CRM 등 커머스 실무 스킬 30종. VOC·채널 메시지는 moai-cs(CS매니저)로 이관. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 온라인 셀러·이커머스 운영자.",
   "author": {
     "name": "모두의 AI",
     "email": "email@mo.ai.kr"
   },
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "userConfig": {
+    "NAVER_COMMERCE_CLIENT_ID": {
+      "type": "string",
+      "title": "네이버 커머스 애플리케이션 ID",
+      "description": "커머스API센터에서 발급받은 애플리케이션 ID.",
+      "sensitive": true
+    },
+    "NAVER_COMMERCE_CLIENT_SECRET": {
+      "type": "string",
+      "title": "네이버 커머스 애플리케이션 시크릿",
+      "description": "전자서명(bcrypt salt)에 쓰입니다.",
+      "sensitive": true
+    },
+    "NAVER_COMMERCE_ACCOUNT_ID": {
+      "type": "string",
+      "title": "판매자 계정 ID",
+      "description": "인증 주체가 SELLER 일 때만 필요합니다.",
+      "sensitive": false
+    },
+    "NAVER_COMMERCE_TYPE": {
+      "type": "string",
+      "title": "인증 주체 타입",
+      "description": "SELF(기본) 또는 SELLER 중 하나입니다.",
+      "sensitive": false,
+      "default": "SELF"
+    },
+    "IMWEB_CLIENT_ID": {
+      "type": "string",
+      "title": "아임웹 클라이언트 ID",
+      "description": "아임웹 OPEN API v3 앱의 클라이언트 ID.",
+      "sensitive": true
+    },
+    "IMWEB_CLIENT_SECRET": {
+      "type": "string",
+      "title": "아임웹 클라이언트 시크릿",
+      "description": "토큰 자동 갱신에 쓰입니다.",
+      "sensitive": true
+    },
+    "IMWEB_ACCESS_TOKEN": {
+      "type": "string",
+      "title": "아임웹 액세스 토큰",
+      "description": "최초 1회 발급값. 이후에는 자동 갱신되어 저장됩니다.",
+      "sensitive": true
+    },
+    "IMWEB_REFRESH_TOKEN": {
+      "type": "string",
+      "title": "아임웹 리프레시 토큰",
+      "description": "최초 1회 발급값. 이후에는 자동 갱신되어 저장됩니다.",
+      "sensitive": true
+    },
+    "IMWEB_UNIT_CODE": {
+      "type": "string",
+      "title": "아임웹 유닛 코드",
+      "description": "다중 사이트를 쓸 때 대상 사이트를 지정합니다.",
+      "sensitive": false
+    },
+    "CAFE24_MALL_ID": {
+      "type": "string",
+      "title": "카페24 몰 ID",
+      "description": "쇼핑몰 주소의 앞부분입니다 (mymall.cafe24.com 이면 mymall).",
+      "sensitive": false
+    },
+    "CAFE24_CLIENT_ID": {
+      "type": "string",
+      "title": "카페24 클라이언트 ID",
+      "description": "카페24 개발자센터 앱의 클라이언트 ID.",
+      "sensitive": true
+    },
+    "CAFE24_CLIENT_SECRET": {
+      "type": "string",
+      "title": "카페24 클라이언트 시크릿",
+      "description": "토큰 자동 갱신에 쓰입니다.",
+      "sensitive": true
+    },
+    "CAFE24_ACCESS_TOKEN": {
+      "type": "string",
+      "title": "카페24 액세스 토큰",
+      "description": "최초 1회 발급값(2시간). 이후 자동 갱신되어 저장됩니다.",
+      "sensitive": true
+    },
+    "CAFE24_REFRESH_TOKEN": {
+      "type": "string",
+      "title": "카페24 리프레시 토큰",
+      "description": "최초 1회 발급값(2주, 갱신 시 회전). 이후 자동 저장됩니다.",
+      "sensitive": true
+    }
+  }
 }

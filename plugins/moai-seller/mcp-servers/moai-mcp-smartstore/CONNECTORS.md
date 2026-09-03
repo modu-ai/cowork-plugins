@@ -15,9 +15,37 @@
 > 상세 가입/등록 절차는 공식 커머스API 소개·인증 문서 참고:
 > https://apicenter.commerce.naver.com/docs/introduction · https://apicenter.commerce.naver.com/docs/auth
 
-## 환경변수 주입 [HARD 보안 수칙]
+## 자격증명 주입 [HARD 보안 수칙]
 
-자격증명은 **반드시 환경변수로만** 주입한다. 코드·manifest·로그·채팅에 하드코딩 절대 금지.
+자격증명은 코드·manifest·로그·채팅에 **하드코딩 절대 금지**. 아래 두 경로 중 하나로만 넣는다.
+
+### 경로 1 — 자격증명 파일 (모든 실행 환경 공통, 권장)
+
+`~/.moai/mcp/smartstore.json` (Windows: `C:\Users\<사용자>\.moai\mcp\smartstore.json`):
+
+```json
+{
+  "NAVER_COMMERCE_CLIENT_ID": "<애플리케이션 ID>",
+  "NAVER_COMMERCE_CLIENT_SECRET": "<애플리케이션 시크릿(bcrypt salt)>",
+  "NAVER_COMMERCE_ACCOUNT_ID": "<판매자 계정 ID>",
+  "NAVER_COMMERCE_TYPE": "SELF"
+}
+```
+
+### 경로 2 — Claude 앱 입력 폼
+
+`.claude-plugin/plugin.json` 의 `userConfig` 선언에 따라 Claude 데스크톱·CLI 가 플러그인을
+켤 때 입력 폼을 띄우고, 민감 항목은 키체인에 보관한다. 값은 `${user_config.<KEY>}` 로
+`.mcp.json` env 에 주입된다.
+
+> **`.mcp.json` env 에 `${NAVER_COMMERCE_CLIENT_ID}` 같은 셸 변수 보간을 쓰지 말 것.**
+> Claude 데스크톱·Codex CLI·Codex 데스크톱은 이 자리표시자를 확장하지 않고 문자열 그대로
+> 서버에 넘긴다(2026-09-03 실측). 서버는 그런 값을 '설정되지 않음' 으로 판정하고 위 파일로
+> 넘어간다 — `moai_mcp_core/credentials.py` 참조.
+
+### 개발 중 환경변수로 넣기
+
+셸에서 직접 export 한 값이 있으면 그것이 위 두 경로보다 우선한다.
 
 **macOS / Linux**:
 

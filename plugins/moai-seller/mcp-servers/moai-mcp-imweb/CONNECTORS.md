@@ -69,6 +69,33 @@ curl -X POST https://openapi.imweb.me/oauth2/token \
 > 아임웹은 camelCase 를 일관되게 사용합니다(`/oauth2/authorize` 파라미터가 모두
 > camelCase). 본 MCP 서버는 응답 키를 camelCase · snake_case 양쪽으로 모두 허용합니다.
 
+## 자격증명을 어디에 넣는가 (2026-09-03 갱신)
+
+셸 환경변수만으로는 부족하다. **Claude 데스크톱·Codex CLI·Codex 데스크톱은 `.mcp.json` 의
+`${KEY}` 를 확장하지 않고 문자열 그대로 서버에 넘긴다**(실측). 그래서 이 서버는 값을
+아래 순서로 해석한다 — `moai_mcp_core/credentials.py`.
+
+1. 실제 값이 든 환경변수 (자리표시자·빈 값은 없는 것으로 본다)
+2. `~/.moai/mcp/imweb.json` — Windows 는 `C:\Users\<사용자>\.moai\mcp\imweb.json`
+3. 없으면 기본값
+
+파일 형식은 키와 값을 짝지은 JSON 객체 하나다:
+
+```json
+{
+  "IMWEB_CLIENT_ID": "<클라이언트 ID>",
+  "IMWEB_CLIENT_SECRET": "<클라이언트 시크릿>",
+  "IMWEB_ACCESS_TOKEN": "<최초 발급 access token>",
+  "IMWEB_REFRESH_TOKEN": "<최초 발급 refresh token>",
+  "IMWEB_UNIT_CODE": "<유닛 코드>"
+}
+```
+
+Claude 에서는 `.claude-plugin/plugin.json` 의 `userConfig` 선언에 따라 앱이 입력 폼을 띄우고
+민감 항목을 키체인에 보관한다. 두 경로를 같이 써도 되며, 환경변수 쪽이 우선한다.
+
+아래 환경변수 안내는 **개발 중 셸에서 직접 넣을 때**의 참고다.
+
 ## 5. `.mcp.json` env 설정
 
 `plugins/moai-seller/.mcp.json` 의 `moai-imweb.env` 에 값을 채웁니다(값은 `${VAR}` 보간으로

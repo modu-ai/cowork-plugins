@@ -60,7 +60,7 @@ disablePathToLower = true
   #   · 플러그인 하나를 고쳤다면 그 플러그인의 plugin.json +
   #     .claude-plugin/marketplace.json 해당 entry 만 올린다 (여기는 그대로)
   # 규칙 SSOT: CLAUDE.local.md § 버저닝 규칙
-  version = "1.2.4"
+  version = "1.2.5"
   releaseDate = "2026-07-31"
   geekdocRepo = "https://github.com/modu-ai/moai-cowork"
   geekdocEditPath = "edit/main/content"

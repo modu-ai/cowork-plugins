@@ -1,7 +1,7 @@
 {
   "name": "moai-threads-poster",
   "displayName": "📸 SNS 크리에이터",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Threads·Instagram(Meta) 자율 발행 전담 AI 코워커 — MCP 서버로 직접 Graph API 연결(월정액 없음). 세션 안에서 초안을 작성해 보여드리고 승인하면 텍스트·이미지·비디오를 즉시 발행합니다. 큐·예약·승인 상태머신은 없습니다 — 직접 발행만 하고, 예약·정기 발행은 Claude Cowork 이 담당합니다. Facebook 개인 계정은 API 미지원(정책)이라 복붙만 지원합니다.",
   "author": {
     "name": "모두의 AI",
@@ -17,5 +17,31 @@
     "자동포스팅"
   ],
   "license": "Apache-2.0",
-  "mcpServers": "./.mcp.json"
+  "mcpServers": "./.mcp.json",
+  "userConfig": {
+    "THREADS_ACCESS_TOKEN": {
+      "type": "string",
+      "title": "Threads 액세스 토큰",
+      "description": "Meta 개발자센터에서 발급한 Threads Graph API 토큰.",
+      "sensitive": true
+    },
+    "THREADS_USER_ID": {
+      "type": "string",
+      "title": "Threads 사용자 ID",
+      "description": "발행 대상 Threads 계정의 숫자 ID.",
+      "sensitive": false
+    },
+    "IG_ACCESS_TOKEN": {
+      "type": "string",
+      "title": "Instagram 액세스 토큰",
+      "description": "인스타그램 동시 발행을 쓸 때만 필요합니다.",
+      "sensitive": true
+    },
+    "IG_USER_ID": {
+      "type": "string",
+      "title": "Instagram 사용자 ID",
+      "description": "Professional(비즈니스·크리에이터) 계정의 숫자 ID.",
+      "sensitive": false
+    }
+  }
 }

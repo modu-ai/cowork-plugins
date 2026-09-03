@@ -70,6 +70,33 @@ uv sync
 
 소스는 플러그인에 자체 vendor — PyPI 게시 불필요, 설치 즉시 작동.
 
+## 자격증명을 어디에 넣는가 (2026-09-03 갱신)
+
+셸 환경변수만으로는 부족하다. **Claude 데스크톱·Codex CLI·Codex 데스크톱은 `.mcp.json` 의
+`${KEY}` 를 확장하지 않고 문자열 그대로 서버에 넘긴다**(실측). 그래서 이 서버는 값을
+아래 순서로 해석한다 — `moai_mcp_core/credentials.py`.
+
+1. 실제 값이 든 환경변수 (자리표시자·빈 값은 없는 것으로 본다)
+2. `~/.moai/mcp/cafe24.json` — Windows 는 `C:\Users\<사용자>\.moai\mcp\cafe24.json`
+3. 없으면 기본값
+
+파일 형식은 키와 값을 짝지은 JSON 객체 하나다:
+
+```json
+{
+  "CAFE24_MALL_ID": "<몰 ID>",
+  "CAFE24_CLIENT_ID": "<클라이언트 ID>",
+  "CAFE24_CLIENT_SECRET": "<클라이언트 시크릿>",
+  "CAFE24_ACCESS_TOKEN": "<최초 발급 access token>",
+  "CAFE24_REFRESH_TOKEN": "<최초 발급 refresh token>"
+}
+```
+
+Claude 에서는 `.claude-plugin/plugin.json` 의 `userConfig` 선언에 따라 앱이 입력 폼을 띄우고
+민감 항목을 키체인에 보관한다. 두 경로를 같이 써도 되며, 환경변수 쪽이 우선한다.
+
+아래 환경변수 안내는 **개발 중 셸에서 직접 넣을 때**의 참고다.
+
 ## 환경변수
 
 | 변수 | 필수 | 설명 |

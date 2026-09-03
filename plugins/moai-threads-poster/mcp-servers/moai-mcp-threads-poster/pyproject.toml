@@ -22,7 +22,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/moai_mcp_threads_poster"]
+packages = ["src/moai_mcp_core", "src/moai_mcp_threads_poster"]
 
 [dependency-groups]
 dev = [

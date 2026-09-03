@@ -39,6 +39,8 @@ import re
 import time
 from typing import Any, Callable, Optional
 
+from moai_mcp_core import CredentialStore
+
 from mcp.server.fastmcp import FastMCP
 
 from .threads_api import ThreadsAPIError, ThreadsClient
@@ -46,6 +48,9 @@ from .instagram_api import InstagramAPIError, InstagramClient
 
 # Threads 권장: container 생성 후 평균 ~30초 대기 후 publish.
 # Recommended: wait ~30s on average between create_container and publish.
+#: 자격증명 파일 슬러그 — `~/.moai/mcp/threads.json`.
+SERVICE = "threads"
+
 DEFAULT_PUBLISH_DELAY = 30.0
 
 _INSTRUCTIONS = (
@@ -61,11 +66,14 @@ _client_singleton: Optional[ThreadsClient] = None
 
 # ------------------------------------------------------------------ helpers
 def _load_credentials() -> tuple[str, str]:
-    """환경변수에서 자격증명 읽기 (read credentials from env)."""
-    return (
-        os.environ.get("THREADS_ACCESS_TOKEN", ""),
-        os.environ.get("THREADS_USER_ID", ""),
-    )
+    """Threads 자격증명 읽기 — 환경변수 → ``~/.moai/mcp/threads.json`` 순.
+
+    환경변수 단독으로는 부족하다: Claude·Codex 데스크톱 앱은 ``.mcp.json`` 의
+    ``${KEY}`` 를 확장하지 않고 자리표시자를 그대로 넘긴다
+    (근거: ``moai_mcp_core/credentials.py``).
+    """
+    creds = CredentialStore(SERVICE)
+    return (creds.get("THREADS_ACCESS_TOKEN"), creds.get("THREADS_USER_ID"))
 
 
 def _setup_required_error() -> dict[str, Any]:
@@ -112,11 +120,9 @@ _ig_client_singleton: Optional[InstagramClient] = None
 
 
 def _load_ig_credentials() -> tuple[str, str]:
-    """Instagram 자격증명 읽기 (read IG credentials from env). Threads 쌍과 별개."""
-    return (
-        os.environ.get("IG_ACCESS_TOKEN", ""),
-        os.environ.get("IG_USER_ID", ""),
-    )
+    """Instagram 자격증명 읽기 — Threads 쌍과 별개. 해석 경로는 위와 같다."""
+    creds = CredentialStore(SERVICE)
+    return (creds.get("IG_ACCESS_TOKEN"), creds.get("IG_USER_ID"))
 
 
 def _ig_setup_required_error() -> dict[str, Any]:
@@ -161,9 +167,9 @@ def _reset_ig_client_for_tests() -> None:
 
 
 def _publish_delay_seconds() -> float:
-    """``THREADS_PUBLISH_DELAY`` 환경변수 읽기 (기본 30초, 테스트는 0)."""
-    raw = os.environ.get("THREADS_PUBLISH_DELAY")
-    if raw is None:
+    """``THREADS_PUBLISH_DELAY`` 읽기 (기본 30초, 테스트는 0)."""
+    raw = CredentialStore(SERVICE).get("THREADS_PUBLISH_DELAY")
+    if not raw:
         return DEFAULT_PUBLISH_DELAY
     try:
         return float(raw)

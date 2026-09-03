@@ -104,6 +104,32 @@ curl "https://graph.threads.net/refresh_access_token"
   &access_token=<LONG_LIVED_TOKEN>
 ```
 
+## 자격증명을 어디에 넣는가 (2026-09-03 갱신)
+
+셸 환경변수만으로는 부족하다. **Claude 데스크톱·Codex CLI·Codex 데스크톱은 `.mcp.json` 의
+`${KEY}` 를 확장하지 않고 문자열 그대로 서버에 넘긴다**(실측). 그래서 이 서버는 값을
+아래 순서로 해석한다 — `moai_mcp_core/credentials.py`.
+
+1. 실제 값이 든 환경변수 (자리표시자·빈 값은 없는 것으로 본다)
+2. `~/.moai/mcp/threads.json` — Windows 는 `C:\Users\<사용자>\.moai\mcp\threads.json`
+3. 없으면 기본값
+
+파일 형식은 키와 값을 짝지은 JSON 객체 하나다:
+
+```json
+{
+  "THREADS_ACCESS_TOKEN": "<LONG_LIVED_TOKEN>",
+  "THREADS_USER_ID": "<THREADS_USER_ID>",
+  "IG_ACCESS_TOKEN": "<선택: 인스타 동시 발행용>",
+  "IG_USER_ID": "<선택: 인스타 계정 ID>"
+}
+```
+
+Claude 에서는 `.claude-plugin/plugin.json` 의 `userConfig` 선언에 따라 앱이 입력 폼을 띄우고
+민감 항목을 키체인에 보관한다. 두 경로를 같이 써도 되며, 환경변수 쪽이 우선한다.
+
+아래 환경변수 안내는 **개발 중 셸에서 직접 넣을 때**의 참고다.
+
 ## 8. 환경변수 설정
 
 **macOS / Linux** — 셸 프로필(`~/.zshrc` / `~/.bashrc`)에:

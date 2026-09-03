@@ -30,6 +30,8 @@ dependencies = [
     "requests>=2.31.0",
     # 인증 전자서명 (bcrypt hashpw)
     "bcrypt>=4.0.0",
+    # 공통 코어(src/moai_mcp_core) 가 요구한다 — 자격증명 해석·토큰 영속화 공유.
+    "httpx>=0.27.0",
 ]
 
 [project.optional-dependencies]
@@ -44,7 +46,7 @@ dev = [
 moai-mcp-smartstore = "moai_mcp_smartstore.__main__:main"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/moai_mcp_smartstore"]
+packages = ["src/moai_mcp_core", "src/moai_mcp_smartstore"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

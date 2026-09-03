@@ -1,8 +1,6 @@
 {
-  "$schema": "https://developers.openai.com/plugins/build/plugins",
-  "$comment": "OpenAI/Codex 플러그인 매니페스트. Claude용 .claude-plugin/plugin.json과 나란히 공존. 본체(skills/SKILL.md, .mcp.json)는 양쪽 공유.",
   "name": "moai-analyst",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "데이터·공공데이터 분석 전담 AI 코워커 — 데이터 프로파일링·시각화, 공공데이터 조회(부동산·경매·주식·KOSIS·건축물대장·DART 전자공시) 스킬 7종. KOSIS 통계·건축HUB·DART MCP 연동. 자연어 요청 시 매칭 스킬이 자동 호출됩니다. 이런 분께 추천: 데이터 애널리스트·사무직·기획자·자영업 운영자.",
   "author": {
     "name": "모두의 AI",
@@ -22,7 +20,33 @@
     "공공데이터"
   ],
   "skills": "./skills/",
-  "mcpServers": "./.mcp.json",
+  "mcpServers": {
+    "korean-stats": {
+      "type": "http",
+      "url": "https://mcp.gomdori.app/stats"
+    },
+    "archhub": {
+      "type": "http",
+      "url": "https://mcp.gomdori.app/archhub"
+    },
+    "dart": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--script",
+        "./mcp-launch/mcp_launch.py",
+        "--service",
+        "dart",
+        "--keys",
+        "DART_API_KEY",
+        "--",
+        "npx",
+        "-y",
+        "korean-dart-mcp"
+      ],
+      "cwd": "."
+    }
+  },
   "interface": {
     "displayName": "📊 데이터 애널리스트",
     "shortDescription": "📊 데이터 애널리스트 — 공공데이터 조회·시각화 분석",

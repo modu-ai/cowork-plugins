@@ -1,7 +1,10 @@
 """Configuration + singleton client accessor.
 
-Credentials are sourced from environment variables (interpolated by the MCP host
-from ``.mcp.json`` ``env``). A refreshable access token is mandatory; ``CLIENT_ID``
+Credentials are resolved by ``moai_mcp_core.CredentialStore``: environment first,
+then ``~/.moai/mcp/imweb.json``. Environment alone is not enough — the Claude and
+Codex desktop apps do not interpolate ``${KEY}`` in ``.mcp.json`` ``env`` and hand
+the placeholder through verbatim (see ``moai_mcp_core/credentials.py``).
+A refreshable access token is mandatory; ``CLIENT_ID``
 + ``CLIENT_SECRET`` + ``REFRESH_TOKEN`` enable automatic renewal on 401.
 
 Token persistence: when ``IMWEB_TOKEN_FILE`` is set (or the default
@@ -12,16 +15,18 @@ in-memory only when the path is not writable.
 
 from __future__ import annotations
 
-import os
 import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import TYPE_CHECKING, Optional
 
-from moai_mcp_core import TokenStore
+from moai_mcp_core import CredentialStore, TokenStore
 
 if TYPE_CHECKING:
     from .client import ImwebClient
+
+#: 자격증명 파일 슬러그 — `~/.moai/mcp/imweb.json`.
+SERVICE = "imweb"
 
 DEFAULT_API_BASE = "https://openapi.imweb.me"
 DEFAULT_TIMEOUT = 30.0
@@ -70,12 +75,17 @@ def _persist_tokens(path: Optional[Path], access: Optional[str], refresh: Option
 
 
 def load_config() -> ImwebConfig:
-    api_base = os.environ.get("IMWEB_API_BASE", DEFAULT_API_BASE).rstrip("/")
-    token_file_str = os.environ.get("IMWEB_TOKEN_FILE")
+    # 자격증명은 환경변수 → ~/.moai/mcp/imweb.json 순으로 해석한다. 데스크톱 앱은
+    # `.mcp.json` 의 ${KEY} 를 확장하지 않으므로 환경변수 단독으로는 부족하다
+    # (근거: moai_mcp_core/credentials.py).
+    creds = CredentialStore(SERVICE)
+
+    api_base = creds.get("IMWEB_API_BASE", DEFAULT_API_BASE).rstrip("/")
+    token_file_str = creds.get("IMWEB_TOKEN_FILE")
     token_file = Path(token_file_str).expanduser() if token_file_str else DEFAULT_TOKEN_FILE
 
-    access = os.environ.get("IMWEB_ACCESS_TOKEN") or ""
-    refresh = os.environ.get("IMWEB_REFRESH_TOKEN") or ""
+    access = creds.get("IMWEB_ACCESS_TOKEN")
+    refresh = creds.get("IMWEB_REFRESH_TOKEN")
 
     # Prefer the most-recent persisted token when the env value is absent.
     if not access or not refresh:
@@ -83,24 +93,29 @@ def load_config() -> ImwebConfig:
         access = access or p_access or ""
         refresh = refresh or p_refresh or ""
 
-    timeout = _float_env("IMWEB_TIMEOUT", DEFAULT_TIMEOUT)
-    request_delay = _float_env("IMWEB_REQUEST_DELAY", 0.0)
+    timeout = _float_setting(creds, "IMWEB_TIMEOUT", DEFAULT_TIMEOUT)
+    request_delay = _float_setting(creds, "IMWEB_REQUEST_DELAY", 0.0)
 
     return ImwebConfig(
         api_base=api_base,
-        client_id=os.environ.get("IMWEB_CLIENT_ID", ""),
-        client_secret=os.environ.get("IMWEB_CLIENT_SECRET", ""),
+        client_id=creds.get("IMWEB_CLIENT_ID"),
+        client_secret=creds.get("IMWEB_CLIENT_SECRET"),
         access_token=access,
         refresh_token=refresh,
-        unit_code=os.environ.get("IMWEB_UNIT_CODE", ""),
+        unit_code=creds.get("IMWEB_UNIT_CODE"),
         timeout=timeout,
         token_file=token_file,
         request_delay=request_delay,
     )
 
 
-def _float_env(name: str, default: float) -> float:
-    raw = os.environ.get(name)
+def setup_hint() -> str:
+    """자격증명이 비었을 때 보여줄 안내. 다 있으면 빈 문자열."""
+    return CredentialStore(SERVICE).setup_hint(["IMWEB_CLIENT_ID", "IMWEB_CLIENT_SECRET"])
+
+
+def _float_setting(creds: CredentialStore, name: str, default: float) -> float:
+    raw = creds.get(name)
     if not raw:
         return default
     try:
